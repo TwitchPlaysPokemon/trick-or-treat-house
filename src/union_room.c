@@ -2506,7 +2506,7 @@ void sub_801440C(u8 taskId)
         HealPlayerParty();
         SavePlayerParty();
         LoadPlayerBag();
-        sub_8014304(MAP_GROUP(SINGLE_BATTLE_COLOSSEUM), MAP_NUM(SINGLE_BATTLE_COLOSSEUM), 6, 8, 1);
+        // sub_8014304(MAP_GROUP(SINGLE_BATTLE_COLOSSEUM), MAP_NUM(SINGLE_BATTLE_COLOSSEUM), 6, 8, 1);
         SetMainCallback2(sub_8014384);
         break;
     case 2:
@@ -2515,7 +2515,7 @@ void sub_801440C(u8 taskId)
         SavePlayerParty();
         LoadPlayerBag();
         sub_80143E4(gBlockSendBuffer, TRUE);
-        sub_8014304(MAP_GROUP(SINGLE_BATTLE_COLOSSEUM), MAP_NUM(SINGLE_BATTLE_COLOSSEUM), 6, 8, 2);
+        // sub_8014304(MAP_GROUP(SINGLE_BATTLE_COLOSSEUM), MAP_NUM(SINGLE_BATTLE_COLOSSEUM), 6, 8, 2);
         SetMainCallback2(sub_8014384);
         break;
     case 3:
@@ -2524,19 +2524,19 @@ void sub_801440C(u8 taskId)
         SavePlayerParty();
         LoadPlayerBag();
         sub_80143E4(gBlockSendBuffer, TRUE);
-        sub_8014304(MAP_GROUP(DOUBLE_BATTLE_COLOSSEUM), MAP_NUM(DOUBLE_BATTLE_COLOSSEUM), 5, 8, 5);
+        // sub_8014304(MAP_GROUP(DOUBLE_BATTLE_COLOSSEUM), MAP_NUM(DOUBLE_BATTLE_COLOSSEUM), 5, 8, 5);
         SetMainCallback2(sub_8014384);
         break;
     case 4:
         sub_80143E4(gBlockSendBuffer, TRUE);
         CleanupOverworldWindowsAndTilemaps();
-        sub_8014304(MAP_GROUP(TRADE_CENTER), MAP_NUM(TRADE_CENTER), 5, 8, 3);
+        // sub_8014304(MAP_GROUP(TRADE_CENTER), MAP_NUM(TRADE_CENTER), 5, 8, 3);
         SetMainCallback2(sub_8014384);
         break;
     case 15:
         sub_80143E4(gBlockSendBuffer, TRUE);
         CleanupOverworldWindowsAndTilemaps();
-        sub_8014304(MAP_GROUP(RECORD_CORNER), MAP_NUM(RECORD_CORNER), 8, 9, 4);
+        // sub_8014304(MAP_GROUP(RECORD_CORNER), MAP_NUM(RECORD_CORNER), 8, 9, 4);
         SetMainCallback2(sub_8014384);
         break;
     case 68:
@@ -5164,9 +5164,10 @@ bool32 sub_8017FD8(struct UnkStruct_URoom *arg0)
 
 bool32 InUnionRoom(void)
 {
-    return    gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(UNION_ROOM)
-           && gSaveBlock1Ptr->location.mapNum == MAP_NUM(UNION_ROOM)
-           ? TRUE : FALSE;
+    return FALSE;
+    // return    gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(UNION_ROOM)
+    //        && gSaveBlock1Ptr->location.mapNum == MAP_NUM(UNION_ROOM)
+    //        ? TRUE : FALSE;
 }
 
 bool32 sub_8018024(void)

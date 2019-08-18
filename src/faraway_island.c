@@ -306,38 +306,38 @@ static u8 sub_81D4890(u8 ignoredDir)
 
 void UpdateFarawayIslandStepCounter(void)
 {
-    u16 steps = VarGet(VAR_FARAWAY_ISLAND_STEP_COUNTER);
-    if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(FARAWAY_ISLAND_INTERIOR)
-     && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(FARAWAY_ISLAND_INTERIOR))
-    {
-        steps++;
-        if (steps >= 9999)
-            VarSet(VAR_FARAWAY_ISLAND_STEP_COUNTER, 0);
-        else
-            VarSet(VAR_FARAWAY_ISLAND_STEP_COUNTER, steps);
-    }
+    // u16 steps = VarGet(VAR_FARAWAY_ISLAND_STEP_COUNTER);
+    // if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(FARAWAY_ISLAND_INTERIOR)
+    //  && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(FARAWAY_ISLAND_INTERIOR))
+    // {
+    //     steps++;
+    //     if (steps >= 9999)
+    //         VarSet(VAR_FARAWAY_ISLAND_STEP_COUNTER, 0);
+    //     else
+    //         VarSet(VAR_FARAWAY_ISLAND_STEP_COUNTER, steps);
+    // }
 }
 
 bool8 EventObjectIsFarawayIslandMew(struct EventObject *eventObject)
 {
-    if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(FARAWAY_ISLAND_INTERIOR)
-     && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(FARAWAY_ISLAND_INTERIOR))
-    {
-        if (eventObject->graphicsId == EVENT_OBJ_GFX_MEW)
-            return TRUE;
-    }
+    // if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(FARAWAY_ISLAND_INTERIOR)
+    //  && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(FARAWAY_ISLAND_INTERIOR))
+    // {
+    //     if (eventObject->graphicsId == EVENT_OBJ_GFX_MEW)
+    //         return TRUE;
+    // }
 
     return FALSE;
 }
 
 bool8 IsMewPlayingHideAndSeek(void)
 {
-    if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(FARAWAY_ISLAND_INTERIOR)
-     && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(FARAWAY_ISLAND_INTERIOR))
-    {
-        if (FlagGet(FLAG_CAUGHT_MEW) != TRUE && FlagGet(FLAG_HIDE_MEW) != TRUE)
-            return TRUE;
-    }
+    // if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(FARAWAY_ISLAND_INTERIOR)
+    //  && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(FARAWAY_ISLAND_INTERIOR))
+    // {
+    //     if (FlagGet(FLAG_CAUGHT_MEW) != TRUE && FlagGet(FLAG_HIDE_MEW) != TRUE)
+    //         return TRUE;
+    // }
 
     return FALSE;
 }

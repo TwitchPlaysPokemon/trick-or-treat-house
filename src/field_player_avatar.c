@@ -775,35 +775,35 @@ static void check_acro_bike_metatile(s16 unused1, s16 unused2, u8 c, u8 *d)
 
 bool8 IsPlayerCollidingWithFarawayIslandMew(u8 direction)
 {
-    u8 mewObjectId;
-    struct EventObject *object;
-    s16 playerX;
-    s16 playerY;
-    s16 mewPrevX;
+    // u8 mewObjectId;
+    // struct EventObject *object;
+    // s16 playerX;
+    // s16 playerY;
+    // s16 mewPrevX;
 
-    object = &gEventObjects[gPlayerAvatar.eventObjectId];
-    playerX = object->currentCoords.x;
-    playerY = object->currentCoords.y;
+    // object = &gEventObjects[gPlayerAvatar.eventObjectId];
+    // playerX = object->currentCoords.x;
+    // playerY = object->currentCoords.y;
 
-    MoveCoords(direction, &playerX, &playerY);
-    mewObjectId = GetEventObjectIdByLocalIdAndMap(1, MAP_NUM(FARAWAY_ISLAND_INTERIOR), MAP_GROUP(FARAWAY_ISLAND_INTERIOR));
-    if (mewObjectId == EVENT_OBJECTS_COUNT)
-        return FALSE;
+    // MoveCoords(direction, &playerX, &playerY);
+    // mewObjectId = GetEventObjectIdByLocalIdAndMap(1, MAP_NUM(FARAWAY_ISLAND_INTERIOR), MAP_GROUP(FARAWAY_ISLAND_INTERIOR));
+    // if (mewObjectId == EVENT_OBJECTS_COUNT)
+    //     return FALSE;
 
-    object = &gEventObjects[mewObjectId];
-    mewPrevX = object->previousCoords.x;
+    // object = &gEventObjects[mewObjectId];
+    // mewPrevX = object->previousCoords.x;
 
-    if (mewPrevX == playerX)
-    {
-        if (object->previousCoords.y != playerY
-            || object->currentCoords.x != mewPrevX
-            || object->currentCoords.y != object->previousCoords.y)
-        {
-            if (object->previousCoords.x == playerX &&
-                object->previousCoords.y == playerY)
-                return TRUE;
-        }
-    }
+    // if (mewPrevX == playerX)
+    // {
+    //     if (object->previousCoords.y != playerY
+    //         || object->currentCoords.x != mewPrevX
+    //         || object->currentCoords.y != object->previousCoords.y)
+    //     {
+    //         if (object->previousCoords.x == playerX &&
+    //             object->previousCoords.y == playerY)
+    //             return TRUE;
+    //     }
+    // }
     return FALSE;
 }
 

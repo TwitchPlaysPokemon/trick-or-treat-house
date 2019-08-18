@@ -271,16 +271,16 @@ u16 GetRecordedCyclingRoadResults(void) {
 }
 
 void UpdateCyclingRoadState(void) {
-    if (gLastUsedWarp.mapNum == MAP_NUM(ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE) && gLastUsedWarp.mapGroup == MAP_GROUP(ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE))
-    {
-        return;
-    }
+    // if (gLastUsedWarp.mapNum == MAP_NUM(ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE) && gLastUsedWarp.mapGroup == MAP_GROUP(ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE))
+    // {
+    //     return;
+    // }
 
-    if (VarGet(VAR_CYCLING_CHALLENGE_STATE) == 2 || VarGet(VAR_CYCLING_CHALLENGE_STATE) == 3)
-    {
-        VarSet(VAR_CYCLING_CHALLENGE_STATE, 0);
-        Overworld_SetSavedMusic(MUS_DUMMY);
-    }
+    // if (VarGet(VAR_CYCLING_CHALLENGE_STATE) == 2 || VarGet(VAR_CYCLING_CHALLENGE_STATE) == 3)
+    // {
+    //     VarSet(VAR_CYCLING_CHALLENGE_STATE, 0);
+    //     Overworld_SetSavedMusic(MUS_DUMMY);
+    // }
 }
 
 void SetSSTidalFlag(void)
@@ -955,14 +955,14 @@ u8 GetBattleOutcome(void)
 
 void CableCarWarp(void)
 {
-    if (gSpecialVar_0x8004 != 0)
-    {
-        SetWarpDestination(MAP_GROUP(ROUTE112_CABLE_CAR_STATION), MAP_NUM(ROUTE112_CABLE_CAR_STATION), -1, 6, 4);
-    }
-    else
-    {
-        SetWarpDestination(MAP_GROUP(MT_CHIMNEY_CABLE_CAR_STATION), MAP_NUM(MT_CHIMNEY_CABLE_CAR_STATION), -1, 6, 4);
-    }
+    // if (gSpecialVar_0x8004 != 0)
+    // {
+    //     SetWarpDestination(MAP_GROUP(ROUTE112_CABLE_CAR_STATION), MAP_NUM(ROUTE112_CABLE_CAR_STATION), -1, 6, 4);
+    // }
+    // else
+    // {
+    //     SetWarpDestination(MAP_GROUP(MT_CHIMNEY_CABLE_CAR_STATION), MAP_NUM(MT_CHIMNEY_CABLE_CAR_STATION), -1, 6, 4);
+    // }
 }
 
 void SetFlagInVar(void)
@@ -1418,20 +1418,20 @@ bool8 Special_AreLeadMonEVsMaxedOut(void)
 
 u8 TryUpdateRusturfTunnelState(void)
 {
-    if (!FlagGet(FLAG_RUSTURF_TUNNEL_OPENED) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(RUSTURF_TUNNEL) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(RUSTURF_TUNNEL))
-    {
-        if (FlagGet(FLAG_HIDE_RUSTURF_TUNNEL_ROCK_1))
-        {
-            VarSet(VAR_RUSTURF_TUNNEL_STATE, 4);
-            return TRUE;
-        }
-        else if (FlagGet(FLAG_HIDE_RUSTURF_TUNNEL_ROCK_2))
-        {
-            VarSet(VAR_RUSTURF_TUNNEL_STATE, 5);
-            return TRUE;
-        }
-    }
-    return FALSE;
+    // if (!FlagGet(FLAG_RUSTURF_TUNNEL_OPENED) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(RUSTURF_TUNNEL) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(RUSTURF_TUNNEL))
+    // {
+    //     if (FlagGet(FLAG_HIDE_RUSTURF_TUNNEL_ROCK_1))
+    //     {
+    //         VarSet(VAR_RUSTURF_TUNNEL_STATE, 4);
+    //         return TRUE;
+    //     }
+    //     else if (FlagGet(FLAG_HIDE_RUSTURF_TUNNEL_ROCK_2))
+    //     {
+    //         VarSet(VAR_RUSTURF_TUNNEL_STATE, 5);
+    //         return TRUE;
+    //     }
+    // }
+    // return FALSE;
 }
 
 void SetShoalItemFlag(u16 v0)
@@ -1680,10 +1680,10 @@ bool8 sub_813990C(void)
 
 bool8 InMultiBattleRoom(void)
 {
-    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(BATTLE_FRONTIER_BATTLE_TOWER_MULTI_BATTLE_ROOM)
-        && gSaveBlock1Ptr->location.mapNum == MAP_NUM(BATTLE_FRONTIER_BATTLE_TOWER_MULTI_BATTLE_ROOM) &&
-        VarGet(VAR_FRONTIER_BATTLE_MODE) == FRONTIER_MODE_MULTIS)
-        return TRUE;
+    // if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(BATTLE_FRONTIER_BATTLE_TOWER_MULTI_BATTLE_ROOM)
+    //     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(BATTLE_FRONTIER_BATTLE_TOWER_MULTI_BATTLE_ROOM) &&
+    //     VarGet(VAR_FRONTIER_BATTLE_MODE) == FRONTIER_MODE_MULTIS)
+    //     return TRUE;
     return FALSE;
 }
 
@@ -1762,32 +1762,32 @@ static const u16 sElevatorWindowTiles_Descending[][3] =
 
 void SetDepartmentStoreFloorVar(void)
 {
-    u8 deptStoreFloor;
-    switch (gSaveBlock1Ptr->dynamicWarp.mapNum)
-    {
-        case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_1F):
-            deptStoreFloor = 4;
-            break;
-        case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_2F):
-            deptStoreFloor = 5;
-            break;
-        case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_3F):
-            deptStoreFloor = 6;
-            break;
-        case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_4F):
-            deptStoreFloor = 7;
-            break;
-        case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_5F):
-            deptStoreFloor = 8;
-            break;
-        case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_ROOFTOP):
-            deptStoreFloor = 15;
-            break;
-        default:
-            deptStoreFloor = 4;
-            break;
-    }
-    VarSet(VAR_DEPT_STORE_FLOOR, deptStoreFloor);
+    // u8 deptStoreFloor;
+    // switch (gSaveBlock1Ptr->dynamicWarp.mapNum)
+    // {
+    //     case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_1F):
+    //         deptStoreFloor = 4;
+    //         break;
+    //     case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_2F):
+    //         deptStoreFloor = 5;
+    //         break;
+    //     case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_3F):
+    //         deptStoreFloor = 6;
+    //         break;
+    //     case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_4F):
+    //         deptStoreFloor = 7;
+    //         break;
+    //     case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_5F):
+    //         deptStoreFloor = 8;
+    //         break;
+    //     case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_ROOFTOP):
+    //         deptStoreFloor = 15;
+    //         break;
+    //     default:
+    //         deptStoreFloor = 4;
+    //         break;
+    // }
+    // VarSet(VAR_DEPT_STORE_FLOOR, deptStoreFloor);
 }
 
 u16 sub_81399F4(void)
@@ -1795,32 +1795,32 @@ u16 sub_81399F4(void)
     gUnknown_0203AB60 = 0;
     gUnknown_0203AB62 = 0;
 
-    if (gSaveBlock1Ptr->dynamicWarp.mapGroup == MAP_GROUP(LILYCOVE_CITY_DEPARTMENT_STORE_1F))
-    {
-        switch (gSaveBlock1Ptr->dynamicWarp.mapNum)
-        {
-            case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_5F):
-                gUnknown_0203AB60 = 0;
-                gUnknown_0203AB62 = 0;
-                break;
-            case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_4F):
-                gUnknown_0203AB60 = 0;
-                gUnknown_0203AB62 = 1;
-                break;
-            case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_3F):
-                gUnknown_0203AB60 = 0;
-                gUnknown_0203AB62 = 2;
-                break;
-            case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_2F):
-                gUnknown_0203AB60 = 0;
-                gUnknown_0203AB62 = 3;
-                break;
-            case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_1F):
-                gUnknown_0203AB60 = 0;
-                gUnknown_0203AB62 = 4;
-                break;
-        }
-    }
+    // if (gSaveBlock1Ptr->dynamicWarp.mapGroup == MAP_GROUP(LILYCOVE_CITY_DEPARTMENT_STORE_1F))
+    // {
+    //     switch (gSaveBlock1Ptr->dynamicWarp.mapNum)
+    //     {
+    //         case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_5F):
+    //             gUnknown_0203AB60 = 0;
+    //             gUnknown_0203AB62 = 0;
+    //             break;
+    //         case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_4F):
+    //             gUnknown_0203AB60 = 0;
+    //             gUnknown_0203AB62 = 1;
+    //             break;
+    //         case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_3F):
+    //             gUnknown_0203AB60 = 0;
+    //             gUnknown_0203AB62 = 2;
+    //             break;
+    //         case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_2F):
+    //             gUnknown_0203AB60 = 0;
+    //             gUnknown_0203AB62 = 3;
+    //             break;
+    //         case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_1F):
+    //             gUnknown_0203AB60 = 0;
+    //             gUnknown_0203AB62 = 4;
+    //             break;
+    //     }
+    // }
 
     return gUnknown_0203AB62;
 }
@@ -2011,10 +2011,10 @@ bool8 warp0_in_pokecenter(void)
 
 bool32 sub_8139ED0(void)
 {
-    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(TRAINER_HILL_ENTRANCE) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(TRAINER_HILL_ENTRANCE))
-    {
-        return FALSE;
-    }
+    // if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(TRAINER_HILL_ENTRANCE) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(TRAINER_HILL_ENTRANCE))
+    // {
+    //     return FALSE;
+    // }
     return TRUE;
 }
 
@@ -3384,19 +3384,19 @@ static void WaitForDeoxysRockMovement(u8 taskId)
 
 void IncrementBirthIslandRockStepCount(void)
 {
-    u16 var = VarGet(VAR_DEOXYS_ROCK_STEP_COUNT);
-    if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(BIRTH_ISLAND_EXTERIOR) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(BIRTH_ISLAND_EXTERIOR))
-    {
-        var++;
-        if (var > 99)
-        {
-            VarSet(VAR_DEOXYS_ROCK_STEP_COUNT, 0);
-        }
-        else
-        {
-            VarSet(VAR_DEOXYS_ROCK_STEP_COUNT, var);
-        }
-    }
+    // u16 var = VarGet(VAR_DEOXYS_ROCK_STEP_COUNT);
+    // if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(BIRTH_ISLAND_EXTERIOR) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(BIRTH_ISLAND_EXTERIOR))
+    // {
+    //     var++;
+    //     if (var > 99)
+    //     {
+    //         VarSet(VAR_DEOXYS_ROCK_STEP_COUNT, 0);
+    //     }
+    //     else
+    //     {
+    //         VarSet(VAR_DEOXYS_ROCK_STEP_COUNT, var);
+    //     }
+    // }
 }
 
 void sub_813B1D0(void)
@@ -3521,84 +3521,84 @@ bool32 GetUnusualWeatherMapNameAndType(void)
 
 bool8 UnusualWeatherHasExpired(void)
 {
-    // Duplicate array.
-    static const u8 sUnusualWeatherMapNumbers_2[] = {
-        MAP_NUM(ROUTE114),
-        MAP_NUM(ROUTE114),
-        MAP_NUM(ROUTE115),
-        MAP_NUM(ROUTE115),
-        MAP_NUM(ROUTE116),
-        MAP_NUM(ROUTE116),
-        MAP_NUM(ROUTE118),
-        MAP_NUM(ROUTE118),
-        MAP_NUM(ROUTE105),
-        MAP_NUM(ROUTE105),
-        MAP_NUM(ROUTE125),
-        MAP_NUM(ROUTE125),
-        MAP_NUM(ROUTE127),
-        MAP_NUM(ROUTE127),
-        MAP_NUM(ROUTE129),
-        MAP_NUM(ROUTE129)
-    };
+    // // Duplicate array.
+    // static const u8 sUnusualWeatherMapNumbers_2[] = {
+    //     MAP_NUM(ROUTE114),
+    //     MAP_NUM(ROUTE114),
+    //     MAP_NUM(ROUTE115),
+    //     MAP_NUM(ROUTE115),
+    //     MAP_NUM(ROUTE116),
+    //     MAP_NUM(ROUTE116),
+    //     MAP_NUM(ROUTE118),
+    //     MAP_NUM(ROUTE118),
+    //     MAP_NUM(ROUTE105),
+    //     MAP_NUM(ROUTE105),
+    //     MAP_NUM(ROUTE125),
+    //     MAP_NUM(ROUTE125),
+    //     MAP_NUM(ROUTE127),
+    //     MAP_NUM(ROUTE127),
+    //     MAP_NUM(ROUTE129),
+    //     MAP_NUM(ROUTE129)
+    // };
 
-    u16 steps = VarGet(VAR_UNUSUAL_WEATHER_STEP_COUNTER);
-    u16 unusualWeather = VarGet(VAR_UNUSUAL_WEATHER_LOCATION);
+    // u16 steps = VarGet(VAR_UNUSUAL_WEATHER_STEP_COUNTER);
+    // u16 unusualWeather = VarGet(VAR_UNUSUAL_WEATHER_LOCATION);
 
-    if (unusualWeather == UNUSUAL_WEATHER_NONE)
-    {
+    // if (unusualWeather == UNUSUAL_WEATHER_NONE)
+    // {
         return FALSE;
-    }
+    // }
 
-    if (++steps > 999)
-    {
-        VarSet(VAR_UNUSUAL_WEATHER_STEP_COUNTER, 0);
-        if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(UNDERWATER_MARINE_CAVE))
-        {
-            switch (gSaveBlock1Ptr->location.mapNum)
-            {
-                case MAP_NUM(UNDERWATER_MARINE_CAVE):
-                case MAP_NUM(MARINE_CAVE_ENTRANCE):
-                case MAP_NUM(MARINE_CAVE_END):
-                case MAP_NUM(TERRA_CAVE_ENTRANCE):
-                case MAP_NUM(TERRA_CAVE_END):
-                    VarSet(VAR_SHOULD_END_UNUSUAL_WEATHER, 1);
-                    return FALSE;
-                default:
-                    break;
-            }
-        }
+    // if (++steps > 999)
+    // {
+    //     VarSet(VAR_UNUSUAL_WEATHER_STEP_COUNTER, 0);
+    //     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(UNDERWATER_MARINE_CAVE))
+    //     {
+    //         switch (gSaveBlock1Ptr->location.mapNum)
+    //         {
+    //             case MAP_NUM(UNDERWATER_MARINE_CAVE):
+    //             case MAP_NUM(MARINE_CAVE_ENTRANCE):
+    //             case MAP_NUM(MARINE_CAVE_END):
+    //             case MAP_NUM(TERRA_CAVE_ENTRANCE):
+    //             case MAP_NUM(TERRA_CAVE_END):
+    //                 VarSet(VAR_SHOULD_END_UNUSUAL_WEATHER, 1);
+    //                 return FALSE;
+    //             default:
+    //                 break;
+    //         }
+    //     }
 
-        if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(UNDERWATER3))
-        {
-            switch (gSaveBlock1Ptr->location.mapNum)
-            {
-                case MAP_NUM(UNDERWATER3):
-                case MAP_NUM(UNDERWATER5):
-                case MAP_NUM(UNDERWATER6):
-                case MAP_NUM(UNDERWATER7):
-                    VarSet(VAR_SHOULD_END_UNUSUAL_WEATHER, 1);
-                    return FALSE;
-                default:
-                    break;
-            }
-        }
+    //     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(UNDERWATER3))
+    //     {
+    //         switch (gSaveBlock1Ptr->location.mapNum)
+    //         {
+    //             case MAP_NUM(UNDERWATER3):
+    //             case MAP_NUM(UNDERWATER5):
+    //             case MAP_NUM(UNDERWATER6):
+    //             case MAP_NUM(UNDERWATER7):
+    //                 VarSet(VAR_SHOULD_END_UNUSUAL_WEATHER, 1);
+    //                 return FALSE;
+    //             default:
+    //                 break;
+    //         }
+    //     }
 
-        if (gSaveBlock1Ptr->location.mapNum == sUnusualWeatherMapNumbers_2[unusualWeather - 1] &&
-            gSaveBlock1Ptr->location.mapGroup == 0)
-        {
-            return TRUE;
-        }
-        else
-        {
-            VarSet(VAR_UNUSUAL_WEATHER_LOCATION, UNUSUAL_WEATHER_NONE);
-            return FALSE;
-        }
-    }
-    else
-    {
-        VarSet(VAR_UNUSUAL_WEATHER_STEP_COUNTER, steps);
-        return FALSE;
-    }
+    //     if (gSaveBlock1Ptr->location.mapNum == sUnusualWeatherMapNumbers_2[unusualWeather - 1] &&
+    //         gSaveBlock1Ptr->location.mapGroup == 0)
+    //     {
+    //         return TRUE;
+    //     }
+    //     else
+    //     {
+    //         VarSet(VAR_UNUSUAL_WEATHER_LOCATION, UNUSUAL_WEATHER_NONE);
+    //         return FALSE;
+    //     }
+    // }
+    // else
+    // {
+    //     VarSet(VAR_UNUSUAL_WEATHER_STEP_COUNTER, steps);
+    //     return FALSE;
+    // }
 }
 
 void Unused_SetWeatherSunny(void)
@@ -3887,27 +3887,27 @@ void sub_813B9A0(void)
 bool8 sub_813B9C0(void)
 {
     static const u16 gUnknown_085B3444[] = {
-        MAP_OLDALE_TOWN_POKEMON_CENTER_1F,
-        MAP_DEWFORD_TOWN_POKEMON_CENTER_1F,
-        MAP_LAVARIDGE_TOWN_POKEMON_CENTER_1F,
-        MAP_FALLARBOR_TOWN_POKEMON_CENTER_1F,
-        MAP_VERDANTURF_TOWN_POKEMON_CENTER_1F,
-        MAP_PACIFIDLOG_TOWN_POKEMON_CENTER_1F,
-        MAP_PETALBURG_CITY_POKEMON_CENTER_1F,
-        MAP_SLATEPORT_CITY_POKEMON_CENTER_1F,
-        MAP_MAUVILLE_CITY_POKEMON_CENTER_1F,
-        MAP_RUSTBORO_CITY_POKEMON_CENTER_1F,
-        MAP_FORTREE_CITY_POKEMON_CENTER_1F,
-        MAP_LILYCOVE_CITY_POKEMON_CENTER_1F,
-        MAP_MOSSDEEP_CITY_POKEMON_CENTER_1F,
-        MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_1F,
-        MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F,
-        MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F,
-        MAP_BATTLE_FRONTIER_POKEMON_CENTER_1F,
-        MAP_SINGLE_BATTLE_COLOSSEUM,
-        MAP_TRADE_CENTER,
-        MAP_RECORD_CORNER,
-        MAP_DOUBLE_BATTLE_COLOSSEUM,
+        // MAP_OLDALE_TOWN_POKEMON_CENTER_1F,
+        // MAP_DEWFORD_TOWN_POKEMON_CENTER_1F,
+        // MAP_LAVARIDGE_TOWN_POKEMON_CENTER_1F,
+        // MAP_FALLARBOR_TOWN_POKEMON_CENTER_1F,
+        // MAP_VERDANTURF_TOWN_POKEMON_CENTER_1F,
+        // MAP_PACIFIDLOG_TOWN_POKEMON_CENTER_1F,
+        // MAP_PETALBURG_CITY_POKEMON_CENTER_1F,
+        // MAP_SLATEPORT_CITY_POKEMON_CENTER_1F,
+        // MAP_MAUVILLE_CITY_POKEMON_CENTER_1F,
+        // MAP_RUSTBORO_CITY_POKEMON_CENTER_1F,
+        // MAP_FORTREE_CITY_POKEMON_CENTER_1F,
+        // MAP_LILYCOVE_CITY_POKEMON_CENTER_1F,
+        // MAP_MOSSDEEP_CITY_POKEMON_CENTER_1F,
+        // MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_1F,
+        // MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F,
+        // MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F,
+        // MAP_BATTLE_FRONTIER_POKEMON_CENTER_1F,
+        // MAP_SINGLE_BATTLE_COLOSSEUM,
+        // MAP_TRADE_CENTER,
+        // MAP_RECORD_CORNER,
+        // MAP_DOUBLE_BATTLE_COLOSSEUM,
         0xFFFF
     };
 
