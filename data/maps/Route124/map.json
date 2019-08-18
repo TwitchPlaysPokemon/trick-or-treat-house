@@ -32,11 +32,6 @@
       "direction": "right",
       "offset": 40,
       "map": "MAP_MOSSDEEP_CITY"
-    },
-    {
-      "direction": "dive",
-      "offset": 0,
-      "map": "MAP_UNDERWATER1"
     }
   ],
   "object_events": [
@@ -198,13 +193,6 @@
     }
   ],
   "warp_events": [
-    {
-      "x": 70,
-      "y": 48,
-      "elevation": 3,
-      "dest_map": "MAP_ROUTE124_DIVING_TREASURE_HUNTERS_HOUSE",
-      "dest_warp_id": 0
-    }
   ],
   "coord_events": [],
   "bg_events": [

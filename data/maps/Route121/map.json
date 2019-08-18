@@ -409,13 +409,6 @@
     }
   ],
   "warp_events": [
-    {
-      "x": 37,
-      "y": 5,
-      "elevation": 0,
-      "dest_map": "MAP_ROUTE121_SAFARI_ZONE_ENTRANCE",
-      "dest_warp_id": 2
-    }
   ],
   "coord_events": [
     {

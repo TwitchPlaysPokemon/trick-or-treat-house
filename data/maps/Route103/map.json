@@ -287,13 +287,6 @@
     }
   ],
   "warp_events": [
-    {
-      "x": 45,
-      "y": 6,
-      "elevation": 0,
-      "dest_map": "MAP_ALTERING_CAVE",
-      "dest_warp_id": 0
-    }
   ],
   "coord_events": [],
   "bg_events": [

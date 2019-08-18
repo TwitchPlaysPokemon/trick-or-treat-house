@@ -1,6 +1,0 @@
-TrainerHill_1F_MapScripts:: @ 8268F71
-	map_script MAP_SCRIPT_ON_RESUME, TrainerHill_1F_MapScript1_2C8336
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, TrainerHill_1F_MapScript2_2C8372
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrainerHill_1F_MapScript2_2C8381
-	.byte 0
-

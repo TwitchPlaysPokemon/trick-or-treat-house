@@ -68,13 +68,6 @@
 #define MAP_ROUTE132         (47 | (2 << 8))
 #define MAP_ROUTE133         (48 | (2 << 8))
 #define MAP_ROUTE134         (49 | (2 << 8))
-#define MAP_UNDERWATER1      (50 | (2 << 8))
-#define MAP_UNDERWATER2      (51 | (2 << 8))
-#define MAP_UNDERWATER3      (52 | (2 << 8))
-#define MAP_UNDERWATER4      (53 | (2 << 8))
-#define MAP_UNDERWATER5      (54 | (2 << 8))
-#define MAP_UNDERWATER6      (55 | (2 << 8))
-#define MAP_UNDERWATER7      (56 | (2 << 8))
 
 // Map Group 3
 #define MAP_SECRET_BASE_RED_CAVE1    (0 | (3 << 8))
