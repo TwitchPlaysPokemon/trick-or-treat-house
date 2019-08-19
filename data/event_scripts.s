@@ -70,6 +70,7 @@ gStdScripts:: @ 81DC2A0
 	.4byte Std_10
 gStdScripts_End:: @ 81DC2CC
 
+	.include "data/maps/TrickHouseExt/scripts.inc"
 	.include "data/maps/PetalburgCity/scripts.inc"
 	.include "data/maps/SlateportCity/scripts.inc"
 	.include "data/maps/MauvilleCity/scripts.inc"
@@ -120,302 +121,6 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/Route132/scripts.inc"
 	.include "data/maps/Route133/scripts.inc"
 	.include "data/maps/Route134/scripts.inc"
-	.include "data/maps/Underwater1/scripts.inc"
-	.include "data/maps/Underwater2/scripts.inc"
-	.include "data/maps/Underwater3/scripts.inc"
-	.include "data/maps/Underwater4/scripts.inc"
-	.include "data/maps/Underwater5/scripts.inc"
-	.include "data/maps/Underwater6/scripts.inc"
-	.include "data/maps/Underwater7/scripts.inc"
-	.include "data/maps/LittlerootTown_BrendansHouse_1F/scripts.inc"
-	.include "data/maps/LittlerootTown_BrendansHouse_2F/scripts.inc"
-	.include "data/maps/LittlerootTown_MaysHouse_1F/scripts.inc"
-	.include "data/maps/LittlerootTown_MaysHouse_2F/scripts.inc"
-	.include "data/maps/LittlerootTown_ProfessorBirchsLab/scripts.inc"
-	.include "data/maps/OldaleTown_House1/scripts.inc"
-	.include "data/maps/OldaleTown_House2/scripts.inc"
-	.include "data/maps/OldaleTown_PokemonCenter_1F/scripts.inc"
-	.include "data/maps/OldaleTown_PokemonCenter_2F/scripts.inc"
-	.include "data/maps/OldaleTown_Mart/scripts.inc"
-	.include "data/maps/DewfordTown_House1/scripts.inc"
-	.include "data/maps/DewfordTown_PokemonCenter_1F/scripts.inc"
-	.include "data/maps/DewfordTown_PokemonCenter_2F/scripts.inc"
-	.include "data/maps/DewfordTown_Gym/scripts.inc"
-	.include "data/maps/DewfordTown_Hall/scripts.inc"
-	.include "data/maps/DewfordTown_House2/scripts.inc"
-	.include "data/maps/LavaridgeTown_HerbShop/scripts.inc"
-	.include "data/maps/LavaridgeTown_Gym_1F/scripts.inc"
-	.include "data/maps/LavaridgeTown_Gym_B1F/scripts.inc"
-	.include "data/maps/LavaridgeTown_House/scripts.inc"
-	.include "data/maps/LavaridgeTown_Mart/scripts.inc"
-	.include "data/maps/LavaridgeTown_PokemonCenter_1F/scripts.inc"
-	.include "data/maps/LavaridgeTown_PokemonCenter_2F/scripts.inc"
-	.include "data/maps/FallarborTown_Mart/scripts.inc"
-	.include "data/maps/FallarborTown_BattleTentLobby/scripts.inc"
-	.include "data/maps/FallarborTown_BattleTentCorridor/scripts.inc"
-	.include "data/maps/FallarborTown_BattleTentBattleRoom/scripts.inc"
-	.include "data/maps/FallarborTown_PokemonCenter_1F/scripts.inc"
-	.include "data/maps/FallarborTown_PokemonCenter_2F/scripts.inc"
-	.include "data/maps/FallarborTown_House1/scripts.inc"
-	.include "data/maps/FallarborTown_House2/scripts.inc"
-	.include "data/maps/VerdanturfTown_BattleTentLobby/scripts.inc"
-	.include "data/maps/VerdanturfTown_BattleTentCorridor/scripts.inc"
-	.include "data/maps/VerdanturfTown_BattleTentBattleRoom/scripts.inc"
-	.include "data/maps/VerdanturfTown_Mart/scripts.inc"
-	.include "data/maps/VerdanturfTown_PokemonCenter_1F/scripts.inc"
-	.include "data/maps/VerdanturfTown_PokemonCenter_2F/scripts.inc"
-	.include "data/maps/VerdanturfTown_WandasHouse/scripts.inc"
-	.include "data/maps/VerdanturfTown_FriendshipRatersHouse/scripts.inc"
-	.include "data/maps/VerdanturfTown_House/scripts.inc"
-	.include "data/maps/PacifidlogTown_PokemonCenter_1F/scripts.inc"
-	.include "data/maps/PacifidlogTown_PokemonCenter_2F/scripts.inc"
-	.include "data/maps/PacifidlogTown_House1/scripts.inc"
-	.include "data/maps/PacifidlogTown_House2/scripts.inc"
-	.include "data/maps/PacifidlogTown_House3/scripts.inc"
-	.include "data/maps/PacifidlogTown_House4/scripts.inc"
-	.include "data/maps/PacifidlogTown_House5/scripts.inc"
-	.include "data/maps/PetalburgCity_WallysHouse/scripts.inc"
-	.include "data/maps/PetalburgCity_Gym/scripts.inc"
-	.include "data/maps/PetalburgCity_House1/scripts.inc"
-	.include "data/maps/PetalburgCity_House2/scripts.inc"
-	.include "data/maps/PetalburgCity_PokemonCenter_1F/scripts.inc"
-	.include "data/maps/PetalburgCity_PokemonCenter_2F/scripts.inc"
-	.include "data/maps/PetalburgCity_Mart/scripts.inc"
-	.include "data/maps/SlateportCity_SternsShipyard_1F/scripts.inc"
-	.include "data/maps/SlateportCity_SternsShipyard_2F/scripts.inc"
-	.include "data/maps/SlateportCity_BattleTentLobby/scripts.inc"
-	.include "data/maps/SlateportCity_BattleTentCorridor/scripts.inc"
-	.include "data/maps/SlateportCity_BattleTentBattleRoom/scripts.inc"
-	.include "data/maps/SlateportCity_House1/scripts.inc"
-	.include "data/maps/SlateportCity_PokemonFanClub/scripts.inc"
-	.include "data/maps/SlateportCity_OceanicMuseum_1F/scripts.inc"
-	.include "data/maps/SlateportCity_OceanicMuseum_2F/scripts.inc"
-	.include "data/maps/SlateportCity_Harbor/scripts.inc"
-	.include "data/maps/SlateportCity_House2/scripts.inc"
-	.include "data/maps/SlateportCity_PokemonCenter_1F/scripts.inc"
-	.include "data/maps/SlateportCity_PokemonCenter_2F/scripts.inc"
-	.include "data/maps/SlateportCity_Mart/scripts.inc"
-	.include "data/maps/MauvilleCity_Gym/scripts.inc"
-	.include "data/maps/MauvilleCity_BikeShop/scripts.inc"
-	.include "data/maps/MauvilleCity_House1/scripts.inc"
-	.include "data/maps/MauvilleCity_GameCorner/scripts.inc"
-	.include "data/maps/MauvilleCity_House2/scripts.inc"
-	.include "data/maps/MauvilleCity_PokemonCenter_1F/scripts.inc"
-	.include "data/maps/MauvilleCity_PokemonCenter_2F/scripts.inc"
-	.include "data/maps/MauvilleCity_Mart/scripts.inc"
-	.include "data/maps/RustboroCity_DevonCorp_1F/scripts.inc"
-	.include "data/maps/RustboroCity_DevonCorp_2F/scripts.inc"
-	.include "data/maps/RustboroCity_DevonCorp_3F/scripts.inc"
-	.include "data/maps/RustboroCity_Gym/scripts.inc"
-	.include "data/maps/RustboroCity_PokemonSchool/scripts.inc"
-	.include "data/maps/RustboroCity_PokemonCenter_1F/scripts.inc"
-	.include "data/maps/RustboroCity_PokemonCenter_2F/scripts.inc"
-	.include "data/maps/RustboroCity_Mart/scripts.inc"
-	.include "data/maps/RustboroCity_Flat1_1F/scripts.inc"
-	.include "data/maps/RustboroCity_Flat1_2F/scripts.inc"
-	.include "data/maps/RustboroCity_House1/scripts.inc"
-	.include "data/maps/RustboroCity_CuttersHouse/scripts.inc"
-	.include "data/maps/RustboroCity_House2/scripts.inc"
-	.include "data/maps/RustboroCity_Flat2_1F/scripts.inc"
-	.include "data/maps/RustboroCity_Flat2_2F/scripts.inc"
-	.include "data/maps/RustboroCity_Flat2_3F/scripts.inc"
-	.include "data/maps/RustboroCity_House3/scripts.inc"
-	.include "data/maps/FortreeCity_House1/scripts.inc"
-	.include "data/maps/FortreeCity_Gym/scripts.inc"
-	.include "data/maps/FortreeCity_PokemonCenter_1F/scripts.inc"
-	.include "data/maps/FortreeCity_PokemonCenter_2F/scripts.inc"
-	.include "data/maps/FortreeCity_Mart/scripts.inc"
-	.include "data/maps/FortreeCity_House2/scripts.inc"
-	.include "data/maps/FortreeCity_House3/scripts.inc"
-	.include "data/maps/FortreeCity_House4/scripts.inc"
-	.include "data/maps/FortreeCity_House5/scripts.inc"
-	.include "data/maps/FortreeCity_DecorationShop/scripts.inc"
-	.include "data/maps/LilycoveCity_CoveLilyMotel_1F/scripts.inc"
-	.include "data/maps/LilycoveCity_CoveLilyMotel_2F/scripts.inc"
-	.include "data/maps/LilycoveCity_LilycoveMuseum_1F/scripts.inc"
-	.include "data/maps/LilycoveCity_LilycoveMuseum_2F/scripts.inc"
-	.include "data/maps/LilycoveCity_ContestLobby/scripts.inc"
-	.include "data/maps/LilycoveCity_ContestHall/scripts.inc"
-	.include "data/maps/LilycoveCity_PokemonCenter_1F/scripts.inc"
-	.include "data/maps/LilycoveCity_PokemonCenter_2F/scripts.inc"
-	.include "data/maps/LilycoveCity_UnusedMart/scripts.inc"
-	.include "data/maps/LilycoveCity_PokemonTrainerFanClub/scripts.inc"
-	.include "data/maps/LilycoveCity_Harbor/scripts.inc"
-	.include "data/maps/LilycoveCity_MoveDeletersHouse/scripts.inc"
-	.include "data/maps/LilycoveCity_House1/scripts.inc"
-	.include "data/maps/LilycoveCity_House2/scripts.inc"
-	.include "data/maps/LilycoveCity_House3/scripts.inc"
-	.include "data/maps/LilycoveCity_House4/scripts.inc"
-	.include "data/maps/LilycoveCity_DepartmentStore_1F/scripts.inc"
-	.include "data/maps/LilycoveCity_DepartmentStore_2F/scripts.inc"
-	.include "data/maps/LilycoveCity_DepartmentStore_3F/scripts.inc"
-	.include "data/maps/LilycoveCity_DepartmentStore_4F/scripts.inc"
-	.include "data/maps/LilycoveCity_DepartmentStore_5F/scripts.inc"
-	.include "data/maps/LilycoveCity_DepartmentStoreRooftop/scripts.inc"
-	.include "data/maps/LilycoveCity_DepartmentStoreElevator/scripts.inc"
-	.include "data/maps/MossdeepCity_Gym/scripts.inc"
-	.include "data/maps/MossdeepCity_House1/scripts.inc"
-	.include "data/maps/MossdeepCity_House2/scripts.inc"
-	.include "data/maps/MossdeepCity_PokemonCenter_1F/scripts.inc"
-	.include "data/maps/MossdeepCity_PokemonCenter_2F/scripts.inc"
-	.include "data/maps/MossdeepCity_Mart/scripts.inc"
-	.include "data/maps/MossdeepCity_House3/scripts.inc"
-	.include "data/maps/MossdeepCity_StevensHouse/scripts.inc"
-	.include "data/maps/MossdeepCity_House4/scripts.inc"
-	.include "data/maps/MossdeepCity_SpaceCenter_1F/scripts.inc"
-	.include "data/maps/MossdeepCity_SpaceCenter_2F/scripts.inc"
-	.include "data/maps/MossdeepCity_GameCorner_1F/scripts.inc"
-	.include "data/maps/MossdeepCity_GameCorner_B1F/scripts.inc"
-	.include "data/maps/SootopolisCity_Gym_1F/scripts.inc"
-	.include "data/maps/SootopolisCity_Gym_B1F/scripts.inc"
-	.include "data/maps/SootopolisCity_PokemonCenter_1F/scripts.inc"
-	.include "data/maps/SootopolisCity_PokemonCenter_2F/scripts.inc"
-	.include "data/maps/SootopolisCity_Mart/scripts.inc"
-	.include "data/maps/SootopolisCity_House1/scripts.inc"
-	.include "data/maps/SootopolisCity_House2/scripts.inc"
-	.include "data/maps/SootopolisCity_House3/scripts.inc"
-	.include "data/maps/SootopolisCity_House4/scripts.inc"
-	.include "data/maps/SootopolisCity_House5/scripts.inc"
-	.include "data/maps/SootopolisCity_House6/scripts.inc"
-	.include "data/maps/SootopolisCity_House7/scripts.inc"
-	.include "data/maps/SootopolisCity_LotadAndSeedotHouse/scripts.inc"
-	.include "data/maps/SootopolisCity_MysteryEventsHouse_1F/scripts.inc"
-	.include "data/maps/SootopolisCity_MysteryEventsHouse_B1F/scripts.inc"
-	.include "data/maps/EverGrandeCity_SidneysRoom/scripts.inc"
-	.include "data/maps/EverGrandeCity_PhoebesRoom/scripts.inc"
-	.include "data/maps/EverGrandeCity_GlaciasRoom/scripts.inc"
-	.include "data/maps/EverGrandeCity_DrakesRoom/scripts.inc"
-	.include "data/maps/EverGrandeCity_ChampionsRoom/scripts.inc"
-	.include "data/maps/EverGrandeCity_Hall1/scripts.inc"
-	.include "data/maps/EverGrandeCity_Hall2/scripts.inc"
-	.include "data/maps/EverGrandeCity_Hall3/scripts.inc"
-	.include "data/maps/EverGrandeCity_Hall4/scripts.inc"
-	.include "data/maps/EverGrandeCity_Hall5/scripts.inc"
-	.include "data/maps/EverGrandeCity_PokemonLeague_1F/scripts.inc"
-	.include "data/maps/EverGrandeCity_HallOfFame/scripts.inc"
-	.include "data/maps/EverGrandeCity_PokemonCenter_1F/scripts.inc"
-	.include "data/maps/EverGrandeCity_PokemonCenter_2F/scripts.inc"
-	.include "data/maps/EverGrandeCity_PokemonLeague_2F/scripts.inc"
-	.include "data/maps/Route104_MrBrineysHouse/scripts.inc"
-	.include "data/maps/Route104_PrettyPetalFlowerShop/scripts.inc"
-	.include "data/maps/Route111_WinstrateFamilysHouse/scripts.inc"
-	.include "data/maps/Route111_OldLadysRestStop/scripts.inc"
-	.include "data/maps/Route112_CableCarStation/scripts.inc"
-	.include "data/maps/MtChimney_CableCarStation/scripts.inc"
-	.include "data/maps/Route114_FossilManiacsHouse/scripts.inc"
-	.include "data/maps/Route114_FossilManiacsTunnel/scripts.inc"
-	.include "data/maps/Route114_LanettesHouse/scripts.inc"
-	.include "data/maps/Route116_TunnelersRestHouse/scripts.inc"
-	.include "data/maps/Route117_PokemonDayCare/scripts.inc"
-	.include "data/maps/Route121_SafariZoneEntrance/scripts.inc"
-	.include "data/maps/MeteorFalls_1F_1R/scripts.inc"
-	.include "data/maps/MeteorFalls_1F_2R/scripts.inc"
-	.include "data/maps/MeteorFalls_B1F_1R/scripts.inc"
-	.include "data/maps/MeteorFalls_B1F_2R/scripts.inc"
-	.include "data/maps/RusturfTunnel/scripts.inc"
-	.include "data/maps/Underwater_SootopolisCity/scripts.inc"
-	.include "data/maps/DesertRuins/scripts.inc"
-	.include "data/maps/GraniteCave_1F/scripts.inc"
-	.include "data/maps/GraniteCave_B1F/scripts.inc"
-	.include "data/maps/GraniteCave_B2F/scripts.inc"
-	.include "data/maps/GraniteCave_StevensRoom/scripts.inc"
-	.include "data/maps/PetalburgWoods/scripts.inc"
-	.include "data/maps/MtChimney/scripts.inc"
-	.include "data/maps/JaggedPass/scripts.inc"
-	.include "data/maps/FieryPath/scripts.inc"
-	.include "data/maps/MtPyre_1F/scripts.inc"
-	.include "data/maps/MtPyre_2F/scripts.inc"
-	.include "data/maps/MtPyre_3F/scripts.inc"
-	.include "data/maps/MtPyre_4F/scripts.inc"
-	.include "data/maps/MtPyre_5F/scripts.inc"
-	.include "data/maps/MtPyre_6F/scripts.inc"
-	.include "data/maps/MtPyre_Exterior/scripts.inc"
-	.include "data/maps/MtPyre_Summit/scripts.inc"
-	.include "data/maps/AquaHideout_1F/scripts.inc"
-	.include "data/maps/AquaHideout_B1F/scripts.inc"
-	.include "data/maps/AquaHideout_B2F/scripts.inc"
-	.include "data/maps/Underwater_SeafloorCavern/scripts.inc"
-	.include "data/maps/SeafloorCavern_Entrance/scripts.inc"
-	.include "data/maps/SeafloorCavern_Room1/scripts.inc"
-	.include "data/maps/SeafloorCavern_Room2/scripts.inc"
-	.include "data/maps/SeafloorCavern_Room3/scripts.inc"
-	.include "data/maps/SeafloorCavern_Room4/scripts.inc"
-	.include "data/maps/SeafloorCavern_Room5/scripts.inc"
-	.include "data/maps/SeafloorCavern_Room6/scripts.inc"
-	.include "data/maps/SeafloorCavern_Room7/scripts.inc"
-	.include "data/maps/SeafloorCavern_Room8/scripts.inc"
-	.include "data/maps/SeafloorCavern_Room9/scripts.inc"
-	.include "data/maps/CaveOfOrigin_Entrance/scripts.inc"
-	.include "data/maps/CaveOfOrigin_1F/scripts.inc"
-	.include "data/maps/CaveOfOrigin_UnusedRubySapphireMap1/scripts.inc"
-	.include "data/maps/CaveOfOrigin_UnusedRubySapphireMap2/scripts.inc"
-	.include "data/maps/CaveOfOrigin_UnusedRubySapphireMap3/scripts.inc"
-	.include "data/maps/CaveOfOrigin_B1F/scripts.inc"
-	.include "data/maps/VictoryRoad_1F/scripts.inc"
-	.include "data/maps/VictoryRoad_B1F/scripts.inc"
-	.include "data/maps/VictoryRoad_B2F/scripts.inc"
-	.include "data/maps/ShoalCave_LowTideEntranceRoom/scripts.inc"
-	.include "data/maps/ShoalCave_LowTideInnerRoom/scripts.inc"
-	.include "data/maps/ShoalCave_LowTideStairsRoom/scripts.inc"
-	.include "data/maps/ShoalCave_LowTideLowerRoom/scripts.inc"
-	.include "data/maps/ShoalCave_HighTideEntranceRoom/scripts.inc"
-	.include "data/maps/ShoalCave_HighTideInnerRoom/scripts.inc"
-	.include "data/maps/NewMauville_Entrance/scripts.inc"
-	.include "data/maps/NewMauville_Inside/scripts.inc"
-	.include "data/maps/AbandonedShip_Deck/scripts.inc"
-	.include "data/maps/AbandonedShip_Corridors_1F/scripts.inc"
-	.include "data/maps/AbandonedShip_Rooms_1F/scripts.inc"
-	.include "data/maps/AbandonedShip_Corridors_B1F/scripts.inc"
-	.include "data/maps/AbandonedShip_Rooms_B1F/scripts.inc"
-	.include "data/maps/AbandonedShip_Rooms2_B1F/scripts.inc"
-	.include "data/maps/AbandonedShip_Underwater1/scripts.inc"
-	.include "data/maps/AbandonedShip_Room_B1F/scripts.inc"
-	.include "data/maps/AbandonedShip_Rooms2_1F/scripts.inc"
-	.include "data/maps/AbandonedShip_CaptainsOffice/scripts.inc"
-	.include "data/maps/AbandonedShip_Underwater2/scripts.inc"
-	.include "data/maps/AbandonedShip_HiddenFloorCorridors/scripts.inc"
-	.include "data/maps/AbandonedShip_HiddenFloorRooms/scripts.inc"
-	.include "data/maps/IslandCave/scripts.inc"
-	.include "data/maps/AncientTomb/scripts.inc"
-	.include "data/maps/Underwater_Route134/scripts.inc"
-	.include "data/maps/Underwater_SealedChamber/scripts.inc"
-	.include "data/maps/SealedChamber_OuterRoom/scripts.inc"
-	.include "data/maps/SealedChamber_InnerRoom/scripts.inc"
-	.include "data/maps/ScorchedSlab/scripts.inc"
-	.include "data/maps/AquaHideout_UnusedRubyMap1/scripts.inc"
-	.include "data/maps/AquaHideout_UnusedRubyMap2/scripts.inc"
-	.include "data/maps/AquaHideout_UnusedRubyMap3/scripts.inc"
-	.include "data/maps/SkyPillar_Entrance/scripts.inc"
-	.include "data/maps/SkyPillar_Outside/scripts.inc"
-	.include "data/maps/SkyPillar_1F/scripts.inc"
-	.include "data/maps/SkyPillar_2F/scripts.inc"
-	.include "data/maps/SkyPillar_3F/scripts.inc"
-	.include "data/maps/SkyPillar_4F/scripts.inc"
-	.include "data/maps/ShoalCave_LowTideIceRoom/scripts.inc"
-	.include "data/maps/SkyPillar_5F/scripts.inc"
-	.include "data/maps/SkyPillar_Top/scripts.inc"
-	.include "data/maps/MagmaHideout_1F/scripts.inc"
-	.include "data/maps/MagmaHideout_2F_1R/scripts.inc"
-	.include "data/maps/MagmaHideout_2F_2R/scripts.inc"
-	.include "data/maps/MagmaHideout_3F_1R/scripts.inc"
-	.include "data/maps/MagmaHideout_3F_2R/scripts.inc"
-	.include "data/maps/MagmaHideout_4F/scripts.inc"
-	.include "data/maps/MagmaHideout_3F_3R/scripts.inc"
-	.include "data/maps/MagmaHideout_2F_3R/scripts.inc"
-	.include "data/maps/MirageTower_1F/scripts.inc"
-	.include "data/maps/MirageTower_2F/scripts.inc"
-	.include "data/maps/MirageTower_3F/scripts.inc"
-	.include "data/maps/MirageTower_4F/scripts.inc"
-	.include "data/maps/DesertUnderpass/scripts.inc"
-	.include "data/maps/ArtisanCave_B1F/scripts.inc"
-	.include "data/maps/ArtisanCave_1F/scripts.inc"
-	.include "data/maps/Underwater_MarineCave/scripts.inc"
-	.include "data/maps/MarineCave_Entrance/scripts.inc"
-	.include "data/maps/MarineCave_End/scripts.inc"
-	.include "data/maps/TerraCave_Entrance/scripts.inc"
-	.include "data/maps/TerraCave_End/scripts.inc"
-	.include "data/maps/AlteringCave/scripts.inc"
-	.include "data/maps/MeteorFalls_StevensCave/scripts.inc"
 	.include "data/maps/SecretBase_BlueCave1/scripts.inc"
 	.include "data/maps/SecretBase_BlueCave2/scripts.inc"
 	.include "data/maps/SecretBase_BlueCave3/scripts.inc"
@@ -637,135 +342,6 @@ gText_23B73E:: @ 823B73E
 SecretBase_RedCave1_Text_23B759: @ 823B759
 	.string "Want to make your SECRET BASE here?$"
 
-	.include "data/maps/SingleBattleColosseum/scripts.inc"
-	.include "data/maps/TradeCenter/scripts.inc"
-	.include "data/maps/RecordCorner/scripts.inc"
-	.include "data/maps/DoubleBattleColosseum/scripts.inc"
-	.include "data/maps/LinkContestRoom1/scripts.inc"
-	.include "data/maps/UnknownLinkContestRoom_25_29/scripts.inc"
-	.include "data/maps/UnknownLinkContestRoom_25_30/scripts.inc"
-	.include "data/maps/UnknownLinkContestRoom_25_31/scripts.inc"
-	.include "data/maps/UnknownLinkContestRoom_25_32/scripts.inc"
-	.include "data/maps/UnknownLinkContestRoom_25_33/scripts.inc"
-	.include "data/maps/UnknownLinkContestRoom_25_34/scripts.inc"
-	.include "data/maps/LinkContestRoom2/scripts.inc"
-	.include "data/maps/LinkContestRoom3/scripts.inc"
-	.include "data/maps/LinkContestRoom4/scripts.inc"
-	.include "data/maps/LinkContestRoom5/scripts.inc"
-	.include "data/maps/LinkContestRoom6/scripts.inc"
-	.include "data/maps/InsideOfTruck/scripts.inc"
-	.include "data/maps/SSTidalCorridor/scripts.inc"
-	.include "data/maps/SSTidalLowerDeck/scripts.inc"
-	.include "data/maps/SSTidalRooms/scripts.inc"
-	.include "data/maps/BattlePyramidSquare01/scripts.inc"
-	.include "data/maps/BattlePyramidSquare02/scripts.inc"
-	.include "data/maps/BattlePyramidSquare03/scripts.inc"
-	.include "data/maps/BattlePyramidSquare04/scripts.inc"
-	.include "data/maps/BattlePyramidSquare05/scripts.inc"
-	.include "data/maps/BattlePyramidSquare06/scripts.inc"
-	.include "data/maps/BattlePyramidSquare07/scripts.inc"
-	.include "data/maps/BattlePyramidSquare08/scripts.inc"
-	.include "data/maps/BattlePyramidSquare09/scripts.inc"
-	.include "data/maps/BattlePyramidSquare10/scripts.inc"
-	.include "data/maps/BattlePyramidSquare11/scripts.inc"
-	.include "data/maps/BattlePyramidSquare12/scripts.inc"
-	.include "data/maps/BattlePyramidSquare13/scripts.inc"
-	.include "data/maps/BattlePyramidSquare14/scripts.inc"
-	.include "data/maps/BattlePyramidSquare15/scripts.inc"
-	.include "data/maps/BattlePyramidSquare16/scripts.inc"
-	.include "data/maps/UnionRoom/scripts.inc"
-	.include "data/maps/SafariZone_Northwest/scripts.inc"
-	.include "data/maps/SafariZone_North/scripts.inc"
-	.include "data/maps/SafariZone_Southwest/scripts.inc"
-	.include "data/maps/SafariZone_South/scripts.inc"
-	.include "data/maps/BattleFrontier_OutsideWest/scripts.inc"
-	.include "data/maps/BattleFrontier_BattleTowerLobby/scripts.inc"
-	.include "data/maps/BattleFrontier_BattleTowerElevator/scripts.inc"
-	.include "data/maps/BattleFrontier_BattleTowerCorridor/scripts.inc"
-	.include "data/maps/BattleFrontier_BattleTowerBattleRoom/scripts.inc"
-	.include "data/maps/SouthernIsland_Exterior/scripts.inc"
-	.include "data/maps/SouthernIsland_Interior/scripts.inc"
-	.include "data/maps/SafariZone_RestHouse/scripts.inc"
-	.include "data/maps/SafariZone_Northeast/scripts.inc"
-	.include "data/maps/SafariZone_Southeast/scripts.inc"
-	.include "data/maps/BattleFrontier_OutsideEast/scripts.inc"
-	.include "data/maps/BattleFrontier_BattleTowerMultiBattleRoom/scripts.inc"
-	.include "data/maps/BattleFrontier_BattleTowerCorridor2/scripts.inc"
-	.include "data/maps/BattleFrontier_BattleTowerBattleRoom2/scripts.inc"
-	.include "data/maps/BattleFrontier_BattleDomeLobby/scripts.inc"
-	.include "data/maps/BattleFrontier_BattleDomeCorridor/scripts.inc"
-	.include "data/maps/BattleFrontier_BattleDomePreBattleRoom/scripts.inc"
-	.include "data/maps/BattleFrontier_BattleDomeBattleRoom/scripts.inc"
-	.include "data/maps/BattleFrontier_BattlePalaceLobby/scripts.inc"
-	.include "data/maps/BattleFrontier_BattlePalaceCorridor/scripts.inc"
-	.include "data/maps/BattleFrontier_BattlePalaceBattleRoom/scripts.inc"
-	.include "data/maps/BattleFrontier_BattlePyramidLobby/scripts.inc"
-	.include "data/maps/BattleFrontier_BattlePyramidEmptySquare/scripts.inc"
-	.include "data/maps/BattleFrontier_BattlePyramidTop/scripts.inc"
-	.include "data/maps/BattleFrontier_BattleArenaLobby/scripts.inc"
-	.include "data/maps/BattleFrontier_BattleArenaCorridor/scripts.inc"
-	.include "data/maps/BattleFrontier_BattleArenaBattleRoom/scripts.inc"
-	.include "data/maps/BattleFrontier_BattleFactoryLobby/scripts.inc"
-	.include "data/maps/BattleFrontier_BattleFactoryPreBattleRoom/scripts.inc"
-	.include "data/maps/BattleFrontier_BattleFactoryBattleRoom/scripts.inc"
-	.include "data/maps/BattleFrontier_BattlePikeLobby/scripts.inc"
-	.include "data/maps/BattleFrontier_BattlePikeCorridor/scripts.inc"
-	.include "data/maps/BattleFrontier_BattlePikeThreePathRoom/scripts.inc"
-	.include "data/maps/BattleFrontier_BattlePikeRandomRoom1/scripts.inc"
-	.include "data/maps/BattleFrontier_BattlePikeRandomRoom2/scripts.inc"
-	.include "data/maps/BattleFrontier_BattlePikeRandomRoom3/scripts.inc"
-	.include "data/maps/BattleFrontier_RankingHall/scripts.inc"
-	.include "data/maps/BattleFrontier_Lounge1/scripts.inc"
-	.include "data/maps/BattleFrontier_BattlePointExchangeServiceCorner/scripts.inc"
-	.include "data/maps/BattleFrontier_Lounge2/scripts.inc"
-	.include "data/maps/BattleFrontier_Lounge3/scripts.inc"
-	.include "data/maps/BattleFrontier_Lounge4/scripts.inc"
-	.include "data/maps/BattleFrontier_ScottsHouse/scripts.inc"
-	.include "data/maps/BattleFrontier_Lounge5/scripts.inc"
-	.include "data/maps/BattleFrontier_Lounge6/scripts.inc"
-	.include "data/maps/BattleFrontier_Lounge7/scripts.inc"
-	.include "data/maps/BattleFrontier_ReceptionGate/scripts.inc"
-	.include "data/maps/BattleFrontier_Lounge8/scripts.inc"
-	.include "data/maps/BattleFrontier_Lounge9/scripts.inc"
-	.include "data/maps/BattleFrontier_PokemonCenter_1F/scripts.inc"
-	.include "data/maps/BattleFrontier_PokemonCenter_2F/scripts.inc"
-	.include "data/maps/BattleFrontier_Mart/scripts.inc"
-	.include "data/maps/FarawayIsland_Entrance/scripts.inc"
-	.include "data/maps/FarawayIsland_Interior/scripts.inc"
-	.include "data/maps/BirthIsland_Exterior/scripts.inc"
-	.include "data/maps/BirthIsland_Harbor/scripts.inc"
-	.include "data/maps/TrainerHill_Entrance/scripts.inc"
-	.include "data/maps/TrainerHill_1F/scripts.inc"
-	.include "data/maps/TrainerHill_2F/scripts.inc"
-	.include "data/maps/TrainerHill_3F/scripts.inc"
-	.include "data/maps/TrainerHill_4F/scripts.inc"
-	.include "data/maps/TrainerHill_Roof/scripts.inc"
-	.include "data/maps/NavelRock_Exterior/scripts.inc"
-	.include "data/maps/NavelRock_Harbor/scripts.inc"
-	.include "data/maps/NavelRock_Entrance/scripts.inc"
-	.include "data/maps/NavelRock_B1F/scripts.inc"
-	.include "data/maps/NavelRock_Fork/scripts.inc"
-	.include "data/maps/NavelRock_Up1/scripts.inc"
-	.include "data/maps/NavelRock_Up2/scripts.inc"
-	.include "data/maps/NavelRock_Up3/scripts.inc"
-	.include "data/maps/NavelRock_Up4/scripts.inc"
-	.include "data/maps/NavelRock_Top/scripts.inc"
-	.include "data/maps/NavelRock_Down01/scripts.inc"
-	.include "data/maps/NavelRock_Down02/scripts.inc"
-	.include "data/maps/NavelRock_Down03/scripts.inc"
-	.include "data/maps/NavelRock_Down04/scripts.inc"
-	.include "data/maps/NavelRock_Down05/scripts.inc"
-	.include "data/maps/NavelRock_Down06/scripts.inc"
-	.include "data/maps/NavelRock_Down07/scripts.inc"
-	.include "data/maps/NavelRock_Down08/scripts.inc"
-	.include "data/maps/NavelRock_Down09/scripts.inc"
-	.include "data/maps/NavelRock_Down10/scripts.inc"
-	.include "data/maps/NavelRock_Down11/scripts.inc"
-	.include "data/maps/NavelRock_Bottom/scripts.inc"
-	.include "data/maps/TrainerHill_Elevator/scripts.inc"
-	.include "data/maps/Route104_Prototype/scripts.inc"
-	.include "data/maps/Route104_PrototypePrettyPetalFlowerShop/scripts.inc"
-	.include "data/maps/Route109_SeashoreHouse/scripts.inc"
 	.include "data/maps/Route110_TrickHouseEntrance/scripts.inc"
 	.include "data/maps/Route110_TrickHouseEnd/scripts.inc"
 	.include "data/maps/Route110_TrickHouseCorridor/scripts.inc"
@@ -777,14 +353,6 @@ SecretBase_RedCave1_Text_23B759: @ 823B759
 	.include "data/maps/Route110_TrickHousePuzzle6/scripts.inc"
 	.include "data/maps/Route110_TrickHousePuzzle7/scripts.inc"
 	.include "data/maps/Route110_TrickHousePuzzle8/scripts.inc"
-	.include "data/maps/Route110_SeasideCyclingRoadNorthEntrance/scripts.inc"
-	.include "data/maps/Route110_SeasideCyclingRoadSouthEntrance/scripts.inc"
-	.include "data/maps/Route113_GlassWorkshop/scripts.inc"
-	.include "data/maps/Route123_BerryMastersHouse/scripts.inc"
-	.include "data/maps/Route119_WeatherInstitute_1F/scripts.inc"
-	.include "data/maps/Route119_WeatherInstitute_2F/scripts.inc"
-	.include "data/maps/Route119_House/scripts.inc"
-	.include "data/maps/Route124_DivingTreasureHuntersHouse/scripts.inc"
 
 Std_MsgboxNPC: @ 8271315
 	lock
@@ -5478,318 +5046,318 @@ gBattleDomeMatchNumberText14::
 gBattleDomeMatchNumberText15::
 	.string "Final Match$"
 
-BattleFrontier_BattlePikeRandomRoom1_MapScripts_2C3E1B: @ 82C3E1B
-	map_script MAP_SCRIPT_ON_TRANSITION, BattleFrontier_BattlePikeRandomRoom1_MapScript1_2C3E25
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattlePikeRandomRoom1_MapScript2_2C3EDE
+@ BattleFrontier_BattlePikeRandomRoom1_MapScripts_2C3E1B: @ 82C3E1B
+@ 	map_script MAP_SCRIPT_ON_TRANSITION, BattleFrontier_BattlePikeRandomRoom1_MapScript1_2C3E25
+@ 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattlePikeRandomRoom1_MapScript2_2C3EDE
 
-BattleFrontier_BattlePikeRandomRoom1_MapScript1_2C3E25: @ 82C3E25
-	setvar VAR_0x8004, 4
-	special CallBattlePikeFunction
-	setvar VAR_0x8004, 5
-	special CallBattlePikeFunction
-	switch VAR_RESULT
-	case 0, BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EB1
-	case 1, BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EB1
-	case 2, BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EC0
-	case 3, BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EA2
-	case 4, BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EB1
-	case 7, BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3E93
-	case 6, BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EA2
-	case 8, BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3ECF
-	end
+@ BattleFrontier_BattlePikeRandomRoom1_MapScript1_2C3E25: @ 82C3E25
+@ 	setvar VAR_0x8004, 4
+@ 	special CallBattlePikeFunction
+@ 	setvar VAR_0x8004, 5
+@ 	special CallBattlePikeFunction
+@ 	switch VAR_RESULT
+@ 	case 0, BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EB1
+@ 	case 1, BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EB1
+@ 	case 2, BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EC0
+@ 	case 3, BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EA2
+@ 	case 4, BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EB1
+@ 	case 7, BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3E93
+@ 	case 6, BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EA2
+@ 	case 8, BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3ECF
+@ 	end
 
-BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3E93:: @ 82C3E93
-	setobjectxyperm 1, 2, 5
-	setobjectxyperm 2, 6, 5
-	end
+@ BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3E93:: @ 82C3E93
+@ 	setobjectxyperm 1, 2, 5
+@ 	setobjectxyperm 2, 6, 5
+@ 	end
 
-BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EA2:: @ 82C3EA2
-	setobjectxyperm 1, 4, 4
-	setobjectxyperm 2, 3, 4
-	end
+@ BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EA2:: @ 82C3EA2
+@ 	setobjectxyperm 1, 4, 4
+@ 	setobjectxyperm 2, 3, 4
+@ 	end
 
-BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EB1:: @ 82C3EB1
-	setobjectxyperm 1, 4, 4
-	setobjectxyperm 2, 0, 0
-	end
+@ BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EB1:: @ 82C3EB1
+@ 	setobjectxyperm 1, 4, 4
+@ 	setobjectxyperm 2, 0, 0
+@ 	end
 
-BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EC0:: @ 82C3EC0
-	setobjectxyperm 1, 5, 5
-	setobjectxyperm 2, 0, 0
-	end
+@ BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EC0:: @ 82C3EC0
+@ 	setobjectxyperm 1, 5, 5
+@ 	setobjectxyperm 2, 0, 0
+@ 	end
 
-BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3ECF:: @ 82C3ECF
-	setobjectxyperm 1, 4, 3
-	setobjectxyperm 2, 4, 4
-	end
+@ BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3ECF:: @ 82C3ECF
+@ 	setobjectxyperm 1, 4, 3
+@ 	setobjectxyperm 2, 4, 4
+@ 	end
 
-BattleFrontier_BattlePikeRandomRoom1_MapScript2_2C3EDE: @ 82C3EDE
-	map_script_2 VAR_TEMP_4, 0, BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EE8
-	.2byte 0
+@ BattleFrontier_BattlePikeRandomRoom1_MapScript2_2C3EDE: @ 82C3EDE
+@ 	map_script_2 VAR_TEMP_4, 0, BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EE8
+@ 	.2byte 0
 
-BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EE8:: @ 82C3EE8
-	setvar VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_LINK_RECEPTIONIST
-	setvar VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_LINK_RECEPTIONIST
-	setvar VAR_0x8004, 5
-	special CallBattlePikeFunction
-	compare VAR_RESULT, 3
-	goto_if_eq BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3F35
-	compare VAR_RESULT, 6
-	goto_if_eq BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3F35
-	compare VAR_RESULT, 7
-	goto_if_eq BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3F35
-	compare VAR_RESULT, 8
-	goto_if_eq BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3F3F
-	hideobjectat 2, MAP_BATTLE_FRONTIER_BATTLE_PIKE_RANDOM_ROOM1
-	setvar VAR_TEMP_4, 1
-	turnobject 255, 2
-	end
+@ BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3EE8:: @ 82C3EE8
+@ 	setvar VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_LINK_RECEPTIONIST
+@ 	setvar VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_LINK_RECEPTIONIST
+@ 	setvar VAR_0x8004, 5
+@ 	special CallBattlePikeFunction
+@ 	compare VAR_RESULT, 3
+@ 	goto_if_eq BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3F35
+@ 	compare VAR_RESULT, 6
+@ 	goto_if_eq BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3F35
+@ 	compare VAR_RESULT, 7
+@ 	goto_if_eq BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3F35
+@ 	compare VAR_RESULT, 8
+@ 	goto_if_eq BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3F3F
+@ 	hideobjectat 2, MAP_BATTLE_FRONTIER_BATTLE_PIKE_RANDOM_ROOM1
+@ 	setvar VAR_TEMP_4, 1
+@ 	turnobject 255, 2
+@ 	end
 
-BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3F35:: @ 82C3F35
-	setvar VAR_TEMP_4, 1
-	turnobject 255, 2
-	end
+@ BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3F35:: @ 82C3F35
+@ 	setvar VAR_TEMP_4, 1
+@ 	turnobject 255, 2
+@ 	end
 
-BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3F3F:: @ 82C3F3F
-	setvar VAR_TEMP_4, 1
-	turnobject 255, 2
-	hideobjectat 1, MAP_BATTLE_FRONTIER_BATTLE_PIKE_RANDOM_ROOM1
-	end
+@ BattleFrontier_BattlePikeRandomRoom1_EventScript_2C3F3F:: @ 82C3F3F
+@ 	setvar VAR_TEMP_4, 1
+@ 	turnobject 255, 2
+@ 	hideobjectat 1, MAP_BATTLE_FRONTIER_BATTLE_PIKE_RANDOM_ROOM1
+@ 	end
 
-BattleFrontier_BattlePikeThreePathRoom_EventScript_2C3F4E:: @ 82C3F4E
-	setvar VAR_0x8007, 0
-	goto BattleFrontier_BattlePikeThreePathRoom_EventScript_2C3F6F
-	end
+@ BattleFrontier_BattlePikeThreePathRoom_EventScript_2C3F4E:: @ 82C3F4E
+@ 	setvar VAR_0x8007, 0
+@ 	goto BattleFrontier_BattlePikeThreePathRoom_EventScript_2C3F6F
+@ 	end
 
-BattleFrontier_BattlePikeThreePathRoom_EventScript_2C3F59:: @ 82C3F59
-	setvar VAR_0x8007, 1
-	goto BattleFrontier_BattlePikeThreePathRoom_EventScript_2C3F6F
-	end
+@ BattleFrontier_BattlePikeThreePathRoom_EventScript_2C3F59:: @ 82C3F59
+@ 	setvar VAR_0x8007, 1
+@ 	goto BattleFrontier_BattlePikeThreePathRoom_EventScript_2C3F6F
+@ 	end
 
-BattleFrontier_BattlePikeThreePathRoom_EventScript_2C3F64:: @ 82C3F64
-	setvar VAR_0x8007, 2
-	goto BattleFrontier_BattlePikeThreePathRoom_EventScript_2C3F6F
-	end
+@ BattleFrontier_BattlePikeThreePathRoom_EventScript_2C3F64:: @ 82C3F64
+@ 	setvar VAR_0x8007, 2
+@ 	goto BattleFrontier_BattlePikeThreePathRoom_EventScript_2C3F6F
+@ 	end
 
-BattleFrontier_BattlePikeThreePathRoom_EventScript_2C3F6F:: @ 82C3F6F
-	setvar VAR_0x8004, 1
-	setvar VAR_0x8005, 1
-	special CallBattlePikeFunction
-	addvar VAR_RESULT, 1
-	setvar VAR_0x8004, 2
-	setvar VAR_0x8005, 1
-	copyvar VAR_0x8006, VAR_RESULT
-	special CallBattlePikeFunction
-	setvar VAR_0x8004, 1
-	setvar VAR_0x8005, 2
-	special CallFrontierUtilFunc
-	addvar VAR_RESULT, 1
-	setvar VAR_0x8004, 2
-	setvar VAR_0x8005, 2
-	copyvar VAR_0x8006, VAR_RESULT
-	special CallFrontierUtilFunc
-	setvar VAR_0x8004, 0
-	special CallBattlePikeFunction
-	setvar VAR_0x8004, 5
-	special CallBattlePikeFunction
-	switch VAR_RESULT
-	case 0, BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4030
-	case 1, BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4030
-	case 2, BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4030
-	case 3, BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4030
-	case 4, BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4030
-	case 5, BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4049
-	case 6, BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4030
-	case 7, BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4030
-	case 8, BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4030
-	end
+@ BattleFrontier_BattlePikeThreePathRoom_EventScript_2C3F6F:: @ 82C3F6F
+@ 	setvar VAR_0x8004, 1
+@ 	setvar VAR_0x8005, 1
+@ 	special CallBattlePikeFunction
+@ 	addvar VAR_RESULT, 1
+@ 	setvar VAR_0x8004, 2
+@ 	setvar VAR_0x8005, 1
+@ 	copyvar VAR_0x8006, VAR_RESULT
+@ 	special CallBattlePikeFunction
+@ 	setvar VAR_0x8004, 1
+@ 	setvar VAR_0x8005, 2
+@ 	special CallFrontierUtilFunc
+@ 	addvar VAR_RESULT, 1
+@ 	setvar VAR_0x8004, 2
+@ 	setvar VAR_0x8005, 2
+@ 	copyvar VAR_0x8006, VAR_RESULT
+@ 	special CallFrontierUtilFunc
+@ 	setvar VAR_0x8004, 0
+@ 	special CallBattlePikeFunction
+@ 	setvar VAR_0x8004, 5
+@ 	special CallBattlePikeFunction
+@ 	switch VAR_RESULT
+@ 	case 0, BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4030
+@ 	case 1, BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4030
+@ 	case 2, BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4030
+@ 	case 3, BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4030
+@ 	case 4, BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4030
+@ 	case 5, BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4049
+@ 	case 6, BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4030
+@ 	case 7, BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4030
+@ 	case 8, BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4030
+@ 	end
 
-BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4030:: @ 82C4030
-	applymovement EVENT_OBJ_ID_PLAYER, BattleFrontier_BattlePikeThreePathRoom_Movement_2C427A
-	waitmovement 0
-	call BattleFrontier_BattlePikeThreePathRoom_EventScript_25BB49
-	warpsilent MAP_BATTLE_FRONTIER_BATTLE_PIKE_RANDOM_ROOM1, 255, 4, 7
-	waitstate
-	end
+@ BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4030:: @ 82C4030
+@ 	applymovement EVENT_OBJ_ID_PLAYER, BattleFrontier_BattlePikeThreePathRoom_Movement_2C427A
+@ 	waitmovement 0
+@ 	call BattleFrontier_BattlePikeThreePathRoom_EventScript_25BB49
+@ 	warpsilent MAP_BATTLE_FRONTIER_BATTLE_PIKE_RANDOM_ROOM1, 255, 4, 7
+@ 	waitstate
+@ 	end
 
-BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4049:: @ 82C4049
-	applymovement EVENT_OBJ_ID_PLAYER, BattleFrontier_BattlePikeThreePathRoom_Movement_2C427A
-	waitmovement 0
-	call BattleFrontier_BattlePikeThreePathRoom_EventScript_25BB49
-	warpsilent MAP_BATTLE_FRONTIER_BATTLE_PIKE_RANDOM_ROOM3, 255, 4, 19
-	waitstate
-	end
+@ BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4049:: @ 82C4049
+@ 	applymovement EVENT_OBJ_ID_PLAYER, BattleFrontier_BattlePikeThreePathRoom_Movement_2C427A
+@ 	waitmovement 0
+@ 	call BattleFrontier_BattlePikeThreePathRoom_EventScript_25BB49
+@ 	warpsilent MAP_BATTLE_FRONTIER_BATTLE_PIKE_RANDOM_ROOM3, 255, 4, 19
+@ 	waitstate
+@ 	end
 
-BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4062:: @ 82C4062
-	setvar VAR_TEMP_3, 1
-	setvar VAR_TEMP_2, 1
-	end
+@ BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4062:: @ 82C4062
+@ 	setvar VAR_TEMP_3, 1
+@ 	setvar VAR_TEMP_2, 1
+@ 	end
 
-BattleFrontier_BattlePikeThreePathRoom_EventScript_2C406D:: @ 82C406D
-	setvar VAR_TEMP_3, 0
-	setvar VAR_TEMP_2, 0
-	lockall
-	msgbox BattleFrontier_BattlePikeThreePathRoom_Text_25CE36, MSGBOX_DEFAULT
-	closemessage
-	end
+@ BattleFrontier_BattlePikeThreePathRoom_EventScript_2C406D:: @ 82C406D
+@ 	setvar VAR_TEMP_3, 0
+@ 	setvar VAR_TEMP_2, 0
+@ 	lockall
+@ 	msgbox BattleFrontier_BattlePikeThreePathRoom_Text_25CE36, MSGBOX_DEFAULT
+@ 	closemessage
+@ 	end
 
-BattleFrontier_BattlePikeRandomRoom1_EventScript_2C4082:: @ 82C4082
-	setvar VAR_TEMP_3, 1
-	setvar VAR_TEMP_2, 1
-	end
+@ BattleFrontier_BattlePikeRandomRoom1_EventScript_2C4082:: @ 82C4082
+@ 	setvar VAR_TEMP_3, 1
+@ 	setvar VAR_TEMP_2, 1
+@ 	end
 
-BattleFrontier_BattlePikeRandomRoom1_EventScript_2C408D:: @ 82C408D
-	setvar VAR_TEMP_3, 0
-	setvar VAR_TEMP_2, 0
-	lockall
-	msgbox BattleFrontier_BattlePikeRandomRoom1_Text_25CE36, MSGBOX_DEFAULT
-	closemessage
-	end
+@ BattleFrontier_BattlePikeRandomRoom1_EventScript_2C408D:: @ 82C408D
+@ 	setvar VAR_TEMP_3, 0
+@ 	setvar VAR_TEMP_2, 0
+@ 	lockall
+@ 	msgbox BattleFrontier_BattlePikeRandomRoom1_Text_25CE36, MSGBOX_DEFAULT
+@ 	closemessage
+@ 	end
 
-BattleFrontier_BattlePikeRandomRoom1_EventScript_2C40A2:: @ 82C40A2
-	setvar VAR_0x8004, 25
-	special CallBattlePikeFunction
-	compare VAR_RESULT, 1
-	call_if_eq BattleFrontier_BattlePikeRandomRoom1_EventScript_2C4128
-	compare VAR_RESULT, 1
-	call_if_ne BattleFrontier_BattlePikeRandomRoom1_EventScript_2C4136
-	setvar VAR_0x8004, 1
-	setvar VAR_0x8005, 1
-	special CallBattlePikeFunction
-	addvar VAR_RESULT, 1
-	setvar VAR_0x8004, 2
-	setvar VAR_0x8005, 1
-	copyvar VAR_0x8006, VAR_RESULT
-	special CallBattlePikeFunction
-	setvar VAR_0x8004, 1
-	setvar VAR_0x8005, 2
-	special CallFrontierUtilFunc
-	addvar VAR_RESULT, 1
-	setvar VAR_0x8004, 2
-	setvar VAR_0x8005, 2
-	copyvar VAR_0x8006, VAR_RESULT
-	special CallFrontierUtilFunc
-	setvar VAR_0x8004, 3
-	special CallBattlePikeFunction
-	compare VAR_RESULT, 1
-	call_if_eq BattleFrontier_BattlePikeRandomRoom1_EventScript_2C4144
-	compare VAR_RESULT, 0
-	call_if_eq BattleFrontier_BattlePikeRandomRoom1_EventScript_2C415C
-	waitstate
-	end
+@ BattleFrontier_BattlePikeRandomRoom1_EventScript_2C40A2:: @ 82C40A2
+@ 	setvar VAR_0x8004, 25
+@ 	special CallBattlePikeFunction
+@ 	compare VAR_RESULT, 1
+@ 	call_if_eq BattleFrontier_BattlePikeRandomRoom1_EventScript_2C4128
+@ 	compare VAR_RESULT, 1
+@ 	call_if_ne BattleFrontier_BattlePikeRandomRoom1_EventScript_2C4136
+@ 	setvar VAR_0x8004, 1
+@ 	setvar VAR_0x8005, 1
+@ 	special CallBattlePikeFunction
+@ 	addvar VAR_RESULT, 1
+@ 	setvar VAR_0x8004, 2
+@ 	setvar VAR_0x8005, 1
+@ 	copyvar VAR_0x8006, VAR_RESULT
+@ 	special CallBattlePikeFunction
+@ 	setvar VAR_0x8004, 1
+@ 	setvar VAR_0x8005, 2
+@ 	special CallFrontierUtilFunc
+@ 	addvar VAR_RESULT, 1
+@ 	setvar VAR_0x8004, 2
+@ 	setvar VAR_0x8005, 2
+@ 	copyvar VAR_0x8006, VAR_RESULT
+@ 	special CallFrontierUtilFunc
+@ 	setvar VAR_0x8004, 3
+@ 	special CallBattlePikeFunction
+@ 	compare VAR_RESULT, 1
+@ 	call_if_eq BattleFrontier_BattlePikeRandomRoom1_EventScript_2C4144
+@ 	compare VAR_RESULT, 0
+@ 	call_if_eq BattleFrontier_BattlePikeRandomRoom1_EventScript_2C415C
+@ 	waitstate
+@ 	end
 
-BattleFrontier_BattlePikeRandomRoom1_EventScript_2C4128:: @ 82C4128
-BattleFrontier_BattlePikeRandomRoom3_EventScript_2C4128:: @ 82C4128
-	setvar VAR_0x8004, 24
-	setvar VAR_0x8005, 1
-	special CallBattlePikeFunction
-	return
+@ BattleFrontier_BattlePikeRandomRoom1_EventScript_2C4128:: @ 82C4128
+@ BattleFrontier_BattlePikeRandomRoom3_EventScript_2C4128:: @ 82C4128
+@ 	setvar VAR_0x8004, 24
+@ 	setvar VAR_0x8005, 1
+@ 	special CallBattlePikeFunction
+@ 	return
 
-BattleFrontier_BattlePikeRandomRoom1_EventScript_2C4136:: @ 82C4136
-BattleFrontier_BattlePikeRandomRoom3_EventScript_2C4136:: @ 82C4136
-	setvar VAR_0x8004, 24
-	setvar VAR_0x8005, 0
-	special CallBattlePikeFunction
-	return
+@ BattleFrontier_BattlePikeRandomRoom1_EventScript_2C4136:: @ 82C4136
+@ BattleFrontier_BattlePikeRandomRoom3_EventScript_2C4136:: @ 82C4136
+@ 	setvar VAR_0x8004, 24
+@ 	setvar VAR_0x8005, 0
+@ 	special CallBattlePikeFunction
+@ 	return
 
-BattleFrontier_BattlePikeRandomRoom1_EventScript_2C4144:: @ 82C4144
-BattleFrontier_BattlePikeRandomRoom3_EventScript_2C4144:: @ 82C4144
-	applymovement EVENT_OBJ_ID_PLAYER, BattleFrontier_BattlePikeRandomRoom1_Movement_2C427A
-	waitmovement 0
-	call BattleFrontier_BattlePikeRandomRoom1_EventScript_25BB49
-	warpsilent MAP_BATTLE_FRONTIER_BATTLE_PIKE_RANDOM_ROOM2, 255, 2, 7
-	return
+@ BattleFrontier_BattlePikeRandomRoom1_EventScript_2C4144:: @ 82C4144
+@ BattleFrontier_BattlePikeRandomRoom3_EventScript_2C4144:: @ 82C4144
+@ 	applymovement EVENT_OBJ_ID_PLAYER, BattleFrontier_BattlePikeRandomRoom1_Movement_2C427A
+@ 	waitmovement 0
+@ 	call BattleFrontier_BattlePikeRandomRoom1_EventScript_25BB49
+@ 	warpsilent MAP_BATTLE_FRONTIER_BATTLE_PIKE_RANDOM_ROOM2, 255, 2, 7
+@ 	return
 
-BattleFrontier_BattlePikeRandomRoom1_EventScript_2C415C:: @ 82C415C
-BattleFrontier_BattlePikeRandomRoom3_EventScript_2C415C:: @ 82C415C
-	applymovement EVENT_OBJ_ID_PLAYER, BattleFrontier_BattlePikeRandomRoom1_Movement_2C427A
-	waitmovement 0
-	call BattleFrontier_BattlePikeRandomRoom1_EventScript_25BB49
-	warpsilent MAP_BATTLE_FRONTIER_BATTLE_PIKE_THREE_PATH_ROOM, 255, 6, 10
-	return
+@ BattleFrontier_BattlePikeRandomRoom1_EventScript_2C415C:: @ 82C415C
+@ BattleFrontier_BattlePikeRandomRoom3_EventScript_2C415C:: @ 82C415C
+@ 	applymovement EVENT_OBJ_ID_PLAYER, BattleFrontier_BattlePikeRandomRoom1_Movement_2C427A
+@ 	waitmovement 0
+@ 	call BattleFrontier_BattlePikeRandomRoom1_EventScript_25BB49
+@ 	warpsilent MAP_BATTLE_FRONTIER_BATTLE_PIKE_THREE_PATH_ROOM, 255, 6, 10
+@ 	return
 
-BattleFrontier_BattlePikeRandomRoom3_EventScript_2C4174:: @ 82C4174
-	setvar VAR_0x8004, 7
-	special CallBattlePikeFunction
-	setvar VAR_0x8004, 25
-	special CallBattlePikeFunction
-	compare VAR_RESULT, 1
-	call_if_eq BattleFrontier_BattlePikeRandomRoom3_EventScript_2C4128
-	compare VAR_RESULT, 1
-	call_if_ne BattleFrontier_BattlePikeRandomRoom3_EventScript_2C4136
-	setvar VAR_0x8004, 1
-	setvar VAR_0x8005, 1
-	special CallBattlePikeFunction
-	addvar VAR_RESULT, 1
-	setvar VAR_0x8004, 2
-	setvar VAR_0x8005, 1
-	copyvar VAR_0x8006, VAR_RESULT
-	special CallBattlePikeFunction
-	setvar VAR_0x8004, 1
-	setvar VAR_0x8005, 2
-	special CallFrontierUtilFunc
-	addvar VAR_RESULT, 1
-	setvar VAR_0x8004, 2
-	setvar VAR_0x8005, 2
-	copyvar VAR_0x8006, VAR_RESULT
-	special CallFrontierUtilFunc
-	setvar VAR_0x8004, 3
-	special CallBattlePikeFunction
-	compare VAR_RESULT, 1
-	call_if_eq BattleFrontier_BattlePikeRandomRoom3_EventScript_2C4144
-	compare VAR_RESULT, 0
-	call_if_eq BattleFrontier_BattlePikeRandomRoom3_EventScript_2C415C
-	waitstate
-	end
+@ BattleFrontier_BattlePikeRandomRoom3_EventScript_2C4174:: @ 82C4174
+@ 	setvar VAR_0x8004, 7
+@ 	special CallBattlePikeFunction
+@ 	setvar VAR_0x8004, 25
+@ 	special CallBattlePikeFunction
+@ 	compare VAR_RESULT, 1
+@ 	call_if_eq BattleFrontier_BattlePikeRandomRoom3_EventScript_2C4128
+@ 	compare VAR_RESULT, 1
+@ 	call_if_ne BattleFrontier_BattlePikeRandomRoom3_EventScript_2C4136
+@ 	setvar VAR_0x8004, 1
+@ 	setvar VAR_0x8005, 1
+@ 	special CallBattlePikeFunction
+@ 	addvar VAR_RESULT, 1
+@ 	setvar VAR_0x8004, 2
+@ 	setvar VAR_0x8005, 1
+@ 	copyvar VAR_0x8006, VAR_RESULT
+@ 	special CallBattlePikeFunction
+@ 	setvar VAR_0x8004, 1
+@ 	setvar VAR_0x8005, 2
+@ 	special CallFrontierUtilFunc
+@ 	addvar VAR_RESULT, 1
+@ 	setvar VAR_0x8004, 2
+@ 	setvar VAR_0x8005, 2
+@ 	copyvar VAR_0x8006, VAR_RESULT
+@ 	special CallFrontierUtilFunc
+@ 	setvar VAR_0x8004, 3
+@ 	special CallBattlePikeFunction
+@ 	compare VAR_RESULT, 1
+@ 	call_if_eq BattleFrontier_BattlePikeRandomRoom3_EventScript_2C4144
+@ 	compare VAR_RESULT, 0
+@ 	call_if_eq BattleFrontier_BattlePikeRandomRoom3_EventScript_2C415C
+@ 	waitstate
+@ 	end
 
-BattleFrontier_BattlePikeRandomRoom3_EventScript_2C4202:: @ 82C4202
-	setvar VAR_TEMP_3, 1
-	setvar VAR_TEMP_2, 1
-	end
+@ BattleFrontier_BattlePikeRandomRoom3_EventScript_2C4202:: @ 82C4202
+@ 	setvar VAR_TEMP_3, 1
+@ 	setvar VAR_TEMP_2, 1
+@ 	end
 
-BattleFrontier_BattlePikeRandomRoom3_EventScript_2C420D:: @ 82C420D
-	setvar VAR_TEMP_3, 0
-	setvar VAR_TEMP_2, 0
-	lockall
-	msgbox BattleFrontier_BattlePikeRandomRoom3_Text_25CE36, MSGBOX_DEFAULT
-	closemessage
-	end
+@ BattleFrontier_BattlePikeRandomRoom3_EventScript_2C420D:: @ 82C420D
+@ 	setvar VAR_TEMP_3, 0
+@ 	setvar VAR_TEMP_2, 0
+@ 	lockall
+@ 	msgbox BattleFrontier_BattlePikeRandomRoom3_Text_25CE36, MSGBOX_DEFAULT
+@ 	closemessage
+@ 	end
 
-BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4222:: @ 82C4222
-	setvar VAR_0x8004, 2
-	setvar VAR_0x8005, 0
-	setvar VAR_0x8006, 4
-	special CallFrontierUtilFunc
-	warp MAP_BATTLE_FRONTIER_BATTLE_PIKE_LOBBY, 255, 5, 6
-	waitstate
-	end
+@ BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4222:: @ 82C4222
+@ 	setvar VAR_0x8004, 2
+@ 	setvar VAR_0x8005, 0
+@ 	setvar VAR_0x8006, 4
+@ 	special CallFrontierUtilFunc
+@ 	warp MAP_BATTLE_FRONTIER_BATTLE_PIKE_LOBBY, 255, 5, 6
+@ 	waitstate
+@ 	end
 
-BattleFrontier_BattlePikeRandomRoom1_MapScript1_2C423E: @ 82C423E
-BattleFrontier_BattlePikeThreePathRoom_MapScript1_2C423E: @ 82C423E
-	setorcopyvar VAR_0x8006, VAR_RESULT
-	setvar VAR_0x8004, 1
-	setvar VAR_0x8005, 0
-	special CallFrontierUtilFunc
-	compare VAR_RESULT, 2
-	goto_if_eq BattleFrontier_BattlePikeThreePathRoom_EventScript_2C426B
-	compare VAR_RESULT, 1
-	goto_if_eq BattleFrontier_BattlePikeThreePathRoom_EventScript_2C426B
-	call BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4271
+@ BattleFrontier_BattlePikeRandomRoom1_MapScript1_2C423E: @ 82C423E
+@ BattleFrontier_BattlePikeThreePathRoom_MapScript1_2C423E: @ 82C423E
+@ 	setorcopyvar VAR_0x8006, VAR_RESULT
+@ 	setvar VAR_0x8004, 1
+@ 	setvar VAR_0x8005, 0
+@ 	special CallFrontierUtilFunc
+@ 	compare VAR_RESULT, 2
+@ 	goto_if_eq BattleFrontier_BattlePikeThreePathRoom_EventScript_2C426B
+@ 	compare VAR_RESULT, 1
+@ 	goto_if_eq BattleFrontier_BattlePikeThreePathRoom_EventScript_2C426B
+@ 	call BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4271
 
-BattleFrontier_BattlePikeThreePathRoom_EventScript_2C426B:: @ 82C426B
-	setorcopyvar VAR_RESULT, VAR_0x8006
-	end
+@ BattleFrontier_BattlePikeThreePathRoom_EventScript_2C426B:: @ 82C426B
+@ 	setorcopyvar VAR_RESULT, VAR_0x8006
+@ 	end
 
-BattleFrontier_BattlePikeRandomRoom3_EventScript_2C4271:: @ 82C4271
-BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4271:: @ 82C4271
-	setvar VAR_0x8004, 21
-	special CallFrontierUtilFunc
-	return
+@ BattleFrontier_BattlePikeRandomRoom3_EventScript_2C4271:: @ 82C4271
+@ BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4271:: @ 82C4271
+@ 	setvar VAR_0x8004, 21
+@ 	special CallFrontierUtilFunc
+@ 	return
 
-BattleFrontier_BattlePikeRandomRoom1_Movement_2C427A: @ 82C427A
-BattleFrontier_BattlePikeThreePathRoom_Movement_2C427A: @ 82C427A
-	set_invisible
-	step_end
+@ BattleFrontier_BattlePikeRandomRoom1_Movement_2C427A: @ 82C427A
+@ BattleFrontier_BattlePikeThreePathRoom_Movement_2C427A: @ 82C427A
+@ 	set_invisible
+@ 	step_end
 
 LilycoveCity_ContestLobby_Text_2C427C: @ 82C427C
 	.string "BLEND MASTER: Indeed I am!\n"
@@ -6916,82 +6484,82 @@ VerdanturfTown_PokemonCenter_1F_EventScript_2C832D:: @ 82C832D
 	msgbox MauvilleCity_Text_2C6E05, MSGBOX_YESNO
 	return
 
-TrainerHill_1F_MapScript1_2C8336: @ 82C8336
-TrainerHill_2F_MapScript1_2C8336: @ 82C8336
-TrainerHill_3F_MapScript1_2C8336: @ 82C8336
-TrainerHill_4F_MapScript1_2C8336: @ 82C8336
-TrainerHill_Roof_MapScript1_2C8336: @ 82C8336
-	setvar VAR_TEMP_2, 0
-	setvar VAR_0x8004, TRAINER_HILL_FUNC_RESUME_TIMER
-	special CallTrainerHillFunction
-	setvar VAR_0x8004, 1
-	setvar VAR_0x8005, 5
-	special CallFrontierUtilFunc
-	compare VAR_RESULT, B_OUTCOME_LOST
-	goto_if_eq TrainerHill_1F_EventScript_2C83C9
-	compare VAR_RESULT, B_OUTCOME_DREW
-	goto_if_eq TrainerHill_1F_EventScript_2C83C9
-	compare VAR_RESULT, B_OUTCOME_FORFEITED
-	goto_if_eq TrainerHill_1F_EventScript_2C83C9
-	end
+@ TrainerHill_1F_MapScript1_2C8336: @ 82C8336
+@ TrainerHill_2F_MapScript1_2C8336: @ 82C8336
+@ TrainerHill_3F_MapScript1_2C8336: @ 82C8336
+@ TrainerHill_4F_MapScript1_2C8336: @ 82C8336
+@ TrainerHill_Roof_MapScript1_2C8336: @ 82C8336
+@ 	setvar VAR_TEMP_2, 0
+@ 	setvar VAR_0x8004, TRAINER_HILL_FUNC_RESUME_TIMER
+@ 	special CallTrainerHillFunction
+@ 	setvar VAR_0x8004, 1
+@ 	setvar VAR_0x8005, 5
+@ 	special CallFrontierUtilFunc
+@ 	compare VAR_RESULT, B_OUTCOME_LOST
+@ 	goto_if_eq TrainerHill_1F_EventScript_2C83C9
+@ 	compare VAR_RESULT, B_OUTCOME_DREW
+@ 	goto_if_eq TrainerHill_1F_EventScript_2C83C9
+@ 	compare VAR_RESULT, B_OUTCOME_FORFEITED
+@ 	goto_if_eq TrainerHill_1F_EventScript_2C83C9
+@ 	end
 
-TrainerHill_1F_MapScript2_2C8372: @ 82C8372
-TrainerHill_2F_MapScript2_2C8372: @ 82C8372
-	map_script_2 VAR_TEMP_3, 0, TrainerHill_1F_EventScript_2C837C
-	.2byte 0
+@ TrainerHill_1F_MapScript2_2C8372: @ 82C8372
+@ TrainerHill_2F_MapScript2_2C8372: @ 82C8372
+@ 	map_script_2 VAR_TEMP_3, 0, TrainerHill_1F_EventScript_2C837C
+@ 	.2byte 0
 
-TrainerHill_1F_EventScript_2C837C:: @ 82C837C
-	setvar VAR_TEMP_3, 1
-@ forced stop
+@ TrainerHill_1F_EventScript_2C837C:: @ 82C837C
+@ 	setvar VAR_TEMP_3, 1
+@ @ forced stop
 
-TrainerHill_1F_MapScript2_2C8381: @ 82C8381
-TrainerHill_2F_MapScript2_2C8381: @ 82C8381
-TrainerHill_3F_MapScript2_2C8381: @ 82C8381
-TrainerHill_4F_MapScript2_2C8381: @ 82C8381
-TrainerHill_Roof_MapScript2_2C8381: @ 82C8381
-	map_script_2 VAR_TEMP_2, 0, TrainerHill_1F_EventScript_2C83A6
-	map_script_2 VAR_TEMP_1, 1, TrainerHill_1F_EventScript_2C83DF
-	.2byte 0
+@ TrainerHill_1F_MapScript2_2C8381: @ 82C8381
+@ TrainerHill_2F_MapScript2_2C8381: @ 82C8381
+@ TrainerHill_3F_MapScript2_2C8381: @ 82C8381
+@ TrainerHill_4F_MapScript2_2C8381: @ 82C8381
+@ TrainerHill_Roof_MapScript2_2C8381: @ 82C8381
+@ 	map_script_2 VAR_TEMP_2, 0, TrainerHill_1F_EventScript_2C83A6
+@ 	map_script_2 VAR_TEMP_1, 1, TrainerHill_1F_EventScript_2C83DF
+@ 	.2byte 0
 
-EventScript_TrainerHillTimer:: @ 82C8393
-	lockall
-	setvar VAR_0x8004, TRAINER_HILL_FUNC_7
-	special CallTrainerHillFunction
-	msgbox TrainerHill_Entrance_Text_268D47, MSGBOX_DEFAULT
-	releaseall
-	end
+@ EventScript_TrainerHillTimer:: @ 82C8393
+@ 	lockall
+@ 	setvar VAR_0x8004, TRAINER_HILL_FUNC_7
+@ 	special CallTrainerHillFunction
+@ 	msgbox TrainerHill_Entrance_Text_268D47, MSGBOX_DEFAULT
+@ 	releaseall
+@ 	end
 
-TrainerHill_1F_EventScript_2C83A6:: @ 82C83A6
-	setvar VAR_TEMP_2, 1
-	setvar VAR_0x8004, TRAINER_HILL_FUNC_9
-	special CallTrainerHillFunction
-	compare VAR_RESULT, 1
-	goto_if_eq TrainerHill_1F_EventScript_2C83BF
-	end
+@ TrainerHill_1F_EventScript_2C83A6:: @ 82C83A6
+@ 	setvar VAR_TEMP_2, 1
+@ 	setvar VAR_0x8004, TRAINER_HILL_FUNC_9
+@ 	special CallTrainerHillFunction
+@ 	compare VAR_RESULT, 1
+@ 	goto_if_eq TrainerHill_1F_EventScript_2C83BF
+@ 	end
 
-TrainerHill_1F_EventScript_2C83BF:: @ 82C83BF
-	warpsilent MAP_TRAINER_HILL_ENTRANCE, 255, 9, 6
-	waitstate
-	end
+@ TrainerHill_1F_EventScript_2C83BF:: @ 82C83BF
+@ 	warpsilent MAP_TRAINER_HILL_ENTRANCE, 255, 9, 6
+@ 	waitstate
+@ 	end
 
-TrainerHill_1F_EventScript_2C83C9:: @ 82C83C9
-	setvar VAR_0x8004, TRAINER_HILL_FUNC_12
-	special CallTrainerHillFunction
-	setvar VAR_0x8004, TRAINER_HILL_FUNC_SET_LOST
-	special CallTrainerHillFunction
-	setvar VAR_TEMP_1, 1
-	end
+@ TrainerHill_1F_EventScript_2C83C9:: @ 82C83C9
+@ 	setvar VAR_0x8004, TRAINER_HILL_FUNC_12
+@ 	special CallTrainerHillFunction
+@ 	setvar VAR_0x8004, TRAINER_HILL_FUNC_SET_LOST
+@ 	special CallTrainerHillFunction
+@ 	setvar VAR_TEMP_1, 1
+@ 	end
 
-TrainerHill_1F_EventScript_2C83DF:: @ 82C83DF
-TrainerHill_Entrance_EventScript_2C83DF:: @ 82C83DF
-	setvar VAR_TEMP_1, 0
-	warp MAP_TRAINER_HILL_ENTRANCE, 255, 9, 6
-	waitstate
-	end
+@ TrainerHill_1F_EventScript_2C83DF:: @ 82C83DF
+@ TrainerHill_Entrance_EventScript_2C83DF:: @ 82C83DF
+@ 	setvar VAR_TEMP_1, 0
+@ 	warp MAP_TRAINER_HILL_ENTRANCE, 255, 9, 6
+@ 	waitstate
+@ 	end
 
-TrainerHill_1F_Movement_2C83EE:: @ 82C83EE
-	set_invisible
-	step_end
+@ TrainerHill_1F_Movement_2C83EE:: @ 82C83EE
+@ 	set_invisible
+@ 	step_end
 
 EventScript_2C83F0:: @ 82C83F0
 	trainerbattle TRAINER_BATTLE_12, TRAINER_PHILLIP, 0, BattleFacility_TrainerBattle_PlaceholderText, BattleFacility_TrainerBattle_PlaceholderText
@@ -7116,4 +6684,3 @@ gText_082C877B:: @ 82C877B
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
 
-	.include "data/maps/TrickHouseExt/scripts.inc"
