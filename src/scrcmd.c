@@ -40,6 +40,7 @@
 #include "script_movement.h"
 #include "script_pokemon_80F8.h"
 #include "script_pokemon_81B9.h"
+#include "strings.h"
 #include "shop.h"
 #include "slot_machine.h"
 #include "sound.h"
@@ -63,6 +64,10 @@ static EWRAM_DATA u16 sMovingNpcMapId = 0;
 static EWRAM_DATA u16 sFieldEffectScriptId = 0;
 
 static u8 gBrailleWindowId;
+
+// Reference to an assembly defined constant, the start of the ROM
+// We don't actually use the value, just the address it's at.
+extern const int Start;
 
 extern const SpecialFunc gSpecials[];
 extern const u8 *gStdScripts[];
@@ -2297,3 +2302,92 @@ bool8 ScrCmd_warpE0(struct ScriptContext *ctx)
     ResetInitialPlayerAvatarState();
     return TRUE;
 }
+
+bool8 ScrCmd_selectpointer(struct ScriptContext *ctx)
+{
+    const u8 **ptr = (const u8 **)ScriptReadWord(ctx);
+    u16 index = VarGet(ScriptReadHalfword(ctx));
+    u8 overmethod = ScriptReadByte(ctx);
+    u16 max;
+    
+    if (ptr == NULL)
+    {
+        ptr = (const u8 **)&ctx->data[0];
+        max = 4;
+    }
+    else
+    {
+        for (max = 0; max < 64; max++)
+        {
+            if (ptr[max] == NULL) break;
+        }
+    }
+    switch (overmethod)
+    {
+        default:
+        case 0: //Error if past max
+            break;
+        case 1: //wrap if past max
+            index = index % max;
+            break;
+        case 2: //clamp if past max
+            index = min(index, max-1);
+            break;
+    }
+    // Only load this pointer if it's within the array and pointing to someplace in ROM
+    if (index < max && ptr[index] > (const u8*)&Start) 
+    {
+        ctx->data[0] = (u32)ptr[index];
+        ctx->data[1] = 0;
+        ctx->data[2] = 0;
+        ctx->data[3] = 0;
+    }
+    else
+    {
+        ctx->data[0] = (u32)&gText_ScriptError;
+        // Debugging variables:
+        ctx->data[1] = index;
+        ctx->data[2] = max;
+        ctx->data[3] = (u32)ptr;
+    }
+    return FALSE;
+}
+
+bool8 ScrCmd_selectwarpdestination(struct ScriptContext *ctx)
+{
+    const u16 *ptr = (const u16 *)ScriptReadWord(ctx);
+    u16 index = VarGet(ScriptReadHalfword(ctx));
+    u16 max;
+    
+    if (ptr == NULL) goto errorHandle;
+    // Only load this pointer if it's within the array and pointing to someplace in ROM
+    if (ptr <= (const u16*)&Start) goto errorHandle;
+    
+    for (max = 0; max < 256; max++)
+    {
+        if (ptr[max] == 0xFFFF) break;
+    }
+    if (index >= max) goto errorHandle;
+    
+    {
+        u8 mapGroup = ptr[index] >> 8;
+        u8 mapNum = ptr[index] & 0xFF;
+        SetDynamicWarpWithCoords(0, mapGroup, mapNum, 0, -1, -1);
+    }
+    
+    ctx->data[0] = 0;
+    ctx->data[1] = 0;
+    ctx->data[2] = 0;
+    ctx->data[3] = 0;
+    return FALSE;
+    
+errorHandle:
+    SetDynamicWarpWithCoords(0, 0, 0, 0, -1, -1);
+    ctx->data[0] = 0;
+    // Debugging variables:
+    ctx->data[1] = index;
+    ctx->data[2] = max;
+    ctx->data[3] = (u32)ptr;
+    return FALSE;
+}
+

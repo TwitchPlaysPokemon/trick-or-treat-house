@@ -1555,7 +1555,46 @@
 	.2byte \item
 	.2byte \quantity
 	.endm
-
+	
+	@ Selects a pointer from the given array and loads it into word 0 (for use with message 0 and other things).
+	@ This version errors if the index goes past the end of the array.
+	@ Note: the array MUST be word-aligned with .align 2
+	.macro selectpointer array:req, index:req
+	.byte 0xe3
+	.4byte \array
+	.2byte \index
+	.byte 0
+	.endm
+	
+	@ Selects a pointer from the given array and loads it into word 0 (for use with message 0 and other things).
+	@ This version wraps the array (modulus) if the index would go past the end of the array.
+	@ Note: the array MUST be word-aligned with .align 2
+	.macro selectpointer_wrap array:req, index:req
+	.byte 0xe3
+	.4byte \array
+	.2byte \index
+	.byte 1
+	.endm
+	
+	@ Selects a pointer from the given array and loads it into word 0 (for use with message 0 and other things).
+	@ This version maxes out at the end of the array if the index would go past it.
+	@ Note: the array MUST be word-aligned with .align 2
+	.macro selectpointer_clamp array:req, index:req
+	.byte 0xe3
+	.4byte \array
+	.2byte \index
+	.byte 2
+	.endm
+	
+	@ Selects a pointer from the given array and loads it into word 0 (for use with message 0 and other things).
+	@ This version errors if the index goes past the end of the array.
+	@ Note: the array MUST be word-aligned with .align 2
+	.macro selectwarpdestination array:req, index:req
+	.byte 0xe4
+	.4byte \array
+	.2byte \index
+	.endm
+	
 
 @ Supplementary
 

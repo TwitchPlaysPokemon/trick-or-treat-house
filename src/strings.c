@@ -2,6 +2,7 @@
 #include "strings.h"
 
 ALIGNED(4)
+const u8 gText_ScriptError[] = _("Script error!\nIf you see this, report it!");
 const u8 gExpandedPlaceholder_Empty[] = _("");
 const u8 gExpandedPlaceholder_Kun[] = _("");
 const u8 gExpandedPlaceholder_Chan[] = _("");
