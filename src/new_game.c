@@ -204,7 +204,7 @@ void NewGameInitData(void)
     InitMatchCallCounters();
     sub_801AFD8();
     WipeTrainerNameRecords();
-    ResetTrainerHillResults();
+    // ResetTrainerHillResults();
     ResetContestLinkResults();
 }
 

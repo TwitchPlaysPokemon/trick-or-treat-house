@@ -2499,8 +2499,8 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                     toCpy = gTrainerClassNames[GetFrontierBrainTrainerClass()];
                 else if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
                     toCpy = gTrainerClassNames[GetFrontierOpponentClass(gTrainerBattleOpponent_A)];
-                else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
-                    toCpy = gTrainerClassNames[GetTrainerHillOpponentClass(gTrainerBattleOpponent_A)];
+                // else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
+                //     toCpy = gTrainerClassNames[GetTrainerHillOpponentClass(gTrainerBattleOpponent_A)];
                 else if (gBattleTypeFlags & BATTLE_TYPE_EREADER_TRAINER)
                     toCpy = gTrainerClassNames[GetEreaderTrainerClassId()];
                 else
@@ -2529,11 +2529,11 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                     GetFrontierTrainerName(text, gTrainerBattleOpponent_A);
                     toCpy = text;
                 }
-                else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
-                {
-                    GetTrainerHillTrainerName(text, gTrainerBattleOpponent_A);
-                    toCpy = text;
-                }
+                // else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
+                // {
+                //     GetTrainerHillTrainerName(text, gTrainerBattleOpponent_A);
+                //     toCpy = text;
+                // }
                 else if (gBattleTypeFlags & BATTLE_TYPE_EREADER_TRAINER)
                 {
                     GetEreaderTrainerName(text);
@@ -2571,11 +2571,11 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                     CopyFrontierTrainerText(FRONTIER_PLAYER_WON_TEXT, gTrainerBattleOpponent_A);
                     toCpy = gStringVar4;
                 }
-                else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
-                {
-                    CopyTrainerHillTrainerText(4, gTrainerBattleOpponent_A);
-                    toCpy = gStringVar4;
-                }
+                // else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
+                // {
+                //     CopyTrainerHillTrainerText(4, gTrainerBattleOpponent_A);
+                //     toCpy = gStringVar4;
+                // }
                 else
                 {
                     toCpy = GetTrainerALoseText();
@@ -2587,11 +2587,11 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                     CopyFrontierTrainerText(FRONTIER_PLAYER_LOST_TEXT, gTrainerBattleOpponent_A);
                     toCpy = gStringVar4;
                 }
-                else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
-                {
-                    CopyTrainerHillTrainerText(3, gTrainerBattleOpponent_A);
-                    toCpy = gStringVar4;
-                }
+                // else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
+                // {
+                //     CopyTrainerHillTrainerText(3, gTrainerBattleOpponent_A);
+                //     toCpy = gStringVar4;
+                // }
                 break;
             case B_TXT_26: // ?
                 HANDLE_NICKNAME_STRING_CASE(gBattleScripting.battler, *(&gBattleStruct->field_52))
@@ -2641,8 +2641,8 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
             case B_TXT_TRAINER2_CLASS:
                 if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
                     toCpy = gTrainerClassNames[GetFrontierOpponentClass(gTrainerBattleOpponent_B)];
-                else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
-                    toCpy = gTrainerClassNames[GetTrainerHillOpponentClass(gTrainerBattleOpponent_B)];
+                // else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
+                //     toCpy = gTrainerClassNames[GetTrainerHillOpponentClass(gTrainerBattleOpponent_B)];
                 else
                     toCpy = gTrainerClassNames[gTrainers[gTrainerBattleOpponent_B].trainerClass];
                 break;
@@ -2652,11 +2652,11 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                     GetFrontierTrainerName(text, gTrainerBattleOpponent_B);
                     toCpy = text;
                 }
-                else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
-                {
-                    GetTrainerHillTrainerName(text, gTrainerBattleOpponent_B);
-                    toCpy = text;
-                }
+                // else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
+                // {
+                //     GetTrainerHillTrainerName(text, gTrainerBattleOpponent_B);
+                //     toCpy = text;
+                // }
                 else
                 {
                     toCpy = gTrainers[gTrainerBattleOpponent_B].trainerName;
@@ -2668,11 +2668,11 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                     CopyFrontierTrainerText(FRONTIER_PLAYER_WON_TEXT, gTrainerBattleOpponent_B);
                     toCpy = gStringVar4;
                 }
-                else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
-                {
-                    CopyTrainerHillTrainerText(4, gTrainerBattleOpponent_B);
-                    toCpy = gStringVar4;
-                }
+                // else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
+                // {
+                //     CopyTrainerHillTrainerText(4, gTrainerBattleOpponent_B);
+                //     toCpy = gStringVar4;
+                // }
                 else
                 {
                     toCpy = GetTrainerBLoseText();
@@ -2684,11 +2684,11 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                     CopyFrontierTrainerText(FRONTIER_PLAYER_LOST_TEXT, gTrainerBattleOpponent_B);
                     toCpy = gStringVar4;
                 }
-                else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
-                {
-                    CopyTrainerHillTrainerText(3, gTrainerBattleOpponent_B);
-                    toCpy = gStringVar4;
-                }
+                // else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
+                // {
+                //     CopyTrainerHillTrainerText(3, gTrainerBattleOpponent_B);
+                //     toCpy = gStringVar4;
+                // }
                 break;
             case B_TXT_PARTNER_CLASS:
                 toCpy = gTrainerClassNames[GetFrontierOpponentClass(gPartnerTrainerId)];

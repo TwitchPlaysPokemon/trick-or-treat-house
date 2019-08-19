@@ -1,6 +1,6 @@
 #include "global.h"
 #include "alloc.h"
-#include "battle_pyramid.h"
+// #include "battle_pyramid.h"
 #include "berry.h"
 #include "decoration.h"
 #include "event_data.h"
@@ -1419,15 +1419,15 @@ u8 Unref_TryInitLocalEventObject(u8 localId)
 
     if (gMapHeader.events != NULL)
     {
-        if (InBattlePyramid())
-        {
-            eventObjectCount = GetNumBattlePyramidEventObjects();
-        }
-        else if (InTrainerHill())
-        {
-            eventObjectCount = 2;
-        }
-        else
+        // if (InBattlePyramid())
+        // {
+        //     eventObjectCount = GetNumBattlePyramidEventObjects();
+        // }
+        // else if (InTrainerHill())
+        // {
+        //     eventObjectCount = 2;
+        // }
+        // else
         {
             eventObjectCount = gMapHeader.events->eventObjectCount;
         }
@@ -1741,15 +1741,15 @@ void TrySpawnEventObjects(s16 cameraX, s16 cameraY)
         s16 top = gSaveBlock1Ptr->pos.y;
         s16 bottom = gSaveBlock1Ptr->pos.y + 16;
 
-        if (InBattlePyramid())
-        {
-            objectCount = GetNumBattlePyramidEventObjects();
-        }
-        else if (InTrainerHill())
-        {
-            objectCount = 2;
-        }
-        else
+        // if (InBattlePyramid())
+        // {
+        //     objectCount = GetNumBattlePyramidEventObjects();
+        // }
+        // else if (InTrainerHill())
+        // {
+        //     objectCount = 2;
+        // }
+        // else
         {
             objectCount = gMapHeader.events->eventObjectCount;
         }

@@ -88,18 +88,18 @@ extern const u8 EventScript_DoLinkRoomExit[];
 extern const u8 gEventScript_TradeRoom_TooBusyToNotice[];
 extern const u8 gEventScript_TradeRoom_ReadTrainerCard_NoColor[];
 extern const u8 gEventScript_TradeRoom_ReadTrainerCard_Normal[];
-extern const u8 EventScript_DoubleBattleColosseum_PlayerSpot0[];
-extern const u8 EventScript_DoubleBattleColosseum_PlayerSpot1[];
-extern const u8 EventScript_DoubleBattleColosseum_PlayerSpot2[];
-extern const u8 EventScript_DoubleBattleColosseum_PlayerSpot3[];
-extern const u8 EventScript_RecordCenter_Spot0[];
-extern const u8 EventScript_RecordCenter_Spot1[];
-extern const u8 EventScript_RecordCenter_Spot2[];
-extern const u8 EventScript_RecordCenter_Spot3[];
-extern const u8 EventScript_SingleBattleColosseum_PlayerSpot0[];
-extern const u8 EventScript_SingleBattleColosseum_PlayerSpot1[];
-extern const u8 EventScript_TradeCenter_Chair1[];
-extern const u8 EventScript_TradeCenter_Chair0[];
+// extern const u8 EventScript_DoubleBattleColosseum_PlayerSpot0[];
+// extern const u8 EventScript_DoubleBattleColosseum_PlayerSpot1[];
+// extern const u8 EventScript_DoubleBattleColosseum_PlayerSpot2[];
+// extern const u8 EventScript_DoubleBattleColosseum_PlayerSpot3[];
+// extern const u8 EventScript_RecordCenter_Spot0[];
+// extern const u8 EventScript_RecordCenter_Spot1[];
+// extern const u8 EventScript_RecordCenter_Spot2[];
+// extern const u8 EventScript_RecordCenter_Spot3[];
+// extern const u8 EventScript_SingleBattleColosseum_PlayerSpot0[];
+// extern const u8 EventScript_SingleBattleColosseum_PlayerSpot1[];
+// extern const u8 EventScript_TradeCenter_Chair1[];
+// extern const u8 EventScript_TradeCenter_Chair0[];
 extern const u8 EventScript_ConfirmLeaveTradeRoom[];
 extern const u8 EventScript_TerminateLink[];
 
@@ -851,11 +851,11 @@ static void mli0_load_map(u32 a1)
     LoadCurrentMapData();
     if (!(sUnknown_020322D8 & 1))
     {
-        if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_EMPTY_SQUARE)
-            LoadBattlePyramidEventObjectTemplates();
-        else if (InTrainerHill())
-            sub_81D5DF8();
-        else
+        // if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_EMPTY_SQUARE)
+        //     LoadBattlePyramidEventObjectTemplates();
+        // else if (InTrainerHill())
+        //     sub_81D5DF8();
+        // else
             LoadEventObjTemplatesFromHeader();
     }
 
@@ -879,11 +879,11 @@ static void mli0_load_map(u32 a1)
     RunOnTransitionMapScript();
     UpdateLocationHistoryForRoamer();
     RoamerMoveToOtherLocationSet();
-    if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_EMPTY_SQUARE)
-        InitBattlePyramidMap(FALSE);
-    else if (InTrainerHill())
-        InitTrainerHillMap();
-    else
+    // if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_EMPTY_SQUARE)
+    //     InitBattlePyramidMap(FALSE);
+    // else if (InTrainerHill())
+    //     InitTrainerHillMap();
+    // else
         InitMap();
 
     if (a1 != 1 && isIndoors)
@@ -1606,22 +1606,22 @@ void CB2_ContinueSavedGame(void)
 
     LoadSaveblockMapHeader();
     ClearDiveAndHoleWarps();
-    trainerHillMapId = GetCurrentTrainerHillMapId();
-    if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_EMPTY_SQUARE)
-        LoadBattlePyramidFloorEventObjectScripts();
-    else if (trainerHillMapId != 0 && trainerHillMapId != 6)
-        sub_81D5F48();
-    else
+    // trainerHillMapId = GetCurrentTrainerHillMapId();
+    // if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_EMPTY_SQUARE)
+    //     LoadBattlePyramidFloorEventObjectScripts();
+    // else if (trainerHillMapId != 0 && trainerHillMapId != 6)
+    //     sub_81D5F48();
+    // else
         LoadSaveblockEventObjScripts();
 
     UnfreezeEventObjects();
     DoTimeBasedEvents();
     sub_8084788();
-    if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_EMPTY_SQUARE)
-        InitBattlePyramidMap(TRUE);
-    else if (trainerHillMapId != 0)
-        InitTrainerHillMap();
-    else
+    // if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_EMPTY_SQUARE)
+    //     InitBattlePyramidMap(TRUE);
+    // else if (trainerHillMapId != 0)
+    //     InitTrainerHillMap();
+    // else
         InitMapFromSavedGame();
 
     PlayTimeCounter_Start();
@@ -1687,12 +1687,13 @@ static void InitCurrentFlashLevelScanlineEffect(void)
 {
     u8 flashLevel;
 
-    if (InBattlePyramid_())
-    {
-        WriteBattlePyramidViewScanlineEffectBuffer();
-        ScanlineEffect_SetParams(sFlashEffectParams);
-    }
-    else if ((flashLevel = Overworld_GetFlashLevel()))
+    // if (InBattlePyramid_())
+    // {
+    //     WriteBattlePyramidViewScanlineEffectBuffer();
+    //     ScanlineEffect_SetParams(sFlashEffectParams);
+    // }
+    // else
+    if ((flashLevel = Overworld_GetFlashLevel()))
     {
         WriteFlashScanlineEffectBuffer(flashLevel);
         ScanlineEffect_SetParams(sFlashEffectParams);
@@ -1864,7 +1865,7 @@ static bool32 sub_8086638(u8 *state)
         break;
     case 1:
         sub_8086860();
-        sub_81D64C0();
+        // sub_81D64C0();
         (*state)++;
         break;
     case 2:
@@ -2669,31 +2670,31 @@ static const u8 *TryInteractWithPlayer(struct TradeRoomPlayer *player)
 // these event scripts runs.
 static u16 GetDirectionForEventScript(const u8 *script)
 {
-    if (script == EventScript_DoubleBattleColosseum_PlayerSpot0)
-        return FACING_FORCED_RIGHT;
-    else if (script == EventScript_DoubleBattleColosseum_PlayerSpot1)
-        return FACING_FORCED_LEFT;
-    else if (script == EventScript_DoubleBattleColosseum_PlayerSpot2)
-        return FACING_FORCED_RIGHT;
-    else if (script == EventScript_DoubleBattleColosseum_PlayerSpot3)
-        return FACING_FORCED_LEFT;
-    else if (script == EventScript_RecordCenter_Spot0)
-        return FACING_FORCED_RIGHT;
-    else if (script == EventScript_RecordCenter_Spot1)
-        return FACING_FORCED_LEFT;
-    else if (script == EventScript_RecordCenter_Spot2)
-        return FACING_FORCED_RIGHT;
-    else if (script == EventScript_RecordCenter_Spot3)
-        return FACING_FORCED_LEFT;
-    else if (script == EventScript_SingleBattleColosseum_PlayerSpot0)
-        return FACING_FORCED_RIGHT;
-    else if (script == EventScript_SingleBattleColosseum_PlayerSpot1)
-        return FACING_FORCED_LEFT;
-    else if (script == EventScript_TradeCenter_Chair0)
-        return FACING_FORCED_RIGHT;
-    else if (script == EventScript_TradeCenter_Chair1)
-        return FACING_FORCED_LEFT;
-    else
+    // if (script == EventScript_DoubleBattleColosseum_PlayerSpot0)
+    //     return FACING_FORCED_RIGHT;
+    // else if (script == EventScript_DoubleBattleColosseum_PlayerSpot1)
+    //     return FACING_FORCED_LEFT;
+    // else if (script == EventScript_DoubleBattleColosseum_PlayerSpot2)
+    //     return FACING_FORCED_RIGHT;
+    // else if (script == EventScript_DoubleBattleColosseum_PlayerSpot3)
+    //     return FACING_FORCED_LEFT;
+    // else if (script == EventScript_RecordCenter_Spot0)
+    //     return FACING_FORCED_RIGHT;
+    // else if (script == EventScript_RecordCenter_Spot1)
+    //     return FACING_FORCED_LEFT;
+    // else if (script == EventScript_RecordCenter_Spot2)
+    //     return FACING_FORCED_RIGHT;
+    // else if (script == EventScript_RecordCenter_Spot3)
+    //     return FACING_FORCED_LEFT;
+    // else if (script == EventScript_SingleBattleColosseum_PlayerSpot0)
+    //     return FACING_FORCED_RIGHT;
+    // else if (script == EventScript_SingleBattleColosseum_PlayerSpot1)
+    //     return FACING_FORCED_LEFT;
+    // else if (script == EventScript_TradeCenter_Chair0)
+    //     return FACING_FORCED_RIGHT;
+    // else if (script == EventScript_TradeCenter_Chair1)
+    //     return FACING_FORCED_LEFT;
+    // else
         return FACING_NONE;
 }
 

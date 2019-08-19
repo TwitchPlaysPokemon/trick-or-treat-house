@@ -1,7 +1,7 @@
 #include "global.h"
 #include "battle_pike.h"
-#include "battle_pyramid.h"
-#include "battle_pyramid_bag.h"
+// #include "battle_pyramid.h"
+// #include "battle_pyramid_bag.h"
 #include "bg.h"
 #include "event_data.h"
 #include "event_object_movement.h"
@@ -101,15 +101,15 @@ static bool8 StartMenuOptionCallback(void);
 static bool8 StartMenuExitCallback(void);
 static bool8 StartMenuSafariZoneRetireCallback(void);
 static bool8 StartMenuLinkModePlayerNameCallback(void);
-static bool8 StartMenuBattlePyramidRetireCallback(void);
-static bool8 StartMenuBattlePyramidBagCallback(void);
+// static bool8 StartMenuBattlePyramidRetireCallback(void);
+// static bool8 StartMenuBattlePyramidBagCallback(void);
 
 // Menu callbacks
 static bool8 SaveStartCallback(void);
 static bool8 SaveCallback(void);
-static bool8 BattlePyramidRetireStartCallback(void);
-static bool8 BattlePyramidRetireReturnCallback(void);
-static bool8 BattlePyramidRetireCallback(void);
+// static bool8 BattlePyramidRetireStartCallback(void);
+// static bool8 BattlePyramidRetireReturnCallback(void);
+// static bool8 BattlePyramidRetireCallback(void);
 static bool8 HandleStartMenuInput(void);
 
 // Save dialog callbacks
@@ -169,8 +169,8 @@ static const struct MenuAction sStartMenuItems[] =
     {gText_MenuRetire, {.u8_void = StartMenuSafariZoneRetireCallback}},
     {gText_MenuPlayer, {.u8_void = StartMenuLinkModePlayerNameCallback}},
     {gText_MenuRest, {.u8_void = StartMenuSaveCallback}},
-    {gText_MenuRetire, {.u8_void = StartMenuBattlePyramidRetireCallback}},
-    {gText_MenuBag, {.u8_void = StartMenuBattlePyramidBagCallback}}
+    // {gText_MenuRetire, {.u8_void = StartMenuBattlePyramidRetireCallback}},
+    // {gText_MenuBag, {.u8_void = StartMenuBattlePyramidBagCallback}}
 };
 
 static const struct BgTemplate sUnknown_085105A8[] =
@@ -219,7 +219,7 @@ static void HideSaveInfoWindow(void);
 static void SaveStartTimer(void);
 static bool8 SaveSuccesTimer(void);
 static bool8 SaveErrorTimer(void);
-static void InitBattlePyramidRetire(void);
+// static void InitBattlePyramidRetire(void);
 static void sub_80A03D8(void);
 static bool32 sub_80A03E4(u8 *par1);
 static void sub_80A0540(void);
@@ -254,10 +254,10 @@ static void BuildStartMenuActions(void)
     {
         BuildBattlePikeStartMenu();
     }
-    else if (InBattlePyramid())
-    {
-        BuildBattlePyramidStartMenu();
-    }
+    // else if (InBattlePyramid())
+    // {
+    //     BuildBattlePyramidStartMenu();
+    // }
     else if (InMultiBattleRoom())
     {
         BuildMultiBattleRoomStartMenu();
@@ -400,11 +400,11 @@ static void RemoveExtraStartMenuWindows(void)
         CopyWindowToVram(sSafariBallsWindowId, 2);
         RemoveWindow(sSafariBallsWindowId);
     }
-    if (InBattlePyramid())
-    {
-        ClearStdWindowAndFrameToTransparent(sBattlePyramidFloorWindowId, FALSE);
-        RemoveWindow(sBattlePyramidFloorWindowId);
-    }
+    // if (InBattlePyramid())
+    // {
+    //     ClearStdWindowAndFrameToTransparent(sBattlePyramidFloorWindowId, FALSE);
+    //     RemoveWindow(sBattlePyramidFloorWindowId);
+    // }
 }
 
 static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
@@ -460,8 +460,8 @@ static bool32 InitStartMenuStep(void)
     case 3:
         if (GetSafariZoneFlag())
             ShowSafariBallsWindow();
-        if (InBattlePyramid())
-            ShowPyramidFloorWindow();
+        // if (InBattlePyramid())
+        //     ShowPyramidFloorWindow();
         sUnknown_02037619[0]++;
         break;
     case 4:
@@ -578,8 +578,8 @@ static bool8 HandleStartMenuInput(void)
 
         if (gMenuCallback != StartMenuSaveCallback
             && gMenuCallback != StartMenuExitCallback
-            && gMenuCallback != StartMenuSafariZoneRetireCallback
-            && gMenuCallback != StartMenuBattlePyramidRetireCallback)
+            && gMenuCallback != StartMenuSafariZoneRetireCallback)
+            // && gMenuCallback != StartMenuBattlePyramidRetireCallback)
         {
            FadeScreen(1, 0);
         }
@@ -681,8 +681,8 @@ static bool8 StartMenuPlayerNameCallback(void)
 
 static bool8 StartMenuSaveCallback(void)
 {
-    if (InBattlePyramid())
-        RemoveExtraStartMenuWindows();
+    // if (InBattlePyramid())
+    //     RemoveExtraStartMenuWindows();
 
     gMenuCallback = SaveStartCallback; // Display save menu
 
@@ -736,12 +736,12 @@ static bool8 StartMenuLinkModePlayerNameCallback(void)
     return FALSE;
 }
 
-static bool8 StartMenuBattlePyramidRetireCallback(void)
-{
-    gMenuCallback = BattlePyramidRetireStartCallback; // Confirm retire
+// static bool8 StartMenuBattlePyramidRetireCallback(void)
+// {
+//     gMenuCallback = BattlePyramidRetireStartCallback; // Confirm retire
 
-    return FALSE;
-}
+//     return FALSE;
+// }
 
 void sub_809FDD4(void)
 {
@@ -751,20 +751,20 @@ void sub_809FDD4(void)
     ScriptContext2_Enable();
 }
 
-static bool8 StartMenuBattlePyramidBagCallback(void)
-{
-    if (!gPaletteFade.active)
-    {
-        PlayRainStoppingSoundEffect();
-        RemoveExtraStartMenuWindows();
-        CleanupOverworldWindowsAndTilemaps();
-        SetMainCallback2(CB2_PyramidBagMenuFromStartMenu);
+// static bool8 StartMenuBattlePyramidBagCallback(void)
+// {
+//     if (!gPaletteFade.active)
+//     {
+//         // PlayRainStoppingSoundEffect();
+//         // RemoveExtraStartMenuWindows();
+//         // CleanupOverworldWindowsAndTilemaps();
+//         // SetMainCallback2(CB2_PyramidBagMenuFromStartMenu);
 
-        return TRUE;
-    }
+//         return TRUE;
+//     }
 
-    return FALSE;
-}
+//     return FALSE;
+// }
 
 static bool8 SaveStartCallback(void)
 {
@@ -790,49 +790,49 @@ static bool8 SaveCallback(void)
         ClearDialogWindowAndFrameToTransparent(0, TRUE);
         ScriptUnfreezeEventObjects();
         ScriptContext2_Disable();
-        SoftResetInBattlePyramid();
+        // SoftResetInBattlePyramid();
         return TRUE;
     }
 
     return FALSE;
 }
 
-static bool8 BattlePyramidRetireStartCallback(void)
-{
-    InitBattlePyramidRetire();
-    gMenuCallback = BattlePyramidRetireCallback;
+// static bool8 BattlePyramidRetireStartCallback(void)
+// {
+//     InitBattlePyramidRetire();
+//     gMenuCallback = BattlePyramidRetireCallback;
 
-    return FALSE;
-}
+//     return FALSE;
+// }
 
-static bool8 BattlePyramidRetireReturnCallback(void)
-{
-    InitStartMenu();
-    gMenuCallback = HandleStartMenuInput;
+// static bool8 BattlePyramidRetireReturnCallback(void)
+// {
+//     InitStartMenu();
+//     gMenuCallback = HandleStartMenuInput;
 
-    return FALSE;
-}
+//     return FALSE;
+// }
 
-static bool8 BattlePyramidRetireCallback(void)
-{
-    switch (RunSaveCallback())
-    {
-    case SAVE_SUCCESS: // No (Stay in battle pyramid)
-        RemoveExtraStartMenuWindows();
-        gMenuCallback = BattlePyramidRetireReturnCallback;
-        return FALSE;
-    case SAVE_IN_PROGRESS:
-        return FALSE;
-    case SAVE_CANCELED: // Yes (Retire from battle pyramid)
-        ClearDialogWindowAndFrameToTransparent(0, TRUE);
-        ScriptUnfreezeEventObjects();
-        ScriptContext2_Disable();
-        ScriptContext1_SetupScript(BattleFrontier_BattlePyramidEmptySquare_EventScript_252C88);
-        return TRUE;
-    }
+// static bool8 BattlePyramidRetireCallback(void)
+// {
+//     switch (RunSaveCallback())
+//     {
+//     case SAVE_SUCCESS: // No (Stay in battle pyramid)
+//         RemoveExtraStartMenuWindows();
+//         gMenuCallback = BattlePyramidRetireReturnCallback;
+//         return FALSE;
+//     case SAVE_IN_PROGRESS:
+//         return FALSE;
+//     case SAVE_CANCELED: // Yes (Retire from battle pyramid)
+//         ClearDialogWindowAndFrameToTransparent(0, TRUE);
+//         ScriptUnfreezeEventObjects();
+//         ScriptContext2_Disable();
+//         ScriptContext1_SetupScript(BattleFrontier_BattlePyramidEmptySquare_EventScript_252C88);
+//         return TRUE;
+//     }
 
-    return FALSE;
-}
+//     return FALSE;
+// }
 
 static void InitSave(void)
 {
@@ -941,11 +941,11 @@ static u8 SaveConfirmSaveCallback(void)
     RemoveStartMenuWindow();
     ShowSaveInfoWindow();
 
-    if (InBattlePyramid())
-    {
-        ShowSaveMessage(gText_BattlePyramidConfirmRest, SaveYesNoCallback);
-    }
-    else
+    // if (InBattlePyramid())
+    // {
+    //     ShowSaveMessage(gText_BattlePyramidConfirmRest, SaveYesNoCallback);
+    // }
+    // else
     {
         ShowSaveMessage(gText_ConfirmSave, SaveYesNoCallback);
     }
@@ -1048,7 +1048,7 @@ static u8 SaveDoSaveCallback(void)
     u8 saveStatus;
 
     IncrementGameStat(GAME_STAT_SAVED_GAME);
-    sub_81A9E90();
+    // sub_81A9E90();
 
     if (gDifferentSaveFile == TRUE)
     {
@@ -1121,43 +1121,43 @@ static u8 SaveReturnErrorCallback(void)
     }
 }
 
-static void InitBattlePyramidRetire(void)
-{
-    sSaveDialogCallback = BattlePyramidConfirmRetireCallback;
-    sSavingComplete = FALSE;
-}
+// static void InitBattlePyramidRetire(void)
+// {
+//     sSaveDialogCallback = BattlePyramidConfirmRetireCallback;
+//     sSavingComplete = FALSE;
+// }
 
-static u8 BattlePyramidConfirmRetireCallback(void)
-{
-    ClearStdWindowAndFrame(GetStartMenuWindowId(), FALSE);
-    RemoveStartMenuWindow();
-    ShowSaveMessage(gText_BattlePyramidConfirmRetire, BattlePyramidRetireYesNoCallback);
+// static u8 BattlePyramidConfirmRetireCallback(void)
+// {
+//     ClearStdWindowAndFrame(GetStartMenuWindowId(), FALSE);
+//     RemoveStartMenuWindow();
+//     ShowSaveMessage(gText_BattlePyramidConfirmRetire, BattlePyramidRetireYesNoCallback);
 
-    return SAVE_IN_PROGRESS;
-}
+//     return SAVE_IN_PROGRESS;
+// }
 
-static u8 BattlePyramidRetireYesNoCallback(void)
-{
-    DisplayYesNoMenuWithDefault(1); // Show Yes/No menu (No selected as default)
-    sSaveDialogCallback = BattlePyramidRetireInputCallback;
+// static u8 BattlePyramidRetireYesNoCallback(void)
+// {
+//     DisplayYesNoMenuWithDefault(1); // Show Yes/No menu (No selected as default)
+//     sSaveDialogCallback = BattlePyramidRetireInputCallback;
 
-    return SAVE_IN_PROGRESS;
-}
+//     return SAVE_IN_PROGRESS;
+// }
 
-static u8 BattlePyramidRetireInputCallback(void)
-{
-    switch (Menu_ProcessInputNoWrapClearOnChoose())
-    {
-    case 0: // Yes
-        return SAVE_CANCELED;
-    case -1: // B Button
-    case 1: // No
-        sub_80A0014();
-        return SAVE_SUCCESS;
-    }
+// static u8 BattlePyramidRetireInputCallback(void)
+// {
+//     switch (Menu_ProcessInputNoWrapClearOnChoose())
+//     {
+//     case 0: // Yes
+//         return SAVE_CANCELED;
+//     case -1: // B Button
+//     case 1: // No
+//         sub_80A0014();
+//         return SAVE_SUCCESS;
+//     }
 
-    return SAVE_IN_PROGRESS;
-}
+//     return SAVE_IN_PROGRESS;
+// }
 
 static void sub_80A03D8(void)
 {

@@ -1,5 +1,5 @@
 #include "global.h"
-#include "battle_pyramid.h"
+// #include "battle_pyramid.h"
 #include "bg.h"
 #include "fieldmap.h"
 #include "fldeff.h"
@@ -68,14 +68,14 @@ void InitMapFromSavedGame(void)
 
 void InitBattlePyramidMap(bool8 setPlayerPosition)
 {
-    CpuFastFill(0x03ff03ff, gBackupMapData, sizeof(gBackupMapData));
-    GenerateBattlePyramidFloorLayout(gBackupMapData, setPlayerPosition);
+    // CpuFastFill(0x03ff03ff, gBackupMapData, sizeof(gBackupMapData));
+    // GenerateBattlePyramidFloorLayout(gBackupMapData, setPlayerPosition);
 }
 
 void InitTrainerHillMap(void)
 {
-    CpuFastFill(0x03ff03ff, gBackupMapData, sizeof(gBackupMapData));
-    sub_81D5FB4(gBackupMapData);
+    // CpuFastFill(0x03ff03ff, gBackupMapData, sizeof(gBackupMapData));
+    // sub_81D5FB4(gBackupMapData);
 }
 
 static void InitMapLayoutData(struct MapHeader *mapHeader)

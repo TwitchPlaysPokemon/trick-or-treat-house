@@ -6,7 +6,7 @@
 #include "battle_controllers.h"
 #include "battle_message.h"
 #include "battle_pike.h"
-#include "battle_pyramid.h"
+// #include "battle_pyramid.h"
 #include "battle_setup.h"
 #include "battle_tower.h"
 #include "data.h"
@@ -5702,11 +5702,11 @@ s32 GetBattlerMultiplayerId(u16 a1)
 
 u8 GetTrainerEncounterMusicId(u16 trainerOpponentId)
 {
-    if (InBattlePyramid())
-        return GetBattlePyramindTrainerEncounterMusicId(trainerOpponentId);
-    else if (sub_81D5C18())
-        return GetTrainerEncounterMusicIdInTrainerHill(trainerOpponentId);
-    else
+    // if (InBattlePyramid())
+    //     return GetBattlePyramindTrainerEncounterMusicId(trainerOpponentId);
+    // else if (InTrainerHill())
+    //     return GetTrainerEncounterMusicIdInTrainerHill(trainerOpponentId);
+    // else
         return TRAINER_ENCOUNTER_MUSIC(trainerOpponentId);
 }
 
@@ -6766,8 +6766,8 @@ bool8 sub_806F104(void)
 {
     if (gMain.inBattle && gBattleTypeFlags & (BATTLE_TYPE_FRONTIER))
         return TRUE;
-    if (!gMain.inBattle && (InBattlePike() || InBattlePyramid()))
-        return TRUE;
+    // if (!gMain.inBattle && (InBattlePike() || InBattlePyramid()))
+    //     return TRUE;
     return FALSE;
 }
 

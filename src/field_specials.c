@@ -2027,115 +2027,115 @@ void UpdateFrontierManiac(u16 a0)
 
 void sub_8139F20(void)
 {
-    static const u8 *const gUnknown_085B2C50[][3] = {
-        { BattleFrontier_Lounge2_Text_260971, BattleFrontier_Lounge2_Text_260A1E, BattleFrontier_Lounge2_Text_260AE7 },
-        { BattleFrontier_Lounge2_Text_2619AC, BattleFrontier_Lounge2_Text_261A91, BattleFrontier_Lounge2_Text_261B0C },
-        { BattleFrontier_Lounge2_Text_261B95, BattleFrontier_Lounge2_Text_261B95, BattleFrontier_Lounge2_Text_261B95 },
-        { BattleFrontier_Lounge2_Text_261C1A, BattleFrontier_Lounge2_Text_261C1A, BattleFrontier_Lounge2_Text_261C1A },
-        { BattleFrontier_Lounge2_Text_260BC4, BattleFrontier_Lounge2_Text_260C6D, BattleFrontier_Lounge2_Text_260D3A },
-        { BattleFrontier_Lounge2_Text_260E1E, BattleFrontier_Lounge2_Text_260EC7, BattleFrontier_Lounge2_Text_260F74 },
-        { BattleFrontier_Lounge2_Text_2614E6, BattleFrontier_Lounge2_Text_261591, BattleFrontier_Lounge2_Text_26166F },
-        { BattleFrontier_Lounge2_Text_261282, BattleFrontier_Lounge2_Text_261329, BattleFrontier_Lounge2_Text_261403 },
-        { BattleFrontier_Lounge2_Text_261026, BattleFrontier_Lounge2_Text_2610CC, BattleFrontier_Lounge2_Text_261194 },
-        { BattleFrontier_Lounge2_Text_26174D, BattleFrontier_Lounge2_Text_2617F9, BattleFrontier_Lounge2_Text_2618C4 },
-    };
+    // static const u8 *const gUnknown_085B2C50[][3] = {
+    //     { BattleFrontier_Lounge2_Text_260971, BattleFrontier_Lounge2_Text_260A1E, BattleFrontier_Lounge2_Text_260AE7 },
+    //     { BattleFrontier_Lounge2_Text_2619AC, BattleFrontier_Lounge2_Text_261A91, BattleFrontier_Lounge2_Text_261B0C },
+    //     { BattleFrontier_Lounge2_Text_261B95, BattleFrontier_Lounge2_Text_261B95, BattleFrontier_Lounge2_Text_261B95 },
+    //     { BattleFrontier_Lounge2_Text_261C1A, BattleFrontier_Lounge2_Text_261C1A, BattleFrontier_Lounge2_Text_261C1A },
+    //     { BattleFrontier_Lounge2_Text_260BC4, BattleFrontier_Lounge2_Text_260C6D, BattleFrontier_Lounge2_Text_260D3A },
+    //     { BattleFrontier_Lounge2_Text_260E1E, BattleFrontier_Lounge2_Text_260EC7, BattleFrontier_Lounge2_Text_260F74 },
+    //     { BattleFrontier_Lounge2_Text_2614E6, BattleFrontier_Lounge2_Text_261591, BattleFrontier_Lounge2_Text_26166F },
+    //     { BattleFrontier_Lounge2_Text_261282, BattleFrontier_Lounge2_Text_261329, BattleFrontier_Lounge2_Text_261403 },
+    //     { BattleFrontier_Lounge2_Text_261026, BattleFrontier_Lounge2_Text_2610CC, BattleFrontier_Lounge2_Text_261194 },
+    //     { BattleFrontier_Lounge2_Text_26174D, BattleFrontier_Lounge2_Text_2617F9, BattleFrontier_Lounge2_Text_2618C4 },
+    // };
 
-    static const u8 gUnknown_085B2CC8[][2] = {
-        { 0x15, 0x38 },
-        { 0x15, 0x23 },
-        { 0xff, 0xff },
-        { 0xff, 0xff },
-        { 0x02, 0x04 },
-        { 0x07, 0x15 },
-        { 0x07, 0x15 },
-        { 0x0e, 0x1c },
-        { 0x0d, 0x70 },
-        { 0x07, 0x38 }
-    };
+    // static const u8 gUnknown_085B2CC8[][2] = {
+    //     { 0x15, 0x38 },
+    //     { 0x15, 0x23 },
+    //     { 0xff, 0xff },
+    //     { 0xff, 0xff },
+    //     { 0x02, 0x04 },
+    //     { 0x07, 0x15 },
+    //     { 0x07, 0x15 },
+    //     { 0x0e, 0x1c },
+    //     { 0x0d, 0x70 },
+    //     { 0x07, 0x38 }
+    // };
 
-    u8 i;
-    u16 unk = 0;
-    u16 var = VarGet(VAR_FRONTIER_MANIAC_FACILITY);
-    switch (var)
-    {
-        case 0:
-        case 1:
-        case 2:
-        case 3:
-            if (gSaveBlock2Ptr->frontier.towerWinStreaks[var][0] >= gSaveBlock2Ptr->frontier.towerWinStreaks[var][1])
-            {
-                unk = gSaveBlock2Ptr->frontier.towerWinStreaks[var][0];
-            }
-            else
-            {
-                unk = gSaveBlock2Ptr->frontier.towerWinStreaks[var][1];
-            }
-            break;
-        case 4:
-            if (gSaveBlock2Ptr->frontier.domeWinStreaks[0][0] >= gSaveBlock2Ptr->frontier.domeWinStreaks[0][1])
-            {
-                unk = gSaveBlock2Ptr->frontier.domeWinStreaks[0][0];
-            }
-            else
-            {
-                unk = gSaveBlock2Ptr->frontier.domeWinStreaks[0][1];
-            }
-            break;
-        case 5:
-            if (gSaveBlock2Ptr->frontier.factoryWinStreaks[0][0] >= gSaveBlock2Ptr->frontier.factoryWinStreaks[0][1])
-            {
-                unk = gSaveBlock2Ptr->frontier.factoryWinStreaks[0][0];
-            }
-            else
-            {
-                unk = gSaveBlock2Ptr->frontier.factoryWinStreaks[0][1];
-            }
-            break;
-        case 6:
-            if (gSaveBlock2Ptr->frontier.palaceWinStreaks[0][0] >= gSaveBlock2Ptr->frontier.palaceWinStreaks[0][1])
-            {
-                unk = gSaveBlock2Ptr->frontier.palaceWinStreaks[0][0];
-            }
-            else
-            {
-                unk = gSaveBlock2Ptr->frontier.palaceWinStreaks[0][1];
-            }
-            break;
-        case 7:
-            if (gSaveBlock2Ptr->frontier.arenaWinStreaks[0] >= gSaveBlock2Ptr->frontier.arenaWinStreaks[1])
-            {
-                unk = gSaveBlock2Ptr->frontier.arenaWinStreaks[0];
-            }
-            else
-            {
-                unk = gSaveBlock2Ptr->frontier.arenaWinStreaks[1];
-            }
-            break;
-        case 8:
-            if (gSaveBlock2Ptr->frontier.pikeWinStreaks[0] >= gSaveBlock2Ptr->frontier.pikeWinStreaks[1])
-            {
-                unk = gSaveBlock2Ptr->frontier.pikeWinStreaks[0];
-            }
-            else
-            {
-                unk = gSaveBlock2Ptr->frontier.pikeWinStreaks[1];
-            }
-            break;
-        case 9:
-            if (gSaveBlock2Ptr->frontier.pyramidWinStreaks[0] >= gSaveBlock2Ptr->frontier.pyramidWinStreaks[1])
-            {
-                unk = gSaveBlock2Ptr->frontier.pyramidWinStreaks[0];
-            }
-            else
-            {
-                unk = gSaveBlock2Ptr->frontier.pyramidWinStreaks[1];
-            }
-            break;
-    }
+    // u8 i;
+    // u16 unk = 0;
+    // u16 var = VarGet(VAR_FRONTIER_MANIAC_FACILITY);
+    // switch (var)
+    // {
+    //     case 0:
+    //     case 1:
+    //     case 2:
+    //     case 3:
+    //         if (gSaveBlock2Ptr->frontier.towerWinStreaks[var][0] >= gSaveBlock2Ptr->frontier.towerWinStreaks[var][1])
+    //         {
+    //             unk = gSaveBlock2Ptr->frontier.towerWinStreaks[var][0];
+    //         }
+    //         else
+    //         {
+    //             unk = gSaveBlock2Ptr->frontier.towerWinStreaks[var][1];
+    //         }
+    //         break;
+    //     case 4:
+    //         if (gSaveBlock2Ptr->frontier.domeWinStreaks[0][0] >= gSaveBlock2Ptr->frontier.domeWinStreaks[0][1])
+    //         {
+    //             unk = gSaveBlock2Ptr->frontier.domeWinStreaks[0][0];
+    //         }
+    //         else
+    //         {
+    //             unk = gSaveBlock2Ptr->frontier.domeWinStreaks[0][1];
+    //         }
+    //         break;
+    //     case 5:
+    //         if (gSaveBlock2Ptr->frontier.factoryWinStreaks[0][0] >= gSaveBlock2Ptr->frontier.factoryWinStreaks[0][1])
+    //         {
+    //             unk = gSaveBlock2Ptr->frontier.factoryWinStreaks[0][0];
+    //         }
+    //         else
+    //         {
+    //             unk = gSaveBlock2Ptr->frontier.factoryWinStreaks[0][1];
+    //         }
+    //         break;
+    //     case 6:
+    //         if (gSaveBlock2Ptr->frontier.palaceWinStreaks[0][0] >= gSaveBlock2Ptr->frontier.palaceWinStreaks[0][1])
+    //         {
+    //             unk = gSaveBlock2Ptr->frontier.palaceWinStreaks[0][0];
+    //         }
+    //         else
+    //         {
+    //             unk = gSaveBlock2Ptr->frontier.palaceWinStreaks[0][1];
+    //         }
+    //         break;
+    //     case 7:
+    //         if (gSaveBlock2Ptr->frontier.arenaWinStreaks[0] >= gSaveBlock2Ptr->frontier.arenaWinStreaks[1])
+    //         {
+    //             unk = gSaveBlock2Ptr->frontier.arenaWinStreaks[0];
+    //         }
+    //         else
+    //         {
+    //             unk = gSaveBlock2Ptr->frontier.arenaWinStreaks[1];
+    //         }
+    //         break;
+    //     case 8:
+    //         if (gSaveBlock2Ptr->frontier.pikeWinStreaks[0] >= gSaveBlock2Ptr->frontier.pikeWinStreaks[1])
+    //         {
+    //             unk = gSaveBlock2Ptr->frontier.pikeWinStreaks[0];
+    //         }
+    //         else
+    //         {
+    //             unk = gSaveBlock2Ptr->frontier.pikeWinStreaks[1];
+    //         }
+    //         break;
+    //     case 9:
+    //         if (gSaveBlock2Ptr->frontier.pyramidWinStreaks[0] >= gSaveBlock2Ptr->frontier.pyramidWinStreaks[1])
+    //         {
+    //             unk = gSaveBlock2Ptr->frontier.pyramidWinStreaks[0];
+    //         }
+    //         else
+    //         {
+    //             unk = gSaveBlock2Ptr->frontier.pyramidWinStreaks[1];
+    //         }
+    //         break;
+    // }
 
-    for (i = 0; i < 2 && gUnknown_085B2CC8[var][i] < unk; i++);
+    // for (i = 0; i < 2 && gUnknown_085B2CC8[var][i] < unk; i++);
 
-    ShowFieldMessage(gUnknown_085B2C50[var][i]);
+    // ShowFieldMessage(gUnknown_085B2C50[var][i]);
 }
 
 void sub_813A080(void)
@@ -2786,31 +2786,31 @@ void sub_813A76C(void)
 void sub_813A7B8(void)
 {
     static const u8 *const gUnknown_085B3040[] = {
-        BattleFrontier_Lounge5_Text_26468D,
-        BattleFrontier_Lounge5_Text_2646E5,
-        BattleFrontier_Lounge5_Text_264741,
-        BattleFrontier_Lounge5_Text_2647A4,
-        BattleFrontier_Lounge5_Text_2647FC,
-        BattleFrontier_Lounge5_Text_264858,
-        BattleFrontier_Lounge5_Text_2648BE,
-        BattleFrontier_Lounge5_Text_264916,
-        BattleFrontier_Lounge5_Text_264972,
-        BattleFrontier_Lounge5_Text_2649D5,
-        BattleFrontier_Lounge5_Text_264A3F,
-        BattleFrontier_Lounge5_Text_264A9B,
-        BattleFrontier_Lounge5_Text_264AF3,
-        BattleFrontier_Lounge5_Text_264B5D,
-        BattleFrontier_Lounge5_Text_2648BE,
-        BattleFrontier_Lounge5_Text_264BC3,
-        BattleFrontier_Lounge5_Text_264C36,
-        BattleFrontier_Lounge5_Text_2648BE,
-        BattleFrontier_Lounge5_Text_264C95,
-        BattleFrontier_Lounge5_Text_264D01,
-        BattleFrontier_Lounge5_Text_264D6B,
-        BattleFrontier_Lounge5_Text_264DD7,
-        BattleFrontier_Lounge5_Text_264E33,
-        BattleFrontier_Lounge5_Text_264E8F,
-        BattleFrontier_Lounge5_Text_2648BE,
+        // BattleFrontier_Lounge5_Text_26468D,
+        // BattleFrontier_Lounge5_Text_2646E5,
+        // BattleFrontier_Lounge5_Text_264741,
+        // BattleFrontier_Lounge5_Text_2647A4,
+        // BattleFrontier_Lounge5_Text_2647FC,
+        // BattleFrontier_Lounge5_Text_264858,
+        // BattleFrontier_Lounge5_Text_2648BE,
+        // BattleFrontier_Lounge5_Text_264916,
+        // BattleFrontier_Lounge5_Text_264972,
+        // BattleFrontier_Lounge5_Text_2649D5,
+        // BattleFrontier_Lounge5_Text_264A3F,
+        // BattleFrontier_Lounge5_Text_264A9B,
+        // BattleFrontier_Lounge5_Text_264AF3,
+        // BattleFrontier_Lounge5_Text_264B5D,
+        // BattleFrontier_Lounge5_Text_2648BE,
+        // BattleFrontier_Lounge5_Text_264BC3,
+        // BattleFrontier_Lounge5_Text_264C36,
+        // BattleFrontier_Lounge5_Text_2648BE,
+        // BattleFrontier_Lounge5_Text_264C95,
+        // BattleFrontier_Lounge5_Text_264D01,
+        // BattleFrontier_Lounge5_Text_264D6B,
+        // BattleFrontier_Lounge5_Text_264DD7,
+        // BattleFrontier_Lounge5_Text_264E33,
+        // BattleFrontier_Lounge5_Text_264E8F,
+        // BattleFrontier_Lounge5_Text_2648BE,
     };
 
     u8 nature;
@@ -2834,18 +2834,18 @@ void UpdateFrontierGambler(u16 a0)
 void sub_813A820(void)
 {
     static const u8 *const gUnknown_085B30A4[] = {
-        BattleFrontier_Lounge3_Text_262261,
-        BattleFrontier_Lounge3_Text_26230D,
-        BattleFrontier_Lounge3_Text_2623B9,
-        BattleFrontier_Lounge3_Text_262464,
-        BattleFrontier_Lounge3_Text_26250E,
-        BattleFrontier_Lounge3_Text_2625B8,
-        BattleFrontier_Lounge3_Text_26266A,
-        BattleFrontier_Lounge3_Text_26271C,
-        BattleFrontier_Lounge3_Text_2627C9,
-        BattleFrontier_Lounge3_Text_262876,
-        BattleFrontier_Lounge3_Text_26291A,
-        BattleFrontier_Lounge3_Text_2629BC,
+        // BattleFrontier_Lounge3_Text_262261,
+        // BattleFrontier_Lounge3_Text_26230D,
+        // BattleFrontier_Lounge3_Text_2623B9,
+        // BattleFrontier_Lounge3_Text_262464,
+        // BattleFrontier_Lounge3_Text_26250E,
+        // BattleFrontier_Lounge3_Text_2625B8,
+        // BattleFrontier_Lounge3_Text_26266A,
+        // BattleFrontier_Lounge3_Text_26271C,
+        // BattleFrontier_Lounge3_Text_2627C9,
+        // BattleFrontier_Lounge3_Text_262876,
+        // BattleFrontier_Lounge3_Text_26291A,
+        // BattleFrontier_Lounge3_Text_2629BC,
     };
 
     u16 var = VarGet(VAR_FRONTIER_GAMBLER_FACILITY);
@@ -2856,18 +2856,18 @@ void sub_813A820(void)
 void sub_813A854(void)
 {
     static const u8 *const gUnknown_085B30D4[] = {
-        BattleFrontier_Lounge3_Text_262C04,
-        BattleFrontier_Lounge3_Text_262C90,
-        BattleFrontier_Lounge3_Text_262D1C,
-        BattleFrontier_Lounge3_Text_262DA7,
-        BattleFrontier_Lounge3_Text_262E34,
-        BattleFrontier_Lounge3_Text_262EC1,
-        BattleFrontier_Lounge3_Text_262F56,
-        BattleFrontier_Lounge3_Text_262FEB,
-        BattleFrontier_Lounge3_Text_263078,
-        BattleFrontier_Lounge3_Text_263105,
-        BattleFrontier_Lounge3_Text_26318C,
-        BattleFrontier_Lounge3_Text_263211,
+        // BattleFrontier_Lounge3_Text_262C04,
+        // BattleFrontier_Lounge3_Text_262C90,
+        // BattleFrontier_Lounge3_Text_262D1C,
+        // BattleFrontier_Lounge3_Text_262DA7,
+        // BattleFrontier_Lounge3_Text_262E34,
+        // BattleFrontier_Lounge3_Text_262EC1,
+        // BattleFrontier_Lounge3_Text_262F56,
+        // BattleFrontier_Lounge3_Text_262FEB,
+        // BattleFrontier_Lounge3_Text_263078,
+        // BattleFrontier_Lounge3_Text_263105,
+        // BattleFrontier_Lounge3_Text_26318C,
+        // BattleFrontier_Lounge3_Text_263211,
     };
 
     ShowFieldMessage(gUnknown_085B30D4[VarGet(VAR_FRONTIER_GAMBLER_SET_FACILITY_F)]);
@@ -2990,48 +2990,48 @@ static void sub_813AA60(u16 a0, u16 a1)
     static const u16 gUnknown_085B315C[] = { 0x00c8, 0x00b4, 0x00b7, 0x00b9, 0x00b3, 0x00ba, 0x00bb, 0x00c4, 0x00c6, 0xFFFF };
 
     static const u8 *const gUnknown_085B3170[] = {
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_2601AA,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_2601D0,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_260201,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_26022F,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_26025B,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_260287,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_2602B5,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_2602E0,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_26030F,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_26033E,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_2601AA,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_2601D0,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_260201,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_26022F,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_26025B,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_260287,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_2602B5,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_2602E0,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_26030F,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_26033E,
         gText_Exit,
     };
 
     static const u8 *const gUnknown_085B319C[] = {
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_26036C,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_26036C,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_26036C,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_26036C,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_26036C,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_26036C,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_26036C,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_26036C,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_26036C,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_26036C,
         gText_Exit
     };
 
     static const u8 *const gUnknown_085B31B4[] = {
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_260397,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_2603BE,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_2603E6,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_26040E,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_260436,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_26045C,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_260397,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_2603BE,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_2603E6,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_26040E,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_260436,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_26045C,
         gText_Exit
     };
 
     static const u8 *const gUnknown_085B31D0[] = {
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_26047A,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_2604AC,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_2604D8,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_26050F,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_260542,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_260575,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_2605A8,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_2605E2,
-        BattleFrontier_BattlePointExchangeServiceCorner_Text_260613,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_26047A,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_2604AC,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_2604D8,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_26050F,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_260542,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_260575,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_2605A8,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_2605E2,
+        // BattleFrontier_BattlePointExchangeServiceCorner_Text_260613,
         gText_Exit
     };
 
@@ -3147,30 +3147,30 @@ static void sub_813ACE8(u8 a0, u16 a1)
 static void sub_813AD34(u8 a0, u16 a1)
 {
     static const u8 *const gUnknown_085B3228[] = {
-        BattleFrontier_Lounge7_Text_265E30,
-        BattleFrontier_Lounge7_Text_265E5B,
-        BattleFrontier_Lounge7_Text_265E8A,
-        BattleFrontier_Lounge7_Text_265EC0,
-        BattleFrontier_Lounge7_Text_265EED,
-        BattleFrontier_Lounge7_Text_265F1C,
-        BattleFrontier_Lounge7_Text_265F47,
-        BattleFrontier_Lounge7_Text_265F77,
-        BattleFrontier_Lounge7_Text_265FAA,
-        BattleFrontier_Lounge7_Text_265FDD,
+        // BattleFrontier_Lounge7_Text_265E30,
+        // BattleFrontier_Lounge7_Text_265E5B,
+        // BattleFrontier_Lounge7_Text_265E8A,
+        // BattleFrontier_Lounge7_Text_265EC0,
+        // BattleFrontier_Lounge7_Text_265EED,
+        // BattleFrontier_Lounge7_Text_265F1C,
+        // BattleFrontier_Lounge7_Text_265F47,
+        // BattleFrontier_Lounge7_Text_265F77,
+        // BattleFrontier_Lounge7_Text_265FAA,
+        // BattleFrontier_Lounge7_Text_265FDD,
         gText_Exit,
     };
 
     static const u8 *const gUnknown_085B3254[] = {
-        BattleFrontier_Lounge7_Text_26600A,
-        BattleFrontier_Lounge7_Text_26603E,
-        BattleFrontier_Lounge7_Text_266070,
-        BattleFrontier_Lounge7_Text_2660A6,
-        BattleFrontier_Lounge7_Text_2660D0,
-        BattleFrontier_Lounge7_Text_2660FF,
-        BattleFrontier_Lounge7_Text_26612D,
-        BattleFrontier_Lounge7_Text_26615F,
-        BattleFrontier_Lounge7_Text_266185,
-        BattleFrontier_Lounge7_Text_2661B5,
+        // BattleFrontier_Lounge7_Text_26600A,
+        // BattleFrontier_Lounge7_Text_26603E,
+        // BattleFrontier_Lounge7_Text_266070,
+        // BattleFrontier_Lounge7_Text_2660A6,
+        // BattleFrontier_Lounge7_Text_2660D0,
+        // BattleFrontier_Lounge7_Text_2660FF,
+        // BattleFrontier_Lounge7_Text_26612D,
+        // BattleFrontier_Lounge7_Text_26615F,
+        // BattleFrontier_Lounge7_Text_266185,
+        // BattleFrontier_Lounge7_Text_2661B5,
         gText_Exit,
     };
 

@@ -1080,15 +1080,15 @@ EventScript_PickItemUp:: @ 8271C3A
 	waitmessage
 	bufferitemnameplural 1, VAR_0x8004, VAR_0x8005
 	setvar VAR_0x8004, 12
-	special CallBattlePyramidFunction
-	compare VAR_RESULT, 1
-	goto_if_eq EventScript_271C86
+	@ special CallBattlePyramidFunction
+	@ compare VAR_RESULT, 1
+	@ goto_if_eq EventScript_271C86
 	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
 	return
 
-EventScript_271C86:: @ 8271C86
-	msgbox gText_PlayerPutItemInBag, MSGBOX_DEFAULT
-	return
+@ EventScript_271C86:: @ 8271C86
+@ 	msgbox gText_PlayerPutItemInBag, MSGBOX_DEFAULT
+@ 	return
 
 EventScript_271C8F:: @ 8271C8F
 	bufferitemnameplural 0, VAR_0x8004, VAR_0x8005
@@ -2317,16 +2317,16 @@ EventScript_2736F8:: @ 82736F8
 	special CallBattlePikeFunction
 	compare VAR_RESULT, 1
 	goto_if_eq BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4222
-	setvar VAR_0x8004, 12
-	special CallBattlePyramidFunction
-	compare VAR_RESULT, 1
-	goto_if_eq BattleFrontier_BattlePyramidTop_EventScript_252B42
-	compare VAR_RESULT, 2
-	goto_if_eq BattleFrontier_BattlePyramidTop_EventScript_252B42
-	setvar VAR_0x8004, TRAINER_HILL_FUNC_10
-	special CallTrainerHillFunction
-	compare VAR_RESULT, 1
-	goto_if_eq TrainerHill_1F_EventScript_2C83C9
+	@ setvar VAR_0x8004, 12
+	@ special CallBattlePyramidFunction
+	@ compare VAR_RESULT, 1
+	@ goto_if_eq BattleFrontier_BattlePyramidTop_EventScript_252B42
+	@ compare VAR_RESULT, 2
+	@ goto_if_eq BattleFrontier_BattlePyramidTop_EventScript_252B42
+	@ setvar VAR_0x8004, TRAINER_HILL_FUNC_10
+	@ special CallTrainerHillFunction
+	@ compare VAR_RESULT, 1
+	@ goto_if_eq TrainerHill_1F_EventScript_2C83C9
 	special sub_80B05B4
 	waitstate
 	fadescreen 1
@@ -6561,14 +6561,14 @@ VerdanturfTown_PokemonCenter_1F_EventScript_2C832D:: @ 82C832D
 @ 	set_invisible
 @ 	step_end
 
-EventScript_2C83F0:: @ 82C83F0
-	trainerbattle TRAINER_BATTLE_12, TRAINER_PHILLIP, 0, BattleFacility_TrainerBattle_PlaceholderText, BattleFacility_TrainerBattle_PlaceholderText
-	setvar VAR_0x8004, TRAINER_HILL_FUNC_11
-	special CallTrainerHillFunction
-	waitmessage
-	waitbuttonpress
-	closemessage
-	end
+@ EventScript_2C83F0:: @ 82C83F0
+@ 	trainerbattle TRAINER_BATTLE_12, TRAINER_PHILLIP, 0, BattleFacility_TrainerBattle_PlaceholderText, BattleFacility_TrainerBattle_PlaceholderText
+@ 	setvar VAR_0x8004, TRAINER_HILL_FUNC_11
+@ 	special CallTrainerHillFunction
+@ 	waitmessage
+@ 	waitbuttonpress
+@ 	closemessage
+@ 	end
 
 Text_ThisIsATestSignpostMsg:: @ 82C840A
 	.string "This is a test message.\n"
@@ -6679,6 +6679,29 @@ gText_082C8739:: @ 82C8739
 gText_082C877B:: @ 82C877B
 	.string "That's it! You've done it!\n"
 	.string "You kept working for this!$"
+
+gText_LinkStandby3:: @ 824978D
+	.string "Link standby…$"
+
+gText_BattleRecordCouldntBeSaved:: @ 8242481
+	.string "There was an error of some sort.\n"
+	.string "Your record could not be saved.$"
+
+gText_YourPartnerHasRetired:: @ 824979B
+	.string "Your partner has retired.\p"
+	.string "Your BATTLE ROOM challenge\n"
+	.string "will be canceled.$"
+
+EventScript_DoLinkRoomExit::
+gEventScript_TradeRoom_TooBusyToNotice::
+EventScript_ConfirmLeaveTradeRoom::
+EventScript_TerminateLink::
+gEventScript_TradeRoom_ReadTrainerCard_NoColor::
+gEventScript_TradeRoom_ReadTrainerCard_Normal::
+EventScript_PlayerPCMale::
+EventScript_PlayerPCFemale::
+	end
+
 
 	.align 2
 	.include "data/text/save.inc"

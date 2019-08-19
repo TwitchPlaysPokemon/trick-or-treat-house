@@ -868,18 +868,18 @@ static void CB2_ReturnFromRecord(void)
     sPassData->cursorX = sSavedPassData.cursorX;
     sPassData->cursorY = sSavedPassData.cursorY;
     memset(&sSavedPassData, 0, sizeof(sSavedPassData));
-    switch (InBattlePyramid())
-    {
-    case 1:
-        PlayBGM(MUS_PYRAMID);
-        break;
-    case 2:
-        PlayBGM(MUS_PYRAMID_TOP);
-        break;
-    default:
+    // switch (InBattlePyramid())
+    // {
+    // case 1:
+    //     PlayBGM(MUS_PYRAMID);
+    //     break;
+    // case 2:
+    //     PlayBGM(MUS_PYRAMID_TOP);
+    //     break;
+    // default:
         Overworld_PlaySpecialMapMusic();
-        break;
-    }
+    //     break;
+    // }
 
     SetMainCallback2(CB2_ReshowFrontierPass);
 }

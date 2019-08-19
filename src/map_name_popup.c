@@ -1,5 +1,5 @@
 #include "global.h"
-#include "battle_pyramid.h"
+// #include "battle_pyramid.h"
 #include "bg.h"
 #include "event_data.h"
 #include "gpu_regs.h"
@@ -304,21 +304,21 @@ static void ShowMapNamePopUpWindow(void)
     u8 x;
     const u8* mapDisplayHeaderSource;
 
-    if (InBattlePyramid())
-    {
-        if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_TOP)
-        {
-            withoutPrefixPtr = &(mapDisplayHeader[3]);
-            mapDisplayHeaderSource = gBattlePyramid_MapHeaderStrings[7];
-        }
-        else
-        {
-            withoutPrefixPtr = &(mapDisplayHeader[3]);
-            mapDisplayHeaderSource = gBattlePyramid_MapHeaderStrings[gSaveBlock2Ptr->frontier.curChallengeBattleNum];
-        }
-        StringCopy(withoutPrefixPtr, mapDisplayHeaderSource);
-    }
-    else
+    // if (InBattlePyramid())
+    // {
+    //     if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_TOP)
+    //     {
+    //         withoutPrefixPtr = &(mapDisplayHeader[3]);
+    //         mapDisplayHeaderSource = gBattlePyramid_MapHeaderStrings[7];
+    //     }
+    //     else
+    //     {
+    //         withoutPrefixPtr = &(mapDisplayHeader[3]);
+    //         mapDisplayHeaderSource = gBattlePyramid_MapHeaderStrings[gSaveBlock2Ptr->frontier.curChallengeBattleNum];
+    //     }
+    //     StringCopy(withoutPrefixPtr, mapDisplayHeaderSource);
+    // }
+    // else
     {
         withoutPrefixPtr = &(mapDisplayHeader[3]);
         GetMapName(withoutPrefixPtr, gMapHeader.regionMapSectionId, 0);

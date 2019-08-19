@@ -342,596 +342,596 @@ static const u8 sRubyFacilityClassToEmerald[][2] =
 
 static const u8 *const gUnknown_085DCFD8[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244383,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2443E7,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244413,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24444B,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2444D6
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244383,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2443E7,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244413,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24444B,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2444D6
 };
 
 static const u8 *const gUnknown_085DCFEC[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2444EF,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24451E,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244549,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24459B,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2445C5
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2444EF,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24451E,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244549,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24459B,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2445C5
 };
 
 static const u8 *const gUnknown_085DD000[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2445E8,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244618,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244643,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24468F,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2446B4
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2445E8,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244618,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244643,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24468F,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2446B4
 };
 
 static const u8 *const gUnknown_085DD014[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2446E5,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24474D,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24479E,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24480C,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2448A7
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2446E5,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24474D,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24479E,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24480C,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2448A7
 };
 
 static const u8 *const gUnknown_085DD028[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2448CD,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2448F5,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244939,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244989,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2449E6
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2448CD,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2448F5,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244939,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244989,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2449E6
 };
 
 static const u8 *const gUnknown_085DD03C[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244A23,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244AA9,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244AD6,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244B52,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244B93
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244A23,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244AA9,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244AD6,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244B52,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244B93
 };
 
 static const u8 *const gUnknown_085DD050[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244BD2,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244C18,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244C6E,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244CD6,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244D07
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244BD2,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244C18,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244C6E,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244CD6,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244D07
 };
 
 static const u8 *const gUnknown_085DD064[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244D36,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244D82,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244DC6,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244DFE,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244E5B
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244D36,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244D82,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244DC6,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244DFE,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244E5B
 };
 
 static const u8 *const gUnknown_085DD078[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244E7E,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244ECA,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244EF4,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244F4F,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244F98
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244E7E,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244ECA,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244EF4,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244F4F,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244F98
 };
 
 static const u8 *const gUnknown_085DD08C[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_244FD3,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245013,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24503D,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245087,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2450C0
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_244FD3,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245013,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24503D,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245087,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2450C0
 };
 
 static const u8 *const gUnknown_085DD0A0[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2450E6,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245196,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2451BD,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24522F,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24529A
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2450E6,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245196,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2451BD,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24522F,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24529A
 };
 
 static const u8 *const gUnknown_085DD0B4[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2452EF,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2453B4,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245406,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245464,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2454A3
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2452EF,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2453B4,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245406,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245464,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2454A3
 };
 
 static const u8 *const gUnknown_085DD0C8[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2454D6,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245535,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24555F,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2455EC,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245656
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2454D6,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245535,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24555F,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2455EC,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245656
 };
 
 static const u8 *const gUnknown_085DD0DC[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24568A,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2456F5,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245740,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2457D9,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24581F
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24568A,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2456F5,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245740,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2457D9,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24581F
 };
 
 static const u8 *const gUnknown_085DD0F0[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245851,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24589C,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2458CE,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245923,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24597F
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245851,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24589C,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2458CE,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245923,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24597F
 };
 
 static const u8 *const gUnknown_085DD104[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2459BE,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2459F7,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245A5F,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245AB4,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245B3E
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2459BE,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2459F7,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245A5F,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245AB4,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245B3E
 };
 
 static const u8 *const gUnknown_085DD118[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245B79,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245B91,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245BBD,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245C05,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245C2D
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245B79,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245B91,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245BBD,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245C05,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245C2D
 };
 
 static const u8 *const gUnknown_085DD12C[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245C66,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245C7F,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245CAC,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245CE6,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245D07
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245C66,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245C7F,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245CAC,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245CE6,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245D07
 };
 
 static const u8 *const gUnknown_085DD140[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245D4B,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245D60,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245D8D,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245DC7,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245DF0
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245D4B,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245D60,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245D8D,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245DC7,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245DF0
 };
 
 static const u8 *const gUnknown_085DD154[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245E20,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245E41,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245E78,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245EBD,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245EEC
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245E20,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245E41,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245E78,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245EBD,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245EEC
 };
 
 static const u8 *const gUnknown_085DD168[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245F2B,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245F58,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245F87,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_245FC6,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246002
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245F2B,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245F58,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245F87,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_245FC6,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246002
 };
 
 static const u8 *const gUnknown_085DD17C[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246020,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246051,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246082,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2460D5,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24610D
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246020,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246051,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246082,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2460D5,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24610D
 };
 
 static const u8 *const gUnknown_085DD190[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24614A,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24615D,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24617D,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2461C7,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2461F5
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24614A,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24615D,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24617D,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2461C7,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2461F5
 };
 
 static const u8 *const gUnknown_085DD1A4[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24622A,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246244,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24626E,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2462AA,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2462E4
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24622A,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246244,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24626E,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2462AA,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2462E4
 };
 
 static const u8 *const gUnknown_085DD1B8[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24631F,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24633C,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24636B,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2463C5,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2463FF
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24631F,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24633C,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24636B,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2463C5,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2463FF
 };
 
 static const u8 *const gUnknown_085DD1CC[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246449,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246478,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24649D,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2464EE,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246529
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246449,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246478,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24649D,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2464EE,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246529
 };
 
 static const u8 *const gUnknown_085DD1E0[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246571,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24658C,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2465B5,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246605,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24662A
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246571,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24658C,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2465B5,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246605,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24662A
 };
 
 static const u8 *const gUnknown_085DD1F4[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246662,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246686,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2466B4,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2466E6,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24670A
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246662,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246686,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2466B4,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2466E6,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24670A
 };
 
 static const u8 *const gUnknown_085DD208[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246741,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246760,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246791,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2467C4,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2467E6
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246741,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246760,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246791,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2467C4,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2467E6
 };
 
 static const u8 *const gUnknown_085DD21C[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2467FF,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246831,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246864,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2468A7,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2468FE
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2467FF,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246831,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246864,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2468A7,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2468FE
 };
 
 static const u8 *const gUnknown_085DD230[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24692B,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24694B,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24697C,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2469B4,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2469F1
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24692B,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24694B,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24697C,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2469B4,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2469F1
 };
 
 static const u8 *const gUnknown_085DD244[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246A22,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246A4E,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246A85,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246ACF,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246AF7
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246A22,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246A4E,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246A85,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246ACF,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246AF7
 };
 
 static const u8 *const gUnknown_085DD258[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246B2B,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246B3F,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246B6B,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246BB2,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246BE9
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246B2B,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246B3F,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246B6B,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246BB2,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246BE9
 };
 
 static const u8 *const gUnknown_085DD26C[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246C22,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246C35,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246C6C,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246CB3,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246CE9
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246C22,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246C35,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246C6C,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246CB3,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246CE9
 };
 
 static const u8 *const gUnknown_085DD280[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246D2D,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246D3F,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246D6A,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246D9E,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246DD3
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246D2D,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246D3F,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246D6A,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246D9E,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246DD3
 };
 
 static const u8 *const gUnknown_085DD294[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246E1A,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246E39,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246E64,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246EB6,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246EEE
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246E1A,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246E39,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246E64,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246EB6,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246EEE
 };
 
 static const u8 *const gUnknown_085DD2A8[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246F21,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246F4C,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246F7B,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_246FCC,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247013
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246F21,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246F4C,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246F7B,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_246FCC,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247013
 };
 
 static const u8 *const gUnknown_085DD2BC[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24705B,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24707D,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2470B2,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2470FD,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24712A
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24705B,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24707D,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2470B2,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2470FD,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24712A
 };
 
 static const u8 *const gUnknown_085DD2D0[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24716C,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24718D,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2471C7,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2471FB,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247238
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24716C,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24718D,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2471C7,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2471FB,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247238
 };
 
 static const u8 *const gUnknown_085DD2E4[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247268,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247291,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2472C7,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247313,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247348
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247268,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247291,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2472C7,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247313,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247348
 };
 
 static const u8 *const gUnknown_085DD2F8[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24737A,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24738F,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2473C6,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2473FB,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247438
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24737A,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24738F,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2473C6,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2473FB,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247438
 };
 
 static const u8 *const gUnknown_085DD30C[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247470,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247484,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2474AF,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2474EC,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24751D
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247470,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247484,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2474AF,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2474EC,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24751D
 };
 
 static const u8 *const gUnknown_085DD320[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24754A,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24755C,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24758B,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2475BC,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2475D5
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24754A,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24755C,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24758B,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2475BC,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2475D5
 };
 
 static const u8 *const gUnknown_085DD334[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24760D,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247629,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247655,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24769B,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2476ED
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24760D,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247629,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247655,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24769B,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2476ED
 };
 
 static const u8 *const gUnknown_085DD348[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247724,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247749,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24777A,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2477CE,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247807
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247724,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247749,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24777A,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2477CE,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247807
 };
 
 static const u8 *const gUnknown_085DD35C[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247838,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247854,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247889,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2478DD,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24790D
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247838,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247854,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247889,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2478DD,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24790D
 };
 
 static const u8 *const gUnknown_085DD370[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247942,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24795F,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247991,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2479CE,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247A18
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247942,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24795F,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247991,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2479CE,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247A18
 };
 
 static const u8 *const gUnknown_085DD384[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247A51,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247A76,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247AA1,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247AE3,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247B16
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247A51,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247A76,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247AA1,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247AE3,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247B16
 };
 
 static const u8 *const gUnknown_085DD398[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247B3E,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247B62,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247B9B,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247BE7,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247C23
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247B3E,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247B62,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247B9B,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247BE7,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247C23
 };
 
 static const u8 *const gUnknown_085DD3AC[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247C4E,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247C8C,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247CB2,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247D07,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247D4E
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247C4E,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247C8C,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247CB2,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247D07,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247D4E
 };
 
 static const u8 *const gUnknown_085DD3C0[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247D97,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247DC7,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247DFE,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247E3E,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247E7E
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247D97,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247DC7,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247DFE,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247E3E,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247E7E
 };
 
 static const u8 *const gUnknown_085DD3D4[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247EA1,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247EB5,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247EE9,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247F3F,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247F6D
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247EA1,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247EB5,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247EE9,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247F3F,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247F6D
 };
 
 static const u8 *const gUnknown_085DD3E8[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247FA3,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247FB7,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_247FE9,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248031,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24805E
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247FA3,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247FB7,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_247FE9,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248031,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24805E
 };
 
 static const u8 *const gUnknown_085DD3FC[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24808D,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2480AB,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2480DC,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248128,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248151
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24808D,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2480AB,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2480DC,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248128,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248151
 };
 
 static const u8 *const gUnknown_085DD410[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24818E,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2481A9,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2481E1,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248221,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24824F
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24818E,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2481A9,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2481E1,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248221,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24824F
 };
 
 static const u8 *const gUnknown_085DD424[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248297,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2482B1,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2482DC,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248321,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24833D
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248297,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2482B1,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2482DC,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248321,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24833D
 };
 
 static const u8 *const gUnknown_085DD438[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248369,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24838D,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2483C1,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248401,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248431
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248369,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24838D,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2483C1,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248401,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248431
 };
 
 static const u8 *const gUnknown_085DD44C[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248467,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248477,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2484AC,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2484E7,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248517
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248467,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248477,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2484AC,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2484E7,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248517
 };
 
 static const u8 *const gUnknown_085DD460[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248553,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24856A,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24857D,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2485E5,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248614
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248553,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24856A,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24857D,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2485E5,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248614
 };
 
 static const u8 *const gUnknown_085DD474[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24864E,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248661,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248671,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2486C6,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2486FF
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24864E,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248661,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248671,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2486C6,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2486FF
 };
 
 static const u8 *const gUnknown_085DD488[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248725,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248751,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248781,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2487C9,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2487F7
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248725,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248751,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248781,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2487C9,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2487F7
 };
 
 static const u8 *const gUnknown_085DD49C[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248829,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24885B,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248892,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2488D8,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248908
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248829,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24885B,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248892,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2488D8,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248908
 };
 
 static const u8 *const gUnknown_085DD4B0[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24894B,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24895F,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_24896F,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2489BD,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_2489E7
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24894B,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24895F,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_24896F,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2489BD,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_2489E7
 };
 
 static const u8 *const gUnknown_085DD4C4[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248A10,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248A40,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248A72,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248AC0,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248AEB
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248A10,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248A40,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248A72,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248AC0,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248AEB
 };
 
 static const u8 *const gUnknown_085DD4D8[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248B22,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248B39,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248B4C,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248BB4,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248BEE
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248B22,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248B39,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248B4C,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248BB4,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248BEE
 };
 
 static const u8 *const gUnknown_085DD4EC[] =
 {
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248C2E,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248C5B,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248C90,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248CCF,
-    BattleFrontier_BattleTowerMultiBattleRoom_Text_248D04
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248C2E,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248C5B,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248C90,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248CCF,
+    // BattleFrontier_BattleTowerMultiBattleRoom_Text_248D04
 };
 
 struct
@@ -2232,132 +2232,132 @@ static void Task_StartBattleAfterTransition(u8 taskId)
 
 void DoSpecialTrainerBattle(void)
 {
-    s32 i;
+    // s32 i;
 
-    gBattleScripting.specialTrainerBattleType = gSpecialVar_0x8004;
-    switch (gSpecialVar_0x8004)
-    {
-    case SPECIAL_BATTLE_TOWER:
-        gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_BATTLE_TOWER;
-        switch (VarGet(VAR_FRONTIER_BATTLE_MODE))
-        {
-        case FRONTIER_MODE_SINGLES:
-            FillFrontierTrainerParty(3);
-            break;
-        case FRONTIER_MODE_DOUBLES:
-            FillFrontierTrainerParty(4);
-            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
-            break;
-        case FRONTIER_MODE_MULTIS:
-            FillFrontierTrainersParties(2);
-            gPartnerTrainerId = gSaveBlock2Ptr->frontier.trainerIds[17];
-            FillPartnerParty(gPartnerTrainerId);
-            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_MULTI | BATTLE_TYPE_TWO_OPPONENTS;
-            break;
-        case FRONTIER_MODE_LINK_MULTIS:
-            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_LINK | BATTLE_TYPE_MULTI | BATTLE_TYPE_x800000;
-            FillFrontierTrainersParties(2);
-            break;
-        }
-        CreateTask(Task_StartBattleAfterTransition, 1);
-        PlayMapChosenOrBattleBGM(0);
-        BattleTransition_StartOnField(sub_80B100C(0));
-        break;
-    case SPECIAL_BATTLE_SECRET_BASE:
-        for (i = 0; i < PARTY_SIZE; i++)
-        {
-            u16 itemBefore = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
-            SetMonData(&gSaveBlock1Ptr->playerParty[i], MON_DATA_HELD_ITEM, &itemBefore);
-        }
-        CreateTask(Task_StartBattleAfterTransition, 1);
-        PlayMapChosenOrBattleBGM(0);
-        BattleTransition_StartOnField(sub_80B100C(12));
-        break;
-    case SPECIAL_BATTLE_EREADER:
-        ZeroEnemyPartyMons();
-        for (i = 0; i < 3; i++)
-            CreateBattleTowerMon(&gEnemyParty[i], &gSaveBlock2Ptr->frontier.ereaderTrainer.party[i]);
-        gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_EREADER_TRAINER;
-        gTrainerBattleOpponent_A = 0;
-        CreateTask(Task_StartBattleAfterTransition, 1);
-        PlayMapChosenOrBattleBGM(0);
-        BattleTransition_StartOnField(sub_80B100C(13));
-        break;
-    case SPECIAL_BATTLE_DOME:
-        gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOME;
-        if (VarGet(VAR_FRONTIER_BATTLE_MODE) == FRONTIER_MODE_DOUBLES)
-            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
-        if (gTrainerBattleOpponent_A == TRAINER_FRONTIER_BRAIN)
-            FillFrontierTrainerParty(2);
-        CreateTask(Task_StartBattleAfterTransition, 1);
-        sub_806E694(0);
-        BattleTransition_StartOnField(sub_80B100C(3));
-        break;
-    case SPECIAL_BATTLE_PALACE:
-        gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_PALACE;
-        if (VarGet(VAR_FRONTIER_BATTLE_MODE) == FRONTIER_MODE_DOUBLES)
-            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
-        if (gSaveBlock2Ptr->frontier.lvlMode != FRONTIER_LVL_TENT)
-            FillFrontierTrainerParty(3);
-        else
-            FillTentTrainerParty(3);
-        CreateTask(Task_StartBattleAfterTransition, 1);
-        PlayMapChosenOrBattleBGM(0);
-        BattleTransition_StartOnField(sub_80B100C(4));
-        break;
-    case SPECIAL_BATTLE_ARENA:
-        gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_ARENA;
-        if (gSaveBlock2Ptr->frontier.lvlMode != FRONTIER_LVL_TENT)
-            FillFrontierTrainerParty(3);
-        else
-            FillTentTrainerParty(3);
-        CreateTask(Task_StartBattleAfterTransition, 1);
-        PlayMapChosenOrBattleBGM(0);
-        BattleTransition_StartOnField(sub_80B100C(5));
-        break;
-    case SPECIAL_BATTLE_FACTORY:
-        gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_FACTORY;
-        if (VarGet(VAR_FRONTIER_BATTLE_MODE) == FRONTIER_MODE_DOUBLES)
-            gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
-        FillFactoryTrainerParty();
-        CreateTask(Task_StartBattleAfterTransition, 1);
-        PlayMapChosenOrBattleBGM(0);
-        BattleTransition_StartOnField(sub_80B100C(6));
-        break;
-    case SPECIAL_BATTLE_PIKE_SINGLE:
-        gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_BATTLE_TOWER;
-        FillFrontierTrainerParty(3);
-        CreateTask(Task_StartBattleAfterTransition, 1);
-        PlayMapChosenOrBattleBGM(0);
-        BattleTransition_StartOnField(sub_80B100C(7));
-        break;
-    case SPECIAL_BATTLE_PYRAMID:
-        gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_PYRAMID;
-        FillFrontierTrainerParty(3);
-        CreateTask(Task_StartBattleAfterTransition, 1);
-        PlayMapChosenOrBattleBGM(0);
-        BattleTransition_StartOnField(sub_80B100C(10));
-        break;
-    case SPECIAL_BATTLE_PIKE_DOUBLE:
-        gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_BATTLE_TOWER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TWO_OPPONENTS;
-        FillFrontierTrainersParties(1);
-        CreateTask(Task_StartBattleAfterTransition, 1);
-        PlayMapChosenOrBattleBGM(0);
-        BattleTransition_StartOnField(sub_80B100C(7));
-        break;
-    case SPECIAL_BATTLE_STEVEN:
-        gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
-        FillPartnerParty(TRAINER_STEVEN_PARTNER);
-        gApproachingTrainerId = 0;
-        BattleSetup_ConfigureTrainerBattle(MossdeepCity_SpaceCenter_2F_EventScript_224157 + 1);
-        gApproachingTrainerId = 1;
-        BattleSetup_ConfigureTrainerBattle(MossdeepCity_SpaceCenter_2F_EventScript_224166 + 1);
-        gPartnerTrainerId = TRAINER_STEVEN_PARTNER;
-        CreateTask(Task_StartBattleAfterTransition, 1);
-        PlayMapChosenOrBattleBGM(0);
-        BattleTransition_StartOnField(B_TRANSITION_MAGMA);
-        break;
-    }
+    // gBattleScripting.specialTrainerBattleType = gSpecialVar_0x8004;
+    // switch (gSpecialVar_0x8004)
+    // {
+    // case SPECIAL_BATTLE_TOWER:
+    //     gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_BATTLE_TOWER;
+    //     switch (VarGet(VAR_FRONTIER_BATTLE_MODE))
+    //     {
+    //     case FRONTIER_MODE_SINGLES:
+    //         FillFrontierTrainerParty(3);
+    //         break;
+    //     case FRONTIER_MODE_DOUBLES:
+    //         FillFrontierTrainerParty(4);
+    //         gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
+    //         break;
+    //     case FRONTIER_MODE_MULTIS:
+    //         FillFrontierTrainersParties(2);
+    //         gPartnerTrainerId = gSaveBlock2Ptr->frontier.trainerIds[17];
+    //         FillPartnerParty(gPartnerTrainerId);
+    //         gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_MULTI | BATTLE_TYPE_TWO_OPPONENTS;
+    //         break;
+    //     case FRONTIER_MODE_LINK_MULTIS:
+    //         gBattleTypeFlags |= BATTLE_TYPE_DOUBLE | BATTLE_TYPE_LINK | BATTLE_TYPE_MULTI | BATTLE_TYPE_x800000;
+    //         FillFrontierTrainersParties(2);
+    //         break;
+    //     }
+    //     CreateTask(Task_StartBattleAfterTransition, 1);
+    //     PlayMapChosenOrBattleBGM(0);
+    //     BattleTransition_StartOnField(sub_80B100C(0));
+    //     break;
+    // case SPECIAL_BATTLE_SECRET_BASE:
+    //     for (i = 0; i < PARTY_SIZE; i++)
+    //     {
+    //         u16 itemBefore = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
+    //         SetMonData(&gSaveBlock1Ptr->playerParty[i], MON_DATA_HELD_ITEM, &itemBefore);
+    //     }
+    //     CreateTask(Task_StartBattleAfterTransition, 1);
+    //     PlayMapChosenOrBattleBGM(0);
+    //     BattleTransition_StartOnField(sub_80B100C(12));
+    //     break;
+    // case SPECIAL_BATTLE_EREADER:
+    //     ZeroEnemyPartyMons();
+    //     for (i = 0; i < 3; i++)
+    //         CreateBattleTowerMon(&gEnemyParty[i], &gSaveBlock2Ptr->frontier.ereaderTrainer.party[i]);
+    //     gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_EREADER_TRAINER;
+    //     gTrainerBattleOpponent_A = 0;
+    //     CreateTask(Task_StartBattleAfterTransition, 1);
+    //     PlayMapChosenOrBattleBGM(0);
+    //     BattleTransition_StartOnField(sub_80B100C(13));
+    //     break;
+    // case SPECIAL_BATTLE_DOME:
+    //     gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOME;
+    //     if (VarGet(VAR_FRONTIER_BATTLE_MODE) == FRONTIER_MODE_DOUBLES)
+    //         gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
+    //     if (gTrainerBattleOpponent_A == TRAINER_FRONTIER_BRAIN)
+    //         FillFrontierTrainerParty(2);
+    //     CreateTask(Task_StartBattleAfterTransition, 1);
+    //     sub_806E694(0);
+    //     BattleTransition_StartOnField(sub_80B100C(3));
+    //     break;
+    // case SPECIAL_BATTLE_PALACE:
+    //     gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_PALACE;
+    //     if (VarGet(VAR_FRONTIER_BATTLE_MODE) == FRONTIER_MODE_DOUBLES)
+    //         gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
+    //     if (gSaveBlock2Ptr->frontier.lvlMode != FRONTIER_LVL_TENT)
+    //         FillFrontierTrainerParty(3);
+    //     else
+    //         FillTentTrainerParty(3);
+    //     CreateTask(Task_StartBattleAfterTransition, 1);
+    //     PlayMapChosenOrBattleBGM(0);
+    //     BattleTransition_StartOnField(sub_80B100C(4));
+    //     break;
+    // case SPECIAL_BATTLE_ARENA:
+    //     gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_ARENA;
+    //     if (gSaveBlock2Ptr->frontier.lvlMode != FRONTIER_LVL_TENT)
+    //         FillFrontierTrainerParty(3);
+    //     else
+    //         FillTentTrainerParty(3);
+    //     CreateTask(Task_StartBattleAfterTransition, 1);
+    //     PlayMapChosenOrBattleBGM(0);
+    //     BattleTransition_StartOnField(sub_80B100C(5));
+    //     break;
+    // case SPECIAL_BATTLE_FACTORY:
+    //     gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_FACTORY;
+    //     if (VarGet(VAR_FRONTIER_BATTLE_MODE) == FRONTIER_MODE_DOUBLES)
+    //         gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
+    //     FillFactoryTrainerParty();
+    //     CreateTask(Task_StartBattleAfterTransition, 1);
+    //     PlayMapChosenOrBattleBGM(0);
+    //     BattleTransition_StartOnField(sub_80B100C(6));
+    //     break;
+    // case SPECIAL_BATTLE_PIKE_SINGLE:
+    //     gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_BATTLE_TOWER;
+    //     FillFrontierTrainerParty(3);
+    //     CreateTask(Task_StartBattleAfterTransition, 1);
+    //     PlayMapChosenOrBattleBGM(0);
+    //     BattleTransition_StartOnField(sub_80B100C(7));
+    //     break;
+    // case SPECIAL_BATTLE_PYRAMID:
+    //     gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_PYRAMID;
+    //     FillFrontierTrainerParty(3);
+    //     CreateTask(Task_StartBattleAfterTransition, 1);
+    //     PlayMapChosenOrBattleBGM(0);
+    //     BattleTransition_StartOnField(sub_80B100C(10));
+    //     break;
+    // case SPECIAL_BATTLE_PIKE_DOUBLE:
+    //     gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_BATTLE_TOWER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TWO_OPPONENTS;
+    //     FillFrontierTrainersParties(1);
+    //     CreateTask(Task_StartBattleAfterTransition, 1);
+    //     PlayMapChosenOrBattleBGM(0);
+    //     BattleTransition_StartOnField(sub_80B100C(7));
+    //     break;
+    // case SPECIAL_BATTLE_STEVEN:
+    //     gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER;
+    //     FillPartnerParty(TRAINER_STEVEN_PARTNER);
+    //     gApproachingTrainerId = 0;
+    //     BattleSetup_ConfigureTrainerBattle(MossdeepCity_SpaceCenter_2F_EventScript_224157 + 1);
+    //     gApproachingTrainerId = 1;
+    //     BattleSetup_ConfigureTrainerBattle(MossdeepCity_SpaceCenter_2F_EventScript_224166 + 1);
+    //     gPartnerTrainerId = TRAINER_STEVEN_PARTNER;
+    //     CreateTask(Task_StartBattleAfterTransition, 1);
+    //     PlayMapChosenOrBattleBGM(0);
+    //     BattleTransition_StartOnField(B_TRANSITION_MAGMA);
+    //     break;
+    // }
 }
 
 static void SaveCurrentWinStreak(void)

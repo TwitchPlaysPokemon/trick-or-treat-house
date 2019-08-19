@@ -888,7 +888,7 @@ static void GiveArenaRewardItem(void)
 
 static void BufferArenaOpponentName(void)
 {
-    GetFrontierTrainerName(gStringVar1, gTrainerBattleOpponent_A);
+    // GetFrontierTrainerName(gStringVar1, gTrainerBattleOpponent_A);
 }
 
 void DrawArenaRefereeTextBox(void)

@@ -419,14 +419,14 @@ static void PlayerPC_Decoration(u8 taskId)
 
 static void PlayerPC_TurnOff(u8 taskId)
 {
-    if (gPcItemMenuOptionsNum == 4) // if the option count is 4, we are at the bedroom PC and not player PC, so do gender specific handling.
-    {
-        if (gSaveBlock2Ptr->playerGender == MALE)
-            ScriptContext1_SetupScript(LittlerootTown_BrendansHouse_2F_EventScript_1F863F);
-        else
-            ScriptContext1_SetupScript(LittlerootTown_MaysHouse_2F_EventScript_1F958F);
-    }
-    else
+    // if (gPcItemMenuOptionsNum == 4) // if the option count is 4, we are at the bedroom PC and not player PC, so do gender specific handling.
+    // {
+    //     if (gSaveBlock2Ptr->playerGender == MALE)
+    //         ScriptContext1_SetupScript(LittlerootTown_BrendansHouse_2F_EventScript_1F863F);
+    //     else
+    //         ScriptContext1_SetupScript(LittlerootTown_MaysHouse_2F_EventScript_1F958F);
+    // }
+    // else
     {
         EnableBothScriptContexts();
     }

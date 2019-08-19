@@ -6,8 +6,8 @@
 #include "battle_gfx_sfx_util.h"
 #include "battle_interface.h"
 #include "battle_pike.h"
-#include "battle_pyramid.h"
-#include "battle_pyramid_bag.h"
+// #include "battle_pyramid.h"
+// #include "battle_pyramid_bag.h"
 #include "bg.h"
 #include "contest.h"
 #include "data.h"
@@ -4147,10 +4147,10 @@ static void CursorCb_Give(u8 taskId)
 
 static void sub_81B41C4(void)
 {
-    if (InBattlePyramid() == FALSE)
+    // if (InBattlePyramid() == FALSE)
         GoToBagMenu(RETURN_LOCATION_POKEMON_LIST, POCKETS_COUNT, c2_8123744);
-    else
-        sub_81C4F98(2, c2_8123744);
+    // else
+    //     sub_81C4F98(2, c2_8123744);
 }
 
 static void c2_8123744(void)
@@ -5301,10 +5301,10 @@ void sub_81B617C(void)
 
 static void c2_815ABFC(void)
 {
-    if (InBattlePyramid() == FALSE)
+    // if (InBattlePyramid() == FALSE)
         GoToBagMenu(RETURN_LOCATION_UNCHANGED, POCKETS_COUNT, NULL);
-    else
-        sub_81C4F98(4, gPyramidBagCursorData.callback);
+    // else
+    //     sub_81C4F98(4, gPyramidBagCursorData.callback);
 }
 
 static void sub_81B6280(u8 taskId)
@@ -6367,7 +6367,7 @@ void CB2_PartyMenuFromStartMenu(void)
 
 void sub_81B7F60(void)
 {
-    MainCallback callback = (InBattlePyramid() == FALSE) ? c2_815ABFC : sub_81C4F84;
+    MainCallback callback = c2_815ABFC;//(InBattlePyramid() == FALSE) ? c2_815ABFC : sub_81C4F84;
     InitPartyMenu(0, 0, 5, 0, 6, sub_81B1370, callback);
     gUnknown_0203CEC8.unkC = gSpecialVar_ItemId;
 }

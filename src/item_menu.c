@@ -2,7 +2,7 @@
 #include "item_menu.h"
 #include "battle.h"
 #include "battle_controllers.h"
-#include "battle_pyramid.h"
+// #include "battle_pyramid.h"
 #include "frontier_util.h"
 #include "berry_tag_screen.h"
 #include "bg.h"
@@ -465,10 +465,10 @@ void CB2_BagMenuFromStartMenu(void)
 
 void sub_81AABB0(void)
 {
-    if (!InBattlePyramid())
+    // if (!InBattlePyramid())
         GoToBagMenu(RETURN_LOCATION_BATTLE, POCKETS_COUNT, SetCB2ToReshowScreenAfterMenu2);
-    else
-        sub_81C4F98(1, SetCB2ToReshowScreenAfterMenu2);
+    // else
+    //     sub_81C4F98(1, SetCB2ToReshowScreenAfterMenu2);
 }
 
 void CB2_ChooseBerry(void)
@@ -1881,8 +1881,8 @@ bool8 UseRegisteredKeyItemOnField(void)
 {
     u8 taskId;
 
-    if (InUnionRoom() == TRUE || InBattlePyramid() || InBattlePike() || InMultiBattleRoom() == TRUE)
-        return FALSE;
+    // if (InUnionRoom() == TRUE || InBattlePyramid() || InBattlePike() || InMultiBattleRoom() == TRUE)
+    //     return FALSE;
     HideMapNamePopUpWindow();
     ChangeBgY_ScreenOff(0, 0, 0);
     if (gSaveBlock1Ptr->registeredItem != ITEM_NONE)

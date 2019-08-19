@@ -445,9 +445,9 @@ static void SetDispcntReg(void)
 
 static void LoadTrainerHillRecordsWindowGfx(u8 bgId)
 {
-    LoadBgTiles(bgId, sTrainerHillWindowTileset, sizeof(sTrainerHillWindowTileset), 0);
-    CopyToBgTilemapBufferRect(bgId, sTrainerHillWindowTilemap, 0, 0, 0x20, 0x20);
-    LoadPalette(sTrainerHillWindowPalette, 0, 0x20);
+    // LoadBgTiles(bgId, sTrainerHillWindowTileset, sizeof(sTrainerHillWindowTileset), 0);
+    // CopyToBgTilemapBufferRect(bgId, sTrainerHillWindowTilemap, 0, 0, 0x20, 0x20);
+    // LoadPalette(sTrainerHillWindowPalette, 0, 0x20);
 }
 
 static void VblankCB_TrainerHillRecords(void)
@@ -473,55 +473,56 @@ void ShowTrainerHillRecords(void)
 
 static void CB2_ShowTrainerHillRecords(void)
 {
-    switch (gMain.state)
-    {
-    case 0:
-        SetVBlankCallback(NULL);
-        ClearVramOamPlttRegs();
-        gMain.state++;
-        break;
-    case 1:
-        ClearTasksAndGraphicalStructs();
-        gMain.state++;
-        break;
-    case 2:
-        sTilemapBuffer = AllocZeroed(0x800);
-        ResetBgsAndClearDma3BusyFlags(0);
-        InitBgsFromTemplates(0, sTrainerHillRecordsBgTemplates, ARRAY_COUNT(sTrainerHillRecordsBgTemplates));
-        SetBgTilemapBuffer(3, sTilemapBuffer);
-        ResetBgCoordinates();
-        gMain.state++;
-        break;
-    case 3:
-        LoadTrainerHillRecordsWindowGfx(3);
-        LoadPalette(stdpal_get(0), 0xF0, 0x20);
-        gMain.state++;
-        break;
-    case 4:
-        if (IsDma3ManagerBusyWithBgCopy() != TRUE)
-        {
-            ShowBg(0);
-            ShowBg(3);
-            CopyBgTilemapBufferToVram(3);
-            gMain.state++;
-        }
-        break;
-    case 5:
-        InitWindows(sTrainerHillRecordsWindowTemplates);
-        DeactivateAllTextPrinters();
-        gMain.state++;
-        break;
-    case 6:
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0x10, 0, RGB_BLACK);
-        gMain.state++;
-        break;
-    case 7:
-        SetDispcntReg();
-        SetVBlankCallback(VblankCB_TrainerHillRecords);
-        PrintOnTrainerHillRecordsWindow();
-        CreateTask(Task_TrainerHillWaitForPaletteFade, 8);
-        SetMainCallback2(MainCB2_TrainerHillRecords);
-        gMain.state = 0;
-        break;
-    }
+    SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
+    // switch (gMain.state)
+    // {
+    // case 0:
+    //     SetVBlankCallback(NULL);
+    //     ClearVramOamPlttRegs();
+    //     gMain.state++;
+    //     break;
+    // case 1:
+    //     ClearTasksAndGraphicalStructs();
+    //     gMain.state++;
+    //     break;
+    // case 2:
+    //     sTilemapBuffer = AllocZeroed(0x800);
+    //     ResetBgsAndClearDma3BusyFlags(0);
+    //     InitBgsFromTemplates(0, sTrainerHillRecordsBgTemplates, ARRAY_COUNT(sTrainerHillRecordsBgTemplates));
+    //     SetBgTilemapBuffer(3, sTilemapBuffer);
+    //     ResetBgCoordinates();
+    //     gMain.state++;
+    //     break;
+    // case 3:
+    //     LoadTrainerHillRecordsWindowGfx(3);
+    //     LoadPalette(stdpal_get(0), 0xF0, 0x20);
+    //     gMain.state++;
+    //     break;
+    // case 4:
+    //     if (IsDma3ManagerBusyWithBgCopy() != TRUE)
+    //     {
+    //         ShowBg(0);
+    //         ShowBg(3);
+    //         CopyBgTilemapBufferToVram(3);
+    //         gMain.state++;
+    //     }
+    //     break;
+    // case 5:
+    //     InitWindows(sTrainerHillRecordsWindowTemplates);
+    //     DeactivateAllTextPrinters();
+    //     gMain.state++;
+    //     break;
+    // case 6:
+    //     BeginNormalPaletteFade(0xFFFFFFFF, 0, 0x10, 0, RGB_BLACK);
+    //     gMain.state++;
+    //     break;
+    // case 7:
+    //     SetDispcntReg();
+    //     SetVBlankCallback(VblankCB_TrainerHillRecords);
+    //     PrintOnTrainerHillRecordsWindow();
+    //     CreateTask(Task_TrainerHillWaitForPaletteFade, 8);
+    //     SetMainCallback2(MainCB2_TrainerHillRecords);
+    //     gMain.state = 0;
+    //     break;
+    // }
 }

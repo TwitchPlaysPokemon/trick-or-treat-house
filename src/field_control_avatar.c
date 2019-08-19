@@ -303,9 +303,9 @@ static const u8 *GetInteractedEventObjectScript(struct MapPosition *position, u8
     gSpecialVar_LastTalked = gEventObjects[eventObjectId].localId;
     gSpecialVar_Facing = direction;
 
-    if (InTrainerHill() == TRUE)
-        script = GetTrainerHillTrainerScript();
-    else
+    // if (InTrainerHill() == TRUE)
+    //     script = GetTrainerHillTrainerScript();
+    // else
         script = GetEventObjectScriptPointerByEventObjectId(eventObjectId);
 
     script = GetRamScript(gSpecialVar_LastTalked, script);
@@ -371,20 +371,10 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         return EventScript_TV;
     if (MetatileBehavior_IsPC(metatileBehavior) == TRUE)
         return EventScript_PC;
-    if (MetatileBehavior_IsClosedSootopolisDoor(metatileBehavior) == TRUE)
-        return EventScript_ClosedSootopolisDoor;
-    if (MetatileBehavior_IsUnknownClosedDoor(metatileBehavior) == TRUE)
-        return SkyPillar_Outside_EventScript_2393F9;
-    if (MetatileBehavior_IsCableBoxResults1(metatileBehavior) == TRUE)
-        return EventScript_CableBoxResults;
-    if (MetatileBehavior_IsPokeblockFeeder(metatileBehavior) == TRUE)
-        return EventScript_PokeBlockFeeder;
     if (MetatileBehavior_IsTrickHousePuzzleDoor(metatileBehavior) == TRUE)
         return Route110_TrickHouseEntrance_EventScript_26A22A;
     if (MetatileBehavior_IsRegionMap(metatileBehavior) == TRUE)
         return EventScript_RegionMap;
-    if (MetatileBehavior_IsRunningShoesManual(metatileBehavior) == TRUE)
-        return EventScript_RunningShoesManual;
     if (MetatileBehavior_IsPictureBookShelf(metatileBehavior) == TRUE)
         return EventScript_PictureBookShelf;
     if (MetatileBehavior_IsBookShelf(metatileBehavior) == TRUE)
@@ -399,14 +389,8 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         return EventScript_ShopShelf;
     if (MetatileBehavior_IsBlueprint(metatileBehavior) == TRUE)
         return EventScript_Blueprint;
-    if (MetatileBehavior_IsPlayerFacingWirelessBoxResults(metatileBehavior, direction) == TRUE)
-        return EventScript_WirelessBoxResults;
-    if (MetatileBehavior_IsCableBoxResults2(metatileBehavior, direction) == TRUE)
-        return EventScript_CableBoxResults;
     if (MetatileBehavior_IsQuestionnaire(metatileBehavior) == TRUE)
         return EventScript_Questionnaire;
-    if (MetatileBehavior_IsTrainerHillTimer(metatileBehavior) == TRUE)
-        return EventScript_TrainerHillTimer;
 
     height = position->height;
     if (height == MapGridGetZCoordAt(position->x, position->y))
@@ -513,11 +497,11 @@ static bool8 TryStartMiscWalkingScripts(u16 metatileBehavior)
         ScriptContext1_SetupScript(EventScript_FallDownHole);
         return TRUE;
     }
-    else if (MetatileBehavior_IsBattlePyramidWarp(metatileBehavior))
-    {
-        ScriptContext1_SetupScript(BattleFrontier_BattlePyramidEmptySquare_EventScript_252BE8);
-        return TRUE;
-    }
+    // else if (MetatileBehavior_IsBattlePyramidWarp(metatileBehavior))
+    // {
+    //     ScriptContext1_SetupScript(BattleFrontier_BattlePyramidEmptySquare_EventScript_252BE8);
+    //     return TRUE;
+    // }
     else if (MetatileBehavior_IsSecretBaseGlitterMat(metatileBehavior) == TRUE)
     {
         DoSecretBaseGlitterMatSparkle();
@@ -561,45 +545,45 @@ static bool8 TryStartStepCountScript(u16 metatileBehavior)
             ScriptContext1_SetupScript(UnusualWeather_EventScript_EndEventAndCleanup_1);
             return TRUE;
         }
-        if (ShouldDoBrailleRegicePuzzle() == TRUE)
-        {
-            ScriptContext1_SetupScript(IslandCave_EventScript_238EAF);
-            return TRUE;
-        }
-        if (ShouldDoWallyCall() == TRUE)
-        {
-            ScriptContext1_SetupScript(MauvilleCity_EventScript_1DF7BA);
-            return TRUE;
-        }
-        if (ShouldDoWinonaCall() == TRUE)
-        {
-            ScriptContext1_SetupScript(Route119_EventScript_1F49EC);
-            return TRUE;
-        }
-        if (ShouldDoScottCall() == TRUE)
-        {
-            ScriptContext1_SetupScript(LittlerootTown_ProfessorBirchsLab_EventScript_1FA4D6);
-            return TRUE;
-        }
-        if (ShouldDoRoxanneCall() == TRUE)
-        {
-            ScriptContext1_SetupScript(RustboroCity_Gym_EventScript_21307B);
-            return TRUE;
-        }
-        if (ShouldDoRivalRayquazaCall() == TRUE)
-        {
-            ScriptContext1_SetupScript(MossdeepCity_SpaceCenter_2F_EventScript_224175);
-            return TRUE;
-        }
+        // if (ShouldDoBrailleRegicePuzzle() == TRUE)
+        // {
+        //     ScriptContext1_SetupScript(IslandCave_EventScript_238EAF);
+        //     return TRUE;
+        // }
+        // if (ShouldDoWallyCall() == TRUE)
+        // {
+        //     ScriptContext1_SetupScript(MauvilleCity_EventScript_1DF7BA);
+        //     return TRUE;
+        // }
+        // if (ShouldDoWinonaCall() == TRUE)
+        // {
+        //     ScriptContext1_SetupScript(Route119_EventScript_1F49EC);
+        //     return TRUE;
+        // }
+        // if (ShouldDoScottCall() == TRUE)
+        // {
+        //     ScriptContext1_SetupScript(LittlerootTown_ProfessorBirchsLab_EventScript_1FA4D6);
+        //     return TRUE;
+        // }
+        // if (ShouldDoRoxanneCall() == TRUE)
+        // {
+        //     ScriptContext1_SetupScript(RustboroCity_Gym_EventScript_21307B);
+        //     return TRUE;
+        // }
+        // if (ShouldDoRivalRayquazaCall() == TRUE)
+        // {
+        //     ScriptContext1_SetupScript(MossdeepCity_SpaceCenter_2F_EventScript_224175);
+        //     return TRUE;
+        // }
     }
 
     if (SafariZoneTakeStep() == TRUE)
         return TRUE;
-    if (CountSSTidalStep(1) == TRUE)
-    {
-        ScriptContext1_SetupScript(SSTidalCorridor_EventScript_23C050);
-        return TRUE;
-    }
+    // if (CountSSTidalStep(1) == TRUE)
+    // {
+    //     ScriptContext1_SetupScript(SSTidalCorridor_EventScript_23C050);
+    //     return TRUE;
+    // }
     if (TryStartMatchCall())
         return TRUE;
     return FALSE;
@@ -711,36 +695,36 @@ static bool8 TryStartWarpEventScript(struct MapPosition *position, u16 metatileB
             sub_80AF80C(metatileBehavior);
             return TRUE;
         }
-        if (MetatileBehavior_IsLavaridgeB1FWarp(metatileBehavior) == TRUE)
-        {
-            sub_80AF828();
-            return TRUE;
-        }
-        if (MetatileBehavior_IsLavaridge1FWarp(metatileBehavior) == TRUE)
-        {
-            sub_80AF838();
-            return TRUE;
-        }
-        if (MetatileBehavior_IsAquaHideoutWarp(metatileBehavior) == TRUE)
-        {
-            sub_80AF848();
-            return TRUE;
-        }
+        // if (MetatileBehavior_IsLavaridgeB1FWarp(metatileBehavior) == TRUE)
+        // {
+        //     sub_80AF828();
+        //     return TRUE;
+        // }
+        // if (MetatileBehavior_IsLavaridge1FWarp(metatileBehavior) == TRUE)
+        // {
+        //     sub_80AF838();
+        //     return TRUE;
+        // }
+        // if (MetatileBehavior_IsAquaHideoutWarp(metatileBehavior) == TRUE)
+        // {
+        //     sub_80AF848();
+        //     return TRUE;
+        // }
         if (MetatileBehavior_IsWarpOrBridge(metatileBehavior) == TRUE)
         {
             sub_80B0268();
             return TRUE;
         }
-        if (MetatileBehavior_IsMtPyreHole(metatileBehavior) == TRUE)
-        {
-            ScriptContext1_SetupScript(gUnknown_082A8350);
-            return TRUE;
-        }
-        if (MetatileBehavior_IsMossdeepGymWarp(metatileBehavior) == TRUE)
-        {
-            sub_80AF87C();
-            return TRUE;
-        }
+        // if (MetatileBehavior_IsMtPyreHole(metatileBehavior) == TRUE)
+        // {
+        //     ScriptContext1_SetupScript(gUnknown_082A8350);
+        //     return TRUE;
+        // }
+        // if (MetatileBehavior_IsMossdeepGymWarp(metatileBehavior) == TRUE)
+        // {
+        //     sub_80AF87C();
+        //     return TRUE;
+        // }
         DoWarp();
         return TRUE;
     }
@@ -788,31 +772,31 @@ static void SetupWarp(struct MapHeader *unused, s8 warpEventId, struct MapPositi
 {
     const struct WarpEvent *warpEvent;
 
-    u8 trainerHillMapId = GetCurrentTrainerHillMapId();
+    // u8 trainerHillMapId = GetCurrentTrainerHillMapId();
 
-    if (trainerHillMapId)
-    {
-        if (trainerHillMapId == sub_81D6490())
-        {
-            if (warpEventId == 0)
-            {
-                warpEvent = &gMapHeader.events->warps[0];
-            }
-            else
-            {
-                warpEvent = sub_81D6120();
-            }
-        }
-        else if (trainerHillMapId == 5)
-        {
-            warpEvent = sub_81D6134(warpEventId);
-        }
-        else
-        {
-            warpEvent = &gMapHeader.events->warps[warpEventId];
-        }
-    }
-    else
+    // if (trainerHillMapId)
+    // {
+    //     if (trainerHillMapId == sub_81D6490())
+    //     {
+    //         if (warpEventId == 0)
+    //         {
+    //             warpEvent = &gMapHeader.events->warps[0];
+    //         }
+    //         else
+    //         {
+    //             warpEvent = sub_81D6120();
+    //         }
+    //     }
+    //     else if (trainerHillMapId == 5)
+    //     {
+    //         warpEvent = sub_81D6134(warpEventId);
+    //     }
+    //     else
+    //     {
+    //         warpEvent = &gMapHeader.events->warps[warpEventId];
+    //     }
+    // }
+    // else
     {
         warpEvent = &gMapHeader.events->warps[warpEventId];
     }

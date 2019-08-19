@@ -45,7 +45,7 @@
 #include "party_menu.h"
 #include "battle_arena.h"
 #include "battle_pike.h"
-#include "battle_pyramid.h"
+// #include "battle_pyramid.h"
 #include "field_specials.h"
 #include "pokemon_summary_screen.h"
 #include "pokenav.h"
@@ -9833,34 +9833,34 @@ static void atkE5_pickup(void)
     u16 species, heldItem;
     u8 ability;
 
-    if (InBattlePike())
-    {
+    // if (InBattlePike())
+    // {
 
-    }
-    else if (InBattlePyramid())
-    {
-        for (i = 0; i < PARTY_SIZE; i++)
-        {
-            species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2);
-            heldItem = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
+    // }
+    // else if (InBattlePyramid())
+    // {
+    //     for (i = 0; i < PARTY_SIZE; i++)
+    //     {
+    //         species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2);
+    //         heldItem = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
 
-            if (GetMonData(&gPlayerParty[i], MON_DATA_ABILITY_NUM))
-                ability = gBaseStats[species].abilities[1];
-            else
-                ability = gBaseStats[species].abilities[0];
+    //         if (GetMonData(&gPlayerParty[i], MON_DATA_ABILITY_NUM))
+    //             ability = gBaseStats[species].abilities[1];
+    //         else
+    //             ability = gBaseStats[species].abilities[0];
 
-            if (ability == ABILITY_PICKUP
-                && species != 0
-                && species != SPECIES_EGG
-                && heldItem == ITEM_NONE
-                && (Random() % 10) == 0)
-            {
-                heldItem = GetBattlePyramidPickupItemId();
-                SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &heldItem);
-            }
-        }
-    }
-    else
+    //         if (ability == ABILITY_PICKUP
+    //             && species != 0
+    //             && species != SPECIES_EGG
+    //             && heldItem == ITEM_NONE
+    //             && (Random() % 10) == 0)
+    //         {
+    //             heldItem = GetBattlePyramidPickupItemId();
+    //             SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &heldItem);
+    //         }
+    //     }
+    // }
+    // else
     {
         for (i = 0; i < PARTY_SIZE; i++)
         {

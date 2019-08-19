@@ -251,7 +251,7 @@ gSpecials:: @ 81DBA64
 	def_special CallBattleArenaFunction
 	def_special CallBattleFactoryFunction
 	def_special CallBattlePikeFunction
-	def_special CallBattlePyramidFunction
+	@ def_special CallBattlePyramidFunction
 	def_special StopMapMusic
 	def_special sub_81B99B4
 	def_special sub_81B9B80
@@ -457,8 +457,8 @@ gSpecials:: @ 81DBA64
 	def_special sub_813A128
 	def_special sub_813A630
 	def_special sub_813A080
-	def_special sub_81C6A94
-	def_special sub_81C4F24
+	@ def_special sub_81C6A94
+	@ def_special sub_81C4F24
 	def_special sub_81B95E0
 	def_special sub_81B9620
 	def_special sub_813A76C
@@ -515,7 +515,7 @@ gSpecials:: @ 81DBA64
 	def_special sub_813B514
 	def_special sub_813B568
 	def_special sub_813B534
-	def_special CallTrainerHillFunction
+	@ def_special CallTrainerHillFunction
 	def_special sub_813B7D8
 	def_special sub_813B80C
 	def_special sub_81D4BEC

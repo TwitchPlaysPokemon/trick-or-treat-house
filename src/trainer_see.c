@@ -12,7 +12,7 @@
 #include "trainer_see.h"
 #include "trainer_hill.h"
 #include "util.h"
-#include "battle_pyramid.h"
+// #include "battle_pyramid.h"
 #include "constants/battle_setup.h"
 #include "constants/event_object_movement_constants.h"
 #include "constants/field_effects.h"
@@ -234,22 +234,22 @@ static u8 CheckTrainer(u8 eventObjectId)
     u8 ret = 1;
     u8 approachDistance;
 
-    if (InTrainerHill() == TRUE)
-        scriptPtr = GetTrainerHillTrainerScript();
-    else
+    // if (InTrainerHill() == TRUE)
+    //     scriptPtr = GetTrainerHillTrainerScript();
+    // else
         scriptPtr = GetEventObjectScriptPointerByEventObjectId(eventObjectId);
 
-    if (InBattlePyramid())
-    {
-        if (GetBattlePyramidTrainerFlag(eventObjectId))
-            return 0;
-    }
-    else if (InTrainerHill() == TRUE)
-    {
-        if (GetHillTrainerFlag(eventObjectId))
-            return 0;
-    }
-    else
+    // if (InBattlePyramid())
+    // {
+    //     if (GetBattlePyramidTrainerFlag(eventObjectId))
+    //         return 0;
+    // }
+    // else if (InTrainerHill() == TRUE)
+    // {
+    //     if (GetHillTrainerFlag(eventObjectId))
+    //         return 0;
+    // }
+    // else
     {
         if (GetTrainerFlagFromScriptPointer(scriptPtr))
             return 0;

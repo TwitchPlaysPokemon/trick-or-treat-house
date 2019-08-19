@@ -291,7 +291,7 @@ void sub_80AF3B0(void)
 
 void sub_80AF3C8(void)
 {
-    if (!sub_81D6534())
+    // if (!sub_81D6534())
         Overworld_PlaySpecialMapMusic();
     pal_fill_black();
     sub_80AF334();

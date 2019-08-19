@@ -1,8 +1,8 @@
 #include "global.h"
 #include "item_use.h"
 #include "battle.h"
-#include "battle_pyramid.h"
-#include "battle_pyramid_bag.h"
+// #include "battle_pyramid.h"
+// #include "battle_pyramid_bag.h"
 #include "berry.h"
 #include "berry_powder.h"
 #include "bike.h"
@@ -45,7 +45,7 @@
 
 extern u8 BerryTree_EventScript_274482[];
 extern u8 BerryTree_EventScript_2744C0[];
-extern u8 BattleFrontier_OutsideEast_EventScript_242CFC[];
+// extern u8 BattleFrontier_OutsideEast_EventScript_242CFC[];
 
 void SetUpItemUseCallback(u8 taskId);
 void MapPostLoadHook_UseItem(void);
@@ -113,16 +113,16 @@ void SetUpItemUseCallback(u8 taskId)
         type = gTasks[taskId].data[4] - 1;
     else
         type = ItemId_GetType(gSpecialVar_ItemId) - 1;
-    if (!InBattlePyramid())
+    // if (!InBattlePyramid())
     {
         gBagMenu->mainCallback2 = gUnknown_085920D8[type];
         unknown_ItemMenu_Confirm(taskId);
     }
-    else
-    {
-        gPyramidBagResources->callback2 = gUnknown_085920D8[type];
-        sub_81C5B14(taskId);
-    }
+    // else
+    // {
+    //     gPyramidBagResources->callback2 = gUnknown_085920D8[type];
+    //     sub_81C5B14(taskId);
+    // }
 }
 
 void SetUpItemUseOnFieldCallback(u8 taskId)
@@ -153,10 +153,10 @@ void DisplayCannotUseItemMessage(u8 taskId, bool8 isUsingRegisteredKeyItemOnFiel
     StringExpandPlaceholders(gStringVar4, str);
     if (!isUsingRegisteredKeyItemOnField)
     {
-        if (!InBattlePyramid())
+        // if (!InBattlePyramid())
             DisplayItemMessage(taskId, 1, gStringVar4, BagMenu_InitListsMenu);
-        else
-            DisplayItemMessageInBattlePyramid(taskId, gText_DadsAdvice, sub_81C6714);
+        // else
+        //     DisplayItemMessageInBattlePyramid(taskId, gText_DadsAdvice, sub_81C6714);
     }
     else
         DisplayItemMessageOnField(taskId, gStringVar4, CleanUpAfterFailingToUseRegisteredKeyItemOnField);
@@ -716,7 +716,7 @@ bool8 sub_80FDE2C(void)
 void sub_80FDE7C(u8 taskId)
 {
     ScriptContext2_Enable();
-    ScriptContext1_SetupScript(BattleFrontier_OutsideEast_EventScript_242CFC);
+    // ScriptContext1_SetupScript(BattleFrontier_OutsideEast_EventScript_242CFC);
     DestroyTask(taskId);
 }
 
@@ -796,26 +796,26 @@ void sub_80FE058(void)
     RemoveBagItem(gSpecialVar_ItemId, 1);
     CopyItemName(gSpecialVar_ItemId, gStringVar2);
     StringExpandPlaceholders(gStringVar4, gText_PlayerUsedVar2);
-    if (!InBattlePyramid())
-    {
+    // if (!InBattlePyramid())
+    // {
         sub_81AB9A8(ItemId_GetPocket(gSpecialVar_ItemId));
         SetInitialScrollAndCursorPositions(ItemId_GetPocket(gSpecialVar_ItemId));
-    }
-    else
-    {
-        sub_81C5924();
-        sub_81C59BC();
-    }
+    // }
+    // else
+    // {
+    //     sub_81C5924();
+    //     sub_81C59BC();
+    // }
 }
 
 void ItemUseOutOfBattle_Repel(u8 taskId)
 {
     if (VarGet(VAR_REPEL_STEP_COUNT) == 0)
         gTasks[taskId].func = sub_80FE124;
-    else if (!InBattlePyramid())
+    else //if (!InBattlePyramid())
         DisplayItemMessage(taskId, 1, gText_RepelEffectsLingered, BagMenu_InitListsMenu);
-    else
-        DisplayItemMessageInBattlePyramid(taskId, gText_RepelEffectsLingered, sub_81C6714);
+    // else
+    //     DisplayItemMessageInBattlePyramid(taskId, gText_RepelEffectsLingered, sub_81C6714);
 }
 
 void sub_80FE124(u8 taskId)
@@ -836,10 +836,10 @@ void sub_80FE164(u8 taskId)
     {
         VarSet(VAR_REPEL_STEP_COUNT, ItemId_GetHoldEffectParam(gSpecialVar_ItemId));
         sub_80FE058();
-        if (!InBattlePyramid())
+        // if (!InBattlePyramid())
             DisplayItemMessage(taskId, 1, gStringVar4, BagMenu_InitListsMenu);
-        else
-            DisplayItemMessageInBattlePyramid(taskId, gStringVar4, sub_81C6714);
+        // else
+        //     DisplayItemMessageInBattlePyramid(taskId, gStringVar4, sub_81C6714);
     }
 }
 
@@ -848,10 +848,10 @@ void sub_80FE1D0(u8 taskId)
     if(++gTasks[taskId].data[8] > 7)
     {
         PlaySE(SE_BIDORO);
-        if (!InBattlePyramid())
+        // if (!InBattlePyramid())
             DisplayItemMessage(taskId, 1, gStringVar4, BagMenu_InitListsMenu);
-        else
-            DisplayItemMessageInBattlePyramid(taskId, gStringVar4, sub_81C6714);
+        // else
+        //     DisplayItemMessageInBattlePyramid(taskId, gStringVar4, sub_81C6714);
     }
 }
 
@@ -921,27 +921,27 @@ void ItemUseInBattle_PokeBall(u8 taskId)
     if (IsPlayerPartyAndPokemonStorageFull() == FALSE) // have room for mon?
     {
         RemoveBagItem(gSpecialVar_ItemId, 1);
-        if (!InBattlePyramid())
+        // if (!InBattlePyramid())
             unknown_ItemMenu_Confirm(taskId);
-        else
-            sub_81C5B14(taskId);
+        // else
+        //     sub_81C5B14(taskId);
     }
-    else if (!InBattlePyramid())
+    else //if (!InBattlePyramid())
     {
         DisplayItemMessage(taskId, 1, gText_BoxFull, BagMenu_InitListsMenu);
     }
-    else
-        DisplayItemMessageInBattlePyramid(taskId, gText_BoxFull, sub_81C6714);
+    // else
+    //     DisplayItemMessageInBattlePyramid(taskId, gText_BoxFull, sub_81C6714);
 }
 
 void sub_80FE408(u8 taskId)
 {
     if (gMain.newKeys & (A_BUTTON | B_BUTTON))
     {
-        if (!InBattlePyramid())
+        // if (!InBattlePyramid())
             unknown_ItemMenu_Confirm(taskId);
-        else
-            sub_81C5B14(taskId);
+        // else
+        //     sub_81C5B14(taskId);
     }
 }
 
@@ -951,10 +951,10 @@ void sub_80FE440(u8 taskId)
     {
         PlaySE(SE_KAIFUKU);
         RemoveBagItem(gSpecialVar_ItemId, 1);
-        if (!InBattlePyramid())
+        // if (!InBattlePyramid())
             DisplayItemMessage(taskId, 1, sub_806CF78(gSpecialVar_ItemId), sub_80FE408);
-        else
-            DisplayItemMessageInBattlePyramid(taskId, sub_806CF78(gSpecialVar_ItemId), sub_80FE408);
+        // else
+        //     DisplayItemMessageInBattlePyramid(taskId, sub_806CF78(gSpecialVar_ItemId), sub_80FE408);
     }
 }
 
@@ -964,10 +964,10 @@ void ItemUseInBattle_StatIncrease(u8 taskId)
 
     if (ExecuteTableBasedItemEffect(&gPlayerParty[partyId], gSpecialVar_ItemId, partyId, 0) != FALSE)
     {
-        if (!InBattlePyramid())
+        // if (!InBattlePyramid())
             DisplayItemMessage(taskId, 1, gText_WontHaveEffect, BagMenu_InitListsMenu);
-        else
-            DisplayItemMessageInBattlePyramid(taskId, gText_WontHaveEffect, sub_81C6714);
+    //     else
+    //         DisplayItemMessageInBattlePyramid(taskId, gText_WontHaveEffect, sub_81C6714);
     }
     else
     {
@@ -978,16 +978,16 @@ void ItemUseInBattle_StatIncrease(u8 taskId)
 
 void sub_80FE54C(u8 taskId)
 {
-    if (!InBattlePyramid())
+    // if (!InBattlePyramid())
     {
         gBagMenu->mainCallback2 = sub_81B89F0;
         unknown_ItemMenu_Confirm(taskId);
     }
-    else
-    {
-        gPyramidBagResources->callback2 = sub_81B89F0;
-        sub_81C5B14(taskId);
-    }
+    // else
+    // {
+    //     gPyramidBagResources->callback2 = sub_81B89F0;
+    //     sub_81C5B14(taskId);
+    // }
 }
 
 void ItemUseInBattle_Medicine(u8 taskId)
@@ -1014,10 +1014,10 @@ void ItemUseInBattle_Escape(u8 taskId)
     if((gBattleTypeFlags & BATTLE_TYPE_TRAINER) == FALSE)
     {
         sub_80FE058();
-        if (!InBattlePyramid())
+        // if (!InBattlePyramid())
             DisplayItemMessage(taskId, 1, gStringVar4, unknown_ItemMenu_Confirm);
-        else
-            DisplayItemMessageInBattlePyramid(taskId, gStringVar4, sub_81C5B14);
+        // else
+        //     DisplayItemMessageInBattlePyramid(taskId, gStringVar4, sub_81C5B14);
     }
     else
     {
