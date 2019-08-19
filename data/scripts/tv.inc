@@ -39,6 +39,11 @@ EventScript_27EE9A:: @ 827EE9A
 	msgbox LittlerootTown_BrendansHouse_1F_Text_1F7F0F, MSGBOX_DEFAULT
 	releaseall
 	end
+LittlerootTown_BrendansHouse_1F_Text_1F7F0F: @ 81F7F0F
+	.string "There is a movie on TV.\p"
+	.string "Two men are dancing on a big piano\n"
+	.string "keyboard.\p"
+	.string "Better get going!$"
 
 EventScript_27EEA4:: @ 827EEA4
 	msgbox LittlerootTown_BrendansHouse_1F_Text_1F826F, MSGBOX_DEFAULT
@@ -51,6 +56,16 @@ EventScript_27EEA4:: @ 827EEA4
 	special TurnOffTVScreen
 	releaseall
 	end
+LittlerootTown_BrendansHouse_1F_Text_1F826F: @ 81F826F
+	.string "We bring you this emergency\n"
+	.string "news flash!\p"
+	.string "In various HOENN locales, there have\n"
+	.string "been reports of a BZZT…colored\l"
+	.string "POKéMON in flight.\p"
+	.string "The identity of this POKéMON is\n"
+	.string "currently unknown.\p"
+	.string "We now return you to the regular\n"
+	.string "movie program.$"
 
 EventScript_27EEBA:: @ 827EEBA
 	special DoTVShow

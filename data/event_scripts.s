@@ -1559,8 +1559,8 @@ Route101_EventScript_272141:: @ 8272141
 Route103_EventScript_272141:: @ 8272141
 	lock
 	faceplayer
-	goto_if_unset FLAG_HAS_MATCH_CALL, Route101_EventScript_272155
-	goto_if_unset FLAG_ENABLE_PROF_BIRCH_MATCH_CALL, Route101_EventScript_1FA2D2
+	@ goto_if_unset FLAG_HAS_MATCH_CALL, Route101_EventScript_272155
+	@ goto_if_unset FLAG_ENABLE_PROF_BIRCH_MATCH_CALL, Route101_EventScript_1FA2D2
 
 Route101_EventScript_272155:: @ 8272155
 	msgbox gUnknown_082A5C9C, MSGBOX_YESNO
@@ -1663,13 +1663,13 @@ BirthIsland_Harbor_EventScript_272250:: @ 8272250
 FarawayIsland_Entrance_EventScript_272250:: @ 8272250
 NavelRock_Harbor_EventScript_272250:: @ 8272250
 SouthernIsland_Exterior_EventScript_272250:: @ 8272250
-	compare VAR_FACING, 1
-	call_if_eq BattleFrontier_OutsideWest_EventScript_242A21
-	compare VAR_FACING, 3
-	call_if_eq BattleFrontier_OutsideWest_EventScript_242A2C
-	delay 30
-	hideobjectat 255, MAP_PETALBURG_CITY
-	call BattleFrontier_OutsideWest_EventScript_2721E2
+	@ compare VAR_FACING, 1
+	@ call_if_eq BattleFrontier_OutsideWest_EventScript_242A21
+	@ compare VAR_FACING, 3
+	@ call_if_eq BattleFrontier_OutsideWest_EventScript_242A2C
+	@ delay 30
+	@ hideobjectat 255, MAP_PETALBURG_CITY
+	@ call BattleFrontier_OutsideWest_EventScript_2721E2
 	return
 
 EventScript_272274:: @ 8272274
@@ -1774,19 +1774,19 @@ Route120_EventScript_272336:: @ 8272336
 	checkitem ITEM_DEVON_SCOPE, 1
 	compare VAR_RESULT, 1
 	goto_if_eq Route119_EventScript_272350
-	msgbox Route119_Text_1F5D00, MSGBOX_DEFAULT
+	msgbox Common_Text_HiddenKecleon, MSGBOX_DEFAULT
 	release
 	end
 
 Route119_EventScript_272350:: @ 8272350
-	msgbox Route119_Text_1F5D23, MSGBOX_YESNO
+	msgbox Common_Text_HiddenKecleonScopeAsk, MSGBOX_YESNO
 	compare VAR_RESULT, 1
 	goto_if_eq Route119_EventScript_272365
 	release
 	end
 
 Route119_EventScript_272365:: @ 8272365
-	msgbox Route119_Text_1F5D63, MSGBOX_DEFAULT
+	msgbox Common_Text_HiddenKecleonShown, MSGBOX_DEFAULT
 	closemessage
 	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
 	waitmovement 0
@@ -2300,23 +2300,23 @@ EventScript_2736D9:: @ 82736D9
 	special sub_80B05B4
 	waitstate
 	fadescreen 1
-	call_if_set FLAG_FLANNERY_GIVES_BADGE_INFO, EventScript_2736F4
+	@ call_if_set FLAG_FLANNERY_GIVES_BADGE_INFO, EventScript_2736F4
 	special sp0C8_whiteout_maybe
 	waitstate
 	end
 
-EventScript_2736F4:: @ 82736F4
-	setrespawn HEAL_LOCATION_LAVARIDGE_TOWN
-	return
+@ EventScript_2736F4:: @ 82736F4
+@ 	setrespawn HEAL_LOCATION_LAVARIDGE_TOWN
+@ 	return
 
 EventScript_2736F8:: @ 82736F8
 	message gUnknown_08272DE3
 	waitmessage
 	waitbuttonpress
-	setvar VAR_0x8004, 16
-	special CallBattlePikeFunction
-	compare VAR_RESULT, 1
-	goto_if_eq BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4222
+	@ setvar VAR_0x8004, 16
+	@ special CallBattlePikeFunction
+	@ compare VAR_RESULT, 1
+	@ goto_if_eq BattleFrontier_BattlePikeThreePathRoom_EventScript_2C4222
 	@ setvar VAR_0x8004, 12
 	@ special CallBattlePyramidFunction
 	@ compare VAR_RESULT, 1
@@ -2362,7 +2362,7 @@ RustboroCity_PokemonCenter_2F_EventScript_27375B:: @ 827375B
 SlateportCity_PokemonCenter_2F_EventScript_27375B:: @ 827375B
 SootopolisCity_PokemonCenter_2F_EventScript_27375B:: @ 827375B
 VerdanturfTown_PokemonCenter_2F_EventScript_27375B:: @ 827375B
-	call OldaleTown_PokemonCenter_2F_EventScript_27751B
+	@ call OldaleTown_PokemonCenter_2F_EventScript_27751B
 	end
 
 BattleFrontier_PokemonCenter_2F_EventScript_273761:: @ 8273761
@@ -2382,7 +2382,7 @@ RustboroCity_PokemonCenter_2F_EventScript_273761:: @ 8273761
 SlateportCity_PokemonCenter_2F_EventScript_273761:: @ 8273761
 SootopolisCity_PokemonCenter_2F_EventScript_273761:: @ 8273761
 VerdanturfTown_PokemonCenter_2F_EventScript_273761:: @ 8273761
-	call OldaleTown_PokemonCenter_2F_EventScript_277672
+	@ call OldaleTown_PokemonCenter_2F_EventScript_277672
 	end
 
 BattleFrontier_PokemonCenter_2F_EventScript_273767:: @ 8273767
@@ -2402,7 +2402,7 @@ RustboroCity_PokemonCenter_2F_EventScript_273767:: @ 8273767
 SlateportCity_PokemonCenter_2F_EventScript_273767:: @ 8273767
 SootopolisCity_PokemonCenter_2F_EventScript_273767:: @ 8273767
 VerdanturfTown_PokemonCenter_2F_EventScript_273767:: @ 8273767
-	call OldaleTown_PokemonCenter_2F_EventScript_2776A4
+	@ call OldaleTown_PokemonCenter_2F_EventScript_2776A4
 	end
 
 AncientTomb_EventScript_27376D:: @ 827376D
@@ -3661,10 +3661,6 @@ EventScript_2926F8:: @ 82926F8
 
 	.include "data/scripts/players_house.inc"
 
-EventScript_RunningShoesManual:: @ 8292DE5
-	msgbox LittlerootTown_BrendansHouse_1F_Text_1F7F66, MSGBOX_SIGN
-	end
-
 	.include "data/scripts/pokeblocks.inc"
 
 gText_SoPretty:: @ 8294295
@@ -3740,30 +3736,6 @@ Text_RepelWoreOff: @ 82A4B33
 	.string "REPEL's effect wore off…$"
 
 	.include "data/scripts/safari_zone.inc"
-
-MauvilleCity_GameCorner_EventScript_2A5AB1:: @ 82A5AB1
-	checkitem ITEM_COIN_CASE, 1
-	compare VAR_RESULT, 0
-	goto_if_eq MauvilleCity_GameCorner_EventScript_210456
-	setvar VAR_0x8004, 0
-	getpricereduction 2
-	compare VAR_RESULT, 0
-	goto_if_eq MauvilleCity_GameCorner_EventScript_2A5B0D
-	addvar VAR_0x8004, 128
-	goto MauvilleCity_GameCorner_EventScript_2A5B0D
-	end
-
-MauvilleCity_GameCorner_EventScript_2A5ADF:: @ 82A5ADF
-	checkitem ITEM_COIN_CASE, 1
-	compare VAR_RESULT, 0
-	goto_if_eq MauvilleCity_GameCorner_EventScript_210456
-	setvar VAR_0x8004, 1
-	getpricereduction 2
-	compare VAR_RESULT, 0
-	goto_if_eq MauvilleCity_GameCorner_EventScript_2A5B0D
-	addvar VAR_0x8004, 128
-	goto MauvilleCity_GameCorner_EventScript_2A5B0D
-	end
 
 MauvilleCity_GameCorner_EventScript_2A5B0D:: @ 82A5B0D
 	special PlayRoulette
@@ -6691,6 +6663,24 @@ gText_YourPartnerHasRetired:: @ 824979B
 	.string "Your partner has retired.\p"
 	.string "Your BATTLE ROOM challenge\n"
 	.string "will be canceled.$"
+
+Common_Text_LookCloserAtMap: @ 81F8820
+	.string "{PLAYER} took a closer look at the\n"
+	.string "HOENN region map.$"
+
+Common_Text_HiddenKecleon: @ 81F5D00
+	.string "Something unseeable is in the way.$"
+
+Common_Text_HiddenKecleonScopeAsk: @ 81F5D23
+	.string "Something unseeable is in the way.\p"
+	.string "Want to use the DEVON SCOPE?$"
+
+Common_Text_HiddenKecleonShown: @ 81F5D63
+	.string "{PLAYER} used the DEVON SCOPE.\p"
+	.string "An invisible POKéMON became completely\n"
+	.string "visible!\p"
+	.string "The startled POKéMON attacked!$"
+
 
 EventScript_DoLinkRoomExit::
 gEventScript_TradeRoom_TooBusyToNotice::
