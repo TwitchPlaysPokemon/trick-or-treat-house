@@ -2482,37 +2482,37 @@ void CreateBattleTowerMon2(struct Pokemon *mon, struct BattleTowerPokemon *src, 
     CalculateMonStats(mon);
 }
 
-void CreateApprenticeMon(struct Pokemon *mon, const struct Apprentice *src, u8 monId)
-{
-    s32 i;
-    u16 evAmount;
-    u8 language;
-    u32 otId = gApprentices[src->id].otId;
-    u32 personality = ((gApprentices[src->id].otId >> 8) | ((gApprentices[src->id].otId & 0xFF) << 8))
-                    + src->party[monId].species + src->number;
+// void CreateApprenticeMon(struct Pokemon *mon, const struct Apprentice *src, u8 monId)
+// {
+//     s32 i;
+//     u16 evAmount;
+//     u8 language;
+//     u32 otId = gApprentices[src->id].otId;
+//     u32 personality = ((gApprentices[src->id].otId >> 8) | ((gApprentices[src->id].otId & 0xFF) << 8))
+//                     + src->party[monId].species + src->number;
 
-    CreateMon(mon,
-              src->party[monId].species,
-              GetFrontierEnemyMonLevel(src->lvlMode - 1),
-              0x1F,
-              TRUE,
-              personality,
-              TRUE,
-              otId);
+//     CreateMon(mon,
+//               src->party[monId].species,
+//               GetFrontierEnemyMonLevel(src->lvlMode - 1),
+//               0x1F,
+//               TRUE,
+//               personality,
+//               TRUE,
+//               otId);
 
-    SetMonData(mon, MON_DATA_HELD_ITEM, &src->party[monId].item);
-    for (i = 0; i < MAX_MON_MOVES; i++)
-        SetMonMoveSlot(mon, src->party[monId].moves[i], i);
+//     SetMonData(mon, MON_DATA_HELD_ITEM, &src->party[monId].item);
+//     for (i = 0; i < MAX_MON_MOVES; i++)
+//         SetMonMoveSlot(mon, src->party[monId].moves[i], i);
 
-    evAmount = MAX_TOTAL_EVS / NUM_STATS;
-    for (i = 0; i < NUM_STATS; i++)
-        SetMonData(mon, MON_DATA_HP_EV + i, &evAmount);
+//     evAmount = MAX_TOTAL_EVS / NUM_STATS;
+//     for (i = 0; i < NUM_STATS; i++)
+//         SetMonData(mon, MON_DATA_HP_EV + i, &evAmount);
 
-    language = src->language;
-    SetMonData(mon, MON_DATA_LANGUAGE, &language);
-    SetMonData(mon, MON_DATA_OT_NAME, GetApprenticeNameInLanguage(src->id, language));
-    CalculateMonStats(mon);
-}
+//     language = src->language;
+//     SetMonData(mon, MON_DATA_LANGUAGE, &language);
+//     SetMonData(mon, MON_DATA_OT_NAME, GetApprenticeNameInLanguage(src->id, language));
+//     CalculateMonStats(mon);
+// }
 
 void CreateMonWithEVSpreadNatureOTID(struct Pokemon *mon, u16 species, u8 level, u8 nature, u8 fixedIV, u8 evSpread, u32 otId)
 {

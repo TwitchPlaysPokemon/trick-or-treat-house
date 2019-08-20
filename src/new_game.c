@@ -199,7 +199,7 @@ void NewGameInitData(void)
     ResetMiniGamesResults();
     copy_strings_to_sav1();
     SetLilycoveLady();
-    ResetAllApprenticeData();
+    // ResetAllApprenticeData();
     ClearRankingHallRecords();
     InitMatchCallCounters();
     sub_801AFD8();

@@ -2204,7 +2204,7 @@ void unknown_ItemMenu_Show(u8 taskId)
 
 void bag_menu_leave_maybe_3(void)
 {
-    gFieldCallback = Apprentice_EnableBothScriptContexts;
+    // gFieldCallback = Apprentice_EnableBothScriptContexts;
     SetMainCallback2(CB2_ReturnToField);
 }
 
