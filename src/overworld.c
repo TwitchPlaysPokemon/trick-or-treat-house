@@ -1431,7 +1431,7 @@ void CB2_NewGame(void)
     PlayTimeCounter_Start();
     ScriptContext1_Init();
     ScriptContext2_Disable();
-    gFieldCallback = ExecuteTruckSequence;
+    gFieldCallback = NULL; //ExecuteTruckSequence;
     gFieldCallback2 = NULL;
     do_load_map_stuff_loop(&gMain.state);
     SetFieldVBlankCallback();

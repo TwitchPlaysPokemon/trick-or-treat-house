@@ -174,7 +174,7 @@
     "show_map_name": true,
     "warp_events": [
         {
-            "dest_map": "MAP_TRICK_HOUSE_EXT",
+            "dest_map": "MAP_ROUTE110_TRICK_HOUSE_ENTRANCE",
             "dest_warp_id": 0,
             "elevation": 0,
             "x": 41,
@@ -186,6 +186,13 @@
             "elevation": 0,
             "x": 39,
             "y": 47
+        },
+        {
+            "dest_map": "MAP_TRICK_HOUSE_EXT",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 37,
+            "y": 30
         }
     ],
     "weather": "WEATHER_SUNNY"

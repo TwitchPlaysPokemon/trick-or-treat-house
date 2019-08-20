@@ -23,6 +23,7 @@
 #include "constants/metatile_labels.h"
 	.include "asm/macros.inc"
 	.include "asm/macros/event.inc"
+	.include "asm/macros/puzzle.inc"
 	.include "constants/constants.inc"
 
 	.section script_data, "aw", %progbits
