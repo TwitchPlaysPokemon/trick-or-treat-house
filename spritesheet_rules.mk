@@ -661,3 +661,17 @@ $(EVENTOBJGFXDIR)/effects/unknown_35.4bpp: %.4bpp: %.png
 
 $(EVENTOBJGFXDIR)/effects/unused_grass.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
+
+
+$(EVENTOBJGFXDIR)/misc/trick_door_scroll.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8
+
+$(EVENTOBJGFXDIR)/misc/trick_door_scroll_room.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8
+
+$(EVENTOBJGFXDIR)/misc/trick_door_stone.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8
+
+$(EVENTOBJGFXDIR)/misc/trick_door_stone_room.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 8 -mheight 8
+

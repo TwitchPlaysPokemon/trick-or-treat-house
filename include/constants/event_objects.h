@@ -5,7 +5,7 @@
 #define EVENT_OBJ_GFX_BRENDAN_MACH_BIKE            1
 #define EVENT_OBJ_GFX_BRENDAN_SURFING              2
 #define EVENT_OBJ_GFX_BRENDAN_FIELD_MOVE           3
-#define EVENT_OBJ_GFX_QUINTY_PLUMP                 4
+// #define EVENT_OBJ_GFX_QUINTY_PLUMP                 4
 #define EVENT_OBJ_GFX_NINJA_BOY                    5
 #define EVENT_OBJ_GFX_TWIN                         6
 #define EVENT_OBJ_GFX_BOY_1                        7
@@ -240,27 +240,38 @@
 #define EVENT_OBJ_GFX_LINK_RS_MAY                236
 #define EVENT_OBJ_GFX_LUGIA                      237
 #define EVENT_OBJ_GFX_HOOH                       238
-#define EVENT_OBJ_GFX_BARD_2                     239
+
+#define EVENT_OBJ_GFX_TRICK_SCROLL               239
+#define EVENT_OBJ_GFX_TRICK_DOOR_SCROLL          240
+#define EVENT_OBJ_GFX_TRICK_DOOR_SCROLL_ROOM     241
+#define EVENT_OBJ_GFX_TRICK_DOOR_STONE           242
+#define EVENT_OBJ_GFX_TRICK_DOOR_STONE_ROOM      243
+#define EVENT_OBJ_GFX_TRICK_DOOR_NORTH           244
+
+#define EVENT_OBJ_GFX_BARD_2                     245
+#define NUM_OBJECT_GRAPHICS_INFO 	EVENT_OBJ_GFX_BARD_2
 
 // These are dynamic object gfx ids.
 // They correspond with the values of the VAR_OBJ_GFX_ID_X vars.
 // More info about them in include/constants/vars.h
-#define EVENT_OBJ_GFX_VAR_0 240
-#define EVENT_OBJ_GFX_VAR_1 241
-#define EVENT_OBJ_GFX_VAR_2 242
-#define EVENT_OBJ_GFX_VAR_3 243
-#define EVENT_OBJ_GFX_VAR_4 244
-#define EVENT_OBJ_GFX_VAR_5 245
-#define EVENT_OBJ_GFX_VAR_6 246
-#define EVENT_OBJ_GFX_VAR_7 247
-#define EVENT_OBJ_GFX_VAR_8 248
-#define EVENT_OBJ_GFX_VAR_9 249
-#define EVENT_OBJ_GFX_VAR_A 250
-#define EVENT_OBJ_GFX_VAR_B 251
-#define EVENT_OBJ_GFX_VAR_C 252
-#define EVENT_OBJ_GFX_VAR_D 253
-#define EVENT_OBJ_GFX_VAR_E 254
-#define EVENT_OBJ_GFX_VAR_F 255
+#define EVENT_OBJ_GFX_VAR_0 0x1F0
+#define EVENT_OBJ_GFX_VAR_1 0x1F1
+#define EVENT_OBJ_GFX_VAR_2 0x1F2
+#define EVENT_OBJ_GFX_VAR_3 0x1F3
+#define EVENT_OBJ_GFX_VAR_4 0x1F4
+#define EVENT_OBJ_GFX_VAR_5 0x1F5
+#define EVENT_OBJ_GFX_VAR_6 0x1F6
+#define EVENT_OBJ_GFX_VAR_7 0x1F7
+#define EVENT_OBJ_GFX_VAR_8 0x1F8
+#define EVENT_OBJ_GFX_VAR_9 0x1F9
+#define EVENT_OBJ_GFX_VAR_A 0x1FA
+#define EVENT_OBJ_GFX_VAR_B 0x1FB
+#define EVENT_OBJ_GFX_VAR_C 0x1FC
+#define EVENT_OBJ_GFX_VAR_D 0x1FD
+#define EVENT_OBJ_GFX_VAR_E 0x1FE
+#define EVENT_OBJ_GFX_VAR_F 0x1FF
+
+#define SPRITE_VAR EVENT_OBJ_GFX_VAR_0
 
 #define SHADOW_SIZE_S   0
 #define SHADOW_SIZE_M   1
@@ -273,6 +284,10 @@
 #define TRACKS_NONE       0
 #define TRACKS_FOOT       1
 #define TRACKS_BIKE_TIRE  2
+
+#define DOOROFFSET_NONE       0
+#define DOOROFFSET_DOWN       1
+#define DOOROFFSET_UP         2
 
 #define FIRST_DECORATION_SPRITE_GFX EVENT_OBJ_GFX_PICHU_DOLL
 

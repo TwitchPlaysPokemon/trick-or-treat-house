@@ -96,16 +96,6 @@ const struct SpriteFrameImage gEventObjectPicTable_BrendanFieldMove[] = {
     overworld_frame(gEventObjectPic_BrendanFieldMove, 4, 4, 4),
 };
 
-const struct SpriteFrameImage gEventObjectPicTable_QuintyPlump[] = {
-    overworld_frame(gEventObjectPic_QuintyPlump, 4, 4, 0),
-    overworld_frame(gEventObjectPic_QuintyPlump, 4, 4, 1),
-    overworld_frame(gEventObjectPic_QuintyPlump, 4, 4, 2),
-    overworld_frame(gEventObjectPic_QuintyPlump, 4, 4, 3),
-    overworld_frame(gEventObjectPic_QuintyPlump, 4, 4, 4),
-    overworld_frame(gEventObjectPic_QuintyPlump, 4, 4, 5),
-    overworld_frame(gEventObjectPic_QuintyPlump, 4, 4, 6),
-};
-
 const struct SpriteFrameImage gEventObjectPicTable_NinjaBoy[] = {
     overworld_frame(gEventObjectPic_NinjaBoy, 2, 2, 0),
     overworld_frame(gEventObjectPic_NinjaBoy, 2, 2, 1),
@@ -2172,3 +2162,40 @@ const struct SpriteFrameImage gEventObjectPicTable_RubySapphireMay[] = {
     overworld_frame(gEventObjectPic_RubySapphireMayNormal, 2, 4, 7),
     overworld_frame(gEventObjectPic_RubySapphireMayNormal, 2, 4, 8),
 };
+
+const struct SpriteFrameImage gEventObjectPicTable_TrickScroll[] = {
+    obj_frame_tiles(gEventObjectPic_TrickScroll),
+};
+
+const struct SpriteFrameImage gEventObjectPicTable_TrickDoorNorth[] = {
+    obj_frame_tiles(gEventObjectPic_TrickDoorNorth),
+};
+
+const struct SpriteFrameImage gEventObjectPicTable_TrickDoorScroll[] = {
+    overworld_frame(gEventObjectPic_TrickDoorScroll, 8, 8, 0),
+    overworld_frame(gEventObjectPic_TrickDoorScroll, 8, 8, 1),
+    overworld_frame(gEventObjectPic_TrickDoorScroll, 8, 8, 2),
+    overworld_frame(gEventObjectPic_TrickDoorScroll, 8, 8, 3),
+};
+
+const struct SpriteFrameImage gEventObjectPicTable_TrickDoorScrollRoom[] = {
+    overworld_frame(gEventObjectPic_TrickDoorScrollRoom, 8, 8, 0),
+    overworld_frame(gEventObjectPic_TrickDoorScrollRoom, 8, 8, 1),
+    overworld_frame(gEventObjectPic_TrickDoorScrollRoom, 8, 8, 2),
+    overworld_frame(gEventObjectPic_TrickDoorScrollRoom, 8, 8, 3),
+};
+
+const struct SpriteFrameImage gEventObjectPicTable_TrickDoorStone[] = {
+    overworld_frame(gEventObjectPic_TrickDoorStone, 8, 8, 0),
+    overworld_frame(gEventObjectPic_TrickDoorStone, 8, 8, 1),
+    overworld_frame(gEventObjectPic_TrickDoorStone, 8, 8, 2),
+    overworld_frame(gEventObjectPic_TrickDoorStone, 8, 8, 3),
+};
+
+const struct SpriteFrameImage gEventObjectPicTable_TrickDoorStoneRoom[] = {
+    overworld_frame(gEventObjectPic_TrickDoorStoneRoom, 8, 8, 0),
+    overworld_frame(gEventObjectPic_TrickDoorStoneRoom, 8, 8, 1),
+    overworld_frame(gEventObjectPic_TrickDoorStoneRoom, 8, 8, 2),
+    overworld_frame(gEventObjectPic_TrickDoorStoneRoom, 8, 8, 3),
+};
+

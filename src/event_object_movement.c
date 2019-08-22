@@ -430,6 +430,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define EVENT_OBJ_PAL_TAG_32 0x1121
 #define EVENT_OBJ_PAL_TAG_33 0x1122
 #define EVENT_OBJ_PAL_TAG_34 0x1123
+#define EVENT_OBJ_PAL_TAG_TRICK_HOUSE 0x1124
 #define EVENT_OBJ_PAL_TAG_NONE 0x11FF
 
 #include "data/field_event_obj/event_object_graphics_info_pointers.h"
@@ -476,6 +477,7 @@ const struct SpritePalette sEventObjectSpritePalettes[] = {
     {gEventObjectPalette32, EVENT_OBJ_PAL_TAG_32},
     {gEventObjectPalette33, EVENT_OBJ_PAL_TAG_33},
     {gEventObjectPalette34, EVENT_OBJ_PAL_TAG_34},
+    {gEventObjectPaletteTrickHouse, EVENT_OBJ_PAL_TAG_TRICK_HOUSE},
     {NULL,                  0x0000},
 };
 
@@ -1551,6 +1553,14 @@ static u8 TrySetupEventObjectSprite(struct EventObjectTemplate *eventObjectTempl
     sub_8092FF0(eventObject->currentCoords.x + cameraX, eventObject->currentCoords.y + cameraY, &sprite->pos1.x, &sprite->pos1.y);
     sprite->centerToCornerVecX = -(graphicsInfo->width >> 1);
     sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
+    if (graphicsInfo->doorOffsetType == DOOROFFSET_DOWN)
+        sprite->centerToCornerVecY += 8;
+    else if (graphicsInfo->doorOffsetType == DOOROFFSET_UP)
+    {
+        // sprite->centerToCornerVecY -= 8;
+        // eventObject->fixedPriority = TRUE;
+        // sprite->subpriority = 100;
+    }
     sprite->pos1.x += 8;
     sprite->pos1.y += 16 + sprite->centerToCornerVecY;
     sprite->oam.paletteNum = paletteSlot;
