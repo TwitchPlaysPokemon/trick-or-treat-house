@@ -26,4 +26,7 @@
 #define UNITS_METRIC
 #endif
 
+// Changes the names of various items to candy items
+#define USE_CANDY_NAMES 1
+
 #endif // GUARD_CONFIG_H
