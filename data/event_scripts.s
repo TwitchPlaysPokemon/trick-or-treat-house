@@ -70,6 +70,8 @@ gStdScripts:: @ 81DC2A0
 	.4byte Std_9
 	.4byte Std_10
 gStdScripts_End:: @ 81DC2CC
+	
+	.include "data/scripts/common_scripts.inc"
 
 	.include "data/maps/TrickHouseExt/scripts.inc"
 	.include "data/maps/PetalburgCity/scripts.inc"
@@ -1249,20 +1251,6 @@ EventScript_271E54:: @ 8271E54
 	goto EventScript_271DBC
 	end
 
-Common_EventScript_ShowPokemartSign:: @ 8271E6A
-	msgbox gText_PokemartSign, MSGBOX_SIGN
-	end
-
-Common_EventScript_ShowPokemonCenterSign:: @ 8271E73
-	msgbox gText_PokemonCenterSign, MSGBOX_SIGN
-	end
-
-Common_ShowEasyChatScreen:: @ 8271E7C
-	fadescreen 1
-	special ShowEasyChatScreen
-	fadescreen 0
-	return
-
 DewfordTown_Gym_EventScript_271E84:: @ 8271E84
 LavaridgeTown_Gym_1F_EventScript_271E84:: @ 8271E84
 MauvilleCity_Gym_EventScript_271E84:: @ 8271E84
@@ -1303,38 +1291,6 @@ EventScript_CancelSurf:: @ 8271ED5
 
 EventScript_CantSurf:: @ 8271ED6
 	end
-
-Common_EventScript_SetupRivalGender:: @ 8271ED7
-	checkplayergender
-	compare VAR_RESULT, MALE
-	goto_if_eq RustboroCity_EventScript_271EEF
-	compare VAR_RESULT, FEMALE
-	goto_if_eq RustboroCity_EventScript_271EF5
-	end
-
-RustboroCity_EventScript_271EEF:: @ 8271EEF
-	setvar VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_RIVAL_MAY_NORMAL
-	return
-
-RustboroCity_EventScript_271EF5:: @ 8271EF5
-	setvar VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL
-	return
-
-Common_EventScript_SetupRivalOnBikeGender:: @ 8271EFB
-	checkplayergender
-	compare VAR_RESULT, MALE
-	goto_if_eq LavaridgeTown_EventScript_271F13
-	compare VAR_RESULT, FEMALE
-	goto_if_eq LavaridgeTown_EventScript_271F19
-	end
-
-LavaridgeTown_EventScript_271F13:: @ 8271F13
-	setvar VAR_OBJ_GFX_ID_3, EVENT_OBJ_GFX_RIVAL_MAY_MACH_BIKE
-	return
-
-LavaridgeTown_EventScript_271F19:: @ 8271F19
-	setvar VAR_OBJ_GFX_ID_3, EVENT_OBJ_GFX_RIVAL_BRENDAN_MACH_BIKE
-	return
 
 EventScript_271F1F:: @ 8271F1F
 	checkplayergender
@@ -1452,15 +1408,6 @@ DewfordTown_Gym_EventScript_272035:: @ 8272035
 	settrainerflag TRAINER_DAPHNE
 	return
 
-Common_EventScript_ShowBagIsFull:: @ 8272054
-	msgbox gText_TooBadBagIsFull, MSGBOX_DEFAULT
-	release
-	end
-
-Common_EventScript_BagIsFull:: @ 827205E
-	msgbox gText_TooBadBagIsFull, MSGBOX_DEFAULT
-	return
-
 Route114_LanettesHouse_EventScript_272067:: @ 8272067
 	msgbox gText_NoRoomLeftForAnother, MSGBOX_DEFAULT
 	release
@@ -1472,11 +1419,6 @@ Common_EventScript_NoRoomLeftForAnother:: @ 8272071
 
 Common_EventScript_SetWeather15:: @ 827207A
 	setweather WEATHER_ALTERNATING
-	return
-
-Common_EventScript_PlayGymBadgeFanfare:: @ 827207E
-	playfanfare MUS_ME_BACHI
-	waitfanfare
 	return
 
 Common_EventScript_OutOfCenterPartyHeal:: @ 8272083
@@ -1841,12 +1783,6 @@ Route120_Movement_2723C7: @ 82723C7
 	set_visible
 	step_end
 
-Common_EventScript_NameReceivedPokemon:: @ 82723DD
-	fadescreen 1
-	special ChangePokemonNickname
-	waitstate
-	return
-
 FallarborTown_House1_EventScript_2723E4:: @ 82723E4
 GraniteCave_StevensRoom_EventScript_2723E4:: @ 82723E4
 SlateportCity_OceanicMuseum_2F_EventScript_2723E4:: @ 82723E4
@@ -1932,64 +1868,6 @@ EverGrandeCity_SidneysRoom_EventScript_27255F:: @ 827255F
 	setmetatile 6, 13, METATILE_EliteFour_EntryDoor_ClosedBottom, 1
 	setmetatile 7, 13, METATILE_EliteFour_EntryDoor_ClosedBottom, 1
 	return
-
-SlateportCity_Movement_272596: @ 8272596
-	emote_question_mark
-	step_end
-
-Common_Movement_ExclamationMark: @ 8272598
-	emote_exclamation_mark
-	step_end
-
-Common_Movement_Delay48: @ 827259A
-	delay_16
-	delay_16
-	delay_16
-	step_end
-
-Common_Movement_FacePlayer: @ 827259E
-	face_player
-	step_end
-
-Common_Movement_FaceAwayPlayer: @ 82725A0
-	face_away_player
-	step_end
-
-Common_Movement_FaceOriginalDirection: @ 82725A2
-	face_original_direction
-	step_end
-
-Common_Movement_WalkInPlaceLeft: @ 82725A4
-	walk_in_place_fastest_left
-	step_end
-
-Common_Movement_WalkInPlaceUp: @ 82725A6
-	walk_in_place_fastest_up
-	step_end
-
-Common_Movement_WalkInPlaceRight: @ 82725A8
-	walk_in_place_fastest_right
-	step_end
-
-Common_Movement_WalkInPlaceDown: @ 82725AA
-	walk_in_place_fastest_down
-	step_end
-
-RustboroCity_Movement_2725AC: @ 82725AC
-	face_right
-	step_end
-
-RustboroCity_Movement_2725AE: @ 82725AE
-	face_left
-	step_end
-
-Common_Movement_FaceDown: @ 82725B0
-	face_down
-	step_end
-
-Common_Movement_FaceUp: @ 82725B2
-	face_up
-	step_end
 
 BattleFrontier_BattleDomeBattleRoom_Movement_2725B4: @ 82725B4
 MeteorFalls_1F_1R_Movement_2725B4: @ 82725B4
@@ -2139,9 +2017,6 @@ gText_PutItemInPocket:: @ 8272A9A
 gText_PlayerFoundOneItem:: @ 8272ABF
 	.string "{PLAYER} found one {STR_VAR_2}!$"
 
-gText_TooBadBagIsFull:: @ 8272AD0
-	.string "Too bad!\nThe BAG is full…$"
-
 gText_PlayerPutItemInBag:: @ 8272AEA
 	.string "{PLAYER} put away the {STR_VAR_2}\nin the BAG.$"
 
@@ -2153,12 +2028,6 @@ gText_NoRoomLeftForAnother:: @ 8272B1A
 
 gUnknown_08272B48:: @ 8272B48
 	.string "The {STR_VAR_2} was transferred\nto the PC.$"
-
-gText_PokemartSign:: @ 8272B6A
-	.string "“Selected items for your convenience!”\nPOKéMON MART$"
-
-gText_PokemonCenterSign:: @ 8272B9E
-	.string "“Rejuvenate your tired partners!”\nPOKéMON CENTER$"
 
 gUnknown_08272BCF:: @ 8272BCF
 	.string "{STR_VAR_1} might like this program.\n… … … … … … … … … … … … … … … …\pBetter get going!$"
@@ -2334,9 +2203,6 @@ EventScript_2736F8:: @ 82736F8
 	special sp0C8_whiteout_maybe
 	waitstate
 	end
-
-Common_EventScript_NopReturn:: @ 827374E
-	return
 
 EventScript_UnusedSetVarResult1:: @ 827374F
 	setvar VAR_RESULT, 1
@@ -3795,31 +3661,6 @@ MtPyre_2F_MapScript1_2A8331: @ 82A8331
 	copyvar VAR_ICE_STEP_COUNT, 0x1
 	end
 
-EventScript_FallDownHole:: @ 82A8337
-	lockall
-	delay 20
-	applymovement EVENT_OBJ_ID_PLAYER, GraniteCave_B1F_Movement_2A8369
-	waitmovement 0
-	playse SE_RU_HYUU
-	delay 60
-	warphole MAP_UNDEFINED
-	waitstate
-	end
-
-gUnknown_082A8350:: @ 82A8350
-	lockall
-	delay 20
-	applymovement EVENT_OBJ_ID_PLAYER, GraniteCave_B1F_Movement_2A8369
-	waitmovement 0
-	playse SE_RU_HYUU
-	delay 60
-	special DoFallWarp
-	waitstate
-	end
-
-GraniteCave_B1F_Movement_2A8369: @ 82A8369
-	set_invisible
-	step_end
 
 LilycoveCity_PokemonCenter_1F_EventScript_2A836B:: @ 82A836B
 	special sub_818DAEC

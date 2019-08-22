@@ -792,9 +792,19 @@ const union AnimCmd gEventObjectImageAnim_DoorOpen[] =
 
 const union AnimCmd gEventObjectImageAnim_DoorAnimOpen[] =
 {
+    ANIMCMD_FRAME(0, 4),
     ANIMCMD_FRAME(1, 4),
     ANIMCMD_FRAME(2, 4),
     ANIMCMD_FRAME(3, 4),
+    AFFINEANIMCMD_END,
+};
+
+const union AnimCmd gEventObjectImageAnim_DoorAnimClose[] =
+{
+    ANIMCMD_FRAME(3, 4),
+    ANIMCMD_FRAME(2, 4),
+    ANIMCMD_FRAME(1, 4),
+    ANIMCMD_FRAME(0, 4),
     AFFINEANIMCMD_END,
 };
 
@@ -803,19 +813,19 @@ const union AnimCmd *const gEventObjectImageAnimTable_TrickDoor[] = {
     gEventObjectImageAnim_DoorOpen,
     gEventObjectImageAnim_DoorClosed,
     gEventObjectImageAnim_DoorClosed,
-    gEventObjectImageAnim_DoorClosed,
+    gEventObjectImageAnim_DoorAnimClose,
     gEventObjectImageAnim_DoorAnimOpen,
     gEventObjectImageAnim_DoorClosed,
     gEventObjectImageAnim_DoorClosed,
-    gEventObjectImageAnim_DoorClosed,
+    gEventObjectImageAnim_DoorAnimClose,
     gEventObjectImageAnim_DoorAnimOpen,
     gEventObjectImageAnim_DoorClosed,
     gEventObjectImageAnim_DoorClosed,
-    gEventObjectImageAnim_DoorClosed,
+    gEventObjectImageAnim_DoorAnimClose,
     gEventObjectImageAnim_DoorAnimOpen,
     gEventObjectImageAnim_DoorClosed,
     gEventObjectImageAnim_DoorClosed,
-    gEventObjectImageAnim_DoorClosed,
+    gEventObjectImageAnim_DoorAnimClose,
     gEventObjectImageAnim_DoorAnimOpen,
     gEventObjectImageAnim_DoorClosed,
     gEventObjectImageAnim_DoorClosed,

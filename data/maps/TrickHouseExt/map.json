@@ -178,8 +178,8 @@
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 31,
-            "y": 31
+            "x": 49,
+            "y": 51
         },
         {
             "elevation": 3,
@@ -191,47 +191,34 @@
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 43,
-            "y": 34
+            "x": 31,
+            "y": 33
         },
         {
-            "elevation": 3,
+            "elevation": 1,
             "flag": "0",
             "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_NORTH",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 34,
+            "y": 34
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_SCROLL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Route110_EventScript_TestDoor",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 32,
-            "y": 34
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_STONE_ROOM",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 23,
-            "y": 36
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_NORTH",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 23,
-            "y": 34
+            "y": 31
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_110",
@@ -251,13 +238,6 @@
             "elevation": 0,
             "x": 39,
             "y": 47
-        },
-        {
-            "dest_map": "MAP_TRICK_HOUSE_EXT",
-            "dest_warp_id": 0,
-            "elevation": 0,
-            "x": 37,
-            "y": 30
         }
     ],
     "weather": "WEATHER_SUNNY"

@@ -1555,12 +1555,6 @@ static u8 TrySetupEventObjectSprite(struct EventObjectTemplate *eventObjectTempl
     sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
     if (graphicsInfo->doorOffsetType == DOOROFFSET_DOWN)
         sprite->centerToCornerVecY += 8;
-    else if (graphicsInfo->doorOffsetType == DOOROFFSET_UP)
-    {
-        // sprite->centerToCornerVecY -= 8;
-        // eventObject->fixedPriority = TRUE;
-        // sprite->subpriority = 100;
-    }
     sprite->pos1.x += 8;
     sprite->pos1.y += 16 + sprite->centerToCornerVecY;
     sprite->oam.paletteNum = paletteSlot;
@@ -1573,6 +1567,11 @@ static u8 TrySetupEventObjectSprite(struct EventObjectTemplate *eventObjectTempl
 
     SetObjectSubpriorityByZCoord(eventObject->previousElevation, sprite, 1);
     UpdateEventObjectVisibility(eventObject, sprite);
+    if (graphicsInfo->doorOffsetType == DOOROFFSET_UP)
+    {
+        eventObject->fixedPriority = TRUE;
+        sprite->subpriority = 0xFF;
+    }
     return eventObjectId;
 }
 
@@ -4960,6 +4959,7 @@ static bool8 DoesObjectCollideWithObjectAt(struct EventObject *eventObject, s16 
         {
             if ((curObject->currentCoords.x == x && curObject->currentCoords.y == y) || (curObject->previousCoords.x == x && curObject->previousCoords.y == y))
             {
+                if (curObject->graphicsId == EVENT_OBJ_GFX_TRICK_DOOR_NORTH) return FALSE; //HACK
                 if (AreZCoordsCompatible(eventObject->currentElevation, curObject->currentElevation))
                 {
                     return TRUE;
