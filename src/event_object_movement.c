@@ -1199,7 +1199,7 @@ static u8 GetEventObjectIdByLocalId(u8 localId)
 }
 
 // This function has the same nonmatching quirk as in Ruby/Sapphire.
-#ifdef NONMATCHING
+#ifndef NONMATCHING
 static u8 InitEventObjectStateFromTemplate(struct EventObjectTemplate *template, u8 mapNum, u8 mapGroup)
 {
     struct EventObject *eventObject;
