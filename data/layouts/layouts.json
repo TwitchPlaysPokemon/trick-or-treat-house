@@ -2443,22 +2443,22 @@
         {
             "blockdata_filepath": "data/layouts/Route110_TrickHouseEnd/map.bin",
             "border_filepath": "data/layouts/Route110_TrickHouseEnd/border.bin",
-            "height": 8,
+            "height": 7,
             "id": "LAYOUT_ROUTE110_TRICK_HOUSE_END",
             "name": "Route110_TrickHouseEnd_Layout",
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_GenericBuilding",
-            "width": 12
+            "width": 15
         },
         {
             "blockdata_filepath": "data/layouts/Route110_TrickHouseCorridor/map.bin",
             "border_filepath": "data/layouts/Route110_TrickHouseCorridor/border.bin",
-            "height": 24,
+            "height": 10,
             "id": "LAYOUT_ROUTE110_TRICK_HOUSE_CORRIDOR",
             "name": "Route110_TrickHouseCorridor_Layout",
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_GenericBuilding",
-            "width": 15
+            "width": 28
         },
         {
             "blockdata_filepath": "data/layouts/Route110_TrickHousePuzzle1/map.bin",
@@ -4419,6 +4419,16 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Mauville",
             "width": 70
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_TrickHouseCut/map.bin",
+            "border_filepath": "data/layouts/Puzzle_TrickHouseCut/border.bin",
+            "height": 21,
+            "id": "LAYOUT_PUZZLE_TRICK_HOUSE_CUT",
+            "name": "Puzzle_TrickHouseCut_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrickHousePuzzle",
+            "width": 21
         }
     ],
     "layouts_table_label": "gMapLayouts"

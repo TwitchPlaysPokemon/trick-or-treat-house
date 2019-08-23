@@ -96,6 +96,7 @@
 #define MAP_SECRET_BASE_SHRUB4       (23 | (3 << 8))
 
 // Map Group 4
+#define MAP_PUZZLE_TRICK_HOUSE_CUT (0 | (4 << 8))
 
 #define MAP_GROUPS_COUNT 5
 

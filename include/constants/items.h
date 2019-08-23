@@ -259,14 +259,14 @@
 #define ITEM_0F3 243
 #define ITEM_0F4 244
 #define ITEM_0F5 245
-#define ITEM_0F6 246
-#define ITEM_0F7 247
-#define ITEM_0F8 248
-#define ITEM_0F9 249
-#define ITEM_0FA 250
-#define ITEM_0FB 251
-#define ITEM_0FC 252
-#define ITEM_0FD 253
+#define ITEM_CUT_ITEM 246
+#define ITEM_FLASH_ITEM 247
+#define ITEM_ROCKSMASH_ITEM 248
+#define ITEM_STRENGTH_ITEM 249
+#define ITEM_SURF_ITEM 250
+#define ITEM_FLY_ITEM 251
+#define ITEM_DIVE_ITEM 252
+#define ITEM_WATERFALL_ITEM 253
 
 // Contest held items
 #define ITEM_RED_SCARF 254

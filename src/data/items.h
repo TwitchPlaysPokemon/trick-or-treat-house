@@ -3222,97 +3222,97 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_0F6] =
+    [ITEM_CUT_ITEM] =
     {
-        .name = _("????????"),
-        .itemId = ITEM_NONE,
+        .name = _("SHEARS"),
+        .itemId = ITEM_CUT_ITEM,
         .price = 0,
         .description = sDummyDesc,
-        .pocket = POCKET_ITEMS,
+        .pocket = POCKET_KEY_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0F7] =
+    [ITEM_FLASH_ITEM] =
     {
-        .name = _("????????"),
-        .itemId = ITEM_NONE,
+        .name = _("FLASHLIGHT"),
+        .itemId = ITEM_FLASH_ITEM,
         .price = 0,
         .description = sDummyDesc,
-        .pocket = POCKET_ITEMS,
+        .pocket = POCKET_KEY_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0F8] =
+    [ITEM_ROCKSMASH_ITEM] =
     {
-        .name = _("????????"),
-        .itemId = ITEM_NONE,
+        .name = _("PICKAXE"),
+        .itemId = ITEM_ROCKSMASH_ITEM,
         .price = 0,
         .description = sDummyDesc,
-        .pocket = POCKET_ITEMS,
+        .pocket = POCKET_KEY_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0F9] =
+    [ITEM_STRENGTH_ITEM] =
     {
-        .name = _("????????"),
-        .itemId = ITEM_NONE,
+        .name = _("DOLLY"),
+        .itemId = ITEM_STRENGTH_ITEM,
         .price = 0,
         .description = sDummyDesc,
-        .pocket = POCKET_ITEMS,
+        .pocket = POCKET_KEY_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0FA] =
+    [ITEM_SURF_ITEM] =
     {
-        .name = _("????????"),
-        .itemId = ITEM_NONE,
+        .name = _("INFLATE RAFT"),
+        .itemId = ITEM_SURF_ITEM,
         .price = 0,
         .description = sDummyDesc,
-        .pocket = POCKET_ITEMS,
+        .pocket = POCKET_KEY_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0FB] =
+    [ITEM_FLY_ITEM] =
     {
         .name = _("????????"),
-        .itemId = ITEM_NONE,
+        .itemId = ITEM_FLY_ITEM,
         .price = 0,
         .description = sDummyDesc,
-        .pocket = POCKET_ITEMS,
+        .pocket = POCKET_KEY_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0FC] =
+    [ITEM_DIVE_ITEM] =
     {
-        .name = _("????????"),
-        .itemId = ITEM_NONE,
+        .name = _("SCUBA GEAR"),
+        .itemId = ITEM_DIVE_ITEM,
         .price = 0,
         .description = sDummyDesc,
-        .pocket = POCKET_ITEMS,
+        .pocket = POCKET_KEY_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0FD] =
+    [ITEM_WATERFALL_ITEM] =
     {
-        .name = _("????????"),
-        .itemId = ITEM_NONE,
+        .name = _("MAGIKARP"),
+        .itemId = ITEM_WATERFALL_ITEM,
         .price = 0,
         .description = sDummyDesc,
-        .pocket = POCKET_ITEMS,
+        .pocket = POCKET_KEY_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
