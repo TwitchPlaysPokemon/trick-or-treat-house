@@ -13,7 +13,7 @@ $(DATA_ASM_BUILDDIR)/maps.o: $(DATA_ASM_SUBDIR)/maps.s $(LAYOUTS_DIR)/layouts.in
 $(DATA_ASM_BUILDDIR)/map_events.o: $(DATA_ASM_SUBDIR)/map_events.s $(MAPS_DIR)/events.inc $(MAP_EVENTS)
 	$(PREPROC) $< charmap.txt | $(CPP) -I include | $(AS) $(ASFLAGS) -o $@
 
-$(MAPS_DIR)/%/header.inc: $(MAPS_DIR)/%/map.json
+$(MAPS_DIR)/%/header.inc: $(MAPS_DIR)/%/map.json $(wildcard $(MAPS_DIR)/%/trainers.json)
 	$(MAPJSON) map emerald $< $(LAYOUTS_DIR)/layouts.json
 $(MAPS_DIR)/%/events.inc: $(MAPS_DIR)/%/header.inc ;
 $(MAPS_DIR)/%/connections.inc: $(MAPS_DIR)/%/events.inc ;

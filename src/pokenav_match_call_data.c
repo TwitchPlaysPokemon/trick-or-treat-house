@@ -1205,7 +1205,7 @@ static void MatchCall_GetNameAndDesc_Type3(match_call_t matchCall, const u8 **de
 
 static void MatchCall_GetNameAndDescByRematchIdx(u32 idx, const u8 **desc, const u8 **name)
 {
-    const struct Trainer *trainer = gTrainers + GetTrainerIdxByRematchIdx(idx);
+    const struct Trainer *trainer = GetTrainer(GetTrainerIdxByRematchIdx(idx));
     *desc = gTrainerClassNames[trainer->trainerClass];
     *name = trainer->trainerName;
 }

@@ -1684,7 +1684,7 @@ u8 GetFrontierOpponentClass(u16 trainerId)
     }
     else if (trainerId == TRAINER_STEVEN_PARTNER)
     {
-        trainerClass = gTrainers[TRAINER_STEVEN].trainerClass;
+        trainerClass = GetTrainer(TRAINER_STEVEN)->trainerClass;
     }
     else if (trainerId < TRAINER_RECORD_MIXING_FRIEND)
     {
@@ -1767,7 +1767,7 @@ void GetFrontierTrainerName(u8 *dst, u16 trainerId)
     // else if (trainerId == TRAINER_STEVEN_PARTNER)
     // {
     //     for (i = 0; i < PLAYER_NAME_LENGTH; i++)
-    //         dst[i] = gTrainers[TRAINER_STEVEN].trainerName[i];
+    //         dst[i] = GetTrainer(TRAINER_STEVEN)->trainerName[i];
     // }
     // else if (trainerId < TRAINER_RECORD_MIXING_FRIEND)
     // {
@@ -3195,7 +3195,7 @@ static void FillPartnerParty(u16 trainerId)
                 SetMonData(&gPlayerParty[3 + i], MON_DATA_HP_EV + j, &sStevenMons[i].evs[j]);
             for (j = 0; j < MAX_MON_MOVES; j++)
                 SetMonMoveSlot(&gPlayerParty[3 + i], sStevenMons[i].moves[j], j);
-            SetMonData(&gPlayerParty[3 + i], MON_DATA_OT_NAME, gTrainers[TRAINER_STEVEN].trainerName);
+            SetMonData(&gPlayerParty[3 + i], MON_DATA_OT_NAME, GetTrainer(TRAINER_STEVEN)->trainerName);
             j = MALE;
             SetMonData(&gPlayerParty[3 + i], MON_DATA_OT_GENDER, &j);
             CalculateMonStats(&gPlayerParty[3 + i]);

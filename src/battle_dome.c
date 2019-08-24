@@ -6307,12 +6307,12 @@ static void CopyDomeTrainerName(u8 *str, u16 trainerId)
 
 static u8 GetDomeBrainTrainerPicId(void)
 {
-    return gTrainers[TRAINER_TUCKER].trainerPic;
+    return GetTrainer(TRAINER_TUCKER)->trainerPic;
 }
 
 static u8 GetDomeBrainTrainerClass(void)
 {
-    return gTrainers[TRAINER_TUCKER].trainerClass;
+    return GetTrainer(TRAINER_TUCKER)->trainerClass;
 }
 
 static void CopyDomeBrainTrainerName(u8 *str)
@@ -6320,6 +6320,6 @@ static void CopyDomeBrainTrainerName(u8 *str)
     int i;
 
     for (i = 0; i < PLAYER_NAME_LENGTH; i++)
-        str[i] = gTrainers[TRAINER_TUCKER].trainerName[i];
+        str[i] = GetTrainer(TRAINER_TUCKER)->trainerName[i];
     str[i] = EOS;
 }

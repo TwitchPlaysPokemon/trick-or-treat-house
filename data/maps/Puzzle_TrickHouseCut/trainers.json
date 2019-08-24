@@ -1,0 +1,12 @@
+[
+	{
+		"class": "YOUNGSTER",
+		"name": "JEFFERY",
+		"party": [
+			{
+				"species": "SPECIES_BULBASAUR",
+				"level": 5
+			}
+		]
+	}
+]

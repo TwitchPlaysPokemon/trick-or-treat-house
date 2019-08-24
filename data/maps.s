@@ -5,6 +5,9 @@
 #include "constants/region_map_sections.h"
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
+#include "constants/trainers.h"
+#include "constants/battle_ai.h"
+#include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "constants/constants.inc"
 

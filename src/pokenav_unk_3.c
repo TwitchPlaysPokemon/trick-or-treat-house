@@ -320,7 +320,7 @@ int sub_81CAF04(int index)
     if (!state->unk1C[index].boxId)
     {
         index = GetTrainerIdxByRematchIdx(state->unk1C[index].unk6);
-        return gTrainers[index].trainerPic;
+        return GetTrainer(index)->trainerPic;
     }
 
     var0 = state->unk1C[index].unk6;
@@ -328,7 +328,7 @@ int sub_81CAF04(int index)
     if (index != REMATCH_TABLE_ENTRIES)
     {
         index = GetTrainerIdxByRematchIdx(index);
-        return gTrainers[index].trainerPic;
+        return GetTrainer(index)->trainerPic;
     }
 
     index = sub_81D1BD0(var0);
@@ -390,7 +390,7 @@ void sub_81CB050(struct PokenavMonList * arg0, u8 *str)
     if (!arg0->boxId)
     {
         int index = GetTrainerIdxByRematchIdx(arg0->unk6);
-        const struct Trainer *trainer = &gTrainers[index];
+        const struct Trainer *trainer = GetTrainer(index);
         int class = trainer->trainerClass;
         className = gTrainerClassNames[class];
         trainerName = trainer->trainerName;

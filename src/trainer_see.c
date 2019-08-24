@@ -55,6 +55,7 @@ u8 gUnknown_030060AC;
 
 // EWRAM
 EWRAM_DATA u8 gApproachingTrainerId = 0;
+EWRAM_DATA struct Trainer **gCurrTrainerTable = NULL;
 
 // const rom data
 static const u8 sEmotion_ExclamationMarkGfx[] = INCBIN_U8("graphics/misc/emotion_exclamation.4bpp");
