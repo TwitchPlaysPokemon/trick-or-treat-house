@@ -92,6 +92,7 @@ void generate_trainer_table_text(ostringstream &text, string tablename, Json tra
     ostringstream table;
     ostringstream parties;
     
+    table << ".align 2\n";
     table << tablename << ":\n";
     
     for (unsigned int i = 0; i < trainer_data.array_items().size(); i++)
@@ -165,6 +166,7 @@ void generate_trainer_table_text(ostringstream &text, string tablename, Json tra
         table << "\t.byte " << party.array_items().size() << "\n";
         
         table << "\t.4byte " << tablename << "_" << i << "Party\n";
+        parties << ".align 2\n";
         parties << tablename << "_" << i << "Party:\n";
         
         for (unsigned int i = 0; i < party.array_items().size(); i++) {
@@ -278,7 +280,8 @@ string generate_map_connections_text(Json map_data) {
         return string("\n");
 
     ostringstream text;
-
+    
+    text << ".align 2\n";
     text << map_data["name"].string_value() << "_MapConnectionsList:\n";
 
     for (auto &connection : map_data["connections"].array_items()) {
@@ -302,7 +305,8 @@ string generate_map_events_text(Json map_data) {
     ostringstream text;
 
     string objects_label, warps_label, coords_label, bgs_label;
-
+    text << ".align 2\n";
+    
     if (map_data["object_events"].array_items().size() > 0) {
         objects_label = map_data["name"].string_value() + "_EventObjects";
         text << objects_label << ":\n";
