@@ -13,18 +13,18 @@ EventScript_28CCC6:: @ 828CCC6
 Route111_EventScript_28CCC7:: @ 828CCC7
 Route118_EventScript_28CCC7:: @ 828CCC7
 Route120_EventScript_28CCC7:: @ 828CCC7
-	cleartrainerflag TRAINER_GABBY_AND_TY_6
-	specialvar VAR_RESULT, GabbyAndTyGetBattleNum
-	switch VAR_RESULT
-	case 0, Route111_EventScript_28CD38
-	case 1, Route111_EventScript_28CD3E
-	case 2, Route111_EventScript_28CD49
-	case 3, Route111_EventScript_28CD54
-	case 4, Route111_EventScript_28CD5F
-	case 5, Route111_EventScript_28CD6A
-	case 6, Route111_EventScript_28CD75
-	case 7, Route111_EventScript_28CD80
-	case 8, Route111_EventScript_28CD8B
+	@ cleartrainerflag TRAINER_GABBY_AND_TY_6
+	@ specialvar VAR_RESULT, GabbyAndTyGetBattleNum
+	@ switch VAR_RESULT
+	@ case 0, Route111_EventScript_28CD38
+	@ case 1, Route111_EventScript_28CD3E
+	@ case 2, Route111_EventScript_28CD49
+	@ case 3, Route111_EventScript_28CD54
+	@ case 4, Route111_EventScript_28CD5F
+	@ case 5, Route111_EventScript_28CD6A
+	@ case 6, Route111_EventScript_28CD75
+	@ case 7, Route111_EventScript_28CD80
+	@ case 8, Route111_EventScript_28CD8B
 	end
 
 Route111_EventScript_28CD38:: @ 828CD38
@@ -136,79 +136,79 @@ Route111_EventScript_28CDD2:: @ 828CDD2
 	return
 
 Route111_EventScript_28CDD6:: @ 828CDD6
-	trainerbattle_double TRAINER_GABBY_AND_TY_1, Route111_Text_28AF05, Route111_Text_28B000, Route111_Text_28B5EC, Route111_EventScript_28CF56
-	msgbox Route111_Text_28B5C0, MSGBOX_DEFAULT
-	release
+	@ trainerbattle_double TRAINER_GABBY_AND_TY_1, Route111_Text_28AF05, Route111_Text_28B000, Route111_Text_28B5EC, Route111_EventScript_28CF56
+	@ msgbox Route111_Text_28B5C0, MSGBOX_DEFAULT
+	@ release
 	end
 
 Route111_EventScript_28CDF6:: @ 828CDF6
-	trainerbattle_double TRAINER_GABBY_AND_TY_1, Route111_Text_28B75C, Route111_Text_28B8B1, Route111_Text_28B841, Route111_EventScript_28CF56
-	msgbox Route111_Text_28B805, MSGBOX_DEFAULT
-	release
+	@ trainerbattle_double TRAINER_GABBY_AND_TY_1, Route111_Text_28B75C, Route111_Text_28B8B1, Route111_Text_28B841, Route111_EventScript_28CF56
+	@ msgbox Route111_Text_28B805, MSGBOX_DEFAULT
+	@ release
 	end
 
 Route118_EventScript_28CE16:: @ 828CE16
-	trainerbattle_double TRAINER_GABBY_AND_TY_2, Route118_Text_28AF7D, Route118_Text_28B719, Route118_Text_28B5EC, Route118_EventScript_28CFC3
-	msgbox Route118_Text_28B5C0, MSGBOX_DEFAULT
-	release
+	@ trainerbattle_double TRAINER_GABBY_AND_TY_2, Route118_Text_28AF7D, Route118_Text_28B719, Route118_Text_28B5EC, Route118_EventScript_28CFC3
+	@ msgbox Route118_Text_28B5C0, MSGBOX_DEFAULT
+	@ release
 	end
 
 Route118_EventScript_28CE36:: @ 828CE36
-	trainerbattle_double TRAINER_GABBY_AND_TY_2, Route118_Text_28B7B1, Route118_Text_28B8F6, Route118_Text_28B841, Route118_EventScript_28CFC3
-	msgbox Route118_Text_28B805, MSGBOX_DEFAULT
-	release
+	@ trainerbattle_double TRAINER_GABBY_AND_TY_2, Route118_Text_28B7B1, Route118_Text_28B8F6, Route118_Text_28B841, Route118_EventScript_28CFC3
+	@ msgbox Route118_Text_28B805, MSGBOX_DEFAULT
+	@ release
 	end
 
 Route120_EventScript_28CE56:: @ 828CE56
-	trainerbattle_double TRAINER_GABBY_AND_TY_3, Route120_Text_28AF7D, Route120_Text_28B719, Route120_Text_28B5EC, Route120_EventScript_28CFC3
-	msgbox Route120_Text_28B5C0, MSGBOX_DEFAULT
-	release
+	@ trainerbattle_double TRAINER_GABBY_AND_TY_3, Route120_Text_28AF7D, Route120_Text_28B719, Route120_Text_28B5EC, Route120_EventScript_28CFC3
+	@ msgbox Route120_Text_28B5C0, MSGBOX_DEFAULT
+	@ release
 	end
 
 Route120_EventScript_28CE76:: @ 828CE76
-	trainerbattle_double TRAINER_GABBY_AND_TY_3, Route120_Text_28B7B1, Route120_Text_28B8F6, Route120_Text_28B841, Route120_EventScript_28CFC3
-	msgbox Route120_Text_28B805, MSGBOX_DEFAULT
-	release
+	@ trainerbattle_double TRAINER_GABBY_AND_TY_3, Route120_Text_28B7B1, Route120_Text_28B8F6, Route120_Text_28B841, Route120_EventScript_28CFC3
+	@ msgbox Route120_Text_28B805, MSGBOX_DEFAULT
+	@ release
 	end
 
 Route111_EventScript_28CE96:: @ 828CE96
-	trainerbattle_double TRAINER_GABBY_AND_TY_4, Route111_Text_28AF7D, Route111_Text_28B719, Route111_Text_28B5EC, Route111_EventScript_28CFC3
-	msgbox Route111_Text_28B5C0, MSGBOX_DEFAULT
-	release
+	@ trainerbattle_double TRAINER_GABBY_AND_TY_4, Route111_Text_28AF7D, Route111_Text_28B719, Route111_Text_28B5EC, Route111_EventScript_28CFC3
+	@ msgbox Route111_Text_28B5C0, MSGBOX_DEFAULT
+	@ release
 	end
 
 Route111_EventScript_28CEB6:: @ 828CEB6
-	trainerbattle_double TRAINER_GABBY_AND_TY_4, Route111_Text_28B7B1, Route111_Text_28B8F6, Route111_Text_28B841, Route111_EventScript_28CFC3
-	msgbox Route111_Text_28B805, MSGBOX_DEFAULT
-	release
+	@ trainerbattle_double TRAINER_GABBY_AND_TY_4, Route111_Text_28B7B1, Route111_Text_28B8F6, Route111_Text_28B841, Route111_EventScript_28CFC3
+	@ msgbox Route111_Text_28B805, MSGBOX_DEFAULT
+	@ release
 	end
 
 Route118_EventScript_28CED6:: @ 828CED6
-	trainerbattle_double TRAINER_GABBY_AND_TY_5, Route118_Text_28AF7D, Route118_Text_28B719, Route118_Text_28B5EC, Route118_EventScript_28CFC3
-	msgbox Route118_Text_28B5C0, MSGBOX_DEFAULT
-	release
+	@ trainerbattle_double TRAINER_GABBY_AND_TY_5, Route118_Text_28AF7D, Route118_Text_28B719, Route118_Text_28B5EC, Route118_EventScript_28CFC3
+	@ msgbox Route118_Text_28B5C0, MSGBOX_DEFAULT
+	@ release
 	end
 
 Route118_EventScript_28CEF6:: @ 828CEF6
-	trainerbattle_double TRAINER_GABBY_AND_TY_5, Route118_Text_28B7B1, Route118_Text_28B8F6, Route118_Text_28B841, Route118_EventScript_28CFC3
-	msgbox Route118_Text_28B805, MSGBOX_DEFAULT
-	release
+	@ trainerbattle_double TRAINER_GABBY_AND_TY_5, Route118_Text_28B7B1, Route118_Text_28B8F6, Route118_Text_28B841, Route118_EventScript_28CFC3
+	@ msgbox Route118_Text_28B805, MSGBOX_DEFAULT
+	@ release
 	end
 
 Route111_EventScript_28CF16:: @ 828CF16
 Route118_EventScript_28CF16:: @ 828CF16
 Route120_EventScript_28CF16:: @ 828CF16
-	trainerbattle_double TRAINER_GABBY_AND_TY_6, Route111_Text_28AF7D, Route111_Text_28B719, Route111_Text_28B5EC, Route111_EventScript_28CFC3
-	msgbox Route111_Text_28B5C0, MSGBOX_DEFAULT
-	release
+	@ trainerbattle_double TRAINER_GABBY_AND_TY_6, Route111_Text_28AF7D, Route111_Text_28B719, Route111_Text_28B5EC, Route111_EventScript_28CFC3
+	@ msgbox Route111_Text_28B5C0, MSGBOX_DEFAULT
+	@ release
 	end
 
 Route111_EventScript_28CF36:: @ 828CF36
 Route118_EventScript_28CF36:: @ 828CF36
 Route120_EventScript_28CF36:: @ 828CF36
-	trainerbattle_double TRAINER_GABBY_AND_TY_6, Route111_Text_28B7B1, Route111_Text_28B8F6, Route111_Text_28B841, Route111_EventScript_28CFC3
-	msgbox Route111_Text_28B805, MSGBOX_DEFAULT
-	release
+	@ trainerbattle_double TRAINER_GABBY_AND_TY_6, Route111_Text_28B7B1, Route111_Text_28B8F6, Route111_Text_28B841, Route111_EventScript_28CFC3
+	@ msgbox Route111_Text_28B805, MSGBOX_DEFAULT
+	@ release
 	end
 
 Route111_EventScript_28CF56:: @ 828CF56

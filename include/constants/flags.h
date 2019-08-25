@@ -9,18 +9,18 @@
 #define FLAG_TEMP_2      0x2
 #define FLAG_TEMP_3      0x3
 #define FLAG_TEMP_4      0x4
-#define FLAG_TEMP_5      0x5 // Unused Flag
-#define FLAG_TEMP_6      0x6 // Unused Flag
-#define FLAG_TEMP_7      0x7 // Unused Flag
-#define FLAG_TEMP_8      0x8 // Unused Flag
-#define FLAG_TEMP_9      0x9 // Unused Flag
-#define FLAG_TEMP_A      0xA // Unused Flag
-#define FLAG_TEMP_B      0xB // Unused Flag
-#define FLAG_TEMP_C      0xC // Unused Flag
-#define FLAG_TEMP_D      0xD // Unused Flag
-#define FLAG_TEMP_E      0xE // Unused Flag
-#define FLAG_TEMP_F      0xF // Unused Flag
-#define FLAG_TEMP_10    0x10 // Unused Flag
+#define FLAG_TEMP_5      0x5
+#define FLAG_TEMP_6      0x6
+#define FLAG_TEMP_7      0x7
+#define FLAG_TEMP_8      0x8
+#define FLAG_TEMP_9      0x9
+#define FLAG_TEMP_A      0xA
+#define FLAG_TEMP_B      0xB
+#define FLAG_TEMP_C      0xC
+#define FLAG_TEMP_D      0xD
+#define FLAG_TEMP_E      0xE
+#define FLAG_TEMP_F      0xF
+#define FLAG_TEMP_10    0x10
 #define FLAG_TEMP_11    0x11
 #define FLAG_TEMP_12    0x12
 #define FLAG_TEMP_13    0x13
@@ -87,14 +87,12 @@
 #define FLAG_UNUSED_0x04F    0x4F // Unused Flag
 
 // Scripts
-#define FLAG_RAYQUAZA_ON_SKY_TOWER_SUMMIT    0x50
-#define FLAG_SET_WALL_CLOCK                  0x51
-#define FLAG_RESCUED_BIRCH                   0x52
-#define FLAG_LEGENDARIES_IN_SOOTOPOLIS       0x53
-
+#define FLAG_TRICK_HOUSE_SCROLL_READ         0x50
+#define FLAG_UNUSED_0x051                    0x51
+#define FLAG_UNUSED_0x052                    0x52
+#define FLAG_UNUSED_0x053                    0x53
 #define FLAG_UNUSED_0x054                    0x54  // Unused Flag
 #define FLAG_UNUSED_0x055                    0x55  // Unused Flag
-
 #define FLAG_LINK_CONTEST_POKE_BALL          0x56
 #define FLAG_MET_RIVAL_MOM                   0x57
 #define FLAG_BIRCH_AIDE_MET                  0x58
@@ -113,9 +111,7 @@
 #define FLAG_MOSSDEEP_GYM_SWITCH_2           0x65
 #define FLAG_MOSSDEEP_GYM_SWITCH_3           0x66
 #define FLAG_MOSSDEEP_GYM_SWITCH_4           0x67
-
 #define FLAG_UNUSED_0x068                    0x68  // Unused Flag
-
 #define FLAG_OCEANIC_MUSEUM_MET_REPORTER     0x69
 #define FLAG_RECEIVED_HM04                   0x6A
 #define FLAG_RECEIVED_HM06                   0x6B
@@ -130,9 +126,7 @@
 #define FLAG_ADVENTURE_STARTED               0x74 // RECEIVED Pokédex.
 #define FLAG_DEFEATED_MAGMA_SPACE_CENTER     0x75 // Set when Team Magma is defeated at Mossdeep's Space Center.
 #define FLAG_MET_HIDDEN_POWER_GIVER          0x76
-
 #define FLAG_CANCEL_BATTLE_ROOM_CHALLENGE    0x77
-
 #define FLAG_LANDMARK_MIRAGE_TOWER           0x78
 #define FLAG_RECEIVED_TM31                   0x79
 #define FLAG_RECEIVED_HM03                   0x7A
@@ -163,9 +157,7 @@
 #define FLAG_MR_BRINEY_SAILING_INTRO         0x93
 #define FLAG_DOCK_REJECTED_DEVON_GOODS       0x94
 #define FLAG_DELIVERED_DEVON_GOODS           0x95
-
 #define FLAG_UNUSED_0x096                    0x96 // Unused Flag
-
 #define FLAG_RECEIVED_CASTFORM               0x97
 #define FLAG_RECEIVED_SUPER_ROD              0x98
 #define FLAG_RUSTBORO_NPC_TRADE_COMPLETED    0x99
@@ -235,9 +227,7 @@
 #define FLAG_MET_DIVING_TREASURE_HUNTER      0xD9
 #define FLAG_MET_WAILMER_TRAINER             0xDA
 #define FLAG_EVIL_LEADER_PLEASE_STOP         0xDB
-
 #define FLAG_NEVER_SET_0x0DC                 0xDC // This flag is read, but never written to
-
 #define FLAG_RECEIVED_GO_GOGGLES             0xDD
 #define FLAG_WINGULL_SENT_ON_ERRAND          0xDE
 #define FLAG_RECEIVED_MENTAL_HERB            0xDF
@@ -250,9 +240,7 @@
 #define FLAG_RECEIVED_TM36                   0xE6
 #define FLAG_RECEIVED_TM05                   0xE7
 #define FLAG_RECEIVED_TM19                   0xE8
-
 #define FLAG_UNUSED_0x0E9                    0xE9 // Unused Flag
-
 #define FLAG_RECEIVED_TM44                   0xEA
 #define FLAG_RECEIVED_TM45                   0xEB
 #define FLAG_RECEIVED_GLASS_ORNAMENT         0xEC
@@ -353,14 +341,11 @@
 #define FLAG_UNUSED_MYSTERY_GIFT_0x14B       0x14B
 #define FLAG_UNUSED_MYSTERY_GIFT_0x14C       0x14C
 #define FLAG_UNUSED_MYSTERY_GIFT_0x14D       0x14D
-
 #define FLAG_MIRAGE_TOWER_VISIBLE            0x14E
 #define FLAG_CHOSE_CLAW_FOSSIL               0x14F // Player chose Claw Fossil
 #define FLAG_CHOSE_ROOT_FOSSIL               0x150 // Player chose Root Fossil
 #define FLAG_RECEIVED_POWDER_JAR             0x151
-
 #define FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER 0x152
-
 #define FLAG_MET_BATTLE_FRONTIER_BREEDER     0x153
 #define FLAG_MET_BATTLE_FRONTIER_MANIAC      0x154
 #define FLAG_ENTERED_LINK_CONTEST            0x155

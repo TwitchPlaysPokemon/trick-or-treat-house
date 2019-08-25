@@ -325,16 +325,18 @@ const union AnimCmd *const gUnknown_082FF70C[] =
 #include "data/text/species_names.h"
 #include "data/text/move_names.h"
 
-extern struct Trainer *gCurrTrainerTable[];
+extern const struct Trainer *gCurrTrainerTable;
 
 const struct Trainer* GetTrainer(int tId)
 {
+    if (tId == 0) return &gTrainers[0];
+    tId--;
     if (gCurrTrainerTable == NULL)
     {
         return &gTrainers[tId % ARRAY_COUNT(gTrainers)];
     }
     else
     {
-        return &(*gCurrTrainerTable)[tId];
+        return &gCurrTrainerTable[tId];
     }
 }

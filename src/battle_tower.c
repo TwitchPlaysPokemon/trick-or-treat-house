@@ -1682,10 +1682,10 @@ u8 GetFrontierOpponentClass(u16 trainerId)
     {
         trainerClass = GetFrontierBrainTrainerClass();
     }
-    else if (trainerId == TRAINER_STEVEN_PARTNER)
-    {
-        trainerClass = GetTrainer(TRAINER_STEVEN)->trainerClass;
-    }
+    // else if (trainerId == TRAINER_STEVEN_PARTNER)
+    // {
+    //     trainerClass = GetTrainer(TRAINER_STEVEN)->trainerClass;
+    // }
     else if (trainerId < TRAINER_RECORD_MIXING_FRIEND)
     {
         trainerClass = gFacilityClassToTrainerClass[gFacilityTrainers[trainerId].facilityClass];
@@ -3177,36 +3177,37 @@ static void FillPartnerParty(u16 trainerId)
     u8 trainerName[PLAYER_NAME_LENGTH + 1];
     SetFacilityPtrsGetLevel();
 
-    if (trainerId == TRAINER_STEVEN_PARTNER)
-    {
-        for (i = 0; i < 3; i++)
-        {
-            do
-            {
-                j = Random32();
-            } while (IsShinyOtIdPersonality(STEVEN_OTID, j) || sStevenMons[i].nature != GetNatureFromPersonality(j));
-            CreateMon(&gPlayerParty[3 + i],
-                      sStevenMons[i].species,
-                      sStevenMons[i].level,
-                      sStevenMons[i].fixedIV,
-                      TRUE, i, // BUG: personality was stored in the 'j' variable. As a result, Steven's pokemon do not have the intended natures.
-                      TRUE, STEVEN_OTID);
-            for (j = 0; j < 6; j++)
-                SetMonData(&gPlayerParty[3 + i], MON_DATA_HP_EV + j, &sStevenMons[i].evs[j]);
-            for (j = 0; j < MAX_MON_MOVES; j++)
-                SetMonMoveSlot(&gPlayerParty[3 + i], sStevenMons[i].moves[j], j);
-            SetMonData(&gPlayerParty[3 + i], MON_DATA_OT_NAME, GetTrainer(TRAINER_STEVEN)->trainerName);
-            j = MALE;
-            SetMonData(&gPlayerParty[3 + i], MON_DATA_OT_GENDER, &j);
-            CalculateMonStats(&gPlayerParty[3 + i]);
-        }
-    }
-    else if (trainerId == TRAINER_EREADER)
-    {
-        // Scrapped, lol.
-        trainerName[0] = gGameLanguage;
-    }
-    else if (trainerId < TRAINER_RECORD_MIXING_FRIEND)
+    // if (trainerId == TRAINER_STEVEN_PARTNER)
+    // {
+    //     for (i = 0; i < 3; i++)
+    //     {
+    //         do
+    //         {
+    //             j = Random32();
+    //         } while (IsShinyOtIdPersonality(STEVEN_OTID, j) || sStevenMons[i].nature != GetNatureFromPersonality(j));
+    //         CreateMon(&gPlayerParty[3 + i],
+    //                   sStevenMons[i].species,
+    //                   sStevenMons[i].level,
+    //                   sStevenMons[i].fixedIV,
+    //                   TRUE, i, // BUG: personality was stored in the 'j' variable. As a result, Steven's pokemon do not have the intended natures.
+    //                   TRUE, STEVEN_OTID);
+    //         for (j = 0; j < 6; j++)
+    //             SetMonData(&gPlayerParty[3 + i], MON_DATA_HP_EV + j, &sStevenMons[i].evs[j]);
+    //         for (j = 0; j < MAX_MON_MOVES; j++)
+    //             SetMonMoveSlot(&gPlayerParty[3 + i], sStevenMons[i].moves[j], j);
+    //         SetMonData(&gPlayerParty[3 + i], MON_DATA_OT_NAME, GetTrainer(TRAINER_STEVEN)->trainerName);
+    //         j = MALE;
+    //         SetMonData(&gPlayerParty[3 + i], MON_DATA_OT_GENDER, &j);
+    //         CalculateMonStats(&gPlayerParty[3 + i]);
+    //     }
+    // }
+    // else if (trainerId == TRAINER_EREADER)
+    // {
+    //     // Scrapped, lol.
+    //     trainerName[0] = gGameLanguage;
+    // }
+    // else 
+    if (trainerId < TRAINER_RECORD_MIXING_FRIEND)
     {
         level = SetFacilityPtrsGetLevel();
         ivs = GetFrontierTrainerFixedIvs(trainerId);

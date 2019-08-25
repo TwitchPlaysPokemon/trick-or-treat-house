@@ -434,6 +434,7 @@ SECTIONS {
         src/mevent_server.o(.rodata);
         src/mevent_client.o(.rodata);
         src/mevent_scripts.o(.rodata);
+        src/mevent_news.o(.rodata);
         src/union_room_chat.o(.rodata);
         src/berry_crush.o(.rodata);
         data/berry_crush.o(.rodata);
@@ -1218,6 +1219,8 @@ SECTIONS {
         data/librfu_rodata.o(.rodata);
         *libgcc.a:_divdi3.o(.rodata);
         *libgcc.a:_udivdi3.o(.rodata);
+        tools/agbcc/lib/libc.a(.rodata);
+        tools/agbcc/lib/libc.a(.data);
         *libc.a(.rodata);
         *libc.a(.data);
         *libc.a:syscalls.o(.rodata);

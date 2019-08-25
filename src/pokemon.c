@@ -6529,11 +6529,11 @@ const u8 *GetTrainerPartnerName(void)
 {
     if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
     {
-        if (gPartnerTrainerId == TRAINER_STEVEN_PARTNER)
-        {
-            return GetTrainer(TRAINER_STEVEN)->trainerName;
-        }
-        else
+        // if (gPartnerTrainerId == TRAINER_STEVEN_PARTNER)
+        // {
+        //     return GetTrainer(TRAINER_STEVEN)->trainerName;
+        // }
+        // else
         {
             GetFrontierTrainerName(gStringVar1, gPartnerTrainerId);
             return gStringVar1;

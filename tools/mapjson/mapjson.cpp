@@ -94,12 +94,12 @@ void generate_trainer_table_text(ostringstream &text, string tablename, Json tra
     
     table << tablename << ":\n";
     
-    for (int i = 0; i < trainer_data.array_items().size(); i++)
+    for (unsigned int i = 0; i < trainer_data.array_items().size(); i++)
     {
         auto trainer = trainer_data[i];
         auto party = trainer["party"];
         auto partyType = 0;
-        for (int i = 0; i < party.array_items().size(); i++) {
+        for (unsigned int i = 0; i < party.array_items().size(); i++) {
             if (party[i].object_items().find("moves") != party[i].object_items().end())
                 partyType |= 1;
             if (party[i].object_items().find("item") != party[i].object_items().end())
@@ -127,7 +127,7 @@ void generate_trainer_table_text(ostringstream &text, string tablename, Json tra
         
         string name = trainer["name"].string_value();
         table << "\t.byte ";
-        for (int i = 0; i < 11; i++) {
+        for (unsigned int i = 0; i < 11; i++) {
             if (i < name.size()) {
                 auto unicode  = DecodeUtf8(&name[i]);
                 table << "0x" << std::hex << (g_charmap->Char(unicode.code)[0] & 0xFF) << ", ";
@@ -140,7 +140,7 @@ void generate_trainer_table_text(ostringstream &text, string tablename, Json tra
         table << "\t.2byte ";
         if (trainer.object_items().find("items") != trainer.object_items().end()) {
             auto items = trainer["items"].array_items();
-            for (int i = 0; i < 4; i++) {
+            for (unsigned int i = 0; i < 4; i++) {
                 if (i < items.size()) {
                     table << items[i].string_value();
                 } else {
@@ -167,7 +167,7 @@ void generate_trainer_table_text(ostringstream &text, string tablename, Json tra
         table << "\t.4byte " << tablename << "_" << i << "Party\n";
         parties << tablename << "_" << i << "Party:\n";
         
-        for (int i = 0; i < party.array_items().size(); i++) {
+        for (unsigned int i = 0; i < party.array_items().size(); i++) {
             auto mon = party[i];
             if (mon.object_items().find("iv") != mon.object_items().end())
                 parties << "\t.2byte " << mon["iv"].number_value() << "\n";
@@ -189,7 +189,7 @@ void generate_trainer_table_text(ostringstream &text, string tablename, Json tra
                     FATAL_ERROR("Failed to provide moves for a party member on a party that has custom moves.\n");
                 
                 parties << "\t.2byte ";
-                for (int i = 0; i < 4; i++) {
+                for (unsigned int i = 0; i < 4; i++) {
                     if (i < mon["moves"].array_items().size()) {
                         parties << mon["moves"][i].string_value();
                     } else {
@@ -221,7 +221,8 @@ string generate_map_header_text(Json map_data, Json layouts_data, string version
     Json layout = matched[0];
 
     ostringstream text;
-
+    
+    text << ".align 2\n";
     text << map_data["name"].string_value() << ":\n"
          << "\t.4byte " << layout["name"].string_value() << "\n";
 
@@ -453,6 +454,7 @@ string generate_groups_text(Json groups_data) {
 
     for (auto &key : groups_data["group_order"].array_items()) {
         string group = key.string_value();
+        text << ".align 2\n";
         text << group << "::\n";
         auto maps = groups_data[group].array_items();
         for (Json &map_name : maps)

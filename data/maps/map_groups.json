@@ -94,7 +94,9 @@
         "SecretBase_Shrub4"
     ],
     "gMapGroup4": [
-        "Puzzle_TrickHouseCut"
+        "Puzzle_TrickHouseCut",
+        "Puzzle_TrickHouseTrapdoors",
+        "Puzzle_TrickHouseSpintiles"
     ],
     "group_order": [
         "gMapGroup0",

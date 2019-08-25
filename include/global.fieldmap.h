@@ -149,7 +149,7 @@ struct MapHeader
     /* 0x18 */ u8 filler_18[2];
     /* 0x1A */ u8 flags;
     /* 0x1B */ u8 battleType;
-    /* 0x1C */ const struct Trainers **trainerTable;
+    /* 0x1C */ const struct Trainer *trainerTable;
 };
 
 struct EventObject

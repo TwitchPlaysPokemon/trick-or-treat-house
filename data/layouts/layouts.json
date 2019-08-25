@@ -4429,6 +4429,26 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_TrickHousePuzzle",
             "width": 21
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_TrickHouseTrapdoors/map.bin",
+            "border_filepath": "data/layouts/Puzzle_TrickHouseTrapdoors/border.bin",
+            "height": 21,
+            "id": "LAYOUT_PUZZLE_TRICK_HOUSE_TRAPDOORS",
+            "name": "Puzzle_TrickHouseTrapdoors_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrickHousePuzzle",
+            "width": 21
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_TrickHouseSpintiles/map.bin",
+            "border_filepath": "data/layouts/Puzzle_TrickHouseSpintiles/border.bin",
+            "height": 22,
+            "id": "LAYOUT_PUZZLE_TRICK_HOUSE_SPINTILES",
+            "name": "Puzzle_TrickHouseSpintiles_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrickHousePuzzle",
+            "width": 19
         }
     ],
     "layouts_table_label": "gMapLayouts"

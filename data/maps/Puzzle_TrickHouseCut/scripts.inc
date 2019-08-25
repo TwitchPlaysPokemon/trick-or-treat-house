@@ -22,6 +22,30 @@ Puzzle_TrickHouseCut_RemoveItems:
 
 @ -----------------------------------------------------
 
+Puzzle_TrickHouseCut_Trainer1::
+	trainerbattle_single TRAINER_01, Puzzle_TrickHouseCut_Trainer1_Intro, Puzzle_TrickHouseCut_Trainer1_Defeat
+	msgbox Puzzle_TrickHouseCut_Trainer1_After, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseCut_Trainer1_Intro:
+	.string "Nice costume. Were you trick-or-treating\n"
+	.string "too?$"
+Puzzle_TrickHouseCut_Trainer1_Defeat:
+	.string "Ack! My costume got caught!"
+Puzzle_TrickHouseCut_Trainer1_After:
+	.string "Battling in costume is something I've\n"
+	.string "never done before. How about you?$"
 
 
+Puzzle_TrickHouseCut_Trainer2::
+	trainerbattle_single TRAINER_02, Puzzle_TrickHouseCut_Trainer2_Intro, Puzzle_TrickHouseCut_Trainer2_Defeat
+	msgbox Puzzle_TrickHouseCut_Trainer2_After, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseCut_Trainer2_Intro:
+	.string "Nice costume. Were you trick-or-treating\n"
+	.string "too?$"
+Puzzle_TrickHouseCut_Trainer2_Defeat:
+	.string "Ack! My costume got caught!"
+Puzzle_TrickHouseCut_Trainer2_After:
+	.string "Battling in costume is something I've\n"
+	.string "never done before. How about you?$"
 
