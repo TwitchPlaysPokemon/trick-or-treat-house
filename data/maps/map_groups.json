@@ -1,11 +1,11 @@
 {
     "gMapGroup0": [
-        "TrickHouseExt"
+        "TrickHouseExt",
+        "TrickHouseEntrance",
+        "TrickHouseEnd",
+        "TrickHouseCorridor"
     ],
     "gMapGroup1": [
-        "Route110_TrickHouseEntrance",
-        "Route110_TrickHouseEnd",
-        "Route110_TrickHouseCorridor",
         "Route110_TrickHousePuzzle1",
         "Route110_TrickHousePuzzle2",
         "Route110_TrickHousePuzzle3",

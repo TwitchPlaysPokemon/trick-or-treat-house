@@ -4,8 +4,18 @@
 		"name": "JEFFERY",
 		"party": [
 			{
-				"species": "SPECIES_BULBASAUR",
-				"level": 5
+				"species": "SPECIES_ZIGZAGOON",
+				"level": 45
+			}
+		]
+	},
+	{
+		"class": "LASS",
+		"name": "EMILY",
+		"party": [
+			{
+				"species": "SPECIES_LOTAD",
+				"level": 45
 			}
 		]
 	}

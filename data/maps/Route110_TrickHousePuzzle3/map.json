@@ -111,21 +111,21 @@
       "x": 0,
       "y": 21,
       "elevation": 3,
-      "dest_map": "MAP_ROUTE110_TRICK_HOUSE_ENTRANCE",
+      "dest_map": "MAP_TRICK_HOUSE_ENTRANCE",
       "dest_warp_id": 2
     },
     {
       "x": 1,
       "y": 21,
       "elevation": 3,
-      "dest_map": "MAP_ROUTE110_TRICK_HOUSE_ENTRANCE",
+      "dest_map": "MAP_TRICK_HOUSE_ENTRANCE",
       "dest_warp_id": 2
     },
     {
       "x": 13,
       "y": 1,
       "elevation": 3,
-      "dest_map": "MAP_ROUTE110_TRICK_HOUSE_END",
+      "dest_map": "MAP_TRICK_HOUSE_END",
       "dest_warp_id": 0
     }
   ],

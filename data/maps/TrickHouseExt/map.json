@@ -226,7 +226,7 @@
     "show_map_name": true,
     "warp_events": [
         {
-            "dest_map": "MAP_ROUTE110_TRICK_HOUSE_ENTRANCE",
+            "dest_map": "MAP_TRICK_HOUSE_ENTRANCE",
             "dest_warp_id": 0,
             "elevation": 0,
             "x": 41,

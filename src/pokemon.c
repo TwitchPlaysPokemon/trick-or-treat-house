@@ -6471,26 +6471,26 @@ void SetWildMonHeldItem(void)
             var1 = 20;
             var2 = 80;
         }
-        if (gMapHeader.mapLayoutId == LAYOUT_ALTERING_CAVE)
-        {
-            s32 alteringCaveId = GetWildMonTableIdInAlteringCave(species);
-            if (alteringCaveId != 0)
-            {
-                if (rnd < var2)
-                    return;
-                SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &sAlteringCaveWildMonHeldItems[alteringCaveId].item);
-            }
-            else
-            {
-                if (rnd < var1)
-                    return;
-                if (rnd < var2)
-                    SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &gBaseStats[species].item1);
-                else
-                    SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &gBaseStats[species].item2);
-            }
-        }
-        else
+        // if (gMapHeader.mapLayoutId == LAYOUT_ALTERING_CAVE)
+        // {
+        //     s32 alteringCaveId = GetWildMonTableIdInAlteringCave(species);
+        //     if (alteringCaveId != 0)
+        //     {
+        //         if (rnd < var2)
+        //             return;
+        //         SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &sAlteringCaveWildMonHeldItems[alteringCaveId].item);
+        //     }
+        //     else
+        //     {
+        //         if (rnd < var1)
+        //             return;
+        //         if (rnd < var2)
+        //             SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &gBaseStats[species].item1);
+        //         else
+        //             SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &gBaseStats[species].item2);
+        //     }
+        // }
+        // else
         {
             if (gBaseStats[species].item1 == gBaseStats[species].item2 && gBaseStats[species].item1 != 0)
             {

@@ -44,7 +44,7 @@ Route110_EventScript_TestDoor::
 	waitmovement 0
 	applymovement THIS_EVENT, Common_Movement_ObjectDoorClose
 	waitmovement 0
-	warp MAP_ROUTE110_TRICK_HOUSE_ENTRANCE, 0, 0xff, 0xff
+	warp MAP_TRICK_HOUSE_ENTRANCE, 0, 0xff, 0xff
 	waitstate
 	release
 	end

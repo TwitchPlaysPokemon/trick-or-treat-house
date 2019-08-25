@@ -915,7 +915,7 @@ Route110_TrickHousePuzzle5_Movement_26D62C: @ 826D62C
 	walk_right
 	step_end
 
-Route110_TrickHouseEntrance_Movement_26D632: @ 826D632
+TrickHouseEntrance_Movement_26D632: @ 826D632
 Route110_TrickHousePuzzle5_Movement_26D632: @ 826D632
 	face_left
 	delay_2

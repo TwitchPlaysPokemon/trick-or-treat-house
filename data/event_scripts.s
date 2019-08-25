@@ -345,9 +345,9 @@ gText_23B73E:: @ 823B73E
 SecretBase_RedCave1_Text_23B759: @ 823B759
 	.string "Want to make your SECRET BASE here?$"
 
-	.include "data/maps/Route110_TrickHouseEntrance/scripts.inc"
-	.include "data/maps/Route110_TrickHouseEnd/scripts.inc"
-	.include "data/maps/Route110_TrickHouseCorridor/scripts.inc"
+	.include "data/maps/TrickHouseEntrance/scripts.inc"
+	.include "data/maps/TrickHouseEnd/scripts.inc"
+	.include "data/maps/TrickHouseCorridor/scripts.inc"
 	.include "data/maps/Route110_TrickHousePuzzle1/scripts.inc"
 	.include "data/maps/Route110_TrickHousePuzzle2/scripts.inc"
 	.include "data/maps/Route110_TrickHousePuzzle3/scripts.inc"
@@ -1744,10 +1744,6 @@ EverGrandeCity_ChampionsRoom_Movement_2725C1: @ 82725C1
 EverGrandeCity_SidneysRoom_Movement_2725C6: @ 82725C6
 	delay_16
 	delay_16
-	step_end
-
-Route110_TrickHouseEntrance_Movement_2725C9: @ 82725C9
-	walk_up
 	step_end
 
 Movement_2725CB:: @ 82725CB
