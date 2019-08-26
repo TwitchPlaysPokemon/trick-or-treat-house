@@ -747,6 +747,14 @@ bool8 ScrCmd_setmaplayoutindex(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_warptodynamic(struct ScriptContext *ctx)
+{
+    SetWarpDestinationToDynamicWarp(0);
+    DoWarp();
+    ResetInitialPlayerAvatarState();
+    return TRUE;
+}
+
 bool8 ScrCmd_warp(struct ScriptContext *ctx)
 {
     u8 mapGroup = ScriptReadByte(ctx);

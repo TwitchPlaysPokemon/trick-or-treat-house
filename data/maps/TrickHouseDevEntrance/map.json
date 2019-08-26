@@ -1,0 +1,46 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "PuzzleDebug_EventScript_ShowPuzzleSelect",
+            "type": "sign",
+            "x": 1,
+            "y": 1
+        }
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_TRICK_HOUSE_DEV_ENTRANCE",
+    "layout": "LAYOUT_TRICK_HOUSE_DEV_ENTRANCE",
+    "map_type": "MAP_TYPE_INDOOR",
+    "music": "MUS_DAN02",
+    "name": "TrickHouseDevEntrance",
+    "object_events": [
+    ],
+    "region_map_section": "MAPSEC_ROUTE_110",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_TRICK_HOUSE_DEV_ENTRANCE",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 1,
+            "y": 4
+        },
+        {
+            "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 4,
+            "y": 1
+        }
+    ],
+    "weather": "WEATHER_SUNNY"
+}

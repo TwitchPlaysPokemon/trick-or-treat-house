@@ -3,7 +3,8 @@
         "TrickHouseExt",
         "TrickHouseEntrance",
         "TrickHouseEnd",
-        "TrickHouseCorridor"
+        "TrickHouseCorridor",
+        "TrickHouseDevEntrance"
     ],
     "gMapGroup1": [
         "Route110_TrickHousePuzzle1",

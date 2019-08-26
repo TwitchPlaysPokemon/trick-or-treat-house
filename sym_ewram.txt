@@ -143,3 +143,4 @@
 	.include "src/menu_specialized.o"
 	.include "src/faraway_island.o"
 	.include "src/rayquaza_scene.o"
+	.include "src/trickhouse.o"

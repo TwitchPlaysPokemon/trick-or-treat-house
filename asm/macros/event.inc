@@ -1394,23 +1394,28 @@
 	.byte \out
 	.2byte \box
 	.endm
-
+	
 	@ Sets the color of the text in standard message boxes. 0x00 produces blue (male) text, 0x01 produces red (female) text, 0xFF resets the color to the default for the current OW's gender, and all other values produce black text.
-	.macro textcolor color:req
+	.macro warptodynamic 
 	.byte 0xc7
-	.byte \color
 	.endm
 
-	@ The exact purpose of this command is unknown, but it is related to the blue help-text box that appears on the bottom of the screen when the Main Menu is opened.
-	.macro loadhelp pointer:req
-	.byte 0xc8
-	.4byte \pointer
-	.endm
+	@ @ Sets the color of the text in standard message boxes. 0x00 produces blue (male) text, 0x01 produces red (female) text, 0xFF resets the color to the default for the current OW's gender, and all other values produce black text.
+	@ .macro textcolor color:req
+	@ .byte 0xc7
+	@ .byte \color
+	@ .endm
 
-	@ The exact purpose of this command is unknown, but it is related to the blue help-text box that appears on the bottom of the screen when the Main Menu is opened.
-	.macro unloadhelp
-	.byte 0xc9
-	.endm
+	@ @ The exact purpose of this command is unknown, but it is related to the blue help-text box that appears on the bottom of the screen when the Main Menu is opened.
+	@ .macro loadhelp pointer:req
+	@ .byte 0xc8
+	@ .4byte \pointer
+	@ .endm
+
+	@ @ The exact purpose of this command is unknown, but it is related to the blue help-text box that appears on the bottom of the screen when the Main Menu is opened.
+	@ .macro unloadhelp
+	@ .byte 0xc9
+	@ .endm
 
 	@ After using this command, all standard message boxes will use the signpost frame.
 	.macro signmsg

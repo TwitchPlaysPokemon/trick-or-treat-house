@@ -36,15 +36,8 @@ Route110_Text_1F082D: @ 81F082D
 
 Route110_EventScript_TestDoor::
 	lock
-	applymovement THIS_EVENT, Common_Movement_ObjectDoorOpen
-	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkUp1
-	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_SetInvisible
-	waitmovement 0
-	applymovement THIS_EVENT, Common_Movement_ObjectDoorClose
-	waitmovement 0
-	warp MAP_TRICK_HOUSE_ENTRANCE, 0, 0xff, 0xff
+	call PuzzleCommon_EventScript_DoDoorEnterAnimation
+	warp MAP_TRICK_HOUSE_DEV_ENTRANCE, 0, 0xff, 0xff
 	waitstate
 	release
 	end

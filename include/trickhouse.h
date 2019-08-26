@@ -1,0 +1,6 @@
+#ifndef GUARD_TRICKHOUSE_H
+#define GUARD_TRICKHOUSE_H
+
+
+
+#endif // GUARD_TRICKHOUSE_H

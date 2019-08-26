@@ -71,7 +71,9 @@ gStdScripts:: @ 81DC2A0
 	.4byte Std_10
 gStdScripts_End:: @ 81DC2CC
 	
+	.include "data/puzzle_list.inc"
 	.include "data/scripts/common_scripts.inc"
+	.include "data/scripts/trick_house.inc"
 
 	.include "data/maps/TrickHouseExt/scripts.inc"
 	.include "data/maps/PetalburgCity/scripts.inc"
@@ -6383,3 +6385,5 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/Puzzle_TrickHouseTrapdoors/scripts.inc"
 
 	.include "data/maps/Puzzle_TrickHouseSpintiles/scripts.inc"
+
+	.include "data/maps/TrickHouseDevEntrance/scripts.inc"

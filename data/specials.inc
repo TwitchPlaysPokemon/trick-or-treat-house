@@ -512,7 +512,7 @@ gSpecials:: @ 81DBA64
 	def_special sub_80E2878
 	def_special TurnOnTVScreen
 	def_special sub_81D4A90
-	def_special sub_813B514
+	@ def_special sub_813B514
 	def_special sub_813B568
 	def_special sub_813B534
 	@ def_special CallTrainerHillFunction

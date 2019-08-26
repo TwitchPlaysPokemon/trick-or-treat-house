@@ -43,40 +43,57 @@
 #define VAR_OBJ_GFX_ID_E           0x401E
 #define VAR_OBJ_GFX_ID_F           0x401F
 
+// Trick Or Treat House vars
+#define VAR_CURRENT_PUZZLE                   0x4020
+#define VAR_UNUSED_0x403C                    0x4021
+#define VAR_UNUSED_0x403D                    0x4022
+#define VAR_UNUSED_0x403E                    0x4023
+
+#define VAR_TRICK_HOUSE_0x40A5               0x40A5
+#define VAR_TRICK_HOUSE_0x40A6               0x40A6
+#define VAR_TRICK_HOUSE_0x40A7               0x40A7
+#define VAR_TRICK_HOUSE_PUZZLE_1_STATE       0x40AB
+#define VAR_TRICK_HOUSE_PUZZLE_2_STATE       0x40AC
+#define VAR_TRICK_HOUSE_PUZZLE_3_STATE       0x40AD
+#define VAR_TRICK_HOUSE_PUZZLE_4_STATE       0x40AE
+#define VAR_TRICK_HOUSE_PUZZLE_5_STATE       0x40AF
+#define VAR_TRICK_HOUSE_PUZZLE_6_STATE       0x40B0
+#define VAR_TRICK_HOUSE_PUZZLE_7_STATE       0x40B1
+#define VAR_TRICK_HOUSE_PUZZLE_8_STATE       0x40B2
+#define VAR_TRICK_HOUSE_STATE                0x40B5 // TODO: needs some further investigation
+#define VAR_TRICK_HOUSE_PUZZLE_7_STATE_2     0x40B6
+#define VAR_TRICK_HOUSE_PRIZE_PICKUP         0x40C1
+
 // general purpose vars
-#define VAR_TRICK_HOUSE_LEVEL                0x4020
-#define VAR_RECYCLE_GOODS                    0x4021
-#define VAR_REPEL_STEP_COUNT                 0x4022
-#define VAR_ICE_STEP_COUNT                   0x4023
-#define VAR_STARTER_MON                      0x4024
-#define VAR_MIRAGE_RND_H                     0x4025
-#define VAR_MIRAGE_RND_L                     0x4026
-#define VAR_SECRET_BASE_MAP                  0x4027
-#define VAR_CYCLING_ROAD_RECORD_COLLISIONS   0x4028
-#define VAR_CYCLING_ROAD_RECORD_TIME_L       0x4029
-#define VAR_CYCLING_ROAD_RECORD_TIME_H       0x402A
-#define VAR_HAPPINESS_STEP_COUNTER           0x402B
-#define VAR_POISON_STEP_COUNTER              0x402C
-#define VAR_RESET_RTC_ENABLE                 0x402D
-#define VAR_ENIGMA_BERRY_AVAILABLE           0x402E
-#define VAR_0x402E                           0x402F
-#define VAR_FRONTIER_MANIAC_FACILITY         0x4030
-#define VAR_FRONTIER_GAMBLER_FACILITY        0x4031
-#define VAR_FRONTIER_GAMBLER_SET_FACILITY_F  0x4032
-#define VAR_FRONTIER_GAMBLER_AMOUNT_BET      0x4033
-#define VAR_FRONTIER_GAMBLER_PLACED_BET_F    0x4034
-#define VAR_DEOXYS_ROCK_STEP_COUNT           0x4035
-#define VAR_DEOXYS_ROCK_LEVEL                0x4036
-#define VAR_STORAGE_UNKNOWN                  0x4037
-#define VAR_UNUSUAL_WEATHER_LOCATION         0x4038
-#define VAR_UNUSUAL_WEATHER_STEP_COUNTER     0x4039
-#define VAR_SHOULD_END_UNUSUAL_WEATHER       0x403A
-#define VAR_FARAWAY_ISLAND_STEP_COUNTER      0x403B
-#define VAR_REGICE_STEPS_1                   0x403C
-#define VAR_REGICE_STEPS_2                   0x403D
-#define VAR_REGICE_STEPS_3                   0x403E
+#define VAR_RECYCLE_GOODS                    0x4024
+#define VAR_REPEL_STEP_COUNT                 0x4025
+#define VAR_ICE_STEP_COUNT                   0x4026
+#define VAR_STARTER_MON                      0x4027
+#define VAR_MIRAGE_RND_H                     0x4028
+#define VAR_MIRAGE_RND_L                     0x4029
+#define VAR_SECRET_BASE_MAP                  0x402A
+#define VAR_CYCLING_ROAD_RECORD_COLLISIONS   0x402B
+#define VAR_CYCLING_ROAD_RECORD_TIME_L       0x402C
+#define VAR_CYCLING_ROAD_RECORD_TIME_H       0x402D
+#define VAR_HAPPINESS_STEP_COUNTER           0x402E
+#define VAR_POISON_STEP_COUNTER              0x402F
+#define VAR_RESET_RTC_ENABLE                 0x4030
+#define VAR_ENIGMA_BERRY_AVAILABLE           0x4031
+#define VAR_0x402E                           0x4032
+#define VAR_FRONTIER_MANIAC_FACILITY         0x4033
+#define VAR_FRONTIER_GAMBLER_FACILITY        0x4034
+#define VAR_FRONTIER_GAMBLER_SET_FACILITY_F  0x4035
+#define VAR_FRONTIER_GAMBLER_AMOUNT_BET      0x4036
+#define VAR_FRONTIER_GAMBLER_PLACED_BET_F    0x4037
+#define VAR_DEOXYS_ROCK_STEP_COUNT           0x4038
+#define VAR_DEOXYS_ROCK_LEVEL                0x4039
+#define VAR_STORAGE_UNKNOWN                  0x403A
+#define VAR_UNUSUAL_WEATHER_LOCATION         0x403B
+#define VAR_UNUSUAL_WEATHER_STEP_COUNTER     0x403C
+#define VAR_SHOULD_END_UNUSUAL_WEATHER       0x403D
+#define VAR_FARAWAY_ISLAND_STEP_COUNTER      0x403E
 #define VAR_ALTERING_CAVE_WILD_SET           0x403F
-#define VAR_ALWAYS_ZERO_0x403F               0x4040
+#define VAR_UNUSED_0x403F                    0x4040
 #define VAR_DAYS                             0x4041
 #define VAR_FANCLUB_UNKNOWN_1                0x4042
 #define VAR_FANCLUB_UNKNOWN_2                0x4043
@@ -177,24 +194,14 @@
 #define VAR_SEAFLOOR_CAVERN_STATE            0x40A2
 #define VAR_CABLE_CAR_STATION_STATE          0x40A3
 #define VAR_SAFARI_ZONE_STATE                0x40A4
-#define VAR_TRICK_HOUSE_ENTRANCE_STATE_1     0x40A5
-#define VAR_TRICK_HOUSE_ENTRANCE_STATE_2     0x40A6
-#define VAR_TRICK_HOUSE_ENTRANCE_STATE_3     0x40A7
+
 #define VAR_UNUSED_0x40A8                    0x40A8 // Unused Var
 #define VAR_CYCLING_CHALLENGE_STATE          0x40A9
 #define VAR_SLATEPORT_MUSEUM_1F_STATE        0x40AA
-#define VAR_TRICK_HOUSE_PUZZLE_1_STATE       0x40AB
-#define VAR_TRICK_HOUSE_PUZZLE_2_STATE       0x40AC
-#define VAR_TRICK_HOUSE_PUZZLE_3_STATE       0x40AD
-#define VAR_TRICK_HOUSE_PUZZLE_4_STATE       0x40AE
-#define VAR_TRICK_HOUSE_PUZZLE_5_STATE       0x40AF
-#define VAR_TRICK_HOUSE_PUZZLE_6_STATE       0x40B0
-#define VAR_TRICK_HOUSE_PUZZLE_7_STATE       0x40B1
-#define VAR_TRICK_HOUSE_PUZZLE_8_STATE       0x40B2
+
 #define VAR_WEATHER_INSTITUTE_STATE          0x40B3
 #define VAR_PORTHOLE_STATE                   0x40B4
-#define VAR_TRICK_HOUSE_STATE                0x40B5 // TODO: needs some further investigation
-#define VAR_TRICK_HOUSE_PUZZLE_7_STATE_2     0x40B6
+
 #define VAR_SLATEPORT_FAN_CLUB_STATE         0x40B7
 #define VAR_UNUSED_0x40B8                    0x40B8 // Unused Var
 #define VAR_MT_PYRE_STATE                    0x40B9
@@ -205,7 +212,7 @@
 #define VAR_GLASS_WORKSHOP_STATE             0x40BE
 #define VAR_METEOR_FALLS_STATE               0x40BF
 #define VAR_SOOTOPOLIS_MYSTERY_EVENTS_STATE  0x40C0
-#define VAR_TRICK_HOUSE_PRIZE_PICKUP         0x40C1
+
 #define VAR_PACIFIDLOG_TM_RECEIVED_DAY       0x40C2
 #define VAR_VICTORY_ROAD_1F_STATE            0x40C3
 #define VAR_FOSSIL_RESURRECTION_STATE        0x40C4

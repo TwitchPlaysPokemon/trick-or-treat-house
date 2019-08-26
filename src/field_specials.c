@@ -3648,15 +3648,6 @@ bool32 sub_813B4E0(void)
     return FALSE;
 }
 
-bool32 sub_813B514(void)
-{
-    if (!VarGet(VAR_ALWAYS_ZERO_0x403F))
-    {
-        return FALSE;
-    }
-    return TRUE;
-}
-
 void sub_813B534(void)
 {
     gUnknown_0203AB70 = gBattleTypeFlags;
