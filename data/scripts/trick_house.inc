@@ -3,6 +3,7 @@ PuzzleDebug_EventScript_ShowPuzzleSelect::
 	lockall
 	playse SE_SELECT
 	message PuzzleDebug_Text_PuzzleSelect
+	waitmessage
 	callnative ShowPuzzleSelect
 	waitstate @ script pauses here until manually reenabled
 	closemessage

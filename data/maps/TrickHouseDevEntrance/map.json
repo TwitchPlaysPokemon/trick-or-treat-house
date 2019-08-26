@@ -19,7 +19,7 @@
     "id": "MAP_TRICK_HOUSE_DEV_ENTRANCE",
     "layout": "LAYOUT_TRICK_HOUSE_DEV_ENTRANCE",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_KARAKURI",
     "name": "TrickHouseDevEntrance",
     "object_events": [
     ],
@@ -36,11 +36,11 @@
         },
         {
             "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
-            "dest_warp_id": 0,
+            "dest_warp_id": 2,
             "elevation": 0,
             "x": 4,
             "y": 1
         }
     ],
-    "weather": "WEATHER_SUNNY"
+    "weather": "WEATHER_NONE"
 }

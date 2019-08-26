@@ -77,7 +77,7 @@
             "y": 6
         },
         {
-            "dest_map": "MAP_TRICK_HOUSE_END",
+            "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
             "dest_warp_id": 1,
             "elevation": 0,
             "x": 1,

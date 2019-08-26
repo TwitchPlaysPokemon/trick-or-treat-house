@@ -50,14 +50,14 @@
             "dest_warp_id": 1,
             "elevation": 3,
             "x": 22,
-            "y": 3
+            "y": 2
         },
         {
             "dest_map": "MAP_TRICK_HOUSE_END",
             "dest_warp_id": 1,
             "elevation": 3,
             "x": 4,
-            "y": 7
+            "y": 6
         },
         {
             "dest_map": "MAP_TRICK_HOUSE_ENTRANCE",

@@ -17,7 +17,7 @@
 
 extern const u16 gPuzzleList[];
 
-const u8 sPuzzleText[] = _("Puzzle {NO}:");
+const u8 sPuzzleText[] = _("{NO}: {STR_VAR_1}");
 static const struct WindowTemplate sPuzzleSelectWinTemplate =
 {
 	.bg = 0,
@@ -35,7 +35,6 @@ static void Task_PuzzleSelect(u8 taskId);
 static void RedrawPuzzleSelectWindow(u8 windowId, u16 num)
 {
 	const u8* txt = sPuzzleText;
-	num--;
 	
 	ConvertIntToDecimalStringN(gStringVar1, num, 2, 3);
     StringExpandPlaceholders(gStringVar4, txt);
@@ -57,7 +56,7 @@ static void Task_InitPuzzleSelect(u8 taskId)
 		if (gPuzzleList[i] == 0xFFFF) break;
 	}
 	
-	tSelected = VarGet(VAR_CURRENT_PUZZLE);
+	tSelected = VarGet(VAR_CURRENT_PUZZLE) + 1;
 	tMax = i;
 	tWindow = AddWindow(&sPuzzleSelectWinTemplate);
  
@@ -79,7 +78,7 @@ static void Task_PuzzleSelect(u8 taskId)
     }
     else if (gMain.newKeys & A_BUTTON)
     {
-        VarSet(VAR_CURRENT_PUZZLE, tSelected);
+        VarSet(VAR_CURRENT_PUZZLE, tSelected-1);
 		goto exit;
     }
     else if (gMain.newKeys & B_BUTTON)
