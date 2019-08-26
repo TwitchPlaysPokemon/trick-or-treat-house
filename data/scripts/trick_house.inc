@@ -1,3 +1,8 @@
+PuzzleCommon_Text_DefaultAdjective::
+	.string "<adjective>$"
+PuzzleCommon_Text_DefaultQuip::
+	.string "What did you think of my puzzle?$"
+
 
 PuzzleDebug_EventScript_ShowPuzzleSelect::
 	lockall
@@ -41,5 +46,4 @@ PuzzleCommon_EventScript_DoDoorEnterAnimation::
 	applymovement THIS_EVENT, Common_Movement_ObjectDoorClose
 	waitmovement 0
 	return
-
 

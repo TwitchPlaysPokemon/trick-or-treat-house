@@ -7,7 +7,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_NUGGET",
-            "item": "ITEM_NUGGET",
+            "item": "ITEM_FULL_RESTORE",
             "type": "hidden_item",
             "x": 13,
             "y": 2
@@ -47,14 +47,14 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_VAR_0",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NULL",
+            "graphics_id": "EVENT_OBJ_GFX_VAR_1",
+            "movement_range_x": 2,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+            "script": "TrickHouseEnd_EventScript_FinalPuzzlePerson",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 11,
+            "x": 9,
             "y": 4
         }
     ],

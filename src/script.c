@@ -316,6 +316,12 @@ void RunOnDiveWarpMapScript(void)
     MapHeaderRunScriptType(MAP_SCRIPT_ON_DIVE_WARP);
 }
 
+u8 *GetMapHeaderString(u8 tag)
+{
+    return MapHeaderGetScriptTable(tag);
+}
+
+
 bool8 TryRunOnFrameMapScript(void)
 {
     u8 *ptr = MapHeaderCheckScriptTable(MAP_SCRIPT_ON_FRAME_TABLE);

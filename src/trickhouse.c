@@ -12,10 +12,15 @@
 #include "text_window.h"
 #include "string_util.h"
 #include "sound.h"
+#include "constants/map_scripts.h"
 #include "constants/songs.h"
 #include "constants/vars.h"
 
+static void Task_PuzzleSelect(u8 taskId);
+
 extern const u16 gPuzzleList[];
+
+///////////////////////////////////////////////////////////////////////////////
 
 const u8 sPuzzleText[] = _("{NO}: {STR_VAR_1}");
 static const struct WindowTemplate sPuzzleSelectWinTemplate =
@@ -28,9 +33,6 @@ static const struct WindowTemplate sPuzzleSelectWinTemplate =
 	.paletteNum = 15,
 	.baseBlock = 0x0176,
 };
-
-
-static void Task_PuzzleSelect(u8 taskId);
 
 static void RedrawPuzzleSelectWindow(u8 windowId, u16 num)
 {
@@ -105,4 +107,31 @@ void ShowPuzzleSelect()
 #undef tWindow
 #undef tSelected
 #undef tMax
+
+///////////////////////////////////////////////////////////////////////////////
+
+extern const u8 PuzzleCommon_Text_DefaultAdjective[];
+void LoadPuzzleAdjective()
+{
+	u8 *str = GetMapHeaderString(MAP_SCRIPT_PUZZLE_HEADER_ADJECTIVE);
+	if (str == NULL)
+	{
+		str = PuzzleCommon_Text_DefaultAdjective;
+	}
+	StringCopy(gStringVar1, str);
+}
+
+
+extern const u8 PuzzleCommon_Text_DefaultQuip[];
+void ShowPuzzleQuip()
+{
+	u8 *str = GetMapHeaderString(MAP_SCRIPT_PUZZLE_HEADER_QUIP);
+	if (str == NULL)
+	{
+		str = PuzzleCommon_Text_DefaultQuip;
+	}
+	ShowFieldMessage(str);
+}
+
+
 
