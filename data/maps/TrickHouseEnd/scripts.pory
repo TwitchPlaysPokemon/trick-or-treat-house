@@ -1,0 +1,34 @@
+raw_global TrickHouseEnd_MapScripts `
+	map_script MAP_SCRIPT_ON_LOAD, TrickHouseEnd_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, TrickHouseEnd_OnTransition
+	.byte 0
+	
+@----------------------------------------------------------
+`
+
+script TrickHouseEnd_OnLoad {
+	callnative(RunPuzzleSetupScript)
+}
+
+script TrickHouseEnd_OnTransition {
+	setvar(VAR_PUZZLE_STATE, 3)
+}
+
+script TrickHouseEnd_EventScript_FinalPuzzlePerson {
+	lock
+	faceplayer
+	callnative(ShowPuzzleQuip)
+	waitmessage
+	waitbuttonpress
+	release
+}
+
+script TrickHouseEnd_EventScript_Nurse {
+	lock
+	faceplayer
+	special(HealPlayerParty)
+	# TODO remove items
+	setvar(VAR_TEMP_2, 1)
+	release
+}
+
