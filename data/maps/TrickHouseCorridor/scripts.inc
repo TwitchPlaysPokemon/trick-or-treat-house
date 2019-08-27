@@ -68,7 +68,9 @@ TrickHouseCorridor_TriggerScript_RunIntro::
 	@ Open the door to the puzzle
 	opendoor 22, 2
 	waitdooranim
+	@
 	
+	setvar VAR_PUZZLE_STATE, 1
 	releaseall
 	end
 

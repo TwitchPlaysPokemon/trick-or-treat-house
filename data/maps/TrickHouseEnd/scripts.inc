@@ -11,7 +11,7 @@ TrickHouseEnd_OnLoad:
 	end
 
 TrickHouseEnd_OnTransition:
-	setvar VAR_PUZZLE_STATE, 2
+	setvar VAR_PUZZLE_STATE, 3
 	end
 
 

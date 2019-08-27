@@ -8,6 +8,9 @@ PuzzleCommon_DefaultSetupScript::
 	setvar VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_TRICK_MASTER
 	end
 
+PuzzleCommon_DefaultTeardownScript::
+	end
+
 
 PuzzleDebug_EventScript_ShowPuzzleSelect::
 	lockall

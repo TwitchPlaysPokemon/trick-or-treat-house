@@ -147,5 +147,17 @@ void RunPuzzleSetupScript()
 	ScriptContext2_RunNewScript(script);
 }
 
+extern const u8 PuzzleCommon_DefaultTeardownScript[];
+void RunPuzzleTeardownScript()
+{
+	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_SETUP);
+	if (script == NULL)
+	{
+		script = PuzzleCommon_DefaultTeardownScript;
+	}
+	ScriptContext2_RunNewScript(script);
+}
+
 
 
