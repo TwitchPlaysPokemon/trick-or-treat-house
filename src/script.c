@@ -3,6 +3,7 @@
 #include "event_data.h"
 #include "mevent.h"
 #include "util.h"
+#include "overworld.h"
 #include "constants/map_scripts.h"
 
 #define RAM_SCRIPT_MAGIC 51
@@ -241,6 +242,26 @@ void ScriptContext2_RunNewScript(const u8 *ptr)
     while (RunScriptCommand(&sScriptContext2) == TRUE);
 }
 
+u8 *MapHeaderGetScriptTableForMapId(u16 mapid, u8 tag)
+{
+    const u8 *mapScripts = Overworld_GetMapHeaderByGroupAndId(mapid >> 8, mapid & 0xFF)->mapScripts;
+
+    if (!mapScripts)
+        return NULL;
+
+    while (1)
+    {
+        if (!*mapScripts)
+            return NULL;
+        if (*mapScripts == tag)
+        {
+            mapScripts++;
+            return (u8 *)(mapScripts[0] + (mapScripts[1] << 8) + (mapScripts[2] << 16) + (mapScripts[3] << 24));
+        }
+        mapScripts += 5;
+    }
+}
+
 u8 *MapHeaderGetScriptTable(u8 tag)
 {
     const u8 *mapScripts = gMapHeader.mapScripts;
@@ -316,11 +337,11 @@ void RunOnDiveWarpMapScript(void)
     MapHeaderRunScriptType(MAP_SCRIPT_ON_DIVE_WARP);
 }
 
-u8 *GetMapHeaderString(u8 tag)
+u8 *GetMapHeaderString(u16 mapId, u8 tag)
 {
-    return MapHeaderGetScriptTable(tag);
+    if (mapId == 0xFFFF) return NULL;
+    return MapHeaderGetScriptTableForMapId(mapId, tag);
 }
-
 
 bool8 TryRunOnFrameMapScript(void)
 {

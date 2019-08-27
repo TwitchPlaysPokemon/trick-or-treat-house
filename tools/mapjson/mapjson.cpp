@@ -470,6 +470,7 @@ string generate_groups_text(Json groups_data) {
     for (auto &group : groups_data["group_order"].array_items())
         text << "\t.4byte " << group.string_value() << "\n";
     text << "\n";
+    text << "gMapGroups_End::\n";
 
     return text.str();
 }

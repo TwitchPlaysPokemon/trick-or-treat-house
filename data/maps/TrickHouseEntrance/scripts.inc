@@ -1,33 +1,7 @@
 TrickHouseEntrance_MapScripts:: @ 8269A50
-	
 	.byte 0
 
 
-
-
-TrickHouseEnd_Movement_269E36: @ 8269E36
-TrickHouseEntrance_Movement_269E36: @ 8269E36
-	face_up
-	delay_4
-	face_left
-	delay_4
-	face_down
-	delay_4
-	face_right
-	delay_4
-	step_end
-
-TrickHouseEnd_Movement_269E3F: @ 8269E3F
-TrickHouseEntrance_Movement_269E3F: @ 8269E3F
-	face_up
-	disable_anim
-	slide_up
-	slide_up
-	slide_up
-	slide_up
-	slide_up
-	slide_up
-	step_end
 
 TrickHouseEntrance_EventScript_26A0D3:: @ 826A0D3
 TrickHouseEntrance_EventScript_26A3F8:: @ 826A3F8

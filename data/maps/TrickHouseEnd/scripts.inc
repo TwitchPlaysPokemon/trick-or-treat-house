@@ -1,9 +1,19 @@
 TrickHouseEnd_MapScripts:: @ 826ACAF
 	@ map_script MAP_SCRIPT_ON_RESUME, TrickHouseEnd_MapScript1_26ACC4
-	@ map_script MAP_SCRIPT_ON_TRANSITION, TrickHouseEnd_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, TrickHouseEnd_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, TrickHouseEnd_OnTransition
 	@ map_script MAP_SCRIPT_ON_FRAME_TABLE, TrickHouseEnd_MapScript2_26ACF5
 	@ map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, TrickHouseEnd_MapScript2_26ACDE
 	.byte 0
+
+TrickHouseEnd_OnLoad:
+	callnative RunPuzzleSetupScript
+	end
+
+TrickHouseEnd_OnTransition:
+	setvar VAR_PUZZLE_STATE, 2
+	end
+
 
 @ TrickHouseEnd_MapScript1_26ACC4: @ 826ACC4
 @ 	compare VAR_TEMP_1, 1
@@ -43,8 +53,8 @@ TrickHouseEnd_EventScript_FinalPuzzlePerson::
 TrickHouseEnd_EventScript_Nurse::
 	lock
 	faceplayer
+	special HealPlayerParty
 	@ TODO remove items
-	@ TODO heal party
 	setvar VAR_TEMP_2, 1
 	release
 	end

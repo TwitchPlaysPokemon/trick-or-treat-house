@@ -44,8 +44,8 @@
 #define VAR_OBJ_GFX_ID_F           0x401F
 
 // Trick Or Treat House vars
-#define VAR_CURRENT_PUZZLE                   0x4020
-#define VAR_UNUSED_0x403C                    0x4021
+#define VAR_CURRENT_PUZZLE                   0x4020 // 0 = before puzzle, 1 = puzzle underway, 2 = after puzzle
+#define VAR_PUZZLE_STATE                     0x4021
 #define VAR_UNUSED_0x403D                    0x4022
 #define VAR_UNUSED_0x403E                    0x4023
 

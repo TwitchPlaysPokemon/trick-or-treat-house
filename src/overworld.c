@@ -105,6 +105,7 @@ extern const u8 EventScript_TerminateLink[];
 
 extern const struct MapLayout *const gMapLayouts[];
 extern const struct MapHeader *const *const gMapGroups[];
+extern const struct MapHeader *const *const gMapGroups_End[];
 extern const int gMaxFlashLevel;
 extern const u16 gOverworldBackgroundLayerFlags[];
 
@@ -604,7 +605,13 @@ static bool32 IsDummyWarp(struct WarpData *warp)
 
 struct MapHeader const *const Overworld_GetMapHeaderByGroupAndId(u16 mapGroup, u16 mapNum)
 {
+    // Sanity checking
+    if ((u32)&gMapGroups[mapGroup] > (u32)&gMapGroups_End) goto error;
+    if ((u32)&gMapGroups[mapGroup][mapNum] > (u32)&gMapGroups) goto error;
+    
     return gMapGroups[mapGroup][mapNum];
+error:
+    return gMapGroups[0][0];
 }
 
 struct MapHeader const *const GetDestinationWarpMapHeader(void)

@@ -12,6 +12,7 @@
 #include "text_window.h"
 #include "string_util.h"
 #include "sound.h"
+#include "field_message_box.h"
 #include "constants/map_scripts.h"
 #include "constants/songs.h"
 #include "constants/vars.h"
@@ -113,7 +114,8 @@ void ShowPuzzleSelect()
 extern const u8 PuzzleCommon_Text_DefaultAdjective[];
 void LoadPuzzleAdjective()
 {
-	u8 *str = GetMapHeaderString(MAP_SCRIPT_PUZZLE_HEADER_ADJECTIVE);
+	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_ADJECTIVE);
 	if (str == NULL)
 	{
 		str = PuzzleCommon_Text_DefaultAdjective;
@@ -121,16 +123,28 @@ void LoadPuzzleAdjective()
 	StringCopy(gStringVar1, str);
 }
 
-
 extern const u8 PuzzleCommon_Text_DefaultQuip[];
 void ShowPuzzleQuip()
 {
-	u8 *str = GetMapHeaderString(MAP_SCRIPT_PUZZLE_HEADER_QUIP);
+	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_QUIP);
 	if (str == NULL)
 	{
 		str = PuzzleCommon_Text_DefaultQuip;
 	}
 	ShowFieldMessage(str);
+}
+
+extern const u8 PuzzleCommon_DefaultSetupScript[];
+void RunPuzzleSetupScript()
+{
+	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_SETUP);
+	if (script == NULL)
+	{
+		script = PuzzleCommon_DefaultSetupScript;
+	}
+	ScriptContext2_RunNewScript(script);
 }
 
 

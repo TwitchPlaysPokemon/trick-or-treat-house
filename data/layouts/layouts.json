@@ -898,7 +898,7 @@
             "name": "TrickHouseDevEntrance_Layout",
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_GenericBuilding",
-            "width": 6
+            "width": 7
         }
     ],
     "layouts_table_label": "gMapLayouts"

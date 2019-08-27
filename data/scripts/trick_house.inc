@@ -3,6 +3,11 @@ PuzzleCommon_Text_DefaultAdjective::
 PuzzleCommon_Text_DefaultQuip::
 	.string "What did you think of my puzzle?$"
 
+PuzzleCommon_DefaultSetupScript::
+	setvar VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_TRICK_MASTER
+	setvar VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_TRICK_MASTER
+	end
+
 
 PuzzleDebug_EventScript_ShowPuzzleSelect::
 	lockall
@@ -46,4 +51,35 @@ PuzzleCommon_EventScript_DoDoorEnterAnimation::
 	applymovement THIS_EVENT, Common_Movement_ObjectDoorClose
 	waitmovement 0
 	return
+
+
+PuzzleCommon_EventScript_WarpTrickMasterOut:: @ 826AFCF
+	applymovement VAR_0x8000, PuzzleCommon_Movement_TrickMasterWarpAway1
+	waitmovement 0
+	playse SE_W153
+	applymovement VAR_0x8000, PuzzleCommon_Movement_TrickMasterWarpAway2
+	waitmovement 0
+	removeobject VAR_0x8000
+	return
+
+PuzzleCommon_Movement_TrickMasterWarpAway1:
+	face_up
+	delay_4
+	face_left
+	delay_4
+	face_down
+	delay_4
+	face_right
+	delay_4
+	step_end
+PuzzleCommon_Movement_TrickMasterWarpAway2:
+	face_up
+	disable_anim
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	slide_up
+	step_end
 
