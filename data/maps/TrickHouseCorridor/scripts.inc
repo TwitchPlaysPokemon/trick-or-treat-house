@@ -18,7 +18,7 @@ TrickHouseCorridor_MapTable:
 	.2byte 0
 
 TrickHouseCorridor_CloseBackDoor:
-	setmetatile 4, 6, 0x2FD, TRUE
+	setmetatile 4, 6, 0x21B, TRUE
 	end
 
 @ -----------------------------------------------------
@@ -56,9 +56,36 @@ TrickHouseCorridor_TrickMaster:
 
 TrickHouseCorridor_TriggerScript_RunIntro::
 	lockall
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkRight2
+	getplayerxy VAR_0x8000, VAR_0x8001
+	subvar VAR_0x8001, 7
+	@ Walk up
+	selectpointer TrickHouseCorridor_MovementTable_RunIntro, VAR_0x8001
+	applymovement EVENT_OBJ_ID_PLAYER, 0
+	applymovement LID_MASTER, Common_Movement_WalkLeft1
+	waitmovement EVENT_OBJ_ID_PLAYER
+	@
+	@ TODO
+	@ Open the door to the puzzle
+	opendoor 22, 2
+	waitdooranim
+	
 	releaseall
 	end
 
+TrickHouseCorridor_Text_RunIntro1:
+	.string "For the $"
+
+.align 2
+TrickHouseCorridor_MovementTable_RunIntro:
+	.4byte Common_Movement_WalkRight2
+	.4byte TrickHouseCorridor_Movement_RunIntro2
+	.4byte 0
+
+TrickHouseCorridor_Movement_RunIntro2:
+	walk_right
+	walk_up
+	walk_right
+	step_end
+	
 
 #undef LID_MASTER

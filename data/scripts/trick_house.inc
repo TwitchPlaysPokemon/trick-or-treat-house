@@ -35,13 +35,26 @@ PuzzleCommon_EventScript_ExitDoorMetatile::
 PuzzleCommon_EventScript_ExitDoorObject::
 	lock
 	@ TODO: Check for scroll
-	call PuzzleCommon_EventScript_DoDoorEnterAnimation
+	call PuzzleCommon_EventScript_DoDoorEnterAnimation_Stone
 	warp MAP_TRICK_HOUSE_END, 0, 0xff, 0xff
 	waitstate
 	release
 	end
 
+PuzzleCommon_EventScript_DoDoorEnterAnimation_Stone::
+	playse SE_W070
+	applymovement THIS_EVENT, Common_Movement_ObjectDoorOpen
+	waitmovement 0
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkUp1
+	waitmovement 0
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_SetInvisible
+	waitmovement 0
+	applymovement THIS_EVENT, Common_Movement_ObjectDoorClose
+	waitmovement 0
+	return
+
 PuzzleCommon_EventScript_DoDoorEnterAnimation::
+	playse SE_TRACK_HAIKI
 	applymovement THIS_EVENT, Common_Movement_ObjectDoorOpen
 	waitmovement 0
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkUp1
