@@ -1,3 +1,9 @@
+#if USE_TRAINER_COSTUMES
+#define COSTUME_NAME(costume, normal) costume
+#else
+#define COSTUME_NAME(costume, normal) normal
+#endif
+
 const u8 gTrainerClassNames[][13] = {
     [TRAINER_CLASS_PKMN_TRAINER_1] = _("{PKMN} TRAINER"),
     [TRAINER_CLASS_PKMN_TRAINER_2] = _("{PKMN} TRAINER"),
@@ -21,7 +27,7 @@ const u8 gTrainerClassNames[][13] = {
     [TRAINER_CLASS_TUBER_M] = _("TUBER"),
     [TRAINER_CLASS_LADY] = _("LADY"),
     [TRAINER_CLASS_BEAUTY] = _("BEAUTY"),
-    [TRAINER_CLASS_RICH_BOY] = _("RICH BOY"),
+    [TRAINER_CLASS_RICH_BOY] = _(COSTUME_NAME("SECRET AGENT","RICH BOY"),
     [TRAINER_CLASS_POKEMANIAC] = _("POKéMANIAC"),
     [TRAINER_CLASS_GUITARIST] = _("GUITARIST"),
     [TRAINER_CLASS_KINDLER] = _("KINDLER"),
