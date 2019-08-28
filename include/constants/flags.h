@@ -88,7 +88,7 @@
 
 // Scripts
 #define FLAG_TRICK_HOUSE_SCROLL_READ         0x50
-#define FLAG_UNUSED_0x051                    0x51
+#define FLAG_TRICK_HOUSE_PASSWORD_ENTERED    0x51
 #define FLAG_UNUSED_0x052                    0x52
 #define FLAG_UNUSED_0x053                    0x53
 #define FLAG_UNUSED_0x054                    0x54  // Unused Flag
@@ -763,9 +763,7 @@
 #define FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE         0x336
 #define FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA                          0x337
 #define FLAG_HIDE_PETALBURG_GYM_WALLYS_UNCLE                        0x338
-
 #define FLAG_UNUSED_0x339                                           0x339 // Unused Flag
-
 #define FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE                            0x33A
 #define FLAG_HIDE_SOOTOPOLIS_CITY_MAXIE                             0x33B
 #define FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE                     0x33C
@@ -813,32 +811,32 @@
 #define FLAG_HIDE_LANETTES_HOUSE_LANETTE                            0x366
 #define FLAG_HIDE_FALLORBOR_POKEMON_CENTER_LANETTE                  0x367
 #define FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN                          0x368
-#define FLAG_HIDE_LILYCOVE_CONTEST_HALL_POKEBLOCK_EXPERT            0x369
-#define FLAG_HIDE_DESERT_UNDERPASS_FOSSIL                           0x36A
-#define FLAG_HIDE_ROUTE_111_PLAYER_DESCENT                          0x36B
-#define FLAG_HIDE_ROUTE_111_DESERT_FOSSIL                           0x36C
-#define FLAG_HIDE_MT_CHIMNEY_TRAINERS                               0x36D
-#define FLAG_HIDE_RUSTURF_TUNNEL_AQUA_GRUNT                         0x36E
-#define FLAG_HIDE_RUSTURF_TUNNEL_OLD_MAN                            0x36F
-#define FLAG_HIDE_RUSTURF_TUNNEL_PEEKO                              0x370
-#define FLAG_HIDE_BRINEYS_HOUSE_PEEKO                               0x371
-#define FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA                          0x372
-#define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS         0x373
-#define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_1     0x374
-#define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_2     0x375
-#define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_ARCHIE           0x376
-#define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_CAPTAIN_STERN    0x377
-#define FLAG_HIDE_BATTLE_TOWER_OPPONENT                             0x378
-#define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL                  0x379
-#define FLAG_HIDE_ROUTE_119_TEAM_AQUA                               0x37A
-#define FLAG_HIDE_ROUTE_116_MR_BRINEY                               0x37B
-#define FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS                      0x37C
-#define FLAG_HIDE_WEATHER_INSTITUTE_2F_WORKERS                      0x37D
-#define FLAG_HIDE_ROUTE_116_TUNNELER                                0x37E
-#define FLAG_HIDE_LILYCOVE_CONTEST_HALL_CONTEST_ATTENDANT_2         0x37F
-#define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_UNKNOWN_0x380          0x380
-#define FLAG_HIDE_ROUTE_101_BIRCH                                   0x381
-#define FLAG_HIDE_ROUTE_103_BIRCH                                   0x382
+#define FLAG_HIDE_TRICK_HOUSE_INTRO_CHAR                            0x369
+#define FLAG_HIDE_UNUSED_0x36A                                      0x36A
+#define FLAG_HIDE_UNUSED_0x36B                                      0x36B
+#define FLAG_HIDE_UNUSED_0x36C                                      0x36C
+#define FLAG_HIDE_UNUSED_0x36D                                      0x36D
+#define FLAG_HIDE_UNUSED_0x36E                                      0x36E
+#define FLAG_HIDE_UNUSED_0x36F                                      0x36F
+#define FLAG_HIDE_UNUSED_0x370                                      0x370
+#define FLAG_HIDE_UNUSED_0x371                                      0x371
+#define FLAG_HIDE_UNUSED_0x372                                      0x372
+#define FLAG_HIDE_UNUSED_0x373                                      0x373
+#define FLAG_HIDE_UNUSED_0x374                                      0x374
+#define FLAG_HIDE_UNUSED_0x375                                      0x375
+#define FLAG_HIDE_UNUSED_0x376                                      0x376
+#define FLAG_HIDE_UNUSED_0x377                                      0x377
+#define FLAG_HIDE_UNUSED_0x378                                      0x378
+#define FLAG_HIDE_UNUSED_0x379                                      0x379
+#define FLAG_HIDE_UNUSED_0x37A                                      0x37A
+#define FLAG_HIDE_UNUSED_0x37B                                      0x37B
+#define FLAG_HIDE_UNUSED_0x37C                                      0x37C
+#define FLAG_HIDE_UNUSED_0x37D                                      0x37D
+#define FLAG_HIDE_UNUSED_0x37E                                      0x37E
+#define FLAG_HIDE_UNUSED_0x37F                                      0x37F
+#define FLAG_HIDE_UNUSED_0x380                                      0x380
+#define FLAG_HIDE_UNUSED_0x381                                      0x381
+#define FLAG_HIDE_UNUSED_0x382                                      0x382
 #define FLAG_HIDE_TRICK_HOUSE_END_MAN                               0x383
 #define FLAG_HIDE_ROUTE_110_TEAM_AQUA                               0x384
 #define FLAG_HIDE_ROUTE_118_GABBY_AND_TY_2                          0x385
@@ -1538,5 +1536,6 @@
 #define FLAG_SPECIAL_FLAG_0x4002                                   0x4002
 #define FLAG_SPECIAL_FLAG_0x4003                                   0x4003
 #define FLAG_SPECIAL_FLAG_0x4004                                   0x4004
+#define FLAG_IS_BUMP_INTERACTION                                   0x4005
 
 #endif // GUARD_CONSTANTS_FLAGS_H

@@ -1,5 +1,5 @@
 TrickHouseCorridor_MapScripts:: @ 826B903
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, TrickHouseCorridor_MapTable
+	map_script MAP_SCRIPT_ON_LOAD, TrickHouseCorridor_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrickHouseCorridor_FrameTable
 	map_script MAP_SCRIPT_ON_TRANSITION, TrickHouseCorridor_Transition
 	.byte 0
@@ -7,19 +7,26 @@ TrickHouseCorridor_MapScripts:: @ 826B903
 @ -----------------------------------------------------
 
 TrickHouseCorridor_Transition:
-	callnative RunPuzzleSetupScript
+	callnative SetupPuzzleWarp
+	callnative AssignPuzzleMetaVariables
 	end
 
 @ -----------------------------------------------------
 
-TrickHouseCorridor_MapTable:
-	map_script_2 VAR_PUZZLE_STATE, 0, TrickHouseCorridor_CloseBackDoor
-	map_script_2 VAR_PUZZLE_STATE, 1, TrickHouseCorridor_CloseBackDoor
-	.2byte 0
+TrickHouseCorridor_OnLoad:
+	compare VAR_PUZZLE_STATE, 3
+	call_if_lt TrickHouseCorridor_CloseBackDoor
+	compare VAR_PUZZLE_STATE, 1
+	call_if_eq TrickHouseCorridor_OpenPuzzleDoor
+	end
+
+TrickHouseCorridor_OpenPuzzleDoor:
+	setmetatile 22, 2, 0x01F, FALSE
+	return
 
 TrickHouseCorridor_CloseBackDoor:
 	setmetatile 4, 6, 0x21B, TRUE
-	end
+	return
 
 @ -----------------------------------------------------
 
@@ -28,9 +35,11 @@ TrickHouseCorridor_FrameTable:
 	.2byte 0
 
 TrickHouseCorridor_IncrementPuzzle:
-	setvar VAR_PUZZLE_STATE, 0
 	addvar VAR_CURRENT_PUZZLE, 1
-	goto TrickHouseCorridor_CloseBackDoor
+	setvar VAR_PUZZLE_STATE, 0
+	clearflag FLAG_HIDE_TRICK_HOUSE_INTRO_CHAR
+	call AssignPuzzleMetaVariables
+	call TrickHouseCorridor_CloseBackDoor
 	end
 
 @ -----------------------------------------------------
@@ -65,17 +74,38 @@ TrickHouseCorridor_TriggerScript_RunIntro::
 	waitmovement EVENT_OBJ_ID_PLAYER
 	@
 	@ TODO
-	@ Open the door to the puzzle
-	opendoor 22, 2
-	waitdooranim
+	msgbox TrickHouseCorridor_Text_RunIntro1
+	closemessage
+	compare VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_TRICK_MASTER
+	call_if_eq TrickHouseCorridor_TriggerScript_RunIntro_TrickMasterOut
+	call_if_ne TrickHouseCorridor_TriggerScript_RunIntro_CompanionLeaves
 	@
-	
 	setvar VAR_PUZZLE_STATE, 1
+	call TrickHouseCorridor_OpenPuzzleDoor
 	releaseall
 	end
 
+TrickHouseCorridor_TriggerScript_RunIntro_TrickMasterOut:
+	@ Trick Master warps away
+	setvar VAR_0x8000, LID_MASTER
+	call PuzzleCommon_EventScript_WarpTrickMasterOut
+	@ Player approaches door
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkUp2
+	waitmovement 0
+	@ Open the door to the puzzle
+	opendoor 22, 2
+	waitdooranim
+	return
+
+TrickHouseCorridor_TriggerScript_RunIntro_CompanionLeaves:
+	
+	return
+
 TrickHouseCorridor_Text_RunIntro1:
-	.string "For the $"
+	.string "The next challenge I collected off\n"
+	.string "someone named {STR_VAR_1}.\p"
+	.string "I'd call it a {STR_VAR_2} puzzle.\p"
+	.string "See you on the other side!$"
 
 .align 2
 TrickHouseCorridor_MovementTable_RunIntro:

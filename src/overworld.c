@@ -83,7 +83,7 @@
 
 // event scripts
 extern const u8 EventScript_WhiteOut[];
-extern const u8 EventScript_ResetMrBriney[];
+// extern const u8 EventScript_ResetMrBriney[];
 extern const u8 EventScript_DoLinkRoomExit[];
 extern const u8 gEventScript_TradeRoom_TooBusyToNotice[];
 extern const u8 gEventScript_TradeRoom_ReadTrainerCard_NoColor[];
@@ -410,7 +410,7 @@ void Overworld_ResetStateAfterTeleport(void)
     FlagClear(FLAG_SYS_SAFARI_MODE);
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_USE_FLASH);
-    ScriptContext2_RunNewScript(EventScript_ResetMrBriney);
+    // ScriptContext2_RunNewScript(EventScript_ResetMrBriney);
 }
 
 void Overworld_ResetStateAfterDigEscRope(void)

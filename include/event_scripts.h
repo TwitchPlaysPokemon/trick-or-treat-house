@@ -534,7 +534,7 @@ extern const u8 EventScript_TestSignpostMsg[];
 extern const u8 EventScript_HiddenItemScript[];
 extern const u8 EventScript_2759F1[];
 extern const u8 EventScript_TV[];
-extern const u8 Route110_TrickHouseEntrance_EventScript_26A22A[];
+extern const u8 PuzzleCommon_EventScript_ExitDoorMetatile[];
 extern const u8 EventScript_RegionMap[];
 extern const u8 EventScript_PictureBookShelf[];
 extern const u8 EventScript_BookShelf[];

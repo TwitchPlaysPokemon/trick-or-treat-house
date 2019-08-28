@@ -1,4 +1,5 @@
 #include "global.h"
+#include "event_data.h"
 #include "metatile_behavior.h"
 #include "constants/metatile_behaviors.h"
 
@@ -345,6 +346,8 @@ bool8 MetatileBehavior_IsIce(u8 metatileBehavior)
 bool8 MetatileBehavior_IsWarpDoor(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_ANIMATED_DOOR)
+        return TRUE;
+    else if (metatileBehavior == MB_TRICK_HOUSE_PUZZLE_DOOR && FlagGet(FLAG_TRICK_HOUSE_PASSWORD_ENTERED))
         return TRUE;
     else
         return FALSE;
