@@ -43,8 +43,10 @@ static void GetPlayerPosition(struct MapPosition *);
 static void GetInFrontOfPlayerPosition(struct MapPosition *);
 static u16 GetPlayerCurMetatileBehavior(int);
 static bool8 TryStartInteractionScript(struct MapPosition*, u16, u8);
+static bool8 TryStartBumpInteractionScript(struct MapPosition*, u16, u8);
 static const u8 *GetInteractionScript(struct MapPosition*, u8, u8);
 static const u8 *GetInteractedEventObjectScript(struct MapPosition *, u8, u8);
+static const u8 *GetBumpInteractEventObjectScript(struct MapPosition *, u8, u8);
 static const u8 *GetInteractedBackgroundEventScript(struct MapPosition *, u8, u8);
 static const u8 *GetInteractedMetatileScript(struct MapPosition *, u8, u8);
 static const u8 *GetInteractedWaterScript(struct MapPosition *, u8, u8);
@@ -139,6 +141,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     gSpecialVar_LastTalked = 0;
     gSelectedEventObject = 0;
 
+    FlagClear(FLAG_IS_BUMP_INTERACTION);
     playerDirection = GetPlayerFacingDirection();
     GetPlayerPosition(&position);
     metatileBehavior = MapGridGetMetatileBehaviorAt(position.x, position.y);
@@ -174,6 +177,8 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     if (input->heldDirection2 && input->dpadDirection == playerDirection)
     {
         if (TryDoorWarp(&position, metatileBehavior, playerDirection) == TRUE)
+            return TRUE;
+        if (TryStartBumpInteractionScript(&position, metatileBehavior, playerDirection) == TRUE)
             return TRUE;
     }
     if (input->pressedAButton && TrySetupDiveDownScript() == TRUE)
@@ -214,6 +219,16 @@ static u16 GetPlayerCurMetatileBehavior(int runningState)
 
     PlayerGetDestCoords(&x, &y);
     return MapGridGetMetatileBehaviorAt(x, y);
+}
+
+static bool8 TryStartBumpInteractionScript(struct MapPosition *position, u16 metatileBehavior, u8 direction)
+{
+    const u8 *script = GetBumpInteractEventObjectScript(position, metatileBehavior, direction);
+    if (script == NULL)
+        return FALSE;
+    
+    ScriptContext1_SetupScript(script);
+    return TRUE;
 }
 
 static bool8 TryStartInteractionScript(struct MapPosition *position, u16 metatileBehavior, u8 direction)
@@ -302,11 +317,35 @@ static const u8 *GetInteractedEventObjectScript(struct MapPosition *position, u8
     gSelectedEventObject = eventObjectId;
     gSpecialVar_LastTalked = gEventObjects[eventObjectId].localId;
     gSpecialVar_Facing = direction;
+    FlagClear(FLAG_IS_BUMP_INTERACTION);
 
     // if (InTrainerHill() == TRUE)
     //     script = GetTrainerHillTrainerScript();
     // else
         script = GetEventObjectScriptPointerByEventObjectId(eventObjectId);
+
+    script = GetRamScript(gSpecialVar_LastTalked, script);
+    return script;
+}
+
+static const u8 *GetBumpInteractEventObjectScript(struct MapPosition *position, u8 metatileBehavior, u8 direction)
+{
+    u8 eventObjectId;
+    const u8 *script;
+
+    eventObjectId = GetEventObjectIdByXYZ(position->x, position->y, position->height);
+    if (eventObjectId == EVENT_OBJECTS_COUNT || gEventObjects[eventObjectId].localId == EVENT_OBJ_ID_PLAYER)
+        return NULL;
+    
+    if (gEventObjects[eventObjectId].trainerType != 5)
+        return NULL;
+
+    gSelectedEventObject = eventObjectId;
+    gSpecialVar_LastTalked = gEventObjects[eventObjectId].localId;
+    gSpecialVar_Facing = direction;
+    FlagSet(FLAG_IS_BUMP_INTERACTION);
+
+    script = GetEventObjectScriptPointerByEventObjectId(eventObjectId);
 
     script = GetRamScript(gSpecialVar_LastTalked, script);
     return script;
@@ -371,8 +410,8 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         return EventScript_TV;
     if (MetatileBehavior_IsPC(metatileBehavior) == TRUE)
         return EventScript_PC;
-    // if (MetatileBehavior_IsTrickHousePuzzleDoor(metatileBehavior) == TRUE)
-    //     return Route110_TrickHouseEntrance_EventScript_26A22A;
+    if (MetatileBehavior_IsTrickHousePuzzleDoor(metatileBehavior) == TRUE)
+        return PuzzleCommon_EventScript_ExitDoorMetatile;
     if (MetatileBehavior_IsRegionMap(metatileBehavior) == TRUE)
         return EventScript_RegionMap;
     if (MetatileBehavior_IsPictureBookShelf(metatileBehavior) == TRUE)

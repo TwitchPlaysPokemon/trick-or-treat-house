@@ -37,6 +37,7 @@ Route110_Text_1F082D: @ 81F082D
 Route110_EventScript_TestDoor::
 	lock
 	msgbox Route110_Text_TestDoor, MSGBOX_YESNO
+	closemessage
 	compare VAR_RESULT, NO
 	goto_if_eq Common_EventScript_ReleaseEnd
 	call PuzzleCommon_EventScript_DoDoorEnterAnimation
@@ -45,5 +46,5 @@ Route110_EventScript_TestDoor::
 	release
 	end
 Route110_Text_TestDoor:
-	.string "This leads to the Dev Entrance.\p"
+	.string "This leads to the Dev Entrance.\n"
 	.string "Enter?$"

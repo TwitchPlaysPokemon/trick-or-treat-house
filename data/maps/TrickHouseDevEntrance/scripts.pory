@@ -1,0 +1,13 @@
+raw `
+TrickHouseDevEntrance_MapScripts::
+	.byte 0
+`
+
+script TrickHouseDevEntrance_EventScript_Red {
+	msgbox ("This is the dev room. You can change\n"
+			"the current puzzle at the TV.\p"
+			"If you didn't get here via the door\n"
+			"outside, something went wrong;\l"
+			"Please report this to the devs.$", MSGBOX_NPC)
+}
+

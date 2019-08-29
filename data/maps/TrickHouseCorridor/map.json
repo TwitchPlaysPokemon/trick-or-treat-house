@@ -9,7 +9,7 @@
     "coord_events": [
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "TrickHouseCorridor_TriggerScript_RunIntro",
             "type": "trigger",
             "var": "VAR_PUZZLE_STATE",
             "var_value": "0",
@@ -18,7 +18,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "TrickHouseCorridor_TriggerScript_RunIntro",
             "type": "trigger",
             "var": "VAR_PUZZLE_STATE",
             "var_value": "0",
@@ -47,7 +47,7 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_HIDE_TRICK_HOUSE_INTRO_CHAR",
             "graphics_id": "EVENT_OBJ_GFX_VAR_0",
             "movement_range_x": 0,
             "movement_range_y": 0,

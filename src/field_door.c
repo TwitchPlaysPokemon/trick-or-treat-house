@@ -486,6 +486,21 @@ const u8 DoorAnimTiles_50[][0x100] =
 
 asm(".space 32");
 
+const u8 DoorAnimTiles_TrickScroll[][0x100] =
+{
+    INCBIN_U8("graphics/door_anims/trickscroll/0.4bpp"),
+    INCBIN_U8("graphics/door_anims/trickscroll/1.4bpp"),
+    INCBIN_U8("graphics/door_anims/trickscroll/2.4bpp"),
+};
+
+const u8 DoorAnimTiles_TrickStone[][0x100] =
+{
+    INCBIN_U8("graphics/door_anims/trickstone/0.4bpp"),
+    INCBIN_U8("graphics/door_anims/trickstone/1.4bpp"),
+    INCBIN_U8("graphics/door_anims/trickstone/2.4bpp"),
+};
+
+
 static const struct DoorAnimFrame gDoorOpenAnimFrames[] =
 {
     {4, -1},
@@ -573,9 +588,12 @@ const u8 DoorAnimPalettes_8497154[] = {9, 9, 7, 7, 7, 7, 7, 7}; // door 49
 const u8 DoorAnimPalettes_849715C[] = {9, 9, 9, 9, 9, 9, 9, 9}; // door 50
 const u8 DoorAnimPalettes_8497164[] = {7, 7, 7, 7, 7, 7, 7, 7}; // door 51
 const u8 DoorAnimPalettes_849716C[] = {9, 9, 7, 7, 7, 7, 7, 7}; // door 52
+const u8 DoorAnimPalettes_TrickHouse[] = {2, 2, 2, 2, 2, 2, 2, 2};
 
 static const struct DoorGraphics gDoorAnimGraphicsTable[] =
 {
+    {0x01C, 4, 1, DoorAnimTiles_TrickStone, DoorAnimPalettes_TrickHouse},
+    {0x01E, 3, 1, DoorAnimTiles_TrickScroll, DoorAnimPalettes_TrickHouse},
     {0x021, 0, 1, DoorAnimTiles_00, DoorAnimPalettes_8496FDC}, // door 00
     {0x061, 1, 1, DoorAnimTiles_01, DoorAnimPalettes_8496FE4}, // door 01
     {0x1CD, 1, 1, DoorAnimTiles_02, DoorAnimPalettes_8496FEC}, // door 02
@@ -881,6 +899,11 @@ u32 GetDoorSoundEffect(u32 x, u32 y)
         return SE_JIDO_DOA;
     else if (sound == 2)
         return SE_TU_SAA;
+    else if (sound == 3)
+        return SE_TRACK_HAIKI;
+    else if (sound == 4)
+        return SE_W070; // Strength
+        // return SE_W089; // Earthquake
     else
         return SE_DOOR;
 }

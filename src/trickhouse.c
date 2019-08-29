@@ -7,15 +7,18 @@
 #include "script.h"
 #include "task.h"
 #include "bg.h"
+#include "alloc.h"
 #include "window.h"
 #include "text.h"
 #include "text_window.h"
 #include "string_util.h"
 #include "sound.h"
+#include "overworld.h"
 #include "field_message_box.h"
 #include "constants/map_scripts.h"
 #include "constants/songs.h"
 #include "constants/vars.h"
+#include "constants/event_objects.h"
 
 static void Task_PuzzleSelect(u8 taskId);
 
@@ -111,6 +114,36 @@ void ShowPuzzleSelect()
 
 ///////////////////////////////////////////////////////////////////////////////
 
+extern const u8 PuzzleCommon_DefaultSetupScript[];
+void RunPuzzleSetupScript()
+{
+	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_SETUP_SCRIPT);
+	if (script != NULL)
+	{
+		ScriptContext2_RunNewScript(script);
+	}
+}
+
+extern const u8 PuzzleCommon_DefaultTeardownScript[];
+void RunPuzzleTeardownScript()
+{
+	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_TEARDOWN_SCRIPT);
+	if (script != NULL)
+	{
+		ScriptContext2_RunNewScript(script);
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+void SetupPuzzleWarp()
+{
+	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	SetDynamicWarp(0, currPuzzle >> 8, currPuzzle & 0xFF, 0);
+}
+
 extern const u8 PuzzleCommon_Text_DefaultAdjective[];
 void LoadPuzzleAdjective()
 {
@@ -135,17 +168,26 @@ void ShowPuzzleQuip()
 	ShowFieldMessage(str);
 }
 
-extern const u8 PuzzleCommon_DefaultSetupScript[];
-void RunPuzzleSetupScript()
+extern const u8 PuzzleCommon_DefaultVariableAssignments[];
+void AssignPuzzleMetaVariables()
 {
 	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
-	const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_SETUP);
-	if (script == NULL)
+	const u16 *array = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_META_VARIABLES);
+	
+	// Reset variables to defaults
+	VarSet(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_TRICK_MASTER);
+	VarSet(VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_TRICK_MASTER);
+	
+	if (array != NULL)
 	{
-		script = PuzzleCommon_DefaultSetupScript;
+		while (array[0] != 0)
+		{
+			VarSet(array[0], array[1]);
+			array += 2;
+		}
 	}
-	ScriptContext2_RunNewScript(script);
 }
+
 
 
 
