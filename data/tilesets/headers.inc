@@ -830,3 +830,14 @@ gTileset_UnionRoom:: @ 83DFDFC
 	.4byte gMetatiles_UnionRoom
 	.4byte gMetatileAttributes_UnionRoom
 	.4byte NULL @ animation callback
+
+	.align 2
+gTileset_HoOhTower::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_HoOhTower
+	.4byte gTilesetPalettes_HoOhTower
+	.4byte gMetatiles_HoOhTower
+	.4byte gMetatileAttributes_HoOhTower
+	.4byte NULL

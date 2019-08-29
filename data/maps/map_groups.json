@@ -97,7 +97,8 @@
     "gMapGroup4": [
         "Puzzle_TrickHouseCut",
         "Puzzle_TrickHouseTrapdoors",
-        "Puzzle_TrickHouseSpintiles"
+        "Puzzle_TrickHouseSpintiles",
+        "Puzzle_TinTowerClimb"
     ],
     "gMapGroup5": [
         "Puzzle_LostWoods_Entrance",

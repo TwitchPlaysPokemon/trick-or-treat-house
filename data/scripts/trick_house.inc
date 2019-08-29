@@ -24,6 +24,30 @@ PuzzleDebug_Text_PuzzleSelect:
 
 @ -----------------------------------------------------
 
+PuzzleCommon_EventScript_Scroll::
+	lock
+	goto_if_set FLAG_TRICK_HOUSE_SCROLL_READ, PuzzleCommon_EventScript_ScrollExamine
+	playfanfare MUS_FANFA4
+	message PuzzleCommon_Text_ScrollFound1
+	waitfanfare
+	setflag FLAG_TRICK_HOUSE_SCROLL_READ
+	msgbox PuzzleCommon_Text_ScrollFound2
+	release
+	end
+PuzzleCommon_Text_ScrollFound1:
+	.string "{PLAYER} found a scroll.$"
+PuzzleCommon_Text_ScrollFound2:
+	.string "{PLAYER} memorized the secret code\n"
+	.string "written on the scroll.$"
+PuzzleCommon_EventScript_ScrollExamine:
+	msgbox PuzzleCommon_Text_ScrollExamine
+	release
+	end
+PuzzleCommon_Text_ScrollExamine:
+	.string "A secret code is written on it.$"
+
+@ -----------------------------------------------------
+
 PuzzleCommon_EventScript_ExitDoorMetatile::
 	lock
 	@ Check for scroll
@@ -45,6 +69,7 @@ PuzzleCommon_EventScript_ExitDoorObject::
 
 PuzzleCommon_EventScript_CheckScroll:
 	goto_if_unset FLAG_TRICK_HOUSE_SCROLL_READ, PuzzleCommon_EventScript_NoScrollReject
+	
 	msgbox PuzzleCommon_Text_WriteDownCode
 	setflag FLAG_TRICK_HOUSE_PASSWORD_ENTERED
 	release

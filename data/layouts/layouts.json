@@ -919,6 +919,16 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Petalburg",
             "width": 21
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_TinTowerClimb/map.bin",
+            "border_filepath": "data/layouts/Puzzle_TinTowerClimb/border.bin",
+            "height": 20,
+            "id": "LAYOUT_PUZZLE_TIN_TOWER_CLIMB",
+            "name": "Puzzle_TinTowerClimb_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_HoOhTower",
+            "width": 20
         }
     ],
     "layouts_table_label": "gMapLayouts"

@@ -6391,3 +6391,5 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/Puzzle_LostWoods_Entrance/scripts.inc"
 
 	.include "data/maps/Puzzle_LostWoods_Room0/scripts.inc"
+
+	.include "data/maps/Puzzle_TinTowerClimb/scripts.inc"

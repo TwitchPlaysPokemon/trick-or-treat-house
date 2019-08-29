@@ -24,6 +24,10 @@ static void Task_PuzzleSelect(u8 taskId);
 
 extern const u16 gPuzzleList[];
 
+const u8 sPuzzleSecretCodes[][0x100] = {
+	_("Watch out for Snakes"),
+};
+
 ///////////////////////////////////////////////////////////////////////////////
 
 const u8 sPuzzleText[] = _("{NO}: {STR_VAR_1}");
@@ -142,6 +146,11 @@ void SetupPuzzleWarp()
 {
 	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
 	SetDynamicWarp(0, currPuzzle >> 8, currPuzzle & 0xFF, 0);
+}
+
+void LoadSecretCode()
+{
+	VarGet(VAR_CURRENT_PUZZLE); //TODO stub
 }
 
 extern const u8 PuzzleCommon_Text_DefaultAdjective[];

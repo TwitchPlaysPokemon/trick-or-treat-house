@@ -100,6 +100,7 @@
 #define MAP_PUZZLE_TRICK_HOUSE_CUT       (0 | (4 << 8))
 #define MAP_PUZZLE_TRICK_HOUSE_TRAPDOORS (1 | (4 << 8))
 #define MAP_PUZZLE_TRICK_HOUSE_SPINTILES (2 | (4 << 8))
+#define MAP_PUZZLE_TIN_TOWER_CLIMB       (3 | (4 << 8))
 
 // Map Group 5
 #define MAP_PUZZLE_LOST_WOODS_ENTRANCE (0 | (5 << 8))
