@@ -99,12 +99,17 @@
         "Puzzle_TrickHouseTrapdoors",
         "Puzzle_TrickHouseSpintiles"
     ],
+    "gMapGroup5": [
+        "Puzzle_LostWoods_Entrance",
+        "Puzzle_LostWoods_Room0"
+    ],
     "group_order": [
         "gMapGroup0",
         "gMapGroup1",
         "gMapGroup2",
         "gMapGroup3",
-        "gMapGroup4"
+        "gMapGroup4",
+        "gMapGroup5"
     ],
     "layouts_table_label": "gMapLayouts"
 }

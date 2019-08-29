@@ -6387,3 +6387,7 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/Puzzle_TrickHouseSpintiles/scripts.inc"
 
 	.include "data/maps/TrickHouseDevEntrance/scripts.inc"
+
+	.include "data/maps/Puzzle_LostWoods_Entrance/scripts.inc"
+
+	.include "data/maps/Puzzle_LostWoods_Room0/scripts.inc"

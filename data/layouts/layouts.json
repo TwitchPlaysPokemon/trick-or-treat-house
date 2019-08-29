@@ -899,6 +899,26 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_GenericBuilding",
             "width": 7
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Entrance/map.bin",
+            "border_filepath": "data/layouts/Puzzle_LostWoods_Entrance/border.bin",
+            "height": 17,
+            "id": "LAYOUT_PUZZLE_LOST_WOODS_ENTRANCE",
+            "name": "Puzzle_LostWoods_Entrance_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_TrickHousePuzzle",
+            "width": 17
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Room0/map.bin",
+            "border_filepath": "data/layouts/Puzzle_LostWoods_Room0/border.bin",
+            "height": 19,
+            "id": "LAYOUT_PUZZLE_LOST_WOODS_ROOM0",
+            "name": "Puzzle_LostWoods_Room0_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Petalburg",
+            "width": 21
         }
     ],
     "layouts_table_label": "gMapLayouts"
