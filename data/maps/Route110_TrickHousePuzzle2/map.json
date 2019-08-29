@@ -17,7 +17,7 @@
     "coord_events": [
         {
             "elevation": 3,
-            "script": "Route110_TrickHousePuzzle2_EventScript_26BBDD",
+            "script": "Route110_TrickHousePuzzle2_TriggerScript_Button1",
             "type": "trigger",
             "var": "VAR_TEMP_1",
             "var_value": "0",
@@ -26,7 +26,7 @@
         },
         {
             "elevation": 0,
-            "script": "Route110_TrickHousePuzzle2_EventScript_26BBF0",
+            "script": "Route110_TrickHousePuzzle2_TriggerScript_Button2",
             "type": "trigger",
             "var": "VAR_TEMP_2",
             "var_value": "0",
@@ -35,7 +35,7 @@
         },
         {
             "elevation": 3,
-            "script": "Route110_TrickHousePuzzle2_EventScript_26BC03",
+            "script": "Route110_TrickHousePuzzle2_TriggerScript_Button3",
             "type": "trigger",
             "var": "VAR_TEMP_3",
             "var_value": "0",
@@ -44,7 +44,7 @@
         },
         {
             "elevation": 3,
-            "script": "Route110_TrickHousePuzzle2_EventScript_26BC16",
+            "script": "Route110_TrickHousePuzzle2_TriggerScript_Button4",
             "type": "trigger",
             "var": "VAR_TEMP_4",
             "var_value": "0",
