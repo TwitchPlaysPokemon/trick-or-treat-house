@@ -58,7 +58,7 @@ string read_trainers_file(string mappath) {
     string basedir = mappath.substr(0, lastSlash);
     string filepath = basedir + "/trainers.json";
     
-    fprintf(stdout, "Trainer file path: %s\n", filepath.c_str());
+    // fprintf(stdout, "Trainer file path: %s\n", filepath.c_str());
     
     ifstream in_file(filepath);
     if (!in_file.is_open())

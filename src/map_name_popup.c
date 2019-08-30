@@ -12,9 +12,11 @@
 #include "string_util.h"
 #include "task.h"
 #include "text.h"
+#include "script.h"
 #include "constants/layouts.h"
 #include "constants/region_map_sections.h"
 #include "constants/weather.h"
+#include "constants/map_scripts.h"
 
 // enums
 enum MapPopUp_Themes
@@ -29,8 +31,8 @@ enum MapPopUp_Themes
 
 // static functions
 static void Task_MapNamePopUpWindow(u8 taskId);
-static void ShowMapNamePopUpWindow(void);
-static void LoadMapNamePopUpWindowBg(void);
+void ShowMapNamePopUpWindow(void);
+void LoadMapNamePopUpWindowBg(void);
 
 // EWRAM
 static EWRAM_DATA u8 sPopupTaskId = 0;
@@ -297,9 +299,11 @@ void HideMapNamePopUpWindow(void)
     }
 }
 
-static void ShowMapNamePopUpWindow(void)
+extern const u16 gPuzzleList[];
+extern const u8 sUntitledPuzzle[];
+void ShowMapNamePopUpWindow(void)
 {
-    u8 mapDisplayHeader[24];
+    u8 mapDisplayHeader[0x100];
     u8 *withoutPrefixPtr;
     u8 x;
     const u8* mapDisplayHeaderSource;
@@ -320,8 +324,13 @@ static void ShowMapNamePopUpWindow(void)
     // }
     // else
     {
+        u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+        const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_NAME);
+        if (str == NULL) 
+            str = sUntitledPuzzle;
         withoutPrefixPtr = &(mapDisplayHeader[3]);
-        GetMapName(withoutPrefixPtr, gMapHeader.regionMapSectionId, 0);
+        StringCopy(withoutPrefixPtr, str);
+        // GetMapName(withoutPrefixPtr, gMapHeader.regionMapSectionId, 0);
     }
     AddMapNamePopUpWindow();
     LoadMapNamePopUpWindowBg();
@@ -353,8 +362,9 @@ static void sub_80D4A78(u8 bg, u8 x, u8 y, u8 deltaX, u8 deltaY, u8 unused)
     }
 }
 
-static void LoadMapNamePopUpWindowBg(void)
+void LoadMapNamePopUpWindowBg(void)
 {
+    // TODO: make a trick house themed expandable frame
     u8 popUpThemeId;
     u8 popupWindowId = GetMapNamePopUpWindowId();
     u16 regionMapSectionId = gMapHeader.regionMapSectionId;
@@ -366,11 +376,17 @@ static void LoadMapNamePopUpWindowBg(void)
         else
             regionMapSectionId = 0; // Discard kanto region sections;
     }
-    popUpThemeId = gRegionMapSectionId_To_PopUpThemeIdMapping[regionMapSectionId];
+    // DrawStdWindowFrame(popupWindowId, FALSE);
+    // FillWindowPixelBuffer(popupWindowId, PIXEL_FILL(1));
+    // schedule_bg_copy_tilemap_to_vram(0);
+    
+    // popUpThemeId = gRegionMapSectionId_To_PopUpThemeIdMapping[regionMapSectionId];
+    popUpThemeId = MAPPOPUP_THEME_STONE2; // TODO: make a trick house themed expandable frame
 
     LoadBgTiles(GetWindowAttribute(popupWindowId, WINDOW_BG), gMapPopUp_Outline_Table[popUpThemeId], 0x400, 0x21D);
     CallWindowFunction(popupWindowId, sub_80D4A78);
     PutWindowTilemap(popupWindowId);
+    
     if(gMapHeader.weather == WEATHER_BUBBLES)
         LoadPalette(&gUnknown_0857F444, 0xE0, 0x20);
     else

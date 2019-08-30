@@ -212,8 +212,8 @@ gSpecials:: @ 81DBA64
 	def_special SubtractMoneyFromVar0x8005
 	def_special ExecuteWhiteOut
 	def_special sp0C8_whiteout_maybe
-	def_special RotatingGate_InitPuzzle
-	def_special RotatingGate_InitPuzzleAndGraphics
+	@ def_special RotatingGate_InitPuzzle
+	@ def_special RotatingGate_InitPuzzleAndGraphics
 	def_special SetSSTidalFlag
 	def_special ResetSSTidalFlag
 	def_special EnterSafariMode
@@ -417,8 +417,8 @@ gSpecials:: @ 81DBA64
 	def_special sub_813B880
 	@ def_special CallApprenticeFunction
 	def_special ShouldTryGetTrainerScript
-	def_special ShowMapNamePopup
-	def_special ShowMapNamePopup
+	@ def_special ShowMapNamePopup
+	@ def_special ShowMapNamePopup
 	def_special DoMirageTowerCeilingCrumble
 	def_special SetMirageTowerVisibility
 	def_special StartPlayerDescendMirageTower

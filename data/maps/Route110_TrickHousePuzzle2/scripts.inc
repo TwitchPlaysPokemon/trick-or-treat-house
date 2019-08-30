@@ -82,8 +82,8 @@ Route110_TrickHousePuzzle2_EventScript_CloseDoor4:: @ 826BC62
 @ -----------------------------------------------------
 
 Route110_TrickHousePuzzle2_EventScript_26BC75:: @ 826BC75
-	@ trainerbattle_single TRAINER_TED, Route110_TrickHousePuzzle2_Text_26BD25, Route110_TrickHousePuzzle2_Text_26BD45
-	@ msgbox Route110_TrickHousePuzzle2_Text_26BD70, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_01, Route110_TrickHousePuzzle2_Text_26BD25, Route110_TrickHousePuzzle2_Text_26BD45
+	msgbox Route110_TrickHousePuzzle2_Text_26BD70, MSGBOX_AUTOCLOSE
 	end
 Route110_TrickHousePuzzle2_Text_26BD25: @ 826BD25
 	.string "Which switch closes which hole?$"
@@ -96,8 +96,8 @@ Route110_TrickHousePuzzle2_Text_26BD70: @ 826BD70
 
 
 Route110_TrickHousePuzzle2_EventScript_26BC8C:: @ 826BC8C
-	@ trainerbattle_single TRAINER_PAUL, Route110_TrickHousePuzzle2_Text_26BD9E, Route110_TrickHousePuzzle2_Text_26BDCF
-	@ msgbox Route110_TrickHousePuzzle2_Text_26BDEC, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_02, Route110_TrickHousePuzzle2_Text_26BD9E, Route110_TrickHousePuzzle2_Text_26BDCF
+	msgbox Route110_TrickHousePuzzle2_Text_26BDEC, MSGBOX_AUTOCLOSE
 	end
 Route110_TrickHousePuzzle2_Text_26BD9E: @ 826BD9E
 	.string "Oh! You're on your second TRICK HOUSE\n"
@@ -110,8 +110,8 @@ Route110_TrickHousePuzzle2_Text_26BDEC: @ 826BDEC
 
 
 Route110_TrickHousePuzzle2_EventScript_26BCA3:: @ 826BCA3
-	@ trainerbattle_single TRAINER_GEORGIA, Route110_TrickHousePuzzle2_Text_26BE31, Route110_TrickHousePuzzle2_Text_26BE77
-	@ msgbox Route110_TrickHousePuzzle2_Text_26BE97, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_03, Route110_TrickHousePuzzle2_Text_26BE31, Route110_TrickHousePuzzle2_Text_26BE77
+	msgbox Route110_TrickHousePuzzle2_Text_26BE97, MSGBOX_AUTOCLOSE
 	end
 Route110_TrickHousePuzzle2_Text_26BE31: @ 826BE31
 	.string "I want to make my own GYM one day.\n"

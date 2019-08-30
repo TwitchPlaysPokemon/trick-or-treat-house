@@ -53,6 +53,7 @@
 #include "time_events.h"
 #include "trainer_hill.h"
 #include "trainer_pokemon_sprites.h"
+#include "trickhouse.h"
 #include "tv.h"
 #include "scanline_effect.h"
 #include "wild_encounter.h"
@@ -823,6 +824,7 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
         sub_8085810();
 
     ApplyCurrentWarp();
+    RunPuzzleTeardownScript();
     LoadCurrentMapData();
     LoadEventObjTemplatesFromHeader();
     TrySetMapSaveWarpStatus();
@@ -849,9 +851,10 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     DoCurrentWeather();
     ResetFieldTasksArgs();
     RunOnResumeMapScript();
-
-    if (gMapHeader.regionMapSectionId != MAPSEC_BATTLE_FRONTIER || gMapHeader.regionMapSectionId != sLastMapSectionId)
-        ShowMapNamePopup();
+    RunPuzzleSetupScript();
+    
+    // if (gMapHeader.regionMapSectionId != MAPSEC_BATTLE_FRONTIER || gMapHeader.regionMapSectionId != sLastMapSectionId)
+    //     ShowMapNamePopup();
 }
 
 static void mli0_load_map(u32 a1)
@@ -859,6 +862,7 @@ static void mli0_load_map(u32 a1)
     bool8 isOutdoors;
     bool8 isIndoors;
 
+    RunPuzzleTeardownScript();
     LoadCurrentMapData();
     if (!(sUnknown_020322D8 & 1))
     {
@@ -1600,8 +1604,9 @@ void sub_80861E8(void)
 
 static void sub_8086204(void)
 {
-    if ((gMapHeader.flags & 0xF8) == 8 && SecretBaseMapPopupEnabled() == TRUE)
-        ShowMapNamePopup();
+    RunPuzzleSetupScript();
+    // if ((gMapHeader.flags & 0xF8) == 8 && SecretBaseMapPopupEnabled() == TRUE)
+    //     ShowMapNamePopup();
     sub_80AF3C8();
 }
 
@@ -1847,8 +1852,9 @@ static bool32 load_map_stuff(u8 *state, u32 a2)
         (*state)++;
         break;
     case 11:
-        if ((gMapHeader.flags & 0xF8) == 8 && SecretBaseMapPopupEnabled() == TRUE)
-            ShowMapNamePopup();
+        RunPuzzleSetupScript();
+        // if ((gMapHeader.flags & 0xF8) == 8 && SecretBaseMapPopupEnabled() == TRUE)
+        //     ShowMapNamePopup();
         (*state)++;
         break;
     case 12:

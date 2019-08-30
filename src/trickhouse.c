@@ -13,9 +13,13 @@
 #include "text_window.h"
 #include "string_util.h"
 #include "sound.h"
+#include "map_name_popup.h"
 #include "overworld.h"
 #include "field_message_box.h"
+#include "international_string_util.h"
 #include "constants/map_scripts.h"
+#include "constants/maps.h"
+#include "constants/map_groups.h"
 #include "constants/songs.h"
 #include "constants/vars.h"
 #include "constants/event_objects.h"
@@ -30,7 +34,9 @@ const u8 sPuzzleSecretCodes[][0x100] = {
 
 ///////////////////////////////////////////////////////////////////////////////
 
+extern void LoadMapNamePopUpWindowBg(void);
 const u8 sPuzzleText[] = _("{NO}: {STR_VAR_1}");
+const u8 sUntitledPuzzle[] = _("<Untitled Puzzle>");
 static const struct WindowTemplate sPuzzleSelectWinTemplate =
 {
 	.bg = 0,
@@ -42,6 +48,31 @@ static const struct WindowTemplate sPuzzleSelectWinTemplate =
 	.baseBlock = 0x0176,
 };
 
+static void ShowMapNamePopUpWindow(u16 num)
+{
+    u8 mapDisplayHeader[0x100];
+    u8 *withoutPrefixPtr;
+    u8 x;
+    const u8* mapDisplayHeaderSource;
+
+	u16 currPuzzle = gPuzzleList[num-1];
+	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_NAME);
+	if (str == NULL)
+		str = sUntitledPuzzle;
+	withoutPrefixPtr = &(mapDisplayHeader[3]);
+	StringCopy(withoutPrefixPtr, str);
+
+    AddMapNamePopUpWindow();
+    LoadMapNamePopUpWindowBg();
+    x = GetStringCenterAlignXOffset(7, withoutPrefixPtr, 80);
+    mapDisplayHeader[0] = EXT_CTRL_CODE_BEGIN;
+    mapDisplayHeader[1] = EXT_CTRL_CODE_HIGHLIGHT;
+    mapDisplayHeader[2] = TEXT_COLOR_TRANSPARENT;
+    AddTextPrinterParameterized(GetMapNamePopUpWindowId(), 7, mapDisplayHeader, x, 3, 0xFF, NULL);
+    CopyWindowToVram(GetMapNamePopUpWindowId(), 3);
+}
+
+
 static void RedrawPuzzleSelectWindow(u8 windowId, u16 num)
 {
 	const u8* txt = sPuzzleText;
@@ -49,12 +80,13 @@ static void RedrawPuzzleSelectWindow(u8 windowId, u16 num)
 	ConvertIntToDecimalStringN(gStringVar1, num, 2, 3);
     StringExpandPlaceholders(gStringVar4, txt);
     AddTextPrinterParameterized(windowId, 1, gStringVar4, 0, 1, 0, NULL);
+	
+	ShowMapNamePopUpWindow(num);
 }
 
 #define tWindow data[0]
 #define tSelected data[1]
 #define tMax data[2]
-
 
 static void Task_InitPuzzleSelect(u8 taskId)
 {
@@ -70,6 +102,9 @@ static void Task_InitPuzzleSelect(u8 taskId)
 	tMax = i;
 	tWindow = AddWindow(&sPuzzleSelectWinTemplate);
  
+	AddMapNamePopUpWindow();
+	LoadMapNamePopUpWindowBg();
+	
     DrawStdWindowFrame(tWindow, FALSE);
 	FillWindowPixelBuffer(tWindow, PIXEL_FILL(1));
 	RedrawPuzzleSelectWindow(tWindow, tSelected);
@@ -102,11 +137,13 @@ exit:
 	ClearStdWindowAndFrameToTransparent(tWindow, 0);
 	ClearWindowTilemap(tWindow);
 	RemoveWindow(tWindow);
+	ClearStdWindowAndFrame(GetMapNamePopUpWindowId(), TRUE);
+	RemoveMapNamePopUpWindow();
 	EnableBothScriptContexts();
 	DestroyTask(taskId);
 }
 
-void ShowPuzzleSelect()
+void ShowPuzzleSelect(struct ScriptContext *ctx)
 {
 	CreateTask(Task_InitPuzzleSelect, 0);
 }
@@ -122,39 +159,54 @@ extern const u8 PuzzleCommon_DefaultSetupScript[];
 void RunPuzzleSetupScript()
 {
 	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
-	const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_SETUP_SCRIPT);
-	if (script != NULL)
+	if (!FlagGet(FLAG_IS_PUZZLE_SETUP) &&
+	    gSaveBlock1Ptr->location.mapGroup == (currPuzzle >> 8) &&
+		gSaveBlock1Ptr->location.mapNum == (currPuzzle & 0xFF))
 	{
-		ScriptContext2_RunNewScript(script);
+		// Find and run a setup script
+		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_SETUP_SCRIPT);
+		if (script != NULL)
+		{
+			ScriptContext2_RunNewScript(script);
+		}
+		// Show map name
+		ShowMapNamePopup();
+		// 
+		FlagSet(FLAG_IS_PUZZLE_SETUP);
 	}
 }
 
 extern const u8 PuzzleCommon_DefaultTeardownScript[];
 void RunPuzzleTeardownScript()
 {
-	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
-	const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_TEARDOWN_SCRIPT);
-	if (script != NULL)
+	if (FlagGet(FLAG_IS_PUZZLE_SETUP) &&
+	    gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(TRICK_HOUSE_END))
 	{
-		ScriptContext2_RunNewScript(script);
+		u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_TEARDOWN_SCRIPT);
+		if (script != NULL)
+		{
+			ScriptContext2_RunNewScript(script);
+		}
+		FlagClear(FLAG_IS_PUZZLE_SETUP);
 	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
-void SetupPuzzleWarp()
+void SetupPuzzleWarp(struct ScriptContext *ctx)
 {
 	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
 	SetDynamicWarp(0, currPuzzle >> 8, currPuzzle & 0xFF, 0);
 }
 
-void LoadSecretCode()
+void LoadSecretCode(struct ScriptContext *ctx)
 {
 	VarGet(VAR_CURRENT_PUZZLE); //TODO stub
 }
 
 extern const u8 PuzzleCommon_Text_DefaultAdjective[];
-void LoadPuzzleAdjective()
+void LoadPuzzleAdjective(struct ScriptContext *ctx)
 {
 	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
 	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_ADJECTIVE);
@@ -166,7 +218,7 @@ void LoadPuzzleAdjective()
 }
 
 extern const u8 PuzzleCommon_Text_DefaultQuip[];
-void ShowPuzzleQuip()
+void ShowPuzzleQuip(struct ScriptContext *ctx)
 {
 	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
 	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_QUIP);
@@ -178,7 +230,7 @@ void ShowPuzzleQuip()
 }
 
 extern const u8 PuzzleCommon_DefaultVariableAssignments[];
-void AssignPuzzleMetaVariables()
+void AssignPuzzleMetaVariables(struct ScriptContext *ctx)
 {
 	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
 	const u16 *array = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_META_VARIABLES);

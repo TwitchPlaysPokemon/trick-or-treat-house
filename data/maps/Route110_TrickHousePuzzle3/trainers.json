@@ -1,0 +1,47 @@
+[
+	{
+		"class": "CAMPER",
+		"name": "JUSTIN",
+		"party": [
+			{
+				"species": "SPECIES_KECLEON",
+				"level": 48
+			}
+		]
+	},
+	{
+		"class": "PICNICKER",
+		"music": "GIRL",
+		"female": true,
+		"name": "MARTHA",
+		"party": [
+			{
+				"species": "SPECIES_SKITTY",
+				"level": 47
+			},
+			{
+				"species": "SPECIES_SWABLU",
+				"level": 47
+			}
+		]
+	},
+	{
+		"class": "HIKER",
+		"music": "HIKER",
+		"name": "ALAN",
+		"party": [
+			{
+				"species": "SPECIES_GEODUDE",
+				"level": 46
+			},
+			{
+				"species": "SPECIES_NOSEPASS",
+				"level": 46
+			},
+			{
+				"species": "SPECIES_GRAVELER",
+				"level": 46
+			}
+		]
+	}
+]

@@ -5,6 +5,7 @@
 #include "fieldmap.h"
 #include "sound.h"
 #include "sprite.h"
+#include "script.h"
 #include "constants/maps.h"
 #include "constants/songs.h"
 
@@ -619,21 +620,9 @@ static EWRAM_DATA const struct RotatingGatePuzzle *gRotatingGate_PuzzleConfig = 
 static EWRAM_DATA u8 gRotatingGate_PuzzleCount = 0;
 
 // text
-static s32 GetCurrentMapRotatingGatePuzzleType(void)
+static s32 DoesCurrentMapHaveRotatingGatePuzzle(void)
 {
-    // if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(FORTREE_CITY_GYM) &&
-    //     gSaveBlock1Ptr->location.mapNum == MAP_NUM(FORTREE_CITY_GYM))
-    // {
-    //     return PUZZLE_FORTREE_CITY_GYM;
-    // }
-
-    // if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ROUTE110_TRICK_HOUSE_PUZZLE6) &&
-    //     gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE110_TRICK_HOUSE_PUZZLE6))
-    // {
-    //     return PUZZLE_ROUTE110_TRICK_HOUSE_PUZZLE6;
-    // }
-
-    return PUZZLE_NONE;
+    return (gRotatingGate_PuzzleConfig != NULL && gRotatingGate_PuzzleCount > 0);
 }
 
 static void RotatingGate_ResetAllGateOrientations(void)
@@ -677,25 +666,7 @@ static void RotatingGate_RotateInDirection(u8 gateId, u32 rotationDirection)
 
 static void RotatingGate_LoadPuzzleConfig(void)
 {
-    s32 puzzleType = GetCurrentMapRotatingGatePuzzleType();
     u32 i;
-
-    switch (puzzleType)
-    {
-    case PUZZLE_FORTREE_CITY_GYM:
-        gRotatingGate_PuzzleConfig = sRotatingGate_FortreePuzzleConfig;
-        gRotatingGate_PuzzleCount =
-            sizeof(sRotatingGate_FortreePuzzleConfig) / sizeof(struct RotatingGatePuzzle);
-        break;
-    case PUZZLE_ROUTE110_TRICK_HOUSE_PUZZLE6:
-        gRotatingGate_PuzzleConfig = sRotatingGate_TrickHousePuzzleConfig;
-        gRotatingGate_PuzzleCount =
-            sizeof(sRotatingGate_TrickHousePuzzleConfig) / sizeof(struct RotatingGatePuzzle);
-        break;
-    case PUZZLE_NONE:
-    default:
-        return;
-    }
 
     for (i = 0; i < ROTATING_GATE_PUZZLE_MAX - 1; i++)
     {
@@ -927,27 +898,38 @@ static u8 RotatingGate_GetRotationInfo(u8 direction, s16 x, s16 y)
     return ptr[y * 4 + x];
 }
 
-void RotatingGate_InitPuzzle(void)
+void RotatingGate_InitPuzzle(struct ScriptContext *ctx)
 {
-    if (GetCurrentMapRotatingGatePuzzleType())
+    gRotatingGate_PuzzleConfig = (const struct RotatingGatePuzzle*) ctx->data[0];
+    gRotatingGate_PuzzleCount = (u8)ctx->data[1];
+    
+    if (DoesCurrentMapHaveRotatingGatePuzzle())
     {
         RotatingGate_LoadPuzzleConfig();
         RotatingGate_ResetAllGateOrientations();
     }
 }
 
+void RotatingGate_DestroyPuzzle(struct ScriptContext *ctx)
+{
+    gRotatingGate_PuzzleConfig = NULL;
+    gRotatingGate_PuzzleCount = 0;
+}
+
 void RotatingGatePuzzleCameraUpdate(u16 deltaX, u16 deltaY)
 {
-    if (GetCurrentMapRotatingGatePuzzleType())
+    if (DoesCurrentMapHaveRotatingGatePuzzle())
     {
         RotatingGate_CreateGatesWithinViewport(deltaX, deltaY);
         RotatingGate_DestroyGatesOutsideViewport();
     }
 }
 
-void RotatingGate_InitPuzzleAndGraphics(void)
+void RotatingGate_InitPuzzleAndGraphics(struct ScriptContext *ctx)
 {
-    if (GetCurrentMapRotatingGatePuzzleType())
+    gRotatingGate_PuzzleConfig = (const struct RotatingGatePuzzle*) ctx->data[0];
+    gRotatingGate_PuzzleCount = (u8)ctx->data[1];
+    if (DoesCurrentMapHaveRotatingGatePuzzle())
     {
         LoadRotatingGatePics();
         RotatingGate_LoadPuzzleConfig();
@@ -959,7 +941,7 @@ bool8 CheckForRotatingGatePuzzleCollision(u8 direction, s16 x, s16 y)
 {
     s32 i;
 
-    if (!GetCurrentMapRotatingGatePuzzleType())
+    if (!DoesCurrentMapHaveRotatingGatePuzzle())
         return FALSE;
     for (i = 0; i < gRotatingGate_PuzzleCount; i++)
     {
@@ -997,7 +979,7 @@ bool8 CheckForRotatingGatePuzzleCollisionWithoutAnimation(u8 direction, s16 x, s
 {
     s32 i;
 
-    if (!GetCurrentMapRotatingGatePuzzleType())
+    if (!DoesCurrentMapHaveRotatingGatePuzzle())
         return FALSE;
     for (i = 0; i < gRotatingGate_PuzzleCount; i++)
     {

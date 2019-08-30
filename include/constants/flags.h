@@ -1537,5 +1537,6 @@
 #define FLAG_SPECIAL_FLAG_0x4003                                   0x4003
 #define FLAG_SPECIAL_FLAG_0x4004                                   0x4004
 #define FLAG_IS_BUMP_INTERACTION                                   0x4005
+#define FLAG_IS_PUZZLE_SETUP                                       0x4006
 
 #endif // GUARD_CONSTANTS_FLAGS_H
