@@ -36,9 +36,9 @@ Route110_TrickHousePuzzle6_MapTable: @ 826DDB6
 	.2byte 0
 
 Route110_TrickHousePuzzle6_EventScript_26DDC0:: @ 826DDC0
-	loadword 0, Route110_TrickHousePuzzle6_GateSetup
-	loadword 1, 11
-	callnative RotatingGate_InitPuzzleAndGraphics
+	@ loadword 0, Route110_TrickHousePuzzle6_GateSetup
+	@ loadword 1, 11
+	callnative_noctx RotatingGate_InitPuzzleAndGraphics
 	end
 
 @ -----------------------------------------------------

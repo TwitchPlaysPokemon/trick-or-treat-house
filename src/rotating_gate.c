@@ -1,4 +1,5 @@
 #include "global.h"
+#include "rotating_gate.h"
 #include "bike.h"
 #include "event_data.h"
 #include "event_object_movement.h"
@@ -916,7 +917,7 @@ void RotatingGate_DestroyPuzzle(struct ScriptContext *ctx)
     gRotatingGate_PuzzleCount = 0;
 }
 
-void RotatingGatePuzzleCameraUpdate(u16 deltaX, u16 deltaY)
+void RotatingGatePuzzleCameraUpdate(s16 deltaX, s16 deltaY)
 {
     if (DoesCurrentMapHaveRotatingGatePuzzle())
     {
@@ -925,10 +926,8 @@ void RotatingGatePuzzleCameraUpdate(u16 deltaX, u16 deltaY)
     }
 }
 
-void RotatingGate_InitPuzzleAndGraphics(struct ScriptContext *ctx)
+void RotatingGate_InitPuzzleAndGraphics()
 {
-    gRotatingGate_PuzzleConfig = (const struct RotatingGatePuzzle*) ctx->data[0];
-    gRotatingGate_PuzzleCount = (u8)ctx->data[1];
     if (DoesCurrentMapHaveRotatingGatePuzzle())
     {
         LoadRotatingGatePics();
