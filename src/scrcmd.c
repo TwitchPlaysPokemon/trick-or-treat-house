@@ -145,6 +145,14 @@ bool8 ScrCmd_callnative(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_callnative_noctx(struct ScriptContext *ctx)
+{
+    NativeFunc func = (NativeFunc)ScriptReadWord(ctx);
+
+    func(ctx);
+    return FALSE;
+}
+
 bool8 ScrCmd_waitstate(struct ScriptContext *ctx)
 {
     ScriptContext1_Stop();

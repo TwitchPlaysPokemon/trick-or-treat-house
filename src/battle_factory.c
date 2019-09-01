@@ -112,23 +112,23 @@ static const u16 *const sMoveStyles[] =
 
 static void (* const sBattleFactoryFunctions[])(void) =
 {
-    InitFactoryChallenge,
+    InitFactoryChallenge, //0
     GetBattleFactoryData,
     SetBattleFactoryData,
     sub_81A613C,
     nullsub_75,
     nullsub_123,
-    SelectInitialRentalMons,
+    SelectInitialRentalMons, //6
     SwapRentalMons,
-    SetPerformedRentalSwap,
+    SetPerformedRentalSwap, //8
     SetRentalsToOpponentParty,
     SetPlayerAndOpponentParties,
     SetOpponentGfxVar,
-    GenerateOpponentMons,
-    GenerateInitialRentalMons,
+    GenerateOpponentMons, //12
+    GenerateInitialRentalMons, //13
     GetOpponentMostCommonMonType,
     GetOpponentBattleStyle,
-    RestorePlayerPartyHeldItems,
+    RestorePlayerPartyHeldItems, //16
 };
 
 static const u32 gUnknown_08612164[][2] =

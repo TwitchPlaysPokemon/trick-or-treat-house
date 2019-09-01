@@ -16,6 +16,10 @@
 #include "map_name_popup.h"
 #include "overworld.h"
 #include "field_message_box.h"
+#include "battle_factory.h"
+#include "battle_factory_screen.h"
+#include "random.h"
+#include "battle_tower.h"
 #include "international_string_util.h"
 #include "constants/map_scripts.h"
 #include "constants/maps.h"
@@ -23,8 +27,10 @@
 #include "constants/songs.h"
 #include "constants/vars.h"
 #include "constants/event_objects.h"
+#include "constants/species.h"
 
 static void Task_PuzzleSelect(u8 taskId);
+static void GenerateInitialRentalMons(void);
 
 extern const u16 gPuzzleList[];
 
@@ -32,11 +38,12 @@ const u8 sPuzzleSecretCodes[][0x100] = {
 	_("Watch out for Snakes"),
 };
 
+
 ///////////////////////////////////////////////////////////////////////////////
 
 extern void LoadMapNamePopUpWindowBg(void);
 const u8 sPuzzleText[] = _("{NO}: {STR_VAR_1}");
-const u8 sUntitledPuzzle[] = _("<Untitled Puzzle>");
+extern const u8 PuzzleCommon_Text_UntitledPuzzleName[];
 static const struct WindowTemplate sPuzzleSelectWinTemplate =
 {
 	.bg = 0,
@@ -58,7 +65,7 @@ static void ShowMapNamePopUpWindow(u16 num)
 	u16 currPuzzle = gPuzzleList[num-1];
 	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_NAME);
 	if (str == NULL)
-		str = sUntitledPuzzle;
+		str = PuzzleCommon_Text_UntitledPuzzleName;
 	withoutPrefixPtr = &(mapDisplayHeader[3]);
 	StringCopy(withoutPrefixPtr, str);
 
@@ -205,6 +212,18 @@ void LoadSecretCode(struct ScriptContext *ctx)
 	VarGet(VAR_CURRENT_PUZZLE); //TODO stub
 }
 
+extern const u8 PuzzleCommon_Text_DefaultAuthor[];
+void LoadPuzzleAuthor(struct ScriptContext *ctx)
+{
+	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_AUTHOR);
+	if (str == NULL)
+	{
+		str = PuzzleCommon_Text_DefaultAuthor;
+	}
+	StringCopy(gStringVar1, str);
+}
+
 extern const u8 PuzzleCommon_Text_DefaultAdjective[];
 void LoadPuzzleAdjective(struct ScriptContext *ctx)
 {
@@ -214,7 +233,7 @@ void LoadPuzzleAdjective(struct ScriptContext *ctx)
 	{
 		str = PuzzleCommon_Text_DefaultAdjective;
 	}
-	StringCopy(gStringVar1, str);
+	StringCopy(gStringVar2, str);
 }
 
 extern const u8 PuzzleCommon_Text_DefaultQuip[];
@@ -249,6 +268,85 @@ void AssignPuzzleMetaVariables(struct ScriptContext *ctx)
 	}
 }
 
+void SelectTrickHouseParty(struct ScriptContext *ctx)
+{
+	if (!FlagGet(FLAG_SYS_POKEMON_GET))
+	{
+		GenerateInitialRentalMons();
+		ZeroPlayerPartyMons();
+		DoBattleFactorySelectScreen();
+		FlagSet(FLAG_SYS_POKEMON_GET);
+	} 
+	else 
+	{
+		DoBattleFactorySwapScreen();
+	}
+}
 
+///////////////////////////////////////////////////////////////////////////////
+
+// extern const struct BattleFrontierTrainer *gFacilityTrainers;
+extern const struct FacilityMon *gFacilityTrainerMons;
+static void GenerateInitialRentalMons(void)
+{
+    s32 i, j;
+    u8 firstMonId;
+    u16 monSetId;
+    u16 currSpecies;
+    u16 species[PARTY_SIZE];
+    u16 monIds[PARTY_SIZE];
+    u16 heldItems[PARTY_SIZE];
+
+    firstMonId = 0;
+    // gFacilityTrainers = gSlateportBattleTentTrainers;
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        species[i] = 0;
+        monIds[i] = 0;
+        heldItems[i] = 0;
+    }
+    gFacilityTrainerMons = gBattleFrontierMons;
+    currSpecies = SPECIES_NONE;
+    i = 0;
+    while (i != PARTY_SIZE)
+    {
+        // Cannot have two pokemon of the same species.
+        monSetId = Random() % 70;
+        for (j = firstMonId; j < firstMonId + i; j++)
+        {
+            u16 monId = monIds[j];
+            if (monIds[j] == monSetId)
+                break;
+            if (species[j] == gFacilityTrainerMons[monSetId].species)
+            {
+                if (currSpecies == SPECIES_NONE)
+                    currSpecies = gFacilityTrainerMons[monSetId].species;
+                else
+                    break;
+            }
+        }
+        if (j != i + firstMonId)
+            continue;
+
+        // Cannot have two same held items.
+        for (j = firstMonId; j < i + firstMonId; j++)
+        {
+            if (heldItems[j] != 0 && heldItems[j] == gBattleFrontierHeldItems[gFacilityTrainerMons[monSetId].itemTableId])
+            {
+                if (gFacilityTrainerMons[monSetId].species == currSpecies)
+                    currSpecies = SPECIES_NONE;
+                break;
+            }
+        }
+        if (j != i + firstMonId)
+            continue;
+
+        gSaveBlock2Ptr->frontier.rentalMons[i].monId = monSetId;
+        species[i] = gFacilityTrainerMons[monSetId].species;
+        heldItems[i] = gBattleFrontierHeldItems[gFacilityTrainerMons[monSetId].itemTableId];
+        monIds[i] = monSetId;
+        i++;
+    }
+}
 
 

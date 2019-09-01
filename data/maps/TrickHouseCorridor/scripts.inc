@@ -45,8 +45,18 @@ TrickHouseCorridor_IncrementPuzzle:
 @ -----------------------------------------------------
 
 TrickHouseCorridor_EventScript_PokemonTable::
-	
+	lockall
+	msgbox TrickHouseCorridor_Text_PokemonTable1
+	fadescreen 1
+	callnative SelectTrickHouseParty
+	waitstate
+	msgbox TrickHouseCorridor_Text_PokemonTable2
+	releaseall
 	end
+TrickHouseCorridor_Text_PokemonTable1:
+	.string "Hi!$"
+TrickHouseCorridor_Text_PokemonTable2:
+	.string "Bye!$"
 
 @ -----------------------------------------------------
 
@@ -74,6 +84,8 @@ TrickHouseCorridor_TriggerScript_RunIntro::
 	waitmovement EVENT_OBJ_ID_PLAYER
 	@
 	@ TODO
+	callnative LoadPuzzleAuthor
+	callnative LoadPuzzleAdjective
 	msgbox TrickHouseCorridor_Text_RunIntro1
 	closemessage
 	compare VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_TRICK_MASTER
@@ -98,7 +110,12 @@ TrickHouseCorridor_TriggerScript_RunIntro_TrickMasterOut:
 	return
 
 TrickHouseCorridor_TriggerScript_RunIntro_CompanionLeaves:
-	
+	@ Player approaches door
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkUp2
+	waitmovement 0
+	@ Open the door to the puzzle
+	opendoor 22, 2
+	waitdooranim
 	return
 
 TrickHouseCorridor_Text_RunIntro1:

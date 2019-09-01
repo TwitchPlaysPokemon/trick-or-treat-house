@@ -64,8 +64,8 @@
     "show_map_name": false,
     "warp_events": [
         {
-            "dest_map": "MAP_TRICK_HOUSE_END",
-            "dest_warp_id": 1,
+            "dest_map": "MAP_NONE",
+            "dest_warp_id": 127,
             "elevation": 3,
             "x": 22,
             "y": 2

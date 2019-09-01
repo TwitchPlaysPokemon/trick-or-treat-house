@@ -300,7 +300,7 @@ void HideMapNamePopUpWindow(void)
 }
 
 extern const u16 gPuzzleList[];
-extern const u8 sUntitledPuzzle[];
+extern const u8 PuzzleCommon_Text_UntitledPuzzleName[];
 void ShowMapNamePopUpWindow(void)
 {
     u8 mapDisplayHeader[0x100];
@@ -327,7 +327,7 @@ void ShowMapNamePopUpWindow(void)
         u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
         const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_NAME);
         if (str == NULL) 
-            str = sUntitledPuzzle;
+            str = PuzzleCommon_Text_UntitledPuzzleName;
         withoutPrefixPtr = &(mapDisplayHeader[3]);
         StringCopy(withoutPrefixPtr, str);
         // GetMapName(withoutPrefixPtr, gMapHeader.regionMapSectionId, 0);

@@ -1,3 +1,7 @@
+PuzzleCommon_Text_UntitledPuzzleName::
+	.string "<untitled puzzle>$"
+PuzzleCommon_Text_DefaultAuthor::
+	.string "<author>$"
 PuzzleCommon_Text_DefaultAdjective::
 	.string "<adjective>$"
 PuzzleCommon_Text_DefaultQuip::

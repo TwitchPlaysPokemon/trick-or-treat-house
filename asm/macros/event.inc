@@ -250,6 +250,12 @@
 	.4byte \func
 	.endm
 
+	@ Calls the native C function stored at `func`.
+	.macro callnative_noctx func:req
+	.byte 0xc8
+	.4byte \func
+	.endm
+
 	@ Replaces the script with the function stored at `func`. Execution returns to the bytecode script when func returns TRUE.
 	.macro gotonative func:req
 	.byte 0x24
