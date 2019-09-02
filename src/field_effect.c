@@ -1853,7 +1853,7 @@ static bool8 waterfall_1_do_anim_probably(struct Task *task, struct EventObject 
     {
         EventObjectClearHeldMovementIfFinished(eventObject);
         gFieldEffectArguments[0] = task->data[1];
-        FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
+        // FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
         task->data[0]++;
     }
     return FALSE;
@@ -1920,7 +1920,7 @@ static bool8 dive_2_unknown(struct Task *task)
 {
     ScriptContext2_Enable();
     gFieldEffectArguments[0] = task->data[15];
-    FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
+    // FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
     task->data[0]++;
     return FALSE;
 }
@@ -2979,7 +2979,7 @@ static void sub_80B8E60(struct Task *task)
     if (EventObjectCheckHeldMovementStatus(eventObject))
     {
         gFieldEffectArguments[0] = task->data[15] | 0x80000000;
-        FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
+        // FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
         task->data[0]++;
     }
 }
@@ -3135,7 +3135,7 @@ static void sub_80B925C(struct Task *task)
     {
         task->data[0]++;
         gFieldEffectArguments[0] = task->data[1];
-        FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
+        // FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
     }
 }
 

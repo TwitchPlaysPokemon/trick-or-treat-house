@@ -477,28 +477,28 @@ bool32 unref_sub_81CB16C(void)
 
 static bool32 sub_81CB1D0(void)
 {
-    struct Pokenav3Struct *state = GetSubstructPtr(5);
-    int index = GetSelectedMatchCall();
-    if (!state->unk1C[index].boxId)
-    {
-        if (sub_81CAEA4(index) == gMapHeader.regionMapSectionId)
-        {
-            if (!gSaveBlock1Ptr->trainerRematches[state->unk1C[index].unk6])
-                return TRUE;
-        }
-    }
-    else
-    {
-        if (state->unk1C[index].unk6 == 11)
-        {
-            if (sub_81CAEA4(index) == gMapHeader.regionMapSectionId
-             && FlagGet(FLAG_BADGE05_GET) == TRUE)
-            {
-                if (!FlagGet(FLAG_WATTSON_REMATCH_AVAILABLE))
-                    return TRUE;
-            }
-        }
-    }
+    // struct Pokenav3Struct *state = GetSubstructPtr(5);
+    // int index = GetSelectedMatchCall();
+    // if (!state->unk1C[index].boxId)
+    // {
+    //     if (sub_81CAEA4(index) == gMapHeader.regionMapSectionId)
+    //     {
+    //         if (!gSaveBlock1Ptr->trainerRematches[state->unk1C[index].unk6])
+    //             return TRUE;
+    //     }
+    // }
+    // else
+    // {
+    //     if (state->unk1C[index].unk6 == 11)
+    //     {
+    //         if (sub_81CAEA4(index) == gMapHeader.regionMapSectionId
+    //          && FlagGet(FLAG_BADGE05_GET) == TRUE)
+    //         {
+    //             if (!FlagGet(FLAG_WATTSON_REMATCH_AVAILABLE))
+    //                 return TRUE;
+    //         }
+    //     }
+    // }
 
     return FALSE;
 }

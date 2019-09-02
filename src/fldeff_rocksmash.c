@@ -64,7 +64,7 @@ static void task08_080C9820(u8 taskId)
     {
         if (gMapHeader.mapType == MAP_TYPE_UNDERWATER)
         {
-            FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
+            // FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
             gTasks[taskId].func = sub_8135578;
         }
         else
@@ -80,7 +80,7 @@ static void sub_813552C(u8 taskId)
 {
     if (EventObjectCheckHeldMovementStatus(&gEventObjects[gPlayerAvatar.eventObjectId]) == TRUE)
     {
-        FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
+        // FieldEffectStart(FLDEFF_FIELD_MOVE_SHOW_MON_INIT);
         gTasks[taskId].func = sub_8135578;
     }
 }

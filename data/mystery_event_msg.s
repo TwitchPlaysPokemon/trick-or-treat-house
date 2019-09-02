@@ -220,30 +220,30 @@ sText_AuroraTicketNoPlace:
 
 MysteryEventScript_MysticTicket:: @ 867550B
 	setvaddress MysteryEventScript_MysticTicket
-	lock
-	faceplayer
-	checkflag FLAG_RECEIVED_MYSTIC_TICKET
-	vgoto_if 1, MysticTicket_Obtained
-	checkflag FLAG_CAUGHT_LUGIA
-	vgoto_if 1, MysticTicket_Obtained
-	checkflag FLAG_CAUGHT_HO_OH
-	vgoto_if 1, MysticTicket_Obtained
-	checkitem ITEM_MYSTIC_TICKET, 1
-	compare_var_to_value VAR_RESULT, 1
-	vgoto_if 1, MysticTicket_Obtained
-	vmessage sText_MysticTicket2
-	waitmessage
-	waitbuttonpress
-	checkitemspace ITEM_MYSTIC_TICKET, 1
-	compare_var_to_value VAR_RESULT, 0
-	vgoto_if 1, MysticTicket_NoBagSpace
-	giveitem_std ITEM_MYSTIC_TICKET
-	setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
-	setflag FLAG_RECEIVED_MYSTIC_TICKET
-	vmessage sText_MysticTicket1
-	waitmessage
-	waitbuttonpress
-	release
+	@ lock
+	@ faceplayer
+	@ checkflag FLAG_RECEIVED_MYSTIC_TICKET
+	@ vgoto_if 1, MysticTicket_Obtained
+	@ checkflag FLAG_CAUGHT_LUGIA
+	@ vgoto_if 1, MysticTicket_Obtained
+	@ checkflag FLAG_CAUGHT_HO_OH
+	@ vgoto_if 1, MysticTicket_Obtained
+	@ checkitem ITEM_MYSTIC_TICKET, 1
+	@ compare_var_to_value VAR_RESULT, 1
+	@ vgoto_if 1, MysticTicket_Obtained
+	@ vmessage sText_MysticTicket2
+	@ waitmessage
+	@ waitbuttonpress
+	@ checkitemspace ITEM_MYSTIC_TICKET, 1
+	@ compare_var_to_value VAR_RESULT, 0
+	@ vgoto_if 1, MysticTicket_NoBagSpace
+	@ giveitem_std ITEM_MYSTIC_TICKET
+	@ setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
+	@ setflag FLAG_RECEIVED_MYSTIC_TICKET
+	@ vmessage sText_MysticTicket1
+	@ waitmessage
+	@ waitbuttonpress
+	@ release
 	end
 
 MysticTicket_NoBagSpace: @ 867556F

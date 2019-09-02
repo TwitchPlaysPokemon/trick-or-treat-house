@@ -315,28 +315,28 @@ void ClearMirageTowerPulseBlendEffect(void)
 
 void SetMirageTowerVisibility(void)
 {
-    u16 rand;
-    bool8 visible;
+    // u16 rand;
+    // bool8 visible;
 
-    if (VarGet(VAR_MIRAGE_TOWER_STATE))
-    {
-        FlagClear(FLAG_MIRAGE_TOWER_VISIBLE);
-        return;
-    }
+    // if (VarGet(VAR_MIRAGE_TOWER_STATE))
+    // {
+    //     FlagClear(FLAG_MIRAGE_TOWER_VISIBLE);
+    //     return;
+    // }
 
-    rand = Random();
-    visible = rand & 1;
-    if (FlagGet(FLAG_FORCE_MIRAGE_TOWER_VISIBLE) == TRUE)
-        visible = TRUE;
+    // rand = Random();
+    // visible = rand & 1;
+    // if (FlagGet(FLAG_FORCE_MIRAGE_TOWER_VISIBLE) == TRUE)
+    //     visible = TRUE;
 
-    if (visible)
-    {
-        FlagSet(FLAG_MIRAGE_TOWER_VISIBLE);
-        TryStartMirageTowerPulseBlendEffect();
-        return;
-    }
+    // if (visible)
+    // {
+    //     FlagSet(FLAG_MIRAGE_TOWER_VISIBLE);
+    //     TryStartMirageTowerPulseBlendEffect();
+    //     return;
+    // }
 
-    FlagClear(FLAG_MIRAGE_TOWER_VISIBLE);
+    // FlagClear(FLAG_MIRAGE_TOWER_VISIBLE);
 }
 
 void StartPlayerDescendMirageTower(void)

@@ -1,9 +1,13 @@
+@ -----------------------------------------------------
+
+Common_EventScript_ItemCut::
+	giveitem_std ITEM_CUT_ITEM, 1, 1
+	end
 
 EventScript_CutTree:: @ 82906BB
 	lockall
-	goto_if_unset FLAG_BADGE01_GET, EventScript_CheckTreeCantCut
-	checkpartymove MOVE_CUT
-	compare VAR_RESULT, 6
+	checkitem ITEM_CUT_ITEM, 1
+	compare VAR_RESULT, 0
 	goto_if_eq EventScript_CheckTreeCantCut
 	setfieldeffectargument 0, VAR_RESULT
 	bufferpartymonnick 0, VAR_RESULT
@@ -58,11 +62,16 @@ Text_CantCut: @ 829077D
 	.string "This tree looks like it can be\n"
 	.string "CUT down!$"
 
+@ -----------------------------------------------------
+
+Common_EventScript_ItemRockSmash::
+	giveitem_std ITEM_ROCKSMASH_ITEM, 1, 1
+	end
+
 EventScript_RockSmash:: @ 82907A6
 	lockall
-	goto_if_unset FLAG_BADGE03_GET, EventScript_CantSmashRock
-	checkpartymove MOVE_ROCK_SMASH
-	compare VAR_RESULT, 6
+	checkitem ITEM_ROCKSMASH_ITEM, 1
+	compare VAR_RESULT, 0
 	goto_if_eq EventScript_CantSmashRock
 	setfieldeffectargument 0, VAR_RESULT
 	bufferpartymonnick 0, VAR_RESULT
@@ -124,12 +133,17 @@ Text_CantSmash: @ 829087F
 	.string "It's a rugged rock, but a POKéMON\n"
 	.string "may be able to smash it.$"
 
+@ -----------------------------------------------------
+
+Common_EventScript_ItemStrength::
+	giveitem_std ITEM_STRENGTH_ITEM, 1, 1
+	end
+
 EventScript_StrengthBoulder:: @ 82908BA
 	lockall
-	goto_if_unset FLAG_BADGE04_GET, EventScript_CantStrength
 	goto_if_set FLAG_SYS_USE_STRENGTH, EventScript_CheckActivatedBoulder
-	checkpartymove MOVE_STRENGTH
-	compare VAR_RESULT, 6
+	checkitem ITEM_STRENGTH_ITEM, 1
+	compare VAR_RESULT, 0
 	goto_if_eq EventScript_CantStrength
 	setfieldeffectargument 0, VAR_RESULT
 	msgbox Text_WantToStrength, MSGBOX_YESNO
@@ -187,10 +201,16 @@ Text_StrengthActivated: @ 8290A16
 	.string "STRENGTH made it possible to move\n"
 	.string "boulders around.$"
 
+@ -----------------------------------------------------
+
+Common_EventScript_ItemWaterfall::
+	giveitem_std ITEM_WATERFALL_ITEM, 1, 1
+	end
+
 EventScript_UseWaterfall:: @ 8290A49
 	lockall
-	checkpartymove MOVE_WATERFALL
-	compare VAR_RESULT, 6
+	checkitem ITEM_WATERFALL_ITEM, 1
+	compare VAR_RESULT, 0
 	goto_if_eq EventScript_CantWaterfall
 	bufferpartymonnick 0, VAR_RESULT
 	setfieldeffectargument 0, VAR_RESULT
@@ -222,10 +242,48 @@ Text_WantToWaterfall: @ 8290AC3
 Text_MonUsedWaterfall: @ 8290AFC
 	.string "{STR_VAR_1} used WATERFALL.$"
 
+@ -----------------------------------------------------
+
+Common_EventScript_ItemSurf::
+	giveitem_std ITEM_SURF_ITEM, 1, 1
+	end
+
+EventScript_UseSurf:: @ 8271EA0
+	checkitem ITEM_SURF_ITEM, 1
+	compare VAR_RESULT, 0
+	goto_if_eq EventScript_CantSurf
+	bufferpartymonnick 0, VAR_RESULT
+	setfieldeffectargument 0, VAR_RESULT
+	lockall
+	msgbox gText_WantToUseSurf, MSGBOX_YESNO
+	compare VAR_RESULT, 0
+	goto_if_eq EventScript_CancelSurf
+	msgbox gText_PlayerUsedSurf, MSGBOX_DEFAULT
+	dofieldeffect FLDEFF_USE_SURF
+
+EventScript_CancelSurf:: @ 8271ED5
+	releaseall
+
+EventScript_CantSurf:: @ 8271ED6
+	end
+
+gText_WantToUseSurf:: @ 8272FD6
+	.string "The water is dyed a deep blue…\nWould you like to SURF?$"
+
+gText_PlayerUsedSurf:: @ 827300D
+	.string "{STR_VAR_1} used SURF!$"
+
+
+@ -----------------------------------------------------
+
+Common_EventScript_ItemDive::
+	giveitem_std ITEM_DIVE_ITEM, 1, 1
+	end
+
 EventScript_UseDive:: @ 8290B0F
 	lockall
-	checkpartymove MOVE_DIVE
-	compare VAR_RESULT, 6
+	checkitem ITEM_DIVE_ITEM, 1
+	compare VAR_RESULT, 0
 	goto_if_eq EventScript_CantDive
 	bufferpartymonnick 0, VAR_RESULT
 	setfieldeffectargument 0, VAR_RESULT
@@ -291,6 +349,16 @@ Text_CantSurface: @ 8290C28
 Text_WantToSurface: @ 8290C6E
 	.string "Light is filtering down from above.\n"
 	.string "Would you like to use DIVE?$"
+
+@ -----------------------------------------------------
+
+Common_EventScript_ItemFlash::
+	giveitem_std ITEM_FLASH_ITEM, 1, 1
+	end
+
+Common_EventScript_ItemFly::
+	giveitem_std ITEM_FLY_ITEM, 1, 1
+	end
 
 EventScript_FailSweetScent:: @ 8290CAE
 	msgbox Text_FailSweetScent, MSGBOX_SIGN

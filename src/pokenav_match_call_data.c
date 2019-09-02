@@ -309,17 +309,17 @@ extern const u8 gMatchCall_MaySelfIntroductionText_Line2[];
 // .rodata
 
 static const match_call_text_data_t sMrStoneTextScripts[] = {
-    { gText_MrStone_Pokenav_2B60C0, 0xFFFF,              FLAG_ENABLE_MR_STONE_POKENAV },
-    { gText_MrStone_Pokenav_2B61E6, FLAG_ENABLE_MR_STONE_POKENAV,          0xFFFF },
-    { gText_MrStone_Pokenav_2B6302, FLAG_DELIVERED_STEVEN_LETTER,          0xFFFF },
-    { gText_MrStone_Pokenav_2B63A0, FLAG_RECEIVED_EXP_SHARE,          0xFFFF },
-    { gText_MrStone_Pokenav_2B64A2, FLAG_RECEIVED_HM04,          0xFFFF },
-    { gText_MrStone_Pokenav_2B6526, FLAG_DEFEATED_PETALBURG_GYM,          0xFFFF },
-    { gText_MrStone_Pokenav_2B65BB, FLAG_RECEIVED_CASTFORM,          0xFFFF },
-    { gText_MrStone_Pokenav_2B6664, FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT,          0xFFFF },
-    { gText_MrStone_Pokenav_2B66B1, FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE,          0xFFFF },
-    { gText_MrStone_Pokenav_2B6703, FLAG_DEFEATED_SOOTOPOLIS_GYM,          0xFFFF },
-    { gText_MrStone_Pokenav_2B67ED, FLAG_SYS_GAME_CLEAR, 0xFFFF },
+    // { gText_MrStone_Pokenav_2B60C0, 0xFFFF,              FLAG_ENABLE_MR_STONE_POKENAV },
+    // { gText_MrStone_Pokenav_2B61E6, FLAG_ENABLE_MR_STONE_POKENAV,          0xFFFF },
+    // { gText_MrStone_Pokenav_2B6302, FLAG_DELIVERED_STEVEN_LETTER,          0xFFFF },
+    // { gText_MrStone_Pokenav_2B63A0, FLAG_RECEIVED_EXP_SHARE,          0xFFFF },
+    // { gText_MrStone_Pokenav_2B64A2, FLAG_RECEIVED_HM04,          0xFFFF },
+    // { gText_MrStone_Pokenav_2B6526, FLAG_DEFEATED_PETALBURG_GYM,          0xFFFF },
+    // { gText_MrStone_Pokenav_2B65BB, FLAG_RECEIVED_CASTFORM,          0xFFFF },
+    // { gText_MrStone_Pokenav_2B6664, FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT,          0xFFFF },
+    // { gText_MrStone_Pokenav_2B66B1, FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE,          0xFFFF },
+    // { gText_MrStone_Pokenav_2B6703, FLAG_DEFEATED_SOOTOPOLIS_GYM,          0xFFFF },
+    // { gText_MrStone_Pokenav_2B67ED, FLAG_SYS_GAME_CLEAR, 0xFFFF },
     { NULL,                         0xFFFF,              0xFFFF }
 };
 
@@ -334,15 +334,15 @@ static const struct MatchCallStruct0 sMrStoneMatchCallHeader =
 };
 
 static const match_call_text_data_t sNormanTextScripts[] = {
-    { gText_Norman_Pokenav_2B5719, FLAG_ENABLE_NORMAN_MATCH_CALL,           0xFFFF },
-    { gText_Norman_Pokenav_2B5795, FLAG_DEFEATED_DEWFORD_GYM,           0xFFFF },
-    { gText_Norman_Pokenav_2B584D, FLAG_DEFEATED_LAVARIDGE_GYM,           0xFFFF },
-    { gText_Norman_Pokenav_2B58E3, FLAG_DEFEATED_PETALBURG_GYM,           0xFFFF },
-    { gText_Norman_Pokenav_2B5979, FLAG_RECEIVED_RED_OR_BLUE_ORB,           0xFFFF },
-    { gText_Norman_Pokenav_2B5A07, 0xFFFE,               0xFFFF },
-    { gText_Norman_Pokenav_2B5A69, FLAG_SYS_GAME_CLEAR,  0xFFFF },
-    { gText_Norman_Pokenav_2B5ACF, FLAG_SYS_GAME_CLEAR,  0xFFFF },
-    { gText_Norman_Pokenav_2B5B5E, FLAG_SYS_GAME_CLEAR,  0xFFFF },
+    // { gText_Norman_Pokenav_2B5719, FLAG_ENABLE_NORMAN_MATCH_CALL,           0xFFFF },
+    // { gText_Norman_Pokenav_2B5795, FLAG_DEFEATED_DEWFORD_GYM,           0xFFFF },
+    // { gText_Norman_Pokenav_2B584D, FLAG_DEFEATED_LAVARIDGE_GYM,           0xFFFF },
+    // { gText_Norman_Pokenav_2B58E3, FLAG_DEFEATED_PETALBURG_GYM,           0xFFFF },
+    // { gText_Norman_Pokenav_2B5979, FLAG_RECEIVED_RED_OR_BLUE_ORB,           0xFFFF },
+    // { gText_Norman_Pokenav_2B5A07, 0xFFFE,               0xFFFF },
+    // { gText_Norman_Pokenav_2B5A69, FLAG_SYS_GAME_CLEAR,  0xFFFF },
+    // { gText_Norman_Pokenav_2B5ACF, FLAG_SYS_GAME_CLEAR,  0xFFFF },
+    // { gText_Norman_Pokenav_2B5B5E, FLAG_SYS_GAME_CLEAR,  0xFFFF },
     { NULL,                        0xFFFF,               0xFFFF }
 };
 
@@ -367,9 +367,9 @@ static const struct MatchCallStruct3 sProfBirchMatchCallHeader =
 };
 
 static const match_call_text_data_t sMomTextScripts[] = {
-    { gText_Mom_Pokenav_2B227B, 0xffff,              0xffff },
-    { gText_Mom_Pokenav_2B2310, FLAG_DEFEATED_PETALBURG_GYM,          0xffff },
-    { gText_Mom_Pokenav_2B23F3, FLAG_SYS_GAME_CLEAR, 0xffff },
+    // { gText_Mom_Pokenav_2B227B, 0xffff,              0xffff },
+    // { gText_Mom_Pokenav_2B2310, FLAG_DEFEATED_PETALBURG_GYM,          0xffff },
+    // { gText_Mom_Pokenav_2B23F3, FLAG_SYS_GAME_CLEAR, 0xffff },
     { NULL,                     0xffff,              0xffff }
 };
 
@@ -384,13 +384,13 @@ static const struct MatchCallStruct0 sMomMatchCallHeader =
 };
 
 static const match_call_text_data_t sStevenTextScripts[] = {
-    { gText_Steven_Pokenav_2B5B95, 0xffff,              0xffff },
-    { gText_Steven_Pokenav_2B5C53, FLAG_RUSTURF_TUNNEL_OPENED,          0xffff },
-    { gText_Steven_Pokenav_2B5CC9, FLAG_RECEIVED_RED_OR_BLUE_ORB,          0xffff },
-    { gText_Steven_Pokenav_2B5DB4, FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE,          0xffff },
-    { gText_Steven_Pokenav_2B5E26, FLAG_DEFEATED_MOSSDEEP_GYM,          0xffff },
-    { gText_Steven_Pokenav_2B5EA2, FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN,          0xffff },
-    { gText_Steven_Pokenav_2B5ED9, FLAG_SYS_GAME_CLEAR, 0xffff },
+    // { gText_Steven_Pokenav_2B5B95, 0xffff,              0xffff },
+    // { gText_Steven_Pokenav_2B5C53, FLAG_RUSTURF_TUNNEL_OPENED,          0xffff },
+    // { gText_Steven_Pokenav_2B5CC9, FLAG_RECEIVED_RED_OR_BLUE_ORB,          0xffff },
+    // { gText_Steven_Pokenav_2B5DB4, FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE,          0xffff },
+    // { gText_Steven_Pokenav_2B5E26, FLAG_DEFEATED_MOSSDEEP_GYM,          0xffff },
+    // { gText_Steven_Pokenav_2B5EA2, FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN,          0xffff },
+    // { gText_Steven_Pokenav_2B5ED9, FLAG_SYS_GAME_CLEAR, 0xffff },
     { NULL,                        0xffff,              0xffff },
 };
 
@@ -405,21 +405,21 @@ static const struct MatchCallStruct0 sStevenMatchCallHeader =
 };
 
 static const match_call_text_data_t sMayTextScripts[] = {
-    { gText_May_Pokenav_2B3AB3, 0xFFFF,              0xFFFF },
-    { gText_May_Pokenav_2B3B3F, FLAG_DEFEATED_DEWFORD_GYM,          0xFFFF },
-    { gText_May_Pokenav_2B3C13, FLAG_DELIVERED_DEVON_GOODS,          0xFFFF },
-    { gText_May_Pokenav_2B3CF3, FLAG_HIDE_MAUVILLE_CITY_WALLY,          0xFFFF },
-    { gText_May_Pokenav_2B3D4B, FLAG_RECEIVED_HM04,          0xFFFF },
-    { gText_May_Pokenav_2B3DD1, FLAG_DEFEATED_LAVARIDGE_GYM,          0xFFFF },
-    { gText_May_Pokenav_2B3E69, FLAG_DEFEATED_PETALBURG_GYM,          0xFFFF },
-    { gText_May_Pokenav_2B3ECD, FLAG_RECEIVED_CASTFORM,          0xFFFF },
-    { gText_May_Pokenav_2B3F2B, FLAG_RECEIVED_RED_OR_BLUE_ORB,          0xFFFF },
-    { gText_May_Pokenav_2B3FFB, FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT,          0xFFFF },
-    { gText_May_Pokenav_2B402B, FLAG_MET_TEAM_AQUA_HARBOR,          0xFFFF },
-    { gText_May_Pokenav_2B414B, FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE,          0xFFFF },
-    { gText_May_Pokenav_2B4228, FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN,          0xFFFF },
-    { gText_May_Pokenav_2B42E0, FLAG_DEFEATED_SOOTOPOLIS_GYM,          0xFFFF },
-    { gText_May_Pokenav_2B4350, FLAG_SYS_GAME_CLEAR, 0xFFFF },
+    // { gText_May_Pokenav_2B3AB3, 0xFFFF,              0xFFFF },
+    // { gText_May_Pokenav_2B3B3F, FLAG_DEFEATED_DEWFORD_GYM,          0xFFFF },
+    // { gText_May_Pokenav_2B3C13, FLAG_DELIVERED_DEVON_GOODS,          0xFFFF },
+    // { gText_May_Pokenav_2B3CF3, FLAG_HIDE_MAUVILLE_CITY_WALLY,          0xFFFF },
+    // { gText_May_Pokenav_2B3D4B, FLAG_RECEIVED_HM04,          0xFFFF },
+    // { gText_May_Pokenav_2B3DD1, FLAG_DEFEATED_LAVARIDGE_GYM,          0xFFFF },
+    // { gText_May_Pokenav_2B3E69, FLAG_DEFEATED_PETALBURG_GYM,          0xFFFF },
+    // { gText_May_Pokenav_2B3ECD, FLAG_RECEIVED_CASTFORM,          0xFFFF },
+    // { gText_May_Pokenav_2B3F2B, FLAG_RECEIVED_RED_OR_BLUE_ORB,          0xFFFF },
+    // { gText_May_Pokenav_2B3FFB, FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT,          0xFFFF },
+    // { gText_May_Pokenav_2B402B, FLAG_MET_TEAM_AQUA_HARBOR,          0xFFFF },
+    // { gText_May_Pokenav_2B414B, FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE,          0xFFFF },
+    // { gText_May_Pokenav_2B4228, FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN,          0xFFFF },
+    // { gText_May_Pokenav_2B42E0, FLAG_DEFEATED_SOOTOPOLIS_GYM,          0xFFFF },
+    // { gText_May_Pokenav_2B4350, FLAG_SYS_GAME_CLEAR, 0xFFFF },
     { NULL,                     0xFFFF,              0xFFFF }
 };
 
@@ -434,21 +434,21 @@ static const struct MatchCallStruct4 sBrendanMatchCallHeader =
 };
 
 static const match_call_text_data_t sBrendanTextScripts[] = {
-    { gText_Brendan_Pokenav_2B43EF, 0xFFFF,              0xFFFF },
-    { gText_Brendan_Pokenav_2B4486, FLAG_DEFEATED_DEWFORD_GYM,          0xFFFF },
-    { gText_Brendan_Pokenav_2B4560, FLAG_DELIVERED_DEVON_GOODS,          0xFFFF },
-    { gText_Brendan_Pokenav_2B463F, FLAG_HIDE_MAUVILLE_CITY_WALLY,          0xFFFF },
-    { gText_Brendan_Pokenav_2B46B7, FLAG_RECEIVED_HM04,          0xFFFF },
-    { gText_Brendan_Pokenav_2B4761, FLAG_DEFEATED_LAVARIDGE_GYM,          0xFFFF },
-    { gText_Brendan_Pokenav_2B47F4, FLAG_DEFEATED_PETALBURG_GYM,          0xFFFF },
-    { gText_Brendan_Pokenav_2B4882, FLAG_RECEIVED_CASTFORM,          0xFFFF },
-    { gText_Brendan_Pokenav_2B4909, FLAG_RECEIVED_RED_OR_BLUE_ORB,          0xFFFF },
-    { gText_Brendan_Pokenav_2B49C4, FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT,          0xFFFF },
-    { gText_Brendan_Pokenav_2B4A44, FLAG_MET_TEAM_AQUA_HARBOR,          0xFFFF },
-    { gText_Brendan_Pokenav_2B4B28, FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE,          0xFFFF },
-    { gText_Brendan_Pokenav_2B4C15, FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN,          0xFFFF },
-    { gText_Brendan_Pokenav_2B4CD8, FLAG_DEFEATED_SOOTOPOLIS_GYM,          0xFFFF },
-    { gText_Brendan_Pokenav_2B4D46, FLAG_SYS_GAME_CLEAR, 0xFFFF },
+    // { gText_Brendan_Pokenav_2B43EF, 0xFFFF,              0xFFFF },
+    // { gText_Brendan_Pokenav_2B4486, FLAG_DEFEATED_DEWFORD_GYM,          0xFFFF },
+    // { gText_Brendan_Pokenav_2B4560, FLAG_DELIVERED_DEVON_GOODS,          0xFFFF },
+    // { gText_Brendan_Pokenav_2B463F, FLAG_HIDE_MAUVILLE_CITY_WALLY,          0xFFFF },
+    // { gText_Brendan_Pokenav_2B46B7, FLAG_RECEIVED_HM04,          0xFFFF },
+    // { gText_Brendan_Pokenav_2B4761, FLAG_DEFEATED_LAVARIDGE_GYM,          0xFFFF },
+    // { gText_Brendan_Pokenav_2B47F4, FLAG_DEFEATED_PETALBURG_GYM,          0xFFFF },
+    // { gText_Brendan_Pokenav_2B4882, FLAG_RECEIVED_CASTFORM,          0xFFFF },
+    // { gText_Brendan_Pokenav_2B4909, FLAG_RECEIVED_RED_OR_BLUE_ORB,          0xFFFF },
+    // { gText_Brendan_Pokenav_2B49C4, FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT,          0xFFFF },
+    // { gText_Brendan_Pokenav_2B4A44, FLAG_MET_TEAM_AQUA_HARBOR,          0xFFFF },
+    // { gText_Brendan_Pokenav_2B4B28, FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE,          0xFFFF },
+    // { gText_Brendan_Pokenav_2B4C15, FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN,          0xFFFF },
+    // { gText_Brendan_Pokenav_2B4CD8, FLAG_DEFEATED_SOOTOPOLIS_GYM,          0xFFFF },
+    // { gText_Brendan_Pokenav_2B4D46, FLAG_SYS_GAME_CLEAR, 0xFFFF },
     { NULL,                         0xFFFF,              0xFFFF }
 };
 
@@ -463,20 +463,20 @@ static const struct MatchCallStruct4 sMayMatchCallHeader =
 };
 
 static const match_call_text_data_t sWallyTextScripts[] = {
-    { gText_Wally_Pokenav_2B4DE2, 0xFFFF,     0xFFFF },
-    { gText_Wally_Pokenav_2B4E57, FLAG_RUSTURF_TUNNEL_OPENED, 0xFFFF },
-    { gText_Wally_Pokenav_2B4EA5, FLAG_DEFEATED_LAVARIDGE_GYM, 0xFFFF },
-    { gText_Wally_Pokenav_2B4F41, FLAG_RECEIVED_CASTFORM, 0xFFFF },
-    { gText_Wally_Pokenav_2B4FF3, FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT, 0xFFFF },
-    { gText_Wally_Pokenav_2B50B1, FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN, 0xFFFF },
-    { gText_Wally_Pokenav_2B5100, FLAG_DEFEATED_WALLY_VICTORY_ROAD, 0xFFFF },
+    // { gText_Wally_Pokenav_2B4DE2, 0xFFFF,     0xFFFF },
+    // { gText_Wally_Pokenav_2B4E57, FLAG_RUSTURF_TUNNEL_OPENED, 0xFFFF },
+    // { gText_Wally_Pokenav_2B4EA5, FLAG_DEFEATED_LAVARIDGE_GYM, 0xFFFF },
+    // { gText_Wally_Pokenav_2B4F41, FLAG_RECEIVED_CASTFORM, 0xFFFF },
+    // { gText_Wally_Pokenav_2B4FF3, FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT, 0xFFFF },
+    // { gText_Wally_Pokenav_2B50B1, FLAG_KYOGRE_ESCAPED_SEAFLOOR_CAVERN, 0xFFFF },
+    // { gText_Wally_Pokenav_2B5100, FLAG_DEFEATED_WALLY_VICTORY_ROAD, 0xFFFF },
     { NULL,                       0xFFFF,     0xFFFF }
 };
 
 const struct MatchCallSubstruct2 sWallyAdditionalData[] = {
-    { FLAG_HIDE_MAUVILLE_CITY_WALLY,          MAPSEC_VERDANTURF_TOWN },
-    { FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT,    MAPSEC_NONE },
-    { FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY,  MAPSEC_VICTORY_ROAD },
+    // { FLAG_HIDE_MAUVILLE_CITY_WALLY,          MAPSEC_VERDANTURF_TOWN },
+    // { FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT,    MAPSEC_NONE },
+    // { FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY,  MAPSEC_VICTORY_ROAD },
     { 0xFFFF,                                 MAPSEC_NONE }
 };
 
@@ -492,13 +492,13 @@ static const struct MatchCallStruct2 sWallyMatchCallHeader =
 };
 
 static const match_call_text_data_t sScottTextScripts[] = {
-    { gText_Scott_Pokenav_2B5184, 0xFFFF,              0xFFFF },
-    { gText_Scott_Pokenav_2B5275, FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY,          0xFFFF },
-    { gText_Scott_Pokenav_2B5323, FLAG_RECEIVED_CASTFORM,          0xFFFF },
-    { gText_Scott_Pokenav_2B53DB, FLAG_RECEIVED_RED_OR_BLUE_ORB,          0xFFFF },
-    { gText_Scott_Pokenav_2B54A5, FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE,          0xFFFF },
-    { gText_Scott_Pokenav_2B5541, FLAG_DEFEATED_SOOTOPOLIS_GYM,          0xFFFF },
-    { gText_Scott_Pokenav_2B56CA, FLAG_SYS_GAME_CLEAR, 0xFFFF },
+    // { gText_Scott_Pokenav_2B5184, 0xFFFF,              0xFFFF },
+    // { gText_Scott_Pokenav_2B5275, FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY,          0xFFFF },
+    // { gText_Scott_Pokenav_2B5323, FLAG_RECEIVED_CASTFORM,          0xFFFF },
+    // { gText_Scott_Pokenav_2B53DB, FLAG_RECEIVED_RED_OR_BLUE_ORB,          0xFFFF },
+    // { gText_Scott_Pokenav_2B54A5, FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE,          0xFFFF },
+    // { gText_Scott_Pokenav_2B5541, FLAG_DEFEATED_SOOTOPOLIS_GYM,          0xFFFF },
+    // { gText_Scott_Pokenav_2B56CA, FLAG_SYS_GAME_CLEAR, 0xFFFF },
     { NULL,                       0xFFFF,              0xFFFF }
 };
 
@@ -514,10 +514,10 @@ static const struct MatchCallStruct0 sScottMatchCallHeader =
 };
 
 static const match_call_text_data_t sRoxanneTextScripts[] = {
-    { gText_Roxanne_Pokenav_2B2456, 0xFFFE,              0xFFFF },
-    { gText_Roxanne_Pokenav_2B250E, 0xFFFF,              0xFFFF },
-    { gText_Roxanne_Pokenav_2B25C1, 0xFFFF,              0xFFFF },
-    { gText_Roxanne_Pokenav_2B2607, FLAG_SYS_GAME_CLEAR, 0xFFFF },
+    // { gText_Roxanne_Pokenav_2B2456, 0xFFFE,              0xFFFF },
+    // { gText_Roxanne_Pokenav_2B250E, 0xFFFF,              0xFFFF },
+    // { gText_Roxanne_Pokenav_2B25C1, 0xFFFF,              0xFFFF },
+    // { gText_Roxanne_Pokenav_2B2607, FLAG_SYS_GAME_CLEAR, 0xFFFF },
     { NULL,                         0xFFFF,              0xFFFF }
 };
 
@@ -533,10 +533,10 @@ static const struct MatchCallStruct5 sRoxanneMatchCallHeader =
 };
 
 static const match_call_text_data_t sBrawlyTextScripts[] = {
-    { gText_Brawly_Pokenav_2B2659, 0xFFFE,              0xFFFF },
-    { gText_Brawly_Pokenav_2B275D, 0xFFFF,              0xFFFF },
-    { gText_Brawly_Pokenav_2B286F, 0xFFFF,              0xFFFF },
-    { gText_Brawly_Pokenav_2B28D1, FLAG_SYS_GAME_CLEAR, 0xFFFF },
+    // { gText_Brawly_Pokenav_2B2659, 0xFFFE,              0xFFFF },
+    // { gText_Brawly_Pokenav_2B275D, 0xFFFF,              0xFFFF },
+    // { gText_Brawly_Pokenav_2B286F, 0xFFFF,              0xFFFF },
+    // { gText_Brawly_Pokenav_2B28D1, FLAG_SYS_GAME_CLEAR, 0xFFFF },
     { NULL,                        0xFFFF,              0xFFFF }
 };
 
@@ -552,10 +552,10 @@ static const struct MatchCallStruct5 sBrawlyMatchCallHeader =
 };
 
 static const match_call_text_data_t sWattsonTextScripts[] = {
-    { gText_Wattson_Pokenav_2B2912, 0xFFFE,              0xFFFF },
-    { gText_Wattson_Pokenav_2B29CA, 0xFFFF,              0xFFFF },
-    { gText_Wattson_Pokenav_2B2AB6, 0xFFFF,              0xFFFF },
-    { gText_Wattson_Pokenav_2B2B01, FLAG_SYS_GAME_CLEAR, 0xFFFF },
+    // { gText_Wattson_Pokenav_2B2912, 0xFFFE,              0xFFFF },
+    // { gText_Wattson_Pokenav_2B29CA, 0xFFFF,              0xFFFF },
+    // { gText_Wattson_Pokenav_2B2AB6, 0xFFFF,              0xFFFF },
+    // { gText_Wattson_Pokenav_2B2B01, FLAG_SYS_GAME_CLEAR, 0xFFFF },
     { NULL,                         0xFFFF,              0xFFFF }
 };
 
@@ -571,10 +571,10 @@ static const struct MatchCallStruct5 sWattsonMatchCallHeader =
 };
 
 static const match_call_text_data_t sFlanneryTextScripts[] = {
-    { gText_Flannery_Pokenav_2B2B4D, 0xFFFE,              0xFFFF },
-    { gText_Flannery_Pokenav_2B2C0E, 0xFFFF,              0xFFFF },
-    { gText_Flannery_Pokenav_2B2CF1, 0xFFFF,              0xFFFF },
-    { gText_Flannery_Pokenav_2B2D54, FLAG_SYS_GAME_CLEAR, 0xFFFF },
+    // { gText_Flannery_Pokenav_2B2B4D, 0xFFFE,              0xFFFF },
+    // { gText_Flannery_Pokenav_2B2C0E, 0xFFFF,              0xFFFF },
+    // { gText_Flannery_Pokenav_2B2CF1, 0xFFFF,              0xFFFF },
+    // { gText_Flannery_Pokenav_2B2D54, FLAG_SYS_GAME_CLEAR, 0xFFFF },
     { NULL,                          0xFFFF,              0xFFFF }
 };
 
@@ -590,10 +590,10 @@ static const struct MatchCallStruct5 sFlanneryMatchCallHeader =
 };
 
 static const match_call_text_data_t sWinonaTextScripts[] = {
-    { gText_Winona_Pokenav_2B2DA4, 0xFFFE,              0xFFFF },
-    { gText_Winona_Pokenav_2B2E2B, 0xFFFF,              0xFFFF },
-    { gText_Winona_Pokenav_2B2EC2, 0xFFFF,              0xFFFF },
-    { gText_Winona_Pokenav_2B2F16, FLAG_SYS_GAME_CLEAR, 0xFFFF },
+    // { gText_Winona_Pokenav_2B2DA4, 0xFFFE,              0xFFFF },
+    // { gText_Winona_Pokenav_2B2E2B, 0xFFFF,              0xFFFF },
+    // { gText_Winona_Pokenav_2B2EC2, 0xFFFF,              0xFFFF },
+    // { gText_Winona_Pokenav_2B2F16, FLAG_SYS_GAME_CLEAR, 0xFFFF },
     { NULL,                        0xFFFF,              0xFFFF }
 };
 
@@ -609,10 +609,10 @@ static const struct MatchCallStruct5 sWinonaMatchCallHeader =
 };
 
 static const match_call_text_data_t sTateLizaTextScripts[] = {
-    { gText_TateLiza_Pokenav_2B2F97, 0xFFFE,              0xFFFF },
-    { gText_TateLiza_Pokenav_2B306E, 0xFFFF,              0xFFFF },
-    { gText_TateLiza_Pokenav_2B3158, 0xFFFF,              0xFFFF },
-    { gText_TateLiza_Pokenav_2B31CD, FLAG_SYS_GAME_CLEAR, 0xFFFF },
+    // { gText_TateLiza_Pokenav_2B2F97, 0xFFFE,              0xFFFF },
+    // { gText_TateLiza_Pokenav_2B306E, 0xFFFF,              0xFFFF },
+    // { gText_TateLiza_Pokenav_2B3158, 0xFFFF,              0xFFFF },
+    // { gText_TateLiza_Pokenav_2B31CD, FLAG_SYS_GAME_CLEAR, 0xFFFF },
     { NULL,                          0xFFFF,              0xFFFF }
 };
 
@@ -628,10 +628,10 @@ static const struct MatchCallStruct5 sTateLizaMatchCallHeader =
 };
 
 static const match_call_text_data_t sJuanTextScripts[] = {
-    { gText_Juan_Pokenav_2B3249, 0xFFFE,              0xFFFF },
-    { gText_Juan_Pokenav_2B32EC, 0xFFFF,              0xFFFF },
-    { gText_Juan_Pokenav_2B33AA, 0xFFFF,              0xFFFF },
-    { gText_Juan_Pokenav_2B341E, FLAG_SYS_GAME_CLEAR, 0xFFFF },
+    // { gText_Juan_Pokenav_2B3249, 0xFFFE,              0xFFFF },
+    // { gText_Juan_Pokenav_2B32EC, 0xFFFF,              0xFFFF },
+    // { gText_Juan_Pokenav_2B33AA, 0xFFFF,              0xFFFF },
+    // { gText_Juan_Pokenav_2B341E, FLAG_SYS_GAME_CLEAR, 0xFFFF },
     { NULL,                      0xFFFF,              0xFFFF }
 };
 

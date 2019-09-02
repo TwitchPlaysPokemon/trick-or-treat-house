@@ -1556,11 +1556,11 @@ static s32 TrainerIdToRematchTableId(const struct RematchTrainer *table, u16 tra
 
 static bool32 sub_80B1D94(s32 rematchTableId)
 {
-    if (rematchTableId >= REMATCH_ELITE_FOUR_ENTRIES)
-        return TRUE;
-    else if (rematchTableId == REMATCH_WALLY_3)
-        return (FlagGet(FLAG_DEFEATED_WALLY_VICTORY_ROAD) == FALSE);
-    else
+    // if (rematchTableId >= REMATCH_ELITE_FOUR_ENTRIES)
+    //     return TRUE;
+    // else if (rematchTableId == REMATCH_WALLY_3)
+    //     return (FlagGet(FLAG_DEFEATED_WALLY_VICTORY_ROAD) == FALSE);
+    // else
         return FALSE;
 }
 

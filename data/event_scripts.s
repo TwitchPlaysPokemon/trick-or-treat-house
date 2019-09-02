@@ -617,33 +617,33 @@ EventScript_WhiteOut:: @ 8271857
 @ 	setvar VAR_ELITE_4_STATE, 0
 @ 	return
 
-DewfordTown_PokemonCenter_1F_EventScript_2718DE:: @ 82718DE
-FallarborTown_PokemonCenter_1F_EventScript_2718DE:: @ 82718DE
-LavaridgeTown_PokemonCenter_1F_EventScript_2718DE:: @ 82718DE
-MauvilleCity_PokemonCenter_1F_EventScript_2718DE:: @ 82718DE
-OldaleTown_PokemonCenter_1F_EventScript_2718DE:: @ 82718DE
-PetalburgCity_PokemonCenter_1F_EventScript_2718DE:: @ 82718DE
-RustboroCity_PokemonCenter_1F_EventScript_2718DE:: @ 82718DE
-SlateportCity_PokemonCenter_1F_EventScript_2718DE:: @ 82718DE
-VerdanturfTown_PokemonCenter_1F_EventScript_2718DE:: @ 82718DE
-	goto_if_unset FLAG_RECEIVED_POKENAV, Common_EventScript_NopReturn
-	goto_if_set FLAG_DEFEATED_PETALBURG_GYM, Common_EventScript_NopReturn
-	goto_if_unset FLAG_HIDE_ROUTE_104_MR_BRINEY_BOAT, OldaleTown_PokemonCenter_1F_EventScript_27190C
-	goto_if_unset FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN, OldaleTown_PokemonCenter_1F_EventScript_271912
-	goto_if_unset FLAG_HIDE_ROUTE_108_MR_BRINEY, OldaleTown_PokemonCenter_1F_EventScript_271918
-	return
+@ DewfordTown_PokemonCenter_1F_EventScript_2718DE:: @ 82718DE
+@ FallarborTown_PokemonCenter_1F_EventScript_2718DE:: @ 82718DE
+@ LavaridgeTown_PokemonCenter_1F_EventScript_2718DE:: @ 82718DE
+@ MauvilleCity_PokemonCenter_1F_EventScript_2718DE:: @ 82718DE
+@ OldaleTown_PokemonCenter_1F_EventScript_2718DE:: @ 82718DE
+@ PetalburgCity_PokemonCenter_1F_EventScript_2718DE:: @ 82718DE
+@ RustboroCity_PokemonCenter_1F_EventScript_2718DE:: @ 82718DE
+@ SlateportCity_PokemonCenter_1F_EventScript_2718DE:: @ 82718DE
+@ VerdanturfTown_PokemonCenter_1F_EventScript_2718DE:: @ 82718DE
+@ 	goto_if_unset FLAG_RECEIVED_POKENAV, Common_EventScript_NopReturn
+@ 	goto_if_set FLAG_DEFEATED_PETALBURG_GYM, Common_EventScript_NopReturn
+@ 	goto_if_unset FLAG_HIDE_ROUTE_104_MR_BRINEY_BOAT, OldaleTown_PokemonCenter_1F_EventScript_27190C
+@ 	goto_if_unset FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN, OldaleTown_PokemonCenter_1F_EventScript_271912
+@ 	goto_if_unset FLAG_HIDE_ROUTE_108_MR_BRINEY, OldaleTown_PokemonCenter_1F_EventScript_271918
+	@ return
 
-OldaleTown_PokemonCenter_1F_EventScript_27190C:: @ 827190C
-	setvar VAR_BRINEY_LOCATION, 1
-	return
+@ OldaleTown_PokemonCenter_1F_EventScript_27190C:: @ 827190C
+@ 	setvar VAR_BRINEY_LOCATION, 1
+@ 	return
 
-OldaleTown_PokemonCenter_1F_EventScript_271912:: @ 8271912
-	setvar VAR_BRINEY_LOCATION, 2
-	return
+@ OldaleTown_PokemonCenter_1F_EventScript_271912:: @ 8271912
+@ 	setvar VAR_BRINEY_LOCATION, 2
+@ 	return
 
-OldaleTown_PokemonCenter_1F_EventScript_271918:: @ 8271918
-	setvar VAR_BRINEY_LOCATION, 3
-	return
+@ OldaleTown_PokemonCenter_1F_EventScript_271918:: @ 8271918
+@ 	setvar VAR_BRINEY_LOCATION, 3
+@ 	return
 
 BattleFrontier_PokemonCenter_1F_EventScript_27191E:: @ 827191E
 DewfordTown_PokemonCenter_1F_EventScript_27191E:: @ 827191E
@@ -1116,25 +1116,6 @@ Route109_EventScript_271E95:: @ 8271E95
 	copyvar VAR_0x8008, VAR_BRINEY_LOCATION
 	setvar VAR_BRINEY_LOCATION, 0
 	return
-
-EventScript_UseSurf:: @ 8271EA0
-	checkpartymove MOVE_SURF
-	compare VAR_RESULT, 6
-	goto_if_eq EventScript_CantSurf
-	bufferpartymonnick 0, VAR_RESULT
-	setfieldeffectargument 0, VAR_RESULT
-	lockall
-	msgbox gText_WantToUseSurf, MSGBOX_YESNO
-	compare VAR_RESULT, 0
-	goto_if_eq EventScript_CancelSurf
-	msgbox gText_PlayerUsedSurf, MSGBOX_DEFAULT
-	dofieldeffect FLDEFF_USE_SURF
-
-EventScript_CancelSurf:: @ 8271ED5
-	releaseall
-
-EventScript_CantSurf:: @ 8271ED6
-	end
 
 EventScript_271F1F:: @ 8271F1F
 	checkplayergender
@@ -1904,8 +1885,6 @@ gUnknown_08272E30:: @ 8272E30
 
 gText_PokerusExplanation:: @ 8272F07
 	.string "Your POKéMON may be infected with\nPOKéRUS.\pLittle is known about the POKéRUS\nexcept that they are microscopic life-\lforms that attach to POKéMON.\pWhile infected, POKéMON are said to\ngrow exceptionally well.$"
-
-	.include "data/text/surf.inc"
 
 gUnknown_0827301B:: @ 827301B
 	.string "It sounded as if a door opened\nsomewhere far away.$"
@@ -3059,59 +3038,59 @@ SlateportCity_PokemonFanClub_EventScript_28C879:: @ 828C879
 	end
 
 SlateportCity_OceanicMuseum_1F_EventScript_28C883:: @ 828C883
-	lock
-	faceplayer
-	setvar VAR_0x8005, 2
-	special InterviewBefore
-	compare VAR_RESULT, 1
-	goto_if_eq SlateportCity_OceanicMuseum_1F_EventScript_28C939
-	copyvar VAR_0x8009, VAR_0x8006
-	goto_if_set FLAG_OCEANIC_MUSEUM_MET_REPORTER, SlateportCity_OceanicMuseum_1F_EventScript_28C8C8
-	setflag FLAG_OCEANIC_MUSEUM_MET_REPORTER
-	msgbox SlateportCity_OceanicMuseum_1F_Text_2811A0, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq SlateportCity_OceanicMuseum_1F_EventScript_28C8E7
-	compare VAR_RESULT, 0
-	goto_if_eq SlateportCity_OceanicMuseum_1F_EventScript_28C91C
+	@ lock
+	@ faceplayer
+	@ setvar VAR_0x8005, 2
+	@ special InterviewBefore
+	@ compare VAR_RESULT, 1
+	@ goto_if_eq SlateportCity_OceanicMuseum_1F_EventScript_28C939
+	@ copyvar VAR_0x8009, VAR_0x8006
+	@ goto_if_set FLAG_OCEANIC_MUSEUM_MET_REPORTER, SlateportCity_OceanicMuseum_1F_EventScript_28C8C8
+	@ setflag FLAG_OCEANIC_MUSEUM_MET_REPORTER
+	@ msgbox SlateportCity_OceanicMuseum_1F_Text_2811A0, MSGBOX_YESNO
+	@ compare VAR_RESULT, 1
+	@ goto_if_eq SlateportCity_OceanicMuseum_1F_EventScript_28C8E7
+	@ compare VAR_RESULT, 0
+	@ goto_if_eq SlateportCity_OceanicMuseum_1F_EventScript_28C91C
 	end
 
-SlateportCity_OceanicMuseum_1F_EventScript_28C8C8:: @ 828C8C8
-	msgbox SlateportCity_OceanicMuseum_1F_Text_28126D, MSGBOX_YESNO
-	compare VAR_RESULT, 1
-	goto_if_eq SlateportCity_OceanicMuseum_1F_EventScript_28C8E7
-	compare VAR_RESULT, 0
-	goto_if_eq SlateportCity_OceanicMuseum_1F_EventScript_28C91C
-	end
+@ SlateportCity_OceanicMuseum_1F_EventScript_28C8C8:: @ 828C8C8
+@ 	msgbox SlateportCity_OceanicMuseum_1F_Text_28126D, MSGBOX_YESNO
+@ 	compare VAR_RESULT, 1
+@ 	goto_if_eq SlateportCity_OceanicMuseum_1F_EventScript_28C8E7
+@ 	compare VAR_RESULT, 0
+@ 	goto_if_eq SlateportCity_OceanicMuseum_1F_EventScript_28C91C
+@ 	end
 
-SlateportCity_OceanicMuseum_1F_EventScript_28C8E7:: @ 828C8E7
-	msgbox SlateportCity_OceanicMuseum_1F_Text_2812F2, MSGBOX_DEFAULT
-	setvar VAR_0x8004, EASY_CHAT_TYPE_INTERVIEW
-	copyvar VAR_0x8005, VAR_0x8009
-	setvar VAR_0x8006, EASY_CHAT_PERSON_REPORTER_MALE
-	call Common_ShowEasyChatScreen
-	lock
-	faceplayer
-	compare VAR_RESULT, 1
-	goto_if_eq SlateportCity_OceanicMuseum_1F_EventScript_28C926
-	compare VAR_RESULT, 0
-	goto_if_eq SlateportCity_OceanicMuseum_1F_EventScript_28C91C
-	end
+@ SlateportCity_OceanicMuseum_1F_EventScript_28C8E7:: @ 828C8E7
+@ 	msgbox SlateportCity_OceanicMuseum_1F_Text_2812F2, MSGBOX_DEFAULT
+@ 	setvar VAR_0x8004, EASY_CHAT_TYPE_INTERVIEW
+@ 	copyvar VAR_0x8005, VAR_0x8009
+@ 	setvar VAR_0x8006, EASY_CHAT_PERSON_REPORTER_MALE
+@ 	call Common_ShowEasyChatScreen
+@ 	lock
+@ 	faceplayer
+@ 	compare VAR_RESULT, 1
+@ 	goto_if_eq SlateportCity_OceanicMuseum_1F_EventScript_28C926
+@ 	compare VAR_RESULT, 0
+@ 	goto_if_eq SlateportCity_OceanicMuseum_1F_EventScript_28C91C
+@ 	end
 
-SlateportCity_OceanicMuseum_1F_EventScript_28C91C:: @ 828C91C
-	msgbox SlateportCity_OceanicMuseum_1F_Text_281367, MSGBOX_DEFAULT
-	release
-	end
+@ SlateportCity_OceanicMuseum_1F_EventScript_28C91C:: @ 828C91C
+@ 	msgbox SlateportCity_OceanicMuseum_1F_Text_281367, MSGBOX_DEFAULT
+@ 	release
+@ 	end
 
-SlateportCity_OceanicMuseum_1F_EventScript_28C926:: @ 828C926
-	msgbox SlateportCity_OceanicMuseum_1F_Text_2813B9, MSGBOX_DEFAULT
-	setvar VAR_0x8005, 2
-	goto SlateportCity_OceanicMuseum_1F_EventScript_28C7E9
-	end
+@ SlateportCity_OceanicMuseum_1F_EventScript_28C926:: @ 828C926
+@ 	msgbox SlateportCity_OceanicMuseum_1F_Text_2813B9, MSGBOX_DEFAULT
+@ 	setvar VAR_0x8005, 2
+@ 	goto SlateportCity_OceanicMuseum_1F_EventScript_28C7E9
+@ 	end
 
-SlateportCity_OceanicMuseum_1F_EventScript_28C939:: @ 828C939
-	msgbox SlateportCity_OceanicMuseum_1F_Text_28144D, MSGBOX_DEFAULT
-	release
-	end
+@ SlateportCity_OceanicMuseum_1F_EventScript_28C939:: @ 828C939
+@ 	msgbox SlateportCity_OceanicMuseum_1F_Text_28144D, MSGBOX_DEFAULT
+@ 	release
+@ 	end
 
 SlateportCity_PokemonFanClub_EventScript_28C943:: @ 828C943
 	lock

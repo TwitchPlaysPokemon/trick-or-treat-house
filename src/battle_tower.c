@@ -3156,13 +3156,13 @@ static void CopyEReaderTrainerFarewellMessage(void)
 
 void sub_81653CC(void)
 {
-    if (gSaveBlock2Ptr->frontier.field_CA8 == 1)
-        sub_80F01B8();
-    if (FlagGet(FLAG_CANCEL_BATTLE_ROOM_CHALLENGE) == TRUE)
-    {
-        sub_80F01B8();
-        FlagClear(FLAG_CANCEL_BATTLE_ROOM_CHALLENGE);
-    }
+    // if (gSaveBlock2Ptr->frontier.field_CA8 == 1)
+    //     sub_80F01B8();
+    // if (FlagGet(FLAG_CANCEL_BATTLE_ROOM_CHALLENGE) == TRUE)
+    // {
+    //     sub_80F01B8();
+    //     FlagClear(FLAG_CANCEL_BATTLE_ROOM_CHALLENGE);
+    // }
 }
 
 #define STEVEN_OTID 61226
