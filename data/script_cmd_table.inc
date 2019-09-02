@@ -201,7 +201,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_bufferboxname
 	.4byte ScrCmd_warptodynamic
 	.4byte ScrCmd_callnative_noctx
-	.4byte ScrCmd_nop1
+	.4byte ScrCmd_switchmaplayout
 	.4byte ScrCmd_nop1
 	.4byte ScrCmd_nop1
 	.4byte ScrCmd_nop1

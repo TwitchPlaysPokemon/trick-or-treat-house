@@ -32,8 +32,8 @@
             "script": "TrickHouseDevEntrance_EventScript_Red",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 3,
-            "y": 4
+            "x": 4,
+            "y": 6
         },
         {
             "elevation": 3,
@@ -45,8 +45,8 @@
             "script": "TrickHouseDevEntrance_EventScript_Pokeball",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 6,
-            "y": 4
+            "x": 8,
+            "y": 3
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_110",
@@ -58,13 +58,20 @@
             "dest_warp_id": 0,
             "elevation": 0,
             "x": 1,
-            "y": 4
+            "y": 6
         },
         {
             "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
             "dest_warp_id": 2,
             "elevation": 0,
-            "x": 5,
+            "x": 7,
+            "y": 1
+        },
+        {
+            "dest_map": "MAP_TEST_MAP_HALLWAY",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 4,
             "y": 1
         }
     ],

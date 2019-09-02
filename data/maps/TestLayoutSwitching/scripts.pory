@@ -1,0 +1,15 @@
+raw `
+TestLayoutSwitching_MapScripts::
+	.byte 0
+`
+
+script TestLayoutSwitching_SignScript_Switch {
+	if (flag(FLAG_TEMP_A) == TRUE) {
+		switchmaplayout (LAYOUT_TEST_LAYOUT_SWITCHING)
+		clearflag (FLAG_TEMP_A)
+	} else {
+		switchmaplayout (LAYOUT_TEST_LAYOUT_SWITCHING2)
+		setflag (FLAG_TEMP_A)
+	}
+}
+

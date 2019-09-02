@@ -1418,10 +1418,11 @@
 	@ .4byte \pointer
 	@ .endm
 
-	@ @ The exact purpose of this command is unknown, but it is related to the blue help-text box that appears on the bottom of the screen when the Main Menu is opened.
-	@ .macro unloadhelp
-	@ .byte 0xc9
-	@ .endm
+	@ Use this command to switch layouts on the fly without reloading the map
+	.macro switchmaplayout index:req
+	.byte 0xc9
+	.2byte \index
+	.endm
 
 	@ After using this command, all standard message boxes will use the signpost frame.
 	.macro signmsg

@@ -18,6 +18,7 @@
 #include "field_player_avatar.h"
 #include "field_screen_effect.h"
 #include "field_specials.h"
+#include "field_camera.h"
 #include "field_tasks.h"
 #include "field_weather.h"
 #include "fieldmap.h"
@@ -96,6 +97,13 @@ static u8 * const sScriptStringVars[] =
     gStringVar2,
     gStringVar3,
 };
+
+static bool8 ShowScriptError(struct ScriptContext *ctx, const u8 *str)
+{
+    SetupNativeScript(ctx, IsFieldMessageBoxHidden);
+    ShowFieldMessage(str);
+    return TRUE;
+}
 
 bool8 ScrCmd_nop(struct ScriptContext *ctx)
 {
@@ -753,6 +761,28 @@ bool8 ScrCmd_setmaplayoutindex(struct ScriptContext *ctx)
 
     SetCurrentMapLayout(value);
     return FALSE;
+}
+
+extern const struct MapLayout *const gMapLayouts[];
+static const u8 ErrStr_switchmaplayout[] = _("Script Error: switchmaplayout checks failed!");
+bool8 ScrCmd_switchmaplayout(struct ScriptContext *ctx)
+{
+    u16 value = VarGet(ScriptReadHalfword(ctx));
+    
+    { // Sanity checks
+        if (gMapLayouts[value] == NULL) goto error;
+        if (gMapLayouts[gSaveBlock1Ptr->mapLayoutId]->width != gMapLayouts[value]->width) goto error;
+        if (gMapLayouts[gSaveBlock1Ptr->mapLayoutId]->height != gMapLayouts[value]->height) goto error;
+        if (gMapLayouts[gSaveBlock1Ptr->mapLayoutId]->primaryTileset != gMapLayouts[value]->primaryTileset) goto error;
+        if (gMapLayouts[gSaveBlock1Ptr->mapLayoutId]->secondaryTileset != gMapLayouts[value]->secondaryTileset) goto error;
+    }
+    
+    SetCurrentMapLayout(value);
+    InitMap();
+    DrawWholeMapView();
+    return FALSE;
+error:
+    return ShowScriptError(ctx, ErrStr_switchmaplayout);
 }
 
 bool8 ScrCmd_warptodynamic(struct ScriptContext *ctx)
@@ -2325,6 +2355,7 @@ bool8 ScrCmd_warpE0(struct ScriptContext *ctx)
     return TRUE;
 }
 
+const static u8 ErrStr_selectpointer[] = _("Script error: selectpointer checks failed!");
 bool8 ScrCmd_selectpointer(struct ScriptContext *ctx)
 {
     const u8 **ptr = (const u8 **)ScriptReadWord(ctx);
@@ -2371,6 +2402,7 @@ bool8 ScrCmd_selectpointer(struct ScriptContext *ctx)
         ctx->data[1] = index;
         ctx->data[2] = max;
         ctx->data[3] = (u32)ptr;
+        return ShowScriptError(ctx, ErrStr_selectpointer);
     }
     return FALSE;
 }

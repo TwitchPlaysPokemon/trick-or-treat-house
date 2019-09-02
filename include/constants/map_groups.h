@@ -17,6 +17,9 @@
 #define MAP_ROUTE110_TRICK_HOUSE_PUZZLE6 (5 | (1 << 8))
 #define MAP_ROUTE110_TRICK_HOUSE_PUZZLE7 (6 | (1 << 8))
 #define MAP_ROUTE110_TRICK_HOUSE_PUZZLE8 (7 | (1 << 8))
+#define MAP_TEST_LAYOUT_SWITCHING        (8 | (1 << 8))
+#define MAP_TEST_MAP_HALLWAY             (9 | (1 << 8))
+#define MAP_TEST_LAYOUT_SWITCHING2       (10 | (1 << 8))
 
 // Map Group 2
 #define MAP_PETALBURG_CITY   (0 | (2 << 8))

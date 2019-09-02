@@ -893,12 +893,12 @@
         {
             "blockdata_filepath": "data/layouts/TrickHouseDevEntrance/map.bin",
             "border_filepath": "data/layouts/TrickHouseDevEntrance/border.bin",
-            "height": 5,
+            "height": 7,
             "id": "LAYOUT_TRICK_HOUSE_DEV_ENTRANCE",
             "name": "TrickHouseDevEntrance_Layout",
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_GenericBuilding",
-            "width": 7
+            "width": 9
         },
         {
             "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Entrance/map.bin",
@@ -928,6 +928,36 @@
             "name": "Puzzle_TinTowerClimb_Layout",
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_HoOhTower",
+            "width": 20
+        },
+        {
+            "blockdata_filepath": "data/layouts/TestLayoutSwitching/map.bin",
+            "border_filepath": "data/layouts/TestLayoutSwitching/border.bin",
+            "height": 20,
+            "id": "LAYOUT_TEST_LAYOUT_SWITCHING",
+            "name": "TestLayoutSwitching_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrickHousePuzzle",
+            "width": 20
+        },
+        {
+            "blockdata_filepath": "data/layouts/TestMapHallway/map.bin",
+            "border_filepath": "data/layouts/TestMapHallway/border.bin",
+            "height": 5,
+            "id": "LAYOUT_TEST_MAP_HALLWAY",
+            "name": "TestMapHallway_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrickHousePuzzle",
+            "width": 22
+        },
+        {
+            "blockdata_filepath": "data/layouts/TestLayoutSwitching2/map.bin",
+            "border_filepath": "data/layouts/TestLayoutSwitching2/border.bin",
+            "height": 20,
+            "id": "LAYOUT_TEST_LAYOUT_SWITCHING2",
+            "name": "TestLayoutSwitching2_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrickHousePuzzle",
             "width": 20
         }
     ],

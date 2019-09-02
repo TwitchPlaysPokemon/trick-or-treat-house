@@ -1,0 +1,38 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_TEST_MAP_HALLWAY",
+    "layout": "LAYOUT_TEST_MAP_HALLWAY",
+    "map_type": "MAP_TYPE_INDOOR",
+    "music": "MUS_DAN02",
+    "name": "TestMapHallway",
+    "object_events": [
+    ],
+    "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_TRICK_HOUSE_DEV_ENTRANCE",
+            "dest_warp_id": 2,
+            "elevation": 0,
+            "x": 1,
+            "y": 1
+        },
+        {
+            "dest_map": "MAP_TEST_LAYOUT_SWITCHING",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 3,
+            "y": 1
+        }
+    ],
+    "weather": "WEATHER_SUNNY"
+}

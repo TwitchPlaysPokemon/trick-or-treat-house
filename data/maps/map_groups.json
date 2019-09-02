@@ -14,7 +14,10 @@
         "Route110_TrickHousePuzzle5",
         "Route110_TrickHousePuzzle6",
         "Route110_TrickHousePuzzle7",
-        "Route110_TrickHousePuzzle8"
+        "Route110_TrickHousePuzzle8",
+        "TestLayoutSwitching",
+        "TestMapHallway",
+        "TestLayoutSwitching2"
     ],
     "gMapGroup2": [
         "PetalburgCity",
