@@ -330,13 +330,13 @@ extern const struct Trainer *gCurrTrainerTable;
 const struct Trainer* GetTrainer(int tId)
 {
     if (tId == 0) return &gTrainers[0];
-    tId--;
-    if (gCurrTrainerTable == NULL)
+    if (tId < TRAINERS_PERMAP_END && gCurrTrainerTable != NULL)
     {
-        return &gTrainers[tId % ARRAY_COUNT(gTrainers)];
+        return &gCurrTrainerTable[tId-1];
     }
     else
     {
-        return &gCurrTrainerTable[tId];
+        if (tId > TRAINERS_PERMAP_END) tId -= TRAINERS_PERMAP_END;
+        return &gTrainers[(tId-1) % ARRAY_COUNT(gTrainers)];
     }
 }

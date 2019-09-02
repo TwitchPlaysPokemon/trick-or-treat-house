@@ -1,6 +1,7 @@
 [
 	{
 		"class": "SCHOOL_KID",
+		"pic": "SCHOOL_KID_M",
 		"name": "TED",
 		"party": [
 			{
@@ -12,6 +13,7 @@
 	},
 	{
 		"class": "SCHOOL_KID",
+		"pic": "SCHOOL_KID_M",
 		"name": "PAUL",
 		"party": [
 			{
@@ -33,6 +35,7 @@
 	},
 	{
 		"class": "SCHOOL_KID",
+		"pic": "SCHOOL_KID_F",
 		"music": "GIRL",
 		"female": true,
 		"name": "GEORGIA",

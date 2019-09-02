@@ -93,7 +93,7 @@ void generate_trainer_table_text(ostringstream &text, string tablename, Json tra
     ostringstream parties;
     
     table << ".align 2\n";
-    table << tablename << ":\n";
+    table << tablename << "::\n";
     
     for (unsigned int i = 0; i < trainer_data.array_items().size(); i++)
     {
@@ -107,7 +107,7 @@ void generate_trainer_table_text(ostringstream &text, string tablename, Json tra
                 partyType |= 2;
         }
         
-        table << tablename << "_" << i << ":\n";
+        table << tablename << "_Trainer" << (i+1) << ":\n";
         table << "\t.byte " << partyType << "\n";
         table << "\t.byte TRAINER_CLASS_" << trainer["class"].string_value() << "\n";
         
@@ -158,16 +158,18 @@ void generate_trainer_table_text(ostringstream &text, string tablename, Json tra
         else
             table << "\t.byte 0\n";
         
+        table << "\t.byte " << party.array_items().size() << "\n";
+        
+        table << ".align 2\n";
+        
         if (trainer.object_items().find("aiFlags") != trainer.object_items().end())
             table << "\t.4byte " << trainer["aiFlags"].string_value() << "\n";
         else
             table << "\t.4byte AI_SCRIPT_CHECK_BAD_MOVE\n";
         
-        table << "\t.byte " << party.array_items().size() << "\n";
-        
-        table << "\t.4byte " << tablename << "_" << i << "Party\n";
         parties << ".align 2\n";
-        parties << tablename << "_" << i << "Party:\n";
+        table << "\t.4byte " << tablename << "_Trainer" << (i+1) << "Party\n";
+        parties << tablename << "_Trainer" << (i+1) << "Party:\n";
         
         for (unsigned int i = 0; i < party.array_items().size(); i++) {
             auto mon = party[i];
@@ -177,6 +179,8 @@ void generate_trainer_table_text(ostringstream &text, string tablename, Json tra
                 parties << "\t.2byte 0\n";
             
             parties << "\t.byte " << mon["level"].number_value() << "\n";
+            // parties << "\t.byte 0  @ padding\n";
+            parties << ".align 2\n";
             parties << "\t.2byte " << mon["species"].string_value() << "\n";
             
             if (partyType & 2) {

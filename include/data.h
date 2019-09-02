@@ -63,9 +63,9 @@ struct Trainer
     /*0x04*/ u8 trainerName[12];
     /*0x10*/ u16 items[4];
     /*0x18*/ bool8 doubleBattle;
+    /*0x19*/ u8 partySize;
     /*0x1C*/ u32 aiFlags;
-    /*0x20*/ u8 partySize;
-    /*0x24*/ union TrainerMonPtr party;
+    /*0x20*/ union TrainerMonPtr party;
 };
 
 #define TRAINER_ENCOUNTER_MUSIC(trainer)((GetTrainer(trainer)->encounterMusic_gender & 0x7F))

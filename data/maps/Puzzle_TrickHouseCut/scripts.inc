@@ -10,7 +10,7 @@ Puzzle_TrickHouseCut_Name:
 Puzzle_TrickHouseCut_Author:
 	.string "Tustin2121$"
 Puzzle_TrickHouseCut_Adjective:
-	.string "slicing$"
+	.string "slicing good$"
 Puzzle_TrickHouseCut_Quip:
 	.string "Sometimes it's better to just do the\n"
 	.string "field moves yourself, you know?$"
@@ -30,7 +30,7 @@ Puzzle_TrickHouseCut_Trainer1_Intro:
 	.string "Nice costume. Were you trick-or-treating\n"
 	.string "too?$"
 Puzzle_TrickHouseCut_Trainer1_Defeat:
-	.string "Ack! My costume got caught!"
+	.string "Ack! My costume got caught!$"
 Puzzle_TrickHouseCut_Trainer1_After:
 	.string "Battling in costume is something I've\n"
 	.string "never done before. How about you?$"
@@ -41,10 +41,9 @@ Puzzle_TrickHouseCut_Trainer2::
 	msgbox Puzzle_TrickHouseCut_Trainer2_After, MSGBOX_AUTOCLOSE
 	end
 Puzzle_TrickHouseCut_Trainer2_Intro:
-	.string "Nice costume. Were you trick-or-treating\n"
-	.string "too?$"
+	.string "HA!$"
 Puzzle_TrickHouseCut_Trainer2_Defeat:
-	.string "Ack! My costume got caught!"
+	.string "Ack! My costume got caught!$"
 Puzzle_TrickHouseCut_Trainer2_After:
 	.string "Battling in costume is something I've\n"
 	.string "never done before. How about you?$"
