@@ -1,27 +1,5 @@
 Route110_TrickHousePuzzle1_MapScripts:: @ 826B90F
-	map_script MAP_SCRIPT_ON_LOAD, Route110_TrickHousePuzzle1_MapScript1_26B915
 	.byte 0
-
-Route110_TrickHousePuzzle1_MapScript1_26B915: @ 826B915
-	compare VAR_TRICK_HOUSE_PUZZLE_1_STATE, 2
-	goto_if_eq Route110_TrickHousePuzzle1_EventScript_26B921
-	end
-
-Route110_TrickHousePuzzle1_EventScript_26B921:: @ 826B921
-	setmetatile 13, 1, METATILE_TrickHousePuzzle_Stairs_Down, 0
-	end
-
-Route110_TrickHousePuzzle1_EventScript_26B92B:: @ 826B92B
-	lockall
-	compare VAR_TRICK_HOUSE_PUZZLE_1_STATE, 0
-	goto_if_eq Route110_TrickHousePuzzle1_EventScript_26B93D
-	goto Route110_TrickHousePuzzle1_EventScript_26A3DB
-	end
-
-Route110_TrickHousePuzzle1_EventScript_26B93D:: @ 826B93D
-	setvar VAR_TRICK_HOUSE_PUZZLE_1_STATE, 1
-	goto Route110_TrickHousePuzzle1_EventScript_26A3E5
-	end
 
 Route110_TrickHousePuzzle1_EventScript_26B948:: @ 826B948
 	trainerbattle_single TRAINER_01, Route110_TrickHousePuzzle1_Text_26B9FB, Route110_TrickHousePuzzle1_Text_26BA3F

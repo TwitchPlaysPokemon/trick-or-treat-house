@@ -39,7 +39,6 @@
 
 // Puzzle Flags
 // These flags are cleared every time we increment to a new puzzle.
-
 #define FLAG_PUZZLE_20                       0x20
 #define FLAG_PUZZLE_21                       0x21
 #define FLAG_PUZZLE_22                       0x22
@@ -89,39 +88,43 @@
 #define FLAG_PUZZLE_4E                       0x4E
 #define FLAG_PUZZLE_4F                       0x4F
 
+// Puzzle Candy Items
+#define FLAG_PUZZLE_ITEM_0                   0x50
+#define FLAG_PUZZLE_ITEM_1                   0x51
+#define FLAG_PUZZLE_ITEM_2                   0x52
+#define FLAG_PUZZLE_ITEM_3                   0x53
+#define FLAG_PUZZLE_ITEM_4                   0x54
+#define FLAG_PUZZLE_ITEM_5                   0x55
+#define FLAG_PUZZLE_ITEM_6                   0x56
+#define FLAG_PUZZLE_ITEM_7                   0x57
+#define FLAG_PUZZLE_ITEM_8                   0x58
+#define FLAG_PUZZLE_ITEM_9                   0x59
+#define FLAG_PUZZLE_ITEM_A                   0x5A
+#define FLAG_PUZZLE_ITEM_B                   0x5B
+#define FLAG_PUZZLE_ITEM_C                   0x5C
+#define FLAG_PUZZLE_ITEM_D                   0x5D
+#define FLAG_PUZZLE_ITEM_E                   0x5E
+#define FLAG_PUZZLE_ITEM_F                   0x5F
+
 // Scripts
-#define FLAG_TRICK_HOUSE_SCROLL_READ         0x50
-#define FLAG_TRICK_HOUSE_PASSWORD_ENTERED    0x51
-#define FLAG_PICKED_UP_CUT_ITEM              0x52
-#define FLAG_PICKED_UP_SMASH_ITEM            0x53
-#define FLAG_PICKED_UP_STRENGTH_ITEM         0x54
-#define FLAG_PICKED_UP_WATERFALL_ITEM        0x55
-#define FLAG_PICKED_UP_DIVE_ITEM             0x56
-#define FLAG_PICKED_UP_SURF_ITEM             0x57
-#define FLAG_PICKED_UP_FLASH_ITEM            0x58
-#define FLAG_PICKED_UP_FLY_ITEM              0x59 // never used
-#define FLAG_UNUSED_0x05A                    0x5A
-#define FLAG_UNUSED_0x05B                    0x5B
-#define FLAG_UNUSED_0x05C                    0x5C
-#define FLAG_UNUSED_0x05D                    0x5D
-#define FLAG_UNUSED_0x05E                    0x5E
-#define FLAG_UNUSED_0x05F                    0x5F
-#define FLAG_UNUSED_0x060                    0x60
-#define FLAG_UNUSED_0x061                    0x61
-#define FLAG_UNUSED_0x062                    0x62
-#define FLAG_UNUSED_0x063                    0x63
-#define FLAG_UNUSED_0x064                    0x64
-#define FLAG_UNUSED_0x065                    0x65
-#define FLAG_UNUSED_0x066                    0x66
-#define FLAG_UNUSED_0x067                    0x67
-#define FLAG_UNUSED_0x068                    0x68
-#define FLAG_UNUSED_0x069                    0x69
+#define FLAG_TRICK_HOUSE_SCROLL_READ         0x60
+#define FLAG_TRICK_HOUSE_PASSWORD_ENTERED    0x61
+#define FLAG_PICKED_UP_CUT_ITEM              0x62
+#define FLAG_PICKED_UP_SMASH_ITEM            0x63
+#define FLAG_PICKED_UP_STRENGTH_ITEM         0x64
+#define FLAG_PICKED_UP_WATERFALL_ITEM        0x65
+#define FLAG_PICKED_UP_DIVE_ITEM             0x66
+#define FLAG_PICKED_UP_SURF_ITEM             0x67
+#define FLAG_PICKED_UP_FLASH_ITEM            0x68
+#define FLAG_PICKED_UP_FLY_ITEM              0x69 // never used
 #define FLAG_UNUSED_0x06A                    0x6A
 #define FLAG_UNUSED_0x06B                    0x6B
 #define FLAG_UNUSED_0x06C                    0x6C
 #define FLAG_UNUSED_0x06D                    0x6D
 #define FLAG_UNUSED_0x06E                    0x6E
 #define FLAG_UNUSED_0x06F                    0x6F
+
+
 #define FLAG_UNUSED_0x070                    0x70
 #define FLAG_UNUSED_0x071                    0x71
 #define FLAG_UNUSED_0x072                    0x72
@@ -976,9 +979,7 @@
 #define FLAG_ITEM_ROUTE_120_NUGGET                                  0x406
 #define FLAG_ITEM_ROUTE_120_FULL_HEAL                               0x407
 #define FLAG_ITEM_ROUTE_123_CALCIUM                                 0x408
-
 #define FLAG_UNUSED_0x409                                           0x409 // Unused Flag
-
 #define FLAG_ITEM_ROUTE_127_ZINC                                    0x40A
 #define FLAG_ITEM_ROUTE_127_CARBOS                                  0x40B
 #define FLAG_ITEM_ROUTE_132_RARE_CANDY                              0x40C
@@ -1070,37 +1071,27 @@
 #define FLAG_ITEM_NEW_MAUVILLE_FULL_HEAL                            0x462
 #define FLAG_ITEM_NEW_MAUVILLE_PARALYZE_HEAL                        0x463
 #define FLAG_ITEM_AQUA_HIDEOUT_B1F_MASTER_BALL                      0x464
-
 #define FLAG_UNUSED_0x465                                           0x465 // Unused Flag
 #define FLAG_UNUSED_0x466                                           0x466 // Unused Flag
 #define FLAG_UNUSED_0x467                                           0x467 // Unused Flag
 #define FLAG_UNUSED_0x468                                           0x468 // Unused Flag
-
 #define FLAG_ITEM_MT_PYRE_2F_ULTRA_BALL                             0x469
 #define FLAG_ITEM_MT_PYRE_4F_SEA_INCENSE                            0x46A
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_WEST_MAX_REVIVE                 0x46B
 #define FLAG_ITEM_AQUA_HIDEOUT_B1F_NUGGET                           0x46C
-
 #define FLAG_UNUSED_0x46D                                           0x46D // Unused Flag
-
 #define FLAG_ITEM_ROUTE_119_NUGGET                                  0x46E
 #define FLAG_ITEM_ROUTE_104_POTION                                  0x46F
-
 #define FLAG_UNUSED_0x470                                           0x470 // Unused Flag
-
 #define FLAG_ITEM_ROUTE_103_PP_UP                                   0x471
-
 #define FLAG_UNUSED_0x472                                           0x472 // Unused Flag
-
 #define FLAG_ITEM_ROUTE_108_STAR_PIECE                              0x473
 #define FLAG_ITEM_ROUTE_109_POTION                                  0x474
 #define FLAG_ITEM_ROUTE_110_ELIXIR                                  0x475
 #define FLAG_ITEM_ROUTE_111_ELIXIR                                  0x476
 #define FLAG_ITEM_ROUTE_113_HYPER_POTION                            0x477
 #define FLAG_ITEM_ROUTE_115_HEAL_POWDER                             0x478
-
 #define FLAG_UNUSED_0x479                                           0x479 // Unused Flag
-
 #define FLAG_ITEM_ROUTE_116_POTION                                  0x47A
 #define FLAG_ITEM_ROUTE_119_ELIXIR_2                                0x47B
 #define FLAG_ITEM_ROUTE_120_REVIVE                                  0x47C

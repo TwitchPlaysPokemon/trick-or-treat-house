@@ -3822,45 +3822,46 @@ void sub_813BA30(void)
 
 void sub_813BA60(void)
 {
-    if (!((gSaveBlock1Ptr->vars[VAR_FANCLUB_UNKNOWN_1 - VARS_START] >> 7) & 1))
-    {
-        sub_813BF60();
-        sub_813BD84();
-        gSaveBlock1Ptr->vars[VAR_FANCLUB_UNKNOWN_2 - VARS_START] = gSaveBlock2Ptr->playTimeHours;
-        FlagClear(FLAG_HIDE_FANCLUB_OLD_LADY);
-        FlagClear(FLAG_HIDE_FANCLUB_BOY);
-        FlagClear(FLAG_HIDE_FANCLUB_LITTLE_BOY);
-        FlagClear(FLAG_HIDE_FANCLUB_LADY);
-        FlagClear(FLAG_HIDE_LILYCOVE_FAN_CLUB_INTERVIEWER);
-        VarSet(VAR_LILYCOVE_FAN_CLUB_STATE, 1);
-    }
+    // if (!((gSaveBlock1Ptr->vars[VAR_FANCLUB_UNKNOWN_1 - VARS_START] >> 7) & 1))
+    // {
+    //     sub_813BF60();
+    //     sub_813BD84();
+    //     gSaveBlock1Ptr->vars[VAR_FANCLUB_UNKNOWN_2 - VARS_START] = gSaveBlock2Ptr->playTimeHours;
+    //     FlagClear(FLAG_HIDE_FANCLUB_OLD_LADY);
+    //     FlagClear(FLAG_HIDE_FANCLUB_BOY);
+    //     FlagClear(FLAG_HIDE_FANCLUB_LITTLE_BOY);
+    //     FlagClear(FLAG_HIDE_FANCLUB_LADY);
+    //     FlagClear(FLAG_HIDE_LILYCOVE_FAN_CLUB_INTERVIEWER);
+    //     VarSet(VAR_LILYCOVE_FAN_CLUB_STATE, 1);
+    // }
 }
 
 u8 sub_813BADC(u8 a0)
 {
-    static const u8 gUnknown_085B3470[] = { 0x02, 0x01, 0x02, 0x01 };
+    // static const u8 gUnknown_085B3470[] = { 0x02, 0x01, 0x02, 0x01 };
 
-    if (VarGet(VAR_LILYCOVE_FAN_CLUB_STATE) == 2)
-    {
-        if ((gSaveBlock1Ptr->vars[VAR_FANCLUB_UNKNOWN_1 - VARS_START] & 0x7F) + gUnknown_085B3470[a0] > 19)
-        {
-            if (GetNumMovedLilycoveFanClubMembers() < 3)
-            {
-                sub_813BB74();
-                gSaveBlock1Ptr->vars[VAR_FANCLUB_UNKNOWN_1 - VARS_START] &= 0xFF80;
-            }
-            else
-            {
-                gSaveBlock1Ptr->vars[VAR_FANCLUB_UNKNOWN_1 - VARS_START] = (gSaveBlock1Ptr->vars[VAR_FANCLUB_UNKNOWN_1 - VARS_START] & 0xFF80) | 0x14;
-            }
-        }
-        else
-        {
-            gSaveBlock1Ptr->vars[VAR_FANCLUB_UNKNOWN_1 - VARS_START] += gUnknown_085B3470[a0];
-        }
-    }
+    // if (VarGet(VAR_LILYCOVE_FAN_CLUB_STATE) == 2)
+    // {
+    //     if ((gSaveBlock1Ptr->vars[VAR_FANCLUB_UNKNOWN_1 - VARS_START] & 0x7F) + gUnknown_085B3470[a0] > 19)
+    //     {
+    //         if (GetNumMovedLilycoveFanClubMembers() < 3)
+    //         {
+    //             sub_813BB74();
+    //             gSaveBlock1Ptr->vars[VAR_FANCLUB_UNKNOWN_1 - VARS_START] &= 0xFF80;
+    //         }
+    //         else
+    //         {
+    //             gSaveBlock1Ptr->vars[VAR_FANCLUB_UNKNOWN_1 - VARS_START] = (gSaveBlock1Ptr->vars[VAR_FANCLUB_UNKNOWN_1 - VARS_START] & 0xFF80) | 0x14;
+    //         }
+    //     }
+    //     else
+    //     {
+    //         gSaveBlock1Ptr->vars[VAR_FANCLUB_UNKNOWN_1 - VARS_START] += gUnknown_085B3470[a0];
+    //     }
+    // }
 
-    return gSaveBlock1Ptr->vars[VAR_FANCLUB_UNKNOWN_1 - VARS_START] & 0x7F;
+    // return gSaveBlock1Ptr->vars[VAR_FANCLUB_UNKNOWN_1 - VARS_START] & 0x7F;
+    return FALSE;
 }
 
 static u16 sub_813BB74(void)
@@ -4050,18 +4051,18 @@ static void sub_813BE30(struct LinkBattleRecords *linkRecords, u8 a, u8 b)
 
 void sub_813BF10(void)
 {
-    if (VarGet(VAR_LILYCOVE_FAN_CLUB_STATE) == 2)
-    {
-        sub_813BA30();
-        if (gBattleOutcome == 1)
-        {
-            sub_813BB74();
-        }
-        else
-        {
-            sub_813BC00();
-        }
-    }
+    // if (VarGet(VAR_LILYCOVE_FAN_CLUB_STATE) == 2)
+    // {
+    //     sub_813BA30();
+    //     if (gBattleOutcome == 1)
+    //     {
+    //         sub_813BB74();
+    //     }
+    //     else
+    //     {
+    //         sub_813BC00();
+    //     }
+    // }
 }
 
 static bool8 sub_813BF44(void)

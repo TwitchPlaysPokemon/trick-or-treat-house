@@ -26,6 +26,8 @@
 #include "constants/map_groups.h"
 #include "constants/songs.h"
 #include "constants/vars.h"
+#include "constants/flags.h"
+#include "constants/opponents.h"
 #include "constants/event_objects.h"
 #include "constants/species.h"
 
@@ -200,6 +202,13 @@ void RunPuzzleTeardownScript()
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+
+void ClearPuzzleEventData(struct ScriptContext *ctx)
+{
+	memset(gSaveBlock1Ptr->flags + 0x04, 0, 0x0A);
+	memset(gSaveBlock1Ptr->vars  + 0x40, 0, 0x40);
+	memset(gSaveBlock1Ptr->flags + FLAG_TRAINER_FLAG_START, 0, TRAINERS_PERMAP_END >> 3);
+}
 
 void SetupPuzzleWarp(struct ScriptContext *ctx)
 {

@@ -28,6 +28,15 @@ PuzzleDebug_Text_PuzzleSelect:
 
 @ -----------------------------------------------------
 
+PuzzleCommon_EventScript_IncrementPuzzle::
+	addvar VAR_CURRENT_PUZZLE, 1
+	setvar VAR_PUZZLE_STATE, 0
+	callnative ClearPuzzleEventData
+	return
+
+
+@ -----------------------------------------------------
+
 PuzzleCommon_EventScript_Scroll::
 	lock
 	goto_if_set FLAG_TRICK_HOUSE_SCROLL_READ, PuzzleCommon_EventScript_ScrollExamine

@@ -35,8 +35,7 @@ TrickHouseCorridor_FrameTable:
 	.2byte 0
 
 TrickHouseCorridor_IncrementPuzzle:
-	addvar VAR_CURRENT_PUZZLE, 1
-	setvar VAR_PUZZLE_STATE, 0
+	call PuzzleCommon_EventScript_IncrementPuzzle
 	clearflag FLAG_HIDE_TRICK_HOUSE_INTRO_CHAR
 	call AssignPuzzleMetaVariables
 	call TrickHouseCorridor_CloseBackDoor

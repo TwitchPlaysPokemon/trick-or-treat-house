@@ -150,203 +150,6 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/SecretBase_YellowCave2/scripts.inc"
 	.include "data/maps/SecretBase_YellowCave3/scripts.inc"
 	.include "data/maps/SecretBase_YellowCave4/scripts.inc"
-
-EventScript_SecretBasePC:: @ 823B4BB
-	lockall
-	playse SE_PC_LOGIN
-	message Text_SecretBaseBootUpPC
-	dofieldeffect FLDEFF_PCTURN_ON
-	waitstate
-	waitmessage
-	waitbuttonpress
-	playse SE_SELECT
-	goto EventScript_SecretBasePCShowMainMenu
-	end
-
-EventScript_SecretBasePCShowMainMenu:: @ 823B4D3
-	message Text_SecretBasePCStartMenu
-	waitmessage
-	goto_if_set FLAG_SECRET_BASE_REGISTRY_ENABLED, EventScript_SecretBasePCMainMenuChoice
-	goto EventScript_23B531
-	end
-
-gUnknown_0823B4E8:: @ 823B4E8 ;EventScript_SecretBasePCCancel?
-	lockall
-	goto EventScript_SecretBasePCShowMainMenu
-	end
-
-EventScript_SecretBasePCMainMenuChoice:: @ 823B4EF
-	multichoice 0, 0, 6, 0
-	switch VAR_RESULT
-	case 0, EventScript_23B581
-	case 1, EventScript_23B568
-	case 2, EventScript_23B585
-	case 3, EventScript_23B66E
-	case 127, EventScript_23B66E
-	end
-
-EventScript_23B531:: @ 823B531
-	multichoice 0, 0, 5, 0
-	switch VAR_RESULT
-	case 0, EventScript_23B581
-	case 1, EventScript_23B568
-	case 2, EventScript_23B66E
-	case 127, EventScript_23B66E
-	end
-
-EventScript_23B568:: @ 823B568
-	msgbox Text_2766AA, MSGBOX_YESNO
-	compare VAR_RESULT, 0
-	goto_if_eq EventScript_SecretBasePCShowMainMenu
-	closemessage
-	special MoveOutOfSecretBase
-	releaseall
-	end
-
-EventScript_23B581:: @ 823B581
-	special ShowSecretBaseDecorationMenu
-	end
-
-EventScript_23B585:: @ 823B585
-	special ShowSecretBaseRegistryMenu
-	end
-
-EventScript_RecordMixingSecretBasePC:: @ 823B589
-	lockall
-	message Text_SecretBaseBootUpPC
-	playse SE_PC_LOGIN
-	dofieldeffect FLDEFF_PCTURN_ON
-	waitstate
-	waitmessage
-	waitbuttonpress
-	playse SE_SELECT
-	goto EventScript_23B5A1
-	end
-
-EventScript_23B5A1:: @ 823B5A1
-	message Text_SecretBasePCStartMenu
-	waitmessage
-	multichoice 0, 0, 7, 0
-	switch VAR_RESULT
-	case 0, EventScript_23B5F0
-	case 1, EventScript_23B585
-	case 2, EventScript_23B660
-	case 3, EventScript_23B66E
-	case 127, EventScript_23B66E
-	end
-
-gUnknown_0823B5E9:: @ 823B5E9
-	lockall
-	goto EventScript_23B5A1
-	end
-
-EventScript_23B5F0:: @ 823B5F0
-	special GetCurSecretBaseRegistrationValidity
-	compare VAR_RESULT, 1
-	goto_if_eq EventScript_23B62F
-	compare VAR_RESULT, 2
-	goto_if_eq EventScript_CantRegisterTooManyBases
-	special CopyCurSecretBaseOwnerName_StrVar1
-	msgbox Text_WantToRegisterSecretBase, MSGBOX_YESNO
-	compare VAR_RESULT, 0
-	goto_if_eq EventScript_23B5A1
-	msgbox Text_2767D1, MSGBOX_SIGN
-	special ToggleCurSecretBaseRegistry
-	special DoSecretBasePCTurnOffEffect
-	releaseall
-	end
-
-EventScript_23B62F:: @ 823B62F
-	msgbox Text_276731, MSGBOX_YESNO
-	compare VAR_RESULT, 0
-	goto_if_eq EventScript_23B5A1
-	msgbox Text_2767E9, MSGBOX_SIGN
-	special ToggleCurSecretBaseRegistry
-	special DoSecretBasePCTurnOffEffect
-	releaseall
-	end
-
-EventScript_CantRegisterTooManyBases:: @ 823B652
-	msgbox Text_TooManyBasesDeleteSome, MSGBOX_SIGN
-	special DoSecretBasePCTurnOffEffect
-	closemessage
-	releaseall
-	end
-
-EventScript_23B660:: @ 823B660
-	msgbox Text_276835, MSGBOX_DEFAULT
-	goto EventScript_23B5A1
-	end
-
-EventScript_23B66E:: @ 823B66E
-	special DoSecretBasePCTurnOffEffect
-	closemessage
-	releaseall
-	end
-
-EventScript_23B674:: @ 823B674
-	special SetSecretBaseSecretsTvFlags_Poster
-	end
-
-EventScript_23B678:: @ 823B678
-	special SetSecretBaseSecretsTvFlags_MiscFurnature
-	end
-
-EventScript_23B67C:: @ 823B67C
-	special SetSecretBaseSecretsTvFlags_LargeDecorationSpot
-	end
-
-EventScript_23B680:: @ 823B680
-	special SetSecretBaseSecretsTvFlags_SmallDecorationSpot
-	end
-
-EventScript_SecretBaseSandOrnament:: @ 823B684
-	special SetSecretBaseSecretsTvFlags_SandOrnament
-	dofieldeffect FLDEFF_SAND_PILLAR
-	waitstate
-	end
-
-EventScript_SecretBaseShieldOrToyTV:: @ 823B68C
-	special GetShieldToyTVDecorationInfo
-	compare VAR_RESULT, 0
-	goto_if_eq EventScript_23B6BC
-	compare VAR_RESULT, 1
-	goto_if_eq EventScript_23B6C5
-	compare VAR_RESULT, 2
-	goto_if_eq EventScript_23B6CE
-	compare VAR_RESULT, 3
-	goto_if_eq EventScript_23B6D7
-	end
-
-EventScript_23B6BC:: @ 823B6BC
-	msgbox Text_27692B, MSGBOX_SIGN
-	end
-
-EventScript_23B6C5:: @ 823B6C5
-	msgbox Text_276974, MSGBOX_SIGN
-	end
-
-EventScript_23B6CE:: @ 823B6CE
-	msgbox Text_2769B8, MSGBOX_SIGN
-	end
-
-EventScript_23B6D7:: @ 823B6D7
-	msgbox Text_2769FF, MSGBOX_SIGN
-	end
-
-gText_23B6E0:: @ 823B6E0
-	.string "There's a small indent in the wall.$"
-
-gText_23B704:: @ 823B704
-	.string "There's a small indent in the wall.\p"
-	.string "Use the SECRET POWER?$"
-
-gText_23B73E:: @ 823B73E
-	.string "Discovered a small cavern!$"
-
-SecretBase_RedCave1_Text_23B759: @ 823B759
-	.string "Want to make your SECRET BASE here?$"
-
 	.include "data/maps/TrickHouseEntrance/scripts.inc"
 	.include "data/maps/TrickHouseEnd/scripts.inc"
 	.include "data/maps/TrickHouseCorridor/scripts.inc"
@@ -354,7 +157,6 @@ SecretBase_RedCave1_Text_23B759: @ 823B759
 	.include "data/maps/Route110_TrickHousePuzzle2/scripts.inc"
 	.include "data/maps/Route110_TrickHousePuzzle3/scripts.inc"
 	.include "data/maps/Route110_TrickHousePuzzle4/scripts.inc"
-	.include "data/maps/Route110_TrickHousePuzzle5/scripts.inc"
 	.include "data/maps/Route110_TrickHousePuzzle6/scripts.inc"
 	.include "data/maps/Route110_TrickHousePuzzle7/scripts.inc"
 	.include "data/maps/Route110_TrickHousePuzzle8/scripts.inc"
@@ -546,21 +348,21 @@ EverGrandeCity_HallOfFame_EventScript_ResetDefeatedEventLegendaries:: @ 8271829
 	return
 
 EverGrandeCity_HallOfFame_EventScript_271839:: @ 8271839
-	setvar VAR_FOSSIL_MANIAC_STATE, 1
+	@ setvar VAR_FOSSIL_MANIAC_STATE, 1
 	return
 
-EverGrandeCity_HallOfFame_EventScript_27183F:: @ 827183F
+@ EverGrandeCity_HallOfFame_EventScript_27183F:: @ 827183F
 	clearflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL
 	return
 
 EverGrandeCity_HallOfFame_EventScript_271843:: @ 8271843
-	setvar VAR_LITTLEROOT_HOUSES_STATE, 3
-	setvar VAR_LITTLEROOT_HOUSES_STATE_2, 3
-	clearflag FLAG_HIDE_PLAYERS_HOUSE_DAD
+	@ setvar VAR_LITTLEROOT_HOUSES_STATE, 3
+	@ setvar VAR_LITTLEROOT_HOUSES_STATE_2, 3
+	@ clearflag FLAG_HIDE_PLAYERS_HOUSE_DAD
 	return
 
 EverGrandeCity_HallOfFame_EventScript_271851:: @ 8271851
-	setvar VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1
+	@ setvar VAR_DEX_UPGRADE_JOHTO_STARTER_STATE, 1
 	return
 
 EventScript_WhiteOut:: @ 8271857
@@ -1133,105 +935,105 @@ EventScript_271F3D:: @ 8271F3D
 	setvar VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_RIVAL_MAY_NORMAL
 	return
 
-DewfordTown_Gym_EventScript_271F43:: @ 8271F43
-FortreeCity_Gym_EventScript_271F43:: @ 8271F43
-LavaridgeTown_Gym_1F_EventScript_271F43:: @ 8271F43
-MauvilleCity_Gym_EventScript_271F43:: @ 8271F43
-MossdeepCity_Gym_EventScript_271F43:: @ 8271F43
-PetalburgCity_Gym_EventScript_271F43:: @ 8271F43
-RustboroCity_Gym_EventScript_271F43:: @ 8271F43
-SootopolisCity_Gym_1F_EventScript_271F43:: @ 8271F43
-	switch VAR_0x8008
-	case 1, DewfordTown_Gym_EventScript_271FA1
-	case 2, DewfordTown_Gym_EventScript_271FAB
-	case 3, DewfordTown_Gym_EventScript_271FBE
-	case 4, DewfordTown_Gym_EventScript_271FCE
-	case 5, DewfordTown_Gym_EventScript_271FE7
-	case 6, DewfordTown_Gym_EventScript_271FFD
-	case 7, DewfordTown_Gym_EventScript_272010
-	case 8, DewfordTown_Gym_EventScript_272035
-	end
+@ DewfordTown_Gym_EventScript_271F43:: @ 8271F43
+@ FortreeCity_Gym_EventScript_271F43:: @ 8271F43
+@ LavaridgeTown_Gym_1F_EventScript_271F43:: @ 8271F43
+@ MauvilleCity_Gym_EventScript_271F43:: @ 8271F43
+@ MossdeepCity_Gym_EventScript_271F43:: @ 8271F43
+@ PetalburgCity_Gym_EventScript_271F43:: @ 8271F43
+@ RustboroCity_Gym_EventScript_271F43:: @ 8271F43
+@ SootopolisCity_Gym_1F_EventScript_271F43:: @ 8271F43
+@ 	switch VAR_0x8008
+@ 	case 1, DewfordTown_Gym_EventScript_271FA1
+@ 	case 2, DewfordTown_Gym_EventScript_271FAB
+@ 	case 3, DewfordTown_Gym_EventScript_271FBE
+@ 	case 4, DewfordTown_Gym_EventScript_271FCE
+@ 	case 5, DewfordTown_Gym_EventScript_271FE7
+@ 	case 6, DewfordTown_Gym_EventScript_271FFD
+@ 	case 7, DewfordTown_Gym_EventScript_272010
+@ 	case 8, DewfordTown_Gym_EventScript_272035
+@ 	end
 
-DewfordTown_Gym_EventScript_271FA1:: @ 8271FA1
-	@ settrainerflag TRAINER_JOSH
-	@ settrainerflag TRAINER_TOMMY
-	@ settrainerflag TRAINER_MARC
-	return
+@ DewfordTown_Gym_EventScript_271FA1:: @ 8271FA1
+@ 	@ settrainerflag TRAINER_JOSH
+@ 	@ settrainerflag TRAINER_TOMMY
+@ 	@ settrainerflag TRAINER_MARC
+@ 	return
 
-DewfordTown_Gym_EventScript_271FAB:: @ 8271FAB
-	@ settrainerflag TRAINER_TAKAO
-	@ settrainerflag TRAINER_JOCELYN
-	@ settrainerflag TRAINER_LAURA
-	@ settrainerflag TRAINER_BRENDEN
-	@ settrainerflag TRAINER_CRISTIAN
-	@ settrainerflag TRAINER_LILITH
-	return
+@ DewfordTown_Gym_EventScript_271FAB:: @ 8271FAB
+@ 	@ settrainerflag TRAINER_TAKAO
+@ 	@ settrainerflag TRAINER_JOCELYN
+@ 	@ settrainerflag TRAINER_LAURA
+@ 	@ settrainerflag TRAINER_BRENDEN
+@ 	@ settrainerflag TRAINER_CRISTIAN
+@ 	@ settrainerflag TRAINER_LILITH
+@ 	return
 
-DewfordTown_Gym_EventScript_271FBE:: @ 8271FBE
-	@ settrainerflag TRAINER_KIRK
-	@ settrainerflag TRAINER_SHAWN
-	@ settrainerflag TRAINER_BEN
-	@ settrainerflag TRAINER_VIVIAN
-	@ settrainerflag TRAINER_ANGELO
-	return
+@ DewfordTown_Gym_EventScript_271FBE:: @ 8271FBE
+@ 	@ settrainerflag TRAINER_KIRK
+@ 	@ settrainerflag TRAINER_SHAWN
+@ 	@ settrainerflag TRAINER_BEN
+@ 	@ settrainerflag TRAINER_VIVIAN
+@ 	@ settrainerflag TRAINER_ANGELO
+@ 	return
 
-DewfordTown_Gym_EventScript_271FCE:: @ 8271FCE
-	@ settrainerflag TRAINER_COLE
-	@ settrainerflag TRAINER_AXLE
-	@ settrainerflag TRAINER_KEEGAN
-	@ settrainerflag TRAINER_GERALD
-	@ settrainerflag TRAINER_DANIELLE
-	@ settrainerflag TRAINER_JACE
-	@ settrainerflag TRAINER_JEFF
-	@ settrainerflag TRAINER_ELI
-	return
+@ DewfordTown_Gym_EventScript_271FCE:: @ 8271FCE
+@ 	@ settrainerflag TRAINER_COLE
+@ 	@ settrainerflag TRAINER_AXLE
+@ 	@ settrainerflag TRAINER_KEEGAN
+@ 	@ settrainerflag TRAINER_GERALD
+@ 	@ settrainerflag TRAINER_DANIELLE
+@ 	@ settrainerflag TRAINER_JACE
+@ 	@ settrainerflag TRAINER_JEFF
+@ 	@ settrainerflag TRAINER_ELI
+@ 	return
 
-DewfordTown_Gym_EventScript_271FE7:: @ 8271FE7
-	@ settrainerflag TRAINER_RANDALL
-	@ settrainerflag TRAINER_PARKER
-	@ settrainerflag TRAINER_GEORGE
-	@ settrainerflag TRAINER_BERKE
-	@ settrainerflag TRAINER_MARY
-	@ settrainerflag TRAINER_ALEXIA
-	@ settrainerflag TRAINER_JODY
-	return
+@ DewfordTown_Gym_EventScript_271FE7:: @ 8271FE7
+@ 	@ settrainerflag TRAINER_RANDALL
+@ 	@ settrainerflag TRAINER_PARKER
+@ 	@ settrainerflag TRAINER_GEORGE
+@ 	@ settrainerflag TRAINER_BERKE
+@ 	@ settrainerflag TRAINER_MARY
+@ 	@ settrainerflag TRAINER_ALEXIA
+@ 	@ settrainerflag TRAINER_JODY
+@ 	return
 
-DewfordTown_Gym_EventScript_271FFD:: @ 8271FFD
-	@ settrainerflag TRAINER_JARED
-	@ settrainerflag TRAINER_FLINT
-	@ settrainerflag TRAINER_ASHLEY
-	@ settrainerflag TRAINER_EDWARDO
-	@ settrainerflag TRAINER_HUMBERTO
-	@ settrainerflag TRAINER_DARIUS
-	return
+@ DewfordTown_Gym_EventScript_271FFD:: @ 8271FFD
+@ 	@ settrainerflag TRAINER_JARED
+@ 	@ settrainerflag TRAINER_FLINT
+@ 	@ settrainerflag TRAINER_ASHLEY
+@ 	@ settrainerflag TRAINER_EDWARDO
+@ 	@ settrainerflag TRAINER_HUMBERTO
+@ 	@ settrainerflag TRAINER_DARIUS
+@ 	return
 
-DewfordTown_Gym_EventScript_272010:: @ 8272010
-	@ settrainerflag TRAINER_PRESTON
-	@ settrainerflag TRAINER_VIRGIL
-	@ settrainerflag TRAINER_BLAKE
-	@ settrainerflag TRAINER_HANNAH
-	@ settrainerflag TRAINER_SAMANTHA
-	@ settrainerflag TRAINER_MAURA
-	@ settrainerflag TRAINER_SYLVIA
-	@ settrainerflag TRAINER_NATE
-	@ settrainerflag TRAINER_KATHLEEN
-	@ settrainerflag TRAINER_CLIFFORD
-	@ settrainerflag TRAINER_MACEY
-	@ settrainerflag TRAINER_NICHOLAS
-	return
+@ DewfordTown_Gym_EventScript_272010:: @ 8272010
+@ 	@ settrainerflag TRAINER_PRESTON
+@ 	@ settrainerflag TRAINER_VIRGIL
+@ 	@ settrainerflag TRAINER_BLAKE
+@ 	@ settrainerflag TRAINER_HANNAH
+@ 	@ settrainerflag TRAINER_SAMANTHA
+@ 	@ settrainerflag TRAINER_MAURA
+@ 	@ settrainerflag TRAINER_SYLVIA
+@ 	@ settrainerflag TRAINER_NATE
+@ 	@ settrainerflag TRAINER_KATHLEEN
+@ 	@ settrainerflag TRAINER_CLIFFORD
+@ 	@ settrainerflag TRAINER_MACEY
+@ 	@ settrainerflag TRAINER_NICHOLAS
+@ 	return
 
-DewfordTown_Gym_EventScript_272035:: @ 8272035
-	@ settrainerflag TRAINER_ANDREA
-	@ settrainerflag TRAINER_CRISSY
-	@ settrainerflag TRAINER_BRIANNA
-	@ settrainerflag TRAINER_CONNIE
-	@ settrainerflag TRAINER_BRIDGET
-	@ settrainerflag TRAINER_OLIVIA
-	@ settrainerflag TRAINER_TIFFANY
-	@ settrainerflag TRAINER_BETHANY
-	@ settrainerflag TRAINER_ANNIKA
-	@ settrainerflag TRAINER_DAPHNE
-	return
+@ DewfordTown_Gym_EventScript_272035:: @ 8272035
+@ 	@ settrainerflag TRAINER_ANDREA
+@ 	@ settrainerflag TRAINER_CRISSY
+@ 	@ settrainerflag TRAINER_BRIANNA
+@ 	@ settrainerflag TRAINER_CONNIE
+@ 	@ settrainerflag TRAINER_BRIDGET
+@ 	@ settrainerflag TRAINER_OLIVIA
+@ 	@ settrainerflag TRAINER_TIFFANY
+@ 	@ settrainerflag TRAINER_BETHANY
+@ 	@ settrainerflag TRAINER_ANNIKA
+@ 	@ settrainerflag TRAINER_DAPHNE
+@ 	return
 
 Route114_LanettesHouse_EventScript_272067:: @ 8272067
 	msgbox gText_NoRoomLeftForAnother, MSGBOX_DEFAULT
@@ -1280,25 +1082,25 @@ Route109_EventScript_2720A8:: @ 82720A8
 LittlerootTown_ProfessorBirchsLab_EventScript_2720AD:: @ 82720AD
 Route101_EventScript_2720AD:: @ 82720AD
 Route103_EventScript_2720AD:: @ 82720AD
-	compare VAR_PETALBURG_GYM_STATE, 0
-	goto_if_eq Common_EventScript_NopReturn
-	goto_if_set FLAG_SYS_GAME_CLEAR, Route101_EventScript_27211A
-	compare VAR_BIRCH_STATE, 0
-	call_if_eq Route101_EventScript_27211A
-	compare VAR_BIRCH_STATE, 1
-	call_if_eq Route101_EventScript_27211A
-	compare VAR_BIRCH_STATE, 2
-	call_if_eq Route101_EventScript_272127
-	compare VAR_BIRCH_STATE, 3
-	call_if_eq Route101_EventScript_272127
-	compare VAR_BIRCH_STATE, 4
-	call_if_eq Route101_EventScript_272134
-	compare VAR_BIRCH_STATE, 5
-	call_if_eq Route101_EventScript_272134
-	compare VAR_BIRCH_STATE, 6
-	call_if_eq Route101_EventScript_27211A
-	compare VAR_BIRCH_STATE, 7
-	call_if_eq Route101_EventScript_27211A
+	@ compare VAR_PETALBURG_GYM_STATE, 0
+	@ goto_if_eq Common_EventScript_NopReturn
+	@ goto_if_set FLAG_SYS_GAME_CLEAR, Route101_EventScript_27211A
+	@ compare VAR_BIRCH_STATE, 0
+	@ call_if_eq Route101_EventScript_27211A
+	@ compare VAR_BIRCH_STATE, 1
+	@ call_if_eq Route101_EventScript_27211A
+	@ compare VAR_BIRCH_STATE, 2
+	@ call_if_eq Route101_EventScript_272127
+	@ compare VAR_BIRCH_STATE, 3
+	@ call_if_eq Route101_EventScript_272127
+	@ compare VAR_BIRCH_STATE, 4
+	@ call_if_eq Route101_EventScript_272134
+	@ compare VAR_BIRCH_STATE, 5
+	@ call_if_eq Route101_EventScript_272134
+	@ compare VAR_BIRCH_STATE, 6
+	@ call_if_eq Route101_EventScript_27211A
+	@ compare VAR_BIRCH_STATE, 7
+	@ call_if_eq Route101_EventScript_27211A
 	return
 
 Route101_EventScript_27211A:: @ 827211A
@@ -3226,19 +3028,19 @@ LilycoveCity_ContestLobby_EventScript_28CB21:: @ 828CB21
 	end
 
 LilycoveCity_ContestLobby_EventScript_28CB2B:: @ 828CB2B
-	compare VAR_LINK_CONTEST_ROOM_STATE, 2
-	goto_if_ne LilycoveCity_ContestLobby_EventScript_28CB95
-	setvar VAR_0x8005, 6
-	special InterviewBefore
-	compare VAR_RESULT, 1
-	goto_if_eq LilycoveCity_ContestLobby_EventScript_28CB95
-	switch VAR_CONTEST_LOCATION
-	case 0, LilycoveCity_ContestLobby_EventScript_28CB95
-	case 2, LilycoveCity_ContestLobby_EventScript_28CB91
-	case 1, LilycoveCity_ContestLobby_EventScript_28CB91
-	case 3, LilycoveCity_ContestLobby_EventScript_28CB91
-	case 4, LilycoveCity_ContestLobby_EventScript_28CB91
-	case 5, LilycoveCity_ContestLobby_EventScript_28CB95
+	@ compare VAR_LINK_CONTEST_ROOM_STATE, 2
+	@ goto_if_ne LilycoveCity_ContestLobby_EventScript_28CB95
+	@ setvar VAR_0x8005, 6
+	@ special InterviewBefore
+	@ compare VAR_RESULT, 1
+	@ goto_if_eq LilycoveCity_ContestLobby_EventScript_28CB95
+	@ switch VAR_CONTEST_LOCATION
+	@ case 0, LilycoveCity_ContestLobby_EventScript_28CB95
+	@ case 2, LilycoveCity_ContestLobby_EventScript_28CB91
+	@ case 1, LilycoveCity_ContestLobby_EventScript_28CB91
+	@ case 3, LilycoveCity_ContestLobby_EventScript_28CB91
+	@ case 4, LilycoveCity_ContestLobby_EventScript_28CB91
+	@ case 5, LilycoveCity_ContestLobby_EventScript_28CB95
 	end
 
 LilycoveCity_ContestLobby_EventScript_28CB91:: @ 828CB91

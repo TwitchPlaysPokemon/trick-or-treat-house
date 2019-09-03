@@ -811,16 +811,6 @@
             "width": 15
         },
         {
-            "blockdata_filepath": "data/layouts/Route110_TrickHousePuzzle5/map.bin",
-            "border_filepath": "data/layouts/Route110_TrickHousePuzzle5/border.bin",
-            "height": 22,
-            "id": "LAYOUT_ROUTE110_TRICK_HOUSE_PUZZLE5",
-            "name": "Route110_TrickHousePuzzle5_Layout",
-            "primary_tileset": "gTileset_Building",
-            "secondary_tileset": "gTileset_TrickHousePuzzle",
-            "width": 15
-        },
-        {
             "blockdata_filepath": "data/layouts/Route110_TrickHousePuzzle6/map.bin",
             "border_filepath": "data/layouts/Route110_TrickHousePuzzle6/border.bin",
             "height": 22,
