@@ -171,7 +171,11 @@ void NewGameInitData(void)
     ResetGabbyAndTy();
     ClearSecretBases();
     ClearBerryTrees();
+#if USE_CANDY_CURRENCY
+    SetMoney(&gSaveBlock1Ptr->money, 285);
+#else
     SetMoney(&gSaveBlock1Ptr->money, 3000);
+#endif
     SetCoins(0);
     ResetLinkContestBoolean();
     ResetGameStats();

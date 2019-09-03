@@ -307,7 +307,7 @@ EventScript_ResetAllBerries:: @ 827149D
 	return
 
 EventScript_ResetAllMapFlags:: @ 82715DE
-	
+	setrespawn HEAL_LOCATION_TRICK_HOUSE_EXT
 	call EventScript_ResetAllBerries
 	end
 

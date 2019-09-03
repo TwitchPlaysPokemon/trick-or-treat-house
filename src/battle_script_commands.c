@@ -5857,11 +5857,16 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
 
     if (trainerId == TRAINER_SECRET_BASE)
     {
+#if USE_CANDY_CURRENCY
+        moneyReward = 5 * gBattleStruct->moneyMultiplier;
+#else
         moneyReward = 20 * gBattleResources->secretBase->party.levels[0] * gBattleStruct->moneyMultiplier;
+#endif
     }
     else
     {
         const struct Trainer *trainer = GetTrainer(trainerId);
+#if !USE_CANDY_CURRENCY
         switch (trainer->partyFlags)
         {
         case 0:
@@ -5889,6 +5894,7 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
             }
             break;
         }
+#endif
 
         for (; gTrainerMoneyTable[i].classId != 0xFF; i++)
         {
@@ -5896,12 +5902,21 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
                 break;
         }
 
+#if USE_CANDY_CURRENCY
+        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+            moneyReward = gBattleStruct->moneyMultiplier * gTrainerMoneyTable[i].value;
+        else if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+            moneyReward = gBattleStruct->moneyMultiplier * 2 * gTrainerMoneyTable[i].value;
+        else
+            moneyReward = gBattleStruct->moneyMultiplier * gTrainerMoneyTable[i].value;
+#else
         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
             moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * gTrainerMoneyTable[i].value;
         else if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
             moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * 2 * gTrainerMoneyTable[i].value;
         else
             moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * gTrainerMoneyTable[i].value;
+#endif
     }
 
     return moneyReward;
@@ -7672,6 +7687,7 @@ static void atk90_tryconversiontypechange(void) // randomly changes user's type 
 
 static void atk91_givepaydaymoney(void)
 {
+#if !USE_CANDY_CURRENCY
     if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_x2000000)) && gPaydayMoney != 0)
     {
         u32 bonusMoney = gPaydayMoney * gBattleStruct->moneyMultiplier;
@@ -7683,6 +7699,7 @@ static void atk91_givepaydaymoney(void)
         gBattlescriptCurrInstr = BattleScript_PrintPayDayMoneyString;
     }
     else
+#endif
     {
         gBattlescriptCurrInstr++;
     }

@@ -51,7 +51,7 @@ Common_EventScript_ItemSuperPotion::
 	giveitem_std ITEM_SUPER_POTION, 1, 1
 	end
 
-Common_EventScript_ItemCandyCorn::
+Common_EventScript_ItemReeseCups::
 Common_EventScript_ItemFullHeal::
 	giveitem_std ITEM_FULL_HEAL, 1, 1
 	end

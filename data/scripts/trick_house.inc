@@ -82,7 +82,7 @@ PuzzleCommon_EventScript_ExitDoorObject::
 
 PuzzleCommon_EventScript_CheckScroll:
 	goto_if_unset FLAG_TRICK_HOUSE_SCROLL_READ, PuzzleCommon_EventScript_NoScrollReject
-	
+	callnative LoadSecretCode
 	msgbox PuzzleCommon_Text_WriteDownCode
 	setflag FLAG_TRICK_HOUSE_PASSWORD_ENTERED
 	release
@@ -90,8 +90,8 @@ PuzzleCommon_EventScript_CheckScroll:
 PuzzleCommon_Text_WriteDownCode:
 	.string "{PLAYER} wrote down the secret code\n"
 	.string "on the door.\p"
-	.string "“{STR_VAR_1}”\n"
-	.string "… … … … … … … …\p"
+	.string "“{STR_VAR_1}”\p"
+	.string "… … … … … … … …\n"
 	.string "{PLAY_SE SE_PIN}The door unsealed!$"
 
 PuzzleCommon_EventScript_ExamineDoor:

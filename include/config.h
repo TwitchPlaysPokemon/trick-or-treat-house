@@ -30,5 +30,7 @@
 #define USE_CANDY_NAMES 1
 // Changes trainer class names and sprites to use halloween costumes
 #define USE_TRAINER_COSTUMES 1
+// Changes money to Candy Corn
+#define USE_CANDY_CURRENCY 1
 
 #endif // GUARD_CONFIG_H

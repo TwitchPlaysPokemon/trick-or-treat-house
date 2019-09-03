@@ -37,7 +37,17 @@ static void GenerateInitialRentalMons(void);
 extern const u16 gPuzzleList[];
 
 const u8 sPuzzleSecretCodes[][0x100] = {
-	_("Watch out for Snakes"),
+	_("This is Halloween!"),
+	_("Pumpkaboo scream in the dead of night…"),
+	_("Ride with the moon in the dead of night…"),
+	_("I am the shadow on the moon at night…"),
+	_("The clown with the tearaway face…"),
+	_("Watch out for Ekans!"),
+	_("It's just a bunch of Hocus Pocus!"),
+	_("Double double, toil and trouble…"),
+	_("Nevermore!"),
+	_("Something wicked this way comes…"),
+	_("Don't look behind you…"),
 };
 
 
@@ -218,7 +228,9 @@ void SetupPuzzleWarp(struct ScriptContext *ctx)
 
 void LoadSecretCode(struct ScriptContext *ctx)
 {
-	VarGet(VAR_CURRENT_PUZZLE); //TODO stub
+	u8 id = Random();
+	const u8 *str = sPuzzleSecretCodes[id % ARRAY_COUNT(sPuzzleSecretCodes)];
+	StringCopy(gStringVar1, str);
 }
 
 extern const u8 PuzzleCommon_Text_DefaultAuthor[];

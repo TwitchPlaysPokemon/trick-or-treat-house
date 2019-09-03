@@ -358,6 +358,8 @@ bool8 MetatileBehavior_IsDoor(u8 metatileBehavior)
     if (metatileBehavior == MB_PETALBURG_GYM_DOOR
      || metatileBehavior == MB_ANIMATED_DOOR)
         return TRUE;
+    else if (metatileBehavior == MB_TRICK_HOUSE_PUZZLE_DOOR && FlagGet(FLAG_TRICK_HOUSE_PASSWORD_ENTERED))
+        return TRUE;
     else
         return FALSE;
 }

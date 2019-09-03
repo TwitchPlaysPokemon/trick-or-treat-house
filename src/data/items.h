@@ -325,7 +325,7 @@ const struct Item gItems[] =
 
     [ITEM_FULL_HEAL] =
     {
-        .name = _(CANDY_NAME("CANDY CORN", "FULL HEAL")),
+        .name = _(CANDY_NAME("REESE'S CUPS", "FULL HEAL")),
         .itemId = ITEM_FULL_HEAL,
         .price = 600,
         .description = sFullHealDesc,

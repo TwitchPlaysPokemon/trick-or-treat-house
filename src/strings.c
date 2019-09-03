@@ -349,7 +349,6 @@ const u8 gText_YouWantedVar1ThatllBeVar2[] = _("You wanted {STR_VAR_1}?\nThat'll
 const u8 gText_HereYouGoThankYou[] = _("Here you go!\nThank you very much.");
 const u8 gText_ThankYouIllSendItHome[] = _("Thank you!\nI'll send it to your home PC.");
 const u8 gText_ThanksIllSendItHome[] = _("Thanks!\nI'll send it to your PC at home.");
-const u8 gText_YouDontHaveMoney[] = _("You don't have enough money.{PAUSE_UNTIL_PRESS}");
 const u8 gText_NoMoreRoomForThis[] = _("You have no more room for this\nitem.{PAUSE_UNTIL_PRESS}");
 const u8 gText_SpaceForVar1Full[] = _("The space for {STR_VAR_1} is full.{PAUSE_UNTIL_PRESS}");
 const u8 gText_AnythingElseICanHelp[] = _("Is there anything else I can help\nyou with?");
@@ -357,9 +356,17 @@ const u8 gText_CanIHelpWithAnythingElse[] = _("Can I help you with anything else
 const u8 gText_ThrowInPremierBall[] = _("I'll throw in a PREMIER BALL, too.{PAUSE_UNTIL_PRESS}");
 const u8 gText_CantBuyKeyItem[] = _("{STR_VAR_2}? Oh, no.\nI can't buy that.{PAUSE_UNTIL_PRESS}");
 const u8 gText_HowManyToSell[] = _("{STR_VAR_2}?\nHow many would you like to sell?");
+#if USE_CANDY_CURRENCY
+const u8 gText_YouDontHaveMoney[] = _("You don't have enough candy corns.{PAUSE_UNTIL_PRESS}");
+const u8 gText_ICanPayVar1[] = _("I can pay {STR_VAR_1} candy corns.\nWould that be okay?");
+const u8 gText_TurnedOverVar1ForVar2[] = _("Turned over the {STR_VAR_2}\nand received {STR_VAR_1} candies.");
+const u8 gText_PokedollarVar1[] = _("{STR_VAR_1}");
+#else
+const u8 gText_YouDontHaveMoney[] = _("You don't have enough money.{PAUSE_UNTIL_PRESS}");
 const u8 gText_ICanPayVar1[] = _("I can pay ¥{STR_VAR_1}.\nWould that be okay?");
 const u8 gText_TurnedOverVar1ForVar2[] = _("Turned over the {STR_VAR_2}\nand received ¥{STR_VAR_1}.");
 const u8 gText_PokedollarVar1[] = _("¥{STR_VAR_1}");
+#endif
 const u8 gText_Shift[] = _("SHIFT");
 const u8 gText_SendOut[] = _("SEND OUT");
 const u8 gText_Switch2[] = _("SWITCH");
@@ -1190,7 +1197,11 @@ const u8 gText_PkmnFainted3[] = _("{STR_VAR_1} fainted…\p\n");
 const u8 gText_Marco[] = _("MARCO");
 const u8 gText_TrainerCardName[] = _("NAME: ");
 const u8 gText_TrainerCardIDNo[] = _("IDNo.");
+#if USE_CANDY_CURRENCY
+const u8 gText_TrainerCardMoney[] = _("CANDY CORN");
+#else
 const u8 gText_TrainerCardMoney[] = _("MONEY");
+#endif
 const u8 gUnknown_085ECF84[] = _("¥");
 const u8 gText_TrainerCardPokedex[] = _("POKéDEX");
 const u8 gText_EmptyString6[] = _("");

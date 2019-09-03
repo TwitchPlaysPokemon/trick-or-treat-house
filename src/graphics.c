@@ -1187,7 +1187,11 @@ const u32 gBuyMenuFrame_Gfx[] = INCBIN_U32("graphics/interface/mart_frame.4bpp.l
 const u32 gMenuMoneyPal[] = INCBIN_U32("graphics/interface/mart_frame.gbapal.lz");
 const u32 gBuyMenuFrame_Tilemap[] = INCBIN_U32("graphics/interface/mart_frame.bin.lz");
 
+#if USE_CANDY_CURRENCY
+const u32 gMenuMoneyGfx[] = INCBIN_U32("graphics/interface/candy.4bpp.lz");
+#else
 const u32 gMenuMoneyGfx[] = INCBIN_U32("graphics/interface/money.4bpp.lz");
+#endif
 
 // Pokeblock
 
