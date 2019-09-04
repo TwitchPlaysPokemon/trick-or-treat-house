@@ -5,7 +5,7 @@
 		"party": [
 			{
 				"species": "SPECIES_ZIGZAGOON",
-				"level": 45
+				"level": 25
 			}
 		]
 	},
@@ -15,7 +15,7 @@
 		"party": [
 			{
 				"species": "SPECIES_LOTAD",
-				"level": 45
+				"level": 25
 			}
 		]
 	}

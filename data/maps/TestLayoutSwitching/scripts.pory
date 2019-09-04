@@ -11,5 +11,6 @@ script TestLayoutSwitching_SignScript_Switch {
 		switchmaplayout (LAYOUT_TEST_LAYOUT_SWITCHING2)
 		setflag (FLAG_TEMP_A)
 	}
+	release
 }
 

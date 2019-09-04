@@ -98,10 +98,14 @@ static u8 * const sScriptStringVars[] =
     gStringVar3,
 };
 
-static bool8 ShowScriptError(struct ScriptContext *ctx, const u8 *str)
+static const u8 ErrStr_ScriptError[] = _("Script Error: {NO}{STR_VAR_2}\n{STR_VAR_1}");
+static bool8 ShowScriptError(struct ScriptContext *ctx, int errno, const u8 *str)
 {
+    u8 n = CountDigits(errno);
+    ConvertIntToDecimalStringN(gStringVar2, errno, 0, n);
+    StringCopy(gStringVar1, str);
     SetupNativeScript(ctx, IsFieldMessageBoxHidden);
-    ShowFieldMessage(str);
+    ShowFieldMessage(ErrStr_ScriptError);
     return TRUE;
 }
 
@@ -764,25 +768,31 @@ bool8 ScrCmd_setmaplayoutindex(struct ScriptContext *ctx)
 }
 
 extern const struct MapLayout *const gMapLayouts[];
-static const u8 ErrStr_switchmaplayout[] = _("Script Error: switchmaplayout checks failed!");
+static const u8 ErrStr_switchmaplayout[] = _("switchmaplayout checks failed!{PAUSE 50}");
 bool8 ScrCmd_switchmaplayout(struct ScriptContext *ctx)
 {
-    u16 value = VarGet(ScriptReadHalfword(ctx));
+    u16 toId = VarGet(ScriptReadHalfword(ctx)) - 1;
+    u16 fromId = gSaveBlock1Ptr->mapLayoutId - 1;
     
     { // Sanity checks
-        if (gMapLayouts[value] == NULL) goto error;
-        if (gMapLayouts[gSaveBlock1Ptr->mapLayoutId]->width != gMapLayouts[value]->width) goto error;
-        if (gMapLayouts[gSaveBlock1Ptr->mapLayoutId]->height != gMapLayouts[value]->height) goto error;
-        if (gMapLayouts[gSaveBlock1Ptr->mapLayoutId]->primaryTileset != gMapLayouts[value]->primaryTileset) goto error;
-        if (gMapLayouts[gSaveBlock1Ptr->mapLayoutId]->secondaryTileset != gMapLayouts[value]->secondaryTileset) goto error;
+        if (gMapLayouts[fromId] == NULL)
+            return ShowScriptError(ctx, 1, ErrStr_switchmaplayout);
+        if (gMapLayouts[toId] == NULL)
+            return ShowScriptError(ctx, 2, ErrStr_switchmaplayout);
+        if (gMapLayouts[fromId]->width != gMapLayouts[toId]->width) 
+            return ShowScriptError(ctx, 3, ErrStr_switchmaplayout);
+        if (gMapLayouts[fromId]->height != gMapLayouts[toId]->height)
+            return ShowScriptError(ctx, 4, ErrStr_switchmaplayout);
+        if (gMapLayouts[fromId]->primaryTileset != gMapLayouts[toId]->primaryTileset)
+            return ShowScriptError(ctx, 5, ErrStr_switchmaplayout);
+        if (gMapLayouts[fromId]->secondaryTileset != gMapLayouts[toId]->secondaryTileset)
+            return ShowScriptError(ctx, 6, ErrStr_switchmaplayout);
     }
     
-    SetCurrentMapLayout(value);
+    SetCurrentMapLayout(toId + 1);
     InitMap();
     DrawWholeMapView();
     return FALSE;
-error:
-    return ShowScriptError(ctx, ErrStr_switchmaplayout);
 }
 
 bool8 ScrCmd_warptodynamic(struct ScriptContext *ctx)
@@ -2355,7 +2365,7 @@ bool8 ScrCmd_warpE0(struct ScriptContext *ctx)
     return TRUE;
 }
 
-const static u8 ErrStr_selectpointer[] = _("Script error: selectpointer checks failed!");
+const static u8 ErrStr_selectpointer[] = _("selectpointer checks failed!{PAUSE 50}");
 bool8 ScrCmd_selectpointer(struct ScriptContext *ctx)
 {
     const u8 **ptr = (const u8 **)ScriptReadWord(ctx);
@@ -2388,6 +2398,9 @@ bool8 ScrCmd_selectpointer(struct ScriptContext *ctx)
             break;
     }
     // Only load this pointer if it's within the array and pointing to someplace in ROM
+    if (index >= max) return ShowScriptError(ctx, 1, ErrStr_selectpointer);
+    if (ptr[index] <= (const u8*)&Start) return ShowScriptError(ctx, 2, ErrStr_selectpointer);
+    
     if (index < max && ptr[index] > (const u8*)&Start) 
     {
         ctx->data[0] = (u32)ptr[index];
@@ -2402,7 +2415,7 @@ bool8 ScrCmd_selectpointer(struct ScriptContext *ctx)
         ctx->data[1] = index;
         ctx->data[2] = max;
         ctx->data[3] = (u32)ptr;
-        return ShowScriptError(ctx, ErrStr_selectpointer);
+        return ShowScriptError(ctx, 10, ErrStr_selectpointer);
     }
     return FALSE;
 }
