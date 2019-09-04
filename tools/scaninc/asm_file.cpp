@@ -35,13 +35,16 @@ AsmFile::AsmFile(std::string path)
     std::fseek(fp, 0, SEEK_END);
 
     m_size = std::ftell(fp);
-
-    m_buffer = new char[m_size];
-
-    std::rewind(fp);
-
-    if (std::fread(m_buffer, m_size, 1, fp) != 1)
-        FATAL_ERROR("Failed to read \"%s\".\n", path.c_str());
+    if (m_size == 0) {
+        m_size = 1;
+        m_buffer = new char[1];
+        m_buffer[0] = '\n';
+    } else {
+        m_buffer = new char[m_size];
+        std::rewind(fp);
+        if (std::fread(m_buffer, m_size, 1, fp) != 1)
+            FATAL_ERROR("Failed to read \"%s\", %d.\n", path.c_str(), m_size);
+    }
 
     std::fclose(fp);
 
