@@ -2082,6 +2082,8 @@ extern const u8 gText_MaleSymbol4[];
 extern const u8 gText_FemaleSymbol4[];
 extern const u8 gText_GenderlessSymbol[];
 extern const u8 gText_NewLine2[];
+extern const u8 gText_And[];
+extern const u8 gText_One[];
 extern const u8 gText_Exit4[];
 extern const u8 gText_Lv[];
 extern const u8 gExpandedPlaceholder_Empty[];

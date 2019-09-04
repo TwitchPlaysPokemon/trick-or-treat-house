@@ -19,6 +19,8 @@
 #include "battle_factory.h"
 #include "battle_factory_screen.h"
 #include "random.h"
+#include "item.h"
+#include "strings.h"
 #include "battle_tower.h"
 #include "international_string_util.h"
 #include "constants/map_scripts.h"
@@ -30,6 +32,7 @@
 #include "constants/opponents.h"
 #include "constants/event_objects.h"
 #include "constants/species.h"
+#include "constants/items.h"
 
 static void Task_PuzzleSelect(u8 taskId);
 static void GenerateInitialRentalMons(void);
@@ -287,6 +290,74 @@ void AssignPuzzleMetaVariables(struct ScriptContext *ctx)
 			array += 2;
 		}
 	}
+}
+
+
+void GiveItemPrerequisites(struct ScriptContext *ctx)
+{
+	u8 *ptr = gStringVar1;
+	u8 itemCount = 0;
+	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	const u16 *array = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_PREREQ_LIST);
+	
+	gSpecialVar_Result = FALSE;
+	*ptr = EOS;
+	
+	if (array != NULL)
+	{
+		while (array[0] != ITEM_NONE)
+		{
+			gSpecialVar_Result |= AddBagItem(array[0], 1);
+			
+			if (array[1] == ITEM_NONE && itemCount > 0) {
+				ptr = StringCopy(ptr, gText_And);
+				(*ptr++) = CHAR_SPACE;
+			}
+			itemCount++;
+			ptr = StringCopy(ptr, gText_One);
+			(*ptr++) = CHAR_SPACE;
+			ptr = StringCopy(ptr, ItemId_GetName(array[0]));
+			if (array[1] != ITEM_NONE) {
+				(*ptr++) = CHAR_COMMA;
+				(*ptr++) = CHAR_NEWLINE;
+			}
+			array += 1;
+		}
+	}
+	*ptr = EOS;
+}
+
+
+void RemovePuzzleItems(struct ScriptContext *ctx)
+{
+	u8 *ptr = gStringVar1;
+	u8 itemCount = 0;
+	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	const u16 *array = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_POST_LIST);
+	gSpecialVar_Result = FALSE;
+	
+	if (array != NULL)
+	{
+		while (array[0] != ITEM_NONE)
+		{
+			gSpecialVar_Result |= RemoveBagItem(array[0], 1);
+			
+			if (array[1] == ITEM_NONE && itemCount > 0) {
+				ptr = StringCopy(ptr, gText_And);
+				(*ptr++) = CHAR_SPACE;
+			}
+			itemCount++;
+			ptr = StringCopy(ptr, gText_One);
+			(*ptr++) = CHAR_SPACE;
+			ptr = StringCopy(ptr, ItemId_GetName(array[0]));
+			if (array[1] != ITEM_NONE) {
+				(*ptr++) = CHAR_COMMA;
+				(*ptr++) = CHAR_NEWLINE;
+			}
+			array += 1;
+		}
+	}
+	*ptr = EOS;
 }
 
 void SelectTrickHouseParty(struct ScriptContext *ctx)

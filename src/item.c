@@ -265,9 +265,9 @@ bool8 AddBagItem(u16 itemId, u16 count)
         newItems = AllocZeroed(itemPocket->capacity * sizeof(struct ItemSlot));
         memcpy(newItems, itemPocket->itemSlots, itemPocket->capacity * sizeof(struct ItemSlot));
 
-        if (pocket != BERRIES_POCKET)
-            slotCapacity = 99;
-        else
+        // if (pocket != BERRIES_POCKET)
+        //     slotCapacity = 99;
+        // else
             slotCapacity = 999;
 
         for (i = 0; i < itemPocket->capacity; i++)

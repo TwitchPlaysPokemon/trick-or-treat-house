@@ -247,7 +247,7 @@
 #define EVENT_OBJ_GFX_TRICK_DOOR_STONE           242
 #define EVENT_OBJ_GFX_TRICK_DOOR_STONE_ROOM      243
 #define EVENT_OBJ_GFX_TRICK_DOOR_NORTH           244
-#define EVENT_OBJ_GFX_TRICK_MASTER                33 // TODO?
+#define EVENT_OBJ_GFX_TRICK_MASTER                19 // TODO?
 
 #define EVENT_OBJ_GFX_BARD_2                     245
 #define NUM_OBJECT_GRAPHICS_INFO 	EVENT_OBJ_GFX_BARD_2

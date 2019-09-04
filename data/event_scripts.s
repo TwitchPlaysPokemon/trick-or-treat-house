@@ -308,7 +308,13 @@ EventScript_ResetAllBerries:: @ 827149D
 
 EventScript_ResetAllMapFlags:: @ 82715DE
 	setrespawn HEAL_LOCATION_TRICK_HOUSE_EXT
+	setflag FLAG_SYS_B_DASH
 	call EventScript_ResetAllBerries
+	giveitem ITEM_POTION, 5
+	giveitem ITEM_ANTIDOTE, 2
+	giveitem ITEM_FULL_HEAL, 6
+	giveitem ITEM_ETHER, 2
+	giveitem ITEM_LAVA_COOKIE, 12
 	end
 
 EverGrandeCity_HallOfFame_EventScript_2717C1:: @ 82717C1

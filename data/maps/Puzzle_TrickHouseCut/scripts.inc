@@ -2,6 +2,7 @@ Puzzle_TrickHouseCut_MapScripts::
 	puzzle_info Puzzle_TrickHouseCut_Name, Puzzle_TrickHouseCut_Author
 	puzzle_adjective Puzzle_TrickHouseCut_Adjective
 	puzzle_quip Puzzle_TrickHouseCut_Quip
+	puzzle_item_prereqs Puzzle_TrickHouseCut_PrereqItems
 	puzzle_remove_after Puzzle_TrickHouseCut_RemoveItems
 	.byte 0
 
@@ -18,6 +19,12 @@ Puzzle_TrickHouseCut_Quip:
 .align 2
 Puzzle_TrickHouseCut_RemoveItems:
 	.2byte ITEM_CUT_ITEM
+	.2byte ITEM_STRENGTH_ITEM
+	.2byte 0
+
+.align 2
+Puzzle_TrickHouseCut_PrereqItems:
+	.2byte ITEM_STRENGTH_ITEM
 	.2byte 0
 
 @ -----------------------------------------------------

@@ -14,7 +14,7 @@ TrickHouseCorridor_Transition:
 @ -----------------------------------------------------
 
 TrickHouseCorridor_OnLoad:
-	compare VAR_PUZZLE_STATE, 3
+	compare VAR_PUZZLE_STATE, 2
 	call_if_lt TrickHouseCorridor_CloseBackDoor
 	compare VAR_PUZZLE_STATE, 1
 	call_if_eq TrickHouseCorridor_OpenPuzzleDoor
@@ -37,6 +37,7 @@ TrickHouseCorridor_FrameTable:
 TrickHouseCorridor_IncrementPuzzle:
 	call PuzzleCommon_EventScript_IncrementPuzzle
 	clearflag FLAG_HIDE_TRICK_HOUSE_INTRO_CHAR
+	callnative SetupPuzzleWarp
 	call AssignPuzzleMetaVariables
 	call TrickHouseCorridor_CloseBackDoor
 	end
@@ -81,11 +82,16 @@ TrickHouseCorridor_TriggerScript_RunIntro::
 	applymovement EVENT_OBJ_ID_PLAYER, 0
 	applymovement LID_MASTER, Common_Movement_WalkLeft1
 	waitmovement EVENT_OBJ_ID_PLAYER
-	@
-	@ TODO
+	@ Introduce puzzle
 	callnative LoadPuzzleAuthor
 	callnative LoadPuzzleAdjective
 	msgbox TrickHouseCorridor_Text_RunIntro1
+	@ Give items, and talk about it if we do
+	callnative GiveItemPrerequisites
+	compare VAR_RESULT, TRUE
+	call_if_eq TrickHouseCorridor_TriggerScript_RunIntro_ItemRecieve
+	@ Leave
+	msgbox TrickHouseCorridor_Text_RunIntro4
 	closemessage
 	compare VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_TRICK_MASTER
 	call_if_eq TrickHouseCorridor_TriggerScript_RunIntro_TrickMasterOut
@@ -95,6 +101,25 @@ TrickHouseCorridor_TriggerScript_RunIntro::
 	call TrickHouseCorridor_OpenPuzzleDoor
 	releaseall
 	end
+TrickHouseCorridor_Text_RunIntro1:
+	.string "The next challenge I collected off\n"
+	.string "someone named {STR_VAR_1}.\p"
+	.string "I'd call it a {STR_VAR_2} puzzle.$"
+TrickHouseCorridor_Text_RunIntro2:
+	.string "Oh, yes, and you'll be needing this!$"
+TrickHouseCorridor_Text_RunIntro3:
+	.string "You're handed {STR_VAR_1}!$"
+TrickHouseCorridor_Text_RunIntro4:
+	.string "See you on the other side!$"
+
+TrickHouseCorridor_TriggerScript_RunIntro_ItemRecieve:
+	msgbox TrickHouseCorridor_Text_RunIntro2
+	message TrickHouseCorridor_Text_RunIntro3
+	waitmessage
+	playfanfare MUS_FANFA4
+	waitfanfare
+	waitbuttonpress
+	return
 
 TrickHouseCorridor_TriggerScript_RunIntro_TrickMasterOut:
 	@ Trick Master warps away
@@ -117,11 +142,6 @@ TrickHouseCorridor_TriggerScript_RunIntro_CompanionLeaves:
 	waitdooranim
 	return
 
-TrickHouseCorridor_Text_RunIntro1:
-	.string "The next challenge I collected off\n"
-	.string "someone named {STR_VAR_1}.\p"
-	.string "I'd call it a {STR_VAR_2} puzzle.\p"
-	.string "See you on the other side!$"
 
 .align 2
 TrickHouseCorridor_MovementTable_RunIntro:

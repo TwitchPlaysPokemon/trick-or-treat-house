@@ -13,6 +13,7 @@ script TrickHouseEnd_OnLoad {
 
 script TrickHouseEnd_OnTransition {
 	setvar(VAR_PUZZLE_STATE, 2)
+	turnobject EVENT_OBJ_ID_PLAYER, 2
 }
 
 script TrickHouseEnd_EventScript_FinalPuzzlePerson {
@@ -27,9 +28,39 @@ script TrickHouseEnd_EventScript_FinalPuzzlePerson {
 script TrickHouseEnd_EventScript_Nurse {
 	lock
 	faceplayer
-	special(HealPlayerParty)
-	# TODO remove items
-	setvar(VAR_TEMP_2, 1)
+	compare (VAR_TEMP_2, 1)
+	goto_if_eq (TrickHouseEnd_EventScript_FinalizePuzzle1)
+	call (TrickHouseEnd_EventScript_FinalizePuzzle)
 	release
 }
 
+script TrickHouseEnd_TriggerScript_Nurse {
+	lock
+	applymovement (1, Common_Movement_FacePlayer)
+	waitmovement (0)
+	call (TrickHouseEnd_EventScript_FinalizePuzzle)
+	release
+}
+
+script TrickHouseEnd_EventScript_FinalizePuzzle {
+	msgbox ("Let's heal your POKéMON.$")
+	fadescreen(1)
+	playfanfare(MUS_ME_ASA)
+	special(HealPlayerParty)
+	waitfanfare
+	fadescreen(0)
+	callnative(RemovePuzzleItems)
+	if (var(VAR_RESULT) == TRUE) {
+		msgbox("Oh, and I'll be needing those puzzle items\n"
+			   "from you.$")
+		msgbox("You hand over {STR_VAR_1}.$")
+	}
+	msgbox ("Good luck on the next puzzle!$")
+	setvar(VAR_TEMP_2, 1)
+	return
+}
+
+script TrickHouseEnd_EventScript_FinalizePuzzle1 {
+	msgbox ("Good luck on the next puzzle!$")
+	release
+}

@@ -1273,7 +1273,6 @@
 #define FLAG_VISITED_MOSSDEEP_CITY                  (SYSTEM_FLAGS + 0x1C)
 #define FLAG_VISITED_SOOTOPOLIS_CITY                (SYSTEM_FLAGS + 0x1D)
 #define FLAG_VISITED_EVER_GRANDE_CITY               (SYSTEM_FLAGS + 0x1E)
-
 #define FLAG_IS_CHAMPION                            (SYSTEM_FLAGS + 0x1F) // Seems to be related to linking.
 #define FLAG_NURSE_UNION_ROOM_REMINDER              (SYSTEM_FLAGS + 0x20)
 #define FLAG_PENDING_DAYCARE_EGG                    (SYSTEM_FLAGS + 0x21) // Unused Flag
@@ -1283,17 +1282,14 @@
 #define FLAG_UNUSED_0x885                           (SYSTEM_FLAGS + 0x25) // Unused Flag
 #define FLAG_UNUSED_0x886                           (SYSTEM_FLAGS + 0x26) // Unused Flag
 #define FLAG_UNUSED_0x887                           (SYSTEM_FLAGS + 0x27) // Unused Flag
-
 #define FLAG_SYS_USE_FLASH                          (SYSTEM_FLAGS + 0x28)
 #define FLAG_SYS_USE_STRENGTH                       (SYSTEM_FLAGS + 0x29)
 #define FLAG_SYS_WEATHER_CTRL                       (SYSTEM_FLAGS + 0x2A)
 #define FLAG_SYS_CYCLING_ROAD                       (SYSTEM_FLAGS + 0x2B)
 #define FLAG_SYS_SAFARI_MODE                        (SYSTEM_FLAGS + 0x2C)
 #define FLAG_SYS_CRUISE_MODE                        (SYSTEM_FLAGS + 0x2D)
-
 #define FLAG_UNUSED_0x88E                           (SYSTEM_FLAGS + 0x2E) // Unused Flag
 #define FLAG_UNUSED_0x88F                           (SYSTEM_FLAGS + 0x2F) // Unused Flag
-
 #define FLAG_SYS_TV_HOME                            (SYSTEM_FLAGS + 0x30)
 #define FLAG_SYS_TV_WATCH                           (SYSTEM_FLAGS + 0x31)
 #define FLAG_SYS_TV_START                           (SYSTEM_FLAGS + 0x32)
@@ -1306,7 +1302,6 @@
 #define FLAG_SYS_UNUSED_CAVE_BATTLE                 (SYSTEM_FLAGS + 0x39) // Unused Flag?
 #define FLAG_SYS_SHOAL_TIDE                         (SYSTEM_FLAGS + 0x3A)
 #define FLAG_SYS_RIBBON_GET                         (SYSTEM_FLAGS + 0x3B)
-
 #define FLAG_LANDMARK_FLOWER_SHOP                   (SYSTEM_FLAGS + 0x3C)
 #define FLAG_LANDMARK_MR_BRINEY_HOUSE               (SYSTEM_FLAGS + 0x3D)
 #define FLAG_LANDMARK_ABANDONED_SHIP                (SYSTEM_FLAGS + 0x3E)
@@ -1322,7 +1317,6 @@
 #define FLAG_LANDMARK_BATTLE_FRONTIER               (SYSTEM_FLAGS + 0x48)
 #define FLAG_LANDMARK_SOUTHERN_ISLAND               (SYSTEM_FLAGS + 0x49)
 #define FLAG_LANDMARK_FIERY_PATH                    (SYSTEM_FLAGS + 0x4A)
-
 #define FLAG_SYS_PC_LANETTE                         (SYSTEM_FLAGS + 0x4B)
 #define FLAG_SYS_MYSTERY_EVENT_ENABLE               (SYSTEM_FLAGS + 0x4C)
 #define FLAG_SYS_ENC_UP_ITEM                        (SYSTEM_FLAGS + 0x4D)
@@ -1332,9 +1326,7 @@
 #define FLAG_SYS_BRAILLE_REGICE_COMPLETED           (SYSTEM_FLAGS + 0x51)
 #define FLAG_SYS_REGISTEEL_PUZZLE_COMPLETED         (SYSTEM_FLAGS + 0x52)
 #define FLAG_SYS_HAS_EON_TICKET                     (SYSTEM_FLAGS + 0x53)
-
 #define FLAG_LANDMARK_POKEMON_LEAGUE                (SYSTEM_FLAGS + 0x54)
-
 #define FLAG_LANDMARK_ISLAND_CAVE                   (SYSTEM_FLAGS + 0x55)
 #define FLAG_LANDMARK_DESERT_RUINS                  (SYSTEM_FLAGS + 0x56)
 #define FLAG_LANDMARK_FOSSIL_MANIACS_HOUSE          (SYSTEM_FLAGS + 0x57)
@@ -1343,18 +1335,13 @@
 #define FLAG_LANDMARK_TUNNELERS_REST_HOUSE          (SYSTEM_FLAGS + 0x5A)
 #define FLAG_LANDMARK_HUNTERS_HOUSE                 (SYSTEM_FLAGS + 0x5B)
 #define FLAG_LANDMARK_SEALED_CHAMBER                (SYSTEM_FLAGS + 0x5C)
-
 #define FLAG_SYS_TV_LATIAS_LATIOS                   (SYSTEM_FLAGS + 0x5D)
-
 #define FLAG_LANDMARK_SKY_PILLAR                    (SYSTEM_FLAGS + 0x5E)
-
 #define FLAG_SYS_SHOAL_ITEM                         (SYSTEM_FLAGS + 0x5F)
 #define FLAG_SYS_B_DASH                             (SYSTEM_FLAGS + 0x60) // RECEIVED Running Shoes
 #define FLAG_SYS_CTRL_OBJ_DELETE                    (SYSTEM_FLAGS + 0x61)
 #define FLAG_SYS_RESET_RTC_ENABLE                   (SYSTEM_FLAGS + 0x62)
-
 #define FLAG_LANDMARK_BERRY_MASTERS_HOUSE           (SYSTEM_FLAGS + 0x63)
-
 #define FLAG_SYS_TOWER_SILVER                       (SYSTEM_FLAGS + 0x64)
 #define FLAG_SYS_TOWER_GOLD                         (SYSTEM_FLAGS + 0x65)
 #define FLAG_SYS_DOME_SILVER                        (SYSTEM_FLAGS + 0x66)
@@ -1370,20 +1357,15 @@
 #define FLAG_SYS_PYRAMID_SILVER                     (SYSTEM_FLAGS + 0x70)
 #define FLAG_SYS_PYRAMID_GOLD                       (SYSTEM_FLAGS + 0x71)
 #define FLAG_SYS_FRONTIER_PASS                      (SYSTEM_FLAGS + 0x72)
-
 #define FLAG_MAP_SCRIPT_CHECKED_DEOXYS              (SYSTEM_FLAGS + 0x73)
 #define FLAG_DEOXYS_ROCK_COMPLETE                   (SYSTEM_FLAGS + 0x74)
 #define FLAG_ENABLE_SHIP_BIRTH_ISLAND               (SYSTEM_FLAGS + 0x75)
 #define FLAG_ENABLE_SHIP_FARAWAY_ISLAND             (SYSTEM_FLAGS + 0x76)
-
 #define FLAG_SYS_STORAGE_UNKNOWN_FLAG               (SYSTEM_FLAGS + 0x77)
-
 #define FLAG_ARRIVED_ON_FARAWAY_ISLAND              (SYSTEM_FLAGS + 0x78)
 #define FLAG_ARRIVED_AT_MARINE_CAVE_EMERGE_SPOT     (SYSTEM_FLAGS + 0x79)
 #define FLAG_ARRIVED_AT_TERRA_CAVE_ENTRANCE         (SYSTEM_FLAGS + 0x7A)
-
 #define FLAG_SYS_MYSTERY_GIFT_ENABLE                (SYSTEM_FLAGS + 0x7B)
-
 #define FLAG_ENTERED_MIRAGE_TOWER                   (SYSTEM_FLAGS + 0x7C)
 #define FLAG_LANDMARK_ALTERING_CAVE                 (SYSTEM_FLAGS + 0x7D)
 #define FLAG_LANDMARK_DESERT_UNDERPASS              (SYSTEM_FLAGS + 0x7E)
@@ -1391,11 +1373,8 @@
 #define FLAG_ENABLE_SHIP_NAVEL_ROCK                 (SYSTEM_FLAGS + 0x80)
 #define FLAG_ARRIVED_AT_NAVEL_ROCK                  (SYSTEM_FLAGS + 0x81)
 #define FLAG_LANDMARK_TRAINER_HILL                  (SYSTEM_FLAGS + 0x82)
-
 #define FLAG_UNUSED_0x8E3                           (SYSTEM_FLAGS + 0x83) // Unused Flag
-
 #define FLAG_RECEIVED_POKEDEX_FROM_BIRCH            (SYSTEM_FLAGS + 0x84)
-
 #define FLAG_UNUSED_0x8E5                           (SYSTEM_FLAGS + 0x85) // Unused Flag
 #define FLAG_UNUSED_0x8E6                           (SYSTEM_FLAGS + 0x86) // Unused Flag
 #define FLAG_UNUSED_0x8E7                           (SYSTEM_FLAGS + 0x87) // Unused Flag

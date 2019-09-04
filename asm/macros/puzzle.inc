@@ -25,6 +25,21 @@
 .4byte \string
 .endm
 
+.macro puzzle_metavars pointer:req
+.byte MAP_SCRIPT_PUZZLE_META_VARIABLES
+.4byte \pointer
+.endm
+
+.macro puzzle_setup_script pointer:req
+.byte MAP_SCRIPT_PUZZLE_SETUP_SCRIPT
+.4byte \pointer
+.endm
+
+.macro puzzle_teardown_script pointer:req
+.byte MAP_SCRIPT_PUZZLE_TEARDOWN_SCRIPT
+.4byte \pointer
+.endm
+
 @ -----------------------------------------------------
 
 GATE_SHAPE_L1 = 0

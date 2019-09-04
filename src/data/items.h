@@ -8,7 +8,7 @@ const struct Item gItems[] =
 {
     [ITEM_NONE] =
     {
-        .name = _("????????"),
+        .name = _("<NO ITEM>"),
         .itemId = ITEM_NONE,
         .price = 0,
         .description = sDummyDesc,
@@ -3284,7 +3284,7 @@ const struct Item gItems[] =
 
     [ITEM_FLY_ITEM] =
     {
-        .name = _("????????"),
+        .name = _("<FLY ITEM>"),
         .itemId = ITEM_FLY_ITEM,
         .price = 0,
         .description = sDummyDesc,
