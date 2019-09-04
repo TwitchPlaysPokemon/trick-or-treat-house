@@ -1,0 +1,4 @@
+raw `
+TestMapHallway_MapScripts::
+	.byte 0
+`
