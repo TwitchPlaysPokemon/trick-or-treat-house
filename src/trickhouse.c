@@ -35,7 +35,7 @@
 #include "constants/items.h"
 
 static void Task_PuzzleSelect(u8 taskId);
-static void GenerateInitialRentalMons(void);
+static void GenerateRentalMons(void);
 
 extern const u16 gPuzzleList[];
 
@@ -360,26 +360,29 @@ void RemovePuzzleItems(struct ScriptContext *ctx)
 	*ptr = EOS;
 }
 
-void SelectTrickHouseParty(struct ScriptContext *ctx)
+void SelectInitialRentalParty(struct ScriptContext *ctx)
 {
-	if (!FlagGet(FLAG_SYS_POKEMON_GET))
-	{
-		GenerateInitialRentalMons();
-		ZeroPlayerPartyMons();
-		DoBattleFactorySelectScreen();
-		FlagSet(FLAG_SYS_POKEMON_GET);
-	} 
-	else 
-	{
-		DoBattleFactorySwapScreen();
-	}
+	GenerateRentalMons();
+	ZeroPlayerPartyMons();
+	DoBattleFactorySelectScreen();
+	FlagSet(FLAG_SYS_POKEMON_GET);
+}
+
+void SwapRentalParty(struct ScriptContext *ctx)
+{
+	DoBattleFactorySwapScreen();
+}
+
+void RandomizeRentalMons(struct ScriptContext *ctx)
+{
+	GenerateRentalMons();
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 
 // extern const struct BattleFrontierTrainer *gFacilityTrainers;
 extern const struct FacilityMon *gFacilityTrainerMons;
-static void GenerateInitialRentalMons(void)
+static void GenerateRentalMons(void)
 {
     s32 i, j;
     u8 firstMonId;
@@ -402,8 +405,10 @@ static void GenerateInitialRentalMons(void)
     i = 0;
     while (i != PARTY_SIZE)
     {
+		monSetId = min(880, (70 + (10 * VarGet(VAR_CURRENT_PUZZLE))));
+        monSetId = Random() % monSetId;
+		
         // Cannot have two pokemon of the same species.
-        monSetId = Random() % 70;
         for (j = firstMonId; j < firstMonId + i; j++)
         {
             u16 monId = monIds[j];

@@ -58,6 +58,7 @@ const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_CyclingTriathleteM
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_CyclingTriathleteF;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Nurse;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_ItemBall;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_HMBall;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_BerryTree;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_BerryTreeEarlyStages;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_BerryTreeLateStages;
@@ -492,6 +493,7 @@ const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] =
     [EVENT_OBJ_GFX_LUGIA] =                    &gEventObjectGraphicsInfo_Lugia,
     [EVENT_OBJ_GFX_HOOH] =                     &gEventObjectGraphicsInfo_HoOh,
     
+    [EVENT_OBJ_GFX_HM_BALL] =                  &gEventObjectGraphicsInfo_HMBall,
     [EVENT_OBJ_GFX_TRICK_SCROLL] =             &gEventObjectGraphicsInfo_TrickScroll,
     [EVENT_OBJ_GFX_TRICK_DOOR_SCROLL] =        &gEventObjectGraphicsInfo_TrickDoorScroll,
     [EVENT_OBJ_GFX_TRICK_DOOR_SCROLL_ROOM] =   &gEventObjectGraphicsInfo_TrickDoorScrollRoom,

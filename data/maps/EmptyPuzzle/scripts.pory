@@ -1,0 +1,10 @@
+raw `
+EmptyPuzzle_MapScripts::
+	puzzle_info EmptyPuzzle_Name, EmptyPuzzle_Author
+	.byte 0
+
+EmptyPuzzle_Name:
+	.string "Empty Puzzle$"
+EmptyPuzzle_Author:
+	.string "necessity$"
+`

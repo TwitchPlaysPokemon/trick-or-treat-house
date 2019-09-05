@@ -6186,3 +6186,5 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/TestMapHallway/scripts.inc"
 
 	.include "data/maps/TestLayoutSwitching2/scripts.inc"
+
+	.include "data/maps/EmptyPuzzle/scripts.inc"

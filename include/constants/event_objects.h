@@ -247,9 +247,10 @@
 #define EVENT_OBJ_GFX_TRICK_DOOR_STONE           242
 #define EVENT_OBJ_GFX_TRICK_DOOR_STONE_ROOM      243
 #define EVENT_OBJ_GFX_TRICK_DOOR_NORTH           244
+#define EVENT_OBJ_GFX_HM_BALL                    245
 #define EVENT_OBJ_GFX_TRICK_MASTER                19 // TODO?
 
-#define EVENT_OBJ_GFX_BARD_2                     245
+#define EVENT_OBJ_GFX_BARD_2                     246
 #define NUM_OBJECT_GRAPHICS_INFO 	EVENT_OBJ_GFX_BARD_2
 
 // These are dynamic object gfx ids.

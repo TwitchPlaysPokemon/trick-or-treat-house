@@ -32,6 +32,7 @@ PuzzleCommon_EventScript_IncrementPuzzle::
 	addvar VAR_CURRENT_PUZZLE, 1
 	setvar VAR_PUZZLE_STATE, 0
 	callnative ClearPuzzleEventData
+	callnative RandomizeRentalMons
 	return
 
 

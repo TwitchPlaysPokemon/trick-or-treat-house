@@ -16,7 +16,8 @@
         "Route110_TrickHousePuzzle8",
         "TestMapHallway",
         "TestLayoutSwitching",
-        "TestLayoutSwitching2"
+        "TestLayoutSwitching2",
+        "EmptyPuzzle"
     ],
     "gMapGroup2": [
         "SecretBase_RedCave1",

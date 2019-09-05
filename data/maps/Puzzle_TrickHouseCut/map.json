@@ -50,8 +50,8 @@
             "script": "EventScript_CutTree",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 10,
-            "y": 13
+            "x": 16,
+            "y": 15
         },
         {
             "elevation": 3,
@@ -167,21 +167,21 @@
             "script": "Common_EventScript_ItemPotion",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 1,
-            "y": 3
+            "x": 14,
+            "y": 11
         },
         {
             "elevation": 3,
             "flag": "FLAG_PICKED_UP_CUT_ITEM",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "EVENT_OBJ_GFX_HM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_ItemCut",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 14,
-            "y": 11
+            "x": 12,
+            "y": 15
         },
         {
             "elevation": 3,
@@ -208,6 +208,19 @@
             "trainer_type": "1",
             "x": 20,
             "y": 15
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_ITEM_2",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_ItemRivialHerb",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 1,
+            "y": 4
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_110",

@@ -24,6 +24,24 @@
             "var_value": "0",
             "x": 20,
             "y": 8
+        },
+        {
+            "elevation": 0,
+            "script": "TrickHouseCorridor_TriggerScript_PokemonTable",
+            "type": "trigger",
+            "var": "VAR_TEMP_E",
+            "var_value": "1",
+            "x": 11,
+            "y": 7
+        },
+        {
+            "elevation": 0,
+            "script": "TrickHouseCorridor_TriggerScript_PokemonTable",
+            "type": "trigger",
+            "var": "VAR_TEMP_E",
+            "var_value": "1",
+            "x": 11,
+            "y": 8
         }
     ],
     "id": "MAP_TRICK_HOUSE_CORRIDOR",

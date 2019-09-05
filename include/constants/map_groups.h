@@ -19,6 +19,7 @@
 #define MAP_TEST_MAP_HALLWAY             (7 | (1 << 8))
 #define MAP_TEST_LAYOUT_SWITCHING        (8 | (1 << 8))
 #define MAP_TEST_LAYOUT_SWITCHING2       (9 | (1 << 8))
+#define MAP_EMPTY_PUZZLE                 (10 | (1 << 8))
 
 // Map Group 2
 #define MAP_SECRET_BASE_RED_CAVE1    (0 | (2 << 8))

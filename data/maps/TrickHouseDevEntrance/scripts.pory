@@ -15,8 +15,10 @@ script TrickHouseDevEntrance_EventScript_Pokeball {
 	lock
 	if (flag(FLAG_SYS_POKEMON_GET) == FALSE) {
 		givemon (SPECIES_QUILAVA, 50, 0, 0, 0, 0)
-		setflag(FLAG_SYS_POKEMON_GET)
-		msgbox("Got a Quilava!$")
+		givemon (SPECIES_TROPIUS, 50, 0, 0, 0, 0)
+		givemon (SPECIES_LANTURN, 50, 0, 0, 0, 0)
+		setflag (FLAG_SYS_POKEMON_GET)
+		msgbox ("Got a Quilava, a Tropius, and a Lanturn!$")
 	}
 	release
 }
