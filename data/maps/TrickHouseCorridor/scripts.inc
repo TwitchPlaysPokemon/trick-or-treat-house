@@ -184,8 +184,6 @@ TrickHouseCorridor_TriggerScript_RunIntro::
 	applymovement LID_MASTER, Common_Movement_WalkLeft1
 	waitmovement EVENT_OBJ_ID_PLAYER
 	@ Introduce puzzle
-	callnative LoadPuzzleAuthor
-	callnative LoadPuzzleAdjective
 	msgbox TrickHouseCorridor_Text_RunIntro1
 	@ Give items, and talk about it if we do
 	callnative GiveItemPrerequisites
@@ -204,8 +202,8 @@ TrickHouseCorridor_TriggerScript_RunIntro::
 	end
 TrickHouseCorridor_Text_RunIntro1:
 	.string "The next challenge I collected off\n"
-	.string "someone named {STR_VAR_1}.\p"
-	.string "I'd call it a {STR_VAR_2} puzzle.$"
+	.string "someone named {PUZZLE_AUTHOR}.\p"
+	.string "I'd call it a {PUZZLE_ADJECTIVE} puzzle.$"
 TrickHouseCorridor_Text_RunIntro2:
 	.string "Oh, yes, and you'll be needing this!$"
 TrickHouseCorridor_Text_RunIntro3:

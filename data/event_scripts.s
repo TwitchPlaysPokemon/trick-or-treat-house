@@ -74,6 +74,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/puzzle_list.inc"
 	.include "data/scripts/common_scripts.inc"
 	.include "data/scripts/trick_house.inc"
+	.include "data/text/trick_house.inc"
 
 	.include "data/maps/TrickHouseExt/scripts.inc"
 	.include "data/maps/PetalburgCity/scripts.inc"
@@ -5320,7 +5321,7 @@ LilycoveCity_Harbor_Text_2C6951: @ 82C6951
 	.string "someone that I owe so much to?$"
 
 LilycoveCity_Harbor_Text_2C69AA: @ 82C69AA
-	.string "{PLAYER}{KUN}, I'm terribly sorry.\p"
+	.string "{PLAYER}, I'm terribly sorry.\p"
 	.string "You came to me seeking my help,\n"
 	.string "and we almost turned you away.\p"
 	.string "Well, let me make things right.\p"

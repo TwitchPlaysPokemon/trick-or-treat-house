@@ -1424,15 +1424,16 @@
 	.2byte \index
 	.endm
 
-	@ After using this command, all standard message boxes will use the signpost frame.
-	.macro signmsg
+	@ Buffers a pointer selected with selectpointer as a string in the given string variable
+	.macro bufferselectedstring index:req
 	.byte 0xca
+	.byte \index
 	.endm
 
 	@ Ends the effects of signmsg, returning message box frames to normal.
-	.macro normalmsg
-	.byte 0xcb
-	.endm
+	@ .macro normalmsg
+	@ .byte 0xcb
+	@ .endm
 
 	@ Compares the value of a hidden variable to a dword.
 	.macro comparehiddenvar a:req, value:req

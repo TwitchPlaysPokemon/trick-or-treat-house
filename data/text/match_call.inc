@@ -2309,7 +2309,7 @@ gText_Wallace_Pokenav_2B3790:: @ 82B3790
 MossdeepCity_SpaceCenter_2F_Text_2B38C1: @ 82B38C1
 	.string "… … … … … …\n"
 	.string "… … … … … Beep!\p"
-	.string "MAY: Hi, {PLAYER}{KUN}!\p"
+	.string "MAY: Hi, {PLAYER}!\p"
 	.string "I was just in PACIFIDLOG a little\n"
 	.string "while ago.\p"
 	.string "I saw a giant green POKéMON\n"
@@ -2832,7 +2832,7 @@ gText_Steven_Pokenav_2B5ED9:: @ 82B5ED9
 	.string "somewhere!$"
 
 Route101_Text_2B5F52: @ 82B5F52
-	.string "PROF. BIRCH: Oh, {PLAYER}{KUN}!\n"
+	.string "PROF. BIRCH: Oh, {PLAYER}!\n"
 	.string "I've already heard about you!\p"
 	.string "It seems your POKéNAV's been\n"
 	.string "upgraded with MATCH CALL.\p"

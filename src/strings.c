@@ -4,17 +4,6 @@
 ALIGNED(4)
 const u8 gText_ScriptError[] = _("Script error!\nIf you see this, report it!");
 const u8 gExpandedPlaceholder_Empty[] = _("");
-const u8 gExpandedPlaceholder_Kun[] = _("");
-const u8 gExpandedPlaceholder_Chan[] = _("");
-const u8 gExpandedPlaceholder_Sapphire[] = _("SAPPHIRE");
-const u8 gExpandedPlaceholder_Ruby[] = _("RUBY");
-const u8 gExpandedPlaceholder_Emerald[] = _("EMERALD");
-const u8 gExpandedPlaceholder_Aqua[] = _("AQUA");
-const u8 gExpandedPlaceholder_Magma[] = _("MAGMA");
-const u8 gExpandedPlaceholder_Archie[] = _("ARCHIE");
-const u8 gExpandedPlaceholder_Maxie[] = _("MAXIE");
-const u8 gExpandedPlaceholder_Kyogre[] = _("KYOGRE");
-const u8 gExpandedPlaceholder_Groudon[] = _("GROUDON");
 const u8 gExpandedPlaceholder_Brendan[] = _("BRENDAN");
 const u8 gExpandedPlaceholder_May[] = _("MAY");
 const u8 gText_EggNickname[] = _("EGG");

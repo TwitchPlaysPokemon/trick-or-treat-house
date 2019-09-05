@@ -8,6 +8,7 @@
 // #define EVENT_OBJ_GFX_QUINTY_PLUMP                 4
 #define EVENT_OBJ_GFX_NINJA_BOY                    5
 #define EVENT_OBJ_GFX_TWIN                         6
+// Start list of random event objects in the end room
 #define EVENT_OBJ_GFX_BOY_1                        7
 #define EVENT_OBJ_GFX_GIRL_1                       8
 #define EVENT_OBJ_GFX_BOY_2                        9
@@ -29,7 +30,7 @@
 #define EVENT_OBJ_GFX_POKEFAN_M                   25
 #define EVENT_OBJ_GFX_WOMAN_4                     26
 #define EVENT_OBJ_GFX_COOK                        27
-#define EVENT_OBJ_GFX_LINK_RECEPTIONIST           28
+#define EVENT_OBJ_GFX_MAN_4                       28
 #define EVENT_OBJ_GFX_OLD_MAN                     29
 #define EVENT_OBJ_GFX_OLD_WOMAN                   30
 #define EVENT_OBJ_GFX_CAMPER                      31
@@ -42,9 +43,9 @@
 #define EVENT_OBJ_GFX_SCHOOL_KID_M                38
 #define EVENT_OBJ_GFX_MANIAC                      39
 #define EVENT_OBJ_GFX_HEX_MANIAC                  40
-#define EVENT_OBJ_GFX_RAYQUAZA_1                  41
-#define EVENT_OBJ_GFX_SWIMMER_M                   42
-#define EVENT_OBJ_GFX_SWIMMER_F                   43
+#define EVENT_OBJ_GFX_MAN_5                       41
+#define EVENT_OBJ_GFX_REPORTER_M                  42
+#define EVENT_OBJ_GFX_REPORTER_F                  43
 #define EVENT_OBJ_GFX_BLACK_BELT                  44
 #define EVENT_OBJ_GFX_BEAUTY                      45
 #define EVENT_OBJ_GFX_SCIENTIST_1                 46
@@ -52,6 +53,7 @@
 #define EVENT_OBJ_GFX_GENTLEMAN                   48
 #define EVENT_OBJ_GFX_SAILOR                      49
 #define EVENT_OBJ_GFX_FISHERMAN                   50
+// End random list
 #define EVENT_OBJ_GFX_RUNNING_TRIATHLETE_M        51
 #define EVENT_OBJ_GFX_RUNNING_TRIATHLETE_F        52
 #define EVENT_OBJ_GFX_TUBER_F                     53
@@ -66,10 +68,10 @@
 #define EVENT_OBJ_GFX_BERRY_TREE_LATE_STAGES      62
 #define EVENT_OBJ_GFX_BRENDAN_ACRO_BIKE           63
 #define EVENT_OBJ_GFX_PROF_BIRCH                  64
-#define EVENT_OBJ_GFX_MAN_4                       65
-#define EVENT_OBJ_GFX_MAN_5                       66
-#define EVENT_OBJ_GFX_REPORTER_M                  67
-#define EVENT_OBJ_GFX_REPORTER_F                  68
+#define EVENT_OBJ_GFX_LINK_RECEPTIONIST           65
+#define EVENT_OBJ_GFX_RAYQUAZA_1                  66
+#define EVENT_OBJ_GFX_SWIMMER_M                   67
+#define EVENT_OBJ_GFX_SWIMMER_F                   68
 #define EVENT_OBJ_GFX_BARD                        69
 #define EVENT_OBJ_GFX_ANABEL                      70
 #define EVENT_OBJ_GFX_TUCKER                      71

@@ -1695,6 +1695,14 @@ bool8 ScrCmd_bufferstdstring(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_bufferselectedstring(struct ScriptContext *ctx)
+{
+    u8 stringVarIndex = ScriptReadByte(ctx);
+
+    StringCopy(sScriptStringVars[stringVarIndex], (const u8*)ctx->data[0]);
+    return FALSE;
+}
+
 bool8 ScrCmd_buffercontesttype(struct ScriptContext *ctx)
 {
     u8 stringVarIndex = ScriptReadByte(ctx);

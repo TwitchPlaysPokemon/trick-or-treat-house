@@ -1,6 +1,10 @@
 #include "global.h"
 #include "string_util.h"
+#include "event_data.h"
 #include "text.h"
+#include "script.h"
+#include "constants/map_scripts.h"
+#include "constants/vars.h"
 
 EWRAM_DATA u8 gStringVar1[0x100] = {0};
 EWRAM_DATA u8 gStringVar2[0x100] = {0};
@@ -23,21 +27,6 @@ static const s32 sPowersOfTen[] =
      100000000,
     1000000000,
 };
-
-extern const u8 gExpandedPlaceholder_Empty[];
-extern const u8 gExpandedPlaceholder_Kun[];
-extern const u8 gExpandedPlaceholder_Chan[];
-extern const u8 gExpandedPlaceholder_Sapphire[];
-extern const u8 gExpandedPlaceholder_Ruby[];
-extern const u8 gExpandedPlaceholder_Emerald[];
-extern const u8 gExpandedPlaceholder_Aqua[];
-extern const u8 gExpandedPlaceholder_Magma[];
-extern const u8 gExpandedPlaceholder_Archie[];
-extern const u8 gExpandedPlaceholder_Maxie[];
-extern const u8 gExpandedPlaceholder_Kyogre[];
-extern const u8 gExpandedPlaceholder_Groudon[];
-extern const u8 gExpandedPlaceholder_Brendan[];
-extern const u8 gExpandedPlaceholder_May[];
 
 u8 *StringCopy10(u8 *dest, const u8 *src)
 {
@@ -428,6 +417,12 @@ static const u8 *ExpandPlaceholder_UnknownStringVar(void)
     return sUnknownStringVar;
 }
 
+extern const u8 gExpandedPlaceholder_Empty[];
+static const u8 *ExpandPlaceholder_Empty(void)
+{
+    return gExpandedPlaceholder_Empty;
+}
+
 static const u8 *ExpandPlaceholder_PlayerName(void)
 {
     return gSaveBlock2Ptr->playerName;
@@ -448,14 +443,8 @@ static const u8 *ExpandPlaceholder_StringVar3(void)
     return gStringVar3;
 }
 
-static const u8 *ExpandPlaceholder_KunChan(void)
-{
-    if (gSaveBlock2Ptr->playerGender == MALE)
-        return gExpandedPlaceholder_Kun;
-    else
-        return gExpandedPlaceholder_Chan;
-}
-
+extern const u8 gExpandedPlaceholder_Brendan[];
+extern const u8 gExpandedPlaceholder_May[];
 static const u8 *ExpandPlaceholder_RivalName(void)
 {
     if (gSaveBlock2Ptr->playerGender == MALE)
@@ -464,39 +453,59 @@ static const u8 *ExpandPlaceholder_RivalName(void)
         return gExpandedPlaceholder_Brendan;
 }
 
-static const u8 *ExpandPlaceholder_Version(void)
+extern const u8 gText_Pokemon[];
+static const u8 *ExpandPlaceholder_Pokemon(void)
 {
-    return gExpandedPlaceholder_Emerald;
+    return gText_Pokemon;
 }
 
-static const u8 *ExpandPlaceholder_Aqua(void)
+extern const u16 gPuzzleList[];
+extern const u8 PuzzleCommon_Text_UntitledPuzzleName[];
+static const u8 *ExpandPlaceholder_PuzzleName(void)
 {
-    return gExpandedPlaceholder_Aqua;
+    u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_NAME);
+	if (str == NULL)
+	{
+		str = PuzzleCommon_Text_UntitledPuzzleName;
+	}
+    return str;
 }
 
-static const u8 *ExpandPlaceholder_Magma(void)
+extern const u8 PuzzleCommon_Text_DefaultAuthor[];
+static const u8 *ExpandPlaceholder_PuzzleAuthor(void)
 {
-    return gExpandedPlaceholder_Magma;
+    u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_AUTHOR);
+	if (str == NULL)
+	{
+		str = PuzzleCommon_Text_DefaultAuthor;
+	}
+    return str;
 }
 
-static const u8 *ExpandPlaceholder_Archie(void)
+extern const u8 PuzzleCommon_Text_DefaultAdjective[];
+static const u8 *ExpandPlaceholder_PuzzleAdjective(void)
 {
-    return gExpandedPlaceholder_Archie;
+    u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_ADJECTIVE);
+	if (str == NULL)
+	{
+		str = PuzzleCommon_Text_DefaultAdjective;
+	}
+    return str;
 }
 
-static const u8 *ExpandPlaceholder_Maxie(void)
+extern const u8 PuzzleCommon_Text_DefaultQuip[];
+static const u8 *ExpandPlaceholder_PuzzleQuip(void)
 {
-    return gExpandedPlaceholder_Maxie;
-}
-
-static const u8 *ExpandPlaceholder_Kyogre(void)
-{
-    return gExpandedPlaceholder_Kyogre;
-}
-
-static const u8 *ExpandPlaceholder_Groudon(void)
-{
-    return gExpandedPlaceholder_Groudon;
+    u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_QUIP);
+	if (str == NULL)
+	{
+		str = PuzzleCommon_Text_DefaultQuip;
+	}
+    return str;
 }
 
 const u8 *GetExpandedPlaceholder(u32 id)
@@ -505,20 +514,27 @@ const u8 *GetExpandedPlaceholder(u32 id)
 
     static const ExpandPlaceholderFunc funcs[] =
     {
-        ExpandPlaceholder_UnknownStringVar,
+        ExpandPlaceholder_Empty,       // 00
         ExpandPlaceholder_PlayerName,
         ExpandPlaceholder_StringVar1,
         ExpandPlaceholder_StringVar2,
-        ExpandPlaceholder_StringVar3,
-        ExpandPlaceholder_KunChan,
-        ExpandPlaceholder_RivalName,
-        ExpandPlaceholder_Version,
-        ExpandPlaceholder_Aqua,
-        ExpandPlaceholder_Magma,
-        ExpandPlaceholder_Archie,
-        ExpandPlaceholder_Maxie,
-        ExpandPlaceholder_Kyogre,
-        ExpandPlaceholder_Groudon,
+        ExpandPlaceholder_StringVar3,  // 04
+        ExpandPlaceholder_Pokemon,
+        ExpandPlaceholder_Empty,
+        ExpandPlaceholder_Empty,
+        ExpandPlaceholder_Empty,
+        ExpandPlaceholder_Empty,       // 09
+        ExpandPlaceholder_Empty,       // 0A
+        ExpandPlaceholder_Empty,
+        ExpandPlaceholder_Empty,
+        ExpandPlaceholder_Empty,
+        ExpandPlaceholder_Empty,
+        ExpandPlaceholder_Empty,       // 0F
+        
+        ExpandPlaceholder_PuzzleName,       // 10
+        ExpandPlaceholder_PuzzleAuthor,     // 11
+        ExpandPlaceholder_PuzzleAdjective,  // 12
+        ExpandPlaceholder_PuzzleQuip,       // 13
     };
 
     if (id >= ARRAY_COUNT(funcs))

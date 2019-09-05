@@ -229,36 +229,59 @@ void SetupPuzzleWarp(struct ScriptContext *ctx)
 	SetDynamicWarp(0, currPuzzle >> 8, currPuzzle & 0xFF, 0);
 }
 
-void LoadSecretCode(struct ScriptContext *ctx)
-{
-	u8 id = Random();
-	const u8 *str = sPuzzleSecretCodes[id % ARRAY_COUNT(sPuzzleSecretCodes)];
-	StringCopy(gStringVar1, str);
-}
-
-extern const u8 PuzzleCommon_Text_DefaultAuthor[];
-void LoadPuzzleAuthor(struct ScriptContext *ctx)
+extern const u8 PuzzleCommon_Text_FirstPuzzleIntro[];
+void LoadPuzzleIntro(struct ScriptContext *ctx)
 {
 	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
-	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_AUTHOR);
-	if (str == NULL)
-	{
-		str = PuzzleCommon_Text_DefaultAuthor;
+	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_CUSTOM_INTRO);
+	// Check for custom intro
+	if (str != NULL) {
+		gSpecialVar_Result = 2;
+		ctx->data[0] = (u32)str;
+		return;
 	}
-	StringCopy(gStringVar1, str);
+	// Check if this is the first puzzle, load as a custom intro
+	if (VarGet(VAR_CURRENT_PUZZLE) == 0) { //first puzzle
+		gSpecialVar_Result = 2;
+		ctx->data[0] = (u32)PuzzleCommon_Text_FirstPuzzleIntro;
+		return;
+	}
+	ctx->data[0] = 0;
+	// Check if this puzzle has items
+	{
+		const u16 *array = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_PREREQ_LIST);
+		if (array != NULL && array[0] != ITEM_NONE) {
+			// Use generic item intro
+			gSpecialVar_Result = 1;
+		}
+	}
+	// Otherwise use generic no-item intro
+	gSpecialVar_Result = 0;
 }
 
-extern const u8 PuzzleCommon_Text_DefaultAdjective[];
-void LoadPuzzleAdjective(struct ScriptContext *ctx)
-{
-	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
-	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_ADJECTIVE);
-	if (str == NULL)
-	{
-		str = PuzzleCommon_Text_DefaultAdjective;
-	}
-	StringCopy(gStringVar2, str);
-}
+// extern const u8 PuzzleCommon_Text_DefaultAuthor[];
+// void LoadPuzzleAuthor(struct ScriptContext *ctx)
+// {
+// 	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+// 	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_AUTHOR);
+// 	if (str == NULL)
+// 	{
+// 		str = PuzzleCommon_Text_DefaultAuthor;
+// 	}
+// 	StringCopy(gStringVar1, str);
+// }
+
+// extern const u8 PuzzleCommon_Text_DefaultAdjective[];
+// void LoadPuzzleAdjective(struct ScriptContext *ctx)
+// {
+// 	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+// 	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_ADJECTIVE);
+// 	if (str == NULL)
+// 	{
+// 		str = PuzzleCommon_Text_DefaultAdjective;
+// 	}
+// 	StringCopy(gStringVar2, str);
+// }
 
 extern const u8 PuzzleCommon_Text_DefaultQuip[];
 void ShowPuzzleQuip(struct ScriptContext *ctx)
@@ -278,9 +301,10 @@ void AssignPuzzleMetaVariables(struct ScriptContext *ctx)
 	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
 	const u16 *array = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_META_VARIABLES);
 	
-	// Reset variables to defaults
+	// Reset introducer to trick master by default
 	VarSet(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_TRICK_MASTER);
-	VarSet(VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_TRICK_MASTER);
+	// Randomize quip person by default
+	VarSet(VAR_OBJ_GFX_ID_1, (Random() % (EVENT_OBJ_GFX_FISHERMAN - EVENT_OBJ_GFX_BOY_1)) + EVENT_OBJ_GFX_BOY_1);
 	
 	if (array != NULL)
 	{

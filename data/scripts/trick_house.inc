@@ -5,7 +5,7 @@ PuzzleCommon_Text_DefaultAuthor::
 PuzzleCommon_Text_DefaultAdjective::
 	.string "<adjective>$"
 PuzzleCommon_Text_DefaultQuip::
-	.string "What did you think of my puzzle?$"
+	.string "{PUZZLE_AUTHOR}: What did you think\nof my puzzle?$"
 PuzzleCommon_DefaultSetupScript::
 	end
 PuzzleCommon_DefaultTeardownScript::
@@ -83,7 +83,9 @@ PuzzleCommon_EventScript_ExitDoorObject::
 
 PuzzleCommon_EventScript_CheckScroll:
 	goto_if_unset FLAG_TRICK_HOUSE_SCROLL_READ, PuzzleCommon_EventScript_NoScrollReject
-	callnative LoadSecretCode
+	random 256
+	selectpointer_wrap PuzzleCommon_TextArray_SecretCodes, VAR_RESULT
+	bufferselectedstring 0
 	msgbox PuzzleCommon_Text_WriteDownCode
 	setflag FLAG_TRICK_HOUSE_PASSWORD_ENTERED
 	release
