@@ -73,6 +73,7 @@ raw `
 
 # -----------------------------------------------------
 
+raw `
 Puzzle_TrickHouseTrapdoors_Trainer1::
 	trainerbattle_single TRAINER_01, Puzzle_TrickHouseTrapdoors_Trainer1_Intro, Puzzle_TrickHouseTrapdoors_Trainer1_Defeat
 	msgbox Puzzle_TrickHouseTrapdoors_Trainer1_After, MSGBOX_AUTOCLOSE
@@ -100,4 +101,4 @@ Puzzle_TrickHouseTrapdoors_Trainer2_After:
 	.string "to rest a spell.\p"
 	.string "Problem is I fell asleep and now I\n"
 	.string "forgot where I was in this puzzle…$"
-
+`
