@@ -1,0 +1,103 @@
+raw `
+Puzzle_TrickHouseTrapdoors_MapScripts::
+	puzzle_info Puzzle_TrickHouseTrapdoors_Name, Puzzle_TrickHouseTrapdoors_Author
+	puzzle_adjective Puzzle_TrickHouseTrapdoors_Adjective
+	puzzle_quip Puzzle_TrickHouseTrapdoors_Quip
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_TrickHouseTrapdoors_OnLoad
+	.byte 0
+
+Puzzle_TrickHouseTrapdoors_Name:
+	.string "Trapdoor Trickery$"
+Puzzle_TrickHouseTrapdoors_Author:
+	.string "Trick Master$"
+Puzzle_TrickHouseTrapdoors_Adjective:
+	.string "a-maze-ing$"
+Puzzle_TrickHouseTrapdoors_Quip:
+	.string "I think I've seen this puzzle before.\p"
+	.string "Is the TRICK MASTER up to his\n"
+	.string "old tricks again?$"
+
+@ -----------------------------------------------------
+
+#define CLOSED_TRAPDOOR 0x26A
+#define PRESSED_BUTTON  0x259
+`
+script Puzzle_TrickHouseTrapdoors_OnLoad {
+	if (var(VAR_PUZZLE_0A) == 1) {
+		setmetatile ( 1,  9, CLOSED_TRAPDOOR, FALSE)
+		setmetatile (20, 17, PRESSED_BUTTON, FALSE)
+	}
+	if (var(VAR_PUZZLE_0B) == 1) {
+		setmetatile (16, 13, CLOSED_TRAPDOOR, FALSE)
+		setmetatile (12, 17, PRESSED_BUTTON, FALSE)
+	}
+	if (var(VAR_PUZZLE_0C) == 1) {
+		setmetatile (12,  4, CLOSED_TRAPDOOR, FALSE)
+		setmetatile ( 6, 10, PRESSED_BUTTON, FALSE)
+	}
+	if (var(VAR_PUZZLE_0D) == 1) {
+		setmetatile (16,  5, CLOSED_TRAPDOOR, FALSE)
+		setmetatile ( 7,  2, PRESSED_BUTTON, FALSE)
+	}
+}
+
+
+script Puzzle_TrickHouseTrapdoors_TriggerScript_ButtonA {
+	setmetatile ( 1,  9, CLOSED_TRAPDOOR, FALSE)
+	setmetatile (20, 17, PRESSED_BUTTON, FALSE)
+	setvar (VAR_PUZZLE_0A, 1)
+}
+
+script Puzzle_TrickHouseTrapdoors_TriggerScript_ButtonB {
+	setmetatile (16, 13, CLOSED_TRAPDOOR, FALSE)
+	setmetatile (12, 17, PRESSED_BUTTON, FALSE)
+	setvar (VAR_PUZZLE_0B, 1)
+}
+
+script Puzzle_TrickHouseTrapdoors_TriggerScript_ButtonC {
+	setmetatile (12,  4, CLOSED_TRAPDOOR, FALSE)
+	setmetatile ( 6, 10, PRESSED_BUTTON, FALSE)
+	setvar (VAR_PUZZLE_0C, 1)
+}
+
+script Puzzle_TrickHouseTrapdoors_TriggerScript_ButtonD {
+	setmetatile (16,  5, CLOSED_TRAPDOOR, FALSE)
+	setmetatile ( 7,  2, PRESSED_BUTTON, FALSE)
+	setvar (VAR_PUZZLE_0D, 1)
+}
+
+raw `
+#undef CLOSED_TRAPDOOR
+#undef PRESSED_BUTTON
+`
+
+# -----------------------------------------------------
+
+Puzzle_TrickHouseTrapdoors_Trainer1::
+	trainerbattle_single TRAINER_01, Puzzle_TrickHouseTrapdoors_Trainer1_Intro, Puzzle_TrickHouseTrapdoors_Trainer1_Defeat
+	msgbox Puzzle_TrickHouseTrapdoors_Trainer1_After, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseTrapdoors_Trainer1_Intro:
+	.string "I don't know where to go!\n"
+	.string "I feel like I'm running in circles!$"
+Puzzle_TrickHouseTrapdoors_Trainer1_Defeat:
+	.string "Wait, I was running in circles?$"
+Puzzle_TrickHouseTrapdoors_Trainer1_After:
+	.string "It's alright, I wanted to get in some\n"
+	.string "cardio tonight after all.$"
+
+
+Puzzle_TrickHouseTrapdoors_Trainer2::
+	trainerbattle_single TRAINER_02, Puzzle_TrickHouseTrapdoors_Trainer2_Intro, Puzzle_TrickHouseTrapdoors_Trainer2_Defeat
+	msgbox Puzzle_TrickHouseTrapdoors_Trainer2_After, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseTrapdoors_Trainer2_Intro:
+	.string "Ah! What?! Who are you?!"
+Puzzle_TrickHouseTrapdoors_Trainer2_Defeat:
+	.string "I dunno who you are, but you're tough!$"
+Puzzle_TrickHouseTrapdoors_Trainer2_After:
+	.string "I found this nice spot in the corner\n"
+	.string "to rest a spell.\p"
+	.string "Problem is I fell asleep and now I\n"
+	.string "forgot where I was in this puzzle…$"
+

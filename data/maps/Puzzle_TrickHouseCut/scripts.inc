@@ -9,7 +9,7 @@ Puzzle_TrickHouseCut_MapScripts::
 Puzzle_TrickHouseCut_Name:
 	.string "Shrub Shredding$"
 Puzzle_TrickHouseCut_Author:
-	.string "Tustin2121$"
+	.string "Trick Master$"
 Puzzle_TrickHouseCut_Adjective:
 	.string "slicing good$"
 Puzzle_TrickHouseCut_Quip:
