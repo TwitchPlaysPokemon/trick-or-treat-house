@@ -8,3 +8,36 @@ EmptyPuzzle_Name:
 EmptyPuzzle_Author:
 	.string "necessity$"
 `
+
+script EmptyPuzzle_TriggerScript_ButtonA {
+	setvar (VAR_PUZZLE_05, 5)
+	setvar (VAR_PUZZLE_0F, 15)
+	setvar (VAR_TEMP_A, 1)
+}
+
+script EmptyPuzzle_TriggerScript_ButtonB {
+	setflag (FLAG_PUZZLE_20)
+	setflag (FLAG_PUZZLE_2A)
+	setflag (FLAG_PUZZLE_38)
+	setflag (FLAG_PUZZLE_4F)
+	setvar (VAR_TEMP_B, 1)
+}
+
+script EmptyPuzzle_TriggerScript_ButtonC {
+	setvar (VAR_PUZZLE_1F, 2345)
+	setvar (VAR_PUZZLE_00, 6543)
+	setvar (VAR_TEMP_C, 1)
+}
+
+script EmptyPuzzle_TriggerScript_ButtonD {
+	setflag (FLAG_PUZZLE_ITEM_0)
+	setflag (FLAG_PUZZLE_ITEM_8)
+	setflag (FLAG_PUZZLE_ITEM_F)
+	setvar (VAR_TEMP_D, 1)
+}
+
+script EmptyPuzzle_TriggerScript_ButtonE {
+	setflag (FLAG_PICKED_UP_CUT_ITEM)
+	setflag (FLAG_UNUSED_0x06F)
+	setvar (VAR_TEMP_E, 1)
+}

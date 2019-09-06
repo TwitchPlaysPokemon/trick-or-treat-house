@@ -7,6 +7,51 @@
     ],
     "connections": null,
     "coord_events": [
+        {
+            "elevation": 0,
+            "script": "EmptyPuzzle_TriggerScript_ButtonA",
+            "type": "trigger",
+            "var": "VAR_TEMP_A",
+            "var_value": "0",
+            "x": 5,
+            "y": 2
+        },
+        {
+            "elevation": 0,
+            "script": "EmptyPuzzle_TriggerScript_ButtonB",
+            "type": "trigger",
+            "var": "VAR_TEMP_B",
+            "var_value": "0",
+            "x": 5,
+            "y": 3
+        },
+        {
+            "elevation": 0,
+            "script": "EmptyPuzzle_TriggerScript_ButtonC",
+            "type": "trigger",
+            "var": "VAR_TEMP_C",
+            "var_value": "0",
+            "x": 5,
+            "y": 4
+        },
+        {
+            "elevation": 0,
+            "script": "EmptyPuzzle_TriggerScript_ButtonD",
+            "type": "trigger",
+            "var": "VAR_TEMP_D",
+            "var_value": "0",
+            "x": 0,
+            "y": 4
+        },
+        {
+            "elevation": 0,
+            "script": "EmptyPuzzle_TriggerScript_ButtonE",
+            "type": "trigger",
+            "var": "VAR_TEMP_E",
+            "var_value": "0",
+            "x": 0,
+            "y": 5
+        }
     ],
     "id": "MAP_EMPTY_PUZZLE",
     "layout": "LAYOUT_EMPTY_PUZZLE",

@@ -290,5 +290,6 @@ $(ELF): $(OBJ_DIR)/ld_script.ld $(OBJS)
 $(ROM): $(ELF)
 	$(OBJCOPY) -O binary $< $@
 	$(FIX) $@ -p --silent
+	nm -SBgn $< > $(ROM:.gba=.sym)
 
 modern: ; @$(MAKE) MODERN=1
