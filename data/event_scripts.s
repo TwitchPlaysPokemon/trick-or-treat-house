@@ -6189,3 +6189,5 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/TestLayoutSwitching2/scripts.inc"
 
 	.include "data/maps/EmptyPuzzle/scripts.inc"
+
+	.include "data/maps/Puzzle_MusicNoteTiles/scripts.inc"

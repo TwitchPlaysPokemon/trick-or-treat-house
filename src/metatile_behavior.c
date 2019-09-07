@@ -246,7 +246,7 @@ static const u8 sTileBitAttributes[] =
     [MB_WIRELESS_BOX_RESULTS] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_TRAINER_HILL_TIMER] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNKNOWN_CLOSED_DOOR] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
-    [MB_UNUSED_EB] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
+    [MB_PUZZLE_MUSIC_TILE] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNUSED_EC] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNUSED_ED] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNUSED_EE] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
@@ -1489,6 +1489,14 @@ bool8 MetatileBehavior_IsLongGrassSouthEdge(u8 metatileBehavior)
 bool8 MetatileBehavior_IsTrainerHillTimer(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_TRAINER_HILL_TIMER)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsPuzzleMusicTile(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_PUZZLE_MUSIC_TILE)
         return TRUE;
     else
         return FALSE;

@@ -376,6 +376,11 @@
 #define METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Down      0x263
 #define METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Left_Alt  0x27B
 #define METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Right_Alt 0x27C
+#define METATILE_TrickHousePuzzle_MusicNoteYellow 0x2C0
+#define METATILE_TrickHousePuzzle_MusicNoteBlue   0x2C1
+#define METATILE_TrickHousePuzzle_MusicNoteGreen  0x2C2
+#define METATILE_TrickHousePuzzle_MusicNotePink   0x2C3
+#define METATILE_TrickHousePuzzle_MusicNoteRed    0x2C4
 
 // gTileset_BikeShop
 #define METATILE_BikeShop_Barrier_Hidden_Top      0x269

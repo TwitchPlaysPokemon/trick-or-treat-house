@@ -959,6 +959,16 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_TrickHousePuzzle",
             "width": 6
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_MusicNoteTiles/map.bin",
+            "border_filepath": "data/layouts/Puzzle_MusicNoteTiles/border.bin",
+            "height": 14,
+            "id": "LAYOUT_PUZZLE_MUSIC_NOTE_TILES",
+            "name": "Puzzle_MusicNoteTiles_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrickHousePuzzle",
+            "width": 15
         }
     ],
     "layouts_table_label": "gMapLayouts"
