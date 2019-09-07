@@ -565,3 +565,10 @@ gMetatiles_HoOhTower::
 	.align 1
 gMetatileAttributes_HoOhTower::
 	.incbin "data/tilesets/secondary/hoohtower/metatile_attributes.bin"
+	.align 1
+gMetatiles_TrickHouseMain::
+	.incbin "data/tilesets/secondary/trick_house_main/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_TrickHouseMain::
+	.incbin "data/tilesets/secondary/trick_house_main/metatile_attributes.bin"

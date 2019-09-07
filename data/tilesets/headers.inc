@@ -841,3 +841,14 @@ gTileset_HoOhTower::
 	.4byte gMetatiles_HoOhTower
 	.4byte gMetatileAttributes_HoOhTower
 	.4byte NULL
+
+	.align 2
+gTileset_TrickHouseMain::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_TrickHouseMain
+	.4byte gTilesetPalettes_TrickHouseMain
+	.4byte gMetatiles_TrickHouseMain
+	.4byte gMetatileAttributes_TrickHouseMain
+	.4byte NULL

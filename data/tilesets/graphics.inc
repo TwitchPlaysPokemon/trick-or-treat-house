@@ -1749,3 +1749,23 @@ gTilesetPalettes_HoOhTower::
 	.align 2
 gTilesetTiles_HoOhTower::
 	.incbin "data/tilesets/secondary/hoohtower/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_TrickHouseMain::
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_TrickHouseMain::
+	.incbin "data/tilesets/secondary/trick_house_main/tiles.4bpp.lz"

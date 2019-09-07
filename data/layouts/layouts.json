@@ -747,7 +747,7 @@
             "id": "LAYOUT_TRICK_HOUSE_ENTRANCE",
             "name": "TrickHouseEntrance_Layout",
             "primary_tileset": "gTileset_Building",
-            "secondary_tileset": "gTileset_GenericBuilding",
+            "secondary_tileset": "gTileset_TrickHouseMain",
             "width": 12
         },
         {
@@ -757,7 +757,7 @@
             "id": "LAYOUT_TRICK_HOUSE_END",
             "name": "TrickHouseEnd_Layout",
             "primary_tileset": "gTileset_Building",
-            "secondary_tileset": "gTileset_GenericBuilding",
+            "secondary_tileset": "gTileset_TrickHouseMain",
             "width": 15
         },
         {
@@ -767,7 +767,7 @@
             "id": "LAYOUT_TRICK_HOUSE_CORRIDOR",
             "name": "TrickHouseCorridor_Layout",
             "primary_tileset": "gTileset_Building",
-            "secondary_tileset": "gTileset_GenericBuilding",
+            "secondary_tileset": "gTileset_TrickHouseMain",
             "width": 28
         },
         {
@@ -887,7 +887,7 @@
             "id": "LAYOUT_TRICK_HOUSE_DEV_ENTRANCE",
             "name": "TrickHouseDevEntrance_Layout",
             "primary_tileset": "gTileset_Building",
-            "secondary_tileset": "gTileset_GenericBuilding",
+            "secondary_tileset": "gTileset_TrickHouseMain",
             "width": 9
         },
         {
@@ -937,7 +937,7 @@
             "id": "LAYOUT_TEST_MAP_HALLWAY",
             "name": "TestMapHallway_Layout",
             "primary_tileset": "gTileset_Building",
-            "secondary_tileset": "gTileset_TrickHousePuzzle",
+            "secondary_tileset": "gTileset_TrickHouseMain",
             "width": 22
         },
         {
