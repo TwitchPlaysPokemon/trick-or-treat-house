@@ -1133,6 +1133,11 @@ void PlayerGetDestCoords(s16 *x, s16 *y)
     *y = gEventObjects[gPlayerAvatar.eventObjectId].currentCoords.y;
 }
 
+bool8 IsPlayerJumping()
+{
+    return gEventObjects[gPlayerAvatar.eventObjectId].hasShadow;
+}
+
 u8 player_get_pos_including_state_based_drift(s16 *x, s16 *y)
 {
     struct EventObject *object = &gEventObjects[gPlayerAvatar.eventObjectId];

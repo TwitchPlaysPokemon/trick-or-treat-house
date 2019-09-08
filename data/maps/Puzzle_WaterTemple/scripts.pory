@@ -1,0 +1,147 @@
+raw `
+Puzzle_WaterTemple_MapScripts::
+	puzzle_info Puzzle_WaterTemple_Name, Puzzle_WaterTemple_Author
+	puzzle_adjective Puzzle_WaterTemple_Adjective
+	puzzle_quip Puzzle_WaterTemple_Quip
+	puzzle_metavars Puzzle_WaterTemple_Variables
+	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_WaterTemple_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_WaterTemple_OnResume
+	.byte 0
+
+Puzzle_WaterTemple_Name:
+	.string "Waterflow Caverns$"
+Puzzle_WaterTemple_Author:
+	.string "Tustin2121$"
+Puzzle_WaterTemple_Adjective:
+	.string "slightly damp$"
+Puzzle_WaterTemple_Quip:
+	.string "I think I'm gonna go hang out in that\n"
+	.string "water puzzle a little bit longer.\p"
+	.string "It makes for a much more interesting\n"
+	.string "swim than just a plain-old swimming pool.$"
+Puzzle_WaterTemple_Variables:
+	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_SWIMMER_M_WALKING
+	.2byte 0
+
+Puzzle_WaterTemple_OnResume: @ 81EBAC0
+	setstepcallback 8
+	end
+
+@ -----------------------------------------------------
+#define VAR_WATER_LEVEL VAR_PUZZLE_00
+`
+
+script Puzzle_WaterTemple_OnTransition {
+	if (var(VAR_WATER_LEVEL) == 0) {
+		setmaplayoutindex (LAYOUT_WATER_TEMPLE_LV2)
+	} elif (var(VAR_WATER_LEVEL) == 1) {
+		setmaplayoutindex (LAYOUT_WATER_TEMPLE_LV1)
+	} else {
+		setmaplayoutindex (LAYOUT_PUZZLE_WATER_TEMPLE)
+	}
+	call (Puzzle_WaterTemple_UpdateWaterLevel)
+}
+
+script Puzzle_WaterTemple_UpdateWaterLevel {
+	if (var(VAR_WATER_LEVEL) == 0) {
+		switchmaplayout (LAYOUT_WATER_TEMPLE_LV2)
+	} elif (var(VAR_WATER_LEVEL) == 1) {
+		switchmaplayout (LAYOUT_WATER_TEMPLE_LV1)
+	} else {
+		switchmaplayout (LAYOUT_PUZZLE_WATER_TEMPLE)
+	}
+	
+	# If the water level is higher than the sand level
+	if (var(VAR_WATER_LEVEL) < 2) {
+		setflag (FLAG_PUZZLE_40)
+		setflag (FLAG_PUZZLE_41)
+		setflag (FLAG_PUZZLE_4E)
+		setvar (EVENT_OBJ_GFX_VAR_E, EVENT_OBJ_GFX_SWIMMER_M)
+	} else {
+		# Else show the items
+		if (flag(FLAG_PUZZLE_ITEM_0) == FALSE) {
+			clearflag (FLAG_PUZZLE_40)
+		}
+		if (flag(FLAG_PICKED_UP_SURF_ITEM) == FALSE) {
+			clearflag (FLAG_PUZZLE_41)
+		}
+		clearflag (FLAG_PUZZLE_4E)
+		setvar (EVENT_OBJ_GFX_VAR_E, EVENT_OBJ_GFX_SWIMMER_M_WALKING)
+	}
+	
+	# If the water level is higher than the red level, hide items on that level
+	if (var(VAR_WATER_LEVEL) < 1) {
+		setflag (FLAG_PUZZLE_43)
+		setflag (FLAG_PUZZLE_4F)
+		setvar (EVENT_OBJ_GFX_VAR_F, EVENT_OBJ_GFX_TUBER_M_SWIMMING)
+		setvar (EVENT_OBJ_GFX_VAR_D, EVENT_OBJ_GFX_SWIMMER_M)
+	} else {
+		# Else show the items
+		if (flag(FLAG_PUZZLE_ITEM_3) == FALSE) {
+			clearflag (FLAG_PUZZLE_43)
+		}
+		clearflag (FLAG_PUZZLE_4F)
+		setvar (EVENT_OBJ_GFX_VAR_F, EVENT_OBJ_GFX_TUBER_M)
+		setvar (EVENT_OBJ_GFX_VAR_D, EVENT_OBJ_GFX_SWIMMER_M_WALKING)
+	}
+}
+
+script Puzzle_WaterTemple_DrainToLevel1 {
+	lockall
+	# TODO animations
+	setvar (VAR_WATER_LEVEL, 1)
+	call (Puzzle_WaterTemple_UpdateWaterLevel)
+	releaseall
+}
+
+script Puzzle_WaterTemple_DrainToLevel2 {
+	lockall
+	# TODO animations
+	setvar (VAR_WATER_LEVEL, 2)
+	call (Puzzle_WaterTemple_UpdateWaterLevel)
+	releaseall
+}
+
+script Puzzle_WaterTemple_FillToLevel1 {
+	lockall
+	# TODO animations
+	setvar (VAR_WATER_LEVEL, 1)
+	call (Puzzle_WaterTemple_UpdateWaterLevel)
+	releaseall
+}
+
+script Puzzle_WaterTemple_FillToLevel0 {
+	lockall
+	# TODO animations
+	setvar (VAR_WATER_LEVEL, 0)
+	call (Puzzle_WaterTemple_UpdateWaterLevel)
+	releaseall
+}
+
+# -----------------------------------------------------
+
+script Puzzle_WaterTemple_ItemBallSurf {
+	setflag (FLAG_PICKED_UP_SURF_ITEM)
+	goto (Common_EventScript_ItemSurf)
+}
+
+script Puzzle_WaterTemple_ItemBall0 {
+	setflag (FLAG_PUZZLE_ITEM_0)
+	goto (Common_EventScript_ItemFreshWater)
+}
+script Puzzle_WaterTemple_ItemBall1 {
+	setflag (FLAG_PUZZLE_ITEM_1)
+	goto (Common_EventScript_ItemHyperPotion)
+}
+script Puzzle_WaterTemple_ItemBall2 {
+	setflag (FLAG_PUZZLE_ITEM_2)
+	goto (Common_EventScript_ItemSuperPotion)
+}
+script Puzzle_WaterTemple_ItemBall3 {
+	setflag (FLAG_PUZZLE_ITEM_3)
+	goto (Common_EventScript_ItemPotion)
+}
+
+# -----------------------------------------------------
+
+

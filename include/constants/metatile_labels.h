@@ -410,4 +410,21 @@
 #define METATILE_Underwater_RockWall    0x21E
 #define METATILE_Underwater_FloorShadow 0x228
 
+// gTileset_WaterfallCave
+#define METATILE_WaterfallCave_FloatingLogs_Horizontal0      0x268
+#define METATILE_WaterfallCave_FloatingLogs_Horizontal1      0x269
+#define METATILE_WaterfallCave_HalfSubmergedLogs_Horizontal0 0x26A
+#define METATILE_WaterfallCave_HalfSubmergedLogs_Horizontal1 0x26B
+#define METATILE_WaterfallCave_SubmergedLogs_Horizontal0     0x26C
+#define METATILE_WaterfallCave_SubmergedLogs_Horizontal1     0x26D
+#define METATILE_WaterfallCave_FloatingLogs_Vertical0        0x270
+#define METATILE_WaterfallCave_FloatingLogs_Vertical1        0x278
+#define METATILE_WaterfallCave_HalfSubmergedLogs_Vertical0   0x271
+#define METATILE_WaterfallCave_HalfSubmergedLogs_Vertical1   0x279
+#define METATILE_WaterfallCave_SubmergedLogs_Vertical0       0x272
+#define METATILE_WaterfallCave_SubmergedLogs_Vertical1       0x27A
+
+
+
+
 #endif // GUARD_METATILE_LABELS_H

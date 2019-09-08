@@ -271,8 +271,8 @@ gSpecials:: @ 81DBA64
 	def_special RetrieveLotteryNumber
 	def_special PickLotteryCornerTicket
 	def_special ShowBerryBlenderRecordWindow
-	def_special ResetTrickHouseEndRoomFlag
-	def_special SetTrickHouseEndRoomFlag
+	@ def_special ResetTrickHouseEndRoomFlag
+	@ def_special SetTrickHouseEndRoomFlag
 	def_special ScrSpecial_CreatePCMenu
 	def_special AccessHallOfFamePC
 	def_special Special_ShowDiploma
@@ -298,10 +298,10 @@ gSpecials:: @ 81DBA64
 	def_special BufferEReaderTrainerName
 	def_special GetSlotMachineId
 	def_special GetPlayerFacingDirection
-	def_special FoundAbandonedShipRoom1Key
-	def_special FoundAbandonedShipRoom2Key
-	def_special FoundAbandonedShipRoom4Key
-	def_special FoundAbandonedShipRoom6Key
+	@ def_special FoundAbandonedShipRoom1Key
+	@ def_special FoundAbandonedShipRoom2Key
+	@ def_special FoundAbandonedShipRoom4Key
+	@ def_special FoundAbandonedShipRoom6Key
 	def_special LeadMonHasEffortRibbon
 	def_special GiveLeadMonEffortRibbon
 	def_special Special_AreLeadMonEVsMaxedOut
@@ -326,7 +326,7 @@ gSpecials:: @ 81DBA64
 	def_special StartRegiBattle
 	def_special SetUpTrainerMovement
 	def_special DoSealedChamberShakingEffect2
-	def_special FoundBlackGlasses
+	@ def_special FoundBlackGlasses
 	def_special StartDroughtWeatherBlend
 	def_special DoDiveWarp
 	def_special DoFallWarp

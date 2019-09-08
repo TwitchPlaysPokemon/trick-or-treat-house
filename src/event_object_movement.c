@@ -7999,6 +7999,15 @@ void UpdateEventObjectZCoordAndPriority(struct EventObject *eventObj, struct Spr
     sprite->oam.priority = sEventObjectPriorities_08376060[eventObj->previousElevation];
 }
 
+void UpdateAllEventObjectsZCoordAndPriority()
+{
+    u8 oid;
+    for (oid = 0; oid < ARRAY_COUNT(gEventObjects); oid++) {
+        if (!gEventObjects[oid].active) continue;
+        UpdateEventObjectZCoordAndPriority(&gEventObjects[oid], &gSprites[gEventObjects[oid].spriteId]);
+    }
+}
+
 static void InitObjectPriorityByZCoord(struct Sprite *sprite, u8 z)
 {
     sprite->subspriteTableNum = sEventObjectPriorities_08376070[z];

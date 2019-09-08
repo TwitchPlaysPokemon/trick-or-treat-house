@@ -20,6 +20,8 @@
 #define MAP_TEST_LAYOUT_SWITCHING        (8 | (1 << 8))
 #define MAP_TEST_LAYOUT_SWITCHING2       (9 | (1 << 8))
 #define MAP_EMPTY_PUZZLE                 (10 | (1 << 8))
+#define MAP_WATER_TEMPLE_LV1             (11 | (1 << 8))
+#define MAP_WATER_TEMPLE_LV2             (12 | (1 << 8))
 
 // Map Group 2
 #define MAP_SECRET_BASE_RED_CAVE1    (0 | (2 << 8))
@@ -104,6 +106,7 @@
 #define MAP_PUZZLE_TRICK_HOUSE_TRAPDOORS (1 | (4 << 8))
 #define MAP_PUZZLE_TRICK_HOUSE_SPINTILES (2 | (4 << 8))
 #define MAP_PUZZLE_TIN_TOWER_CLIMB       (3 | (4 << 8))
+#define MAP_PUZZLE_WATER_TEMPLE          (4 | (4 << 8))
 
 // Map Group 5
 #define MAP_PUZZLE_LOST_WOODS_ENTRANCE (0 | (5 << 8))

@@ -774,6 +774,7 @@ bool8 ScrCmd_switchmaplayout(struct ScriptContext *ctx)
     u16 toId = VarGet(ScriptReadHalfword(ctx)) - 1;
     u16 fromId = gSaveBlock1Ptr->mapLayoutId - 1;
     
+    if (fromId == toId) return; //Do nothing
     { // Sanity checks
         if (gMapLayouts[fromId] == NULL)
             return ShowScriptError(ctx, 1, ErrStr_switchmaplayout);
@@ -791,7 +792,8 @@ bool8 ScrCmd_switchmaplayout(struct ScriptContext *ctx)
     
     SetCurrentMapLayout(toId + 1);
     InitMap();
-    DrawWholeMapView();
+    MoveCameraAndRedrawMap(0, 0);
+    UpdateAllEventObjectsZCoordAndPriority();
     return FALSE;
 }
 

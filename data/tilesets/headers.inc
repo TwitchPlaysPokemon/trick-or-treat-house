@@ -832,14 +832,14 @@ gTileset_UnionRoom:: @ 83DFDFC
 	.4byte NULL @ animation callback
 
 	.align 2
-gTileset_HoOhTower::
+gTileset_BellTower::
 	.byte TRUE @ is compressed
 	.byte TRUE @ is secondary
 	.2byte 0
-	.4byte gTilesetTiles_HoOhTower
-	.4byte gTilesetPalettes_HoOhTower
-	.4byte gMetatiles_HoOhTower
-	.4byte gMetatileAttributes_HoOhTower
+	.4byte gTilesetTiles_BellTower
+	.4byte gTilesetPalettes_BellTower
+	.4byte gMetatiles_BellTower
+	.4byte gMetatileAttributes_BellTower
 	.4byte NULL
 
 	.align 2
@@ -852,3 +852,14 @@ gTileset_TrickHouseMain::
 	.4byte gMetatiles_TrickHouseMain
 	.4byte gMetatileAttributes_TrickHouseMain
 	.4byte NULL
+
+	.align 2
+gTileset_WaterfallCave::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_WaterfallCave
+	.4byte gTilesetPalettes_WaterfallCave
+	.4byte gMetatiles_WaterfallCave
+	.4byte gMetatileAttributes_WaterfallCave
+	.4byte InitTilesetAnim_Pacifidlog
