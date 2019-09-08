@@ -461,4 +461,42 @@ script Puzzle_WaterTemple_ItemBall3 {
 
 # -----------------------------------------------------
 
+script Puzzle_TrickHouseTrapdoors_Trainer1 {
+	trainerbattle_single TRAINER_01, Puzzle_TrickHouseTrapdoors_Trainer1_Intro, Puzzle_TrickHouseTrapdoors_Trainer1_Defeat
+	msgbox Puzzle_TrickHouseTrapdoors_Trainer1_After, MSGBOX_AUTOCLOSE
+}
 
+script Puzzle_TrickHouseTrapdoors_Trainer2 {
+	trainerbattle_single TRAINER_02, Puzzle_TrickHouseTrapdoors_Trainer2_Intro, Puzzle_TrickHouseTrapdoors_Trainer2_Defeat
+	msgbox Puzzle_TrickHouseTrapdoors_Trainer2_After, MSGBOX_AUTOCLOSE
+}
+
+script Puzzle_TrickHouseTrapdoors_Trainer3 {
+	trainerbattle_single TRAINER_03, Puzzle_TrickHouseTrapdoors_Trainer3_Intro, Puzzle_TrickHouseTrapdoors_Trainer3_Defeat
+	msgbox Puzzle_TrickHouseTrapdoors_Trainer3_After, MSGBOX_AUTOCLOSE
+}
+
+script Puzzle_TrickHouseTrapdoors_Trainer4 {
+	trainerbattle_single TRAINER_04, Puzzle_TrickHouseTrapdoors_Trainer4_Intro, Puzzle_TrickHouseTrapdoors_Trainer4_Defeat
+	msgbox Puzzle_TrickHouseTrapdoors_Trainer4_After, MSGBOX_AUTOCLOSE
+}
+
+
+raw `
+Puzzle_TrickHouseTrapdoors_Trainer1_Intro:
+Puzzle_TrickHouseTrapdoors_Trainer1_Defeat:
+Puzzle_TrickHouseTrapdoors_Trainer1_After:
+
+Puzzle_TrickHouseTrapdoors_Trainer2_Intro:
+Puzzle_TrickHouseTrapdoors_Trainer2_Defeat:
+Puzzle_TrickHouseTrapdoors_Trainer2_After:
+
+Puzzle_TrickHouseTrapdoors_Trainer3_Intro:
+Puzzle_TrickHouseTrapdoors_Trainer3_Defeat:
+Puzzle_TrickHouseTrapdoors_Trainer3_After:
+
+Puzzle_TrickHouseTrapdoors_Trainer4_Intro:
+Puzzle_TrickHouseTrapdoors_Trainer4_Defeat:
+Puzzle_TrickHouseTrapdoors_Trainer4_After:
+	.string "$"
+`

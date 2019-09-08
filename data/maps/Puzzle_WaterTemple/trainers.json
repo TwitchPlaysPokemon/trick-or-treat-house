@@ -1,0 +1,54 @@
+[
+	{
+		"class": "TUBER",
+		"pic": "TUBER_M",
+		"name": "TIMMY",
+		"party": [
+			{
+				"species": "SPECIES_TOTODILE",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "SWIMMER",
+		"pic": "SWIMMER_M",
+		"music": "SWIMMER",
+		"name": "LEONARDO",
+		"party": [
+			{
+				"species": "SPECIES_CARVANHA",
+				"level": 30
+			}
+		]
+	},
+	{
+		"class": "SWIMMER",
+		"pic": "SWIMMER_M",
+		"music": "SWIMMER",
+		"name": "REED",
+		"party": [
+			{
+				"species": "SPECIES_SPHEAL",
+				"level": 29
+			},
+			{
+				"species": "SPECIES_SHARPEDO",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "SWIMMER",
+		"pic": "SWIMMER_F",
+		"music": "SWIMMER",
+		"female": true,
+		"name": "TINA",
+		"party": [
+			{
+				"species": "SPECIES_CHINCHOU",
+				"level": 30
+			}
+		]
+	}
+]
