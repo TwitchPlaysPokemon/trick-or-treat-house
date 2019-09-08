@@ -68,5 +68,10 @@
 #define FLDEFF_RAYQUAZA                  64
 #define FLDEFF_65                        65
 #define FLDEFF_MOVE_DEOXYS_ROCK          66
+#define FLDEFF_EMOTE_NOTE_C              67
+#define FLDEFF_EMOTE_NOTE_D              68
+#define FLDEFF_EMOTE_NOTE_E              69
+#define FLDEFF_EMOTE_NOTE_F              70
+#define FLDEFF_EMOTE_NOTE_G              71
 
 #endif

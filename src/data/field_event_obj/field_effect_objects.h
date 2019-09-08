@@ -990,3 +990,5 @@ const struct SpriteFrameImage  gFieldEffectObjectPicTable_Rayquaza[] = {
 const struct SpriteTemplate gFieldEffectObjectTemplate_Rayquaza = {0xFFFF, 0xFFFF, &gEventObjectBaseOam_32x32, gFieldEffectObjectImageAnimTable_Rayquaza, gFieldEffectObjectPicTable_Rayquaza, gDummySpriteAffineAnimTable, sub_8155F80};
 
 const struct SpritePalette gFieldEffectObjectPaletteInfoUnused = {gEventObjectPalette2, 0x1011};
+
+const struct SpritePalette gFieldEffectObjectPaletteInfoEmoteNote = {gFieldEffectObjectEmoteNotePalette, 0x1012};
