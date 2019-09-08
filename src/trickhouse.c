@@ -22,8 +22,6 @@
 #include "item.h"
 #include "strings.h"
 #include "battle_tower.h"
-#include "field_camera.h"
-#include "fieldmap.h"
 #include "international_string_util.h"
 #include "constants/map_scripts.h"
 #include "constants/maps.h"

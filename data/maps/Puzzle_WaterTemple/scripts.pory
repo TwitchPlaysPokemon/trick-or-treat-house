@@ -461,42 +461,62 @@ script Puzzle_WaterTemple_ItemBall3 {
 
 # -----------------------------------------------------
 
-script Puzzle_TrickHouseTrapdoors_Trainer1 {
-	trainerbattle_single TRAINER_01, Puzzle_TrickHouseTrapdoors_Trainer1_Intro, Puzzle_TrickHouseTrapdoors_Trainer1_Defeat
-	msgbox Puzzle_TrickHouseTrapdoors_Trainer1_After, MSGBOX_AUTOCLOSE
+script Puzzle_WaterTemple_Trainer1 {
+	trainerbattle_single (TRAINER_01, Puzzle_WaterTemple_Trainer1_Intro, Puzzle_WaterTemple_Trainer1_Defeat)
+	msgbox (Puzzle_WaterTemple_Trainer1_After, MSGBOX_AUTOCLOSE)
 }
 
-script Puzzle_TrickHouseTrapdoors_Trainer2 {
-	trainerbattle_single TRAINER_02, Puzzle_TrickHouseTrapdoors_Trainer2_Intro, Puzzle_TrickHouseTrapdoors_Trainer2_Defeat
-	msgbox Puzzle_TrickHouseTrapdoors_Trainer2_After, MSGBOX_AUTOCLOSE
+script Puzzle_WaterTemple_Trainer2 {
+	trainerbattle_single (TRAINER_02, Puzzle_WaterTemple_Trainer2_Intro, Puzzle_WaterTemple_Trainer2_Defeat)
+	msgbox (Puzzle_WaterTemple_Trainer2_After, MSGBOX_AUTOCLOSE)
 }
 
-script Puzzle_TrickHouseTrapdoors_Trainer3 {
-	trainerbattle_single TRAINER_03, Puzzle_TrickHouseTrapdoors_Trainer3_Intro, Puzzle_TrickHouseTrapdoors_Trainer3_Defeat
-	msgbox Puzzle_TrickHouseTrapdoors_Trainer3_After, MSGBOX_AUTOCLOSE
+script Puzzle_WaterTemple_Trainer3 {
+	trainerbattle_single (TRAINER_03, Puzzle_WaterTemple_Trainer3_Intro, Puzzle_WaterTemple_Trainer3_Defeat)
+	msgbox (Puzzle_WaterTemple_Trainer3_After, MSGBOX_AUTOCLOSE)
 }
 
-script Puzzle_TrickHouseTrapdoors_Trainer4 {
-	trainerbattle_single TRAINER_04, Puzzle_TrickHouseTrapdoors_Trainer4_Intro, Puzzle_TrickHouseTrapdoors_Trainer4_Defeat
-	msgbox Puzzle_TrickHouseTrapdoors_Trainer4_After, MSGBOX_AUTOCLOSE
+script Puzzle_WaterTemple_Trainer4 {
+	trainerbattle_single (TRAINER_04, Puzzle_WaterTemple_Trainer4_Intro, Puzzle_WaterTemple_Trainer4_Defeat)
+	msgbox (Puzzle_WaterTemple_Trainer4_After, MSGBOX_AUTOCLOSE)
 }
 
 
 raw `
-Puzzle_TrickHouseTrapdoors_Trainer1_Intro:
-Puzzle_TrickHouseTrapdoors_Trainer1_Defeat:
-Puzzle_TrickHouseTrapdoors_Trainer1_After:
+Puzzle_WaterTemple_Trainer1_Intro:
+	.string "This place is so cool to swim around in!$"
+Puzzle_WaterTemple_Trainer1_Defeat:
+	.string "Aw, man, you're tough!$"
+Puzzle_WaterTemple_Trainer1_After:
+	.string "My favorite thing to do here is,\n"
+	.string "when the water is in the middle,\l"
+	.string "I can jump across the floating logs!\p"
+	.string "They make a big maze! It's fun!$"
 
-Puzzle_TrickHouseTrapdoors_Trainer2_Intro:
-Puzzle_TrickHouseTrapdoors_Trainer2_Defeat:
-Puzzle_TrickHouseTrapdoors_Trainer2_After:
+Puzzle_WaterTemple_Trainer2_Intro:
+	.string "Were you the one who drained out\n"
+	.string "the water?!$"
+Puzzle_WaterTemple_Trainer2_Defeat:
+	.string "I was too distracted by the water\n"
+	.string "level changes!$"
+Puzzle_WaterTemple_Trainer2_After:
+	.string "I was swimming around in this channel\n"
+	.string "when suddenly all the water drained\l"
+	.string "away! It was so confusing!$"
 
-Puzzle_TrickHouseTrapdoors_Trainer3_Intro:
-Puzzle_TrickHouseTrapdoors_Trainer3_Defeat:
-Puzzle_TrickHouseTrapdoors_Trainer3_After:
+Puzzle_WaterTemple_Trainer3_Intro:
+	.string "What's the matter? Can't swim?$"
+Puzzle_WaterTemple_Trainer3_Defeat:
+	.string "Glub!$"
+Puzzle_WaterTemple_Trainer3_After:
+	.string "I fell off the logs into the water,\n"
+	.string "but I prefer swimming anyway.$"
 
-Puzzle_TrickHouseTrapdoors_Trainer4_Intro:
-Puzzle_TrickHouseTrapdoors_Trainer4_Defeat:
-Puzzle_TrickHouseTrapdoors_Trainer4_After:
-	.string "$"
+Puzzle_WaterTemple_Trainer4_Intro:
+	.string "Ha! You can't beach me!$"
+Puzzle_WaterTemple_Trainer4_Defeat:
+	.string "That was a pretty good try, though.$"
+Puzzle_WaterTemple_Trainer4_After:
+	.string "I found a spot where the water never\n"
+	.string "goes all the way down. It's nice.$"
 `

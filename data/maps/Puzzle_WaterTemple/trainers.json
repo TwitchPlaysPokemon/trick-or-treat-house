@@ -1,7 +1,6 @@
 [
 	{
-		"class": "TUBER",
-		"pic": "TUBER_M",
+		"class": "TUBER_M",
 		"name": "TIMMY",
 		"party": [
 			{
@@ -11,8 +10,7 @@
 		]
 	},
 	{
-		"class": "SWIMMER",
-		"pic": "SWIMMER_M",
+		"class": "SWIMMER_M",
 		"music": "SWIMMER",
 		"name": "LEONARDO",
 		"party": [
@@ -23,8 +21,7 @@
 		]
 	},
 	{
-		"class": "SWIMMER",
-		"pic": "SWIMMER_M",
+		"class": "SWIMMER_M",
 		"music": "SWIMMER",
 		"name": "REED",
 		"party": [
@@ -39,8 +36,7 @@
 		]
 	},
 	{
-		"class": "SWIMMER",
-		"pic": "SWIMMER_F",
+		"class": "SWIMMER_F",
 		"music": "SWIMMER",
 		"female": true,
 		"name": "TINA",
