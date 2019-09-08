@@ -6,7 +6,7 @@
     "bg_events": [
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_NUGGET",
+            "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x20",
             "item": "ITEM_FULL_RESTORE",
             "type": "hidden_item",
             "x": 13,

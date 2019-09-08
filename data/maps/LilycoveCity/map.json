@@ -86,7 +86,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_LILYCOVE_CITY_HEART_SCALE",
+            "flag": "FLAG_HIDDEN_ITEM_LILYCOVE_CITY_0x22",
             "item": "ITEM_HEART_SCALE",
             "type": "hidden_item",
             "x": 36,
@@ -94,7 +94,7 @@
         },
         {
             "elevation": 0,
-            "flag": "FLAG_HIDDEN_ITEM_LILYCOVE_CITY_PP_UP",
+            "flag": "FLAG_HIDDEN_ITEM_LILYCOVE_CITY_0x23",
             "item": "ITEM_PP_UP",
             "type": "hidden_item",
             "x": 61,
@@ -102,7 +102,7 @@
         },
         {
             "elevation": 0,
-            "flag": "FLAG_HIDDEN_ITEM_LILYCOVE_CITY_POKE_BALL",
+            "flag": "FLAG_HIDDEN_ITEM_LILYCOVE_CITY_0x24",
             "item": "ITEM_POKE_BALL",
             "type": "hidden_item",
             "x": 64,

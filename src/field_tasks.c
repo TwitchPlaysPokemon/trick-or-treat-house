@@ -32,6 +32,7 @@ static void DummyPerStepCallback(u8 taskId);
 static void AshGrassPerStepCallback(u8 taskId);
 static void FortreeBridgePerStepCallback(u8 taskId);
 static void PacifidlogBridgePerStepCallback(u8 taskId);
+static void WaterTemplePerStepCallback(u8 taskId);
 static void SootopolisGymIcePerStepCallback(u8 taskId);
 static void CrackedFloorPerStepCallback(u8 taskId);
 static void Task_MuddySlope(u8 taskId);
@@ -41,36 +42,12 @@ static const TaskFunc sPerStepCallbacks[] =
     DummyPerStepCallback,
     AshGrassPerStepCallback,
     FortreeBridgePerStepCallback,
-    PacifidlogBridgePerStepCallback,
+    PacifidlogBridgePerStepCallback, //3
     SootopolisGymIcePerStepCallback,
     EndTruckSequence,
     SecretBasePerStepCallback,
-    CrackedFloorPerStepCallback
-};
-
-// they are in pairs but declared as 1D array
-static const struct PacifidlogMetatileOffsets sHalfSubmergedBridgeMetatileOffsets[] =
-{
-    { 0,  0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Vertical0)}, {0, 1, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Vertical1)},
-    { 0, -1, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Vertical0)}, {0, 0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Vertical1)},
-    { 0,  0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Horizontal0)}, {1, 0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Horizontal1)},
-    {-1,  0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Horizontal0)}, {0, 0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Horizontal1)}
-};
-
-static const struct PacifidlogMetatileOffsets sFullySubmergedBridgeMetatileOffsets[] =
-{
-    { 0,  0, METATILE_ID(Pacifidlog, SubmergedLogs_Vertical0)}, {0, 1, METATILE_ID(Pacifidlog, SubmergedLogs_Vertical1)},
-    { 0, -1, METATILE_ID(Pacifidlog, SubmergedLogs_Vertical0)}, {0, 0, METATILE_ID(Pacifidlog, SubmergedLogs_Vertical1)},
-    { 0,  0, METATILE_ID(Pacifidlog, SubmergedLogs_Horizontal0)}, {1, 0, METATILE_ID(Pacifidlog, SubmergedLogs_Horizontal1)},
-    {-1,  0, METATILE_ID(Pacifidlog, SubmergedLogs_Horizontal0)}, {0, 0, METATILE_ID(Pacifidlog, SubmergedLogs_Horizontal1)}
-};
-
-static const struct PacifidlogMetatileOffsets sFloatingBridgeMetatileOffsets[] =
-{
-    { 0,  0, METATILE_ID(Pacifidlog, FloatingLogs_Vertical0)}, {0, 1, METATILE_ID(Pacifidlog, FloatingLogs_Vertical1)},
-    { 0, -1, METATILE_ID(Pacifidlog, FloatingLogs_Vertical0)}, {0, 0, METATILE_ID(Pacifidlog, FloatingLogs_Vertical1)},
-    { 0,  0, METATILE_ID(Pacifidlog, FloatingLogs_Horizontal0)}, {1, 0, METATILE_ID(Pacifidlog, FloatingLogs_Horizontal1)},
-    {-1,  0, METATILE_ID(Pacifidlog, FloatingLogs_Horizontal0)}, {0, 0, METATILE_ID(Pacifidlog, FloatingLogs_Horizontal1)}
+    CrackedFloorPerStepCallback,
+    WaterTemplePerStepCallback, //8
 };
 
 // Each element corresponds to a y coordinate row in the sootopolis gym 1F map.
@@ -216,6 +193,30 @@ static void DummyPerStepCallback(u8 taskId)
 {
 
 }
+
+//////////////////////////////////////////////////////////////////////////////////
+// they are in pairs but declared as 1D array
+static const struct PacifidlogMetatileOffsets sHalfSubmergedBridgeMetatileOffsets[] =
+{
+    { 0,  0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Vertical0)}, {0, 1, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Vertical1)},
+    { 0, -1, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Vertical0)}, {0, 0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Vertical1)},
+    { 0,  0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Horizontal0)}, {1, 0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Horizontal1)},
+    {-1,  0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Horizontal0)}, {0, 0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Horizontal1)}
+};
+static const struct PacifidlogMetatileOffsets sFullySubmergedBridgeMetatileOffsets[] =
+{
+    { 0,  0, METATILE_ID(Pacifidlog, SubmergedLogs_Vertical0)}, {0, 1, METATILE_ID(Pacifidlog, SubmergedLogs_Vertical1)},
+    { 0, -1, METATILE_ID(Pacifidlog, SubmergedLogs_Vertical0)}, {0, 0, METATILE_ID(Pacifidlog, SubmergedLogs_Vertical1)},
+    { 0,  0, METATILE_ID(Pacifidlog, SubmergedLogs_Horizontal0)}, {1, 0, METATILE_ID(Pacifidlog, SubmergedLogs_Horizontal1)},
+    {-1,  0, METATILE_ID(Pacifidlog, SubmergedLogs_Horizontal0)}, {0, 0, METATILE_ID(Pacifidlog, SubmergedLogs_Horizontal1)}
+};
+static const struct PacifidlogMetatileOffsets sFloatingBridgeMetatileOffsets[] =
+{
+    { 0,  0, METATILE_ID(Pacifidlog, FloatingLogs_Vertical0)}, {0, 1, METATILE_ID(Pacifidlog, FloatingLogs_Vertical1)},
+    { 0, -1, METATILE_ID(Pacifidlog, FloatingLogs_Vertical0)}, {0, 0, METATILE_ID(Pacifidlog, FloatingLogs_Vertical1)},
+    { 0,  0, METATILE_ID(Pacifidlog, FloatingLogs_Horizontal0)}, {1, 0, METATILE_ID(Pacifidlog, FloatingLogs_Horizontal1)},
+    {-1,  0, METATILE_ID(Pacifidlog, FloatingLogs_Horizontal0)}, {0, 0, METATILE_ID(Pacifidlog, FloatingLogs_Horizontal1)}
+};
 
 static const struct PacifidlogMetatileOffsets *GetPacifidlogBridgeMetatileOffsets(const struct PacifidlogMetatileOffsets *offsets, u16 metatileBehavior)
 {
@@ -372,6 +373,238 @@ static void PacifidlogBridgePerStepCallback(u8 taskId)
             break;
     }
 }
+
+
+//////////////////////////////////////////////////////////////////////////////////
+// they are in pairs but declared as 1D array
+static const struct PacifidlogMetatileOffsets sHalfSubmergedTempleLogsMetatileOffsets[] =
+{
+    { 0,  0, METATILE_ID(WaterfallCave, HalfSubmergedLogs_Vertical0)}, {0, 1, METATILE_ID(WaterfallCave, HalfSubmergedLogs_Vertical1)},
+    { 0, -1, METATILE_ID(WaterfallCave, HalfSubmergedLogs_Vertical0)}, {0, 0, METATILE_ID(WaterfallCave, HalfSubmergedLogs_Vertical1)},
+    { 0,  0, METATILE_ID(WaterfallCave, HalfSubmergedLogs_Horizontal0)}, {1, 0, METATILE_ID(WaterfallCave, HalfSubmergedLogs_Horizontal1)},
+    {-1,  0, METATILE_ID(WaterfallCave, HalfSubmergedLogs_Horizontal0)}, {0, 0, METATILE_ID(WaterfallCave, HalfSubmergedLogs_Horizontal1)}
+};
+static const struct PacifidlogMetatileOffsets sFullySubmergedTempleLogsMetatileOffsets[] =
+{
+    { 0,  0, METATILE_ID(WaterfallCave, SubmergedLogs_Vertical0)}, {0, 1, METATILE_ID(WaterfallCave, SubmergedLogs_Vertical1)},
+    { 0, -1, METATILE_ID(WaterfallCave, SubmergedLogs_Vertical0)}, {0, 0, METATILE_ID(WaterfallCave, SubmergedLogs_Vertical1)},
+    { 0,  0, METATILE_ID(WaterfallCave, SubmergedLogs_Horizontal0)}, {1, 0, METATILE_ID(WaterfallCave, SubmergedLogs_Horizontal1)},
+    {-1,  0, METATILE_ID(WaterfallCave, SubmergedLogs_Horizontal0)}, {0, 0, METATILE_ID(WaterfallCave, SubmergedLogs_Horizontal1)}
+};
+static const struct PacifidlogMetatileOffsets sFloatingTempleLogsMetatileOffsets[] =
+{
+    { 0,  0, METATILE_ID(WaterfallCave, FloatingLogs_Vertical0)}, {0, 1, METATILE_ID(WaterfallCave, FloatingLogs_Vertical1)},
+    { 0, -1, METATILE_ID(WaterfallCave, FloatingLogs_Vertical0)}, {0, 0, METATILE_ID(WaterfallCave, FloatingLogs_Vertical1)},
+    { 0,  0, METATILE_ID(WaterfallCave, FloatingLogs_Horizontal0)}, {1, 0, METATILE_ID(WaterfallCave, FloatingLogs_Horizontal1)},
+    {-1,  0, METATILE_ID(WaterfallCave, FloatingLogs_Horizontal0)}, {0, 0, METATILE_ID(WaterfallCave, FloatingLogs_Horizontal1)}
+};
+
+static const struct PacifidlogMetatileOffsets *GetPacifidlogTempleLogsMetatileOffsets(const struct PacifidlogMetatileOffsets *offsets, u16 metatileBehavior)
+{
+    if (MetatileBehavior_IsPacifilogVerticalLog1(metatileBehavior))
+        return &offsets[0 * 2];
+    else if (MetatileBehavior_IsPacifilogVerticalLog2(metatileBehavior))
+        return &offsets[1 * 2];
+    else if (MetatileBehavior_IsPacifilogHorizontalLog1(metatileBehavior))
+        return &offsets[2 * 2];
+    else if (MetatileBehavior_IsPacifilogHorizontalLog2(metatileBehavior))
+        return &offsets[3 * 2];
+    else
+        return NULL;
+}
+
+static void SetPacifidlogTempleLogsMetatiles(const struct PacifidlogMetatileOffsets *offsets, s16 x, s16 y, bool32 redrawMap)
+{
+    offsets = GetPacifidlogTempleLogsMetatileOffsets(offsets, MapGridGetMetatileBehaviorAt(x, y));
+    if (offsets)
+    {
+        MapGridSetMetatileIdAt(x + offsets[0].x, y + offsets[0].y, offsets[0].tileId);
+        if (redrawMap)
+            CurrentMapDrawMetatileAt(x + offsets[0].x, y + offsets[0].y);
+
+        MapGridSetMetatileIdAt(x + offsets[1].x, y + offsets[1].y, offsets[1].tileId);
+        if (redrawMap)
+            CurrentMapDrawMetatileAt(x + offsets[1].x, y + offsets[1].y);
+    }
+}
+
+static void UpdateHalfSubmergedTempleLogsMetatiles(s16 x, s16 y, bool32 redrawMap)
+{
+    SetPacifidlogTempleLogsMetatiles(sHalfSubmergedTempleLogsMetatileOffsets, x, y, redrawMap);
+}
+
+static void UpdateFullySubmergedTempleLogsMetatiles(s16 x, s16 y, bool32 redrawMap)
+{
+    SetPacifidlogTempleLogsMetatiles(sFullySubmergedTempleLogsMetatileOffsets, x, y, redrawMap);
+}
+
+static void UpdateFloatingTempleLogsMetatiles(s16 x, s16 y, bool32 redrawMap)
+{
+    SetPacifidlogTempleLogsMetatiles(sFloatingTempleLogsMetatileOffsets, x, y, redrawMap);
+}
+
+static bool32 StandingOnNewPacifidlogTempleLogs(s16 x1, s16 y1, s16 x2, s16 y2)
+{
+    u16 metatileBehavior = MapGridGetMetatileBehaviorAt(x2, y2);
+
+    if (MetatileBehavior_IsPacifilogVerticalLog1(metatileBehavior))
+    {
+        if (y1 > y2)
+            return FALSE;
+    }
+    else if (MetatileBehavior_IsPacifilogVerticalLog2(metatileBehavior))
+    {
+        if (y1 < y2)
+            return FALSE;
+    }
+    else if (MetatileBehavior_IsPacifilogHorizontalLog1(metatileBehavior))
+    {
+        if (x1 > x2)
+            return FALSE;
+    }
+    else if (MetatileBehavior_IsPacifilogHorizontalLog2(metatileBehavior))
+    {
+        if (x1 < x2)
+            return FALSE;
+    }
+    return TRUE;
+}
+
+static bool32 StandingOnSamePacifidlogTempleLogs(s16 x1, s16 y1, s16 x2, s16 y2)
+{
+    u16 metatileBehavior = MapGridGetMetatileBehaviorAt(x1, y1);
+
+    if (MetatileBehavior_IsPacifilogVerticalLog1(metatileBehavior))
+    {
+        if (y1 < y2)
+            return FALSE;
+    }
+    else if (MetatileBehavior_IsPacifilogVerticalLog2(metatileBehavior))
+    {
+        if (y1 > y2)
+            return FALSE;
+    }
+    else if (MetatileBehavior_IsPacifilogHorizontalLog1(metatileBehavior))
+    {
+        if (x1 < x2)
+            return FALSE;
+    }
+    else if (MetatileBehavior_IsPacifilogHorizontalLog2(metatileBehavior))
+    {
+        if (x1 > x2)
+            return FALSE;
+    }
+    return TRUE;
+}
+
+#define state data[1]
+#define prevX data[2]
+#define prevY data[3]
+#define storedX data[4]
+#define storedY data[5]
+#define delay data[6]
+#define prevJump data[7]
+
+static void WaterTemplePerStepCallback(u8 taskId)
+{
+    s16 *data;
+    s16 x, y;
+    data = gTasks[taskId].data;
+    PlayerGetDestCoords(&x, &y);
+    switch (state)
+    {
+        case 0: //Init case
+            prevX = x;
+            prevY = y;
+            prevJump = FALSE;
+            UpdateFullySubmergedTempleLogsMetatiles(x, y, TRUE);
+            state = 1;
+            break;
+        case 1: //Usual case
+            if (IsPlayerJumping())
+            {
+                if (prevJump != IsPlayerJumping())
+                {
+                    // Set the previous logs half out of water (prevX/Y), redraw now
+                    UpdateHalfSubmergedTempleLogsMetatiles(prevX, prevY, TRUE);
+                    // Store out of the water location for later use
+                    storedX = prevX;
+                    storedY = prevY;
+                    // Go to delay case
+                    state = 2;
+                    delay = 8;
+                    
+                    prevJump = IsPlayerJumping();
+                    prevX = -1;
+                    prevY = -1;
+                }
+                else
+                {
+                    // Clear last out of water location
+                    storedX = -1;
+                    storedY = -1;
+                }
+            }
+            else if (x != prevX || y != prevY)
+            {
+                // If the player has switched logs (currX, currY, prevX, prevY)
+                if (StandingOnNewPacifidlogTempleLogs(x, y, prevX, prevY))
+                {
+                    // Set the previous logs half out of water (prevX/Y), redraw now
+                    UpdateHalfSubmergedTempleLogsMetatiles(prevX, prevY, TRUE);
+                    // Set the previous logs out of water (prevX/Y), don't redraw
+                    UpdateFloatingTempleLogsMetatiles(prevX, prevY, FALSE);
+                    // Store out of the water location for later use
+                    storedX = prevX;
+                    storedY = prevY;
+                    // Go to delay case
+                    state = 2;
+                    delay = 8;
+                }
+                else
+                {
+                    // Clear last out of water location
+                    storedX = -1;
+                    storedY = -1;
+                }
+                
+                // If the player is standing on the same logs as before
+                if (StandingOnSamePacifidlogTempleLogs(x, y, prevX, prevY))
+                {
+                    // Start submerging current location (currX/Y)
+                    UpdateHalfSubmergedTempleLogsMetatiles(x, y, TRUE);
+                    // Go to delay case
+                    state = 2;
+                    delay = 8;
+                }
+                
+                // Store currX/Y to prevX/Y
+                prevJump = IsPlayerJumping();
+                prevX = x;
+                prevY = y;
+                // Make sound
+                if (MetatileBehavior_IsPacifidlogLog(MapGridGetMetatileBehaviorAt(x, y)) && !IsPlayerJumping())
+                    PlaySE(SE_MIZU);
+            }
+            break;
+        case 2: //Delay case
+            // Once the delay runs out
+            if ((--delay) == 0)
+            {
+                // Draw current location fully submerged
+                UpdateFullySubmergedTempleLogsMetatiles(x, y, TRUE);
+                // If there was a stored previous location
+                if (storedX != -1 && storedY != -1)
+                    // Draw it fully out of water
+                    UpdateFloatingTempleLogsMetatiles(storedX, storedY, TRUE);
+                // Back to usual case
+                state = 1;
+            }
+            break;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
 
 static void SetLoweredForetreeBridgeMetatile(s16 x, s16 y)
 {

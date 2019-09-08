@@ -1731,21 +1731,61 @@ gTilesetTiles_UnionRoom:: @ 8395878
 	.incbin "data/tilesets/secondary/union_room/tiles.4bpp.lz"
 
 	.align 2
-gTilesetPalettes_HoOhTower::
-	.incbin "data/tilesets/secondary/hoohtower/palettes/00.gbapal"
-	.incbin "data/tilesets/secondary/hoohtower/palettes/01.gbapal"
-	.incbin "data/tilesets/secondary/hoohtower/palettes/02.gbapal"
-	.incbin "data/tilesets/secondary/hoohtower/palettes/03.gbapal"
-	.incbin "data/tilesets/secondary/hoohtower/palettes/04.gbapal"
-	.incbin "data/tilesets/secondary/hoohtower/palettes/05.gbapal"
-	.incbin "data/tilesets/secondary/hoohtower/palettes/06.gbapal"
-	.incbin "data/tilesets/secondary/hoohtower/palettes/07.gbapal"
-	.incbin "data/tilesets/secondary/hoohtower/palettes/08.gbapal"
-	.incbin "data/tilesets/secondary/hoohtower/palettes/09.gbapal"
-	.incbin "data/tilesets/secondary/hoohtower/palettes/10.gbapal"
-	.incbin "data/tilesets/secondary/hoohtower/palettes/11.gbapal"
-	.incbin "data/tilesets/secondary/hoohtower/palettes/12.gbapal"
+gTilesetPalettes_BellTower::
+	.incbin "data/tilesets/secondary/bell_tower/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/bell_tower/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/bell_tower/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/bell_tower/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/bell_tower/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/bell_tower/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/bell_tower/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/bell_tower/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/bell_tower/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/bell_tower/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/bell_tower/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/bell_tower/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/bell_tower/palettes/12.gbapal"
 
 	.align 2
-gTilesetTiles_HoOhTower::
-	.incbin "data/tilesets/secondary/hoohtower/tiles.4bpp.lz"
+gTilesetTiles_BellTower::
+	.incbin "data/tilesets/secondary/bell_tower/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_TrickHouseMain::
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/trick_house_main/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_TrickHouseMain::
+	.incbin "data/tilesets/secondary/trick_house_main/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_WaterfallCave::
+	.incbin "data/tilesets/secondary/waterfall_cave/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/waterfall_cave/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/waterfall_cave/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/waterfall_cave/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/waterfall_cave/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/waterfall_cave/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/waterfall_cave/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/waterfall_cave/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/waterfall_cave/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/waterfall_cave/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/waterfall_cave/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/waterfall_cave/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/waterfall_cave/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_WaterfallCave::
+	.incbin "data/tilesets/secondary/waterfall_cave/tiles.4bpp.lz"

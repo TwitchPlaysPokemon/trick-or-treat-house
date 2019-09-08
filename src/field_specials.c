@@ -1100,21 +1100,21 @@ void EndLotteryCornerComputerEffect(void)
     DrawWholeMapView();
 }
 
-void SetTrickHouseEndRoomFlag(void)
-{
-    u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_TRICK_HOUSE_END_ROOM;
-    *specVar = flag;
-    FlagSet(flag);
-}
+// void SetTrickHouseEndRoomFlag(void)
+// {
+//     u16 *specVar = &gSpecialVar_0x8004;
+//     u16 flag = FLAG_TRICK_HOUSE_END_ROOM;
+//     *specVar = flag;
+//     FlagSet(flag);
+// }
 
-void ResetTrickHouseEndRoomFlag(void)
-{
-    u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_TRICK_HOUSE_END_ROOM;
-    *specVar = flag;
-    FlagClear(flag);
-}
+// void ResetTrickHouseEndRoomFlag(void)
+// {
+//     u16 *specVar = &gSpecialVar_0x8004;
+//     u16 flag = FLAG_TRICK_HOUSE_END_ROOM;
+//     *specVar = flag;
+//     FlagClear(flag);
+// }
 
 bool8 CheckLeadMonCool(void)
 {
@@ -1229,53 +1229,53 @@ u16 GetSlotMachineId(void)
     return gUnknown_085B2B94[v0 % 12];
 }
 
-bool8 FoundAbandonedShipRoom1Key(void)
-{
-    u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_1_KEY;
-    *specVar = flag;
-    if (!FlagGet(flag))
-    {
-        return FALSE;
-    }
-    return TRUE;
-}
+// bool8 FoundAbandonedShipRoom1Key(void)
+// {
+//     u16 *specVar = &gSpecialVar_0x8004;
+//     u16 flag = FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_1_KEY;
+//     *specVar = flag;
+//     if (!FlagGet(flag))
+//     {
+//         return FALSE;
+//     }
+//     return TRUE;
+// }
 
-bool8 FoundAbandonedShipRoom2Key(void)
-{
-    u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_2_KEY;
-    *specVar = flag;
-    if (!FlagGet(flag))
-    {
-        return FALSE;
-    }
-    return TRUE;
-}
+// bool8 FoundAbandonedShipRoom2Key(void)
+// {
+//     u16 *specVar = &gSpecialVar_0x8004;
+//     u16 flag = FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_2_KEY;
+//     *specVar = flag;
+//     if (!FlagGet(flag))
+//     {
+//         return FALSE;
+//     }
+//     return TRUE;
+// }
 
-bool8 FoundAbandonedShipRoom4Key(void)
-{
-    u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_4_KEY;
-    *specVar = flag;
-    if (!FlagGet(flag))
-    {
-        return FALSE;
-    }
-    return TRUE;
-}
+// bool8 FoundAbandonedShipRoom4Key(void)
+// {
+//     u16 *specVar = &gSpecialVar_0x8004;
+//     u16 flag = FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_4_KEY;
+//     *specVar = flag;
+//     if (!FlagGet(flag))
+//     {
+//         return FALSE;
+//     }
+//     return TRUE;
+// }
 
-bool8 FoundAbandonedShipRoom6Key(void)
-{
-    u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_6_KEY;
-    *specVar = flag;
-    if (!FlagGet(flag))
-    {
-        return FALSE;
-    }
-    return TRUE;
-}
+// bool8 FoundAbandonedShipRoom6Key(void)
+// {
+//     u16 *specVar = &gSpecialVar_0x8004;
+//     u16 flag = FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_6_KEY;
+//     *specVar = flag;
+//     if (!FlagGet(flag))
+//     {
+//         return FALSE;
+//     }
+//     return TRUE;
+// }
 
 bool8 LeadMonHasEffortRibbon(void)
 {
@@ -1372,16 +1372,16 @@ bool8 IsPokerusInParty(void)
     return TRUE;
 }
 
-void sub_8139560(void)
+void DoCameraShakeEffect(void)
 {
     u8 taskId = CreateTask(sub_81395BC, 9);
-    gTasks[taskId].data[0] = gSpecialVar_0x8005;
+    gTasks[taskId].data[0] = gSpecialVar_0x8005; //amplitude x
     gTasks[taskId].data[1] = 0;
-    gTasks[taskId].data[2] = gSpecialVar_0x8006;
-    gTasks[taskId].data[3] = gSpecialVar_0x8007;
-    gTasks[taskId].data[4] = gSpecialVar_0x8004;
+    gTasks[taskId].data[2] = gSpecialVar_0x8006; //duration (num shakes)
+    gTasks[taskId].data[3] = gSpecialVar_0x8007; //frequency
+    gTasks[taskId].data[4] = gSpecialVar_0x8004; //amplitude y
     SetCameraPanningCallback(NULL);
-    PlaySE(SE_W070);
+    // PlaySE(SE_W070);
 }
 
 static void sub_81395BC(u8 taskId)
@@ -1410,10 +1410,10 @@ static void sub_8139620(u8 taskId)
     EnableBothScriptContexts();
 }
 
-bool8 FoundBlackGlasses(void)
-{
-    return FlagGet(FLAG_HIDDEN_ITEM_ROUTE_116_BLACK_GLASSES);
-}
+// bool8 FoundBlackGlasses(void)
+// {
+//     return FlagGet(FLAG_HIDDEN_ITEM_ROUTE_116_BLACK_GLASSES);
+// }
 
 void SetRoute119Weather(void)
 {

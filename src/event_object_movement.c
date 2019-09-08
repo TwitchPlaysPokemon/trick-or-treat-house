@@ -2094,6 +2094,28 @@ void sub_808E75C(s16 x, s16 y)
     }
 }
 
+void GroundEffect_JumpLandingDust(struct EventObject *eventObj, struct Sprite *sprite);
+void GroundEffect_JumpOnWater(struct EventObject *eventObj, struct Sprite *sprite);
+void GroundEffect_JumpOnShallowWater(struct EventObject *eventObj, struct Sprite *sprite);
+void DoGroundEffect(u8 localId, u8 mapNum, u8 mapGroup, u8 animId)
+{
+    u8 eventObjectId;
+    struct EventObject *eventObject;
+    struct Sprite *sprite;
+    
+    if (!TryGetEventObjectIdByLocalIdAndMap(localId, mapNum, mapGroup, &eventObjectId))
+    {
+        eventObject = &gEventObjects[eventObjectId];
+        sprite = &gSprites[eventObject->spriteId];
+        switch (animId)
+        {
+            case 0: GroundEffect_JumpLandingDust(eventObject, sprite); break;
+            case 1: GroundEffect_JumpOnWater(eventObject, sprite); break;
+            case 2: GroundEffect_JumpOnShallowWater(eventObject, sprite); break;
+        }
+    }
+}
+
 void sub_808E78C(u8 localId, u8 mapNum, u8 mapGroup, u8 subpriority)
 {
     u8 eventObjectId;
@@ -7997,6 +8019,15 @@ void UpdateEventObjectZCoordAndPriority(struct EventObject *eventObj, struct Spr
 
     sprite->subspriteTableNum = sEventObjectPriorities_08376070[eventObj->previousElevation];
     sprite->oam.priority = sEventObjectPriorities_08376060[eventObj->previousElevation];
+}
+
+void UpdateAllEventObjectsZCoordAndPriority()
+{
+    u8 oid;
+    for (oid = 0; oid < ARRAY_COUNT(gEventObjects); oid++) {
+        if (!gEventObjects[oid].active) continue;
+        UpdateEventObjectZCoordAndPriority(&gEventObjects[oid], &gSprites[gEventObjects[oid].spriteId]);
+    }
 }
 
 static void InitObjectPriorityByZCoord(struct Sprite *sprite, u8 z)

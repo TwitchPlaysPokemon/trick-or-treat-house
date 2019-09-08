@@ -17,7 +17,9 @@
         "TestMapHallway",
         "TestLayoutSwitching",
         "TestLayoutSwitching2",
-        "EmptyPuzzle"
+        "EmptyPuzzle",
+        "WaterTemple_Lv1",
+        "WaterTemple_Lv2"
     ],
     "gMapGroup2": [
         "SecretBase_RedCave1",
@@ -102,6 +104,7 @@
         "Puzzle_TrickHouseTrapdoors",
         "Puzzle_TrickHouseSpintiles",
         "Puzzle_TinTowerClimb",
+        "Puzzle_WaterTemple",
         "Puzzle_MusicNoteTiles"
     ],
     "gMapGroup5": [

@@ -31,6 +31,7 @@ bool8 IsPlayerCollidingWithFarawayIslandMew(u8 direction);
 void PlayerOnBikeCollideWithFarawayIslandMew(u8 direction);
 u8 CheckForEventObjectCollision(struct EventObject *a, s16 b, s16 c, u8 d, u8 e);
 u8 PlayerGetZCoord(void);
+bool8 IsPlayerJumping();
 void SetPlayerAvatarTransitionFlags(u16 a);
 void sub_808BCE8(void);
 void InitPlayerAvatar(s16 a, s16 b, u8 c, u8 d);

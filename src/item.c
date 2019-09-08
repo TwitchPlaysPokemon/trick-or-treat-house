@@ -349,6 +349,16 @@ bool8 AddBagItem(u16 itemId, u16 count)
         SUCCESS_ADD_ITEM:
             memcpy(itemPocket->itemSlots, newItems, itemPocket->capacity * sizeof(struct ItemSlot));
             Free(newItems);
+            switch (itemId) {
+                case ITEM_CUT_ITEM:       FlagSet(FLAG_PICKED_UP_CUT_ITEM); break;
+                case ITEM_FLASH_ITEM:     FlagSet(FLAG_PICKED_UP_FLASH_ITEM); break;
+                case ITEM_ROCKSMASH_ITEM: FlagSet(FLAG_PICKED_UP_SMASH_ITEM); break;
+                case ITEM_STRENGTH_ITEM:  FlagSet(FLAG_PICKED_UP_STRENGTH_ITEM); break;
+                case ITEM_SURF_ITEM:      FlagSet(FLAG_PICKED_UP_SURF_ITEM); break;
+                case ITEM_FLY_ITEM:       FlagSet(FLAG_PICKED_UP_FLY_ITEM); break;
+                case ITEM_DIVE_ITEM:      FlagSet(FLAG_PICKED_UP_DIVE_ITEM); break;
+                case ITEM_WATERFALL_ITEM: FlagSet(FLAG_PICKED_UP_WATERFALL_ITEM); break;
+            }
             return TRUE;
     }
 }
@@ -360,7 +370,18 @@ bool8 RemoveBagItem(u16 itemId, u16 count)
 
     if (ItemId_GetPocket(itemId) == POCKET_NONE || itemId == ITEM_NONE)
         return FALSE;
-
+    
+    switch (itemId) {
+        case ITEM_CUT_ITEM:       FlagClear(FLAG_PICKED_UP_CUT_ITEM); break;
+        case ITEM_FLASH_ITEM:     FlagClear(FLAG_PICKED_UP_FLASH_ITEM); break;
+        case ITEM_ROCKSMASH_ITEM: FlagClear(FLAG_PICKED_UP_SMASH_ITEM); break;
+        case ITEM_STRENGTH_ITEM:  FlagClear(FLAG_PICKED_UP_STRENGTH_ITEM); break;
+        case ITEM_SURF_ITEM:      FlagClear(FLAG_PICKED_UP_SURF_ITEM); break;
+        case ITEM_FLY_ITEM:       FlagClear(FLAG_PICKED_UP_FLY_ITEM); break;
+        case ITEM_DIVE_ITEM:      FlagClear(FLAG_PICKED_UP_DIVE_ITEM); break;
+        case ITEM_WATERFALL_ITEM: FlagClear(FLAG_PICKED_UP_WATERFALL_ITEM); break;
+    }
+    
     // check Battle Pyramid Bag
     // if (InBattlePyramid() || FlagGet(FLAG_SPECIAL_FLAG_0x4004) == TRUE)
     // {

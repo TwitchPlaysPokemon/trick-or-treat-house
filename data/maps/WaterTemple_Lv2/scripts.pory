@@ -1,0 +1,4 @@
+raw `
+WaterTemple_Lv2_MapScripts::
+	.byte 0
+`

@@ -122,10 +122,10 @@ void sub_809D4D8(void)
     FlagClear(FLAG_MYSTERY_EVENT_9);
     FlagClear(FLAG_MYSTERY_EVENT_10);
     FlagClear(FLAG_MYSTERY_EVENT_11);
-    FlagClear(FLAG_MYSTERY_EVENT_12);
-    FlagClear(FLAG_MYSTERY_EVENT_13);
-    FlagClear(FLAG_MYSTERY_EVENT_14);
-    FlagClear(FLAG_MYSTERY_EVENT_15);
+    // FlagClear(FLAG_MYSTERY_EVENT_12);
+    // FlagClear(FLAG_MYSTERY_EVENT_13);
+    // FlagClear(FLAG_MYSTERY_EVENT_14);
+    // FlagClear(FLAG_MYSTERY_EVENT_15);
 }
 
 void sub_809D570(void)

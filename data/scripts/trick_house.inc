@@ -82,6 +82,7 @@ PuzzleCommon_EventScript_ExitDoorObject::
 	end
 
 PuzzleCommon_EventScript_CheckScroll:
+	goto_if_set FLAG_IS_BUMP_INTERACTION, Common_EventScript_ReleaseEnd
 	goto_if_unset FLAG_TRICK_HOUSE_SCROLL_READ, PuzzleCommon_EventScript_NoScrollReject
 	random 256
 	selectpointer_wrap PuzzleCommon_TextArray_SecretCodes, VAR_RESULT

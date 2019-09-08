@@ -1,0 +1,464 @@
+raw `
+Puzzle_WaterTemple_MapScripts::
+	puzzle_info Puzzle_WaterTemple_Name, Puzzle_WaterTemple_Author
+	puzzle_adjective Puzzle_WaterTemple_Adjective
+	puzzle_quip Puzzle_WaterTemple_Quip
+	puzzle_metavars Puzzle_WaterTemple_Variables
+	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_WaterTemple_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_WaterTemple_OnResume
+	.byte 0
+
+Puzzle_WaterTemple_Name:
+	.string "Waterflow Caverns$"
+Puzzle_WaterTemple_Author:
+	.string "Tustin2121$"
+Puzzle_WaterTemple_Adjective:
+	.string "slightly damp$"
+Puzzle_WaterTemple_Quip:
+	.string "I think I'm gonna go hang out in that\n"
+	.string "water puzzle a little bit longer.\p"
+	.string "It makes for a much more interesting\n"
+	.string "swim than just a plain-old swimming pool.$"
+Puzzle_WaterTemple_Variables:
+	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_SWIMMER_M_WALKING
+	.2byte 0
+
+Puzzle_WaterTemple_OnResume: @ 81EBAC0
+	setstepcallback 8
+	end
+
+@ -----------------------------------------------------
+#define VAR_WATER_LEVEL VAR_PUZZLE_00
+`
+
+script Puzzle_WaterTemple_OnTransition {
+	if (var(VAR_WATER_LEVEL) == 0) {
+		setmaplayoutindex (LAYOUT_WATER_TEMPLE_LV2)
+	} elif (var(VAR_WATER_LEVEL) == 1) {
+		setmaplayoutindex (LAYOUT_WATER_TEMPLE_LV1)
+	} else {
+		setmaplayoutindex (LAYOUT_PUZZLE_WATER_TEMPLE)
+	}
+	call (Puzzle_WaterTemple_UpdateWaterLevel)
+}
+
+script Puzzle_WaterTemple_UpdateWaterLevel {
+	if (var(VAR_WATER_LEVEL) == 0) {
+		switchmaplayout (LAYOUT_WATER_TEMPLE_LV2)
+	} elif (var(VAR_WATER_LEVEL) == 1) {
+		switchmaplayout (LAYOUT_WATER_TEMPLE_LV1)
+	} else {
+		switchmaplayout (LAYOUT_PUZZLE_WATER_TEMPLE)
+	}
+	
+	# If the water level is higher than the sand level
+	if (var(VAR_WATER_LEVEL) < 2) {
+		setflag (FLAG_PUZZLE_40)
+		setflag (FLAG_PUZZLE_41)
+		setflag (FLAG_PUZZLE_4E)
+		setvar (VAR_OBJ_GFX_ID_E, EVENT_OBJ_GFX_SWIMMER_M)
+	} else {
+		# Else show the items
+		if (flag(FLAG_PUZZLE_ITEM_0) == FALSE) {
+			clearflag (FLAG_PUZZLE_40)
+		}
+		if (flag(FLAG_PICKED_UP_SURF_ITEM) == FALSE) {
+			clearflag (FLAG_PUZZLE_41)
+		}
+		clearflag (FLAG_PUZZLE_4E)
+		setvar (VAR_OBJ_GFX_ID_E, EVENT_OBJ_GFX_SWIMMER_M_WALKING)
+	}
+	
+	# If the water level is higher than the red level, hide items on that level
+	if (var(VAR_WATER_LEVEL) < 1) {
+		setflag (FLAG_PUZZLE_43)
+		setflag (FLAG_PUZZLE_4F)
+		setvar (VAR_OBJ_GFX_ID_F, EVENT_OBJ_GFX_TUBER_M_SWIMMING)
+		setvar (VAR_OBJ_GFX_ID_D, EVENT_OBJ_GFX_SWIMMER_M)
+	} else {
+		# Else show the items
+		if (flag(FLAG_PUZZLE_ITEM_3) == FALSE) {
+			clearflag (FLAG_PUZZLE_43)
+		}
+		clearflag (FLAG_PUZZLE_4F)
+		setvar (VAR_OBJ_GFX_ID_F, EVENT_OBJ_GFX_TUBER_M)
+		setvar (VAR_OBJ_GFX_ID_D, EVENT_OBJ_GFX_SWIMMER_M_WALKING)
+	}
+}
+
+raw `
+#define METATILE_WestCurrent   0x21E
+#define METATILE_SouthCurrent  0x207
+`
+
+script Puzzle_WaterTemple_DrainToLevel1 {
+	if (var(VAR_WATER_LEVEL) != 0) {
+		lock
+		msgbox ("The switch is pressed.$")
+		release
+		end
+	}
+	lockall
+	msgbox ("This switch is labeled “Drain”…\n"
+			"Switch it?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == NO) {
+		releaseall
+		end
+	}
+	closemessage
+	waitse
+	# Start shaking
+	playse (SE_W089)
+	playse (SE_W070)
+	setvar (VAR_0x8004, 3)  #amplitude y
+	setvar (VAR_0x8005, 0)  #amplitude x
+	setvar (VAR_0x8006, 15)  #duration (num shakes)
+	setvar (VAR_0x8007, 5)  #frequency
+	special (DoCameraShakeEffect)
+	delay (20)
+	# water starts rushing out
+	setvar (VAR_0x8001, 0)
+	callnative (WaterTempleDrainTo1)
+	delay (5)
+	callnative (WaterTempleDrainTo1)
+	delay (5)
+	callnative (WaterTempleDrainTo1)
+	delay (5)
+	callnative (WaterTempleDrainTo1)
+	delay (5)
+	callnative (WaterTempleDrainTo1)
+	
+	delay (40)
+	# Lower water
+	setvar (VAR_0x8001, 1)
+	callnative (WaterTempleDrainTo1)
+	
+	# continue shaking
+	setvar (VAR_0x8004, 2)  #amplitude y
+	setvar (VAR_0x8005, 0)  #amplitude x
+	setvar (VAR_0x8006, 11)  #duration (num shakes)
+	setvar (VAR_0x8007, 5)  #frequency
+	special (DoCameraShakeEffect)
+	delay (60)
+	# lower even more
+	setvar (VAR_0x8001, 2)
+	callnative (WaterTempleDrainTo1)
+	# Refresh the graphic of the swimmer (and make him not move due to engine limitations)
+	setvar (VAR_OBJ_GFX_ID_D, EVENT_OBJ_GFX_SWIMMER_M_WALKING)
+	copyobjectxytoperm (6)
+	setobjectmovementtype (6, MOVEMENT_TYPE_LOOK_AROUND)
+	removeobject (6)
+	addobject (6)
+	
+	# final shaking
+	setvar (VAR_0x8004, 1)  #amplitude y
+	setvar (VAR_0x8005, 0)  #amplitude x
+	setvar (VAR_0x8006, 11)  #duration (num shakes)
+	setvar (VAR_0x8007, 5)  #frequency
+	special (DoCameraShakeEffect)
+	delay (40)
+	# switch to new water level
+	setvar (VAR_WATER_LEVEL, 1)
+	call (Puzzle_WaterTemple_UpdateWaterLevel)
+	setvar (VAR_TEMP_1, 1)
+	releaseall
+}
+script Puzzle_WaterTemple_DrainToLevel1_Cleanup {
+	setobjectxyperm (6, 43, 15)
+	setobjectmovementtype (6, MOVEMENT_TYPE_WALK_DOWN_AND_UP)
+	setvar (VAR_TEMP_1, 0)
+}
+
+
+script Puzzle_WaterTemple_DrainToLevel2 {
+	if (var(VAR_WATER_LEVEL) != 1) {
+		lock
+		msgbox ("The switch is pressed.$")
+		release
+		end
+	}
+	lockall
+	msgbox ("This switch is labeled “Drain”…\n"
+			"Switch it?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == NO) {
+		releaseall
+		end
+	}
+	closemessage
+	waitse
+	# Start shaking
+	playse (SE_W089)
+	playse (SE_W070)
+	setvar (VAR_0x8004, 3)  #amplitude y
+	setvar (VAR_0x8005, 0)  #amplitude x
+	setvar (VAR_0x8006, 15)  #duration (num shakes)
+	setvar (VAR_0x8007, 5)  #frequency
+	special (DoCameraShakeEffect)
+	delay (20)
+	
+	# water starts rushing out
+	setvar (VAR_0x8001, 0)
+	callnative (WaterTempleDrainTo2)
+	delay (5)
+	callnative (WaterTempleDrainTo2)
+	delay (5)
+	callnative (WaterTempleDrainTo2)
+	delay (5)
+	callnative (WaterTempleDrainTo2)
+	delay (5)
+	callnative (WaterTempleDrainTo2)
+	
+	delay (40)
+	# Lower water
+	setvar (VAR_0x8001, 1)
+	callnative (WaterTempleDrainTo2)
+	
+	# continue shaking
+	setvar (VAR_0x8004, 2)  #amplitude y
+	setvar (VAR_0x8005, 0)  #amplitude x
+	setvar (VAR_0x8006, 11)  #duration (num shakes)
+	setvar (VAR_0x8007, 5)  #frequency
+	special (DoCameraShakeEffect)
+	delay (60)
+	# lower even more
+	setvar (VAR_0x8001, 2)
+	callnative (WaterTempleDrainTo2)
+	if (flag(FLAG_PICKED_UP_SURF_ITEM) == FALSE) {
+		addobject (15)
+	}
+	
+	# final shaking
+	setvar (VAR_0x8004, 1)  #amplitude y
+	setvar (VAR_0x8005, 0)  #amplitude x
+	setvar (VAR_0x8006, 11)  #duration (num shakes)
+	setvar (VAR_0x8007, 5)  #frequency
+	special (DoCameraShakeEffect)
+	delay (40)
+	
+	setvar (VAR_WATER_LEVEL, 2)
+	call (Puzzle_WaterTemple_UpdateWaterLevel)
+	releaseall
+}
+
+script Puzzle_WaterTemple_FillToLevel1 {
+	if (var(VAR_WATER_LEVEL) != 2) {
+		lock
+		msgbox ("The switch is pressed.$")
+		release
+		end
+	}
+	lockall
+	msgbox ("This switch is labeled “Fill”…\n"
+			"Switch it?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == NO) {
+		releaseall
+		end
+	}
+	closemessage
+	waitse
+	# Start shaking
+	playse (SE_W089)
+	playse (SE_W070)
+	setvar (VAR_0x8004, 3)  #amplitude y
+	setvar (VAR_0x8005, 0)  #amplitude x
+	setvar (VAR_0x8006, 15)  #duration (num shakes)
+	setvar (VAR_0x8007, 5)  #frequency
+	special (DoCameraShakeEffect)
+	delay (20)
+	
+	# water starts rushing in
+	setvar (VAR_0x8001, 0)
+	callnative (WaterTempleFillTo1)
+	delay (10)
+	callnative (WaterTempleFillTo1)
+	# Sand covers with water
+	setvar (VAR_0x8001, 2)
+	callnative (WaterTempleFillTo1)
+	delay (10)
+	# water continues to rush in
+	setvar (VAR_0x8001, 0)
+	callnative (WaterTempleFillTo1)
+	delay (10)
+	callnative (WaterTempleFillTo1)
+	# sand vanishes under water
+	setvar (VAR_0x8001, 3)
+	callnative (WaterTempleFillTo1)
+	delay (10)
+	# water continues to rush in
+	setvar (VAR_0x8001, 0)
+	callnative (WaterTempleFillTo1)
+	delay (10)
+	callnative (WaterTempleFillTo1)
+	delay (10)
+	
+	# continue shaking
+	setvar (VAR_0x8004, 2)  #amplitude y
+	setvar (VAR_0x8005, 0)  #amplitude x
+	setvar (VAR_0x8006, 11)  #duration (num shakes)
+	setvar (VAR_0x8007, 5)  #frequency
+	special (DoCameraShakeEffect)
+	# raise even more
+	setvar (VAR_0x8001, 4)
+	callnative (WaterTempleFillTo1)
+	delay (20)
+	# remove some water currents
+	setvar (VAR_0x8001, 1)
+	callnative (WaterTempleFillTo1)
+	delay (10)
+	callnative (WaterTempleFillTo1)
+	delay (5)
+	# switch vanishes beneith the water
+	dogroundeffect(14, 1)
+	delay (1)
+	removeobject (14)
+	delay (4)
+	
+	callnative (WaterTempleFillTo1)
+	delay (10)
+	callnative (WaterTempleFillTo1)
+	delay (10)
+	
+	setvar (VAR_WATER_LEVEL, 1)
+	call (Puzzle_WaterTemple_UpdateWaterLevel)
+	
+	# final shaking
+	setvar (VAR_0x8004, 1)  #amplitude y
+	setvar (VAR_0x8005, 0)  #amplitude x
+	setvar (VAR_0x8006, 11)  #duration (num shakes)
+	setvar (VAR_0x8007, 5)  #frequency
+	special (DoCameraShakeEffect)
+	delay (40)
+	
+	releaseall
+}
+
+script Puzzle_WaterTemple_FillToLevel0 {
+	if (var(VAR_WATER_LEVEL) != 1) {
+		lock
+		msgbox ("The switch is pressed.$")
+		release
+		end
+	}
+	lockall
+	msgbox ("This switch is labeled “Fill”…\n"
+			"Switch it?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == NO) {
+		releaseall
+		end
+	}
+	closemessage
+	waitse
+	# Start shaking
+	playse (SE_W089)
+	playse (SE_W070)
+	setvar (VAR_0x8004, 3)  #amplitude y
+	setvar (VAR_0x8005, 0)  #amplitude x
+	setvar (VAR_0x8006, 15)  #duration (num shakes)
+	setvar (VAR_0x8007, 5)  #frequency
+	special (DoCameraShakeEffect)
+	delay (20)
+	
+	# water starts rushing in
+	setvar (VAR_0x8001, 0)
+	callnative (WaterTempleFillTo0)
+	delay (10)
+	callnative (WaterTempleFillTo0)
+	# Sand covers with water
+	setvar (VAR_0x8001, 2)
+	callnative (WaterTempleFillTo0)
+	delay (10)
+	# water continues to rush in
+	setvar (VAR_0x8001, 0)
+	callnative (WaterTempleFillTo0)
+	delay (10)
+	callnative (WaterTempleFillTo0)
+	# sand vanishes under water
+	setvar (VAR_0x8001, 3)
+	callnative (WaterTempleFillTo0)
+	delay (10)
+	# Refresh the graphic of the tuber (and make him not move due to engine limitations)
+	setvar (VAR_OBJ_GFX_ID_F, EVENT_OBJ_GFX_TUBER_M_SWIMMING)
+	copyobjectxytoperm (4)
+	setobjectmovementtype (4, MOVEMENT_TYPE_LOOK_AROUND)
+	removeobject (4)
+	addobject (4)
+	# water continues to rush in
+	setvar (VAR_0x8001, 0)
+	callnative (WaterTempleFillTo0)
+	delay (10)
+	callnative (WaterTempleFillTo0)
+	delay (10)
+	
+	# continue shaking
+	setvar (VAR_0x8004, 2)  #amplitude y
+	setvar (VAR_0x8005, 0)  #amplitude x
+	setvar (VAR_0x8006, 11)  #duration (num shakes)
+	setvar (VAR_0x8007, 5)  #frequency
+	special (DoCameraShakeEffect)
+	# raise even more
+	setvar (VAR_0x8001, 4)
+	callnative (WaterTempleFillTo0)
+	delay (20)
+	# remove some water currents
+	setvar (VAR_0x8001, 1)
+	callnative (WaterTempleFillTo0)
+	delay (10)
+	callnative (WaterTempleFillTo0)
+	delay (5)
+	# switch vanishes beneith the water
+	dogroundeffect(13, 1)
+	delay (1)
+	removeobject (13)
+	delay (4)
+	
+	callnative (WaterTempleFillTo0)
+	delay (10)
+	callnative (WaterTempleFillTo0)
+	delay (10)
+	
+	setvar (VAR_WATER_LEVEL, 0)
+	call (Puzzle_WaterTemple_UpdateWaterLevel)
+	
+	# final shaking
+	setvar (VAR_0x8004, 1)  #amplitude y
+	setvar (VAR_0x8005, 0)  #amplitude x
+	setvar (VAR_0x8006, 11)  #duration (num shakes)
+	setvar (VAR_0x8007, 5)  #frequency
+	special (DoCameraShakeEffect)
+	delay (40)
+	
+	releaseall
+}
+
+raw `
+#undef METATILE_WestCurrent
+#undef METATILE_SouthCurrent
+`
+
+# -----------------------------------------------------
+
+script Puzzle_WaterTemple_ItemBallSurf {
+	setflag (FLAG_PICKED_UP_SURF_ITEM)
+	goto (Common_EventScript_ItemSurf)
+}
+
+script Puzzle_WaterTemple_ItemBall0 {
+	setflag (FLAG_PUZZLE_ITEM_0)
+	goto (Common_EventScript_ItemFreshWater)
+}
+script Puzzle_WaterTemple_ItemBall1 {
+	setflag (FLAG_PUZZLE_ITEM_1)
+	goto (Common_EventScript_ItemHyperPotion)
+}
+script Puzzle_WaterTemple_ItemBall2 {
+	setflag (FLAG_PUZZLE_ITEM_2)
+	goto (Common_EventScript_ItemSuperPotion)
+}
+script Puzzle_WaterTemple_ItemBall3 {
+	setflag (FLAG_PUZZLE_ITEM_3)
+	goto (Common_EventScript_ItemPotion)
+}
+
+# -----------------------------------------------------
+
+

@@ -76,7 +76,33 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/scripts/trick_house.inc"
 	.include "data/text/trick_house.inc"
 
+
+	.include "data/maps/TrickHouseDevEntrance/scripts.inc"
 	.include "data/maps/TrickHouseExt/scripts.inc"
+	.include "data/maps/TrickHouseEntrance/scripts.inc"
+	.include "data/maps/TrickHouseEnd/scripts.inc"
+	.include "data/maps/TrickHouseCorridor/scripts.inc"
+
+	.include "data/maps/Puzzle_TrickHouseCut/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseTrapdoors/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseSpintiles/scripts.inc"
+	.include "data/maps/Puzzle_TinTowerClimb/scripts.inc"
+
+	.include "data/maps/Puzzle_WaterTemple/scripts.inc"
+	.include "data/maps/WaterTemple_Lv1/scripts.inc"
+	.include "data/maps/WaterTemple_Lv2/scripts.inc"
+	
+	.include "data/maps/Puzzle_LostWoods_Entrance/scripts.inc"
+	.include "data/maps/Puzzle_LostWoods_Room0/scripts.inc"
+
+	.include "data/maps/Puzzle_MusicNoteTiles/scripts.inc"
+	
+	
+	.include "data/maps/TestMapHallway/scripts.inc"
+	.include "data/maps/TestLayoutSwitching/scripts.inc"
+	.include "data/maps/TestLayoutSwitching2/scripts.inc"
+	.include "data/maps/EmptyPuzzle/scripts.inc"
+	
 	.include "data/maps/PetalburgCity/scripts.inc"
 	.include "data/maps/SlateportCity/scripts.inc"
 	.include "data/maps/MauvilleCity/scripts.inc"
@@ -151,9 +177,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/SecretBase_YellowCave2/scripts.inc"
 	.include "data/maps/SecretBase_YellowCave3/scripts.inc"
 	.include "data/maps/SecretBase_YellowCave4/scripts.inc"
-	.include "data/maps/TrickHouseEntrance/scripts.inc"
-	.include "data/maps/TrickHouseEnd/scripts.inc"
-	.include "data/maps/TrickHouseCorridor/scripts.inc"
+	
 	.include "data/maps/Route110_TrickHousePuzzle1/scripts.inc"
 	.include "data/maps/Route110_TrickHousePuzzle2/scripts.inc"
 	.include "data/maps/Route110_TrickHousePuzzle3/scripts.inc"
@@ -1281,7 +1305,7 @@ EventScript_2722A7:: @ 82722A7
 	setvar VAR_0x8005, 1
 	setvar VAR_0x8006, 8
 	setvar VAR_0x8007, 5
-	special sub_8139560
+	special DoCameraShakeEffect
 	waitstate
 	releaseall
 	end
@@ -6166,28 +6190,3 @@ EventScript_PlayerPCFemale::
 	.align 2
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
-
-
-	.include "data/maps/Puzzle_TrickHouseCut/scripts.inc"
-
-	.include "data/maps/Puzzle_TrickHouseTrapdoors/scripts.inc"
-
-	.include "data/maps/Puzzle_TrickHouseSpintiles/scripts.inc"
-
-	.include "data/maps/TrickHouseDevEntrance/scripts.inc"
-
-	.include "data/maps/Puzzle_LostWoods_Entrance/scripts.inc"
-
-	.include "data/maps/Puzzle_LostWoods_Room0/scripts.inc"
-
-	.include "data/maps/Puzzle_TinTowerClimb/scripts.inc"
-
-	.include "data/maps/TestLayoutSwitching/scripts.inc"
-
-	.include "data/maps/TestMapHallway/scripts.inc"
-
-	.include "data/maps/TestLayoutSwitching2/scripts.inc"
-
-	.include "data/maps/EmptyPuzzle/scripts.inc"
-
-	.include "data/maps/Puzzle_MusicNoteTiles/scripts.inc"

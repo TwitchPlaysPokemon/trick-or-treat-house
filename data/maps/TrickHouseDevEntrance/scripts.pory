@@ -22,3 +22,13 @@ script TrickHouseDevEntrance_EventScript_Pokeball {
 	}
 	release
 }
+
+script TrickHouseDevEntrance_EventScript_SoundTest {
+	lockall
+	callnative (DoSoundTest)
+	playse (SE_SELECT)
+	message ("Sound Test: {START_BUTTON} Exit$")
+	waitstate # script pauses here until manually reenabled
+	closemessage
+	releaseall
+}

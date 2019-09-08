@@ -559,9 +559,23 @@ gMetatileAttributes_UnionRoom:: @ 83DF6A2
 	.incbin "data/tilesets/secondary/union_room/metatile_attributes.bin"
 
 	.align 1
-gMetatiles_HoOhTower::
-	.incbin "data/tilesets/secondary/hoohtower/metatiles.bin"
+gMetatiles_BellTower::
+	.incbin "data/tilesets/secondary/bell_tower/metatiles.bin"
 
 	.align 1
-gMetatileAttributes_HoOhTower::
-	.incbin "data/tilesets/secondary/hoohtower/metatile_attributes.bin"
+gMetatileAttributes_BellTower::
+	.incbin "data/tilesets/secondary/bell_tower/metatile_attributes.bin"
+	.align 1
+gMetatiles_TrickHouseMain::
+	.incbin "data/tilesets/secondary/trick_house_main/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_TrickHouseMain::
+	.incbin "data/tilesets/secondary/trick_house_main/metatile_attributes.bin"
+	.align 1
+gMetatiles_WaterfallCave::
+	.incbin "data/tilesets/secondary/waterfall_cave/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_WaterfallCave::
+	.incbin "data/tilesets/secondary/waterfall_cave/metatile_attributes.bin"

@@ -56,9 +56,9 @@ static const u8 sTileBitAttributes[] =
     [MB_SEAWEED_NO_SURFACING] = TILE_ATTRIBUTES(TRUE, TRUE, TRUE),
     [MB_REFLECTION_UNDER_BRIDGE] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_UNUSED_2C] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
-    [MB_UNUSED_2D] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
-    [MB_UNUSED_2E] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
-    [MB_UNUSED_2F] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
+    [MB_JUMP_NSEW] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
+    [MB_JUMP_NS] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
+    [MB_JUMP_EW] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_IMPASSABLE_EAST] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_IMPASSABLE_WEST] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_IMPASSABLE_NORTH] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
@@ -268,34 +268,54 @@ bool8 MetatileBehavior_IsEncounterTile(u8 metatileBehavior)
 
 bool8 MetatileBehavior_IsJumpEast(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_JUMP_EAST)
-        return TRUE;
-    else
-        return FALSE;
+    switch (metatileBehavior)
+    {
+        case MB_JUMP_EAST:
+        case MB_JUMP_EW:
+        case MB_JUMP_NSEW:
+            return TRUE;
+        default:
+            return FALSE;
+    }
 }
 
 bool8 MetatileBehavior_IsJumpWest(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_JUMP_WEST)
-        return TRUE;
-    else
-        return FALSE;
+    switch (metatileBehavior)
+    {
+        case MB_JUMP_WEST:
+        case MB_JUMP_EW:
+        case MB_JUMP_NSEW:
+            return TRUE;
+        default:
+            return FALSE;
+    }
 }
 
 bool8 MetatileBehavior_IsJumpNorth(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_JUMP_NORTH)
-        return TRUE;
-    else
-        return FALSE;
+    switch (metatileBehavior)
+    {
+        case MB_JUMP_NORTH:
+        case MB_JUMP_NS:
+        case MB_JUMP_NSEW:
+            return TRUE;
+        default:
+            return FALSE;
+    }
 }
 
 bool8 MetatileBehavior_IsJumpSouth(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_JUMP_SOUTH)
-        return TRUE;
-    else
-        return FALSE;
+    switch (metatileBehavior)
+    {
+        case MB_JUMP_SOUTH:
+        case MB_JUMP_NS:
+        case MB_JUMP_NSEW:
+            return TRUE;
+        default:
+            return FALSE;
+    }
 }
 
 bool8 MetatileBehavior_IsPokeGrass(u8 metatileBehavior)
@@ -1260,12 +1280,24 @@ bool8 MetatileBehavior_IsMossdeepGymWarp(u8 metatileBehavior)
 
 bool8 MetatileBehavior_IsSurfableFishableWater(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_POND_WATER || metatileBehavior == MB_OCEAN_WATER || metatileBehavior == MB_SEMI_DEEP_WATER || metatileBehavior == MB_DEEP_WATER
-        || metatileBehavior == MB_SOOTOPOLIS_DEEP_WATER || (metatileBehavior == MB_EASTWARD_CURRENT || metatileBehavior == MB_WESTWARD_CURRENT
-        || metatileBehavior == MB_NORTHWARD_CURRENT || metatileBehavior == MB_SOUTHWARD_CURRENT))
-        return TRUE;
-    else
-        return FALSE;
+    switch (metatileBehavior)
+    {
+        case MB_POND_WATER:
+        case MB_OCEAN_WATER:
+        case MB_SEMI_DEEP_WATER:
+        case MB_DEEP_WATER:
+        case MB_SOOTOPOLIS_DEEP_WATER:
+        case MB_EASTWARD_CURRENT:
+        case MB_WESTWARD_CURRENT:
+        case MB_NORTHWARD_CURRENT:
+        case MB_SOUTHWARD_CURRENT:
+        case MB_JUMP_NS:
+        case MB_JUMP_EW:
+        case MB_JUMP_NSEW:
+            return TRUE;
+        default:
+            return FALSE;
+    }
 }
 
 bool8 MetatileBehavior_IsMtPyreHole(u8 metatileBehavior)
