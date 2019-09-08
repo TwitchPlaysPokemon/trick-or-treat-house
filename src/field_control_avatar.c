@@ -20,6 +20,7 @@
 #include "metatile_behavior.h"
 #include "overworld.h"
 #include "pokemon.h"
+#include "puzzle_helpers.h"
 #include "safari_zone.h"
 #include "script.h"
 #include "secret_base.h"
@@ -544,6 +545,12 @@ static bool8 TryStartMiscWalkingScripts(u16 metatileBehavior)
     else if (MetatileBehavior_IsSecretBaseGlitterMat(metatileBehavior) == TRUE)
     {
         DoSecretBaseGlitterMatSparkle();
+        return FALSE;
+    }
+    else if (MetatileBehavior_IsPuzzleMusicTile(metatileBehavior) == TRUE)
+    {
+        PlayerGetDestCoords(&x, &y);
+        HandlePuzzleMusicTileStep(MapGridGetMetatileIdAt(x, y));
         return FALSE;
     }
     else if (MetatileBehavior_IsSecretBaseSoundMat(metatileBehavior) == TRUE)

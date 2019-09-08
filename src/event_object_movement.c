@@ -9234,3 +9234,43 @@ u8 MovementAction_Fly_Finish(struct EventObject *eventObject, struct Sprite *spr
 {
     return TRUE;
 }
+
+bool8 MovementAction_EmoteNoteC_Step0(struct EventObject *eventObject, struct Sprite *sprite)
+{
+    EventObjectGetLocalIdAndMap(eventObject, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    FieldEffectStart(FLDEFF_EMOTE_NOTE_C);
+    sprite->data[2] = 1;
+    return TRUE;
+}
+
+bool8 MovementAction_EmoteNoteD_Step0(struct EventObject *eventObject, struct Sprite *sprite)
+{
+    EventObjectGetLocalIdAndMap(eventObject, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    FieldEffectStart(FLDEFF_EMOTE_NOTE_D);
+    sprite->data[2] = 1;
+    return TRUE;
+}
+
+bool8 MovementAction_EmoteNoteE_Step0(struct EventObject *eventObject, struct Sprite *sprite)
+{
+    EventObjectGetLocalIdAndMap(eventObject, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    FieldEffectStart(FLDEFF_EMOTE_NOTE_E);
+    sprite->data[2] = 1;
+    return TRUE;
+}
+
+bool8 MovementAction_EmoteNoteF_Step0(struct EventObject *eventObject, struct Sprite *sprite)
+{
+    EventObjectGetLocalIdAndMap(eventObject, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    FieldEffectStart(FLDEFF_EMOTE_NOTE_F);
+    sprite->data[2] = 1;
+    return TRUE;
+}
+
+bool8 MovementAction_EmoteNoteG_Step0(struct EventObject *eventObject, struct Sprite *sprite)
+{
+    EventObjectGetLocalIdAndMap(eventObject, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    FieldEffectStart(FLDEFF_EMOTE_NOTE_G);
+    sprite->data[2] = 1;
+    return TRUE;
+}

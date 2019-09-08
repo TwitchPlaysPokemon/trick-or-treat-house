@@ -104,7 +104,8 @@
         "Puzzle_TrickHouseTrapdoors",
         "Puzzle_TrickHouseSpintiles",
         "Puzzle_TinTowerClimb",
-        "Puzzle_WaterTemple"
+        "Puzzle_WaterTemple",
+        "Puzzle_MusicNoteTiles"
     ],
     "gMapGroup5": [
         "Puzzle_LostWoods_Entrance",

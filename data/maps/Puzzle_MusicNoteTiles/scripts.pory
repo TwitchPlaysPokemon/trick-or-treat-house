@@ -1,0 +1,196 @@
+raw `
+#define FLAG_HIDE_SCROLL          FLAG_TEMP_1
+#define FLAG_HIDE_MONS            FLAG_TEMP_2
+#define FLAG_TILES_ACTIVE         FLAG_PUZZLE_20
+#define VAR_CUR_SONG              VAR_PUZZLE_00
+#define VAR_NUM_CORRECT_STEPS     VAR_PUZZLE_01
+#define VAR_TARGET_TILE           VAR_PUZZLE_02
+#define VAR_SONG_COMPLETION_STATE VAR_PUZZLE_03
+
+Puzzle_MusicNoteTiles_MapScripts::
+    puzzle_info Puzzle_MusicNoteTiles_Name, Puzzle_MusicNoteTiles_Author
+    puzzle_adjective Puzzle_MusicNoteTiles_Adjective
+    puzzle_quip Puzzle_MusicNoteTiles_Quip
+    map_script MAP_SCRIPT_ON_LOAD, Puzzle_MusicNoteTiles_OnLoad
+    map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_MusicNoteTiles_FrameTable
+    .byte 0
+
+Puzzle_MusicNoteTiles_FrameTable:
+    map_script_2 VAR_SONG_COMPLETION_STATE, 1, Puzzle_MusicNoteTiles_SongCompleted
+    map_script_2 VAR_SONG_COMPLETION_STATE, 2, Puzzle_MusicNoteTiles_AllSongsCompleted
+    .2byte 0
+
+Puzzle_MusicNoteTiles_Name:
+    .string "POKéMON Says$"
+
+Puzzle_MusicNoteTiles_Author:
+    .string "Chfoo$"
+
+Puzzle_MusicNoteTiles_Adjective:
+    .string "memory$"
+
+Puzzle_MusicNoteTiles_Quip:
+    .string "I can't get that puzzle's tune out\n"
+    .string "of my head!\p"
+    .string "Doo da doo buh da...$"
+`
+
+script Puzzle_MusicNoteTiles_OnLoad {
+    setflag(FLAG_HIDE_SCROLL)
+}
+
+script Puzzle_MusicNoteTiles_Pokemon {
+    lock
+    msgbox("The POKéMON are singing a song.$")
+
+    # Sing the current song, by showing music notes above their heads.
+    switch (var(VAR_CUR_SONG)) {
+        case 0:
+            call(Puzzle_MusicNoteTiles_Song0)
+            call(Puzzle_MusicNoteTiles_Song0)
+        case 1:
+            call(Puzzle_MusicNoteTiles_Song1)
+            call(Puzzle_MusicNoteTiles_Song1)
+        case 2:
+            call(Puzzle_MusicNoteTiles_Song2)
+            call(Puzzle_MusicNoteTiles_Song2)
+        case 3:
+            call(Puzzle_MusicNoteTiles_Song3)
+            call(Puzzle_MusicNoteTiles_Song3)
+    }
+
+    # Reset the tile progression state.
+    setvar(VAR_NUM_CORRECT_STEPS, 0)
+    setflag(FLAG_TILES_ACTIVE)
+    release
+}
+
+script Puzzle_MusicNoteTiles_Song0 {
+    applymovement(4, Common_Movement_EmoteNoteE)
+    playse(SE_TOY_E)
+    delay(60)
+    waitmovement(0)
+    applymovement(6, Common_Movement_EmoteNoteG)
+    playse(SE_TOY_G)
+    waitmovement(0)
+    delay(30)
+    applymovement(3, Common_Movement_EmoteNoteD)
+    playse(SE_TOY_D)
+    waitmovement(0)
+    delay(90)
+}
+
+script Puzzle_MusicNoteTiles_Song1 {
+    applymovement(4, Common_Movement_EmoteNoteE)
+    playse(SE_TOY_E)
+    delay(30)
+    waitmovement(0)
+    applymovement(3, Common_Movement_EmoteNoteD)
+    playse(SE_TOY_D)
+    waitmovement(0)
+    delay(60)
+    applymovement(6, Common_Movement_EmoteNoteG)
+    playse(SE_TOY_G)
+    waitmovement(0)
+    delay(30)
+    applymovement(2, Common_Movement_EmoteNoteC)
+    playse(SE_TOY_C)
+    waitmovement(0)
+    delay(90)
+}
+
+script Puzzle_MusicNoteTiles_Song2 {
+    applymovement(6, Common_Movement_EmoteNoteG)
+    playse(SE_TOY_G)
+    delay(30)
+    waitmovement(0)
+    applymovement(2, Common_Movement_EmoteNoteC)
+    playse(SE_TOY_C)
+    waitmovement(0)
+    delay(60)
+    applymovement(5, Common_Movement_EmoteNoteF)
+    playse(SE_TOY_F)
+    waitmovement(0)
+    delay(15)
+    applymovement(4, Common_Movement_EmoteNoteE)
+    playse(SE_TOY_E)
+    waitmovement(0)
+    delay(15)
+    applymovement(3, Common_Movement_EmoteNoteD)
+    playse(SE_TOY_D)
+    waitmovement(0)
+    delay(90)
+}
+
+script Puzzle_MusicNoteTiles_Song3 {
+    applymovement(6, Common_Movement_EmoteNoteG)
+    playse(SE_TOY_G)
+    delay(30)
+    waitmovement(0)
+    applymovement(6, Common_Movement_EmoteNoteG)
+    playse(SE_TOY_G)
+    delay(30)
+    waitmovement(0)
+    applymovement(5, Common_Movement_EmoteNoteF)
+    playse(SE_TOY_F)
+    delay(30)
+    waitmovement(0)
+    applymovement(4, Common_Movement_EmoteNoteE)
+    playse(SE_TOY_E)
+    delay(30)
+    waitmovement(0)
+    applymovement(3, Common_Movement_EmoteNoteD)
+    playse(SE_TOY_D)
+    delay(30)
+    waitmovement(0)
+    applymovement(4, Common_Movement_EmoteNoteE)
+    playse(SE_TOY_E)
+    delay(30)
+    waitmovement(0)
+    delay(60)
+}
+
+script Puzzle_MusicNoteTiles_SongCompleted {
+    lock
+    applymovement(2, Common_Movement_ExclamationMark)
+    applymovement(3, Common_Movement_ExclamationMark)
+    applymovement(4, Common_Movement_ExclamationMark)
+    applymovement(5, Common_Movement_ExclamationMark)
+    applymovement(6, Common_Movement_ExclamationMark)
+    delay(30)
+    waitmovement(0)
+    addvar(VAR_CUR_SONG, 1)
+    setvar(VAR_SONG_COMPLETION_STATE, 0)
+    msgbox("The POKéMON are happy to hear\n"
+           "the correct notes!$")
+    release
+}
+
+script Puzzle_MusicNoteTiles_AllSongsCompleted {
+    lock
+    applymovement(2, Common_Movement_ExclamationMark)
+    applymovement(3, Common_Movement_ExclamationMark)
+    applymovement(4, Common_Movement_ExclamationMark)
+    applymovement(5, Common_Movement_ExclamationMark)
+    applymovement(6, Common_Movement_ExclamationMark)
+    delay(30)
+    msgbox("The POKéMON are overjoyed to hear\n"
+           "all of their songs!\p"
+           "… …\p"
+           "A scroll dropped to the floor.$")
+    addobject(1)
+    closemessage
+    delay(30)
+    closemessage
+    fadescreen(1)
+    removeobject(2)
+    removeobject(3)
+    removeobject(4)
+    removeobject(5)
+    removeobject(6)
+    setflag(FLAG_TEMP_2)
+    delay(60)
+    fadescreen(0)
+    setvar(VAR_SONG_COMPLETION_STATE, 0)
+    release
+}

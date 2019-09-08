@@ -94,7 +94,8 @@ gStdScripts_End:: @ 81DC2CC
 	
 	.include "data/maps/Puzzle_LostWoods_Entrance/scripts.inc"
 	.include "data/maps/Puzzle_LostWoods_Room0/scripts.inc"
-	
+
+	.include "data/maps/Puzzle_MusicNoteTiles/scripts.inc"
 	
 	
 	.include "data/maps/TestMapHallway/scripts.inc"
@@ -6189,4 +6190,3 @@ EventScript_PlayerPCFemale::
 	.align 2
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
-

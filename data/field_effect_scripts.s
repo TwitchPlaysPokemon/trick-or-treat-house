@@ -72,6 +72,11 @@ gFieldEffectScriptPointers:: @ 82DB9D4
 	.4byte gFieldEffectScript_Rayquaza
 	.4byte gFieldEffectScript_Unknown65
 	.4byte gFieldEffectScript_MoveDeoxysRock
+	.4byte gFieldEffectScript_EmoteNoteC
+	.4byte gFieldEffectScript_EmoteNoteD
+	.4byte gFieldEffectScript_EmoteNoteE
+	.4byte gFieldEffectScript_EmoteNoteF
+	.4byte gFieldEffectScript_EmoteNoteG
 
 gFieldEffectScript_ExclamationMarkIcon1:: @ 82DBAE0
 	field_eff_callnative FldEff_ExclamationMarkIcon
@@ -342,4 +347,24 @@ gFieldEffectScript_Unknown65:: @ 82DBCF9
 
 gFieldEffectScript_MoveDeoxysRock:: @ 82DBCFF
 	field_eff_callnative Fldeff_MoveDeoxysRock
+	field_eff_end
+
+gFieldEffectScript_EmoteNoteC::
+	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoEmoteNote, FldEff_EmoteNoteC
+	field_eff_end
+
+gFieldEffectScript_EmoteNoteD::
+	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoEmoteNote, FldEff_EmoteNoteD
+	field_eff_end
+
+gFieldEffectScript_EmoteNoteE::
+	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoEmoteNote, FldEff_EmoteNoteE
+	field_eff_end
+
+gFieldEffectScript_EmoteNoteF::
+	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoEmoteNote, FldEff_EmoteNoteF
+	field_eff_end
+
+gFieldEffectScript_EmoteNoteG::
+	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoEmoteNote, FldEff_EmoteNoteG
 	field_eff_end

@@ -40,6 +40,26 @@ Common_Movement_Delay48: @ 827259A
 	delay_16
 	step_end
 
+Common_Movement_EmoteNoteC::
+	emote_note_c
+	step_end
+
+Common_Movement_EmoteNoteD::
+	emote_note_d
+	step_end
+
+Common_Movement_EmoteNoteE::
+	emote_note_e
+	step_end
+
+Common_Movement_EmoteNoteF::
+	emote_note_f
+	step_end
+
+Common_Movement_EmoteNoteG::
+	emote_note_g
+	step_end
+
 @ Movement
 
 Common_Movement_NoOp:

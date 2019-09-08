@@ -261,6 +261,11 @@ u8 MovementAction_FlyUp_Step1(struct EventObject *, struct Sprite *);
 u8 MovementAction_Fly_Finish(struct EventObject *, struct Sprite *);
 u8 MovementAction_FlyDown_Step0(struct EventObject *, struct Sprite *);
 u8 MovementAction_FlyDown_Step1(struct EventObject *, struct Sprite *);
+u8 MovementAction_EmoteNoteC_Step0(struct EventObject *, struct Sprite *);
+u8 MovementAction_EmoteNoteD_Step0(struct EventObject *, struct Sprite *);
+u8 MovementAction_EmoteNoteE_Step0(struct EventObject *, struct Sprite *);
+u8 MovementAction_EmoteNoteF_Step0(struct EventObject *, struct Sprite *);
+u8 MovementAction_EmoteNoteG_Step0(struct EventObject *, struct Sprite *);
 
 u8 (*const gMovementActionFuncs_FaceDown[])(struct EventObject *, struct Sprite *);
 u8 (*const gMovementActionFuncs_FaceUp[])(struct EventObject *, struct Sprite *);
@@ -420,6 +425,12 @@ u8 (*const gMovementActionFuncs_DestroyExtraTaskIfAtTop[])(struct EventObject *,
 u8 (*const gMovementActionFuncs_Figure8[])(struct EventObject *, struct Sprite *);
 u8 (*const gMovementActionFuncs_FlyUp[])(struct EventObject *, struct Sprite *);
 u8 (*const gMovementActionFuncs_FlyDown[])(struct EventObject *, struct Sprite *);
+u8 (*const gMovementActionFuncs_EmoteNoteC[])(struct EventObject *, struct Sprite *);
+u8 (*const gMovementActionFuncs_EmoteNoteD[])(struct EventObject *, struct Sprite *);
+u8 (*const gMovementActionFuncs_EmoteNoteE[])(struct EventObject *, struct Sprite *);
+u8 (*const gMovementActionFuncs_EmoteNoteF[])(struct EventObject *, struct Sprite *);
+u8 (*const gMovementActionFuncs_EmoteNoteG[])(struct EventObject *, struct Sprite *);
+
 
 u8 (*const *const gMovementActionFuncs[])(struct EventObject *, struct Sprite *) = {
     [MOVEMENT_ACTION_FACE_DOWN] = gMovementActionFuncs_FaceDown,
@@ -580,6 +591,11 @@ u8 (*const *const gMovementActionFuncs[])(struct EventObject *, struct Sprite *)
     [MOVEMENT_ACTION_FIGURE_8] = gMovementActionFuncs_Figure8,
     [MOVEMENT_ACTION_FLY_UP] = gMovementActionFuncs_FlyUp,
     [MOVEMENT_ACTION_FLY_DOWN] = gMovementActionFuncs_FlyDown,
+    [MOVEMENT_ACTION_EMOTE_NOTE_C] = gMovementActionFuncs_EmoteNoteC,
+    [MOVEMENT_ACTION_EMOTE_NOTE_D] = gMovementActionFuncs_EmoteNoteD,
+    [MOVEMENT_ACTION_EMOTE_NOTE_E] = gMovementActionFuncs_EmoteNoteE,
+    [MOVEMENT_ACTION_EMOTE_NOTE_F] = gMovementActionFuncs_EmoteNoteF,
+    [MOVEMENT_ACTION_EMOTE_NOTE_G] = gMovementActionFuncs_EmoteNoteG,
 };
 
 u8 (*const gMovementActionFuncs_FaceDown[])(struct EventObject *, struct Sprite *) = {
@@ -1509,5 +1525,30 @@ u8 (*const gMovementActionFuncs_StopLevitate[])(struct EventObject *, struct Spr
 
 u8 (*const gMovementActionFuncs_DestroyExtraTaskIfAtTop[])(struct EventObject *, struct Sprite *) = {
     MovementAction_DestroyExtraTaskIfAtTop_Step0,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_EmoteNoteC[])(struct EventObject *, struct Sprite *) = {
+    MovementAction_EmoteNoteC_Step0,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_EmoteNoteD[])(struct EventObject *, struct Sprite *) = {
+    MovementAction_EmoteNoteD_Step0,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_EmoteNoteE[])(struct EventObject *, struct Sprite *) = {
+    MovementAction_EmoteNoteE_Step0,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_EmoteNoteF[])(struct EventObject *, struct Sprite *) = {
+    MovementAction_EmoteNoteF_Step0,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_EmoteNoteG[])(struct EventObject *, struct Sprite *) = {
+    MovementAction_EmoteNoteG_Step0,
     MovementAction_Finish,
 };

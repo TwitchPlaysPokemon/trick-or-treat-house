@@ -126,6 +126,11 @@
 	create_movement_action figure_8
 	create_movement_action fly_up
 	create_movement_action fly_down
+	create_movement_action emote_note_c
+	create_movement_action emote_note_d
+	create_movement_action emote_note_e
+	create_movement_action emote_note_f
+	create_movement_action emote_note_g
 
 	enum_start 0xfe
 	create_movement_action step_end

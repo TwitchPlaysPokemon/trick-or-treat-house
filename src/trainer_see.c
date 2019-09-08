@@ -61,6 +61,11 @@ EWRAM_DATA struct Trainer *gCurrTrainerTable = NULL;
 static const u8 sEmotion_ExclamationMarkGfx[] = INCBIN_U8("graphics/misc/emotion_exclamation.4bpp");
 static const u8 sEmotion_QuestionMarkGfx[] = INCBIN_U8("graphics/misc/emotion_question.4bpp");
 static const u8 sEmotion_HeartGfx[] = INCBIN_U8("graphics/misc/emotion_heart.4bpp");
+static const u8 sEmotion_EmoteNoteC[] = INCBIN_U8("graphics/misc/emotion_note_c.4bpp");
+static const u8 sEmotion_EmoteNoteD[] = INCBIN_U8("graphics/misc/emotion_note_d.4bpp");
+static const u8 sEmotion_EmoteNoteE[] = INCBIN_U8("graphics/misc/emotion_note_e.4bpp");
+static const u8 sEmotion_EmoteNoteF[] = INCBIN_U8("graphics/misc/emotion_note_f.4bpp");
+static const u8 sEmotion_EmoteNoteG[] = INCBIN_U8("graphics/misc/emotion_note_g.4bpp");
 
 static u8 (*const sDirectionalApproachDistanceFuncs[])(struct EventObject *trainerObj, s16 range, s16 x, s16 y) =
 {
@@ -131,6 +136,30 @@ static const struct SpriteFrameImage sSpriteImageTable_HeartIcon[] =
     }
 };
 
+static const struct SpriteFrameImage sSpriteImageTable_EmoteNote[] =
+{
+    {
+        .data = sEmotion_EmoteNoteC,
+        .size = 0x80
+    },
+    {
+        .data = sEmotion_EmoteNoteD,
+        .size = 0x80
+    },
+    {
+        .data = sEmotion_EmoteNoteE,
+        .size = 0x80
+    },
+    {
+        .data = sEmotion_EmoteNoteF,
+        .size = 0x80
+    },
+    {
+        .data = sEmotion_EmoteNoteG,
+        .size = 0x80
+    },
+};
+
 static const union AnimCmd sSpriteAnim_Icons1[] =
 {
     ANIMCMD_FRAME(0, 60),
@@ -143,10 +172,31 @@ static const union AnimCmd sSpriteAnim_Icons2[] =
     ANIMCMD_END
 };
 
+static const union AnimCmd sSpriteAnim_Icons3[] =
+{
+    ANIMCMD_FRAME(2, 60),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sSpriteAnim_Icons4[] =
+{
+    ANIMCMD_FRAME(3, 60),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sSpriteAnim_Icons5[] =
+{
+    ANIMCMD_FRAME(4, 60),
+    ANIMCMD_END
+};
+
 static const union AnimCmd *const sSpriteAnimTable_Icons[] =
 {
     sSpriteAnim_Icons1,
-    sSpriteAnim_Icons2
+    sSpriteAnim_Icons2,
+    sSpriteAnim_Icons3,
+    sSpriteAnim_Icons4,
+    sSpriteAnim_Icons5,
 };
 
 static const struct SpriteTemplate sSpriteTemplate_ExclamationQuestionMark =
@@ -167,6 +217,17 @@ static const struct SpriteTemplate sSpriteTemplate_HeartIcon =
     .oam = &sOamData_Icons,
     .anims = sSpriteAnimTable_Icons,
     .images = sSpriteImageTable_HeartIcon,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_TrainerIcons
+};
+
+static const struct SpriteTemplate sSpriteTemplate_EmoteNote =
+{
+    .tileTag = 0xffff,
+    .paletteTag = 0x1012,
+    .oam = &sOamData_Icons,
+    .anims = sSpriteAnimTable_Icons,
+    .images = sSpriteImageTable_EmoteNote,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_TrainerIcons
 };
@@ -698,6 +759,56 @@ u8 FldEff_HeartIcon(void)
         SetIconSpriteData(sprite, FLDEFF_HEART_ICON, 0);
         sprite->oam.paletteNum = 2;
     }
+
+    return 0;
+}
+
+u8 FldEff_EmoteNoteC(void)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
+
+    if (spriteId != MAX_SPRITES)
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE_NOTE_C, 0);
+
+    return 0;
+}
+
+u8 FldEff_EmoteNoteD(void)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
+
+    if (spriteId != MAX_SPRITES)
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE_NOTE_D, 1);
+
+    return 0;
+}
+
+u8 FldEff_EmoteNoteE(void)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
+
+    if (spriteId != MAX_SPRITES)
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE_NOTE_E, 2);
+
+    return 0;
+}
+
+u8 FldEff_EmoteNoteF(void)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
+
+    if (spriteId != MAX_SPRITES)
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE_NOTE_F, 3);
+
+    return 0;
+}
+
+u8 FldEff_EmoteNoteG(void)
+{
+    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
+
+    if (spriteId != MAX_SPRITES)
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE_NOTE_G, 4);
 
     return 0;
 }

@@ -40,6 +40,7 @@ const u16 gFieldEffectObjectPalette3[] = INCBIN_U16("graphics/event_objects/pale
 const u16 gFieldEffectObjectPalette6[] = INCBIN_U16("graphics/event_objects/palettes/field_effect_object_palette_06.gbapal");
 const u16 gUnusedEventObjectPalette[] = INCBIN_U16("graphics/event_objects/palettes/unused_palette.gbapal");
 const u16 gEventObjectPaletteTrickHouse[] = INCBIN_U16("graphics/event_objects/palettes/field_object_palette_trickhouse.gbapal");
+const u16 gFieldEffectObjectEmoteNotePalette[] = INCBIN_U16("graphics/misc/emotion_note_c.gbapal");
 
 const u32 gFieldEffectObjectPic_BerryTreeGrowthSparkle[] = INCBIN_U32("graphics/event_objects/pics/effects/berry_tree_growth_sparkle.4bpp");
 const u32 gEventObjectPic_BerryTreeDirtPile[] = INCBIN_U32("graphics/event_objects/pics/berry_trees/dirt_pile.4bpp");

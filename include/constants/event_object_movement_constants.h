@@ -241,6 +241,11 @@
 #define MOVEMENT_ACTION_FIGURE_8                        0x9B
 #define MOVEMENT_ACTION_FLY_UP                          0x9C
 #define MOVEMENT_ACTION_FLY_DOWN                        0x9D
+#define MOVEMENT_ACTION_EMOTE_NOTE_C                    0x9E
+#define MOVEMENT_ACTION_EMOTE_NOTE_D                    0x9F
+#define MOVEMENT_ACTION_EMOTE_NOTE_E                    0xA0
+#define MOVEMENT_ACTION_EMOTE_NOTE_F                    0xA1
+#define MOVEMENT_ACTION_EMOTE_NOTE_G                    0xA2
 
 #define MOVEMENT_ACTION_STEP_END 0xFE
 
