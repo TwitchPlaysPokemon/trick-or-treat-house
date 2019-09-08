@@ -1430,10 +1430,12 @@
 	.byte \index
 	.endm
 
-	@ Ends the effects of signmsg, returning message box frames to normal.
-	@ .macro normalmsg
-	@ .byte 0xcb
-	@ .endm
+	@ Runs a ground effect on an object
+	.macro dogroundeffect lid:req, anim:req
+	.byte 0xcb
+	.byte \lid
+	.byte \anim
+	.endm
 
 	@ Compares the value of a hidden variable to a dword.
 	.macro comparehiddenvar a:req, value:req

@@ -203,7 +203,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_callnative_noctx
 	.4byte ScrCmd_switchmaplayout
 	.4byte ScrCmd_bufferselectedstring
-	.4byte ScrCmd_nop1
+	.4byte ScrCmd_dogroundeffect
 	.4byte ScrCmd_nop1
 	.4byte ScrCmd_setmonobedient
 	.4byte ScrCmd_checkmonobedience

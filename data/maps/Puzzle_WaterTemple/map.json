@@ -23,6 +23,24 @@
     ],
     "connections": null,
     "coord_events": [
+        {
+            "elevation": 0,
+            "script": "Puzzle_WaterTemple_DrainToLevel1_Cleanup",
+            "type": "trigger",
+            "var": "VAR_TEMP_1",
+            "var_value": "1",
+            "x": 33,
+            "y": 17
+        },
+        {
+            "elevation": 0,
+            "script": "Puzzle_WaterTemple_DrainToLevel1_Cleanup",
+            "type": "trigger",
+            "var": "VAR_TEMP_1",
+            "var_value": "1",
+            "x": 33,
+            "y": 18
+        }
     ],
     "id": "MAP_PUZZLE_WATER_TEMPLE",
     "layout": "LAYOUT_PUZZLE_WATER_TEMPLE",

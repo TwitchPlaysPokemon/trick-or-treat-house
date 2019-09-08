@@ -1304,7 +1304,7 @@ EventScript_2722A7:: @ 82722A7
 	setvar VAR_0x8005, 1
 	setvar VAR_0x8006, 8
 	setvar VAR_0x8007, 5
-	special sub_8139560
+	special DoCameraShakeEffect
 	waitstate
 	releaseall
 	end

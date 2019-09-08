@@ -2094,6 +2094,28 @@ void sub_808E75C(s16 x, s16 y)
     }
 }
 
+void GroundEffect_JumpLandingDust(struct EventObject *eventObj, struct Sprite *sprite);
+void GroundEffect_JumpOnWater(struct EventObject *eventObj, struct Sprite *sprite);
+void GroundEffect_JumpOnShallowWater(struct EventObject *eventObj, struct Sprite *sprite);
+void DoGroundEffect(u8 localId, u8 mapNum, u8 mapGroup, u8 animId)
+{
+    u8 eventObjectId;
+    struct EventObject *eventObject;
+    struct Sprite *sprite;
+    
+    if (!TryGetEventObjectIdByLocalIdAndMap(localId, mapNum, mapGroup, &eventObjectId))
+    {
+        eventObject = &gEventObjects[eventObjectId];
+        sprite = &gSprites[eventObject->spriteId];
+        switch (animId)
+        {
+            case 0: GroundEffect_JumpLandingDust(eventObject, sprite); break;
+            case 1: GroundEffect_JumpOnWater(eventObject, sprite); break;
+            case 2: GroundEffect_JumpOnShallowWater(eventObject, sprite); break;
+        }
+    }
+}
+
 void sub_808E78C(u8 localId, u8 mapNum, u8 mapGroup, u8 subpriority)
 {
     u8 eventObjectId;

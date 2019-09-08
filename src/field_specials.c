@@ -1372,16 +1372,16 @@ bool8 IsPokerusInParty(void)
     return TRUE;
 }
 
-void sub_8139560(void)
+void DoCameraShakeEffect(void)
 {
     u8 taskId = CreateTask(sub_81395BC, 9);
-    gTasks[taskId].data[0] = gSpecialVar_0x8005;
+    gTasks[taskId].data[0] = gSpecialVar_0x8005; //amplitude x
     gTasks[taskId].data[1] = 0;
-    gTasks[taskId].data[2] = gSpecialVar_0x8006;
-    gTasks[taskId].data[3] = gSpecialVar_0x8007;
-    gTasks[taskId].data[4] = gSpecialVar_0x8004;
+    gTasks[taskId].data[2] = gSpecialVar_0x8006; //duration (num shakes)
+    gTasks[taskId].data[3] = gSpecialVar_0x8007; //frequency
+    gTasks[taskId].data[4] = gSpecialVar_0x8004; //amplitude y
     SetCameraPanningCallback(NULL);
-    PlaySE(SE_W070);
+    // PlaySE(SE_W070);
 }
 
 static void sub_81395BC(u8 taskId)

@@ -320,7 +320,7 @@ gSpecials:: @ 81DBA64
 	def_special GetShieldToyTVDecorationInfo
 	def_special IsPokerusInParty
 	def_special SetSootopolisGymCrackedIceMetatiles
-	def_special sub_8139560
+	def_special DoCameraShakeEffect
 	def_special StartGroudonKyogreBattle
 	def_special BattleSetup_StartLegendaryBattle
 	def_special StartRegiBattle

@@ -71,7 +71,7 @@
 #define EVENT_OBJ_GFX_LINK_RECEPTIONIST           65
 #define EVENT_OBJ_GFX_RAYQUAZA_1                  66
 #define EVENT_OBJ_GFX_SWIMMER_M                   67
-#define EVENT_OBJ_GFX_SWIMMER_M_WALKING           67
+#define EVENT_OBJ_GFX_SWIMMER_M_WALKING           51 //TODO?
 #define EVENT_OBJ_GFX_SWIMMER_F                   68
 #define EVENT_OBJ_GFX_BARD                        69
 #define EVENT_OBJ_GFX_ANABEL                      70

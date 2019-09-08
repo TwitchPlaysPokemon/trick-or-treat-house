@@ -2197,6 +2197,15 @@ bool8 ScrCmd_showelevmenu(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_dogroundeffect(struct ScriptContext *ctx)
+{
+    u8 localId = ScriptReadByte(ctx);
+    u8 animId = ScriptReadByte(ctx);
+    
+    DoGroundEffect(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, animId);
+    return FALSE;
+}
+
 bool8 ScrCmd_checkcoins(struct ScriptContext *ctx)
 {
     u16 *ptr = GetVarPointer(ScriptReadHalfword(ctx));
