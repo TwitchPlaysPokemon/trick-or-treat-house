@@ -2361,6 +2361,8 @@ u8 GetEventObjectIdByXYZ(u16 x, u16 y, u8 z)
 
 static bool8 EventObjectDoesZCoordMatch(struct EventObject *eventObject, u8 z)
 {
+    if (eventObject->currentElevation == 1 && z == 3) return TRUE;
+    if (eventObject->currentElevation == 3 && z == 1) return TRUE;
     if (eventObject->currentElevation != 0 && z != 0 && eventObject->currentElevation != z)
     {
         return FALSE;
@@ -4931,15 +4933,18 @@ u8 GetCollisionAtCoords(struct EventObject *eventObject, s16 x, s16 y, u32 dirn)
 u8 GetCollisionFlagsAtCoords(struct EventObject *eventObject, s16 x, s16 y, u8 direction)
 {
     u8 flags = 0;
+    bool8 mismatch;
 
     if (IsCoordOutsideEventObjectMovementRange(eventObject, x, y))
-        flags |= 1;
+        flags |= 0x01;
     if (MapGridIsImpassableAt(x, y) || GetMapBorderIdAt(x, y) == -1 || IsMetatileDirectionallyImpassable(eventObject, x, y, direction) || (eventObject->trackedByCamera && !CanCameraMoveInDirection(direction)))
-        flags |= 2;
-    if (IsZCoordMismatchAt(eventObject->currentElevation, x, y))
-        flags |= 4;
+        flags |= 0x02;
+    if ((mismatch = IsZCoordMismatchAt(eventObject->currentElevation, x, y)))
+        flags |= 0x04;
     if (DoesObjectCollideWithObjectAt(eventObject, x, y))
-        flags |= 8;
+        flags |= 0x08;
+    if (mismatch == 2)
+        flags |= 0x10;
     return flags;
 }
 
@@ -7985,7 +7990,10 @@ bool8 IsZCoordMismatchAt(u8 z, s16 x, s16 y)
 
     if (mapZ == 0 || mapZ == 0xF)
         return FALSE;
-
+    
+    if (mapZ == 3 && z == 1) return 2;
+    if (mapZ == 1 && z == 3) return 2;
+    
     if (mapZ != z)
         return TRUE;
 

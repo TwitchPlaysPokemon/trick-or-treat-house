@@ -442,11 +442,11 @@ static u8 CheckPathBetweenTrainerAndPlayer(struct EventObject *trainerObj, u8 ap
     trainerObj->range.as_nybbles.x = 0;
     trainerObj->range.as_nybbles.y = 0;
 
-    collision = GetCollisionAtCoords(trainerObj, x, y, direction);
+    collision = GetCollisionFlagsAtCoords(trainerObj, x, y, direction);
 
     trainerObj->range.as_nybbles.x = unk19_temp;
     trainerObj->range.as_nybbles.y = unk19b_temp;
-    if (collision == 4)
+    if ((collision & 0x18) != 0)
         return approachDistance;
 
     return 0;

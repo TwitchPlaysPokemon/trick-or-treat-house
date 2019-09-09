@@ -179,9 +179,10 @@ void generate_trainer_table_text(ostringstream &text, string tablename, Json tra
                 parties << "\t.2byte 0\n";
             
             parties << "\t.byte " << mon["level"].number_value() << "\n";
-            // parties << "\t.byte 0  @ padding\n";
-            parties << ".align 2\n";
+            parties << "\t.byte 0  @ padding\n";
+            // parties << ".align 2\n";
             parties << "\t.2byte " << mon["species"].string_value() << "\n";
+            parties << "\t.2byte 0  @ padding\n";
             
             if (partyType & 2) {
                 if (mon.object_items().find("item") != mon.object_items().end())
