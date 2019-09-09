@@ -486,7 +486,7 @@ u8 GetPlayerTextSpeedDelay(void)
 u8 sub_81979C4(u8 a1)
 {
     if (sStartMenuWindowId == 0xFF)
-        sStartMenuWindowId = sub_8198AA4(0, 0x16, 1, 7, (a1 * 2) + 2, 0xF, 0x139);
+        sStartMenuWindowId = CreateWindowTemplateId(0, 0x16, 1, 7, (a1 * 2) + 2, 0xF, 0x139);
     return sStartMenuWindowId;
 }
 
@@ -517,7 +517,7 @@ u16 sub_8197A38(void)
 u8 AddMapNamePopUpWindow(void)
 {
     if (sMapNamePopupWindowId == 0xFF)
-        sMapNamePopupWindowId = sub_8198AA4(0, 1, 1, 10, 3, 14, 0x107);
+        sMapNamePopupWindowId = CreateWindowTemplateId(0, 1, 1, 14, 3, 14, 0x107);
     return sMapNamePopupWindowId;
 }
 
@@ -1165,7 +1165,7 @@ struct WindowTemplate CreateWindowTemplate(u8 bg, u8 left, u8 top, u8 width, u8 
     return template;
 }
 
-u16 sub_8198AA4(u8 bg, u8 left, u8 top, u8 width, u8 height, u8 paletteNum, u16 baseBlock)
+u16 CreateWindowTemplateId(u8 bg, u8 left, u8 top, u8 width, u8 height, u8 paletteNum, u16 baseBlock)
 {
     struct WindowTemplate template;
     SetWindowTemplateFields(&template, bg, left, top, width, height, paletteNum, baseBlock);

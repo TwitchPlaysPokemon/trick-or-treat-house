@@ -63,7 +63,7 @@ void AddTextPrinterParameterized4(u8 windowId, u8 fontId, u8 x, u8 y, u8 letterS
 void DrawDialogFrameWithCustomTileAndPalette(u8 windowId, bool8 copyToVram, u16 a2, u8 a3);
 void sub_81995E4(u8 windowId, u8 optionsNo, const struct MenuAction *actions, const u8 *actionIds);
 void ClearDialogWindowAndFrameToTransparent(u8 windowId, bool8 copyToVram);
-u16 sub_8198AA4(u8, u8, u8, u8, u8, u8, u16);
+u16 CreateWindowTemplateId(u8, u8, u8, u8, u8, u8, u16);
 void *malloc_and_decompress(const void *src, u32 *sizeOut);
 u16 copy_decompressed_tile_data_to_vram(u8 bgId, const void *src, u16 size, u16 offset, u8 mode);
 void AddTextPrinterForMessage(bool8 allowSkippingDelayWithButtonPress);
