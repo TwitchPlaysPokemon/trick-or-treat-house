@@ -97,7 +97,8 @@
         "Route131",
         "Route132",
         "Route133",
-        "Route134"
+        "Route134",
+        "LedgeMountain_Support"
     ],
     "gMapGroup4": [
         "Puzzle_TrickHouseCut",
@@ -105,7 +106,8 @@
         "Puzzle_TrickHouseSpintiles",
         "Puzzle_TinTowerClimb",
         "Puzzle_WaterTemple",
-        "Puzzle_MusicNoteTiles"
+        "Puzzle_MusicNoteTiles",
+        "Puzzle_LedgeMountain"
     ],
     "gMapGroup5": [
         "Puzzle_LostWoods_Entrance",

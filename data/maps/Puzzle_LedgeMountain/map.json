@@ -1,0 +1,81 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": [
+        {
+            "direction": "right",
+            "map": "MAP_LEDGE_MOUNTAIN_SUPPORT",
+            "offset": 47
+        },
+        {
+            "direction": "left",
+            "map": "MAP_LEDGE_MOUNTAIN_SUPPORT",
+            "offset": 47
+        }
+    ],
+    "coord_events": [
+    ],
+    "id": "MAP_PUZZLE_LEDGE_MOUNTAIN",
+    "layout": "LAYOUT_PUZZLE_LEDGE_MOUNTAIN",
+    "map_type": "MAP_TYPE_ROUTE",
+    "music": "MUS_KAZANBAI",
+    "name": "Puzzle_LedgeMountain",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_NORTH",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 33,
+            "y": 56
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_STONE",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "PuzzleCommon_EventScript_ExitDoorObject",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "5",
+            "x": 36,
+            "y": 53
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_SCROLL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "PuzzleCommon_EventScript_Scroll",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 20,
+            "y": 3
+        }
+    ],
+    "region_map_section": "MAPSEC_FALLARBOR_TOWN",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 33,
+            "y": 56
+        }
+    ],
+    "weather": "WEATHER_SUNNY"
+}

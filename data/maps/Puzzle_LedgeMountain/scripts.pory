@@ -1,0 +1,21 @@
+raw `
+Puzzle_LedgeMountain_MapScripts::
+	puzzle_info Puzzle_LedgeMountain_Name, Puzzle_LedgeMountain_Author
+	puzzle_adjective Puzzle_LedgeMountain_Adjective
+	puzzle_quip Puzzle_LedgeMountain_Quip
+	puzzle_metavars Puzzle_LedgeMountain_Variables
+	.byte 0
+
+Puzzle_LedgeMountain_Name:
+	.string "The Mountain Trail$"
+Puzzle_LedgeMountain_Author:
+	.string "Tustin2121$"
+Puzzle_LedgeMountain_Adjective:
+	.string "jumpy$"
+Puzzle_LedgeMountain_Quip:
+	.string "I love a good climb in the morning!\n"
+	.string "How about you?$"
+Puzzle_LedgeMountain_Variables:
+	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER
+	.2byte 0
+`

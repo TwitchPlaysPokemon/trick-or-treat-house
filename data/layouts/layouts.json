@@ -999,6 +999,26 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_TrickHousePuzzle",
             "width": 15
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_LedgeMountain/map.bin",
+            "border_filepath": "data/layouts/Puzzle_LedgeMountain/border.bin",
+            "height": 62,
+            "id": "LAYOUT_PUZZLE_LEDGE_MOUNTAIN",
+            "name": "Puzzle_LedgeMountain_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Fallarbor",
+            "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/LedgeMountain_Support/map.bin",
+            "border_filepath": "data/layouts/LedgeMountain_Support/border.bin",
+            "height": 8,
+            "id": "LAYOUT_LEDGE_MOUNTAIN_SUPPORT",
+            "name": "LedgeMountain_Support_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Fallarbor",
+            "width": 8
         }
     ],
     "layouts_table_label": "gMapLayouts"

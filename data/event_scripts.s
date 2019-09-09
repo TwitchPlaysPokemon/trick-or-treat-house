@@ -6190,3 +6190,7 @@ EventScript_PlayerPCFemale::
 	.align 2
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
+
+	.include "data/maps/Puzzle_LedgeMountain/scripts.inc"
+
+	.include "data/maps/LedgeMountain_Support/scripts.inc"
