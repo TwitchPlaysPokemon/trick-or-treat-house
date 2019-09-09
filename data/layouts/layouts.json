@@ -1019,6 +1019,16 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Fallarbor",
             "width": 8
+        },
+        {
+            "blockdata_filepath": "data/layouts/SeafoamPuzzle_Floor1/map.bin",
+            "border_filepath": "data/layouts/SeafoamPuzzle_Floor1/border.bin",
+            "height": 25,
+            "id": "LAYOUT_SEAFOAM_PUZZLE_FLOOR1",
+            "name": "SeafoamPuzzle_Floor1_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Pacifidlog",
+            "width": 25
         }
     ],
     "layouts_table_label": "gMapLayouts"

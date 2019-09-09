@@ -6194,3 +6194,5 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/Puzzle_LedgeMountain/scripts.inc"
 
 	.include "data/maps/LedgeMountain_Support/scripts.inc"
+
+	.include "data/maps/SeafoamPuzzle_Floor1/scripts.inc"

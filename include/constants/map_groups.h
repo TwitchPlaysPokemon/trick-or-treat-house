@@ -22,6 +22,7 @@
 #define MAP_EMPTY_PUZZLE                 (10 | (1 << 8))
 #define MAP_WATER_TEMPLE_LV1             (11 | (1 << 8))
 #define MAP_WATER_TEMPLE_LV2             (12 | (1 << 8))
+#define MAP_SEAFOAM_PUZZLE_FLOOR1        (13 | (1 << 8))
 
 // Map Group 2
 #define MAP_SECRET_BASE_RED_CAVE1    (0 | (2 << 8))
