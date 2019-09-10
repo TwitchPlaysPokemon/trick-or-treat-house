@@ -109,7 +109,7 @@ TrickHouseCorridor_Text_PokemonTable_Swap1:
 	.string "Good evening! How are you doing on\n"
 	.string "your PUZZLE CHALLENGE?\p"
 	.string "Would you like to swap some of your\n"
-	.string "RENTAL POKéMON?"
+	.string "RENTAL POKéMON?$"
 
 
 TrickHouseCorridor_TriggerScript_PokemonTable::
