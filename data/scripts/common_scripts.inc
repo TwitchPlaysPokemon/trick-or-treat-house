@@ -211,14 +211,6 @@ Common_Movement_WalkDownOutOfFrame:
 	walk_down
 	step_end
 
-Common_Movement_ObjectDoorOpen: @ 82725A6
-	walk_in_place_up
-	step_end
-
-Common_Movement_ObjectDoorClose: @ 82725A6
-	walk_in_place_down
-	step_end
-
 Common_Movement_KecleonShowAnim: @ 82723C7
 	set_visible
 	delay_4

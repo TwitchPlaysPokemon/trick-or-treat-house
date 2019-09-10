@@ -31,6 +31,8 @@ PuzzleDebug_Text_PuzzleSelect:
 PuzzleCommon_EventScript_IncrementPuzzle::
 	addvar VAR_CURRENT_PUZZLE, 1
 	setvar VAR_PUZZLE_STATE, 0
+	@ fallthrough
+PuzzleCommon_EventScript_ClearPuzzleData::
 	callnative ClearPuzzleEventData
 	callnative RandomizeRentalMons
 	return
@@ -138,6 +140,15 @@ PuzzleCommon_EventScript_DoDoorEnterAnimation::
 	applymovement THIS_EVENT, Common_Movement_ObjectDoorClose
 	waitmovement 0
 	return
+
+Common_Movement_ObjectDoorOpen: @ 82725A6
+	walk_in_place_up
+	step_end
+
+Common_Movement_ObjectDoorClose: @ 82725A6
+	walk_in_place_down
+	step_end
+
 
 @ -----------------------------------------------------
 
