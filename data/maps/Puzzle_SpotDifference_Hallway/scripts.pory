@@ -1,5 +1,5 @@
 raw `
-#define VAR_NUM_UNLOCKED_ROOMS VAR_PUZZLE_00
+#define VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS VAR_PUZZLE_00
 
 Puzzle_SpotDifference_Hallway_MapScripts::
     puzzle_info Puzzle_SpotDifference_Name, Puzzle_SpotDifference_Author
@@ -26,27 +26,27 @@ Puzzle_SpotDifference_Quip:
 `
 
 script Puzzle_SpotDifference_Hallway_OnLoad {
-    if (var(VAR_NUM_UNLOCKED_ROOMS) >= 1) {
+    if (var(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS) >= 1) {
         # Open door to puzzle 1 right.
         setmetatile(12, 18, METATILE_Building_DrapeDoor_Top, 1)
         setmetatile(12, 19, METATILE_Building_DrapeDoor_Bottom, 1)
     }
-    if (var(VAR_NUM_UNLOCKED_ROOMS) >= 2) {
+    if (var(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS) >= 2) {
         # Open door to puzzle 2 left.
         setmetatile(2, 12, METATILE_Building_DrapeDoor_Top, 1)
         setmetatile(2, 13, METATILE_Building_DrapeDoor_Bottom, 1)
     }
-    if (var(VAR_NUM_UNLOCKED_ROOMS) >= 3) {
+    if (var(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS) >= 3) {
         # Open door to puzzle 2 right.
         setmetatile(12, 12, METATILE_Building_DrapeDoor_Top, 1)
         setmetatile(12, 13, METATILE_Building_DrapeDoor_Bottom, 1)
     }
-    if (var(VAR_NUM_UNLOCKED_ROOMS) >= 4) {
+    if (var(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS) >= 4) {
         # Open door to puzzle 3 left.
         setmetatile(2, 6, METATILE_Building_DrapeDoor_Top, 1)
         setmetatile(2, 7, METATILE_Building_DrapeDoor_Bottom, 1)
     }
-    if (var(VAR_NUM_UNLOCKED_ROOMS) >= 5) {
+    if (var(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS) >= 5) {
         # Open door to puzzle 3 right.
         setmetatile(12, 6, METATILE_Building_DrapeDoor_Top, 1)
         setmetatile(12, 7, METATILE_Building_DrapeDoor_Bottom, 1)

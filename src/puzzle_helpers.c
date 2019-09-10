@@ -15,21 +15,21 @@
 // Puzzle: Pokemon Says 
 // MAP_PUZZLE_MUSIC_NOTE_TILES
 
-#define FLAG_HIDE_SCROLL          FLAG_TEMP_1
-#define FLAG_TILES_ACTIVE         FLAG_PUZZLE_20
-#define VAR_CUR_SONG              VAR_PUZZLE_00
-#define VAR_NUM_CORRECT_STEPS     VAR_PUZZLE_01
-#define VAR_TARGET_TILE           VAR_PUZZLE_02
-#define VAR_SONG_COMPLETION_STATE VAR_PUZZLE_03
+#define FLAG_MUSIC_NOTE_PUZZLE_HIDE_SCROLL          FLAG_TEMP_1
+#define FLAG_MUSIC_NOTE_PUZZLE_TILES_ACTIVE         FLAG_PUZZLE_20
+#define VAR_MUSIC_NOTE_PUZZLE_CUR_SONG              VAR_PUZZLE_00
+#define VAR_MUSIC_NOTE_PUZZLE_NUM_CORRECT_STEPS     VAR_PUZZLE_01
+#define VAR_MUSIC_NOTE_PUZZLE_TARGET_TILE           VAR_PUZZLE_02
+#define VAR_MUSIC_NOTE_PUZZLE_SONG_COMPLETION_STATE VAR_PUZZLE_03
 
-const u16 sSongNotes0[] = {
+static const u16 sSongNotes0[] = {
     METATILE_ID(TrickHousePuzzle, MusicNoteGreen),
     METATILE_ID(TrickHousePuzzle, MusicNoteRed),
     METATILE_ID(TrickHousePuzzle, MusicNoteBlue),
     0xFFFF,
 };
 
-const u16 sSongNotes1[] = {
+static const u16 sSongNotes1[] = {
     METATILE_ID(TrickHousePuzzle, MusicNoteGreen),
     METATILE_ID(TrickHousePuzzle, MusicNoteBlue),
     METATILE_ID(TrickHousePuzzle, MusicNoteRed),
@@ -37,7 +37,7 @@ const u16 sSongNotes1[] = {
     0xFFFF,
 };
 
-const u16 sSongNotes2[] = {
+static const u16 sSongNotes2[] = {
     METATILE_ID(TrickHousePuzzle, MusicNoteRed),
     METATILE_ID(TrickHousePuzzle, MusicNoteYellow),
     METATILE_ID(TrickHousePuzzle, MusicNotePink),
@@ -46,7 +46,7 @@ const u16 sSongNotes2[] = {
     0xFFFF,
 };
 
-const u16 sSongNotes3[] = {
+static const u16 sSongNotes3[] = {
     METATILE_ID(TrickHousePuzzle, MusicNoteRed),
     METATILE_ID(TrickHousePuzzle, MusicNoteRed),
     METATILE_ID(TrickHousePuzzle, MusicNotePink),
@@ -56,7 +56,7 @@ const u16 sSongNotes3[] = {
     0xFFFF,
 };
 
-const u16 *const sSongNotes[] = {
+static const u16 *const sSongNotes[] = {
     sSongNotes0,
     sSongNotes1,
     sSongNotes2,
@@ -89,46 +89,47 @@ void HandlePuzzleMusicTileStep(u32 metatileId)
 {
     u16 curSong, curStep, correctNote;
 
-    if (!FlagGet(FLAG_TILES_ACTIVE))
+    if (!FlagGet(FLAG_MUSIC_NOTE_PUZZLE_TILES_ACTIVE))
     {
         PlayPuzzleMusicTileNote(metatileId);
         return;
     }
 
-    curSong = VarGet(VAR_CUR_SONG);
-    curStep = VarGet(VAR_NUM_CORRECT_STEPS);
+    curSong = VarGet(VAR_MUSIC_NOTE_PUZZLE_CUR_SONG);
+    curStep = VarGet(VAR_MUSIC_NOTE_PUZZLE_NUM_CORRECT_STEPS);
     correctNote = sSongNotes[curSong][curStep];
     if (metatileId == correctNote)
     {
         PlayPuzzleMusicTileNote(metatileId);
         if (sSongNotes[curSong][curStep + 1] != 0xFFFF)
         {
-            VarSet(VAR_NUM_CORRECT_STEPS, curStep + 1);
+            VarSet(VAR_MUSIC_NOTE_PUZZLE_NUM_CORRECT_STEPS, curStep + 1);
         }
         else
         {
             if (curSong < ARRAY_COUNT(sSongNotes) - 1)
-                VarSet(VAR_SONG_COMPLETION_STATE, 1);
+                VarSet(VAR_MUSIC_NOTE_PUZZLE_SONG_COMPLETION_STATE, 1);
             else
-                VarSet(VAR_SONG_COMPLETION_STATE, 2);
+                VarSet(VAR_MUSIC_NOTE_PUZZLE_SONG_COMPLETION_STATE, 2);
 
-            FlagClear(FLAG_TILES_ACTIVE);
+            FlagClear(FLAG_MUSIC_NOTE_PUZZLE_TILES_ACTIVE);
         }
     }
     else
     {
         PlaySE(SE_HAZURE);
-        FlagClear(FLAG_TILES_ACTIVE);
-        VarSet(VAR_NUM_CORRECT_STEPS, 0);
+        FlagClear(FLAG_MUSIC_NOTE_PUZZLE_TILES_ACTIVE);
+        VarSet(VAR_MUSIC_NOTE_PUZZLE_NUM_CORRECT_STEPS, 0);
     }
 }
 
 
-#undef FLAG_HIDE_SCROLL
-#undef FLAG_TILES_ACTIVE
-#undef VAR_CUR_SONG
-#undef VAR_NUM_CORRECT_STEPS
-#undef VAR_TARGET_TILE
+#undef FLAG_MUSIC_NOTE_PUZZLE_HIDE_SCROLL
+#undef FLAG_MUSIC_NOTE_PUZZLE_TILES_ACTIVE
+#undef VAR_MUSIC_NOTE_PUZZLE_CUR_SONG
+#undef VAR_MUSIC_NOTE_PUZZLE_NUM_CORRECT_STEPS
+#undef VAR_MUSIC_NOTE_PUZZLE_TARGET_TILE
+#undef VAR_MUSIC_NOTE_PUZZLE_SONG_COMPLETION_STATE
 
 ///////////////////////////////////////////////////////////////////////////////
 // Puzzle: Waterflow Caverns 

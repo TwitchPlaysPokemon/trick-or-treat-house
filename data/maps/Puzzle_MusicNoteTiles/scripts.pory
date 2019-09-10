@@ -1,11 +1,9 @@
 raw `
-#define FLAG_HIDE_SCROLL          FLAG_TEMP_1
-#define FLAG_HIDE_MONS            FLAG_TEMP_2
-#define FLAG_TILES_ACTIVE         FLAG_PUZZLE_20
-#define VAR_CUR_SONG              VAR_PUZZLE_00
-#define VAR_NUM_CORRECT_STEPS     VAR_PUZZLE_01
-#define VAR_TARGET_TILE           VAR_PUZZLE_02
-#define VAR_SONG_COMPLETION_STATE VAR_PUZZLE_03
+#define FLAG_MUSIC_NOTE_PUZZLE_HIDE_SCROLL          FLAG_TEMP_1
+#define FLAG_MUSIC_NOTE_PUZZLE_TILES_ACTIVE         FLAG_PUZZLE_20
+#define VAR_MUSIC_NOTE_PUZZLE_CUR_SONG              VAR_PUZZLE_00
+#define VAR_MUSIC_NOTE_PUZZLE_NUM_CORRECT_STEPS     VAR_PUZZLE_01
+#define VAR_MUSIC_NOTE_PUZZLE_SONG_COMPLETION_STATE VAR_PUZZLE_03
 
 Puzzle_MusicNoteTiles_MapScripts::
     puzzle_info Puzzle_MusicNoteTiles_Name, Puzzle_MusicNoteTiles_Author
@@ -16,8 +14,8 @@ Puzzle_MusicNoteTiles_MapScripts::
     .byte 0
 
 Puzzle_MusicNoteTiles_FrameTable:
-    map_script_2 VAR_SONG_COMPLETION_STATE, 1, Puzzle_MusicNoteTiles_SongCompleted
-    map_script_2 VAR_SONG_COMPLETION_STATE, 2, Puzzle_MusicNoteTiles_AllSongsCompleted
+    map_script_2 VAR_MUSIC_NOTE_PUZZLE_SONG_COMPLETION_STATE, 1, Puzzle_MusicNoteTiles_SongCompleted
+    map_script_2 VAR_MUSIC_NOTE_PUZZLE_SONG_COMPLETION_STATE, 2, Puzzle_MusicNoteTiles_AllSongsCompleted
     .2byte 0
 
 Puzzle_MusicNoteTiles_Name:
@@ -36,7 +34,7 @@ Puzzle_MusicNoteTiles_Quip:
 `
 
 script Puzzle_MusicNoteTiles_OnLoad {
-    setflag(FLAG_HIDE_SCROLL)
+    setflag(FLAG_MUSIC_NOTE_PUZZLE_HIDE_SCROLL)
 }
 
 script Puzzle_MusicNoteTiles_Pokemon {
@@ -44,7 +42,7 @@ script Puzzle_MusicNoteTiles_Pokemon {
     msgbox("The POKéMON are singing a song.$")
 
     # Sing the current song, by showing music notes above their heads.
-    switch (var(VAR_CUR_SONG)) {
+    switch (var(VAR_MUSIC_NOTE_PUZZLE_CUR_SONG)) {
         case 0:
             call(Puzzle_MusicNoteTiles_Song0)
             call(Puzzle_MusicNoteTiles_Song0)
@@ -60,8 +58,8 @@ script Puzzle_MusicNoteTiles_Pokemon {
     }
 
     # Reset the tile progression state.
-    setvar(VAR_NUM_CORRECT_STEPS, 0)
-    setflag(FLAG_TILES_ACTIVE)
+    setvar(VAR_MUSIC_NOTE_PUZZLE_NUM_CORRECT_STEPS, 0)
+    setflag(FLAG_MUSIC_NOTE_PUZZLE_TILES_ACTIVE)
     release
 }
 
@@ -159,8 +157,8 @@ script Puzzle_MusicNoteTiles_SongCompleted {
     applymovement(6, Common_Movement_ExclamationMark)
     delay(30)
     waitmovement(0)
-    addvar(VAR_CUR_SONG, 1)
-    setvar(VAR_SONG_COMPLETION_STATE, 0)
+    addvar(VAR_MUSIC_NOTE_PUZZLE_CUR_SONG, 1)
+    setvar(VAR_MUSIC_NOTE_PUZZLE_SONG_COMPLETION_STATE, 0)
     msgbox("The POKéMON are happy to hear\n"
            "the correct notes!$")
     release
@@ -191,6 +189,6 @@ script Puzzle_MusicNoteTiles_AllSongsCompleted {
     setflag(FLAG_TEMP_2)
     delay(60)
     fadescreen(0)
-    setvar(VAR_SONG_COMPLETION_STATE, 0)
+    setvar(VAR_MUSIC_NOTE_PUZZLE_SONG_COMPLETION_STATE, 0)
     release
 }
