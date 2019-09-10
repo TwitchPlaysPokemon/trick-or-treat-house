@@ -1,0 +1,59 @@
+raw `
+Puzzle_Wilke_MapScripts::
+	.byte 0
+
+Puzzle_Wilke_TalkToRacc1::
+	lockall
+	compare VAR_TRICK_HOUSE_PUZZLE_1_STATE, 0
+	goto_if_eq Puzzle_Wilke_TalkToRacc2
+	msgbox Puzzle_Wilke_Text_Ziggy3, MSGBOX_DEFAULT
+	releaseall
+	end
+	
+Puzzle_Wilke_TalkToRacc2::
+	setvar VAR_TRICK_HOUSE_PUZZLE_1_STATE, 1
+	playfanfare MUS_FANFA4
+	message Puzzle_Wilke_Text_Ziggy1
+	waitfanfare
+	msgbox Puzzle_Wilke_Text_Ziggy2, MSGBOX_DEFAULT
+	releaseall
+	end
+	
+Puzzle_Wilke_Peeko1::
+	lockall
+	compare VAR_TRICK_HOUSE_PUZZLE_1_STATE, 0
+	goto_if_eq Puzzle_Wilke_Peeko2
+	msgbox Puzzle_Wilke_Text_Peeko1, MSGBOX_DEFAULT
+	playse SE_PIN
+	setvar VAR_TRICK_HOUSE_PUZZLE_1_STATE, 2
+	applymovement 2, Puzzle_Wilke_Movement
+	waitmovement 0
+	releaseall
+	end
+	
+Puzzle_Wilke_Peeko2::
+	msgbox Puzzle_Wilke_Text_Peeko2, MSGBOX_DEFAULT
+	releaseall
+	end
+	
+Puzzle_Wilke_Movement:
+	walk_left
+	face_right
+	step_end
+	
+Puzzle_Wilke_Text_Ziggy1:
+	.string "{PLAYER} found Ziggy.$"
+
+Puzzle_Wilke_Text_Ziggy2:
+	.string "Ziggy told {PLAYER} the\n"
+	.string "secret code.$"
+	
+Puzzle_Wilke_Text_Ziggy3:
+	.string "RACC$"
+	
+Puzzle_Wilke_Text_Peeko1:
+	.string "{PLAYER} told Peeko the secret code.$"
+	
+Puzzle_Wilke_Text_Peeko2:
+	.string "Peeko guards the door.$"
+`

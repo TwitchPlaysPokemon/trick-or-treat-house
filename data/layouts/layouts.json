@@ -1019,6 +1019,16 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Fallarbor",
             "width": 8
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_Wilke/map.bin",
+            "border_filepath": "data/layouts/Puzzle_Wilke/border.bin",
+            "height": 10,
+            "id": "LAYOUT_PUZZLE_WILKE",
+            "name": "Puzzle_Wilke_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Petalburg",
+            "width": 22
         }
     ],
     "layouts_table_label": "gMapLayouts"

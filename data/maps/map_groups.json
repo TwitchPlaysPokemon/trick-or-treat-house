@@ -107,7 +107,8 @@
         "Puzzle_TinTowerClimb",
         "Puzzle_WaterTemple",
         "Puzzle_MusicNoteTiles",
-        "Puzzle_LedgeMountain"
+        "Puzzle_LedgeMountain",
+        "Puzzle_Wilke"
     ],
     "gMapGroup5": [
         "Puzzle_LostWoods_Entrance",
