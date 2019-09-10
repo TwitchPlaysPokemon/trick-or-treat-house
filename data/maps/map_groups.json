@@ -113,13 +113,23 @@
         "Puzzle_LostWoods_Entrance",
         "Puzzle_LostWoods_Room0"
     ],
+    "gMapGroup6": [
+        "Puzzle_SpotDifference_Hallway",
+        "Puzzle_SpotDifference_1_Left",
+        "Puzzle_SpotDifference_1_Right",
+        "Puzzle_SpotDifference_2_Left",
+        "Puzzle_SpotDifference_2_Right",
+        "Puzzle_SpotDifference_3_Left",
+        "Puzzle_SpotDifference_3_Right"
+    ],
     "group_order": [
         "gMapGroup0",
         "gMapGroup1",
         "gMapGroup2",
         "gMapGroup3",
         "gMapGroup4",
-        "gMapGroup5"
+        "gMapGroup5",
+        "gMapGroup6"
     ],
     "layouts_table_label": "gMapLayouts"
 }

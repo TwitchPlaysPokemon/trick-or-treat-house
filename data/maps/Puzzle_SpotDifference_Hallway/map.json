@@ -1,0 +1,80 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": false,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_PUZZLE_SPOT_DIFFERENCE_HALLWAY",
+    "layout": "LAYOUT_PUZZLE_SPOT_DIFFERENCE_HALLWAY",
+    "map_type": "MAP_TYPE_INDOOR",
+    "music": "MUS_DAN02",
+    "name": "Puzzle_SpotDifference_Hallway",
+    "object_events": [
+    ],
+    "region_map_section": "MAPSEC_ROUTE_110",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 7,
+            "y": 21
+        },
+        {
+            "dest_map": "MAP_PUZZLE_SPOT_DIFFERENCE_1_LEFT",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 2,
+            "y": 19
+        },
+        {
+            "dest_map": "MAP_PUZZLE_SPOT_DIFFERENCE_1_RIGHT",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 12,
+            "y": 19
+        },
+        {
+            "dest_map": "MAP_PUZZLE_SPOT_DIFFERENCE_2_LEFT",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 2,
+            "y": 13
+        },
+        {
+            "dest_map": "MAP_PUZZLE_SPOT_DIFFERENCE_2_RIGHT",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 12,
+            "y": 13
+        },
+        {
+            "dest_map": "MAP_PUZZLE_SPOT_DIFFERENCE_3_LEFT",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 2,
+            "y": 7
+        },
+        {
+            "dest_map": "MAP_PUZZLE_SPOT_DIFFERENCE_3_RIGHT",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 12,
+            "y": 7
+        },
+        {
+            "dest_map": "MAP_TRICK_HOUSE_END",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 7,
+            "y": 1
+        }
+    ],
+    "weather": "WEATHER_SUNNY"
+}
