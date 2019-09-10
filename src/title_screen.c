@@ -24,11 +24,13 @@
 #include "constants/songs.h"
 
 #define VERSION_BANNER_RIGHT_TILEOFFSET 64
-#define VERSION_BANNER_LEFT_X 98
-#define VERSION_BANNER_RIGHT_X 162
-#define VERSION_BANNER_Y 2
-#define VERSION_BANNER_Y_GOAL 66
+#define VERSION_BANNER_LEFT_X 90
+#define VERSION_BANNER_RIGHT_X 154
+#define VERSION_BANNER_Y 34
+#define VERSION_BANNER_Y_GOAL 98
 #define START_BANNER_X 128
+#define COPYRIGHT_BANNER_Y 8
+#define START_BANNER_Y 120
 
 #define CLEAR_SAVE_BUTTON_COMBO (B_BUTTON | SELECT_BUTTON | DPAD_UP)
 #define RESET_RTC_BUTTON_COMBO (B_BUTTON | SELECT_BUTTON | DPAD_LEFT)
@@ -454,7 +456,7 @@ static void SpriteCB_PokemonLogoShine(struct Sprite *sprite)
                 || sprite->pos1.x == DISPLAY_WIDTH / 2 + 16
                 || sprite->pos1.x == DISPLAY_WIDTH / 2 + 20
                 || sprite->pos1.x == DISPLAY_WIDTH / 2 + 24)
-                gPlttBufferFaded[0] = RGB(24, 31, 12);
+                gPlttBufferFaded[0] = RGB(31, 22, 29);
             else
                 gPlttBufferFaded[0] = backgroundColor;
         }
@@ -699,8 +701,8 @@ static void Task_TitleScreenPhase2(u8 taskId)
                                     | DISPCNT_BG1_ON
                                     | DISPCNT_BG2_ON
                                     | DISPCNT_OBJ_ON);
-        CreatePressStartBanner(START_BANNER_X, 108);
-        CreateCopyrightBanner(START_BANNER_X, 148);
+        CreatePressStartBanner(START_BANNER_X, START_BANNER_Y);
+        CreateCopyrightBanner(START_BANNER_X, COPYRIGHT_BANNER_Y);
         gTasks[taskId].data[4] = 0;
         gTasks[taskId].func = Task_TitleScreenPhase3;
     }
@@ -803,8 +805,10 @@ static void UpdateLegendaryMarkingColor(u8 frameNum)
     if ((frameNum % 4) == 0) // Change color every 4th frame
     {
         s32 intensity = Cos(frameNum, 128) + 128;
-        s32 r = 31 - ((intensity * 32 - intensity) / 256);
-        s32 g = 31 - (intensity * 22 / 256);
+        // s32 r = 31 - ((intensity * 32 - intensity) / 256);
+        // s32 g = 31 - (intensity * 22 / 256);
+        s32 r = 31 - (intensity * 22 / 256);
+        s32 g = 31 - ((intensity * 32 - intensity) / 256);
         s32 b = 12;
 
         u16 color = RGB(r, g, b);
