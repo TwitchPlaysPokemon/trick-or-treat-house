@@ -26,11 +26,11 @@
 #define VERSION_BANNER_RIGHT_TILEOFFSET 64
 #define VERSION_BANNER_LEFT_X 90
 #define VERSION_BANNER_RIGHT_X 154
-#define VERSION_BANNER_Y 34
-#define VERSION_BANNER_Y_GOAL 98
+#define VERSION_BANNER_Y 40
+#define VERSION_BANNER_Y_GOAL 104
 #define START_BANNER_X 128
 #define COPYRIGHT_BANNER_Y 8
-#define START_BANNER_Y 120
+#define START_BANNER_Y 144
 
 #define CLEAR_SAVE_BUTTON_COMBO (B_BUTTON | SELECT_BUTTON | DPAD_UP)
 #define RESET_RTC_BUTTON_COMBO (B_BUTTON | SELECT_BUTTON | DPAD_LEFT)
@@ -485,21 +485,21 @@ static void StartPokemonLogoShine(u8 flashBg)
     {
     case 0:
     case 2:
-        spriteId = CreateSprite(&sPokemonLogoShineSpriteTemplate, 0, 68, 0);
+        spriteId = CreateSprite(&sPokemonLogoShineSpriteTemplate, 0, 108, 0);
         gSprites[spriteId].oam.objMode = 2;
         gSprites[spriteId].data[0] = flashBg;
         break;
     case 1:
-        spriteId = CreateSprite(&sPokemonLogoShineSpriteTemplate, 0, 68, 0);
+        spriteId = CreateSprite(&sPokemonLogoShineSpriteTemplate, 0, 108, 0);
         gSprites[spriteId].oam.objMode = 2;
         gSprites[spriteId].data[0] = flashBg;
         gSprites[spriteId].invisible = TRUE;
 
-        spriteId = CreateSprite(&sPokemonLogoShineSpriteTemplate, 0, 68, 0);
+        spriteId = CreateSprite(&sPokemonLogoShineSpriteTemplate, 0, 108, 0);
         gSprites[spriteId].callback = SpriteCB_PokemonLogoShine2;
         gSprites[spriteId].oam.objMode = 2;
 
-        spriteId = CreateSprite(&sPokemonLogoShineSpriteTemplate, -80, 68, 0);
+        spriteId = CreateSprite(&sPokemonLogoShineSpriteTemplate, -80, 108, 0);
         gSprites[spriteId].callback = SpriteCB_PokemonLogoShine2;
         gSprites[spriteId].oam.objMode = 2;
         break;
