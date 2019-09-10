@@ -26,8 +26,14 @@ export LD := $(PREFIX)ld
 
 ifeq ($(OS),Windows_NT)
 EXE := .exe
-else
+EXE2 := .exe
+else 
 EXE :=
+ifeq ($(shell uname),Darwin)
+EXE2 := -mac
+else
+EXE2 := -nix
+endif
 endif
 
 TITLE       := TRICKTREAT H
@@ -91,7 +97,7 @@ RAMSCRGEN := tools/ramscrgen/ramscrgen$(EXE)
 FIX := tools/gbafix/gbafix$(EXE)
 MAPJSON := tools/mapjson/mapjson$(EXE)
 JSONPROC := tools/jsonproc/jsonproc$(EXE)
-SCRIPT := tools/poryscript/poryscript$(EXE)
+SCRIPT := tools/poryscript/poryscript$(EXE2)
 
 TOOLDIRS := $(filter-out tools/agbcc tools/binutils tools/porymap.app tools/poryscript,$(wildcard tools/*))
 TOOLBASE = $(TOOLDIRS:tools/%=%)
