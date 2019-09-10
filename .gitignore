@@ -31,3 +31,4 @@ build/
 porymap.project.cfg
 .vscode/
 tricktreat.sym
+tools/poryscript/poryscript-mac
