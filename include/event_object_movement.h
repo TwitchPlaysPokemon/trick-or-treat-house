@@ -404,7 +404,7 @@ bool8 CopyablePlayerMovement_GoSpeed0(struct EventObject *, struct Sprite *, u8,
 bool8 CopyablePlayerMovement_GoSpeed1(struct EventObject *, struct Sprite *, u8, bool8(u8));
 bool8 CopyablePlayerMovement_GoSpeed2(struct EventObject *, struct Sprite *, u8, bool8(u8));
 bool8 CopyablePlayerMovement_Slide(struct EventObject *, struct Sprite *, u8, bool8(u8));
-bool8 cph_IM_DIFFERENT(struct EventObject *, struct Sprite *, u8, bool8(u8));
+bool8 CopyablePlayerMovement_JumpInPlace(struct EventObject *, struct Sprite *, u8, bool8(u8));
 bool8 CopyablePlayerMovement_GoSpeed4(struct EventObject *, struct Sprite *, u8, bool8(u8));
 bool8 CopyablePlayerMovement_Jump(struct EventObject *, struct Sprite *, u8, bool8(u8));
 u8 MovementType_CopyPlayerInGrass_Step1(struct EventObject *, struct Sprite *);

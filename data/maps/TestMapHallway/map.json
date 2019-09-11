@@ -32,6 +32,20 @@
             "elevation": 0,
             "x": 3,
             "y": 1
+        },
+        {
+            "dest_map": "MAP_TEST_MIRROR_MOVEMENT",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 5,
+            "y": 1
+        },
+        {
+            "dest_map": "MAP_TEST_COPY_MOVEMENT",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 7,
+            "y": 1
         }
     ],
     "weather": "WEATHER_SUNNY"

@@ -6200,3 +6200,7 @@ EventScript_PlayerPCFemale::
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
 
+
+	.include "data/maps/TestMirrorMovement/scripts.inc"
+
+	.include "data/maps/TestCopyMovement/scripts.inc"

@@ -19,7 +19,9 @@
         "TestLayoutSwitching2",
         "EmptyPuzzle",
         "WaterTemple_Lv1",
-        "WaterTemple_Lv2"
+        "WaterTemple_Lv2",
+        "TestMirrorMovement",
+        "TestCopyMovement"
     ],
     "gMapGroup2": [
         "SecretBase_RedCave1",

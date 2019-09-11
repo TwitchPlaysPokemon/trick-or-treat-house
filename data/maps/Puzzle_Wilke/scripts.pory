@@ -9,7 +9,7 @@ Puzzle_Wilke_MapScripts::
 	.byte 0
 
 Puzzle_Wilke_Name:
-	.string "Ziggy See, Ziggy Do$"
+	.string "I Jump, You Jump, Jack$"
 Puzzle_Wilke_Author:
 	.string "wilke0$"
 Puzzle_Wilke_Adjective:

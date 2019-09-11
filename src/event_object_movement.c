@@ -1787,9 +1787,12 @@ void TrySpawnEventObjects(s16 cameraX, s16 cameraY)
             struct EventObjectTemplate *template = &gSaveBlock1Ptr->eventObjectTemplates[i];
             s16 npcX = template->x + 7;
             s16 npcY = template->y + 7;
+            
+            bool8 shouldSpawn = !FlagGet(template->flagId);
+            if (!FlagGet(FLAG_PREVENT_EVENT_OBJECT_DESPAWN))
+                shouldSpawn &= (top <= npcY && bottom >= npcY && left <= npcX && right >= npcX);
 
-            if (top <= npcY && bottom >= npcY && left <= npcX && right >= npcX
-                && !FlagGet(template->flagId))
+            if (shouldSpawn)
                 TrySpawnEventObjectTemplate(template, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, cameraX, cameraY);
         }
     }
@@ -1807,7 +1810,7 @@ void RemoveEventObjectsOutsideView(void)
             if (gLinkPlayerEventObjects[j].active && i == gLinkPlayerEventObjects[j].eventObjId)
                 isActiveLinkPlayer = TRUE;
         }
-        if (!isActiveLinkPlayer)
+        if (!isActiveLinkPlayer && !FlagGet(FLAG_PREVENT_EVENT_OBJECT_DESPAWN))
         {
             struct EventObject *eventObject = &gEventObjects[i];
 
@@ -4541,7 +4544,7 @@ bool8 CopyablePlayerMovement_Slide(struct EventObject *eventObject, struct Sprit
     return TRUE;
 }
 
-bool8 cph_IM_DIFFERENT(struct EventObject *eventObject, struct Sprite *sprite, u8 playerDirection, bool8 tileCallback(u8))
+bool8 CopyablePlayerMovement_JumpInPlace(struct EventObject *eventObject, struct Sprite *sprite, u8 playerDirection, bool8 tileCallback(u8))
 {
     u32 direction;
 

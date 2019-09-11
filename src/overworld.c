@@ -827,6 +827,7 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     if (gMapHeader.regionMapSectionId != 0x3A)
         sub_8085810();
 
+    FlagClear(FLAG_PREVENT_EVENT_OBJECT_DESPAWN);
     ApplyCurrentWarp();
     RunPuzzleTeardownScript();
     LoadCurrentMapData();
@@ -866,6 +867,7 @@ static void mli0_load_map(u32 a1)
     bool8 isOutdoors;
     bool8 isIndoors;
 
+    FlagClear(FLAG_PREVENT_EVENT_OBJECT_DESPAWN);
     RunPuzzleTeardownScript();
     LoadCurrentMapData();
     if (!(sUnknown_020322D8 & 1))
