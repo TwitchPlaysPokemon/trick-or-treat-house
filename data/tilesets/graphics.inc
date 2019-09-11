@@ -1789,3 +1789,23 @@ gTilesetPalettes_WaterfallCave::
 	.align 2
 gTilesetTiles_WaterfallCave::
 	.incbin "data/tilesets/secondary/waterfall_cave/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_Autumn::
+	.incbin "data/tilesets/primary/autumn/palettes/00.gbapal"
+	.incbin "data/tilesets/primary/autumn/palettes/01.gbapal"
+	.incbin "data/tilesets/primary/autumn/palettes/02.gbapal"
+	.incbin "data/tilesets/primary/autumn/palettes/03.gbapal"
+	.incbin "data/tilesets/primary/autumn/palettes/04.gbapal"
+	.incbin "data/tilesets/primary/autumn/palettes/05.gbapal"
+	.incbin "data/tilesets/primary/autumn/palettes/06.gbapal"
+	.incbin "data/tilesets/primary/autumn/palettes/07.gbapal"
+	.incbin "data/tilesets/primary/autumn/palettes/08.gbapal"
+	.incbin "data/tilesets/primary/autumn/palettes/09.gbapal"
+	.incbin "data/tilesets/primary/autumn/palettes/10.gbapal"
+	.incbin "data/tilesets/primary/autumn/palettes/11.gbapal"
+	.incbin "data/tilesets/primary/autumn/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_Autumn::
+	.incbin "data/tilesets/primary/autumn/tiles.4bpp.lz"

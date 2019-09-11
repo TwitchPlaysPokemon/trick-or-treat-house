@@ -863,3 +863,14 @@ gTileset_WaterfallCave::
 	.4byte gMetatiles_WaterfallCave
 	.4byte gMetatileAttributes_WaterfallCave
 	.4byte InitTilesetAnim_Pacifidlog
+
+	.align 2
+gTileset_Autumn::
+	.byte TRUE @ is compressed
+	.byte FALSE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Autumn
+	.4byte gTilesetPalettes_Autumn
+	.4byte gMetatiles_Autumn
+	.4byte gMetatileAttributes_Autumn
+	.4byte NULL

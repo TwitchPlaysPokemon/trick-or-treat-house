@@ -26,8 +26,8 @@
 #define VERSION_BANNER_RIGHT_TILEOFFSET 64
 #define VERSION_BANNER_LEFT_X 90
 #define VERSION_BANNER_RIGHT_X 154
-#define VERSION_BANNER_Y 40
-#define VERSION_BANNER_Y_GOAL 104
+#define VERSION_BANNER_Y 38
+#define VERSION_BANNER_Y_GOAL 92
 #define START_BANNER_X 128
 #define COPYRIGHT_BANNER_Y 8
 #define START_BANNER_Y 144
@@ -572,7 +572,7 @@ void CB2_InitTitleScreen(void)
         gTasks[taskId].tCounter = 256;
         gTasks[taskId].tSkipToNext = FALSE;
         gTasks[taskId].data[2] = -16;
-        gTasks[taskId].data[3] = -32;
+        gTasks[taskId].data[3] = 32;
         gMain.state = 3;
         break;
     }
@@ -585,8 +585,8 @@ void CB2_InitTitleScreen(void)
         PanFadeAndZoomScreen(0x78, 0x50, 0x100, 0);
         SetGpuReg(REG_OFFSET_BG2X_L, -29 * 256);
         SetGpuReg(REG_OFFSET_BG2X_H, -1);
-        SetGpuReg(REG_OFFSET_BG2Y_L, -32 * 256);
-        SetGpuReg(REG_OFFSET_BG2Y_H, -1);
+        SetGpuReg(REG_OFFSET_BG2Y_L, 32 * 256);
+        SetGpuReg(REG_OFFSET_BG2Y_H, 0);
         SetGpuReg(REG_OFFSET_WIN0H, 0);
         SetGpuReg(REG_OFFSET_WIN0V, 0);
         SetGpuReg(REG_OFFSET_WIN1H, 0);
@@ -691,6 +691,7 @@ static void Task_TitleScreenPhase2(u8 taskId)
     }
     else
     {
+        UpdateLegendaryMarkingColor(0);
         gTasks[taskId].tSkipToNext = TRUE;
         SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG1 | BLDCNT_EFFECT_BLEND | BLDCNT_TGT2_BG0 | BLDCNT_TGT2_BD);
         SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(6, 15));
@@ -709,8 +710,8 @@ static void Task_TitleScreenPhase2(u8 taskId)
 
     if (!(gTasks[taskId].tCounter & 3) && gTasks[taskId].data[2] != 0)
         gTasks[taskId].data[2]++;
-    if (!(gTasks[taskId].tCounter & 1) && gTasks[taskId].data[3] != 0)
-        gTasks[taskId].data[3]++;
+    if (!(gTasks[taskId].tCounter & 1) && gTasks[taskId].data[3] != 5)
+        gTasks[taskId].data[3]--;
 
     // Slide Pokemon logo up
     yPos = gTasks[taskId].data[3] * 256;
@@ -749,7 +750,7 @@ static void Task_TitleScreenPhase3(u8 taskId)
     }
     else
     {
-        SetGpuReg(REG_OFFSET_BG2Y_L, 0);
+        SetGpuReg(REG_OFFSET_BG2Y_L, 5 * 256);
         SetGpuReg(REG_OFFSET_BG2Y_H, 0);
         gTasks[taskId].tCounter++;
         if (gTasks[taskId].tCounter & 1)

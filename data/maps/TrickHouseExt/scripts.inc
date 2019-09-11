@@ -48,3 +48,43 @@ Route110_EventScript_TestDoor::
 Route110_Text_TestDoor:
 	.string "This leads to the Dev Entrance.\n"
 	.string "Enter?$"
+
+
+Route110_EventScript_SoftBorderSouth::
+	lock
+	msgbox Route110_Text_SoftBorderSouth
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkUp1
+	waitmovement 0
+	release
+	end
+Route110_Text_SoftBorderSouth:
+	.string "You probably shouldn't go any further.\p"
+	.string "Your buddies and you were gonna Trick\n"
+	.string "or Treat in Slateport after this.$"
+
+Route110_EventScript_SoftBorderNorth::
+	lock
+	msgbox Route110_Text_SoftBorderNorth
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkDown1
+	waitmovement 0
+	release
+	end
+Route110_Text_SoftBorderNorth:
+	.string "You probably shouldn't go any further.\p"
+	.string "Don't want to risk getting bogged down\n"
+	.string "in the tall grass.$"
+
+Route110_EventScript_SoftBorderWest::
+	lock
+	msgbox Route110_Text_SoftBorderWest
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkRight1
+	waitmovement 0
+	release
+	end
+Route110_Text_SoftBorderWest:
+	.string "You probably shouldn't go any further.\n"
+	.string "You already hit Oldale anyway.$"
+

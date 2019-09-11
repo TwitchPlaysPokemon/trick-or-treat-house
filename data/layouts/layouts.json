@@ -846,7 +846,7 @@
             "height": 60,
             "id": "LAYOUT_TRICK_HOUSE_EXT",
             "name": "TrickHouseExt_Layout",
-            "primary_tileset": "gTileset_General",
+            "primary_tileset": "gTileset_Autumn",
             "secondary_tileset": "gTileset_Mauville",
             "width": 70
         },
