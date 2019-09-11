@@ -5,6 +5,7 @@
 #include "fieldmap.h"
 #include "metatile_behavior.h"
 #include "task.h"
+#include "event_object_movement.h"
 #include "constants/flags.h"
 #include "constants/maps.h"
 #include "constants/songs.h"
@@ -856,20 +857,44 @@ void unref_sub_808A83C(u32 x, u32 y)
     StartDoorOpenAnimation(gDoorAnimGraphicsTable, x, y);
 }
 
+static void Task_WaitEventObjectDoorAnim(u8 taskId)
+{
+    u8 objId = gTasks[taskId].data[0];
+    if (EventObjectCheckHeldMovementStatus(&gEventObjects[objId]) != TRUE)
+        DestroyTask(taskId);
+}
+
+u8 StartEventObjectOpenCloseAnim(u8 objId, u8 dir)
+{
+    u8 taskId = CreateTask(Task_WaitEventObjectDoorAnim, 0x50);
+    gTasks[taskId].data[0] = objId;
+    EventObjectSetHeldMovement(&gEventObjects[objId], GetWalkInPlaceNormalMovementAction(dir));
+    return taskId;
+}
+
 void FieldSetDoorOpened(u32 x, u32 y)
 {
-    if (MetatileBehavior_IsDoor(MapGridGetMetatileBehaviorAt(x, y)))
+    u8 objId;
+    if ((objId = GetNonPlayerEventObjectIdByXY(x, y)) < EVENT_OBJECTS_COUNT)
+        EventObjectTurn(&gEventObjects[objId], DIR_NORTH);
+    else if (MetatileBehavior_IsDoor(MapGridGetMetatileBehaviorAt(x, y)))
         DrawOpenedDoor(gDoorAnimGraphicsTable, x, y);
 }
 
 void FieldSetDoorClosed(u32 x, u32 y)
 {
+    u8 objId;
+    if ((objId = GetNonPlayerEventObjectIdByXY(x, y)) < EVENT_OBJECTS_COUNT)
+        EventObjectTurn(&gEventObjects[objId], DIR_SOUTH);
     if (MetatileBehavior_IsDoor(MapGridGetMetatileBehaviorAt(x, y)))
         DrawClosedDoor(gDoorAnimGraphicsTable, x, y);
 }
 
 s8 FieldAnimateDoorClose(u32 x, u32 y)
 {
+    u8 objId;
+    if ((objId = GetNonPlayerEventObjectIdByXY(x, y)) < EVENT_OBJECTS_COUNT)
+        return StartEventObjectOpenCloseAnim(objId, DIR_SOUTH);
     if (!MetatileBehavior_IsDoor(MapGridGetMetatileBehaviorAt(x, y)))
         return -1;
     else
@@ -878,6 +903,9 @@ s8 FieldAnimateDoorClose(u32 x, u32 y)
 
 s8 FieldAnimateDoorOpen(u32 x, u32 y)
 {
+    u8 objId;
+    if ((objId = GetNonPlayerEventObjectIdByXY(x, y)) < EVENT_OBJECTS_COUNT)
+        return StartEventObjectOpenCloseAnim(objId, DIR_NORTH);
     if (!MetatileBehavior_IsDoor(MapGridGetMetatileBehaviorAt(x, y)))
         return -1;
     else

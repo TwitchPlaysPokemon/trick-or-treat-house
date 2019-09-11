@@ -1,59 +1,64 @@
 raw `
 Puzzle_Wilke_MapScripts::
+	puzzle_info Puzzle_Wilke_Name, Puzzle_Wilke_Author
+	puzzle_adjective Puzzle_Wilke_Adjective
+	puzzle_quip Puzzle_Wilke_Quip
+	puzzle_metavars Puzzle_Wilke_Variables
+	puzzle_item_prereqs Puzzle_Wilke_PrereqItems
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_Wilke_OnLoad
 	.byte 0
 
-Puzzle_Wilke_TalkToRacc1::
-	lockall
-	compare VAR_TRICK_HOUSE_PUZZLE_1_STATE, 0
-	goto_if_eq Puzzle_Wilke_TalkToRacc2
-	msgbox Puzzle_Wilke_Text_Ziggy3, MSGBOX_DEFAULT
-	releaseall
-	end
-	
-Puzzle_Wilke_TalkToRacc2::
-	setvar VAR_TRICK_HOUSE_PUZZLE_1_STATE, 1
-	playfanfare MUS_FANFA4
-	message Puzzle_Wilke_Text_Ziggy1
-	waitfanfare
-	msgbox Puzzle_Wilke_Text_Ziggy2, MSGBOX_DEFAULT
-	releaseall
-	end
-	
-Puzzle_Wilke_Peeko1::
-	lockall
-	compare VAR_TRICK_HOUSE_PUZZLE_1_STATE, 0
-	goto_if_eq Puzzle_Wilke_Peeko2
-	msgbox Puzzle_Wilke_Text_Peeko1, MSGBOX_DEFAULT
-	playse SE_PIN
-	setvar VAR_TRICK_HOUSE_PUZZLE_1_STATE, 2
-	applymovement 2, Puzzle_Wilke_Movement
-	waitmovement 0
-	releaseall
-	end
-	
-Puzzle_Wilke_Peeko2::
-	msgbox Puzzle_Wilke_Text_Peeko2, MSGBOX_DEFAULT
-	releaseall
-	end
-	
-Puzzle_Wilke_Movement:
-	walk_left
-	face_right
-	step_end
-	
-Puzzle_Wilke_Text_Ziggy1:
-	.string "{PLAYER} found Ziggy.$"
+Puzzle_Wilke_Name:
+	.string "Ziggy See, Ziggy Do$"
+Puzzle_Wilke_Author:
+	.string "wilke0$"
+Puzzle_Wilke_Adjective:
+	.string "boundry breaking$"
+Puzzle_Wilke_Quip:
+	.string "{PLAY_CRY}"
+	.2byte SPECIES_ZIGZAGOON
+	.string "Ziggy seems happy to have helped.$"
+.align 2
+Puzzle_Wilke_PrereqItems:
+	.2byte ITEM_CUT_ITEM
+	.2byte 0
+Puzzle_Wilke_Variables:
+	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_ZIGZAGOON_2
+	.2byte 0
 
-Puzzle_Wilke_Text_Ziggy2:
-	.string "Ziggy told {PLAYER} the\n"
-	.string "secret code.$"
-	
-Puzzle_Wilke_Text_Ziggy3:
-	.string "RACC$"
-	
-Puzzle_Wilke_Text_Peeko1:
-	.string "{PLAYER} told Peeko the secret code.$"
-	
-Puzzle_Wilke_Text_Peeko2:
-	.string "Peeko guards the door.$"
+Puzzle_Wilke_OnLoad:
+	setflag FLAG_TEMP_10
+	end
+
+@ -----------------------------------------------------
 `
+
+script Puzzle_Wilke_TalkToRacc1 {
+	lockall
+	faceplayer
+	if (flag(FLAG_TRICK_HOUSE_SCROLL_READ) == FALSE) {
+		playfanfare (MUS_FANFA4)
+		message ("{PLAYER} found Ziggy.$")
+		waitfanfare
+		msgbox ("Ziggy hands {PLAYER} the scroll.$")
+		msgbox (PuzzleCommon_Text_ScrollFound2)
+		setflag (FLAG_TRICK_HOUSE_SCROLL_READ)
+		setobjectmovementtype (1, MOVEMENT_TYPE_LOOK_AROUND)
+		addobject (4)
+		releaseall
+		end
+	}
+	waitse
+	playmoncry (SPECIES_ZIGZAGOON, 0)
+	msgbox ("Ziggy: Guguu$")
+	waitmoncry
+	releaseall
+}
+
+script Puzzle_Wilke_EnterDoor {
+	lock
+	call (PuzzleCommon_EventScript_DoDoorEnterAnimation)
+	warp (MAP_TRICK_HOUSE_CORRIDOR, 0, -1, -1)
+	release
+}
+

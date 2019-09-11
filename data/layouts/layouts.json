@@ -1028,7 +1028,7 @@
             "name": "Puzzle_Wilke_Layout",
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Petalburg",
-            "width": 22
+            "width": 26
         }
     ],
     "layouts_table_label": "gMapLayouts"

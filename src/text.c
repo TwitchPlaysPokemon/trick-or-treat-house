@@ -1607,22 +1607,22 @@ u16 RenderText(struct TextPrinter *textPrinter)
             textPrinter->printerTemplate.currentChar++;
             switch (currChar)
             {
-            case 1:
+            case 0x01:
                 textPrinter->printerTemplate.fgColor = *textPrinter->printerTemplate.currentChar;
                 textPrinter->printerTemplate.currentChar++;
                 GenerateFontHalfRowLookupTable(textPrinter->printerTemplate.fgColor, textPrinter->printerTemplate.bgColor, textPrinter->printerTemplate.shadowColor);
                 return 2;
-            case 2:
+            case 0x02:
                 textPrinter->printerTemplate.bgColor = *textPrinter->printerTemplate.currentChar;
                 textPrinter->printerTemplate.currentChar++;
                 GenerateFontHalfRowLookupTable(textPrinter->printerTemplate.fgColor, textPrinter->printerTemplate.bgColor, textPrinter->printerTemplate.shadowColor);
                 return 2;
-            case 3:
+            case 0x03:
                 textPrinter->printerTemplate.shadowColor = *textPrinter->printerTemplate.currentChar;
                 textPrinter->printerTemplate.currentChar++;
                 GenerateFontHalfRowLookupTable(textPrinter->printerTemplate.fgColor, textPrinter->printerTemplate.bgColor, textPrinter->printerTemplate.shadowColor);
                 return 2;
-            case 4:
+            case 0x04:
                 textPrinter->printerTemplate.fgColor = *textPrinter->printerTemplate.currentChar;
                 textPrinter->printerTemplate.currentChar++;
                 textPrinter->printerTemplate.bgColor = *textPrinter->printerTemplate.currentChar;
@@ -1631,63 +1631,70 @@ u16 RenderText(struct TextPrinter *textPrinter)
                 textPrinter->printerTemplate.currentChar++;
                 GenerateFontHalfRowLookupTable(textPrinter->printerTemplate.fgColor, textPrinter->printerTemplate.bgColor, textPrinter->printerTemplate.shadowColor);
                 return 2;
-            case 5:
+            case 0x05:
                 textPrinter->printerTemplate.currentChar++;
                 return 2;
-            case 6:
+            case 0x06:
                 subStruct->glyphId = *textPrinter->printerTemplate.currentChar;
                 textPrinter->printerTemplate.currentChar++;
                 return 2;
-            case EXT_CTRL_CODE_UNKNOWN_7:
+            case 0x07:
                 return 2;
-            case 8:
+            case 0x08:
                 textPrinter->delayCounter = *textPrinter->printerTemplate.currentChar;
                 textPrinter->printerTemplate.currentChar++;
                 textPrinter->state = 6;
                 return 2;
-            case 9:
+            case 0x09:
                 textPrinter->state = 1;
                 if (gTextFlags.autoScroll)
                     subStruct->autoScrollDelay = 0;
                 return 3;
-            case 10:
+            case 0x0A:
                 textPrinter->state = 5;
                 return 3;
-            case 11:
+            case 0x0B:
                 currChar = *textPrinter->printerTemplate.currentChar;
                 textPrinter->printerTemplate.currentChar++;
                 currChar |= *textPrinter->printerTemplate.currentChar << 8;
                 textPrinter->printerTemplate.currentChar++;
                 PlayBGM(currChar);
                 return 2;
-            case 12:
+            case 0x0C:
                 currChar = *textPrinter->printerTemplate.currentChar | 0x100;
                 textPrinter->printerTemplate.currentChar++;
                 break;
-            case 16:
+            case 0x10:
                 currChar = *textPrinter->printerTemplate.currentChar;
                 textPrinter->printerTemplate.currentChar++;
                 currChar |= (*textPrinter->printerTemplate.currentChar << 8);
                 textPrinter->printerTemplate.currentChar++;
                 PlaySE(currChar);
                 return 2;
-            case 13:
+            case 0x19:
+                currChar = *textPrinter->printerTemplate.currentChar;
+                textPrinter->printerTemplate.currentChar++;
+                currChar |= (*textPrinter->printerTemplate.currentChar << 8);
+                textPrinter->printerTemplate.currentChar++;
+                PlayCry5(currChar, 0);
+                return 2;
+            case 0x0D:
                 textPrinter->printerTemplate.currentX = textPrinter->printerTemplate.x + *textPrinter->printerTemplate.currentChar;
                 textPrinter->printerTemplate.currentChar++;
                 return 2;
-            case 14:
+            case 0x0E:
                 textPrinter->printerTemplate.currentY = textPrinter->printerTemplate.y + *textPrinter->printerTemplate.currentChar;
                 textPrinter->printerTemplate.currentChar++;
                 return 2;
-            case 15:
+            case 0x0F:
                 FillWindowPixelBuffer(textPrinter->printerTemplate.windowId, PIXEL_FILL(textPrinter->printerTemplate.bgColor));
                 textPrinter->printerTemplate.currentX = textPrinter->printerTemplate.x;
                 textPrinter->printerTemplate.currentY = textPrinter->printerTemplate.y;
                 return 2;
-            case 23:
+            case 0x17:
                 m4aMPlayStop(&gMPlayInfo_BGM);
                 return 2;
-            case 24:
+            case 0x18:
                 m4aMPlayContinue(&gMPlayInfo_BGM);
                 return 2;
             case EXT_CTRL_CODE_CLEAR:
@@ -1700,7 +1707,7 @@ u16 RenderText(struct TextPrinter *textPrinter)
                     return 0;
                 }
                 return 2;
-            case 18:
+            case 0x12:
                 textPrinter->printerTemplate.currentX = *textPrinter->printerTemplate.currentChar + textPrinter->printerTemplate.x;
                 textPrinter->printerTemplate.currentChar++;
                 return 2;

@@ -1176,6 +1176,18 @@ u8 GetEventObjectIdByXY(s16 x, s16 y)
     return i;
 }
 
+u8 GetNonPlayerEventObjectIdByXY(s16 x, s16 y)
+{
+    u8 i;
+    for (i = 0; i < EVENT_OBJECTS_COUNT; i++)
+    {
+        if (gEventObjects[i].active && gEventObjects[i].localId != EVENT_OBJ_ID_PLAYER && gEventObjects[i].currentCoords.x == x && gEventObjects[i].currentCoords.y == y)
+            break;
+    }
+
+    return i;
+}
+
 static u8 GetEventObjectIdByLocalIdAndMapInternal(u8 localId, u8 mapNum, u8 mapGroupId)
 {
     u8 i;

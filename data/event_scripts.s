@@ -82,6 +82,8 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/TrickHouseEntrance/scripts.inc"
 	.include "data/maps/TrickHouseEnd/scripts.inc"
 	.include "data/maps/TrickHouseCorridor/scripts.inc"
+	
+	@ -------------------------------------------------
 
 	.include "data/maps/Puzzle_TrickHouseCut/scripts.inc"
 	.include "data/maps/Puzzle_TrickHouseTrapdoors/scripts.inc"
@@ -97,11 +99,18 @@ gStdScripts_End:: @ 81DC2CC
 
 	.include "data/maps/Puzzle_MusicNoteTiles/scripts.inc"
 	
+	.include "data/maps/Puzzle_LedgeMountain/scripts.inc"
+	
+	.include "data/maps/Puzzle_Wilke/scripts.inc"
+	
+	@ -------------------------------------------------
+	
+	.include "data/maps/EmptyPuzzle/scripts.inc"
 	
 	.include "data/maps/TestMapHallway/scripts.inc"
 	.include "data/maps/TestLayoutSwitching/scripts.inc"
 	.include "data/maps/TestLayoutSwitching2/scripts.inc"
-	.include "data/maps/EmptyPuzzle/scripts.inc"
+	.include "data/maps/LedgeMountain_Support/scripts.inc"
 	
 	.include "data/maps/PetalburgCity/scripts.inc"
 	.include "data/maps/SlateportCity/scripts.inc"
@@ -6191,6 +6200,3 @@ EventScript_PlayerPCFemale::
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
 
-	.include "data/maps/Puzzle_LedgeMountain/scripts.inc"
-
-	.include "data/maps/LedgeMountain_Support/scripts.inc"
