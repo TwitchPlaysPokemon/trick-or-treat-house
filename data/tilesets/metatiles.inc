@@ -579,3 +579,10 @@ gMetatiles_WaterfallCave::
 	.align 1
 gMetatileAttributes_WaterfallCave::
 	.incbin "data/tilesets/secondary/waterfall_cave/metatile_attributes.bin"
+	.align 1
+gMetatiles_Autumn::
+	.incbin "data/tilesets/primary/autumn/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Autumn::
+	.incbin "data/tilesets/primary/autumn/metatile_attributes.bin"

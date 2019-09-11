@@ -1,7 +1,7 @@
 {
     "allow_bike": false,
     "allow_escape_rope": false,
-    "allow_running": false,
+    "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
         {
@@ -55,7 +55,7 @@
     "coord_events": [
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "Route110_EventScript_SoftBorderNorth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -64,7 +64,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "Route110_EventScript_SoftBorderNorth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -73,7 +73,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "Route110_EventScript_SoftBorderNorth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -82,7 +82,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "Route110_EventScript_SoftBorderWest",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -91,7 +91,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "Route110_EventScript_SoftBorderWest",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -100,7 +100,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "Route110_EventScript_SoftBorderWest",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -109,7 +109,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "Route110_EventScript_SoftBorderSouth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -118,7 +118,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "Route110_EventScript_SoftBorderSouth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -127,7 +127,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "Route110_EventScript_SoftBorderSouth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -136,7 +136,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "Route110_EventScript_SoftBorderSouth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -145,7 +145,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "Route110_EventScript_SoftBorderSouth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -154,7 +154,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "Route110_EventScript_SoftBorderSouth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -193,6 +193,32 @@
             "trainer_type": "5",
             "x": 42,
             "y": 48
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_ITEM_ROUTE_110_ITEMFINDER",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_ItemItemfinder",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 56,
+            "y": 10
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_CYCLING_TRIATHLETE_M",
+            "movement_range_x": 11,
+            "movement_range_y": 15,
+            "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_RIGHT_LEFT_UP",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 47,
+            "y": 25
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_110",
