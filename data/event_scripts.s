@@ -6200,3 +6200,5 @@ EventScript_PlayerPCFemale::
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
 
+
+	.include "data/maps/PCPuzzle/scripts.inc"

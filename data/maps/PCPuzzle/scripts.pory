@@ -1,0 +1,4 @@
+raw `
+PCPuzzle_MapScripts::
+	.byte 0
+`

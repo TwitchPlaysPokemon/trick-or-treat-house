@@ -19,7 +19,8 @@
         "TestLayoutSwitching2",
         "EmptyPuzzle",
         "WaterTemple_Lv1",
-        "WaterTemple_Lv2"
+        "WaterTemple_Lv2",
+        "PCPuzzle"
     ],
     "gMapGroup2": [
         "SecretBase_RedCave1",
