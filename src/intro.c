@@ -159,7 +159,7 @@ static const union AnimCmd Unknown_40AE70[] =
     ANIMCMD_FRAME(256, 16),
     ANIMCMD_END,
 };
-static const union AnimCmd *const gUnknown_0840AE80[] =
+static const union AnimCmd *const gIntroBicycleAnimationCommands[] =
 {
     Unknown_40AE38,
     Unknown_40AE4C,
@@ -783,7 +783,7 @@ static void sub_813D414(struct Sprite *);
 static void SpriteCB_WaterDropFall(struct Sprite *);
 static u8 CreateWaterDrop(s16, s16, u16, u16, u16, u8);
 static void sub_813D788(struct Sprite *);
-static void sub_813D880(struct Sprite *);
+static void SpriteCB_IntroGraphicsFlygon(struct Sprite *);
 static u8 CreateGameFreakLogo(s16, s16, u8);
 static void sub_813DB9C(struct Sprite *);
 static void sub_813DE70(struct Sprite *);
@@ -1074,22 +1074,23 @@ static void Task_IntroStartBikeRide(u8 taskId)
     u8 spriteId;
 
     if (gIntroCharacterGender == 0)
-        LoadCompressedSpriteSheet(gIntro2BrendanSpriteSheet);
+        LoadCompressedSpriteSheet(gIntro2BrendanTurnSpriteSheet);
     else
-        LoadCompressedSpriteSheet(gIntro2MaySpriteSheet);
+        LoadCompressedSpriteSheet(gIntro2MayTurnSpriteSheet);
     LoadCompressedSpriteSheet(gIntro2BicycleSpriteSheet);
     LoadCompressedSpriteSheet(gIntro2FlygonSpriteSheet);//gIntro2LatiasSpriteSheet);
-    LoadSpritePalettes(gIntro2SpritePalettes);
+    LoadSpritePalettes(gIntroBikeAndFlygonPalette);
+	LoadSpritePalettes(gIntro2SpritePalettes);
     if (gIntroCharacterGender == 0)
         spriteId = intro_create_brendan_sprite(0x110, 100);
     else
         spriteId = intro_create_may_sprite(0x110, 100);
     gSprites[spriteId].callback = sub_813D788;
-    gSprites[spriteId].anims = gUnknown_0840AE80;
+    gSprites[spriteId].anims = gIntroBicycleAnimationCommands;
     gTasks[taskId].data[1] = spriteId;
-	spriteId = intro_create_flygon_sprite(-0x40, 0x3C);
     // spriteId = intro_create_latias_sprite(-0x40, 0x3C);
-    gSprites[spriteId].callback = sub_813D880;
+	spriteId = intro_create_flygon_sprite(-0x40, 0x3C);
+    gSprites[spriteId].callback = SpriteCB_IntroGraphicsFlygon;
     gTasks[taskId].data[2] = spriteId;
     BeginNormalPaletteFade(0xFFFFFFFF, 0, 16, 0, RGB_WHITEALPHA);
     SetVBlankCallback(VBlankCB_Intro);
@@ -1930,7 +1931,7 @@ static void sub_813D788(struct Sprite *sprite)
     }
 }
 
-static void sub_813D880(struct Sprite *sprite)
+static void SpriteCB_IntroGraphicsFlygon(struct Sprite *sprite)
 {
     switch (sprite->data[0])
     {

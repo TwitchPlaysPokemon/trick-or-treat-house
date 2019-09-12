@@ -616,7 +616,7 @@ const struct SpritePalette gIntroBikeAndFlygonPalette[] =
     {}
 };
 
-const struct CompressedSpriteSheet gUnknown_085F5334[] =
+const struct CompressedSpriteSheet gIntro2BrendanTurnSpriteSheet[] =
 {
     {
         .data = gIntro2BrendanTiles,
@@ -626,7 +626,7 @@ const struct CompressedSpriteSheet gUnknown_085F5334[] =
     {}
 };
 
-const struct CompressedSpriteSheet gUnknown_085F5344[] =
+const struct CompressedSpriteSheet gIntro2MayTurnSpriteSheet[] =
 {
     {
         .data = gIntro2MayTiles,

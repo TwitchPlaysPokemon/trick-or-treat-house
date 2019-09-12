@@ -1966,7 +1966,7 @@ static bool8 sub_8176AB0(u8 data, u8 taskIdA)
     case 2:
         if (gSaveBlock2Ptr->playerGender == MALE)
         {
-            LoadCompressedSpriteSheet(gUnknown_085F5334);
+            LoadCompressedSpriteSheet(gIntro2BrendanTurnSpriteSheet);
             LoadCompressedSpriteSheet(gUnknown_085F53BC);
             LoadCompressedSpriteSheet(gUnknown_085F5354);
             LoadSpritePalettes(gIntro2SpritePalettes);
@@ -1983,7 +1983,7 @@ static bool8 sub_8176AB0(u8 data, u8 taskIdA)
         }
         else
         {
-            LoadCompressedSpriteSheet(gUnknown_085F5344);
+            LoadCompressedSpriteSheet(gIntro2MayTurnSpriteSheet);
             LoadCompressedSpriteSheet(gUnknown_085F53AC);
             LoadCompressedSpriteSheet(gUnknown_085F5354);
             LoadSpritePalettes(gIntro2SpritePalettes);
