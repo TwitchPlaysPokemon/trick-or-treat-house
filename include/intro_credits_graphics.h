@@ -15,7 +15,7 @@ extern const struct CompressedSpriteSheet gUnknown_085F5344[];
 extern const struct CompressedSpriteSheet gUnknown_085F5354[];
 extern const struct CompressedSpriteSheet gUnknown_085F53AC[];
 extern const struct CompressedSpriteSheet gUnknown_085F53BC[];
-extern const struct SpritePalette gUnknown_085F5384[];
+extern const struct SpritePalette gIntro2SpritePalettes[];
 
 void load_intro_part2_graphics(u8 a);
 void sub_817B150(u8 a);

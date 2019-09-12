@@ -666,7 +666,7 @@ static const struct CompressedSpriteSheet gUnknown_085F5374[] =
     {}
 };
 
-const struct SpritePalette gUnknown_085F5384[] =
+const struct SpritePalette gIntro2SpritePalettes[] =
 {
     { .data = gIntro2BrendanPalette, .tag = 1002 },
     { .data = gIntro2MayPalette,     .tag = 1003 },
