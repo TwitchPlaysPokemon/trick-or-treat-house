@@ -913,12 +913,12 @@
         {
             "blockdata_filepath": "data/layouts/Puzzle_TinTowerClimb/map.bin",
             "border_filepath": "data/layouts/Puzzle_TinTowerClimb/border.bin",
-            "height": 20,
+            "height": 163,
             "id": "LAYOUT_PUZZLE_TIN_TOWER_CLIMB",
             "name": "Puzzle_TinTowerClimb_Layout",
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_BellTower",
-            "width": 20
+            "width": 16
         },
         {
             "blockdata_filepath": "data/layouts/TestLayoutSwitching/map.bin",
