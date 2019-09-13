@@ -1705,6 +1705,10 @@
 	callstd \type
 	.endm
 
+	.macro msgbox_selected type=MSGBOX_DEFAULT
+	callstd \type
+	.endm
+	
 	.macro giveitem_std item:req, amount=1, function=0
 	setorcopyvar VAR_0x8000, \item
 	setorcopyvar VAR_0x8001, \amount

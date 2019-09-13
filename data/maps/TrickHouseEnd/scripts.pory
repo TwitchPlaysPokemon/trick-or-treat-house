@@ -3,12 +3,17 @@ TrickHouseEnd_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, TrickHouseEnd_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, TrickHouseEnd_OnTransition
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, TrickHouseEnd_WarpTable
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrickHouseEnd_FrameTable
 	.byte 0
 	
 @----------------------------------------------------------
 
 TrickHouseEnd_WarpTable:
 	map_script_2 VAR_TEMP_0, 0, Common_EventScript_FacePlayerUp
+	.2byte 0
+
+TrickHouseEnd_FrameTable:
+	map_script_2 VAR_TRICK_MASTER_INTRO, 0, TrickHouseEnd_EventScript_TrickMasterOutro
 	.2byte 0
 `
 
@@ -32,6 +37,22 @@ script TrickHouseEnd_OnTransition {
 	}
 }
 
+# -----------------------------------------------------
+
+script TrickHouseEnd_EventScript_TrickMasterOutro {
+	lockall
+	applymovement (3, Common_Movement_ExclamationMarkAndWait)
+	waitmovement (0)
+	setvar (VAR_TRICK_MASTER_INTRO, 2)
+	msgbox (PuzzleCommon_Text_FirstPuzzleAfterword)
+	closemessage
+	setvar (VAR_0x8000, 3)
+	call (PuzzleCommon_EventScript_WarpTrickMasterOut)
+	releaseall
+}
+
+# -----------------------------------------------------
+
 script TrickHouseEnd_EventScript_FinalPuzzlePerson {
 	lock
 	faceplayer
@@ -41,6 +62,8 @@ script TrickHouseEnd_EventScript_FinalPuzzlePerson {
 	release
 }
 
+# -----------------------------------------------------
+
 script TrickHouseEnd_EventScript_Nurse {
 	lock
 	faceplayer
@@ -49,7 +72,6 @@ script TrickHouseEnd_EventScript_Nurse {
 	call (TrickHouseEnd_EventScript_FinalizePuzzle)
 	release
 }
-
 script TrickHouseEnd_TriggerScript_Nurse {
 	lock
 	applymovement (1, Common_Movement_FacePlayer)
@@ -57,7 +79,6 @@ script TrickHouseEnd_TriggerScript_Nurse {
 	call (TrickHouseEnd_EventScript_FinalizePuzzle)
 	release
 }
-
 script TrickHouseEnd_EventScript_FinalizePuzzle {
 	msgbox ("Let's heal your POKéMON.$")
 	fadescreen(1)
@@ -75,7 +96,6 @@ script TrickHouseEnd_EventScript_FinalizePuzzle {
 	setvar(VAR_TEMP_2, 1)
 	return
 }
-
 script TrickHouseEnd_EventScript_FinalizePuzzle1 {
 	msgbox ("Good luck on the next puzzle!$")
 	release

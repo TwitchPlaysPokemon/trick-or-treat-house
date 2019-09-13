@@ -10,7 +10,8 @@ EWRAM_DATA u8 gStringVar1[0x100] = {0};
 EWRAM_DATA u8 gStringVar2[0x100] = {0};
 EWRAM_DATA u8 gStringVar3[0x100] = {0};
 EWRAM_DATA u8 gStringVar4[0x3E8] = {0};
-EWRAM_DATA static u8 sUnknownStringVar[16] = {0};
+
+EWRAM_DATA u8 gStringWorking[0x100] = {0};
 
 static const u8 sDigits[] = __("0123456789ABCDEF");
 
@@ -412,11 +413,6 @@ u8 *StringBraille(u8 *dest, const u8 *src)
     }
 }
 
-static const u8 *ExpandPlaceholder_UnknownStringVar(void)
-{
-    return sUnknownStringVar;
-}
-
 extern const u8 gExpandedPlaceholder_Empty[];
 static const u8 *ExpandPlaceholder_Empty(void)
 {
@@ -457,6 +453,12 @@ extern const u8 gText_Pokemon[];
 static const u8 *ExpandPlaceholder_Pokemon(void)
 {
     return gText_Pokemon;
+}
+
+extern const u8 gText_TrickMasterShiny[];
+static const u8 *ExpandPlaceholder_TrickMaster(void)
+{
+    return gText_TrickMasterShiny;
 }
 
 extern const u16 gPuzzleList[];
@@ -520,7 +522,7 @@ const u8 *GetExpandedPlaceholder(u32 id)
         ExpandPlaceholder_StringVar2,
         ExpandPlaceholder_StringVar3,  // 04
         ExpandPlaceholder_Pokemon,
-        ExpandPlaceholder_Empty,
+        ExpandPlaceholder_TrickMaster,
         ExpandPlaceholder_Empty,
         ExpandPlaceholder_Empty,
         ExpandPlaceholder_Empty,       // 09

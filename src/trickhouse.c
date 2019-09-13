@@ -39,20 +39,6 @@ static void GenerateRentalMons(void);
 
 extern const u16 gPuzzleList[];
 
-const u8 sPuzzleSecretCodes[][0x100] = {
-	_("This is Halloween!"),
-	_("Pumpkaboo scream in the dead of night…"),
-	_("Ride with the moon in the dead of night…"),
-	_("I am the shadow on the moon at night…"),
-	_("The clown with the tearaway face…"),
-	_("Watch out for Ekans!"),
-	_("It's just a bunch of Hocus Pocus!"),
-	_("Double double, toil and trouble…"),
-	_("Nevermore!"),
-	_("Something wicked this way comes…"),
-	_("Don't look behind you…"),
-};
-
 ///////////////////////////////////////////////////////////////////////////////
 
 extern const u8 PuzzleCommon_DefaultSetupScript[];
@@ -113,29 +99,30 @@ void LoadPuzzleIntro(struct ScriptContext *ctx)
 {
 	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
 	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_CUSTOM_INTRO);
-	// Check for custom intro
-	if (str != NULL) {
-		gSpecialVar_Result = 2;
-		ctx->data[0] = (u32)str;
-		return;
-	}
-	// Check if this is the first puzzle, load as a custom intro
-	if (VarGet(VAR_CURRENT_PUZZLE) == 0) { //first puzzle
-		gSpecialVar_Result = 2;
-		ctx->data[0] = (u32)PuzzleCommon_Text_FirstPuzzleIntro;
-		return;
-	}
+	// Set up for generic no-item intro
 	ctx->data[0] = 0;
+	gSpecialVar_Result = 0;
+	
 	// Check if this puzzle has items
 	{
 		const u16 *array = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_PREREQ_LIST);
 		if (array != NULL && array[0] != ITEM_NONE) {
 			// Use generic item intro
-			gSpecialVar_Result = 1;
+			gSpecialVar_Result += 1;
 		}
 	}
-	// Otherwise use generic no-item intro
-	gSpecialVar_Result = 0;
+	// Check for custom intro
+	if (str != NULL) {
+		gSpecialVar_Result += 2;
+		ctx->data[0] = (u32)str;
+		return;
+	}
+	// Check if this is the first puzzle, load as a custom intro
+	if (VarGet(VAR_CURRENT_PUZZLE) == 0) { //first puzzle
+		gSpecialVar_Result += 2;
+		ctx->data[0] = (u32)PuzzleCommon_Text_FirstPuzzleIntro;
+		return;
+	}
 }
 
 extern const u8 PuzzleCommon_Text_DefaultQuip[];
@@ -174,31 +161,33 @@ void AssignPuzzleMetaVariables(struct ScriptContext *ctx)
 
 void GiveItemPrerequisites(struct ScriptContext *ctx)
 {
-	u8 *ptr = gStringVar1;
+	u8 *ptr = gStringVar1; 
+	// Note: This function might also overwrite string vars 2 and 3 as well, depending on how many items we give.
 	u8 itemCount = 0;
 	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
 	const u16 *array = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_PREREQ_LIST);
 	
-	gSpecialVar_Result = FALSE;
+	gSpecialVar_Result = 0;
 	*ptr = EOS;
 	
 	if (array != NULL)
 	{
 		while (array[0] != ITEM_NONE)
 		{
-			gSpecialVar_Result |= AddBagItem(array[0], 1);
-			
-			if (array[1] == ITEM_NONE && itemCount > 0) {
-				ptr = StringCopy(ptr, gText_And);
+			if (AddBagItem(array[0], 1)) {
+				gSpecialVar_Result++;
+				if (array[1] == ITEM_NONE && itemCount > 0) {
+					ptr = StringCopy(ptr, gText_And);
+					(*ptr++) = CHAR_SPACE;
+				}
+				itemCount++;
+				ptr = StringCopy(ptr, gText_One);
 				(*ptr++) = CHAR_SPACE;
-			}
-			itemCount++;
-			ptr = StringCopy(ptr, gText_One);
-			(*ptr++) = CHAR_SPACE;
-			ptr = StringCopy(ptr, ItemId_GetName(array[0]));
-			if (array[1] != ITEM_NONE) {
-				(*ptr++) = CHAR_COMMA;
-				(*ptr++) = CHAR_NEWLINE;
+				ptr = StringCopy(ptr, ItemId_GetName(array[0]));
+				if (array[1] != ITEM_NONE) {
+					(*ptr++) = CHAR_COMMA;
+					(*ptr++) = CHAR_NEWLINE;
+				}
 			}
 			array += 1;
 		}

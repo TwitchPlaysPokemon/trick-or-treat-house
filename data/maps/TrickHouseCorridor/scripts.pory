@@ -1,3 +1,4 @@
+raw `
 TrickHouseCorridor_MapScripts:: @ 826B903
 	map_script MAP_SCRIPT_ON_LOAD, TrickHouseCorridor_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrickHouseCorridor_FrameTable
@@ -184,13 +185,60 @@ TrickHouseCorridor_TriggerScript_RunIntro::
 	applymovement LID_MASTER, Common_Movement_WalkLeft1
 	waitmovement EVENT_OBJ_ID_PLAYER
 	@ Introduce puzzle
-	msgbox TrickHouseCorridor_Text_RunIntro1
-	@ Give items, and talk about it if we do
+	callnative LoadPuzzleIntro
+	switch VAR_RESULT
+	case 0, TrickHouseCorridor_TriggerScript_RunIntro_GenericIntro
+	case 1, TrickHouseCorridor_TriggerScript_RunIntro_GenericItemIntro
+	case 2, TrickHouseCorridor_TriggerScript_RunIntro_CustomIntro
+	case 3, TrickHouseCorridor_TriggerScript_RunIntro_CustomItemIntro
+	end
+
+
+TrickHouseCorridor_TriggerScript_RunIntro_GenericIntro:
+	random 256
+	selectpointer_wrap PuzzleCommon_TextArray_PuzzleIntro_NoItems, VAR_RESULT
+	msgbox_selected
+	goto TrickHouseCorridor_TriggerScript_RunIntro2
+	end
+
+TrickHouseCorridor_TriggerScript_RunIntro_GenericItemIntro:
+	random 256
+	copyvar VAR_0x8001, VAR_RESULT
+	selectpointer_wrap PuzzleCommon_TextArray_PuzzleIntro_Items, VAR_0x8001
+	msgbox_selected
+	@ Give items
 	callnative GiveItemPrerequisites
-	compare VAR_RESULT, TRUE
-	call_if_eq TrickHouseCorridor_TriggerScript_RunIntro_ItemRecieve
+	playfanfare MUS_FANFA4
+	message PuzzleCommon_Text_PuzzleIntro_GivenItems
+	waitmessage
+	waitfanfare
+	@ Bye!
+	selectpointer_wrap PuzzleCommon_TextArray_PuzzleIntro_Items_Bye, VAR_0x8001
+	msgbox_selected
+	goto TrickHouseCorridor_TriggerScript_RunIntro2
+	end
+	
+TrickHouseCorridor_TriggerScript_RunIntro_CustomIntro:
+	msgbox_selected
+	goto TrickHouseCorridor_TriggerScript_RunIntro2
+	end
+
+TrickHouseCorridor_TriggerScript_RunIntro_CustomItemIntro:
+	msgbox_selected
+	@ Give items
+	callnative GiveItemPrerequisites
+	playfanfare MUS_FANFA4
+	message PuzzleCommon_Text_PuzzleIntro_GivenItems
+	waitmessage
+	waitfanfare
+	@ Bye!
+	msgbox PuzzleCommon_Text_PuzzleIntro_CommonBye
+	goto TrickHouseCorridor_TriggerScript_RunIntro2
+	end
+	
+
+TrickHouseCorridor_TriggerScript_RunIntro2:
 	@ Leave
-	msgbox TrickHouseCorridor_Text_RunIntro4
 	closemessage
 	compare VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_TRICK_MASTER
 	call_if_eq TrickHouseCorridor_TriggerScript_RunIntro_TrickMasterOut
@@ -200,25 +248,6 @@ TrickHouseCorridor_TriggerScript_RunIntro::
 	call TrickHouseCorridor_OpenPuzzleDoor
 	releaseall
 	end
-TrickHouseCorridor_Text_RunIntro1:
-	.string "The next challenge I collected off\n"
-	.string "someone named {PUZZLE_AUTHOR}.\p"
-	.string "I'd call it a {PUZZLE_ADJECTIVE} puzzle.$"
-TrickHouseCorridor_Text_RunIntro2:
-	.string "Oh, yes, and you'll be needing this!$"
-TrickHouseCorridor_Text_RunIntro3:
-	.string "You're handed {STR_VAR_1}!$"
-TrickHouseCorridor_Text_RunIntro4:
-	.string "See you on the other side!$"
-
-TrickHouseCorridor_TriggerScript_RunIntro_ItemRecieve:
-	msgbox TrickHouseCorridor_Text_RunIntro2
-	message TrickHouseCorridor_Text_RunIntro3
-	waitmessage
-	playfanfare MUS_FANFA4
-	waitfanfare
-	waitbuttonpress
-	return
 
 TrickHouseCorridor_TriggerScript_RunIntro_TrickMasterOut:
 	@ Trick Master warps away
@@ -256,3 +285,4 @@ TrickHouseCorridor_Movement_RunIntro2:
 	
 
 #undef LID_MASTER
+`

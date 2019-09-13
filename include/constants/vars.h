@@ -114,7 +114,7 @@
 #define VAR_SHOULD_END_UNUSUAL_WEATHER       0x405D
 #define VAR_FARAWAY_ISLAND_STEP_COUNTER      0x405E
 #define VAR_ALTERING_CAVE_WILD_SET           0x405F
-#define VAR_UNUSED_0x403F                    0x4060
+#define VAR_TRICK_MASTER_INTRO               0x4060
 #define VAR_DAYS                             0x4061
 #define VAR_FANCLUB_UNKNOWN_1                0x4062
 #define VAR_FANCLUB_UNKNOWN_2                0x4063

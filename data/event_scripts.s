@@ -391,8 +391,8 @@ EverGrandeCity_HallOfFame_EventScript_271839:: @ 8271839
 	@ setvar VAR_FOSSIL_MANIAC_STATE, 1
 	return
 
-@ EverGrandeCity_HallOfFame_EventScript_27183F:: @ 827183F
-	clearflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL
+EverGrandeCity_HallOfFame_EventScript_27183F:: @ 827183F
+	@ clearflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL
 	return
 
 EverGrandeCity_HallOfFame_EventScript_271843:: @ 8271843
@@ -941,8 +941,8 @@ DewfordTown_Gym_EventScript_271E84:: @ 8271E84
 LavaridgeTown_Gym_1F_EventScript_271E84:: @ 8271E84
 MauvilleCity_Gym_EventScript_271E84:: @ 8271E84
 RustboroCity_Gym_EventScript_271E84:: @ 8271E84
-	clearflag FLAG_HIDE_PETALBURG_GYM_GREETER
-	setflag FLAG_PETALBURG_MART_EXPANDED_ITEMS
+	@ clearflag FLAG_HIDE_PETALBURG_GYM_GREETER
+	@ setflag FLAG_PETALBURG_MART_EXPANDED_ITEMS
 	return
 
 DewfordTown_EventScript_271E8B:: @ 8271E8B
@@ -1245,12 +1245,12 @@ PetalburgCity_Gym_EventScript_2721F8:: @ 82721F8
 	return
 
 RusturfTunnel_EventScript_272216:: @ 8272216
-	removeobject 1
-	removeobject 10
-	clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_LOVER_MAN
-	clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_LOVER_WOMAN
-	setvar VAR_RUSTURF_TUNNEL_STATE, 6
-	setflag FLAG_RUSTURF_TUNNEL_OPENED
+	@ removeobject 1
+	@ removeobject 10
+	@ clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_LOVER_MAN
+	@ clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_LOVER_WOMAN
+	@ setvar VAR_RUSTURF_TUNNEL_STATE, 6
+	@ setflag FLAG_RUSTURF_TUNNEL_OPENED
 	return
 
 EventScript_27222B:: @ 827222B
@@ -3084,7 +3084,7 @@ LilycoveCity_ContestLobby_EventScript_28CB2B:: @ 828CB2B
 	end
 
 LilycoveCity_ContestLobby_EventScript_28CB91:: @ 828CB91
-	clearflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER
+	@ clearflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER
 	return
 
 LilycoveCity_ContestLobby_EventScript_28CB95:: @ 828CB95
@@ -3167,14 +3167,14 @@ BattleFrontier_BattleTowerLobby_EventScript_28CC84:: @ 828CC84
 	special InterviewBefore
 	compare VAR_RESULT, 1
 	goto_if_eq BattleFrontier_BattleTowerLobby_EventScript_28CCA6
-	clearflag FLAG_HIDE_BATTLE_TOWER_REPORTER
+	@ clearflag FLAG_HIDE_BATTLE_TOWER_REPORTER
 	return
 
 BattleFrontier_BattleTowerLobby_EventScript_28CCA6:: @ 828CCA6
-	setflag FLAG_HIDE_BATTLE_TOWER_REPORTER
+	@ setflag FLAG_HIDE_BATTLE_TOWER_REPORTER
 	return
 
-	.include "data/scripts/gabby_and_ty.inc"
+	@ .include "data/scripts/gabby_and_ty.inc"
 	.include "data/text/pokemon_news.inc"
 	.include "data/scripts/mauville_man.inc"
 	.include "data/scripts/field_move_scripts.inc"
