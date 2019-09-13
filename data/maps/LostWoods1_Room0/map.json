@@ -13,27 +13,27 @@
         },
         {
             "direction": "left",
-            "map": "MAP_PUZZLE_LOST_WOODS_ROOM0",
+            "map": "MAP_LOST_WOODS1_ROOM0",
             "offset": 0
         },
         {
             "direction": "right",
-            "map": "MAP_PUZZLE_LOST_WOODS_ROOM0",
+            "map": "MAP_LOST_WOODS1_ROOM0",
             "offset": 0
         },
         {
             "direction": "up",
-            "map": "MAP_PUZZLE_LOST_WOODS_ROOM0",
+            "map": "MAP_LOST_WOODS1_ROOM0",
             "offset": 0
         }
     ],
     "coord_events": [
     ],
-    "id": "MAP_PUZZLE_LOST_WOODS_ROOM0",
+    "id": "MAP_LOST_WOODS1_ROOM0",
     "layout": "LAYOUT_PUZZLE_LOST_WOODS_ROOM0",
     "map_type": "MAP_TYPE_UNDERGROUND",
     "music": "MUS_DAN02",
-    "name": "Puzzle_LostWoods_Room0",
+    "name": "LostWoods1_Room0",
     "object_events": [
     ],
     "region_map_section": "MAPSEC_PETALBURG_WOODS",

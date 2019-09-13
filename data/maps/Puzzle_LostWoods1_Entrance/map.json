@@ -8,7 +8,7 @@
     "connections": [
         {
             "direction": "up",
-            "map": "MAP_PUZZLE_LOST_WOODS_ROOM0",
+            "map": "MAP_LOST_WOODS1_ROOM0",
             "offset": -2
         }
     ],
@@ -18,7 +18,7 @@
     "layout": "LAYOUT_PUZZLE_LOST_WOODS_ENTRANCE",
     "map_type": "MAP_TYPE_UNDERGROUND",
     "music": "MUS_DAN02",
-    "name": "Puzzle_LostWoods_Entrance",
+    "name": "Puzzle_LostWoods1_Entrance",
     "object_events": [
     ],
     "region_map_section": "MAPSEC_PETALBURG_WOODS",

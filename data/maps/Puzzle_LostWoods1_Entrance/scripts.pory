@@ -1,0 +1,21 @@
+raw `
+Puzzle_LostWoods1_Entrance_MapScripts::
+	puzzle_info Puzzle_LostWoods1_Name, Puzzle_LostWoods1_Author
+	puzzle_adjective Puzzle_LostWoods1_Adjective
+	puzzle_quip Puzzle_LostWoods1_Quip
+	puzzle_metavars Puzzle_LostWoods1_Variables
+	.byte 0
+
+
+Puzzle_LostWoods1_Name:
+	.string "A Song in the Forest$"
+Puzzle_LostWoods1_Author:
+	.string "Tustin2121$"
+Puzzle_LostWoods1_Adjective:
+	.string "meandering$"
+Puzzle_LostWoods1_Quip:
+	.string "…$"
+Puzzle_LostWoods1_Variables:
+	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_BOY_3 @TODO: Link
+	.2byte 0
+`

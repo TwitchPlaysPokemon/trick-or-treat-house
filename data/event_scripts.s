@@ -94,12 +94,23 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/WaterTemple_Lv1/scripts.inc"
 	.include "data/maps/WaterTemple_Lv2/scripts.inc"
 	
-	.include "data/maps/Puzzle_LostWoods_Entrance/scripts.inc"
-	.include "data/maps/Puzzle_LostWoods_Room0/scripts.inc"
+	.include "data/maps/Puzzle_LostWoods1_Entrance/scripts.inc"
+	.include "data/maps/LostWoods1_Exit/scripts.inc"
+	.include "data/maps/LostWoods1_Room0/scripts.inc"
+	
+	.include "data/maps/Puzzle_LostWoods2_Entrance/scripts.inc"
+	.include "data/maps/LostWoods2_Exit/scripts.inc"
+
+	.include "data/maps/Puzzle_LostWoods3_Entrance/scripts.inc"
+	.include "data/maps/LostWoods3_Exit/scripts.inc"
+
+	.include "data/maps/Puzzle_LostWoods4_Entrance/scripts.inc"
+	.include "data/maps/LostWoods4_Exit/scripts.inc"
 
 	.include "data/maps/Puzzle_MusicNoteTiles/scripts.inc"
 	
 	.include "data/maps/Puzzle_LedgeMountain/scripts.inc"
+	.include "data/maps/LedgeMountain_Support/scripts.inc"
 	
 	.include "data/maps/Puzzle_Wilke/scripts.inc"
 	
@@ -110,7 +121,8 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/TestMapHallway/scripts.inc"
 	.include "data/maps/TestLayoutSwitching/scripts.inc"
 	.include "data/maps/TestLayoutSwitching2/scripts.inc"
-	.include "data/maps/LedgeMountain_Support/scripts.inc"
+	.include "data/maps/TestMirrorMovement/scripts.inc"
+	.include "data/maps/TestCopyMovement/scripts.inc"
 	
 	.include "data/maps/PetalburgCity/scripts.inc"
 	.include "data/maps/SlateportCity/scripts.inc"
@@ -6199,8 +6211,3 @@ EventScript_PlayerPCFemale::
 	.align 2
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
-
-
-	.include "data/maps/TestMirrorMovement/scripts.inc"
-
-	.include "data/maps/TestCopyMovement/scripts.inc"

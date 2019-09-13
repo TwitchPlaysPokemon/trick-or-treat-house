@@ -113,8 +113,15 @@
         "Puzzle_Wilke"
     ],
     "gMapGroup5": [
-        "Puzzle_LostWoods_Entrance",
-        "Puzzle_LostWoods_Room0"
+        "Puzzle_LostWoods1_Entrance",
+        "Puzzle_LostWoods2_Entrance",
+        "Puzzle_LostWoods3_Entrance",
+        "Puzzle_LostWoods4_Entrance",
+        "LostWoods1_Exit",
+        "LostWoods2_Exit",
+        "LostWoods3_Exit",
+        "LostWoods4_Exit",
+        "LostWoods1_Room0"
     ],
     "group_order": [
         "gMapGroup0",

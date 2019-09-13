@@ -115,8 +115,15 @@
 #define MAP_PUZZLE_WILKE                 (7 | (4 << 8))
 
 // Map Group 5
-#define MAP_PUZZLE_LOST_WOODS_ENTRANCE (0 | (5 << 8))
-#define MAP_PUZZLE_LOST_WOODS_ROOM0    (1 | (5 << 8))
+#define MAP_PUZZLE_LOST_WOODS_ENTRANCE  (0 | (5 << 8))
+#define MAP_PUZZLE_LOST_WOODS2_ENTRANCE (1 | (5 << 8))
+#define MAP_PUZZLE_LOST_WOODS3_ENTRANCE (2 | (5 << 8))
+#define MAP_PUZZLE_LOST_WOODS4_ENTRANCE (3 | (5 << 8))
+#define MAP_LOST_WOODS1_EXIT            (4 | (5 << 8))
+#define MAP_LOST_WOODS2_EXIT            (5 | (5 << 8))
+#define MAP_LOST_WOODS3_EXIT            (6 | (5 << 8))
+#define MAP_LOST_WOODS4_EXIT            (7 | (5 << 8))
+#define MAP_LOST_WOODS1_ROOM0           (8 | (5 << 8))
 
 #define MAP_GROUPS_COUNT 6
 
