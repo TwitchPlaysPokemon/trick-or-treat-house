@@ -45,6 +45,7 @@ static EWRAM_DATA u16 gUnknown_0203931A = 0;
 EWRAM_DATA u16 gUnknown_02039358 = 0;
 EWRAM_DATA s16 gUnknown_0203935A = 0;
 EWRAM_DATA s16 gUnknown_0203935C = 0;
+static EWRAM_DATA u8* sDataBuffer = NULL;
 
 u32 gIntroFrameCounter;
 struct GcmbStruct gMultibootProgramStruct;
@@ -817,8 +818,10 @@ static void MainCB2_Intro(void)
 
 static void MainCB2_EndIntro(void)
 {
-    if (!UpdatePaletteFade())
+    if (!UpdatePaletteFade()) {
+		Free(sDataBuffer);
         SetMainCallback2(CB2_InitTitleScreen);
+	}
 }
 
 static void LoadCopyrightGraphics(u16 tilesetAddress, u16 tilemapAddress, u16 paletteAddress)
@@ -884,6 +887,7 @@ static u8 SetUpCopyrightScreen(void)
     case 141:
         if (UpdatePaletteFade())
             break;
+		sDataBuffer = AllocZeroed(0x2000);
         CreateTask(Task_IntroLoadPart1Graphics, 0);
         SetMainCallback2(MainCB2_Intro);
         if (gMultibootProgramStruct.gcmb_field_2 != 0)
@@ -1186,26 +1190,23 @@ static void Task_IntroWaitToSetupPart3DoubleFight(u8 taskId)
 static void Task_IntroLoadPart3Streaks(u8 taskId)
 {
     u16 i;
-
+	
     intro_reset_and_hide_bgs();
-	ResetSpriteData();
-	FreeAllSpritePalettes();
-        
-    // for (i = 0; i < 32; i++)
-    // {
-    //     ewram0arr[0][i] = 0;
-    //     ewram0arr[1][i] = 17;
-    //     ewram0arr[2][i] = 34;
-    // }
-    // DmaCopy16Defvars(3, gSharedMem, (void *)(VRAM + 0x0), 0x60);
-    // for (i = 0; i < 0x280; i++)
-    //     ((u16 *)(VRAM + 0x3000))[i] = 0xF001;
-    // for (i = 0; i < 0x80; i++)
-    //     ((u16 *)(VRAM + 0x3800))[i] = 0xF002;
-    // for (i = 0; i < 0x180; i++)
-    //     ((u16 *)(VRAM + 0x3900))[i] = 0xF000;
-    // for (i = 0; i < 0x80; i++)
-    //     ((u16 *)(VRAM + 0x3C00))[i] = 0xF002;
+    for (i = 0; i < 32; i++)
+    {
+        ((u8(*)[32])sDataBuffer)[0][i] = 0;
+        ((u8(*)[32])sDataBuffer)[1][i] = 17;
+        ((u8(*)[32])sDataBuffer)[2][i] = 34;
+    }
+    DmaCopy16Defvars(3, sDataBuffer, (void *)(VRAM + 0x0), 0x60);
+    for (i = 0; i < 0x280; i++)
+        ((u16 *)(VRAM + 0x3000))[i] = 0xF001;
+    for (i = 0; i < 0x80; i++)
+        ((u16 *)(VRAM + 0x3800))[i] = 0xF002;
+    for (i = 0; i < 0x180; i++)
+        ((u16 *)(VRAM + 0x3900))[i] = 0xF000;
+    for (i = 0; i < 0x80; i++)
+        ((u16 *)(VRAM + 0x3C00))[i] = 0xF002;
     gPlttBufferUnfaded[0xF0] = RGB_WHITE;
     gPlttBufferFaded[0xF0] = RGB_WHITE;
     sub_813D084(1);
@@ -1586,15 +1587,15 @@ static u16 MakePokemonSprite(u16 species, s16 x, s16 y, u16 d, u8 front)
 	
 	if (front)
         LoadSpecialPokePic(&gMonFrontPicTable[species],
-							gDecompressionBuffer + (0x200 * d), 
+							&sDataBuffer[0x200 * d], 
 							species, 0, TRUE);
     else
         LoadSpecialPokePic(&gMonBackPicTable[species], 
-							gDecompressionBuffer + (0x200 * d), 
+							&sDataBuffer[0x200 * d], 
 							species, 0, FALSE);
 	lzPaletteData = GetMonSpritePalStructFromOtIdPersonality(species, 0, 0);
     LoadCompressedSpritePalette(lzPaletteData);
-	SetMultiuseSpriteTemplateToPokemon(lzPaletteData->tag, d);
+	SetMultiuseSpriteTemplateToPokemon(species, d);
 	spriteId = CreateSprite(&gMultiuseSpriteTemplate, x, y, (d + 1) * 4);
 	gSprites[spriteId].oam.paletteNum = d;
     gSprites[spriteId].oam.priority = 1;
