@@ -1033,7 +1033,7 @@
         {
             "blockdata_filepath": "data/layouts/PCPuzzle/map.bin",
             "border_filepath": "data/layouts/PCPuzzle/border.bin",
-            "height": 22,
+            "height": 25,
             "id": "LAYOUT_PCPUZZLE",
             "name": "PCPuzzle_Layout",
             "primary_tileset": "gTileset_Building",

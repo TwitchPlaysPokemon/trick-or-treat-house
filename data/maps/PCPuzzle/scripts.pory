@@ -1,4 +1,99 @@
 raw `
 PCPuzzle_MapScripts::
 	.byte 0
+
+#define FLAG_TERMINAL_YELLOW FLAG_PUZZLE_30
+#define FLAG_TERMINAL_BLUE FLAG_PUZZLE_31
+#define FLAG_TERMINAL_RED FLAG_PUZZLE_32
+#define FLAG_TERMINAL_GREEN FLAG_PUZZLE_33
+
+#define FLAG_PASSWORD_YELLOW FLAG_PUZZLE_34
+#define FLAG_PASSWORD_BLUE FLAG_PUZZLE_35
+#define FLAG_PASSWORD_RED FLAG_PUZZLE_36
+#define FLAG_PASSWORD_GREEN FLAG_PUZZLE_37
+
+#define FLAG_EVERYTHINGDONE FLAG_PUZZLE_38
 `
+
+PCPuzzle_ScrollTrapped{
+	lock
+	msgbox ("Activate the four terminals\nto release the scroll.$")
+	release
+	end
+}
+
+PCPuzzle_Check {
+	if (flag(FLAG_TERMINAL_YELLOW) && flag(FLAG_TERMINAL_BLUE) && flag(FLAG_TERMINAL_RED) && flag(FLAG_TERMINAL_GREEN) && !flag(FLAG_EVERYTHINGDONE)){
+		// Everything done, unlock the scroll
+		setflag(FLAG_EVERYTHINGDONE)
+	}
+	return
+}
+
+PCPuzzle_Terminal_Yellow {
+	lock
+	if (flag(FLAG_TERMINAL_YELLOW)) {
+		msgbox ("This terminal is activated.$")
+		call(PCPuzzle_Check)
+	} elif (flag(FLAG_PASSWORD_YELLOW)) {
+		msgbox ("You entered the password.\p'WOW!MuchPuzzleSuchTricks'$")
+		setflag(FLAG_TERMINAL_YELLOW)
+		goto (PCPuzzle_Terminal_Yellow)
+	} else
+	{
+		msgbox ("You need a password to\nactivate this terminal.$")
+	}
+	release
+	end
+}
+
+PCPuzzle_Terminal_BLUE {
+	lock
+	if (flag(FLAG_TERMINAL_BLUE)) {
+		msgbox ("This terminal is activated.$")
+		call(PCPuzzle_Check)
+	} elif (flag(FLAG_PASSWORD_BLUE)) {
+		msgbox ("You entered the password.\p'AllYourBaseAreBelongToUs'$")
+		setflag(FLAG_TERMINAL_BLUE)
+		goto (PCPuzzle_Terminal_BLUE)
+	} else
+	{
+		msgbox ("You need a password to\nactivate this terminal.$")
+	}
+	release
+	end
+}
+
+PCPuzzle_Terminal_RED {
+	lock
+	if (flag(FLAG_TERMINAL_RED)) {
+		msgbox ("This terminal is activated.$")
+		call(PCPuzzle_Check)
+	} elif (flag(FLAG_PASSWORD_RED)) {
+		msgbox ("You entered the password.\p'RevoLovesChatot'$")
+		setflag(FLAG_TERMINAL_RED)
+		goto (PCPuzzle_Terminal_RED)
+	} else
+	{
+		msgbox ("You need a password to\nactivate this terminal.$")
+	}
+	release
+	end
+}
+
+PCPuzzle_Terminal_GREEN {
+	lock
+	if (flag(FLAG_TERMINAL_GREEN)) {
+		msgbox ("This terminal is activated.$")
+		call(PCPuzzle_Check)
+	} elif (flag(FLAG_PASSWORD_GREEN)) {
+		msgbox ("You entered the password.\p'VoHiYointhechat'$")
+		setflag(FLAG_TERMINAL_GREEN)
+		goto (PCPuzzle_Terminal_GREEN)
+	} else
+	{
+		msgbox ("You need a password to\nactivate this terminal.$")
+	}
+	release
+	end
+}
