@@ -8,7 +8,7 @@
     "connections": [
         {
             "direction": "down",
-            "map": "MAP_PUZZLE_LOST_WOODS_ENTRANCE",
+            "map": "MAP_PUZZLE_LOST_WOODS1_ENTRANCE",
             "offset": 2
         },
         {

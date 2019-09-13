@@ -907,6 +907,16 @@
             "id": "LAYOUT_PUZZLE_LOST_WOODS_ROOM0",
             "name": "Puzzle_LostWoods_Room0_Layout",
             "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Rustboro",
+            "width": 21
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Room/map.bin",
+            "border_filepath": "data/layouts/Puzzle_LostWoods_Room/border.bin",
+            "height": 19,
+            "id": "LAYOUT_PUZZLE_LOST_WOODS_ROOM",
+            "name": "Puzzle_LostWoods_Room_Layout",
+            "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Petalburg",
             "width": 21
         },
