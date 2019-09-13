@@ -1,12 +1,16 @@
 raw `
 EmptyPuzzle_MapScripts::
 	puzzle_info EmptyPuzzle_Name, EmptyPuzzle_Author
+	puzzle_metavars EmptyPuzzle_Variables
 	.byte 0
 
 EmptyPuzzle_Name:
 	.string "Empty Puzzle$"
 EmptyPuzzle_Author:
 	.string "necessity$"
+EmptyPuzzle_Variables:
+	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HOOH
+	.2byte 0
 `
 
 script EmptyPuzzle_TriggerScript_ButtonA {

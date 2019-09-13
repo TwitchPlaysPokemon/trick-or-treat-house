@@ -1,26 +1,33 @@
 raw `
 Puzzle_TinTowerClimb_MapScripts::
 	puzzle_info Puzzle_TinTowerClimb_Name, Puzzle_TinTowerClimb_Author
-	puzzle_adjective Puzzle_TinTowerClimb_Adjective
+	puzzle_custom_intro Puzzle_TinTowerClimb_Intro
 	puzzle_quip Puzzle_TinTowerClimb_Quip
 	puzzle_metavars Puzzle_TinTowerClimb_Variables
-	
 	.byte 0
 
 
 Puzzle_TinTowerClimb_Name:
-	.string "Climb to the Belfry$"
+	.string "Scale the Belfry$"
 Puzzle_TinTowerClimb_Author:
-	.string "Tustin2121$"
-Puzzle_TinTowerClimb_Adjective:
-	.string "hopping$"
+	.string "Game Freak$"
+Puzzle_TinTowerClimb_Intro:
+	.string "Hah! Back for another challenge!\n"
+	.string "I have a special treat for you!\p"
+	.string "In my journey of discovery,\n"
+	.string "I travelled to several distant regions!\p"
+	.string "This is one of the puzzles I discovered\n"
+	.string "on my travels in the lands of Johto!\p"
+	.string "Not many people are allowed deep in\n"
+	.string "this old bell tower. But with the power\l"
+	.string "of my door, you shall be one of them!\p"
+	.string "See you on the other side!$"
 Puzzle_TinTowerClimb_Quip:
-	.string "Do you like our tandem costume?\n"
+	.string "Do you like my costume?\n"
 	.string "It took like a month to build!\p"
 	.string "It's actually really hard to move\n"
 	.string "around in…$"
 Puzzle_TinTowerClimb_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HOOH
 	.2byte 0
-
 `

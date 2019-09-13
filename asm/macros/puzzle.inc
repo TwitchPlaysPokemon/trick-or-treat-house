@@ -25,6 +25,11 @@
 .4byte \string
 .endm
 
+.macro puzzle_custom_intro string:req
+.byte MAP_SCRIPT_PUZZLE_CUSTOM_INTRO
+.4byte \string
+.endm
+
 .macro puzzle_metavars pointer:req
 .byte MAP_SCRIPT_PUZZLE_META_VARIABLES
 .4byte \pointer

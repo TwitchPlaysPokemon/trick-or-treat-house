@@ -3,7 +3,77 @@
     {
       "label": "gWildMonHeaders",
       "for_maps": true,
-      "encounters": []
+      "encounters": [
+        {
+          "map": "MAP_PUZZLE_TIN_TOWER_CLIMB",
+          "base_label": "gPuzzle_TinTowerClimb",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 23,
+                "max_level": 26,
+                "species": "SPECIES_RATTATA"
+              },
+              {
+                "min_level": 23,
+                "max_level": 26,
+                "species": "SPECIES_SENTRET"
+              },
+              {
+                "min_level": 23,
+                "max_level": 26,
+                "species": "SPECIES_ZIGZAGOON"
+              },
+              {
+                "min_level": 23,
+                "max_level": 27,
+                "species": "SPECIES_SPINDA"
+              },
+              {
+                "min_level": 23,
+                "max_level": 27,
+                "species": "SPECIES_POOCHYENA"
+              },
+              {
+                "min_level": 23,
+                "max_level": 27,
+                "species": "SPECIES_POOCHYENA"
+              },
+              {
+                "min_level": 23,
+                "max_level": 27,
+                "species": "SPECIES_RATTATA"
+              },
+              {
+                "min_level": 23,
+                "max_level": 27,
+                "species": "SPECIES_SENTRET"
+              },
+              {
+                "min_level": 23,
+                "max_level": 27,
+                "species": "SPECIES_ZIGZAGOON"
+              },
+              {
+                "min_level": 23,
+                "max_level": 27,
+                "species": "SPECIES_ZIGZAGOON"
+              },
+              {
+                "min_level": 25,
+                "max_level": 30,
+                "species": "SPECIES_GASTLY"
+              },
+              {
+                "min_level": 25,
+                "max_level": 30,
+                "species": "SPECIES_HAUNTER"
+              }
+            ]
+          }
+        }
+      ]
     },
     {
       "label": "gBattlePyramidWildMonHeaders",
