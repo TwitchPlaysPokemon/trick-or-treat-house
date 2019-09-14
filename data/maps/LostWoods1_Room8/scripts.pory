@@ -1,4 +1,9 @@
 raw `
 LostWoods1_Room8_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, LostWoods1_Room8_OnTransition
 	.byte 0
+
+LostWoods1_Room8_OnTransition:
+	setmetatile 10, 9, 0x201, FALSE
+	end
 `

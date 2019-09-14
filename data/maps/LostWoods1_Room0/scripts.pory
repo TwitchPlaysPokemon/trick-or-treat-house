@@ -1,4 +1,14 @@
 raw `
 LostWoods1_Room0_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, LostWoods1_Room0_FrameTable
 	.byte 0
+
+LostWoods1_Room0_FrameTable:
+	map_script_2 VAR_PUZZLE_01, 1, LostWoods1_Room0_IncrementResetCount
+	.byte 0
+
+LostWoods1_Room0_IncrementResetCount:
+	addvar VAR_PUZZLE_00, 1
+	setvar VAR_PUZZLE_01, 0
+	end
 `

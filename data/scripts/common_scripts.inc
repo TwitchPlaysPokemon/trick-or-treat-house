@@ -394,6 +394,13 @@ LavaridgeTown_EventScript_271F19:: @ 8271F19
 	setvar VAR_OBJ_GFX_ID_3, EVENT_OBJ_GFX_RIVAL_BRENDAN_MACH_BIKE
 	return
 
+Common_EventScript_RemoveLastTalkedObject::
+	fadescreenswapbuffers 1
+	removeobject VAR_LAST_TALKED
+	fadescreenswapbuffers 0
+	release
+	end
+
 
 Common_Text_DummiedOut:
 	.string "This event is dummied out.\n"

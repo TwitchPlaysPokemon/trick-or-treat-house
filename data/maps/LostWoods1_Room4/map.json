@@ -35,10 +35,24 @@
     "music": "MUS_DAN02",
     "name": "LostWoods1_Room4",
     "object_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_ITEM_0",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_ItemFullRestore",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 10,
+            "y": 9
+        }
     ],
     "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
     "requires_flash": false,
     "show_map_name": true,
+    "trainers": "Puzzle_LostWoods1_Entrance_TrainerTable",
     "warp_events": [
     ],
     "weather": "WEATHER_SUNNY"

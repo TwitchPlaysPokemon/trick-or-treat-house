@@ -1,4 +1,9 @@
 raw `
 LostWoods1_Room1_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, LostWoods1_Room1_OnTransition
 	.byte 0
+
+LostWoods1_Room1_OnTransition:
+	setvar VAR_PUZZLE_01, 1
+	end
 `
