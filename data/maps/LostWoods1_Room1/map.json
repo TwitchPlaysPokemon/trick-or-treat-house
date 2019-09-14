@@ -10,7 +10,7 @@
             "item": "ITEM_POTION",
             "type": "hidden_item",
             "x": 10,
-            "y": 12
+            "y": 13
         }
     ],
     "connections": [

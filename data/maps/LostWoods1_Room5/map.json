@@ -10,7 +10,7 @@
             "item": "ITEM_BURN_HEAL",
             "type": "hidden_item",
             "x": 13,
-            "y": 9
+            "y": 10
         }
     ],
     "connections": [
@@ -54,7 +54,7 @@
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 10,
-            "y": 8
+            "y": 10
         }
     ],
     "region_map_section": "MAPSEC_LITTLEROOT_TOWN",

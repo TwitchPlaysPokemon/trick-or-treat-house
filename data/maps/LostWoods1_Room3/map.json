@@ -10,7 +10,7 @@
             "item": "ITEM_BURN_HEAL",
             "type": "hidden_item",
             "x": 10,
-            "y": 6
+            "y": 7
         }
     ],
     "connections": [

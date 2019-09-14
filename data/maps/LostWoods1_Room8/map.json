@@ -46,7 +46,7 @@
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 8,
-            "y": 7
+            "y": 8
         },
         {
             "elevation": 3,
@@ -59,7 +59,7 @@
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 8,
-            "y": 10
+            "y": 12
         },
         {
             "elevation": 3,
@@ -72,7 +72,7 @@
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 12,
-            "y": 7
+            "y": 8
         },
         {
             "elevation": 3,
@@ -85,7 +85,7 @@
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 12,
-            "y": 10
+            "y": 12
         }
     ],
     "region_map_section": "MAPSEC_LITTLEROOT_TOWN",

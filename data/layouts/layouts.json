@@ -903,7 +903,7 @@
         {
             "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Room0/map.bin",
             "border_filepath": "data/layouts/Puzzle_LostWoods_Room0/border.bin",
-            "height": 19,
+            "height": 21,
             "id": "LAYOUT_PUZZLE_LOST_WOODS_ROOM0",
             "name": "Puzzle_LostWoods_Room0_Layout",
             "primary_tileset": "gTileset_General",
@@ -913,7 +913,7 @@
         {
             "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Room1/map.bin",
             "border_filepath": "data/layouts/Puzzle_LostWoods_Room1/border.bin",
-            "height": 19,
+            "height": 21,
             "id": "LAYOUT_PUZZLE_LOST_WOODS_ROOM1",
             "name": "Puzzle_LostWoods_Room1_Layout",
             "primary_tileset": "gTileset_General",
@@ -923,7 +923,7 @@
         {
             "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Room/map.bin",
             "border_filepath": "data/layouts/Puzzle_LostWoods_Room/border.bin",
-            "height": 19,
+            "height": 21,
             "id": "LAYOUT_PUZZLE_LOST_WOODS_ROOM",
             "name": "Puzzle_LostWoods_Room_Layout",
             "primary_tileset": "gTileset_General",

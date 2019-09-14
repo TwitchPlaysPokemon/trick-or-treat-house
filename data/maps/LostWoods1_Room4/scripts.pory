@@ -1,14 +1,14 @@
 raw `
 LostWoods1_Room4_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, LostWoods1_Room4_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, LostWoods1_Room4_OnLoad
 	.byte 0
 
-LostWoods1_Room4_OnTransition:
-	setmetatile  9,  7, 0x004, FALSE
-	setmetatile 11,  7, 0x004, FALSE
-	setmetatile  8,  9, 0x004, FALSE
-	setmetatile 12,  9, 0x004, FALSE
-	setmetatile  9, 11, 0x004, FALSE
-	setmetatile 11, 11, 0x004, FALSE
+LostWoods1_Room4_OnLoad:
+	setmetatile  9,  8, 0x004, FALSE
+	setmetatile 11,  8, 0x004, FALSE
+	setmetatile  8, 10, 0x004, FALSE
+	setmetatile 12, 10, 0x004, FALSE
+	setmetatile  9, 12, 0x004, FALSE
+	setmetatile 11, 12, 0x004, FALSE
 	end
 `
