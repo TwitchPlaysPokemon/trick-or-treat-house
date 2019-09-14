@@ -97,6 +97,16 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/Puzzle_LostWoods1_Entrance/scripts.inc"
 	.include "data/maps/LostWoods1_Exit/scripts.inc"
 	.include "data/maps/LostWoods1_Room0/scripts.inc"
+	.include "data/maps/LostWoods1_Room1/scripts.inc"
+	.include "data/maps/LostWoods1_Room2/scripts.inc"
+	.include "data/maps/LostWoods1_Room3/scripts.inc"
+	.include "data/maps/LostWoods1_Room4/scripts.inc"
+	.include "data/maps/LostWoods1_Room5/scripts.inc"
+	.include "data/maps/LostWoods1_Room6/scripts.inc"
+	.include "data/maps/LostWoods1_Room7/scripts.inc"
+	.include "data/maps/LostWoods1_Room8/scripts.inc"
+	.include "data/maps/LostWoods1_Room9/scripts.inc"
+	.include "data/maps/LostWoods1_Room10/scripts.inc"
 	
 	.include "data/maps/Puzzle_LostWoods2_Entrance/scripts.inc"
 	.include "data/maps/LostWoods2_Exit/scripts.inc"
@@ -6211,3 +6221,4 @@ EventScript_PlayerPCFemale::
 	.align 2
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
+

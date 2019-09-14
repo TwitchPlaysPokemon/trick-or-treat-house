@@ -5,7 +5,13 @@
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
     ],
-    "connections": null,
+    "connections": [
+        {
+            "direction": "down",
+            "map": "MAP_LOST_WOODS1_ROOM10",
+            "offset": -2
+        }
+    ],
     "coord_events": [
     ],
     "id": "MAP_LOST_WOODS1_EXIT",
