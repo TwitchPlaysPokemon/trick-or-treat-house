@@ -28,6 +28,11 @@
             "direction": "up",
             "map": "MAP_LOST_WOODS1_ROOM7",
             "offset": 0
+        },
+        {
+            "direction": "dive",
+            "map": "MAP_LOST_WOODS1_UNDERWATER",
+            "offset": 0
         }
     ],
     "coord_events": [

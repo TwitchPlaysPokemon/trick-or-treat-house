@@ -6222,3 +6222,5 @@ EventScript_PlayerPCFemale::
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
 
+
+	.include "data/maps/LostWoods1_Underwater/scripts.inc"

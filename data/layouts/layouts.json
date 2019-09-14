@@ -1079,6 +1079,16 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_TrickHousePuzzle",
             "width": 100
+        },
+        {
+            "blockdata_filepath": "data/layouts/LostWoods1_Underwater/map.bin",
+            "border_filepath": "data/layouts/LostWoods1_Underwater/border.bin",
+            "height": 21,
+            "id": "LAYOUT_LOST_WOODS1_UNDERWATER",
+            "name": "LostWoods1_Underwater_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Underwater",
+            "width": 21
         }
     ],
     "layouts_table_label": "gMapLayouts"

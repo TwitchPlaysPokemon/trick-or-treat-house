@@ -134,6 +134,7 @@
 #define MAP_LOST_WOODS1_ROOM8           (16 | (5 << 8))
 #define MAP_LOST_WOODS1_ROOM9           (17 | (5 << 8))
 #define MAP_LOST_WOODS1_ROOM10          (18 | (5 << 8))
+#define MAP_LOST_WOODS1_UNDERWATER      (19 | (5 << 8))
 
 #define MAP_GROUPS_COUNT 6
 
