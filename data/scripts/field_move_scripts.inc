@@ -307,8 +307,8 @@ EventScript_EndDive:: @ 8290B58
 
 EventScript_UseDiveUnderwater:: @ 8290B5A
 	lockall
-	checkpartymove MOVE_DIVE
-	compare VAR_RESULT, 6
+	checkitem ITEM_DIVE_ITEM, 1
+	compare VAR_RESULT, 0
 	goto_if_eq EventScript_CantSurface
 	bufferpartymonnick 0, VAR_RESULT
 	setfieldeffectargument 0, VAR_RESULT
