@@ -54,6 +54,9 @@ gSpecialVars:: @ 81DBA0C
 	.4byte gSpecialVar_MonBoxPos
 	.4byte gSpecialVar_Unused_0x8014
 	.4byte gTrainerBattleOpponent_A
+	.4byte gSpecialVar_InteractX
+	.4byte gSpecialVar_InteractY
+	.4byte gSpecialVar_LastWarpId
 
 	.include "data/specials.inc"
 
@@ -107,7 +110,8 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/LostWoods1_Room8/scripts.inc"
 	.include "data/maps/LostWoods1_Room9/scripts.inc"
 	.include "data/maps/LostWoods1_Room10/scripts.inc"
-	
+	.include "data/maps/LostWoods1_Underwater/scripts.inc"
+
 	.include "data/maps/Puzzle_LostWoods2_Entrance/scripts.inc"
 	.include "data/maps/LostWoods2_Exit/scripts.inc"
 
@@ -116,6 +120,9 @@ gStdScripts_End:: @ 81DC2CC
 
 	.include "data/maps/Puzzle_LostWoods4_Entrance/scripts.inc"
 	.include "data/maps/LostWoods4_Exit/scripts.inc"
+
+	.include "data/maps/Puzzle_Loss_Floor1/scripts.inc"
+	.include "data/maps/Puzzle_Loss_Floor2/scripts.inc"
 
 	.include "data/maps/Puzzle_MusicNoteTiles/scripts.inc"
 	
@@ -6221,16 +6228,3 @@ EventScript_PlayerPCFemale::
 	.align 2
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
-
-
-
-	.include "data/maps/LostWoods1_Underwater/scripts.inc"
-
-	.include "data/maps/TestMirrorMovement/scripts.inc"
-
-	.include "data/maps/TestCopyMovement/scripts.inc"
-
-	.include "data/maps/Puzzle_Loss_Floor1/scripts.inc"
-
-	.include "data/maps/Puzzle_Loss_Floor2/scripts.inc"
-

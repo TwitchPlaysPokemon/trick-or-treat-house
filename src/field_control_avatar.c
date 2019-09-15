@@ -247,7 +247,9 @@ static bool8 TryStartInteractionScript(struct MapPosition *position, u16 metatil
      && script != SecretBase_EventScript_CushionInteract
      && script != EventScript_PC)
         PlaySE(SE_SELECT);
-
+    
+    gSpecialVar_InteractX = position->x;
+    gSpecialVar_InteractY = position->y;
     ScriptContext1_SetupScript(script);
     return TRUE;
 }

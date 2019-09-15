@@ -575,6 +575,7 @@ void ApplyCurrentWarp(void)
     gSaveBlock1Ptr->location = sWarpDestination;
     gFixedDiveWarp = sDummyWarpData;
     gFixedHoleWarp = sDummyWarpData;
+    gSpecialVar_LastWarpId = sWarpDestination.warpId;
 }
 
 static void ClearDiveAndHoleWarps(void)

@@ -180,7 +180,7 @@ script Puzzle_Loss_Floor1_PC {
 script Puzzle_Loss_Floor1_Map {
 	msgbox ("It's a map of the Hoenn region.\p"
 			"You'd take a close look, but someone\n"
-			"graffiti'd random lines all over it.$")
+			"graffiti'd random lines all over it.$", MSGBOX_SIGN)
 }
 
 script Puzzle_Loss_Floor1_Patron1 {

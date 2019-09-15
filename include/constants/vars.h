@@ -300,6 +300,10 @@
 #define VAR_MON_BOX_POS               0x8013
 #define VAR_UNUSED_0x8014             0x8014
 #define VAR_TRAINER_BATTLE_OPPONENT_A 0x8015 // Alias of gTrainerBattleOpponent_A
+#define VAR_INTERACT_X                0x8016
+#define VAR_INTERACT_Y                0x8017
+#define VAR_LAST_WARP_ID              0x8018
+
 #define THIS_EVENT                    0x800F //alias to VAR_LAST_TALKED
 
 #endif // GUARD_CONSTANTS_VARS_H
