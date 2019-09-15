@@ -113,6 +113,8 @@
 #define MAP_PUZZLE_MUSIC_NOTE_TILES      (5 | (4 << 8))
 #define MAP_PUZZLE_LEDGE_MOUNTAIN        (6 | (4 << 8))
 #define MAP_PUZZLE_WILKE                 (7 | (4 << 8))
+#define MAP_PUZZLE_LOSS_FLOOR1           (8 | (4 << 8))
+#define MAP_PUZZLE_LOSS_FLOOR2           (9 | (4 << 8))
 
 // Map Group 5
 #define MAP_PUZZLE_LOST_WOODS_ENTRANCE (0 | (5 << 8))

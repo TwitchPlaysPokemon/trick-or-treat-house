@@ -653,6 +653,8 @@
 		.4byte \pointer3 @ event script
 	.elseif \type == TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT
 		.4byte \pointer1 @ text
+	.elseif \type == TRAINER_BATTLE_DOUBLE_NO_INTRO_TEXT
+		.4byte \pointer1 @ text
 	.elseif \type == TRAINER_BATTLE_DOUBLE
 		.4byte \pointer1 @ text
 		.4byte \pointer2 @ text
@@ -728,6 +730,11 @@
 	@ Starts a trainer battle, skipping intro text, takes a trainer and loss text
 	.macro trainerbattle_no_intro trainer:req, lose_text:req
 	trainerbattle TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT, \trainer, 0, \lose_text
+	.endm
+	
+	@ Starts a trainer battle, skipping intro text, takes a trainer and loss text
+	.macro trainerbattle_no_intro_double trainer:req, lose_text:req
+	trainerbattle TRAINER_BATTLE_DOUBLE_NO_INTRO_TEXT, \trainer, 0, \lose_text
 	.endm
 
 

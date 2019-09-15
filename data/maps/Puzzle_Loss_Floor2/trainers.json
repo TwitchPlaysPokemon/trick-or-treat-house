@@ -1,0 +1,30 @@
+[
+	{
+		"class": "SR_AND_JR",
+		"name": "KATE & LIZ",
+		"music": "TWINS",
+		"double": true,
+		"party": [
+			{
+				"species": "SPECIES_SPINDA",
+				"level": 30,
+				"moves": ["MOVE_HYPNOSIS", "MOVE_PSYBEAM", "MOVE_DIZZY_PUNCH", "MOVE_TEETER_DANCE"]
+			},
+			{
+				"species": "SPECIES_SLAKING",
+				"level": 32,
+				"moves": ["MOVE_FOCUS_PUNCH", "MOVE_YAWN", "MOVE_SLACK_OFF", "MOVE_FAINT_ATTACK"]
+			}
+		]
+	},
+	{
+		"class": "LASS",
+		"name": "EMILY",
+		"party": [
+			{
+				"species": "SPECIES_LOTAD",
+				"level": 25
+			}
+		]
+	}
+]

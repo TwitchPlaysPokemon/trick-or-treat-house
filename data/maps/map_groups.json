@@ -110,7 +110,9 @@
         "Puzzle_WaterTemple",
         "Puzzle_MusicNoteTiles",
         "Puzzle_LedgeMountain",
-        "Puzzle_Wilke"
+        "Puzzle_Wilke",
+        "Puzzle_Loss_Floor1",
+        "Puzzle_Loss_Floor2"
     ],
     "gMapGroup5": [
         "Puzzle_LostWoods_Entrance",

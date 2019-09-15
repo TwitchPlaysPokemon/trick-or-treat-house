@@ -1049,6 +1049,26 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_TrickHousePuzzle",
             "width": 100
+        },
+        {
+            "blockdata_filepath": "data/layouts/TriHard_PokemonCenter_1F/map.bin",
+            "border_filepath": "data/layouts/TriHard_PokemonCenter_1F/border.bin",
+            "height": 14,
+            "id": "LAYOUT_TRIHARD_POKEMON_CENTER_1F",
+            "name": "TriHard_PokemonCenter_1F_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrihardPokemonCenter",
+            "width": 20
+        },
+        {
+            "blockdata_filepath": "data/layouts/TriHard_PokemonCenter_2F/map.bin",
+            "border_filepath": "data/layouts/TriHard_PokemonCenter_2F/border.bin",
+            "height": 28,
+            "id": "LAYOUT_TRIHARD_POKEMON_CENTER_2F",
+            "name": "TriHard_PokemonCenter_2F_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrihardPokemonCenter",
+            "width": 20
         }
     ],
     "layouts_table_label": "gMapLayouts"

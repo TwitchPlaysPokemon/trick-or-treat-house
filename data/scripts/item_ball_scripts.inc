@@ -134,6 +134,6 @@ Common_EventScript_ItemFluffyTail::
 	end
 
 Common_EventScript_ItemItemfinder::
-	giveitem_std ITEM_FLUFFY_TAIL, 1, 1
+	giveitem_std ITEM_ITEMFINDER, 1, 1
 	end
 

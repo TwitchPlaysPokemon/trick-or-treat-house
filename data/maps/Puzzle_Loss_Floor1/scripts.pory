@@ -1,0 +1,227 @@
+raw `
+Puzzle_Loss_Floor1_MapScripts::
+	puzzle_info Puzzle_Loss_Name, Puzzle_Loss_Author
+	puzzle_adjective Puzzle_Loss_Adjective
+	puzzle_quip Puzzle_Loss_Quip
+	puzzle_metavars Puzzle_Loss_Variables
+	.byte 0
+
+Puzzle_Loss_Name:
+	.string "Misplaced$"
+Puzzle_Loss_Author:
+	.string "the Internet$"
+Puzzle_Loss_Adjective:
+	.string "memable$"
+Puzzle_Loss_Quip:
+	.string "Is this loss?$"
+Puzzle_Loss_Variables:
+	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER
+	.2byte 0
+
+@ -----------------------------------------------------
+#define VAR_PUZZLE_ADVANCEMENT  VAR_PUZZLE_00
+#define VAR_FREE_COUNTER        VAR_PUZZLE_01
+`
+
+script Puzzle_Loss_Floor1_Nurse {
+	if (var(VAR_PUZZLE_ADVANCEMENT) > 0) {
+		msgbox ("You should speak with the attendant\n"
+				"upstairs. Have a good evening.$", MSGBOX_NPC)
+		end
+	}
+	setvar (VAR_PUZZLE_ADVANCEMENT, 1)
+	msgbox ("Welcome to the Pokémon Center!\p"
+			"Would you like a room\n"
+			"for the evening?\p"
+			"Oh, you're looking for someone?\p"
+			"… … … … … … … … … …\n"
+			"Yes, I believe they have a room tonight.\p"
+			"You should speak with the attendant\n"
+			"upstairs. Have a good evening.$", MSGBOX_NPC)
+}
+
+script Puzzle_Loss_Floor1_FreeCandyCounter {
+	lock
+	faceplayer
+	if (var(VAR_FREE_COUNTER) >= 8) {
+		message ("No, I'm sorry.\n"
+				"I'm cutting you off.\p"
+				"Please leave.$")
+		waitmessage
+		waitbuttonpress
+		release
+		end
+	}
+	# Welcome message
+	selectpointer (Puzzle_Loss_Floor1_TextArray_FreePokeballCounter_Intro, VAR_FREE_COUNTER)
+	message (0)
+	waitmessage
+	yesnobox (20, 8)
+	if (var(VAR_RESULT) == YES) {
+		selectpointer (Puzzle_Loss_Floor1_TextArray_FreePokeballCounter_GiveComments, VAR_TEMP_A)
+		message (0)
+		waitmessage
+		waitbuttonpress
+		giveitem_std (ITEM_POTION, 3)
+		if (var(VAR_RESULT) == NO) {
+			message ("Oh, you don't have enough room.\n"
+					"Feel free to return when you do.$")
+			waitmessage
+			waitbuttonpress
+			release
+			end
+		}
+		addvar (VAR_FREE_COUNTER, 1)
+	}
+	message ("Have a good day!$")
+	waitmessage
+	waitbuttonpress
+	release
+}
+
+raw `
+.align 2
+Puzzle_Loss_Floor1_TextArray_FreePokeballCounter_Intro:
+	.4byte Puzzle_Loss_Floor1_Text_FreePokeballCounter_Intro0
+	.4byte Puzzle_Loss_Floor1_Text_FreePokeballCounter_Intro1
+	.4byte Puzzle_Loss_Floor1_Text_FreePokeballCounter_Intro1
+	.4byte Puzzle_Loss_Floor1_Text_FreePokeballCounter_Intro2
+	.4byte Puzzle_Loss_Floor1_Text_FreePokeballCounter_Intro2
+	.4byte Puzzle_Loss_Floor1_Text_FreePokeballCounter_Intro2
+	.4byte Puzzle_Loss_Floor1_Text_FreePokeballCounter_Intro3
+	.4byte Puzzle_Loss_Floor1_Text_FreePokeballCounter_Intro3
+	.4byte 0
+Puzzle_Loss_Floor1_Text_FreePokeballCounter_Intro0:
+	.string "Hello, how are you today?\n"
+	.string "Would you like some free CHOCOLATE BARS?$"
+Puzzle_Loss_Floor1_Text_FreePokeballCounter_Intro1:
+	.string "Hello again.\n"
+	.string "Would you like some more CHOCOLATE BARS?$"
+Puzzle_Loss_Floor1_Text_FreePokeballCounter_Intro2:
+	.string "Back again?\n"
+	.string "Want some more CHOCOLATE BARS?$"
+Puzzle_Loss_Floor1_Text_FreePokeballCounter_Intro3:
+	.string "Ah.\n"
+	.string "You still want more CHOCOLATE BARS?$"
+
+.align 2
+Puzzle_Loss_Floor1_TextArray_FreePokeballCounter_GiveComments:
+	.4byte Puzzle_Loss_Floor1_Text_FreePokeballCounter_GiveBalls1
+	.4byte Puzzle_Loss_Floor1_Text_FreePokeballCounter_GiveBalls1
+	.4byte Puzzle_Loss_Floor1_Text_FreePokeballCounter_GiveBalls2
+	.4byte Puzzle_Loss_Floor1_Text_FreePokeballCounter_GiveBalls3
+	.4byte Puzzle_Loss_Floor1_Text_FreePokeballCounter_GiveBalls3
+	.4byte Puzzle_Loss_Floor1_Text_FreePokeballCounter_GiveBalls3
+	.4byte Puzzle_Loss_Floor1_Text_FreePokeballCounter_GiveBalls4
+	.4byte Puzzle_Loss_Floor1_Text_FreePokeballCounter_GiveBalls5
+	.4byte 0
+Puzzle_Loss_Floor1_Text_FreePokeballCounter_GiveBalls1:
+	.string "Okay, here's a pack of CHOCOLATE BARS!$"
+Puzzle_Loss_Floor1_Text_FreePokeballCounter_GiveBalls2:
+	.string "Planning to eat a lot of CHOCOLATE,\n"
+	.string "are you? Here you go!$"
+Puzzle_Loss_Floor1_Text_FreePokeballCounter_GiveBalls3:
+	.string "Alright. Here's a few more.$"
+Puzzle_Loss_Floor1_Text_FreePokeballCounter_GiveBalls4:
+	.string "Ok, last set. I know they're free, but\n"
+	.string "we can't just have one person hogging\l"
+	.string "them all now, can we?$"
+Puzzle_Loss_Floor1_Text_FreePokeballCounter_GiveBalls5:
+	.string "I'm serious this time.\n"
+	.string "No more than this.$"
+`
+
+# -----------------------------------------------------
+
+script Puzzle_Loss_Floor1_Mart {
+	lock
+	faceplayer
+	message ("Welcome! We trade Candy Corns for\n"
+			"other candy! What would you like?$")
+	waitmessage
+	pokemart (Puzzle_Loss_Floor1_Pokemart)
+	msgbox ("Have a good night!$")
+	release
+}
+raw `
+Puzzle_Loss_Floor1_Pokemart:
+	.2byte ITEM_POTION
+	.2byte ITEM_ANTIDOTE
+	.2byte ITEM_BURN_HEAL
+	.2byte ITEM_ICE_HEAL
+	.2byte ITEM_AWAKENING
+	.2byte ITEM_PARALYZE_HEAL
+	.2byte ITEM_FULL_RESTORE
+	.2byte ITEM_MAX_POTION
+	.2byte ITEM_HYPER_POTION
+	.2byte ITEM_SUPER_POTION
+	.2byte ITEM_FULL_HEAL
+	.2byte ITEM_ETHER
+	.2byte ITEM_MAX_ETHER
+	.2byte ITEM_ELIXIR
+	.2byte ITEM_MAX_ELIXIR
+	.2byte ITEM_LAVA_COOKIE
+	release
+	end
+`
+
+# -----------------------------------------------------
+
+script Puzzle_Loss_Floor1_PC {
+	msgbox ("It's a stream where people input into\n"
+			"a {POKEMON} video game via chat.\p"
+			"Right now, it looks like they're at a\n"
+			"PC, reading about a stream where people\l"
+			"input into a video game via chat.$", MSGBOX_SIGN)
+	# If there was a way to make us input into our own stream,
+	# that would go here instead. XD
+}
+
+script Puzzle_Loss_Floor1_Map {
+	msgbox ("It's a map of the Hoenn region.\p"
+			"You'd take a close look, but someone\n"
+			"graffiti'd random lines all over it.$")
+}
+
+script Puzzle_Loss_Floor1_Patron1 {
+	msgbox ("I got an Escape Rope just in\n"
+			"case I get lost in a puzzle.\p"
+			"I just need to use it to get back to\n"
+			"the entrance.$", MSGBOX_NPC)
+}
+
+script Puzzle_Loss_Floor1_Patron2 {
+	msgbox ("My Pokémon has a naive nature, and my\n"
+			"friend's has a jolly nature.\p"
+			"Just like people, Pokémon each have\n"
+			"different personalities too!$", MSGBOX_NPC)
+}
+
+script Puzzle_Loss_Floor1_Patron3 {
+	msgbox ("My Pokémon has a naive nature, and my\n"
+			"friend's has a jolly nature.\p"
+			"Just like people, Pokémon each have\n"
+			"different personalities too!$", MSGBOX_NPC)
+}
+
+script Puzzle_Loss_Floor1_Patron4 {
+	msgbox ("The second floor of every Pokémon\n"
+			"Center is the Trainer's Lounge.\p"
+			"You can go upstairs to rest, relax,\n"
+			"and even get a room for the night.$", MSGBOX_NPC)
+}
+
+script Puzzle_Loss_Floor1_Patron5 {
+	msgbox ("The counter to the left of the shop\n"
+			"is giving out Chocolate for free!\l"
+			"I'm gonna stock up on as much as I can!$", MSGBOX_NPC)
+}
+
+
+
+
+
+raw `
+#undef VAR_PUZZLE_ADVANCEMENT
+#undef VAR_FREE_COUNTER
+`

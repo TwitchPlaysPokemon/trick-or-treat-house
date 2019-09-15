@@ -1809,3 +1809,26 @@ gTilesetPalettes_Autumn::
 	.align 2
 gTilesetTiles_Autumn::
 	.incbin "data/tilesets/primary/autumn/tiles.4bpp.lz"
+
+	.align 2
+gTilesetTiles_TrihardPokemonCenter:: @ 83522DC
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_TrihardPokemonCenter:: @ 8353574
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/palettes/12.gbapal"
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/palettes/13.gbapal"
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/palettes/14.gbapal"
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/palettes/15.gbapal"
