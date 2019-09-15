@@ -137,3 +137,7 @@ Common_EventScript_ItemItemfinder::
 	giveitem_std ITEM_ITEMFINDER, 1, 1
 	end
 
+Common_EventScript_PickupRareItem::
+	giveitem_std ITEM_RARE_CANDY, 1, 1
+	end
+

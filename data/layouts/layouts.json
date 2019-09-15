@@ -903,12 +903,42 @@
         {
             "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Room0/map.bin",
             "border_filepath": "data/layouts/Puzzle_LostWoods_Room0/border.bin",
-            "height": 19,
+            "height": 21,
             "id": "LAYOUT_PUZZLE_LOST_WOODS_ROOM0",
             "name": "Puzzle_LostWoods_Room0_Layout",
             "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Rustboro",
+            "width": 21
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Room1/map.bin",
+            "border_filepath": "data/layouts/Puzzle_LostWoods_Room1/border.bin",
+            "height": 21,
+            "id": "LAYOUT_PUZZLE_LOST_WOODS_ROOM1",
+            "name": "Puzzle_LostWoods_Room1_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Mossdeep",
+            "width": 21
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Room/map.bin",
+            "border_filepath": "data/layouts/Puzzle_LostWoods_Room/border.bin",
+            "height": 21,
+            "id": "LAYOUT_PUZZLE_LOST_WOODS_ROOM",
+            "name": "Puzzle_LostWoods_Room_Layout",
+            "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Petalburg",
             "width": 21
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Exit/map.bin",
+            "border_filepath": "data/layouts/Puzzle_LostWoods_Exit/border.bin",
+            "height": 17,
+            "id": "LAYOUT_PUZZLE_LOST_WOODS_EXIT",
+            "name": "Puzzle_LostWoods_Exit_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_TrickHousePuzzle",
+            "width": 17
         },
         {
             "blockdata_filepath": "data/layouts/Puzzle_TinTowerClimb/map.bin",
@@ -1049,6 +1079,17 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_TrickHousePuzzle",
             "width": 100
+        },
+        {
+
+            "blockdata_filepath": "data/layouts/LostWoods1_Underwater/map.bin",
+            "border_filepath": "data/layouts/LostWoods1_Underwater/border.bin",
+            "height": 21,
+            "id": "LAYOUT_LOST_WOODS1_UNDERWATER",
+            "name": "LostWoods1_Underwater_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Underwater",
+            "width": 21
         },
         {
             "blockdata_filepath": "data/layouts/TriHard_PokemonCenter_1F/map.bin",

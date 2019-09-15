@@ -1,0 +1,98 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": [
+        {
+            "direction": "down",
+            "map": "MAP_LOST_WOODS1_ROOM0",
+            "offset": 0
+        },
+        {
+            "direction": "left",
+            "map": "MAP_LOST_WOODS1_ROOM0",
+            "offset": 0
+        },
+        {
+            "direction": "right",
+            "map": "MAP_LOST_WOODS1_ROOM7",
+            "offset": 0
+        },
+        {
+            "direction": "up",
+            "map": "MAP_LOST_WOODS1_ROOM0",
+            "offset": 0
+        }
+    ],
+    "coord_events": [
+    ],
+    "id": "MAP_LOST_WOODS1_ROOM8",
+    "layout": "LAYOUT_PUZZLE_LOST_WOODS_ROOM",
+    "map_type": "MAP_TYPE_UNUSED_1",
+    "music": "MUS_DAN02",
+    "name": "LostWoods1_Room8",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_PICKED_UP_DIVE_ITEM",
+            "graphics_id": "EVENT_OBJ_GFX_HM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_ItemDive",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 8,
+            "y": 8
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_ITEM_1",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_ItemSuperPotion",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 8,
+            "y": 12
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_ITEM_2",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_ItemLavaCookie",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 12,
+            "y": 8
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_4F",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Puzzle_LostWoods1_Mimic",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 12,
+            "y": 12
+        }
+    ],
+    "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
+    "requires_flash": false,
+    "show_map_name": true,
+    "trainers": "Puzzle_LostWoods1_Entrance_TrainerTable",
+    "warp_events": [
+    ],
+    "weather": "WEATHER_SUNNY"
+}

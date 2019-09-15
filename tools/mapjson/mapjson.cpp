@@ -182,7 +182,6 @@ void generate_trainer_table_text(ostringstream &text, string tablename, Json tra
             parties << "\t.byte 0  @ padding\n";
             // parties << ".align 2\n";
             parties << "\t.2byte " << mon["species"].string_value() << "\n";
-            parties << "\t.2byte 0  @ padding\n";
             
             if (partyType & 2) {
                 if (mon.object_items().find("item") != mon.object_items().end())
@@ -205,6 +204,11 @@ void generate_trainer_table_text(ostringstream &text, string tablename, Json tra
                     if (i < 3) parties << ", ";
                 }
                 parties << "\n";
+                parties << "\t.2byte 0  @ padding\n";
+            }
+            
+            if (partyType == 0) {
+                parties << "\t.2byte 0  @ padding\n";
             }
         }
     }
@@ -270,9 +274,16 @@ string generate_map_header_text(Json map_data, Json layouts_data, string version
     
     if (map_data.object_items().find("trainers") != map_data.object_items().end())
     {
-        string tableName = map_data["name"].string_value() + "_TrainerTable";
-        text << "\t.4byte "<< tableName << "\n\n";
-        generate_trainer_table_text(text, tableName, map_data["trainers"]);
+        if (map_data["trainers"].is_string())
+        {
+            text << "\t.4byte "<< map_data["trainers"].string_value() << "\n\n";
+        }
+        else
+        {
+            string tableName = map_data["name"].string_value() + "_TrainerTable";
+            text << "\t.4byte "<< tableName << "\n\n";
+            generate_trainer_table_text(text, tableName, map_data["trainers"]);
+        }
     }
     else
         text << "\t.4byte 0\n\n";

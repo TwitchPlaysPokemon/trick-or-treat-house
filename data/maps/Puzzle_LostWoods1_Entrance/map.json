@@ -8,23 +8,30 @@
     "connections": [
         {
             "direction": "up",
-            "map": "MAP_PUZZLE_LOST_WOODS_ROOM0",
+            "map": "MAP_LOST_WOODS1_ROOM0",
             "offset": -2
         }
     ],
     "coord_events": [
     ],
-    "id": "MAP_PUZZLE_LOST_WOODS_ENTRANCE",
+    "id": "MAP_PUZZLE_LOST_WOODS1_ENTRANCE",
     "layout": "LAYOUT_PUZZLE_LOST_WOODS_ENTRANCE",
     "map_type": "MAP_TYPE_UNDERGROUND",
     "music": "MUS_DAN02",
-    "name": "Puzzle_LostWoods_Entrance",
+    "name": "Puzzle_LostWoods1_Entrance",
     "object_events": [
     ],
     "region_map_section": "MAPSEC_PETALBURG_WOODS",
     "requires_flash": false,
     "show_map_name": true,
     "warp_events": [
+        {
+            "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 8,
+            "y": 11
+        }
     ],
     "weather": "WEATHER_SUNNY"
 }

@@ -1,0 +1,97 @@
+raw `
+Puzzle_LostWoods1_Entrance_MapScripts::
+	puzzle_info Puzzle_LostWoods1_Name, Puzzle_LostWoods1_Author
+	puzzle_adjective Puzzle_LostWoods1_Adjective
+	puzzle_quip Puzzle_LostWoods1_Quip
+	puzzle_metavars Puzzle_LostWoods1_Variables
+	puzzle_item_prereqs Puzzle_LostWoods1_PrereqItems
+	.byte 0
+
+
+Puzzle_LostWoods1_Name:
+	.string "A Song in the Forest$"
+Puzzle_LostWoods1_Author:
+	.string "Tustin2121$"
+Puzzle_LostWoods1_Adjective:
+	.string "meandering$"
+Puzzle_LostWoods1_Quip:
+	.string "…$"
+.align 2
+Puzzle_LostWoods1_Variables:
+	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_BOY_3 @TODO: Link
+	.2byte 0
+Puzzle_LostWoods1_PrereqItems:
+	.2byte ITEM_SURF_ITEM
+	.2byte 0
+
+@ -----------------------------------------------------
+`
+
+script Puzzle_LostWoods1_Wanderer1 {
+	trainerbattle_single (TRAINER_01,
+			"I'm so lost right now!\n"
+			"Let's battle while I get my bearings!$",
+			"Wow, now I'm even more turned around!$")
+	msgbox ("Is it just me, or does this path\n"
+			"seem familiar to you?\p"
+			"I feel like I've walked it before\n"
+			"in someone else's shoes.$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_LostWoods1_Wanderer2 {
+	msgbox ("I've been wandering in circles for\n"
+			"what feels like hours now…\p"
+			"I've lost count how many times I've\n"
+			"seen that lamppost…$", MSGBOX_NPC)
+}
+
+script Puzzle_LostWoods1_Wanderer3 {
+	trainerbattle_single (TRAINER_02,
+			"AUGH! DON'T HURT ME!$",
+			"Oh! Sorry, I was startled!$")
+	msgbox ("I think I saw something down this path…\p"
+			"Or, was it another path?\n"
+			"I'm getting so spun around in here.$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_LostWoods1_Wanderer4 {
+	trainerbattle_single (TRAINER_03,
+			"I don't know which way to go!$",
+			"I thought maybe a battle would jog my\n"
+			"memory, but it only made me sad.$")
+	msgbox ("I think I've narrowed it down to one\n"
+			"of these too directions.\p"
+			"But I'm a little scared to try one,\n"
+			"in case I end up back at that lamppost!$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_LostWoods1_Mimic {
+	lock
+	faceplayer
+	setwildbattle (SPECIES_ELECTRODE, 30, ITEM_NONE)
+	waitse
+	playmoncry (SPECIES_ELECTRODE, 2)
+	delay (40)
+	waitmoncry
+	setflag (FLAG_SYS_CTRL_OBJ_DELETE)
+	dowildbattle
+	clearflag (FLAG_SYS_CTRL_OBJ_DELETE)
+	if (var(VAR_RESULT) == 1 || var(VAR_RESULT) == 4 || var(VAR_RESULT) == 5) {
+		setflag (FLAG_PUZZLE_4F)
+		goto (Common_EventScript_RemoveLastTalkedObject)
+	}
+	setflag (FLAG_PUZZLE_4F)
+	release
+	end
+}
+
+script Puzzle_LostWoods1_Lamppost {
+	selectpointer_clamp (Puzzle_LostWoods1_Lamppost_TextArray, VAR_PUZZLE_00)
+	msgbox_selected (MSGBOX_SIGN)
+}
+raw `
+.align 2
+Puzzle_LostWoods1_Lamppost_TextArray:
+	.4byte 
+	.4byte 0
+`

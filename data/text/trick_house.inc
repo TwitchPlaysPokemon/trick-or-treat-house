@@ -91,7 +91,7 @@ PuzzleCommon_TextArray_PuzzleIntro_NoItems01:
 PuzzleCommon_TextArray_PuzzleIntro_NoItems02:
 	.string "That last one was a pushover for you,\n"
 	.string "it seems!\p"
-	.string "Let's see how you do with this next\l"
+	.string "Let's see how you do with this next\n"
 	.string "one, a {PUZZLE_ADJECTIVE} kind of\l"
 	.string "puzzle, thought up by {PUZZLE_AUTHOR}.\p"
 	.string "Good luck! Wahahahaha!$"

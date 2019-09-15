@@ -117,8 +117,26 @@
 #define MAP_PUZZLE_LOSS_FLOOR2           (9 | (4 << 8))
 
 // Map Group 5
-#define MAP_PUZZLE_LOST_WOODS_ENTRANCE (0 | (5 << 8))
-#define MAP_PUZZLE_LOST_WOODS_ROOM0    (1 | (5 << 8))
+#define MAP_PUZZLE_LOST_WOODS1_ENTRANCE (0 | (5 << 8))
+#define MAP_PUZZLE_LOST_WOODS2_ENTRANCE (1 | (5 << 8))
+#define MAP_PUZZLE_LOST_WOODS3_ENTRANCE (2 | (5 << 8))
+#define MAP_PUZZLE_LOST_WOODS4_ENTRANCE (3 | (5 << 8))
+#define MAP_LOST_WOODS1_EXIT            (4 | (5 << 8))
+#define MAP_LOST_WOODS2_EXIT            (5 | (5 << 8))
+#define MAP_LOST_WOODS3_EXIT            (6 | (5 << 8))
+#define MAP_LOST_WOODS4_EXIT            (7 | (5 << 8))
+#define MAP_LOST_WOODS1_ROOM0           (8 | (5 << 8))
+#define MAP_LOST_WOODS1_ROOM1           (9 | (5 << 8))
+#define MAP_LOST_WOODS1_ROOM2           (10 | (5 << 8))
+#define MAP_LOST_WOODS1_ROOM3           (11 | (5 << 8))
+#define MAP_LOST_WOODS1_ROOM4           (12 | (5 << 8))
+#define MAP_LOST_WOODS1_ROOM5           (13 | (5 << 8))
+#define MAP_LOST_WOODS1_ROOM6           (14 | (5 << 8))
+#define MAP_LOST_WOODS1_ROOM7           (15 | (5 << 8))
+#define MAP_LOST_WOODS1_ROOM8           (16 | (5 << 8))
+#define MAP_LOST_WOODS1_ROOM9           (17 | (5 << 8))
+#define MAP_LOST_WOODS1_ROOM10          (18 | (5 << 8))
+#define MAP_LOST_WOODS1_UNDERWATER      (19 | (5 << 8))
 
 #define MAP_GROUPS_COUNT 6
 

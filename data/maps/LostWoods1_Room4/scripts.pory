@@ -1,0 +1,14 @@
+raw `
+LostWoods1_Room4_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, LostWoods1_Room4_OnLoad
+	.byte 0
+
+LostWoods1_Room4_OnLoad:
+	setmetatile  9,  8, 0x004, FALSE
+	setmetatile 11,  8, 0x004, FALSE
+	setmetatile  8, 10, 0x004, FALSE
+	setmetatile 12, 10, 0x004, FALSE
+	setmetatile  9, 12, 0x004, FALSE
+	setmetatile 11, 12, 0x004, FALSE
+	end
+`

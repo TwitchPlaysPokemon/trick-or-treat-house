@@ -115,8 +115,26 @@
         "Puzzle_Loss_Floor2"
     ],
     "gMapGroup5": [
-        "Puzzle_LostWoods_Entrance",
-        "Puzzle_LostWoods_Room0"
+        "Puzzle_LostWoods1_Entrance",
+        "Puzzle_LostWoods2_Entrance",
+        "Puzzle_LostWoods3_Entrance",
+        "Puzzle_LostWoods4_Entrance",
+        "LostWoods1_Exit",
+        "LostWoods2_Exit",
+        "LostWoods3_Exit",
+        "LostWoods4_Exit",
+        "LostWoods1_Room0",
+        "LostWoods1_Room1",
+        "LostWoods1_Room2",
+        "LostWoods1_Room3",
+        "LostWoods1_Room4",
+        "LostWoods1_Room5",
+        "LostWoods1_Room6",
+        "LostWoods1_Room7",
+        "LostWoods1_Room8",
+        "LostWoods1_Room9",
+        "LostWoods1_Room10",
+        "LostWoods1_Underwater"
     ],
     "group_order": [
         "gMapGroup0",
