@@ -63,6 +63,9 @@ script Puzzle_WaterTemple_UpdateWaterLevel {
 		if (flag(FLAG_PUZZLE_ITEM_0) == FALSE) {
 			clearflag (FLAG_PUZZLE_40)
 		}
+		if (flag(FLAG_PUZZLE_ITEM_2) == FALSE) {
+			clearflag (FLAG_PUZZLE_42)
+		}
 		if (flag(FLAG_PICKED_UP_SURF_ITEM) == FALSE) {
 			clearflag (FLAG_PUZZLE_41)
 		}
@@ -78,8 +81,14 @@ script Puzzle_WaterTemple_UpdateWaterLevel {
 		setvar (VAR_OBJ_GFX_ID_D, EVENT_OBJ_GFX_SWIMMER_M)
 	} else {
 		# Else show the items
+		if (flag(FLAG_PUZZLE_ITEM_1) == FALSE) {
+			clearflag (FLAG_PUZZLE_41)
+		}
 		if (flag(FLAG_PUZZLE_ITEM_3) == FALSE) {
 			clearflag (FLAG_PUZZLE_43)
+		}
+		if (flag(FLAG_PUZZLE_ITEM_4) == FALSE) {
+			clearflag (FLAG_PUZZLE_44)
 		}
 		clearflag (FLAG_PUZZLE_4F)
 		setvar (VAR_OBJ_GFX_ID_F, EVENT_OBJ_GFX_TUBER_M)
@@ -458,6 +467,10 @@ script Puzzle_WaterTemple_ItemBall2 {
 script Puzzle_WaterTemple_ItemBall3 {
 	setflag (FLAG_PUZZLE_ITEM_3)
 	goto (Common_EventScript_ItemPotion)
+}
+script Puzzle_WaterTemple_ItemBall4 {
+	setflag (FLAG_PUZZLE_ITEM_4)
+	goto (Common_EventScript_ItemRevive)
 }
 
 # -----------------------------------------------------
