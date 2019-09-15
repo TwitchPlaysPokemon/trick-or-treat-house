@@ -1,6 +1,7 @@
 const struct SpritePalette gFieldEffectObjectPaletteInfo0 = {gFieldEffectObjectPalette0, 0x1004};
 
 const struct SpritePalette gFieldEffectObjectPaletteInfo1 = {gFieldEffectObjectPalette1, 0x1005};
+const struct SpritePalette gFieldEffectObjectPaletteInfoFall = {gFieldEffectObjectPaletteFall, 0x100A};
 
 const union AnimCmd gFieldEffectObjectImageAnim_850C9D0[] =
 {
@@ -61,6 +62,7 @@ const union AnimCmd *const gFieldEffectObjectImageAnimTable_TallGrass[] =
 };
 
 const struct SpriteTemplate gFieldEffectObjectTemplate_TallGrass = {0xFFFF, 0x1005, &gEventObjectBaseOam_16x16, gFieldEffectObjectImageAnimTable_TallGrass, gFieldEffectObjectPicTable_TallGrass, gDummySpriteAffineAnimTable, UpdateTallGrassFieldEffect};
+const struct SpriteTemplate gFieldEffectObjectTemplate_FallGrass = {0xFFFF, 0x100A, &gEventObjectBaseOam_16x16, gFieldEffectObjectImageAnimTable_TallGrass, gFieldEffectObjectPicTable_TallGrass, gDummySpriteAffineAnimTable, UpdateFallGrassFieldEffect};
 
 const struct SpriteFrameImage gFieldEffectObjectPicTable_Ripple[] = {
     overworld_frame(gFieldEffectObjectPic_Ripple, 2, 2, 0),

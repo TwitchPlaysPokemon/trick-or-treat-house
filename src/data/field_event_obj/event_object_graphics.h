@@ -38,6 +38,7 @@ const u16 gFieldEffectObjectPalette1[] = INCBIN_U16("graphics/event_objects/pale
 const u16 gFieldEffectObjectPalette2[] = INCBIN_U16("graphics/event_objects/palettes/field_effect_object_palette_02.gbapal");
 const u16 gFieldEffectObjectPalette3[] = INCBIN_U16("graphics/event_objects/palettes/field_effect_object_palette_03.gbapal");
 const u16 gFieldEffectObjectPalette6[] = INCBIN_U16("graphics/event_objects/palettes/field_effect_object_palette_06.gbapal");
+const u16 gFieldEffectObjectPaletteFall[] = INCBIN_U16("graphics/event_objects/palettes/field_effect_object_palette_fall.gbapal");
 const u16 gUnusedEventObjectPalette[] = INCBIN_U16("graphics/event_objects/palettes/unused_palette.gbapal");
 const u16 gEventObjectPaletteTrickHouse[] = INCBIN_U16("graphics/event_objects/palettes/field_object_palette_trickhouse.gbapal");
 const u16 gFieldEffectObjectEmoteNotePalette[] = INCBIN_U16("graphics/misc/emotion_note_c.gbapal");
