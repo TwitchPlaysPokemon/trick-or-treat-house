@@ -1,6 +1,9 @@
+@ The Master Puzzle List
+@ This should be organized in the order of presentation. There should be
+@ a slow rising level of difficulty of the puzzle, but also there should
+@ be easy puzzles after particularly hard puzzles for a bit of respite.
 .align 2												@ Estimated Challenge Ratings out of 10
 gPuzzleList::											@ TPP / Single Player
-	.2byte MAP_EMPTY_PUZZLE								@ [Debug]
 	.2byte MAP_PUZZLE_TRICK_HOUSE_CUT					@  2 / 2
 	.2byte MAP_PUZZLE_TRICK_HOUSE_TRAPDOORS				@  2 / 2
 	.2byte MAP_PUZZLE_LOST_WOODS1_ENTRANCE              @  3 / 2
@@ -10,4 +13,11 @@ gPuzzleList::											@ TPP / Single Player
 	.2byte MAP_PUZZLE_LEDGE_MOUNTAIN					@  8 / 4
 	.2byte MAP_PUZZLE_WILKE								@ 10 / 8
 	.2byte MAP_PUZZLE_LOSS_FLOOR1                       @  1 / 1
+	.2byte 0xFFFF
+
+@ Below puzzles don't appear in the main puzzle list, and must be accessed
+@ from the dev room.
+.align 2
+gDebugPuzzles::
+	.2byte MAP_EMPTY_PUZZLE
 	.2byte 0xFFFF

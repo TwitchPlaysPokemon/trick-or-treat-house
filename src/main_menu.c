@@ -193,6 +193,7 @@ static void HighlightSelectedMainMenuItem(u8, u8, s16);
 static void Task_HandleMainMenuInput(u8);
 static void Task_HandleMainMenuAPressed(u8);
 static void Task_HandleMainMenuBPressed(u8);
+static void Task_NewGameSkipSpeech(u8);
 static void Task_NewGameBirchSpeech_Init(u8);
 static void Task_DisplayMainMenuInvalidActionError(u8);
 static void AddBirchSpeechObjects(u8);
@@ -1062,7 +1063,11 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
             default:
                 gPlttBufferUnfaded[0] = RGB_BLACK;
                 gPlttBufferFaded[0] = RGB_BLACK;
-                gTasks[taskId].func = Task_NewGameBirchSpeech_Init;
+                #if DEBUG
+                    gTasks[taskId].func = Task_NewGameSkipSpeech;
+                #else
+                    gTasks[taskId].func = Task_NewGameBirchSpeech_Init;
+                #endif
                 break;
             case ACTION_CONTINUE:
                 gPlttBufferUnfaded[0] = RGB_BLACK;
@@ -1264,6 +1269,36 @@ static void HighlightSelectedMainMenuItem(u8 menuType, u8 selectedMenuItem, s16 
 #define tLotadSpriteId data[9]
 #define tBrendanSpriteId data[10]
 #define tMaySpriteId data[11]
+
+// DEBUG
+extern u16 gTrainerId;
+extern void SeedRngWithRtc(void);
+static void Task_NewGameSkipSpeech(u8 taskId)
+{
+    SetGpuReg(REG_OFFSET_DISPCNT, 0);
+    SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_OBJ_ON | DISPCNT_OBJ_1D_MAP);
+    SetGpuReg(REG_OFFSET_WIN0H, 0);
+    SetGpuReg(REG_OFFSET_WIN0V, 0);
+    SetGpuReg(REG_OFFSET_WININ, 0);
+    SetGpuReg(REG_OFFSET_WINOUT, 0);
+    SetGpuReg(REG_OFFSET_BLDCNT, 0);
+    SetGpuReg(REG_OFFSET_BLDALPHA, 0);
+    SetGpuReg(REG_OFFSET_BLDY, 0);
+    
+    SeedRngWithRtc();
+    {
+        u16 rng = Random();
+        gSaveBlock2Ptr->playerGender = (rng & 0xFF) % 2;
+        NewGameBirchSpeech_SetDefaultPlayerName((rng >> 8) % 20);
+        gTrainerId = Random();
+    }
+    
+    FadeOutBGM(4);
+    FreeAllWindowBuffers();
+    ResetAllPicSprites();
+    SetMainCallback2(CB2_NewGame);
+    DestroyTask(taskId);
+}
 
 static void Task_NewGameBirchSpeech_Init(u8 taskId)
 {

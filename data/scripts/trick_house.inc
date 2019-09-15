@@ -16,7 +16,7 @@ PuzzleCommon_DefaultTeardownScript::
 PuzzleDebug_EventScript_ShowPuzzleSelect::
 	lockall
 	playse SE_SELECT
-	message PuzzleDebug_Text_PuzzleSelect
+	message3 PuzzleDebug_Text_PuzzleSelect
 	waitmessage
 	callnative ShowPuzzleSelect
 	waitstate @ script pauses here until manually reenabled
@@ -24,7 +24,8 @@ PuzzleDebug_EventScript_ShowPuzzleSelect::
 	releaseall
 	end
 PuzzleDebug_Text_PuzzleSelect:
-	.string "Select puzzle index$"
+	.string "Select puzzle index.\n"
+	.string "{START_BUTTON} Switch Debug/Main Puzzles$"
 
 @ -----------------------------------------------------
 

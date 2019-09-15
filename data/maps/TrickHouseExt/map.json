@@ -183,7 +183,7 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_HIDE_DEBUG_OBJECTS",
             "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_SCROLL",
             "movement_range_x": 0,
             "movement_range_y": 0,

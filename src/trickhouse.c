@@ -38,13 +38,30 @@ static void Task_PuzzleSelect(u8 taskId);
 static void GenerateRentalMons(void);
 
 extern const u16 gPuzzleList[];
+extern const u16 gDebugPuzzles[];
+#define DEBUG_PUZZLE_START 32768
+
+///////////////////////////////////////////////////////////////////////////////
+
+u16 GetCurrentPuzzleMapId()
+{
+#if DEBUG
+	u16 i = VarGet(VAR_CURRENT_PUZZLE);
+	if (i < DEBUG_PUZZLE_START)
+		return gPuzzleList[i];
+	else
+		return gDebugPuzzles[i-DEBUG_PUZZLE_START];
+#else
+	return gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+#endif
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 
 extern const u8 PuzzleCommon_DefaultSetupScript[];
 void RunPuzzleSetupScript()
 {
-	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	u16 currPuzzle = GetCurrentPuzzleMapId();
 	if (!FlagGet(FLAG_IS_PUZZLE_SETUP) &&
 	    gSaveBlock1Ptr->location.mapGroup == (currPuzzle >> 8) &&
 		gSaveBlock1Ptr->location.mapNum == (currPuzzle & 0xFF))
@@ -68,7 +85,7 @@ void RunPuzzleTeardownScript()
 	if (FlagGet(FLAG_IS_PUZZLE_SETUP) &&
 	    gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(TRICK_HOUSE_END))
 	{
-		u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+		u16 currPuzzle = GetCurrentPuzzleMapId();
 		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_TEARDOWN_SCRIPT);
 		if (script != NULL)
 		{
@@ -90,14 +107,15 @@ void ClearPuzzleEventData(struct ScriptContext *ctx)
 
 void SetupPuzzleWarp(struct ScriptContext *ctx)
 {
-	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	u16 currPuzzle = GetCurrentPuzzleMapId();
+	if (currPuzzle == 0xFFFF) currPuzzle = MAP_TRICK_HOUSE_END; //sanity check
 	SetDynamicWarp(0, currPuzzle >> 8, currPuzzle & 0xFF, 0);
 }
 
 extern const u8 PuzzleCommon_Text_FirstPuzzleIntro[];
 void LoadPuzzleIntro(struct ScriptContext *ctx)
 {
-	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	u16 currPuzzle = GetCurrentPuzzleMapId();
 	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_CUSTOM_INTRO);
 	// Set up for generic no-item intro
 	ctx->data[0] = 0;
@@ -128,7 +146,7 @@ void LoadPuzzleIntro(struct ScriptContext *ctx)
 extern const u8 PuzzleCommon_Text_DefaultQuip[];
 void ShowPuzzleQuip(struct ScriptContext *ctx)
 {
-	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	u16 currPuzzle = GetCurrentPuzzleMapId();
 	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_QUIP);
 	if (str == NULL)
 	{
@@ -140,7 +158,7 @@ void ShowPuzzleQuip(struct ScriptContext *ctx)
 extern const u8 PuzzleCommon_DefaultVariableAssignments[];
 void AssignPuzzleMetaVariables(struct ScriptContext *ctx)
 {
-	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	u16 currPuzzle = GetCurrentPuzzleMapId();
 	const u16 *array = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_META_VARIABLES);
 	
 	// Reset introducer to trick master by default
@@ -164,7 +182,7 @@ void GiveItemPrerequisites(struct ScriptContext *ctx)
 	u8 *ptr = gStringVar1; 
 	// Note: This function might also overwrite string vars 2 and 3 as well, depending on how many items we give.
 	u8 itemCount = 0;
-	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	u16 currPuzzle = GetCurrentPuzzleMapId();
 	const u16 *array = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_PREREQ_LIST);
 	
 	gSpecialVar_Result = 0;
@@ -200,7 +218,7 @@ void RemovePuzzleItems(struct ScriptContext *ctx)
 {
 	u8 *ptr = gStringVar1;
 	u8 itemCount = 0;
-	u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+	u16 currPuzzle = GetCurrentPuzzleMapId();
 	const u16 *array = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_POST_LIST);
 	gSpecialVar_Result = FALSE;
 	
@@ -318,7 +336,8 @@ static void GenerateRentalMons(void)
 // Puzzle Select Dialog
 
 extern void LoadMapNamePopUpWindowBg(void);
-const u8 sPuzzleText[] = _("{NO}: {STR_VAR_1}");
+const u8 sPuzzleText[] = _(" Pz {NO}: {STR_VAR_1}  ");
+const u8 sDebugPuzzleText[] = _(" Db {NO}: {STR_VAR_1}  ");
 extern const u8 PuzzleCommon_Text_UntitledPuzzleName[];
 static const struct WindowTemplate sPuzzleSelectWinTemplate =
 {
@@ -331,14 +350,14 @@ static const struct WindowTemplate sPuzzleSelectWinTemplate =
 	.baseBlock = 0x0176,
 };
 
-static void ShowMapNamePopUpWindow(u16 num)
+static void ShowMapNamePopUpWindow(u16 num, bool8 mode)
 {
     u8 mapDisplayHeader[0x100];
     u8 *withoutPrefixPtr;
     u8 x;
     const u8* mapDisplayHeaderSource;
+	u16 currPuzzle = (mode) ? gDebugPuzzles[num-1] : gPuzzleList[num-1];
 
-	u16 currPuzzle = gPuzzleList[num-1];
 	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_NAME);
 	if (str == NULL)
 		str = PuzzleCommon_Text_UntitledPuzzleName;
@@ -356,33 +375,49 @@ static void ShowMapNamePopUpWindow(u16 num)
 }
 
 
-static void RedrawPuzzleSelectWindow(u8 windowId, u16 num)
+static void RedrawPuzzleSelectWindow(u8 windowId, u16 num, bool8 mode)
 {
-	const u8* txt = sPuzzleText;
+	const u8* txt = (mode)? sDebugPuzzleText : sPuzzleText;
 	
 	ConvertIntToDecimalStringN(gStringVar1, num, 2, 3);
     StringExpandPlaceholders(gStringVar3, txt);
     AddTextPrinterParameterized(windowId, 1, gStringVar3, 0, 1, 0, NULL);
 	
-	ShowMapNamePopUpWindow(num);
+	ShowMapNamePopUpWindow(num, mode);
 }
 
 #define tWindow data[0]
 #define tSelected data[1]
 #define tMax data[2]
+#define tMainMax data[3]
+#define tDebugMax data[4]
+#define tMode data[5]
 
 static void Task_InitPuzzleSelect(u8 taskId)
 {
 	u16 i;
     s16 *data = gTasks[taskId].data;
 	
-	for (i = 0; i < 65535; i++) 
+	for (i = 0; i < DEBUG_PUZZLE_START; i++) 
 	{
 		if (gPuzzleList[i] == 0xFFFF) break;
 	}
+	tMainMax = i;
 	
-	tSelected = VarGet(VAR_CURRENT_PUZZLE) + 1;
-	tMax = i;
+	for (i = 0; i < DEBUG_PUZZLE_START; i++) 
+	{
+		if (gDebugPuzzles[i] == 0xFFFF) break;
+	}
+	tDebugMax = i;
+	
+	if (VarGet(VAR_CURRENT_PUZZLE) < DEBUG_PUZZLE_START) {
+		tSelected = VarGet(VAR_CURRENT_PUZZLE) + 1;
+		tMode = 0;
+	} else {
+		tSelected = VarGet(VAR_CURRENT_PUZZLE) - DEBUG_PUZZLE_START + 1;
+		tMode = 1;
+	}
+	tMax = tMainMax;
 	tWindow = AddWindow(&sPuzzleSelectWinTemplate);
  
 	AddMapNamePopUpWindow();
@@ -390,7 +425,7 @@ static void Task_InitPuzzleSelect(u8 taskId)
 	
     DrawStdWindowFrame(tWindow, FALSE);
 	FillWindowPixelBuffer(tWindow, PIXEL_FILL(1));
-	RedrawPuzzleSelectWindow(tWindow, tSelected);
+	RedrawPuzzleSelectWindow(tWindow, tSelected, tMode);
     schedule_bg_copy_tilemap_to_vram(0);
 
     gTasks[taskId].func = Task_PuzzleSelect;
@@ -402,16 +437,30 @@ static void Task_PuzzleSelect(u8 taskId)
 
     if (AdjustQuantityAccordingToDPadInput(&tSelected, tMax) == TRUE)
     {
-        RedrawPuzzleSelectWindow(tWindow, tSelected);
+        RedrawPuzzleSelectWindow(tWindow, tSelected, tMode);
     }
     else if (gMain.newKeys & A_BUTTON)
     {
-        VarSet(VAR_CURRENT_PUZZLE, tSelected-1);
+		if (tMode)
+        	VarSet(VAR_CURRENT_PUZZLE, tSelected-1+DEBUG_PUZZLE_START);
+		else
+			VarSet(VAR_CURRENT_PUZZLE, tSelected-1);
 		goto exit;
     }
     else if (gMain.newKeys & B_BUTTON)
 	{
 		goto exit;
+	}
+    else if (gMain.newKeys & START_BUTTON)
+	{
+		tMode = !tMode;
+		if (tMode)
+			tMax = tDebugMax;
+		else
+			tMax = tMainMax;
+		tSelected = 1;
+		AdjustQuantityAccordingToDPadInput(&tSelected, tMax);
+		RedrawPuzzleSelectWindow(tWindow, tSelected, tMode);
 	}
 	return;
 	
@@ -428,7 +477,9 @@ exit:
 
 void ShowPuzzleSelect(struct ScriptContext *ctx)
 {
+#if DEBUG
 	CreateTask(Task_InitPuzzleSelect, 0);
+#endif
 }
 
 

@@ -3,6 +3,7 @@
 #include "event_data.h"
 #include "text.h"
 #include "script.h"
+#include "trickhouse.h"
 #include "constants/map_scripts.h"
 #include "constants/vars.h"
 
@@ -461,11 +462,10 @@ static const u8 *ExpandPlaceholder_TrickMaster(void)
     return gText_TrickMasterShiny;
 }
 
-extern const u16 gPuzzleList[];
 extern const u8 PuzzleCommon_Text_UntitledPuzzleName[];
 static const u8 *ExpandPlaceholder_PuzzleName(void)
 {
-    u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+    u16 currPuzzle = GetCurrentPuzzleMapId();
 	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_NAME);
 	if (str == NULL)
 	{
@@ -477,7 +477,7 @@ static const u8 *ExpandPlaceholder_PuzzleName(void)
 extern const u8 PuzzleCommon_Text_DefaultAuthor[];
 static const u8 *ExpandPlaceholder_PuzzleAuthor(void)
 {
-    u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+    u16 currPuzzle = GetCurrentPuzzleMapId();
 	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_AUTHOR);
 	if (str == NULL)
 	{
@@ -489,7 +489,7 @@ static const u8 *ExpandPlaceholder_PuzzleAuthor(void)
 extern const u8 PuzzleCommon_Text_DefaultAdjective[];
 static const u8 *ExpandPlaceholder_PuzzleAdjective(void)
 {
-    u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+    u16 currPuzzle = GetCurrentPuzzleMapId();
 	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_ADJECTIVE);
 	if (str == NULL)
 	{
@@ -501,7 +501,7 @@ static const u8 *ExpandPlaceholder_PuzzleAdjective(void)
 extern const u8 PuzzleCommon_Text_DefaultQuip[];
 static const u8 *ExpandPlaceholder_PuzzleQuip(void)
 {
-    u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+    u16 currPuzzle = GetCurrentPuzzleMapId();
 	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_QUIP);
 	if (str == NULL)
 	{

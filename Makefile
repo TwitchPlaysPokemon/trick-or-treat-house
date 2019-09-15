@@ -24,6 +24,10 @@ endif
 export CPP := $(PREFIX)cpp
 export LD := $(PREFIX)ld
 
+# Build Variables
+DEBUG			?= 1
+TPP_MODE		?= 1
+
 ifeq ($(OS),Windows_NT)
 EXE := .exe
 EXE2 := .exe
@@ -60,7 +64,7 @@ DATA_ASM_BUILDDIR = $(OBJ_DIR)/$(DATA_ASM_SUBDIR)
 SONG_BUILDDIR = $(OBJ_DIR)/$(SONG_SUBDIR)
 MID_BUILDDIR = $(OBJ_DIR)/$(MID_SUBDIR)
 
-ASFLAGS := -mcpu=arm7tdmi --defsym MODERN=$(MODERN)
+ASFLAGS := -mcpu=arm7tdmi --defsym MODERN=$(MODERN) --defsym DEBUG=$(DEBUG) --defsym TPP_MODE=$(TPP_MODE)
 
 GCC_VER = $(shell $(CC) -dumpversion)
 
@@ -78,7 +82,7 @@ OBJ_DIR := build/modern
 LIBPATH := -L $(TOOLCHAIN)/lib/gcc/arm-none-eabi/$(GCC_VER)/thumb -L $(TOOLCHAIN)/arm-none-eabi/lib/thumb
 endif
 
-CPPFLAGS := -iquote include -Wno-trigraphs -DMODERN=$(MODERN)
+CPPFLAGS := -iquote include -Wno-trigraphs -DMODERN=$(MODERN) -DDEBUG=$(DEBUG) -DTPP_MODE=$(TPP_MODE)
 ifeq ($(MODERN),0)
 CPPFLAGS += -I tools/agbcc/include -I tools/agbcc
 endif

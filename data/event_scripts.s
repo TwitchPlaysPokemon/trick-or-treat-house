@@ -372,6 +372,9 @@ EventScript_ResetAllBerries:: @ 827149D
 EventScript_ResetAllMapFlags:: @ 82715DE
 	setrespawn HEAL_LOCATION_TRICK_HOUSE_EXT
 	setflag FLAG_SYS_B_DASH
+	.if !DEBUG
+	setflag FLAG_HIDE_DEBUG_OBJECTS
+	.endif
 	call EventScript_ResetAllBerries
 	giveitem ITEM_POTION, 5
 	giveitem ITEM_ANTIDOTE, 2
