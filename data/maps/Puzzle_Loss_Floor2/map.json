@@ -1,0 +1,187 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "NULL",
+            "type": "sign",
+            "x": 11,
+            "y": 3
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "Puzzle_Loss_Floor2_SignScript_Locked",
+            "type": "sign",
+            "x": 12,
+            "y": 3
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "Puzzle_Loss_Floor2_SignScript_Locked",
+            "type": "sign",
+            "x": 16,
+            "y": 3
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "Puzzle_Loss_Floor2_SignScript_Locked",
+            "type": "sign",
+            "x": 14,
+            "y": 6
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "Puzzle_Loss_Floor2_SignScript_Locked",
+            "type": "sign",
+            "x": 18,
+            "y": 6
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "Puzzle_Loss_Floor2_SignScript_OptionallyLocked",
+            "type": "sign",
+            "x": 14,
+            "y": 2
+        }
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_PUZZLE_LOSS_FLOOR2",
+    "layout": "LAYOUT_TRIHARD_POKEMON_CENTER_2F",
+    "map_type": "MAP_TYPE_INDOOR",
+    "music": "MUS_POKECEN",
+    "name": "Puzzle_Loss_Floor2",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_STONE",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "PuzzleCommon_EventScript_ExitDoorObject",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "5",
+            "x": 4,
+            "y": 1
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_GIRL_1",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+            "script": "PuzzleCommon_EventScript_Scroll",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 16,
+            "y": 26
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TEALA",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Puzzle_Loss_Floor2_EventScript_Teala",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 8,
+            "y": 2
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_TEMP_10",
+            "graphics_id": "EVENT_OBJ_GFX_SCIENTIST_1",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "Puzzle_Loss_Floor2_EventScript_Man",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 9,
+            "y": 4
+        }
+    ],
+    "region_map_section": "MAPSEC_PETALBURG_CITY",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_PUZZLE_LOSS_FLOOR1",
+            "dest_warp_id": 1,
+            "elevation": 0,
+            "x": 1,
+            "y": 4
+        },
+        {
+            "dest_map": "MAP_PUZZLE_LOSS_FLOOR2",
+            "dest_warp_id": 8,
+            "elevation": 0,
+            "x": 14,
+            "y": 3
+        },
+        {
+            "dest_map": "MAP_PUZZLE_LOSS_FLOOR2",
+            "dest_warp_id": 6,
+            "elevation": 0,
+            "x": 12,
+            "y": 5
+        },
+        {
+            "dest_map": "MAP_PUZZLE_LOSS_FLOOR2",
+            "dest_warp_id": 7,
+            "elevation": 0,
+            "x": 16,
+            "y": 5
+        },
+        {
+            "dest_map": "MAP_PUZZLE_LOSS_FLOOR2",
+            "dest_warp_id": 5,
+            "elevation": 0,
+            "x": 18,
+            "y": 3
+        },
+        {
+            "dest_map": "MAP_PUZZLE_LOSS_FLOOR2",
+            "dest_warp_id": 4,
+            "elevation": 0,
+            "x": 4,
+            "y": 18
+        },
+        {
+            "dest_map": "MAP_PUZZLE_LOSS_FLOOR2",
+            "dest_warp_id": 2,
+            "elevation": 0,
+            "x": 14,
+            "y": 16
+        },
+        {
+            "dest_map": "MAP_PUZZLE_LOSS_FLOOR2",
+            "dest_warp_id": 3,
+            "elevation": 0,
+            "x": 4,
+            "y": 25
+        },
+        {
+            "dest_map": "MAP_PUZZLE_LOSS_FLOOR2",
+            "dest_warp_id": 1,
+            "elevation": 0,
+            "x": 14,
+            "y": 27
+        }
+    ],
+    "weather": "WEATHER_SUNNY"
+}

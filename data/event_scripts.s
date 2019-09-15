@@ -6223,4 +6223,14 @@ EventScript_PlayerPCFemale::
 	.include "data/text/birch_speech.inc"
 
 
+
 	.include "data/maps/LostWoods1_Underwater/scripts.inc"
+
+	.include "data/maps/TestMirrorMovement/scripts.inc"
+
+	.include "data/maps/TestCopyMovement/scripts.inc"
+
+	.include "data/maps/Puzzle_Loss_Floor1/scripts.inc"
+
+	.include "data/maps/Puzzle_Loss_Floor2/scripts.inc"
+

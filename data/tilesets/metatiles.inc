@@ -586,3 +586,11 @@ gMetatiles_Autumn::
 	.align 1
 gMetatileAttributes_Autumn::
 	.incbin "data/tilesets/primary/autumn/metatile_attributes.bin"
+
+	.align 1
+gMetatiles_TrihardPokemonCenter:: @ 83B1060
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_TrihardPokemonCenter:: @ 83B1EE0
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/metatile_attributes.bin"
