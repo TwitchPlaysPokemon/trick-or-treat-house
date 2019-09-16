@@ -417,6 +417,8 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         return PuzzleCommon_EventScript_ExitDoorMetatile;
     if (MetatileBehavior_IsRegionMap(metatileBehavior) == TRUE)
         return EventScript_RegionMap;
+    if (MetatileBehavior_IsPumpkin(metatileBehavior) == TRUE)
+        return EventScript_Pumpkin;
     if (MetatileBehavior_IsPictureBookShelf(metatileBehavior) == TRUE)
         return EventScript_PictureBookShelf;
     if (MetatileBehavior_IsBookShelf(metatileBehavior) == TRUE)

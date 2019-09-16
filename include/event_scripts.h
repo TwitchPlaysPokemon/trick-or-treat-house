@@ -537,6 +537,7 @@ extern const u8 EventScript_2759F1[];
 extern const u8 EventScript_TV[];
 extern const u8 PuzzleCommon_EventScript_ExitDoorMetatile[];
 extern const u8 EventScript_RegionMap[];
+extern const u8 EventScript_Pumpkin[];
 extern const u8 EventScript_PictureBookShelf[];
 extern const u8 EventScript_BookShelf[];
 extern const u8 EventScript_PokemonCenterBookShelf[];
