@@ -26,6 +26,8 @@ EWRAM_DATA u16 gSpecialVar_MonBoxPos = 0;
 EWRAM_DATA u16 gSpecialVar_Unused_0x8014 = 0;
 EWRAM_DATA u16 gSpecialVar_InteractX = 0;
 EWRAM_DATA u16 gSpecialVar_InteractY = 0;
+EWRAM_DATA u16 gSpecialVar_MetatileX = 0;
+EWRAM_DATA u16 gSpecialVar_MetatileY = 0;
 EWRAM_DATA u16 gSpecialVar_LastWarpId = 0;
 EWRAM_DATA static u8 gSpecialFlags[16] = {0};
 

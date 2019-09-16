@@ -56,6 +56,8 @@ gSpecialVars:: @ 81DBA0C
 	.4byte gTrainerBattleOpponent_A
 	.4byte gSpecialVar_InteractX
 	.4byte gSpecialVar_InteractY
+	.4byte gSpecialVar_MetatileX
+	.4byte gSpecialVar_MetatileY
 	.4byte gSpecialVar_LastWarpId
 
 	.include "data/specials.inc"
@@ -130,6 +132,10 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/LedgeMountain_Support/scripts.inc"
 	
 	.include "data/maps/Puzzle_Wilke/scripts.inc"
+	
+	@ -------------------------------------------------
+	
+	.include "data/maps/TrickTreat_PetalburgCity/scripts.inc"
 	
 	@ -------------------------------------------------
 	

@@ -335,6 +335,9 @@ STR_VAR_2      = FD 03
 STR_VAR_3      = FD 04
 POKEMON        = FD 05
 TRICK_MASTER   = FD 06
+RIVAL          = FD 07
+YOUNGSTER      = FD 08
+WALLY          = FD 09
 
 PUZZLE_NAME       = FD 10
 PUZZLE_AUTHOR     = FD 11

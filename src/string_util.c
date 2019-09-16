@@ -450,16 +450,28 @@ static const u8 *ExpandPlaceholder_RivalName(void)
         return gExpandedPlaceholder_Brendan;
 }
 
-extern const u8 gText_Pokemon[];
+extern const u8 gExpandedPlaceholder_Pokemon[];
 static const u8 *ExpandPlaceholder_Pokemon(void)
 {
-    return gText_Pokemon;
+    return gExpandedPlaceholder_Pokemon;
 }
 
-extern const u8 gText_TrickMasterShiny[];
+extern const u8 gExpandedPlaceholder_TrickMasterShiny[];
 static const u8 *ExpandPlaceholder_TrickMaster(void)
 {
-    return gText_TrickMasterShiny;
+    return gExpandedPlaceholder_TrickMasterShiny;
+}
+
+extern const u8 gExpandedPlaceholder_Youngster[];
+static const u8 *ExpandPlaceholder_Youngster(void)
+{
+    return gExpandedPlaceholder_Youngster;
+}
+
+extern const u8 gExpandedPlaceholder_Wally[];
+static const u8 *ExpandPlaceholder_Wally(void)
+{
+    return gExpandedPlaceholder_Wally;
 }
 
 extern const u8 PuzzleCommon_Text_UntitledPuzzleName[];
@@ -523,9 +535,9 @@ const u8 *GetExpandedPlaceholder(u32 id)
         ExpandPlaceholder_StringVar3,  // 04
         ExpandPlaceholder_Pokemon,
         ExpandPlaceholder_TrickMaster,
-        ExpandPlaceholder_Empty,
-        ExpandPlaceholder_Empty,
-        ExpandPlaceholder_Empty,       // 09
+        ExpandPlaceholder_RivalName,
+        ExpandPlaceholder_Youngster,
+        ExpandPlaceholder_Wally,       // 09
         ExpandPlaceholder_Empty,       // 0A
         ExpandPlaceholder_Empty,
         ExpandPlaceholder_Empty,

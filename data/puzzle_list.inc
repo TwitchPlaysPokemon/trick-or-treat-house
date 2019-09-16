@@ -12,7 +12,6 @@ gPuzzleList::											@ TPP / Single Player
 	.2byte MAP_PUZZLE_MUSIC_NOTE_TILES					@  6 / 3
 	.2byte MAP_PUZZLE_LEDGE_MOUNTAIN					@  8 / 4
 	.2byte MAP_PUZZLE_WILKE								@ 10 / 8
-	.2byte MAP_PUZZLE_LOSS_FLOOR1                       @  1 / 1
 	.2byte 0xFFFF
 
 @ Below puzzles don't appear in the main puzzle list, and must be accessed
@@ -20,4 +19,6 @@ gPuzzleList::											@ TPP / Single Player
 .align 2
 gDebugPuzzles::
 	.2byte MAP_EMPTY_PUZZLE
+	.2byte MAP_PUZZLE_LOSS_FLOOR1                       @  1 / 1
+	.2byte MAP_TRICK_TREAT_PETALBURG_CITY
 	.2byte 0xFFFF

@@ -264,10 +264,16 @@ TrickHouseCorridor_TriggerScript_RunIntro_TrickMasterOut:
 TrickHouseCorridor_TriggerScript_RunIntro_CompanionLeaves:
 	@ Player approaches door
 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkUp2
+	applymovement LID_MASTER, Common_Movement_WalkUp2
 	waitmovement 0
 	@ Open the door to the puzzle
 	opendoor 22, 2
 	waitdooranim
+	@ intro character walks through
+	applymovement LID_MASTER, TrickHouseCorridor_Movement_OtherLeaves
+	waitmovement 0
+	removeobject LID_MASTER
+	playse SE_KAIDAN
 	return
 
 
@@ -281,6 +287,13 @@ TrickHouseCorridor_Movement_RunIntro2:
 	walk_right
 	walk_up
 	walk_right
+	step_end
+TrickHouseCorridor_Movement_OtherLeaves:
+	walk_up
+	walk_left
+	walk_up
+	walk_up
+	set_invisible
 	step_end
 	
 

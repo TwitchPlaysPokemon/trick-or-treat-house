@@ -214,3 +214,38 @@ PuzzleCommon_Movement_TrickMasterWarpAway2:
 	slide_up
 	step_end
 
+@ -----------------------------------------------------
+
+PuzzleCommon_EventScript_StandingCandyGiverLeave::
+	closemessage
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceUp
+	waitmovement 0
+	subvar VAR_METATILE_Y, 1
+	opendoor VAR_METATILE_X, VAR_METATILE_Y
+	waitdooranim
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkUp1
+	waitmovement 0
+	playse SE_KAIDAN
+	removeobject VAR_LAST_TALKED
+	closedoor VAR_METATILE_X, VAR_METATILE_Y
+	waitdooranim
+	delay 10
+	return
+
+PuzzleCommon_EventScript_DoorCandyGiverShow::
+	opendoor VAR_METATILE_X, VAR_METATILE_Y
+	waitdooranim
+	applymovement VAR_LAST_TALKED, Common_Movement_SetVisible
+	waitmovement 0
+	delay 10
+	return
+PuzzleCommon_EventScript_DoorCandyGiverHide::
+	closemessage
+	removeobject VAR_LAST_TALKED
+	closedoor VAR_METATILE_X, VAR_METATILE_Y
+	waitdooranim
+	delay 10
+	setvar VAR_METATILE_X, 0
+	return
+	
+	

@@ -50,6 +50,15 @@ struct BackupMapLayout
     u16 *map;
 };
 
+enum
+{
+    TrainerType_None = 0,
+    TrainerType_Normal = 1,
+    TrainerType_SeeAllDirs = 3,
+    TrainerType_BumpToInteract = 5,
+    TrainerType_KeepLoaded = 6,
+};
+
 struct EventObjectTemplate
 {
     /*0x00*/ u8 localId;
@@ -268,18 +277,18 @@ enum
     ACRO_BIKE_STATE6,
 };
 
-enum
-{
-    DIR_NONE,
-    DIR_SOUTH,
-    DIR_NORTH,
-    DIR_WEST,
-    DIR_EAST,
-    DIR_SOUTHWEST,
-    DIR_SOUTHEAST,
-    DIR_NORTHWEST,
-    DIR_NORTHEAST,
-};
+// enum
+// {
+//     DIR_NONE,
+//     DIR_SOUTH,
+//     DIR_NORTH,
+//     DIR_WEST,
+//     DIR_EAST,
+//     DIR_SOUTHWEST,
+//     DIR_SOUTHEAST,
+//     DIR_NORTHWEST,
+//     DIR_NORTHEAST,
+// };
 
 enum
 {

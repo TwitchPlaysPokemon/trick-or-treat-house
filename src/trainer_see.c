@@ -246,7 +246,7 @@ bool8 CheckForTrainersWantingBattle(void)
 
         if (!gEventObjects[i].active)
             continue;
-        if (gEventObjects[i].trainerType != 1 && gEventObjects[i].trainerType != 3)
+        if (gEventObjects[i].trainerType != TrainerType_Normal && gEventObjects[i].trainerType != TrainerType_SeeAllDirs)
             continue;
 
         retVal = CheckTrainer(i);
@@ -350,7 +350,7 @@ static u8 GetTrainerApproachDistance(struct EventObject *trainerObj)
     u8 approachDistance;
 
     PlayerGetDestCoords(&x, &y);
-    if (trainerObj->trainerType == 1)  // can only see in one direction
+    if (trainerObj->trainerType == TrainerType_Normal)  // can only see in one direction
     {
         approachDistance = sDirectionalApproachDistanceFuncs[trainerObj->facingDirection - 1](trainerObj, trainerObj->trainerRange_berryTreeId, x, y);
         return CheckPathBetweenTrainerAndPlayer(trainerObj, approachDistance, trainerObj->facingDirection);

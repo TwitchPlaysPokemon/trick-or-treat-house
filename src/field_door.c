@@ -875,7 +875,7 @@ u8 StartEventObjectOpenCloseAnim(u8 objId, u8 dir)
 void FieldSetDoorOpened(u32 x, u32 y)
 {
     u8 objId;
-    if ((objId = GetNonPlayerEventObjectIdByXY(x, y)) < EVENT_OBJECTS_COUNT)
+    if ((objId = GetNonPlayerEventObjectIdByXY(x, y)) < EVENT_OBJECTS_COUNT && IsObjectDoor(objId))
         EventObjectTurn(&gEventObjects[objId], DIR_NORTH);
     else if (MetatileBehavior_IsDoor(MapGridGetMetatileBehaviorAt(x, y)))
         DrawOpenedDoor(gDoorAnimGraphicsTable, x, y);
@@ -884,7 +884,7 @@ void FieldSetDoorOpened(u32 x, u32 y)
 void FieldSetDoorClosed(u32 x, u32 y)
 {
     u8 objId;
-    if ((objId = GetNonPlayerEventObjectIdByXY(x, y)) < EVENT_OBJECTS_COUNT)
+    if ((objId = GetNonPlayerEventObjectIdByXY(x, y)) < EVENT_OBJECTS_COUNT && IsObjectDoor(objId))
         EventObjectTurn(&gEventObjects[objId], DIR_SOUTH);
     if (MetatileBehavior_IsDoor(MapGridGetMetatileBehaviorAt(x, y)))
         DrawClosedDoor(gDoorAnimGraphicsTable, x, y);
@@ -894,7 +894,8 @@ s8 FieldAnimateDoorClose(u32 x, u32 y)
 {
     u8 objId;
     if ((objId = GetNonPlayerEventObjectIdByXY(x, y)) < EVENT_OBJECTS_COUNT)
-        return StartEventObjectOpenCloseAnim(objId, DIR_SOUTH);
+        if (IsObjectDoor(objId))
+            return StartEventObjectOpenCloseAnim(objId, DIR_SOUTH);
     if (!MetatileBehavior_IsDoor(MapGridGetMetatileBehaviorAt(x, y)))
         return -1;
     else
@@ -905,7 +906,8 @@ s8 FieldAnimateDoorOpen(u32 x, u32 y)
 {
     u8 objId;
     if ((objId = GetNonPlayerEventObjectIdByXY(x, y)) < EVENT_OBJECTS_COUNT)
-        return StartEventObjectOpenCloseAnim(objId, DIR_NORTH);
+        if (IsObjectDoor(objId))
+            return StartEventObjectOpenCloseAnim(objId, DIR_NORTH);
     if (!MetatileBehavior_IsDoor(MapGridGetMetatileBehaviorAt(x, y)))
         return -1;
     else

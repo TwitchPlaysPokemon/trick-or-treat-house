@@ -1524,6 +1524,13 @@ void RemoveAllEventObjectsExceptPlayer(void)
     }
 }
 
+bool8 IsObjectDoor(u8 objId)
+{
+    struct EventObject *eventObject = eventObject = &gEventObjects[objId];
+    const struct EventObjectGraphicsInfo *graphicsInfo = GetEventObjectGraphicsInfo(eventObject->graphicsId);
+    return graphicsInfo->doorOffsetType == DOOROFFSET_DOWN;
+}
+
 static u8 TrySetupEventObjectSprite(struct EventObjectTemplate *eventObjectTemplate, struct SpriteTemplate *spriteTemplate, u8 mapNum, u8 mapGroup, s16 cameraX, s16 cameraY)
 {
     u8 spriteId;
@@ -1641,7 +1648,7 @@ u8 SpawnSpecialEventObjectParameterized(u16 graphicsId, u8 movementBehavior, u8 
     eventObjectTemplate.movementType = movementBehavior;
     eventObjectTemplate.movementRangeX = 0;
     eventObjectTemplate.movementRangeY = 0;
-    eventObjectTemplate.trainerType = 0;
+    eventObjectTemplate.trainerType = TrainerType_None;
     eventObjectTemplate.trainerRange_berryTreeId = 0;
     return SpawnSpecialEventObject(&eventObjectTemplate);
 }
@@ -1789,7 +1796,7 @@ void TrySpawnEventObjects(s16 cameraX, s16 cameraY)
             s16 npcY = template->y + 7;
             
             bool8 shouldSpawn = !FlagGet(template->flagId);
-            if (!FlagGet(FLAG_PREVENT_EVENT_OBJECT_DESPAWN))
+            if (!FlagGet(FLAG_PREVENT_EVENT_OBJECT_DESPAWN) && template->trainerType != TrainerType_KeepLoaded)
                 shouldSpawn &= (top <= npcY && bottom >= npcY && left <= npcX && right >= npcX);
 
             if (shouldSpawn)
@@ -1814,7 +1821,7 @@ void RemoveEventObjectsOutsideView(void)
         {
             struct EventObject *eventObject = &gEventObjects[i];
 
-            if (eventObject->active && !eventObject->isPlayer)
+            if (eventObject->active && !eventObject->isPlayer && eventObject->trainerType != TrainerType_KeepLoaded)
                 RemoveEventObjectIfOutsideView(eventObject);
         }
     }
@@ -2821,7 +2828,7 @@ bool8 EventObjectIsTrainerAndCloseToPlayer(struct EventObject *eventObject)
     {
         return FALSE;
     }
-    if (eventObject->trainerType != 1 && eventObject->trainerType != 3)
+    if (eventObject->trainerType != TrainerType_Normal && eventObject->trainerType != TrainerType_SeeAllDirs)
     {
         return FALSE;
     }
