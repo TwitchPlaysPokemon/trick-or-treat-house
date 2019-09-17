@@ -133,6 +133,8 @@ gStdScripts_End:: @ 81DC2CC
 	
 	.include "data/maps/Puzzle_Wilke/scripts.inc"
 	
+	.include "data/maps/Puzzle_Route110/scripts.inc"
+	
 	@ -------------------------------------------------
 	
 	.include "data/maps/TrickTreat_PetalburgCity/scripts.inc"
@@ -172,7 +174,6 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/Route107/scripts.inc"
 	.include "data/maps/Route108/scripts.inc"
 	.include "data/maps/Route109/scripts.inc"
-	.include "data/maps/Route110/scripts.inc"
 	.include "data/maps/Route111/scripts.inc"
 	.include "data/maps/Route112/scripts.inc"
 	.include "data/maps/Route113/scripts.inc"

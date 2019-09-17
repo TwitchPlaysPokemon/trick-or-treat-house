@@ -1,0 +1,208 @@
+raw `
+Puzzle_Route110_MapScripts:: @ 81EF269
+	puzzle_info Puzzle_Route110_Name, Puzzle_Route110_Author
+	puzzle_custom_intro Puzzle_Route110_Intro
+	puzzle_quip Puzzle_Route110_Quip
+	puzzle_metavars Puzzle_Route110_Variables
+	puzzle_item_prereqs Puzzle_Route110_Items
+	puzzle_teardown_script Puzzle_Route110_Teardown
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_Route110_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_Route110_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_Route110_FrameTable
+	.byte 0
+
+Puzzle_Route110_Name:
+	.string "Cruisin' Down 110$"
+Puzzle_Route110_Author:
+	.string "Game Freak$"
+Puzzle_Route110_Intro:
+	.string "Hah! Ready for the next one then?\p"
+	.string "So this next one is less a logic puzzle,\n"
+	.string "and more a test of skill!\p"
+	.string "It astounds me that the road outside\n"
+	.string "TRICK HOUSE has been staring me in the\l"
+	.string "face for years.\p"
+	.string "It was only after I returned from my\n"
+	.string "journey that I realized…\l"
+	.string "This is a puzzle in its own right!\p"
+	.string "Thus that blasted road and I are\n"
+	.string "friends for tonight.\p"
+	.string "Of course, you'll need this first.$"
+Puzzle_Route110_Quip:
+	.string "Now that was my kind of “puzzle”!$"
+.align 2
+Puzzle_Route110_Items:
+	.2byte ITEM_MACH_BIKE
+	.2byte 0
+Puzzle_Route110_Variables:
+	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_CYCLING_TRIATHLETE_F
+	.2byte 0
+
+Puzzle_Route110_Teardown:
+	clearflag FLAG_SYS_CYCLING_ROAD
+	end
+
+@ -----------------------------------------------------
+#define VAR_CYCLING_CHALLENGE_STATE VAR_PUZZLE_00
+
+Puzzle_Route110_OnResume: @ 81EF279
+	special UpdateCyclingRoadState
+	end
+
+@ -----------------------------------------------------
+
+Puzzle_Route110_OnTransition: @ 81EF27D
+	setvar VAR_CYCLING_CHALLENGE_STATE, 1
+	savebgm MUS_CYCLING
+	setflag FLAG_SYS_CYCLING_ROAD
+	callnative ForcePlayerOntoMachBike
+	return
+
+@ -----------------------------------------------------
+
+Puzzle_Route110_FrameTable: @ 81EF297
+	map_script_2 VAR_CYCLING_CHALLENGE_STATE, 1, Puzzle_Route110_EventScript_1EF2A1
+	.2byte 0
+
+Puzzle_Route110_EventScript_1EF2A1:: @ 81EF2A1
+	special Special_BeginCyclingRoadChallenge
+	setvar VAR_CYCLING_CHALLENGE_STATE, 2
+	callnative ForcePlayerOntoMachBike
+	return
+
+@ -----------------------------------------------------
+
+Puzzle_Route110_EventScript_EntranceDoorObject::
+	lock
+	goto_if_set FLAG_IS_BUMP_INTERACTION, Puzzle_Route110_EventScript_EntranceDoorObject_WarpToCorridor
+	msgbox PuzzleCommon_Text_DoorFrontside
+	release
+	end
+Puzzle_Route110_EventScript_EntranceDoorObject_WarpToCorridor:
+	clearflag FLAG_SYS_CYCLING_ROAD
+	goto PuzzleCommon_EventScript_EntranceDoorObject_WarpToCorridor
+	end
+
+Puzzle_Route110_SignScript_CyclingRoadSign:: @ 81EF392
+	lockall
+	specialvar VAR_RESULT, GetRecordedCyclingRoadResults
+	compare VAR_RESULT, 0
+	goto_if_eq Route110_EventScript_1EF3AD
+	msgbox Route110_Text_1F0A1E, MSGBOX_SIGN
+	releaseall
+	end
+Route110_Text_1F0A1E: @ 81F0A1E
+	.string "THE BEST RECORD TO DATE…\p"
+	.string "No. of collisions: {STR_VAR_1}\p"
+	.string "Elapsed time: {STR_VAR_2}$"
+Route110_EventScript_1EF3AD:: @ 81EF3AD
+	msgbox Route110_Text_1F0A5E, MSGBOX_SIGN
+	releaseall
+	end
+Route110_Text_1F0A5E: @ 81F0A5E
+	.string "THE BEST RECORD TO DATE…\p"
+	.string "No one seems to have taken the\n"
+	.string "challenge. There is no record…$"
+	
+
+Puzzle_Route110_EventScript_RankingDude:: @ 81EF3B7
+	lock
+	faceplayer
+	specialvar VAR_RESULT, GetPlayerAvatarBike
+	compare VAR_RESULT, 1
+	goto_if_eq Route110_EventScript_1EF3E8
+	compare VAR_CYCLING_CHALLENGE_STATE, 0
+	goto_if_eq Route110_EventScript_1EF3DE
+	msgbox Route110_Text_1F06FB, MSGBOX_DEFAULT
+	release
+	end
+Route110_Text_1F06FB: @ 81F06FB
+	.string "Regardless of the results, I count on\n"
+	.string "seeing more challenges from you.\l"
+	.string "Always aim higher!$"
+Route110_EventScript_1EF3DE:: @ 81EF3DE
+	msgbox Route110_Text_1F0661, MSGBOX_DEFAULT
+	release
+	end
+Route110_Text_1F0661: @ 81F0661
+	.string "This is Cycling Road.\p"
+	.string "If you were to ride from Mauville to\n"
+	.string "Slateport on a Mach Bike, you would\l"
+	.string "be rated for the number of collisions\l"
+	.string "and your total time.$"
+Route110_EventScript_1EF3E8:: @ 81EF3E8
+	msgbox Route110_Text_1F0755, MSGBOX_DEFAULT
+	release
+	end
+Route110_Text_1F0755: @ 81F0755
+	.string "On this Cycling Road, those riding\n"
+	.string "Mach Bikes are rated for their number\l"
+	.string "of collisions and their total times.\p"
+	.string "Acro Bikes do not qualify for rating.\n"
+	.string "They are easy to turn, so it's not fair.$"
+
+@ -----------------------------------------------------
+@ Cycling Road Challenge
+
+Puzzle_Route110_TriggerScript_FinishCyclingRoadChallenge:: @ 81EF661
+	lockall
+	applymovement 21, Common_Movement_WalkInPlaceRight
+	waitmovement 0
+	special FinishCyclingRoadChallenge
+	msgbox Puzzle_Route110_Text_1F03FF, MSGBOX_DEFAULT
+	selectpointer_clamp Puzzle_Route110_StringTable_FinishCyclingRoadChallenge, VAR_RESULT
+	msgbox_selected
+	setvar VAR_CYCLING_CHALLENGE_STATE, 3
+	savebgm MUS_DUMMY
+	fadedefaultbgm
+	releaseall
+	end
+
+.align 2
+Puzzle_Route110_StringTable_FinishCyclingRoadChallenge:
+	.4byte Puzzle_Route110_Text_FinishCyclingRoadChallenge_Terrible @0
+	.4byte Puzzle_Route110_Text_FinishCyclingRoadChallenge_Poor @1
+	.4byte Puzzle_Route110_Text_FinishCyclingRoadChallenge_Poor
+	.4byte Puzzle_Route110_Text_FinishCyclingRoadChallenge_Poor
+	.4byte Puzzle_Route110_Text_FinishCyclingRoadChallenge_Acceptable
+	.4byte Puzzle_Route110_Text_FinishCyclingRoadChallenge_Acceptable @5
+	.4byte Puzzle_Route110_Text_FinishCyclingRoadChallenge_Acceptable
+	.4byte Puzzle_Route110_Text_FinishCyclingRoadChallenge_Good
+	.4byte Puzzle_Route110_Text_FinishCyclingRoadChallenge_Good
+	.4byte Puzzle_Route110_Text_FinishCyclingRoadChallenge_Good
+	.4byte Puzzle_Route110_Text_FinishCyclingRoadChallenge_Best @10
+	.4byte 0
+
+Puzzle_Route110_Text_1F03FF: @ 81F03FF
+	.string "Number of collisions:\n"
+	.string "… … {STR_VAR_1}!\p"
+	.string "Total time:\n"
+	.string "… … {STR_VAR_2}!$"
+Puzzle_Route110_Text_FinishCyclingRoadChallenge_Best: @ 81F0431
+	.string "Bravo! Splendid showing!\p"
+	.string "Your love of cycling comes from deep\n"
+	.string "within your heart.\l"
+	.string "You've shaken me to my very soul!$"
+Puzzle_Route110_Text_FinishCyclingRoadChallenge_Good: @ 81F04A4
+	.string "Your technique is remarkable.\p"
+	.string "I suggest you speed up a bit while\n"
+	.string "still avoiding collisions.$"
+Puzzle_Route110_Text_FinishCyclingRoadChallenge_Acceptable: @ 81F0500
+	.string "I would consider you a work in\n"
+	.string "progress.\p"
+	.string "Still, I hope you don't forget the\n"
+	.string "sheer pleasure of cycling.$"
+Puzzle_Route110_Text_FinishCyclingRoadChallenge_Poor: @ 81F0567
+	.string "My word… Your cycling skills border\n"
+	.string "on terrifying.\p"
+	.string "Most certainly, you need much more\n"
+	.string "practice riding.$"
+Puzzle_Route110_Text_FinishCyclingRoadChallenge_Terrible: @ 81F05CE
+	.string "…I am aghast…\p"
+	.string "You're perhaps not cut out for this\n"
+	.string "unfortunate cycling business.\p"
+	.string "You ought to give serious thought to\n"
+	.string "returning that bike to Rydel.$"
+
+#undef VAR_CYCLING_CHALLENGE_STATE
+`

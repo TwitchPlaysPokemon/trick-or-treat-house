@@ -54,7 +54,6 @@
         "Route107",
         "Route108",
         "Route109",
-        "Route110",
         "Route111",
         "Route112",
         "Route113",
@@ -115,6 +114,7 @@
         "Puzzle_MusicNoteTiles",
         "Puzzle_LedgeMountain",
         "Puzzle_Wilke",
+        "Puzzle_Route110",
         "Puzzle_Loss_Floor1",
         "Puzzle_Loss_Floor2"
     ],
