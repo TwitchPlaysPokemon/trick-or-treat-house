@@ -4,6 +4,46 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x00",
+            "item": "ITEM_REVIVE",
+            "type": "hidden_item",
+            "x": 20,
+            "y": 40
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x01",
+            "item": "ITEM_ICE_HEAL",
+            "type": "hidden_item",
+            "x": 5,
+            "y": 31
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x02",
+            "item": "ITEM_POTION",
+            "type": "hidden_item",
+            "x": 32,
+            "y": 43
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x03",
+            "item": "ITEM_ESCAPE_ROPE",
+            "type": "hidden_item",
+            "x": 32,
+            "y": 26
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x04",
+            "item": "ITEM_SUPER_POTION",
+            "type": "hidden_item",
+            "x": 28,
+            "y": 4
+        }
     ],
     "connections": [
         {
@@ -18,6 +58,42 @@
         }
     ],
     "coord_events": [
+        {
+            "elevation": 0,
+            "script": "Puzzle_LedgeMountain_TriggerScript_Intro",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_00",
+            "var_value": "0",
+            "x": 25,
+            "y": 57
+        },
+        {
+            "elevation": 0,
+            "script": "Puzzle_LedgeMountain_TriggerScript_Intro",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_00",
+            "var_value": "0",
+            "x": 25,
+            "y": 56
+        },
+        {
+            "elevation": 0,
+            "script": "Puzzle_LedgeMountain_TriggerScript_Intro",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_00",
+            "var_value": "0",
+            "x": 25,
+            "y": 55
+        },
+        {
+            "elevation": 0,
+            "script": "Puzzle_LedgeMountain_TriggerScript_Intro",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_00",
+            "var_value": "0",
+            "x": 25,
+            "y": 54
+        }
     ],
     "id": "MAP_PUZZLE_LEDGE_MOUNTAIN",
     "layout": "LAYOUT_PUZZLE_LEDGE_MOUNTAIN",
@@ -63,6 +139,71 @@
             "trainer_type": "0",
             "x": 20,
             "y": 3
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_20",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+            "script": "Common_EventScript_PickupRareItem",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 11,
+            "y": 4
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_21",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_ItemElixer",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 1,
+            "y": 60
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_22",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_ItemLemonade",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 36,
+            "y": 45
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 33,
+            "y": 5
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_ItemFullRestore",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 38,
+            "y": 61
         }
     ],
     "region_map_section": "MAPSEC_FALLARBOR_TOWN",

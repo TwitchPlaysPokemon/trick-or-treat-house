@@ -72,6 +72,75 @@
               }
             ]
           }
+        },
+        {
+          "map": "MAP_PUZZLE_LEDGE_MOUNTAIN",
+          "base_label": "gPuzzle_LedgeMountain",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 23,
+                "max_level": 26,
+                "species": "SPECIES_GEODUDE"
+              },
+              {
+                "min_level": 23,
+                "max_level": 26,
+                "species": "SPECIES_GRAVELER"
+              },
+              {
+                "min_level": 23,
+                "max_level": 26,
+                "species": "SPECIES_ODDISH"
+              },
+              {
+                "min_level": 23,
+                "max_level": 27,
+                "species": "SPECIES_SPOINK"
+              },
+              {
+                "min_level": 23,
+                "max_level": 27,
+                "species": "SPECIES_BELLSPROUT"
+              },
+              {
+                "min_level": 23,
+                "max_level": 27,
+                "species": "SPECIES_EKANS"
+              },
+              {
+                "min_level": 23,
+                "max_level": 27,
+                "species": "SPECIES_GEODUDE"
+              },
+              {
+                "min_level": 23,
+                "max_level": 27,
+                "species": "SPECIES_GRAVELER"
+              },
+              {
+                "min_level": 23,
+                "max_level": 27,
+                "species": "SPECIES_SEVIPER"
+              },
+              {
+                "min_level": 23,
+                "max_level": 27,
+                "species": "SPECIES_SEVIPER"
+              },
+              {
+                "min_level": 25,
+                "max_level": 30,
+                "species": "SPECIES_EKANS"
+              },
+              {
+                "min_level": 25,
+                "max_level": 30,
+                "species": "SPECIES_NOSEPASS"
+              }
+            ]
+          }
         }
       ]
     },
