@@ -274,7 +274,7 @@ void RemovePuzzleItems(struct ScriptContext *ctx)
 				ptr = StringCopy(ptr, gText_And);
 				(*ptr++) = CHAR_SPACE;
 			}
-			ptr = ConvertUIntToDecimalStringN(ptr, GetBagItemQuantity(&takenItems[a].quantity), 0, 3);
+			ptr = ConvertIntToTheNameStringN(ptr, GetBagItemQuantity(&takenItems[a].quantity), 0, 3);
 			(*ptr++) = CHAR_SPACE;
 			ptr = StringCopy(ptr, ItemId_GetName(takenItems[a].itemId));
 			if (a + 1 < gSpecialVar_Result) {

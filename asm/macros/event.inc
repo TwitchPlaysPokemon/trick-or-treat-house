@@ -1616,6 +1616,13 @@
 	.2byte \index
 	.endm
 	
+	@ Converts the value of input to a decimal string, and writes that string to the specified buffer.
+	.macro buffernumberstring2 out:req, input:req, article=0
+	.byte 0xe5
+	.byte \out
+	.2byte \input
+	.byte \article  @0="one", 1="the"
+	.endm
 
 @ Supplementary
 

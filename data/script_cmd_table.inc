@@ -229,6 +229,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_bufferitemnameplural
 	.4byte ScrCmd_selectpointer
 	.4byte ScrCmd_selectwarpdestination
+	.4byte ScrCmd_buffernumberstring2
 
 gScriptCmdTableEnd:: @ 81DBA08
 	.4byte ScrCmd_nop

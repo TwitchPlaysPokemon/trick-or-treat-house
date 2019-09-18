@@ -165,6 +165,32 @@ bool8 IsStringLengthAtLeast(const u8 *str, s32 n)
     return FALSE;
 }
 
+extern const u8 gText_The[];
+extern const u8 gText_Num1[];
+extern const u8 gText_Num2[];
+extern const u8 gText_Num3[];
+extern const u8 gText_Num4[];
+extern const u8 gText_Num5[];
+u8 *ConvertIntToTheNameStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 n)
+{
+    switch (value) {
+        case 1: return StringCopy(dest, gText_The);
+        default: return ConvertIntToNameStringN(dest, value, mode, n);
+    }
+}
+
+u8 *ConvertIntToNameStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 n)
+{
+    switch (value) {
+        case 1: return StringCopy(dest, gText_Num1);
+        case 2: return StringCopy(dest, gText_Num2);
+        case 3: return StringCopy(dest, gText_Num3);
+        case 4: return StringCopy(dest, gText_Num4);
+        case 5: return StringCopy(dest, gText_Num5);
+        default: return ConvertIntToDecimalStringN(dest, value, mode, n);
+    }
+}
+
 u8 *ConvertIntToDecimalStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 n)
 {
     enum { WAITING_FOR_NONZERO_DIGIT, WRITING_DIGITS, WRITING_SPACES } state;

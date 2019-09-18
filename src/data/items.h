@@ -897,6 +897,7 @@ const struct Item gItems[] =
     [ITEM_HP_UP] =
     {
         .name = _("HP UP"),
+        .plural = _(""),
         .itemId = ITEM_HP_UP,
         .price = CANDY_COST(9800),
         .description = sHPUpDesc,
@@ -909,6 +910,7 @@ const struct Item gItems[] =
     [ITEM_PROTEIN] =
     {
         .name = _("PROTEIN"),
+        .plural = _(""),
         .itemId = ITEM_PROTEIN,
         .price = CANDY_COST(9800),
         .description = sProteinDesc,
@@ -921,6 +923,7 @@ const struct Item gItems[] =
     [ITEM_IRON] =
     {
         .name = _("IRON"),
+        .plural = _(""),
         .itemId = ITEM_IRON,
         .price = CANDY_COST(9800),
         .description = sIronDesc,
@@ -933,6 +936,7 @@ const struct Item gItems[] =
     [ITEM_CARBOS] =
     {
         .name = _("CARBOS"),
+        .plural = _(""),
         .itemId = ITEM_CARBOS,
         .price = CANDY_COST(9800),
         .description = sCarbosDesc,
@@ -945,6 +949,7 @@ const struct Item gItems[] =
     [ITEM_CALCIUM] =
     {
         .name = _("CALCIUM"),
+        .plural = _(""),
         .itemId = ITEM_CALCIUM,
         .price = CANDY_COST(9800),
         .description = sCalciumDesc,
@@ -957,6 +962,7 @@ const struct Item gItems[] =
     [ITEM_RARE_CANDY] =
     {
         .name = _("RARE CANDY"),
+        .plural = _("RARE CANDIES"),
         .itemId = ITEM_RARE_CANDY,
         .price = CANDY_COST(4800),
         .description = sRareCandyDesc,
@@ -970,6 +976,7 @@ const struct Item gItems[] =
     [ITEM_PP_UP] =
     {
         .name = _("PP UP"),
+        .plural = _(""),
         .itemId = ITEM_PP_UP,
         .price = CANDY_COST(9800),
         .description = sPPUpDesc,
@@ -982,6 +989,7 @@ const struct Item gItems[] =
     [ITEM_ZINC] =
     {
         .name = _("ZINC"),
+        .plural = _(""),
         .itemId = ITEM_ZINC,
         .price = CANDY_COST(9800),
         .description = sZincDesc,
@@ -994,6 +1002,7 @@ const struct Item gItems[] =
     [ITEM_PP_MAX] =
     {
         .name = _("PP MAX"),
+        .plural = _(""),
         .itemId = ITEM_PP_MAX,
         .price = CANDY_COST(9800),
         .description = sPPMaxDesc,
@@ -1090,6 +1099,7 @@ const struct Item gItems[] =
     [ITEM_X_ACCURACY] =
     {
         .name = _("X ACCURACY"),
+        .plural = _("X ACCURACIES"),
         .itemId = ITEM_X_ACCURACY,
         .price = CANDY_COST(950),
         .description = sXAccuracyDesc,
@@ -2640,6 +2650,7 @@ const struct Item gItems[] =
     [ITEM_SCOPE_LENS] =
     {
         .name = _("SCOPE LENS"),
+        .plural = _("SCOPE LENSES"),
         .itemId = ITEM_SCOPE_LENS,
         .price = CANDY_COST(200),
         .holdEffect = HOLD_EFFECT_SCOPE_LENS,
@@ -2667,6 +2678,7 @@ const struct Item gItems[] =
     [ITEM_LEFTOVERS] =
     {
         .name = _("LEFTOVERS"),
+        .plural = _(""),
         .itemId = ITEM_LEFTOVERS,
         .price = CANDY_COST(200),
         .holdEffect = HOLD_EFFECT_LEFTOVERS,
@@ -2750,6 +2762,7 @@ const struct Item gItems[] =
     [ITEM_BLACK_GLASSES] =
     {
         .name = _("BLACKGLASSES"),
+        .plural = _(""),
         .itemId = ITEM_BLACK_GLASSES,
         .price = CANDY_COST(100),
         .holdEffect = HOLD_EFFECT_DARK_POWER,
@@ -2973,6 +2986,7 @@ const struct Item gItems[] =
     [ITEM_LUCKY_PUNCH] =
     {
         .name = _("LUCKY PUNCH"),
+        .plural = _("LUCKY PUNCHES"),
         .itemId = ITEM_LUCKY_PUNCH,
         .price = CANDY_COST(10),
         .holdEffect = HOLD_EFFECT_LUCKY_PUNCH,
@@ -3361,6 +3375,7 @@ const struct Item gItems[] =
     [ITEM_RED_SCARF] =
     {
         .name = _("RED SCARF"),
+        .plural = _("RED SCARVES"),
         .itemId = ITEM_RED_SCARF,
         .price = CANDY_COST(100),
         .description = sRedScarfDesc,
@@ -3373,6 +3388,7 @@ const struct Item gItems[] =
     [ITEM_BLUE_SCARF] =
     {
         .name = _("BLUE SCARF"),
+        .plural = _("BLUE SCARVES"),
         .itemId = ITEM_BLUE_SCARF,
         .price = CANDY_COST(100),
         .description = sBlueScarfDesc,
@@ -3385,6 +3401,7 @@ const struct Item gItems[] =
     [ITEM_PINK_SCARF] =
     {
         .name = _("PINK SCARF"),
+        .plural = _("PINK SCARVES"),
         .itemId = ITEM_PINK_SCARF,
         .price = CANDY_COST(100),
         .description = sPinkScarfDesc,
@@ -3397,6 +3414,7 @@ const struct Item gItems[] =
     [ITEM_GREEN_SCARF] =
     {
         .name = _("GREEN SCARF"),
+        .plural = _("GREEN SCARVES"),
         .itemId = ITEM_GREEN_SCARF,
         .price = CANDY_COST(100),
         .description = sGreenScarfDesc,
@@ -3409,6 +3427,7 @@ const struct Item gItems[] =
     [ITEM_YELLOW_SCARF] =
     {
         .name = _("YELLOW SCARF"),
+        .plural = _("YELLOW SCARVES"),
         .itemId = ITEM_YELLOW_SCARF,
         .price = CANDY_COST(100),
         .description = sYellowScarfDesc,

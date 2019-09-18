@@ -2484,3 +2484,23 @@ errorHandle:
     return FALSE;
 }
 
+bool8 ScrCmd_buffernumberstring2(struct ScriptContext *ctx)
+{
+    u8 stringVarIndex = ScriptReadByte(ctx);
+    u16 v1 = VarGet(ScriptReadHalfword(ctx));
+    u8 v2 = CountDigits(v1);
+    u8 article = ScriptReadByte(ctx);
+    
+    if (v1 == 1) {
+        if (article == 1) {
+            StringCopy(sScriptStringVars[stringVarIndex], gText_The);
+            return FALSE;
+        } else if (article == 2) {
+            //TODO "a/an"?
+        }
+    }
+
+    ConvertIntToNameStringN(sScriptStringVars[stringVarIndex], v1, 0, v2);
+    return FALSE;
+}
+

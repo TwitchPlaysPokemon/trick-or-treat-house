@@ -1738,6 +1738,7 @@ const u8 gDaycareText_GetAlong[] = _("The two seem to get along.");
 const u8 gDaycareText_DontLikeOther[] = _("The two don't seem to like\neach other much.");
 const u8 gDaycareText_PlayOther[] = _("The two prefer to play with other\nPOKéMON than each other.");
 const u8 gText_NewLine2[] = _("\n");
+const u8 gText_The[] = _("the");
 const u8 gText_And[] = _("and");
 const u8 gText_MoreItems[] = _("more items.");
 const u8 gText_One[] = _("one");
@@ -1827,3 +1828,9 @@ const u8 gText_Answer[] = _("ANSWER");
 const u8 gText_PokeBalls[] = _("POKé BALLS");
 const u8 gText_Berry[] = _("BERRY");
 const u8 gText_Berries[] = _("BERRIES");
+
+const u8 gText_Num1[] = _("one");
+const u8 gText_Num2[] = _("two");
+const u8 gText_Num3[] = _("three");
+const u8 gText_Num4[] = _("four");
+const u8 gText_Num5[] = _("five");

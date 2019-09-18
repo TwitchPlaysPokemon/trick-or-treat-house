@@ -2082,6 +2082,7 @@ extern const u8 gText_MaleSymbol4[];
 extern const u8 gText_FemaleSymbol4[];
 extern const u8 gText_GenderlessSymbol[];
 extern const u8 gText_NewLine2[];
+extern const u8 gText_The[];
 extern const u8 gText_And[];
 extern const u8 gText_MoreItems[];
 extern const u8 gText_One[];
@@ -2789,5 +2790,11 @@ extern const u8 gText_Toughness[];
 extern const u8 gText_Smartness[];
 extern const u8 gText_Cuteness[];
 extern const u8 gText_Beauty3[];
+
+extern const u8 gText_Num1[];
+extern const u8 gText_Num2[];
+extern const u8 gText_Num3[];
+extern const u8 gText_Num4[];
+extern const u8 gText_Num5[];
 
 #endif // GUARD_STRINGS_H

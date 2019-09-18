@@ -117,6 +117,11 @@ TrickHouseCorridor_Text_PokemonTable_Swap1:
 	.string "your PUZZLE CHALLENGE?\p"
 	.string "Would you like to swap some of your\n"
 	.string "RENTAL POKéMON?$"
+TrickHouseCorridor_Text_PokemonTable_Swap2:
+	.string "Excellent selection!\p"
+	.string "If you'd ever like to swap out, feel\n"
+	.string "free to come back to this table!\p"
+	.string "Good luck on the PUZZLE CHALLENGE!$"
 
 
 TrickHouseCorridor_TriggerScript_PokemonTable::
@@ -139,6 +144,8 @@ TrickHouseCorridor_TriggerScript_PokemonTable::
 	setflag FLAG_TEMP_E
 	setvar VAR_TEMP_E, 2
 	msgbox TrickHouseCorridor_Text_PokemonTable_FirstRental2
+	giveitem_std ITEM_ESCAPE_ROPE, 5
+	msgbox TrickHouseCorridor_Text_PokemonTable_FirstRental3
 	releaseall
 	end
 TrickHouseCorridor_Text_PokemonTable_Stop1:
