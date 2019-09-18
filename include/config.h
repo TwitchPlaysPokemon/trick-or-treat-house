@@ -32,5 +32,7 @@
 #define USE_TRAINER_COSTUMES 1
 // Changes money to Candy Corn
 #define USE_CANDY_CURRENCY 1
+// Disabled EXP gain on all Pokemon
+#define DISABLE_EXP_GAIN 0
 
 #endif // GUARD_CONFIG_H

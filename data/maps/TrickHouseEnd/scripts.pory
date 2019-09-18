@@ -80,19 +80,36 @@ script TrickHouseEnd_TriggerScript_Nurse {
 	release
 }
 script TrickHouseEnd_EventScript_FinalizePuzzle {
-	msgbox ("Let's heal your POKéMON.$")
-	fadescreen(1)
-	playfanfare(MUS_ME_ASA)
-	special(HealPlayerParty)
-	waitfanfare
-	fadescreen(0)
+	# msgbox ("Good job on that puzzle.$")
+	special  (CanAnyPartyMonsBeHealed)
+	if (var(VAR_RESULT) == FALSE) { # It's backwards for some reason??
+		msgbox ("Let me heal your POKéMON.$")
+		closemessage
+		fadescreen(1)
+		playfanfare(MUS_ME_ASA)
+		special(HealPlayerParty)
+		waitfanfare
+		fadescreen(0)
+	}
 	callnative(RemovePuzzleItems)
-	if (var(VAR_RESULT) == TRUE) {
-		msgbox("Oh, and I'll be needing those puzzle items\n"
+	if (var(VAR_RESULT) != FALSE) {
+		msgbox("I'll be needing those puzzle items\n"
 			   "from you.$")
 		msgbox("You hand over {STR_VAR_1}.$")
+		if (var(VAR_0x800A) > 0) {
+			buffernumberstring (0, VAR_0x800A)
+			msgbox("You're handed {STR_VAR_1} candy corn\n"
+					"as compensation.$")
+		}
+	}
+	getpartysize
+	if (var(VAR_RESULT) > 3) {
+		msgbox ("Oh, you have some extra {POKEMON} on you.\n"
+				"I'll transfer them to your PC.$")
+		callnative (RemoveExtraPokemon)
 	}
 	msgbox ("Good luck on the next puzzle!$")
+	closemessage
 	setvar(VAR_TEMP_2, 1)
 	return
 }

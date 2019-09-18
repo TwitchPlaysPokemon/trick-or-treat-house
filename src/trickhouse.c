@@ -14,6 +14,10 @@
 #include "string_util.h"
 #include "sound.h"
 #include "map_name_popup.h"
+#include "item.h"
+#include "money.h"
+#include "pokemon.h"
+#include "pokemon_storage_system.h"
 #include "overworld.h"
 #include "field_message_box.h"
 #include "battle_factory.h"
@@ -216,34 +220,126 @@ void GiveItemPrerequisites(struct ScriptContext *ctx)
 
 void RemovePuzzleItems(struct ScriptContext *ctx)
 {
-	u8 *ptr = gStringVar1;
-	u8 itemCount = 0;
-	u16 currPuzzle = GetCurrentPuzzleMapId();
-	const u16 *array = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_POST_LIST);
-	gSpecialVar_Result = FALSE;
+	u8 pocket, a, b;
+	struct ItemSlot takenItems[5];
+	struct ItemSlot *tempBag = NULL;
+	gSpecialVar_0x800A = 0; //monetary compensation
+	gSpecialVar_Result = 0;
 	
-	if (array != NULL)
+	for (pocket = 0; pocket < POCKETS_COUNT; pocket++)
 	{
-		while (array[0] != ITEM_NONE)
+		tempBag = AllocZeroed(sizeof(struct ItemSlot) * gBagPockets[pocket].capacity);
+		for (a = 0, b = 0; a < gBagPockets[pocket].capacity; a++) 
 		{
-			gSpecialVar_Result |= RemoveBagItem(array[0], 1);
-			
-			if (array[1] == ITEM_NONE && itemCount > 0) {
+			u16 itemId = gBagPockets[pocket].itemSlots[a].itemId;
+			if (itemId == ITEM_NONE) continue;
+			if (ItemId_GetPuzzleItemExclusionFlag(itemId))
+			{
+				tempBag[b++] = gBagPockets[pocket].itemSlots[a];
+				// tempBag[b].itemId = gBagPockets[pocket].itemSlots[a].itemId;
+				// tempBag[b].quantity = gBagPockets[pocket].itemSlots[a].quantity;
+				// b++;
+			}
+			else
+			{
+				u16 price = ItemId_GetPrice(gBagPockets[pocket].itemSlots[a].itemId) >> 1;
+				price *= GetBagItemQuantity(&gBagPockets[pocket].itemSlots[a].quantity);
+				if (gSpecialVar_Result < ARRAY_COUNT(takenItems))
+				{
+					takenItems[gSpecialVar_Result] = gBagPockets[pocket].itemSlots[a];
+				}
+				gSpecialVar_Result++;
+				gSpecialVar_0x800A += price;
+			}
+		}
+		for (a = 0; a < gBagPockets[pocket].capacity; a++)
+		{
+			gBagPockets[pocket].itemSlots[a] = tempBag[a];
+		}
+		Free(tempBag);
+	}
+	tempBag = NULL; //cheat to eliminate special case in next loop
+	if (gSpecialVar_0x800A) {
+		AddMoney(&gSaveBlock1Ptr->money, gSpecialVar_0x800A);
+	}
+	
+	// If items were taken, build a new string
+	if (gSpecialVar_Result)
+	{
+		u8 nlcount = 0;
+		u8 *ptr = gStringVar1;
+		for (a = 0; a < ARRAY_COUNT(takenItems) && a < gSpecialVar_Result; a++)
+		{
+			if (a + 1 == gSpecialVar_Result && a > 0) {
 				ptr = StringCopy(ptr, gText_And);
 				(*ptr++) = CHAR_SPACE;
 			}
-			itemCount++;
-			ptr = StringCopy(ptr, gText_One);
+			ptr = ConvertUIntToDecimalStringN(ptr, GetBagItemQuantity(&takenItems[a].quantity), 0, 3);
 			(*ptr++) = CHAR_SPACE;
-			ptr = StringCopy(ptr, ItemId_GetName(array[0]));
-			if (array[1] != ITEM_NONE) {
+			ptr = StringCopy(ptr, ItemId_GetName(takenItems[a].itemId));
+			if (a + 1 < gSpecialVar_Result) {
 				(*ptr++) = CHAR_COMMA;
-				(*ptr++) = CHAR_NEWLINE;
+				if (a % 2 == 0)
+					(*ptr++) = (nlcount++)? CHAR_PROMPT_SCROLL : CHAR_NEWLINE;
+				else
+					(*ptr++) = CHAR_SPACE;
 			}
-			array += 1;
 		}
+		if (gSpecialVar_Result > a) {
+			ptr = StringCopy(ptr, gText_And);
+			(*ptr++) = CHAR_SPACE;
+			ptr = ConvertUIntToDecimalStringN(ptr, gSpecialVar_Result-a, 0, 3);
+			ptr = StringCopy(ptr, gText_MoreItems);
+		}
+		*ptr = EOS;
 	}
-	*ptr = EOS;
+	
+	// u8 *ptr = gStringVar1;
+	// u8 itemCount = 0;
+	// u16 currPuzzle = GetCurrentPuzzleMapId();
+	// const u16 *array = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_POST_LIST);
+	// gSpecialVar_Result = FALSE;
+	
+	// if (array != NULL)
+	// {
+	// 	while (array[0] != ITEM_NONE)
+	// 	{
+	// 		gSpecialVar_Result |= RemoveBagItem(array[0], 1);
+			
+	// 		if (array[1] == ITEM_NONE && itemCount > 0) {
+	// 			ptr = StringCopy(ptr, gText_And);
+	// 			(*ptr++) = CHAR_SPACE;
+	// 		}
+	// 		itemCount++;
+	// 		ptr = StringCopy(ptr, gText_One);
+	// 		(*ptr++) = CHAR_SPACE;
+	// 		ptr = StringCopy(ptr, ItemId_GetName(array[0]));
+	// 		if (array[1] != ITEM_NONE) {
+	// 			(*ptr++) = CHAR_COMMA;
+	// 			(*ptr++) = CHAR_NEWLINE;
+	// 		}
+	// 		array += 1;
+	// 	}
+	// }
+	// *ptr = EOS;
+}
+
+void RemoveExtraPokemon(struct ScriptContext *ctx)
+{
+	u8 i;
+	
+	gSpecialVar_Result = FALSE;
+	CalculatePlayerPartyCount();
+	if (gPlayerPartyCount <= 3) return;
+	
+	gSpecialVar_Result = TRUE;
+	for (i = 3; i < PARTY_SIZE; i++) {
+		if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) != SPECIES_NONE) break;
+		SendMonToPC(&gPlayerParty[i]);
+		ZeroMonData(&gPlayerParty[i]);
+	}
+	CompactPartySlots();
+    CalculatePlayerPartyCount();
 }
 
 void SelectInitialRentalParty(struct ScriptContext *ctx)

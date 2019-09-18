@@ -1736,6 +1736,7 @@ const u8 gDaycareText_DontLikeOther[] = _("The two don't seem to like\neach othe
 const u8 gDaycareText_PlayOther[] = _("The two prefer to play with other\nPOKéMON than each other.");
 const u8 gText_NewLine2[] = _("\n");
 const u8 gText_And[] = _("and");
+const u8 gText_MoreItems[] = _("more items.");
 const u8 gText_One[] = _("one");
 const u8 gText_Exit4[] = _("EXIT");
 const u8 gText_Lv[] = _("{LV}");

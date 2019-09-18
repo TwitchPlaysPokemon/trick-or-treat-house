@@ -32,12 +32,12 @@ EWRAM_DATA struct BagPocket gBagPockets[POCKETS_COUNT] = {0};
 #include "data/items.h"
 
 // code
-static u16 GetBagItemQuantity(u16 *quantity)
+u16 GetBagItemQuantity(u16 *quantity)
 {
     return gSaveBlock2Ptr->encryptionKey ^ *quantity;
 }
 
-static void SetBagItemQuantity(u16 *quantity, u16 newValue)
+void SetBagItemQuantity(u16 *quantity, u16 newValue)
 {
     *quantity =  newValue ^ gSaveBlock2Ptr->encryptionKey;
 }
@@ -585,21 +585,21 @@ void RemovePCItem(u8 index, u16 count)
 
 void CompactPCItems(void)
 {
-    u16 i;
-    u16 j;
+    // u16 i;
+    // u16 j;
 
-    for (i = 0; i < PC_ITEMS_COUNT - 1; i++)
-    {
-        for (j = i + 1; j < PC_ITEMS_COUNT; j++)
-        {
-            if (gSaveBlock1Ptr->pcItems[i].itemId == 0)
-            {
-                struct ItemSlot temp = gSaveBlock1Ptr->pcItems[i];
-                gSaveBlock1Ptr->pcItems[i] = gSaveBlock1Ptr->pcItems[j];
-                gSaveBlock1Ptr->pcItems[j] = temp;
-            }
-        }
-    }
+    // for (i = 0; i < PC_ITEMS_COUNT - 1; i++)
+    // {
+    //     for (j = i + 1; j < PC_ITEMS_COUNT; j++)
+    //     {
+    //         if (gSaveBlock1Ptr->pcItems[i].itemId == 0)
+    //         {
+    //             struct ItemSlot temp = gSaveBlock1Ptr->pcItems[i];
+    //             gSaveBlock1Ptr->pcItems[i] = gSaveBlock1Ptr->pcItems[j];
+    //             gSaveBlock1Ptr->pcItems[j] = temp;
+    //         }
+    //     }
+    // }
 }
 
 void SwapRegisteredBike(void)
@@ -937,6 +937,11 @@ const u8 *ItemId_GetDescription(u16 itemId)
 u8 ItemId_GetImportance(u16 itemId)
 {
     return gItems[SanitizeItemId(itemId)].importance;
+}
+
+u8 ItemId_GetPuzzleItemExclusionFlag(u16 itemId)
+{
+    return gItems[SanitizeItemId(itemId)].keepItem;
 }
 
 // unused
