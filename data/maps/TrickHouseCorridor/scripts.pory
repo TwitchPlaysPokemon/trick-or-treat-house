@@ -79,6 +79,8 @@ TrickHouseCorridor_EventScript_PokemonTable_FirstRental:
 	setflag FLAG_TEMP_E
 	setvar VAR_TEMP_E, 2
 	msgbox TrickHouseCorridor_Text_PokemonTable_FirstRental2
+	giveitem_std ITEM_ESCAPE_ROPE, 5
+	msgbox TrickHouseCorridor_Text_PokemonTable_FirstRental3
 	releaseall
 	end
 TrickHouseCorridor_Text_PokemonTable_FirstRental1:
@@ -92,6 +94,10 @@ TrickHouseCorridor_Text_PokemonTable_FirstRental2:
 	.string "Excellent selection!\p"
 	.string "If you'd ever like to swap out, feel\n"
 	.string "free to come back to this table!\p"
+	.string "Oh, and take these too, just in case.$"
+TrickHouseCorridor_Text_PokemonTable_FirstRental3:
+	.string "If you need any more of those, feel\n"
+	.string "free to grab some from the box!\p"
 	.string "Good luck on the PUZZLE CHALLENGE!$"
 
 TrickHouseCorridor_EventScript_PokemonTable_Swap:
@@ -161,17 +167,24 @@ TrickHouseCorridor_Movement_PokemonTableStop2:
 	step_end
 
 @ -----------------------------------------------------
+`
+script TrickHouseCorridor_EventScript_EscapeRopeBox {
+	lock
+	bufferitemname (0, ITEM_ESCAPE_ROPE)
+	msgbox ("It's a box full of {STR_VAR_1}.$")
+	getnumitem (ITEM_ESCAPE_ROPE)
+	if (var(VAR_RESULT) < 5) {
+		setvar (VAR_0x8000, ITEM_ESCAPE_ROPE)
+		setvar (VAR_0x8001, 5)
+		subvar (VAR_0x8001, VAR_RESULT)
+		callstd (0)    # Obtain item
+	} else {
+		msgbox ("You don't need any more.$")
+	}
+	release
+}
 
-TrickHouseCorridor_EventScript_IntroCharacter::
-	compare VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_TRICK_MASTER
-	goto_if_eq TrickHouseCorridor_TrickMaster
-	
-	end
-
-TrickHouseCorridor_TrickMaster:
-	
-	end
-
+raw `
 @ -----------------------------------------------------
 #define LID_MASTER 2
 

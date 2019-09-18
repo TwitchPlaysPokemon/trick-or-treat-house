@@ -565,14 +565,21 @@ bool8 ScrCmd_givepcitem(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_checkpcitem(struct ScriptContext *ctx)
+bool8 ScrCmd_checknumitem(struct ScriptContext *ctx)
 {
     u16 itemId = VarGet(ScriptReadHalfword(ctx));
-    u16 quantity = VarGet(ScriptReadHalfword(ctx));
 
-    gSpecialVar_Result = CheckPCHasItem(itemId, quantity);
+    gSpecialVar_Result = CountTotalItemQuantityInBag(itemId);
     return FALSE;
 }
+// bool8 ScrCmd_checkpcitem(struct ScriptContext *ctx)
+// {
+//     u16 itemId = VarGet(ScriptReadHalfword(ctx));
+//     u16 quantity = VarGet(ScriptReadHalfword(ctx));
+
+//     gSpecialVar_Result = CheckPCHasItem(itemId, quantity);
+//     return FALSE;
+// }
 
 bool8 ScrCmd_givedecoration(struct ScriptContext *ctx)
 {

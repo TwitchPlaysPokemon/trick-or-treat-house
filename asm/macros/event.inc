@@ -518,10 +518,9 @@
 	.endm
 
 	@ Checks for quantity amount of item index in the player's PC. Both arguments can be variables.
-	.macro checkpcitem index:req, quantity:req
+	.macro getnumitem index:req
 	.byte 0x4a
 	.2byte \index
-	.2byte \quantity
 	.endm
 
 	@ Adds decoration to the player's PC. In FireRed, this command is a nop. (The argument is read, but not used for anything.)
