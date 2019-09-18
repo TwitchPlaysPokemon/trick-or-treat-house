@@ -77,7 +77,8 @@ PuzzleCommon_TextArray_PuzzleIntro_NoItems::
 	.4byte 0
 
 PuzzleCommon_TextArray_PuzzleIntro_NoItems00:
-	.string "Hah! You've returned for another challenge!\p"
+	.string "Hah! You've returned for another\n"
+	.string "challenge!\p"
 	.string "This next one is a {PUZZLE_ADJECTIVE}\n"
 	.string "puzzle to be sure!\p"
 	.string "I collected it off a fellow who called\n"
@@ -120,7 +121,8 @@ PuzzleCommon_TextArray_PuzzleIntro_Items_Bye::
 	.4byte 0
 
 PuzzleCommon_TextArray_PuzzleIntro_Items00:
-	.string "Hah! You've returned for another challenge!\p"
+	.string "Hah! You've returned for another\n"
+	.string "challenge!\p"
 	.string "This next one is a {PUZZLE_ADJECTIVE}\n"
 	.string "puzzle to be sure!\p"
 	.string "I collected it off a fellow who called\n"

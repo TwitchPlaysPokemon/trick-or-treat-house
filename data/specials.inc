@@ -418,7 +418,7 @@ gSpecials:: @ 81DBA64
 	def_special sub_813B880
 	@ def_special CallApprenticeFunction
 	def_special ShouldTryGetTrainerScript
-	@ def_special ShowMapNamePopup
+	def_special ShowMapNamePopup
 	@ def_special ShowMapNamePopup
 	def_special DoMirageTowerCeilingCrumble
 	def_special SetMirageTowerVisibility

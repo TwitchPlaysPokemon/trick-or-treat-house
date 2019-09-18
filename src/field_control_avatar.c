@@ -250,6 +250,8 @@ static bool8 TryStartInteractionScript(struct MapPosition *position, u16 metatil
     
     gSpecialVar_InteractX = position->x;
     gSpecialVar_InteractY = position->y;
+    gSpecialVar_MetatileX = position->x - 7;
+    gSpecialVar_MetatileY = position->y - 7;
     ScriptContext1_SetupScript(script);
     return TRUE;
 }
@@ -340,7 +342,7 @@ static const u8 *GetBumpInteractEventObjectScript(struct MapPosition *position, 
     if (eventObjectId == EVENT_OBJECTS_COUNT || gEventObjects[eventObjectId].localId == EVENT_OBJ_ID_PLAYER)
         return NULL;
     
-    if (gEventObjects[eventObjectId].trainerType != 5)
+    if (gEventObjects[eventObjectId].trainerType != TrainerType_BumpToInteract)
         return NULL;
 
     gSelectedEventObject = eventObjectId;
@@ -417,6 +419,8 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         return PuzzleCommon_EventScript_ExitDoorMetatile;
     if (MetatileBehavior_IsRegionMap(metatileBehavior) == TRUE)
         return EventScript_RegionMap;
+    if (MetatileBehavior_IsPumpkin(metatileBehavior) == TRUE)
+        return EventScript_Pumpkin;
     if (MetatileBehavior_IsPictureBookShelf(metatileBehavior) == TRUE)
         return EventScript_PictureBookShelf;
     if (MetatileBehavior_IsBookShelf(metatileBehavior) == TRUE)

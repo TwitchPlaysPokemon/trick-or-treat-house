@@ -18,4 +18,168 @@ Puzzle_LedgeMountain_Quip:
 Puzzle_LedgeMountain_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER
 	.2byte 0
+
+@ -----------------------------------------------------
+
+Puzzle_LedgeMountain_TriggerScript_Intro::
+	lock
+	getplayerxy VAR_INTERACT_X, VAR_INTERACT_Y
+	subvar VAR_INTERACT_Y, 54
+	@
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceUp
+	waitmovement 0
+	playse SE_PIN
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMarkAndWait
+	waitmovement 0
+	@
+	playfanfare MUS_ME_TAMA
+	selectpointer Puzzle_LedgeMountain_MovementTable_Intro, VAR_INTERACT_Y
+	applymovement EVENT_OBJ_ID_PLAYER, 0
+	waitmovement 0
+	@
+	special SpawnCameraObject
+	applymovement EVENT_OBJ_ID_CAMERA, Puzzle_LedgeMountain_Movement_CameraPanUp
+	waitmovement 0
+	delay 60
+	waitfanfare
+	setobjectxy EVENT_OBJ_ID_PLAYER, 20, 55
+	applymovement EVENT_OBJ_ID_CAMERA, Puzzle_LedgeMountain_Movement_CameraPanDown
+	waitmovement 0
+	special RemoveCameraObject
+	delay 10
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceLeft
+	waitmovement 0
+	setvar VAR_PUZZLE_00, 1
+	release
+	end
+
+.align 2
+Puzzle_LedgeMountain_MovementTable_Intro:
+	.4byte Common_Movement_BackOffDown1
+	.4byte Common_Movement_NoOp
+	.4byte Common_Movement_WalkUp1
+	.4byte Common_Movement_WalkUp2
+	.4byte 0
+Puzzle_LedgeMountain_Movement_PlayerAdjust:
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_in_place_fastest_up
+	step_end
+Puzzle_LedgeMountain_Movement_CameraPanUp:
+	walk_slow_diag_northwest
+	walk_slow_diag_northwest
+	walk_slow_diag_northwest
+	walk_slow_diag_northwest
+	walk_slow_diag_northwest
+	walk_slow_up
+	walk_slow_up @ 20, 48
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up @ 20, 38
+	walk_fast_up 
+	walk_fast_up 
+	walk_fast_up 
+	walk_fast_up 
+	walk_fast_up 
+	walk_fast_up @ 20, 32
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up
+	walk_fast_up @ 20, 28
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up
+	walk_fastest_up @ 20, 8
+	walk_fast_up
+	walk_fast_up
+	walk_up
+	walk_up
+	walk_slow_up @20, 3
+	step_end
+Puzzle_LedgeMountain_Movement_CameraPanDown:
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	slide_down
+	@ slide_right
+	@ slide_right
+	@ slide_right
+	@ slide_right
+	@ slide_right
+	step_end
+
 `

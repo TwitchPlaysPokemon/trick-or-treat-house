@@ -56,6 +56,8 @@ gSpecialVars:: @ 81DBA0C
 	.4byte gTrainerBattleOpponent_A
 	.4byte gSpecialVar_InteractX
 	.4byte gSpecialVar_InteractY
+	.4byte gSpecialVar_MetatileX
+	.4byte gSpecialVar_MetatileY
 	.4byte gSpecialVar_LastWarpId
 
 	.include "data/specials.inc"
@@ -131,6 +133,12 @@ gStdScripts_End:: @ 81DC2CC
 	
 	.include "data/maps/Puzzle_Wilke/scripts.inc"
 	
+	.include "data/maps/Puzzle_Route110/scripts.inc"
+	
+	@ -------------------------------------------------
+	
+	.include "data/maps/TrickTreat_PetalburgCity/scripts.inc"
+	
 	@ -------------------------------------------------
 	
 	.include "data/maps/EmptyPuzzle/scripts.inc"
@@ -166,7 +174,6 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/Route107/scripts.inc"
 	.include "data/maps/Route108/scripts.inc"
 	.include "data/maps/Route109/scripts.inc"
-	.include "data/maps/Route110/scripts.inc"
 	.include "data/maps/Route111/scripts.inc"
 	.include "data/maps/Route112/scripts.inc"
 	.include "data/maps/Route113/scripts.inc"
@@ -1608,33 +1615,64 @@ Movement_2725CB:: @ 82725CB
 	walk_up
 	step_end
 
+@ -----------------------------------------------------
+
+EventScript_Pumpkin:: @ 82725CE
+	msgbox Text_Pumpkin, MSGBOX_SIGN
+	end
+Text_Pumpkin: @ 82A81E5
+	.string "It's a pumpkin.$"
+
 EventScript_PictureBookShelf:: @ 82725CE
 	msgbox Text_PictureBookShelf, MSGBOX_SIGN
 	end
+Text_PictureBookShelf: @ 82A81E5
+	.string "There's a set of POKéMON picture books.$"
 
 EventScript_BookShelf:: @ 82725D7
 	msgbox Text_BookShelf, MSGBOX_SIGN
 	end
+Text_BookShelf: @ 82A820D
+	.string "It's filled with all sorts of books.$"
 
 EventScript_PokemonCenterBookShelf:: @ 82725E0
 	msgbox Text_PokemonCenterBookShelf, MSGBOX_SIGN
 	end
+Text_PokemonCenterBookShelf: @ 82A8232
+	.string "POKéMON magazines!\n"
+	.string "POKéMON PAL…\p"
+	.string "POKéMON HANDBOOK…\n"
+	.string "ADORABLE POKéMON…$"
 
 EventScript_Vase:: @ 82725E9
 	msgbox Text_Vase, MSGBOX_SIGN
 	end
+Text_Vase: @ 82A8276
+	.string "This vase looks expensive…\n"
+	.string "Peered inside…\p"
+	.string "But, it was empty.$"
 
 EventScript_EmptyTrashCan:: @ 82725F2
 	msgbox Text_EmptyTrashCan, MSGBOX_SIGN
 	end
+Text_EmptyTrashCan: @ 82A82B3
+	.string "It's empty.$"
 
 EventScript_ShopShelf:: @ 82725FB
 	msgbox Text_ShopShelf, MSGBOX_SIGN
 	end
+Text_ShopShelf: @ 82A82BF
+	.string "The shelves brim with all sorts of\n"
+	.string "POKéMON merchandise.$"
 
 EventScript_Blueprint:: @ 8272604
 	msgbox Text_Blueprint, MSGBOX_SIGN
 	end
+Text_Blueprint: @ 82A82F7
+	.string "A blueprint of some sort?\n"
+	.string "It's too complicated!$"
+
+@ -----------------------------------------------------
 
 Text_WouldYouLikeToMixRecords: @ 827260D
 	.string "Would you like to mix records with\n"
@@ -3310,33 +3348,12 @@ MauvilleCity_GameCorner_EventScript_2A5B0D:: @ 82A5B0D
 	.include "data/text/berries.inc"
 	.include "data/text/shoal_cave.inc"
 
-Text_PictureBookShelf: @ 82A81E5
-	.string "There's a set of POKéMON picture books.$"
 
-Text_BookShelf: @ 82A820D
-	.string "It's filled with all sorts of books.$"
 
-Text_PokemonCenterBookShelf: @ 82A8232
-	.string "POKéMON magazines!\n"
-	.string "POKéMON PAL…\p"
-	.string "POKéMON HANDBOOK…\n"
-	.string "ADORABLE POKéMON…$"
 
-Text_Vase: @ 82A8276
-	.string "This vase looks expensive…\n"
-	.string "Peered inside…\p"
-	.string "But, it was empty.$"
 
-Text_EmptyTrashCan: @ 82A82B3
-	.string "It's empty.$"
 
-Text_ShopShelf: @ 82A82BF
-	.string "The shelves brim with all sorts of\n"
-	.string "POKéMON merchandise.$"
 
-Text_Blueprint: @ 82A82F7
-	.string "A blueprint of some sort?\n"
-	.string "It's too complicated!$"
 
 GraniteCave_B1F_MapScript2_2A8327: @ 82A8327
 MirageTower_2F_MapScript2_2A8327: @ 82A8327
@@ -6231,3 +6248,5 @@ EventScript_PlayerPCFemale::
 	.align 2
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
+
+	.include "data/maps/Puzzle_TwinMemories/scripts.inc"

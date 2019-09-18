@@ -253,10 +253,10 @@
         {
             "blockdata_filepath": "data/layouts/Route110/map.bin",
             "border_filepath": "data/layouts/Route110/border.bin",
-            "height": 100,
+            "height": 102,
             "id": "LAYOUT_ROUTE110",
             "name": "Route110_Layout",
-            "primary_tileset": "gTileset_General",
+            "primary_tileset": "gTileset_Autumn",
             "secondary_tileset": "gTileset_Mauville",
             "width": 40
         },
@@ -1109,6 +1109,26 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_TrihardPokemonCenter",
             "width": 20
+        },
+        {
+            "blockdata_filepath": "data/layouts/TrickTreat_PetalburgCity/map.bin",
+            "border_filepath": "data/layouts/TrickTreat_PetalburgCity/border.bin",
+            "height": 30,
+            "id": "LAYOUT_TRICKTREAT_PETALBURG_CITY",
+            "name": "TrickTreat_PetalburgCity_Layout",
+            "primary_tileset": "gTileset_Autumn",
+            "secondary_tileset": "gTileset_Petalburg",
+            "width": 50
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_TwinMemories/map.bin",
+            "border_filepath": "data/layouts/Puzzle_TwinMemories/border.bin",
+            "height": 30,
+            "id": "LAYOUT_PUZZLE_TWIN_MEMORIES",
+            "name": "Puzzle_TwinMemories_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrickHousePuzzle",
+            "width": 33
         }
     ],
     "layouts_table_label": "gMapLayouts"

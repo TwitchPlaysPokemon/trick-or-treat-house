@@ -16,7 +16,6 @@ static const u8 sTileBitAttributes[] =
     [MB_TALL_GRASS] = TILE_ATTRIBUTES(TRUE, FALSE, TRUE),
     [MB_LONG_GRASS] = TILE_ATTRIBUTES(TRUE, FALSE, TRUE),
     [MB_AUTUMN_GRASS] = TILE_ATTRIBUTES(TRUE, FALSE, TRUE),
-    [MB_UNUSED_04] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNUSED_05] = TILE_ATTRIBUTES(FALSE, FALSE, TRUE),
     [MB_DEEP_SAND] = TILE_ATTRIBUTES(TRUE, FALSE, TRUE),
     [MB_SHORT_GRASS] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
@@ -41,6 +40,7 @@ static const u8 sTileBitAttributes[] =
     [MB_UNUSED_SOOTOPOLIS_DEEP_WATER_2] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_STAIRS_OUTSIDE_ABANDONED_SHIP] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_SHOAL_CAVE_ENTRANCE] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
+    [MB_UNUSED_1D] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNUSED_1E] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNUSED_1F] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_ICE] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
@@ -247,7 +247,7 @@ static const u8 sTileBitAttributes[] =
     [MB_TRAINER_HILL_TIMER] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNKNOWN_CLOSED_DOOR] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_PUZZLE_MUSIC_TILE] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
-    [MB_UNUSED_EC] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
+    [MB_PUMPKIN] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNUSED_ED] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNUSED_EE] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNUSED_EF] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
@@ -393,14 +393,6 @@ bool8 MetatileBehavior_IsEscalator(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_UP_ESCALATOR
      || metatileBehavior == MB_DOWN_ESCALATOR)
-        return TRUE;
-    else
-        return FALSE;
-}
-
-bool8 Unref_MetatileBehavior_IsUnused04(u8 metatileBehavior)
-{
-    if (metatileBehavior == MB_UNUSED_04)
         return TRUE;
     else
         return FALSE;
@@ -1419,6 +1411,14 @@ bool8 MetatileBehavior_IsCuttableGrass(u8 metatileBehavior)
 bool8 MetatileBehavior_IsRunningShoesManual(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_RUNNING_SHOES_INSTRUCTION)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsPumpkin(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_PUMPKIN)
         return TRUE;
     else
         return FALSE;
