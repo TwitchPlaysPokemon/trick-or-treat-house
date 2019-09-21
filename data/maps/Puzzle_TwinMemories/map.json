@@ -126,6 +126,46 @@
             "var_value": "2",
             "x": 30,
             "y": 15
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "3",
+            "x": 8,
+            "y": 18
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "3",
+            "x": 9,
+            "y": 18
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "3",
+            "x": 24,
+            "y": 18
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "3",
+            "x": 23,
+            "y": 18
         }
     ],
     "id": "MAP_PUZZLE_TWIN_MEMORIES",

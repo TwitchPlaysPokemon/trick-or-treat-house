@@ -28,6 +28,7 @@ Puzzle_TwinMemories_FrameTable:
 	@ VAR_STEP_TRIGGER is set to 1 by Task_MonitorEventObjectTriggers when any npc steps on a trigger
 	map_script_2 VAR_STEP_TRIGGER, 1, Puzzle_TwinMemories_CheckPuzzleSolved1
 	map_script_2 VAR_STEP_TRIGGER, 2, Puzzle_TwinMemories_CheckPuzzleSolved2
+	map_script_2 VAR_STEP_TRIGGER, 3, Puzzle_TwinMemories_TriggerTrappedFailsafe
 	.2byte 0
 Puzzle_TwinMemories_MapTable:
 	map_script_2 VAR_LAST_WARP_ID, 3, Puzzle_TwinMemories_SetupLeftBoulders
@@ -118,5 +119,36 @@ script Puzzle_TwinMemories_CheckPuzzleSolved2 {
 		}
 	}
 	setvar (VAR_STEP_TRIGGER, 0)
+}
+script Puzzle_TwinMemories_TriggerTrappedFailsafe {
+	lock
+	playse (SE_HAZURE)
+	msgbox ("Triggering anti-trapping fail-safe!$")
+	
+	playse (SE_W070)
+	setvar (VAR_0x8004, 3)  #amplitude y
+	setvar (VAR_0x8005, 3)  #amplitude x
+	setvar (VAR_0x8006, 10)  #duration (num shakes)
+	setvar (VAR_0x8007, 5)  #frequency
+	special (DoCameraShakeEffect)
+	
+	delay (5)
+	setobjectxy (2, 20, 25)
+	delay (5)
+	setobjectxy (3, 21, 25)
+	delay (5)
+	setobjectxy (4, 22, 25)
+	delay (5)
+	setobjectxy (5, 23, 25)
+	delay (5)
+	setobjectxy (6, 24, 25)
+	delay (5)
+	setobjectxy (7, 25, 25)
+	waitstate
+	
+	msgbox ("Please reenter the room to reset,\n"
+			"and try not to get trapped again!$")
+	setvar (VAR_STEP_TRIGGER, 0)
+	release
 }
 
