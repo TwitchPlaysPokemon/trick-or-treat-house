@@ -282,8 +282,8 @@ Puzzle_TrickHouseOriginal7_EventScript_26E373:: @ 826E373
 	end
 
 Puzzle_TrickHouseOriginal7_EventScript_26E389:: @ 826E389
-	@ trainerbattle_single TRAINER_JOSHUA, Puzzle_TrickHouseOriginal7_Text_26E481, Puzzle_TrickHouseOriginal7_Text_26E4C1
-	@ msgbox Puzzle_TrickHouseOriginal7_Text_26E4F4, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_01, Puzzle_TrickHouseOriginal7_Text_26E481, Puzzle_TrickHouseOriginal7_Text_26E4C1
+	msgbox Puzzle_TrickHouseOriginal7_Text_26E4F4, MSGBOX_AUTOCLOSE
 	end
 Puzzle_TrickHouseOriginal7_Text_26E481: @ 826E481
 	.string "The TRICK MASTER always vanishes\n"
@@ -297,8 +297,8 @@ Puzzle_TrickHouseOriginal7_Text_26E4F4: @ 826E4F4
 
 
 Puzzle_TrickHouseOriginal7_EventScript_26E3A0:: @ 826E3A0
-	@ trainerbattle_single TRAINER_PATRICIA, Puzzle_TrickHouseOriginal7_Text_26E531, Puzzle_TrickHouseOriginal7_Text_26E564
-	@ msgbox Puzzle_TrickHouseOriginal7_Text_26E57F, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_02, Puzzle_TrickHouseOriginal7_Text_26E531, Puzzle_TrickHouseOriginal7_Text_26E564
+	msgbox Puzzle_TrickHouseOriginal7_Text_26E57F, MSGBOX_AUTOCLOSE
 	end
 Puzzle_TrickHouseOriginal7_Text_26E531: @ 826E531
 	.string "Going around the same spot…\n"
@@ -312,8 +312,8 @@ Puzzle_TrickHouseOriginal7_Text_26E57F: @ 826E57F
 
 
 Puzzle_TrickHouseOriginal7_EventScript_26E3B7:: @ 826E3B7
-	@ trainerbattle_single TRAINER_ALEXIS, Puzzle_TrickHouseOriginal7_Text_26E5C0, Puzzle_TrickHouseOriginal7_Text_26E604
-	@ msgbox Puzzle_TrickHouseOriginal7_Text_26E61E, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_03, Puzzle_TrickHouseOriginal7_Text_26E5C0, Puzzle_TrickHouseOriginal7_Text_26E604
+	msgbox Puzzle_TrickHouseOriginal7_Text_26E61E, MSGBOX_AUTOCLOSE
 	end
 Puzzle_TrickHouseOriginal7_Text_26E5C0: @ 826E5C0
 	.string "Whoever wins will get through here\n"
@@ -327,8 +327,8 @@ Puzzle_TrickHouseOriginal7_Text_26E61E: @ 826E61E
 
 
 Puzzle_TrickHouseOriginal7_EventScript_26E3CE:: @ 826E3CE
-	@ trainerbattle_single TRAINER_MARIELA, Puzzle_TrickHouseOriginal7_Text_26E66B, Puzzle_TrickHouseOriginal7_Text_26E69C
-	@ msgbox Puzzle_TrickHouseOriginal7_Text_26E6BC, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_04, Puzzle_TrickHouseOriginal7_Text_26E66B, Puzzle_TrickHouseOriginal7_Text_26E69C
+	msgbox Puzzle_TrickHouseOriginal7_Text_26E6BC, MSGBOX_AUTOCLOSE
 	end
 Puzzle_TrickHouseOriginal7_Text_26E66B: @ 826E66B
 	.string "Nufufufu, here at last!\n"
@@ -341,8 +341,8 @@ Puzzle_TrickHouseOriginal7_Text_26E6BC: @ 826E6BC
 
 
 Puzzle_TrickHouseOriginal7_EventScript_26E3E5:: @ 826E3E5
-	@ trainerbattle_single TRAINER_ALVARO, Puzzle_TrickHouseOriginal7_Text_26E6DA, Puzzle_TrickHouseOriginal7_Text_26E700
-	@ msgbox Puzzle_TrickHouseOriginal7_Text_26E722, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_05, Puzzle_TrickHouseOriginal7_Text_26E6DA, Puzzle_TrickHouseOriginal7_Text_26E700
+	msgbox Puzzle_TrickHouseOriginal7_Text_26E722, MSGBOX_AUTOCLOSE
 	end
 Puzzle_TrickHouseOriginal7_Text_26E6DA: @ 826E6DA
 	.string "I ever so closely watched you coming!$"
@@ -356,8 +356,8 @@ Puzzle_TrickHouseOriginal7_Text_26E722: @ 826E722
 
 
 Puzzle_TrickHouseOriginal7_EventScript_26E3FC:: @ 826E3FC
-	@ trainerbattle_single TRAINER_EVERETT, Puzzle_TrickHouseOriginal7_Text_26E78D, Puzzle_TrickHouseOriginal7_Text_26E7AB
-	@ msgbox Puzzle_TrickHouseOriginal7_Text_26E7C4, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_06, Puzzle_TrickHouseOriginal7_Text_26E78D, Puzzle_TrickHouseOriginal7_Text_26E7AB
+	msgbox Puzzle_TrickHouseOriginal7_Text_26E7C4, MSGBOX_AUTOCLOSE
 	end
 Puzzle_TrickHouseOriginal7_Text_26E78D: @ 826E78D
 	.string "It's awfully cramped in here…$"

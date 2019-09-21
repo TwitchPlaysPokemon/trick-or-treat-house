@@ -1,44 +1,56 @@
 [
 	{
-		"class": "BATTLE_GIRL",
-		"music": "INTENSE",
+		"class": "PKMN_RANGER",
+		"music": "COOL",
+		"pic": "PKMN_RANGER_F",
 		"female": true,
-		"name": "KORA",
+		"name": "SOPHIA",
+		"items": ["ITEM_FULL_RESTORE"],
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY",
 		"party": [
 			{
-				"species": "SPECIES_MEDITITE",
-				"level": 48,
-				"iv": 100
-			}
-		]
-	},
-	{
-		"class": "BLACK_BELT",
-		"music": "INTENSE",
-		"name": "YUJI",
-		"party": [
-			{
-				"species": "SPECIES_MAKUHITA",
-				"level": 47,
-				"iv": 100
+				"species": "SPECIES_SWABLU",
+				"level": 29,
+				"iv": 50
 			},
 			{
-				"species": "SPECIES_MACHOKE",
-				"level": 47,
-				"iv": 100
+				"species": "SPECIES_ROSELIA",
+				"level": 29,
+				"iv": 50
 			}
 		]
 	},
 	{
-		"class": "BATTLE_GIRL",
-		"music": "INTENSE",
-		"female": true,
-		"name": "PAULA",
+		"class": "BIRD_KEEPER",
+		"music": "COOL",
+		"name": "BENNY",
 		"party": [
 			{
-				"species": "SPECIES_BRELOOM",
-				"level": 49,
-				"iv": 100
+				"species": "SPECIES_SWELLOW",
+				"level": 27
+			},
+			{
+				"species": "SPECIES_PELIPPER",
+				"level": 27
+			},
+			{
+				"species": "SPECIES_XATU",
+				"level": 27
+			}
+		]
+	},
+	{
+		"class": "PKMN_RANGER",
+		"music": "COOL",
+		"pic": "PKMN_RANGER_M",
+		"name": "SEBASTIAN",
+		"items": ["ITEM_FULL_RESTORE"],
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY",
+		"party": [
+			{
+				"species": "SPECIES_CACTURNE",
+				"level": 30,
+				"iv": 50
 			}
 		]
 	}

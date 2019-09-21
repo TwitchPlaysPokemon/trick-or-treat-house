@@ -58,18 +58,18 @@ Puzzle_TrickHouseOriginal6_EventScript_26DDC0:: @ 826DDC0
 
 
 Puzzle_TrickHouseOriginal6_EventScript_26DDE1:: @ 826DDE1
-	@ trainerbattle_single TRAINER_SOPHIA, Puzzle_TrickHouseOriginal6_Text_26DE93, Puzzle_TrickHouseOriginal6_Text_26DED2
-	@ msgbox Puzzle_TrickHouseOriginal6_Text_26DEF3, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_01, Puzzle_TrickHouseOriginal6_Text_26DE93, Puzzle_TrickHouseOriginal6_Text_26DED2
+	msgbox Puzzle_TrickHouseOriginal6_Text_26DEF3, MSGBOX_AUTOCLOSE
 	end
 
 Puzzle_TrickHouseOriginal6_EventScript_26DDF8:: @ 826DDF8
-	@ trainerbattle_single TRAINER_BENNY, Puzzle_TrickHouseOriginal6_Text_26DF55, Puzzle_TrickHouseOriginal6_Text_26DF8D
-	@ msgbox Puzzle_TrickHouseOriginal6_Text_26DFA0, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_02, Puzzle_TrickHouseOriginal6_Text_26DF55, Puzzle_TrickHouseOriginal6_Text_26DF8D
+	msgbox Puzzle_TrickHouseOriginal6_Text_26DFA0, MSGBOX_AUTOCLOSE
 	end
 
 Puzzle_TrickHouseOriginal6_EventScript_26DE0F:: @ 826DE0F
-	@ trainerbattle_single TRAINER_SEBASTIAN, Puzzle_TrickHouseOriginal6_Text_26DFD7, Puzzle_TrickHouseOriginal6_Text_26E004
-	@ msgbox Puzzle_TrickHouseOriginal6_Text_26E048, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_03, Puzzle_TrickHouseOriginal6_Text_26DFD7, Puzzle_TrickHouseOriginal6_Text_26E004
+	msgbox Puzzle_TrickHouseOriginal6_Text_26E048, MSGBOX_AUTOCLOSE
 	end
 
 Puzzle_TrickHouseOriginal6_Text_26DE93: @ 826DE93
