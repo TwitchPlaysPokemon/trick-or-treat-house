@@ -4,19 +4,11 @@
     "allow_running": false,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "PuzzleCommon_EventScript_Scroll",
-            "type": "sign",
-            "x": 14,
-            "y": 13
-        }
     ],
     "connections": null,
     "coord_events": [
     ],
-    "id": "MAP_ROUTE110_TRICK_HOUSE_PUZZLE4",
+    "id": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL4",
     "layout": "LAYOUT_ROUTE110_TRICK_HOUSE_PUZZLE4",
     "map_type": "MAP_TYPE_INDOOR",
     "music": "MUS_KARAKURI",
@@ -203,6 +195,19 @@
             "trainer_type": "0",
             "x": 10,
             "y": 15
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_SCROLL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "PuzzleCommon_EventScript_Scroll",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 14,
+            "y": 13
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_110",

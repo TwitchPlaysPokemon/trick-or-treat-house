@@ -4,11 +4,35 @@
     "allow_running": false,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x00",
+            "item": "ITEM_BURN_HEAL",
+            "type": "hidden_item",
+            "x": 7,
+            "y": 5
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x01",
+            "item": "ITEM_ETHER",
+            "type": "hidden_item",
+            "x": 0,
+            "y": 3
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x02",
+            "item": "ITEM_LAVA_COOKIE",
+            "type": "hidden_item",
+            "x": 0,
+            "y": 9
+        }
     ],
     "connections": null,
     "coord_events": [
     ],
-    "id": "MAP_ROUTE110_TRICK_HOUSE_PUZZLE1",
+    "id": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL1",
     "layout": "LAYOUT_ROUTE110_TRICK_HOUSE_PUZZLE1",
     "map_type": "MAP_TYPE_INDOOR",
     "music": "MUS_KARAKURI",
@@ -180,7 +204,7 @@
             "script": "Common_EventScript_ItemPotion",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 9,
+            "x": 10,
             "y": 4
         },
         {
@@ -221,6 +245,32 @@
             "trainer_type": "0",
             "x": 3,
             "y": 16
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_ITEM_1",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_ItemAwakening",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 7,
+            "y": 3
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_ITEM_2",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_ItemFullHeal",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 5,
+            "y": 15
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_110",

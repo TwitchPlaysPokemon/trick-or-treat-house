@@ -6,14 +6,13 @@ Puzzle_TrickHouseOriginal1_MapScripts:: @ 826B90F
 	.byte 0
 
 Puzzle_TrickHouseOriginal1_Name:
-	.string "The Mountain Trail$"
+	.string "Original 1$"
 Puzzle_TrickHouseOriginal1_Author:
-	.string "Tustin2121$"
+	.string "Game Freak$"
 Puzzle_TrickHouseOriginal1_Adjective:
-	.string "jumpy$"
+	.string "original$"
 Puzzle_TrickHouseOriginal1_Quip:
-	.string "I love a good climb in the morning!\n"
-	.string "How about you?$"
+	.string "Insert Quip Here$"
 
 @ -----------------------------------------------------
 

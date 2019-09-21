@@ -1,6 +1,18 @@
 raw `
 Puzzle_TrickHouseOriginal4_MapScripts:: @ 826C860
+	puzzle_info Puzzle_TrickHouseOriginal4_Name, Puzzle_TrickHouseOriginal4_Author
+	puzzle_adjective Puzzle_TrickHouseOriginal4_Adjective
+	puzzle_quip Puzzle_TrickHouseOriginal4_Quip
 	.byte 0
+
+Puzzle_TrickHouseOriginal4_Name:
+	.string "Original 4$"
+Puzzle_TrickHouseOriginal4_Author:
+	.string "Game Freak$"
+Puzzle_TrickHouseOriginal4_Adjective:
+	.string "original$"
+Puzzle_TrickHouseOriginal4_Quip:
+	.string "Insert Quip Here$"
 
 @ -----------------------------------------------------
 

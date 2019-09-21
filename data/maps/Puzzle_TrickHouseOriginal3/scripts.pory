@@ -1,8 +1,22 @@
 raw `
 Puzzle_TrickHouseOriginal3_MapScripts:: @ 826BED8
+	puzzle_info Puzzle_TrickHouseOriginal3_Name, Puzzle_TrickHouseOriginal3_Author
+	puzzle_adjective Puzzle_TrickHouseOriginal3_Adjective
+	puzzle_quip Puzzle_TrickHouseOriginal3_Quip
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TrickHouseOriginal3_MapScript1_26BEE3
 	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_TrickHouseOriginal3_OnTransition
 	.byte 0
+
+Puzzle_TrickHouseOriginal3_Name:
+	.string "Original 3$"
+Puzzle_TrickHouseOriginal3_Author:
+	.string "Game Freak$"
+Puzzle_TrickHouseOriginal3_Adjective:
+	.string "original$"
+Puzzle_TrickHouseOriginal3_Quip:
+	.string "Insert Quip Here$"
+
+@ -----------------------------------------------------
 
 Puzzle_TrickHouseOriginal3_MapScript1_26BEE3: @ 826BEE3
 	call Puzzle_TrickHouseOriginal3_EventScript_26BF1E
