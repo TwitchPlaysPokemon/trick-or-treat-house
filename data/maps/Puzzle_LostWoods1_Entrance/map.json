@@ -17,7 +17,7 @@
     "id": "MAP_PUZZLE_LOST_WOODS1_ENTRANCE",
     "layout": "LAYOUT_PUZZLE_LOST_WOODS_ENTRANCE",
     "map_type": "MAP_TYPE_UNDERGROUND",
-    "music": "MUS_DAN02",
+    "music": "MUS_RG_T_MORI",
     "name": "Puzzle_LostWoods1_Entrance",
     "object_events": [
     ],

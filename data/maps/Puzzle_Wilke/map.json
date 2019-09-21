@@ -11,7 +11,7 @@
     "id": "MAP_PUZZLE_WILKE",
     "layout": "LAYOUT_PUZZLE_WILKE",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_KARAKURI",
+    "music": "MUS_MACHI_S3",
     "name": "Puzzle_Wilke",
     "object_events": [
         {

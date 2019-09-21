@@ -11,7 +11,7 @@
     "id": "MAP_PUZZLE_HIDDEN_MAZE",
     "layout": "LAYOUT_PUZZLE_HIDDEN_MAZE",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_AJITO",
     "name": "Puzzle_HiddenMaze",
     "object_events": [
         {

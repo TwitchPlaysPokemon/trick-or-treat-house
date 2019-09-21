@@ -32,7 +32,7 @@
     "id": "MAP_LOST_WOODS1_ROOM0",
     "layout": "LAYOUT_PUZZLE_LOST_WOODS_ROOM0",
     "map_type": "MAP_TYPE_UNDERGROUND",
-    "music": "MUS_DAN02",
+    "music": "MUS_RG_T_MORI",
     "name": "LostWoods1_Room0",
     "object_events": [
     ],

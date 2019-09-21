@@ -41,7 +41,10 @@ script Puzzle_MusicNoteTiles_OnLoad {
 
 script Puzzle_MusicNoteTiles_Pokemon {
     lock
-    msgbox("The POKéMON are singing a song.$")
+    message ("The POKéMON are singing a song.$")
+    fadeoutbgm (0)
+    waitmessage
+    delay 10
 
     # Sing the current song, by showing music notes above their heads.
     switch (var(VAR_CUR_SONG)) {
@@ -60,6 +63,7 @@ script Puzzle_MusicNoteTiles_Pokemon {
     }
 
     # Reset the tile progression state.
+    fadeinbgm (0)
     setvar(VAR_NUM_CORRECT_STEPS, 0)
     setflag(FLAG_TILES_ACTIVE)
     release
