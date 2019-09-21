@@ -223,13 +223,13 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/SecretBase_YellowCave3/scripts.inc"
 	.include "data/maps/SecretBase_YellowCave4/scripts.inc"
 	
-	.include "data/maps/Route110_TrickHousePuzzle1/scripts.inc"
-	.include "data/maps/Route110_TrickHousePuzzle2/scripts.inc"
-	.include "data/maps/Route110_TrickHousePuzzle3/scripts.inc"
-	.include "data/maps/Route110_TrickHousePuzzle4/scripts.inc"
-	.include "data/maps/Route110_TrickHousePuzzle6/scripts.inc"
-	.include "data/maps/Route110_TrickHousePuzzle7/scripts.inc"
-	.include "data/maps/Route110_TrickHousePuzzle8/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal1/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal2/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal3/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal4/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal6/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal7/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal8/scripts.inc"
 
 Std_MsgboxNPC: @ 8271315
 	lock

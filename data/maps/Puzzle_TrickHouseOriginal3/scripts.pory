@@ -1,17 +1,18 @@
-Route110_TrickHousePuzzle3_MapScripts:: @ 826BED8
-	map_script MAP_SCRIPT_ON_RESUME, Route110_TrickHousePuzzle3_MapScript1_26BEE3
-	map_script MAP_SCRIPT_ON_TRANSITION, Route110_TrickHousePuzzle3_OnTransition
+raw `
+Puzzle_TrickHouseOriginal3_MapScripts:: @ 826BED8
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TrickHouseOriginal3_MapScript1_26BEE3
+	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_TrickHouseOriginal3_OnTransition
 	.byte 0
 
-Route110_TrickHousePuzzle3_MapScript1_26BEE3: @ 826BEE3
-	call Route110_TrickHousePuzzle3_EventScript_26BF1E
+Puzzle_TrickHouseOriginal3_MapScript1_26BEE3: @ 826BEE3
+	call Puzzle_TrickHouseOriginal3_EventScript_26BF1E
 	compare VAR_TEMP_9, 0
-	call_if_eq Route110_TrickHousePuzzle3_EventScript_26BF97
+	call_if_eq Puzzle_TrickHouseOriginal3_EventScript_26BF97
 	compare VAR_TEMP_9, 1
-	call_if_eq Route110_TrickHousePuzzle3_EventScript_26C232
+	call_if_eq Puzzle_TrickHouseOriginal3_EventScript_26C232
 	end
 
-Route110_TrickHousePuzzle3_OnTransition: @ 826BEFF
+Puzzle_TrickHouseOriginal3_OnTransition: @ 826BEFF
 	setvar VAR_TEMP_1, 0
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_3, 0
@@ -20,38 +21,38 @@ Route110_TrickHousePuzzle3_OnTransition: @ 826BEFF
 	setvar VAR_TEMP_9, 0
 	end
 
-Route110_TrickHousePuzzle3_EventScript_26BF1E:: @ 826BF1E
+Puzzle_TrickHouseOriginal3_EventScript_26BF1E:: @ 826BF1E
 	setmetatile 4, 14, METATILE_TrickHousePuzzle_Button_Up, 0
 	setmetatile 3, 11, METATILE_TrickHousePuzzle_Button_Up, 0
 	setmetatile 12, 5, METATILE_TrickHousePuzzle_Button_Up, 0
 	setmetatile 8, 2, METATILE_TrickHousePuzzle_Button_Up, 0
 	compare VAR_TEMP_8, 1
-	call_if_eq Route110_TrickHousePuzzle3_EventScript_26BF6F
+	call_if_eq Puzzle_TrickHouseOriginal3_EventScript_26BF6F
 	compare VAR_TEMP_8, 2
-	call_if_eq Route110_TrickHousePuzzle3_EventScript_26BF79
+	call_if_eq Puzzle_TrickHouseOriginal3_EventScript_26BF79
 	compare VAR_TEMP_8, 3
-	call_if_eq Route110_TrickHousePuzzle3_EventScript_26BF83
+	call_if_eq Puzzle_TrickHouseOriginal3_EventScript_26BF83
 	compare VAR_TEMP_8, 4
-	call_if_eq Route110_TrickHousePuzzle3_EventScript_26BF8D
+	call_if_eq Puzzle_TrickHouseOriginal3_EventScript_26BF8D
 	return
 
-Route110_TrickHousePuzzle3_EventScript_26BF6F:: @ 826BF6F
+Puzzle_TrickHouseOriginal3_EventScript_26BF6F:: @ 826BF6F
 	setmetatile 4, 14, METATILE_TrickHousePuzzle_Button_Pressed, 0
 	return
 
-Route110_TrickHousePuzzle3_EventScript_26BF79:: @ 826BF79
+Puzzle_TrickHouseOriginal3_EventScript_26BF79:: @ 826BF79
 	setmetatile 3, 11, METATILE_TrickHousePuzzle_Button_Pressed, 0
 	return
 
-Route110_TrickHousePuzzle3_EventScript_26BF83:: @ 826BF83
+Puzzle_TrickHouseOriginal3_EventScript_26BF83:: @ 826BF83
 	setmetatile 12, 5, METATILE_TrickHousePuzzle_Button_Pressed, 0
 	return
 
-Route110_TrickHousePuzzle3_EventScript_26BF8D:: @ 826BF8D
+Puzzle_TrickHouseOriginal3_EventScript_26BF8D:: @ 826BF8D
 	setmetatile 8, 2, METATILE_TrickHousePuzzle_Button_Pressed, 0
 	return
 
-Route110_TrickHousePuzzle3_EventScript_26BF97:: @ 826BF97
+Puzzle_TrickHouseOriginal3_EventScript_26BF97:: @ 826BF97
 	setmetatile 1, 6, METATILE_TrickHousePuzzle_BlueDoorH_Open_Tile0, 0
 	setmetatile 2, 6, METATILE_TrickHousePuzzle_BlueDoorH_Open_Tile1, 0
 	setmetatile 1, 7, METATILE_TrickHousePuzzle_BlueDoorH_Open_Tile2, 0
@@ -128,7 +129,7 @@ Route110_TrickHousePuzzle3_EventScript_26BF97:: @ 826BF97
 	setmetatile 9, 5, METATILE_TrickHousePuzzle_RedDoorV_Open1, 1
 	return
 
-Route110_TrickHousePuzzle3_EventScript_26C232:: @ 826C232
+Puzzle_TrickHouseOriginal3_EventScript_26C232:: @ 826C232
 	setmetatile 1, 6, METATILE_TrickHousePuzzle_BlueDoorH_Closed_Tile0, 0
 	setmetatile 2, 6, METATILE_TrickHousePuzzle_BlueDoorH_Closed_Tile1, 0
 	setmetatile 1, 7, METATILE_TrickHousePuzzle_BlueDoorH_Closed_Tile2, 1
@@ -205,132 +206,132 @@ Route110_TrickHousePuzzle3_EventScript_26C232:: @ 826C232
 	setmetatile 9, 5, METATILE_TrickHousePuzzle_Floor_ShadowTop_Alt, 0
 	return
 
-Route110_TrickHousePuzzle3_EventScript_26C4CD:: @ 826C4CD
+Puzzle_TrickHouseOriginal3_EventScript_26C4CD:: @ 826C4CD
 	lockall
 	setvar VAR_TEMP_8, 1
-	goto Route110_TrickHousePuzzle3_EventScript_26C4FD
+	goto Puzzle_TrickHouseOriginal3_EventScript_26C4FD
 	end
 
-Route110_TrickHousePuzzle3_EventScript_26C4D9:: @ 826C4D9
+Puzzle_TrickHouseOriginal3_EventScript_26C4D9:: @ 826C4D9
 	lockall
 	setvar VAR_TEMP_8, 2
-	goto Route110_TrickHousePuzzle3_EventScript_26C4FD
+	goto Puzzle_TrickHouseOriginal3_EventScript_26C4FD
 	end
 
-Route110_TrickHousePuzzle3_EventScript_26C4E5:: @ 826C4E5
+Puzzle_TrickHouseOriginal3_EventScript_26C4E5:: @ 826C4E5
 	lockall
 	setvar VAR_TEMP_8, 3
-	goto Route110_TrickHousePuzzle3_EventScript_26C4FD
+	goto Puzzle_TrickHouseOriginal3_EventScript_26C4FD
 	end
 
-Route110_TrickHousePuzzle3_EventScript_26C4F1:: @ 826C4F1
+Puzzle_TrickHouseOriginal3_EventScript_26C4F1:: @ 826C4F1
 	lockall
 	setvar VAR_TEMP_8, 4
-	goto Route110_TrickHousePuzzle3_EventScript_26C4FD
+	goto Puzzle_TrickHouseOriginal3_EventScript_26C4FD
 	end
 
-Route110_TrickHousePuzzle3_EventScript_26C4FD:: @ 826C4FD
-	call Route110_TrickHousePuzzle3_EventScript_26C510
+Puzzle_TrickHouseOriginal3_EventScript_26C4FD:: @ 826C4FD
+	call Puzzle_TrickHouseOriginal3_EventScript_26C510
 	playse SE_PIN
-	call Route110_TrickHousePuzzle3_EventScript_26BF1E
-	goto Route110_TrickHousePuzzle3_EventScript_26C569
+	call Puzzle_TrickHouseOriginal3_EventScript_26BF1E
+	goto Puzzle_TrickHouseOriginal3_EventScript_26C569
 	end
 
-Route110_TrickHousePuzzle3_EventScript_26C510:: @ 826C510
+Puzzle_TrickHouseOriginal3_EventScript_26C510:: @ 826C510
 	setvar VAR_TEMP_1, 0
 	setvar VAR_TEMP_2, 0
 	setvar VAR_TEMP_3, 0
 	setvar VAR_TEMP_4, 0
 	compare VAR_TEMP_8, 1
-	call_if_eq Route110_TrickHousePuzzle3_EventScript_26C551
+	call_if_eq Puzzle_TrickHouseOriginal3_EventScript_26C551
 	compare VAR_TEMP_8, 2
-	call_if_eq Route110_TrickHousePuzzle3_EventScript_26C557
+	call_if_eq Puzzle_TrickHouseOriginal3_EventScript_26C557
 	compare VAR_TEMP_8, 3
-	call_if_eq Route110_TrickHousePuzzle3_EventScript_26C55D
+	call_if_eq Puzzle_TrickHouseOriginal3_EventScript_26C55D
 	compare VAR_TEMP_8, 4
-	call_if_eq Route110_TrickHousePuzzle3_EventScript_26C563
+	call_if_eq Puzzle_TrickHouseOriginal3_EventScript_26C563
 	return
 
-Route110_TrickHousePuzzle3_EventScript_26C551:: @ 826C551
+Puzzle_TrickHouseOriginal3_EventScript_26C551:: @ 826C551
 	setvar VAR_TEMP_1, 1
 	return
 
-Route110_TrickHousePuzzle3_EventScript_26C557:: @ 826C557
+Puzzle_TrickHouseOriginal3_EventScript_26C557:: @ 826C557
 	setvar VAR_TEMP_2, 1
 	return
 
-Route110_TrickHousePuzzle3_EventScript_26C55D:: @ 826C55D
+Puzzle_TrickHouseOriginal3_EventScript_26C55D:: @ 826C55D
 	setvar VAR_TEMP_3, 1
 	return
 
-Route110_TrickHousePuzzle3_EventScript_26C563:: @ 826C563
+Puzzle_TrickHouseOriginal3_EventScript_26C563:: @ 826C563
 	setvar VAR_TEMP_4, 1
 	return
 
-Route110_TrickHousePuzzle3_EventScript_26C569:: @ 826C569
+Puzzle_TrickHouseOriginal3_EventScript_26C569:: @ 826C569
 	compare VAR_TEMP_9, 1
-	call_if_eq Route110_TrickHousePuzzle3_EventScript_26BF97
+	call_if_eq Puzzle_TrickHouseOriginal3_EventScript_26BF97
 	compare VAR_TEMP_9, 0
-	call_if_eq Route110_TrickHousePuzzle3_EventScript_26C232
+	call_if_eq Puzzle_TrickHouseOriginal3_EventScript_26C232
 	special DrawWholeMapView
 	compare VAR_TEMP_9, 1
-	goto_if_eq Route110_TrickHousePuzzle3_EventScript_26C599
+	goto_if_eq Puzzle_TrickHouseOriginal3_EventScript_26C599
 	compare VAR_TEMP_9, 0
-	goto_if_eq Route110_TrickHousePuzzle3_EventScript_26C5A0
+	goto_if_eq Puzzle_TrickHouseOriginal3_EventScript_26C5A0
 	end
 
-Route110_TrickHousePuzzle3_EventScript_26C599:: @ 826C599
+Puzzle_TrickHouseOriginal3_EventScript_26C599:: @ 826C599
 	setvar VAR_TEMP_9, 0
 	releaseall
 	end
 
-Route110_TrickHousePuzzle3_EventScript_26C5A0:: @ 826C5A0
+Puzzle_TrickHouseOriginal3_EventScript_26C5A0:: @ 826C5A0
 	setvar VAR_TEMP_9, 1
 	releaseall
 	end
 
 @ -----------------------------------------------------
 
-Route110_TrickHousePuzzle3_EventScript_26C5C4:: @ 826C5C4
-	trainerbattle_single TRAINER_01, Route110_TrickHousePuzzle3_Text_26C676, Route110_TrickHousePuzzle3_Text_26C69D
-	msgbox Route110_TrickHousePuzzle3_Text_26C6E6, MSGBOX_AUTOCLOSE
+Puzzle_TrickHouseOriginal3_EventScript_26C5C4:: @ 826C5C4
+	trainerbattle_single TRAINER_01, Puzzle_TrickHouseOriginal3_Text_26C676, Puzzle_TrickHouseOriginal3_Text_26C69D
+	msgbox Puzzle_TrickHouseOriginal3_Text_26C6E6, MSGBOX_AUTOCLOSE
 	end
-Route110_TrickHousePuzzle3_Text_26C676: @ 826C676
+Puzzle_TrickHouseOriginal3_Text_26C676: @ 826C676
 	.string "I keep coming back to this same place!$"
-Route110_TrickHousePuzzle3_Text_26C69D: @ 826C69D
+Puzzle_TrickHouseOriginal3_Text_26C69D: @ 826C69D
 	.string "I'm already having trouble, and then\n"
 	.string "you have to beat me? It's not fair!$"
-Route110_TrickHousePuzzle3_Text_26C6E6: @ 826C6E6
+Puzzle_TrickHouseOriginal3_Text_26C6E6: @ 826C6E6
 	.string "It's full of doors here!\n"
 	.string "It's too small and dark in here! Help!$"
 
 
-Route110_TrickHousePuzzle3_EventScript_26C5DB:: @ 826C5DB
-	trainerbattle_single TRAINER_02, Route110_TrickHousePuzzle3_Text_26C726, Route110_TrickHousePuzzle3_Text_26C763
-	msgbox Route110_TrickHousePuzzle3_Text_26C776, MSGBOX_AUTOCLOSE
+Puzzle_TrickHouseOriginal3_EventScript_26C5DB:: @ 826C5DB
+	trainerbattle_single TRAINER_02, Puzzle_TrickHouseOriginal3_Text_26C726, Puzzle_TrickHouseOriginal3_Text_26C763
+	msgbox Puzzle_TrickHouseOriginal3_Text_26C776, MSGBOX_AUTOCLOSE
 	end
-Route110_TrickHousePuzzle3_Text_26C726: @ 826C726
+Puzzle_TrickHouseOriginal3_Text_26C726: @ 826C726
 	.string "I don't know what's going on here.\n"
 	.string "I'm starting to feel sad…$"
-Route110_TrickHousePuzzle3_Text_26C763: @ 826C763
+Puzzle_TrickHouseOriginal3_Text_26C763: @ 826C763
 	.string "You… You're awful!$"
-Route110_TrickHousePuzzle3_Text_26C776: @ 826C776
+Puzzle_TrickHouseOriginal3_Text_26C776: @ 826C776
 	.string "I know I'm weak!\n"
 	.string "And, I have no sense of direction!$"
 
 
-Route110_TrickHousePuzzle3_EventScript_26C5F2:: @ 826C5F2
-	trainerbattle_single TRAINER_03, Route110_TrickHousePuzzle3_Text_26C7AA, Route110_TrickHousePuzzle3_Text_26C7EC
-	msgbox Route110_TrickHousePuzzle3_Text_26C80C, MSGBOX_AUTOCLOSE
+Puzzle_TrickHouseOriginal3_EventScript_26C5F2:: @ 826C5F2
+	trainerbattle_single TRAINER_03, Puzzle_TrickHouseOriginal3_Text_26C7AA, Puzzle_TrickHouseOriginal3_Text_26C7EC
+	msgbox Puzzle_TrickHouseOriginal3_Text_26C80C, MSGBOX_AUTOCLOSE
 	end
-Route110_TrickHousePuzzle3_Text_26C7AA: @ 826C7AA
+Puzzle_TrickHouseOriginal3_Text_26C7AA: @ 826C7AA
 	.string "I don't get it. What would anyone want\n"
 	.string "with a house this bizarre?$"
-Route110_TrickHousePuzzle3_Text_26C7EC: @ 826C7EC
+Puzzle_TrickHouseOriginal3_Text_26C7EC: @ 826C7EC
 	.string "I don't get it.\n"
 	.string "How did I lose?$"
-Route110_TrickHousePuzzle3_Text_26C80C: @ 826C80C
+Puzzle_TrickHouseOriginal3_Text_26C80C: @ 826C80C
 	.string "I don't get it.\n"
 	.string "How many traps are in this house?\p"
 	.string "You may be the one to solve that.$"
-
+`

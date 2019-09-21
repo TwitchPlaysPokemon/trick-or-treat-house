@@ -9,7 +9,7 @@
     "coord_events": [
         {
             "elevation": 3,
-            "script": "Route110_TrickHousePuzzle3_EventScript_26C4CD",
+            "script": "Puzzle_TrickHouseOriginal3_EventScript_26C4CD",
             "type": "trigger",
             "var": "VAR_TEMP_1",
             "var_value": "0",
@@ -18,7 +18,7 @@
         },
         {
             "elevation": 3,
-            "script": "Route110_TrickHousePuzzle3_EventScript_26C4D9",
+            "script": "Puzzle_TrickHouseOriginal3_EventScript_26C4D9",
             "type": "trigger",
             "var": "VAR_TEMP_2",
             "var_value": "0",
@@ -27,7 +27,7 @@
         },
         {
             "elevation": 3,
-            "script": "Route110_TrickHousePuzzle3_EventScript_26C4E5",
+            "script": "Puzzle_TrickHouseOriginal3_EventScript_26C4E5",
             "type": "trigger",
             "var": "VAR_TEMP_3",
             "var_value": "0",
@@ -36,7 +36,7 @@
         },
         {
             "elevation": 3,
-            "script": "Route110_TrickHousePuzzle3_EventScript_26C4F1",
+            "script": "Puzzle_TrickHouseOriginal3_EventScript_26C4F1",
             "type": "trigger",
             "var": "VAR_TEMP_4",
             "var_value": "0",
@@ -48,7 +48,7 @@
     "layout": "LAYOUT_ROUTE110_TRICK_HOUSE_PUZZLE3",
     "map_type": "MAP_TYPE_INDOOR",
     "music": "MUS_KARAKURI",
-    "name": "Route110_TrickHousePuzzle3",
+    "name": "Puzzle_TrickHouseOriginal3",
     "object_events": [
         {
             "elevation": 3,
@@ -57,7 +57,7 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "Route110_TrickHousePuzzle3_EventScript_26C5C4",
+            "script": "Puzzle_TrickHouseOriginal3_EventScript_26C5C4",
             "trainer_sight_or_berry_tree_id": "2",
             "trainer_type": "1",
             "x": 7,
@@ -70,7 +70,7 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-            "script": "Route110_TrickHousePuzzle3_EventScript_26C5DB",
+            "script": "Puzzle_TrickHouseOriginal3_EventScript_26C5DB",
             "trainer_sight_or_berry_tree_id": "1",
             "trainer_type": "1",
             "x": 4,
@@ -83,7 +83,7 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "Route110_TrickHousePuzzle3_EventScript_26C5F2",
+            "script": "Puzzle_TrickHouseOriginal3_EventScript_26C5F2",
             "trainer_sight_or_berry_tree_id": "1",
             "trainer_type": "1",
             "x": 10,
