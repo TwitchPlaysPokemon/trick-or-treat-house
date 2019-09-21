@@ -88,7 +88,7 @@
 #define VAR_UNUSED_0x403E                    0x4043
 #define VAR_RECYCLE_GOODS                    0x4044
 #define VAR_REPEL_STEP_COUNT                 0x4045
-#define VAR_ICE_STEP_COUNT                   0x4046
+#define VAR_STEP_TRIGGER                     0x4046 // Used for the ice cracking puzzle, the mach bike floor cracking puzzle, and npc triggers
 #define VAR_STARTER_MON                      0x4047
 #define VAR_MIRAGE_RND_H                     0x4048
 #define VAR_MIRAGE_RND_L                     0x4049

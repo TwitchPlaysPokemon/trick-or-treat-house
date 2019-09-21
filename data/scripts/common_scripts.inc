@@ -308,7 +308,7 @@ Common_EventScript_FadeMusicToMapMusic::
 @ Map Header Scripts
 
 Common_EventScript_FrameTable_IceStep_FallDownHole:
-	map_script_2 VAR_ICE_STEP_COUNT, 0, EventScript_FallDownHole
+	map_script_2 VAR_STEP_TRIGGER, 0, EventScript_FallDownHole
 	.2byte 0
 
 EventScript_FallDownHole:: @ 82A8337
@@ -330,7 +330,7 @@ Common_Movement_SetVisible: @ 82A8369
 
 
 Common_EventScript_OnTransition_IceStep:
-	copyvar VAR_ICE_STEP_COUNT, 0x1
+	copyvar VAR_STEP_TRIGGER, 0x1
 	end
 
 @ Scripts

@@ -100,9 +100,9 @@ static void sub_808C280(struct EventObject *);
 
 static void StartStrengthAnim(u8, u8);
 static void Task_BumpBoulder(u8 taskId);
-static u8 sub_808C3A4(struct Task *task, struct EventObject *playerObject, struct EventObject *strengthObject);
+static u8 do_boulder_bump1(struct Task *task, struct EventObject *playerObject, struct EventObject *strengthObject);
 static u8 do_boulder_dust(struct Task *task, struct EventObject *playerObject, struct EventObject *strengthObject);
-static u8 sub_808C484(struct Task *task, struct EventObject *playerObject, struct EventObject *strengthObject);
+static u8 do_boulder_bump3(struct Task *task, struct EventObject *playerObject, struct EventObject *strengthObject);
 
 static void DoPlayerMatJump(void);
 static void DoPlayerAvatarSecretBaseMatJump(u8 taskId);
@@ -281,11 +281,11 @@ static bool8 (*const sArrowWarpMetatileBehaviorChecks2[])(u8) =  //Duplicate of 
     MetatileBehavior_IsEastArrowWarp,
 };
 
-static bool8 (*const gUnknown_08497530[])(struct Task *, struct EventObject *, struct EventObject *) =
+static bool8 (*const sBoulderBumpFuncs[])(struct Task *, struct EventObject *, struct EventObject *) =
 {
-    sub_808C3A4,
+    do_boulder_bump1,
     do_boulder_dust,
-    sub_808C484,
+    do_boulder_bump3,
 };
 
 static bool8 (*const sPlayerAvatarSecretBaseMatJump[])(struct Task *, struct EventObject *) =
@@ -1468,13 +1468,13 @@ static void StartStrengthAnim(u8 a, u8 b)
 
 static void Task_BumpBoulder(u8 taskId)
 {
-    while (gUnknown_08497530[gTasks[taskId].data[0]](&gTasks[taskId],
+    while (sBoulderBumpFuncs[gTasks[taskId].data[0]](&gTasks[taskId],
                                                      &gEventObjects[gPlayerAvatar.eventObjectId],
                                                      &gEventObjects[gTasks[taskId].data[1]]))
         ;
 }
 
-static bool8 sub_808C3A4(struct Task *task, struct EventObject *playerObject, struct EventObject *strengthObject)
+static bool8 do_boulder_bump1(struct Task *task, struct EventObject *playerObject, struct EventObject *strengthObject)
 {
     ScriptContext2_Enable();
     gPlayerAvatar.preventStep = TRUE;
@@ -1512,7 +1512,7 @@ static bool8 do_boulder_dust(struct Task *task, struct EventObject *playerObject
     return FALSE;
 }
 
-static bool8 sub_808C484(struct Task *task, struct EventObject *playerObject, struct EventObject *strengthObject)
+static bool8 do_boulder_bump3(struct Task *task, struct EventObject *playerObject, struct EventObject *strengthObject)
 {
     if (EventObjectCheckHeldMovementStatus(playerObject)
      && EventObjectCheckHeldMovementStatus(strengthObject))

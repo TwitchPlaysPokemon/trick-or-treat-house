@@ -13,6 +13,7 @@
 #include "constants/flags.h"
 #include "constants/metatile_labels.h"
 #include "constants/songs.h"
+#include "constants/event_objects.h"
 #include "constants/vars.h"
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -537,6 +538,36 @@ void UpdateCyclingRoadState(void) {
 }
 
 #undef VAR_CYCLING_CHALLENGE_STATE
+
+///////////////////////////////////////////////////////////////////////////////
+// Puzzle: Twin Memories 
+// MAP_PUZZLE_TWIN_MEMORIES
+
+void CountTwinMemoriesBoulders(struct ScriptContext *ctx) {
+	s16 o;
+	struct EventObject *eventObject = NULL;
+    struct CoordEvent *coordEvent = NULL;
+	
+	gSpecialVar_Result = 0;
+	
+	for (o = 0; o < EVENT_OBJECTS_COUNT; o++) {
+		eventObject = &gEventObjects[o];
+        if (eventObject->isPlayer) continue;
+        if (!eventObject->active) continue;
+		if (eventObject->graphicsId != EVENT_OBJ_GFX_PUSHABLE_BOULDER) continue;
+        
+		if (eventObject->isStandingOnTrigger)
+			gSpecialVar_Result++;
+	}
+}
+
+
+
+
+
+
+
+
 
 ///////////////////////////////////////////////////////////////////////////////
 

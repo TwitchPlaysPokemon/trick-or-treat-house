@@ -1,4 +1,122 @@
 raw `
 Puzzle_TwinMemories_MapScripts::
+	puzzle_info Puzzle_TwinMemories_Name, Puzzle_TwinMemories_Author
+	puzzle_adjective Puzzle_TwinMemories_Adjective
+	puzzle_quip Puzzle_TwinMemories_Quip
+	@ puzzle_metavars Puzzle_TwinMemories_Variables
+	puzzle_item_prereqs Puzzle_TwinMemories_PrereqItems
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TwinMemories_OnResume
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_TwinMemories_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_TwinMemories_FrameTable
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Puzzle_TwinMemories_MapTable
 	.byte 0
+
+Puzzle_TwinMemories_Name:
+	.string "Twin Memories$"
+Puzzle_TwinMemories_Author:
+	.string "Tustin2121$"
+Puzzle_TwinMemories_Adjective:
+	.string "memzorizing$" @intentional mispelling
+Puzzle_TwinMemories_Quip:
+	.string "This puzzle seems familiar. I can't\n"
+	.string "put my finger on how, though…$"
+@ Puzzle_TwinMemories_Variables:
+@ 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER
+@ 	.2byte 0
+
+Puzzle_TwinMemories_FrameTable:
+	@ VAR_STEP_TRIGGER is set to 1 by Task_MonitorEventObjectTriggers when any npc steps on a trigger
+	map_script_2 VAR_STEP_TRIGGER, 1, Puzzle_TwinMemories_CheckPuzzleSolved1
+	map_script_2 VAR_STEP_TRIGGER, 2, Puzzle_TwinMemories_CheckPuzzleSolved2
+	.2byte 0
+Puzzle_TwinMemories_MapTable:
+	map_script_2 VAR_LAST_WARP_ID, 3, Puzzle_TwinMemories_SetupLeftBoulders
+	map_script_2 VAR_LAST_WARP_ID, 4, Puzzle_TwinMemories_SetupRightBoulders
+	.2byte 0
+Puzzle_TwinMemories_PrereqItems:
+	.2byte ITEM_STRENGTH_ITEM
+	.2byte 0
+
+Puzzle_TwinMemories_OnResume:
+	setstepcallback 9
+	end
+
+@ -----------------------------------------------------
 `
+script Puzzle_TwinMemories_OnLoad {
+	if (flag(FLAG_PUZZLE_20) == TRUE) {
+		call (Puzzle_TwinMemories_OpenLeftDoors)
+	}
+	if (flag(FLAG_PUZZLE_21) == TRUE) {
+		call (Puzzle_TwinMemories_OpenRightDoors)
+	}
+}
+
+script Puzzle_TwinMemories_OpenLeftDoors {
+	setmetatile (5, 3, 0x24B, FALSE)
+	setmetatile (6, 3, 0x208, FALSE)
+	setmetatile (7, 3, 0x24C, FALSE)
+	setmetatile (5, 4, 0x253, FALSE)
+	setmetatile (6, 4, 0x208, FALSE)
+	setmetatile (7, 4, 0x254, FALSE)
+	setmetatile (5, 5, 0x208, FALSE)
+	setmetatile (6, 5, 0x208, FALSE)
+	setmetatile (7, 5, 0x208, FALSE)
+	return
+}
+script Puzzle_TwinMemories_OpenRightDoors {
+	setmetatile (25, 3, 0x248, FALSE)
+	setmetatile (26, 3, 0x208, FALSE)
+	setmetatile (27, 3, 0x249, FALSE)
+	setmetatile (25, 4, 0x250, FALSE)
+	setmetatile (26, 4, 0x208, FALSE)
+	setmetatile (27, 4, 0x251, FALSE)
+	setmetatile (25, 5, 0x208, FALSE)
+	setmetatile (26, 5, 0x208, FALSE)
+	setmetatile (27, 5, 0x208, FALSE)
+	return
+}
+
+script Puzzle_TwinMemories_SetupLeftBoulders {
+	setobjectxy (2,  4,  7)
+	setobjectxy (3,  8,  9)
+	setobjectxy (4,  4, 11)
+	setobjectxy (5,  2, 13)
+	setobjectxy (6,  6, 15)
+	setobjectxy (7, 10, 15)
+}
+script Puzzle_TwinMemories_SetupRightBoulders {
+	setobjectxy (2, 30,  7)
+	setobjectxy (3, 24,  9)
+	setobjectxy (4, 30, 11)
+	setobjectxy (5, 26, 13)
+	setobjectxy (6, 22, 15)
+	setobjectxy (7, 28, 15)
+}
+
+
+script Puzzle_TwinMemories_CheckPuzzleSolved1 {
+	if (flag(FLAG_PUZZLE_20) == FALSE) {
+		callnative (CountTwinMemoriesBoulders)
+		if (var(VAR_RESULT) == 6) {
+			playse (SE_SEIKAI)
+			setflag (FLAG_PUZZLE_20)
+			call (Puzzle_TwinMemories_OpenLeftDoors)
+			special (DrawWholeMapView)
+		}
+	}
+	setvar (VAR_STEP_TRIGGER, 0)
+}
+script Puzzle_TwinMemories_CheckPuzzleSolved2 {
+	if (flag(FLAG_PUZZLE_21) == FALSE) {
+		callnative (CountTwinMemoriesBoulders)
+		if (var(VAR_RESULT) == 6) {
+			playse (SE_SEIKAI)
+			setflag (FLAG_PUZZLE_21)
+			call (Puzzle_TwinMemories_OpenRightDoors)
+			special (DrawWholeMapView)
+		}
+	}
+	setvar (VAR_STEP_TRIGGER, 0)
+}
+

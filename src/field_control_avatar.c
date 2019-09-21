@@ -917,6 +917,7 @@ static u8 *TryRunCoordEventScript(struct CoordEvent *coordEvent)
 {
     if (coordEvent != NULL)
     {
+        if (coordEvent->npcTrigger) return NULL;
         if (coordEvent->script == NULL)
         {
             DoCoordEventWeather(coordEvent->trigger);

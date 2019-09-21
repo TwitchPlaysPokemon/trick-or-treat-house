@@ -509,11 +509,12 @@ static void Task_InitPuzzleSelect(u8 taskId)
 	if (VarGet(VAR_CURRENT_PUZZLE) < DEBUG_PUZZLE_START) {
 		tSelected = VarGet(VAR_CURRENT_PUZZLE) + 1;
 		tMode = 0;
+		tMax = tMainMax;
 	} else {
 		tSelected = VarGet(VAR_CURRENT_PUZZLE) - DEBUG_PUZZLE_START + 1;
 		tMode = 1;
+		tMax = tDebugMax;
 	}
-	tMax = tMainMax;
 	tWindow = AddWindow(&sPuzzleSelectWinTemplate);
  
 	AddMapNamePopUpWindow();

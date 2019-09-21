@@ -89,6 +89,7 @@ struct CoordEvent
 {
     s16 x, y;
     u8 elevation;
+    u8 npcTrigger:1;
     u16 trigger;
     u16 index;
     u8 filler_A[0x2];
@@ -191,6 +192,7 @@ struct EventObject
              u32 disableJumpLandingGroundEffect:1;
              u32 fixedPriority:1;
              u32 unk3_3:1;
+             u32 isStandingOnTrigger:1;
              int :0;
     /*0x04*/ u8 spriteId:7;
     /*0x05*/ u16 graphicsId:9;

@@ -373,7 +373,11 @@ string generate_map_events_text(Json map_data) {
                      << coord_event["elevation"].int_value() << ", "
                      << coord_event["var"].string_value() << ", "
                      << coord_event["var_value"].string_value() << ", "
-                     << coord_event["script"].string_value() << "\n";
+                     << coord_event["script"].string_value();
+                if (coord_event.object_items().find("npcTrigger") != coord_event.object_items().end()) {
+                    text <<  ", npcTrigger=" << coord_event["npcTrigger"].string_value();
+                }
+                text << "\n";
             }
             else if (coord_event["type"] == "weather") {
                 text << "\tcoord_weather_event "

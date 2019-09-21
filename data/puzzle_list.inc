@@ -22,4 +22,5 @@ gDebugPuzzles::
 	.2byte MAP_EMPTY_PUZZLE
 	.2byte MAP_PUZZLE_LOSS_FLOOR1                       @  1 / 1
 	.2byte MAP_TRICK_TREAT_PETALBURG_CITY
+	.2byte MAP_PUZZLE_TWIN_MEMORIES
 	.2byte 0xFFFF

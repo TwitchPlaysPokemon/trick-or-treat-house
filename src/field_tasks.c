@@ -35,6 +35,7 @@ static void PacifidlogBridgePerStepCallback(u8 taskId);
 static void WaterTemplePerStepCallback(u8 taskId);
 static void SootopolisGymIcePerStepCallback(u8 taskId);
 static void CrackedFloorPerStepCallback(u8 taskId);
+static void MonitorEventObjectTriggersStepCallback(u8 taskId);
 static void Task_MuddySlope(u8 taskId);
 
 static const TaskFunc sPerStepCallbacks[] =
@@ -48,6 +49,7 @@ static const TaskFunc sPerStepCallbacks[] =
     SecretBasePerStepCallback,
     CrackedFloorPerStepCallback,
     WaterTemplePerStepCallback, //8
+    MonitorEventObjectTriggersStepCallback,
 };
 
 // Each element corresponds to a y coordinate row in the sootopolis gym 1F map.
@@ -604,6 +606,14 @@ static void WaterTemplePerStepCallback(u8 taskId)
     }
 }
 
+#undef state
+#undef prevX
+#undef prevY
+#undef storedX
+#undef storedY
+#undef delay
+#undef prevJump
+
 ///////////////////////////////////////////////////////////////////////////////////////
 
 static void SetLoweredForetreeBridgeMetatile(s16 x, s16 y)
@@ -788,7 +798,7 @@ static void SootopolisGymIcePerStepCallback(u8 taskId)
                 data[2] = x;
                 data[3] = y;
                 tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
-                iceStepCount = GetVarPointer(VAR_ICE_STEP_COUNT);
+                iceStepCount = GetVarPointer(VAR_STEP_TRIGGER);
                 if (MetatileBehavior_IsThinIce(tileBehavior) == TRUE)
                 {
                     (*iceStepCount)++;
@@ -888,7 +898,7 @@ static void CrackedFloorPerStepCallback(u8 taskId)
         SetCrackedFloorHoleMetatile(data[8], data[9]);
 
     if (MetatileBehavior_IsCrackedFloorHole(behavior))
-        VarSet(VAR_ICE_STEP_COUNT, 0); // this var does double duty
+        VarSet(VAR_STEP_TRIGGER, 0); // this var does double duty
 
     if ((x != data[2] || y != data[3]))
     {
@@ -897,7 +907,7 @@ static void CrackedFloorPerStepCallback(u8 taskId)
         if (MetatileBehavior_IsCrackedFloor(behavior))
         {
             if (GetPlayerSpeed() != 4)
-                VarSet(VAR_ICE_STEP_COUNT, 0); // this var does double duty
+                VarSet(VAR_STEP_TRIGGER, 0); // this var does double duty
 
             if (data[4] == 0)
             {
@@ -991,3 +1001,70 @@ static void Task_MuddySlope(u8 taskId)
         }
     }
 }
+
+#define tPosX data[1]
+#define tPosY data[2]
+#define tRunningVar data[3]
+#define tRunningIndex data[4]
+
+static void MonitorEventObjectTriggersStepCallback(u8 taskId)
+{
+    s16 x, y, o, t;
+    bool8 standing;
+    struct EventObject *eventObject = NULL;
+    struct CoordEvent *coordEvent = NULL;
+    s16 *data = gTasks[taskId].data;
+    PlayerGetDestCoords(&x, &y);
+    
+    
+    // If the var is still set like we set it, the expected frame table script hasn't completed yet
+    // so don't continue checking.
+    if (tRunningVar != 0) {
+        if (VarGet(tRunningVar) == tRunningIndex) return;
+        // If the var isn't the same, the frame table script has cleared it, we can continue
+        tRunningVar = 0;
+        tRunningIndex = 0;
+    }
+    // Don't recheck if the the player hasn't moved
+    if (gPlayerAvatar.preventStep) tPosX = -1;
+    if (tPosX == x && tPosY == y) return;
+    
+    // For every event object
+    for (o = 0; o < EVENT_OBJECTS_COUNT; o++) {
+        eventObject = &gEventObjects[o];
+        if (eventObject->isPlayer) continue;
+        if (!eventObject->active) continue;
+        if (eventObject->heldMovementActive) return; //continue;
+        
+        // Clear the standing flag, but store its current value in case it needs to be put back
+        standing = eventObject->isStandingOnTrigger;
+        eventObject->isStandingOnTrigger = FALSE;
+        
+        // For every trigger on the map
+        for (t = 0; t < gMapHeader.events->coordEventCount; t++) {
+            coordEvent = &gMapHeader.events->coordEvents[t];
+            if (!coordEvent->npcTrigger) continue;
+            if (eventObject->currentCoords.x != coordEvent->x + 7) continue;
+            if (eventObject->currentCoords.y != coordEvent->y + 7) continue;
+            
+            if (!standing) {
+                // If this event wasn't standing on a trigger before, trigger it now
+                tRunningVar = coordEvent->trigger;
+                tRunningIndex = coordEvent->index;
+                VarSet(tRunningVar, tRunningIndex);
+                // If we got down here, we need to set the flag again
+                eventObject->isStandingOnTrigger = TRUE;
+                return;
+            }
+            eventObject->isStandingOnTrigger = standing;
+        }
+    }
+    tPosX = x;
+    tPosY = y;
+}
+
+#undef tPosX
+#undef tPosY
+#undef tRunningVar
+#undef tRunningIndex
+

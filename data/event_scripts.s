@@ -3365,14 +3365,14 @@ MirageTower_3F_MapScript2_2A8327: @ 82A8327
 MtPyre_2F_MapScript2_2A8327: @ 82A8327
 SkyPillar_2F_MapScript2_2A8327: @ 82A8327
 SkyPillar_4F_MapScript2_2A8327: @ 82A8327
-	map_script_2 VAR_ICE_STEP_COUNT, 0, EventScript_FallDownHole
+	map_script_2 VAR_STEP_TRIGGER, 0, EventScript_FallDownHole
 	.2byte 0
 
 GraniteCave_B1F_MapScript1_2A8331: @ 82A8331
 MirageTower_2F_MapScript1_2A8331: @ 82A8331
 MirageTower_3F_MapScript1_2A8331: @ 82A8331
 MtPyre_2F_MapScript1_2A8331: @ 82A8331
-	copyvar VAR_ICE_STEP_COUNT, 0x1
+	copyvar VAR_STEP_TRIGGER, 0x1
 	end
 
 

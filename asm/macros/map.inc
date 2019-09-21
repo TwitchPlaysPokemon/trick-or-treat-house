@@ -35,9 +35,10 @@
 	inc _num_warps
 	.endm
 
-	.macro coord_event x, y, elevation, trigger, index, script
+	.macro coord_event x, y, elevation, trigger, index, script, npcTrigger=0
 	.2byte \x, \y
-	.byte \elevation, 0
+	.byte \elevation
+	.byte (\npcTrigger & 1)
 	.2byte \trigger, \index, 0
 	.4byte \script
 	inc _num_traps
