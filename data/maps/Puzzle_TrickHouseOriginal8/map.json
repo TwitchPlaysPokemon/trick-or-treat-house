@@ -8,8 +8,8 @@
     "connections": null,
     "coord_events": [
     ],
-    "id": "MAP_ROUTE110_TRICK_HOUSE_PUZZLE8",
-    "layout": "LAYOUT_ROUTE110_TRICK_HOUSE_PUZZLE8",
+    "id": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL8",
+    "layout": "LAYOUT_PUZZLE_TRICK_HOUSE_PUZZLE8",
     "map_type": "MAP_TYPE_INDOOR",
     "music": "MUS_KARAKURI",
     "name": "Puzzle_TrickHouseOriginal8",

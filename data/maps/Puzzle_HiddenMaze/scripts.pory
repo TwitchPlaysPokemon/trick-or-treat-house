@@ -1,0 +1,47 @@
+raw `
+Puzzle_HiddenMaze_MapScripts::
+	puzzle_info Puzzle_HiddenMaze_Name, Puzzle_HiddenMaze_Author
+	puzzle_adjective Puzzle_HiddenMaze_Adjective
+	puzzle_quip Puzzle_HiddenMaze_Quip
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_HiddenMaze_OnResume
+	.byte 0
+
+Puzzle_HiddenMaze_Name:
+	.string "Koga's Labyrinth$"
+Puzzle_HiddenMaze_Author:
+	.string "Tustin2121$"
+Puzzle_HiddenMaze_Adjective:
+	.string "stealthy$"
+Puzzle_HiddenMaze_Quip:
+	.string "Insert Quip Here$"
+
+Puzzle_HiddenMaze_OnResume:
+	setstepcallback 10
+	end
+
+@ -----------------------------------------------------
+`
+
+script Puzzle_HiddenMaze_Trainer1 {
+	# 
+}
+
+script Puzzle_HiddenMaze_Trainer2 {
+	# ninja
+}
+
+script Puzzle_HiddenMaze_Trainer3 {
+	# Hidden super hero transformation
+}
+
+script Puzzle_HiddenMaze_Trainer4 {
+	# Carver's boyfriend
+}
+
+script Puzzle_HiddenMaze_Trainer5 {
+	# Carver
+}
+
+script Puzzle_HiddenMaze_Trainer6 {
+	# ninja disgused as an item ball
+}

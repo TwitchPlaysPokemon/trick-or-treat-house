@@ -6,10 +6,12 @@
 #include "field_camera.h"
 #include "field_player_avatar.h"
 #include "fieldmap.h"
+#include "palette.h"
 #include "random.h"
 #include "strings.h"
 #include "string_util.h"
 #include "text.h"
+#include "task.h"
 #include "constants/flags.h"
 #include "constants/metatile_labels.h"
 #include "constants/songs.h"
@@ -561,13 +563,35 @@ void CountTwinMemoriesBoulders(struct ScriptContext *ctx) {
 	}
 }
 
-
-
-
-
-
-
-
-
 ///////////////////////////////////////////////////////////////////////////////
+// Puzzle: Koga's Labyrinth 
+// MAP_PUZZLE_HIDDEN_MAZE
 
+#define PALETTE_SLOT_SRC (10*16+11)
+#define PALETTE_SLOT_DST (10*16+15)
+
+void HiddenMaze_PulseWallTiles(u8 taskId)
+{
+	u16 color = 0;
+	u8 val = 0;
+	s16 *data = gTasks[taskId].data;
+	struct PlttData *palColor = (struct PlttData *)&color;
+	
+	if (data[2] == 0) { //init
+		data[1] = -512;
+		data[2] = 1;
+	}
+	
+	data[1]++;
+	if (data[1] > 512) data[1] = -512;
+	val = max(31 - (abs(data[1])>>3), 0);
+	
+	color = gPlttBufferUnfaded[PALETTE_SLOT_SRC];
+	palColor->r = max(palColor->r, val);
+	palColor->g = max(palColor->g, val);
+	palColor->b = min(palColor->b, 31-val);
+	gPlttBufferFaded[PALETTE_SLOT_DST] = color;
+}
+
+#undef PALETTE_SLOT_SRC
+#undef PALETTE_SLOT_DST

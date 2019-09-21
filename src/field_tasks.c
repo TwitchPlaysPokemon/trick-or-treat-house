@@ -36,6 +36,7 @@ static void WaterTemplePerStepCallback(u8 taskId);
 static void SootopolisGymIcePerStepCallback(u8 taskId);
 static void CrackedFloorPerStepCallback(u8 taskId);
 static void MonitorEventObjectTriggersStepCallback(u8 taskId);
+extern void HiddenMaze_PulseWallTiles(u8 taskId);
 static void Task_MuddySlope(u8 taskId);
 
 static const TaskFunc sPerStepCallbacks[] =
@@ -50,6 +51,7 @@ static const TaskFunc sPerStepCallbacks[] =
     CrackedFloorPerStepCallback,
     WaterTemplePerStepCallback, //8
     MonitorEventObjectTriggersStepCallback,
+    HiddenMaze_PulseWallTiles,
 };
 
 // Each element corresponds to a y coordinate row in the sootopolis gym 1F map.

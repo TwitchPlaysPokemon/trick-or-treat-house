@@ -117,7 +117,8 @@
         "Puzzle_Route110",
         "Puzzle_Loss_Floor1",
         "Puzzle_Loss_Floor2",
-        "Puzzle_TwinMemories"
+        "Puzzle_TwinMemories",
+        "Puzzle_HiddenMaze"
     ],
     "MG_SupportMaps": [
         "EmptyPuzzle",

@@ -76,7 +76,7 @@
     "show_map_name": false,
     "warp_events": [
         {
-            "dest_map": "MAP_ROUTE110_TRICK_HOUSE_PUZZLE1",
+            "dest_map": "MAP_TRICK_HOUSE_END",
             "dest_warp_id": 2,
             "elevation": 3,
             "x": 11,

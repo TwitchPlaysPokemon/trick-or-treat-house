@@ -45,7 +45,7 @@
         }
     ],
     "id": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
-    "layout": "LAYOUT_ROUTE110_TRICK_HOUSE_PUZZLE7",
+    "layout": "LAYOUT_PUZZLE_TRICK_HOUSE_PUZZLE7",
     "map_type": "MAP_TYPE_INDOOR",
     "music": "MUS_KARAKURI",
     "name": "Puzzle_TrickHouseOriginal7",

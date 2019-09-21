@@ -118,6 +118,7 @@
 #define MAP_PUZZLE_LOSS_FLOOR1           (9 | (5 << 8))
 #define MAP_PUZZLE_LOSS_FLOOR2           (10 | (5 << 8))
 #define MAP_PUZZLE_TWIN_MEMORIES         (11 | (5 << 8))
+#define MAP_PUZZLE_HIDDEN_MAZE           (12 | (5 << 8))
 
 // Map Group 6
 #define MAP_PUZZLE_LOST_WOODS1_ENTRANCE (0 | (6 << 8))

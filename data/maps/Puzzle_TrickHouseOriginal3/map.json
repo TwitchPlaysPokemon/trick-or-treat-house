@@ -44,8 +44,8 @@
             "y": 2
         }
     ],
-    "id": "MAP_ROUTE110_TRICK_HOUSE_PUZZLE3",
-    "layout": "LAYOUT_ROUTE110_TRICK_HOUSE_PUZZLE3",
+    "id": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL3",
+    "layout": "LAYOUT_PUZZLE_TRICK_HOUSE_PUZZLE3",
     "map_type": "MAP_TYPE_INDOOR",
     "music": "MUS_KARAKURI",
     "name": "Puzzle_TrickHouseOriginal3",
