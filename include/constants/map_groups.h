@@ -23,6 +23,7 @@
 #define MAP_WATER_TEMPLE_LV2             (11 | (1 << 8))
 #define MAP_TEST_MIRROR_MOVEMENT         (12 | (1 << 8))
 #define MAP_TEST_COPY_MOVEMENT           (13 | (1 << 8))
+#define MAP_INDOOR_MAP                   (14 | (1 << 8))
 
 // Map Group 2
 #define MAP_SECRET_BASE_RED_CAVE1    (0 | (2 << 8))
@@ -143,8 +144,15 @@
 #define MAP_LOST_WOODS1_UNDERWATER      (19 | (6 << 8))
 
 // Map Group 7
-#define MAP_TRICK_TREAT_PETALBURG_CITY (0 | (7 << 8))
+#define MAP_PUZZLE_DESERT_OASIS (0 | (7 << 8))
+#define MAP_DESERT_EAST         (1 | (7 << 8))
+#define MAP_DESERT_NORTH        (2 | (7 << 8))
+#define MAP_DESERT_WEST         (3 | (7 << 8))
+#define MAP_DESERT_SOUTH        (4 | (7 << 8))
 
-#define MAP_GROUPS_COUNT 8
+// Map Group 8
+#define MAP_TRICK_TREAT_PETALBURG_CITY (0 | (8 << 8))
+
+#define MAP_GROUPS_COUNT 9
 
 #endif // GUARD_CONSTANTS_MAP_GROUPS_H

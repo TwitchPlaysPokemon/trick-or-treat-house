@@ -1,4 +1,11 @@
 {
+    "MG_DesertPuzzles": [
+        "Puzzle_Desert_Oasis",
+        "Desert_East",
+        "Desert_North",
+        "Desert_West",
+        "Desert_South"
+    ],
     "MG_LostWoodsPuzzles": [
         "Puzzle_LostWoods1_Entrance",
         "Puzzle_LostWoods2_Entrance",
@@ -138,7 +145,8 @@
         "WaterTemple_Lv1",
         "WaterTemple_Lv2",
         "TestMirrorMovement",
-        "TestCopyMovement"
+        "TestCopyMovement",
+        "IndoorMap"
     ],
     "MG_TrickOrTreatPuzzles": [
         "TrickTreat_PetalburgCity"
@@ -151,6 +159,7 @@
         "MG_ReferenceMaps",
         "MG_SingleMapPuzzles",
         "MG_LostWoodsPuzzles",
+        "MG_DesertPuzzles",
         "MG_TrickOrTreatPuzzles"
     ],
     "layouts_table_label": "gMapLayouts"

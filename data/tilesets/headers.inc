@@ -886,3 +886,14 @@ gTileset_TrihardPokemonCenter:: @ 83DF8B4
 	.4byte gMetatileAttributes_TrihardPokemonCenter
 	.4byte NULL @ animation callback
 	.4byte NULL
+
+	.align 2
+gTileset_Desert::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Desert
+	.4byte gTilesetPalettes_Desert
+	.4byte gMetatiles_Desert
+	.4byte gMetatileAttributes_Desert
+	.4byte NULL

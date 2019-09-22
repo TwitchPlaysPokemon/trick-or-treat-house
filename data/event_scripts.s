@@ -6259,3 +6259,15 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/Puzzle_TwinMemories/scripts.inc"
 
 	.include "data/maps/Puzzle_HiddenMaze/scripts.inc"
+
+	.include "data/maps/Puzzle_Desert_Oasis/scripts.inc"
+
+	.include "data/maps/IndoorMap/scripts.inc"
+
+	.include "data/maps/Desert_East/scripts.inc"
+
+	.include "data/maps/Desert_North/scripts.inc"
+
+	.include "data/maps/Desert_West/scripts.inc"
+
+	.include "data/maps/Desert_South/scripts.inc"
