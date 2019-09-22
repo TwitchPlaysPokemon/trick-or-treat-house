@@ -72,7 +72,7 @@ static u8 CheckForPlayerAvatarCollision(u8);
 static u8 sub_808B028(u8);
 static u8 sub_808B164(struct EventObject *, s16, s16, u8, u8);
 static bool8 sub_808B1BC(s16, s16, u8);
-static bool8 ShouldJumpLedge(s16, s16, u8);
+static bool8 ShouldJumpLedge(struct EventObject *, s16, s16, u8);
 static u8 sub_808B238(s16, s16, u8);
 static void check_acro_bike_metatile(s16, s16, u8, u8 *);
 
@@ -677,14 +677,14 @@ static u8 sub_808B028(u8 direction)
     return sub_808B164(playerEventObj, x, y, direction, MapGridGetMetatileBehaviorAt(x, y));
 }
 
-u8 CheckForEventObjectCollision(struct EventObject *a, s16 x, s16 y, u8 direction, u8 e)
+u8 CheckForEventObjectCollision(struct EventObject *playerEventObj, s16 x, s16 y, u8 direction, u8 e)
 {
     u8 collision;
 
-    collision = GetCollisionAtCoords(a, x, y, direction);
+    collision = GetCollisionAtCoords(playerEventObj, x, y, direction);
     if (collision == 3 && sub_808B1BC(x, y, direction))
         return 5;
-    if (ShouldJumpLedge(x, y, direction))
+    if (ShouldJumpLedge(playerEventObj, x, y, direction))
     {
         IncrementGameStat(GAME_STAT_JUMPED_DOWN_LEDGES);
         return COLLISION_LEDGE_JUMP;
@@ -729,11 +729,18 @@ static bool8 sub_808B1BC(s16 x, s16 y, u8 direction)
     }
 }
 
-static bool8 ShouldJumpLedge(s16 x, s16 y, u8 z)
+static bool8 ShouldJumpLedge(struct EventObject *playerEventObj, s16 x, s16 y, u8 dir)
 {
-    if (GetLedgeJumpDirection(x, y, z) != 0)
-        return TRUE;
-    else
+    u8 ret;
+    if (GetLedgeJumpDirection(x, y, dir) != 0) 
+    {
+        MoveCoordsInDirection(dir, &x, &y, 1, 1);
+        ret = GetCollisionAtCoords(playerEventObj, x, y, dir);
+        if (ret == 3 || ret == 0)
+            return TRUE;
+        else
+            return FALSE;
+    } else
         return FALSE;
 }
 

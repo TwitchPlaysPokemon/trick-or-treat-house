@@ -192,6 +192,7 @@ bool8 FreezeEventObject(struct EventObject *eventObject);
 u8 GetMoveDirectionFastAnimNum(u8);
 u8 GetMoveDirectionFasterAnimNum(u8);
 u8 GetMoveDirectionFastestAnimNum(u8);
+void MoveCoordsInDirection(u32 dir, s16 *x, s16 *y, s16 deltaX, s16 deltaY);
 u8 GetLedgeJumpDirection(s16, s16, u8);
 void CameraObjectSetFollowedObjectId(u8 objectId);
 u16 GetObjectPaletteTag(u8 palSlot);

@@ -44,7 +44,7 @@ script Puzzle_MusicNoteTiles_Pokemon {
     message ("The POKéMON are singing a song.$")
     fadeoutbgm (0)
     waitmessage
-    delay 10
+    delay (10)
 
     # Sing the current song, by showing music notes above their heads.
     switch (var(VAR_CUR_SONG)) {

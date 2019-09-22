@@ -35,11 +35,44 @@
     "music": "MUS_DAN02",
     "name": "Puzzle_Desert_Oasis",
     "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_SCROLL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "PuzzleCommon_EventScript_EntranceDoorObject",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "5",
+            "x": 13,
+            "y": 11
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_STONE",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "PuzzleCommon_EventScript_ExitDoorObject",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "5",
+            "x": 25,
+            "y": 30
+        }
     ],
     "region_map_section": "MAPSEC_JAGGED_PASS",
     "requires_flash": false,
     "show_map_name": true,
     "warp_events": [
+        {
+            "dest_map": "MAP_PUZZLE_DESERT_OASIS",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 13,
+            "y": 11
+        }
     ],
     "weather": "WEATHER_SUNNY"
 }

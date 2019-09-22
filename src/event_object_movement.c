@@ -55,7 +55,6 @@ EWRAM_DATA u8 sCurrentReflectionType = 0;
 EWRAM_DATA u16 sCurrentSpecialObjectPaletteTag = 0;
 EWRAM_DATA struct LockedAnimEventObjects *gLockedAnimEventObjects = {0};
 
-static void MoveCoordsInDirection(u32, s16 *, s16 *, s16, s16);
 static bool8 EventObjectExecSingleMovementAction(struct EventObject *, struct Sprite *);
 static void SetMovementDelay(struct Sprite *, s16);
 static bool8 WaitForMovementDelay(struct Sprite *);
@@ -5066,7 +5065,7 @@ void sub_8092F60(u8 direction, s16 *x, s16 *y)
     *y += sDirectionToVectors[direction].y << 4;
 }
 
-static void MoveCoordsInDirection(u32 dir, s16 *x, s16 *y, s16 deltaX, s16 deltaY)
+void MoveCoordsInDirection(u32 dir, s16 *x, s16 *y, s16 deltaX, s16 deltaY)
 {
     u8 direction = dir;
     s16 dx2 = (u16)deltaX;
@@ -7964,7 +7963,7 @@ static u8 GetReflectionTypeByMetatileBehavior(u32 behavior)
         return 0;
 }
 
-u8 GetLedgeJumpDirection(s16 x, s16 y, u8 z)
+u8 GetLedgeJumpDirection(s16 x, s16 y, u8 dir)
 {
     static bool8 (*const unknown_08376040[])(u8) = {
         MetatileBehavior_IsJumpSouth,
@@ -7974,7 +7973,7 @@ u8 GetLedgeJumpDirection(s16 x, s16 y, u8 z)
     };
 
     u8 b;
-    u8 index = z;
+    u8 index = dir;
 
     if (index == 0)
         return 0;
