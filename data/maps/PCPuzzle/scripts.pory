@@ -14,9 +14,11 @@ PCPuzzle_Author:
 PCPuzzle_Adjective:
 	.string "techno-logic$"
 PCPuzzle_Quip:
-	.string "I think I've seen this puzzle before.\p"
-	.string "Is the TRICK MASTER up to his\n"
-	.string "old tricks again?$"
+	.string "So you went through that PC hell, huh?\p"
+	.string "I'm impressed.\p"
+	.string "The last time someone used those PCs\n"
+	.string "so much, something bloody\l"
+	.string "horrible happened.$"
 
 @ -----------------------------------------------------
 
