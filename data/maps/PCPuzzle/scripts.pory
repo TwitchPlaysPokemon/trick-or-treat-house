@@ -1,4 +1,26 @@
 raw `
+
+PCPuzzle_MapScripts::
+	puzzle_info PCPuzzle_Name, PCPuzzle_Author
+	puzzle_adjective PCPuzzle_Adjective
+	puzzle_quip PCPuzzle_Quip
+	map_script MAP_SCRIPT_ON_LOAD, PCPuzzle_OnLoad
+	.byte 0
+
+PCPuzzle_Name:
+	.string "PC madness$"
+PCPuzzle_Author:
+	.string "Ericchi$"
+PCPuzzle_Adjective:
+	.string "techno-logic$"
+PCPuzzle_Quip:
+	.string "I think I've seen this puzzle before.\p"
+	.string "Is the TRICK MASTER up to his\n"
+	.string "old tricks again?$"
+
+@ -----------------------------------------------------
+
+
 PCPuzzle_MapScripts::
 	.byte 0
 
@@ -33,7 +55,7 @@ PCPuzzle_Check {
 PCPuzzle_Terminal_Yellow {
 	lock
 	if (flag(FLAG_TERMINAL_YELLOW)) {
-		msgbox ("This terminal is activated.$")
+		msgbox (PCPuzzle_TerminalActivated_Text)
 		call(PCPuzzle_Check)
 	} elif (flag(FLAG_PASSWORD_YELLOW)) {
 		msgbox ("You entered the password.\p'WOW!MuchPuzzleSuchTricks'$")
@@ -50,7 +72,7 @@ PCPuzzle_Terminal_Yellow {
 PCPuzzle_Terminal_BLUE {
 	lock
 	if (flag(FLAG_TERMINAL_BLUE)) {
-		msgbox ("This terminal is activated.$")
+		msgbox (PCPuzzle_TerminalActivated_Text)
 		call(PCPuzzle_Check)
 	} elif (flag(FLAG_PASSWORD_BLUE)) {
 		msgbox ("You entered the password.\p'AllYourBaseAreBelongToUs'$")
@@ -67,7 +89,7 @@ PCPuzzle_Terminal_BLUE {
 PCPuzzle_Terminal_RED {
 	lock
 	if (flag(FLAG_TERMINAL_RED)) {
-		msgbox ("This terminal is activated.$")
+		msgbox (PCPuzzle_TerminalActivated_Text)
 		call(PCPuzzle_Check)
 	} elif (flag(FLAG_PASSWORD_RED)) {
 		msgbox ("You entered the password.\p'RevoLovesChatot'$")
@@ -84,7 +106,7 @@ PCPuzzle_Terminal_RED {
 PCPuzzle_Terminal_GREEN {
 	lock
 	if (flag(FLAG_TERMINAL_GREEN)) {
-		msgbox ("This terminal is activated.$")
+		msgbox (PCPuzzle_TerminalActivated_Text)
 		call(PCPuzzle_Check)
 	} elif (flag(FLAG_PASSWORD_GREEN)) {
 		msgbox ("You entered the password.\p'VoHiYointhechat'$")
@@ -97,3 +119,131 @@ PCPuzzle_Terminal_GREEN {
 	release
 	end
 }
+
+PCPuzzle_PC_Trainer1 {
+	lock
+	if (flag(FLAG_PUZZLE_20)){
+		msgbox(PCPuzzle_PCActivated_Text)
+	} else {
+	    msgbox(PCPuzzle_Login_Text), MSGBOX_YESNO)
+	    if (var(VAR_RESULT) == 1){
+            // Trainer here
+			msgbox(PCPuzzle_NoPassword_Text)
+			setflag(FLAG_PUZZLE_20)
+	    } else {
+			msgbox(PCPuzzle_NoLogin_Text)
+    	}
+	}
+	release
+	end
+}
+
+PCPuzzle_PC_Trainer2 {
+	lock
+	if (flag(FLAG_PUZZLE_21)){
+		msgbox(PCPuzzle_PCActivated_Text)
+	} else {
+	    msgbox(PCPuzzle_Login_Text), MSGBOX_YESNO)
+	    if (var(VAR_RESULT) == 1){
+            // Trainer here
+			msgbox(PCPuzzle_PasswordFound_Text)
+			setflag (FLAG_PASSWORD_RED)
+			msgbox("This seems to be the password\nfor the red terminal.$")
+			setflag(FLAG_PUZZLE_21)
+	    } else {
+			msgbox(PCPuzzle_NoLogin_Text)
+    	}
+	}
+	release
+	end
+}
+
+PCPuzzle_PC_Trainer3 {
+	lock
+	if (flag(FLAG_PUZZLE_22)){
+		msgbox(PCPuzzle_PCActivated_Text)
+	} else {
+	    msgbox(PCPuzzle_Login_Text), MSGBOX_YESNO)
+	    if (var(VAR_RESULT) == 1){
+            // Trainer here
+			msgbox(PCPuzzle_NoPassword_Text)
+			setflag(FLAG_PUZZLE_22)
+	    } else {
+			msgbox(PCPuzzle_NoLogin_Text)
+    	}
+	}
+	release
+	end
+}
+
+PCPuzzle_PC_Trainer4 {
+	lock
+	if (flag(FLAG_PUZZLE_23)){
+		msgbox(PCPuzzle_PCActivated_Text)
+	} else {
+	    msgbox(PCPuzzle_Login_Text), MSGBOX_YESNO)
+	    if (var(VAR_RESULT) == 1){
+            // Trainer here
+			msgbox(PCPuzzle_NoPassword_Text)
+			setflag(FLAG_PUZZLE_23)
+	    } else {
+			msgbox(PCPuzzle_NoLogin_Text)
+    	}
+	}
+	release
+	end
+}
+
+PCPuzzle_PC_Nothing1 {
+	lock
+	if (flag(FLAG_PUZZLE_24)){
+		msgbox(PCPuzzle_PCActivated_Text)
+	} else {
+		msgbox(PCPuzzle_Login_Text), MSGBOX_YESNO)
+	    if (var(VAR_RESULT) == 1){
+			msgbox(PCPuzzle_NoPassword_Text)
+			setflag(FLAG_PUZZLE_24)
+		} else {
+			PCPuzzle_NoLogin_Text
+		}
+	}
+	release
+	end
+}
+
+PCPuzzle_PC_Nothing2 {
+	lock
+	if (flag(FLAG_PUZZLE_25)){
+		msgbox(PCPuzzle_PCActivated_Text)
+	} else {
+		msgbox(PCPuzzle_Login_Text), MSGBOX_YESNO)
+	    if (var(VAR_RESULT) == 1){
+			msgbox(PCPuzzle_NoPassword_Text)
+			setflag(FLAG_PUZZLE_25)
+		} else {
+			PCPuzzle_NoLogin_Text
+		}
+	}
+	release
+	end
+}
+
+PCPuzzle_Login_Text:
+    .string "Do you want to log into this PC?$"
+
+PCPuzzle_NoLogin_Text:
+    .string "You decided to stay away from this PC.$"
+
+PCPuzzle_TerminalActivated_Text:
+    .string "This terminal is already activated.$"
+
+PCPuzzle_PCActivated_Text:
+    .string "You already logged into this PC.$"
+
+PCPuzzle_NoPassword_Text:
+	.string "Upon inspecting this PC, you sadly\n"
+			"realize that it does not contain\l"
+			"any useful information.$"
+
+PCPuzzle_PasswordFound_Text:
+	.string "You found a password!$"
