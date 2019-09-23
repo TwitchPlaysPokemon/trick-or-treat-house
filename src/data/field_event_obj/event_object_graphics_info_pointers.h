@@ -252,6 +252,7 @@ const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TrickDoorScrollRoo
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TrickDoorStone;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TrickDoorStoneRoom;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TrickDoorNorth;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_PlasmaKid;
 
 const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] = {
     [EVENT_OBJ_GFX_BRENDAN_NORMAL] =           &gEventObjectGraphicsInfo_BrendanNormal,
@@ -500,6 +501,9 @@ const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] =
     [EVENT_OBJ_GFX_TRICK_DOOR_STONE] =         &gEventObjectGraphicsInfo_TrickDoorStone,
     [EVENT_OBJ_GFX_TRICK_DOOR_STONE_ROOM] =    &gEventObjectGraphicsInfo_TrickDoorStoneRoom,
     [EVENT_OBJ_GFX_TRICK_DOOR_NORTH] =         &gEventObjectGraphicsInfo_TrickDoorNorth,
+    
+    [EVENT_OBJ_GFX_TRICK_MASTER] =             &gEventObjectGraphicsInfo_Man1, //TODO
+    [EVENT_OBJ_GFX_PLASMA_KID] =               &gEventObjectGraphicsInfo_PlasmaKid,
 };
 
 const struct EventObjectGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

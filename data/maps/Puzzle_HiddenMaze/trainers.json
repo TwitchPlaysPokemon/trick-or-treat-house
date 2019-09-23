@@ -1,0 +1,95 @@
+[
+	{
+		"class": "LASS",
+		"female": true,
+		"music": "GIRL",
+		"name": "KAYLA",
+		"party": [
+			{
+				"species": "SPECIES_SANDSHREW",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "NINJA_BOY",
+		"name": "RILEY",
+		"music": "SUSPICIOUS",
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT",
+		"party": [
+			{
+				"species": "SPECIES_NINCADA",
+				"level": 28,
+				"moves": ["MOVE_LEECH_LIFE", "MOVE_FURY_SWIPES", "MOVE_MIND_READER", "MOVE_DIG"]
+			},
+			{
+				"species": "SPECIES_KOFFING",
+				"level": 28,
+				"moves": ["MOVE_TACKLE", "MOVE_SELF_DESTRUCT", "MOVE_SLUDGE", "MOVE_SMOKESCREEN"]
+			}
+		]
+	},
+	{
+		"class": "PLASMA_KID",
+		"name": "JEFFERY",
+		"music": "COOL",
+		"party": [
+			{
+				"species": "SPECIES_ZIGZAGOON",
+				"item": "ITEM_NUGGET",
+				"level": 26
+			},
+			{
+				"species": "SPECIES_POOCHYENA",
+				"level": 26
+			}
+		]
+	},
+	{
+		"class": "PSYCHIC",
+		"pic": "PSYCHIC_M",
+		"name": "CARVER",
+		"music": "INTENSE",
+		"party": [
+			{
+				"species": "SPECIES_RALTS",
+				"level": 28,
+				"iv": 100
+			},
+			{
+				"species": "SPECIES_MEDICHAM",
+				"level": 28,
+				"iv": 100
+			}
+		]
+	},
+	{
+		"class": "BLACK_BELT",
+		"name": "ZANDER",
+		"music": "INTENSE",
+		"party": [
+			{
+				"species": "SPECIES_HARIYAMA",
+				"level": 28,
+				"iv": 100
+			},
+			{
+				"species": "SPECIES_SOLROCK",
+				"level": 28,
+				"iv": 100
+			}
+		]
+	},
+	{
+		"class": "NINJA_BOY",
+		"name": "YASU",
+		"music": "SUSPICIOUS",
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT",
+		"party": [
+			{
+				"species": "SPECIES_NINJASK",
+				"level": 29
+			}
+		]
+	}
+]
