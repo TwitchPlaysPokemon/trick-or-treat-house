@@ -230,6 +230,8 @@ PCPuzzle_PC_Nothing2 {
 	end
 }
 
+raw `
+
 PCPuzzle_Login_Text:
     .string "Do you want to log into this PC?$"
 
@@ -249,3 +251,5 @@ PCPuzzle_NoPassword_Text:
 
 PCPuzzle_PasswordFound_Text:
 	.string "You found a password!$"
+
+`
