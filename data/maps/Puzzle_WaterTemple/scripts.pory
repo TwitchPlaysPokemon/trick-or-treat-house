@@ -21,7 +21,7 @@ Puzzle_WaterTemple_Quip:
 	.string "swim than just a plain-old swimming pool.$"
 .align 2
 Puzzle_WaterTemple_Variables:
-	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_SWIMMER_M_WALKING
+	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_FROGGER_WALKING
 	.2byte 0
 
 Puzzle_WaterTemple_OnResume: @ 81EBAC0
@@ -56,8 +56,9 @@ script Puzzle_WaterTemple_UpdateWaterLevel {
 	if (var(VAR_WATER_LEVEL) < 2) {
 		setflag (FLAG_PUZZLE_40)
 		setflag (FLAG_PUZZLE_41)
+		setflag (FLAG_PUZZLE_42)
 		setflag (FLAG_PUZZLE_4E)
-		setvar (VAR_OBJ_GFX_ID_E, EVENT_OBJ_GFX_SWIMMER_M)
+		setvar (VAR_OBJ_GFX_ID_E, EVENT_OBJ_GFX_FROGGER)
 	} else {
 		# Else show the items
 		if (flag(FLAG_PUZZLE_ITEM_0) == FALSE) {
@@ -70,20 +71,18 @@ script Puzzle_WaterTemple_UpdateWaterLevel {
 			clearflag (FLAG_PUZZLE_41)
 		}
 		clearflag (FLAG_PUZZLE_4E)
-		setvar (VAR_OBJ_GFX_ID_E, EVENT_OBJ_GFX_SWIMMER_M_WALKING)
+		setvar (VAR_OBJ_GFX_ID_E, EVENT_OBJ_GFX_FROGGER_WALKING)
 	}
 	
 	# If the water level is higher than the red level, hide items on that level
 	if (var(VAR_WATER_LEVEL) < 1) {
 		setflag (FLAG_PUZZLE_43)
+		setflag (FLAG_PUZZLE_44)
 		setflag (FLAG_PUZZLE_4F)
 		setvar (VAR_OBJ_GFX_ID_F, EVENT_OBJ_GFX_TUBER_M_SWIMMING)
-		setvar (VAR_OBJ_GFX_ID_D, EVENT_OBJ_GFX_SWIMMER_M)
+		setvar (VAR_OBJ_GFX_ID_D, EVENT_OBJ_GFX_FROGGER)
 	} else {
 		# Else show the items
-		if (flag(FLAG_PUZZLE_ITEM_1) == FALSE) {
-			clearflag (FLAG_PUZZLE_41)
-		}
 		if (flag(FLAG_PUZZLE_ITEM_3) == FALSE) {
 			clearflag (FLAG_PUZZLE_43)
 		}
@@ -92,7 +91,7 @@ script Puzzle_WaterTemple_UpdateWaterLevel {
 		}
 		clearflag (FLAG_PUZZLE_4F)
 		setvar (VAR_OBJ_GFX_ID_F, EVENT_OBJ_GFX_TUBER_M)
-		setvar (VAR_OBJ_GFX_ID_D, EVENT_OBJ_GFX_SWIMMER_M_WALKING)
+		setvar (VAR_OBJ_GFX_ID_D, EVENT_OBJ_GFX_FROGGER_WALKING)
 	}
 }
 
@@ -154,7 +153,7 @@ script Puzzle_WaterTemple_DrainToLevel1 {
 	setvar (VAR_0x8001, 2)
 	callnative (WaterTempleDrainTo1)
 	# Refresh the graphic of the swimmer (and make him not move due to engine limitations)
-	setvar (VAR_OBJ_GFX_ID_D, EVENT_OBJ_GFX_SWIMMER_M_WALKING)
+	setvar (VAR_OBJ_GFX_ID_D, EVENT_OBJ_GFX_FROGGER_WALKING)
 	copyobjectxytoperm (6)
 	setobjectmovementtype (6, MOVEMENT_TYPE_LOOK_AROUND)
 	removeobject (6)

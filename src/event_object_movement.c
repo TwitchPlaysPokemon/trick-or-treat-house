@@ -1748,6 +1748,8 @@ u8 sprite_new(u16 graphicsId, u8 a1, s16 x, s16 y, u8 z, u8 direction)
         sprite = &gSprites[spriteId];
         sprite->centerToCornerVecX = -(graphicsInfo->width >> 1);
         sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
+        if (graphicsInfo->doorOffsetType == DOOROFFSET_DOWN)
+            sprite->centerToCornerVecY += 8;
         sprite->pos1.y += sprite->centerToCornerVecY;
         sprite->oam.paletteNum = graphicsInfo->paletteSlot;
         if (sprite->oam.paletteNum >= 16)
@@ -1925,6 +1927,8 @@ static void sub_808E1B8(u8 eventObjectId, s16 x, s16 y)
         sub_8092FF0(x + eventObject->currentCoords.x, y + eventObject->currentCoords.y, &sprite->pos1.x, &sprite->pos1.y);
         sprite->centerToCornerVecX = -(graphicsInfo->width >> 1);
         sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
+        if (graphicsInfo->doorOffsetType == DOOROFFSET_DOWN)
+            sprite->centerToCornerVecY += 8;
         sprite->pos1.x += 8;
         sprite->pos1.y += 16 + sprite->centerToCornerVecY;
         sprite->images = graphicsInfo->images;
@@ -2004,6 +2008,8 @@ void EventObjectSetGraphicsId(struct EventObject *eventObject, u16 graphicsId)
     SetSpritePosToMapCoords(eventObject->currentCoords.x, eventObject->currentCoords.y, &sprite->pos1.x, &sprite->pos1.y);
     sprite->centerToCornerVecX = -(graphicsInfo->width >> 1);
     sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
+    if (graphicsInfo->doorOffsetType == DOOROFFSET_DOWN)
+        sprite->centerToCornerVecY += 8;
     sprite->pos1.x += 8;
     sprite->pos1.y += 16 + sprite->centerToCornerVecY;
     if (eventObject->trackedByCamera)
@@ -2329,6 +2335,8 @@ void MoveEventObjectToMapCoords(struct EventObject *eventObject, s16 x, s16 y)
     SetSpritePosToMapCoords(eventObject->currentCoords.x, eventObject->currentCoords.y, &sprite->pos1.x, &sprite->pos1.y);
     sprite->centerToCornerVecX = -(graphicsInfo->width >> 1);
     sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
+    if (graphicsInfo->doorOffsetType == DOOROFFSET_DOWN)
+        sprite->centerToCornerVecY += 8;
     sprite->pos1.x += 8;
     sprite->pos1.y += 16 + sprite->centerToCornerVecY;
     sub_808E38C(eventObject);
