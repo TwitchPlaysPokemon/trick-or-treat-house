@@ -21,7 +21,7 @@ Puzzle_WaterTemple_Quip:
 	.string "swim than just a plain-old swimming pool.$"
 .align 2
 Puzzle_WaterTemple_Variables:
-	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_FROGGER_WALKING
+	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_MERMAID_WALKING
 	.2byte 0
 
 Puzzle_WaterTemple_OnResume: @ 81EBAC0
