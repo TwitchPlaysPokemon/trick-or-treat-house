@@ -254,8 +254,15 @@
 #define EVENT_OBJ_GFX_TRICK_MASTER               246
 
 #define EVENT_OBJ_GFX_PLASMA_KID                 247
+#define EVENT_OBJ_GFX_GHETSIS                    248
+#define EVENT_OBJ_GFX_FROGGER                    249
+#define EVENT_OBJ_GFX_FROGGER_WALKING            250
+#define EVENT_OBJ_GFX_MERMAID                    251
+#define EVENT_OBJ_GFX_MERMAID_WALKING            252
+#define EVENT_OBJ_GFX_MASKED_BOY                 253
+#define EVENT_OBJ_GFX_FAIRY_GIRL                 254
 
-#define EVENT_OBJ_GFX_BARD_2                     248
+#define EVENT_OBJ_GFX_BARD_2                     255
 #define NUM_OBJECT_GRAPHICS_INFO 	EVENT_OBJ_GFX_BARD_2
 
 // These are dynamic object gfx ids.

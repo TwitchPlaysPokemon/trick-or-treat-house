@@ -341,5 +341,20 @@ const u32 gEventObjectPic_TrickDoorStone[] = INCBIN_U32("graphics/event_objects/
 const u32 gEventObjectPic_TrickDoorStoneRoom[] = INCBIN_U32("graphics/event_objects/pics/misc/trick_door_stone_room.4bpp");
 const u32 gEventObjectPic_TrickDoorNorth[] = INCBIN_U32("graphics/event_objects/pics/misc/trick_door_north.4bpp");
 
+
 const u16 gEvtObjPal_PlasmaKid[] = INCBIN_U16("graphics/event_objects/palettes/objpal_plasma_kid.gbapal");
+const u16 gEvtObjPal_Ghetsis[] = INCBIN_U16("graphics/event_objects/palettes/objpal_ghetsis.gbapal");
+const u16 gEvtObjPal_Frogger[] = INCBIN_U16("graphics/event_objects/palettes/objpal_frogger.gbapal");
+const u16 gEvtObjPal_Mermaid[] = INCBIN_U16("graphics/event_objects/palettes/objpal_mermaid.gbapal");
+const u16 gEvtObjPal_MaskedBoy[] = INCBIN_U16("graphics/event_objects/palettes/objpal_masked_boy.gbapal");
+const u16 gEvtObjPal_FairyGirl[] = INCBIN_U16("graphics/event_objects/palettes/objpal_fairy_girl.gbapal");
+
 const u32 gEventObjectPic_PlasmaKid[] = INCBIN_U32("graphics/event_objects/pics/people/plasma_kid.4bpp");
+const u32 gEventObjectPic_Ghetsis[] = INCBIN_U32("graphics/event_objects/pics/people/ghetsis.4bpp");
+const u32 gEventObjectPic_Frogger[] = INCBIN_U32("graphics/event_objects/pics/people/frogger_swimming.4bpp");
+const u32 gEventObjectPic_Mermaid[] = INCBIN_U32("graphics/event_objects/pics/people/mermaid_swimming.4bpp");
+const u32 gEventObjectPic_MaskedBoy[] = INCBIN_U32("graphics/event_objects/pics/people/masked_boy.4bpp");
+const u32 gEventObjectPic_FairyGirl[] = INCBIN_U32("graphics/event_objects/pics/people/fairy_girl.4bpp");
+
+const u32 gEventObjectPic_FroggerWalk[] = INCBIN_U32("graphics/event_objects/pics/people/frogger.4bpp");
+const u32 gEventObjectPic_MermaidWalk[] = INCBIN_U32("graphics/event_objects/pics/people/mermaid_walking.4bpp");

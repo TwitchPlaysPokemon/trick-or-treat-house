@@ -98,4 +98,9 @@ const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
     [TRAINER_PIC_RS_BRENDAN] = sAnims_GenericStill,
     [TRAINER_PIC_RS_MAY] = sAnims_GenericStill,
     [TRAINER_PIC_PLASMA_KID] = sAnims_GenericStill,
+    [TRAINER_PIC_GHETSIS] = sAnims_GenericStill,
+    [TRAINER_PIC_FROGGER] = sAnims_GenericStill,
+    [TRAINER_PIC_MERMAID] = sAnims_GenericStill,
+    [TRAINER_PIC_MASKED_BOY] = sAnims_GenericStill,
+    [TRAINER_PIC_FAIRY_GIRL] = sAnims_GenericStill,
 };

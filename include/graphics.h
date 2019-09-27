@@ -3058,7 +3058,18 @@ extern const u32 gTrainerPalette_RubySapphireBrendan[];
 extern const u32 gTrainerPalette_RubySapphireMay[];
 
 extern const u32 gTrainerFrontPic_PlasmaKid[];
+extern const u32 gTrainerFrontPic_Ghetsis[];
+extern const u32 gTrainerFrontPic_Frogger[];
+extern const u32 gTrainerFrontPic_Mermaid[];
+extern const u32 gTrainerFrontPic_MaskedBoy[];
+extern const u32 gTrainerFrontPic_FairyGirl[];
+
 extern const u32 gTrainerPalette_PlasmaKid[];
+extern const u32 gTrainerPalette_Ghetsis[];
+extern const u32 gTrainerPalette_Frogger[];
+extern const u32 gTrainerPalette_Mermaid[];
+extern const u32 gTrainerPalette_MaskedBoy[];
+extern const u32 gTrainerPalette_FairyGirl[];
 
 
 extern const u8 gTrainerBackPic_Brendan[];

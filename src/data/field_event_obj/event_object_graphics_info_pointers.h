@@ -253,6 +253,13 @@ const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TrickDoorStone;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TrickDoorStoneRoom;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TrickDoorNorth;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_PlasmaKid;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Ghetsis;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Frogger;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_FroggerWalk;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Mermaid;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_MermaidWalk;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_MaskedBoy;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_FairyGirl;
 
 const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] = {
     [EVENT_OBJ_GFX_BRENDAN_NORMAL] =           &gEventObjectGraphicsInfo_BrendanNormal,
@@ -504,6 +511,13 @@ const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] =
     
     [EVENT_OBJ_GFX_TRICK_MASTER] =             &gEventObjectGraphicsInfo_Man1, //TODO
     [EVENT_OBJ_GFX_PLASMA_KID] =               &gEventObjectGraphicsInfo_PlasmaKid,
+    [EVENT_OBJ_GFX_GHETSIS] =                  &gEventObjectGraphicsInfo_Ghetsis,
+    [EVENT_OBJ_GFX_FROGGER] =                  &gEventObjectGraphicsInfo_Frogger,
+    [EVENT_OBJ_GFX_FROGGER_WALKING] =          &gEventObjectGraphicsInfo_FroggerWalk,
+    [EVENT_OBJ_GFX_MERMAID] =                  &gEventObjectGraphicsInfo_Mermaid,
+    [EVENT_OBJ_GFX_MERMAID_WALKING] =          &gEventObjectGraphicsInfo_MermaidWalk,
+    [EVENT_OBJ_GFX_MASKED_BOY] =               &gEventObjectGraphicsInfo_MaskedBoy,
+    [EVENT_OBJ_GFX_FAIRY_GIRL] =               &gEventObjectGraphicsInfo_FairyGirl,
 };
 
 const struct EventObjectGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

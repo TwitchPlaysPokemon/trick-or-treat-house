@@ -291,7 +291,21 @@ const u32 gTrainerFrontPic_RubySapphireMay[] = INCBIN_U32("graphics/trainers/fro
 const u32 gTrainerPalette_RubySapphireMay[] = INCBIN_U32("graphics/trainers/palettes/ruby_sapphire_may.gbapal.lz");
 
 const u32 gTrainerFrontPic_PlasmaKid[] = INCBIN_U32("graphics/trainers/front_pics/plasma_kid_front_pic.4bpp.lz");
+const u32 gTrainerFrontPic_Ghetsis[] = INCBIN_U32("graphics/trainers/front_pics/ghetsis_front_pic.4bpp.lz");
+const u32 gTrainerFrontPic_Frogger[] = INCBIN_U32("graphics/trainers/front_pics/frogger_front_pic.4bpp.lz");
+const u32 gTrainerFrontPic_Mermaid[] = INCBIN_U32("graphics/trainers/front_pics/mermaid_front_pic.4bpp.lz");
+const u32 gTrainerFrontPic_MaskedBoy[] = INCBIN_U32("graphics/trainers/front_pics/masked_boy_front_pic.4bpp.lz");
+const u32 gTrainerFrontPic_FairyGirl[] = INCBIN_U32("graphics/trainers/front_pics/fairy_girl_front_pic.4bpp.lz");
+
 const u32 gTrainerPalette_PlasmaKid[] = INCBIN_U32("graphics/trainers/palettes/plasma_kid.gbapal.lz");
+const u32 gTrainerPalette_Ghetsis[] = INCBIN_U32("graphics/trainers/palettes/ghetsis.gbapal.lz");
+const u32 gTrainerPalette_Frogger[] = INCBIN_U32("graphics/trainers/palettes/frogger.gbapal.lz");
+const u32 gTrainerPalette_Mermaid[] = INCBIN_U32("graphics/trainers/palettes/mermaid.gbapal.lz");
+const u32 gTrainerPalette_MaskedBoy[] = INCBIN_U32("graphics/trainers/palettes/masked_boy.gbapal.lz");
+const u32 gTrainerPalette_FairyGirl[] = INCBIN_U32("graphics/trainers/palettes/fairy_girl.gbapal.lz");
+
+
+
 
 const u8 gTrainerBackPic_Brendan[] = INCBIN_U8("graphics/trainers/back_pics/brendan_back_pic.4bpp");
 const u8 gTrainerBackPic_May[] = INCBIN_U8("graphics/trainers/back_pics/may_back_pic.4bpp");
