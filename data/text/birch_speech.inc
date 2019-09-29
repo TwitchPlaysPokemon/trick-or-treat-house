@@ -35,6 +35,11 @@ gText_Birch_BoyOrGirl:: @ 82C8BDD
 	.string "Are you a boy?\n"
 	.string "Or are you a girl?$"
 
+gText_Birch_ControlBoy::
+	.string "Boy {DPAD_LEFT}$"
+gText_Birch_ControlGirl::
+	.string "{DPAD_RIGHT} Girl$"
+
 gText_Birch_WhatsYourName:: @ 82C8BFF
 	.string "All right.\n"
 	.string "What's your name?$"
