@@ -1420,10 +1420,11 @@ const struct Item gItems[] =
 
     [ITEM_TINY_MUSHROOM] =
     {
-        .name = _("TINYMUSHROOM"),
+        .name = _(CANDY_NAME("M&M'S MINIS", "TINYMUSHROOM")),
         .itemId = ITEM_TINY_MUSHROOM,
         .price = CANDY_COST(500),
         .description = sTinyMushroomDesc,
+        .keepItem = TRUE,
         .pocket = POCKET_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
@@ -1432,10 +1433,11 @@ const struct Item gItems[] =
 
     [ITEM_BIG_MUSHROOM] =
     {
-        .name = _("BIG MUSHROOM"),
+        .name = _(CANDY_NAME("M&M'S JUMBO", "BIG MUSHROOM")),
         .itemId = ITEM_BIG_MUSHROOM,
         .price = CANDY_COST(5000),
         .description = sBigMushroomDesc,
+        .keepItem = TRUE,
         .pocket = POCKET_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
@@ -1448,6 +1450,7 @@ const struct Item gItems[] =
         .itemId = ITEM_NONE,
         .price = 0,
         .description = sDummyDesc,
+        .keepItem = TRUE,
         .pocket = POCKET_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
@@ -1456,10 +1459,11 @@ const struct Item gItems[] =
 
     [ITEM_PEARL] =
     {
-        .name = _("PEARL"),
+        .name = _(CANDY_NAME("GOBSTOPPER", "PEARL")),
         .itemId = ITEM_PEARL,
         .price = CANDY_COST(1400),
         .description = sPearlDesc,
+        .keepItem = TRUE,
         .pocket = POCKET_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
@@ -1468,10 +1472,11 @@ const struct Item gItems[] =
 
     [ITEM_BIG_PEARL] =
     {
-        .name = _("BIG PEARL"),
+        .name = _(CANDY_NAME("XL CHOCO", "BIG PEARL")),
         .itemId = ITEM_BIG_PEARL,
         .price = CANDY_COST(7500),
         .description = sBigPearlDesc,
+        .keepItem = TRUE,
         .pocket = POCKET_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
@@ -1480,10 +1485,11 @@ const struct Item gItems[] =
 
     [ITEM_STARDUST] =
     {
-        .name = _("STARDUST"),
+        .name = _(CANDY_NAME("PIXIE STIX","STARDUST")),
         .itemId = ITEM_STARDUST,
         .price = CANDY_COST(2000),
         .description = sStardustDesc,
+        .keepItem = TRUE,
         .pocket = POCKET_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
@@ -1492,10 +1498,11 @@ const struct Item gItems[] =
 
     [ITEM_STAR_PIECE] =
     {
-        .name = _("STAR PIECE"),
+        .name = _(CANDY_NAME("FERERO ROCHR", "STAR PIECE")),
         .itemId = ITEM_STAR_PIECE,
         .price = CANDY_COST(9800),
         .description = sStarPieceDesc,
+        .keepItem = TRUE,
         .pocket = POCKET_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
@@ -1504,10 +1511,11 @@ const struct Item gItems[] =
 
     [ITEM_NUGGET] =
     {
-        .name = _("NUGGET"),
+        .name = _(CANDY_NAME("TOBLERONE", "NUGGET")),
         .itemId = ITEM_NUGGET,
         .price = CANDY_COST(10000),
         .description = sNuggetDesc,
+        .keepItem = TRUE,
         .pocket = POCKET_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
@@ -1516,10 +1524,11 @@ const struct Item gItems[] =
 
     [ITEM_HEART_SCALE] =
     {
-        .name = _("HEART SCALE"),
+        .name = _(CANDY_NAME("GUMMY BEAR", "HEART SCALE")),
         .itemId = ITEM_HEART_SCALE,
         .price = CANDY_COST(100),
         .description = sHeartScaleDesc,
+        .keepItem = TRUE,
         .pocket = POCKET_ITEMS,
         .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,

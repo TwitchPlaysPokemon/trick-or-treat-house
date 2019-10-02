@@ -42,7 +42,6 @@
         "RustboroCity",
         "FortreeCity",
         "LilycoveCity",
-        "MossdeepCity",
         "SootopolisCity",
         "EverGrandeCity",
         "LittlerootTown",
@@ -149,7 +148,8 @@
         "IndoorMap"
     ],
     "MG_TrickOrTreatPuzzles": [
-        "TrickTreat_PetalburgCity"
+        "TrickTreat_PetalburgCity",
+        "TrickTreat_MossdeepCity"
     ],
     "group_order": [
         "MG_PuzzleFramework",

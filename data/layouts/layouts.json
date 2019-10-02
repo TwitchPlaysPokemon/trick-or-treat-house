@@ -61,14 +61,14 @@
             "width": 80
         },
         {
-            "blockdata_filepath": "data/layouts/MossdeepCity/map.bin",
-            "border_filepath": "data/layouts/MossdeepCity/border.bin",
-            "height": 40,
+            "blockdata_filepath": "data/layouts/TrickTreat_MossdeepCity/map.bin",
+            "border_filepath": "data/layouts/TrickTreat_MossdeepCity/border.bin",
+            "height": 44,
             "id": "LAYOUT_MOSSDEEP_CITY",
-            "name": "MossdeepCity_Layout",
-            "primary_tileset": "gTileset_General",
+            "name": "TrickTreat_MossdeepCity_Layout",
+            "primary_tileset": "gTileset_Autumn",
             "secondary_tileset": "gTileset_Mossdeep",
-            "width": 80
+            "width": 88
         },
         {
             "blockdata_filepath": "data/layouts/SootopolisCity/map.bin",

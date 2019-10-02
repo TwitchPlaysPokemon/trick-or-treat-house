@@ -121,6 +121,46 @@ Common_EventScript_ItemLavaCookie::
 	giveitem_std ITEM_LAVA_COOKIE, 1, 1
 	end
 
+Common_EventScript_ItemMMMinis::
+Common_EventScript_ItemTinyMushroom::
+	giveitem_std ITEM_TINY_MUSHROOM, 1, 1
+	end
+
+Common_EventScript_ItemMMBig::
+Common_EventScript_ItemBigMushroom::
+	giveitem_std ITEM_BIG_MUSHROOM, 1, 1
+	end
+
+Common_EventScript_ItemGobstopper::
+Common_EventScript_ItemPearl::
+	giveitem_std ITEM_PEARL, 1, 1
+	end
+
+Common_EventScript_ItemGiantChocoSlab::
+Common_EventScript_ItemBigPearl::
+	giveitem_std ITEM_BIG_PEARL, 1, 1
+	end
+
+Common_EventScript_ItemPixieStix::
+Common_EventScript_ItemStardust::
+	giveitem_std ITEM_STARDUST, 1, 1
+	end
+
+Common_EventScript_ItemFerreroRocher::
+Common_EventScript_ItemStarPiece::
+	giveitem_std ITEM_STAR_PIECE, 1, 1
+	end
+
+Common_EventScript_ItemToblerone::
+Common_EventScript_ItemNugget::
+	giveitem_std ITEM_NUGGET, 1, 1
+	end
+
+Common_EventScript_ItemGummyBear::
+Common_EventScript_ItemHeartScale::
+	giveitem_std ITEM_HEART_SCALE, 1, 1
+	end
+
 Common_EventScript_ItemRareCandy::
 	giveitem_std ITEM_RARE_CANDY, 1, 1
 	end
@@ -136,6 +176,8 @@ Common_EventScript_ItemFluffyTail::
 Common_EventScript_ItemItemfinder::
 	giveitem_std ITEM_ITEMFINDER, 1, 1
 	end
+
+@ -----------------------------------------------------
 
 Common_EventScript_PickupRareItem::
 	giveitem_std ITEM_RARE_CANDY, 1, 1

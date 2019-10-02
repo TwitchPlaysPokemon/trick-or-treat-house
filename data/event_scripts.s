@@ -138,6 +138,7 @@ gStdScripts_End:: @ 81DC2CC
 	@ -------------------------------------------------
 	
 	.include "data/maps/TrickTreat_PetalburgCity/scripts.inc"
+	.include "data/maps/TrickTreat_MossdeepCity/scripts.inc"
 	
 	@ -------------------------------------------------
 	
@@ -155,7 +156,6 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/RustboroCity/scripts.inc"
 	.include "data/maps/FortreeCity/scripts.inc"
 	.include "data/maps/LilycoveCity/scripts.inc"
-	.include "data/maps/MossdeepCity/scripts.inc"
 	.include "data/maps/SootopolisCity/scripts.inc"
 	.include "data/maps/EverGrandeCity/scripts.inc"
 	.include "data/maps/LittlerootTown/scripts.inc"
@@ -535,7 +535,6 @@ FortreeCity_PokemonCenter_1F_EventScript_27191E:: @ 827191E
 LavaridgeTown_PokemonCenter_1F_EventScript_27191E:: @ 827191E
 LilycoveCity_PokemonCenter_1F_EventScript_27191E:: @ 827191E
 MauvilleCity_PokemonCenter_1F_EventScript_27191E:: @ 827191E
-MossdeepCity_PokemonCenter_1F_EventScript_27191E:: @ 827191E
 OldaleTown_PokemonCenter_1F_EventScript_27191E:: @ 827191E
 PacifidlogTown_PokemonCenter_1F_EventScript_27191E:: @ 827191E
 PetalburgCity_PokemonCenter_1F_EventScript_27191E:: @ 827191E
@@ -1025,7 +1024,6 @@ EventScript_271F3D:: @ 8271F3D
 @ FortreeCity_Gym_EventScript_271F43:: @ 8271F43
 @ LavaridgeTown_Gym_1F_EventScript_271F43:: @ 8271F43
 @ MauvilleCity_Gym_EventScript_271F43:: @ 8271F43
-@ MossdeepCity_Gym_EventScript_271F43:: @ 8271F43
 @ PetalburgCity_Gym_EventScript_271F43:: @ 8271F43
 @ RustboroCity_Gym_EventScript_271F43:: @ 8271F43
 @ SootopolisCity_Gym_1F_EventScript_271F43:: @ 8271F43
@@ -1959,7 +1957,6 @@ FortreeCity_PokemonCenter_2F_EventScript_27375B:: @ 827375B
 LavaridgeTown_PokemonCenter_2F_EventScript_27375B:: @ 827375B
 LilycoveCity_PokemonCenter_2F_EventScript_27375B:: @ 827375B
 MauvilleCity_PokemonCenter_2F_EventScript_27375B:: @ 827375B
-MossdeepCity_PokemonCenter_2F_EventScript_27375B:: @ 827375B
 OldaleTown_PokemonCenter_2F_EventScript_27375B:: @ 827375B
 PacifidlogTown_PokemonCenter_2F_EventScript_27375B:: @ 827375B
 PetalburgCity_PokemonCenter_2F_EventScript_27375B:: @ 827375B
@@ -1979,7 +1976,6 @@ FortreeCity_PokemonCenter_2F_EventScript_273761:: @ 8273761
 LavaridgeTown_PokemonCenter_2F_EventScript_273761:: @ 8273761
 LilycoveCity_PokemonCenter_2F_EventScript_273761:: @ 8273761
 MauvilleCity_PokemonCenter_2F_EventScript_273761:: @ 8273761
-MossdeepCity_PokemonCenter_2F_EventScript_273761:: @ 8273761
 OldaleTown_PokemonCenter_2F_EventScript_273761:: @ 8273761
 PacifidlogTown_PokemonCenter_2F_EventScript_273761:: @ 8273761
 PetalburgCity_PokemonCenter_2F_EventScript_273761:: @ 8273761
@@ -1999,7 +1995,6 @@ FortreeCity_PokemonCenter_2F_EventScript_273767:: @ 8273767
 LavaridgeTown_PokemonCenter_2F_EventScript_273767:: @ 8273767
 LilycoveCity_PokemonCenter_2F_EventScript_273767:: @ 8273767
 MauvilleCity_PokemonCenter_2F_EventScript_273767:: @ 8273767
-MossdeepCity_PokemonCenter_2F_EventScript_273767:: @ 8273767
 OldaleTown_PokemonCenter_2F_EventScript_273767:: @ 8273767
 PacifidlogTown_PokemonCenter_2F_EventScript_273767:: @ 8273767
 PetalburgCity_PokemonCenter_2F_EventScript_273767:: @ 8273767
@@ -2043,7 +2038,6 @@ TerraCave_End_EventScript_273776:: @ 8273776
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_27378B:: @ 827378B
-MossdeepCity_StevensHouse_EventScript_27378B:: @ 827378B
 Route119_WeatherInstitute_2F_EventScript_27378B:: @ 827378B
 RustboroCity_DevonCorp_2F_EventScript_27378B:: @ 827378B
 	getpartysize
@@ -2052,7 +2046,6 @@ RustboroCity_DevonCorp_2F_EventScript_27378B:: @ 827378B
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_273797:: @ 8273797
-MossdeepCity_StevensHouse_EventScript_273797:: @ 8273797
 Route119_WeatherInstitute_2F_EventScript_273797:: @ 8273797
 RustboroCity_DevonCorp_2F_EventScript_273797:: @ 8273797
 	fadescreen 1
@@ -2063,7 +2056,6 @@ RustboroCity_DevonCorp_2F_EventScript_273797:: @ 8273797
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_2737A0:: @ 82737A0
-MossdeepCity_StevensHouse_EventScript_2737A0:: @ 82737A0
 Route119_WeatherInstitute_2F_EventScript_2737A0:: @ 82737A0
 RustboroCity_DevonCorp_2F_EventScript_2737A0:: @ 82737A0
 	bufferboxname 0, VAR_STORAGE_UNKNOWN
@@ -2099,7 +2091,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_2737FF:: @ 82737FF
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_273811:: @ 8273811
-MossdeepCity_StevensHouse_EventScript_273811:: @ 8273811
 Route119_WeatherInstitute_2F_EventScript_273811:: @ 8273811
 RustboroCity_DevonCorp_2F_EventScript_273811:: @ 8273811
 	msgbox gUnknown_0827331C, MSGBOX_DEFAULT
@@ -5632,30 +5623,30 @@ LilycoveCity_DepartmentStoreRooftop_Text_2C794B: @ 82C794B
 	.string "own lives to the utmost!\p"
 	.string "I hope you'll get that way, too!$"
 
-MossdeepCity_Text_2C79A6: @ 82C79A6
-	.string "I can't do this anymore!\p"
-	.string "It's utterly hopeless!\p"
-	.string "I'm a FIGHTING-type TRAINER,\n"
-	.string "so I can't win at the MOSSDEEP GYM\l"
-	.string "no matter how hard I try!\p"
-	.string "Argh! Punch! Punch! Punch!\n"
-	.string "Punch! Punch! Punch!\p"
-	.string "What, don't look at me that way!\n"
-	.string "I'm only hitting the ground!\p"
-	.string "Or do you want me to teach your\n"
-	.string "POKéMON DYNAMICPUNCH?$"
+@ TrickTreat_MossdeepCity_Text_2C79A6: @ 82C79A6
+@ 	.string "I can't do this anymore!\p"
+@ 	.string "It's utterly hopeless!\p"
+@ 	.string "I'm a FIGHTING-type TRAINER,\n"
+@ 	.string "so I can't win at the MOSSDEEP GYM\l"
+@ 	.string "no matter how hard I try!\p"
+@ 	.string "Argh! Punch! Punch! Punch!\n"
+@ 	.string "Punch! Punch! Punch!\p"
+@ 	.string "What, don't look at me that way!\n"
+@ 	.string "I'm only hitting the ground!\p"
+@ 	.string "Or do you want me to teach your\n"
+@ 	.string "POKéMON DYNAMICPUNCH?$"
 
-MossdeepCity_Text_2C7AD4: @ 82C7AD4
-	.string "Darn! You're even making fun of me?\n"
-	.string "Punch! Punch! Punch!$"
+@ TrickTreat_MossdeepCity_Text_2C7AD4: @ 82C7AD4
+@ 	.string "Darn! You're even making fun of me?\n"
+@ 	.string "Punch! Punch! Punch!$"
 
-MossdeepCity_Text_2C7B0D: @ 82C7B0D
-	.string "What? You do? You're a good person!\n"
-	.string "Which POKéMON should I teach?$"
+@ TrickTreat_MossdeepCity_Text_2C7B0D: @ 82C7B0D
+@ 	.string "What? You do? You're a good person!\n"
+@ 	.string "Which POKéMON should I teach?$"
 
-MossdeepCity_Text_2C7B4F: @ 82C7B4F
-	.string "I want you to win at the MOSSDEEP GYM\n"
-	.string "using that DYNAMICPUNCH!$"
+@ TrickTreat_MossdeepCity_Text_2C7B4F: @ 82C7B4F
+@ 	.string "I want you to win at the MOSSDEEP GYM\n"
+@ 	.string "using that DYNAMICPUNCH!$"
 
 SootopolisCity_PokemonCenter_1F_Text_2C7B8E: @ 82C7B8E
 	.string "Sigh…\p"
@@ -5908,34 +5899,34 @@ LilycoveCity_DepartmentStoreRooftop_EventScript_2C81E4:: @ 82C81E4
 	release
 	end
 
-MossdeepCity_EventScript_2C81EE:: @ 82C81EE
-	lock
-	faceplayer
-	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_DYNAMICPUNCH, MossdeepCity_EventScript_2C824C
-	msgbox MossdeepCity_Text_2C79A6, MSGBOX_YESNO
-	compare VAR_RESULT, 0
-	goto_if_eq MossdeepCity_EventScript_2C8242
-	call MossdeepCity_EventScript_2C832D
-	compare VAR_RESULT, 0
-	goto_if_eq MossdeepCity_EventScript_2C8242
-	msgbox MossdeepCity_Text_2C7B0D, MSGBOX_DEFAULT
-	setvar VAR_0x8005, 15
-	call EventScript_ShowPartyMenu
-	compare VAR_RESULT, 0
-	goto_if_eq MossdeepCity_EventScript_2C8242
-	setflag FLAG_MOVE_TUTOR_TAUGHT_DYNAMICPUNCH
-	goto MossdeepCity_EventScript_2C824C
+TrickTreat_MossdeepCity_EventScript_2C81EE:: @ 82C81EE
+	@ lock
+	@ faceplayer
+	@ goto_if_set FLAG_MOVE_TUTOR_TAUGHT_DYNAMICPUNCH, TrickTreat_MossdeepCity_EventScript_2C824C
+	@ msgbox TrickTreat_MossdeepCity_Text_2C79A6, MSGBOX_YESNO
+	@ compare VAR_RESULT, 0
+	@ goto_if_eq TrickTreat_MossdeepCity_EventScript_2C8242
+	@ call TrickTreat_MossdeepCity_EventScript_2C832D
+	@ compare VAR_RESULT, 0
+	@ goto_if_eq TrickTreat_MossdeepCity_EventScript_2C8242
+	@ msgbox TrickTreat_MossdeepCity_Text_2C7B0D, MSGBOX_DEFAULT
+	@ setvar VAR_0x8005, 15
+	@ call EventScript_ShowPartyMenu
+	@ compare VAR_RESULT, 0
+	@ goto_if_eq TrickTreat_MossdeepCity_EventScript_2C8242
+	@ setflag FLAG_MOVE_TUTOR_TAUGHT_DYNAMICPUNCH
+	@ goto TrickTreat_MossdeepCity_EventScript_2C824C
 	end
 
-MossdeepCity_EventScript_2C8242:: @ 82C8242
-	msgbox MossdeepCity_Text_2C7AD4, MSGBOX_DEFAULT
-	release
-	end
+@ TrickTreat_MossdeepCity_EventScript_2C8242:: @ 82C8242
+@ 	msgbox TrickTreat_MossdeepCity_Text_2C7AD4, MSGBOX_DEFAULT
+@ 	release
+@ 	end
 
-MossdeepCity_EventScript_2C824C:: @ 82C824C
-	msgbox MossdeepCity_Text_2C7B4F, MSGBOX_DEFAULT
-	release
-	end
+@ TrickTreat_MossdeepCity_EventScript_2C824C:: @ 82C824C
+@ 	msgbox TrickTreat_MossdeepCity_Text_2C7B4F, MSGBOX_DEFAULT
+@ 	release
+@ 	end
 
 SootopolisCity_PokemonCenter_1F_EventScript_2C8256:: @ 82C8256
 	lock
@@ -6007,7 +5998,6 @@ FortreeCity_House2_EventScript_2C832D:: @ 82C832D
 LavaridgeTown_House_EventScript_2C832D:: @ 82C832D
 LilycoveCity_DepartmentStoreRooftop_EventScript_2C832D:: @ 82C832D
 MauvilleCity_EventScript_2C832D:: @ 82C832D
-MossdeepCity_EventScript_2C832D:: @ 82C832D
 PacifidlogTown_PokemonCenter_1F_EventScript_2C832D:: @ 82C832D
 SlateportCity_PokemonFanClub_EventScript_2C832D:: @ 82C832D
 SootopolisCity_PokemonCenter_1F_EventScript_2C832D:: @ 82C832D
