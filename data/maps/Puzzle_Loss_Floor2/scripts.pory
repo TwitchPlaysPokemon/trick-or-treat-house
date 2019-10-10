@@ -5,7 +5,7 @@ Puzzle_Loss_Floor2_MapScripts::
 	.byte 0
 
 Puzzle_Loss_Floor2_FrameTable: @ 8255C41
-	map_script_2 VAR_LAST_WARP_ID, 1, Puzzle_Loss_Floor2_EventScript_WalkedInOn
+	map_script_2 VAR_LAST_WARP_ID, 5, Puzzle_Loss_Floor2_EventScript_WalkedInOn
 	map_script_2 VAR_LAST_WARP_ID, 4, Puzzle_Loss_Floor2_EventScript_AfterKickout
 	.2byte 0
 
@@ -63,6 +63,36 @@ script Puzzle_Loss_Floor2_EventScript_Teala {
 	msgbox ("Welcome to the Trainer's Lounge.\n"
 			"My name is Teala; how may I help you?$", MSGBOX_NPC)
 }
+
+script Puzzle_Loss_Floor2_Patron1 {
+	msgbox ("Joining Team Magma was a mistake I'll\n"
+			"never live down. But I'm gonna try to\l"
+			"make things better.\p"
+			"Wait, you're not that blonde Aqua girl…\n"
+			"Who are you?$", MSGBOX_NPC)
+}
+
+script Puzzle_Loss_Floor2_Patron2 {
+	msgbox ("Hey, you wanna trade? I'll give you my\n"
+			"FLAREON for an OMANYTE.\p"
+			"What do you mean “rental” Pokémon?$", MSGBOX_NPC)
+}
+
+script Puzzle_Loss_Floor2_Patron3 {
+	msgbox ("Urph… I don't feel so good…\n"
+			"I think I ate too much candy…\p"
+			"I blame my GULPIN. If I didn't eat the\n"
+			"candy, he would have!$", MSGBOX_NPC)
+}
+script Puzzle_Loss_Floor2_Patron3Mon {
+	msgbox ("It seems to be sleeping soundly.$", MSGBOX_SIGN)
+}
+
+script Puzzle_Loss_Floor2_Doll {
+	msgbox ("Someone must have left this doll.\n"
+			"Maybe they'll come back for it.$", MSGBOX_NPC)
+}
+
 
 # -----------------------------------------------------
 

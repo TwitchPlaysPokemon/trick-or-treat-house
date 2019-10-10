@@ -198,27 +198,28 @@ script Puzzle_Loss_Floor1_Patron2 {
 }
 
 script Puzzle_Loss_Floor1_Patron3 {
-	msgbox ("My Pokémon has a naive nature, and my\n"
-			"friend's has a jolly nature.\p"
-			"Just like people, Pokémon each have\n"
-			"different personalities too!$", MSGBOX_NPC)
-}
-
-script Puzzle_Loss_Floor1_Patron4 {
 	msgbox ("The second floor of every Pokémon\n"
 			"Center is the Trainer's Lounge.\p"
 			"You can go upstairs to rest, relax,\n"
 			"and even get a room for the night.$", MSGBOX_NPC)
 }
 
-script Puzzle_Loss_Floor1_Patron5 {
+script Puzzle_Loss_Floor1_Patron4 {
 	msgbox ("The counter to the left of the shop\n"
 			"is giving out Chocolate for free!\l"
 			"I'm gonna stock up on as much as I can!$", MSGBOX_NPC)
 }
 
-
-
+script Puzzle_Loss_Floor1_Patron5 {
+	if (flag(FLAG_TRICK_HOUSE_SCROLL_READ) == TRUE) {
+		msgbox ("Oh, sorry, I thought I lost my MAGIKARP\n"
+				"earlier. Turns out her ball was on my belt\l"
+				"this whole time! Hohohoho!$", MSGBOX_NPC)
+	} else {
+		msgbox ("I've lost my MAGIKARP! Could you help\n"
+				"me find it please?$", MSGBOX_NPC)
+	}
+}
 
 
 raw `
