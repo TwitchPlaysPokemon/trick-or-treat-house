@@ -3,7 +3,9 @@ Puzzle_HiddenMaze_MapScripts::
 	puzzle_info Puzzle_HiddenMaze_Name, Puzzle_HiddenMaze_Author
 	puzzle_adjective Puzzle_HiddenMaze_Adjective
 	puzzle_quip Puzzle_HiddenMaze_Quip
+	puzzle_metavars Puzzle_HiddenMaze_Variables
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_HiddenMaze_OnResume
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_HiddenMaze_OnLoad
 	.byte 0
 
 Puzzle_HiddenMaze_Name:
@@ -13,35 +15,188 @@ Puzzle_HiddenMaze_Author:
 Puzzle_HiddenMaze_Adjective:
 	.string "stealthy$"
 Puzzle_HiddenMaze_Quip:
-	.string "Insert Quip Here$"
+	.string "When I grow up, I'm gonna\nbe just like Koga!$"
+Puzzle_HiddenMaze_Variables:
+	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_NINJA_BOY
+	.2byte 0
 
 Puzzle_HiddenMaze_OnResume:
 	setstepcallback 10
 	end
+
+Puzzle_HiddenMaze_OnLoad:
+	setvar VAR_OBJ_GFX_ID_A, EVENT_OBJ_GFX_RICH_BOY
+	setvar VAR_OBJ_GFX_ID_B, EVENT_OBJ_GFX_ITEM_BALL
+	checktrainerflag TRAINER_03
+	call_if_eq Puzzle_HiddenMaze_OnLoad_HeroReveal
+	checktrainerflag TRAINER_06
+	call_if_eq Puzzle_HiddenMaze_OnLoad_NinjaReveal
+	end
+Puzzle_HiddenMaze_OnLoad_HeroReveal:
+	setvar VAR_OBJ_GFX_ID_A, EVENT_OBJ_GFX_PLASMA_KID
+	return
+Puzzle_HiddenMaze_OnLoad_NinjaReveal:
+	setvar VAR_OBJ_GFX_ID_B, EVENT_OBJ_GFX_NINJA_BOY
+	return
 
 @ -----------------------------------------------------
 `
 
 script Puzzle_HiddenMaze_Trainer1 {
 	# 
+	trainerbattle_single (TRAINER_01, 
+			"I am so very lost!$", 
+			"Now I'm even more lost!$")
+	msgbox ("I can see the exit clear as day!\n"
+			"But good luck getting to it!$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_HiddenMaze_Trainer2 {
 	# ninja
+	trainerbattle_single (TRAINER_02, 
+			"You must be faster to dodge the ninja!$", 
+			"Oh, I suppose being strong works too.$")
+	msgbox ("Isn't this palce awesome!\n"
+			"It's just like Koga's gym!\l"
+			"Koga is my hero!$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_HiddenMaze_Trainer3 {
-	# Hidden super hero transformation
+	lock
+	checktrainerflag (TRAINER_03)
+	goto_if_eq (Puzzle_HiddenMaze_Trainer3A)
+	msgbox ("He seems to be off in\nhis own little world.$", MSGBOX_AUTOCLOSE)
 }
+script Puzzle_HiddenMaze_Trainer3A {
+	msgbox ("He seems to be too obsessed with\ntaking selfies to talk to you.$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_HiddenMaze_Trainer3Trigger {
+	# Hidden super hero transformation
+	lock
+	playbgm (MUS_KAKKOII, 0)
+	applymovement (4, Puzzle_HiddenMaze_Trainer3_Movement1)
+	playse (SE_DANSA)
+	waitmovement (0)
+	msgbox ("HALT, EVILDOER!!$")
+	playse (SE_SELECT)
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
+	msgbox ("DID YOU THINK YOU COULD SLIP BY ME?!?!$")
+	closemessage
+	setvar (VAR_OBJ_GFX_ID_A, EVENT_OBJ_GFX_PLASMA_KID)
+	applymovement (4, Puzzle_HiddenMaze_Trainer3_Movement2)
+	waitmovement (0)
+	removeobject (4)
+	addobject (4)
+	applymovement (4, Puzzle_HiddenMaze_Trainer3_Movement2)
+	waitmovement (0)
+	applymovement (4, Common_Movement_WalkInPlaceDown)
+	waitmovement (0)
+	# Sparkle
+	setvar (VAR_RESULT, 1)
+	playse (SE_REAPOKE)
+	setfieldeffectargument (0, 2)
+	setfieldeffectargument (1, 13)
+	setfieldeffectargument (2, 0)
+	dofieldeffect (FLDEFF_SPARKLE)
+	waitfieldeffect (FLDEFF_SPARKLE)
+	msgbox ("FOR I AM PLASMA KID!!$")
+	applymovement (4, Common_Movement_WalkRight2)
+	waitmovement (0)
+	msgbox ("AND YOU WILL FAIL!!!!$")
+	
+	trainerbattle_no_intro (TRAINER_03, 
+			"NO!! IS THIS THE END FOR PLASMA KID?!$")
+	
+	setvar(VAR_PUZZLE_02, 1)
+	applymovement (4, Common_Movement_BackOffLeft1)
+	waitmovement (0)
+	msgbox ("I WILL LET YOU GO THIS TIME, VERMIN!!\p"
+			"BUT YOU WON'T WIN THE WAR!!!$")
+	setobjectmovementtype (4, MOVEMENT_TYPE_LOOK_AROUND)
+	release
+}
+raw `
+Puzzle_HiddenMaze_Trainer3_Movement1:
+	emote_exclamation_mark
+	jump_in_place_right
+	delay_16
+	delay_16
+	delay_16
+	step_end
+Puzzle_HiddenMaze_Trainer3_Movement2:
+	face_up
+	delay_1
+	face_left
+	delay_1
+	face_down
+	delay_1
+	face_right
+	delay_1
+	face_up
+	delay_1
+	face_left
+	delay_1
+	face_down
+	delay_1
+	face_right
+	delay_1
+	face_up
+	delay_1
+	face_left
+	delay_1
+	face_down
+	delay_1
+	face_right
+	delay_1
+	step_end
+`
 
 script Puzzle_HiddenMaze_Trainer4 {
 	# Carver's boyfriend
+	trainerbattle_single (TRAINER_04, 
+			"I hate this place. Carver is right there,\n"
+			"but I can't reach him!$", 
+			"Not bad at all.$")
+	msgbox ("Carver and I should have held hands as\n"
+			"we went through here, like he wanted.\p"
+			"But I didn't want to draw any unwanted\n"
+			"attention…$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_HiddenMaze_Trainer5 {
 	# Carver
+	trainerbattle_single (TRAINER_05, 
+			"Ah! How'd you get over here from there?!\n"
+			"Tell me!$", 
+			"Sorry, this place irks me.$")
+	msgbox ("My boyfriend Zander didn't want to\n"
+			"hold hands, and we got separated.\p"
+			"He was too busy worrying about nosy\n"
+			"busybodies, like he always does.\p"
+			"We probably could have kicked your\n"
+			"butt easily if we fought together.$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_HiddenMaze_Trainer6 {
 	# ninja disgused as an item ball
+	lock
+	checktrainerflag (TRAINER_06)
+	goto_if_eq (Puzzle_HiddenMaze_Trainer6A)
+	playbgm (MUS_AYASII, 0)
+	setvar (VAR_OBJ_GFX_ID_B, EVENT_OBJ_GFX_NINJA_BOY)
+	applymovement (7, Common_Movement_ExclamationMarkAndWait)
+	waitmovement (0)
+	removeobject (7)
+	addobject (7)
+	msgbox ("Ha! Fooled ya! A ninja blends\n"
+			"effortlessly into the environment!$")
+	closemessage
+	trainerbattle_no_intro (TRAINER_06, 
+			"If only I could battle as well as I\n"
+			"can hide…$")
+}
+script Puzzle_HiddenMaze_Trainer6A {
+	msgbox ("No one ever wants to play hide and seek\n"
+			"with me anymore because I always win…$", MSGBOX_AUTOCLOSE)
 }

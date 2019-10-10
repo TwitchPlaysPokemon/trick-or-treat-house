@@ -7,6 +7,15 @@
     ],
     "connections": null,
     "coord_events": [
+        {
+            "elevation": 0,
+            "script": "Puzzle_HiddenMaze_Trainer3Trigger",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_02",
+            "var_value": "0",
+            "x": 5,
+            "y": 13
+        }
     ],
     "id": "MAP_PUZZLE_HIDDEN_MAZE",
     "layout": "LAYOUT_PUZZLE_HIDDEN_MAZE",
@@ -35,8 +44,8 @@
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "Puzzle_HiddenMaze_Trainer1",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_sight_or_berry_tree_id": "1",
+            "trainer_type": "1",
             "x": 0,
             "y": 27
         },
@@ -48,15 +57,15 @@
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
             "script": "Puzzle_HiddenMaze_Trainer2",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_sight_or_berry_tree_id": "2",
+            "trainer_type": "1",
             "x": 10,
             "y": 2
         },
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_RICH_BOY",
+            "graphics_id": "EVENT_OBJ_GFX_VAR_A",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -74,8 +83,8 @@
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT",
             "script": "Puzzle_HiddenMaze_Trainer4",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_sight_or_berry_tree_id": "2",
+            "trainer_type": "1",
             "x": 26,
             "y": 27
         },
@@ -87,15 +96,15 @@
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_LEFT",
             "script": "Puzzle_HiddenMaze_Trainer5",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_sight_or_berry_tree_id": "2",
+            "trainer_type": "1",
             "x": 25,
             "y": 26
         },
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_NINJA_BOY",
+            "graphics_id": "EVENT_OBJ_GFX_VAR_B",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",

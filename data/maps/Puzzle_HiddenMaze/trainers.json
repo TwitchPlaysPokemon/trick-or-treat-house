@@ -46,6 +46,23 @@
 		]
 	},
 	{
+		"class": "BLACK_BELT",
+		"name": "ZANDER",
+		"music": "INTENSE",
+		"party": [
+			{
+				"species": "SPECIES_HARIYAMA",
+				"level": 28,
+				"iv": 100
+			},
+			{
+				"species": "SPECIES_SOLROCK",
+				"level": 28,
+				"iv": 100
+			}
+		]
+	},
+	{
 		"class": "PSYCHIC",
 		"pic": "PSYCHIC_M",
 		"name": "CARVER",
@@ -58,23 +75,6 @@
 			},
 			{
 				"species": "SPECIES_MEDICHAM",
-				"level": 28,
-				"iv": 100
-			}
-		]
-	},
-	{
-		"class": "BLACK_BELT",
-		"name": "ZANDER",
-		"music": "INTENSE",
-		"party": [
-			{
-				"species": "SPECIES_HARIYAMA",
-				"level": 28,
-				"iv": 100
-			},
-			{
-				"species": "SPECIES_SOLROCK",
 				"level": 28,
 				"iv": 100
 			}
