@@ -1128,7 +1128,7 @@
             "name": "TrickTreat_FortreeCity_Layout",
             "primary_tileset": "gTileset_Autumn",
             "secondary_tileset": "gTileset_Fortree",
-            "width": 40
+            "width": 68
         },
         {
             "blockdata_filepath": "data/layouts/TrickTreat_SlateportCity1/map.bin",

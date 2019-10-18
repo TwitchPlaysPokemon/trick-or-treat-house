@@ -6265,3 +6265,5 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/TrickTreat_SlateportCity1/scripts.inc"
 
 	.include "data/maps/TrickTreat_SlateportCity2/scripts.inc"
+
+	.include "data/maps/TrickTreat_FortreeCity/scripts.inc"

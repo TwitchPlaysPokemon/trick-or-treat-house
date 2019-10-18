@@ -7,6 +7,7 @@
 #define MAP_TRICK_HOUSE_ENTRANCE     (2 | (0 << 8))
 #define MAP_TRICK_HOUSE_END          (3 | (0 << 8))
 #define MAP_TRICK_HOUSE_CORRIDOR     (4 | (0 << 8))
+#define MAP_TRICK_TREAT_FORTREE_CITY (5 | (0 << 8))
 
 // Map Group 1
 #define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL1 (0 | (1 << 8))

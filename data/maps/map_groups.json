@@ -33,7 +33,8 @@
         "TrickHouseExt",
         "TrickHouseEntrance",
         "TrickHouseEnd",
-        "TrickHouseCorridor"
+        "TrickHouseCorridor",
+        "TrickTreat_FortreeCity"
     ],
     "MG_ReferenceMaps": [
         "PetalburgCity",
