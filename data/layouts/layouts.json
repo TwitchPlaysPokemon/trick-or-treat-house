@@ -1121,6 +1121,26 @@
             "width": 50
         },
         {
+            "blockdata_filepath": "data/layouts/TrickTreat_FortreeCity/map.bin",
+            "border_filepath": "data/layouts/TrickTreat_FortreeCity/border.bin",
+            "height": 40,
+            "id": "LAYOUT_TRICKTREAT_FORTREE_CITY",
+            "name": "TrickTreat_FortreeCity_Layout",
+            "primary_tileset": "gTileset_Autumn",
+            "secondary_tileset": "gTileset_Fortree",
+            "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/TrickTreat_SlateportCity1/map.bin",
+            "border_filepath": "data/layouts/TrickTreat_SlateportCity1/border.bin",
+            "height": 94,
+            "id": "LAYOUT_TRICKTREAT_SLATEPORT_CITY1",
+            "name": "TrickTreat_SlateportCity1_Layout",
+            "primary_tileset": "gTileset_Autumn",
+            "secondary_tileset": "gTileset_Slateport",
+            "width": 40
+        },
+        {
             "blockdata_filepath": "data/layouts/Puzzle_TwinMemories/map.bin",
             "border_filepath": "data/layouts/Puzzle_TwinMemories/border.bin",
             "height": 30,
@@ -1198,6 +1218,16 @@
             "name": "Desert_South_Layout",
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Desert",
+            "width": 80
+        },
+        {
+            "blockdata_filepath": "data/layouts/TrickTreat_SlateportCity2/map.bin",
+            "border_filepath": "data/layouts/TrickTreat_SlateportCity2/border.bin",
+            "height": 60,
+            "id": "LAYOUT_TRICK_TREAT_SLATEPORT_CITY2",
+            "name": "TrickTreat_SlateportCity2_Layout",
+            "primary_tileset": "gTileset_Autumn",
+            "secondary_tileset": "gTileset_Slateport",
             "width": 80
         }
     ],

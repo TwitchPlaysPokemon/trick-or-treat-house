@@ -149,7 +149,9 @@
     ],
     "MG_TrickOrTreatPuzzles": [
         "TrickTreat_PetalburgCity",
-        "TrickTreat_MossdeepCity"
+        "TrickTreat_MossdeepCity",
+        "TrickTreat_SlateportCity1",
+        "TrickTreat_SlateportCity2"
     ],
     "group_order": [
         "MG_PuzzleFramework",

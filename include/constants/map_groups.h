@@ -150,8 +150,10 @@
 #define MAP_DESERT_SOUTH        (4 | (7 << 8))
 
 // Map Group 8
-#define MAP_TRICK_TREAT_PETALBURG_CITY (0 | (8 << 8))
-#define MAP_TRICK_TREAT_MOSSDEEP_CITY  (1 | (8 << 8))
+#define MAP_TRICK_TREAT_PETALBURG_CITY  (0 | (8 << 8))
+#define MAP_TRICK_TREAT_MOSSDEEP_CITY   (1 | (8 << 8))
+#define MAP_TRICK_TREAT_SLATEPORT_CITY1 (2 | (8 << 8))
+#define MAP_TRICK_TREAT_SLATEPORT_CITY2 (3 | (8 << 8))
 
 #define MAP_GROUPS_COUNT 9
 

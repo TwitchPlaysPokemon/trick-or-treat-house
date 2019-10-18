@@ -6261,3 +6261,7 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/Desert_West/scripts.inc"
 
 	.include "data/maps/Desert_South/scripts.inc"
+
+	.include "data/maps/TrickTreat_SlateportCity1/scripts.inc"
+
+	.include "data/maps/TrickTreat_SlateportCity2/scripts.inc"
