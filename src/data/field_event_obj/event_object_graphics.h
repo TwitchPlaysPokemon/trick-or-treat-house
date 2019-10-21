@@ -342,6 +342,8 @@ const u32 gEventObjectPic_TrickDoorStoneRoom[] = INCBIN_U32("graphics/event_obje
 const u32 gEventObjectPic_TrickDoorNorth[] = INCBIN_U32("graphics/event_objects/pics/misc/trick_door_north.4bpp");
 
 
+const u16 gEvtObjPal_Torchick[] = INCBIN_U16("graphics/event_objects/palettes/objpal_torchick.gbapal");
+const u16 gEvtObjPal_Mudkid[] = INCBIN_U16("graphics/event_objects/palettes/objpal_mudkid.gbapal");
 const u16 gEvtObjPal_PlasmaKid[] = INCBIN_U16("graphics/event_objects/palettes/objpal_plasma_kid.gbapal");
 const u16 gEvtObjPal_Ghetsis[] = INCBIN_U16("graphics/event_objects/palettes/objpal_ghetsis.gbapal");
 const u16 gEvtObjPal_Frogger[] = INCBIN_U16("graphics/event_objects/palettes/objpal_frogger.gbapal");

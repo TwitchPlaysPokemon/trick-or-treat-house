@@ -437,6 +437,8 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define EVENT_OBJ_PAL_TAG_MERMAID           0x1129
 #define EVENT_OBJ_PAL_TAG_MASKED_BOY        0x112A
 #define EVENT_OBJ_PAL_TAG_FAIRY_GIRL        0x112B
+#define EVENT_OBJ_PAL_MAY                   0x112C
+#define EVENT_OBJ_PAL_BRANDON               0x112D
 #define EVENT_OBJ_PAL_TAG_NONE              0x11FF
 
 #include "data/field_event_obj/event_object_graphics_info_pointers.h"
@@ -485,6 +487,8 @@ const struct SpritePalette sEventObjectSpritePalettes[] = {
     {gEventObjectPalette34, EVENT_OBJ_PAL_TAG_34},
     {gEventObjectPaletteTrickHouse, EVENT_OBJ_PAL_TAG_TRICK_HOUSE},
     {gEventObjectPaletteTrickHouse, EVENT_OBJ_PAL_TAG_TRICK_MASTER},
+    {gEvtObjPal_Torchick,  EVENT_OBJ_PAL_MAY},
+    {gEvtObjPal_Mudkid,    EVENT_OBJ_PAL_BRANDON},
     {gEvtObjPal_PlasmaKid, EVENT_OBJ_PAL_TAG_PLASMA_KID},
     {gEvtObjPal_Ghetsis,   EVENT_OBJ_PAL_TAG_GHETSIS},
     {gEvtObjPal_Frogger,   EVENT_OBJ_PAL_TAG_FROGGER},
