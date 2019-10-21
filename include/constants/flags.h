@@ -117,7 +117,7 @@
 #define FLAG_PICKED_UP_SURF_ITEM             0x67
 #define FLAG_PICKED_UP_FLASH_ITEM            0x68
 #define FLAG_PICKED_UP_FLY_ITEM              0x69 // never used
-#define FLAG_UNUSED_0x06A                    0x6A
+#define FLAG_PARTY_SWAP_DISABLED             0x6A
 #define FLAG_UNUSED_0x06B                    0x6B
 #define FLAG_UNUSED_0x06C                    0x6C
 #define FLAG_UNUSED_0x06D                    0x6D
@@ -1279,7 +1279,7 @@
 #define FLAG_UNUSED_0x884                           (SYSTEM_FLAGS + 0x24) // Unused Flag
 #define FLAG_UNUSED_0x885                           (SYSTEM_FLAGS + 0x25) // Unused Flag
 #define FLAG_UNUSED_0x886                           (SYSTEM_FLAGS + 0x26) // Unused Flag
-#define FLAG_UNUSED_0x887                           (SYSTEM_FLAGS + 0x27) // Unused Flag
+#define FLAG_SYS_WHITEOUT_TRAINER_RESET             (SYSTEM_FLAGS + 0x27) // Unused Flag
 #define FLAG_SYS_USE_FLASH                          (SYSTEM_FLAGS + 0x28)
 #define FLAG_SYS_USE_STRENGTH                       (SYSTEM_FLAGS + 0x29)
 #define FLAG_SYS_WEATHER_CTRL                       (SYSTEM_FLAGS + 0x2A)

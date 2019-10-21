@@ -60,6 +60,7 @@ TrickHouseCorridor_SetupPokemonTableStop2:
 TrickHouseCorridor_EventScript_PokemonTable::
 	lockall
 	goto_if_set FLAG_TEMP_E, TrickHouseCorridor_EventScript_PokemonTable_GoodLuck
+	goto_if_set FLAG_PARTY_SWAP_DISABLED, TrickHouseCorridor_EventScript_PokemonTable_Disabled
 	goto_if_unset FLAG_SYS_POKEMON_GET, TrickHouseCorridor_EventScript_PokemonTable_FirstRental
 	goto TrickHouseCorridor_EventScript_PokemonTable_Swap
 	end
@@ -70,6 +71,20 @@ TrickHouseCorridor_EventScript_PokemonTable_GoodLuck:
 	end
 TrickHouseCorridor_Text_PokemonTable_GoodLuck:
 	.string "Good luck on the PUZZLE CHALLENGE!$"
+
+TrickHouseCorridor_EventScript_PokemonTable_Disabled:
+	msgbox TrickHouseCorridor_Text_PokemonTable_Disabled
+	releaseall
+	end
+TrickHouseCorridor_Text_PokemonTable_Disabled:
+	.string "Good evening! How are you doing on\n"
+	.string "your PUZZLE CHALLENGE?\p"
+	.string "Ah, it looks like you've modified your\n"
+	.string "party as part of one of the puzzles.\p"
+	.string "We can't allow you to swap out your\n"
+	.string "{POKEMON} while this is the case.\p"
+	.string "Come back after you complete the puzzle,\n"
+	.string "and we can accomidate you then.$"
 
 TrickHouseCorridor_EventScript_PokemonTable_FirstRental:
 	msgbox TrickHouseCorridor_Text_PokemonTable_FirstRental1

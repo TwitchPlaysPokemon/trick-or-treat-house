@@ -37,9 +37,15 @@ TrickTreat_PetalburgCity_Variables:
 TrickTreat_PetalburgCity_FrameTable:
 	map_script_2 VAR_PUZZLE_00, 0, TrickTreat_PetalburgCity_Introduction
 	.2byte 0
+
+@ -----------------------------------------------------
+#define METATILE_DoorOff 0x021
 `
 
 script TrickTreat_PetalburgCity_OnTransition {
+	if (flag(FLAG_PUZZLE_23)) { setmetatile (30, 24, METATILE_DoorOff, TRUE) }
+	if (flag(FLAG_PUZZLE_24)) { setmetatile (17,  5, METATILE_DoorOff, TRUE) }
+	if (flag(FLAG_PUZZLE_25)) { setmetatile (20, 19, METATILE_DoorOff, TRUE) }
 	if (var(VAR_PUZZLE_00) == 0) {
 		setobjectxyperm (12, 31, 10)
 		setflag (FLAG_HIDE_MAP_NAME_POPUP)
@@ -121,7 +127,7 @@ script TrickTreat_PetalburgCity_EventScript_Boy {
 # -----------------------------------------------------
 
 script TrickTreat_PetalburgCity_SetDoorGlowOff {
-	setmetatile (VAR_METATILE_X, VAR_METATILE_Y, 0x021, TRUE)
+	setmetatile (VAR_METATILE_X, VAR_METATILE_Y, METATILE_DoorOff, TRUE)
 	special (DrawWholeMapView)
 	delay (6)
 	return
@@ -302,3 +308,7 @@ script TrickTreat_PetalburgCity_TriggerScript_SoftBorderWest {
 	waitmovement (0)
 	release
 }
+
+raw `
+#undef METATILE_DoorOff
+`

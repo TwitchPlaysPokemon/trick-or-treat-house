@@ -77,9 +77,9 @@
 #define VAR_PUZZLE_1E                        0x403E
 #define VAR_PUZZLE_1F                        0x403F
 // temporary aliases
-#define VAR_TRICK_HOUSE_PUZZLE_7_STATE       0x4020
-#define VAR_TRICK_HOUSE_PUZZLE_8_STATE       0x4020
-#define VAR_TRICK_HOUSE_PUZZLE_7_STATE_2     0x4021
+#define VAR_TRICK_HOUSE_PUZZLE_7_STATE       VAR_PUZZLE_00
+#define VAR_TRICK_HOUSE_PUZZLE_8_STATE       VAR_PUZZLE_00
+#define VAR_TRICK_HOUSE_PUZZLE_7_STATE_2     VAR_PUZZLE_01
 
 // general purpose vars
 #define VAR_CURRENT_PUZZLE                   0x4040 

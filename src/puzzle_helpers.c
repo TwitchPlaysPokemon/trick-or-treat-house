@@ -12,11 +12,13 @@
 #include "string_util.h"
 #include "text.h"
 #include "task.h"
+#include "pokemon_storage_system.h"
 #include "constants/flags.h"
 #include "constants/metatile_labels.h"
 #include "constants/songs.h"
 #include "constants/event_objects.h"
 #include "constants/vars.h"
+#include "constants/species.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 // Puzzle: Pokemon Says 
@@ -595,3 +597,32 @@ void HiddenMaze_PulseWallTiles(u8 taskId)
 
 #undef PALETTE_SLOT_SRC
 #undef PALETTE_SLOT_DST
+
+///////////////////////////////////////////////////////////////////////////////
+// Trick or Treating in Mossdeep
+// MAP_TRICK_TREAT_MOSSDEEP_CITY
+
+#define VAR_TRICK_STOLEN_MON VAR_PUZZLE_00
+#define TEMP_STORAGE_BOX 10
+#define TEMP_STORAGE_POS 0
+
+void MossdeepStealPokemon(struct ScriptContext *ctx)
+{
+	int i;
+	CalculatePlayerPartyCount();
+	if (VarGet(VAR_TRICK_STOLEN_MON) == 0) { //steal the mon
+		for (i = 0; i < gPlayerPartyCount; i++) {
+			if (SendMonToPCSlot(&gPlayerParty[i], TEMP_STORAGE_BOX, TEMP_STORAGE_POS+i)) {
+				ZeroMonData(&gPlayerParty[i]);
+			}
+		}
+	} else { //return the mon
+		for (i = 0; i < PARTY_SIZE; i++) {
+			GetMonFromPCSlot(&gPlayerParty[i], TEMP_STORAGE_BOX, TEMP_STORAGE_POS+i);
+		}
+	}
+	CompactPartySlots();
+	CalculatePlayerPartyCount();
+}
+
+#undef VAR_TRICK_STOLEN_MON 

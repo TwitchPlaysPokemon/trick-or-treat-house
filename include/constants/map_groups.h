@@ -7,7 +7,6 @@
 #define MAP_TRICK_HOUSE_ENTRANCE     (2 | (0 << 8))
 #define MAP_TRICK_HOUSE_END          (3 | (0 << 8))
 #define MAP_TRICK_HOUSE_CORRIDOR     (4 | (0 << 8))
-#define MAP_TRICK_TREAT_FORTREE_CITY (5 | (0 << 8))
 
 // Map Group 1
 #define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL1 (0 | (1 << 8))
@@ -153,8 +152,9 @@
 // Map Group 8
 #define MAP_TRICK_TREAT_PETALBURG_CITY  (0 | (8 << 8))
 #define MAP_TRICK_TREAT_MOSSDEEP_CITY   (1 | (8 << 8))
-#define MAP_TRICK_TREAT_SLATEPORT_CITY1 (2 | (8 << 8))
-#define MAP_TRICK_TREAT_SLATEPORT_CITY2 (3 | (8 << 8))
+#define MAP_TRICK_TREAT_FORTREE_CITY    (2 | (8 << 8))
+#define MAP_TRICK_TREAT_SLATEPORT_CITY1 (3 | (8 << 8))
+#define MAP_TRICK_TREAT_SLATEPORT_CITY2 (4 | (8 << 8))
 
 #define MAP_GROUPS_COUNT 9
 

@@ -873,7 +873,7 @@ gTileset_Autumn::
 	.4byte gTilesetPalettes_Autumn
 	.4byte gMetatiles_Autumn
 	.4byte gMetatileAttributes_Autumn
-	.4byte NULL
+	.4byte InitTilesetAnim_General
 
 	.align 2
 gTileset_TrihardPokemonCenter:: @ 83DF8B4
