@@ -8091,7 +8091,6 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_AMORPHOUS,
         .eggGroup2 = EGG_GROUP_AMORPHOUS,
         .abilities = ABILITY_NONE,
-        .bodyColor = BODY_COLOR_YELLOW,
     },
 
         [SPECIES_GOURGEIST] =
@@ -8115,8 +8114,6 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_AMORPHOUS,
         .eggGroup2 = EGG_GROUP_AMORPHOUS,
         .abilities = ABILITY_NONE,
-        .abilityHidden = ABILITY_NONE,
-        .bodyColor = BODY_COLOR_BROWN,
     },
 
         [SPECIES_SLURPUFF] =
@@ -8140,8 +8137,6 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_FAIRY,
         .eggGroup2 = EGG_GROUP_FAIRY,
         .abilities = ABILITY_NONE,
-        .abilityHidden = ABILITY_NONE,
-        .bodyColor = BODY_COLOR_WHITE,
     },
 
     [SPECIES_OLD_UNOWN_E] = OLD_UNOWN_BASE_STATS,
