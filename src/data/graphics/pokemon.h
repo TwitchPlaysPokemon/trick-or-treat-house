@@ -2714,17 +2714,26 @@ const u8 gMonFootprint_Chimecho[] = INCBIN_U8("graphics/pokemon/chimecho/footpri
 const u32 gMonStillFrontPic_Egg[] = INCBIN_U32("graphics/pokemon/egg/front.4bpp.lz");
 const u32 gMonPalette_Egg[] = INCBIN_U32("graphics/pokemon/egg/normal.gbapal.lz");
 
-const u32 gMonStillFrontPic_UnownB[] = INCBIN_U32("graphics/pokemon/unown/front_b.4bpp.lz");
-const u32 gMonBackPic_UnownB[] = INCBIN_U32("graphics/pokemon/unown/back_b.4bpp.lz");
-const u8 gMonIcon_UnownB[] = INCBIN_U8("graphics/pokemon/unown/icon_b.4bpp");
+const u32 gMonStillFrontPic_Mimikyu[] = INCBIN_U32("graphics/pokemon/mimikyu/front.4bpp.lz");
+const u32 gMonPalette_Mimikyu[] = INCBIN_U32("graphics/pokemon/mimikyu/normal.gbapal.lz");
+const u32 gMonBackPic_Mimikyu[] = INCBIN_U32("graphics/pokemon/mimikyu/back.4bpp.lz");
+const u32 gMonShinyPalette_Mimikyu[] = INCBIN_U32("graphics/pokemon/mimikyu/shiny.gbapal.lz");
+const u8 gMonIcon_Mimikyu[] = INCBIN_U8("graphics/pokemon/mimikyu/icon.4bpp");
+const u8 gMonFootprint_Mimikyu[] = INCBIN_U8("graphics/pokemon/mimikyu/footprint.1bpp");
 
-const u32 gMonStillFrontPic_UnownC[] = INCBIN_U32("graphics/pokemon/unown/front_c.4bpp.lz");
-const u32 gMonBackPic_UnownC[] = INCBIN_U32("graphics/pokemon/unown/back_c.4bpp.lz");
-const u8 gMonIcon_UnownC[] = INCBIN_U8("graphics/pokemon/unown/icon_c.4bpp");
+const u32 gMonStillFrontPic_Gourgeist[] = INCBIN_U32("graphics/pokemon/gourgeist/front.4bpp.lz");
+const u32 gMonPalette_Gourgeist[] = INCBIN_U32("graphics/pokemon/gourgeist/normal.gbapal.lz");
+const u32 gMonBackPic_Gourgeist[] = INCBIN_U32("graphics/pokemon/gourgeist/back.4bpp.lz");
+const u32 gMonShinyPalette_Gourgeist[] = INCBIN_U32("graphics/pokemon/gourgeist/shiny.gbapal.lz");
+const u8 gMonIcon_Gourgeist[] = INCBIN_U8("graphics/pokemon/gourgeist/icon.4bpp");
+const u8 gMonFootprint_Gourgeist[] = INCBIN_U8("graphics/pokemon/gourgeist/footprint.1bpp");
 
-const u32 gMonStillFrontPic_UnownD[] = INCBIN_U32("graphics/pokemon/unown/front_d.4bpp.lz");
-const u32 gMonBackPic_UnownD[] = INCBIN_U32("graphics/pokemon/unown/back_d.4bpp.lz");
-const u8 gMonIcon_UnownD[] = INCBIN_U8("graphics/pokemon/unown/icon_d.4bpp");
+const u32 gMonStillFrontPic_Slurpuff[] = INCBIN_U32("graphics/pokemon/slurpuff/front.4bpp.lz");
+const u32 gMonPalette_Slurpuff[] = INCBIN_U32("graphics/pokemon/slurpuff/normal.gbapal.lz");
+const u32 gMonBackPic_Slurpuff[] = INCBIN_U32("graphics/pokemon/slurpuff/back.4bpp.lz");
+const u32 gMonShinyPalette_Slurpuff[] = INCBIN_U32("graphics/pokemon/slurpuff/shiny.gbapal.lz");
+const u8 gMonIcon_Slurpuff[] = INCBIN_U8("graphics/pokemon/slurpuff/icon.4bpp");
+const u8 gMonFootprint_Slurpuff[] = INCBIN_U8("graphics/pokemon/slurpuff/footprint.1bpp");
 
 const u32 gMonStillFrontPic_UnownE[] = INCBIN_U32("graphics/pokemon/unown/front_e.4bpp.lz");
 const u32 gMonBackPic_UnownE[] = INCBIN_U32("graphics/pokemon/unown/back_e.4bpp.lz");

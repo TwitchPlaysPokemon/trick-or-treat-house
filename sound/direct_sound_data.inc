@@ -1935,6 +1935,18 @@ Cry_Deoxys::
 	.incbin "sound/direct_sound_samples/cry_deoxys.bin"
 
 	.align 2
+Cry_Mimikyu::
+	.incbin "sound/direct_sound_samples/cry_not_mimikyu.bin"
+
+	.align 2
+Cry_Gourgeist::
+	.incbin "sound/direct_sound_samples/cry_not_gourgeist.bin"
+
+	.align 2
+Cry_Slurpuff::
+	.incbin "sound/direct_sound_samples/cry_not_slurpuff.bin"
+
+	.align 2
 Cry_Chimecho::
 	.incbin "sound/direct_sound_samples/cry_chimecho.bin"
 
