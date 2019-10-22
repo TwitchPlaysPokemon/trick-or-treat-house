@@ -8084,7 +8084,6 @@ const struct BaseStats gBaseStats[] =
         .expYield = 167,
         .evYield_SpAttack  = 0,
         .evYield_SpDefense = 2,
-        .item2 = ITEM_NONE, // ITEM_CHESTO_BERRY,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = 70,
