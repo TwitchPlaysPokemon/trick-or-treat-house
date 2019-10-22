@@ -411,5 +411,8 @@ const u16 *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_LATIOS] = sLatiosLevelUpLearnset,
     [SPECIES_JIRACHI] = sJirachiLevelUpLearnset,
     [SPECIES_DEOXYS] = sDeoxysLevelUpLearnset,
+    [SPECIES_MIMIKYU] = sMimikyuLevelUpLearnset,
+    [SPECIES_GOURGEIST] = sGourgeistLevelUpLearnset,
+    [SPECIES_SLURPUFF] = sSlurpuffLevelUpLearnset,
     [SPECIES_CHIMECHO] = sChimechoLevelUpLearnset,
 };

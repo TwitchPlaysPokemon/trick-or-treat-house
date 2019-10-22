@@ -6055,11 +6055,11 @@ const u32 gTMHMLearnsets[][2] =
                                         | TMHM(HM01_CUT)
                                         | TMHM(HM05_FLASH)),
 
-    [SPECIES_OLD_UNOWN_B] = TMHM_LEARNSET(0),
+    [SPECIES_MIMIKYU]     = TMHM_LEARNSET(0),
 
-    [SPECIES_OLD_UNOWN_C] = TMHM_LEARNSET(0),
+    [SPECIES_GOURGEIST]   = TMHM_LEARNSET(0),
 
-    [SPECIES_OLD_UNOWN_D] = TMHM_LEARNSET(0),
+    [SPECIES_SLURPUFF]    = TMHM_LEARNSET(0),
 
     [SPECIES_OLD_UNOWN_E] = TMHM_LEARNSET(0),
 

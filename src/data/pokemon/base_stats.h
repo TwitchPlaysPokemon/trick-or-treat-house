@@ -1,5 +1,5 @@
-// Maximum value for a female Pokémon is 254 (MON_FEMALE) which is 100% female.
-// 255 (MON_GENDERLESS) is reserved for genderless Pokémon.
+// Maximum value for a female Pokï¿½mon is 254 (MON_FEMALE) which is 100% female.
+// 255 (MON_GENDERLESS) is reserved for genderless Pokï¿½mon.
 #define PERCENT_FEMALE(percent) min(254, ((percent * 255) / 100))
 
 #define OLD_UNOWN_BASE_STATS                \
@@ -12406,6 +12406,81 @@ const struct BaseStats gBaseStats[] =
         .safariZoneFleeRate = 0,
         .bodyColor = BODY_COLOR_RED,
         .noFlip = TRUE,
+    },
+
+        [SPECIES_MIMIKYU] =
+    {
+        .baseHP        = 55,
+        .baseAttack    = 90,
+        .baseDefense   = 80,
+        .baseSpeed     = 96,
+        .baseSpAttack  = 50,
+        .baseSpDefense = 105,
+        .type1 = TYPE_GHOST,
+        .type2 = TYPE_NORMAL,
+        .catchRate = 45,
+        .expYield = 167,
+        .evYield_SpAttack  = 0,
+        .evYield_SpDefense = 2,
+        .item2 = ITEM_NONE, // ITEM_CHESTO_BERRY,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = 70,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroup1 = EGG_GROUP_AMORPHOUS,
+        .eggGroup2 = EGG_GROUP_AMORPHOUS,
+        .abilities = ABILITY_NONE,
+        .bodyColor = BODY_COLOR_YELLOW,
+    },
+
+        [SPECIES_GOURGEIST] =
+    {
+        .baseHP        = 65,
+        .baseAttack    = 90,
+        .baseDefense   = 122,
+        .baseSpeed     = 84,
+        .baseSpAttack  = 58,
+        .baseSpDefense = 75,
+        .type1 = TYPE_GHOST,
+        .type2 = TYPE_GRASS,
+        .catchRate = 60,
+        .expYield = 173,
+        .evYield_Defense   = 2,
+        .evYield_SpAttack  = 0,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = 70,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroup1 = EGG_GROUP_AMORPHOUS,
+        .eggGroup2 = EGG_GROUP_AMORPHOUS,
+        .abilities = {ABILITY_PICKUP, ABILITY_FRISK},
+        .abilityHidden = ABILITY_NONE,
+        .bodyColor = BODY_COLOR_BROWN,
+    },
+
+        [SPECIES_SLURPUFF] =
+    {
+        .baseHP        = 82,
+        .baseAttack    = 80,
+        .baseDefense   = 86,
+        .baseSpeed     = 72,
+        .baseSpAttack  = 85,
+        .baseSpDefense = 75,
+        .type1 = TYPE_NORMAL,
+        .type2 = TYPE_NORMAL,
+        .catchRate = 140,
+        .expYield = 168,
+        .evYield_Defense   = 2,
+        .evYield_SpAttack  = 0,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = 70,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroup1 = EGG_GROUP_FAIRY,
+        .eggGroup2 = EGG_GROUP_FAIRY,
+        .abilities = {ABILITY_SWEET_VEIL, ABILITY_NONE},
+        .abilityHidden = ABILITY_NONE,
+        .bodyColor = BODY_COLOR_WHITE,
     },
 
     [SPECIES_CHIMECHO] =
