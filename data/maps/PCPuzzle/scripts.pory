@@ -39,14 +39,14 @@ PCPuzzle_MapScripts::
 #define FLAG_EVERYTHINGDONE FLAG_PUZZLE_38
 `
 
-PCPuzzle_ScrollTrapped{
+script PCPuzzle_ScrollTrapped {
 	lock
 	msgbox ("Activate the four terminals\nto release the scroll.$")
 	release
 	end
 }
 
-PCPuzzle_Check {
+script PCPuzzle_Check {
 	if (flag(FLAG_TERMINAL_YELLOW) && flag(FLAG_TERMINAL_BLUE) && flag(FLAG_TERMINAL_RED) && flag(FLAG_TERMINAL_GREEN) && !flag(FLAG_EVERYTHINGDONE)){
 		// Everything done, unlock the scroll
 		setflag(FLAG_EVERYTHINGDONE)
@@ -54,7 +54,7 @@ PCPuzzle_Check {
 	return
 }
 
-PCPuzzle_Terminal_Yellow {
+script PCPuzzle_Terminal_Yellow {
 	lock
 	if (flag(FLAG_TERMINAL_YELLOW)) {
 		msgbox (PCPuzzle_TerminalActivated_Text)
@@ -71,7 +71,7 @@ PCPuzzle_Terminal_Yellow {
 	end
 }
 
-PCPuzzle_Terminal_BLUE {
+script PCPuzzle_Terminal_BLUE {
 	lock
 	if (flag(FLAG_TERMINAL_BLUE)) {
 		msgbox (PCPuzzle_TerminalActivated_Text)
@@ -88,7 +88,7 @@ PCPuzzle_Terminal_BLUE {
 	end
 }
 
-PCPuzzle_Terminal_RED {
+script PCPuzzle_Terminal_RED {
 	lock
 	if (flag(FLAG_TERMINAL_RED)) {
 		msgbox (PCPuzzle_TerminalActivated_Text)
@@ -105,7 +105,7 @@ PCPuzzle_Terminal_RED {
 	end
 }
 
-PCPuzzle_Terminal_GREEN {
+script PCPuzzle_Terminal_GREEN {
 	lock
 	if (flag(FLAG_TERMINAL_GREEN)) {
 		msgbox (PCPuzzle_TerminalActivated_Text)
@@ -122,7 +122,7 @@ PCPuzzle_Terminal_GREEN {
 	end
 }
 
-PCPuzzle_PC_Trainer1 {
+script PCPuzzle_PC_Trainer1 {
 	lock
 	if (flag(FLAG_PUZZLE_20)){
 		msgbox(PCPuzzle_PCActivated_Text)
@@ -140,7 +140,7 @@ PCPuzzle_PC_Trainer1 {
 	end
 }
 
-PCPuzzle_PC_Trainer2 {
+script PCPuzzle_PC_Trainer2 {
 	lock
 	if (flag(FLAG_PUZZLE_21)){
 		msgbox(PCPuzzle_PCActivated_Text)
@@ -160,7 +160,7 @@ PCPuzzle_PC_Trainer2 {
 	end
 }
 
-PCPuzzle_PC_Trainer3 {
+script PCPuzzle_PC_Trainer3 {
 	lock
 	if (flag(FLAG_PUZZLE_22)){
 		msgbox(PCPuzzle_PCActivated_Text)
@@ -178,7 +178,7 @@ PCPuzzle_PC_Trainer3 {
 	end
 }
 
-PCPuzzle_PC_Trainer4 {
+script PCPuzzle_PC_Trainer4 {
 	lock
 	if (flag(FLAG_PUZZLE_23)){
 		msgbox(PCPuzzle_PCActivated_Text)
@@ -196,7 +196,7 @@ PCPuzzle_PC_Trainer4 {
 	end
 }
 
-PCPuzzle_PC_Nothing1 {
+script PCPuzzle_PC_Nothing1 {
 	lock
 	if (flag(FLAG_PUZZLE_24)){
 		msgbox(PCPuzzle_PCActivated_Text)
@@ -213,7 +213,7 @@ PCPuzzle_PC_Nothing1 {
 	end
 }
 
-PCPuzzle_PC_Nothing2 {
+script PCPuzzle_PC_Nothing2 {
 	lock
 	if (flag(FLAG_PUZZLE_25)){
 		msgbox(PCPuzzle_PCActivated_Text)
