@@ -9,8 +9,8 @@ EventScript_CutTree:: @ 82906BB
 	checkitem ITEM_CUT_ITEM, 1
 	compare VAR_RESULT, 0
 	goto_if_eq EventScript_CheckTreeCantCut
-	setfieldeffectargument 0, VAR_RESULT
-	bufferpartymonnick 0, VAR_RESULT
+	@ setfieldeffectargument 0, VAR_RESULT
+	@ bufferpartymonnick 0, VAR_RESULT
 	buffermovename 1, MOVE_CUT
 	msgbox Text_WantToCut, MSGBOX_YESNO
 	compare VAR_RESULT, 0
@@ -56,7 +56,7 @@ Text_WantToCut: @ 829072E
 	.string "Would you like to CUT it?$"
 
 Text_MonUsedHM: @ 8290771
-	.string "{STR_VAR_1} used {STR_VAR_2}!$"
+	.string "You used {STR_VAR_2}!$"
 
 Text_CantCut: @ 829077D
 	.string "This tree looks like it can be\n"
@@ -73,8 +73,8 @@ EventScript_RockSmash:: @ 82907A6
 	checkitem ITEM_ROCKSMASH_ITEM, 1
 	compare VAR_RESULT, 0
 	goto_if_eq EventScript_CantSmashRock
-	setfieldeffectargument 0, VAR_RESULT
-	bufferpartymonnick 0, VAR_RESULT
+	@ setfieldeffectargument 0, VAR_RESULT
+	@ bufferpartymonnick 0, VAR_RESULT
 	buffermovename 1, MOVE_ROCK_SMASH
 	msgbox Text_WantToSmash, MSGBOX_YESNO
 	compare VAR_RESULT, 0
@@ -189,8 +189,8 @@ Text_WantToStrength: @ 829092C
 	.string "Would you like to use STRENGTH?$"
 
 Text_MonUsedStrength: @ 829098C
-	.string "{STR_VAR_1} used STRENGTH!\p"
-	.string "{STR_VAR_1}'s STRENGTH made it\n"
+	.string "You used STRENGTH!\p"
+	.string "Your STRENGTH made it\n"
 	.string "possible to move boulders around!$"
 
 Text_CantStrength: @ 82909D6
@@ -212,8 +212,8 @@ EventScript_UseWaterfall:: @ 8290A49
 	checkitem ITEM_WATERFALL_ITEM, 1
 	compare VAR_RESULT, 0
 	goto_if_eq EventScript_CantWaterfall
-	bufferpartymonnick 0, VAR_RESULT
-	setfieldeffectargument 0, VAR_RESULT
+	@ bufferpartymonnick 0, VAR_RESULT
+	@ setfieldeffectargument 0, VAR_RESULT
 	msgbox Text_WantToWaterfall, MSGBOX_YESNO
 	compare VAR_RESULT, 0
 	goto_if_eq EventScript_EndWaterfall
@@ -240,7 +240,7 @@ Text_WantToWaterfall: @ 8290AC3
 	.string "Would you like to use WATERFALL?$"
 
 Text_MonUsedWaterfall: @ 8290AFC
-	.string "{STR_VAR_1} used WATERFALL.$"
+	.string "You used WATERFALL.$"
 
 @ -----------------------------------------------------
 
@@ -252,8 +252,8 @@ EventScript_UseSurf:: @ 8271EA0
 	checkitem ITEM_SURF_ITEM, 1
 	compare VAR_RESULT, 0
 	goto_if_eq EventScript_CantSurf
-	bufferpartymonnick 0, VAR_RESULT
-	setfieldeffectargument 0, VAR_RESULT
+	@ bufferpartymonnick 0, VAR_RESULT
+	@ setfieldeffectargument 0, VAR_RESULT
 	lockall
 	msgbox gText_WantToUseSurf, MSGBOX_YESNO
 	compare VAR_RESULT, 0
@@ -271,7 +271,7 @@ gText_WantToUseSurf:: @ 8272FD6
 	.string "The water is dyed a deep blue…\nWould you like to SURF?$"
 
 gText_PlayerUsedSurf:: @ 827300D
-	.string "{STR_VAR_1} used SURF!$"
+	.string "You used SURF!$"
 
 
 @ -----------------------------------------------------
@@ -285,8 +285,8 @@ EventScript_UseDive:: @ 8290B0F
 	checkitem ITEM_DIVE_ITEM, 1
 	compare VAR_RESULT, 0
 	goto_if_eq EventScript_CantDive
-	bufferpartymonnick 0, VAR_RESULT
-	setfieldeffectargument 0, VAR_RESULT
+	@ bufferpartymonnick 0, VAR_RESULT
+	@ setfieldeffectargument 0, VAR_RESULT
 	setfieldeffectargument 1, 1
 	msgbox Text_WantToDive, MSGBOX_YESNO
 	compare VAR_RESULT, 0
@@ -310,8 +310,8 @@ EventScript_UseDiveUnderwater:: @ 8290B5A
 	checkitem ITEM_DIVE_ITEM, 1
 	compare VAR_RESULT, 0
 	goto_if_eq EventScript_CantSurface
-	bufferpartymonnick 0, VAR_RESULT
-	setfieldeffectargument 0, VAR_RESULT
+	@ bufferpartymonnick 0, VAR_RESULT
+	@ setfieldeffectargument 0, VAR_RESULT
 	setfieldeffectargument 1, 1
 	msgbox Text_WantToSurface, MSGBOX_YESNO
 	compare VAR_RESULT, 0
@@ -340,7 +340,7 @@ Text_WantToDive: @ 8290BE8
 	.string "Would you like to use DIVE?$"
 
 Text_MonUsedDive: @ 8290C1A
-	.string "{STR_VAR_1} used DIVE.$"
+	.string "You used DIVE.$"
 
 Text_CantSurface: @ 8290C28
 	.string "Light is filtering down from above.\n"
