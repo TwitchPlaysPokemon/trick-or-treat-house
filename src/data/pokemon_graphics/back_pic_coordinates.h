@@ -1260,17 +1260,17 @@ const struct MonCoords gMonBackPicCoords[] =
         .size = 0x66,
         .y_offset = 0x08,
     },
-    [SPECIES_OLD_UNOWN_B] =
+    [SPECIES_MIMIKYU] =
     {
         .size = 0x88,
         .y_offset = 0x02,
     },
-    [SPECIES_OLD_UNOWN_C] =
+    [SPECIES_GOURGEIST] =
     {
         .size = 0x88,
         .y_offset = 0x02,
     },
-    [SPECIES_OLD_UNOWN_D] =
+    [SPECIES_SLURPUFF] =
     {
         .size = 0x88,
         .y_offset = 0x02,

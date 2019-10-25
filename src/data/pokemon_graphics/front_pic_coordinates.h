@@ -1260,17 +1260,17 @@ const struct MonCoords gMonFrontPicCoords[] =
         .size = 0x55,
         .y_offset = 0x0e,
     },
-    [SPECIES_OLD_UNOWN_B] =
+    [SPECIES_MIMIKYU] =
     {
         .size = 0x87,
         .y_offset = 0x04,
     },
-    [SPECIES_OLD_UNOWN_C] =
+    [SPECIES_GOURGEIST] =
     {
         .size = 0x87,
         .y_offset = 0x04,
     },
-    [SPECIES_OLD_UNOWN_D] =
+    [SPECIES_SLURPUFF] =
     {
         .size = 0x87,
         .y_offset = 0x04,
