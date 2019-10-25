@@ -2853,6 +2853,19 @@ extern const u32 gMonFrontPic_UnownQuestionMark[];
 extern const u32 gMonStillFrontPic_UnownQuestionMark[];
 extern const u32 gMonBackPic_UnownQuestionMark[];
 extern const u8 gMonIcon_UnownQuestionMark[];
+extern const u32 gMonFrontPic_Mimikyu[];
+extern const u32 gMonBackPic_Mimikyu[];
+extern const u32 gMonStillFrontPic_Mimikyu[];
+extern const u8 gMonIcon_Mimikyu[];
+extern const u32 gMonFrontPic_Gourgeist[];
+extern const u32 gMonBackPic_Gourgeist[];
+extern const u32 gMonStillFrontPic_Gourgeist[];
+extern const u8 gMonIcon_Gourgeist[];
+extern const u32 gMonFrontPic_Slurpuff[];
+extern const u32 gMonBackPic_Slurpuff[];
+extern const u32 gMonStillFrontPic_Slurpuff[];
+extern const u8 gMonIcon_Slurpuff[];
+
 
 extern const u32 gMonFrontPic_CircledQuestionMark[];
 extern const u32 gMonBackPic_CircledQuestionMark[];
