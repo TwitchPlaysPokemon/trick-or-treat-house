@@ -99,6 +99,11 @@ const struct MonCoords gTrainerFrontPicCoords[] =
     [TRAINER_PIC_MERMAID] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_MASKED_BOY] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_FAIRY_GIRL] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_CORPSE_BRIDE] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_HERO_OF_TIME] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_SKELETON] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_TARZAN] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_TWINS_PM] = {.size = 8, .y_offset = 1},
 };
 
 const struct CompressedSpriteSheet gTrainerFrontPicTable[] =
@@ -202,6 +207,11 @@ const struct CompressedSpriteSheet gTrainerFrontPicTable[] =
     TRAINER_SPRITE(MERMAID, gTrainerFrontPic_Mermaid, 0x800),
     TRAINER_SPRITE(MASKED_BOY, gTrainerFrontPic_MaskedBoy, 0x800),
     TRAINER_SPRITE(FAIRY_GIRL, gTrainerFrontPic_FairyGirl, 0x800),
+    TRAINER_SPRITE(CORPSE_BRIDE, gTrainerFrontPic_CorpseBride, 0x800),
+    TRAINER_SPRITE(HERO_OF_TIME, gTrainerFrontPic_HeroOfTime, 0x800),
+    TRAINER_SPRITE(SKELETON, gTrainerFrontPic_Skeleton, 0x800),
+    TRAINER_SPRITE(TARZAN, gTrainerFrontPic_Tarzan, 0x800),
+    TRAINER_SPRITE(TWINS_PM, gTrainerFrontPic_TwinsPM, 0x800),
 };
 
 const struct CompressedSpritePalette gTrainerFrontPicPaletteTable[] =
@@ -305,4 +315,9 @@ const struct CompressedSpritePalette gTrainerFrontPicPaletteTable[] =
     TRAINER_PAL(MERMAID, gTrainerPalette_Mermaid),
     TRAINER_PAL(MASKED_BOY, gTrainerPalette_MaskedBoy),
     TRAINER_PAL(FAIRY_GIRL, gTrainerPalette_FairyGirl),
+    TRAINER_PAL(CORPSE_BRIDE, gTrainerPalette_CorpseBride),
+    TRAINER_PAL(HERO_OF_TIME, gTrainerPalette_HeroOfTime),
+    TRAINER_PAL(SKELETON, gTrainerPalette_Skeleton),
+    TRAINER_PAL(TARZAN, gTrainerPalette_Tarzan),
+    TRAINER_PAL(TWINS_PM, gTrainerPalette_TwinsPM),
 };

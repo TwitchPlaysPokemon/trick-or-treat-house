@@ -261,8 +261,14 @@
 #define EVENT_OBJ_GFX_MERMAID_WALKING            252
 #define EVENT_OBJ_GFX_MASKED_BOY                 253
 #define EVENT_OBJ_GFX_FAIRY_GIRL                 254
+#define EVENT_OBJ_GFX_CORPSE_BRIDE               255
+#define EVENT_OBJ_GFX_HERO_OF_TIME               256
+#define EVENT_OBJ_GFX_SKELETON                   257
+#define EVENT_OBJ_GFX_TARZAN                     258
+#define EVENT_OBJ_GFX_TWINS_PLUSLE               259
+#define EVENT_OBJ_GFX_TWINS_MINUN                260
 
-#define EVENT_OBJ_GFX_BARD_2                     255
+#define EVENT_OBJ_GFX_BARD_2                     261
 #define NUM_OBJECT_GRAPHICS_INFO 	EVENT_OBJ_GFX_BARD_2
 
 // These are dynamic object gfx ids.

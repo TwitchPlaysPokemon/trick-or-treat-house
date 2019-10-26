@@ -3063,6 +3063,11 @@ extern const u32 gTrainerFrontPic_Frogger[];
 extern const u32 gTrainerFrontPic_Mermaid[];
 extern const u32 gTrainerFrontPic_MaskedBoy[];
 extern const u32 gTrainerFrontPic_FairyGirl[];
+extern const u32 gTrainerFrontPic_CorpseBride[];
+extern const u32 gTrainerFrontPic_HeroOfTime[];
+extern const u32 gTrainerFrontPic_Skeleton[];
+extern const u32 gTrainerFrontPic_Tarzan[];
+extern const u32 gTrainerFrontPic_TwinsPM[];
 
 extern const u32 gTrainerPalette_PlasmaKid[];
 extern const u32 gTrainerPalette_Ghetsis[];
@@ -3070,6 +3075,11 @@ extern const u32 gTrainerPalette_Frogger[];
 extern const u32 gTrainerPalette_Mermaid[];
 extern const u32 gTrainerPalette_MaskedBoy[];
 extern const u32 gTrainerPalette_FairyGirl[];
+extern const u32 gTrainerPalette_CorpseBride[];
+extern const u32 gTrainerPalette_HeroOfTime[];
+extern const u32 gTrainerPalette_Skeleton[];
+extern const u32 gTrainerPalette_Tarzan[];
+extern const u32 gTrainerPalette_TwinsPM[];
 
 
 extern const u8 gTrainerBackPic_Brendan[];

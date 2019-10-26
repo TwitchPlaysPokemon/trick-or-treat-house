@@ -439,6 +439,13 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define EVENT_OBJ_PAL_TAG_FAIRY_GIRL        0x112B
 #define EVENT_OBJ_PAL_MAY                   0x112C
 #define EVENT_OBJ_PAL_BRANDON               0x112D
+#define EVENT_OBJ_PAL_TAG_CORPSE_BRIDE      0x112E
+#define EVENT_OBJ_PAL_TAG_HERO_OF_TIME      0x112F
+#define EVENT_OBJ_PAL_TAG_SKELETON          0x1130
+#define EVENT_OBJ_PAL_TAG_TARZAN            0x1131
+#define EVENT_OBJ_PAL_TAG_TWINS_PLUS        0x1132
+#define EVENT_OBJ_PAL_TAG_TWINS_MINUS       0x1133
+#define EVENT_OBJ_PAL_WALLY                 0x1134
 #define EVENT_OBJ_PAL_TAG_NONE              0x11FF
 
 #include "data/field_event_obj/event_object_graphics_info_pointers.h"
@@ -487,14 +494,21 @@ const struct SpritePalette sEventObjectSpritePalettes[] = {
     {gEventObjectPalette34, EVENT_OBJ_PAL_TAG_34},
     {gEventObjectPaletteTrickHouse, EVENT_OBJ_PAL_TAG_TRICK_HOUSE},
     {gEventObjectPaletteTrickHouse, EVENT_OBJ_PAL_TAG_TRICK_MASTER},
-    {gEvtObjPal_Torchick,  EVENT_OBJ_PAL_MAY},
-    {gEvtObjPal_Mudkid,    EVENT_OBJ_PAL_BRANDON},
-    {gEvtObjPal_PlasmaKid, EVENT_OBJ_PAL_TAG_PLASMA_KID},
-    {gEvtObjPal_Ghetsis,   EVENT_OBJ_PAL_TAG_GHETSIS},
-    {gEvtObjPal_Frogger,   EVENT_OBJ_PAL_TAG_FROGGER},
-    {gEvtObjPal_Mermaid,   EVENT_OBJ_PAL_TAG_MERMAID},
-    {gEvtObjPal_MaskedBoy, EVENT_OBJ_PAL_TAG_MASKED_BOY},
-    {gEvtObjPal_FairyGirl, EVENT_OBJ_PAL_TAG_FAIRY_GIRL},
+    {gEvtObjPal_Torchick,     EVENT_OBJ_PAL_MAY},
+    {gEvtObjPal_Mudkid,       EVENT_OBJ_PAL_BRANDON},
+    {gEvtObjPal_Elvis,        EVENT_OBJ_PAL_WALLY},
+    {gEvtObjPal_PlasmaKid,    EVENT_OBJ_PAL_TAG_PLASMA_KID},
+    {gEvtObjPal_Ghetsis,      EVENT_OBJ_PAL_TAG_GHETSIS},
+    {gEvtObjPal_Frogger,      EVENT_OBJ_PAL_TAG_FROGGER},
+    {gEvtObjPal_Mermaid,      EVENT_OBJ_PAL_TAG_MERMAID},
+    {gEvtObjPal_MaskedBoy,    EVENT_OBJ_PAL_TAG_MASKED_BOY},
+    {gEvtObjPal_FairyGirl,    EVENT_OBJ_PAL_TAG_FAIRY_GIRL},
+    {gEvtObjPal_CorpseBride,  EVENT_OBJ_PAL_TAG_CORPSE_BRIDE},
+    {gEvtObjPal_HeroOfTime,   EVENT_OBJ_PAL_TAG_HERO_OF_TIME},
+    {gEvtObjPal_Skeleton,     EVENT_OBJ_PAL_TAG_SKELETON},
+    {gEvtObjPal_Tarzan,       EVENT_OBJ_PAL_TAG_TARZAN},
+    {gEvtObjPal_TwinsPlus,    EVENT_OBJ_PAL_TAG_TWINS_PLUS},
+    {gEvtObjPal_TwinsMinus,   EVENT_OBJ_PAL_TAG_TWINS_MINUS},
     {NULL,                  0x0000},
 };
 

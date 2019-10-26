@@ -17,7 +17,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_GHETSIS",
+            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_ROTATE_COUNTERCLOCKWISE",
@@ -30,7 +30,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PLASMA_KID",
+            "graphics_id": "EVENT_OBJ_GFX_CORPSE_BRIDE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_ROTATE_CLOCKWISE",
@@ -43,7 +43,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_FROGGER",
+            "graphics_id": "EVENT_OBJ_GFX_HERO_OF_TIME",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_ROTATE_COUNTERCLOCKWISE",
@@ -56,7 +56,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_FAIRY_GIRL",
+            "graphics_id": "EVENT_OBJ_GFX_TARZAN",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_ROTATE_CLOCKWISE",
@@ -69,7 +69,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MERMAID_WALKING",
+            "graphics_id": "EVENT_OBJ_GFX_TWINS_PLUSLE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_ROTATE_COUNTERCLOCKWISE",
@@ -82,7 +82,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MASKED_BOY",
+            "graphics_id": "EVENT_OBJ_GFX_TWINS_MINUN",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_ROTATE_CLOCKWISE",

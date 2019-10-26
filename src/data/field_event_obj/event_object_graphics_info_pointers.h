@@ -260,6 +260,12 @@ const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Mermaid;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_MermaidWalk;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_MaskedBoy;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_FairyGirl;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_CorpseBride;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_HeroOfTime;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Skeleton;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Tarzan;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TwinsPlusle;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TwinsMinun;
 
 const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] = {
     [EVENT_OBJ_GFX_BRENDAN_NORMAL] =           &gEventObjectGraphicsInfo_BrendanNormal,
@@ -518,6 +524,12 @@ const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] =
     [EVENT_OBJ_GFX_MERMAID_WALKING] =          &gEventObjectGraphicsInfo_MermaidWalk,
     [EVENT_OBJ_GFX_MASKED_BOY] =               &gEventObjectGraphicsInfo_MaskedBoy,
     [EVENT_OBJ_GFX_FAIRY_GIRL] =               &gEventObjectGraphicsInfo_FairyGirl,
+    [EVENT_OBJ_GFX_CORPSE_BRIDE] =             &gEventObjectGraphicsInfo_CorpseBride,
+    [EVENT_OBJ_GFX_HERO_OF_TIME] =             &gEventObjectGraphicsInfo_HeroOfTime,
+    [EVENT_OBJ_GFX_SKELETON] =                 &gEventObjectGraphicsInfo_Skeleton,
+    [EVENT_OBJ_GFX_TARZAN] =                   &gEventObjectGraphicsInfo_Tarzan,
+    [EVENT_OBJ_GFX_TWINS_PLUSLE] =             &gEventObjectGraphicsInfo_TwinsPlusle,
+    [EVENT_OBJ_GFX_TWINS_MINUN] =              &gEventObjectGraphicsInfo_TwinsMinun,
 };
 
 const struct EventObjectGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

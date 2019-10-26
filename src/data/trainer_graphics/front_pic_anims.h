@@ -103,4 +103,9 @@ const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
     [TRAINER_PIC_MERMAID] = sAnims_GenericStill,
     [TRAINER_PIC_MASKED_BOY] = sAnims_GenericStill,
     [TRAINER_PIC_FAIRY_GIRL] = sAnims_GenericStill,
+    [TRAINER_PIC_CORPSE_BRIDE] = sAnims_GenericStill,
+    [TRAINER_PIC_HERO_OF_TIME] = sAnims_GenericStill,
+    [TRAINER_PIC_SKELETON] = sAnims_GenericStill,
+    [TRAINER_PIC_TARZAN] = sAnims_GenericStill,
+    [TRAINER_PIC_TWINS_PM] = sAnims_GenericStill,
 };
