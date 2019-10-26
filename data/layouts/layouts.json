@@ -26,7 +26,7 @@
             "height": 20,
             "id": "LAYOUT_MAUVILLE_CITY",
             "name": "MauvilleCity_Layout",
-            "primary_tileset": "gTileset_General",
+            "primary_tileset": "gTileset_Autumn",
             "secondary_tileset": "gTileset_Mauville",
             "width": 40
         },
@@ -36,7 +36,7 @@
             "height": 60,
             "id": "LAYOUT_RUSTBORO_CITY",
             "name": "RustboroCity_Layout",
-            "primary_tileset": "gTileset_General",
+            "primary_tileset": "gTileset_Autumn",
             "secondary_tileset": "gTileset_Rustboro",
             "width": 40
         },
@@ -266,7 +266,7 @@
             "height": 140,
             "id": "LAYOUT_ROUTE111",
             "name": "Route111_Layout",
-            "primary_tileset": "gTileset_General",
+            "primary_tileset": "gTileset_Autumn",
             "secondary_tileset": "gTileset_Mauville",
             "width": 40
         },
@@ -316,7 +316,7 @@
             "height": 20,
             "id": "LAYOUT_ROUTE116",
             "name": "Route116_Layout",
-            "primary_tileset": "gTileset_General",
+            "primary_tileset": "gTileset_Autumn",
             "secondary_tileset": "gTileset_Rustboro",
             "width": 100
         },
@@ -326,7 +326,7 @@
             "height": 20,
             "id": "LAYOUT_ROUTE117",
             "name": "Route117_Layout",
-            "primary_tileset": "gTileset_General",
+            "primary_tileset": "gTileset_Autumn",
             "secondary_tileset": "gTileset_Mauville",
             "width": 60
         },
@@ -336,7 +336,7 @@
             "height": 20,
             "id": "LAYOUT_ROUTE118",
             "name": "Route118_Layout",
-            "primary_tileset": "gTileset_General",
+            "primary_tileset": "gTileset_Autumn",
             "secondary_tileset": "gTileset_Mauville",
             "width": 80
         },
