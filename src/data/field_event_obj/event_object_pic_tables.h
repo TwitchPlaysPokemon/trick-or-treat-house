@@ -2355,3 +2355,27 @@ const struct SpriteFrameImage gEventObjectPicTable_TwinsPM[] = {
     overworld_frame(gEventObjectPic_TwinsPM, 2, 4, 7),
     overworld_frame(gEventObjectPic_TwinsPM, 2, 4, 8),
 };
+
+const struct SpriteFrameImage gEventObjectPicTable_Ghost[] = {
+    overworld_frame(gEventObjectPic_Ghost, 2, 4, 0),
+    overworld_frame(gEventObjectPic_Ghost, 2, 4, 1),
+    overworld_frame(gEventObjectPic_Ghost, 2, 4, 2),
+    overworld_frame(gEventObjectPic_Ghost, 2, 4, 3),
+    overworld_frame(gEventObjectPic_Ghost, 2, 4, 4),
+    overworld_frame(gEventObjectPic_Ghost, 2, 4, 5),
+    overworld_frame(gEventObjectPic_Ghost, 2, 4, 6),
+    overworld_frame(gEventObjectPic_Ghost, 2, 4, 7),
+    overworld_frame(gEventObjectPic_Ghost, 2, 4, 8),
+};
+
+const struct SpriteFrameImage gEventObjectPicTable_Alien[] = {
+    overworld_frame(gEventObjectPic_Alien, 2, 4, 0),
+    overworld_frame(gEventObjectPic_Alien, 2, 4, 1),
+    overworld_frame(gEventObjectPic_Alien, 2, 4, 2),
+    overworld_frame(gEventObjectPic_Alien, 2, 4, 3),
+    overworld_frame(gEventObjectPic_Alien, 2, 4, 4),
+    overworld_frame(gEventObjectPic_Alien, 2, 4, 5),
+    overworld_frame(gEventObjectPic_Alien, 2, 4, 6),
+    overworld_frame(gEventObjectPic_Alien, 2, 4, 7),
+    overworld_frame(gEventObjectPic_Alien, 2, 4, 8),
+};

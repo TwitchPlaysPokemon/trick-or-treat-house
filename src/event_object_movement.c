@@ -446,6 +446,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define EVENT_OBJ_PAL_TAG_TWINS_PLUS        0x1132
 #define EVENT_OBJ_PAL_TAG_TWINS_MINUS       0x1133
 #define EVENT_OBJ_PAL_WALLY                 0x1134
+#define EVENT_OBJ_PAL_TAG_ALIEN             0x1135
 #define EVENT_OBJ_PAL_TAG_NONE              0x11FF
 
 #include "data/field_event_obj/event_object_graphics_info_pointers.h"
@@ -509,6 +510,7 @@ const struct SpritePalette sEventObjectSpritePalettes[] = {
     {gEvtObjPal_Tarzan,       EVENT_OBJ_PAL_TAG_TARZAN},
     {gEvtObjPal_TwinsPlus,    EVENT_OBJ_PAL_TAG_TWINS_PLUS},
     {gEvtObjPal_TwinsMinus,   EVENT_OBJ_PAL_TAG_TWINS_MINUS},
+    {gEvtObjPal_Alien,        EVENT_OBJ_PAL_TAG_ALIEN},
     {NULL,                  0x0000},
 };
 

@@ -266,6 +266,8 @@ const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Skeleton;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Tarzan;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TwinsPlusle;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TwinsMinun;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Ghost;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Alien;
 
 const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] = {
     [EVENT_OBJ_GFX_BRENDAN_NORMAL] =           &gEventObjectGraphicsInfo_BrendanNormal,
@@ -530,6 +532,8 @@ const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] =
     [EVENT_OBJ_GFX_TARZAN] =                   &gEventObjectGraphicsInfo_Tarzan,
     [EVENT_OBJ_GFX_TWINS_PLUSLE] =             &gEventObjectGraphicsInfo_TwinsPlusle,
     [EVENT_OBJ_GFX_TWINS_MINUN] =              &gEventObjectGraphicsInfo_TwinsMinun,
+    [EVENT_OBJ_GFX_GHOST] =                    &gEventObjectGraphicsInfo_Ghost,
+    [EVENT_OBJ_GFX_ALIEN] =                    &gEventObjectGraphicsInfo_Alien,
 };
 
 const struct EventObjectGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

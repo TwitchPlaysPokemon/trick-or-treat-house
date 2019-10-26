@@ -714,3 +714,9 @@ $(EVENTOBJGFXDIR)/people/tarzan.4bpp: %.4bpp: %.png
 
 $(EVENTOBJGFXDIR)/people/twin_pm.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(EVENTOBJGFXDIR)/people/alien.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4
+
+$(EVENTOBJGFXDIR)/people/ghost.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 4

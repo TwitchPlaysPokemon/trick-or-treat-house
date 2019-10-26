@@ -357,6 +357,7 @@ const u16 gEvtObjPal_Skeleton[] = INCBIN_U16("graphics/event_objects/palettes/ob
 const u16 gEvtObjPal_Tarzan[] = INCBIN_U16("graphics/event_objects/palettes/objpal_tarzan.gbapal");
 const u16 gEvtObjPal_TwinsPlus[] = INCBIN_U16("graphics/event_objects/palettes/objpal_twins_plus.gbapal");
 const u16 gEvtObjPal_TwinsMinus[] = INCBIN_U16("graphics/event_objects/palettes/objpal_twins_minus.gbapal");
+const u16 gEvtObjPal_Alien[] = INCBIN_U16("graphics/event_objects/palettes/objpal_aliengirl.gbapal");
 
 const u32 gEventObjectPic_PlasmaKid[] = INCBIN_U32("graphics/event_objects/pics/people/plasma_kid.4bpp");
 const u32 gEventObjectPic_Ghetsis[] = INCBIN_U32("graphics/event_objects/pics/people/ghetsis.4bpp");
@@ -369,6 +370,8 @@ const u32 gEventObjectPic_HeroOfTime[] = INCBIN_U32("graphics/event_objects/pics
 const u32 gEventObjectPic_Skeleton[] = INCBIN_U32("graphics/event_objects/pics/people/skeleton.4bpp");
 const u32 gEventObjectPic_Tarzan[] = INCBIN_U32("graphics/event_objects/pics/people/tarzan.4bpp");
 const u32 gEventObjectPic_TwinsPM[] = INCBIN_U32("graphics/event_objects/pics/people/twin_pm.4bpp");
+const u32 gEventObjectPic_Alien[] = INCBIN_U32("graphics/event_objects/pics/people/alien.4bpp");
+const u32 gEventObjectPic_Ghost[] = INCBIN_U32("graphics/event_objects/pics/people/ghost.4bpp");
 
 const u32 gEventObjectPic_FroggerWalk[] = INCBIN_U32("graphics/event_objects/pics/people/frogger.4bpp");
 const u32 gEventObjectPic_MermaidWalk[] = INCBIN_U32("graphics/event_objects/pics/people/mermaid_walking.4bpp");
