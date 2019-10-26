@@ -14,12 +14,35 @@ script TrickHouseDevEntrance_EventScript_Red {
 script TrickHouseDevEntrance_EventScript_Pokeball {
 	lock
 	if (flag(FLAG_SYS_POKEMON_GET) == FALSE) {
-		givemon (SPECIES_QUILAVA, 50, 0, 0, 0, 0)
-		givemon (SPECIES_TROPIUS, 50, 0, 0, 0, 0)
-		givemon (SPECIES_LANTURN, 50, 0, 0, 0, 0)
+		# givemon (SPECIES_QUILAVA, 50, 0, 0, 0, 0)
+		# givemon (SPECIES_TROPIUS, 50, 0, 0, 0, 0)
+		# givemon (SPECIES_LANTURN, 50, 0, 0, 0, 0)
+		givemon (SPECIES_GROVYLE, 30, 0, 0, 0, 0)
+		givemon (SPECIES_COMBUSKEN, 30, 0, 0, 0, 0)
+		givemon (SPECIES_MARSHTOMP, 30, 0, 0, 0, 0)
+		
+		#Grovyle Moveset
+		setmonmove(0, 0, 348) # Leaf Blade
+		setmonmove(0, 1, 157) # Rock Slide
+		setmonmove(0, 2, 280) # Brick Break
+		setmonmove(0, 3, 210) # Fury Cutter
+
+		#Combusken Moveset
+		setmonmove(1, 0, 53)  # Flamethrower
+		setmonmove(1, 1, 24)  # Double Kick 
+		setmonmove(1, 2, 332) # Aerial Ace
+		setmonmove(1, 3, 339) # Bulk Up
+
+		#Marshtomp Moveset
+		setmonmove(2, 0, 352) # Water Pulse
+		setmonmove(2, 1, 231) # Iron Tail
+		setmonmove(2, 2, 89)  # Earthquake
+		setmonmove(2, 3, 341) # Mud Shot
+
+
 		giveitem (ITEM_ESCAPE_ROPE, 3)
 		setflag (FLAG_SYS_POKEMON_GET)
-		msgbox ("Got a Quilava, a Tropius, and a Lanturn!$")
+		msgbox ("Got Birch's Starter Set!$")
 	}
 	release
 }
