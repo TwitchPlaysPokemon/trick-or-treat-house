@@ -5,7 +5,7 @@
 		"party": [
 			{
 				"species": "SPECIES_KECLEON",
-				"level": 48
+				"level": 28
 			}
 		]
 	},
@@ -17,11 +17,11 @@
 		"party": [
 			{
 				"species": "SPECIES_SKITTY",
-				"level": 47
+				"level": 27
 			},
 			{
 				"species": "SPECIES_SWABLU",
-				"level": 47
+				"level": 27
 			}
 		]
 	},
@@ -32,15 +32,15 @@
 		"party": [
 			{
 				"species": "SPECIES_GEODUDE",
-				"level": 46
+				"level": 26
 			},
 			{
 				"species": "SPECIES_NOSEPASS",
-				"level": 46
+				"level": 26
 			},
 			{
 				"species": "SPECIES_GRAVELER",
-				"level": 46
+				"level": 26
 			}
 		]
 	}

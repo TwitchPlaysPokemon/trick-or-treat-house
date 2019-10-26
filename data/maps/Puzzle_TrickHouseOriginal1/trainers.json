@@ -7,7 +7,7 @@
 		"party": [
 			{
 				"species": "SPECIES_ODDISH",
-				"level": 45
+				"level": 25
 			}
 		]
 	},
@@ -17,11 +17,11 @@
 		"party": [
 			{
 				"species": "SPECIES_ZIGZAGOON",
-				"level": 44
+				"level": 24
 			},
 			{
 				"species": "SPECIES_ZIGZAGOON",
-				"level": 46
+				"level": 26
 			}
 		]
 	},
@@ -33,15 +33,15 @@
 		"party": [
 			{
 				"species": "SPECIES_SKITTY",
-				"level": 44
+				"level": 24
 			},
 			{
 				"species": "SPECIES_SHROOMISH",
-				"level": 44
+				"level": 24
 			},
 			{
 				"species": "SPECIES_MARILL",
-				"level": 44
+				"level": 24
 			}
 		]
 	}

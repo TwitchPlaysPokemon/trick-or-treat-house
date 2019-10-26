@@ -7,7 +7,7 @@
 		"party": [
 			{
 				"species": "SPECIES_MEDITITE",
-				"level": 48,
+				"level": 28,
 				"iv": 100
 			}
 		]
@@ -19,12 +19,12 @@
 		"party": [
 			{
 				"species": "SPECIES_MAKUHITA",
-				"level": 47,
+				"level": 27,
 				"iv": 100
 			},
 			{
 				"species": "SPECIES_MACHOKE",
-				"level": 47,
+				"level": 27,
 				"iv": 100
 			}
 		]
@@ -37,7 +37,7 @@
 		"party": [
 			{
 				"species": "SPECIES_BRELOOM",
-				"level": 49,
+				"level": 29,
 				"iv": 100
 			}
 		]

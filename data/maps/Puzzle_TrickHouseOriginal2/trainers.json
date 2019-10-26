@@ -6,7 +6,7 @@
 		"party": [
 			{
 				"species": "SPECIES_RALTS",
-				"level": 47,
+				"level": 27,
 				"iv": 10
 			}
 		]
@@ -18,17 +18,17 @@
 		"party": [
 			{
 				"species": "SPECIES_NUMEL",
-				"level": 45,
+				"level": 25,
 				"iv": 10
 			},
 			{
 				"species": "SPECIES_ODDISH",
-				"level": 45,
+				"level": 25,
 				"iv": 10
 			},
 			{
 				"species": "SPECIES_WINGULL",
-				"level": 45,
+				"level": 25,
 				"iv": 10
 			}
 		]
@@ -42,12 +42,12 @@
 		"party": [
 			{
 				"species": "SPECIES_SHROOMISH",
-				"level": 44,
+				"level": 24,
 				"iv": 10
 			},
 			{
 				"species": "SPECIES_BEAUTIFLY",
-				"level": 44,
+				"level": 24,
 				"iv": 10
 			}
 		]
