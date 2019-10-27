@@ -24,7 +24,7 @@ Puzzle_Route110_Intro:
 	.string "face for years.\p"
 	.string "It was only after I returned from my\n"
 	.string "journey that I realized…\l"
-	.string "This is a puzzle in its own right!\p"
+	.string "This could be a puzzle in its own right!\p"
 	.string "Thus that blasted road and I are\n"
 	.string "friends for tonight.\p"
 	.string "Of course, you'll need this first.$"

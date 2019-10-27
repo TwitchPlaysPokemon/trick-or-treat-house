@@ -198,6 +198,76 @@
             "elevation": 3,
             "x": 13,
             "y": 1
+        },
+        {
+            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+            "dest_warp_id": 4,
+            "elevation": 0,
+            "x": 13,
+            "y": 4
+        },
+        {
+            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+            "dest_warp_id": 3,
+            "elevation": 0,
+            "x": 7,
+            "y": 3
+        },
+        {
+            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+            "dest_warp_id": 6,
+            "elevation": 0,
+            "x": 13,
+            "y": 11
+        },
+        {
+            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+            "dest_warp_id": 5,
+            "elevation": 0,
+            "x": 4,
+            "y": 3
+        },
+        {
+            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+            "dest_warp_id": 8,
+            "elevation": 0,
+            "x": 1,
+            "y": 17
+        },
+        {
+            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+            "dest_warp_id": 7,
+            "elevation": 0,
+            "x": 0,
+            "y": 11
+        },
+        {
+            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+            "dest_warp_id": 10,
+            "elevation": 0,
+            "x": 2,
+            "y": 3
+        },
+        {
+            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+            "dest_warp_id": 9,
+            "elevation": 0,
+            "x": 4,
+            "y": 13
+        },
+        {
+            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+            "dest_warp_id": 12,
+            "elevation": 0,
+            "x": 1,
+            "y": 3
+        },
+        {
+            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+            "dest_warp_id": 11,
+            "elevation": 0,
+            "x": 8,
+            "y": 12
         }
     ],
     "weather": "WEATHER_NONE"
