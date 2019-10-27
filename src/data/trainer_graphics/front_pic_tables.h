@@ -104,6 +104,7 @@ const struct MonCoords gTrainerFrontPicCoords[] =
     [TRAINER_PIC_SKELETON] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_TARZAN] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_TWINS_PM] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_ALIEN] = {.size = 8, .y_offset = 1},
 };
 
 const struct CompressedSpriteSheet gTrainerFrontPicTable[] =
@@ -212,6 +213,7 @@ const struct CompressedSpriteSheet gTrainerFrontPicTable[] =
     TRAINER_SPRITE(SKELETON, gTrainerFrontPic_Skeleton, 0x800),
     TRAINER_SPRITE(TARZAN, gTrainerFrontPic_Tarzan, 0x800),
     TRAINER_SPRITE(TWINS_PM, gTrainerFrontPic_TwinsPM, 0x800),
+    TRAINER_SPRITE(ALIEN, gTrainerFrontPic_Alien, 0x800),
 };
 
 const struct CompressedSpritePalette gTrainerFrontPicPaletteTable[] =
@@ -320,4 +322,5 @@ const struct CompressedSpritePalette gTrainerFrontPicPaletteTable[] =
     TRAINER_PAL(SKELETON, gTrainerPalette_Skeleton),
     TRAINER_PAL(TARZAN, gTrainerPalette_Tarzan),
     TRAINER_PAL(TWINS_PM, gTrainerPalette_TwinsPM),
+    TRAINER_PAL(ALIEN, gTrainerPalette_Alien),
 };

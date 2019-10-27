@@ -226,46 +226,46 @@ Puzzle_TrickHouseOriginal5_EventScript_26E316:: @ 826E316
 
 
 Puzzle_TrickHouseOriginal5_EventScript_Psychic:: @ 826E389
-	trainerbattle_single TRAINER_01, Puzzle_TrickHouseOriginal7_Text_26E481, Puzzle_TrickHouseOriginal7_Text_26E4C1
-	msgbox Puzzle_TrickHouseOriginal7_Text_26E4F4, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_01, Puzzle_TrickHouseOriginal5_Text_26E481, Puzzle_TrickHouseOriginal5_Text_26E4C1
+	msgbox Puzzle_TrickHouseOriginal5_Text_26E4F4, MSGBOX_AUTOCLOSE
 	end
-Puzzle_TrickHouseOriginal7_Text_26E481: @ 826E481
+Puzzle_TrickHouseOriginal5_Text_26E481: @ 826E481
 	.string "The TRICK MASTER always vanishes\n"
 	.string "like smoke. How does he do it?$"
-Puzzle_TrickHouseOriginal7_Text_26E4C1: @ 826E4C1
+Puzzle_TrickHouseOriginal5_Text_26E4C1: @ 826E4C1
 	.string "Aiyeeeh! You're much too strong!\n"
 	.string "How do you do it?$"
-Puzzle_TrickHouseOriginal7_Text_26E4F4: @ 826E4F4
+Puzzle_TrickHouseOriginal5_Text_26E4F4: @ 826E4F4
 	.string "I wish I could appear and disappear as\n"
 	.string "if I were smoke, too.$"
 
 
 Puzzle_TrickHouseOriginal5_EventScript_HexManiac:: @ 826E3A0
-	trainerbattle_single TRAINER_02, Puzzle_TrickHouseOriginal7_Text_26E531, Puzzle_TrickHouseOriginal7_Text_26E564
-	msgbox Puzzle_TrickHouseOriginal7_Text_26E57F, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_02, Puzzle_TrickHouseOriginal5_Text_26E531, Puzzle_TrickHouseOriginal5_Text_26E564
+	msgbox Puzzle_TrickHouseOriginal5_Text_26E57F, MSGBOX_AUTOCLOSE
 	end
-Puzzle_TrickHouseOriginal7_Text_26E531: @ 826E531
+Puzzle_TrickHouseOriginal5_Text_26E531: @ 826E531
 	.string "Going around the same spot…\n"
 	.string "It begets ill fortune…$"
-Puzzle_TrickHouseOriginal7_Text_26E564: @ 826E564
+Puzzle_TrickHouseOriginal5_Text_26E564: @ 826E564
 	.string "Defeated!\n"
 	.string "It's a bad sign…$"
-Puzzle_TrickHouseOriginal7_Text_26E57F: @ 826E57F
+Puzzle_TrickHouseOriginal5_Text_26E57F: @ 826E57F
 	.string "I've circled the same spot over ten\n"
 	.string "times now… It's ill fortune…$"
 
 
 Puzzle_TrickHouseOriginal5_EventScript_Lass:: @ 826E3B7
-	trainerbattle_single TRAINER_03, Puzzle_TrickHouseOriginal7_Text_26E5C0, Puzzle_TrickHouseOriginal7_Text_26E604
-	msgbox Puzzle_TrickHouseOriginal7_Text_26E61E, MSGBOX_AUTOCLOSE
+	trainerbattle_single TRAINER_03, Puzzle_TrickHouseOriginal5_Text_26E5C0, Puzzle_TrickHouseOriginal5_Text_26E604
+	msgbox Puzzle_TrickHouseOriginal5_Text_26E61E, MSGBOX_AUTOCLOSE
 	end
-Puzzle_TrickHouseOriginal7_Text_26E5C0: @ 826E5C0
+Puzzle_TrickHouseOriginal5_Text_26E5C0: @ 826E5C0
 	.string "Whoever wins will get through here\n"
 	.string "first. That's the feeling I get.$"
-Puzzle_TrickHouseOriginal7_Text_26E604: @ 826E604
+Puzzle_TrickHouseOriginal5_Text_26E604: @ 826E604
 	.string "Oh!\n"
 	.string "Well, go ahead, then!$"
-Puzzle_TrickHouseOriginal7_Text_26E61E: @ 826E61E
+Puzzle_TrickHouseOriginal5_Text_26E61E: @ 826E61E
 	.string "You're solving all the puzzles in the\n"
 	.string "TRICK HOUSE. That's the feeling I get.$"
 

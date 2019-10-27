@@ -301,6 +301,7 @@ const u32 gTrainerFrontPic_HeroOfTime[] = INCBIN_U32("graphics/trainers/front_pi
 const u32 gTrainerFrontPic_Skeleton[] = INCBIN_U32("graphics/trainers/front_pics/skeleton_front_pic.4bpp.lz");
 const u32 gTrainerFrontPic_Tarzan[] = INCBIN_U32("graphics/trainers/front_pics/tarzan_front_pic.4bpp.lz");
 const u32 gTrainerFrontPic_TwinsPM[] = INCBIN_U32("graphics/trainers/front_pics/twins_pm_front_pic.4bpp.lz");
+const u32 gTrainerFrontPic_Alien[] = INCBIN_U32("graphics/trainers/front_pics/alien_front_pic.4bpp.lz");
 
 const u32 gTrainerPalette_PlasmaKid[] = INCBIN_U32("graphics/trainers/palettes/plasma_kid.gbapal.lz");
 const u32 gTrainerPalette_Ghetsis[] = INCBIN_U32("graphics/trainers/palettes/ghetsis.gbapal.lz");
@@ -313,6 +314,7 @@ const u32 gTrainerPalette_HeroOfTime[] = INCBIN_U32("graphics/trainers/palettes/
 const u32 gTrainerPalette_Skeleton[] = INCBIN_U32("graphics/trainers/palettes/skeleton.gbapal.lz");
 const u32 gTrainerPalette_Tarzan[] = INCBIN_U32("graphics/trainers/palettes/tarzan.gbapal.lz");
 const u32 gTrainerPalette_TwinsPM[] = INCBIN_U32("graphics/trainers/palettes/twins_pm.gbapal.lz");
+const u32 gTrainerPalette_Alien[] = INCBIN_U32("graphics/trainers/palettes/aliengirl.gbapal.lz");
 
 
 

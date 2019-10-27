@@ -28,9 +28,8 @@
 		]
 	},
 	{
-		"class": "PSYCHIC",
-		"music": "INTENSE",
-		"pic": "PSYCHIC_F",
+		"class": "ALIEN",
+		"music": "GIRL",
 		"female": true,
 		"name": "ALEXIS",
 		"party": [

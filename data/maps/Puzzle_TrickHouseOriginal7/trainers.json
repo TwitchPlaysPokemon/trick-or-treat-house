@@ -1,8 +1,7 @@
 [
 	{
-		"class": "PSYCHIC",
+		"class": "PLASMA_KID",
 		"music": "INTENSE",
-		"pic": "PSYCHIC_M",
 		"name": "JOSHUA",
 		"party": [
 			{
@@ -32,18 +31,17 @@
 		]
 	},
 	{
-		"class": "PSYCHIC",
-		"music": "INTENSE",
-		"pic": "PSYCHIC_F",
+		"class": "TWINS_PM",
+		"music": "TWINS",
 		"female": true,
-		"name": "ALEXIS",
+		"name": "AMY & LIV",
 		"party": [
 			{
-				"species": "SPECIES_KIRLIA",
+				"species": "SPECIES_PLUSLE",
 				"level": 28
 			},
 			{
-				"species": "SPECIES_XATU",
+				"species": "SPECIES_MINUN",
 				"level": 28
 			}
 		]
@@ -78,7 +76,7 @@
 		]
 	},
 	{
-		"class": "GENTLEMAN",
+		"class": "GHETSIS",
 		"music": "RICH",
 		"name": "EVERETT",
 		"party": [

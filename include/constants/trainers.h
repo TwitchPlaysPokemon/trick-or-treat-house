@@ -120,6 +120,7 @@
 #define TRAINER_PIC_SKELETON             101
 #define TRAINER_PIC_TARZAN               102
 #define TRAINER_PIC_TWINS_PM             103
+#define TRAINER_PIC_ALIEN                104
 
 #define TRAINER_BACK_PIC_BRENDAN                0
 #define TRAINER_BACK_PIC_MAY                    1
@@ -294,6 +295,7 @@
 #define TRAINER_CLASS_SKELETON       0x4A
 #define TRAINER_CLASS_TARZAN         0x4B
 #define TRAINER_CLASS_TWINS_PM       0x4C
+#define TRAINER_CLASS_ALIEN          0x4D
 
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music
