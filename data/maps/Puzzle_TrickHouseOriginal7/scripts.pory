@@ -1,8 +1,9 @@
 raw `
 Puzzle_TrickHouseOriginal7_MapScripts:: @ 826E091
 	puzzle_info Puzzle_TrickHouseOriginal7_Name, Puzzle_TrickHouseOriginal7_Author
-	puzzle_adjective Puzzle_TrickHouseOriginal7_Adjective
+	puzzle_custom_intro Puzzle_TrickHouseOriginal7_Intro
 	puzzle_quip Puzzle_TrickHouseOriginal7_Quip
+	puzzle_metavars Puzzle_TrickHouseOriginal7_Variables
 	@ map_script MAP_SCRIPT_ON_RESUME, Puzzle_TrickHouseOriginal7_OnResume
 	@ map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_TrickHouseOriginal7_OnTransition
 	@ map_script MAP_SCRIPT_ON_LOAD, Puzzle_TrickHouseOriginal7_OnLoad
@@ -10,13 +11,20 @@ Puzzle_TrickHouseOriginal7_MapScripts:: @ 826E091
 	.byte 0
 
 Puzzle_TrickHouseOriginal7_Name:
-	.string "Original 7$"
+	.string "Shenanigan Samba$"
 Puzzle_TrickHouseOriginal7_Author:
 	.string "Game Freak$"
-Puzzle_TrickHouseOriginal7_Adjective:
-	.string "original$"
+Puzzle_TrickHouseOriginal7_Intro:
+	.string "You're good at these puzzles, aren't you?\p"
+	.string "This next puzzle is another classic\n"
+	.string "one of mine from before my trip.\p"
+	.string "It's a remix of an earlier puzzle, even!\p"
+	.string "Can you handle it? Wahahahaha!$"
 Puzzle_TrickHouseOriginal7_Quip:
-	.string "Insert Quip Here$"
+	.string "But I wanted the cubby hole…$"
+Puzzle_TrickHouseOriginal7_Variables:
+	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_LITTLE_BOY_3
+	.2byte 0
 
 @ -----------------------------------------------------
 

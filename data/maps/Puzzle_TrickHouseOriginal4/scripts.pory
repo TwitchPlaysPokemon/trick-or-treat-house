@@ -1,18 +1,29 @@
 raw `
 Puzzle_TrickHouseOriginal4_MapScripts:: @ 826C860
 	puzzle_info Puzzle_TrickHouseOriginal4_Name, Puzzle_TrickHouseOriginal4_Author
-	puzzle_adjective Puzzle_TrickHouseOriginal4_Adjective
+	puzzle_custom_intro Puzzle_TrickHouseOriginal4_Intro
 	puzzle_quip Puzzle_TrickHouseOriginal4_Quip
+	puzzle_item_prereqs Puzzle_TrickHouseOriginal4_PrereqItems
 	.byte 0
 
 Puzzle_TrickHouseOriginal4_Name:
-	.string "Original 4$"
+	.string "Boulder Room Bluff$"
 Puzzle_TrickHouseOriginal4_Author:
 	.string "Game Freak$"
-Puzzle_TrickHouseOriginal4_Adjective:
-	.string "original$"
+Puzzle_TrickHouseOriginal4_Intro:
+	.string "You're good at these puzzles, aren't you?\p"
+	.string "This next puzzle is yet another classic\n"
+	.string "I made in my youth.\p"
+	.string "The boulders were a bear to bring\n"
+	.string "into the basement, but it bore fruit.\p"
+	.string "Good luck! Wahahahaha!$"
 Puzzle_TrickHouseOriginal4_Quip:
-	.string "Insert Quip Here$"
+	.string "Wew! That was quite the workout!\p"
+	.string "No onder people usually get their\n"
+	.string "{POKEMON} to do it!$"
+Puzzle_TrickHouseOriginal4_PrereqItems:
+	.2byte ITEM_STRENGTH_ITEM
+	.2byte 0
 
 @ -----------------------------------------------------
 

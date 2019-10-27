@@ -1,20 +1,31 @@
 raw `
 Puzzle_TrickHouseOriginal3_MapScripts:: @ 826BED8
 	puzzle_info Puzzle_TrickHouseOriginal3_Name, Puzzle_TrickHouseOriginal3_Author
-	puzzle_adjective Puzzle_TrickHouseOriginal3_Adjective
+	puzzle_custom_intro Puzzle_TrickHouseOriginal3_Intro
 	puzzle_quip Puzzle_TrickHouseOriginal3_Quip
+	puzzle_item_prereqs Puzzle_TrickHouseOriginal3_PrereqItems
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TrickHouseOriginal3_MapScript1_26BEE3
 	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_TrickHouseOriginal3_OnTransition
 	.byte 0
 
 Puzzle_TrickHouseOriginal3_Name:
-	.string "Original 3$"
+	.string "Door Dido Menagerie$"
 Puzzle_TrickHouseOriginal3_Author:
 	.string "Game Freak$"
-Puzzle_TrickHouseOriginal3_Adjective:
-	.string "original$"
+Puzzle_TrickHouseOriginal3_Intro:
+	.string "Hah! Back for more then?\p"
+	.string "This next puzzle is another old room\n"
+	.string "of mine.\p"
+	.string "I have fond memories of spending all\n"
+	.string "night putting up the wall panels.\p"
+	.string "I'll see you on the other side!$"
 Puzzle_TrickHouseOriginal3_Quip:
-	.string "Insert Quip Here$"
+	.string "I finally found my way out, but\n"
+	.string "my friend is still lost inside.\p"
+	.string "At least we have candy for sustenance.$"
+Puzzle_TrickHouseOriginal3_PrereqItems:
+	.2byte ITEM_ROCKSMASH_ITEM
+	.2byte 0
 
 @ -----------------------------------------------------
 

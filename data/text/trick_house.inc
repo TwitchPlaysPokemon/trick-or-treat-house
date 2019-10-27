@@ -74,6 +74,7 @@ PuzzleCommon_TextArray_PuzzleIntro_NoItems::
 	.4byte PuzzleCommon_TextArray_PuzzleIntro_NoItems01
 	.4byte PuzzleCommon_TextArray_PuzzleIntro_NoItems02
 	.4byte PuzzleCommon_TextArray_PuzzleIntro_NoItems03
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_NoItems04
 	.4byte 0
 
 PuzzleCommon_TextArray_PuzzleIntro_NoItems00:
@@ -103,6 +104,14 @@ PuzzleCommon_TextArray_PuzzleIntro_NoItems03:
 	.string "It's one I collected it off someone\n"
 	.string "called {PUZZLE_AUTHOR}.\p"
 	.string "See you on the other side!$"
+PuzzleCommon_TextArray_PuzzleIntro_NoItems04:
+	.string "Hah! Seems like you made it through that\n"
+	.string "last one with ease!\p"
+	.string "This next puzzle I borrowed from one\n"
+	.string "{PUZZLE_AUTHOR} who I met on my travels.\p"
+	.string "I'd call it {PUZZLE_ADJECTIVE}.\p"
+	.string "Let's see how you handle it!$"
+	
 
 @ -----------------------------------------------------
 
@@ -112,12 +121,14 @@ PuzzleCommon_TextArray_PuzzleIntro_Items::
 	.4byte PuzzleCommon_TextArray_PuzzleIntro_Items01
 	.4byte PuzzleCommon_TextArray_PuzzleIntro_Items02
 	.4byte PuzzleCommon_TextArray_PuzzleIntro_Items03
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_Items04
 	.4byte 0
 PuzzleCommon_TextArray_PuzzleIntro_Items_Bye::
 	.4byte PuzzleCommon_TextArray_PuzzleIntro_Items00b
 	.4byte PuzzleCommon_TextArray_PuzzleIntro_Items01b
 	.4byte PuzzleCommon_TextArray_PuzzleIntro_Items02b
 	.4byte PuzzleCommon_TextArray_PuzzleIntro_Items03b
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_Items04b
 	.4byte 0
 
 PuzzleCommon_TextArray_PuzzleIntro_Items00:
@@ -158,6 +169,15 @@ PuzzleCommon_TextArray_PuzzleIntro_Items03:
 	.string "you'll need for the puzzle.$"
 PuzzleCommon_TextArray_PuzzleIntro_Items03b:
 	.string "See you on the other side!$"
+PuzzleCommon_TextArray_PuzzleIntro_Items04:
+	.string "Hah! Seems like you made it through that\n"
+	.string "last one with ease!\p"
+	.string "This next puzzle I borrowed from one\n"
+	.string "{PUZZLE_AUTHOR} who I met on my travels.\p"
+	.string "I'd call it {PUZZLE_ADJECTIVE}.\p"
+	.string "Ah, but first, you'll need these.$"
+PuzzleCommon_TextArray_PuzzleIntro_Items04b:
+	.string "Let's see how you handle it!$"
 
 
 @ -----------------------------------------------------

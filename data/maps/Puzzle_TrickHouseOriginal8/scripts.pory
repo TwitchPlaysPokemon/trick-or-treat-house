@@ -1,18 +1,25 @@
 raw `
 Puzzle_TrickHouseOriginal8_MapScripts:: @ 826E801
 	puzzle_info Puzzle_TrickHouseOriginal8_Name, Puzzle_TrickHouseOriginal8_Author
-	puzzle_adjective Puzzle_TrickHouseOriginal8_Adjective
+	puzzle_custom_intro Puzzle_TrickHouseOriginal8_Intro
 	puzzle_quip Puzzle_TrickHouseOriginal8_Quip
 	.byte 0
 
 Puzzle_TrickHouseOriginal8_Name:
-	.string "Original 8$"
+	.string "Floor Frolic$"
 Puzzle_TrickHouseOriginal8_Author:
 	.string "Game Freak$"
-Puzzle_TrickHouseOriginal8_Adjective:
-	.string "original$"
+Puzzle_TrickHouseOriginal8_Intro:
+	.string "Hah! Good! Good! You've returned!\p"
+	.string "This next puzzle is one last trip down\n"
+	.string "memory lane for me.\p"
+	.string "I've never bought so much floor polish\n"
+	.string "in my life! I still have a gallon or two!\p"
+	.string "Let us see how you do with it!$"
 Puzzle_TrickHouseOriginal8_Quip:
-	.string "Insert Quip Here$"
+	.string "I love ice skating, but that's because\n"
+	.string "the skates let you control where you're\l"
+	.string "going! This puzzle was hard!$"
 
 @ -----------------------------------------------------
 

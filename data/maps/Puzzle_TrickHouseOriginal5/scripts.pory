@@ -1,7 +1,7 @@
 raw `
 Puzzle_TrickHouseOriginal5_MapScripts::
 	puzzle_info Puzzle_TrickHouseOriginal5_Name, Puzzle_TrickHouseOriginal5_Author
-	puzzle_adjective Puzzle_TrickHouseOriginal5_Adjective
+	puzzle_custom_intro Puzzle_TrickHouseOriginal5_Intro
 	puzzle_quip Puzzle_TrickHouseOriginal5_Quip
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TrickHouseOriginal5_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_TrickHouseOriginal5_OnTransition
@@ -10,13 +10,18 @@ Puzzle_TrickHouseOriginal5_MapScripts::
 	.byte 0
 
 Puzzle_TrickHouseOriginal5_Name:
-	.string "Original 5$"
+	.string "Maneuver Mischief$"
 Puzzle_TrickHouseOriginal5_Author:
 	.string "Game Freak$"
-Puzzle_TrickHouseOriginal5_Adjective:
-	.string "original$"
+Puzzle_TrickHouseOriginal5_Intro:
+	.string "Hah! Back for more then?\p"
+	.string "This next puzzle is another classic\n"
+	.string "I made before my journey.\p"
+	.string "I kept getting shunted around myself\n"
+	.string "while placing all the arrows! Ha!\p"
+	.string "Good luck! Wahahahaha!$"
 Puzzle_TrickHouseOriginal5_Quip:
-	.string "Insert Quip Here$"
+	.string "I'm a little dizzy after all that…$"
 
 @ -----------------------------------------------------
 #define FLAG_SWITCH_1  FLAG_PUZZLE_20

@@ -1,21 +1,33 @@
 raw `
 Puzzle_TrickHouseOriginal6_MapScripts:: @ 826DDA7
 	puzzle_info Puzzle_TrickHouseOriginal6_Name, Puzzle_TrickHouseOriginal6_Author
-	puzzle_adjective Puzzle_TrickHouseOriginal6_Adjective
+	puzzle_custom_intro Puzzle_TrickHouseOriginal6_Intro
 	puzzle_quip Puzzle_TrickHouseOriginal6_Quip
+	puzzle_metavars Puzzle_TrickHouseOriginal6_Variables
 	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_TrickHouseOriginal6_OnTransition
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Puzzle_TrickHouseOriginal6_MapTable
 	map_script MAP_SCRIPT_PUZZLE_TEARDOWN_SCRIPT, Puzzle_TrickHouseOriginal6_PuzzleTeardown
 	.byte 0
 
 Puzzle_TrickHouseOriginal6_Name:
-	.string "Original 6$"
+	.string "Rotation Gate Ruse$"
 Puzzle_TrickHouseOriginal6_Author:
 	.string "Game Freak$"
-Puzzle_TrickHouseOriginal6_Adjective:
-	.string "original$"
+Puzzle_TrickHouseOriginal6_Intro:
+	.string "Hah! You've returned for another\n"
+	.string "challenge!\p"
+	.string "This next puzzle is a classic\n"
+	.string "one of mine from back in the day.\p"
+	.string "The gates used to belong to the\n"
+	.string "FORETREE GYM, before they remodeled.\p"
+	.string "Can you handle it? Wahahahaha!$"
 Puzzle_TrickHouseOriginal6_Quip:
-	.string "Insert Quip Here$"
+	.string "I kept getting turned around in there…\p"
+	.string "Get it?! Turned around?! Ha!\p"
+	.string "Day job?\nBut I don't have a day job to quit…$"
+Puzzle_TrickHouseOriginal6_Variables:
+	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_SCHOOL_KID_M
+	.2byte 0
 
 @ -----------------------------------------------------
 

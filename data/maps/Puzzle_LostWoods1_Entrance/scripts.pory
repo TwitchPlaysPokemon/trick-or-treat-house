@@ -18,7 +18,7 @@ Puzzle_LostWoods1_Quip:
 	.string "…$"
 .align 2
 Puzzle_LostWoods1_Variables:
-	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_BOY_3 @TODO: Link
+	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HERO_OF_TIME @TODO: Link
 	.2byte 0
 Puzzle_LostWoods1_PrereqItems:
 	.2byte ITEM_SURF_ITEM

@@ -1,6 +1,6 @@
 [
 	{
-		"class": "YOUNGSTER",
+		"class": "SKELETON",
 		"name": "JEFFERY",
 		"party": [
 			{
@@ -10,7 +10,7 @@
 		]
 	},
 	{
-		"class": "LASS",
+		"class": "ALIEN",
 		"name": "EMILY",
 		"party": [
 			{

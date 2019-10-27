@@ -1,20 +1,26 @@
 raw `
 Puzzle_TrickHouseOriginal2_MapScripts:: @ 826BB73
 	puzzle_info Puzzle_TrickHouseOriginal2_Name, Puzzle_TrickHouseOriginal2_Author
-	puzzle_adjective Puzzle_TrickHouseOriginal2_Adjective
+	puzzle_custom_intro Puzzle_TrickHouseOriginal2_Intro
 	puzzle_quip Puzzle_TrickHouseOriginal2_Quip
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TrickHouseOriginal2_MapScript1_26BB7E
 	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_TrickHouseOriginal2_OnTransition
 	.byte 0
 
 Puzzle_TrickHouseOriginal2_Name:
-	.string "Original 2$"
+	.string "Trapdoor Trickery$"
 Puzzle_TrickHouseOriginal2_Author:
 	.string "Game Freak$"
-Puzzle_TrickHouseOriginal2_Adjective:
-	.string "original$"
+Puzzle_TrickHouseOriginal2_Intro:
+	.string "Hah! Seems like you made it through that\n"
+	.string "last one with ease!\p"
+	.string "This next puzzle is an old one of mine.\p"
+	.string "It seems so quaint these days,\n"
+	.string "but I just can't let it go.\p"
+	.string "I'll see you on the other side!$"
 Puzzle_TrickHouseOriginal2_Quip:
-	.string "Insert Quip Here$"
+	.string "I feel like I could have just jumped\n"
+	.string "over some of those gaps…$"
 
 @ -----------------------------------------------------
 
