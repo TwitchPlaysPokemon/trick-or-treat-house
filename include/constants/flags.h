@@ -207,11 +207,11 @@
 #define FLAG_UNUSED_0x0BF                    0xBF
 #define FLAG_UNUSED_0x0C0                    0xC0
 #define FLAG_UNUSED_0x0C1                    0xC1
-#define FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_1   0xC2
-#define FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_2   0xC3
-#define FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_3   0xC4
-#define FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_4   0xC5
-#define FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_5   0xC6
+#define FLAG_UNUSED_0x0C2                    0xC2
+#define FLAG_UNUSED_0x0C3                    0xC3
+#define FLAG_UNUSED_0x0C4                    0xC4
+#define FLAG_UNUSED_0x0C5                    0xC5
+#define FLAG_UNUSED_0x0C6                    0xC6
 #define FLAG_RUSTURF_TUNNEL_OPENED           0xC7
 #define FLAG_RECEIVED_RED_SCARF              0xC8
 #define FLAG_RECEIVED_BLUE_SCARF             0xC9

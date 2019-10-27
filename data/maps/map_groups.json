@@ -121,16 +121,6 @@
         "Puzzle_LedgeMountain",
         "Puzzle_Wilke",
         "Puzzle_Route110",
-        "Puzzle_Loss_Floor1",
-        "Puzzle_Loss_Floor2",
-        "Puzzle_TwinMemories",
-        "Puzzle_HiddenMaze"
-    ],
-    "MG_SupportMaps": [
-        "EmptyPuzzle",
-        "LedgeMountain_Support"
-    ],
-    "MG_TestMaps": [
         "Puzzle_TrickHouseOriginal1",
         "Puzzle_TrickHouseOriginal2",
         "Puzzle_TrickHouseOriginal3",
@@ -138,6 +128,17 @@
         "Puzzle_TrickHouseOriginal6",
         "Puzzle_TrickHouseOriginal7",
         "Puzzle_TrickHouseOriginal8",
+        "Puzzle_Loss_Floor1",
+        "Puzzle_Loss_Floor2",
+        "Puzzle_TwinMemories",
+        "Puzzle_HiddenMaze",
+        "Puzzle_TrickHouseOriginal5"
+    ],
+    "MG_SupportMaps": [
+        "EmptyPuzzle",
+        "LedgeMountain_Support"
+    ],
+    "MG_TestMaps": [
         "TestMapHallway",
         "TestLayoutSwitching",
         "TestLayoutSwitching2",

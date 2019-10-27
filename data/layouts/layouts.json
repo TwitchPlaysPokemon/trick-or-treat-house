@@ -1229,6 +1229,16 @@
             "primary_tileset": "gTileset_Autumn",
             "secondary_tileset": "gTileset_Slateport",
             "width": 80
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_TrickHouseOriginal5/map.bin",
+            "border_filepath": "data/layouts/Puzzle_TrickHouseOriginal5/border.bin",
+            "height": 22,
+            "id": "LAYOUT_PUZZLE_TRICK_HOUSE_ORIGINAL5",
+            "name": "Puzzle_TrickHouseOriginal5_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrickHousePuzzle",
+            "width": 15
         }
     ],
     "layouts_table_label": "gMapLayouts"

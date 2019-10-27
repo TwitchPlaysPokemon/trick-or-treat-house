@@ -1,0 +1,279 @@
+raw `
+Puzzle_TrickHouseOriginal5_MapScripts::
+	puzzle_info Puzzle_TrickHouseOriginal5_Name, Puzzle_TrickHouseOriginal5_Author
+	puzzle_adjective Puzzle_TrickHouseOriginal5_Adjective
+	puzzle_quip Puzzle_TrickHouseOriginal5_Quip
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TrickHouseOriginal5_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_TrickHouseOriginal5_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_TrickHouseOriginal5_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_TrickHouseOriginal5_FrameTable
+	.byte 0
+
+Puzzle_TrickHouseOriginal5_Name:
+	.string "Original 5$"
+Puzzle_TrickHouseOriginal5_Author:
+	.string "Game Freak$"
+Puzzle_TrickHouseOriginal5_Adjective:
+	.string "original$"
+Puzzle_TrickHouseOriginal5_Quip:
+	.string "Insert Quip Here$"
+
+@ -----------------------------------------------------
+#define FLAG_SWITCH_1  FLAG_PUZZLE_20
+#define FLAG_SWITCH_2  FLAG_PUZZLE_21
+#define FLAG_SWITCH_3  FLAG_PUZZLE_22
+#define FLAG_SWITCH_4  FLAG_PUZZLE_23
+#define FLAG_SWITCH_5  FLAG_PUZZLE_24
+
+
+Puzzle_TrickHouseOriginal5_OnResume: @ 826E0A6
+	call Puzzle_TrickHouseOriginal5_EventScript_26E0AC
+	end
+
+Puzzle_TrickHouseOriginal5_EventScript_26E0AC:: @ 826E0AC
+	call_if_set FLAG_SWITCH_1, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch1On
+	call_if_set FLAG_SWITCH_2, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch2On
+	call_if_set FLAG_SWITCH_3, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch3On
+	call_if_set FLAG_SWITCH_4, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch4On
+	call_if_set FLAG_SWITCH_5, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch5On
+	return
+
+Puzzle_TrickHouseOriginal5_EventScript_SetSwitch1On:: @ 826E0DA
+	setmetatile 13, 17, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Up, 0
+	setmetatile 12, 16, METATILE_TrickHousePuzzle_Lever_On, 1
+	return
+
+Puzzle_TrickHouseOriginal5_EventScript_SetSwitch2On:: @ 826E0ED
+	setmetatile 12, 13, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Up, 0
+	setmetatile 12, 11, METATILE_TrickHousePuzzle_Lever_On, 1
+	return
+
+Puzzle_TrickHouseOriginal5_EventScript_SetSwitch3On:: @ 826E100
+	setmetatile 7, 12, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Up, 0
+	setmetatile 5, 10, METATILE_TrickHousePuzzle_Lever_On, 1
+	return
+
+Puzzle_TrickHouseOriginal5_EventScript_SetSwitch4On:: @ 826E113
+	setmetatile 6, 6, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Right_Alt, 0
+	setmetatile 4, 4, METATILE_TrickHousePuzzle_Lever_On, 1
+	return
+
+Puzzle_TrickHouseOriginal5_EventScript_SetSwitch5On:: @ 826E126
+	setmetatile 8, 4, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Left, 0
+	setmetatile 7, 5, METATILE_TrickHousePuzzle_Lever_On, 1
+	return
+
+Puzzle_TrickHouseOriginal5_EventScript_SetSwitch1Off:: @ 826E139
+	setmetatile 13, 17, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Down, 0
+	setmetatile 12, 16, METATILE_TrickHousePuzzle_Lever_Off, 1
+	return
+
+Puzzle_TrickHouseOriginal5_EventScript_SetSwitch2Off:: @ 826E14C
+	setmetatile 12, 13, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Left, 0
+	setmetatile 12, 11, METATILE_TrickHousePuzzle_Lever_Off, 1
+	return
+
+Puzzle_TrickHouseOriginal5_EventScript_SetSwitch3Off:: @ 826E15F
+	setmetatile 7, 12, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Down, 0
+	setmetatile 5, 10, METATILE_TrickHousePuzzle_Lever_Off, 1
+	return
+
+Puzzle_TrickHouseOriginal5_EventScript_SetSwitch4Off:: @ 826E172
+	setmetatile 6, 6, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Left_Alt, 0
+	setmetatile 4, 4, METATILE_TrickHousePuzzle_Lever_Off, 1
+	return
+
+Puzzle_TrickHouseOriginal5_EventScript_SetSwitch5Off:: @ 826E185
+	setmetatile 8, 4, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Right, 0
+	setmetatile 7, 5, METATILE_TrickHousePuzzle_Lever_Off, 1
+	return
+
+Puzzle_TrickHouseOriginal5_OnTransition: @ 826E198
+	compare VAR_TRICK_HOUSE_PUZZLE_7_STATE_2, 1
+	goto_if_eq Common_EventScript_NopEnd
+	clearflag FLAG_SWITCH_1
+	clearflag FLAG_SWITCH_2
+	clearflag FLAG_SWITCH_3
+	clearflag FLAG_SWITCH_4
+	clearflag FLAG_SWITCH_5
+	end
+
+Puzzle_TrickHouseOriginal5_OnLoad: @ 826E1B4
+	compare VAR_TRICK_HOUSE_PUZZLE_7_STATE_2, 1
+	call_if_eq Puzzle_TrickHouseOriginal5_EventScript_26E0AC
+	end
+
+Puzzle_TrickHouseOriginal5_FrameTable: @ 826E1C0
+	map_script_2 VAR_TRICK_HOUSE_PUZZLE_7_STATE_2, 1, Puzzle_TrickHouseOriginal5_EventScript_26E1CA
+	.2byte 0
+
+Puzzle_TrickHouseOriginal5_EventScript_26E1CA:: @ 826E1CA
+	setvar VAR_TRICK_HOUSE_PUZZLE_7_STATE_2, 0
+	end
+
+Puzzle_TrickHouseOriginal5_EventScript_26E1ED:: @ 826E1ED
+	lockall
+	setvar VAR_TRICK_HOUSE_PUZZLE_7_STATE_2, 1
+	warpteleport MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7, 255, 3, 19
+	waitstate
+	releaseall
+	end
+
+Puzzle_TrickHouseOriginal5_EventScript_ToggleSwitch1:: @ 826E1FE
+	lockall
+	delay 32
+	call_if_unset FLAG_SWITCH_1, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch1On
+	call_if_set FLAG_SWITCH_1, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch1Off
+	special DrawWholeMapView
+	playse SE_TK_KASYA
+	goto_if_unset FLAG_SWITCH_1, Puzzle_TrickHouseOriginal5_EventScript_26E2E9
+	goto_if_set FLAG_SWITCH_1, Puzzle_TrickHouseOriginal5_EventScript_26E2EE
+	end
+
+Puzzle_TrickHouseOriginal5_EventScript_ToggleSwitch2:: @ 826E22D
+	lockall
+	delay 32
+	call_if_unset FLAG_SWITCH_2, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch2On
+	call_if_set FLAG_SWITCH_2, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch2Off
+	special DrawWholeMapView
+	playse SE_TK_KASYA
+	goto_if_unset FLAG_SWITCH_2, Puzzle_TrickHouseOriginal5_EventScript_26E2F3
+	goto_if_set FLAG_SWITCH_2, Puzzle_TrickHouseOriginal5_EventScript_26E2F8
+	end
+
+Puzzle_TrickHouseOriginal5_EventScript_ToggleSwitch3:: @ 826E25C
+	lockall
+	delay 32
+	call_if_unset FLAG_SWITCH_3, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch3On
+	call_if_set FLAG_SWITCH_3, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch3Off
+	special DrawWholeMapView
+	playse SE_TK_KASYA
+	goto_if_unset FLAG_SWITCH_3, Puzzle_TrickHouseOriginal5_EventScript_26E2FD
+	goto_if_set FLAG_SWITCH_3, Puzzle_TrickHouseOriginal5_EventScript_26E302
+	end
+
+Puzzle_TrickHouseOriginal5_EventScript_ToggleSwitch4:: @ 826E28B
+	lockall
+	delay 32
+	call_if_unset FLAG_SWITCH_4, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch4On
+	call_if_set FLAG_SWITCH_4, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch4Off
+	special DrawWholeMapView
+	playse SE_TK_KASYA
+	goto_if_unset FLAG_SWITCH_4, Puzzle_TrickHouseOriginal5_EventScript_26E307
+	goto_if_set FLAG_SWITCH_4, Puzzle_TrickHouseOriginal5_EventScript_26E30C
+	end
+
+Puzzle_TrickHouseOriginal5_EventScript_ToggleSwitch5:: @ 826E2BA
+	lockall
+	delay 32
+	call_if_unset FLAG_SWITCH_5, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch5On
+	call_if_set FLAG_SWITCH_5, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch5Off
+	special DrawWholeMapView
+	playse SE_TK_KASYA
+	goto_if_unset FLAG_SWITCH_5, Puzzle_TrickHouseOriginal5_EventScript_26E311
+	goto_if_set FLAG_SWITCH_5, Puzzle_TrickHouseOriginal5_EventScript_26E316
+	end
+
+Puzzle_TrickHouseOriginal5_EventScript_26E2E9:: @ 826E2E9
+	setflag FLAG_SWITCH_1
+	releaseall
+	end
+
+Puzzle_TrickHouseOriginal5_EventScript_26E2EE:: @ 826E2EE
+	clearflag FLAG_SWITCH_1
+	releaseall
+	end
+
+Puzzle_TrickHouseOriginal5_EventScript_26E2F3:: @ 826E2F3
+	setflag FLAG_SWITCH_2
+	releaseall
+	end
+
+Puzzle_TrickHouseOriginal5_EventScript_26E2F8:: @ 826E2F8
+	clearflag FLAG_SWITCH_2
+	releaseall
+	end
+
+Puzzle_TrickHouseOriginal5_EventScript_26E2FD:: @ 826E2FD
+	setflag FLAG_SWITCH_3
+	releaseall
+	end
+
+Puzzle_TrickHouseOriginal5_EventScript_26E302:: @ 826E302
+	clearflag FLAG_SWITCH_3
+	releaseall
+	end
+
+Puzzle_TrickHouseOriginal5_EventScript_26E307:: @ 826E307
+	setflag FLAG_SWITCH_4
+	releaseall
+	end
+
+Puzzle_TrickHouseOriginal5_EventScript_26E30C:: @ 826E30C
+	clearflag FLAG_SWITCH_4
+	releaseall
+	end
+
+Puzzle_TrickHouseOriginal5_EventScript_26E311:: @ 826E311
+	setflag FLAG_SWITCH_5
+	releaseall
+	end
+
+Puzzle_TrickHouseOriginal5_EventScript_26E316:: @ 826E316
+	clearflag FLAG_SWITCH_5
+	releaseall
+	end
+
+
+Puzzle_TrickHouseOriginal5_EventScript_Psychic:: @ 826E389
+	trainerbattle_single TRAINER_01, Puzzle_TrickHouseOriginal7_Text_26E481, Puzzle_TrickHouseOriginal7_Text_26E4C1
+	msgbox Puzzle_TrickHouseOriginal7_Text_26E4F4, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseOriginal7_Text_26E481: @ 826E481
+	.string "The TRICK MASTER always vanishes\n"
+	.string "like smoke. How does he do it?$"
+Puzzle_TrickHouseOriginal7_Text_26E4C1: @ 826E4C1
+	.string "Aiyeeeh! You're much too strong!\n"
+	.string "How do you do it?$"
+Puzzle_TrickHouseOriginal7_Text_26E4F4: @ 826E4F4
+	.string "I wish I could appear and disappear as\n"
+	.string "if I were smoke, too.$"
+
+
+Puzzle_TrickHouseOriginal5_EventScript_HexManiac:: @ 826E3A0
+	trainerbattle_single TRAINER_02, Puzzle_TrickHouseOriginal7_Text_26E531, Puzzle_TrickHouseOriginal7_Text_26E564
+	msgbox Puzzle_TrickHouseOriginal7_Text_26E57F, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseOriginal7_Text_26E531: @ 826E531
+	.string "Going around the same spot…\n"
+	.string "It begets ill fortune…$"
+Puzzle_TrickHouseOriginal7_Text_26E564: @ 826E564
+	.string "Defeated!\n"
+	.string "It's a bad sign…$"
+Puzzle_TrickHouseOriginal7_Text_26E57F: @ 826E57F
+	.string "I've circled the same spot over ten\n"
+	.string "times now… It's ill fortune…$"
+
+
+Puzzle_TrickHouseOriginal5_EventScript_Lass:: @ 826E3B7
+	trainerbattle_single TRAINER_03, Puzzle_TrickHouseOriginal7_Text_26E5C0, Puzzle_TrickHouseOriginal7_Text_26E604
+	msgbox Puzzle_TrickHouseOriginal7_Text_26E61E, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseOriginal7_Text_26E5C0: @ 826E5C0
+	.string "Whoever wins will get through here\n"
+	.string "first. That's the feeling I get.$"
+Puzzle_TrickHouseOriginal7_Text_26E604: @ 826E604
+	.string "Oh!\n"
+	.string "Well, go ahead, then!$"
+Puzzle_TrickHouseOriginal7_Text_26E61E: @ 826E61E
+	.string "You're solving all the puzzles in the\n"
+	.string "TRICK HOUSE. That's the feeling I get.$"
+
+
+
+#undef FLAG_SWITCH_1
+#undef FLAG_SWITCH_2
+#undef FLAG_SWITCH_3
+#undef FLAG_SWITCH_4
+#undef FLAG_SWITCH_5
+`
