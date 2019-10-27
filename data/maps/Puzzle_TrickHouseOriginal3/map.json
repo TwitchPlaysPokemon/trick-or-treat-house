@@ -125,7 +125,7 @@
             "script": "EventScript_RockSmash",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 1,
+            "x": 3,
             "y": 20
         },
         {
@@ -138,7 +138,7 @@
             "script": "EventScript_RockSmash",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 2,
+            "x": 3,
             "y": 21
         },
         {
@@ -153,6 +153,19 @@
             "trainer_type": "0",
             "x": 0,
             "y": 14
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PICKED_UP_SMASH_ITEM",
+            "graphics_id": "EVENT_OBJ_GFX_HM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_ItemRockSmash",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 0,
+            "y": 17
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_110",
