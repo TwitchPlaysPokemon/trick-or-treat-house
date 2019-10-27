@@ -68,8 +68,8 @@
             "script": "PuzzleCommon_EventScript_Scroll",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 8,
-            "y": 57
+            "x": 19,
+            "y": 85
         },
         {
             "elevation": 3,
@@ -83,6 +83,19 @@
             "trainer_type": "0",
             "x": 27,
             "y": 92
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PICKED_UP_SURF_ITEM",
+            "graphics_id": "EVENT_OBJ_GFX_HM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Puzzle_WaterTemple_ItemBallSurf",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 4,
+            "y": 21
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_110",
@@ -95,6 +108,76 @@
             "elevation": 0,
             "x": 18,
             "y": 16
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ROUTE110",
+            "dest_warp_id": 4,
+            "elevation": 3,
+            "x": 32,
+            "y": 15
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ROUTE110",
+            "dest_warp_id": 3,
+            "elevation": 4,
+            "x": 29,
+            "y": 31
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ROUTE110",
+            "dest_warp_id": 2,
+            "elevation": 4,
+            "x": 10,
+            "y": 31
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ROUTE110",
+            "dest_warp_id": 1,
+            "elevation": 4,
+            "x": 12,
+            "y": 57
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ROUTE110",
+            "dest_warp_id": 10,
+            "elevation": 3,
+            "x": 26,
+            "y": 47
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ROUTE110",
+            "dest_warp_id": 9,
+            "elevation": 3,
+            "x": 34,
+            "y": 47
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ROUTE110",
+            "dest_warp_id": 8,
+            "elevation": 3,
+            "x": 21,
+            "y": 70
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ROUTE110",
+            "dest_warp_id": 7,
+            "elevation": 4,
+            "x": 17,
+            "y": 78
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ROUTE110",
+            "dest_warp_id": 6,
+            "elevation": 4,
+            "x": 28,
+            "y": 78
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ROUTE110",
+            "dest_warp_id": 5,
+            "elevation": 4,
+            "x": 16,
+            "y": 85
         }
     ],
     "weather": "WEATHER_SUNNY"
