@@ -1,2 +1,0 @@
-Puzzle_TrickHouseSpintiles_MapScripts::
-	.byte 0

@@ -1,0 +1,45 @@
+raw `
+Puzzle_TrickHouseCut_MapScripts::
+	puzzle_info Puzzle_TrickHouseCut_Name, Puzzle_TrickHouseCut_Author
+	puzzle_adjective Puzzle_TrickHouseCut_Adjective
+	puzzle_quip Puzzle_TrickHouseCut_Quip
+	.byte 0
+
+Puzzle_TrickHouseCut_Name:
+	.string "Shrub Shredding$"
+Puzzle_TrickHouseCut_Author:
+	.string "Trick Master$"
+Puzzle_TrickHouseCut_Adjective:
+	.string "slicing good$"
+Puzzle_TrickHouseCut_Quip:
+	.string "Sometimes it's better to just do the\n"
+	.string "field moves yourself, you know?$"
+
+@ -----------------------------------------------------
+
+Puzzle_TrickHouseCut_Trainer1::
+	trainerbattle_single TRAINER_01, Puzzle_TrickHouseCut_Trainer1_Intro, Puzzle_TrickHouseCut_Trainer1_Defeat
+	msgbox Puzzle_TrickHouseCut_Trainer1_After, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseCut_Trainer1_Intro:
+	.string "Nice costume. Were you trick-or-treating\n"
+	.string "too?$"
+Puzzle_TrickHouseCut_Trainer1_Defeat:
+	.string "Ack! My costume got caught!$"
+Puzzle_TrickHouseCut_Trainer1_After:
+	.string "Battling in costume is something I've\n"
+	.string "never done before. How about you?$"
+
+
+Puzzle_TrickHouseCut_Trainer2::
+	trainerbattle_single TRAINER_02, Puzzle_TrickHouseCut_Trainer2_Intro, Puzzle_TrickHouseCut_Trainer2_Defeat
+	msgbox Puzzle_TrickHouseCut_Trainer2_After, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseCut_Trainer2_Intro:
+	.string "HA!$"
+Puzzle_TrickHouseCut_Trainer2_Defeat:
+	.string "Ack! My costume got caught!$"
+Puzzle_TrickHouseCut_Trainer2_After:
+	.string "Battling in costume is something I've\n"
+	.string "never done before. How about you?$"
+`
