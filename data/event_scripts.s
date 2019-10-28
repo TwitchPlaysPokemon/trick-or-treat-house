@@ -382,6 +382,7 @@ EventScript_ResetAllMapFlags:: @ 82715DE
 	.if !DEBUG
 	setflag FLAG_HIDE_DEBUG_OBJECTS
 	.endif
+	setflag FLAG_HIDE_INTRO_CHARACTERS
 	call EventScript_ResetAllBerries
 	giveitem ITEM_POTION, 5
 	giveitem ITEM_ANTIDOTE, 2
@@ -6269,3 +6270,5 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/TrickTreat_FortreeCity/scripts.inc"
 
 	.include "data/maps/Puzzle_TrickHouseOriginal5/scripts.inc"
+
+	.include "data/maps/FakeSecretBaseCave/scripts.inc"

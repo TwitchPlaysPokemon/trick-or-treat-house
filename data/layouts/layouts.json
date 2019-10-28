@@ -1239,6 +1239,16 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_TrickHousePuzzle",
             "width": 15
+        },
+        {
+            "blockdata_filepath": "data/layouts/FakeSecretBaseCave/map.bin",
+            "border_filepath": "data/layouts/FakeSecretBaseCave/border.bin",
+            "height": 20,
+            "id": "LAYOUT_FAKE_SECRET_BASE_CAVE",
+            "name": "FakeSecretBaseCave_Layout",
+            "primary_tileset": "gTileset_SecretBase",
+            "secondary_tileset": "gTileset_SecretBaseBlueCave",
+            "width": 20
         }
     ],
     "layouts_table_label": "gMapLayouts"

@@ -205,6 +205,84 @@
             "trainer_type": "0",
             "x": 47,
             "y": 25
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_INTRO_CHARACTERS",
+            "graphics_id": "EVENT_OBJ_GFX_GHOST",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 49,
+            "y": 33
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_INTRO_CHARACTERS",
+            "graphics_id": "EVENT_OBJ_GFX_BRENDAN_NORMAL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 49,
+            "y": 32
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_INTRO_CHARACTERS",
+            "graphics_id": "EVENT_OBJ_GFX_MAY_NORMAL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 49,
+            "y": 34
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_INTRO_CHARACTERS",
+            "graphics_id": "EVENT_OBJ_GFX_FAIRY_GIRL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 49,
+            "y": 32
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_INTRO_CHARACTERS",
+            "graphics_id": "EVENT_OBJ_GFX_WALLY",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 49,
+            "y": 34
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_INTRO_CHARACTERS",
+            "graphics_id": "EVENT_OBJ_GFX_HERO_OF_TIME",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 49,
+            "y": 33
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_110",
@@ -226,11 +304,18 @@
             "y": 47
         },
         {
-            "dest_map": "MAP_TRICK_HOUSE_EXT",
+            "dest_map": "MAP_FAKE_SECRET_BASE_CAVE",
             "dest_warp_id": 0,
             "elevation": 0,
             "x": 18,
             "y": 27
+        },
+        {
+            "dest_map": "MAP_TRICK_HOUSE_EXT",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 41,
+            "y": 33
         }
     ],
     "weather": "WEATHER_SUNNY"

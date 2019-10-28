@@ -136,7 +136,8 @@
     ],
     "MG_SupportMaps": [
         "EmptyPuzzle",
-        "LedgeMountain_Support"
+        "LedgeMountain_Support",
+        "FakeSecretBaseCave"
     ],
     "MG_TestMaps": [
         "TestMapHallway",

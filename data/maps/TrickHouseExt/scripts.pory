@@ -1,7 +1,66 @@
 raw `
 TrickHouseExt_MapScripts::
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Route110_MapTable
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route110_FrameTable
 	.byte 0
 
+Route110_MapTable:
+	map_script_2 VAR_LAST_WARP_ID, 3, Route110_IntroCutsceneSetup
+	.2byte 0
+
+Route110_FrameTable:
+	map_script_2 VAR_TEMP_C, 1, Route110_IntroCutscene
+	.2byte 0
+
+@ -----------------------------------------------------
+
+#define LID_BOY 6
+#define LID_GIRL 7
+#define LID_JOEY 5
+#define LID_FAIRY 8
+#define LID_WALLY 9
+#define LID_WADE 10
+
+
+Route110_IntroCutsceneSetup:
+	callnative HidePlayerOnLoad
+	setvar VAR_TEMP_C, 1
+	clearflag FLAG_HIDE_INTRO_CHARACTERS
+	end
+`
+
+script Route110_IntroCutscene {
+	lockall
+	applymovement (LID_WADE, Route110_IntroCutscene_Movement1_Wade)
+	applymovement (LID_WALLY, Route110_IntroCutscene_Movement1_Wally)
+	fadescreenspeed (0, 4)
+	waitmovement (0)
+	
+	setvar (VAR_TEMP_C, 2)
+	warpsilent (MAP_TRICK_HOUSE_ENTRANCE, 0, 0xFF, 0xFF)
+	waitstate
+	releaseall
+}
+
+movement Route110_IntroCutscene_Movement1_Wade {
+	walk_left * 10
+	walk_down * 2
+}
+movement Route110_IntroCutscene_Movement1_Wally {
+	delay_16 * 2
+	walk_left * 9
+	walk_in_place_down
+}
+
+raw `
+#undef LID_BOY
+#undef LID_GIRL
+#undef LID_JOEY
+#undef LID_FAIRY
+#undef LID_WALLY
+#undef LID_WADE
+
+@ -----------------------------------------------------
 
 Route110_EventScript_1EF380:: @ 81EF380
 	msgbox Route110_Text_1F0992, MSGBOX_SIGN
@@ -11,14 +70,12 @@ Route110_Text_1F0992: @ 81F0992
 	.string "The items in the BAG can be reorganized\n"
 	.string "by pressing SELECT.$"
 
-
 Route110_EventScript_1EF389:: @ 81EF389
 	msgbox Route110_Text_1F09DB, MSGBOX_SIGN
 	end
 Route110_Text_1F09DB: @ 81F09DB
 	.string "“Three steps {RIGHT_ARROW} and two steps {UP_ARROW}\n"
 	.string "to reach the wondrous TRICK HOUSE.”$"
-
 
 Route110_EventScript_1EF35C:: @ 81EF35C
 	msgbox Route110_Text_1F08CD, MSGBOX_SIGN
@@ -27,13 +84,11 @@ Route110_Text_1F08CD: @ 81F08CD
 	.string "ROUTE 110\n"
 	.string "{LEFT_ARROW} ROUTE 103$"
 
-
 Route110_EventScript_1EF34A:: @ 81EF34A
 	msgbox Route110_Text_1F082D, MSGBOX_SIGN
 	end
 Route110_Text_1F082D: @ 81F082D
 	.string "SEASIDE CYCLING ROAD$"
-
 
 Route110_EventScript_TestDoor::
 	lock
@@ -49,7 +104,6 @@ Route110_EventScript_TestDoor::
 Route110_Text_TestDoor:
 	.string "This leads to the Dev Entrance.\n"
 	.string "Enter?$"
-
 
 Route110_EventScript_SoftBorderSouth::
 	lock

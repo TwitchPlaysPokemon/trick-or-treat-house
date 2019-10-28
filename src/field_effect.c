@@ -1407,6 +1407,11 @@ static void task00_8084310(u8 taskId)
     }
 }
 
+void HidePlayerOnLoad(struct ScriptContext *ctx)
+{
+    gEventObjects[gPlayerAvatar.eventObjectId].invisible = TRUE;
+}
+
 static void mapldr_08084390(void)
 {
     Overworld_PlaySpecialMapMusic();

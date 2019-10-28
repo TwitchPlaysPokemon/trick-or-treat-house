@@ -47,6 +47,7 @@
 // Map Group 3
 #define MAP_EMPTY_PUZZLE           (0 | (3 << 8))
 #define MAP_LEDGE_MOUNTAIN_SUPPORT (1 | (3 << 8))
+#define MAP_FAKE_SECRET_BASE_CAVE  (2 | (3 << 8))
 
 // Map Group 4
 #define MAP_PETALBURG_CITY   (0 | (4 << 8))

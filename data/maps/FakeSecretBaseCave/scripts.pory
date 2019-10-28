@@ -1,0 +1,8 @@
+raw `
+FakeSecretBaseCave_MapScripts::
+	.byte 0
+`
+
+script FakeSecretBaseCave_DenyPC {
+	msgbox ("It's locked with a password.$", MSGBOX_SIGN)
+}
