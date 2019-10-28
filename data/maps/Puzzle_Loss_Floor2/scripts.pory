@@ -98,7 +98,7 @@ script Puzzle_Loss_Floor2_Doll {
 
 script Puzzle_Loss_Floor2_EventScript_WalkedInOn {
 	lock
-	setvar (VAR_LAST_WARP_ID, 0)
+	setvar (VAR_LAST_WARP_ID, -1)
 	playse (SE_PIN)
 	applymovement (5, PetalburgCity_PokemonCenter_2F_Movement_WalkedInOn)
 	applymovement (6, PetalburgCity_PokemonCenter_2F_Movement_WalkedInOn)
@@ -121,7 +121,7 @@ PetalburgCity_PokemonCenter_2F_Movement_WalkedInOn:
 `
 
 script Puzzle_Loss_Floor2_EventScript_AfterKickout {
-	setvar (VAR_LAST_WARP_ID, 0)
+	setvar (VAR_LAST_WARP_ID, -1)
 	setflag (FLAG_CENTER_INCIDENT)
 	setmetatile (18, 3, METATILE_LockedDoor, TRUE)
 }

@@ -40,6 +40,7 @@ Puzzle_Route110_Variables:
 
 Puzzle_Route110_Teardown:
 	clearflag FLAG_SYS_CYCLING_ROAD
+	callnative ResetCyclingRoadChallengeData
 	end
 
 @ -----------------------------------------------------
@@ -50,14 +51,19 @@ Puzzle_Route110_OnResume: @ 81EF279
 	end
 
 @ -----------------------------------------------------
-
-Puzzle_Route110_OnTransition: @ 81EF27D
-	setvar VAR_CYCLING_CHALLENGE_STATE, 1
-	savebgm MUS_CYCLING
-	setflag FLAG_SYS_CYCLING_ROAD
-	callnative ForcePlayerOntoMachBike
+`
+script Puzzle_Route110_OnTransition { // 81EF27D
+	if (var(VAR_LAST_WARP_ID) == 0) {
+		setvar (VAR_CYCLING_CHALLENGE_STATE, 1)
+		savebgm (MUS_CYCLING)
+		setvar (VAR_LAST_WARP_ID, -1)
+	}
+	setflag (FLAG_SYS_CYCLING_ROAD)
+	callnative (ForcePlayerOntoMachBike)
 	return
+}
 
+raw `
 @ -----------------------------------------------------
 
 Puzzle_Route110_FrameTable: @ 81EF297
@@ -108,6 +114,7 @@ Route110_Text_1F0A5E: @ 81F0A5E
 Puzzle_Route110_EventScript_RankingDude:: @ 81EF3B7
 	lock
 	faceplayer
+	goto_if_unset FLAG_TRICK_HOUSE_SCROLL_READ, Route110_EventScript_NoScroll
 	specialvar VAR_RESULT, GetPlayerAvatarBike
 	compare VAR_RESULT, 1
 	goto_if_eq Route110_EventScript_1EF3E8
@@ -140,13 +147,23 @@ Route110_Text_1F0755: @ 81F0755
 	.string "of collisions and their total times.\p"
 	.string "Acro Bikes do not qualify for rating.\n"
 	.string "They are easy to turn, so it's not fair.$"
+Route110_EventScript_NoScroll:: @ 81EF3E8
+	callnative GetCurrentCyclingRoadTime
+	msgbox Route110_Text_NoScroll, MSGBOX_DEFAULT
+	release
+	end
+Route110_Text_NoScroll: @ 81F0755
+	.string "Did you find the scroll yet?\n"
+	.string "I'm still timing you…\p"
+	.string "{STR_VAR_1}… {STR_VAR_2}… {STR_VAR_3}… …$"
 
 @ -----------------------------------------------------
 @ Cycling Road Challenge
 
 Puzzle_Route110_TriggerScript_FinishCyclingRoadChallenge:: @ 81EF661
 	lockall
-	applymovement 21, Common_Movement_WalkInPlaceRight
+	goto_if_unset FLAG_TRICK_HOUSE_SCROLL_READ, Common_EventScript_ReleaseAllEnd
+	applymovement 4, Common_Movement_WalkInPlaceRight
 	waitmovement 0
 	special FinishCyclingRoadChallenge
 	msgbox Puzzle_Route110_Text_1F03FF, MSGBOX_DEFAULT

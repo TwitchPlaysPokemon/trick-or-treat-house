@@ -26,7 +26,9 @@
 #include "trainer_pokemon_sprites.h"
 #include "trig.h"
 #include "util.h"
+#include "event_data.h"
 #include "constants/field_effects.h"
+#include "constants/flags.h"
 #include "constants/event_object_movement_constants.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
@@ -2995,7 +2997,7 @@ static void sub_80B8EA8(struct Task *task)
     if (!FieldEffectActiveListContains(FLDEFF_FIELD_MOVE_SHOW_MON))
     {
         eventObject = &gEventObjects[gPlayerAvatar.eventObjectId];
-        EventObjectSetGraphicsId(eventObject, GetPlayerAvatarGraphicsIdByStateId(3));
+        EventObjectSetGraphicsId(eventObject, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_SURFING));
         EventObjectClearHeldMovementIfFinished(eventObject);
         EventObjectSetHeldMovement(eventObject, GetJumpSpecialMovementAction(eventObject->movementDirection));
         gFieldEffectArguments[0] = task->data[1];

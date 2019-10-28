@@ -449,7 +449,7 @@ static void sub_8084788(void)
 {
     FlagClear(FLAG_SYS_SAFARI_MODE);
     ChooseAmbientCrySpecies();
-    ResetCyclingRoadChallengeData();
+    // ResetCyclingRoadChallengeData();
     UpdateLocationHistoryForRoamer();
     RoamerMoveToOtherLocationSet();
 }
@@ -835,7 +835,7 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     LoadEventObjTemplatesFromHeader();
     TrySetMapSaveWarpStatus();
     ClearTempFieldEventData();
-    ResetCyclingRoadChallengeData();
+    // ResetCyclingRoadChallengeData();
     RestartWildEncounterImmunitySteps();
     TryUpdateRandomTrainerRematches(mapGroup, mapNum);
     DoTimeBasedEvents();
@@ -887,7 +887,7 @@ static void mli0_load_map(u32 a1)
     sub_80EB218();
     TrySetMapSaveWarpStatus();
     ClearTempFieldEventData();
-    ResetCyclingRoadChallengeData();
+    // ResetCyclingRoadChallengeData();
     RestartWildEncounterImmunitySteps();
     TryUpdateRandomTrainerRematches(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
     if (a1 != 1)

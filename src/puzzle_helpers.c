@@ -396,7 +396,7 @@ extern u8 gBikeCollisions;
 extern u32 gBikeCyclingTimer;
 #define VAR_CYCLING_CHALLENGE_STATE VAR_PUZZLE_00
 
-void ResetCyclingRoadChallengeData(void)
+void ResetCyclingRoadChallengeData(struct ScriptContext *ctx)
 {
     gBikeCyclingChallenge = FALSE;
     gBikeCollisions = 0;
@@ -438,16 +438,16 @@ static void DetermineCyclingRoadResults(u32 numFrames, u8 numBikeCollisions)
         StringCopy(gStringVar1, gText_99TimesPlus);
     }
 
-    if (numFrames < 3600)
+    if (numFrames < 3600 * 3)
     {
-        ConvertIntToDecimalStringN(gStringVar2, numFrames / 60, STR_CONV_MODE_RIGHT_ALIGN, 2);
-        gStringVar2[2] = CHAR_PERIOD;
-        ConvertIntToDecimalStringN(&gStringVar2[3], ((numFrames % 60) * 100) / 60, STR_CONV_MODE_LEADING_ZEROS, 2);
+        ConvertIntToDecimalStringN(gStringVar2, numFrames / 60, STR_CONV_MODE_RIGHT_ALIGN, 3);
+        gStringVar2[3] = CHAR_PERIOD;
+        ConvertIntToDecimalStringN(&gStringVar2[4], ((numFrames % 60) * 100) / 60, STR_CONV_MODE_LEADING_ZEROS, 2);
         StringAppend(gStringVar2, gText_SpaceSeconds);
     }
     else
     {
-        StringCopy(gStringVar2, gText_1MinutePlus);
+        StringCopy(gStringVar2, gText_3MinutePlus);
     }
 
     result = 0;
@@ -455,15 +455,15 @@ static void DetermineCyclingRoadResults(u32 numFrames, u8 numBikeCollisions)
     {
         result = 5;
     }
-    else if (numBikeCollisions < 4)
+    else if (numBikeCollisions < 6)//4)
     {
         result = 4;
     }
-    else if (numBikeCollisions < 10)
+    else if (numBikeCollisions < 15)//10)
     {
         result = 3;
     }
-    else if (numBikeCollisions < 20)
+    else if (numBikeCollisions < 25)//20)
     {
         result = 2;
     }
@@ -472,23 +472,23 @@ static void DetermineCyclingRoadResults(u32 numFrames, u8 numBikeCollisions)
         result = 1;
     }
 
-    if (numFrames / 60 <= 10)
+    if (numFrames / 60 <= 60)//10)
     {
         result += 5;
     }
-    else if (numFrames / 60 <= 15)
+    else if (numFrames / 60 <= 80)//15)
     {
         result += 4;
     }
-    else if (numFrames / 60 <= 20)
+    else if (numFrames / 60 <= 110)//20)
     {
         result += 3;
     }
-    else if (numFrames / 60 <= 40)
+    else if (numFrames / 60 <= 140)//40)
     {
         result += 2;
     }
-    else if (numFrames / 60 < 60)
+    else if (numFrames / 60 < 180)//60)
     {
         result += 1;
     }
@@ -529,6 +529,20 @@ void FinishCyclingRoadChallenge(void) {
 
     DetermineCyclingRoadResults(numFrames, gBikeCollisions);
     RecordCyclingRoadResults(numFrames, gBikeCollisions);
+}
+
+void GetCurrentCyclingRoadTime(struct ScriptContext *ctx)
+{
+	const u32 numSecs = (gMain.vblankCounter1 - gBikeCyclingTimer) / 60;
+	if (numSecs < 999) {
+		ConvertIntToDecimalStringN(gStringVar1, numSecs+0, STR_CONV_MODE_LEFT_ALIGN, 3);
+		ConvertIntToDecimalStringN(gStringVar2, numSecs+1, STR_CONV_MODE_LEFT_ALIGN, 3);
+		ConvertIntToDecimalStringN(gStringVar3, numSecs+2, STR_CONV_MODE_LEFT_ALIGN, 3);
+	} else {
+		StringCopy(gStringVar1, gText_WayTooLong1);
+        StringCopy(gStringVar2, gText_WayTooLong2);
+        StringCopy(gStringVar3, gText_WayTooLong3);
+	}
 }
 
 void UpdateCyclingRoadState(void) {

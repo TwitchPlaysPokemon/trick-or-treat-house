@@ -37,7 +37,7 @@
     "id": "MAP_PUZZLE_ROUTE110",
     "layout": "LAYOUT_ROUTE110",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_DOORO_X1",
+    "music": "MUS_CYCLING",
     "name": "Puzzle_Route110",
     "object_events": [
         {

@@ -578,8 +578,12 @@ extern const u8 gText_Slash[];
 
 extern const u8 gText_99TimesPlus[];
 extern const u8 gText_1MinutePlus[];
+extern const u8 gText_3MinutePlus[];
 extern const u8 gText_SpaceSeconds[];
 extern const u8 gText_SpaceTimes[];
+extern const u8 gText_WayTooLong1[];
+extern const u8 gText_WayTooLong2[];
+extern const u8 gText_WayTooLong3[];
 
 extern const u8 gText_BigGuy[];
 extern const u8 gText_BigGirl[];

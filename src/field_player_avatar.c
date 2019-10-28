@@ -71,7 +71,7 @@ static void PlayerNotOnBikeMoving(u8, u16);
 static u8 CheckForPlayerAvatarCollision(u8);
 static u8 sub_808B028(u8);
 static u8 sub_808B164(struct EventObject *, s16, s16, u8, u8);
-static bool8 sub_808B1BC(s16, s16, u8);
+static bool8 ShouldJumpOffSurfBlob(s16, s16, u8);
 static bool8 ShouldJumpLedge(struct EventObject *, s16, s16, u8);
 static u8 sub_808B238(s16, s16, u8);
 static void check_acro_bike_metatile(s16, s16, u8, u8 *);
@@ -115,7 +115,7 @@ static bool8 PlayerAvatar_SecretBaseMatSpinStep1(struct Task *task, struct Event
 static bool8 PlayerAvatar_SecretBaseMatSpinStep2(struct Task *task, struct EventObject *eventObject);
 static bool8 PlayerAvatar_SecretBaseMatSpinStep3(struct Task *task, struct EventObject *eventObject);
 
-static void sub_808C750(u8);
+static void DoJumpOffSurfBlob(u8);
 static void taskFF_0805D1D4(u8 taskId);
 static void sub_808C814(u8 taskId);
 
@@ -682,7 +682,7 @@ u8 CheckForEventObjectCollision(struct EventObject *playerEventObj, s16 x, s16 y
     u8 collision;
 
     collision = GetCollisionAtCoords(playerEventObj, x, y, direction);
-    if (collision == 3 && sub_808B1BC(x, y, direction))
+    if (collision == 3 && ShouldJumpOffSurfBlob(x, y, direction))
         return 5;
     if (ShouldJumpLedge(playerEventObj, x, y, direction))
     {
@@ -714,13 +714,13 @@ static u8 sub_808B164(struct EventObject *a, s16 x, s16 y, u8 direction, u8 e)
     return collision;
 }
 
-static bool8 sub_808B1BC(s16 x, s16 y, u8 direction)
+static bool8 ShouldJumpOffSurfBlob(s16 x, s16 y, u8 direction)
 {
     if ((gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
      && MapGridGetZCoordAt(x, y) == 3
      && GetEventObjectIdByXYZ(x, y, 3) == EVENT_OBJECTS_COUNT)
     {
-        sub_808C750(direction);
+        DoJumpOffSurfBlob(direction);
         return TRUE;
     }
     else
@@ -843,6 +843,11 @@ static void PlayerAvatarTransition_Dummy(struct EventObject *eventObj)
 
 static void PlayerAvatarTransition_Normal(struct EventObject *eventObj)
 {
+    if (FlagGet(FLAG_SYS_CYCLING_ROAD))
+    {
+        PlayerAvatarTransition_MachBike(eventObj);
+        return;
+    }
     EventObjectSetGraphicsId(eventObj, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_NORMAL));
     EventObjectTurn(eventObj, eventObj->movementDirection);
     SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_ON_FOOT);
@@ -1640,7 +1645,7 @@ static bool8 PlayerAvatar_SecretBaseMatSpinStep3(struct Task *task, struct Event
 
 /* Some Field effect */
 
-static void sub_808C750(u8 a)
+static void DoJumpOffSurfBlob(u8 a)
 {
     u8 taskId;
 
@@ -1648,7 +1653,11 @@ static void sub_808C750(u8 a)
     Overworld_ClearSavedMusic();
     Overworld_ChangeMusicToDefault();
     gPlayerAvatar.flags &= ~PLAYER_AVATAR_FLAG_SURFING;
-    gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_ON_FOOT;
+    if (FlagGet(FLAG_SYS_CYCLING_ROAD)) {
+        gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_MACH_BIKE;
+    } else {
+        gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_ON_FOOT;
+    }
     gPlayerAvatar.preventStep = TRUE;
     taskId = CreateTask(taskFF_0805D1D4, 0xFF);
     gTasks[taskId].data[0] = a;
@@ -1675,8 +1684,13 @@ static void sub_808C814(u8 taskId)
 
     if (EventObjectClearHeldMovementIfFinished(playerEventObj))
     {
-        EventObjectSetGraphicsId(playerEventObj, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_NORMAL));
-        EventObjectSetHeldMovement(playerEventObj, GetFaceDirectionMovementAction(playerEventObj->facingDirection));
+        if (FlagGet(FLAG_SYS_CYCLING_ROAD)) {
+            EventObjectSetGraphicsId(playerEventObj, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_MACH_BIKE));
+            EventObjectSetHeldMovement(playerEventObj, GetFaceDirectionMovementAction(playerEventObj->facingDirection));
+        } else {
+            EventObjectSetGraphicsId(playerEventObj, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_NORMAL));
+            EventObjectSetHeldMovement(playerEventObj, GetFaceDirectionMovementAction(playerEventObj->facingDirection));
+        }
         gPlayerAvatar.preventStep = FALSE;
         ScriptContext2_Disable();
         DestroySprite(&gSprites[playerEventObj->fieldEffectSpriteId]);
