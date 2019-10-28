@@ -2,6 +2,7 @@ raw `
 TrickHouseExt_MapScripts::
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Route110_MapTable
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route110_FrameTable
+	map_script MAP_SCRIPT_ON_LOAD, Route110_OnLoad
 	.byte 0
 
 Route110_MapTable:
@@ -11,7 +12,24 @@ Route110_MapTable:
 Route110_FrameTable:
 	map_script_2 VAR_TEMP_C, 1, Route110_IntroCutscene
 	.2byte 0
+`
+script Route110_OnLoad {
+	callnative (IsCurrentPuzzleCyclingRoad)
+	if (var(VAR_RESULT) == TRUE) {
+		// Make the level look like it's being used for the puzzle
+		setmetatile (47, 41, 0x02A, FALSE)
+		setmetatile (51, 33, 0x02A, FALSE)
+		setmetatile (46, 48, 0x02A, FALSE)
+		setmetatile (50, 31, 0x3FE, TRUE)
+		setmetatile (50, 32, 0x288, TRUE)
+		setmetatile (50, 33, 0x288, TRUE)
+		setmetatile (50, 34, 0x288, TRUE)
+		setmetatile (50, 35, 0x3FF, TRUE)
+		setobjectxyperm (11, 49, 48)
+	}
+}
 
+raw `
 @ -----------------------------------------------------
 
 #define LID_BOY 6

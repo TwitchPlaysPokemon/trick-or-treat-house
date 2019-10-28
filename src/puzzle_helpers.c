@@ -12,11 +12,14 @@
 #include "string_util.h"
 #include "text.h"
 #include "task.h"
+#include "trickhouse.h"
+#include "script.h"
 #include "pokemon_storage_system.h"
 #include "constants/flags.h"
 #include "constants/metatile_labels.h"
 #include "constants/songs.h"
 #include "constants/event_objects.h"
+#include "constants/map_groups.h"
 #include "constants/vars.h"
 #include "constants/species.h"
 
@@ -626,3 +629,16 @@ void MossdeepStealPokemon(struct ScriptContext *ctx)
 }
 
 #undef VAR_TRICK_STOLEN_MON 
+
+
+///////////////////////////////////////////////////////////////////////////////
+// Route 110 Cycling Maze
+// MAP_PUZZLE_ROUTE110
+
+void IsCurrentPuzzleCyclingRoad(struct ScriptContext *ctx)
+{
+	u16 currPuzzle = GetCurrentPuzzleMapId();
+	VarSet(VAR_RESULT, currPuzzle == MAP_PUZZLE_ROUTE110);
+}
+
+

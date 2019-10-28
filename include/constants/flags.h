@@ -567,7 +567,7 @@
 #define FLAG_HIDDEN_ITEM_LILYCOVE_CITY_0x24                  (FLAG_HIDDEN_ITEMS_START + 0x24)
 #define FLAG_HIDDEN_ITEM_LAVARIDGE_TOWN_0x25                 (FLAG_HIDDEN_ITEMS_START + 0x25)
 #define FLAG_HIDDEN_ITEM_FALLARBOR_TOWN_0x26                 (FLAG_HIDDEN_ITEMS_START + 0x26)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x27                         (FLAG_HIDDEN_ITEMS_START + 0x27)
+#define FLAG_ITEM_ROUTE_110_ITEMFINDER                       (FLAG_HIDDEN_ITEMS_START + 0x27)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x28                         (FLAG_HIDDEN_ITEMS_START + 0x28)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x29                         (FLAG_HIDDEN_ITEMS_START + 0x29)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x2A                         (FLAG_HIDDEN_ITEMS_START + 0x2A)
@@ -951,7 +951,7 @@
 #define FLAG_ITEM_ROUTE_106_PROTEIN                                 0x3EC
 #define FLAG_ITEM_ROUTE_109_PP_UP                                   0x3ED
 #define FLAG_ITEM_ROUTE_109_RARE_CANDY                              0x3EE
-#define FLAG_ITEM_ROUTE_110_ITEMFINDER                              0x3EF
+#define FLAG_UNUSED_0x3EF                                           0x3EF
 #define FLAG_ITEM_ROUTE_111_TM_37                                   0x3F0
 #define FLAG_ITEM_ROUTE_111_STARDUST                                0x3F1
 #define FLAG_ITEM_ROUTE_111_HP_UP                                   0x3F2

@@ -101,6 +101,15 @@ void RunPuzzleTeardownScript()
 
 ///////////////////////////////////////////////////////////////////////////////
 
+void CheckLastPuzzle(struct ScriptContext *ctx)
+{
+	u16 currPuzzle = GetCurrentPuzzleMapId();
+	if (currPuzzle == 0xFFFF) {
+		// Temporarily, loop the puzzles.
+		VarSet(VAR_CURRENT_PUZZLE, 0); //reset to 0
+	}
+}
+
 void ClearPuzzleEventData(struct ScriptContext *ctx)
 {
 	memset(gSaveBlock1Ptr->flags + 0x04, 0, 0x0A);

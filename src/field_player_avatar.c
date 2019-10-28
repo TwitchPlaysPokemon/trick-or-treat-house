@@ -2148,6 +2148,7 @@ bool32 sub_808D1E8(void)
 }
 
 static const u8 gUnknown_084975BC[] = {DIR_SOUTH, DIR_WEST, DIR_EAST, DIR_NORTH, DIR_SOUTH};
+extern void UpdateEventObjectZCoordAndPriority(struct EventObject *eventObj, struct Sprite *sprite);
 
 static void sub_808D1FC(u8 taskId)
 {
@@ -2204,6 +2205,7 @@ static void sub_808D1FC(u8 taskId)
                 sprite->oam.priority = data[6];
                 sprite->subpriority = data[7];
                 CameraObjectReset1();
+                UpdateEventObjectZCoordAndPriority(object, sprite);
                 DestroyTask(taskId);
             }
             break;

@@ -32,6 +32,7 @@ PuzzleDebug_Text_PuzzleSelect:
 PuzzleCommon_EventScript_IncrementPuzzle::
 	addvar VAR_CURRENT_PUZZLE, 1
 	setvar VAR_PUZZLE_STATE, 0
+	callnative CheckLastPuzzle
 	@ fallthrough
 PuzzleCommon_EventScript_ClearPuzzleData::
 	callnative ClearPuzzleEventData

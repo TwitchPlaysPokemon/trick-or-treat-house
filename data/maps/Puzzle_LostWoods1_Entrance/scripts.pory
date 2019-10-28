@@ -60,7 +60,7 @@ script Puzzle_LostWoods1_Wanderer4 {
 			"I thought maybe a battle would jog my\n"
 			"memory, but it only made me sad.$")
 	msgbox ("I think I've narrowed it down to one\n"
-			"of these too directions.\p"
+			"of these two directions.\p"
 			"But I'm a little scared to try one,\n"
 			"in case I end up back at that lamppost!$", MSGBOX_AUTOCLOSE)
 }

@@ -283,6 +283,19 @@
             "trainer_type": "0",
             "x": 49,
             "y": 33
+        },
+        {
+            "elevation": 4,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_SCROLL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 54,
+            "y": 48
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_110",
