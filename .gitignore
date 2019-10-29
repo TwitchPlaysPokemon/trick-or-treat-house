@@ -18,6 +18,7 @@
 sound/**/*.bin
 sound/songs/midi/*.s
 tools/agbcc
+tools/pgegen/pgegen
 *.map
 *.ld
 *.bat
@@ -25,6 +26,7 @@ tools/agbcc
 *.sa*
 Thumbs.db
 build/
+*.ini
 .DS_Store
 *.ddump
 .idea/

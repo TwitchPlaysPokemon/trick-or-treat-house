@@ -39,8 +39,8 @@
 #define SECRET_BASES_COUNT 20
 #define TV_SHOWS_COUNT 25
 #define POKE_NEWS_COUNT 16
-#define PC_ITEMS_COUNT 50
-#define BAG_ITEMS_COUNT 30
+#define PC_ITEMS_COUNT 1
+#define BAG_ITEMS_COUNT 79
 #define BAG_KEYITEMS_COUNT 30
 #define BAG_POKEBALLS_COUNT 16
 #define BAG_TMHM_COUNT 64
@@ -73,5 +73,15 @@
 
 #define OPTIONS_BATTLE_STYLE_SHIFT 0
 #define OPTIONS_BATTLE_STYLE_SET 1
+
+#define DIR_NONE       0
+#define DIR_SOUTH      1
+#define DIR_NORTH      2
+#define DIR_WEST       3
+#define DIR_EAST       4
+#define DIR_SOUTHWEST  5
+#define DIR_SOUTHEAST  6
+#define DIR_NORTHWEST  7
+#define DIR_NORTHEAST  8
 
 #endif // GUARD_CONSTANTS_GLOBAL_H

@@ -252,6 +252,22 @@ const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TrickDoorScrollRoo
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TrickDoorStone;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TrickDoorStoneRoom;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TrickDoorNorth;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_PlasmaKid;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Ghetsis;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Frogger;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_FroggerWalk;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Mermaid;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_MermaidWalk;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_MaskedBoy;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_FairyGirl;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_CorpseBride;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_HeroOfTime;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Skeleton;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Tarzan;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TwinsPlusle;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TwinsMinun;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Ghost;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Alien;
 
 const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] = {
     [EVENT_OBJ_GFX_BRENDAN_NORMAL] =           &gEventObjectGraphicsInfo_BrendanNormal,
@@ -500,6 +516,24 @@ const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] =
     [EVENT_OBJ_GFX_TRICK_DOOR_STONE] =         &gEventObjectGraphicsInfo_TrickDoorStone,
     [EVENT_OBJ_GFX_TRICK_DOOR_STONE_ROOM] =    &gEventObjectGraphicsInfo_TrickDoorStoneRoom,
     [EVENT_OBJ_GFX_TRICK_DOOR_NORTH] =         &gEventObjectGraphicsInfo_TrickDoorNorth,
+    
+    [EVENT_OBJ_GFX_TRICK_MASTER] =             &gEventObjectGraphicsInfo_Man1, //TODO
+    [EVENT_OBJ_GFX_PLASMA_KID] =               &gEventObjectGraphicsInfo_PlasmaKid,
+    [EVENT_OBJ_GFX_GHETSIS] =                  &gEventObjectGraphicsInfo_Ghetsis,
+    [EVENT_OBJ_GFX_FROGGER] =                  &gEventObjectGraphicsInfo_Frogger,
+    [EVENT_OBJ_GFX_FROGGER_WALKING] =          &gEventObjectGraphicsInfo_FroggerWalk,
+    [EVENT_OBJ_GFX_MERMAID] =                  &gEventObjectGraphicsInfo_Mermaid,
+    [EVENT_OBJ_GFX_MERMAID_WALKING] =          &gEventObjectGraphicsInfo_MermaidWalk,
+    [EVENT_OBJ_GFX_MASKED_BOY] =               &gEventObjectGraphicsInfo_MaskedBoy,
+    [EVENT_OBJ_GFX_FAIRY_GIRL] =               &gEventObjectGraphicsInfo_FairyGirl,
+    [EVENT_OBJ_GFX_CORPSE_BRIDE] =             &gEventObjectGraphicsInfo_CorpseBride,
+    [EVENT_OBJ_GFX_HERO_OF_TIME] =             &gEventObjectGraphicsInfo_HeroOfTime,
+    [EVENT_OBJ_GFX_SKELETON] =                 &gEventObjectGraphicsInfo_Skeleton,
+    [EVENT_OBJ_GFX_TARZAN] =                   &gEventObjectGraphicsInfo_Tarzan,
+    [EVENT_OBJ_GFX_TWINS_PLUSLE] =             &gEventObjectGraphicsInfo_TwinsPlusle,
+    [EVENT_OBJ_GFX_TWINS_MINUN] =              &gEventObjectGraphicsInfo_TwinsMinun,
+    [EVENT_OBJ_GFX_GHOST] =                    &gEventObjectGraphicsInfo_Ghost,
+    [EVENT_OBJ_GFX_ALIEN] =                    &gEventObjectGraphicsInfo_Alien,
 };
 
 const struct EventObjectGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

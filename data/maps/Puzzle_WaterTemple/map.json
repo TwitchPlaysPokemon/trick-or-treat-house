@@ -19,6 +19,46 @@
             "type": "hidden_item",
             "x": 47,
             "y": 20
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x02",
+            "item": "ITEM_FRESH_WATER",
+            "type": "hidden_item",
+            "x": 14,
+            "y": 41
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x03",
+            "item": "ITEM_FULL_HEAL",
+            "type": "hidden_item",
+            "x": 34,
+            "y": 14
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x04",
+            "item": "ITEM_ICE_HEAL",
+            "type": "hidden_item",
+            "x": 47,
+            "y": 40
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x05",
+            "item": "ITEM_ETHER",
+            "type": "hidden_item",
+            "x": 9,
+            "y": 16
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x06",
+            "item": "ITEM_SUPER_POTION",
+            "type": "hidden_item",
+            "x": 14,
+            "y": 26
         }
     ],
     "connections": null,
@@ -129,15 +169,15 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SWIMMER_F",
+            "graphics_id": "EVENT_OBJ_GFX_MERMAID",
             "movement_range_x": 0,
-            "movement_range_y": 8,
-            "movement_type": "MOVEMENT_TYPE_WALK_DOWN_AND_UP",
+            "movement_range_y": 6,
+            "movement_type": "MOVEMENT_TYPE_WALK_UP_AND_DOWN",
             "script": "Puzzle_WaterTemple_Trainer4",
-            "trainer_sight_or_berry_tree_id": "2",
+            "trainer_sight_or_berry_tree_id": "3",
             "trainer_type": "1",
             "x": 28,
-            "y": 27
+            "y": 34
         },
         {
             "elevation": 3,
@@ -154,12 +194,12 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_PUZZLE_ITEM_1",
+            "flag": "FLAG_PUZZLE_ITEM_A",
             "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Puzzle_WaterTemple_ItemBall1",
+            "script": "Common_EventScript_PickupRareItem",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 43,
@@ -242,6 +282,45 @@
             "trainer_type": "0",
             "x": 27,
             "y": 12
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_41",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 14,
+            "y": 12
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_42",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Puzzle_WaterTemple_ItemBall2",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 40,
+            "y": 8
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_44",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Puzzle_WaterTemple_ItemBall4",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 47,
+            "y": 13
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_128",

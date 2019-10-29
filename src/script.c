@@ -11,12 +11,12 @@
 extern const u8* gUnknown_020375C0;
 
 // ewram bss
-static u8 sScriptContext1Status;
-static u32 sUnusedVariable1;
-static struct ScriptContext sScriptContext1;
-static u32 sUnusedVariable2;
-static struct ScriptContext sScriptContext2;
-static bool8 sScriptContext2Enabled;
+IWRAM_DATA u8 sScriptContext1Status;
+IWRAM_DATA u32 sUnusedVariable1;
+IWRAM_DATA struct ScriptContext sScriptContext1;
+IWRAM_DATA u32 sUnusedVariable2;
+IWRAM_DATA struct ScriptContext sScriptContext2;
+IWRAM_DATA bool8 sScriptContext2Enabled;
 
 extern ScrCmdFunc gScriptCmdTable[];
 extern ScrCmdFunc gScriptCmdTableEnd[];

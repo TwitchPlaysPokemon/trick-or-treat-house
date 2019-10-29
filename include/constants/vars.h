@@ -77,18 +77,18 @@
 #define VAR_PUZZLE_1E                        0x403E
 #define VAR_PUZZLE_1F                        0x403F
 // temporary aliases
-#define VAR_TRICK_HOUSE_PUZZLE_7_STATE       0x4020
-#define VAR_TRICK_HOUSE_PUZZLE_8_STATE       0x4020
-#define VAR_TRICK_HOUSE_PUZZLE_7_STATE_2     0x4021
+#define VAR_TRICK_HOUSE_PUZZLE_7_STATE       VAR_PUZZLE_00
+#define VAR_TRICK_HOUSE_PUZZLE_8_STATE       VAR_PUZZLE_00
+#define VAR_TRICK_HOUSE_PUZZLE_7_STATE_2     VAR_PUZZLE_01
 
 // general purpose vars
 #define VAR_CURRENT_PUZZLE                   0x4040 
 #define VAR_PUZZLE_STATE                     0x4041 // 0 = before puzzle, 1 = puzzle underway, 2 = after puzzle
-#define VAR_UNUSED_0x403D                    0x4042
+#define VAR_INTRO_COUNTER                    0x4042 // 0 = before intro, 1 = outside intro, 2 = inside intro 1, 
 #define VAR_UNUSED_0x403E                    0x4043
 #define VAR_RECYCLE_GOODS                    0x4044
 #define VAR_REPEL_STEP_COUNT                 0x4045
-#define VAR_ICE_STEP_COUNT                   0x4046
+#define VAR_STEP_TRIGGER                     0x4046 // Used for the ice cracking puzzle, the mach bike floor cracking puzzle, and npc triggers
 #define VAR_STARTER_MON                      0x4047
 #define VAR_MIRAGE_RND_H                     0x4048
 #define VAR_MIRAGE_RND_L                     0x4049
@@ -114,7 +114,7 @@
 #define VAR_SHOULD_END_UNUSUAL_WEATHER       0x405D
 #define VAR_FARAWAY_ISLAND_STEP_COUNTER      0x405E
 #define VAR_ALTERING_CAVE_WILD_SET           0x405F
-#define VAR_UNUSED_0x403F                    0x4060
+#define VAR_TRICK_MASTER_INTRO               0x4060
 #define VAR_DAYS                             0x4061
 #define VAR_FANCLUB_UNKNOWN_1                0x4062
 #define VAR_FANCLUB_UNKNOWN_2                0x4063
@@ -205,7 +205,7 @@
 #define VAR_CABLE_CAR_STATION_STATE          0x40B8
 #define VAR_SAFARI_ZONE_STATE                0x40B9
 #define VAR_UNUSED_0x40A8                    0x40BA // Unused Var
-#define VAR_CYCLING_CHALLENGE_STATE          0x40BB
+#define VAR_UNUSED_0x40A9                    0x40BB
 #define VAR_SLATEPORT_MUSEUM_1F_STATE        0x40BC
 #define VAR_WEATHER_INSTITUTE_STATE          0x40BD
 #define VAR_PORTHOLE_STATE                   0x40BE
@@ -300,6 +300,12 @@
 #define VAR_MON_BOX_POS               0x8013
 #define VAR_UNUSED_0x8014             0x8014
 #define VAR_TRAINER_BATTLE_OPPONENT_A 0x8015 // Alias of gTrainerBattleOpponent_A
+#define VAR_INTERACT_X                0x8016
+#define VAR_INTERACT_Y                0x8017
+#define VAR_METATILE_X                0x8018
+#define VAR_METATILE_Y                0x8019
+#define VAR_LAST_WARP_ID              0x801A
+
 #define THIS_EVENT                    0x800F //alias to VAR_LAST_TALKED
 
 #endif // GUARD_CONSTANTS_VARS_H

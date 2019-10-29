@@ -10,7 +10,7 @@
 		]
 	},
 	{
-		"class": "SWIMMER_M",
+		"class": "FROGGER",
 		"music": "SWIMMER",
 		"name": "LEONARDO",
 		"party": [
@@ -21,7 +21,7 @@
 		]
 	},
 	{
-		"class": "SWIMMER_M",
+		"class": "FROGGER",
 		"music": "SWIMMER",
 		"name": "REED",
 		"party": [
@@ -36,7 +36,7 @@
 		]
 	},
 	{
-		"class": "SWIMMER_F",
+		"class": "MERMAID",
 		"music": "SWIMMER",
 		"female": true,
 		"name": "TINA",

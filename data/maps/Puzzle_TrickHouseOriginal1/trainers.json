@@ -1,0 +1,48 @@
+[
+	{
+		"class": "LASS",
+		"music": "FEMALE",
+		"female": true,
+		"name": "SALLY",
+		"party": [
+			{
+				"species": "SPECIES_ODDISH",
+				"level": 25
+			}
+		]
+	},
+	{
+		"class": "YOUNGSTER",
+		"name": "EDDIE",
+		"party": [
+			{
+				"species": "SPECIES_ZIGZAGOON",
+				"level": 24
+			},
+			{
+				"species": "SPECIES_ZIGZAGOON",
+				"level": 26
+			}
+		]
+	},
+	{
+		"class": "LASS",
+		"music": "FEMALE",
+		"female": true,
+		"name": "ROBIN",
+		"party": [
+			{
+				"species": "SPECIES_SKITTY",
+				"level": 24
+			},
+			{
+				"species": "SPECIES_SHROOMISH",
+				"level": 24
+			},
+			{
+				"species": "SPECIES_MARILL",
+				"level": 24
+			}
+		]
+	}
+]

@@ -309,6 +309,8 @@ extern const u8 gText_Birch_MainSpeech[];
 extern const u8 gText_Birch_AndYouAre[];
 extern const u8 gText_Birch_BoyOrGirl[];
 extern const u8 gText_Birch_WhatsYourName[];
+extern const u8 gText_Birch_ControlBoy[];
+extern const u8 gText_Birch_ControlGirl[];
 extern const u8 gText_Birch_SoItsPlayer[];
 extern const u8 gText_Birch_YourePlayer[];
 extern const u8 gText_Birch_AreYouReady[];
@@ -576,8 +578,12 @@ extern const u8 gText_Slash[];
 
 extern const u8 gText_99TimesPlus[];
 extern const u8 gText_1MinutePlus[];
+extern const u8 gText_3MinutePlus[];
 extern const u8 gText_SpaceSeconds[];
 extern const u8 gText_SpaceTimes[];
+extern const u8 gText_WayTooLong1[];
+extern const u8 gText_WayTooLong2[];
+extern const u8 gText_WayTooLong3[];
 
 extern const u8 gText_BigGuy[];
 extern const u8 gText_BigGirl[];
@@ -2082,7 +2088,9 @@ extern const u8 gText_MaleSymbol4[];
 extern const u8 gText_FemaleSymbol4[];
 extern const u8 gText_GenderlessSymbol[];
 extern const u8 gText_NewLine2[];
+extern const u8 gText_The[];
 extern const u8 gText_And[];
+extern const u8 gText_MoreItems[];
 extern const u8 gText_One[];
 extern const u8 gText_Exit4[];
 extern const u8 gText_Lv[];
@@ -2788,5 +2796,11 @@ extern const u8 gText_Toughness[];
 extern const u8 gText_Smartness[];
 extern const u8 gText_Cuteness[];
 extern const u8 gText_Beauty3[];
+
+extern const u8 gText_Num1[];
+extern const u8 gText_Num2[];
+extern const u8 gText_Num3[];
+extern const u8 gText_Num4[];
+extern const u8 gText_Num5[];
 
 #endif // GUARD_STRINGS_H

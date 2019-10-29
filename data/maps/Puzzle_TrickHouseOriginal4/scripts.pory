@@ -1,0 +1,71 @@
+raw `
+Puzzle_TrickHouseOriginal4_MapScripts:: @ 826C860
+	puzzle_info Puzzle_TrickHouseOriginal4_Name, Puzzle_TrickHouseOriginal4_Author
+	puzzle_custom_intro Puzzle_TrickHouseOriginal4_Intro
+	puzzle_quip Puzzle_TrickHouseOriginal4_Quip
+	puzzle_item_prereqs Puzzle_TrickHouseOriginal4_PrereqItems
+	.byte 0
+
+Puzzle_TrickHouseOriginal4_Name:
+	.string "Boulder Room Bluff$"
+Puzzle_TrickHouseOriginal4_Author:
+	.string "Game Freak$"
+Puzzle_TrickHouseOriginal4_Intro:
+	.string "You're good at these puzzles, aren't you?\p"
+	.string "This next puzzle is yet another classic\n"
+	.string "I made in my youth.\p"
+	.string "The boulders were a bear to bring\n"
+	.string "into the basement, but it bore fruit.\p"
+	.string "Good luck! Wahahahaha!$"
+Puzzle_TrickHouseOriginal4_Quip:
+	.string "Wew! That was quite the workout!\p"
+	.string "No onder people usually get their\n"
+	.string "{POKEMON} to do it!$"
+Puzzle_TrickHouseOriginal4_PrereqItems:
+	.2byte ITEM_STRENGTH_ITEM
+	.2byte 0
+
+@ -----------------------------------------------------
+
+Puzzle_TrickHouseOriginal4_EventScript_26C87E:: @ 826C87E
+	trainerbattle_single TRAINER_01, Puzzle_TrickHouseOriginal4_Text_26C92D, Puzzle_TrickHouseOriginal4_Text_26C96E
+	msgbox Puzzle_TrickHouseOriginal4_Text_26C9A2, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseOriginal4_Text_26C92D: @ 826C92D
+	.string "It's too much bother to think this out.\n"
+	.string "I only wanted to battle!$"
+Puzzle_TrickHouseOriginal4_Text_26C96E: @ 826C96E
+	.string "Even though I lost, I still like battling\n"
+	.string "the best!$"
+Puzzle_TrickHouseOriginal4_Text_26C9A2: @ 826C9A2
+	.string "Wouldn't you agree? You would go\n"
+	.string "anywhere if TRAINERS were there.$"
+
+
+Puzzle_TrickHouseOriginal4_EventScript_26C895:: @ 826C895
+	trainerbattle_single TRAINER_02, Puzzle_TrickHouseOriginal4_Text_26C9E4, Puzzle_TrickHouseOriginal4_Text_26CA20
+	msgbox Puzzle_TrickHouseOriginal4_Text_26CA53, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseOriginal4_Text_26C9E4: @ 826C9E4
+	.string "Heh! Boulders like this, I can brush\n"
+	.string "aside with one finger!$"
+Puzzle_TrickHouseOriginal4_Text_26CA20: @ 826CA20
+	.string "I can push boulders, but I can't solve\n"
+	.string "the puzzle…$"
+Puzzle_TrickHouseOriginal4_Text_26CA53: @ 826CA53
+	.string "It's not good enough to be brawny…\n"
+	.string "You have to use your head. Be brainy!$"
+
+
+Puzzle_TrickHouseOriginal4_EventScript_26C8AC:: @ 826C8AC
+	trainerbattle_single TRAINER_03, Puzzle_TrickHouseOriginal4_Text_26CA9C, Puzzle_TrickHouseOriginal4_Text_26CACB
+	msgbox Puzzle_TrickHouseOriginal4_Text_26CAD1, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseOriginal4_Text_26CA9C: @ 826CA9C
+	.string "The TRICK HOUSE is getting trickier,\n"
+	.string "isn't it?$"
+Puzzle_TrickHouseOriginal4_Text_26CACB: @ 826CACB
+	.string "Aaak!$"
+Puzzle_TrickHouseOriginal4_Text_26CAD1: @ 826CAD1
+	.string "Has anyone made it to the end?$"
+`

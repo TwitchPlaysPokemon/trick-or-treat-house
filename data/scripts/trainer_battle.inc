@@ -47,6 +47,16 @@ EventScript_DoTainerBattle:: @ 82713C2
 	trainerbattlebegin
 	gotopostbattlescript
 
+EventScript_DoDoubleTainerBattle:: @ 82713C2
+	applymovement VAR_LAST_TALKED, Movement_RevealTrainer
+	waitmovement 0
+	special HasEnoughMonsForDoubleBattle
+	compare VAR_RESULT, 0
+	goto_if_ne EventScript_NoDoubleTrainerBattle
+	special SetUpTrainerEncounterMusic
+	trainerbattlebegin
+	gotopostbattlescript
+
 EventScript_TryDoRematchBattle:: @ 82713D1
 	call EventScript_RevealTrainer
 	specialvar VAR_RESULT, IsTrainerReadyForRematch

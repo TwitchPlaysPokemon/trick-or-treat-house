@@ -1,0 +1,23 @@
+raw `
+Puzzle_Desert_Oasis_MapScripts::
+	puzzle_info Puzzle_Desert_Oasis_Name, Puzzle_Desert_Oasis_Author
+	puzzle_adjective Puzzle_Desert_Oasis_Adjective
+	puzzle_quip Puzzle_Desert_Oasis_Quip
+	puzzle_item_prereqs Puzzle_Desert_Oasis_PrereqItems
+	.byte 0
+
+Puzzle_Desert_Oasis_Name:
+	.string "Desert$"
+Puzzle_Desert_Oasis_Author:
+	.string "Tustin2121$"
+Puzzle_Desert_Oasis_Adjective:
+	.string "dry and arid$"
+Puzzle_Desert_Oasis_Quip:
+	.string "$"
+.align 2
+Puzzle_Desert_Oasis_PrereqItems:
+	.2byte ITEM_SURF_ITEM
+	.2byte 0
+
+@ -----------------------------------------------------
+`

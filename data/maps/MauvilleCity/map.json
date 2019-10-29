@@ -77,7 +77,7 @@
         },
         {
             "direction": "down",
-            "map": "MAP_ROUTE110",
+            "map": "MAP_PUZZLE_ROUTE110",
             "offset": 0
         },
         {

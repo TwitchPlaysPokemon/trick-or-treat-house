@@ -290,6 +290,35 @@ const u32 gTrainerPalette_RubySapphireBrendan[] = INCBIN_U32("graphics/trainers/
 const u32 gTrainerFrontPic_RubySapphireMay[] = INCBIN_U32("graphics/trainers/front_pics/ruby_sapphire_may_front_pic.4bpp.lz");
 const u32 gTrainerPalette_RubySapphireMay[] = INCBIN_U32("graphics/trainers/palettes/ruby_sapphire_may.gbapal.lz");
 
+const u32 gTrainerFrontPic_PlasmaKid[] = INCBIN_U32("graphics/trainers/front_pics/plasma_kid_front_pic.4bpp.lz");
+const u32 gTrainerFrontPic_Ghetsis[] = INCBIN_U32("graphics/trainers/front_pics/ghetsis_front_pic.4bpp.lz");
+const u32 gTrainerFrontPic_Frogger[] = INCBIN_U32("graphics/trainers/front_pics/frogger_front_pic.4bpp.lz");
+const u32 gTrainerFrontPic_Mermaid[] = INCBIN_U32("graphics/trainers/front_pics/mermaid_front_pic.4bpp.lz");
+const u32 gTrainerFrontPic_MaskedBoy[] = INCBIN_U32("graphics/trainers/front_pics/masked_boy_front_pic.4bpp.lz");
+const u32 gTrainerFrontPic_FairyGirl[] = INCBIN_U32("graphics/trainers/front_pics/fairy_girl_front_pic.4bpp.lz");
+const u32 gTrainerFrontPic_CorpseBride[] = INCBIN_U32("graphics/trainers/front_pics/corpse_bride_front_pic.4bpp.lz");
+const u32 gTrainerFrontPic_HeroOfTime[] = INCBIN_U32("graphics/trainers/front_pics/hero_of_time_front_pic.4bpp.lz");
+const u32 gTrainerFrontPic_Skeleton[] = INCBIN_U32("graphics/trainers/front_pics/skeleton_front_pic.4bpp.lz");
+const u32 gTrainerFrontPic_Tarzan[] = INCBIN_U32("graphics/trainers/front_pics/tarzan_front_pic.4bpp.lz");
+const u32 gTrainerFrontPic_TwinsPM[] = INCBIN_U32("graphics/trainers/front_pics/twins_pm_front_pic.4bpp.lz");
+const u32 gTrainerFrontPic_Alien[] = INCBIN_U32("graphics/trainers/front_pics/alien_front_pic.4bpp.lz");
+
+const u32 gTrainerPalette_PlasmaKid[] = INCBIN_U32("graphics/trainers/palettes/plasma_kid.gbapal.lz");
+const u32 gTrainerPalette_Ghetsis[] = INCBIN_U32("graphics/trainers/palettes/ghetsis.gbapal.lz");
+const u32 gTrainerPalette_Frogger[] = INCBIN_U32("graphics/trainers/palettes/frogger.gbapal.lz");
+const u32 gTrainerPalette_Mermaid[] = INCBIN_U32("graphics/trainers/palettes/mermaid.gbapal.lz");
+const u32 gTrainerPalette_MaskedBoy[] = INCBIN_U32("graphics/trainers/palettes/masked_boy.gbapal.lz");
+const u32 gTrainerPalette_FairyGirl[] = INCBIN_U32("graphics/trainers/palettes/fairy_girl.gbapal.lz");
+const u32 gTrainerPalette_CorpseBride[] = INCBIN_U32("graphics/trainers/palettes/corpse_bride.gbapal.lz");
+const u32 gTrainerPalette_HeroOfTime[] = INCBIN_U32("graphics/trainers/palettes/hero_of_time.gbapal.lz");
+const u32 gTrainerPalette_Skeleton[] = INCBIN_U32("graphics/trainers/palettes/skeleton.gbapal.lz");
+const u32 gTrainerPalette_Tarzan[] = INCBIN_U32("graphics/trainers/palettes/tarzan.gbapal.lz");
+const u32 gTrainerPalette_TwinsPM[] = INCBIN_U32("graphics/trainers/palettes/twins_pm.gbapal.lz");
+const u32 gTrainerPalette_Alien[] = INCBIN_U32("graphics/trainers/palettes/aliengirl.gbapal.lz");
+
+
+
+
 const u8 gTrainerBackPic_Brendan[] = INCBIN_U8("graphics/trainers/back_pics/brendan_back_pic.4bpp");
 const u8 gTrainerBackPic_May[] = INCBIN_U8("graphics/trainers/back_pics/may_back_pic.4bpp");
 const u8 gTrainerBackPic_Red[] = INCBIN_U8("graphics/trainers/back_pics/red_back_pic.4bpp");
@@ -301,3 +330,5 @@ const u8 gTrainerBackPic_Steven[] = INCBIN_U8("graphics/trainers/back_pics/steve
 
 const u32 gTrainerBackPicPalette_Red[] = INCBIN_U32("graphics/trainers/palettes/red_back_pic.gbapal.lz");
 const u32 gTrainerBackPicPalette_Leaf[] = INCBIN_U32("graphics/trainers/palettes/leaf_back_pic.gbapal.lz");
+const u32 gTrainerBackPicPalette_Brendan[] = INCBIN_U32("graphics/trainers/palettes/brendan_back.gbapal.lz");
+const u32 gTrainerBackPicPalette_May[] = INCBIN_U32("graphics/trainers/palettes/may_back.gbapal.lz");

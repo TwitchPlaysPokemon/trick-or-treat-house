@@ -55,7 +55,7 @@ struct BagMenuStruct
     u8 unk828;
     u8 numItemStacks[POCKETS_COUNT];
     u8 numShownItems[6];
-    s16 unk834;
+    s16 substate;
     u8 filler4[0xE];
     u8 pocketNameBuffer[32][32];
     u8 filler2[4];

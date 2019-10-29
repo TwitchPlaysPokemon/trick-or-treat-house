@@ -13,6 +13,7 @@
 #include "task.h"
 #include "text.h"
 #include "script.h"
+#include "trickhouse.h"
 #include "constants/layouts.h"
 #include "constants/region_map_sections.h"
 #include "constants/weather.h"
@@ -152,7 +153,6 @@ void HideMapNamePopUpWindow(void)
     }
 }
 
-extern const u16 gPuzzleList[];
 extern const u8 PuzzleCommon_Text_UntitledPuzzleName[];
 void ShowMapNamePopUpWindow(void)
 {
@@ -161,7 +161,7 @@ void ShowMapNamePopUpWindow(void)
     u8 x;
     const u8* mapDisplayHeaderSource;
     
-    u16 currPuzzle = gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
+    u16 currPuzzle = GetCurrentPuzzleMapId();
     const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_NAME);
     if (str == NULL) 
         str = PuzzleCommon_Text_UntitledPuzzleName;

@@ -50,6 +50,15 @@ struct BackupMapLayout
     u16 *map;
 };
 
+enum
+{
+    TrainerType_None = 0,
+    TrainerType_Normal = 1,
+    TrainerType_SeeAllDirs = 3,
+    TrainerType_BumpToInteract = 5,
+    TrainerType_KeepLoaded = 6,
+};
+
 struct EventObjectTemplate
 {
     /*0x00*/ u8 localId;
@@ -80,6 +89,7 @@ struct CoordEvent
 {
     s16 x, y;
     u8 elevation;
+    u8 npcTrigger:1;
     u16 trigger;
     u16 index;
     u8 filler_A[0x2];
@@ -182,6 +192,7 @@ struct EventObject
              u32 disableJumpLandingGroundEffect:1;
              u32 fixedPriority:1;
              u32 unk3_3:1;
+             u32 isStandingOnTrigger:1;
              int :0;
     /*0x04*/ u8 spriteId:7;
     /*0x05*/ u16 graphicsId:9;
@@ -268,18 +279,18 @@ enum
     ACRO_BIKE_STATE6,
 };
 
-enum
-{
-    DIR_NONE,
-    DIR_SOUTH,
-    DIR_NORTH,
-    DIR_WEST,
-    DIR_EAST,
-    DIR_SOUTHWEST,
-    DIR_SOUTHEAST,
-    DIR_NORTHWEST,
-    DIR_NORTHEAST,
-};
+// enum
+// {
+//     DIR_NONE,
+//     DIR_SOUTH,
+//     DIR_NORTH,
+//     DIR_WEST,
+//     DIR_EAST,
+//     DIR_SOUTHWEST,
+//     DIR_SOUTHEAST,
+//     DIR_NORTHWEST,
+//     DIR_NORTHEAST,
+// };
 
 enum
 {

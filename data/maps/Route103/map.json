@@ -21,7 +21,7 @@
     {
       "direction": "right",
       "offset": -60,
-      "map": "MAP_ROUTE110"
+      "map": "MAP_PUZZLE_ROUTE110"
     }
   ],
   "object_events": [

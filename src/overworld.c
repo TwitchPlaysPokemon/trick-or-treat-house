@@ -449,7 +449,7 @@ static void sub_8084788(void)
 {
     FlagClear(FLAG_SYS_SAFARI_MODE);
     ChooseAmbientCrySpecies();
-    ResetCyclingRoadChallengeData();
+    // ResetCyclingRoadChallengeData();
     UpdateLocationHistoryForRoamer();
     RoamerMoveToOtherLocationSet();
 }
@@ -575,6 +575,7 @@ void ApplyCurrentWarp(void)
     gSaveBlock1Ptr->location = sWarpDestination;
     gFixedDiveWarp = sDummyWarpData;
     gFixedHoleWarp = sDummyWarpData;
+    gSpecialVar_LastWarpId = sWarpDestination.warpId;
 }
 
 static void ClearDiveAndHoleWarps(void)
@@ -827,13 +828,14 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     if (gMapHeader.regionMapSectionId != 0x3A)
         sub_8085810();
 
+    FlagClear(FLAG_PREVENT_EVENT_OBJECT_DESPAWN);
     ApplyCurrentWarp();
     RunPuzzleTeardownScript();
     LoadCurrentMapData();
     LoadEventObjTemplatesFromHeader();
     TrySetMapSaveWarpStatus();
     ClearTempFieldEventData();
-    ResetCyclingRoadChallengeData();
+    // ResetCyclingRoadChallengeData();
     RestartWildEncounterImmunitySteps();
     TryUpdateRandomTrainerRematches(mapGroup, mapNum);
     DoTimeBasedEvents();
@@ -866,6 +868,7 @@ static void mli0_load_map(u32 a1)
     bool8 isOutdoors;
     bool8 isIndoors;
 
+    FlagClear(FLAG_PREVENT_EVENT_OBJECT_DESPAWN);
     RunPuzzleTeardownScript();
     LoadCurrentMapData();
     if (!(sUnknown_020322D8 & 1))
@@ -884,7 +887,7 @@ static void mli0_load_map(u32 a1)
     sub_80EB218();
     TrySetMapSaveWarpStatus();
     ClearTempFieldEventData();
-    ResetCyclingRoadChallengeData();
+    // ResetCyclingRoadChallengeData();
     RestartWildEncounterImmunitySteps();
     TryUpdateRandomTrainerRematches(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
     if (a1 != 1)
@@ -1072,6 +1075,8 @@ void Overworld_PlaySpecialMapMusic(void)
             music = MUS_DEEPDEEP;
         else if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))
             music = MUS_NAMINORI;
+        else if (VarGet(VAR_INTRO_COUNTER) < 2)
+            music = MUS_B_TUBE;
     }
 
     if (music != GetCurrentMapMusic())
@@ -1486,7 +1491,7 @@ void CB2_LoadMap(void)
     ScriptContext1_Init();
     ScriptContext2_Disable();
     SetMainCallback1(NULL);
-    SetMainCallback2(c2_change_map);
+    SetMainCallback2(CB2_DoChangeMap);
     gMain.savedCallback = CB2_LoadMap2;
 }
 

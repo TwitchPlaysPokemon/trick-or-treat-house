@@ -863,3 +863,37 @@ gTileset_WaterfallCave::
 	.4byte gMetatiles_WaterfallCave
 	.4byte gMetatileAttributes_WaterfallCave
 	.4byte InitTilesetAnim_Pacifidlog
+
+	.align 2
+gTileset_Autumn::
+	.byte TRUE @ is compressed
+	.byte FALSE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Autumn
+	.4byte gTilesetPalettes_Autumn
+	.4byte gMetatiles_Autumn
+	.4byte gMetatileAttributes_Autumn
+	.4byte InitTilesetAnim_General
+
+	.align 2
+gTileset_TrihardPokemonCenter:: @ 83DF8B4
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary tileset
+	.2byte 0 @ padding
+	.4byte gTilesetTiles_TrihardPokemonCenter
+	.4byte gTilesetPalettes_TrihardPokemonCenter
+	.4byte gMetatiles_TrihardPokemonCenter
+	.4byte gMetatileAttributes_TrihardPokemonCenter
+	.4byte NULL @ animation callback
+	.4byte NULL
+
+	.align 2
+gTileset_Desert::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Desert
+	.4byte gTilesetPalettes_Desert
+	.4byte gMetatiles_Desert
+	.4byte gMetatileAttributes_Desert
+	.4byte NULL

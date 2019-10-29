@@ -1,0 +1,314 @@
+raw `
+TrickTreat_PetalburgCity_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, TrickTreat_PetalburgCity_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrickTreat_PetalburgCity_FrameTable
+	puzzle_info TrickTreat_PetalburgCity_Name, TrickTreat_PetalburgCity_Author
+	puzzle_custom_intro TrickTreat_PetalburgCity_Intro
+	puzzle_quip TrickTreat_PetalburgCity_Quip
+	puzzle_metavars TrickTreat_PetalburgCity_Variables
+	.byte 0
+
+TrickTreat_PetalburgCity_Name:
+	.string "Peppermints in Petalburg$"
+TrickTreat_PetalburgCity_Author:
+	.string "Tustin2121$"
+TrickTreat_PetalburgCity_Intro:
+	.string "{YOUNGSTER}: {PLAYER}! How's it going?\p"
+	.string "Oh, I'm not here to introduce a puzzle\n"
+	.string "or anything. How about a bit of a break?\p"
+	.string "See, me and the others figured out how\n"
+	.string "to make the door point to places.\p"
+	.string "And the TRICK MASTER seems to be off\n"
+	.string "somewhere else right now…\p"
+	.string "So… we pointed the door to Petalburg!\n"
+	.string "We're gonna go Trick or Treating there!\p"
+	.string "Com'on! It'll be fun!$"
+TrickTreat_PetalburgCity_Quip:
+	.string "{YOUNGSTER}: Apparently the TRICK MASTER\n"
+	.string "was too caught up in other people's\l"
+	.string "puzzles to notice our absence…\p"
+	.string "Time for more puzzles then!$"
+.align 2
+TrickTreat_PetalburgCity_Variables:
+	.2byte VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_YOUNGSTER
+	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_YOUNGSTER
+	.2byte 0
+
+TrickTreat_PetalburgCity_FrameTable:
+	map_script_2 VAR_PUZZLE_00, 0, TrickTreat_PetalburgCity_Introduction
+	.2byte 0
+
+@ -----------------------------------------------------
+#define METATILE_DoorOff 0x021
+`
+
+script TrickTreat_PetalburgCity_OnTransition {
+	if (flag(FLAG_PUZZLE_23)) { setmetatile (30, 24, METATILE_DoorOff, TRUE) }
+	if (flag(FLAG_PUZZLE_24)) { setmetatile (17,  5, METATILE_DoorOff, TRUE) }
+	if (flag(FLAG_PUZZLE_25)) { setmetatile (20, 19, METATILE_DoorOff, TRUE) }
+	if (var(VAR_PUZZLE_00) == 0) {
+		setobjectxyperm (12, 31, 10)
+		setflag (FLAG_HIDE_MAP_NAME_POPUP)
+	}
+	if (var(VAR_METATILE_X) > 0) {
+		setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
+	}
+}
+
+script TrickTreat_PetalburgCity_Introduction {
+	lock
+	setvar (VAR_PUZZLE_00, 1)
+	setvar (THIS_EVENT, 12)
+	applymovement (THIS_EVENT, Common_Movement_WalkInPlaceLeft)
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceRight)
+	waitmovement (0)
+	msgbox ("{YOUNGSTER}: Alright, looks like Trick\n"
+			"or Treating is still going on here.\p"
+			"If there's any houses with their light\n"
+			"on, go knock on those doors. They'll\l"
+			"be giving out candy.\p"
+			"The {POKEMON} CENTER and MART also\n"
+			"give out candy. And don't forget to\l"
+			"check the GYM!\p"
+			"And watch out for trainers, of course!\p"
+			"I'll be over here by the STONE DOOR\n"
+			"when you've hit everything!$")
+	closemessage
+	applymovement (THIS_EVENT, TrickTreat_PetalburgCity_Introduction_Movement)
+	waitmovement (0)
+	setobjectxy (THIS_EVENT, 41, 17)
+	setobjectxyperm (THIS_EVENT, 41, 17)
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceDown)
+	clearflag (FLAG_HIDE_MAP_NAME_POPUP)
+	release
+	special (ShowMapNamePopup)
+}
+raw `
+TrickTreat_PetalburgCity_Introduction_Movement:
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+`
+
+# -----------------------------------------------------
+
+script TrickTreat_PetalburgCity_GymSign {
+	msgbox ("PETALBURG CITY POKéMON GYM\n"
+			"LEADER: NORMAN\l"
+			"“A man in pursuit of power!”$", MSGBOX_SIGN)
+}
+
+script TrickTreat_PetalburgCity_CitySign {
+	msgbox ("PETALBURG CITY\n"
+			"“Where people mingle with nature.”$", MSGBOX_SIGN)
+}
+
+script TrickTreat_PetalburgCity_WallySign {
+	msgbox ("WALLY'S HOUSE$", MSGBOX_SIGN)
+}
+
+script TrickTreat_PetalburgCity_EventScript_Lass {
+	msgbox ("I got a bunch of candy from the CENTER!\n"
+			"How much did you get?$", MSGBOX_NPC)
+}
+
+script TrickTreat_PetalburgCity_EventScript_Boy {
+	msgbox ("Twick or Tweat!$", MSGBOX_NPC)
+}
+
+# -----------------------------------------------------
+
+script TrickTreat_PetalburgCity_SetDoorGlowOff {
+	setmetatile (VAR_METATILE_X, VAR_METATILE_Y, METATILE_DoorOff, TRUE)
+	special (DrawWholeMapView)
+	delay (6)
+	return
+}
+
+script TrickTreat_PetalburgCity_CandyGiver_Nurse {
+	lock
+	faceplayer
+	msgbox ("Happy Halloween!\n"
+			"Please take some candy!$")
+	giveitem_std (ITEM_POTION, 2)
+	msgbox ("The {POKEMON} CENTER is always there\n"
+			"for trainers everywhere.\p"
+			"Have a good night!$")
+	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
+	setflag (FLAG_PUZZLE_20)
+	release
+}
+
+script TrickTreat_PetalburgCity_CandyGiver_Mart {
+	lock
+	faceplayer
+	msgbox ("Trick or Treat!\n"
+			"Please take some candy!$")
+	giveitem_std (ITEM_AWAKENING, 2)
+	msgbox ("Be sure to drop by the MART for all your\n"
+			"{POKEMON} supply needs!\p"
+			"Have a good night!$")
+	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
+	setflag (FLAG_PUZZLE_21)
+	release
+}
+
+script TrickTreat_PetalburgCity_CandyGiver_Norman {
+	lock
+	faceplayer
+	msgbox ("Trick or Treat!\p"
+			"But I'm going with trick!\n"
+			"Are you worthy of this candy?$")
+	trainerbattle_no_intro (TRAINER_01, 
+			"It seems that you are worthy then.$")
+	msgbox ("Maybe I'll see you in my gym\n"
+			"for a badge in near the future.\p"
+			"But for now, this'll have to do.$")
+	giveitem_std (ITEM_MAX_ETHER, 1)
+	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
+	setflag (FLAG_PUZZLE_22)
+	release
+}
+
+script TrickTreat_PetalburgCity_CandyGiver_Youngster {
+	lock
+	call (TrickTreat_PetalburgCity_SetDoorGlowOff)
+	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
+	msgbox ("Trick or Treat!\p"
+			"I'll trick you into a battle for my\n"
+			"hard-won candy!$")
+	trainerbattle_no_intro (TRAINER_02, 
+			"Wow, alright. You win.$")
+	msgbox ("Do you know how hard it was to win\n"
+			"these off Norman? Sigh. Here.$")
+	giveitem_std (ITEM_SUPER_POTION, 2)
+	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
+	setflag (FLAG_PUZZLE_23)
+	release
+}
+
+script TrickTreat_PetalburgCity_CandyGiver_WallysHouse {
+	lock
+	call (TrickTreat_PetalburgCity_SetDoorGlowOff)
+	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
+	msgbox ("Trick or Treat!\p"
+			"Oh! You're WALLY's friend! Let's see\n"
+			"if you're as good as he says you are!$")
+	trainerbattle_no_intro (TRAINER_03, 
+			"Splendid! Splendid!$")
+	msgbox ("Here's something healthy for winning!$")
+	giveitem_std (ITEM_HEAL_POWDER, 2)
+	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
+	setflag (FLAG_PUZZLE_24)
+	release
+}
+
+script TrickTreat_PetalburgCity_CandyGiver_House {
+	lock
+	call (TrickTreat_PetalburgCity_SetDoorGlowOff)
+	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
+	msgbox ("Happy Halloween!\n"
+			"That's a good costume. Here you go!$")
+	giveitem_std (ITEM_FULL_HEAL, 4)
+	msgbox ("Have a good night!$")
+	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
+	setflag (FLAG_PUZZLE_25)
+	release
+}
+
+# -----------------------------------------------------
+
+script TrickTreat_PetalburgCity_ExitYoungster {
+	lock
+	faceplayer
+	msgbox ("{YOUNGSTER}: Hey, {PLAYER}!\nDid you get a good haul?$")
+	if (flag(FLAG_PUZZLE_23) == FALSE || 
+		flag(FLAG_PUZZLE_24) == FALSE || 
+		flag(FLAG_PUZZLE_25) == FALSE) 
+	{
+		msgbox ("What? You didn't hit all the houses yet?\n"
+				"Well, what are you waiting for?!$")
+		release
+		end
+	}
+	if (flag(FLAG_PUZZLE_20) == FALSE || 
+		flag(FLAG_PUZZLE_21) == FALSE)
+	{
+		msgbox ("Did you hit the Mart and the Center?\n"
+				"You can't just pass up free candy!$")
+		release
+		end
+	}
+	if (flag(FLAG_PUZZLE_22) == FALSE) {
+		msgbox ("Aw, you couldn't beat NORMAN for his\n"
+				"candy? I couldn't either.\l"
+				"We'll have to pass on it for now.$")
+	}
+	msgbox ("Alright, time to head back to the\n"
+			"TRICK HOUSE!\p"
+			"I wonder if the TRICK MASTER will\n"
+			"know we've gone?$")
+	closemessage
+	if (var(VAR_FACING) == DIR_EAST) {
+		applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_BackOffLeft1)
+		waitmovement (0)
+	}
+	applymovement (THIS_EVENT, Common_Movement_WalkLeft1)
+	waitmovement (0)
+	applymovement (THIS_EVENT, Common_Movement_WalkInPlaceUp)
+	msgbox ("{YOUNGSTER} wrote down the secret code\n"
+			"on the door.\p"
+			"{PLAY_SE SE_PIN}The door unsealed!$")
+	closemessage
+	playse (SE_W070)
+	applymovement (4, Common_Movement_ObjectDoorOpen)
+	waitmovement (0)
+	applymovement (THIS_EVENT, Common_Movement_WalkUp1)
+	waitmovement (0)
+	removeobject (THIS_EVENT)
+	applymovement (4, Common_Movement_ObjectDoorClose)
+	waitmovement (0)
+	setflag (FLAG_TRICK_HOUSE_PASSWORD_ENTERED)
+	release
+}
+
+# -----------------------------------------------------
+
+script TrickTreat_PetalburgCity_TriggerScript_SoftBorderEast {
+	lock
+	if (flag(FLAG_TRICK_HOUSE_PASSWORD_ENTERED) == FALSE) {
+		applymovement (12, Common_Movement_WalkInPlaceRight)
+		waitmovement (0)
+		applymovement (12, Common_Movement_ExclamationMarkAndWait)
+		waitmovement (0)
+		msgbox ("{YOUNGSTER}: Hey! {PLAYER}!\n"
+				"The candy is back this way!$")
+		applymovement (12, Common_Movement_WalkInPlaceLeft)
+	} else {
+		msgbox ("There's nothing to see that way.$")
+	}
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkLeft1)
+	waitmovement (0)
+	release
+}
+
+script TrickTreat_PetalburgCity_TriggerScript_SoftBorderWest {
+	lock
+	msgbox ("Mr. Briney's house looks dark. It's\n"
+			"probably not worth heading that way.$")
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkRight1)
+	waitmovement (0)
+	release
+}
+
+raw `
+#undef METATILE_DoorOff
+`

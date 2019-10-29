@@ -55,7 +55,6 @@ EWRAM_DATA u8 sCurrentReflectionType = 0;
 EWRAM_DATA u16 sCurrentSpecialObjectPaletteTag = 0;
 EWRAM_DATA struct LockedAnimEventObjects *gLockedAnimEventObjects = {0};
 
-static void MoveCoordsInDirection(u32, s16 *, s16 *, s16, s16);
 static bool8 EventObjectExecSingleMovementAction(struct EventObject *, struct Sprite *);
 static void SetMovementDelay(struct Sprite *, s16);
 static bool8 WaitForMovementDelay(struct Sprite *);
@@ -395,43 +394,60 @@ const u8 gInitialMovementTypeFacingDirections[] = {
     [MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_RIGHT] = DIR_EAST,
 };
 
-#define EVENT_OBJ_PAL_TAG_0  0x1103
-#define EVENT_OBJ_PAL_TAG_1  0x1104
-#define EVENT_OBJ_PAL_TAG_2  0x1105
-#define EVENT_OBJ_PAL_TAG_3  0x1106
-#define EVENT_OBJ_PAL_TAG_4  0x1107
-#define EVENT_OBJ_PAL_TAG_5  0x1108
-#define EVENT_OBJ_PAL_TAG_6  0x1109
-#define EVENT_OBJ_PAL_TAG_7  0x110A
-#define EVENT_OBJ_PAL_TAG_8  0x1100
-#define EVENT_OBJ_PAL_TAG_9  0x1101
-#define EVENT_OBJ_PAL_TAG_10 0x1102
-#define EVENT_OBJ_PAL_TAG_11 0x1115
-#define EVENT_OBJ_PAL_TAG_12 0x110B
-#define EVENT_OBJ_PAL_TAG_13 0x110C
-#define EVENT_OBJ_PAL_TAG_14 0x110D
-#define EVENT_OBJ_PAL_TAG_15 0x110E
-#define EVENT_OBJ_PAL_TAG_16 0x110F
-#define EVENT_OBJ_PAL_TAG_17 0x1110
-#define EVENT_OBJ_PAL_TAG_18 0x1111
-#define EVENT_OBJ_PAL_TAG_19 0x1112
-#define EVENT_OBJ_PAL_TAG_20 0x1113
-#define EVENT_OBJ_PAL_TAG_21 0x1114
-#define EVENT_OBJ_PAL_TAG_22 0x1116
-#define EVENT_OBJ_PAL_TAG_23 0x1117
-#define EVENT_OBJ_PAL_TAG_24 0x1118
-#define EVENT_OBJ_PAL_TAG_25 0x1119
-#define EVENT_OBJ_PAL_TAG_26 0x111B
-#define EVENT_OBJ_PAL_TAG_27 0x111C
-#define EVENT_OBJ_PAL_TAG_28 0x111D
-#define EVENT_OBJ_PAL_TAG_29 0x111E
-#define EVENT_OBJ_PAL_TAG_30 0x111F
-#define EVENT_OBJ_PAL_TAG_31 0x1120
-#define EVENT_OBJ_PAL_TAG_32 0x1121
-#define EVENT_OBJ_PAL_TAG_33 0x1122
-#define EVENT_OBJ_PAL_TAG_34 0x1123
-#define EVENT_OBJ_PAL_TAG_TRICK_HOUSE 0x1124
-#define EVENT_OBJ_PAL_TAG_NONE 0x11FF
+#define EVENT_OBJ_PAL_TAG_0                 0x1103
+#define EVENT_OBJ_PAL_TAG_1                 0x1104
+#define EVENT_OBJ_PAL_TAG_2                 0x1105
+#define EVENT_OBJ_PAL_TAG_3                 0x1106
+#define EVENT_OBJ_PAL_TAG_4                 0x1107
+#define EVENT_OBJ_PAL_TAG_5                 0x1108
+#define EVENT_OBJ_PAL_TAG_6                 0x1109
+#define EVENT_OBJ_PAL_TAG_7                 0x110A
+#define EVENT_OBJ_PAL_TAG_8                 0x1100
+#define EVENT_OBJ_PAL_TAG_9                 0x1101
+#define EVENT_OBJ_PAL_TAG_10                0x1102
+#define EVENT_OBJ_PAL_TAG_11                0x1115
+#define EVENT_OBJ_PAL_TAG_12                0x110B
+#define EVENT_OBJ_PAL_TAG_13                0x110C
+#define EVENT_OBJ_PAL_TAG_14                0x110D
+#define EVENT_OBJ_PAL_TAG_15                0x110E
+#define EVENT_OBJ_PAL_TAG_16                0x110F
+#define EVENT_OBJ_PAL_TAG_17                0x1110
+#define EVENT_OBJ_PAL_TAG_18                0x1111
+#define EVENT_OBJ_PAL_TAG_19                0x1112
+#define EVENT_OBJ_PAL_TAG_20                0x1113
+#define EVENT_OBJ_PAL_TAG_21                0x1114
+#define EVENT_OBJ_PAL_TAG_22                0x1116
+#define EVENT_OBJ_PAL_TAG_23                0x1117
+#define EVENT_OBJ_PAL_TAG_24                0x1118
+#define EVENT_OBJ_PAL_TAG_25                0x1119
+#define EVENT_OBJ_PAL_TAG_26                0x111B
+#define EVENT_OBJ_PAL_TAG_27                0x111C
+#define EVENT_OBJ_PAL_TAG_28                0x111D
+#define EVENT_OBJ_PAL_TAG_29                0x111E
+#define EVENT_OBJ_PAL_TAG_30                0x111F
+#define EVENT_OBJ_PAL_TAG_31                0x1120
+#define EVENT_OBJ_PAL_TAG_32                0x1121
+#define EVENT_OBJ_PAL_TAG_33                0x1122
+#define EVENT_OBJ_PAL_TAG_34                0x1123
+#define EVENT_OBJ_PAL_TAG_TRICK_HOUSE       0x1124
+#define EVENT_OBJ_PAL_TAG_TRICK_MASTER      0x1125
+#define EVENT_OBJ_PAL_TAG_PLASMA_KID        0x1126
+#define EVENT_OBJ_PAL_TAG_GHETSIS           0x1127
+#define EVENT_OBJ_PAL_TAG_FROGGER           0x1128
+#define EVENT_OBJ_PAL_TAG_MERMAID           0x1129
+#define EVENT_OBJ_PAL_TAG_MASKED_BOY        0x112A
+#define EVENT_OBJ_PAL_TAG_FAIRY_GIRL        0x112B
+#define EVENT_OBJ_PAL_MAY                   0x112C
+#define EVENT_OBJ_PAL_BRANDON               0x112D
+#define EVENT_OBJ_PAL_TAG_CORPSE_BRIDE      0x112E
+#define EVENT_OBJ_PAL_TAG_HERO_OF_TIME      0x112F
+#define EVENT_OBJ_PAL_TAG_SKELETON          0x1130
+#define EVENT_OBJ_PAL_TAG_TARZAN            0x1131
+#define EVENT_OBJ_PAL_TAG_TWINS_PLUS        0x1132
+#define EVENT_OBJ_PAL_TAG_TWINS_MINUS       0x1133
+#define EVENT_OBJ_PAL_WALLY                 0x1134
+#define EVENT_OBJ_PAL_TAG_ALIEN             0x1135
+#define EVENT_OBJ_PAL_TAG_NONE              0x11FF
 
 #include "data/field_event_obj/event_object_graphics_info_pointers.h"
 #include "data/field_event_obj/field_effect_object_template_pointers.h"
@@ -478,6 +494,23 @@ const struct SpritePalette sEventObjectSpritePalettes[] = {
     {gEventObjectPalette33, EVENT_OBJ_PAL_TAG_33},
     {gEventObjectPalette34, EVENT_OBJ_PAL_TAG_34},
     {gEventObjectPaletteTrickHouse, EVENT_OBJ_PAL_TAG_TRICK_HOUSE},
+    {gEventObjectPaletteTrickHouse, EVENT_OBJ_PAL_TAG_TRICK_MASTER},
+    {gEvtObjPal_Torchick,     EVENT_OBJ_PAL_MAY},
+    {gEvtObjPal_Mudkid,       EVENT_OBJ_PAL_BRANDON},
+    {gEvtObjPal_Elvis,        EVENT_OBJ_PAL_WALLY},
+    {gEvtObjPal_PlasmaKid,    EVENT_OBJ_PAL_TAG_PLASMA_KID},
+    {gEvtObjPal_Ghetsis,      EVENT_OBJ_PAL_TAG_GHETSIS},
+    {gEvtObjPal_Frogger,      EVENT_OBJ_PAL_TAG_FROGGER},
+    {gEvtObjPal_Mermaid,      EVENT_OBJ_PAL_TAG_MERMAID},
+    {gEvtObjPal_MaskedBoy,    EVENT_OBJ_PAL_TAG_MASKED_BOY},
+    {gEvtObjPal_FairyGirl,    EVENT_OBJ_PAL_TAG_FAIRY_GIRL},
+    {gEvtObjPal_CorpseBride,  EVENT_OBJ_PAL_TAG_CORPSE_BRIDE},
+    {gEvtObjPal_HeroOfTime,   EVENT_OBJ_PAL_TAG_HERO_OF_TIME},
+    {gEvtObjPal_Skeleton,     EVENT_OBJ_PAL_TAG_SKELETON},
+    {gEvtObjPal_Tarzan,       EVENT_OBJ_PAL_TAG_TARZAN},
+    {gEvtObjPal_TwinsPlus,    EVENT_OBJ_PAL_TAG_TWINS_PLUS},
+    {gEvtObjPal_TwinsMinus,   EVENT_OBJ_PAL_TAG_TWINS_MINUS},
+    {gEvtObjPal_Alien,        EVENT_OBJ_PAL_TAG_ALIEN},
     {NULL,                  0x0000},
 };
 
@@ -1176,6 +1209,18 @@ u8 GetEventObjectIdByXY(s16 x, s16 y)
     return i;
 }
 
+u8 GetNonPlayerEventObjectIdByXY(s16 x, s16 y)
+{
+    u8 i;
+    for (i = 0; i < EVENT_OBJECTS_COUNT; i++)
+    {
+        if (gEventObjects[i].active && gEventObjects[i].localId != EVENT_OBJ_ID_PLAYER && gEventObjects[i].currentCoords.x == x && gEventObjects[i].currentCoords.y == y)
+            break;
+    }
+
+    return i;
+}
+
 static u8 GetEventObjectIdByLocalIdAndMapInternal(u8 localId, u8 mapNum, u8 mapGroupId)
 {
     u8 i;
@@ -1512,6 +1557,13 @@ void RemoveAllEventObjectsExceptPlayer(void)
     }
 }
 
+bool8 IsObjectDoor(u8 objId)
+{
+    struct EventObject *eventObject = eventObject = &gEventObjects[objId];
+    const struct EventObjectGraphicsInfo *graphicsInfo = GetEventObjectGraphicsInfo(eventObject->graphicsId);
+    return graphicsInfo->doorOffsetType == DOOROFFSET_DOWN;
+}
+
 static u8 TrySetupEventObjectSprite(struct EventObjectTemplate *eventObjectTemplate, struct SpriteTemplate *spriteTemplate, u8 mapNum, u8 mapGroup, s16 cameraX, s16 cameraY)
 {
     u8 spriteId;
@@ -1629,7 +1681,7 @@ u8 SpawnSpecialEventObjectParameterized(u16 graphicsId, u8 movementBehavior, u8 
     eventObjectTemplate.movementType = movementBehavior;
     eventObjectTemplate.movementRangeX = 0;
     eventObjectTemplate.movementRangeY = 0;
-    eventObjectTemplate.trainerType = 0;
+    eventObjectTemplate.trainerType = TrainerType_None;
     eventObjectTemplate.trainerRange_berryTreeId = 0;
     return SpawnSpecialEventObject(&eventObjectTemplate);
 }
@@ -1716,6 +1768,8 @@ u8 sprite_new(u16 graphicsId, u8 a1, s16 x, s16 y, u8 z, u8 direction)
         sprite = &gSprites[spriteId];
         sprite->centerToCornerVecX = -(graphicsInfo->width >> 1);
         sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
+        if (graphicsInfo->doorOffsetType == DOOROFFSET_DOWN)
+            sprite->centerToCornerVecY += 8;
         sprite->pos1.y += sprite->centerToCornerVecY;
         sprite->oam.paletteNum = graphicsInfo->paletteSlot;
         if (sprite->oam.paletteNum >= 16)
@@ -1775,9 +1829,12 @@ void TrySpawnEventObjects(s16 cameraX, s16 cameraY)
             struct EventObjectTemplate *template = &gSaveBlock1Ptr->eventObjectTemplates[i];
             s16 npcX = template->x + 7;
             s16 npcY = template->y + 7;
+            
+            bool8 shouldSpawn = !FlagGet(template->flagId);
+            if (!FlagGet(FLAG_PREVENT_EVENT_OBJECT_DESPAWN) && template->trainerType != TrainerType_KeepLoaded)
+                shouldSpawn &= (top <= npcY && bottom >= npcY && left <= npcX && right >= npcX);
 
-            if (top <= npcY && bottom >= npcY && left <= npcX && right >= npcX
-                && !FlagGet(template->flagId))
+            if (shouldSpawn)
                 TrySpawnEventObjectTemplate(template, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, cameraX, cameraY);
         }
     }
@@ -1795,11 +1852,11 @@ void RemoveEventObjectsOutsideView(void)
             if (gLinkPlayerEventObjects[j].active && i == gLinkPlayerEventObjects[j].eventObjId)
                 isActiveLinkPlayer = TRUE;
         }
-        if (!isActiveLinkPlayer)
+        if (!isActiveLinkPlayer && !FlagGet(FLAG_PREVENT_EVENT_OBJECT_DESPAWN))
         {
             struct EventObject *eventObject = &gEventObjects[i];
 
-            if (eventObject->active && !eventObject->isPlayer)
+            if (eventObject->active && !eventObject->isPlayer && eventObject->trainerType != TrainerType_KeepLoaded)
                 RemoveEventObjectIfOutsideView(eventObject);
         }
     }
@@ -1890,6 +1947,8 @@ static void sub_808E1B8(u8 eventObjectId, s16 x, s16 y)
         sub_8092FF0(x + eventObject->currentCoords.x, y + eventObject->currentCoords.y, &sprite->pos1.x, &sprite->pos1.y);
         sprite->centerToCornerVecX = -(graphicsInfo->width >> 1);
         sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
+        if (graphicsInfo->doorOffsetType == DOOROFFSET_DOWN)
+            sprite->centerToCornerVecY += 8;
         sprite->pos1.x += 8;
         sprite->pos1.y += 16 + sprite->centerToCornerVecY;
         sprite->images = graphicsInfo->images;
@@ -1969,6 +2028,8 @@ void EventObjectSetGraphicsId(struct EventObject *eventObject, u16 graphicsId)
     SetSpritePosToMapCoords(eventObject->currentCoords.x, eventObject->currentCoords.y, &sprite->pos1.x, &sprite->pos1.y);
     sprite->centerToCornerVecX = -(graphicsInfo->width >> 1);
     sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
+    if (graphicsInfo->doorOffsetType == DOOROFFSET_DOWN)
+        sprite->centerToCornerVecY += 8;
     sprite->pos1.x += 8;
     sprite->pos1.y += 16 + sprite->centerToCornerVecY;
     if (eventObject->trackedByCamera)
@@ -2294,6 +2355,8 @@ void MoveEventObjectToMapCoords(struct EventObject *eventObject, s16 x, s16 y)
     SetSpritePosToMapCoords(eventObject->currentCoords.x, eventObject->currentCoords.y, &sprite->pos1.x, &sprite->pos1.y);
     sprite->centerToCornerVecX = -(graphicsInfo->width >> 1);
     sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
+    if (graphicsInfo->doorOffsetType == DOOROFFSET_DOWN)
+        sprite->centerToCornerVecY += 8;
     sprite->pos1.x += 8;
     sprite->pos1.y += 16 + sprite->centerToCornerVecY;
     sub_808E38C(eventObject);
@@ -2806,7 +2869,7 @@ bool8 EventObjectIsTrainerAndCloseToPlayer(struct EventObject *eventObject)
     {
         return FALSE;
     }
-    if (eventObject->trainerType != 1 && eventObject->trainerType != 3)
+    if (eventObject->trainerType != TrainerType_Normal && eventObject->trainerType != TrainerType_SeeAllDirs)
     {
         return FALSE;
     }
@@ -4529,7 +4592,7 @@ bool8 CopyablePlayerMovement_Slide(struct EventObject *eventObject, struct Sprit
     return TRUE;
 }
 
-bool8 cph_IM_DIFFERENT(struct EventObject *eventObject, struct Sprite *sprite, u8 playerDirection, bool8 tileCallback(u8))
+bool8 CopyablePlayerMovement_JumpInPlace(struct EventObject *eventObject, struct Sprite *sprite, u8 playerDirection, bool8 tileCallback(u8))
 {
     u32 direction;
 
@@ -5044,7 +5107,7 @@ void sub_8092F60(u8 direction, s16 *x, s16 *y)
     *y += sDirectionToVectors[direction].y << 4;
 }
 
-static void MoveCoordsInDirection(u32 dir, s16 *x, s16 *y, s16 deltaX, s16 deltaY)
+void MoveCoordsInDirection(u32 dir, s16 *x, s16 *y, s16 deltaX, s16 deltaY)
 {
     u8 direction = dir;
     s16 dx2 = (u16)deltaX;
@@ -7725,12 +7788,16 @@ static void GetGroundEffectFlags_TallGrassOnSpawn(struct EventObject *eventObj, 
 {
     if (MetatileBehavior_IsTallGrass(eventObj->currentMetatileBehavior))
         *flags |= GROUND_EFFECT_FLAG_TALL_GRASS_ON_SPAWN;
+    else if (MetatileBehavior_IsAutumnGrass(eventObj->currentMetatileBehavior))
+        *flags |= GROUND_EFFECT_FLAG_FALL_GRASS_ON_SPAWN;
 }
 
 static void GetGroundEffectFlags_TallGrassOnBeginStep(struct EventObject *eventObj, u32 *flags)
 {
     if (MetatileBehavior_IsTallGrass(eventObj->currentMetatileBehavior))
         *flags |= GROUND_EFFECT_FLAG_TALL_GRASS_ON_MOVE;
+    else if (MetatileBehavior_IsAutumnGrass(eventObj->currentMetatileBehavior))
+        *flags |= GROUND_EFFECT_FLAG_FALL_GRASS_ON_MOVE;
 }
 
 static void GetGroundEffectFlags_LongGrassOnSpawn(struct EventObject *eventObj, u32 *flags)
@@ -7860,6 +7927,7 @@ static void GetGroundEffectFlags_JumpLanding(struct EventObject *eventObj, u32 *
     static const MetatileFunc metatileFuncs[] = {
         MetatileBehavior_IsTallGrass,
         MetatileBehavior_IsLongGrass,
+        MetatileBehavior_IsAutumnGrass,
         MetatileBehavior_IsPuddle,
         MetatileBehavior_IsSurfableWaterOrUnderwater,
         MetatileBehavior_IsShallowFlowingWater,
@@ -7869,6 +7937,7 @@ static void GetGroundEffectFlags_JumpLanding(struct EventObject *eventObj, u32 *
     static const u32 jumpLandingFlags[] = {
         GROUND_EFFECT_FLAG_LAND_IN_TALL_GRASS,
         GROUND_EFFECT_FLAG_LAND_IN_LONG_GRASS,
+        GROUND_EFFECT_FLAG_LAND_IN_FALL_GRASS,
         GROUND_EFFECT_FLAG_LAND_IN_SHALLOW_WATER,
         GROUND_EFFECT_FLAG_LAND_IN_DEEP_WATER,
         GROUND_EFFECT_FLAG_LAND_IN_SHALLOW_WATER,
@@ -7936,7 +8005,7 @@ static u8 GetReflectionTypeByMetatileBehavior(u32 behavior)
         return 0;
 }
 
-u8 GetLedgeJumpDirection(s16 x, s16 y, u8 z)
+u8 GetLedgeJumpDirection(s16 x, s16 y, u8 dir)
 {
     static bool8 (*const unknown_08376040[])(u8) = {
         MetatileBehavior_IsJumpSouth,
@@ -7946,7 +8015,7 @@ u8 GetLedgeJumpDirection(s16 x, s16 y, u8 z)
     };
 
     u8 b;
-    u8 index = z;
+    u8 index = dir;
 
     if (index == 0)
         return 0;
@@ -8118,6 +8187,32 @@ void GroundEffect_StepOnTallGrass(struct EventObject *eventObj, struct Sprite *s
     FieldEffectStart(FLDEFF_TALL_GRASS);
 }
 
+void GroundEffect_SpawnOnFallGrass(struct EventObject *eventObj, struct Sprite *sprite)
+{
+    gFieldEffectArguments[0] = eventObj->currentCoords.x;
+    gFieldEffectArguments[1] = eventObj->currentCoords.y;
+    gFieldEffectArguments[2] = eventObj->previousElevation;
+    gFieldEffectArguments[3] = 2;
+    gFieldEffectArguments[4] = eventObj->localId << 8 | eventObj->mapNum;
+    gFieldEffectArguments[5] = eventObj->mapGroup;
+    gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
+    gFieldEffectArguments[7] = 1;
+    FieldEffectStart(FLDEFF_FALL_GRASS);
+}
+
+void GroundEffect_StepOnFallGrass(struct EventObject *eventObj, struct Sprite *sprite)
+{
+    gFieldEffectArguments[0] = eventObj->currentCoords.x;
+    gFieldEffectArguments[1] = eventObj->currentCoords.y;
+    gFieldEffectArguments[2] = eventObj->previousElevation;
+    gFieldEffectArguments[3] = 2;
+    gFieldEffectArguments[4] = eventObj->localId << 8 | eventObj->mapNum;
+    gFieldEffectArguments[5] = eventObj->mapGroup;
+    gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
+    gFieldEffectArguments[7] = 0;
+    FieldEffectStart(FLDEFF_FALL_GRASS);
+}
+
 void GroundEffect_SpawnOnLongGrass(struct EventObject *eventObj, struct Sprite *sprite)
 {
     gFieldEffectArguments[0] = eventObj->currentCoords.x;
@@ -8260,6 +8355,27 @@ void GroundEffect_JumpOnTallGrass(struct EventObject *eventObj, struct Sprite *s
         GroundEffect_SpawnOnTallGrass(eventObj, sprite);
 }
 
+void GroundEffect_JumpOnFallGrass(struct EventObject *eventObj, struct Sprite *sprite)
+{
+    u8 spriteId;
+
+    gFieldEffectArguments[0] = eventObj->currentCoords.x;
+    gFieldEffectArguments[1] = eventObj->currentCoords.y;
+    gFieldEffectArguments[2] = eventObj->previousElevation;
+    gFieldEffectArguments[3] = 2;
+    FieldEffectStart(FLDEFF_JUMP_FALL_GRASS);
+
+    spriteId = FindFallGrassFieldEffectSpriteId(
+        eventObj->localId,
+        eventObj->mapNum,
+        eventObj->mapGroup,
+        eventObj->currentCoords.x,
+        eventObj->currentCoords.y);
+
+    if (spriteId == MAX_SPRITES)
+        GroundEffect_SpawnOnFallGrass(eventObj, sprite);
+}
+
 void GroundEffect_JumpOnLongGrass(struct EventObject *eventObj, struct Sprite *sprite)
 {
     gFieldEffectArguments[0] = eventObj->currentCoords.x;
@@ -8333,7 +8449,10 @@ static void (*const sGroundEffectFuncs[])(struct EventObject *eventObj, struct S
     GroundEffect_JumpLandingDust,
     GroundEffect_ShortGrass,
     GroundEffect_HotSprings,
-    GroundEffect_Seaweed
+    GroundEffect_Seaweed,
+    GroundEffect_SpawnOnFallGrass,
+    GroundEffect_StepOnFallGrass,
+    GroundEffect_JumpOnFallGrass,
 };
 
 static void DoFlaggedGroundEffects(struct EventObject *eventObj, struct Sprite *sprite, u32 flags)
@@ -8360,7 +8479,8 @@ void filters_out_some_ground_effects(struct EventObject *eventObj, u32 *flags)
                   | GROUND_EFFECT_FLAG_SHORT_GRASS
                   | GROUND_EFFECT_FLAG_SAND_PILE
                   | GROUND_EFFECT_FLAG_SHALLOW_FLOWING_WATER
-                  | GROUND_EFFECT_FLAG_TALL_GRASS_ON_MOVE);
+                  | GROUND_EFFECT_FLAG_TALL_GRASS_ON_MOVE
+                  | GROUND_EFFECT_FLAG_FALL_GRASS_ON_MOVE);
     }
 }
 
@@ -8374,7 +8494,7 @@ static void DoGroundEffects_OnSpawn(struct EventObject *eventObj, struct Sprite 
 {
     u32 flags;
 
-    if (eventObj->triggerGroundEffectsOnMove)
+    if (eventObj->triggerGroundEffectsOnMove && !eventObj->invisible)
     {
         flags = 0;
         UpdateEventObjectZCoordAndPriority(eventObj, sprite);
@@ -8390,7 +8510,7 @@ static void DoGroundEffects_OnBeginStep(struct EventObject *eventObj, struct Spr
 {
     u32 flags;
 
-    if (eventObj->triggerGroundEffectsOnMove)
+    if (eventObj->triggerGroundEffectsOnMove && !eventObj->invisible)
     {
         flags = 0;
         UpdateEventObjectZCoordAndPriority(eventObj, sprite);
@@ -8407,7 +8527,7 @@ static void DoGroundEffects_OnFinishStep(struct EventObject *eventObj, struct Sp
 {
     u32 flags;
 
-    if (eventObj->triggerGroundEffectsOnStop)
+    if (eventObj->triggerGroundEffectsOnStop && !eventObj->invisible)
     {
         flags = 0;
         UpdateEventObjectZCoordAndPriority(eventObj, sprite);

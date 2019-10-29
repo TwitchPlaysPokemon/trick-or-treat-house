@@ -40,6 +40,94 @@ const u32 gItemIconPalette_LuxuryBall[] = INCBIN_U32("graphics/items/icon_palett
 
 const u32 gItemIcon_PremierBall[] = INCBIN_U32("graphics/items/icons/premier_ball.4bpp.lz");
 
+// Candy
+#if USE_CANDY_NAMES
+const u32 gItemIconPic_chocobar[] = INCBIN_U32("graphics/items/candy/chocobar.4bpp.lz");
+const u32 gItemIconPal_chocobar[] = INCBIN_U32("graphics/items/candy/chocobar.gbapal.lz");
+
+const u32 gItemIconPic_starburst[] = INCBIN_U32("graphics/items/candy/starburst.4bpp.lz");
+const u32 gItemIconPal_starburst[] = INCBIN_U32("graphics/items/candy/starburst.gbapal.lz");
+
+const u32 gItemIconPic_lemondrop[] = INCBIN_U32("graphics/items/candy/lemondrop.4bpp.lz");
+const u32 gItemIconPal_lemondrop[] = INCBIN_U32("graphics/items/candy/lemondrop.gbapal.lz");
+
+const u32 gItemIconPic_warhead[] = INCBIN_U32("graphics/items/candy/warhead.4bpp.lz");
+const u32 gItemIconPal_warhead[] = INCBIN_U32("graphics/items/candy/warhead.gbapal.lz");
+
+const u32 gItemIconPic_pretzel[] = INCBIN_U32("graphics/items/candy/pretzel.4bpp.lz");
+const u32 gItemIconPal_pretzel[] = INCBIN_U32("graphics/items/candy/pretzel.gbapal.lz");
+
+const u32 gItemIconPic_veromango[] = INCBIN_U32("graphics/items/candy/veromango.4bpp.lz");
+const u32 gItemIconPal_veromango[] = INCBIN_U32("graphics/items/candy/veromango.gbapal.lz");
+
+const u32 gItemIconPic_100grand[] = INCBIN_U32("graphics/items/candy/100grand.4bpp.lz");
+const u32 gItemIconPal_100grand[] = INCBIN_U32("graphics/items/candy/100grand.gbapal.lz");
+
+const u32 gItemIconPic_whitechoco[] = INCBIN_U32("graphics/items/candy/whitechoco.4bpp.lz");
+const u32 gItemIconPal_whitechoco[] = INCBIN_U32("graphics/items/candy/whitechoco.gbapal.lz");
+
+const u32 gItemIconPic_butterfinger[] = INCBIN_U32("graphics/items/candy/butterfinger.4bpp.lz");
+const u32 gItemIconPal_butterfinger[] = INCBIN_U32("graphics/items/candy/butterfinger.gbapal.lz");
+
+const u32 gItemIconPic_twix[] = INCBIN_U32("graphics/items/candy/twix.4bpp.lz");
+const u32 gItemIconPal_twix[] = INCBIN_U32("graphics/items/candy/twix.gbapal.lz");
+
+const u32 gItemIconPic_reesecup[] = INCBIN_U32("graphics/items/candy/reesecup.4bpp.lz");
+const u32 gItemIconPal_reesecup[] = INCBIN_U32("graphics/items/candy/reesecup.gbapal.lz");
+
+const u32 gItemIconPic_carrotstick[] = INCBIN_U32("graphics/items/candy/carrotstick.4bpp.lz");
+const u32 gItemIconPal_carrotstick[] = INCBIN_U32("graphics/items/candy/carrotstick.gbapal.lz");
+
+const u32 gItemIconPic_appleslice[] = INCBIN_U32("graphics/items/candy/appleslice.4bpp.lz");
+const u32 gItemIconPal_appleslice[] = INCBIN_U32("graphics/items/candy/appleslice.gbapal.lz");
+
+const u32 gItemIconPic_prune[] = INCBIN_U32("graphics/items/candy/prune.4bpp.lz");
+const u32 gItemIconPal_prune[] = INCBIN_U32("graphics/items/candy/prune.gbapal.lz");
+
+const u32 gItemIconPic_celerystick[] = INCBIN_U32("graphics/items/candy/celerystick.4bpp.lz");
+const u32 gItemIconPal_celerystick[] = INCBIN_U32("graphics/items/candy/celerystick.gbapal.lz");
+
+const u32 gItemIconPic_malteser[] = INCBIN_U32("graphics/items/candy/malteser.4bpp.lz");
+const u32 gItemIconPal_malteser[] = INCBIN_U32("graphics/items/candy/malteser.gbapal.lz");
+
+const u32 gItemIconPic_cadbury[] = INCBIN_U32("graphics/items/candy/cadbury.4bpp.lz");
+const u32 gItemIconPal_cadbury[] = INCBIN_U32("graphics/items/candy/cadbury.gbapal.lz");
+
+const u32 gItemIconPic_snowball[] = INCBIN_U32("graphics/items/candy/snowball.4bpp.lz");
+const u32 gItemIconPal_snowball[] = INCBIN_U32("graphics/items/candy/snowball.gbapal.lz");
+
+const u32 gItemIconPic_turkish[] = INCBIN_U32("graphics/items/candy/turkish.4bpp.lz");
+const u32 gItemIconPal_turkish[] = INCBIN_U32("graphics/items/candy/turkish.gbapal.lz");
+
+const u32 gItemIconPic_oreo[] = INCBIN_U32("graphics/items/candy/oreo.4bpp.lz");
+const u32 gItemIconPal_oreo[] = INCBIN_U32("graphics/items/candy/oreo.gbapal.lz");
+
+const u32 gItemIconPic_mmmini[] = INCBIN_U32("graphics/items/candy/mmmini.4bpp.lz");
+const u32 gItemIconPal_mmmini[] = INCBIN_U32("graphics/items/candy/mmmini.gbapal.lz");
+
+const u32 gItemIconPic_mmjumbo[] = INCBIN_U32("graphics/items/candy/mmjumbo.4bpp.lz");
+const u32 gItemIconPal_mmjumbo[] = INCBIN_U32("graphics/items/candy/mmjumbo.gbapal.lz");
+
+const u32 gItemIconPic_gobstopper[] = INCBIN_U32("graphics/items/candy/gobstopper.4bpp.lz");
+const u32 gItemIconPal_gobstopper[] = INCBIN_U32("graphics/items/candy/gobstopper.gbapal.lz");
+
+const u32 gItemIconPic_xlchoco[] = INCBIN_U32("graphics/items/candy/xlchoco.4bpp.lz");
+const u32 gItemIconPal_xlchoco[] = INCBIN_U32("graphics/items/candy/xlchoco.gbapal.lz");
+
+const u32 gItemIconPic_pixiestick[] = INCBIN_U32("graphics/items/candy/pixiestick.4bpp.lz");
+const u32 gItemIconPal_pixiestick[] = INCBIN_U32("graphics/items/candy/pixiestick.gbapal.lz");
+
+const u32 gItemIconPic_fererorocher[] = INCBIN_U32("graphics/items/candy/fererorocher.4bpp.lz");
+const u32 gItemIconPal_fererorocher[] = INCBIN_U32("graphics/items/candy/fererorocher.gbapal.lz");
+
+const u32 gItemIconPic_toblerone[] = INCBIN_U32("graphics/items/candy/toblerone.4bpp.lz");
+const u32 gItemIconPal_toblerone[] = INCBIN_U32("graphics/items/candy/toblerone.gbapal.lz");
+
+const u32 gItemIconPic_gummybear[] = INCBIN_U32("graphics/items/candy/gummybear.4bpp.lz");
+const u32 gItemIconPal_gummybear[] = INCBIN_U32("graphics/items/candy/gummybear.gbapal.lz");
+
+#endif
+
 // Medicine
 
 const u32 gItemIcon_Potion[] = INCBIN_U32("graphics/items/icons/potion.4bpp.lz");

@@ -10,6 +10,7 @@
 #include "strings.h"
 #include "load_save.h"
 #include "item_use.h"
+#include "text.h"
 // #include "battle_pyramid.h"
 // #include "battle_pyramid_bag.h"
 #include "constants/items.h"
@@ -32,12 +33,12 @@ EWRAM_DATA struct BagPocket gBagPockets[POCKETS_COUNT] = {0};
 #include "data/items.h"
 
 // code
-static u16 GetBagItemQuantity(u16 *quantity)
+u16 GetBagItemQuantity(u16 *quantity)
 {
     return gSaveBlock2Ptr->encryptionKey ^ *quantity;
 }
 
-static void SetBagItemQuantity(u16 *quantity, u16 newValue)
+void SetBagItemQuantity(u16 *quantity, u16 newValue)
 {
     *quantity =  newValue ^ gSaveBlock2Ptr->encryptionKey;
 }
@@ -92,19 +93,24 @@ void CopyItemName(u16 itemId, u8 *dst)
 
 void CopyItemNameHandlePlural(u16 itemId, u8 *dst, u32 quantity)
 {
-    if (itemId == ITEM_POKE_BALL)
+    if (itemId >= ITEM_CHERI_BERRY && itemId <= ITEM_ENIGMA_BERRY)
     {
-        if (quantity < 2)
-            StringCopy(dst, ItemId_GetName(ITEM_POKE_BALL));
-        else
-            StringCopy(dst, gText_PokeBalls);
+        GetBerryCountString(dst, gBerries[itemId - ITEM_CHERI_BERRY].name, quantity);
+    }
+    else if (quantity < 2 || ItemId_GetPluralName(itemId)[0] == EOS)
+    {
+        StringCopy(dst, ItemId_GetName(itemId));
+    }
+    else if (ItemId_GetPluralName(itemId)[0] == 0)
+    {
+        dst = StringCopy(dst, ItemId_GetName(itemId));
+        *dst = CHAR_S;
+        dst++;
+        *dst = EOS;
     }
     else
     {
-        if (itemId >= ITEM_CHERI_BERRY && itemId <= ITEM_ENIGMA_BERRY)
-            GetBerryCountString(dst, gBerries[itemId - ITEM_CHERI_BERRY].name, quantity);
-        else
-            StringCopy(dst, ItemId_GetName(itemId));
+        StringCopy(dst, ItemId_GetPluralName(itemId));
     }
 }
 
@@ -585,21 +591,21 @@ void RemovePCItem(u8 index, u16 count)
 
 void CompactPCItems(void)
 {
-    u16 i;
-    u16 j;
+    // u16 i;
+    // u16 j;
 
-    for (i = 0; i < PC_ITEMS_COUNT - 1; i++)
-    {
-        for (j = i + 1; j < PC_ITEMS_COUNT; j++)
-        {
-            if (gSaveBlock1Ptr->pcItems[i].itemId == 0)
-            {
-                struct ItemSlot temp = gSaveBlock1Ptr->pcItems[i];
-                gSaveBlock1Ptr->pcItems[i] = gSaveBlock1Ptr->pcItems[j];
-                gSaveBlock1Ptr->pcItems[j] = temp;
-            }
-        }
-    }
+    // for (i = 0; i < PC_ITEMS_COUNT - 1; i++)
+    // {
+    //     for (j = i + 1; j < PC_ITEMS_COUNT; j++)
+    //     {
+    //         if (gSaveBlock1Ptr->pcItems[i].itemId == 0)
+    //         {
+    //             struct ItemSlot temp = gSaveBlock1Ptr->pcItems[i];
+    //             gSaveBlock1Ptr->pcItems[i] = gSaveBlock1Ptr->pcItems[j];
+    //             gSaveBlock1Ptr->pcItems[j] = temp;
+    //         }
+    //     }
+    // }
 }
 
 void SwapRegisteredBike(void)
@@ -909,6 +915,11 @@ const u8 *ItemId_GetName(u16 itemId)
     return gItems[SanitizeItemId(itemId)].name;
 }
 
+const u8 *ItemId_GetPluralName(u16 itemId)
+{
+    return gItems[SanitizeItemId(itemId)].plural;
+}
+
 u16 ItemId_GetId(u16 itemId)
 {
     return gItems[SanitizeItemId(itemId)].itemId;
@@ -937,6 +948,11 @@ const u8 *ItemId_GetDescription(u16 itemId)
 u8 ItemId_GetImportance(u16 itemId)
 {
     return gItems[SanitizeItemId(itemId)].importance;
+}
+
+u8 ItemId_GetPuzzleItemExclusionFlag(u16 itemId)
+{
+    return gItems[SanitizeItemId(itemId)].keepItem;
 }
 
 // unused

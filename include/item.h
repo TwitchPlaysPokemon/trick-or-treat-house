@@ -27,12 +27,14 @@ typedef void (*ItemUseFunc)(u8);
 struct Item
 {
     u8 name[ITEM_NAME_LENGTH];
+    u8 plural[ITEM_NAME_LENGTH+2];
     u16 itemId;
     u16 price;
     u8 holdEffect;
     u8 holdEffectParam;
     const u8 *description;
-    u8 importance;
+    u8 importance:2;
+    u8 keepItem:1;
     u8 unk19;
     u8 pocket;
     u8 type;
@@ -50,6 +52,8 @@ struct BagPocket
 
 extern struct BagPocket gBagPockets[];
 
+u16 GetBagItemQuantity(u16 *quantity);
+void SetBagItemQuantity(u16 *quantity, u16 newValue);
 void ApplyNewEncryptionKeyToBagItems(u32 newKey);
 void ApplyNewEncryptionKeyToBagItems_(u32 newKey);
 void SetBagItemsPointers(void);
@@ -80,12 +84,14 @@ u16 CountTotalItemQuantityInBag(u16 itemId);
 bool8 AddPyramidBagItem(u16 itemId, u16 count);
 bool8 RemovePyramidBagItem(u16 itemId, u16 count);
 const u8 *ItemId_GetName(u16 itemId);
+const u8 *ItemId_GetPluralName(u16 itemId);
 u16 ItemId_GetId(u16 itemId);
 u16 ItemId_GetPrice(u16 itemId);
 u8 ItemId_GetHoldEffect(u16 itemId);
 u8 ItemId_GetHoldEffectParam(u16 itemId);
 const u8 *ItemId_GetDescription(u16 itemId);
 u8 ItemId_GetImportance(u16 itemId);
+u8 ItemId_GetPuzzleItemExclusionFlag(u16 itemId);
 u8 ItemId_GetUnknownValue(u16 itemId);
 u8 ItemId_GetPocket(u16 itemId);
 u8 ItemId_GetType(u16 itemId);

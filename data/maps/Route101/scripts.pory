@@ -1,0 +1,11 @@
+raw `
+Route101_MapScripts:: @ 81EBCBA
+	.byte 0
+
+Route101_EventScript_1EBE0D:: @ 81EBE0D
+	msgbox Route101_Text_1EC0C8, MSGBOX_SIGN
+	end
+Route101_Text_1EC0C8: @ 81EC0C8
+	.string "ROUTE 101\n"
+	.string "{UP_ARROW} OLDALE TOWN$"
+`

@@ -15,7 +15,7 @@ static const u8 sTileBitAttributes[] =
     [MB_SECRET_BASE_WALL] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_TALL_GRASS] = TILE_ATTRIBUTES(TRUE, FALSE, TRUE),
     [MB_LONG_GRASS] = TILE_ATTRIBUTES(TRUE, FALSE, TRUE),
-    [MB_UNUSED_04] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
+    [MB_AUTUMN_GRASS] = TILE_ATTRIBUTES(TRUE, FALSE, TRUE),
     [MB_UNUSED_05] = TILE_ATTRIBUTES(FALSE, FALSE, TRUE),
     [MB_DEEP_SAND] = TILE_ATTRIBUTES(TRUE, FALSE, TRUE),
     [MB_SHORT_GRASS] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
@@ -114,7 +114,7 @@ static const u8 sTileBitAttributes[] =
     [MB_NORTH_ARROW_WARP] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_SOUTH_ARROW_WARP] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_CRACKED_FLOOR_HOLE] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
-    [MB_AQUA_HIDEOUT_WARP] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
+    [MB_TELEPORT_WARP] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_LAVARIDGE_GYM_1F_WARP] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_ANIMATED_DOOR] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_UP_ESCALATOR] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
@@ -247,7 +247,7 @@ static const u8 sTileBitAttributes[] =
     [MB_TRAINER_HILL_TIMER] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNKNOWN_CLOSED_DOOR] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_PUZZLE_MUSIC_TILE] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
-    [MB_UNUSED_EC] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
+    [MB_PUMPKIN] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNUSED_ED] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNUSED_EE] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNUSED_EF] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
@@ -320,10 +320,15 @@ bool8 MetatileBehavior_IsJumpSouth(u8 metatileBehavior)
 
 bool8 MetatileBehavior_IsPokeGrass(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_TALL_GRASS || metatileBehavior == MB_LONG_GRASS)
-        return TRUE;
-    else
-        return FALSE;
+    switch (metatileBehavior)
+    {
+        case MB_TALL_GRASS:
+        case MB_LONG_GRASS:
+        case MB_AUTUMN_GRASS:
+            return TRUE;
+        default:
+            return FALSE;
+    }
 }
 
 bool8 MetatileBehavior_IsSandOrDeepSand(u8 metatileBehavior)
@@ -388,14 +393,6 @@ bool8 MetatileBehavior_IsEscalator(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_UP_ESCALATOR
      || metatileBehavior == MB_DOWN_ESCALATOR)
-        return TRUE;
-    else
-        return FALSE;
-}
-
-bool8 Unref_MetatileBehavior_IsUnused04(u8 metatileBehavior)
-{
-    if (metatileBehavior == MB_UNUSED_04)
         return TRUE;
     else
         return FALSE;
@@ -880,6 +877,14 @@ bool8 MetatileBehavior_IsTallGrass(u8 metatileBehavior)
         return FALSE;
 }
 
+bool8 MetatileBehavior_IsAutumnGrass(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_AUTUMN_GRASS)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 bool8 MetatileBehavior_IsLongGrass(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_LONG_GRASS)
@@ -1253,9 +1258,9 @@ bool8 MetatileBehavior_IsLavaridge1FWarp(u8 metatileBehavior)
         return FALSE;
 }
 
-bool8 MetatileBehavior_IsAquaHideoutWarp(u8 metatileBehavior)
+bool8 MetatileBehavior_IsTeleportWarp(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_AQUA_HIDEOUT_WARP)
+    if (metatileBehavior == MB_TELEPORT_WARP)
         return TRUE;
     else
         return FALSE;
@@ -1395,6 +1400,7 @@ bool8 MetatileBehavior_IsCuttableGrass(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_TALL_GRASS
      || metatileBehavior == MB_LONG_GRASS
+     || metatileBehavior == MB_AUTUMN_GRASS
      || metatileBehavior == MB_ASHGRASS
      || metatileBehavior == MB_LONG_GRASS_SOUTH_EDGE)
         return TRUE;
@@ -1405,6 +1411,14 @@ bool8 MetatileBehavior_IsCuttableGrass(u8 metatileBehavior)
 bool8 MetatileBehavior_IsRunningShoesManual(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_RUNNING_SHOES_INSTRUCTION)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsPumpkin(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_PUMPKIN)
         return TRUE;
     else
         return FALSE;

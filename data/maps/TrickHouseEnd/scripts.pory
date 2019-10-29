@@ -3,12 +3,17 @@ TrickHouseEnd_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, TrickHouseEnd_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, TrickHouseEnd_OnTransition
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, TrickHouseEnd_WarpTable
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrickHouseEnd_FrameTable
 	.byte 0
 	
 @----------------------------------------------------------
 
 TrickHouseEnd_WarpTable:
 	map_script_2 VAR_TEMP_0, 0, Common_EventScript_FacePlayerUp
+	.2byte 0
+
+TrickHouseEnd_FrameTable:
+	map_script_2 VAR_TRICK_MASTER_INTRO, 0, TrickHouseEnd_EventScript_TrickMasterOutro
 	.2byte 0
 `
 
@@ -18,7 +23,35 @@ script TrickHouseEnd_OnLoad {
 
 script TrickHouseEnd_OnTransition {
 	setvar(VAR_PUZZLE_STATE, 2)
+	# Because some event objects cause freezing when wandering around
+	switch (var(VAR_OBJ_GFX_ID_1)) {
+		case EVENT_OBJ_GFX_LUGIA:     setobjectmovementtype (2, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN)
+		case EVENT_OBJ_GFX_HOOH:      setobjectmovementtype (2, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN)
+		case EVENT_OBJ_GFX_DEOXYS:    setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+		case EVENT_OBJ_GFX_KYOGRE_1:  setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+		case EVENT_OBJ_GFX_GROUDON_1: setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+		case EVENT_OBJ_GFX_KYOGRE_2:  setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+		case EVENT_OBJ_GFX_GROUDON_2: setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+		case EVENT_OBJ_GFX_KYOGRE_3:  setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+		case EVENT_OBJ_GFX_GROUDON_3: setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+	}
 }
+
+# -----------------------------------------------------
+
+script TrickHouseEnd_EventScript_TrickMasterOutro {
+	lockall
+	applymovement (3, Common_Movement_ExclamationMarkAndWait)
+	waitmovement (0)
+	setvar (VAR_TRICK_MASTER_INTRO, 2)
+	msgbox (PuzzleCommon_Text_FirstPuzzleAfterword)
+	closemessage
+	setvar (VAR_0x8000, 3)
+	call (PuzzleCommon_EventScript_WarpTrickMasterOut)
+	releaseall
+}
+
+# -----------------------------------------------------
 
 script TrickHouseEnd_EventScript_FinalPuzzlePerson {
 	lock
@@ -29,6 +62,8 @@ script TrickHouseEnd_EventScript_FinalPuzzlePerson {
 	release
 }
 
+# -----------------------------------------------------
+
 script TrickHouseEnd_EventScript_Nurse {
 	lock
 	faceplayer
@@ -37,7 +72,6 @@ script TrickHouseEnd_EventScript_Nurse {
 	call (TrickHouseEnd_EventScript_FinalizePuzzle)
 	release
 }
-
 script TrickHouseEnd_TriggerScript_Nurse {
 	lock
 	applymovement (1, Common_Movement_FacePlayer)
@@ -45,25 +79,40 @@ script TrickHouseEnd_TriggerScript_Nurse {
 	call (TrickHouseEnd_EventScript_FinalizePuzzle)
 	release
 }
-
 script TrickHouseEnd_EventScript_FinalizePuzzle {
-	msgbox ("Let's heal your POKéMON.$")
-	fadescreen(1)
-	playfanfare(MUS_ME_ASA)
-	special(HealPlayerParty)
-	waitfanfare
-	fadescreen(0)
+	# msgbox ("Good job on that puzzle.$")
+	special  (CanAnyPartyMonsBeHealed)
+	if (var(VAR_RESULT) == FALSE) { # It's backwards for some reason??
+		msgbox ("Let me heal your POKéMON.$")
+		closemessage
+		fadescreen(1)
+		playfanfare(MUS_ME_ASA)
+		special(HealPlayerParty)
+		waitfanfare
+		fadescreen(0)
+	}
 	callnative(RemovePuzzleItems)
-	if (var(VAR_RESULT) == TRUE) {
-		msgbox("Oh, and I'll be needing those puzzle items\n"
+	if (var(VAR_RESULT) != FALSE) {
+		msgbox("I'll be needing those puzzle items\n"
 			   "from you.$")
 		msgbox("You hand over {STR_VAR_1}.$")
+		if (var(VAR_0x800A) > 0) {
+			buffernumberstring (0, VAR_0x800A)
+			msgbox("You're handed {STR_VAR_1} candy corn\n"
+					"as compensation.$")
+		}
+	}
+	getpartysize
+	if (var(VAR_RESULT) > 3) {
+		msgbox ("Oh, you have some extra {POKEMON} on you.\n"
+				"I'll transfer them to your PC.$")
+		callnative (RemoveExtraPokemon)
 	}
 	msgbox ("Good luck on the next puzzle!$")
+	closemessage
 	setvar(VAR_TEMP_2, 1)
 	return
 }
-
 script TrickHouseEnd_EventScript_FinalizePuzzle1 {
 	msgbox ("Good luck on the next puzzle!$")
 	release

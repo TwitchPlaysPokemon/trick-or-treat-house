@@ -1,9 +1,0 @@
-OldaleTown_MapScripts:: @ 81E8EA2
-	.byte 0
-
-OldaleTown_EventScript_1E8EEA:: @ 81E8EEA
-	msgbox OldaleTown_Text_1E94DA, MSGBOX_SIGN
-	end
-OldaleTown_Text_1E94DA: @ 81E94DA
-	.string "OLDALE TOWN\n"
-	.string "“Where things start off scarce.”$"

@@ -27,6 +27,8 @@
 #include "start_menu.h"
 #include "task.h"
 #include "text.h"
+#include "global.fieldmap.h"
+#include "constants/event_objects.h"
 #include "constants/event_object_movement_constants.h"
 #include "constants/songs.h"
 #include "constants/rgb.h"
@@ -38,12 +40,12 @@ extern const u16 gUnknown_82EC7CC[];
 
 // This file's functions.
 static void sub_8080B9C(u8);
-static void task_map_chg_seq_0807E20C(u8);
-static void task_map_chg_seq_0807E2CC(u8);
+static void Task_WalkPlayerOutDoorway(u8);
+static void Task_DefaultMapChangeTransition(u8);
 static void task0A_fade_n_map_maybe(u8);
 static void sub_808115C(u8);
 static void palette_bg_faded_fill_white(void);
-static void sub_80AF438(u8);
+static void Task_WalkPlayerOutAnimDoor(u8);
 static bool32 WaitForWeatherFadeIn(void);
 static void task0A_mpl_807E31C(u8 taskId);
 static void sub_80AFA0C(u8 taskId);
@@ -263,13 +265,29 @@ static void sub_80AF334(void)
     TaskFunc func;
 
     PlayerGetDestCoords(&x, &y);
-    behavior = MapGridGetMetatileBehaviorAt(x, y);
-    if (MetatileBehavior_IsDoor(behavior) == TRUE)
-        func = sub_80AF438;
-    else if (MetatileBehavior_IsNonAnimDoor(behavior) == TRUE)
-        func = task_map_chg_seq_0807E20C;
+    if ((behavior = GetNonPlayerEventObjectIdByXY(x, y)) < EVENT_OBJECTS_COUNT)
+    {
+        const struct EventObjectGraphicsInfo *graphicsInfo = GetEventObjectGraphicsInfo(gEventObjects[behavior].graphicsId);
+        if (graphicsInfo != NULL)
+        {
+            if (graphicsInfo->doorOffsetType == DOOROFFSET_DOWN)
+                func = Task_WalkPlayerOutAnimDoor;
+            else
+                func = Task_DefaultMapChangeTransition;
+        }
+        else
+            func = Task_DefaultMapChangeTransition;
+    }
     else
-        func = task_map_chg_seq_0807E2CC;
+    {
+        behavior = MapGridGetMetatileBehaviorAt(x, y);
+        if (MetatileBehavior_IsDoor(behavior) == TRUE)
+            func = Task_WalkPlayerOutAnimDoor;
+        else if (MetatileBehavior_IsNonAnimDoor(behavior) == TRUE)
+            func = Task_WalkPlayerOutDoorway;
+        else
+            func = Task_DefaultMapChangeTransition;
+    }
     CreateTask(func, 10);
 }
 
@@ -312,12 +330,12 @@ void sub_80AF40C(void)
     Overworld_PlaySpecialMapMusic();
     pal_fill_for_maplights();
     PlaySE(SE_TK_WARPOUT);
-    CreateTask(task_map_chg_seq_0807E2CC, 10);
+    CreateTask(Task_DefaultMapChangeTransition, 10);
     ScriptContext2_Enable();
     sub_8085540(0xE);
 }
 
-static void sub_80AF438(u8 taskId)
+static void Task_WalkPlayerOutAnimDoor(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
     s16 *x = &task->data[2];
@@ -366,7 +384,7 @@ static void sub_80AF438(u8 taskId)
     }
 }
 
-static void task_map_chg_seq_0807E20C(u8 taskId)
+static void Task_WalkPlayerOutDoorway(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
     s16 *x = &task->data[2];
@@ -404,7 +422,7 @@ static void task_map_chg_seq_0807E20C(u8 taskId)
     }
 }
 
-static void task_map_chg_seq_0807E2CC(u8 taskId)
+static void Task_DefaultMapChangeTransition(u8 taskId)
 {
     switch (gTasks[taskId].data[0])
     {
@@ -500,6 +518,15 @@ void DoDiveWarp(void)
     ScriptContext2_Enable();
     TryFadeOutOldMapMusic();
     WarpFadeScreen();
+    PlayRainStoppingSoundEffect();
+    gFieldCallback = mapldr_default;
+    CreateTask(sub_80AFA0C, 10);
+}
+
+void DoCustomWarp(void)
+{
+    ScriptContext2_Enable();
+    // TryFadeOutOldMapMusic();
     PlayRainStoppingSoundEffect();
     gFieldCallback = mapldr_default;
     CreateTask(sub_80AFA0C, 10);

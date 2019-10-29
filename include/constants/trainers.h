@@ -89,7 +89,9 @@
 #define TRAINER_PIC_MAY                   72
 #define TRAINER_PIC_BUG_CATCHER           73
 #define TRAINER_PIC_POKEMON_RANGER_M      74
+#define TRAINER_PIC_PKMN_RANGER_M         74
 #define TRAINER_PIC_POKEMON_RANGER_F      75
+#define TRAINER_PIC_PKMN_RANGER_F         75
 #define TRAINER_PIC_MAGMA_LEADER_MAXIE    76
 #define TRAINER_PIC_LASS                  77
 #define TRAINER_PIC_YOUNG_COUPLE          78
@@ -107,6 +109,18 @@
 #define TRAINER_PIC_LEAF                  90
 #define TRAINER_PIC_RS_BRENDAN            91
 #define TRAINER_PIC_RS_MAY                92
+#define TRAINER_PIC_PLASMA_KID            93
+#define TRAINER_PIC_GHETSIS               94
+#define TRAINER_PIC_FROGGER               95
+#define TRAINER_PIC_MERMAID               96
+#define TRAINER_PIC_MASKED_BOY            97
+#define TRAINER_PIC_FAIRY_GIRL            98
+#define TRAINER_PIC_CORPSE_BRIDE          99
+#define TRAINER_PIC_HERO_OF_TIME         100
+#define TRAINER_PIC_SKELETON             101
+#define TRAINER_PIC_TARZAN               102
+#define TRAINER_PIC_TWINS_PM             103
+#define TRAINER_PIC_ALIEN                104
 
 #define TRAINER_BACK_PIC_BRENDAN                0
 #define TRAINER_BACK_PIC_MAY                    1
@@ -185,7 +199,9 @@
 #define FACILITY_CLASS_MAY_3                 0x41
 #define FACILITY_CLASS_PKMN_BREEDER_M        0x42
 #define FACILITY_CLASS_BUG_CATCHER           0x43
+#define FACILITY_CLASS_POKEMON_RANGER_M      0x44
 #define FACILITY_CLASS_PKMN_RANGER_M         0x44
+#define FACILITY_CLASS_POKEMON_RANGER_F      0x45
 #define FACILITY_CLASS_PKMN_RANGER_F         0x45
 #define FACILITY_CLASS_MAGMA_LEADER_MAXIE    0x46
 #define FACILITY_CLASS_LASS                  0x47
@@ -268,6 +284,18 @@
 #define TRAINER_CLASS_PIKE_QUEEN     0x3f
 #define TRAINER_CLASS_PYRAMID_KING   0x40
 #define TRAINER_CLASS_RS_PROTAG      0x41
+#define TRAINER_CLASS_PLASMA_KID     0x42
+#define TRAINER_CLASS_GHETSIS        0x43
+#define TRAINER_CLASS_FROGGER        0x44
+#define TRAINER_CLASS_MERMAID        0x45
+#define TRAINER_CLASS_MASKED_BOY     0x46
+#define TRAINER_CLASS_FAIRY_GIRL     0x47
+#define TRAINER_CLASS_CORPSE_BRIDE   0x48
+#define TRAINER_CLASS_HERO_OF_TIME   0x49
+#define TRAINER_CLASS_SKELETON       0x4A
+#define TRAINER_CLASS_TARZAN         0x4B
+#define TRAINER_CLASS_TWINS_PM       0x4C
+#define TRAINER_CLASS_ALIEN          0x4D
 
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music

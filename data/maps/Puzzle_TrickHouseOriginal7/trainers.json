@@ -1,0 +1,89 @@
+[
+	{
+		"class": "PLASMA_KID",
+		"music": "INTENSE",
+		"name": "JOSHUA",
+		"party": [
+			{
+				"species": "SPECIES_KADABRA",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_SOLROCK",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "HEX_MANIAC",
+		"music": "SUSPICIOUS",
+		"female": true,
+		"name": "PATRICIA",
+		"party": [
+			{
+				"species": "SPECIES_BANETTE",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_LUNATONE",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "TWINS_PM",
+		"music": "TWINS",
+		"female": true,
+		"name": "AMY & LIV",
+		"party": [
+			{
+				"species": "SPECIES_PLUSLE",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_MINUN",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "PSYCHIC",
+		"music": "INTENSE",
+		"pic": "PSYCHIC_F",
+		"female": true,
+		"name": "MARIELA",
+		"party": [
+			{
+				"species": "SPECIES_CHIMECHO",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "PSYCHIC",
+		"music": "INTENSE",
+		"pic": "PSYCHIC_M",
+		"name": "ALVARO",
+		"party": [
+			{
+				"species": "SPECIES_BANETTE",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_KADABRA",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "GHETSIS",
+		"music": "RICH",
+		"name": "EVERETT",
+		"party": [
+			{
+				"species": "SPECIES_WOBBUFFET",
+				"level": 29
+			}
+		]
+	}
+]

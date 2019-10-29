@@ -252,6 +252,7 @@ gSpecials:: @ 81DBA64
 	def_special CallBattleFactoryFunction
 	def_special CallBattlePikeFunction
 	@ def_special CallBattlePyramidFunction
+	def_special CanAnyPartyMonsBeHealed
 	def_special StopMapMusic
 	def_special sub_81B99B4
 	def_special sub_81B9B80
@@ -417,7 +418,7 @@ gSpecials:: @ 81DBA64
 	def_special sub_813B880
 	@ def_special CallApprenticeFunction
 	def_special ShouldTryGetTrainerScript
-	@ def_special ShowMapNamePopup
+	def_special ShowMapNamePopup
 	@ def_special ShowMapNamePopup
 	def_special DoMirageTowerCeilingCrumble
 	def_special SetMirageTowerVisibility

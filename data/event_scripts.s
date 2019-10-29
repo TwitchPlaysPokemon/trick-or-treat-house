@@ -54,6 +54,11 @@ gSpecialVars:: @ 81DBA0C
 	.4byte gSpecialVar_MonBoxPos
 	.4byte gSpecialVar_Unused_0x8014
 	.4byte gTrainerBattleOpponent_A
+	.4byte gSpecialVar_InteractX
+	.4byte gSpecialVar_InteractY
+	.4byte gSpecialVar_MetatileX
+	.4byte gSpecialVar_MetatileY
+	.4byte gSpecialVar_LastWarpId
 
 	.include "data/specials.inc"
 
@@ -82,6 +87,8 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/TrickHouseEntrance/scripts.inc"
 	.include "data/maps/TrickHouseEnd/scripts.inc"
 	.include "data/maps/TrickHouseCorridor/scripts.inc"
+	
+	@ -------------------------------------------------
 
 	.include "data/maps/Puzzle_TrickHouseCut/scripts.inc"
 	.include "data/maps/Puzzle_TrickHouseTrapdoors/scripts.inc"
@@ -92,16 +99,56 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/WaterTemple_Lv1/scripts.inc"
 	.include "data/maps/WaterTemple_Lv2/scripts.inc"
 	
-	.include "data/maps/Puzzle_LostWoods_Entrance/scripts.inc"
-	.include "data/maps/Puzzle_LostWoods_Room0/scripts.inc"
+	.include "data/maps/Puzzle_LostWoods1_Entrance/scripts.inc"
+	.include "data/maps/LostWoods1_Exit/scripts.inc"
+	.include "data/maps/LostWoods1_Room0/scripts.inc"
+	.include "data/maps/LostWoods1_Room1/scripts.inc"
+	.include "data/maps/LostWoods1_Room2/scripts.inc"
+	.include "data/maps/LostWoods1_Room3/scripts.inc"
+	.include "data/maps/LostWoods1_Room4/scripts.inc"
+	.include "data/maps/LostWoods1_Room5/scripts.inc"
+	.include "data/maps/LostWoods1_Room6/scripts.inc"
+	.include "data/maps/LostWoods1_Room7/scripts.inc"
+	.include "data/maps/LostWoods1_Room8/scripts.inc"
+	.include "data/maps/LostWoods1_Room9/scripts.inc"
+	.include "data/maps/LostWoods1_Room10/scripts.inc"
+	.include "data/maps/LostWoods1_Underwater/scripts.inc"
+
+	.include "data/maps/Puzzle_LostWoods2_Entrance/scripts.inc"
+	.include "data/maps/LostWoods2_Exit/scripts.inc"
+
+	.include "data/maps/Puzzle_LostWoods3_Entrance/scripts.inc"
+	.include "data/maps/LostWoods3_Exit/scripts.inc"
+
+	.include "data/maps/Puzzle_LostWoods4_Entrance/scripts.inc"
+	.include "data/maps/LostWoods4_Exit/scripts.inc"
+
+	.include "data/maps/Puzzle_Loss_Floor1/scripts.inc"
+	.include "data/maps/Puzzle_Loss_Floor2/scripts.inc"
 
 	.include "data/maps/Puzzle_MusicNoteTiles/scripts.inc"
 	
+	.include "data/maps/Puzzle_LedgeMountain/scripts.inc"
+	.include "data/maps/LedgeMountain_Support/scripts.inc"
+	
+	.include "data/maps/Puzzle_Wilke/scripts.inc"
+	
+	.include "data/maps/Puzzle_Route110/scripts.inc"
+	
+	@ -------------------------------------------------
+	
+	.include "data/maps/TrickTreat_PetalburgCity/scripts.inc"
+	.include "data/maps/TrickTreat_MossdeepCity/scripts.inc"
+	
+	@ -------------------------------------------------
+	
+	.include "data/maps/EmptyPuzzle/scripts.inc"
 	
 	.include "data/maps/TestMapHallway/scripts.inc"
 	.include "data/maps/TestLayoutSwitching/scripts.inc"
 	.include "data/maps/TestLayoutSwitching2/scripts.inc"
-	.include "data/maps/EmptyPuzzle/scripts.inc"
+	.include "data/maps/TestMirrorMovement/scripts.inc"
+	.include "data/maps/TestCopyMovement/scripts.inc"
 	
 	.include "data/maps/PetalburgCity/scripts.inc"
 	.include "data/maps/SlateportCity/scripts.inc"
@@ -109,7 +156,6 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/RustboroCity/scripts.inc"
 	.include "data/maps/FortreeCity/scripts.inc"
 	.include "data/maps/LilycoveCity/scripts.inc"
-	.include "data/maps/MossdeepCity/scripts.inc"
 	.include "data/maps/SootopolisCity/scripts.inc"
 	.include "data/maps/EverGrandeCity/scripts.inc"
 	.include "data/maps/LittlerootTown/scripts.inc"
@@ -128,7 +174,6 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/Route107/scripts.inc"
 	.include "data/maps/Route108/scripts.inc"
 	.include "data/maps/Route109/scripts.inc"
-	.include "data/maps/Route110/scripts.inc"
 	.include "data/maps/Route111/scripts.inc"
 	.include "data/maps/Route112/scripts.inc"
 	.include "data/maps/Route113/scripts.inc"
@@ -178,13 +223,13 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/SecretBase_YellowCave3/scripts.inc"
 	.include "data/maps/SecretBase_YellowCave4/scripts.inc"
 	
-	.include "data/maps/Route110_TrickHousePuzzle1/scripts.inc"
-	.include "data/maps/Route110_TrickHousePuzzle2/scripts.inc"
-	.include "data/maps/Route110_TrickHousePuzzle3/scripts.inc"
-	.include "data/maps/Route110_TrickHousePuzzle4/scripts.inc"
-	.include "data/maps/Route110_TrickHousePuzzle6/scripts.inc"
-	.include "data/maps/Route110_TrickHousePuzzle7/scripts.inc"
-	.include "data/maps/Route110_TrickHousePuzzle8/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal1/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal2/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal3/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal4/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal6/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal7/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal8/scripts.inc"
 
 Std_MsgboxNPC: @ 8271315
 	lock
@@ -334,6 +379,11 @@ EventScript_ResetAllBerries:: @ 827149D
 EventScript_ResetAllMapFlags:: @ 82715DE
 	setrespawn HEAL_LOCATION_TRICK_HOUSE_EXT
 	setflag FLAG_SYS_B_DASH
+	.if DISABLE_DEBUG
+	setflag FLAG_HIDE_DEBUG_OBJECTS
+	.endif
+	setflag FLAG_HIDE_INTRO_CHARACTERS
+	setflag FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
 	call EventScript_ResetAllBerries
 	giveitem ITEM_POTION, 5
 	giveitem ITEM_ANTIDOTE, 2
@@ -382,8 +432,8 @@ EverGrandeCity_HallOfFame_EventScript_271839:: @ 8271839
 	@ setvar VAR_FOSSIL_MANIAC_STATE, 1
 	return
 
-@ EverGrandeCity_HallOfFame_EventScript_27183F:: @ 827183F
-	clearflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL
+EverGrandeCity_HallOfFame_EventScript_27183F:: @ 827183F
+	@ clearflag FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL
 	return
 
 EverGrandeCity_HallOfFame_EventScript_271843:: @ 8271843
@@ -487,7 +537,6 @@ FortreeCity_PokemonCenter_1F_EventScript_27191E:: @ 827191E
 LavaridgeTown_PokemonCenter_1F_EventScript_27191E:: @ 827191E
 LilycoveCity_PokemonCenter_1F_EventScript_27191E:: @ 827191E
 MauvilleCity_PokemonCenter_1F_EventScript_27191E:: @ 827191E
-MossdeepCity_PokemonCenter_1F_EventScript_27191E:: @ 827191E
 OldaleTown_PokemonCenter_1F_EventScript_27191E:: @ 827191E
 PacifidlogTown_PokemonCenter_1F_EventScript_27191E:: @ 827191E
 PetalburgCity_PokemonCenter_1F_EventScript_27191E:: @ 827191E
@@ -632,74 +681,78 @@ OldaleTown_PokemonCenter_1F_Movement_271AD0: @ 8271AD0
 Std_ObtainItem:: @ 8271AD3
 	giveitem VAR_0x8000, VAR_0x8001
 	copyvar VAR_0x8007, VAR_RESULT
-	call EventScript_271AE3
+	call Std_ObtainItem_DisplayStandardText
 	return
 
-EventScript_271AE3:: @ 8271AE3
+Std_ObtainItem_DisplayStandardText:: @ 8271AE3
 	bufferitemnameplural 1, VAR_0x8000, VAR_0x8001
 	checkitemtype VAR_0x8000
-	call EventScript_271B08
+	call Std_ObtainItem_BufferItemTypeAndPlayJingle
 	compare VAR_0x8007, 1
-	call_if_eq EventScript_271B95
+	call_if_eq Std_ObtainItem_DisplayPutItemInPocket
 	compare VAR_0x8007, 0
-	call_if_eq EventScript_271BA9
+	call_if_eq Std_ObtainItem_FailBagFull
 	return
 
-EventScript_271B08:: @ 8271B08
+Std_ObtainItem_BufferItemTypeAndPlayJingle:: @ 8271B08
 	switch VAR_RESULT
-	case 1, EventScript_271B45
-	case 5, EventScript_271B55
-	case 2, EventScript_271B65
-	case 3, EventScript_271B75
-	case 4, EventScript_271B85
+	case 1, Std_ObtainItem_HandleItemType1
+	case 5, Std_ObtainItem_HandleItemType5
+	case 2, Std_ObtainItem_HandleItemType2
+	case 3, Std_ObtainItem_HandleItemType3
+	case 4, Std_ObtainItem_HandleItemType4
 	end
 
-EventScript_271B45:: @ 8271B45
+Std_ObtainItem_HandleItemType1:: @ 8271B45
 	bufferstdstring 2, 14
 	compare VAR_0x8007, 1
-	call_if_eq EventScript_271BAF
+	call_if_eq Std_ObtainItem_PlayItemJingle
 	return
 
-EventScript_271B55:: @ 8271B55
+Std_ObtainItem_HandleItemType5:: @ 8271B55
 	bufferstdstring 2, 15
 	compare VAR_0x8007, 1
-	call_if_eq EventScript_271BAF
+	call_if_eq Std_ObtainItem_PlayItemJingle
 	return
 
-EventScript_271B65:: @ 8271B65
+Std_ObtainItem_HandleItemType2:: @ 8271B65
 	bufferstdstring 2, 16
 	compare VAR_0x8007, 1
-	call_if_eq EventScript_271BAF
+	call_if_eq Std_ObtainItem_PlayItemJingle
 	return
 
-EventScript_271B75:: @ 8271B75
+Std_ObtainItem_HandleItemType3:: @ 8271B75
 	bufferstdstring 2, 17
 	compare VAR_0x8007, 1
-	call_if_eq EventScript_271BB3
+	call_if_eq Std_ObtainItem_PlayTMJingle
 	return
 
-EventScript_271B85:: @ 8271B85
+Std_ObtainItem_HandleItemType4:: @ 8271B85
 	bufferstdstring 2, 18
 	compare VAR_0x8007, 1
-	call_if_eq EventScript_271BAF
+	call_if_eq Std_ObtainItem_PlayItemJingle
 	return
 
-EventScript_271B95:: @ 8271B95
-	message gUnknown_08272A78
+Std_ObtainItem_DisplayPutItemInPocket:: @ 8271B95
+	buffernumberstring2 0, VAR_0x8001, 1
+	message gText_ObtainedTheItem
 	waitfanfare
-	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
+	@ msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
+	message gText_PutItemInPocket
+	waitmessage
+	waitbuttonpress
 	setvar VAR_RESULT, 1
 	return
 
-EventScript_271BA9:: @ 8271BA9
+Std_ObtainItem_FailBagFull:: @ 8271BA9
 	setvar VAR_RESULT, 0
 	return
 
-EventScript_271BAF:: @ 8271BAF
+Std_ObtainItem_PlayItemJingle:: @ 8271BAF
 	playfanfare MUS_FANFA4
 	return
 
-EventScript_271BB3:: @ 8271BB3
+Std_ObtainItem_PlayTMJingle:: @ 8271BB3
 	playfanfare MUS_ME_WAZA
 	return
 
@@ -739,7 +792,7 @@ Std_FindItem:: @ 8271BFD
 	copyvar VAR_0x8007, VAR_RESULT
 	bufferitemnameplural 1, VAR_0x8000, VAR_0x8001
 	checkitemtype VAR_0x8000
-	call EventScript_271B08
+	call Std_ObtainItem_BufferItemTypeAndPlayJingle
 	compare VAR_0x8007, 1
 	call_if_eq EventScript_PickItemUp
 	compare VAR_0x8007, 0
@@ -772,15 +825,16 @@ EventScript_PickItemUp:: @ 8271C3A
 
 EventScript_271C8F:: @ 8271C8F
 	bufferitemnameplural 0, VAR_0x8004, VAR_0x8005
-	message gText_PlayerFoundOneItemTwoLines
+	message gText_PlayerFoundOneTMItem
 	return
 
 EventScript_271C9B:: @ 8271C9B
+	buffernumberstring2 0, VAR_0x8005
 	message gText_PlayerFoundOneItem
 	return
 
 EventScript_271CA1:: @ 8271CA1
-	msgbox gUnknown_08272A78, MSGBOX_DEFAULT
+	msgbox gText_ObtainedTheItem, MSGBOX_DEFAULT
 	msgbox gText_TooBadBagIsFull, MSGBOX_DEFAULT
 	setvar VAR_RESULT, 0
 	return
@@ -792,7 +846,7 @@ EventScript_HiddenItemScript:: @ 8271CB7
 	copyvar VAR_0x8007, VAR_RESULT
 	bufferitemnameplural 1, VAR_0x8005, 1
 	checkitemtype VAR_0x8005
-	call EventScript_271B08
+	call Std_ObtainItem_BufferItemTypeAndPlayJingle
 	compare VAR_0x8007, 1
 	goto_if_eq EventScript_271CE8
 	compare VAR_0x8007, 0
@@ -811,11 +865,12 @@ EventScript_271CE8:: @ 8271CE8
 
 EventScript_271D0E:: @ 8271D0E
 	bufferitemnameplural 0, VAR_0x8004, 1
-	message gText_PlayerFoundOneItemTwoLines
+	message gText_PlayerFoundOneTMItem
 	goto EventScript_271D2A
 	end
 
 EventScript_271D1F:: @ 8271D1F
+	buffernumberstring2 0, VAR_0x8006
 	message gText_PlayerFoundOneItem
 	goto EventScript_271D2A
 	end
@@ -832,6 +887,7 @@ EventScript_271D2A:: @ 8271D2A
 	end
 
 EventScript_271D47:: @ 8271D47
+	buffernumberstring2 0, VAR_0x8006
 	msgbox gText_PlayerFoundOneItem, MSGBOX_DEFAULT
 	msgbox gText_TooBadBagIsFull, MSGBOX_DEFAULT
 	setvar VAR_RESULT, 0
@@ -932,8 +988,8 @@ DewfordTown_Gym_EventScript_271E84:: @ 8271E84
 LavaridgeTown_Gym_1F_EventScript_271E84:: @ 8271E84
 MauvilleCity_Gym_EventScript_271E84:: @ 8271E84
 RustboroCity_Gym_EventScript_271E84:: @ 8271E84
-	clearflag FLAG_HIDE_PETALBURG_GYM_GREETER
-	setflag FLAG_PETALBURG_MART_EXPANDED_ITEMS
+	@ clearflag FLAG_HIDE_PETALBURG_GYM_GREETER
+	@ setflag FLAG_PETALBURG_MART_EXPANDED_ITEMS
 	return
 
 DewfordTown_EventScript_271E8B:: @ 8271E8B
@@ -970,7 +1026,6 @@ EventScript_271F3D:: @ 8271F3D
 @ FortreeCity_Gym_EventScript_271F43:: @ 8271F43
 @ LavaridgeTown_Gym_1F_EventScript_271F43:: @ 8271F43
 @ MauvilleCity_Gym_EventScript_271F43:: @ 8271F43
-@ MossdeepCity_Gym_EventScript_271F43:: @ 8271F43
 @ PetalburgCity_Gym_EventScript_271F43:: @ 8271F43
 @ RustboroCity_Gym_EventScript_271F43:: @ 8271F43
 @ SootopolisCity_Gym_1F_EventScript_271F43:: @ 8271F43
@@ -1236,12 +1291,12 @@ PetalburgCity_Gym_EventScript_2721F8:: @ 82721F8
 	return
 
 RusturfTunnel_EventScript_272216:: @ 8272216
-	removeobject 1
-	removeobject 10
-	clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_LOVER_MAN
-	clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_LOVER_WOMAN
-	setvar VAR_RUSTURF_TUNNEL_STATE, 6
-	setflag FLAG_RUSTURF_TUNNEL_OPENED
+	@ removeobject 1
+	@ removeobject 10
+	@ clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_LOVER_MAN
+	@ clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_LOVER_WOMAN
+	@ setvar VAR_RUSTURF_TUNNEL_STATE, 6
+	@ setflag FLAG_RUSTURF_TUNNEL_OPENED
 	return
 
 EventScript_27222B:: @ 827222B
@@ -1567,33 +1622,64 @@ Movement_2725CB:: @ 82725CB
 	walk_up
 	step_end
 
+@ -----------------------------------------------------
+
+EventScript_Pumpkin:: @ 82725CE
+	msgbox Text_Pumpkin, MSGBOX_SIGN
+	end
+Text_Pumpkin: @ 82A81E5
+	.string "It's a pumpkin.$"
+
 EventScript_PictureBookShelf:: @ 82725CE
 	msgbox Text_PictureBookShelf, MSGBOX_SIGN
 	end
+Text_PictureBookShelf: @ 82A81E5
+	.string "There's a set of POKéMON picture books.$"
 
 EventScript_BookShelf:: @ 82725D7
 	msgbox Text_BookShelf, MSGBOX_SIGN
 	end
+Text_BookShelf: @ 82A820D
+	.string "It's filled with all sorts of books.$"
 
 EventScript_PokemonCenterBookShelf:: @ 82725E0
 	msgbox Text_PokemonCenterBookShelf, MSGBOX_SIGN
 	end
+Text_PokemonCenterBookShelf: @ 82A8232
+	.string "POKéMON magazines!\n"
+	.string "POKéMON PAL…\p"
+	.string "POKéMON HANDBOOK…\n"
+	.string "ADORABLE POKéMON…$"
 
 EventScript_Vase:: @ 82725E9
 	msgbox Text_Vase, MSGBOX_SIGN
 	end
+Text_Vase: @ 82A8276
+	.string "This vase looks expensive…\n"
+	.string "Peered inside…\p"
+	.string "But, it was empty.$"
 
 EventScript_EmptyTrashCan:: @ 82725F2
 	msgbox Text_EmptyTrashCan, MSGBOX_SIGN
 	end
+Text_EmptyTrashCan: @ 82A82B3
+	.string "It's empty.$"
 
 EventScript_ShopShelf:: @ 82725FB
 	msgbox Text_ShopShelf, MSGBOX_SIGN
 	end
+Text_ShopShelf: @ 82A82BF
+	.string "The shelves brim with all sorts of\n"
+	.string "POKéMON merchandise.$"
 
 EventScript_Blueprint:: @ 8272604
 	msgbox Text_Blueprint, MSGBOX_SIGN
 	end
+Text_Blueprint: @ 82A82F7
+	.string "A blueprint of some sort?\n"
+	.string "It's too complicated!$"
+
+@ -----------------------------------------------------
 
 Text_WouldYouLikeToMixRecords: @ 827260D
 	.string "Would you like to mix records with\n"
@@ -1657,10 +1743,10 @@ gUnknown_08272A3F:: @ 8272A3F
 	.string "Please come again!$"
 
 gUnknown_08272A52:: @ 8272A52
-	.string "{PLAYER}{STRING 5}, welcome!\pWhat can I do for you?$"
+	.string "{PLAYER}, welcome!\pWhat can I do for you?$"
 
-gUnknown_08272A78:: @ 8272A78
-	.string "Obtained the {STR_VAR_2}!$"
+gText_ObtainedTheItem:: @ 8272A78
+	.string "Obtained {STR_VAR_1} {STR_VAR_2}!$"
 
 gUnknown_08272A89:: @ 8272A89
 	.string "The BAG is full…$"
@@ -1669,7 +1755,7 @@ gText_PutItemInPocket:: @ 8272A9A
 	.string "{PLAYER} put away the {STR_VAR_2}\nin the {STR_VAR_3} POCKET.$"
 
 gText_PlayerFoundOneItem:: @ 8272ABF
-	.string "{PLAYER} found one {STR_VAR_2}!$"
+	.string "{PLAYER} found {STR_VAR_1} {STR_VAR_2}!$"
 
 gText_PlayerPutItemInBag:: @ 8272AEA
 	.string "{PLAYER} put away the {STR_VAR_2}\nin the BAG.$"
@@ -1743,7 +1829,7 @@ gUnknown_08273161:: @ 8273161
 gUnknown_08273178:: @ 8273178
 	.string "Thank you for accessing the\nMYSTERY GIFT System.$"
 
-gText_PlayerFoundOneItemTwoLines:: @ 82731A9
+gText_PlayerFoundOneTMItem:: @ 82731A9
 	.string "{PLAYER} found one {STR_VAR_1}\n{STR_VAR_2}!$"
 
 gText_Sudowoodo_Attacked:: @ 82731BD
@@ -1873,7 +1959,6 @@ FortreeCity_PokemonCenter_2F_EventScript_27375B:: @ 827375B
 LavaridgeTown_PokemonCenter_2F_EventScript_27375B:: @ 827375B
 LilycoveCity_PokemonCenter_2F_EventScript_27375B:: @ 827375B
 MauvilleCity_PokemonCenter_2F_EventScript_27375B:: @ 827375B
-MossdeepCity_PokemonCenter_2F_EventScript_27375B:: @ 827375B
 OldaleTown_PokemonCenter_2F_EventScript_27375B:: @ 827375B
 PacifidlogTown_PokemonCenter_2F_EventScript_27375B:: @ 827375B
 PetalburgCity_PokemonCenter_2F_EventScript_27375B:: @ 827375B
@@ -1893,7 +1978,6 @@ FortreeCity_PokemonCenter_2F_EventScript_273761:: @ 8273761
 LavaridgeTown_PokemonCenter_2F_EventScript_273761:: @ 8273761
 LilycoveCity_PokemonCenter_2F_EventScript_273761:: @ 8273761
 MauvilleCity_PokemonCenter_2F_EventScript_273761:: @ 8273761
-MossdeepCity_PokemonCenter_2F_EventScript_273761:: @ 8273761
 OldaleTown_PokemonCenter_2F_EventScript_273761:: @ 8273761
 PacifidlogTown_PokemonCenter_2F_EventScript_273761:: @ 8273761
 PetalburgCity_PokemonCenter_2F_EventScript_273761:: @ 8273761
@@ -1913,7 +1997,6 @@ FortreeCity_PokemonCenter_2F_EventScript_273767:: @ 8273767
 LavaridgeTown_PokemonCenter_2F_EventScript_273767:: @ 8273767
 LilycoveCity_PokemonCenter_2F_EventScript_273767:: @ 8273767
 MauvilleCity_PokemonCenter_2F_EventScript_273767:: @ 8273767
-MossdeepCity_PokemonCenter_2F_EventScript_273767:: @ 8273767
 OldaleTown_PokemonCenter_2F_EventScript_273767:: @ 8273767
 PacifidlogTown_PokemonCenter_2F_EventScript_273767:: @ 8273767
 PetalburgCity_PokemonCenter_2F_EventScript_273767:: @ 8273767
@@ -1957,7 +2040,6 @@ TerraCave_End_EventScript_273776:: @ 8273776
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_27378B:: @ 827378B
-MossdeepCity_StevensHouse_EventScript_27378B:: @ 827378B
 Route119_WeatherInstitute_2F_EventScript_27378B:: @ 827378B
 RustboroCity_DevonCorp_2F_EventScript_27378B:: @ 827378B
 	getpartysize
@@ -1966,7 +2048,6 @@ RustboroCity_DevonCorp_2F_EventScript_27378B:: @ 827378B
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_273797:: @ 8273797
-MossdeepCity_StevensHouse_EventScript_273797:: @ 8273797
 Route119_WeatherInstitute_2F_EventScript_273797:: @ 8273797
 RustboroCity_DevonCorp_2F_EventScript_273797:: @ 8273797
 	fadescreen 1
@@ -1977,7 +2058,6 @@ RustboroCity_DevonCorp_2F_EventScript_273797:: @ 8273797
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_2737A0:: @ 82737A0
-MossdeepCity_StevensHouse_EventScript_2737A0:: @ 82737A0
 Route119_WeatherInstitute_2F_EventScript_2737A0:: @ 82737A0
 RustboroCity_DevonCorp_2F_EventScript_2737A0:: @ 82737A0
 	bufferboxname 0, VAR_STORAGE_UNKNOWN
@@ -2013,7 +2093,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_2737FF:: @ 82737FF
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_273811:: @ 8273811
-MossdeepCity_StevensHouse_EventScript_273811:: @ 8273811
 Route119_WeatherInstitute_2F_EventScript_273811:: @ 8273811
 RustboroCity_DevonCorp_2F_EventScript_273811:: @ 8273811
 	msgbox gUnknown_0827331C, MSGBOX_DEFAULT
@@ -3075,7 +3154,7 @@ LilycoveCity_ContestLobby_EventScript_28CB2B:: @ 828CB2B
 	end
 
 LilycoveCity_ContestLobby_EventScript_28CB91:: @ 828CB91
-	clearflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER
+	@ clearflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER
 	return
 
 LilycoveCity_ContestLobby_EventScript_28CB95:: @ 828CB95
@@ -3158,14 +3237,14 @@ BattleFrontier_BattleTowerLobby_EventScript_28CC84:: @ 828CC84
 	special InterviewBefore
 	compare VAR_RESULT, 1
 	goto_if_eq BattleFrontier_BattleTowerLobby_EventScript_28CCA6
-	clearflag FLAG_HIDE_BATTLE_TOWER_REPORTER
+	@ clearflag FLAG_HIDE_BATTLE_TOWER_REPORTER
 	return
 
 BattleFrontier_BattleTowerLobby_EventScript_28CCA6:: @ 828CCA6
-	setflag FLAG_HIDE_BATTLE_TOWER_REPORTER
+	@ setflag FLAG_HIDE_BATTLE_TOWER_REPORTER
 	return
 
-	.include "data/scripts/gabby_and_ty.inc"
+	@ .include "data/scripts/gabby_and_ty.inc"
 	.include "data/text/pokemon_news.inc"
 	.include "data/scripts/mauville_man.inc"
 	.include "data/scripts/field_move_scripts.inc"
@@ -3269,33 +3348,12 @@ MauvilleCity_GameCorner_EventScript_2A5B0D:: @ 82A5B0D
 	.include "data/text/berries.inc"
 	.include "data/text/shoal_cave.inc"
 
-Text_PictureBookShelf: @ 82A81E5
-	.string "There's a set of POKéMON picture books.$"
 
-Text_BookShelf: @ 82A820D
-	.string "It's filled with all sorts of books.$"
 
-Text_PokemonCenterBookShelf: @ 82A8232
-	.string "POKéMON magazines!\n"
-	.string "POKéMON PAL…\p"
-	.string "POKéMON HANDBOOK…\n"
-	.string "ADORABLE POKéMON…$"
 
-Text_Vase: @ 82A8276
-	.string "This vase looks expensive…\n"
-	.string "Peered inside…\p"
-	.string "But, it was empty.$"
 
-Text_EmptyTrashCan: @ 82A82B3
-	.string "It's empty.$"
 
-Text_ShopShelf: @ 82A82BF
-	.string "The shelves brim with all sorts of\n"
-	.string "POKéMON merchandise.$"
 
-Text_Blueprint: @ 82A82F7
-	.string "A blueprint of some sort?\n"
-	.string "It's too complicated!$"
 
 GraniteCave_B1F_MapScript2_2A8327: @ 82A8327
 MirageTower_2F_MapScript2_2A8327: @ 82A8327
@@ -3303,14 +3361,14 @@ MirageTower_3F_MapScript2_2A8327: @ 82A8327
 MtPyre_2F_MapScript2_2A8327: @ 82A8327
 SkyPillar_2F_MapScript2_2A8327: @ 82A8327
 SkyPillar_4F_MapScript2_2A8327: @ 82A8327
-	map_script_2 VAR_ICE_STEP_COUNT, 0, EventScript_FallDownHole
+	map_script_2 VAR_STEP_TRIGGER, 0, EventScript_FallDownHole
 	.2byte 0
 
 GraniteCave_B1F_MapScript1_2A8331: @ 82A8331
 MirageTower_2F_MapScript1_2A8331: @ 82A8331
 MirageTower_3F_MapScript1_2A8331: @ 82A8331
 MtPyre_2F_MapScript1_2A8331: @ 82A8331
-	copyvar VAR_ICE_STEP_COUNT, 0x1
+	copyvar VAR_STEP_TRIGGER, 0x1
 	end
 
 
@@ -5567,30 +5625,30 @@ LilycoveCity_DepartmentStoreRooftop_Text_2C794B: @ 82C794B
 	.string "own lives to the utmost!\p"
 	.string "I hope you'll get that way, too!$"
 
-MossdeepCity_Text_2C79A6: @ 82C79A6
-	.string "I can't do this anymore!\p"
-	.string "It's utterly hopeless!\p"
-	.string "I'm a FIGHTING-type TRAINER,\n"
-	.string "so I can't win at the MOSSDEEP GYM\l"
-	.string "no matter how hard I try!\p"
-	.string "Argh! Punch! Punch! Punch!\n"
-	.string "Punch! Punch! Punch!\p"
-	.string "What, don't look at me that way!\n"
-	.string "I'm only hitting the ground!\p"
-	.string "Or do you want me to teach your\n"
-	.string "POKéMON DYNAMICPUNCH?$"
+@ TrickTreat_MossdeepCity_Text_2C79A6: @ 82C79A6
+@ 	.string "I can't do this anymore!\p"
+@ 	.string "It's utterly hopeless!\p"
+@ 	.string "I'm a FIGHTING-type TRAINER,\n"
+@ 	.string "so I can't win at the MOSSDEEP GYM\l"
+@ 	.string "no matter how hard I try!\p"
+@ 	.string "Argh! Punch! Punch! Punch!\n"
+@ 	.string "Punch! Punch! Punch!\p"
+@ 	.string "What, don't look at me that way!\n"
+@ 	.string "I'm only hitting the ground!\p"
+@ 	.string "Or do you want me to teach your\n"
+@ 	.string "POKéMON DYNAMICPUNCH?$"
 
-MossdeepCity_Text_2C7AD4: @ 82C7AD4
-	.string "Darn! You're even making fun of me?\n"
-	.string "Punch! Punch! Punch!$"
+@ TrickTreat_MossdeepCity_Text_2C7AD4: @ 82C7AD4
+@ 	.string "Darn! You're even making fun of me?\n"
+@ 	.string "Punch! Punch! Punch!$"
 
-MossdeepCity_Text_2C7B0D: @ 82C7B0D
-	.string "What? You do? You're a good person!\n"
-	.string "Which POKéMON should I teach?$"
+@ TrickTreat_MossdeepCity_Text_2C7B0D: @ 82C7B0D
+@ 	.string "What? You do? You're a good person!\n"
+@ 	.string "Which POKéMON should I teach?$"
 
-MossdeepCity_Text_2C7B4F: @ 82C7B4F
-	.string "I want you to win at the MOSSDEEP GYM\n"
-	.string "using that DYNAMICPUNCH!$"
+@ TrickTreat_MossdeepCity_Text_2C7B4F: @ 82C7B4F
+@ 	.string "I want you to win at the MOSSDEEP GYM\n"
+@ 	.string "using that DYNAMICPUNCH!$"
 
 SootopolisCity_PokemonCenter_1F_Text_2C7B8E: @ 82C7B8E
 	.string "Sigh…\p"
@@ -5843,34 +5901,34 @@ LilycoveCity_DepartmentStoreRooftop_EventScript_2C81E4:: @ 82C81E4
 	release
 	end
 
-MossdeepCity_EventScript_2C81EE:: @ 82C81EE
-	lock
-	faceplayer
-	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_DYNAMICPUNCH, MossdeepCity_EventScript_2C824C
-	msgbox MossdeepCity_Text_2C79A6, MSGBOX_YESNO
-	compare VAR_RESULT, 0
-	goto_if_eq MossdeepCity_EventScript_2C8242
-	call MossdeepCity_EventScript_2C832D
-	compare VAR_RESULT, 0
-	goto_if_eq MossdeepCity_EventScript_2C8242
-	msgbox MossdeepCity_Text_2C7B0D, MSGBOX_DEFAULT
-	setvar VAR_0x8005, 15
-	call EventScript_ShowPartyMenu
-	compare VAR_RESULT, 0
-	goto_if_eq MossdeepCity_EventScript_2C8242
-	setflag FLAG_MOVE_TUTOR_TAUGHT_DYNAMICPUNCH
-	goto MossdeepCity_EventScript_2C824C
+TrickTreat_MossdeepCity_EventScript_2C81EE:: @ 82C81EE
+	@ lock
+	@ faceplayer
+	@ goto_if_set FLAG_MOVE_TUTOR_TAUGHT_DYNAMICPUNCH, TrickTreat_MossdeepCity_EventScript_2C824C
+	@ msgbox TrickTreat_MossdeepCity_Text_2C79A6, MSGBOX_YESNO
+	@ compare VAR_RESULT, 0
+	@ goto_if_eq TrickTreat_MossdeepCity_EventScript_2C8242
+	@ call TrickTreat_MossdeepCity_EventScript_2C832D
+	@ compare VAR_RESULT, 0
+	@ goto_if_eq TrickTreat_MossdeepCity_EventScript_2C8242
+	@ msgbox TrickTreat_MossdeepCity_Text_2C7B0D, MSGBOX_DEFAULT
+	@ setvar VAR_0x8005, 15
+	@ call EventScript_ShowPartyMenu
+	@ compare VAR_RESULT, 0
+	@ goto_if_eq TrickTreat_MossdeepCity_EventScript_2C8242
+	@ setflag FLAG_MOVE_TUTOR_TAUGHT_DYNAMICPUNCH
+	@ goto TrickTreat_MossdeepCity_EventScript_2C824C
 	end
 
-MossdeepCity_EventScript_2C8242:: @ 82C8242
-	msgbox MossdeepCity_Text_2C7AD4, MSGBOX_DEFAULT
-	release
-	end
+@ TrickTreat_MossdeepCity_EventScript_2C8242:: @ 82C8242
+@ 	msgbox TrickTreat_MossdeepCity_Text_2C7AD4, MSGBOX_DEFAULT
+@ 	release
+@ 	end
 
-MossdeepCity_EventScript_2C824C:: @ 82C824C
-	msgbox MossdeepCity_Text_2C7B4F, MSGBOX_DEFAULT
-	release
-	end
+@ TrickTreat_MossdeepCity_EventScript_2C824C:: @ 82C824C
+@ 	msgbox TrickTreat_MossdeepCity_Text_2C7B4F, MSGBOX_DEFAULT
+@ 	release
+@ 	end
 
 SootopolisCity_PokemonCenter_1F_EventScript_2C8256:: @ 82C8256
 	lock
@@ -5942,7 +6000,6 @@ FortreeCity_House2_EventScript_2C832D:: @ 82C832D
 LavaridgeTown_House_EventScript_2C832D:: @ 82C832D
 LilycoveCity_DepartmentStoreRooftop_EventScript_2C832D:: @ 82C832D
 MauvilleCity_EventScript_2C832D:: @ 82C832D
-MossdeepCity_EventScript_2C832D:: @ 82C832D
 PacifidlogTown_PokemonCenter_1F_EventScript_2C832D:: @ 82C832D
 SlateportCity_PokemonFanClub_EventScript_2C832D:: @ 82C832D
 SootopolisCity_PokemonCenter_1F_EventScript_2C832D:: @ 82C832D
@@ -6191,9 +6248,7 @@ EventScript_PlayerPCFemale::
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
 
-	.include "data/maps/Puzzle_LedgeMountain/scripts.inc"
-
-	.include "data/maps/LedgeMountain_Support/scripts.inc"
+	.include "data/maps/Puzzle_TwinMemories/scripts.inc"
 
 	.include "data/maps/Puzzle_SpotDifference_Hallway/scripts.inc"
 
@@ -6208,3 +6263,27 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/Puzzle_SpotDifference_3_Left/scripts.inc"
 
 	.include "data/maps/Puzzle_SpotDifference_3_Right/scripts.inc"
+
+	.include "data/maps/Puzzle_HiddenMaze/scripts.inc"
+
+	.include "data/maps/Puzzle_Desert_Oasis/scripts.inc"
+
+	.include "data/maps/IndoorMap/scripts.inc"
+
+	.include "data/maps/Desert_East/scripts.inc"
+
+	.include "data/maps/Desert_North/scripts.inc"
+
+	.include "data/maps/Desert_West/scripts.inc"
+
+	.include "data/maps/Desert_South/scripts.inc"
+
+	.include "data/maps/TrickTreat_SlateportCity1/scripts.inc"
+
+	.include "data/maps/TrickTreat_SlateportCity2/scripts.inc"
+
+	.include "data/maps/TrickTreat_FortreeCity/scripts.inc"
+
+	.include "data/maps/Puzzle_TrickHouseOriginal5/scripts.inc"
+
+	.include "data/maps/FakeSecretBaseCave/scripts.inc"

@@ -13,6 +13,7 @@
 #include "start_menu.h"
 #include "sound.h"
 #include "sprite.h"
+#include "event_data.h"
 #include "task.h"
 #include "trig.h"
 #include "gpu_regs.h"
@@ -738,6 +739,8 @@ void FadeScreen(u8 mode, s8 delay)
     u32 fadeColor;
     bool8 fadeOut;
     bool8 useWeatherPal;
+    
+    if (FlagGet(FLAG_DISABLE_FADE_INIT)) return;
 
     switch (mode)
     {

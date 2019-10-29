@@ -1,0 +1,67 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x05",
+            "item": "ITEM_ICE_HEAL",
+            "type": "hidden_item",
+            "x": 10,
+            "y": 7
+        }
+    ],
+    "connections": [
+        {
+            "direction": "down",
+            "map": "MAP_LOST_WOODS1_ROOM6",
+            "offset": 0
+        },
+        {
+            "direction": "left",
+            "map": "MAP_LOST_WOODS1_ROOM8",
+            "offset": 0
+        },
+        {
+            "direction": "right",
+            "map": "MAP_LOST_WOODS1_ROOM0",
+            "offset": 0
+        },
+        {
+            "direction": "up",
+            "map": "MAP_LOST_WOODS1_ROOM9",
+            "offset": 0
+        }
+    ],
+    "coord_events": [
+    ],
+    "id": "MAP_LOST_WOODS1_ROOM7",
+    "layout": "LAYOUT_PUZZLE_LOST_WOODS_ROOM",
+    "map_type": "MAP_TYPE_UNDERGROUND",
+    "music": "MUS_RG_T_MORI",
+    "name": "LostWoods1_Room7",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_YOUNGSTER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "Puzzle_LostWoods1_Wanderer3",
+            "trainer_sight_or_berry_tree_id": "4",
+            "trainer_type": "1",
+            "x": 8,
+            "y": 10
+        }
+    ],
+    "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
+    "requires_flash": false,
+    "show_map_name": true,
+    "trainers": "Puzzle_LostWoods1_Entrance_TrainerTable",
+    "warp_events": [
+    ],
+    "weather": "WEATHER_SUNNY"
+}

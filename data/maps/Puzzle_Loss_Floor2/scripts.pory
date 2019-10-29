@@ -1,0 +1,135 @@
+raw `
+Puzzle_Loss_Floor2_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_Loss_Floor2_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_Loss_Floor2_FrameTable
+	.byte 0
+
+Puzzle_Loss_Floor2_FrameTable: @ 8255C41
+	map_script_2 VAR_LAST_WARP_ID, 5, Puzzle_Loss_Floor2_EventScript_WalkedInOn
+	map_script_2 VAR_LAST_WARP_ID, 4, Puzzle_Loss_Floor2_EventScript_AfterKickout
+	.2byte 0
+
+@ -----------------------------------------------------
+#define VAR_PUZZLE_ADVANCEMENT  VAR_PUZZLE_00
+#define VAR_FREE_COUNTER        VAR_PUZZLE_01
+#define FLAG_CENTER_INCIDENT    FLAG_PUZZLE_20
+
+#define METATILE_LockedDoor     0x322
+#define METATILE_UnlockedDoor   0x264
+`
+script Puzzle_Loss_Floor2_OnLoad {
+	if (var(VAR_PUZZLE_ADVANCEMENT) < 1) {
+		setflag (FLAG_TEMP_10) # Hide attendant
+	}
+	if (var(VAR_PUZZLE_ADVANCEMENT) < 2) {
+		setmetatile (14, 3, METATILE_LockedDoor, TRUE)
+	}
+	if (flag(FLAG_CENTER_INCIDENT) == TRUE) {
+		setmetatile (18, 3, METATILE_LockedDoor, TRUE)
+	}
+}
+
+script Puzzle_Loss_Floor2_SignScript_SleepSign {
+	msgbox ("Courtesy Resting Rooms\n"
+			"“A rested trainer is a safe trainer!”\p"
+			"“The Pokémon Center is not liable for\n"
+			"lost or stolen property while using\l"
+			"our facilities.\p"
+			"“Please remember to lock your door\n"
+			"before going to sleep. We ask that\l"
+			"you respect others' personal space.”$", MSGBOX_SIGN)
+}
+
+script Puzzle_Loss_Floor2_SignScript_Locked {
+	msgbox ("Locked: Occupied.$", MSGBOX_SIGN)
+}
+
+script Puzzle_Loss_Floor2_SignScript_OptionallyLocked {
+	if (var(VAR_PUZZLE_ADVANCEMENT) < 1) {
+		msgbox ("Locked: Occupied.$", MSGBOX_SIGN)
+	}
+}
+
+script Puzzle_Loss_Floor2_EventScript_Man {
+	msgbox ("Excuse me? Oh, yes, you were looking for\n"
+			"someone?\p"
+			"Just down this hallway,\n"
+			"second door on the left.", MSGBOX_NPC)
+	setvar (VAR_PUZZLE_ADVANCEMENT, 2)
+	setmetatile (14, 3, METATILE_UnlockedDoor, TRUE)
+}
+
+script Puzzle_Loss_Floor2_EventScript_Teala {
+	msgbox ("Welcome to the Trainer's Lounge.\n"
+			"My name is Teala; how may I help you?$", MSGBOX_NPC)
+}
+
+script Puzzle_Loss_Floor2_Patron1 {
+	msgbox ("Joining Team Magma was a mistake I'll\n"
+			"never live down. But I'm gonna try to\l"
+			"make things better.\p"
+			"Wait, you're not that blonde Aqua girl…\n"
+			"Who are you?$", MSGBOX_NPC)
+}
+
+script Puzzle_Loss_Floor2_Patron2 {
+	msgbox ("Hey, you wanna trade? I'll give you my\n"
+			"FLAREON for an OMANYTE.\p"
+			"What do you mean “rental” Pokémon?$", MSGBOX_NPC)
+}
+
+script Puzzle_Loss_Floor2_Patron3 {
+	msgbox ("Urph… I don't feel so good…\n"
+			"I think I ate too much candy…\p"
+			"I blame my GULPIN. If I didn't eat the\n"
+			"candy, he would have!$", MSGBOX_NPC)
+}
+script Puzzle_Loss_Floor2_Patron3Mon {
+	msgbox ("It seems to be sleeping soundly.$", MSGBOX_SIGN)
+}
+
+script Puzzle_Loss_Floor2_Doll {
+	msgbox ("Someone must have left this doll.\n"
+			"Maybe they'll come back for it.$", MSGBOX_NPC)
+}
+
+
+# -----------------------------------------------------
+
+script Puzzle_Loss_Floor2_EventScript_WalkedInOn {
+	lock
+	setvar (VAR_LAST_WARP_ID, -1)
+	playse (SE_PIN)
+	applymovement (5, PetalburgCity_PokemonCenter_2F_Movement_WalkedInOn)
+	applymovement (6, PetalburgCity_PokemonCenter_2F_Movement_WalkedInOn)
+	waitmovement (0)
+	msgbox ("AAAIIIIIIIIEEEEEEEE!!!!!!!$")
+	trainerbattle_no_intro_double (TRAINER_01, "WHY ARE YOU IN HERE?!$")
+	msgbox ("GET OUT! TELL NO ONE!!$")
+	warptodynamic
+	waitstate
+	release
+}
+raw `
+PetalburgCity_PokemonCenter_2F_Movement_WalkedInOn:
+	emote_exclamation_mark
+	walk_in_place_fastest_down
+	delay_16
+	delay_16
+	delay_16
+	step_end
+`
+
+script Puzzle_Loss_Floor2_EventScript_AfterKickout {
+	setvar (VAR_LAST_WARP_ID, -1)
+	setflag (FLAG_CENTER_INCIDENT)
+	setmetatile (18, 3, METATILE_LockedDoor, TRUE)
+}
+
+
+
+
+raw `
+#undef VAR_PUZZLE_ADVANCEMENT
+#undef VAR_FREE_COUNTER
+`

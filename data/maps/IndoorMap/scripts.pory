@@ -1,0 +1,4 @@
+raw `
+IndoorMap_MapScripts::
+	.byte 0
+`

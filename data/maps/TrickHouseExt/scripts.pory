@@ -1,0 +1,164 @@
+raw `
+TrickHouseExt_MapScripts::
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, TrickHouseExt_MapTable
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrickHouseExt_FrameTable
+	map_script MAP_SCRIPT_ON_LOAD, TrickHouseExt_OnLoad
+	.byte 0
+
+TrickHouseExt_MapTable:
+	map_script_2 VAR_LAST_WARP_ID, 3, TrickHouseExt_IntroCutsceneSetup
+	.2byte 0
+
+TrickHouseExt_FrameTable:
+	map_script_2 VAR_INTRO_COUNTER, 1, TrickHouseExt_IntroCutscene
+	.2byte 0
+`
+script TrickHouseExt_OnLoad {
+	callnative (IsCurrentPuzzleCyclingRoad)
+	if (var(VAR_RESULT) == TRUE) {
+		// Make the level look like it's being used for the puzzle
+		setmetatile (47, 41, 0x02A, FALSE)
+		setmetatile (51, 33, 0x02A, FALSE)
+		setmetatile (46, 48, 0x02A, FALSE)
+		setmetatile (50, 31, 0x3FE, TRUE)
+		setmetatile (50, 32, 0x288, TRUE)
+		setmetatile (50, 33, 0x288, TRUE)
+		setmetatile (50, 34, 0x288, TRUE)
+		setmetatile (50, 35, 0x3FF, TRUE)
+		setobjectxyperm (11, 49, 48)
+	}
+}
+
+raw `
+@ -----------------------------------------------------
+
+#define LID_BOY 6
+#define LID_GIRL 7
+#define LID_JOEY 5
+#define LID_FAIRY 8
+#define LID_WALLY 9
+#define LID_LINK 10
+
+
+TrickHouseExt_IntroCutsceneSetup:
+	callnative HidePlayerOnLoad
+	@ setvar VAR_INTRO_COUNTER, 1
+	clearflag FLAG_HIDE_INTRO_CHARACTERS
+	end
+`
+
+script TrickHouseExt_IntroCutscene {
+	lockall
+	applymovement (LID_LINK, TrickHouseExt_IntroCutscene_Movement1_Link)
+	applymovement (LID_WALLY, TrickHouseExt_IntroCutscene_Movement1_Wally)
+	fadescreenspeed (0, 4)
+	waitmovement (0)
+	
+	setvar (VAR_INTRO_COUNTER, 2)
+	warpsilent (MAP_TRICK_HOUSE_ENTRANCE, 0, 0xFF, 0xFF)
+	waitstate
+	releaseall
+}
+
+movement TrickHouseExt_IntroCutscene_Movement1_Link {
+	walk_left * 10
+	walk_down * 2
+}
+movement TrickHouseExt_IntroCutscene_Movement1_Wally {
+	delay_16 * 2
+	walk_left * 9
+	walk_in_place_down
+}
+
+raw `
+#undef LID_BOY
+#undef LID_GIRL
+#undef LID_JOEY
+#undef LID_FAIRY
+#undef LID_WALLY
+#undef LID_LINK
+
+@ -----------------------------------------------------
+
+TrickHouseExt_EventScript_1EF380:: @ 81EF380
+	msgbox TrickHouseExt_Text_1F0992, MSGBOX_SIGN
+	end
+TrickHouseExt_Text_1F0992: @ 81F0992
+	.string "TRAINER TIPS\p"
+	.string "The items in the BAG can be reorganized\n"
+	.string "by pressing SELECT.$"
+
+TrickHouseExt_EventScript_1EF389:: @ 81EF389
+	msgbox TrickHouseExt_Text_1F09DB, MSGBOX_SIGN
+	end
+TrickHouseExt_Text_1F09DB: @ 81F09DB
+	.string "“Three steps {RIGHT_ARROW} and two steps {UP_ARROW}\n"
+	.string "to reach the wondrous TRICK HOUSE.”$"
+
+TrickHouseExt_EventScript_1EF35C:: @ 81EF35C
+	msgbox TrickHouseExt_Text_1F08CD, MSGBOX_SIGN
+	end
+TrickHouseExt_Text_1F08CD: @ 81F08CD
+	.string "ROUTE 110\n"
+	.string "{LEFT_ARROW} ROUTE 103$"
+
+TrickHouseExt_EventScript_1EF34A:: @ 81EF34A
+	msgbox TrickHouseExt_Text_1F082D, MSGBOX_SIGN
+	end
+TrickHouseExt_Text_1F082D: @ 81F082D
+	.string "SEASIDE CYCLING ROAD$"
+
+TrickHouseExt_EventScript_TestDoor::
+	lock
+	msgbox TrickHouseExt_Text_TestDoor, MSGBOX_YESNO
+	closemessage
+	compare VAR_RESULT, NO
+	goto_if_eq Common_EventScript_ReleaseEnd
+	call PuzzleCommon_EventScript_DoDoorEnterAnimation
+	warp MAP_TRICK_HOUSE_DEV_ENTRANCE, 0, 0xff, 0xff
+	waitstate
+	release
+	end
+TrickHouseExt_Text_TestDoor:
+	.string "This leads to the Dev Entrance.\n"
+	.string "Enter?$"
+
+TrickHouseExt_EventScript_SoftBorderSouth::
+	lock
+	msgbox TrickHouseExt_Text_SoftBorderSouth
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkUp1
+	waitmovement 0
+	release
+	end
+TrickHouseExt_Text_SoftBorderSouth:
+	.string "You probably shouldn't go any further.\p"
+	.string "Your buddies and you were gonna Trick\n"
+	.string "or Treat in Slateport after this.$"
+
+TrickHouseExt_EventScript_SoftBorderNorth::
+	lock
+	msgbox TrickHouseExt_Text_SoftBorderNorth
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkDown1
+	waitmovement 0
+	release
+	end
+TrickHouseExt_Text_SoftBorderNorth:
+	.string "You probably shouldn't go any further.\p"
+	.string "Don't want to risk getting bogged down\n"
+	.string "in the tall grass.$"
+
+TrickHouseExt_EventScript_SoftBorderWest::
+	lock
+	msgbox TrickHouseExt_Text_SoftBorderWest
+	closemessage
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkRight1
+	waitmovement 0
+	release
+	end
+TrickHouseExt_Text_SoftBorderWest:
+	.string "You probably shouldn't go any further.\n"
+	.string "You already hit Oldale anyway.$"
+
+`

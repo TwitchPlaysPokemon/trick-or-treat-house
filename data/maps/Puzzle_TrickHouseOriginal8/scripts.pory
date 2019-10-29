@@ -1,0 +1,68 @@
+raw `
+Puzzle_TrickHouseOriginal8_MapScripts:: @ 826E801
+	puzzle_info Puzzle_TrickHouseOriginal8_Name, Puzzle_TrickHouseOriginal8_Author
+	puzzle_custom_intro Puzzle_TrickHouseOriginal8_Intro
+	puzzle_quip Puzzle_TrickHouseOriginal8_Quip
+	.byte 0
+
+Puzzle_TrickHouseOriginal8_Name:
+	.string "Floor Frolic$"
+Puzzle_TrickHouseOriginal8_Author:
+	.string "Game Freak$"
+Puzzle_TrickHouseOriginal8_Intro:
+	.string "Hah! Good! Good! You've returned!\p"
+	.string "This next puzzle is one last trip down\n"
+	.string "memory lane for me.\p"
+	.string "I've never bought so much floor polish\n"
+	.string "in my life! I still have a gallon or two!\p"
+	.string "Let us see how you do with it!$"
+Puzzle_TrickHouseOriginal8_Quip:
+	.string "I love ice skating, but that's because\n"
+	.string "the skates let you control where you're\l"
+	.string "going! This puzzle was hard!$"
+
+@ -----------------------------------------------------
+
+Puzzle_TrickHouseOriginal8_EventScript_26E81F:: @ 826E81F
+	trainerbattle_single TRAINER_01, Puzzle_TrickHouseOriginal8_Text_26E8CD, Puzzle_TrickHouseOriginal8_Text_26E8F6
+	msgbox Puzzle_TrickHouseOriginal8_Text_26E918, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseOriginal8_Text_26E8CD: @ 826E8CD
+	.string "Not many TRAINERS have made it\n"
+	.string "this far.$"
+Puzzle_TrickHouseOriginal8_Text_26E8F6: @ 826E8F6
+	.string "That must mean you're tough, too…$"
+Puzzle_TrickHouseOriginal8_Text_26E918: @ 826E918
+	.string "You've beaten the POKéMON LEAGUE\n"
+	.string "CHAMPION? That's too much!$"
+
+
+Puzzle_TrickHouseOriginal8_EventScript_26E836:: @ 826E836
+	trainerbattle_single TRAINER_02, Puzzle_TrickHouseOriginal8_Text_26E954, Puzzle_TrickHouseOriginal8_Text_26E97F
+	msgbox Puzzle_TrickHouseOriginal8_Text_26E99F, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseOriginal8_Text_26E954: @ 826E954
+	.string "Consider yourself lucky to be\n"
+	.string "battling me!$"
+Puzzle_TrickHouseOriginal8_Text_26E97F: @ 826E97F
+	.string "This isn't right!\n"
+	.string "I can't lose!$"
+Puzzle_TrickHouseOriginal8_Text_26E99F: @ 826E99F
+	.string "It's a miracle that you beat me.\n"
+	.string "You can brag about it.$"
+
+
+Puzzle_TrickHouseOriginal8_EventScript_26E84D:: @ 826E84D
+	trainerbattle_single TRAINER_03, Puzzle_TrickHouseOriginal8_Text_26E9D7, Puzzle_TrickHouseOriginal8_Text_26EA14
+	msgbox Puzzle_TrickHouseOriginal8_Text_26EA3F, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseOriginal8_Text_26E9D7: @ 826E9D7
+	.string "You've been slugging through the TRICK\n"
+	.string "HOUSE challenge, too.$"
+Puzzle_TrickHouseOriginal8_Text_26EA14: @ 826EA14
+	.string "I see…\n"
+	.string "You possess an extraordinary style.$"
+Puzzle_TrickHouseOriginal8_Text_26EA3F: @ 826EA3F
+	.string "Seeing someone like you should please\n"
+	.string "the TRICK MASTER.$"
+`

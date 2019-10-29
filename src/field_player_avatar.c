@@ -71,8 +71,8 @@ static void PlayerNotOnBikeMoving(u8, u16);
 static u8 CheckForPlayerAvatarCollision(u8);
 static u8 sub_808B028(u8);
 static u8 sub_808B164(struct EventObject *, s16, s16, u8, u8);
-static bool8 sub_808B1BC(s16, s16, u8);
-static bool8 ShouldJumpLedge(s16, s16, u8);
+static bool8 ShouldJumpOffSurfBlob(s16, s16, u8);
+static bool8 ShouldJumpLedge(struct EventObject *, s16, s16, u8);
 static u8 sub_808B238(s16, s16, u8);
 static void check_acro_bike_metatile(s16, s16, u8, u8 *);
 
@@ -100,9 +100,9 @@ static void sub_808C280(struct EventObject *);
 
 static void StartStrengthAnim(u8, u8);
 static void Task_BumpBoulder(u8 taskId);
-static u8 sub_808C3A4(struct Task *task, struct EventObject *playerObject, struct EventObject *strengthObject);
+static u8 do_boulder_bump1(struct Task *task, struct EventObject *playerObject, struct EventObject *strengthObject);
 static u8 do_boulder_dust(struct Task *task, struct EventObject *playerObject, struct EventObject *strengthObject);
-static u8 sub_808C484(struct Task *task, struct EventObject *playerObject, struct EventObject *strengthObject);
+static u8 do_boulder_bump3(struct Task *task, struct EventObject *playerObject, struct EventObject *strengthObject);
 
 static void DoPlayerMatJump(void);
 static void DoPlayerAvatarSecretBaseMatJump(u8 taskId);
@@ -115,7 +115,7 @@ static bool8 PlayerAvatar_SecretBaseMatSpinStep1(struct Task *task, struct Event
 static bool8 PlayerAvatar_SecretBaseMatSpinStep2(struct Task *task, struct EventObject *eventObject);
 static bool8 PlayerAvatar_SecretBaseMatSpinStep3(struct Task *task, struct EventObject *eventObject);
 
-static void sub_808C750(u8);
+static void DoJumpOffSurfBlob(u8);
 static void taskFF_0805D1D4(u8 taskId);
 static void sub_808C814(u8 taskId);
 
@@ -281,11 +281,11 @@ static bool8 (*const sArrowWarpMetatileBehaviorChecks2[])(u8) =  //Duplicate of 
     MetatileBehavior_IsEastArrowWarp,
 };
 
-static bool8 (*const gUnknown_08497530[])(struct Task *, struct EventObject *, struct EventObject *) =
+static bool8 (*const sBoulderBumpFuncs[])(struct Task *, struct EventObject *, struct EventObject *) =
 {
-    sub_808C3A4,
+    do_boulder_bump1,
     do_boulder_dust,
-    sub_808C484,
+    do_boulder_bump3,
 };
 
 static bool8 (*const sPlayerAvatarSecretBaseMatJump[])(struct Task *, struct EventObject *) =
@@ -677,14 +677,14 @@ static u8 sub_808B028(u8 direction)
     return sub_808B164(playerEventObj, x, y, direction, MapGridGetMetatileBehaviorAt(x, y));
 }
 
-u8 CheckForEventObjectCollision(struct EventObject *a, s16 x, s16 y, u8 direction, u8 e)
+u8 CheckForEventObjectCollision(struct EventObject *playerEventObj, s16 x, s16 y, u8 direction, u8 e)
 {
     u8 collision;
 
-    collision = GetCollisionAtCoords(a, x, y, direction);
-    if (collision == 3 && sub_808B1BC(x, y, direction))
+    collision = GetCollisionAtCoords(playerEventObj, x, y, direction);
+    if (collision == 3 && ShouldJumpOffSurfBlob(x, y, direction))
         return 5;
-    if (ShouldJumpLedge(x, y, direction))
+    if (ShouldJumpLedge(playerEventObj, x, y, direction))
     {
         IncrementGameStat(GAME_STAT_JUMPED_DOWN_LEDGES);
         return COLLISION_LEDGE_JUMP;
@@ -714,13 +714,13 @@ static u8 sub_808B164(struct EventObject *a, s16 x, s16 y, u8 direction, u8 e)
     return collision;
 }
 
-static bool8 sub_808B1BC(s16 x, s16 y, u8 direction)
+static bool8 ShouldJumpOffSurfBlob(s16 x, s16 y, u8 direction)
 {
     if ((gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_SURFING)
      && MapGridGetZCoordAt(x, y) == 3
      && GetEventObjectIdByXYZ(x, y, 3) == EVENT_OBJECTS_COUNT)
     {
-        sub_808C750(direction);
+        DoJumpOffSurfBlob(direction);
         return TRUE;
     }
     else
@@ -729,11 +729,18 @@ static bool8 sub_808B1BC(s16 x, s16 y, u8 direction)
     }
 }
 
-static bool8 ShouldJumpLedge(s16 x, s16 y, u8 z)
+static bool8 ShouldJumpLedge(struct EventObject *playerEventObj, s16 x, s16 y, u8 dir)
 {
-    if (GetLedgeJumpDirection(x, y, z) != 0)
-        return TRUE;
-    else
+    u8 ret;
+    if (GetLedgeJumpDirection(x, y, dir) != 0) 
+    {
+        MoveCoordsInDirection(dir, &x, &y, 1, 1);
+        ret = GetCollisionAtCoords(playerEventObj, x, y, dir);
+        if (ret == 3 || ret == 0)
+            return TRUE;
+        else
+            return FALSE;
+    } else
         return FALSE;
 }
 
@@ -836,6 +843,11 @@ static void PlayerAvatarTransition_Dummy(struct EventObject *eventObj)
 
 static void PlayerAvatarTransition_Normal(struct EventObject *eventObj)
 {
+    if (FlagGet(FLAG_SYS_CYCLING_ROAD))
+    {
+        PlayerAvatarTransition_MachBike(eventObj);
+        return;
+    }
     EventObjectSetGraphicsId(eventObj, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_NORMAL));
     EventObjectTurn(eventObj, eventObj->movementDirection);
     SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_ON_FOOT);
@@ -1384,7 +1396,7 @@ void InitPlayerAvatar(s16 x, s16 y, u8 direction, u8 gender)
     playerEventObjTemplate.movementType = MOVEMENT_TYPE_PLAYER;
     playerEventObjTemplate.movementRangeX = 0;
     playerEventObjTemplate.movementRangeY = 0;
-    playerEventObjTemplate.trainerType = 0;
+    playerEventObjTemplate.trainerType = TrainerType_None;
     playerEventObjTemplate.trainerRange_berryTreeId = 0;
     playerEventObjTemplate.script = NULL;
     playerEventObjTemplate.flagId = 0;
@@ -1468,13 +1480,13 @@ static void StartStrengthAnim(u8 a, u8 b)
 
 static void Task_BumpBoulder(u8 taskId)
 {
-    while (gUnknown_08497530[gTasks[taskId].data[0]](&gTasks[taskId],
+    while (sBoulderBumpFuncs[gTasks[taskId].data[0]](&gTasks[taskId],
                                                      &gEventObjects[gPlayerAvatar.eventObjectId],
                                                      &gEventObjects[gTasks[taskId].data[1]]))
         ;
 }
 
-static bool8 sub_808C3A4(struct Task *task, struct EventObject *playerObject, struct EventObject *strengthObject)
+static bool8 do_boulder_bump1(struct Task *task, struct EventObject *playerObject, struct EventObject *strengthObject)
 {
     ScriptContext2_Enable();
     gPlayerAvatar.preventStep = TRUE;
@@ -1512,7 +1524,7 @@ static bool8 do_boulder_dust(struct Task *task, struct EventObject *playerObject
     return FALSE;
 }
 
-static bool8 sub_808C484(struct Task *task, struct EventObject *playerObject, struct EventObject *strengthObject)
+static bool8 do_boulder_bump3(struct Task *task, struct EventObject *playerObject, struct EventObject *strengthObject)
 {
     if (EventObjectCheckHeldMovementStatus(playerObject)
      && EventObjectCheckHeldMovementStatus(strengthObject))
@@ -1633,7 +1645,7 @@ static bool8 PlayerAvatar_SecretBaseMatSpinStep3(struct Task *task, struct Event
 
 /* Some Field effect */
 
-static void sub_808C750(u8 a)
+static void DoJumpOffSurfBlob(u8 a)
 {
     u8 taskId;
 
@@ -1641,7 +1653,11 @@ static void sub_808C750(u8 a)
     Overworld_ClearSavedMusic();
     Overworld_ChangeMusicToDefault();
     gPlayerAvatar.flags &= ~PLAYER_AVATAR_FLAG_SURFING;
-    gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_ON_FOOT;
+    if (FlagGet(FLAG_SYS_CYCLING_ROAD)) {
+        gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_MACH_BIKE;
+    } else {
+        gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_ON_FOOT;
+    }
     gPlayerAvatar.preventStep = TRUE;
     taskId = CreateTask(taskFF_0805D1D4, 0xFF);
     gTasks[taskId].data[0] = a;
@@ -1668,8 +1684,13 @@ static void sub_808C814(u8 taskId)
 
     if (EventObjectClearHeldMovementIfFinished(playerEventObj))
     {
-        EventObjectSetGraphicsId(playerEventObj, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_NORMAL));
-        EventObjectSetHeldMovement(playerEventObj, GetFaceDirectionMovementAction(playerEventObj->facingDirection));
+        if (FlagGet(FLAG_SYS_CYCLING_ROAD)) {
+            EventObjectSetGraphicsId(playerEventObj, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_MACH_BIKE));
+            EventObjectSetHeldMovement(playerEventObj, GetFaceDirectionMovementAction(playerEventObj->facingDirection));
+        } else {
+            EventObjectSetGraphicsId(playerEventObj, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_NORMAL));
+            EventObjectSetHeldMovement(playerEventObj, GetFaceDirectionMovementAction(playerEventObj->facingDirection));
+        }
         gPlayerAvatar.preventStep = FALSE;
         ScriptContext2_Disable();
         DestroySprite(&gSprites[playerEventObj->fieldEffectSpriteId]);
@@ -2141,6 +2162,7 @@ bool32 sub_808D1E8(void)
 }
 
 static const u8 gUnknown_084975BC[] = {DIR_SOUTH, DIR_WEST, DIR_EAST, DIR_NORTH, DIR_SOUTH};
+extern void UpdateEventObjectZCoordAndPriority(struct EventObject *eventObj, struct Sprite *sprite);
 
 static void sub_808D1FC(u8 taskId)
 {
@@ -2197,6 +2219,7 @@ static void sub_808D1FC(u8 taskId)
                 sprite->oam.priority = data[6];
                 sprite->subpriority = data[7];
                 CameraObjectReset1();
+                UpdateEventObjectZCoordAndPriority(object, sprite);
                 DestroyTask(taskId);
             }
             break;

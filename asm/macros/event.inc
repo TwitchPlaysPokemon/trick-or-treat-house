@@ -518,10 +518,9 @@
 	.endm
 
 	@ Checks for quantity amount of item index in the player's PC. Both arguments can be variables.
-	.macro checkpcitem index:req, quantity:req
+	.macro getnumitem index:req
 	.byte 0x4a
 	.2byte \index
-	.2byte \quantity
 	.endm
 
 	@ Adds decoration to the player's PC. In FireRed, this command is a nop. (The argument is read, but not used for anything.)
@@ -653,6 +652,8 @@
 		.4byte \pointer3 @ event script
 	.elseif \type == TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT
 		.4byte \pointer1 @ text
+	.elseif \type == TRAINER_BATTLE_DOUBLE_NO_INTRO_TEXT
+		.4byte \pointer1 @ text
 	.elseif \type == TRAINER_BATTLE_DOUBLE
 		.4byte \pointer1 @ text
 		.4byte \pointer2 @ text
@@ -728,6 +729,11 @@
 	@ Starts a trainer battle, skipping intro text, takes a trainer and loss text
 	.macro trainerbattle_no_intro trainer:req, lose_text:req
 	trainerbattle TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT, \trainer, 0, \lose_text
+	.endm
+	
+	@ Starts a trainer battle, skipping intro text, takes a trainer and loss text
+	.macro trainerbattle_no_intro_double trainer:req, lose_text:req
+	trainerbattle TRAINER_BATTLE_DOUBLE_NO_INTRO_TEXT, \trainer, 0, \lose_text
 	.endm
 
 
@@ -860,9 +866,13 @@
 	.byte \B
 	.endm
 
-	@ Nopped in Emerald.
-	.macro drawbox
+	@ Clone of warp that does not play a sound effect nor fade the screen, nor fades the old map music.
+	.macro warpcustom map:req, warp:req, X:req, Y:req
 	.byte 0x72
+	map \map
+	.byte \warp
+	.2byte \X
+	.2byte \Y
 	.endm
 
 	@ Nopped in Emerald, but still consumes parameters.
@@ -1610,6 +1620,13 @@
 	.2byte \index
 	.endm
 	
+	@ Converts the value of input to a decimal string, and writes that string to the specified buffer.
+	.macro buffernumberstring2 out:req, input:req, article=0
+	.byte 0xe5
+	.byte \out
+	.2byte \input
+	.byte \article  @0="one", 1="the"
+	.endm
 
 @ Supplementary
 
@@ -1705,6 +1722,10 @@
 	callstd \type
 	.endm
 
+	.macro msgbox_selected type=MSGBOX_DEFAULT
+	callstd \type
+	.endm
+	
 	.macro giveitem_std item:req, amount=1, function=0
 	setorcopyvar VAR_0x8000, \item
 	setorcopyvar VAR_0x8001, \amount

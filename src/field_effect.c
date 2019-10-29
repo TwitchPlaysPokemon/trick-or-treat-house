@@ -26,7 +26,9 @@
 #include "trainer_pokemon_sprites.h"
 #include "trig.h"
 #include "util.h"
+#include "event_data.h"
 #include "constants/field_effects.h"
+#include "constants/flags.h"
 #include "constants/event_object_movement_constants.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
@@ -1405,6 +1407,11 @@ static void task00_8084310(u8 taskId)
         gFieldCallback = mapldr_08084390;
         DestroyTask(taskId);
     }
+}
+
+void HidePlayerOnLoad(struct ScriptContext *ctx)
+{
+    gEventObjects[gPlayerAvatar.eventObjectId].invisible = TRUE;
 }
 
 static void mapldr_08084390(void)
@@ -2967,7 +2974,7 @@ static void sub_80B8E14(struct Task *task)
     if (!EventObjectIsMovementOverridden(eventObject) || EventObjectClearHeldMovementIfFinished(eventObject))
     {
         sub_808C114();
-        EventObjectSetHeldMovement(eventObject, MOVEMENT_ACTION_START_ANIM_IN_DIRECTION);
+        // EventObjectSetHeldMovement(eventObject, MOVEMENT_ACTION_START_ANIM_IN_DIRECTION);
         task->data[0]++;
     }
 }
@@ -2990,7 +2997,7 @@ static void sub_80B8EA8(struct Task *task)
     if (!FieldEffectActiveListContains(FLDEFF_FIELD_MOVE_SHOW_MON))
     {
         eventObject = &gEventObjects[gPlayerAvatar.eventObjectId];
-        EventObjectSetGraphicsId(eventObject, GetPlayerAvatarGraphicsIdByStateId(3));
+        EventObjectSetGraphicsId(eventObject, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_SURFING));
         EventObjectClearHeldMovementIfFinished(eventObject);
         EventObjectSetHeldMovement(eventObject, GetJumpSpecialMovementAction(eventObject->movementDirection));
         gFieldEffectArguments[0] = task->data[1];
@@ -3123,7 +3130,7 @@ static void sub_80B9204(struct Task *task)
         gPlayerAvatar.preventStep = TRUE;
         SetPlayerAvatarStateMask(1);
         sub_808C114();
-        EventObjectSetHeldMovement(eventObject, MOVEMENT_ACTION_START_ANIM_IN_DIRECTION);
+        // EventObjectSetHeldMovement(eventObject, MOVEMENT_ACTION_START_ANIM_IN_DIRECTION);
         task->data[0]++;
     }
 }
@@ -3490,7 +3497,7 @@ static void sub_80B9978(struct Task *task)
         sprite->pos2.y = 0;
         sprite->coordOffsetEnabled = 1;
         sub_808C114();
-        EventObjectSetHeldMovement(eventObject, MOVEMENT_ACTION_START_ANIM_IN_DIRECTION);
+        // EventObjectSetHeldMovement(eventObject, MOVEMENT_ACTION_START_ANIM_IN_DIRECTION);
         task->data[0]++;
     }
 }

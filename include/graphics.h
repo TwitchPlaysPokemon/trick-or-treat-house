@@ -3057,6 +3057,33 @@ extern const u32 gTrainerPalette_Leaf[];
 extern const u32 gTrainerPalette_RubySapphireBrendan[];
 extern const u32 gTrainerPalette_RubySapphireMay[];
 
+extern const u32 gTrainerFrontPic_PlasmaKid[];
+extern const u32 gTrainerFrontPic_Ghetsis[];
+extern const u32 gTrainerFrontPic_Frogger[];
+extern const u32 gTrainerFrontPic_Mermaid[];
+extern const u32 gTrainerFrontPic_MaskedBoy[];
+extern const u32 gTrainerFrontPic_FairyGirl[];
+extern const u32 gTrainerFrontPic_CorpseBride[];
+extern const u32 gTrainerFrontPic_HeroOfTime[];
+extern const u32 gTrainerFrontPic_Skeleton[];
+extern const u32 gTrainerFrontPic_Tarzan[];
+extern const u32 gTrainerFrontPic_TwinsPM[];
+extern const u32 gTrainerFrontPic_Alien[];
+
+extern const u32 gTrainerPalette_PlasmaKid[];
+extern const u32 gTrainerPalette_Ghetsis[];
+extern const u32 gTrainerPalette_Frogger[];
+extern const u32 gTrainerPalette_Mermaid[];
+extern const u32 gTrainerPalette_MaskedBoy[];
+extern const u32 gTrainerPalette_FairyGirl[];
+extern const u32 gTrainerPalette_CorpseBride[];
+extern const u32 gTrainerPalette_HeroOfTime[];
+extern const u32 gTrainerPalette_Skeleton[];
+extern const u32 gTrainerPalette_Tarzan[];
+extern const u32 gTrainerPalette_TwinsPM[];
+extern const u32 gTrainerPalette_Alien[];
+
+
 extern const u8 gTrainerBackPic_Brendan[];
 extern const u8 gTrainerBackPic_May[];
 extern const u8 gTrainerBackPic_Red[];
@@ -3068,6 +3095,8 @@ extern const u8 gTrainerBackPic_Steven[];
 
 extern const u32 gTrainerBackPicPalette_Red[];
 extern const u32 gTrainerBackPicPalette_Leaf[];
+extern const u32 gTrainerBackPicPalette_Brendan[];
+extern const u32 gTrainerBackPicPalette_May[];
 
 // pokeblock
 extern const u32 gMenuPokeblock_Gfx[];
@@ -3358,6 +3387,66 @@ extern const u32 gRaySceneHushRing_Map[];
 extern const u32 gRaySceneHushBg_Pal[];
 extern const u32 gRaySceneHushBg_Gfx[];
 extern const u32 gRaySceneHushRing_Gfx[];
+
+#if USE_CANDY_NAMES
+// Candy
+extern const u32 gItemIconPic_chocobar[];
+extern const u32 gItemIconPal_chocobar[];
+extern const u32 gItemIconPic_starburst[];
+extern const u32 gItemIconPal_starburst[];
+extern const u32 gItemIconPic_lemondrop[];
+extern const u32 gItemIconPal_lemondrop[];
+extern const u32 gItemIconPic_warhead[];
+extern const u32 gItemIconPal_warhead[];
+extern const u32 gItemIconPic_pretzel[];
+extern const u32 gItemIconPal_pretzel[];
+extern const u32 gItemIconPic_veromango[];
+extern const u32 gItemIconPal_veromango[];
+extern const u32 gItemIconPic_100grand[];
+extern const u32 gItemIconPal_100grand[];
+extern const u32 gItemIconPic_whitechoco[];
+extern const u32 gItemIconPal_whitechoco[];
+extern const u32 gItemIconPic_butterfinger[];
+extern const u32 gItemIconPal_butterfinger[];
+extern const u32 gItemIconPic_twix[];
+extern const u32 gItemIconPal_twix[];
+extern const u32 gItemIconPic_reesecup[];
+extern const u32 gItemIconPal_reesecup[];
+extern const u32 gItemIconPic_carrotstick[];
+extern const u32 gItemIconPal_carrotstick[];
+extern const u32 gItemIconPic_appleslice[];
+extern const u32 gItemIconPal_appleslice[];
+extern const u32 gItemIconPic_prune[];
+extern const u32 gItemIconPal_prune[];
+extern const u32 gItemIconPic_celerystick[];
+extern const u32 gItemIconPal_celerystick[];
+extern const u32 gItemIconPic_malteser[];
+extern const u32 gItemIconPal_malteser[];
+extern const u32 gItemIconPic_cadbury[];
+extern const u32 gItemIconPal_cadbury[];
+extern const u32 gItemIconPic_snowball[];
+extern const u32 gItemIconPal_snowball[];
+extern const u32 gItemIconPic_turkish[];
+extern const u32 gItemIconPal_turkish[];
+extern const u32 gItemIconPic_oreo[];
+extern const u32 gItemIconPal_oreo[];
+extern const u32 gItemIconPic_mmmini[];
+extern const u32 gItemIconPal_mmmini[];
+extern const u32 gItemIconPic_mmjumbo[];
+extern const u32 gItemIconPal_mmjumbo[];
+extern const u32 gItemIconPic_gobstopper[];
+extern const u32 gItemIconPal_gobstopper[];
+extern const u32 gItemIconPic_xlchoco[];
+extern const u32 gItemIconPal_xlchoco[];
+extern const u32 gItemIconPic_pixiestick[];
+extern const u32 gItemIconPal_pixiestick[];
+extern const u32 gItemIconPic_fererorocher[];
+extern const u32 gItemIconPal_fererorocher[];
+extern const u32 gItemIconPic_toblerone[];
+extern const u32 gItemIconPal_toblerone[];
+extern const u32 gItemIconPic_gummybear[];
+extern const u32 gItemIconPal_gummybear[];
+#endif
 
 // Pokeballs
 extern const u32 gItemIcon_MasterBall[];

@@ -598,4 +598,7 @@ struct Unknown_806F160_Struct *sub_806F2AC(u8 id, u8 arg1);
 void sub_806F47C(u8 id);
 u8 *sub_806F4F8(u8 id, u8 arg1);
 
+bool8 SendMonToPCSlot(struct Pokemon* mon, s32 boxNo, s32 boxPos);
+bool8 GetMonFromPCSlot(struct Pokemon* mon, s32 boxNo, s32 boxPos);
+
 #endif // GUARD_POKEMON_H

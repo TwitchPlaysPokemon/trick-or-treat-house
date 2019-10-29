@@ -1,0 +1,164 @@
+mapscripts RustboroCity_MapScripts {
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_INTRO_COUNTER, 0: RustboroCity_PanHalloween
+	]
+	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+		VAR_INTRO_COUNTER, 0 {
+			setflag (FLAG_DISABLE_FADE_INIT)
+			callnative (HidePlayerOnLoad)
+		}
+	]
+}
+
+script(local) RustboroCity_PanHalloween {
+	lockall
+	delay (30)
+	setdooropen (26, 34)
+	applymovement (EVENT_OBJ_ID_PLAYER, RustboroCity_CameraWalk)
+	clearflag (FLAG_DISABLE_FADE_INIT)
+	fadescreenspeed (0, 6)
+	// Fade up screen, pan across city
+	applymovement (5, RustboroCity_Movement_WalkAwayBoy)
+	applymovement (2, Common_Movement_WalkInPlaceLeft)
+	delay (20)
+	applymovement (9, RustboroCity_Movement_Hop2)
+	delay (30)
+	delay (40)
+	applymovement (6, RustboroCity_Movement_Sidestep1)
+	delay (4)
+	applymovement (8, RustboroCity_Movement_Sidestep2)
+	delay (10)
+	applymovement (2, Common_Movement_WalkInPlaceRight)
+	delay (10)
+	applymovement (3, RustboroCity_Movement_WalkDown13)
+	applymovement (4, RustboroCity_Movement_WalkDown13)
+	// May going to next house
+	delay (30)
+	applymovement (7, Common_Movement_WalkInPlaceDown)
+	closedoor (26, 34)
+	waitdooranim
+	applymovement (7, RustboroCity_Movement_WalkNextGirl)
+	waitmovement (7)
+	delay (10)
+	opendoor (30, 28)
+	waitdooranim
+	applymovement (13, Common_Movement_SetVisible)
+	delay (8)
+	applymovement (7, RustboroCity_Movement_SurpriseJump)
+	// 
+	waitmovement (EVENT_OBJ_ID_PLAYER)
+	// Fade down screen
+	applymovement (EVENT_OBJ_ID_PLAYER, RustboroCity_CameraWalkFinish)
+	fadescreenspeed (1, 6)
+	warpcustom (MAP_TRICK_HOUSE_EXT, 3, -1, -1)
+	waitstate
+	releaseall
+}
+
+movement RustboroCity_CameraWalk {
+	walk_slow_diag_northeast * 15
+}
+movement RustboroCity_CameraWalkFinish {
+	walk_slow_diag_northeast * 3
+}
+movement RustboroCity_Movement_WalkAwayBoy {
+	walk_right * 5
+	walk_down * 3
+}
+movement RustboroCity_Movement_WalkNextGirl {
+	walk_down
+	walk_right * 4
+	walk_up * 7
+}
+movement RustboroCity_Movement_SurpriseJump {
+	emote_exclamation_mark
+	lock_facing_direction
+	jump_down
+	unlock_facing_direction
+}
+movement RustboroCity_Movement_Hop2 {
+	jump_in_place_right * 2
+}
+movement RustboroCity_Movement_WalkDown13 {
+	walk_fast_down * 13
+}
+movement RustboroCity_Movement_Sidestep1 {
+	walk_down * 2
+	walk_right
+}
+movement RustboroCity_Movement_Sidestep2 {
+	walk_right
+	walk_down * 2
+	walk_in_place_fast_left
+}
+
+
+raw `
+RustboroCity_EventScript_1E08DA:: @ 81E08DA
+	msgbox RustboroCity_Text_1E1695, MSGBOX_SIGN
+	end
+RustboroCity_Text_1E1695: @ 81E1695
+	.string "POKéMON TRAINER'S SCHOOL!\p"
+	.string "If I go to this school, will I be able\n"
+	.string "to catch rare POKéMON easily?$"
+
+
+RustboroCity_EventScript_1E08E3:: @ 81E08E3
+	msgbox RustboroCity_Text_1E20A6, MSGBOX_SIGN
+	end
+RustboroCity_Text_1E20A6: @ 81E20A6
+	.string "“Timesaving tunnel nearing\n"
+	.string "completion!”$"
+
+
+RustboroCity_EventScript_1E08EC:: @ 81E08EC
+	msgbox RustboroCity_Text_1E2128, MSGBOX_SIGN
+	end
+RustboroCity_Text_1E2128: @ 81E2128
+	.string "DEVON CORPORATION\p"
+	.string "“For all your living needs, we make\n"
+	.string "it all.”$"
+
+
+RustboroCity_EventScript_1E08F5:: @ 81E08F5
+	msgbox RustboroCity_Text_1E2167, MSGBOX_SIGN
+	end
+RustboroCity_Text_1E2167: @ 81E2167
+	.string "RUSTBORO CITY POKéMON GYM\n"
+	.string "LEADER: ROXANNE\p"
+	.string "“The ROCK-loving honors student!”$"
+
+
+RustboroCity_EventScript_1E08FE:: @ 81E08FE
+	msgbox RustboroCity_Text_1E21B3, MSGBOX_SIGN
+	end
+RustboroCity_Text_1E21B3: @ 81E21B3
+	.string "DEVON CORP. BRANCH OFFICE\p"
+	.string "“Access limited to DEVON employees\n"
+	.string "and authorized personnel.”$"
+
+
+RustboroCity_EventScript_1E0907:: @ 81E0907
+	msgbox RustboroCity_Text_1E220B, MSGBOX_SIGN
+	end
+RustboroCity_Text_1E220B: @ 81E220B
+	.string "RUSTBORO CITY\p"
+	.string "“The city probing the integration of\n"
+	.string "nature and science.”$"
+
+
+RustboroCity_EventScript_1E0910:: @ 81E0910
+	msgbox RustboroCity_Text_1E2253, MSGBOX_SIGN
+	end
+RustboroCity_Text_1E2253: @ 81E2253
+	.string "POKéMON TRAINER'S SCHOOL\p"
+	.string "“We'll teach you anything about\n"
+	.string "POKéMON!”$"
+
+
+RustboroCity_EventScript_1E0919:: @ 81E0919
+	msgbox RustboroCity_Text_1E2296, MSGBOX_SIGN
+	end
+RustboroCity_Text_1E2296: @ 81E2296
+	.string "CUTTER'S HOUSE$"
+`

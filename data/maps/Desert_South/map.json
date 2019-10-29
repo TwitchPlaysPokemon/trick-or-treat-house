@@ -1,0 +1,40 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": [
+        {
+            "direction": "up",
+            "map": "MAP_PUZZLE_DESERT_OASIS",
+            "offset": 0
+        },
+        {
+            "direction": "left",
+            "map": "MAP_DESERT_WEST",
+            "offset": -40
+        },
+        {
+            "direction": "up",
+            "map": "MAP_DESERT_EAST",
+            "offset": 40
+        }
+    ],
+    "coord_events": [
+    ],
+    "id": "MAP_DESERT_SOUTH",
+    "layout": "LAYOUT_DESERT_SOUTH",
+    "map_type": "MAP_TYPE_ROUTE",
+    "music": "MUS_DAN02",
+    "name": "Desert_South",
+    "object_events": [
+    ],
+    "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+    ],
+    "weather": "WEATHER_SUNNY"
+}

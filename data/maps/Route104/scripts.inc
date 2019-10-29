@@ -1,2 +1,0 @@
-Route104_MapScripts:: @ 81ECC32
-	.byte 0

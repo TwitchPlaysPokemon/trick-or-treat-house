@@ -1,0 +1,170 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "Puzzle_TrickHouseOriginal5_EventScript_ToggleSwitch1",
+            "type": "sign",
+            "x": 12,
+            "y": 16
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "Puzzle_TrickHouseOriginal5_EventScript_ToggleSwitch2",
+            "type": "sign",
+            "x": 12,
+            "y": 11
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "Puzzle_TrickHouseOriginal5_EventScript_ToggleSwitch3",
+            "type": "sign",
+            "x": 5,
+            "y": 10
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "Puzzle_TrickHouseOriginal5_EventScript_ToggleSwitch4",
+            "type": "sign",
+            "x": 4,
+            "y": 4
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "Puzzle_TrickHouseOriginal5_EventScript_ToggleSwitch5",
+            "type": "sign",
+            "x": 7,
+            "y": 5
+        }
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL5",
+    "layout": "LAYOUT_PUZZLE_TRICK_HOUSE_ORIGINAL5",
+    "map_type": "MAP_TYPE_INDOOR",
+    "music": "MUS_DAN02",
+    "name": "Puzzle_TrickHouseOriginal5",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_PSYCHIC_M",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+            "script": "Puzzle_TrickHouseOriginal5_EventScript_Psychic",
+            "trainer_sight_or_berry_tree_id": "2",
+            "trainer_type": "1",
+            "x": 0,
+            "y": 3
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_HEX_MANIAC",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_ROTATE_COUNTERCLOCKWISE",
+            "script": "Puzzle_TrickHouseOriginal5_EventScript_HexManiac",
+            "trainer_sight_or_berry_tree_id": "1",
+            "trainer_type": "1",
+            "x": 9,
+            "y": 10
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_ALIEN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_UP",
+            "script": "Puzzle_TrickHouseOriginal5_EventScript_Lass",
+            "trainer_sight_or_berry_tree_id": "1",
+            "trainer_type": "1",
+            "x": 14,
+            "y": 3
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_SCROLL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "PuzzleCommon_EventScript_Scroll",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 7,
+            "y": 2
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_ITEM_0",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_ItemMMMinis",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 7,
+            "y": 21
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Puzzle_TrickHouseOriginal7_UnobtainableItemBall",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 12,
+            "y": 20
+        }
+    ],
+    "region_map_section": "MAPSEC_ROUTE_110",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 1,
+            "y": 21
+        },
+        {
+            "dest_map": "MAP_TRICK_HOUSE_END",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 13,
+            "y": 1
+        },
+        {
+            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL5",
+            "dest_warp_id": 3,
+            "elevation": 0,
+            "x": 9,
+            "y": 2
+        },
+        {
+            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL5",
+            "dest_warp_id": 3,
+            "elevation": 0,
+            "x": 3,
+            "y": 19
+        }
+    ],
+    "weather": "WEATHER_SUNNY"
+}

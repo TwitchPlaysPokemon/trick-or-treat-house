@@ -4359,6 +4359,26 @@ u8 SendMonToPC(struct Pokemon* mon)
     return MON_CANT_GIVE;
 }
 
+bool8 SendMonToPCSlot(struct Pokemon* mon, s32 boxNo, s32 boxPos)
+{
+    struct BoxPokemon* monInSlot = GetBoxedMonPtr(boxNo, boxPos);
+    if (GetBoxMonData(monInSlot, MON_DATA_SPECIES, NULL) == SPECIES_NONE)
+    {
+        MonRestorePP(mon);
+        CopyMon(monInSlot, &mon->box, sizeof(mon->box));
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 GetMonFromPCSlot(struct Pokemon* mon, s32 boxNo, s32 boxPos)
+{
+    BoxMonAtToMon(boxNo, boxPos, mon);
+    if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_NONE) return FALSE;
+    ZeroBoxMonAt(boxNo, boxPos);
+    return TRUE;
+}
+
 u8 CalculatePlayerPartyCount(void)
 {
     gPlayerPartyCount = 0;

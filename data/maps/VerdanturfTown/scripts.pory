@@ -1,0 +1,34 @@
+raw `
+VerdanturfTown_MapScripts:: @ 81EB566
+	.byte 0
+
+VerdanturfTown_EventScript_1EB5D9:: @ 81EB5D9
+	msgbox VerdanturfTown_Text_1EB9C4, MSGBOX_SIGN
+	end
+VerdanturfTown_Text_1EB9C4: @ 81EB9C4
+	.string "VERDANTURF TOWN\p"
+	.string "“The windswept highlands with the\n"
+	.string "sweet fragrance of grass.”$"
+
+VerdanturfTown_EventScript_1EB5E2:: @ 81EB5E2
+	msgbox VerdanturfTown_Text_1EBA11, MSGBOX_SIGN
+	end
+VerdanturfTown_Text_1EBA11: @ 81EBA11
+	.string "WANDA'S HOUSE$"
+
+VerdanturfTown_EventScript_1EB5EB:: @ 81EB5EB
+	msgbox VerdanturfTown_Text_1EBA1F, MSGBOX_SIGN
+	end
+VerdanturfTown_Text_1EBA1F: @ 81EBA1F
+	.string "BATTLE TENT VERDANTURF SITE\n"
+	.string "“Feast Your Eyes on Battles!”$"
+
+VerdanturfTown_EventScript_1EB5F4:: @ 81EB5F4
+	msgbox VerdanturfTown_Text_1EBA59, MSGBOX_SIGN
+	end
+VerdanturfTown_Text_1EBA59: @ 81EBA59
+	.string "RUSTURF TUNNEL\n"
+	.string "“Linking RUSTBORO and VERDANTURF\p"
+	.string "“The tunnel project has been\n"
+	.string "canceled.”$"
+`

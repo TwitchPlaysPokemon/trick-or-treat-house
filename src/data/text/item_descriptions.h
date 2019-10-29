@@ -947,6 +947,41 @@ static const u8 sStickDesc[] = _(
     "raises FARFETCH'D's\n"
     "critical-hit ratio.");
 
+static const u8 sCutItemDesc[] = _(
+    "A pair of shears\n"
+    "for gardening.\n"
+    "Allows CUT.");
+
+static const u8 sFlashItemDesc[] = _(
+    "A battery-powered\n"
+    "light source. \n"
+    "Allows FLASH.");
+
+static const u8 sRockSmashItemDesc[] = _(
+    "A large, heavy\n"
+    "mining pick.\n"
+    "Allows ROCK SMASH.");
+
+static const u8 sStrengthItemDesc[] = _(
+    "A two-wheeled red\n"
+    "moving dolly.\n"
+    "Allows STRENGTH.");
+
+static const u8 sSurfItemDesc[] = _(
+    "An inflatable\n"
+    "rubber dinghy.\n"
+    "Allows SURF.");
+
+static const u8 sDiveItemDesc[] = _(
+    "Some SCUBA gear\n"
+    "and diving suit.\n"
+    "Allows DIVE.");
+
+static const u8 sWaterfallItemDesc[] = _(
+    "A pair of flippers\n"
+    "made of MAGIKARP scales.\n"
+    "Allows WATERFALL.");
+
 static const u8 sRedScarfDesc[] = _(
     "A hold item that\n"
     "raises COOL in\n"

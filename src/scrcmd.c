@@ -565,14 +565,21 @@ bool8 ScrCmd_givepcitem(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_checkpcitem(struct ScriptContext *ctx)
+bool8 ScrCmd_checknumitem(struct ScriptContext *ctx)
 {
     u16 itemId = VarGet(ScriptReadHalfword(ctx));
-    u16 quantity = VarGet(ScriptReadHalfword(ctx));
 
-    gSpecialVar_Result = CheckPCHasItem(itemId, quantity);
+    gSpecialVar_Result = CountTotalItemQuantityInBag(itemId);
     return FALSE;
 }
+// bool8 ScrCmd_checkpcitem(struct ScriptContext *ctx)
+// {
+//     u16 itemId = VarGet(ScriptReadHalfword(ctx));
+//     u16 quantity = VarGet(ScriptReadHalfword(ctx));
+
+//     gSpecialVar_Result = CheckPCHasItem(itemId, quantity);
+//     return FALSE;
+// }
 
 bool8 ScrCmd_givedecoration(struct ScriptContext *ctx)
 {
@@ -829,6 +836,20 @@ bool8 ScrCmd_warpsilent(struct ScriptContext *ctx)
 
     SetWarpDestination(mapGroup, mapNum, warpId, x, y);
     DoDiveWarp();
+    ResetInitialPlayerAvatarState();
+    return TRUE;
+}
+
+bool8 ScrCmd_warpcustom(struct ScriptContext *ctx)
+{
+    u8 mapGroup = ScriptReadByte(ctx);
+    u8 mapNum = ScriptReadByte(ctx);
+    u8 warpId = ScriptReadByte(ctx);
+    u16 x = VarGet(ScriptReadHalfword(ctx));
+    u16 y = VarGet(ScriptReadHalfword(ctx));
+
+    SetWarpDestination(mapGroup, mapNum, warpId, x, y);
+    DoCustomWarp();
     ResetInitialPlayerAvatarState();
     return TRUE;
 }
@@ -2474,6 +2495,26 @@ errorHandle:
     ctx->data[1] = index;
     ctx->data[2] = max;
     ctx->data[3] = (u32)ptr;
+    return FALSE;
+}
+
+bool8 ScrCmd_buffernumberstring2(struct ScriptContext *ctx)
+{
+    u8 stringVarIndex = ScriptReadByte(ctx);
+    u16 v1 = VarGet(ScriptReadHalfword(ctx));
+    u8 v2 = CountDigits(v1);
+    u8 article = ScriptReadByte(ctx);
+    
+    if (v1 == 1) {
+        if (article == 1) {
+            StringCopy(sScriptStringVars[stringVarIndex], gText_The);
+            return FALSE;
+        } else if (article == 2) {
+            //TODO "a/an"?
+        }
+    }
+
+    ConvertIntToNameStringN(sScriptStringVars[stringVarIndex], v1, 0, v2);
     return FALSE;
 }
 

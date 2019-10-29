@@ -42,6 +42,10 @@ struct UnkStruct_085094AC
 #define GROUND_EFFECT_FLAG_SHORT_GRASS           (1 << 17)
 #define GROUND_EFFECT_FLAG_HOT_SPRINGS           (1 << 18)
 #define GROUND_EFFECT_FLAG_SEAWEED               (1 << 19)
+#define GROUND_EFFECT_FLAG_FALL_GRASS_ON_SPAWN   (1 << 20)
+#define GROUND_EFFECT_FLAG_FALL_GRASS_ON_MOVE    (1 << 21)
+#define GROUND_EFFECT_FLAG_LAND_IN_FALL_GRASS    (1 << 22)
+
 
 struct PairedPalettes
 {
@@ -70,6 +74,7 @@ u8 GetMoveDirectionAnimNum(u8);
 u8 GetEventObjectIdByLocalIdAndMap(u8, u8, u8);
 bool8 TryGetEventObjectIdByLocalIdAndMap(u8, u8, u8, u8 *);
 u8 GetEventObjectIdByXY(s16, s16);
+u8 GetNonPlayerEventObjectIdByXY(s16, s16);
 void SetEventObjectDirection(struct EventObject *, u8);
 u8 GetFirstInactiveEventObjectId(void);
 void RemoveEventObjectByLocalIdAndMap(u8, u8, u8);
@@ -187,6 +192,7 @@ bool8 FreezeEventObject(struct EventObject *eventObject);
 u8 GetMoveDirectionFastAnimNum(u8);
 u8 GetMoveDirectionFasterAnimNum(u8);
 u8 GetMoveDirectionFastestAnimNum(u8);
+void MoveCoordsInDirection(u32 dir, s16 *x, s16 *y, s16 deltaX, s16 deltaY);
 u8 GetLedgeJumpDirection(s16, s16, u8);
 void CameraObjectSetFollowedObjectId(u8 objectId);
 u16 GetObjectPaletteTag(u8 palSlot);
@@ -199,6 +205,7 @@ void sub_8092EF0(u8 mapId, u8 mapNumber, u8 mapGroup);
 bool8 IsBerryTreeSparkling(u8, u8, u8);
 void UpdateAllEventObjectsZCoordAndPriority();
 void DoGroundEffect(u8 localId, u8 mapNum, u8 mapGroup, u8 animId);
+bool8 IsObjectDoor(u8 objId);
 
 void MovementType_None(struct Sprite *);
 void MovementType_LookAround(struct Sprite *);
@@ -403,7 +410,7 @@ bool8 CopyablePlayerMovement_GoSpeed0(struct EventObject *, struct Sprite *, u8,
 bool8 CopyablePlayerMovement_GoSpeed1(struct EventObject *, struct Sprite *, u8, bool8(u8));
 bool8 CopyablePlayerMovement_GoSpeed2(struct EventObject *, struct Sprite *, u8, bool8(u8));
 bool8 CopyablePlayerMovement_Slide(struct EventObject *, struct Sprite *, u8, bool8(u8));
-bool8 cph_IM_DIFFERENT(struct EventObject *, struct Sprite *, u8, bool8(u8));
+bool8 CopyablePlayerMovement_JumpInPlace(struct EventObject *, struct Sprite *, u8, bool8(u8));
 bool8 CopyablePlayerMovement_GoSpeed4(struct EventObject *, struct Sprite *, u8, bool8(u8));
 bool8 CopyablePlayerMovement_Jump(struct EventObject *, struct Sprite *, u8, bool8(u8));
 u8 MovementType_CopyPlayerInGrass_Step1(struct EventObject *, struct Sprite *);

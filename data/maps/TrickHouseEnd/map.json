@@ -1,7 +1,7 @@
 {
     "allow_bike": false,
     "allow_escape_rope": false,
-    "allow_running": false,
+    "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
         {
@@ -55,7 +55,20 @@
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 11,
-            "y": 4
+            "y": 3
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_TRICK_MASTER_ENDROOM",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_MASTER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 11,
+            "y": 5
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_110",
@@ -63,7 +76,7 @@
     "show_map_name": false,
     "warp_events": [
         {
-            "dest_map": "MAP_ROUTE110_TRICK_HOUSE_PUZZLE1",
+            "dest_map": "MAP_TRICK_HOUSE_END",
             "dest_warp_id": 2,
             "elevation": 3,
             "x": 11,

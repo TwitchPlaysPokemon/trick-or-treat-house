@@ -247,7 +247,11 @@ static bool8 TryStartInteractionScript(struct MapPosition *position, u16 metatil
      && script != SecretBase_EventScript_CushionInteract
      && script != EventScript_PC)
         PlaySE(SE_SELECT);
-
+    
+    gSpecialVar_InteractX = position->x;
+    gSpecialVar_InteractY = position->y;
+    gSpecialVar_MetatileX = position->x - 7;
+    gSpecialVar_MetatileY = position->y - 7;
     ScriptContext1_SetupScript(script);
     return TRUE;
 }
@@ -338,7 +342,7 @@ static const u8 *GetBumpInteractEventObjectScript(struct MapPosition *position, 
     if (eventObjectId == EVENT_OBJECTS_COUNT || gEventObjects[eventObjectId].localId == EVENT_OBJ_ID_PLAYER)
         return NULL;
     
-    if (gEventObjects[eventObjectId].trainerType != 5)
+    if (gEventObjects[eventObjectId].trainerType != TrainerType_BumpToInteract)
         return NULL;
 
     gSelectedEventObject = eventObjectId;
@@ -387,6 +391,7 @@ static const u8 *GetInteractedBackgroundEventScript(struct MapPosition *position
     case BG_EVENT_HIDDEN_ITEM:
         gSpecialVar_0x8004 = ((u32)bgEvent->bgUnion.script >> 16) + FLAG_HIDDEN_ITEMS_START;
         gSpecialVar_0x8005 = (u32)bgEvent->bgUnion.script;
+        gSpecialVar_0x8006 = 1;
         if (FlagGet(gSpecialVar_0x8004) == TRUE)
             return NULL;
         return EventScript_HiddenItemScript;
@@ -415,6 +420,8 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         return PuzzleCommon_EventScript_ExitDoorMetatile;
     if (MetatileBehavior_IsRegionMap(metatileBehavior) == TRUE)
         return EventScript_RegionMap;
+    if (MetatileBehavior_IsPumpkin(metatileBehavior) == TRUE)
+        return EventScript_Pumpkin;
     if (MetatileBehavior_IsPictureBookShelf(metatileBehavior) == TRUE)
         return EventScript_PictureBookShelf;
     if (MetatileBehavior_IsBookShelf(metatileBehavior) == TRUE)
@@ -618,7 +625,7 @@ static bool8 TryStartStepCountScript(u16 metatileBehavior)
         // }
         // if (ShouldDoRivalRayquazaCall() == TRUE)
         // {
-        //     ScriptContext1_SetupScript(MossdeepCity_SpaceCenter_2F_EventScript_224175);
+        //     ScriptContext1_SetupScript(TrickTreat_MossdeepCity_SpaceCenter_2F_EventScript_224175);
         //     return TRUE;
         // }
     }
@@ -751,11 +758,11 @@ static bool8 TryStartWarpEventScript(struct MapPosition *position, u16 metatileB
         //     sub_80AF838();
         //     return TRUE;
         // }
-        // if (MetatileBehavior_IsAquaHideoutWarp(metatileBehavior) == TRUE)
-        // {
-        //     sub_80AF848();
-        //     return TRUE;
-        // }
+        if (MetatileBehavior_IsTeleportWarp(metatileBehavior) == TRUE)
+        {
+            sub_80AF848();
+            return TRUE;
+        }
         if (MetatileBehavior_IsWarpOrBridge(metatileBehavior) == TRUE)
         {
             sub_80B0268();
@@ -785,7 +792,7 @@ static bool8 IsWarpMetatileBehavior(u16 metatileBehavior)
      && MetatileBehavior_IsNonAnimDoor(metatileBehavior) != TRUE
      && MetatileBehavior_IsLavaridgeB1FWarp(metatileBehavior) != TRUE
      && MetatileBehavior_IsLavaridge1FWarp(metatileBehavior) != TRUE
-     && MetatileBehavior_IsAquaHideoutWarp(metatileBehavior) != TRUE
+     && MetatileBehavior_IsTeleportWarp(metatileBehavior) != TRUE
      && MetatileBehavior_IsMtPyreHole(metatileBehavior) != TRUE
      && MetatileBehavior_IsMossdeepGymWarp(metatileBehavior) != TRUE
      && MetatileBehavior_IsWarpOrBridge(metatileBehavior) != TRUE)
@@ -911,6 +918,7 @@ static u8 *TryRunCoordEventScript(struct CoordEvent *coordEvent)
 {
     if (coordEvent != NULL)
     {
+        if (coordEvent->npcTrigger) return NULL;
         if (coordEvent->script == NULL)
         {
             DoCoordEventWeather(coordEvent->trigger);

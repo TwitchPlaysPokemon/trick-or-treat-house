@@ -1,0 +1,181 @@
+raw `
+Puzzle_TrickHouseOriginal7_MapScripts:: @ 826E091
+	puzzle_info Puzzle_TrickHouseOriginal7_Name, Puzzle_TrickHouseOriginal7_Author
+	puzzle_custom_intro Puzzle_TrickHouseOriginal7_Intro
+	puzzle_quip Puzzle_TrickHouseOriginal7_Quip
+	puzzle_metavars Puzzle_TrickHouseOriginal7_Variables
+	@ map_script MAP_SCRIPT_ON_RESUME, Puzzle_TrickHouseOriginal7_OnResume
+	@ map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_TrickHouseOriginal7_OnTransition
+	@ map_script MAP_SCRIPT_ON_LOAD, Puzzle_TrickHouseOriginal7_OnLoad
+	@ map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_TrickHouseOriginal7_FrameTable
+	.byte 0
+
+Puzzle_TrickHouseOriginal7_Name:
+	.string "Shenanigan Samba$"
+Puzzle_TrickHouseOriginal7_Author:
+	.string "Game Freak$"
+Puzzle_TrickHouseOriginal7_Intro:
+	.string "You're good at these puzzles, aren't you?\p"
+	.string "This next puzzle is another classic\n"
+	.string "one of mine from before my trip.\p"
+	.string "It's a remix of an earlier puzzle, even!\p"
+	.string "Can you handle it? Wahahahaha!$"
+Puzzle_TrickHouseOriginal7_Quip:
+	.string "But I wanted the cubby hole…$"
+Puzzle_TrickHouseOriginal7_Variables:
+	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_LITTLE_BOY_3
+	.2byte 0
+
+@ -----------------------------------------------------
+
+Puzzle_TrickHouseOriginal7_EventScript_26E31B:: @ 826E31B
+	playse SE_MU_PACHI
+	waitse
+	playse SE_TU_SAA
+	mossdeepgym3 1
+	mossdeepgym1 0
+	waitmovement 0
+	mossdeepgym2
+	waitmovement 0
+	mossdeepgym4
+	end
+
+Puzzle_TrickHouseOriginal7_EventScript_26E331:: @ 826E331
+	playse SE_MU_PACHI
+	waitse
+	playse SE_TU_SAA
+	mossdeepgym3 1
+	mossdeepgym1 1
+	waitmovement 0
+	mossdeepgym2
+	waitmovement 0
+	mossdeepgym4
+	end
+
+Puzzle_TrickHouseOriginal7_EventScript_26E347:: @ 826E347
+	playse SE_MU_PACHI
+	waitse
+	playse SE_TU_SAA
+	mossdeepgym3 1
+	mossdeepgym1 2
+	waitmovement 0
+	mossdeepgym2
+	waitmovement 0
+	mossdeepgym4
+	end
+
+Puzzle_TrickHouseOriginal7_EventScript_26E35D:: @ 826E35D
+	playse SE_MU_PACHI
+	waitse
+	playse SE_TU_SAA
+	mossdeepgym3 1
+	mossdeepgym1 3
+	waitmovement 0
+	mossdeepgym2
+	waitmovement 0
+	mossdeepgym4
+	end
+
+Puzzle_TrickHouseOriginal7_EventScript_26E373:: @ 826E373
+	playse SE_MU_PACHI
+	waitse
+	playse SE_TU_SAA
+	mossdeepgym3 1
+	mossdeepgym1 4
+	waitmovement 0
+	mossdeepgym2
+	waitmovement 0
+	mossdeepgym4
+	end
+
+Puzzle_TrickHouseOriginal7_EventScript_Plasmaboy:: @ 826E389
+	trainerbattle_single TRAINER_01, Puzzle_TrickHouseOriginal7_Text_26E481, Puzzle_TrickHouseOriginal7_Text_26E4C1
+	msgbox Puzzle_TrickHouseOriginal7_Text_26E4F4, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseOriginal7_Text_26E481: @ 826E481
+	.string "EVILDOER!\n"
+	.string "IT'S TIME TO FINISH THIS!!$"
+Puzzle_TrickHouseOriginal7_Text_26E4C1: @ 826E4C1
+	.string "NO! PLASMA… … … BOY… … …\n"
+	.string "MUST… … … RESIST… … …!$"
+Puzzle_TrickHouseOriginal7_Text_26E4F4: @ 826E4F4
+	.string "I'll get you next time, gadget!\p"
+	.string "Wait, wrong show…$"
+
+
+Puzzle_TrickHouseOriginal7_EventScript_26E3A0:: @ 826E3A0
+	trainerbattle_single TRAINER_02, Puzzle_TrickHouseOriginal7_Text_26E531, Puzzle_TrickHouseOriginal7_Text_26E564
+	msgbox Puzzle_TrickHouseOriginal7_Text_26E57F, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseOriginal7_Text_26E531: @ 826E531
+	.string "Whoever wins will get through here\n"
+	.string "first. That's the feeling I get.$"
+
+Puzzle_TrickHouseOriginal7_Text_26E564: @ 826E564
+	.string "Oh!\n"
+	.string "Well, go ahead, then!$"
+Puzzle_TrickHouseOriginal7_Text_26E57F: @ 826E57F
+	.string "The TRICK MASTER has quite a lot of\n"
+	.string "puzzles tonight, hasn't he?$"
+
+
+Puzzle_TrickHouseOriginal7_EventScript_26E3B7:: @ 826E3B7
+	trainerbattle_single TRAINER_03, Puzzle_TrickHouseOriginal7_Text_26E5C0, Puzzle_TrickHouseOriginal7_Text_26E604
+	msgbox Puzzle_TrickHouseOriginal7_Text_26E61E, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseOriginal7_Text_26E5C0: @ 826E5C0
+	.string "Hi! Welcome to our cubby hole!\n"
+	.string "You need to pay rent in candy!$"
+Puzzle_TrickHouseOriginal7_Text_26E604: @ 826E604
+	.string "Oh no!$"
+Puzzle_TrickHouseOriginal7_Text_26E61E: @ 826E61E
+	.string "But this is our cubby hole…$"
+
+
+Puzzle_TrickHouseOriginal7_EventScript_26E3CE:: @ 826E3CE
+	@ trainerbattle_single TRAINER_04, Puzzle_TrickHouseOriginal7_Text_26E66B, Puzzle_TrickHouseOriginal7_Text_26E69C
+	msgbox Puzzle_TrickHouseOriginal7_Text_26E6BC, MSGBOX_AUTOCLOSE
+	end
+@ Puzzle_TrickHouseOriginal7_Text_26E66B: @ 826E66B
+@ 	.string "Nufufufu, here at last!\n"
+@ 	.string "Let's get right with it!$"
+@ Puzzle_TrickHouseOriginal7_Text_26E69C: @ 826E69C
+@ 	.string "You're so casual about winning!$"
+Puzzle_TrickHouseOriginal7_Text_26E6BC: @ 826E6BC
+	.string "Humph! I'm not upset!\n"
+	.string "Not me!$"
+
+
+Puzzle_TrickHouseOriginal7_EventScript_PsychicBoy:: @ 826E3E5
+	trainerbattle_single TRAINER_05, Puzzle_TrickHouseOriginal7_Text_26E6DA, Puzzle_TrickHouseOriginal7_Text_26E700
+	msgbox Puzzle_TrickHouseOriginal7_Text_26E722, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseOriginal7_Text_26E6DA: @ 826E6DA
+	.string "I ever so closely watched you coming!$"
+Puzzle_TrickHouseOriginal7_Text_26E700: @ 826E700
+	.string "This outcome I didn't see coming…$"
+Puzzle_TrickHouseOriginal7_Text_26E722: @ 826E722
+	.string "Well, anyway, we both picked a weird\n"
+	.string "place to get acquainted.\p"
+	.string "As one weirdo to another,\n"
+	.string "let's do our best!$"
+
+
+Puzzle_TrickHouseOriginal7_EventScript_Ghetsis:: @ 826E3FC
+	trainerbattle_single TRAINER_06, Puzzle_TrickHouseOriginal7_Text_26E78D, Puzzle_TrickHouseOriginal7_Text_26E7AB
+	msgbox Puzzle_TrickHouseOriginal7_Text_26E7C4, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseOriginal7_Text_26E78D: @ 826E78D
+	.string "MUHAHAHAHAHAHAHA!$"
+Puzzle_TrickHouseOriginal7_Text_26E7AB: @ 826E7AB
+	.string "Oh, yes, strong you are.$"
+Puzzle_TrickHouseOriginal7_Text_26E7C4: @ 826E7C4
+	.string "I was hoping to switch places with you\n"
+	.string "when I beat you, but…$"
+`
+
+script Puzzle_TrickHouseOriginal7_UnobtainableItemBall {
+	msgbox ("I don't know how you got here, but\n"
+			"good job.$")
+	goto (Common_EventScript_PickupRareItem)
+}

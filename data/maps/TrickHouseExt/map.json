@@ -1,27 +1,13 @@
 {
     "allow_bike": false,
     "allow_escape_rope": false,
-    "allow_running": false,
+    "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
         {
             "elevation": 0,
-            "secret_base_id": "SECRET_BASE_RED_CAVE1_1",
-            "type": "secret_base",
-            "x": 19,
-            "y": 27
-        },
-        {
-            "elevation": 0,
-            "secret_base_id": "SECRET_BASE_BLUE_CAVE1_2",
-            "type": "secret_base",
-            "x": 17,
-            "y": 27
-        },
-        {
-            "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "Route110_EventScript_1EF380",
+            "script": "TrickHouseExt_EventScript_1EF380",
             "type": "sign",
             "x": 67,
             "y": 33
@@ -29,7 +15,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "Route110_EventScript_1EF389",
+            "script": "TrickHouseExt_EventScript_1EF389",
             "type": "sign",
             "x": 38,
             "y": 30
@@ -37,7 +23,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "Route110_EventScript_1EF35C",
+            "script": "TrickHouseExt_EventScript_1EF35C",
             "type": "sign",
             "x": 37,
             "y": 42
@@ -45,7 +31,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "Route110_EventScript_1EF34A",
+            "script": "TrickHouseExt_EventScript_1EF34A",
             "type": "sign",
             "x": 44,
             "y": 51
@@ -55,7 +41,7 @@
     "coord_events": [
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "TrickHouseExt_EventScript_SoftBorderNorth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -64,7 +50,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "TrickHouseExt_EventScript_SoftBorderNorth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -73,7 +59,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "TrickHouseExt_EventScript_SoftBorderNorth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -82,7 +68,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "TrickHouseExt_EventScript_SoftBorderWest",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -91,7 +77,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "TrickHouseExt_EventScript_SoftBorderWest",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -100,7 +86,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "TrickHouseExt_EventScript_SoftBorderWest",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -109,7 +95,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "TrickHouseExt_EventScript_SoftBorderSouth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -118,7 +104,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "TrickHouseExt_EventScript_SoftBorderSouth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -127,7 +113,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "TrickHouseExt_EventScript_SoftBorderSouth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -136,7 +122,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "TrickHouseExt_EventScript_SoftBorderSouth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -145,7 +131,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "TrickHouseExt_EventScript_SoftBorderSouth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -154,7 +140,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "TrickHouseExt_EventScript_SoftBorderSouth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -183,15 +169,132 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_HIDE_DEBUG_OBJECTS",
             "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_SCROLL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Route110_EventScript_TestDoor",
+            "script": "TrickHouseExt_EventScript_TestDoor",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "5",
             "x": 42,
+            "y": 48
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_ITEM_ROUTE_110_ITEMFINDER",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_ItemItemfinder",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 56,
+            "y": 10
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_CYCLING_TRIATHLETE_M",
+            "movement_range_x": 11,
+            "movement_range_y": 15,
+            "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_RIGHT_LEFT_UP",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 47,
+            "y": 25
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_INTRO_CHARACTERS",
+            "graphics_id": "EVENT_OBJ_GFX_GHOST",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 49,
+            "y": 33
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_INTRO_CHARACTERS",
+            "graphics_id": "EVENT_OBJ_GFX_BRENDAN_NORMAL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 49,
+            "y": 32
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_INTRO_CHARACTERS",
+            "graphics_id": "EVENT_OBJ_GFX_MAY_NORMAL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 49,
+            "y": 34
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_INTRO_CHARACTERS",
+            "graphics_id": "EVENT_OBJ_GFX_FAIRY_GIRL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 49,
+            "y": 32
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_INTRO_CHARACTERS",
+            "graphics_id": "EVENT_OBJ_GFX_WALLY",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 49,
+            "y": 34
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_INTRO_CHARACTERS",
+            "graphics_id": "EVENT_OBJ_GFX_HERO_OF_TIME",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 49,
+            "y": 33
+        },
+        {
+            "elevation": 4,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_SCROLL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 54,
             "y": 48
         }
     ],
@@ -212,6 +315,20 @@
             "elevation": 0,
             "x": 39,
             "y": 47
+        },
+        {
+            "dest_map": "MAP_FAKE_SECRET_BASE_CAVE",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 18,
+            "y": 27
+        },
+        {
+            "dest_map": "MAP_TRICK_HOUSE_EXT",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 41,
+            "y": 33
         }
     ],
     "weather": "WEATHER_SUNNY"

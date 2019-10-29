@@ -74,7 +74,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_checkitem
 	.4byte ScrCmd_checkitemtype
 	.4byte ScrCmd_givepcitem
-	.4byte ScrCmd_checkpcitem
+	.4byte ScrCmd_checknumitem
 	.4byte ScrCmd_givedecoration
 	.4byte ScrCmd_takedecoration
 	.4byte ScrCmd_checkdecor
@@ -114,7 +114,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_multichoice
 	.4byte ScrCmd_multichoicedefault
 	.4byte ScrCmd_multichoicegrid
-	.4byte ScrCmd_drawbox
+	.4byte ScrCmd_warpcustom
 	.4byte ScrCmd_erasebox
 	.4byte ScrCmd_drawboxtext
 	.4byte ScrCmd_showmonpic
@@ -229,6 +229,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_bufferitemnameplural
 	.4byte ScrCmd_selectpointer
 	.4byte ScrCmd_selectwarpdestination
+	.4byte ScrCmd_buffernumberstring2
 
 gScriptCmdTableEnd:: @ 81DBA08
 	.4byte ScrCmd_nop

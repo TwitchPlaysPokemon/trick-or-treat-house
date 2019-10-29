@@ -4,12 +4,24 @@
 #include "puzzle_helpers.h"
 #include "sound.h"
 #include "field_camera.h"
+#include "field_player_avatar.h"
 #include "fieldmap.h"
+#include "palette.h"
 #include "random.h"
+#include "strings.h"
+#include "string_util.h"
+#include "text.h"
+#include "task.h"
+#include "trickhouse.h"
+#include "script.h"
+#include "pokemon_storage_system.h"
 #include "constants/flags.h"
 #include "constants/metatile_labels.h"
 #include "constants/songs.h"
+#include "constants/event_objects.h"
+#include "constants/map_groups.h"
 #include "constants/vars.h"
+#include "constants/species.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 // Puzzle: Pokemon Says 
@@ -377,4 +389,271 @@ void WaterTempleFillTo0(struct ScriptContext *ctx)
 #undef Y
 
 ///////////////////////////////////////////////////////////////////////////////
+// Puzzle: Route 110 Road 
+// MAP_PUZZLE_ROUTE110
+
+extern bool8 gBikeCyclingChallenge;
+extern u8 gBikeCollisions;
+extern u32 gBikeCyclingTimer;
+#define VAR_CYCLING_CHALLENGE_STATE VAR_PUZZLE_00
+
+void ResetCyclingRoadChallengeData(struct ScriptContext *ctx)
+{
+    gBikeCyclingChallenge = FALSE;
+    gBikeCollisions = 0;
+    gBikeCyclingTimer = 0;
+}
+
+void Special_BeginCyclingRoadChallenge(void)
+{
+    gBikeCyclingChallenge = TRUE;
+    gBikeCollisions = 0;
+    gBikeCyclingTimer = gMain.vblankCounter1;
+}
+
+void ForcePlayerOntoMachBike(struct ScriptContext *ctx)
+{
+	SetPlayerAvatarTransitionFlags(PLAYER_AVATAR_FLAG_MACH_BIKE);
+}
+
+u16 GetPlayerAvatarBike(void)
+{
+    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_ACRO_BIKE))
+        return 1;
+    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE))
+        return 2;
+    return 0;
+}
+
+static void DetermineCyclingRoadResults(u32 numFrames, u8 numBikeCollisions)
+{
+    u8 result;
+
+    if (numBikeCollisions < 100)
+    {
+        ConvertIntToDecimalStringN(gStringVar1, numBikeCollisions, STR_CONV_MODE_LEFT_ALIGN, 2);
+        StringAppend(gStringVar1, gText_SpaceTimes);
+    }
+    else
+    {
+        StringCopy(gStringVar1, gText_99TimesPlus);
+    }
+
+    if (numFrames < 3600 * 3)
+    {
+        ConvertIntToDecimalStringN(gStringVar2, numFrames / 60, STR_CONV_MODE_RIGHT_ALIGN, 3);
+        gStringVar2[3] = CHAR_PERIOD;
+        ConvertIntToDecimalStringN(&gStringVar2[4], ((numFrames % 60) * 100) / 60, STR_CONV_MODE_LEADING_ZEROS, 2);
+        StringAppend(gStringVar2, gText_SpaceSeconds);
+    }
+    else
+    {
+        StringCopy(gStringVar2, gText_3MinutePlus);
+    }
+
+    result = 0;
+    if (numBikeCollisions == 0)
+    {
+        result = 5;
+    }
+    else if (numBikeCollisions < 6)//4)
+    {
+        result = 4;
+    }
+    else if (numBikeCollisions < 15)//10)
+    {
+        result = 3;
+    }
+    else if (numBikeCollisions < 25)//20)
+    {
+        result = 2;
+    }
+    else if (numBikeCollisions < 100)
+    {
+        result = 1;
+    }
+
+    if (numFrames / 60 <= 60)//10)
+    {
+        result += 5;
+    }
+    else if (numFrames / 60 <= 80)//15)
+    {
+        result += 4;
+    }
+    else if (numFrames / 60 <= 110)//20)
+    {
+        result += 3;
+    }
+    else if (numFrames / 60 <= 140)//40)
+    {
+        result += 2;
+    }
+    else if (numFrames / 60 < 180)//60)
+    {
+        result += 1;
+    }
+
+
+    gSpecialVar_Result = result;
+}
+
+static void RecordCyclingRoadResults(u32 numFrames, u8 numBikeCollisions) {
+    u16 low = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_L);
+    u16 high = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_H);
+    u32 framesRecord = low + (high << 16);
+
+    if (framesRecord > numFrames || framesRecord == 0)
+    {
+        VarSet(VAR_CYCLING_ROAD_RECORD_TIME_L, numFrames);
+        VarSet(VAR_CYCLING_ROAD_RECORD_TIME_H, numFrames >> 16);
+        VarSet(VAR_CYCLING_ROAD_RECORD_COLLISIONS, numBikeCollisions);
+    }
+}
+
+u16 GetRecordedCyclingRoadResults(void) {
+    u16 low = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_L);
+    u16 high = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_H);
+    u32 framesRecord = low + (high << 16);
+
+    if (framesRecord == 0)
+    {
+        return FALSE;
+    }
+
+    DetermineCyclingRoadResults(framesRecord, VarGet(VAR_CYCLING_ROAD_RECORD_COLLISIONS));
+    return TRUE;
+}
+
+void FinishCyclingRoadChallenge(void) {
+    const u32 numFrames = gMain.vblankCounter1 - gBikeCyclingTimer;
+
+    DetermineCyclingRoadResults(numFrames, gBikeCollisions);
+    RecordCyclingRoadResults(numFrames, gBikeCollisions);
+}
+
+void GetCurrentCyclingRoadTime(struct ScriptContext *ctx)
+{
+	const u32 numSecs = (gMain.vblankCounter1 - gBikeCyclingTimer) / 60;
+	if (numSecs < 999) {
+		ConvertIntToDecimalStringN(gStringVar1, numSecs+0, STR_CONV_MODE_LEFT_ALIGN, 3);
+		ConvertIntToDecimalStringN(gStringVar2, numSecs+1, STR_CONV_MODE_LEFT_ALIGN, 3);
+		ConvertIntToDecimalStringN(gStringVar3, numSecs+2, STR_CONV_MODE_LEFT_ALIGN, 3);
+	} else {
+		StringCopy(gStringVar1, gText_WayTooLong1);
+        StringCopy(gStringVar2, gText_WayTooLong2);
+        StringCopy(gStringVar3, gText_WayTooLong3);
+	}
+}
+
+void UpdateCyclingRoadState(void) {
+    // if (gLastUsedWarp.mapNum == MAP_NUM(ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE) && gLastUsedWarp.mapGroup == MAP_GROUP(ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE))
+    // {
+    //     return;
+    // }
+
+    // if (VarGet(VAR_CYCLING_CHALLENGE_STATE) == 2 || VarGet(VAR_CYCLING_CHALLENGE_STATE) == 3)
+    // {
+    //     VarSet(VAR_CYCLING_CHALLENGE_STATE, 0);
+    //     Overworld_SetSavedMusic(MUS_DUMMY);
+    // }
+}
+
+#undef VAR_CYCLING_CHALLENGE_STATE
+
+///////////////////////////////////////////////////////////////////////////////
+// Puzzle: Twin Memories 
+// MAP_PUZZLE_TWIN_MEMORIES
+
+void CountTwinMemoriesBoulders(struct ScriptContext *ctx) {
+	s16 o;
+	struct EventObject *eventObject = NULL;
+    struct CoordEvent *coordEvent = NULL;
+	
+	gSpecialVar_Result = 0;
+	
+	for (o = 0; o < EVENT_OBJECTS_COUNT; o++) {
+		eventObject = &gEventObjects[o];
+        if (eventObject->isPlayer) continue;
+        if (!eventObject->active) continue;
+		if (eventObject->graphicsId != EVENT_OBJ_GFX_PUSHABLE_BOULDER) continue;
+        
+		if (eventObject->isStandingOnTrigger)
+			gSpecialVar_Result++;
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Puzzle: Koga's Labyrinth 
+// MAP_PUZZLE_HIDDEN_MAZE
+
+#define PALETTE_SLOT_SRC (10*16+11)
+#define PALETTE_SLOT_DST (10*16+15)
+
+void HiddenMaze_PulseWallTiles(u8 taskId)
+{
+	u16 color = 0;
+	u8 val = 0;
+	s16 *data = gTasks[taskId].data;
+	struct PlttData *palColor = (struct PlttData *)&color;
+	
+	if (data[2] == 0) { //init
+		data[1] = -512;
+		data[2] = 1;
+	}
+	
+	data[1]++;
+	if (data[1] > 512) data[1] = -512;
+	val = max(31 - (abs(data[1])>>3), 0);
+	
+	color = gPlttBufferUnfaded[PALETTE_SLOT_SRC];
+	palColor->r = max(palColor->r, val);
+	palColor->g = max(palColor->g, val);
+	palColor->b = min(palColor->b, 31-val);
+	gPlttBufferFaded[PALETTE_SLOT_DST] = color;
+}
+
+#undef PALETTE_SLOT_SRC
+#undef PALETTE_SLOT_DST
+
+///////////////////////////////////////////////////////////////////////////////
+// Trick or Treating in Mossdeep
+// MAP_TRICK_TREAT_MOSSDEEP_CITY
+
+#define VAR_TRICK_STOLEN_MON VAR_PUZZLE_00
+#define TEMP_STORAGE_BOX 10
+#define TEMP_STORAGE_POS 0
+
+void MossdeepStealPokemon(struct ScriptContext *ctx)
+{
+	int i;
+	CalculatePlayerPartyCount();
+	if (VarGet(VAR_TRICK_STOLEN_MON) == 0) { //steal the mon
+		for (i = 0; i < gPlayerPartyCount; i++) {
+			if (SendMonToPCSlot(&gPlayerParty[i], TEMP_STORAGE_BOX, TEMP_STORAGE_POS+i)) {
+				ZeroMonData(&gPlayerParty[i]);
+			}
+		}
+	} else { //return the mon
+		for (i = 0; i < PARTY_SIZE; i++) {
+			GetMonFromPCSlot(&gPlayerParty[i], TEMP_STORAGE_BOX, TEMP_STORAGE_POS+i);
+		}
+	}
+	CompactPartySlots();
+	CalculatePlayerPartyCount();
+}
+
+#undef VAR_TRICK_STOLEN_MON 
+
+
+///////////////////////////////////////////////////////////////////////////////
+// Route 110 Cycling Maze
+// MAP_PUZZLE_ROUTE110
+
+void IsCurrentPuzzleCyclingRoad(struct ScriptContext *ctx)
+{
+	u16 currPuzzle = GetCurrentPuzzleMapId();
+	VarSet(VAR_RESULT, currPuzzle == MAP_PUZZLE_ROUTE110);
+}
+
 

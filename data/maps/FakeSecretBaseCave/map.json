@@ -1,0 +1,39 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "FakeSecretBaseCave_DenyPC",
+            "type": "sign",
+            "x": 5,
+            "y": 3
+        }
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_FAKE_SECRET_BASE_CAVE",
+    "layout": "LAYOUT_FAKE_SECRET_BASE_CAVE",
+    "map_type": "MAP_TYPE_SECRET_BASE",
+    "music": "MUS_DAN02",
+    "name": "FakeSecretBaseCave",
+    "object_events": [
+    ],
+    "region_map_section": "MAPSEC_ROUTE_110",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_TRICK_HOUSE_EXT",
+            "dest_warp_id": 2,
+            "elevation": 0,
+            "x": 9,
+            "y": 17
+        }
+    ],
+    "weather": "WEATHER_SUNNY"
+}

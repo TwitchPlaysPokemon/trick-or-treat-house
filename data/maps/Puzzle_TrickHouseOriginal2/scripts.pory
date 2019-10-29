@@ -1,0 +1,143 @@
+raw `
+Puzzle_TrickHouseOriginal2_MapScripts:: @ 826BB73
+	puzzle_info Puzzle_TrickHouseOriginal2_Name, Puzzle_TrickHouseOriginal2_Author
+	puzzle_custom_intro Puzzle_TrickHouseOriginal2_Intro
+	puzzle_quip Puzzle_TrickHouseOriginal2_Quip
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TrickHouseOriginal2_MapScript1_26BB7E
+	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_TrickHouseOriginal2_OnTransition
+	.byte 0
+
+Puzzle_TrickHouseOriginal2_Name:
+	.string "Trapdoor Trickery$"
+Puzzle_TrickHouseOriginal2_Author:
+	.string "Game Freak$"
+Puzzle_TrickHouseOriginal2_Intro:
+	.string "Hah! Seems like you made it through that\n"
+	.string "last one with ease!\p"
+	.string "This next puzzle is an old one of mine.\p"
+	.string "It seems so quaint these days,\n"
+	.string "but I just can't let it go.\p"
+	.string "I'll see you on the other side!$"
+Puzzle_TrickHouseOriginal2_Quip:
+	.string "I feel like I could have just jumped\n"
+	.string "over some of those gaps…$"
+
+@ -----------------------------------------------------
+
+Puzzle_TrickHouseOriginal2_MapScript1_26BB7E: @ 826BB7E
+	compare VAR_TEMP_1, 1
+	call_if_eq Puzzle_TrickHouseOriginal2_EventScript_CloseDoor1
+	compare VAR_TEMP_2, 1
+	call_if_eq Puzzle_TrickHouseOriginal2_EventScript_CloseDoor2
+	compare VAR_TEMP_3, 1
+	call_if_eq Puzzle_TrickHouseOriginal2_EventScript_CloseDoor3
+	compare VAR_TEMP_4, 1
+	call_if_eq Puzzle_TrickHouseOriginal2_EventScript_CloseDoor4
+	end
+
+@ -----------------------------------------------------
+
+Puzzle_TrickHouseOriginal2_OnTransition: @ 826BBAB
+	setvar VAR_TEMP_1, 0
+	setvar VAR_TEMP_2, 0
+	setvar VAR_TEMP_3, 0
+	setvar VAR_TEMP_4, 0
+	end
+
+@ -----------------------------------------------------
+
+Puzzle_TrickHouseOriginal2_TriggerScript_Button1:: @ 826BBDD
+	lockall
+	setvar VAR_TEMP_1, 1
+	playse SE_PIN
+	call Puzzle_TrickHouseOriginal2_EventScript_CloseDoor1
+	special DrawWholeMapView
+	releaseall
+	end
+Puzzle_TrickHouseOriginal2_EventScript_CloseDoor1:: @ 826BC29
+	setmetatile 11, 12, METATILE_TrickHousePuzzle_Button_Pressed, 0
+	setmetatile 1, 13, METATILE_TrickHousePuzzle_Door_Shuttered, 0
+	return
+
+Puzzle_TrickHouseOriginal2_TriggerScript_Button2:: @ 826BBF0
+	lockall
+	setvar VAR_TEMP_2, 1
+	playse SE_PIN
+	call Puzzle_TrickHouseOriginal2_EventScript_CloseDoor2
+	special DrawWholeMapView
+	releaseall
+	end
+Puzzle_TrickHouseOriginal2_EventScript_CloseDoor2:: @ 826BC3C
+	setmetatile 0, 4, METATILE_TrickHousePuzzle_Button_Pressed, 0
+	setmetatile 5, 6, METATILE_TrickHousePuzzle_Door_Shuttered, 0
+	return
+
+Puzzle_TrickHouseOriginal2_TriggerScript_Button3:: @ 826BC03
+	lockall
+	setvar VAR_TEMP_3, 1
+	playse SE_PIN
+	call Puzzle_TrickHouseOriginal2_EventScript_CloseDoor3
+	special DrawWholeMapView
+	releaseall
+	end
+Puzzle_TrickHouseOriginal2_EventScript_CloseDoor3:: @ 826BC4F
+	setmetatile 14, 5, METATILE_TrickHousePuzzle_Button_Pressed, 0
+	setmetatile 7, 15, METATILE_TrickHousePuzzle_Door_Shuttered, 0
+	return
+
+Puzzle_TrickHouseOriginal2_TriggerScript_Button4:: @ 826BC16
+	lockall
+	setvar VAR_TEMP_4, 1
+	playse SE_PIN
+	call Puzzle_TrickHouseOriginal2_EventScript_CloseDoor4
+	special DrawWholeMapView
+	releaseall
+	end
+Puzzle_TrickHouseOriginal2_EventScript_CloseDoor4:: @ 826BC62
+	setmetatile 7, 11, METATILE_TrickHousePuzzle_Button_Pressed, 0
+	setmetatile 14, 12, METATILE_TrickHousePuzzle_Door_Shuttered, 0
+	return
+
+@ -----------------------------------------------------
+
+Puzzle_TrickHouseOriginal2_EventScript_26BC75:: @ 826BC75
+	trainerbattle_single TRAINER_01, Puzzle_TrickHouseOriginal2_Text_26BD25, Puzzle_TrickHouseOriginal2_Text_26BD45
+	msgbox Puzzle_TrickHouseOriginal2_Text_26BD70, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseOriginal2_Text_26BD25: @ 826BD25
+	.string "Which switch closes which hole?$"
+Puzzle_TrickHouseOriginal2_Text_26BD45: @ 826BD45
+	.string "After that battle, I'm even more\n"
+	.string "confused!$"
+Puzzle_TrickHouseOriginal2_Text_26BD70: @ 826BD70
+	.string "Can I get you to push all the buttons\n"
+	.string "for me?$"
+
+
+Puzzle_TrickHouseOriginal2_EventScript_26BC8C:: @ 826BC8C
+	trainerbattle_single TRAINER_02, Puzzle_TrickHouseOriginal2_Text_26BD9E, Puzzle_TrickHouseOriginal2_Text_26BDCF
+	msgbox Puzzle_TrickHouseOriginal2_Text_26BDEC, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseOriginal2_Text_26BD9E: @ 826BD9E
+	.string "Oh! You're on your second TRICK HOUSE\n"
+	.string "challenge!$"
+Puzzle_TrickHouseOriginal2_Text_26BDCF: @ 826BDCF
+	.string "You're good at battling too?$"
+Puzzle_TrickHouseOriginal2_Text_26BDEC: @ 826BDEC
+	.string "The TRICK MASTER rigged all the tricks\n"
+	.string "in this house all by himself.$"
+
+
+Puzzle_TrickHouseOriginal2_EventScript_26BCA3:: @ 826BCA3
+	trainerbattle_single TRAINER_03, Puzzle_TrickHouseOriginal2_Text_26BE31, Puzzle_TrickHouseOriginal2_Text_26BE77
+	msgbox Puzzle_TrickHouseOriginal2_Text_26BE97, MSGBOX_AUTOCLOSE
+	end
+Puzzle_TrickHouseOriginal2_Text_26BE31: @ 826BE31
+	.string "I want to make my own GYM one day.\n"
+	.string "So, I'm studying how to set traps.$"
+Puzzle_TrickHouseOriginal2_Text_26BE77: @ 826BE77
+	.string "I didn't study battling enough!$"
+Puzzle_TrickHouseOriginal2_Text_26BE97: @ 826BE97
+	.string "You're strong, aren't you?\n"
+	.string "Maybe even enough to be a GYM LEADER!$"
+`

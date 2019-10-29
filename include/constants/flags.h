@@ -117,7 +117,7 @@
 #define FLAG_PICKED_UP_SURF_ITEM             0x67
 #define FLAG_PICKED_UP_FLASH_ITEM            0x68
 #define FLAG_PICKED_UP_FLY_ITEM              0x69 // never used
-#define FLAG_UNUSED_0x06A                    0x6A
+#define FLAG_PARTY_SWAP_DISABLED             0x6A
 #define FLAG_UNUSED_0x06B                    0x6B
 #define FLAG_UNUSED_0x06C                    0x6C
 #define FLAG_UNUSED_0x06D                    0x6D
@@ -125,21 +125,21 @@
 #define FLAG_UNUSED_0x06F                    0x6F
 
 
-#define FLAG_UNUSED_0x070                    0x70
-#define FLAG_UNUSED_0x071                    0x71
-#define FLAG_UNUSED_0x072                    0x72
-#define FLAG_UNUSED_0x073                    0x73
-#define FLAG_UNUSED_0x074                    0x74
-#define FLAG_UNUSED_0x075                    0x75
-#define FLAG_UNUSED_0x076                    0x76
-#define FLAG_UNUSED_0x077                    0x77
-#define FLAG_UNUSED_0x078                    0x78
-#define FLAG_UNUSED_0x079                    0x79
-#define FLAG_UNUSED_0x07A                    0x7A
-#define FLAG_UNUSED_0x07B                    0x7B
-#define FLAG_UNUSED_0x07C                    0x7C
-#define FLAG_UNUSED_0x07D                    0x7D
-#define FLAG_UNUSED_0x07E                    0x7E
+#define FLAG_DECORATION_0                    0x70
+#define FLAG_DECORATION_1                    0x71
+#define FLAG_DECORATION_2                    0x72
+#define FLAG_DECORATION_3                    0x73
+#define FLAG_DECORATION_4                    0x74
+#define FLAG_DECORATION_5                    0x75
+#define FLAG_DECORATION_6                    0x76
+#define FLAG_DECORATION_7                    0x77
+#define FLAG_DECORATION_8                    0x78
+#define FLAG_DECORATION_9                    0x79
+#define FLAG_DECORATION_10                   0x7A
+#define FLAG_DECORATION_11                   0x7B
+#define FLAG_DECORATION_12                   0x7C
+#define FLAG_DECORATION_13                   0x7D
+#define FLAG_DECORATION_14                   0x7E
 #define FLAG_UNUSED_0x07F                    0x7F
 #define FLAG_UNUSED_0x080                    0x80
 #define FLAG_UNUSED_0x081                    0x81
@@ -164,54 +164,54 @@
 #define FLAG_UNUSED_0x094                    0x94
 #define FLAG_UNUSED_0x095                    0x95
 #define FLAG_UNUSED_0x096                    0x96
-#define FLAG_UUSED_0x097                     0x97
-#define FLAG_UUSED_0x098                     0x98
-#define FLAG_UUSED_0x099                     0x99
-#define FLAG_UUSED_0x09A                     0x9A
-#define FLAG_UUSED_0x09B                     0x9B
-#define FLAG_UUSED_0x09C                     0x9C
-#define FLAG_UUSED_0x09D                     0x9D
-#define FLAG_UUSED_0x09E                     0x9E
-#define FLAG_UUSED_0x09F                     0x9F
-#define FLAG_UUSED_0x0A0                     0xA0
-#define FLAG_UUSED_0x0A1                     0xA1
-#define FLAG_UUSED_0x0A2                     0xA2
-#define FLAG_UUSED_0x0A3                     0xA3
-#define FLAG_UUSED_0x0A4                     0xA4
-#define FLAG_UUSED_0x0A5                     0xA5
-#define FLAG_UUSED_0x0A6                     0xA6
-#define FLAG_UUSED_0x0A7                     0xA7
-#define FLAG_UUSED_0x0A8                     0xA8
-#define FLAG_UUSED_0x0A9                     0xA9
-#define FLAG_UUSED_0x0AA                     0xAA
-#define FLAG_UUSED_0x0AB                     0xAB
-#define FLAG_UUSED_0x0AC                     0xAC
-#define FLAG_DECORATION_0                    0xAD
-#define FLAG_DECORATION_1                    0xAE
-#define FLAG_DECORATION_2                    0xAF
-#define FLAG_DECORATION_3                    0xB0
-#define FLAG_DECORATION_4                    0xB1
-#define FLAG_DECORATION_5                    0xB2
-#define FLAG_DECORATION_6                    0xB3
-#define FLAG_DECORATION_7                    0xB4
-#define FLAG_DECORATION_8                    0xB5
-#define FLAG_DECORATION_9                    0xB6
-#define FLAG_DECORATION_10                   0xB7
-#define FLAG_DECORATION_11                   0xB8
-#define FLAG_DECORATION_12                   0xB9
-#define FLAG_DECORATION_13                   0xBA
-#define FLAG_DECORATION_14                   0xBB
+#define FLAG_UNUSED_0x097                    0x97
+#define FLAG_UNUSED_0x098                    0x98
+#define FLAG_UNUSED_0x099                    0x99
+#define FLAG_UNUSED_0x09A                    0x9A
+#define FLAG_UNUSED_0x09B                    0x9B
+#define FLAG_UNUSED_0x09C                    0x9C
+#define FLAG_UNUSED_0x09D                    0x9D
+#define FLAG_UNUSED_0x09E                    0x9E
+#define FLAG_UNUSED_0x09F                    0x9F
+#define FLAG_UNUSED_0x0A0                    0xA0
+#define FLAG_UNUSED_0x0A1                    0xA1
+#define FLAG_UNUSED_0x0A2                    0xA2
+#define FLAG_UNUSED_0x0A3                    0xA3
+#define FLAG_UNUSED_0x0A4                    0xA4
+#define FLAG_UNUSED_0x0A5                    0xA5
+#define FLAG_UNUSED_0x0A6                    0xA6
+#define FLAG_UNUSED_0x0A7                    0xA7
+#define FLAG_UNUSED_0x0A8                    0xA8
+#define FLAG_UNUSED_0x0A9                    0xA9
+#define FLAG_UNUSED_0x0AA                    0xAA
+#define FLAG_UNUSED_0x0AB                    0xAB
+#define FLAG_UNUSED_0x0AC                    0xAC
+#define FLAG_UNUSED_0x0AD                    0xAD
+#define FLAG_UNUSED_0x0AE                    0xAE
+#define FLAG_UNUSED_0x0AF                    0xAF
+#define FLAG_UNUSED_0x0B0                    0xB0
+#define FLAG_UNUSED_0x0B1                    0xB1
+#define FLAG_UNUSED_0x0B2                    0xB2
+#define FLAG_UNUSED_0x0B3                    0xB3
+#define FLAG_UNUSED_0x0B4                    0xB4
+#define FLAG_UNUSED_0x0B5                    0xB5
+#define FLAG_UNUSED_0x0B6                    0xB6
+#define FLAG_UNUSED_0x0B7                    0xB7
+#define FLAG_UNUSED_0x0B8                    0xB8
+#define FLAG_UNUSED_0x0B9                    0xB9
+#define FLAG_UNUSED_0x0BA                    0xBA
+#define FLAG_UNUSED_0x0BB                    0xBB
 #define FLAG_UNUSED_0x0BC                    0xBC
 #define FLAG_UNUSED_0x0BD                    0xBD
 #define FLAG_UNUSED_0x0BE                    0xBE
 #define FLAG_UNUSED_0x0BF                    0xBF
 #define FLAG_UNUSED_0x0C0                    0xC0
 #define FLAG_UNUSED_0x0C1                    0xC1
-#define FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_1   0xC2
-#define FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_2   0xC3
-#define FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_3   0xC4
-#define FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_4   0xC5
-#define FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_5   0xC6
+#define FLAG_UNUSED_0x0C2                    0xC2
+#define FLAG_UNUSED_0x0C3                    0xC3
+#define FLAG_UNUSED_0x0C4                    0xC4
+#define FLAG_UNUSED_0x0C5                    0xC5
+#define FLAG_UNUSED_0x0C6                    0xC6
 #define FLAG_RUSTURF_TUNNEL_OPENED           0xC7
 #define FLAG_RECEIVED_RED_SCARF              0xC8
 #define FLAG_RECEIVED_BLUE_SCARF             0xC9
@@ -567,7 +567,7 @@
 #define FLAG_HIDDEN_ITEM_LILYCOVE_CITY_0x24                  (FLAG_HIDDEN_ITEMS_START + 0x24)
 #define FLAG_HIDDEN_ITEM_LAVARIDGE_TOWN_0x25                 (FLAG_HIDDEN_ITEMS_START + 0x25)
 #define FLAG_HIDDEN_ITEM_FALLARBOR_TOWN_0x26                 (FLAG_HIDDEN_ITEMS_START + 0x26)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x27                         (FLAG_HIDDEN_ITEMS_START + 0x27)
+#define FLAG_ITEM_ROUTE_110_ITEMFINDER                       (FLAG_HIDDEN_ITEMS_START + 0x27)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x28                         (FLAG_HIDDEN_ITEMS_START + 0x28)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x29                         (FLAG_HIDDEN_ITEMS_START + 0x29)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x2A                         (FLAG_HIDDEN_ITEMS_START + 0x2A)
@@ -642,182 +642,180 @@
 #define FLAG_HIDDEN_ITEM_UNUSED_0x6F                         (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
 // Event Flags
-#define FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG                      0x2BC
-#define FLAG_HIDE_APPRENTICE                                        0x2BD
-#define FLAG_HIDE_POKEMON_CENTER_2F_MYSTERY_GIFT_MAN                0x2BE
-#define FLAG_HIDE_UNION_ROOM_PLAYER_1                               0x2BF
-#define FLAG_HIDE_UNION_ROOM_PLAYER_2                               0x2C0
-#define FLAG_HIDE_UNION_ROOM_PLAYER_3                               0x2C1
-#define FLAG_HIDE_UNION_ROOM_PLAYER_4                               0x2C2
-#define FLAG_HIDE_UNION_ROOM_PLAYER_5                               0x2C3
-#define FLAG_HIDE_UNION_ROOM_PLAYER_6                               0x2C4
-#define FLAG_HIDE_UNION_ROOM_PLAYER_7                               0x2C5
-#define FLAG_HIDE_UNION_ROOM_PLAYER_8                               0x2C6
-#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_1               0x2C7
-#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_2               0x2C8
-#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_3               0x2C9
-#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_4               0x2CA
-#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_5               0x2CB
-#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_6               0x2CC
-#define FLAG_HIDE_SAFARI_ZONE_SOUTH_CONSTRUCTION_WORKERS            0x2CD
-#define FLAG_HIDE_MEW                                               0x2CE
-#define FLAG_HIDE_ROUTE_104_RIVAL                                   0x2CF
-#define FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE                  0x2D0
-#define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH                  0x2D1
-#define FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM          0x2D2
-#define FLAG_HIDE_ROUTE_103_RIVAL                                   0x2D3
-#define FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE                    0x2D4
-#define FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT                        0x2D5
-#define FLAG_HIDE_PETALBURG_CITY_WALLY                              0x2D6
-#define FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_INVISIBLE_NINJA_BOY   0x2D7
-#define FLAG_HIDE_PETALBURG_CITY_WALLYS_AUNT                        0x2D8
-
-#define FLAG_UNUSED_0x2D9                                           0x2D9 // Unused Flag
-
-#define FLAG_HIDE_LILYCOVE_FAN_CLUB_INTERVIEWER                     0x2DA
-#define FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT                          0x2DB
-#define FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1                    0x2DC
-#define FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE_2                   0x2DD
-#define FLAG_HIDE_PLAYERS_HOUSE_DAD                                 0x2DE
-#define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_SIBLING      0x2DF
-#define FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_SIBLING          0x2E0
-#define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_INVISIBLE_NINJA_BOY    0x2E1
-#define FLAG_HIDE_ROUTE_104_MR_BRINEY                               0x2E2
-#define FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY                           0x2E3
-#define FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN                            0x2E4
-#define FLAG_HIDE_ROUTE_108_MR_BRINEY                               0x2E5
-#define FLAG_HIDE_ROUTE_104_MR_BRINEY_BOAT                          0x2E6
-#define FLAG_HIDE_MR_BRINEY_BOAT_DEWFORD_TOWN                       0x2E7
-#define FLAG_HIDE_ROUTE_109_MR_BRINEY_BOAT                          0x2E8
-#define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_BRENDAN            0x2E9
-#define FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_BRENDAN                0x2EA
-#define FLAG_HIDE_SAFARI_ZONE_SOUTH_EAST_EXPANSION                  0x2EB
-#define FLAG_HIDE_LILYCOVE_HARBOR_EON_TICKET_TAKER                  0x2EC
-#define FLAG_HIDE_SLATEPORT_CITY_SCOTT                              0x2ED
-#define FLAG_HIDE_ROUTE_101_ZIGZAGOON                               0x2EE
-#define FLAG_HIDE_VICTORY_ROAD_EXIT_WALLY                           0x2EF
-#define FLAG_HIDE_LITTLEROOT_TOWN_MOM_OUTSIDE                       0x2F0
-#define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN              0x2F1
-#define FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_1          0x2F2
-#define FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_2          0x2F3
-#define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_TEAM_MAGMA          0x2F4
-#define FLAG_HIDE_LITTLE_ROOT_TOWN_PLAYERS_BEDROOM_MOM              0x2F5
-#define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_MOM                0x2F6
-#define FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_MOM                    0x2F7
-#define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM      0x2F8
-#define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_TRUCK              0x2F9
-#define FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_TRUCK                  0x2FA
-#define FLAG_HIDE_DEOXYS                                            0x2FB
-#define FLAG_HIDE_BIRTH_ISLAND_DEOXYS_TRIANGLE                      0x2FC
-#define FLAG_HIDE_MAUVILLE_CITY_SCOTT                               0x2FD
-#define FLAG_HIDE_VERDANTURF_TOWN_SCOTT                             0x2FE
-#define FLAG_HIDE_FALLORBOR_TOWN_BATTLE_TENT_SCOTT                  0x2FF
-#define FLAG_HIDE_ROUTE_111_VICTOR_WINSTRATE                        0x300
-#define FLAG_HIDE_ROUTE_111_VICTORIA_WINSTRATE                      0x301
-#define FLAG_HIDE_ROUTE_111_VIVI_WINSTRATE                          0x302
-#define FLAG_HIDE_ROUTE_111_VICKY_WINSTRATE                         0x303
-#define FLAG_HIDE_PETALBURG_GYM_NORMAN                              0x304
-#define FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA_2                         0x305
-#define FLAG_HIDE_LILYCOVE_CONTEST_HALL_CONTEST_ATTENDANT_1         0x306
-#define FLAG_HIDE_LILYCOVE_MUSEUM_CURATOR                           0x307
-#define FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_1                          0x308
-#define FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_2                          0x309
-#define FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_3                          0x30A
-#define FLAG_HIDE_LILYCOVE_MUSEUM_PATRON_4                          0x30B
-#define FLAG_HIDE_LILYCOVE_MUSEUM_TOURISTS                          0x30C
-#define FLAG_HIDE_PETALBURG_GYM_GREETER                             0x30D
-#define FLAG_HIDE_MARINE_CAVE_KYOGRE                                0x30E
-#define FLAG_HIDE_TERRA_CAVE_GROUDON                                0x30F
-#define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_MOM          0x310
-#define FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_MOM              0x311
-#define FLAG_HIDE_ROUTE_119_SCOTT                                   0x312
-#define FLAG_HIDE_LILCOVE_MOTEL_SCOTT                               0x313
-#define FLAG_HIDE_MOSSDEEP_CITY_SCOTT                               0x314
-#define FLAG_HIDE_FANCLUB_OLD_LADY                                  0x315
-#define FLAG_HIDE_FANCLUB_BOY                                       0x316
-#define FLAG_HIDE_FANCLUB_LITTLE_BOY                                0x317
-#define FLAG_HIDE_FANCLUB_LADY                                      0x318
-#define FLAG_HIDE_EVER_GRANDE_POKEMON_CENTER_1F_SCOTT               0x319
-#define FLAG_HIDE_LITTLEROOT_TOWN_RIVAL                             0x31A
-#define FLAG_HIDE_LITTLEROOT_TOWN_BIRCH                             0x31B
-#define FLAG_HIDE_ROUTE_111_GABBY_AND_TY_1                          0x31C
-#define FLAG_HIDE_ROUTE_118_GABBY_AND_TY_1                          0x31D
-#define FLAG_HIDE_ROUTE_120_GABBY_AND_TY_1                          0x31E
-#define FLAG_HIDE_ROUTE_111_GABBY_AND_TY_3                          0x31F
-#define FLAG_HIDE_LUGIA                                             0x320
-#define FLAG_HIDE_HO_OH                                             0x321
-#define FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER                    0x322
-#define FLAG_HIDE_SLATEPORT_CITY_CONTEST_REPORTER                   0x323
-#define FLAG_HIDE_MAUVILLE_CITY_WALLY                               0x324
-#define FLAG_HIDE_MAUVILLE_CITY_WALLYS_UNCLE                        0x325
-#define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY                0x326
-#define FLAG_HIDE_RUSTURF_TUNNEL_LOVER_MAN                          0x327
-#define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_LOVER_MAN            0x328
-#define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE         0x329
-#define FLAG_HIDE_SS_TIDAL_CORRIDOR_SCOTT                           0x32A
-#define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_POKEBALL_CYNDAQUIL     0x32B
-#define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_POKEBALL_TOTODILE      0x32C
-#define FLAG_HIDE_ROUTE_116_DROPPED_GLASSES_MAN                     0x32D
-#define FLAG_HIDE_RUSBORO_CITY_RIVAL                                0x32E
-#define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_SWABLU_DOLL     0x32F
-#define FLAG_HIDE_SOOTOPOLIS_CITY_WALLACE                           0x330
-#define FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_POKE_BALL       0x331
-#define FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_2F_POKE_BALL           0x332
-#define FLAG_HIDE_ROUTE_112_TEAM_MAGMA                              0x333
-#define FLAG_HIDE_CAVE_OF_ORIGIN_B1F_WALLACE                        0x334
-#define FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_1_BLOCKING_ENTRANCE         0x335
-#define FLAG_HIDE_AQUA_HIDEOUT_1F_GRUNT_2_BLOCKING_ENTRANCE         0x336
-#define FLAG_HIDE_MOSSDEEP_CITY_TEAM_MAGMA                          0x337
-#define FLAG_HIDE_PETALBURG_GYM_WALLYS_UNCLE                        0x338
-#define FLAG_UNUSED_0x339                                           0x339 // Unused Flag
-#define FLAG_HIDE_SOOTOPOLIS_CITY_ARCHIE                            0x33A
-#define FLAG_HIDE_SOOTOPOLIS_CITY_MAXIE                             0x33B
-#define FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_ARCHIE                     0x33C
-#define FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAXIE                      0x33D
-#define FLAG_HIDE_PETALBURG_CITY_WALLYS_UNCLE                       0x33E
-#define FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_MAGMA_GRUNTS               0x33F
-#define FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER_ONLOOKERS      0x340
-#define FLAG_HIDE_GRANITE_CAVE_STEVEN                               0x341
-#define FLAG_HIDE_ROUTE_128_STEVEN                                  0x342
-#define FLAG_HIDE_SLATEPORT_CITY_GABBY_AND_TY                       0x343
-#define FLAG_HIDE_BATTLE_FRONTIER_RECEPTION_GATE_SCOTT              0x344
-#define FLAG_HIDE_ROUTE_110_BIRCH                                   0x345
-#define FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_POKEBALL_CHIKORITA     0x346
-#define FLAG_HIDE_SOOTOPOLIS_CITY_MAN_1                             0x347
-#define FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN                      0x348
-#define FLAG_HIDE_SLATEPORT_CITY_HARBOR_CAPTAIN_STERN               0x349
-#define FLAG_HIDE_BATTLE_FRONTIER_SUDOWOODO                         0x34A
-#define FLAG_HIDE_ROUTE_111_ROCK_SMASH_TIP_GUY                      0x34B
-#define FLAG_HIDE_RUSTBORO_CITY_SCIENTIST                           0x34C
-#define FLAG_HIDE_SLATEPORT_CITY_HARBOR_AQUA_GRUNT                  0x34D
-#define FLAG_HIDE_SLATEPORT_CITY_HARBOR_ARCHIE                      0x34E
-#define FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD                           0x34F
-#define FLAG_HIDE_SLATEPORT_CITY_HARBOR_SUBMARINE_SHADOW            0x350
-#define FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_2F_PICHU_DOLL          0x351
-#define FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_2                        0x352
-#define FLAG_HIDE_ROUTE_119_RIVAL                                   0x353
-#define FLAG_HIDE_LILYCOVE_CITY_AQUA_GRUNTS                         0x354
-#define FLAG_HIDE_MAGMA_HIDEOUT_4F_GROUDON_1                        0x355
-#define FLAG_HIDE_SOOTOPOLIS_CITY_RESIDENTS                         0x356
-#define FLAG_HIDE_SKY_PILLAR_WALLACE                                0x357
-#define FLAG_HIDE_MT_PYRE_SUMMIT_MAXIE                              0x358
-#define FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS                              0x359
-#define FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY                       0x35A
-#define FLAG_HIDE_SEAFLOOR_CAVERN_ROOM_9_KYOGRE_1                   0x35B
-#define FLAG_HIDE_SLATEPORT_CITY_HARBOR_SS_TIDAL                    0x35C
-#define FLAG_HIDE_LILYCOVE_HARBOR_SSTIDAL                           0x35D
-#define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_TEAM_MAGMA          0x35E
-#define FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_2F_STEVEN              0x35F
-#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_ALT_1           0x360
-#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_ALT_2           0x361
-#define FLAG_HIDE_PETALBURG_GYM_WALLY                               0x362
-#define FLAG_UNKNOWN_0x363                                          0x363 // Set, however has no purpose.
-#define FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN                           0x364
-#define FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY          0x365
-#define FLAG_HIDE_LANETTES_HOUSE_LANETTE                            0x366
-#define FLAG_HIDE_FALLORBOR_POKEMON_CENTER_LANETTE                  0x367
-#define FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN                          0x368
-#define FLAG_HIDE_TRICK_HOUSE_INTRO_CHAR                            0x369
+#define FLAG_HIDE_TRICK_MASTER_ENDROOM                              0x2BC
+#define FLAG_HIDE_TRICK_HOUSE_INTRO_CHAR                            0x2BD
+#define FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN                          0x2BE
+#define FLAG_HIDE_TRICK_HOUSE_END_MAN                               0x2BF
+#define FLAG_HIDE_DEBUG_OBJECTS                                     0x2C0
+#define FLAG_HIDE_INTRO_CHARACTERS                                  0x2C1
+#define FLAG_HIDE_TRICK_HOUSE_INTRO_CHARACTERS                      0x2C2
+#define FLAG_HIDE_UNUSED_0x2C3                                      0x2C3
+#define FLAG_HIDE_UNUSED_0x2C4                                      0x2C4
+#define FLAG_HIDE_UNUSED_0x2C5                                      0x2C5
+#define FLAG_HIDE_UNUSED_0x2C6                                      0x2C6
+#define FLAG_HIDE_UNUSED_0x2C7                                      0x2C7
+#define FLAG_HIDE_UNUSED_0x2C8                                      0x2C8
+#define FLAG_HIDE_UNUSED_0x2C9                                      0x2C9
+#define FLAG_HIDE_UNUSED_0x2CA                                      0x2CA
+#define FLAG_HIDE_UNUSED_0x2CB                                      0x2CB
+#define FLAG_HIDE_UNUSED_0x2CC                                      0x2CC
+#define FLAG_HIDE_UNUSED_0x2CD                                      0x2CD
+#define FLAG_HIDE_UNUSED_0x2CE                                      0x2CE
+#define FLAG_HIDE_UNUSED_0x2CF                                      0x2CF
+#define FLAG_HIDE_UNUSED_0x2D0                                      0x2D0
+#define FLAG_HIDE_UNUSED_0x2D1                                      0x2D1
+#define FLAG_HIDE_UNUSED_0x2D2                                      0x2D2
+#define FLAG_HIDE_UNUSED_0x2D3                                      0x2D3
+#define FLAG_HIDE_UNUSED_0x2D4                                      0x2D4
+#define FLAG_HIDE_UNUSED_0x2D5                                      0x2D5
+#define FLAG_HIDE_UNUSED_0x2D6                                      0x2D6
+#define FLAG_HIDE_UNUSED_0x2D7                                      0x2D7
+#define FLAG_HIDE_UNUSED_0x2D8                                      0x2D8
+#define FLAG_HIDE_UNUSED_0x2D9                                      0x2D9 // Unused Flag
+#define FLAG_HIDE_UNUSED_0x2DA                                      0x2DA
+#define FLAG_HIDE_UNUSED_0x2DB                                      0x2DB
+#define FLAG_HIDE_UNUSED_0x2DC                                      0x2DC
+#define FLAG_HIDE_UNUSED_0x2DD                                      0x2DD
+#define FLAG_HIDE_UNUSED_0x2DE                                      0x2DE
+#define FLAG_HIDE_UNUSED_0x2DF                                      0x2DF
+#define FLAG_HIDE_UNUSED_0x2E0                                      0x2E0
+#define FLAG_HIDE_UNUSED_0x2E1                                      0x2E1
+#define FLAG_HIDE_UNUSED_0x2E2                                      0x2E2
+#define FLAG_HIDE_UNUSED_0x2E3                                      0x2E3
+#define FLAG_HIDE_UNUSED_0x2E4                                      0x2E4
+#define FLAG_HIDE_UNUSED_0x2E5                                      0x2E5
+#define FLAG_HIDE_UNUSED_0x2E6                                      0x2E6
+#define FLAG_HIDE_UNUSED_0x2E7                                      0x2E7
+#define FLAG_HIDE_UNUSED_0x2E8                                      0x2E8
+#define FLAG_HIDE_UNUSED_0x2E9                                      0x2E9
+#define FLAG_HIDE_UNUSED_0x2EA                                      0x2EA
+#define FLAG_HIDE_UNUSED_0x2EB                                      0x2EB
+#define FLAG_HIDE_UNUSED_0x2EC                                      0x2EC
+#define FLAG_HIDE_UNUSED_0x2ED                                      0x2ED
+#define FLAG_HIDE_UNUSED_0x2EE                                      0x2EE
+#define FLAG_HIDE_UNUSED_0x2EF                                      0x2EF
+#define FLAG_HIDE_UNUSED_0x2F0                                      0x2F0
+#define FLAG_HIDE_UNUSED_0x2F1                                      0x2F1
+#define FLAG_HIDE_UNUSED_0x2F2                                      0x2F2
+#define FLAG_HIDE_UNUSED_0x2F3                                      0x2F3
+#define FLAG_HIDE_UNUSED_0x2F4                                      0x2F4
+#define FLAG_HIDE_UNUSED_0x2F5                                      0x2F5
+#define FLAG_HIDE_UNUSED_0x2F6                                      0x2F6
+#define FLAG_HIDE_UNUSED_0x2F7                                      0x2F7
+#define FLAG_HIDE_UNUSED_0x2F8                                      0x2F8
+#define FLAG_HIDE_UNUSED_0x2F9                                      0x2F9
+#define FLAG_HIDE_UNUSED_0x2FA                                      0x2FA
+#define FLAG_HIDE_UNUSED_0x2FB                                      0x2FB
+#define FLAG_HIDE_UNUSED_0x2FC                                      0x2FC
+#define FLAG_HIDE_UNUSED_0x2FD                                      0x2FD
+#define FLAG_HIDE_UNUSED_0x2FE                                      0x2FE
+#define FLAG_HIDE_UNUSED_0x2FF                                      0x2FF
+#define FLAG_HIDE_UNUSED_0x300                                      0x300
+#define FLAG_HIDE_UNUSED_0x301                                      0x301
+#define FLAG_HIDE_UNUSED_0x302                                      0x302
+#define FLAG_HIDE_UNUSED_0x303                                      0x303
+#define FLAG_HIDE_UNUSED_0x304                                      0x304
+#define FLAG_HIDE_UNUSED_0x305                                      0x305
+#define FLAG_HIDE_UNUSED_0x306                                      0x306
+#define FLAG_HIDE_UNUSED_0x307                                      0x307
+#define FLAG_HIDE_UNUSED_0x308                                      0x308
+#define FLAG_HIDE_UNUSED_0x309                                      0x309
+#define FLAG_HIDE_UNUSED_0x30A                                      0x30A
+#define FLAG_HIDE_UNUSED_0x30B                                      0x30B
+#define FLAG_HIDE_UNUSED_0x30C                                      0x30C
+#define FLAG_HIDE_UNUSED_0x30D                                      0x30D
+#define FLAG_HIDE_UNUSED_0x30E                                      0x30E
+#define FLAG_HIDE_UNUSED_0x30F                                      0x30F
+#define FLAG_HIDE_UNUSED_0x310                                      0x310
+#define FLAG_HIDE_UNUSED_0x311                                      0x311
+#define FLAG_HIDE_UNUSED_0x312                                      0x312
+#define FLAG_HIDE_UNUSED_0x313                                      0x313
+#define FLAG_HIDE_UNUSED_0x314                                      0x314
+#define FLAG_HIDE_UNUSED_0x315                                      0x315
+#define FLAG_HIDE_UNUSED_0x316                                      0x316
+#define FLAG_HIDE_UNUSED_0x317                                      0x317
+#define FLAG_HIDE_UNUSED_0x318                                      0x318
+#define FLAG_HIDE_UNUSED_0x319                                      0x319
+#define FLAG_HIDE_UNUSED_0x31A                                      0x31A
+#define FLAG_HIDE_UNUSED_0x31B                                      0x31B
+#define FLAG_HIDE_UNUSED_0x31C                                      0x31C
+#define FLAG_HIDE_UNUSED_0x31D                                      0x31D
+#define FLAG_HIDE_UNUSED_0x31E                                      0x31E
+#define FLAG_HIDE_UNUSED_0x31F                                      0x31F
+#define FLAG_HIDE_UNUSED_0x320                                      0x320
+#define FLAG_HIDE_UNUSED_0x321                                      0x321
+#define FLAG_HIDE_UNUSED_0x322                                      0x322
+#define FLAG_HIDE_UNUSED_0x323                                      0x323
+#define FLAG_HIDE_UNUSED_0x324                                      0x324
+#define FLAG_HIDE_UNUSED_0x325                                      0x325
+#define FLAG_HIDE_UNUSED_0x326                                      0x326
+#define FLAG_HIDE_UNUSED_0x327                                      0x327
+#define FLAG_HIDE_UNUSED_0x328                                      0x328
+#define FLAG_HIDE_UNUSED_0x329                                      0x329
+#define FLAG_HIDE_UNUSED_0x32A                                      0x32A
+#define FLAG_HIDE_UNUSED_0x32B                                      0x32B
+#define FLAG_HIDE_UNUSED_0x32C                                      0x32C
+#define FLAG_HIDE_UNUSED_0x32D                                      0x32D
+#define FLAG_HIDE_UNUSED_0x32E                                      0x32E
+#define FLAG_HIDE_UNUSED_0x32F                                      0x32F
+#define FLAG_HIDE_UNUSED_0x330                                      0x330
+#define FLAG_HIDE_UNUSED_0x331                                      0x331
+#define FLAG_HIDE_UNUSED_0x332                                      0x332
+#define FLAG_HIDE_UNUSED_0x333                                      0x333
+#define FLAG_HIDE_UNUSED_0x334                                      0x334
+#define FLAG_HIDE_UNUSED_0x335                                      0x335
+#define FLAG_HIDE_UNUSED_0x336                                      0x336
+#define FLAG_HIDE_UNUSED_0x337                                      0x337
+#define FLAG_HIDE_UNUSED_0x338                                      0x338
+#define FLAG_HIDE_UNUSED_0x339                                      0x339 // Unused Flag
+#define FLAG_HIDE_UNUSED_0x33A                                      0x33A
+#define FLAG_HIDE_UNUSED_0x33B                                      0x33B
+#define FLAG_HIDE_UNUSED_0x33C                                      0x33C
+#define FLAG_HIDE_UNUSED_0x33D                                      0x33D
+#define FLAG_HIDE_UNUSED_0x33E                                      0x33E
+#define FLAG_HIDE_UNUSED_0x33F                                      0x33F
+#define FLAG_HIDE_UNUSED_0x340                                      0x340
+#define FLAG_HIDE_UNUSED_0x341                                      0x341
+#define FLAG_HIDE_UNUSED_0x342                                      0x342
+#define FLAG_HIDE_UNUSED_0x343                                      0x343
+#define FLAG_HIDE_UNUSED_0x344                                      0x344
+#define FLAG_HIDE_UNUSED_0x345                                      0x345
+#define FLAG_HIDE_UNUSED_0x346                                      0x346
+#define FLAG_HIDE_UNUSED_0x347                                      0x347
+#define FLAG_HIDE_UNUSED_0x348                                      0x348
+#define FLAG_HIDE_UNUSED_0x349                                      0x349
+#define FLAG_HIDE_UNUSED_0x34A                                      0x34A
+#define FLAG_HIDE_UNUSED_0x34B                                      0x34B
+#define FLAG_HIDE_UNUSED_0x34C                                      0x34C
+#define FLAG_HIDE_UNUSED_0x34D                                      0x34D
+#define FLAG_HIDE_UNUSED_0x34E                                      0x34E
+#define FLAG_HIDE_UNUSED_0x34F                                      0x34F
+#define FLAG_HIDE_UNUSED_0x350                                      0x350
+#define FLAG_HIDE_UNUSED_0x351                                      0x351
+#define FLAG_HIDE_UNUSED_0x352                                      0x352
+#define FLAG_HIDE_UNUSED_0x353                                      0x353
+#define FLAG_HIDE_UNUSED_0x354                                      0x354
+#define FLAG_HIDE_UNUSED_0x355                                      0x355
+#define FLAG_HIDE_UNUSED_0x356                                      0x356
+#define FLAG_HIDE_UNUSED_0x357                                      0x357
+#define FLAG_HIDE_UNUSED_0x358                                      0x358
+#define FLAG_HIDE_UNUSED_0x359                                      0x359
+#define FLAG_HIDE_UNUSED_0x35A                                      0x35A
+#define FLAG_HIDE_UNUSED_0x35B                                      0x35B
+#define FLAG_HIDE_UNUSED_0x35C                                      0x35C
+#define FLAG_HIDE_UNUSED_0x35D                                      0x35D
+#define FLAG_HIDE_UNUSED_0x35E                                      0x35E
+#define FLAG_HIDE_UNUSED_0x35F                                      0x35F
+#define FLAG_HIDE_UNUSED_0x360                                      0x360
+#define FLAG_HIDE_UNUSED_0x361                                      0x361
+#define FLAG_HIDE_UNUSED_0x362                                      0x362
+#define FLAG_HIDE_UNUSED_0x363                                      0x363 // Set, however has no purpose.
+#define FLAG_HIDE_UNUSED_0x364                                      0x364
+#define FLAG_HIDE_UNUSED_0x365                                      0x365
+#define FLAG_HIDE_UNUSED_0x366                                      0x366
+#define FLAG_HIDE_UNUSED_0x367                                      0x367
+#define FLAG_HIDE_UNUSED_0x368                                      0x368
+#define FLAG_HIDE_UNUSED_0x369                                      0x369
 #define FLAG_HIDE_UNUSED_0x36A                                      0x36A
 #define FLAG_HIDE_UNUSED_0x36B                                      0x36B
 #define FLAG_HIDE_UNUSED_0x36C                                      0x36C
@@ -843,107 +841,107 @@
 #define FLAG_HIDE_UNUSED_0x380                                      0x380
 #define FLAG_HIDE_UNUSED_0x381                                      0x381
 #define FLAG_HIDE_UNUSED_0x382                                      0x382
-#define FLAG_HIDE_TRICK_HOUSE_END_MAN                               0x383
-#define FLAG_HIDE_ROUTE_110_TEAM_AQUA                               0x384
-#define FLAG_HIDE_ROUTE_118_GABBY_AND_TY_2                          0x385
-#define FLAG_HIDE_ROUTE_120_GABBY_AND_TY_2                          0x386
-#define FLAG_HIDE_ROUTE_111_GABBY_AND_TY_2                          0x387
-#define FLAG_HIDE_ROUTE_118_GABBY_AND_TY_3                          0x388
-#define FLAG_HIDE_SLATEPORT_CITY_HARBOR_PATRONS                     0x389
-#define FLAG_HIDE_ROUTE_104_WHITE_HERB_FLORIST                      0x38A
-#define FLAG_HIDE_FALLARBOR_AZURILL                                 0x38B
-#define FLAG_HIDE_LILYCOVE_HARBOR_FERRY_ATTENDANT                   0x38C
-#define FLAG_HIDE_LILYCOVE_HARBOR_FERRY_SAILOR                      0x38D
-#define FLAG_HIDE_SOUTHERN_ISLAND_EON_STONE                         0x38E
-#define FLAG_HIDE_SOUTHERN_ISLAND_UNCHOSEN_EON_DUO_MON              0x38F
-#define FLAG_HIDE_MAUVILLE_CITY_WATTSON                             0x390
-#define FLAG_HIDE_MAUVILLE_GYM_WATTSON                              0x391
-#define FLAG_HIDE_ROUTE_121_TEAM_AQUA_GRUNTS                        0x392
-#define FLAG_UNKNOWN_0x393                                          0x393 // Set, however has no purpose.
-#define FLAG_HIDE_MT_PYRE_SUMMIT_ARCHIE                             0x394
-#define FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA                          0x395
-#define FLAG_HIDE_BATTLE_TOWER_REPORTER                             0x396
-#define FLAG_HIDE_ROUTE_110_RIVAL_1                                 0x397
-#define FLAG_HIDE_CHAMPIONS_ROOM_RIVAL                              0x398
-#define FLAG_HIDE_CHAMPIONS_ROOM_BIRCH                              0x399
-#define FLAG_HIDE_ROUTE_110_RIVAL_2                                 0x39A
-#define FLAG_HIDE_ROUTE_119_RIVAL_ON_BIKE                           0x39B
-#define FLAG_HIDE_AQUA_HIDEOUT_GRUNTS                               0x39C
-#define FLAG_HIDE_LILCOVE_MOTEL_GAME_DESIGNERS                      0x39D
-#define FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA                              0x39E
-#define FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA                             0x39F
-#define FLAG_HIDE_FALLARBOR_HOUSE_1_PROF_COZMO                      0x3A0
-#define FLAG_HIDE_LAVARIDGE_TOWN_RIVAL_1                            0x3A1
-#define FLAG_HIDE_LAVARIDGE_TOWN_RIVAL_2                            0x3A2
-#define FLAG_HIDE_RUSTURF_TUNNEL_ROCK_1                             0x3A3
-#define FLAG_HIDE_RUSTURF_TUNNEL_ROCK_2                             0x3A4
-#define FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL                      0x3A5
-#define FLAG_HIDE_MOSSDEEP_CITY_HOUSE_2_WINGULL                     0x3A6
-#define FLAG_HIDE_REGIROCK                                          0x3A7
-#define FLAG_HIDE_REGICE                                            0x3A8
-#define FLAG_HIDE_REGISTEEL                                         0x3A9
-#define FLAG_HIDE_METEOR_FALLS_TEAM_AQUA                            0x3AA
-#define FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA                           0x3AB
-#define FLAG_HIDE_DEWFORD_HALL_SLUDGE_BOMB_MAN                      0x3AC
-#define FLAG_HIDE_SEAFLOOR_CAVERN_ENTRANCE_AQUA_GRUNT               0x3AD
-#define FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO                          0x3AE
-#define FLAG_HIDE_AQUA_HIDEOUT_B2F_SUBMARINE_SHADOW                 0x3AF
-#define FLAG_HIDE_ROUTE_128_ARCHIE                                  0x3B0
-#define FLAG_HIDE_ROUTE_128_MAXIE                                   0x3B1
-#define FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS                       0x3B2
-#define FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE                          0x3B3
-#define FLAG_HIDE_SLATEPORT_CITY_TM_SALESMAN                        0x3B4
-#define FLAG_HIDE_RUSTBORO_CITY_DEVON_CORP_3F_EMPLOYEE              0x3B5
-#define FLAG_HIDE_SS_TIDAL_CORRIDOR_MR_BRINEY                       0x3B6
-#define FLAG_HIDE_SS_TIDAL_ROOMS_SNATCH_GIVER                       0x3B7
-#define FLAG_RECEIVED_SHOAL_SALT_1                                  0x3B8
-#define FLAG_RECEIVED_SHOAL_SALT_2                                  0x3B9
-#define FLAG_RECEIVED_SHOAL_SALT_3                                  0x3BA
-#define FLAG_RECEIVED_SHOAL_SALT_4                                  0x3BB
-#define FLAG_RECEIVED_SHOAL_SHELL_1                                 0x3BC
-#define FLAG_RECEIVED_SHOAL_SHELL_2                                 0x3BD
-#define FLAG_RECEIVED_SHOAL_SHELL_3                                 0x3BE
-#define FLAG_RECEIVED_SHOAL_SHELL_4                                 0x3BF
-#define FLAG_HIDE_ROUTE_111_SECRET_POWER_MAN                        0x3C0
-#define FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION                       0x3C1
-#define FLAG_HIDE_LILYCOVE_DEPARTMENT_STORE_ROOFTOP_SALE_WOMAN      0x3C2
-#define FLAG_HIDE_MIRAGE_TOWER_ROOT_FOSSIL                          0x3C3
-#define FLAG_HIDE_MIRAGE_TOWER_CLAW_FOSSIL                          0x3C4
-#define FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_FAMILIAR_AQUA_GRUNT 0x3C5
-#define FLAG_HIDE_ROUTE_118_STEVEN                                  0x3C6
-#define FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_STEVEN                0x3C7
-#define FLAG_HIDE_MOSSDEEP_CITY_STEVENS_HOUSE_BELDUM_POKEBALL       0x3C8
-#define FLAG_HIDE_FORTREE_CITY_KECLEON                              0x3C9
-#define FLAG_HIDE_ROUTE_120_KECLEON_1                               0x3CA
-#define FLAG_HIDE_LILYCOVE_CITY_RIVAL                               0x3CB
-#define FLAG_HIDE_ROUTE_120_STEVEN                                  0x3CC
-#define FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN                            0x3CD
-#define FLAG_HIDE_NEW_MAUVILLE_VOLTORB_1                            0x3CE
-#define FLAG_HIDE_NEW_MAUVILLE_VOLTORB_2                            0x3CF
-#define FLAG_HIDE_NEW_MAUVILLE_VOLTORB_3                            0x3D0
-#define FLAG_HIDE_AQUA_HIDEOUT_B1F_ELECTRODE_1                      0x3D1
-#define FLAG_HIDE_AQUA_HIDEOUT_B1F_ELECTRODE_2                      0x3D2
-#define FLAG_HIDE_OLDALE_TOWN_RIVAL                                 0x3D3
-#define FLAG_HIDE_UNDERWATER_SEA_FLOOR_CAVERN_STOLEN_SUBMARINE      0x3D4
-#define FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE                          0x3D5
-#define FLAG_HIDE_ROUTE_120_KECLEON_2                               0x3D6
-#define FLAG_HIDE_RUSTURF_TUNNEL_LOVER_WOMAN                        0x3D7
-#define FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_LOVER_WOMAN          0x3D8
-#define FLAG_HIDE_ROUTE_120_KECLEON_3                               0x3D9
-#define FLAG_HIDE_ROUTE_120_KECLEON_4                               0x3DA
-#define FLAG_HIDE_ROUTE_120_KECLEON_5                               0x3DB
-#define FLAG_HIDE_ROUTE_120_KECLEON_6                               0x3DC
-#define FLAG_HIDE_ROUTE_119_KECLEON_1                               0x3DD
-#define FLAG_HIDE_ROUTE_119_KECLEON_2                               0x3DE
-#define FLAG_HIDE_ROUTE_101_BOY                                     0x3DF
-#define FLAG_HIDE_WEATHER_INSTITUTE_2F_AQUA_GRUNT_M                 0x3E0
-#define FLAG_HIDE_LILYCOVE_POKEMON_CENTER_LADY                      0x3E1
-#define FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY                       0x3E2
-#define FLAG_HIDE_PETALBURG_CITY_SCOTT                              0x3E3
-#define FLAG_HIDE_SOOTOPOLIS_CITY_RAYQUAZA                          0x3E4
-#define FLAG_HIDE_SOOTOPOLIS_CITY_KYOGRE                            0x3E5
-#define FLAG_HIDE_SOOTOPOLIS_CITY_GROUDON                           0x3E6
-#define FLAG_HIDE_RUSTBORO_CITY_POKEMON_SCHOOL_SCOTT                0x3E7
+#define FLAG_HIDE_UNUSED_0x383                                      0x383
+#define FLAG_HIDE_UNUSED_0x384                                      0x384
+#define FLAG_HIDE_UNUSED_0x385                                      0x385
+#define FLAG_HIDE_UNUSED_0x386                                      0x386
+#define FLAG_HIDE_UNUSED_0x387                                      0x387
+#define FLAG_HIDE_UNUSED_0x388                                      0x388
+#define FLAG_HIDE_UNUSED_0x389                                      0x389
+#define FLAG_HIDE_UNUSED_0x38A                                      0x38A
+#define FLAG_HIDE_UNUSED_0x38B                                      0x38B
+#define FLAG_HIDE_UNUSED_0x38C                                      0x38C
+#define FLAG_HIDE_UNUSED_0x38D                                      0x38D
+#define FLAG_HIDE_UNUSED_0x38E                                      0x38E
+#define FLAG_HIDE_UNUSED_0x38F                                      0x38F
+#define FLAG_HIDE_UNUSED_0x390                                      0x390
+#define FLAG_HIDE_UNUSED_0x391                                      0x391
+#define FLAG_HIDE_UNUSED_0x392                                      0x392
+#define FLAG_HIDE_UNUSED_0x393                                      0x393 // Set, however has no purpose.
+#define FLAG_HIDE_UNUSED_0x394                                      0x394
+#define FLAG_HIDE_UNUSED_0x395                                      0x395
+#define FLAG_HIDE_UNUSED_0x396                                      0x396
+#define FLAG_HIDE_UNUSED_0x397                                      0x397
+#define FLAG_HIDE_UNUSED_0x398                                      0x398
+#define FLAG_HIDE_UNUSED_0x399                                      0x399
+#define FLAG_HIDE_UNUSED_0x39A                                      0x39A
+#define FLAG_HIDE_UNUSED_0x39B                                      0x39B
+#define FLAG_HIDE_UNUSED_0x39C                                      0x39C
+#define FLAG_HIDE_UNUSED_0x39D                                      0x39D
+#define FLAG_HIDE_UNUSED_0x39E                                      0x39E
+#define FLAG_HIDE_UNUSED_0x39F                                      0x39F
+#define FLAG_HIDE_UNUSED_0x3A0                                      0x3A0
+#define FLAG_HIDE_UNUSED_0x3A1                                      0x3A1
+#define FLAG_HIDE_UNUSED_0x3A2                                      0x3A2
+#define FLAG_HIDE_UNUSED_0x3A3                                      0x3A3
+#define FLAG_HIDE_UNUSED_0x3A4                                      0x3A4
+#define FLAG_HIDE_UNUSED_0x3A5                                      0x3A5
+#define FLAG_HIDE_UNUSED_0x3A6                                      0x3A6
+#define FLAG_HIDE_UNUSED_0x3A7                                      0x3A7
+#define FLAG_HIDE_UNUSED_0x3A8                                      0x3A8
+#define FLAG_HIDE_UNUSED_0x3A9                                      0x3A9
+#define FLAG_HIDE_UNUSED_0x3AA                                      0x3AA
+#define FLAG_HIDE_UNUSED_0x3AB                                      0x3AB
+#define FLAG_HIDE_UNUSED_0x3AC                                      0x3AC
+#define FLAG_HIDE_UNUSED_0x3AD                                      0x3AD
+#define FLAG_HIDE_UNUSED_0x3AE                                      0x3AE
+#define FLAG_HIDE_UNUSED_0x3AF                                      0x3AF
+#define FLAG_HIDE_UNUSED_0x3B0                                      0x3B0
+#define FLAG_HIDE_UNUSED_0x3B1                                      0x3B1
+#define FLAG_HIDE_UNUSED_0x3B2                                      0x3B2
+#define FLAG_HIDE_UNUSED_0x3B3                                      0x3B3
+#define FLAG_HIDE_UNUSED_0x3B4                                      0x3B4
+#define FLAG_HIDE_UNUSED_0x3B5                                      0x3B5
+#define FLAG_HIDE_UNUSED_0x3B6                                      0x3B6
+#define FLAG_HIDE_UNUSED_0x3B7                                      0x3B7
+#define FLAG_HIDE_UNUSED_0x3B8                                      0x3B8
+#define FLAG_HIDE_UNUSED_0x3B9                                      0x3B9
+#define FLAG_HIDE_UNUSED_0x3BA                                      0x3BA
+#define FLAG_HIDE_UNUSED_0x3BB                                      0x3BB
+#define FLAG_HIDE_UNUSED_0x3BC                                      0x3BC
+#define FLAG_HIDE_UNUSED_0x3BD                                      0x3BD
+#define FLAG_HIDE_UNUSED_0x3BE                                      0x3BE
+#define FLAG_HIDE_UNUSED_0x3BF                                      0x3BF
+#define FLAG_HIDE_UNUSED_0x3C0                                      0x3C0
+#define FLAG_HIDE_UNUSED_0x3C1                                      0x3C1
+#define FLAG_HIDE_UNUSED_0x3C2                                      0x3C2
+#define FLAG_HIDE_UNUSED_0x3C3                                      0x3C3
+#define FLAG_HIDE_UNUSED_0x3C4                                      0x3C4
+#define FLAG_HIDE_UNUSED_0x3C5                                      0x3C5
+#define FLAG_HIDE_UNUSED_0x3C6                                      0x3C6
+#define FLAG_HIDE_UNUSED_0x3C7                                      0x3C7
+#define FLAG_HIDE_UNUSED_0x3C8                                      0x3C8
+#define FLAG_HIDE_UNUSED_0x3C9                                      0x3C9
+#define FLAG_HIDE_UNUSED_0x3CA                                      0x3CA
+#define FLAG_HIDE_UNUSED_0x3CB                                      0x3CB
+#define FLAG_HIDE_UNUSED_0x3CC                                      0x3CC
+#define FLAG_HIDE_UNUSED_0x3CD                                      0x3CD
+#define FLAG_HIDE_UNUSED_0x3CE                                      0x3CE
+#define FLAG_HIDE_UNUSED_0x3CF                                      0x3CF
+#define FLAG_HIDE_UNUSED_0x3D0                                      0x3D0
+#define FLAG_HIDE_UNUSED_0x3D1                                      0x3D1
+#define FLAG_HIDE_UNUSED_0x3D2                                      0x3D2
+#define FLAG_HIDE_UNUSED_0x3D3                                      0x3D3
+#define FLAG_HIDE_UNUSED_0x3D4                                      0x3D4
+#define FLAG_HIDE_UNUSED_0x3D5                                      0x3D5
+#define FLAG_HIDE_UNUSED_0x3D6                                      0x3D6
+#define FLAG_HIDE_UNUSED_0x3D7                                      0x3D7
+#define FLAG_HIDE_UNUSED_0x3D8                                      0x3D8
+#define FLAG_HIDE_UNUSED_0x3D9                                      0x3D9
+#define FLAG_HIDE_UNUSED_0x3DA                                      0x3DA
+#define FLAG_HIDE_UNUSED_0x3DB                                      0x3DB
+#define FLAG_HIDE_UNUSED_0x3DC                                      0x3DC
+#define FLAG_HIDE_UNUSED_0x3DD                                      0x3DD
+#define FLAG_HIDE_UNUSED_0x3DE                                      0x3DE
+#define FLAG_HIDE_UNUSED_0x3DF                                      0x3DF
+#define FLAG_HIDE_UNUSED_0x3E0                                      0x3E0
+#define FLAG_HIDE_UNUSED_0x3E1                                      0x3E1
+#define FLAG_HIDE_UNUSED_0x3E2                                      0x3E2
+#define FLAG_HIDE_UNUSED_0x3E3                                      0x3E3
+#define FLAG_HIDE_UNUSED_0x3E4                                      0x3E4
+#define FLAG_HIDE_UNUSED_0x3E5                                      0x3E5
+#define FLAG_HIDE_UNUSED_0x3E6                                      0x3E6
+#define FLAG_HIDE_UNUSED_0x3E7                                      0x3E7
 
 // Item Ball Flags
 #define FLAG_ITEM_ROUTE_102_POTION                                  0x3E8
@@ -953,7 +951,7 @@
 #define FLAG_ITEM_ROUTE_106_PROTEIN                                 0x3EC
 #define FLAG_ITEM_ROUTE_109_PP_UP                                   0x3ED
 #define FLAG_ITEM_ROUTE_109_RARE_CANDY                              0x3EE
-#define FLAG_ITEM_ROUTE_110_DIRE_HIT                                0x3EF
+#define FLAG_UNUSED_0x3EF                                           0x3EF
 #define FLAG_ITEM_ROUTE_111_TM_37                                   0x3F0
 #define FLAG_ITEM_ROUTE_111_STARDUST                                0x3F1
 #define FLAG_ITEM_ROUTE_111_HP_UP                                   0x3F2
@@ -1118,99 +1116,99 @@
 #define FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_NUGGET                     0x491
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
-#define FLAG_UNUSED_0x493                                           0x493 // Unused Flag
-#define FLAG_UNUSED_0x494                                           0x494 // Unused Flag
-#define FLAG_UNUSED_0x495                                           0x495 // Unused Flag
-#define FLAG_UNUSED_0x496                                           0x496 // Unused Flag
-#define FLAG_UNUSED_0x497                                           0x497 // Unused Flag
-#define FLAG_UNUSED_0x498                                           0x498 // Unused Flag
-#define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
-#define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag
-#define FLAG_UNUSED_0x49B                                           0x49B // Unused Flag
-#define FLAG_UNUSED_0x49C                                           0x49C // Unused Flag
-#define FLAG_UNUSED_0x49D                                           0x49D // Unused Flag
-#define FLAG_UNUSED_0x49E                                           0x49E // Unused Flag
-#define FLAG_UNUSED_0x49F                                           0x49F // Unused Flag
-#define FLAG_UNUSED_0x4A0                                           0x4A0 // Unused Flag
-#define FLAG_UNUSED_0x4A1                                           0x4A1 // Unused Flag
-#define FLAG_UNUSED_0x4A2                                           0x4A2 // Unused Flag
-#define FLAG_UNUSED_0x4A3                                           0x4A3 // Unused Flag
-#define FLAG_UNUSED_0x4A4                                           0x4A4 // Unused Flag
-#define FLAG_UNUSED_0x4A5                                           0x4A5 // Unused Flag
-#define FLAG_UNUSED_0x4A6                                           0x4A6 // Unused Flag
-#define FLAG_UNUSED_0x4A7                                           0x4A7 // Unused Flag
-#define FLAG_UNUSED_0x4A8                                           0x4A8 // Unused Flag
-#define FLAG_UNUSED_0x4A9                                           0x4A9 // Unused Flag
-#define FLAG_UNUSED_0x4AA                                           0x4AA // Unused Flag
-#define FLAG_UNUSED_0x4AB                                           0x4AB // Unused Flag
-#define FLAG_UNUSED_0x4AC                                           0x4AC // Unused Flag
-#define FLAG_UNUSED_0x4AD                                           0x4AD // Unused Flag
-#define FLAG_UNUSED_0x4AE                                           0x4AE // Unused Flag
-#define FLAG_UNUSED_0x4AF                                           0x4AF // Unused Flag
-#define FLAG_UNUSED_0x4B0                                           0x4B0 // Unused Flag
-#define FLAG_UNUSED_0x4B1                                           0x4B1 // Unused Flag
-#define FLAG_UNUSED_0x4B2                                           0x4B2 // Unused Flag
-#define FLAG_UNUSED_0x4B3                                           0x4B3 // Unused Flag
-#define FLAG_UNUSED_0x4B4                                           0x4B4 // Unused Flag
-#define FLAG_UNUSED_0x4B5                                           0x4B5 // Unused Flag
-#define FLAG_UNUSED_0x4B6                                           0x4B6 // Unused Flag
-#define FLAG_UNUSED_0x4B7                                           0x4B7 // Unused Flag
-#define FLAG_UNUSED_0x4B8                                           0x4B8 // Unused Flag
-#define FLAG_UNUSED_0x4B9                                           0x4B9 // Unused Flag
-#define FLAG_UNUSED_0x4BA                                           0x4BA // Unused Flag
-#define FLAG_UNUSED_0x4BB                                           0x4BB // Unused Flag
-#define FLAG_UNUSED_0x4BC                                           0x4BC // Unused Flag
-#define FLAG_UNUSED_0x4BD                                           0x4BD // Unused Flag
-#define FLAG_UNUSED_0x4BE                                           0x4BE // Unused Flag
-#define FLAG_UNUSED_0x4BF                                           0x4BF // Unused Flag
-#define FLAG_UNUSED_0x4C0                                           0x4C0 // Unused Flag
-#define FLAG_UNUSED_0x4C1                                           0x4C1 // Unused Flag
-#define FLAG_UNUSED_0x4C2                                           0x4C2 // Unused Flag
-#define FLAG_UNUSED_0x4C3                                           0x4C3 // Unused Flag
-#define FLAG_UNUSED_0x4C4                                           0x4C4 // Unused Flag
-#define FLAG_UNUSED_0x4C5                                           0x4C5 // Unused Flag
-#define FLAG_UNUSED_0x4C6                                           0x4C6 // Unused Flag
-#define FLAG_UNUSED_0x4C7                                           0x4C7 // Unused Flag
-#define FLAG_UNUSED_0x4C8                                           0x4C8 // Unused Flag
-#define FLAG_UNUSED_0x4C9                                           0x4C9 // Unused Flag
-#define FLAG_UNUSED_0x4CA                                           0x4CA // Unused Flag
-#define FLAG_UNUSED_0x4CB                                           0x4CB // Unused Flag
-#define FLAG_UNUSED_0x4CC                                           0x4CC // Unused Flag
-#define FLAG_UNUSED_0x4CD                                           0x4CD // Unused Flag
-#define FLAG_UNUSED_0x4CE                                           0x4CE // Unused Flag
-#define FLAG_UNUSED_0x4CF                                           0x4CF // Unused Flag
-#define FLAG_UNUSED_0x4D0                                           0x4D0 // Unused Flag
-#define FLAG_UNUSED_0x4D1                                           0x4D1 // Unused Flag
-#define FLAG_UNUSED_0x4D2                                           0x4D2 // Unused Flag
-#define FLAG_UNUSED_0x4D3                                           0x4D3 // Unused Flag
-#define FLAG_UNUSED_0x4D4                                           0x4D4 // Unused Flag
-#define FLAG_UNUSED_0x4D5                                           0x4D5 // Unused Flag
-#define FLAG_UNUSED_0x4D6                                           0x4D6 // Unused Flag
-#define FLAG_UNUSED_0x4D7                                           0x4D7 // Unused Flag
-#define FLAG_UNUSED_0x4D8                                           0x4D8 // Unused Flag
-#define FLAG_UNUSED_0x4D9                                           0x4D9 // Unused Flag
-#define FLAG_UNUSED_0x4DA                                           0x4DA // Unused Flag
-#define FLAG_UNUSED_0x4DB                                           0x4DB // Unused Flag
-#define FLAG_UNUSED_0x4DC                                           0x4DC // Unused Flag
-#define FLAG_UNUSED_0x4DD                                           0x4DD // Unused Flag
-#define FLAG_UNUSED_0x4DE                                           0x4DE // Unused Flag
-#define FLAG_UNUSED_0x4DF                                           0x4DF // Unused Flag
-#define FLAG_UNUSED_0x4E0                                           0x4E0 // Unused Flag
-#define FLAG_UNUSED_0x4E1                                           0x4E1 // Unused Flag
-#define FLAG_UNUSED_0x4E2                                           0x4E2 // Unused Flag
-#define FLAG_UNUSED_0x4E3                                           0x4E3 // Unused Flag
-#define FLAG_UNUSED_0x4E4                                           0x4E4 // Unused Flag
-#define FLAG_UNUSED_0x4E5                                           0x4E5 // Unused Flag
-#define FLAG_UNUSED_0x4E6                                           0x4E6 // Unused Flag
-#define FLAG_UNUSED_0x4E7                                           0x4E7 // Unused Flag
-#define FLAG_UNUSED_0x4E8                                           0x4E8 // Unused Flag
-#define FLAG_UNUSED_0x4E9                                           0x4E9 // Unused Flag
-#define FLAG_UNUSED_0x4EA                                           0x4EA // Unused Flag
-#define FLAG_UNUSED_0x4EB                                           0x4EB // Unused Flag
-#define FLAG_UNUSED_0x4EC                                           0x4EC // Unused Flag
-#define FLAG_UNUSED_0x4ED                                           0x4ED // Unused Flag
-#define FLAG_UNUSED_0x4EE                                           0x4EE // Unused Flag
-#define FLAG_UNUSED_0x4EF                                           0x4EF // Unused Flag
+#define FLAG_UNUSED_0x493                                           0x493
+#define FLAG_UNUSED_0x494                                           0x494
+#define FLAG_UNUSED_0x495                                           0x495
+#define FLAG_UNUSED_0x496                                           0x496
+#define FLAG_UNUSED_0x497                                           0x497
+#define FLAG_UNUSED_0x498                                           0x498
+#define FLAG_UNUSED_0x499                                           0x499
+#define FLAG_UNUSED_0x49A                                           0x49A
+#define FLAG_UNUSED_0x49B                                           0x49B
+#define FLAG_UNUSED_0x49C                                           0x49C
+#define FLAG_UNUSED_0x49D                                           0x49D
+#define FLAG_UNUSED_0x49E                                           0x49E
+#define FLAG_UNUSED_0x49F                                           0x49F
+#define FLAG_UNUSED_0x4A0                                           0x4A0
+#define FLAG_UNUSED_0x4A1                                           0x4A1
+#define FLAG_UNUSED_0x4A2                                           0x4A2
+#define FLAG_UNUSED_0x4A3                                           0x4A3
+#define FLAG_UNUSED_0x4A4                                           0x4A4
+#define FLAG_UNUSED_0x4A5                                           0x4A5
+#define FLAG_UNUSED_0x4A6                                           0x4A6
+#define FLAG_UNUSED_0x4A7                                           0x4A7
+#define FLAG_UNUSED_0x4A8                                           0x4A8
+#define FLAG_UNUSED_0x4A9                                           0x4A9
+#define FLAG_UNUSED_0x4AA                                           0x4AA
+#define FLAG_UNUSED_0x4AB                                           0x4AB
+#define FLAG_UNUSED_0x4AC                                           0x4AC
+#define FLAG_UNUSED_0x4AD                                           0x4AD
+#define FLAG_UNUSED_0x4AE                                           0x4AE
+#define FLAG_UNUSED_0x4AF                                           0x4AF
+#define FLAG_UNUSED_0x4B0                                           0x4B0
+#define FLAG_UNUSED_0x4B1                                           0x4B1
+#define FLAG_UNUSED_0x4B2                                           0x4B2
+#define FLAG_UNUSED_0x4B3                                           0x4B3
+#define FLAG_UNUSED_0x4B4                                           0x4B4
+#define FLAG_UNUSED_0x4B5                                           0x4B5
+#define FLAG_UNUSED_0x4B6                                           0x4B6
+#define FLAG_UNUSED_0x4B7                                           0x4B7
+#define FLAG_UNUSED_0x4B8                                           0x4B8
+#define FLAG_UNUSED_0x4B9                                           0x4B9
+#define FLAG_UNUSED_0x4BA                                           0x4BA
+#define FLAG_UNUSED_0x4BB                                           0x4BB
+#define FLAG_UNUSED_0x4BC                                           0x4BC
+#define FLAG_UNUSED_0x4BD                                           0x4BD
+#define FLAG_UNUSED_0x4BE                                           0x4BE
+#define FLAG_UNUSED_0x4BF                                           0x4BF
+#define FLAG_UNUSED_0x4C0                                           0x4C0
+#define FLAG_UNUSED_0x4C1                                           0x4C1
+#define FLAG_UNUSED_0x4C2                                           0x4C2
+#define FLAG_UNUSED_0x4C3                                           0x4C3
+#define FLAG_UNUSED_0x4C4                                           0x4C4
+#define FLAG_UNUSED_0x4C5                                           0x4C5
+#define FLAG_UNUSED_0x4C6                                           0x4C6
+#define FLAG_UNUSED_0x4C7                                           0x4C7
+#define FLAG_UNUSED_0x4C8                                           0x4C8
+#define FLAG_UNUSED_0x4C9                                           0x4C9
+#define FLAG_UNUSED_0x4CA                                           0x4CA
+#define FLAG_UNUSED_0x4CB                                           0x4CB
+#define FLAG_UNUSED_0x4CC                                           0x4CC
+#define FLAG_UNUSED_0x4CD                                           0x4CD
+#define FLAG_UNUSED_0x4CE                                           0x4CE
+#define FLAG_UNUSED_0x4CF                                           0x4CF
+#define FLAG_UNUSED_0x4D0                                           0x4D0
+#define FLAG_UNUSED_0x4D1                                           0x4D1
+#define FLAG_UNUSED_0x4D2                                           0x4D2
+#define FLAG_UNUSED_0x4D3                                           0x4D3
+#define FLAG_UNUSED_0x4D4                                           0x4D4
+#define FLAG_UNUSED_0x4D5                                           0x4D5
+#define FLAG_UNUSED_0x4D6                                           0x4D6
+#define FLAG_UNUSED_0x4D7                                           0x4D7
+#define FLAG_UNUSED_0x4D8                                           0x4D8
+#define FLAG_UNUSED_0x4D9                                           0x4D9
+#define FLAG_UNUSED_0x4DA                                           0x4DA
+#define FLAG_UNUSED_0x4DB                                           0x4DB
+#define FLAG_UNUSED_0x4DC                                           0x4DC
+#define FLAG_UNUSED_0x4DD                                           0x4DD
+#define FLAG_HIDE_BATTLE_TOWER_REPORTER                             0x4DE
+#define FLAG_HIDE_UNION_ROOM_PLAYER_1                               0x4DF
+#define FLAG_HIDE_UNION_ROOM_PLAYER_2                               0x4E0
+#define FLAG_HIDE_UNION_ROOM_PLAYER_3                               0x4E1
+#define FLAG_HIDE_UNION_ROOM_PLAYER_4                               0x4E2
+#define FLAG_HIDE_UNION_ROOM_PLAYER_5                               0x4E3
+#define FLAG_HIDE_UNION_ROOM_PLAYER_6                               0x4E4
+#define FLAG_HIDE_UNION_ROOM_PLAYER_7                               0x4E5
+#define FLAG_HIDE_UNION_ROOM_PLAYER_8                               0x4E6
+#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_1               0x4E7
+#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_2               0x4E8
+#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_3               0x4E9
+#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_4               0x4EA
+#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_5               0x4EB
+#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_6               0x4EC
+#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_ALT_1           0x4ED
+#define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_ALT_2           0x4EE
+#define FLAG_HIDE_LILYCOVE_CONTEST_HALL_BLEND_MASTER_ONLOOKERS      0x4EF
 
 #define FLAG_DEFEATED_RUSTBORO_GYM                                  0x4F0
 #define FLAG_DEFEATED_DEWFORD_GYM                                   0x4F1
@@ -1281,7 +1279,7 @@
 #define FLAG_UNUSED_0x884                           (SYSTEM_FLAGS + 0x24) // Unused Flag
 #define FLAG_UNUSED_0x885                           (SYSTEM_FLAGS + 0x25) // Unused Flag
 #define FLAG_UNUSED_0x886                           (SYSTEM_FLAGS + 0x26) // Unused Flag
-#define FLAG_UNUSED_0x887                           (SYSTEM_FLAGS + 0x27) // Unused Flag
+#define FLAG_SYS_WHITEOUT_TRAINER_RESET             (SYSTEM_FLAGS + 0x27) // Unused Flag
 #define FLAG_SYS_USE_FLASH                          (SYSTEM_FLAGS + 0x28)
 #define FLAG_SYS_USE_STRENGTH                       (SYSTEM_FLAGS + 0x29)
 #define FLAG_SYS_WEATHER_CTRL                       (SYSTEM_FLAGS + 0x2A)
@@ -1510,5 +1508,7 @@
 #define FLAG_SPECIAL_FLAG_0x4004                                   0x4004
 #define FLAG_IS_BUMP_INTERACTION                                   0x4005
 #define FLAG_IS_PUZZLE_SETUP                                       0x4006
+#define FLAG_PREVENT_EVENT_OBJECT_DESPAWN                          0x4007 //Do not despawn event objects when they're off screen
+#define FLAG_DISABLE_FADE_INIT                                     0x4008
 
 #endif // GUARD_CONSTANTS_FLAGS_H

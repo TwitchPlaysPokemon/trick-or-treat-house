@@ -16,7 +16,7 @@ PuzzleCommon_DefaultTeardownScript::
 PuzzleDebug_EventScript_ShowPuzzleSelect::
 	lockall
 	playse SE_SELECT
-	message PuzzleDebug_Text_PuzzleSelect
+	message3 PuzzleDebug_Text_PuzzleSelect
 	waitmessage
 	callnative ShowPuzzleSelect
 	waitstate @ script pauses here until manually reenabled
@@ -24,17 +24,50 @@ PuzzleDebug_EventScript_ShowPuzzleSelect::
 	releaseall
 	end
 PuzzleDebug_Text_PuzzleSelect:
-	.string "Select puzzle index$"
+	.string "Select puzzle index.\n"
+	.string "{START_BUTTON} Switch Debug/Main Puzzles$"
 
 @ -----------------------------------------------------
 
 PuzzleCommon_EventScript_IncrementPuzzle::
 	addvar VAR_CURRENT_PUZZLE, 1
 	setvar VAR_PUZZLE_STATE, 0
+	callnative CheckLastPuzzle
+	@ fallthrough
+PuzzleCommon_EventScript_ClearPuzzleData::
 	callnative ClearPuzzleEventData
 	callnative RandomizeRentalMons
 	return
 
+@ -----------------------------------------------------
+
+PuzzleCommon_EventScript_EntranceDoorObject::
+	lock
+	@ Check for facing the correct direction
+	compare VAR_FACING, 2 @north
+	goto_if_ne PuzzleCommon_EventScript_EntranceDoorObject_Backside
+	goto_if_set FLAG_IS_BUMP_INTERACTION, PuzzleCommon_EventScript_EntranceDoorObject_WarpToCorridor
+	msgbox PuzzleCommon_Text_DoorFrontside
+	release
+	end
+PuzzleCommon_Text_DoorFrontside:
+	.string "The scroll reads\n“The TRICK MASTER is the GREATEST!$"
+
+PuzzleCommon_EventScript_EntranceDoorObject_WarpToCorridor:
+	call PuzzleCommon_EventScript_DoDoorEnterAnimation
+	warp MAP_TRICK_HOUSE_CORRIDOR, 0, -1, -1
+	waitstate
+	release
+	end
+
+PuzzleCommon_EventScript_EntranceDoorObject_Backside:
+	goto_if_set FLAG_IS_BUMP_INTERACTION, Common_EventScript_ReleaseEnd
+	msgbox PuzzleCommon_Text_DoorBackside
+	release
+	end
+PuzzleCommon_Text_DoorBackside:
+	.string "There's just a blank wall on this side.\n"
+	.string "No door. How does this even work?!$"
 
 @ -----------------------------------------------------
 
@@ -71,6 +104,9 @@ PuzzleCommon_EventScript_ExitDoorMetatile::
 
 PuzzleCommon_EventScript_ExitDoorObject::
 	lock
+	@ Check for facing the correct direction
+	compare VAR_FACING, 2 @north
+	goto_if_ne PuzzleCommon_EventScript_EntranceDoorObject_Backside
 	@ Check for scroll
 	goto_if_unset FLAG_TRICK_HOUSE_PASSWORD_ENTERED, PuzzleCommon_EventScript_CheckScroll
 	goto_if_unset FLAG_IS_BUMP_INTERACTION, PuzzleCommon_EventScript_ExamineDoor
@@ -139,6 +175,15 @@ PuzzleCommon_EventScript_DoDoorEnterAnimation::
 	waitmovement 0
 	return
 
+Common_Movement_ObjectDoorOpen: @ 82725A6
+	walk_in_place_up
+	step_end
+
+Common_Movement_ObjectDoorClose: @ 82725A6
+	walk_in_place_down
+	step_end
+
+
 @ -----------------------------------------------------
 
 PuzzleCommon_EventScript_WarpTrickMasterOut:: @ 826AFCF
@@ -170,3 +215,38 @@ PuzzleCommon_Movement_TrickMasterWarpAway2:
 	slide_up
 	step_end
 
+@ -----------------------------------------------------
+
+PuzzleCommon_EventScript_StandingCandyGiverLeave::
+	closemessage
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceUp
+	waitmovement 0
+	subvar VAR_METATILE_Y, 1
+	opendoor VAR_METATILE_X, VAR_METATILE_Y
+	waitdooranim
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkUp1
+	waitmovement 0
+	playse SE_KAIDAN
+	removeobject VAR_LAST_TALKED
+	closedoor VAR_METATILE_X, VAR_METATILE_Y
+	waitdooranim
+	delay 10
+	return
+
+PuzzleCommon_EventScript_DoorCandyGiverShow::
+	opendoor VAR_METATILE_X, VAR_METATILE_Y
+	waitdooranim
+	applymovement VAR_LAST_TALKED, Common_Movement_SetVisible
+	waitmovement 0
+	delay 10
+	return
+PuzzleCommon_EventScript_DoorCandyGiverHide::
+	closemessage
+	removeobject VAR_LAST_TALKED
+	closedoor VAR_METATILE_X, VAR_METATILE_Y
+	waitdooranim
+	delay 10
+	setvar VAR_METATILE_X, 0
+	return
+	
+	

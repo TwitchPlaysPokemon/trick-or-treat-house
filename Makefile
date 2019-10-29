@@ -24,14 +24,25 @@ endif
 export CPP := $(PREFIX)cpp
 export LD := $(PREFIX)ld
 
+# Build Variables
+DISABLE_DEBUG	?= 0
+TPP_MODE		?= 1
+
 ifeq ($(OS),Windows_NT)
 EXE := .exe
-else
+EXE2 := .exe
+else 
 EXE :=
+ifeq ($(shell uname),Darwin)
+EXE2 := -mac
+else
+EXE2 := -nix
+endif
 endif
 
 TITLE       := TRICKTREAT H
 GAME_CODE   := BPEE
+GAME_NAME	:= Trick or Treat House (English)
 MAKER_CODE  := 01
 REVISION    := 0
 MODERN      ?= 0
@@ -40,6 +51,8 @@ SHELL := /bin/bash -o pipefail
 
 ELF = $(ROM:.gba=.elf)
 MAP = $(ROM:.gba=.map)
+SYM = $(ROM:.gba=.sym)
+PGEINI = $(ROM:.gba=.pge.ini)
 
 C_SUBDIR = src
 ASM_SUBDIR = asm
@@ -54,7 +67,7 @@ DATA_ASM_BUILDDIR = $(OBJ_DIR)/$(DATA_ASM_SUBDIR)
 SONG_BUILDDIR = $(OBJ_DIR)/$(SONG_SUBDIR)
 MID_BUILDDIR = $(OBJ_DIR)/$(MID_SUBDIR)
 
-ASFLAGS := -mcpu=arm7tdmi --defsym MODERN=$(MODERN)
+ASFLAGS := -mcpu=arm7tdmi --defsym MODERN=$(MODERN) --defsym DISABLE_DEBUG=$(DISABLE_DEBUG) --defsym TPP_MODE=$(TPP_MODE)
 
 GCC_VER = $(shell $(CC) -dumpversion)
 
@@ -72,7 +85,7 @@ OBJ_DIR := build/modern
 LIBPATH := -L $(TOOLCHAIN)/lib/gcc/arm-none-eabi/$(GCC_VER)/thumb -L $(TOOLCHAIN)/arm-none-eabi/lib/thumb
 endif
 
-CPPFLAGS := -iquote include -Wno-trigraphs -DMODERN=$(MODERN)
+CPPFLAGS := -iquote include -Wno-trigraphs -DMODERN=$(MODERN) -DDISABLE_DEBUG=$(DISABLE_DEBUG) -DTPP_MODE=$(TPP_MODE)
 ifeq ($(MODERN),0)
 CPPFLAGS += -I tools/agbcc/include -I tools/agbcc
 endif
@@ -91,7 +104,9 @@ RAMSCRGEN := tools/ramscrgen/ramscrgen$(EXE)
 FIX := tools/gbafix/gbafix$(EXE)
 MAPJSON := tools/mapjson/mapjson$(EXE)
 JSONPROC := tools/jsonproc/jsonproc$(EXE)
-SCRIPT := tools/poryscript/poryscript$(EXE)
+SCRIPT := tools/poryscript/poryscript$(EXE2)
+PGEGEN := tools/pgegen/pgegen$(EXE)
+
 
 TOOLDIRS := $(filter-out tools/agbcc tools/binutils tools/porymap.app tools/poryscript,$(wildcard tools/*))
 TOOLBASE = $(TOOLDIRS:tools/%=%)
@@ -154,6 +169,8 @@ $(TOOLDIRS):
 
 rom: $(ROM)
 
+ini: $(PGEINI)
+
 # For contributors to make sure a change didn't affect the contents of the ROM.
 compare: all
 	@$(SHA1) rom.sha1
@@ -174,7 +191,7 @@ cleanmaps:
 	rm -f $(DATA_ASM_BUILDDIR)/maps.o $(DATA_ASM_BUILDDIR)/map_events.o
 	rm -f $(DATA_ASM_SUBDIR)/layouts/layouts.inc $(DATA_ASM_SUBDIR)/layouts/layouts_table.inc
 	rm -f $(DATA_ASM_SUBDIR)/maps/connections.inc $(DATA_ASM_SUBDIR)/maps/events.inc $(DATA_ASM_SUBDIR)/maps/groups.inc $(DATA_ASM_SUBDIR)/maps/headers.inc
-	find $(DATA_ASM_SUBDIR)/maps \( -iname 'connections.inc' -o -iname 'events.inc' -o -iname 'header.inc' \) -exec rm {} +
+	find $(DATA_ASM_SUBDIR)/maps \( -iname 'connections.inc' -o -iname 'events.inc' -o -iname 'header.inc' -o -iname 'scripts.inc' \) -exec rm {} +
 	
 
 tidy:
@@ -292,4 +309,8 @@ $(ROM): $(ELF)
 	$(FIX) $@ -p --silent
 	nm -SBgn $< > $(ROM:.gba=.sym)
 
+$(PGEINI): $(ELF)
+	$(PGEGEN) $< $@ --code $(GAME_CODE) --name "$(GAME_NAME)"
+
 modern: ; @$(MAKE) MODERN=1
+

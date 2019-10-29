@@ -40,7 +40,6 @@
 #include "shop.h"
 #include "sound.h"
 #include "sprite.h"
-#include "string.h"
 #include "strings.h"
 #include "string_util.h"
 #include "task.h"
@@ -599,7 +598,7 @@ bool8 SetupBagMenu(void)
         break;
     case 7:
         BagMenu_InitBGs();
-        gBagMenu->unk834 = 0;
+        gBagMenu->substate = 0;
         gMain.state++;
         break;
     case 8:
@@ -690,18 +689,18 @@ void BagMenu_InitBGs(void)
 
 bool8 LoadBagMenu_Graphics(void)
 {
-    switch (gBagMenu->unk834)
+    switch (gBagMenu->substate)
     {
         case 0:
             reset_temp_tile_data_buffers();
             decompress_and_copy_tile_data_to_vram(2, gBagScreen_Gfx, 0, 0, 0);
-            gBagMenu->unk834++;
+            gBagMenu->substate++;
             break;
         case 1:
             if (free_temp_tile_data_buffers_if_possible() != TRUE)
             {
                 LZDecompressWram(gBagScreen_GfxTileMap, gBagMenu->tilemapBuffer);
-                gBagMenu->unk834++;
+                gBagMenu->substate++;
             }
             break;
         case 2:
@@ -709,22 +708,22 @@ bool8 LoadBagMenu_Graphics(void)
                 LoadCompressedPalette(gBagScreenFemale_Pal, 0, 0x40);
             else
                 LoadCompressedPalette(gBagScreenMale_Pal, 0, 0x40);
-            gBagMenu->unk834++;
+            gBagMenu->substate++;
             break;
         case 3:
             if (IsWallysBag() == TRUE || gSaveBlock2Ptr->playerGender == MALE)
                 LoadCompressedSpriteSheet(&gBagMaleSpriteSheet);
             else
                 LoadCompressedSpriteSheet(&gBagFemaleSpriteSheet);
-            gBagMenu->unk834++;
+            gBagMenu->substate++;
             break;
         case 4:
             LoadCompressedSpritePalette(&gBagPaletteTable);
-            gBagMenu->unk834++;
+            gBagMenu->substate++;
             break;
         default:
             LoadListMenuArrowsGfx();
-            gBagMenu->unk834 = 0;
+            gBagMenu->substate = 0;
             return TRUE;
     }
     return FALSE;

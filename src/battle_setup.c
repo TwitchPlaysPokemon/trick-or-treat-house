@@ -624,6 +624,8 @@ u8 BattleSetup_GetTerrainId(void)
 
     if (MetatileBehavior_IsTallGrass(tileBehavior))
         return BATTLE_TERRAIN_GRASS;
+    if (MetatileBehavior_IsAutumnGrass(tileBehavior))
+        return BATTLE_TERRAIN_SAND; //BATTLE_TERRAIN_GRASS; TODO custom?
     if (MetatileBehavior_IsLongGrass(tileBehavior))
         return BATTLE_TERRAIN_LONG_GRASS;
     if (MetatileBehavior_IsSandOrDeepSand(tileBehavior))
@@ -1092,6 +1094,9 @@ const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
     case TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT:
         TrainerBattleLoadArgs(sOrdinaryNoIntroBattleParams, data);
         return EventScript_DoTainerBattle;
+    case TRAINER_BATTLE_DOUBLE_NO_INTRO_TEXT:
+        TrainerBattleLoadArgs(sOrdinaryNoIntroBattleParams, data);
+        return EventScript_DoDoubleTainerBattle;
     case TRAINER_BATTLE_DOUBLE:
         TrainerBattleLoadArgs(sDoubleBattleParams, data);
         SetMapVarsToTrainer();
