@@ -2,33 +2,33 @@ raw `
 TrickTreat_SlateportCity_ContestLobby_MapScripts::
 	.byte 0
 `
-TrickTreat_SlateportCity_ContestLobby_PC {
+script TrickTreat_SlateportCity_ContestLobby_PC {
 	lock
 	msgbox ("The PC is playing a music video\n"
 			"called Mimikyu no uta.\p"
-			"It's set to play in a loop.$")
+			"It's set to play in a loop.$", MSGBOX_NPC)
 	release
 	end
 }
 
-TrickTreat_SlateportCity_ContestLobby_IdolGirl {
+script TrickTreat_SlateportCity_ContestLobby_IdolGirl {
 	lock
 	msgbox ("This is my boyfriend.\p"
 			"Our passion for music videos brought\n"
 			"us together and I'm really happy\l"
-			"to be with him.$")
+			"to be with him.$", MSGBOX_NPC)
 	release
 	end
 }
 
-TrickTreat_SlateportCity_ContestLobby_MusicVideoBoy {
+script TrickTreat_SlateportCity_ContestLobby_MusicVideoBoy {
 	lock
 	msgbox ("A couple of months ago\n"
 			"someone brought me a letter from\n"
 			"a girl who likes music videos as much\l"
 			"as I do.\p"
 			"Now that girl is in front of me and\n"
-			"I'm so glad to spend my Halloween with her.$")
+			"I'm so glad to spend my Halloween with her.$", MSGBOX_NPC)
 	release
 	end
 }
