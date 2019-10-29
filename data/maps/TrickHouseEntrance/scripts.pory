@@ -39,7 +39,7 @@ raw `
 #define LID_JOEY 3
 #define LID_FAIRY 6
 #define LID_WALLY 5
-#define LID_WADE 10
+#define LID_LINK 10
 `
 
 script(local) TrickHouseEntrance_OnWarp_Setup {
@@ -123,7 +123,7 @@ raw `
 #undef LID_JOEY
 #undef LID_FAIRY
 #undef LID_WALLY
-#undef LID_WADE
+#undef LID_LINK
 `
 
 script TrickHouseEntrance_EventScript_ScrollDoor {

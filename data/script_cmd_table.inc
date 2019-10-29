@@ -114,7 +114,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_multichoice
 	.4byte ScrCmd_multichoicedefault
 	.4byte ScrCmd_multichoicegrid
-	.4byte ScrCmd_drawbox
+	.4byte ScrCmd_warpcustom
 	.4byte ScrCmd_erasebox
 	.4byte ScrCmd_drawboxtext
 	.4byte ScrCmd_showmonpic

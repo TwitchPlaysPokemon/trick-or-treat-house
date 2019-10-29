@@ -1509,5 +1509,6 @@
 #define FLAG_IS_BUMP_INTERACTION                                   0x4005
 #define FLAG_IS_PUZZLE_SETUP                                       0x4006
 #define FLAG_PREVENT_EVENT_OBJECT_DESPAWN                          0x4007 //Do not despawn event objects when they're off screen
+#define FLAG_DISABLE_FADE_INIT                                     0x4008
 
 #endif // GUARD_CONSTANTS_FLAGS_H

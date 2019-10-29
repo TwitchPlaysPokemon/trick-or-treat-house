@@ -49,15 +49,11 @@ extern const u16 gDebugPuzzles[];
 
 u16 GetCurrentPuzzleMapId()
 {
-#if DEBUG
 	u16 i = VarGet(VAR_CURRENT_PUZZLE);
 	if (i < DEBUG_PUZZLE_START)
 		return gPuzzleList[i];
 	else
 		return gDebugPuzzles[i-DEBUG_PUZZLE_START];
-#else
-	return gPuzzleList[VarGet(VAR_CURRENT_PUZZLE)];
-#endif
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -590,9 +586,7 @@ exit:
 
 void ShowPuzzleSelect(struct ScriptContext *ctx)
 {
-#if DEBUG
 	CreateTask(Task_InitPuzzleSelect, 0);
-#endif
 }
 
 

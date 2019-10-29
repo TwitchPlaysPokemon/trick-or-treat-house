@@ -128,7 +128,11 @@ static void ClearFrontierRecord(void)
 
 static void WarpFirstMap(void)
 {
-    SetWarpDestination(MAP_GROUP(TRICK_HOUSE_EXT), MAP_NUM(TRICK_HOUSE_EXT), 1, -1, -1);
+    if (gMain.debugMode) { 
+        SetWarpDestination(MAP_GROUP(TRICK_HOUSE_EXT), MAP_NUM(TRICK_HOUSE_EXT), 1, -1, -1);
+    } else { // Intro was skipped
+        SetWarpDestination(MAP_GROUP(RUSTBORO_CITY), MAP_NUM(RUSTBORO_CITY), 0, -1, -1);
+    }
     WarpIntoMap();
 }
 
@@ -210,6 +214,13 @@ void NewGameInitData(void)
     WipeTrainerNameRecords();
     // ResetTrainerHillResults();
     ResetContestLinkResults();
+    
+    if (gMain.debugMode) {
+        FlagClear(FLAG_HIDE_DEBUG_OBJECTS);
+        VarSet(VAR_INTRO_COUNTER, 2);
+    } else {
+        FlagSet(FLAG_HIDE_DEBUG_OBJECTS);
+    }
 }
 
 static void ResetMiniGamesResults(void)

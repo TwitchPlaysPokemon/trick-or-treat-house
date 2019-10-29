@@ -500,6 +500,18 @@ static const u8 *ExpandPlaceholder_Wally(void)
     return gExpandedPlaceholder_Wally;
 }
 
+extern const u8 gExpandedPlaceholder_Link[];
+static const u8 *ExpandPlaceholder_Link(void)
+{
+    return gExpandedPlaceholder_Link;
+}
+
+extern const u8 gExpandedPlaceholder_FairyGirl[];
+static const u8 *ExpandPlaceholder_FairyGirl(void)
+{
+    return gExpandedPlaceholder_FairyGirl;
+}
+
 extern const u8 PuzzleCommon_Text_UntitledPuzzleName[];
 static const u8 *ExpandPlaceholder_PuzzleName(void)
 {

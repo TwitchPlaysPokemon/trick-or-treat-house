@@ -1075,6 +1075,8 @@ void Overworld_PlaySpecialMapMusic(void)
             music = MUS_DEEPDEEP;
         else if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))
             music = MUS_NAMINORI;
+        else if (VarGet(VAR_INTRO_COUNTER) < 2)
+            music = MUS_B_TUBE;
     }
 
     if (music != GetCurrentMapMusic())

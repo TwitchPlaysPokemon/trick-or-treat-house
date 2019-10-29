@@ -866,9 +866,13 @@
 	.byte \B
 	.endm
 
-	@ Nopped in Emerald.
-	.macro drawbox
+	@ Clone of warp that does not play a sound effect nor fade the screen, nor fades the old map music.
+	.macro warpcustom map:req, warp:req, X:req, Y:req
 	.byte 0x72
+	map \map
+	.byte \warp
+	.2byte \X
+	.2byte \Y
 	.endm
 
 	@ Nopped in Emerald, but still consumes parameters.

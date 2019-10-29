@@ -523,6 +523,15 @@ void DoDiveWarp(void)
     CreateTask(sub_80AFA0C, 10);
 }
 
+void DoCustomWarp(void)
+{
+    ScriptContext2_Enable();
+    // TryFadeOutOldMapMusic();
+    PlayRainStoppingSoundEffect();
+    gFieldCallback = mapldr_default;
+    CreateTask(sub_80AFA0C, 10);
+}
+
 void sub_80AF79C(void)
 {
     ScriptContext2_Enable();

@@ -37,7 +37,7 @@ raw `
 #define LID_JOEY 5
 #define LID_FAIRY 8
 #define LID_WALLY 9
-#define LID_WADE 10
+#define LID_LINK 10
 
 
 TrickHouseExt_IntroCutsceneSetup:
@@ -49,7 +49,7 @@ TrickHouseExt_IntroCutsceneSetup:
 
 script TrickHouseExt_IntroCutscene {
 	lockall
-	applymovement (LID_WADE, TrickHouseExt_IntroCutscene_Movement1_Wade)
+	applymovement (LID_LINK, TrickHouseExt_IntroCutscene_Movement1_Link)
 	applymovement (LID_WALLY, TrickHouseExt_IntroCutscene_Movement1_Wally)
 	fadescreenspeed (0, 4)
 	waitmovement (0)
@@ -60,7 +60,7 @@ script TrickHouseExt_IntroCutscene {
 	releaseall
 }
 
-movement TrickHouseExt_IntroCutscene_Movement1_Wade {
+movement TrickHouseExt_IntroCutscene_Movement1_Link {
 	walk_left * 10
 	walk_down * 2
 }
@@ -76,7 +76,7 @@ raw `
 #undef LID_JOEY
 #undef LID_FAIRY
 #undef LID_WALLY
-#undef LID_WADE
+#undef LID_LINK
 
 @ -----------------------------------------------------
 

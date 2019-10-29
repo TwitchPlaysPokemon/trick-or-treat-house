@@ -1089,11 +1089,12 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
             default:
                 gPlttBufferUnfaded[0] = RGB_BLACK;
                 gPlttBufferFaded[0] = RGB_BLACK;
-                #if DEBUG
+            #if !DISABLE_DEBUG
+                if (gMain.heldKeysRaw & (L_BUTTON | R_BUTTON))
                     gTasks[taskId].func = Task_NewGameSkipSpeech;
-                #else
+                else
+            #endif
                     gTasks[taskId].func = Task_NewGameBirchSpeech_Init;
-                #endif
                 break;
             case ACTION_CONTINUE:
                 gPlttBufferUnfaded[0] = RGB_BLACK;
@@ -1322,6 +1323,7 @@ static void Task_NewGameSkipSpeech(u8 taskId)
     ResetAllPicSprites();
     SetMainCallback2(CB2_NewGame);
     DestroyTask(taskId);
+    gMain.debugMode = TRUE;
 }
 #define tBoySpriteId data[10]
 #define tGirlSpriteId data[11]
@@ -1356,6 +1358,7 @@ static void Task_NewGameBirchSpeech_Init(u8 taskId)
     PlayBGM(MUS_DOORO_X4);
     ShowBg(0);
     ShowBg(1);
+    gMain.debugMode = FALSE;
 }
 
 static void Task_NewGameBirchSpeech_WaitToShowBirch(u8 taskId)
