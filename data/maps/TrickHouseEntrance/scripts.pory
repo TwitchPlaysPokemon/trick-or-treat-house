@@ -1,33 +1,132 @@
+mapscripts TrickHouseEntrance_MapScripts {
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_INTRO_COUNTER, 2: TrickHouseEntrance_WalkInCutscene
+		VAR_INTRO_COUNTER, 4: TrickHouseEntrance_IntroCutscene
+	]
+	MAP_SCRIPT_ON_LOAD {
+		switch (var(VAR_INTRO_COUNTER)) {
+			case 2:
+			case 3:
+				setmetatile (5, 1, 0x20B, TRUE) // Close scroll door
+		}
+	}
+	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+		VAR_INTRO_COUNTER, 2: TrickHouseEntrance_OnWarp_Setup
+		VAR_INTRO_COUNTER, 3: TrickHouseEntrance_OnWarp_Setup
+		VAR_INTRO_COUNTER, 4 {
+			addobject (1)
+			setobjectxy(1, 5, 2)   turnobject(1, 1)
+			setobjectxy(2, 8, 4)   turnobject(2, 2)
+			setobjectxy(3, 7, 5)   turnobject(3, 2)
+			setobjectxy(4, 6, 5)   turnobject(4, 2)
+			setobjectxy(5, 4, 5)   turnobject(5, 2)
+			setobjectxy(6, 3, 4)   turnobject(6, 2)
+			turnobject(EVENT_OBJ_ID_PLAYER, 2)
+		}
+	]
+	MAP_SCRIPT_ON_TRANSITION {
+		checkplayergender
+		if (var(VAR_RESULT) == MALE) {
+			setvar (VAR_OBJ_GFX_ID_A, EVENT_OBJ_GFX_RIVAL_MAY_NORMAL)
+		} else {
+			setvar (VAR_OBJ_GFX_ID_A, EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL)
+		}
+	}
+}
+
 raw `
-TrickHouseEntrance_MapScripts:: @ 8269A50
-	.byte 0
-
-
-
-TrickHouseEntrance_EventScript_26A0D3:: @ 826A0D3
-TrickHouseEntrance_EventScript_26A3F8:: @ 826A3F8
-TrickHouseEntrance_EventScript_269D3B:: @ 8269D3B
-TrickHouseEntrance_EventScript_26A22A:: @ 826A22A
-	end
-
-
-Route110_TrickHousePuzzle1_EventScript_26A3DB:: @ 826A3DB
-Route110_TrickHousePuzzle2_EventScript_26A3DB:: @ 826A3DB
-Route110_TrickHousePuzzle3_EventScript_26A3DB:: @ 826A3DB
-Route110_TrickHousePuzzle4_EventScript_26A3DB:: @ 826A3DB
-Route110_TrickHousePuzzle5_EventScript_26A3DB:: @ 826A3DB
-Route110_TrickHousePuzzle6_EventScript_26A3DB:: @ 826A3DB
-Route110_TrickHousePuzzle7_EventScript_26A3DB:: @ 826A3DB
-Route110_TrickHousePuzzle8_EventScript_26A3DB:: @ 826A3DB
-	end
-
-Route110_TrickHousePuzzle1_EventScript_26A3E5:: @ 826A3E5
-Route110_TrickHousePuzzle2_EventScript_26A3E5:: @ 826A3E5
-Route110_TrickHousePuzzle3_EventScript_26A3E5:: @ 826A3E5
-Route110_TrickHousePuzzle4_EventScript_26A3E5:: @ 826A3E5
-Route110_TrickHousePuzzle5_EventScript_26A3E5:: @ 826A3E5
-Route110_TrickHousePuzzle6_EventScript_26A3E5:: @ 826A3E5
-Route110_TrickHousePuzzle7_EventScript_26A3E5:: @ 826A3E5
-Route110_TrickHousePuzzle8_EventScript_26A3E5:: @ 826A3E5
-	end
+#define LID_RIVAL 4
+#define LID_JOEY 3
+#define LID_FAIRY 6
+#define LID_WALLY 5
+#define LID_WADE 10
 `
+
+script(local) TrickHouseEntrance_OnWarp_Setup {
+	setvar (VAR_0x8000, 6)
+	callnative (GetTrainerIDMod)
+	// setobjectmovementtype (1, MOVEMENT_TYPE_INVISIBLE)
+	switch (var(VAR_RESULT)) {
+		case 0: setobjectxyperm (1,11, 1)
+		case 1: setobjectxyperm (1, 3, 1)
+		case 2: setobjectxyperm (1,11, 5)
+		case 3: setobjectxyperm (1, 0, 5)
+		case 4: setobjectxyperm (1, 6, 3)
+		case 5: setobjectxyperm (1, 4, 4)
+	}
+	addobject (1)
+	turnobject(5, 2)
+}
+
+script TrickHouseEntrance_WalkInCutscene {
+	lock
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkUp1)
+	waitmovement (0)
+	msgbox ("You're being watched…$")
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceRight)
+	applymovement (LID_RIVAL, Common_Movement_WalkInPlaceLeft)
+	waitmovement (0)
+	msgbox ("{RIVAL}: You felt that too, right?\p"
+			"I wonder if the guy who opened the door\n"
+			"is hiding?$")
+	setvar (VAR_INTRO_COUNTER, 3)
+	release
+}
+
+script TrickHouseEntrance_IntroCutscene {
+	lockall
+	msgbox (PuzzleCommon_Text_GameIntro, MSGBOX_SIGN)
+	setvar (VAR_0x8000, 1)
+	call (PuzzleCommon_EventScript_WarpTrickMasterOut)
+	// TODO
+	setvar (VAR_INTRO_COUNTER, 5)
+	releaseall
+}
+
+script TrickHouseEntrance_EventScript_TrickMaster {
+	switch (var(VAR_INTRO_COUNTER)) {
+		case 3: goto (TrickHouseEntrance_EventScript_FindTrickMaster)
+	}
+}
+script TrickHouseEntrance_EventScript_FindTrickMaster {
+	lockall
+	setvar (VAR_0x8000, 6)
+	callnative (GetTrainerIDMod)
+	switch (var(VAR_RESULT)) {
+		case 0: msgbox ("Hah? Girr…\p"
+				"How did you know I concealed myself\n"
+				"in this cupboard? You're sharp!$")
+		case 1: msgbox ("Hah? Girr…\p"
+				"How did you know I concealed myself\n"
+				"behind this tree? You're sharp!$")
+		case 2: msgbox ("Hah? Girr…\p"
+				"How did you know I concealed myself\n"
+				"in this planter? You're sharp!$")
+		case 3: msgbox ("Hah? Girr…\p"
+				"How did you know I concealed myself\n"
+				"beneath this desk? You're sharp!$")
+		case 4: msgbox ("Hah? Girr…\p"
+				"How did you know I concealed myself\n"
+				"beneath this cushion? You're sharp!$")
+		case 5: msgbox ("Hah? Girr…\p"
+				"How did you know I concealed myself\n"
+				"behind this window? You're sharp!$")
+	}
+	setvar (VAR_INTRO_COUNTER, 4)
+	warpsilent (MAP_TRICK_HOUSE_ENTRANCE, 255, 5, 5)
+	waitstate
+	releaseall
+}
+
+raw `
+#undef LID_RIVAL
+#undef LID_JOEY
+#undef LID_FAIRY
+#undef LID_WALLY
+#undef LID_WADE
+`
+
+script TrickHouseEntrance_EventScript_ScrollDoor {
+	msgbox ("The scroll reads\n"
+			"“The TRICK MASTER is the GREATEST!”", MSGBOX_SIGN)
+}

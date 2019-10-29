@@ -648,7 +648,7 @@
 #define FLAG_HIDE_TRICK_HOUSE_END_MAN                               0x2BF
 #define FLAG_HIDE_DEBUG_OBJECTS                                     0x2C0
 #define FLAG_HIDE_INTRO_CHARACTERS                                  0x2C1
-#define FLAG_HIDE_UNUSED_0x2C2                                      0x2C2
+#define FLAG_HIDE_TRICK_HOUSE_INTRO_CHARACTERS                      0x2C2
 #define FLAG_HIDE_UNUSED_0x2C3                                      0x2C3
 #define FLAG_HIDE_UNUSED_0x2C4                                      0x2C4
 #define FLAG_HIDE_UNUSED_0x2C5                                      0x2C5

@@ -7,7 +7,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "Route110_EventScript_1EF380",
+            "script": "TrickHouseExt_EventScript_1EF380",
             "type": "sign",
             "x": 67,
             "y": 33
@@ -15,7 +15,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "Route110_EventScript_1EF389",
+            "script": "TrickHouseExt_EventScript_1EF389",
             "type": "sign",
             "x": 38,
             "y": 30
@@ -23,7 +23,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "Route110_EventScript_1EF35C",
+            "script": "TrickHouseExt_EventScript_1EF35C",
             "type": "sign",
             "x": 37,
             "y": 42
@@ -31,7 +31,7 @@
         {
             "elevation": 0,
             "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "Route110_EventScript_1EF34A",
+            "script": "TrickHouseExt_EventScript_1EF34A",
             "type": "sign",
             "x": 44,
             "y": 51
@@ -41,7 +41,7 @@
     "coord_events": [
         {
             "elevation": 0,
-            "script": "Route110_EventScript_SoftBorderNorth",
+            "script": "TrickHouseExt_EventScript_SoftBorderNorth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -50,7 +50,7 @@
         },
         {
             "elevation": 0,
-            "script": "Route110_EventScript_SoftBorderNorth",
+            "script": "TrickHouseExt_EventScript_SoftBorderNorth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -59,7 +59,7 @@
         },
         {
             "elevation": 0,
-            "script": "Route110_EventScript_SoftBorderNorth",
+            "script": "TrickHouseExt_EventScript_SoftBorderNorth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -68,7 +68,7 @@
         },
         {
             "elevation": 0,
-            "script": "Route110_EventScript_SoftBorderWest",
+            "script": "TrickHouseExt_EventScript_SoftBorderWest",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -77,7 +77,7 @@
         },
         {
             "elevation": 0,
-            "script": "Route110_EventScript_SoftBorderWest",
+            "script": "TrickHouseExt_EventScript_SoftBorderWest",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -86,7 +86,7 @@
         },
         {
             "elevation": 0,
-            "script": "Route110_EventScript_SoftBorderWest",
+            "script": "TrickHouseExt_EventScript_SoftBorderWest",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -95,7 +95,7 @@
         },
         {
             "elevation": 0,
-            "script": "Route110_EventScript_SoftBorderSouth",
+            "script": "TrickHouseExt_EventScript_SoftBorderSouth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -104,7 +104,7 @@
         },
         {
             "elevation": 0,
-            "script": "Route110_EventScript_SoftBorderSouth",
+            "script": "TrickHouseExt_EventScript_SoftBorderSouth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -113,7 +113,7 @@
         },
         {
             "elevation": 0,
-            "script": "Route110_EventScript_SoftBorderSouth",
+            "script": "TrickHouseExt_EventScript_SoftBorderSouth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -122,7 +122,7 @@
         },
         {
             "elevation": 0,
-            "script": "Route110_EventScript_SoftBorderSouth",
+            "script": "TrickHouseExt_EventScript_SoftBorderSouth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -131,7 +131,7 @@
         },
         {
             "elevation": 0,
-            "script": "Route110_EventScript_SoftBorderSouth",
+            "script": "TrickHouseExt_EventScript_SoftBorderSouth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -140,7 +140,7 @@
         },
         {
             "elevation": 0,
-            "script": "Route110_EventScript_SoftBorderSouth",
+            "script": "TrickHouseExt_EventScript_SoftBorderSouth",
             "type": "trigger",
             "var": "VAR_TEMP_0",
             "var_value": "0",
@@ -174,7 +174,7 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Route110_EventScript_TestDoor",
+            "script": "TrickHouseExt_EventScript_TestDoor",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "5",
             "x": 42,

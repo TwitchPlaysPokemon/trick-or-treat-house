@@ -383,6 +383,8 @@ EventScript_ResetAllMapFlags:: @ 82715DE
 	setflag FLAG_HIDE_DEBUG_OBJECTS
 	.endif
 	setflag FLAG_HIDE_INTRO_CHARACTERS
+	setflag FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
+	setvar VAR_INTRO_COUNTER, 2
 	call EventScript_ResetAllBerries
 	giveitem ITEM_POTION, 5
 	giveitem ITEM_ANTIDOTE, 2

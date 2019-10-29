@@ -118,6 +118,13 @@ void ClearPuzzleEventData(struct ScriptContext *ctx)
 	memset(gSaveBlock1Ptr->flags + (FLAG_HIDDEN_ITEMS_START >> 3), 0, 0x20 >> 8);
 }
 
+void GetTrainerIDMod(struct ScriptContext *ctx)
+{
+    u16 trainerId = (gSaveBlock2Ptr->playerTrainerId[1] << 8) | gSaveBlock2Ptr->playerTrainerId[0];
+	if (gSpecialVar_0x8000 == 0) gSpecialVar_0x8000 = 5;
+    gSpecialVar_Result = trainerId % gSpecialVar_0x8000;
+}
+
 void SetupPuzzleWarp(struct ScriptContext *ctx)
 {
 	u16 currPuzzle = GetCurrentPuzzleMapId();

@@ -4,7 +4,7 @@ PuzzleCommon_Text_GameIntro::
 	.string "of a man in all of HOENN!\p"
 	.string "They call me… The {TRICK_MASTER}!{PAUSE 40}\n"
 	.string "Wahahaha!\p"
-	.string "You! You there!\p"
+	.string "You! You all here!\p"
 	.string "You heard about my wonderful event\n"
 	.string "the TRICK-OR-TREAT HOUSE, haven't you?\p"
 	.string "That's why you're here! To CHALLENGE it!\n"

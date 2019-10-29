@@ -36,10 +36,13 @@ Puzzle_TrickHouseCut_Trainer2::
 	msgbox Puzzle_TrickHouseCut_Trainer2_After, MSGBOX_AUTOCLOSE
 	end
 Puzzle_TrickHouseCut_Trainer2_Intro:
-	.string "HA!$"
+	.string "Take me to your leader!$"
 Puzzle_TrickHouseCut_Trainer2_Defeat:
-	.string "Ack! My costume got caught!$"
+	.string "Ah! I come in peace!$"
 Puzzle_TrickHouseCut_Trainer2_After:
-	.string "Battling in costume is something I've\n"
-	.string "never done before. How about you?$"
+	.string "You're a {POKEMON} are you?\p"
+	.string "I, as an extraterrestrial, have never\n"
+	.string "seen such a thing before!\p"
+	.string "Shush, CLEFAIRY and CRESSELIA\n"
+	.string "don't count.$"
 `
