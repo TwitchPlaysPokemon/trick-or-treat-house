@@ -11,7 +11,7 @@ script Puzzle_SpotDifference_1_Right_Trigger {
         # Player already found this trigger.
         msgbox("It's empty.$")
     } else {
-        addvar(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS, 1)
+        setvar(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS, 2)
         playfanfare(MUS_ME_B_SMALL)
         msgbox("CORRECT!\n"
                "{PLAYER} found the different pot!$")

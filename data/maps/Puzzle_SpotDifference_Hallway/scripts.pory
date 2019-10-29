@@ -51,4 +51,11 @@ script Puzzle_SpotDifference_Hallway_OnLoad {
         setmetatile(12, 6, METATILE_Building_DrapeDoor_Top, 1)
         setmetatile(12, 7, METATILE_Building_DrapeDoor_Bottom, 1)
     }
+
+    # Show or Hide the scroll.
+    if (var(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS) == 6) {
+        clearflag(FLAG_TEMP_1)
+    } else {
+        setflag(FLAG_TEMP_1)
+    }
 }

@@ -2,3 +2,20 @@ raw `
 Puzzle_SpotDifference_3_Right_MapScripts::
 	.byte 0
 `
+
+script Puzzle_SpotDifference_3_Right_Trigger {
+    lock
+    if (var(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS) > 5) {
+        # Player already found this trigger.
+        msgbox("It's just a pile of ash.$")
+    } else {
+        setvar(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS, 6)
+        playfanfare(MUS_ME_B_SMALL)
+        msgbox("CORRECT!\n"
+               "{PLAYER} found the different pile of ash!$")
+        waitfanfare
+        closemessage
+        msgbox("Better go check the main room again.$")
+    }
+    release
+}

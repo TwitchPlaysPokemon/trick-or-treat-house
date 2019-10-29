@@ -1,4 +1,13 @@
 raw `
+#define VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS VAR_PUZZLE_00
+
 Puzzle_SpotDifference_3_Left_MapScripts::
-	.byte 0
+    map_script MAP_SCRIPT_ON_LOAD, Puzzle_SpotDifference_3_Left_OnLoad
+    .byte 0
 `
+
+script Puzzle_SpotDifference_3_Left_OnLoad {
+    if (var(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS) == 4) {
+        setvar(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS, 5)
+    }
+}
