@@ -1,0 +1,41 @@
+raw `
+Puzzle_SpotDifference_3_Right_MapScripts::
+	.byte 0
+`
+
+script Puzzle_SpotDifference_3_Right_Trigger {
+    lock
+    if (var(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS) > 5) {
+        # Player already found this trigger.
+        msgbox("It's just a pile of ash.$")
+    } else {
+        setvar(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS, 6)
+        playfanfare(MUS_ME_B_SMALL)
+        msgbox("CORRECT!\n"
+               "{PLAYER} found the different pile of ash!$")
+        waitfanfare
+        closemessage
+        msgbox("Better go check the main room again.$")
+    }
+    release
+}
+
+script Puzzle_SpotTheDifference_Trainer6 {
+    trainerbattle_single(TRAINER_06, Puzzle_SpotTheDifference_Trainer6_Intro, Puzzle_SpotTheDifference_Trainer6_Defeat)
+    msgbox(Puzzle_SpotTheDifference_Trainer6_After, MSGBOX_AUTOCLOSE)
+}
+
+text Puzzle_SpotTheDifference_Trainer6_Intro {
+    "POKéMON must be liberated!\p"
+    "Just kdding.\n"
+    "Battling with them is too much fun!"
+}
+
+text Puzzle_SpotTheDifference_Trainer6_Defeat {
+    "GHETSIS, forgive me!"
+}
+
+text Puzzle_SpotTheDifference_Trainer6_After {
+    "I look ridiculous.\p"
+    "I feel bad for grunts."
+}

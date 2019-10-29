@@ -1,0 +1,45 @@
+raw `
+#define VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS VAR_PUZZLE_00
+
+Puzzle_SpotDifference_1_Right_MapScripts::
+    .byte 0
+`
+
+script Puzzle_SpotDifference_1_Right_Trigger {
+    lock
+    if (var(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS) > 1) {
+        # Player already found this trigger.
+        msgbox("It's empty.$")
+    } else {
+        setvar(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS, 2)
+        playfanfare(MUS_ME_B_SMALL)
+        msgbox("CORRECT!\n"
+               "{PLAYER} found the different pot!$")
+        waitfanfare
+        closemessage
+        playse(SE_DOOR)
+        waitse
+        delay(30)
+        msgbox("It sounds like a door opened in\n"
+               "another room.$")
+    }
+    release
+}
+
+script Puzzle_SpotTheDifference_Trainer2 {
+    trainerbattle_single(TRAINER_02, Puzzle_SpotTheDifference_Trainer2_Intro, Puzzle_SpotTheDifference_Trainer2_Defeat)
+    msgbox(Puzzle_SpotTheDifference_Trainer2_After, MSGBOX_AUTOCLOSE)
+}
+
+text Puzzle_SpotTheDifference_Trainer2_Intro {
+    "Do you have the guts to battle me?"
+}
+
+text Puzzle_SpotTheDifference_Trainer2_Defeat {
+    "My organs!"
+}
+
+text Puzzle_SpotTheDifference_Trainer2_After {
+    "Haha!\p"
+    "You got me right in the funny bone!"
+}

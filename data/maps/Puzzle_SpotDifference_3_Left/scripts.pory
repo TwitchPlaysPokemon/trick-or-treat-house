@@ -1,0 +1,33 @@
+raw `
+#define VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS VAR_PUZZLE_00
+
+Puzzle_SpotDifference_3_Left_MapScripts::
+    map_script MAP_SCRIPT_ON_LOAD, Puzzle_SpotDifference_3_Left_OnLoad
+    .byte 0
+`
+
+script Puzzle_SpotDifference_3_Left_OnLoad {
+    if (var(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS) == 4) {
+        setvar(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS, 5)
+    }
+}
+
+script Puzzle_SpotTheDifference_Trainer5 {
+    trainerbattle_single(TRAINER_05, Puzzle_SpotTheDifference_Trainer5_Intro, Puzzle_SpotTheDifference_Trainer5_Defeat)
+    msgbox(Puzzle_SpotTheDifference_Trainer5_After, MSGBOX_AUTOCLOSE)
+}
+
+text Puzzle_SpotTheDifference_Trainer5_Intro {
+    "Watch out!\n"
+    "You don't want to get abducted!"
+}
+
+text Puzzle_SpotTheDifference_Trainer5_Defeat {
+    "UFO spotted!"
+}
+
+text Puzzle_SpotTheDifference_Trainer5_After {
+    "Do you believe in aliens?\p"
+    "The universe would be awfully\n"
+    "empty without them."
+}

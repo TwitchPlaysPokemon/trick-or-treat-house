@@ -1,0 +1,92 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": false,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "Puzzle_SpotDifference_2_Right_Trigger",
+            "type": "sign",
+            "x": 4,
+            "y": 4
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x0A",
+            "item": "ITEM_STAR_PIECE",
+            "type": "hidden_item",
+            "x": 15,
+            "y": 5
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x0B",
+            "item": "ITEM_NUGGET",
+            "type": "hidden_item",
+            "x": 1,
+            "y": 9
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x0C",
+            "item": "ITEM_POTION",
+            "type": "hidden_item",
+            "x": 10,
+            "y": 5
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x0D",
+            "item": "ITEM_ANTIDOTE",
+            "type": "hidden_item",
+            "x": 2,
+            "y": 3
+        }
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_PUZZLE_SPOT_DIFFERENCE_2_RIGHT",
+    "layout": "LAYOUT_PUZZLE_SPOT_DIFFERENCE_2_RIGHT",
+    "map_type": "MAP_TYPE_INDOOR",
+    "music": "MUS_DAN02",
+    "name": "Puzzle_SpotDifference_2_Right",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_CORPSE_BRIDE",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+            "script": "Puzzle_SpotTheDifference_Trainer4",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "1",
+            "x": 13,
+            "y": 8
+        }
+    ],
+    "region_map_section": "MAPSEC_ROUTE_110",
+    "requires_flash": false,
+    "show_map_name": true,
+    "trainers": "Puzzle_SpotDifference_Hallway_TrainerTable",
+    "warp_events": [
+        {
+            "dest_map": "MAP_PUZZLE_SPOT_DIFFERENCE_HALLWAY",
+            "dest_warp_id": 4,
+            "elevation": 0,
+            "x": 8,
+            "y": 11
+        },
+        {
+            "dest_map": "MAP_PUZZLE_SPOT_DIFFERENCE_HALLWAY",
+            "dest_warp_id": 4,
+            "elevation": 0,
+            "x": 9,
+            "y": 11
+        }
+    ],
+    "weather": "WEATHER_SUNNY"
+}

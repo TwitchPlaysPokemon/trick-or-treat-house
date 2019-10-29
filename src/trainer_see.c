@@ -526,7 +526,7 @@ static bool8 WaitTrainerExclamationMark(u8 taskId, struct Task *task, struct Eve
         task->tFuncId++;
         if (trainerObj->movementType == MOVEMENT_TYPE_TREE_DISGUISE || trainerObj->movementType == MOVEMENT_TYPE_MOUNTAIN_DISGUISE)
             task->tFuncId = 6;
-        if (trainerObj->movementType == MOVEMENT_TYPE_HIDDEN)
+        if (trainerObj->movementType == MOVEMENT_TYPE_HIDDEN || trainerObj->movementType == MOVEMENT_TYPE_INVISIBLE)
             task->tFuncId = 8;
         return TRUE;
     }
@@ -636,6 +636,7 @@ static bool8 JumpInPlaceHiddenTrainer(u8 taskId, struct Task *task, struct Event
 
         sprite = &gSprites[trainerObj->spriteId];
         sprite->oam.priority = 2;
+        trainerObj->invisible = FALSE;
         EventObjectClearHeldMovementIfFinished(trainerObj);
         EventObjectSetHeldMovement(trainerObj, GetJumpInPlaceMovementAction(trainerObj->facingDirection));
         task->tFuncId++;

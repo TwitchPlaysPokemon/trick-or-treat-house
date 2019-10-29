@@ -1,0 +1,84 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": false,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x06",
+            "item": "ITEM_MAX_ETHER",
+            "type": "hidden_item",
+            "x": 3,
+            "y": 7
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x07",
+            "item": "ITEM_HEART_SCALE",
+            "type": "hidden_item",
+            "x": 17,
+            "y": 2
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x08",
+            "item": "ITEM_STARDUST",
+            "type": "hidden_item",
+            "x": 13,
+            "y": 5
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x09",
+            "item": "ITEM_FULL_HEAL",
+            "type": "hidden_item",
+            "x": 13,
+            "y": 8
+        }
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_PUZZLE_SPOT_DIFFERENCE_2_LEFT",
+    "layout": "LAYOUT_PUZZLE_SPOT_DIFFERENCE_2_LEFT",
+    "map_type": "MAP_TYPE_INDOOR",
+    "music": "MUS_DAN02",
+    "name": "Puzzle_SpotDifference_2_Left",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_MERMAID",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+            "script": "Puzzle_SpotTheDifference_Trainer3",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "1",
+            "x": 10,
+            "y": 5
+        }
+    ],
+    "region_map_section": "MAPSEC_ROUTE_110",
+    "requires_flash": false,
+    "show_map_name": true,
+    "trainers": "Puzzle_SpotDifference_Hallway_TrainerTable",
+    "warp_events": [
+        {
+            "dest_map": "MAP_PUZZLE_SPOT_DIFFERENCE_HALLWAY",
+            "dest_warp_id": 3,
+            "elevation": 0,
+            "x": 8,
+            "y": 11
+        },
+        {
+            "dest_map": "MAP_PUZZLE_SPOT_DIFFERENCE_HALLWAY",
+            "dest_warp_id": 3,
+            "elevation": 0,
+            "x": 9,
+            "y": 11
+        }
+    ],
+    "weather": "WEATHER_SUNNY"
+}

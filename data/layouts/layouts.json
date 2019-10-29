@@ -1051,6 +1051,76 @@
             "width": 8
         },
         {
+            "blockdata_filepath": "data/layouts/Puzzle_SpotDifference_Hallway/map.bin",
+            "border_filepath": "data/layouts/Puzzle_SpotDifference_Hallway/border.bin",
+            "height": 22,
+            "id": "LAYOUT_PUZZLE_SPOT_DIFFERENCE_HALLWAY",
+            "name": "Puzzle_SpotDifference_Hallway_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrickHousePuzzle",
+            "width": 15
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_SpotDifference_1_Left/map.bin",
+            "border_filepath": "data/layouts/Puzzle_SpotDifference_1_Left/border.bin",
+            "height": 10,
+            "id": "LAYOUT_PUZZLE_SPOT_DIFFERENCE_1_LEFT",
+            "name": "Puzzle_SpotDifference_1_Left_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrickHousePuzzle",
+            "width": 14
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_SpotDifference_1_Right/map.bin",
+            "border_filepath": "data/layouts/Puzzle_SpotDifference_1_Right/border.bin",
+            "height": 10,
+            "id": "LAYOUT_PUZZLE_SPOT_DIFFERENCE_1_RIGHT",
+            "name": "Puzzle_SpotDifference_1_Right_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrickHousePuzzle",
+            "width": 14
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_SpotDifference_2_Left/map.bin",
+            "border_filepath": "data/layouts/Puzzle_SpotDifference_2_Left/border.bin",
+            "height": 12,
+            "id": "LAYOUT_PUZZLE_SPOT_DIFFERENCE_2_LEFT",
+            "name": "Puzzle_SpotDifference_2_Left_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_InsideShip",
+            "width": 18
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_SpotDifference_2_Right/map.bin",
+            "border_filepath": "data/layouts/Puzzle_SpotDifference_2_Right/border.bin",
+            "height": 12,
+            "id": "LAYOUT_PUZZLE_SPOT_DIFFERENCE_2_RIGHT",
+            "name": "Puzzle_SpotDifference_2_Right_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_InsideShip",
+            "width": 18
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_SpotDifference_3_Left/map.bin",
+            "border_filepath": "data/layouts/Puzzle_SpotDifference_3_Left/border.bin",
+            "height": 20,
+            "id": "LAYOUT_PUZZLE_SPOT_DIFFERENCE_3_LEFT",
+            "name": "Puzzle_SpotDifference_3_Left_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_Fallarbor",
+            "width": 14
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_SpotDifference_3_Right/map.bin",
+            "border_filepath": "data/layouts/Puzzle_SpotDifference_3_Right/border.bin",
+            "height": 20,
+            "id": "LAYOUT_PUZZLE_SPOT_DIFFERENCE_3_RIGHT",
+            "name": "Puzzle_SpotDifference_3_Right_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_Fallarbor",
+            "width": 14
+        },
+        {
             "blockdata_filepath": "data/layouts/Puzzle_Wilke/map.bin",
             "border_filepath": "data/layouts/Puzzle_Wilke/border.bin",
             "height": 10,

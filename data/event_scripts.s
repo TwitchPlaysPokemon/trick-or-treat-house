@@ -6250,6 +6250,20 @@ EventScript_PlayerPCFemale::
 
 	.include "data/maps/Puzzle_TwinMemories/scripts.inc"
 
+	.include "data/maps/Puzzle_SpotDifference_Hallway/scripts.inc"
+
+	.include "data/maps/Puzzle_SpotDifference_1_Left/scripts.inc"
+
+	.include "data/maps/Puzzle_SpotDifference_1_Right/scripts.inc"
+
+	.include "data/maps/Puzzle_SpotDifference_2_Left/scripts.inc"
+
+	.include "data/maps/Puzzle_SpotDifference_2_Right/scripts.inc"
+
+	.include "data/maps/Puzzle_SpotDifference_3_Left/scripts.inc"
+
+	.include "data/maps/Puzzle_SpotDifference_3_Right/scripts.inc"
+
 	.include "data/maps/Puzzle_HiddenMaze/scripts.inc"
 
 	.include "data/maps/Puzzle_Desert_Oasis/scripts.inc"

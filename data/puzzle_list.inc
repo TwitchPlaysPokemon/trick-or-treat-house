@@ -41,4 +41,5 @@ gDebugPuzzles::
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL1             @  3 / 1
     .2byte MAP_PUZZLE_TRICK_HOUSE_TRAPDOORS             @  2 / 2
     .2byte MAP_PUZZLE_DESERT_OASIS
+    .2byte MAP_PUZZLE_SPOT_DIFFERENCE_HALLWAY
     .2byte 0xFFFF

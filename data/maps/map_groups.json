@@ -134,6 +134,15 @@
         "Puzzle_HiddenMaze",
         "Puzzle_TrickHouseOriginal5"
     ],
+    "MG_SpotTheDifferencePuzzles": [
+        "Puzzle_SpotDifference_Hallway",
+        "Puzzle_SpotDifference_1_Left",
+        "Puzzle_SpotDifference_1_Right",
+        "Puzzle_SpotDifference_2_Left",
+        "Puzzle_SpotDifference_2_Right",
+        "Puzzle_SpotDifference_3_Left",
+        "Puzzle_SpotDifference_3_Right"
+    ],
     "MG_SupportMaps": [
         "EmptyPuzzle",
         "LedgeMountain_Support",
@@ -165,7 +174,8 @@
         "MG_SingleMapPuzzles",
         "MG_LostWoodsPuzzles",
         "MG_DesertPuzzles",
-        "MG_TrickOrTreatPuzzles"
+        "MG_TrickOrTreatPuzzles",
+        "MG_SpotTheDifferencePuzzles"
     ],
     "layouts_table_label": "gMapLayouts"
 }
