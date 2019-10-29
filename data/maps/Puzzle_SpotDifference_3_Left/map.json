@@ -4,6 +4,38 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x0E",
+            "item": "ITEM_ELIXIR",
+            "type": "hidden_item",
+            "x": 1,
+            "y": 6
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x0F",
+            "item": "ITEM_BIG_MUSHROOM",
+            "type": "hidden_item",
+            "x": 10,
+            "y": 4
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x10",
+            "item": "ITEM_ENERGY_ROOT",
+            "type": "hidden_item",
+            "x": 10,
+            "y": 11
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x11",
+            "item": "ITEM_MAX_ELIXIR",
+            "type": "hidden_item",
+            "x": 3,
+            "y": 18
+        }
     ],
     "connections": null,
     "coord_events": [
@@ -14,10 +46,24 @@
     "music": "MUS_DAN02",
     "name": "Puzzle_SpotDifference_3_Left",
     "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_ALIEN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+            "script": "Puzzle_SpotTheDifference_Trainer5",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "1",
+            "x": 7,
+            "y": 13
+        }
     ],
     "region_map_section": "MAPSEC_ROUTE_110",
     "requires_flash": false,
     "show_map_name": true,
+    "trainers": "Puzzle_SpotDifference_Hallway_TrainerTable",
     "warp_events": [
         {
             "dest_map": "MAP_PUZZLE_SPOT_DIFFERENCE_HALLWAY",

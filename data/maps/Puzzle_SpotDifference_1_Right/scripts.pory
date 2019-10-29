@@ -25,3 +25,21 @@ script Puzzle_SpotDifference_1_Right_Trigger {
     }
     release
 }
+
+script Puzzle_SpotTheDifference_Trainer2 {
+    trainerbattle_single(TRAINER_02, Puzzle_SpotTheDifference_Trainer2_Intro, Puzzle_SpotTheDifference_Trainer2_Defeat)
+    msgbox(Puzzle_SpotTheDifference_Trainer2_After, MSGBOX_AUTOCLOSE)
+}
+
+text Puzzle_SpotTheDifference_Trainer2_Intro {
+    "Do you have the guts to battle me?"
+}
+
+text Puzzle_SpotTheDifference_Trainer2_Defeat {
+    "My organs!"
+}
+
+text Puzzle_SpotTheDifference_Trainer2_After {
+    "Haha!\p"
+    "You got me right in the funny bone!"
+}

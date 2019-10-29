@@ -130,7 +130,7 @@ void HandlePuzzleMusicTileStep(u32 metatileId)
     else
     {
         PlaySE(SE_HAZURE);
-        FlagClear(FLAG_MUSIC_NOTE_PUZZLE_TILES_ACTIVE);
+        // FlagClear(FLAG_MUSIC_NOTE_PUZZLE_TILES_ACTIVE);
         VarSet(VAR_MUSIC_NOTE_PUZZLE_NUM_CORRECT_STEPS, 0);
     }
 }

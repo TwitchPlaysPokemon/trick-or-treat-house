@@ -48,20 +48,29 @@ script Puzzle_SpotDifference_2_Left_DoSparkles {
     special(RemoveCameraObject)
 }
 
-raw `
-Puzzle_SpotDifference_2_Movement_CameraPanUp:
-    walk_up
-    walk_up
-    walk_up
-    walk_up
-    walk_up
-    step_end
+movement Puzzle_SpotDifference_2_Movement_CameraPanUp {
+    walk_up * 5
+}
 
-Puzzle_SpotDifference_2_Movement_CameraPanDown:
-    walk_down
-    walk_down
-    walk_down
-    walk_down
-    walk_down
-    step_end
-`
+movement Puzzle_SpotDifference_2_Movement_CameraPanDown {
+    walk_down * 5
+}
+
+script Puzzle_SpotTheDifference_Trainer3 {
+    trainerbattle_single(TRAINER_03, Puzzle_SpotTheDifference_Trainer3_Intro, Puzzle_SpotTheDifference_Trainer3_Defeat)
+    msgbox(Puzzle_SpotTheDifference_Trainer3_After, MSGBOX_AUTOCLOSE)
+}
+
+text Puzzle_SpotTheDifference_Trainer3_Intro {
+    "La-lalala!\p"
+    "You fell for my siren song!"
+}
+
+text Puzzle_SpotTheDifference_Trainer3_Defeat {
+    "Whoops, I fell over!"
+}
+
+text Puzzle_SpotTheDifference_Trainer3_After {
+    "I want to be where the people are.\n"
+    "Not in this gross trash can."
+}

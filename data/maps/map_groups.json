@@ -134,6 +134,15 @@
         "Puzzle_HiddenMaze",
         "Puzzle_TrickHouseOriginal5"
     ],
+    "MG_SpotTheDifferencePuzzles": [
+        "Puzzle_SpotDifference_Hallway",
+        "Puzzle_SpotDifference_1_Left",
+        "Puzzle_SpotDifference_1_Right",
+        "Puzzle_SpotDifference_2_Left",
+        "Puzzle_SpotDifference_2_Right",
+        "Puzzle_SpotDifference_3_Left",
+        "Puzzle_SpotDifference_3_Right"
+    ],
     "MG_SupportMaps": [
         "EmptyPuzzle",
         "LedgeMountain_Support",
@@ -155,15 +164,6 @@
         "TrickTreat_FortreeCity",
         "TrickTreat_SlateportCity1",
         "TrickTreat_SlateportCity2"
-    ],
-    "MG_SpotTheDifferencePuzzles": [
-        "Puzzle_SpotDifference_Hallway",
-        "Puzzle_SpotDifference_1_Left",
-        "Puzzle_SpotDifference_1_Right",
-        "Puzzle_SpotDifference_2_Left",
-        "Puzzle_SpotDifference_2_Right",
-        "Puzzle_SpotDifference_3_Left",
-        "Puzzle_SpotDifference_3_Right"
     ],
     "group_order": [
         "MG_PuzzleFramework",

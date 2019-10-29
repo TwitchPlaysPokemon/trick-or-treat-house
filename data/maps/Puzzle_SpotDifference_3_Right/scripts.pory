@@ -19,3 +19,23 @@ script Puzzle_SpotDifference_3_Right_Trigger {
     }
     release
 }
+
+script Puzzle_SpotTheDifference_Trainer6 {
+    trainerbattle_single(TRAINER_06, Puzzle_SpotTheDifference_Trainer6_Intro, Puzzle_SpotTheDifference_Trainer6_Defeat)
+    msgbox(Puzzle_SpotTheDifference_Trainer6_After, MSGBOX_AUTOCLOSE)
+}
+
+text Puzzle_SpotTheDifference_Trainer6_Intro {
+    "POKéMON must be liberated!\p"
+    "Just kdding.\n"
+    "Battling with them is too much fun!"
+}
+
+text Puzzle_SpotTheDifference_Trainer6_Defeat {
+    "GHETSIS, forgive me!"
+}
+
+text Puzzle_SpotTheDifference_Trainer6_After {
+    "I look ridiculous.\p"
+    "I feel bad for grunts."
+}

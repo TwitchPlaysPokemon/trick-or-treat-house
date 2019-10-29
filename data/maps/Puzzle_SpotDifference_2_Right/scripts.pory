@@ -66,3 +66,22 @@ script Puzzle_SpotDifference_2_Right_Trigger {
     release
 }
 
+script Puzzle_SpotTheDifference_Trainer4 {
+    trainerbattle_single(TRAINER_04, Puzzle_SpotTheDifference_Trainer4_Intro, Puzzle_SpotTheDifference_Trainer4_Defeat)
+    msgbox(Puzzle_SpotTheDifference_Trainer4_After, MSGBOX_AUTOCLOSE)
+}
+
+text Puzzle_SpotTheDifference_Trainer4_Intro {
+    "Be mine!"
+}
+
+text Puzzle_SpotTheDifference_Trainer4_Defeat {
+    "I want a divorce!"
+}
+
+text Puzzle_SpotTheDifference_Trainer4_After {
+    "Do you know any single zombies in\n"
+    "the area?\p"
+    "I could use a wingman."
+}
+

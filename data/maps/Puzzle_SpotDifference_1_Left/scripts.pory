@@ -11,3 +11,28 @@ script Puzzle_SpotDifference_1_Left_OnLoad {
         setvar(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS, 1)
     }
 }
+
+script Puzzle_SpotDifference_1_Left_Boy {
+	msgbox("I'm resisting my urge to smash all\n"
+	       "these pots, so I can memorize their\l"
+	       "positions.", MSGBOX_NPC)
+}
+
+script Puzzle_SpotTheDifference_Trainer1 {
+	trainerbattle_single(TRAINER_01, Puzzle_SpotTheDifference_Trainer1_Intro, Puzzle_SpotTheDifference_Trainer1_Defeat)
+	msgbox(Puzzle_SpotTheDifference_Trainer1_After, MSGBOX_AUTOCLOSE)
+}
+
+text Puzzle_SpotTheDifference_Trainer1_Intro {
+	"Boo!\p"
+	"Did I scare you?"
+}
+
+text Puzzle_SpotTheDifference_Trainer1_Defeat {
+	"Ah! Scary!"
+}
+
+text Puzzle_SpotTheDifference_Trainer1_After {
+	"I need to keep working on\n"
+	"my costume."
+}
