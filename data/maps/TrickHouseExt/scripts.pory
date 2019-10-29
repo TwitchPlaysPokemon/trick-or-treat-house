@@ -1,61 +1,190 @@
-raw `
-TrickHouseExt_MapScripts::
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, TrickHouseExt_MapTable
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrickHouseExt_FrameTable
-	map_script MAP_SCRIPT_ON_LOAD, TrickHouseExt_OnLoad
-	.byte 0
-
-TrickHouseExt_MapTable:
-	map_script_2 VAR_LAST_WARP_ID, 3, TrickHouseExt_IntroCutsceneSetup
-	.2byte 0
-
-TrickHouseExt_FrameTable:
-	map_script_2 VAR_INTRO_COUNTER, 1, TrickHouseExt_IntroCutscene
-	.2byte 0
-`
-script TrickHouseExt_OnLoad {
-	callnative (IsCurrentPuzzleCyclingRoad)
-	if (var(VAR_RESULT) == TRUE) {
-		// Make the level look like it's being used for the puzzle
-		setmetatile (47, 41, 0x02A, FALSE)
-		setmetatile (51, 33, 0x02A, FALSE)
-		setmetatile (46, 48, 0x02A, FALSE)
-		setmetatile (50, 31, 0x3FE, TRUE)
-		setmetatile (50, 32, 0x288, TRUE)
-		setmetatile (50, 33, 0x288, TRUE)
-		setmetatile (50, 34, 0x288, TRUE)
-		setmetatile (50, 35, 0x3FF, TRUE)
-		setobjectxyperm (11, 49, 48)
+mapscripts TrickHouseExt_MapScripts {
+	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+		VAR_LAST_WARP_ID, 3 {
+			callnative (HidePlayerOnLoad)
+			setflag (FLAG_DISABLE_FADE_INIT)
+			setvar (VAR_INTRO_COUNTER, 1)
+			clearflag (FLAG_HIDE_INTRO_CHARACTERS)
+		}
+	]
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_INTRO_COUNTER, 1: TrickHouseExt_IntroCutscene
+	]
+	MAP_SCRIPT_ON_LOAD {
+		callnative (IsCurrentPuzzleCyclingRoad)
+		if (var(VAR_RESULT) == TRUE) {
+			// Make the level look like it's being used for the puzzle
+			setmetatile (47, 41, 0x02A, FALSE)
+			setmetatile (51, 33, 0x02A, FALSE)
+			setmetatile (46, 48, 0x02A, FALSE)
+			setmetatile (50, 31, 0x3FE, TRUE)
+			setmetatile (50, 32, 0x288, TRUE)
+			setmetatile (50, 33, 0x288, TRUE)
+			setmetatile (50, 34, 0x288, TRUE)
+			setmetatile (50, 35, 0x3FF, TRUE)
+			setobjectxyperm (11, 49, 48)
+		}
 	}
 }
 
 raw `
-@ -----------------------------------------------------
-
 #define LID_BOY 6
 #define LID_GIRL 7
-#define LID_JOEY 5
+#define LID_JOEY 12
+#define LID_GHOST 5
 #define LID_FAIRY 8
 #define LID_WALLY 9
 #define LID_LINK 10
-
-
-TrickHouseExt_IntroCutsceneSetup:
-	callnative HidePlayerOnLoad
-	@ setvar VAR_INTRO_COUNTER, 1
-	clearflag FLAG_HIDE_INTRO_CHARACTERS
-	end
 `
 
 script TrickHouseExt_IntroCutscene {
 	lockall
+	delay (30)
+	setobjectxyperm (4, 0, 0) //remove the cycling road biker
+	addobject (LID_LINK)
+	addobject (LID_GHOST)
+	addobject (LID_BOY)
+	addobject (LID_GIRL)
+	addobject (LID_WALLY)
+	addobject (LID_FAIRY)
 	applymovement (LID_LINK, TrickHouseExt_IntroCutscene_Movement1_Link)
+	applymovement (LID_GHOST, TrickHouseExt_IntroCutscene_Movement1a_Ghost)
+	applymovement (LID_BOY, TrickHouseExt_IntroCutscene_Movement1_Boy)
+	applymovement (LID_GIRL, TrickHouseExt_IntroCutscene_Movement1_Girl)
 	applymovement (LID_WALLY, TrickHouseExt_IntroCutscene_Movement1_Wally)
-	fadescreenspeed (0, 4)
+	applymovement (LID_FAIRY, TrickHouseExt_IntroCutscene_Movement1_Fairy)
+	clearflag (FLAG_DISABLE_FADE_INIT)
+	fadescreenspeed (0, 6)
+	waitmovement (LID_GHOST)
+	// Joey is hot
+	applymovement (LID_GHOST, TrickHouseExt_IntroCutscene_Movement1b_Ghost)
+	message ("{YOUNGSTER}: Hey, guys? Hold up a second.\n"
+			"I'm melting under this thing…$")
+	waitmovement (LID_LINK)
+	waitmessage
+	waitbuttonpress
+	playse (SE_SELECT)
+	// Link tells him off as he takes off the costume
+	applymovement (LID_LINK, Common_Movement_WalkUp1)
+	message ("{LINK}: We can't dilly-dally!\p"
+			"We don't have long before Trick-or-\n"
+			"Treating time is over!\p"
+			"There's loads of houses to hit up in\n"
+			"SLATEPORT still!$")
+	waitmovement (LID_LINK)
+	delay (16)
+	applymovement (LID_GHOST, Common_Movement_WalkInPlaceUp)
+	delay (30)
+	applymovement (LID_WALLY, Common_Movement_WalkInPlaceLeft)
+	setobjectxyperm (LID_JOEY, 39, 33)
+	setobjectxyperm (LID_GHOST, 0, 0)
+	removeobject (LID_GHOST)
+	addobject (LID_JOEY)
+	delay (20)
+	applymovement (LID_JOEY, Common_Movement_WalkInPlaceDown)
+	waitmessage
+	waitbuttonpress
+	playse (SE_SELECT)
+	// Wally notices the house
+	applymovement (LID_WALLY, TrickHouseExt_IntroCutscene_Movement2_Wally)
+	message ("{WALLY}: We haven't been to this house\n"
+			"yet. Let's hit this up first.$")
+	waitmovement (LID_WALLY)
+	applymovement (LID_BOY, Common_Movement_WalkInPlaceUp)
+	delay (3)
+	applymovement (LID_JOEY, Common_Movement_WalkInPlaceUp)
+	delay (5)
+	applymovement (LID_GIRL, Common_Movement_WalkInPlaceUp)
+	delay (10)
+	applymovement (LID_LINK, TrickHouseExt_IntroCutscene_Movement2_Link)
+	waitmessage
+	waitbuttonpress
+	playse (SE_SELECT)
+	// Rival says what it is
+	message ("{RIVAL}: That's the TRICK HOUSE.\p"
+			"No one lives there anymore since the\n"
+			"TRICK MASTER went on his journey.$")
+	applymovement (LID_BOY, Common_Movement_WalkInPlaceLeft)
+	delay (6)
+	applymovement (LID_GIRL, Common_Movement_WalkInPlaceLeft)
+	delay (4)
+	applymovement (LID_JOEY, Common_Movement_WalkInPlaceRight)
+	delay (6)
+	applymovement (LID_LINK, Common_Movement_WalkInPlaceRight)
+	waitmessage
+	waitbuttonpress
+	playse (SE_SELECT)
+	// Door opens, everyone freaks
+	closemessage
+	delay (16)
+	opendoor (41, 29)
+	waitdooranim
+	playse (SE_PIN)
+	applymovement (LID_LINK, TrickHouseExt_IntroCutscene_Movement3_What)
+	applymovement (LID_JOEY, TrickHouseExt_IntroCutscene_Movement3_What)
+	applymovement (LID_BOY, TrickHouseExt_IntroCutscene_Movement3_What)
+	applymovement (LID_GIRL, TrickHouseExt_IntroCutscene_Movement3_What)
+	applymovement (LID_WALLY, TrickHouseExt_IntroCutscene_Movement3_Wally)
+	applymovement (LID_FAIRY, TrickHouseExt_IntroCutscene_Movement3_What)
+	waitmovement (LID_FAIRY)
+	// 
+	applymovement (EVENT_OBJ_ID_PLAYER, TrickHouseExt_IntroCutscene_Movement2_Camera)
+	delay (10)
+	applymovement (LID_FAIRY, TrickHouseExt_IntroCutscene_Movement4_Fairy)
+	msgbox ("{FAIRY}: Uh, hello?$")
+	//
+	closemessage
+	applymovement (LID_FAIRY, TrickHouseExt_IntroCutscene_Movement5_Fairy)
 	waitmovement (0)
-	
+	applymovement (LID_WALLY, TrickHouseExt_IntroCutscene_Movement5_Wally)
+	message("{WALLY}: {FAIRY}! Don't go in there!!\n"
+			"What if it's haunted?!$")
+	waitmovement (LID_WALLY)
+	applymovement (LID_FAIRY, Common_Movement_WalkInPlaceDown)
+	applymovement (LID_JOEY, TrickHouseExt_IntroCutscene_Movement5_Joey)
+	delay (12)
+	applymovement (LID_GIRL, TrickHouseExt_IntroCutscene_Movement5_Girl)
+	delay (10)
+	applymovement (LID_LINK, TrickHouseExt_IntroCutscene_Movement5_Link)
+	waitmessage
+	waitbuttonpress
+	playse (SE_SELECT)
+	// 
+	msgbox ("{FAIRY}: Pfft. I'm not scared.\n"
+			"I have my {POKEMON} with me.$")
+	applymovement (LID_FAIRY, TrickHouseExt_IntroCutscene_Movement6_Fairy)
+	//
+	msgbox ("{WALLY}: B-But I don't! W-WAIT!!$")
+	applymovement (LID_WALLY, TrickHouseExt_IntroCutscene_Movement6_Wally)
+	waitmovement (0)
+	//
+	closemessage
+	delay (10)
+	applymovement (LID_LINK, Common_Movement_WalkInPlaceRight)
+	message ("{LINK}: C'mon, maybe they have candy.$")
+	applymovement (LID_BOY, Common_Movement_WalkInPlaceLeft)
+	delay (6)
+	applymovement (LID_GIRL, Common_Movement_WalkInPlaceLeft)
+	delay (8)
+	applymovement (LID_JOEY, Common_Movement_WalkInPlaceRight)
+	waitmessage
+	waitbuttonpress
+	playse (SE_SELECT)
+	//
+	closemessage
+	applymovement (LID_LINK, TrickHouseExt_IntroCutscene_Movement6_Link)
+	delay (4)
+	applymovement (LID_JOEY, TrickHouseExt_IntroCutscene_Movement6_Joey)
+	delay (30)
+	applymovement (LID_BOY, Common_Movement_WalkInPlaceRight)
+	delay (30)
+	applymovement (LID_BOY, TrickHouseExt_IntroCutscene_Movement6_Boy)
+	delay (5)
+	applymovement (LID_GIRL, TrickHouseExt_IntroCutscene_Movement6_Girl)
+	//
+	fadescreenspeed (1, 6)
 	setvar (VAR_INTRO_COUNTER, 2)
-	warpsilent (MAP_TRICK_HOUSE_ENTRANCE, 0, 0xFF, 0xFF)
+	warpcustom (MAP_TRICK_HOUSE_ENTRANCE, 0, 0xFF, 0xFF)
 	waitstate
 	releaseall
 }
@@ -64,10 +193,112 @@ movement TrickHouseExt_IntroCutscene_Movement1_Link {
 	walk_left * 10
 	walk_down * 2
 }
-movement TrickHouseExt_IntroCutscene_Movement1_Wally {
-	delay_16 * 2
-	walk_left * 9
+movement TrickHouseExt_IntroCutscene_Movement1a_Ghost {
+	delay_16 * 5
+	walk_left * 6
+}
+movement TrickHouseExt_IntroCutscene_Movement1b_Ghost {
+	walk_left * 4
 	walk_in_place_down
+}
+movement TrickHouseExt_IntroCutscene_Movement1_Wally {
+	delay_16 * 4
+	walk_left * 7
+	delay_16 * 3
+	walk_up
+	walk_in_place_left
+}
+movement TrickHouseExt_IntroCutscene_Movement1_Boy {
+	delay_16 * 3
+	walk_left * 7
+}
+movement TrickHouseExt_IntroCutscene_Movement1_Girl {
+	delay_16 * 1
+	walk_left * 8
+}
+movement TrickHouseExt_IntroCutscene_Movement1_Fairy {
+	delay_16 * 2
+	walk_left * 11
+	walk_in_place_right
+}
+
+movement TrickHouseExt_IntroCutscene_Movement2_Wally {
+	walk_left
+	walk_up * 2
+	walk_in_place_down
+}
+movement TrickHouseExt_IntroCutscene_Movement2_Link {
+	walk_right
+	walk_in_place_up
+}
+
+movement TrickHouseExt_IntroCutscene_Movement2_Camera {
+	walk_up * 2
+}
+movement TrickHouseExt_IntroCutscene_Movement3_Wally {
+	walk_in_place_fastest_up
+	emote_exclamation_mark
+	lock_facing_direction
+	jump_down
+	unlock_facing_direction
+}
+movement TrickHouseExt_IntroCutscene_Movement3_What {
+	walk_in_place_fastest_up
+	emote_exclamation_mark
+	delay_16 * 3
+}
+
+movement TrickHouseExt_IntroCutscene_Movement4_Fairy {
+	walk_right * 2
+	walk_up
+}
+
+movement TrickHouseExt_IntroCutscene_Movement5_Fairy {
+	walk_right
+	walk_up
+}
+movement TrickHouseExt_IntroCutscene_Movement5_Wally {
+	emote_exclamation_mark
+	walk_fast_up
+}
+movement TrickHouseExt_IntroCutscene_Movement5_Girl {
+	walk_right * 2
+	walk_up * 2
+}
+movement TrickHouseExt_IntroCutscene_Movement5_Link {
+	walk_up * 2
+}
+movement TrickHouseExt_IntroCutscene_Movement5_Joey {
+	walk_up
+}
+
+movement TrickHouseExt_IntroCutscene_Movement6_Fairy {
+	walk_up
+	set_invisible
+}
+movement TrickHouseExt_IntroCutscene_Movement6_Wally {
+	walk_fast_up * 2
+	set_invisible
+}
+movement TrickHouseExt_IntroCutscene_Movement6_Link {
+	walk_right
+	walk_up * 3
+	set_invisible
+}
+movement TrickHouseExt_IntroCutscene_Movement6_Joey {
+	walk_right * 2
+	walk_up * 3
+	set_invisible
+}
+movement TrickHouseExt_IntroCutscene_Movement6_Boy {
+	walk_left
+	walk_up * 3
+	set_invisible
+}
+movement TrickHouseExt_IntroCutscene_Movement6_Girl {
+	walk_left * 2
+	walk_up * 3
+	set_invisible
 }
 
 raw `

@@ -576,8 +576,8 @@ const u8 *GetExpandedPlaceholder(u32 id)
         ExpandPlaceholder_RivalName,
         ExpandPlaceholder_Youngster,
         ExpandPlaceholder_Wally,       // 09
-        ExpandPlaceholder_Empty,       // 0A
-        ExpandPlaceholder_Empty,
+        ExpandPlaceholder_Link,       // 0A
+        ExpandPlaceholder_FairyGirl,
         ExpandPlaceholder_Empty,
         ExpandPlaceholder_Empty,
         ExpandPlaceholder_Empty,
