@@ -42,6 +42,7 @@ endif
 
 TITLE       := TRICKTREAT H
 GAME_CODE   := BPEE
+GAME_NAME	:= Trick or Treat House (English)
 MAKER_CODE  := 01
 REVISION    := 0
 MODERN      ?= 0
@@ -50,6 +51,8 @@ SHELL := /bin/bash -o pipefail
 
 ELF = $(ROM:.gba=.elf)
 MAP = $(ROM:.gba=.map)
+SYM = $(ROM:.gba=.sym)
+PGEINI = $(ROM:.gba=.pge.ini)
 
 C_SUBDIR = src
 ASM_SUBDIR = asm
@@ -102,6 +105,8 @@ FIX := tools/gbafix/gbafix$(EXE)
 MAPJSON := tools/mapjson/mapjson$(EXE)
 JSONPROC := tools/jsonproc/jsonproc$(EXE)
 SCRIPT := tools/poryscript/poryscript$(EXE2)
+PGEGEN := tools/pgegen/pgegen$(EXE)
+
 
 TOOLDIRS := $(filter-out tools/agbcc tools/binutils tools/porymap.app tools/poryscript,$(wildcard tools/*))
 TOOLBASE = $(TOOLDIRS:tools/%=%)
@@ -163,6 +168,8 @@ $(TOOLDIRS):
 	@$(MAKE) -C $@ CC=$(HOSTCC) CXX=$(HOSTCXX)
 
 rom: $(ROM)
+
+ini: $(PGEINI)
 
 # For contributors to make sure a change didn't affect the contents of the ROM.
 compare: all
@@ -302,4 +309,8 @@ $(ROM): $(ELF)
 	$(FIX) $@ -p --silent
 	nm -SBgn $< > $(ROM:.gba=.sym)
 
+$(PGEINI): $(ELF)
+	$(PGEGEN) $< $@ --code $(GAME_CODE) --name "$(GAME_NAME)"
+
 modern: ; @$(MAKE) MODERN=1
+
