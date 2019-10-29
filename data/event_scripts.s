@@ -6273,3 +6273,5 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/Puzzle_TrickHouseOriginal5/scripts.inc"
 
 	.include "data/maps/FakeSecretBaseCave/scripts.inc"
+
+	.include "data/maps/TrickTreat_SlateportCity_ContestLobby/scripts.inc"

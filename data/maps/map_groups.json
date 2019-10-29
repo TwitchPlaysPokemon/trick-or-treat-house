@@ -154,7 +154,8 @@
         "TrickTreat_MossdeepCity",
         "TrickTreat_FortreeCity",
         "TrickTreat_SlateportCity1",
-        "TrickTreat_SlateportCity2"
+        "TrickTreat_SlateportCity2",
+        "TrickTreat_SlateportCity_ContestLobby"
     ],
     "group_order": [
         "MG_PuzzleFramework",
