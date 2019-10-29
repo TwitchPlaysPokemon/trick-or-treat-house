@@ -3446,17 +3446,26 @@ static const u16 sCelebiLevelUpLearnset[] = {
 };
 
 static const u16 sSpecies252LevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_TACKLE),
+    LEVEL_UP_MOVE( 1, MOVE_THUNDERBOLT),
+    LEVEL_UP_MOVE( 1, MOVE_DOUBLE_TEAM),
+    LEVEL_UP_MOVE( 1, MOVE_WILL_O_WISP),
+    LEVEL_UP_MOVE( 1, MOVE_FRUSTRATION),
     LEVEL_UP_END
 };
 
 static const u16 sSpecies253LevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_TACKLE),
+    LEVEL_UP_MOVE( 1, MOVE_SHADOW_BALL),
+    LEVEL_UP_MOVE( 1, MOVE_FRUSTRATION),
+    LEVEL_UP_MOVE( 1, MOVE_GIGA_DRAIN),
+    LEVEL_UP_MOVE( 1, MOVE_SYNTHESIS),
     LEVEL_UP_END
 };
 
 static const u16 sSpecies254LevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 1, MOVE_TACKLE),
+    LEVEL_UP_MOVE( 1, MOVE_RETURN),
+    LEVEL_UP_MOVE( 1, MOVE_YAWN),
+    LEVEL_UP_MOVE( 1, MOVE_WISH),
+    LEVEL_UP_MOVE( 1, MOVE_BELLY_DRUM),
     LEVEL_UP_END
 };
 
