@@ -181,6 +181,9 @@ int main(int argc, char ** argv)
     fputs("StarterEncounterPokemon = \n", outFile);
     fputs("StarterEncounterPokemonLevel = \n", outFile);
     config_set("AttackAnimationTable", sym_get("gBattleAnims_Moves"));
+    Elf32_Sym * gPuzzleList = GetSymbolByName("gPuzzleList");
+    config_set("PuzzleList", gPuzzleList->st_value - 0x8000000);
+    config_set("PuzzleCount", gPuzzleList->st_size / 2);
     
     // TODO: Tilests
 
