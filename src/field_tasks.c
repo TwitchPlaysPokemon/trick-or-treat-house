@@ -16,6 +16,7 @@
 #include "secret_base.h"
 #include "sound.h"
 #include "task.h"
+#include "palette.h"
 #include "constants/items.h"
 #include "constants/songs.h"
 #include "constants/vars.h"
@@ -37,6 +38,7 @@ static void SootopolisGymIcePerStepCallback(u8 taskId);
 static void CrackedFloorPerStepCallback(u8 taskId);
 static void MonitorEventObjectTriggersStepCallback(u8 taskId);
 extern void HiddenMaze_PulseWallTiles(u8 taskId);
+extern void TrickHouse_CycleTextPalette(u8 taskId);
 static void Task_MuddySlope(u8 taskId);
 
 static const TaskFunc sPerStepCallbacks[] =
@@ -52,6 +54,7 @@ static const TaskFunc sPerStepCallbacks[] =
     WaterTemplePerStepCallback, //8
     MonitorEventObjectTriggersStepCallback,
     HiddenMaze_PulseWallTiles,
+    TrickHouse_CycleTextPalette,
 };
 
 // Each element corresponds to a y coordinate row in the sootopolis gym 1F map.
@@ -1069,4 +1072,24 @@ static void MonitorEventObjectTriggersStepCallback(u8 taskId)
 #undef tPosY
 #undef tRunningVar
 #undef tRunningIndex
+
+void TrickHouse_CycleTextPalette(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    u16 c1, c2, c3;
+    
+    data[1]++;
+    if (data[1] < 20) return;
+    data[1] = 0;
+    
+    c1 = gPlttBufferFaded[244];
+    c2 = gPlttBufferFaded[246];
+    c3 = gPlttBufferFaded[248];
+    
+    gPlttBufferFaded[244] = c3;
+    gPlttBufferFaded[246] = c1;
+    gPlttBufferFaded[248] = c2;
+}
+
+
 

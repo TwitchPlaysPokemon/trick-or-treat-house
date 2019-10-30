@@ -78,6 +78,7 @@ script TrickHouseEntrance_WalkInCutscene {
 
 script TrickHouseEntrance_IntroCutscene {
 	lockall
+	setstepcallback (11)
 	msgbox (PuzzleCommon_Text_GameIntro, MSGBOX_SIGN)
 	setvar (VAR_0x8000, 1)
 	call (PuzzleCommon_EventScript_WarpTrickMasterOut)

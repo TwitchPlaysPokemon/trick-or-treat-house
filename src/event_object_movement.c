@@ -494,7 +494,7 @@ const struct SpritePalette sEventObjectSpritePalettes[] = {
     {gEventObjectPalette33, EVENT_OBJ_PAL_TAG_33},
     {gEventObjectPalette34, EVENT_OBJ_PAL_TAG_34},
     {gEventObjectPaletteTrickHouse, EVENT_OBJ_PAL_TAG_TRICK_HOUSE},
-    {gEventObjectPaletteTrickHouse, EVENT_OBJ_PAL_TAG_TRICK_MASTER},
+    {gEvtObjPal_TrickMaster,  EVENT_OBJ_PAL_TAG_TRICK_MASTER},
     {gEvtObjPal_Torchick,     EVENT_OBJ_PAL_MAY},
     {gEvtObjPal_Mudkid,       EVENT_OBJ_PAL_BRANDON},
     {gEvtObjPal_Elvis,        EVENT_OBJ_PAL_WALLY},

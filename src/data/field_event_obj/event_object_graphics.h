@@ -340,8 +340,9 @@ const u32 gEventObjectPic_TrickDoorScrollRoom[] = INCBIN_U32("graphics/event_obj
 const u32 gEventObjectPic_TrickDoorStone[] = INCBIN_U32("graphics/event_objects/pics/misc/trick_door_stone.4bpp");
 const u32 gEventObjectPic_TrickDoorStoneRoom[] = INCBIN_U32("graphics/event_objects/pics/misc/trick_door_stone_room.4bpp");
 const u32 gEventObjectPic_TrickDoorNorth[] = INCBIN_U32("graphics/event_objects/pics/misc/trick_door_north.4bpp");
+const u32 gEventObjectPic_TrickMaster[] = INCBIN_U32("graphics/event_objects/pics/people/trickmaster.4bpp");
 
-
+const u16 gEvtObjPal_TrickMaster[] = INCBIN_U16("graphics/event_objects/palettes/objpal_trickmaster.gbapal");
 const u16 gEvtObjPal_Torchick[] = INCBIN_U16("graphics/event_objects/palettes/objpal_torchick.gbapal");
 const u16 gEvtObjPal_Mudkid[] = INCBIN_U16("graphics/event_objects/palettes/objpal_mudkid.gbapal");
 const u16 gEvtObjPal_Elvis[] = INCBIN_U16("graphics/event_objects/palettes/objpal_elvis.gbapal");
