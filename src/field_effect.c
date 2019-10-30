@@ -245,6 +245,7 @@ extern const struct SpriteTemplate *const gFieldEffectObjectTemplatePointers[];
 
 // .rodata
 const u32 gNewGameBirchPic[] = INCBIN_U32("graphics/birch_speech/birch.4bpp");
+const u32 gNewGameMaskedBirchPic[] = INCBIN_U32("graphics/birch_speech/birch_masked.4bpp");
 const u32 gUnusedBirchBeauty[] = INCBIN_U32("graphics/unused/intro_birch_beauty.4bpp");
 const u16 gNewGameBirchPalette[16] = INCBIN_U16("graphics/birch_speech/birch.gbapal");
 const u32 gSpriteImage_855A970[] = INCBIN_U32("graphics/misc/pokeball_glow.4bpp");
@@ -331,6 +332,11 @@ const struct SpriteFrameImage gNewGameBirchPicTable[] =
     obj_frame_tiles(gNewGameBirchPic)
 };
 
+const struct SpriteFrameImage gNewGameMaskedBirchPicTable[] =
+{
+    obj_frame_tiles(gNewGameMaskedBirchPic)
+};
+
 const struct SpritePalette gNewGameBirchObjectPaletteInfo =
 {
     .data = gNewGameBirchPalette,
@@ -355,6 +361,17 @@ const struct SpriteTemplate gNewGameBirchObjectTemplate =
     .oam = &gNewGameBirchOamAttributes,
     .anims = gNewGameBirchImageAnimTable,
     .images = gNewGameBirchPicTable,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy
+};
+
+const struct SpriteTemplate gNewGameMaskObjectTemplate =
+{
+    .tileTag = 0xFFFF,
+    .paletteTag = 4102,
+    .oam = &gNewGameBirchOamAttributes,
+    .anims = gNewGameBirchImageAnimTable,
+    .images = gNewGameMaskedBirchPicTable,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCallbackDummy
 };
@@ -842,10 +859,13 @@ void LoadTrainerGfx_TrainerCard(u8 gender, u16 palOffset, u8 *dest)
     LoadCompressedPalette(gTrainerFrontPicPaletteTable[gender].data, palOffset, 0x20);
 }
 
-u8 AddNewGameBirchObject(s16 x, s16 y, u8 subpriority)
+u8 AddNewGameBirchObject(s16 x, s16 y, u8 subpriority, u8 type)
 {
     LoadSpritePalette(&gNewGameBirchObjectPaletteInfo);
-    return CreateSprite(&gNewGameBirchObjectTemplate, x, y, subpriority);
+    if (type)
+        return CreateSprite(&gNewGameMaskObjectTemplate, x, y, subpriority);
+    else
+        return CreateSprite(&gNewGameBirchObjectTemplate, x, y, subpriority);
 }
 
 u8 CreateMonSprite_PicBox(u16 species, s16 x, s16 y, u8 subpriority)

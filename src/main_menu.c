@@ -1294,6 +1294,7 @@ static void HighlightSelectedMainMenuItem(u8 menuType, u8 selectedMenuItem, s16 
 #define tTimer data[7]
 #define tBirchSpriteId data[8]
 #define tLotadSpriteId data[9]
+#define tMaskedSpriteId data[12]
 
 // DEBUG
 extern u16 gTrainerId;
@@ -1374,6 +1375,10 @@ static void Task_NewGameBirchSpeech_WaitToShowBirch(u8 taskId)
         spriteId = gTasks[taskId].tBirchSpriteId;
         gSprites[spriteId].pos1.x = 136;
         gSprites[spriteId].pos1.y = 60;
+        
+        spriteId = gTasks[taskId].tMaskedSpriteId;
+        gSprites[spriteId].pos1.x = 136;
+        gSprites[spriteId].pos1.y = 60;
         gSprites[spriteId].invisible = FALSE;
         gSprites[spriteId].oam.objMode = 1;
         NewGameBirchSpeech_StartFadeInTarget1OutTarget2(taskId, 10);
@@ -1387,7 +1392,7 @@ static void Task_NewGameBirchSpeech_WaitForSpriteFadeInWelcome(u8 taskId)
 {
     if (gTasks[taskId].tIsDoneFadingSprites)
     {
-        gSprites[gTasks[taskId].tBirchSpriteId].oam.objMode = 0;
+        gSprites[gTasks[taskId].tMaskedSpriteId].oam.objMode = 0;
         if (gTasks[taskId].tTimer)
         {
             gTasks[taskId].tTimer--;
@@ -1440,7 +1445,7 @@ static void Task_NewGameBirchSpeechSub_InitPokeBall(u8 taskId)
     gSprites[spriteId].invisible = FALSE;
     gSprites[spriteId].data[0] = 0;
 
-    CreatePokeballSpriteToReleaseMon(spriteId, gSprites[spriteId].oam.paletteNum, 112, 58, 0, 0, 32, 0x0000FFFF, SPECIES_LOTAD);
+    CreatePokeballSpriteToReleaseMon(spriteId, gSprites[spriteId].oam.paletteNum, 112, 58, 0, 0, 32, 0x0000FFFF, SPECIES_HAUNTER);
     gTasks[taskId].func = Task_NewGameBirchSpeechSub_WaitForLotad;
     gTasks[sBirchSpeechMainTaskId].tTimer = 0;
 }
@@ -1493,7 +1498,7 @@ static void Task_NewGameBirchSpeech_StartBirchLotadPlatformFade(u8 taskId)
 {
     if (!RunTextPrintersAndIsPrinter0Active())
     {
-        gSprites[gTasks[taskId].tBirchSpriteId].oam.objMode = 1;
+        gSprites[gTasks[taskId].tMaskedSpriteId].oam.objMode = 1;
         gSprites[gTasks[taskId].tLotadSpriteId].oam.objMode = 1;
         NewGameBirchSpeech_StartFadeOutTarget1InTarget2(taskId, 2);
         NewGameBirchSpeech_StartFadePlatformOut(taskId, 1);
@@ -1525,6 +1530,7 @@ static void Task_NewGameBirchSpeech_StartPlayerFadeIn(u8 taskId)
 {
     if (gTasks[taskId].tIsDoneFadingSprites)
     {
+        gSprites[gTasks[taskId].tMaskedSpriteId].invisible = TRUE;
         gSprites[gTasks[taskId].tBirchSpriteId].invisible = TRUE;
         gSprites[gTasks[taskId].tLotadSpriteId].invisible = TRUE;
         if (gTasks[taskId].tTimer)
@@ -2123,21 +2129,26 @@ static void SpriteCB_MovePlayerDownWhileShrinking(struct Sprite *sprite)
 
 static u8 NewGameBirchSpeech_CreateLotadSprite(u8 a, u8 b)
 {
-    return CreatePicSprite2(SPECIES_LOTAD, 8, 0, 1, a, b, 14, -1);
+    return CreatePicSprite2(SPECIES_HAUNTER, 8, 0, 1, a, b, 14, -1);
 }
 
 static void AddBirchSpeechObjects(u8 taskId)
 {
-    u8 birchSpriteId;
+    u8 birchSpriteId, maskedSpriteId;
     u8 lotadSpriteId;
     u8 brendanSpriteId;
     u8 maySpriteId;
 
-    birchSpriteId = AddNewGameBirchObject(0x88, 0x3C, 1);
+    birchSpriteId = AddNewGameBirchObject(0x88, 0x3C, 1, FALSE);
     gSprites[birchSpriteId].callback = SpriteCB_Null;
     gSprites[birchSpriteId].oam.priority = 0;
     gSprites[birchSpriteId].invisible = TRUE;
     gTasks[taskId].tBirchSpriteId = birchSpriteId;
+    maskedSpriteId = AddNewGameBirchObject(0x88, 0x3C, 1, TRUE);
+    gSprites[maskedSpriteId].callback = SpriteCB_Null;
+    gSprites[maskedSpriteId].oam.priority = 0;
+    gSprites[maskedSpriteId].invisible = TRUE;
+    gTasks[taskId].tMaskedSpriteId = maskedSpriteId;
     lotadSpriteId = NewGameBirchSpeech_CreateLotadSprite(100, 0x4B);
     gSprites[lotadSpriteId].callback = SpriteCB_Null;
     gSprites[lotadSpriteId].oam.priority = 0;
@@ -2162,6 +2173,7 @@ static void AddBirchSpeechObjects(u8 taskId)
 #undef tLotadSpriteId
 #undef tBoySpriteId
 #undef tGirlSpriteId
+#undef tMaskedSpriteId
 
 #define tMainTask data[0]
 #define tAlphaCoeff1 data[1]
