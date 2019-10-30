@@ -4,6 +4,78 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x00",
+            "item": "ITEM_AWAKENING",
+            "type": "hidden_item",
+            "x": 11,
+            "y": 2
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x01",
+            "item": "ITEM_ANTIDOTE",
+            "type": "hidden_item",
+            "x": 12,
+            "y": 10
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x02",
+            "item": "ITEM_FULL_HEAL",
+            "type": "hidden_item",
+            "x": 20,
+            "y": 15
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x03",
+            "item": "ITEM_POTION",
+            "type": "hidden_item",
+            "x": 0,
+            "y": 20
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x04",
+            "item": "ITEM_LEMONADE",
+            "type": "hidden_item",
+            "x": 20,
+            "y": 17
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x05",
+            "item": "ITEM_POTION",
+            "type": "hidden_item",
+            "x": 5,
+            "y": 11
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x06",
+            "item": "ITEM_TINY_MUSHROOM",
+            "type": "hidden_item",
+            "x": 14,
+            "y": 7
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x07",
+            "item": "ITEM_PARALYZE_HEAL",
+            "type": "hidden_item",
+            "x": 1,
+            "y": 4
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x08",
+            "item": "ITEM_PEARL",
+            "type": "hidden_item",
+            "x": 19,
+            "y": 11
+        }
     ],
     "connections": null,
     "coord_events": [

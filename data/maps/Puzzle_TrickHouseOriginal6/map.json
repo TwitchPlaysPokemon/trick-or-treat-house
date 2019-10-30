@@ -4,6 +4,30 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x00",
+            "item": "ITEM_AWAKENING",
+            "type": "hidden_item",
+            "x": 8,
+            "y": 16
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x01",
+            "item": "ITEM_MAX_ETHER",
+            "type": "hidden_item",
+            "x": 11,
+            "y": 21
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x02",
+            "item": "ITEM_MAX_POTION",
+            "type": "hidden_item",
+            "x": 14,
+            "y": 7
+        }
     ],
     "connections": null,
     "coord_events": [
@@ -11,7 +35,7 @@
     "id": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL6",
     "layout": "LAYOUT_PUZZLE_TRICK_HOUSE_PUZZLE6",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_KARAKURI",
+    "music": "MUS_GRANROAD",
     "name": "Puzzle_TrickHouseOriginal6",
     "object_events": [
         {

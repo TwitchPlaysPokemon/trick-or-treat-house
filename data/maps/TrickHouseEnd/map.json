@@ -11,6 +11,14 @@
             "type": "hidden_item",
             "x": 13,
             "y": 2
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x2B",
+            "item": "ITEM_LEMONADE",
+            "type": "hidden_item",
+            "x": 5,
+            "y": 2
         }
     ],
     "connections": null,

@@ -4,6 +4,46 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x00",
+            "item": "ITEM_PARALYZE_HEAL",
+            "type": "hidden_item",
+            "x": 5,
+            "y": 2
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x01",
+            "item": "ITEM_SUPER_POTION",
+            "type": "hidden_item",
+            "x": 13,
+            "y": 5
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x02",
+            "item": "ITEM_MAX_POTION",
+            "type": "hidden_item",
+            "x": 16,
+            "y": 25
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x03",
+            "item": "ITEM_ETHER",
+            "type": "hidden_item",
+            "x": 27,
+            "y": 1
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x04",
+            "item": "ITEM_HEAL_POWDER",
+            "type": "hidden_item",
+            "x": 19,
+            "y": 5
+        }
     ],
     "connections": null,
     "coord_events": [

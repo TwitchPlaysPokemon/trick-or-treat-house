@@ -62,11 +62,43 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PETALBURG_CITY_0x21",
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x00",
             "item": "ITEM_RARE_CANDY",
             "type": "hidden_item",
             "x": 21,
             "y": 29
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x01",
+            "item": "ITEM_SUPER_POTION",
+            "type": "hidden_item",
+            "x": 28,
+            "y": 24
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x02",
+            "item": "ITEM_REVIVE",
+            "type": "hidden_item",
+            "x": 15,
+            "y": 8
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x03",
+            "item": "ITEM_HYPER_POTION",
+            "type": "hidden_item",
+            "x": 23,
+            "y": 8
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_TEMP_1",
+            "item": "ITEM_FULL_HEAL",
+            "type": "hidden_item",
+            "x": 35,
+            "y": 13
         }
     ],
     "connections": null,

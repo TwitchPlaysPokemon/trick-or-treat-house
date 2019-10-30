@@ -51,6 +51,14 @@
             "type": "sign",
             "x": 14,
             "y": 2
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x00",
+            "item": "ITEM_FRESH_WATER",
+            "type": "hidden_item",
+            "x": 6,
+            "y": 9
         }
     ],
     "connections": null,

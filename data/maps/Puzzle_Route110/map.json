@@ -11,6 +11,94 @@
             "type": "hidden_item",
             "x": 26,
             "y": 47
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x01",
+            "item": "ITEM_ANTIDOTE",
+            "type": "hidden_item",
+            "x": 32,
+            "y": 5
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x02",
+            "item": "ITEM_MAX_ELIXIR",
+            "type": "hidden_item",
+            "x": 4,
+            "y": 20
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x03",
+            "item": "ITEM_FULL_HEAL",
+            "type": "hidden_item",
+            "x": 4,
+            "y": 35
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x04",
+            "item": "ITEM_PARALYZE_HEAL",
+            "type": "hidden_item",
+            "x": 35,
+            "y": 39
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x05",
+            "item": "ITEM_REVIVAL_HERB",
+            "type": "hidden_item",
+            "x": 23,
+            "y": 63
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x06",
+            "item": "ITEM_PARALYZE_HEAL",
+            "type": "hidden_item",
+            "x": 20,
+            "y": 69
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x07",
+            "item": "ITEM_HYPER_POTION",
+            "type": "hidden_item",
+            "x": 33,
+            "y": 66
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x08",
+            "item": "ITEM_STAR_PIECE",
+            "type": "hidden_item",
+            "x": 22,
+            "y": 78
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x09",
+            "item": "ITEM_REVIVE",
+            "type": "hidden_item",
+            "x": 20,
+            "y": 84
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x0A",
+            "item": "ITEM_FULL_RESTORE",
+            "type": "hidden_item",
+            "x": 26,
+            "y": 89
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x0B",
+            "item": "ITEM_BURN_HEAL",
+            "type": "hidden_item",
+            "x": 35,
+            "y": 87
         }
     ],
     "connections": null,
@@ -104,6 +192,32 @@
             "trainer_type": "0",
             "x": 4,
             "y": 21
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_ITEM_F",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_PickupRareItem",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 32,
+            "y": 17
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_ITEM_E",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_ItemPearl",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 24,
+            "y": 77
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_110",

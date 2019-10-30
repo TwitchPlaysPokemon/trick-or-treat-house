@@ -4,6 +4,46 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x00",
+            "item": "ITEM_SUPER_POTION",
+            "type": "hidden_item",
+            "x": 4,
+            "y": 2
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x01",
+            "item": "ITEM_FRESH_WATER",
+            "type": "hidden_item",
+            "x": 3,
+            "y": 11
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x02",
+            "item": "ITEM_ETHER",
+            "type": "hidden_item",
+            "x": 12,
+            "y": 19
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x03",
+            "item": "ITEM_TINY_MUSHROOM",
+            "type": "hidden_item",
+            "x": 0,
+            "y": 17
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x04",
+            "item": "ITEM_POTION",
+            "type": "hidden_item",
+            "x": 14,
+            "y": 2
+        }
     ],
     "connections": null,
     "coord_events": [

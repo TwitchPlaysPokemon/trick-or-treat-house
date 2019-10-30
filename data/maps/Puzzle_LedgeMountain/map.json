@@ -43,6 +43,46 @@
             "type": "hidden_item",
             "x": 28,
             "y": 4
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x05",
+            "item": "ITEM_MAX_POTION",
+            "type": "hidden_item",
+            "x": 7,
+            "y": 59
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x06",
+            "item": "ITEM_ICE_HEAL",
+            "type": "hidden_item",
+            "x": 5,
+            "y": 39
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x07",
+            "item": "ITEM_FULL_RESTORE",
+            "type": "hidden_item",
+            "x": 18,
+            "y": 23
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x08",
+            "item": "ITEM_ENERGY_ROOT",
+            "type": "hidden_item",
+            "x": 19,
+            "y": 6
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x09",
+            "item": "ITEM_STAR_PIECE",
+            "type": "hidden_item",
+            "x": 21,
+            "y": 30
         }
     ],
     "connections": [

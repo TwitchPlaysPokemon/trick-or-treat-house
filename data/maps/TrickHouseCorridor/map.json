@@ -4,6 +4,38 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x2C",
+            "item": "ITEM_NUGGET",
+            "type": "hidden_item",
+            "x": 1,
+            "y": 8
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x2D",
+            "item": "ITEM_REVIVE",
+            "type": "hidden_item",
+            "x": 2,
+            "y": 6
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x2E",
+            "item": "ITEM_SUPER_POTION",
+            "type": "hidden_item",
+            "x": 19,
+            "y": 3
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x2F",
+            "item": "ITEM_LAVA_COOKIE",
+            "type": "hidden_item",
+            "x": 24,
+            "y": 7
+        }
     ],
     "connections": null,
     "coord_events": [

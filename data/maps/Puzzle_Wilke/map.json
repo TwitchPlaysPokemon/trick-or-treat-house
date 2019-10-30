@@ -4,6 +4,38 @@
     "allow_running": false,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x00",
+            "item": "ITEM_POTION",
+            "type": "hidden_item",
+            "x": 14,
+            "y": 3
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x01",
+            "item": "ITEM_ETHER",
+            "type": "hidden_item",
+            "x": 10,
+            "y": 7
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x02",
+            "item": "ITEM_BURN_HEAL",
+            "type": "hidden_item",
+            "x": 20,
+            "y": 3
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x03",
+            "item": "ITEM_HYPER_POTION",
+            "type": "hidden_item",
+            "x": 4,
+            "y": 6
+        }
     ],
     "connections": null,
     "coord_events": [

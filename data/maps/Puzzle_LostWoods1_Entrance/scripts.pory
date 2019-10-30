@@ -48,10 +48,12 @@ script Puzzle_LostWoods1_Wanderer2 {
 script Puzzle_LostWoods1_Wanderer3 {
 	trainerbattle_single (TRAINER_02,
 			"AUGH! DON'T HURT ME!$",
-			"Oh! Sorry, I was startled!$")
-	msgbox ("I think I saw something down this path…\p"
-			"Or, was it another path?\n"
-			"I'm getting so spun around in here.$", MSGBOX_AUTOCLOSE)
+			"Oh! Sorry, I thought you were\n"
+			"another kid with a sword!$")
+	msgbox ("People have been mistaking me for a\n"
+			"“Skull Kid” while I've been in here.\p"
+			"It's irritating. I'm just looking\n"
+			"for candy and things to collect!$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_LostWoods1_Wanderer4 {
