@@ -8,16 +8,12 @@ Puzzle_SpotDifference_Hallway_MapScripts::
     map_script MAP_SCRIPT_ON_LOAD, Puzzle_SpotDifference_Hallway_OnLoad
     .byte 0
 
-
 Puzzle_SpotDifference_Name:
     .string "Spot the Difference$"
-
 Puzzle_SpotDifference_Author:
     .string "DogeMage$"
-
 Puzzle_SpotDifference_Adjective:
     .string "keen-eye$"
-
 Puzzle_SpotDifference_Quip:
     .string "I kept forgetting what the\n"
     .string "rooms looked like, and it drove\l"

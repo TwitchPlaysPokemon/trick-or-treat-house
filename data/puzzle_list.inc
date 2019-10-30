@@ -20,11 +20,12 @@ gPuzzleList::                                           @ TPP / Single Player
     
     .2byte MAP_PUZZLE_WATER_TEMPLE                      @  5 / 4
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL6             @  3 / 3
-    .2byte MAP_PUZZLE_HIDDEN_MAZE                       @  5 / 7
+    .2byte MAP_PUZZLE_SPOT_DIFFERENCE_HALLWAY           @  5 / 5
     .2byte MAP_PUZZLE_LOSS_FLOOR1                       @  1 / 1
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL5             @  7 / 5
 @   .2byte MAP_TRICK_TREAT_FORTREE_CITY                 @
     
+    .2byte MAP_PUZZLE_HIDDEN_MAZE                       @  5 / 7
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7             @  3 / 3
     .2byte MAP_PUZZLE_WILKE                             @ 10 / 8
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL8             @  8 / 8
@@ -41,5 +42,4 @@ gDebugPuzzles::
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL1             @  3 / 1
     .2byte MAP_PUZZLE_TRICK_HOUSE_TRAPDOORS             @  2 / 2
     .2byte MAP_PUZZLE_DESERT_OASIS
-    .2byte MAP_PUZZLE_SPOT_DIFFERENCE_HALLWAY
     .2byte 0xFFFF
