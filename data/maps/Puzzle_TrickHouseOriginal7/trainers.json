@@ -34,6 +34,7 @@
 		"class": "TWINS_PM",
 		"music": "TWINS",
 		"female": true,
+		"double": true,
 		"name": "AMY & LIV",
 		"party": [
 			{

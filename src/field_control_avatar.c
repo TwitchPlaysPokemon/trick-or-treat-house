@@ -773,11 +773,11 @@ static bool8 TryStartWarpEventScript(struct MapPosition *position, u16 metatileB
         //     ScriptContext1_SetupScript(gUnknown_082A8350);
         //     return TRUE;
         // }
-        // if (MetatileBehavior_IsMossdeepGymWarp(metatileBehavior) == TRUE)
-        // {
-        //     sub_80AF87C();
-        //     return TRUE;
-        // }
+        if (MetatileBehavior_IsMossdeepGymWarp(metatileBehavior) == TRUE)
+        {
+            sub_80AF87C();
+            return TRUE;
+        }
         DoWarp();
         return TRUE;
     }

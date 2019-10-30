@@ -70,4 +70,5 @@ GATE_ORIENTATION_270 = 3
 .2byte \y
 .byte \shape
 .byte \orientation
+.2byte 0 @ padding
 .endm

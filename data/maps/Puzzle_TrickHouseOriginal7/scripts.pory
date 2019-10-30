@@ -120,12 +120,16 @@ Puzzle_TrickHouseOriginal7_Text_26E57F: @ 826E57F
 
 
 Puzzle_TrickHouseOriginal7_EventScript_26E3B7:: @ 826E3B7
-	trainerbattle_single TRAINER_03, Puzzle_TrickHouseOriginal7_Text_26E5C0, Puzzle_TrickHouseOriginal7_Text_26E604
+	trainerbattle_double TRAINER_03, Puzzle_TrickHouseOriginal7_Text_26E5C0, Puzzle_TrickHouseOriginal7_Text_26E604, Puzzle_TrickHouseOriginal7_Text_26E5C1
 	msgbox Puzzle_TrickHouseOriginal7_Text_26E61E, MSGBOX_AUTOCLOSE
 	end
 Puzzle_TrickHouseOriginal7_Text_26E5C0: @ 826E5C0
 	.string "Hi! Welcome to our cubby hole!\n"
 	.string "You need to pay rent in candy!$"
+Puzzle_TrickHouseOriginal7_Text_26E5C1: @ 826E5C0
+	.string "Hi! Welcome to our cubby hole!\n"
+	.string "You need to pay rent in candy!\p"
+	.string "If you had enough {POKEMON}, that is.$"
 Puzzle_TrickHouseOriginal7_Text_26E604: @ 826E604
 	.string "Oh no!$"
 Puzzle_TrickHouseOriginal7_Text_26E61E: @ 826E61E

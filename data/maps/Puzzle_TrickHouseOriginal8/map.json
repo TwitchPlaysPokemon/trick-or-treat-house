@@ -1,7 +1,7 @@
 {
     "allow_bike": false,
-    "allow_escape_rope": false,
-    "allow_running": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
     ],
@@ -85,8 +85,8 @@
     "show_map_name": false,
     "warp_events": [
         {
-            "dest_map": "MAP_TRICK_HOUSE_ENTRANCE",
-            "dest_warp_id": 2,
+            "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
+            "dest_warp_id": 0,
             "elevation": 3,
             "x": 1,
             "y": 21
