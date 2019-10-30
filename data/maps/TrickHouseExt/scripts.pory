@@ -155,11 +155,11 @@ script TrickHouseExt_IntroCutscene {
 	applymovement (LID_FAIRY, TrickHouseExt_IntroCutscene_Movement6_Fairy)
 	//
 	msgbox ("{WALLY}: B-But I don't! W-WAIT!!$")
+	closemessage
 	applymovement (LID_WALLY, TrickHouseExt_IntroCutscene_Movement6_Wally)
 	waitmovement (0)
 	//
-	closemessage
-	delay (10)
+	delay (20)
 	applymovement (LID_LINK, Common_Movement_WalkInPlaceRight)
 	message ("{LINK}: C'mon, maybe they have candy.$")
 	applymovement (LID_BOY, Common_Movement_WalkInPlaceLeft)

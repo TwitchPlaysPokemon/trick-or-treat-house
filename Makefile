@@ -108,7 +108,7 @@ SCRIPT := tools/poryscript/poryscript$(EXE2)
 PGEGEN := tools/pgegen/pgegen$(EXE)
 
 
-TOOLDIRS := $(filter-out tools/agbcc tools/binutils tools/porymap.app tools/poryscript,$(wildcard tools/*))
+TOOLDIRS := $(filter-out tools/agbcc tools/binutils tools/porymap.app tools/poryscript tools/pgegen,$(wildcard tools/*))
 TOOLBASE = $(TOOLDIRS:tools/%=%)
 TOOLS = $(foreach tool,$(TOOLBASE),tools/$(tool)/$(tool)$(EXE))
 
@@ -192,7 +192,7 @@ cleanmaps:
 	rm -f $(DATA_ASM_SUBDIR)/layouts/layouts.inc $(DATA_ASM_SUBDIR)/layouts/layouts_table.inc
 	rm -f $(DATA_ASM_SUBDIR)/maps/connections.inc $(DATA_ASM_SUBDIR)/maps/events.inc $(DATA_ASM_SUBDIR)/maps/groups.inc $(DATA_ASM_SUBDIR)/maps/headers.inc
 	find $(DATA_ASM_SUBDIR)/maps \( -iname 'connections.inc' -o -iname 'events.inc' -o -iname 'header.inc' -o -iname 'scripts.inc' \) -exec rm {} +
-	
+	rm -f $(ROM) $(ELF) $(MAP)
 
 tidy:
 	rm -f $(ROM) $(ELF) $(MAP)

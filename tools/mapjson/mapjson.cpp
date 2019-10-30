@@ -204,7 +204,7 @@ void generate_trainer_table_text(ostringstream &text, string tablename, Json tra
                     if (i < 3) parties << ", ";
                 }
                 parties << "\n";
-                parties << "\t.2byte 0  @ padding\n";
+                if ((partyType & 2) == 0) parties << "\t.2byte 0  @ padding\n";
             }
             
             if (partyType == 0) {

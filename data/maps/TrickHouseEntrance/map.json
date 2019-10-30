@@ -112,7 +112,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDE_TRICK_HOUSE_INTRO_CHARACTERS",
+            "flag": "0",
             "graphics_id": "EVENT_OBJ_GFX_WALLY",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -121,7 +121,7 @@
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 4,
-            "y": 7
+            "y": 4
         },
         {
             "elevation": 3,
