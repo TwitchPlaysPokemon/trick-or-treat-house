@@ -12,7 +12,7 @@ Puzzle_TrickHouseOriginal6_MapScripts:: @ 826DDA7
 Puzzle_TrickHouseOriginal6_Name:
 	.string "Rotation Gate Ruse$"
 Puzzle_TrickHouseOriginal6_Author:
-	.string "Game Freak$"
+	.string "Trick Master$"
 Puzzle_TrickHouseOriginal6_Intro:
 	.string "Hah! You've returned for another\n"
 	.string "challenge!\p"

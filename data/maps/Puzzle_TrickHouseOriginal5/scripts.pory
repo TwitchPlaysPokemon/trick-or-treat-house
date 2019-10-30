@@ -12,7 +12,7 @@ Puzzle_TrickHouseOriginal5_MapScripts::
 Puzzle_TrickHouseOriginal5_Name:
 	.string "Maneuver Mischief$"
 Puzzle_TrickHouseOriginal5_Author:
-	.string "Game Freak$"
+	.string "Trick Master$"
 Puzzle_TrickHouseOriginal5_Intro:
 	.string "Hah! Back for more then?\p"
 	.string "This next puzzle is another classic\n"

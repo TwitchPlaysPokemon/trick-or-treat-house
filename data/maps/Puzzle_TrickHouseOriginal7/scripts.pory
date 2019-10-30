@@ -13,7 +13,7 @@ Puzzle_TrickHouseOriginal7_MapScripts:: @ 826E091
 Puzzle_TrickHouseOriginal7_Name:
 	.string "Shenanigan Samba$"
 Puzzle_TrickHouseOriginal7_Author:
-	.string "Game Freak$"
+	.string "Trick Master$"
 Puzzle_TrickHouseOriginal7_Intro:
 	.string "You're good at these puzzles, aren't you?\p"
 	.string "This next puzzle is another classic\n"

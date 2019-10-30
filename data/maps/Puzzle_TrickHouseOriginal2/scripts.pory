@@ -10,7 +10,7 @@ Puzzle_TrickHouseOriginal2_MapScripts:: @ 826BB73
 Puzzle_TrickHouseOriginal2_Name:
 	.string "Trapdoor Trickery$"
 Puzzle_TrickHouseOriginal2_Author:
-	.string "Game Freak$"
+	.string "Trick Master$"
 Puzzle_TrickHouseOriginal2_Intro:
 	.string "Hah! Seems like you made it through that\n"
 	.string "last one with ease!\p"

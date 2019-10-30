@@ -8,7 +8,7 @@ Puzzle_TrickHouseOriginal1_MapScripts:: @ 826B90F
 Puzzle_TrickHouseOriginal1_Name:
 	.string "Original 1$"
 Puzzle_TrickHouseOriginal1_Author:
-	.string "Game Freak$"
+	.string "Trick Master$"
 Puzzle_TrickHouseOriginal1_Adjective:
 	.string "original$"
 Puzzle_TrickHouseOriginal1_Quip:

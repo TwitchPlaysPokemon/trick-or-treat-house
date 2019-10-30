@@ -11,7 +11,7 @@ Puzzle_TrickHouseOriginal3_MapScripts:: @ 826BED8
 Puzzle_TrickHouseOriginal3_Name:
 	.string "Door Dido Menagerie$"
 Puzzle_TrickHouseOriginal3_Author:
-	.string "Game Freak$"
+	.string "Trick Master$"
 Puzzle_TrickHouseOriginal3_Intro:
 	.string "Hah! Back for more then?\p"
 	.string "This next puzzle is another old room\n"
