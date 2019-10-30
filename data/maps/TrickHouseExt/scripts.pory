@@ -134,8 +134,9 @@ script TrickHouseExt_IntroCutscene {
 	msgbox ("{FAIRY}: Uh, hello?$")
 	//
 	closemessage
+	waitmovement (LID_FAIRY)
 	applymovement (LID_FAIRY, TrickHouseExt_IntroCutscene_Movement5_Fairy)
-	waitmovement (0)
+	waitmovement (LID_FAIRY)
 	applymovement (LID_WALLY, TrickHouseExt_IntroCutscene_Movement5_Wally)
 	message("{WALLY}: {FAIRY}! Don't go in there!!\n"
 			"What if it's haunted?!$")

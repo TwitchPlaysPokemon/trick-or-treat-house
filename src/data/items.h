@@ -237,7 +237,7 @@ const struct Item gItems[] =
 
     [ITEM_ICE_HEAL] =
     {
-        .name = _(CANDY_NAME("WARHEADS", "ICE HEAL")),
+        .name = _(CANDY_NAME("WARHEAD", "ICE HEAL")),
         .itemId = ITEM_ICE_HEAL,
         .price = CANDY_COST(250),
         .description = sIceHealDesc,
@@ -253,7 +253,7 @@ const struct Item gItems[] =
 
     [ITEM_AWAKENING] =
     {
-        .name = _(CANDY_NAME("PRETZELS", "AWAKENING")),
+        .name = _(CANDY_NAME("PRETZEL", "AWAKENING")),
         .itemId = ITEM_AWAKENING,
         .price = CANDY_COST(250),
         .description = sAwakeningDesc,
@@ -337,6 +337,7 @@ const struct Item gItems[] =
     [ITEM_SUPER_POTION] =
     {
         .name = _(CANDY_NAME("TWIX", "SUPER POTION")),
+        .plural = _(CANDY_NAME("TWIXES", "\0")),
         .itemId = ITEM_SUPER_POTION,
         .price = CANDY_COST(700),
         .holdEffectParam = 50,
@@ -353,7 +354,7 @@ const struct Item gItems[] =
 
     [ITEM_FULL_HEAL] =
     {
-        .name = _(CANDY_NAME("REESE'S CUPS", "FULL HEAL")),
+        .name = _(CANDY_NAME("REESE'S CUP", "FULL HEAL")),
         .itemId = ITEM_FULL_HEAL,
         .price = CANDY_COST(600),
         .description = sFullHealDesc,
@@ -527,7 +528,7 @@ const struct Item gItems[] =
 
     [ITEM_ETHER] =
     {
-        .name = _(CANDY_NAME("MALTESERS", "ETHER")),
+        .name = _(CANDY_NAME("MALTESER", "ETHER")),
         .itemId = ITEM_ETHER,
         .price = CANDY_COST(1200),
         .holdEffectParam = 10,
@@ -1442,6 +1443,9 @@ const struct Item gItems[] =
     [ITEM_TINY_MUSHROOM] =
     {
         .name = _(CANDY_NAME("M&M'S MINIS", "TINYMUSHROOM")),
+#if USE_CANDY_NAMES
+        .plural = _(""),
+#endif
         .itemId = ITEM_TINY_MUSHROOM,
         .price = CANDY_COST(500),
         .description = sTinyMushroomDesc,
@@ -1456,6 +1460,9 @@ const struct Item gItems[] =
     [ITEM_BIG_MUSHROOM] =
     {
         .name = _(CANDY_NAME("M&M'S JUMBO", "BIG MUSHROOM")),
+#if USE_CANDY_NAMES
+        .plural = _(""),
+#endif
         .itemId = ITEM_BIG_MUSHROOM,
         .price = CANDY_COST(5000),
         .description = sBigMushroomDesc,
@@ -1510,7 +1517,10 @@ const struct Item gItems[] =
 
     [ITEM_STARDUST] =
     {
-        .name = _(CANDY_NAME("PIXIE STIX","STARDUST")),
+        .name = _(CANDY_NAME("PIXIE STICK","STARDUST")),
+#if USE_CANDY_NAMES
+        .plural = _("PIXIE STIX"),
+#endif
         .itemId = ITEM_STARDUST,
         .price = CANDY_COST(2000),
         .description = sStardustDesc,

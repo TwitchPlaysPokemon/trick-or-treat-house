@@ -33,8 +33,8 @@ Puzzle_TrickHouseOriginal8_Text_26E8CD: @ 826E8CD
 Puzzle_TrickHouseOriginal8_Text_26E8F6: @ 826E8F6
 	.string "That must mean you're tough, too…$"
 Puzzle_TrickHouseOriginal8_Text_26E918: @ 826E918
-	.string "You've beaten the POKéMON LEAGUE\n"
-	.string "CHAMPION? That's too much!$"
+	.string "You're too much! You could beat the\n"
+	.string "POKéMON LEAGUE CHAMPION at this rate!$"
 
 
 Puzzle_TrickHouseOriginal8_EventScript_26E836:: @ 826E836
