@@ -5,7 +5,7 @@ PuzzleCommon_Text_GameIntro::
 	.string "They call me… The {TRICK_MASTER}!{PAUSE 40}\n"
 	.string "Wahahaha!\p"
 	.string "You! You all here!\p"
-	.string "You heard about my wonderful event the\n"
+	.string "You heard about my wonderful event, the\n"
 	.string "TRICK-OR-TREAT HOUSE, haven't you?\p"
 	.string "That's why you're here! To CHALLENGE it!\n"
 	.string "Yes! Yes, it is!\p"

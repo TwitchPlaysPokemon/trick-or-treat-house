@@ -121,6 +121,11 @@ void GetTrainerIDMod(struct ScriptContext *ctx)
     gSpecialVar_Result = trainerId % gSpecialVar_0x8000;
 }
 
+void GetNumPuzzlesCompleted(struct ScriptContext *ctx)
+{
+	gSpecialVar_Result = GetGameStat(GAME_STAT_NUM_PUZZLES_COMPLETED);
+}
+
 void SetupPuzzleWarp(struct ScriptContext *ctx)
 {
 	u16 currPuzzle = GetCurrentPuzzleMapId();

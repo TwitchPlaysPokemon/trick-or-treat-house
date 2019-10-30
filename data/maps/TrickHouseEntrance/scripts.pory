@@ -55,6 +55,7 @@ script(local) TrickHouseEntrance_OnWarp_Setup {
 		case 3: setobjectxyperm (1, 6, 3)
 		case 4: setobjectxyperm (1, 4, 4)
 		case 5: setobjectxyperm (1, 3, 1)
+		default: setobjectxyperm (1, 8, 1)
 	}
 	addobject (1)
 	setobjectxy(5, 4, 7)   turnobject(5, 2)
@@ -221,7 +222,7 @@ script TrickHouseEntrance_EventScript_FindTrickMaster {
 		case 4: msgbox ("Hah? Girr…\p"
 				"How did you know I concealed myself\n"
 				"beneath this cushion? You're sharp!$")
-		case 5: msgbox ("Hah? Girr…\p"
+		default: msgbox ("Hah? Girr…\p"
 				"How did you know I concealed myself\n"
 				"behind this window? You're sharp!$")
 	}
@@ -243,4 +244,84 @@ raw `
 script TrickHouseEntrance_EventScript_ScrollDoor {
 	msgbox ("The scroll reads\n"
 			"“The TRICK MASTER is the GREATEST!”", MSGBOX_SIGN)
+}
+
+script TrickHouseEntrance_EventScript_Link {
+	msgbox ("{LINK}: Man, I don't see any candy\n"
+			"around here.\p"
+			"We could be in SLATEPORT right now\n"
+			"hauling in the big dough!$", MSGBOX_NPC)
+}
+script TrickHouseEntrance_EventScript_Joey {
+	lock
+	msgbox ("{YOUNGSTER}: {LINK}, chill!\p"
+			"We've got pleanty of time for more\n"
+			"trick-or-treating!$")
+	playse (SE_SELECT)
+	faceplayer
+	msgbox ("And people call ME the annoying one.\p"
+			"C'mon, I haven't talked about my\n"
+			"RATTATA in ten whole minutes!$")
+	closemessage
+	applymovement (THIS_EVENT, Common_Movement_FaceRight)
+	waitmovement (0)
+	release
+}
+script TrickHouseEntrance_EventScript_Fairy {
+	msgbox ("{FAIRY}: This place has been swept\n"
+			"clean recently, so it's not haunted.\p"
+			"Maybe someone's around…$", MSGBOX_NPC)
+}
+script TrickHouseEntrance_EventScript_Rival {
+	msgbox ("{RIVAL}: Maybe we can find who's\n"
+			"watching us if we look around…\p"
+			"Don't worry: if anyone tries to steal\n"
+			"you away, you have us as backup.$", MSGBOX_NPC)
+}
+script TrickHouseEntrance_EventScript_Wally {
+	lock
+	faceplayer
+	callnative (GetNumPuzzlesCompleted)
+	if (var(VAR_INTRO_COUNTER) < 5) {
+		msgbox ("{WALLY}: Well… the door didn't slam shut\n"
+				"and lock behind us…\p"
+				"So, we're not in danger… yet…\p"
+				"I'm gonna stay here next to the door,\n"
+				"just in case anyway…$")
+	} 
+	// The number completed should always be less than the current puzzle number
+	// during the first run
+	elif (var(VAR_RESULT) > VAR_CURRENT_PUZZLE) {
+		buffernumberstring(0, VAR_RESULT)
+		msgbox ("{WALLY}: How many puzzles? {STR_VAR_1}?!\p"
+				"But there aren't that many puzzles!\n"
+				"The TRICK MASTER told me!\p"
+				"Do you really like the puzzles so much\n"
+				"that you're doing them all again?$")
+	}
+	elif (var(VAR_RESULT) > 9) {
+		buffernumberstring(0, VAR_RESULT)
+		msgbox ("{WALLY}: How many puzzles? {STR_VAR_1}?!\p"
+				"No, I'm good here. I'll never catch up\n"
+				"to you guys at this point.$")
+	}
+	elif (var(VAR_RESULT) > 3) {
+		msgbox ("{WALLY}: Really? The guy actually has a\n"
+				"bunch of puzzles for you guys to do…?\p"
+				"N-No, I'm alright. I'll be here if you\n"
+				"guys end up getting lost somewhere…$")
+	}
+	elif (flag(FLAG_SYS_POKEMON_GET) == TRUE) {
+		msgbox ("{WALLY}: Oh, you've got RENTAL {POKEMON}?\n"
+				"Man, this event is sophisticated.\p"
+				"What? Me join in?\n"
+				"N-No, I think I'm alright.$")
+	}
+	else {
+		msgbox ("{WALLY}: I-I'll just be here…\n"
+				"A-Alone…\p"
+				"My auntie wouldn't like me going into\n"
+				"strange men's puzzle dungeons…$")
+	}
+	release
 }

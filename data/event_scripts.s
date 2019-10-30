@@ -17,6 +17,7 @@
 #include "constants/species.h"
 #include "constants/trainers.h"
 #include "constants/vars.h"
+#include "constants/game_stat.h"
 #include "constants/weather.h"
 #include "constants/trainer_hill.h"
 #include "constants/battle.h"
