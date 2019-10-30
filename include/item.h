@@ -35,6 +35,7 @@ struct Item
     const u8 *description;
     u8 importance:2;
     u8 keepItem:1;
+    u8 isCandy:1;
     u8 unk19;
     u8 pocket;
     u8 type;

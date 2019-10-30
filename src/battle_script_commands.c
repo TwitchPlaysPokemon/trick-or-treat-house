@@ -3249,14 +3249,15 @@ static void atk23_getexp(void)
     switch (gBattleScripting.atk23_state)
     {
     case 0: // check if should receive exp at all
-        if (GetBattlerSide(gBattlerFainted) != B_SIDE_OPPONENT || (gBattleTypeFlags &
-             (BATTLE_TYPE_LINK
-              | BATTLE_TYPE_x2000000
-              | BATTLE_TYPE_TRAINER_HILL
-              | BATTLE_TYPE_FRONTIER
-              | BATTLE_TYPE_SAFARI
-              | BATTLE_TYPE_BATTLE_TOWER
-              | BATTLE_TYPE_EREADER_TRAINER)))
+        if (TRUE) // Never recieve EXP
+        // if (GetBattlerSide(gBattlerFainted) != B_SIDE_OPPONENT || (gBattleTypeFlags &
+        //      (BATTLE_TYPE_LINK
+        //       | BATTLE_TYPE_x2000000
+        //       | BATTLE_TYPE_TRAINER_HILL
+        //       | BATTLE_TYPE_FRONTIER
+        //       | BATTLE_TYPE_SAFARI
+        //       | BATTLE_TYPE_BATTLE_TOWER
+        //       | BATTLE_TYPE_EREADER_TRAINER)))
         {
             gBattleScripting.atk23_state = 6; // goto last case
         }

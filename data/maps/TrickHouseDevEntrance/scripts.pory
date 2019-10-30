@@ -1,7 +1,8 @@
-raw `
-TrickHouseDevEntrance_MapScripts::
-	.byte 0
-`
+mapscripts TrickHouseDevEntrance_MapScripts {
+	MAP_SCRIPT_ON_LOAD {
+		setvar (VAR_INTRO_COUNTER, 5)
+	}
+}
 
 script TrickHouseDevEntrance_EventScript_Red {
 	msgbox ("This is the dev room. You can change\n"
