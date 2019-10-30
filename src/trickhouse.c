@@ -134,6 +134,7 @@ void SetupPuzzleWarp(struct ScriptContext *ctx)
 }
 
 extern const u8 PuzzleCommon_Text_FirstPuzzleIntro[];
+extern const u8 PuzzleCommon_Text_FirstPuzzleIntroRound2[];
 void LoadPuzzleIntro(struct ScriptContext *ctx)
 {
 	u16 currPuzzle = GetCurrentPuzzleMapId();
@@ -158,9 +159,15 @@ void LoadPuzzleIntro(struct ScriptContext *ctx)
 	}
 	// Check if this is the first puzzle, load as a custom intro
 	if (VarGet(VAR_CURRENT_PUZZLE) == 0) { //first puzzle
-		gSpecialVar_Result += 2;
-		ctx->data[0] = (u32)PuzzleCommon_Text_FirstPuzzleIntro;
-		return;
+		if (GetGameStat(GAME_STAT_NUM_PUZZLES_COMPLETED) > VarGet(VAR_CURRENT_PUZZLE)) {
+			gSpecialVar_Result += 2;
+			ctx->data[0] = (u32)PuzzleCommon_Text_FirstPuzzleIntroRound2;
+			return;
+		} else {
+			gSpecialVar_Result += 2;
+			ctx->data[0] = (u32)PuzzleCommon_Text_FirstPuzzleIntro;
+			return;
+		}
 	}
 }
 

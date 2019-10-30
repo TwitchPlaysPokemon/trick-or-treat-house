@@ -61,6 +61,21 @@ PuzzleCommon_Text_FirstPuzzleAfterword::
 	.string "I await you in the front corridor\n"
 	.string "for your next challenge!$"
 
+PuzzleCommon_Text_FirstPuzzleIntroRound2::
+	.string "Oh, you're back! Wonderful!\p"
+	.string "Unfortunately, I've run out of puzzles\n"
+	.string "for you to do! Tragic, I know!\p"
+	.string "But I can see you're so awestruck by\n"
+	.string "my collection of puzzles that you wish\l"
+	.string "to do them again!\p"
+	.string "Yes! Excellent! Welcome back to the\n"
+	.string "first puzzle!\p"
+	.string "A shadow of one of my old puzzles,\n"
+	.string "but useful for weeding out those\l"
+	.string "unworthy to behold the greatness of\l"
+	.string "the puzzles you've experianced tonight!\p"
+	.string "See you on the other side!$"
+
 PuzzleCommon_Text_PuzzleIntro_CommonBye::
 	.string "See you on the other side!$"
 PuzzleCommon_Text_PuzzleIntro_GivenItems:
