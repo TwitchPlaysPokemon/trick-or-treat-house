@@ -306,6 +306,7 @@ TrickHouseCorridor_TriggerScript_RunIntro2:
 	call_if_ne TrickHouseCorridor_TriggerScript_RunIntro_CompanionLeaves
 	@
 	setvar VAR_PUZZLE_STATE, 1
+	setescapewarp MAP_TRICK_HOUSE_CORRIDOR, -1, 22, 3
 	call TrickHouseCorridor_OpenPuzzleDoor
 	releaseall
 	end

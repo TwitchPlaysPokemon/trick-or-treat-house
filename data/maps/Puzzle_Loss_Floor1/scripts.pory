@@ -144,6 +144,7 @@ script Puzzle_Loss_Floor1_Mart {
 	release
 }
 raw `
+.align 2
 Puzzle_Loss_Floor1_Pokemart:
 	.2byte ITEM_POTION
 	.2byte ITEM_ANTIDOTE
@@ -161,6 +162,7 @@ Puzzle_Loss_Floor1_Pokemart:
 	.2byte ITEM_ELIXIR
 	.2byte ITEM_MAX_ELIXIR
 	.2byte ITEM_LAVA_COOKIE
+	.2byte ITEM_NONE
 	release
 	end
 `

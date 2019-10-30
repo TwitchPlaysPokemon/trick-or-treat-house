@@ -5,7 +5,7 @@
 		"name": "TATE&LIZA",
 		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY",
 		"items": ["ITEM_HYPER_POTION"],
-		"double": true,
+		"doubleBattle": true,
 		"party": [
 			{
 				"species": "SPECIES_LUNATONE",

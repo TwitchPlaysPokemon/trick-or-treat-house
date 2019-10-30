@@ -46,7 +46,7 @@
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 8,
-            "y": 2
+            "y": 3
         },
         {
             "elevation": 3,
@@ -60,6 +60,19 @@
             "trainer_type": "0",
             "x": 8,
             "y": 5
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_HM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "TrickHouseDevEntrance_EventScript_SpecialBall",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 8,
+            "y": 2
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_110",

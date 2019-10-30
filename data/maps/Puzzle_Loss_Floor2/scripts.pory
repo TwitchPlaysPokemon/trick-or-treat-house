@@ -54,7 +54,7 @@ script Puzzle_Loss_Floor2_EventScript_Man {
 	msgbox ("Excuse me? Oh, yes, you were looking for\n"
 			"someone?\p"
 			"Just down this hallway,\n"
-			"second door on the left.", MSGBOX_NPC)
+			"second door on the left.$", MSGBOX_NPC)
 	setvar (VAR_PUZZLE_ADVANCEMENT, 2)
 	setmetatile (14, 3, METATILE_UnlockedDoor, TRUE)
 }
@@ -106,7 +106,8 @@ script Puzzle_Loss_Floor2_EventScript_WalkedInOn {
 	msgbox ("AAAIIIIIIIIEEEEEEEE!!!!!!!$")
 	trainerbattle_no_intro_double (TRAINER_01, "WHY ARE YOU IN HERE?!$")
 	msgbox ("GET OUT! TELL NO ONE!!$")
-	warptodynamic
+	// warptodynamic
+	warp (MAP_PUZZLE_LOSS_FLOOR2, 4, -1, -1)
 	waitstate
 	release
 }

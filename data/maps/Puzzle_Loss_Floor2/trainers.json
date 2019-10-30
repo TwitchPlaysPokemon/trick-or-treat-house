@@ -3,7 +3,7 @@
 		"class": "SR_AND_JR",
 		"name": "KATE & LIZ",
 		"music": "TWINS",
-		"double": true,
+		"doubleBattle": true,
 		"party": [
 			{
 				"species": "SPECIES_SPINDA",
