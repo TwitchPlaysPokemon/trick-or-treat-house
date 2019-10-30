@@ -32,7 +32,7 @@
     "id": "MAP_PUZZLE_DESERT_OASIS",
     "layout": "LAYOUT_PUZZLE_DESERT_OASIS",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_DAN02",
+    "music": "MUS_KAZANBAI",
     "name": "Puzzle_Desert_Oasis",
     "object_events": [
         {

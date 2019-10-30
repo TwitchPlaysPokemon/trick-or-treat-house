@@ -11,7 +11,7 @@
     "id": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL4",
     "layout": "LAYOUT_PUZZLE_TRICK_HOUSE_PUZZLE4",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_KARAKURI",
+    "music": "MUS_RAINBOW",
     "name": "Puzzle_TrickHouseOriginal4",
     "object_events": [
         {

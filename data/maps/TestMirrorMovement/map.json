@@ -11,7 +11,7 @@
     "id": "MAP_TEST_MIRROR_MOVEMENT",
     "layout": "LAYOUT_TEST_MIRROR_MOVEMENT",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_KARAKURI",
     "name": "TestMirrorMovement",
     "object_events": [
         {

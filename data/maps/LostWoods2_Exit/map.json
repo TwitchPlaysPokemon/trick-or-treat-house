@@ -11,7 +11,7 @@
     "id": "MAP_LOST_WOODS2_EXIT",
     "layout": "LAYOUT_PUZZLE_LOST_WOODS_EXIT",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_DAN02",
+    "music": "MUS_DUMMY",
     "name": "LostWoods2_Exit",
     "object_events": [
     ],

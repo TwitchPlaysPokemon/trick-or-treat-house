@@ -11,7 +11,7 @@
     "id": "MAP_TEST_LAYOUT_SWITCHING2",
     "layout": "LAYOUT_TEST_LAYOUT_SWITCHING2",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_KARAKURI",
     "name": "TestLayoutSwitching2",
     "object_events": [
     ],

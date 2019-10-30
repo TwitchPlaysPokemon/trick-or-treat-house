@@ -47,7 +47,7 @@
     "id": "MAP_PUZZLE_TRICK_HOUSE_TRAPDOORS",
     "layout": "LAYOUT_PUZZLE_TRICK_HOUSE_TRAPDOORS",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_DUMMY",
     "name": "Puzzle_TrickHouseTrapdoors",
     "object_events": [
         {

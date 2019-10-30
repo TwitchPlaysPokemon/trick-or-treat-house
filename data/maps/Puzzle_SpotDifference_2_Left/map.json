@@ -43,7 +43,7 @@
     "id": "MAP_PUZZLE_SPOT_DIFFERENCE_2_LEFT",
     "layout": "LAYOUT_PUZZLE_SPOT_DIFFERENCE_2_LEFT",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_MACHUPI",
     "name": "Puzzle_SpotDifference_2_Left",
     "object_events": [
         {

@@ -11,7 +11,7 @@
     "id": "MAP_INDOOR_MAP",
     "layout": "LAYOUT_INDOOR_MAP",
     "map_type": "MAP_TYPE_UNUSED_1",
-    "music": "MUS_DAN02",
+    "music": "MUS_KARAKURI",
     "name": "IndoorMap",
     "object_events": [
     ],

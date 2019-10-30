@@ -49,7 +49,7 @@
             "y": 10
         }
     ],
-    "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
+    "region_map_section": "MAPSEC_PETALBURG_WOODS",
     "requires_flash": false,
     "show_map_name": true,
     "trainers": "Puzzle_LostWoods1_Entrance_TrainerTable",

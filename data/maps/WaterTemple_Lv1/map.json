@@ -11,7 +11,7 @@
     "id": "MAP_WATER_TEMPLE_LV1",
     "layout": "LAYOUT_WATER_TEMPLE_LV1",
     "map_type": "MAP_TYPE_UNDERGROUND",
-    "music": "MUS_DAN02",
+    "music": "MUS_DUMMY",
     "name": "WaterTemple_Lv1",
     "object_events": [
     ],

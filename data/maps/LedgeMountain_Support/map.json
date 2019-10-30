@@ -22,7 +22,7 @@
     "id": "MAP_LEDGE_MOUNTAIN_SUPPORT",
     "layout": "LAYOUT_LEDGE_MOUNTAIN_SUPPORT",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_DAN02",
+    "music": "MUS_DUMMY",
     "name": "LedgeMountain_Support",
     "object_events": [
     ],

@@ -56,7 +56,7 @@
     "id": "MAP_EMPTY_PUZZLE",
     "layout": "LAYOUT_EMPTY_PUZZLE",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_KARAKURI",
     "name": "EmptyPuzzle",
     "object_events": [
         {

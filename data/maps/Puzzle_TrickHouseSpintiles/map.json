@@ -11,7 +11,7 @@
     "id": "MAP_PUZZLE_TRICK_HOUSE_SPINTILES",
     "layout": "LAYOUT_PUZZLE_TRICK_HOUSE_SPINTILES",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_DUMMY",
     "name": "Puzzle_TrickHouseSpintiles",
     "object_events": [
     ],

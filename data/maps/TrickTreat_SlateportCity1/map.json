@@ -17,7 +17,7 @@
     "id": "MAP_TRICK_TREAT_SLATEPORT_CITY1",
     "layout": "LAYOUT_TRICKTREAT_SLATEPORT_CITY1",
     "map_type": "MAP_TYPE_TOWN",
-    "music": "MUS_DAN02",
+    "music": "MUS_FINECITY",
     "name": "TrickTreat_SlateportCity1",
     "object_events": [
         {

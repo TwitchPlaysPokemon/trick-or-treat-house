@@ -11,7 +11,7 @@
     "id": "MAP_PUZZLE_LOST_WOODS3_ENTRANCE",
     "layout": "LAYOUT_PUZZLE_LOST_WOODS_ENTRANCE",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_DAN02",
+    "music": "MUS_DUMMY",
     "name": "Puzzle_LostWoods3_Entrance",
     "object_events": [
     ],

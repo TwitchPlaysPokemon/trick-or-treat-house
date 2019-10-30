@@ -19,7 +19,7 @@
     "id": "MAP_FAKE_SECRET_BASE_CAVE",
     "layout": "LAYOUT_FAKE_SECRET_BASE_CAVE",
     "map_type": "MAP_TYPE_SECRET_BASE",
-    "music": "MUS_DAN02",
+    "music": "MUS_MACHI_S3",
     "name": "FakeSecretBaseCave",
     "object_events": [
     ],
