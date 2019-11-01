@@ -9,8 +9,8 @@
             "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x00",
             "item": "ITEM_REVIVE",
             "type": "hidden_item",
-            "x": 9,
-            "y": 21
+            "x": 11,
+            "y": 20
         },
         {
             "elevation": 3,

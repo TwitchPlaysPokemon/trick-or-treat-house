@@ -29,7 +29,7 @@
             "y": 41
         },
         {
-            "elevation": 3,
+            "elevation": 0,
             "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x03",
             "item": "ITEM_FULL_HEAL",
             "type": "hidden_item",
@@ -37,7 +37,7 @@
             "y": 14
         },
         {
-            "elevation": 3,
+            "elevation": 0,
             "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x04",
             "item": "ITEM_ICE_HEAL",
             "type": "hidden_item",
@@ -53,7 +53,7 @@
             "y": 16
         },
         {
-            "elevation": 3,
+            "elevation": 0,
             "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x06",
             "item": "ITEM_SUPER_POTION",
             "type": "hidden_item",
@@ -285,7 +285,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_PUZZLE_41",
+            "flag": "FLAG_PUZZLE_45",
             "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,

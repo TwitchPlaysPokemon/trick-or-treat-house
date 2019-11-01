@@ -116,8 +116,18 @@ script TrickTreat_PetalburgCity_WallySign {
 }
 
 script TrickTreat_PetalburgCity_EventScript_Lass {
-	msgbox ("I got a bunch of candy from the CENTER!\n"
-			"How much did you get?$", MSGBOX_NPC)
+	lock
+	faceplayer
+	if (var(VAR_METATILE_Y) == 22 && var(VAR_METATILE_X) >= 17 && var(VAR_METATILE_X) <= 21) {
+		msgbox ("Hm? You look flushed.\n"
+				"Is something wrong?\p"
+				"Oh, you like my Halloween costume?\n"
+				"Isn't it nice? Custom made!$")
+	} else {
+		msgbox ("I got a bunch of candy from the CENTER!\n"
+				"How much did you get?$")
+	}
+	release
 }
 
 script TrickTreat_PetalburgCity_EventScript_Boy {

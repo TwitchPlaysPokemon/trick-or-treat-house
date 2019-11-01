@@ -78,11 +78,15 @@ script Puzzle_WaterTemple_UpdateWaterLevel {
 	if (var(VAR_WATER_LEVEL) < 1) {
 		setflag (FLAG_PUZZLE_43)
 		setflag (FLAG_PUZZLE_44)
+		setflag (FLAG_PUZZLE_45)
 		setflag (FLAG_PUZZLE_4F)
 		setvar (VAR_OBJ_GFX_ID_F, EVENT_OBJ_GFX_TUBER_M_SWIMMING)
 		setvar (VAR_OBJ_GFX_ID_D, EVENT_OBJ_GFX_FROGGER)
 	} else {
 		# Else show the items
+		if (flag(FLAG_PUZZLE_ITEM_1) == FALSE) {
+			clearflag (FLAG_PUZZLE_45)
+		}
 		if (flag(FLAG_PUZZLE_ITEM_3) == FALSE) {
 			clearflag (FLAG_PUZZLE_43)
 		}

@@ -13,7 +13,7 @@
             "y": 47
         },
         {
-            "elevation": 3,
+            "elevation": 4,
             "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x01",
             "item": "ITEM_ANTIDOTE",
             "type": "hidden_item",
@@ -45,7 +45,7 @@
             "y": 39
         },
         {
-            "elevation": 3,
+            "elevation": 1,
             "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x05",
             "item": "ITEM_REVIVAL_HERB",
             "type": "hidden_item",
@@ -69,7 +69,7 @@
             "y": 66
         },
         {
-            "elevation": 3,
+            "elevation": 4,
             "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x08",
             "item": "ITEM_STAR_PIECE",
             "type": "hidden_item",
@@ -77,7 +77,7 @@
             "y": 78
         },
         {
-            "elevation": 3,
+            "elevation": 6,
             "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x09",
             "item": "ITEM_REVIVE",
             "type": "hidden_item",
@@ -93,7 +93,7 @@
             "y": 89
         },
         {
-            "elevation": 3,
+            "elevation": 4,
             "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x0B",
             "item": "ITEM_BURN_HEAL",
             "type": "hidden_item",

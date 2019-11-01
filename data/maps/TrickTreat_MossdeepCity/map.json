@@ -69,7 +69,7 @@
             "y": 7
         },
         {
-            "elevation": 3,
+            "elevation": 7,
             "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x02",
             "item": "ITEM_MAX_POTION",
             "type": "hidden_item",
