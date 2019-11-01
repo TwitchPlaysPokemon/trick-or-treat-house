@@ -515,7 +515,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Expert {
 	msgbox ("Ha! Let's test your mettle!$")
 	trainerbattle_no_intro (TRAINER_03, 
 			"Splendid! Splendid!$")
-	msgbox ("Your so full of potential!\n"
+	msgbox ("You're so full of potential!\n"
 			"Here's a treat!$")
 	giveitem_std (ITEM_ENERGY_ROOT, 3)
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
@@ -628,7 +628,7 @@ script TrickTreat_MossdeepCity_ExitGirl {
 		applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_BackOffDown1)
 		waitmovement (0)
 	}
-	applymovement (THIS_EVENT, Common_Movement_WalkLeft2)
+	applymovement (THIS_EVENT, Common_Movement_WalkRight2)
 	waitmovement (0)
 	applymovement (THIS_EVENT, Common_Movement_WalkInPlaceUp)
 	msgbox ("She wrote down the secret code\n"

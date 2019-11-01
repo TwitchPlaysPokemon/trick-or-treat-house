@@ -111,7 +111,7 @@ void ClearPuzzleEventData(struct ScriptContext *ctx)
 	memset(gSaveBlock1Ptr->flags + 0x04, 0, 0x0A);
 	memset(gSaveBlock1Ptr->vars  + 0x20, 0, 0x40);
 	memset(gSaveBlock1Ptr->flags + (FLAG_TRAINER_FLAG_START >> 3), 0, TRAINERS_PERMAP_END >> 3);
-	memset(gSaveBlock1Ptr->flags + (FLAG_HIDDEN_ITEMS_START >> 3), 0, 0x20 >> 8);
+	memset(gSaveBlock1Ptr->flags + (FLAG_HIDDEN_ITEMS_START >> 3), 0, 0x20 >> 3);
 }
 
 void GetTrainerIDMod(struct ScriptContext *ctx)
