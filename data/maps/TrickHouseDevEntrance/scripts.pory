@@ -64,7 +64,16 @@ script TrickHouseDevEntrance_EventScript_SoundTest {
 	callnative (DoSoundTest)
 	playse (SE_SELECT)
 	message ("Sound Test: {START_BUTTON} Exit$")
-	waitstate # script pauses here until manually reenabled
+	waitstate //script pauses here until manually reenabled
 	closemessage
 	releaseall
+}
+
+script PuzzleDebug_EventScript_PlayCredits {
+	lock
+	msgbox ("Play credits?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		callnative (PlayCredits)
+	}
+	release
 }

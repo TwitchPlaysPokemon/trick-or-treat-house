@@ -6,6 +6,7 @@
 #include "event_data.h"
 #include "script.h"
 #include "task.h"
+#include "credits.h"
 #include "bg.h"
 #include "alloc.h"
 #include "window.h"
@@ -701,3 +702,8 @@ void DoSoundTest(struct ScriptContext *ctx)
 #undef tSelected
 #undef tMax
 
+
+void PlayCredits(struct ScriptContext *ctx)
+{
+	SetMainCallback2(CB2_StartCreditsSequence);
+}

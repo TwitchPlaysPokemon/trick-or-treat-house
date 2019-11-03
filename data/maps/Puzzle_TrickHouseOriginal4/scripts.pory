@@ -19,7 +19,7 @@ Puzzle_TrickHouseOriginal4_Intro:
 	.string "Good luck! Wahahahaha!$"
 Puzzle_TrickHouseOriginal4_Quip:
 	.string "Wew! That was quite the workout!\p"
-	.string "No onder people usually get their\n"
+	.string "No wonder people usually get their\n"
 	.string "{POKEMON} to do it!$"
 Puzzle_TrickHouseOriginal4_PrereqItems:
 	.2byte ITEM_STRENGTH_ITEM

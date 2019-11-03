@@ -546,7 +546,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Mother {
 	call (TrickTreat_MossdeepCity_SetDoorGlowOff)
 	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
 	msgbox ("Oh, you!\p"
-			"My boys stole {POKEMON} from you,\l"
+			"My boys stole {POKEMON} from you,\n"
 			"didn't they?\p"
 			"They're grounded until Febuary.\n"
 			"Take all the candy you want.$")

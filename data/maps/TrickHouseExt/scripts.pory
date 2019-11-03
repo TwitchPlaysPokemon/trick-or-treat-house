@@ -14,15 +14,26 @@ mapscripts TrickHouseExt_MapScripts {
 		callnative (IsCurrentPuzzleCyclingRoad)
 		if (var(VAR_RESULT) == TRUE) {
 			// Make the level look like it's being used for the puzzle
-			setmetatile (47, 41, 0x02A, FALSE)
+			setmetatile (47, 41, 0x02A, FALSE) //teleporters
 			setmetatile (51, 33, 0x02A, FALSE)
 			setmetatile (46, 48, 0x02A, FALSE)
-			setmetatile (50, 31, 0x3FE, TRUE)
+			setmetatile (58, 41, 0x02A, FALSE)
+			setmetatile (50, 31, 0x3FE, TRUE) //fence 1
 			setmetatile (50, 32, 0x288, TRUE)
 			setmetatile (50, 33, 0x288, TRUE)
 			setmetatile (50, 34, 0x288, TRUE)
 			setmetatile (50, 35, 0x3FF, TRUE)
+			setmetatile (52, 40, 0x2B4, TRUE) //planter
+			setmetatile (53, 40, 0x2B4, TRUE)
+			setmetatile (52, 41, 0x2BC, TRUE)
+			setmetatile (53, 41, 0x2BC, TRUE)
+			setmetatile (61, 35, 0x291, TRUE) //fence 2
+			setmetatile (62, 35, 0x291, TRUE) 
+			setmetatile (63, 35, 0x291, TRUE) 
+			setmetatile (64, 35, 0x291, TRUE) 
+			
 			setobjectxyperm (11, 49, 48)
+			setobjectxyperm (13, 54, 40)
 		}
 	}
 }
