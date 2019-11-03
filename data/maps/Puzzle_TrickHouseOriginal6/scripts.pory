@@ -25,6 +25,7 @@ Puzzle_TrickHouseOriginal6_Quip:
 	.string "I kept getting turned around in there…\p"
 	.string "Get it?! Turned around?! Ha!\p"
 	.string "Day job?\nBut I don't have a day job to quit…$"
+.align 2
 Puzzle_TrickHouseOriginal6_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_SCHOOL_KID_M
 	.2byte 0

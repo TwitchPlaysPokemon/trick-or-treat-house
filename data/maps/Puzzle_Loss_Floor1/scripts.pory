@@ -14,6 +14,7 @@ Puzzle_Loss_Adjective:
 	.string "memable$"
 Puzzle_Loss_Quip:
 	.string "Is this loss?$"
+.align 2
 Puzzle_Loss_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER
 	.2byte 0

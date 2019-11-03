@@ -20,6 +20,7 @@ Puzzle_TwinMemories_Adjective:
 Puzzle_TwinMemories_Quip:
 	.string "This puzzle seems familiar. I can't\n"
 	.string "put my finger on how, though…$"
+@ .align 2
 @ Puzzle_TwinMemories_Variables:
 @ 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER
 @ 	.2byte 0

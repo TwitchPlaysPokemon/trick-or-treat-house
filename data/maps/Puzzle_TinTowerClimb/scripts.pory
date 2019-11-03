@@ -27,6 +27,7 @@ Puzzle_TinTowerClimb_Quip:
 	.string "It took like a month to build!\p"
 	.string "It's actually really hard to move\n"
 	.string "around in…$"
+.align 2
 Puzzle_TinTowerClimb_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HOOH
 	.2byte 0

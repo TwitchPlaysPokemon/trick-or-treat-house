@@ -8,6 +8,7 @@ EmptyPuzzle_Name:
 	.string "Empty Puzzle$"
 EmptyPuzzle_Author:
 	.string "necessity$"
+.align 2
 EmptyPuzzle_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HOOH
 	.2byte 0

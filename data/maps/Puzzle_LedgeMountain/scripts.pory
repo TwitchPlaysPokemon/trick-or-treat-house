@@ -15,6 +15,7 @@ Puzzle_LedgeMountain_Adjective:
 Puzzle_LedgeMountain_Quip:
 	.string "I love a good climb in the morning!\n"
 	.string "How about you?$"
+.align 2
 Puzzle_LedgeMountain_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER
 	.2byte 0
