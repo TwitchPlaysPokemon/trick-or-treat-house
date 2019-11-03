@@ -4,6 +4,7 @@ Puzzle_TrickHouseOriginal7_MapScripts:: @ 826E091
 	puzzle_custom_intro Puzzle_TrickHouseOriginal7_Intro
 	puzzle_quip Puzzle_TrickHouseOriginal7_Quip
 	puzzle_metavars Puzzle_TrickHouseOriginal7_Variables
+	puzzle_candylist Puzzle_TrickHouseOriginal7_CandyList
 	@ map_script MAP_SCRIPT_ON_RESUME, Puzzle_TrickHouseOriginal7_OnResume
 	@ map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_TrickHouseOriginal7_OnTransition
 	@ map_script MAP_SCRIPT_ON_LOAD, Puzzle_TrickHouseOriginal7_OnLoad
@@ -25,6 +26,17 @@ Puzzle_TrickHouseOriginal7_Quip:
 .align 2
 Puzzle_TrickHouseOriginal7_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_LITTLE_BOY_3
+	.2byte 0
+Puzzle_TrickHouseOriginal7_CandyList:
+	.2byte FLAG_PUZZLE_ITEM_0
+	.2byte FLAG_PUZZLE_ITEM_1
+	.2byte FLAG_PUZZLE_ITEM_2
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x03
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x04
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x05
 	.2byte 0
 
 @ -----------------------------------------------------
@@ -178,9 +190,3 @@ Puzzle_TrickHouseOriginal7_Text_26E7C4: @ 826E7C4
 	.string "I was hoping to switch places with you\n"
 	.string "when I beat you, but…$"
 `
-
-script Puzzle_TrickHouseOriginal7_UnobtainableItemBall {
-	msgbox ("I don't know how you got here, but\n"
-			"good job.$")
-	goto (Common_EventScript_PickupRareItem)
-}

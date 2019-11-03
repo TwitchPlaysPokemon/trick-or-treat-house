@@ -25,8 +25,9 @@ A puzzle is identified by its first (or only) map. The ID of this map is put int
 - Post Clean Up Item List: A list of item ids to take from the player after the puzzle ends. By default, nothing is taken.
 	- Use this list to take any HM Items from the player that were given to them before or during the puzzle. Clean up after yourself, please.
 - Meta Variable List: A list of variables and what they should be set to. This will be called by the framework mainly to set the graphic of the Trick Master in the front corridor, and the quip character in the back corridor. By default they're both the Trick Master, but they can be set to anyone by the puzzle.
-- Setup Script: This script is run in addition to any other map introduction scripts when the player enters a puzzle for the first time.
-- Teardown Script: This script is run before warping to the back room of the Trick House, before the puzzle's last room is unloaded.
+- Candy List: A list of flags that are used by any candy in the puzzle. This is for stat tracking, to check if the player has picked up all candy in the puzzle after it has finished.
+- Setup Script: This script is run in addition to any other map introduction scripts when the player enters a puzzle from the trick house.
+- Teardown Script: This script is run before warping back to the Trick House. If the player is warping to the end room, `FLAG_PUZZLE_HAS_COMPLETED` will be set.
 
 In addition to the above map script header information, the following can be defined by or used by the puzzle.
 
@@ -75,4 +76,4 @@ In addition to the above map script header information, the following can be def
 
 ## Restrictions
 
-- Never use the Rival character, in a puzzle or in the framework around it. Also be careful using legendary Pokemon. The puzzle event objects utalize the same special palette slot as the rival character or legendary Pokemon, and thus will cause palette clashes if used together.
+- (tbd)

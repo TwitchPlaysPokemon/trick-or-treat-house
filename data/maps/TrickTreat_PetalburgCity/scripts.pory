@@ -6,6 +6,7 @@ TrickTreat_PetalburgCity_MapScripts::
 	puzzle_custom_intro TrickTreat_PetalburgCity_Intro
 	puzzle_quip TrickTreat_PetalburgCity_Quip
 	puzzle_metavars TrickTreat_PetalburgCity_Variables
+	puzzle_candylist TrickTreat_PetalburgCity_CandyList
 	.byte 0
 
 TrickTreat_PetalburgCity_Name:
@@ -33,7 +34,21 @@ TrickTreat_PetalburgCity_Variables:
 	.2byte VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_YOUNGSTER
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_YOUNGSTER
 	.2byte 0
-
+TrickTreat_PetalburgCity_CandyList:
+	.2byte FLAG_PUZZLE_ITEM_0
+	.2byte FLAG_PUZZLE_ITEM_1
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x03
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x04
+	.2byte FLAG_PUZZLE_20  @ Trick or Treat Spots
+	.2byte FLAG_PUZZLE_21
+	.2byte FLAG_PUZZLE_22
+	.2byte FLAG_PUZZLE_23
+	.2byte FLAG_PUZZLE_24
+	.2byte FLAG_PUZZLE_25
+	.2byte 0
 TrickTreat_PetalburgCity_FrameTable:
 	map_script_2 VAR_PUZZLE_00, 0, TrickTreat_PetalburgCity_Introduction
 	.2byte 0

@@ -3,6 +3,7 @@ Puzzle_TrickHouseOriginal4_MapScripts:: @ 826C860
 	puzzle_info Puzzle_TrickHouseOriginal4_Name, Puzzle_TrickHouseOriginal4_Author
 	puzzle_custom_intro Puzzle_TrickHouseOriginal4_Intro
 	puzzle_quip Puzzle_TrickHouseOriginal4_Quip
+	puzzle_candylist Puzzle_TrickHouseOriginal4_CandyList
 	puzzle_item_prereqs Puzzle_TrickHouseOriginal4_PrereqItems
 	.byte 0
 
@@ -21,8 +22,16 @@ Puzzle_TrickHouseOriginal4_Quip:
 	.string "Wew! That was quite the workout!\p"
 	.string "No wonder people usually get their\n"
 	.string "{POKEMON} to do it!$"
+.align 2
 Puzzle_TrickHouseOriginal4_PrereqItems:
 	.2byte ITEM_STRENGTH_ITEM
+	.2byte 0
+Puzzle_TrickHouseOriginal4_CandyList:
+	.2byte FLAG_PUZZLE_ITEM_0
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x03
 	.2byte 0
 
 @ -----------------------------------------------------

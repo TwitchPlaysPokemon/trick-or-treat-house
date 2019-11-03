@@ -45,6 +45,11 @@
 .4byte \pointer
 .endm
 
+.macro puzzle_candylist pointer:req
+.byte MAP_SCRIPT_PUZZLE_CANDY_LIST
+.4byte \pointer
+.endm
+
 @ -----------------------------------------------------
 
 GATE_SHAPE_L1 = 0

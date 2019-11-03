@@ -4,6 +4,7 @@ Puzzle_HiddenMaze_MapScripts::
 	puzzle_adjective Puzzle_HiddenMaze_Adjective
 	puzzle_quip Puzzle_HiddenMaze_Quip
 	puzzle_metavars Puzzle_HiddenMaze_Variables
+	puzzle_candylist Puzzle_HiddenMaze_CandyList
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_HiddenMaze_OnResume
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_HiddenMaze_OnLoad
 	.byte 0
@@ -19,6 +20,15 @@ Puzzle_HiddenMaze_Quip:
 .align 2
 Puzzle_HiddenMaze_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_NINJA_BOY
+	.2byte 0
+Puzzle_HiddenMaze_CandyList:
+	.2byte FLAG_PUZZLE_ITEM_0
+	.2byte FLAG_PUZZLE_ITEM_1
+	.2byte FLAG_PUZZLE_ITEM_2
+	.2byte FLAG_PUZZLE_ITEM_3
+	.2byte FLAG_PUZZLE_ITEM_4
+	.2byte FLAG_PUZZLE_ITEM_5
+	.2byte FLAG_PUZZLE_ITEM_6
 	.2byte 0
 
 Puzzle_HiddenMaze_OnResume:

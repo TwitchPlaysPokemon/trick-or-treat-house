@@ -6,6 +6,7 @@ Puzzle_Route110_MapScripts:: @ 81EF269
 	puzzle_metavars Puzzle_Route110_Variables
 	puzzle_item_prereqs Puzzle_Route110_Items
 	puzzle_teardown_script Puzzle_Route110_Teardown
+	puzzle_candylist Puzzle_Route110_CandyList
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_Route110_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_Route110_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_Route110_FrameTable
@@ -36,6 +37,21 @@ Puzzle_Route110_Items:
 	.2byte 0
 Puzzle_Route110_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_CYCLING_TRIATHLETE_F
+	.2byte 0
+Puzzle_Route110_CandyList:
+	.2byte FLAG_PUZZLE_ITEM_F
+	.2byte FLAG_PUZZLE_ITEM_E
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x03
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x04
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x05
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x06
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x07
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x08
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x09
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x0A
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x0B
 	.2byte 0
 
 Puzzle_Route110_Teardown:

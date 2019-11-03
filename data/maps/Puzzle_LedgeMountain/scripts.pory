@@ -4,6 +4,7 @@ Puzzle_LedgeMountain_MapScripts::
 	puzzle_adjective Puzzle_LedgeMountain_Adjective
 	puzzle_quip Puzzle_LedgeMountain_Quip
 	puzzle_metavars Puzzle_LedgeMountain_Variables
+	puzzle_candylist Puzzle_LedgeMountain_CandyList
 	.byte 0
 
 Puzzle_LedgeMountain_Name:
@@ -18,6 +19,22 @@ Puzzle_LedgeMountain_Quip:
 .align 2
 Puzzle_LedgeMountain_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER
+	.2byte 0
+Puzzle_LedgeMountain_CandyList:
+	.2byte FLAG_PUZZLE_20
+	.2byte FLAG_PUZZLE_21
+	.2byte FLAG_PUZZLE_22
+	.2byte FLAG_PUZZLE_ITEM_0
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x03
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x04
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x05
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x06
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x07
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x08
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x09
 	.2byte 0
 
 @ -----------------------------------------------------

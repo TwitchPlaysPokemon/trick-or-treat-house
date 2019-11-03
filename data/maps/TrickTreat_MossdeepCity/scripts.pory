@@ -7,6 +7,7 @@ TrickTreat_MossdeepCity_MapScripts:: @ 81E4A96
 	puzzle_quip TrickTreat_MossdeepCity_Quip
 	puzzle_metavars TrickTreat_MossdeepCity_Variables
 	puzzle_setup_script TrickTreat_MossdeepCity_SetupScript
+	puzzle_candylist TrickTreat_MossdeepCity_CandyList
 	.byte 0
 
 TrickTreat_MossdeepCity_Name:
@@ -27,6 +28,23 @@ TrickTreat_MossdeepCity_Quip:
 TrickTreat_MossdeepCity_Variables:
 	.2byte VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_FAIRY_GIRL
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_YOUNGSTER
+	.2byte 0
+TrickTreat_MossdeepCity_CandyList:
+	.2byte FLAG_PUZZLE_ITEM_0
+	.2byte FLAG_PUZZLE_ITEM_1
+	.2byte FLAG_PUZZLE_ITEM_2
+	.2byte FLAG_PUZZLE_ITEM_3
+	.2byte FLAG_PUZZLE_ITEM_4
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
+	.2byte FLAG_PUZZLE_20  @ Trick or Treat Spots
+	.2byte FLAG_PUZZLE_21
+	.2byte FLAG_PUZZLE_22
+	.2byte FLAG_PUZZLE_4F  @ Steven doesn't count unless you fight him
+	.2byte FLAG_PUZZLE_24
+	.2byte FLAG_PUZZLE_25
+	.2byte FLAG_PUZZLE_26
+	.2byte FLAG_PUZZLE_27
 	.2byte 0
 
 @ -----------------------------------------------------
@@ -624,7 +642,7 @@ script TrickTreat_MossdeepCity_ExitGirl {
 			"TRICK HOUSE!\p"
 			"{YOUNGSTER} is already back there, waiting.$")
 	closemessage
-	if (var(VAR_FACING) == DIR_EAST) {
+	if (var(VAR_FACING) == DIR_WEST) {
 		applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_BackOffDown1)
 		waitmovement (0)
 	}

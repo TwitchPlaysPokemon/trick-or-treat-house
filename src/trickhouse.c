@@ -44,6 +44,7 @@ static void GenerateRentalMons(void);
 
 extern const u16 gPuzzleList[];
 extern const u16 gDebugPuzzles[];
+extern u32 gPuzzleTimer;
 #define DEBUG_PUZZLE_START 32768
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -77,6 +78,12 @@ void RunPuzzleSetupScript()
 		ShowMapNamePopup();
 		// 
 		FlagSet(FLAG_IS_PUZZLE_SETUP);
+		// 
+		if (!FlagGet(FLAG_PUZZLE_HAS_STARTED)) 
+		{
+			FlagSet(FLAG_PUZZLE_HAS_STARTED);
+			gPuzzleTimer = gMain.vblankCounter1;
+		}
 	}
 }
 
@@ -88,15 +95,38 @@ void RunPuzzleTeardownScript()
 	{
 		u16 currPuzzle = GetCurrentPuzzleMapId();
 		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_TEARDOWN_SCRIPT);
+		
+		FlagClear(FLAG_IS_PUZZLE_SETUP);
+		// Only stop timer when arriving in end room
+		if (FlagGet(FLAG_PUZZLE_HAS_STARTED) && 
+			gSaveBlock1Ptr->location.mapNum == MAP_NUM(TRICK_HOUSE_END))
+		{
+			FlagClear(FLAG_PUZZLE_HAS_STARTED);
+			FlagSet(FLAG_PUZZLE_HAS_COMPLETED);
+			// set timer to the number of seconds it took to do the puzzle
+			gPuzzleTimer = (gMain.vblankCounter1 - gPuzzleTimer) / 60;
+		}
+		
 		if (script != NULL)
 		{
 			ScriptContext2_RunNewScript(script);
 		}
-		FlagClear(FLAG_IS_PUZZLE_SETUP);
 	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+
+void ClearPuzzleEventData(struct ScriptContext *ctx)
+{
+	memset(gSaveBlock1Ptr->flags + 0x04, 0, 0x0A);
+	memset(gSaveBlock1Ptr->vars  + 0x20, 0, 0x40);
+	memset(gSaveBlock1Ptr->flags + (FLAG_TRAINER_FLAG_START >> 3), 0, TRAINERS_PERMAP_END >> 3);
+	memset(gSaveBlock1Ptr->flags + (FLAG_HIDDEN_ITEMS_START >> 3), 0, 0x20 >> 3);
+	FlagClear(FLAG_PUZZLE_HAS_STARTED);
+	FlagClear(FLAG_PUZZLE_HAS_COMPLETED);
+	FlagClear(FLAG_HIDE_MAP_NAME_POPUP);
+	gPuzzleTimer = 0;
+}
 
 void CheckLastPuzzle(struct ScriptContext *ctx)
 {
@@ -105,14 +135,6 @@ void CheckLastPuzzle(struct ScriptContext *ctx)
 		// Temporarily, loop the puzzles.
 		VarSet(VAR_CURRENT_PUZZLE, 0); //reset to 0
 	}
-}
-
-void ClearPuzzleEventData(struct ScriptContext *ctx)
-{
-	memset(gSaveBlock1Ptr->flags + 0x04, 0, 0x0A);
-	memset(gSaveBlock1Ptr->vars  + 0x20, 0, 0x40);
-	memset(gSaveBlock1Ptr->flags + (FLAG_TRAINER_FLAG_START >> 3), 0, TRAINERS_PERMAP_END >> 3);
-	memset(gSaveBlock1Ptr->flags + (FLAG_HIDDEN_ITEMS_START >> 3), 0, 0x20 >> 3);
 }
 
 void GetTrainerIDMod(struct ScriptContext *ctx)
@@ -242,6 +264,47 @@ void GiveItemPrerequisites(struct ScriptContext *ctx)
 	*ptr = EOS;
 }
 
+void GatherLastPuzzleStats(struct ScriptContext *ctx)
+{
+	u16 currPuzzle = GetCurrentPuzzleMapId();
+	const u16 *candyArray = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_CANDY_LIST);
+	
+	gSpecialVar_Result = FALSE;
+	if (!FlagGet(FLAG_PUZZLE_HAS_COMPLETED) || gPuzzleTimer == 0 || candyArray == NULL) {
+		return;
+	}
+	gSpecialVar_0x8000 = 0; //items count
+	gSpecialVar_0x8001 = 0; //items found
+	while (candyArray[0] != 0)
+	{
+		gSpecialVar_0x8000++;
+		gSpecialVar_0x8001 += FlagGet(candyArray[0]);
+		candyArray += 1;
+	}
+	gSpecialVar_0x8004 = (gPuzzleTimer) % 60; //seconds
+	gSpecialVar_0x8003 = (gPuzzleTimer / 60) % 60; //minutes
+	gSpecialVar_0x8002 = (gPuzzleTimer / (60*60)); //hours
+	
+	gSpecialVar_Result = TRUE;
+}
+
+void CheckAllCandyGotten(struct ScriptContext *ctx)
+{
+	u8 itemCount = 0, itemGotten = 0;
+	u16 currPuzzle = GetCurrentPuzzleMapId();
+	const u16 *array = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_CANDY_LIST);
+	if (array != NULL) {
+		while (array[0] != 0)
+		{
+			itemCount++;
+			itemGotten += FlagGet(array[0]);
+			array += 1;
+		}
+		gSpecialVar_Result = (itemCount == itemGotten);
+	} else {
+		gSpecialVar_Result = 0xFF;
+	}
+}
 
 void RemovePuzzleItems(struct ScriptContext *ctx)
 {

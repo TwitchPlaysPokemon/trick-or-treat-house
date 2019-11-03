@@ -94,7 +94,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_TEMP_1",
+            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x04",
             "item": "ITEM_FULL_HEAL",
             "type": "hidden_item",
             "x": 35,
@@ -166,7 +166,7 @@
     "object_events": [
         {
             "elevation": 3,
-            "flag": "FLAG_ITEM_PETALBURG_CITY_MAX_REVIVE",
+            "flag": "FLAG_PUZZLE_ITEM_1",
             "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -179,7 +179,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_ITEM_PETALBURG_CITY_ETHER",
+            "flag": "FLAG_PUZZLE_ITEM_0",
             "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,

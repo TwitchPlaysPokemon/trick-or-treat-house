@@ -5,6 +5,7 @@ Puzzle_TwinMemories_MapScripts::
 	puzzle_quip Puzzle_TwinMemories_Quip
 	@ puzzle_metavars Puzzle_TwinMemories_Variables
 	puzzle_item_prereqs Puzzle_TwinMemories_PrereqItems
+	puzzle_candylist Puzzle_TwinMemories_CandyList
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TwinMemories_OnResume
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_TwinMemories_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_TwinMemories_FrameTable
@@ -20,10 +21,20 @@ Puzzle_TwinMemories_Adjective:
 Puzzle_TwinMemories_Quip:
 	.string "This puzzle seems familiar. I can't\n"
 	.string "put my finger on how, though…$"
-@ .align 2
+.align 2
 @ Puzzle_TwinMemories_Variables:
 @ 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER
 @ 	.2byte 0
+Puzzle_TwinMemories_PrereqItems:
+	.2byte ITEM_STRENGTH_ITEM
+	.2byte 0
+Puzzle_TwinMemories_CandyList:
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x03
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x04
+	.2byte 0
 
 Puzzle_TwinMemories_FrameTable:
 	@ VAR_STEP_TRIGGER is set to 1 by Task_MonitorEventObjectTriggers when any npc steps on a trigger
@@ -35,10 +46,6 @@ Puzzle_TwinMemories_MapTable:
 	map_script_2 VAR_LAST_WARP_ID, 3, Puzzle_TwinMemories_SetupLeftBoulders
 	map_script_2 VAR_LAST_WARP_ID, 4, Puzzle_TwinMemories_SetupRightBoulders
 	.2byte 0
-Puzzle_TwinMemories_PrereqItems:
-	.2byte ITEM_STRENGTH_ITEM
-	.2byte 0
-
 Puzzle_TwinMemories_OnResume:
 	setstepcallback 9
 	end

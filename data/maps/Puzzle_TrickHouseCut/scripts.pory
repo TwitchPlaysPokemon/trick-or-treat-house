@@ -3,6 +3,7 @@ Puzzle_TrickHouseCut_MapScripts::
 	puzzle_info Puzzle_TrickHouseCut_Name, Puzzle_TrickHouseCut_Author
 	puzzle_adjective Puzzle_TrickHouseCut_Adjective
 	puzzle_quip Puzzle_TrickHouseCut_Quip
+	puzzle_candylist Puzzle_TrickHouseCut_CandyList
 	.byte 0
 
 Puzzle_TrickHouseCut_Name:
@@ -14,6 +15,21 @@ Puzzle_TrickHouseCut_Adjective:
 Puzzle_TrickHouseCut_Quip:
 	.string "Sometimes it's better to just do the\n"
 	.string "field moves yourself, you know?$"
+.align 2
+Puzzle_TrickHouseCut_CandyList:
+	.2byte FLAG_PUZZLE_ITEM_0
+	.2byte FLAG_PUZZLE_ITEM_1
+	.2byte FLAG_PUZZLE_ITEM_2
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x03
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x04
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x05
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x06
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x07
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x08
+	.2byte 0
 
 @ -----------------------------------------------------
 

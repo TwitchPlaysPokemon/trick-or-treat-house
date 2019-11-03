@@ -5,6 +5,7 @@ Puzzle_SpotDifference_Hallway_MapScripts::
     puzzle_info Puzzle_SpotDifference_Name, Puzzle_SpotDifference_Author
     puzzle_adjective Puzzle_SpotDifference_Adjective
     puzzle_quip Puzzle_SpotDifference_Quip
+    puzzle_candylist Puzzle_SpotDifference_CandyList
     map_script MAP_SCRIPT_ON_LOAD, Puzzle_SpotDifference_Hallway_OnLoad
     .byte 0
 
@@ -19,6 +20,31 @@ Puzzle_SpotDifference_Quip:
     .string "rooms looked like, and it drove\l"
     .string "me crazy!\p"
     .string "The loot was worth it, though.$"
+.align 2
+Puzzle_SpotDifference_CandyList:
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x03
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x04
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x05
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x06
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x07
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x08
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x09
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x0A
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x0B
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x0C
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x0D
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x0E
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x0F
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x10
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x11
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x12
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x13
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x14
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x15
+	.2byte 0
 `
 
 script Puzzle_SpotDifference_Hallway_OnLoad {

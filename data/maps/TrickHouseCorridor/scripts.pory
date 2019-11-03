@@ -29,7 +29,7 @@ TrickHouseCorridor_OpenBackDoor:
 	setmetatile 4, 6, 0x01E, TRUE
 	return
 TrickHouseCorridor_CloseBackDoor:
-	setmetatile 4, 6, 0x21B, TRUE
+	setmetatile 4, 6, 0x20B, TRUE
 	return
 
 @ -----------------------------------------------------

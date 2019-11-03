@@ -5,6 +5,7 @@ Puzzle_LostWoods1_Entrance_MapScripts::
 	puzzle_quip Puzzle_LostWoods1_Quip
 	puzzle_metavars Puzzle_LostWoods1_Variables
 	puzzle_item_prereqs Puzzle_LostWoods1_PrereqItems
+	puzzle_candylist Puzzle_LostWoods1_CandyList
 	.byte 0
 
 
@@ -22,6 +23,19 @@ Puzzle_LostWoods1_Variables:
 	.2byte 0
 Puzzle_LostWoods1_PrereqItems:
 	.2byte ITEM_SURF_ITEM
+	.2byte 0
+Puzzle_LostWoods1_CandyList:
+	.2byte FLAG_PUZZLE_ITEM_0
+	.2byte FLAG_PUZZLE_ITEM_1
+	.2byte FLAG_PUZZLE_ITEM_2
+	.2byte FLAG_PUZZLE_ITEM_A
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x03
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x04
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x05
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x06
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x07
 	.2byte 0
 
 @ -----------------------------------------------------

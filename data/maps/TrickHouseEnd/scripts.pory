@@ -81,7 +81,14 @@ script TrickHouseEnd_TriggerScript_Nurse {
 }
 script TrickHouseEnd_EventScript_FinalizePuzzle {
 	# msgbox ("Good job on that puzzle.$")
-	special  (CanAnyPartyMonsBeHealed)
+	callnative(CheckAllCandyGotten)
+	if (var(VAR_RESULT) == 0xFF) {
+		msgbox("Odd, this puzzle has no candy\n"
+				"list registered.$")
+	} elif (var(VAR_RESULT) == 1) {
+		msgbox("Good job on getting all that candy.$")
+	}
+	special (CanAnyPartyMonsBeHealed)
 	if (var(VAR_RESULT) == FALSE) { # It's backwards for some reason??
 		msgbox ("Let me heal your POKéMON.$")
 		closemessage
@@ -114,6 +121,18 @@ script TrickHouseEnd_EventScript_FinalizePuzzle {
 	return
 }
 script TrickHouseEnd_EventScript_FinalizePuzzle1 {
+	callnative (GatherLastPuzzleStats)
+	if (var(VAR_RESULT) == TRUE) {
+		buffernumberstring (0, VAR_0x8002)
+		buffernumberstring (1, VAR_0x8003)
+		buffernumberstring (2, VAR_0x8004)
+		msgbox ("It took you {STR_VAR_1}h {STR_VAR_2}m {STR_VAR_3}s to complete\n"
+				"{PUZZLE_NAME} (by {PUZZLE_AUTHOR}).")
+		buffernumberstring2 (0, VAR_0x8000)
+		buffernumberstring2 (1, VAR_0x8001)
+		msgbox ("You managed to find {STR_VAR_2} of\n"
+				"the {STR_VAR_1} candy locations.")
+	}
 	msgbox ("Good luck on the next puzzle!$")
 	release
 }

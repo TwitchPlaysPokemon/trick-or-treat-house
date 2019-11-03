@@ -4,6 +4,7 @@ Puzzle_TrickHouseOriginal6_MapScripts:: @ 826DDA7
 	puzzle_custom_intro Puzzle_TrickHouseOriginal6_Intro
 	puzzle_quip Puzzle_TrickHouseOriginal6_Quip
 	puzzle_metavars Puzzle_TrickHouseOriginal6_Variables
+	puzzle_candylist Puzzle_TrickHouseOriginal6_CandyList
 	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_TrickHouseOriginal6_OnTransition
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Puzzle_TrickHouseOriginal6_MapTable
 	map_script MAP_SCRIPT_PUZZLE_TEARDOWN_SCRIPT, Puzzle_TrickHouseOriginal6_PuzzleTeardown
@@ -28,6 +29,15 @@ Puzzle_TrickHouseOriginal6_Quip:
 .align 2
 Puzzle_TrickHouseOriginal6_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_SCHOOL_KID_M
+	.2byte 0
+Puzzle_TrickHouseOriginal6_CandyList:
+	.2byte FLAG_PUZZLE_ITEM_0
+	.2byte FLAG_PUZZLE_ITEM_1
+	.2byte FLAG_PUZZLE_ITEM_2
+	.2byte FLAG_PUZZLE_ITEM_3
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
 	.2byte 0
 
 @ -----------------------------------------------------

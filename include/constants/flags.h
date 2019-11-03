@@ -118,8 +118,8 @@
 #define FLAG_PICKED_UP_FLASH_ITEM            0x68
 #define FLAG_PICKED_UP_FLY_ITEM              0x69 // never used
 #define FLAG_PARTY_SWAP_DISABLED             0x6A
-#define FLAG_UNUSED_0x06B                    0x6B
-#define FLAG_UNUSED_0x06C                    0x6C
+#define FLAG_PUZZLE_HAS_STARTED              0x6B
+#define FLAG_PUZZLE_HAS_COMPLETED            0x6C
 #define FLAG_UNUSED_0x06D                    0x6D
 #define FLAG_UNUSED_0x06E                    0x6E
 #define FLAG_UNUSED_0x06F                    0x6F
@@ -983,11 +983,11 @@
 #define FLAG_ITEM_ROUTE_132_RARE_CANDY                              0x40C
 #define FLAG_ITEM_ROUTE_133_BIG_PEARL                               0x40D
 #define FLAG_ITEM_ROUTE_133_STAR_PIECE                              0x40E
-#define FLAG_ITEM_PETALBURG_CITY_MAX_REVIVE                         0x40F
-#define FLAG_ITEM_PETALBURG_CITY_ETHER                              0x410
+#define FLAG_UNUSED_0x40F                                           0x40F
+#define FLAG_UNUSED_0x410                                           0x410
 #define FLAG_ITEM_RUSTBORO_CITY_X_DEFEND                            0x411
 #define FLAG_ITEM_LILYCOVE_CITY_MAX_REPEL                           0x412
-#define FLAG_ITEM_MOSSDEEP_CITY_NET_BALL                            0x413
+#define FLAG_UNUSED_0x413                                           0x413
 #define FLAG_ITEM_METEOR_FALLS_1F_1R_TM_23                          0x414
 #define FLAG_ITEM_METEOR_FALLS_1F_1R_FULL_HEAL                      0x415
 #define FLAG_ITEM_METEOR_FALLS_1F_1R_MOON_STONE                     0x416

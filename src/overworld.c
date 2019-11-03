@@ -1619,6 +1619,7 @@ static void sub_8086204(void)
     sub_80AF3C8();
 }
 
+extern u32 gPuzzleTimer;
 void CB2_ContinueSavedGame(void)
 {
     u8 trainerHillMapId;
@@ -1648,7 +1649,8 @@ void CB2_ContinueSavedGame(void)
     //     InitTrainerHillMap();
     // else
         InitMapFromSavedGame();
-
+    
+    gPuzzleTimer = 0;
     PlayTimeCounter_Start();
     ScriptContext1_Init();
     ScriptContext2_Disable();

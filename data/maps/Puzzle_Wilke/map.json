@@ -48,14 +48,14 @@
     "object_events": [
         {
             "elevation": 3,
-            "flag": "FLAG_TEMP_1",
+            "flag": "0",
             "graphics_id": "EVENT_OBJ_GFX_ZIGZAGOON_2",
             "movement_range_x": 15,
             "movement_range_y": 15,
             "movement_type": "MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE",
             "script": "Puzzle_Wilke_TalkToRacc1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "6",
             "x": 11,
             "y": 0
         },

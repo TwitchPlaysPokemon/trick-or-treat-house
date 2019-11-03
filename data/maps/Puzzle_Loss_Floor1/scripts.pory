@@ -4,6 +4,8 @@ Puzzle_Loss_Floor1_MapScripts::
 	puzzle_adjective Puzzle_Loss_Adjective
 	puzzle_quip Puzzle_Loss_Quip
 	puzzle_metavars Puzzle_Loss_Variables
+	puzzle_teardown_script Puzzle_Loss_Teardown
+	puzzle_candylist Puzzle_Loss_CandyList
 	.byte 0
 
 Puzzle_Loss_Name:
@@ -18,11 +20,21 @@ Puzzle_Loss_Quip:
 Puzzle_Loss_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER
 	.2byte 0
+Puzzle_Loss_CandyList:
+	.2byte FLAG_PUZZLE_ITEM_0
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
+	.2byte 0
 
 @ -----------------------------------------------------
 #define VAR_PUZZLE_ADVANCEMENT  VAR_PUZZLE_00
 #define VAR_FREE_COUNTER        VAR_PUZZLE_01
 `
+
+script(local) Puzzle_Loss_Teardown {
+	if (var(VAR_FREE_COUNTER) >= 8) {
+		setflag(FLAG_PUZZLE_ITEM_0)
+	}
+}
 
 script Puzzle_Loss_Floor1_Nurse {
 	if (var(VAR_PUZZLE_ADVANCEMENT) > 0) {

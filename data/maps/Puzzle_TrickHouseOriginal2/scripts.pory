@@ -5,6 +5,7 @@ Puzzle_TrickHouseOriginal2_MapScripts:: @ 826BB73
 	puzzle_quip Puzzle_TrickHouseOriginal2_Quip
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TrickHouseOriginal2_MapScript1_26BB7E
 	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_TrickHouseOriginal2_OnTransition
+	puzzle_candylist Puzzle_TrickHouseOriginal2_CandyList
 	.byte 0
 
 Puzzle_TrickHouseOriginal2_Name:
@@ -21,6 +22,17 @@ Puzzle_TrickHouseOriginal2_Intro:
 Puzzle_TrickHouseOriginal2_Quip:
 	.string "I feel like I could have just jumped\n"
 	.string "over some of those gaps…$"
+.align 2
+Puzzle_TrickHouseOriginal2_CandyList:
+	.2byte FLAG_PUZZLE_ITEM_0
+	.2byte FLAG_PUZZLE_ITEM_1
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x03
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x04
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x05
+	.2byte 0
 
 @ -----------------------------------------------------
 

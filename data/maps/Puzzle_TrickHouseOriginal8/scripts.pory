@@ -3,6 +3,7 @@ Puzzle_TrickHouseOriginal8_MapScripts:: @ 826E801
 	puzzle_info Puzzle_TrickHouseOriginal8_Name, Puzzle_TrickHouseOriginal8_Author
 	puzzle_custom_intro Puzzle_TrickHouseOriginal8_Intro
 	puzzle_quip Puzzle_TrickHouseOriginal8_Quip
+	puzzle_candylist Puzzle_TrickHouseOriginal8_CandyList
 	.byte 0
 
 Puzzle_TrickHouseOriginal8_Name:
@@ -20,6 +21,15 @@ Puzzle_TrickHouseOriginal8_Quip:
 	.string "I love ice skating, but that's because\n"
 	.string "the skates let you control where you're\l"
 	.string "going! This puzzle was hard!$"
+.align 2
+Puzzle_TrickHouseOriginal8_CandyList:
+	.2byte FLAG_PUZZLE_ITEM_0
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x03
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x04
+	.2byte 0
 
 @ -----------------------------------------------------
 

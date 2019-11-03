@@ -9,6 +9,7 @@ Puzzle_MusicNoteTiles_MapScripts::
     puzzle_info Puzzle_MusicNoteTiles_Name, Puzzle_MusicNoteTiles_Author
     puzzle_adjective Puzzle_MusicNoteTiles_Adjective
     puzzle_quip Puzzle_MusicNoteTiles_Quip
+    puzzle_candylist Puzzle_MusicNoteTiles_CandyList
     map_script MAP_SCRIPT_ON_LOAD, Puzzle_MusicNoteTiles_OnLoad
     map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_MusicNoteTiles_FrameTable
     .byte 0
@@ -20,17 +21,22 @@ Puzzle_MusicNoteTiles_FrameTable:
 
 Puzzle_MusicNoteTiles_Name:
     .string "POKéMON Says$"
-
 Puzzle_MusicNoteTiles_Author:
     .string "Chfoo$"
-
 Puzzle_MusicNoteTiles_Adjective:
     .string "memory$"
-
 Puzzle_MusicNoteTiles_Quip:
     .string "I can't get that puzzle's tune out\n"
     .string "of my head!\p"
     .string "Doo da doo buh da...$"
+
+.align 2
+Puzzle_MusicNoteTiles_CandyList:
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x03
+	.2byte 0
 `
 
 script Puzzle_MusicNoteTiles_OnLoad {

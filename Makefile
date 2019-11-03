@@ -31,6 +31,12 @@ TPP_MODE		?= 1
 # Version branch
 VERSION	:= v1.1.0
 
+ifeq ($(TPP_MODE),1)
+VERSION_STR := $(VERSION)*TPP
+else
+VERSION_STR := $(VERSION)
+endif
+
 ifeq ($(OS),Windows_NT)
 EXE := .exe
 EXE2 := .exe
@@ -233,7 +239,7 @@ sound/%.bin: sound/%.aif ; $(AIF) $< $@
 data/%.inc: data/%.pory; $(SCRIPT) -i $< -o $@
 
 $(OBJ_DIR)/copystamped.bin: .git/index
-	$(COPYSTAMP) $(OBJ_DIR)/copystamped.bin `git log -1 --format="-18:s $(VERSION)*%h -19:t %ct"`
+	$(COPYSTAMP) $(OBJ_DIR)/copystamped.bin `git log -1 --format="-18:s $(VERSION_STR)*%h -19:t %ct"`
 $(OBJ_DIR)/copystamped.bin.lz: $(OBJ_DIR)/copystamped.bin
 	$(GFX) $(OBJ_DIR)/copystamped.bin $@
 

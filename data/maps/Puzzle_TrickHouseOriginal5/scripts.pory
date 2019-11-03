@@ -3,6 +3,7 @@ Puzzle_TrickHouseOriginal5_MapScripts::
 	puzzle_info Puzzle_TrickHouseOriginal5_Name, Puzzle_TrickHouseOriginal5_Author
 	puzzle_custom_intro Puzzle_TrickHouseOriginal5_Intro
 	puzzle_quip Puzzle_TrickHouseOriginal5_Quip
+	puzzle_candylist Puzzle_TrickHouseOriginal5_CandyList
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TrickHouseOriginal5_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_TrickHouseOriginal5_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_TrickHouseOriginal5_OnLoad
@@ -22,6 +23,17 @@ Puzzle_TrickHouseOriginal5_Intro:
 	.string "Good luck! Wahahahaha!$"
 Puzzle_TrickHouseOriginal5_Quip:
 	.string "I'm a little dizzy after all that…$"
+.align 2
+Puzzle_TrickHouseOriginal5_CandyList:
+	.2byte FLAG_PUZZLE_ITEM_0
+  @ .2byte FLAG_PUZZLE_ITEM_1 @ UnobtainableItemBall
+	.2byte FLAG_PUZZLE_ITEM_2
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x03
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x04
+	.2byte 0
 
 @ -----------------------------------------------------
 #define FLAG_SWITCH_1  FLAG_PUZZLE_20
@@ -282,3 +294,9 @@ Puzzle_TrickHouseOriginal5_Text_26E61E: @ 826E61E
 #undef FLAG_SWITCH_4
 #undef FLAG_SWITCH_5
 `
+
+script Puzzle_TrickHouseOriginal5_UnobtainableItemBall {
+	msgbox ("I don't know how you got here, but\n"
+			"good job.$")
+	goto (Common_EventScript_PickupRareItem)
+}

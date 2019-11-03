@@ -62,6 +62,7 @@
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
 EWRAM_DATA u32 gBikeCyclingTimer = 0;
+EWRAM_DATA u32 gPuzzleTimer = 0;
 static EWRAM_DATA u8 gUnknown_0203AB5C = 0;
 static EWRAM_DATA u8 sPetalburgGymSlidingDoorFrameCounter = 0;
 static EWRAM_DATA u8 gUnknown_0203AB5E = 0;

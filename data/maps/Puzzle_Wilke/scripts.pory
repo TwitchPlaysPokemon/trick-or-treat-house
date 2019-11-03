@@ -5,6 +5,7 @@ Puzzle_Wilke_MapScripts::
 	puzzle_quip Puzzle_Wilke_Quip
 	puzzle_metavars Puzzle_Wilke_Variables
 	puzzle_item_prereqs Puzzle_Wilke_PrereqItems
+	puzzle_candylist Puzzle_Wilke_CandyList
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_Wilke_OnLoad
 	.byte 0
 
@@ -24,6 +25,12 @@ Puzzle_Wilke_PrereqItems:
 	.2byte 0
 Puzzle_Wilke_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_ZIGZAGOON_2
+	.2byte 0
+Puzzle_Wilke_CandyList:
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
+	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x03
 	.2byte 0
 
 Puzzle_Wilke_OnLoad:
