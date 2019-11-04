@@ -35,6 +35,14 @@ mapscripts TrickHouseExt_MapScripts {
 			setobjectxyperm (11, 49, 48)
 			setobjectxyperm (13, 54, 40)
 		}
+		callnative (GetNumPuzzlesCompleted)
+		if (var(VAR_RESULT) > VAR_CURRENT_PUZZLE) {
+			setobjectxyperm (14, 39, 30)
+			setobjectxy (14, 39, 30)
+		} else {
+			setmetatile (39, 30, 0x001, FALSE) 
+			setmetatile (40, 30, 0x001, FALSE) 
+		}
 	}
 }
 
@@ -405,3 +413,19 @@ TrickHouseExt_Text_SoftBorderWest:
 	.string "You already hit Oldale anyway.$"
 
 `
+script TrickHouseExt_EventScript_BikeCredits {
+	lock
+	callnative (GetNumPuzzlesCompleted)
+	if (var(VAR_RESULT) <= VAR_CURRENT_PUZZLE) { release end }
+	msgbox ("Are you ready to save and ride off\n"
+			"into the sunset?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		callnative (SaveForCredits)
+		waitstate
+		fadenewbgm (MUS_DUMMY)
+		fadescreenspeed (1, 4)
+		callnative (PlayCredits)
+	}
+	release
+}
+

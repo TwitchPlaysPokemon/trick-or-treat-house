@@ -27,6 +27,8 @@
 #include "item.h"
 #include "strings.h"
 #include "battle_tower.h"
+#include "start_menu.h"
+#include "load_save.h"
 #include "international_string_util.h"
 #include "constants/map_scripts.h"
 #include "constants/maps.h"
@@ -446,6 +448,14 @@ void SwapRentalParty(struct ScriptContext *ctx)
 void RandomizeRentalMons(struct ScriptContext *ctx)
 {
 	GenerateRentalMons();
+}
+
+void SetContinueGameWarp(s8 mapGroup, s8 mapNum, s8 warpId, s8 x, s8 y);
+void SaveForCredits(struct ScriptContext *ctx)
+{
+	SetContinueGameWarpStatus();
+	SetContinueGameWarp(MAP_GROUP(TRICK_HOUSE_ENTRANCE), MAP_NUM(TRICK_HOUSE_ENTRANCE), -1, 7, 4);
+	ForceSaveGame();
 }
 
 ///////////////////////////////////////////////////////////////////////////////

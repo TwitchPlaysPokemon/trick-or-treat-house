@@ -129,9 +129,11 @@ static u8 SaveReturnErrorCallback(void);
 static u8 BattlePyramidConfirmRetireCallback(void);
 static u8 BattlePyramidRetireYesNoCallback(void);
 static u8 BattlePyramidRetireInputCallback(void);
+static u8 SaveForceSavingMessageCallback(void);
 
 // Task callbacks
 static void StartMenuTask(u8 taskId);
+static void ForceSaveGameTask(u8 taskId);
 static void SaveGameTask(u8 taskId);
 static void sub_80A0550(u8 taskId);
 static void sub_80A08A4(u8 taskId);
@@ -859,6 +861,35 @@ void SaveGame(void) // Called from cable_club.s
     CreateTask(SaveGameTask, 0x50);
 }
 
+void ForceSaveGame(void) // Called from scripts
+{
+    InitSave();
+    
+    sSaveDialogCallback = SaveForceSavingMessageCallback;
+    CreateTask(ForceSaveGameTask, 0x50);
+}
+
+static void ForceSaveGameTask(u8 taskId)
+{
+    u8 status = RunSaveCallback();
+
+    switch (status)
+    {
+    case SAVE_CANCELED:
+    case SAVE_ERROR:
+        gSpecialVar_Result = 0;
+        break;
+    case SAVE_SUCCESS:
+        gSpecialVar_Result = 1;
+        break;
+    case SAVE_IN_PROGRESS:
+        return;
+    }
+
+    DestroyTask(taskId);
+    EnableBothScriptContexts();
+}
+
 static void ShowSaveMessage(const u8 *message, u8 (*saveCallback)(void))
 {
     StringExpandPlaceholders(gStringVar4, message);
@@ -1034,6 +1065,13 @@ static u8 SaveOverwriteInputCallback(void)
         return SAVE_CANCELED;
     }
 
+    return SAVE_IN_PROGRESS;
+}
+
+static u8 SaveForceSavingMessageCallback(void)
+{
+    ShowSaveInfoWindow();
+    ShowSaveMessage(gText_SavingDontTurnOff, SaveDoSaveCallback);
     return SAVE_IN_PROGRESS;
 }
 
