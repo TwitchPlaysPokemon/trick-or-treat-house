@@ -2,6 +2,7 @@ raw `
 TrickTreat_PetalburgCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, TrickTreat_PetalburgCity_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrickTreat_PetalburgCity_FrameTable
+	map_script MAP_SCRIPT_ON_RETURN_TO_FIELD, TrickTreat_PetalburgCity_ReturnToField
 	puzzle_info TrickTreat_PetalburgCity_Name, TrickTreat_PetalburgCity_Author
 	puzzle_custom_intro TrickTreat_PetalburgCity_Intro
 	puzzle_quip TrickTreat_PetalburgCity_Quip
@@ -57,7 +58,7 @@ TrickTreat_PetalburgCity_FrameTable:
 #define METATILE_DoorOff 0x021
 `
 
-script TrickTreat_PetalburgCity_OnTransition {
+script(local) TrickTreat_PetalburgCity_OnTransition {
 	if (flag(FLAG_PUZZLE_23)) { setmetatile (30, 24, METATILE_DoorOff, TRUE) }
 	if (flag(FLAG_PUZZLE_24)) { setmetatile (17,  5, METATILE_DoorOff, TRUE) }
 	if (flag(FLAG_PUZZLE_25)) { setmetatile (20, 19, METATILE_DoorOff, TRUE) }
@@ -65,6 +66,9 @@ script TrickTreat_PetalburgCity_OnTransition {
 		setobjectxyperm (12, 31, 10)
 		setflag (FLAG_HIDE_MAP_NAME_POPUP)
 	}
+}
+
+script(local) TrickTreat_PetalburgCity_ReturnToField {
 	if (var(VAR_METATILE_X) > 0) {
 		setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
 	}
@@ -212,6 +216,7 @@ script TrickTreat_PetalburgCity_CandyGiver_Youngster {
 			"hard-won candy!$")
 	trainerbattle_no_intro (TRAINER_02, 
 			"Wow, alright. You win.$")
+	setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
 	msgbox ("Do you know how hard it was to win\n"
 			"these off Norman? Sigh. Here.$")
 	giveitem_std (ITEM_SUPER_POTION, 2)
@@ -229,6 +234,7 @@ script TrickTreat_PetalburgCity_CandyGiver_WallysHouse {
 			"if you're as good as he says you are!$")
 	trainerbattle_no_intro (TRAINER_03, 
 			"Splendid! Splendid!$")
+	setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
 	msgbox ("Here's something healthy for winning!$")
 	giveitem_std (ITEM_HEAL_POWDER, 2)
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)

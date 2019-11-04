@@ -207,6 +207,7 @@ static void (*const sMovementTypeCallbacks[])(struct Sprite *) =
     [MOVEMENT_TYPE_COPY_PLAYER_COUNTERCLOCKWISE_IN_GRASS] = MovementType_CopyPlayerInGrass,
     [MOVEMENT_TYPE_COPY_PLAYER_CLOCKWISE_IN_GRASS] = MovementType_CopyPlayerInGrass,
     [MOVEMENT_TYPE_HIDDEN] = MovementType_Hidden,
+    [MOVEMENT_TYPE_HIDDEN2] = MovementType_Hidden,
     [MOVEMENT_TYPE_WALK_IN_PLACE_DOWN] = MovementType_WalkInPlace,
     [MOVEMENT_TYPE_WALK_IN_PLACE_UP] = MovementType_WalkInPlace,
     [MOVEMENT_TYPE_WALK_IN_PLACE_LEFT] = MovementType_WalkInPlace,
@@ -291,6 +292,7 @@ const u8 gRangedMovementTypes[] = {
     [MOVEMENT_TYPE_COPY_PLAYER_COUNTERCLOCKWISE_IN_GRASS] = 1,
     [MOVEMENT_TYPE_COPY_PLAYER_CLOCKWISE_IN_GRASS] = 1,
     [MOVEMENT_TYPE_HIDDEN] = 0,
+    [MOVEMENT_TYPE_HIDDEN2] = 0,
     [MOVEMENT_TYPE_WALK_IN_PLACE_DOWN] = 0,
     [MOVEMENT_TYPE_WALK_IN_PLACE_UP] = 0,
     [MOVEMENT_TYPE_WALK_IN_PLACE_LEFT] = 0,
@@ -375,6 +377,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
     [MOVEMENT_TYPE_COPY_PLAYER_COUNTERCLOCKWISE_IN_GRASS] = DIR_WEST,
     [MOVEMENT_TYPE_COPY_PLAYER_CLOCKWISE_IN_GRASS] = DIR_EAST,
     [MOVEMENT_TYPE_HIDDEN] = DIR_SOUTH,
+    [MOVEMENT_TYPE_HIDDEN2] = DIR_SOUTH,
     [MOVEMENT_TYPE_WALK_IN_PLACE_DOWN] = DIR_SOUTH,
     [MOVEMENT_TYPE_WALK_IN_PLACE_UP] = DIR_NORTH,
     [MOVEMENT_TYPE_WALK_IN_PLACE_LEFT] = DIR_WEST,
@@ -1598,7 +1601,7 @@ static u8 TrySetupEventObjectSprite(struct EventObjectTemplate *eventObjectTempl
     //     sub_808EAB0(graphicsInfo->paletteTag1, paletteSlot);
     // }
 
-    if (eventObject->movementType == MOVEMENT_TYPE_INVISIBLE)
+    if (eventObject->movementType == MOVEMENT_TYPE_INVISIBLE || eventObject->movementType == MOVEMENT_TYPE_HIDDEN2)
         eventObject->invisible = TRUE;
 
     // *(u16 *)&spriteTemplate->paletteTag = 0xFFFF;
@@ -6830,7 +6833,7 @@ bool8 MovementAction_EmoteHeart_Step0(struct EventObject *eventObject, struct Sp
 
 bool8 MovementAction_RevealTrainer_Step0(struct EventObject *eventObject, struct Sprite *sprite)
 {
-    if (eventObject->movementType == MOVEMENT_TYPE_HIDDEN || eventObject->movementType == MOVEMENT_TYPE_INVISIBLE)
+    if (eventObject->movementType == MOVEMENT_TYPE_HIDDEN || eventObject->movementType == MOVEMENT_TYPE_HIDDEN2)
     {
         sub_80B4578(eventObject);
         return FALSE;

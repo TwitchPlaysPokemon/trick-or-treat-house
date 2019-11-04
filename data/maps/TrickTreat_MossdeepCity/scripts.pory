@@ -483,6 +483,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Steven {
 	if (var(VAR_RESULT) == TRUE) {
 		trainerbattle_no_intro (TRAINER_02, 
 			"Well done, well done!$")
+		setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
 		setflag (FLAG_BEAT_STEVEN)
 		msgbox ("If you keep this up, you might just\n"
 			"be champion some day.$")
@@ -533,6 +534,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Expert {
 	msgbox ("Ha! Let's test your mettle!$")
 	trainerbattle_no_intro (TRAINER_03, 
 			"Splendid! Splendid!$")
+	setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
 	msgbox ("You're so full of potential!\n"
 			"Here's a treat!$")
 	giveitem_std (ITEM_ENERGY_ROOT, 3)
@@ -550,6 +552,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Camper {
 	trainerbattle_no_intro (TRAINER_04, 
 			"Darn, I was hoping to come out with\n"
 			"MORE candy from this…$")
+	setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
 	msgbox ("I'm not giving you ALL of my haul.\n"
 			"You can have this.$")
 	giveitem_std (ITEM_HYPER_POTION, 1)
