@@ -112,27 +112,29 @@
         "SecretBase_Shrub4"
     ],
     "MG_SingleMapPuzzles": [
-        "Puzzle_TrickHouseCut",
         "Puzzle_TrickHouseTrapdoors",
         "Puzzle_TrickHouseSpintiles",
+        "Puzzle_TrickHouseOriginal1"
+    ],
+    "MG_SingleMapPuzzles2019": [
+        "Puzzle_TrickHouseCut",
+        "Puzzle_TrickHouseOriginal2",
+        "Puzzle_TrickHouseOriginal3",
+        "Puzzle_TrickHouseOriginal4",
+        "Puzzle_TrickHouseOriginal5",
+        "Puzzle_TrickHouseOriginal6",
+        "Puzzle_TrickHouseOriginal7",
+        "Puzzle_TrickHouseOriginal8",
         "Puzzle_TinTowerClimb",
         "Puzzle_WaterTemple",
         "Puzzle_MusicNoteTiles",
         "Puzzle_LedgeMountain",
         "Puzzle_Wilke",
         "Puzzle_Route110",
-        "Puzzle_TrickHouseOriginal1",
-        "Puzzle_TrickHouseOriginal2",
-        "Puzzle_TrickHouseOriginal3",
-        "Puzzle_TrickHouseOriginal4",
-        "Puzzle_TrickHouseOriginal6",
-        "Puzzle_TrickHouseOriginal7",
-        "Puzzle_TrickHouseOriginal8",
         "Puzzle_Loss_Floor1",
         "Puzzle_Loss_Floor2",
         "Puzzle_TwinMemories",
-        "Puzzle_HiddenMaze",
-        "Puzzle_TrickHouseOriginal5"
+        "Puzzle_HiddenMaze"
     ],
     "MG_SpotTheDifferencePuzzles": [
         "Puzzle_SpotDifference_Hallway",
@@ -175,7 +177,8 @@
         "MG_LostWoodsPuzzles",
         "MG_DesertPuzzles",
         "MG_TrickOrTreatPuzzles",
-        "MG_SpotTheDifferencePuzzles"
+        "MG_SpotTheDifferencePuzzles",
+        "MG_SingleMapPuzzles2019"
     ],
     "layouts_table_label": "gMapLayouts"
 }

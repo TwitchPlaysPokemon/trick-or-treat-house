@@ -6,6 +6,7 @@ Puzzle_TwinMemories_MapScripts::
 	@ puzzle_metavars Puzzle_TwinMemories_Variables
 	puzzle_item_prereqs Puzzle_TwinMemories_PrereqItems
 	puzzle_candylist Puzzle_TwinMemories_CandyList
+	puzzle_setup_script Puzzle_TwinMemories_SetupScript
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TwinMemories_OnResume
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_TwinMemories_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_TwinMemories_FrameTable
@@ -51,12 +52,58 @@ Puzzle_TwinMemories_OnResume:
 	end
 
 @ -----------------------------------------------------
+@ Puzzle configurations:
+.macro twinm_config a:req, b:req, c:req, d:req, e:req, f:req
+.byte \a, \b, \c, \d, \e, \f
+inc __enum__
+.endm
+
+enum_start
+@           [ 0] [ 1] [ 2] [ 3] [ 4]
+@           [ 5] [ 6] [ 7] [ 8] [ 9]
+@           [10] [11]      [13] [14]
+@           [15] [16] [17] [18] [19]
+@           [20] [21] [22] [23] [24]
+Puzzle_TwinMemories_Configs:: @ const u8 [][6]
+	twinm_config  4,  6, 14, 17, 20, 23
+	twinm_config  1,  8, 11, 15, 22, 24
+	twinm_config  1,  6, 10, 16, 22, 18
+	twinm_config  4,  5,  8, 16, 19, 20
+	twinm_config  4,  5,  8, 16, 19, 20
+	twinm_config  2, 10, 14, 22,  6, 18
+	twinm_config  3,  6, 14,  5, 16, 23
+	twinm_config  0, 11,  2, 22, 13, 24
+	twinm_config  0,  8, 10, 17, 24, 21
+	twinm_config 21, 18, 14,  5,  2,  4
+
+enum _TWINM_CONFIG_COUNT
+Puzzle_TwinMemories_ConfigCount::
+	.byte _TWINM_CONFIG_COUNT
+
+@ -----------------------------------------------------
+#define VAR_CONFIG_LEFT   VAR_PUZZLE_00
+#define VAR_CONFIG_RIGHT  VAR_PUZZLE_01
+#define FLAG_SOLVE_LEFT   FLAG_PUZZLE_20
+#define FLAG_SOLVE_RIGHT  FLAG_PUZZLE_21
 `
+script(local) Puzzle_TwinMemories_SetupScript {
+	// First time setup only
+	if (flag(FLAG_PUZZLE_HAS_STARTED) == FALSE) {
+		random(_TWINM_CONFIG_COUNT)
+		copyvar(VAR_CONFIG_LEFT, VAR_RESULT)
+		do {
+			random(_TWINM_CONFIG_COUNT)
+			copyvar(VAR_CONFIG_RIGHT, VAR_RESULT)
+		}
+		while(var(VAR_CONFIG_LEFT) == VAR_CONFIG_RIGHT)
+	}
+}
+
 script Puzzle_TwinMemories_OnLoad {
-	if (flag(FLAG_PUZZLE_20) == TRUE) {
+	if (flag(FLAG_SOLVE_LEFT) == TRUE) {
 		call (Puzzle_TwinMemories_OpenLeftDoors)
 	}
-	if (flag(FLAG_PUZZLE_21) == TRUE) {
+	if (flag(FLAG_SOLVE_RIGHT) == TRUE) {
 		call (Puzzle_TwinMemories_OpenRightDoors)
 	}
 }
@@ -87,29 +134,28 @@ script Puzzle_TwinMemories_OpenRightDoors {
 }
 
 script Puzzle_TwinMemories_SetupLeftBoulders {
-	setobjectxy (2,  4,  7)
-	setobjectxy (3,  8,  9)
-	setobjectxy (4,  4, 11)
-	setobjectxy (5,  2, 13)
-	setobjectxy (6,  6, 15)
-	setobjectxy (7, 10, 15)
+	loadword(0, VAR_CONFIG_LEFT)  //config var
+	loadword(1, COORDXY(2 , 7))   // x/ybase
+	
+	callnative (SetupTwinMemoriesBoulders)
 }
 script Puzzle_TwinMemories_SetupRightBoulders {
-	setobjectxy (2, 30,  7)
-	setobjectxy (3, 24,  9)
-	setobjectxy (4, 30, 11)
-	setobjectxy (5, 26, 13)
-	setobjectxy (6, 22, 15)
-	setobjectxy (7, 28, 15)
+	loadword(0, VAR_CONFIG_RIGHT)  //config var
+	loadword(1, COORDXY(22 , 7))   // x/ybase
+	
+	callnative (SetupTwinMemoriesBoulders)
 }
 
 
 script Puzzle_TwinMemories_CheckPuzzleSolved1 {
-	if (flag(FLAG_PUZZLE_20) == FALSE) {
+	if (flag(FLAG_SOLVE_LEFT) == FALSE) {
+		loadword(0, VAR_CONFIG_RIGHT)  //config var
+		loadword(1, COORDXY(2 , 7))   // x/ybase
+		
 		callnative (CountTwinMemoriesBoulders)
 		if (var(VAR_RESULT) == 6) {
 			playse (SE_SEIKAI)
-			setflag (FLAG_PUZZLE_20)
+			setflag (FLAG_SOLVE_LEFT)
 			call (Puzzle_TwinMemories_OpenLeftDoors)
 			special (DrawWholeMapView)
 		}
@@ -117,11 +163,14 @@ script Puzzle_TwinMemories_CheckPuzzleSolved1 {
 	setvar (VAR_STEP_TRIGGER, 0)
 }
 script Puzzle_TwinMemories_CheckPuzzleSolved2 {
-	if (flag(FLAG_PUZZLE_21) == FALSE) {
+	if (flag(FLAG_SOLVE_RIGHT) == FALSE) {
+		loadword(0, VAR_CONFIG_LEFT)  //config var
+		loadword(1, COORDXY(22 , 7))   // x/ybase
+		
 		callnative (CountTwinMemoriesBoulders)
 		if (var(VAR_RESULT) == 6) {
 			playse (SE_SEIKAI)
-			setflag (FLAG_PUZZLE_21)
+			setflag (FLAG_SOLVE_RIGHT)
 			call (Puzzle_TwinMemories_OpenRightDoors)
 			special (DrawWholeMapView)
 		}
@@ -160,3 +209,16 @@ script Puzzle_TwinMemories_TriggerTrappedFailsafe {
 	release
 }
 
+script Puzzle_TwinMemories_VarCheck {
+	buffernumberstring(0, VAR_CONFIG_LEFT)
+	buffernumberstring(1, VAR_CONFIG_RIGHT)
+	buffernumberstring(2, VAR_LAST_ERROR_NO)
+	msgbox ("Config check: Left={STR_VAR_1}\nRight={STR_VAR_2} Error={STR_VAR_3}$", MSGBOX_SIGN)
+}
+
+raw `
+#undef VAR_CONFIG_LEFT
+#undef VAR_CONFIG_RIGHT
+#undef FLAG_SOLVE_LEFT
+#undef FLAG_SOLVE_RIGHT
+`

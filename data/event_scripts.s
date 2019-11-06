@@ -53,7 +53,7 @@ gSpecialVars:: @ 81DBA0C
 	.4byte gSpecialVar_ContestCategory
 	.4byte gSpecialVar_MonBoxId
 	.4byte gSpecialVar_MonBoxPos
-	.4byte gSpecialVar_Unused_0x8014
+	.4byte gSpecialVar_LastErrorNo
 	.4byte gTrainerBattleOpponent_A
 	.4byte gSpecialVar_InteractX
 	.4byte gSpecialVar_InteractY

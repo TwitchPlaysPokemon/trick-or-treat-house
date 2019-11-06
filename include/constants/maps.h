@@ -9,6 +9,10 @@
 #define MAP_GROUP(map) (MAP_##map >> 8)
 #define MAP_NUM(map) (MAP_##map & 0xFF)
 
+#define COORDXY(x, y) (x | (y << 16))
+#define COORD_X(a) (a & 0xFFFF)
+#define COORD_Y(a) (a >> 16)
+
 // These groups are used by pokedex_area_screen.c to find wild
 // pokemon locations.
 #define MAP_GROUP_OVERWORLD_MONS 0//MAP_GROUP(PETALBURG_CITY)

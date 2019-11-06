@@ -15,6 +15,8 @@
 #include "trickhouse.h"
 #include "script.h"
 #include "pokemon_storage_system.h"
+#include "event_object_movement.h"
+#include "constants/maps.h"
 #include "constants/flags.h"
 #include "constants/metatile_labels.h"
 #include "constants/songs.h"
@@ -22,6 +24,10 @@
 #include "constants/map_groups.h"
 #include "constants/vars.h"
 #include "constants/species.h"
+
+// Reference to an assembly defined constant, the start of the ROM
+// We don't actually use the value, just the address it's at.
+extern const int Start;
 
 ///////////////////////////////////////////////////////////////////////////////
 // Puzzle: Pokemon Says 
@@ -565,22 +571,71 @@ void UpdateCyclingRoadState(void) {
 // Puzzle: Twin Memories 
 // MAP_PUZZLE_TWIN_MEMORIES
 
+extern const u8 Puzzle_TwinMemories_Configs[][6];
+extern const u8 Puzzle_TwinMemories_ConfigCount;
+
 void CountTwinMemoriesBoulders(struct ScriptContext *ctx) {
-	s16 o;
+	s16 o, i;
+	s16 xbase = 0, ybase = 0, x, y;
 	struct EventObject *eventObject = NULL;
     struct CoordEvent *coordEvent = NULL;
+	const u8 *currConfig;
 	
 	gSpecialVar_Result = 0;
+	// Only load this pointer if it's within the array and pointing to someplace in ROM
+	if (VarGet(ctx->data[0]) > Puzzle_TwinMemories_ConfigCount) return;
+	currConfig = Puzzle_TwinMemories_Configs[VarGet(ctx->data[0])];
+	if (currConfig < (const u8*)&Start) return;
+	
+	xbase = COORD_X(ctx->data[1]);
+	ybase = COORD_Y(ctx->data[1]);
 	
 	for (o = 0; o < EVENT_OBJECTS_COUNT; o++) {
 		eventObject = &gEventObjects[o];
         if (eventObject->isPlayer) continue;
         if (!eventObject->active) continue;
 		if (eventObject->graphicsId != EVENT_OBJ_GFX_PUSHABLE_BOULDER) continue;
-        
-		if (eventObject->isStandingOnTrigger)
-			gSpecialVar_Result++;
+		if (!eventObject->isStandingOnTrigger) continue;
+		
+		x = (eventObject->currentCoords.x - 7 - xbase) / 2;
+		y = (eventObject->currentCoords.y - 7 - ybase) / 2;
+		x = (x * 5) + y; //the index of the tile being stood on
+		
+		for (i = 0; i < 6; i++) {
+			// Check to see if the tile this object is sitting on is part of the valid config
+			if (currConfig[i] == x) {
+				gSpecialVar_Result++;
+				continue;
+			}
+		}
 	}
+}
+
+void SetupTwinMemoriesBoulders(struct ScriptContext *ctx) {
+	s16 o, i;
+	s16 xbase, ybase, x, y;
+	struct EventObject *eventObject = NULL;
+	const u8 *currConfig;
+	
+	// Only load this pointer if it's within the array and pointing to someplace in ROM
+	if (VarGet(ctx->data[0]) > Puzzle_TwinMemories_ConfigCount) { gSpecialVar_LastErrorNo = 1; return; }
+	currConfig = Puzzle_TwinMemories_Configs[VarGet(ctx->data[0])];
+	if (currConfig < (const u8*)&Start) { gSpecialVar_LastErrorNo = 2; return; }
+	
+	xbase = COORD_X(ctx->data[1]);
+	ybase = COORD_Y(ctx->data[1]);
+	
+	// boulders are 2, 3, 4, 5, 6, 7
+	for (o = 0; o < EVENT_OBJECTS_COUNT; o++) {
+		eventObject = &gEventObjects[o];
+		if (eventObject->localId >= 2 && eventObject->localId <= 7) {
+			i = currConfig[eventObject->localId-2];
+			x = ((i / 5) * 2) + xbase + 7;
+			y = ((i % 5) * 2) + ybase + 7;
+			MoveEventObjectToMapCoords(eventObject, x, y);
+		}
+	}
+	gSpecialVar_LastErrorNo = 0;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

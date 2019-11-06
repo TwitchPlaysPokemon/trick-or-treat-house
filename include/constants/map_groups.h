@@ -100,27 +100,9 @@
 #define MAP_ROUTE134         (47 | (4 << 8))
 
 // Map Group 5
-#define MAP_PUZZLE_TRICK_HOUSE_CUT       (0 | (5 << 8))
-#define MAP_PUZZLE_TRICK_HOUSE_TRAPDOORS (1 | (5 << 8))
-#define MAP_PUZZLE_TRICK_HOUSE_SPINTILES (2 | (5 << 8))
-#define MAP_PUZZLE_TIN_TOWER_CLIMB       (3 | (5 << 8))
-#define MAP_PUZZLE_WATER_TEMPLE          (4 | (5 << 8))
-#define MAP_PUZZLE_MUSIC_NOTE_TILES      (5 | (5 << 8))
-#define MAP_PUZZLE_LEDGE_MOUNTAIN        (6 | (5 << 8))
-#define MAP_PUZZLE_WILKE                 (7 | (5 << 8))
-#define MAP_PUZZLE_ROUTE110              (8 | (5 << 8))
-#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL1 (9 | (5 << 8))
-#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL2 (10 | (5 << 8))
-#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL3 (11 | (5 << 8))
-#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL4 (12 | (5 << 8))
-#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL6 (13 | (5 << 8))
-#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7 (14 | (5 << 8))
-#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL8 (15 | (5 << 8))
-#define MAP_PUZZLE_LOSS_FLOOR1           (16 | (5 << 8))
-#define MAP_PUZZLE_LOSS_FLOOR2           (17 | (5 << 8))
-#define MAP_PUZZLE_TWIN_MEMORIES         (18 | (5 << 8))
-#define MAP_PUZZLE_HIDDEN_MAZE           (19 | (5 << 8))
-#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL5 (20 | (5 << 8))
+#define MAP_PUZZLE_TRICK_HOUSE_TRAPDOORS (0 | (5 << 8))
+#define MAP_PUZZLE_TRICK_HOUSE_SPINTILES (1 | (5 << 8))
+#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL1 (2 | (5 << 8))
 
 // Map Group 6
 #define MAP_PUZZLE_LOST_WOODS1_ENTRANCE (0 | (6 << 8))
@@ -167,6 +149,26 @@
 #define MAP_PUZZLE_SPOT_DIFFERENCE_3_LEFT  (5 | (9 << 8))
 #define MAP_PUZZLE_SPOT_DIFFERENCE_3_RIGHT (6 | (9 << 8))
 
-#define MAP_GROUPS_COUNT 10
+// Map Group 10
+#define MAP_PUZZLE_TRICK_HOUSE_CUT       (0 | (10 << 8))
+#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL2 (1 | (10 << 8))
+#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL3 (2 | (10 << 8))
+#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL4 (3 | (10 << 8))
+#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL5 (4 | (10 << 8))
+#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL6 (5 | (10 << 8))
+#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7 (6 | (10 << 8))
+#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL8 (7 | (10 << 8))
+#define MAP_PUZZLE_TIN_TOWER_CLIMB       (8 | (10 << 8))
+#define MAP_PUZZLE_WATER_TEMPLE          (9 | (10 << 8))
+#define MAP_PUZZLE_MUSIC_NOTE_TILES      (10 | (10 << 8))
+#define MAP_PUZZLE_LEDGE_MOUNTAIN        (11 | (10 << 8))
+#define MAP_PUZZLE_WILKE                 (12 | (10 << 8))
+#define MAP_PUZZLE_ROUTE110              (13 | (10 << 8))
+#define MAP_PUZZLE_LOSS_FLOOR1           (14 | (10 << 8))
+#define MAP_PUZZLE_LOSS_FLOOR2           (15 | (10 << 8))
+#define MAP_PUZZLE_TWIN_MEMORIES         (16 | (10 << 8))
+#define MAP_PUZZLE_HIDDEN_MAZE           (17 | (10 << 8))
+
+#define MAP_GROUPS_COUNT 11
 
 #endif // GUARD_CONSTANTS_MAP_GROUPS_H

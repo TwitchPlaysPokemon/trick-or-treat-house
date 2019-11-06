@@ -54,7 +54,57 @@
             "type": "trigger",
             "var": "VAR_STEP_TRIGGER",
             "var_value": "1",
-            "x": 10,
+            "x": 2,
+            "y": 7
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 2,
+            "y": 9
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 2,
+            "y": 11
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 2,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 2,
+            "y": 15
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 4,
             "y": 7
         },
         {
@@ -74,7 +124,7 @@
             "type": "trigger",
             "var": "VAR_STEP_TRIGGER",
             "var_value": "1",
-            "x": 10,
+            "x": 4,
             "y": 11
         },
         {
@@ -84,7 +134,97 @@
             "type": "trigger",
             "var": "VAR_STEP_TRIGGER",
             "var_value": "1",
+            "x": 4,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 4,
+            "y": 15
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
             "x": 6,
+            "y": 7
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 6,
+            "y": 9
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 6,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 6,
+            "y": 15
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 8,
+            "y": 7
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 8,
+            "y": 9
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 8,
+            "y": 11
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 8,
             "y": 13
         },
         {
@@ -104,7 +244,47 @@
             "type": "trigger",
             "var": "VAR_STEP_TRIGGER",
             "var_value": "1",
-            "x": 2,
+            "x": 10,
+            "y": 7
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 10,
+            "y": 9
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 10,
+            "y": 11
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 10,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 10,
             "y": 15
         },
         {
@@ -114,7 +294,7 @@
             "type": "trigger",
             "var": "VAR_STEP_TRIGGER",
             "var_value": "2",
-            "x": 24,
+            "x": 22,
             "y": 7
         },
         {
@@ -124,7 +304,7 @@
             "type": "trigger",
             "var": "VAR_STEP_TRIGGER",
             "var_value": "2",
-            "x": 28,
+            "x": 22,
             "y": 9
         },
         {
@@ -134,7 +314,7 @@
             "type": "trigger",
             "var": "VAR_STEP_TRIGGER",
             "var_value": "2",
-            "x": 24,
+            "x": 22,
             "y": 11
         },
         {
@@ -154,8 +334,188 @@
             "type": "trigger",
             "var": "VAR_STEP_TRIGGER",
             "var_value": "2",
+            "x": 22,
+            "y": 15
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "2",
+            "x": 24,
+            "y": 7
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "2",
+            "x": 24,
+            "y": 9
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "2",
+            "x": 24,
+            "y": 11
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "2",
+            "x": 24,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "2",
+            "x": 24,
+            "y": 15
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "2",
+            "x": 26,
+            "y": 7
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "2",
+            "x": 26,
+            "y": 9
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "2",
+            "x": 26,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "2",
             "x": 26,
             "y": 15
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "2",
+            "x": 28,
+            "y": 7
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "2",
+            "x": 28,
+            "y": 9
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "2",
+            "x": 28,
+            "y": 11
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "2",
+            "x": 28,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "2",
+            "x": 28,
+            "y": 15
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "2",
+            "x": 30,
+            "y": 7
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "2",
+            "x": 30,
+            "y": 9
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "2",
+            "x": 30,
+            "y": 11
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "2",
+            "x": 30,
+            "y": 13
         },
         {
             "elevation": 0,
@@ -304,6 +664,19 @@
             "trainer_type": "6",
             "x": 16,
             "y": 8
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_DEBUG_OBJECTS",
+            "graphics_id": "EVENT_OBJ_GFX_ROUND_CUSHION",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Puzzle_TwinMemories_VarCheck",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 19,
+            "y": 27
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_110",
