@@ -1276,7 +1276,7 @@
 #define FLAG_PENDING_DAYCARE_EGG                    (SYSTEM_FLAGS + 0x21) // Unused Flag
 #define FLAG_RECEIVED_SECRET_POWER                  (SYSTEM_FLAGS + 0x22) // Unused Flag
 #define FLAG_RECEIVED_POKEBLOCK_CASE                (SYSTEM_FLAGS + 0x23) // Unused Flag
-#define FLAG_UNUSED_0x884                           (SYSTEM_FLAGS + 0x24) // Unused Flag
+#define FLAG_SYS_DONT_RANDOMIZE_PUZZLES             (SYSTEM_FLAGS + 0x24) // Unused Flag
 #define FLAG_UNUSED_0x885                           (SYSTEM_FLAGS + 0x25) // Unused Flag
 #define FLAG_UNUSED_0x886                           (SYSTEM_FLAGS + 0x26) // Unused Flag
 #define FLAG_SYS_WHITEOUT_TRAINER_RESET             (SYSTEM_FLAGS + 0x27) // Unused Flag

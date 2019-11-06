@@ -89,13 +89,18 @@ Puzzle_TwinMemories_ConfigCount::
 script(local) Puzzle_TwinMemories_SetupScript {
 	// First time setup only
 	if (flag(FLAG_PUZZLE_HAS_STARTED) == FALSE) {
-		random(_TWINM_CONFIG_COUNT)
-		copyvar(VAR_CONFIG_LEFT, VAR_RESULT)
-		do {
+		if (flag(FLAG_SYS_DONT_RANDOMIZE_PUZZLES) == TRUE) {
+			setvar(VAR_CONFIG_LEFT, 0)
+			setvar(VAR_CONFIG_RIGHT, 1)
+		} else {
 			random(_TWINM_CONFIG_COUNT)
-			copyvar(VAR_CONFIG_RIGHT, VAR_RESULT)
+			copyvar(VAR_CONFIG_LEFT, VAR_RESULT)
+			do {
+				random(_TWINM_CONFIG_COUNT)
+				copyvar(VAR_CONFIG_RIGHT, VAR_RESULT)
+			}
+			while(var(VAR_CONFIG_LEFT) == VAR_CONFIG_RIGHT)
 		}
-		while(var(VAR_CONFIG_LEFT) == VAR_CONFIG_RIGHT)
 	}
 }
 
