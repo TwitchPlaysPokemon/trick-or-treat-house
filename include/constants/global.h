@@ -5,27 +5,31 @@
 // In Gen 4 only, migrated Pokemon with Diamond, Pearl, or Platinum's ID show as "----------".
 // Gen 5 and up read Diamond, Pearl, or Platinum's ID as "Sinnoh".
 // In Gen 4 and up, migrated Pokemon with HeartGold or SoulSilver's ID show the otherwise unused "Johto" string.
-#define VERSION_SAPPHIRE 1
-#define VERSION_RUBY 2
-#define VERSION_EMERALD 3
-#define VERSION_FIRE_RED 4
-#define VERSION_LEAF_GREEN 5
-#define VERSION_HEART_GOLD 7
-#define VERSION_SOUL_SILVER 8
-#define VERSION_DIAMOND 10
-#define VERSION_PEARL 11
-#define VERSION_PLATINUM 12
-#define VERSION_GAMECUBE 15
+#define VERSION_SAPPHIRE     1
+#define VERSION_RUBY         2
+#define VERSION_EMERALD      3
+#define VERSION_FIRE_RED     4
+#define VERSION_LEAF_GREEN   5
+#define VERSION_HEART_GOLD   7
+#define VERSION_SOUL_SILVER  8
+#define VERSION_DIAMOND     10
+#define VERSION_PEARL       11
+#define VERSION_PLATINUM    12
+#define VERSION_GAMECUBE    15
 
-#define LANGUAGE_JAPANESE 1
-#define LANGUAGE_ENGLISH 2
-#define LANGUAGE_FRENCH 3
-#define LANGUAGE_ITALIAN 4
-#define LANGUAGE_GERMAN 5
-#define LANGUAGE_KOREAN 6 // 6 goes unused but the theory is it was meant to be Korean
-#define LANGUAGE_SPANISH 7
+// TTH Version Detection
+#define VERSION_TTH_2019     0  // The game version detection was not in the 2019 release
+#define VERSION_TTH_2020    20
 
-#define GAME_VERSION (VERSION_EMERALD)
+#define LANGUAGE_JAPANESE    1
+#define LANGUAGE_ENGLISH     2
+#define LANGUAGE_FRENCH      3
+#define LANGUAGE_ITALIAN     4
+#define LANGUAGE_GERMAN      5
+#define LANGUAGE_KOREAN      6 // 6 goes unused but the theory is it was meant to be Korean
+#define LANGUAGE_SPANISH     7
+
+#define GAME_VERSION (VERSION_TTH_2020) //(VERSION_EMERALD)
 #define GAME_LANGUAGE (LANGUAGE_ENGLISH)
 
 // capacities of various saveblock objects

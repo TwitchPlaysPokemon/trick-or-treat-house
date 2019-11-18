@@ -159,6 +159,7 @@ void NewGameInitData(void)
 
     gDifferentSaveFile = 1;
     gSaveBlock2Ptr->encryptionKey = 0;
+    gSaveBlock2Ptr->gameVersionId = GAME_VERSION;
     ZeroPlayerPartyMons();
     ZeroEnemyPartyMons();
     ResetPokedex();

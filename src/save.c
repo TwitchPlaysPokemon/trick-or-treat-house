@@ -442,6 +442,11 @@ static u8 sub_8152DD0(u16 a1, const struct SaveSectionLocation *location)
         retVal = GetSaveValidStatus(location);
         sub_8152E10(0xFFFF, location);
     }
+    
+    if (retVal == 1) {
+        if (gSaveBlock2Ptr->gameVersionId != GAME_VERSION)
+            retVal = 10;
+    }
 
     return retVal;
 }

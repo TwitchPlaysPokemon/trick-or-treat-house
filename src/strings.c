@@ -29,6 +29,7 @@ const u8 gUnknown_085E836D[] = _("Updating save file using external\ndata. Pleas
 const u8 gUnknown_085E83A2[] = _("The save file has been updated.");
 const u8 gText_SaveFileCorrupted[] = _("The save file is corrupted. The\nprevious save file will be loaded.");
 const u8 gText_SaveFileErased[] = _("The save file has been erased\ndue to corruption or damage.");
+const u8 gText_SaveFileOldTTH[] = _("Your save file is for an older\nrelease of Trick-or-Treat House.\pA new file will be required to continue.\nPlease back up your old save if\lyou wish to keep it.");
 const u8 gJPText_No1MSubCircuit[] = _("1Mサブきばんが ささっていません！");
 const u8 gText_BatteryRunDry[] = _("The internal battery has run dry.\nThe game can be played.\pHowever, clock-based events will\nno longer occur.");
 const u8 gUnknown_085E84BF[] = _("PLAYER");
