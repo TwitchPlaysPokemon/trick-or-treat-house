@@ -97,14 +97,14 @@ void CopyItemNameHandlePlural(u16 itemId, u8 *dst, u32 quantity)
     {
         GetBerryCountString(dst, gBerries[itemId - ITEM_CHERI_BERRY].name, quantity);
     }
-    else if (quantity < 2 || ItemId_GetPluralName(itemId)[0] == EOS)
+    else if (quantity < 2)
     {
         StringCopy(dst, ItemId_GetName(itemId));
     }
-    else if (ItemId_GetPluralName(itemId)[0] == 0)
+    else if (ItemId_GetPluralName(itemId) == NULL)
     {
         dst = StringCopy(dst, ItemId_GetName(itemId));
-        *dst = CHAR_S;
+        *dst = CHAR_s;
         dst++;
         *dst = EOS;
     }
