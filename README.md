@@ -8,23 +8,27 @@ This hack has many special things for making new Trick House Puzzles. A Trick Ho
 2. Is usually a maze or puzzle based on movement and/or opening the way forward.
 3. May contain trainers to hinder progress or punish wrong movement.
 
-This ROM has a framework for modularly supporting hundreds of these puzzles independantly of one another. It also has a simple framing story as a simple vehicle for getting the player into the puzzles as quick as possible.
+This ROM has a framework for modularly supporting hundreds of these puzzles independantly of one another. It also has a simple framing story as a vehicle for getting the player into the puzzles as quick as possible.
 
 The Trick House itself is modified such that the player gets a team of three rental Pokemon and then heads into the puzzle with a short introduction from the Trick Master (or supporting character). The puzzle itself is very flexable, allowing any kind of map(s) to be used, as long as there's an entry point as the startpoint, a scroll as a midpoint, and a stone door as an endpoint. Once the puzzle is completed, the player is taken through the stone door back to the Trick House's back room, where a character related to the puzzle can give any sort of quip about the puzzle they like, before the player's party is healed and they're sent back around to the front corridor of the Trick House to move on to the next puzzle.
+
+## HUD API Changes from 2019
+
+* The items array has been changed in the following ways: 
+   * The name and plural name arrays of fixed size were replaced with pointer to external strings, which can now be of arbitrary length.
 
 ## How to Define a Puzzle
 
 A puzzle is identified by its first (or only) map. The ID of this map is put into an ordered list of puzzles. The map header will be referenced by the framework for many things. A puzzle can have the following information given in the puzzle's map script header.
 
-- Puzzle Name (required): A pithy name for the puzzle. This will be shown upon first entering the puzzle's map from the Trick House, in the same way a route's name would be shown upon entering it.
-- Puzzle Author: The name of the maker of the puzzle. If a name is not given, the Trick Master will claim ownership of it.
-- Adjective: An adjective used by the Trick Master when describing the puzzle in his introduction text.
+- Puzzle Name (required): A pithy name for the puzzle. This will be shown upon first entering the puzzle's map from the Trick House, in the same way a route's name would be shown upon entering it. Also shown in the HUD.
+- Puzzle Author (required): The name of the maker of the puzzle. Shown in the HUD.
+- Adjective: An adjective used by the Trick Master when describing the puzzle in his introduction text. Unused if a custom intro is used.
+- Custom Intro: Some text spoken by the Trick Master (or other character) in the puzzle's introduction text.
 - Quip: A block of text used by the character in the end room (by default the Trick Master) when the player speaks with them.
-- Prerequisite Item List: A list of item ids the Trick Master should give the player during his introduction. By default, nothing is given.
+- Prerequisite Item List: A list of item ids the Trick Master should give the player during his introduction. By default, nothing is given. Nearly all items will be recollected upon leaving the puzzle.
 	- Use this list to give HM Items if your puzzle requires it.
-- Post Clean Up Item List: A list of item ids to take from the player after the puzzle ends. By default, nothing is taken.
-	- Use this list to take any HM Items from the player that were given to them before or during the puzzle. Clean up after yourself, please.
-- Meta Variable List: A list of variables and what they should be set to. This will be called by the framework mainly to set the graphic of the Trick Master in the front corridor, and the quip character in the back corridor. By default they're both the Trick Master, but they can be set to anyone by the puzzle.
+- Meta Variable List: A list of variables and what they should be set to. This will be called by the framework mainly to set the graphic of the Trick Master in the front corridor, and the quip character in the back corridor. By default the intro character is the Trick Master and the quip character is random, but they can be set to any event object by this list (and most will even work!).
 - Candy List: A list of flags that are used by any candy in the puzzle. This is for stat tracking, to check if the player has picked up all candy in the puzzle after it has finished.
 - Setup Script: This script is run in addition to any other map introduction scripts when the player enters a puzzle from the trick house.
 - Teardown Script: This script is run before warping back to the Trick House. If the player is warping to the end room, `FLAG_PUZZLE_HAS_COMPLETED` will be set.
@@ -76,4 +80,4 @@ In addition to the above map script header information, the following can be def
 
 ## Restrictions
 
-- (tbd)
+- Reflections are broken. Try to avoid using reflecting pond water in puzzles.
