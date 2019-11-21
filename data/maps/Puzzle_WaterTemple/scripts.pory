@@ -126,6 +126,12 @@ script Puzzle_WaterTemple_DrainToLevel1 {
 		release
 		end
 	}
+	if (var(VAR_FACING) == DIR_NORTH || var(VAR_FACING) == DIR_WEST) {
+		lock
+		msgbox ("You can't quite reach the switch\nfrom here.$")
+		release
+		end
+	}
 	lockall
 	msgbox ("This switch is labeled “Drain”…\n"
 			"Switch it?$", MSGBOX_YESNO)
@@ -202,6 +208,12 @@ script Puzzle_WaterTemple_DrainToLevel2 {
 	if (var(VAR_WATER_LEVEL) != 1) {
 		lock
 		msgbox ("The switch is pressed.$")
+		release
+		end
+	}
+	if (var(VAR_FACING) == DIR_SOUTH || var(VAR_FACING) == DIR_EAST) {
+		lock
+		msgbox ("You can't quite reach the switch\nfrom here.$")
 		release
 		end
 	}
