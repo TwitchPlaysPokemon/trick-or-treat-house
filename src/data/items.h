@@ -401,6 +401,7 @@ const struct Item gItems[] =
     [ITEM_FRESH_WATER] =
     {
         .name = sFreshWaterName,
+        .quantum = sQuantumStrBottle,
         .itemId = ITEM_FRESH_WATER,
         .price = CANDY_COST(200),
         .holdEffectParam = 50,
@@ -417,6 +418,7 @@ const struct Item gItems[] =
     [ITEM_SODA_POP] =
     {
         .name = sSodaPopName,
+        .quantum = sSodaPopQuantum,
         .itemId = ITEM_SODA_POP,
         .price = CANDY_COST(300),
         .holdEffectParam = 60,
@@ -433,6 +435,7 @@ const struct Item gItems[] =
     [ITEM_LEMONADE] =
     {
         .name = sLemonadeName,
+        .quantum = sQuantumStrBottle,
         .itemId = ITEM_LEMONADE,
         .price = CANDY_COST(350),
         .holdEffectParam = 80,
@@ -449,6 +452,7 @@ const struct Item gItems[] =
     [ITEM_MOOMOO_MILK] =
     {
         .name = sMoomooMilkName,
+        .quantum = sQuantumStrBottle,
         .itemId = ITEM_MOOMOO_MILK,
         .price = CANDY_COST(500),
         .holdEffectParam = 100,
@@ -465,6 +469,7 @@ const struct Item gItems[] =
     [ITEM_ENERGY_POWDER] =
     {
         .name = sEnergyPowderName,//_(CANDY_NAME("CARROT STICK", "ENERGYPOWDER")),
+        .quantum = sQuantumStrDose,
         .itemId = ITEM_ENERGY_POWDER,
         .price = CANDY_COST(500),
         .description = sEnergyPowderDesc,
@@ -681,6 +686,7 @@ const struct Item gItems[] =
     [ITEM_BERRY_JUICE] =
     {
         .name = sBerryJuiceName,
+        .quantum = sBerryJuiceQuantum,
         .itemId = ITEM_BERRY_JUICE,
         .price = CANDY_COST(100),
         .holdEffect = HOLD_EFFECT_RESTORE_HP,
@@ -698,6 +704,7 @@ const struct Item gItems[] =
     [ITEM_SACRED_ASH] =
     {
         .name = sSacredAshName,
+        .quantum = sQuantumStrBag,
         .itemId = ITEM_SACRED_ASH,
         .price = CANDY_COST(200),
         .description = sSacredAshDesc,
@@ -712,6 +719,7 @@ const struct Item gItems[] =
     [ITEM_SHOAL_SALT] =
     {
         .name = sShoalSaltName,
+        .quantum = sQuantumStrDose,
         .itemId = ITEM_SHOAL_SALT,
         .price = CANDY_COST(20),
         .description = sShoalSaltDesc,
@@ -918,7 +926,7 @@ const struct Item gItems[] =
     [ITEM_HP_UP] =
     {
         .name = sHPUpName,
-        .plural = sHPUpName,
+        .quantum = sQuantumStrDose,
         .itemId = ITEM_HP_UP,
         .price = CANDY_COST(9800),
         .description = sHPUpDesc,
@@ -931,7 +939,7 @@ const struct Item gItems[] =
     [ITEM_PROTEIN] =
     {
         .name = sProteinName,
-        .plural = sProteinName,
+        .quantum = sQuantumStrDose,
         .itemId = ITEM_PROTEIN,
         .price = CANDY_COST(9800),
         .description = sProteinDesc,
@@ -944,7 +952,7 @@ const struct Item gItems[] =
     [ITEM_IRON] =
     {
         .name = sIronName,
-        .plural = sIronName,
+        .quantum = sQuantumStrDose,
         .itemId = ITEM_IRON,
         .price = CANDY_COST(9800),
         .description = sIronDesc,
@@ -957,7 +965,7 @@ const struct Item gItems[] =
     [ITEM_CARBOS] =
     {
         .name = sCarbosName,
-        .plural = sCarbosName,
+        .quantum = sQuantumStrDose,
         .itemId = ITEM_CARBOS,
         .price = CANDY_COST(9800),
         .description = sCarbosDesc,
@@ -970,7 +978,7 @@ const struct Item gItems[] =
     [ITEM_CALCIUM] =
     {
         .name = sCalciumName,
-        .plural = sCalciumName,
+        .quantum = sQuantumStrDose,
         .itemId = ITEM_CALCIUM,
         .price = CANDY_COST(9800),
         .description = sCalciumDesc,
@@ -998,7 +1006,7 @@ const struct Item gItems[] =
     [ITEM_PP_UP] =
     {
         .name = sPPUpName,
-        .plural = sPPUpName,
+        .quantum = sQuantumStrDose,
         .itemId = ITEM_PP_UP,
         .price = CANDY_COST(9800),
         .description = sPPUpDesc,
@@ -1011,7 +1019,7 @@ const struct Item gItems[] =
     [ITEM_ZINC] =
     {
         .name = sZincName,
-        .plural = sZincName,
+        .quantum = sQuantumStrDose,
         .itemId = ITEM_ZINC,
         .price = CANDY_COST(9800),
         .description = sZincDesc,
@@ -1024,7 +1032,7 @@ const struct Item gItems[] =
     [ITEM_PP_MAX] =
     {
         .name = sPPMaxName,
-        .plural = sPPMaxName,
+        .quantum = sQuantumStrDose,
         .itemId = ITEM_PP_MAX,
         .price = CANDY_COST(9800),
         .description = sPPMaxDesc,
@@ -2439,6 +2447,7 @@ const struct Item gItems[] =
     [ITEM_BRIGHT_POWDER] =
     {
         .name = sBrightPowderName,
+        .quantum = sQuantumStrBag,
         .itemId = ITEM_BRIGHT_POWDER,
         .price = CANDY_COST(10),
         .holdEffect = HOLD_EFFECT_EVASION_UP,
@@ -2559,6 +2568,7 @@ const struct Item gItems[] =
     [ITEM_SILVER_POWDER] =
     {
         .name = sSilverPowderName,
+        .quantum = sQuantumStrBag,
         .itemId = ITEM_SILVER_POWDER,
         .price = CANDY_COST(100),
         .holdEffect = HOLD_EFFECT_BUG_POWER,
@@ -2720,7 +2730,7 @@ const struct Item gItems[] =
     [ITEM_LEFTOVERS] =
     {
         .name = sLeftoversName,
-        .plural = sLeftoversName,
+        .quantum = sLeftoversQuantum,
         .itemId = ITEM_LEFTOVERS,
         .price = CANDY_COST(200),
         .holdEffect = HOLD_EFFECT_LEFTOVERS,
@@ -2762,6 +2772,7 @@ const struct Item gItems[] =
     [ITEM_SOFT_SAND] =
     {
         .name = sSoftSandName,
+        .quantum = sQuantumStrBag,
         .itemId = ITEM_SOFT_SAND,
         .price = CANDY_COST(100),
         .holdEffect = HOLD_EFFECT_GROUND_POWER,
@@ -2847,6 +2858,7 @@ const struct Item gItems[] =
     [ITEM_MYSTIC_WATER] =
     {
         .name = sMysticWaterName,
+        .quantum = sMysticWaterQuantum,
         .itemId = ITEM_MYSTIC_WATER,
         .price = CANDY_COST(100),
         .holdEffect = HOLD_EFFECT_WATER_POWER,

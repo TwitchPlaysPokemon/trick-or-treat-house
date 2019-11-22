@@ -735,6 +735,7 @@ Std_ObtainItem_HandleItemType4:: @ 8271B85
 	return
 
 Std_ObtainItem_DisplayPutItemInPocket:: @ 8271B95
+	bufferitemname 1, VAR_0x8000, VAR_0x8001
 	buffernumberstring2 0, VAR_0x8001, 1
 	message gText_ObtainedTheItem
 	waitfanfare
@@ -812,7 +813,8 @@ EventScript_PickItemUp:: @ 8271C3A
 	call_if_eq EventScript_271C9B
 	waitfanfare
 	waitmessage
-	bufferitemnameplural 1, VAR_0x8004, VAR_0x8005
+	@ bufferitemnameplural 1, VAR_0x8004, VAR_0x8005
+	bufferitemname 1, VAR_0x8004, VAR_0x8005
 	setvar VAR_0x8004, 12
 	@ special CallBattlePyramidFunction
 	@ compare VAR_RESULT, 1
@@ -879,7 +881,8 @@ EventScript_271D1F:: @ 8271D1F
 EventScript_271D2A:: @ 8271D2A
 	waitmessage
 	waitfanfare
-	bufferitemnameplural 1, VAR_0x8004, 1
+	@ bufferitemnameplural 1, VAR_0x8004, 1
+	bufferitemname 1, VAR_0x8004, 1
 	copyvar VAR_0x8004, VAR_0x8008
 	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
 	special sub_80EDCE8

@@ -26,8 +26,9 @@ typedef void (*ItemUseFunc)(u8);
 
 struct Item
 {
-    const u8 *name;
-    const u8 *plural;
+    const u8 *name;     // pointer to the name of the item
+    const u8 *plural;   // pointer to the pluralized name of the item, or null to simply append "s".
+    const u8 *quantum;  // pointer to the word used to indicate a single unit in pickup descriptions. If not null, then plural points to plural quantum.
     u16 itemId;
     u16 price;
     u8 holdEffect;
@@ -86,6 +87,7 @@ bool8 AddPyramidBagItem(u16 itemId, u16 count);
 bool8 RemovePyramidBagItem(u16 itemId, u16 count);
 const u8 *ItemId_GetName(u16 itemId);
 const u8 *ItemId_GetPluralName(u16 itemId);
+const u8 *ItemId_GetQuantumString(u16 itemId);
 u16 ItemId_GetId(u16 itemId);
 u16 ItemId_GetPrice(u16 itemId);
 u8 ItemId_GetHoldEffect(u16 itemId);

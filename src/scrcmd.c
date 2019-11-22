@@ -1666,6 +1666,7 @@ bool8 ScrCmd_bufferitemname(struct ScriptContext *ctx)
 {
     u8 stringVarIndex = ScriptReadByte(ctx);
     u16 itemId = VarGet(ScriptReadHalfword(ctx));
+    u16 quantity = VarGet(ScriptReadHalfword(ctx));
 
     CopyItemName(itemId, sScriptStringVars[stringVarIndex]);
     return FALSE;

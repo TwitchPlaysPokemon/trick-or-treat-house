@@ -2,3 +2,27 @@ raw `
 TestMapHallway_MapScripts::
 	.byte 0
 `
+
+script TestMapHallway_GiveTestItems1 {
+	giveitem_std (ITEM_POTION, 1, 1)
+}
+
+script TestMapHallway_GiveTestItems2 {
+	giveitem_std (ITEM_POTION, 4, 1)
+}
+
+script TestMapHallway_GiveTestItems3 {
+	giveitem_std (ITEM_LEFTOVERS, 1, 1)
+}
+
+script TestMapHallway_GiveTestItems4 {
+	giveitem_std (ITEM_LEFTOVERS, 2, 1)
+}
+
+script TestMapHallway_GiveTestItems5 {
+	giveitem_std (ITEM_SOFT_SAND, 1, 1)
+}
+
+script TestMapHallway_GiveTestItems6 {
+	giveitem_std (ITEM_SOFT_SAND, 3, 1)
+}

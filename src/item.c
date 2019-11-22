@@ -93,24 +93,73 @@ void CopyItemName(u16 itemId, u8 *dst)
 
 void CopyItemNameHandlePlural(u16 itemId, u8 *dst, u32 quantity)
 {
+    // Handle berries
     if (itemId >= ITEM_CHERI_BERRY && itemId <= ITEM_ENIGMA_BERRY)
     {
         GetBerryCountString(dst, gBerries[itemId - ITEM_CHERI_BERRY].name, quantity);
     }
-    else if (quantity < 2)
+    // handle singular cases
+    else if (quantity == 1)
     {
-        StringCopy(dst, ItemId_GetName(itemId));
+        // If the item has a quantum string ("a jar of Honey")
+        if (ItemId_GetQuantumString(itemId) != NULL)
+        {
+            dst = StringCopy(dst, ItemId_GetQuantumString(itemId));
+            *dst = CHAR_SPACE; dst++;
+            *dst = CHAR_o; dst++;
+            *dst = CHAR_f; dst++;
+            *dst = CHAR_SPACE; dst++;
+            dst = StringCopy(dst, ItemId_GetName(itemId));
+            *dst = EOS;
+        }
+        // otherwise ("Great Ball")
+        else
+        {
+            StringCopy(dst, ItemId_GetName(itemId));
+        }
     }
-    else if (ItemId_GetPluralName(itemId) == NULL)
-    {
-        dst = StringCopy(dst, ItemId_GetName(itemId));
-        *dst = CHAR_s;
-        dst++;
-        *dst = EOS;
-    }
+    // handle plural cases
     else
     {
-        StringCopy(dst, ItemId_GetPluralName(itemId));
+        // If the item has a quantum string ("2 jars of Honey")
+        if (ItemId_GetQuantumString(itemId) != NULL)
+        {
+            // If the quantum doesn't have a special plural
+            if (ItemId_GetPluralName(itemId) == NULL)
+            {
+                dst = StringCopy(dst, ItemId_GetQuantumString(itemId));
+                *dst = CHAR_s; dst++;
+                *dst = CHAR_SPACE; dst++;
+                *dst = CHAR_o; dst++;
+                *dst = CHAR_f; dst++;
+                *dst = CHAR_SPACE; dst++;
+                dst = StringCopy(dst, ItemId_GetName(itemId));
+                *dst = EOS;
+            }
+            // The plural name is the pluralized quantum in this case 
+            else
+            {
+                dst = StringCopy(dst, ItemId_GetPluralName(itemId));
+                *dst = CHAR_SPACE; dst++;
+                *dst = CHAR_o; dst++;
+                *dst = CHAR_f; dst++;
+                *dst = CHAR_SPACE; dst++;
+                dst = StringCopy(dst, ItemId_GetName(itemId));
+                *dst = EOS;
+            }
+        }
+        // No quantum string, no special plural ("2 Great Balls")
+        else if (ItemId_GetPluralName(itemId) == NULL)
+        {
+            dst = StringCopy(dst, ItemId_GetName(itemId));
+            *dst = CHAR_s; dst++;
+            *dst = EOS;
+        }
+        // No quantum string, special plural ("2 Red Scarves")
+        else
+        {
+            StringCopy(dst, ItemId_GetPluralName(itemId));
+        }
     }
 }
 
@@ -918,6 +967,11 @@ const u8 *ItemId_GetName(u16 itemId)
 const u8 *ItemId_GetPluralName(u16 itemId)
 {
     return gItems[SanitizeItemId(itemId)].plural;
+}
+
+const u8 *ItemId_GetQuantumString(u16 itemId)
+{
+    return gItems[SanitizeItemId(itemId)].quantum;
 }
 
 u16 ItemId_GetId(u16 itemId)

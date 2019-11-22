@@ -968,10 +968,11 @@
 	.endm
 
 	@ Writes the name of the item at index item to the specified buffer. If the specified index is larger than the number of items in the game (0x176), the name of item 0 ("????????") is buffered instead.
-	.macro bufferitemname out:req, item:req
+	.macro bufferitemname out:req, item:req, quantity=1
 	.byte 0x80
 	.byte \out
 	.2byte \item
+	.2byte \quantity
 	.endm
 
 	@ Writes the name of the decoration at index decoration to the specified buffer. In FireRed, this command is a nop.

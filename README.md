@@ -16,6 +16,7 @@ The Trick House itself is modified such that the player gets a team of three ren
 
 * The items array has been changed in the following ways: 
    * The name and plural name arrays of fixed size were replaced with pointer to external strings, which can now be of arbitrary length.
+   * There is one additional string pointer after those two. The HUD can safely ignore it.
 
 ## How to Define a Puzzle
 

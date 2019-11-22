@@ -3,6 +3,10 @@ static const u8 sDummyDesc[] = _("?????");
 
 static const u8 sNoItemName[] = _("<NO ITEM>");
 
+static const u8 sQuantumStrBottle[] = _("bottle");
+static const u8 sQuantumStrDose[] = _("dose");
+static const u8 sQuantumStrBag[] = _("bag");
+
 // Pokeballs
 static const u8 sMasterBallName[] = _("Master Ball");
 static const u8 sMasterBallDesc[] = _(
@@ -155,6 +159,7 @@ static const u8 sFreshWaterDesc[] = _(
     "that restores HP\n"
     "by 50 points.");
 
+static const u8 sSodaPopQuantum[] = _("can");
 static const u8 sSodaPopName[] = _("Soda Pop");
 static const u8 sSodaPopDesc[] = _(
     "A fizzy soda drink\n"
@@ -255,6 +260,7 @@ static const u8 sWhiteFluteDesc[] = _(
     "A glass flute that\n"
     "lures wild {POKEMON}.");
 
+static const u8 sBerryJuiceQuantum[] = _("cup");
 static const u8 sBerryJuiceName[] = _("Berry Juice");
 static const u8 sBerryJuiceDesc[] = _(
     "A 100% pure juice\n"
@@ -986,6 +992,7 @@ static const u8 sMetalCoatDesc[] = _(
     "raises the power of\n"
     "STEEL-type moves.");
 
+static const u8 sLeftoversQuantum[] = _("serving");
 static const u8 sLeftoversName[] = _("Leftovers");
 static const u8 sLeftoversDesc[] = _(
     "A hold item that\n"
@@ -1040,6 +1047,7 @@ static const u8 sMagnetDesc[] = _(
     "boosts ELECTRIC-\n"
     "type moves.");
 
+static const u8 sMysticWaterQuantum[] = _("pendant");
 static const u8 sMysticWaterName[] = _("Mystic Water");
 static const u8 sMysticWaterDesc[] = _(
     "A hold item that\n"
@@ -1166,7 +1174,7 @@ static const u8 sStrengthItemDesc[] = _(
     "moving dolly.\n"
     "Allows STRENGTH.");
 
-static const u8 sSurfItemName[] = _("Inflate Raft");
+static const u8 sSurfItemName[] = _("Inflatable Raft");
 static const u8 sSurfItemDesc[] = _(
     "An inflatable\n"
     "rubber dinghy.\n"
