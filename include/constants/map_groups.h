@@ -103,6 +103,7 @@
 #define MAP_PUZZLE_TRICK_HOUSE_TRAPDOORS (0 | (5 << 8))
 #define MAP_PUZZLE_TRICK_HOUSE_SPINTILES (1 | (5 << 8))
 #define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL1 (2 | (5 << 8))
+#define MAP_PUZZLE_ILEX_FOREST           (3 | (5 << 8))
 
 // Map Group 6
 #define MAP_PUZZLE_LOST_WOODS1_ENTRANCE (0 | (6 << 8))
