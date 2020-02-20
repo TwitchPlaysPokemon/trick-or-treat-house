@@ -565,7 +565,7 @@
 
 	@ Blocks script execution until the movements being applied to the specified (index) Object finish. If the specified Object is 0x0000, then the command will block script execution until all Objects affected by applymovement finish their movements. If the specified Object is not currently being manipulated with applymovement, then this command does nothing.
 	@ If no map is specified, then the current map is used.
-	.macro waitmovement index:req, map
+	.macro waitmovement index=0, map
 		.ifb \map
 			.byte 0x51
 			.2byte \index
