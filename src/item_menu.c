@@ -204,19 +204,19 @@ static const struct ListMenuTemplate sItemListMenu =
 };
 
 const struct MenuAction sItemMenuActions[] = {
-    {gMenuText_Use, ItemMenu_UseOutOfBattle},
+    {gMenuText_Use, ItemMenu_UseOutOfBattle},    //0
     {gMenuText_Toss, ItemMenu_Toss},
     {gMenuText_Register, ItemMenu_Register},
-    {gMenuText_Give, ItemMenu_Give},
+    {gMenuText_Give, ItemMenu_Give},             //3
     {gText_Cancel2, ItemMenu_Cancel},
     {gMenuText_Use, ItemMenu_UseInBattle},
-    {gMenuText_Check, ItemMenu_UseOutOfBattle},
+    {gMenuText_Check, ItemMenu_UseOutOfBattle},  //6
     {gMenuText_Walk, ItemMenu_UseOutOfBattle},
     {gMenuText_Deselect, ItemMenu_Register},
-    {gMenuText_CheckTag, ItemMenu_CheckTag},
+    {gMenuText_CheckTag, ItemMenu_CheckTag},     //9
     {gMenuText_Confirm, unknown_ItemMenu_Confirm},
     {gMenuText_Show, unknown_ItemMenu_Show},
-    {gMenuText_Give2, unknown_ItemMenu_Give2},
+    {gMenuText_Give2, unknown_ItemMenu_Give2},   //12
     {gMenuText_Confirm, unknown_ItemMenu_Confirm2},
     {gText_EmptyString2, NULL}
 };
@@ -1458,6 +1458,7 @@ void sub_81AC644(u8 unused)
             {
                 switch (gBagPositionStruct.pocket)
                 {
+                    case CANDY_POCKET:
                     case ITEMS_POCKET:
                         gBagMenu->unk820 = &gBagMenu->unk824;
                         gBagMenu->unk828 = 4;
@@ -1477,10 +1478,10 @@ void sub_81AC644(u8 unused)
                                 gBagMenu->unk824 = 7;
                         }
                         break;
-                    case BALLS_POCKET:
-                        gBagMenu->unk820 = gUnknown_08614034;
-                        gBagMenu->unk828 = 4;
-                        break;
+                    // case BALLS_POCKET:
+                    //     gBagMenu->unk820 = gUnknown_08614034;
+                    //     gBagMenu->unk828 = 4;
+                    //     break;
                     case TMHM_POCKET:
                         gBagMenu->unk820 = gUnknown_08614038;
                         gBagMenu->unk828 = 4;
@@ -2124,7 +2125,7 @@ void PrepareBagForWallyTutorial(void)
 
     gUnknown_0203CE80 = AllocZeroed(sizeof(struct TempWallyStruct));
     memcpy(gUnknown_0203CE80->bagPocket_Items, gSaveBlock1Ptr->bagPocket_Items, sizeof(gSaveBlock1Ptr->bagPocket_Items));
-    memcpy(gUnknown_0203CE80->bagPocket_PokeBalls, gSaveBlock1Ptr->bagPocket_PokeBalls, sizeof(gSaveBlock1Ptr->bagPocket_PokeBalls));
+    // memcpy(gUnknown_0203CE80->bagPocket_PokeBalls, gSaveBlock1Ptr->bagPocket_PokeBalls, sizeof(gSaveBlock1Ptr->bagPocket_PokeBalls));
     gUnknown_0203CE80->pocket = gBagPositionStruct.pocket;
     for (i = 0; i <= 4; i++)
     {
@@ -2132,7 +2133,7 @@ void PrepareBagForWallyTutorial(void)
         gUnknown_0203CE80->scrollPosition[i] = gBagPositionStruct.scrollPosition[i];
     }
     ClearItemSlots(gSaveBlock1Ptr->bagPocket_Items, 30);
-    ClearItemSlots(gSaveBlock1Ptr->bagPocket_PokeBalls, 16);
+    // ClearItemSlots(gSaveBlock1Ptr->bagPocket_PokeBalls, 16);
     ResetBagScrollPositions();
 }
 
@@ -2141,7 +2142,7 @@ void RestoreBagAfterWallyTutorial(void)
     u32 i;
 
     memcpy(gSaveBlock1Ptr->bagPocket_Items, gUnknown_0203CE80->bagPocket_Items, sizeof(gUnknown_0203CE80->bagPocket_Items));
-    memcpy(gSaveBlock1Ptr->bagPocket_PokeBalls, gUnknown_0203CE80->bagPocket_PokeBalls, sizeof(gUnknown_0203CE80->bagPocket_PokeBalls));
+    // memcpy(gSaveBlock1Ptr->bagPocket_PokeBalls, gUnknown_0203CE80->bagPocket_PokeBalls, sizeof(gUnknown_0203CE80->bagPocket_PokeBalls));
     gBagPositionStruct.pocket = gUnknown_0203CE80->pocket;
     for (i = 0; i <= 4; i++)
     {

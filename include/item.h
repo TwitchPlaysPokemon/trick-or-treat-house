@@ -5,8 +5,8 @@
 enum
 {
     POCKET_NONE,
-    POCKET_ITEMS,
-    POCKET_POKE_BALLS,
+    POCKET_CANDY,
+    POCKET_GENERAL,
     POCKET_TM_HM,
     POCKET_BERRIES,
     POCKET_KEY_ITEMS,
@@ -14,8 +14,8 @@ enum
 
 enum
 {
+    CANDY_POCKET,
     ITEMS_POCKET,
-    BALLS_POCKET,
     TMHM_POCKET,
     BERRIES_POCKET,
     KEYITEMS_POCKET,
@@ -37,12 +37,13 @@ struct Item
     u8 importance:2;
     u8 keepItem:1;
     u8 isCandy:1;
+    u8 battleUsage:2;
     u8 unk19;
     u8 pocket;
     u8 type;
     ItemUseFunc fieldUseFunc;
-    u8 battleUsage;
     ItemUseFunc battleUseFunc;
+    const u8 *const itemEffect;
     u8 secondaryId;
 };
 
@@ -100,6 +101,7 @@ u8 ItemId_GetPocket(u16 itemId);
 u8 ItemId_GetType(u16 itemId);
 ItemUseFunc ItemId_GetFieldFunc(u16 itemId);
 u8 ItemId_GetBattleUsage(u16 itemId);
+const u8 *const ItemId_GetItemEffect(u16 itemId);
 ItemUseFunc ItemId_GetBattleFunc(u16 itemId);
 u8 ItemId_GetSecondaryId(u16 itemId);
 

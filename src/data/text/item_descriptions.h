@@ -1925,3 +1925,259 @@ static const u8 sOldSeaMapDesc[] = _(
     "A faded sea chart\n"
     "that shows the way\n"
     "to a certain island.");
+
+// TTH Candy
+static const u8 sBarQuantum[] = _("bar");
+static const u8 sBoxQuantum[] = _("box");
+static const u8 sPacketQuantum[] = _("packet");
+
+static const u8 sChocolateName[] = _("Chocolate");
+static const u8 sChocolateDesc[] = _(
+    "“Fun” sized.\n"
+    "Restores HP\n"
+    "by 20 points.");
+
+static const u8 sChocoWhiteName[] = _("White Chocolate");
+static const u8 sChocoWhiteDesc[] = _(
+    "Snack sized.\n"
+    "Restores HP\n"
+    "by 60 points.");
+
+static const u8 sChocoSlabName[] = _("White Chocolate");
+static const u8 sChocoSlabDesc[] = _(
+    "450 gr / 1 lbs. Hold;\n"
+    "Intimidates enemy.\n"
+    "Very heavy.");
+
+static const u8 sStarburstName[] = _("Starburst");
+static const u8 sLemonDropName[] = _("Lemon Drop");
+static const u8 sWarheadName[] = _("Warhead");
+static const u8 sPretzelName[] = _("Pretzel");
+static const u8 sVeroMangoName[] = _("Vero Mango");
+
+static const u8 sVioletCrumbleName[] = _("Violet Crumble");
+static const u8 sVioletCrumbleDesc[] = _(
+    "Bite sized.\n"
+    "Heals {POKEMON}\n"
+    "of confusion.");
+
+static const u8 sGalaxyName[] = _("Galaxy Chocolate");
+static const u8 sGalaxyDesc[] = _(
+    "Bite sized.\n"
+    "Heals {POKEMON}\n"
+    "of infatuation.");
+
+static const u8 sTwixLeftName[] = _("Left Twix");
+static const u8 sTwixLeftDesc[] = _(
+    "There's a difference?.\n"
+    "Restores HP\n"
+    "by 30 points.");
+
+static const u8 sTwixRightName[] = _("Right Twix");
+static const u8 sTwixRightDesc[] = _(
+    "There's a difference?.\n"
+    "Restores PP for\n"
+    "all moves by 4.");
+
+static const u8 sMMMinisQuantum[] = _("tube");
+static const u8 sMMMinisName[] = _("M&M's Minis");
+static const u8 sMMMinisDesc[] = _(
+    "A tube of candies\n"
+    "that restores HP\n"
+    "by 20 points.");
+
+static const u8 sMMPeanutName[] = _("Peanut M&M's");
+static const u8 sMMPeanutDesc[] = _(
+    "Sharing size.\n"
+    "Restores HP\n"
+    "by 20 points.");
+
+static const u8 sKingChocName[] = _("King's Choc×Nut");
+static const u8 sKingChocDesc[] = _(
+    "Individually wrapped.\n"
+    "Restores HP\n"
+    "by 30 points.");
+
+static const u8 sGummyBearName[] = _("Gummy Bears");
+static const u8 sGummyBearDesc[] = _(
+    "Individually wrapped.\n"
+    "Restores HP\n"
+    "by 30 points.");
+
+static const u8 sReeseCupName[] = _("Reese Cup");
+static const u8 sReeseCupDesc[] = _(
+    "Individually wrapped.\n"
+    "Heals all\n"
+    "status problems.");
+
+static const u8 sButterfingerName[] = _("Butterfinger");
+static const u8 sButterfingerDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sMilkyWayName[] = _("MilkyWay");
+static const u8 sMilkyWayDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sMilkaLufleeName[] = _("Milka Luflée");
+static const u8 sMilkaLufleeDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 s100GrandName[] = _("100 Grand");
+static const u8 s100GrandDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sMalteserName[] = _("Malteser");
+static const u8 sMalteserDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sCadburyCremeName[] = _("Cadbury Creme");
+static const u8 sCadburyCremeDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sWunderbarName[] = _("Wunderbar");
+static const u8 sWunderbarDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sOreoCookiesQuantum[] = _("pack");
+static const u8 sOreoCookiesName[] = _("Oreo Cookies");
+static const u8 sOreoCookiesDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sCoffeeCrispName[] = _("Coffee Crisp");
+static const u8 sCoffeeCrispDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sSamboPristurName[] = _("Sambó ¥ristur");
+static const u8 sSamboPristurDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sSnickersName[] = _("Snickers");
+static const u8 sSnickersDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sMarsBarName[] = _("Mars Bar");
+static const u8 sMarsBarDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sKitKatBarName[] = _("KitKat Bar");
+static const u8 sKitKatBarDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sPixieStickName[] = _("Pixie Stick");
+static const u8 sPixieStickDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sTurkishDelightName[] = _("Turkish Delight");
+static const u8 sTurkishDelightDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sGobstopperName[] = _("Gobstopper");
+static const u8 sGobstopperDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sBlackThunderName[] = _("Black Thunder");
+static const u8 sBlackThunderDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sTobleroneName[] = _("Toblerone");
+static const u8 sTobleroneDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sFerreroRocherName[] = _("Ferrero Rocher");
+static const u8 sFerreroRocherDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sEggName[] = _("Egg");
+static const u8 sEggDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sEggDeviledName[] = _("Deviled Egg");
+static const u8 sEggDeviledDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sCarrotName[] = _("Carrot Stick");
+static const u8 sCarrotDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sAppleName[] = _("Apple Slice");
+static const u8 sAppleDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sPruneName[] = _("Prune");
+static const u8 sPruneDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sCeleryName[] = _("Celery Stick");
+static const u8 sCeleryDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sSnapPeasName[] = _("SnapPeas");
+static const u8 sSnapPeasDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sRaisensName[] = _("Raisens");
+static const u8 sRaisensDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+static const u8 sBagQuantum[] = _("bag");
+static const u8 sKaleChipsName[] = _("Kale Chips");
+static const u8 sKaleChipsDesc[] = _(
+    ".\n"
+    "\n"
+    ".");
+
+

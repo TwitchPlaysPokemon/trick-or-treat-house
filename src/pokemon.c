@@ -1331,8 +1331,6 @@ const struct SpindaSpot gSpindaSpotGraphics[] =
     {34, 26, INCBIN_U16("graphics/spinda_spots/spot_3.bin")}
 };
 
-#include "data/pokemon/item_effects.h"
-
 const s8 gNatureStatTable[][5] =
 {
     // Atk Def Spd Sp.Atk Sp.Def
@@ -4681,9 +4679,10 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
         battlerId = MAX_BATTLERS_COUNT;
     }
 
-    if (!ITEM_HAS_EFFECT(item))
-        return TRUE;
-    if (gItemEffectTable[item - ITEM_POTION] == NULL && item != ITEM_ENIGMA_BERRY)
+    // if (!ITEM_HAS_EFFECT(item))
+    //     return TRUE;
+    // if (gItemEffectTable[item - ITEM_POTION] == NULL && item != ITEM_ENIGMA_BERRY)
+    if (ItemId_GetItemEffect(item) == NULL && item != ITEM_ENIGMA_BERRY)
         return TRUE;
 
     if (item == ITEM_ENIGMA_BERRY)
@@ -4695,7 +4694,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
     }
     else
     {
-        itemEffect = gItemEffectTable[item - ITEM_POTION];
+        itemEffect = ItemId_GetItemEffect(item); //gItemEffectTable[item - ITEM_POTION];
     }
 
     for (cmdIndex = 0; cmdIndex < 6; cmdIndex++)
@@ -5202,7 +5201,7 @@ u8 GetItemEffectParamOffset(u16 itemId, u8 effectByte, u8 effectBit)
 
     offset = 6;
 
-    temp = gItemEffectTable[itemId - ITEM_POTION];
+    temp = ItemId_GetItemEffect(itemId); //gItemEffectTable[itemId - ITEM_POTION];
 
     if (!temp && itemId != ITEM_ENIGMA_BERRY)
         return 0;
@@ -5326,7 +5325,7 @@ u8 *sub_806CF78(u16 itemId)
     }
     else
     {
-        itemEffect = gItemEffectTable[itemId - ITEM_POTION];
+        itemEffect = ItemId_GetItemEffect(itemId); //gItemEffectTable[itemId - ITEM_POTION];
     }
 
     gPotentialItemEffectBattler = gBattlerInMenuId;

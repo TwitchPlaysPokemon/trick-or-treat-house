@@ -15,7 +15,7 @@ raw `
 .macro ilex_birdspot x:req, y:req, name:req
 enum _ILEX_BIRDSPOT_\name
 .2byte \x, \y
-.4byte Puzzle_IlexForest_BirdSpot\script
+.4byte Puzzle_IlexForest_BirdSpot\name
 inc __enum__
 .endm
 
@@ -70,7 +70,7 @@ Puzzle_IlexForest_BirdSpots:
 
 	
 enum _ILEX_BIRDSPOT_COUNT
-Puzzle_TwinMemories_ConfigCount::
+Puzzle_IlexForest_ConfigCount::
 	.byte _ILEX_BIRDSPOT_COUNT
 
 @ -----------------------------------------------------
