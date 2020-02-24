@@ -341,6 +341,39 @@ script(local) Puzzle_IlexForest_BirdSpotCtoD {
 
 // ----------------------------------------------------
 
+script(local) Puzzle_IlexForest_BirdSpotD1 {
+	ilex_runto(D2, Puzzle_IlexForest_SprintSouth)
+}
+script(local) Puzzle_IlexForest_BirdSpotD2 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_NORTH:
+			ilex_runto(D3, Puzzle_IlexForest_SprintNorth)
+		case DIR_SOUTH:
+			ilex_runto(D4, Puzzle_IlexForest_SprintSouth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotD3 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_NORTH:
+			ilex_runto(D2, Puzzle_IlexForest_SprintNorth)
+		case DIR_SOUTH:
+			ilex_runto(D4, Puzzle_IlexForest_SprintSouth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotD4 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_WEST:
+			ilex_runto(D3, Puzzle_IlexForest_SprintNorth)
+		case DIR_EAST:
+			ilex_runto(D2, Puzzle_IlexForest_SprintNorth)
+		case DIR_SOUTH:
+			ilex_runto(D5, Puzzle_IlexForest_SprintSouth)
+	}
+}
+
 // ----------------------------------------------------
 
 script(local) Puzzle_IlexForest_BirdSpotE1 {

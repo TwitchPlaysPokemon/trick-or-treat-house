@@ -115,7 +115,8 @@
         "Puzzle_TrickHouseTrapdoors",
         "Puzzle_TrickHouseSpintiles",
         "Puzzle_TrickHouseOriginal1",
-        "Puzzle_IlexForest"
+        "Puzzle_IlexForest",
+        "Puzzle_SootSackMaze"
     ],
     "MG_SingleMapPuzzles2019": [
         "Puzzle_TrickHouseCut",

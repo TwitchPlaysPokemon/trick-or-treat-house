@@ -6293,3 +6293,5 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/FakeSecretBaseCave/scripts.inc"
 
 	.include "data/maps/Puzzle_IlexForest/scripts.inc"
+
+	.include "data/maps/Puzzle_SootSackMaze/scripts.inc"

@@ -1,0 +1,110 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_TEMP_1",
+            "item": "ITEM_FIELD_ARROW",
+            "type": "hidden_item",
+            "x": 29,
+            "y": 40
+        }
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_PUZZLE_SOOT_SACK_MAZE",
+    "layout": "LAYOUT_PUZZLE_SOOT_SACK_MAZE",
+    "map_type": "MAP_TYPE_ROUTE",
+    "music": "MUS_KAZANBAI",
+    "name": "Puzzle_SootSackMaze",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_SCROLL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 14,
+            "y": 29
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_STONE",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 88,
+            "y": 25
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 18,
+            "y": 43
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 14,
+            "y": 51
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 26,
+            "y": 53
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 37,
+            "y": 40
+        }
+    ],
+    "region_map_section": "MAPSEC_ROUTE_113",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+    ],
+    "weather": "WEATHER_SUNNY"
+}
