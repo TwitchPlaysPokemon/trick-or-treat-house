@@ -5,6 +5,7 @@
 #include "pokemon.h"
 #include "random.h"
 #include "util.h"
+#include "item.h"
 #include "constants/abilities.h"
 #include "constants/item_effects.h"
 #include "constants/items.h"
@@ -832,13 +833,14 @@ static bool8 ShouldUseItem(void)
         item = gBattleResources->battleHistory->trainerItems[i];
         if (item == ITEM_NONE)
             continue;
-        if (gItemEffectTable[item - ITEM_POTION] == NULL)
+        // if (gItemEffectTable[item - ITEM_POTION] == NULL)
+        if (ItemId_GetItemEffect(item) == NULL)
             continue;
 
         if (item == ITEM_ENIGMA_BERRY)
             itemEffects = gSaveBlock1Ptr->enigmaBerry.itemEffect;
         else
-            itemEffects = gItemEffectTable[item - ITEM_POTION];
+            itemEffects = ItemId_GetItemEffect(item); //gItemEffectTable[item - ITEM_POTION];
 
         *(gBattleStruct->AI_itemType + gActiveBattler / 2) = GetAI_ItemType(item, itemEffects);
 

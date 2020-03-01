@@ -1,0 +1,481 @@
+mapscripts Puzzle_IlexForest_MapScripts {
+	
+}
+
+raw `
+@ -----------------------------------------------------
+#define VAR_BIRD_LOCATION   VAR_PUZZLE_00
+#define LID_BIRD   3
+`
+
+
+raw `
+@ -----------------------------------------------------
+@ Bird Spots: (Marked by unused triggers on map)
+.macro ilex_birdspot x:req, y:req, name:req
+enum _ILEX_BIRDSPOT_\name
+.2byte \x, \y
+.4byte Puzzle_IlexForest_BirdSpot\name
+inc __enum__
+.endm
+
+@ Macro to call to the bird run off function.
+.macro ilex_runto location:req, movement:req
+loadword 0, \movement
+setvar VAR_BIRD_LOCATION, _ILEX_BIRDSPOT_\location
+call Puzzle_IlexForest_BirdRunsOff
+.endm
+
+enum_start
+
+.align 2
+Puzzle_IlexForest_BirdSpots:
+	ilex_birdspot  6, 14, Final
+	ilex_birdspot 14, 18, Initial
+	
+	ilex_birdspot 15, 11, A1
+	ilex_birdspot 20, 10, A2
+	ilex_birdspot 29,  8, A3
+	ilex_birdspot 28, 17, A4
+	ilex_birdspot 24, 21, A5
+	ilex_birdspot 22, 17, A6
+	ilex_birdspot 15, 15, A7
+	ilex_birdspot 25,  8, AtoB
+	
+	ilex_birdspot 44,  9, B1
+	ilex_birdspot 44,  5, B2
+	ilex_birdspot 49,  2, B3
+	ilex_birdspot 50,  9, B4
+	ilex_birdspot 48, 14, BtoC
+	ilex_birdspot 39, 15, B6
+	
+	ilex_birdspot 59, 11, C1
+	ilex_birdspot 63,  7, C2
+	ilex_birdspot 64, 14, C3
+	ilex_birdspot 66, 22, C4
+	ilex_birdspot 61, 30, C5
+	ilex_birdspot 60, 23, C6
+	ilex_birdspot 54, 20, C7
+	ilex_birdspot 55, 14, C8
+	
+	ilex_birdspot 15, 11, E1
+	ilex_birdspot 20, 10, E2
+	ilex_birdspot 29,  8, E3
+	ilex_birdspot 28, 17, E4
+	ilex_birdspot 24, 21, E5
+	ilex_birdspot 22, 17, E6
+	ilex_birdspot 15, 15, E7
+	ilex_birdspot 10, 21, E8
+
+
+	
+enum _ILEX_BIRDSPOT_COUNT
+Puzzle_IlexForest_ConfigCount::
+	.byte _ILEX_BIRDSPOT_COUNT
+
+@ -----------------------------------------------------
+`
+script(local) Puzzle_IlexForest_BirdCry {
+	playmoncry (SPECIES_FARFETCHD, 0)
+	msgbox ("Farfetch'd: Kwaa!$")
+	waitmoncry
+	waitmessage
+	return
+}
+script(local) Puzzle_IlexForest_BirdRunsOff {
+	// Play the bird's cry
+	call(Puzzle_IlexForest_BirdCry)
+	// Move the bird
+	applymovement(LID_BIRD, 0)
+	waitmovement
+	// Position the bird's perm location based on the bird spot id
+	
+	// Remove/Add bird so position is correct
+	removeobject(LID_BIRD)
+	addobject(LID_BIRD)
+	return
+}
+
+script(local) Puzzle_IlexForest_BirdSpotFinal {
+	call(Puzzle_IlexForest_BirdCry)
+}
+script(local) Puzzle_IlexForest_BirdSpotInitial {
+	msgbox ("It's the missing {POKEMON}!")
+	ilex_runto(A1, Puzzle_IlexForest_SprintNorth)
+}
+
+// ----------------------------------------------------
+
+script(local) Puzzle_IlexForest_BirdSpotA1 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_NORTH:
+			ilex_runto(A2, Puzzle_IlexForest_SprintNorth)
+		case DIR_SOUTH:
+			ilex_runto(A7, Puzzle_IlexForest_SprintNorth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotA2 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_SOUTH:
+			ilex_runto(A3, Puzzle_IlexForest_SprintNorth)
+		case DIR_WEST:
+			ilex_runto(A1, Puzzle_IlexForest_SprintNorth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotA3 {
+	switch(var(VAR_FACING)) {
+		case DIR_NORTH:
+			ilex_runto(AtoB, Puzzle_IlexForest_SprintNorth)
+		default:
+		case DIR_EAST:
+			ilex_runto(A4, Puzzle_IlexForest_SprintNorth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotA4 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_NORTH:
+		case DIR_EAST:
+			ilex_runto(A3, Puzzle_IlexForest_SprintNorth)
+		case DIR_SOUTH:
+			ilex_runto(A5, Puzzle_IlexForest_SprintNorth)
+		case DIR_WEST:
+			ilex_runto(A6, Puzzle_IlexForest_SprintNorth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotA5 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_WEST:
+			ilex_runto(A6, Puzzle_IlexForest_SprintNorth)
+		case DIR_EAST:
+			ilex_runto(A5, Puzzle_IlexForest_SprintNorth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotA6 {
+	switch(var(VAR_FACING)) {
+		case DIR_NORTH:
+			ilex_runto(A7, Puzzle_IlexForest_SprintNorth)
+		case DIR_SOUTH:
+			ilex_runto(A5, Puzzle_IlexForest_SprintNorth)
+		default:
+		case DIR_WEST:
+			ilex_runto(A4, Puzzle_IlexForest_SprintNorth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotA7 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_NORTH:
+		case DIR_WEST:
+			ilex_runto(A1, Puzzle_IlexForest_SprintNorth)
+		case DIR_SOUTH:
+		case DIR_EAST:
+			ilex_runto(A7, Puzzle_IlexForest_SprintNorth)
+	}
+}
+
+script(local) Puzzle_IlexForest_BirdSpotAtoB {
+	//ilex_runto(B1, Puzzle_IlexForest_SprintNorth)
+}
+
+// ----------------------------------------------------
+
+script(local) Puzzle_IlexForest_BirdSpotB1 {
+	switch(var(VAR_FACING)) {
+		case DIR_EAST:
+			ilex_runto(B2, Puzzle_IlexForest_SprintNorth)
+		case DIR_WEST:
+			ilex_runto(B6, Puzzle_IlexForest_SprintNorth)
+		default:
+		case DIR_NORTH:
+			ilex_runto(B4, Puzzle_IlexForest_SprintNorth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotB2 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_NORTH:
+			ilex_runto(B3, Puzzle_IlexForest_SprintNorth)
+		case DIR_SOUTH:
+			ilex_runto(B1, Puzzle_IlexForest_SprintNorth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotB3 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_WEST:
+			ilex_runto(B1, Puzzle_IlexForest_SprintNorth)
+		case DIR_EAST:
+			ilex_runto(B4, Puzzle_IlexForest_SprintNorth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotB4 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_WEST:
+			ilex_runto(B1, Puzzle_IlexForest_SprintNorth)
+		case DIR_NORTH:
+			ilex_runto(B3, Puzzle_IlexForest_SprintNorth)
+		case DIR_SOUTH:
+		case DIR_EAST:
+			ilex_runto(BtoC, Puzzle_IlexForest_SprintNorth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotBtoC {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_WEST:
+			ilex_runto(B1, Puzzle_IlexForest_SprintNorth)
+		case DIR_EAST:
+			ilex_runto(B4, Puzzle_IlexForest_SprintNorth)
+		case DIR_NORTH:
+			//ilex_runto(C1, Puzzle_IlexForest_SprintNorth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotB6 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_WEST:
+			ilex_runto(B1, Puzzle_IlexForest_SprintNorth)
+		case DIR_SOUTH:
+		case DIR_EAST:
+			ilex_runto(BtoC, Puzzle_IlexForest_SprintNorth)
+	}
+}
+
+// ----------------------------------------------------
+
+script(local) Puzzle_IlexForest_BirdSpotC1 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_NORTH:
+			ilex_runto(C2, Puzzle_IlexForest_SprintNorth)
+		case DIR_EAST:
+			ilex_runto(C3, Puzzle_IlexForest_SprintNorth)
+		case DIR_SOUTH:
+			ilex_runto(C8, Puzzle_IlexForest_SprintNorth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotC2 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_WEST:
+			ilex_runto(C1, Puzzle_IlexForest_SprintNorth)
+		case DIR_EAST:
+			ilex_runto(C3, Puzzle_IlexForest_SprintNorth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotC3 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_EAST:
+		case DIR_NORTH:
+			ilex_runto(C2, Puzzle_IlexForest_SprintNorth)
+		case DIR_WEST:
+			ilex_runto(C8, Puzzle_IlexForest_SprintWest)
+		case DIR_SOUTH:
+			ilex_runto(C4, Puzzle_IlexForest_SprintSouth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotC4 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_NORTH:
+			ilex_runto(C3, Puzzle_IlexForest_SprintNorth)
+		case DIR_EAST:
+			ilex_runto(C5, Puzzle_IlexForest_SprintSouth)
+		case DIR_SOUTH:
+			ilex_runto(C6, Puzzle_IlexForest_SprintEast)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotC5 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_EAST:
+			ilex_runto(C4, Puzzle_IlexForest_SprintEast)
+		case DIR_WEST:
+			ilex_runto(C6, Puzzle_IlexForest_SprintNorth)
+		case DIR_NORTH:
+			ilex_runto(CtoD, Puzzle_IlexForest_SprintWest)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotC6 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_NORTH:
+			ilex_runto(C4, Puzzle_IlexForest_SprintEast)
+		case DIR_WEST:
+			ilex_runto(C7, Puzzle_IlexForest_SprintNorth)
+		case DIR_EAST:
+			ilex_runto(C5, Puzzle_IlexForest_SprintSouth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotC7 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_WEST:
+		case DIR_EAST:
+			ilex_runto(C8, Puzzle_IlexForest_SprintNorth)
+		case DIR_SOUTH:
+			ilex_runto(C6, Puzzle_IlexForest_SprintSouth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotC8 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_NORTH:
+			ilex_runto(C1, Puzzle_IlexForest_SprintNorth)
+		case DIR_EAST:
+			ilex_runto(C3, Puzzle_IlexForest_SprintEast)
+		case DIR_SOUTH:
+			ilex_runto(C7, Puzzle_IlexForest_SprintSouth)
+	}
+}
+
+script(local) Puzzle_IlexForest_BirdSpotCtoD {
+	// ilex_runto(D1, Puzzle_IlexForest_SprintSouth)
+}
+
+// ----------------------------------------------------
+
+script(local) Puzzle_IlexForest_BirdSpotD1 {
+	ilex_runto(D2, Puzzle_IlexForest_SprintSouth)
+}
+script(local) Puzzle_IlexForest_BirdSpotD2 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_NORTH:
+			ilex_runto(D3, Puzzle_IlexForest_SprintNorth)
+		case DIR_SOUTH:
+			ilex_runto(D4, Puzzle_IlexForest_SprintSouth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotD3 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_NORTH:
+			ilex_runto(D2, Puzzle_IlexForest_SprintNorth)
+		case DIR_SOUTH:
+			ilex_runto(D4, Puzzle_IlexForest_SprintSouth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotD4 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_WEST:
+			ilex_runto(D3, Puzzle_IlexForest_SprintNorth)
+		case DIR_EAST:
+			ilex_runto(D2, Puzzle_IlexForest_SprintNorth)
+		case DIR_SOUTH:
+			ilex_runto(D5, Puzzle_IlexForest_SprintSouth)
+	}
+}
+
+// ----------------------------------------------------
+
+script(local) Puzzle_IlexForest_BirdSpotE1 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_NORTH:
+			ilex_runto(A2, Puzzle_IlexForest_SprintNorth)
+		case DIR_SOUTH:
+			ilex_runto(A7, Puzzle_IlexForest_SprintNorth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotE2 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_SOUTH:
+			ilex_runto(A3, Puzzle_IlexForest_SprintNorth)
+		case DIR_WEST:
+			ilex_runto(A1, Puzzle_IlexForest_SprintNorth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotE3 {
+	switch(var(VAR_FACING)) {
+		case DIR_NORTH:
+			ilex_runto(AtoB, Puzzle_IlexForest_SprintNorth)
+		default:
+		case DIR_EAST:
+			ilex_runto(A4, Puzzle_IlexForest_SprintNorth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotE4 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_NORTH:
+		case DIR_EAST:
+			ilex_runto(A3, Puzzle_IlexForest_SprintNorth)
+		case DIR_SOUTH:
+			ilex_runto(A5, Puzzle_IlexForest_SprintNorth)
+		case DIR_WEST:
+			ilex_runto(A6, Puzzle_IlexForest_SprintNorth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotE5 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_WEST:
+			ilex_runto(A6, Puzzle_IlexForest_SprintNorth)
+		case DIR_EAST:
+			ilex_runto(A5, Puzzle_IlexForest_SprintNorth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotE6 {
+	switch(var(VAR_FACING)) {
+		case DIR_NORTH:
+			ilex_runto(A7, Puzzle_IlexForest_SprintNorth)
+		case DIR_SOUTH:
+			ilex_runto(A5, Puzzle_IlexForest_SprintNorth)
+		default:
+		case DIR_WEST:
+			ilex_runto(A4, Puzzle_IlexForest_SprintNorth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotE7 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_NORTH:
+			ilex_runto(A8, Puzzle_IlexForest_SprintNorth)
+		case DIR_WEST:
+			ilex_runto(A1, Puzzle_IlexForest_SprintNorth)
+		case DIR_SOUTH:
+		case DIR_EAST:
+			ilex_runto(A7, Puzzle_IlexForest_SprintNorth)
+	}
+}
+script(local) Puzzle_IlexForest_BirdSpotE8 {
+	switch(var(VAR_FACING)) {
+		default:
+		case DIR_WEST:
+			ilex_runto(Final, Puzzle_IlexForest_SprintNorth)
+		case DIR_EAST:
+			ilex_runto(A7, Puzzle_IlexForest_SprintNorth)
+		case DIR_NORTH:
+		case DIR_SOUTH:
+			ilex_runto(A7, Puzzle_IlexForest_SprintNorth)
+	}
+}
+
+
+
+
+
+
+
+movement Puzzle_IlexForest_SprintNorth {
+	walk_fast_up * 6
+}
+movement Puzzle_IlexForest_SprintSouth {
+	walk_fast_down * 6
+}
+movement Puzzle_IlexForest_SprintWest {
+	walk_fast_left * 8
+}
+movement Puzzle_IlexForest_SprintEast {
+	walk_fast_right * 8
+}
+

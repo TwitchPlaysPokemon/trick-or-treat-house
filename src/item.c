@@ -11,10 +11,12 @@
 #include "load_save.h"
 #include "item_use.h"
 #include "text.h"
+#include "random.h"
 // #include "battle_pyramid.h"
 // #include "battle_pyramid_bag.h"
 #include "constants/items.h"
 #include "constants/hold_effects.h"
+#include "constants/item_effects.h"
 
 extern u16 gUnknown_0203CF30[];
 
@@ -24,11 +26,13 @@ extern u16 gUnknown_0203CF30[];
 #endif
 static bool8 CheckPyramidBagHasItem(u16 itemId, u16 count);
 static bool8 CheckPyramidBagHasSpace(u16 itemId, u16 count);
+static void ResolveSpecialItemIds(u16 *itemId, u16 *count);
 
 // EWRAM variables
 EWRAM_DATA struct BagPocket gBagPockets[POCKETS_COUNT] = {0};
 
 // rodata
+#include "data/pokemon/item_effects.h"
 #include "data/text/item_descriptions.h"
 #include "data/items.h"
 
@@ -70,14 +74,17 @@ void ApplyNewEncryptionKeyToBagItems_(u32 newKey) // really GF?
 
 void SetBagItemsPointers(void)
 {
+    gBagPockets[CANDY_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_Items;
+    gBagPockets[CANDY_POCKET].capacity = BAG_CANDY_COUNT;
+    
     gBagPockets[ITEMS_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_Items;
     gBagPockets[ITEMS_POCKET].capacity = BAG_ITEMS_COUNT;
 
     gBagPockets[KEYITEMS_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_KeyItems;
     gBagPockets[KEYITEMS_POCKET].capacity = BAG_KEYITEMS_COUNT;
 
-    gBagPockets[BALLS_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_PokeBalls;
-    gBagPockets[BALLS_POCKET].capacity = BAG_POKEBALLS_COUNT;
+    // gBagPockets[BALLS_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_PokeBalls;
+    // gBagPockets[BALLS_POCKET].capacity = BAG_POKEBALLS_COUNT;
 
     gBagPockets[TMHM_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_TMHM;
     gBagPockets[TMHM_POCKET].capacity = BAG_TMHM_COUNT;
@@ -299,6 +306,8 @@ bool8 CheckBagHasSpace(u16 itemId, u16 count)
 bool8 AddBagItem(u16 itemId, u16 count)
 {
     u8 i;
+    
+    ResolveSpecialItemIds(&itemId, &count);
 
     if (ItemId_GetPocket(itemId) == POCKET_NONE)
         return FALSE;
@@ -951,6 +960,45 @@ bool8 RemovePyramidBagItem(u16 itemId, u16 count)
     // }
 }
 
+static void ResolveSpecialItemIds(u16 *itemId, u16 *count)
+{
+    u16 rand = Random();
+    switch (*itemId)
+    {
+        case ITEM_CANDY_ABUNDANT:
+            (*itemId) = gCandyAbundantIds[rand % ARRAY_COUNT(gCandyAbundantIds)];
+            break;
+        case ITEM_CANDY_COMMON:
+            (*itemId) = gCandyCommonIds[rand % ARRAY_COUNT(gCandyCommonIds)];
+            break;
+        case ITEM_CANDY_UNCOMMON:
+            (*itemId) = gCandyUncommonIds[rand % ARRAY_COUNT(gCandyUncommonIds)];
+            break;
+        case ITEM_CANDY_RARE:
+            (*itemId) = gCandyRareIds[rand % ARRAY_COUNT(gCandyRareIds)];
+            break;
+        case ITEM_CANDY_HEALTHY:
+            (*itemId) = gCandyHealthyIds[rand % ARRAY_COUNT(gCandyHealthyIds)];
+            break;
+        default:
+            return;
+    }
+    
+    switch (*itemId)
+    {
+        case ITEM_CANDY_STARBURST: (*count) *= 3; break;
+        case ITEM_CANDY_LEMONDROP: (*count) *= 3; break;
+        case ITEM_CANDY_WARHEAD: (*count) *= 3; break;
+        case ITEM_CANDY_PRETZEL: (*count) *= 3; break;
+        case ITEM_CANDY_VEROMANGO: (*count) *= 3; break;
+        case ITEM_CANDY_VIOLETCRUMBLE: (*count) *= 3; break;
+        case ITEM_CANDY_MALTESERS: (*count) *= 3; break;
+        case ITEM_CANDY_GUMMYBEAR: (*count) *= 4; break;
+        case ITEM_CANDY_EGGS: (*count) *= 12; break;
+        case ITEM_CANDY_EGGDEVILED: (*count) *= 6; break;
+    }
+}
+
 static u16 SanitizeItemId(u16 itemId)
 {
     if (itemId >= ITEMS_COUNT)
@@ -1033,6 +1081,11 @@ ItemUseFunc ItemId_GetFieldFunc(u16 itemId)
 u8 ItemId_GetBattleUsage(u16 itemId)
 {
     return gItems[SanitizeItemId(itemId)].battleUsage;
+}
+
+const u8 *const ItemId_GetItemEffect(u16 itemId)
+{
+    return gItems[SanitizeItemId(itemId)].itemEffect;
 }
 
 ItemUseFunc ItemId_GetBattleFunc(u16 itemId)
