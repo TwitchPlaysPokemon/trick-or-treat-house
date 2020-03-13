@@ -16,18 +16,23 @@ Puzzle_TrickHouseSlipSliding_Quip:
 
 
 Puzzle_TrickHouseSlipSliding_CandyList:
-	@ .2byte FLAG_PUZZLE_ITEM_0
-	@ .2byte FLAG_PUZZLE_ITEM_1
-	@ .2byte FLAG_PUZZLE_ITEM_2
-	@ .2byte FLAG_PUZZLE_ITEM_3
-	@ .2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
-	@ .2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
-	@ .2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_COMMON_03
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_RARE_01
 	.2byte 0
 `
 
 script Puzzle_TrickHouseSlipSliding_YellowButton {
 	doMossTiles (0)
+	setflag (FLAG_TEMP_1)
 }
 
 script Puzzle_TrickHouseSlipSliding_BlueButton {
@@ -40,28 +45,43 @@ script Puzzle_TrickHouseSlipSliding_RedButton {
 
 script Puzzle_TrickHouseSlipSliding_Skeleboy {
 	trainerbattle_single (TRAINER_01,
-			"Chall text",
-			"Lose text")
-	msgbox ("After Text", MSGBOX_AUTOCLOSE)
+			"What? You think you can just push me\n"
+			"around or something?$",
+			"Okay, I guess you can.$")
+	if (flag(FLAG_TEMP_1)) {
+		msgbox ("Please don't press the yellow button\n"
+				"again? This place is slippery enough.$", MSGBOX_AUTOCLOSE)
+	} else {
+		msgbox ("What? I'm not moving. If you want to\n"
+				"get past me, you need to do it yourself.\p"
+				"With a yellow button, I mean.\n"
+				"Don't push me.$", MSGBOX_AUTOCLOSE)
+	}
 }
 
 script Puzzle_TrickHouseSlipSliding_AlienGirl {
 	trainerbattle_single (TRAINER_02,
-			"Chall text",
-			"Lose text")
-	msgbox ("After Text", MSGBOX_AUTOCLOSE)
+			"Hello, {PLAYER}. I've had my eye on you\n"
+			"for a while now.$",
+			"Oh, I actually guessed your name right?\n"
+			"Wow, I'm getting good at this.$")
+	msgbox ("Don't mind me. I'm not staring at you.\n"
+			"I'm “observing”. It's what we aliens do.$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_TrickHouseSlipSliding_Link {
 	trainerbattle_single (TRAINER_03,
-			"Chall text",
-			"Lose text")
-	msgbox ("After Text", MSGBOX_AUTOCLOSE)
+			"Ow! Hey! What gives?!$",
+			"Don't make me use my sword…!$")
+	msgbox ("If I had my hookshot, I could get out\n"
+			"of here easily.$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_TrickHouseSlipSliding_FairyGirl {
 	trainerbattle_single (TRAINER_04,
-			"Chall text",
-			"Lose text")
-	msgbox ("After Text", MSGBOX_AUTOCLOSE)
+			"Don't worry, I got you.\n"
+			"Wanna battle before you leave?$",
+			"Time to slide away!$")
+	msgbox ("I hope you found the red switch, or\n"
+			"you're not gonna get very far…$", MSGBOX_AUTOCLOSE)
 }

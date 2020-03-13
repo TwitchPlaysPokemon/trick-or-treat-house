@@ -1,4 +1,29 @@
 
+Common_EventScript_CandyAbundant::
+	giveitem_std ITEM_CANDY_ABUNDANT, 1, 1
+	end
+
+Common_EventScript_CandyCommon::
+	giveitem_std ITEM_CANDY_COMMON, 1, 1
+	end
+
+Common_EventScript_CandyUncommon::
+	giveitem_std ITEM_CANDY_UNCOMMON, 1, 1
+	end
+
+Common_EventScript_CandyHealthy::
+	giveitem_std ITEM_CANDY_HEALTHY, 1, 1
+	end
+
+Common_EventScript_CandyRare::
+	giveitem_std ITEM_CANDY_RARE, 1, 1
+	end
+
+
+@ -----------------------------------------------------
+@ Below is depreicated
+
+
 Common_EventScript_ItemChocolateBar::
 Common_EventScript_ItemPotion::
 	giveitem_std ITEM_POTION, 1, 1
