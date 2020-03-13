@@ -37,6 +37,7 @@ gPuzzleList::                                           @ TPP / Single Player
 .align 2
 gDebugPuzzles::
     .2byte MAP_EMPTY_PUZZLE
+    .2byte MAP_PUZZLE_TRICK_HOUSE_SLIP_SLIDING          @
     .2byte MAP_TRICK_TREAT_FORTREE_CITY                 @
     .2byte MAP_TRICK_TREAT_SLATEPORT_CITY1              @          (Must be last)
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL1             @  3 / 1

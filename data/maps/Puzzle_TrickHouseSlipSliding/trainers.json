@@ -1,0 +1,44 @@
+[
+	{
+		"class": "SKELETON",
+		"name": "SAMMY",
+		"party": [
+			{
+				"species": "SPECIES_UNOWN",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "ALIEN",
+		"female": true,
+		"name": "LIZ",
+		"party": [
+			{
+				"species": "SPECIES_UNOWN",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "HERO_OF_TIME",
+		"name": "HANK",
+		"party": [
+			{
+				"species": "SPECIES_UNOWN",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "FAIRY_GIRL",
+		"female": true,
+		"name": "TRISHA",
+		"party": [
+			{
+				"species": "SPECIES_UNOWN",
+				"level": 29
+			}
+		]
+	}
+]

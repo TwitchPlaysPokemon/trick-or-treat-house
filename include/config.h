@@ -26,8 +26,6 @@
 #define UNITS_METRIC
 #endif
 
-// Changes the names of various items to candy items
-#define USE_CANDY_NAMES 1
 // Changes trainer class names and sprites to use halloween costumes
 #define USE_TRAINER_COSTUMES 1
 // Changes money to Candy Corn

@@ -41,7 +41,6 @@ const u32 gItemIconPalette_LuxuryBall[] = INCBIN_U32("graphics/items/icon_palett
 const u32 gItemIcon_PremierBall[] = INCBIN_U32("graphics/items/icons/premier_ball.4bpp.lz");
 
 // Candy
-#if USE_CANDY_NAMES
 const u32 gItemIconPic_chocobar[] = INCBIN_U32("graphics/items/candy/chocobar.4bpp.lz");
 const u32 gItemIconPal_chocobar[] = INCBIN_U32("graphics/items/candy/chocobar.gbapal.lz");
 
@@ -125,8 +124,6 @@ const u32 gItemIconPal_toblerone[] = INCBIN_U32("graphics/items/candy/toblerone.
 
 const u32 gItemIconPic_gummybear[] = INCBIN_U32("graphics/items/candy/gummybear.4bpp.lz");
 const u32 gItemIconPal_gummybear[] = INCBIN_U32("graphics/items/candy/gummybear.gbapal.lz");
-
-#endif
 
 // Medicine
 

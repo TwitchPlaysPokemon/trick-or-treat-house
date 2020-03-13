@@ -2257,7 +2257,7 @@ bool8 ScrCmd_takecoins(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_mossdeepgym1(struct ScriptContext *ctx)
+bool8 ScrCmd_mosstiles_moveEvents(struct ScriptContext *ctx)
 {
     u16 v1 = VarGet(ScriptReadHalfword(ctx));
 
@@ -2265,13 +2265,13 @@ bool8 ScrCmd_mossdeepgym1(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_mossdeepgym2(struct ScriptContext *ctx)
+bool8 ScrCmd_mosstiles_turnEvents(struct ScriptContext *ctx)
 {
     MossdeepGym_TurnEvents();
     return FALSE;
 }
 
-bool8 ScrCmd_mossdeepgym3(struct ScriptContext *ctx)
+bool8 ScrCmd_mosstiles_initTiles(struct ScriptContext *ctx)
 {
     u16 v1 = VarGet(ScriptReadHalfword(ctx));
 
@@ -2279,7 +2279,7 @@ bool8 ScrCmd_mossdeepgym3(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_mossdeepgym4(struct ScriptContext *ctx)
+bool8 ScrCmd_mosstiles_finishTiles(struct ScriptContext *ctx)
 {
     FinishMossdeepGymTiles();
     return FALSE;

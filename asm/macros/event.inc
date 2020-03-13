@@ -1494,22 +1494,22 @@
 	.byte \location
 	.endm
 
-	.macro mossdeepgym1 unknown:req
+	.macro mosstiles_moveEvents unknown:req
 	.byte 0xd3
 	.2byte \unknown
 	.endm
 
-	.macro mossdeepgym2
+	.macro mosstiles_turnEvents
 	.byte 0xd4
 	.endm
 
 	@ In FireRed, this command is a nop.
-	.macro mossdeepgym3 var:req
+	.macro mosstiles_initTiles var:req
 	.byte 0xd5
 	.2byte \var
 	.endm
 
-	.macro mossdeepgym4
+	.macro mosstiles_finishTiles
 	.byte 0xd6
 	.endm
 

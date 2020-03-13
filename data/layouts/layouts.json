@@ -1339,6 +1339,16 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Fallarbor",
             "width": 100
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_TrickHouseSlipSliding/map.bin",
+            "border_filepath": "data/layouts/Puzzle_TrickHouseSlipSliding/border.bin",
+            "height": 22,
+            "id": "LAYOUT_PUZZLE_TRICK_HOUSE_SLIP_SLIDING",
+            "name": "Puzzle_TrickHouseSlipSliding_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrickHousePuzzle",
+            "width": 17
         }
     ],
     "layouts_table_label": "gMapLayouts"

@@ -77,3 +77,17 @@ GATE_ORIENTATION_270 = 3
 .byte \orientation
 .2byte 0 @ padding
 .endm
+
+@ -----------------------------------------------------
+
+.macro doMossTiles x:req
+playse SE_MU_PACHI
+waitse
+playse SE_TU_SAA
+mosstiles_initTiles 1
+mosstiles_moveEvents \x
+waitmovement 0
+mosstiles_turnEvents
+waitmovement 0
+mosstiles_finishTiles
+.endm

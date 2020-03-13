@@ -1,9 +1,3 @@
-#if USE_CANDY_NAMES
-#define CANDY_NAME(candy, normal) candy
-#else
-#define CANDY_NAME(candy, normal) normal
-#endif
-
 #if USE_CANDY_CURRENCY
 #define CANDY_COST(cost) (cost >> 6) 
 #define CANDY_COST2(candy, normal) candy
@@ -202,7 +196,7 @@ const struct Item gItems[] =
 
     [ITEM_POTION] =
     {
-        .name = sPotionName,//_(CANDY_NAME("CHOCOLATE BAR", "POTION")),
+        .name = sPotionName,
         .itemId = ITEM_POTION,
         .price = CANDY_COST(300),
         .holdEffectParam = 20,
@@ -219,7 +213,7 @@ const struct Item gItems[] =
 
     [ITEM_ANTIDOTE] =
     {
-        .name = sAntidoteName,//_(CANDY_NAME("STARBURST", "ANTIDOTE")),
+        .name = sAntidoteName,
         .itemId = ITEM_ANTIDOTE,
         .price = CANDY_COST(100),
         .description = sAntidoteDesc,
@@ -235,7 +229,7 @@ const struct Item gItems[] =
 
     [ITEM_BURN_HEAL] =
     {
-        .name = sBurnHealName,//_(CANDY_NAME("LEMON DROP", "BURN HEAL")),
+        .name = sBurnHealName,
         .itemId = ITEM_BURN_HEAL,
         .price = CANDY_COST(250),
         .description = sBurnHealDesc,
@@ -251,7 +245,7 @@ const struct Item gItems[] =
 
     [ITEM_ICE_HEAL] =
     {
-        .name = sIceHealName,//_(CANDY_NAME("WARHEAD", "ICE HEAL")),
+        .name = sIceHealName,
         .itemId = ITEM_ICE_HEAL,
         .price = CANDY_COST(250),
         .description = sIceHealDesc,
@@ -267,7 +261,7 @@ const struct Item gItems[] =
 
     [ITEM_AWAKENING] =
     {
-        .name = sAwakeningName,//_(CANDY_NAME("PRETZEL", "AWAKENING")),
+        .name = sAwakeningName,
         .itemId = ITEM_AWAKENING,
         .price = CANDY_COST(250),
         .description = sAwakeningDesc,
@@ -283,7 +277,7 @@ const struct Item gItems[] =
 
     [ITEM_PARALYZE_HEAL] =
     {
-        .name = sParalyzeHealName,//_(CANDY_NAME("VERO MANGO", "PARLYZ HEAL")),
+        .name = sParalyzeHealName,
         .itemId = ITEM_PARALYZE_HEAL,
         .price = CANDY_COST(200),
         .description = sParalyzeHealDesc,
@@ -299,7 +293,7 @@ const struct Item gItems[] =
 
     [ITEM_FULL_RESTORE] =
     {
-        .name = sFullRestoreName, //_(CANDY_NAME("100 GRAND BAR", "FULL RESTORE")),
+        .name = sFullRestoreName, 
         .itemId = ITEM_FULL_RESTORE,
         .price = CANDY_COST(3000),
         .holdEffectParam = 255,
@@ -316,7 +310,7 @@ const struct Item gItems[] =
 
     [ITEM_MAX_POTION] =
     {
-        .name = sMaxPotionName,//_(CANDY_NAME("WHITE CHOCO", "MAX POTION")),
+        .name = sMaxPotionName,
         .itemId = ITEM_MAX_POTION,
         .price = CANDY_COST(2500),
         .holdEffectParam = 255,
@@ -333,7 +327,7 @@ const struct Item gItems[] =
 
     [ITEM_HYPER_POTION] =
     {
-        .name = sHyperPotionName,//_(CANDY_NAME("BUTTERFINGER", "HYPER POTION")),
+        .name = sHyperPotionName,
         .itemId = ITEM_HYPER_POTION,
         .price = CANDY_COST(1200),
         .holdEffectParam = 200,
@@ -350,8 +344,7 @@ const struct Item gItems[] =
 
     [ITEM_SUPER_POTION] =
     {
-        .name = sSuperPotionName,//_(CANDY_NAME("TWIX", "SUPER POTION")),
-        // .plural = _(CANDY_NAME("TWIXES", "\0")),
+        .name = sSuperPotionName,
         .itemId = ITEM_SUPER_POTION,
         .price = CANDY_COST(700),
         .holdEffectParam = 50,
@@ -368,7 +361,7 @@ const struct Item gItems[] =
 
     [ITEM_FULL_HEAL] =
     {
-        .name = sFullHealName, //_(CANDY_NAME("REESE'S CUP", "FULL HEAL")),
+        .name = sFullHealName, 
         .itemId = ITEM_FULL_HEAL,
         .price = CANDY_COST(600),
         .description = sFullHealDesc,
@@ -488,7 +481,7 @@ const struct Item gItems[] =
 
     [ITEM_ENERGY_POWDER] =
     {
-        .name = sEnergyPowderName,//_(CANDY_NAME("CARROT STICK", "ENERGYPOWDER")),
+        .name = sEnergyPowderName,
         .quantum = sQuantumStrDose,
         .itemId = ITEM_ENERGY_POWDER,
         .price = CANDY_COST(500),
@@ -505,7 +498,7 @@ const struct Item gItems[] =
 
     [ITEM_ENERGY_ROOT] =
     {
-        .name = sEnergyRootName,//_(CANDY_NAME("APPLE SLICE", "ENERGY ROOT")),
+        .name = sEnergyRootName,
         .itemId = ITEM_ENERGY_ROOT,
         .price = CANDY_COST(800),
         .description = sEnergyRootDesc,
@@ -521,7 +514,7 @@ const struct Item gItems[] =
 
     [ITEM_HEAL_POWDER] =
     {
-        .name = sHealPowderName,//_(CANDY_NAME("PRUNE", "HEAL POWDER")),
+        .name = sHealPowderName,
         .itemId = ITEM_HEAL_POWDER,
         .price = CANDY_COST(450),
         .description = sHealPowderDesc,
@@ -537,7 +530,7 @@ const struct Item gItems[] =
 
     [ITEM_REVIVAL_HERB] =
     {
-        .name = sRevivalHerbName,//_(CANDY_NAME("CELERY STICK", "REVIVAL HERB")),
+        .name = sRevivalHerbName,
         .itemId = ITEM_REVIVAL_HERB,
         .price = CANDY_COST(2800),
         .description = sRevivalHerbDesc,
@@ -553,7 +546,7 @@ const struct Item gItems[] =
 
     [ITEM_ETHER] =
     {
-        .name = sEtherName, //_(CANDY_NAME("MALTESER", "ETHER")),
+        .name = sEtherName, 
         .itemId = ITEM_ETHER,
         .price = CANDY_COST(1200),
         .holdEffectParam = 10,
@@ -570,7 +563,7 @@ const struct Item gItems[] =
 
     [ITEM_MAX_ETHER] =
     {
-        .name = sMaxEtherName, //_(CANDY_NAME("CADBURY CREME", "MAX ETHER")),
+        .name = sMaxEtherName, 
         .itemId = ITEM_MAX_ETHER,
         .price = CANDY_COST(2000),
         .holdEffectParam = 255,
@@ -587,7 +580,7 @@ const struct Item gItems[] =
 
     [ITEM_ELIXIR] =
     {
-        .name = sElixirName, //_(CANDY_NAME("SNOWBALL", "ELIXIR")),
+        .name = sElixirName, 
         .itemId = ITEM_ELIXIR,
         .price = CANDY_COST(3000),
         .holdEffectParam = 10,
@@ -604,7 +597,7 @@ const struct Item gItems[] =
 
     [ITEM_MAX_ELIXIR] =
     {
-        .name = sMaxElixirName, //_(CANDY_NAME("TURKSH DELIGT", "MAX ELIXIR")),
+        .name = sMaxElixirName, 
         .itemId = ITEM_MAX_ELIXIR,
         .price = CANDY_COST(4500),
         .holdEffectParam = 255,
@@ -621,7 +614,7 @@ const struct Item gItems[] =
 
     [ITEM_LAVA_COOKIE] =
     {
-        .name = sLavaCookieName, //_(CANDY_NAME("OREO COOKIE", "LAVA COOKIE")),
+        .name = sLavaCookieName, 
         .itemId = ITEM_LAVA_COOKIE,
         .price = CANDY_COST(200),
         .description = sLavaCookieDesc,
@@ -1496,7 +1489,7 @@ const struct Item gItems[] =
 
     [ITEM_TINY_MUSHROOM] =
     {
-        .name = sTinyMushroomName, //_(CANDY_NAME("M&M'S MINIS", "TINYMUSHROOM")),
+        .name = sTinyMushroomName, 
         .itemId = ITEM_TINY_MUSHROOM,
         .price = CANDY_COST(500),
         .description = sTinyMushroomDesc,
@@ -1509,7 +1502,7 @@ const struct Item gItems[] =
 
     [ITEM_BIG_MUSHROOM] =
     {
-        .name = sBigMushroomName, //_(CANDY_NAME("M&M'S JUMBO", "BIG MUSHROOM")),
+        .name = sBigMushroomName, 
         .itemId = ITEM_BIG_MUSHROOM,
         .price = CANDY_COST(5000),
         .description = sBigMushroomDesc,
@@ -1535,7 +1528,7 @@ const struct Item gItems[] =
 
     [ITEM_PEARL] =
     {
-        .name = sPearlName, //_(CANDY_NAME("GOBSTOPPER", "PEARL")),
+        .name = sPearlName, 
         .itemId = ITEM_PEARL,
         .price = CANDY_COST(1400),
         .description = sPearlDesc,
@@ -1548,7 +1541,7 @@ const struct Item gItems[] =
 
     [ITEM_BIG_PEARL] =
     {
-        .name = sBigPearlName, //_(CANDY_NAME("XL CHOCO", "BIG PEARL")),
+        .name = sBigPearlName, 
         .itemId = ITEM_BIG_PEARL,
         .price = CANDY_COST(7500),
         .description = sBigPearlDesc,
@@ -1561,10 +1554,7 @@ const struct Item gItems[] =
 
     [ITEM_STARDUST] =
     {
-        .name = sStardustName, //_(CANDY_NAME("PIXIE STICK","STARDUST")),
-// #if USE_CANDY_NAMES
-//         .plural = _("PIXIE STIX"),
-// #endif
+        .name = sStardustName, 
         .itemId = ITEM_STARDUST,
         .price = CANDY_COST(2000),
         .description = sStardustDesc,
@@ -1577,7 +1567,7 @@ const struct Item gItems[] =
 
     [ITEM_STAR_PIECE] =
     {
-        .name = sStarPieceName, //_(CANDY_NAME("FERERO ROCHR", "STAR PIECE")),
+        .name = sStarPieceName, 
         .itemId = ITEM_STAR_PIECE,
         .price = CANDY_COST(9800),
         .description = sStarPieceDesc,
@@ -1590,7 +1580,7 @@ const struct Item gItems[] =
 
     [ITEM_NUGGET] =
     {
-        .name = sNuggetName, //_(CANDY_NAME("TOBLERONE", "NUGGET")),
+        .name = sNuggetName, 
         .itemId = ITEM_NUGGET,
         .price = CANDY_COST(10000),
         .description = sNuggetDesc,
@@ -1603,7 +1593,7 @@ const struct Item gItems[] =
 
     [ITEM_HEART_SCALE] =
     {
-        .name = sHeartScaleName, //_(CANDY_NAME("GUMMY BEAR", "HEART SCALE")),
+        .name = sHeartScaleName, 
         .itemId = ITEM_HEART_SCALE,
         .price = CANDY_COST(100),
         .description = sHeartScaleDesc,
@@ -5835,6 +5825,5 @@ static const u16 gCandyHealthyIds[] = {
     ITEM_CANDY_KALE,
 };
 
-#undef CANDY_NAME
 #undef CANDY_COST
 #undef CANDY_COST2

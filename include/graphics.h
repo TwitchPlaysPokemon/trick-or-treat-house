@@ -3388,7 +3388,6 @@ extern const u32 gRaySceneHushBg_Pal[];
 extern const u32 gRaySceneHushBg_Gfx[];
 extern const u32 gRaySceneHushRing_Gfx[];
 
-#if USE_CANDY_NAMES
 // Candy
 extern const u32 gItemIconPic_chocobar[];
 extern const u32 gItemIconPal_chocobar[];
@@ -3446,7 +3445,6 @@ extern const u32 gItemIconPic_toblerone[];
 extern const u32 gItemIconPal_toblerone[];
 extern const u32 gItemIconPic_gummybear[];
 extern const u32 gItemIconPal_gummybear[];
-#endif
 
 // Pokeballs
 extern const u32 gItemIcon_MasterBall[];

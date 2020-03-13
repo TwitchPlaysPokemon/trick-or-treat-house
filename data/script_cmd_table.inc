@@ -211,10 +211,10 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_nop1
 	.4byte ScrCmd_warpD1
 	.4byte ScrCmd_setmonmetlocation
-	.4byte ScrCmd_mossdeepgym1
-	.4byte ScrCmd_mossdeepgym2
-	.4byte ScrCmd_mossdeepgym3
-	.4byte ScrCmd_mossdeepgym4
+	.4byte ScrCmd_mosstiles_moveEvents
+	.4byte ScrCmd_mosstiles_turnEvents
+	.4byte ScrCmd_mosstiles_initTiles
+	.4byte ScrCmd_mosstiles_finishTiles
 	.4byte ScrCmd_warpD7
 	.4byte ScrCmd_cmdD8
 	.4byte ScrCmd_cmdD9
