@@ -5316,6 +5316,7 @@ const struct Item gItems[] =
     {
         .name = sKingChocName,
         .quantum = sBoxQuantum,
+        .plural = sBoxQuantumPlural,
         .itemId = ITEM_CANDY_KINGCHOCNUT,
         .price = CANDY_COST(300),
         .itemEffect = gItemEffect_HealHP30,
@@ -5727,6 +5728,7 @@ const struct Item gItems[] =
     {
         .name =  sSnapPeasName,
         .quantum = sBoxQuantum,
+        .plural = sBoxQuantumPlural,
         .itemId = ITEM_CANDY_SNAPPEAS,
         .price = CANDY_COST(200),
         .description =  sSnapPeasDesc,
@@ -5742,6 +5744,7 @@ const struct Item gItems[] =
     {
         .name = sRaisensName,
         .quantum = sBoxQuantum,
+        .plural = sBoxQuantumPlural,
         .itemId = ITEM_CANDY_RAISIN,
         .price = CANDY_COST(200),
         .description = sRaisensDesc,

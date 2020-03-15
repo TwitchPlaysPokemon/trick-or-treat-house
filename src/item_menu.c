@@ -876,6 +876,8 @@ void BagMenu_PrintDescription(int a)
     if (a != -2)
     {
         str = ItemId_GetDescription(BagGetItemIdByPocketPosition(gBagPositionStruct.pocket + 1, a));
+        StringExpandPlaceholders(gStringVar4, str);
+        str = gStringVar4;
     }
     else
     {

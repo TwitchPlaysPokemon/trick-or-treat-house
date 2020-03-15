@@ -17,48 +17,39 @@ Puzzle_TrickHouseCut_Quip:
 	.string "field moves yourself, you know?$"
 .align 2
 Puzzle_TrickHouseCut_CandyList:
-	.2byte FLAG_PUZZLE_ITEM_0
-	.2byte FLAG_PUZZLE_ITEM_1
-	.2byte FLAG_PUZZLE_ITEM_2
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x03
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x04
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x05
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x06
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x07
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x08
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_ABUNDANT_05
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_COMMON_03
+	.2byte FLAG_CANDY_COMMON_04
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_HEALTHY_01
 	.2byte 0
 
 @ -----------------------------------------------------
-
-Puzzle_TrickHouseCut_Trainer1::
-	trainerbattle_single TRAINER_01, Puzzle_TrickHouseCut_Trainer1_Intro, Puzzle_TrickHouseCut_Trainer1_Defeat
-	msgbox Puzzle_TrickHouseCut_Trainer1_After, MSGBOX_AUTOCLOSE
-	end
-Puzzle_TrickHouseCut_Trainer1_Intro:
-	.string "Nice costume. Were you trick-or-treating\n"
-	.string "too?$"
-Puzzle_TrickHouseCut_Trainer1_Defeat:
-	.string "Ack! My costume got caught!$"
-Puzzle_TrickHouseCut_Trainer1_After:
-	.string "Battling in costume is something I've\n"
-	.string "never done before. How about you?$"
-
-
-Puzzle_TrickHouseCut_Trainer2::
-	trainerbattle_single TRAINER_02, Puzzle_TrickHouseCut_Trainer2_Intro, Puzzle_TrickHouseCut_Trainer2_Defeat
-	msgbox Puzzle_TrickHouseCut_Trainer2_After, MSGBOX_AUTOCLOSE
-	end
-Puzzle_TrickHouseCut_Trainer2_Intro:
-	.string "Take me to your leader!$"
-Puzzle_TrickHouseCut_Trainer2_Defeat:
-	.string "Ah! I come in peace!$"
-Puzzle_TrickHouseCut_Trainer2_After:
-	.string "You're a {POKEMON} are you?\p"
-	.string "I, as an extraterrestrial, have never\n"
-	.string "seen such a thing before!\p"
-	.string "Shush, CLEFAIRY and CRESSELIA\n"
-	.string "don't count.$"
 `
+
+script Puzzle_TrickHouseCut_Trainer1 {
+	trainerbattle_single (TRAINER_01, 
+			"Nice costume. Were you trick-or-treating\n"
+			"too?$", 
+			"Ack! My costume got caught!$")
+	msgbox ("Battling in costume is something I've\n"
+			"never done before. How about you?$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrickHouseCut_Trainer2 {
+	trainerbattle_single (TRAINER_02, 
+			"Take me to your leader!$", 
+			"Ah! I come in peace!$")
+	msgbox ("You're a {POKEMON} are you?\p"
+			"I, as an extraterrestrial, have never\n"
+			"seen such a thing before!\p"
+			"Shush, CLEFAIRY and CRESSELIA\n"
+			"don't count.$", MSGBOX_AUTOCLOSE)
+}

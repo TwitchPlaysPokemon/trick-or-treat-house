@@ -483,6 +483,13 @@
 	.2byte \quantity
 	.endm
 
+	@ Attempts to add quantity of item index to the player's Bag. If the player has enough room, the item will be added and variable 0x800D (LASTRESULT) will be set to 0x0001; otherwise, LASTRESULT is set to 0x0000.
+	.macro resolveitem index:req, quantity:req
+	.byte 0xE6
+	.2byte \index
+	.2byte \quantity
+	.endm
+
 	@ Removes quantity of item index from the player's Bag.
 	.macro takeitem index:req, quantity:req
 	.byte 0x45

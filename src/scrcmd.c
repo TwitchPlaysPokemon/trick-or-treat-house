@@ -521,6 +521,15 @@ bool8 ScrCmd_giveitem(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_resolveitem(struct ScriptContext *ctx)
+{
+    u16 *itemId = GetVarPointer(ScriptReadHalfword(ctx));
+    u16 *quantity = GetVarPointer(ScriptReadHalfword(ctx));
+    
+    ResolveSpecialItemIds(itemId, quantity);
+    return FALSE;
+}
+
 bool8 ScrCmd_takeitem(struct ScriptContext *ctx)
 {
     u16 itemId = VarGet(ScriptReadHalfword(ctx));

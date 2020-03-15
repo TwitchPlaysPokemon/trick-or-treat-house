@@ -250,4 +250,37 @@ PuzzleCommon_EventScript_DoorCandyGiverHide::
 	setvar VAR_METATILE_X, 0
 	return
 	
-	
+PuzzleCommon_EventScript_PokecenterHeal::
+	lock
+	goto_if_unset FLAG_IS_BUMP_INTERACTION, Common_EventScript_ReleaseEnd
+	@ Open door, walk in
+	opendoor VAR_METATILE_X, VAR_METATILE_Y
+	waitdooranim
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_EnterCenter
+	waitmovement 0
+	closedoor VAR_METATILE_X, VAR_METATILE_Y
+	waitdooranim
+	delay 10
+	@ Fade screen, heal
+	fadescreen 1
+	playfanfare MUS_ME_ASA
+	special HealPlayerParty
+	waitfanfare
+	fadescreen 0
+	@ Open door, walk out
+	opendoor VAR_METATILE_X, VAR_METATILE_Y
+	waitdooranim
+	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExitCenter
+	waitmovement 0
+	closedoor VAR_METATILE_X, VAR_METATILE_Y
+	waitdooranim
+	release
+	end
+Common_Movement_EnterCenter: @ 82725C9
+	walk_up
+	set_invisible
+	step_end
+Common_Movement_ExitCenter:
+	set_visible
+	walk_down
+	step_end

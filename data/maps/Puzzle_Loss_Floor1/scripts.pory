@@ -21,8 +21,11 @@ Puzzle_Loss_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER
 	.2byte 0
 Puzzle_Loss_CandyList:
-	.2byte FLAG_PUZZLE_ITEM_0
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
+	.2byte FLAG_PUZZLE_ITEM_0  @ Free Candy Counter = 3 * 8 Chocolate Bars
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
 	.2byte 0
 
 @ -----------------------------------------------------
@@ -75,7 +78,7 @@ script Puzzle_Loss_Floor1_FreeCandyCounter {
 		message (0)
 		waitmessage
 		waitbuttonpress
-		giveitem_std (ITEM_POTION, 3)
+		giveitem_std (ITEM_CANDY_CHOCOLATE, 3)
 		if (var(VAR_RESULT) == NO) {
 			message ("Oh, you don't have enough room.\n"
 					"Feel free to return when you do.$")
@@ -159,22 +162,22 @@ script Puzzle_Loss_Floor1_Mart {
 raw `
 .align 2
 Puzzle_Loss_Floor1_Pokemart:
-	.2byte ITEM_POTION
-	.2byte ITEM_ANTIDOTE
-	.2byte ITEM_BURN_HEAL
-	.2byte ITEM_ICE_HEAL
-	.2byte ITEM_AWAKENING
-	.2byte ITEM_PARALYZE_HEAL
-	.2byte ITEM_FULL_RESTORE
-	.2byte ITEM_MAX_POTION
-	.2byte ITEM_HYPER_POTION
-	.2byte ITEM_SUPER_POTION
-	.2byte ITEM_FULL_HEAL
-	.2byte ITEM_ETHER
-	.2byte ITEM_MAX_ETHER
-	.2byte ITEM_ELIXIR
-	.2byte ITEM_MAX_ELIXIR
-	.2byte ITEM_LAVA_COOKIE
+	.2byte ITEM_CANDY_CHOCOLATE
+	.2byte ITEM_CANDY_STARBURST
+	.2byte ITEM_CANDY_LEMONDROP
+	.2byte ITEM_CANDY_WARHEAD
+	.2byte ITEM_CANDY_PRETZEL
+	.2byte ITEM_CANDY_VEROMANGO
+	.2byte ITEM_CANDY_VIOLETCRUMBLE
+	.2byte ITEM_CANDY_TWIXLEFT
+	.2byte ITEM_CANDY_TWIXRIGHT
+	.2byte ITEM_CANDY_EGGS
+	.2byte ITEM_CANDY_MMMINI
+	.2byte ITEM_CANDY_MMPEANUT
+	.2byte ITEM_CANDY_GUMMYBEAR
+	.2byte ITEM_CANDY_KINGCHOCNUT
+	.2byte ITEM_CANDY_REESES
+	.2byte ITEM_CANDY_OREO
 	.2byte ITEM_NONE
 	release
 	end
@@ -227,9 +230,11 @@ script Puzzle_Loss_Floor1_Patron4 {
 
 script Puzzle_Loss_Floor1_Patron5 {
 	if (flag(FLAG_TRICK_HOUSE_SCROLL_READ) == TRUE) {
-		msgbox ("Oh, sorry, I thought I lost my MAGIKARP\n"
-				"earlier. Turns out her ball was on my belt\l"
-				"this whole time! Hohohoho!$", MSGBOX_NPC)
+		msgbox ("I thought I had lost my MAGIKARP earlier.\n"
+				"Turns out her ball was on my belt\l"
+				"the whole time!\p"
+				"It's almost like my plight was\n"
+				"a RED HERRING! Hohohohoho!$", MSGBOX_NPC)
 	} else {
 		msgbox ("I've lost my MAGIKARP! Could you help\n"
 				"me find it please?$", MSGBOX_NPC)

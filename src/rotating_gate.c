@@ -715,6 +715,7 @@ static u8 RotatingGate_CreateGate(u8 gateId, s16 deltaX, s16 deltaY)
 
     template.tileTag = gate->shape + ROTATING_GATE_TILE_TAG;
 
+    //TODO LoadPalette(template.paletteTag) // A black to white gradient
     spriteId = CreateSprite(&template, 0, 0, 0x94);
     if (spriteId == MAX_SPRITES)
         return MAX_SPRITES;

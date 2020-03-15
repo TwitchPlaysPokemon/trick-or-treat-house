@@ -46,16 +46,16 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x00",
-            "item": "ITEM_MAX_POTION",
+            "flag": "FLAG_CANDY_RARE_01",
+            "item": "ITEM_CANDY_RARE",
             "type": "hidden_item",
             "x": 8,
             "y": 9
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x01",
-            "item": "ITEM_PEARL",
+            "flag": "FLAG_CANDY_HEALTHY_01",
+            "item": "ITEM_CANDY_HEALTHY",
             "type": "hidden_item",
             "x": 8,
             "y": 3
@@ -63,23 +63,23 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x02",
-            "item": "ITEM_BURN_HEAL",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
             "x": 2,
             "y": 18
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x03",
-            "item": "ITEM_ANTIDOTE",
+            "flag": "FLAG_CANDY_ABUNDANT_03",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
             "x": 13,
             "y": 3
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x04",
-            "item": "ITEM_HYPER_POTION",
+            "flag": "FLAG_CANDY_COMMON_03",
+            "item": "ITEM_CANDY_COMMON",
             "type": "hidden_item",
             "x": 5,
             "y": 5
@@ -148,12 +148,12 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_PUZZLE_ITEM_0",
+            "flag": "FLAG_CANDY_COMMON_01",
             "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Common_EventScript_ItemMMMinis",
+            "script": "Common_EventScript_CandyCommon",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 7,
@@ -174,12 +174,12 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_PUZZLE_ITEM_2",
+            "flag": "FLAG_CANDY_ABUNDANT_01",
             "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Common_EventScript_ItemSuperPotion",
+            "script": "Common_EventScript_CandyAbundant",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 7,

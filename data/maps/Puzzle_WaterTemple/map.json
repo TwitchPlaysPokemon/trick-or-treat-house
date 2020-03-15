@@ -6,56 +6,56 @@
     "bg_events": [
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x00",
-            "item": "ITEM_FULL_RESTORE",
+            "flag": "FLAG_CANDY_RARE_01",
+            "item": "ITEM_CANDY_RARE",
             "type": "hidden_item",
             "x": 47,
             "y": 42
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x01",
-            "item": "ITEM_PARALYZE_HEAL",
+            "flag": "FLAG_CANDY_ABUNDANT_02",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
             "x": 47,
             "y": 20
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x02",
-            "item": "ITEM_FRESH_WATER",
+            "flag": "FLAG_CANDY_COMMON_03",
+            "item": "ITEM_CANDY_COMMON",
             "type": "hidden_item",
             "x": 14,
             "y": 41
         },
         {
             "elevation": 0,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x03",
-            "item": "ITEM_FULL_HEAL",
+            "flag": "FLAG_CANDY_COMMON_04",
+            "item": "ITEM_CANDY_COMMON",
             "type": "hidden_item",
             "x": 34,
             "y": 14
         },
         {
             "elevation": 0,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x04",
-            "item": "ITEM_ICE_HEAL",
+            "flag": "FLAG_CANDY_ABUNDANT_03",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
             "x": 47,
             "y": 40
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x05",
-            "item": "ITEM_ETHER",
+            "flag": "FLAG_CANDY_ABUNDANT_04",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
             "x": 9,
             "y": 16
         },
         {
             "elevation": 0,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x06",
-            "item": "ITEM_SUPER_POTION",
+            "flag": "FLAG_CANDY_COMMON_05",
+            "item": "ITEM_CANDY_COMMON",
             "type": "hidden_item",
             "x": 14,
             "y": 26
@@ -194,12 +194,12 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_PUZZLE_ITEM_A",
+            "flag": "FLAG_HIDDEN_LIMITED_CANDY_0x6F",
             "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Common_EventScript_PickupRareItem",
+            "script": "Common_EventScript_CandyLimited01",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 43,

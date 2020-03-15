@@ -3,6 +3,7 @@ Puzzle_TrickHouseSlipSliding_MapScripts::
 	puzzle_info Puzzle_TrickHouseSlipSliding_Name, Puzzle_TrickHouseSlipSliding_Author
 	puzzle_adjective Puzzle_TrickHouseSlipSliding_Adjective
 	@ puzzle_quip Puzzle_TrickHouseSlipSliding_Quip
+	puzzle_candylist Puzzle_TrickHouseSlipSliding_CandyList
 	.byte 0
 
 Puzzle_TrickHouseSlipSliding_Name:
@@ -14,7 +15,7 @@ Puzzle_TrickHouseSlipSliding_Adjective:
 Puzzle_TrickHouseSlipSliding_Quip:
  	.string "slippery$"
 
-
+.align 2
 Puzzle_TrickHouseSlipSliding_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01
 	.2byte FLAG_CANDY_ABUNDANT_02

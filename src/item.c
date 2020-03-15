@@ -26,7 +26,6 @@ extern u16 gUnknown_0203CF30[];
 #endif
 static bool8 CheckPyramidBagHasItem(u16 itemId, u16 count);
 static bool8 CheckPyramidBagHasSpace(u16 itemId, u16 count);
-static void ResolveSpecialItemIds(u16 *itemId, u16 *count);
 
 // EWRAM variables
 EWRAM_DATA struct BagPocket gBagPockets[POCKETS_COUNT] = {0};
@@ -74,7 +73,7 @@ void ApplyNewEncryptionKeyToBagItems_(u32 newKey) // really GF?
 
 void SetBagItemsPointers(void)
 {
-    gBagPockets[CANDY_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_Items;
+    gBagPockets[CANDY_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_Candy;
     gBagPockets[CANDY_POCKET].capacity = BAG_CANDY_COUNT;
     
     gBagPockets[ITEMS_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_Items;
@@ -307,7 +306,7 @@ bool8 AddBagItem(u16 itemId, u16 count)
 {
     u8 i;
     
-    ResolveSpecialItemIds(&itemId, &count);
+    // ResolveSpecialItemIds(&itemId, &count);
 
     if (ItemId_GetPocket(itemId) == POCKET_NONE)
         return FALSE;
@@ -960,7 +959,7 @@ bool8 RemovePyramidBagItem(u16 itemId, u16 count)
     // }
 }
 
-static void ResolveSpecialItemIds(u16 *itemId, u16 *count)
+void ResolveSpecialItemIds(u16 *itemId, u16 *count)
 {
     u16 rand = Random();
     switch (*itemId)

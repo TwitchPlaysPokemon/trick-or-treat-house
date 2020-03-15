@@ -12,11 +12,9 @@
 #define MAP_TEST_MAP_HALLWAY       (0 | (1 << 8))
 #define MAP_TEST_LAYOUT_SWITCHING  (1 | (1 << 8))
 #define MAP_TEST_LAYOUT_SWITCHING2 (2 | (1 << 8))
-#define MAP_WATER_TEMPLE_LV1       (3 | (1 << 8))
-#define MAP_WATER_TEMPLE_LV2       (4 | (1 << 8))
-#define MAP_TEST_MIRROR_MOVEMENT   (5 | (1 << 8))
-#define MAP_TEST_COPY_MOVEMENT     (6 | (1 << 8))
-#define MAP_INDOOR_MAP             (7 | (1 << 8))
+#define MAP_TEST_MIRROR_MOVEMENT   (3 | (1 << 8))
+#define MAP_TEST_COPY_MOVEMENT     (4 | (1 << 8))
+#define MAP_INDOOR_MAP             (5 | (1 << 8))
 
 // Map Group 2
 #define MAP_SECRET_BASE_RED_CAVE1    (0 | (2 << 8))
@@ -47,7 +45,9 @@
 // Map Group 3
 #define MAP_EMPTY_PUZZLE           (0 | (3 << 8))
 #define MAP_LEDGE_MOUNTAIN_SUPPORT (1 | (3 << 8))
-#define MAP_FAKE_SECRET_BASE_CAVE  (2 | (3 << 8))
+#define MAP_WATER_TEMPLE_LV1       (2 | (3 << 8))
+#define MAP_WATER_TEMPLE_LV2       (3 | (3 << 8))
+#define MAP_FAKE_SECRET_BASE_CAVE  (4 | (3 << 8))
 
 // Map Group 4
 #define MAP_PETALBURG_CITY   (0 | (4 << 8))

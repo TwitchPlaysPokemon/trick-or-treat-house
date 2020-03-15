@@ -14,24 +14,24 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x03",
-            "item": "ITEM_SUPER_POTION",
+            "flag": "FLAG_CANDY_COMMON_02",
+            "item": "ITEM_CANDY_COMMON",
             "type": "hidden_item",
             "x": 2,
             "y": 9
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x05",
-            "item": "ITEM_FULL_HEAL",
+            "flag": "FLAG_CANDY_ABUNDANT_02",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
             "x": 8,
             "y": 2
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x04",
-            "item": "ITEM_BIG_PEARL",
+            "flag": "FLAG_CANDY_HEALTHY_01",
+            "item": "ITEM_CANDY_HEALTHY",
             "type": "hidden_item",
             "x": 5,
             "y": 6

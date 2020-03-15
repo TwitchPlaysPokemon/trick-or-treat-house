@@ -275,6 +275,7 @@ const u8 *const gReturnToXStringsTable2[] =
 };
 
 const u8 gText_ReturnToVar1[] = _("Return to\n{STR_VAR_1}.");
+const u8 gText_CandyPocket[] = _("CANDY");
 const u8 gText_ItemsPocket[] = _("ITEMS");
 const u8 gText_PokeBallsPocket[] = _("POKé BALLS");
 const u8 gText_TMHMPocket[] = _("TMs & HMs");
@@ -283,8 +284,8 @@ const u8 gText_KeyItemsPocket[] = _("KEY ITEMS");
 
 const u8 *const gPocketNamesStringsTable[] =
 {
-    gText_ItemsPocket,
-    gText_PokeBallsPocket,
+    gText_CandyPocket,
+    gText_ItemsPocket, // gText_PokeBallsPocket,
     gText_TMHMPocket,
     gText_BerriesPocket,
     gText_KeyItemsPocket
@@ -702,6 +703,7 @@ const u8 gText_Cute2[] = _("CUTE");
 const u8 gText_Smart2[] = _("SMART");
 const u8 gText_Tough2[] = _("TOUGH");
 const u8 gText_Items[] = _("ITEMS");
+const u8 gText_Candy[] = _("CANDY");
 const u8 gText_Key_Items[] = _("KEY ITEMS");
 const u8 gText_Poke_Balls[] = _("POKé BALLS");
 const u8 gText_TMs_Hms[] = _("TMs & HMs");

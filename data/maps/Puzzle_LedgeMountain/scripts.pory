@@ -21,56 +21,57 @@ Puzzle_LedgeMountain_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER
 	.2byte 0
 Puzzle_LedgeMountain_CandyList:
-	.2byte FLAG_PUZZLE_20
-	.2byte FLAG_PUZZLE_21
-	.2byte FLAG_PUZZLE_22
-	.2byte FLAG_PUZZLE_ITEM_0
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x03
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x04
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x05
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x06
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x07
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x08
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x09
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_COMMON_03
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_HEALTHY_02
+	.2byte FLAG_CANDY_RARE_01
+	.2byte FLAG_CANDY_RARE_02
+	.2byte FLAG_HIDDEN_LIMITED_CANDY_0x6D
 	.2byte 0
 
 @ -----------------------------------------------------
-
-Puzzle_LedgeMountain_TriggerScript_Intro::
+`
+script Puzzle_LedgeMountain_TriggerScript_Intro {
 	lock
-	getplayerxy VAR_INTERACT_X, VAR_INTERACT_Y
-	subvar VAR_INTERACT_Y, 54
-	@
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceUp
-	waitmovement 0
-	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMarkAndWait
-	waitmovement 0
-	@
-	playfanfare MUS_ME_TAMA
-	selectpointer Puzzle_LedgeMountain_MovementTable_Intro, VAR_INTERACT_Y
-	applymovement EVENT_OBJ_ID_PLAYER, 0
-	waitmovement 0
-	@
-	special SpawnCameraObject
-	applymovement EVENT_OBJ_ID_CAMERA, Puzzle_LedgeMountain_Movement_CameraPanUp
-	waitmovement 0
-	delay 60
+	getplayerxy (VAR_INTERACT_X, VAR_INTERACT_Y)
+	subvar (VAR_INTERACT_Y, 54)
+	
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceUp)
+	waitmovement (0)
+	playse (SE_PIN)
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMarkAndWait)
+	waitmovement (0)
+	
+	playfanfare (MUS_ME_TAMA)
+	selectpointer (Puzzle_LedgeMountain_MovementTable_Intro, VAR_INTERACT_Y)
+	applymovement (EVENT_OBJ_ID_PLAYER, 0)
+	waitmovement (0)
+	
+	special (SpawnCameraObject)
+	applymovement (EVENT_OBJ_ID_CAMERA, Puzzle_LedgeMountain_Movement_CameraPanUp)
+	waitmovement (0)
+	delay (60)
 	waitfanfare
-	setobjectxy EVENT_OBJ_ID_PLAYER, 20, 55
-	applymovement EVENT_OBJ_ID_CAMERA, Puzzle_LedgeMountain_Movement_CameraPanDown
-	waitmovement 0
-	special RemoveCameraObject
-	delay 10
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceLeft
-	waitmovement 0
-	setvar VAR_PUZZLE_00, 1
+	setobjectxy (EVENT_OBJ_ID_PLAYER, 20, 55)
+	applymovement (EVENT_OBJ_ID_CAMERA, Puzzle_LedgeMountain_Movement_CameraPanDown)
+	waitmovement (0)
+	special (RemoveCameraObject)
+	delay (10)
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
+	waitmovement (0)
+	setvar (VAR_PUZZLE_00, 1)
 	release
-	end
+}
 
+raw `
 .align 2
 Puzzle_LedgeMountain_MovementTable_Intro:
 	.4byte Common_Movement_BackOffDown1
@@ -78,126 +79,46 @@ Puzzle_LedgeMountain_MovementTable_Intro:
 	.4byte Common_Movement_WalkUp1
 	.4byte Common_Movement_WalkUp2
 	.4byte 0
-Puzzle_LedgeMountain_Movement_PlayerAdjust:
+`
+movement Puzzle_LedgeMountain_Movement_PlayerAdjust {
 	walk_fast_right
 	walk_fast_right
 	walk_fast_right
 	walk_fast_right
 	walk_fast_right
 	walk_in_place_fastest_up
-	step_end
-Puzzle_LedgeMountain_Movement_CameraPanUp:
-	walk_slow_diag_northwest
-	walk_slow_diag_northwest
-	walk_slow_diag_northwest
-	walk_slow_diag_northwest
-	walk_slow_diag_northwest
-	walk_slow_up
-	walk_slow_up @ 20, 48
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up @ 20, 38
-	walk_fast_up 
-	walk_fast_up 
-	walk_fast_up 
-	walk_fast_up 
-	walk_fast_up 
-	walk_fast_up @ 20, 32
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up
-	walk_fast_up @ 20, 28
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up
-	walk_fastest_up @ 20, 8
+}
+movement Puzzle_LedgeMountain_Movement_CameraPanUp {
+	walk_slow_diag_northwest * 5
+	walk_slow_up * 2     // 20, 48
+	walk_up * 10         // 20, 38
+	walk_fast_up * 10    // 20, 28
+	walk_fastest_up * 20 // 20, 8
 	walk_fast_up
 	walk_fast_up
 	walk_up
 	walk_up
-	walk_slow_up @20, 3
-	step_end
-Puzzle_LedgeMountain_Movement_CameraPanDown:
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	slide_down
-	@ slide_right
-	@ slide_right
-	@ slide_right
-	@ slide_right
-	@ slide_right
-	step_end
+	walk_slow_up         //20, 3
+}
+movement Puzzle_LedgeMountain_Movement_CameraPanDown {
+	slide_down * 52
+}
 
-`
+script Puzzle_LedgeMountain_UnreachableBall {
+	msgbox ("Did you really go through all of the\n"
+			"effort required to make and use a\l"
+			"walk-through-walls cheat to get here?\p"
+			"And not only any old walk-through-walls\n"
+			"cheat, but a proper one that ignores\l"
+			"elevation requirements as well?\p"
+			"That's… That's impressive.\n"
+			"I applaud you. Well done.\p"
+			"Why are you not making ROM hacks like\n"
+			"this, or better yet, your own games?\p"
+			"Learn how to program in a game engine,\n"
+			"like Unity or Unreal, and you could get\l"
+			"an actual job or make indie games!\p"
+			"--Tustin2121$")
+}
+
+

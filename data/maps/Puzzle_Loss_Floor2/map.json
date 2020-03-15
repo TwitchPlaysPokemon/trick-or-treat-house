@@ -50,12 +50,12 @@
             "script": "Puzzle_Loss_Floor2_SignScript_OptionallyLocked",
             "type": "sign",
             "x": 14,
-            "y": 2
+            "y": 3
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x00",
-            "item": "ITEM_FRESH_WATER",
+            "flag": "FLAG_CANDY_COMMON_01",
+            "item": "ITEM_CANDY_COMMON",
             "type": "hidden_item",
             "x": 6,
             "y": 9
@@ -90,7 +90,7 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-            "script": "PuzzleCommon_EventScript_Scroll",
+            "script": "Puzzle_Loss_Floor2_EventScript_Woman",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 16,

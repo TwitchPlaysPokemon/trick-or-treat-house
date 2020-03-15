@@ -6,72 +6,72 @@
     "bg_events": [
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x00",
-            "item": "ITEM_AWAKENING",
+            "flag": "FLAG_CANDY_ABUNDANT_01",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
-            "x": 11,
+            "x": 5,
             "y": 2
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x01",
-            "item": "ITEM_ANTIDOTE",
+            "flag": "FLAG_CANDY_COMMON_01",
+            "item": "ITEM_CANDY_COMMON",
             "type": "hidden_item",
             "x": 12,
             "y": 10
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x02",
-            "item": "ITEM_FULL_HEAL",
+            "flag": "FLAG_CANDY_COMMON_02",
+            "item": "ITEM_CANDY_COMMON",
             "type": "hidden_item",
             "x": 20,
             "y": 15
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x03",
-            "item": "ITEM_POTION",
+            "flag": "FLAG_CANDY_ABUNDANT_02",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
-            "x": 0,
-            "y": 20
+            "x": 1,
+            "y": 18
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x04",
-            "item": "ITEM_LEMONADE",
+            "flag": "FLAG_CANDY_ABUNDANT_03",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
             "x": 20,
-            "y": 17
+            "y": 18
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x05",
-            "item": "ITEM_POTION",
+            "flag": "FLAG_CANDY_ABUNDANT_04",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
             "x": 5,
             "y": 11
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x06",
-            "item": "ITEM_TINY_MUSHROOM",
+            "flag": "FLAG_CANDY_COMMON_03",
+            "item": "ITEM_CANDY_COMMON",
             "type": "hidden_item",
             "x": 14,
             "y": 7
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x07",
-            "item": "ITEM_PARALYZE_HEAL",
+            "flag": "FLAG_CANDY_UNCOMMON_01",
+            "item": "ITEM_CANDY_UNCOMMON",
             "type": "hidden_item",
             "x": 1,
             "y": 4
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x08",
-            "item": "ITEM_PEARL",
+            "flag": "FLAG_CANDY_UNCOMMON_02",
+            "item": "ITEM_CANDY_UNCOMMON",
             "type": "hidden_item",
             "x": 19,
             "y": 11
@@ -218,12 +218,12 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_PUZZLE_ITEM_1",
+            "flag": "FLAG_CANDY_COMMON_04",
             "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Common_EventScript_ItemFullHeal",
+            "script": "Common_EventScript_CandyCommon",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 20,
@@ -231,7 +231,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_PUZZLE_ITEM_0",
+            "flag": "FLAG_CANDY_ABUNDANT_05",
             "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -283,12 +283,12 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_PUZZLE_ITEM_2",
+            "flag": "FLAG_CANDY_HEALTHY_01",
             "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Common_EventScript_ItemRivialHerb",
+            "script": "Common_EventScript_CandyHealthy",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 1,

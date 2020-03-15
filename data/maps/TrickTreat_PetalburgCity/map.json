@@ -62,32 +62,32 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x00",
-            "item": "ITEM_RARE_CANDY",
+            "flag": "FLAG_CANDY_UNCOMMON_01",
+            "item": "ITEM_CANDY_UNCOMMON",
             "type": "hidden_item",
             "x": 21,
             "y": 29
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x01",
-            "item": "ITEM_SUPER_POTION",
+            "flag": "FLAG_CANDY_COMMON_01",
+            "item": "ITEM_CANDY_COMMON",
             "type": "hidden_item",
             "x": 28,
             "y": 24
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x02",
-            "item": "ITEM_REVIVE",
+            "flag": "FLAG_CANDY_COMMON_02",
+            "item": "ITEM_CANDY_COMMON",
             "type": "hidden_item",
             "x": 15,
             "y": 8
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x03",
-            "item": "ITEM_HYPER_POTION",
+            "flag": "FLAG_CANDY_ABUNDANT_01",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
             "x": 23,
             "y": 8
@@ -95,7 +95,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x04",
-            "item": "ITEM_FULL_HEAL",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
             "x": 35,
             "y": 13
@@ -166,12 +166,12 @@
     "object_events": [
         {
             "elevation": 3,
-            "flag": "FLAG_PUZZLE_ITEM_1",
+            "flag": "FLAG_HIDDEN_LIMITED_CANDY_0x6B",
             "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "Common_EventScript_PickupRareItem",
+            "script": "Common_EventScript_CandyLimited05",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 29,
@@ -179,12 +179,12 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_PUZZLE_ITEM_0",
+            "flag": "FLAG_CANDY_RARE_01",
             "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "Common_EventScript_ItemFullRestore",
+            "script": "Common_EventScript_CandyRare",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 13,
@@ -235,7 +235,7 @@
             "graphics_id": "EVENT_OBJ_GFX_POKEFAN_F",
             "movement_range_x": 0,
             "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+            "movement_type": "MOVEMENT_TYPE_HIDDEN",
             "script": "TrickTreat_PetalburgCity_CandyGiver_WallysHouse",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
@@ -248,7 +248,7 @@
             "graphics_id": "EVENT_OBJ_GFX_MAN_4",
             "movement_range_x": 0,
             "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+            "movement_type": "MOVEMENT_TYPE_HIDDEN",
             "script": "TrickTreat_PetalburgCity_CandyGiver_House",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
@@ -261,7 +261,7 @@
             "graphics_id": "EVENT_OBJ_GFX_YOUNGSTER",
             "movement_range_x": 0,
             "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+            "movement_type": "MOVEMENT_TYPE_HIDDEN",
             "script": "TrickTreat_PetalburgCity_CandyGiver_Youngster",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
@@ -336,7 +336,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_LASS",
+            "graphics_id": "EVENT_OBJ_GFX_ALIEN",
             "movement_range_x": 7,
             "movement_range_y": 6,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -345,6 +345,19 @@
             "trainer_type": "6",
             "x": 24,
             "y": 21
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_BALL_CUSHION",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+            "script": "PuzzleCommon_EventScript_PokecenterHeal",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "5",
+            "x": 30,
+            "y": 16
         }
     ],
     "region_map_section": "MAPSEC_PETALBURG_CITY",

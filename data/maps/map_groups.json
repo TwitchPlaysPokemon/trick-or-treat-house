@@ -151,14 +151,14 @@
     "MG_SupportMaps": [
         "EmptyPuzzle",
         "LedgeMountain_Support",
+        "WaterTemple_Lv1",
+        "WaterTemple_Lv2",
         "FakeSecretBaseCave"
     ],
     "MG_TestMaps": [
         "TestMapHallway",
         "TestLayoutSwitching",
         "TestLayoutSwitching2",
-        "WaterTemple_Lv1",
-        "WaterTemple_Lv2",
         "TestMirrorMovement",
         "TestCopyMovement",
         "IndoorMap"

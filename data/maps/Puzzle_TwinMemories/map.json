@@ -6,40 +6,40 @@
     "bg_events": [
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x00",
-            "item": "ITEM_PARALYZE_HEAL",
+            "flag": "FLAG_CANDY_ABUNDANT_01",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
             "x": 5,
             "y": 2
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x01",
-            "item": "ITEM_SUPER_POTION",
+            "flag": "FLAG_CANDY_COMMON_01",
+            "item": "ITEM_CANDY_COMMON",
             "type": "hidden_item",
             "x": 13,
             "y": 5
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x02",
-            "item": "ITEM_MAX_POTION",
+            "flag": "FLAG_CANDY_UNCOMMON_01",
+            "item": "ITEM_CANDY_UNCOMMON",
             "type": "hidden_item",
             "x": 16,
             "y": 25
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x03",
-            "item": "ITEM_ETHER",
+            "flag": "FLAG_CANDY_COMMON_02",
+            "item": "ITEM_CANDY_COMMON",
             "type": "hidden_item",
             "x": 27,
             "y": 1
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x04",
-            "item": "ITEM_HEAL_POWDER",
+            "flag": "FLAG_CANDY_HEALTHY_01",
+            "item": "ITEM_CANDY_HEALTHY",
             "type": "hidden_item",
             "x": 19,
             "y": 5

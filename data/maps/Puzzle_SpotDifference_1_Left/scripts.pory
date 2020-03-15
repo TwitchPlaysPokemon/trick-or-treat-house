@@ -2,6 +2,7 @@ raw `
 #define VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS VAR_PUZZLE_00
 
 Puzzle_SpotDifference_1_Left_MapScripts::
+	puzzle_info Puzzle_SpotDifference_Name, Puzzle_SpotDifference_Author
     map_script MAP_SCRIPT_ON_LOAD, Puzzle_SpotDifference_1_Left_OnLoad
     .byte 0
 `

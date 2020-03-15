@@ -19,6 +19,36 @@ Common_EventScript_CandyRare::
 	giveitem_std ITEM_CANDY_RARE, 1, 1
 	end
 
+@ -----------------------------------------------------
+
+Common_EventScript_ItemItemfinder::
+	giveitem_std ITEM_ITEMFINDER, 1, 1
+	end
+
+Common_EventScript_CandyLimited01:: @ FLAG_HIDDEN_LIMITED_CANDY_0x6F
+	giveitem_std ITEM_RARE_CANDY, 1, 1    @ Used in Water Temple
+	end
+
+Common_EventScript_CandyLimited02:: @ FLAG_HIDDEN_LIMITED_CANDY_0x6E
+	giveitem_std ITEM_RARE_CANDY, 1, 1    @ Used in Lost Woods 1
+	end
+
+Common_EventScript_CandyLimited03:: @ FLAG_HIDDEN_LIMITED_CANDY_0x6D
+	giveitem_std ITEM_RARE_CANDY, 1, 1    @ Used in Ledge Mountain
+	end
+
+Common_EventScript_CandyLimited04:: @ FLAG_HIDDEN_LIMITED_CANDY_0x6C
+	giveitem_std ITEM_RARE_CANDY, 1, 1    @ Used in Route 110
+	end
+
+Common_EventScript_CandyLimited05:: @ FLAG_HIDDEN_LIMITED_CANDY_0x6B
+	giveitem_std ITEM_RARE_CANDY, 1, 1
+	end
+
+Common_EventScript_CandyLimited06:: @ FLAG_HIDDEN_LIMITED_CANDY_0x6A
+	giveitem_std ITEM_RARE_CANDY, 1, 1
+	end
+
 
 @ -----------------------------------------------------
 @ Below is depreicated
@@ -196,10 +226,6 @@ Common_EventScript_ItemPokeDoll::
 
 Common_EventScript_ItemFluffyTail::
 	giveitem_std ITEM_FLUFFY_TAIL, 1, 1
-	end
-
-Common_EventScript_ItemItemfinder::
-	giveitem_std ITEM_ITEMFINDER, 1, 1
 	end
 
 @ -----------------------------------------------------

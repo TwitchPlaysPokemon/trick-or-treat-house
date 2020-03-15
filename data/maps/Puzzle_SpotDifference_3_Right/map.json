@@ -14,32 +14,32 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x12",
-            "item": "ITEM_BURN_HEAL",
+            "flag": "FLAG_CANDY_ABUNDANT_09",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
             "x": 1,
             "y": 18
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x13",
-            "item": "ITEM_TINY_MUSHROOM",
+            "flag": "FLAG_CANDY_COMMON_05",
+            "item": "ITEM_CANDY_COMMON",
             "type": "hidden_item",
             "x": 7,
             "y": 9
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x14",
-            "item": "ITEM_LAVA_COOKIE",
+            "flag": "FLAG_CANDY_ABUNDANT_10",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
             "x": 4,
             "y": 3
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x15",
-            "item": "ITEM_ENERGY_POWDER",
+            "flag": "FLAG_CANDY_HEALTHY_03",
+            "item": "ITEM_CANDY_HEALTHY",
             "type": "hidden_item",
             "x": 7,
             "y": 13

@@ -1992,7 +1992,7 @@ static const u8 sMMPeanutDesc[] = _(
     "Restores HP\n"
     "by 20 points.");
 
-static const u8 sKingChocName[] = _("King's Choc×Nut");
+static const u8 sKingChocName[] = _("King's Choc·Nut");
 static const u8 sKingChocDesc[] = _(
     "Individually wrapped.\n"
     "Restores HP\n"

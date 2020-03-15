@@ -6,40 +6,40 @@
     "bg_events": [
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x00",
-            "item": "ITEM_SUPER_POTION",
+            "flag": "FLAG_CANDY_COMMON_02",
+            "item": "ITEM_CANDY_COMMON",
             "type": "hidden_item",
             "x": 4,
             "y": 2
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x01",
-            "item": "ITEM_FRESH_WATER",
+            "flag": "FLAG_CANDY_COMMON_03",
+            "item": "ITEM_CANDY_COMMON",
             "type": "hidden_item",
             "x": 3,
             "y": 11
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x02",
-            "item": "ITEM_ETHER",
+            "flag": "FLAG_CANDY_UNCOMMON_01",
+            "item": "ITEM_CANDY_UNCOMMON",
             "type": "hidden_item",
             "x": 12,
             "y": 19
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x03",
-            "item": "ITEM_TINY_MUSHROOM",
+            "flag": "FLAG_CANDY_UNCOMMON_02",
+            "item": "ITEM_CANDY_UNCOMMON",
             "type": "hidden_item",
             "x": 0,
             "y": 17
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x04",
-            "item": "ITEM_POTION",
+            "flag": "FLAG_CANDY_ABUNDANT_02",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
             "x": 14,
             "y": 2
@@ -131,12 +131,12 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_PUZZLE_ITEM_0",
+            "flag": "FLAG_CANDY_COMMON_01",
             "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "Common_EventScript_ItemSuperPotion",
+            "script": "Common_EventScript_CandyCommon",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 1,
@@ -144,12 +144,12 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_PUZZLE_ITEM_1",
+            "flag": "FLAG_CANDY_ABUNDANT_01",
             "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "Common_EventScript_ItemFullHeal",
+            "script": "Common_EventScript_CandyAbundant",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 4,

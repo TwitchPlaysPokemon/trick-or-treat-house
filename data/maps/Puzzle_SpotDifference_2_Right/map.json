@@ -14,32 +14,32 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x0A",
-            "item": "ITEM_STAR_PIECE",
+            "flag": "FLAG_CANDY_RARE_02",
+            "item": "ITEM_CANDY_RARE",
             "type": "hidden_item",
             "x": 15,
             "y": 5
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x0B",
-            "item": "ITEM_NUGGET",
+            "flag": "FLAG_CANDY_UNCOMMON_02",
+            "item": "ITEM_CANDY_UNCOMMON",
             "type": "hidden_item",
             "x": 1,
             "y": 9
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x0C",
-            "item": "ITEM_POTION",
+            "flag": "FLAG_CANDY_ABUNDANT_06",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
             "x": 10,
             "y": 5
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x0D",
-            "item": "ITEM_ANTIDOTE",
+            "flag": "FLAG_CANDY_ABUNDANT_07",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
             "x": 2,
             "y": 3

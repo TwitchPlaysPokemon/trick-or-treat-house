@@ -1,5 +1,6 @@
 raw `
 Puzzle_SpotDifference_3_Right_MapScripts::
+    puzzle_info Puzzle_SpotDifference_Name, Puzzle_SpotDifference_Author
 	.byte 0
 `
 

@@ -6,32 +6,32 @@
     "bg_events": [
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x00",
-            "item": "ITEM_POTION",
+            "flag": "FLAG_CANDY_ABUNDANT_01",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
             "x": 14,
             "y": 3
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x01",
-            "item": "ITEM_ETHER",
+            "flag": "FLAG_CANDY_ABUNDANT_02",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
             "x": 10,
             "y": 7
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x02",
-            "item": "ITEM_BURN_HEAL",
+            "flag": "FLAG_CANDY_ABUNDANT_03",
+            "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
             "x": 20,
             "y": 3
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x03",
-            "item": "ITEM_HYPER_POTION",
+            "flag": "FLAG_CANDY_COMMON_01",
+            "item": "ITEM_CANDY_COMMON",
             "type": "hidden_item",
             "x": 4,
             "y": 6

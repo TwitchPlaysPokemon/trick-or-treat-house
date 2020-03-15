@@ -36,19 +36,20 @@ TrickTreat_PetalburgCity_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_YOUNGSTER
 	.2byte 0
 TrickTreat_PetalburgCity_CandyList:
-	.2byte FLAG_PUZZLE_ITEM_0
-	.2byte FLAG_PUZZLE_ITEM_1
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x03
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x04
-	.2byte FLAG_PUZZLE_20  @ Trick or Treat Spots
-	.2byte FLAG_PUZZLE_21
-	.2byte FLAG_PUZZLE_22
-	.2byte FLAG_PUZZLE_23
-	.2byte FLAG_PUZZLE_24
-	.2byte FLAG_PUZZLE_25
+	.2byte FLAG_CANDY_RARE_01
+	.2byte FLAG_HIDDEN_LIMITED_CANDY_0x6B
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	@ Trick or Treat Spots
+	.2byte FLAG_PUZZLE_20 @ ABUNDANT
+	.2byte FLAG_PUZZLE_21 @ ABUNDANT
+	.2byte FLAG_PUZZLE_22 @ UNCOMMON
+	.2byte FLAG_PUZZLE_23 @ COMMON
+	.2byte FLAG_PUZZLE_24 @ HEALTHY
+	.2byte FLAG_PUZZLE_25 @ ABUNDANT
 	.2byte 0
 TrickTreat_PetalburgCity_FrameTable:
 	map_script_2 VAR_PUZZLE_00, 0, TrickTreat_PetalburgCity_Introduction
@@ -102,20 +103,10 @@ script TrickTreat_PetalburgCity_Introduction {
 	release
 	special (ShowMapNamePopup)
 }
-raw `
-TrickTreat_PetalburgCity_Introduction_Movement:
-	walk_right
-	walk_right
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	walk_down
-	step_end
-`
+movement TrickTreat_PetalburgCity_Introduction_Movement {
+	walk_right * 2
+	walk_down * 8
+}
 
 # -----------------------------------------------------
 
@@ -167,7 +158,7 @@ script TrickTreat_PetalburgCity_CandyGiver_Nurse {
 	faceplayer
 	msgbox ("Happy Halloween!\n"
 			"Please take some candy!$")
-	giveitem_std (ITEM_POTION, 2)
+	giveitem_std (ITEM_CANDY_ABUNDANT, 2)
 	msgbox ("The {POKEMON} CENTER is always there\n"
 			"for trainers everywhere.\p"
 			"Have a good night!$")
@@ -181,7 +172,7 @@ script TrickTreat_PetalburgCity_CandyGiver_Mart {
 	faceplayer
 	msgbox ("Trick or Treat!\n"
 			"Please take some candy!$")
-	giveitem_std (ITEM_AWAKENING, 2)
+	giveitem_std (ITEM_CANDY_ABUNDANT, 2)
 	msgbox ("Be sure to drop by the MART for all your\n"
 			"{POKEMON} supply needs!\p"
 			"Have a good night!$")
@@ -201,7 +192,7 @@ script TrickTreat_PetalburgCity_CandyGiver_Norman {
 	msgbox ("Maybe I'll see you in my gym\n"
 			"for a badge in near the future.\p"
 			"But for now, this'll have to do.$")
-	giveitem_std (ITEM_MAX_ETHER, 1)
+	giveitem_std (ITEM_CANDY_UNCOMMON, 1)
 	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
 	setflag (FLAG_PUZZLE_22)
 	release
@@ -219,7 +210,7 @@ script TrickTreat_PetalburgCity_CandyGiver_Youngster {
 	setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
 	msgbox ("Do you know how hard it was to win\n"
 			"these off Norman? Sigh. Here.$")
-	giveitem_std (ITEM_SUPER_POTION, 2)
+	giveitem_std (ITEM_CANDY_COMMON, 2)
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
 	setflag (FLAG_PUZZLE_23)
 	release
@@ -236,7 +227,7 @@ script TrickTreat_PetalburgCity_CandyGiver_WallysHouse {
 			"Splendid! Splendid!$")
 	setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
 	msgbox ("Here's something healthy for winning!$")
-	giveitem_std (ITEM_HEAL_POWDER, 2)
+	giveitem_std (ITEM_CANDY_HEALTHY, 2)
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
 	setflag (FLAG_PUZZLE_24)
 	release
@@ -248,7 +239,7 @@ script TrickTreat_PetalburgCity_CandyGiver_House {
 	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
 	msgbox ("Happy Halloween!\n"
 			"That's a good costume. Here you go!$")
-	giveitem_std (ITEM_FULL_HEAL, 4)
+	giveitem_std (ITEM_CANDY_ABUNDANT, 4)
 	msgbox ("Have a good night!$")
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
 	setflag (FLAG_PUZZLE_25)

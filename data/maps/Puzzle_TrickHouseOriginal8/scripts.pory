@@ -23,12 +23,12 @@ Puzzle_TrickHouseOriginal8_Quip:
 	.string "going! This puzzle was hard!$"
 .align 2
 Puzzle_TrickHouseOriginal8_CandyList:
-	.2byte FLAG_PUZZLE_ITEM_0
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x00
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x03
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x04
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_01
 	.2byte 0
 
 @ -----------------------------------------------------

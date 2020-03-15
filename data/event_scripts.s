@@ -386,11 +386,12 @@ EventScript_ResetAllMapFlags:: @ 82715DE
 	setflag FLAG_HIDE_INTRO_CHARACTERS
 	setflag FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
 	call EventScript_ResetAllBerries
-	giveitem ITEM_POTION, 5
-	giveitem ITEM_ANTIDOTE, 2
-	giveitem ITEM_FULL_HEAL, 6
-	giveitem ITEM_ETHER, 2
-	giveitem ITEM_LAVA_COOKIE, 12
+	@ give initial candy haul
+	giveitem ITEM_CANDY_CHOCOLATE, 5
+	giveitem ITEM_CANDY_STARBURST, 2
+	giveitem ITEM_CANDY_REESES, 6
+	giveitem ITEM_CANDY_PRETZEL, 2
+	giveitem ITEM_CANDY_OREO, 12
 	end
 
 EverGrandeCity_HallOfFame_EventScript_2717C1:: @ 82717C1
@@ -680,6 +681,7 @@ OldaleTown_PokemonCenter_1F_Movement_271AD0: @ 8271AD0
 	step_end
 
 Std_ObtainItem:: @ 8271AD3
+	resolveitem VAR_0x8000, VAR_0x8001
 	giveitem VAR_0x8000, VAR_0x8001
 	copyvar VAR_0x8007, VAR_RESULT
 	call Std_ObtainItem_DisplayStandardText
@@ -735,11 +737,9 @@ Std_ObtainItem_HandleItemType4:: @ 8271B85
 	return
 
 Std_ObtainItem_DisplayPutItemInPocket:: @ 8271B95
-	bufferitemname 1, VAR_0x8000, VAR_0x8001
 	buffernumberstring2 0, VAR_0x8001, 1
 	message gText_ObtainedTheItem
 	waitfanfare
-	@ msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
 	message gText_PutItemInPocket
 	waitmessage
 	waitbuttonpress
@@ -788,6 +788,11 @@ Std_FindItem:: @ 8271BFD
 	lock
 	faceplayer
 	waitse
+		playse SE_PC_ON
+		delay 60
+	resolveitem VAR_0x8000, VAR_0x8001
+		playse SE_PC_OFF
+		delay 60
 	copyvar VAR_0x8004, VAR_0x8000
 	copyvar VAR_0x8005, VAR_0x8001
 	checkitemspace VAR_0x8000, VAR_0x8001
@@ -845,9 +850,14 @@ EventScript_271CA1:: @ 8271CA1
 EventScript_HiddenItemScript:: @ 8271CB7
 	lockall
 	waitse
-	giveitem VAR_0x8005, 1
+		playse SE_PC_ON
+		delay 60
+	resolveitem VAR_0x8005, VAR_0x8006
+		playse SE_PC_OFF
+		delay 60
+	giveitem VAR_0x8005, VAR_0x8006
 	copyvar VAR_0x8007, VAR_RESULT
-	bufferitemnameplural 1, VAR_0x8005, 1
+	bufferitemnameplural 1, VAR_0x8005, VAR_0x8006
 	checkitemtype VAR_0x8005
 	call Std_ObtainItem_BufferItemTypeAndPlayJingle
 	compare VAR_0x8007, 1
@@ -867,7 +877,7 @@ EventScript_271CE8:: @ 8271CE8
 	end
 
 EventScript_271D0E:: @ 8271D0E
-	bufferitemnameplural 0, VAR_0x8004, 1
+	bufferitemnameplural 0, VAR_0x8004, VAR_0x8006
 	message gText_PlayerFoundOneTMItem
 	goto EventScript_271D2A
 	end
@@ -881,8 +891,8 @@ EventScript_271D1F:: @ 8271D1F
 EventScript_271D2A:: @ 8271D2A
 	waitmessage
 	waitfanfare
-	@ bufferitemnameplural 1, VAR_0x8004, 1
-	bufferitemname 1, VAR_0x8004, 1
+	bufferitemnameplural 1, VAR_0x8004, VAR_0x8006
+	@ bufferitemname 1, VAR_0x8004, 1
 	copyvar VAR_0x8004, VAR_0x8008
 	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
 	special sub_80EDCE8

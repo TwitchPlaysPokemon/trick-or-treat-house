@@ -104,5 +104,6 @@ u8 ItemId_GetBattleUsage(u16 itemId);
 const u8 *const ItemId_GetItemEffect(u16 itemId);
 ItemUseFunc ItemId_GetBattleFunc(u16 itemId);
 u8 ItemId_GetSecondaryId(u16 itemId);
+void ResolveSpecialItemIds(u16 *itemId, u16 *count);
 
 #endif // GUARD_ITEM_H

@@ -1,5 +1,6 @@
 raw `
 Puzzle_Loss_Floor2_MapScripts::
+	puzzle_info Puzzle_Loss_Name, Puzzle_Loss_Author
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_Loss_Floor2_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_Loss_Floor2_FrameTable
 	.byte 0
@@ -57,6 +58,13 @@ script Puzzle_Loss_Floor2_EventScript_Man {
 			"second door on the left.$", MSGBOX_NPC)
 	setvar (VAR_PUZZLE_ADVANCEMENT, 2)
 	setmetatile (14, 3, METATILE_UnlockedDoor, TRUE)
+}
+
+script Puzzle_Loss_Floor2_EventScript_Woman {
+	msgbox ("A woman is lying here in bed, holding\n"
+			"her stomach…\p"
+			"Oh hey, there's a scroll here!$")
+	goto (PuzzleCommon_EventScript_Scroll)
 }
 
 script Puzzle_Loss_Floor2_EventScript_Teala {
