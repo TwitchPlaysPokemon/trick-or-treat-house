@@ -1,4 +1,5 @@
 raw `
 LostWoods1_Underwater_MapScripts::
+	puzzle_info Puzzle_LostWoods1_Name, Puzzle_LostWoods1_Author
 	.byte 0
 `

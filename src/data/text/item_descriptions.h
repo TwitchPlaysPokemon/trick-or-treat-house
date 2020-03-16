@@ -1929,6 +1929,7 @@ static const u8 sOldSeaMapDesc[] = _(
 // TTH Candy
 static const u8 sBarQuantum[] = _("bar");
 static const u8 sBoxQuantum[] = _("box");
+static const u8 sBoxQuantumPlural[] = _("boxes");
 static const u8 sPacketQuantum[] = _("packet");
 
 static const u8 sChocolateName[] = _("Chocolate");

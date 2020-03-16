@@ -1,5 +1,6 @@
 raw `
 LostWoods1_Room8_MapScripts::
+	puzzle_info Puzzle_LostWoods1_Name, Puzzle_LostWoods1_Author
 	map_script MAP_SCRIPT_ON_LOAD, LostWoods1_Room8_OnLoad
 	.byte 0
 

@@ -1,5 +1,6 @@
 raw `
 LostWoods1_Room1_MapScripts::
+	puzzle_info Puzzle_LostWoods1_Name, Puzzle_LostWoods1_Author
 	map_script MAP_SCRIPT_ON_TRANSITION, LostWoods1_Room1_OnTransition
 	.byte 0
 
