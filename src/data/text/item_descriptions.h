@@ -1946,7 +1946,7 @@ static const u8 sChocoWhiteDesc[] = _(
 
 static const u8 sChocoSlabName[] = _("White Chocolate");
 static const u8 sChocoSlabDesc[] = _(
-    "450 gr / 1 lbs. Hold;\n"
+    "450 gr. Hold;\n"
     "Intimidates enemy.\n"
     "Very heavy.");
 
@@ -1970,13 +1970,13 @@ static const u8 sGalaxyDesc[] = _(
 
 static const u8 sTwixLeftName[] = _("Left Twix");
 static const u8 sTwixLeftDesc[] = _(
-    "There's a difference?.\n"
+    "Two-Pack.\n"
     "Restores HP\n"
     "by 30 points.");
 
 static const u8 sTwixRightName[] = _("Right Twix");
 static const u8 sTwixRightDesc[] = _(
-    "There's a difference?.\n"
+    "Two-Pack.\n"
     "Restores PP for\n"
     "all moves by 4.");
 
@@ -1991,122 +1991,122 @@ static const u8 sMMPeanutName[] = _("Peanut M&M's");
 static const u8 sMMPeanutDesc[] = _(
     "Sharing size.\n"
     "Restores HP\n"
-    "by 20 points.");
+    "by 50 points.");
 
 static const u8 sKingChocName[] = _("King's Choc·Nut");
 static const u8 sKingChocDesc[] = _(
-    "Individually wrapped.\n"
+    "Single serving.\n"
     "Restores HP\n"
     "by 30 points.");
 
 static const u8 sGummyBearName[] = _("Gummy Bears");
 static const u8 sGummyBearDesc[] = _(
-    "Individually wrapped.\n"
-    "Restores HP\n"
-    "by 30 points.");
+    "Single serving.\n"
+    "Raises a random\n"
+    "stat in battle.");
 
 static const u8 sReeseCupName[] = _("Reese Cup");
 static const u8 sReeseCupDesc[] = _(
-    "Individually wrapped.\n"
+    "Single serving.\n"
     "Heals all\n"
     "status problems.");
 
 static const u8 sButterfingerName[] = _("Butterfinger");
 static const u8 sButterfingerDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "Snack size.\n"
+    "Restores HP\n"
+    "by 60 points.");
 
 static const u8 sMilkyWayName[] = _("MilkyWay");
 static const u8 sMilkyWayDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "No carmel version.\n"
+    "Restores HP\n"
+    "by 80 points.");
 
 static const u8 sMilkaLufleeName[] = _("Milka Luflée");
 static const u8 sMilkaLufleeDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "Made from Moo-\n"
+    "Moo Milk.\n"
+    "Heals 100 HP.");
 
 static const u8 s100GrandName[] = _("100 Grand");
 static const u8 s100GrandDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "Sharing size.\n"
+    "Restores HP\n"
+    "by 100 points.");
 
 static const u8 sMalteserName[] = _("Malteser");
 static const u8 sMalteserDesc[] = _(
     ".\n"
-    "\n"
-    ".");
+    "Heals 10 PP\n"
+    "for one move.");
 
 static const u8 sCadburyCremeName[] = _("Cadbury Creme");
 static const u8 sCadburyCremeDesc[] = _(
     ".\n"
-    "\n"
-    ".");
+    "Heals all PP\n"
+    "for one move.");
 
 static const u8 sWunderbarName[] = _("Wunderbar");
 static const u8 sWunderbarDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "Cadbury.\n"
+    "Heals all PP\n"
+    "for all moves.");
 
 static const u8 sOreoCookiesQuantum[] = _("pack");
 static const u8 sOreoCookiesName[] = _("Oreo Cookies");
 static const u8 sOreoCookiesDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "Three Pack.\n"
+    "Heals all\n"
+    "status problems.");
 
 static const u8 sCoffeeCrispName[] = _("Coffee Crisp");
 static const u8 sCoffeeCrispDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "Sharing Size.\n"
+    "Heals 60 HP;\n"
+    "cures Slp/Frz.");
 
 static const u8 sSamboPristurName[] = _("Sambó ¥ristur");
 static const u8 sSamboPristurDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "250gr bar.\n"
+    "Heals 60 HP;\n"
+    "cures Brn/Prz.");
 
 static const u8 sSnickersName[] = _("Snickers");
 static const u8 sSnickersDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "Sharing size.\n"
+    "Calms and keeps\n"
+    "away wild {PK}{MN}.");
 
 static const u8 sMarsBarName[] = _("Mars Bar");
 static const u8 sMarsBarDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "King Sized.\n"
+    "Fully restores the\n"
+    "HP of a {POKEMON}.");
 
 static const u8 sKitKatBarName[] = _("KitKat Bar");
 static const u8 sKitKatBarDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "Revives a fainted\n"
+    "{POKEMON} with half\n"
+    "its HP.");
 
 static const u8 sPixieStickName[] = _("Pixie Stick");
 static const u8 sPixieStickDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "A hold item that\n"
+    "reduces accuracy\n"
+    "by being sweet.");
 
 static const u8 sTurkishDelightName[] = _("Turkish Delight");
 static const u8 sTurkishDelightDesc[] = _(
     ".\n"
-    "\n"
-    ".");
+    "Fully heals all\n"
+    "PP for all moves.");
 
 static const u8 sGobstopperName[] = _("Gobstopper");
 static const u8 sGobstopperDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "Everlasting.\n"
+    "Held; gradually\n"
+    "heals in battle.");
 
 static const u8 sBlackThunderName[] = _("Black Thunder");
 static const u8 sBlackThunderDesc[] = _(
@@ -2116,69 +2116,69 @@ static const u8 sBlackThunderDesc[] = _(
 
 static const u8 sTobleroneName[] = _("Toblerone");
 static const u8 sTobleroneDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "360gr box.\n"
+    "Held; Raises\n"
+    "Critical Hit Ratio.");
 
 static const u8 sFerreroRocherName[] = _("Ferrero Rocher");
 static const u8 sFerreroRocherDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "Fully restores the\n"
+    "HP and status of a\n"
+    "{POKEMON}.");
 
 static const u8 sEggName[] = _("Egg");
 static const u8 sEggDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "Throw in battle.\n"
+    "80% acc; 2 Dmg.\n"
+    "Confuses.");
 
 static const u8 sEggDeviledName[] = _("Deviled Egg");
 static const u8 sEggDeviledDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "Throw in battle.\n"
+    "60% acc; 12 Dmg.\n"
+    "-1 Def; Confuses.");
 
 static const u8 sCarrotName[] = _("Carrot Stick");
 static const u8 sCarrotDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "With Ranch dip.\n"
+    "Cures Paralysis;\n"
+    "heals 40 HP.");
 
 static const u8 sAppleName[] = _("Apple Slice");
 static const u8 sAppleDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "Bag of six.\n"
+    "Cures Burn;\n"
+    "heals 40 HP.");
 
 static const u8 sPruneName[] = _("Prune");
 static const u8 sPruneDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "Just… why?\n"
+    "Cures Poison;\n"
+    "heals 40 HP.");
 
 static const u8 sCeleryName[] = _("Celery Stick");
 static const u8 sCeleryDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "Peanut Butter dip.\n"
+    "Cures Frozen;\n"
+    "heals 40 HP.");
 
 static const u8 sSnapPeasName[] = _("SnapPeas");
 static const u8 sSnapPeasDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "Pack of six.\n"
+    "Cures Sleep;\n"
+    "heals 40 HP.");
 
 static const u8 sRaisensName[] = _("Raisens");
 static const u8 sRaisensDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "Small box.\n"
+    "Heals 6 PP\n"
+    "for all moves.");
 
 static const u8 sBagQuantum[] = _("bag");
 static const u8 sKaleChipsName[] = _("Kale Chips");
 static const u8 sKaleChipsDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "Single serving.\n"
+    "Revives to\n"
+    "half HP.");
 
 

@@ -6307,3 +6307,5 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/Puzzle_SootSackMaze/scripts.inc"
 
 	.include "data/maps/Puzzle_TrickHouseSlipSliding/scripts.inc"
+
+	.include "data/maps/Puzzle_FallingWater/scripts.inc"

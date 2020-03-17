@@ -106,6 +106,7 @@
 #define MAP_PUZZLE_ILEX_FOREST              (3 | (5 << 8))
 #define MAP_PUZZLE_SOOT_SACK_MAZE           (4 | (5 << 8))
 #define MAP_PUZZLE_TRICK_HOUSE_SLIP_SLIDING (5 | (5 << 8))
+#define MAP_PUZZLE_FALLING_WATER            (6 | (5 << 8))
 
 // Map Group 6
 #define MAP_PUZZLE_LOST_WOODS1_ENTRANCE (0 | (6 << 8))

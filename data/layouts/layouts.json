@@ -1349,6 +1349,16 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_TrickHousePuzzle",
             "width": 17
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_FallingWater/map.bin",
+            "border_filepath": "data/layouts/Puzzle_FallingWater/border.bin",
+            "height": 100,
+            "id": "LAYOUT_PUZZLE_FALLING_WATER",
+            "name": "Puzzle_FallingWater_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Pacifidlog",
+            "width": 48
         }
     ],
     "layouts_table_label": "gMapLayouts"
