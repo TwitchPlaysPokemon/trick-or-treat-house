@@ -23,6 +23,8 @@ script TrickHouseEnd_OnLoad {
 
 script TrickHouseEnd_OnTransition {
 	setvar(VAR_PUZZLE_STATE, 2)
+	// TODO: poryswitch -> Disable end person movement when in TPP build
+	
 	# Because some event objects cause freezing when wandering around
 	switch (var(VAR_OBJ_GFX_ID_1)) {
 		case EVENT_OBJ_GFX_LUGIA:     setobjectmovementtype (2, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN)
@@ -57,6 +59,17 @@ script TrickHouseEnd_EventScript_FinalPuzzlePerson {
 	lock
 	faceplayer
 	callnative(ShowPuzzleQuip)
+	waitmessage
+	waitbuttonpress
+	release
+}
+
+# -----------------------------------------------------
+
+script TrickHouseEnd_EventScript_DevStandIn {
+	lock
+	faceplayer
+	callnative(ShowPuzzleDevCommentary)
 	waitmessage
 	waitbuttonpress
 	release

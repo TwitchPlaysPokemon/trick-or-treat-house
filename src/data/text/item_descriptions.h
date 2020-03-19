@@ -2076,7 +2076,7 @@ static const u8 sSnickersName[] = _("Snickers");
 static const u8 sSnickersDesc[] = _(
     "Sharing size.\n"
     "Calms and keeps\n"
-    "away wild {PK}{MN}.");
+    "away wild {PKMN}.");
 
 static const u8 sMarsBarName[] = _("Mars Bar");
 static const u8 sMarsBarDesc[] = _(

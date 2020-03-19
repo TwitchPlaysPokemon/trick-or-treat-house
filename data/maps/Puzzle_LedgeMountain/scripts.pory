@@ -5,6 +5,7 @@ Puzzle_LedgeMountain_MapScripts::
 	puzzle_quip Puzzle_LedgeMountain_Quip
 	puzzle_metavars Puzzle_LedgeMountain_Variables
 	puzzle_candylist Puzzle_LedgeMountain_CandyList
+	puzzle_devcommentary Puzzle_LedgeMountain_DevCommentary
 	.byte 0
 
 Puzzle_LedgeMountain_Name:
@@ -16,6 +17,15 @@ Puzzle_LedgeMountain_Adjective:
 Puzzle_LedgeMountain_Quip:
 	.string "I love a good climb in the morning!\n"
 	.string "How about you?$"
+Puzzle_LedgeMountain_DevCommentary:
+	.string "Tustin2121: This puzzle exists because\n"
+	.string "TPP is terrible at ledges.\p"
+	.string "Th-that's really about it…\p"
+	.string "… …Every time I see the clip of chat's\n"
+	.string "reaction to the starting cutscene… …\l"
+	.string "I cackle for like an hour afterwards…\p"
+	.string "Here's a link to the clip:\n"
+	.string "clips.twitch.tv/CuriousBlueWaffleOhMyDog$"
 .align 2
 Puzzle_LedgeMountain_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER

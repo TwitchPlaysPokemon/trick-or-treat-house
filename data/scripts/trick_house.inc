@@ -6,6 +6,9 @@ PuzzleCommon_Text_DefaultAdjective::
 	.string "<adjective>$"
 PuzzleCommon_Text_DefaultQuip::
 	.string "{PUZZLE_AUTHOR}: What did you think\nof my puzzle?$"
+PuzzleCommon_Text_DefaultDevCommentary::
+	.string "Tustin2121: Uh, this isn't supposed to\n"
+	.string "happen… Ignore this, please.$"
 PuzzleCommon_DefaultSetupScript::
 	end
 PuzzleCommon_DefaultTeardownScript::

@@ -118,6 +118,11 @@ void RunPuzzleTeardownScript()
 
 ///////////////////////////////////////////////////////////////////////////////
 
+bool8 IsAfterFirstLoop()
+{
+	return (GetGameStat(GAME_STAT_NUM_PUZZLES_COMPLETED) > VarGet(VAR_CURRENT_PUZZLE));
+}
+
 void ClearPuzzleEventData(struct ScriptContext *ctx)
 {
 	memset(gSaveBlock1Ptr->flags + 0x04, 0, 0x0A);
@@ -184,7 +189,7 @@ void LoadPuzzleIntro(struct ScriptContext *ctx)
 	}
 	// Check if this is the first puzzle, load as a custom intro
 	if (VarGet(VAR_CURRENT_PUZZLE) == 0) { //first puzzle
-		if (GetGameStat(GAME_STAT_NUM_PUZZLES_COMPLETED) > VarGet(VAR_CURRENT_PUZZLE)) {
+		if (IsAfterFirstLoop()) {
 			gSpecialVar_Result += 2;
 			ctx->data[0] = (u32)PuzzleCommon_Text_FirstPuzzleIntroRound2;
 			return;
@@ -208,6 +213,18 @@ void ShowPuzzleQuip(struct ScriptContext *ctx)
 	ShowFieldMessage(str);
 }
 
+extern const u8 PuzzleCommon_Text_DefaultDevCommentary[];
+void ShowPuzzleDevCommentary(struct ScriptContext *ctx)
+{
+	u16 currPuzzle = GetCurrentPuzzleMapId();
+	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_DEV_COMMENTARY);
+	if (str == NULL)
+	{
+		str = PuzzleCommon_Text_DefaultDevCommentary;
+	}
+	ShowFieldMessage(str);
+}
+
 extern const u8 PuzzleCommon_DefaultVariableAssignments[];
 void AssignPuzzleMetaVariables(struct ScriptContext *ctx)
 {
@@ -218,6 +235,16 @@ void AssignPuzzleMetaVariables(struct ScriptContext *ctx)
 	VarSet(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_TRICK_MASTER);
 	// Randomize quip person by default
 	VarSet(VAR_OBJ_GFX_ID_1, (Random() % (EVENT_OBJ_GFX_FISHERMAN - EVENT_OBJ_GFX_BOY_1)) + EVENT_OBJ_GFX_BOY_1);
+	// Set devloper commentator to Tustin by default
+	VarSet(VAR_OBJ_GFX_ID_2, EVENT_OBJ_GFX_TRICK_MASTER);
+	
+	if ((IsAfterFirstLoop() || gMain.debugMode) 
+		&& GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_DEV_COMMENTARY) != NULL) 
+	{
+		FlagClear(FLAG_HIDE_DEVELOPER_COMMENTATOR);
+	} else {
+		FlagSet(FLAG_HIDE_DEVELOPER_COMMENTATOR);
+	}
 	
 	if (array != NULL)
 	{

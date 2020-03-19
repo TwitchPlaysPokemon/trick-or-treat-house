@@ -1,4 +1,26 @@
 raw `
 Puzzle_FallingWater_MapScripts::
+	puzzle_info Puzzle_FallingWater_Name, Puzzle_FallingWater_Author
+	puzzle_adjective Puzzle_FallingWater_Adjective
+	puzzle_quip Puzzle_FallingWater_Quip
+	puzzle_item_prereqs Puzzle_FallingWater_PrereqItems
+	puzzle_candylist Puzzle_FallingWater_CandyList
 	.byte 0
+
+Puzzle_FallingWater_Name:
+	.string "Falling Water$"
+Puzzle_FallingWater_Author:
+	.string "Tustin2121$"
+Puzzle_FallingWater_Adjective:
+	.string "swift moving$"
+Puzzle_FallingWater_Quip:
+	.string "X$"
+.align 2
+Puzzle_FallingWater_PrereqItems:
+	.2byte ITEM_SURF_ITEM
+	.2byte 0
+Puzzle_FallingWater_CandyList:
+	.2byte 0
+
+@ -----------------------------------------------------
 `

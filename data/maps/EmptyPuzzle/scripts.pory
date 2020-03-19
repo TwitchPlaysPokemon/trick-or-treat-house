@@ -2,12 +2,18 @@ raw `
 EmptyPuzzle_MapScripts::
 	puzzle_info EmptyPuzzle_Name, EmptyPuzzle_Author
 	puzzle_metavars EmptyPuzzle_Variables
+	puzzle_devcommentary EmptyPuzzle_DevCommentary
 	.byte 0
 
 EmptyPuzzle_Name:
 	.string "Empty Puzzle$"
 EmptyPuzzle_Author:
 	.string "necessity$"
+EmptyPuzzle_DevCommentary:
+	.string "Tustin2121: This is a test of the emergency\n"
+	.string "broadcast system. This is only a test.\p"
+	.string "If this were real, I would be screaming\n"
+	.string "right now.$"
 .align 2
 EmptyPuzzle_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HOOH
@@ -43,6 +49,5 @@ script EmptyPuzzle_TriggerScript_ButtonD {
 
 script EmptyPuzzle_TriggerScript_ButtonE {
 	setflag (FLAG_PICKED_UP_CUT_ITEM)
-	setflag (FLAG_UNUSED_0x06F)
 	setvar (VAR_TEMP_E, 1)
 }

@@ -6,6 +6,7 @@ Puzzle_LostWoods1_Entrance_MapScripts::
 	puzzle_metavars Puzzle_LostWoods1_Variables
 	puzzle_item_prereqs Puzzle_LostWoods1_PrereqItems
 	puzzle_candylist Puzzle_LostWoods1_CandyList
+	puzzle_devcommentary Puzzle_LostWoods1_DevCommentary
 	.byte 0
 
 
@@ -17,6 +18,17 @@ Puzzle_LostWoods1_Adjective:
 	.string "meandering$"
 Puzzle_LostWoods1_Quip:
 	.string "…$"
+Puzzle_LostWoods1_DevCommentary:
+	.string "Tustin2121: The inspiration for this\n"
+	.string "puzzle was FireRed's Glitch City during\l"
+	.string "TwitchPlaysPokemon's run of Burning Red.\p"
+	.string "Our resident binary hacker Kip made the\n"
+	.string "map connect on the edges to itself, so\l"
+	.string "you could run endlessly in one direction\l"
+	.string "across the map, if you were so inclined.\p"
+	.string "This puzzle is ten or so nearly identical\n"
+	.string "maps, and the whole maze is in how they\l"
+	.string "connect to one another.$"
 .align 2
 Puzzle_LostWoods1_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HERO_OF_TIME

@@ -50,6 +50,11 @@
 .4byte \pointer
 .endm
 
+.macro puzzle_devcommentary pointer:req
+.byte MAP_SCRIPT_PUZZLE_DEV_COMMENTARY
+.4byte \pointer
+.endm
+
 @ -----------------------------------------------------
 
 GATE_SHAPE_L1 = 0

@@ -122,7 +122,7 @@
 #define FLAG_PUZZLE_HAS_COMPLETED            0x6C
 #define FLAG_UNUSED_0x06D                    0x6D
 #define FLAG_UNUSED_0x06E                    0x6E
-#define FLAG_UNUSED_0x06F                    0x6F
+#define FLAG_HIDE_DEVELOPER_COMMENTATOR      0x6F
 
 
 #define FLAG_DECORATION_0                    0x70
