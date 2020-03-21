@@ -118,7 +118,11 @@
         "Puzzle_IlexForest",
         "Puzzle_SootSackMaze",
         "Puzzle_TrickHouseSlipSliding",
-        "Puzzle_FallingWater"
+        "Puzzle_FallingWater",
+        "Puzzle_TrainerHill1",
+        "Puzzle_TrainerHill2",
+        "Puzzle_TrainerHill3",
+        "Puzzle_TrainerHill4"
     ],
     "MG_SingleMapPuzzles2019": [
         "Puzzle_TrickHouseCut",
@@ -154,6 +158,7 @@
         "LedgeMountain_Support",
         "WaterTemple_Lv1",
         "WaterTemple_Lv2",
+        "TrainerHillTemplate",
         "FakeSecretBaseCave"
     ],
     "MG_TestMaps": [

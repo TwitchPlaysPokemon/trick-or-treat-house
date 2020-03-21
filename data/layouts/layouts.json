@@ -1359,6 +1359,56 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Pacifidlog",
             "width": 48
+        },
+        {
+            "blockdata_filepath": "data/layouts/TrainerHillTemplate/map.bin",
+            "border_filepath": "data/layouts/TrainerHillTemplate/border.bin",
+            "height": 68,
+            "id": "LAYOUT_TRAINER_HILL_TEMPLATE",
+            "name": "TrainerHillTemplate_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrainerHill",
+            "width": 38
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_TrainerHill1/map.bin",
+            "border_filepath": "data/layouts/Puzzle_TrainerHill1/border.bin",
+            "height": 68,
+            "id": "LAYOUT_PUZZLE_TRAINER_HILL1",
+            "name": "Puzzle_TrainerHill1_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrainerHill",
+            "width": 38
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_TrainerHill2/map.bin",
+            "border_filepath": "data/layouts/Puzzle_TrainerHill2/border.bin",
+            "height": 68,
+            "id": "LAYOUT_PUZZLE_TRAINER_HILL2",
+            "name": "Puzzle_TrainerHill2_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrainerHill",
+            "width": 38
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_TrainerHill3/map.bin",
+            "border_filepath": "data/layouts/Puzzle_TrainerHill3/border.bin",
+            "height": 68,
+            "id": "LAYOUT_PUZZLE_TRAINER_HILL3",
+            "name": "Puzzle_TrainerHill3_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrainerHill",
+            "width": 38
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_TrainerHill4/map.bin",
+            "border_filepath": "data/layouts/Puzzle_TrainerHill4/border.bin",
+            "height": 68,
+            "id": "LAYOUT_PUZZLE_TRAINER_HILL4",
+            "name": "Puzzle_TrainerHill4_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrainerHill",
+            "width": 38
         }
     ],
     "layouts_table_label": "gMapLayouts"

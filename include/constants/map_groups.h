@@ -47,7 +47,8 @@
 #define MAP_LEDGE_MOUNTAIN_SUPPORT (1 | (3 << 8))
 #define MAP_WATER_TEMPLE_LV1       (2 | (3 << 8))
 #define MAP_WATER_TEMPLE_LV2       (3 | (3 << 8))
-#define MAP_FAKE_SECRET_BASE_CAVE  (4 | (3 << 8))
+#define MAP_TRAINER_HILL_TEMPLATE  (4 | (3 << 8))
+#define MAP_FAKE_SECRET_BASE_CAVE  (5 | (3 << 8))
 
 // Map Group 4
 #define MAP_PETALBURG_CITY   (0 | (4 << 8))
@@ -107,6 +108,10 @@
 #define MAP_PUZZLE_SOOT_SACK_MAZE           (4 | (5 << 8))
 #define MAP_PUZZLE_TRICK_HOUSE_SLIP_SLIDING (5 | (5 << 8))
 #define MAP_PUZZLE_FALLING_WATER            (6 | (5 << 8))
+#define MAP_PUZZLE_TRAINER_HILL1            (7 | (5 << 8))
+#define MAP_PUZZLE_TRAINER_HILL2            (8 | (5 << 8))
+#define MAP_PUZZLE_TRAINER_HILL3            (9 | (5 << 8))
+#define MAP_PUZZLE_TRAINER_HILL4            (10 | (5 << 8))
 
 // Map Group 6
 #define MAP_PUZZLE_LOST_WOODS1_ENTRANCE (0 | (6 << 8))
