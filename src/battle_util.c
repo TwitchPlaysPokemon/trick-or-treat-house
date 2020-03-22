@@ -1596,6 +1596,19 @@ u8 AtkCanceller_UnableToUseMove(void)
     return effect;
 }
 
+bool8 HasMonInParty()
+{
+    u8 i, mons = 0;
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) && !GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG))
+        {
+            mons += GetMonData(&gPlayerParty[i], MON_DATA_HP) > 0;
+        }
+    }
+    return mons;
+}
+
 bool8 HasNoMonsToSwitch(u8 battler, u8 partyIdBattlerOn1, u8 partyIdBattlerOn2)
 {
     struct Pokemon *party;

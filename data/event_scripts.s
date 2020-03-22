@@ -6311,3 +6311,7 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/Puzzle_FallingWater/scripts.inc"
 
 	.include "data/maps/TrainerHillTemplate/scripts.inc"
+	.include "data/maps/Puzzle_TrainerHill1/scripts.inc"
+	.include "data/maps/Puzzle_TrainerHill2/scripts.inc"
+	.include "data/maps/Puzzle_TrainerHill3/scripts.inc"
+	.include "data/maps/Puzzle_TrainerHill4/scripts.inc"

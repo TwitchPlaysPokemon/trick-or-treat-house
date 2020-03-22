@@ -2963,6 +2963,7 @@ BattleScript_LocalBattleLost::
 BattleScript_LocalBattleLostPrintWhiteOut::
 	printstring STRINGID_PLAYERWHITEOUT
 	waitmessage 0x40
+BattleScript_LocalBattleLostPrintWhiteOutFinal::
 	printstring STRINGID_PLAYERWHITEOUT2
 	waitmessage 0x40
 BattleScript_LocalBattleLostEnd::

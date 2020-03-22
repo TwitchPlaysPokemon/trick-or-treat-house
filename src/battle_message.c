@@ -78,6 +78,7 @@ static const u8 sText_PlayerGotMoney[] = _("{B_PLAYER_NAME} got {B_BUFF1} candy 
 #else
 static const u8 sText_PlayerGotMoney[] = _("{B_PLAYER_NAME} got ¥{B_BUFF1}\nfor winning!\p");
 #endif
+static const u8 sText_PlayerNoPkmn[] = _("But {B_PLAYER_NAME} has no POKéMON\nto send out against it!\p");
 static const u8 sText_PlayerWhiteout[] = _("{B_PLAYER_NAME} is out of\nusable POKéMON!\p");
 static const u8 sText_PlayerWhiteout2[] = _("{B_PLAYER_NAME} whited out!{PAUSE_UNTIL_PRESS}");
 static const u8 sText_PreventsEscape[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} prevents\nescape with {B_SCR_ACTIVE_ABILITY}!\p");
@@ -532,6 +533,7 @@ const u8 * const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ATTACKERFAINTED - 12] = sText_AttackerFainted,
     [STRINGID_TARGETFAINTED - 12] = sText_TargetFainted,
     [STRINGID_PLAYERGOTMONEY - 12] = sText_PlayerGotMoney,
+    [STRINGID_PLAYERNOPKMN - 12] = sText_PlayerNoPkmn,
     [STRINGID_PLAYERWHITEOUT - 12] = sText_PlayerWhiteout,
     [STRINGID_PLAYERWHITEOUT2 - 12] = sText_PlayerWhiteout2,
     [STRINGID_PREVENTSESCAPE - 12] = sText_PreventsEscape,
