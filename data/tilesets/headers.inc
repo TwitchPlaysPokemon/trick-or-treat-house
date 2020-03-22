@@ -897,3 +897,14 @@ gTileset_Desert::
 	.4byte gMetatiles_Desert
 	.4byte gMetatileAttributes_Desert
 	.4byte NULL
+
+	.align 2
+gTileset_Route110::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Route110
+	.4byte gTilesetPalettes_Route110
+	.4byte gMetatiles_Route110
+	.4byte gMetatileAttributes_Route110
+	.4byte NULL

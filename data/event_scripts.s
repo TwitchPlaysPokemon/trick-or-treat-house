@@ -90,7 +90,21 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/TrickHouseCorridor/scripts.inc"
 	
 	@ -------------------------------------------------
-
+	
+	.include "data/maps/MauvilleCity_Cutscene/scripts.inc"
+	.include "data/maps/RustboroCity_Cutscene/scripts.inc"
+	
+	@ -------------------------------------------------
+	
+	.include "data/maps/Puzzle_TrickHouseOriginal1/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal2/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal3/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal4/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal5/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal6/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal7/scripts.inc"
+	.include "data/maps/Puzzle_TrickHouseOriginal8/scripts.inc"
+	
 	.include "data/maps/Puzzle_TrickHouseCut/scripts.inc"
 	.include "data/maps/Puzzle_TrickHouseTrapdoors/scripts.inc"
 	.include "data/maps/Puzzle_TrickHouseSpintiles/scripts.inc"
@@ -136,10 +150,49 @@ gStdScripts_End:: @ 81DC2CC
 	
 	.include "data/maps/Puzzle_Route110/scripts.inc"
 	
+	.include "data/maps/Puzzle_TwinMemories/scripts.inc"
+	
+	.include "data/maps/Puzzle_SpotDifference_Hallway/scripts.inc"
+	.include "data/maps/Puzzle_SpotDifference_1_Left/scripts.inc"
+	.include "data/maps/Puzzle_SpotDifference_1_Right/scripts.inc"
+	.include "data/maps/Puzzle_SpotDifference_2_Left/scripts.inc"
+	.include "data/maps/Puzzle_SpotDifference_2_Right/scripts.inc"
+	.include "data/maps/Puzzle_SpotDifference_3_Left/scripts.inc"
+	.include "data/maps/Puzzle_SpotDifference_3_Right/scripts.inc"
+
+	.include "data/maps/Puzzle_HiddenMaze/scripts.inc"
+
+	.include "data/maps/Puzzle_Desert_Oasis/scripts.inc"
+	.include "data/maps/Desert_East/scripts.inc"
+	.include "data/maps/Desert_North/scripts.inc"
+	.include "data/maps/Desert_West/scripts.inc"
+	.include "data/maps/Desert_South/scripts.inc"
+	
+	.include "data/maps/Puzzle_IlexForest/scripts.inc"
+
+	.include "data/maps/Puzzle_SootSackMaze/scripts.inc"
+
+	.include "data/maps/Puzzle_TrickHouseSlipSliding/scripts.inc"
+
+	.include "data/maps/Puzzle_FallingWater/scripts.inc"
+	
+	.include "data/maps/TrainerHillTemplate/scripts.inc"
+	.include "data/maps/Puzzle_TrainerHill1/scripts.inc"
+	.include "data/maps/Puzzle_TrainerHill2/scripts.inc"
+	.include "data/maps/Puzzle_TrainerHill3/scripts.inc"
+	.include "data/maps/Puzzle_TrainerHill4/scripts.inc"
+	
 	@ -------------------------------------------------
 	
 	.include "data/maps/TrickTreat_PetalburgCity/scripts.inc"
+	
 	.include "data/maps/TrickTreat_MossdeepCity/scripts.inc"
+	
+	.include "data/maps/TrickTreat_SlateportCity1/scripts.inc"
+	.include "data/maps/TrickTreat_SlateportCity2/scripts.inc"
+
+	.include "data/maps/TrickTreat_FortreeCity/scripts.inc"
+
 	
 	@ -------------------------------------------------
 	
@@ -150,6 +203,9 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/TestLayoutSwitching2/scripts.inc"
 	.include "data/maps/TestMirrorMovement/scripts.inc"
 	.include "data/maps/TestCopyMovement/scripts.inc"
+	.include "data/maps/IndoorMap/scripts.inc"
+	
+	.include "data/maps/FakeSecretBaseCave/scripts.inc"
 	
 	.include "data/maps/PetalburgCity/scripts.inc"
 	.include "data/maps/SlateportCity/scripts.inc"
@@ -224,13 +280,6 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/SecretBase_YellowCave3/scripts.inc"
 	.include "data/maps/SecretBase_YellowCave4/scripts.inc"
 	
-	.include "data/maps/Puzzle_TrickHouseOriginal1/scripts.inc"
-	.include "data/maps/Puzzle_TrickHouseOriginal2/scripts.inc"
-	.include "data/maps/Puzzle_TrickHouseOriginal3/scripts.inc"
-	.include "data/maps/Puzzle_TrickHouseOriginal4/scripts.inc"
-	.include "data/maps/Puzzle_TrickHouseOriginal6/scripts.inc"
-	.include "data/maps/Puzzle_TrickHouseOriginal7/scripts.inc"
-	.include "data/maps/Puzzle_TrickHouseOriginal8/scripts.inc"
 
 Std_MsgboxNPC: @ 8271315
 	lock
@@ -6262,56 +6311,3 @@ EventScript_PlayerPCFemale::
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
 
-	.include "data/maps/Puzzle_TwinMemories/scripts.inc"
-
-	.include "data/maps/Puzzle_SpotDifference_Hallway/scripts.inc"
-
-	.include "data/maps/Puzzle_SpotDifference_1_Left/scripts.inc"
-
-	.include "data/maps/Puzzle_SpotDifference_1_Right/scripts.inc"
-
-	.include "data/maps/Puzzle_SpotDifference_2_Left/scripts.inc"
-
-	.include "data/maps/Puzzle_SpotDifference_2_Right/scripts.inc"
-
-	.include "data/maps/Puzzle_SpotDifference_3_Left/scripts.inc"
-
-	.include "data/maps/Puzzle_SpotDifference_3_Right/scripts.inc"
-
-	.include "data/maps/Puzzle_HiddenMaze/scripts.inc"
-
-	.include "data/maps/Puzzle_Desert_Oasis/scripts.inc"
-
-	.include "data/maps/IndoorMap/scripts.inc"
-
-	.include "data/maps/Desert_East/scripts.inc"
-
-	.include "data/maps/Desert_North/scripts.inc"
-
-	.include "data/maps/Desert_West/scripts.inc"
-
-	.include "data/maps/Desert_South/scripts.inc"
-
-	.include "data/maps/TrickTreat_SlateportCity1/scripts.inc"
-
-	.include "data/maps/TrickTreat_SlateportCity2/scripts.inc"
-
-	.include "data/maps/TrickTreat_FortreeCity/scripts.inc"
-
-	.include "data/maps/Puzzle_TrickHouseOriginal5/scripts.inc"
-
-	.include "data/maps/FakeSecretBaseCave/scripts.inc"
-
-	.include "data/maps/Puzzle_IlexForest/scripts.inc"
-
-	.include "data/maps/Puzzle_SootSackMaze/scripts.inc"
-
-	.include "data/maps/Puzzle_TrickHouseSlipSliding/scripts.inc"
-
-	.include "data/maps/Puzzle_FallingWater/scripts.inc"
-
-	.include "data/maps/TrainerHillTemplate/scripts.inc"
-	.include "data/maps/Puzzle_TrainerHill1/scripts.inc"
-	.include "data/maps/Puzzle_TrainerHill2/scripts.inc"
-	.include "data/maps/Puzzle_TrainerHill3/scripts.inc"
-	.include "data/maps/Puzzle_TrainerHill4/scripts.inc"

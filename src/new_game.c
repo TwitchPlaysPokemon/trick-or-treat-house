@@ -131,7 +131,7 @@ static void WarpFirstMap(void)
     if (gMain.debugMode) { 
         SetWarpDestination(MAP_GROUP(TRICK_HOUSE_EXT), MAP_NUM(TRICK_HOUSE_EXT), 1, -1, -1);
     } else { // Intro was skipped
-        SetWarpDestination(MAP_GROUP(RUSTBORO_CITY), MAP_NUM(RUSTBORO_CITY), 0, -1, -1);
+        SetWarpDestination(MAP_GROUP(RUSTBORO_CITY_CUTSCENE), MAP_NUM(RUSTBORO_CITY_CUTSCENE), 0, -1, -1);
     }
     WarpIntoMap();
 }

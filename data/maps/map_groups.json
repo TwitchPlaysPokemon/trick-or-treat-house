@@ -1,4 +1,8 @@
 {
+    "MG_CutsceneMaps": [
+        "MauvilleCity_Cutscene",
+        "RustboroCity_Cutscene"
+    ],
     "MG_DesertPuzzles": [
         "Puzzle_Desert_Oasis",
         "Desert_East",
@@ -179,6 +183,7 @@
     "group_order": [
         "MG_PuzzleFramework",
         "MG_TestMaps",
+        "MG_CutsceneMaps",
         "MG_SecretBases",
         "MG_SupportMaps",
         "MG_ReferenceMaps",

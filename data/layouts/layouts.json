@@ -257,7 +257,7 @@
             "id": "LAYOUT_ROUTE110",
             "name": "Route110_Layout",
             "primary_tileset": "gTileset_Autumn",
-            "secondary_tileset": "gTileset_Mauville",
+            "secondary_tileset": "gTileset_Route110",
             "width": 40
         },
         {
@@ -847,7 +847,7 @@
             "id": "LAYOUT_TRICK_HOUSE_EXT",
             "name": "TrickHouseExt_Layout",
             "primary_tileset": "gTileset_Autumn",
-            "secondary_tileset": "gTileset_Mauville",
+            "secondary_tileset": "gTileset_Route110",
             "width": 70
         },
         {
