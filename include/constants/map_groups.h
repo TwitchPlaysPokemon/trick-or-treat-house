@@ -7,6 +7,8 @@
 #define MAP_TRICK_HOUSE_ENTRANCE     (2 | (0 << 8))
 #define MAP_TRICK_HOUSE_END          (3 | (0 << 8))
 #define MAP_TRICK_HOUSE_CORRIDOR     (4 | (0 << 8))
+#define MAP_TRICK_HOUSE_TREE_HOUSE   (5 | (0 << 8))
+#define MAP_TRICK_HOUSE_RESTROOM     (6 | (0 << 8))
 
 // Map Group 1
 #define MAP_TEST_MAP_HALLWAY       (0 | (1 << 8))
@@ -53,6 +55,7 @@
 #define MAP_WATER_TEMPLE_LV2       (3 | (4 << 8))
 #define MAP_TRAINER_HILL_TEMPLATE  (4 | (4 << 8))
 #define MAP_FAKE_SECRET_BASE_CAVE  (5 | (4 << 8))
+#define MAP_SUSPENDED_MAZE_B1      (6 | (4 << 8))
 
 // Map Group 5
 #define MAP_PETALBURG_CITY   (0 | (5 << 8))
@@ -116,6 +119,7 @@
 #define MAP_PUZZLE_TRAINER_HILL2            (8 | (6 << 8))
 #define MAP_PUZZLE_TRAINER_HILL3            (9 | (6 << 8))
 #define MAP_PUZZLE_TRAINER_HILL4            (10 | (6 << 8))
+#define MAP_PUZZLE_SUSPENDED_MAZE           (11 | (6 << 8))
 
 // Map Group 7
 #define MAP_PUZZLE_LOST_WOODS1_ENTRANCE (0 | (7 << 8))

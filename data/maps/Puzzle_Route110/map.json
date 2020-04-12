@@ -101,7 +101,13 @@
             "y": 87
         }
     ],
-    "connections": null,
+    "connections": [
+        {
+            "direction": "right",
+            "map": "MAP_TRICK_HOUSE_EXT",
+            "offset": 79
+        }
+    ],
     "coord_events": [
         {
             "elevation": 3,

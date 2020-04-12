@@ -37,7 +37,23 @@
             "y": 51
         }
     ],
-    "connections": null,
+    "connections": [
+        {
+            "direction": "right",
+            "map": "MAP_TRICK_HOUSE_EXT",
+            "offset": 42
+        },
+        {
+            "direction": "left",
+            "map": "MAP_TRICK_HOUSE_EXT",
+            "offset": -42
+        },
+        {
+            "direction": "left",
+            "map": "MAP_PUZZLE_ROUTE110",
+            "offset": -79
+        }
+    ],
     "coord_events": [
         {
             "elevation": 0,
@@ -307,8 +323,8 @@
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 0,
-            "y": 0
+            "x": 70,
+            "y": 59
         },
         {
             "elevation": 4,
@@ -368,6 +384,13 @@
             "elevation": 0,
             "x": 41,
             "y": 33
+        },
+        {
+            "dest_map": "MAP_TRICK_HOUSE_TREE_HOUSE",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 32,
+            "y": 42
         }
     ],
     "weather": "WEATHER_SUNNY"

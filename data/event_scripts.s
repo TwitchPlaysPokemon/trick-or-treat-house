@@ -6311,3 +6311,11 @@ EventScript_PlayerPCFemale::
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
 
+
+	.include "data/maps/TrickHouseTreeHouse/scripts.inc"
+
+	.include "data/maps/TrickHouseRestroom/scripts.inc"
+
+	.include "data/maps/Puzzle_SuspendedMaze/scripts.inc"
+
+	.include "data/maps/SuspendedMaze_B1/scripts.inc"

@@ -37,7 +37,9 @@
         "TrickHouseExt",
         "TrickHouseEntrance",
         "TrickHouseEnd",
-        "TrickHouseCorridor"
+        "TrickHouseCorridor",
+        "TrickHouseTreeHouse",
+        "TrickHouseRestroom"
     ],
     "MG_ReferenceMaps": [
         "PetalburgCity",
@@ -126,7 +128,8 @@
         "Puzzle_TrainerHill1",
         "Puzzle_TrainerHill2",
         "Puzzle_TrainerHill3",
-        "Puzzle_TrainerHill4"
+        "Puzzle_TrainerHill4",
+        "Puzzle_SuspendedMaze"
     ],
     "MG_SingleMapPuzzles2019": [
         "Puzzle_TrickHouseCut",
@@ -163,7 +166,8 @@
         "WaterTemple_Lv1",
         "WaterTemple_Lv2",
         "TrainerHillTemplate",
-        "FakeSecretBaseCave"
+        "FakeSecretBaseCave",
+        "SuspendedMaze_B1"
     ],
     "MG_TestMaps": [
         "TestMapHallway",

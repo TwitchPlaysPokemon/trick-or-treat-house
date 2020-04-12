@@ -49,6 +49,10 @@ extern const u16 gDebugPuzzles[];
 extern u32 gPuzzleTimer;
 #define DEBUG_PUZZLE_START 32768
 
+// Reference to an assembly defined constant, the start of the ROM
+// We don't actually use the value, just the address it's at.
+extern const int Start;
+
 ///////////////////////////////////////////////////////////////////////////////
 
 u16 GetCurrentPuzzleMapId()
@@ -410,35 +414,6 @@ void RemovePuzzleItems(struct ScriptContext *ctx)
 		}
 		*ptr = EOS;
 	}
-	
-	// u8 *ptr = gStringVar1;
-	// u8 itemCount = 0;
-	// u16 currPuzzle = GetCurrentPuzzleMapId();
-	// const u16 *array = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_POST_LIST);
-	// gSpecialVar_Result = FALSE;
-	
-	// if (array != NULL)
-	// {
-	// 	while (array[0] != ITEM_NONE)
-	// 	{
-	// 		gSpecialVar_Result |= RemoveBagItem(array[0], 1);
-			
-	// 		if (array[1] == ITEM_NONE && itemCount > 0) {
-	// 			ptr = StringCopy(ptr, gText_And);
-	// 			(*ptr++) = CHAR_SPACE;
-	// 		}
-	// 		itemCount++;
-	// 		ptr = StringCopy(ptr, gText_One);
-	// 		(*ptr++) = CHAR_SPACE;
-	// 		ptr = StringCopy(ptr, ItemId_GetName(array[0]));
-	// 		if (array[1] != ITEM_NONE) {
-	// 			(*ptr++) = CHAR_COMMA;
-	// 			(*ptr++) = CHAR_NEWLINE;
-	// 		}
-	// 		array += 1;
-	// 	}
-	// }
-	// *ptr = EOS;
 }
 
 void RemoveExtraPokemon(struct ScriptContext *ctx)
@@ -458,6 +433,50 @@ void RemoveExtraPokemon(struct ScriptContext *ctx)
 	CompactPartySlots();
     CalculatePlayerPartyCount();
 }
+
+///////////////////////////////////////////////////////////////////////////////
+
+const u16 starterPokemon[][3] = {
+	{ SPECIES_GROVYLE, SPECIES_BAYLEEF, SPECIES_BULBASAUR },
+	{ SPECIES_COMBUSKEN, SPECIES_QUILAVA, SPECIES_CHARMELEON },
+	{ SPECIES_MARSHTOMP, SPECIES_CROCONAW, SPECIES_WARTORTLE },
+	
+	{ SPECIES_ELECTRIKE, SPECIES_JOLTEON, SPECIES_FLAAFFY },
+	{ SPECIES_RATICATE, SPECIES_SPINDA, SPECIES_STANTLER },
+	{ SPECIES_KIRLIA, SPECIES_ESPEON, SPECIES_SLOWPOKE },
+	
+	{ SPECIES_ABSOL, SPECIES_POOCHYENA, SPECIES_UMBREON },
+	{ SPECIES_SPINARAK, SPECIES_NINJASK, SPECIES_PARAS },
+	{ SPECIES_ZANGOOSE, SPECIES_TEDDIURSA, SPECIES_ZANGOOSE },
+	
+	{ SPECIES_SCYTHER, SPECIES_HERACROSS, SPECIES_VOLBEAT },
+	{ SPECIES_SWABLU, SPECIES_HOOTHOOT, SPECIES_SPEAROW },
+	{ SPECIES_SNORUNT, SPECIES_SWINUB, SPECIES_SEEL },
+};
+
+
+// In: gSpecialVar_0x8000 = Slot to get
+// Out: gSpecialVar_0x8001 = Species of Pokemon in this slot
+void GetOrGenerateStarterPokemon(struct ScriptContext *ctx)
+{
+	struct BoxPokemon* mon;
+	u16 slot = gSpecialVar_0x8000;
+	u16 speciesId = SPECIES_UNOWN;
+	
+	if (gSpecialVar_0x8000 >= 12) return;
+	
+	speciesId = starterPokemon[slot][Random() % 3];
+	
+	mon = GetBoxedMonPtr(0, slot);
+	if (GetBoxMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_NONE) {
+		CreateBoxMon(mon, speciesId, 30, 32, 0, 0, 0, 0);
+	}
+	gSpecialVar_0x8001 = GetBoxMonData(mon, MON_DATA_SPECIES, NULL);
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+
 
 void SelectInitialRentalParty(struct ScriptContext *ctx)
 {

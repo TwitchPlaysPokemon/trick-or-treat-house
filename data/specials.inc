@@ -230,11 +230,11 @@ gSpecials:: @ 81DBA64
 	def_special SetDepartmentStoreFloorVar
 	def_special DoLotteryCornerComputerEffect
 	def_special EndLotteryCornerComputerEffect
-	def_special sub_81B951C
-	def_special sub_81B968C
-	def_special sub_81B9770
-	def_special sub_81B9718
-	def_special sub_81B96D0
+	def_special ChooseMonForMoveRelearner
+	def_special MoveDeleterChooseMoveToForget
+	def_special MoveDeleterForgetMove
+	def_special BufferMoveDeleterNicknameAndMove
+	def_special GetNumMovesSelectedMonHas
 	def_special TeachMoveRelearnerMove
 	def_special GetRecordedCyclingRoadResults
 	def_special Special_BeginCyclingRoadChallenge
