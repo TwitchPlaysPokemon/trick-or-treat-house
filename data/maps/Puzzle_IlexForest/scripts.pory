@@ -18,7 +18,17 @@ Puzzle_IlexForest_Quip:
 	.string "…$"
 .align 2
 Puzzle_IlexForest_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
 	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_03
+	.2byte FLAG_CANDY_RARE_01
+	.2byte FLAG_CANDY_RARE_02
 	.2byte 0
 
 @ -----------------------------------------------------

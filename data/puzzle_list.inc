@@ -9,8 +9,9 @@ gPuzzleList::                                           @ TPP / Single Player
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL2             @  3 / 3
     
     .2byte MAP_PUZZLE_LOST_WOODS1_ENTRANCE              @  3 / 2
+    .2byte MAP_PUZZLE_ILEX_FOREST                       @  4 / 3
     
-    .2byte MAP_TRICK_TREAT_PETALBURG_CITY               @
+    .2byte MAP_TRICK_TREAT_PETALBURG_CITY               @  2 / 1
     
     
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL3             @  3 / 3
@@ -21,7 +22,7 @@ gPuzzleList::                                           @ TPP / Single Player
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL4             @  3 / 3
     .2byte MAP_PUZZLE_ROUTE110                          @  1 / 1
     .2byte MAP_PUZZLE_TIN_TOWER_CLIMB                   @  6 / 4
-    .2byte MAP_TRICK_TREAT_MOSSDEEP_CITY                @
+    .2byte MAP_TRICK_TREAT_MOSSDEEP_CITY                @  6 / 5
     
     
     .2byte MAP_PUZZLE_WATER_TEMPLE                      @  5 / 4
@@ -45,7 +46,6 @@ gPuzzleList::                                           @ TPP / Single Player
 .align 2
 gDebugPuzzles::
     .2byte MAP_EMPTY_PUZZLE
-    .2byte MAP_PUZZLE_ILEX_FOREST
     .2byte MAP_TRICK_TREAT_FORTREE_CITY                 @
     .2byte MAP_TRICK_TREAT_SLATEPORT_CITY1              @          (Must be last)
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL1             @  3 / 1
