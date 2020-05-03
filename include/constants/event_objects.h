@@ -269,8 +269,9 @@
 #define EVENT_OBJ_GFX_TWINS_MINUN                260
 #define EVENT_OBJ_GFX_GHOST                      261
 #define EVENT_OBJ_GFX_ALIEN                      262
+#define EVENT_OBJ_GFX_TUSTIN2121                 263
 
-#define EVENT_OBJ_GFX_BARD_2                     263
+#define EVENT_OBJ_GFX_BARD_2                     264
 #define NUM_OBJECT_GRAPHICS_INFO 	EVENT_OBJ_GFX_BARD_2
 
 // These are dynamic object gfx ids.

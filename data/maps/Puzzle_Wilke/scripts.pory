@@ -6,6 +6,7 @@ Puzzle_Wilke_MapScripts::
 	puzzle_metavars Puzzle_Wilke_Variables
 	puzzle_item_prereqs Puzzle_Wilke_PrereqItems
 	puzzle_candylist Puzzle_Wilke_CandyList
+	puzzle_devcommentary Puzzle_Wilke_DevCommentary
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_Wilke_OnLoad
 	.byte 0
 
@@ -19,6 +20,14 @@ Puzzle_Wilke_Quip:
 	.string "{PLAY_CRY}"
 	.2byte SPECIES_ZIGZAGOON
 	.string "Ziggy seems happy to have helped.$"
+Puzzle_Wilke_DevCommentary:
+	.string "Tustin2121: Props to wilke0 for a) being\n"
+	.string "the only person to submit a fully\l"
+	.string "implemented puzzle that I could just\l"
+	.string "drop right into the project…\p"
+	.string "and b) for making an utterly unique\n"
+	.string "puzzle that no one knew was possible.$"
+	
 .align 2
 Puzzle_Wilke_PrereqItems:
 	.2byte ITEM_CUT_ITEM

@@ -1,0 +1,244 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_PUZZLE_TRAINER_HILL2",
+    "layout": "LAYOUT_PUZZLE_TRAINER_HILL2",
+    "map_type": "MAP_TYPE_INDOOR",
+    "music": "MUS_B_TOWER",
+    "name": "Puzzle_TrainerHill2",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_NORTH",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 34,
+            "y": 67
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_STONE",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "PuzzleCommon_EventScript_ExitDoorObject",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "5",
+            "x": 15,
+            "y": 57
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_SCROLL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "PuzzleCommon_EventScript_Scroll",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 12,
+            "y": 61
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_ALIEN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 7,
+            "y": 34
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_ALIEN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 4,
+            "y": 34
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_ALIEN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_UP",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 31,
+            "y": 45
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_ALIEN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 26,
+            "y": 42
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_ALIEN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 7,
+            "y": 11
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_ALIEN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_UP",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 7,
+            "y": 15
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_ALIEN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 29,
+            "y": 9
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_ALIEN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_UP",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 29,
+            "y": 15
+        }
+    ],
+    "region_map_section": "MAPSEC_TRAINER_HILL",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 34,
+            "y": 67
+        },
+        {
+            "dest_map": "MAP_TRAINER_HILL_TEMPLATE",
+            "dest_warp_id": 2,
+            "elevation": 0,
+            "x": 34,
+            "y": 53
+        },
+        {
+            "dest_map": "MAP_TRAINER_HILL_TEMPLATE",
+            "dest_warp_id": 1,
+            "elevation": 0,
+            "x": 2,
+            "y": 27
+        },
+        {
+            "dest_map": "MAP_TRAINER_HILL_TEMPLATE",
+            "dest_warp_id": 4,
+            "elevation": 0,
+            "x": 12,
+            "y": 27
+        },
+        {
+            "dest_map": "MAP_TRAINER_HILL_TEMPLATE",
+            "dest_warp_id": 3,
+            "elevation": 0,
+            "x": 24,
+            "y": 27
+        },
+        {
+            "dest_map": "MAP_TRAINER_HILL_TEMPLATE",
+            "dest_warp_id": 6,
+            "elevation": 0,
+            "x": 34,
+            "y": 27
+        },
+        {
+            "dest_map": "MAP_TRAINER_HILL_TEMPLATE",
+            "dest_warp_id": 5,
+            "elevation": 0,
+            "x": 2,
+            "y": 1
+        },
+        {
+            "dest_map": "MAP_TRAINER_HILL_TEMPLATE",
+            "dest_warp_id": 8,
+            "elevation": 0,
+            "x": 12,
+            "y": 1
+        },
+        {
+            "dest_map": "MAP_TRAINER_HILL_TEMPLATE",
+            "dest_warp_id": 7,
+            "elevation": 0,
+            "x": 24,
+            "y": 1
+        },
+        {
+            "dest_map": "MAP_TRAINER_HILL_TEMPLATE",
+            "dest_warp_id": 10,
+            "elevation": 0,
+            "x": 34,
+            "y": 1
+        },
+        {
+            "dest_map": "MAP_TRAINER_HILL_TEMPLATE",
+            "dest_warp_id": 9,
+            "elevation": 0,
+            "x": 9,
+            "y": 57
+        }
+    ],
+    "weather": "WEATHER_SUNNY"
+}

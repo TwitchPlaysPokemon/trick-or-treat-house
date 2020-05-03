@@ -5,6 +5,7 @@ Puzzle_TinTowerClimb_MapScripts::
 	puzzle_quip Puzzle_TinTowerClimb_Quip
 	puzzle_metavars Puzzle_TinTowerClimb_Variables
 	puzzle_candylist Puzzle_TinTowerClimb_CandyList
+	puzzle_devcommentary Puzzle_TinTowerClimb_DevCommentary
 	.byte 0
 
 
@@ -28,6 +29,12 @@ Puzzle_TinTowerClimb_Quip:
 	.string "It took like a month to build!\p"
 	.string "It's actually really hard to move\n"
 	.string "around in…$"
+Puzzle_TinTowerClimb_DevCommentary:
+	.string "Tustin2121: The tileset for this puzzle\n"
+	.string "was recreated from gen 2 references.\p"
+	.string "The entire puzzle is all on one map,\n"
+	.string "and you literally climb up the map while\l"
+	.string "scaling the tower.$"
 .align 2
 Puzzle_TinTowerClimb_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HOOH

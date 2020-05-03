@@ -2251,6 +2251,7 @@ void sub_80EE184(void)
         {
             case B_OUTCOME_LOST:
             case B_OUTCOME_DREW:
+            case B_OUTCOME_LOST_NO_MONS:
                 show->breakingNews.kind = TVSHOW_OFF_AIR;
                 return;
             case B_OUTCOME_CAUGHT:

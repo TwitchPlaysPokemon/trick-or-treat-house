@@ -1,172 +1,192 @@
+mapscripts TrickHouseCorridor_MapScripts {
+	MAP_SCRIPT_ON_LOAD {
+		if (var(VAR_PUZZLE_STATE) == 2) {
+			call (TrickHouseCorridor_OpenBackDoor)
+		}
+		if (var(VAR_PUZZLE_STATE) == 1) {
+			call(TrickHouseCorridor_OpenPuzzleDoor)
+		}
+		if (!flag(FLAG_SYS_POKEMON_GET)) {
+			// enable the rental mon cutscene
+			setvar (VAR_TEMP_E, 1) 
+			// Position the rental lady in the path
+			setobjectxyperm(1, 11, 7)
+		}
+	}
+	MAP_SCRIPT_ON_TRANSITION {
+		callnative(SetupPuzzleWarp)
+		callnative(AssignPuzzleMetaVariables)
+	}
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_PUZZLE_STATE, 2: TrickHouseCorridor_IncrementPuzzle
+	]
+}
+// VAR_TEMP_E, 0 {
+		// 	// If the player doesn't have pokemon yet
+		// 	if (!flag(FLAG_SYS_POKEMON_GET)) {
+		// 		// enable the rental mon cutscene
+		// 		setvar (VAR_TEMP_E, 1) 
+		// 	} else {
+		// 		// Disable the rental pokemon stop
+		// 		setvar (VAR_TEMP_E, 2)
+		// 	}
+		// }
+
+
+script(local) TrickHouseCorridor_OpenPuzzleDoor {
+	setmetatile (22, 2, 0x01F, FALSE)
+	return
+}
+script(local) TrickHouseCorridor_OpenBackDoor {
+	setmetatile (4, 6, 0x01E, TRUE)
+	return
+}
+script(local) TrickHouseCorridor_CloseBackDoor {
+	setmetatile (4, 6, 0x20B, TRUE)
+	return
+}
+
+// ----------------------------------------------------
+
+script(local) TrickHouseCorridor_IncrementPuzzle {
+	call (PuzzleCommon_EventScript_IncrementPuzzle)
+	clearflag (FLAG_HIDE_TRICK_HOUSE_INTRO_CHAR)
+	callnative (SetupPuzzleWarp)
+	callnative (AssignPuzzleMetaVariables)
+	call (TrickHouseCorridor_CloseBackDoor)
+}
+
 raw `
-TrickHouseCorridor_MapScripts:: @ 826B903
-	map_script MAP_SCRIPT_ON_LOAD, TrickHouseCorridor_OnLoad
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrickHouseCorridor_FrameTable
-	map_script MAP_SCRIPT_ON_TRANSITION, TrickHouseCorridor_Transition
-	.byte 0
-
-@ -----------------------------------------------------
-
-TrickHouseCorridor_Transition:
-	callnative SetupPuzzleWarp
-	callnative AssignPuzzleMetaVariables
-	end
-
-@ -----------------------------------------------------
-
-TrickHouseCorridor_OnLoad:
-	compare VAR_PUZZLE_STATE, 2
-	call_if_eq TrickHouseCorridor_OpenBackDoor
-	compare VAR_PUZZLE_STATE, 1
-	call_if_eq TrickHouseCorridor_OpenPuzzleDoor
-	end
-
-TrickHouseCorridor_OpenPuzzleDoor:
-	setmetatile 22, 2, 0x01F, FALSE
-	return
-
-TrickHouseCorridor_OpenBackDoor:
-	setmetatile 4, 6, 0x01E, TRUE
-	return
-TrickHouseCorridor_CloseBackDoor:
-	setmetatile 4, 6, 0x20B, TRUE
-	return
-
-@ -----------------------------------------------------
-
-TrickHouseCorridor_FrameTable:
-	map_script_2 VAR_PUZZLE_STATE, 2, TrickHouseCorridor_IncrementPuzzle
-	map_script_2 VAR_TEMP_E, 0, TrickHouseCorridor_SetupPokemonTableStop
-	.2byte 0
-
-TrickHouseCorridor_IncrementPuzzle:
-	call PuzzleCommon_EventScript_IncrementPuzzle
-	clearflag FLAG_HIDE_TRICK_HOUSE_INTRO_CHAR
-	callnative SetupPuzzleWarp
-	callnative AssignPuzzleMetaVariables
-	call TrickHouseCorridor_CloseBackDoor
-	end
-
-TrickHouseCorridor_SetupPokemonTableStop:
-	goto_if_set FLAG_SYS_POKEMON_GET, TrickHouseCorridor_SetupPokemonTableStop2
-	setvar VAR_TEMP_E, 1
-	end
-TrickHouseCorridor_SetupPokemonTableStop2:
-	setvar VAR_TEMP_E, 2
-	end
-
 @ -----------------------------------------------------
 
 TrickHouseCorridor_EventScript_PokemonTable::
-	lockall
-	goto_if_set FLAG_TEMP_E, TrickHouseCorridor_EventScript_PokemonTable_GoodLuck
-	goto_if_set FLAG_PARTY_SWAP_DISABLED, TrickHouseCorridor_EventScript_PokemonTable_Disabled
-	goto_if_unset FLAG_SYS_POKEMON_GET, TrickHouseCorridor_EventScript_PokemonTable_FirstRental
-	goto TrickHouseCorridor_EventScript_PokemonTable_Swap
+@ 	lockall
+@ 	goto_if_set FLAG_TEMP_E, TrickHouseCorridor_EventScript_PokemonTable_GoodLuck
+@ 	goto_if_set FLAG_PARTY_SWAP_DISABLED, TrickHouseCorridor_EventScript_PokemonTable_Disabled
+@ 	goto_if_unset FLAG_SYS_POKEMON_GET, TrickHouseCorridor_EventScript_PokemonTable_FirstRental
+@ 	goto TrickHouseCorridor_EventScript_PokemonTable_Swap
 	end
 
-TrickHouseCorridor_EventScript_PokemonTable_GoodLuck:
-	msgbox TrickHouseCorridor_Text_PokemonTable_GoodLuck
-	releaseall
-	end
-TrickHouseCorridor_Text_PokemonTable_GoodLuck:
-	.string "Good luck on the PUZZLE CHALLENGE!$"
-
-TrickHouseCorridor_EventScript_PokemonTable_Disabled:
-	msgbox TrickHouseCorridor_Text_PokemonTable_Disabled
-	releaseall
-	end
-TrickHouseCorridor_Text_PokemonTable_Disabled:
-	.string "Good evening! How are you doing on\n"
-	.string "your PUZZLE CHALLENGE?\p"
-	.string "Ah, it looks like you've modified your\n"
-	.string "party as part of one of the puzzles.\p"
-	.string "We can't allow you to swap out your\n"
-	.string "{POKEMON} while this is the case.\p"
-	.string "Come back after you complete the puzzle,\n"
-	.string "and we can accomidate you then.$"
-
-TrickHouseCorridor_EventScript_PokemonTable_FirstRental:
-	msgbox TrickHouseCorridor_Text_PokemonTable_FirstRental1
-	
-	call TrickHouseCorridor_GivePokemonTeam
-	
-	setflag FLAG_TEMP_E
-	setvar VAR_TEMP_E, 2
-	msgbox TrickHouseCorridor_Text_PokemonTable_FirstRental2
-	giveitem_std ITEM_ESCAPE_ROPE, 5
-	msgbox TrickHouseCorridor_Text_PokemonTable_FirstRental3
-	releaseall
-	end
-TrickHouseCorridor_Text_PokemonTable_FirstRental1:
-	.string "Good evening! It looks like you'll be\n"
-	.string "needing some POKéMON to battle with!\p"
-	.string "Fortunately, the TRICK MASTER hired us\n"
-	.string "to give out RENTAL POKéMON to his\l"
-	.string "adoring participants tonight!\p"
-	.string "Here's a set recommended by\n"
-	.string "PROF. BIRCH himself!$"
-TrickHouseCorridor_Text_PokemonTable_FirstRental2:
-	@ .string "Excellent selection!\p"
-	@ .string "If you'd ever like to swap out, feel\n"
-	@ .string "free to come back to this table!\p"
-	.string "Oh, and take these too, just in case.$"
-TrickHouseCorridor_Text_PokemonTable_FirstRental3:
-	.string "If you need any more of those, feel\n"
-	.string "free to grab some from the box!\p"
-	.string "Good luck on the PUZZLE CHALLENGE!$"
-
-TrickHouseCorridor_EventScript_PokemonTable_Swap:
-	msgbox TrickHouseCorridor_Text_PokemonTable_Swap1, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq TrickHouseCorridor_EventScript_PokemonTable_GoodLuck
-	call Common_EventScript_OutOfCenterPartyHeal
-@ 	waitstate
-@ 	setflag FLAG_TEMP_E
-@ 	msgbox TrickHouseCorridor_Text_PokemonTable_FirstRental2
-	@ releaseall
-	goto TrickHouseCorridor_EventScript_PokemonTable_GoodLuck
-	end
-TrickHouseCorridor_Text_PokemonTable_Swap1:
-	.string "Good evening! How are you doing on\n"
-	.string "your PUZZLE CHALLENGE?\p"
-	.string "Would you like me to heal your POKéMON?$"
-@ TrickHouseCorridor_Text_PokemonTable_Swap2:
-@ 	.string "Excellent selection!\p"
-@ 	.string "If you'd ever like to swap out, feel\n"
-@ 	.string "free to come back to this table!\p"
+@ TrickHouseCorridor_EventScript_PokemonTable_GoodLuck:
+@ 	msgbox TrickHouseCorridor_Text_PokemonTable_GoodLuck
+@ 	releaseall
+@ 	end
+@ TrickHouseCorridor_Text_PokemonTable_GoodLuck:
 @ 	.string "Good luck on the PUZZLE CHALLENGE!$"
+
+@ TrickHouseCorridor_EventScript_PokemonTable_Disabled:
+@ 	msgbox TrickHouseCorridor_Text_PokemonTable_Disabled
+@ 	releaseall
+@ 	end
+@ TrickHouseCorridor_Text_PokemonTable_Disabled:
+@ 	.string "Good evening! How are you doing on\n"
+@ 	.string "your PUZZLE CHALLENGE?\p"
+@ 	.string "Ah, it looks like you've modified your\n"
+@ 	.string "party as part of one of the puzzles.\p"
+@ 	.string "We can't allow you to swap out your\n"
+@ 	.string "{POKEMON} while this is the case.\p"
+@ 	.string "Come back after you complete the puzzle,\n"
+@ 	.string "and we can accomidate you then.$"
+
+@ TrickHouseCorridor_EventScript_PokemonTable_FirstRental:
+@ 	msgbox TrickHouseCorridor_Text_PokemonTable_FirstRental1
+	
+@ 	call TrickHouseCorridor_GivePokemonTeam
+	
+@ 	setflag FLAG_TEMP_E
+@ 	setvar VAR_TEMP_E, 2
+@ 	msgbox TrickHouseCorridor_Text_PokemonTable_FirstRental2
+@ 	giveitem_std ITEM_ESCAPE_ROPE, 5
+@ 	msgbox TrickHouseCorridor_Text_PokemonTable_FirstRental3
+@ 	releaseall
+@ 	end
+@ TrickHouseCorridor_Text_PokemonTable_FirstRental1:
+@ 	.string "Good evening! It looks like you'll be\n"
+@ 	.string "needing some POKéMON to battle with!\p"
+@ 	.string "Fortunately, the TRICK MASTER hired us\n"
+@ 	.string "to give out RENTAL POKéMON to his\l"
+@ 	.string "adoring participants tonight!\p"
+@ 	.string "Here's a set recommended by\n"
+@ 	.string "PROF. BIRCH himself!$"
+@ TrickHouseCorridor_Text_PokemonTable_FirstRental2:
+@ 	@ .string "Excellent selection!\p"
+@ 	@ .string "If you'd ever like to swap out, feel\n"
+@ 	@ .string "free to come back to this table!\p"
+@ 	.string "Oh, and take these too, just in case.$"
+@ TrickHouseCorridor_Text_PokemonTable_FirstRental3:
+@ 	.string "If you need any more of those, feel\n"
+@ 	.string "free to grab some from the box!\p"
+@ 	.string "Good luck on the PUZZLE CHALLENGE!$"
+
+@ TrickHouseCorridor_EventScript_PokemonTable_Swap:
+@ 	msgbox TrickHouseCorridor_Text_PokemonTable_Swap1, MSGBOX_YESNO
+@ 	compare VAR_RESULT, NO
+@ 	goto_if_eq TrickHouseCorridor_EventScript_PokemonTable_GoodLuck
+@ 	call Common_EventScript_OutOfCenterPartyHeal
+@ @ 	waitstate
+@ @ 	setflag FLAG_TEMP_E
+@ @ 	msgbox TrickHouseCorridor_Text_PokemonTable_FirstRental2
+@ 	@ releaseall
+@ 	goto TrickHouseCorridor_EventScript_PokemonTable_GoodLuck
+@ 	end
+@ TrickHouseCorridor_Text_PokemonTable_Swap1:
+@ 	.string "Good evening! How are you doing on\n"
+@ 	.string "your PUZZLE CHALLENGE?\p"
+@ 	.string "Would you like me to heal your POKéMON?$"
+@ @ TrickHouseCorridor_Text_PokemonTable_Swap2:
+@ @ 	.string "Excellent selection!\p"
+@ @ 	.string "If you'd ever like to swap out, feel\n"
+@ @ 	.string "free to come back to this table!\p"
+@ @ 	.string "Good luck on the PUZZLE CHALLENGE!$"
 `
 
 script TrickHouseCorridor_TriggerScript_PokemonTable {
 	getplayerxy (VAR_0x8000, VAR_0x8001)
 	subvar (VAR_0x8001, 7)
-	//
-	applymovement (1, Common_Movement_ExclamationMarkAndWait)
-	waitmovement (0)
-	msgbox ("Hey!\n"
-			"You don't have any POKéMON, do you?\p"
-			"You're gonna need some to take on the\n"
-			"PUZZLE CHALLENGE! Com'on over here!$")
-	closemessage
-	// Walk up
+	lock
+	// Walk up to lady in hallway
 	selectpointer (TrickHouseCorridor_MovementTable_PokemonTableStop, VAR_0x8001)
 	applymovement (EVENT_OBJ_ID_PLAYER, 0)
 	waitmovement (0)
 	//
-	msgbox ("The TRICK MASTER hired us to give\n"
-			"out RENTAL POKéMON to his\l"
-			"adoring participants tonight!\p"
-			"Here's a set recommended by\n"
-			"PROF. BIRCH himself!$")
-	// Give Pokemon
-	call (TrickHouseCorridor_GivePokemonTeam)
+	msgbox ("Welcome.\p"
+			"The TRICK MASTER recommends that\n"
+			"trainers have a three-{POKEMON} party\l"
+			"on them for the coming puzzles.\p"
+			"I see that you do not have that many.\p"
+			"It's alright, we have a breeder here\n"
+			"tonight with some rescue {POKEMON}.\p"
+			"Right this way, please.$")
+	closemessage
+	//
+	applymovement (1, TrickHouseCorridor_Movement_PokemonTableStop_Lady)
+	applymovement (EVENT_OBJ_ID_PLAYER, TrickHouseCorridor_Movement_PokemonTableStop_Player)
+	waitmovement (EVENT_OBJ_ID_PLAYER)
+	warp(MAP_TRICK_HOUSE_RESTROOM, 0, 0, 0)
+	waitstate
 	
-	setflag (FLAG_TEMP_E)
-	setvar (VAR_TEMP_E, 2)
-	msgbox (TrickHouseCorridor_Text_PokemonTable_FirstRental2)
-	giveitem_std (ITEM_ESCAPE_ROPE, 5)
-	msgbox (TrickHouseCorridor_Text_PokemonTable_FirstRental3)
+	// applymovement (1, Common_Movement_ExclamationMarkAndWait)
+	// waitmovement (0)
+	// msgbox ("Hey!\n"
+	// 		"You don't have any POKéMON, do you?\p"
+	// 		"You're gonna need some to take on the\n"
+	// 		"PUZZLE CHALLENGE! Com'on over here!$")
+	// closemessage
+	
+	// //
+	// msgbox ("The TRICK MASTER hired us to give\n"
+	// 		"out RENTAL POKéMON to his\l"
+	// 		"adoring participants tonight!\p"
+	// 		"Here's a set recommended by\n"
+	// 		"PROF. BIRCH himself!$")
+	// // Give Pokemon
+	// call (TrickHouseCorridor_GivePokemonTeam)
+	
+	// setflag (FLAG_TEMP_E)
+	// setvar (VAR_TEMP_E, 2)
+	// msgbox (TrickHouseCorridor_Text_PokemonTable_FirstRental2)
+	// giveitem_std (ITEM_ESCAPE_ROPE, 5)
+	// msgbox (TrickHouseCorridor_Text_PokemonTable_FirstRental3)
 	releaseall
 }
 
@@ -200,36 +220,46 @@ script(local) TrickHouseCorridor_GivePokemonTeam {
 }
 
 raw `
+@ -----------------------------------------------------
 .align 2
 TrickHouseCorridor_MovementTable_PokemonTableStop:
 	.4byte TrickHouseCorridor_Movement_PokemonTableStop1
 	.4byte TrickHouseCorridor_Movement_PokemonTableStop2
 	.4byte 0
-TrickHouseCorridor_Movement_PokemonTableStop1:
-	walk_left
-	walk_in_place_fastest_up
-	step_end
-TrickHouseCorridor_Movement_PokemonTableStop2:
-	walk_left
-	walk_up
-	step_end
-
-@ -----------------------------------------------------
 `
+movement TrickHouseCorridor_Movement_PokemonTableStop1 {
+	walk_right
+}
+movement TrickHouseCorridor_Movement_PokemonTableStop2 {
+	walk_up
+	walk_right
+}
+movement TrickHouseCorridor_Movement_PokemonTableStop_Lady {
+	walk_up
+	walk_left
+	walk_up * 2
+	set_invisible
+}
+movement TrickHouseCorridor_Movement_PokemonTableStop_Player {
+	delay_16 * 2
+	walk_up * 3
+	set_invisible
+}
+
 script TrickHouseCorridor_EventScript_EscapeRopeBox {
-	lock
-	bufferitemname (0, ITEM_ESCAPE_ROPE)
-	msgbox ("It's a box full of {STR_VAR_1}.$")
-	getnumitem (ITEM_ESCAPE_ROPE)
-	if (var(VAR_RESULT) < 5) {
-		setvar (VAR_0x8000, ITEM_ESCAPE_ROPE)
-		setvar (VAR_0x8001, 5)
-		subvar (VAR_0x8001, VAR_RESULT)
-		callstd (0)    # Obtain item
-	} else {
-		msgbox ("You don't need any more.$")
-	}
-	release
+	// lock
+	// bufferitemname (0, ITEM_ESCAPE_ROPE)
+	// msgbox ("It's a box full of {STR_VAR_1}.$")
+	// getnumitem (ITEM_ESCAPE_ROPE)
+	// if (var(VAR_RESULT) < 5) {
+	// 	setvar (VAR_0x8000, ITEM_ESCAPE_ROPE)
+	// 	setvar (VAR_0x8001, 5)
+	// 	subvar (VAR_0x8001, VAR_RESULT)
+	// 	callstd (0)    # Obtain item
+	// } else {
+	// 	msgbox ("You don't need any more.$")
+	// }
+	// release
 }
 
 raw `
@@ -344,20 +374,21 @@ TrickHouseCorridor_MovementTable_RunIntro:
 	.4byte Common_Movement_WalkRight2
 	.4byte TrickHouseCorridor_Movement_RunIntro2
 	.4byte 0
+`
 
-TrickHouseCorridor_Movement_RunIntro2:
+movement TrickHouseCorridor_Movement_RunIntro2 {
 	walk_right
 	walk_up
 	walk_right
-	step_end
-TrickHouseCorridor_Movement_OtherLeaves:
+}
+movement TrickHouseCorridor_Movement_OtherLeaves {
 	walk_up
 	walk_left
 	walk_up
 	walk_up
 	set_invisible
-	step_end
-	
+}
 
+raw `
 #undef LID_MASTER
 `

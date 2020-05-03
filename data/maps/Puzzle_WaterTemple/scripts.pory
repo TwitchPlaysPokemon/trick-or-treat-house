@@ -5,6 +5,7 @@ Puzzle_WaterTemple_MapScripts::
 	puzzle_quip Puzzle_WaterTemple_Quip
 	puzzle_metavars Puzzle_WaterTemple_Variables
 	puzzle_candylist Puzzle_WaterTemple_CandyList
+	puzzle_devcommentary Puzzle_WaterTemple_DevCommentary
 	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_WaterTemple_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_WaterTemple_OnResume
 	.byte 0
@@ -20,6 +21,14 @@ Puzzle_WaterTemple_Quip:
 	.string "water puzzle a little bit longer.\p"
 	.string "It makes for a much more interesting\n"
 	.string "swim than just a plain-old swimming pool.$"
+Puzzle_WaterTemple_DevCommentary:
+	.string "Tustin2121: This puzzle was inspired by\n"
+	.string "Zelda water temple puzzles.\p"
+	.string "I had to implement on-the-fly map layout\n"
+	.string "switching just for this puzzle.\p"
+	.string "Normally maps can have multiple layouts,\n"
+	.string "but they only change usually when you\l"
+	.string "exit and reenter the map.$"
 .align 2
 Puzzle_WaterTemple_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_MERMAID_WALKING

@@ -6,6 +6,7 @@ Puzzle_Loss_Floor1_MapScripts::
 	puzzle_metavars Puzzle_Loss_Variables
 	puzzle_teardown_script Puzzle_Loss_Teardown
 	puzzle_candylist Puzzle_Loss_CandyList
+	puzzle_devcommentary Puzzle_Loss_DevCommentary
 	.byte 0
 
 Puzzle_Loss_Name:
@@ -16,6 +17,20 @@ Puzzle_Loss_Adjective:
 	.string "memable$"
 Puzzle_Loss_Quip:
 	.string "Is this loss?$"
+Puzzle_Loss_DevCommentary:
+	.string "Tustin2121: This puzzle was borne out of\n"
+	.string "a fear that people would submit memes as\l"
+	.string "puzzles for this hack.\p"
+	.string "So this puzzle is all memes and references\n"
+	.string "to past TPP runs.\p"
+	.string "The design of the Center itself is pulled\n"
+	.string "directly from TriHard Emerald, which had\l"
+	.string "just been completed and ran as a TPP run\l"
+	.string "2 months prior to the TTH 2019 release.\l"
+	.string "It's a Pokemon Center because it's\n"
+	.string "supposed to be like a hospital.\p"
+	.string "Because the puzzle is Loss…{PAUSE 10}\n"
+	.string "In case that wasn't blindingly obvious…$"
 .align 2
 Puzzle_Loss_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER

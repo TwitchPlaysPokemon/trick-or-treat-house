@@ -510,6 +510,7 @@ const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] =
     [EVENT_OBJ_GFX_LUGIA] =                    &gEventObjectGraphicsInfo_Lugia,
     [EVENT_OBJ_GFX_HOOH] =                     &gEventObjectGraphicsInfo_HoOh,
     
+    // Trick House Items
     [EVENT_OBJ_GFX_HM_BALL] =                  &gEventObjectGraphicsInfo_HMBall,
     [EVENT_OBJ_GFX_TRICK_SCROLL] =             &gEventObjectGraphicsInfo_TrickScroll,
     [EVENT_OBJ_GFX_TRICK_DOOR_SCROLL] =        &gEventObjectGraphicsInfo_TrickDoorScroll,
@@ -518,7 +519,8 @@ const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] =
     [EVENT_OBJ_GFX_TRICK_DOOR_STONE_ROOM] =    &gEventObjectGraphicsInfo_TrickDoorStoneRoom,
     [EVENT_OBJ_GFX_TRICK_DOOR_NORTH] =         &gEventObjectGraphicsInfo_TrickDoorNorth,
     
-    [EVENT_OBJ_GFX_TRICK_MASTER] =             &gEventObjectGraphicsInfo_TrickMaster, //TODO
+    // Halloween Costumes
+    [EVENT_OBJ_GFX_TRICK_MASTER] =             &gEventObjectGraphicsInfo_TrickMaster,
     [EVENT_OBJ_GFX_PLASMA_KID] =               &gEventObjectGraphicsInfo_PlasmaKid,
     [EVENT_OBJ_GFX_GHETSIS] =                  &gEventObjectGraphicsInfo_Ghetsis,
     [EVENT_OBJ_GFX_FROGGER] =                  &gEventObjectGraphicsInfo_Frogger,
@@ -535,6 +537,9 @@ const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] =
     [EVENT_OBJ_GFX_TWINS_MINUN] =              &gEventObjectGraphicsInfo_TwinsMinun,
     [EVENT_OBJ_GFX_GHOST] =                    &gEventObjectGraphicsInfo_Ghost,
     [EVENT_OBJ_GFX_ALIEN] =                    &gEventObjectGraphicsInfo_Alien,
+    
+    // Dev Self-Inserts
+    [EVENT_OBJ_GFX_TUSTIN2121] =               &gEventObjectGraphicsInfo_TrickMaster, //TODO
 };
 
 const struct EventObjectGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

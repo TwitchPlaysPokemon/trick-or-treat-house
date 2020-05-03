@@ -1,4 +1,8 @@
 {
+    "MG_CutsceneMaps": [
+        "MauvilleCity_Cutscene",
+        "RustboroCity_Cutscene"
+    ],
     "MG_DesertPuzzles": [
         "Puzzle_Desert_Oasis",
         "Desert_East",
@@ -33,7 +37,9 @@
         "TrickHouseExt",
         "TrickHouseEntrance",
         "TrickHouseEnd",
-        "TrickHouseCorridor"
+        "TrickHouseCorridor",
+        "TrickHouseTreeHouse",
+        "TrickHouseRestroom"
     ],
     "MG_ReferenceMaps": [
         "PetalburgCity",
@@ -117,7 +123,13 @@
         "Puzzle_TrickHouseOriginal1",
         "Puzzle_IlexForest",
         "Puzzle_SootSackMaze",
-        "Puzzle_TrickHouseSlipSliding"
+        "Puzzle_TrickHouseSlipSliding",
+        "Puzzle_FallingWater",
+        "Puzzle_TrainerHill1",
+        "Puzzle_TrainerHill2",
+        "Puzzle_TrainerHill3",
+        "Puzzle_TrainerHill4",
+        "Puzzle_SuspendedMaze"
     ],
     "MG_SingleMapPuzzles2019": [
         "Puzzle_TrickHouseCut",
@@ -153,7 +165,9 @@
         "LedgeMountain_Support",
         "WaterTemple_Lv1",
         "WaterTemple_Lv2",
-        "FakeSecretBaseCave"
+        "TrainerHillTemplate",
+        "FakeSecretBaseCave",
+        "SuspendedMaze_B1"
     ],
     "MG_TestMaps": [
         "TestMapHallway",
@@ -173,6 +187,7 @@
     "group_order": [
         "MG_PuzzleFramework",
         "MG_TestMaps",
+        "MG_CutsceneMaps",
         "MG_SecretBases",
         "MG_SupportMaps",
         "MG_ReferenceMaps",

@@ -7,6 +7,7 @@ Puzzle_TwinMemories_MapScripts::
 	puzzle_item_prereqs Puzzle_TwinMemories_PrereqItems
 	puzzle_candylist Puzzle_TwinMemories_CandyList
 	puzzle_setup_script Puzzle_TwinMemories_SetupScript
+	puzzle_devcommentary Puzzle_TwinMemories_DevCommentary
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TwinMemories_OnResume
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_TwinMemories_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_TwinMemories_FrameTable
@@ -22,6 +23,12 @@ Puzzle_TwinMemories_Adjective:
 Puzzle_TwinMemories_Quip:
 	.string "This puzzle seems familiar. I can't\n"
 	.string "put my finger on how, though…$"
+Puzzle_TwinMemories_DevCommentary:
+	.string "Tustin2121: This puzzle takes its concept\n"
+	.string "and its name from Zelda BotW.\p"
+	.string "After the 2019 release, this puzzle was\n"
+	.string "updated to randomly select from ten\l"
+	.string "different configurations for the boulders.$"
 .align 2
 @ Puzzle_TwinMemories_Variables:
 @ 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER

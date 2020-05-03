@@ -1,0 +1,34 @@
+raw `
+Puzzle_SuspendedMaze_MapScripts::
+	puzzle_info Puzzle_SuspendedMaze_Name, Puzzle_SuspendedMaze_Author
+	puzzle_custom_intro Puzzle_SuspendedMaze_Intro
+	puzzle_quip Puzzle_SuspendedMaze_Quip
+	puzzle_metavars Puzzle_SuspendedMaze_Variables
+	puzzle_candylist Puzzle_SuspendedMaze_CandyList
+	puzzle_devcommentary Puzzle_SuspendedMaze_DevCommentary
+	.byte 0
+	
+	
+Puzzle_SuspendedMaze_Name:
+	.string "Cross-Path Caverns$"
+Puzzle_SuspendedMaze_Author:
+	.string "Serebii.net$"
+Puzzle_SuspendedMaze_Intro:
+	.string "$"
+Puzzle_SuspendedMaze_Quip:
+	.string "$"
+Puzzle_SuspendedMaze_DevCommentary:
+	.string "Tustin2121: This maze is an almost perfect\n"
+	.string "copy of the first crossword puzzle that\l"
+	.string "Serebii created during the Coronavirus\l"
+	.string "outbreak back in March.\p"
+	.string "Someone said it looked like a maze, and\n"
+	.string "that gave me the idea for it.\p"
+	.string "(Twitter link: twitter.com/SerebiiNet/\n"
+	.string "status/1241729153319211008)$"
+.align 2
+Puzzle_SuspendedMaze_Variables:
+	.2byte 0
+Puzzle_SuspendedMaze_CandyList:
+	.2byte 0
+`

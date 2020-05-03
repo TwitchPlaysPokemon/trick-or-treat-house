@@ -1,0 +1,129 @@
+mapscripts MauvilleCity_Cutscene_MapScripts {
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_INTRO_COUNTER, 0: MauvilleCity_PanHalloween
+	]
+	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+		VAR_INTRO_COUNTER, 0 {
+			setflag (FLAG_DISABLE_FADE_INIT)
+			callnative (HidePlayerOnLoad)
+		}
+	]
+}
+
+script(local) MauvilleCity_PanHalloween {
+	lockall
+	delay (30)
+	setdooropen (26, 5)
+	applymovement (EVENT_OBJ_ID_PLAYER, MauvilleCity_CameraWalk)
+	clearflag (FLAG_DISABLE_FADE_INIT)
+	applymovement (11, MauvilleCity_Movement_Girl)
+	fadescreenspeed (0, 6)
+	// Fade up screen, pan across city
+	delay (30)
+	applymovement (3, MauvilleCity_Movement_Link1)
+	applymovement (12, MauvilleCity_Movement_Ghost1)
+	delay (10)
+	applymovement (2, Common_Movement_WalkInPlaceRight)
+	waitmovement (3)
+	applymovement (1, Common_Movement_WalkInPlaceRight)
+	delay (20)
+	applymovement (2, Common_Movement_WalkInPlaceUp)
+	delay (30)
+	applymovement (12, Common_Movement_WalkLeft2)
+	delay (10)
+	closedoor (26, 5)
+	delay (10)
+	setdooropen (15, 14)
+	setdooropen (19, 14)
+	delay (10)
+	applymovement (8, MauvilleCity_Movement_Hop1)
+	applymovement (9, MauvilleCity_Movement_Hop2)
+	delay (30)
+	//
+	applymovement (6, MauvilleCity_Movement_Skeleton)
+	delay (10)
+	applymovement (5, Common_Movement_WalkInPlaceLeft)
+	delay (40)
+	applymovement (13, MauvilleCity_Movement_Fairy)
+	applymovement (4, MauvilleCity_Movement_Wally)
+	delay (16)
+	playse (SE_WALL_HIT)
+	delay (60)
+	playse (SE_DANSA)
+	
+	
+	waitmovement (EVENT_OBJ_ID_PLAYER)
+	// Fade down screen
+	applymovement (EVENT_OBJ_ID_PLAYER, MauvilleCity_CameraWalkFinish)
+	fadescreenspeed (1, 6)
+	setvar (VAR_INTRO_COUNTER, 1)
+	warpcustom (MAP_TRICK_HOUSE_EXT, 3, -1, -1)
+	waitstate
+	releaseall
+}
+
+movement MauvilleCity_CameraWalk {
+	walk_slow_diag_southwest * 15
+}
+movement MauvilleCity_CameraWalkFinish {
+	walk_slow_diag_southwest * 3
+}
+movement MauvilleCity_Movement_Hop1 {
+	jump_in_place_left * 1
+	delay_16
+	jump_in_place_left * 1
+	delay_16
+}
+movement MauvilleCity_Movement_Hop2 {
+	delay_16
+	jump_in_place_up * 1
+	delay_16
+	jump_in_place_up * 1
+}
+movement MauvilleCity_Movement_Girl {
+	walk_up * 3
+	walk_in_place_left
+}
+movement MauvilleCity_Movement_Link1 {
+	walk_left * 3
+}
+movement MauvilleCity_Movement_Ghost1 {
+	delay_8
+	walk_left
+	walk_up
+}
+movement MauvilleCity_Movement_Skeleton {
+	walk_right * 4
+	walk_up * 2
+}
+movement MauvilleCity_Movement_Wally {
+	walk_fast_left * 2
+	delay_16 * 2
+	lock_facing_direction
+	walk_fast_down
+	delay_8
+	walk_fast_up
+	unlock_facing_direction
+	delay_16
+	face_up
+	delay_8
+	face_right
+	delay_16 * 2
+	walk_fast_left * 2
+	walk_in_place_fast_up
+}
+movement MauvilleCity_Movement_Fairy {
+	delay_8
+	walk_fast_right
+	delay_16 * 2
+	lock_facing_direction
+	walk_fast_down
+	delay_8
+	walk_fast_up
+	unlock_facing_direction
+	delay_8
+	jump_2_right
+	walk_fast_right
+	walk_in_place_fast_up
+}
+

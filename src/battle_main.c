@@ -128,6 +128,7 @@ static void WaitForEvoSceneToFinish(void);
 static void HandleEndTurn_ContinueBattle(void);
 static void HandleEndTurn_BattleWon(void);
 static void HandleEndTurn_BattleLost(void);
+static void HandleEndTurn_BattleLostNoPokemon(void);
 static void HandleEndTurn_RanFromBattle(void);
 static void HandleEndTurn_MonFled(void);
 static void HandleEndTurn_FinishBattle(void);
@@ -570,6 +571,7 @@ static void (* const sEndTurnFuncsTable[])(void) =
     [B_OUTCOME_NO_SAFARI_BALLS] = HandleEndTurn_FinishBattle,
     [B_OUTCOME_FORFEITED] = HandleEndTurn_FinishBattle,
     [B_OUTCOME_MON_TELEPORTED] = HandleEndTurn_FinishBattle,
+    [B_OUTCOME_LOST_NO_MONS] = HandleEndTurn_BattleLostNoPokemon,
 };
 
 const u8 gStatusConditionString_PoisonJpn[8] = _("どく$$$$$");
@@ -3780,6 +3782,12 @@ static void BattleIntroPrintPlayerSendsOut(void)
         else
             position = B_POSITION_PLAYER_LEFT;
 
+        if (!HasMonInParty())
+        {
+            PrepareStringBattle(STRINGID_PLAYERNOPKMN, GetBattlerAtPosition(position));
+            gBattleMainFunc = TryDoEventsBeforeFirstTurn;
+            return;
+        }
         if (!(gBattleTypeFlags & BATTLE_TYPE_SAFARI))
             PrepareStringBattle(STRINGID_INTROSENDOUT, GetBattlerAtPosition(position));
 
@@ -3888,6 +3896,14 @@ static void TryDoEventsBeforeFirstTurn(void)
 
     if (gBattleControllerExecFlags)
         return;
+    
+    // If no pokemon in party, go straight to white out.
+    if (!HasMonInParty())
+    {
+        gBattleOutcome = B_OUTCOME_LOST_NO_MONS;
+        gBattleMainFunc = BattleTurnPassed;
+        return;
+    }
 
     if (gBattleStruct->switchInAbilitiesCounter == 0)
     {
@@ -5057,6 +5073,15 @@ static void HandleEndTurn_BattleWon(void)
     {
         gBattlescriptCurrInstr = BattleScript_PayDayMoneyAndPickUpItems;
     }
+
+    gBattleMainFunc = HandleEndTurn_FinishBattle;
+}
+
+static void HandleEndTurn_BattleLostNoPokemon(void)
+{
+    gCurrentActionFuncId = 0;
+
+    gBattlescriptCurrInstr = BattleScript_LocalBattleLostPrintWhiteOutFinal;
 
     gBattleMainFunc = HandleEndTurn_FinishBattle;
 }

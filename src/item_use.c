@@ -791,7 +791,7 @@ void sub_80FE03C(u8 taskId)
     SetUpItemUseCallback(taskId);
 }
 
-void sub_80FE058(void)
+void RemoveItemFromBagAndCopyName(void)
 {
     RemoveBagItem(gSpecialVar_ItemId, 1);
     CopyItemName(gSpecialVar_ItemId, gStringVar2);
@@ -806,6 +806,12 @@ void sub_80FE058(void)
     //     sub_81C5924();
     //     sub_81C59BC();
     // }
+}
+
+void CopyItemNameFromBag(void)
+{
+    CopyItemName(gSpecialVar_ItemId, gStringVar2);
+    StringExpandPlaceholders(gStringVar4, gText_PlayerUsedVar2);
 }
 
 void ItemUseOutOfBattle_Repel(u8 taskId)
@@ -835,7 +841,7 @@ void sub_80FE164(u8 taskId)
     if (!IsSEPlaying())
     {
         VarSet(VAR_REPEL_STEP_COUNT, ItemId_GetHoldEffectParam(gSpecialVar_ItemId));
-        sub_80FE058();
+        RemoveItemFromBagAndCopyName();
         // if (!InBattlePyramid())
             DisplayItemMessage(taskId, 1, gStringVar4, BagMenu_InitListsMenu);
         // else
@@ -884,7 +890,8 @@ void task08_080A1C44(u8 taskId)
 void re_escape_rope(u8 taskId)
 {
     Overworld_ResetStateAfterDigEscRope();
-    sub_80FE058();
+    // RemoveItemFromBagAndCopyName();
+    CopyItemNameFromBag();
     gTasks[taskId].data[0] = 0;
     DisplayItemMessageOnField(taskId, gStringVar4, task08_080A1C44);
 }
@@ -1013,7 +1020,7 @@ void ItemUseInBattle_Escape(u8 taskId)
 
     if((gBattleTypeFlags & BATTLE_TYPE_TRAINER) == FALSE)
     {
-        sub_80FE058();
+        RemoveItemFromBagAndCopyName();
         // if (!InBattlePyramid())
             DisplayItemMessage(taskId, 1, gStringVar4, unknown_ItemMenu_Confirm);
         // else

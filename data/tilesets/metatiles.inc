@@ -602,3 +602,10 @@ gMetatiles_Desert::
 	.align 1
 gMetatileAttributes_Desert::
 	.incbin "data/tilesets/secondary/desert/metatile_attributes.bin"
+	.align 1
+gMetatiles_Route110::
+	.incbin "data/tilesets/secondary/route110/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Route110::
+	.incbin "data/tilesets/secondary/route110/metatile_attributes.bin"

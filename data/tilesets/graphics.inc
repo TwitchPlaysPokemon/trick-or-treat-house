@@ -1852,3 +1852,23 @@ gTilesetPalettes_Desert::
 	.align 2
 gTilesetTiles_Desert::
 	.incbin "data/tilesets/secondary/desert/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_Route110::
+	.incbin "data/tilesets/secondary/route110/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/route110/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/route110/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/route110/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/route110/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/route110/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/route110/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/route110/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/route110/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/route110/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/route110/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/route110/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/route110/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_Route110::
+	.incbin "data/tilesets/secondary/route110/tiles.4bpp.lz"

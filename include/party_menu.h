@@ -102,14 +102,14 @@ void sub_81B9328(void);
 bool8 hm_add_c3_without_phase_2(void);
 void sub_81B9404(void);
 void sub_81B94B0(void);
-void sub_81B951C(void);
+void ChooseMonForMoveRelearner(void);
 void sub_81B9620(void);
 void sub_81B95E0(void);
 void sub_81B98DC(void);
 void sub_81B9918(void);
-void sub_81B9770(void);
-void sub_81B9718(void);
-void sub_81B96D0(void);
-void sub_81B968C(void);
+void MoveDeleterForgetMove(void);
+void MoveDeleterChooseMoveToForget(void);
+void GetNumMovesSelectedMonHas(void);
+void BufferMoveDeleterNicknameAndMove(void);
 
 #endif // GUARD_PARTY_MENU_H

@@ -7270,7 +7270,7 @@ static void sub_81B94D0(u8 taskId)
     }
 }
 
-void sub_81B951C(void)
+void ChooseMonForMoveRelearner(void)
 {
     ScriptContext2_Enable();
     FadeScreen(FADE_TO_BLACK, 0);
@@ -7330,13 +7330,13 @@ static void sub_81B9640(u8 taskId)
     }
 }
 
-void sub_81B968C(void)
+void MoveDeleterChooseMoveToForget(void)
 {
     ShowPokemonSummaryScreen(PSS_MODE_SELECT_MOVE, gPlayerParty, gSpecialVar_0x8004, gPlayerPartyCount - 1, CB2_ReturnToField);
     gFieldCallback = FieldCallback_ReturnToEventScript2;
 }
 
-void sub_81B96D0(void)
+void GetNumMovesSelectedMonHas(void)
 {
     u8 i;
 
@@ -7348,7 +7348,7 @@ void sub_81B96D0(void)
     }
 }
 
-void sub_81B9718(void)
+void BufferMoveDeleterNicknameAndMove(void)
 {
     struct Pokemon *mon = &gPlayerParty[gSpecialVar_0x8004];
     u16 move = GetMonData(mon, MON_DATA_MOVE1 + gSpecialVar_0x8005);
@@ -7357,7 +7357,7 @@ void sub_81B9718(void)
     StringCopy(gStringVar2, gMoveNames[move]);
 }
 
-void sub_81B9770(void)
+void MoveDeleterForgetMove(void)
 {
     u16 i;
 

@@ -30,21 +30,23 @@ TrickTreat_MossdeepCity_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_YOUNGSTER
 	.2byte 0
 TrickTreat_MossdeepCity_CandyList:
-	.2byte FLAG_PUZZLE_ITEM_0
-	.2byte FLAG_PUZZLE_ITEM_1
-	.2byte FLAG_PUZZLE_ITEM_2
-	.2byte FLAG_PUZZLE_ITEM_3
-	.2byte FLAG_PUZZLE_ITEM_4
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x01
-	.2byte FLAG_HIDDEN_ITEM_PUZZLE_0x02
-	.2byte FLAG_PUZZLE_20  @ Trick or Treat Spots
-	.2byte FLAG_PUZZLE_21
-	.2byte FLAG_PUZZLE_22
-	.2byte FLAG_PUZZLE_4F  @ Steven doesn't count unless you fight him
-	.2byte FLAG_PUZZLE_24
-	.2byte FLAG_PUZZLE_25
-	.2byte FLAG_PUZZLE_26
-	.2byte FLAG_PUZZLE_27
+	.2byte FLAG_CANDY_RARE_01
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_RARE_02
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_03
+	@ Trick or Treat Spots
+	.2byte FLAG_PUZZLE_20 @ITEM_CANDY_ABUNDANT
+	.2byte FLAG_PUZZLE_21 @ITEM_CANDY_ABUNDANT
+	.2byte FLAG_PUZZLE_22 @ITEM_CANDY_UNCOMMON
+	.2byte FLAG_PUZZLE_24 @ITEM_CANDY_ABUNDANT
+	.2byte FLAG_PUZZLE_25 @ITEM_CANDY_UNCOMMON
+	.2byte FLAG_PUZZLE_26 @ITEM_CANDY_HEALTHY
+	.2byte FLAG_PUZZLE_27 @ITEM_CANDY_UNCOMMON
+	@ Steven doesn't count unless you fight him and win
+	.2byte FLAG_PUZZLE_4F @ITEM_CANDY_TOBLERONE 
 	.2byte 0
 
 @ -----------------------------------------------------
@@ -404,7 +406,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Nurse {
 	faceplayer
 	msgbox ("Happy Halloween!\n"
 			"Please take some candy!$")
-	giveitem_std (ITEM_POTION, 2)
+	giveitem_std (ITEM_CANDY_ABUNDANT, 2)
 	msgbox ("The {POKEMON} CENTER is always there\n"
 			"for trainers everywhere.\p"
 			"Have a good night!$")
@@ -418,7 +420,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Mart {
 	faceplayer
 	msgbox ("Trick or Treat!\n"
 			"Please take some candy!$")
-	giveitem_std (ITEM_AWAKENING, 2)
+	giveitem_std (ITEM_CANDY_ABUNDANT, 2)
 	msgbox ("Be sure to drop by the MART for all your\n"
 			"{POKEMON} supply needs!\p"
 			"Have a good night!$")
@@ -445,7 +447,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Leader {
 			"LIZA: Here's some candy!\p"
 			"TATE: Maybe we'll see you…\n"
 			"LIZA: Later in the year!$")
-	giveitem_std (ITEM_ELIXIR, 2)
+	giveitem_std (ITEM_CANDY_UNCOMMON, 2)
 	# PuzzleCommon_EventScript_StandingCandyGiverLeave, but for two
 	closemessage
 	applymovement (4, Common_Movement_WalkInPlaceUp)
@@ -487,10 +489,10 @@ script TrickTreat_MossdeepCity_CandyGiver_Steven {
 		setflag (FLAG_BEAT_STEVEN)
 		msgbox ("If you keep this up, you might just\n"
 			"be champion some day.$")
-		giveitem_std (ITEM_NUGGET, 3)
+		giveitem_std (ITEM_CANDY_TOBLERONE, 3)
 	} else {
 		msgbox("Very well, I'll just give you the treat.$")
-		giveitem_std (ITEM_NUGGET, 1)
+		giveitem_std (ITEM_CANDY_TOBLERONE, 1)
 	}
 	msgbox ("Happy Halloween!$")
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
@@ -505,7 +507,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Cook {
 	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
 	msgbox ("Boo! Hahahahahaha!\n"
 			"Here's some treats I just whipped up!$")
-	giveitem_std (ITEM_AWAKENING, 4)
+	giveitem_std (ITEM_CANDY_ABUNDANT, 4)
 	msgbox ("Time to make some more!$")
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
 	setflag (FLAG_PUZZLE_24)
@@ -519,7 +521,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Lady {
 	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
 	msgbox ("Trick or Treat!\n"
 			"Take your pick!$")
-	giveitem_std (ITEM_TINY_MUSHROOM, 3)
+	giveitem_std (ITEM_CANDY_UNCOMMON, 3)
 	msgbox ("Have a good night!$")
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
 	setflag (FLAG_PUZZLE_25)
@@ -537,7 +539,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Expert {
 	setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
 	msgbox ("You're so full of potential!\n"
 			"Here's a treat!$")
-	giveitem_std (ITEM_ENERGY_ROOT, 3)
+	giveitem_std (ITEM_CANDY_HEALTHY, 3)
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
 	setflag (FLAG_PUZZLE_26)
 	release
@@ -555,7 +557,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Camper {
 	setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
 	msgbox ("I'm not giving you ALL of my haul.\n"
 			"You can have this.$")
-	giveitem_std (ITEM_HYPER_POTION, 1)
+	giveitem_std (ITEM_CANDY_UNCOMMON, 1)
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
 	setflag (FLAG_PUZZLE_27)
 	release
