@@ -1,37 +1,58 @@
-mapscripts Puzzle_IlexForest_MapScripts {
-	
-}
-
 raw `
+Puzzle_IlexForest_MapScripts::
+	puzzle_info Puzzle_IlexForest_Name, Puzzle_IlexForest_Author
+	puzzle_adjective Puzzle_IlexForest_Adjective
+	puzzle_quip Puzzle_IlexForest_Quip
+	puzzle_candylist Puzzle_IlexForest_CandyList
+	puzzle_setup_script Puzzle_IlexForest_Setup
+	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_IlexForest_OnTransition
+	.byte 0
+
+Puzzle_IlexForest_Name:
+	.string "A Bird in the Bush$"
+Puzzle_IlexForest_Author:
+	.string "Tustin2121$"
+Puzzle_IlexForest_Adjective:
+	.string "meandering$"
+Puzzle_IlexForest_Quip:
+	.string "…$"
+.align 2
+Puzzle_IlexForest_CandyList:
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte 0
+
 @ -----------------------------------------------------
 #define VAR_BIRD_LOCATION   VAR_PUZZLE_00
-#define LID_BIRD   3
-`
+#define FLAG_HIDE_END_MAN   FLAG_PUZZLE_20
+#define FLAG_HIDE_SCROLL    FLAG_PUZZLE_21
+#define FLAG_OPEN_AREA1     FLAG_PUZZLE_30
+#define FLAG_OPEN_AREA2     FLAG_PUZZLE_31
+#define FLAG_OPEN_AREA3     FLAG_PUZZLE_32
+#define FLAG_OPEN_AREA4     FLAG_PUZZLE_34
+#define LID_BIRD   3 
+#define LID_SCROLL 7 
 
-
-raw `
 @ -----------------------------------------------------
 @ Bird Spots: (Marked by unused triggers on map)
 .macro ilex_birdspot x:req, y:req, name:req
 enum _ILEX_BIRDSPOT_\name
 .2byte \x, \y
 .4byte Puzzle_IlexForest_BirdSpot\name
-inc __enum__
 .endm
 
 @ Macro to call to the bird run off function.
 .macro ilex_runto location:req, movement:req
-loadword 0, \movement
 setvar VAR_BIRD_LOCATION, _ILEX_BIRDSPOT_\location
+loadword 1, \movement   @ Load to 1, because intevening msgbox uses 0
 call Puzzle_IlexForest_BirdRunsOff
 .endm
 
 enum_start
 
 .align 2
-Puzzle_IlexForest_BirdSpots:
+Puzzle_IlexForest_BirdSpots::
 	ilex_birdspot  6, 14, Final
-	ilex_birdspot 14, 18, Initial
+	ilex_birdspot 14, 18, Initial  @ 1
 	
 	ilex_birdspot 15, 11, A1
 	ilex_birdspot 20, 10, A2
@@ -40,13 +61,13 @@ Puzzle_IlexForest_BirdSpots:
 	ilex_birdspot 24, 21, A5
 	ilex_birdspot 22, 17, A6
 	ilex_birdspot 15, 15, A7
-	ilex_birdspot 25,  8, AtoB
+	ilex_birdspot 25,  8, AtoB @ 9
 	
 	ilex_birdspot 44,  9, B1
 	ilex_birdspot 44,  5, B2
 	ilex_birdspot 49,  2, B3
 	ilex_birdspot 50,  9, B4
-	ilex_birdspot 48, 14, BtoC
+	ilex_birdspot 48, 14, BtoC @ 14
 	ilex_birdspot 39, 15, B6
 	
 	ilex_birdspot 59, 11, C1
@@ -57,7 +78,7 @@ Puzzle_IlexForest_BirdSpots:
 	ilex_birdspot 60, 23, C6
 	ilex_birdspot 54, 20, C7
 	ilex_birdspot 55, 14, C8
-	ilex_birdspot 57, 30, CtoD
+	ilex_birdspot 57, 30, CtoD @ 24
 	
 	ilex_birdspot 41, 30, D1
 	ilex_birdspot 41, 24, D2
@@ -65,18 +86,16 @@ Puzzle_IlexForest_BirdSpots:
 	ilex_birdspot 37, 29, D4
 	ilex_birdspot 32, 31, D5
 	ilex_birdspot 29, 30, D6
-	ilex_birdspot 27, 27, DtoE
+	ilex_birdspot 27, 27, DtoE @ 31
 	
 	ilex_birdspot 15, 11, E1
 	ilex_birdspot 20, 10, E2
 	ilex_birdspot 29,  8, E3
 	ilex_birdspot 28, 17, E4
 	ilex_birdspot 24, 21, E5
-	ilex_birdspot 22, 17, E6
+	ilex_birdspot 22, 17, E6 @ 38
 	ilex_birdspot 15, 15, E7
 	ilex_birdspot 10, 21, E8
-
-
 	
 enum _ILEX_BIRDSPOT_COUNT
 Puzzle_IlexForest_ConfigCount::
@@ -84,24 +103,70 @@ Puzzle_IlexForest_ConfigCount::
 
 @ -----------------------------------------------------
 `
+
+script(local) Puzzle_IlexForest_OnTransition {
+	callnative(LoadBirdLocation)
+}
+
+script(local) Puzzle_IlexForest_OnLoad {
+	if (flag(FLAG_OPEN_AREA1) == TRUE) {
+		// Move pokeball to accessable location
+		setobjectxyperm(8, 26, 7)
+	}
+	if (flag(FLAG_OPEN_AREA2) == TRUE) {
+		// Move pokeball to accessable location
+		setobjectxyperm(4, 52, 15)
+	}
+	if (flag(FLAG_OPEN_AREA4) == TRUE) {
+		// Remove trees
+		setmetatile(26, 21, 0x001, FALSE)
+		setmetatile(27, 21, 0x001, FALSE)
+		setmetatile(26, 22, 0x001, FALSE)
+		setmetatile(27, 22, 0x001, FALSE)
+		setmetatile(26, 23, 0x001, FALSE)
+		setmetatile(27, 23, 0x001, FALSE)
+		setmetatile(26, 24, 0x001, FALSE)
+		setmetatile(27, 24, 0x001, FALSE)
+		setmetatile(26, 25, 0x001, FALSE)
+		setmetatile(27, 25, 0x001, FALSE)
+	}
+}
+
+script(local) Puzzle_IlexForest_Setup {
+	setvar(VAR_BIRD_LOCATION, _ILEX_BIRDSPOT_Initial)
+	setflag(FLAG_HIDE_END_MAN)
+	setflag(FLAG_HIDE_SCROLL)
+	callnative(LoadBirdLocation)
+}
+
+script Puzzle_IlexForest_VarCheck {
+	callnative(PrintData1)
+	buffernumberstring(1, VAR_BIRD_LOCATION)
+	msgbox ("Var check: Bird Loc={STR_VAR_2}\nData1=0x{STR_VAR_1}$", MSGBOX_SIGN)
+}
+
 script(local) Puzzle_IlexForest_BirdCry {
 	playmoncry (SPECIES_FARFETCHD, 0)
 	msgbox ("Farfetch'd: Kwaa!$")
 	waitmoncry
 	waitmessage
+	closemessage
 	return
 }
 script(local) Puzzle_IlexForest_BirdRunsOff {
+	lock
+	faceplayer
 	// Play the bird's cry
 	call(Puzzle_IlexForest_BirdCry)
 	// Move the bird
-	applymovement(LID_BIRD, 0)
+	applymovement(LID_BIRD, 1) //load from addr 1
 	waitmovement
-	// Position the bird's perm location based on the bird spot id
-	
+	// Set the bird's perm location and script based on the bird spot id
+	callnative(LoadBirdLocation)
 	// Remove/Add bird so position is correct
 	removeobject(LID_BIRD)
 	addobject(LID_BIRD)
+	release
 	return
 }
 
@@ -118,141 +183,364 @@ script(local) Puzzle_IlexForest_BirdSpotInitial {
 script(local) Puzzle_IlexForest_BirdSpotA1 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_NORTH:
-			ilex_runto(A2, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(A2, Puzzle_IlexForest_Movement_A1_A2)
 		case DIR_SOUTH:
-			ilex_runto(A7, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(A7, Puzzle_IlexForest_Movement_SprintSouth4)
 	}
 }
+movement Puzzle_IlexForest_Movement_A1_A2 {
+	walk_fast_up * 2
+	walk_fast_right * 5
+	walk_fast_down
+}
+
 script(local) Puzzle_IlexForest_BirdSpotA2 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_SOUTH:
-			ilex_runto(A3, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(A3, Puzzle_IlexForest_SprintEast)
 		case DIR_WEST:
-			ilex_runto(A1, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(A1, Puzzle_IlexForest_Movement_A2_A1)
 	}
 }
+movement Puzzle_IlexForest_Movement_A2_A1 {
+	walk_fast_up
+	walk_fast_left * 5
+	walk_fast_down * 2
+}
+
 script(local) Puzzle_IlexForest_BirdSpotA3 {
 	switch(var(VAR_FACING)) {
 		case DIR_NORTH:
-			ilex_runto(AtoB, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(AtoB, Puzzle_IlexForest_Movement_A3_AtoB)
 		default:
-		case DIR_EAST:
-			ilex_runto(A4, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(A4, Puzzle_IlexForest_SprintSouth)
 	}
 }
+movement Puzzle_IlexForest_Movement_A3_AtoB {
+	walk_fast_left
+	jump_2_left
+	walk_fast_left * 3
+	walk_fast_up * 2
+	walk_fast_right * 2
+	walk_fast_down * 2
+}
+
 script(local) Puzzle_IlexForest_BirdSpotA4 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_NORTH:
-		case DIR_EAST:
-			ilex_runto(A3, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(A3, Puzzle_IlexForest_Movement_A4_A3)
 		case DIR_SOUTH:
-			ilex_runto(A5, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(A5, Puzzle_IlexForest_Movement_A4_A5)
 		case DIR_WEST:
-			ilex_runto(A6, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(A6, Puzzle_IlexForest_Movement_A4_A6)
 	}
 }
+movement Puzzle_IlexForest_Movement_A4_A3 {
+	walk_fast_up * 2
+	walk_fast_right
+	walk_fast_up * 4
+}
+movement Puzzle_IlexForest_Movement_A4_A5 {
+	walk_fast_down * 4
+	walk_fast_left * 4
+}
+movement Puzzle_IlexForest_Movement_A4_A6 {
+	walk_fast_left * 6
+}
+
 script(local) Puzzle_IlexForest_BirdSpotA5 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_WEST:
-			ilex_runto(A6, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(A6, Puzzle_IlexForest_Movement_A5_A6)
 		case DIR_EAST:
-			ilex_runto(A5, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(A4, Puzzle_IlexForest_Movement_A5_A4)
 	}
 }
+movement Puzzle_IlexForest_Movement_A5_A6 {
+	walk_fast_left * 3
+	walk_fast_up * 3
+	walk_fast_right
+	walk_fast_up
+}
+movement Puzzle_IlexForest_Movement_A5_A4 {
+	walk_fast_right * 4
+	walk_fast_up * 4
+}
+
 script(local) Puzzle_IlexForest_BirdSpotA6 {
 	switch(var(VAR_FACING)) {
 		case DIR_NORTH:
-			ilex_runto(A7, Puzzle_IlexForest_SprintNorth)
-		case DIR_SOUTH:
-			ilex_runto(A5, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(A7, Puzzle_IlexForest_Movement_A6_A7)
 		default:
+			ilex_runto(A4, Puzzle_IlexForest_Movement_A6_A4)
 		case DIR_WEST:
-			ilex_runto(A4, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(A5, Puzzle_IlexForest_Movement_A6_A5)
 	}
 }
+movement Puzzle_IlexForest_Movement_A6_A4 {
+	walk_fast_right * 6
+}
+movement Puzzle_IlexForest_Movement_A6_A7 {
+	walk_fast_up * 2
+	walk_fast_left * 7
+}
+movement Puzzle_IlexForest_Movement_A6_A5 {
+	walk_fast_down
+	walk_fast_left
+	walk_fast_down * 3
+	walk_fast_right * 3
+}
+
 script(local) Puzzle_IlexForest_BirdSpotA7 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_NORTH:
-		case DIR_WEST:
-			ilex_runto(A1, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(A1, Puzzle_IlexForest_Movement_SprintNorth4)
 		case DIR_SOUTH:
 		case DIR_EAST:
-			ilex_runto(A7, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(A6, Puzzle_IlexForest_Movement_A7_A6)
 	}
 }
+movement Puzzle_IlexForest_Movement_A7_A6 {
+	walk_fast_right * 7
+	walk_fast_down * 2
+}
 
+raw `#define LID_BALL 8`
 script(local) Puzzle_IlexForest_BirdSpotAtoB {
 	//ilex_runto(B1, Puzzle_IlexForest_SprintNorth)
+	lock
+	faceplayer
+	call(Puzzle_IlexForest_BirdCry)
+	setvar (VAR_BIRD_LOCATION, _ILEX_BIRDSPOT_B1)
+	// Animate the bird
+	applymovement(LID_BIRD, Puzzle_IlexForest_Movement_AtoB_Bird1)
+	waitmovement(LID_BIRD)
+	playmoncry (SPECIES_FARFETCHD, 0)
+	applymovement(LID_BIRD, Puzzle_IlexForest_Movement_AtoB_Bird2)
+	delay(32)
+	playse(SE_DANSA)
+	waitmovement(LID_BIRD)
+	applymovement(LID_BIRD, Puzzle_IlexForest_Movement_AtoB_Bird3)
+	applymovement(LID_BALL, Puzzle_IlexForest_Movement_AtoB_Ball)
+	delay(16)
+	playse(SE_KON)
+	waitmovement(LID_BIRD)
+	playse(SE_KON2)
+	// Set the bird's perm location and script based on the bird spot id
+	callnative(LoadBirdLocation)
+	// Remove/Add bird so position is correct
+	removeobject(LID_BIRD)
+	addobject(LID_BIRD)
+	copyobjectxytoperm(LID_BALL)
+	setflag(FLAG_OPEN_AREA1)
+	release
 }
+movement Puzzle_IlexForest_Movement_AtoB_Bird1 {
+	walk_fast_up * 2
+	delay_16
+	face_left
+	delay_16
+	face_right
+	delay_16
+	face_down
+}
+movement Puzzle_IlexForest_Movement_AtoB_Bird2 {
+	delay_16
+	delay_16
+	jump_2_right
+}
+movement Puzzle_IlexForest_Movement_AtoB_Bird3 {
+	jump_2_right
+	walk_fast_right * 4
+}
+movement Puzzle_IlexForest_Movement_AtoB_Ball {
+	delay_8
+	jump_2_left
+	jump_down
+}
+raw `#undef LID_BALL`
 
 // ----------------------------------------------------
 
 script(local) Puzzle_IlexForest_BirdSpotB1 {
 	switch(var(VAR_FACING)) {
 		case DIR_EAST:
-			ilex_runto(B2, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(B2, Puzzle_IlexForest_Movement_SprintNorth4)
 		case DIR_WEST:
-			ilex_runto(B6, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(B6, Puzzle_IlexForest_Movement_B1_B6)
 		default:
-		case DIR_NORTH:
-			ilex_runto(B4, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(B4, Puzzle_IlexForest_Movement_B1_B4)
 	}
 }
+movement Puzzle_IlexForest_Movement_B1_B6 {
+	walk_fast_left * 5
+	walk_fast_down * 6
+}
+movement Puzzle_IlexForest_Movement_B1_B4 {
+	walk_fast_right * 6
+}
+
 script(local) Puzzle_IlexForest_BirdSpotB2 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_NORTH:
-			ilex_runto(B3, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(B3, Puzzle_IlexForest_Movement_B2_B3)
 		case DIR_SOUTH:
-			ilex_runto(B1, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(B1, Puzzle_IlexForest_Movement_SprintSouth4)
 	}
 }
+movement Puzzle_IlexForest_Movement_B2_B3 {
+	walk_fast_up * 2
+	walk_fast_right
+	walk_fast_up
+	walk_fast_right * 4
+}
+
 script(local) Puzzle_IlexForest_BirdSpotB3 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_WEST:
-			ilex_runto(B1, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(B2, Puzzle_IlexForest_Movement_B3_B2)
 		case DIR_EAST:
-			ilex_runto(B4, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(B4, Puzzle_IlexForest_Movement_B3_B4)
 	}
 }
+movement Puzzle_IlexForest_Movement_B3_B2 {
+	walk_fast_left * 4
+	walk_fast_down
+	walk_fast_left
+	walk_fast_down * 2
+}
+movement Puzzle_IlexForest_Movement_B3_B4 {
+	walk_fast_right
+	walk_fast_down * 2
+	walk_fast_right
+	walk_fast_down * 4
+}
+
 script(local) Puzzle_IlexForest_BirdSpotB4 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_WEST:
-			ilex_runto(B1, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(B1, Puzzle_IlexForest_Movement_B4_B1)
 		case DIR_NORTH:
-			ilex_runto(B3, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(B3, Puzzle_IlexForest_Movement_B4_B3)
 		case DIR_SOUTH:
 		case DIR_EAST:
-			ilex_runto(BtoC, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(BtoC, Puzzle_IlexForest_Movement_B4_BtoC)
 	}
 }
+movement Puzzle_IlexForest_Movement_B4_B1 {
+	walk_fast_left * 6
+}
+movement Puzzle_IlexForest_Movement_B4_B3 {
+	walk_fast_up * 2
+	walk_fast_right
+	walk_fast_up * 3
+}
+movement Puzzle_IlexForest_Movement_B4_BtoC {
+	walk_fast_down * 5
+	walk_fast_left * 2
+}
+
+raw `#define LID_BALL 4`
 script(local) Puzzle_IlexForest_BirdSpotBtoC {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_WEST:
-			ilex_runto(B1, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(B6, Puzzle_IlexForest_Movement_BtoC_B6)
 		case DIR_EAST:
-			ilex_runto(B4, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(B4, Puzzle_IlexForest_Movement_BtoC_B4)
 		case DIR_NORTH:
 			//ilex_runto(C1, Puzzle_IlexForest_SprintNorth)
+			lock
+			faceplayer
+			call(Puzzle_IlexForest_BirdCry)
+			setvar (VAR_BIRD_LOCATION, _ILEX_BIRDSPOT_C1)
+			// Animate the bird
+			applymovement(LID_BIRD, Puzzle_IlexForest_Movement_BtoC_Bird1)
+			applymovement(EVENT_OBJ_ID_PLAYER, Puzzle_IlexForest_Movement_BtoC_Player1)
+			waitmovement(LID_BIRD)
+			playse(SE_PIN)
+			delay (48)
+			//
+			applymovement(LID_BIRD, Puzzle_IlexForest_Movement_BtoC_Bird2)
+			applymovement(EVENT_OBJ_ID_PLAYER, Puzzle_IlexForest_Movement_BtoC_Player2)
+			applymovement(LID_BALL, Puzzle_IlexForest_Movement_BtoC_Ball2)
+			delay (4)
+			playmoncry (SPECIES_FARFETCHD, 0)
+			delay (28)
+			playse(SE_KON)
+			waitmovement(LID_BIRD)
+			// Set the bird's perm location and script based on the bird spot id
+			callnative(LoadBirdLocation)
+			// Remove/Add bird so position is correct
+			removeobject(LID_BIRD)
+			addobject(LID_BIRD)
+			copyobjectxytoperm(LID_BALL)
+			setflag(FLAG_OPEN_AREA2)
+			release
 	}
 }
+raw `#undef LID_BALL`
+movement Puzzle_IlexForest_Movement_BtoC_B4 {
+	walk_fast_right * 2
+	walk_fast_up * 5
+}
+movement Puzzle_IlexForest_Movement_BtoC_B6 {
+	walk_fast_left * 3
+	walk_fast_down
+	walk_fast_left * 5
+}
+
 script(local) Puzzle_IlexForest_BirdSpotB6 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_WEST:
 			ilex_runto(B1, Puzzle_IlexForest_SprintNorth)
 		case DIR_SOUTH:
 		case DIR_EAST:
-			ilex_runto(BtoC, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(BtoC, Puzzle_IlexForest_SprintEast)
 	}
+}
+
+// ----------------------------------------------------
+
+movement Puzzle_IlexForest_Movement_BtoC_Bird1 {
+	walk_fast_right * 4
+	delay_16 * 2
+	face_down
+	delay_16
+	face_up
+	delay_16
+	walk_in_place_fastest_left
+	emote_exclamation_mark
+}
+movement Puzzle_IlexForest_Movement_BtoC_Player1 {
+	delay_16 * 1
+	player_run_up
+	player_run_right * 3
+	face_right
+}
+movement Puzzle_IlexForest_Movement_BtoC_Ball2 {
+	delay_4 * 2
+	jump_2_down
+	jump_left
+}
+movement Puzzle_IlexForest_Movement_BtoC_Bird2 {
+	delay_4
+	jump_2_right
+	face_down
+	delay_8
+	face_up
+	delay_8
+	face_left
+	delay_8
+	jump_in_place_left_right
+	walk_fast_right * 5
+	walk_fast_up * 3
+}
+movement Puzzle_IlexForest_Movement_BtoC_Player2 {
+	player_run_right
+	delay_16 * 4
+	face_right
+	delay_16
+	face_down
 }
 
 // ----------------------------------------------------
@@ -260,160 +548,359 @@ script(local) Puzzle_IlexForest_BirdSpotB6 {
 script(local) Puzzle_IlexForest_BirdSpotC1 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_NORTH:
-			ilex_runto(C2, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(C2, Puzzle_IlexForest_Movement_C1_C2)
 		case DIR_EAST:
-			ilex_runto(C3, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(C3, Puzzle_IlexForest_Movement_C1_C3)
 		case DIR_SOUTH:
-			ilex_runto(C8, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(C8, Puzzle_IlexForest_Movement_C1_C8)
 	}
 }
+movement Puzzle_IlexForest_Movement_C1_C2 {
+	walk_fast_up * 3
+	walk_fast_right
+	walk_fast_up
+	walk_fast_right * 3
+}
+movement Puzzle_IlexForest_Movement_C1_C3 {
+	walk_fast_down * 3
+	walk_fast_right * 5
+}
+movement Puzzle_IlexForest_Movement_C1_C8 {
+	walk_fast_down * 3
+	walk_fast_left * 4
+}
+
 script(local) Puzzle_IlexForest_BirdSpotC2 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_WEST:
-			ilex_runto(C1, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(C1, Puzzle_IlexForest_Movement_C2_C1)
 		case DIR_EAST:
-			ilex_runto(C3, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(C3, Puzzle_IlexForest_Movement_C2_C3)
 	}
 }
+movement Puzzle_IlexForest_Movement_C2_C1 {
+	walk_fast_left * 3
+	walk_fast_down
+	walk_fast_left
+	walk_fast_down * 3
+}
+movement Puzzle_IlexForest_Movement_C2_C3 {
+	walk_fast_right
+	walk_fast_down * 6
+}
+
 script(local) Puzzle_IlexForest_BirdSpotC3 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_EAST:
-		case DIR_NORTH:
 			ilex_runto(C2, Puzzle_IlexForest_SprintNorth)
 		case DIR_WEST:
 			ilex_runto(C8, Puzzle_IlexForest_SprintWest)
 		case DIR_SOUTH:
-			ilex_runto(C4, Puzzle_IlexForest_SprintSouth)
+			ilex_runto(C4, Puzzle_IlexForest_Movement_C3_C4)
 	}
 }
+movement Puzzle_IlexForest_Movement_C3_C4 {
+	walk_fast_right
+	walk_fast_down * 4
+	walk_fast_right
+	walk_fast_down
+}
+
 script(local) Puzzle_IlexForest_BirdSpotC4 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_NORTH:
 			ilex_runto(C3, Puzzle_IlexForest_SprintNorth)
 		case DIR_EAST:
-			ilex_runto(C5, Puzzle_IlexForest_SprintSouth)
+			ilex_runto(C5, Puzzle_IlexForest_Movement_C4_C5)
 		case DIR_SOUTH:
-			ilex_runto(C6, Puzzle_IlexForest_SprintEast)
+			ilex_runto(C6, Puzzle_IlexForest_Movement_C4_C6)
 	}
 }
+movement Puzzle_IlexForest_Movement_C4_C5 {
+	walk_fast_down
+	walk_fast_left
+	walk_fast_down * 5
+}
+movement Puzzle_IlexForest_Movement_C4_C6 {
+	walk_fast_down
+	walk_fast_left * 6
+}
+
 script(local) Puzzle_IlexForest_BirdSpotC5 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_EAST:
-			ilex_runto(C4, Puzzle_IlexForest_SprintEast)
+			ilex_runto(C4, Puzzle_IlexForest_Movement_C5_C4)
 		case DIR_WEST:
-			ilex_runto(C6, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(C6, Puzzle_IlexForest_Movement_C5_C6)
 		case DIR_NORTH:
-			ilex_runto(CtoD, Puzzle_IlexForest_SprintWest)
+			ilex_runto(CtoD, Puzzle_IlexForest_Movement_SprintWest4)
 	}
 }
+movement Puzzle_IlexForest_Movement_C5_C4 {
+	walk_fast_right * 4
+	walk_fast_up * 6
+}
+movement Puzzle_IlexForest_Movement_C5_C6 {
+	walk_fast_left
+	walk_fast_up * 6
+}
+
 script(local) Puzzle_IlexForest_BirdSpotC6 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_NORTH:
-			ilex_runto(C4, Puzzle_IlexForest_SprintEast)
+			ilex_runto(C4, Puzzle_IlexForest_Movement_C6_C4)
 		case DIR_WEST:
-			ilex_runto(C7, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(C7, Puzzle_IlexForest_Movement_C6_C7)
 		case DIR_EAST:
 			ilex_runto(C5, Puzzle_IlexForest_SprintSouth)
 	}
 }
+movement Puzzle_IlexForest_Movement_C6_C4 {
+	walk_fast_right * 6
+	walk_fast_up
+}
+movement Puzzle_IlexForest_Movement_C6_C7 {
+	walk_fast_left * 5
+	walk_fast_up * 3
+	walk_fast_left
+}
+
 script(local) Puzzle_IlexForest_BirdSpotC7 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_WEST:
-		case DIR_EAST:
 			ilex_runto(C8, Puzzle_IlexForest_SprintNorth)
 		case DIR_SOUTH:
-			ilex_runto(C6, Puzzle_IlexForest_SprintSouth)
+			ilex_runto(C6, Puzzle_IlexForest_Movement_C7_C6)
 	}
 }
+movement Puzzle_IlexForest_Movement_C7_C6 {
+	walk_fast_right
+	walk_fast_down * 3
+	walk_fast_right * 5
+}
+
 script(local) Puzzle_IlexForest_BirdSpotC8 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_NORTH:
-			ilex_runto(C1, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(C1, Puzzle_IlexForest_Movement_C8_C1)
 		case DIR_EAST:
 			ilex_runto(C3, Puzzle_IlexForest_SprintEast)
-		case DIR_SOUTH:
+		case DIR_WEST:
 			ilex_runto(C7, Puzzle_IlexForest_SprintSouth)
 	}
 }
+movement Puzzle_IlexForest_Movement_C8_C1 {
+	walk_fast_right * 4
+	walk_fast_up * 3
+}
 
 script(local) Puzzle_IlexForest_BirdSpotCtoD {
-	// ilex_runto(D1, Puzzle_IlexForest_SprintSouth)
+	if (var(VAR_FACING) == DIR_WEST) {
+		// ilex_runto(D1, Puzzle_IlexForest_SprintSouth)
+		lock
+		faceplayer
+		call(Puzzle_IlexForest_BirdCry)
+		setvar (VAR_BIRD_LOCATION, _ILEX_BIRDSPOT_D1)
+		// Animate the bird
+		applymovement(LID_BIRD, Puzzle_IlexForest_Movement_CtoD_Bird1)
+		waitmovement(LID_BIRD)
+		playse(SE_DANSA)
+		//
+		applymovement(LID_BIRD, Puzzle_IlexForest_Movement_CtoD_Bird2)
+		waitmovement(LID_BIRD)
+		// Set the bird's perm location and script based on the bird spot id
+		callnative(LoadBirdLocation)
+		// Remove/Add bird so position is correct
+		removeobject(LID_BIRD)
+		addobject(LID_BIRD)
+		setflag(FLAG_OPEN_AREA3)
+		release
+	} else {
+		ilex_runto(C1, Puzzle_IlexForest_Movement_SprintEast4)
+	}
+}
+
+movement Puzzle_IlexForest_Movement_CtoD_Bird1 {
+	walk_fast_left
+	delay_16 * 2
+	face_down
+	delay_16
+	face_up
+	delay_16
+	jump_in_place_right
+}
+
+movement Puzzle_IlexForest_Movement_CtoD_Bird2 {
+	// Brid flies off somehow
+	walk_diag_northwest * 2
+	walk_fast_left * 5
 }
 
 // ----------------------------------------------------
 
 script(local) Puzzle_IlexForest_BirdSpotD1 {
-	ilex_runto(D2, Puzzle_IlexForest_SprintSouth)
+	ilex_runto(D2, Puzzle_IlexForest_SprintNorth)
 }
 script(local) Puzzle_IlexForest_BirdSpotD2 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_NORTH:
-			ilex_runto(D3, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(D3, Puzzle_IlexForest_Movement_D2_D3)
 		case DIR_SOUTH:
-			ilex_runto(D4, Puzzle_IlexForest_SprintSouth)
+			ilex_runto(D4, Puzzle_IlexForest_Movement_D2_D4)
 	}
 }
+movement Puzzle_IlexForest_Movement_D2_D3 {
+	walk_fast_up * 2
+	walk_fast_left * 6
+	walk_fast_down * 3
+}
+movement Puzzle_IlexForest_Movement_D2_D4 {
+	walk_fast_down * 5
+	walk_fast_left * 4
+}
+
 script(local) Puzzle_IlexForest_BirdSpotD3 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_NORTH:
-			ilex_runto(D2, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(D2, Puzzle_IlexForest_Movement_D3_D2)
 		case DIR_SOUTH:
-			ilex_runto(D4, Puzzle_IlexForest_SprintSouth)
+			ilex_runto(D4, Puzzle_IlexForest_Movement_D3_D4)
 	}
 }
+movement Puzzle_IlexForest_Movement_D3_D2 {
+	walk_fast_up * 3
+	walk_fast_right * 6
+	walk_fast_down * 2
+}
+movement Puzzle_IlexForest_Movement_D3_D4 {
+	walk_fast_down * 4
+	walk_fast_right * 2
+}
+
 script(local) Puzzle_IlexForest_BirdSpotD4 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_WEST:
-			ilex_runto(D3, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(D3, Puzzle_IlexForest_Movement_D4_D3)
 		case DIR_EAST:
-			ilex_runto(D2, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(D2, Puzzle_IlexForest_Movement_D4_D2)
 		case DIR_SOUTH:
-			ilex_runto(D5, Puzzle_IlexForest_SprintSouth)
+			ilex_runto(D5, Puzzle_IlexForest_Movement_D4_D5)
 	}
 }
-script(local) Puzzle_IlexForest_BirdSpotD5 {
-	// switch(var(VAR_FACING)) {
-	// 	default:
-	// 	case DIR_WEST:
-	// 		ilex_runto(D3, Puzzle_IlexForest_SprintNorth)
-	// 	case DIR_EAST:
-	// 		ilex_runto(D2, Puzzle_IlexForest_SprintNorth)
-	// 	case DIR_SOUTH:
-	// 		ilex_runto(D5, Puzzle_IlexForest_SprintSouth)
-	// }
+movement Puzzle_IlexForest_Movement_D4_D3 {
+	walk_fast_left * 2
+	walk_fast_up * 4
 }
+movement Puzzle_IlexForest_Movement_D4_D2 {
+	walk_fast_right * 4
+	walk_fast_up * 5
+}
+movement Puzzle_IlexForest_Movement_D4_D5 {
+	walk_fast_left * 3
+	walk_fast_down * 2
+	walk_fast_left * 2
+}
+
+script(local) Puzzle_IlexForest_BirdSpotD5 {
+	switch(var(VAR_FACING)) {
+		default:
+			ilex_runto(D4, Puzzle_IlexForest_Movement_D5_D4)
+		case DIR_WEST:
+			ilex_runto(D6, Puzzle_IlexForest_Movement_D5_D6)
+	}
+}
+movement Puzzle_IlexForest_Movement_D5_D4 {
+	walk_fast_right * 2
+	walk_fast_up * 2
+	walk_fast_right * 3
+}
+movement Puzzle_IlexForest_Movement_D5_D6 {
+	walk_fast_left * 1
+	walk_fast_up * 1
+	walk_fast_left * 2
+}
+
 script(local) Puzzle_IlexForest_BirdSpotD6 {
-	// switch(var(VAR_FACING)) {
-	// 	default:
-	// 	case DIR_WEST:
-	// 		ilex_runto(D3, Puzzle_IlexForest_SprintNorth)
-	// 	case DIR_EAST:
-	// 		ilex_runto(D2, Puzzle_IlexForest_SprintNorth)
-	// 	case DIR_SOUTH:
-	// 		ilex_runto(D5, Puzzle_IlexForest_SprintSouth)
-	// }
+	switch(var(VAR_FACING)) {
+		default:
+			ilex_runto(D4, Puzzle_IlexForest_Movement_D6_D4)
+		case DIR_WEST:
+			ilex_runto(DtoE, Puzzle_IlexForest_Movement_D6_DtoE)
+	}
+}
+movement Puzzle_IlexForest_Movement_D6_D4 {
+	walk_fast_right * 5
+	walk_fast_up * 1
+	walk_fast_right * 3
+}
+movement Puzzle_IlexForest_Movement_D6_DtoE {
+	walk_fast_left * 2
+	walk_fast_up * 3
+}
+
+script Puzzle_IlexForest_TriggerScript_DtoE {
+	goto (Puzzle_IlexForest_BirdSpotDtoE)
 }
 script(local) Puzzle_IlexForest_BirdSpotDtoE {
-	// switch(var(VAR_FACING)) {
-	// 	default:
-	// 	case DIR_WEST:
-	// 		ilex_runto(D3, Puzzle_IlexForest_SprintNorth)
-	// 	case DIR_EAST:
-	// 		ilex_runto(D2, Puzzle_IlexForest_SprintNorth)
-	// 	case DIR_SOUTH:
-	// 		ilex_runto(D5, Puzzle_IlexForest_SprintSouth)
-	// }
+	//ilex_runto(E5, Puzzle_IlexForest_SprintNorth)
+	lock
+	// faceplayer
+	// call(Puzzle_IlexForest_BirdCry)
+	setvar (VAR_BIRD_LOCATION, _ILEX_BIRDSPOT_E5)
+	// Animate the bird
+	applymovement(LID_BIRD, Puzzle_IlexForest_Movement_DtoE_Bird1)
+	waitmovement(LID_BIRD)
+	
+	setfieldeffectargument (0, SPECIES_FARFETCHD)
+	setfieldeffectargument (1, 22105)
+	setfieldeffectargument (2, 100)
+	dofieldeffect (FLDEFF_FIELD_MOVE_SHOW_MON)
+	waitfieldeffect (FLDEFF_FIELD_MOVE_SHOW_MON)
+	// waitstate
+	
+	// Clear out the forest path
+	fadescreen(3)
+	setmetatile(26, 21, 0x001, FALSE)
+	setmetatile(27, 21, 0x001, FALSE)
+	setmetatile(26, 22, 0x001, FALSE)
+	setmetatile(27, 22, 0x001, FALSE)
+	setmetatile(26, 23, 0x001, FALSE)
+	setmetatile(27, 23, 0x001, FALSE)
+	setmetatile(26, 24, 0x001, FALSE)
+	setmetatile(27, 24, 0x001, FALSE)
+	setmetatile(26, 25, 0x001, FALSE)
+	setmetatile(27, 25, 0x001, FALSE)
+	playse(SE_W015)
+	special (DrawWholeMapView)
+	fadescreenspeed(2, 3)
+	waitse
+	// 
+	applymovement(LID_BIRD, Puzzle_IlexForest_Movement_DtoE_Bird2)
+	waitmovement(LID_BIRD)
+	
+	// Set the bird's perm location and script based on the bird spot id
+	callnative(LoadBirdLocation)
+	// Remove/Add bird so position is correct
+	removeobject(LID_BIRD)
+	addobject(LID_BIRD)
+	
+	// 
+	setflag(FLAG_OPEN_AREA4)
+	setvar(VAR_TEMP_0, 1)
+	release
+}
+movement Puzzle_IlexForest_Movement_DtoE_Bird1 {
+	face_left
+	delay_16 * 2
+	face_right
+	delay_16 * 2
+	face_down
+	delay_16
+	face_up
+	jump_in_place_up
+}
+movement Puzzle_IlexForest_Movement_DtoE_Bird2 {
+	walk_fast_up * 4
 }
 
 // ----------------------------------------------------
@@ -421,103 +908,196 @@ script(local) Puzzle_IlexForest_BirdSpotDtoE {
 script(local) Puzzle_IlexForest_BirdSpotE1 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_NORTH:
-			ilex_runto(E2, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(E2, Puzzle_IlexForest_Movement_A1_A2)
 		case DIR_SOUTH:
-			ilex_runto(E7, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(E7, Puzzle_IlexForest_Movement_SprintSouth4)
 	}
 }
 script(local) Puzzle_IlexForest_BirdSpotE2 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_SOUTH:
-			ilex_runto(E3, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(E3, Puzzle_IlexForest_SprintEast)
 		case DIR_WEST:
-			ilex_runto(E1, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(E1, Puzzle_IlexForest_Movement_A2_A1)
 	}
 }
 script(local) Puzzle_IlexForest_BirdSpotE3 {
 	switch(var(VAR_FACING)) {
 		case DIR_NORTH:
-			ilex_runto(E2, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(E2, Puzzle_IlexForest_Movement_E3_E2)
 		default:
-		case DIR_EAST:
-			ilex_runto(E4, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(E4, Puzzle_IlexForest_SprintSouth)
 	}
 }
+movement Puzzle_IlexForest_Movement_E3_E2 {
+	walk_fast_left * 1
+	jump_2_left
+	walk_fast_left * 2
+	walk_fast_down * 2
+	walk_fast_left * 4
+}
+
 script(local) Puzzle_IlexForest_BirdSpotE4 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_NORTH:
-		case DIR_EAST:
-			ilex_runto(E3, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(E3, Puzzle_IlexForest_Movement_A4_A3)
 		case DIR_SOUTH:
-			ilex_runto(E5, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(E5, Puzzle_IlexForest_Movement_A4_A5)
 		case DIR_WEST:
-			ilex_runto(E6, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(E6, Puzzle_IlexForest_Movement_A4_A6)
 	}
 }
 script(local) Puzzle_IlexForest_BirdSpotE5 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_WEST:
-			ilex_runto(E6, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(E6, Puzzle_IlexForest_Movement_A5_A6)
 		case DIR_EAST:
-			ilex_runto(E5, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(E5, Puzzle_IlexForest_Movement_A5_A4)
 	}
 }
 script(local) Puzzle_IlexForest_BirdSpotE6 {
 	switch(var(VAR_FACING)) {
 		case DIR_NORTH:
-			ilex_runto(E7, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(E7, Puzzle_IlexForest_Movement_A6_A7)
 		case DIR_SOUTH:
-			ilex_runto(E5, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(E5, Puzzle_IlexForest_Movement_A6_A4)
 		default:
-		case DIR_WEST:
-			ilex_runto(E4, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(E4, Puzzle_IlexForest_Movement_A6_A5)
 	}
 }
 script(local) Puzzle_IlexForest_BirdSpotE7 {
 	switch(var(VAR_FACING)) {
 		default:
-		case DIR_NORTH:
-			ilex_runto(E8, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(E7, Puzzle_IlexForest_Movement_A7_A6)
 		case DIR_WEST:
-			ilex_runto(E1, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(E1, Puzzle_IlexForest_Movement_SprintNorth4)
 		case DIR_SOUTH:
 		case DIR_EAST:
-			ilex_runto(E7, Puzzle_IlexForest_SprintNorth)
+			ilex_runto(E8, Puzzle_IlexForest_Movement_E7_E8)
 	}
 }
+movement Puzzle_IlexForest_Movement_E7_E8 {
+	walk_fast_down * 2
+	walk_fast_left * 1
+	walk_fast_down * 4
+}
+
 script(local) Puzzle_IlexForest_BirdSpotE8 {
 	switch(var(VAR_FACING)) {
-		default:
 		case DIR_WEST:
-			ilex_runto(Final, Puzzle_IlexForest_SprintNorth)
-		case DIR_EAST:
-			ilex_runto(E7, Puzzle_IlexForest_SprintNorth)
-		case DIR_NORTH:
-		case DIR_SOUTH:
-			ilex_runto(E7, Puzzle_IlexForest_SprintNorth)
+			goto (Puzzle_IlexForest_GoToEnd)
+		default:
+			ilex_runto(E7, Puzzle_IlexForest_Movement_E8_E7)
+	}
+}
+movement Puzzle_IlexForest_Movement_E8_E7 {
+	walk_fast_left * 4
+	walk_fast_up * 5
+	walk_fast_left * 1
+	walk_fast_up * 1
+}
+movement Puzzle_IlexForest_Movement_E8_End {
+	walk_fast_left * 2
+	lock_facing_direction
+	jump_2_right
+	unlock_facing_direction
+	delay_16 * 3
+	walk_fast_left * 2
+	walk_fast_up * 6
+}
+
+script(local) Puzzle_IlexForest_GoToEnd {
+	//ilex_runto(Final, Puzzle_IlexForest_SprintNorth)
+	lock
+	faceplayer
+	call(Puzzle_IlexForest_BirdCry)
+	setvar (VAR_BIRD_LOCATION, _ILEX_BIRDSPOT_Final)
+	// Animate the bird
+	applymovement(LID_BIRD, Puzzle_IlexForest_Movement_E8_End)
+	waitmovement(LID_BIRD)
+	// Set the bird's perm location and script based on the bird spot id
+	callnative(LoadBirdLocation)
+	// Remove/Add bird so position is correct
+	removeobject(LID_BIRD)
+	addobject(LID_BIRD)
+	// 
+	clearflag(FLAG_HIDE_END_MAN)
+	release
+}
+
+raw `.align 2`
+movement(global) Puzzle_IlexForest_SprintNorth {
+	walk_fast_up * 6
+}
+movement(global) Puzzle_IlexForest_SprintSouth {
+	walk_fast_down * 6
+}
+movement(global) Puzzle_IlexForest_SprintWest {
+	walk_fast_left * 8
+}
+movement(global) Puzzle_IlexForest_SprintEast {
+	walk_fast_right * 8
+}
+movement Puzzle_IlexForest_Movement_SprintNorth4 {
+	walk_fast_up * 4
+}
+movement Puzzle_IlexForest_Movement_SprintSouth4 {
+	walk_fast_down * 4
+}
+movement Puzzle_IlexForest_Movement_SprintWest4 {
+	walk_fast_left * 4
+}
+movement Puzzle_IlexForest_Movement_SprintEast4 {
+	walk_fast_right * 4
+}
+
+
+script Puzzle_IlexForest_EventScript_Boy {
+	if (flag(FLAG_HIDE_END_MAN) == TRUE) {
+	msgbox ("Oh, man…\n"
+			"My boss is gonna be steaming…\p"
+			"The FARFETCH'D that cuts trees\n"
+			"for charcoal took off on me.\p"
+			"I can't go looking for it here\n"
+			"in the Ilex Forest.\l"
+			"It's too big, dark and scary for me…$")
+	} else {
+	msgbox ("Wow! Thanks a whole bunch!\p"
+			"My boss's {POKEMON} won't obey me\n"
+			"because I don't have a badge.$")
+	}
+}
+script Puzzle_IlexForest_EventScript_Man {
+	if (flag(FLAG_HIDE_SCROLL)) {
+	msgbox ("Ah! My FARFETCH'D!\n"
+			"You found it for us, kid?\p"
+			"Without it, we wouldn't be able to\n"
+			"to cut trees for charcoal.\p"
+			"Now, how can I thank you…\p"
+			"I know! Here, take this!$")
+	call (PuzzleCommon_EventScript_Scroll)
+	addobject (LID_SCROLL)
+	msgbox ("I found that scroll lying here\n"
+			"before I left for tea.\p"
+			"I don't know what it is,\n"
+			"but it looks important.$")
+	} else {
+	msgbox ("Do you want to apprentace as a\n"
+			"charcoal maker with me?\p"
+			"You'll be first-rate in ten years!$")
 	}
 }
 
 
-
-
-
-
-
-movement Puzzle_IlexForest_SprintNorth {
-	walk_fast_up * 6
-}
-movement Puzzle_IlexForest_SprintSouth {
-	walk_fast_down * 6
-}
-movement Puzzle_IlexForest_SprintWest {
-	walk_fast_left * 8
-}
-movement Puzzle_IlexForest_SprintEast {
-	walk_fast_right * 8
-}
+raw `
+#undef VAR_BIRD_LOCATION
+#undef FLAG_HIDE_END_MAN
+#undef FLAG_HIDE_SCROLL
+#undef FLAG_OPEN_AREA1
+#undef FLAG_OPEN_AREA2
+#undef FLAG_OPEN_AREA3
+#undef FLAG_OPEN_AREA4
+#undef LID_BIRD
+#undef LID_SCROLL
+`
 

@@ -1087,13 +1087,19 @@ bool8 ScrCmd_fadeinbgm(struct ScriptContext *ctx)
     return FALSE;
 }
 
+const static u8 ErrStr_movepointer[] = _("move pointer check failed!{PAUSE 50}");
 bool8 ScrCmd_applymovement(struct ScriptContext *ctx)
 {
     u16 localId = VarGet(ScriptReadHalfword(ctx));
     const void *movementScript = (const void *)ScriptReadWord(ctx);
     
-    if (movementScript == NULL)
-        movementScript = (const void *)ctx->data[0];
+    if ((u32)movementScript < 4)
+        movementScript = (const void *)ctx->data[(u32)movementScript];
+    
+    if (movementScript <= (const void*)&Start) {
+        ShowScriptError(ctx, 5, ErrStr_movepointer);
+        return FALSE;
+    }
 
     ScriptMovement_StartObjectMovementScript(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, movementScript);
     sMovingNpcId = localId;
@@ -1107,8 +1113,13 @@ bool8 ScrCmd_applymovement_at(struct ScriptContext *ctx)
     u8 mapGroup = ScriptReadByte(ctx);
     u8 mapNum = ScriptReadByte(ctx);
 
-    if (movementScript == NULL)
-        movementScript = (const void *)ctx->data[0];
+    if ((u32)movementScript < 4)
+        movementScript = (const void *)ctx->data[(u32)movementScript];
+    
+    if (movementScript <= (const void*)&Start) {
+        ShowScriptError(ctx, 5, ErrStr_movepointer);
+        return FALSE;
+    }
 
     ScriptMovement_StartObjectMovementScript(localId, mapNum, mapGroup, movementScript);
     sMovingNpcId = localId;

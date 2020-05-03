@@ -29,6 +29,18 @@
 // We don't actually use the value, just the address it's at.
 extern const int Start;
 
+// Some common debugging helpers
+
+void PrintData0(struct ScriptContext *ctx)
+{
+	ConvertIntToHexStringN(gStringVar1, ctx->data[0], STR_CONV_MODE_LEADING_ZEROS, 8);
+}
+
+void PrintData1(struct ScriptContext *ctx)
+{
+	ConvertIntToHexStringN(gStringVar1, ctx->data[1], STR_CONV_MODE_LEADING_ZEROS, 8);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Puzzle: Pokemon Says 
 // MAP_PUZZLE_MUSIC_NOTE_TILES
@@ -710,5 +722,49 @@ void IsCurrentPuzzleCyclingRoad(struct ScriptContext *ctx)
 	u16 currPuzzle = GetCurrentPuzzleMapId();
 	VarSet(VAR_RESULT, currPuzzle == MAP_PUZZLE_ROUTE110);
 }
+
+///////////////////////////////////////////////////////////////////////////////
+// Puzzle: A Bird in the Bush
+// MAP_PUZZLE_ILEX_FOREST
+
+#define VAR_BIRD_LOCATION   VAR_PUZZLE_00
+#define LID_BIRD            3 
+
+struct BirdSpot {
+	const u16 x;
+	const u16 y;
+	const u8 *script;
+};
+
+extern const struct BirdSpot Puzzle_IlexForest_BirdSpots[];
+extern const u8 *Puzzle_IlexForest_ConfigCount;
+
+void LoadBirdLocation(struct ScriptContext *ctx)
+{
+	s32 i;
+	struct EventObjectTemplate *savObjTemplates;
+	
+	u16 idx = VarGet(VAR_BIRD_LOCATION);
+	const struct BirdSpot *spot = &Puzzle_IlexForest_BirdSpots[idx];
+	if (((u32)spot) >= (u32)Puzzle_IlexForest_ConfigCount) return;
+	
+	// Loop through the event templates and find the bird
+	savObjTemplates = gSaveBlock1Ptr->eventObjectTemplates;
+	for (i = 0; i < EVENT_OBJECT_TEMPLATES_COUNT; i++)
+    {
+        struct EventObjectTemplate *eventObjectTemplate = &savObjTemplates[i];
+        if (eventObjectTemplate->localId == LID_BIRD)
+        {
+			// Set the bird's location and script to the current location
+            eventObjectTemplate->x = spot->x;
+            eventObjectTemplate->y = spot->y;
+			eventObjectTemplate->script = spot->script;
+            break;
+        }
+    }
+}
+
+#undef LID_BIRD
+#undef VAR_BIRD_LOCATION
 
 

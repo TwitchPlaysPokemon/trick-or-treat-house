@@ -788,11 +788,7 @@ Std_FindItem:: @ 8271BFD
 	lock
 	faceplayer
 	waitse
-		playse SE_PC_ON
-		delay 60
 	resolveitem VAR_0x8000, VAR_0x8001
-		playse SE_PC_OFF
-		delay 60
 	copyvar VAR_0x8004, VAR_0x8000
 	copyvar VAR_0x8005, VAR_0x8001
 	checkitemspace VAR_0x8000, VAR_0x8001
@@ -850,11 +846,7 @@ EventScript_271CA1:: @ 8271CA1
 EventScript_HiddenItemScript:: @ 8271CB7
 	lockall
 	waitse
-		playse SE_PC_ON
-		delay 60
 	resolveitem VAR_0x8005, VAR_0x8006
-		playse SE_PC_OFF
-		delay 60
 	giveitem VAR_0x8005, VAR_0x8006
 	copyvar VAR_0x8007, VAR_RESULT
 	bufferitemnameplural 1, VAR_0x8005, VAR_0x8006
