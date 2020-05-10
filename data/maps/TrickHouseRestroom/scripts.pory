@@ -51,9 +51,6 @@ script TrickHouseRestroom_EventScript_IntroCutscene {
 movement TrickHouseRestroom_Movement_IntroPlayer1 {
 	walk_up * 3
 }
-movement TrickHouseRestroom_Movement_IntroPlayer1 {
-	
-}
 movement TrickHouseRestroom_Movement_IntroBreeder2 {
 	delay_16 * 2
 	walk_right
