@@ -450,6 +450,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define EVENT_OBJ_PAL_TAG_TWINS_MINUS       0x1133
 #define EVENT_OBJ_PAL_WALLY                 0x1134
 #define EVENT_OBJ_PAL_TAG_ALIEN             0x1135
+#define EVENT_OBJ_PAL_TREEKID               0x1136
 #define EVENT_OBJ_PAL_TAG_NONE              0x11FF
 
 #include "data/field_event_obj/event_object_graphics_info_pointers.h"
@@ -500,6 +501,7 @@ const struct SpritePalette sEventObjectSpritePalettes[] = {
     {gEvtObjPal_TrickMaster,  EVENT_OBJ_PAL_TAG_TRICK_MASTER},
     {gEvtObjPal_Torchick,     EVENT_OBJ_PAL_MAY},
     {gEvtObjPal_Mudkid,       EVENT_OBJ_PAL_BRANDON},
+    {gEvtObjPal_Treekid,      EVENT_OBJ_PAL_TREEKID},
     {gEvtObjPal_Elvis,        EVENT_OBJ_PAL_WALLY},
     {gEvtObjPal_PlasmaKid,    EVENT_OBJ_PAL_TAG_PLASMA_KID},
     {gEvtObjPal_Ghetsis,      EVENT_OBJ_PAL_TAG_GHETSIS},

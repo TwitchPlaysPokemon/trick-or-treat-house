@@ -2940,6 +2940,7 @@ extern const u32 gTrainerFrontPic_Twins[];
 extern const u32 gTrainerFrontPic_Sailor[];
 extern const u32 gTrainerFrontPic_MagmaAdmin[];
 extern const u32 gTrainerFrontPic_Wally[];
+extern const u32 gTrainerFrontPic_Treekid[];
 extern const u32 gTrainerFrontPic_Brendan[];
 extern const u32 gTrainerFrontPic_May[];
 extern const u32 gTrainerFrontPic_BugCatcher[];
@@ -3034,6 +3035,7 @@ extern const u32 gTrainerPalette_Twins[];
 extern const u32 gTrainerPalette_Sailor[];
 extern const u32 gTrainerPalette_MagmaAdmin[];
 extern const u32 gTrainerPalette_Wally[];
+extern const u32 gTrainerPalette_Treekid[];
 extern const u32 gTrainerPalette_Brendan[];
 extern const u32 gTrainerPalette_May[];
 extern const u32 gTrainerPalette_BugCatcher[];
@@ -3092,11 +3094,13 @@ extern const u8 gTrainerBackPic_RubySapphireBrendan[];
 extern const u8 gTrainerBackPic_RubySapphireMay[];
 extern const u8 gTrainerBackPic_Wally[];
 extern const u8 gTrainerBackPic_Steven[];
+extern const u8 gTrainerBackPic_Treekid[];
 
 extern const u32 gTrainerBackPicPalette_Red[];
 extern const u32 gTrainerBackPicPalette_Leaf[];
 extern const u32 gTrainerBackPicPalette_Brendan[];
 extern const u32 gTrainerBackPicPalette_May[];
+extern const u32 gTrainerBackPicPalette_Treekid[];
 
 // pokeblock
 extern const u32 gMenuPokeblock_Gfx[];
@@ -3995,7 +3999,10 @@ extern const u16 gIntro1GameFreakTextFadePal[];
 //intro/credits graphics
 extern const u32 gIntro2BrendanNoTurnGfx[];
 extern const u32 gIntro2MayNoTurnGfx[];
+// extern const u32 gIntro2TreekidNoTurnGfx[];
 extern const u16 gIntro2BrendanNoTurnPal[];
+extern const u16 gIntro2MayNoTurnPal[];
+// extern const u16 gIntro2TreekidNoTurnPal[];
 extern const u16 gIntro2FlygonPal[];
 extern const u32 gIntro2FlygonGfx[];
 

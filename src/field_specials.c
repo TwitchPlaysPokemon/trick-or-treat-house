@@ -304,28 +304,34 @@ void SpawnLinkPartnerEventObject(void)
     {
         if (myLinkPlayerNumber != i)
         {
-            switch ((u8)gLinkPlayers[i].version)
-            {
-                case VERSION_RUBY:
-                case VERSION_SAPPHIRE:
-                    if (gLinkPlayers[i].gender == 0)
-                        linkSpriteId = EVENT_OBJ_GFX_LINK_RS_BRENDAN;
-                    else
-                        linkSpriteId = EVENT_OBJ_GFX_LINK_RS_MAY;
-                    break;
-                case VERSION_EMERALD:
-                    if (gLinkPlayers[i].gender == 0)
-                        linkSpriteId = EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL;
-                    else
-                        linkSpriteId = EVENT_OBJ_GFX_RIVAL_MAY_NORMAL;
-                    break;
+            switch (gLinkPlayers[i].gender) {
                 default:
-                    if (gLinkPlayers[i].gender == 0)
-                        linkSpriteId = EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL;
-                    else
-                        linkSpriteId = EVENT_OBJ_GFX_RIVAL_MAY_NORMAL;
-                    break;
+                case GENDER_M: linkSpriteId = EVENT_OBJ_GFX_BRENDAN_NORMAL; break;
+                case GENDER_F: linkSpriteId = EVENT_OBJ_GFX_MAY_NORMAL; break;
+                case GENDER_N: linkSpriteId = EVENT_OBJ_GFX_TREEKID_NORMAL; break;
             }
+            // switch ((u8)gLinkPlayers[i].version)
+            // {
+            //     case VERSION_RUBY:
+            //     case VERSION_SAPPHIRE:
+            //         if (gLinkPlayers[i].gender == 0)
+            //             linkSpriteId = EVENT_OBJ_GFX_BRENDAN_NORMAL;
+            //         else
+            //             linkSpriteId = EVENT_OBJ_GFX_MAY_NORMAL;
+            //         break;
+            //     case VERSION_EMERALD:
+            //         if (gLinkPlayers[i].gender == 0)
+            //             linkSpriteId = EVENT_OBJ_GFX_BRENDAN_NORMAL;
+            //         else
+            //             linkSpriteId = EVENT_OBJ_GFX_MAY_NORMAL;
+            //         break;
+            //     default:
+            //         if (gLinkPlayers[i].gender == 0)
+            //             linkSpriteId = EVENT_OBJ_GFX_BRENDAN_NORMAL;
+            //         else
+            //             linkSpriteId = EVENT_OBJ_GFX_MAY_NORMAL;
+            //         break;
+            // }
             SpawnSpecialEventObjectParameterized(linkSpriteId, gUnknown_085B2B5C[j], 0xf0 - i, gUnknown_085B2B60[j][0] + x + 7, gUnknown_085B2B60[j][1] + y + 7, 0);
             LoadLinkPartnerEventObjectSpritePalette(linkSpriteId, 0xf0 - i, i);
             j++;
@@ -342,10 +348,8 @@ static void LoadLinkPartnerEventObjectSpritePalette(u16 graphicsId, u8 localEven
     u8 adjustedPaletteNum;
     // Note: This temp var is necessary; paletteNum += 6 doesn't match.
     adjustedPaletteNum = paletteNum + 6;
-    if (graphicsId == EVENT_OBJ_GFX_LINK_RS_BRENDAN ||
-        graphicsId == EVENT_OBJ_GFX_LINK_RS_MAY ||
-        graphicsId == EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL ||
-        graphicsId == EVENT_OBJ_GFX_RIVAL_MAY_NORMAL)
+    if (graphicsId == EVENT_OBJ_GFX_BRENDAN_NORMAL ||
+        graphicsId == EVENT_OBJ_GFX_MAY_NORMAL)
     {
         u8 obj = GetEventObjectIdByLocalIdAndMap(localEventId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
         if (obj != EVENT_OBJECTS_COUNT)
@@ -356,16 +360,16 @@ static void LoadLinkPartnerEventObjectSpritePalette(u16 graphicsId, u8 localEven
 
             switch (graphicsId)
             {
-                case EVENT_OBJ_GFX_LINK_RS_BRENDAN:
-                    LoadPalette(gEventObjectPalette33, 0x100 + (adjustedPaletteNum << 4), 0x20);
-                    break;
-                case EVENT_OBJ_GFX_LINK_RS_MAY:
-                    LoadPalette(gEventObjectPalette34, 0x100 + (adjustedPaletteNum << 4), 0x20);
-                    break;
-                case EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL:
+                // case EVENT_OBJ_GFX_LINK_RS_BRENDAN:
+                //     LoadPalette(gEventObjectPalette33, 0x100 + (adjustedPaletteNum << 4), 0x20);
+                //     break;
+                // case EVENT_OBJ_GFX_LINK_RS_MAY:
+                //     LoadPalette(gEventObjectPalette34, 0x100 + (adjustedPaletteNum << 4), 0x20);
+                //     break;
+                case EVENT_OBJ_GFX_BRENDAN_NORMAL:
                     LoadPalette(gEventObjectPalette8, 0x100 + (adjustedPaletteNum << 4), 0x20);
                     break;
-                case EVENT_OBJ_GFX_RIVAL_MAY_NORMAL:
+                case EVENT_OBJ_GFX_MAY_NORMAL:
                     LoadPalette(gEventObjectPalette17, 0x100 + (adjustedPaletteNum << 4), 0x20);
                     break;
             }
@@ -2527,7 +2531,7 @@ void sub_813A76C(void)
         }
         else
         {
-            VarSet(VAR_OBJ_GFX_ID_F - i, EVENT_OBJ_GFX_RIVAL_MAY_NORMAL);
+            VarSet(VAR_OBJ_GFX_ID_F - i, EVENT_OBJ_GFX_MAY_NORMAL);
         }
     }
 }

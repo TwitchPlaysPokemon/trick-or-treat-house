@@ -1294,40 +1294,57 @@ static bool8 sub_8176AB0(u8 data, u8 taskIdA)
         gMain.state += 1;
         break;
     case 2:
-        if (gSaveBlock2Ptr->playerGender == MALE)
-        {
-            LoadCompressedSpriteSheet(gUnknown_085F5334);
-            LoadCompressedSpriteSheet(gUnknown_085F53BC);
-            LoadCompressedSpriteSheet(gUnknown_085F5354);
-            LoadSpritePalettes(gUnknown_085F5384);
+        switch (gSaveBlock2Ptr->playerGender) {
+            default:
+            case GENDER_M:
+                LoadCompressedSpriteSheet(gUnknown_085F5334);
+                LoadCompressedSpriteSheet(gIntro2MaySpriteSheet);
+                LoadCompressedSpriteSheet(gUnknown_085F5354);
+                LoadSpritePalettes(gUnknown_085F5384);
 
-            spriteId = intro_create_brendan_sprite(120, 46);
-            gTasks[taskIdA].data[TDA_PLAYER_CYCLIST] = spriteId;
-            gSprites[spriteId].callback = sub_8176EE8;
-            gSprites[spriteId].anims = gUnknown_085E6FD0;
+                spriteId = intro_create_brendan_sprite(120, 46);
+                gTasks[taskIdA].data[TDA_PLAYER_CYCLIST] = spriteId;
+                gSprites[spriteId].callback = sub_8176EE8;
+                gSprites[spriteId].anims = gUnknown_085E6FD0;
 
-            spriteId = intro_create_may_sprite(272, 46);
-            gTasks[taskIdA].data[TDA_RIVAL_CYCLIST] = spriteId;
-            gSprites[spriteId].callback = sub_8176F90;
-            gSprites[spriteId].anims = gUnknown_085E7010;
+                spriteId = intro_create_may_sprite(272, 46);
+                gTasks[taskIdA].data[TDA_RIVAL_CYCLIST] = spriteId;
+                gSprites[spriteId].callback = sub_8176F90;
+                gSprites[spriteId].anims = gUnknown_085E7010;
+                break;
+            case GENDER_F:
+                LoadCompressedSpriteSheet(gUnknown_085F5344);
+                LoadCompressedSpriteSheet(gIntro2BrendanSpriteSheet);
+                LoadCompressedSpriteSheet(gUnknown_085F5354);
+                LoadSpritePalettes(gUnknown_085F5384);
+
+                spriteId = intro_create_may_sprite(120, 46);
+                gTasks[taskIdA].data[TDA_PLAYER_CYCLIST] = spriteId;
+                gSprites[spriteId].callback = sub_8176EE8;
+                gSprites[spriteId].anims = gUnknown_085E6FD0;
+
+                spriteId = intro_create_treekid_sprite(272, 46);
+                gTasks[taskIdA].data[TDA_RIVAL_CYCLIST] = spriteId;
+                gSprites[spriteId].callback = sub_8176F90;
+                gSprites[spriteId].anims = gUnknown_085E7010;
+                break;
+            case GENDER_N:
+                LoadCompressedSpriteSheet(gUnknown_085F5334);
+                LoadCompressedSpriteSheet(gIntro2TreekidSpriteSheet);
+                LoadCompressedSpriteSheet(gUnknown_085F5354);
+                LoadSpritePalettes(gUnknown_085F5384);
+
+                spriteId = intro_create_treekid_sprite(120, 46);
+                gTasks[taskIdA].data[TDA_PLAYER_CYCLIST] = spriteId;
+                gSprites[spriteId].callback = sub_8176EE8;
+                gSprites[spriteId].anims = gUnknown_085E6FD0;
+
+                spriteId = intro_create_brendan_sprite(272, 46);
+                gTasks[taskIdA].data[TDA_RIVAL_CYCLIST] = spriteId;
+                gSprites[spriteId].callback = sub_8176F90;
+                gSprites[spriteId].anims = gUnknown_085E7010;
+                break;
         }
-        else
-        {
-            LoadCompressedSpriteSheet(gUnknown_085F5344);
-            LoadCompressedSpriteSheet(gUnknown_085F53AC);
-            LoadCompressedSpriteSheet(gUnknown_085F5354);
-            LoadSpritePalettes(gUnknown_085F5384);
-
-            spriteId = intro_create_may_sprite(120, 46);
-            gTasks[taskIdA].data[TDA_PLAYER_CYCLIST] = spriteId;
-            gSprites[spriteId].callback = sub_8176EE8;
-            gSprites[spriteId].anims = gUnknown_085E6FD0;
-
-            spriteId = intro_create_brendan_sprite(272, 46);
-            gTasks[taskIdA].data[TDA_RIVAL_CYCLIST] = spriteId;
-            gSprites[spriteId].callback = sub_8176F90;
-            gSprites[spriteId].anims = gUnknown_085E7010;
-        };
         gMain.state += 1;
         break;
     case 3:

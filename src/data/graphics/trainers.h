@@ -224,6 +224,9 @@ const u32 gTrainerPalette_MagmaAdmin[] = INCBIN_U32("graphics/trainers/palettes/
 const u32 gTrainerFrontPic_Wally[] = INCBIN_U32("graphics/trainers/front_pics/elvis_front_pic.4bpp.lz");
 const u32 gTrainerPalette_Wally[] = INCBIN_U32("graphics/trainers/palettes/elvis.gbapal.lz");
 
+const u32 gTrainerFrontPic_Treekid[] = INCBIN_U32("graphics/trainers/front_pics/treekid_front_pic.4bpp.lz");
+const u32 gTrainerPalette_Treekid[] = INCBIN_U32("graphics/trainers/palettes/treekid.gbapal.lz");
+
 const u32 gTrainerFrontPic_Brendan[] = INCBIN_U32("graphics/trainers/front_pics/brendan_front_pic.4bpp.lz");
 const u32 gTrainerPalette_Brendan[] = INCBIN_U32("graphics/trainers/palettes/brendan.gbapal.lz");
 
@@ -321,6 +324,7 @@ const u32 gTrainerPalette_Alien[] = INCBIN_U32("graphics/trainers/palettes/alien
 
 const u8 gTrainerBackPic_Brendan[] = INCBIN_U8("graphics/trainers/back_pics/brendan_back_pic.4bpp");
 const u8 gTrainerBackPic_May[] = INCBIN_U8("graphics/trainers/back_pics/may_back_pic.4bpp");
+const u8 gTrainerBackPic_Treekid[] = INCBIN_U8("graphics/trainers/back_pics/treekid_back_pic.4bpp");
 const u8 gTrainerBackPic_Red[] = INCBIN_U8("graphics/trainers/back_pics/red_back_pic.4bpp");
 const u8 gTrainerBackPic_Leaf[] = INCBIN_U8("graphics/trainers/back_pics/leaf_back_pic.4bpp");
 const u8 gTrainerBackPic_RubySapphireBrendan[] = INCBIN_U8("graphics/trainers/back_pics/ruby_sapphire_brendan_back_pic.4bpp");
@@ -331,4 +335,5 @@ const u8 gTrainerBackPic_Steven[] = INCBIN_U8("graphics/trainers/back_pics/steve
 const u32 gTrainerBackPicPalette_Red[] = INCBIN_U32("graphics/trainers/palettes/red_back_pic.gbapal.lz");
 const u32 gTrainerBackPicPalette_Leaf[] = INCBIN_U32("graphics/trainers/palettes/leaf_back_pic.gbapal.lz");
 const u32 gTrainerBackPicPalette_Brendan[] = INCBIN_U32("graphics/trainers/palettes/brendan_back.gbapal.lz");
+const u32 gTrainerBackPicPalette_Treekid[] = INCBIN_U32("graphics/trainers/palettes/treekid_back.gbapal.lz");
 const u32 gTrainerBackPicPalette_May[] = INCBIN_U32("graphics/trainers/palettes/may_back.gbapal.lz");

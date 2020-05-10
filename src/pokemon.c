@@ -2022,6 +2022,15 @@ static const struct SpriteTemplate gSpriteTemplateTable_TrainerBackSprites[] =
         .affineAnims = gUnknown_082FF618,
         .callback = sub_8039BB4,
     },
+    {
+        .tileTag = 0xFFFF,
+        .paletteTag = 0,
+        .oam = &gOamData_831ACB0,
+        .anims = NULL,
+        .images = gTrainerBackPicTable_Treekid,
+        .affineAnims = gUnknown_082FF618,
+        .callback = sub_8039BB4,
+    },
 };
 
 static const u8 sSecretBaseFacilityClasses[2][5] =
@@ -6740,10 +6749,13 @@ u16 FacilityClassToPicIndex(u16 facilityClass)
 
 u16 PlayerGenderToFrontTrainerPicId(u8 playerGender)
 {
-    if (playerGender != MALE)
-        return FacilityClassToPicIndex(FACILITY_CLASS_MAY);
-    else
-        return FacilityClassToPicIndex(FACILITY_CLASS_BRENDAN);
+    switch (playerGender)
+    {
+        default:
+        case GENDER_M: return FacilityClassToPicIndex(FACILITY_CLASS_BRENDAN);
+        case GENDER_F: return FacilityClassToPicIndex(FACILITY_CLASS_MAY);
+        case GENDER_N: return FacilityClassToPicIndex(FACILITY_CLASS_TREEKID);
+    }
 }
 
 void HandleSetPokedexFlag(u16 nationalNum, u8 caseId, u32 personality)

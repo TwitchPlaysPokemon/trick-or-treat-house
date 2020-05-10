@@ -235,9 +235,9 @@ void sub_80F8AFC(void)
             if (version == VERSION_RUBY || version == VERSION_SAPPHIRE)
             {
                 if (gLinkPlayers[i].gender == MALE)
-                    gContestMons[i].trainerGfxId = EVENT_OBJ_GFX_LINK_RS_BRENDAN;
+                    gContestMons[i].trainerGfxId = EVENT_OBJ_GFX_BRENDAN_NORMAL;
                 else
-                    gContestMons[i].trainerGfxId = EVENT_OBJ_GFX_LINK_RS_MAY;
+                    gContestMons[i].trainerGfxId = EVENT_OBJ_GFX_MAY_NORMAL;
             }
         }
 

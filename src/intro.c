@@ -1085,7 +1085,7 @@ void CB2_InitCopyrightScreenAfterTitleScreen(void)
 static void Task_IntroLoadPart1Graphics(u8 taskId)
 {
     SetVBlankCallback(NULL);
-    gIntroCharacterGender = Random() & 1;
+    gIntroCharacterGender = Random() % 3;
     intro_reset_and_hide_bgs();
     SetGpuReg(REG_OFFSET_BG3VOFS, 0);
     SetGpuReg(REG_OFFSET_BG2VOFS, 0x50);
@@ -1264,10 +1264,12 @@ static void Task_IntroStartBikeRide(u8 taskId)
 {
     u8 spriteId;
 
-    if (gIntroCharacterGender == 0)
-        LoadCompressedSpriteSheet(gIntro2BrendanSpriteSheet);
-    else
-        LoadCompressedSpriteSheet(gIntro2MaySpriteSheet);
+    switch (gIntroCharacterGender) {
+        default:
+        case GENDER_M: LoadCompressedSpriteSheet(gIntro2BrendanSpriteSheet); break;
+        case GENDER_F: LoadCompressedSpriteSheet(gIntro2MaySpriteSheet); break;
+        case GENDER_N: LoadCompressedSpriteSheet(gIntro2TreekidSpriteSheet); break;
+    }
 
     LoadCompressedSpriteSheet(gIntro2BicycleSpriteSheet);
     LoadCompressedSpriteSheet(gIntro2FlygonSpriteSheet);
@@ -1282,10 +1284,12 @@ static void Task_IntroStartBikeRide(u8 taskId)
     CreateSprite(&gUnknown_085E4BDC, 0x110, 0x80, 0);
     CreateSprite(&gUnknown_085E4BA4, 0x120, 0x6E, 1);
 
-    if (gIntroCharacterGender == 0)
-        spriteId = intro_create_brendan_sprite(0x110, 100);
-    else
-        spriteId = intro_create_may_sprite(0x110, 100);
+    switch (gIntroCharacterGender) {
+        default:
+        case GENDER_M: spriteId = intro_create_brendan_sprite(0x110, 100); break;
+        case GENDER_F: spriteId = intro_create_may_sprite(0x110, 100); break;
+        case GENDER_N: spriteId = intro_create_treekid_sprite(0x110, 100); break;
+    }
 
     gSprites[spriteId].callback = SpriteCB_IntroGraphicsBicycle;
     gSprites[spriteId].anims = gIntroBicycleAnimationCommands;

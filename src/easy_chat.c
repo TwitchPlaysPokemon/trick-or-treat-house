@@ -4708,7 +4708,7 @@ static void sub_811E7F8(void)
 
 static void sub_811E828(void)
 {
-    int graphicsId;
+    int graphicsId, graphicsId2;
     u8 spriteId;
 
     switch (GetDisplayedPersonType())
@@ -4735,9 +4735,15 @@ static void sub_811E828(void)
         gSprites[spriteId].oam.priority = 0;
         StartSpriteAnim(&gSprites[spriteId], 2);
     }
-
+    switch (gSaveBlock2Ptr->playerGender) {
+        default:
+        case GENDER_M: graphicsId2 = EVENT_OBJ_GFX_BRENDAN_NORMAL; break;
+        case GENDER_F: graphicsId2 = EVENT_OBJ_GFX_MAY_NORMAL; break;
+        case GENDER_N: graphicsId2 = EVENT_OBJ_GFX_TREEKID_NORMAL; break;
+    }
+    
     spriteId = AddPseudoEventObject(
-        gSaveBlock2Ptr->playerGender == MALE ? EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL : EVENT_OBJ_GFX_RIVAL_MAY_NORMAL,
+        graphicsId2,
         SpriteCallbackDummy,
         52,
         40,

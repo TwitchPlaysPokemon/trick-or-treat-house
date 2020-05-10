@@ -2635,10 +2635,12 @@ void sub_80DA8C8(u8 partyIndex)
         sub_80DF9D4(name);
     }
     memcpy(gContestMons[gContestPlayerMonIndex].trainerName, name, 8);
-    if (gSaveBlock2Ptr->playerGender == MALE)
-        gContestMons[gContestPlayerMonIndex].trainerGfxId = EVENT_OBJ_GFX_LINK_BRENDAN;
-    else
-        gContestMons[gContestPlayerMonIndex].trainerGfxId = EVENT_OBJ_GFX_LINK_MAY;
+    switch (gSaveBlock2Ptr->playerGender) {
+        default:
+        case GENDER_M: gContestMons[gContestPlayerMonIndex].trainerGfxId = EVENT_OBJ_GFX_BRENDAN_NORMAL; break;
+        case GENDER_F: gContestMons[gContestPlayerMonIndex].trainerGfxId = EVENT_OBJ_GFX_MAY_NORMAL; break;
+        case GENDER_N: gContestMons[gContestPlayerMonIndex].trainerGfxId = EVENT_OBJ_GFX_TREEKID_NORMAL; break;
+    }
     gContestMons[gContestPlayerMonIndex].aiChecks = 0;
     gContestMons[gContestPlayerMonIndex].unk2C[0] = 0;
     gContestMons[gContestPlayerMonIndex].species = GetMonData(&gPlayerParty[partyIndex], MON_DATA_SPECIES);
