@@ -3,12 +3,31 @@ mapscripts TrickHouseRestroom_MapScripts {
 		if (!flag(FLAG_SYS_POKEMON_GET)) {
 			// Position the breeder for cutscene
 			setobjectxyperm(4, 8, 5)
+			setvar(VAR_TEMP_A, 1)
+		} else {
+			// Hide all pokeballs
+			setflag(FLAG_TEMP_1)
+			setflag(FLAG_TEMP_2)
+			setflag(FLAG_TEMP_3)
+			setflag(FLAG_TEMP_4)
+			setflag(FLAG_TEMP_5)
+			setflag(FLAG_TEMP_6)
+			setflag(FLAG_TEMP_7)
+			setflag(FLAG_TEMP_8)
+			setflag(FLAG_TEMP_9)
+			setflag(FLAG_TEMP_A)
+			setflag(FLAG_TEMP_B)
+			setflag(FLAG_TEMP_C)
 		}
 	}
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_TEMP_A, 1: TrickHouseRestroom_EventScript_IntroCutscene
+	]
 }
 
 script TrickHouseRestroom_EventScript_IntroCutscene {
 	lockall
+	setvar(VAR_TEMP_A, 2)
 	// Walk in
 	applymovement(EVENT_OBJ_ID_PLAYER, TrickHouseRestroom_Movement_IntroPlayer1)
 	waitmovement(EVENT_OBJ_ID_PLAYER)
@@ -21,8 +40,8 @@ script TrickHouseRestroom_EventScript_IntroCutscene {
 	applymovement(17, Common_Movement_WalkInPlaceRight)
 	message("This young man will get you some\n"
 			"{POKEMON} you can borrow for tonight.\p"
-			"If you fall in love with one, he'll\n"
-			"be here afterwards with adoption papers.\p$")
+			"If you fall in love with one, he'll be\n"
+			"here afterwards with adoption papers.\p$")
 	waitmessage
 	// Turn back
 	applymovement(EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceDown)
@@ -52,7 +71,7 @@ movement TrickHouseRestroom_Movement_IntroPlayer1 {
 	walk_up * 3
 }
 movement TrickHouseRestroom_Movement_IntroBreeder2 {
-	delay_16 * 2
+	delay_16 * 3
 	walk_right
 	walk_up * 2
 	walk_right * 7
@@ -69,14 +88,15 @@ movement TrickHouseRestroom_Movement_IntroLady2 {
 	walk_in_place_fastest_right
 	delay_16 * 2
 	walk_down * 4
+	set_invisible
 }
 
 movement TrickHouseRestroom_Movement_IntroBreeder3 {
 	walk_up
-	walk_left * 3
+	walk_left * 2
 	walk_down
-	walk_left * 3
-	walk_fastest_left
+	walk_left * 4
+	walk_in_place_fastest_right
 }
 
 // ----------------------------------------------------
@@ -113,9 +133,15 @@ script TrickHouseRestroom_EventScript_Renamer {
 // ----------------------------------------------------
 
 script TrickHouseRestroom_EventScript_Pokeball {
-	copyvar(VAR_0x8000, VAR_LAST_TALKED)
+	copyvar(VAR_0x8000, VAR_LAST_TALKED) // Use the local event id to index which starters
 	subvar(VAR_0x8000, 5)
 	
-	callnative(GetOrGenerateStarterPokemon)
+	// Sets VAR_0x8001 to the selected mon species, also buffers mon name to STR_VAR_1
+	callnative(GetOrGenerateStarterPokemon) 
+	drawmonpic (VAR_0x8001, 8, 4)
+	
+	
+	
+	erasemonpic
 }
 

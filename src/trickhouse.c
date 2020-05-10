@@ -436,22 +436,63 @@ void RemoveExtraPokemon(struct ScriptContext *ctx)
 
 ///////////////////////////////////////////////////////////////////////////////
 
-const u16 starterPokemon[][3] = {
-	{ SPECIES_GROVYLE, SPECIES_BAYLEEF, SPECIES_BULBASAUR },
+static const u16 starterPokemon[][3] = {
+	{ SPECIES_GROVYLE, SPECIES_BAYLEEF, SPECIES_IVYSAUR },
 	{ SPECIES_COMBUSKEN, SPECIES_QUILAVA, SPECIES_CHARMELEON },
 	{ SPECIES_MARSHTOMP, SPECIES_CROCONAW, SPECIES_WARTORTLE },
 	
 	{ SPECIES_ELECTRIKE, SPECIES_JOLTEON, SPECIES_FLAAFFY },
-	{ SPECIES_RATICATE, SPECIES_SPINDA, SPECIES_STANTLER },
+	{ SPECIES_RATICATE, SPECIES_ZIGZAGOON, SPECIES_SENTRET },
 	{ SPECIES_KIRLIA, SPECIES_ESPEON, SPECIES_SLOWPOKE },
 	
 	{ SPECIES_ABSOL, SPECIES_POOCHYENA, SPECIES_UMBREON },
 	{ SPECIES_SPINARAK, SPECIES_NINJASK, SPECIES_PARAS },
-	{ SPECIES_ZANGOOSE, SPECIES_TEDDIURSA, SPECIES_ZANGOOSE },
+	{ SPECIES_TEDDIURSA, SPECIES_ZANGOOSE, SPECIES_SPINDA },
 	
 	{ SPECIES_SCYTHER, SPECIES_HERACROSS, SPECIES_VOLBEAT },
 	{ SPECIES_SWABLU, SPECIES_HOOTHOOT, SPECIES_SPEAROW },
 	{ SPECIES_SNORUNT, SPECIES_SWINUB, SPECIES_SEEL },
+};
+
+static const u8 *const starterNames[][3] = {
+	{ gText_StarterNameLeafy,  gText_DefaultNameZane,   gText_DefaultNameNickey  }, 
+	{ gText_StarterNameBlitz,  gText_DefaultNameLex,    gText_StarterNameEthan  }, 
+	{ gText_StarterNameSquirt, gText_DefaultNameRiver,  gText_DefaultNameEaston  }, 
+	
+	{ gText_StarterNameZipper, gText_StarterNameSparky, gText_DefaultNameZane  }, 
+	{ gText_StarterNameAce,    gText_DefaultNameAvery,  gText_DefaultNameParker }, 
+	{ gText_StarterNameKamon,  gText_DefaultNameTiara,  gText_DefaultNameCasey }, 
+	
+	{ gText_StarterNameLycan,  gText_StarterNameOrphen, gText_DefaultNameKenny }, 
+	{ gText_StarterNameBugsy,  gText_StarterNameKetut,  gText_DefaultNameKris }, 
+	{ gText_StarterNameTeddy,  gText_DefaultNameTeru,   gText_DefaultNameAlex }, 
+	
+	{ gText_DefaultNameParker, gText_StarterNameHardy,  gText_DefaultNameCharlie }, 
+	{ gText_DefaultNameGale,   gText_StarterNameKenya,  gText_DefaultNameSkylar }, 
+	{ gText_StarterNameBilli,  gText_DefaultNameSawyer, gText_StarterNameRin }, 
+};
+
+static const u8 *const previousOtNames[] = {
+	gText_DefaultNameJoel,
+	gText_DefaultNameAdele,
+	gText_DefaultNameLennie,
+	gText_DefaultNameNatalie,
+	gText_DefaultNameConley,
+	gText_DefaultNameCrystal,
+	gText_DefaultNameJustin,
+	gText_DefaultNameMadelyn,
+	gText_DefaultNameHugo,
+	gText_DefaultNameAmelia,
+	gText_DefaultNameDiego,
+	gText_DefaultNameHanna,
+	gText_DefaultNameDuncan,
+	gText_DefaultNameOctavia,
+	gText_DefaultNameJoey,
+	gText_DefaultNameCileste,
+	gText_DefaultNameLogan,
+	gText_DefaultNameEdna,
+	gText_DefaultNameEvan,
+	gText_DefaultNameSierra,
 };
 
 
@@ -460,18 +501,36 @@ const u16 starterPokemon[][3] = {
 void GetOrGenerateStarterPokemon(struct ScriptContext *ctx)
 {
 	struct BoxPokemon* mon;
+	const u8* nick;
 	u16 slot = gSpecialVar_0x8000;
 	u16 speciesId = SPECIES_UNOWN;
 	
 	if (gSpecialVar_0x8000 >= 12) return;
 	
-	speciesId = starterPokemon[slot][Random() % 3];
-	
 	mon = GetBoxedMonPtr(0, slot);
-	if (GetBoxMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_NONE) {
-		CreateBoxMon(mon, speciesId, 30, 32, 0, 0, 0, 0);
+	if (GetBoxMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_NONE)
+	{
+		if (FlagGet(FLAG_SYS_RANDOM_DISABLED)) {
+			speciesId = starterPokemon[slot][0];
+			nick = starterNames[slot][0];
+		} else {
+			speciesId = starterPokemon[slot][Random() % 3];
+			switch (Random() % 4) {
+				case 0: nick = NULL; break;
+				case 1: nick = starterNames[slot][0]; break;
+				case 2: nick = starterNames[slot][1]; break;
+				case 3: nick = starterNames[slot][2]; break;
+			}
+		}
+		
+		CreateBoxMon(mon, speciesId, 30, 32, 0, 0, OT_ID_PRESET, Random32());
+		SetBoxMonData(mon, MON_DATA_OT_NAME, previousOtNames[Random() % ARRAY_COUNT(previousOtNames)]);
+		if (nick != NULL) SetBoxMonData(mon, MON_DATA_NICKNAME, nick);
 	}
 	gSpecialVar_0x8001 = GetBoxMonData(mon, MON_DATA_SPECIES, NULL);
+	
+	GetBoxMonData(mon, MON_DATA_NICKNAME, gStringVar1);
+    StringGetEnd10(gStringVar1);
 }
 
 

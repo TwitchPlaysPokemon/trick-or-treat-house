@@ -152,7 +152,7 @@ script TrickHouseCorridor_TriggerScript_PokemonTable {
 	msgbox ("Welcome.\p"
 			"The TRICK MASTER recommends that\n"
 			"trainers have a three-{POKEMON} party\l"
-			"on them for the coming puzzles.\p"
+			"on them for the upcoming puzzles.\p"
 			"I see that you do not have that many.\p"
 			"It's alright, we have a breeder here\n"
 			"tonight with some rescue {POKEMON}.\p"
@@ -241,7 +241,9 @@ movement TrickHouseCorridor_Movement_PokemonTableStop_Lady {
 	set_invisible
 }
 movement TrickHouseCorridor_Movement_PokemonTableStop_Player {
-	delay_16 * 2
+	delay_16
+	walk_in_place_fastest_up
+	delay_16
 	walk_up * 3
 	set_invisible
 }
