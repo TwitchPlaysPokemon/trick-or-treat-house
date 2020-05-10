@@ -14,6 +14,7 @@ const u8 gExpandedPlaceholder_Youngster[] = _("JOEY");
 const u8 gExpandedPlaceholder_Wally[] = _("WALLY");
 const u8 gExpandedPlaceholder_Link[] = _("JAMES");
 const u8 gExpandedPlaceholder_FairyGirl[] = _("IRENE");
+const u8 gExpandedPlaceholder_ToTRuleNo[] = _("Trick or Treating Rule {NO}");
 const u8 gProfBirchMatchCallName[] = _("PROF. BIRCH");
 const u8 gText_EggNickname[] = _("EGG");
 const u8 gText_MainMenuNewGame[] = _("NEW GAME");

@@ -54,8 +54,10 @@
 #define GAME_STAT_NUM_UNION_ROOM_BATTLES    50
 #define GAME_STAT_51                        51
 #define GAME_STAT_NUM_PUZZLES_COMPLETED     52
+#define GAME_STAT_SELECT_PRESSES            53
+#define GAME_STAT_RULES_DISCOVERED          54
 
-#define NUM_USED_GAME_STATS                 53
+#define NUM_USED_GAME_STATS                 55
 #define NUM_GAME_STATS                      64
 
 #endif // GUARD_CONSTANTS_GAME_STAT_H

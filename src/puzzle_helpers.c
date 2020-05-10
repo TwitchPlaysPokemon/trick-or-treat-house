@@ -16,6 +16,7 @@
 #include "script.h"
 #include "pokemon_storage_system.h"
 #include "event_object_movement.h"
+#include "overworld.h"
 #include "constants/maps.h"
 #include "constants/flags.h"
 #include "constants/metatile_labels.h"
@@ -39,6 +40,28 @@ void PrintData0(struct ScriptContext *ctx)
 void PrintData1(struct ScriptContext *ctx)
 {
 	ConvertIntToHexStringN(gStringVar1, ctx->data[1], STR_CONV_MODE_LEADING_ZEROS, 8);
+}
+
+extern u8* gSelect_RulesTable[];
+extern u8* gSelect_RulesTable_End[];
+void SetSelectVariables(struct ScriptContext *ctx)
+{
+	// Get the last rule discovered
+	int last = GetGameStat(GAME_STAT_RULES_DISCOVERED);
+	// Get the max rules discovered
+	int max = 4 + (2 * GetGameStat(GAME_STAT_NUM_PUZZLES_COMPLETED));
+	max = min(max, (gSelect_RulesTable_End - gSelect_RulesTable)/4);
+	
+	// If we haven't discovered some new rules, display the next undiscovered one
+	if (last < max) {
+		gSpecialVar_0x800B = last;
+		IncrementGameStat(GAME_STAT_RULES_DISCOVERED);
+	} 
+	// If we've discovered them all, select one at random to display
+	else {
+		gSpecialVar_0x800B = (Random() % max);
+	}
+	gSpecialVar_0x800A = GetGameStat(GAME_STAT_SELECT_PRESSES);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

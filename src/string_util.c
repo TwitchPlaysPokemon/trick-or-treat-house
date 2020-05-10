@@ -512,6 +512,12 @@ static const u8 *ExpandPlaceholder_FairyGirl(void)
     return gExpandedPlaceholder_FairyGirl;
 }
 
+extern const u8 gExpandedPlaceholder_ToTRuleNo[];
+static const u8 *ExpandPlaceholder_ToTRuleNo(void)
+{
+    return gExpandedPlaceholder_ToTRuleNo;
+}
+
 extern const u8 PuzzleCommon_Text_UntitledPuzzleName[];
 static const u8 *ExpandPlaceholder_PuzzleName(void)
 {
@@ -578,7 +584,7 @@ const u8 *GetExpandedPlaceholder(u32 id)
         ExpandPlaceholder_Wally,       // 09
         ExpandPlaceholder_Link,       // 0A
         ExpandPlaceholder_FairyGirl,
-        ExpandPlaceholder_Empty,
+        ExpandPlaceholder_ToTRuleNo,
         ExpandPlaceholder_Empty,
         ExpandPlaceholder_Empty,
         ExpandPlaceholder_Empty,       // 0F

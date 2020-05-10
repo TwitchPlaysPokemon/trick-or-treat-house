@@ -1833,9 +1833,6 @@ gUnknown_08272C1D:: @ 8272C1D
 gUnknown_08272C5F:: @ 8272C5F
 	.string "The sandstorm is vicious.\nIt's impossible to keep going.$"
 
-gText_SelectWithoutRegisteredItem:: @ 8272C98
-	.string "An item in the BAG can be\nregistered to SELECT for easy use.$"
-
 gUnknown_08272CD5:: @ 8272CD5
 	.string "There's an e-mail from POKéMON TRAINER\nSCHOOL.\p… … … … … …\pA POKéMON may learn up to four moves.\pA TRAINER's expertise is tested on the\nmove sets chosen for POKéMON.\p… … … … … …$"
 
@@ -1941,10 +1938,8 @@ gText_UnusualWeatherEnded_Rain:: @ 8273656
 gText_UnusualWeatherEnded_Sun:: @ 8273684
 	.string "The intense sunshine appears to\nhave subsided…$"
 
-EventScript_SelectWithoutRegisteredItem:: @ 82736B3
-	msgbox gText_SelectWithoutRegisteredItem, MSGBOX_SIGN
-	end
-
+	.include "data/scripts/select.inc"
+	
 EventScript_Poison:: @ 82736BC
 	lockall
 	special ExecuteWhiteOut

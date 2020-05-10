@@ -11,16 +11,25 @@ script TrickHouseRestroom_EventScript_IntroCutscene {
 	lockall
 	// Walk in
 	applymovement(EVENT_OBJ_ID_PLAYER, TrickHouseRestroom_Movement_IntroPlayer1)
-	applymovement(17, TrickHouseRestroom_Movement_IntroLady1)
-	waitmovement(17)
-	// 
-	msgbox ("This young man will get you some\n"
+	waitmovement(EVENT_OBJ_ID_PLAYER)
+	message("This room is called the Den.\p"
+			"You can come here to heal your party,\n"
+			"teach them moves, or change their names.\p$")
+	waitmessage
+	// Turn
+	applymovement(EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceRight)
+	applymovement(17, Common_Movement_WalkInPlaceRight)
+	message("This young man will get you some\n"
 			"{POKEMON} you can borrow for tonight.\p"
 			"If you fall in love with one, he'll\n"
-			"be here afterwards with adoption papers.\p"
-			"I'll be waiting outside.$")
+			"be here afterwards with adoption papers.\p$")
+	waitmessage
+	// Turn back
+	applymovement(EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceDown)
+	applymovement(17, Common_Movement_WalkInPlaceDown)
+	msgbox ("I'll be waiting outside.$")
 	closemessage
-	//
+	// Walk inside
 	applymovement(4, TrickHouseRestroom_Movement_IntroBreeder2)
 	applymovement(17, TrickHouseRestroom_Movement_IntroLady2)
 	applymovement(EVENT_OBJ_ID_PLAYER, TrickHouseRestroom_Movement_IntroPlayer2)
@@ -30,6 +39,7 @@ script TrickHouseRestroom_EventScript_IntroCutscene {
 			"for a good home.\p"
 			"See if any three of them strike\n"
 			"your fancy. I'll be waiting over here.$")
+	closemessage
 	//
 	applymovement(4, TrickHouseRestroom_Movement_IntroBreeder3)
 	waitmovement(4)
@@ -38,34 +48,30 @@ script TrickHouseRestroom_EventScript_IntroCutscene {
 	releaseall
 }
 
-movement TrickHouseRestroom_Movement_IntroLady1 {
-	walk_up * 2
-	walk_right * 3
-	walk_up
-	walk_fastest_down
-}
 movement TrickHouseRestroom_Movement_IntroPlayer1 {
 	walk_up * 3
-	walk_right * 3
 }
-
+movement TrickHouseRestroom_Movement_IntroPlayer1 {
+	
+}
 movement TrickHouseRestroom_Movement_IntroBreeder2 {
+	delay_16 * 2
 	walk_right
 	walk_up * 2
 	walk_right * 7
-	walk_fastest_down
+	walk_in_place_fastest_down
 }
 movement TrickHouseRestroom_Movement_IntroPlayer2 {
-	walk_right * 2
+	walk_right * 4
 	walk_up * 2
 	walk_right * 7
-	walk_fastest_down
+	walk_in_place_fastest_down
 }
 movement TrickHouseRestroom_Movement_IntroLady2 {
 	delay_16
-	walk_fastest_right
-	delay_16
-	walk_left * 4
+	walk_in_place_fastest_right
+	delay_16 * 2
+	walk_down * 4
 }
 
 movement TrickHouseRestroom_Movement_IntroBreeder3 {

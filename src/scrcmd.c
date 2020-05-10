@@ -1760,6 +1760,9 @@ bool8 ScrCmd_bufferstring(struct ScriptContext *ctx)
 {
     u8 stringVarIndex = ScriptReadByte(ctx);
     const u8 *text = (u8 *)ScriptReadWord(ctx);
+    
+    if (text == NULL)
+        text = (const u8 *)ctx->data[0];
 
     StringCopy(sScriptStringVars[stringVarIndex], text);
     return FALSE;
