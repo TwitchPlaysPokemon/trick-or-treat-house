@@ -28,9 +28,11 @@ mapscripts TrickHouseEntrance_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		checkplayergender
 		if (var(VAR_RESULT) == MALE) {
-			setvar (VAR_OBJ_GFX_ID_A, EVENT_OBJ_GFX_RIVAL_MAY_NORMAL)
+			// setvar (VAR_OBJ_GFX_ID_A, EVENT_OBJ_GFX_RIVAL_MAY_NORMAL)
+			setvar (VAR_OBJ_GFX_ID_A, EVENT_OBJ_GFX_MAY_NORMAL)
 		} else {
-			setvar (VAR_OBJ_GFX_ID_A, EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL)
+			// setvar (VAR_OBJ_GFX_ID_A, EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL)
+			setvar (VAR_OBJ_GFX_ID_A, EVENT_OBJ_GFX_BRENDAN_NORMAL)
 		}
 	}
 }

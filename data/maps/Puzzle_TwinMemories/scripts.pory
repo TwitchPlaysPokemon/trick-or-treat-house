@@ -96,7 +96,7 @@ Puzzle_TwinMemories_ConfigCount::
 script(local) Puzzle_TwinMemories_SetupScript {
 	// First time setup only
 	if (flag(FLAG_PUZZLE_HAS_STARTED) == FALSE) {
-		if (flag(FLAG_SYS_DONT_RANDOMIZE_PUZZLES) == TRUE) {
+		if (flag(FLAG_SYS_RANDOM_DISABLED) == TRUE) {
 			setvar(VAR_CONFIG_LEFT, 0)
 			setvar(VAR_CONFIG_RIGHT, 1)
 		} else {

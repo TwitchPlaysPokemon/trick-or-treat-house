@@ -66,6 +66,10 @@
 #define MALE 0
 #define FEMALE 1
 
+#define GENDER_M 0
+#define GENDER_F 1
+#define GENDER_N 2
+
 #define OPTIONS_BUTTON_MODE_NORMAL 0
 #define OPTIONS_BUTTON_MODE_LR 1
 #define OPTIONS_BUTTON_MODE_L_EQUALS_A 2

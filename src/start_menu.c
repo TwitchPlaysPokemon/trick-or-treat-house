@@ -46,6 +46,7 @@
 #include "rom_8011DC0.h"
 #include "union_room.h"
 #include "constants/rgb.h"
+#include "constants/maps.h"
 
 // Menu actions
 enum
@@ -61,8 +62,9 @@ enum
     MENU_ACTION_RETIRE_SAFARI,
     MENU_ACTION_PLAYER_LINK,
     MENU_ACTION_REST_FRONTIER,
-    MENU_ACTION_RETIRE_FRONTIER,
-    MENU_ACTION_PYRAMID_BAG
+    MENU_ACTION_ESCAPE,
+    // MENU_ACTION_RETIRE_FRONTIER,
+    // MENU_ACTION_PYRAMID_BAG
 };
 
 // Save status
@@ -101,6 +103,7 @@ static bool8 StartMenuOptionCallback(void);
 static bool8 StartMenuExitCallback(void);
 static bool8 StartMenuSafariZoneRetireCallback(void);
 static bool8 StartMenuLinkModePlayerNameCallback(void);
+static bool8 StartMenuEscapeCallback(void);
 // static bool8 StartMenuBattlePyramidRetireCallback(void);
 // static bool8 StartMenuBattlePyramidBagCallback(void);
 
@@ -171,6 +174,7 @@ static const struct MenuAction sStartMenuItems[] =
     {gText_MenuRetire, {.u8_void = StartMenuSafariZoneRetireCallback}},
     {gText_MenuPlayer, {.u8_void = StartMenuLinkModePlayerNameCallback}},
     {gText_MenuRest, {.u8_void = StartMenuSaveCallback}},
+    {gText_MenuEscape, {.u8_void = StartMenuEscapeCallback}},
     // {gText_MenuRetire, {.u8_void = StartMenuBattlePyramidRetireCallback}},
     // {gText_MenuBag, {.u8_void = StartMenuBattlePyramidBagCallback}}
 };
@@ -294,7 +298,14 @@ static void BuildNormalStartMenu(void)
     }
 
     AddStartMenuAction(MENU_ACTION_PLAYER);
-    AddStartMenuAction(MENU_ACTION_SAVE);
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(TRICK_HOUSE_EXT))
+    {
+        AddStartMenuAction(MENU_ACTION_SAVE);
+    }
+    else
+    {
+        AddStartMenuAction(MENU_ACTION_ESCAPE);
+    }
     AddStartMenuAction(MENU_ACTION_OPTION);
     AddStartMenuAction(MENU_ACTION_EXIT);
 }
@@ -351,13 +362,13 @@ static void BuildBattlePikeStartMenu(void)
 
 static void BuildBattlePyramidStartMenu(void)
 {
-    AddStartMenuAction(MENU_ACTION_POKEMON);
-    AddStartMenuAction(MENU_ACTION_PYRAMID_BAG);
-    AddStartMenuAction(MENU_ACTION_PLAYER);
-    AddStartMenuAction(MENU_ACTION_REST_FRONTIER);
-    AddStartMenuAction(MENU_ACTION_RETIRE_FRONTIER);
-    AddStartMenuAction(MENU_ACTION_OPTION);
-    AddStartMenuAction(MENU_ACTION_EXIT);
+    // AddStartMenuAction(MENU_ACTION_POKEMON);
+    // AddStartMenuAction(MENU_ACTION_PYRAMID_BAG);
+    // AddStartMenuAction(MENU_ACTION_PLAYER);
+    // AddStartMenuAction(MENU_ACTION_REST_FRONTIER);
+    // AddStartMenuAction(MENU_ACTION_RETIRE_FRONTIER);
+    // AddStartMenuAction(MENU_ACTION_OPTION);
+    // AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
 static void BuildMultiBattleRoomStartMenu(void)
@@ -580,8 +591,8 @@ static bool8 HandleStartMenuInput(void)
 
         if (gMenuCallback != StartMenuSaveCallback
             && gMenuCallback != StartMenuExitCallback
-            && gMenuCallback != StartMenuSafariZoneRetireCallback)
-            // && gMenuCallback != StartMenuBattlePyramidRetireCallback)
+            && gMenuCallback != StartMenuSafariZoneRetireCallback
+            && gMenuCallback != StartMenuEscapeCallback)
         {
            FadeScreen(1, 0);
         }
@@ -736,6 +747,34 @@ static bool8 StartMenuLinkModePlayerNameCallback(void)
     }
 
     return FALSE;
+}
+
+// References to things in item_use.c
+void SetUpItemUseOnFieldCallback(u8 taskId);
+extern void(*sItemUseOnFieldCallback)(u8 taskId);
+
+static void re_escape_field(u8 taskId)
+{
+    Overworld_ResetStateAfterDigEscRope();
+    ResetInitialPlayerAvatarState();
+    StartEscapeRopeFieldEffect();
+    DestroyTask(taskId);
+}
+
+static void ItemUseFromStartMenu_EscapeRope(u8 taskId)
+{
+    sItemUseOnFieldCallback = re_escape_field;
+    gTasks[taskId].data[3] = 1; // dont fade to black! Not in a submenu.
+    SetUpItemUseOnFieldCallback(taskId);
+}
+
+static bool8 StartMenuEscapeCallback(void)
+{
+    RemoveExtraStartMenuWindows();
+    HideStartMenu();
+    CreateTask(ItemUseFromStartMenu_EscapeRope, 0xFF);
+
+    return TRUE;
 }
 
 // static bool8 StartMenuBattlePyramidRetireCallback(void)

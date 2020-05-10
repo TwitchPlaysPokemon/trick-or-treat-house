@@ -44,8 +44,9 @@ static const u32 gIntro2NightTiles[] = INCBIN_U32("graphics/intro/intro2_night.4
 static const u16 gIntro2BrendanPalette[] = INCBIN_U16("graphics/intro/intro2_brendan.gbapal");
 static const u32 gIntro2BrendanTiles[] = INCBIN_U32("graphics/intro/intro2_brendan.4bpp.lz");
 static const u16 gIntro2MayPalette[] = INCBIN_U16("graphics/intro/intro2_may.gbapal");
-static const u16 gUnknown_085F3490[0xF0] = {0};
 static const u32 gIntro2MayTiles[] = INCBIN_U32("graphics/intro/intro2_may.4bpp.lz");
+static const u16 gIntro2TreekidPalette[] = INCBIN_U16("graphics/intro/intro2_treekid.gbapal");
+static const u32 gIntro2TreekidTiles[] = INCBIN_U32("graphics/intro/intro2_treekid.4bpp.lz");
 static const u32 gIntro2BicycleTiles[] = INCBIN_U32("graphics/intro/intro2_bicycle.4bpp.lz");
 static const u16 gIntro2LatiosPalette[] = INCBIN_U16("graphics/intro/intro2_latios.gbapal");
 static const u32 gIntro2LatiosTiles[] = INCBIN_U32("graphics/intro/intro2_latios.4bpp.lz");
@@ -465,6 +466,17 @@ static const struct SpriteTemplate gUnknown_085F5204 =
     .callback = nullsub_65
 };
 
+static const struct SpriteTemplate gUnknown_085F5204a =
+{
+    .tileTag = 1006,
+    .paletteTag = 1006,
+    .oam = &gOamData_85F51CC,
+    .anims = gUnknown_085F51E8,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = nullsub_65
+};
+
 static const struct OamData gUnknown_085F521C =
 {
     .y = 160,
@@ -502,6 +514,17 @@ static const struct SpriteTemplate gUnknown_085F5254 =
 {
     .tileTag = 1001,
     .paletteTag = 1003,
+    .oam = &gUnknown_085F521C,
+    .anims = gUnknown_085F5238,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = sub_817B7C4
+};
+
+static const struct SpriteTemplate gUnknown_085F5254a =
+{
+    .tileTag = 1001,
+    .paletteTag = 1006,
     .oam = &gUnknown_085F521C,
     .anims = gUnknown_085F5238,
     .images = NULL,
@@ -557,25 +580,38 @@ static const struct SpriteTemplate gUnknown_085F52A4 =
     .callback = nullsub_66
 };
 
-const struct CompressedSpriteSheet gIntro2BrendanSpriteSheet[] =
-{
-    {
-        .data = gIntro2BrendanNoTurnGfx,
-        .size = 0x2000,
-        .tag = 1002
-    },
-    {}
-};
+// const struct CompressedSpriteSheet gIntro2BrendanSpriteSheet[] =
+// {
+//     {
+//         // .data = gIntro2BrendanNoTurnGfx,
+//         .data = gIntro2BrendanTiles,
+//         .size = 0x2000,
+//         .tag = 1002
+//     },
+//     {}
+// };
 
-const struct CompressedSpriteSheet gIntro2MaySpriteSheet[] =
-{
-    {
-        .data = gIntro2MayNoTurnGfx,
-        .size = 0x2000,
-        .tag = 1003
-    },
-    {}
-};
+// const struct CompressedSpriteSheet gIntro2MaySpriteSheet[] =
+// {
+//     {
+//         // .data = gIntro2MayNoTurnGfx,
+//         .data = gIntro2MayTiles,
+//         .size = 0x2000,
+//         .tag = 1003
+//     },
+//     {}
+// };
+
+// const struct CompressedSpriteSheet gIntro2TreekidSpriteSheet[] =
+// {
+//     {
+//         // .data = gIntro2TreekidNoTurnGfx,
+//         .data = gIntro2TreekidTiles,
+//         .size = 0x2000,
+//         .tag = 1003
+//     },
+//     {}
+// };
 
 const struct CompressedSpriteSheet gIntro2BicycleSpriteSheet[] =
 {
@@ -613,6 +649,7 @@ const struct SpritePalette gIntroBikeAndFlygonPalette[] =
     { .data = gIntro2BrendanNoTurnPal, .tag = 1003 },
     { .data = gIntro2FlygonPal,        .tag = 1004 },
     { .data = gIntro2FlygonPal,        .tag = 1005 },
+    { .data = gIntro2BrendanNoTurnPal, .tag = 1006 }, //?
     {}
 };
 
@@ -632,6 +669,16 @@ const struct CompressedSpriteSheet gUnknown_085F5344[] =
         .data = gIntro2MayTiles,
         .size = 0x3800,
         .tag = 1003
+    },
+    {}
+};
+
+const struct CompressedSpriteSheet gUnknown_085F5344a[] =
+{
+    {
+        .data = gIntro2TreekidTiles,
+        .size = 0x3800,
+        .tag = 1006
     },
     {}
 };
@@ -672,10 +719,11 @@ const struct SpritePalette gUnknown_085F5384[] =
     { .data = gIntro2MayPalette,     .tag = 1003 },
     { .data = gIntro2LatiosPalette,  .tag = 1004 },
     { .data = gIntro2LatiasPalette,  .tag = 1005 },
+    { .data = gIntro2TreekidPalette, .tag = 1006 },
     {}
 };
 
-const struct CompressedSpriteSheet gUnknown_085F53AC[] =
+const struct CompressedSpriteSheet gIntro2BrendanSpriteSheet[] =
 {
     {
         .data = gIntro2BrendanTiles,
@@ -685,12 +733,22 @@ const struct CompressedSpriteSheet gUnknown_085F53AC[] =
     {}
 };
 
-const struct CompressedSpriteSheet gUnknown_085F53BC[] =
+const struct CompressedSpriteSheet gIntro2MaySpriteSheet[] =
 {
     {
         .data = gIntro2MayTiles,
         .size = 0x2000,
         .tag = 1003
+    },
+    {}
+};
+
+const struct CompressedSpriteSheet gIntro2TreekidSpriteSheet[] =
+{
+    {
+        .data = gIntro2TreekidTiles,
+        .size = 0x2000,
+        .tag = 1006
     },
     {}
 };
@@ -1079,6 +1137,14 @@ u8 intro_create_may_sprite(s16 a, s16 b)
 {
     u8 sprite = CreateSprite(&gUnknown_085F5204, a, b, 2);
     u8 may = CreateSprite(&gUnknown_085F5254, a, b + 8, 3);
+    gSprites[may].data[0] = sprite;
+    return sprite;
+}
+
+u8 intro_create_treekid_sprite(s16 a, s16 b)
+{
+    u8 sprite = CreateSprite(&gUnknown_085F5204a, a, b, 2);
+    u8 may = CreateSprite(&gUnknown_085F5254a, a, b + 8, 3);
     gSprites[may].data[0] = sprite;
     return sprite;
 }

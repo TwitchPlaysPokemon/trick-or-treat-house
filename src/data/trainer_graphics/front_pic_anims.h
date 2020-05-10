@@ -77,6 +77,7 @@ const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
     [TRAINER_PIC_WALLY] = sAnims_GenericStill,
     [TRAINER_PIC_BRENDAN] = sAnims_GenericStill,
     [TRAINER_PIC_MAY] = sAnims_GenericStill,
+    [TRAINER_PIC_TREEKID] = sAnims_GenericStill,
     [TRAINER_PIC_BUG_CATCHER] = sAnims_GenericStill,
     [TRAINER_PIC_POKEMON_RANGER_M] = sAnims_GenericStill,
     [TRAINER_PIC_POKEMON_RANGER_F] = sAnims_GenericStill,

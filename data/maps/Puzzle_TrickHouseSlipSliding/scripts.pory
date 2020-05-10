@@ -7,7 +7,7 @@ Puzzle_TrickHouseSlipSliding_MapScripts::
 	.byte 0
 
 Puzzle_TrickHouseSlipSliding_Name:
-	.string "Hello World$"
+	.string "Slip 'n Spin$"   @ We need a better name for this puzzle...
 Puzzle_TrickHouseSlipSliding_Author:
 	.string "Marco$"
 Puzzle_TrickHouseSlipSliding_Adjective:

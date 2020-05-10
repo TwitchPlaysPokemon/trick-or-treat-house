@@ -12,6 +12,7 @@ const u32 gIntro2ManectricGfx[] = INCBIN_U32("graphics/intro/intro2_manectric.4b
 const u32 gIntro2FlygonGfx[] = INCBIN_U32("graphics/intro/intro2_flygon.4bpp.lz");
 const u32 gIntro2BrendanNoTurnGfx[] = INCBIN_U32("graphics/intro/intro2_brendan_noturn.4bpp.lz");
 const u32 gIntro2MayNoTurnGfx[] = INCBIN_U32("graphics/intro/intro2_may_noturn.4bpp.lz");
+// const u32 gIntro2TreekidNoTurnGfx[] = INCBIN_U32("graphics/intro/intro2_treekid_noturn.4bpp.lz");
 
 const u32 gIntro3GroudonGfx[] = INCBIN_U32("graphics/intro/intro3_groudon.8bpp.lz");
 const u32 gIntro3GroudonTilemap[] = INCBIN_U32("graphics/intro/intro3_groudon.bin.lz");

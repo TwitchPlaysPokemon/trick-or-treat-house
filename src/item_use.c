@@ -85,7 +85,7 @@ bool8 sub_80FDE2C(void);
 void ItemUseOutOfBattle_CannotUse(u8 taskId);
 
 // EWRAM variables
-EWRAM_DATA static void(*gUnknown_0203A0F4)(u8 taskId) = NULL;
+EWRAM_DATA void(*sItemUseOnFieldCallback)(u8 taskId) = NULL;
 
 // .rodata
 
@@ -133,7 +133,7 @@ void SetUpItemUseOnFieldCallback(u8 taskId)
         SetUpItemUseCallback(taskId);
     }
     else
-        gUnknown_0203A0F4(taskId);
+        sItemUseOnFieldCallback(taskId);
 }
 
 void MapPostLoadHook_UseItem(void)
@@ -145,7 +145,7 @@ void MapPostLoadHook_UseItem(void)
 void Task_CallItemUseOnFieldCallback(u8 taskId)
 {
     if (IsWeatherNotFadingIn() == 1)
-        gUnknown_0203A0F4(taskId);
+        sItemUseOnFieldCallback(taskId);
 }
 
 void DisplayCannotUseItemMessage(u8 taskId, bool8 isUsingRegisteredKeyItemOnField, const u8 *str)
@@ -217,7 +217,7 @@ void ItemUseOutOfBattle_Bike(u8 taskId)
     {
         if (Overworld_IsBikingAllowed() == TRUE && IsBikingDisallowedByPlayer() == 0)
         {
-            gUnknown_0203A0F4 = ItemUseOnFieldCB_Bike;
+            sItemUseOnFieldCallback = ItemUseOnFieldCB_Bike;
             SetUpItemUseOnFieldCallback(taskId);
         }
         else
@@ -270,7 +270,7 @@ void ItemUseOutOfBattle_Rod(u8 taskId)
 {
     if (CanFish() == TRUE)
     {
-        gUnknown_0203A0F4 = ItemUseOnFieldCB_Rod;
+        sItemUseOnFieldCallback = ItemUseOnFieldCB_Rod;
         SetUpItemUseOnFieldCallback(taskId);
     }
     else
@@ -286,7 +286,7 @@ void ItemUseOnFieldCB_Rod(u8 taskId)
 void ItemUseOutOfBattle_Itemfinder(u8 var)
 {
     IncrementGameStat(0x27);
-    gUnknown_0203A0F4 = ItemUseOnFieldCB_Itemfinder;
+    sItemUseOnFieldCallback = ItemUseOnFieldCB_Itemfinder;
     SetUpItemUseOnFieldCallback(var);
 }
 
@@ -655,7 +655,7 @@ void sub_80FDD10(u8 taskId)
 {
     if (IsPlayerFacingEmptyBerryTreePatch() == TRUE)
     {
-        gUnknown_0203A0F4 = sub_80FDD74;
+        sItemUseOnFieldCallback = sub_80FDD74;
         gFieldCallback = MapPostLoadHook_UseItem;
         gBagMenu->mainCallback2 = CB2_ReturnToField;
         unknown_ItemMenu_Confirm(taskId);
@@ -678,12 +678,12 @@ void ItemUseOutOfBattle_WailmerPail(u8 taskId)
 {
     if (sub_80FDE2C() == TRUE)
     {
-        gUnknown_0203A0F4 = sub_80FDE7C;
+        sItemUseOnFieldCallback = sub_80FDE7C;
         SetUpItemUseOnFieldCallback(taskId);
     }
     else if (TryToWaterBerryTree() == TRUE)
     {
-        gUnknown_0203A0F4 = sub_80FDE08;
+        sItemUseOnFieldCallback = sub_80FDE08;
         SetUpItemUseOnFieldCallback(taskId);
     }
     else
@@ -908,7 +908,7 @@ void ItemUseOutOfBattle_EscapeRope(u8 taskId)
 {
     if (CanUseEscapeRopeOnCurrMap() == TRUE)
     {
-        gUnknown_0203A0F4 = re_escape_rope;
+        sItemUseOnFieldCallback = re_escape_rope;
         SetUpItemUseOnFieldCallback(taskId);
     }
     else
