@@ -533,6 +533,14 @@ void GetOrGenerateStarterPokemon(struct ScriptContext *ctx)
     StringGetEnd10(gStringVar1);
 }
 
+void GivePlayerMonFromBox(struct ScriptContext *ctx)
+{
+	u16 slot = gSpecialVar_0x8000;
+	
+	CalculatePlayerPartyCount();
+	GetMonFromPCSlot(&gPlayerParty[gPlayerPartyCount], 0, slot);
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////
 

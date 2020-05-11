@@ -789,6 +789,16 @@ const struct MenuAction MultichoiceList_113[] =
     {gText_Exit, NULL},
 };
 
+extern const u8 PokemonAdoption_Choose[];
+extern const u8 PokemonAdoption_Status[];
+extern const u8 PokemonAdoption_Exit[];
+const struct MenuAction MultichoiceList_MonAdoption[] =
+{
+    {PokemonAdoption_Choose, NULL},
+    {PokemonAdoption_Status, NULL},
+    {PokemonAdoption_Exit, NULL},
+};
+
 const struct MenuAction MultichoiceList_001[] =
 {
     {gText_Exit, NULL},
@@ -916,6 +926,7 @@ const struct MultichoiceListStruct gMultichoiceLists[] =
     {MultichoiceList_111, ARRAY_COUNT(MultichoiceList_111)},
     {MultichoiceList_112, ARRAY_COUNT(MultichoiceList_112)},
     {MultichoiceList_113, ARRAY_COUNT(MultichoiceList_113)},
+    {MultichoiceList_MonAdoption, ARRAY_COUNT(MultichoiceList_MonAdoption)}, //114
 };
 
 const u8 *const gUnknown_0858BAF0[] =
