@@ -30,6 +30,8 @@
 #include "start_menu.h"
 #include "load_save.h"
 #include "international_string_util.h"
+#include "pokemon_summary_screen.h"
+#include "field_screen_effect.h"
 #include "constants/map_scripts.h"
 #include "constants/maps.h"
 #include "constants/map_groups.h"
@@ -435,6 +437,7 @@ void RemoveExtraPokemon(struct ScriptContext *ctx)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// Starter Pokemon
 
 static const u16 starterPokemon[][3] = {
 	{ SPECIES_GROVYLE, SPECIES_BAYLEEF, SPECIES_IVYSAUR },
@@ -495,37 +498,47 @@ static const u8 *const previousOtNames[] = {
 	gText_DefaultNameSierra,
 };
 
+// Last box holds starters
+#define STARTER_BOX 13
 
-// In: gSpecialVar_0x8000 = Slot to get
+void GenerateStarterMon(u16 slot, struct BoxPokemon* mon)
+{
+	const u8* nick;
+	u16 speciesId = SPECIES_UNOWN;
+	bool8 obedient = TRUE;
+	
+	if (FlagGet(FLAG_SYS_RANDOM_DISABLED)) {
+		speciesId = starterPokemon[slot][0];
+		nick = starterNames[slot][0];
+	} else {
+		speciesId = starterPokemon[slot][Random() % 3];
+		switch (Random() % 4) {
+			case 0: nick = NULL; break;
+			case 1: nick = starterNames[slot][0]; break;
+			case 2: nick = starterNames[slot][1]; break;
+			case 3: nick = starterNames[slot][2]; break;
+		}
+	}
+	
+	CreateBoxMon(mon, speciesId, 30, 32, 0, 0, OT_ID_PRESET, Random32());
+	SetBoxMonData(mon, MON_DATA_OT_NAME, previousOtNames[Random() % ARRAY_COUNT(previousOtNames)]);
+	SetBoxMonData(mon, MON_DATA_OBEDIENCE, &obedient);
+	if (nick != NULL) SetBoxMonData(mon, MON_DATA_NICKNAME, nick);
+}
+
+// In: gSpecialVar_MonBoxPos = Slot to get
 // Out: gSpecialVar_0x8001 = Species of Pokemon in this slot
 void GetOrGenerateStarterPokemon(struct ScriptContext *ctx)
 {
 	struct BoxPokemon* mon;
-	const u8* nick;
-	u16 slot = gSpecialVar_0x8000;
-	u16 speciesId = SPECIES_UNOWN;
+	u16 slot = gSpecialVar_MonBoxPos;
 	
-	if (gSpecialVar_0x8000 >= 12) return;
+	if (gSpecialVar_MonBoxPos >= 12) return;
 	
-	mon = GetBoxedMonPtr(0, slot);
+	mon = GetBoxedMonPtr(STARTER_BOX, slot);
 	if (GetBoxMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_NONE)
 	{
-		if (FlagGet(FLAG_SYS_RANDOM_DISABLED)) {
-			speciesId = starterPokemon[slot][0];
-			nick = starterNames[slot][0];
-		} else {
-			speciesId = starterPokemon[slot][Random() % 3];
-			switch (Random() % 4) {
-				case 0: nick = NULL; break;
-				case 1: nick = starterNames[slot][0]; break;
-				case 2: nick = starterNames[slot][1]; break;
-				case 3: nick = starterNames[slot][2]; break;
-			}
-		}
-		
-		CreateBoxMon(mon, speciesId, 30, 32, 0, 0, OT_ID_PRESET, Random32());
-		SetBoxMonData(mon, MON_DATA_OT_NAME, previousOtNames[Random() % ARRAY_COUNT(previousOtNames)]);
-		if (nick != NULL) SetBoxMonData(mon, MON_DATA_NICKNAME, nick);
+		GenerateStarterMon(slot, mon);
 	}
 	gSpecialVar_0x8001 = GetBoxMonData(mon, MON_DATA_SPECIES, NULL);
 	
@@ -533,35 +546,56 @@ void GetOrGenerateStarterPokemon(struct ScriptContext *ctx)
     StringGetEnd10(gStringVar1);
 }
 
-void GivePlayerMonFromBox(struct ScriptContext *ctx)
+void ShowStarterMonSummaryScreen(struct ScriptContext *ctx)
 {
-	u16 slot = gSpecialVar_0x8000;
+	u16 slot = gSpecialVar_MonBoxPos;
+	struct BoxPokemon* mon = GetBoxedMonPtr(STARTER_BOX, slot);
+	if (gSpecialVar_MonBoxPos >= 12) return;
+	
+	ShowPokemonSummaryScreen(PSS_MODE_BOX, mon, 0, 0, CB2_ReturnToField);
+	gFieldCallback = FieldCallback_ReturnToEventScript2;
+}
+
+void GivePlayerStarterMon(struct ScriptContext *ctx)
+{
+	u16 slot = gSpecialVar_MonBoxPos;
+	if (gSpecialVar_MonBoxPos >= 12) return;
 	
 	CalculatePlayerPartyCount();
-	GetMonFromPCSlot(&gPlayerParty[gPlayerPartyCount], 0, slot);
+	GetMonFromPCSlot(&gPlayerParty[gPlayerPartyCount], STARTER_BOX, slot);
+	CompactPartySlots();
+	CalculatePlayerPartyCount();
 }
 
+void CleanUpStarterMon(struct ScriptContext *ctx)
+{
+	static const u8 addressSlots[] = { 1, 4, 7, 10, 0, 3, 6, 9, 2, 5, 8, 11 };
+	u8 start = 0, i = 0, destSlot = IN_BOX_COUNT - 9;
+	
+	// Generate any mons that haven't been already and weren't chosen
+	for (i = 0; i < 12; i++) {
+		struct BoxPokemon* mon = GetBoxedMonPtr(STARTER_BOX, i);
+		if (GetBoxMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_NONE) continue;
+		if (FlagGet(FLAG_TEMP_1+i)) continue;
+		GenerateStarterMon(i, mon);
+	}
+	
+	// Move the remaining pokemon to the end of the box, 
+	// we'll try to use them for rival fights later.
+	if (!FlagGet(FLAG_SYS_RANDOM_DISABLED)) {
+		start = Random() % 12;
+	}
+	for (i = 0; i < 12; i++) {
+		u8 srcSlot = addressSlots[(start + i) % 12];
+		struct BoxPokemon* mon = GetBoxedMonPtr(STARTER_BOX, srcSlot);
+		if (GetBoxMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_NONE) continue;
+		SetBoxMonAt(STARTER_BOX, destSlot, mon);
+		ZeroBoxMonData(mon);
+		destSlot++;
+	}
+}
 
 ///////////////////////////////////////////////////////////////////////////////
-
-
-void SelectInitialRentalParty(struct ScriptContext *ctx)
-{
-	GenerateRentalMons();
-	ZeroPlayerPartyMons();
-	DoBattleFactorySelectScreen();
-	FlagSet(FLAG_SYS_POKEMON_GET);
-}
-
-void SwapRentalParty(struct ScriptContext *ctx)
-{
-	DoBattleFactorySwapScreen();
-}
-
-void RandomizeRentalMons(struct ScriptContext *ctx)
-{
-	GenerateRentalMons();
-}
 
 void SetContinueGameWarp(s8 mapGroup, s8 mapNum, s8 warpId, s8 x, s8 y);
 void SaveForCredits(struct ScriptContext *ctx)
@@ -569,74 +603,6 @@ void SaveForCredits(struct ScriptContext *ctx)
 	SetContinueGameWarpStatus();
 	SetContinueGameWarp(MAP_GROUP(TRICK_HOUSE_ENTRANCE), MAP_NUM(TRICK_HOUSE_ENTRANCE), -1, 7, 4);
 	ForceSaveGame();
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-// extern const struct BattleFrontierTrainer *gFacilityTrainers;
-extern const struct FacilityMon *gFacilityTrainerMons;
-static void GenerateRentalMons(void)
-{
-    s32 i, j;
-    u8 firstMonId;
-    u16 monSetId;
-    u16 currSpecies;
-    u16 species[PARTY_SIZE];
-    u16 monIds[PARTY_SIZE];
-    u16 heldItems[PARTY_SIZE];
-
-    firstMonId = 0;
-    // gFacilityTrainers = gSlateportBattleTentTrainers;
-    for (i = 0; i < PARTY_SIZE; i++)
-    {
-        species[i] = 0;
-        monIds[i] = 0;
-        heldItems[i] = 0;
-    }
-    gFacilityTrainerMons = gBattleFrontierMons;
-    currSpecies = SPECIES_NONE;
-    i = 0;
-    while (i != PARTY_SIZE)
-    {
-		monSetId = min(880, (70 + (10 * VarGet(VAR_CURRENT_PUZZLE))));
-        monSetId = Random() % monSetId;
-		
-        // Cannot have two pokemon of the same species.
-        for (j = firstMonId; j < firstMonId + i; j++)
-        {
-            u16 monId = monIds[j];
-            if (monIds[j] == monSetId)
-                break;
-            if (species[j] == gFacilityTrainerMons[monSetId].species)
-            {
-                if (currSpecies == SPECIES_NONE)
-                    currSpecies = gFacilityTrainerMons[monSetId].species;
-                else
-                    break;
-            }
-        }
-        if (j != i + firstMonId)
-            continue;
-
-        // Cannot have two same held items.
-        for (j = firstMonId; j < i + firstMonId; j++)
-        {
-            if (heldItems[j] != 0 && heldItems[j] == gBattleFrontierHeldItems[gFacilityTrainerMons[monSetId].itemTableId])
-            {
-                if (gFacilityTrainerMons[monSetId].species == currSpecies)
-                    currSpecies = SPECIES_NONE;
-                break;
-            }
-        }
-        if (j != i + firstMonId)
-            continue;
-
-        gSaveBlock2Ptr->frontier.rentalMons[i].monId = monSetId;
-        species[i] = gFacilityTrainerMons[monSetId].species;
-        heldItems[i] = gBattleFrontierHeldItems[gFacilityTrainerMons[monSetId].itemTableId];
-        monIds[i] = monSetId;
-        i++;
-    }
 }
 
 ///////////////////////////////////////////////////////////////////////////////

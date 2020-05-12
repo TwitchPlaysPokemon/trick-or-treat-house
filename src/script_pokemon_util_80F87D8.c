@@ -378,7 +378,7 @@ static void sub_80F8EE8(u8 taskId)
         task->data[0]++;
         break;
     case 1:
-        task->data[5] = CreateWindowFromRect(10, 3, 8, 8);
+        task->data[5] = CreateWindowFromRect(10, 3, 8, 8, 100);
         SetStandardWindowBorderStyle(task->data[5], 1);
         task->data[0]++;
         break;

@@ -10,7 +10,7 @@ bool8 ScriptMenu_MultichoiceGrid(u8 left, u8 top, u8 multichoiceId, u8 a4, u8 co
 bool8 ScriptMenu_ShowPokemonPic(u16 var1, u8 var2, u8 var3);
 bool8 (*ScriptMenu_GetPicboxWaitFunc(void))(void);
 int convert_pixel_width_to_tile_width(int);
-u8 CreateWindowFromRect(u8, u8, u8, u8);
+u8 CreateWindowFromRect(u8, u8, u8, u8, u16);
 void ClearToTransparentAndRemoveWindow(u8);
 int display_text_and_get_width(const u8*, int);
 int sub_80E2D5C(int arg0, int tileWidth);

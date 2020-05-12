@@ -2076,14 +2076,14 @@ static void sub_80C7B14(void)
 
 static void sub_80C7B80(void)
 {
-    if (++gUnknown_02039D04->curBox >= TOTAL_BOXES_COUNT)
+    if (++gUnknown_02039D04->curBox >= BOXES_COUNT)
         gUnknown_02039D04->curBox = 0;
     sub_80C7BE4();
 }
 
 static void sub_80C7BB4(void)
 {
-    gUnknown_02039D04->curBox = (gUnknown_02039D04->curBox == 0 ? TOTAL_BOXES_COUNT - 1 : gUnknown_02039D04->curBox - 1);
+    gUnknown_02039D04->curBox = (gUnknown_02039D04->curBox == 0 ? BOXES_COUNT - 1 : gUnknown_02039D04->curBox - 1);
     sub_80C7BE4();
 }
 
@@ -2456,7 +2456,7 @@ static void Cb_MainPSS(u8 taskId)
         case 9:
             PlaySE(SE_SELECT);
             sPSSData->newCurrBoxId = StorageGetCurrentBox() + 1;
-            if (sPSSData->newCurrBoxId >= TOTAL_BOXES_COUNT)
+            if (sPSSData->newCurrBoxId >= BOXES_COUNT)
                 sPSSData->newCurrBoxId = 0;
             if (sPSSData->boxOption != BOX_OPTION_MOVE_ITEMS)
             {
@@ -2473,7 +2473,7 @@ static void Cb_MainPSS(u8 taskId)
             PlaySE(SE_SELECT);
             sPSSData->newCurrBoxId = StorageGetCurrentBox() - 1;
             if (sPSSData->newCurrBoxId < 0)
-                sPSSData->newCurrBoxId = TOTAL_BOXES_COUNT - 1;
+                sPSSData->newCurrBoxId = BOXES_COUNT - 1;
             if (sPSSData->boxOption != BOX_OPTION_MOVE_ITEMS)
             {
                 SetUpScrollToBox(sPSSData->newCurrBoxId);
@@ -5333,11 +5333,11 @@ static s8 sub_80CC644(u8 boxId)
     for (i = 0; currentBox != boxId; i++)
     {
         currentBox++;
-        if (currentBox >= TOTAL_BOXES_COUNT)
+        if (currentBox >= BOXES_COUNT)
             currentBox = 0;
     }
 
-    return (i < TOTAL_BOXES_COUNT / 2) ? 1 : -1;
+    return (i < BOXES_COUNT / 2) ? 1 : -1;
 }
 
 static void SetWallpaperForCurrentBox(u8 wallpaperId)
@@ -6528,7 +6528,7 @@ static bool32 AtLeastThreeUsableMons(void)
     if (count >= 3)
         return TRUE;
 
-    for (i = 0; i < TOTAL_BOXES_COUNT; i++)
+    for (i = 0; i < BOXES_COUNT; i++)
     {
         for (j = 0; j < IN_BOX_COUNT; j++)
         {
@@ -8416,7 +8416,7 @@ static bool8 sub_80CFA84(void)
     }
 
     SetMenuText(8);
-    SetMenuText(7);
+    // SetMenuText(7);
     SetMenuText(0);
     return TRUE;
 }
@@ -8664,14 +8664,14 @@ static void InitMenu(void)
 
 static const u8 *const gUnknown_0857BA80[] =
 {
-    gPCText_Cancel,
+    gPCText_Cancel, //0
     gPCText_Store,
     gPCText_Withdraw,
     gPCText_Move,
     gPCText_Shift,
     gPCText_Place,
     gPCText_Summary,
-    gPCText_Release,
+    gPCText_Release, //7
     gPCText_Mark,
     gPCText_Jump,
     gPCText_Wallpaper,
@@ -10289,7 +10289,7 @@ bool8 CheckFreePokemonStorageSpace(void)
 {
     s32 i, j;
 
-    for (i = 0; i < TOTAL_BOXES_COUNT; i++)
+    for (i = 0; i < BOXES_COUNT; i++)
     {
         for (j = 0; j < IN_BOX_COUNT; j++)
         {
@@ -10303,7 +10303,7 @@ bool8 CheckFreePokemonStorageSpace(void)
 
 bool32 CheckBoxMonSanityAt(u32 boxId, u32 boxPosition)
 {
-    if (boxId < TOTAL_BOXES_COUNT
+    if (boxId < BOXES_COUNT
         && boxPosition < IN_BOX_COUNT
         && GetBoxMonData(&gPokemonStoragePtr->boxes[boxId][boxPosition], MON_DATA_SANITY_HAS_SPECIES)
         && !GetBoxMonData(&gPokemonStoragePtr->boxes[boxId][boxPosition], MON_DATA_SANITY_IS_EGG)
@@ -10318,7 +10318,7 @@ u32 CountStorageNonEggMons(void)
     s32 i, j;
     u32 count = 0;
 
-    for (i = 0; i < TOTAL_BOXES_COUNT; i++)
+    for (i = 0; i < BOXES_COUNT; i++)
     {
         for (j = 0; j < IN_BOX_COUNT; j++)
         {
@@ -10336,7 +10336,7 @@ u32 CountAllStorageMons(void)
     s32 i, j;
     u32 count = 0;
 
-    for (i = 0; i < TOTAL_BOXES_COUNT; i++)
+    for (i = 0; i < BOXES_COUNT; i++)
     {
         for (j = 0; j < IN_BOX_COUNT; j++)
         {
@@ -10354,7 +10354,7 @@ bool32 AnyStorageMonWithMove(u16 moveId)
     u16 moves[] = {moveId, MOVES_COUNT};
     s32 i, j;
 
-    for (i = 0; i < TOTAL_BOXES_COUNT; i++)
+    for (i = 0; i < BOXES_COUNT; i++)
     {
         for (j = 0; j < IN_BOX_COUNT; j++)
         {

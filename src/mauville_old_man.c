@@ -1155,7 +1155,7 @@ static void PrintStoryList(void)
         if (curWidth > width)
             width = curWidth;
     }
-    sStorytellerWindowId = CreateWindowFromRect(0, 0, convert_pixel_width_to_tile_width(width), GetFreeStorySlot() * 2 + 2);
+    sStorytellerWindowId = CreateWindowFromRect(0, 0, convert_pixel_width_to_tile_width(width), GetFreeStorySlot() * 2 + 2, 100);
     SetStandardWindowBorderStyle(sStorytellerWindowId, 0);
     for (i = 0; i < 4; i++)
     {

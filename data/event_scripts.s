@@ -972,6 +972,12 @@ EventScript_271D89:: @ 8271D89
 	release
 	end
 
+EventScript_PC_DisabledAccess::
+	lockall
+	msgbox Text_CantBootPC, MSGBOX_DEFAULT
+	releaseall
+	end
+
 EventScript_PC:: @ 8271D92
 	lockall
 	setvar VAR_0x8004, 0
@@ -1742,6 +1748,10 @@ Text_WouldYouLikeToMixRecords: @ 827260D
 
 Text_WouldNotLikeToMixRecords: @ 8272640
 	.string "We hope to see you again!$"
+
+Text_CantBootPC: @ 827265A
+	.string "There's an out-of-order sign\n"
+	.string "taped to the monitor of this PC.$"
 
 Text_BootUpPC: @ 827265A
 	.string "{PLAYER} booted up the PC.$"

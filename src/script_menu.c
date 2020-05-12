@@ -1112,7 +1112,7 @@ static void DrawMultichoiceMenu(u8 left, u8 top, u8 multichoiceId, u8 ignoreBPre
 
     newWidth = convert_pixel_width_to_tile_width(width);
     left = sub_80E2D5C(left, newWidth);
-    windowId = CreateWindowFromRect(left, top, newWidth, count * 2);
+    windowId = CreateWindowFromRect(left, top, newWidth, count * 2, 100);
     SetStandardWindowBorderStyle(windowId, 0);
     PrintMenuTable(windowId, count, actions);
     InitMenuInUpperLeftCornerPlaySoundWhenAPressed(windowId, count, cursorPos);
@@ -1282,7 +1282,7 @@ bool8 ScriptMenu_MultichoiceGrid(u8 left, u8 top, u8 multichoiceId, u8 ignoreBPr
         taskId = CreateTask(Task_HandleMultichoiceGridInput, 80);
 
         gTasks[taskId].tIgnoreBPress = ignoreBPress;
-        gTasks[taskId].tWindowId = CreateWindowFromRect(left, top, columnCount * newWidth, rowCount * 2);
+        gTasks[taskId].tWindowId = CreateWindowFromRect(left, top, columnCount * newWidth, rowCount * 2, 100);
         SetStandardWindowBorderStyle(gTasks[taskId].tWindowId, 0);
         PrintMenuGridTable(gTasks[taskId].tWindowId, newWidth * 8, columnCount, rowCount, gMultichoiceLists[multichoiceId].list);
         sub_8199944(gTasks[taskId].tWindowId, newWidth * 8, columnCount, rowCount, 0);
@@ -1356,7 +1356,7 @@ static void CreatePCMenu(void)
     if (FlagGet(FLAG_SYS_GAME_CLEAR)) // player has cleared game?
     {
         numChoices = 4;
-        windowId = CreateWindowFromRect(0, 0, width, 8);
+        windowId = CreateWindowFromRect(0, 0, width, 8, 100);
         SetStandardWindowBorderStyle(windowId, 0);
         AddTextPrinterParameterized(windowId, 1, gText_HallOfFame, y, 33, TEXT_SPEED_FF, NULL);
         AddTextPrinterParameterized(windowId, 1, gText_LogOff, y, 49, TEXT_SPEED_FF, NULL);
@@ -1364,7 +1364,7 @@ static void CreatePCMenu(void)
     else
     {
         numChoices = 3;
-        windowId = CreateWindowFromRect(0, 0, width, 6);
+        windowId = CreateWindowFromRect(0, 0, width, 6, 100);
         SetStandardWindowBorderStyle(windowId, 0);
         AddTextPrinterParameterized(windowId, 1, gText_LogOff, y, 33, TEXT_SPEED_FF, NULL);
     }
@@ -1521,7 +1521,7 @@ static void sub_80E2578(void)
         }
 
         width = convert_pixel_width_to_tile_width(pixelWidth);
-        windowId = CreateWindowFromRect(28 - width, (6 - count) * 2, width, count * 2);
+        windowId = CreateWindowFromRect(28 - width, (6 - count) * 2, width, count * 2, 100);
         SetStandardWindowBorderStyle(windowId, 0);
 
         for (temp = 0, i = 0; i < ARRAY_COUNT(gUnknown_0858BB80); i++)
@@ -1589,7 +1589,7 @@ bool8 ScriptMenu_ShowPokemonPic(u16 species, u8 x, u8 y)
     {
         spriteId = CreateMonSprite_PicBox(species, x * 8 + 40, y * 8 + 40, 0);
         taskId = CreateTask(Task_PokemonPicWindow, 0x50);
-        gTasks[taskId].tWindowId = CreateWindowFromRect(x, y, 8, 8);
+        gTasks[taskId].tWindowId = CreateWindowFromRect(x, y, 8, 8, 200);
         gTasks[taskId].tState = 0;
         gTasks[taskId].tMonSpecies = species;
         gTasks[taskId].tMonSpriteId = spriteId;
@@ -1626,9 +1626,9 @@ static bool8 IsPicboxClosed(void)
 #undef tWindowY
 #undef tWindowId
 
-u8 CreateWindowFromRect(u8 x, u8 y, u8 width, u8 height)
+u8 CreateWindowFromRect(u8 x, u8 y, u8 width, u8 height, u16 baseBlock)
 {
-    struct WindowTemplate template = CreateWindowTemplate(0, x + 1, y + 1, width, height, 15, 100);
+    struct WindowTemplate template = CreateWindowTemplate(0, x + 1, y + 1, width, height, 15, baseBlock);
     u8 windowId = AddWindow(&template);
     PutWindowTilemap(windowId);
     return windowId;
@@ -1685,7 +1685,7 @@ bool16 sp106_CreateStartMenu(void)
 
 static void CreateStartMenu(void)
 {
-    u8 windowId = CreateWindowFromRect(21, 0, 7, 18);
+    u8 windowId = CreateWindowFromRect(21, 0, 7, 18, 100);
     SetStandardWindowBorderStyle(windowId, 0);
     AddTextPrinterParameterized(windowId, 1, gText_MenuOptionPokedex, 8, 9, TEXT_SPEED_FF, NULL);
     AddTextPrinterParameterized(windowId, 1, gText_MenuOptionPokemon, 8, 25, TEXT_SPEED_FF, NULL);

@@ -414,8 +414,14 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
 
     if (MetatileBehavior_IsPlayerFacingTVScreen(metatileBehavior, direction) == TRUE)
         return EventScript_TV;
-    if (MetatileBehavior_IsPC(metatileBehavior) == TRUE)
+    if (MetatileBehavior_IsPC(metatileBehavior) == TRUE) {
+        if (gMain.debugMode) return EventScript_PC;
+#if TPP_MODE
+        return EventScript_PC_DisabledAccess;
+#else
         return EventScript_PC;
+#endif
+    }
     if (MetatileBehavior_IsTrickHousePuzzleDoor(metatileBehavior) == TRUE)
         return PuzzleCommon_EventScript_ExitDoorMetatile;
     if (MetatileBehavior_IsRegionMap(metatileBehavior) == TRUE)

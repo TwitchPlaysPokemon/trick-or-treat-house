@@ -40,7 +40,6 @@ PuzzleCommon_EventScript_IncrementPuzzle::
 	@ fallthrough
 PuzzleCommon_EventScript_ClearPuzzleData::
 	callnative ClearPuzzleEventData
-	callnative RandomizeRentalMons
 	return
 
 @ -----------------------------------------------------

@@ -531,6 +531,7 @@ extern const u8 EventScript_PlayerPCFemale[];
 extern const u8 EventScript_SecretBasePC[];
 extern const u8 EventScript_RecordMixingSecretBasePC[];
 extern const u8 EventScript_PC[];
+extern const u8 EventScript_PC_DisabledAccess[];
 extern const u8 EventScript_TestSignpostMsg[];
 extern const u8 EventScript_HiddenItemScript[];
 extern const u8 EventScript_2759F1[];
