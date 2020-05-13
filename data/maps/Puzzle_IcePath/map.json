@@ -1,0 +1,291 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": null,
+    "coord_events": [
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 12,
+            "y": 33
+        },
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 13,
+            "y": 43
+        },
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 4,
+            "y": 42
+        },
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 5,
+            "y": 37
+        },
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 57,
+            "y": 3
+        },
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 58,
+            "y": 14
+        },
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 51,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 50,
+            "y": 8
+        }
+    ],
+    "id": "MAP_PUZZLE_ICE_PATH",
+    "layout": "LAYOUT_PUZZLE_ICE_PATH",
+    "map_type": "MAP_TYPE_UNDERGROUND",
+    "music": "MUS_DAN02",
+    "name": "Puzzle_IcePath",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 36,
+            "y": 26
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 53,
+            "y": 9
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 54,
+            "y": 10
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 57,
+            "y": 8
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 63,
+            "y": 8
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 53,
+            "y": 47
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_NORTH",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 4,
+            "y": 18
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_STONE",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 33,
+            "y": 24
+        }
+    ],
+    "region_map_section": "MAPSEC_SHOAL_CAVE",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 4,
+            "y": 18
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 2,
+            "elevation": 0,
+            "x": 37,
+            "y": 4
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 1,
+            "elevation": 0,
+            "x": 49,
+            "y": 16
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 4,
+            "elevation": 0,
+            "x": 63,
+            "y": 4
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 3,
+            "elevation": 0,
+            "x": 18,
+            "y": 31
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 6,
+            "elevation": 0,
+            "x": 10,
+            "y": 41
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 5,
+            "elevation": 0,
+            "x": 50,
+            "y": 46
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 8,
+            "elevation": 0,
+            "x": 62,
+            "y": 46
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 7,
+            "elevation": 0,
+            "x": 32,
+            "y": 36
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 10,
+            "elevation": 0,
+            "x": 32,
+            "y": 48
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 9,
+            "elevation": 0,
+            "x": 55,
+            "y": 26
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 12,
+            "elevation": 0,
+            "x": 48,
+            "y": 22
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 11,
+            "elevation": 0,
+            "x": 37,
+            "y": 12
+        }
+    ],
+    "weather": "WEATHER_SUNNY"
+}

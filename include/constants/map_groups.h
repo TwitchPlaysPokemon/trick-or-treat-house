@@ -120,6 +120,7 @@
 #define MAP_PUZZLE_TRAINER_HILL3            (9 | (6 << 8))
 #define MAP_PUZZLE_TRAINER_HILL4            (10 | (6 << 8))
 #define MAP_PUZZLE_SUSPENDED_MAZE           (11 | (6 << 8))
+#define MAP_PUZZLE_ICE_PATH                 (12 | (6 << 8))
 
 // Map Group 7
 #define MAP_PUZZLE_LOST_WOODS1_ENTRANCE (0 | (7 << 8))

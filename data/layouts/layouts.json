@@ -1449,6 +1449,16 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Pacifidlog",
             "width": 45
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_IcePath/map.bin",
+            "border_filepath": "data/layouts/Puzzle_IcePath/border.bin",
+            "height": 52,
+            "id": "LAYOUT_PUZZLE_ICE_PATH",
+            "name": "Puzzle_IcePath_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Cave",
+            "width": 70
         }
     ],
     "layouts_table_label": "gMapLayouts"

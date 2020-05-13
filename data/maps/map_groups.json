@@ -129,7 +129,8 @@
         "Puzzle_TrainerHill2",
         "Puzzle_TrainerHill3",
         "Puzzle_TrainerHill4",
-        "Puzzle_SuspendedMaze"
+        "Puzzle_SuspendedMaze",
+        "Puzzle_IcePath"
     ],
     "MG_SingleMapPuzzles2019": [
         "Puzzle_TrickHouseCut",
