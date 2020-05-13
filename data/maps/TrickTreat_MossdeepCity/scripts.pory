@@ -177,7 +177,7 @@ script TrickTreat_MossdeepCity_Tricksters_Trigger {
 			"How can you battle…\n"
 			"With no {POKEMON}…?$")
 	# 
-	setflag (FLAG_PARTY_SWAP_DISABLED)
+	setflag (FLAG_PUZZLE_HAS_CHANGED_PARTY)
 	clearflag (FLAG_SYS_POKEMON_GET)
 	callnative (MossdeepStealPokemon)
 	setvar (VAR_TRICK_STOLEN_MON, 6) # Note: Order is important here
@@ -334,7 +334,7 @@ script TrickTreat_MossdeepCity_DenyDueToTricksters {
 }
 
 script TrickTreat_MossdeepCity_TricksterFinal {
-	clearflag (FLAG_PARTY_SWAP_DISABLED)
+	clearflag (FLAG_PUZZLE_HAS_CHANGED_PARTY)
 	setflag (FLAG_SYS_POKEMON_GET)
 	callnative (MossdeepStealPokemon)
 	return
@@ -431,7 +431,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Mart {
 
 script TrickTreat_MossdeepCity_CandyGiver_Leader {
 	lock
-	goto_if_set (FLAG_PARTY_SWAP_DISABLED, TrickTreat_MossdeepCity_DenyDueToTricksters)
+	goto_if_set (FLAG_PUZZLE_HAS_CHANGED_PARTY, TrickTreat_MossdeepCity_DenyDueToTricksters)
 	applymovement (4, Common_Movement_FacePlayer)
 	applymovement (5, Common_Movement_FacePlayer)
 	msgbox ("TATE: Trick or Treat!\n"
@@ -475,7 +475,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Leader {
 
 script TrickTreat_MossdeepCity_CandyGiver_Steven {
 	lock
-	goto_if_set (FLAG_PARTY_SWAP_DISABLED, TrickTreat_MossdeepCity_DenyDueToTricksters)
+	goto_if_set (FLAG_PUZZLE_HAS_CHANGED_PARTY, TrickTreat_MossdeepCity_DenyDueToTricksters)
 	call (TrickTreat_MossdeepCity_SetDoorGlowOff)
 	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
 	msgbox ("STEVEN: Trick or Treat!\p"
@@ -502,7 +502,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Steven {
 
 script TrickTreat_MossdeepCity_CandyGiver_Cook {
 	lock
-	goto_if_set (FLAG_PARTY_SWAP_DISABLED, TrickTreat_MossdeepCity_DenyDueToTricksters)
+	goto_if_set (FLAG_PUZZLE_HAS_CHANGED_PARTY, TrickTreat_MossdeepCity_DenyDueToTricksters)
 	call (TrickTreat_MossdeepCity_SetDoorGlowOff)
 	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
 	msgbox ("Boo! Hahahahahaha!\n"
@@ -516,7 +516,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Cook {
 
 script TrickTreat_MossdeepCity_CandyGiver_Lady {
 	lock
-	goto_if_set (FLAG_PARTY_SWAP_DISABLED, TrickTreat_MossdeepCity_DenyDueToTricksters)
+	goto_if_set (FLAG_PUZZLE_HAS_CHANGED_PARTY, TrickTreat_MossdeepCity_DenyDueToTricksters)
 	call (TrickTreat_MossdeepCity_SetDoorGlowOff)
 	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
 	msgbox ("Trick or Treat!\n"
@@ -530,7 +530,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Lady {
 
 script TrickTreat_MossdeepCity_CandyGiver_Expert {
 	lock
-	goto_if_set (FLAG_PARTY_SWAP_DISABLED, TrickTreat_MossdeepCity_DenyDueToTricksters)
+	goto_if_set (FLAG_PUZZLE_HAS_CHANGED_PARTY, TrickTreat_MossdeepCity_DenyDueToTricksters)
 	call (TrickTreat_MossdeepCity_SetDoorGlowOff)
 	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
 	msgbox ("Ha! Let's test your mettle!$")
@@ -547,7 +547,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Expert {
 
 script TrickTreat_MossdeepCity_CandyGiver_Camper {
 	lock
-	goto_if_set (FLAG_PARTY_SWAP_DISABLED, TrickTreat_MossdeepCity_DenyDueToTricksters)
+	goto_if_set (FLAG_PUZZLE_HAS_CHANGED_PARTY, TrickTreat_MossdeepCity_DenyDueToTricksters)
 	call (TrickTreat_MossdeepCity_SetDoorGlowOff)
 	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
 	msgbox ("Hey! Let's battle for candy!$")
@@ -565,7 +565,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Camper {
 
 script TrickTreat_MossdeepCity_CandyGiver_Mother {
 	lock
-	goto_if_set (FLAG_PARTY_SWAP_DISABLED, TrickTreat_MossdeepCity_DenyDueToTricksters)
+	goto_if_set (FLAG_PUZZLE_HAS_CHANGED_PARTY, TrickTreat_MossdeepCity_DenyDueToTricksters)
 	call (TrickTreat_MossdeepCity_SetDoorGlowOff)
 	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
 	msgbox ("Oh, you!\p"
@@ -583,7 +583,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Mother {
 
 script TrickTreat_MossdeepCity_CandyGiver_RepentantBoy {
 	lock
-	goto_if_set (FLAG_PARTY_SWAP_DISABLED, TrickTreat_MossdeepCity_DenyDueToTricksters)
+	goto_if_set (FLAG_PUZZLE_HAS_CHANGED_PARTY, TrickTreat_MossdeepCity_DenyDueToTricksters)
 	call (TrickTreat_MossdeepCity_SetDoorGlowOff)
 	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
 	msgbox ("My daddy told me to give these to you\n"
@@ -600,7 +600,7 @@ script TrickTreat_MossdeepCity_ExitGirl {
 	lock
 	faceplayer
 	msgbox ("Hey, {PLAYER}.\nDid you get a good haul?$")
-	if (flag(FLAG_PARTY_SWAP_DISABLED) == TRUE) {
+	if (flag(FLAG_PUZZLE_HAS_CHANGED_PARTY) == TRUE) {
 		msgbox ("What?! Your {POKEMON} were stolen?!\p"
 				"Masked boys? I think I saw someone\n"
 				"run past here, to around back.\p"

@@ -11,7 +11,7 @@
     "id": "MAP_TRICK_HOUSE_RESTROOM",
     "layout": "LAYOUT_TRICK_HOUSE_RESTROOM",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_KARAKURI",
     "name": "TrickHouseRestroom",
     "object_events": [
         {

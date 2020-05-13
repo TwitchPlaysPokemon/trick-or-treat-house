@@ -85,7 +85,7 @@
 #define VAR_CURRENT_PUZZLE                   0x4040 
 #define VAR_PUZZLE_STATE                     0x4041 // 0 = before puzzle, 1 = puzzle underway, 2 = after puzzle
 #define VAR_INTRO_COUNTER                    0x4042 // 0 = before intro, 1 = outside intro, 2 = inside intro 1, 
-#define VAR_UNUSED_0x403E                    0x4043
+#define VAR_DEN_BLOCKED_EXCUSE               0x4043
 #define VAR_RECYCLE_GOODS                    0x4044
 #define VAR_REPEL_STEP_COUNT                 0x4045
 #define VAR_STEP_TRIGGER                     0x4046 // Used for the ice cracking puzzle, the mach bike floor cracking puzzle, and npc triggers

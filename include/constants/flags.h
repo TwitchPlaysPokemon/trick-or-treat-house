@@ -117,7 +117,7 @@
 #define FLAG_PICKED_UP_SURF_ITEM             0x67
 #define FLAG_PICKED_UP_FLASH_ITEM            0x68
 #define FLAG_PICKED_UP_FLY_ITEM              0x69 // never used
-#define FLAG_PARTY_SWAP_DISABLED             0x6A
+#define FLAG_PUZZLE_HAS_CHANGED_PARTY        0x6A
 #define FLAG_PUZZLE_HAS_STARTED              0x6B
 #define FLAG_PUZZLE_HAS_COMPLETED            0x6C
 #define FLAG_UNUSED_0x06D                    0x6D

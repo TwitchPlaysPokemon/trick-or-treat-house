@@ -11,7 +11,7 @@
     "id": "MAP_TRICK_HOUSE_TREE_HOUSE",
     "layout": "LAYOUT_TRICK_HOUSE_TREE_HOUSE",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_MACHI_S3",
     "name": "TrickHouseTreeHouse",
     "object_events": [
     ],

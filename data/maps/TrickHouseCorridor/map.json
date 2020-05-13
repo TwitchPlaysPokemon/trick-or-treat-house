@@ -59,7 +59,7 @@
         },
         {
             "elevation": 0,
-            "script": "TrickHouseCorridor_TriggerScript_PokemonTable",
+            "script": "TrickHouseCorridor_TriggerScript_AdoptionCutscene",
             "type": "trigger",
             "var": "VAR_TEMP_E",
             "var_value": "1",
@@ -68,11 +68,29 @@
         },
         {
             "elevation": 0,
-            "script": "TrickHouseCorridor_TriggerScript_PokemonTable",
+            "script": "TrickHouseCorridor_TriggerScript_AdoptionCutscene",
             "type": "trigger",
             "var": "VAR_TEMP_E",
             "var_value": "1",
             "x": 9,
+            "y": 8
+        },
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_E",
+            "var_value": "2",
+            "x": 12,
+            "y": 7
+        },
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_E",
+            "var_value": "2",
+            "x": 12,
             "y": 8
         }
     ],
@@ -89,7 +107,7 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-            "script": "TrickHouseCorridor_EventScript_PokemonTable",
+            "script": "TrickHouseCorridor_EventScript_Lady",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 12,

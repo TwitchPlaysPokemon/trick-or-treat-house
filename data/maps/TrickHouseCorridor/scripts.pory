@@ -11,6 +11,23 @@ mapscripts TrickHouseCorridor_MapScripts {
 			setvar (VAR_TEMP_E, 1) 
 			// Position the rental lady in the path
 			setobjectxyperm(1, 11, 7)
+		} 
+		elif (flag(FLAG_PUZZLE_HAS_CHANGED_PARTY)) {
+			// Position the rental lady in the door of the den
+			setobjectxyperm(1, 10, 5)
+			setobjectmovementtype(1, MOVEMENT_TYPE_FACE_DOWN)
+			if (var(VAR_DEN_BLOCKED_EXCUSE) == 0) {
+				random(12)
+				copyvar(VAR_DEN_BLOCKED_EXCUSE, VAR_RESULT)
+				addvar(VAR_DEN_BLOCKED_EXCUSE, 1)
+			}
+		}
+		else {
+			getpartysize
+			if (var(VAR_RESULT) != 3) {
+				// Enable party size stop triggers
+				setvar(VAR_TEMP_E, 2)
+			}
 		}
 	}
 	MAP_SCRIPT_ON_TRANSITION {
@@ -21,16 +38,11 @@ mapscripts TrickHouseCorridor_MapScripts {
 		VAR_PUZZLE_STATE, 2: TrickHouseCorridor_IncrementPuzzle
 	]
 }
-// VAR_TEMP_E, 0 {
-		// 	// If the player doesn't have pokemon yet
-		// 	if (!flag(FLAG_SYS_POKEMON_GET)) {
-		// 		// enable the rental mon cutscene
-		// 		setvar (VAR_TEMP_E, 1) 
-		// 	} else {
-		// 		// Disable the rental pokemon stop
-		// 		setvar (VAR_TEMP_E, 2)
-		// 	}
-		// }
+
+// Notes: FLAG and VAR USE
+// 		VAR_TEMP_E = 1 - Adoption Mon Cutscene Triggers
+// 		VAR_TEMP_E = 2 - Trainer does not meed party requirements
+// 		VAR_TEMP_D = Random excuse for not allowing access to Den
 
 
 script(local) TrickHouseCorridor_OpenPuzzleDoor {
@@ -53,94 +65,31 @@ script(local) TrickHouseCorridor_IncrementPuzzle {
 	clearflag (FLAG_HIDE_TRICK_HOUSE_INTRO_CHAR)
 	callnative (SetupPuzzleWarp)
 	callnative (AssignPuzzleMetaVariables)
+	setvar (VAR_DEN_BLOCKED_EXCUSE, 0)
 	call (TrickHouseCorridor_CloseBackDoor)
 }
 
-raw `
-@ -----------------------------------------------------
+// -----------------------------------------------------
 
-TrickHouseCorridor_EventScript_PokemonTable::
-@ 	lockall
-@ 	goto_if_set FLAG_TEMP_E, TrickHouseCorridor_EventScript_PokemonTable_GoodLuck
-@ 	goto_if_set FLAG_PARTY_SWAP_DISABLED, TrickHouseCorridor_EventScript_PokemonTable_Disabled
-@ 	goto_if_unset FLAG_SYS_POKEMON_GET, TrickHouseCorridor_EventScript_PokemonTable_FirstRental
-@ 	goto TrickHouseCorridor_EventScript_PokemonTable_Swap
-	end
+script TrickHouseCorridor_EventScript_Lady {
+	if (flag(FLAG_PUZZLE_HAS_CHANGED_PARTY)) {
+		lock
+		message (TrickHouseCorridor_Text_DenExcuseStart)
+		waitmessage
+		selectpointer_wrap(TrickHouseCorridor_StringTable_DenExcuses, VAR_DEN_BLOCKED_EXCUSE)
+		message (0)
+		waitmessage
+		waitbuttonpress
+		release
+		end
+	}
+	lock
+	msgbox ("If you ever need to rest, feel free to\n"
+			"stop in the Den to my right.$")
+	release
+}
 
-@ TrickHouseCorridor_EventScript_PokemonTable_GoodLuck:
-@ 	msgbox TrickHouseCorridor_Text_PokemonTable_GoodLuck
-@ 	releaseall
-@ 	end
-@ TrickHouseCorridor_Text_PokemonTable_GoodLuck:
-@ 	.string "Good luck on the PUZZLE CHALLENGE!$"
-
-@ TrickHouseCorridor_EventScript_PokemonTable_Disabled:
-@ 	msgbox TrickHouseCorridor_Text_PokemonTable_Disabled
-@ 	releaseall
-@ 	end
-@ TrickHouseCorridor_Text_PokemonTable_Disabled:
-@ 	.string "Good evening! How are you doing on\n"
-@ 	.string "your PUZZLE CHALLENGE?\p"
-@ 	.string "Ah, it looks like you've modified your\n"
-@ 	.string "party as part of one of the puzzles.\p"
-@ 	.string "We can't allow you to swap out your\n"
-@ 	.string "{POKEMON} while this is the case.\p"
-@ 	.string "Come back after you complete the puzzle,\n"
-@ 	.string "and we can accomidate you then.$"
-
-@ TrickHouseCorridor_EventScript_PokemonTable_FirstRental:
-@ 	msgbox TrickHouseCorridor_Text_PokemonTable_FirstRental1
-	
-@ 	call TrickHouseCorridor_GivePokemonTeam
-	
-@ 	setflag FLAG_TEMP_E
-@ 	setvar VAR_TEMP_E, 2
-@ 	msgbox TrickHouseCorridor_Text_PokemonTable_FirstRental2
-@ 	giveitem_std ITEM_ESCAPE_ROPE, 5
-@ 	msgbox TrickHouseCorridor_Text_PokemonTable_FirstRental3
-@ 	releaseall
-@ 	end
-@ TrickHouseCorridor_Text_PokemonTable_FirstRental1:
-@ 	.string "Good evening! It looks like you'll be\n"
-@ 	.string "needing some POKéMON to battle with!\p"
-@ 	.string "Fortunately, the TRICK MASTER hired us\n"
-@ 	.string "to give out RENTAL POKéMON to his\l"
-@ 	.string "adoring participants tonight!\p"
-@ 	.string "Here's a set recommended by\n"
-@ 	.string "PROF. BIRCH himself!$"
-@ TrickHouseCorridor_Text_PokemonTable_FirstRental2:
-@ 	@ .string "Excellent selection!\p"
-@ 	@ .string "If you'd ever like to swap out, feel\n"
-@ 	@ .string "free to come back to this table!\p"
-@ 	.string "Oh, and take these too, just in case.$"
-@ TrickHouseCorridor_Text_PokemonTable_FirstRental3:
-@ 	.string "If you need any more of those, feel\n"
-@ 	.string "free to grab some from the box!\p"
-@ 	.string "Good luck on the PUZZLE CHALLENGE!$"
-
-@ TrickHouseCorridor_EventScript_PokemonTable_Swap:
-@ 	msgbox TrickHouseCorridor_Text_PokemonTable_Swap1, MSGBOX_YESNO
-@ 	compare VAR_RESULT, NO
-@ 	goto_if_eq TrickHouseCorridor_EventScript_PokemonTable_GoodLuck
-@ 	call Common_EventScript_OutOfCenterPartyHeal
-@ @ 	waitstate
-@ @ 	setflag FLAG_TEMP_E
-@ @ 	msgbox TrickHouseCorridor_Text_PokemonTable_FirstRental2
-@ 	@ releaseall
-@ 	goto TrickHouseCorridor_EventScript_PokemonTable_GoodLuck
-@ 	end
-@ TrickHouseCorridor_Text_PokemonTable_Swap1:
-@ 	.string "Good evening! How are you doing on\n"
-@ 	.string "your PUZZLE CHALLENGE?\p"
-@ 	.string "Would you like me to heal your POKéMON?$"
-@ @ TrickHouseCorridor_Text_PokemonTable_Swap2:
-@ @ 	.string "Excellent selection!\p"
-@ @ 	.string "If you'd ever like to swap out, feel\n"
-@ @ 	.string "free to come back to this table!\p"
-@ @ 	.string "Good luck on the PUZZLE CHALLENGE!$"
-`
-
-script TrickHouseCorridor_TriggerScript_PokemonTable {
+script TrickHouseCorridor_TriggerScript_AdoptionCutscene {
 	getplayerxy (VAR_0x8000, VAR_0x8001)
 	subvar (VAR_0x8001, 7)
 	lock
@@ -149,7 +98,7 @@ script TrickHouseCorridor_TriggerScript_PokemonTable {
 	applymovement (EVENT_OBJ_ID_PLAYER, 0)
 	waitmovement (0)
 	//
-	msgbox ("Welcome.\p"
+	msgbox ("Welcome to the PUZZLE CHALLENGE.\p"
 			"The TRICK MASTER recommends that\n"
 			"trainers have a three-{POKEMON} party\l"
 			"on them for the upcoming puzzles.\p"
@@ -158,69 +107,82 @@ script TrickHouseCorridor_TriggerScript_PokemonTable {
 			"tonight with some rescue {POKEMON}.\p"
 			"Right this way, please.$")
 	closemessage
-	//
+	// She leads you into the Den
 	applymovement (1, TrickHouseCorridor_Movement_PokemonTableStop_Lady)
 	applymovement (EVENT_OBJ_ID_PLAYER, TrickHouseCorridor_Movement_PokemonTableStop_Player)
 	waitmovement (EVENT_OBJ_ID_PLAYER)
 	warp(MAP_TRICK_HOUSE_RESTROOM, 0, 0, 0)
 	waitstate
-	
-	// applymovement (1, Common_Movement_ExclamationMarkAndWait)
-	// waitmovement (0)
-	// msgbox ("Hey!\n"
-	// 		"You don't have any POKéMON, do you?\p"
-	// 		"You're gonna need some to take on the\n"
-	// 		"PUZZLE CHALLENGE! Com'on over here!$")
-	// closemessage
-	
-	// //
-	// msgbox ("The TRICK MASTER hired us to give\n"
-	// 		"out RENTAL POKéMON to his\l"
-	// 		"adoring participants tonight!\p"
-	// 		"Here's a set recommended by\n"
-	// 		"PROF. BIRCH himself!$")
-	// // Give Pokemon
-	// call (TrickHouseCorridor_GivePokemonTeam)
-	
-	// setflag (FLAG_TEMP_E)
-	// setvar (VAR_TEMP_E, 2)
-	// msgbox (TrickHouseCorridor_Text_PokemonTable_FirstRental2)
-	// giveitem_std (ITEM_ESCAPE_ROPE, 5)
-	// msgbox (TrickHouseCorridor_Text_PokemonTable_FirstRental3)
 	releaseall
 }
 
-script(local) TrickHouseCorridor_GivePokemonTeam {
-	givemon (SPECIES_GROVYLE, 30, 0, 0, 0, 0)
-	givemon (SPECIES_COMBUSKEN, 30, 0, 0, 0, 0)
-	givemon (SPECIES_MARSHTOMP, 30, 0, 0, 0, 0)
-	# Grovyle Moveset
-	setmonmove(0, 0, 348) # Leaf Blade
-	setmonmove(0, 1, 157) # Rock Slide
-	setmonmove(0, 2, 280) # Brick Break
-	setmonmove(0, 3, 210) # Fury Cutter
-	# Combusken Moveset
-	setmonmove(1, 0, 53)  # Flamethrower
-	setmonmove(1, 1, 24)  # Double Kick 
-	setmonmove(1, 2, 332) # Aerial Ace
-	setmonmove(1, 3, 339) # Bulk Up
-	# Marshtomp Moveset
-	setmonmove(2, 0, 352) # Water Pulse
-	setmonmove(2, 1, 231) # Iron Tail
-	setmonmove(2, 2, 89)  # Earthquake
-	setmonmove(2, 3, 341) # Mud Shot
-	# Fanfare
-	setflag (FLAG_SYS_POKEMON_GET)
-	message("Received GROVYLE, COMBUSKEN, and\n"
-			"MARSHTOMP from the lady!")
-	playfanfare (MUS_FANFA5)
-	waitfanfare
-	waitmessage
-	return
+script TrickHouseCorridor_TriggerScript_PartyStop {
+	lock
+	applymovement (1, TrickHouseCorridor_Movement_PartyStop)
+	waitmovement (1)
+	msgbox ("Where are you going? You must have\n"
+			"only three {POKEMON} with you to\l"
+			"participate in the puzzles.\p"
+			"Please rectify this before returning.$")
+	applymovement (1, Common_Movement_WalkInPlaceLeft)
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkLeft1)
+	waitmovement (EVENT_OBJ_ID_PLAYER)
+	release
 }
+movement TrickHouseCorridor_Movement_PartyStop {
+	emote_exclamation_mark
+	walk_in_place_fastest_down
+	delay_16 * 3
+}
+
+// script(local) TrickHouseCorridor_GivePokemonTeam {
+// 	givemon (SPECIES_GROVYLE, 30, 0, 0, 0, 0)
+// 	givemon (SPECIES_COMBUSKEN, 30, 0, 0, 0, 0)
+// 	givemon (SPECIES_MARSHTOMP, 30, 0, 0, 0, 0)
+// 	# Grovyle Moveset
+// 	setmonmove(0, 0, 348) # Leaf Blade
+// 	setmonmove(0, 1, 157) # Rock Slide
+// 	setmonmove(0, 2, 280) # Brick Break
+// 	setmonmove(0, 3, 210) # Fury Cutter
+// 	# Combusken Moveset
+// 	setmonmove(1, 0, 53)  # Flamethrower
+// 	setmonmove(1, 1, 24)  # Double Kick 
+// 	setmonmove(1, 2, 332) # Aerial Ace
+// 	setmonmove(1, 3, 339) # Bulk Up
+// 	# Marshtomp Moveset
+// 	setmonmove(2, 0, 352) # Water Pulse
+// 	setmonmove(2, 1, 231) # Iron Tail
+// 	setmonmove(2, 2, 89)  # Earthquake
+// 	setmonmove(2, 3, 341) # Mud Shot
+// 	# Fanfare
+// 	setflag (FLAG_SYS_POKEMON_GET)
+// 	message("Received GROVYLE, COMBUSKEN, and\n"
+// 			"MARSHTOMP from the lady!")
+// 	playfanfare (MUS_FANFA5)
+// 	waitfanfare
+// 	waitmessage
+// 	return
+// }
 
 raw `
 @ -----------------------------------------------------
+.align 2
+TrickHouseCorridor_StringTable_DenExcuses:
+	.4byte TrickHouseCorridor_Text_DenExcuseStart
+	.4byte TrickHouseCorridor_Text_DenExcuse1
+	.4byte TrickHouseCorridor_Text_DenExcuse2
+	.4byte TrickHouseCorridor_Text_DenExcuse3
+	.4byte TrickHouseCorridor_Text_DenExcuse4
+	.4byte TrickHouseCorridor_Text_DenExcuse5
+	.4byte TrickHouseCorridor_Text_DenExcuse6
+	.4byte TrickHouseCorridor_Text_DenExcuse7
+	.4byte TrickHouseCorridor_Text_DenExcuse8
+	.4byte TrickHouseCorridor_Text_DenExcuse9
+	.4byte TrickHouseCorridor_Text_DenExcuse10
+	.4byte TrickHouseCorridor_Text_DenExcuse11
+	.4byte TrickHouseCorridor_Text_DenExcuse12
+	.4byte 0
+
 .align 2
 TrickHouseCorridor_MovementTable_PokemonTableStop:
 	.4byte TrickHouseCorridor_Movement_PokemonTableStop1
@@ -247,6 +209,75 @@ movement TrickHouseCorridor_Movement_PokemonTableStop_Player {
 	walk_up * 3
 	set_invisible
 }
+
+text TrickHouseCorridor_Text_DenExcuseStart {
+			"I'm sorry.\n"
+			"The Den is currently closed.\p$"
+}
+text TrickHouseCorridor_Text_DenExcuse1 {
+			"There's been an… incident, and we're\n"
+			"currently deep cleaning.\p"
+			"The vomit should be cleaned up\n"
+			"by the time you finish the puzzle.$"
+}
+text TrickHouseCorridor_Text_DenExcuse2 {
+			"There's been an… incident, but the\n"
+			"exorcism should be completed by\l"
+			"the time you finish the puzzle.$"
+}
+text TrickHouseCorridor_Text_DenExcuse3 {
+			"There's been an… incident, but the\n"
+			"rampaging Tauros has been recaptured.\p"
+			"The broken china should be cleaned up\n"
+			"by the time you finish the puzzle.$"
+}
+text TrickHouseCorridor_Text_DenExcuse4 {
+			"There's been an… incident.\n"
+			"Please disregard any baa-ing you hear.\p"
+			"And if you see any wild Wooloo around,\n"
+			"please let us know.\p"
+			"If the Hoenn General Council finds out\l"
+			"about a potential invasive species…$"
+}
+text TrickHouseCorridor_Text_DenExcuse5 {
+			"Service staff are underserved,\n"
+			"maintenence staff are under repairs,\l"
+			"and hospitality staff are inhospitable.\p"
+			"The unions are divided on how to address\n"
+			"the solution, but the details should be\l"
+			"generalized by your next puzzle.$"
+}
+text TrickHouseCorridor_Text_DenExcuse6 {
+			"There's been an… incident. But don't\n"
+			"worry: the candy thief was caught.\p"
+			"The mess of chocolate, however, will\n"
+			"take a little while yet to clean up.$"
+}
+text TrickHouseCorridor_Text_DenExcuse7 {
+			"There's been an… incident. But don't\n"
+			"worry: the Celebi are fixing the time\l"
+			"paradoxes as we speak.\p"
+			"Or… before we speak…\n"
+			"Or have we not yet spoken…?\p"
+			"Anyway, it will have been already cleaned\n"
+			"up when you finish the previous puzzle.$"
+}
+text TrickHouseCorridor_Text_DenExcuse8 {
+	"Go away.$" //TODO
+}
+text TrickHouseCorridor_Text_DenExcuse9 {
+	"Go away.$" //TODO
+}
+text TrickHouseCorridor_Text_DenExcuse10 {
+	"Go away.$" //TODO
+}
+text TrickHouseCorridor_Text_DenExcuse11 {
+	"Go away.$" //TODO
+}
+text TrickHouseCorridor_Text_DenExcuse12 {
+	"Go away.$" //TODO
+}
+
 
 script TrickHouseCorridor_EventScript_EscapeRopeBox {
 	// lock
