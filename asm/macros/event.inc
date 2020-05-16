@@ -77,7 +77,8 @@
 	.endm
 
 	@ Executes a script stored in a default RAM location.
-	.macro returnram
+	@ .macro returnram
+	.macro gotoram
 	.byte 0x0c
 	.endm
 
@@ -251,7 +252,7 @@
 	.endm
 
 	@ Calls the native C function stored at `func`.
-	.macro callnative_noctx func:req
+	.macro callnative_wait func:req
 	.byte 0xc8
 	.4byte \func
 	.endm
@@ -1475,7 +1476,8 @@
 	.endm
 
 	@ Depending on factors I haven't managed to understand yet, this command may cause script execution to jump to the offset specified by the pointer at 0x020375C0.
-	.macro gotoram
+	@ .macro gotoram
+	.macro callram
 	.byte 0xcf
 	.endm
 

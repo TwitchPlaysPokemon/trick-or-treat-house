@@ -176,7 +176,8 @@
         "TestLayoutSwitching2",
         "TestMirrorMovement",
         "TestCopyMovement",
-        "IndoorMap"
+        "IndoorMap",
+        "TestMusicRoom"
     ],
     "MG_TrickOrTreatPuzzles": [
         "TrickTreat_PetalburgCity",

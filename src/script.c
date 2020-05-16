@@ -8,7 +8,7 @@
 
 #define RAM_SCRIPT_MAGIC 51
 
-extern const u8* gUnknown_020375C0;
+extern const u8* gRamScriptPtr;
 
 // ewram bss
 IWRAM_DATA u8 sScriptContext1Status;
@@ -392,7 +392,7 @@ bool8 InitRamScript(const u8 *script, u16 scriptSize, u8 mapGroup, u8 mapNum, u8
 const u8 *GetRamScript(u8 objectId, const u8 *script)
 {
     struct RamScriptData *scriptData = &gSaveBlock1Ptr->ramScript.data;
-    gUnknown_020375C0 = NULL;
+    gRamScriptPtr = NULL;
     if (scriptData->magic != RAM_SCRIPT_MAGIC)
         return script;
     if (scriptData->mapGroup != gSaveBlock1Ptr->location.mapGroup)
@@ -408,7 +408,7 @@ const u8 *GetRamScript(u8 objectId, const u8 *script)
     }
     else
     {
-        gUnknown_020375C0 = script;
+        gRamScriptPtr = script;
         return scriptData->script;
     }
 }
@@ -453,9 +453,9 @@ u8 *GetSavedRamScriptIfValid(void)
     }
 }
 
-void InitRamScript_NoEventObject(u8 *script, u16 scriptSize)
+bool8 InitRamScript_NoEventObject(u8 *script, u16 scriptSize)
 {
     if (scriptSize > sizeof(gSaveBlock1Ptr->ramScript.data.script))
         scriptSize = sizeof(gSaveBlock1Ptr->ramScript.data.script);
-    InitRamScript(script, scriptSize, 0xFF, 0xFF, 0xFF);
+    return InitRamScript(script, scriptSize, 0xFF, 0xFF, 0xFF);
 }

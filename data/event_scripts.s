@@ -6318,3 +6318,5 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/SuspendedMaze_B1/scripts.inc"
 
 	.include "data/maps/Puzzle_IcePath/scripts.inc"
+
+	.include "data/maps/TestMusicRoom/scripts.inc"

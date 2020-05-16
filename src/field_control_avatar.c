@@ -245,6 +245,7 @@ static bool8 TryStartInteractionScript(struct MapPosition *position, u16 metatil
      && script != EventScript_RecordMixingSecretBasePC
      && script != SecretBase_EventScript_DollInteract
      && script != SecretBase_EventScript_CushionInteract
+     && script != Puzzle_MusicNoteTiles_Extra
      && script != EventScript_PC)
         PlaySE(SE_SELECT);
     

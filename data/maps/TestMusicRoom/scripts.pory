@@ -1,0 +1,4 @@
+raw `
+TestMusicRoom_MapScripts::
+	.byte 0
+`

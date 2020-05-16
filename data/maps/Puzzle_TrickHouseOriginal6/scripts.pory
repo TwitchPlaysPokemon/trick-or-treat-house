@@ -74,7 +74,7 @@ Puzzle_TrickHouseOriginal6_MapTable: @ 826DDB6
 Puzzle_TrickHouseOriginal6_EventScript_26DDC0:: @ 826DDC0
 	@ loadword 0, Puzzle_TrickHouseOriginal6_GateSetup
 	@ loadword 1, 11
-	callnative_noctx RotatingGate_InitPuzzleAndGraphics
+	special RotatingGate_InitPuzzleAndGraphics
 	end
 
 @ -----------------------------------------------------

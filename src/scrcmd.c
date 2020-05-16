@@ -56,7 +56,7 @@
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(struct ScriptContext *ctx);
 
-EWRAM_DATA const u8 *gUnknown_020375C0 = NULL;
+EWRAM_DATA const u8 *gRamScriptPtr = NULL;
 static EWRAM_DATA u32 gUnknown_020375C4 = 0;
 static EWRAM_DATA u16 sPauseCounter = 0;
 static EWRAM_DATA u16 sMovingNpcId = 0;
@@ -157,12 +157,12 @@ bool8 ScrCmd_callnative(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_callnative_noctx(struct ScriptContext *ctx)
+bool8 ScrCmd_callnative_wait(struct ScriptContext *ctx)
 {
     NativeFunc func = (NativeFunc)ScriptReadWord(ctx);
 
     func(ctx);
-    return FALSE;
+    return TRUE;
 }
 
 bool8 ScrCmd_waitstate(struct ScriptContext *ctx)
@@ -306,9 +306,10 @@ bool8 ScrCmd_callstd_if(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_returnram(struct ScriptContext *ctx)
+// bool8 ScrCmd_returnram(struct ScriptContext *ctx)
+bool8 ScrCmd_gotoram(struct ScriptContext *ctx)
 {
-    ScriptJump(ctx, gUnknown_020375C0);
+    ScriptJump(ctx, gRamScriptPtr);
     return FALSE;
 }
 
@@ -1096,10 +1097,10 @@ bool8 ScrCmd_applymovement(struct ScriptContext *ctx)
     if ((u32)movementScript < 4)
         movementScript = (const void *)ctx->data[(u32)movementScript];
     
-    if (movementScript <= (const void*)&Start) {
-        ShowScriptError(ctx, 5, ErrStr_movepointer);
-        return FALSE;
-    }
+    // if (movementScript <= (const void*)&Start) {
+    //     ShowScriptError(ctx, 5, ErrStr_movepointer);
+    //     return FALSE;
+    // }
 
     ScriptMovement_StartObjectMovementScript(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, movementScript);
     sMovingNpcId = localId;
@@ -2349,14 +2350,24 @@ bool8 ScrCmd_checkmonobedience(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_gotoram(struct ScriptContext *ctx)
-{
-    const u8* v1 = GetSavedRamScriptIfValid();
+// bool8 ScrCmd_gotoram(struct ScriptContext *ctx)
+// {
+//     const u8* v1 = GetSavedRamScriptIfValid();
 
-    if (v1)
+//     if (v1)
+//     {
+//         gRamScriptPtr = ctx->scriptPtr;
+//         // ScriptJump(ctx, v1);
+//         ScriptCall(ctx, v1);
+//     }
+//     return FALSE;
+// }
+
+bool8 ScrCmd_callram(struct ScriptContext *ctx)
+{
+    if (gRamScriptPtr != NULL)
     {
-        gUnknown_020375C0 = ctx->scriptPtr;
-        ScriptJump(ctx, v1);
+        ScriptCall(ctx, gRamScriptPtr);
     }
     return FALSE;
 }

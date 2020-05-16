@@ -124,6 +124,13 @@
             "elevation": 0,
             "x": 7,
             "y": 1
+        },
+        {
+            "dest_map": "MAP_TEST_MUSIC_ROOM",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 9,
+            "y": 1
         }
     ],
     "weather": "WEATHER_SUNNY"

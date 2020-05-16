@@ -1459,6 +1459,16 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Cave",
             "width": 70
+        },
+        {
+            "blockdata_filepath": "data/layouts/TestMusicRoom/map.bin",
+            "border_filepath": "data/layouts/TestMusicRoom/border.bin",
+            "height": 20,
+            "id": "LAYOUT_TEST_MUSIC_ROOM",
+            "name": "TestMusicRoom_Layout",
+            "primary_tileset": "gTileset_SecretBase",
+            "secondary_tileset": "gTileset_SecretBaseBrownCave",
+            "width": 20
         }
     ],
     "layouts_table_label": "gMapLayouts"

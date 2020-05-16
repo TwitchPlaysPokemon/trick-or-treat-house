@@ -567,6 +567,8 @@ extern const u8 UnusualWeather_EventScript_EndEventAndCleanup_1[];
 // extern const u8 MossdeepCity_SpaceCenter_2F_EventScript_224175[];
 // extern const u8 SSTidalCorridor_EventScript_23C050[];
 // extern const u8 gUnknown_082A8350[];
+extern const u8 Puzzle_MusicNoteTiles_Extra[];
+
 
 // Battle Pyramid.
 // extern const u8 BattleFrontier_BattlePyramidEmptySquare_EventScript_252C88[];

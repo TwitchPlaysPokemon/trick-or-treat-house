@@ -1,9 +1,17 @@
 raw `
-#define FLAG_MUSIC_NOTE_PUZZLE_HIDE_SCROLL          FLAG_TEMP_1
-#define FLAG_MUSIC_NOTE_PUZZLE_TILES_ACTIVE         FLAG_PUZZLE_20
-#define VAR_MUSIC_NOTE_PUZZLE_CUR_SONG              VAR_PUZZLE_00
-#define VAR_MUSIC_NOTE_PUZZLE_NUM_CORRECT_STEPS     VAR_PUZZLE_01
-#define VAR_MUSIC_NOTE_PUZZLE_SONG_COMPLETION_STATE VAR_PUZZLE_03
+#define FLAG_HIDE_SCROLL            FLAG_PUZZLE_20
+#define FLAG_TILES_ACTIVE           FLAG_PUZZLE_21
+#define FLAG_HIDE_SINGERS           FLAG_PUZZLE_22
+#define FLAG_SHOW_EXTRA_SINGER      FLAG_PUZZLE_23
+#define FLAG_EXTRA_ENABLED          FLAG_PUZZLE_24
+#define FLAG_DID_LOOK_AROUND        FLAG_TEMP_C
+#define VAR_CURR_SONG               VAR_PUZZLE_00
+#define VAR_NUM_CORRECT_STEPS       VAR_PUZZLE_01
+#define VAR_SONG_COMPLETION_STATE   VAR_PUZZLE_03
+#define VAR_SONG_A                  VAR_PUZZLE_0A
+#define VAR_SONG_B                  VAR_PUZZLE_0B
+#define VAR_SONG_C                  VAR_PUZZLE_0C
+#define VAR_SONG_D                  VAR_PUZZLE_0D
 
 Puzzle_MusicNoteTiles_MapScripts::
     puzzle_info Puzzle_MusicNoteTiles_Name, Puzzle_MusicNoteTiles_Author
@@ -15,12 +23,12 @@ Puzzle_MusicNoteTiles_MapScripts::
     .byte 0
 
 Puzzle_MusicNoteTiles_FrameTable:
-    map_script_2 VAR_MUSIC_NOTE_PUZZLE_SONG_COMPLETION_STATE, 1, Puzzle_MusicNoteTiles_SongCompleted
-    map_script_2 VAR_MUSIC_NOTE_PUZZLE_SONG_COMPLETION_STATE, 2, Puzzle_MusicNoteTiles_AllSongsCompleted
+    map_script_2 VAR_SONG_COMPLETION_STATE, 1, Puzzle_MusicNoteTiles_SongCompleted
+    map_script_2 VAR_SONG_COMPLETION_STATE, 2, Puzzle_MusicNoteTiles_AllSongsCompleted
     .2byte 0
 
 Puzzle_MusicNoteTiles_Name:
-    .string "POKéMON Says$"
+    .string "Pokémon Says$"
 Puzzle_MusicNoteTiles_Author:
     .string "Chfoo$"
 Puzzle_MusicNoteTiles_Adjective:
@@ -40,123 +48,84 @@ Puzzle_MusicNoteTiles_CandyList:
 `
 
 script Puzzle_MusicNoteTiles_OnLoad {
-    setflag(FLAG_MUSIC_NOTE_PUZZLE_HIDE_SCROLL)
+    if (!flag(FLAG_PUZZLE_HAS_STARTED)) {
+        setflag(FLAG_HIDE_SCROLL)
+    }
+    clearflag(FLAG_TILES_ACTIVE)
+    callnative(PokemonSaysInitPuzzle)
+    if (flag(FLAG_SHOW_EXTRA_SINGER)) {
+        setobjectmovementtype(7, MOVEMENT_TYPE_LOOK_AROUND)
+        setmetatile(14, 4, 0x208, FALSE)
+    }
 }
 
 script Puzzle_MusicNoteTiles_Pokemon {
-    lock
-    message ("The POKéMON are singing a song.$")
+    lockall
+    applymovement(2, Common_Movement_FaceDown)
+    applymovement(3, Common_Movement_FaceDown)
+    applymovement(4, Common_Movement_FaceDown)
+    applymovement(5, Common_Movement_FaceDown)
+    applymovement(6, Common_Movement_FaceDown)
+    applymovement(7, Common_Movement_FaceDown)
+    message ("The {POKEMON} are singing a song.$")
     fadeoutbgm (0)
     waitmessage
     delay (10)
-
-    # Sing the current song, by showing music notes above their heads.
-    switch (var(VAR_MUSIC_NOTE_PUZZLE_CUR_SONG)) {
-        case 0:
-            call(Puzzle_MusicNoteTiles_Song0)
-            call(Puzzle_MusicNoteTiles_Song0)
-        case 1:
-            call(Puzzle_MusicNoteTiles_Song1)
-            call(Puzzle_MusicNoteTiles_Song1)
-        case 2:
-            call(Puzzle_MusicNoteTiles_Song2)
-            call(Puzzle_MusicNoteTiles_Song2)
-        case 3:
-            call(Puzzle_MusicNoteTiles_Song3)
-            call(Puzzle_MusicNoteTiles_Song3)
-    }
-
-    # Reset the tile progression state.
+    
+    // Set up RAM script to play song
+    callnative(PokemonSaysSetupSongScript)
+    // Play song twice
+    callram
+    callram
+    // Tear down script
+    callnative(PokemonSaysTeardownSongScript)
+    
+    // Reset the tile progression state.
     fadeinbgm (0)
-    setvar(VAR_MUSIC_NOTE_PUZZLE_NUM_CORRECT_STEPS, 0)
-    setflag(FLAG_MUSIC_NOTE_PUZZLE_TILES_ACTIVE)
+    setvar(VAR_NUM_CORRECT_STEPS, 0)
+    setflag(FLAG_TILES_ACTIVE)
+    clearflag(FLAG_DID_LOOK_AROUND)
+    releaseall
+}
+
+// NOTE: This script will not have an automatic select sound
+script Puzzle_MusicNoteTiles_Extra {
+    lock
+    if (!flag(FLAG_SHOW_EXTRA_SINGER)) {
+        if (!flag(FLAG_EXTRA_ENABLED)) {
+            playse(SE_SELECT)
+            msgbox("There's something blue inside.$")
+            release
+            end
+        }
+        applymovement(VAR_LAST_TALKED, Puzzle_MusicNoteTiles_ExtraBreakOut)
+        playse(SE_W280) //breaking
+        setobjectmovementtype(7, MOVEMENT_TYPE_LOOK_AROUND)
+        setmetatile(14, 4, 0x208, FALSE)
+        special (DrawWholeMapView)
+        setflag(FLAG_SHOW_EXTRA_SINGER)
+        waitmovement(VAR_LAST_TALKED)
+        removeobject(VAR_LAST_TALKED)
+        addobject(VAR_LAST_TALKED)
+        delay(10)
+    }
+    if (!flag(FLAG_TILES_ACTIVE)) {
+        faceplayer
+        message("Azu-riiii!$")
+        playmoncry(SPECIES_AZURILL, 0)
+        waitmoncry
+        waitmessage
+        waitbuttonpress
+    } else {
+        faceplayer
+        callnative(PokemonSaysPlayExtraNote)
+        if (!var(VAR_RESULT)) {
+            applymovement(VAR_LAST_TALKED, Common_Movement_QuestionMark)
+        }
+    }
     release
 }
 
-script Puzzle_MusicNoteTiles_Song0 {
-    applymovement(4, Common_Movement_EmoteNoteE)
-    playse(SE_TOY_E)
-    delay(60)
-    waitmovement(0)
-    applymovement(6, Common_Movement_EmoteNoteG)
-    playse(SE_TOY_G)
-    waitmovement(0)
-    delay(30)
-    applymovement(3, Common_Movement_EmoteNoteD)
-    playse(SE_TOY_D)
-    waitmovement(0)
-    delay(90)
-}
-
-script Puzzle_MusicNoteTiles_Song1 {
-    applymovement(4, Common_Movement_EmoteNoteE)
-    playse(SE_TOY_E)
-    delay(30)
-    waitmovement(0)
-    applymovement(3, Common_Movement_EmoteNoteD)
-    playse(SE_TOY_D)
-    waitmovement(0)
-    delay(60)
-    applymovement(6, Common_Movement_EmoteNoteG)
-    playse(SE_TOY_G)
-    waitmovement(0)
-    delay(30)
-    applymovement(2, Common_Movement_EmoteNoteC)
-    playse(SE_TOY_C)
-    waitmovement(0)
-    delay(90)
-}
-
-script Puzzle_MusicNoteTiles_Song2 {
-    applymovement(6, Common_Movement_EmoteNoteG)
-    playse(SE_TOY_G)
-    delay(30)
-    waitmovement(0)
-    applymovement(2, Common_Movement_EmoteNoteC)
-    playse(SE_TOY_C)
-    waitmovement(0)
-    delay(60)
-    applymovement(5, Common_Movement_EmoteNoteF)
-    playse(SE_TOY_F)
-    waitmovement(0)
-    delay(15)
-    applymovement(4, Common_Movement_EmoteNoteE)
-    playse(SE_TOY_E)
-    waitmovement(0)
-    delay(15)
-    applymovement(3, Common_Movement_EmoteNoteD)
-    playse(SE_TOY_D)
-    waitmovement(0)
-    delay(90)
-}
-
-script Puzzle_MusicNoteTiles_Song3 {
-    applymovement(6, Common_Movement_EmoteNoteG)
-    playse(SE_TOY_G)
-    delay(30)
-    waitmovement(0)
-    applymovement(6, Common_Movement_EmoteNoteG)
-    playse(SE_TOY_G)
-    delay(30)
-    waitmovement(0)
-    applymovement(5, Common_Movement_EmoteNoteF)
-    playse(SE_TOY_F)
-    delay(30)
-    waitmovement(0)
-    applymovement(4, Common_Movement_EmoteNoteE)
-    playse(SE_TOY_E)
-    delay(30)
-    waitmovement(0)
-    applymovement(3, Common_Movement_EmoteNoteD)
-    playse(SE_TOY_D)
-    delay(30)
-    waitmovement(0)
-    applymovement(4, Common_Movement_EmoteNoteE)
-    playse(SE_TOY_E)
-    delay(30)
-    waitmovement(0)
-    delay(60)
-}
 
 script Puzzle_MusicNoteTiles_SongCompleted {
     lock
@@ -167,9 +136,10 @@ script Puzzle_MusicNoteTiles_SongCompleted {
     applymovement(6, Common_Movement_ExclamationMark)
     delay(30)
     waitmovement(0)
-    addvar(VAR_MUSIC_NOTE_PUZZLE_CUR_SONG, 1)
-    setvar(VAR_MUSIC_NOTE_PUZZLE_SONG_COMPLETION_STATE, 0)
-    msgbox("The POKéMON are happy to hear\n"
+    addvar(VAR_CURR_SONG, 1)
+    setvar(VAR_SONG_COMPLETION_STATE, 0)
+    clearflag(FLAG_EXTRA_ENABLED)
+    msgbox("The {POKEMON} are happy to hear\n"
            "the correct notes!$")
     release
 }
@@ -182,7 +152,7 @@ script Puzzle_MusicNoteTiles_AllSongsCompleted {
     applymovement(5, Common_Movement_ExclamationMark)
     applymovement(6, Common_Movement_ExclamationMark)
     delay(30)
-    msgbox("The POKéMON are overjoyed to hear\n"
+    msgbox("The {POKEMON} are overjoyed to hear\n"
            "all of their songs!\p"
            "… …\p"
            "A scroll dropped to the floor.$")
@@ -199,6 +169,104 @@ script Puzzle_MusicNoteTiles_AllSongsCompleted {
     setflag(FLAG_TEMP_2)
     delay(60)
     fadescreen(0)
-    setvar(VAR_MUSIC_NOTE_PUZZLE_SONG_COMPLETION_STATE, 0)
+    setvar(VAR_SONG_COMPLETION_STATE, 0)
     release
 }
+
+script Puzzle_MusicNoteTiles_ExtraCurious {
+    if (!flag(FLAG_DID_LOOK_AROUND)) {
+        applymovement (VAR_LAST_TALKED, Puzzle_MusicNoteTiles_ExtraCurious_Movement1)
+        waitmovement
+    } else {
+        applymovement (2, Puzzle_MusicNoteTiles_ExtraCurious_Movement2a)
+        applymovement (3, Puzzle_MusicNoteTiles_ExtraCurious_Movement2b)
+        applymovement (4, Puzzle_MusicNoteTiles_ExtraCurious_Movement2c)
+        applymovement (5, Puzzle_MusicNoteTiles_ExtraCurious_Movement2d)
+        applymovement (6, Puzzle_MusicNoteTiles_ExtraCurious_Movement2e)
+        waitmovement(VAR_LAST_TALKED)
+        delay(8)
+    }
+    setflag(FLAG_DID_LOOK_AROUND)
+    return
+}
+
+movement Puzzle_MusicNoteTiles_ExtraBreakOut {
+    set_visible
+    jump_in_place_down
+}
+movement Puzzle_MusicNoteTiles_ExtraCurious_Movement1 {
+    emote_question_mark
+    face_down
+    delay_16 * 2
+    face_left
+    delay_16
+    delay_8
+    face_right
+    delay_16
+    delay_8
+    face_player
+}
+
+movement Puzzle_MusicNoteTiles_ExtraCurious_Movement2a {
+    delay_2 * 3
+    emote_question_mark
+    face_up
+    delay_16 * 2
+    face_left
+    delay_16 * 2
+    face_player
+}
+
+movement Puzzle_MusicNoteTiles_ExtraCurious_Movement2b {
+    delay_2 * 1
+    emote_question_mark
+    face_right
+    delay_16 * 2
+    face_down
+    delay_16 * 2
+    face_player
+}
+
+movement Puzzle_MusicNoteTiles_ExtraCurious_Movement2c {
+    emote_question_mark
+    face_left
+    delay_16 * 2
+    face_right
+    delay_16 * 2
+    face_player
+}
+
+movement Puzzle_MusicNoteTiles_ExtraCurious_Movement2d {
+    delay_8
+    emote_question_mark
+    face_up
+    delay_16 * 2
+    face_down
+    delay_16 * 2
+    face_player
+}
+
+movement Puzzle_MusicNoteTiles_ExtraCurious_Movement2e {
+    delay_2 * 2
+    emote_question_mark
+    face_left
+    delay_16 * 2
+    face_right
+    delay_16 * 2
+    face_player
+}
+
+raw `
+#undef FLAG_HIDE_SCROLL
+#undef FLAG_TILES_ACTIVE
+#undef FLAG_HIDE_SINGERS
+#undef FLAG_SHOW_EXTRA_SINGER
+#undef FLAG_EXTRA_ENABLED
+#undef VAR_CURR_SONG
+#undef VAR_NUM_CORRECT_STEPS
+#undef VAR_SONG_COMPLETION_STATE
+#undef VAR_SONG_A
+#undef VAR_SONG_B
+#undef VAR_SONG_C
+#undef VAR_SONG_D
+`

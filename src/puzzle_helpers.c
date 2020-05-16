@@ -1,5 +1,6 @@
 #include "global.h"
 #include "event_data.h"
+#include "alloc.h"
 #include "script.h"
 #include "puzzle_helpers.h"
 #include "sound.h"
@@ -17,6 +18,7 @@
 #include "pokemon_storage_system.h"
 #include "event_object_movement.h"
 #include "overworld.h"
+#include "script_movement.h"
 #include "constants/maps.h"
 #include "constants/flags.h"
 #include "constants/metatile_labels.h"
@@ -29,6 +31,8 @@
 // Reference to an assembly defined constant, the start of the ROM
 // We don't actually use the value, just the address it's at.
 extern const int Start;
+
+extern const u8* gRamScriptPtr;
 
 // Some common debugging helpers
 
@@ -68,121 +72,296 @@ void SetSelectVariables(struct ScriptContext *ctx)
 // Puzzle: Pokemon Says 
 // MAP_PUZZLE_MUSIC_NOTE_TILES
 
-#define FLAG_MUSIC_NOTE_PUZZLE_HIDE_SCROLL          FLAG_TEMP_1
-#define FLAG_MUSIC_NOTE_PUZZLE_TILES_ACTIVE         FLAG_PUZZLE_20
-#define VAR_MUSIC_NOTE_PUZZLE_CUR_SONG              VAR_PUZZLE_00
-#define VAR_MUSIC_NOTE_PUZZLE_NUM_CORRECT_STEPS     VAR_PUZZLE_01
-#define VAR_MUSIC_NOTE_PUZZLE_TARGET_TILE           VAR_PUZZLE_02
-#define VAR_MUSIC_NOTE_PUZZLE_SONG_COMPLETION_STATE VAR_PUZZLE_03
+#define FLAG_HIDE_SCROLL            FLAG_PUZZLE_20
+#define FLAG_TILES_ACTIVE           FLAG_PUZZLE_21
+#define FLAG_HIDE_SINGERS           FLAG_PUZZLE_22
+#define FLAG_SHOW_EXTRA_SINGER      FLAG_PUZZLE_23
+#define FLAG_EXTRA_ENABLED     FLAG_PUZZLE_24
+#define VAR_CURR_SONG               VAR_PUZZLE_00
+#define VAR_NUM_CORRECT_STEPS       VAR_PUZZLE_01
+#define VAR_TARGET_TILE             VAR_PUZZLE_02
+#define VAR_SONG_COMPLETION_STATE   VAR_PUZZLE_03
+#define VAR_SONG_A                  VAR_PUZZLE_0A
+#define VAR_SONG_B                  VAR_PUZZLE_0B
+#define VAR_SONG_C                  VAR_PUZZLE_0C
+#define VAR_SONG_D                  VAR_PUZZLE_0D
 
-static const u16 sSongNotes0[] = {
-    METATILE_ID(TrickHousePuzzle, MusicNoteGreen),
-    METATILE_ID(TrickHousePuzzle, MusicNoteRed),
-    METATILE_ID(TrickHousePuzzle, MusicNoteBlue),
-    0xFFFF,
+struct PokemonSaysNote {
+	u8 localId;
+	u16 metaTileId;
+	u16 soundEffect;
+	const u8* movement;
 };
 
-static const u16 sSongNotes1[] = {
-    METATILE_ID(TrickHousePuzzle, MusicNoteGreen),
-    METATILE_ID(TrickHousePuzzle, MusicNoteBlue),
-    METATILE_ID(TrickHousePuzzle, MusicNoteRed),
-    METATILE_ID(TrickHousePuzzle, MusicNoteYellow),
-    0xFFFF,
+enum {
+	PS_NOTE_END,
+	PS_NOTE_C,
+	PS_NOTE_D,
+	PS_NOTE_E,
+	PS_NOTE_F,
+	PS_NOTE_G,
+	PS_NOTE_A,  // Unavailable
+	PS_NOTE_B,  // Unavailable
+	PS_NOTE_C1, // Unavailable
 };
 
-static const u16 sSongNotes2[] = {
-    METATILE_ID(TrickHousePuzzle, MusicNoteRed),
-    METATILE_ID(TrickHousePuzzle, MusicNoteYellow),
-    METATILE_ID(TrickHousePuzzle, MusicNotePink),
-    METATILE_ID(TrickHousePuzzle, MusicNoteGreen),
-    METATILE_ID(TrickHousePuzzle, MusicNoteBlue),
-    0xFFFF,
+extern const u8 Common_Movement_EmoteNoteC[];
+extern const u8 Common_Movement_EmoteNoteD[];
+extern const u8 Common_Movement_EmoteNoteE[];
+extern const u8 Common_Movement_EmoteNoteF[];
+extern const u8 Common_Movement_EmoteNoteG[];
+extern const u8 Puzzle_MusicNoteTiles_ExtraCurious[];
+
+const struct PokemonSaysNote sSongNotes[] = {
+	[PS_NOTE_END] = { 0, 0, MUS_DUMMY, NULL },
+	[PS_NOTE_C] = { 2, 0x2C0, SE_TOY_C, Common_Movement_EmoteNoteC },
+	[PS_NOTE_D] = { 3, 0x2C1, SE_TOY_D, Common_Movement_EmoteNoteD },
+	[PS_NOTE_E] = { 4, 0x2C2, SE_TOY_E, Common_Movement_EmoteNoteE },
+	[PS_NOTE_F] = { 5, 0x2C3, SE_TOY_F, Common_Movement_EmoteNoteF },
+	[PS_NOTE_G] = { 6, 0x2C4, SE_TOY_G, Common_Movement_EmoteNoteG },
+	[PS_NOTE_A] = { 7, 0x000, SE_TOY_A, Common_Movement_EmoteNoteC },
+	[PS_NOTE_B] = { 7, 0x000, SE_TOY_B, Common_Movement_EmoteNoteD },
+	[PS_NOTE_C1]= { 7, 0x000, SE_TOY_C1,Common_Movement_EmoteNoteE },
 };
 
-static const u16 sSongNotes3[] = {
-    METATILE_ID(TrickHousePuzzle, MusicNoteRed),
-    METATILE_ID(TrickHousePuzzle, MusicNoteRed),
-    METATILE_ID(TrickHousePuzzle, MusicNotePink),
-    METATILE_ID(TrickHousePuzzle, MusicNoteGreen),
-    METATILE_ID(TrickHousePuzzle, MusicNoteBlue),
-    METATILE_ID(TrickHousePuzzle, MusicNoteGreen),
-    0xFFFF,
+#define NOTE(l, length)   ((PS_NOTE_##l << 8) | length)
+
+static const u16 Puzzle_MusicNoteTiles_MusicTableA[][4] = {
+	{ NOTE(E, 60), NOTE(G, 30), NOTE(D, 30), PS_NOTE_END }, // Zelda's Lullaby
+	{ NOTE(G, 20), NOTE(E, 20), NOTE(D, 30), PS_NOTE_END }, // Epona's Song
+	{ NOTE(C, 20), NOTE(E, 20), NOTE(G, 30), PS_NOTE_END }, // Siara's Song
+	{ NOTE(E, 20), NOTE(D, 20), NOTE(G, 30), PS_NOTE_END }, // Sun's Song
+	{ NOTE(C, 30), NOTE(G, 30), NOTE(D, 30), PS_NOTE_END }, // Undertale's Motif (first 3 notes)
+};
+static const u16 Puzzle_MusicNoteTiles_MusicTableB[][5] = {
+	{ NOTE(E, 30), NOTE(D, 60), NOTE(G, 30), NOTE(C, 30), PS_NOTE_END }, 
+	{ NOTE(D, 30), NOTE(F, 30), NOTE(E, 30), NOTE(F, 30), PS_NOTE_END }, 
+	{ NOTE(C, 15), NOTE(C, 15), NOTE(C, 15), NOTE(E, 30), PS_NOTE_END }, // Pokemon Item Pickup
+	{ NOTE(D, 25), NOTE(F, 25), NOTE(E, 25), NOTE(C, 30), PS_NOTE_END }, // Bad Katinss's Motif
+};
+static const u16 Puzzle_MusicNoteTiles_MusicTableC[][6] = {
+	{ NOTE(C, 20), NOTE(E, 20), NOTE(D, 20), NOTE(G, 20), NOTE(E, 30), PS_NOTE_END }, // Mystery Dungeon Theme
+	{ NOTE(C, 20), NOTE(D, 20), NOTE(E, 20), NOTE(F, 20), NOTE(G, 30), PS_NOTE_END }, // Mystery Dungeon Dream / Scale
+	{ NOTE(G, 30), NOTE(C, 60), NOTE(F, 15), NOTE(E, 15), NOTE(D, 30), PS_NOTE_END }, 
+	{ NOTE(F, 15), NOTE(E, 15), NOTE(D, 60), NOTE(E, 60), NOTE(C, 30), PS_NOTE_END }, 
+	{ NOTE(F, 15), NOTE(G, 15), NOTE(D, 20), NOTE(C, 25), NOTE(E, 30), PS_NOTE_END }, // Bad Close Encounters Theme
+};
+static const u16 Puzzle_MusicNoteTiles_MusicTableD[][7] = {
+	{ NOTE(G, 30), NOTE(G, 30), NOTE(F, 30), NOTE(E, 30), NOTE(D, 30), NOTE(E, 30), PS_NOTE_END }, // Wind's Aria
+	{ NOTE(C, 15), NOTE(G, 15), NOTE(E, 60), NOTE(D, 15), NOTE(E, 15), NOTE(D, 30), PS_NOTE_END }, // Minuet of Forest
+	{ NOTE(E, 20), NOTE(E, 20), NOTE(D, 10), NOTE(E, 20), NOTE(G, 20), NOTE(E, 30), PS_NOTE_END }, // Power Ranger's Theme
+	// { NOTE(C, 45), NOTE(G, 45), NOTE(D, 60), NOTE(E, 45), NOTE(G, 45), NOTE(C, 30), PS_NOTE_END }, // Bad Undertale's Motif
+	{ NOTE(G, 15), NOTE(E, 15), NOTE(C, 30), NOTE(E, 30), NOTE(G, 30), NOTE(C1, 30), PS_NOTE_END }, // US National Anthem Start
 };
 
-static const u16 *const sSongNotes[] = {
-    sSongNotes0,
-    sSongNotes1,
-    sSongNotes2,
-    sSongNotes3,
-};
+
+void PokemonSaysInitPuzzle(struct ScriptContext *ctx)
+{
+	if (FlagGet(FLAG_SYS_RANDOM_DISABLED)) {
+		// VarSet(VAR_CURR_SONG, 3);
+		VarSet(VAR_SONG_A, 2);
+		VarSet(VAR_SONG_B, 0);
+		VarSet(VAR_SONG_C, 1);
+		VarSet(VAR_SONG_D, 3);
+	} else {
+		VarSet(VAR_SONG_A, Random() % ARRAY_COUNT(Puzzle_MusicNoteTiles_MusicTableA));
+		VarSet(VAR_SONG_B, Random() % ARRAY_COUNT(Puzzle_MusicNoteTiles_MusicTableB));
+		VarSet(VAR_SONG_C, Random() % ARRAY_COUNT(Puzzle_MusicNoteTiles_MusicTableC));
+		VarSet(VAR_SONG_D, Random() % ARRAY_COUNT(Puzzle_MusicNoteTiles_MusicTableD));
+	}
+}
+
+const u16* PokemonSays_GetCurrentSong()
+{
+	switch (VarGet(VAR_CURR_SONG)) {
+		default: 
+		case 0: return Puzzle_MusicNoteTiles_MusicTableA[VarGet(VAR_SONG_A)];
+		case 1: return Puzzle_MusicNoteTiles_MusicTableB[VarGet(VAR_SONG_B)];
+		case 2: return Puzzle_MusicNoteTiles_MusicTableC[VarGet(VAR_SONG_C)];
+		case 3: return Puzzle_MusicNoteTiles_MusicTableD[VarGet(VAR_SONG_D)];
+	}
+}
+
+
+extern u8 gStringWorking[];
+void PokemonSaysSetupSongScript(struct ScriptContext *ctx)
+{
+	u8 i = 0, lastSingId = 0;
+	u8* script = AllocZeroed(100); // (13 * numNotes) + 2 (max 6 notes = 80 bytes max)
+	const u16* music = PokemonSays_GetCurrentSong();
+	
+	// Create a RAM script to play the music
+	script[i++] = 0x00;
+	for (i = 0; (*music) != PS_NOTE_END; music++)
+	{
+		u8 noteIndex = ((*music) >> 8) & 0xFF;
+		u16 noteLen = (*music) & 0xFF;
+		const struct PokemonSaysNote* note = &sSongNotes[noteIndex];
+		
+		// applymovement(localId, movementScript)
+		script[i++] = 0x4F;
+		script[i++] = ((note->localId) >> 0) & 0xFF;
+		script[i++] = ((note->localId) >> 8) & 0xFF;
+		script[i++] = (((u32)note->movement) >>  0) & 0xFF;
+		script[i++] = (((u32)note->movement) >>  8) & 0xFF;
+		script[i++] = (((u32)note->movement) >> 16) & 0xFF;
+		script[i++] = (((u32)note->movement) >> 24) & 0xFF;
+		// playse(sound)
+		script[i++] = 0x2F;
+		script[i++] = ((note->soundEffect) >> 0) & 0xFF;
+		script[i++] = ((note->soundEffect) >> 8) & 0xFF;
+		// delay(noteLength)
+		script[i++] = 0x28;
+		script[i++] = ((noteLen) >> 0) & 0xFF;
+		script[i++] = ((noteLen) >> 8) & 0xFF;
+		
+		if (noteIndex > PS_NOTE_G) {
+			FlagSet(FLAG_EXTRA_ENABLED);
+		}
+		
+		// ConvertIntToHexStringN(gStringVar1, (u32)note, STR_CONV_MODE_LEADING_ZEROS, 8);
+		// script[i++] = 0x67; // message
+		// script[i++] = (((u32) Puzzle_MusicNoteTiles_TEST) >>  0) & 0xFF;
+		// script[i++] = (((u32) Puzzle_MusicNoteTiles_TEST) >>  8) & 0xFF;
+		// script[i++] = (((u32) Puzzle_MusicNoteTiles_TEST) >> 16) & 0xFF;
+		// script[i++] = (((u32) Puzzle_MusicNoteTiles_TEST) >> 24) & 0xFF;
+		// script[i++] = 0x66; // waitmessage
+		// script[i++] = 0x6d; // waitbuttonpress
+	}
+	
+	if (FlagGet(FLAG_EXTRA_ENABLED) && !FlagGet(FLAG_SHOW_EXTRA_SINGER))
+	{
+		script[i++] = 0x04;
+		script[i++] = (((u32)Puzzle_MusicNoteTiles_ExtraCurious) >>  0) & 0xFF;
+		script[i++] = (((u32)Puzzle_MusicNoteTiles_ExtraCurious) >>  8) & 0xFF;
+		script[i++] = (((u32)Puzzle_MusicNoteTiles_ExtraCurious) >> 16) & 0xFF;
+		script[i++] = (((u32)Puzzle_MusicNoteTiles_ExtraCurious) >> 24) & 0xFF;
+	} else {
+		script[i++] = 0x28; // delay(60)
+		script[i++] = ((60) >> 0) & 0xFF;
+		script[i++] = ((60) >> 8) & 0xFF;
+	}
+	
+	script[i++] = 0x03; // return
+	script[i++] = 0x02; // end
+	
+	gRamScriptPtr = (const u8*) script;
+	
+	// gSpecialVar_Result = InitRamScript_NoEventObject(script, i);
+}
+
+void PokemonSaysTeardownSongScript(struct ScriptContext *ctx)
+{
+	Free((void*) gRamScriptPtr);
+	gRamScriptPtr = NULL;
+}
+
+void PokemonSaysPlayExtraNote(struct ScriptContext *ctx)
+{
+	u16 curStep = VarGet(VAR_NUM_CORRECT_STEPS);
+	const u16* music = PokemonSays_GetCurrentSong();
+	const struct PokemonSaysNote* correctNote;
+	
+	if (!FlagGet(FLAG_TILES_ACTIVE))
+    {
+        PlaySE(SE_HAZURE);
+		gSpecialVar_Result = FALSE;
+        return;
+    }
+	correctNote = &sSongNotes[music[curStep] >> 8];
+    if (VarGet(VAR_LAST_TALKED) == correctNote->localId)
+	{
+		ScriptMovement_StartObjectMovementScript(correctNote->localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, correctNote->movement);
+		PlaySE(correctNote->soundEffect);
+		if (music[curStep+1] >> 8 != PS_NOTE_END)
+        {
+            VarSet(VAR_NUM_CORRECT_STEPS, curStep + 1);
+        }
+        else
+        {
+            if (VarGet(VAR_CURR_SONG) < 3)
+                VarSet(VAR_SONG_COMPLETION_STATE, 1);
+            else
+                VarSet(VAR_SONG_COMPLETION_STATE, 2);
+
+            FlagClear(FLAG_TILES_ACTIVE);
+        }
+		gSpecialVar_Result = TRUE;
+	}
+    else
+    {
+        PlaySE(SE_HAZURE);
+        // FlagClear(FLAG_TILES_ACTIVE);
+        VarSet(VAR_NUM_CORRECT_STEPS, 0);
+		gSpecialVar_Result = FALSE;
+    }
+}
 
 static void PlayPuzzleMusicTileNote(u32 metatileId)
 {
-    switch (metatileId)
-    {
-    case METATILE_ID(TrickHousePuzzle, MusicNoteYellow):
-        PlaySE(SE_TOY_C);
-        break;
-    case METATILE_ID(TrickHousePuzzle, MusicNoteBlue):
-        PlaySE(SE_TOY_D);
-        break;
-    case METATILE_ID(TrickHousePuzzle, MusicNoteGreen):
-        PlaySE(SE_TOY_E);
-        break;
-    case METATILE_ID(TrickHousePuzzle, MusicNotePink):
-        PlaySE(SE_TOY_F);
-        break;
-    case METATILE_ID(TrickHousePuzzle, MusicNoteRed):
-        PlaySE(SE_TOY_G);
-        break;
-    }
+	u8 i;
+	for (i = 0; i < ARRAY_COUNT(sSongNotes); i++)
+	{
+		if (sSongNotes[i].metaTileId == metatileId)
+		{
+			PlaySE(sSongNotes[i].soundEffect);
+        	break;
+		}
+	}
 }
 
 void HandlePuzzleMusicTileStep(u32 metatileId)
 {
-    u16 curSong, curStep, correctNote;
+    u16 curStep = VarGet(VAR_NUM_CORRECT_STEPS);
+	const u16* music = PokemonSays_GetCurrentSong();
+	const struct PokemonSaysNote* correctNote;
 
-    if (!FlagGet(FLAG_MUSIC_NOTE_PUZZLE_TILES_ACTIVE))
+    if (!FlagGet(FLAG_TILES_ACTIVE))
     {
         PlayPuzzleMusicTileNote(metatileId);
         return;
     }
 
-    curSong = VarGet(VAR_MUSIC_NOTE_PUZZLE_CUR_SONG);
-    curStep = VarGet(VAR_MUSIC_NOTE_PUZZLE_NUM_CORRECT_STEPS);
-    correctNote = sSongNotes[curSong][curStep];
-    if (metatileId == correctNote)
+	correctNote = &sSongNotes[music[curStep] >> 8];
+    if (metatileId == correctNote->metaTileId)
     {
         PlayPuzzleMusicTileNote(metatileId);
-        if (sSongNotes[curSong][curStep + 1] != 0xFFFF)
+        if (music[curStep+1] >> 8 != PS_NOTE_END)
         {
-            VarSet(VAR_MUSIC_NOTE_PUZZLE_NUM_CORRECT_STEPS, curStep + 1);
+            VarSet(VAR_NUM_CORRECT_STEPS, curStep + 1);
         }
         else
         {
-            if (curSong < ARRAY_COUNT(sSongNotes) - 1)
-                VarSet(VAR_MUSIC_NOTE_PUZZLE_SONG_COMPLETION_STATE, 1);
+            if (VarGet(VAR_CURR_SONG) < 3)
+                VarSet(VAR_SONG_COMPLETION_STATE, 1);
             else
-                VarSet(VAR_MUSIC_NOTE_PUZZLE_SONG_COMPLETION_STATE, 2);
+                VarSet(VAR_SONG_COMPLETION_STATE, 2);
 
-            FlagClear(FLAG_MUSIC_NOTE_PUZZLE_TILES_ACTIVE);
+            FlagClear(FLAG_TILES_ACTIVE);
         }
     }
     else
     {
         PlaySE(SE_HAZURE);
-        // FlagClear(FLAG_MUSIC_NOTE_PUZZLE_TILES_ACTIVE);
-        VarSet(VAR_MUSIC_NOTE_PUZZLE_NUM_CORRECT_STEPS, 0);
+        // FlagClear(FLAG_TILES_ACTIVE);
+        VarSet(VAR_NUM_CORRECT_STEPS, 0);
     }
 }
 
 
-#undef FLAG_MUSIC_NOTE_PUZZLE_HIDE_SCROLL
-#undef FLAG_MUSIC_NOTE_PUZZLE_TILES_ACTIVE
-#undef VAR_MUSIC_NOTE_PUZZLE_CUR_SONG
-#undef VAR_MUSIC_NOTE_PUZZLE_NUM_CORRECT_STEPS
-#undef VAR_MUSIC_NOTE_PUZZLE_TARGET_TILE
-#undef VAR_MUSIC_NOTE_PUZZLE_SONG_COMPLETION_STATE
+#undef FLAG_HIDE_SCROLL
+#undef FLAG_TILES_ACTIVE
+#undef FLAG_HIDE_SINGERS
+#undef FLAG_SHOW_EXTRA_SINGER
+#undef FLAG_EXTRA_ENABLED
+#undef VAR_CURR_SONG
+#undef VAR_NUM_CORRECT_STEPS
+#undef VAR_TARGET_TILE
+#undef VAR_SONG_COMPLETION_STATE
+#undef VAR_SONG_A
+#undef VAR_SONG_B
+#undef VAR_SONG_C
+#undef VAR_SONG_D
 
 ///////////////////////////////////////////////////////////////////////////////
 // Puzzle: Waterflow Caverns 

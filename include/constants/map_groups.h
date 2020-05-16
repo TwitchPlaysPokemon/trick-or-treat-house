@@ -17,6 +17,7 @@
 #define MAP_TEST_MIRROR_MOVEMENT   (3 | (1 << 8))
 #define MAP_TEST_COPY_MOVEMENT     (4 | (1 << 8))
 #define MAP_INDOOR_MAP             (5 | (1 << 8))
+#define MAP_TEST_MUSIC_ROOM        (6 | (1 << 8))
 
 // Map Group 2
 #define MAP_MAUVILLE_CITY_CUTSCENE (0 | (2 << 8))
