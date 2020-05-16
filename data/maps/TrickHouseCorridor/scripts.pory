@@ -6,13 +6,7 @@ mapscripts TrickHouseCorridor_MapScripts {
 		if (var(VAR_PUZZLE_STATE) == 1) {
 			call(TrickHouseCorridor_OpenPuzzleDoor)
 		}
-		if (!flag(FLAG_SYS_POKEMON_GET)) {
-			// enable the rental mon cutscene
-			setvar (VAR_TEMP_E, 1) 
-			// Position the rental lady in the path
-			setobjectxyperm(1, 11, 7)
-		} 
-		elif (flag(FLAG_PUZZLE_HAS_CHANGED_PARTY)) {
+		if (flag(FLAG_PUZZLE_HAS_CHANGED_PARTY)) {
 			// Position the rental lady in the door of the den
 			setobjectxyperm(1, 10, 5)
 			setobjectmovementtype(1, MOVEMENT_TYPE_FACE_DOWN)
@@ -21,6 +15,12 @@ mapscripts TrickHouseCorridor_MapScripts {
 				copyvar(VAR_DEN_BLOCKED_EXCUSE, VAR_RESULT)
 				addvar(VAR_DEN_BLOCKED_EXCUSE, 1)
 			}
+		}
+		elif (!flag(FLAG_SYS_POKEMON_GET)) {
+			// enable the rental mon cutscene
+			setvar (VAR_TEMP_E, 1) 
+			// Position the rental lady in the path
+			setobjectxyperm(1, 11, 7)
 		}
 		else {
 			getpartysize
@@ -61,6 +61,7 @@ script(local) TrickHouseCorridor_CloseBackDoor {
 // ----------------------------------------------------
 
 script(local) TrickHouseCorridor_IncrementPuzzle {
+	clearflag (FLAG_IS_PUZZLE_INTRODUCED)
 	call (PuzzleCommon_EventScript_IncrementPuzzle)
 	clearflag (FLAG_HIDE_TRICK_HOUSE_INTRO_CHAR)
 	callnative (SetupPuzzleWarp)
@@ -74,19 +75,19 @@ script(local) TrickHouseCorridor_IncrementPuzzle {
 script TrickHouseCorridor_EventScript_Lady {
 	if (flag(FLAG_PUZZLE_HAS_CHANGED_PARTY)) {
 		lock
+		faceplayer
 		message (TrickHouseCorridor_Text_DenExcuseStart)
 		waitmessage
 		selectpointer_wrap(TrickHouseCorridor_StringTable_DenExcuses, VAR_DEN_BLOCKED_EXCUSE)
 		message (0)
 		waitmessage
 		waitbuttonpress
+		applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 		release
 		end
 	}
-	lock
 	msgbox ("If you ever need to rest, feel free to\n"
-			"stop in the Den to my right.$")
-	release
+			"stop in the Den to my right.$", MSGBOX_NPC)
 }
 
 script TrickHouseCorridor_TriggerScript_AdoptionCutscene {

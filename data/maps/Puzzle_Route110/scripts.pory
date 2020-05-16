@@ -5,8 +5,9 @@ Puzzle_Route110_MapScripts:: @ 81EF269
 	puzzle_quip Puzzle_Route110_Quip
 	puzzle_metavars Puzzle_Route110_Variables
 	puzzle_item_prereqs Puzzle_Route110_Items
-	puzzle_teardown_script Puzzle_Route110_Teardown
+	@ puzzle_teardown_script Puzzle_Route110_Teardown
 	puzzle_candylist Puzzle_Route110_CandyList
+	map_script MAP_SCRIPT_PUZZLE_EXIT_SCRIPT, Puzzle_Route110_Teardown
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_Route110_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_Route110_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_Route110_FrameTable

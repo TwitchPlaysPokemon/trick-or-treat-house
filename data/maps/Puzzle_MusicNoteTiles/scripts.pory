@@ -18,6 +18,7 @@ Puzzle_MusicNoteTiles_MapScripts::
     puzzle_adjective Puzzle_MusicNoteTiles_Adjective
     puzzle_quip Puzzle_MusicNoteTiles_Quip
     puzzle_candylist Puzzle_MusicNoteTiles_CandyList
+    puzzle_setup_script Puzzle_MusicNoteTiles_Setup
     map_script MAP_SCRIPT_ON_LOAD, Puzzle_MusicNoteTiles_OnLoad
     map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_MusicNoteTiles_FrameTable
     .byte 0
@@ -47,12 +48,16 @@ Puzzle_MusicNoteTiles_CandyList:
 	.2byte 0
 `
 
-script Puzzle_MusicNoteTiles_OnLoad {
-    if (!flag(FLAG_PUZZLE_HAS_STARTED)) {
-        setflag(FLAG_HIDE_SCROLL)
-    }
-    clearflag(FLAG_TILES_ACTIVE)
+script Puzzle_MusicNoteTiles_Setup {
+    setflag(FLAG_HIDE_SCROLL)
     callnative(PokemonSaysInitPuzzle)
+}
+
+script Puzzle_MusicNoteTiles_OnLoad {
+    // if (!flag(FLAG_PUZZLE_HAS_STARTED)) {
+    //     setflag(FLAG_HIDE_SCROLL)
+    // }
+    clearflag(FLAG_TILES_ACTIVE)
     if (flag(FLAG_SHOW_EXTRA_SINGER)) {
         setobjectmovementtype(7, MOVEMENT_TYPE_LOOK_AROUND)
         setmetatile(14, 4, 0x208, FALSE)

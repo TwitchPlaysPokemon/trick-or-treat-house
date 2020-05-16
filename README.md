@@ -31,7 +31,7 @@ A puzzle is identified by its first (or only) map. The ID of this map is put int
 	- Use this list to give HM Items if your puzzle requires it.
 - Meta Variable List: A list of variables and what they should be set to. This will be called by the framework mainly to set the graphic of the Trick Master in the front corridor, and the quip character in the back corridor. By default the intro character is the Trick Master and the quip character is random, but they can be set to any event object by this list (and most will even work!).
 - Candy List: A list of flags that are used by any candy in the puzzle. This is for stat tracking, to check if the player has picked up all candy in the puzzle after it has finished.
-- Setup Script: This script is run in addition to any other map introduction scripts when the player enters a puzzle from the trick house.
+- Setup Script: This script is run upon entering the puzzle for the first time, at the same time as the Loading
 - Teardown Script: This script is run before warping back to the Trick House. If the player is warping to the end room, `FLAG_PUZZLE_HAS_COMPLETED` will be set.
 
 In addition to the above map script header information, the following can be defined by or used by the puzzle.

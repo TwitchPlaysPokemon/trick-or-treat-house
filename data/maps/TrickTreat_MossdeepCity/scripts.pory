@@ -9,7 +9,37 @@ TrickTreat_MossdeepCity_MapScripts:: @ 81E4A96
 	puzzle_setup_script TrickTreat_MossdeepCity_SetupScript
 	puzzle_candylist TrickTreat_MossdeepCity_CandyList
 	.byte 0
+@ -----------------------------------------------------
 
+#define METATILE_DoorOff 0x021
+#define FLAG_BEAT_STEVEN FLAG_PUZZLE_4F
+#define VAR_TRICK_STOLEN_MON VAR_PUZZLE_00
+
+#define LID_TRICKSTER_A        20
+#define FLAG_TRICKSTER_A_HIDE  FLAG_PUZZLE_30
+#define VAR_TRICKSTER_A_POS    VAR_PUZZLE_10
+
+#define LID_TRICKSTER_B        21
+#define FLAG_TRICKSTER_B_HIDE  FLAG_PUZZLE_31
+#define VAR_TRICKSTER_B_POS    VAR_PUZZLE_11
+
+#define LID_TRICKSTER_C        22
+#define FLAG_TRICKSTER_C_HIDE  FLAG_PUZZLE_32
+#define VAR_TRICKSTER_C_POS    VAR_PUZZLE_12
+
+#define LID_TRICKSTER_D        23
+#define FLAG_TRICKSTER_D_HIDE  FLAG_PUZZLE_33
+#define VAR_TRICKSTER_D_POS    VAR_PUZZLE_13
+
+#define LID_TRICKSTER_E        24
+#define FLAG_TRICKSTER_E_HIDE  FLAG_PUZZLE_34
+@ #define VAR_TRICKSTER_E_POS    VAR_PUZZLE_14
+
+#define LID_RED_HERRING        25
+#define FLAG_RED_HERRING_HIDE  FLAG_PUZZLE_35
+@ #define VAR_RED_HERRING_POS    VAR_PUZZLE_14
+
+@ -----------------------------------------------------
 TrickTreat_MossdeepCity_Name:
 	.string "Malteasers in Mossdeep$"
 TrickTreat_MossdeepCity_Author:
@@ -46,19 +76,24 @@ TrickTreat_MossdeepCity_CandyList:
 	.2byte FLAG_PUZZLE_26 @ITEM_CANDY_HEALTHY
 	.2byte FLAG_PUZZLE_27 @ITEM_CANDY_UNCOMMON
 	@ Steven doesn't count unless you fight him and win
-	.2byte FLAG_PUZZLE_4F @ITEM_CANDY_TOBLERONE 
+	.2byte FLAG_BEAT_STEVEN @ITEM_CANDY_TOBLERONE 
 	.2byte 0
 
-@ -----------------------------------------------------
-#define METATILE_DoorOff 0x021
-#define FLAG_BEAT_STEVEN FLAG_PUZZLE_4F
-#define VAR_TRICK_STOLEN_MON VAR_PUZZLE_00
+
 `
-# VAR_TRICK_STOLEN_MON: 0 = Not yet, 1 = done, 6->2 = remaining to be found
+// VAR_TRICK_STOLEN_MON: 0 = Not yet, 1 = done, 6->2 = remaining to be found
 
 script TrickTreat_MossdeepCity_SetupScript {
-	# Position tricksters initially
 	call (TrickTreat_MossdeepCity_Tricksters_Setup)
+	random(3)
+	copyvar(VAR_TRICKSTER_A_POS, VAR_RESULT)
+	random(3)
+	copyvar(VAR_TRICKSTER_B_POS, VAR_RESULT)
+	random(3)
+	copyvar(VAR_TRICKSTER_C_POS, VAR_RESULT)
+	random(3)
+	copyvar(VAR_TRICKSTER_D_POS, VAR_RESULT)
+	// Position tricksters initially
 }
 
 script TrickTreat_MossdeepCity_OnTransition {
@@ -98,40 +133,71 @@ script TrickTreat_MossdeepCity_EventScript_1E4B2F {
 
 script TrickTreat_MossdeepCity_Tricksters_Setup {
 	if (var(VAR_TRICK_STOLEN_MON) == 0) {
-		setflag (FLAG_PUZZLE_30)
-		setobjectxyperm (20, 54, 31)
-		setflag (FLAG_PUZZLE_31)
-		setobjectxyperm (21, 54, 32)
-		clearflag (FLAG_PUZZLE_32)
-		setobjectxyperm (22, 65, 32)
-		setobjectmovementtype (22, MOVEMENT_TYPE_FACE_LEFT)
-		setflag (FLAG_PUZZLE_33)
-		setobjectxyperm (23, 65, 26)
-		setflag (FLAG_PUZZLE_34)
-		setobjectxyperm (24, 54, 32)
-	} elif (var(VAR_TRICK_STOLEN_MON) == 1) {
+		setflag (FLAG_TRICKSTER_A_HIDE)
+		setflag (FLAG_TRICKSTER_B_HIDE)
+		setflag (FLAG_TRICKSTER_D_HIDE)
+		setflag (FLAG_TRICKSTER_E_HIDE)
+		setobjectxyperm (LID_TRICKSTER_A, 54, 31)
+		setobjectxyperm (LID_TRICKSTER_B, 54, 32)
+		setobjectxyperm (LID_TRICKSTER_D, 65, 26)
+		setobjectxyperm (LID_TRICKSTER_E, 54, 32)
+		
+		clearflag (FLAG_TRICKSTER_C_HIDE)
+		setobjectmovementtype (LID_TRICKSTER_C, MOVEMENT_TYPE_FACE_LEFT)
+		setobjectxyperm (LID_TRICKSTER_C, 65, 32)
+	} 
+	elif (var(VAR_TRICK_STOLEN_MON) == 1) {
 		# Hide all
-		setflag (FLAG_PUZZLE_30)
-		setflag (FLAG_PUZZLE_31)
-		setflag (FLAG_PUZZLE_32)
-		setflag (FLAG_PUZZLE_33)
-		setflag (FLAG_PUZZLE_34)
-	} else {
-		clearflag (FLAG_PUZZLE_30)
-		setobjectxyperm (20, 12, 9)
-		setobjectmovementtype (20, MOVEMENT_TYPE_LOOK_AROUND)
-		clearflag (FLAG_PUZZLE_31)
-		setobjectxyperm (21, 50, 9)
-		setobjectmovementtype (21, MOVEMENT_TYPE_LOOK_AROUND)
-		clearflag (FLAG_PUZZLE_32)
-		setobjectxyperm (22, 78, 29)
-		setobjectmovementtype (22, MOVEMENT_TYPE_LOOK_AROUND)
-		clearflag (FLAG_PUZZLE_33)
-		setobjectxyperm (23, 74, 9)
-		setobjectmovementtype (23, MOVEMENT_TYPE_LOOK_AROUND)
-		clearflag (FLAG_PUZZLE_34)
-		setobjectxyperm (24, 42, 33)
-		setobjectmovementtype (24, MOVEMENT_TYPE_LOOK_AROUND)
+		setflag (FLAG_TRICKSTER_A_HIDE)
+		setflag (FLAG_TRICKSTER_B_HIDE)
+		setflag (FLAG_TRICKSTER_C_HIDE)
+		setflag (FLAG_TRICKSTER_D_HIDE)
+		setflag (FLAG_TRICKSTER_E_HIDE)
+		setflag (FLAG_RED_HERRING_HIDE)
+	} 
+	else {
+		// Beach hider
+		clearflag (FLAG_TRICKSTER_A_HIDE)
+		setobjectmovementtype (LID_TRICKSTER_A, MOVEMENT_TYPE_LOOK_AROUND)
+		switch (var(VAR_TRICKSTER_A_POS)) {
+			case 0: setobjectxyperm (LID_TRICKSTER_A, 12,  9) // Behind house
+			case 1: setobjectxyperm (LID_TRICKSTER_A, 10, 23) // Behind entrance
+			case 2: setobjectxyperm (LID_TRICKSTER_A, 14, 29) // Behind tree
+		}
+		// Main town area
+		clearflag (FLAG_TRICKSTER_B_HIDE)
+		setobjectmovementtype (LID_TRICKSTER_B, MOVEMENT_TYPE_LOOK_AROUND)
+		switch (var(VAR_TRICKSTER_B_POS)) {
+			case 0: setobjectxyperm (LID_TRICKSTER_B, 50,  9) // Behind gym
+			case 1: setobjectxyperm (LID_TRICKSTER_B, 32, 16) // Clump of trees
+			case 2: setobjectxyperm (LID_TRICKSTER_B, 36, 15) // Behind center
+		}
+		// Upper area (with red herring kid)
+		clearflag (FLAG_TRICKSTER_C_HIDE)
+		setobjectmovementtype (LID_TRICKSTER_C, MOVEMENT_TYPE_LOOK_AROUND)
+		switch (var(VAR_TRICKSTER_C_POS)) {
+			case 0: 
+				setobjectxyperm (LID_TRICKSTER_C, 78, 29)
+				setobjectxyperm (LID_RED_HERRING, 50, 15)
+			case 1: 
+				setobjectxyperm (LID_TRICKSTER_C, 56, 22)
+				setobjectxyperm (LID_RED_HERRING, 78, 29)
+			case 2: 
+				setobjectxyperm (LID_TRICKSTER_C, 50, 15)
+				setobjectxyperm (LID_RED_HERRING, 78, 29)
+		}
+		// 
+		clearflag (FLAG_TRICKSTER_D_HIDE)
+		setobjectmovementtype (LID_TRICKSTER_D, MOVEMENT_TYPE_LOOK_AROUND)
+		switch (var(VAR_TRICKSTER_D_POS)) {
+			case 0: setobjectxyperm (LID_TRICKSTER_D, 42, 33) // Watery trees
+			case 1: setobjectxyperm (LID_TRICKSTER_D, 51, 35) // Lower trees
+			case 2: setobjectxyperm (LID_TRICKSTER_D, 25, 15) // Behind house
+		}
+		// Behind the space center, static
+		clearflag (FLAG_TRICKSTER_E_HIDE)
+		setobjectmovementtype (LID_TRICKSTER_E, MOVEMENT_TYPE_LOOK_AROUND)
+		setobjectxyperm (LID_TRICKSTER_E, 74, 9)
 	}
 	return
 }
@@ -142,33 +208,33 @@ script TrickTreat_MossdeepCity_Tricksters_Trigger {
 	subvar (VAR_INTERACT_Y, 31)
 	selectpointer (TrickTreat_MossdeepCity_Tricksters_Movement0Table, VAR_INTERACT_Y)
 	applymovement (EVENT_OBJ_ID_PLAYER, 0)
-	applymovement (22, Common_Movement_WalkLeft2)
+	applymovement (LID_TRICKSTER_C, Common_Movement_WalkLeft2)
 	waitmovement (EVENT_OBJ_ID_PLAYER)
 	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceRight)
 	waitmovement (EVENT_OBJ_ID_PLAYER)
-	waitmovement (22)
-	addobject(20)
-	addobject(21)
-	addobject(23)
-	addobject(24)
+	waitmovement (LID_TRICKSTER_C)
+	addobject(LID_TRICKSTER_A)
+	addobject(LID_TRICKSTER_B)
+	addobject(LID_TRICKSTER_D)
+	addobject(LID_TRICKSTER_E)
 	message ("Trick or Treat!\p$")
 	waitmessage
-	applymovement (20, TrickTreat_MossdeepCity_Tricksters_Movement1)
+	applymovement (LID_TRICKSTER_A, TrickTreat_MossdeepCity_Tricksters_Movement1)
 	message ("So…{PAUSE 20} which will it be?\p$")
 	delay (12)
-	applymovement (21, TrickTreat_MossdeepCity_Tricksters_Movement2)
+	applymovement (LID_TRICKSTER_B, TrickTreat_MossdeepCity_Tricksters_Movement2)
 	waitmessage
 	delay (2)
-	applymovement (24, TrickTreat_MossdeepCity_Tricksters_Movement3)
+	applymovement (LID_TRICKSTER_E, TrickTreat_MossdeepCity_Tricksters_Movement3)
 	message ("The Trick?{PAUSE 40}\nOr the Treat?\p$")
 	delay (22)
 	playse (SE_PIN)
 	applymovement (EVENT_OBJ_ID_PLAYER, TrickTreat_MossdeepCity_Tricksters_MovementPlayerPanic)
-	applymovement (23, TrickTreat_MossdeepCity_Tricksters_Movement4)
-	waitmovement(20)
-	waitmovement(21)
-	waitmovement(23)
-	waitmovement(24)
+	applymovement (LID_TRICKSTER_D, TrickTreat_MossdeepCity_Tricksters_Movement4)
+	waitmovement(LID_TRICKSTER_A)
+	waitmovement(LID_TRICKSTER_B)
+	waitmovement(LID_TRICKSTER_D)
+	waitmovement(LID_TRICKSTER_E)
 	waitmovement(EVENT_OBJ_ID_PLAYER)
 	#
 	waitmessage
@@ -184,26 +250,26 @@ script TrickTreat_MossdeepCity_Tricksters_Trigger {
 	#
 	playse (SE_PIN)
 	applymovement (EVENT_OBJ_ID_PLAYER, TrickTreat_MossdeepCity_Tricksters_MovementPlayerPanic)
-	applymovement (20, TrickTreat_MossdeepCity_Tricksters_RunAway1)
-	applymovement (21, TrickTreat_MossdeepCity_Tricksters_RunAway2)
-	applymovement (22, TrickTreat_MossdeepCity_Tricksters_RunAway3)
-	applymovement (23, TrickTreat_MossdeepCity_Tricksters_RunAway4)
-	applymovement (24, TrickTreat_MossdeepCity_Tricksters_RunAway5)
+	applymovement (LID_TRICKSTER_A, TrickTreat_MossdeepCity_Tricksters_RunAway1)
+	applymovement (LID_TRICKSTER_B, TrickTreat_MossdeepCity_Tricksters_RunAway2)
+	applymovement (LID_TRICKSTER_C, TrickTreat_MossdeepCity_Tricksters_RunAway3)
+	applymovement (LID_TRICKSTER_D, TrickTreat_MossdeepCity_Tricksters_RunAway4)
+	applymovement (LID_TRICKSTER_E, TrickTreat_MossdeepCity_Tricksters_RunAway5)
 	message("HA HA HA HA HA HA HA HA HA!\n"
 			"You'll never find us!$")
 	waitmessage
 	waitbuttonpress
-	waitmovement(20)
-	waitmovement(21)
-	waitmovement(22)
-	waitmovement(23)
-	waitmovement(24)
+	waitmovement(LID_TRICKSTER_A)
+	waitmovement(LID_TRICKSTER_B)
+	waitmovement(LID_TRICKSTER_C)
+	waitmovement(LID_TRICKSTER_D)
+	waitmovement(LID_TRICKSTER_E)
 	waitmovement(EVENT_OBJ_ID_PLAYER)
-	removeobject(20)
-	removeobject(21)
-	removeobject(22)
-	removeobject(23)
-	removeobject(24)
+	removeobject(LID_TRICKSTER_A)
+	removeobject(LID_TRICKSTER_B)
+	removeobject(LID_TRICKSTER_C)
+	removeobject(LID_TRICKSTER_D)
+	removeobject(LID_TRICKSTER_E)
 	call (TrickTreat_MossdeepCity_Tricksters_Setup)
 	closemessage
 	releaseall
@@ -674,4 +740,20 @@ raw `
 #undef METATILE_DoorOff
 #undef FLAG_BEAT_STEVEN
 #undef VAR_TRICK_STOLEN_MON
+#undef LID_TRICKSTER_A
+#undef FLAG_TRICKSTER_A_HIDE
+#undef VAR_TRICKSTER_A_POS
+#undef LID_TRICKSTER_B
+#undef FLAG_TRICKSTER_B_HIDE
+#undef VAR_TRICKSTER_B_POS
+#undef LID_TRICKSTER_C
+#undef FLAG_TRICKSTER_C_HIDE
+#undef VAR_TRICKSTER_C_POS
+#undef LID_TRICKSTER_D
+#undef FLAG_TRICKSTER_D_HIDE
+#undef VAR_TRICKSTER_D_POS
+#undef LID_TRICKSTER_E
+#undef FLAG_TRICKSTER_E_HIDE
+#undef LID_RED_HERRING
+#undef FLAG_RED_HERRING_HIDE
 `

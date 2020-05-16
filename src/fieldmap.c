@@ -13,6 +13,7 @@
 #include "script.h"
 #include "secret_base.h"
 #include "trainer_hill.h"
+#include "trickhouse.h"
 #include "tv.h"
 #include "constants/rgb.h"
 
@@ -53,6 +54,7 @@ void InitMap(void)
 {
     InitMapLayoutData(&gMapHeader);
     SetOccupiedSecretBaseEntranceMetatiles(gMapHeader.events);
+    RunPuzzleSetupScript();
     RunOnLoadMapScript();
 }
 
@@ -62,6 +64,7 @@ void InitMapFromSavedGame(void)
     InitSecretBaseAppearance(FALSE);
     SetOccupiedSecretBaseEntranceMetatiles(gMapHeader.events);
     LoadSavedMapView();
+    // RunPuzzleSetupScript();
     RunOnLoadMapScript();
     UpdateTVScreensOnMap(gBackupMapLayout.width, gBackupMapLayout.height);
 }

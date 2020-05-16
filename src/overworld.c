@@ -857,7 +857,7 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     DoCurrentWeather();
     ResetFieldTasksArgs();
     RunOnResumeMapScript();
-    RunPuzzleSetupScript();
+    RunPuzzleIntro();
     
     // if (gMapHeader.regionMapSectionId != MAPSEC_BATTLE_FRONTIER || gMapHeader.regionMapSectionId != sLastMapSectionId)
     //     ShowMapNamePopup();
@@ -1613,7 +1613,7 @@ void sub_80861E8(void)
 
 static void sub_8086204(void)
 {
-    RunPuzzleSetupScript();
+    RunPuzzleIntro();
     // if ((gMapHeader.flags & 0xF8) == 8 && SecretBaseMapPopupEnabled() == TRUE)
     //     ShowMapNamePopup();
     sub_80AF3C8();
@@ -1863,7 +1863,7 @@ static bool32 load_map_stuff(u8 *state, u32 a2)
         (*state)++;
         break;
     case 11:
-        RunPuzzleSetupScript();
+        RunPuzzleIntro();
         // if ((gMapHeader.flags & 0xF8) == 8 && SecretBaseMapPopupEnabled() == TRUE)
         //     ShowMapNamePopup();
         (*state)++;

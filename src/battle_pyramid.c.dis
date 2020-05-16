@@ -1592,6 +1592,7 @@ void GenerateBattlePyramidFloorLayout(u16 *backupMapData, bool8 setPlayerPositio
             layoutMap += mapLayout->width;
         }
     }
+    RunPuzzleSetupScript();
     RunOnLoadMapScript();
     free(floorLayoutOffsets);
 }

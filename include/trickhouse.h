@@ -3,6 +3,7 @@
 
 u16 GetCurrentPuzzleMapId();
 void RunPuzzleSetupScript();
+void RunPuzzleIntro();
 void RunPuzzleTeardownScript();
 
 #endif // GUARD_TRICKHOUSE_H

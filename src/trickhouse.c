@@ -72,7 +72,7 @@ extern const u8 PuzzleCommon_DefaultSetupScript[];
 void RunPuzzleSetupScript()
 {
 	u16 currPuzzle = GetCurrentPuzzleMapId();
-	if (!FlagGet(FLAG_IS_PUZZLE_SETUP) &&
+	if (!FlagGet(FLAG_PUZZLE_HAS_STARTED) &&
 	    gSaveBlock1Ptr->location.mapGroup == (currPuzzle >> 8) &&
 		gSaveBlock1Ptr->location.mapNum == (currPuzzle & 0xFF))
 	{
@@ -82,39 +82,51 @@ void RunPuzzleSetupScript()
 		{
 			ScriptContext2_RunNewScript(script);
 		}
+		// 
+		FlagSet(FLAG_PUZZLE_HAS_STARTED);
+		gPuzzleTimer = gMain.vblankCounter1;
+	}
+}
+
+extern const u8 PuzzleCommon_DefaultSetupScript[];
+void RunPuzzleIntro()
+{
+	u16 currPuzzle = GetCurrentPuzzleMapId();
+	if (!FlagGet(FLAG_IS_PUZZLE_INTRODUCED) &&
+	    gSaveBlock1Ptr->location.mapGroup == (currPuzzle >> 8) &&
+		gSaveBlock1Ptr->location.mapNum == (currPuzzle & 0xFF))
+	{
 		// Show map name
 		ShowMapNamePopup();
 		// 
-		FlagSet(FLAG_IS_PUZZLE_SETUP);
-		// 
-		if (!FlagGet(FLAG_PUZZLE_HAS_STARTED)) 
-		{
-			FlagSet(FLAG_PUZZLE_HAS_STARTED);
-			gPuzzleTimer = gMain.vblankCounter1;
-		}
+		FlagSet(FLAG_IS_PUZZLE_INTRODUCED);
 	}
 }
 
 extern const u8 PuzzleCommon_DefaultTeardownScript[];
 void RunPuzzleTeardownScript()
 {
-	if (FlagGet(FLAG_IS_PUZZLE_SETUP) &&
-	    gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(TRICK_HOUSE_END))
+	u16 currPuzzle = GetCurrentPuzzleMapId();
+	if (FlagGet(FLAG_PUZZLE_HAS_STARTED) && 
+		gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(TRICK_HOUSE_END) &&
+		gSaveBlock1Ptr->location.mapNum == MAP_NUM(TRICK_HOUSE_END))
 	{
-		u16 currPuzzle = GetCurrentPuzzleMapId();
 		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_TEARDOWN_SCRIPT);
-		
-		FlagClear(FLAG_IS_PUZZLE_SETUP);
-		// Only stop timer when arriving in end room
-		if (FlagGet(FLAG_PUZZLE_HAS_STARTED) && 
-			gSaveBlock1Ptr->location.mapNum == MAP_NUM(TRICK_HOUSE_END))
+		if (script != NULL)
 		{
-			FlagClear(FLAG_PUZZLE_HAS_STARTED);
-			FlagSet(FLAG_PUZZLE_HAS_COMPLETED);
-			// set timer to the number of seconds it took to do the puzzle
-			gPuzzleTimer = (gMain.vblankCounter1 - gPuzzleTimer) / 60;
+			ScriptContext2_RunNewScript(script);
 		}
 		
+		FlagClear(FLAG_PUZZLE_HAS_STARTED);
+		FlagSet(FLAG_PUZZLE_HAS_COMPLETED);
+		// set timer to the number of seconds it took to do the puzzle
+		gPuzzleTimer = (gMain.vblankCounter1 - gPuzzleTimer) / 60;
+	}
+	
+	if (gLastUsedWarp.mapGroup != MAP_GROUP(TRICK_HOUSE_END) &&
+		gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(TRICK_HOUSE_END))
+	{
+		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_EXIT_SCRIPT);
 		if (script != NULL)
 		{
 			ScriptContext2_RunNewScript(script);
