@@ -7,7 +7,7 @@ Puzzle_Wilke_MapScripts::
 	puzzle_item_prereqs Puzzle_Wilke_PrereqItems
 	puzzle_candylist Puzzle_Wilke_CandyList
 	puzzle_devcommentary Puzzle_Wilke_DevCommentary
-	map_script MAP_SCRIPT_ON_LOAD, Puzzle_Wilke_OnLoad
+	map_script MAP_SCRIPT_PUZZLE_SETUP_SCRIPT, Puzzle_Wilke_Setup
 	.byte 0
 
 Puzzle_Wilke_Name:
@@ -42,8 +42,8 @@ Puzzle_Wilke_CandyList:
 	.2byte FLAG_CANDY_COMMON_01
 	.2byte 0
 
-Puzzle_Wilke_OnLoad:
-	setflag FLAG_TEMP_10
+Puzzle_Wilke_Setup:
+	setflag FLAG_PUZZLE_20
 	end
 
 @ -----------------------------------------------------

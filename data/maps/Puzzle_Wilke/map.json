@@ -87,7 +87,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_TEMP_10",
+            "flag": "FLAG_PUZZLE_20",
             "graphics_id": "EVENT_OBJ_GFX_TRICK_SCROLL",
             "movement_range_x": 0,
             "movement_range_y": 0,

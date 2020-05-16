@@ -5022,6 +5022,12 @@ static bool8 IsCoordOutsideEventObjectMovementRange(struct EventObject *eventObj
     s16 right;
     s16 top;
     s16 bottom;
+    
+    // Max range = move anywhere on the map
+    if (eventObject->range.as_byte == 0xFF)
+    {
+        return FALSE;
+    }
 
     if (eventObject->range.as_nybbles.x != 0)
     {
