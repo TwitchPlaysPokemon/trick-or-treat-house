@@ -969,4 +969,25 @@ void LoadBirdLocation(struct ScriptContext *ctx)
 #undef LID_BIRD
 #undef VAR_BIRD_LOCATION
 
+///////////////////////////////////////////////////////////////////////////////
+// Puzzle: Tic Rac Toe
+// MAP_PUZZLE_TIC_RAC_TOE
 
+void CountNPCTriggers(struct ScriptContext *ctx) {
+	s16 o, i, x, y;
+	int mid;
+	struct EventObject *eventObject = NULL;
+    struct CoordEvent *coordEvent = NULL;
+	const u8 *currConfig;
+	
+	gSpecialVar_Result = 0;
+	
+	for (o = 0; o < EVENT_OBJECTS_COUNT; o++) {
+		eventObject = &gEventObjects[o];
+        if (eventObject->isPlayer) continue;
+        if (!eventObject->active) continue;
+		if (!eventObject->isStandingOnTrigger) continue;
+		
+		gSpecialVar_Result++;
+	}
+}

@@ -45,7 +45,7 @@ Puzzle_TwinMemories_CandyList:
 	.2byte 0
 
 Puzzle_TwinMemories_FrameTable:
-	@ VAR_STEP_TRIGGER is set to 1 by Task_MonitorEventObjectTriggers when any npc steps on a trigger
+	@ VAR_STEP_TRIGGER is set to 1 by MonitorEventObjectTriggersStepCallback when any npc steps on a trigger
 	map_script_2 VAR_STEP_TRIGGER, 1, Puzzle_TwinMemories_CheckPuzzleSolved1
 	map_script_2 VAR_STEP_TRIGGER, 2, Puzzle_TwinMemories_CheckPuzzleSolved2
 	map_script_2 VAR_STEP_TRIGGER, 3, Puzzle_TwinMemories_TriggerTrappedFailsafe
@@ -55,7 +55,8 @@ Puzzle_TwinMemories_MapTable:
 	map_script_2 VAR_LAST_WARP_ID, 4, Puzzle_TwinMemories_SetupRightBoulders
 	.2byte 0
 Puzzle_TwinMemories_OnResume:
-	setstepcallback 9
+	@ Setup the NPC Trigger step callback MonitorEventObjectTriggersStepCallback
+	setstepcallback 9 
 	end
 
 @ -----------------------------------------------------

@@ -1469,6 +1469,16 @@
             "primary_tileset": "gTileset_SecretBase",
             "secondary_tileset": "gTileset_SecretBaseBrownCave",
             "width": 20
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_TicRacToe/map.bin",
+            "border_filepath": "data/layouts/Puzzle_TicRacToe/border.bin",
+            "height": 20,
+            "id": "LAYOUT_PUZZLE_TIC_RAC_TOE",
+            "name": "Puzzle_TicRacToe_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_TrickHousePuzzle",
+            "width": 26
         }
     ],
     "layouts_table_label": "gMapLayouts"

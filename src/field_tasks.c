@@ -37,6 +37,7 @@ static void WaterTemplePerStepCallback(u8 taskId);
 static void SootopolisGymIcePerStepCallback(u8 taskId);
 static void CrackedFloorPerStepCallback(u8 taskId);
 static void MonitorEventObjectTriggersStepCallback(u8 taskId);
+static void MonitorMultiEventObjectTriggersStepCallback(u8 taskId);
 extern void HiddenMaze_PulseWallTiles(u8 taskId);
 extern void TrickHouse_CycleTextPalette(u8 taskId);
 static void Task_MuddySlope(u8 taskId);
@@ -55,6 +56,7 @@ static const TaskFunc sPerStepCallbacks[] =
     MonitorEventObjectTriggersStepCallback,
     HiddenMaze_PulseWallTiles,
     TrickHouse_CycleTextPalette,
+    MonitorMultiEventObjectTriggersStepCallback, //12
 };
 
 // Each element corresponds to a y coordinate row in the sootopolis gym 1F map.
@@ -1092,4 +1094,58 @@ void TrickHouse_CycleTextPalette(u8 taskId)
 }
 
 
+
+#define tPosX data[1]
+#define tPosY data[2]
+
+// The difference between this callback and the previous one
+// is that this one can handle multiple objects stepping on triggers
+// at the same time.
+static void MonitorMultiEventObjectTriggersStepCallback(u8 taskId)
+{
+    s16 x, y, o, t;
+    bool8 standing;
+    struct EventObject *eventObject = NULL;
+    struct CoordEvent *coordEvent = NULL;
+    s16 *data = gTasks[taskId].data;
+    PlayerGetDestCoords(&x, &y);
+    
+    // If the var is still set like we set it, the expected frame table script hasn't completed yet
+    // so don't continue checking.
+    if (VarGet(VAR_STEP_TRIGGER) != 0) return;
+    
+    // For every event object
+    for (o = 0; o < EVENT_OBJECTS_COUNT; o++) {
+        eventObject = &gEventObjects[o];
+        if (eventObject->isPlayer) continue;
+        if (!eventObject->active) continue;
+        if (eventObject->heldMovementActive || eventObject->singleMovementActive) continue;
+        
+        // Clear the standing flag, but store its current value in case it needs to be put back
+        standing = eventObject->isStandingOnTrigger;
+        eventObject->isStandingOnTrigger = FALSE;
+        
+        // For every trigger on the map
+        for (t = 0; t < gMapHeader.events->coordEventCount; t++) {
+            coordEvent = &gMapHeader.events->coordEvents[t];
+            if (!coordEvent->npcTrigger) continue;
+            if (eventObject->currentCoords.x != coordEvent->x + 7) continue;
+            if (eventObject->currentCoords.y != coordEvent->y + 7) continue;
+            
+            if (!standing) {
+                // If this event wasn't standing on a trigger before, trigger it now
+                VarSet(VAR_STEP_TRIGGER, 1);
+            }
+            eventObject->isStandingOnTrigger = TRUE;
+            break;
+        }
+    }
+    tPosX = x;
+    tPosY = y;
+}
+
+#undef tPosX
+#undef tPosY
+#undef tRunningVar
+#undef tRunningIndex
 

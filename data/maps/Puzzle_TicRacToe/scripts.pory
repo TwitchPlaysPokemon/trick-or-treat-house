@@ -1,0 +1,170 @@
+raw `
+Puzzle_TicRacToe_MapScripts::
+	puzzle_info Puzzle_TicRacToe_Name, Puzzle_TicRacToe_Author
+	@ puzzle_adjective Puzzle_TicRacToe_Adjective
+	@ puzzle_quip Puzzle_TicRacToe_Quip
+	@ puzzle_metavars Puzzle_TicRacToe_Variables
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_TicRacToe_OnLoad
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TicRacToe_OnResume
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_TicRacToe_FrameTable
+	.byte 0
+
+Puzzle_TicRacToe_Name:
+	.string "Tic Rac Toe$"
+Puzzle_TicRacToe_Author:
+	.string "MyRattata$"
+Puzzle_TicRacToe_Adjective:
+	.string "$"
+
+#define LID_BLOCK_BOY               4
+#define VAR_ZIG1_STATE              VAR_PUZZLE_00
+#define VAR_ZIG2_STATE              VAR_PUZZLE_01
+#define VAR_ZIG3_STATE              VAR_PUZZLE_02
+#define FLAG_ALL_BUTTONS_PRESSED    FLAG_PUZZLE_20
+
+Puzzle_TicRacToe_FrameTable:
+	@ VAR_STEP_TRIGGER is set to 1 by MonitorMultiEventObjectTriggersStepCallback when any npc steps on a trigger
+	map_script_2 VAR_STEP_TRIGGER, 1, Puzzle_TicRacToe_StepTriggerCallback
+	.2byte 0
+`
+
+script(local) Puzzle_TicRacToe_OnLoad {
+	if (var(VAR_ZIG1_STATE) == 0) {
+		setobjectxyperm(1, 2, 14)
+		setobjectmovementtype(1, MOVEMENT_TYPE_FACE_DOWN)
+	}
+	if (var(VAR_ZIG2_STATE) == 0) {
+		setobjectxyperm(2, 13, 9)
+		setobjectmovementtype(2, MOVEMENT_TYPE_FACE_UP)
+	}
+	if (var(VAR_ZIG3_STATE) == 0) {
+		setobjectxyperm(3, 24, 9)
+		setobjectmovementtype(3, MOVEMENT_TYPE_FACE_UP_AND_RIGHT)
+	}
+	if (var(VAR_STEP_TRIGGER) == 2) {
+		setmetatile(4, 4, 0x26A, FALSE)
+	}
+}
+script(local) Puzzle_TicRacToe_OnResume {
+	// Setup the NPC Mutli Trigger callback
+	setstepcallback(12)
+}
+script(local) Puzzle_TicRacToe_StepTriggerCallback {
+	if (flag(FLAG_ALL_BUTTONS_PRESSED) == FALSE) {
+		callnative (CountNPCTriggers)
+		if (var(VAR_RESULT) == 3) {
+			playse (SE_SEIKAI)
+			setmetatile(4, 4, 0x26A, FALSE)
+			setflag(FLAG_ALL_BUTTONS_PRESSED)
+			setvar(VAR_STEP_TRIGGER, 2) //disarm step trigger
+			end
+		}
+	}
+	setvar(VAR_STEP_TRIGGER, 0)
+}
+
+
+//-----------------------------------------------------
+
+script Puzzle_TicRacToe_Zigboy {
+	if (var(VAR_ZIG1_STATE) == 0) {
+		lock
+		msgbox("This Zigzagoon is so cute!")
+		release
+		end
+	}
+	elif (var(VAR_ZIG1_STATE) == 1) {
+		
+	}
+	elif (var(VAR_ZIG1_STATE) == 2) {
+		goto(Puzzle_TicRacToe_TriggerScript_BlockOut)
+	}
+	elif (var(VAR_ZIG1_STATE) == 3) {
+		msgbox("Sorry.$")
+	}
+}
+
+//-----------------------------------------------------
+
+
+script Puzzle_TicRacToe_TriggerScript_BlockIn {
+	lock
+	//
+	special (SpawnCameraObject)
+	applymovement(LID_BLOCK_BOY, Puzzle_TicRacToe_Movement_BlockIn_Boy)
+	applymovement(EVENT_OBJ_ID_PLAYER, Puzzle_TicRacToe_Movement_BlockIn_Player)
+	waitmovement(EVENT_OBJ_ID_PLAYER)
+	// 
+	msgbox ("OMG these Zigzagoon are SO CUTE!\p"
+			"Just look at them!\n"
+			"They copy your movement!$")
+	closemessage
+	// 
+	applymovement(LID_BLOCK_BOY, Common_Movement_FaceUp)
+	applymovement(EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp)
+	applymovement(EVENT_OBJ_ID_CAMERA, Puzzle_TicRacToe_Movement_BlockIn_Camera)
+	waitmovement(EVENT_OBJ_ID_CAMERA)
+	//
+	special (RemoveCameraObject)
+	copyobjectxytoperm(LID_BLOCK_BOY)
+	setvar(VAR_TEMP_0, 1)
+	release
+}
+script Puzzle_TicRacToe_TriggerScript_BlockOut {
+	lock
+	//
+	special (SpawnCameraObject)
+	applymovement(EVENT_OBJ_ID_CAMERA, Puzzle_TicRacToe_Movement_BlockOut_Camera)
+	//
+	message (".{PAUSE 30}.{PAUSE 30}.{PAUSE 30}Hm?\p"
+			"Oh! I'm in your way, sorry!\p$")
+	delay (90)
+	applymovement(LID_BLOCK_BOY, Common_Movement_FaceRight)
+	waitmovement(LID_BLOCK_BOY)
+	waitmessage
+	//
+	applymovement(LID_BLOCK_BOY, Puzzle_TicRacToe_Movement_BlockOut_Boy)
+	message("I just got so distracted with watching\n"
+			"all the Zigzagoon, ya know?$")
+	waitmovement
+	waitmessage
+	waitbuttonpress
+	//
+	special (RemoveCameraObject)
+	copyobjectxytoperm(LID_BLOCK_BOY)
+	release
+}
+script Puzzle_TicRacToe_TriggerScript_ResetBlock {
+	setvar(VAR_TEMP_0, 0)
+}
+
+movement Puzzle_TicRacToe_Movement_BlockIn_Boy {
+	face_right
+	emote_exclamation_mark
+	delay_16 * 2
+	walk_fast_right * 2
+}
+movement Puzzle_TicRacToe_Movement_BlockOut_Boy {
+	walk_left * 2
+	walk_in_place_fast_right
+}
+movement Puzzle_TicRacToe_Movement_BlockIn_Player {
+	delay_16 * 3
+	slide_right
+	face_left
+}
+movement Puzzle_TicRacToe_Movement_BlockIn_Camera {
+	walk_diag_northeast
+	walk_up * 2
+}
+movement Puzzle_TicRacToe_Movement_BlockOut_Camera {
+	walk_down * 3
+}
+
+raw `
+#undef LID_BLOCK_BOY
+#undef VAR_ZIG1_STATE
+#undef VAR_ZIG2_STATE
+#undef VAR_ZIG3_STATE
+#undef FLAG_ALL_BUTTONS_PRESSED
+`

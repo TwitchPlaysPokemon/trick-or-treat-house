@@ -566,7 +566,7 @@ const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] =
     [EVENT_OBJ_GFX_ALIEN] =                    &gEventObjectGraphicsInfo_Alien,
     
     // Dev Self-Inserts
-    [EVENT_OBJ_GFX_TUSTIN2121] =               &gEventObjectGraphicsInfo_TrickMaster, //TODO
+    [EVENT_OBJ_GFX_DEV_TUSTIN2121] =           &gEventObjectGraphicsInfo_TrickMaster, //TODO
 };
 
 const struct EventObjectGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

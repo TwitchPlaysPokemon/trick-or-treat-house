@@ -1022,7 +1022,8 @@ void PlayerOnBikeCollideWithFarawayIslandMew(u8 a)
 static void PlayerNotOnBikeCollide(u8 a)
 {
     PlayCollisionSoundIfNotFacingWarp(a);
-    PlayerSetAnimId(GetWalkInPlaceSlowMovementAction(a), 2);
+    PlayerSetAnimId(GetWalkInPlaceNormalMovementAction(a), 2);
+    // PlayerSetAnimId(GetWalkInPlaceSlowMovementAction(a), 2);
 }
 
 static void PlayerNotOnBikeCollideWithFarawayIslandMew(u8 a)

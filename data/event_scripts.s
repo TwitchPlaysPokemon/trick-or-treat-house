@@ -6320,3 +6320,5 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/Puzzle_IcePath/scripts.inc"
 
 	.include "data/maps/TestMusicRoom/scripts.inc"
+
+	.include "data/maps/Puzzle_TicRacToe/scripts.inc"
