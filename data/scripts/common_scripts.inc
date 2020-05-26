@@ -325,10 +325,10 @@ EventScript_FallDownHole:: @ 82A8337
 	warphole MAP_UNDEFINED
 	waitstate
 	end
-Common_Movement_SetInvisible: @ 82A8369
+Common_Movement_SetInvisible:: @ 82A8369
 	set_invisible
 	step_end
-Common_Movement_SetVisible: @ 82A8369
+Common_Movement_SetVisible:: @ 82A8369
 	set_visible
 	step_end
 

@@ -47,6 +47,7 @@ gPuzzleList::                                           @ TPP / Single Player
 gDebugPuzzles::
     .2byte MAP_EMPTY_PUZZLE
     .2byte MAP_PUZZLE_TIC_RAC_TOE                       @
+    .2byte MAP_PUZZLE_ICE_PATH                          @
     .2byte MAP_TRICK_TREAT_FORTREE_CITY                 @
     .2byte MAP_TRICK_TREAT_SLATEPORT_CITY1              @          (Must be last)
     .2byte MAP_PUZZLE_FALLING_WATER                     @ 
