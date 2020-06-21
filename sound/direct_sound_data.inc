@@ -151,6 +151,10 @@ DirectSoundWaveData_unknown_tsuzumi::
 	.incbin "sound/direct_sound_samples/unknown_tsuzumi.bin"
 
 	.align 2
+DirectSoundWaveData_sc88_piano1_36::
+	.incbin "sound/direct_sound_samples/sc88_piano1_36.bin"
+
+	.align 2
 DirectSoundWaveData_sc88_piano1_48::
 	.incbin "sound/direct_sound_samples/sc88_piano1_48.bin"
 

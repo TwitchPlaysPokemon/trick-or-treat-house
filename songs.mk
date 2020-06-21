@@ -609,6 +609,9 @@ $(MID_SUBDIR)/mus_tetsuji.s: %.s: %.mid
 $(MID_SUBDIR)/mus_thankfor.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G101 -V100
 
+$(MID_SUBDIR)/mus_thankfor1.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G101 -V100
+
 $(MID_SUBDIR)/mus_title3.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G059 -V090
 
