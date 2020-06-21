@@ -50,11 +50,11 @@
 #define EVENT_OBJ_GFX_TRICK_DOOR_STONE               0x028
 #define EVENT_OBJ_GFX_TRICK_DOOR_STONE_ROOM          0x029
 #define EVENT_OBJ_GFX_TRICK_DOOR_NORTH               0x02A
-#define EVENT_OBJ_GFX_TUSTIN2121                     0x02B
-#define EVENT_OBJ_GFX_DEV1                           0x02C
-#define EVENT_OBJ_GFX_DEV2                           0x02D
-#define EVENT_OBJ_GFX_DEV3                           0x02E
-#define EVENT_OBJ_GFX_DEV4                           0x02F
+#define EVENT_OBJ_GFX_DEV_TUSTIN2121                 0x02B
+#define EVENT_OBJ_GFX_DEV_1                          0x02C
+#define EVENT_OBJ_GFX_DEV_2                          0x02D
+#define EVENT_OBJ_GFX_DEV_3                          0x02E
+#define EVENT_OBJ_GFX_DEV_4                          0x02F
 
 // Start list of random event objects in the end room
 #define EVENT_OBJ_GFX_MAN_1                          0x030

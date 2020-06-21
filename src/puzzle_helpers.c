@@ -1,4 +1,5 @@
 #include "global.h"
+#include "global.fieldmap.h"
 #include "event_data.h"
 #include "alloc.h"
 #include "script.h"
@@ -969,4 +970,70 @@ void LoadBirdLocation(struct ScriptContext *ctx)
 #undef LID_BIRD
 #undef VAR_BIRD_LOCATION
 
+///////////////////////////////////////////////////////////////////////////////
+// Puzzle: Tic Rac Toe
+// MAP_PUZZLE_TIC_RAC_TOE
 
+void CountNPCTriggers(struct ScriptContext *ctx) {
+	s16 o, i, x, y;
+	int mid;
+	struct EventObject *eventObject = NULL;
+    struct CoordEvent *coordEvent = NULL;
+	const u8 *currConfig;
+	
+	gSpecialVar_Result = 0;
+	
+	for (o = 0; o < EVENT_OBJECTS_COUNT; o++) {
+		eventObject = &gEventObjects[o];
+        if (eventObject->isPlayer) continue;
+        if (!eventObject->active) continue;
+		if (!eventObject->isStandingOnTrigger) continue;
+		
+		gSpecialVar_Result++;
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Puzzle: The Frozen Excursion
+// MAP_PUZZLE_ICE_PATH
+
+#define VAR_CONFIG                VAR_PUZZLE_00
+#define VAR_STORED_RANDOM         VAR_PUZZLE_01
+
+extern const u32 Puzzle_IcePath_ConfigTable[][12];
+extern const u8 Puzzle_IcePath_ConfigCount;
+
+void InitIcePathPuzzleConfig(struct ScriptContext *ctx) {
+	if (FlagGet(FLAG_SYS_RANDOM_DISABLED)) {
+		VarSet(VAR_CONFIG, 1);
+	} else {
+		VarSet(VAR_CONFIG, Random() % Puzzle_IcePath_ConfigCount);
+	}
+	VarSet(VAR_STORED_RANDOM, Random());
+}
+
+void SetupIcePathLayout(struct ScriptContext *ctx) {
+	u32 savedRng = gRng2Value;
+	u8 c, i, b;
+	SeedRng2(VarGet(VAR_STORED_RANDOM));
+	
+	c = VarGet(VAR_CONFIG);
+	for (i = 0; i < 12; i++) {
+		for (b = 0; b < 14; b++) {
+			bool8 hasRock = (Puzzle_IcePath_ConfigTable[c][i] >> (13 - b)) & 0x1;
+			if (hasRock) {
+				switch (Random2() % 4) {
+					case 0: MapGridSetMetatileIdAt(9 + b, 8 + i, 0x037D | METATILE_COLLISION_MASK); break;
+					case 1: MapGridSetMetatileIdAt(9 + b, 8 + i, 0x037E | METATILE_COLLISION_MASK); break;
+					case 2: MapGridSetMetatileIdAt(9 + b, 8 + i, 0x039A | METATILE_COLLISION_MASK); break;
+					case 3: MapGridSetMetatileIdAt(9 + b, 8 + i, 0x039E | METATILE_COLLISION_MASK); break;
+				}
+			}
+		}
+	}
+	
+	gRng2Value = savedRng;
+}
+
+#undef VAR_CONFIG
+#undef VAR_STORED_RANDOM

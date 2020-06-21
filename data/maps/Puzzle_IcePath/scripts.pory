@@ -1,4 +1,233 @@
 raw `
 Puzzle_IcePath_MapScripts::
+	puzzle_info Puzzle_IcePath_Name, Puzzle_IcePath_Author
+	puzzle_setup_script Puzzle_IcePath_SetupScript
+	puzzle_candylist Puzzle_IcePath_CandyList
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_IcePath_OnResume
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_IcePath_FrameTable
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_IcePath_OnLoad
 	.byte 0
+
+Puzzle_IcePath_Name:
+	.string "The Frozen Excursion$"
+Puzzle_IcePath_Author:
+	.string "GAME FREAK$"
+Puzzle_IcePath_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_COMMON_03
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_RARE_01
+	.2byte 0
+
+Puzzle_IcePath_FrameTable:
+	@ VAR_STEP_TRIGGER is set to 1 by MonitorEventObjectTriggersStepCallback when any npc steps on a trigger
+	map_script_2 VAR_STEP_TRIGGER, 1, Puzzle_IcePath_BoulderDownHole1
+	map_script_2 VAR_STEP_TRIGGER, 2, Puzzle_IcePath_BoulderDownHole2
+	map_script_2 VAR_STEP_TRIGGER, 3, Puzzle_IcePath_BoulderDownHole3
+	map_script_2 VAR_STEP_TRIGGER, 4, Puzzle_IcePath_BoulderDownHole4
+	.2byte 0
+Puzzle_IcePath_OnResume:
+	@ Setup the NPC Trigger step callback MonitorEventObjectTriggersStepCallback
+	setstepcallback 9 
+	end
+
+#define VAR_CONFIG                VAR_PUZZLE_00
+#define VAR_STORED_RANDOM         VAR_PUZZLE_01
+#define FLAG_BOULDER_HIDE_UPPER_1 FLAG_PUZZLE_20
+#define FLAG_BOULDER_HIDE_UPPER_2 FLAG_PUZZLE_21
+#define FLAG_BOULDER_HIDE_UPPER_3 FLAG_PUZZLE_22
+#define FLAG_BOULDER_HIDE_UPPER_4 FLAG_PUZZLE_23
+#define FLAG_BOULDER_HIDE_LOWER_1 FLAG_PUZZLE_24
+#define FLAG_BOULDER_HIDE_LOWER_2 FLAG_PUZZLE_25
+#define FLAG_BOULDER_HIDE_LOWER_3 FLAG_PUZZLE_26
+#define FLAG_BOULDER_HIDE_LOWER_4 FLAG_PUZZLE_27
+
+@ -----------------------------------------------------
+@ Puzzle configurations:
+
+.macro icepath_config
+inc __enum__
+.endm
+
+enum_start
+Puzzle_IcePath_ConfigTable::
+	icepath_config
+	.4byte 0b00000100000000
+	.4byte 0b00000000000000
+	.4byte 0b00000000000000
+	.4byte 0b00000000001000
+	.4byte 0b10000000000001
+	.4byte 0b00000000000000
+	.4byte 0b00000000000000
+	.4byte 0b00000000010000
+	.4byte 0b00100000000000
+	.4byte 0b00001000000001
+	.4byte 0b00000010000000
+	.4byte 0b00000000000000
+	icepath_config
+	.4byte 0b00000000001000
+	.4byte 0b10000000000000
+	.4byte 0b00000000000000
+	.4byte 0b00000000000001
+	.4byte 0b00100000000000
+	.4byte 0b00000000100000
+	.4byte 0b01000000000000
+	.4byte 0b00000000000000
+	.4byte 0b00000001000000
+	.4byte 0b00000000000100
+	.4byte 0b00010000000000
+	.4byte 0b00000000000000
+	icepath_config
+	.4byte 0b00000011100000
+	.4byte 0b00000000100000
+	.4byte 0b00000000000100
+	.4byte 0b00000000000000
+	.4byte 0b00010000000001
+	.4byte 0b01000000000010
+	.4byte 0b00000000000000
+	.4byte 0b00000000000000
+	.4byte 0b00000000000001
+	.4byte 0b00000001000000
+	.4byte 0b00100000000000
+	.4byte 0b00000000011000
+	icepath_config
+	.4byte 0b00100000000000
+	.4byte 0b00000000001000
+	.4byte 0b00000000100000
+	.4byte 0b00001000000000
+	.4byte 0b00000000000100
+	.4byte 0b00000100000000
+	.4byte 0b00000000000000
+	.4byte 0b00000000000000
+	.4byte 0b00000000010000
+	.4byte 0b00010000000000
+	.4byte 0b01000000000000
+	.4byte 0b00000000001000
+	
+
+enum _ICEPATH_CONFIG_COUNT
+Puzzle_IcePath_ConfigCount::
+	.byte _ICEPATH_CONFIG_COUNT
+
+`
+script Puzzle_IcePath_OnLoad {
+	callnative(SetupIcePathLayout)
+}
+
+script Puzzle_IcePath_SetupScript {
+	setflag(FLAG_BOULDER_HIDE_LOWER_1)
+	setflag(FLAG_BOULDER_HIDE_LOWER_2)
+	setflag(FLAG_BOULDER_HIDE_LOWER_3)
+	setflag(FLAG_BOULDER_HIDE_LOWER_4)
+	callnative(InitIcePathPuzzleConfig)
+}
+
+//-----------------------------------------------------
+
+script Puzzle_IcePath_FallDownHole_Common {
+	lockall
+	delay (10)
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_SetInvisible)
+	waitmovement(0)
+	playse (SE_RU_HYUU)
+	delay (60)
+	special (DoFallWarp)
+	waitstate
+	return
+}
+script Puzzle_IcePath_FallDownHole1 {
+	if (flag(FLAG_BOULDER_HIDE_LOWER_1)) {
+		setwarp(MAP_PUZZLE_ICE_PATH, -1, 12, 33)
+	} else {
+		setwarp(MAP_PUZZLE_ICE_PATH, -1, 12, 32)
+	}
+	call(Puzzle_IcePath_FallDownHole_Common)
+	releaseall
+}
+script Puzzle_IcePath_FallDownHole2 {
+	if (flag(FLAG_BOULDER_HIDE_LOWER_2)) {
+		setwarp(MAP_PUZZLE_ICE_PATH, -1, 13, 43)
+	} else {
+		setwarp(MAP_PUZZLE_ICE_PATH, -1, 14, 43)
+	}
+	call(Puzzle_IcePath_FallDownHole_Common)
+	releaseall
+}
+script Puzzle_IcePath_FallDownHole3 {
+	if (flag(FLAG_BOULDER_HIDE_LOWER_3)) {
+		setwarp(MAP_PUZZLE_ICE_PATH, -1, 4, 42)
+	} else {
+		setwarp(MAP_PUZZLE_ICE_PATH, -1, 4, 43)
+	}
+	call(Puzzle_IcePath_FallDownHole_Common)
+	releaseall
+}
+script Puzzle_IcePath_FallDownHole4 {
+	if (flag(FLAG_BOULDER_HIDE_LOWER_4)) {
+		setwarp(MAP_PUZZLE_ICE_PATH, -1, 5, 37)
+	} else {
+		setwarp(MAP_PUZZLE_ICE_PATH, -1, 5, 36)
+	}
+	call(Puzzle_IcePath_FallDownHole_Common)
+	releaseall
+}
+
+// ----------------------------------------------------
+
+script Puzzle_IcePath_BoulderDownHole_Common {
+	lockall
+	setvar(VAR_STEP_TRIGGER, 0)
+	delay (10)
+	removeobject(VAR_0x800A)
+	playse (SE_RU_HYUU)
+	delay (30)
+	playse (SE_W070)
+	setvar (VAR_0x8004, 1)  // vertical pan
+	setvar (VAR_0x8005, 1)  // horizontal pan
+	setvar (VAR_0x8006, 8)  // num shakes
+	setvar (VAR_0x8007, 5)  // shake delay
+	special (DoCameraShakeEffect)
+	delay (60)
+	return
+}
+script Puzzle_IcePath_BoulderDownHole1 {
+	setvar (VAR_0x800A, 4)
+	call (Puzzle_IcePath_BoulderDownHole_Common)
+	clearflag(FLAG_BOULDER_HIDE_LOWER_1)
+	releaseall
+}
+script Puzzle_IcePath_BoulderDownHole2 {
+	setvar (VAR_0x800A, 5)
+	call (Puzzle_IcePath_BoulderDownHole_Common)
+	clearflag(FLAG_BOULDER_HIDE_LOWER_2)
+	releaseall
+}
+script Puzzle_IcePath_BoulderDownHole3 {
+	setvar (VAR_0x800A, 3)
+	call (Puzzle_IcePath_BoulderDownHole_Common)
+	clearflag(FLAG_BOULDER_HIDE_LOWER_3)
+	releaseall
+}
+script Puzzle_IcePath_BoulderDownHole4 {
+	setvar (VAR_0x800A, 2)
+	call (Puzzle_IcePath_BoulderDownHole_Common)
+	clearflag(FLAG_BOULDER_HIDE_LOWER_4)
+	releaseall
+}
+
+raw `
+#undef VAR_CONFIG
+#undef VAR_STORED_RANDOM
+#undef FLAG_BOULDER_HIDE_UPPER_1
+#undef FLAG_BOULDER_HIDE_UPPER_2
+#undef FLAG_BOULDER_HIDE_UPPER_3
+#undef FLAG_BOULDER_HIDE_UPPER_4
+#undef FLAG_BOULDER_HIDE_LOWER_1
+#undef FLAG_BOULDER_HIDE_LOWER_2
+#undef FLAG_BOULDER_HIDE_LOWER_3
+#undef FLAG_BOULDER_HIDE_LOWER_4
 `

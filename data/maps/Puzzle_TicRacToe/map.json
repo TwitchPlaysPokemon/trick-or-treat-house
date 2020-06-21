@@ -1,0 +1,196 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": null,
+    "coord_events": [
+        {
+            "elevation": 0,
+            "script": "Puzzle_TicRacToe_TriggerScript_BlockIn",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_00",
+            "var_value": "1",
+            "x": 4,
+            "y": 15
+        },
+        {
+            "elevation": 0,
+            "script": "Puzzle_TicRacToe_TriggerScript_ResetBlock",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_00",
+            "var_value": "2",
+            "x": 3,
+            "y": 16
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 8,
+            "y": 11
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 9,
+            "y": 11
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 10,
+            "y": 11
+        }
+    ],
+    "id": "MAP_PUZZLE_TIC_RAC_TOE",
+    "layout": "LAYOUT_PUZZLE_TIC_RAC_TOE",
+    "map_type": "MAP_TYPE_INDOOR",
+    "music": "MUS_DAN02",
+    "name": "Puzzle_TicRacToe",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_ZIGZAGOON_1",
+            "movement_range_x": 15,
+            "movement_range_y": 15,
+            "movement_type": "MOVEMENT_TYPE_COPY_PLAYER",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "6",
+            "x": 2,
+            "y": 13
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_ZIGZAGOON_1",
+            "movement_range_x": 15,
+            "movement_range_y": 15,
+            "movement_type": "MOVEMENT_TYPE_COPY_PLAYER",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "6",
+            "x": 13,
+            "y": 10
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_ZIGZAGOON_1",
+            "movement_range_x": 15,
+            "movement_range_y": 15,
+            "movement_type": "MOVEMENT_TYPE_COPY_PLAYER",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "6",
+            "x": 23,
+            "y": 10
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_BOY_1",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_UP",
+            "script": "Puzzle_TicRacToe_Zigboy",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 2,
+            "y": 15
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_ALIEN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 13,
+            "y": 8
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TWINS_MINUN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 25,
+            "y": 9
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TWINS_PLUSLE",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 24,
+            "y": 8
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_SCROLL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "PuzzleCommon_EventScript_ExitDoorObject",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "5",
+            "x": 6,
+            "y": 1
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_SCROLL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "PuzzleCommon_EventScript_Scroll",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 1,
+            "y": 3
+        }
+    ],
+    "region_map_section": "MAPSEC_ROUTE_110",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 2,
+            "y": 19
+        }
+    ],
+    "weather": "WEATHER_SUNNY"
+}
