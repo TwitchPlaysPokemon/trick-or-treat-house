@@ -13,7 +13,7 @@ gPuzzleList::                                           @ TPP / Single Player
     
     .2byte MAP_TRICK_TREAT_PETALBURG_CITY               @  2 / 1
     
-    
+    .2byte MAP_PUZZLE_ICE_PATH                          @  7 / 3
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL3             @  3 / 3
     .2byte MAP_PUZZLE_MUSIC_NOTE_TILES                  @  5 / 3
     
@@ -47,7 +47,6 @@ gPuzzleList::                                           @ TPP / Single Player
 gDebugPuzzles::
     .2byte MAP_EMPTY_PUZZLE
     .2byte MAP_PUZZLE_TIC_RAC_TOE                       @
-    .2byte MAP_PUZZLE_ICE_PATH                          @
     .2byte MAP_TRICK_TREAT_FORTREE_CITY                 @
     .2byte MAP_TRICK_TREAT_SLATEPORT_CITY1              @          (Must be last)
     .2byte MAP_PUZZLE_FALLING_WATER                     @ 

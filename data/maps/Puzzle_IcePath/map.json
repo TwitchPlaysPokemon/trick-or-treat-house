@@ -4,6 +4,54 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_04",
+            "item": "ITEM_CANDY_ABUNDANT",
+            "type": "hidden_item",
+            "x": 37,
+            "y": 2
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_05",
+            "item": "ITEM_CANDY_ABUNDANT",
+            "type": "hidden_item",
+            "x": 25,
+            "y": 14
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_UNCOMMON_02",
+            "item": "ITEM_CANDY_UNCOMMON",
+            "type": "hidden_item",
+            "x": 37,
+            "y": 26
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_COMMON_04",
+            "item": "ITEM_CANDY_COMMON",
+            "type": "hidden_item",
+            "x": 20,
+            "y": 46
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_COMMON_05",
+            "item": "ITEM_CANDY_COMMON",
+            "type": "hidden_item",
+            "x": 31,
+            "y": 43
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_06",
+            "item": "ITEM_CANDY_ABUNDANT",
+            "type": "hidden_item",
+            "x": 53,
+            "y": 24
+        }
     ],
     "connections": null,
     "coord_events": [
@@ -375,6 +423,19 @@
             "trainer_type": "0",
             "x": 9,
             "y": 39
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_07",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyAbundant",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 54,
+            "y": 22
         }
     ],
     "region_map_section": "MAPSEC_SHOAL_CAVE",
