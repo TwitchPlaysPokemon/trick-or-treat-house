@@ -1,6 +1,8 @@
 raw `
 Puzzle_IcePath_MapScripts::
 	puzzle_info Puzzle_IcePath_Name, Puzzle_IcePath_Author
+	puzzle_custom_intro Puzzle_IcePath_Intro
+	puzzle_quip Puzzle_IcePath_Quip
 	puzzle_setup_script Puzzle_IcePath_SetupScript
 	puzzle_candylist Puzzle_IcePath_CandyList
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_IcePath_OnResume
@@ -12,14 +14,41 @@ Puzzle_IcePath_Name:
 	.string "The Frozen Excursion$"
 Puzzle_IcePath_Author:
 	.string "GAME FREAK$"
+Puzzle_IcePath_Intro:
+	.string "Hah! Back again!\p"
+	.string "This next puzzle I discovered on my\n"
+	.string "travels to distant regions.\p"
+	.string "This chilly cave seems to be a naturally\n"
+	.string "occuring puzzle! How intriguing!\p"
+	.string "And through the power of my door,\n"
+	.string "I shall show you it's beauty!\p"
+	.string "See you on the other side!$"
+Puzzle_IcePath_Quip:
+	.string "Looks like the exit of the Ice Path\n"
+			"caved in. No one can get through.\p"
+			"At least this door was here\n"
+			"so I could get out of the cold.\p"
+			"Except I don't know where “here” is…$"
+.align 2
+Puzzle_TinTowerClimb_Variables:
+	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER
+	.2byte 0
 Puzzle_IcePath_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01
 	.2byte FLAG_CANDY_ABUNDANT_02
 	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_ABUNDANT_05
+	.2byte FLAG_CANDY_ABUNDANT_06
+	.2byte FLAG_CANDY_ABUNDANT_07
 	.2byte FLAG_CANDY_COMMON_01
 	.2byte FLAG_CANDY_COMMON_02
 	.2byte FLAG_CANDY_COMMON_03
+	.2byte FLAG_CANDY_COMMON_04
+	.2byte FLAG_CANDY_COMMON_05
 	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_03
 	.2byte FLAG_CANDY_RARE_01
 	.2byte 0
 
@@ -95,7 +124,7 @@ Puzzle_IcePath_ConfigTable::
 	.4byte 0b00100000000000
 	.4byte 0b00000000011000
 	icepath_config
-	.4byte 0b00100000000000
+	.4byte 0b01100000000000
 	.4byte 0b00000000001000
 	.4byte 0b00000000100000
 	.4byte 0b00001000000000
