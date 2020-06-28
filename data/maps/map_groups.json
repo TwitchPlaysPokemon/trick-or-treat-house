@@ -185,7 +185,9 @@
         "TrickTreat_MossdeepCity",
         "TrickTreat_FortreeCity",
         "TrickTreat_SlateportCity1",
-        "TrickTreat_SlateportCity2"
+        "TrickTreat_SlateportCity2",
+        "TrickTreat_AltoMare1",
+        "TrickTreat_AltoMare2"
     ],
     "group_order": [
         "MG_PuzzleFramework",

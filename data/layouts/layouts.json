@@ -1479,6 +1479,26 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_TrickHousePuzzle",
             "width": 26
+        },
+        {
+            "blockdata_filepath": "data/layouts/TrickTreat_AltoMare1/map.bin",
+            "border_filepath": "data/layouts/TrickTreat_AltoMare1/border.bin",
+            "height": 72,
+            "id": "LAYOUT_TRICK_TREAT_ALTO_MARE1",
+            "name": "TrickTreat_AltoMare1_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_AltoMareEast",
+            "width": 56
+        },
+        {
+            "blockdata_filepath": "data/layouts/TrickTreat_AltoMare2/map.bin",
+            "border_filepath": "data/layouts/TrickTreat_AltoMare2/border.bin",
+            "height": 72,
+            "id": "LAYOUT_TRICK_TREAT_ALTO_MARE2",
+            "name": "TrickTreat_AltoMare2_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_AltoMareWest",
+            "width": 72
         }
     ],
     "layouts_table_label": "gMapLayouts"

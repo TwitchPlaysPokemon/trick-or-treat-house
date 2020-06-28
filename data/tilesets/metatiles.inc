@@ -609,3 +609,17 @@ gMetatiles_Route110::
 	.align 1
 gMetatileAttributes_Route110::
 	.incbin "data/tilesets/secondary/route110/metatile_attributes.bin"
+	.align 1
+gMetatiles_AltoMareEast::
+	.incbin "data/tilesets/secondary/altomareeast/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_AltoMareEast::
+	.incbin "data/tilesets/secondary/altomareeast/metatile_attributes.bin"
+	.align 1
+gMetatiles_AltoMareWest::
+	.incbin "data/tilesets/secondary/altomarewest/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_AltoMareWest::
+	.incbin "data/tilesets/secondary/altomarewest/metatile_attributes.bin"

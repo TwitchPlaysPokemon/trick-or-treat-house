@@ -1,0 +1,192 @@
+{
+    "allow_bike": true,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_AltoMare1_SignScript_CitySign",
+            "type": "sign",
+            "x": 18,
+            "y": 36
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_AltoMare2_SignScript_GymSign",
+            "type": "sign",
+            "x": 22,
+            "y": 28
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_AltoMare2_SignScript_GymDirectionSign",
+            "type": "sign",
+            "x": 12,
+            "y": 51
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_AltoMare2_SignScript_EggRoad",
+            "type": "sign",
+            "x": 39,
+            "y": 62
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_AltoMare2_SignScript_SurfSign",
+            "type": "sign",
+            "x": 24,
+            "y": 45
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_AltoMare2_SignScript_Square",
+            "type": "sign",
+            "x": 55,
+            "y": 10
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_AltoMare2_SignScript_MoveTutor",
+            "type": "sign",
+            "x": 57,
+            "y": 37
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_AltoMare2_SignScript_SquareTunnel",
+            "type": "sign",
+            "x": 42,
+            "y": 25
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_AltoMare2_SignScript_Park",
+            "type": "sign",
+            "x": 50,
+            "y": 48
+        }
+    ],
+    "connections": [
+        {
+            "direction": "left",
+            "map": "MAP_TRICK_TREAT_ALTO_MARE1",
+            "offset": 0
+        }
+    ],
+    "coord_events": [
+        {
+            "elevation": 0,
+            "script": "TrickTreat_AltoMare1_TriggerScript_DescendRampEast",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_1F",
+            "var_value": "1",
+            "x": 6,
+            "y": 31
+        },
+        {
+            "elevation": 0,
+            "script": "TrickTreat_AltoMare1_TriggerScript_ClimbRampWest",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_1F",
+            "var_value": "0",
+            "x": 7,
+            "y": 32
+        },
+        {
+            "elevation": 0,
+            "script": "TrickTreat_AltoMare1_TriggerScript_DescendRampEast",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_1F",
+            "var_value": "1",
+            "x": 6,
+            "y": 32
+        },
+        {
+            "elevation": 0,
+            "script": "TrickTreat_AltoMare1_TriggerScript_ClimbRampWest",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_1F",
+            "var_value": "0",
+            "x": 7,
+            "y": 33
+        },
+        {
+            "elevation": 0,
+            "script": "TrickTreat_AltoMare1_TriggerScript_DescendRampEast",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_1F",
+            "var_value": "1",
+            "x": 6,
+            "y": 33
+        },
+        {
+            "elevation": 0,
+            "script": "TrickTreat_AltoMare1_TriggerScript_ClimbRampWest",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_1F",
+            "var_value": "0",
+            "x": 7,
+            "y": 34
+        },
+        {
+            "elevation": 0,
+            "script": "TrickTreat_AltoMare1_TriggerScript_DescendRampEast",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_1F",
+            "var_value": "1",
+            "x": 6,
+            "y": 34
+        },
+        {
+            "elevation": 0,
+            "script": "TrickTreat_AltoMare1_TriggerScript_ClimbRampWest",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_1F",
+            "var_value": "0",
+            "x": 7,
+            "y": 35
+        },
+        {
+            "elevation": 0,
+            "script": "TrickTreat_AltoMare1_TriggerScript_DescendRampEast",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_1F",
+            "var_value": "1",
+            "x": 6,
+            "y": 35
+        },
+        {
+            "elevation": 0,
+            "script": "TrickTreat_AltoMare1_TriggerScript_ClimbRampWest",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_1F",
+            "var_value": "0",
+            "x": 7,
+            "y": 36
+        }
+    ],
+    "id": "MAP_TRICK_TREAT_ALTO_MARE2",
+    "layout": "LAYOUT_TRICK_TREAT_ALTO_MARE2",
+    "map_type": "MAP_TYPE_CITY",
+    "music": "MUS_B_FRONTIER",
+    "name": "TrickTreat_AltoMare2",
+    "object_events": [
+    ],
+    "region_map_section": "MAPSEC_EMBER_SPA",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+    ],
+    "weather": "WEATHER_SUNNY"
+}

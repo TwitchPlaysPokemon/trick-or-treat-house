@@ -1,0 +1,282 @@
+{
+    "allow_bike": true,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_AltoMare1_SignScript_CitySign",
+            "type": "sign",
+            "x": 15,
+            "y": 61
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_AltoMare1_SignScript_LatiasTower",
+            "type": "sign",
+            "x": 17,
+            "y": 65
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_AltoMare1_SignScript_LatiosTower",
+            "type": "sign",
+            "x": 22,
+            "y": 65
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "Common_EventScript_ShowPokemonCenterSign",
+            "type": "sign",
+            "x": 9,
+            "y": 50
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "Common_EventScript_ShowPokemonCenterSign",
+            "type": "sign",
+            "x": 10,
+            "y": 50
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_AltoMare1_SignScript_EggHut",
+            "type": "sign",
+            "x": 11,
+            "y": 34
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_AltoMare1_SignScript_LegendaryHut",
+            "type": "sign",
+            "x": 22,
+            "y": 32
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_AltoMare1_SignScript_Plaza",
+            "type": "sign",
+            "x": 12,
+            "y": 24
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_AltoMare1_SignScript_DepartmentStore",
+            "type": "sign",
+            "x": 47,
+            "y": 35
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_AltoMare1_SignScript_CenterArrow",
+            "type": "sign",
+            "x": 39,
+            "y": 45
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_AltoMare1_SignScript_Park",
+            "type": "sign",
+            "x": 40,
+            "y": 60
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_AltoMare1_SignScript_SphereRuins",
+            "type": "sign",
+            "x": 49,
+            "y": 7
+        }
+    ],
+    "connections": [
+        {
+            "direction": "right",
+            "map": "MAP_TRICK_TREAT_ALTO_MARE2",
+            "offset": 0
+        }
+    ],
+    "coord_events": [
+        {
+            "elevation": 0,
+            "script": "TrickTreat_AltoMare1_TriggerScript_ClimbRampEast",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_1F",
+            "var_value": "0",
+            "x": 53,
+            "y": 32
+        },
+        {
+            "elevation": 0,
+            "script": "TrickTreat_AltoMare1_TriggerScript_DescendRampWest",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_1F",
+            "var_value": "1",
+            "x": 54,
+            "y": 31
+        },
+        {
+            "elevation": 0,
+            "script": "TrickTreat_AltoMare1_TriggerScript_ClimbRampEast",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_1F",
+            "var_value": "0",
+            "x": 53,
+            "y": 33
+        },
+        {
+            "elevation": 0,
+            "script": "TrickTreat_AltoMare1_TriggerScript_DescendRampWest",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_1F",
+            "var_value": "1",
+            "x": 54,
+            "y": 32
+        },
+        {
+            "elevation": 0,
+            "script": "TrickTreat_AltoMare1_TriggerScript_ClimbRampEast",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_1F",
+            "var_value": "0",
+            "x": 53,
+            "y": 34
+        },
+        {
+            "elevation": 0,
+            "script": "TrickTreat_AltoMare1_TriggerScript_DescendRampWest",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_1F",
+            "var_value": "1",
+            "x": 54,
+            "y": 33
+        },
+        {
+            "elevation": 0,
+            "script": "TrickTreat_AltoMare1_TriggerScript_ClimbRampEast",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_1F",
+            "var_value": "0",
+            "x": 53,
+            "y": 35
+        },
+        {
+            "elevation": 0,
+            "script": "TrickTreat_AltoMare1_TriggerScript_DescendRampWest",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_1F",
+            "var_value": "1",
+            "x": 54,
+            "y": 34
+        },
+        {
+            "elevation": 0,
+            "script": "TrickTreat_AltoMare1_TriggerScript_ClimbRampEast",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_1F",
+            "var_value": "0",
+            "x": 53,
+            "y": 36
+        },
+        {
+            "elevation": 0,
+            "script": "TrickTreat_AltoMare1_TriggerScript_DescendRampWest",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_1F",
+            "var_value": "1",
+            "x": 54,
+            "y": 35
+        }
+    ],
+    "id": "MAP_TRICK_TREAT_ALTO_MARE1",
+    "layout": "LAYOUT_TRICK_TREAT_ALTO_MARE1",
+    "map_type": "MAP_TYPE_CITY",
+    "music": "MUS_B_FRONTIER",
+    "name": "TrickTreat_AltoMare1",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_SCROLL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "5",
+            "x": 16,
+            "y": 58
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_STONE",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "5",
+            "x": 23,
+            "y": 58
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_BALL_CUSHION",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+            "script": "PuzzleCommon_EventScript_PokecenterHeal",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "5",
+            "x": 8,
+            "y": 50
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_HM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_ItemSurf",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 20,
+            "y": 61
+        }
+    ],
+    "region_map_section": "MAPSEC_EMBER_SPA",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 16,
+            "y": 58
+        },
+        {
+            "dest_map": "MAP_TRICK_HOUSE_END",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 23,
+            "y": 58
+        }
+    ],
+    "weather": "WEATHER_SUNNY"
+}
