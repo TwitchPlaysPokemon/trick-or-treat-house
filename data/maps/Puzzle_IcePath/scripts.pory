@@ -4,6 +4,7 @@ Puzzle_IcePath_MapScripts::
 	puzzle_custom_intro Puzzle_IcePath_Intro
 	puzzle_quip Puzzle_IcePath_Quip
 	puzzle_setup_script Puzzle_IcePath_SetupScript
+	puzzle_metavars Puzzle_IcePath_Variables
 	puzzle_candylist Puzzle_IcePath_CandyList
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_IcePath_OnResume
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_IcePath_FrameTable
@@ -21,16 +22,16 @@ Puzzle_IcePath_Intro:
 	.string "This chilly cave seems to be a naturally\n"
 	.string "occuring puzzle! How intriguing!\p"
 	.string "And through the power of my door,\n"
-	.string "I shall show you it's beauty!\p"
+	.string "I shall show you its beauty!\p"
 	.string "See you on the other side!$"
 Puzzle_IcePath_Quip:
 	.string "Looks like the exit of the Ice Path\n"
-			"caved in. No one can get through.\p"
-			"At least this door was here\n"
-			"so I could get out of the cold.\p"
-			"Except I don't know where “here” is…$"
+	.string "caved in. No one can get through.\p"
+	.string "At least this door was here\n"
+	.string "so I could get out of the cold.\p"
+	.string "Except I don't know where “here” is…$"
 .align 2
-Puzzle_TinTowerClimb_Variables:
+Puzzle_IcePath_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER
 	.2byte 0
 Puzzle_IcePath_CandyList:
@@ -50,6 +51,7 @@ Puzzle_IcePath_CandyList:
 	.2byte FLAG_CANDY_UNCOMMON_02
 	.2byte FLAG_CANDY_UNCOMMON_03
 	.2byte FLAG_CANDY_RARE_01
+	.2byte FLAG_CANDY_RARE_02
 	.2byte 0
 
 Puzzle_IcePath_FrameTable:
@@ -59,13 +61,16 @@ Puzzle_IcePath_FrameTable:
 	map_script_2 VAR_STEP_TRIGGER, 3, Puzzle_IcePath_BoulderDownHole3
 	map_script_2 VAR_STEP_TRIGGER, 4, Puzzle_IcePath_BoulderDownHole4
 	.2byte 0
-Puzzle_IcePath_OnResume:
-	@ Setup the NPC Trigger step callback MonitorEventObjectTriggersStepCallback
-	setstepcallback 9 
-	end
+`
+script Puzzle_IcePath_OnResume {
+	// Setup the NPC Trigger step callback MonitorEventObjectTriggersStepCallback
+	setstepcallback (9)
+}
 
+raw `
 #define VAR_CONFIG                VAR_PUZZLE_00
 #define VAR_STORED_RANDOM         VAR_PUZZLE_01
+#define VAR_HIDDEN_RUNUP          VAR_TEMP_1
 #define FLAG_BOULDER_HIDE_UPPER_1 FLAG_PUZZLE_20
 #define FLAG_BOULDER_HIDE_UPPER_2 FLAG_PUZZLE_21
 #define FLAG_BOULDER_HIDE_UPPER_3 FLAG_PUZZLE_22
@@ -74,6 +79,8 @@ Puzzle_IcePath_OnResume:
 #define FLAG_BOULDER_HIDE_LOWER_2 FLAG_PUZZLE_25
 #define FLAG_BOULDER_HIDE_LOWER_3 FLAG_PUZZLE_26
 #define FLAG_BOULDER_HIDE_LOWER_4 FLAG_PUZZLE_27
+#define FLAG_SHOW_HIDDEN_CORNER   FLAG_PUZZLE_28
+#define FLAG_SHOW_HIDDEN_ITEM     FLAG_TEMP_10
 
 @ -----------------------------------------------------
 @ Puzzle configurations:
@@ -145,6 +152,16 @@ Puzzle_IcePath_ConfigCount::
 `
 script Puzzle_IcePath_OnLoad {
 	callnative(SetupIcePathLayout)
+	
+	setflag(FLAG_SHOW_HIDDEN_ITEM) // hide by default
+	if (flag(FLAG_SHOW_HIDDEN_CORNER)) {
+		setvar(VAR_HIDDEN_RUNUP, 2)
+		call(Puzzle_IcePath_OpenSecretArea)
+		// If we haven't picked up the item yet, show it
+		if (!flag(FLAG_CANDY_RARE_02)) {
+			clearflag(FLAG_SHOW_HIDDEN_ITEM)
+		}
+	}
 }
 
 script Puzzle_IcePath_SetupScript {
@@ -153,6 +170,54 @@ script Puzzle_IcePath_SetupScript {
 	setflag(FLAG_BOULDER_HIDE_LOWER_3)
 	setflag(FLAG_BOULDER_HIDE_LOWER_4)
 	callnative(InitIcePathPuzzleConfig)
+}
+
+//-----------------------------------------------------
+
+script Puzzle_IcePath_PrepBreakOpen {
+	setvar(VAR_HIDDEN_RUNUP, 1)
+	msgbox("Open", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_IcePath_CancelBreakOpen {
+	setvar(VAR_HIDDEN_RUNUP, 0)
+}
+
+script Puzzle_IcePath_DoBreakOpen {
+	lock
+	setvar(VAR_HIDDEN_RUNUP, 2)
+	// Shaking
+	playse (SE_W070)
+	setvar (VAR_0x8004, 3)  // amplitude y
+	setvar (VAR_0x8005, 0)  // amplitude x
+	setvar (VAR_0x8006, 15)  // duration (num shakes)
+	setvar (VAR_0x8007, 5)  // frequency
+	special (DoCameraShakeEffect)
+	delay (20)
+	// Open the secret area
+	setflag (FLAG_SHOW_HIDDEN_CORNER)
+	call (Puzzle_IcePath_OpenSecretArea)
+	special(DrawWholeMapView)
+	waitstate
+	release
+}
+
+script Puzzle_IcePath_OpenSecretArea {
+	setmetatile(11, 18, 0x378, TRUE)
+	setmetatile(12, 18, 0x389, TRUE)
+	setmetatile(13, 18, 0x38A, TRUE)
+	setmetatile(11, 19, 0x382, TRUE)
+	setmetatile(12, 19, 0x381, TRUE)
+	setmetatile(13, 19, 0x381, TRUE)
+	setmetatile(11, 20, 0x383, TRUE)
+	setmetatile(12, 20, 0x379, TRUE)
+	setmetatile(13, 20, 0x37A, TRUE)
+	return
+}
+
+script Puzzle_IcePath_PickupSecretItem {
+	setflag(FLAG_CANDY_RARE_02)
+	call(Common_EventScript_CandyRare)
 }
 
 //-----------------------------------------------------
@@ -259,4 +324,6 @@ raw `
 #undef FLAG_BOULDER_HIDE_LOWER_2
 #undef FLAG_BOULDER_HIDE_LOWER_3
 #undef FLAG_BOULDER_HIDE_LOWER_4
+#undef FLAG_SHOW_HIDDEN_CORNER
+#undef FLAG_SHOW_HIDDEN_ITEM
 `
