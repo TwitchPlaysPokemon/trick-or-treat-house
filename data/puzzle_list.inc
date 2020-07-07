@@ -24,7 +24,6 @@ gPuzzleList::                                           @ TPP / Single Player
     .2byte MAP_PUZZLE_TIN_TOWER_CLIMB                   @  6 / 4
     .2byte MAP_TRICK_TREAT_MOSSDEEP_CITY                @  6 / 5
     
-    
     .2byte MAP_PUZZLE_WATER_TEMPLE                      @  5 / 4
     .2byte MAP_PUZZLE_TRICK_HOUSE_SLIP_SLIDING          @  5 / 3
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL6             @  3 / 3
@@ -32,7 +31,6 @@ gPuzzleList::                                           @ TPP / Single Player
     .2byte MAP_PUZZLE_LOSS_FLOOR1                       @  1 / 1
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL5             @  7 / 5
 @   .2byte MAP_TRICK_TREAT_FORTREE_CITY                 @
-    
     
     .2byte MAP_PUZZLE_HIDDEN_MAZE                       @  5 / 7
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7             @  3 / 3
@@ -46,6 +44,7 @@ gPuzzleList::                                           @ TPP / Single Player
 .align 2
 gDebugPuzzles::
     .2byte MAP_EMPTY_PUZZLE
+    .2byte MAP_TRICK_TREAT_ALTO_MARE1
     .2byte MAP_PUZZLE_TIC_RAC_TOE                       @
     .2byte MAP_TRICK_TREAT_FORTREE_CITY                 @
     .2byte MAP_TRICK_TREAT_SLATEPORT_CITY1              @          (Must be last)

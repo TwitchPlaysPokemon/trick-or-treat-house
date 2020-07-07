@@ -1,0 +1,97 @@
+raw `
+TrickTreat_AltoMare1_MapScripts::
+	puzzle_info TrickTreat_AltoMare_Name, TrickTreat_AltoMare_Author
+	puzzle_custom_intro TrickTreat_AltoMare_Intro
+	puzzle_quip TrickTreat_AltoMare_Quip
+	puzzle_metavars TrickTreat_AltoMare_Variables
+	puzzle_candylist TrickTreat_AltoMare_CandyList
+	.byte 0
+
+TrickTreat_AltoMare_Name:
+	.string "Almond Joy in Alto Mare$"
+TrickTreat_AltoMare_Author:
+	.string "The Vega Team & Tustin2121$"
+TrickTreat_AltoMare_Intro:
+	.string "INSERT INTRO HERE$"
+TrickTreat_AltoMare_Quip:
+	.string "INSERT QUIP HERE$"
+.align 2
+TrickTreat_AltoMare_Variables:
+	.2byte VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_YOUNGSTER
+	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_YOUNGSTER
+	.2byte 0
+TrickTreat_AltoMare_CandyList:
+	.2byte 0
+
+@ -----------------------------------------------------
+#define VAR_CLIMB_BRIDGE        VAR_PUZZLE_1F
+
+`
+
+//========== Signs ====================================
+
+script TrickTreat_AltoMare1_SignScript_CitySign {
+	msgbox ("ALTO MARE\n"
+			"“The sparkling city of water.”$", MSGBOX_SIGN)
+}
+script TrickTreat_AltoMare1_SignScript_LatiosTower {
+	msgbox ("It's a statue of LATIOS.$", MSGBOX_SIGN)
+}
+script TrickTreat_AltoMare1_SignScript_LatiasTower {
+	msgbox ("It's a statue of LATIAS.$", MSGBOX_SIGN)
+}
+script TrickTreat_AltoMare1_SignScript_EggHut {
+	msgbox ("POKéMON EGGS hatched here!$", MSGBOX_SIGN)
+}
+script TrickTreat_AltoMare1_SignScript_LegendaryHut {
+	msgbox ("LEGENDARY POKéMON EXHIBITION\n"
+			"“For research or just casual viewing.”\p"
+			"“(Closed for Halloween)”$", MSGBOX_SIGN)
+}
+script TrickTreat_AltoMare1_SignScript_Plaza {
+	msgbox ("PLAZA\n"
+			"{UP_ARROW} CATHEDRAL, SUN TOWER$", MSGBOX_SIGN)
+}
+script TrickTreat_AltoMare1_SignScript_DepartmentStore {
+	msgbox ("ALTO MARE DEPARTMENT STORE\n"
+			"{RIGHT_ARROW} ALTO MARE GYM$", MSGBOX_SIGN)
+}
+script TrickTreat_AltoMare1_SignScript_CenterArrow {
+	msgbox ("{LEFT_ARROW} POKéMON CENTER$", MSGBOX_SIGN)
+}
+script TrickTreat_AltoMare1_SignScript_Park {
+	msgbox ("MARE PARK$", MSGBOX_SIGN)
+}
+script TrickTreat_AltoMare1_SignScript_SphereRuins {
+	msgbox ("SPHERE RUINS\nBeware of falling rocks!$", MSGBOX_SIGN)
+}
+
+//========== The Bridge ===============================
+
+script TrickTreat_AltoMare1_TriggerScript_ClimbRampEast {
+	applymovement(EVENT_OBJ_ID_PLAYER, TrickTreat_AltoMare1_MovementScript_ClimbRampEast)
+	waitmovement(0)
+	addvar(VAR_CLIMB_BRIDGE, 1)
+}
+script TrickTreat_AltoMare1_TriggerScript_DescendRampWest {
+	applymovement(EVENT_OBJ_ID_PLAYER, TrickTreat_AltoMare1_MovementScript_DescendRampWest)
+	waitmovement(0)
+	subvar(VAR_CLIMB_BRIDGE, 1)
+}
+
+movement TrickTreat_AltoMare1_MovementScript_ClimbRampEast {
+	lock_facing_direction
+	walk_diag_northeast
+	walk_right
+	unlock_facing_direction
+}
+movement TrickTreat_AltoMare1_MovementScript_DescendRampWest {
+	lock_facing_direction
+	walk_diag_southwest
+	walk_left
+	unlock_facing_direction
+}
+
+raw `
+#undef VAR_CLIMB_BRIDGE
+`

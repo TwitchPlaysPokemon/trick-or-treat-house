@@ -1872,3 +1872,43 @@ gTilesetPalettes_Route110::
 	.align 2
 gTilesetTiles_Route110::
 	.incbin "data/tilesets/secondary/route110/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_AltoMareEast::
+	.incbin "data/tilesets/secondary/altomareeast/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/altomareeast/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/altomareeast/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/altomareeast/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/altomareeast/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/altomareeast/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/altomareeast/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/altomareeast/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/altomareeast/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/altomareeast/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/altomareeast/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/altomareeast/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/altomareeast/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_AltoMareEast::
+	.incbin "data/tilesets/secondary/altomareeast/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_AltoMareWest::
+	.incbin "data/tilesets/secondary/altomarewest/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/altomarewest/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/altomarewest/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/altomarewest/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/altomarewest/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/altomarewest/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/altomarewest/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/altomarewest/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/altomarewest/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/altomarewest/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/altomarewest/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/altomarewest/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/altomarewest/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_AltoMareWest::
+	.incbin "data/tilesets/secondary/altomarewest/tiles.4bpp.lz"

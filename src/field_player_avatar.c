@@ -326,7 +326,7 @@ void player_step(u8 direction, u16 newKeys, u16 heldKeys)
     struct EventObject *playerEventObj = &gEventObjects[gPlayerAvatar.eventObjectId];
 
     sub_808C280(playerEventObj);
-    if (gPlayerAvatar.preventStep == FALSE)
+    if (gPlayerAvatar.preventStep == FALSE) //TODO: insert function call for spinning forced movement
     {
         Bike_TryAcroBikeHistoryUpdate(newKeys, heldKeys);
         if (TryInterruptEventObjectSpecialAnim(playerEventObj, direction) == 0)
@@ -336,7 +336,7 @@ void player_step(u8 direction, u16 newKeys, u16 heldKeys)
             if (TryDoMetatileBehaviorForcedMovement() == 0)
             {
                 MovePlayerAvatarUsingKeypadInput(direction, newKeys, heldKeys);
-                PlayerAllowForcedMovementIfMovingSameDirection();
+                PlayerAllowForcedMovementIfMovingSameDirection(); //use this to check for side-steps up and down?
             }
         }
     }

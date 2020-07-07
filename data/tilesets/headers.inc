@@ -908,3 +908,25 @@ gTileset_Route110::
 	.4byte gMetatiles_Route110
 	.4byte gMetatileAttributes_Route110
 	.4byte NULL
+
+	.align 2
+gTileset_AltoMareEast::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_AltoMareEast
+	.4byte gTilesetPalettes_AltoMareEast
+	.4byte gMetatiles_AltoMareEast
+	.4byte gMetatileAttributes_AltoMareEast
+	.4byte NULL
+
+	.align 2
+gTileset_AltoMareWest::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_AltoMareWest
+	.4byte gTilesetPalettes_AltoMareWest
+	.4byte gMetatiles_AltoMareWest
+	.4byte gMetatileAttributes_AltoMareWest
+	.4byte NULL

@@ -6322,3 +6322,7 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/TestMusicRoom/scripts.inc"
 
 	.include "data/maps/Puzzle_TicRacToe/scripts.inc"
+
+	.include "data/maps/TrickTreat_AltoMare1/scripts.inc"
+
+	.include "data/maps/TrickTreat_AltoMare2/scripts.inc"
