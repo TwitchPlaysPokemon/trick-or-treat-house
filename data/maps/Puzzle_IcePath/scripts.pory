@@ -4,6 +4,7 @@ Puzzle_IcePath_MapScripts::
 	puzzle_custom_intro Puzzle_IcePath_Intro
 	puzzle_quip Puzzle_IcePath_Quip
 	puzzle_setup_script Puzzle_IcePath_SetupScript
+	puzzle_metavars Puzzle_IcePath_Variables
 	puzzle_candylist Puzzle_IcePath_CandyList
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_IcePath_OnResume
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_IcePath_FrameTable
@@ -21,16 +22,16 @@ Puzzle_IcePath_Intro:
 	.string "This chilly cave seems to be a naturally\n"
 	.string "occuring puzzle! How intriguing!\p"
 	.string "And through the power of my door,\n"
-	.string "I shall show you it's beauty!\p"
+	.string "I shall show you its beauty!\p"
 	.string "See you on the other side!$"
 Puzzle_IcePath_Quip:
 	.string "Looks like the exit of the Ice Path\n"
-			"caved in. No one can get through.\p"
-			"At least this door was here\n"
-			"so I could get out of the cold.\p"
-			"Except I don't know where “here” is…$"
+	.string "caved in. No one can get through.\p"
+	.string "At least this door was here\n"
+	.string "so I could get out of the cold.\p"
+	.string "Except I don't know where “here” is…$"
 .align 2
-Puzzle_TinTowerClimb_Variables:
+Puzzle_IcePath_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER
 	.2byte 0
 Puzzle_IcePath_CandyList:
