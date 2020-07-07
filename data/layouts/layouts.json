@@ -1499,6 +1499,16 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_AltoMareWest",
             "width": 72
+        },
+        {
+            "blockdata_filepath": "data/layouts/TrickTreat_GoldenrodCity/map.bin",
+            "border_filepath": "data/layouts/TrickTreat_GoldenrodCity/border.bin",
+            "height": 56,
+            "id": "LAYOUT_TRICK_TREAT_GOLDENROD_CITY",
+            "name": "TrickTreat_GoldenrodCity_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Goldenrod",
+            "width": 48
         }
     ],
     "layouts_table_label": "gMapLayouts"

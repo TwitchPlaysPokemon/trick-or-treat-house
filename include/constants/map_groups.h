@@ -161,6 +161,7 @@
 #define MAP_TRICK_TREAT_SLATEPORT_CITY2 (4 | (9 << 8))
 #define MAP_TRICK_TREAT_ALTO_MARE1      (5 | (9 << 8))
 #define MAP_TRICK_TREAT_ALTO_MARE2      (6 | (9 << 8))
+#define MAP_TRICK_TREAT_GOLDENROD_CITY  (7 | (9 << 8))
 
 // Map Group 10
 #define MAP_PUZZLE_SPOT_DIFFERENCE_HALLWAY (0 | (10 << 8))

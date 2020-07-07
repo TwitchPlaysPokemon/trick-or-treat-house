@@ -187,7 +187,8 @@
         "TrickTreat_SlateportCity1",
         "TrickTreat_SlateportCity2",
         "TrickTreat_AltoMare1",
-        "TrickTreat_AltoMare2"
+        "TrickTreat_AltoMare2",
+        "TrickTreat_GoldenrodCity"
     ],
     "group_order": [
         "MG_PuzzleFramework",

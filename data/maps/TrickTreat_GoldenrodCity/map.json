@@ -1,0 +1,24 @@
+{
+    "allow_bike": true,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_TRICK_TREAT_GOLDENROD_CITY",
+    "layout": "LAYOUT_TRICK_TREAT_GOLDENROD_CITY",
+    "map_type": "MAP_TYPE_CITY",
+    "music": "MUS_DAN02",
+    "name": "TrickTreat_GoldenrodCity",
+    "object_events": [
+    ],
+    "region_map_section": "MAPSEC_SAFFRON_CITY",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+    ],
+    "weather": "WEATHER_SUNNY"
+}

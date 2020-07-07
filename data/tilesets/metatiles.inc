@@ -623,3 +623,10 @@ gMetatiles_AltoMareWest::
 	.align 1
 gMetatileAttributes_AltoMareWest::
 	.incbin "data/tilesets/secondary/altomarewest/metatile_attributes.bin"
+	.align 1
+gMetatiles_Goldenrod::
+	.incbin "data/tilesets/secondary/goldenrod/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Goldenrod::
+	.incbin "data/tilesets/secondary/goldenrod/metatile_attributes.bin"

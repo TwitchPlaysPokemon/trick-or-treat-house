@@ -930,3 +930,14 @@ gTileset_AltoMareWest::
 	.4byte gMetatiles_AltoMareWest
 	.4byte gMetatileAttributes_AltoMareWest
 	.4byte NULL
+
+	.align 2
+gTileset_Goldenrod::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Goldenrod
+	.4byte gTilesetPalettes_Goldenrod
+	.4byte gMetatiles_Goldenrod
+	.4byte gMetatileAttributes_Goldenrod
+	.4byte NULL
