@@ -2,8 +2,9 @@ raw `
 Puzzle_TicRacToe_MapScripts::
 	puzzle_info Puzzle_TicRacToe_Name, Puzzle_TicRacToe_Author
 	@ puzzle_adjective Puzzle_TicRacToe_Adjective
-	@ puzzle_quip Puzzle_TicRacToe_Quip
+	puzzle_quip Puzzle_TicRacToe_Quip
 	@ puzzle_metavars Puzzle_TicRacToe_Variables
+	puzzle_candylist Puzzle_TicRacToe_CandyList
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_TicRacToe_OnLoad
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TicRacToe_OnResume
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_TicRacToe_FrameTable
@@ -15,7 +16,25 @@ Puzzle_TicRacToe_Name:
 Puzzle_TicRacToe_Author:
 	.string "MyRattata$"
 Puzzle_TicRacToe_Adjective:
-	.string "$"
+	.string "triply$"
+Puzzle_TicRacToe_Quip:
+	.string "I honestly don't get everyone's\n"
+	.string "obsession with Zigzagoon.\p"
+	.string "Like, yeah, it's cute, but so are\n"
+	.string "like half of all {POKEMON}…$"
+
+Puzzle_TicRacToe_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_RARE_01
+	.2byte 0
+
 
 #define LID_BLOCK_BOY               4
 #define VAR_ZIG1_STATE              VAR_PUZZLE_00
