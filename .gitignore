@@ -19,6 +19,7 @@ sound/**/*.bin
 sound/songs/midi/*.s
 tools/agbcc
 tools/pgegen/pgegen
+tools/binutils
 *.map
 *.ld
 *.bat

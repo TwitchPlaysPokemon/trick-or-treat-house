@@ -1277,7 +1277,7 @@
 #define FLAG_RECEIVED_SECRET_POWER                  (SYSTEM_FLAGS + 0x22) // Unused Flag
 #define FLAG_RECEIVED_POKEBLOCK_CASE                (SYSTEM_FLAGS + 0x23) // Unused Flag
 #define FLAG_SYS_RANDOM_DISABLED                    (SYSTEM_FLAGS + 0x24)
-#define FLAG_UNUSED_0x885                           (SYSTEM_FLAGS + 0x25) // Unused Flag
+#define FLAG_SYS_FAST_BONK                          (SYSTEM_FLAGS + 0x25)
 #define FLAG_UNUSED_0x886                           (SYSTEM_FLAGS + 0x26) // Unused Flag
 #define FLAG_SYS_WHITEOUT_TRAINER_RESET             (SYSTEM_FLAGS + 0x27) // Unused Flag
 #define FLAG_SYS_USE_FLASH                          (SYSTEM_FLAGS + 0x28)

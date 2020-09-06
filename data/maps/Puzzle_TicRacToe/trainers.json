@@ -1,0 +1,31 @@
+[
+	{
+		"class": "ALIEN",
+		"female": true,
+		"name": "LIZ",
+		"party": [
+			{
+				"species": "SPECIES_POOCHYENA",
+				"level": 29
+			},
+			{
+				"species": "SPECIES_LINOONE",
+				"level": 30
+			}
+		]
+	},
+	{
+		"class": "TWINS_PM",
+		"name": "TIA & LEA",
+		"party": [
+			{
+				"species": "SPECIES_LOTAD",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_SPINDA",
+				"level": 28
+			}
+		]
+	}
+]

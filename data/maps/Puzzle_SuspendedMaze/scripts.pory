@@ -20,7 +20,7 @@ Puzzle_SuspendedMaze_Quip:
 Puzzle_SuspendedMaze_DevCommentary:
 	.string "Tustin2121: This maze is an almost perfect\n"
 	.string "copy of the first crossword puzzle that\l"
-	.string "Serebii created during the Coronavirus\l"
+	.string "Serebii created during the initial COVID\l"
 	.string "outbreak back in March.\p"
 	.string "Someone said it looked like a maze, and\n"
 	.string "that gave me the idea for it.\p"
