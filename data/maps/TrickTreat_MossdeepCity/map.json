@@ -122,7 +122,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Common_EventScript_CandyAbundant",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 70,
             "y": 37
         },
@@ -135,7 +135,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "PuzzleCommon_EventScript_EntranceDoorObject",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "5",
+            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
             "x": 11,
             "y": 26
         },
@@ -148,7 +148,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "PuzzleCommon_EventScript_ExitDoorObject",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "5",
+            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
             "x": 72,
             "y": 17
         },
@@ -161,7 +161,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "TrickTreat_MossdeepCity_CandyGiver_Leader",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 46,
             "y": 12
         },
@@ -174,7 +174,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "TrickTreat_MossdeepCity_CandyGiver_Leader",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 45,
             "y": 12
         },
@@ -187,7 +187,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
             "script": "TrickTreat_MossdeepCity_CandyGiver_Nurse",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 36,
             "y": 19
         },
@@ -200,7 +200,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
             "script": "TrickTreat_MossdeepCity_CandyGiver_Mart",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 45,
             "y": 21
         },
@@ -213,7 +213,7 @@
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
             "script": "TrickTreat_MossdeepCity_CandyGiver_Lady",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 36,
             "y": 11
         },
@@ -226,7 +226,7 @@
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
             "script": "TrickTreat_MossdeepCity_CandyGiver_Steven",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 27,
             "y": 12
         },
@@ -239,7 +239,7 @@
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
             "script": "TrickTreat_MossdeepCity_CandyGiver_Cook",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 26,
             "y": 18
         },
@@ -252,7 +252,7 @@
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
             "script": "TrickTreat_MossdeepCity_CandyGiver_Expert",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 44,
             "y": 26
         },
@@ -265,7 +265,7 @@
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
             "script": "TrickTreat_MossdeepCity_CandyGiver_Mother",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 57,
             "y": 8
         },
@@ -278,7 +278,7 @@
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
             "script": "TrickTreat_MossdeepCity_CandyGiver_RepentantBoy",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 75,
             "y": 27
         },
@@ -291,7 +291,7 @@
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
             "script": "TrickTreat_MossdeepCity_CandyGiver_Camper",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 12,
             "y": 12
         },
@@ -304,7 +304,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
             "script": "TrickTreat_MossdeepCity_ExitGirl",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 70,
             "y": 18
         },
@@ -317,7 +317,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyRare",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 72,
             "y": 9
         },
@@ -330,7 +330,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyUncommon",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 70,
             "y": 8
         },
@@ -343,7 +343,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyRare",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 37,
             "y": 15
         },
@@ -356,7 +356,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyCommon",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 51,
             "y": 7
         },
@@ -369,7 +369,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "TrickTreat_MossdeepCity_Trickster1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 14,
             "y": 29
         },
@@ -382,7 +382,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "TrickTreat_MossdeepCity_Trickster1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 36,
             "y": 15
         },
@@ -395,7 +395,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "TrickTreat_MossdeepCity_Trickster1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 50,
             "y": 15
         },
@@ -408,7 +408,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "TrickTreat_MossdeepCity_Trickster1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 25,
             "y": 15
         },
@@ -421,7 +421,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "TrickTreat_MossdeepCity_Trickster1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 74,
             "y": 9
         },
@@ -434,7 +434,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "TrickTreat_MossdeepCity_RedHerringTrickster",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 78,
             "y": 29
         },
@@ -447,7 +447,7 @@
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
             "script": "PuzzleCommon_EventScript_PokecenterHeal",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "5",
+            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
             "x": 36,
             "y": 18
         }

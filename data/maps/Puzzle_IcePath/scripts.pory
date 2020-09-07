@@ -51,7 +51,7 @@ Puzzle_IcePath_CandyList:
 	.2byte FLAG_CANDY_UNCOMMON_02
 	.2byte FLAG_CANDY_UNCOMMON_03
 	.2byte FLAG_CANDY_RARE_01
-	.2byte FLAG_CANDY_RARE_02
+	@ .2byte FLAG_CANDY_RARE_02   @ Broken corner is broken
 	.2byte 0
 
 Puzzle_IcePath_FrameTable:

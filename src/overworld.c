@@ -209,7 +209,7 @@ u8 gLocalLinkPlayerId; // This is our player id in a multiplayer mode.
 u8 gFieldLinkPlayerCount;
 
 // EWRAM vars
-EWRAM_DATA static u8 sUnknown_020322D8 = 0;
+EWRAM_DATA static u8 sObjectEventLoadFlag = 0;
 EWRAM_DATA struct WarpData gLastUsedWarp = {0};
 EWRAM_DATA static struct WarpData sWarpDestination = {0};  // new warp position
 EWRAM_DATA static struct WarpData gFixedDiveWarp = {0};
@@ -386,6 +386,7 @@ static void (*const gMovementStatusHandler[])(struct LinkPlayerEventObject *, st
 void DoWhiteOut(void)
 {
     ScriptContext2_RunNewScript(EventScript_WhiteOut);
+    RunPuzzleBlackoutScript();
 #if USE_CANDY_CURRENCY
     SetMoney(&gSaveBlock1Ptr->money, GetMoney(&gSaveBlock1Ptr->money) / 4);
 #else
@@ -607,6 +608,12 @@ static bool32 IsDummyWarp(struct WarpData *warp)
         return FALSE;
     else
         return TRUE;
+}
+
+bool32 IsWarpingToSameMap()
+{
+    return gSaveBlock1Ptr->location.mapGroup == sWarpDestination.mapGroup
+        && gSaveBlock1Ptr->location.mapNum == sWarpDestination.mapNum;
 }
 
 struct MapHeader const *const Overworld_GetMapHeaderByGroupAndId(u16 mapGroup, u16 mapNum)
@@ -871,7 +878,7 @@ static void mli0_load_map(u32 a1)
     FlagClear(FLAG_PREVENT_EVENT_OBJECT_DESPAWN);
     RunPuzzleTeardownScript();
     LoadCurrentMapData();
-    if (!(sUnknown_020322D8 & 1))
+    if (!(sObjectEventLoadFlag & 1))
     {
         // if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_EMPTY_SQUARE)
         //     LoadBattlePyramidEventObjectTemplates();
@@ -1033,14 +1040,15 @@ void SetCurrentMapLayout(u16 mapLayoutId)
     gMapHeader.mapLayout = GetMapLayout();
 }
 
-void sub_8085540(u8 var)
+void SetObjectEventLoadFlag(u8 var)
 {
-    sUnknown_020322D8 = var;
+    sObjectEventLoadFlag = var;
 }
 
-u8 sub_808554C(void)
+// Unused, sObjectEventLoadFlag is read directly
+u8 GetObjectEventLoadFlag(void)
 {
-    return sUnknown_020322D8;
+    return sObjectEventLoadFlag;
 }
 
 u16 GetLocationMusic(struct WarpData *warp)
@@ -1264,6 +1272,12 @@ u8 GetLastUsedWarpMapType(void)
     return GetMapTypeByWarpData(&gLastUsedWarp);
 }
 
+bool8 CurrentMapIs(u16 mapId)
+{
+    return gSaveBlock1Ptr->location.mapGroup == (mapId >> 8)
+        && gSaveBlock1Ptr->location.mapNum == (mapId & 8);
+}
+
 bool8 IsMapTypeOutdoors(u8 mapType)
 {
     if (mapType == MAP_TYPE_ROUTE
@@ -1437,7 +1451,7 @@ static bool8 map_post_load_hook_exec(void)
         if (gFieldCallback)
             gFieldCallback();
         else
-            mapldr_default();
+            FieldCB_DefaultWarpExit();
 
         gFieldCallback = NULL;
     }
@@ -1476,7 +1490,7 @@ void CB2_WhiteOut(void)
         ResetInitialPlayerAvatarState();
         ScriptContext1_Init();
         ScriptContext2_Disable();
-        gFieldCallback = sub_80AF3C8;
+        gFieldCallback = FieldCB_WarpExitFadeFromBlack;
         val = 0;
         do_load_map_stuff_loop(&val);
         SetFieldVBlankCallback();
@@ -1520,10 +1534,10 @@ void sub_8086024(void)
     }
 }
 
-void sub_8086074(void)
+void CB2_ReturnToFieldCableClub(void)
 {
     FieldClearVBlankHBlankCallbacks();
-    gFieldCallback = sub_80AF314;
+    gFieldCallback = FieldCB_ReturnToFieldWirelessLink;
     SetMainCallback2(c2_80567AC);
 }
 
@@ -1574,9 +1588,9 @@ void CB2_ReturnToFieldFromMultiplayer(void)
     ResetAllMultiplayerState();
 
     if (gWirelessCommType != 0)
-        gFieldCallback = sub_80AF314;
+        gFieldCallback = FieldCB_ReturnToFieldWirelessLink;
     else
-        gFieldCallback = sub_80AF214;
+        gFieldCallback = FieldCB_ReturnToFieldCableLink;
 
     ScriptContext1_Init();
     ScriptContext2_Disable();
@@ -1593,21 +1607,21 @@ void CB2_ReturnToFieldWithOpenMenu(void)
 void CB2_ReturnToFieldContinueScript(void)
 {
     FieldClearVBlankHBlankCallbacks();
-    gFieldCallback = sub_80AF188;
+    gFieldCallback = FieldCB_ContinueScript;
     CB2_ReturnToField();
 }
 
 void CB2_ReturnToFieldContinueScriptPlayMapMusic(void)
 {
     FieldClearVBlankHBlankCallbacks();
-    gFieldCallback = FieldCallback_ReturnToEventScript2;
+    gFieldCallback = FieldCB_ContinueScriptHandleMusic;
     CB2_ReturnToField();
 }
 
 void sub_80861E8(void)
 {
     FieldClearVBlankHBlankCallbacks();
-    gFieldCallback = sub_80AF3C8;
+    gFieldCallback = FieldCB_WarpExitFadeFromBlack;
     CB2_ReturnToField();
 }
 
@@ -1616,7 +1630,7 @@ static void sub_8086204(void)
     RunPuzzleIntro();
     // if ((gMapHeader.flags & 0xF8) == 8 && SecretBaseMapPopupEnabled() == TRUE)
     //     ShowMapNamePopup();
-    sub_80AF3C8();
+    FieldCB_WarpExitFadeFromBlack();
 }
 
 extern u32 gPuzzleTimer;

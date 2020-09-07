@@ -243,7 +243,7 @@ void sub_800B488(void);
 void CheckShouldAdvanceLinkState(void);
 void sub_8011BD0(void);
 u8 IsLinkMaster(void);
-void sub_800AC34(void);
+void SetCloseLinkCallback(void);
 bool8 HandleLinkConnection(void);
 void SetLinkDebugValues(u32 seed, u32 flags);
 void sub_800A418(void);

@@ -26,6 +26,7 @@
 #include "constants/event_objects.h"
 #include "constants/field_effects.h"
 #include "constants/items.h"
+#include "constants/trainer_types.h"
 
 // this file was known as evobjmv.c in Game Freak's original source
 
@@ -1286,7 +1287,7 @@ static u8 InitEventObjectStateFromTemplate(struct EventObjectTemplate *template,
     // For some reason, 0x0F is placed in r9, to be used later
     eventObject->range.as_nybbles.x = template->movementRangeX;
     eventObject->range.as_nybbles.y = template->movementRangeY;
-    eventObject->trainerType = template->trainerType;
+    eventObject->trainerType = template->trainerType & 0xFF;
     eventObject->trainerRange_berryTreeId = template->trainerRange_berryTreeId;
     eventObject->previousMovementDirection = gInitialMovementTypeFacingDirections[template->movementType];
     SetEventObjectDirection(eventObject, eventObject->previousMovementDirection);
@@ -1686,7 +1687,7 @@ u8 SpawnSpecialEventObjectParameterized(u16 graphicsId, u8 movementBehavior, u8 
     eventObjectTemplate.movementType = movementBehavior;
     eventObjectTemplate.movementRangeX = 0;
     eventObjectTemplate.movementRangeY = 0;
-    eventObjectTemplate.trainerType = TrainerType_None;
+    eventObjectTemplate.trainerType = TRAINER_TYPE_NONE;
     eventObjectTemplate.trainerRange_berryTreeId = 0;
     return SpawnSpecialEventObject(&eventObjectTemplate);
 }
@@ -1836,7 +1837,7 @@ void TrySpawnEventObjects(s16 cameraX, s16 cameraY)
             s16 npcY = template->y + 7;
             
             bool8 shouldSpawn = !FlagGet(template->flagId);
-            if (!FlagGet(FLAG_PREVENT_EVENT_OBJECT_DESPAWN) && template->trainerType != TrainerType_KeepLoaded)
+            if (!FlagGet(FLAG_PREVENT_EVENT_OBJECT_DESPAWN) && (template->trainerType & TRAINER_TYPE_KEEP_LOADED))
                 shouldSpawn &= (top <= npcY && bottom >= npcY && left <= npcX && right >= npcX);
 
             if (shouldSpawn)
@@ -1860,8 +1861,9 @@ void RemoveEventObjectsOutsideView(void)
         if (!isActiveLinkPlayer && !FlagGet(FLAG_PREVENT_EVENT_OBJECT_DESPAWN))
         {
             struct EventObject *eventObject = &gEventObjects[i];
+            struct EventObjectTemplate *template = FindEventObjectTemplateByLocalId(eventObject->localId, gSaveBlock1Ptr->eventObjectTemplates, gMapHeader.events->eventObjectCount);
 
-            if (eventObject->active && !eventObject->isPlayer && eventObject->trainerType != TrainerType_KeepLoaded)
+            if (eventObject->active && !eventObject->isPlayer && (template->trainerType & TRAINER_TYPE_KEEP_LOADED))
                 RemoveEventObjectIfOutsideView(eventObject);
         }
     }
@@ -2869,12 +2871,13 @@ bool8 EventObjectIsTrainerAndCloseToPlayer(struct EventObject *eventObject)
     s16 maxX;
     s16 minY;
     s16 maxY;
+    u8 trainerType = eventObject->trainerType;// & (~TRAINER_TYPE_KEEP_LOADED);
 
     if (!TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_DASH))
     {
         return FALSE;
     }
-    if (eventObject->trainerType != TrainerType_Normal && eventObject->trainerType != TrainerType_SeeAllDirs)
+    if (trainerType != TRAINER_TYPE_NORMAL && trainerType != TRAINER_TYPE_BURIED)
     {
         return FALSE;
     }

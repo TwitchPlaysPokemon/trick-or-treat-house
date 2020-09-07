@@ -934,7 +934,7 @@ static void sub_801E460(void)
     case 5:
         if (IsLinkTaskFinished() && !sub_8011A9C())
         {
-            sub_800AC34();
+            SetCloseLinkCallback();
             gUnknown_02022C84->unkA = 0;
             gUnknown_02022C84->unk6++;
         }
@@ -969,7 +969,7 @@ static void sub_801E5C4(void)
     case 1:
         if (!sub_801F644(0) && IsLinkTaskFinished() && !sub_8011A9C())
         {
-            sub_800AC34();
+            SetCloseLinkCallback();
             gUnknown_02022C84->unkA = 0;
             gUnknown_02022C84->unk6++;
         }
@@ -1015,7 +1015,7 @@ static void sub_801E668(void)
     case 2:
         if (sub_801F644(0) != TRUE && IsLinkTaskFinished() && !sub_8011A9C())
         {
-            sub_800AC34();
+            SetCloseLinkCallback();
             gUnknown_02022C84->unkA = 0;
             gUnknown_02022C84->unk6++;
         }

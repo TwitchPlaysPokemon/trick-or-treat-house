@@ -5346,7 +5346,7 @@ _08024528:
 	lsls r0, 24
 	cmp r0, 0
 	beq _0802455E
-	bl sub_800AC34
+	bl SetCloseLinkCallback
 	b _08024558
 _08024538:
 	ldr r0, =gReceivedRemoteLinkPlayers

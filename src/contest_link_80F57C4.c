@@ -751,7 +751,7 @@ static void sub_80F671C(u8 taskId)
         if (!gTasks[taskId].data[10])
         {
             sub_80F707C(gText_CommunicationStandby);
-            sub_800AC34();
+            SetCloseLinkCallback();
             gTasks[taskId].func = sub_80F677C;
         }
     }
@@ -2258,7 +2258,7 @@ void sub_80F8714(u8 taskId)
 
 static void sub_80F878C(u8 taskId)
 {
-    sub_800AC34();
+    SetCloseLinkCallback();
     gTasks[taskId].func = sub_80F87B4;
 }
 

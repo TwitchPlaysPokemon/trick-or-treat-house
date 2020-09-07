@@ -71,7 +71,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "Puzzle_Loss_Floor1_Nurse",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 10,
             "y": 2
         },
@@ -84,7 +84,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "Puzzle_Loss_Floor1_FreeCandyCounter",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 15,
             "y": 4
         },
@@ -97,7 +97,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "Puzzle_Loss_Floor1_Mart",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 16,
             "y": 5
         },
@@ -110,7 +110,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Puzzle_Loss_Floor1_Patron5",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 11,
             "y": 10
         },
@@ -123,7 +123,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "Puzzle_Loss_Floor1_Patron1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 15,
             "y": 9
         },
@@ -136,7 +136,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "Puzzle_Loss_Floor1_Patron2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 6,
             "y": 5
         },
@@ -149,7 +149,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "Puzzle_Loss_Floor1_Patron3",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 11
         },
@@ -162,7 +162,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "Puzzle_Loss_Floor1_Patron4",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 7,
             "y": 8
         }

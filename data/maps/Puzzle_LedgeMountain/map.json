@@ -150,7 +150,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 33,
             "y": 56
         },
@@ -163,7 +163,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "PuzzleCommon_EventScript_ExitDoorObject",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "5",
+            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
             "x": 36,
             "y": 53
         },
@@ -176,7 +176,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "PuzzleCommon_EventScript_Scroll",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 20,
             "y": 3
         },
@@ -189,7 +189,7 @@
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
             "script": "Common_EventScript_CandyLimited03",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 11,
             "y": 4
         },
@@ -202,7 +202,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyCommon",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 1,
             "y": 60
         },
@@ -215,7 +215,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyCommon",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 36,
             "y": 45
         },
@@ -228,7 +228,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Puzzle_LedgeMountain_UnreachableBall",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 33,
             "y": 5
         },
@@ -241,7 +241,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyRare",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 38,
             "y": 61
         }

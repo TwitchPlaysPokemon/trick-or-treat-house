@@ -341,6 +341,7 @@ WALLY          = FD 09
 LINK           = FD 0A
 FAIRY          = FD 0B
 TOT_RULE       = FD 0C
+BOULDER        = FD 0D
 
 PUZZLE_NAME       = FD 10
 PUZZLE_AUTHOR     = FD 11

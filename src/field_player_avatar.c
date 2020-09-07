@@ -30,6 +30,7 @@
 #include "constants/moves.h"
 #include "constants/songs.h"
 #include "constants/species.h"
+#include "constants/trainer_types.h"
 
 static EWRAM_DATA u8 gUnknown_0203734C = 0;
 EWRAM_DATA struct EventObject gEventObjects[EVENT_OBJECTS_COUNT] = {};
@@ -1380,7 +1381,7 @@ void InitPlayerAvatar(s16 x, s16 y, u8 direction, u8 gender)
     playerEventObjTemplate.movementType = MOVEMENT_TYPE_PLAYER;
     playerEventObjTemplate.movementRangeX = 0;
     playerEventObjTemplate.movementRangeY = 0;
-    playerEventObjTemplate.trainerType = TrainerType_None;
+    playerEventObjTemplate.trainerType = TRAINER_TYPE_NONE;
     playerEventObjTemplate.trainerRange_berryTreeId = 0;
     playerEventObjTemplate.script = NULL;
     playerEventObjTemplate.flagId = 0;
@@ -1398,7 +1399,7 @@ void InitPlayerAvatar(s16 x, s16 y, u8 direction, u8 gender)
     SetPlayerAvatarStateMask(PLAYER_AVATAR_FLAG_5 | PLAYER_AVATAR_FLAG_ON_FOOT);
 }
 
-void sub_808C0A8(u8 a)
+void SetPlayerInvisibility(u8 a)
 {
     gEventObjects[gPlayerAvatar.eventObjectId].invisible = a;
     if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))

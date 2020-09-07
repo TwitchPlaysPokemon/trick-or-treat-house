@@ -39,7 +39,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "TrickHouseDevEntrance_EventScript_Red",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 6
         },
@@ -52,7 +52,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "TrickHouseDevEntrance_EventScript_Pokeball",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 3
         },
@@ -65,7 +65,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "TrickHouseDevEntrance_EventScript_SoundTest",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 5
         },
@@ -78,7 +78,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "TrickHouseDevEntrance_EventScript_SpecialBall",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 2
         }

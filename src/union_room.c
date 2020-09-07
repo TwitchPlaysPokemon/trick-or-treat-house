@@ -2458,7 +2458,7 @@ void sub_8014384(void)
         break;
     case 1:
         if (!FuncIsActiveTask(sub_80140E0))
-            SetMainCallback2(sub_8086074);
+            SetMainCallback2(CB2_ReturnToFieldCableClub);
         break;
     }
 
@@ -2667,7 +2667,7 @@ void sub_8014790(u8 taskId)
         DestroyTask(taskId);
         break;
     case 7:
-        sub_800AC34();
+        SetCloseLinkCallback();
         data[0] = 8;
         break;
     case 8:
@@ -3580,7 +3580,7 @@ void sub_80156E0(u8 taskId)
         }
         break;
     case 32:
-        sub_800AC34();
+        SetCloseLinkCallback();
         data->state = 36;
         break;
     case 31:
@@ -3806,7 +3806,7 @@ void sub_80156E0(u8 taskId)
         }
         break;
     case 10:
-        sub_800AC34();
+        SetCloseLinkCallback();
         data->state = 36;
         break;
     case 36:
@@ -3912,7 +3912,7 @@ void sub_80156E0(u8 taskId)
         if (!gPaletteFade.active)
         {
             gUnknown_02022C40.field_0 = 1;
-            gFieldCallback = sub_80AF128;
+            gFieldCallback = FieldCB_ContinueScriptUnionRoom;
             sub_81B8904(8, CB2_ReturnToField);
         }
         break;
@@ -4024,7 +4024,7 @@ void sub_80156E0(u8 taskId)
             memcpy(&gUnknown_02022C38, &data->field_0->arr[taskData[1]].unk.field_0.unk_00, sizeof(gUnknown_02022C38));
             gUnknown_02022C3E = data->field_0->arr[taskData[1]].unk.field_0.type;
             gUnknown_02022C3C = data->field_0->arr[taskData[1]].unk.field_0.species;
-            gFieldCallback = sub_80AF128;
+            gFieldCallback = FieldCB_ContinueScriptUnionRoom;
             sub_81B8904(9, CB2_ReturnToField);
             sub_80156B0(data);
             gUnknown_02022C40.field_8 = taskData[1];
@@ -4089,7 +4089,7 @@ bool32 sub_80168DC(struct UnkStruct_URoom *arg0)
         else if (var == 2)
         {
             arg0->state = 36;
-            sub_800AC34();
+            SetCloseLinkCallback();
             return FALSE;
         }
     }

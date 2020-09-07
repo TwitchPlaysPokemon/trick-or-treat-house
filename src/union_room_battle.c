@@ -571,7 +571,7 @@ void sub_801AC54(void)
             }
             else
             {
-                sub_800AC34();
+                SetCloseLinkCallback();
                 if (gBlockRecvBuffer[GetMultiplayerId()][0] == 0x52)
                 {
                     gMain.state = 6;

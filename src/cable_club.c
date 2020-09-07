@@ -342,7 +342,7 @@ static void sub_80B2918(u8 taskId)
         return;
     if (gSpecialVar_Result == 3 || gSpecialVar_Result == 4)
     {
-        sub_800AC34();
+        SetCloseLinkCallback();
         HideFieldMessageBox();
         gTasks[taskId].func = sub_80B2CB0;
     }
@@ -376,7 +376,7 @@ static void sub_80B2A08(u8 taskId)
     {
         if (!Link_AnyPartnersPlayingRubyOrSapphire())
         {
-            sub_800AC34();
+            SetCloseLinkCallback();
             HideFieldMessageBox();
             gTasks[taskId].func = sub_80B2CB0;
         }
@@ -389,7 +389,7 @@ static void sub_80B2A08(u8 taskId)
     }
     else if (gSpecialVar_Result == 3)
     {
-        sub_800AC34();
+        SetCloseLinkCallback();
         HideFieldMessageBox();
         gTasks[taskId].func = sub_80B2CB0;
     }
@@ -462,7 +462,7 @@ static void task_map_chg_seq_0807EC34(u16 *a0, u32 taskId)
             if (sub_80B2AF4(trainerCards[0].monSpecies, trainerCards[1].monSpecies))
             {
                 *a0 = 11;
-                sub_800AC34();
+                SetCloseLinkCallback();
                 gTasks[taskId].func = sub_80B2CB0;
             }
             else
@@ -481,7 +481,7 @@ static void task_map_chg_seq_0807EC34(u16 *a0, u32 taskId)
     }
     else
     {
-        sub_800AC34();
+        SetCloseLinkCallback();
         gTasks[taskId].func = sub_80B2CB0;
     }
 }
@@ -832,7 +832,7 @@ static void sub_80B32B4(u8 taskId)
             task->data[0]++;
         break;
     case 3:
-        sub_800AC34();
+        SetCloseLinkCallback();
         task->data[0]++;
         break;
     case 4:
@@ -948,7 +948,7 @@ static void sub_80B3554(void)
             }
             else
             {
-                sub_800AC34();
+                SetCloseLinkCallback();
                 gMain.state = 1;
             }
             break;
@@ -1087,7 +1087,7 @@ static void sub_80B37FC(u8 taskId)
         gUnknown_02032298[0] = 0;
         gUnknown_02032298[1] = 0;
         m4aMPlayAllStop();
-        sub_800AC34();
+        SetCloseLinkCallback();
         task->data[0]++;
         break;
     case 3:
@@ -1241,7 +1241,7 @@ static void sub_80B3AAC(u8 taskId)
 
 static void sub_80B3AD0(u8 taskId)
 {
-    sub_800AC34();
+    SetCloseLinkCallback();
     gTasks[taskId].func = sub_80B3AAC;
 }
 

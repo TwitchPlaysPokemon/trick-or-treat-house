@@ -1278,7 +1278,7 @@
 #define FLAG_RECEIVED_POKEBLOCK_CASE                (SYSTEM_FLAGS + 0x23) // Unused Flag
 #define FLAG_SYS_RANDOM_DISABLED                    (SYSTEM_FLAGS + 0x24)
 #define FLAG_SYS_FAST_BONK                          (SYSTEM_FLAGS + 0x25)
-#define FLAG_UNUSED_0x886                           (SYSTEM_FLAGS + 0x26) // Unused Flag
+#define FLAG_SYS_KEEP_OBJECTS_WITHIN_MAP            (SYSTEM_FLAGS + 0x26) // Disables object template loading as long as the destination warp is within the same map
 #define FLAG_SYS_WHITEOUT_TRAINER_RESET             (SYSTEM_FLAGS + 0x27) // Unused Flag
 #define FLAG_SYS_USE_FLASH                          (SYSTEM_FLAGS + 0x28)
 #define FLAG_SYS_USE_STRENGTH                       (SYSTEM_FLAGS + 0x29)

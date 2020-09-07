@@ -184,22 +184,22 @@ EventScript_CancelStrength:: @ 8290929
 	end
 
 Text_WantToStrength: @ 829092C
-	.string "It's a big boulder, but a POKéMON\n"
+	.string "It's a big {BOULDER}, but a POKéMON\n"
 	.string "may be able to push it aside.\p"
 	.string "Would you like to use STRENGTH?$"
 
 Text_MonUsedStrength: @ 829098C
 	.string "You used STRENGTH!\p"
 	.string "Your STRENGTH made it\n"
-	.string "possible to move boulders around!$"
+	.string "possible to move {BOULDER}s around!$"
 
 Text_CantStrength: @ 82909D6
-	.string "It's a big boulder, but a POKéMON\n"
+	.string "It's a big {BOULDER}, but a POKéMON\n"
 	.string "may be able to push it aside.$"
 
 Text_StrengthActivated: @ 8290A16
 	.string "STRENGTH made it possible to move\n"
-	.string "boulders around.$"
+	.string "{BOULDER}s around.$"
 
 @ -----------------------------------------------------
 

@@ -236,7 +236,7 @@ include songs.mk
 %.rl: % ; $(GFX) $< $@
 sound/direct_sound_samples/cry_%.bin: sound/direct_sound_samples/cry_%.aif ; $(AIF) $< $@ --compress
 sound/%.bin: sound/%.aif ; $(AIF) $< $@
-data/%.inc: data/%.pory; $(SCRIPT) -i $< -o $@
+data/%.inc: data/%.pory; $(SCRIPT) -i $< -o $@ -s TPP_MODE=$(TPP_MODE)
 
 $(OBJ_DIR)/copystamped.bin: .git/index
 	$(COPYSTAMP) $(OBJ_DIR)/copystamped.bin `git log -1 --format="-18:s $(VERSION_STR)*%h -19:t %ct"`

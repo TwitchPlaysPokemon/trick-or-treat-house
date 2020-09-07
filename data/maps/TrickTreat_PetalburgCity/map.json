@@ -173,7 +173,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Common_EventScript_CandyLimited05",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 29,
             "y": 2
         },
@@ -186,7 +186,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Common_EventScript_CandyRare",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 13,
             "y": 28
         },
@@ -199,7 +199,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "PuzzleCommon_EventScript_EntranceDoorObject",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "5",
+            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
             "x": 30,
             "y": 9
         },
@@ -212,7 +212,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "PuzzleCommon_EventScript_ExitDoorObject",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "5",
+            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
             "x": 40,
             "y": 16
         },
@@ -225,7 +225,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_ItemSurf",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 30,
             "y": 13
         },
@@ -238,7 +238,7 @@
             "movement_type": "MOVEMENT_TYPE_HIDDEN",
             "script": "TrickTreat_PetalburgCity_CandyGiver_WallysHouse",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 17,
             "y": 5
         },
@@ -251,7 +251,7 @@
             "movement_type": "MOVEMENT_TYPE_HIDDEN",
             "script": "TrickTreat_PetalburgCity_CandyGiver_House",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 20,
             "y": 19
         },
@@ -264,7 +264,7 @@
             "movement_type": "MOVEMENT_TYPE_HIDDEN",
             "script": "TrickTreat_PetalburgCity_CandyGiver_Youngster",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 30,
             "y": 24
         },
@@ -277,7 +277,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
             "script": "TrickTreat_PetalburgCity_CandyGiver_Nurse",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 30,
             "y": 17
         },
@@ -290,7 +290,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
             "script": "TrickTreat_PetalburgCity_CandyGiver_Norman",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 25,
             "y": 9
         },
@@ -303,7 +303,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
             "script": "TrickTreat_PetalburgCity_CandyGiver_Mart",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 35,
             "y": 13
         },
@@ -316,7 +316,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
             "script": "TrickTreat_PetalburgCity_ExitYoungster",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 41,
             "y": 17
         },
@@ -329,7 +329,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "TrickTreat_PetalburgCity_EventScript_Boy",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "6",
+            "trainer_type": "TRAINER_TYPE_KEEP_LOADED",
             "x": 20,
             "y": 12
         },
@@ -342,7 +342,7 @@
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "TrickTreat_PetalburgCity_EventScript_Lass",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "6",
+            "trainer_type": "TRAINER_TYPE_KEEP_LOADED",
             "x": 24,
             "y": 21
         },
@@ -355,7 +355,7 @@
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
             "script": "PuzzleCommon_EventScript_PokecenterHeal",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "5",
+            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
             "x": 30,
             "y": 16
         }

@@ -369,7 +369,7 @@ static void Task_RecordMixing_Main(u8 taskId)
             sub_808729C();
             if (gWirelessCommType != 0)
             {
-                CreateTask(sub_80AF2B4, 10);
+                CreateTask(Task_ReturnToFieldRecordMixing, 10);
             }
             ClearDialogWindowAndFrame(0, 1);
             DestroyTask(taskId);
@@ -974,7 +974,7 @@ static void Task_DoRecordMixing(u8 taskId)
     case 4: // Wait 10 frames
         if (++task->data[1] > 10)
         {
-            sub_800AC34();
+            SetCloseLinkCallback();
             task->data[0] ++;
         }
         break;

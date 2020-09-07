@@ -1,0 +1,366 @@
+raw `
+Puzzle_StealthMission_MapScripts::
+	puzzle_info Puzzle_StealthMission_Name, Puzzle_StealthMission_Author
+	puzzle_adjective Puzzle_StealthMission_Adjective
+	@ puzzle_quip Puzzle_StealthMission_Quip
+	puzzle_candylist Puzzle_StealthMission_CandyList
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_StealthMission_OnLoad
+	map_script MAP_SCRIPT_PUZZLE_EXIT_SCRIPT, Puzzle_StealthMission_OnExit
+	map_script MAP_SCRIPT_PUZZLE_BLACKOUT_SCRIPT, Puzzle_StealthMission_OnBlackout
+	.byte 0
+
+Puzzle_StealthMission_Name:
+	.string "Mission Impassable$"
+Puzzle_StealthMission_Author:
+	.string "Tustin2121$"
+Puzzle_StealthMission_Adjective:
+	.string "$"
+Puzzle_StealthMission_Quip:
+	.string "$"
+Puzzle_StealthMission_CandyList:
+	.2byte 0
+
+@ -----------------------------------------------------
+#define FLAG_HIDE_DIFFICULTY   FLAG_PUZZLE_20
+#define FLAG_HIDE_STAGE2       FLAG_PUZZLE_21
+#define FLAG_DOORA_OPEN        FLAG_PUZZLE_22
+#define FLAG_DOORB_OPEN        FLAG_PUZZLE_23
+#define FLAG_DOORC_OPEN        FLAG_PUZZLE_24
+#define FLAG_DOORD_OPEN        FLAG_PUZZLE_25
+
+#define METATILE_BLACK           0x201
+#define METATILE_VENT_LEFT       0x39B
+#define METATILE_VENT_RIGHT      0x39A
+#define METATILE_VENT_TOP1       0x359
+#define METATILE_VENT_TOP2       0x361
+
+#define METATILE_DOOR_TOP        0x2DB
+#define METATILE_DOOR_BOT        0x2E3
+#define METATILE_FLOORA          0x228
+#define METATILE_FLOORA_SHADOW   0x22A
+#define METATILE_FLOORB          0x202
+#define METATILE_FLOORB_SHADOW   0x204
+#define METATILE_VENT_OPENLR     0x35B
+#define METATILE_VENT_OPENTP     0x301
+
+`
+
+script Puzzle_StealthMission_OnLoad {
+	setflag(FLAG_SYS_KEEP_OBJECTS_WITHIN_MAP)
+	poryswitch(TPP_MODE) {
+		1 {
+			setflag(FLAG_HIDE_DIFFICULTY)
+		}
+	}
+	if (flag(FLAG_TRICK_HOUSE_SCROLL_READ) == FALSE) {
+		call(Puzzle_StealthMission_SetStage1)
+		setflag(FLAG_DOORC_OPEN)
+		clearflag(FLAG_DOORD_OPEN)
+	} else {
+		call(Puzzle_StealthMission_SetStage2)
+		setflag(FLAG_DOORD_OPEN)
+		clearflag(FLAG_DOORC_OPEN)
+	}
+	call(Puzzle_StealthMission_SetDoorA)
+	call(Puzzle_StealthMission_SetDoorB)
+	call(Puzzle_StealthMission_SetDoorC)
+	call(Puzzle_StealthMission_SetDoorD)
+}
+script Puzzle_StealthMission_OnExit {
+	clearflag(FLAG_SYS_KEEP_OBJECTS_WITHIN_MAP)
+	callnative(ClearTrainerFlags)
+}
+script Puzzle_StealthMission_OnBlackout {
+	clearflag(FLAG_SYS_KEEP_OBJECTS_WITHIN_MAP)
+	callnative(ClearTrainerFlags)
+	// Since part of the puzzle is getting back, reset on blackout
+	clearflag(FLAG_TRICK_HOUSE_SCROLL_READ)
+	clearflag(FLAG_DOORA_OPEN)
+	clearflag(FLAG_DOORB_OPEN)
+	takeitem(ITEM_STRENGTH_ITEM, 1)
+	takeitem(ITEM_CARD_KEY, 1)
+}
+
+///////////////////////////////////////////////////////
+
+
+text Puzzle_StealthMission_Text_LookerIntro {
+			"What?! Who are you?!\n"
+			"Doesn't matter! I need your help!\p"
+			"What? No, I'm not Vin Deisel! My name is\n"
+			"Looker, and I'm only disguised as him!\p"
+			"Listen! I need you to go up those\n"
+			"stairs and find the deactivation code!\p"
+			"BUT DON'T{PAUSE 20} GET{PAUSE 20} CAUGHT!!\p"
+			"They've got security androids all over\n"
+			"the shop and they won't hesistate in\l"
+			"trying to terminate you!\p"
+			"What? No, I can't do it myself! I'm\n"
+			"trying to keep the alarm from going off!\p"
+			"Go! Quickly! Don't get seen!!$"
+}
+text Puzzle_StealthMission_Text_LookerWaiting {
+			"What are you waiting for?!\n"
+			"Go find those deactivation codes!\p"
+			"They're probably way in the back, likely\n"
+			"on a paper scroll. Paper can't be hacked.\p"
+			"And don't get seen!"
+}
+text Puzzle_StealthMission_Text_LookerLeaveWarning {
+			"Uh, just so you know. If you leave,\n"
+			"the security androids WILL reset!"
+}
+
+
+
+
+
+
+script Puzzle_StealthMission_PickupKeycard {
+	giveitem_std(ITEM_CARD_KEY, 1, 1)
+}
+
+
+///////////////////////////////////////////////////////
+
+script Puzzle_StealthMission_SetStage1 {
+	// Close Vents
+	setmetatile(36, 5, METATILE_BLACK, TRUE)
+	setmetatile(42, 5, METATILE_BLACK, TRUE)
+	setmetatile(36, 6, METATILE_VENT_LEFT, TRUE)
+	setmetatile(42, 6, METATILE_VENT_RIGHT, TRUE)
+	
+	setmetatile(11, 25, METATILE_VENT_TOP1, TRUE)
+	setmetatile(11, 26, METATILE_VENT_TOP2, TRUE)
+	setmetatile(22, 30, METATILE_BLACK, TRUE)
+	setmetatile(22, 31, METATILE_VENT_RIGHT, TRUE)
+	
+	setmetatile(51, 31, METATILE_BLACK, TRUE)
+	setmetatile(51, 32, METATILE_VENT_LEFT, TRUE)
+	setmetatile(55, 42, METATILE_BLACK, TRUE)
+	setmetatile(55, 43, METATILE_VENT_LEFT, TRUE)
+	return
+}
+script Puzzle_StealthMission_SetStage2 {
+	// Open Vents
+	setmetatile(36, 5, METATILE_DOOR_BOT, FALSE)
+	setmetatile(42, 5, METATILE_DOOR_BOT, FALSE)
+	setmetatile(36, 6, METATILE_VENT_OPENLR, FALSE)
+	setmetatile(42, 6, METATILE_VENT_OPENLR, FALSE)
+	
+	setmetatile(11, 25, METATILE_FLOORA, FALSE)
+	setmetatile(11, 26, METATILE_VENT_OPENTP, FALSE)
+	setmetatile(22, 30, METATILE_DOOR_BOT, FALSE)
+	setmetatile(22, 31, METATILE_VENT_OPENLR, FALSE)
+	
+	setmetatile(51, 31, METATILE_DOOR_BOT, FALSE)
+	setmetatile(51, 32, METATILE_VENT_OPENLR, FALSE)
+	setmetatile(55, 42, METATILE_DOOR_BOT, FALSE)
+	setmetatile(55, 43, METATILE_VENT_OPENLR, FALSE)
+	return
+}
+
+script Puzzle_StealthMission_SetDoorA {
+	if (flag(FLAG_DOORA_OPEN)) {
+		setmetatile(26, 39, METATILE_FLOORA, FALSE)
+		setmetatile(27, 39, METATILE_FLOORA, FALSE)
+		setmetatile(28, 39, METATILE_FLOORA, FALSE)
+		setmetatile(26, 40, METATILE_FLOORA, FALSE)
+		setmetatile(27, 40, METATILE_FLOORA, FALSE)
+		setmetatile(28, 40, METATILE_FLOORA, FALSE)
+		setmetatile(26, 41, METATILE_FLOORB, FALSE)
+		setmetatile(27, 41, METATILE_FLOORB, FALSE)
+		setmetatile(28, 41, METATILE_FLOORB, FALSE)
+	} else {
+		setmetatile(26, 39, METATILE_DOOR_TOP, TRUE)
+		setmetatile(27, 39, METATILE_DOOR_TOP, TRUE)
+		setmetatile(28, 39, METATILE_DOOR_TOP, TRUE)
+		setmetatile(26, 40, METATILE_DOOR_BOT, TRUE)
+		setmetatile(27, 40, METATILE_DOOR_BOT, TRUE)
+		setmetatile(28, 40, METATILE_DOOR_BOT, TRUE)
+		setmetatile(26, 41, METATILE_FLOORB_SHADOW, TRUE)
+		setmetatile(27, 41, METATILE_FLOORB_SHADOW, TRUE)
+		setmetatile(28, 41, METATILE_FLOORB_SHADOW, TRUE)
+	}
+	return
+}
+
+script Puzzle_StealthMission_SetDoorB {
+	if (flag(FLAG_DOORB_OPEN)) {
+		setmetatile(26, 10, METATILE_FLOORA, FALSE)
+		setmetatile(27, 10, METATILE_FLOORA, FALSE)
+		setmetatile(26, 11, METATILE_FLOORA, FALSE)
+		setmetatile(27, 11, METATILE_FLOORA, FALSE)
+		setmetatile(26, 12, METATILE_FLOORA, FALSE)
+		setmetatile(27, 12, METATILE_FLOORA, FALSE)
+	} else {
+		setmetatile(26, 10, METATILE_DOOR_TOP, TRUE)
+		setmetatile(27, 10, METATILE_DOOR_TOP, TRUE)
+		setmetatile(26, 11, METATILE_DOOR_BOT, TRUE)
+		setmetatile(27, 11, METATILE_DOOR_BOT, TRUE)
+		setmetatile(26, 12, METATILE_FLOORA_SHADOW, TRUE)
+		setmetatile(27, 12, METATILE_FLOORA_SHADOW, TRUE)
+	}
+	return
+}
+
+script Puzzle_StealthMission_SetDoorC {
+	if (flag(FLAG_DOORC_OPEN)) {
+		setmetatile(49, 26, METATILE_FLOORA, FALSE)
+		setmetatile(50, 26, METATILE_FLOORA, FALSE)
+		setmetatile(49, 27, METATILE_FLOORA, FALSE)
+		setmetatile(50, 27, METATILE_FLOORA, FALSE)
+		setmetatile(49, 28, METATILE_FLOORA, FALSE)
+		setmetatile(50, 28, METATILE_FLOORA, FALSE)
+	} else {
+		setmetatile(49, 26, METATILE_DOOR_TOP, TRUE)
+		setmetatile(50, 26, METATILE_DOOR_TOP, TRUE)
+		setmetatile(49, 27, METATILE_DOOR_BOT, TRUE)
+		setmetatile(50, 27, METATILE_DOOR_BOT, TRUE)
+		setmetatile(49, 28, METATILE_FLOORA_SHADOW, TRUE)
+		setmetatile(50, 28, METATILE_FLOORA_SHADOW, TRUE)
+	}
+	return
+}
+
+script Puzzle_StealthMission_SetDoorD {
+	if (flag(FLAG_DOORD_OPEN)) {
+		setmetatile(49, 13, METATILE_FLOORA, FALSE)
+		setmetatile(50, 13, METATILE_FLOORA, FALSE)
+		setmetatile(49, 14, METATILE_FLOORA, FALSE)
+		setmetatile(50, 14, METATILE_FLOORA, FALSE)
+		setmetatile(49, 15, METATILE_FLOORA, FALSE)
+		setmetatile(50, 15, METATILE_FLOORA, FALSE)
+	} else {
+		setmetatile(49, 13, METATILE_DOOR_TOP, TRUE)
+		setmetatile(50, 13, METATILE_DOOR_TOP, TRUE)
+		setmetatile(49, 14, METATILE_DOOR_BOT, TRUE)
+		setmetatile(50, 14, METATILE_DOOR_BOT, TRUE)
+		setmetatile(49, 15, METATILE_FLOORA_SHADOW, TRUE)
+		setmetatile(50, 15, METATILE_FLOORA_SHADOW, TRUE)
+	}
+	return
+}
+
+
+// "Looker: What? No, I'm not Vin Deisel. I'm Looker, and I'm currently under cover. And I'm telling you this because I need your help."
+
+
+///////////////////////////////////////////////////////
+
+text Puzzle_StealthMission_TrainerIntro {
+			"INTRUDER ALERT!\n"
+			"DEPLOYING TERMINATION MEASURES!$"
+}
+text Puzzle_StealthMission_TrainerLose {
+			"FAILED TO TERMINATE INTRUDER!\n"
+			"ERROR! ERROR!$"
+}
+text Puzzle_StealthMission_TrainerAfter {
+			"DO NOT MOCK ME, HUMAN!$"
+}
+
+script Puzzle_StealthMission_Trainer01 {
+	trainerbattle_single(TRAINER_01, Puzzle_StealthMission_TrainerIntro, Puzzle_StealthMission_TrainerLose)
+	msgbox(Puzzle_StealthMission_TrainerAfter, MSGBOX_AUTOCLOSE)
+}
+script Puzzle_StealthMission_Trainer02 {
+	trainerbattle_single(TRAINER_02, Puzzle_StealthMission_TrainerIntro, Puzzle_StealthMission_TrainerLose)
+	msgbox(Puzzle_StealthMission_TrainerAfter, MSGBOX_AUTOCLOSE)
+}
+script Puzzle_StealthMission_Trainer03 {
+	trainerbattle_single(TRAINER_03, Puzzle_StealthMission_TrainerIntro, Puzzle_StealthMission_TrainerLose)
+	msgbox(Puzzle_StealthMission_TrainerAfter, MSGBOX_AUTOCLOSE)
+}
+script Puzzle_StealthMission_Trainer04 {
+	trainerbattle_single(TRAINER_04, Puzzle_StealthMission_TrainerIntro, Puzzle_StealthMission_TrainerLose)
+	msgbox(Puzzle_StealthMission_TrainerAfter, MSGBOX_AUTOCLOSE)
+}
+script Puzzle_StealthMission_Trainer05 {
+	trainerbattle_single(TRAINER_05, Puzzle_StealthMission_TrainerIntro, Puzzle_StealthMission_TrainerLose)
+	msgbox(Puzzle_StealthMission_TrainerAfter, MSGBOX_AUTOCLOSE)
+}
+script Puzzle_StealthMission_Trainer06 {
+	trainerbattle_single(TRAINER_06, Puzzle_StealthMission_TrainerIntro, Puzzle_StealthMission_TrainerLose)
+	msgbox(Puzzle_StealthMission_TrainerAfter, MSGBOX_AUTOCLOSE)
+}
+script Puzzle_StealthMission_Trainer07 {
+	trainerbattle_single(TRAINER_07, Puzzle_StealthMission_TrainerIntro, Puzzle_StealthMission_TrainerLose)
+	msgbox(Puzzle_StealthMission_TrainerAfter, MSGBOX_AUTOCLOSE)
+}
+script Puzzle_StealthMission_Trainer08 {
+	trainerbattle_single(TRAINER_08, Puzzle_StealthMission_TrainerIntro, Puzzle_StealthMission_TrainerLose)
+	msgbox(Puzzle_StealthMission_TrainerAfter, MSGBOX_AUTOCLOSE)
+}
+script Puzzle_StealthMission_Trainer09 {
+	trainerbattle_single(TRAINER_09, Puzzle_StealthMission_TrainerIntro, Puzzle_StealthMission_TrainerLose)
+	msgbox(Puzzle_StealthMission_TrainerAfter, MSGBOX_AUTOCLOSE)
+}
+script Puzzle_StealthMission_Trainer10 {
+	trainerbattle_single(TRAINER_10, Puzzle_StealthMission_TrainerIntro, Puzzle_StealthMission_TrainerLose)
+	msgbox(Puzzle_StealthMission_TrainerAfter, MSGBOX_AUTOCLOSE)
+}
+script Puzzle_StealthMission_Trainer11 {
+	trainerbattle_single(TRAINER_11, Puzzle_StealthMission_TrainerIntro, Puzzle_StealthMission_TrainerLose)
+	msgbox(Puzzle_StealthMission_TrainerAfter, MSGBOX_AUTOCLOSE)
+}
+script Puzzle_StealthMission_Trainer12 {
+	trainerbattle_single(TRAINER_12, Puzzle_StealthMission_TrainerIntro, Puzzle_StealthMission_TrainerLose)
+	msgbox(Puzzle_StealthMission_TrainerAfter, MSGBOX_AUTOCLOSE)
+}
+script Puzzle_StealthMission_Trainer13 {
+	trainerbattle_single(TRAINER_13, Puzzle_StealthMission_TrainerIntro, Puzzle_StealthMission_TrainerLose)
+	msgbox(Puzzle_StealthMission_TrainerAfter, MSGBOX_AUTOCLOSE)
+}
+script Puzzle_StealthMission_Trainer14 {
+	trainerbattle_single(TRAINER_14, Puzzle_StealthMission_TrainerIntro, Puzzle_StealthMission_TrainerLose)
+	msgbox(Puzzle_StealthMission_TrainerAfter, MSGBOX_AUTOCLOSE)
+}
+script Puzzle_StealthMission_Trainer15 {
+	trainerbattle_single(TRAINER_15, Puzzle_StealthMission_TrainerIntro, Puzzle_StealthMission_TrainerLose)
+	msgbox(Puzzle_StealthMission_TrainerAfter, MSGBOX_AUTOCLOSE)
+}
+script Puzzle_StealthMission_Trainer16 {
+	trainerbattle_single(TRAINER_16, Puzzle_StealthMission_TrainerIntro, Puzzle_StealthMission_TrainerLose)
+	msgbox(Puzzle_StealthMission_TrainerAfter, MSGBOX_AUTOCLOSE)
+}
+script Puzzle_StealthMission_Trainer17 {
+	trainerbattle_single(TRAINER_17, Puzzle_StealthMission_TrainerIntro, Puzzle_StealthMission_TrainerLose)
+	msgbox(Puzzle_StealthMission_TrainerAfter, MSGBOX_AUTOCLOSE)
+}
+script Puzzle_StealthMission_Trainer18 {
+	trainerbattle_single(TRAINER_18, Puzzle_StealthMission_TrainerIntro, Puzzle_StealthMission_TrainerLose)
+	msgbox(Puzzle_StealthMission_TrainerAfter, MSGBOX_AUTOCLOSE)
+}
+script Puzzle_StealthMission_Trainer19 {
+	trainerbattle_single(TRAINER_19, Puzzle_StealthMission_TrainerIntro, Puzzle_StealthMission_TrainerLose)
+	msgbox(Puzzle_StealthMission_TrainerAfter, MSGBOX_AUTOCLOSE)
+}
+script Puzzle_StealthMission_Trainer20 {
+	trainerbattle_single(TRAINER_20, Puzzle_StealthMission_TrainerIntro, Puzzle_StealthMission_TrainerLose)
+	msgbox(Puzzle_StealthMission_TrainerAfter, MSGBOX_AUTOCLOSE)
+}
+
+raw `
+#undef FLAG_HIDE_DIFFICULTY
+#undef FLAG_HIDE_STAGE2
+#undef FLAG_DOORA_OPEN
+#undef FLAG_DOORB_OPEN
+#undef FLAG_DOORC_OPEN
+#undef FLAG_DOORD_OPEN
+
+#undef METATILE_BLACK
+#undef METATILE_VENT_LEFT
+#undef METATILE_VENT_RIGHT
+#undef METATILE_VENT_TOP1
+#undef METATILE_VENT_TOP2
+
+#undef METATILE_DOOR_TOP
+#undef METATILE_DOOR_BOT
+#undef METATILE_FLOORA
+#undef METATILE_FLOORA_SHADOW
+#undef METATILE_FLOORB
+#undef METATILE_FLOORB_SHADOW
+#undef METATILE_VENT_OPENLR
+#undef METATILE_VENT_OPENTP
+`

@@ -1394,7 +1394,7 @@ void sub_80B69DC(void)
 
 static void mapldr_080842E8(void)
 {
-    pal_fill_black();
+    FadeInFromBlack();
     CreateTask(task00_8084310, 0);
     ScriptContext2_Enable();
     FreezeEventObjects();
@@ -1437,7 +1437,7 @@ void HidePlayerOnLoad(struct ScriptContext *ctx)
 static void mapldr_08084390(void)
 {
     Overworld_PlaySpecialMapMusic();
-    pal_fill_black();
+    FadeInFromBlack();
     CreateTask(c3_080843F8, 0);
     gEventObjects[gPlayerAvatar.eventObjectId].invisible = TRUE;
     if (gPlayerAvatar.flags & 0x08)
@@ -1470,10 +1470,10 @@ static void c3_080843F8(u8 taskId)
     }
 }
 
-void sub_80B6B68(void)
+void FieldCB_FallWarpExit(void)
 {
     Overworld_PlaySpecialMapMusic();
-    pal_fill_for_maplights();
+    WarpFadeInScreen();
     ScriptContext2_Enable();
     FreezeEventObjects();
     CreateTask(sub_80B6B94, 0);
@@ -1599,7 +1599,7 @@ static bool8 sub_80B6E18(struct Task *task)
     return FALSE;
 }
 
-void sub_80B6E4C(u8 a0, u8 priority)
+void StartEscalatorWarp(u8 a0, u8 priority)
 {
     u8 taskId;
     taskId = CreateTask(sub_80B6E88, priority);
@@ -1710,7 +1710,7 @@ static void sub_80B7004(struct Task *task)
 static void sub_80B7050(void)
 {
     TryFadeOutOldMapMusic();
-    WarpFadeScreen();
+    WarpFadeOutScreen();
 }
 
 static void sub_80B7060(void)
@@ -1728,7 +1728,7 @@ static void sub_80B7060(void)
 static void sub_80B70B4(void)
 {
     Overworld_PlaySpecialMapMusic();
-    pal_fill_for_maplights();
+    WarpFadeInScreen();
     ScriptContext2_Enable();
     CreateTask(sub_80B70DC, 0);
     gFieldCallback = NULL;
@@ -1965,7 +1965,7 @@ static bool8 dive_3_unknown(struct Task *task)
     return FALSE;
 }
 
-void sub_80B75D8(u8 priority)
+void StartLavaridgeGymB1FWarp(u8 priority)
 {
     CreateTask(sub_80B75F0, priority);
 }
@@ -2060,7 +2060,7 @@ static bool8 sub_80B7704(struct Task *task, struct EventObject *eventObject, str
 static bool8 sub_80B77F8(struct Task *task, struct EventObject *eventObject, struct Sprite *sprite)
 {
     TryFadeOutOldMapMusic();
-    WarpFadeScreen();
+    WarpFadeOutScreen();
     task->data[0]++;
     return FALSE;
 }
@@ -2080,7 +2080,7 @@ static bool8 sub_80B7814(struct Task *task, struct EventObject *eventObject, str
 static void mapldr_080851BC(void)
 {
     Overworld_PlaySpecialMapMusic();
-    pal_fill_for_maplights();
+    WarpFadeInScreen();
     ScriptContext2_Enable();
     gFieldCallback = NULL;
     CreateTask(sub_80B7890, 0);
@@ -2159,7 +2159,7 @@ void sub_80B7A58(struct Sprite *sprite)
     }
 }
 
-void sub_80B7A74(u8 priority)
+void StartLavaridgeGym1FWarp(u8 priority)
 {
     CreateTask(sub_80B7A8C, priority);
 }
@@ -2216,7 +2216,7 @@ static bool8 sub_80B7BCC(struct Task *task, struct EventObject *eventObject, str
     if (!FieldEffectActiveListContains(FLDEFF_POP_OUT_OF_ASH))
     {
         TryFadeOutOldMapMusic();
-        WarpFadeScreen();
+        WarpFadeOutScreen();
         task->data[0]++;
     }
     return FALSE;
@@ -2227,7 +2227,7 @@ static bool8 sub_80B7BF4(struct Task *task, struct EventObject *eventObject, str
     if (!gPaletteFade.active && BGMusicStopped() == TRUE)
     {
         WarpIntoMap();
-        gFieldCallback = sub_80B6B68;
+        gFieldCallback = FieldCB_FallWarpExit;
         SetMainCallback2(CB2_LoadMap);
         DestroyTask(FindTaskIdByFunc(sub_80B7A8C));
     }
@@ -2278,7 +2278,7 @@ static void EscapeRopeFieldEffect_Step1(struct Task *task)
     if (task->data[14] != 0 && (--task->data[14]) == 0)
     {
         TryFadeOutOldMapMusic();
-        WarpFadeScreen();
+        WarpFadeOutScreen();
     }
     eventObject = &gEventObjects[gPlayerAvatar.eventObjectId];
     if (!EventObjectIsMovementOverridden(eventObject) || EventObjectClearHeldMovementIfFinished(eventObject))
@@ -2311,7 +2311,7 @@ void (*const gUnknown_0855C484[])(struct Task *) = {
 static void mapldr_080859D4(void)
 {
     Overworld_PlaySpecialMapMusic();
-    pal_fill_for_maplights();
+    WarpFadeInScreen();
     ScriptContext2_Enable();
     FreezeEventObjects();
     gFieldCallback = NULL;
@@ -2431,7 +2431,7 @@ static void TeleportFieldEffectTask3(struct Task *task)
     {
         task->data[0]++;
         TryFadeOutOldMapMusic();
-        WarpFadeScreen();
+        WarpFadeOutScreen();
     }
 }
 
@@ -2459,7 +2459,7 @@ static void TeleportFieldEffectTask4(struct Task *task)
 static void mapldr_08085D88(void)
 {
     Overworld_PlaySpecialMapMusic();
-    pal_fill_for_maplights();
+    WarpFadeInScreen();
     ScriptContext2_Enable();
     FreezeEventObjects();
     gFieldCallback = NULL;
@@ -3239,7 +3239,7 @@ static void sub_80B9474(struct Task *task)
 {
     if (sub_80B9508(task->data[1]))
     {
-        WarpFadeScreen();
+        WarpFadeOutScreen();
         task->data[0]++;
     }
 }

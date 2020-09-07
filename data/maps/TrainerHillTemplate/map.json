@@ -23,7 +23,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 34,
             "y": 67
         },
@@ -36,7 +36,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "PuzzleCommon_EventScript_ExitDoorObject",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "5",
+            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
             "x": 15,
             "y": 57
         },
@@ -49,7 +49,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "PuzzleCommon_EventScript_Scroll",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 12,
             "y": 61
         }

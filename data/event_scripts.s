@@ -20,6 +20,7 @@
 #include "constants/game_stat.h"
 #include "constants/weather.h"
 #include "constants/trainer_hill.h"
+#include "constants/trainer_types.h"
 #include "constants/battle.h"
 #include "constants/metatile_labels.h"
 	.include "asm/macros.inc"
@@ -6328,3 +6329,7 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/TrickTreat_AltoMare2/scripts.inc"
 
 	.include "data/maps/TrickTreat_GoldenrodCity/scripts.inc"
+
+	.include "data/maps/Puzzle_StealthMission/scripts.inc"
+
+	.include "data/maps/Puzzle_MurderExpress/scripts.inc"

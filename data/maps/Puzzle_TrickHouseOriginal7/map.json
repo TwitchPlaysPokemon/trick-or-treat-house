@@ -107,7 +107,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "Puzzle_TrickHouseOriginal7_EventScript_Plasmaboy",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 9,
             "y": 20
         },
@@ -120,7 +120,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "Puzzle_TrickHouseOriginal7_EventScript_26E3B7",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 9,
             "y": 12
         },
@@ -133,7 +133,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "Puzzle_TrickHouseOriginal7_EventScript_26E3A0",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 8,
             "y": 17
         },
@@ -146,7 +146,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Common_EventScript_CandyAbundant",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 5,
             "y": 12
         },
@@ -159,7 +159,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "Puzzle_TrickHouseOriginal7_EventScript_PsychicBoy",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 10,
             "y": 2
         },
@@ -172,7 +172,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "Puzzle_TrickHouseOriginal7_EventScript_26E3CE",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 13
         },
@@ -185,7 +185,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "Puzzle_TrickHouseOriginal7_EventScript_Ghetsis",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 9,
             "y": 2
         },
@@ -198,7 +198,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 17
         },
@@ -211,7 +211,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "0x0",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 6
         },
@@ -224,7 +224,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "PuzzleCommon_EventScript_Scroll",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 6,
             "y": 17
         },
@@ -237,7 +237,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyRare",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 1,
             "y": 2
         },
@@ -250,7 +250,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyAbundant",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 13,
             "y": 20
         }

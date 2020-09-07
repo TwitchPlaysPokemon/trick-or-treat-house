@@ -1081,7 +1081,7 @@ static void sub_8025644(void)
     switch (gUnknown_02022C98->unk10)
     {
     case 0:
-        sub_800AC34();
+        SetCloseLinkCallback();
         sub_80292E0(7);
         gUnknown_02022C98->unk10++;
         break;

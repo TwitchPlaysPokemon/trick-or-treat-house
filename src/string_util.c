@@ -4,6 +4,8 @@
 #include "text.h"
 #include "script.h"
 #include "trickhouse.h"
+#include "overworld.h"
+#include "constants/maps.h"
 #include "constants/map_scripts.h"
 #include "constants/vars.h"
 
@@ -518,6 +520,16 @@ static const u8 *ExpandPlaceholder_ToTRuleNo(void)
     return gExpandedPlaceholder_ToTRuleNo;
 }
 
+extern const u8 gExpandedPlaceholder_Boulder[];
+extern const u8 gExpandedPlaceholder_Crate[];
+static const u8 *ExpandPlaceholder_Boulder(void)
+{
+    if (CurrentMapIs(MAP_PUZZLE_STEALTH_MISSION)) {
+        return gExpandedPlaceholder_Crate;
+    }
+    return gExpandedPlaceholder_Boulder;
+}
+
 extern const u8 PuzzleCommon_Text_UntitledPuzzleName[];
 static const u8 *ExpandPlaceholder_PuzzleName(void)
 {
@@ -585,7 +597,7 @@ const u8 *GetExpandedPlaceholder(u32 id)
         ExpandPlaceholder_Link,       // 0A
         ExpandPlaceholder_FairyGirl,
         ExpandPlaceholder_ToTRuleNo,
-        ExpandPlaceholder_Empty,
+        ExpandPlaceholder_Boulder,
         ExpandPlaceholder_Empty,
         ExpandPlaceholder_Empty,       // 0F
         

@@ -1488,7 +1488,7 @@ static void CB2_PreInitMultiBattle(void)
             if (gWirelessCommType)
                 sub_800ADF8();
             else
-                sub_800AC34();
+                SetCloseLinkCallback();
         }
         break;
     case 3:
@@ -2387,7 +2387,7 @@ static void sub_8038F34(void)
         break;
     case 8:
         if (!gWirelessCommType)
-            sub_800AC34();
+            SetCloseLinkCallback();
         gBattleCommunication[MULTIUSE_STATE]++;
         break;
     case 9:
@@ -2571,7 +2571,7 @@ static void sub_803939C(void)
         if (--gBattleCommunication[1] == 0)
         {
             if (gMain.field_439_x4 && !gWirelessCommType)
-                sub_800AC34();
+                SetCloseLinkCallback();
             gBattleCommunication[MULTIUSE_STATE]++;
         }
         break;

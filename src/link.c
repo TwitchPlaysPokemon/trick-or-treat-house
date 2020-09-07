@@ -456,7 +456,7 @@ static void LinkTestProcessKeyInput(void)
     }
     if (gMain.newKeys & SELECT_BUTTON)
     {
-        sub_800AC34();
+        SetCloseLinkCallback();
     }
     if (gLinkTestDebugValuesEnabled)
     {
@@ -1440,7 +1440,7 @@ void sub_800ABF4(u16 a0)
     }
 }
 
-void sub_800AC34(void)
+void SetCloseLinkCallback(void)
 {
     if (gWirelessCommType == TRUE)
     {

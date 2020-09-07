@@ -24,6 +24,8 @@
 #define MOVEMENT_MODE_FROZEN 1
 #define MOVEMENT_MODE_SCRIPTED 2
 
+#define SKIP_OBJECT_EVENT_LOAD  1
+
 struct InitialPlayerAvatarState
 {
     u8 transitionFlags;
@@ -72,6 +74,7 @@ void ApplyCurrentWarp(void);
 struct MapHeader const *const Overworld_GetMapHeaderByGroupAndId(u16 mapGroup, u16 mapNum);
 struct MapHeader const *const GetDestinationWarpMapHeader(void);
 void WarpIntoMap(void);
+bool32 IsWarpingToSameMap();
 void SetWarpDestination(s8 mapGroup, s8 mapNum, s8 warpId, s8 x, s8 y);
 void SetWarpDestinationToMapWarp(s8 mapGroup, s8 mapNum, s8 warpId);
 void SetDynamicWarp(s32 unused, s8 mapGroup, s8 mapNum, s8 warpId);
@@ -99,8 +102,8 @@ void SetDefaultFlashLevel(void);
 void Overworld_SetFlashLevel(s32 flashLevel);
 u8 Overworld_GetFlashLevel(void);
 void SetCurrentMapLayout(u16 mapLayoutId);
-void sub_8085540(u8 var);
-u8 sub_808554C(void);
+void SetObjectEventLoadFlag(u8 var);
+u8 GetObjectEventLoadFlag(void);
 u16 GetLocationMusic(struct WarpData *warp);
 u16 GetCurrLocationDefaultMusic(void);
 u16 GetWarpDestinationMusic(void);
@@ -119,6 +122,7 @@ u8 GetMapTypeByGroupAndId(s8 mapGroup, s8 mapNum);
 u8 GetMapTypeByWarpData(struct WarpData *warp);
 u8 GetCurrentMapType(void);
 u8 GetLastUsedWarpMapType(void);
+bool8 CurrentMapIs(u16 mapId);
 bool8 IsMapTypeOutdoors(u8 mapType);
 bool8 Overworld_MapTypeAllowsTeleportAndFly(u8 mapType);
 bool8 IsMapTypeIndoors(u8 mapType);
@@ -136,7 +140,7 @@ void CB2_NewGame(void);
 void CB2_WhiteOut(void);
 void CB2_LoadMap(void);
 void sub_8086024(void);
-void sub_8086074(void);
+void CB2_ReturnToFieldCableClub(void);
 void CB2_ReturnToField(void);
 void CB2_ReturnToFieldLocal(void);
 void CB2_ReturnToFieldLink(void);

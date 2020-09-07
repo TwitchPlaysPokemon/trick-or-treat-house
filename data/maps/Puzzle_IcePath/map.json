@@ -174,7 +174,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "EventScript_StrengthBoulder",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 36,
             "y": 26
         },
@@ -187,7 +187,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "EventScript_StrengthBoulder",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 53,
             "y": 9
         },
@@ -200,7 +200,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "EventScript_StrengthBoulder",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 54,
             "y": 10
         },
@@ -213,7 +213,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "EventScript_StrengthBoulder",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 57,
             "y": 8
         },
@@ -226,7 +226,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "EventScript_StrengthBoulder",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 63,
             "y": 8
         },
@@ -239,7 +239,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "EventScript_StrengthBoulder",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 53,
             "y": 47
         },
@@ -252,7 +252,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 18
         },
@@ -263,9 +263,9 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NULL",
+            "script": "PuzzleCommon_EventScript_ExitDoorObject",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
             "x": 33,
             "y": 24
         },
@@ -278,7 +278,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 12,
             "y": 33
         },
@@ -291,7 +291,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 13,
             "y": 43
         },
@@ -304,7 +304,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 42
         },
@@ -317,7 +317,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 5,
             "y": 37
         },
@@ -330,7 +330,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "PuzzleCommon_EventScript_Scroll",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 57,
             "y": 50
         },
@@ -343,7 +343,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_ItemStrength",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 31,
             "y": 6
         },
@@ -356,7 +356,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyCommon",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 35,
             "y": 8
         },
@@ -369,7 +369,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyUncommon",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 32,
             "y": 22
         },
@@ -382,7 +382,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyCommon",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 1,
             "y": 32
         },
@@ -395,7 +395,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyAbundant",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 1,
             "y": 47
         },
@@ -408,7 +408,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyCommon",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 37,
             "y": 49
         },
@@ -421,7 +421,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyRare",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 52,
             "y": 48
         },
@@ -434,7 +434,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyAbundant",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 49,
             "y": 34
         },
@@ -447,7 +447,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyAbundant",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 9,
             "y": 39
         },
@@ -460,7 +460,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyAbundant",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 54,
             "y": 22
         },
@@ -473,7 +473,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Puzzle_IcePath_PickupSecretItem",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 12,
             "y": 19
         }

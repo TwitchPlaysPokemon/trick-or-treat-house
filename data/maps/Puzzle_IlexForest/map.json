@@ -393,7 +393,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "EventScript_CutTree",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 13
         },
@@ -406,7 +406,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "EventScript_RockSmash",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 26,
             "y": 6
         },
@@ -419,7 +419,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 6,
             "y": 14
         },
@@ -432,7 +432,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_ItemSurf",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 53,
             "y": 13
         },
@@ -445,7 +445,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "PuzzleCommon_EventScript_EntranceDoorObject",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "5",
+            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
             "x": 4,
             "y": 32
         },
@@ -458,7 +458,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "PuzzleCommon_EventScript_ExitDoorObject",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "5",
+            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
             "x": 1,
             "y": 6
         },
@@ -471,7 +471,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "PuzzleCommon_EventScript_Scroll",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 3,
             "y": 14
         },
@@ -484,7 +484,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_ItemRockSmash",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 28,
             "y": 6
         },
@@ -497,7 +497,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Puzzle_IlexForest_EventScript_Boy",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 7,
             "y": 14
         },
@@ -510,7 +510,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Puzzle_IlexForest_EventScript_Man",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 5,
             "y": 14
         },
@@ -523,7 +523,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "EventScript_CutTree",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 45,
             "y": 30
         },
@@ -536,7 +536,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_ItemCut",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 60,
             "y": 6
         },
@@ -549,7 +549,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_ItemRevive",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 20,
             "y": 18
         },
@@ -562,7 +562,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Puzzle_IlexForest_VarCheck",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 15,
             "y": 33
         },
@@ -575,7 +575,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyRare",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 56,
             "y": 4
         },
@@ -588,7 +588,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyAbundant",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 34,
             "y": 7
         },
@@ -601,7 +601,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyUncommon",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 49,
             "y": 32
         }

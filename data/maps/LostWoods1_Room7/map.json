@@ -52,7 +52,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "Puzzle_LostWoods1_Wanderer3",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 8,
             "y": 10
         }

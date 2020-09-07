@@ -55,7 +55,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "PuzzleCommon_EventScript_Scroll",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 7,
             "y": 8
         },
@@ -68,7 +68,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Puzzle_MusicNoteTiles_Pokemon",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 5,
             "y": 7
         },
@@ -81,7 +81,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Puzzle_MusicNoteTiles_Pokemon",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 6,
             "y": 7
         },
@@ -94,7 +94,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Puzzle_MusicNoteTiles_Pokemon",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 7,
             "y": 7
         },
@@ -107,7 +107,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Puzzle_MusicNoteTiles_Pokemon",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 7
         },
@@ -120,7 +120,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Puzzle_MusicNoteTiles_Pokemon",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 9,
             "y": 7
         },
@@ -133,7 +133,7 @@
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
             "script": "Puzzle_MusicNoteTiles_Extra",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 14,
             "y": 4
         }

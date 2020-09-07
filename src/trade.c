@@ -6081,7 +6081,7 @@ static void sub_807EB50(void)
                 }
                 else
                 {
-                    sub_800AC34();
+                    SetCloseLinkCallback();
                 }
                 gMain.state++;
             }
@@ -6143,7 +6143,7 @@ static void sub_807F110(u8 taskId)
     if (!gPaletteFade.active)
     {
         SetMainCallback2(sub_807B270);
-        gFieldCallback = FieldCallback_ReturnToEventScript2;
+        gFieldCallback = FieldCB_ContinueScriptHandleMusic;
         DestroyTask(taskId);
     }
 }

@@ -34,6 +34,7 @@
 #include "constants/map_types.h"
 #include "constants/maps.h"
 #include "constants/songs.h"
+#include "constants/trainer_types.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
 static EWRAM_DATA u16 sPreviousPlayerMetatileBehavior = 0;
@@ -343,7 +344,7 @@ static const u8 *GetBumpInteractEventObjectScript(struct MapPosition *position, 
     if (eventObjectId == EVENT_OBJECTS_COUNT || gEventObjects[eventObjectId].localId == EVENT_OBJ_ID_PLAYER)
         return NULL;
     
-    if (gEventObjects[eventObjectId].trainerType != TrainerType_BumpToInteract)
+    if (gEventObjects[eventObjectId].trainerType != TRAINER_TYPE_BUMP_TO_INTERACT)
         return NULL;
 
     gSelectedEventObject = eventObjectId;
@@ -752,22 +753,22 @@ static bool8 TryStartWarpEventScript(struct MapPosition *position, u16 metatileB
         SetupWarp(&gMapHeader, warpEventId, position);
         if (MetatileBehavior_IsEscalator(metatileBehavior) == TRUE)
         {
-            sub_80AF80C(metatileBehavior);
+            DoEscalatorWarp(metatileBehavior);
             return TRUE;
         }
         // if (MetatileBehavior_IsLavaridgeB1FWarp(metatileBehavior) == TRUE)
         // {
-        //     sub_80AF828();
+        //     DoLavaridgeGymB1FWarp();
         //     return TRUE;
         // }
         // if (MetatileBehavior_IsLavaridge1FWarp(metatileBehavior) == TRUE)
         // {
-        //     sub_80AF838();
+        //     DoLavaridgeGym1FWarp();
         //     return TRUE;
         // }
         if (MetatileBehavior_IsTeleportWarp(metatileBehavior) == TRUE)
         {
-            sub_80AF848();
+            DoTeleportTileWarp();
             return TRUE;
         }
         if (MetatileBehavior_IsWarpOrBridge(metatileBehavior) == TRUE)
@@ -782,7 +783,7 @@ static bool8 TryStartWarpEventScript(struct MapPosition *position, u16 metatileB
         // }
         if (MetatileBehavior_IsMossdeepGymWarp(metatileBehavior) == TRUE)
         {
-            sub_80AF87C();
+            DoMossdeepGymWarp();
             return TRUE;
         }
         DoWarp();

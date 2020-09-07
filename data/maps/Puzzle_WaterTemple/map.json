@@ -97,7 +97,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 10,
             "y": 18
         },
@@ -110,7 +110,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "PuzzleCommon_EventScript_ExitDoorObject",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "5",
+            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
             "x": 37,
             "y": 16
         },
@@ -123,7 +123,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "PuzzleCommon_EventScript_Scroll",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 46,
             "y": 16
         },
@@ -136,7 +136,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT",
             "script": "Puzzle_WaterTemple_Trainer1",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 14,
             "y": 23
         },
@@ -149,7 +149,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT",
             "script": "Puzzle_WaterTemple_Trainer3",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 17,
             "y": 36
         },
@@ -162,7 +162,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_DOWN_AND_UP",
             "script": "Puzzle_WaterTemple_Trainer2",
             "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 43,
             "y": 15
         },
@@ -175,7 +175,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_UP_AND_DOWN",
             "script": "Puzzle_WaterTemple_Trainer4",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 28,
             "y": 34
         },
@@ -188,7 +188,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Puzzle_WaterTemple_ItemBall3",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 37,
             "y": 43
         },
@@ -201,7 +201,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_CandyLimited01",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 43,
             "y": 43
         },
@@ -214,7 +214,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Puzzle_WaterTemple_ItemBall0",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 3,
             "y": 34
         },
@@ -227,7 +227,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Puzzle_WaterTemple_DrainToLevel1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 40,
             "y": 20
         },
@@ -240,7 +240,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Puzzle_WaterTemple_DrainToLevel2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 31,
             "y": 13
         },
@@ -253,7 +253,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Puzzle_WaterTemple_FillToLevel0",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 10,
             "y": 27
         },
@@ -266,7 +266,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Puzzle_WaterTemple_FillToLevel1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 35,
             "y": 25
         },
@@ -279,7 +279,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Puzzle_WaterTemple_ItemBallSurf",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 27,
             "y": 12
         },
@@ -292,7 +292,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Puzzle_WaterTemple_ItemBall1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 14,
             "y": 12
         },
@@ -305,7 +305,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Puzzle_WaterTemple_ItemBall2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 40,
             "y": 8
         },
@@ -318,7 +318,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Puzzle_WaterTemple_ItemBall4",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 47,
             "y": 13
         }

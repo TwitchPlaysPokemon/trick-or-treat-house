@@ -107,7 +107,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "Puzzle_TrickHouseOriginal2_EventScript_26BC75",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 13,
             "y": 10
         },
@@ -120,7 +120,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "Puzzle_TrickHouseOriginal2_EventScript_26BC8C",
             "trainer_sight_or_berry_tree_id": "4",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 10,
             "y": 17
         },
@@ -133,7 +133,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "Puzzle_TrickHouseOriginal2_EventScript_26BCA3",
             "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 11,
             "y": 9
         },
@@ -146,7 +146,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Common_EventScript_CandyAbundant",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 17
         },
@@ -159,7 +159,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Common_EventScript_CandyAbundant",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 3,
             "y": 13
         },
@@ -172,7 +172,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "PuzzleCommon_EventScript_Scroll",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 14,
             "y": 14
         }

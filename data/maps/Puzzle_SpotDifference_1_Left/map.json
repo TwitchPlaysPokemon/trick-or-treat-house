@@ -47,7 +47,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Puzzle_SpotDifference_1_Left_Boy",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 10,
             "y": 5
         },
@@ -60,7 +60,7 @@
             "movement_type": "MOVEMENT_TYPE_HIDDEN2",
             "script": "Puzzle_SpotTheDifference_Trainer1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 5,
             "y": 6
         }

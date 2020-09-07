@@ -1509,6 +1509,26 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Goldenrod",
             "width": 48
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_StealthMission/map.bin",
+            "border_filepath": "data/layouts/Puzzle_StealthMission/border.bin",
+            "height": 50,
+            "id": "LAYOUT_PUZZLE_STEALTH_MISSION",
+            "name": "Puzzle_StealthMission_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Facility",
+            "width": 60
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_MurderExpress/map.bin",
+            "border_filepath": "data/layouts/Puzzle_MurderExpress/border.bin",
+            "height": 20,
+            "id": "LAYOUT_PUZZLE_MURDER_EXPRESS",
+            "name": "Puzzle_MurderExpress_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Facility",
+            "width": 40
         }
     ],
     "layouts_table_label": "gMapLayouts"

@@ -167,7 +167,7 @@ void Task_HandleTruckSequence(u8 taskId)
         data[1]++;
         if (data[1] == SECONDS(2.5))
         {
-            pal_fill_black();
+            FadeInFromBlack();
             data[1] = 0;
             data[0] = 2;
         }
@@ -331,7 +331,7 @@ void sub_80FB768(void)
 {
     sub_80FB6EC();
     gEventObjects[gPlayerAvatar.eventObjectId].invisible = TRUE;
-    pal_fill_black();
+    FadeInFromBlack();
     CreateTask(Task_HandlePorthole, 80);
     ScriptContext2_Enable();
 }
@@ -343,5 +343,5 @@ void sub_80FB7A4(void)
     FlagSet(FLAG_HIDE_MAP_NAME_POPUP);
     SetDynamicWarp(0, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, -1);
     sub_80FB59C();
-    sub_80AF8B8();
+    DoPortholeWarp();
 }

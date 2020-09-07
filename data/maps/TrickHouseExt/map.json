@@ -179,7 +179,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 49,
             "y": 51
         },
@@ -192,7 +192,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "TrickHouseExt_EventScript_TestDoor",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "5",
+            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
             "x": 42,
             "y": 48
         },
@@ -205,7 +205,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_ItemItemfinder",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 56,
             "y": 10
         },
@@ -218,7 +218,7 @@
             "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_RIGHT_LEFT_UP",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 47,
             "y": 25
         },
@@ -231,7 +231,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 49,
             "y": 33
         },
@@ -244,7 +244,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 49,
             "y": 32
         },
@@ -257,7 +257,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 49,
             "y": 34
         },
@@ -270,7 +270,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 49,
             "y": 32
         },
@@ -283,7 +283,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 49,
             "y": 34
         },
@@ -296,7 +296,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 49,
             "y": 33
         },
@@ -309,7 +309,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 68,
             "y": 59
         },
@@ -322,7 +322,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 70,
             "y": 59
         },
@@ -335,7 +335,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 69,
             "y": 59
         },
@@ -348,7 +348,7 @@
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
             "script": "TrickHouseExt_EventScript_BikeCredits",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 38,
             "y": 29
         }

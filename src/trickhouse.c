@@ -134,6 +134,19 @@ void RunPuzzleTeardownScript()
 	}
 }
 
+void RunPuzzleBlackoutScript()
+{
+	u16 currPuzzle = GetCurrentPuzzleMapId();
+	if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(TRICK_HOUSE_END))
+	{
+		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_BLACKOUT_SCRIPT);
+		if (script != NULL)
+		{
+			ScriptContext2_RunNewScript(script);
+		}
+	}
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 
 bool8 IsAfterFirstLoop()
@@ -151,6 +164,11 @@ void ClearPuzzleEventData(struct ScriptContext *ctx)
 	FlagClear(FLAG_PUZZLE_HAS_COMPLETED);
 	FlagClear(FLAG_HIDE_MAP_NAME_POPUP);
 	gPuzzleTimer = 0;
+}
+
+void ClearTrainerFlags(struct ScriptContext *ctx)
+{
+	memset(gSaveBlock1Ptr->flags + (FLAG_TRAINER_FLAG_START >> 3), 0, TRAINERS_PERMAP_END >> 3);
 }
 
 void CheckLastPuzzle(struct ScriptContext *ctx)
@@ -565,7 +583,7 @@ void ShowStarterMonSummaryScreen(struct ScriptContext *ctx)
 	if (gSpecialVar_MonBoxPos >= 12) return;
 	
 	ShowPokemonSummaryScreen(PSS_MODE_BOX, mon, 0, 0, CB2_ReturnToField);
-	gFieldCallback = FieldCallback_ReturnToEventScript2;
+	gFieldCallback = FieldCB_ContinueScriptHandleMusic;
 }
 
 void GivePlayerStarterMon(struct ScriptContext *ctx)

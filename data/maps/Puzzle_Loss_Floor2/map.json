@@ -79,7 +79,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "PuzzleCommon_EventScript_ExitDoorObject",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "5",
+            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
             "x": 4,
             "y": 1
         },
@@ -92,7 +92,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "Puzzle_Loss_Floor2_EventScript_Woman",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 16,
             "y": 26
         },
@@ -105,7 +105,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Puzzle_Loss_Floor2_EventScript_Teala",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
             "y": 2
         },
@@ -118,7 +118,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Puzzle_Loss_Floor2_EventScript_Man",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 9,
             "y": 4
         },
@@ -131,7 +131,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 17
         },
@@ -144,7 +144,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 3,
             "y": 17
         },
@@ -157,7 +157,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "Puzzle_Loss_Floor2_Patron1",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 0,
             "y": 7
         },
@@ -170,7 +170,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Puzzle_Loss_Floor2_Doll",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 16,
             "y": 17
         },
@@ -183,7 +183,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "Puzzle_Loss_Floor2_Patron2",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 3,
             "y": 6
         },
@@ -196,7 +196,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "Puzzle_Loss_Floor2_Patron3",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 2,
             "y": 26
         },
@@ -209,7 +209,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "Puzzle_Loss_Floor2_Patron3Mon",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 3,
             "y": 27
         }

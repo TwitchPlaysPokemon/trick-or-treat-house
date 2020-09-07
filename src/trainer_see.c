@@ -16,6 +16,7 @@
 #include "constants/battle_setup.h"
 #include "constants/event_object_movement_constants.h"
 #include "constants/field_effects.h"
+#include "constants/trainer_types.h"
 
 // this file's functions
 static u8 CheckTrainer(u8 eventObjectId);
@@ -243,10 +244,11 @@ bool8 CheckForTrainersWantingBattle(void)
     for (i = 0; i < EVENT_OBJECTS_COUNT; i++)
     {
         u8 retVal;
+        u8 trainerType = gEventObjects[i].trainerType & (~TRAINER_TYPE_KEEP_LOADED);
 
         if (!gEventObjects[i].active)
             continue;
-        if (gEventObjects[i].trainerType != TrainerType_Normal && gEventObjects[i].trainerType != TrainerType_SeeAllDirs)
+        if (trainerType != TRAINER_TYPE_NORMAL && trainerType != TRAINER_TYPE_BURIED)
             continue;
 
         retVal = CheckTrainer(i);
@@ -348,9 +350,10 @@ static u8 GetTrainerApproachDistance(struct EventObject *trainerObj)
     s16 x, y;
     u8 i;
     u8 approachDistance;
+    u8 trainerType = trainerObj->trainerType & (~TRAINER_TYPE_KEEP_LOADED);
 
     PlayerGetDestCoords(&x, &y);
-    if (trainerObj->trainerType == TrainerType_Normal)  // can only see in one direction
+    if (trainerType == TRAINER_TYPE_NORMAL)  // can only see in one direction
     {
         approachDistance = sDirectionalApproachDistanceFuncs[trainerObj->facingDirection - 1](trainerObj, trainerObj->trainerRange_berryTreeId, x, y);
         return CheckPathBetweenTrainerAndPlayer(trainerObj, approachDistance, trainerObj->facingDirection);

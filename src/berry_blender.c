@@ -2726,7 +2726,7 @@ static void CB2_HandlePlayerLinkPlayAgainChoice(void)
     case 11:
         if (++sBerryBlenderData->framesToWait > 30)
         {
-            sub_800AC34();
+            SetCloseLinkCallback();
             sBerryBlenderData->gameEndState++;
         }
         break;

@@ -99,7 +99,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "Puzzle_TrickHouseOriginal3_EventScript_26C5C4",
             "trainer_sight_or_berry_tree_id": "2",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 7,
             "y": 19
         },
@@ -112,7 +112,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "Puzzle_TrickHouseOriginal3_EventScript_26C5DB",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 4,
             "y": 4
         },
@@ -125,7 +125,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
             "script": "Puzzle_TrickHouseOriginal3_EventScript_26C5F2",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 10,
             "y": 10
         },
@@ -138,7 +138,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Common_EventScript_CandyCommon",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 1,
             "y": 2
         },
@@ -151,7 +151,7 @@
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
             "script": "Common_EventScript_CandyAbundant",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
             "y": 2
         },
@@ -164,7 +164,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "PuzzleCommon_EventScript_Scroll",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 0,
             "y": 14
         },
@@ -177,7 +177,7 @@
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "Common_EventScript_ItemRockSmash",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
             "x": 0,
             "y": 17
         }

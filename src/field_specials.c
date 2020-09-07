@@ -3535,7 +3535,7 @@ static void sub_813B57C(u8 taskId)
         case 9:
             if (gWirelessCommType == 0)
             {
-                sub_800AC34();
+                SetCloseLinkCallback();
             }
             gBattleTypeFlags = gUnknown_0203AB70;
             EnableBothScriptContexts();
