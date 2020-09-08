@@ -1837,7 +1837,7 @@ void TrySpawnEventObjects(s16 cameraX, s16 cameraY)
             s16 npcY = template->y + 7;
             
             bool8 shouldSpawn = !FlagGet(template->flagId);
-            if (!FlagGet(FLAG_PREVENT_EVENT_OBJECT_DESPAWN) && (template->trainerType & TRAINER_TYPE_KEEP_LOADED))
+            if (!FlagGet(FLAG_PREVENT_EVENT_OBJECT_DESPAWN) && (template->trainerType & TRAINER_TYPE_KEEP_LOADED) == 0)
                 shouldSpawn &= (top <= npcY && bottom >= npcY && left <= npcX && right >= npcX);
 
             if (shouldSpawn)
@@ -1863,7 +1863,7 @@ void RemoveEventObjectsOutsideView(void)
             struct EventObject *eventObject = &gEventObjects[i];
             struct EventObjectTemplate *template = FindEventObjectTemplateByLocalId(eventObject->localId, gSaveBlock1Ptr->eventObjectTemplates, gMapHeader.events->eventObjectCount);
 
-            if (eventObject->active && !eventObject->isPlayer && (template->trainerType & TRAINER_TYPE_KEEP_LOADED))
+            if (eventObject->active && !eventObject->isPlayer && (template->trainerType & TRAINER_TYPE_KEEP_LOADED) == 0)
                 RemoveEventObjectIfOutsideView(eventObject);
         }
     }

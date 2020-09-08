@@ -52,6 +52,7 @@ gPuzzleList::                                           @ Puzzle Type(s)
 .align 2
 gDebugPuzzles::
     .2byte MAP_EMPTY_PUZZLE
+    .2byte MAP_PUZZLE_STEALTH_MISSION                   @  MOVEMENT/MAZE
     .2byte MAP_TRICK_TREAT_ALTO_MARE1                   @  TRICK
     .2byte MAP_TRICK_TREAT_FORTREE_CITY                 @  TRICK
     .2byte MAP_TRICK_TREAT_SLATEPORT_CITY1              @  TRICK    (Must be last)

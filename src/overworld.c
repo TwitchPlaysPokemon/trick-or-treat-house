@@ -878,7 +878,7 @@ static void mli0_load_map(u32 a1)
     FlagClear(FLAG_PREVENT_EVENT_OBJECT_DESPAWN);
     RunPuzzleTeardownScript();
     LoadCurrentMapData();
-    if (!(sObjectEventLoadFlag & 1))
+    if (!(sObjectEventLoadFlag & SKIP_OBJECT_EVENT_LOAD))
     {
         // if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_EMPTY_SQUARE)
         //     LoadBattlePyramidEventObjectTemplates();

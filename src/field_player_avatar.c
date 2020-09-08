@@ -761,7 +761,9 @@ static u8 sub_808B238(s16 x, s16 y, u8 direction)
     {
         u8 eventObjectId = GetEventObjectIdByXY(x, y);
 
-        if (eventObjectId != 16 && gEventObjects[eventObjectId].graphicsId == EVENT_OBJ_GFX_PUSHABLE_BOULDER)
+        if (eventObjectId != 16 
+        && (gEventObjects[eventObjectId].graphicsId == EVENT_OBJ_GFX_PUSHABLE_BOULDER
+         || gEventObjects[eventObjectId].graphicsId == EVENT_OBJ_GFX_PUSHABLE_CRATE))
         {
             x = gEventObjects[eventObjectId].currentCoords.x;
             y = gEventObjects[eventObjectId].currentCoords.y;

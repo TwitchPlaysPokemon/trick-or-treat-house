@@ -289,8 +289,9 @@
 #define EVENT_OBJ_GFX_TWINS_MINUN                    0x10D
 #define EVENT_OBJ_GFX_GHOST                          0x10E
 #define EVENT_OBJ_GFX_ALIEN                          0x10F
+#define EVENT_OBJ_GFX_PUSHABLE_CRATE                 0x110
 
-#define EVENT_OBJ_GFX_LAST                           0x110
+#define EVENT_OBJ_GFX_LAST                           0x111
 #define NUM_OBJECT_GRAPHICS_INFO 	    (EVENT_OBJ_GFX_LAST)
 
 // These are dynamic object gfx ids.

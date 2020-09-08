@@ -409,6 +409,7 @@ const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] =
     [EVENT_OBJ_GFX_TEALA] =                    &gEventObjectGraphicsInfo_Teala,
     [EVENT_OBJ_GFX_BREAKABLE_ROCK] =           &gEventObjectGraphicsInfo_BreakableRock,
     [EVENT_OBJ_GFX_PUSHABLE_BOULDER] =         &gEventObjectGraphicsInfo_PushableBoulder,
+    [EVENT_OBJ_GFX_PUSHABLE_CRATE] =           &gEventObjectGraphicsInfo_MovingBox,
     [EVENT_OBJ_GFX_MR_BRINEYS_BOAT] =          &gEventObjectGraphicsInfo_MrBrineysBoat,
     [EVENT_OBJ_GFX_VIGOROTH_CARRYING_BOX] =    &gEventObjectGraphicsInfo_VigorothCarryingBox,
     [EVENT_OBJ_GFX_VIGOROTH_FACING_AWAY] =     &gEventObjectGraphicsInfo_VigorothFacingAway,
