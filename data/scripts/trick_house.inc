@@ -40,6 +40,7 @@ PuzzleCommon_EventScript_IncrementPuzzle::
 	@ fallthrough
 PuzzleCommon_EventScript_ClearPuzzleData::
 	callnative ClearPuzzleEventData
+	setvar VAR_TIMES_SEEN_BY_TRAINER, 0
 	return
 
 @ -----------------------------------------------------

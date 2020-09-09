@@ -17,6 +17,7 @@
 #include "constants/event_object_movement_constants.h"
 #include "constants/field_effects.h"
 #include "constants/trainer_types.h"
+#include "constants/event_objects.h"
 
 // this file's functions
 static u8 CheckTrainer(u8 eventObjectId);
@@ -48,11 +49,11 @@ static bool8 WaitRevealHiddenTrainer(u8 taskId, struct Task *task, struct EventO
 static void SpriteCB_TrainerIcons(struct Sprite *sprite);
 
 // IWRAM common
-u16 gUnknown_03006080;
-u8 gUnknown_03006084[4];
+u16 gWhichTrainerToFaceAfterBattle;
+u8 gPostBattleMovementScript[4];
 struct ApproachingTrainer gApproachingTrainers[2];
 u8 gNoOfApproachingTrainers;
-u8 gUnknown_030060AC;
+u8 gTrainerApproachedPlayer;
 
 // EWRAM
 EWRAM_DATA u8 gApproachingTrainerId = 0;
@@ -269,7 +270,8 @@ bool8 CheckForTrainersWantingBattle(void)
         ResetTrainerOpponentIds();
         ConfigureAndSetUpOneTrainerBattle(gApproachingTrainers[gNoOfApproachingTrainers - 1].eventObjectId,
                                           gApproachingTrainers[gNoOfApproachingTrainers - 1].trainerScriptPtr);
-        gUnknown_030060AC = 1;
+        VarSet(VAR_TIMES_SEEN_BY_TRAINER, VarGet(VAR_TIMES_SEEN_BY_TRAINER)+1);
+        gTrainerApproachedPlayer = 1;
         return TRUE;
     }
     else if (gNoOfApproachingTrainers == 2)
@@ -281,13 +283,14 @@ bool8 CheckForTrainersWantingBattle(void)
                                        gApproachingTrainers[i].trainerScriptPtr);
         }
         SetUpTwoTrainersBattle();
+        VarSet(VAR_TIMES_SEEN_BY_TRAINER, VarGet(VAR_TIMES_SEEN_BY_TRAINER)+2);
         gApproachingTrainerId = 0;
-        gUnknown_030060AC = 1;
+        gTrainerApproachedPlayer = 1;
         return TRUE;
     }
     else
     {
-        gUnknown_030060AC = 0;
+        gTrainerApproachedPlayer = 0;
         return FALSE;
     }
 }
@@ -880,24 +883,24 @@ u8 GetChosenApproachingTrainerEventObjectId(u8 arrayId)
         return gApproachingTrainers[1].eventObjectId;
 }
 
-void sub_80B4808(void)
+void PlayerFaceTrainerAfterBattle(void)
 {
     struct EventObject *trainerObj;
 
-    if (gUnknown_030060AC == 1)
+    if (gTrainerApproachedPlayer == 1)
     {
-        trainerObj = &gEventObjects[gApproachingTrainers[gUnknown_03006080].eventObjectId];
-        gUnknown_03006084[0] = GetFaceDirectionMovementAction(GetOppositeDirection(trainerObj->facingDirection));
-        gUnknown_03006084[1] = 0xFE;
-        ScriptMovement_StartObjectMovementScript(0xFF, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, gUnknown_03006084);
+        trainerObj = &gEventObjects[gApproachingTrainers[gWhichTrainerToFaceAfterBattle].eventObjectId];
+        gPostBattleMovementScript[0] = GetFaceDirectionMovementAction(GetOppositeDirection(trainerObj->facingDirection));
+        gPostBattleMovementScript[1] = MOVEMENT_ACTION_STEP_END;
+        ScriptMovement_StartObjectMovementScript(EVENT_OBJ_ID_PLAYER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, gPostBattleMovementScript);
     }
     else
     {
         trainerObj = &gEventObjects[gPlayerAvatar.eventObjectId];
-        gUnknown_03006084[0] = GetFaceDirectionMovementAction(trainerObj->facingDirection);
-        gUnknown_03006084[1] = 0xFE;
-        ScriptMovement_StartObjectMovementScript(0xFF, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, gUnknown_03006084);
+        gPostBattleMovementScript[0] = GetFaceDirectionMovementAction(trainerObj->facingDirection);
+        gPostBattleMovementScript[1] = MOVEMENT_ACTION_STEP_END;
+        ScriptMovement_StartObjectMovementScript(EVENT_OBJ_ID_PLAYER, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, gPostBattleMovementScript);
     }
 
-    sub_809BE48(0xFF);
+    SetMovingNpcId(EVENT_OBJ_ID_PLAYER);
 }

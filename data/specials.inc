@@ -528,7 +528,7 @@ gSpecials:: @ 81DBA64
 	def_special sub_813B968
 	def_special sub_80F8B94
 	def_special ShowTrainerHillRecords
-	def_special sub_80B4808
+	def_special PlayerFaceTrainerAfterBattle
 	def_special sub_813B9A0
 	def_special sub_81B9918
 	def_special sub_80722E0

@@ -32,6 +32,7 @@ gPuzzleList::                                           @ Puzzle Type(s)
     .2byte MAP_TRICK_TREAT_MOSSDEEP_CITY                @  TRICK
     
     .2byte MAP_PUZZLE_SPOT_DIFFERENCE_HALLWAY           @  BATTLE/LOGIC
+    .2byte MAP_PUZZLE_STEALTH_MISSION                   @  MOVEMENT/MAZE
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL6             @  MOVEMENT/MAZE (Rot Gates)
     .2byte MAP_PUZZLE_TIC_RAC_TOE                       @  FOLLOW/BATTLE
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7             @  BATTLE/MAZE (Double Battles)
@@ -52,7 +53,6 @@ gPuzzleList::                                           @ Puzzle Type(s)
 .align 2
 gDebugPuzzles::
     .2byte MAP_EMPTY_PUZZLE
-    .2byte MAP_PUZZLE_STEALTH_MISSION                   @  MOVEMENT/MAZE
     .2byte MAP_TRICK_TREAT_ALTO_MARE1                   @  TRICK
     .2byte MAP_TRICK_TREAT_FORTREE_CITY                 @  TRICK
     .2byte MAP_TRICK_TREAT_SLATEPORT_CITY1              @  TRICK    (Must be last)

@@ -16,10 +16,22 @@ Puzzle_StealthMission_Name:
 Puzzle_StealthMission_Author:
 	.string "Tustin2121$"
 Puzzle_StealthMission_Adjective:
-	.string "$"
+	.string "stealthy$"
 Puzzle_StealthMission_Quip:
 	.string "$"
 Puzzle_StealthMission_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_ABUNDANT_05
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_COMMON_03
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_RARE_01
+	.2byte FLAG_CANDY_HEALTHY_01
 	.2byte 0
 
 Puzzle_StealthMission_WarpTable:
@@ -167,6 +179,9 @@ text Puzzle_StealthMission_Text_LookerFinish_End {
 			"The door back is right over there.\n"
 			"Cheers!$"
 }
+text Puzzle_StealthMission_Text_LookerFinish_After {
+			"Have a good evening! Cheers!$"
+}
 
 
 script Puzzle_StealthMission_EventScript_DeactivatedAndroid {
@@ -207,7 +222,8 @@ script Puzzle_StealthMission_EventScript_Looker {
 			msgbox(Puzzle_StealthMission_Text_LookerWaiting, MSGBOX_NPC)
 		case 2:
 			msgbox(Puzzle_StealthMission_Text_LookerWaiting, MSGBOX_NPC)
-		
+		case 10:
+			msgbox(Puzzle_StealthMission_Text_LookerFinish_After, MSGBOX_NPC)
 	}
 }
 
@@ -260,6 +276,7 @@ script Puzzle_StealthMission_EventScript_Scroll {
 
 script Puzzle_StealthMission_CheckFinished {
 	lock
+	setvar(VAR_LAST_WARP_ID, -1)
 	if (var(VAR_MISSION_STATE) < 10) {
 		release
 		end
@@ -268,6 +285,18 @@ script Puzzle_StealthMission_CheckFinished {
 	applymovement(LID_LOOKER, Common_Movement_FaceRight)
 	waitmovement(LID_LOOKER)
 	
+	if (var(VAR_TIMES_SEEN_BY_TRAINER) == 0) {
+		message(Puzzle_StealthMission_Text_LookerFinish_Best)
+		giveitem_std(ITEM_CANDY_TOBLERONE, 2)
+	}
+	elif (var(VAR_TIMES_SEEN_BY_TRAINER) < 3) {
+		message(Puzzle_StealthMission_Text_LookerFinish_Good)
+	}
+	else {
+		message(Puzzle_StealthMission_Text_LookerFinish_Poor)
+	}
+	message(Puzzle_StealthMission_Text_LookerFinish_End)
+	release
 	// setvar(VAR_0x800A, 0)
 	// special(CanAnyPartyMonsBeHealed)
 	// if (var(VAR_RESULT) == FALSE) { # It's backwards for some reason??
@@ -276,13 +305,7 @@ script Puzzle_StealthMission_CheckFinished {
 	
 	//TODO: Choose Best, Good, or Poor performance report based on number of encounters
 	// Perhaps the Best candy shouldn't be counted towards the candy list?
-	
-	// msgbox (Puzzle_StealthMission_Text_LookerReturnWarning)
-	
-	
 }
-
-
 
 ///////////////////////////////////////////////////////
 

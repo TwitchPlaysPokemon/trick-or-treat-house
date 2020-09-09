@@ -128,7 +128,7 @@
 #define VAR_POKELOT_RND1                     0x406B
 #define VAR_POKELOT_RND2                     0x406C
 #define VAR_POKELOT_PRIZE_PLACE              0x406D
-#define VAR_UNUSED_0x404E                    0x406E // Unused Var
+#define VAR_TIMES_SEEN_BY_TRAINER            0x406E
 #define VAR_LOTAD_SIZE_RECORD                0x406F
 #define VAR_UNUSED_0x4050                    0x4070
 #define VAR_UNUSED_0x4051                    0x4071
