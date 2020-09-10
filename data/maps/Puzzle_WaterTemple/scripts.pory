@@ -1,6 +1,6 @@
 raw `
 Puzzle_WaterTemple_MapScripts::
-	puzzle_info Puzzle_WaterTemple_Name, Puzzle_WaterTemple_Author
+	puzzle_info Puzzle_WaterTemple_Name, CommonAuthor_Tustin2121
 	puzzle_adjective Puzzle_WaterTemple_Adjective
 	puzzle_quip Puzzle_WaterTemple_Quip
 	puzzle_metavars Puzzle_WaterTemple_Variables
@@ -12,8 +12,6 @@ Puzzle_WaterTemple_MapScripts::
 
 Puzzle_WaterTemple_Name:
 	.string "Waterflow Caverns$"
-Puzzle_WaterTemple_Author:
-	.string "Tustin2121$"
 Puzzle_WaterTemple_Adjective:
 	.string "slightly damp$"
 Puzzle_WaterTemple_Quip:
@@ -49,7 +47,7 @@ Puzzle_WaterTemple_CandyList:
 	.2byte 0
 
 Puzzle_WaterTemple_OnResume: @ 81EBAC0
-	setstepcallback 8
+	setstepcallback STEP_CB_WATER_TEMPLE
 	end
 
 @ -----------------------------------------------------

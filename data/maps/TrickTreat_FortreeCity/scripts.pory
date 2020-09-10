@@ -1,4 +1,326 @@
 raw `
 TrickTreat_FortreeCity_MapScripts::
+	puzzle_info TrickTreat_FortreeCity_Name, CommonAuthor_Tustin2121
+	puzzle_custom_intro TrickTreat_FortreeCity_Intro
+	puzzle_quip TrickTreat_FortreeCity_Quip
+	puzzle_metavars TrickTreat_FortreeCity_Variables
+	puzzle_candylist TrickTreat_FortreeCity_CandyList
+	map_script MAP_SCRIPT_ON_RESUME, TrickTreat_FortreeCity_OnResume
 	.byte 0
+
+TrickTreat_FortreeCity_Name:
+	.string "Fudge in Fortree$"
+TrickTreat_FortreeCity_Intro:
+	.string "{LINK}: Hey, {PLAYER}! Ready to go\n"
+	.string "Trick-or-Treating again?\p"
+	.string "{YOUNGSTER} figured out how to point\n"
+	.string "the door to Fortree City!"
+TrickTreat_FortreeCity_Quip:
+	.string "{LINK}: $"
+TrickTreat_FortreeCity_Variables:
+	.2byte VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_HERO_OF_TIME
+	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HERO_OF_TIME
+	.2byte 0
+TrickTreat_FortreeCity_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_RARE_01
+	.2byte FLAG_CANDY_RARE_02
+	@ Trick or Treat Spots
+	.2byte FLAG_PUZZLE_20 @ ABUNDANT
+	.2byte FLAG_PUZZLE_21 @ LAVA_COOKIE
+	.2byte FLAG_PUZZLE_22 @ UNCOMMON
+	.2byte FLAG_PUZZLE_23 @ UNCOMMON
+	.2byte FLAG_PUZZLE_24 @ ABUNDANT
+	.2byte FLAG_PUZZLE_25 @ HEALTHY
+	.2byte FLAG_PUZZLE_26 @ ABUNDANT
+	.2byte FLAG_PUZZLE_27 @ COMMON
+	.2byte FLAG_PUZZLE_28 @ ABUNDANT
+	.2byte FLAG_PUZZLE_29 @ COMMON
+	.2byte FLAG_PUZZLE_2A @ RARE
+	.2byte 0
+
+@ -----------------------------------------------------
+#define FLAG_HIDE_PLASMAMAN      FLAG_PUZZLE_4F
+
+
+#define LID_PLASMAMAN   15
+`
+script(local) TrickTreat_FortreeCity_OnResume {
+	setstepcallback(STEP_CB_FORTREE_BRIDGE)
+}
+
+script FortreeCity_SignScript_CitySign {
+	msgbox( "Fortree City\n"
+			"“The treetop city that frolics with\l"
+			"nature.”$", MSGBOX_SIGN)
+}
+script FortreeCity_SignScript_Gym {
+	msgbox( "Fortree City Pokémon Gym\n"
+			"Leader: Winona\p"
+			"“The bird user taking flight into\n"
+			"the world.”$", MSGBOX_SIGN)
+}
+script FortreeCity_SignScript_DecorShop {
+	msgbox( "Secret Base Decor Shop\n"
+			"“Furnish your bushy abode!”$", MSGBOX_SIGN)
+}
+
+///////////////////////////////////////////////////////
+
+script TrickTreat_FortreeCity_CandyGiver_Nurse {
+	lock
+	faceplayer
+	msgbox ("Happy Halloween!\n"
+			"Please take some candy!$")
+	giveitem_std (ITEM_CANDY_ABUNDANT, 2)
+	msgbox ("The {POKEMON} CENTER is always there\n"
+			"for trainers everywhere.\p"
+			"Have a good night!$")
+	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
+	setflag (FLAG_PUZZLE_20)
+	release
+}
+
+script TrickTreat_FortreeCity_CandyGiver_Camper {
+	lock
+	faceplayer
+	msgbox ("My scout troop wanted me to sell all\n"
+			"these cookies by summer's end, but\l"
+			"I never managed to.\p"
+			"So, here, have some of them, please!$")
+	giveitem_std (ITEM_LAVA_COOKIE, 12)
+	msgbox ("Don't worry, they're not stale or\n"
+			"anything. At least they shouldn't be.\p"
+			"Good night!$")
+	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
+	setflag (FLAG_PUZZLE_21)
+	release
+}
+
+script TrickTreat_FortreeCity_CandyGiver_Fatman {
+	lock
+	faceplayer
+	msgbox ("Oh good! You can have my last piece\n"
+			"of candy so I don't eat it.$")
+	giveitem_std (ITEM_CANDY_UNCOMMON, 1)
+	msgbox ("Right, time to turn in for the night.$")
+	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
+	setflag (FLAG_PUZZLE_22)
+	release
+}
+
+script TrickTreat_FortreeCity_CandyGiver_Tarzan {
+	lock
+	faceplayer
+	msgbox ("Me Tarzan! Me fight for candy!$")
+	trainerbattle_no_intro(TRAINER_04, 
+			"You strong! Me beaten!$")
+	msgbox ("You win! You get candy!\n"
+			"Make Halloween Happy!$")
+	giveitem_std (ITEM_CANDY_ABUNDANT, 3)
+	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
+	setflag (FLAG_PUZZLE_24)
+	release
+}
+
+script TrickTreat_FortreeCity_CandyGiver_FairyGirl {
+	lock
+	faceplayer
+	msgbox ("Trick-or-Treat!\n"
+			"It's time for you to decide:\p"
+			"In one hand, I have a treat,\n"
+			"some candy for you to have!\p"
+			"But in the other, is a trick,\n"
+			"a POKE BALL for a battle!\p"
+			"Which hand will you choose?$")
+	if (flag(FLAG_SYS_RANDOM_DISABLED)) {
+		setvar(VAR_0x800A, 1) // Left hand has candy
+	} else {
+		random(1)
+		copyvar(VAR_0x800A, VAR_RESULT)
+	}
+	// Show "Right" or "Left" menu, funnily enough used in Foretree usually
+	multichoice(0, 0, 54, FALSE)
+	if (var(VAR_RESULT) == VAR_0x800A) { // chose correctly
+		msgbox("Hey, you chose the treat!\n"
+			"Congrats!$")
+	} else {
+		playbgm(MUS_HUTAGO, FALSE)
+		msgbox("Hey, you chose the trick!\n"
+			"Time to fight!$")
+		trainerbattle_no_intro (TRAINER_03, 
+			"Alright, you can have the treat too!$")
+	}
+	giveitem_std (ITEM_CANDY_UNCOMMON, 1)
+	msgbox ("Happy Halloween!$")
+	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
+	setflag (FLAG_PUZZLE_23)
+	release
+}
+
+script TrickTreat_FortreeCity_CandyGiver_ExpertLady {
+	lock
+	faceplayer
+	msgbox ("Hello, child. Would you like some of my\n"
+			"candy this evening?\p"
+			"Then you'll have to go through me\n"
+			"to get it! Hehehehe!$")
+	trainerbattle_no_intro (TRAINER_05, 
+			"Ah, a healthy mind and body are key\n"
+			"to success!$")
+	msgbox ("Very good, child. Here, have a snack\n"
+			"to help promote your mind and body.$")
+	giveitem_std (ITEM_CANDY_HEALTHY, 3)
+	msgbox ("Nighty night! Hehehehe!$")
+	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
+	setflag (FLAG_PUZZLE_25)
+	release
+}
+
+script TrickTreat_FortreeCity_CandyGiver_Pokefan {
+	lock
+	faceplayer
+	msgbox ("Hello! You want candy, don't you?\n"
+			"Well, I'd like to see your {POKEMON}!$")
+	trainerbattle_no_intro (TRAINER_06, 
+			"Very impressive!$")
+	msgbox ("Thanks for the show! Here's some candy!$")
+	giveitem_std (ITEM_CANDY_ABUNDANT, 1)
+	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
+	setflag (FLAG_PUZZLE_26)
+	release
+}
+
+script TrickTreat_FortreeCity_CandyGiver_OldLady {
+	lock
+	faceplayer
+	msgbox ("Happy Halloween!\n"
+			"Please take some candy!$")
+	giveitem_std (ITEM_CANDY_COMMON, 2)
+	msgbox ("The {POKEMON} CENTER is always there\n"
+			"for trainers everywhere.\p"
+			"Have a good night!$")
+	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
+	setflag (FLAG_PUZZLE_27)
+	release
+}
+
+script TrickTreat_FortreeCity_CandyGiver_TownBoy {
+	lock
+	faceplayer
+	msgbox ("Happy Halloween!\n"
+			"Please take some candy!$")
+	giveitem_std (ITEM_CANDY_ABUNDANT, 2)
+	msgbox ("The {POKEMON} CENTER is always there\n"
+			"for trainers everywhere.\p"
+			"Have a good night!$")
+	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
+	setflag (FLAG_PUZZLE_28)
+	release
+}
+
+script TrickTreat_FortreeCity_CandyGiver_Pokekid {
+	lock
+	faceplayer
+	msgbox ("Pika pi!$")
+	trainerbattle_no_intro (TRAINER_07, 
+			"Pikachu!$")
+	giveitem_std (ITEM_CANDY_COMMON, 2)
+	msgbox ("Pika!$")
+	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
+	setflag (FLAG_PUZZLE_29)
+	release
+}
+
+script TrickTreat_FortreeCity_CandyGiver_Winona {
+	lock
+	faceplayer
+	msgbox ("Trick or Treat?\n"
+			"Which will I choose?\p"
+			"Before I choose, I wish to see if you\n"
+			"can be as graceful in battle as I!$")
+	trainerbattle_no_intro (TRAINER_01, 
+			"My, you are quite graceful indeed!$")
+	giveitem_std (ITEM_CANDY_RARE, 1)
+	msgbox ("Perhaps you will come by for a real\n"
+			"gym challenge later?\p"
+			"Until then, goodnight.$")
+	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
+	setflag (FLAG_PUZZLE_2A)
+	release
+}
+
+script TrickTreat_FortreeCity_BuriedItem {
+	lock
+	msgbox ("There's something buried here…$")
+	giveitem_std(ITEM_CANDY_RARE, 1, 1)
+	release
+}
+
+///////////////////////////////////////////////////////
+
+script TrickTreat_FortreeCity_PlasmaMan {
+	trainerbattle_single(TRAINER_02, 
+			"AH HA! MY ARCH NEMISIS!!\n"
+			"IT IS TIME FOR YOU TO PERISH!!$", 
+			"I HAVE FAILED!! WOE IS ME!!$",
+			TrickTreat_FortreeCity_PlasmaManAfter)
+	msgbox ("Ow, that hurt...$")
+}
+script TrickTreat_FortreeCity_PlasmaManAfter {
+	lock
+	message("ALAS!! MY FOE HAS DEFEATED ME!\p"
+			"WHAT SHALL I DO?!\p$")
+	waitmessage
+	applymovement(LID_PLASMAMAN, TrickTreat_FortreeCity_PlasmaManAfter_Movement)
+	applymovement(EVENT_OBJ_ID_PLAYER, TrickTreat_FortreeCity_PlasmaManAfter_Movement2)
+	message("I CANNOT REST UNTIL--- shi--!$")
+	delay(20)
+	playse(SE_PIN)
+	waitmovement(LID_PLASMAMAN)
+	waitmessage
+	closemessage
+	removeobject(LID_PLASMAMAN)
+	
+	setfieldeffectargstoobjectloc(LID_PLASMAMAN, 0)
+	setfieldeffectargument(3, 2)
+	dofieldeffect(FLDEFF_JUMP_FALL_GRASS)
+	playse (SE_W070)
+	setvar (VAR_0x8004, 1)  // vertical pan
+	setvar (VAR_0x8005, 1)  // horizontal pan
+	setvar (VAR_0x8006, 8)  // num shakes
+	setvar (VAR_0x8007, 3)  // shake delay
+	special (DoCameraShakeEffect)
+	waitstate
+	playse (SE_W070)
+	setvar (VAR_0x8004, 1)  // vertical pan
+	setvar (VAR_0x8005, 1)  // horizontal pan
+	setvar (VAR_0x8006, 8)  // num shakes
+	setvar (VAR_0x8007, 5)  // shake delay
+	special (DoCameraShakeEffect)
+	waitstate
+	waitfieldeffect(FLDEFF_JUMP_FALL_GRASS)
+	
+	msgbox ("Ow!\pI think I'm okay…!$")
+	release
+}
+movement TrickTreat_FortreeCity_PlasmaManAfter_Movement {
+	face_down
+	delay_16
+	jump_up
+}
+movement TrickTreat_FortreeCity_PlasmaManAfter_Movement2 {
+	delay_16
+	delay_8
+	emote_exclamation_mark
+	delay_16
+	delay_16
+	delay_16
+}
+
+
+raw `
+#undef FLAG_HIDE_PLASMAMAN
+#undef LID_PLASMAMAN
 `

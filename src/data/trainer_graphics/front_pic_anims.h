@@ -110,4 +110,5 @@ const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
     [TRAINER_PIC_TARZAN] = sAnims_GenericStill,
     [TRAINER_PIC_TWINS_PM] = sAnims_GenericStill,
     [TRAINER_PIC_ALIEN] = sAnims_GenericStill,
+    [TRAINER_PIC_PIKAKID] = sAnims_GenericStill,
 };

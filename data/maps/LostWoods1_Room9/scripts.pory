@@ -1,5 +1,5 @@
 raw `
 LostWoods1_Room9_MapScripts::
-	puzzle_info Puzzle_LostWoods1_Name, Puzzle_LostWoods1_Author
+	puzzle_info Puzzle_LostWoods1_Name, CommonAuthor_Tustin2121
 	.byte 0
 `

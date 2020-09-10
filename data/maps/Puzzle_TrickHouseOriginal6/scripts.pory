@@ -1,6 +1,6 @@
 raw `
 Puzzle_TrickHouseOriginal6_MapScripts:: @ 826DDA7
-	puzzle_info Puzzle_TrickHouseOriginal6_Name, Puzzle_TrickHouseOriginal6_Author
+	puzzle_info Puzzle_TrickHouseOriginal6_Name, CommonAuthor_Trickmaster
 	puzzle_custom_intro Puzzle_TrickHouseOriginal6_Intro
 	puzzle_quip Puzzle_TrickHouseOriginal6_Quip
 	puzzle_metavars Puzzle_TrickHouseOriginal6_Variables
@@ -12,8 +12,6 @@ Puzzle_TrickHouseOriginal6_MapScripts:: @ 826DDA7
 
 Puzzle_TrickHouseOriginal6_Name:
 	.string "Rotation Gate Ruse$"
-Puzzle_TrickHouseOriginal6_Author:
-	.string "Trick Master$"
 Puzzle_TrickHouseOriginal6_Intro:
 	.string "Hah! You've returned for another\n"
 	.string "challenge!\p"

@@ -30,7 +30,7 @@ Puzzle_MusicNoteTiles_FrameTable:
 
 Puzzle_MusicNoteTiles_Name:
     .string "Pokémon Says$"
-Puzzle_MusicNoteTiles_Author:
+Puzzle_MusicNoteTiles_Author:  @ Built By: ShantyTown
     .string "Chfoo$"
 Puzzle_MusicNoteTiles_Adjective:
     .string "memory$"

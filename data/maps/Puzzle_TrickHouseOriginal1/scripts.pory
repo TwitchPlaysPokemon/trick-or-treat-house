@@ -1,14 +1,12 @@
 raw `
 Puzzle_TrickHouseOriginal1_MapScripts:: @ 826B90F
-	puzzle_info Puzzle_TrickHouseOriginal1_Name, Puzzle_TrickHouseOriginal1_Author
+	puzzle_info Puzzle_TrickHouseOriginal1_Name, CommonAuthor_Trickmaster
 	puzzle_adjective Puzzle_TrickHouseOriginal1_Adjective
 	puzzle_quip Puzzle_TrickHouseOriginal1_Quip
 	.byte 0
 
 Puzzle_TrickHouseOriginal1_Name:
 	.string "Original 1$"
-Puzzle_TrickHouseOriginal1_Author:
-	.string "Trick Master$"
 Puzzle_TrickHouseOriginal1_Adjective:
 	.string "original$"
 Puzzle_TrickHouseOriginal1_Quip:

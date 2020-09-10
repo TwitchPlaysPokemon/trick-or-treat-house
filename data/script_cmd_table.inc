@@ -233,6 +233,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_selectwarpdestination
 	.4byte ScrCmd_buffernumberstring2
 	.4byte ScrCmd_resolveitem
+	.4byte ScrCmd_setfieldeffectargstoobjectloc
 
 gScriptCmdTableEnd:: @ 81DBA08
 	.4byte ScrCmd_nop

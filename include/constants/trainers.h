@@ -122,6 +122,7 @@
 #define TRAINER_PIC_TWINS_PM             103
 #define TRAINER_PIC_ALIEN                104
 #define TRAINER_PIC_TREEKID              105
+#define TRAINER_PIC_PIKAKID              106
 
 #define TRAINER_BACK_PIC_BRENDAN                0
 #define TRAINER_BACK_PIC_MAY                    1
@@ -300,6 +301,7 @@
 #define TRAINER_CLASS_TWINS_PM       0x4C
 #define TRAINER_CLASS_ALIEN          0x4D
 #define TRAINER_CLASS_SECURITY       0x4E
+#define TRAINER_CLASS_PIKAKID        0x4F
 
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music

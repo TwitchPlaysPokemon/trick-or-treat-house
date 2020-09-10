@@ -1,6 +1,6 @@
 raw `
 LostWoods1_Room0_MapScripts::
-	puzzle_info Puzzle_LostWoods1_Name, Puzzle_LostWoods1_Author
+	puzzle_info Puzzle_LostWoods1_Name, CommonAuthor_Tustin2121
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, LostWoods1_Room0_FrameTable
 	.byte 0
 

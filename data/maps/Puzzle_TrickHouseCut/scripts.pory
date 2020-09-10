@@ -1,6 +1,6 @@
 raw `
 Puzzle_TrickHouseCut_MapScripts::
-	puzzle_info Puzzle_TrickHouseCut_Name, Puzzle_TrickHouseCut_Author
+	puzzle_info Puzzle_TrickHouseCut_Name, CommonAuthor_Trickmaster
 	puzzle_adjective Puzzle_TrickHouseCut_Adjective
 	puzzle_quip Puzzle_TrickHouseCut_Quip
 	puzzle_candylist Puzzle_TrickHouseCut_CandyList
@@ -8,8 +8,6 @@ Puzzle_TrickHouseCut_MapScripts::
 
 Puzzle_TrickHouseCut_Name:
 	.string "Shrub Shredding$"
-Puzzle_TrickHouseCut_Author:
-	.string "Trick Master$"
 Puzzle_TrickHouseCut_Adjective:
 	.string "slicing good$"
 Puzzle_TrickHouseCut_Quip:
@@ -36,8 +34,8 @@ Puzzle_TrickHouseCut_CandyList:
 
 script Puzzle_TrickHouseCut_Trainer1 {
 	trainerbattle_single (TRAINER_01, 
-			"Nice costume. Were you trick-or-treating\n"
-			"too?$", 
+			"Nice costume.\n"
+			"Were you trick-or-treating too?$", 
 			"Ack! My costume got caught!$")
 	msgbox ("Battling in costume is something I've\n"
 			"never done before. How about you?$", MSGBOX_AUTOCLOSE)

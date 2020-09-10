@@ -1,0 +1,106 @@
+[
+	{
+		"class": "LEADER",
+		"pic": "LEADER_WINONA",
+		"name": "WINONA",
+		"female": true,
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY",
+		"items": ["ITEM_HYPER_POTION"],
+		"party": [
+			{
+				"species": "SPECIES_ALTARIA",
+				"iv": 100,
+				"level": 30,
+				"item": "ITEM_ORAN_BERRY",
+				"moves": ["MOVE_EARTHQUAKE", "MOVE_DRAGON_BREATH", "MOVE_DRAGON_DANCE", "MOVE_AERIAL_ACE"]
+			}
+		]
+	},
+	{
+		"class": "PLASMA_KID",
+		"name": "JEREMY",
+		"music": "COOL",
+		"party": [
+			{
+				"species": "SPECIES_ZIGZAGOON",
+				"item": "ITEM_NUGGET",
+				"level": 26
+			},
+			{
+				"species": "SPECIES_ZIGZAGOON",
+				"item": "ITEM_NUGGET",
+				"level": 26
+			}
+		]
+	},
+	{
+		"class": "FAIRY_GIRL",
+		"name": "KAYLEE",
+		"female": true,
+		"music": "TWINS",
+		"party": [
+			{
+				"species": "SPECIES_ILLUMISE",
+				"level": 27
+			},
+			{
+				"species": "SPECIES_BEAUTIFLY",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "TARZAN",
+		"name": "MAGEE",
+		"music": "INTENSE",
+		"party": [
+			{
+				"species": "SPECIES_PRIMEAPE",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "EXPERT",
+		"pic": "EXPERT_F",
+		"name": "EUNICE",
+		"music": "INTENSE",
+		"party": [
+			{
+				"species": "SPECIES_KADABRA",
+				"level": 29
+			},
+			{
+				"species": "SPECIES_HITMONTOP",
+				"level": 30
+			}
+		]
+	},
+	{
+		"class": "POKEFAN",
+		"pic": "POKEFAN_F",
+		"name": "DERICK",
+		"music": "SUSPICIOUS",
+		"party": [
+			{
+				"species": "SPECIES_SNUBBULL",
+				"level": 27
+			},
+			{
+				"species": "SPECIES_GRUMPIG",
+				"level": 27
+			}
+		]
+	},
+	{
+		"class": "PIKAKID",
+		"name": "LUCY",
+		"music": "SUSPICIOUS",
+		"party": [
+			{
+				"species": "SPECIES_PIKACHU",
+				"level": 28
+			}
+		]
+	}
+]

@@ -1,6 +1,6 @@
 raw `
 Puzzle_Route110_MapScripts:: @ 81EF269
-	puzzle_info Puzzle_Route110_Name, Puzzle_Route110_Author
+	puzzle_info Puzzle_Route110_Name, CommonAuthor_M4UsedRollout
 	puzzle_custom_intro Puzzle_Route110_Intro
 	puzzle_quip Puzzle_Route110_Quip
 	puzzle_metavars Puzzle_Route110_Variables
@@ -15,8 +15,6 @@ Puzzle_Route110_MapScripts:: @ 81EF269
 
 Puzzle_Route110_Name:
 	.string "Cruisin' Down 110$"
-Puzzle_Route110_Author:
-	.string "Game Freak$"
 Puzzle_Route110_Intro:
 	.string "Hah! Ready for the next one then?\p"
 	.string "So this next one is less a logic puzzle,\n"

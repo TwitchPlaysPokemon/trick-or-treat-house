@@ -1,6 +1,6 @@
 raw `
 Puzzle_LostWoods1_Entrance_MapScripts::
-	puzzle_info Puzzle_LostWoods1_Name, Puzzle_LostWoods1_Author
+	puzzle_info Puzzle_LostWoods1_Name, CommonAuthor_Tustin2121
 	puzzle_adjective Puzzle_LostWoods1_Adjective
 	puzzle_quip Puzzle_LostWoods1_Quip
 	puzzle_metavars Puzzle_LostWoods1_Variables
@@ -12,8 +12,6 @@ Puzzle_LostWoods1_Entrance_MapScripts::
 
 Puzzle_LostWoods1_Name:
 	.string "A Song in the Forest$"
-Puzzle_LostWoods1_Author:
-	.string "Tustin2121$"
 Puzzle_LostWoods1_Adjective:
 	.string "meandering$"
 Puzzle_LostWoods1_Quip:

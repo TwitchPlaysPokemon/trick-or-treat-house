@@ -1,6 +1,6 @@
 raw `
 Puzzle_TwinMemories_MapScripts::
-	puzzle_info Puzzle_TwinMemories_Name, Puzzle_TwinMemories_Author
+	puzzle_info Puzzle_TwinMemories_Name, CommonAuthor_Tustin2121
 	puzzle_adjective Puzzle_TwinMemories_Adjective
 	puzzle_quip Puzzle_TwinMemories_Quip
 	@ puzzle_metavars Puzzle_TwinMemories_Variables
@@ -16,8 +16,6 @@ Puzzle_TwinMemories_MapScripts::
 
 Puzzle_TwinMemories_Name:
 	.string "Twin Memories$"
-Puzzle_TwinMemories_Author:
-	.string "Tustin2121$"
 Puzzle_TwinMemories_Adjective:
 	.string "memzorizing$" @intentional mispelling
 Puzzle_TwinMemories_Quip:
@@ -56,7 +54,7 @@ Puzzle_TwinMemories_MapTable:
 	.2byte 0
 Puzzle_TwinMemories_OnResume:
 	@ Setup the NPC Trigger step callback MonitorEventObjectTriggersStepCallback
-	setstepcallback 9 
+	setstepcallback STEP_CB_NPC_TRIGGER 
 	end
 
 @ -----------------------------------------------------

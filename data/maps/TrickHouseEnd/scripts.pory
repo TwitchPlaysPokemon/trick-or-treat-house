@@ -23,7 +23,10 @@ script TrickHouseEnd_OnLoad {
 
 script TrickHouseEnd_OnTransition {
 	setvar(VAR_PUZZLE_STATE, 2)
-	// TODO: poryswitch -> Disable end person movement when in TPP build
+	// Disable end person movement when in TPP build
+	poryswitch(TPP_MODE) {
+		1: setobjectmovementtype (2, MOVEMENT_TYPE_LOOK_AROUND)
+	}
 	
 	# Because some event objects cause freezing when wandering around
 	switch (var(VAR_OBJ_GFX_ID_1)) {

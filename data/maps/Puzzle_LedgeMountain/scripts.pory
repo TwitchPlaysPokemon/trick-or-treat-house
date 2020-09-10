@@ -1,6 +1,6 @@
 raw `
 Puzzle_LedgeMountain_MapScripts::
-	puzzle_info Puzzle_LedgeMountain_Name, Puzzle_LedgeMountain_Author
+	puzzle_info Puzzle_LedgeMountain_Name, CommonAuthor_Tustin2121
 	puzzle_adjective Puzzle_LedgeMountain_Adjective
 	puzzle_quip Puzzle_LedgeMountain_Quip
 	puzzle_metavars Puzzle_LedgeMountain_Variables
@@ -10,8 +10,6 @@ Puzzle_LedgeMountain_MapScripts::
 
 Puzzle_LedgeMountain_Name:
 	.string "The Mountain Trail$"
-Puzzle_LedgeMountain_Author:
-	.string "Tustin2121$"
 Puzzle_LedgeMountain_Adjective:
 	.string "jumpy$"
 Puzzle_LedgeMountain_Quip:

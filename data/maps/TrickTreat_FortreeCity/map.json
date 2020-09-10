@@ -4,9 +4,154 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "FortreeCity_SignScript_DecorShop",
+            "type": "sign",
+            "x": 45,
+            "y": 14
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+            "script": "Common_EventScript_ShowPokemonCenterSign",
+            "type": "sign",
+            "x": 24,
+            "y": 21
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+            "script": "Common_EventScript_ShowPokemonCenterSign",
+            "type": "sign",
+            "x": 25,
+            "y": 21
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "FortreeCity_SignScript_Gym",
+            "type": "sign",
+            "x": 39,
+            "y": 9
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "FortreeCity_SignScript_CitySign",
+            "type": "sign",
+            "x": 33,
+            "y": 21
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_COMMON_01",
+            "item": "ITEM_CANDY_COMMON",
+            "type": "hidden_item",
+            "x": 28,
+            "y": 12
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_RARE_01",
+            "item": "ITEM_CANDY_RARE",
+            "type": "hidden_item",
+            "x": 44,
+            "y": 13
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_01",
+            "item": "ITEM_CANDY_ABUNDANT",
+            "type": "hidden_item",
+            "x": 48,
+            "y": 20
+        }
     ],
     "connections": null,
     "coord_events": [
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 6,
+            "y": 32
+        },
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 7,
+            "y": 32
+        },
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 8,
+            "y": 32
+        },
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 9,
+            "y": 32
+        },
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 10,
+            "y": 32
+        },
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 59,
+            "y": 25
+        },
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 59,
+            "y": 26
+        },
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 59,
+            "y": 27
+        },
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 59,
+            "y": 28
+        }
     ],
     "id": "MAP_TRICK_TREAT_FORTREE_CITY",
     "layout": "LAYOUT_TRICKTREAT_FORTREE_CITY",
@@ -14,11 +159,246 @@
     "music": "MUS_MACHI_S3",
     "name": "TrickTreat_FortreeCity",
     "object_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_20",
+            "graphics_id": "EVENT_OBJ_GFX_NURSE",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+            "script": "TrickTreat_PetalburgCity_CandyGiver_Nurse",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 23,
+            "y": 22
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_SCROLL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "PuzzleCommon_EventScript_EntranceDoorObject",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
+            "x": 10,
+            "y": 25
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_STONE_ROOM",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "PuzzleCommon_EventScript_ExitDoorObject",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
+            "x": 56,
+            "y": 21
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_NINJA_BOY",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 12,
+            "y": 35
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_2A",
+            "graphics_id": "EVENT_OBJ_GFX_WINONA",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+            "script": "TrickTreat_FortreeCity_CandyGiver_Winona",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 40,
+            "y": 9
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_21",
+            "graphics_id": "EVENT_OBJ_GFX_CAMPER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+            "script": "TrickTreat_FortreeCity_CandyGiver_Camper",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 27,
+            "y": 14
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_22",
+            "graphics_id": "EVENT_OBJ_GFX_FAT_MAN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+            "script": "TrickTreat_FortreeCity_CandyGiver_Fatman",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 30,
+            "y": 9
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_27",
+            "graphics_id": "EVENT_OBJ_GFX_OLD_WOMAN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+            "script": "TrickTreat_FortreeCity_CandyGiver_OldLady",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 48,
+            "y": 10
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_24",
+            "graphics_id": "EVENT_OBJ_GFX_TARZAN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+            "script": "TrickTreat_FortreeCity_CandyGiver_Tarzan",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 35,
+            "y": 14
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_26",
+            "graphics_id": "EVENT_OBJ_GFX_POKEFAN_M",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+            "script": "TrickTreat_FortreeCity_CandyGiver_Pokefan",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 43,
+            "y": 15
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_28",
+            "graphics_id": "EVENT_OBJ_GFX_BOY_1",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+            "script": "TrickTreat_FortreeCity_CandyGiver_TownBoy",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 49,
+            "y": 22
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_25",
+            "graphics_id": "EVENT_OBJ_GFX_EXPERT_F",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+            "script": "TrickTreat_FortreeCity_CandyGiver_ExpertLady",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 42,
+            "y": 23
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_23",
+            "graphics_id": "EVENT_OBJ_GFX_FAIRY_GIRL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+            "script": "TrickTreat_FortreeCity_CandyGiver_FairyGirl",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 30,
+            "y": 31
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_29",
+            "graphics_id": "EVENT_OBJ_GFX_PIKACHU",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+            "script": "TrickTreat_FortreeCity_CandyGiver_Pokekid",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 54,
+            "y": 31
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_PLASMA_KID",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT_AND_RIGHT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "4",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
+            "x": 41,
+            "y": 31
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_RARE_02",
+            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE_EARLY_STAGES",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "TrickTreat_FortreeCity_BuriedItem",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 3,
+            "y": 25
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_LIMITED_CANDY_0x6A",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyLimited06",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 47,
+            "y": 35
+        }
     ],
     "region_map_section": "MAPSEC_FORTREE_CITY",
     "requires_flash": false,
     "show_map_name": true,
     "warp_events": [
+        {
+            "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 10,
+            "y": 25
+        },
+        {
+            "dest_map": "MAP_TRICK_HOUSE_END",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 56,
+            "y": 21
+        }
     ],
     "weather": "WEATHER_SUNNY"
 }

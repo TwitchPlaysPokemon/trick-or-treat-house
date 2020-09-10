@@ -2105,6 +2105,19 @@ bool8 ScrCmd_setfieldeffectarg(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_setfieldeffectargstoobjectloc(struct ScriptContext *ctx)
+{
+    u16 localId = VarGet(ScriptReadHalfword(ctx));
+    u8 argNum = ScriptReadByte(ctx);
+    u8 evtid = GetEventObjectIdByLocalIdAndMap(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+    struct EventObject *eventObj = &gEventObjects[evtid];
+
+    gFieldEffectArguments[argNum+0] = eventObj->currentCoords.x;
+    gFieldEffectArguments[argNum+1] = eventObj->currentCoords.y;
+    gFieldEffectArguments[argNum+2] = eventObj->previousElevation;
+    return FALSE;
+}
+
 static bool8 WaitForFieldEffectFinish(void)
 {
     if (!FieldEffectActiveListContains(sFieldEffectScriptId))

@@ -305,6 +305,7 @@ const u32 gTrainerFrontPic_Skeleton[] = INCBIN_U32("graphics/trainers/front_pics
 const u32 gTrainerFrontPic_Tarzan[] = INCBIN_U32("graphics/trainers/front_pics/tarzan_front_pic.4bpp.lz");
 const u32 gTrainerFrontPic_TwinsPM[] = INCBIN_U32("graphics/trainers/front_pics/twins_pm_front_pic.4bpp.lz");
 const u32 gTrainerFrontPic_Alien[] = INCBIN_U32("graphics/trainers/front_pics/alien_front_pic.4bpp.lz");
+const u32 gTrainerFrontPic_Pikakid[] = INCBIN_U32("graphics/trainers/front_pics/pokekid_front_pic.4bpp.lz");
 
 const u32 gTrainerPalette_PlasmaKid[] = INCBIN_U32("graphics/trainers/palettes/plasma_kid.gbapal.lz");
 const u32 gTrainerPalette_Ghetsis[] = INCBIN_U32("graphics/trainers/palettes/ghetsis.gbapal.lz");
@@ -318,7 +319,7 @@ const u32 gTrainerPalette_Skeleton[] = INCBIN_U32("graphics/trainers/palettes/sk
 const u32 gTrainerPalette_Tarzan[] = INCBIN_U32("graphics/trainers/palettes/tarzan.gbapal.lz");
 const u32 gTrainerPalette_TwinsPM[] = INCBIN_U32("graphics/trainers/palettes/twins_pm.gbapal.lz");
 const u32 gTrainerPalette_Alien[] = INCBIN_U32("graphics/trainers/palettes/aliengirl.gbapal.lz");
-
+const u32 gTrainerPalette_Pikakid[] = INCBIN_U32("graphics/trainers/palettes/pokekid.gbapal.lz");
 
 
 

@@ -1,6 +1,6 @@
 raw `
 Puzzle_TinTowerClimb_MapScripts::
-	puzzle_info Puzzle_TinTowerClimb_Name, Puzzle_TinTowerClimb_Author
+	puzzle_info Puzzle_TinTowerClimb_Name, CommonAuthor_GameFreak
 	puzzle_custom_intro Puzzle_TinTowerClimb_Intro
 	puzzle_quip Puzzle_TinTowerClimb_Quip
 	puzzle_metavars Puzzle_TinTowerClimb_Variables
@@ -11,8 +11,6 @@ Puzzle_TinTowerClimb_MapScripts::
 
 Puzzle_TinTowerClimb_Name:
 	.string "Scale the Belfry$"
-Puzzle_TinTowerClimb_Author:
-	.string "Game Freak$"
 Puzzle_TinTowerClimb_Intro:
 	.string "Hah! Back for another challenge!\n"
 	.string "I have a special treat for you!\p"

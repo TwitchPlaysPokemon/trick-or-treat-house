@@ -351,11 +351,11 @@
 	.byte 0x32
 	.endm
 
-	@ Plays the specified (song_number) song. The byte is apparently supposed to be 0x00.
-	.macro playbgm song_number:req, unknown:req
+	@ Plays the specified (song_number) song. The second value indicates if the music should continue upon returning to the field.
+	.macro playbgm song_number:req, save:req
 	.byte 0x33
 	.2byte \song_number
-	.byte \unknown
+	.byte \save
 	.endm
 
 	@ Saves the specified (song_number) song to be played later.
@@ -1164,6 +1164,12 @@
 	.byte \argument
 	.2byte \param
 	.endm
+	
+	.macro setfieldeffectargstoobjectloc lid:req, arg:req
+	.byte 0xE7
+	.2byte \lid
+	.byte \arg
+	.endm
 
 	@ Blocks script execution until all playing field move animations complete.
 	.macro waitfieldeffect animation:req
@@ -1430,7 +1436,7 @@
 	@ .byte 0xc7
 	@ .byte \color
 	@ .endm
-
+	
 	@ @ The exact purpose of this command is unknown, but it is related to the blue help-text box that appears on the bottom of the screen when the Main Menu is opened.
 	@ .macro loadhelp pointer:req
 	@ .byte 0xc8

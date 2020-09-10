@@ -1,6 +1,6 @@
 raw `
 Puzzle_TrickHouseTrapdoors_MapScripts::
-	puzzle_info Puzzle_TrickHouseTrapdoors_Name, Puzzle_TrickHouseTrapdoors_Author
+	puzzle_info Puzzle_TrickHouseTrapdoors_Name, CommonAuthor_Trickmaster
 	puzzle_adjective Puzzle_TrickHouseTrapdoors_Adjective
 	puzzle_quip Puzzle_TrickHouseTrapdoors_Quip
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_TrickHouseTrapdoors_OnLoad
@@ -8,8 +8,6 @@ Puzzle_TrickHouseTrapdoors_MapScripts::
 
 Puzzle_TrickHouseTrapdoors_Name:
 	.string "Trapdoor Trickery$"
-Puzzle_TrickHouseTrapdoors_Author:
-	.string "Trick Master$"
 Puzzle_TrickHouseTrapdoors_Adjective:
 	.string "a-maze-ing$"
 Puzzle_TrickHouseTrapdoors_Quip:

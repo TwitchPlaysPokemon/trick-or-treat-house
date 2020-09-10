@@ -1,6 +1,6 @@
 raw `
 Puzzle_IlexForest_MapScripts::
-	puzzle_info Puzzle_IlexForest_Name, Puzzle_IlexForest_Author
+	puzzle_info Puzzle_IlexForest_Name, CommonAuthor_Tustin2121
 	puzzle_adjective Puzzle_IlexForest_Adjective
 	puzzle_quip Puzzle_IlexForest_Quip
 	puzzle_candylist Puzzle_IlexForest_CandyList
@@ -10,8 +10,6 @@ Puzzle_IlexForest_MapScripts::
 
 Puzzle_IlexForest_Name:
 	.string "A Bird in the Bush$"
-Puzzle_IlexForest_Author:
-	.string "Tustin2121$"
 Puzzle_IlexForest_Adjective:
 	.string "meandering$"
 Puzzle_IlexForest_Quip:

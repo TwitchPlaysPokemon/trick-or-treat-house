@@ -16,6 +16,17 @@ PuzzleCommon_DefaultTeardownScript::
 
 @ -----------------------------------------------------
 
+CommonAuthor_Trickmaster::
+	.string "Trick Master$"
+CommonAuthor_GameFreak::
+	.string "GAME FREAK$"
+CommonAuthor_Tustin2121::
+	.string "Tustin2121$"
+CommonAuthor_M4UsedRollout::
+	.string "M4UsedRollout$"
+
+@ -----------------------------------------------------
+
 PuzzleDebug_EventScript_ShowPuzzleSelect::
 	lockall
 	playse SE_SELECT

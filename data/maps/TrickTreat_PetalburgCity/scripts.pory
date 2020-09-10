@@ -1,19 +1,17 @@
 raw `
 TrickTreat_PetalburgCity_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, TrickTreat_PetalburgCity_OnTransition
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrickTreat_PetalburgCity_FrameTable
-	map_script MAP_SCRIPT_ON_RETURN_TO_FIELD, TrickTreat_PetalburgCity_ReturnToField
-	puzzle_info TrickTreat_PetalburgCity_Name, TrickTreat_PetalburgCity_Author
+	puzzle_info TrickTreat_PetalburgCity_Name, CommonAuthor_Tustin2121
 	puzzle_custom_intro TrickTreat_PetalburgCity_Intro
 	puzzle_quip TrickTreat_PetalburgCity_Quip
 	puzzle_metavars TrickTreat_PetalburgCity_Variables
 	puzzle_candylist TrickTreat_PetalburgCity_CandyList
+	map_script MAP_SCRIPT_ON_TRANSITION, TrickTreat_PetalburgCity_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrickTreat_PetalburgCity_FrameTable
+	map_script MAP_SCRIPT_ON_RETURN_TO_FIELD, TrickTreat_PetalburgCity_ReturnToField
 	.byte 0
 
 TrickTreat_PetalburgCity_Name:
 	.string "Peppermints in Petalburg$"
-TrickTreat_PetalburgCity_Author:
-	.string "Tustin2121$"
 TrickTreat_PetalburgCity_Intro:
 	.string "{YOUNGSTER}: {PLAYER}! How's it going?\p"
 	.string "Oh, I'm not here to introduce a puzzle\n"

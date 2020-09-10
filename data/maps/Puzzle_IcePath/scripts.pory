@@ -1,6 +1,6 @@
 raw `
 Puzzle_IcePath_MapScripts::
-	puzzle_info Puzzle_IcePath_Name, Puzzle_IcePath_Author
+	puzzle_info Puzzle_IcePath_Name, CommonAuthor_GameFreak
 	puzzle_custom_intro Puzzle_IcePath_Intro
 	puzzle_quip Puzzle_IcePath_Quip
 	puzzle_setup_script Puzzle_IcePath_SetupScript
@@ -13,8 +13,6 @@ Puzzle_IcePath_MapScripts::
 
 Puzzle_IcePath_Name:
 	.string "The Frozen Excursion$"
-Puzzle_IcePath_Author:
-	.string "GAME FREAK$"
 Puzzle_IcePath_Intro:
 	.string "Hah! Back again!\p"
 	.string "This next puzzle I discovered on my\n"
@@ -64,7 +62,7 @@ Puzzle_IcePath_FrameTable:
 `
 script Puzzle_IcePath_OnResume {
 	// Setup the NPC Trigger step callback MonitorEventObjectTriggersStepCallback
-	setstepcallback (9)
+	setstepcallback (STEP_CB_NPC_TRIGGER)
 }
 
 raw `

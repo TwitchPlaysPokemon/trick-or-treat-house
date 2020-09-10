@@ -12,7 +12,7 @@ Puzzle_Loss_Floor1_MapScripts::
 Puzzle_Loss_Name:
 	.string "Misplaced$"
 Puzzle_Loss_Author:
-	.string "the Internet$"
+	.string "the Internet$" @ Tustin2121
 Puzzle_Loss_Adjective:
 	.string "memable$"
 Puzzle_Loss_Quip:

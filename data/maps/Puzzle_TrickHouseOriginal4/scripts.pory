@@ -1,6 +1,6 @@
 raw `
 Puzzle_TrickHouseOriginal4_MapScripts:: @ 826C860
-	puzzle_info Puzzle_TrickHouseOriginal4_Name, Puzzle_TrickHouseOriginal4_Author
+	puzzle_info Puzzle_TrickHouseOriginal4_Name, CommonAuthor_Trickmaster
 	puzzle_custom_intro Puzzle_TrickHouseOriginal4_Intro
 	puzzle_quip Puzzle_TrickHouseOriginal4_Quip
 	puzzle_candylist Puzzle_TrickHouseOriginal4_CandyList
@@ -9,8 +9,6 @@ Puzzle_TrickHouseOriginal4_MapScripts:: @ 826C860
 
 Puzzle_TrickHouseOriginal4_Name:
 	.string "Boulder Room Bluff$"
-Puzzle_TrickHouseOriginal4_Author:
-	.string "Trick Master$"
 Puzzle_TrickHouseOriginal4_Intro:
 	.string "You're good at these puzzles, aren't you?\p"
 	.string "This next puzzle is yet another classic\n"

@@ -1,13 +1,13 @@
 raw `
 TrickTreat_MossdeepCity_MapScripts:: @ 81E4A96
-	map_script MAP_SCRIPT_ON_TRANSITION, TrickTreat_MossdeepCity_OnTransition
-	map_script MAP_SCRIPT_ON_RETURN_TO_FIELD, TrickTreat_MossdeepCity_OnReturnToField
-	puzzle_info TrickTreat_MossdeepCity_Name, TrickTreat_MossdeepCity_Author
+	puzzle_info TrickTreat_MossdeepCity_Name, CommonAuthor_Tustin2121
 	puzzle_custom_intro TrickTreat_MossdeepCity_Intro
 	puzzle_quip TrickTreat_MossdeepCity_Quip
 	puzzle_metavars TrickTreat_MossdeepCity_Variables
 	puzzle_setup_script TrickTreat_MossdeepCity_SetupScript
 	puzzle_candylist TrickTreat_MossdeepCity_CandyList
+	map_script MAP_SCRIPT_ON_TRANSITION, TrickTreat_MossdeepCity_OnTransition
+	map_script MAP_SCRIPT_ON_RETURN_TO_FIELD, TrickTreat_MossdeepCity_OnReturnToField
 	.byte 0
 @ -----------------------------------------------------
 
@@ -42,8 +42,6 @@ TrickTreat_MossdeepCity_MapScripts:: @ 81E4A96
 @ -----------------------------------------------------
 TrickTreat_MossdeepCity_Name:
 	.string "Malteasers in Mossdeep$"
-TrickTreat_MossdeepCity_Author:
-	.string "Tustin2121$"
 TrickTreat_MossdeepCity_Intro:
 	.string "Hey {PLAYER}! Wanna go for another round\n"
 	.string "of Trick or Treating?\p"

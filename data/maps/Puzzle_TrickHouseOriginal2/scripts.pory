@@ -1,6 +1,6 @@
 raw `
 Puzzle_TrickHouseOriginal2_MapScripts:: @ 826BB73
-	puzzle_info Puzzle_TrickHouseOriginal2_Name, Puzzle_TrickHouseOriginal2_Author
+	puzzle_info Puzzle_TrickHouseOriginal2_Name, CommonAuthor_Trickmaster
 	puzzle_custom_intro Puzzle_TrickHouseOriginal2_Intro
 	puzzle_quip Puzzle_TrickHouseOriginal2_Quip
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TrickHouseOriginal2_MapScript1_26BB7E
@@ -10,8 +10,6 @@ Puzzle_TrickHouseOriginal2_MapScripts:: @ 826BB73
 
 Puzzle_TrickHouseOriginal2_Name:
 	.string "Trapdoor Trickery$"
-Puzzle_TrickHouseOriginal2_Author:
-	.string "Trick Master$"
 Puzzle_TrickHouseOriginal2_Intro:
 	.string "Hah! Seems like you made it through that\n"
 	.string "last one with ease!\p"

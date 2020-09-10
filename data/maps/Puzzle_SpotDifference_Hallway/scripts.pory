@@ -11,7 +11,7 @@ Puzzle_SpotDifference_Hallway_MapScripts::
 
 Puzzle_SpotDifference_Name:
     .string "Spot the Difference$"
-Puzzle_SpotDifference_Author:
+Puzzle_SpotDifference_Author: @ Built By: ShantyTown
     .string "DogeMage$"
 Puzzle_SpotDifference_Adjective:
     .string "keen-eye$"

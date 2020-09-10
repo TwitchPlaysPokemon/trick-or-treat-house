@@ -1,6 +1,6 @@
 raw `
 Puzzle_HiddenMaze_MapScripts::
-	puzzle_info Puzzle_HiddenMaze_Name, Puzzle_HiddenMaze_Author
+	puzzle_info Puzzle_HiddenMaze_Name, CommonAuthor_Tustin2121
 	puzzle_adjective Puzzle_HiddenMaze_Adjective
 	puzzle_quip Puzzle_HiddenMaze_Quip
 	puzzle_metavars Puzzle_HiddenMaze_Variables
@@ -11,8 +11,6 @@ Puzzle_HiddenMaze_MapScripts::
 
 Puzzle_HiddenMaze_Name:
 	.string "Koga's Labyrinth$"
-Puzzle_HiddenMaze_Author:
-	.string "Tustin2121$"
 Puzzle_HiddenMaze_Adjective:
 	.string "stealthy$"
 Puzzle_HiddenMaze_Quip:
@@ -32,7 +30,7 @@ Puzzle_HiddenMaze_CandyList:
 	.2byte 0
 
 Puzzle_HiddenMaze_OnResume:
-	setstepcallback 10
+	setstepcallback STEP_CB_HIDDEN_WALLS
 	end
 
 Puzzle_HiddenMaze_OnLoad:

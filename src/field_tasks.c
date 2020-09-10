@@ -21,6 +21,7 @@
 #include "constants/songs.h"
 #include "constants/vars.h"
 #include "constants/metatile_labels.h"
+#include "constants/field_tasks.h"
 
 struct PacifidlogMetatileOffsets
 {
@@ -44,19 +45,19 @@ static void Task_MuddySlope(u8 taskId);
 
 static const TaskFunc sPerStepCallbacks[] =
 {
-    DummyPerStepCallback,
-    AshGrassPerStepCallback,
-    FortreeBridgePerStepCallback,
-    PacifidlogBridgePerStepCallback, //3
-    SootopolisGymIcePerStepCallback,
-    EndTruckSequence,
-    SecretBasePerStepCallback,
-    CrackedFloorPerStepCallback,
-    WaterTemplePerStepCallback, //8
-    MonitorEventObjectTriggersStepCallback,
-    HiddenMaze_PulseWallTiles,
-    TrickHouse_CycleTextPalette,
-    MonitorMultiEventObjectTriggersStepCallback, //12
+    [STEP_CB_DUMMY]              = DummyPerStepCallback,
+    [STEP_CB_ASH]                = AshGrassPerStepCallback,
+    [STEP_CB_FORTREE_BRIDGE]     = FortreeBridgePerStepCallback,
+    [STEP_CB_PACIFIDLOG_BRIDGE]  = PacifidlogBridgePerStepCallback, //3
+    [STEP_CB_SOOTOPOLIS_ICE]     = SootopolisGymIcePerStepCallback,
+    [STEP_CB_TRUCK]              = EndTruckSequence,
+    [STEP_CB_SECRET_BASE]        = SecretBasePerStepCallback,
+    [STEP_CB_CRACKED_FLOOR]      = CrackedFloorPerStepCallback,
+    [STEP_CB_WATER_TEMPLE]       = WaterTemplePerStepCallback, //8
+    [STEP_CB_NPC_TRIGGER]        = MonitorEventObjectTriggersStepCallback,
+    [STEP_CB_HIDDEN_WALLS]       = HiddenMaze_PulseWallTiles,
+    [STEP_CB_CYCLE_TEXT_PAL]     = TrickHouse_CycleTextPalette,
+    [STEP_CB_NPC_MULTI_TRIGGER]  = MonitorMultiEventObjectTriggersStepCallback, //12
 };
 
 // Each element corresponds to a y coordinate row in the sootopolis gym 1F map.

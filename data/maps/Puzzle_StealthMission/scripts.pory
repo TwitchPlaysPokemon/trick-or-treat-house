@@ -1,6 +1,6 @@
 raw `
 Puzzle_StealthMission_MapScripts::
-	puzzle_info Puzzle_StealthMission_Name, Puzzle_StealthMission_Author
+	puzzle_info Puzzle_StealthMission_Name, CommonAuthor_Tustin2121
 	puzzle_adjective Puzzle_StealthMission_Adjective
 	@ puzzle_quip Puzzle_StealthMission_Quip
 	puzzle_candylist Puzzle_StealthMission_CandyList
@@ -13,8 +13,6 @@ Puzzle_StealthMission_MapScripts::
 
 Puzzle_StealthMission_Name:
 	.string "Mission Impassable$"
-Puzzle_StealthMission_Author:
-	.string "Tustin2121$"
 Puzzle_StealthMission_Adjective:
 	.string "stealthy$"
 Puzzle_StealthMission_Quip:
@@ -74,9 +72,7 @@ script Puzzle_StealthMission_PuzzleSetup {
 script Puzzle_StealthMission_OnLoad {
 	setflag(FLAG_SYS_KEEP_OBJECTS_WITHIN_MAP)
 	poryswitch(TPP_MODE) {
-		1 {
-			setflag(FLAG_HIDE_DIFFICULTY)
-		}
+		1: setflag(FLAG_HIDE_DIFFICULTY)
 	}
 	if (flag(FLAG_TRICK_HOUSE_SCROLL_READ) == FALSE) {
 		call(Puzzle_StealthMission_SetStage1)

@@ -1474,6 +1474,10 @@ void sub_81AC644(u8 unused)
                         memcpy(&gBagMenu->unk824, &gUnknown_08614030, 4);
                         if (gSaveBlock1Ptr->registeredItem == gSpecialVar_ItemId)
                             gBagMenu->unk825 = 8;
+#if TPP_MODE            // Disallow registering the escape rope in TPP Mode
+                        if (gSpecialVar_ItemId == ITEM_ESCAPE_ROPE)
+                            gBagMenu->unk825 = 14; // Set to "register" to null item
+#endif
                         if (gSpecialVar_ItemId == ITEM_MACH_BIKE || gSpecialVar_ItemId == ITEM_ACRO_BIKE)
                         {
                             if (TestPlayerAvatarFlags(6))
