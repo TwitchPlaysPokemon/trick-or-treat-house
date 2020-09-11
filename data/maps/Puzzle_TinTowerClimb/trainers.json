@@ -1,0 +1,60 @@
+[
+	{
+		"class": "SAGE_BORT",
+		"pic": "EXPERT_M",
+		"name": "4Q;Q",
+		"party": [
+			{
+				"species": "SPECIES_BELLSPROUT",
+				"level": 26
+			},
+			{
+				"species": "SPECIES_NOCTOWL",
+				"level": 27
+			},
+			{
+				"species": "SPECIES_FLAREON",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "SAGE_BORT",
+		"pic": "EXPERT_M",
+		"name": "MLKE",
+		"party": [
+			{
+				"species": "SPECIES_HYPNO",
+				"level": 27
+			},
+			{
+				"species": "SPECIES_AMPHAROS",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_VAPOREON",
+				"level": 29
+			}
+			
+		]
+	},
+	{
+		"class": "SAGE_BORT",
+		"pic": "EXPERT_M",
+		"name": "&'1Q",
+		"party": [
+			{
+				"species": "SPECIES_WEEPINBELL",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_JOLTEON",
+				"level": 29
+			},
+			{
+				"species": "SPECIES_SUICUNE",
+				"level": 31
+			}
+		]
+	}
+]

@@ -29,6 +29,7 @@ u8 *ConvertIntToNameStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8
 u8 *ConvertIntToDecimalStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 n);
 u8 *ConvertUIntToDecimalStringN(u8 *dest, u32 value, enum StringConvertMode mode, u8 n);
 u8 *ConvertIntToHexStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 n);
+u8 *StringUppercase(u8 *dest, const u8 *src);
 u8 *StringExpandPlaceholders(u8 *dest, const u8 *src);
 u8 *StringBraille(u8 *dest, const u8 *src);
 const u8 *GetExpandedPlaceholder(u32 id);

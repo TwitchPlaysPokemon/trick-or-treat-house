@@ -88,4 +88,6 @@ const u8 gTrainerClassNames[][13] = {
     [TRAINER_CLASS_PIKAKID] = _("POKé KID"),
     // [TRAINER_CLASS_FAIRY_GIRL] = _("SUPERHERO"),
     // [TRAINER_CLASS_FAIRY_GIRL] = _("BURGLAR"),
+    
+    [TRAINER_CLASS_SAGE_BORT] = _("TRIBE"),
 };

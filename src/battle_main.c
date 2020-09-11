@@ -698,6 +698,12 @@ static void CB2_InitBattleInternal(void)
     gReservedSpritePaletteCount = 4;
     SetVBlankCallback(VBlankCB_Battle);
     SetUpBattleVarsAndBirchZigzagoon();
+    
+    if (FlagGet(FLAG_SYS_BORT_MODE)) {
+        gBattleStringsTable = &gElfBattleStringsTable[0];
+    } else {
+        gBattleStringsTable = &gNormalBattleStringsTable[0];
+    }
 
     if (gBattleTypeFlags & BATTLE_TYPE_MULTI && gBattleTypeFlags & BATTLE_TYPE_BATTLE_TOWER)
         SetMainCallback2(CB2_HandleStartMultiPartnerBattle);

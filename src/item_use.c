@@ -811,7 +811,7 @@ void RemoveItemFromBagAndCopyName(void)
 void CopyItemNameFromBag(void)
 {
     CopyItemName(gSpecialVar_ItemId, gStringVar2);
-    StringExpandPlaceholders(gStringVar4, gText_PlayerUsedVar2);
+    StringExpandPlaceholders(gStringVar4, FlagGet(FLAG_SYS_BORT_MODE)?gBort_PlayerUsedVar2:gText_PlayerUsedVar2);
 }
 
 void ItemUseOutOfBattle_Repel(u8 taskId)

@@ -871,9 +871,14 @@ EventScript_PickItemUp:: @ 8271C3A
 	@ special CallBattlePyramidFunction
 	@ compare VAR_RESULT, 1
 	@ goto_if_eq EventScript_271C86
+	goto_if_set FLAG_SYS_BORT_MODE, EventScript_PickItemUp_BORT
 	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
 	return
 
+EventScript_PickItemUp_BORT:
+	callnative BORTizeBufferedStrings
+	msgbox gBort_PutItemInPocket, MSGBOX_DEFAULT
+	return
 @ EventScript_271C86:: @ 8271C86
 @ 	msgbox gText_PlayerPutItemInBag, MSGBOX_DEFAULT
 @ 	return
@@ -885,7 +890,13 @@ EventScript_271C8F:: @ 8271C8F
 
 EventScript_271C9B:: @ 8271C9B
 	buffernumberstring2 0, VAR_0x8005
+	goto_if_set FLAG_SYS_BORT_MODE, EventScript_271C9B_BORT
 	message gText_PlayerFoundOneItem
+	return
+
+EventScript_271C9B_BORT:
+	callnative BORTizeBufferedStrings
+	message gBort_PlayerFoundOneItem
 	return
 
 EventScript_271CA1:: @ 8271CA1
@@ -927,7 +938,14 @@ EventScript_271D0E:: @ 8271D0E
 
 EventScript_271D1F:: @ 8271D1F
 	buffernumberstring2 0, VAR_0x8006
+	goto_if_set FLAG_SYS_BORT_MODE, EventScript_271D1F_BORT
 	message gText_PlayerFoundOneItem
+	goto EventScript_271D2A
+	end
+
+EventScript_271D1F_BORT:
+	callnative BORTizeBufferedStrings
+	message gBort_PlayerFoundOneItem
 	goto EventScript_271D2A
 	end
 
@@ -937,11 +955,21 @@ EventScript_271D2A:: @ 8271D2A
 	bufferitemnameplural 1, VAR_0x8004, VAR_0x8006
 	@ bufferitemname 1, VAR_0x8004, 1
 	copyvar VAR_0x8004, VAR_0x8008
+	goto_if_set FLAG_SYS_BORT_MODE, EventScript_271D2A_BORT
 	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
 	special sub_80EDCE8
 	special SetFlagInVar
 	releaseall
 	end
+
+EventScript_271D2A_BORT:
+	callnative BORTizeBufferedStrings
+	msgbox gBort_PutItemInPocket, MSGBOX_DEFAULT
+	special sub_80EDCE8
+	special SetFlagInVar
+	releaseall
+	end
+	
 
 EventScript_271D47:: @ 8271D47
 	buffernumberstring2 0, VAR_0x8006
@@ -1826,6 +1854,13 @@ gText_PlayerFoundOneItem:: @ 8272ABF
 
 gText_PlayerPutItemInBag:: @ 8272AEA
 	.string "{PLAYER} put away the {STR_VAR_2}\nin the BAG.$"
+
+gBort_PlayerFoundOneItem::
+	.string "{PLAYER}!{STR_VAR_2} FIND!$"
+gBort_PutItemInPocket::
+	.string "{PLAYER}!{STR_VAR_2}\n{STR_VAR_3}   FUCK$"
+gBort_PlayerPutItemInBag::
+	.string "{PLAYER}!{STR_VAR_2}\nBAG   FUCK$"
 
 gUnknown_08272B09:: @ 8272B09
 	.string "Obtained the {STR_VAR_2}!$"

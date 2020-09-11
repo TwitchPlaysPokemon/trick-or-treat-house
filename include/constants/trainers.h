@@ -302,6 +302,7 @@
 #define TRAINER_CLASS_ALIEN          0x4D
 #define TRAINER_CLASS_SECURITY       0x4E
 #define TRAINER_CLASS_PIKAKID        0x4F
+#define TRAINER_CLASS_SAGE_BORT      0x50
 
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music

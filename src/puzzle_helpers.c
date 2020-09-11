@@ -70,6 +70,24 @@ void SetSelectVariables(struct ScriptContext *ctx)
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// Puzzle: Scale the Belfry
+// 
+
+extern u8 gStringWorking[0x100];
+void BORTizeBufferedStrings(struct ScriptContext *ctx)
+{
+	StringCopy(gStringWorking, gStringVar1);
+	StringUppercase(gStringVar1, gStringWorking);
+	
+	StringCopy(gStringWorking, gStringVar2);
+	StringUppercase(gStringVar2, gStringWorking);
+	
+	StringCopy(gStringWorking, gStringVar3);
+	StringUppercase(gStringVar3, gStringWorking);
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
 // Puzzle: Pokemon Says 
 // MAP_PUZZLE_MUSIC_NOTE_TILES
 

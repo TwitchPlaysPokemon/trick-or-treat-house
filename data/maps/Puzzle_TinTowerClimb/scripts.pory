@@ -1,26 +1,32 @@
 raw `
 Puzzle_TinTowerClimb_MapScripts::
-	puzzle_info Puzzle_TinTowerClimb_Name, CommonAuthor_GameFreak
+	puzzle_info Puzzle_TinTowerClimb_Name, Puzzle_TinTowerClimb_Author
 	puzzle_custom_intro Puzzle_TinTowerClimb_Intro
 	puzzle_quip Puzzle_TinTowerClimb_Quip
 	puzzle_metavars Puzzle_TinTowerClimb_Variables
 	puzzle_candylist Puzzle_TinTowerClimb_CandyList
 	puzzle_devcommentary Puzzle_TinTowerClimb_DevCommentary
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_TinTowerClimb_OnLoad
+	map_script MAP_SCRIPT_PUZZLE_EXIT_SCRIPT, Puzzle_TinTowerClimb_OnExit
 	.byte 0
 
 
 Puzzle_TinTowerClimb_Name:
 	.string "Scale the Belfry$"
+Puzzle_TinTowerClimb_Author:
+	.string "GAME FREAK BORT"
 Puzzle_TinTowerClimb_Intro:
 	.string "Hah! Back for another challenge!\n"
 	.string "I have a special treat for you!\p"
 	.string "In my journey of discovery,\n"
 	.string "I travelled to several distant regions!\p"
 	.string "This is one of the puzzles I discovered\n"
-	.string "on my travels in the lands of Johto!\p"
+	.string "on my travels in the lands of Chengdu\p" @Johto!\p"
 	.string "Not many people are allowed deep in\n"
 	.string "this old bell tower. But with the power\l"
 	.string "of my door, you shall be one of them!\p"
+	.string "Oh, and don't mind the local dialect:\n"
+	.string "It can be a bit hard to understand.\p"
 	.string "See you on the other side!$"
 Puzzle_TinTowerClimb_Quip:
 	.string "Do you like my costume?\n"
@@ -32,7 +38,25 @@ Puzzle_TinTowerClimb_DevCommentary:
 	.string "was recreated from gen 2 references.\p"
 	.string "The entire puzzle is all on one map,\n"
 	.string "and you literally climb up the map while\l"
-	.string "scaling the tower.$"
+	.string "scaling the tower.\p"
+	.string "Also, after TTH 2019, when everyone was\n"
+	.string "making Vietnamese Crystal jokes, I\l"
+	.string "decided to add 'BORT MODE' to this puzzle.\p"
+	.string "Did you know 'DADA MAD AH!' in VietCrystal\n"
+	.string "is supposed to be 'DADA's Thrash attack!'?\l"
+	.string "Yes, 'AH' is 'Attack' translated wrongly.\p"
+	.string "There's a lot more to it that I won't go\n"
+	.string "into in this little text box.$"
+/*	Hi, here's more to it with more freedom to speak:
+	Go check out the src/data/battle_strings_elf.h file, at comments for the
+	ChooseTypeOfMoveUsedString_BORT and ChooseMoveUsedParticle_BORT functions,
+	for the explainations on how the Japanese version of the game has different
+	grammar for different move names. Basically since VietCrystal was translated
+	from Japanese instead of via English, the Japanese grammar conventions are
+	still used. This is why certain attacks just are "MON ATTACK!" and others
+	are "MON ATTACKAH!", as the "-AH!" suffix is pulled over from Japanese grammar.
+*/
+	
 .align 2
 Puzzle_TinTowerClimb_Variables:
 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HOOH
@@ -59,3 +83,132 @@ Puzzle_TinTowerClimb_CandyList:
 	.2byte FLAG_CANDY_RARE_02
 	.2byte 0
 `
+
+script Puzzle_TinTowerClimb_OnLoad {
+	setflag(FLAG_SYS_BORT_MODE)
+}
+script Puzzle_TinTowerClimb_OnExit {
+	clearflag(FLAG_SYS_BORT_MODE)
+}
+
+script Puzzle_TinTowerClimb_Sage1 {
+	trainerbattle_single(TRAINER_01, 
+			"WE WILL NOT DESTORY THE TOWER\n"
+			"EVEN IF WE ARE CRAZY$",
+			"CRAZY MAKES WEAKENED$")
+	msgbox( "EERYBODY HELPS EACH OTHER, THE\n"
+			"GTATEFUL FEELING DON'T BE FORGOTTON$", MSGBOX_NPC)
+}
+script Puzzle_TinTowerClimb_Sage2 {
+	trainerbattle_single(TRAINER_02, 
+			"TRAINED ON THE ROAD OF ULTIMATE$",
+			"TRAINED NOT ENOUGH$")
+	msgbox( "MADASIMUMI FRIGHTED MOVING SLIGHTLY\n"
+			"AS IF HIS\l"
+			"PRACTISING WASN'T STRONG ENOUGH.$", MSGBOX_NPC)
+}
+script Puzzle_TinTowerClimb_Sage3 {
+	trainerbattle_single(TRAINER_03, 
+			"HOW TRUST ARE YOU TO HAVE A TRYING$",
+			"VERY TRUST!$")
+	msgbox( " IT'S THIS TOWER TO LET THE MONSTERS\n"
+			"ANDPEOPLE ARE FULL OF FANCY\l"
+			"FOR BRIGHT FUTURE,S\l"
+			"TO AFFIRM THE PRACISING PLACE\l"
+			"AND THE LAST STEELING$", MSGBOX_NPC)
+}
+
+script Puzzle_TinTowerClimb_Scroll {
+	lock
+	if (flag(FLAG_TRICK_HOUSE_SCROLL_READ)) {
+		msgbox("SCROLL HAS SECRET TO KEY$")
+		release
+	} else {
+		playfanfare(MUS_FANFA4)
+		message("{PLAYER}!SCROLL FIND$")
+		waitfanfare
+		setflag(FLAG_TRICK_HOUSE_SCROLL_READ)
+		msgbox("{PLAYER} PUT TO MIND NUMBERS SCROLL$")
+		release
+	}
+}
+
+script Puzzle_TinTowerClimb_ExitDoorObject {
+	lock
+	if (var(VAR_FACING) != 2) { //North
+		goto(PuzzleCommon_EventScript_EntranceDoorObject_Backside)
+	}
+	elif (flag(FLAG_TRICK_HOUSE_PASSWORD_ENTERED) == FALSE) {
+		goto_if_set(FLAG_IS_BUMP_INTERACTION, Common_EventScript_ReleaseEnd)
+		if (flag(FLAG_TRICK_HOUSE_SCROLL_READ) == FALSE) {
+			msgbox("DOOR IS SHUT. MUST WRITE WORD$")
+			release
+			end
+		} else {
+			msgbox("{PLAYER} WRITE WORDS ON DOOR.\p"
+				"“WAIT4BABA”\p"
+				"… … … … … … … …\n"
+				"{PLAY_SE SE_PIN}DOOR UNLOCK!$")
+			setflag(FLAG_TRICK_HOUSE_PASSWORD_ENTERED)
+			release
+			end
+		}
+	}
+	elif (flag(FLAG_IS_BUMP_INTERACTION) == FALSE) {
+		msgbox("DOOR IS UNLOCKED$")
+		release
+		end
+	}
+	else {
+		// If the player bumped into this object, make it act like a door
+		call (PuzzleCommon_EventScript_DoDoorEnterAnimation_Stone)
+		warp (MAP_TRICK_HOUSE_END, 0, 0xff, 0xff)
+		waitstate
+		release
+		end
+	}
+}
+
+// script Puzzle_TinTowerClimb_Sage1 {
+// 	trainerbattle_single(TRAINER_01, 
+// 			"WHEN THE LEGLEND CHARATCER WHO CAN\n"
+// 			"COMMUNICATE WITH ELF MERGED.\l"
+// 			"TEST HIM IN THE TOWER\p"
+// 			"AS THE HEARSY ELF, THERE COMES THE\n"
+// 			"WATER ARMY. LET'S TEST YOUR QUALITY$",
+// 			"AS STRONG AS IMAGE$")
+// 	msgbox( "DO YOU BELIEVE ANYONE HAD SEEN\n"
+// 			"A'EN SLEEPING?\p"
+// 			"DN'T BELIEVE!\p"
+// 			"IT IS SAID THAT GOD DIDN'T LET PEOPLE\n"
+// 			"TO SEE ITSELF SLEEPING$", MSGBOX_NPC)
+// }
+// script Puzzle_TinTowerClimb_Sage2 {
+// 	trainerbattle_single(TRAINER_02, 
+// 			"I WSA WANDERED WHETHER TO TELL\n"
+// 			"YOU THE TRUE. TRY YOUR STRENGTH FIRST$",
+// 			"TELL YOU THE TRUE$")
+// 	msgbox( "FLOORS TOWERS. ONE WAS CALLED BELL TOWER\n"
+// 			"TO WAKE MONSTERRS SPECIALLY.\p"
+// 			"THE OTHER SMALL BELL TOWER TO LET\n"
+// 			"MONSTERS TO REST SPECIALLY.\p"
+// 			"THE LOOKOUT THERE IS VERY BEAUTIFUL,\n"
+// 			"NOT WRONG THAT TIME THERE WAS A BIG\l"
+// 			"ARGENT MONSTER, AS IF TO LET ITS WINGS\l"
+// 			"REST IN THE BELL TOWER\p"
+// 			"HOWEVER ABOUT 150 YEARS AGO, LIGHTNING\p"
+// 			"FELL DOWN ONE OF THE TWO TOWERS, ITS\n"
+// 			"BEING BURNT FOR THREE DAYS.\p"
+// 			"FOLLOWING THERE WA A BIG RAIN TO STAMP\n"
+// 			"OUT THE FIRE. THAT IS THE BURND TOWER.$", MSGBOX_NPC)
+// }
+// script Puzzle_TinTowerClimb_Sage3 {
+// 	trainerbattle_single(TRAINER_03, 
+// 			"LET ME SEE YOUR STRENGTH!$",
+// 			"VERY TRUST!$")
+// 	msgbox( " IT'S THIS TOWER TO LET THE MONSTERS\n"
+// 			"ANDPEOPLE ARE FULL OF FANCY\l"
+// 			"FOR BRIGHT FUTURE,S\l"
+// 			"TO AFFIRM THE PRACISING PLACE\l"
+// 			"AND THE LAST STEELING$", MSGBOX_NPC)
+// }

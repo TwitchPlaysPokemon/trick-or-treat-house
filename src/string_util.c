@@ -365,6 +365,75 @@ u8 *ConvertIntToHexStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 
     return dest;
 }
 
+u8 *StringUppercase(u8 *dest, const u8 *src)
+{
+    for (;;)
+    {
+        u8 c = *src++;
+        
+        switch (c)
+        {
+            case EXT_CTRL_CODE_BEGIN:
+                *dest++ = c;
+                c = *src++;
+                *dest++ = c;
+
+                switch (c)
+                {
+                    case 0x07:
+                    case 0x09:
+                    case 0x0F:
+                    case 0x15:
+                    case 0x16:
+                    case 0x17:
+                    case 0x18:
+                        break;
+                    case 0x04:
+                        *dest++ = *src++;
+                    case 0x0B:
+                        *dest++ = *src++;
+                    default:
+                        *dest++ = *src++;
+                }
+                break;
+            case EOS:
+                *dest = EOS;
+                return dest;
+            case CHAR_PROMPT_SCROLL:
+            case CHAR_PROMPT_CLEAR:
+            case CHAR_NEWLINE:
+            case CHAR_a: *dest++ = CHAR_A; break;
+            case CHAR_b: *dest++ = CHAR_B; break;
+            case CHAR_c: *dest++ = CHAR_C; break;
+            case CHAR_d: *dest++ = CHAR_D; break;
+            case CHAR_e: *dest++ = CHAR_E; break;
+            case CHAR_f: *dest++ = CHAR_F; break;
+            case CHAR_g: *dest++ = CHAR_G; break;
+            case CHAR_h: *dest++ = CHAR_H; break;
+            case CHAR_i: *dest++ = CHAR_I; break;
+            case CHAR_j: *dest++ = CHAR_J; break;
+            case CHAR_k: *dest++ = CHAR_K; break;
+            case CHAR_l: *dest++ = CHAR_L; break;
+            case CHAR_m: *dest++ = CHAR_M; break;
+            case CHAR_n: *dest++ = CHAR_N; break;
+            case CHAR_o: *dest++ = CHAR_O; break;
+            case CHAR_p: *dest++ = CHAR_P; break;
+            case CHAR_q: *dest++ = CHAR_Q; break;
+            case CHAR_r: *dest++ = CHAR_R; break;
+            case CHAR_s: *dest++ = CHAR_S; break;
+            case CHAR_t: *dest++ = CHAR_T; break;
+            case CHAR_u: *dest++ = CHAR_U; break;
+            case CHAR_v: *dest++ = CHAR_V; break;
+            case CHAR_w: *dest++ = CHAR_W; break;
+            case CHAR_x: *dest++ = CHAR_X; break;
+            case CHAR_y: *dest++ = CHAR_Y; break;
+            case CHAR_z: *dest++ = CHAR_Z; break;
+            default:
+                *dest++ = c;
+        }
+    }
+}
+
 u8 *StringExpandPlaceholders(u8 *dest, const u8 *src)
 {
     for (;;)
@@ -450,7 +519,12 @@ static const u8 *ExpandPlaceholder_Empty(void)
 
 static const u8 *ExpandPlaceholder_PlayerName(void)
 {
-    return gSaveBlock2Ptr->playerName;
+    if (FlagGet(FLAG_SYS_BORT_MODE)) {
+        StringUppercase(gStringWorking, gSaveBlock2Ptr->playerName);
+        return gStringWorking;
+    } else {
+        return gSaveBlock2Ptr->playerName;
+    }
 }
 
 static const u8 *ExpandPlaceholder_StringVar1(void)
