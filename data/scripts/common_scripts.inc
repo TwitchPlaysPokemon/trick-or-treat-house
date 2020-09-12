@@ -311,9 +311,13 @@ Common_EventScript_FadeMusicToMapMusic::
 
 @ Map Header Scripts
 
-Common_EventScript_FrameTable_IceStep_FallDownHole:
+Common_FrameTable_CrackedGround_FallDownHole::
 	map_script_2 VAR_STEP_TRIGGER, 0, EventScript_FallDownHole
 	.2byte 0
+
+Common_OnResume_FixCrackedGround:: @ 82A8331
+	copyvar VAR_STEP_TRIGGER, 1
+	end
 
 EventScript_FallDownHole:: @ 82A8337
 	lockall
