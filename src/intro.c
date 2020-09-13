@@ -1253,8 +1253,8 @@ static void Task_IntroLoadPart2Graphics(u8 taskId)
     SetVBlankCallback(NULL);
     ResetSpriteData();
     FreeAllSpritePalettes();
-    gUnknown_0203BD24 = 0;
-    gUnknown_0203BD26 = 0;
+    gSkyBgPanY = 0;
+    gSkyBgPanYAdjust = 0;
     gIntroGraphicsFlygonYOffset = 0;
     load_intro_part2_graphics(1);
     gTasks[taskId].func = Task_IntroStartBikeRide;
@@ -1300,7 +1300,7 @@ static void Task_IntroStartBikeRide(u8 taskId)
     gTasks[taskId].data[2] = spriteId;
     BeginNormalPaletteFade(0xFFFFFFFF, 0, 16, 0, RGB_WHITEALPHA);
     SetVBlankCallback(VBlankCB_Intro);
-    gTasks[taskId].data[0] = CreateBicycleAnimationTask(1, 0x4000, 0x400, 0x10);
+    gTasks[taskId].data[0] = CreateBikeBackgroundAnimationTask(1, 0x4000, 0x400, 0x10);
     sub_817B150(1);
     gTasks[taskId].func = Task_IntroHandleBikeAndFlygonMovement;
 }
@@ -1312,8 +1312,8 @@ static void Task_IntroHandleBikeAndFlygonMovement(u8 taskId)
 
     if (gIntroFrameCounter == 1856)
     {
-        gUnknown_0203BD28 = 2;
-        // Destroys the CreateBicycleAnimationTask created earlier.
+        gSpriteDestroyFlag = 2;
+        // Destroys the CreateBikeBackgroundAnimationTask created earlier.
         DestroyTask(gTasks[taskId].data[0]);
     }
     if (gIntroFrameCounter > 1946)
@@ -1338,7 +1338,7 @@ static void Task_IntroHandleBikeAndFlygonMovement(u8 taskId)
     gIntroGraphicsFlygonYOffset = offset;
     if (gTasks[taskId].data[3] < 512)
         gTasks[taskId].data[3]++;
-    sub_817B540(0);
+    Intro2FlickerPalette(0);
 }
 
 static void Task_IntroWaitToSetupPart3(u8 taskId)
