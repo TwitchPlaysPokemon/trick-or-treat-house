@@ -321,7 +321,7 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-            "script": "Puzzle_SuspendedMaze_TrainerTemplate",
+            "script": "Puzzle_SuspendedMaze_Trainer_PlasmaKid",
             "trainer_sight_or_berry_tree_id": "6",
             "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 24,
