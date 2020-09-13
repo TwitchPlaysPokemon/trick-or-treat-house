@@ -3,8 +3,57 @@ TestMapHallway_MapScripts::
 	.byte 0
 `
 
-script TestMapHallway_GiveTestItems1 {
-	giveitem_std (ITEM_POTION, 1, 1)
+script TestMapHallway_GiveAllCandy {
+	lock
+	// face_player
+	msgbox ("{YOUNGSTER}: Here's a selection of all the\n"
+			"candy I collected tonight.$")
+	giveitem(ITEM_CANDY_CHOCOLATE, 2)
+	giveitem(ITEM_CANDY_CHOCOWHITE, 2)
+	giveitem(ITEM_CANDY_CHOCOSLAB, 2)
+	giveitem(ITEM_CANDY_STARBURST, 2)
+	giveitem(ITEM_CANDY_LEMONDROP, 2)
+	giveitem(ITEM_CANDY_WARHEAD, 2)
+	giveitem(ITEM_CANDY_PRETZEL, 2)
+	giveitem(ITEM_CANDY_VEROMANGO, 2)
+	giveitem(ITEM_CANDY_VIOLETCRUMBLE, 2)
+	giveitem(ITEM_CANDY_TWIXLEFT, 2)
+	giveitem(ITEM_CANDY_TWIXRIGHT, 2)
+	giveitem(ITEM_CANDY_MMMINI, 2)
+	giveitem(ITEM_CANDY_MMPEANUT, 2)
+	giveitem(ITEM_CANDY_KINGCHOCNUT, 2)
+	giveitem(ITEM_CANDY_GUMMYBEAR, 2)
+	giveitem(ITEM_CANDY_REESES, 2)
+	giveitem(ITEM_CANDY_BUTTERFINGER, 2)
+	giveitem(ITEM_CANDY_MILKYWAY, 2)
+	giveitem(ITEM_CANDY_MILKALUFLEE, 2)
+	giveitem(ITEM_CANDY_100GRAND, 2)
+	giveitem(ITEM_CANDY_MALTESERS, 2)
+	giveitem(ITEM_CANDY_CADBURYCREME, 2)
+	giveitem(ITEM_CANDY_WUNDERBAR, 2)
+	giveitem(ITEM_CANDY_OREO, 2)
+	giveitem(ITEM_CANDY_COFFEECRISP, 2)
+	giveitem(ITEM_CANDY_SAMBOPRISTUR, 2)
+	giveitem(ITEM_CANDY_SNICKERS, 2)
+	giveitem(ITEM_CANDY_MARSBAR, 2)
+	giveitem(ITEM_CANDY_KITKAT, 2)
+	giveitem(ITEM_CANDY_PIXIESTICK, 2)
+	giveitem(ITEM_CANDY_TURKISHDELIGHT, 2)
+	giveitem(ITEM_CANDY_GOBSTOPPER, 2)
+	giveitem(ITEM_CANDY_BLACKTHUNDER, 2)
+	giveitem(ITEM_CANDY_TOBLERONE, 2)
+	giveitem(ITEM_CANDY_FERREROROCHER, 2)
+	giveitem(ITEM_CANDY_EGGS, 2)
+	giveitem(ITEM_CANDY_EGGDEVILED, 2)
+	giveitem(ITEM_CANDY_CARROT, 2)
+	giveitem(ITEM_CANDY_APPLE, 2)
+	giveitem(ITEM_CANDY_PRUNE, 2)
+	giveitem(ITEM_CANDY_CELERY, 2)
+	giveitem(ITEM_CANDY_SNAPPEAS, 2)
+	giveitem(ITEM_CANDY_RAISIN, 2)
+	giveitem(ITEM_CANDY_KALE, 2)
+	giveitem(ITEM_CANDY_GALAXY, 2)
+	release
 }
 
 script TestMapHallway_GiveTestItems2 {

@@ -1944,7 +1944,7 @@ static const u8 sChocoWhiteDesc[] = _(
     "Restores HP\n"
     "by 60 points.");
 
-static const u8 sChocoSlabName[] = _("White Chocolate");
+static const u8 sChocoSlabName[] = _("Chocolate Slab");
 static const u8 sChocoSlabDesc[] = _(
     "450 gr. Hold;\n"
     "Intimidates enemy.\n"
@@ -2037,13 +2037,13 @@ static const u8 s100GrandDesc[] = _(
 
 static const u8 sMalteserName[] = _("Malteser");
 static const u8 sMalteserDesc[] = _(
-    ".\n"
+    "37g packet.\n"
     "Heals 10 PP\n"
     "for one move.");
 
 static const u8 sCadburyCremeName[] = _("Cadbury Creme");
 static const u8 sCadburyCremeDesc[] = _(
-    ".\n"
+    "Single egg.\n"
     "Heals all PP\n"
     "for one move.");
 
@@ -2098,7 +2098,7 @@ static const u8 sPixieStickDesc[] = _(
 
 static const u8 sTurkishDelightName[] = _("Turkish Delight");
 static const u8 sTurkishDelightDesc[] = _(
-    ".\n"
+    "Chewy squares.\n"
     "Fully heals all\n"
     "PP for all moves.");
 
@@ -2110,9 +2110,9 @@ static const u8 sGobstopperDesc[] = _(
 
 static const u8 sBlackThunderName[] = _("Black Thunder");
 static const u8 sBlackThunderDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "Choco & rice.\n"
+    "Fully restores\n"
+    "HP and Status.");
 
 static const u8 sTobleroneName[] = _("Toblerone");
 static const u8 sTobleroneDesc[] = _(

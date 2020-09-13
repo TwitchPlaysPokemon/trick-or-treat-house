@@ -452,6 +452,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define EVENT_OBJ_PAL_WALLY                 0x1134
 #define EVENT_OBJ_PAL_TAG_ALIEN             0x1135
 #define EVENT_OBJ_PAL_TREEKID               0x1136
+#define EVENT_OBJ_PAL_DEV_TUSTIN2121        0x1137
 #define EVENT_OBJ_PAL_TAG_NONE              0x11FF
 
 #include "data/field_event_obj/event_object_graphics_info_pointers.h"

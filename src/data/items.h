@@ -5182,7 +5182,7 @@ const struct Item gItems[] =
     
     [ITEM_CANDY_VEROMANGO] =
     {
-        .name = sPretzelName,
+        .name = sVeroMangoName,
         .itemId = ITEM_CANDY_VEROMANGO,
         .price = CANDY_COST(200),
         .itemEffect = gItemEffect_HealParalyze,

@@ -3072,6 +3072,7 @@ extern const u32 gTrainerFrontPic_Tarzan[];
 extern const u32 gTrainerFrontPic_TwinsPM[];
 extern const u32 gTrainerFrontPic_Alien[];
 extern const u32 gTrainerFrontPic_Pikakid[];
+extern const u32 gTrainerFrontPic_DevTustin2121[];
 
 extern const u32 gTrainerPalette_PlasmaKid[];
 extern const u32 gTrainerPalette_Ghetsis[];
@@ -3086,6 +3087,7 @@ extern const u32 gTrainerPalette_Tarzan[];
 extern const u32 gTrainerPalette_TwinsPM[];
 extern const u32 gTrainerPalette_Alien[];
 extern const u32 gTrainerPalette_Pikakid[];
+extern const u32 gTrainerPalette_DevTustin2121[];
 
 
 extern const u8 gTrainerBackPic_Brendan[];
