@@ -1,0 +1,103 @@
+[
+	{
+		"class": "YOUNGSTER",
+		"name": "MIKEY",
+		"party": [
+			{
+				"species": "SPECIES_VULPIX",
+				"level": 28
+			},
+			{
+				"species": "NATIONAL_DEX_FLAAFFY",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "PLASMA_KID",
+		"name": "RODRIGO",
+		"party": [
+			{
+				"species": "SPECIES_MEDICHAM",
+				"level": 29
+			},
+			{
+				"species": "SPECIES_VIGOROTH",
+				"level": 30
+			}
+		]
+	},
+	{
+		"class": "HERO_OF_TIME",
+		"name": "ALEX",
+		"party": [
+			{
+				"species": "SPECIES_NUZLEAF",
+				"level": 29
+			},
+			{
+				"species": "SPECIES_DONPHAN",
+				"level": 29
+			},
+			{
+				"species": "SPECIES_VAPOREON",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "ALIEN",
+		"female": true,
+		"name": "TANYA",
+		"party": [
+			{
+				"species": "SPECIES_LUNATONE",
+				"moves": ["MOVE_COSMIC_POWER", "MOVE_HYPNOSIS", "MOVE_PSYWAVE", "MOVE_ROCK_THROW"],
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "FAIRY_GIRL",
+		"female": true,
+		"name": "CHELSEA",
+		"party": [
+			{
+				"species": "SPECIES_PONYTA",
+				"level": 29
+			},
+			{
+				"species": "SPECIES_KIRLIA",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "TEAM_MAGMA",
+		"pic": "MAGMA_GRUNT_F",
+		"female": true,
+		"name": "CHELSEA",
+		"party": [
+			{
+				"species": "SPECIES_NUMEL",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_MIGHTYENA",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "CORPSE_BRIDE",
+		"name": "FIONA",
+		"female": true,
+		"music": "GIRL",
+		"party": [
+			{
+				"species": "SPECIES_PARASECT",
+				"level": 30
+			}
+		]
+	}
+]

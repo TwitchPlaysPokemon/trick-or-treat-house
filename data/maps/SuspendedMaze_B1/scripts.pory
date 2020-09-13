@@ -1,4 +1,5 @@
 raw `
 SuspendedMaze_B1_MapScripts::
+	puzzle_info Puzzle_SuspendedMaze_Name, Puzzle_SuspendedMaze_Author
 	.byte 0
 `

@@ -6,6 +6,10 @@ Puzzle_SuspendedMaze_MapScripts::
 	puzzle_metavars Puzzle_SuspendedMaze_Variables
 	puzzle_candylist Puzzle_SuspendedMaze_CandyList
 	puzzle_devcommentary Puzzle_SuspendedMaze_DevCommentary
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_SuspendedMaze_OnLoad
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_SuspendedMaze_SetHoleWarp
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Common_FrameTable_CrackedGround_FallDownHole
+	map_script MAP_SCRIPT_ON_TRANSITION, Common_OnResume_FixCrackedGround
 	.byte 0
 	
 	
@@ -30,5 +34,118 @@ Puzzle_SuspendedMaze_DevCommentary:
 Puzzle_SuspendedMaze_Variables:
 	.2byte 0
 Puzzle_SuspendedMaze_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_ABUNDANT_05
+	.2byte FLAG_CANDY_ABUNDANT_06
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_COMMON_03
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_HEALTHY_02
+	.2byte FLAG_CANDY_RARE_01
+	.2byte FLAG_CANDY_RARE_02
 	.2byte 0
+
+@ -----------------------------------------------------
+#define LID_PLASMAMAN    17
+#define FLAG_PLASMAMAN   FLAG_PUZZLE_20
+#define VAR_PLASMAMAN    VAR_PUZZLE_00
+`
+
+script Puzzle_SuspendedMaze_OnLoad {
+	if (flag(FLAG_PLASMAMAN) == FALSE) {
+		setmetatile(9, 45, 0x236, FALSE)
+	}
+}
+
+script Puzzle_SuspendedMaze_SetHoleWarp {
+	setstepcallback(STEP_CB_CRACKED_FLOOR)
+	setholewarp(MAP_SUSPENDED_MAZE_B1, 255, 0, 0)
+}
+
+///////////////////////////////////////////////////////
+
+script Puzzle_SuspendedMaze_Trainer_Youngster {
+	trainerbattle_single(TRAINER_01, "Hi$", "F$")
+	msgbox ("Bye$")
+}
+
+script Puzzle_SuspendedMaze_Trainer_PlasmaKid {
+	trainerbattle_single(TRAINER_02, "Hi$", "F$")
+	msgbox ("Bye$")
+}
+
+script Puzzle_SuspendedMaze_Trainer_Link {
+	trainerbattle_single(TRAINER_03, 
+			"I'll be using all three of my masks\n"
+			"to take you down!$", 
+			"My transformation masks!$")
+	msgbox ("Now how am I gonna stop the moon from\n"
+			"crashing into the earth?!\p"
+			"Where's that Ocarina when I need it?!$")
+}
+
+script Puzzle_SuspendedMaze_Trainer_Alien {
+	trainerbattle_single(TRAINER_04, "Hi$", "F$")
+	msgbox ("Bye$")
+}
+
+script Puzzle_SuspendedMaze_Trainer_FairyGirl {
+	trainerbattle_single(TRAINER_05, "Hi$", "F$")
+	msgbox ("Bye$")
+}
+
+script Puzzle_SuspendedMaze_Trainer_MagmaGirl {
+	trainerbattle_single(TRAINER_06, "Hi$", "F$")
+	msgbox ("Bye$")
+}
+
+script Puzzle_SuspendedMaze_Trainer_CorpseBride {
+	trainerbattle_single(TRAINER_07, "Hi$", "F$")
+	msgbox ("Bye$")
+}
+
+///////////////////////////////////////////////////////
+
+script Puzzle_SuspendedMaze_TriggerScript_FakeTrainer {
+	lock
+	setvar(VAR_PLASMAMAN, 1)
+	applymovement(LID_PLASMAMAN, Common_Movement_FaceLeft)
+	waitmovement(LID_PLASMAMAN)
+	playbgm(MUS_HAGESHII, 0) // INTENSE encounter music
+	applymovement(LID_PLASMAMAN, Common_Movement_ExclamationMarkAndWait)
+	waitmovement(LID_PLASMAMAN)
+	delay(20)
+	
+	applymovement(LID_PLASMAMAN, Puzzle_SuspendedMaze_Movement_FakeTrainer)
+	delay(30)
+	setmetatile(9, 45, 0x237, TRUE)
+	special(DrawWholeMapView)
+	waitmovement(LID_PLASMAMAN)
+	removeobject(LID_PLASMAMAN)
+	playse(SE_RU_HYUU)
+	delay(60)
+	fadedefaultbgm
+	release
+}
+movement Puzzle_SuspendedMaze_Movement_FakeTrainer {
+	walk_left * 2
+	walk_in_place_left * 3
+	walk_in_place_slow_left * 2
+	walk_in_place_fast_left * 3
+	walk_in_place_fastest_left * 5
+	delay_16 * 3
+	set_invisible
+}
+
+
+raw `
+#undef LID_PLASMAMAN
+#undef FLAG_PLASMAMAN
+#undef VAR_PLASMAMAN 
 `

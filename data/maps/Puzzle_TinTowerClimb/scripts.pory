@@ -21,7 +21,7 @@ Puzzle_TinTowerClimb_Intro:
 	.string "In my journey of discovery,\n"
 	.string "I travelled to several distant regions!\p"
 	.string "This is one of the puzzles I discovered\n"
-	.string "on my travels in the lands of Chengdu\p" @Johto!\p"
+	.string "on my travels in the lands of Chengdu!\p" @Johto
 	.string "Not many people are allowed deep in\n"
 	.string "this old bell tower. But with the power\l"
 	.string "of my door, you shall be one of them!\p"
@@ -47,15 +47,14 @@ Puzzle_TinTowerClimb_DevCommentary:
 	.string "Yes, 'AH' is 'Attack' translated wrongly.\p"
 	.string "There's a lot more to it that I won't go\n"
 	.string "into in this little text box.$"
-/*	Hi, here's more to it with more freedom to speak:
-	Go check out the src/data/battle_strings_elf.h file, at comments for the
-	ChooseTypeOfMoveUsedString_BORT and ChooseMoveUsedParticle_BORT functions,
-	for the explainations on how the Japanese version of the game has different
-	grammar for different move names. Basically since VietCrystal was translated
-	from Japanese instead of via English, the Japanese grammar conventions are
-	still used. This is why certain attacks just are "MON ATTACK!" and others
-	are "MON ATTACKAH!", as the "-AH!" suffix is pulled over from Japanese grammar.
-*/
+@	Hi, here's more to it with more freedom to speak:
+@	Go check out the src/data/battle_strings_elf.h file, at comments for the
+@	ChooseTypeOfMoveUsedString_BORT and ChooseMoveUsedParticle_BORT functions,
+@	for the explainations on how the Japanese version of the game has different
+@	grammar for different move names. Basically since VietCrystal was translated
+@	from Japanese instead of via English, the Japanese grammar conventions are
+@	still used. This is why certain attacks just are 'MON ATTACK!' and others
+@	are 'MON ATTACKAH!', as the '-AH!' suffix is pulled over from Japanese grammar.
 	
 .align 2
 Puzzle_TinTowerClimb_Variables:

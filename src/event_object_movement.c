@@ -1979,6 +1979,11 @@ static void sub_808E1B8(u8 eventObjectId, s16 x, s16 y)
         }
         sub_808E38C(eventObject);
         SetObjectSubpriorityByZCoord(eventObject->previousElevation, sprite, 1);
+        if (graphicsInfo->doorOffsetType == DOOROFFSET_UP)
+        {
+            eventObject->fixedPriority = TRUE;
+            sprite->subpriority = 0xFF;
+        }
     }
 }
 
