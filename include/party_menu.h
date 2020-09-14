@@ -3,28 +3,7 @@
 
 #include "main.h"
 #include "task.h"
-
-enum
-{
-    AILMENT_NONE,
-    AILMENT_PSN,
-    AILMENT_PRZ,
-    AILMENT_SLP,
-    AILMENT_FRZ,
-    AILMENT_BRN,
-    AILMENT_PKRS,
-    AILMENT_FNT
-};
-
-enum
-{
-    PARTY_CHOOSE_MON,
-    PARTY_MUST_CHOOSE_MON,
-    PARTY_CANT_SWITCH,
-    PARTY_USE_ITEM_ON,
-    PARTY_ABILITY_PREVENTS,
-    PARTY_GIVE_ITEM,
-};
+#include "constants/party_menu.h"
 
 struct Struct203CEC8
 {
@@ -56,7 +35,7 @@ void sub_81B0FCC(u8 slot, u8 b);
 bool8 IsMultiBattle(void);
 u8 GetCursorSelectionMonId(void);
 u8 sub_81B1360(void);
-void sub_81B1370(u8 taskId);
+void Task_HandleChooseMonInput(u8 taskId);
 u8* GetMonNickname(struct Pokemon *mon, u8 *dest);
 u8 sub_81B1B5C(const u8* str, u8 b);
 bool8 sub_81B1BD4(void);
@@ -98,15 +77,15 @@ void sub_81B8E80(u8 battlerId, u8 unk, u8 arrayIndex);
 void sub_81B8FB0(u8 slot, u8 slot2);
 u8 pokemon_order_func(u8 slot);
 void sub_81B9150(void);
-void sub_81B9328(void);
-bool8 hm_add_c3_without_phase_2(void);
-void sub_81B9404(void);
-void sub_81B94B0(void);
+void ChooseMonForDaycare(void);
+bool8 CB2_FadeFromPartyMenu(void);
+void ChooseContestMon(void);
+void ChoosePartyMon(void);
 void ChooseMonForMoveRelearner(void);
-void sub_81B9620(void);
-void sub_81B95E0(void);
-void sub_81B98DC(void);
-void sub_81B9918(void);
+void BattlePyramidChooseMonHeldItems(void);
+void DoBattlePyramidMonsHaveHeldItem(void);
+void IsSelectedMonEgg(void);
+void IsLastMonThatKnowsSurf(void);
 void MoveDeleterForgetMove(void);
 void MoveDeleterChooseMoveToForget(void);
 void GetNumMovesSelectedMonHas(void);

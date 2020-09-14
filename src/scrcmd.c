@@ -336,6 +336,14 @@ bool8 ScrCmd_loadword(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_loadhalf(struct ScriptContext *ctx)
+{
+    u8 index = ScriptReadByte(ctx);
+
+    ctx->data[index] = VarGet(ScriptReadHalfword(ctx));
+    return FALSE;
+}
+
 bool8 ScrCmd_loadbytefromaddr(struct ScriptContext *ctx)
 {
     u8 index = ScriptReadByte(ctx);
@@ -2061,7 +2069,7 @@ bool8 ScrCmd_getpricereduction(struct ScriptContext *ctx)
 
 bool8 ScrCmd_choosecontestmon(struct ScriptContext *ctx)
 {
-    sub_81B9404();
+    ChooseContestMon();
     ScriptContext1_Stop();
     return TRUE;
 }

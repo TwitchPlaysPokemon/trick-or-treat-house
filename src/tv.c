@@ -3435,14 +3435,14 @@ bool8 TV_IsScriptShowKindAlreadyInQueue(void)
     return FALSE;
 }
 
-bool8 TV_PutNameRaterShowOnTheAirIfNicknameChanged(void)
+bool8 TV_CheckIfNicknameChanged(void)
 {
     GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_NICKNAME, gStringVar1);
     if (!StringCompare(gStringVar3, gStringVar1))
     {
         return FALSE;
     }
-    PutNameRaterShowOnTheAir();
+    // PutNameRaterShowOnTheAir();
     return TRUE;
 }
 

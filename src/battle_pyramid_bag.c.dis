@@ -366,7 +366,7 @@ static void sub_81C4F44(u8 taskId)
     if (!gPaletteFade.active)
     {
         CleanupOverworldWindowsAndTilemaps();
-        gFieldCallback2 = hm_add_c3_without_phase_2;
+        gFieldCallback2 = CB2_FadeFromPartyMenu;
         sub_81C4F98(3, CB2_ReturnToField);
         DestroyTask(taskId);
     }

@@ -963,7 +963,7 @@
         {
             "blockdata_filepath": "data/layouts/TestMapHallway/map.bin",
             "border_filepath": "data/layouts/TestMapHallway/border.bin",
-            "height": 10,
+            "height": 5,
             "id": "LAYOUT_TEST_MAP_HALLWAY",
             "name": "TestMapHallway_Layout",
             "primary_tileset": "gTileset_Building",

@@ -47,7 +47,7 @@ PuzzleCommon_EventScript_IncrementPuzzle::
 	addvar VAR_CURRENT_PUZZLE, 1
 	setvar VAR_PUZZLE_STATE, 0
 	incrementgamestat GAME_STAT_NUM_PUZZLES_COMPLETED
-	callnative CheckLastPuzzle
+	callnative CheckIfNoMorePuzzles
 	@ fallthrough
 PuzzleCommon_EventScript_ClearPuzzleData::
 	callnative ClearPuzzleEventData

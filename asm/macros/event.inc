@@ -99,6 +99,13 @@
 	.byte \destination
 	.4byte \value
 	.endm
+	
+	@ Sets the specified script bank to value or var.
+	.macro loadhalf a:req, value:req
+	.byte 0xcc
+	.byte \a
+	.2byte \value
+	.endm
 
 	@ Sets the specified script bank to value.
 	.macro loadbyte destination:req, value:req
@@ -1462,12 +1469,12 @@
 	.byte \anim
 	.endm
 
-	@ Compares the value of a hidden variable to a dword.
-	.macro comparehiddenvar a:req, value:req
-	.byte 0xcc
-	.byte \a
-	.4byte \value
-	.endm
+	@ @ Compares the value of a hidden variable to a dword.
+	@ .macro comparehiddenvar a:req, value:req
+	@ .byte 0xcc
+	@ .byte \a
+	@ .4byte \value
+	@ .endm
 
 	@ Makes the Pokemon in the specified slot of the player's party obedient. It will not randomly disobey orders in battle.
 	.macro setmonobedient slot:req

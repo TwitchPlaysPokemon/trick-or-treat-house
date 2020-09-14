@@ -6,7 +6,7 @@ mapscripts TrickHouseCorridor_MapScripts {
 		if (var(VAR_PUZZLE_STATE) == 1) {
 			call(TrickHouseCorridor_OpenPuzzleDoor)
 		}
-		if (flag(FLAG_PUZZLE_HAS_CHANGED_PARTY)) {
+		if (flag(FLAG_PUZZLE_PARTY_LOCK)) {
 			// Position the rental lady in the door of the den
 			setobjectxyperm(1, 10, 5)
 			setobjectmovementtype(1, MOVEMENT_TYPE_FACE_DOWN)
@@ -73,7 +73,7 @@ script(local) TrickHouseCorridor_IncrementPuzzle {
 // -----------------------------------------------------
 
 script TrickHouseCorridor_EventScript_Lady {
-	if (flag(FLAG_PUZZLE_HAS_CHANGED_PARTY)) {
+	if (flag(FLAG_PUZZLE_PARTY_LOCK)) {
 		lock
 		faceplayer
 		message (TrickHouseCorridor_Text_DenExcuseStart)
@@ -241,6 +241,7 @@ text TrickHouseCorridor_Text_DenExcuse4 {
 			"about a potential invasive species…$"
 }
 text TrickHouseCorridor_Text_DenExcuse5 {
+			"There's been an… incident.\p"
 			"Service staff are underserved,\n"
 			"maintenence staff are under repairs,\l"
 			"and hospitality staff are inhospitable.\p"
@@ -264,19 +265,44 @@ text TrickHouseCorridor_Text_DenExcuse7 {
 			"up when you finish the previous puzzle.$"
 }
 text TrickHouseCorridor_Text_DenExcuse8 {
-	"Go away.$" //TODO
+			"There's been an… incident.\p"
+			"Nothing related to the Coronavirus,\n"
+			"I assure you. But do wear a mask.\p"
+			"Deep cleaning should be done by the\n"
+			"time you finish the puzzle.$"
 }
 text TrickHouseCorridor_Text_DenExcuse9 {
-	"Go away.$" //TODO
+			"There's been an… incident.\p"
+			"No, not that kind of incident,\n"
+			"the other kind of incident.\p"
+			"No, not that kind either, the\n"
+			"other other kind of incident.\p"
+			"Don't worry, the incident kind will\n"
+			"be determined by your next puzzle.$"
 }
 text TrickHouseCorridor_Text_DenExcuse10 {
-	"Go away.$" //TODO
+			"There's been an… incident.\n"
+			"But nothing related to the pandemic!\p"
+			"No, this is realted to a DIFFERENT\n"
+			"world-spanning virus that demands\l"
+			"quarentining to stem the spread.\p"
+			"But fear not, unlike the other kind,\n"
+			"it'll be contained by your next puzzle.$"
 }
 text TrickHouseCorridor_Text_DenExcuse11 {
-	"Go away.$" //TODO
+			"There's been an… incident.\n"
+			"It may or may not involve noodles.\p"
+			"Said incident should be resolved by\n"
+			"the time you finish this puzzle.\l"
+			"And tell TVTropes hi for me.$"
 }
 text TrickHouseCorridor_Text_DenExcuse12 {
-	"Go away.$" //TODO
+			"There's been an… incident. A mix-up,\n"
+			"if you will, and we're fixing it up.\p"
+			"The white rabbit thing should be pushing\n"
+			"the rules back in line, and by the time\l"
+			"you finish this puzzle, the healing lady\l"
+			"should no longer be considered 'WIN'.$"
 }
 
 

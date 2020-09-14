@@ -799,6 +799,13 @@ const struct MenuAction MultichoiceList_MonAdoption[] =
     {PokemonAdoption_Exit, NULL},
 };
 
+// defined in TrickHouseDevEntrance/scripts.pory
+extern const u8 PuzzleDebug_TustinsMenu_PuzzlesCompleted[];
+const struct MenuAction MultichoiceList_TustinsMenu[] =
+{
+    {PuzzleDebug_TustinsMenu_PuzzlesCompleted, NULL}
+};
+
 const struct MenuAction MultichoiceList_001[] =
 {
     {gText_Exit, NULL},
@@ -809,6 +816,7 @@ struct MultichoiceListStruct
     const struct MenuAction *list;
     u8 count;
 };
+
 
 const struct MultichoiceListStruct gMultichoiceLists[] =
 {
@@ -927,6 +935,7 @@ const struct MultichoiceListStruct gMultichoiceLists[] =
     {MultichoiceList_112, ARRAY_COUNT(MultichoiceList_112)},
     {MultichoiceList_113, ARRAY_COUNT(MultichoiceList_113)},
     {MultichoiceList_MonAdoption, ARRAY_COUNT(MultichoiceList_MonAdoption)}, //114
+    {MultichoiceList_TustinsMenu, ARRAY_COUNT(MultichoiceList_TustinsMenu)},
 };
 
 const u8 *const gUnknown_0858BAF0[] =

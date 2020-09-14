@@ -171,10 +171,26 @@ void ClearTrainerFlags(struct ScriptContext *ctx)
 	memset(gSaveBlock1Ptr->flags + (FLAG_TRAINER_FLAG_START >> 3), 0, TRAINERS_PERMAP_END >> 3);
 }
 
-void CheckLastPuzzle(struct ScriptContext *ctx)
+// Input VAR_0x8000 = Puzzle to compare to
+void CheckIfNextPuzzleIs(struct ScriptContext *ctx)
+{
+	u16 currPuzzle;
+	u16 i = VarGet(VAR_CURRENT_PUZZLE);
+	i++;
+	if (i < DEBUG_PUZZLE_START)
+		currPuzzle = gPuzzleList[i];
+	else
+		currPuzzle = gDebugPuzzles[i-DEBUG_PUZZLE_START];
+	
+	gSpecialVar_Result = (currPuzzle == gSpecialVar_0x8000);
+}
+
+void CheckIfNoMorePuzzles(struct ScriptContext *ctx)
 {
 	u16 currPuzzle = GetCurrentPuzzleMapId();
+	gSpecialVar_Result = FALSE;
 	if (currPuzzle == 0xFFFF) {
+		gSpecialVar_Result = TRUE;
 		// Temporarily, loop the puzzles.
 		VarSet(VAR_CURRENT_PUZZLE, 0); //reset to 0
 	}
@@ -884,8 +900,105 @@ void DoSoundTest(struct ScriptContext *ctx)
 #undef tSelected
 #undef tMax
 
+///////////////////////////////////////////////////////////////////////////////
+// Number Select Dialog
+
+static const struct WindowTemplate sNumberSelectWinTemplate =
+{
+	.bg = 0,
+	.tilemapLeft = 22,
+	.tilemapTop = 11,
+	.width = 6,
+	.height = 2,
+	.paletteNum = 15,
+	.baseBlock = 0x0176,
+};
+
+static void Task_NumberSelect(u8 taskId);
+
+static void RedrawNumberSelectWindow(u8 windowId, u16 num)
+{
+	ConvertIntToDecimalStringN(gStringVar1, num, 2, 6);
+    AddTextPrinterParameterized(windowId, 1, gStringVar1, 0, 1, 0, NULL);
+}
+
+#define tWindow data[0]
+#define tSelected data[1]
+#define tMax data[2]
+#define tMapMusic data[3]
+
+
+static void Task_InitNumberSelect(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+	tWindow = AddWindow(&sNumberSelectWinTemplate);
+	
+    DrawStdWindowFrame(tWindow, FALSE);
+	FillWindowPixelBuffer(tWindow, PIXEL_FILL(1));
+	RedrawNumberSelectWindow(tWindow, tSelected);
+    schedule_bg_copy_tilemap_to_vram(0);
+
+    gTasks[taskId].func = Task_NumberSelect;
+}
+
+static void Task_NumberSelect(u8 taskId)
+{
+    s16* data = gTasks[taskId].data;
+
+    if (AdjustQuantityAccordingToDPadInput(&tSelected, tMax) == TRUE)
+    {
+        RedrawNumberSelectWindow(tWindow, tSelected);
+    }
+    else if (gMain.newKeys & A_BUTTON)
+    {
+		gSpecialVar_Result = tSelected;
+        PlaySE(SE_SELECT);
+        ClearStdWindowAndFrameToTransparent(tWindow, 0);
+		ClearWindowTilemap(tWindow);
+		RemoveWindow(tWindow);
+		EnableBothScriptContexts();
+		DestroyTask(taskId);
+    }
+    else if (gMain.newKeys & B_BUTTON)
+    {
+		gSpecialVar_Result = -1;
+        PlaySE(SE_SELECT);
+        ClearStdWindowAndFrameToTransparent(tWindow, 0);
+		ClearWindowTilemap(tWindow);
+		RemoveWindow(tWindow);
+		EnableBothScriptContexts();
+		DestroyTask(taskId);
+    }
+}
+
+void ChooseNumber(struct ScriptContext *ctx)
+{
+	u8 taskId = CreateTask(Task_InitNumberSelect, 0);
+	s16 *data = gTasks[taskId].data;
+	
+	tSelected = ctx->data[0];
+	tMax = ctx->data[1];
+}
+
+#undef tWindow
+#undef tSelected
+#undef tMax
+
+///////////////////////////////////////////////////////////////////////////////
 
 void PlayCredits(struct ScriptContext *ctx)
 {
 	SetMainCallback2(CB2_StartCreditsSequence);
 }
+
+void DebugGetGameStat(struct ScriptContext *ctx)
+{
+	gSpecialVar_Result = ctx->data[0] = GetGameStat(ctx->data[1]);
+}
+
+void DebugSetGameStat(struct ScriptContext *ctx)
+{
+	
+	SetGameStat(ctx->data[1], ctx->data[0]);
+}
+
