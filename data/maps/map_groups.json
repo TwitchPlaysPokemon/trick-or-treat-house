@@ -171,7 +171,8 @@
         "WaterTemple_Lv2",
         "TrainerHillTemplate",
         "FakeSecretBaseCave",
-        "SuspendedMaze_B1"
+        "SuspendedMaze_B1",
+        "WaterTemple_Secret"
     ],
     "MG_TestMaps": [
         "TestMapHallway",
@@ -181,6 +182,9 @@
         "TestCopyMovement",
         "IndoorMap",
         "TestMusicRoom"
+    ],
+    "MG_TheMetaPuzzle": [
+        "Puzzle_MetaPuzzleCave"
     ],
     "MG_TrickOrTreatPuzzles": [
         "TrickTreat_PetalburgCity",
@@ -204,6 +208,7 @@
         "MG_DesertPuzzles",
         "MG_TrickOrTreatPuzzles",
         "MG_SpotTheDifferencePuzzles",
+        "MG_TheMetaPuzzle",
         "MG_SingleMapPuzzles2019"
     ],
     "layouts_table_label": "gMapLayouts"

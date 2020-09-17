@@ -552,6 +552,9 @@ script TrickHouseRestroom_EventScript_VisitorJoey {
 script TrickHouseRestroom_EventScript_VisitorIrene {
 }
 
+script TrickHouseRestroom_EventScript_VisitorWally {
+}
+
 script TrickHouseRestroom_EventScript_VisitorJames {
 	if (var(VAR_TEMP_B) == 1) {
 		msgbox("{LINK}: This could be the best idea\n"

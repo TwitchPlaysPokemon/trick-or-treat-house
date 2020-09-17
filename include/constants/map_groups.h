@@ -57,6 +57,7 @@
 #define MAP_TRAINER_HILL_TEMPLATE  (4 | (4 << 8))
 #define MAP_FAKE_SECRET_BASE_CAVE  (5 | (4 << 8))
 #define MAP_SUSPENDED_MAZE_B1      (6 | (4 << 8))
+#define MAP_WATER_TEMPLE_SECRET    (7 | (4 << 8))
 
 // Map Group 5
 #define MAP_PETALBURG_CITY   (0 | (5 << 8))
@@ -175,25 +176,28 @@
 #define MAP_PUZZLE_SPOT_DIFFERENCE_3_RIGHT (6 | (10 << 8))
 
 // Map Group 11
-#define MAP_PUZZLE_TRICK_HOUSE_CUT       (0 | (11 << 8))
-#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL2 (1 | (11 << 8))
-#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL3 (2 | (11 << 8))
-#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL4 (3 | (11 << 8))
-#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL5 (4 | (11 << 8))
-#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL6 (5 | (11 << 8))
-#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7 (6 | (11 << 8))
-#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL8 (7 | (11 << 8))
-#define MAP_PUZZLE_TIN_TOWER_CLIMB       (8 | (11 << 8))
-#define MAP_PUZZLE_WATER_TEMPLE          (9 | (11 << 8))
-#define MAP_PUZZLE_MUSIC_NOTE_TILES      (10 | (11 << 8))
-#define MAP_PUZZLE_LEDGE_MOUNTAIN        (11 | (11 << 8))
-#define MAP_PUZZLE_WILKE                 (12 | (11 << 8))
-#define MAP_PUZZLE_ROUTE110              (13 | (11 << 8))
-#define MAP_PUZZLE_LOSS_FLOOR1           (14 | (11 << 8))
-#define MAP_PUZZLE_LOSS_FLOOR2           (15 | (11 << 8))
-#define MAP_PUZZLE_TWIN_MEMORIES         (16 | (11 << 8))
-#define MAP_PUZZLE_HIDDEN_MAZE           (17 | (11 << 8))
+#define MAP_PUZZLE_META_PUZZLE_CAVE (0 | (11 << 8))
 
-#define MAP_GROUPS_COUNT 12
+// Map Group 12
+#define MAP_PUZZLE_TRICK_HOUSE_CUT       (0 | (12 << 8))
+#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL2 (1 | (12 << 8))
+#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL3 (2 | (12 << 8))
+#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL4 (3 | (12 << 8))
+#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL5 (4 | (12 << 8))
+#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL6 (5 | (12 << 8))
+#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7 (6 | (12 << 8))
+#define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL8 (7 | (12 << 8))
+#define MAP_PUZZLE_TIN_TOWER_CLIMB       (8 | (12 << 8))
+#define MAP_PUZZLE_WATER_TEMPLE          (9 | (12 << 8))
+#define MAP_PUZZLE_MUSIC_NOTE_TILES      (10 | (12 << 8))
+#define MAP_PUZZLE_LEDGE_MOUNTAIN        (11 | (12 << 8))
+#define MAP_PUZZLE_WILKE                 (12 | (12 << 8))
+#define MAP_PUZZLE_ROUTE110              (13 | (12 << 8))
+#define MAP_PUZZLE_LOSS_FLOOR1           (14 | (12 << 8))
+#define MAP_PUZZLE_LOSS_FLOOR2           (15 | (12 << 8))
+#define MAP_PUZZLE_TWIN_MEMORIES         (16 | (12 << 8))
+#define MAP_PUZZLE_HIDDEN_MAZE           (17 | (12 << 8))
+
+#define MAP_GROUPS_COUNT 13
 
 #endif // GUARD_CONSTANTS_MAP_GROUPS_H

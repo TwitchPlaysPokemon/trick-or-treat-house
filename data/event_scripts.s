@@ -6369,3 +6369,7 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/Puzzle_StealthMission/scripts.inc"
 
 	.include "data/maps/Puzzle_MurderExpress/scripts.inc"
+
+	.include "data/maps/Puzzle_MetaPuzzleCave/scripts.inc"
+
+	.include "data/maps/WaterTemple_Secret/scripts.inc"

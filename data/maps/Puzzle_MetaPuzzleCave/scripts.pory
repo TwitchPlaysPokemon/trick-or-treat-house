@@ -1,0 +1,86 @@
+raw `
+Puzzle_MetaPuzzleCave_MapScripts::
+	.byte 0
+`
+
+// ----------------------------------------------------
+//  1 = BREAKABLE_ROCK => from MAP_PUZZLE_TRICK_HOUSE_ORIGINAL3
+//			Strength Puzzle Room -> Dolly
+//  2 = ZIGZAG_CUSHION => from MAP_PUZZLE_TIC_RAC_TOE
+//			Ziggy Movement Puzzle Room
+//  3 = LOTAD_DOLL => from MAP_PUZZLE_WATER_TEMPLE
+//			Log Maze on the Water -> Raft
+//  4 = GRASS_CUSHION => from MAP_PUZZLE_ILEX_FOREST
+//			Dux Maze Room -> Shears
+//  5 = DIAMOND_CUSHION => from MAP_PUZZLE_ICE_PATH
+//			Ice Path Room
+//  6 = SPIN_CUSHION => from MAP_PUZZLE_LEDGE_MOUNTAIN
+//			Ledge Path Room
+//  7 = MAGNEMITE_DOLL => 
+//  8 = BALL_CUSHION => from MAP_PUZZLE_LOSS_FLOOR1
+//			??? Room
+//  9 = KISS_CUSHION =>
+//  A = ROUND_CUSHION => from MAP_PUZZLE_MUSIC_NOTE_TILES
+//			Simon Says Room
+//  B = FIRE_CUSHION => 
+//  C = PIKA_CUSHION =>
+//  D = DUSKULL_DOLL => 
+//  E = WATER_CUSHION => from DIVE MAZE (TODO)
+//			Dive Maze Section
+//  F = SEEDOT_DOLL => 
+// ----------------------------------------------------
+
+script MetaPuzzle_PickupEvent_InflatableRock {
+	msgbox ("This rock appears to be… inflatable…?$")
+	giveitem_std(ITEM_META_ITEM_ROCK, 1, 1)
+}
+script MetaPuzzle_PickupEvent_ZigzagCushion {
+	msgbox ("This soft fluffy cushion is covered in\n"
+			"ZIGZAGOON sheddings, like they've been\l"
+			"laying on it a lot.$")
+	giveitem_std(ITEM_META_ITEM_ZIGZAG, 1, 1)
+}
+script MetaPuzzle_PickupEvent_LotadDoll {
+	msgbox ("There's a waterlogged LOTAD doll,\n"
+			"lost and washed away, flating here.$")
+	giveitem_std(ITEM_META_ITEM_LOTAD, 1, 1)
+}
+script MetaPuzzle_PickupEvent_GrassCushion {
+	msgbox ("Weird, there's a pillow just lying\n"
+			"here on the forest floor.$")
+	giveitem_std(ITEM_META_ITEM_GRASS, 1, 1)
+}
+script MetaPuzzle_PickupEvent_DiamondCushion {
+	giveitem_std(ITEM_META_ITEM_DIAMOND, 1, 1)
+}
+script MetaPuzzle_PickupEvent_SpinCushion {
+	giveitem_std(ITEM_META_ITEM_SPIN, 1, 1)
+}
+script MetaPuzzle_PickupEvent_MagnemiteDoll {
+	giveitem_std(ITEM_META_ITEM_DOLL, 1, 1)
+}
+script MetaPuzzle_PickupEvent_BallCusion {
+	giveitem_std(ITEM_META_ITEM_BALL, 1, 1)
+}
+script MetaPuzzle_PickupEvent_KissCushion {
+	giveitem_std(ITEM_META_ITEM_KISS, 1, 1)
+}
+script MetaPuzzle_PickupEvent_RoundCushion {
+	giveitem_std(ITEM_META_ITEM_ROUND, 1, 1)
+}
+script MetaPuzzle_PickupEvent_FireCushion {
+	giveitem_std(ITEM_META_ITEM_FIRE, 1, 1)
+}
+script MetaPuzzle_PickupEvent_PikaCushion {
+	giveitem_std(ITEM_META_ITEM_PIKA, 1, 1)
+}
+script MetaPuzzle_PickupEvent_DuskullDoll {
+	giveitem_std(ITEM_META_ITEM_DUSKULL, 1, 1)
+}
+script MetaPuzzle_PickupEvent_WaterCushion {
+	giveitem_std(ITEM_META_ITEM_WATER, 1, 1)
+}
+script MetaPuzzle_PickupEvent_SeedotDoll {
+	giveitem_std(ITEM_META_ITEM_SEEDOT, 1, 1)
+}
+

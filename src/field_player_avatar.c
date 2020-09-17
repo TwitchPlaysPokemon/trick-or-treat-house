@@ -6,6 +6,7 @@
 #include "field_camera.h"
 #include "field_effect.h"
 #include "field_effect_helpers.h"
+#include "field_control_avatar.h"
 #include "field_player_avatar.h"
 #include "fieldmap.h"
 #include "menu.h"
@@ -116,9 +117,9 @@ static bool8 PlayerAvatar_SecretBaseMatSpinStep1(struct Task *task, struct Event
 static bool8 PlayerAvatar_SecretBaseMatSpinStep2(struct Task *task, struct EventObject *eventObject);
 static bool8 PlayerAvatar_SecretBaseMatSpinStep3(struct Task *task, struct EventObject *eventObject);
 
-static void DoJumpOffSurfBlob(u8);
-static void taskFF_0805D1D4(u8 taskId);
-static void sub_808C814(u8 taskId);
+static void CreateStopSurfingTask(u8);
+static void Task_StopSurfingInit(u8 taskId);
+static void Task_WaitStopSurfing(u8 taskId);
 
 static void Task_Fishing(u8 taskId);
 static u8 Fishing1(struct Task *task);
@@ -438,7 +439,7 @@ static bool8 ForcedMovement_None(void)
     return FALSE;
 }
 
-static u8 DoForcedMovement(u8 direction, void (*b)(u8))
+static bool8 DoForcedMovement(u8 direction, void (*b)(u8))
 {
     struct PlayerAvatar *playerAvatar = &gPlayerAvatar;
     u8 collisionType = CheckForPlayerAvatarCollision(direction);
@@ -449,9 +450,9 @@ static u8 DoForcedMovement(u8 direction, void (*b)(u8))
         ForcedMovement_None();
         if (collisionType <= 4)
         {
-            // TODO trigger scripts
-            
-            return 0;
+            if (DoForcedMovementScriptTriggers())
+                return TRUE;
+            return FALSE;
         }
         else
         {
@@ -459,18 +460,18 @@ static u8 DoForcedMovement(u8 direction, void (*b)(u8))
                 PlayerJumpLedge(direction);
             playerAvatar->flags |= PLAYER_AVATAR_FLAG_FORCED_MOVEMENT;
             playerAvatar->runningState = MOVING;
-            return 1;
+            return TRUE;
         }
     }
     else
     {
         playerAvatar->runningState = MOVING;
         b(direction);
-        return 1;
+        return TRUE;
     }
 }
 
-static u8 DoForcedMovementInCurrentDirection(void (*a)(u8))
+static bool8 DoForcedMovementInCurrentDirection(void (*a)(u8))
 {
     struct EventObject *playerEventObj = &gEventObjects[gPlayerAvatar.eventObjectId];
 
@@ -731,7 +732,7 @@ static bool8 ShouldJumpOffSurfBlob(s16 x, s16 y, u8 direction)
      && MapGridGetZCoordAt(x, y) == 3
      && GetEventObjectIdByXYZ(x, y, 3) == EVENT_OBJECTS_COUNT)
     {
-        DoJumpOffSurfBlob(direction);
+        CreateStopSurfingTask(direction);
         return TRUE;
     }
     else
@@ -1632,7 +1633,7 @@ static bool8 PlayerAvatar_SecretBaseMatSpinStep3(struct Task *task, struct Event
 
 /* Some Field effect */
 
-static void DoJumpOffSurfBlob(u8 a)
+static void CreateStopSurfingTask(u8 a)
 {
     u8 taskId;
 
@@ -1646,12 +1647,12 @@ static void DoJumpOffSurfBlob(u8 a)
         gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_ON_FOOT;
     }
     gPlayerAvatar.preventStep = TRUE;
-    taskId = CreateTask(taskFF_0805D1D4, 0xFF);
+    taskId = CreateTask(Task_StopSurfingInit, 0xFF);
     gTasks[taskId].data[0] = a;
-    taskFF_0805D1D4(taskId);
+    Task_StopSurfingInit(taskId);
 }
 
-static void taskFF_0805D1D4(u8 taskId)
+static void Task_StopSurfingInit(u8 taskId)
 {
     struct EventObject *playerEventObj = &gEventObjects[gPlayerAvatar.eventObjectId];
 
@@ -1662,10 +1663,10 @@ static void taskFF_0805D1D4(u8 taskId)
     }
     sub_81555AC(playerEventObj->fieldEffectSpriteId, 2);
     EventObjectSetHeldMovement(playerEventObj, GetJumpSpecialMovementAction((u8)gTasks[taskId].data[0]));
-    gTasks[taskId].func = sub_808C814;
+    gTasks[taskId].func = Task_WaitStopSurfing;
 }
 
-static void sub_808C814(u8 taskId)
+static void Task_WaitStopSurfing(u8 taskId)
 {
     struct EventObject *playerEventObj = &gEventObjects[gPlayerAvatar.eventObjectId];
 
@@ -1681,6 +1682,7 @@ static void sub_808C814(u8 taskId)
         gPlayerAvatar.preventStep = FALSE;
         ScriptContext2_Disable();
         DestroySprite(&gSprites[playerEventObj->fieldEffectSpriteId]);
+        playerEventObj->triggerGroundEffectsOnMove = TRUE;
         DestroyTask(taskId);
     }
 }

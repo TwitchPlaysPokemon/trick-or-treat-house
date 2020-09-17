@@ -3184,194 +3184,226 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_0E6] =
+    [ITEM_META_ITEM_ROCK] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemRockName,
+        .itemId = ITEM_META_ITEM_ROCK,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemRockDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0E7] =
+    [ITEM_META_ITEM_ZIGZAG] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemZigzagName,
+        .itemId = ITEM_META_ITEM_ZIGZAG,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemZigzagDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0E8] =
+    [ITEM_META_ITEM_LOTAD] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemLotadName,
+        .itemId = ITEM_META_ITEM_LOTAD,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemLotadDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0E9] =
+    [ITEM_META_ITEM_GRASS] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemGrassName,
+        .itemId = ITEM_META_ITEM_GRASS,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemGrassDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0EA] =
+    [ITEM_META_ITEM_DIAMOND] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemDiamondName,
+        .itemId = ITEM_META_ITEM_DIAMOND,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemDiamondDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0EB] =
+    [ITEM_META_ITEM_SPIN] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemSpinName,
+        .itemId = ITEM_META_ITEM_SPIN,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemSpinDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0EC] =
+    [ITEM_META_ITEM_DOLL] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemDollName,
+        .itemId = ITEM_META_ITEM_DOLL,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemDollDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0ED] =
+    [ITEM_META_ITEM_BALL] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemBallName,
+        .itemId = ITEM_META_ITEM_BALL,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemBallDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0EE] =
+    [ITEM_META_ITEM_KISS] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemKissName,
+        .itemId = ITEM_META_ITEM_KISS,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemKissDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0EF] =
+    [ITEM_META_ITEM_ROUND] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemRoundName,
+        .itemId = ITEM_META_ITEM_ROUND,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemRoundDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0F0] =
+    [ITEM_META_ITEM_FIRE] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemFireName,
+        .itemId = ITEM_META_ITEM_FIRE,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemFireDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0F1] =
+    [ITEM_META_ITEM_PIKA] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemPikaName,
+        .itemId = ITEM_META_ITEM_PIKA,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemPikaDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0F2] =
+    [ITEM_META_ITEM_DUSKULL] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemDuskullName,
+        .itemId = ITEM_META_ITEM_DUSKULL,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemDuskullDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0F3] =
+    [ITEM_META_ITEM_WATER] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemWaterName,
+        .itemId = ITEM_META_ITEM_WATER,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemWaterDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0F4] =
+    [ITEM_META_ITEM_SEEDOT] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemSeedotName,
+        .itemId = ITEM_META_ITEM_SEEDOT,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemSeedotDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0F5] =
+    [ITEM_META_ITEM_CUSHION] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemCushionName,
+        .itemId = ITEM_META_ITEM_CUSHION,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemCushionDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },

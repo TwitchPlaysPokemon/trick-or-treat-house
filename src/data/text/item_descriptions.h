@@ -1926,6 +1926,68 @@ static const u8 sOldSeaMapDesc[] = _(
     "that shows the way\n"
     "to a certain island.");
 
+// TTH Meta Puzzle Items
+static const u8 sMetaItemRockName[] = _("Inflatable Rock");
+static const u8 sMetaItemRockDesc[] = _(
+    "An inflated rock,\n"
+    "very lightweight\n"
+    "and easy to push.");
+
+static const u8 sMetaItemZigzagName[] = _("Zigzag Cushion");
+static const u8 sMetaItemZigzagDesc[] = _(
+    "This cushion smells\n"
+    "and feels like a\n"
+    "ZIGZAGOON.");
+
+static const u8 sMetaItemLotadName[] = _("Lotad Doll");
+static const u8 sMetaItemLotadDesc[] = _(
+    "A waterlogged,\n"
+    "lost, and forgotten\n"
+    "LOTAD doll.$");
+
+static const u8 sMetaItemGrassName[] = _("Grass Cushion");
+static const u8 sMetaItemGrassDesc[] = _(
+    "A green cushion that\n"
+    "seems to encapsulate\n"
+    "the forest.");
+
+static const u8 sMetaItemDiamondName[] = _("Diamond Cushion");
+static const u8 sMetaItemDiamondDesc[] = _("");
+
+static const u8 sMetaItemSpinName[] = _("Spin Cushion");
+static const u8 sMetaItemSpinDesc[] = _("");
+
+static const u8 sMetaItemDollName[] = _("Magnemite Doll");
+static const u8 sMetaItemDollDesc[] = _("");
+
+static const u8 sMetaItemBallName[] = _("Poké Ball Cushion");
+static const u8 sMetaItemBallDesc[] = _("");
+
+static const u8 sMetaItemKissName[] = _("Kiss Cushion");
+static const u8 sMetaItemKissDesc[] = _("");
+
+static const u8 sMetaItemRoundName[] = _("Round Cushion");
+static const u8 sMetaItemRoundDesc[] = _("");
+
+static const u8 sMetaItemFireName[] = _("Fire Cushion");
+static const u8 sMetaItemFireDesc[] = _("");
+
+static const u8 sMetaItemPikaName[] = _("Pika Cushion");
+static const u8 sMetaItemPikaDesc[] = _("");
+
+static const u8 sMetaItemDuskullName[] = _("Duskull Doll");
+static const u8 sMetaItemDuskullDesc[] = _("");
+
+static const u8 sMetaItemWaterName[] = _("Water Cushion");
+static const u8 sMetaItemWaterDesc[] = _("");
+
+static const u8 sMetaItemSeedotName[] = _("Seedot Doll");
+static const u8 sMetaItemSeedotDesc[] = _("");
+
+static const u8 sMetaItemCushionName[] = _("");
+static const u8 sMetaItemCushionDesc[] = _("");
+
+
 // TTH Candy
 static const u8 sBarQuantum[] = _("bar");
 static const u8 sBoxQuantum[] = _("box");

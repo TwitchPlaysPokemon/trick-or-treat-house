@@ -72,6 +72,21 @@ static bool8 TryStartStepCountScript(u16);
 static void UpdateHappinessStepCounter(void);
 static bool8 UpdatePoisonStepCounter(void);
 
+bool8 DoForcedMovementScriptTriggers()
+{
+    struct MapPosition position;
+    u8 playerDirection;
+    u16 metatileBehavior;
+    
+    if (FlagGet(FLAG_SYS_DISABLE_FORCED_TRIGGER)) return FALSE;
+    
+    FlagClear(FLAG_IS_BUMP_INTERACTION);
+    playerDirection = GetPlayerFacingDirection();
+    GetPlayerPosition(&position);
+    metatileBehavior = MapGridGetMetatileBehaviorAt(position.x, position.y);
+    return TryStartStepBasedScript(&position, metatileBehavior, playerDirection);
+}
+
 void FieldClearPlayerInput(struct FieldInput *input)
 {
     input->pressedAButton = FALSE;

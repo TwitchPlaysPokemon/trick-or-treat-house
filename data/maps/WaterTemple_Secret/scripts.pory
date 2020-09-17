@@ -1,0 +1,13 @@
+raw `
+WaterTemple_Secret_MapScripts::
+	puzzle_info Puzzle_WaterTemple_Name, CommonAuthor_Tustin2121
+	.byte 0
+`
+
+script WaterTemple_Secret_Signpost {
+	msgbox ("TRAINER TIPS\p"
+			"If you're reading this sign,\n"
+			"you're stuck here.\p"
+			"Now's a great time to use the Escape\n"
+			"Rope to go back to the Trick House.$", MSGBOX_SIGN)
+}
