@@ -144,3 +144,6 @@
 	.include "src/faraway_island.o"
 	.include "src/rayquaza_scene.o"
 	.include "src/trickhouse.o"
+
+gSoundInfo:
+	.space 0xFB0
