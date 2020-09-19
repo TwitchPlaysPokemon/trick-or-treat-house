@@ -6373,3 +6373,5 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/Puzzle_MetaPuzzleCave/scripts.inc"
 
 	.include "data/maps/WaterTemple_Secret/scripts.inc"
+
+	.include "data/maps/Puzzle_EliteFloor/scripts.inc"

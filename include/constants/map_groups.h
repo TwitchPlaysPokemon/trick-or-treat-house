@@ -126,6 +126,7 @@
 #define MAP_PUZZLE_TIC_RAC_TOE              (13 | (6 << 8))
 #define MAP_PUZZLE_STEALTH_MISSION          (14 | (6 << 8))
 #define MAP_PUZZLE_MURDER_EXPRESS           (15 | (6 << 8))
+#define MAP_PUZZLE_ELITE_FLOOR              (16 | (6 << 8))
 
 // Map Group 7
 #define MAP_PUZZLE_LOST_WOODS1_ENTRANCE (0 | (7 << 8))

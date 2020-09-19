@@ -147,6 +147,19 @@ void RunPuzzleBlackoutScript()
 	}
 }
 
+void RunPuzzleEscapeRopeScript()
+{
+	u16 currPuzzle = GetCurrentPuzzleMapId();
+	if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(TRICK_HOUSE_END))
+	{
+		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_ESCAPE_SCRIPT);
+		if (script != NULL)
+		{
+			ScriptContext2_RunNewScript(script);
+		}
+	}
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 
 bool8 IsAfterFirstLoop()

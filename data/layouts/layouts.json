@@ -1539,6 +1539,16 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_WaterfallCave",
             "width": 33
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_EliteFloor/map.bin",
+            "border_filepath": "data/layouts/Puzzle_EliteFloor/border.bin",
+            "height": 30,
+            "id": "LAYOUT_PUZZLE_ELITE_FLOOR",
+            "name": "Puzzle_EliteFloor_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_PetalburgGym",
+            "width": 19
         }
     ],
     "layouts_table_label": "gMapLayouts"

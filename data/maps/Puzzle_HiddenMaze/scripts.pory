@@ -162,7 +162,7 @@ Puzzle_HiddenMaze_Trainer3_Movement2:
 `
 
 script Puzzle_HiddenMaze_Trainer4 {
-	# Carver's boyfriend
+	# Carver's boyfriend, Zander
 	trainerbattle_single (TRAINER_04, 
 			"I hate this place. Carver is right there,\n"
 			"but I can't reach him!$", 

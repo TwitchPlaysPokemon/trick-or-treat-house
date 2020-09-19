@@ -133,7 +133,8 @@
         "Puzzle_IcePath",
         "Puzzle_TicRacToe",
         "Puzzle_StealthMission",
-        "Puzzle_MurderExpress"
+        "Puzzle_MurderExpress",
+        "Puzzle_EliteFloor"
     ],
     "MG_SingleMapPuzzles2019": [
         "Puzzle_TrickHouseCut",
