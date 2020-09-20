@@ -23,7 +23,7 @@ Puzzle_TrickHouseOriginal7_Quip:
 	.string "But I wanted the cubby hole…$"
 .align 2
 Puzzle_TrickHouseOriginal7_Variables:
-	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_LITTLE_BOY_3
+	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_LITTLE_BOY_3
 	.2byte 0
 Puzzle_TrickHouseOriginal7_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01

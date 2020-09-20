@@ -291,8 +291,7 @@
 #define EVENT_OBJ_GFX_ALIEN                          0x10F
 #define EVENT_OBJ_GFX_PUSHABLE_CRATE                 0x110
 
-#define EVENT_OBJ_GFX_LAST                           0x111
-#define NUM_OBJECT_GRAPHICS_INFO 	    (EVENT_OBJ_GFX_LAST)
+#define NUM_OBJECT_GRAPHICS_INFO 	                 0x111
 
 // These are dynamic object gfx ids.
 // They correspond with the values of the VAR_OBJ_GFX_ID_X vars.
@@ -315,6 +314,14 @@
 #define EVENT_OBJ_GFX_VAR_F 0x1FF
 
 #define SPRITE_VAR EVENT_OBJ_GFX_VAR_0
+
+#define TTH_FRIEND_JOEY     EVENT_OBJ_GFX_YOUNGSTER
+#define TTH_FRIEND_JAMES    EVENT_OBJ_GFX_HERO_OF_TIME
+#define TTH_FRIEND_IRENE    EVENT_OBJ_GFX_FAIRY_GIRL
+#define TTH_FRIEND_WALLY    EVENT_OBJ_GFX_WALLY
+#define TTH_FRIEND_BRENDAN  EVENT_OBJ_GFX_BRENDAN_NORMAL
+#define TTH_FRIEND_MAY      EVENT_OBJ_GFX_MAY_NORMAL
+#define TTH_FRIEND_ALEX     EVENT_OBJ_GFX_TREEKID_NORMAL
 
 #define SHADOW_SIZE_S   0
 #define SHADOW_SIZE_M   1

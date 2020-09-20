@@ -77,7 +77,7 @@ script TrickHouseExt_IntroCutscene {
 	waitmovement (LID_GHOST)
 	// Joey is hot
 	applymovement (LID_GHOST, TrickHouseExt_IntroCutscene_Movement1b_Ghost)
-	message ("{YOUNGSTER}: Hey, guys? Hold up a second.\n"
+	message ("{JOEY}: Hey, guys? Hold up a second.\n"
 			"I'm melting under this thing…$")
 	waitmovement (LID_LINK)
 	waitmessage

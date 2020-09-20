@@ -13,13 +13,13 @@ TrickTreat_FortreeCity_Name:
 TrickTreat_FortreeCity_Intro:
 	.string "{LINK}: Hey, {PLAYER}! Ready to go\n"
 	.string "Trick-or-Treating again?\p"
-	.string "{YOUNGSTER} figured out how to point\n"
+	.string "{JOEY} figured out how to point\n"
 	.string "the door to Fortree City!"
 TrickTreat_FortreeCity_Quip:
 	.string "{LINK}: $"
 TrickTreat_FortreeCity_Variables:
-	.2byte VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_HERO_OF_TIME
-	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HERO_OF_TIME
+	.2byte VAR_INTRO_PERSON, TTH_FRIEND_JAMES
+	.2byte VAR_QUIP_PERSON,  TTH_FRIEND_JAMES
 	.2byte 0
 TrickTreat_FortreeCity_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01

@@ -290,6 +290,18 @@ void ShowPuzzleDevCommentary(struct ScriptContext *ctx)
 	ShowFieldMessage(str);
 }
 
+extern const u8 PuzzleCommon_Text_DefaultFriendCommentary[];
+void ShowPuzzleFriendCommentary(struct ScriptContext *ctx)
+{
+	u16 currPuzzle = GetCurrentPuzzleMapId();
+	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_FRIEND_COMMENTARY);
+	if (str == NULL)
+	{
+		str = PuzzleCommon_Text_DefaultFriendCommentary;
+	}
+	ShowFieldMessage(str);
+}
+
 extern const u8 PuzzleCommon_DefaultVariableAssignments[];
 void AssignPuzzleMetaVariables(struct ScriptContext *ctx)
 {
@@ -297,11 +309,13 @@ void AssignPuzzleMetaVariables(struct ScriptContext *ctx)
 	const u16 *array = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_META_VARIABLES);
 	
 	// Reset introducer to trick master by default
-	VarSet(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_TRICK_MASTER);
+	VarSet(VAR_INTRO_PERSON, EVENT_OBJ_GFX_TRICK_MASTER);
 	// Randomize quip person by default
-	VarSet(VAR_OBJ_GFX_ID_1, (Random() % (EVENT_OBJ_GFX_FISHERMAN - EVENT_OBJ_GFX_BOY_1)) + EVENT_OBJ_GFX_BOY_1);
-	// Set devloper commentator to Tustin by default
-	VarSet(VAR_OBJ_GFX_ID_2, EVENT_OBJ_GFX_TRICK_MASTER);
+	VarSet(VAR_QUIP_PERSON, (Random() % (EVENT_OBJ_GFX_FISHERMAN - EVENT_OBJ_GFX_BOY_1)) + EVENT_OBJ_GFX_BOY_1);
+	// Set developer commentator to Tustin by default
+	VarSet(VAR_DEV_COMMENTATOR, EVENT_OBJ_GFX_DEV_TUSTIN2121);
+	// Set endroom friend to no one by default
+	VarSet(VAR_ENDROOM_FRIEND, EVENT_OBJ_GFX_GHOST);
 	
 	if ((IsAfterFirstLoop() || gMain.debugMode) 
 		&& GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_DEV_COMMENTARY) != NULL) 
@@ -311,13 +325,34 @@ void AssignPuzzleMetaVariables(struct ScriptContext *ctx)
 		FlagSet(FLAG_HIDE_DEVELOPER_COMMENTATOR);
 	}
 	
-	if (array != NULL)
-	{
-		while (array[0] != 0)
-		{
+	if (array != NULL) {
+		while (array[0] != 0) {
 			VarSet(array[0], array[1]);
 			array += 2;
 		}
+	}
+	
+	if (GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_FRIEND_COMMENTARY) != NULL) {
+		// Gotta check to make sure the friend is not the person the player is controlling
+		bool8 shouldShow = TRUE;
+		switch (gSaveBlock2Ptr->playerGender) {
+			case GENDER_M:
+				shouldShow = VarGet(VAR_ENDROOM_FRIEND) != TTH_FRIEND_BRENDAN;
+				break;
+			case GENDER_F:
+				shouldShow = VarGet(VAR_ENDROOM_FRIEND) != TTH_FRIEND_MAY;
+				break;
+			case GENDER_N:
+				shouldShow = VarGet(VAR_ENDROOM_FRIEND) != TTH_FRIEND_ALEX;
+				break;
+		}
+		if (shouldShow) {
+			FlagClear(FLAG_HIDE_ENDROOM_FRIEND);
+		} else {
+			FlagSet(FLAG_HIDE_ENDROOM_FRIEND);
+		}
+	} else {
+		FlagSet(FLAG_HIDE_ENDROOM_FRIEND);
 	}
 }
 

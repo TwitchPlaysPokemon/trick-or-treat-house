@@ -16,7 +16,8 @@ Puzzle_MetaPuzzleCave_MapScripts::
 //			Ice Path Room
 //  6 = SPIN_CUSHION => from MAP_PUZZLE_LEDGE_MOUNTAIN
 //			Ledge Path Room
-//  7 = MAGNEMITE_DOLL => 
+//  7 = DITTO_DOLL => from [Among Us Puzzle]
+//			Find the real switch/pokemon to continue
 //  8 = BALL_CUSHION => from MAP_PUZZLE_LOSS_FLOOR1
 //			??? Room
 //  9 = KISS_CUSHION =>

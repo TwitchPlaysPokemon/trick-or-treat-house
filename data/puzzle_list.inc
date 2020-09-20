@@ -25,7 +25,7 @@ gPuzzleList::                                           @ Puzzle Type(s)
     .2byte MAP_PUZZLE_TIN_TOWER_CLIMB                   @  WILD/MAZE
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL5             @  MOVEMENT/MAZE (RSE Slide Tiles)
     .2byte MAP_PUZZLE_ROUTE110                          @  ITEM/MAZE
-    .2byte MAP_PUZZLE_WATER_TEMPLE                      @  LOGIC/MAZE
+    .2byte MAP_PUZZLE_HIDDEN_MAZE                       @  BATTLE/MAZE
     .2byte MAP_PUZZLE_LOSS_FLOOR1                       @  MEME/LOGIC
     .2byte MAP_PUZZLE_TRICK_HOUSE_SLIP_SLIDING          @  BATTLE/MOVEMENT
     
@@ -40,7 +40,8 @@ gPuzzleList::                                           @ Puzzle Type(s)
 
 @   .2byte MAP_TRICK_TREAT_ALTO_MARE1                   @  TRICK
 
-    .2byte MAP_PUZZLE_HIDDEN_MAZE                       @  BATTLE/MAZE
+    .2byte MAP_PUZZLE_WATER_TEMPLE                      @  LOGIC/MAZE
+    .2byte MAP_PUZZLE_ELITE_FLOOR                       @  MOVEMENT/MAZE
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL8             @  BATTLE/MOVEMENT (Ice Floor)
 @   .2byte MAP_PUZZLE_LOST_WOODS4_ENTRANCE              @  MAZE
     
@@ -53,7 +54,6 @@ gPuzzleList::                                           @ Puzzle Type(s)
 .align 2
 gDebugPuzzles::
     .2byte MAP_EMPTY_PUZZLE
-    .2byte MAP_PUZZLE_ELITE_FLOOR                       @  MOVEMENT/MAZE
     .2byte MAP_PUZZLE_SUSPENDED_MAZE
     .2byte MAP_TRICK_TREAT_ALTO_MARE1                   @  TRICK
     .2byte MAP_TRICK_TREAT_FORTREE_CITY                 @  TRICK

@@ -322,6 +322,7 @@ static const u8 sText_HMMovesCantBeForgotten[] = _("HM moves can't be\nforgotten
 static const u8 sText_NotVeryEffective[] = _("It's not very effective…");
 static const u8 sText_SuperEffective[] = _("It's super effective!");
 static const u8 sText_GotAwaySafely[] = _("{PLAY_SE 0x0011}Got away safely!\p");
+static const u8 sText_PkmnFledUsingSnickers[] = _("{PLAY_SE 0x0011}{B_ATK_NAME_WITH_PREFIX} flung its\n{B_LAST_ITEM} and fled!\p");
 static const u8 sText_PkmnFledUsingIts[] = _("{PLAY_SE 0x0011}{B_ATK_NAME_WITH_PREFIX} fled\nusing its {B_LAST_ITEM}!\p");
 static const u8 sText_PkmnFledUsing[] = _("{PLAY_SE 0x0011}{B_ATK_NAME_WITH_PREFIX} fled\nusing {B_ATK_ABILITY}!\p");
 static const u8 sText_WildPkmnFled[] = _("{PLAY_SE 0x0011}Wild {B_BUFF1} fled!");
@@ -897,6 +898,7 @@ static const u8 sText_GlintAppearsInEye[] = _("A glint appears in\n{B_SCR_ACTIVE
 static const u8 sText_PkmnGettingIntoPosition[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is getting into\nposition!");
 static const u8 sText_PkmnBeganGrowlingDeeply[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} began growling deeply!");
 static const u8 sText_PkmnEagerForMore[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is eager for more!");
+static const u8 sText_OpponentAteCandy[] = _("{B_OPPONENT_MON1_NAME} ate the candy!\nIt seems to calm down.");
 
 const u16 gStringIds_85CCF0A[] =
 {

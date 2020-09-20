@@ -33,7 +33,7 @@ Puzzle_Wilke_PrereqItems:
 	.2byte ITEM_CUT_ITEM
 	.2byte 0
 Puzzle_Wilke_Variables:
-	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_ZIGZAGOON_2
+	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_ZIGZAGOON_2
 	.2byte 0
 Puzzle_Wilke_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01

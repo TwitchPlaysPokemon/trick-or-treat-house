@@ -26,7 +26,7 @@ Puzzle_LedgeMountain_DevCommentary:
 	.string "clips.twitch.tv/CuriousBlueWaffleOhMyDog$"
 .align 2
 Puzzle_LedgeMountain_Variables:
-	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER
+	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_HIKER
 	.2byte 0
 Puzzle_LedgeMountain_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01

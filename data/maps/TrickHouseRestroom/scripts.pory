@@ -541,7 +541,7 @@ script TrickHouseRestroom_EventScript_VisitorBirch {
 
 script TrickHouseRestroom_EventScript_VisitorJoey {
 	if (var(VAR_TEMP_B) == 1) {
-		msgbox("{YOUNGSTER}: But then therere are these\n"
+		msgbox("{JOEY}: But then therere are these\n"
 				"runes down the side of the door.\p"
 				"I've seen them before in the\n"
 				"Ruins of Alph back in Johto.\p"
@@ -558,7 +558,7 @@ script TrickHouseRestroom_EventScript_VisitorWally {
 script TrickHouseRestroom_EventScript_VisitorJames {
 	if (var(VAR_TEMP_B) == 1) {
 		msgbox("{LINK}: This could be the best idea\n"
-				"you've ever had, {YOUNGSTER}.\p"
+				"you've ever had, {JOEY}.\p"
 				"Think of all the places we can go\n"
 				"trick or treating at…$", MSGBOX_SIGN)
 	}

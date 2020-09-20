@@ -39,6 +39,7 @@ gBattlescriptsForUsingItem:: @ 82DBD3C
 	.align 2
 gBattlescriptsForRunningByItem:: @ 82DBD54
 	.4byte BattleScript_RunByUsingItem
+	.4byte BattleScript_RunByUsingSnickers
 
 	.align 2
 gBattlescriptsForSafariActions:: @ 82DBD58
@@ -175,6 +176,13 @@ BattleScript_OpponentUsesGuardSpecs::
 BattleScript_RunByUsingItem::
 	playse SE_NIGERU
 	setbyte gBattleOutcome, B_OUTCOME_RAN
+	finishturn
+
+BattleScript_RunByUsingSnickers::
+	printstring STRINGID_POKEMONATECANDY
+	pause 0x40
+	playse SE_NIGERU
+	setbyte gBattleOutcome, B_OUTCOME_MON_FLED
 	finishturn
 
 BattleScript_ActionWatchesCarefully:

@@ -45,17 +45,17 @@ TrickTreat_MossdeepCity_Name:
 TrickTreat_MossdeepCity_Intro:
 	.string "Hey {PLAYER}! Wanna go for another round\n"
 	.string "of Trick or Treating?\p"
-	.string "{YOUNGSTER} found the way to Mossdeep!\n"
+	.string "{JOEY} found the way to Mossdeep!\n"
 	.string "He and the others should be there now,\l"
 	.string "collecting all the candy!\p"
 	.string "Let's go!$"
 TrickTreat_MossdeepCity_Quip:
-	.string "{YOUNGSTER}: I got a pretty good haul,\n"
+	.string "{JOEY}: I got a pretty good haul,\n"
 	.string "{PLAYER}. How about you?$"
 .align 2
 TrickTreat_MossdeepCity_Variables:
-	.2byte VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_FAIRY_GIRL
-	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_YOUNGSTER
+	.2byte VAR_INTRO_PERSON, TTH_FRIEND_IRENE
+	.2byte VAR_QUIP_PERSON,  TTH_FRIEND_JOEY
 	.2byte 0
 TrickTreat_MossdeepCity_CandyList:
 	.2byte FLAG_CANDY_RARE_01
@@ -718,7 +718,7 @@ script TrickTreat_MossdeepCity_ExitGirl {
 	}
 	msgbox ("Alright, time to head back to the\n"
 			"TRICK HOUSE!\p"
-			"{YOUNGSTER} is already back there, waiting.$")
+			"{JOEY} is already back there, waiting.$")
 	closemessage
 	if (var(VAR_FACING) == DIR_WEST) {
 		applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_BackOffDown1)

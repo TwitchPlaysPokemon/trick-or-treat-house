@@ -26,7 +26,7 @@ Puzzle_TrickHouseOriginal6_Quip:
 	.string "Day job?\nBut I don't have a day job to quit…$"
 .align 2
 Puzzle_TrickHouseOriginal6_Variables:
-	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_SCHOOL_KID_M
+	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_SCHOOL_KID_M
 	.2byte 0
 Puzzle_TrickHouseOriginal6_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01

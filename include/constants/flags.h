@@ -117,11 +117,11 @@
 #define FLAG_PICKED_UP_SURF_ITEM             0x67
 #define FLAG_PICKED_UP_FLASH_ITEM            0x68
 #define FLAG_PICKED_UP_FLY_ITEM              0x69 // never used
-#define FLAG_PUZZLE_PARTY_LOCK        0x6A
+#define FLAG_PUZZLE_PARTY_LOCK               0x6A
 #define FLAG_PUZZLE_HAS_STARTED              0x6B
 #define FLAG_PUZZLE_HAS_COMPLETED            0x6C
 #define FLAG_UNUSED_0x06D                    0x6D
-#define FLAG_UNUSED_0x06E                    0x6E
+#define FLAG_HIDE_ENDROOM_FRIEND             0x6E
 #define FLAG_HIDE_DEVELOPER_COMMENTATOR      0x6F
 
 

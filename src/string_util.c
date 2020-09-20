@@ -588,6 +588,24 @@ static const u8 *ExpandPlaceholder_FairyGirl(void)
     return gExpandedPlaceholder_FairyGirl;
 }
 
+extern const u8 gExpandedPlaceholder_Brendan[];
+static const u8 *ExpandPlaceholder_Brendan(void)
+{
+    return gExpandedPlaceholder_Brendan;
+}
+
+extern const u8 gExpandedPlaceholder_May[];
+static const u8 *ExpandPlaceholder_May(void)
+{
+    return gExpandedPlaceholder_May;
+}
+
+extern const u8 gExpandedPlaceholder_Alex[];
+static const u8 *ExpandPlaceholder_Alex(void)
+{
+    return gExpandedPlaceholder_Alex;
+}
+
 extern const u8 gExpandedPlaceholder_ToTRuleNo[];
 static const u8 *ExpandPlaceholder_ToTRuleNo(void)
 {
@@ -668,17 +686,20 @@ const u8 *GetExpandedPlaceholder(u32 id)
         ExpandPlaceholder_RivalName,
         ExpandPlaceholder_Youngster,
         ExpandPlaceholder_Wally,       // 09
-        ExpandPlaceholder_Link,       // 0A
-        ExpandPlaceholder_FairyGirl,
-        ExpandPlaceholder_ToTRuleNo,
-        ExpandPlaceholder_Boulder,
-        ExpandPlaceholder_Empty,
+        ExpandPlaceholder_Link,        // 0A
+        ExpandPlaceholder_FairyGirl,   // 0B
+        ExpandPlaceholder_Brendan,     // 0C
+        ExpandPlaceholder_May,         // 0D
+        ExpandPlaceholder_Alex,        // 0E
         ExpandPlaceholder_Empty,       // 0F
         
         ExpandPlaceholder_PuzzleName,       // 10
         ExpandPlaceholder_PuzzleAuthor,     // 11
         ExpandPlaceholder_PuzzleAdjective,  // 12
         ExpandPlaceholder_PuzzleQuip,       // 13
+        ExpandPlaceholder_ToTRuleNo,        // 14
+        ExpandPlaceholder_Boulder,          // 15
+        
     };
 
     if (id >= ARRAY_COUNT(funcs))

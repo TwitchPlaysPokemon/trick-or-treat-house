@@ -90,6 +90,19 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "x": 14,
             "y": 4
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_ENDROOM_FRIEND",
+            "graphics_id": "EVENT_OBJ_GFX_VAR_3",
+            "movement_range_x": 2,
+            "movement_range_y": 2,
+            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+            "script": "TrickHouseEnd_EventScript_EndroomFriend",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 7,
+            "y": 3
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_110",

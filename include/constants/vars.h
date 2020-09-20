@@ -43,6 +43,11 @@
 #define VAR_OBJ_GFX_ID_E           0x401E
 #define VAR_OBJ_GFX_ID_F           0x401F
 
+#define VAR_INTRO_PERSON           VAR_OBJ_GFX_ID_0
+#define VAR_QUIP_PERSON            VAR_OBJ_GFX_ID_1
+#define VAR_DEV_COMMENTATOR        VAR_OBJ_GFX_ID_2
+#define VAR_ENDROOM_FRIEND         VAR_OBJ_GFX_ID_3
+
 // Trick Or Treat House vars
 #define VAR_PUZZLE_00                        0x4020
 #define VAR_PUZZLE_01                        0x4021

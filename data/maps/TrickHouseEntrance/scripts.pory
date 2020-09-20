@@ -123,7 +123,7 @@ script TrickHouseEntrance_IntroCutscene {
 	msgbox ("{LINK}: That TRICK guy said there was\n"
 			"candy to get, right?!\p"
 			"Yeah! I'm with {FAIRY}!\n"
-			"Coming, {YOUNGSTER}?$")
+			"Coming, {JOEY}?$")
 	closemessage
 	applymovement (LID_LINK, TrickHouseEntrance_Movement2_Link)
 	applymovement (LID_JOEY, TrickHouseEntrance_Movement2_Joey)
@@ -257,7 +257,7 @@ script TrickHouseEntrance_EventScript_Link {
 }
 script TrickHouseEntrance_EventScript_Joey {
 	lock
-	msgbox ("{YOUNGSTER}: {LINK}, chill!\p"
+	msgbox ("{JOEY}: {LINK}, chill!\p"
 			"We've got pleanty of time for more\n"
 			"trick-or-treating!$")
 	playse (SE_SELECT)

@@ -478,6 +478,7 @@ const u8 * const gElfBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNCHOSEXASDESTINY - 12] = sText_PkmnChoseXAsDestiny,
     [STRINGID_PKMNLOSTFOCUS - 12] = sText_PkmnLostFocus,
     [STRINGID_USENEXTPKMN - 12] = sBort_UseNextPkmn,
+    [STRINGID_PKMNFLEDUSINGSNICKERS - 12] = sText_PkmnFledUsingSnickers,
     [STRINGID_PKMNFLEDUSINGITS - 12] = sText_PkmnFledUsingIts,
     [STRINGID_PKMNFLEDUSING - 12] = sText_PkmnFledUsing,
     [STRINGID_PKMNWASDRAGGEDOUT - 12] = sText_PkmnWasDraggedOut,
@@ -521,6 +522,7 @@ const u8 * const gElfBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNBOXLANETTESPCFULL - 12] = gText_PkmnBoxLanettesPCFull,
     [STRINGID_TRAINER1WINTEXT - 12] = sText_Trainer1WinText,
     [STRINGID_TRAINER2WINTEXT - 12] = sText_Trainer2WinText,
+    [STRINGID_POKEMONATECANDY - 12] = sText_OpponentAteCandy,
 };
 
 // Below are copies from the battle_messages.c file, with their explainations on how they

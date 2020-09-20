@@ -30,7 +30,7 @@ Puzzle_IcePath_Quip:
 	.string "Except I don't know where “here” is…$"
 .align 2
 Puzzle_IcePath_Variables:
-	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER
+	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_HIKER
 	.2byte 0
 Puzzle_IcePath_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01

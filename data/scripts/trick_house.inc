@@ -9,6 +9,8 @@ PuzzleCommon_Text_DefaultQuip::
 PuzzleCommon_Text_DefaultDevCommentary::
 	.string "Tustin2121: Uh, this isn't supposed to\n"
 	.string "happen… Ignore this, please.$"
+PuzzleCommon_Text_DefaultFriendCommentary::
+	.string "Sorry, just hanging around.$"
 PuzzleCommon_DefaultSetupScript::
 	end
 PuzzleCommon_DefaultTeardownScript::

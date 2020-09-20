@@ -17,7 +17,7 @@ Puzzle_HiddenMaze_Quip:
 	.string "When I grow up, I'm gonna\nbe just like Koga!$"
 .align 2
 Puzzle_HiddenMaze_Variables:
-	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_NINJA_BOY
+	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_NINJA_BOY
 	.2byte 0
 Puzzle_HiddenMaze_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01

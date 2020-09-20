@@ -3066,6 +3066,12 @@ BattleScript_SmokeBallEscape::
 	waitmessage 0x40
 	end2
 
+BattleScript_SnickersEscape::
+	playanimation BS_ATTACKER, B_ANIM_SMOKEBALL_ESCAPE, NULL
+	printstring STRINGID_PKMNFLEDUSINGSNICKERS
+	waitmessage 0x40
+	end2
+
 BattleScript_RanAwayUsingMonAbility::
 	printstring STRINGID_PKMNFLEDUSING
 	waitmessage 0x40

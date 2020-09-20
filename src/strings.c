@@ -6,6 +6,7 @@ const u8 gText_ScriptError[] = _("Script error!\nIf you see this, report it!");
 const u8 gExpandedPlaceholder_Empty[] = _("");
 const u8 gExpandedPlaceholder_Brendan[] = _("Brendan");
 const u8 gExpandedPlaceholder_May[] = _("May");
+const u8 gExpandedPlaceholder_Alex[] = _("Alex");
 const u8 gExpandedPlaceholder_Pokemon[] = _("Pokémon");
 const u8 gText_Pokemon[] = _("Pokémon");
 const u8 gExpandedPlaceholder_TrickMaster[] = _("TRICK MASTER");

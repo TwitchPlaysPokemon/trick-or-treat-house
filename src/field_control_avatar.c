@@ -567,6 +567,11 @@ static bool8 TryStartMiscWalkingScripts(u16 metatileBehavior)
         ScriptContext1_SetupScript(EventScript_FallDownHole);
         return TRUE;
     }
+    else if (MetatileBehavior_IsEliteFloorFallWarp(metatileBehavior))
+    {
+        ScriptContext1_SetupScript(Puzzle_EliteFloor_DropDownHole);
+        return TRUE;
+    }
     // else if (MetatileBehavior_IsBattlePyramidWarp(metatileBehavior))
     // {
     //     ScriptContext1_SetupScript(BattleFrontier_BattlePyramidEmptySquare_EventScript_252BE8);

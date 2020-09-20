@@ -6,8 +6,9 @@ TestMapHallway_MapScripts::
 script TestMapHallway_GiveAllCandy {
 	lock
 	// face_player
-	msgbox ("{YOUNGSTER}: Here's a selection of all the\n"
+	msgbox ("{JOEY}: Here's a selection of all the\n"
 			"candy I collected tonight.$")
+	giveitem(ITEM_FLUFFY_TAIL, 2)
 	giveitem(ITEM_CANDY_CHOCOLATE, 2)
 	giveitem(ITEM_CANDY_CHOCOWHITE, 2)
 	giveitem(ITEM_CANDY_CHOCOSLAB, 2)

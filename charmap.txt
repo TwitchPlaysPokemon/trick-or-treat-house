@@ -337,16 +337,22 @@ POKEMON        = FD 05
 TRICK_MASTER   = FD 06
 RIVAL          = FD 07
 YOUNGSTER      = FD 08
+JOEY           = FD 08
 WALLY          = FD 09
+JAMES          = FD 0A
 LINK           = FD 0A
+IRENE          = FD 0B
 FAIRY          = FD 0B
-TOT_RULE       = FD 0C
-BOULDER        = FD 0D
+BRENDAN        = FD 0C
+MAY            = FD 0D
+ALEX           = FD 0E
 
 PUZZLE_NAME       = FD 10
 PUZZLE_AUTHOR     = FD 11
 PUZZLE_ADJECTIVE  = FD 12
 PUZZLE_QUIP       = FD 13
+TOT_RULE          = FD 14
+BOULDER           = FD 15
 
 @ battle string placeholders
 

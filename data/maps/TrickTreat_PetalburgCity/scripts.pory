@@ -13,7 +13,7 @@ TrickTreat_PetalburgCity_MapScripts::
 TrickTreat_PetalburgCity_Name:
 	.string "Peppermints in Petalburg$"
 TrickTreat_PetalburgCity_Intro:
-	.string "{YOUNGSTER}: {PLAYER}! How's it going?\p"
+	.string "{JOEY}: {PLAYER}! How's it going?\p"
 	.string "Oh, I'm not here to introduce a puzzle\n"
 	.string "or anything. How about a bit of a break?\p"
 	.string "See, me and the others figured out how\n"
@@ -24,14 +24,14 @@ TrickTreat_PetalburgCity_Intro:
 	.string "We're gonna go Trick or Treating there!\p"
 	.string "Com'on! It'll be fun!$"
 TrickTreat_PetalburgCity_Quip:
-	.string "{YOUNGSTER}: Apparently the TRICK MASTER\n"
+	.string "{JOEY}: Apparently the TRICK MASTER\n"
 	.string "was too caught up in other people's\l"
 	.string "puzzles to notice our absence…\p"
 	.string "Time for more puzzles then!$"
 .align 2
 TrickTreat_PetalburgCity_Variables:
-	.2byte VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_YOUNGSTER
-	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_YOUNGSTER
+	.2byte VAR_INTRO_PERSON, TTH_FRIEND_JOEY
+	.2byte VAR_QUIP_PERSON,  TTH_FRIEND_JOEY
 	.2byte 0
 TrickTreat_PetalburgCity_CandyList:
 	.2byte FLAG_CANDY_RARE_01
@@ -80,7 +80,7 @@ script TrickTreat_PetalburgCity_Introduction {
 	applymovement (THIS_EVENT, Common_Movement_WalkInPlaceLeft)
 	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceRight)
 	waitmovement (0)
-	msgbox ("{YOUNGSTER}: Alright, looks like Trick\n"
+	msgbox ("{JOEY}: Alright, looks like Trick\n"
 			"or Treating is still going on here.\p"
 			"If there's any houses with their light\n"
 			"on, go knock on those doors. They'll\l"
@@ -249,7 +249,7 @@ script TrickTreat_PetalburgCity_CandyGiver_House {
 script TrickTreat_PetalburgCity_ExitYoungster {
 	lock
 	faceplayer
-	msgbox ("{YOUNGSTER}: Hey, {PLAYER}!\nDid you get a good haul?$")
+	msgbox ("{JOEY}: Hey, {PLAYER}!\nDid you get a good haul?$")
 	if (flag(FLAG_PUZZLE_23) == FALSE || 
 		flag(FLAG_PUZZLE_24) == FALSE || 
 		flag(FLAG_PUZZLE_25) == FALSE) 
@@ -284,7 +284,7 @@ script TrickTreat_PetalburgCity_ExitYoungster {
 	applymovement (THIS_EVENT, Common_Movement_WalkLeft1)
 	waitmovement (0)
 	applymovement (THIS_EVENT, Common_Movement_WalkInPlaceUp)
-	msgbox ("{YOUNGSTER} wrote down the secret code\n"
+	msgbox ("{JOEY} wrote down the secret code\n"
 			"on the door.\p"
 			"{PLAY_SE SE_PIN}The door unsealed!$")
 	closemessage
@@ -309,7 +309,7 @@ script TrickTreat_PetalburgCity_TriggerScript_SoftBorderEast {
 		waitmovement (0)
 		applymovement (12, Common_Movement_ExclamationMarkAndWait)
 		waitmovement (0)
-		msgbox ("{YOUNGSTER}: Hey! {PLAYER}!\n"
+		msgbox ("{JOEY}: Hey! {PLAYER}!\n"
 				"The candy is back this way!$")
 		applymovement (12, Common_Movement_WalkInPlaceLeft)
 	} else {

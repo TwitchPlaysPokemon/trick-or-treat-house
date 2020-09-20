@@ -5156,6 +5156,9 @@ static void HandleEndTurn_RanFromBattle(void)
         case 2:
             gBattlescriptCurrInstr = BattleScript_RanAwayUsingMonAbility;
             break;
+        case 3:
+            gBattlescriptCurrInstr = BattleScript_SnickersEscape;
+            break;
         }
     }
 
@@ -5166,7 +5169,11 @@ static void HandleEndTurn_MonFled(void)
 {
     gCurrentActionFuncId = 0;
 
-    PREPARE_MON_NICK_BUFFER(gBattleTextBuff1, gBattlerAttacker, gBattlerPartyIndexes[gBattlerAttacker]);
+    if (gLastUsedItem == ITEM_CANDY_SNICKERS) {
+        PREPARE_MON_NICK_BUFFER(gBattleTextBuff1, B_POSITION_OPPONENT_LEFT, gBattlerPartyIndexes[B_POSITION_OPPONENT_LEFT]);
+    } else {
+        PREPARE_MON_NICK_BUFFER(gBattleTextBuff1, gBattlerAttacker, gBattlerPartyIndexes[gBattlerAttacker]);
+    }
     gBattlescriptCurrInstr = BattleScript_WildMonFled;
 
     gBattleMainFunc = HandleEndTurn_FinishBattle;
@@ -5589,6 +5596,10 @@ static void HandleAction_UseItem(void)
     {
         gBattlescriptCurrInstr = gBattlescriptsForRunningByItem[0];
     }
+    else if (gLastUsedItem == ITEM_CANDY_SNICKERS)
+    {
+        gBattlescriptCurrInstr = gBattlescriptsForRunningByItem[1];
+    }
     else if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
     {
         gBattlescriptCurrInstr = gBattlescriptsForUsingItem[0];
@@ -5669,7 +5680,11 @@ bool8 TryRunFromBattle(u8 battler)
     if (holdEffect == HOLD_EFFECT_CAN_ALWAYS_RUN)
     {
         gLastUsedItem = gBattleMons[battler].item;
-        gProtectStructs[battler].fleeFlag = 1;
+        if (gLastUsedItem == ITEM_CANDY_SNICKERS) {
+            gProtectStructs[battler].fleeFlag = 3;
+        } else {
+            gProtectStructs[battler].fleeFlag = 1;
+        }
         effect++;
     }
     else if (gBattleMons[battler].ability == ABILITY_RUN_AWAY)
