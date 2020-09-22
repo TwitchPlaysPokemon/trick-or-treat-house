@@ -421,6 +421,7 @@ void Overworld_ResetStateAfterTeleport(void)
 
 void Overworld_ResetStateAfterDigEscRope(void)
 {
+    RunPuzzleEscapeRopeScript();
     ResetInitialPlayerAvatarState();
     FlagClear(FLAG_SYS_CYCLING_ROAD);
     FlagClear(FLAG_SYS_CRUISE_MODE);
@@ -1365,6 +1366,7 @@ bool32 IsUpdateLinkStateCBActive(void)
         return FALSE;
 }
 
+void player_forcestep(void);
 static void DoCB1_Overworld(u16 newKeys, u16 heldKeys)
 {
     struct FieldInput inputStruct;
@@ -1374,7 +1376,11 @@ static void DoCB1_Overworld(u16 newKeys, u16 heldKeys)
     FieldGetPlayerInput(&inputStruct, newKeys, heldKeys);
     if (!ScriptContext2_IsEnabled())
     {
-        if (ProcessPlayerFieldInput(&inputStruct) == 1)
+        if (gSpecialVar_SysForceStep > 0) {
+            gSpecialVar_SysForceStep--;
+            player_forcestep();
+        } 
+        else if (ProcessPlayerFieldInput(&inputStruct) == 1)
         {
             ScriptContext2_Enable();
             HideMapNamePopUpWindow();

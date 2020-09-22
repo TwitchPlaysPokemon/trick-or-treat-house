@@ -62,6 +62,7 @@ gSpecialVars:: @ 81DBA0C
 	.4byte gSpecialVar_MetatileX
 	.4byte gSpecialVar_MetatileY
 	.4byte gSpecialVar_LastWarpId
+	.4byte gSpecialVar_SysForceStep
 
 	.include "data/specials.inc"
 

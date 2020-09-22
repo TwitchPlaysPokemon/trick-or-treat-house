@@ -29,6 +29,7 @@ EWRAM_DATA u16 gSpecialVar_InteractY = 0;
 EWRAM_DATA u16 gSpecialVar_MetatileX = 0;
 EWRAM_DATA u16 gSpecialVar_MetatileY = 0;
 EWRAM_DATA u16 gSpecialVar_LastWarpId = -1;
+EWRAM_DATA u16 gSpecialVar_SysForceStep = 0;
 EWRAM_DATA static u8 gSpecialFlags[16] = {0};
 
 extern u16 *const gSpecialVars[];

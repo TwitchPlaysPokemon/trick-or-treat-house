@@ -1,9 +1,10 @@
 raw `
 Puzzle_SuspendedMaze_MapScripts::
 	puzzle_info Puzzle_SuspendedMaze_Name, Puzzle_SuspendedMaze_Author
-	puzzle_custom_intro Puzzle_SuspendedMaze_Intro
+	puzzle_adjective Puzzle_SuspendedMaze_Adjective
 	puzzle_quip Puzzle_SuspendedMaze_Quip
 	puzzle_metavars Puzzle_SuspendedMaze_Variables
+	puzzle_item_prereqs Puzzle_SuspendedMaze_PrereqItems
 	puzzle_candylist Puzzle_SuspendedMaze_CandyList
 	puzzle_devcommentary Puzzle_SuspendedMaze_DevCommentary
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_SuspendedMaze_OnLoad
@@ -17,10 +18,13 @@ Puzzle_SuspendedMaze_Name:
 	.string "Cross-Path Caverns$"
 Puzzle_SuspendedMaze_Author:
 	.string "Serebii.net$"
-Puzzle_SuspendedMaze_Intro:
-	.string "$"
+Puzzle_SuspendedMaze_Adjective:
+	.string "criss-crossing$"
 Puzzle_SuspendedMaze_Quip:
-	.string "$"
+	.string "What's nine letters and is considered\n"
+	.string "“The Iron {POKEMON}”?\p"
+	.string "I know there's Steel-type {POKEMON},\n"
+	.string "but Iron-type? Never heard of it.$"
 Puzzle_SuspendedMaze_DevCommentary:
 	.string "Tustin2121: This maze is an almost perfect\n"
 	.string "copy of the first crossword puzzle that\l"
@@ -32,6 +36,9 @@ Puzzle_SuspendedMaze_DevCommentary:
 	.string "status/1241729153319211008)$"
 .align 2
 Puzzle_SuspendedMaze_Variables:
+	.2byte 0
+Puzzle_SuspendedMaze_PrereqItems:
+	.2byte ITEM_SURF_ITEM
 	.2byte 0
 Puzzle_SuspendedMaze_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01
@@ -72,12 +79,12 @@ script Puzzle_SuspendedMaze_SetHoleWarp {
 
 script Puzzle_SuspendedMaze_Trainer_Youngster {
 	trainerbattle_single(TRAINER_01, "Hi$", "F$")
-	msgbox ("Bye$")
+	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_SuspendedMaze_Trainer_PlasmaKid {
 	trainerbattle_single(TRAINER_02, "Hi$", "F$")
-	msgbox ("Bye$")
+	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_SuspendedMaze_Trainer_Link {
@@ -87,27 +94,27 @@ script Puzzle_SuspendedMaze_Trainer_Link {
 			"My transformation masks!$")
 	msgbox ("Now how am I gonna stop the moon from\n"
 			"crashing into the earth?!\p"
-			"Where's that Ocarina when I need it?!$")
+			"Where's that Ocarina when I need it?!$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_SuspendedMaze_Trainer_Alien {
 	trainerbattle_single(TRAINER_04, "Hi$", "F$")
-	msgbox ("Bye$")
+	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_SuspendedMaze_Trainer_FairyGirl {
 	trainerbattle_single(TRAINER_05, "Hi$", "F$")
-	msgbox ("Bye$")
+	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_SuspendedMaze_Trainer_MagmaGirl {
 	trainerbattle_single(TRAINER_06, "Hi$", "F$")
-	msgbox ("Bye$")
+	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_SuspendedMaze_Trainer_CorpseBride {
 	trainerbattle_single(TRAINER_07, "Hi$", "F$")
-	msgbox ("Bye$")
+	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
 }
 
 ///////////////////////////////////////////////////////
