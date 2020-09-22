@@ -134,7 +134,8 @@
         "Puzzle_TicRacToe",
         "Puzzle_StealthMission",
         "Puzzle_MurderExpress",
-        "Puzzle_EliteFloor"
+        "Puzzle_EliteFloor",
+        "Puzzle_DiveMaze"
     ],
     "MG_SingleMapPuzzles2019": [
         "Puzzle_TrickHouseCut",
@@ -173,7 +174,8 @@
         "TrainerHillTemplate",
         "FakeSecretBaseCave",
         "SuspendedMaze_B1",
-        "WaterTemple_Secret"
+        "WaterTemple_Secret",
+        "DiveMaze_Underwater"
     ],
     "MG_TestMaps": [
         "TestMapHallway",

@@ -58,6 +58,7 @@
 #define MAP_FAKE_SECRET_BASE_CAVE  (5 | (4 << 8))
 #define MAP_SUSPENDED_MAZE_B1      (6 | (4 << 8))
 #define MAP_WATER_TEMPLE_SECRET    (7 | (4 << 8))
+#define MAP_DIVE_MAZE_UNDERWATER   (8 | (4 << 8))
 
 // Map Group 5
 #define MAP_PETALBURG_CITY   (0 | (5 << 8))
@@ -127,6 +128,7 @@
 #define MAP_PUZZLE_STEALTH_MISSION          (14 | (6 << 8))
 #define MAP_PUZZLE_MURDER_EXPRESS           (15 | (6 << 8))
 #define MAP_PUZZLE_ELITE_FLOOR              (16 | (6 << 8))
+#define MAP_PUZZLE_DIVE_MAZE                (17 | (6 << 8))
 
 // Map Group 7
 #define MAP_PUZZLE_LOST_WOODS1_ENTRANCE (0 | (7 << 8))

@@ -1549,6 +1549,26 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_PetalburgGym",
             "width": 19
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_DiveMaze/map.bin",
+            "border_filepath": "data/layouts/Puzzle_DiveMaze/border.bin",
+            "height": 50,
+            "id": "LAYOUT_PUZZLE_DIVE_MAZE",
+            "name": "Puzzle_DiveMaze_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Cave",
+            "width": 50
+        },
+        {
+            "blockdata_filepath": "data/layouts/DiveMaze_Underwater/map.bin",
+            "border_filepath": "data/layouts/DiveMaze_Underwater/border.bin",
+            "height": 50,
+            "id": "LAYOUT_DIVE_MAZE_UNDERWATER",
+            "name": "DiveMaze_Underwater_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Underwater",
+            "width": 50
         }
     ],
     "layouts_table_label": "gMapLayouts"

@@ -1,0 +1,30 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": [
+        {
+            "direction": "dive",
+            "map": "MAP_DIVE_MAZE_UNDERWATER",
+            "offset": 0
+        }
+    ],
+    "coord_events": [
+    ],
+    "id": "MAP_PUZZLE_DIVE_MAZE",
+    "layout": "LAYOUT_PUZZLE_DIVE_MAZE",
+    "map_type": "MAP_TYPE_UNDERGROUND",
+    "music": "MUS_DAN02",
+    "name": "Puzzle_DiveMaze",
+    "object_events": [
+    ],
+    "region_map_section": "MAPSEC_ROUTE_133",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+    ],
+    "weather": "WEATHER_SUNNY"
+}
