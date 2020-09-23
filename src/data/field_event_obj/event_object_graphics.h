@@ -373,6 +373,7 @@ const u16 gEvtObjPal_Tarzan[] = INCBIN_U16("graphics/event_objects/palettes/objp
 const u16 gEvtObjPal_TwinsPlus[] = INCBIN_U16("graphics/event_objects/palettes/objpal_twins_plus.gbapal");
 const u16 gEvtObjPal_TwinsMinus[] = INCBIN_U16("graphics/event_objects/palettes/objpal_twins_minus.gbapal");
 const u16 gEvtObjPal_Alien[] = INCBIN_U16("graphics/event_objects/palettes/objpal_aliengirl.gbapal");
+const u16 gEvtObjPal_Imposter[] = INCBIN_U16("graphics/event_objects/palettes/objpal_imposter.gbapal");
 
 const u32 gEventObjectPic_PlasmaKid[] = INCBIN_U32("graphics/event_objects/pics/people/plasma_kid.4bpp");
 const u32 gEventObjectPic_Ghetsis[] = INCBIN_U32("graphics/event_objects/pics/people/ghetsis.4bpp");

@@ -4,6 +4,7 @@
 #include "event_object_movement.h"
 #include "field_effect.h"
 #include "field_player_avatar.h"
+#include "field_weather.h"
 #include "pokemon.h"
 #include "script.h"
 #include "script_movement.h"
@@ -18,6 +19,9 @@
 #include "constants/field_effects.h"
 #include "constants/trainer_types.h"
 #include "constants/event_objects.h"
+
+extern const struct SpritePalette sEventObjectSpritePalettes[];
+extern const struct SpritePalette gFieldEffectObjectPaletteInfo0;
 
 // this file's functions
 static u8 CheckTrainer(u8 eventObjectId);
@@ -204,7 +208,7 @@ static const union AnimCmd *const sSpriteAnimTable_Icons[] =
 static const struct SpriteTemplate sSpriteTemplate_ExclamationQuestionMark =
 {
     .tileTag = 0xffff,
-    .paletteTag = 0xffff,
+    .paletteTag = 0x1100,
     .oam = &sOamData_Icons,
     .anims = sSpriteAnimTable_Icons,
     .images = sSpriteImageTable_ExclamationQuestionMark,
@@ -735,9 +739,18 @@ void TryPrepareSecondApproachingTrainer(void)
 #define sData4      data[4]
 #define sFldEffId   data[7]
 
+#define LOAD_PALETTE(template) \
+    u8 spriteId, paletteNum; \
+    LoadEventObjectPalette(template.paletteTag); \
+    paletteNum = IndexOfSpritePaletteTag(template.paletteTag); \
+    UpdatePaletteGammaType(paletteNum, GAMMA_ALT); \
+    UpdateSpritePaletteWithWeather(paletteNum);
+    
+
 u8 FldEff_ExclamationMarkIcon(void)
 {
-    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x53);
+    LOAD_PALETTE(sSpriteTemplate_ExclamationQuestionMark)
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x53);
 
     if (spriteId != MAX_SPRITES)
         SetIconSpriteData(&gSprites[spriteId], FLDEFF_EXCLAMATION_MARK_ICON, 0);
@@ -747,7 +760,8 @@ u8 FldEff_ExclamationMarkIcon(void)
 
 u8 FldEff_QuestionMarkIcon(void)
 {
-    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x52);
+    LOAD_PALETTE(sSpriteTemplate_ExclamationQuestionMark)
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x52);
 
     if (spriteId != MAX_SPRITES)
         SetIconSpriteData(&gSprites[spriteId], FLDEFF_QUESTION_MARK_ICON, 1);
@@ -757,7 +771,8 @@ u8 FldEff_QuestionMarkIcon(void)
 
 u8 FldEff_HeartIcon(void)
 {
-    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_HeartIcon, 0, 0, 0x52);
+    LOAD_PALETTE(sSpriteTemplate_HeartIcon)
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_HeartIcon, 0, 0, 0x52);
 
     if (spriteId != MAX_SPRITES)
     {
@@ -772,7 +787,8 @@ u8 FldEff_HeartIcon(void)
 
 u8 FldEff_EmoteNoteC(void)
 {
-    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
+    LOAD_PALETTE(sSpriteTemplate_EmoteNote)
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
 
     if (spriteId != MAX_SPRITES)
         SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE_NOTE_C, 0);
@@ -782,7 +798,8 @@ u8 FldEff_EmoteNoteC(void)
 
 u8 FldEff_EmoteNoteD(void)
 {
-    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
+    LOAD_PALETTE(sSpriteTemplate_EmoteNote)
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
 
     if (spriteId != MAX_SPRITES)
         SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE_NOTE_D, 1);
@@ -792,7 +809,8 @@ u8 FldEff_EmoteNoteD(void)
 
 u8 FldEff_EmoteNoteE(void)
 {
-    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
+    LOAD_PALETTE(sSpriteTemplate_EmoteNote)
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
 
     if (spriteId != MAX_SPRITES)
         SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE_NOTE_E, 2);
@@ -802,7 +820,8 @@ u8 FldEff_EmoteNoteE(void)
 
 u8 FldEff_EmoteNoteF(void)
 {
-    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
+    LOAD_PALETTE(sSpriteTemplate_EmoteNote)
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
 
     if (spriteId != MAX_SPRITES)
         SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE_NOTE_F, 3);
@@ -812,13 +831,16 @@ u8 FldEff_EmoteNoteF(void)
 
 u8 FldEff_EmoteNoteG(void)
 {
-    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
+    LOAD_PALETTE(sSpriteTemplate_EmoteNote)
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
 
     if (spriteId != MAX_SPRITES)
         SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE_NOTE_G, 4);
 
     return 0;
 }
+
+#undef LOAD_PALETTE
 
 static void SetIconSpriteData(struct Sprite *sprite, u16 fldEffId, u8 spriteAnimNum)
 {

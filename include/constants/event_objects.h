@@ -290,8 +290,9 @@
 #define EVENT_OBJ_GFX_GHOST                          0x10E
 #define EVENT_OBJ_GFX_ALIEN                          0x10F
 #define EVENT_OBJ_GFX_PUSHABLE_CRATE                 0x110
+#define EVENT_OBJ_GFX_IMPOSTER_LASS                  0x111
 
-#define NUM_OBJECT_GRAPHICS_INFO 	                 0x111
+#define NUM_OBJECT_GRAPHICS_INFO 	                 0x112
 
 // These are dynamic object gfx ids.
 // They correspond with the values of the VAR_OBJ_GFX_ID_X vars.

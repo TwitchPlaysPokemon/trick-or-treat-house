@@ -75,5 +75,6 @@ void TintPalette_GrayScale(u16 *palette, u16 count);
 void TintPalette_GrayScale2(u16 *palette, u16 count);
 void TintPalette_SepiaTone(u16 *palette, u16 count);
 void TintPalette_CustomTone(u16 *palette, u16 count, u16 rTone, u16 gTone, u16 bTone);
+void TintPalette_CustomTone2(u16 *palette, u16 count, u8 coeff, u16 blendColor);
 
 #endif // GUARD_PALETTE_H

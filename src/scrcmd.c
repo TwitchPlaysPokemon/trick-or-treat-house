@@ -1310,7 +1310,7 @@ bool8 ScrCmd_createvobject(struct ScriptContext *ctx)
     u8 elevation = ScriptReadByte(ctx);
     u8 direction = ScriptReadByte(ctx);
 
-    sprite_new(graphicsId, v2, x, y, elevation, direction);
+    CreateObjectSprite(graphicsId, v2, x, y, elevation, direction);
     return FALSE;
 }
 
