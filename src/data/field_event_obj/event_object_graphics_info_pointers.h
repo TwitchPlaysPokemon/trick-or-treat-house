@@ -282,6 +282,7 @@ const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TwinsPlusle;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TwinsMinun;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Ghost;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Alien;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_ImposterLass;
 
 const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] = {
     [EVENT_OBJ_GFX_BRENDAN_NORMAL] =           &gEventObjectGraphicsInfo_BrendanNormal,
@@ -565,6 +566,7 @@ const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] =
     [EVENT_OBJ_GFX_TWINS_MINUN] =              &gEventObjectGraphicsInfo_TwinsMinun,
     [EVENT_OBJ_GFX_GHOST] =                    &gEventObjectGraphicsInfo_Ghost,
     [EVENT_OBJ_GFX_ALIEN] =                    &gEventObjectGraphicsInfo_Alien,
+    [EVENT_OBJ_GFX_IMPOSTER_LASS] =            &gEventObjectGraphicsInfo_ImposterLass,
     
     // Dev Self-Inserts
     [EVENT_OBJ_GFX_DEV_TUSTIN2121] =           &gEventObjectGraphicsInfo_TrickMaster, //TODO

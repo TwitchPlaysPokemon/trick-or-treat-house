@@ -53,5 +53,6 @@ extern u16 gSpecialVar_InteractY;
 extern u16 gSpecialVar_MetatileX;
 extern u16 gSpecialVar_MetatileY;
 extern u16 gSpecialVar_LastWarpId;
+extern u16 gSpecialVar_SysForceStep;
 
 #endif // GUARD_EVENT_DATA_H

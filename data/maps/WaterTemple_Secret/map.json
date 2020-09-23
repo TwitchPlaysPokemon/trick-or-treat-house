@@ -44,21 +44,7 @@
             "dest_map": "MAP_WATER_TEMPLE_SECRET",
             "dest_warp_id": 0,
             "elevation": 0,
-            "x": 8,
-            "y": 5
-        },
-        {
-            "dest_map": "MAP_WATER_TEMPLE_SECRET",
-            "dest_warp_id": 0,
-            "elevation": 0,
             "x": 9,
-            "y": 5
-        },
-        {
-            "dest_map": "MAP_WATER_TEMPLE_SECRET",
-            "dest_warp_id": 0,
-            "elevation": 0,
-            "x": 10,
             "y": 5
         }
     ],

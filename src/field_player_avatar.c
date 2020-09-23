@@ -323,6 +323,41 @@ static u8 EventObjectCB2_NoMovement2(void)
     return 0;
 }
 
+void player_forcestep()
+{
+    // This is so ugly, and I hate it, but I spent like 4 days trying to make this work, so fuck it. --tustin
+    u8 metatileBehavior = gEventObjects[gPlayerAvatar.eventObjectId].currentMetatileBehavior;
+    if (MetatileBehavior_IsWalkSouth(metatileBehavior) 
+        || MetatileBehavior_IsSouthwardCurrent(metatileBehavior)
+        || MetatileBehavior_IsSlideSouth(metatileBehavior)
+        || MetatileBehavior_IsWaterfall(metatileBehavior))
+    {
+        player_step(DIR_SOUTH, 0, DPAD_DOWN);
+    }
+    else if (MetatileBehavior_IsWalkNorth(metatileBehavior) 
+        || MetatileBehavior_IsNorthwardCurrent(metatileBehavior)
+        || MetatileBehavior_IsSlideNorth(metatileBehavior))
+    {
+        player_step(DIR_NORTH, 0, DPAD_UP);
+    }
+    else if (MetatileBehavior_IsWalkWest(metatileBehavior) 
+        || MetatileBehavior_IsWestwardCurrent(metatileBehavior)
+        || MetatileBehavior_IsSlideWest(metatileBehavior))
+    {
+        player_step(DIR_WEST, 0, DPAD_LEFT);
+    }
+    else if (MetatileBehavior_IsWalkEast(metatileBehavior) 
+        || MetatileBehavior_IsEastwardCurrent(metatileBehavior)
+        || MetatileBehavior_IsSlideEast(metatileBehavior))
+    {
+        player_step(DIR_EAST, 0, DPAD_RIGHT);
+    }
+    else
+    {
+        gSpecialVar_SysForceStep = 0;
+    }
+}
+
 void player_step(u8 direction, u16 newKeys, u16 heldKeys)
 {
     struct EventObject *playerEventObj = &gEventObjects[gPlayerAvatar.eventObjectId];

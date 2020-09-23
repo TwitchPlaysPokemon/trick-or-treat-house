@@ -310,6 +310,7 @@
 #define VAR_METATILE_X                0x8018
 #define VAR_METATILE_Y                0x8019
 #define VAR_LAST_WARP_ID              0x801A
+#define VAR_SYS_FORCE_STEP            0x801B
 
 #define THIS_EVENT                    0x800F //alias to VAR_LAST_TALKED
 

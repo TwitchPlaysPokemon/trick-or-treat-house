@@ -1,13 +1,24 @@
 raw `
 WaterTemple_Secret_MapScripts::
 	puzzle_info Puzzle_WaterTemple_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, WaterTemple_Secret_FrameTable
 	.byte 0
+
+WaterTemple_Secret_FrameTable:
+	map_script_2 VAR_TEMP_1, 0, WaterTemple_Secret_ForceStep
+	.2byte 0
 `
+
+script WaterTemple_Secret_ForceStep {
+	setvar(VAR_SYS_FORCE_STEP, 20)
+	setvar(VAR_TEMP_1, 1)
+}
 
 script WaterTemple_Secret_Signpost {
 	msgbox ("TRAINER TIPS\p"
 			"If you're reading this sign,\n"
 			"you're stuck here.\p"
-			"Now's a great time to use the Escape\n"
-			"Rope to go back to the Trick House.$", MSGBOX_SIGN)
+			"Now's a great time to use the\n"
+			"Escape Rope or the Escape menu option\l"
+			"to go back to the Trick House.$", MSGBOX_SIGN)
 }

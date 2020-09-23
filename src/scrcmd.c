@@ -1310,7 +1310,7 @@ bool8 ScrCmd_createvobject(struct ScriptContext *ctx)
     u8 elevation = ScriptReadByte(ctx);
     u8 direction = ScriptReadByte(ctx);
 
-    sprite_new(graphicsId, v2, x, y, elevation, direction);
+    CreateObjectSprite(graphicsId, v2, x, y, elevation, direction);
     return FALSE;
 }
 
@@ -1366,7 +1366,7 @@ bool8 ScrCmd_releaseall(struct ScriptContext *ctx)
     HideFieldMessageBox();
     playerObjectId = GetEventObjectIdByLocalIdAndMap(EVENT_OBJ_ID_PLAYER, 0, 0);
     EventObjectClearHeldMovementIfFinished(&gEventObjects[playerObjectId]);
-    sub_80D338C();
+    ScriptMovement_UnfreezeObjectEvents();
     UnfreezeEventObjects();
     return FALSE;
 }
@@ -1380,7 +1380,7 @@ bool8 ScrCmd_release(struct ScriptContext *ctx)
         EventObjectClearHeldMovementIfFinished(&gEventObjects[gSelectedEventObject]);
     playerObjectId = GetEventObjectIdByLocalIdAndMap(EVENT_OBJ_ID_PLAYER, 0, 0);
     EventObjectClearHeldMovementIfFinished(&gEventObjects[playerObjectId]);
-    sub_80D338C();
+    ScriptMovement_UnfreezeObjectEvents();
     UnfreezeEventObjects();
     return FALSE;
 }

@@ -336,14 +336,14 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_ALIEN",
-            "movement_range_x": 7,
-            "movement_range_y": 6,
+            "graphics_id": "EVENT_OBJ_GFX_IMPOSTER_LASS",
+            "movement_range_x": 5,
+            "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "TrickTreat_PetalburgCity_EventScript_Lass",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "TRAINER_TYPE_KEEP_LOADED",
-            "x": 24,
+            "x": 22,
             "y": 21
         },
         {
