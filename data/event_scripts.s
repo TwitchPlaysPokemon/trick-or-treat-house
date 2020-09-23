@@ -6380,3 +6380,5 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/Puzzle_DiveMaze/scripts.inc"
 
 	.include "data/maps/DiveMaze_Underwater/scripts.inc"
+
+	.include "data/maps/TestAcroBikeMap/scripts.inc"

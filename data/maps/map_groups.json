@@ -184,7 +184,8 @@
         "TestMirrorMovement",
         "TestCopyMovement",
         "IndoorMap",
-        "TestMusicRoom"
+        "TestMusicRoom",
+        "TestAcroBikeMap"
     ],
     "MG_TheMetaPuzzle": [
         "Puzzle_MetaPuzzleCave"

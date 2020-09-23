@@ -1569,6 +1569,16 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Underwater",
             "width": 50
+        },
+        {
+            "blockdata_filepath": "data/layouts/TestAcroBikeMap/map.bin",
+            "border_filepath": "data/layouts/TestAcroBikeMap/border.bin",
+            "height": 20,
+            "id": "LAYOUT_TEST_ACRO_BIKE_MAP",
+            "name": "TestAcroBikeMap_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Lavaridge",
+            "width": 20
         }
     ],
     "layouts_table_label": "gMapLayouts"
