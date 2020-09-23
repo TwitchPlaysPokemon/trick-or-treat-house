@@ -1192,10 +1192,10 @@ static const u8 sDiveItemDesc[] = _(
     "and diving suit.\n"
     "Allows DIVE.");
 
-static const u8 sWaterfallItemName[] = _("Flippers");
+static const u8 sWaterfallItemName[] = _("Robokarp");
 static const u8 sWaterfallItemDesc[] = _(
-    "A pair of flippers\n"
-    "made of MAGIKARP scales.\n"
+    "A special motor that\n"
+    "can jump up waterfalls.\n"
     "Allows WATERFALL.");
 
 static const u8 sRedScarfName[] = _("Red Scarf");

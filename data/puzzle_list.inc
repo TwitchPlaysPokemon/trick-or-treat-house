@@ -43,7 +43,7 @@ gPuzzleList::                                           @ Puzzle Type(s)
     .2byte MAP_PUZZLE_WATER_TEMPLE                      @  LOGIC/MAZE
     .2byte MAP_PUZZLE_ELITE_FLOOR                       @  MOVEMENT/MAZE
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL8             @  BATTLE/MOVEMENT (Ice Floor)
-@   .2byte MAP_PUZZLE_LOST_WOODS4_ENTRANCE              @  MAZE
+    .2byte MAP_PUZZLE_LOST_WOODS4_ENTRANCE              @  MAZE
     
 @   .2byte MAP_CREDITS                                  @  MINIGAME
 @   .2byte MAP_TRICK_TREAT_SLATEPORT_CITY1              @  TRICK    (Must be last)

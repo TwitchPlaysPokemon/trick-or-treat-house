@@ -5,15 +5,34 @@
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
     ],
-    "connections": null,
+    "connections": [
+        {
+            "direction": "down",
+            "map": "MAP_LOST_WOODS4_ROOM_B9",
+            "offset": -2
+        }
+    ],
     "coord_events": [
     ],
     "id": "MAP_LOST_WOODS4_EXIT",
     "layout": "LAYOUT_PUZZLE_LOST_WOODS_EXIT",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_DUMMY",
+    "music": "MUS_DAN01",
     "name": "LostWoods4_Exit",
     "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_STONE",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "PuzzleCommon_EventScript_ExitDoorObject",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 8,
+            "y": 5
+        }
     ],
     "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
     "requires_flash": false,

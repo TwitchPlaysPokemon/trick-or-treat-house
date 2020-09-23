@@ -1,4 +1,33 @@
 raw `
 Puzzle_LostWoods4_Entrance_MapScripts::
+	puzzle_info Puzzle_LostWoods4_Name, CommonAuthor_Tustin2121
+	puzzle_adjective Puzzle_LostWoods4_Adjective
+	puzzle_quip Puzzle_LostWoods4_Quip
+	puzzle_metavars Puzzle_LostWoods4_Variables
+	puzzle_item_prereqs Puzzle_LostWoods4_PrereqItems
+	puzzle_candylist Puzzle_LostWoods4_CandyList
+	puzzle_devcommentary Puzzle_LostWoods4_DevCommentary
 	.byte 0
+	
+Puzzle_LostWoods4_Name:
+	.string "The Fog in the Forest$"
+Puzzle_LostWoods4_Adjective:
+	.string "non-euclidean$"
+Puzzle_LostWoods4_Quip:
+	.string "…$"
+Puzzle_LostWoods4_DevCommentary:
+	.string "Tustin2121: This was the original design\n$"
+	.string "for the 'Lost Woods' puzzle, complete\l"
+	.string "with the Antichamber-esque looping back\l"
+	.string "upon oneself.\p"
+	.string "Obviously this is the extreme case, and\n"
+	.string "needed to be last in the series.$"
+.align 2
+Puzzle_LostWoods4_Variables:
+	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_HERO_OF_TIME
+	.2byte 0
+Puzzle_LostWoods4_PrereqItems:
+	.2byte 0
+Puzzle_LostWoods4_CandyList:
+	.2byte 0
 `

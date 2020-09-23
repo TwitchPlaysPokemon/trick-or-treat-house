@@ -1,0 +1,46 @@
+[
+	{
+		"class": "HERO_OF_TIME",
+		"name": "DREW",
+		"party": [
+			{
+				"species": "SPECIES_SANDSHREW",
+				"level": 28,
+				"moves": ["MOVE_DIG", "MOVE_SAND_ATTACK", "MOVE_POISON_STING", "MOVE_SLASH"]
+			}
+		]
+	},
+	{
+		"class": "SKELETON",
+		"name": "JAIME",
+		"music": "MALE",
+		"party": [
+			{
+				"species": "SPECIES_VULPIX",
+				"level": 27
+			},
+			{
+				"species": "SPECIES_BRELOOM",
+				"level": 27
+			}
+		]
+	},
+	{
+		"class": "PICNICKER",
+		"name": "EMILY",
+		"female": true,
+		"music": "GIRL",
+		"party": [
+			{
+				"species": "SPECIES_SANDSHREW",
+				"level": 27,
+				"moves": ["MOVE_DIG", "MOVE_SAND_ATTACK", "MOVE_POISON_STING", "MOVE_SLASH"]
+			},
+			{
+				"species": "SPECIES_BALTOY",
+				"level": 27,
+				"moves": ["MOVE_RAPID_SPIN", "MOVE_MUD_SLAP", "MOVE_PSYBEAM", "MOVE_ROCK_TOMB"]
+			}
+		]
+	}
+]

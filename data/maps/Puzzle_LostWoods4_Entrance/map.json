@@ -5,13 +5,19 @@
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
     ],
-    "connections": null,
+    "connections": [
+        {
+            "direction": "up",
+            "map": "MAP_LOST_WOODS4_ROOM0",
+            "offset": -2
+        }
+    ],
     "coord_events": [
     ],
     "id": "MAP_PUZZLE_LOST_WOODS4_ENTRANCE",
     "layout": "LAYOUT_PUZZLE_LOST_WOODS_ENTRANCE",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_DUMMY",
+    "music": "MUS_DAN01",
     "name": "Puzzle_LostWoods4_Entrance",
     "object_events": [
     ],
