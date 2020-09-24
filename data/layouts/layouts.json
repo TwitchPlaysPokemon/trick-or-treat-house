@@ -843,7 +843,7 @@
         {
             "blockdata_filepath": "data/layouts/TrickHouseExt/map.bin",
             "border_filepath": "data/layouts/TrickHouseExt/border.bin",
-            "height": 60,
+            "height": 65,
             "id": "LAYOUT_TRICK_HOUSE_EXT",
             "name": "TrickHouseExt_Layout",
             "primary_tileset": "gTileset_Autumn",
@@ -1203,7 +1203,7 @@
         {
             "blockdata_filepath": "data/layouts/TrickTreat_SlateportCity1/map.bin",
             "border_filepath": "data/layouts/TrickTreat_SlateportCity1/border.bin",
-            "height": 94,
+            "height": 92,
             "id": "LAYOUT_TRICKTREAT_SLATEPORT_CITY1",
             "name": "TrickTreat_SlateportCity1_Layout",
             "primary_tileset": "gTileset_Autumn",

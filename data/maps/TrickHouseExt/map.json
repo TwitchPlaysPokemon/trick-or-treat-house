@@ -45,13 +45,18 @@
         },
         {
             "direction": "left",
-            "map": "MAP_TRICK_HOUSE_EXT",
-            "offset": -42
+            "map": "MAP_PUZZLE_ROUTE110",
+            "offset": -79
+        },
+        {
+            "direction": "down",
+            "map": "MAP_TRICK_TREAT_SLATEPORT_CITY1",
+            "offset": 31
         },
         {
             "direction": "left",
-            "map": "MAP_PUZZLE_ROUTE110",
-            "offset": -79
+            "map": "MAP_TRICK_HOUSE_EXT",
+            "offset": -42
         }
     ],
     "coord_events": [
