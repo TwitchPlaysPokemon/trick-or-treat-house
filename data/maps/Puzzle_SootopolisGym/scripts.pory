@@ -1,0 +1,168 @@
+raw `
+Puzzle_SootopolisGym_MapScripts::
+	puzzle_info Puzzle_SootopolisGym_Name, CommonAuthor_GameFreak
+	puzzle_custom_intro Puzzle_SootopolisGym_Intro
+	puzzle_quip Puzzle_SootopolisGym_Quip
+	puzzle_metavars Puzzle_SootopolisGym_Variables
+	puzzle_candylist Puzzle_SootopolisGym_CandyList
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_SootopolisGym_OnFrame
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_SootopolisGym_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_SootopolisGym_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_SootopolisGym_OnLoad
+	.byte 0
+
+Puzzle_SootopolisGym_Name:
+	.string "The Euphemistic Straw$"
+Puzzle_SootopolisGym_Intro:
+	.string "You just breezed right through that\n"
+	.string "last one, didn't you?\p"
+	.string "This next puzzle I collected off of\n"
+	.string "someone right in our own back yard!\p"
+	.string "From what he's told me,\n"
+	.string "under certain circumstances,\p"
+	.string "this puzzle can double as\n"
+	.string "a cure for Hyponatremia.\p"
+	.string "The Sootopolis City Gym Leader does\n"
+	.string "have a certain wit about him, right?\p"
+	.string "See you on the other side!$"
+Puzzle_SootopolisGym_Quip:
+	.string "That wasn't so hard, was it?$"
+
+.align 2
+Puzzle_SootopolisGym_Variables:
+	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_WALLACE
+	.2byte 0
+Puzzle_SootopolisGym_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_RARE_01
+	.2byte 0
+
+Puzzle_SootopolisGym_OnFrame:
+	map_script_2 VAR_STEP_TRIGGER, 107, Puzzle_SootopolisGym_UnlockStairs1
+	map_script_2 VAR_STEP_TRIGGER, 219, Puzzle_SootopolisGym_UnlockStairs2
+	map_script_2 VAR_STEP_TRIGGER, 338, Puzzle_SootopolisGym_UnlockStairs3
+	map_script_2 VAR_STEP_TRIGGER, 0, Puzzle_SootopolisGym_FallThroughIce //EventScript_FallDownHole
+	.2byte 0
+
+@ -----------------------------------------------------
+
+#define FLAG_STAIRS1_OPEN                  FLAG_PUZZLE_20
+#define FLAG_STAIRS2_OPEN                  FLAG_PUZZLE_21
+#define FLAG_STAIRS3_OPEN                  FLAG_PUZZLE_22
+#define METATILE_SootopolisGym_Ice_Cracked 0x20E
+#define METATILE_SootopolisGym_Ice_Broken  0x206
+#define METATILE_SootopolisGym_Stairs      0x207
+`
+
+script(local) Puzzle_SootopolisGym_OnTransition {
+	setvar (VAR_STEP_TRIGGER, 1)
+	// setholewarp(MAP_SOOTOPOLIS_GYM_B1F, 0xFF, 0xFF, 0xFF)
+}
+script(local) Puzzle_SootopolisGym_OnResume {
+	setstepcallback(STEP_CB_SOOTOPOLIS_ICE)
+	goto(Puzzle_SootopolisGym_SetupIcePuzzleSection)
+}
+script(local) Puzzle_SootopolisGym_OnLoad {
+	if (flag(FLAG_STAIRS1_OPEN)) {
+		setmetatile (8, 15, METATILE_SootopolisGym_Stairs, 0)
+		setmetatile (8, 16, METATILE_SootopolisGym_Stairs, 0)
+	}
+	if (flag(FLAG_STAIRS2_OPEN)) {
+		setmetatile (8, 10, METATILE_SootopolisGym_Stairs, 0)
+		setmetatile (8, 11, METATILE_SootopolisGym_Stairs, 0)
+	}
+	if (flag(FLAG_STAIRS3_OPEN)) {
+		setmetatile (8, 4, METATILE_SootopolisGym_Stairs, 0)
+		setmetatile (8, 5, METATILE_SootopolisGym_Stairs, 0)
+	}
+}
+
+script Puzzle_SootopolisGym_SetupIcePuzzleSection1 {
+	setvar(VAR_STEP_TRIGGER, 100)
+	setvar(VAR_TEMP_F, 1)
+	goto(Puzzle_SootopolisGym_SetupIcePuzzleSection)
+}
+
+script Puzzle_SootopolisGym_SetupIcePuzzleSection2 {
+	setvar(VAR_STEP_TRIGGER, 200)
+	setvar(VAR_TEMP_E, 1)
+	goto(Puzzle_SootopolisGym_SetupIcePuzzleSection)
+}
+
+script Puzzle_SootopolisGym_SetupIcePuzzleSection3 {
+	setvar(VAR_STEP_TRIGGER, 300)
+	setvar(VAR_TEMP_D, 1)
+	goto(Puzzle_SootopolisGym_SetupIcePuzzleSection)
+}
+
+script(local) Puzzle_SootopolisGym_SetupIcePuzzleSection {
+	if (var(VAR_STEP_TRIGGER) >= 300) {
+		loadhalf(0,  3) // rectX
+		loadhalf(1,  6) // rectY
+		loadhalf(2, 11) // rectW
+		loadhalf(3,  4) // rectH
+	}
+	elif (var(VAR_STEP_TRIGGER) >= 200) {
+		loadhalf(0,  5) // rectX
+		loadhalf(1, 12) // rectY
+		loadhalf(2,  7) // rectW
+		loadhalf(3,  3) // rectH
+	}
+	elif (var(VAR_STEP_TRIGGER) >= 100) {
+		loadhalf(0,  7) // rectX
+		loadhalf(1, 17) // rectY
+		loadhalf(2,  3) // rectW
+		loadhalf(3,  3) // rectH
+	}
+	callnative(SetSootopolisGymCrackedIceConfig)
+}
+
+script(local) Puzzle_SootopolisGym_UnlockStairs1 {
+	setvar (VAR_STEP_TRIGGER, 1)
+	setflag (FLAG_STAIRS1_OPEN)
+	delay (40)
+	playse (SE_RU_GASHIN)
+	setmetatile (8, 15, METATILE_SootopolisGym_Stairs, 0)
+	setmetatile (8, 16, METATILE_SootopolisGym_Stairs, 0)
+	special (DrawWholeMapView)
+}
+
+script(local) Puzzle_SootopolisGym_UnlockStairs2 {
+	setvar (VAR_STEP_TRIGGER, 1)
+	setflag (FLAG_STAIRS2_OPEN)
+	delay (40)
+	playse (SE_RU_GASHIN)
+	setmetatile (8, 10, METATILE_SootopolisGym_Stairs, 0)
+	setmetatile (8, 11, METATILE_SootopolisGym_Stairs, 0)
+	special (DrawWholeMapView)
+}
+
+script(local) Puzzle_SootopolisGym_UnlockStairs3 {
+	setvar (VAR_STEP_TRIGGER, 1)
+	setflag (FLAG_STAIRS3_OPEN)
+	delay (40)
+	playse (SE_RU_GASHIN)
+	setmetatile (8, 4, METATILE_SootopolisGym_Stairs, 0)
+	setmetatile (8, 5, METATILE_SootopolisGym_Stairs, 0)
+	special (DrawWholeMapView)
+}
+
+script(local) Puzzle_SootopolisGym_FallThroughIce {
+	lockall
+	delay (20)
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_SetInvisible)
+	waitmovement (0)
+	playse (SE_RU_HYUU)
+	delay (60)
+	warphole (MAP_SOOTOPOLIS_GYM_B1F)
+	waitstate
+}
+
+raw `
+#undef FLAG_STAIRS1_OPEN
+#undef FLAG_STAIRS2_OPEN
+#undef FLAG_STAIRS3_OPEN
+`

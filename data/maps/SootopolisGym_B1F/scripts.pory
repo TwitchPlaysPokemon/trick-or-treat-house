@@ -1,0 +1,77 @@
+raw `
+SootopolisGym_B1F_MapScripts::
+	puzzle_info Puzzle_SootopolisGym_Name, CommonAuthor_GameFreak
+	map_script MAP_SCRIPT_ON_TRANSITION, SootopolisGym_B1F_OnTransition
+	.byte 0
+`
+
+script(local) SootopolisGym_B1F_OnTransition {
+	// reclose the 1st stairs if the player hasn't defeated both of the trainers on that level
+	if (!defeated(TRAINER_01) || !defeated(TRAINER_02)) {
+		clearflag(FLAG_PUZZLE_20)
+	}
+	// reclose the 2nd stairs if the player hasn't defeated both of the trainers on that level
+	if (!defeated(TRAINER_03) || !defeated(TRAINER_04)) {
+		clearflag(FLAG_PUZZLE_21)
+	}
+	// reclose the 3rd stairs if the player hasn't defeated all of the trainers on that level
+	if (!defeated(TRAINER_05) || !defeated(TRAINER_06) || !defeated(TRAINER_07) || !defeated(TRAINER_08)) {
+		clearflag(FLAG_PUZZLE_22)
+	}
+}
+
+script SootopolisGym_B1F_Trainer01 { //mermaid
+	trainerbattle_single(TRAINER_01, 
+			"Hi$", 
+			"Darn$")
+	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+}
+
+script SootopolisGym_B1F_Trainer02 { //frogger
+	trainerbattle_single(TRAINER_02, 
+			"Hi$", 
+			"Darn$")
+	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+}
+
+script SootopolisGym_B1F_Trainer03 { //hiker father
+	trainerbattle_single(TRAINER_03, 
+			"Hi$", 
+			"Darn$")
+	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+}
+
+script SootopolisGym_B1F_Trainer04 { //ninjaboy son
+	trainerbattle_single(TRAINER_04, 
+			"Hi$", 
+			"Darn$")
+	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+}
+
+script SootopolisGym_B1F_Trainer05 { //ghestis
+	trainerbattle_single(TRAINER_05, 
+			"Hi$", 
+			"Darn$")
+	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+}
+
+script SootopolisGym_B1F_Trainer06 { //masked
+	trainerbattle_single(TRAINER_06, 
+			"Hi$", 
+			"Darn$")
+	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+}
+
+script SootopolisGym_B1F_Trainer07 { //superman
+	trainerbattle_single(TRAINER_07, 
+			"Hi$", 
+			"Darn$")
+	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+}
+
+script SootopolisGym_B1F_Trainer08 { //alien
+	trainerbattle_single(TRAINER_08, 
+			"Hi$", 
+			"Darn$")
+	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+}

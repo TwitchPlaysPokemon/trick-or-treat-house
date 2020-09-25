@@ -162,7 +162,8 @@
         "Puzzle_StealthMission",
         "Puzzle_MurderExpress",
         "Puzzle_EliteFloor",
-        "Puzzle_DiveMaze"
+        "Puzzle_DiveMaze",
+        "Puzzle_SootopolisGym"
     ],
     "MG_SingleMapPuzzles2019": [
         "Puzzle_TrickHouseCut",
@@ -202,7 +203,8 @@
         "FakeSecretBaseCave",
         "SuspendedMaze_B1",
         "WaterTemple_Secret",
-        "DiveMaze_Underwater"
+        "DiveMaze_Underwater",
+        "SootopolisGym_B1F"
     ],
     "MG_TestMaps": [
         "TestMapHallway",

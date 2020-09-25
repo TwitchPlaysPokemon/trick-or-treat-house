@@ -17,6 +17,7 @@ TrickTreat_FortreeCity_Intro:
 	.string "the door to Fortree City!"
 TrickTreat_FortreeCity_Quip:
 	.string "{LINK}: $"
+.align 2
 TrickTreat_FortreeCity_Variables:
 	.2byte VAR_INTRO_PERSON, TTH_FRIEND_JAMES
 	.2byte VAR_QUIP_PERSON,  TTH_FRIEND_JAMES

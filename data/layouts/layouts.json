@@ -1579,6 +1579,26 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Lavaridge",
             "width": 20
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_SootopolisGym/map.bin",
+            "border_filepath": "data/layouts/Puzzle_SootopolisGym/border.bin",
+            "height": 26,
+            "id": "LAYOUT_PUZZLE_SOOTOPOLIS_GYM",
+            "name": "Puzzle_SootopolisGym_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_SootopolisGym",
+            "width": 17
+        },
+        {
+            "blockdata_filepath": "data/layouts/SootopolisGym_B1F/map.bin",
+            "border_filepath": "data/layouts/SootopolisGym_B1F/border.bin",
+            "height": 26,
+            "id": "LAYOUT_SOOTOPOLIS_GYM_B1F",
+            "name": "SootopolisGym_B1F_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_SootopolisGym",
+            "width": 17
         }
     ],
     "layouts_table_label": "gMapLayouts"

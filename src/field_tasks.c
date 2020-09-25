@@ -23,6 +23,9 @@
 #include "constants/metatile_labels.h"
 #include "constants/field_tasks.h"
 
+#include "menu.h"
+#include "string_util.h"
+
 struct PacifidlogMetatileOffsets
 {
     s8 x;
@@ -743,31 +746,77 @@ static void FortreeBridgePerStepCallback(u8 taskId)
     }
 }
 
-static bool32 CoordInIcePuzzleRegion(s16 x, s16 y)
+///////////////////////////////////////////////////////////////////////////////
+
+#define state      data[1]
+#define prevX      data[2]
+#define prevY      data[3]
+#define crackedX   data[4]
+#define crackedY   data[5]
+#define delayTimer data[6]
+
+#define rectX      data[10]
+#define rectY      data[11]
+#define rectW      data[12]
+#define rectH      data[13]
+
+static bool32 CoordInIcePuzzleRegion(s16 *data, s16 x, s16 y);
+
+void SetSootopolisGymCrackedIceConfig(struct ScriptContext *ctx)
 {
-    if ((u16)(x - 3) < 11 && (u16)(y - 6) < 14 && sSootopolisGymIceRowVars[y])
-        return TRUE;
-    else
-        return FALSE;
+    u8 taskId = FindTaskIdByFunc(Task_RunPerStepCallback);
+    s16 *data = gTasks[taskId].data;
+    
+    if (taskId == 0xff || data[0] != STEP_CB_SOOTOPOLIS_ICE) return; //can't do anything if cracked ice is not set
+    rectX = ctx->data[0];
+    rectY = ctx->data[1];
+    rectW = ctx->data[2];
+    rectH = ctx->data[3];
 }
 
-static void MarkIcePuzzleCoordVisited(s16 x, s16 y)
-{
-    if (CoordInIcePuzzleRegion(x, y))
-        *GetVarPointer(sSootopolisGymIceRowVars[y]) |= (1 << (x - 3));
+void SetSootopolisGymCrackedIceMetatilesRegion(s16 *data, s16 dx, s16 dy) {
+    s32 x, y;
+    s32 width = gMapHeader.mapLayout->width;
+    s32 height = gMapHeader.mapLayout->height;
+    
+    for (x = 0; x < width; x++)
+    {
+        for (y = 0; y < height; y++)
+        {
+            if (CoordInIcePuzzleRegion(data, x, y) == TRUE)
+                MapGridSetMetatileIdAt(x + 7, y + 7, 0x202);//METATILE_ID(SootopolisGym, Ice_Cracked));
+        }
+    }
+    MapGridSetMetatileIdAt(dx + 7, dy + 7, 0x201);
+    DrawWholeMapView();
 }
 
-static bool32 IsIcePuzzleCoordVisited(s16 x, s16 y)
+static bool32 CoordInIcePuzzleRegion(s16 *data, s16 x, s16 y)
+{
+    // if ((u16)(x - 3) < 11 && (u16)(y - 6) < 14 && sSootopolisGymIceRowVars[y])
+    //     return TRUE;
+    // else
+    //     return FALSE;
+    if (rectW == 0 || rectH == 0) return FALSE;
+    if (x < rectX || x >= rectX + rectW) return FALSE;
+    if (y < rectY || y >= rectY + rectH) return FALSE;
+    return TRUE;
+}
+
+static void MarkIcePuzzleCoordVisited(s16 *data, s16 x, s16 y)
+{
+    if (!CoordInIcePuzzleRegion(data, x, y)) return;
+        // *GetVarPointer(sSootopolisGymIceRowVars[y]) |= (1 << (x - 3));
+    *GetVarPointer(VAR_TEMP_0 + (y - rectY)) |= (1 << ( x - rectX ));
+}
+
+static bool32 IsIcePuzzleCoordVisited(s16 *data, s16 x, s16 y)
 {
     u32 var;
-    if (!CoordInIcePuzzleRegion(x, y))
-        return FALSE;
-
-    var = VarGet(sSootopolisGymIceRowVars[y]) << 16;
-    if ((0x10000 << (x - 3)) & var) // TODO: fix that if
-        return TRUE;
-    else
-        return FALSE;
+    if (!CoordInIcePuzzleRegion(data, x, y)) return FALSE;
+    var = VarGet(VAR_TEMP_0 + (y - rectY));
+    
+    return (var & (1 << ( x - rectX ))) != 0;
 }
 
 void SetSootopolisGymCrackedIceMetatiles(void)
@@ -775,11 +824,17 @@ void SetSootopolisGymCrackedIceMetatiles(void)
     s32 x, y;
     s32 width = gMapHeader.mapLayout->width;
     s32 height = gMapHeader.mapLayout->height;
+    u8 taskId = FindTaskIdByFunc(Task_RunPerStepCallback);
+    s16 *data = gTasks[taskId].data;
+    
+    if (taskId == 0xff || data[0] != STEP_CB_SOOTOPOLIS_ICE) return; //can't do anything if cracked ice is not set
+    if (rectW == 0 || rectY == 0) return; //can't do anything without config info
+    
     for (x = 0; x < width; x++)
     {
         for (y = 0; y < height; y++)
         {
-            if (IsIcePuzzleCoordVisited(x, y) == TRUE)
+            if (IsIcePuzzleCoordVisited(data, x, y) == TRUE)
                 MapGridSetMetatileIdAt(x + 7, y + 7, METATILE_ID(SootopolisGym, Ice_Cracked));
         }
     }
@@ -787,77 +842,101 @@ void SetSootopolisGymCrackedIceMetatiles(void)
 
 static void SootopolisGymIcePerStepCallback(u8 taskId)
 {
-    s16 x, y;
+    s16 x, y; // Note: this X/Y is already offset by view distance
     u16 tileBehavior;
     u16 *iceStepCount;
     s16 *data = gTasks[taskId].data;
-    switch (data[1])
+    
+    switch (state)
     {
         case 0:
             PlayerGetDestCoords(&x, &y);
-            data[2] = x;
-            data[3] = y;
-            data[1] = 1;
+            prevX = x;
+            prevY = y;
+            state = 1;
             break;
         case 1:
             PlayerGetDestCoords(&x, &y);
-            if (x != data[2] || y != data[3])
+            if (x != prevX || y != prevY)
             {
-                data[2] = x;
-                data[3] = y;
+                prevX = x;
+                prevY = y;
                 tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
                 iceStepCount = GetVarPointer(VAR_STEP_TRIGGER);
-                if (MetatileBehavior_IsThinIce(tileBehavior) == TRUE)
+                if (MetatileBehavior_IsThinIce(tileBehavior) == TRUE)// && CoordInIcePuzzleRegion(data, x, y) == TRUE)
                 {
-                    (*iceStepCount)++;
-                    data[6] = 4;
-                    data[1] = 2;
-                    data[4] = x;
-                    data[5] = y;
+                    if (CoordInIcePuzzleRegion(data, x - 7, y - 7) == TRUE)
+                    {
+                        (*iceStepCount)++;
+                        // ConvertIntToDecimalStringN(gStringVar4, *iceStepCount, 0, 3);
+                        // AddTextPrinterWithCustomSpeedForMessage(FALSE, 0xFF);
+                    }
+                    else
+                    {
+                        MapGridSetMetatileIdAt(x, y, 0); // put down obviously bad tile to show the ice step doesn't count
+                        CurrentMapDrawMetatileAt(x, y);
+                    }
+                    delayTimer = 4;
+                    state = 2;
+                    crackedX = x;
+                    crackedY = y;
                 }
                 else if (MetatileBehavior_IsCrackedIce(tileBehavior) == TRUE)
                 {
                     *iceStepCount = 0;
-                    data[6] = 4;
-                    data[1] = 3;
-                    data[4] = x;
-                    data[5] = y;
+                    delayTimer = 4;
+                    state = 3;
+                    crackedX = x;
+                    crackedY = y;
                 }
             }
             break;
         case 2:
-            if (data[6] != 0)
+            if (delayTimer != 0)
             {
-                data[6]--;
+                delayTimer--;
             }
             else
             {
-                x = data[4];
-                y = data[5];
+                x = crackedX;
+                y = crackedY;
                 PlaySE(SE_RU_BARI);
                 MapGridSetMetatileIdAt(x, y, METATILE_ID(SootopolisGym, Ice_Cracked));
                 CurrentMapDrawMetatileAt(x, y);
-                MarkIcePuzzleCoordVisited(x - 7, y - 7);
-                data[1] = 1;
+                MarkIcePuzzleCoordVisited(data, x - 7, y - 7);
+                state = 1;
             }
             break;
         case 3:
-            if (data[6] != 0)
+            if (delayTimer != 0)
             {
-                data[6]--;
+                delayTimer--;
             }
             else
             {
-                x = data[4];
-                y = data[5];
+                x = crackedX;
+                y = crackedY;
                 PlaySE(SE_RU_GASYAN);
                 MapGridSetMetatileIdAt(x, y, METATILE_ID(SootopolisGym, Ice_Broken));
                 CurrentMapDrawMetatileAt(x, y);
-                data[1] = 1;
+                state = 1;
             }
             break;
     }
 }
+
+#undef state
+#undef prevX
+#undef prevY
+#undef crackedX
+#undef crackedY
+#undef delayTimer
+#undef rectX
+#undef rectY
+#undef rectW
+#undef rectH
+
+///////////////////////////////////////////////////////////////////////////////
 
 static void AshGrassPerStepCallback(u8 taskId)
 {

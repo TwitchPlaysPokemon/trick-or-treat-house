@@ -6404,3 +6404,7 @@ EventScript_PlayerPCFemale::
 	.include "data/text/birch_speech.inc"
 
 
+
+	.include "data/maps/Puzzle_SootopolisGym/scripts.inc"
+
+	.include "data/maps/SootopolisGym_B1F/scripts.inc"
