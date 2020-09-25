@@ -209,7 +209,9 @@
 #define MAP_PUZZLE_SPOT_DIFFERENCE_3_RIGHT (6 | (10 << 8))
 
 // Map Group 11
-#define MAP_PUZZLE_META_PUZZLE_CAVE (0 | (11 << 8))
+#define MAP_PUZZLE_META_PUZZLE_CAVE   (0 | (11 << 8))
+#define MAP_META_PUZZLE_EMPTY_PUZZLE  (1 | (11 << 8))
+#define MAP_META_PUZZLE_STRENGTH_ROOM (2 | (11 << 8))
 
 // Map Group 12
 #define MAP_PUZZLE_TRICK_HOUSE_CUT       (0 | (12 << 8))

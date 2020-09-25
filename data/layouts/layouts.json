@@ -1599,6 +1599,26 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_SootopolisGym",
             "width": 17
+        },
+        {
+            "blockdata_filepath": "data/layouts/MetaPuzzle_EmptyPuzzle/map.bin",
+            "border_filepath": "data/layouts/MetaPuzzle_EmptyPuzzle/border.bin",
+            "height": 7,
+            "id": "LAYOUT_META_PUZZLE_EMPTY_PUZZLE",
+            "name": "MetaPuzzle_EmptyPuzzle_Layout",
+            "primary_tileset": "gTileset_SecretBase",
+            "secondary_tileset": "gTileset_SecretBaseBlueCave",
+            "width": 11
+        },
+        {
+            "blockdata_filepath": "data/layouts/MetaPuzzle_StrengthRoom/map.bin",
+            "border_filepath": "data/layouts/MetaPuzzle_StrengthRoom/border.bin",
+            "height": 19,
+            "id": "LAYOUT_META_PUZZLE_STRENGTH_ROOM",
+            "name": "MetaPuzzle_StrengthRoom_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Cave",
+            "width": 19
         }
     ],
     "layouts_table_label": "gMapLayouts"

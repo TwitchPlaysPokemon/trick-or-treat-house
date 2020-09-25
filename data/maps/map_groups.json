@@ -217,7 +217,9 @@
         "TestAcroBikeMap"
     ],
     "MG_TheMetaPuzzle": [
-        "Puzzle_MetaPuzzleCave"
+        "Puzzle_MetaPuzzleCave",
+        "MetaPuzzle_EmptyPuzzle",
+        "MetaPuzzle_StrengthRoom"
     ],
     "MG_TrickOrTreatPuzzles": [
         "TrickTreat_PetalburgCity",
