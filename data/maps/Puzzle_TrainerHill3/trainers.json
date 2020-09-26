@@ -16,7 +16,7 @@
 		"female": true,
 		"party": [
 			{
-				"species": "SPECIES_CLAMPEARL",
+				"species": "SPECIES_CLAMPERL",
 				"item": "ITEM_SILK_SCARF",
 				"level": 28
 			}
@@ -35,7 +35,7 @@
 		]
 	},
 	{
-		"class": "TUBER",
+		"class": "TUBER_F",
 		"pic": "TUBER_F",
 		"female": true,
 		"name": "ANIYA",
@@ -91,7 +91,7 @@
 				"level": 31
 			},
 			{
-				"species": "SPECIES_USARING",
+				"species": "SPECIES_URSARING",
 				"item": "ITEM_LEFTOVERS",
 				"level": 31
 			}
@@ -104,7 +104,7 @@
 		"name": "ALICIA",
 		"party": [
 			{
-				"species": "SPECIES_NINETAILS",
+				"species": "SPECIES_NINETALES",
 				"item": "ITEM_WHITE_HERB",
 				"level": 31
 			},

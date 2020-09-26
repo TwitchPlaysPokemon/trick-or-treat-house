@@ -22,56 +22,71 @@ script(local) SootopolisGym_B1F_OnTransition {
 
 script SootopolisGym_B1F_Trainer01 { //mermaid
 	trainerbattle_single(TRAINER_01, 
-			"Hi$", 
-			"Darn$")
-	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+			"Come swim with me!$", 
+			"Gotta come up for air!$")
+	msgbox ("Can I be part of your world?\p"
+			"No? Well, can you at least point me in\n"
+			"the direction of the exit?$", MSGBOX_AUTOCLOSE)
 }
 
 script SootopolisGym_B1F_Trainer02 { //frogger
 	trainerbattle_single(TRAINER_02, 
-			"Hi$", 
-			"Darn$")
-	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+			"Thanks for dropping in!\n"
+			"Time to hop on up!$", 
+			"Ow, hit by a car!$")
+	msgbox ("Hey, seen any princesses tonight?\n"
+			"I gotta get one to help me turn back\l"
+			"into a prince again before midnight!$", MSGBOX_AUTOCLOSE)
 }
 
 script SootopolisGym_B1F_Trainer03 { //hiker father
 	trainerbattle_single(TRAINER_03, 
-			"Hi$", 
-			"Darn$")
-	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+			"Now now, Benny, not too rough!$", 
+			"You're really good at this.$")
+	msgbox ("Isn't my little boy so cute in that\n"
+			"ninja costume of his?$", MSGBOX_AUTOCLOSE)
 }
 
 script SootopolisGym_B1F_Trainer04 { //ninjaboy son
 	trainerbattle_single(TRAINER_04, 
-			"Hi$", 
-			"Darn$")
-	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+			"I attack you with my shurikins!$", 
+			"No, you're supposed to be pinned\n"
+			"to the wall!$")
+	msgbox ("Time to vanish in a puff of smoke!\n"
+			"Fwoosh!$", MSGBOX_AUTOCLOSE)
 }
 
 script SootopolisGym_B1F_Trainer05 { //ghestis
 	trainerbattle_single(TRAINER_05, 
-			"Hi$", 
-			"Darn$")
-	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+			"Release your {POKEMON} to ME!!$", 
+			"Alas! I have failed!$")
+	msgbox ("You know, Ghestis had some good points…\p"
+			"Right up until he brought out the\n"
+			"freeze rays.$", MSGBOX_AUTOCLOSE)
 }
 
 script SootopolisGym_B1F_Trainer06 { //masked
 	trainerbattle_single(TRAINER_06, 
-			"Hi$", 
-			"Darn$")
-	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+			"I shall drag you down with me!$", 
+			"Wait, no you weren't supposed\n"
+			"to WIN!$")
+	msgbox ("So, uh… how do you get out of here?$", MSGBOX_AUTOCLOSE)
 }
 
 script SootopolisGym_B1F_Trainer07 { //superman
 	trainerbattle_single(TRAINER_07, 
-			"Hi$", 
-			"Darn$")
-	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+			"I lost all my candy in the snow when\n"
+			"I landed down here!$", 
+			"Aw, now I have even LESS candy!$")
+	msgbox ("Can you help me find my lost candy?\p"
+			"What?! No! You can't “Finder's Keepers”!\n"
+			"They were mine first!$", MSGBOX_AUTOCLOSE)
 }
 
 script SootopolisGym_B1F_Trainer08 { //alien
 	trainerbattle_single(TRAINER_08, 
-			"Hi$", 
-			"Darn$")
-	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+			"Take me to your medical practicioner!$", 
+			"First my ankle, now my pride…$")
+	msgbox ("No, really, I think I hurt my ankle\n"
+			"falling through the ice. Ow!$", MSGBOX_AUTOCLOSE)
 }
