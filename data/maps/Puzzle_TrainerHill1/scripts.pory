@@ -1,4 +1,76 @@
 raw `
 Puzzle_TrainerHill1_MapScripts::
+	puzzle_info Puzzle_TrainerHill1_Name, CommonAuthor_GameFreak
+	puzzle_adjective Puzzle_TrainerHill1_Adjective
+	puzzle_quip Puzzle_TrainerHill1_Quip
+	puzzle_candylist Puzzle_TrainerHill1_CandyList
 	.byte 0
+
+Puzzle_TrainerHill1_Name:
+	.string "$"
+Puzzle_TrainerHill1_Adjective:
+	.string "$"
+Puzzle_TrainerHill1_Quip:
+	.string "$"
+.align 2
+Puzzle_TrainerHill1_CandyList:
+	.2byte 0
+
+@ -----------------------------------------------------
 `
+
+script Puzzle_TrainerHill1_Trainer1A {
+	trainerbattle_single(TRAINER_01, 
+			"Hi$", 
+			"Rip$")
+	msgbox("Bye$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill1_Trainer1B {
+	trainerbattle_single(TRAINER_02, 
+			"Hi$", 
+			"Rip$")
+	msgbox("Bye$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill1_Trainer2A {
+	trainerbattle_single(TRAINER_03, 
+			"Hi$", 
+			"Rip$")
+	msgbox("Bye$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill1_Trainer2B {
+	trainerbattle_single(TRAINER_04, 
+			"Hi$", 
+			"Rip$")
+	msgbox("Bye$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill1_Trainer3A {
+	trainerbattle_single(TRAINER_05, 
+			"Hi$", 
+			"Rip$")
+	msgbox("Bye$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill1_Trainer3B {
+	trainerbattle_single(TRAINER_06, 
+			"Hi$", 
+			"Rip$")
+	msgbox("Bye$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill1_Trainer4A {
+	trainerbattle_single(TRAINER_07, 
+			"Hi$", 
+			"Rip$")
+	msgbox("Bye$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill1_Trainer4B {
+	trainerbattle_single(TRAINER_08, 
+			"Hi$", 
+			"Rip$")
+	msgbox("Bye$", MSGBOX_AUTOCLOSE)
+}
