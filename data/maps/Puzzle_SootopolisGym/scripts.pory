@@ -35,6 +35,7 @@ Puzzle_SootopolisGym_Variables:
 Puzzle_SootopolisGym_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01
 	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
 	.2byte FLAG_CANDY_UNCOMMON_01
 	.2byte FLAG_CANDY_HEALTHY_01
 	.2byte FLAG_CANDY_RARE_01
