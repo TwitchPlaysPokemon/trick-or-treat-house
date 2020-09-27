@@ -22,7 +22,8 @@ gPuzzleList::                                           @ Puzzle Type(s)
 @   .2byte MAP_PUZZLE_LOST_WOODS2_ENTRANCE              @  MAZE
     
 @   .2byte MAP_TRICK_TREAT_FORTREE_CITY                 @  TRICK
-
+    
+    .2byte MAP_PUZZLE_SOOTOPOLIS_GYM                    @  MOVEMENT
     .2byte MAP_PUZZLE_TIN_TOWER_CLIMB                   @  WILD/MAZE
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL5             @  MOVEMENT/MAZE (RSE Slide Tiles)
     .2byte MAP_PUZZLE_TRAINER_HILL2                     @  BATTLE/MAZE
@@ -59,7 +60,6 @@ gPuzzleList::                                           @ Puzzle Type(s)
 .align 2
 gDebugPuzzles::
     .2byte MAP_EMPTY_PUZZLE
-    .2byte MAP_PUZZLE_SOOTOPOLIS_GYM
     .2byte MAP_PUZZLE_SUSPENDED_MAZE
     .2byte MAP_TRICK_TREAT_ALTO_MARE1                   @  TRICK
     .2byte MAP_TRICK_TREAT_FORTREE_CITY                 @  TRICK

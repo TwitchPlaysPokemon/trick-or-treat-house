@@ -6,7 +6,7 @@
 		"name": "PENELOPE",
 		"party": [
 			{
-				"species": "SPECIES_CLAMPEARL",
+				"species": "SPECIES_CLAMPERL",
 				"level": 28
 			},
 			{
@@ -28,17 +28,6 @@
 	},
 	
 	{
-		"class": "NINJA",
-		"name": "BENNY",
-		"music": "SUSPICIOUS",
-		"party": [
-			{
-				"species": "SPECIES_CACTURNE",
-				"level": 26
-			}
-		]
-	},
-	{
 		"class": "HIKER",
 		"name": "MONTY",
 		"music": "INTENSE",
@@ -46,6 +35,17 @@
 			{
 				"species": "SPECIES_AGGRON",
 				"level": 28
+			}
+		]
+	},
+	{
+		"class": "NINJA_BOY",
+		"name": "BENNY",
+		"music": "SUSPICIOUS",
+		"party": [
+			{
+				"species": "SPECIES_CACTURNE",
+				"level": 26
 			}
 		]
 	},

@@ -4,6 +4,22 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_02",
+            "item": "ITEM_CANDY_ABUNDANT",
+            "type": "hidden_item",
+            "x": 9,
+            "y": 17
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_UNCOMMON_01",
+            "item": "ITEM_CANDY_UNCOMMON",
+            "type": "hidden_item",
+            "x": 5,
+            "y": 9
+        }
     ],
     "connections": null,
     "coord_events": [
@@ -38,7 +54,7 @@
     "id": "MAP_PUZZLE_SOOTOPOLIS_GYM",
     "layout": "LAYOUT_PUZZLE_SOOTOPOLIS_GYM",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_GIM",
     "name": "Puzzle_SootopolisGym",
     "object_events": [
         {
@@ -57,15 +73,28 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_SCROLL",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_STONE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "PuzzleCommon_EventScript_EntranceDoorObject",
+            "script": "PuzzleCommon_EventScript_ExitDoorObject",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
             "x": 8,
             "y": 1
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_03",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyAbundant",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 3,
+            "y": 2
         }
     ],
     "region_map_section": "MAPSEC_SOOTOPOLIS_CITY",

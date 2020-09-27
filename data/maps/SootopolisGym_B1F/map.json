@@ -11,7 +11,7 @@
     "id": "MAP_SOOTOPOLIS_GYM_B1F",
     "layout": "LAYOUT_SOOTOPOLIS_GYM_B1F",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_GIM",
     "name": "SootopolisGym_B1F",
     "object_events": [
         {
