@@ -4,6 +4,62 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_RARE_01",
+            "item": "ITEM_CANDY_RARE",
+            "type": "hidden_item",
+            "x": 32,
+            "y": 57
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_RARE_02",
+            "item": "ITEM_CANDY_RARE",
+            "type": "hidden_item",
+            "x": 17,
+            "y": 56
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_UNCOMMON_01",
+            "item": "ITEM_CANDY_UNCOMMON",
+            "type": "hidden_item",
+            "x": 10,
+            "y": 19
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_COMMON_01",
+            "item": "ITEM_CANDY_COMMON",
+            "type": "hidden_item",
+            "x": 6,
+            "y": 7
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_COMMON_02",
+            "item": "ITEM_CANDY_COMMON",
+            "type": "hidden_item",
+            "x": 31,
+            "y": 13
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_02",
+            "item": "ITEM_CANDY_ABUNDANT",
+            "type": "hidden_item",
+            "x": 24,
+            "y": 37
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_04",
+            "item": "ITEM_CANDY_ABUNDANT",
+            "type": "hidden_item",
+            "x": 7,
+            "y": 39
+        }
     ],
     "connections": null,
     "coord_events": [
@@ -88,7 +144,7 @@
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
             "script": "Puzzle_TrainerHill3_Trainer2A",
             "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "0",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 28,
             "y": 40
         },
@@ -108,7 +164,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_POKEFAN_M",
+            "graphics_id": "EVENT_OBJ_GFX_CAMPER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -121,7 +177,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_POKEFAN_F",
+            "graphics_id": "EVENT_OBJ_GFX_PICNICKER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -156,6 +212,58 @@
             "trainer_type": "TRAINER_TYPE_NORMAL",
             "x": 29,
             "y": 19
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TEALA",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "Puzzle_TrainerHill_Reception",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 36,
+            "y": 60
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_01",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyAbundant",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 31,
+            "y": 5
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_03",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyAbundant",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 24,
+            "y": 43
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_05",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyAbundant",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 9,
+            "y": 31
         }
     ],
     "region_map_section": "MAPSEC_TRAINER_HILL",

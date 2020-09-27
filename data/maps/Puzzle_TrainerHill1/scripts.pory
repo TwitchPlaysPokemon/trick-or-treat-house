@@ -1,19 +1,45 @@
 raw `
 Puzzle_TrainerHill1_MapScripts::
 	puzzle_info Puzzle_TrainerHill1_Name, CommonAuthor_GameFreak
-	puzzle_adjective Puzzle_TrainerHill1_Adjective
+	puzzle_custom_intro Puzzle_TrainerHill1_Intro
 	puzzle_quip Puzzle_TrainerHill1_Quip
 	puzzle_candylist Puzzle_TrainerHill1_CandyList
 	.byte 0
 
 Puzzle_TrainerHill1_Name:
-	.string "$"
-Puzzle_TrainerHill1_Adjective:
-	.string "$"
+	.string "Tower: A New Hope$"
+Puzzle_TrainerHill1_Intro:
+	.string "Oh ho! Back for another round then?\p"
+	.string "So, indulge me a moment: In this past\n"
+	.string "year, I discovered a wonderful discovery!\p"
+	.string "A strange tower, embedded in the rocks\n"
+	.string "north of here, offers trainers battles\l"
+	.string "and mini puzzles to solve!\p"
+	.string "Mini puzzles! Can you believe such\n"
+	.string "a wonder could even exist?!\p"
+	.string "So, I told them I'll have the lot\n"
+	.string "of them! A bargain deal, it was!\p"
+	.string "So, lo, the Trainer Tower begins!\n"
+	.string "Good luck!$"
 Puzzle_TrainerHill1_Quip:
-	.string "$"
+	.string "Some of those trainers were\n"
+	.string "really kinda weird.\p"
+	.string "Almost like they had so little time\n"
+	.string "to say so very much.$"
 .align 2
 Puzzle_TrainerHill1_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_COMMON_03
+	.2byte FLAG_CANDY_COMMON_04
+	.2byte FLAG_CANDY_COMMON_05
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_RARE_01
 	.2byte 0
 
 @ -----------------------------------------------------
@@ -21,56 +47,59 @@ Puzzle_TrainerHill1_CandyList:
 
 script Puzzle_TrainerHill1_Trainer1A {
 	trainerbattle_single(TRAINER_01, 
-			"Hi$", 
-			"Rip$")
-	msgbox("Bye$", MSGBOX_AUTOCLOSE)
+			"We can take on ANY type!$", 
+			"Guess our strategy isn't any good…$")
+	msgbox( "We gotta train a lot more.$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_TrainerHill1_Trainer1B {
 	trainerbattle_single(TRAINER_02, 
-			"Hi$", 
-			"Rip$")
-	msgbox("Bye$", MSGBOX_AUTOCLOSE)
+			"We will be here for\nany trainer challenge!$", 
+			"No no… That just won't do…$")
+	msgbox( "I should go to trainer school…$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_TrainerHill1_Trainer2A {
 	trainerbattle_single(TRAINER_03, 
-			"Hi$", 
-			"Rip$")
-	msgbox("Bye$", MSGBOX_AUTOCLOSE)
+			"Let's wrap things up!$", 
+			"I'll make you sorry for this, friend!$")
+	msgbox( "Haven't you done enough? Begone!$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_TrainerHill1_Trainer2B {
 	trainerbattle_single(TRAINER_04, 
-			"Hi$", 
-			"Rip$")
-	msgbox("Bye$", MSGBOX_AUTOCLOSE)
+			"I am the strong Beauty around here!$", 
+			"I-I'm tired today! That's why I lost!$")
+	msgbox( "Why yes. I AM angry, thankyou very much!$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_TrainerHill1_Trainer3A {
 	trainerbattle_single(TRAINER_05, 
-			"Hi$", 
-			"Rip$")
-	msgbox("Bye$", MSGBOX_AUTOCLOSE)
+			"I like this {POKEMON} the best!$", 
+			"I confused one move with another move!$")
+	msgbox( "I want a sketch of your win.$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_TrainerHill1_Trainer3B {
 	trainerbattle_single(TRAINER_06, 
-			"Hi$", 
-			"Rip$")
-	msgbox("Bye$", MSGBOX_AUTOCLOSE)
+			"I have a cool rare move to show off!$", 
+			"Didn't you see the move?$")
+	msgbox( "I'm smart, but also weak…$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_TrainerHill1_Trainer4A {
 	trainerbattle_single(TRAINER_07, 
-			"Hi$", 
-			"Rip$")
-	msgbox("Bye$", MSGBOX_AUTOCLOSE)
+			"I got my {POKEMON} on vacation!$", 
+			"Wahh! My rare {POKEMON}!!\n"
+			"What have you done?!$")
+	msgbox( "Off on another vacation I go\n"
+			"to get new ones…$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_TrainerHill1_Trainer4B {
 	trainerbattle_single(TRAINER_08, 
-			"Hi$", 
-			"Rip$")
-	msgbox("Bye$", MSGBOX_AUTOCLOSE)
+			"THIS is how you WIN! Just WATCH!$", 
+			"Yes, THAT is how you do it…\n"
+			"Just like that…$")
+	msgbox( "Well, you beat me. Good for you.$", MSGBOX_AUTOCLOSE)
 }

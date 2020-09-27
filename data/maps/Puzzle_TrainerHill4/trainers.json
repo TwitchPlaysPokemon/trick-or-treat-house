@@ -108,13 +108,13 @@
 		]
 	},
 	{
-		"class": "YOUNGSTER",
-		"name": "LUC",
+		"class": "LADY",
+		"name": "COLLEEN",
 		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT",
 		"party": [
 			{
-				"species": "SPECIES_BALTOY",
-				"item": "ITEM_SILK_SCARF",
+				"species": "SPECIES_ELECTABUZZ",
+				"item": "ITEM_MAGNET",
 				"level": 30
 			},
 			{

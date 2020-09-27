@@ -49,32 +49,24 @@
 	},
 	
 	{
-		"class": "POKEFAN",
-		"pic": "POKEFAN_M",
-		"name": "KIMBERLY",
+		"class": "PKMN_RANGER",
+		"pic": "PKMN_RANGER_F",
+		"female": true,
+		"name": "NORA",
 		"party": [
 			{
-				"species": "SPECIES_UNOWN_B",
-				"level": 30
-			},
-			{
-				"species": "SPECIES_UNOWN_R",
+				"species": "SPECIES_FORRETRESS",
 				"level": 30
 			}
 		]
 	},
 	{
-		"class": "POKEFAN",
-		"pic": "POKEFAN_F",
-		"female": true,
-		"name": "FRANCISCO",
+		"class": "PKMN_RANGER",
+		"pic": "PKMN_RANGER_M",
+		"name": "GAV",
 		"party": [
 			{
-				"species": "SPECIES_UNOWN_O",
-				"level": 30
-			},
-			{
-				"species": "SPECIES_UNOWN_T",
+				"species": "SPECIES_GLIGAR",
 				"level": 30
 			}
 		]
