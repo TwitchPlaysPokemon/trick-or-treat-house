@@ -18,6 +18,7 @@ Puzzle_StealthMission_Adjective:
 	.string "stealthy$"
 Puzzle_StealthMission_Quip:
 	.string "$"
+.align 2
 Puzzle_StealthMission_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01
 	.2byte FLAG_CANDY_ABUNDANT_02

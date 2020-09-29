@@ -5,67 +5,56 @@
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
     ],
-    "connections": [
-        {
-            "direction": "left",
-            "map": "MAP_TRICK_TREAT_SLATEPORT_CITY2",
-            "offset": 0
-        },
-        {
-            "direction": "up",
-            "map": "MAP_TRICK_HOUSE_EXT",
-            "offset": -31
-        }
-    ],
+    "connections": null,
     "coord_events": [
     ],
-    "id": "MAP_TRICK_TREAT_SLATEPORT_CITY1",
-    "layout": "LAYOUT_TRICKTREAT_SLATEPORT_CITY1",
-    "map_type": "MAP_TYPE_TOWN",
-    "music": "MUS_FINECITY",
-    "name": "TrickTreat_SlateportCity1",
+    "id": "MAP_META_PUZZLE_EMPTY_PUZZLE",
+    "layout": "LAYOUT_META_PUZZLE_EMPTY_PUZZLE",
+    "map_type": "MAP_TYPE_SECRET_BASE",
+    "music": "MUS_DAN02",
+    "name": "MetaPuzzle_EmptyPuzzle",
     "object_events": [
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_ANABEL",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_NORTH",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 3,
-            "y": 27
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_ANABEL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 4,
-            "y": 43
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_ANABEL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
+            "trainer_type": "0",
             "x": 5,
-            "y": 38
+            "y": 5
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_STONE",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "PuzzleCommon_EventScript_ExitDoorObject",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
+            "x": 5,
+            "y": 0
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_SCROLL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "PuzzleCommon_EventScript_Scroll",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 3,
+            "y": 3
         }
     ],
-    "region_map_section": "MAPSEC_SLATEPORT_CITY",
+    "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
     "requires_flash": false,
     "show_map_name": true,
     "warp_events": [

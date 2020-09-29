@@ -22,7 +22,7 @@ Puzzle_TicRacToe_Quip:
 	.string "obsession with Zigzagoon.\p"
 	.string "Like, yeah, it's cute, but so are\n"
 	.string "like half of all {POKEMON}…$"
-
+.align 2
 Puzzle_TicRacToe_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01
 	.2byte FLAG_CANDY_ABUNDANT_02

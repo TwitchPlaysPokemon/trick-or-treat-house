@@ -2,3 +2,9 @@ raw `
 TrainerHillTemplate_MapScripts::
 	.byte 0
 `
+
+
+script Puzzle_TrainerHill_Reception {
+	msgbox ("Welcome to the Trainer Tower!\n"
+			"Your challenge awaits up the stairs.$", MSGBOX_AUTOCLOSE)
+}

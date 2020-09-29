@@ -9,7 +9,7 @@
         {
             "direction": "right",
             "map": "MAP_TRICK_TREAT_SLATEPORT_CITY1",
-            "offset": -2
+            "offset": 0
         }
     ],
     "coord_events": [

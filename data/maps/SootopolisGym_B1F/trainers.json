@@ -1,0 +1,102 @@
+[
+	{
+		"class": "MERMAID",
+		"music": "SWIMMER",
+		"female": true,
+		"name": "PENELOPE",
+		"party": [
+			{
+				"species": "SPECIES_CLAMPERL",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_HUNTAIL",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "FROGGER",
+		"name": "EWAN",
+		"music": "SUSPICIOUS",
+		"party": [
+			{
+				"species": "SPECIES_POLITOED",
+				"level": 27
+			}
+		]
+	},
+	
+	{
+		"class": "HIKER",
+		"name": "MONTY",
+		"music": "INTENSE",
+		"party": [
+			{
+				"species": "SPECIES_AGGRON",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "NINJA_BOY",
+		"name": "BENNY",
+		"music": "SUSPICIOUS",
+		"party": [
+			{
+				"species": "SPECIES_CACTURNE",
+				"level": 26
+			}
+		]
+	},
+	
+	{
+		"class": "GHETSIS",
+		"name": "CARVER",
+		"music": "SUSPICIOUS",
+		"party": [
+			{
+				"species": "SPECIES_CHIMECHO",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "MASKED_BOY",
+		"name": "LUKAS",
+		"music": "COOL",
+		"party": [
+			{
+				"species": "SPECIES_SHUPPET",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "PLASMA_KID",
+		"name": "OLIVIER",
+		"music": "COOL",
+		"party": [
+			{
+				"species": "SPECIES_SNORUNT",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_DUSTOX",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "ALIEN",
+		"name": "ARYA",
+		"female": true,
+		"music": "SUSPICIOUS",
+		"party": [
+			{
+				"species": "SPECIES_MASQUERAIN",
+				"level": 29
+			}
+		]
+	}
+]

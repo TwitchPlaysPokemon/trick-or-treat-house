@@ -1,0 +1,93 @@
+[
+	{
+		"class": "COOLTRAINER",
+		"pic": "COOLTRAINER_M",
+		"name": "ALFRED",
+		"party": [
+			{
+				"species": "SPECIES_SNORLAX",
+				"level": 27
+			}
+		]
+	},
+	{
+		"class": "PSYCHIC",
+		"pic": "PSYCHIC_F",
+		"female": true,
+		"name": "EDIE",
+		"party": [
+			{
+				"species": "SPECIES_GARDEVOIR",
+				"level": 27
+			}
+		]
+	},
+	
+	{
+		"class": "PKMN_BREEDER",
+		"pic": "POKEMON_BREEDER_M",
+		"name": "SALVADORE",
+		"party": [
+			{
+				"species": "SPECIES_NIDOKING",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "PKMN_BREEDER",
+		"pic": "POKEMON_BREEDER_F",
+		"female": true,
+		"name": "VERONICA",
+		"party": [
+			{
+				"species": "SPECIES_NIDOQUEEN",
+				"level": 28
+			}
+		]
+	},
+	
+	{
+		"class": "RUIN_MANIAC",
+		"name": "ABRAHAM",
+		"party": [
+			{
+				"species": "SPECIES_SMEARGLE",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "YOUNGSTER",
+		"name": "LUC",
+		"party": [
+			{
+				"species": "SPECIES_CUBONE",
+				"level": 29
+			}
+		]
+	},
+	
+	{
+		"class": "BIRD_KEEPER",
+		"name": "DANE",
+		"party": [
+			{
+				"species": "SPECIES_NOCTOWL",
+				"level": 30
+			}
+		]
+	},
+	{
+		"class": "TRIATHLETE",
+		"pic": "SWIMMING_TRIATHLETE_F",
+		"female": true,
+		"name": "STEPHANIE",
+		"party": [
+			{
+				"species": "SPECIES_VAPOREON",
+				"level": 30
+			}
+		]
+	}
+]

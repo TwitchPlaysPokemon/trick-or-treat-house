@@ -163,6 +163,7 @@
         "Puzzle_MurderExpress",
         "Puzzle_EliteFloor",
         "Puzzle_DiveMaze",
+        "Puzzle_SootopolisGym",
         "Puzzle_ImposterReflection"
     ],
     "MG_SingleMapPuzzles2019": [
@@ -203,7 +204,8 @@
         "FakeSecretBaseCave",
         "SuspendedMaze_B1",
         "WaterTemple_Secret",
-        "DiveMaze_Underwater"
+        "DiveMaze_Underwater",
+        "SootopolisGym_B1F"
     ],
     "MG_TestMaps": [
         "TestMapHallway",
@@ -216,7 +218,9 @@
         "TestAcroBikeMap"
     ],
     "MG_TheMetaPuzzle": [
-        "Puzzle_MetaPuzzleCave"
+        "Puzzle_MetaPuzzleCave",
+        "MetaPuzzle_EmptyPuzzle",
+        "MetaPuzzle_StrengthRoom"
     ],
     "MG_TrickOrTreatPuzzles": [
         "TrickTreat_PetalburgCity",

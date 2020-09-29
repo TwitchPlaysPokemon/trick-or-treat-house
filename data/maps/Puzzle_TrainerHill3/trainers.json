@@ -1,0 +1,110 @@
+[
+	{
+		"class": "GENTLEMAN",
+		"name": "TERRANCE",
+		"party": [
+			{
+				"species": "SPECIES_PIKACHU",
+				"item": "ITEM_SITRUS_BERRY",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "LADY",
+		"name": "ELIZABETH",
+		"female": true,
+		"party": [
+			{
+				"species": "SPECIES_CLAMPERL",
+				"item": "ITEM_SILK_SCARF",
+				"level": 28
+			}
+		]
+	},
+	
+	{
+		"class": "YOUNGSTER",
+		"name": "BREYDEN",
+		"party": [
+			{
+				"species": "SPECIES_CHARMELEON",
+				"item": "ITEM_CHARCOAL",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "TUBER_F",
+		"pic": "TUBER_F",
+		"female": true,
+		"name": "ANIYA",
+		"party": [
+			{
+				"species": "SPECIES_WYNAUT",
+				"item": "ITEM_LEFTOVERS",
+				"level": 29
+			}
+		]
+	},
+	
+	{
+		"class": "PKMN_RANGER",
+		"pic": "PKMN_RANGER_F",
+		"female": true,
+		"name": "NORA",
+		"party": [
+			{
+				"species": "SPECIES_FORRETRESS",
+				"level": 30
+			}
+		]
+	},
+	{
+		"class": "PKMN_RANGER",
+		"pic": "PKMN_RANGER_M",
+		"name": "GAV",
+		"party": [
+			{
+				"species": "SPECIES_GLIGAR",
+				"level": 30
+			}
+		]
+	},
+	
+	{
+		"class": "COOLTRAINER",
+		"pic": "COOLTRAINER_M",
+		"name": "RODERICK",
+		"party": [
+			{
+				"species": "SPECIES_MACHAMP",
+				"item": "ITEM_LEFTOVERS",
+				"level": 31
+			},
+			{
+				"species": "SPECIES_URSARING",
+				"item": "ITEM_LEFTOVERS",
+				"level": 31
+			}
+		]
+	},
+	{
+		"class": "COOLTRAINER",
+		"pic": "COOLTRAINER_F",
+		"female": true,
+		"name": "ALICIA",
+		"party": [
+			{
+				"species": "SPECIES_NINETALES",
+				"item": "ITEM_WHITE_HERB",
+				"level": 31
+			},
+			{
+				"species": "SPECIES_BANETTE",
+				"item": "ITEM_FOCUS_BAND",
+				"level": 31
+			}
+		]
+	}
+]
