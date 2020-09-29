@@ -1599,6 +1599,16 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Lavaridge",
             "width": 20
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_ImposterReflection/map.bin",
+            "border_filepath": "data/layouts/Puzzle_ImposterReflection/border.bin",
+            "height": 16,
+            "id": "LAYOUT_PUZZLE_IMPOSTER_REFLECTION",
+            "name": "Puzzle_ImposterReflection_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Fortree",
+            "width": 26
         }
     ],
     "layouts_table_label": "gMapLayouts"
