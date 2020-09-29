@@ -30,7 +30,7 @@
     "coord_events": [
     ],
     "id": "MAP_LOST_WOODS4_ROOM_A6",
-    "layout": "LAYOUT_PUZZLE_LOST_WOODS_ROOM",
+    "layout": "LAYOUT_PUZZLE_LOST_WOODS_ROOM3",
     "map_type": "MAP_TYPE_ROUTE",
     "music": "MUS_DAN01",
     "name": "LostWoods4_RoomA6",

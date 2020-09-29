@@ -6404,3 +6404,5 @@ EventScript_PlayerPCFemale::
 	.include "data/text/birch_speech.inc"
 
 
+
+	.include "data/maps/Puzzle_ImposterReflection/scripts.inc"

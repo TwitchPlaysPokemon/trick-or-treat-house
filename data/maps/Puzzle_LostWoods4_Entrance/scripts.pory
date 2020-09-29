@@ -29,5 +29,7 @@ Puzzle_LostWoods4_Variables:
 Puzzle_LostWoods4_PrereqItems:
 	.2byte 0
 Puzzle_LostWoods4_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
 	.2byte 0
 `
