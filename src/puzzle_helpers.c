@@ -1055,3 +1055,100 @@ void SetupIcePathLayout(struct ScriptContext *ctx) {
 
 #undef VAR_CONFIG
 #undef VAR_STORED_RANDOM
+
+///////////////////////////////////////////////////////////////////////////////
+// Puzzle: A Safari Among Friends
+// MAP_PUZZLE_SAFARI_IMPOSTERS
+#define VAR_CONFIG_IMPOSTER  VAR_PUZZLE_01
+#define VAR_IMPOSTER_SELECT  VAR_PUZZLE_02
+#define LID_JOEY             8
+#define LID_JAMES            9
+#define LID_IRENE            10
+#define LID_WALLY            11
+#define LID_BRENDAN          12
+#define LID_MAY              13
+#define LID_ALEX             14
+#define LID_FRIEND_A         VAR_PUZZLE_1A
+#define LID_FRIEND_B         VAR_PUZZLE_1B
+#define LID_CUTSCENE_PLAYER  VAR_PUZZLE_1C
+// For the reveal scene
+#define LID_SELECTED         VAR_PUZZLE_1D
+#define LID_FRIEND_1         VAR_PUZZLE_11
+#define LID_FRIEND_2         VAR_PUZZLE_12
+#define LID_FRIEND_3         VAR_PUZZLE_13
+#define LID_FRIEND_4         VAR_PUZZLE_14
+#define LID_FRIEND_5         VAR_PUZZLE_15
+// compare against VAR_CONFIG_IMPOSTER:
+#define IMP_JOEY    0
+#define IMP_JAMES   1
+#define IMP_IRENE   2
+#define IMP_WALLY   3
+#define IMP_BRENDAN 4
+#define IMP_MAY     5
+#define IMP_ALEX    6
+
+// Because this is just easier to do in native than in script
+
+void Imposter_RandomizeFriendLayout(struct ScriptContext *ctx) {
+	u8 friendLayout[] = { IMP_JOEY, IMP_JAMES, IMP_IRENE, IMP_WALLY, IMP_BRENDAN, IMP_MAY };
+	u8 i, a, b, x;
+	u16 var;
+	
+	if (gSaveBlock2Ptr->playerGender == GENDER_M) {
+		friendLayout[IMP_BRENDAN] = IMP_ALEX;
+	} else if (gSaveBlock2Ptr->playerGender == GENDER_F) {
+		friendLayout[IMP_MAY] = IMP_ALEX;
+	}
+	
+	// Randomize the layout
+	for (i = 0; i < 16; i++) {
+		a = Random() % 6;
+		b = Random() % 6;
+		x = friendLayout[a];
+		friendLayout[a] = friendLayout[b];
+		friendLayout[b] = x;
+	}
+	// The imposter goes in slot 2
+	a = 1;
+	for (b = 0; b < 6; b++) {
+		if (friendLayout[b] == VarGet(VAR_CONFIG_IMPOSTER)) break;
+	}
+	x = friendLayout[a];
+	friendLayout[a] = friendLayout[b];
+	friendLayout[b] = x;
+	
+	// Now load in the LIDs into the variables
+	x = 0;
+	for (i = 0; i < 6; i++) {
+		if (friendLayout[i] == VarGet(VAR_IMPOSTER_SELECT)) {
+			var = LID_SELECTED;
+		} else {
+			var = LID_FRIEND_1 + x;
+			x++;
+		}
+		switch(friendLayout[i]) {
+			case IMP_JOEY:    VarSet(var, LID_JOEY); break;
+			case IMP_JAMES:   VarSet(var, LID_JAMES); break;
+			case IMP_IRENE:   VarSet(var, LID_IRENE); break;
+			case IMP_WALLY:   VarSet(var, LID_WALLY); break;
+			case IMP_BRENDAN: VarSet(var, LID_BRENDAN); break;
+			case IMP_MAY:     VarSet(var, LID_MAY); break;
+			case IMP_ALEX:    VarSet(var, LID_ALEX); break;
+		}
+	}
+}
+
+// extern static const u8* const Puzzle_SafariImposters_TalkTables[7][3];
+
+void Imposter_ShowTalkingPoints(struct ScriptContext *ctx) {
+	// u8 currSpeaker = ctx->data[0];
+	// bool8 isImposter = currSpeaker == VarGet(VAR_CONFIG_IMPOSTER);
+	// const u8** alibiTable = Puzzle_SafariImposters_TalkTables[currSpeaker][0];
+	// const u8** imposterTable = Puzzle_SafariImposters_TalkTables[currSpeaker][1];
+	// const u8** accuseTable = Puzzle_SafariImposters_TalkTables[currSpeaker][2];
+	
+	
+	// //TODO: From a table of talking points, compile an alibi or an accusation of someone else 
+	
+	// ShowFieldMessage(gStringVar4);
+}

@@ -570,6 +570,16 @@ const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] =
     
     // Dev Self-Inserts
     [EVENT_OBJ_GFX_DEV_TUSTIN2121] =           &gEventObjectGraphicsInfo_TrickMaster, //TODO
+    
+    /** For porymap preview only, as these are aliases for entries above
+    [TTH_FRIEND_JOEY] =    &gEventObjectGraphicsInfo_Youngster,
+    [TTH_FRIEND_JAMES] =   &gEventObjectGraphicsInfo_HeroOfTime,
+    [TTH_FRIEND_IRENE] =   &gEventObjectGraphicsInfo_FairyGirl,
+    [TTH_FRIEND_WALLY] =   &gEventObjectGraphicsInfo_Wally,
+    [TTH_FRIEND_BRENDAN] = &gEventObjectGraphicsInfo_BrendanNormal,
+    [TTH_FRIEND_MAY] =     &gEventObjectGraphicsInfo_MayNormal,
+    [TTH_FRIEND_ALEX] =    &gEventObjectGraphicsInfo_TreekidNormal,
+     */
 };
 
 const struct EventObjectGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

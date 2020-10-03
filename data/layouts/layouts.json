@@ -1619,6 +1619,86 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Cave",
             "width": 19
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_SafariImposters/map.bin",
+            "border_filepath": "data/layouts/Puzzle_SafariImposters/border.bin",
+            "height": 14,
+            "id": "LAYOUT_PUZZLE_SAFARI_IMPOSTERS",
+            "name": "Puzzle_SafariImposters_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_Shop",
+            "width": 18
+        },
+        {
+            "blockdata_filepath": "data/layouts/SafariZone_Northwest/map.bin",
+            "border_filepath": "data/layouts/SafariZone_Northwest/border.bin",
+            "height": 40,
+            "id": "LAYOUT_SAFARI_ZONE_NORTHWEST",
+            "name": "SafariZone_Northwest_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Lilycove",
+            "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/SafariZone_North/map.bin",
+            "border_filepath": "data/layouts/SafariZone_North/border.bin",
+            "height": 40,
+            "id": "LAYOUT_SAFARI_ZONE_NORTH",
+            "name": "SafariZone_North_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Lilycove",
+            "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/SafariZone_Southwest/map.bin",
+            "border_filepath": "data/layouts/SafariZone_Southwest/border.bin",
+            "height": 40,
+            "id": "LAYOUT_SAFARI_ZONE_SOUTHWEST",
+            "name": "SafariZone_Southwest_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Lilycove",
+            "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/SafariZone_South/map.bin",
+            "border_filepath": "data/layouts/SafariZone_South/border.bin",
+            "height": 40,
+            "id": "LAYOUT_SAFARI_ZONE_SOUTH",
+            "name": "SafariZone_South_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Lilycove",
+            "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/SafariZone_Northeast/map.bin",
+            "border_filepath": "data/layouts/SafariZone_Northeast/border.bin",
+            "height": 40,
+            "id": "LAYOUT_SAFARI_ZONE_NORTHEAST",
+            "name": "SafariZone_Northeast_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Lilycove",
+            "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/SafariZone_Southeast/map.bin",
+            "border_filepath": "data/layouts/SafariZone_Southeast/border.bin",
+            "height": 40,
+            "id": "LAYOUT_SAFARI_ZONE_SOUTHEAST",
+            "name": "SafariZone_Southeast_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Lilycove",
+            "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/SafariZone_RestHouse/map.bin",
+            "border_filepath": "data/layouts/SafariZone_RestHouse/border.bin",
+            "height": 9,
+            "id": "LAYOUT_SAFARI_ZONE_REST_HOUSE",
+            "name": "SafariZone_RestHouse_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_GenericBuilding",
+            "width": 10
         }
     ],
     "layouts_table_label": "gMapLayouts"

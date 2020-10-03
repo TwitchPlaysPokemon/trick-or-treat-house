@@ -208,7 +208,7 @@
 #define VAR_UNUSED_0x40A1                    0x40B6 // Unused var
 #define VAR_SEAFLOOR_CAVERN_STATE            0x40B7
 #define VAR_CABLE_CAR_STATION_STATE          0x40B8
-#define VAR_SAFARI_ZONE_STATE                0x40B9
+#define VAR_UNUSED_0x40B9                    0x40B9
 #define VAR_UNUSED_0x40A8                    0x40BA // Unused Var
 #define VAR_UNUSED_0x40A9                    0x40BB
 #define VAR_SLATEPORT_MUSEUM_1F_STATE        0x40BC

@@ -707,7 +707,7 @@ bool8 sub_80FDE2C(void)
     GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
     z = PlayerGetZCoord();
     objId = GetEventObjectIdByXYZ(x, y, z);
-    if (objId == 16 || gEventObjects[objId].graphicsId != 0xE4)
+    if (objId == EVENT_OBJECTS_COUNT || gEventObjects[objId].graphicsId != EVENT_OBJ_GFX_SUDOWOODO)
         return FALSE;
     else
         return TRUE;

@@ -799,6 +799,16 @@ const struct MenuAction MultichoiceList_MonAdoption[] =
     {PokemonAdoption_Exit, NULL},
 };
 
+extern const u8 Puzzle_SafariImposters_Menu_Report[];
+extern const u8 Puzzle_SafariImposters_Menu_Battle[];
+extern const u8 Puzzle_SafariImposters_Menu_Cancel[];
+const struct MenuAction MultichoiceList_SafariImposter[] =
+{
+    {Puzzle_SafariImposters_Menu_Report, NULL},
+    {Puzzle_SafariImposters_Menu_Battle, NULL},
+    {Puzzle_SafariImposters_Menu_Cancel, NULL},
+};
+
 // defined in TrickHouseDevEntrance/scripts.pory
 extern const u8 PuzzleDebug_TustinsMenu_PuzzlesCompleted[];
 const struct MenuAction MultichoiceList_TustinsMenu[] =
@@ -936,6 +946,7 @@ const struct MultichoiceListStruct gMultichoiceLists[] =
     {MultichoiceList_113, ARRAY_COUNT(MultichoiceList_113)},
     {MultichoiceList_MonAdoption, ARRAY_COUNT(MultichoiceList_MonAdoption)}, //114
     {MultichoiceList_TustinsMenu, ARRAY_COUNT(MultichoiceList_TustinsMenu)},
+    {MultichoiceList_SafariImposter, ARRAY_COUNT(MultichoiceList_SafariImposter)},
 };
 
 const u8 *const gUnknown_0858BAF0[] =

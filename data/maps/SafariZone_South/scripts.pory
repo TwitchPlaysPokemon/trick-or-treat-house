@@ -1,0 +1,252 @@
+raw `
+#define VAR_SAFARI_ZONE_STATE  VAR_PUZZLE_03
+#define VAR_JOEY_STATE         VAR_PUZZLE_10
+#define VAR_JAMES_STATE        VAR_PUZZLE_11
+#define VAR_IRENE_STATE        VAR_PUZZLE_12
+#define VAR_WALLY_STATE        VAR_PUZZLE_13
+#define VAR_BRENDAN_STATE      VAR_PUZZLE_14
+#define VAR_MAY_STATE          VAR_PUZZLE_15
+#define VAR_ALEX_STATE         VAR_PUZZLE_16
+
+#define FLAG_HIDE_WALLY_SX     FLAG_PUZZLE_21
+#define FLAG_HIDE_JAMES_SE     FLAG_PUZZLE_22
+#define FLAG_HIDE_BRENDAN_SW   FLAG_PUZZLE_23
+#define FLAG_HIDE_BRENDAN_RH   FLAG_PUZZLE_24
+
+#define LID_SCIENTIST          1
+#define LID_JOEY               2
+#define LID_WALLY              3
+
+@ -----------------------------------------------------
+
+SafariZone_South_MapScripts:: @ 823D279
+	map_script MAP_SCRIPT_ON_TRANSITION, SafariZone_South_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, SafariZone_South_OnFrame
+	.byte 0
+
+SafariZone_South_OnFrame: @ 823D284
+	map_script_2 VAR_SAFARI_ZONE_STATE, 2, SafariZone_South_EnterSafariZone
+	.2byte 0
+
+`
+
+script SafariZone_South_OnTransition {
+	setobjectxyperm (LID_SCIENTIST, 31, 34)
+	setobjectxyperm (LID_JOEY, 27, 35)
+	setobjectxyperm (LID_WALLY, 28, 30)
+}
+
+script SafariZone_South_EnterSafariZone {
+	lockall
+	applymovement(LID_PLAYER, Common_Movement_WalkDown1)
+	applymovement(LID_WALLY, SafariZone_South_Movement_ExitWallyRunOff)
+	applymovement(LID_JOEY, SafariZone_South_Movement_ExitJoeyRunOff)
+	waitmovement(LID_PLAYER)
+	
+	applymovement(LID_SCIENTIST, SafariZone_South_Movement_ExitAttendantBlockDoor)
+	waitmovement(LID_SCIENTIST)
+	waitmovement(LID_WALLY)
+	waitmovement(LID_JOEY)
+	setobjectxyperm (LID_SCIENTIST, 32, 34)
+	setobjectxyperm (LID_JOEY, 32, 34)
+	removeobject(LID_WALLY)
+	setvar (VAR_SAFARI_ZONE_STATE, 0)
+	releaseall
+}
+
+movement SafariZone_South_Movement_ExitAttendantBlockDoor {
+	walk_right
+	walk_in_place_fastest_down
+}
+
+movement SafariZone_South_Movement_ExitWallyRunOff {
+	face_left
+	delay_16
+	walk_up * 3
+}
+movement SafariZone_South_Movement_ExitJoeyRunOff {
+	face_left
+	delay_16
+	face_right
+	delay_16
+	walk_left * 4
+}
+
+
+script SafariZone_South_EventScript_ExitAttendant {
+	
+}
+
+// ----------------------------------------------------
+// Joey
+
+script SafariZone_EventScript_JoeyFearsSnakes {
+	
+}
+
+script SafariZone_EventScript_JoeyLikesHisRattata {
+	
+}
+
+// ----------------------------------------------------
+// James
+
+script SafariZone_DisableScript_JamesFearsWater {
+	setflag(FLAG_HIDE_JAMES_SE)
+	setvar(VAR_JAMES_STATE, 1)
+}
+
+script SafariZone_EventScript_JamesFearsWater {
+	lockall
+	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
+	subvar(VAR_INTERACT_X, 18)
+	applymovement (2, SafariZone_Movement_JamesFearsWater1)
+	message("{JAMES}: HERACROSS… Where are you??\n"
+			"I don't like you leading me over here…\p$")
+	waitmessage
+	waitmovement(2)
+	applymovement (2, Common_Movement_WalkInPlaceRight)
+	message("Is that salt water down there?\n"
+			"Oh boy…\p"
+			"Right, nope, I'll find another\n"
+			"HERACROSS before I get any closer\l$")
+	waitmessage
+	waitmovement(2)
+	selectpointer(SafariZone_MovementTable_JamesFearsWater_Player, VAR_INTERACT_X)
+	applymovement(EVENT_OBJ_ID_PLAYER, 0)
+	applymovement(2, SafariZone_Movement_JamesFearsWater2)
+	playse(SE_PIN)
+	message("to-- HI {PLAYER}!! FUNNY YOU HERE\l"
+			"I MUST GO YOU SAW NOTHING!!! BYE!!$")
+	waitmessage
+	waitbuttonpress
+	closemessage
+	waitmovement(2)
+	removeobject(2)
+	setflag(FLAG_HIDE_JAMES_SE)
+	setvar(VAR_JAMES_STATE, 1)
+	releaseall
+}
+
+raw `
+.align 2
+SafariZone_MovementTable_JamesFearsWater_Player:
+	.4byte SafariZone_Movement_JamesFearsWater_PlayerA
+	.4byte SafariZone_Movement_JamesFearsWater_PlayerB
+	.4byte 0
+`
+
+movement SafariZone_Movement_JamesFearsWater1 {
+	walk_in_place_fastest_left
+	delay_16 * 3
+	walk_in_place_fastest_right
+	delay_16 * 3
+	walk_in_place_fastest_down
+}
+movement SafariZone_Movement_JamesFearsWater2 {
+	walk_in_place_fastest_up
+	delay_8
+	emote_exclamation_mark
+	delay_16 * 3
+	walk_fast_up * 4
+	walk_fastest_left
+	delay_8
+	walk_fast_up * 6
+}
+movement SafariZone_Movement_JamesFearsWater_PlayerA {
+	delay_8 * 3
+	face_right
+	delay_8 * 2
+	face_up
+}
+movement SafariZone_Movement_JamesFearsWater_PlayerB {
+	delay_8 * 2
+	face_right
+	lock_facing_direction
+	walk_left
+	unlock_facing_direction
+	delay_8 * 2
+	face_up
+}
+
+script SafariZone_EventScript_JamesLikesBugs {
+	
+}
+
+// ----------------------------------------------------
+// Irene
+
+script SafariZone_EventScript_IreneHatesBats {
+	
+}
+
+script SafariZone_EventScript_IreneLikesChansey {
+	
+}
+
+// ----------------------------------------------------
+// Wally
+
+// ----------------------------------------------------
+// Brendan
+
+script SafariZone_EventScript_BrendanFearsThunder {
+	lockall
+	playse(SE_T_KAMI)
+	delay(8)
+	playse(SE_DANSA)
+	applymovement(2, SafariZone_Movement_BrendanFearsThunder1)
+	applymovement(LID_PLAYER, SafariZone_Movement_BrendanFearsThunderP)
+	message("AUGH! NOPE! NOPE! NOPE! NOPE! NOPE!\n"
+			"NOPE! NOPE! NOPE! NOPE! NOPE! NOPE!$")
+	waitmovement(2)
+	closemessage
+	setflag(FLAG_HIDE_BRENDAN_SW)
+	clearflag(FLAG_HIDE_BRENDAN_RH)
+	releaseall
+}
+movement SafariZone_Movement_BrendanFearsThunder1 {
+	emote_exclamation_mark
+	jump_2_down
+	player_run_right * 5
+	player_run_down * 4
+	player_run_right * 3
+	player_run_up
+	set_invisible
+}
+movement SafariZone_Movement_BrendanFearsThunderP {
+	delay_8
+	slide_right
+	face_right
+	delay_16
+	face_down
+	delay_16
+	face_right
+}
+
+script SafariZone_EventScript_BrendanInResthouse {
+	
+}
+
+// ----------------------------------------------------
+// May
+
+script SafariZone_EventScript_MayFearsHeights {
+}
+
+script SafariZone_EventScript_MayLikesSomething {
+}
+
+// ----------------------------------------------------
+// Alex
+
+script SafariZone_EventScript_AlexFearsSpiders {
+}
+
+script SafariZone_EventScript_AlexInTheRain {
+	
+}
+
+raw `
+#undef VAR_SAFARI_ZONE_STATE
+`

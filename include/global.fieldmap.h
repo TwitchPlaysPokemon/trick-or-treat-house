@@ -63,7 +63,8 @@ struct EventObjectTemplate
 {
     /*0x00*/ u8 localId;
     // /*0x01*/ u8 unk2;
-    /*0x02*/ u16 graphicsId;
+    /*0x02*/ u16 palVariation:4;
+    /*0x02*/ u16 graphicsId:12;
     /*0x04*/ s16 x;
     /*0x06*/ s16 y;
     /*0x08*/ u8 elevation;
@@ -191,13 +192,14 @@ struct EventObject
     /*0x03*/ u32 spriteAffineAnimPausedBackup:1;
              u32 disableJumpLandingGroundEffect:1;
              u32 fixedPriority:1;
-             u32 unk3_3:1;
+             u32 disableReflection:1;
              u32 isStandingOnTrigger:1;
+             u32 useImposterPalette:1;
              int :0;
-    /*0x04*/ u8 spriteId:7;
-    /*0x05*/ u16 graphicsId:9;
-    /*0x06*/ u8 movementType;
-    /*0x07*/ u8 trainerType;
+    /*0x04*/ u16 palVariation:4;
+             u16 graphicsId:12;
+    /*0x06*/ u8 spriteId;
+    /*0x07*/ u8 movementType;
     /*0x08*/ u8 localId;
     /*0x09*/ u8 mapNum;
     /*0x0A*/ u8 mapGroup;
@@ -215,15 +217,16 @@ struct EventObject
             u8 y:4;
         } ALIGNED(1) as_nybbles;
     } ALIGNED(1) range;
-    /*0x1A*/ u8 fieldEffectSpriteId;
-    /*0x1B*/ u8 warpArrowSpriteId;
-    /*0x1C*/ u8 movementActionId;
-    /*0x1D*/ u8 trainerRange_berryTreeId;
-    /*0x1E*/ u8 currentMetatileBehavior;
-    /*0x1F*/ u8 previousMetatileBehavior;
-    /*0x20*/ u8 previousMovementDirection;
-    /*0x21*/ u8 directionSequenceIndex;
-    /*0x22*/ u8 playerCopyableMovement;
+    /*0x1A*/ u8 trainerType;
+    /*0x1B*/ u8 fieldEffectSpriteId;
+    /*0x1C*/ u8 warpArrowSpriteId;
+    /*0x1D*/ u8 movementActionId;
+    /*0x1E*/ u8 trainerRange_berryTreeId;
+    /*0x1F*/ u8 currentMetatileBehavior;
+    /*0x20*/ u8 previousMetatileBehavior;
+    /*0x21*/ u8 previousMovementDirection;
+    /*0x22*/ u8 directionSequenceIndex;
+    /*0x23*/ u8 playerCopyableMovement;
     /*size = 0x25*/
 };
 
@@ -246,6 +249,7 @@ struct EventObjectGraphicsInfo
     /*0x18*/ const union AnimCmd *const *anims;
     /*0x1C*/ const struct SpriteFrameImage *images;
     /*0x20*/ const union AffineAnimCmd *const *affineAnims;
+    /*0x24*/ const u16 *palVariationTable;
 };
 
 enum {

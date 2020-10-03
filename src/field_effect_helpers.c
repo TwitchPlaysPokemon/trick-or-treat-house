@@ -88,7 +88,7 @@ void LoadObjectReflectionPalette(struct EventObject *eventObject, struct Sprite 
         UpdatePaletteGammaType(sprite->oam.paletteNum, GAMMA_NORMAL);
         UpdateSpritePaletteWithWeather(sprite->oam.paletteNum);
     }
-    else if (gInfo->paletteTag2 != EVENT_OBJ_PAL_TAG_NONE)
+    else if (eventObject->useImposterPalette && gInfo->paletteTag2 != EVENT_OBJ_PAL_TAG_NONE)
     {
         LoadEventObjectPalette(gInfo->paletteTag2);
         sprite->oam.paletteNum = IndexOfSpritePaletteTag(gInfo->paletteTag2);
@@ -186,7 +186,7 @@ static void UpdateObjectReflectionSprite(struct Sprite *reflectionSprite)
         reflectionSprite->pos2.y = -mainSprite->pos2.y;
         reflectionSprite->coordOffsetEnabled = mainSprite->coordOffsetEnabled;
 
-        if (eventObject->unk3_3 == TRUE)
+        if (eventObject->disableReflection == TRUE)
             reflectionSprite->invisible = TRUE;
 
         // Check if the reflection is not still.

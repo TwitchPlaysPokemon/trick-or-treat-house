@@ -10,6 +10,16 @@
         "Desert_West",
         "Desert_South"
     ],
+    "MG_ImposterPuzzle": [
+        "Puzzle_SafariImposters",
+        "SafariZone_Northwest",
+        "SafariZone_North",
+        "SafariZone_Southwest",
+        "SafariZone_South",
+        "SafariZone_Northeast",
+        "SafariZone_Southeast",
+        "SafariZone_RestHouse"
+    ],
     "MG_LostWoodsPuzzles": [
         "Puzzle_LostWoods1_Entrance",
         "Puzzle_LostWoods2_Entrance",
@@ -243,6 +253,7 @@
         "MG_DesertPuzzles",
         "MG_TrickOrTreatPuzzles",
         "MG_SpotTheDifferencePuzzles",
+        "MG_ImposterPuzzle",
         "MG_TheMetaPuzzle",
         "MG_SingleMapPuzzles2019"
     ],

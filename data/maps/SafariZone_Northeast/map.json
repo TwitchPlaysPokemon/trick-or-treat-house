@@ -1,0 +1,131 @@
+{
+    "allow_bike": false,
+    "allow_cycling": "",
+    "allow_escape_rope": false,
+    "allow_escaping": "",
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_RARE_01",
+            "item": "ITEM_CANDY_RARE",
+            "type": "hidden_item",
+            "x": 31,
+            "y": 35
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_COMMON_02",
+            "item": "ITEM_CANDY_COMMON",
+            "type": "hidden_item",
+            "x": 21,
+            "y": 5
+        }
+    ],
+    "connections": [
+        {
+            "direction": "left",
+            "map": "MAP_SAFARI_ZONE_NORTH",
+            "offset": 0
+        },
+        {
+            "direction": "down",
+            "map": "MAP_SAFARI_ZONE_SOUTHEAST",
+            "offset": 0
+        }
+    ],
+    "coord_events": [
+    ],
+    "id": "MAP_SAFARI_ZONE_NORTHEAST",
+    "layout": "LAYOUT_SAFARI_ZONE_NORTHEAST",
+    "map_type": "MAP_TYPE_ROUTE",
+    "music": "MUS_SAFARI",
+    "name": "SafariZone_Northeast",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_TEMP_15",
+            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "EventScript_RockSmash",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 11,
+            "y": 11
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_TEMP_13",
+            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "EventScript_RockSmash",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 8,
+            "y": 13
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_TEMP_11",
+            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "EventScript_RockSmash",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 9,
+            "y": 7
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_TEMP_14",
+            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "EventScript_RockSmash",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 8,
+            "y": 10
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_TEMP_12",
+            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "EventScript_RockSmash",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 12,
+            "y": 8
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_01",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "Common_EventScript_CandyAbundant",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 8,
+            "y": 17
+        }
+    ],
+    "region_map_section": "MAPSEC_SAFARI_ZONE",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+    ],
+    "weather": "WEATHER_NONE"
+}
