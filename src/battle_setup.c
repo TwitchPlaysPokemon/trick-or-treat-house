@@ -585,7 +585,7 @@ static void CB2_EndWildBattle(void)
     CpuFill16(0, (void*)(BG_PLTT), BG_PLTT_SIZE);
     ResetOamRange(0, 128);
 
-    if (IsPlayerDefeated(gBattleOutcome) == TRUE)// && !InBattlePyramid() && !InBattlePike())
+    if (IsPlayerDefeated(gBattleOutcome) == TRUE && (gSpecialVar_BattleMod & BATTLEMOD_NO_WHITEOUT == 0))// && !InBattlePyramid() && !InBattlePike())
     {
         SetMainCallback2(CB2_WhiteOut);
     }
@@ -594,6 +594,7 @@ static void CB2_EndWildBattle(void)
         SetMainCallback2(CB2_ReturnToField);
         gFieldCallback = sub_80AF6F0;
     }
+    gSpecialVar_BattleMod = 0;
 }
 
 static void CB2_EndScriptedWildBattle(void)
@@ -604,14 +605,16 @@ static void CB2_EndScriptedWildBattle(void)
     if (IsPlayerDefeated(gBattleOutcome) == TRUE)
     {
         // if (InBattlePyramid())
-        //     SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
-        // else
+        if (gSpecialVar_BattleMod & BATTLEMOD_NO_WHITEOUT == 0)
+            SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
+        else
             SetMainCallback2(CB2_WhiteOut);
     }
     else
     {
         SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
     }
+    gSpecialVar_BattleMod = 0;
 }
 
 u8 BattleSetup_GetTerrainId(void)
@@ -1319,8 +1322,9 @@ static void CB2_EndTrainerBattle(void)
     else if (IsPlayerDefeated(gBattleOutcome) == TRUE)
     {
         // if (InBattlePyramid() || InTrainerHill())
-        //     SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
-        // else
+        if (gSpecialVar_BattleMod & BATTLEMOD_NO_WHITEOUT == 0)
+            SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
+        else
             SetMainCallback2(CB2_WhiteOut);
     }
     else
@@ -1332,6 +1336,7 @@ static void CB2_EndTrainerBattle(void)
             SetBattledTrainersFlags();
         }
     }
+    gSpecialVar_BattleMod = 0;
 }
 
 static void CB2_EndRematchBattle(void)
@@ -1351,6 +1356,7 @@ static void CB2_EndRematchBattle(void)
         SetBattledTrainersFlags();
         HandleRematchVarsOnBattleEnd();
     }
+    gSpecialVar_BattleMod = 0;
 }
 
 void BattleSetup_StartRematchBattle(void)

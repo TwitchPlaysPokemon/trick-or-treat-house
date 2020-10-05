@@ -1,5 +1,6 @@
 raw `
 SafariZone_RestHouse_MapScripts:: @ 8242BE6
+	puzzle_info Puzzle_SafariImposters_Name, CommonAuthor_Tustin2121
 	.byte 0
 
 SafariZone_RestHouse_EventScript_Youngster:: @ 8242BE7

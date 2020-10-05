@@ -20,6 +20,42 @@
         }
     ],
     "coord_events": [
+        {
+            "elevation": 0,
+            "script": "SafariZone_DisableScript_BrendanFearsThunder",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_14",
+            "var_value": "0",
+            "x": 21,
+            "y": 35
+        },
+        {
+            "elevation": 0,
+            "script": "SafariZone_DisableScript_BrendanFearsThunder",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_14",
+            "var_value": "0",
+            "x": 22,
+            "y": 35
+        },
+        {
+            "elevation": 0,
+            "script": "SafariZone_DisableScript_BrendanFearsThunder",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_14",
+            "var_value": "0",
+            "x": 27,
+            "y": 36
+        },
+        {
+            "elevation": 0,
+            "script": "SafariZone_DisableScript_BrendanFearsThunder",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_14",
+            "var_value": "0",
+            "x": 27,
+            "y": 37
+        }
     ],
     "id": "MAP_SAFARI_ZONE_NORTHWEST",
     "layout": "LAYOUT_SAFARI_ZONE_NORTHWEST",
@@ -52,6 +88,19 @@
             "trainer_type": "0",
             "x": 34,
             "y": 27
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_28",
+            "graphics_id": "EVENT_OBJ_GFX_WALLY",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "SafariZone_EventScript_WallyLikesDragons",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 4,
+            "y": 29
         }
     ],
     "region_map_section": "MAPSEC_SAFARI_ZONE",

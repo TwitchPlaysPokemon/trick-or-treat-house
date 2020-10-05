@@ -145,6 +145,7 @@ script TrickHouseEnd_EventScript_FinalizePuzzle {
 				"I'll transfer them to your PC.$")
 		callnative (RemoveExtraPokemon)
 	}
+	clearflag(FLAG_PUZZLE_PARTY_LOCK)
 	msgbox ("Good luck on the next puzzle!$")
 	closemessage
 	setvar(VAR_TEMP_2, 1)

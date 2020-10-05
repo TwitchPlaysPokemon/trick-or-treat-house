@@ -8,10 +8,20 @@ raw `
 #define VAR_MAY_STATE          VAR_PUZZLE_15
 #define VAR_ALEX_STATE         VAR_PUZZLE_16
 
-#define FLAG_HIDE_WALLY_SX     FLAG_PUZZLE_21
-#define FLAG_HIDE_JAMES_SE     FLAG_PUZZLE_22
-#define FLAG_HIDE_BRENDAN_SW   FLAG_PUZZLE_23
-#define FLAG_HIDE_BRENDAN_RH   FLAG_PUZZLE_24
+#define FLAG_HIDE_JOEY_SX      FLAG_PUZZLE_21
+#define FLAG_HIDE_JOEY_02      FLAG_PUZZLE_22
+#define FLAG_HIDE_JAMES_SE     FLAG_PUZZLE_23
+#define FLAG_HIDE_JAMES_NE     FLAG_PUZZLE_24
+#define FLAG_HIDE_IRENE_01     FLAG_PUZZLE_25
+#define FLAG_HIDE_IRENE_02     FLAG_PUZZLE_26
+#define FLAG_HIDE_WALLY_SX     FLAG_PUZZLE_27
+#define FLAG_HIDE_WALLY_NW     FLAG_PUZZLE_28
+#define FLAG_HIDE_BRENDAN_SW   FLAG_PUZZLE_29
+#define FLAG_HIDE_BRENDAN_RH   FLAG_PUZZLE_2A
+#define FLAG_HIDE_MAY_NE       FLAG_PUZZLE_2B
+#define FLAG_HIDE_MAY_NC       FLAG_PUZZLE_2C
+#define FLAG_HIDE_ALEX_01      FLAG_PUZZLE_2D
+#define FLAG_HIDE_ALEX_02      FLAG_PUZZLE_2E
 
 #define LID_SCIENTIST          1
 #define LID_JOEY               2
@@ -20,6 +30,7 @@ raw `
 @ -----------------------------------------------------
 
 SafariZone_South_MapScripts:: @ 823D279
+	puzzle_info Puzzle_SafariImposters_Name, CommonAuthor_Tustin2121
 	map_script MAP_SCRIPT_ON_TRANSITION, SafariZone_South_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, SafariZone_South_OnFrame
 	.byte 0
@@ -34,6 +45,7 @@ script SafariZone_South_OnTransition {
 	setobjectxyperm (LID_SCIENTIST, 31, 34)
 	setobjectxyperm (LID_JOEY, 27, 35)
 	setobjectxyperm (LID_WALLY, 28, 30)
+	setobjectmovementtype(LID_WALLY, MOVEMENT_TYPE_FACE_UP)
 }
 
 script SafariZone_South_EnterSafariZone {
@@ -49,8 +61,32 @@ script SafariZone_South_EnterSafariZone {
 	waitmovement(LID_JOEY)
 	setobjectxyperm (LID_SCIENTIST, 32, 34)
 	setobjectxyperm (LID_JOEY, 32, 34)
-	removeobject(LID_WALLY)
+	setobjectxyperm (LID_WALLY, 8, 12)
+	setobjectmovementtype(LID_WALLY, MOVEMENT_TYPE_WANDER_AROUND)
 	setvar (VAR_SAFARI_ZONE_STATE, 0)
+	
+	// set up this section of the puzzle
+	setflag(FLAG_HIDE_JOEY_02)
+	setflag(FLAG_HIDE_JAMES_NE)
+	setflag(FLAG_HIDE_IRENE_02)
+	setflag(FLAG_HIDE_WALLY_NW)
+	setflag(FLAG_HIDE_BRENDAN_RH)
+	setflag(FLAG_HIDE_MAY_NC)
+	setflag(FLAG_HIDE_ALEX_02)
+	// Disable the player's analogue
+	checkplayergender
+	switch(var(VAR_RESULT)) {
+		case GENDER_M:
+			setflag(FLAG_HIDE_BRENDAN_SW)
+			setvar(VAR_BRENDAN_STATE, 50)
+		case GENDER_F:
+			setflag(FLAG_HIDE_MAY_NE)
+			setvar(VAR_MAY_STATE, 50)
+		case GENDER_N:
+			setflag(FLAG_HIDE_ALEX_01)
+			setvar(VAR_ALEX_STATE, 50)
+	}
+	
 	releaseall
 }
 
@@ -81,7 +117,7 @@ script SafariZone_South_EventScript_ExitAttendant {
 // Joey
 
 script SafariZone_EventScript_JoeyFearsSnakes {
-	
+	// TODO: Runs into snake, and makes an exit
 }
 
 script SafariZone_EventScript_JoeyLikesHisRattata {
@@ -93,6 +129,7 @@ script SafariZone_EventScript_JoeyLikesHisRattata {
 
 script SafariZone_DisableScript_JamesFearsWater {
 	setflag(FLAG_HIDE_JAMES_SE)
+	clearflag(FLAG_HIDE_JAMES_NE)
 	setvar(VAR_JAMES_STATE, 1)
 }
 
@@ -124,6 +161,7 @@ script SafariZone_EventScript_JamesFearsWater {
 	waitmovement(2)
 	removeobject(2)
 	setflag(FLAG_HIDE_JAMES_SE)
+	clearflag(FLAG_HIDE_JAMES_NE)
 	setvar(VAR_JAMES_STATE, 1)
 	releaseall
 }
@@ -169,7 +207,7 @@ movement SafariZone_Movement_JamesFearsWater_PlayerB {
 	face_up
 }
 
-script SafariZone_EventScript_JamesLikesBugs {
+script SafariZone_EventScript_JamesBugSearch {
 	
 }
 
@@ -187,8 +225,36 @@ script SafariZone_EventScript_IreneLikesChansey {
 // ----------------------------------------------------
 // Wally
 
+script SafariZone_EventScript_WallyHatesCrowds {
+	msgbox ("{WALLY}: It's so peaceful out here.\p"
+			"Back in the Trick House there's\n"
+			"a big loud crowd around every corner.\p"
+			"But here, it's just calm. The wind\n"
+			"blowing in the trees, the {POKEMON}\l"
+			"walking around in their natural habitat.\p"
+			"It's nice.$", MSGBOX_NPC)
+	clearflag(FLAG_HIDE_WALLY_NW)
+}
+
+script SafariZone_EventScript_WallyLikesDragons {
+	msgbox ("{WALLY}: I saw a DRAGON {POKEMON}!\n"
+			"Up in the storm clouds!\p"
+			"I'm gonna see if I can lure it down\n"
+			"to the ground to catch it!\p"
+			"Careful? This is exhilarating!\n"
+			"Stop sounding like my parents!\p"
+			"I haven't felt like this ever before!\n"
+			"That dragon is gonna be mine!!$", MSGBOX_NPC)
+}
+
 // ----------------------------------------------------
 // Brendan
+
+script SafariZone_DisableScript_BrendanFearsThunder {
+	setvar(VAR_BRENDAN_STATE, 2)
+	setflag(FLAG_HIDE_BRENDAN_SW)
+	clearflag(FLAG_HIDE_BRENDAN_RH)
+}
 
 script SafariZone_EventScript_BrendanFearsThunder {
 	lockall
@@ -200,7 +266,9 @@ script SafariZone_EventScript_BrendanFearsThunder {
 	message("AUGH! NOPE! NOPE! NOPE! NOPE! NOPE!\n"
 			"NOPE! NOPE! NOPE! NOPE! NOPE! NOPE!$")
 	waitmovement(2)
+	removeobject(2)
 	closemessage
+	setvar(VAR_BRENDAN_STATE, 1)
 	setflag(FLAG_HIDE_BRENDAN_SW)
 	clearflag(FLAG_HIDE_BRENDAN_RH)
 	releaseall
@@ -225,16 +293,48 @@ movement SafariZone_Movement_BrendanFearsThunderP {
 }
 
 script SafariZone_EventScript_BrendanInResthouse {
-	
+	if (var(VAR_BRENDAN_STATE) == 1) {
+	msgbox ("Oh, hey, {PLAYER}. How are you?\p"
+			"Me? Oh, fine, fine. I'm just taking\n"
+			"a break in the rest house here.\p"
+			"Hm? Running away? You saw that?!\n"
+			"I-I-I mean-- You didn't see that?\p"
+			"Yeah, there was a giant… … TAUROS!!\n"
+			"R-Running right at me!\l"
+			"Surely you saw it! It was right there!\p"
+			"I mean, how could you NOT run from a\n"
+			"{POKEMON} like that trying to hurt you?\p"
+			"Thunderclap? Nah, no, that was just…\n"
+			"{POKEMON}… fighting… off to the left…$", MSGBOX_NPC)
+			// There are no tauros in this safari zone
+	} else {
+	msgbox ("Oh, hey, {PLAYER}. How are you?\p"
+			"Me? Oh, fine, fine. I'm just taking\n"
+			"a break in the rest house here.\p"
+			"Harsh rains outside, right? I'll just\n"
+			"be here waiting for it to pass…$", MSGBOX_NPC)
+	}
 }
 
 // ----------------------------------------------------
 // May
 
-script SafariZone_EventScript_MayFearsHeights {
+script SafariZone_DisableScript_MayOnTheRidge {
+	setflag(FLAG_HIDE_MAY_NE)
+	clearflag(FLAG_HIDE_MAY_NC)
+	setvar(VAR_MAY_STATE, 1)
+}
+script SafariZone_EventScript_MayOnTheRidge {
+	lockall
+	
+	//TODO
+	setflag(FLAG_HIDE_MAY_NE)
+	clearflag(FLAG_HIDE_MAY_NC)
+	setvar(VAR_MAY_STATE, 1)
+	releaseall
 }
 
-script SafariZone_EventScript_MayLikesSomething {
+script SafariZone_EventScript_MayInTheDesert {
 }
 
 // ----------------------------------------------------

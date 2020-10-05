@@ -311,7 +311,10 @@
 #define VAR_METATILE_Y                0x8019
 #define VAR_LAST_WARP_ID              0x801A
 #define VAR_SYS_FORCE_STEP            0x801B
+#define VAR_BATTLE_MOD                0x801C
 
 #define THIS_EVENT                    0x800F //alias to VAR_LAST_TALKED
+
+#define BATTLEMOD_NO_WHITEOUT         0x0001
 
 #endif // GUARD_CONSTANTS_VARS_H

@@ -47,12 +47,12 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_PUZZLE_21",
             "graphics_id": "TTH_FRIEND_JOEY",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NULL",
+            "script": "SafariZone_EventScript_JoeyFearsSnakes",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 21,
@@ -60,16 +60,16 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_PUZZLE_21",
+            "flag": "FLAG_PUZZLE_27",
             "graphics_id": "TTH_FRIEND_WALLY",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
+            "movement_range_x": 2,
+            "movement_range_y": 2,
+            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 28,
-            "y": 30
+            "x": 8,
+            "y": 12
         }
     ],
     "region_map_section": "MAPSEC_SAFARI_ZONE",

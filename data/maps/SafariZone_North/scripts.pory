@@ -1,5 +1,6 @@
 raw `
 SafariZone_North_MapScripts:: @ 823D253
+	puzzle_info Puzzle_SafariImposters_Name, CommonAuthor_Tustin2121
 	.byte 0
 
 SafariZone_North_EventScript_Fisherman:: @ 823D254

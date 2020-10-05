@@ -1,4 +1,5 @@
 raw `
 SafariZone_Southeast_MapScripts::
+	puzzle_info Puzzle_SafariImposters_Name, CommonAuthor_Tustin2121
 	.byte 0
 `
