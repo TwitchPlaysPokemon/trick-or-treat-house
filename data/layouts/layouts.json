@@ -901,6 +901,16 @@
             "width": 17
         },
         {
+            "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Room/map.bin",
+            "border_filepath": "data/layouts/Puzzle_LostWoods_Room/border.bin",
+            "height": 21,
+            "id": "LAYOUT_PUZZLE_LOST_WOODS_ROOM",
+            "name": "Puzzle_LostWoods_Room_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Petalburg",
+            "width": 21
+        },
+        {
             "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Room0/map.bin",
             "border_filepath": "data/layouts/Puzzle_LostWoods_Room0/border.bin",
             "height": 21,
@@ -941,13 +951,23 @@
             "width": 21
         },
         {
-            "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Room/map.bin",
-            "border_filepath": "data/layouts/Puzzle_LostWoods_Room/border.bin",
+            "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Room4/map.bin",
+            "border_filepath": "data/layouts/Puzzle_LostWoods_Room4/border.bin",
             "height": 21,
-            "id": "LAYOUT_PUZZLE_LOST_WOODS_ROOM",
-            "name": "Puzzle_LostWoods_Room_Layout",
+            "id": "LAYOUT_PUZZLE_LOST_WOODS_ROOM4",
+            "name": "Puzzle_LostWoods_Room4_Layout",
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Petalburg",
+            "width": 21
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Room5/map.bin",
+            "border_filepath": "data/layouts/Puzzle_LostWoods_Room5/border.bin",
+            "height": 21,
+            "id": "LAYOUT_PUZZLE_LOST_WOODS_ROOM5",
+            "name": "Puzzle_LostWoods_Room5_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Fortree",
             "width": 21
         },
         {

@@ -4,6 +4,14 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_TEMP_1",
+            "item": "ITEM_NONE",
+            "type": "hidden_item",
+            "x": 12,
+            "y": 12
+        }
     ],
     "connections": [
         {

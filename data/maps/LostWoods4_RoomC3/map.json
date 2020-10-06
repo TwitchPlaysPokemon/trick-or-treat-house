@@ -30,11 +30,24 @@
     "coord_events": [
     ],
     "id": "MAP_LOST_WOODS4_ROOM_C3",
-    "layout": "LAYOUT_PUZZLE_LOST_WOODS_ROOM",
+    "layout": "LAYOUT_PUZZLE_LOST_WOODS_ROOM5",
     "map_type": "MAP_TYPE_ROUTE",
     "music": "MUS_DAN01",
     "name": "LostWoods4_RoomC3",
     "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_ALIEN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE_IN_GRASS",
+            "script": "Puzzle_LostWoods4_TrainerScript_AlienC3",
+            "trainer_sight_or_berry_tree_id": "1",
+            "trainer_type": "TRAINER_TYPE_NORMAL",
+            "x": 13,
+            "y": 10
+        }
     ],
     "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
     "requires_flash": false,
