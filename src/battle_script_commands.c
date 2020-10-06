@@ -6385,7 +6385,7 @@ static void PutLevelAndGenderOnLvlUpBox(void)
     AddTextPrinter(&printerTemplate, 0xFF, NULL);
 
     txtPtr = gStringVar4;
-    gStringVar4[0] = CHAR_SPECIAL_F9;
+    gStringVar4[0] = CHAR_EXTRA_SYMBOL;
     txtPtr++;
     txtPtr[0] = 5;
     txtPtr++;

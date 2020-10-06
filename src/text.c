@@ -1744,11 +1744,11 @@ u16 RenderText(struct TextPrinter *textPrinter)
             textPrinter->state = 3;
             TextPrinterInitDownArrowCounters(textPrinter);
             return 3;
-        case CHAR_SPECIAL_F9:
+        case CHAR_EXTRA_SYMBOL:
             currChar = *textPrinter->printerTemplate.currentChar | 0x100;
             textPrinter->printerTemplate.currentChar++;
             break;
-        case CHAR_SPECIAL_F8:
+        case CHAR_KEYPAD_ICON:
             currChar = *textPrinter->printerTemplate.currentChar++;
             gUnknown_03002F90.unk80 = DrawKeypadIcon(textPrinter->printerTemplate.windowId, currChar, textPrinter->printerTemplate.currentX, textPrinter->printerTemplate.currentY);
             textPrinter->printerTemplate.currentX += gUnknown_03002F90.unk80 + textPrinter->printerTemplate.letterSpacing;
@@ -1916,7 +1916,7 @@ u32 GetStringWidthFixedWidthFont(const u8 *str, u8 fontId, u8 letterSpacing)
             case 0x14:
                 ++strPos;
                 break;
-            case EXT_CTRL_CODE_UNKNOWN_7:
+            case EXT_CTRL_CODE_RESET_SIZE:
             case 0x9:
             case 0xA:
             case 0xF:
@@ -1926,15 +1926,15 @@ u32 GetStringWidthFixedWidthFont(const u8 *str, u8 fontId, u8 letterSpacing)
                 break;
             }
             break;
-        case CHAR_SPECIAL_F7:
+        case CHAR_DYNAMIC:
         case PLACEHOLDER_BEGIN:
             ++strPos;
             break;
         case CHAR_PROMPT_SCROLL:
         case CHAR_PROMPT_CLEAR:
             break;
-        case CHAR_SPECIAL_F8:
-        case CHAR_SPECIAL_F9:
+        case CHAR_KEYPAD_ICON:
+        case CHAR_EXTRA_SYMBOL:
             ++strPos;
         default:
             ++width;
@@ -2016,7 +2016,7 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
                 default:
                     return 0;
             }
-        case CHAR_SPECIAL_F7:
+        case CHAR_DYNAMIC:
             if (bufferPointer == NULL)
                 bufferPointer = DynamicPlaceholderTextUtil_GetPlaceholderPtr(*++str);
             while (*bufferPointer != EOS)
@@ -2082,7 +2082,7 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
             case EXT_CTRL_CODE_ENG:
                 isJapanese = 0;
                 break;
-            case EXT_CTRL_CODE_UNKNOWN_7:
+            case EXT_CTRL_CODE_RESET_SIZE:
             case 0x9:
             case 0xA:
             case 0xF:
@@ -2090,9 +2090,9 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
                 break;
             }
             break;
-        case CHAR_SPECIAL_F8:
-        case CHAR_SPECIAL_F9:
-            if (*str == CHAR_SPECIAL_F9)
+        case CHAR_KEYPAD_ICON:
+        case CHAR_EXTRA_SYMBOL:
+            if (*str == CHAR_EXTRA_SYMBOL)
                 glyphWidth = func(*++str | 0x100, isJapanese);
             else
                 glyphWidth = GetKeypadIconWidth(*++str);
@@ -2203,7 +2203,7 @@ u8 RenderTextFont9(u8 *pixels, u8 fontId, u8 *str)
             case 0x14:
                 ++strPos;
                 break;
-            case EXT_CTRL_CODE_UNKNOWN_7:
+            case EXT_CTRL_CODE_RESET_SIZE:
             case 0x9:
             case 0xA:
             case 0xF:
@@ -2213,9 +2213,9 @@ u8 RenderTextFont9(u8 *pixels, u8 fontId, u8 *str)
                 continue;
             }
             break;
-        case CHAR_SPECIAL_F7:
-        case CHAR_SPECIAL_F8:
-        case CHAR_SPECIAL_F9:
+        case CHAR_DYNAMIC:
+        case CHAR_KEYPAD_ICON:
+        case CHAR_EXTRA_SYMBOL:
         case PLACEHOLDER_BEGIN:
             ++strPos;
             break;

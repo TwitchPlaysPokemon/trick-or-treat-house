@@ -1318,7 +1318,7 @@ static void sub_801EC94(void)
         charsStr = gUnknown_082F2BA8[gUnknown_02022C84->unk10][gUnknown_02022C84->unk12];
         for (i = 0; i < gUnknown_02022C84->unk11; i++)
         {
-            if (*charsStr == CHAR_SPECIAL_F9)
+            if (*charsStr == CHAR_EXTRA_SYMBOL)
                 charsStr++;
             charsStr++;
         }
@@ -1341,7 +1341,7 @@ static void sub_801EC94(void)
     str = sub_801EE84();
     while (--strLength != -1 && gUnknown_02022C84->unk15 < 15)
     {
-        if (*charsStr == CHAR_SPECIAL_F9)
+        if (*charsStr == CHAR_EXTRA_SYMBOL)
         {
             *str = *charsStr;
             charsStr++;
@@ -1376,7 +1376,7 @@ static void sub_801ED94(void)
 
     gUnknown_02022C84->unk14 = gUnknown_02022C84->unk15 - 1;
     str = sub_801EEA8();
-    if (*str != CHAR_SPECIAL_F9)
+    if (*str != CHAR_EXTRA_SYMBOL)
     {
         character = gUnknown_082F2AA8[*str];
         if (character)
@@ -1434,7 +1434,7 @@ static u8 *sub_801EEA8(void)
     while (*str != EOS)
     {
         str2 = str;
-        if (*str == CHAR_SPECIAL_F9)
+        if (*str == CHAR_EXTRA_SYMBOL)
             str++;
         str++;
     }
@@ -1455,7 +1455,7 @@ static u16 sub_801EED8(void)
         strLength -= 10;
         for (i = 0; i < strLength; i++)
         {
-            if (*str == CHAR_SPECIAL_F9)
+            if (*str == CHAR_EXTRA_SYMBOL)
                 str++;
 
             str++;
@@ -1596,7 +1596,7 @@ static u8 *sub_801F114(void)
     u8 *str = gUnknown_02022C84->unk1A;
     for (i = 0; i < numChars; i++)
     {
-        if (*str == CHAR_SPECIAL_F9)
+        if (*str == CHAR_EXTRA_SYMBOL)
             *str++;
 
         str++;
@@ -1613,7 +1613,7 @@ static u16 sub_801F144(void)
     u8 *str = gUnknown_02022C84->unk1A;
     for (count = 0, i = 0; i < numChars; count++, i++)
     {
-        if (*str == CHAR_SPECIAL_F9)
+        if (*str == CHAR_EXTRA_SYMBOL)
             str++;
 
         str++;

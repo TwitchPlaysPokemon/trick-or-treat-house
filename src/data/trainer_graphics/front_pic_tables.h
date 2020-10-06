@@ -185,7 +185,7 @@ const struct CompressedSpriteSheet gTrainerFrontPicTable[] =
     TRAINER_SPRITE(WALLY, gTrainerFrontPic_Wally, 0x800),
     TRAINER_SPRITE(BRENDAN, gTrainerFrontPic_Brendan, 0x800),
     TRAINER_SPRITE(MAY, gTrainerFrontPic_May, 0x800),
-    TRAINER_SPRITE(TREEKID, gTrainerFrontPic_Brendan, 0x800),
+    TRAINER_SPRITE(TREEKID, gTrainerFrontPic_Treekid, 0x800),
     TRAINER_SPRITE(BUG_CATCHER, gTrainerFrontPic_BugCatcher, 0x800),
     TRAINER_SPRITE(POKEMON_RANGER_M, gTrainerFrontPic_PokemonRangerM, 0x800),
     TRAINER_SPRITE(POKEMON_RANGER_F, gTrainerFrontPic_PokemonRangerF, 0x800),

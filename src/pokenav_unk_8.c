@@ -703,7 +703,7 @@ static void sub_81CF8E4(struct PokenavMonList * item, u8 * dest)
     }
     s = StringCopy(gStringVar1, genderStr);
     *s++ = CHAR_SLASH;
-    *s++ = CHAR_SPECIAL_F9;
+    *s++ = CHAR_EXTRA_SYMBOL;
     *s++ = 5; // LV
     ConvertIntToDecimalStringN(s, level, STR_CONV_MODE_LEFT_ALIGN, 3);
     sub_81DB494(dest, 1, gStringVar1, 40);
