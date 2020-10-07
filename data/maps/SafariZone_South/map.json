@@ -49,14 +49,14 @@
             "elevation": 3,
             "flag": "FLAG_PUZZLE_21",
             "graphics_id": "TTH_FRIEND_JOEY",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
+            "movement_range_x": 1,
+            "movement_range_y": 1,
+            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "SafariZone_EventScript_JoeyFearsSnakes",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 21,
-            "y": 30
+            "x": 20,
+            "y": 31
         },
         {
             "elevation": 3,
@@ -70,6 +70,19 @@
             "trainer_type": "0",
             "x": 8,
             "y": 12
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TREEKID_ACRO_BIKE",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 44,
+            "y": 27
         }
     ],
     "region_map_section": "MAPSEC_SAFARI_ZONE",

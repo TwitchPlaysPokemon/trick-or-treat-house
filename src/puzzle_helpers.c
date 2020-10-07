@@ -1219,3 +1219,31 @@ void Imposter_ShowTalkingPoints(struct ScriptContext *ctx) {
 	
 	// ShowFieldMessage(gStringVar4);
 }
+
+#undef VAR_CONFIG_IMPOSTER
+#undef VAR_IMPOSTER_SELECT
+#undef LID_JOEY
+#undef LID_JAMES
+#undef LID_IRENE
+#undef LID_WALLY
+#undef LID_BRENDAN
+#undef LID_MAY
+#undef LID_ALEX
+#undef LID_FRIEND_A
+#undef LID_FRIEND_B
+#undef LID_CUTSCENE_PLAYER
+
+#undef LID_SELECTED
+#undef LID_FRIEND_1
+#undef LID_FRIEND_2
+#undef LID_FRIEND_3
+#undef LID_FRIEND_4
+#undef LID_FRIEND_5
+
+#undef IMP_JOEY
+#undef IMP_JAMES
+#undef IMP_IRENE
+#undef IMP_WALLY
+#undef IMP_BRENDAN
+#undef IMP_MAY
+#undef IMP_ALEX

@@ -9,11 +9,11 @@ raw `
 #define VAR_ALEX_STATE         VAR_PUZZLE_16
 
 #define FLAG_HIDE_JOEY_SX      FLAG_PUZZLE_21
-#define FLAG_HIDE_JOEY_02      FLAG_PUZZLE_22
+#define FLAG_HIDE_JOEY_SE      FLAG_PUZZLE_22
 #define FLAG_HIDE_JAMES_SE     FLAG_PUZZLE_23
 #define FLAG_HIDE_JAMES_NE     FLAG_PUZZLE_24
-#define FLAG_HIDE_IRENE_01     FLAG_PUZZLE_25
-#define FLAG_HIDE_IRENE_02     FLAG_PUZZLE_26
+#define FLAG_HIDE_IRENE_NX     FLAG_PUZZLE_25
+#define FLAG_HIDE_IRENE_SW     FLAG_PUZZLE_26
 #define FLAG_HIDE_WALLY_SX     FLAG_PUZZLE_27
 #define FLAG_HIDE_WALLY_NW     FLAG_PUZZLE_28
 #define FLAG_HIDE_BRENDAN_SW   FLAG_PUZZLE_29
@@ -66,9 +66,9 @@ script SafariZone_South_EnterSafariZone {
 	setvar (VAR_SAFARI_ZONE_STATE, 0)
 	
 	// set up this section of the puzzle
-	setflag(FLAG_HIDE_JOEY_02)
+	setflag(FLAG_HIDE_JOEY_SE)
 	setflag(FLAG_HIDE_JAMES_NE)
-	setflag(FLAG_HIDE_IRENE_02)
+	setflag(FLAG_HIDE_IRENE_SW)
 	setflag(FLAG_HIDE_WALLY_NW)
 	setflag(FLAG_HIDE_BRENDAN_RH)
 	setflag(FLAG_HIDE_MAY_NC)
@@ -116,12 +116,121 @@ script SafariZone_South_EventScript_ExitAttendant {
 // ----------------------------------------------------
 // Joey
 
+raw `
+#define LID_JOEY 2
+`
+
 script SafariZone_EventScript_JoeyFearsSnakes {
-	// TODO: Runs into snake, and makes an exit
+	lock
+	faceplayer
+	message("{JOEY}: Hey, {PLAYER}, how's the\n"
+			"search going?\p"
+			"Me and ACE are sniffing out the--$")
+	waitmessage
+	playmoncry(SPECIES_SEVIPER, 0)
+	waitmoncry
+	selectpointer(SafariZone_EventScript_JoeyFearsSnakes_MoveTable, VAR_FACING)
+	applymovement(LID_JOEY, 0)
+	message("WHAAAAA!! SNAAAAAAKE!!!$")
+	waitmovement(LID_JOEY)
+	selectpointer(SafariZone_EventScript_JoeyFearsSnakes_MoveTable2, VAR_FACING)
+	applymovement(LID_PLAYER, 0)
+	waitmessage
+	waitmovement(LID_PLAYER)
+	message("… {PAUSE 16}… {PAUSE 16}… {PAUSE 16}… {PAUSE 16}… {PAUSE 16}… {PAUSE 16}\n"
+			"Uh… right, yes, sorry, I need to leave…\p"
+			"ACE doesn't like snakes. They tend to\n"
+			"… … … eat RATTATA like him… … …\p"
+			"… … …$")
+	waitmessage
+	closemessage
+	delay (8)
+	selectpointer(SafariZone_EventScript_JoeyFearsSnakes_MoveTable3, VAR_FACING)
+	applymovement(LID_JOEY, 0)
+	waitmovement(LID_JOEY)
+	setvar(VAR_JOEY_STATE, 2)
+	setflag(FLAG_HIDE_JOEY_SX)
+	clearflag(FLAG_HIDE_JOEY_SE)
+	release
 }
 
+raw `
+.align 2
+SafariZone_EventScript_JoeyFearsSnakes_MoveTable:
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_MoveS
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_MoveN
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_MoveW
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_MoveE
+	.4byte 0
+SafariZone_EventScript_JoeyFearsSnakes_MoveTable2:
+	.4byte Common_Movement_WalkInPlaceUp
+	.4byte Common_Movement_WalkInPlaceDown
+	.4byte Common_Movement_WalkInPlaceRight
+	.4byte Common_Movement_WalkInPlaceLeft
+	.4byte 0
+SafariZone_EventScript_JoeyFearsSnakes_MoveTable3:
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_LeaveS
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_Leave
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_Leave
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_Leave
+	.4byte 0
+`
+
+movement SafariZone_EventScript_JoeyFearsSnakes_MoveN {
+	jump_in_place_right
+	emote_exclamation_mark
+	walk_fast_right
+	walk_fast_down * 2
+	walk_fast_left
+	face_up
+}
+movement SafariZone_EventScript_JoeyFearsSnakes_MoveS {
+	jump_in_place_left
+	emote_exclamation_mark
+	walk_fast_right
+	walk_fast_up * 2
+	walk_fast_left
+	face_down
+}
+movement SafariZone_EventScript_JoeyFearsSnakes_MoveE {
+	jump_in_place_down
+	emote_exclamation_mark
+	walk_fast_up
+	walk_fast_left * 2
+	walk_fast_down
+	face_left
+}
+movement SafariZone_EventScript_JoeyFearsSnakes_MoveW {
+	jump_in_place_up
+	emote_exclamation_mark
+	walk_fast_down
+	walk_fast_right * 2
+	walk_fast_up
+	face_right
+}
+
+movement SafariZone_EventScript_JoeyFearsSnakes_Leave {
+	walk_up * 8
+}
+movement SafariZone_EventScript_JoeyFearsSnakes_LeaveS {
+	walk_left * 2
+	walk_up * 8
+}
+
+
+raw `
+#undef LID_JOEY
+`
+
 script SafariZone_EventScript_JoeyLikesHisRattata {
-	
+	msgbox ("{JOEY}: This area is nice.\n"
+			"ACE likes it around here.\p"
+			"It's shaded, and near a fresh water\n"
+			"river. And there's other RATTATA\l"
+			"around to socialize with.\p"
+			"Don't worry, he's sniffing around\n"
+			"for any RATTATA that don't smell like\l"
+			"they're actually RATTATA.$", MSGBOX_NPC)
 }
 
 // ----------------------------------------------------
@@ -137,8 +246,9 @@ script SafariZone_EventScript_JamesFearsWater {
 	lockall
 	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
 	subvar(VAR_INTERACT_X, 18)
+	special(ShowFieldMessageBoxAtTopOfScreen)
 	applymovement (2, SafariZone_Movement_JamesFearsWater1)
-	message("{JAMES}: HERACROSS… Where are you??\n"
+	message("{JAMES}: HERACROSS… Where are you…?\n"
 			"I don't like you leading me over here…\p$")
 	waitmessage
 	waitmovement(2)
@@ -160,6 +270,7 @@ script SafariZone_EventScript_JamesFearsWater {
 	closemessage
 	waitmovement(2)
 	removeobject(2)
+	special(ResetFieldMessageBoxToBottomOfScreen)
 	setflag(FLAG_HIDE_JAMES_SE)
 	clearflag(FLAG_HIDE_JAMES_NE)
 	setvar(VAR_JAMES_STATE, 1)
@@ -208,18 +319,30 @@ movement SafariZone_Movement_JamesFearsWater_PlayerB {
 }
 
 script SafariZone_EventScript_JamesBugSearch {
-	
+	msgbox ("{JAMES}: HERACROSS… Where are you…?\p"
+			"This would be so much easier if\n"
+			"I hadn't left my net at home\l"
+			"in favor of the Master Sword…$", MSGBOX_NPC)
 }
 
 // ----------------------------------------------------
 // Irene
 
 script SafariZone_EventScript_IreneHatesBats {
-	
+	// FLAG_HIDE_IRENE_NX
+	msgbox ("{IRENE}: That storm cloud is not moving\n"
+			"is it? I was hoping it would pass over.\p"
+			"It's getting kinda… dark… Do you think\n"
+			"bat would come out in this weather…?\p"
+			"… … … Maybe I should check a different\n"
+			"patch of grass… …$", MSGBOX_NPC)
+	setvar(VAR_IRENE_STATE, 1)
 }
 
 script SafariZone_EventScript_IreneLikesChansey {
-	
+	msgbox ("{IRENE}: {PLAYER}!! Be quiet!!\p"
+			"I think I might have found a nest\n"
+			"just beyond the treeline! Shh!$", MSGBOX_SIGN)
 }
 
 // ----------------------------------------------------
@@ -233,7 +356,7 @@ script SafariZone_EventScript_WallyHatesCrowds {
 			"blowing in the trees, the {POKEMON}\l"
 			"walking around in their natural habitat.\p"
 			"It's nice.$", MSGBOX_NPC)
-	clearflag(FLAG_HIDE_WALLY_NW)
+	setvar(VAR_WALLY_STATE, 1)
 }
 
 script SafariZone_EventScript_WallyLikesDragons {
@@ -326,21 +449,55 @@ script SafariZone_DisableScript_MayOnTheRidge {
 }
 script SafariZone_EventScript_MayOnTheRidge {
 	lockall
+	// Walks up to player
+	msgbox ("{MAY}: Hey, {PLAYER}. I think all the\n"
+			"HOPPIP I've been looking for flew away.\p"
+			"There were some here, but I think they\n"
+			"all took off towards the west.\p"
+			"Know any shortcuts from here?$")
+	closemessage
+	// Walk down
+	special(ShowFieldMessageBoxAtTopOfScreen)
+	msgbox ("O-Oh… That's… kinda perilous…\p"
+			"You're supposed to BIKE over that?!\p"
+			"You know, I think I'm gonna go the\n"
+			"long way around. Later.$")
+	closemessage
+	// Walks away
 	
-	//TODO
+	special(ResetFieldMessageBoxToBottomOfScreen)
 	setflag(FLAG_HIDE_MAY_NE)
 	clearflag(FLAG_HIDE_MAY_NC)
 	setvar(VAR_MAY_STATE, 1)
 	releaseall
 }
 
+
+
+
+
+
+
+//TODO movement
+
 script SafariZone_EventScript_MayInTheDesert {
+	msgbox ("{MAY}: I saw some HOPPIP hopping\n"
+			"around over here earlier.\p"
+			"I think they've all taken shelter\n"
+			"from the rain under the rocks.\p"
+			"I will find one to catch.$", MSGBOX_NPC)
 }
 
 // ----------------------------------------------------
 // Alex
 
 script SafariZone_EventScript_AlexFearsSpiders {
+	message("???: Nope nope nope nope nope nope\n"
+			"nope nope nope nope nope nope nope\p$")
+	// biking by
+	message("{ALEX}: Nope! No spiders! Nope!\n"
+			"Spiders bad. Spiders very bad.\l"
+			"Very very bad spiders…$")
 }
 
 script SafariZone_EventScript_AlexInTheRain {

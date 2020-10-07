@@ -1,5 +1,24 @@
 raw `
 SafariZone_Southeast_MapScripts::
 	puzzle_info Puzzle_SafariImposters_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ON_LOAD, SafariZone_Southeast_OnLoad
 	.byte 0
+
+#define FLAG_HIDE_JOEY_SX     FLAG_PUZZLE_27
+#define FLAG_HIDE_JOEY_SE     FLAG_PUZZLE_28
 `
+
+script(local) SafariZone_Northwest_OnLoad {
+	// Joey moves into this area
+	if (var(VAR_WALLY_STATE) == 1) {
+		clearflag(FLAG_HIDE_JOEY_SE)
+		setflag(FLAG_HIDE_JOEY_SX)
+	}
+}
+
+raw `
+#undef FLAG_HIDE_JOEY_SX
+#undef FLAG_HIDE_JOEY_SE
+`
+
+

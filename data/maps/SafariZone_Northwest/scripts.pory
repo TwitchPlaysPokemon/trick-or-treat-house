@@ -1,16 +1,17 @@
 raw `
-#define FLAG_HIDE_WALLY_SX     FLAG_PUZZLE_27
-#define FLAG_HIDE_WALLY_NW     FLAG_PUZZLE_28
-
 SafariZone_Northwest_MapScripts:: @ 8242C02
 	puzzle_info Puzzle_SafariImposters_Name, CommonAuthor_Tustin2121
 	map_script MAP_SCRIPT_ON_LOAD, SafariZone_Northwest_OnLoad
 	.byte 0
+
+#define FLAG_HIDE_WALLY_SX     FLAG_PUZZLE_27
+#define FLAG_HIDE_WALLY_NW     FLAG_PUZZLE_28
 `
 
 script(local) SafariZone_Northwest_OnLoad {
-	// Wall moves into this area
-	if (!flag(FLAG_HIDE_WALLY_NW)) {
+	// Wally moves into this area
+	if (var(VAR_WALLY_STATE) == 1) {
+		clearflag(FLAG_HIDE_WALLY_NW)
 		setflag(FLAG_HIDE_WALLY_SX)
 	}
 }

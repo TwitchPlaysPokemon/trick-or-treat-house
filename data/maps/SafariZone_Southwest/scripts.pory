@@ -2,6 +2,7 @@ raw `
 SafariZone_Southwest_MapScripts:: @ 823D266
 	puzzle_info Puzzle_SafariImposters_Name, CommonAuthor_Tustin2121
 	@ map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, SafariZone_Southwest_OnWarpTable
+	map_script MAP_SCRIPT_ON_LOAD, SafariZone_Southwest_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, SafariZone_Southwest_OnTransition
 	.byte 0
 
@@ -9,7 +10,17 @@ SafariZone_Southwest_MapScripts:: @ 823D266
 @ 	map_script_2 VAR_SAFARI_ZONE_STATE, 2, SafariZone_South_EnterSafariZone
 @ 	.2byte 0
 
+#define FLAG_HIDE_IRENE_NX     FLAG_PUZZLE_25
+#define FLAG_HIDE_IRENE_SW     FLAG_PUZZLE_26
 `
+
+script(local) SafariZone_Southwest_OnLoad {
+	// Irene moves into this area
+	if (var(VAR_IRENE_STATE) == 1) {
+		clearflag(FLAG_HIDE_IRENE_NX)
+		setflag(FLAG_HIDE_IRENE_SW)
+	}
+}
 
 script(local) SafariZone_Southwest_OnTransition {
 	// If the player comes into the map from the top
@@ -23,3 +34,8 @@ script SafariZone_Southwest_EventScript_RestHouseSign {
 	msgbox ("“Relieve your tired feet.”\n"
 			"REST HOUSE$", MSGBOX_SIGN)
 }
+
+raw `
+#undef FLAG_HIDE_IRENE_NX 
+#undef FLAG_HIDE_IRENE_SW 
+`

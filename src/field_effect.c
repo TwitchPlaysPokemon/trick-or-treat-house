@@ -3826,3 +3826,13 @@ static void Fldeff_MoveDeoxysRock_Step(u8 taskId)
     }
 }
 
+void ShowFieldMessageBoxAtTopOfScreen()
+{
+    SetGpuReg(REG_OFFSET_BG0VOFS, 8 * 14);
+}
+
+void ResetFieldMessageBoxToBottomOfScreen()
+{
+    SetGpuReg(REG_OFFSET_BG0VOFS, 0);
+}
+
