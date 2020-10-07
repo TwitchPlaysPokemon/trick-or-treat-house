@@ -242,9 +242,16 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/SafariZone_Southwest/scripts.inc"
 	.include "data/maps/SafariZone_RestHouse/scripts.inc"
 	
+	.include "data/maps/Puzzle_ImposterReflection/scripts.inc"
+	
+	.include "data/maps/Puzzle_SootopolisGym/scripts.inc"
+	.include "data/maps/SootopolisGym_B1F/scripts.inc"
+	
 	@ -------------------------------------------------
 
 	.include "data/maps/Puzzle_MetaPuzzleCave/scripts.inc"
+	.include "data/maps/MetaPuzzle_EmptyPuzzle/scripts.inc"
+	.include "data/maps/MetaPuzzle_StrengthRoom/scripts.inc"
 	
 	@ -------------------------------------------------
 	
@@ -6413,12 +6420,3 @@ EventScript_PlayerPCFemale::
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
 
-
-
-	.include "data/maps/Puzzle_SootopolisGym/scripts.inc"
-
-	.include "data/maps/SootopolisGym_B1F/scripts.inc"
-
-	.include "data/maps/MetaPuzzle_EmptyPuzzle/scripts.inc"
-
-	.include "data/maps/MetaPuzzle_StrengthRoom/scripts.inc"

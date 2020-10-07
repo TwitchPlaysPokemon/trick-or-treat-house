@@ -173,7 +173,8 @@
         "Puzzle_MurderExpress",
         "Puzzle_EliteFloor",
         "Puzzle_DiveMaze",
-        "Puzzle_SootopolisGym"
+        "Puzzle_SootopolisGym",
+        "Puzzle_ImposterReflection"
     ],
     "MG_SingleMapPuzzles2019": [
         "Puzzle_TrickHouseCut",
