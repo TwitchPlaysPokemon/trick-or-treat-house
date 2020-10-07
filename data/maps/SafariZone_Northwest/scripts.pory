@@ -4,6 +4,7 @@ SafariZone_Northwest_MapScripts:: @ 8242C02
 	map_script MAP_SCRIPT_ON_LOAD, SafariZone_Northwest_OnLoad
 	.byte 0
 
+#define VAR_WALLY_STATE        VAR_PUZZLE_13
 #define FLAG_HIDE_WALLY_SX     FLAG_PUZZLE_27
 #define FLAG_HIDE_WALLY_NW     FLAG_PUZZLE_28
 `
@@ -17,6 +18,7 @@ script(local) SafariZone_Northwest_OnLoad {
 }
 
 raw `
+#undef VAR_WALLY_STATE
 #undef FLAG_HIDE_WALLY_SX
 #undef FLAG_HIDE_WALLY_NW
 `
