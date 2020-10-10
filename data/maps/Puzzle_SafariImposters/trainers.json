@@ -1,0 +1,281 @@
+[
+	{
+		"class": "YOUNGSTER",
+		"name": "JOEY",
+		"music": "MALE",
+		"party": [
+			{
+				"species": "SPECIES_RATTATA",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_MAREEP",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_HOOTHOOT",
+				"level": 30
+			}
+		]
+	},
+	{
+		"class": "HERO_OF_TIME",
+		"name": "JAMES",
+		"party": [
+			{
+				"species": "SPECIES_HERACROSS",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_SPINARAK",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_BEAUTIFLY",
+				"level": 30
+			}
+		]
+	},
+	{
+		"class": "FAIRY_GIRL",
+		"name": "IRENE",
+		"female": true,
+		"music": "GIRL",
+		"party": [
+			{
+				"species": "SPECIES_MARILL",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_CLEFABLE",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_LAPRAS",
+				"level": 30
+			}
+		]
+	},
+	{
+		"class": "PKMN_TRAINER_3",
+		"name": "WALLY",
+		"pic": "WALLY",
+		"party": [
+			{
+				"species": "SPECIES_GARDEVOIR",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_MAGNETON",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_SALAMENCE",
+				"level": 30
+			}
+		]
+	},
+	{
+		"class": "PKMN_TRAINER_3",
+		"name": "BRENDAN",
+		"pic": "BRENDAN",
+		"party": [
+			{
+				"species": "SPECIES_MARSHTOMP",
+				"level": 30,
+				"moves": ["MOVE_MUD_SHOT", "MOVE_WATER_GUN", "MOVE_FORESIGHT", "MOVE_EARTHQUAKE"]
+			},
+			{
+				"species": "SPECIES_MAGCARGO",
+				"level": 30,
+				"moves": ["MOVE_FLAMETHROWER", "MOVE_ROCK_THROW", "MOVE_AMNESIA", "MOVE_HARDEN"]
+			},
+			{
+				"species": "SPECIES_UMBREON",
+				"level": 30,
+				"moves": ["MOVE_CONFUSE_RAY", "MOVE_QUICK_ATTACK", "MOVE_PURSUIT", "MOVE_SAND_ATTACK"]
+			}
+		]
+	},
+	{
+		"class": "PKMN_TRAINER_3",
+		"name": "MAY",
+		"pic": "MAY",
+		"female": true,
+		"party": [
+			{
+				"species": "SPECIES_BLAZIKEN",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_HOPPIP",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_BALTOY",
+				"level": 30
+			}
+		]
+	},
+	{
+		"class": "PKMN_TRAINER_3",
+		"name": "ALEX",
+		"pic": "ALEX",
+		"female": true,
+		"party": [
+			{
+				"species": "SPECIES_ABSOL",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_MILOTIC",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_RAPIDASH",
+				"level": 30
+			}
+		]
+	},
+	
+	
+	
+	{
+		"class": "YOUNGSTER",
+		"name": "JOEY",
+		"music": "MALE",
+		"party": [
+			{
+				"species": "SPECIES_RATTATA",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_MAREEP",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_SEVIPER",
+				"level": 30
+			}
+		]
+	},
+	{
+		"class": "HERO_OF_TIME",
+		"name": "JAMES",
+		"party": [
+			{
+				"species": "SPECIES_SPINARAK",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_CRAWDAUNT",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_SHARPEDO",
+				"level": 30
+			}
+		]
+	},
+	{
+		"class": "FAIRY_GIRL",
+		"name": "IRENE",
+		"female": true,
+		"music": "GIRL",
+		"party": [
+			{
+				"species": "SPECIES_CHANSEY",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_CLEFABLE",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_ZUBAT",
+				"level": 30
+			}
+		]
+	},
+	{
+		"class": "PKMN_TRAINER_3",
+		"name": "WALLY",
+		"pic": "WALLY",
+		"party": [
+			{
+				"species": "SPECIES_GARDEVOIR",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_MAGNETON",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_DODRIO",
+				"level": 30
+			}
+		]
+	},
+	{
+		"class": "PKMN_TRAINER_3",
+		"name": "BRENDAN",
+		"pic": "BRENDAN",
+		"party": [
+			{
+				"species": "SPECIES_UMBREON",
+				"level": 30,
+				"moves": ["MOVE_CONFUSE_RAY", "MOVE_QUICK_ATTACK", "MOVE_PURSUIT", "MOVE_RAIN_DANCE"]
+			},
+			{
+				"species": "SPECIES_MAGCARGO",
+				"level": 30,
+				"moves": ["MOVE_FLAMETHROWER", "MOVE_ROCK_THROW", "MOVE_AMNESIA", "MOVE_HARDEN"]
+			},
+			{
+				"species": "SPECIES_LANTURN",
+				"level": 30,
+				"moves": ["MOVE_THUNDERBOLT", "MOVE_THUNDER", "MOVE_WATER_GUN", "MOVE_SUPERSONIC"]
+			}
+		]
+	},
+	{
+		"class": "PKMN_TRAINER_3",
+		"name": "MAY",
+		"pic": "MAY",
+		"female": true,
+		"party": [
+			{
+				"species": "SPECIES_PELIPPER",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_TROPIUS",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_BALTOY",
+				"level": 30
+			}
+		]
+	},
+	{
+		"class": "PKMN_TRAINER_3",
+		"name": "ALEX",
+		"pic": "ALEX",
+		"female": true,
+		"party": [
+			{
+				"species": "SPECIES_ABSOL",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_ARIADOS",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_RAPIDASH",
+				"level": 30
+			}
+		]
+	}
+]

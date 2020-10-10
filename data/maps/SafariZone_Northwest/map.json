@@ -78,16 +78,16 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_PUZZLE_2E",
             "graphics_id": "EVENT_OBJ_GFX_TREEKID_NORMAL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "movement_range_x": 3,
+            "movement_range_y": 3,
+            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
             "script": "SafariZone_EventScript_AlexInTheRain",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 34,
-            "y": 27
+            "y": 28
         },
         {
             "elevation": 3,

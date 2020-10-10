@@ -21,7 +21,7 @@ raw `
 #define FLAG_HIDE_MAY_NE       FLAG_PUZZLE_2B
 #define FLAG_HIDE_MAY_NC       FLAG_PUZZLE_2C
 #define FLAG_HIDE_ALEX_01      FLAG_PUZZLE_2D
-#define FLAG_HIDE_ALEX_02      FLAG_PUZZLE_2E
+#define FLAG_HIDE_ALEX_NW      FLAG_PUZZLE_2E
 
 #define LID_SCIENTIST          1
 #define LID_JOEY               2
@@ -442,6 +442,10 @@ script SafariZone_EventScript_BrendanInResthouse {
 // ----------------------------------------------------
 // May
 
+raw `
+#define LID_MAY   7
+`
+
 script SafariZone_DisableScript_MayOnTheRidge {
 	setflag(FLAG_HIDE_MAY_NE)
 	clearflag(FLAG_HIDE_MAY_NC)
@@ -449,7 +453,17 @@ script SafariZone_DisableScript_MayOnTheRidge {
 }
 script SafariZone_EventScript_MayOnTheRidge {
 	lockall
+	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
+	subvar(VAR_INTERACT_X, 7)
+	
 	// Walks up to player
+	applymovement(LID_MAY, SafariZone_Movement_MayOnTheRidge1)
+	delay(32)
+	selectpointer(SafariZone_MovementTable_MayOnTheRidge1, VAR_INTERACT_X)
+	applymovement(LID_PLAYER, 0)
+	waitmovement(LID_PLAYER)
+	waitmovement(LID_MAY)
+	
 	msgbox ("{MAY}: Hey, {PLAYER}. I think all the\n"
 			"HOPPIP I've been looking for flew away.\p"
 			"There were some here, but I think they\n"
@@ -457,6 +471,11 @@ script SafariZone_EventScript_MayOnTheRidge {
 			"Know any shortcuts from here?$")
 	closemessage
 	// Walk down
+	applymovement(LID_PLAYER, SafariZone_Movement_MayOnTheRidge2p)
+	applymovement(LID_MAY, SafariZone_Movement_MayOnTheRidge2m)
+	waitmovement(LID_PLAYER)
+	waitmovement(LID_MAY)
+	
 	special(ShowFieldMessageBoxAtTopOfScreen)
 	msgbox ("O-Oh… That's… kinda perilous…\p"
 			"You're supposed to BIKE over that?!\p"
@@ -464,6 +483,9 @@ script SafariZone_EventScript_MayOnTheRidge {
 			"long way around. Later.$")
 	closemessage
 	// Walks away
+	applymovement(LID_MAY, SafariZone_Movement_MayOnTheRidge3)
+	waitmovement(LID_MAY)
+	removeobject(LID_MAY)
 	
 	special(ResetFieldMessageBoxToBottomOfScreen)
 	setflag(FLAG_HIDE_MAY_NE)
@@ -472,13 +494,37 @@ script SafariZone_EventScript_MayOnTheRidge {
 	releaseall
 }
 
+raw `
+.align 2
+SafariZone_MovementTable_MayOnTheRidge1:
+	.4byte Common_Movement_BackOffRight1
+	.4byte Common_Movement_WalkInPlaceLeft
+	.4byte 0
+`
 
-
-
-
-
-
-//TODO movement
+movement SafariZone_Movement_MayOnTheRidge1 {
+	walk_down * 4
+	walk_in_place_fastest_right
+}
+movement SafariZone_Movement_MayOnTheRidge2m {
+	face_down
+	delay_16 * 4
+	walk_down * 4
+	walk_in_place_fastest_left
+	delay_16 * 3
+}
+movement SafariZone_Movement_MayOnTheRidge2p {
+	walk_down * 2
+	walk_in_place_fastest_right
+	delay_16 * 1
+	face_up
+	delay_16 * 2
+	face_down
+}
+movement SafariZone_Movement_MayOnTheRidge3 {
+	walk_right
+	walk_down * 4
+}
 
 script SafariZone_EventScript_MayInTheDesert {
 	msgbox ("{MAY}: I saw some HOPPIP hopping\n"
@@ -492,16 +538,51 @@ script SafariZone_EventScript_MayInTheDesert {
 // Alex
 
 script SafariZone_EventScript_AlexFearsSpiders {
+	lockall
+	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
+	subvar(VAR_INTERACT_Y, 16)
 	message("???: Nope nope nope nope nope nope\n"
 			"nope nope nope nope nope nope nope\p$")
+	delay(16)
+	applymovement(LID_PLAYER, Common_Movement_WalkInPlaceRight)
+	waitmovement(LID_PLAYER)
+	delay(8)
+	applymovement(LID_PLAYER, Common_Movement_QuestionMark)
+	waitmovement(LID_PLAYER)
+	waitmessage
 	// biking by
+	
 	message("{ALEX}: Nope! No spiders! Nope!\n"
 			"Spiders bad. Spiders very bad.\l"
 			"Very very bad spiders…$")
+	setobjectxyperm(4, 45, 16)
+	addobject(4)
+	applymovement(4, SafariZone_Movement_AlexFearsSpiders)
+	delay(8*6)
+	if (var(VAR_INTERACT_Y) == 0) {
+		applymovement(LID_PLAYER, Common_Movement_BackOffDown1)
+		waitmovement(LID_PLAYER)
+	}
+	waitmessage
+	waitbuttonpress
+	closemessage
+	waitmovement(4)
+	
+	setobjectxyperm(4, 44, 27)
+	clearflag(FLAG_HIDE_ALEX_NW)
+	setvar(VAR_ALEX_STATE, 1)
+	releaseall
+}
+
+movement SafariZone_Movement_AlexFearsSpiders {
+	walk_fast_left * 16
 }
 
 script SafariZone_EventScript_AlexInTheRain {
-	
+	msgbox ("{ALEX}: I love the rain, don't you?\p"
+			"For one, no spiders. Always a plus.\p"
+			"For another, some of my favorite\n"
+			"{POKEMON} come out in the rain.$", MSGBOX_NPC)
 }
 
 raw `

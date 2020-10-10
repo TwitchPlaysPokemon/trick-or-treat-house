@@ -452,10 +452,14 @@ script(local) Puzzle_SafariImposters_Intro_James {
 }
 script(local) Puzzle_SafariImposters_Intro_Irene {
 	msgbox ("{IRENE}: I've heard theres CHANSEY\n"
-			"in Safari Zones like this! I hope\l"
-			"I run into some of them!\p"
-			"And this place doesn't have caves!\n"
-			"I hate when ZUBAT swoop down on me!$", MSGBOX_NPC)
+			"in Safari Zones like this! I've always\l"
+			"wanted one for myself!\p"
+			"They're so kind and nurturing, and\n"
+			"Breeders like me use them to help\l"
+			"take care of the {POKEMON} they raise.\p"
+			"I hope I run into one! And not anymore\n"
+			"bats. I'm sick of bats swooping down\l"
+			"onto my head all the time at night.$", MSGBOX_NPC)
 }
 script(local) Puzzle_SafariImposters_Intro_Wally {
 	msgbox ("{WALLY}: A-Are we really supposed to\n"
@@ -689,6 +693,7 @@ script Puzzle_SafariImposters_ExitCutscene {
 	waitbuttonpress
 	setvar(VAR_PUZZLE_STAGE, 4)
 	warpsilent(MAP_PUZZLE_SAFARI_IMPOSTERS, 0xFF, 11, 4)
+	callnative(Imposter_SetupTalkingPoints)
 	waitstate
 	releaseall
 }
@@ -709,6 +714,24 @@ movement Puzzle_SafariImposters_ExitCutscene_Movement3 {
 
 ///////////////////////////////////////////////////////
 // Imposter Search
+
+raw `
+#define  TRAINER_JOEY_REAL       TRAINER_01
+#define  TRAINER_JAMES_REAL      TRAINER_02
+#define  TRAINER_IRENE_REAL      TRAINER_03
+#define  TRAINER_WALLY_REAL      TRAINER_04
+#define  TRAINER_BRENDAN_REAL    TRAINER_05
+#define  TRAINER_MAY_REAL        TRAINER_06
+#define  TRAINER_ALEX_REAL       TRAINER_07
+
+#define  TRAINER_JOEY_FAKE       TRAINER_08
+#define  TRAINER_JAMES_FAKE      TRAINER_09
+#define  TRAINER_IRENE_FAKE      TRAINER_10
+#define  TRAINER_WALLY_FAKE      TRAINER_11
+#define  TRAINER_BRENDAN_FAKE    TRAINER_12
+#define  TRAINER_MAY_FAKE        TRAINER_13
+#define  TRAINER_ALEX_FAKE       TRAINER_14
+`
 
 text(global) Puzzle_SafariImposters_Menu_Report { "Talk$" }
 text(global) Puzzle_SafariImposters_Menu_Battle { "Battle$" }
@@ -774,6 +797,7 @@ script(local) Puzzle_SafariImposters_Search_Joey {
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
 			loadbyte(0, IMP_JOEY)
+			loadword(1, Puzzle_SafariImposters_TalkTable_JoeyAlibi)
 			callnative(Imposter_ShowTalkingPoints)
 			waitmessage
 			waitbuttonpress
@@ -875,7 +899,23 @@ script(local) Puzzle_SafariImposters_Search_Alex {
 }
 
 
+raw `
+#undef TRAINER_JOEY_REAL
+#undef TRAINER_JAMES_REAL
+#undef TRAINER_IRENE_REAL
+#undef TRAINER_WALLY_REAL
+#undef TRAINER_BRENDAN_REAL
+#undef TRAINER_MAY_REAL
+#undef TRAINER_ALEX_REAL
 
+#undef TRAINER_JOEY_FAKE
+#undef TRAINER_JAMES_FAKE
+#undef TRAINER_IRENE_FAKE
+#undef TRAINER_WALLY_FAKE
+#undef TRAINER_BRENDAN_FAKE
+#undef TRAINER_MAY_FAKE
+#undef TRAINER_ALEX_FAKE
+`
 
 ///////////////////////////////////////////////////////
 // Imposter Selection

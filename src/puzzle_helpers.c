@@ -1078,6 +1078,14 @@ void SetupIcePathLayout(struct ScriptContext *ctx) {
 #define LID_FRIEND_3         VAR_PUZZLE_13
 #define LID_FRIEND_4         VAR_PUZZLE_14
 #define LID_FRIEND_5         VAR_PUZZLE_15
+//
+#define VAR_JOEY_STATE         VAR_PUZZLE_10
+#define VAR_JAMES_STATE        VAR_PUZZLE_11
+#define VAR_IRENE_STATE        VAR_PUZZLE_12
+#define VAR_WALLY_STATE        VAR_PUZZLE_13
+#define VAR_BRENDAN_STATE      VAR_PUZZLE_14
+#define VAR_MAY_STATE          VAR_PUZZLE_15
+#define VAR_ALEX_STATE         VAR_PUZZLE_16
 // compare against VAR_CONFIG_IMPOSTER:
 #define IMP_JOEY    0
 #define IMP_JAMES   1
@@ -1205,19 +1213,70 @@ void Imposter_LoadRevealStrings(struct ScriptContext *ctx) {
 	}
 }
 
-// extern static const u8* const Puzzle_SafariImposters_TalkTables[7][3];
+extern const u8* const Puzzle_SafariImposters_TalkTables[7][3];
+static const u16 Imposter_ShowTalkingPoints_RNGVars = {
+	VAR_JOEY_STATE,
+	VAR_JAMES_STATE,
+	VAR_IRENE_STATE,
+	VAR_WALLY_STATE,
+	VAR_BRENDAN_STATE,
+	VAR_MAY_STATE,
+	VAR_ALEX_STATE,
+};
+#define ACCUSE_IDX(rng)  (0x7 & ((rng) >> 12));
+
+void Imposter_SetupTalkingPoints(struct ScriptContext *ctx) {
+	u8 i, x;
+	u16* var
+	for (i = 0; i < ARRAY_COUNT(Imposter_ShowTalkingPoints_RNGVars); i++) {
+		var = GetVarPointer(Imposter_ShowTalkingPoints_RNGVars[i]);
+		*var = (Random2() & 0xFFF0) | (*var);
+	}
+	// eliminate impossible accusations, change to player accusations
+	var = GetVarPointer(Imposter_ShowTalkingPoints_RNGVars[IMP_JOEY]);
+	if (VarGet(VAR_CONFIG_IMPOSTER) != IMP_JAMES && ACCUSE_IDX(*var) == IMP_JAMES) {
+		*var = (*var & 0x0FFF) | IMP_JOEY;
+	}
+	
+	var = GetVarPointer(Imposter_ShowTalkingPoints_RNGVars[IMP_JAMES]);
+	if (VarGet(VAR_CONFIG_IMPOSTER) != IMP_JOEY && ACCUSE_IDX(*var) == IMP_JOEY) {
+		*var = (*var & 0x0FFF) | IMP_JAMES;
+	}
+}
 
 void Imposter_ShowTalkingPoints(struct ScriptContext *ctx) {
-	// u8 currSpeaker = ctx->data[0];
-	// bool8 isImposter = currSpeaker == VarGet(VAR_CONFIG_IMPOSTER);
-	// const u8** alibiTable = Puzzle_SafariImposters_TalkTables[currSpeaker][0];
-	// const u8** imposterTable = Puzzle_SafariImposters_TalkTables[currSpeaker][1];
-	// const u8** accuseTable = Puzzle_SafariImposters_TalkTables[currSpeaker][2];
+	u8 currSpeaker = ctx->data[0];
+	bool8 isImposter = currSpeaker == VarGet(VAR_CONFIG_IMPOSTER);
+	const u8** alibiTable = Puzzle_SafariImposters_TalkTables[currSpeaker][0];
+	const u8** imposterTable = Puzzle_SafariImposters_TalkTables[currSpeaker][1];
+	const u8** accuseTable = Puzzle_SafariImposters_TalkTables[currSpeaker][2];
+	u16 rng = VarGet(Imposter_ShowTalkingPoints_RNGVars[currSpeaker]);
+	u8 i, x;
+	u8 *str = gStringVar4;
 	
+	if (isImposter) {
+		for(i = 0; imposterTable[i*4] != NULL; i++) {
+			x = 0x3 & (rng >> (4 + (i*2)));
+			str = StringCopy(str, imposterTable[(i*4)+x]);
+		}
+	} else {
+		for(i = 0; alibiTable[i*4] != NULL; i++) {
+			x = 0x3 & (rng >> (4 + (i*2)));
+			str = StringCopy(str, alibiTable[(i*4)+x]);
+		}
+	}
+	x = ACCUSE_IDX(rng);
+	// if the random accusation is of the player character, change it to such
+	if ((gSaveBlock2Ptr->playerGender == GENDER_M && x == IMP_BRENDAN)
+	||  (gSaveBlock2Ptr->playerGender == GENDER_F && x == IMP_MAY)
+	||  (gSaveBlock2Ptr->playerGender == GENDER_N && x == IMP_ALEX))
+	{
+		x = currSpeaker;
+	}
+	str = StringCopy(str, accuseTable[x]);
 	
 	// //TODO: From a table of talking points, compile an alibi or an accusation of someone else 
-	
-	// ShowFieldMessage(gStringVar4);
+	ShowFieldMessage(gStringVar4);
 }
 
 #undef VAR_CONFIG_IMPOSTER
@@ -1239,6 +1298,14 @@ void Imposter_ShowTalkingPoints(struct ScriptContext *ctx) {
 #undef LID_FRIEND_3
 #undef LID_FRIEND_4
 #undef LID_FRIEND_5
+
+#undef VAR_JOEY_STATE
+#undef VAR_JAMES_STATE
+#undef VAR_IRENE_STATE
+#undef VAR_WALLY_STATE
+#undef VAR_BRENDAN_STATE
+#undef VAR_MAY_STATE
+#undef VAR_ALEX_STATE
 
 #undef IMP_JOEY
 #undef IMP_JAMES

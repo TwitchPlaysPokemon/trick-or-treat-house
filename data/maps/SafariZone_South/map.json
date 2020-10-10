@@ -25,6 +25,24 @@
         }
     ],
     "coord_events": [
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 37,
+            "y": 17
+        },
+        {
+            "elevation": 0,
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 37,
+            "y": 16
+        }
     ],
     "id": "MAP_SAFARI_ZONE_SOUTH",
     "layout": "LAYOUT_SAFARI_ZONE_SOUTH",
