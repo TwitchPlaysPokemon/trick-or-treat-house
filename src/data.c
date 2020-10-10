@@ -344,7 +344,7 @@ const struct Trainer* GetTrainer(int tId)
     }
     else
     {
-        if (tId > TRAINERS_PERMAP_END) tId -= TRAINERS_PERMAP_END;
-        return &gTrainers[(tId-1) % ARRAY_COUNT(gTrainers)];
+        // if (tId > TRAINERS_PERMAP_END) tId -= TRAINERS_PERMAP_END;
+        return &gTrainers[tId % ARRAY_COUNT(gTrainers)];
     }
 }
