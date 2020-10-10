@@ -4,6 +4,7 @@ Puzzle_SafariImposters_MapScripts:: @ 822BBBB
 	puzzle_adjective Puzzle_SafariImposters_Adjective
 	puzzle_quip Puzzle_SafariImposters_Quip
 	puzzle_candylist Puzzle_SafariImposters_CandyList
+	puzzle_metavars Puzzle_SafariImposters_Variables
 	map_script MAP_SCRIPT_PUZZLE_SETUP_SCRIPT, Puzzle_SafariImposters_SetupPuzzle
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_SafariImposters_OnLoad
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_SafariImposters_OnResume
@@ -13,11 +14,19 @@ Puzzle_SafariImposters_MapScripts:: @ 822BBBB
 Puzzle_SafariImposters_Name:
 	.string "A Safari Among Friends$"
 Puzzle_SafariImposters_Adjective:
-	.string "$"
+	.string "suspicious$"
 Puzzle_SafariImposters_Quip:
-	.string "$"
+	.string "I'm fascinated by this species of\n"
+	.string "{POKEMON} that can hide in plain sight!\p"
+	.string "You think it's a plain old item in\n"
+	.string "the grass, then BAM! It attacks!\p"
+	.string "It's called Amoonguss.\n"
+	.string "Have you heard of it before?$"
 
 .align 2
+Puzzle_SafariImposters_Variables:
+	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_SCIENTIST_2
+	.2byte 0
 Puzzle_SafariImposters_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01
 	.2byte FLAG_CANDY_ABUNDANT_02
