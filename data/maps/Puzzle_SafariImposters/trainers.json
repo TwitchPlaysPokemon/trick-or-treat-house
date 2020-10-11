@@ -120,7 +120,7 @@
 	{
 		"class": "PKMN_TRAINER_3",
 		"name": "ALEX",
-		"pic": "ALEX",
+		"pic": "TREEKID",
 		"female": true,
 		"party": [
 			{
@@ -261,7 +261,7 @@
 	{
 		"class": "PKMN_TRAINER_3",
 		"name": "ALEX",
-		"pic": "ALEX",
+		"pic": "TREEKID",
 		"female": true,
 		"party": [
 			{

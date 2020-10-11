@@ -105,7 +105,7 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "0x0",
+            "script": "Puzzle_SafariImposters_EventScript_Scientist",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "TRAINER_TYPE_NONE",
             "x": 8,
@@ -118,10 +118,10 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-            "script": "NULL",
+            "script": "Puzzle_SafariImposters_EventScript_Scientist",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 7,
+            "x": 0,
             "y": 13
         },
         {
@@ -134,7 +134,7 @@
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 2,
+            "x": 3,
             "y": 13
         },
         {
@@ -147,7 +147,7 @@
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 5,
+            "x": 3,
             "y": 13
         },
         {
@@ -160,7 +160,7 @@
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 4,
+            "x": 2,
             "y": 13
         },
         {
@@ -173,7 +173,7 @@
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 3,
+            "x": 2,
             "y": 13
         },
         {
@@ -186,7 +186,7 @@
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 0,
+            "x": 1,
             "y": 13
         },
         {
@@ -199,7 +199,7 @@
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 6,
+            "x": 1,
             "y": 13
         },
         {
@@ -225,8 +225,8 @@
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 6,
-            "y": 4
+            "x": 0,
+            "y": 13
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_121",

@@ -44,8 +44,10 @@ Puzzle_SafariImposters_CandyList:
 #define VAR_CONFIG_IMPOSTER    VAR_PUZZLE_01
 #define VAR_IMPOSTER_SELECT    VAR_PUZZLE_02
 #define VAR_SAFARI_ZONE_STATE  VAR_PUZZLE_03
+#define VAR_SEARCH_STATE       VAR_PUZZLE_04
 
 #define FLAG_HIDE_SCROLL     FLAG_PUZZLE_20
+#define FLAG_DEFEATED_DITTO  FLAG_PUZZLE_30
 #define LID_SCIENTIST        7
 #define LID_JOEY             8
 #define LID_JAMES            9
@@ -92,7 +94,8 @@ Puzzle_SafariImposters_WarpTable:
 //  4 = Imposter Search
 //  5 = Imposter Selection
 //  6 = Imposter Revealed Cutscene
-//  7 = Post Puzzle
+//  7 = Post Puzzle (Correct)
+//  8 = Post Puzzle (Incorrect)
 script(local) Puzzle_SafariImposters_OnLoad {
 	switch(var(VAR_PUZZLE_STAGE)) {
 		case 0: goto(Puzzle_SafariImposters_OnLoad_IntroSetup)
@@ -102,6 +105,7 @@ script(local) Puzzle_SafariImposters_OnLoad {
 		case 5: goto(Puzzle_SafariImposters_OnLoad_ImposterSearch)
 		case 6: goto(Puzzle_SafariImposters_OnLoad_ImposterReveal)
 		case 7: goto(Puzzle_SafariImposters_OnLoad_PostPuzzle)
+		case 8: goto(Puzzle_SafariImposters_OnLoad_PostPuzzle)
 	}
 }
 
@@ -175,7 +179,7 @@ script Puzzle_SafariImposters_EventScript_InfoAttendant {
 	lock
 	faceplayer
 	if (var(VAR_PUZZLE_STAGE) >= 4 || var(VAR_PUZZLE_STAGE) < 7) {
-	msgbox ("")
+		msgbox ("Did you find the imposter yet?")
 	} else {
 		msgbox ("Welcome to the SAFARI ZONE!\n"
 				"Is it your first time here?$", MSGBOX_YESNO)
@@ -226,7 +230,8 @@ script Puzzle_SafariImposters_EventScript_Joey {
 		case 1: goto(Puzzle_SafariImposters_Intro_Joey)
 		case 4: goto(Puzzle_SafariImposters_Search_Joey)
 		case 5: goto(Puzzle_SafariImposters_Select_Joey)
-		case 7: goto(Puzzle_SafariImposters_Post_Joey)
+		case 7: goto(Puzzle_SafariImposters_PostRight_Joey)
+		case 8: goto(Puzzle_SafariImposters_PostWrong_Joey)
 	}
 }
 script Puzzle_SafariImposters_EventScript_James {
@@ -234,7 +239,8 @@ script Puzzle_SafariImposters_EventScript_James {
 		case 1: goto(Puzzle_SafariImposters_Intro_James)
 		case 4: goto(Puzzle_SafariImposters_Search_James)
 		case 5: goto(Puzzle_SafariImposters_Select_James)
-		case 7: goto(Puzzle_SafariImposters_Post_James)
+		case 7: goto(Puzzle_SafariImposters_PostRight_James)
+		case 8: goto(Puzzle_SafariImposters_PostWrong_James)
 	}
 }
 script Puzzle_SafariImposters_EventScript_Irene {
@@ -242,7 +248,8 @@ script Puzzle_SafariImposters_EventScript_Irene {
 		case 1: goto(Puzzle_SafariImposters_Intro_Irene)
 		case 4: goto(Puzzle_SafariImposters_Search_Irene)
 		case 5: goto(Puzzle_SafariImposters_Select_Irene)
-		case 7: goto(Puzzle_SafariImposters_Post_Irene)
+		case 7: goto(Puzzle_SafariImposters_PostRight_Irene)
+		case 8: goto(Puzzle_SafariImposters_PostWrong_Irene)
 	}
 }
 script Puzzle_SafariImposters_EventScript_Wally {
@@ -250,7 +257,8 @@ script Puzzle_SafariImposters_EventScript_Wally {
 		case 1: goto(Puzzle_SafariImposters_Intro_Wally)
 		case 4: goto(Puzzle_SafariImposters_Search_Wally)
 		case 5: goto(Puzzle_SafariImposters_Select_Wally)
-		case 7: goto(Puzzle_SafariImposters_Post_Wally)
+		case 7: goto(Puzzle_SafariImposters_PostRight_Wally)
+		case 8: goto(Puzzle_SafariImposters_PostWrong_Wally)
 	}
 }
 script Puzzle_SafariImposters_EventScript_Brendan {
@@ -258,7 +266,8 @@ script Puzzle_SafariImposters_EventScript_Brendan {
 		case 1: goto(Puzzle_SafariImposters_Intro_Brendan)
 		case 4: goto(Puzzle_SafariImposters_Search_Brendan)
 		case 5: goto(Puzzle_SafariImposters_Select_Brendan)
-		case 7: goto(Puzzle_SafariImposters_Post_Brendan)
+		case 7: goto(Puzzle_SafariImposters_PostRight_Brendan)
+		case 8: goto(Puzzle_SafariImposters_PostWrong_Brendan)
 	}
 }
 script Puzzle_SafariImposters_EventScript_May {
@@ -266,7 +275,8 @@ script Puzzle_SafariImposters_EventScript_May {
 		case 1: goto(Puzzle_SafariImposters_Intro_May)
 		case 4: goto(Puzzle_SafariImposters_Search_May)
 		case 5: goto(Puzzle_SafariImposters_Select_May)
-		case 7: goto(Puzzle_SafariImposters_Post_May)
+		case 7: goto(Puzzle_SafariImposters_PostRight_May)
+		case 8: goto(Puzzle_SafariImposters_PostWrong_May)
 	}
 }
 script Puzzle_SafariImposters_EventScript_Alex {
@@ -274,7 +284,17 @@ script Puzzle_SafariImposters_EventScript_Alex {
 		case 1: goto(Puzzle_SafariImposters_Intro_Alex)
 		case 4: goto(Puzzle_SafariImposters_Search_Alex)
 		case 5: goto(Puzzle_SafariImposters_Select_Alex)
-		case 7: goto(Puzzle_SafariImposters_Post_Alex)
+		case 7: goto(Puzzle_SafariImposters_PostRight_Alex)
+		case 8: goto(Puzzle_SafariImposters_PostWrong_Alex)
+	}
+}
+
+script Puzzle_SafariImposters_EventScript_Scientist {
+	switch(var(VAR_PUZZLE_STAGE)) {
+		case 4: goto(Puzzle_SafariImposters_Search_Scientist)
+		case 5: goto(Puzzle_SafariImposters_Select_Scientist)
+		case 7: goto(Puzzle_SafariImposters_PostRight_Scientist)
+		case 8: goto(Puzzle_SafariImposters_PostWrong_Scientist)
 	}
 }
 
@@ -1056,17 +1076,110 @@ raw `
 #undef TRAINER_ALEX_FAKE
 `
 
+script(local) Puzzle_SafariImposters_Search_Scientist {
+	lock
+	faceplayer
+	if (var(VAR_SEARCH_STATE) < 1) {
+		msgbox ("Once you've sus'd out who the imposter\n"
+				"might be, come speak to me.$")
+	} elif (var(VAR_SEARCH_STATE) < 2) {
+		msgbox ("You can't have possibly worked out\n"
+				"who it is from talking with only a\l"
+				"handful of people! Go make sure!$")
+	} else {
+		msgbox ("Do you have an idea who the imposter\n"
+				"could be then?", MSGBOX_YESNO)
+		if (var(VAR_RESULT) == YES) {
+			msgbox ("Very well, point out who you think\n"
+					"it is then. I'll watch.$")
+			setvar(VAR_PUZZLE_STAGE, 5)
+		} else {
+			msgbox ("Let's make sure you know.")
+		}
+	}
+	release
+}
+
 ///////////////////////////////////////////////////////
 // Imposter Selection
 
-script(local) Puzzle_SafariImposters_Select_Joey {}
-script(local) Puzzle_SafariImposters_Select_James {}
-script(local) Puzzle_SafariImposters_Select_Irene {}
-script(local) Puzzle_SafariImposters_Select_Wally {}
-script(local) Puzzle_SafariImposters_Select_Brendan {}
-script(local) Puzzle_SafariImposters_Select_May {}
-script(local) Puzzle_SafariImposters_Select_Alex {}
+script(local) Puzzle_SafariImposters_Select_Scientist {
+	msgbox ("Go talk to the person who you think\n"
+			"is the imposter.\p"
+			"We'll be right behind you when you\n"
+			"give the signal.$", MSGBOX_NPC)
+}
 
+script(local) Puzzle_SafariImposters_Select_Joey {
+	lock
+	msgbox ("Do you think {JOEY} is the imposter?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		setvar(VAR_IMPOSTER_SELECT, IMP_JOEY)
+		goto(Puzzle_SafariImposters_Select_Common)
+	}
+	release
+}
+script(local) Puzzle_SafariImposters_Select_James {
+	lock
+	msgbox ("Do you think {JAMES} is the imposter?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		setvar(VAR_IMPOSTER_SELECT, IMP_JAMES)
+		goto(Puzzle_SafariImposters_Select_Common)
+	}
+	release
+}
+script(local) Puzzle_SafariImposters_Select_Irene {
+	lock
+	msgbox ("Do you think {IRENE} is the imposter?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		setvar(VAR_IMPOSTER_SELECT, IMP_IRENE)
+		goto(Puzzle_SafariImposters_Select_Common)
+	}
+	release
+}
+script(local) Puzzle_SafariImposters_Select_Wally {
+	lock
+	msgbox ("Do you think {WALLY} is the imposter?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		setvar(VAR_IMPOSTER_SELECT, IMP_WALLY)
+		goto(Puzzle_SafariImposters_Select_Common)
+	}
+	release
+}
+script(local) Puzzle_SafariImposters_Select_Brendan {
+	lock
+	msgbox ("Do you think {BRENDAN} is the imposter?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		setvar(VAR_IMPOSTER_SELECT, IMP_BRENDAN)
+		goto(Puzzle_SafariImposters_Select_Common)
+	}
+	release
+}
+script(local) Puzzle_SafariImposters_Select_May {
+	lock
+	msgbox ("Do you think {MAY} is the imposter?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		setvar(VAR_IMPOSTER_SELECT, IMP_MAY)
+		goto(Puzzle_SafariImposters_Select_Common)
+	}
+	release
+}
+script(local) Puzzle_SafariImposters_Select_Alex {
+	lock
+	msgbox ("Do you think {ALEX} is the imposter?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		setvar(VAR_IMPOSTER_SELECT, IMP_ALEX)
+		goto(Puzzle_SafariImposters_Select_Common)
+	}
+	release
+}
+
+script(local) Puzzle_SafariImposters_Select_Common {
+	setvar(VAR_PUZZLE_STAGE, 6)
+	warpsilent(MAP_PUZZLE_SAFARI_IMPOSTERS, 0xFF, 14, 5)
+	waitstate
+	release
+}
 
 ///////////////////////////////////////////////////////
 // Imposter Revealed Cutscene
@@ -1229,6 +1342,7 @@ script Puzzle_SafariImposters_ImposterReveal_CutsceneCorrect {
 	}
 	
 	if (var(VAR_RESULT) == B_OUTCOME_WON || var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
+		setflag(FLAG_DEFEATED_DITTO)
 		message(Puzzle_SafariImposters_ImposterReveal_Text8a)
 		waitmessage
 		waitbuttonpress
@@ -1299,7 +1413,7 @@ script Puzzle_SafariImposters_ImposterReveal_CutsceneWrong {
 	waitmovement(LID_SCIENTIST)
 	closemessage
 	
-	setvar(VAR_PUZZLE_STAGE, 7)
+	setvar(VAR_PUZZLE_STAGE, 8)
 	warpsilent(MAP_PUZZLE_SAFARI_IMPOSTERS, 0xFF, 14, 5)
 	waitstate
 	releaseall
@@ -1598,35 +1712,170 @@ Puzzle_SafariImposters_StringTable_Text5:
 // Post-Puzzle
 
 script Puzzle_SafariImposters_OnLoad_PostPuzzle {
-	setobjectxyperm(LID_SCIENTIST, 15, 9)
-	setobjectmovementtype(LID_SCIENTIST, MOVEMENT_TYPE_FACE_LEFT)
+	clearflag(FLAG_HIDE_SCROLL)
+	
+	if (flag(FLAG_DEFEATED_DITTO)) {
+		setobjectxyperm(LID_SCIENTIST, 11, 4)
+		setobjectmovementtype(LID_SCIENTIST, MOVEMENT_TYPE_FACE_RIGHT)
+	} else {
+		setobjectxyperm(6, 11, 4)
+		setobjectmovementtype(5, MOVEMENT_TYPE_FACE_RIGHT)
+		
+		setobjectxyperm(5, 0, 13)
+		setobjectxyperm(4, 0, 13)
+	}
 	
 	setobjectxyperm(LID_JOEY, 16, 6)
-	setobjectmovementtype(LID_JOEY, MOVEMENT_TYPE_FACE_LEFT)
+	setobjectmovementtype(LID_JOEY, MOVEMENT_TYPE_FACE_UP)
 	
-	setobjectxyperm(LID_JAMES, 15, 6)
-	setobjectmovementtype(LID_JAMES, MOVEMENT_TYPE_FACE_RIGHT)
+	setobjectxyperm(LID_JAMES, 16, 5)
+	setobjectmovementtype(LID_JAMES, MOVEMENT_TYPE_FACE_DOWN)
 	
-	setobjectxyperm(LID_IRENE, 14, 3)
-	setobjectmovementtype(LID_IRENE, MOVEMENT_TYPE_LOOK_AROUND)
+	setobjectxyperm(LID_IRENE, 12, 6)
+	setobjectmovementtype(LID_IRENE, MOVEMENT_TYPE_FACE_DOWN_UP_AND_LEFT)
 	
-	setobjectxyperm(LID_WALLY, 17, 4)
-	setobjectmovementtype(LID_WALLY, MOVEMENT_TYPE_FACE_DOWN_UP_AND_LEFT)
+	setobjectxyperm(LID_WALLY, 15, 3)
+	setobjectmovementtype(LID_WALLY, MOVEMENT_TYPE_LOOK_AROUND)
 	
-	setobjectxyperm(LID_FRIEND_A, 12, 3)
+	setobjectxyperm(LID_FRIEND_A, 15, 9)
 	setobjectmovementtype(LID_FRIEND_A, MOVEMENT_TYPE_FACE_DOWN_AND_LEFT)
 	
-	setobjectxyperm(LID_FRIEND_B, 13, 9)
+	setobjectxyperm(LID_FRIEND_B, 13, 8)
 	setobjectmovementtype(LID_FRIEND_B, MOVEMENT_TYPE_LOOK_AROUND)
 }
 
-script(local) Puzzle_SafariImposters_Post_Joey {}
-script(local) Puzzle_SafariImposters_Post_James {}
-script(local) Puzzle_SafariImposters_Post_Irene {}
-script(local) Puzzle_SafariImposters_Post_Wally {}
-script(local) Puzzle_SafariImposters_Post_Brendan {}
-script(local) Puzzle_SafariImposters_Post_May {}
-script(local) Puzzle_SafariImposters_Post_Alex {}
+script(local) Puzzle_SafariImposters_PostRight_Scientist {
+	if (flag(FLAG_DEFEATED_DITTO)) {
+	msgbox ("Thanks to you, we managed to return\n"
+			"the DITTO to its ball.\p"
+			"Please, uh, don't speak of this to\n"
+			"anyone outside of here.\p"
+			"The project is supposed to be top\n"
+			"secret, I think for obvious reasons.$", MSGBOX_NPC)
+	} else {
+	msgbox ("They're out searching for the DITTO\n"
+			"again. This time they don't even have\l"
+			"a tracer in it to help.\p"
+			"I'm sure the PROF will be mad, but\n"
+			"really, this is all his fault anyway.\p"
+			"He shouldn't have been taking it out\n"
+			"on walks in the first place!$", MSGBOX_NPC)
+	}
+}
+script(local) Puzzle_SafariImposters_PostRight_Joey {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_JOEY) {
+	msgbox("Wow, the DITTO could turn into a human?!\n"
+			"And it turned into ME?!\p"
+			"I'm glad you saw through its ruse.", MSGBOX_NPC)
+	} else {
+		
+	}
+}
+script(local) Puzzle_SafariImposters_PostRight_James {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_JAMES) {
+		
+	} else {
+		
+	}
+}
+script(local) Puzzle_SafariImposters_PostRight_Irene {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_IRENE) {
+		
+	} else {
+		
+	}
+}
+script(local) Puzzle_SafariImposters_PostRight_Wally {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_WALLY) {
+		
+	} else {
+		
+	}
+}
+script(local) Puzzle_SafariImposters_PostRight_Brendan {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_BRENDAN) {
+		
+	} else {
+		
+	}
+}
+script(local) Puzzle_SafariImposters_PostRight_May {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_MAY) {
+		
+	} else {
+		
+	}
+}
+script(local) Puzzle_SafariImposters_PostRight_Alex {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_ALEX) {
+		
+	} else {
+		
+	}
+}
+
+script(local) Puzzle_SafariImposters_PostWrong_Scientist {
+	msgbox ("They're out searching for the DITTO\n"
+			"again. This time they don't even have\l"
+			"a tracer in it to help.\p"
+			"I'm sure the PROF will be mad, but\n"
+			"really, this is all his fault anyway.\p"
+			"He shouldn't have been taking it out\n"
+			"on walks in the first place!$", MSGBOX_NPC)
+}
+script(local) Puzzle_SafariImposters_PostWrong_Joey {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_JOEY) {
+	msgbox( "The DITTO could turn into a human?!\n"
+			"And it turned into ME?!\p"
+			"{PLAYER}, I don't understand. Was it\n"
+			"that much like me that you couldn't\l"
+			"tell the difference?$", MSGBOX_NPC)
+	} else {
+		
+	}
+}
+script(local) Puzzle_SafariImposters_PostWrong_James {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_JAMES) {
+		
+	} else {
+		
+	}
+}
+script(local) Puzzle_SafariImposters_PostWrong_Irene {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_IRENE) {
+		
+	} else {
+		
+	}
+}
+script(local) Puzzle_SafariImposters_PostWrong_Wally {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_WALLY) {
+		
+	} else {
+		
+	}
+}
+script(local) Puzzle_SafariImposters_PostWrong_Brendan {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_BRENDAN) {
+		
+	} else {
+		
+	}
+}
+script(local) Puzzle_SafariImposters_PostWrong_May {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_MAY) {
+		
+	} else {
+		
+	}
+}
+script(local) Puzzle_SafariImposters_PostWrong_Alex {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_ALEX) {
+		
+	} else {
+		
+	}
+}
 
 raw `
 @ .include "data/maps/Puzzle_SafariImposters/text.inc"
@@ -1635,6 +1884,7 @@ raw `
 #undef VAR_CONFIG_IMPOSTER
 #undef VAR_IMPOSTER_SELECT
 #undef VAR_SAFARI_ZONE_STATE
+#undef VAR_SEARCH_STATE
 #undef FLAG_HIDE_SCROLL
 #undef LID_SCIENTIST
 #undef LID_JOEY
