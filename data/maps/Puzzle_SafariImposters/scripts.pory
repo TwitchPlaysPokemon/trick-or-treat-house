@@ -1805,7 +1805,12 @@ script(local) Puzzle_SafariImposters_PostRight_James {
 			"you got rid of him…\l"
 			"{SIZE 7}Let's never speak of him again…{RESET_SIZE}$", MSGBOX_NPC)
 	} else {
-		
+		goto_if_unset(FLAG_DEFEATED_DITTO, Puzzle_SafariImposters_PostWrong_James)
+		callnative(Imposter_LoadRevealStrings)
+	msgbox ("The DITTO was hiding as {STR_VAR_3}\n"
+			"this whole time?!\p"
+			"… … … … I think I'm done with\n"
+			"Halloween this year… … …$", MSGBOX_NPC)
 	}
 }
 script(local) Puzzle_SafariImposters_PostWrong_James {
@@ -1815,7 +1820,13 @@ script(local) Puzzle_SafariImposters_PostWrong_James {
 			"I'm a Bug Catcher! {SIZE 0}And I HATE SHARKS!!{RESET_SIZE}\n"
 			"How could you even THINK that was me?!$", MSGBOX_NPC)
 	} else {
-		
+		callnative(Imposter_LoadRevealStrings)
+	msgbox ("The DITTO was hiding as {STR_VAR_3}\n"
+			"this whole time?!\p"
+			"… … And the DITTO is still on the\n"
+			"loose too?!\p"
+			"… … … … I think I'm done with\n"
+			"Halloween this year… … …$", MSGBOX_NPC)
 	}
 }
 
@@ -1827,7 +1838,7 @@ script(local) Puzzle_SafariImposters_PostRight_Irene {
 			"Thank you, {PLAYER}! It makes me so\n"
 			"much happier knowing that.$", MSGBOX_NPC)
 	} else {
-		
+		goto(Puzzle_SafariImposters_PostWrong_Irene)
 	}
 }
 script(local) Puzzle_SafariImposters_PostWrong_Irene {
@@ -1840,7 +1851,16 @@ script(local) Puzzle_SafariImposters_PostWrong_Irene {
 			"{POKEMON} Breeder, would not want to\l"
 			"deprive the Zone of its biodiversity?$", MSGBOX_NPC)
 	} else {
-		
+	msgbox ("DITTO are very valuable to the\n"
+			"{POKEMON} Breeding community.\p"
+			"They can duplicate any {POKEMON},\n"
+			"allowing a waning population of a\l"
+			"certain species to be revitalized.\p"
+			"But for a DITTO to be able to\n"
+			"duplicate any human as well…\l"
+			"with the ability to TALK even…\p"
+			"That's just inviting trouble, I think.\n"
+			"This seems like animal abuse…$")
 	}
 }
 
@@ -1851,7 +1871,12 @@ script(local) Puzzle_SafariImposters_PostRight_Wally {
 			"At least it didn't fool you, {PLAYER}.\n"
 			"Thank you.$", MSGBOX_NPC)
 	} else {
-		
+		goto_if_unset(FLAG_DEFEATED_DITTO, Puzzle_SafariImposters_PostWrong_Wally)
+		callnative(Imposter_LoadRevealStrings)
+	msgbox ("Whew.\n"
+			"I'm glad everything's back to normal.\p"
+			"I dunno if I'll ever look at {STR_VAR_3}\n"
+			"the same way again, though.$", MSGBOX_NPC)
 	}
 }
 script(local) Puzzle_SafariImposters_PostWrong_Wally {
@@ -1861,7 +1886,13 @@ script(local) Puzzle_SafariImposters_PostWrong_Wally {
 			"It fooled everyone! It still might be\n"
 			"out there! Oh god…$", MSGBOX_NPC)
 	} else {
-		
+		callnative(Imposter_LoadRevealStrings)
+	msgbox ("Maybe if we keep the real {STR_VAR_3}\n"
+			"with us, we can glide around on my\l"
+			"SALAMENCE and find the fake {STR_VAR_3}!\p"
+			"Oh, yeah, I guess the DITTO probably\n"
+			"would have changed into something else\n"
+			"by now.$", MSGBOX_NPC)
 	}
 }
 
@@ -1874,7 +1905,7 @@ script(local) Puzzle_SafariImposters_PostRight_Brendan {
 			"What's that supposed to mean?!$", MSGBOX_NPC)
 	} else {
 		callnative(Imposter_LoadRevealStrings)
-	msgbox ("See?! I told you {STR_VAR_1} seemed\n"
+	msgbox ("See?! I told you {STR_VAR_3} seemed\n"
 			"suspicious!\p"
 			"What? I totally did! Maybe I didn't\n"
 			"actually tell you, but I did!$", MSGBOX_NPC)
@@ -1887,7 +1918,7 @@ script(local) Puzzle_SafariImposters_PostWrong_Brendan {
 			"I thought we were friends!$", MSGBOX_NPC)
 	} else {
 		callnative(Imposter_LoadRevealStrings)
-	msgbox ("I told you {STR_VAR_1} seemed\n"
+	msgbox ("I told you {STR_VAR_3} seemed\n"
 			"suspicious! Why didn't you listen?!\p"
 			"What? I totally did! Maybe I didn't\n"
 			"actually tell you, but I did!$", MSGBOX_NPC)
@@ -1897,31 +1928,58 @@ script(local) Puzzle_SafariImposters_PostWrong_Brendan {
 script(local) Puzzle_SafariImposters_PostRight_May {
 	if (var(VAR_CONFIG_IMPOSTER) == IMP_MAY) {
 	msgbox ("Oh, {PLAYER}, thanks for dealing with\n"
-			"that doppelganger for me.", MSGBOX_NPC)
+			"that doppelganger for me.\p"
+			"It's kinda scary thinking about another\n"
+			"me running around doing weird things.$", MSGBOX_NPC)
 	} else {
-		
+	msgbox ("We were with a doppelganger that\n"
+			"whole time and didn't know it?!$", MSGBOX_NPC)
 	}
 }
 script(local) Puzzle_SafariImposters_PostWrong_May {
 	if (var(VAR_CONFIG_IMPOSTER) == IMP_MAY) {
-		
+	msgbox ("Oh, {PLAYER}, didn't you realize that\n"
+			"doppelganger wasn't me?\p"
+			"I guess if you didn't know I was\n"
+			"afraid of heights, you wouldn't have\l"
+			"noticed its team full of birds.\p"
+			"I don't blame you, I'm pretty good at\n"
+			"hiding how scared I am of heights.$", MSGBOX_NPC)
+			// that's a lie
 	} else {
-		
+	msgbox ("We were with a doppelganger that\n"
+			"whole time and didn't know it?!$", MSGBOX_NPC)
 	}
 }
 
 script(local) Puzzle_SafariImposters_PostRight_Alex {
 	if (var(VAR_CONFIG_IMPOSTER) == IMP_ALEX) {
-		
+	msgbox ("You know, having a twin like that\n"
+			"would be kind of neat, I think.\p"
+			"I wonder if I could train my own\n"
+			"DITTO to do that myself…$", MSGBOX_NPC)
 	} else {
-		
+		callnative(Imposter_LoadRevealStrings)
+	msgbox ("You know, I don't think I'd mind\n"
+			"having a twin that much.\p"
+			"I wonder how {STR_VAR_3} feels…\n"
+			"I think it'd be awesome.$", MSGBOX_NPC)
 	}
 }
 script(local) Puzzle_SafariImposters_PostWrong_Alex {
 	if (var(VAR_CONFIG_IMPOSTER) == IMP_ALEX) {
-		
+	msgbox ("You know, having a twin like that\n"
+			"would be kind of neat, I think.\p"
+			"I wonder if I could train my own\n"
+			"DITTO to do that myself…\p"
+			"Maybe if I'm fast enough, I can\n"
+			"catch the one tht escaped!$", MSGBOX_NPC)
 	} else {
-		
+		callnative(Imposter_LoadRevealStrings)
+	msgbox ("You know, I don't think I'd mind\n"
+			"having a twin that much.\p"
+			"I wonder how {STR_VAR_3} feels…\n"
+			"I think it'd be awesome.$", MSGBOX_NPC)
 	}
 }
 
