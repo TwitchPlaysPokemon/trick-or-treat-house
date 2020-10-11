@@ -806,12 +806,27 @@ script(local) Puzzle_SafariImposters_Search_Joey {
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
 			loadbyte(0, IMP_JOEY)
-			loadword(1, Puzzle_SafariImposters_TalkTable_JoeyAlibi)
 			callnative(Imposter_ShowTalkingPoints)
 			waitmessage
 			waitbuttonpress
 		case 1: // Battle
-			
+			if (defeated(TRAINER_JOEY_REAL) || defeated(TRAINER_JOEY_FAKE)) {
+				msgbox ("You already beat me! I'm not ready\n"
+						"for another go just yet!$")
+			}
+			else {
+				msgbox("Oh, a battle? Now? Uh, alright.\n"
+						"Let's go then!$")
+				if (var(VAR_CONFIG_IMPOSTER) != IMP_JOEY) {
+					trainerbattle_no_intro(TRAINER_JOEY_REAL, 
+						"Man, I always lose…$")
+				} else {
+					trainerbattle_no_intro(TRAINER_JOEY_FAKE, 
+						"I guess I need better POKéMON…$")
+				}
+				msgbox("I guess you caught some good\n"
+						"{POKEMON} today.$")
+			}
 	}
 	release
 }
@@ -825,9 +840,30 @@ script(local) Puzzle_SafariImposters_Search_James {
 	multichoice(20, 6, 116, FALSE)
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
-			loadbyte(0, IMP_JOEY)
+			loadbyte(0, IMP_JAMES)
+			callnative(Imposter_ShowTalkingPoints)
+			waitmessage
+			waitbuttonpress
 		case 1: // Battle
-			
+			if (defeated(TRAINER_JAMES_REAL) || defeated(TRAINER_JAMES_FAKE)) {
+				msgbox ("Wow, chill out. I haven't had the chance\n"
+						"to heal my team. They're not letting\l"
+						"anyone back into the Trick House yet.$")
+			}
+			else {
+				msgbox("Oh, you wanna fight? Uh, sure.\n"
+						"I'll get to show off my team.$")
+				if (var(VAR_CONFIG_IMPOSTER) != IMP_JAMES) {
+					trainerbattle_no_intro(TRAINER_JAMES_REAL, 
+						"Wow, not even HERACROSS could make\n"
+						"a dent in you.$")
+				} else {
+					trainerbattle_no_intro(TRAINER_JAMES_FAKE, 
+						"Wow, not even SHARPEDO could make\n"
+						"a dent in you.$")
+				}
+				msgbox("Don't gloat about your win or anything.$")
+			}
 	}
 	release
 }
@@ -840,9 +876,29 @@ script(local) Puzzle_SafariImposters_Search_Irene {
 	multichoice(20, 6, 116, FALSE)
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
-			
+			loadbyte(0, IMP_IRENE)
+			callnative(Imposter_ShowTalkingPoints)
+			waitmessage
+			waitbuttonpress
 		case 1: // Battle
-			
+			if (defeated(TRAINER_IRENE_REAL) || defeated(TRAINER_IRENE_FAKE)) {
+				msgbox ("My team isn't recovered.\n"
+						"We can't do another fight right now.$")
+			}
+			else {
+				msgbox("You wanna battle? Uh, alright.$")
+				if (var(VAR_CONFIG_IMPOSTER) != IMP_IRENE) {
+					trainerbattle_no_intro(TRAINER_IRENE_REAL, 
+						"My teams are never really made\n"
+						"for winning battles…$")
+				} else {
+					trainerbattle_no_intro(TRAINER_IRENE_FAKE, 
+						"I guess I need a better team makeup.$")
+				}
+				msgbox("It's fine. I've lost lots of times before.\p"
+						"There was one girl in Unova that won\n"
+						"against me like 75 times. I'm used to it.$")
+			}
 	}
 	release
 }
@@ -855,9 +911,29 @@ script(local) Puzzle_SafariImposters_Search_Wally {
 	multichoice(20, 6, 116, FALSE)
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
-			
+			loadbyte(0, IMP_WALLY)
+			callnative(Imposter_ShowTalkingPoints)
+			waitmessage
+			waitbuttonpress
 		case 1: // Battle
-			
+			if (defeated(TRAINER_WALLY_REAL) || defeated(TRAINER_WALLY_FAKE)) {
+				msgbox ("You took out my team already. I can't\n"
+						"fight you again until we can heal.$")
+			}
+			else {
+				msgbox("A battle? Here? Uh, sure, alright.$")
+				if (var(VAR_CONFIG_IMPOSTER) != IMP_WALLY) {
+					playse(SE_SELECT)
+					msgbox("I can show off my SALAMENCE to you!\l"
+							"Let's go!$")
+					trainerbattle_no_intro(TRAINER_WALLY_REAL, 
+						"Aw, man… Even with my DRAGON-type…$")
+				} else {
+					trainerbattle_no_intro(TRAINER_WALLY_FAKE, 
+						"Aw, man… If only SALAMENCE wasn't fainted…$")
+				}
+				msgbox("I guess I just gotta train harder.$")
+			}
 	}
 	release
 }
@@ -870,9 +946,27 @@ script(local) Puzzle_SafariImposters_Search_Brendan {
 	multichoice(20, 6, 116, FALSE)
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
-			
+			loadbyte(0, IMP_BRENDAN)
+			callnative(Imposter_ShowTalkingPoints)
+			waitmessage
+			waitbuttonpress
 		case 1: // Battle
-			
+			if (defeated(TRAINER_BRENDAN_REAL) || defeated(TRAINER_BRENDAN_FAKE)) {
+				msgbox ("Uh, no. Chill out.\n"
+						"I've still gotta visit the heal lady.$")
+			}
+			else {
+				msgbox("I've been challenged to a battle under\n"
+						"weirder circumstances. Sure, let's go.$")
+				if (var(VAR_CONFIG_IMPOSTER) != IMP_BRENDAN) {
+					trainerbattle_no_intro(TRAINER_BRENDAN_REAL, 
+						"Ow, that hurt…$")
+				} else {
+					trainerbattle_no_intro(TRAINER_BRENDAN_FAKE, 
+						"Damn, that stings…$")
+				}
+				msgbox("I guess more training is in order later.$")
+			}
 	}
 	release
 }
@@ -885,9 +979,27 @@ script(local) Puzzle_SafariImposters_Search_May {
 	multichoice(20, 6, 116, FALSE)
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
-			
+			loadbyte(0, IMP_MAY)
+			callnative(Imposter_ShowTalkingPoints)
+			waitmessage
+			waitbuttonpress
 		case 1: // Battle
-			
+			if (defeated(TRAINER_MAY_REAL) || defeated(TRAINER_MAY_FAKE)) {
+				msgbox ("What? No! My team is still passed out!$")
+			}
+			else {
+				msgbox("Uh, do we have to right now?\p"
+						"Right, lock eyes all that.\n"
+						"Fine, let's battle.$")
+				if (var(VAR_CONFIG_IMPOSTER) != IMP_MAY) {
+					trainerbattle_no_intro(TRAINER_MAY_REAL, 
+						"Down and out…$")
+				} else {
+					trainerbattle_no_intro(TRAINER_MAY_FAKE, 
+						"Shot out of the sky…$")
+				}
+				msgbox("I wasn't really ready for battle anyway.$")
+			}
 	}
 	release
 }
@@ -900,9 +1012,27 @@ script(local) Puzzle_SafariImposters_Search_Alex {
 	multichoice(20, 6, 116, FALSE)
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
-			
+			loadbyte(0, IMP_ALEX)
+			callnative(Imposter_ShowTalkingPoints)
+			waitmessage
+			waitbuttonpress
 		case 1: // Battle
-			
+			if (defeated(TRAINER_ALEX_REAL) || defeated(TRAINER_ALEX_FAKE)) {
+				msgbox ("Uh, no. My team's still down from last\n"
+						"time you beat me up and took my candy.$")
+			}
+			else {
+				msgbox ("Sure, why not? There's nothing more\n"
+						"pressing going on right now or anything.$")
+				if (var(VAR_CONFIG_IMPOSTER) != IMP_ALEX) {
+					trainerbattle_no_intro(TRAINER_ALEX_REAL, 
+						"And there goes the battle…$")
+				} else {
+					trainerbattle_no_intro(TRAINER_ALEX_FAKE, 
+						"And there goes the battle…$")
+				}
+				msgbox ("My poor ABSOL… beaten up by a meanie…$")
+			}
 	}
 	release
 }
@@ -1499,8 +1629,7 @@ script(local) Puzzle_SafariImposters_Post_May {}
 script(local) Puzzle_SafariImposters_Post_Alex {}
 
 raw `
-.include "data/maps/Puzzle_SafariImposters/text.inc"
-
+@ .include "data/maps/Puzzle_SafariImposters/text.inc"
 
 #undef VAR_PUZZLE_STAGE
 #undef VAR_CONFIG_IMPOSTER

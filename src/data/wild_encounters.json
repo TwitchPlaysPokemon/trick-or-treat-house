@@ -720,12 +720,12 @@
             "encounter_rate": 35,
             "mons": [
               {
-                "min_level": 30
+                "min_level": 30,
                 "max_level": 30,
                 "species": "SPECIES_MAGIKARP"
               },
               {
-                "min_level": 30
+                "min_level": 30,
                 "max_level": 30,
                 "species": "SPECIES_GOLDEEN"
               },

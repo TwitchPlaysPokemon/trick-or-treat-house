@@ -72,7 +72,7 @@ script SafariZone_South_EnterSafariZone {
 	setflag(FLAG_HIDE_WALLY_NW)
 	setflag(FLAG_HIDE_BRENDAN_RH)
 	setflag(FLAG_HIDE_MAY_NC)
-	setflag(FLAG_HIDE_ALEX_02)
+	setflag(FLAG_HIDE_ALEX_NW)
 	// Disable the player's analogue
 	checkplayergender
 	switch(var(VAR_RESULT)) {

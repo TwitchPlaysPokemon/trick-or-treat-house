@@ -6,6 +6,7 @@
 #include "puzzle_helpers.h"
 #include "sound.h"
 #include "field_camera.h"
+#include "field_message_box.h"
 #include "field_player_avatar.h"
 #include "fieldmap.h"
 #include "palette.h"
@@ -1213,8 +1214,8 @@ void Imposter_LoadRevealStrings(struct ScriptContext *ctx) {
 	}
 }
 
-extern const u8* const Puzzle_SafariImposters_TalkTables[7][3];
-static const u16 Imposter_ShowTalkingPoints_RNGVars = {
+extern const u8** const Puzzle_SafariImposters_TalkTables[7][3];
+static const u16 Imposter_ShowTalkingPoints_RNGVars[] = {
 	VAR_JOEY_STATE,
 	VAR_JAMES_STATE,
 	VAR_IRENE_STATE,
@@ -1223,11 +1224,11 @@ static const u16 Imposter_ShowTalkingPoints_RNGVars = {
 	VAR_MAY_STATE,
 	VAR_ALEX_STATE,
 };
-#define ACCUSE_IDX(rng)  (0x7 & ((rng) >> 12));
+#define ACCUSE_IDX(rng)  (0x7 & ((rng) >> 12))
 
 void Imposter_SetupTalkingPoints(struct ScriptContext *ctx) {
 	u8 i, x;
-	u16* var
+	u16* var;
 	for (i = 0; i < ARRAY_COUNT(Imposter_ShowTalkingPoints_RNGVars); i++) {
 		var = GetVarPointer(Imposter_ShowTalkingPoints_RNGVars[i]);
 		*var = (Random2() & 0xFFF0) | (*var);
@@ -1246,7 +1247,7 @@ void Imposter_SetupTalkingPoints(struct ScriptContext *ctx) {
 
 void Imposter_ShowTalkingPoints(struct ScriptContext *ctx) {
 	u8 currSpeaker = ctx->data[0];
-	bool8 isImposter = currSpeaker == VarGet(VAR_CONFIG_IMPOSTER);
+	bool8 isImposter = (currSpeaker == VarGet(VAR_CONFIG_IMPOSTER));
 	const u8** alibiTable = Puzzle_SafariImposters_TalkTables[currSpeaker][0];
 	const u8** imposterTable = Puzzle_SafariImposters_TalkTables[currSpeaker][1];
 	const u8** accuseTable = Puzzle_SafariImposters_TalkTables[currSpeaker][2];

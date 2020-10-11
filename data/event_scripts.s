@@ -234,6 +234,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/Puzzle_EliteFloor/scripts.inc"
 	
 	.include "data/maps/Puzzle_SafariImposters/scripts.inc"
+	.include "data/maps/Puzzle_SafariImposters/text.inc"
 	.include "data/maps/SafariZone_Northeast/scripts.inc"
 	.include "data/maps/SafariZone_North/scripts.inc"
 	.include "data/maps/SafariZone_Northwest/scripts.inc"
