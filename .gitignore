@@ -32,6 +32,8 @@ build/
 *.ddump
 .idea/
 porymap.project.cfg
-.vscode/
+.vscode/*
 tricktreat.sym
 porymap.app
+!.vscode/cspell.json
+!.vscode/dicts

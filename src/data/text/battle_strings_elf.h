@@ -51,8 +51,8 @@ static const u8 sBort_PkmnBrokeFree[] = _("NO!ELF COME OUT");
 static const u8 sBort_ItAppearedCaught[] = _("REGARD AS HAVING CAUGHT AT FIRST");
 static const u8 sBort_AarghAlmostHadIt[] = _("TOO REGRET,ALMOST CAUGHT IT");
 static const u8 sBort_ShootSoClose[] = _("REGRET!ALMOST...");
-static const u8 sBort_GotchaPkmnCaught[] = _("SUCCESS {B_OPPONENT_MON1_NAME}\nCAUGHT{UNKNOWN_A}{PLAY_BGM MUS_KACHI22}\p");
-static const u8 sBort_GotchaPkmnCaught2[] = _("SUCCESS {B_OPPONENT_MON1_NAME}\nCAUGHT{UNKNOWN_A}{PLAY_BGM MUS_KACHI22}{PAUSE 127}");
+static const u8 sBort_GotchaPkmnCaught[] = _("SUCCESS {B_OPPONENT_MON1_NAME}\nCAUGHT{WAIT_SE}{PLAY_BGM MUS_KACHI22}\p");
+static const u8 sBort_GotchaPkmnCaught2[] = _("SUCCESS {B_OPPONENT_MON1_NAME}\nCAUGHT{WAIT_SE}{PLAY_BGM MUS_KACHI22}{PAUSE 127}");
 
 static const u8 sBort_TrainerBlockedBall[] = _("BALL SPRING TO ELF");
 static const u8 sBort_DontBeAThief[] = _("??? ??? ???? ???Y!");

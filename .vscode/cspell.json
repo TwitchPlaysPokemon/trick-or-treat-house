@@ -1,0 +1,56 @@
+// cSpell Settings
+{
+    // Version of the setting file.  Always 0.1
+    "version": "0.1",
+    // language - current active spelling language
+    "language": "en",
+    // allows compoundwords like "dowildbattle" and "candylist"
+    "allowCompoundWords": true,
+    "enabledLanguageIds": [
+        "asciidoc",
+        "c",
+        "cpp",
+        "css",
+        "git-commit",
+        "go",
+        "html",
+        "javascript",
+        "javascriptreact",
+        "json",
+        "jsonc",
+        "markdown",
+        "plaintext",
+        "restructuredtext",
+        "text",
+        "inc",
+        "poryscript"
+    ],
+    "maxNumberOfProblems": 1000,
+    "dictionaryDefinitions": [
+        {
+            "name": "pokemon",
+            "path": "./dicts/pokemon.txt"
+        }
+    ],
+    "dictionaries": [
+        "pokemon"
+    ],
+    // words - list of words to be always considered correct
+    "words": [
+        "acro",
+        "dowildbattle",
+        "hoenn",
+        "PHANCERO",
+        "playse",
+        "setobjectxyperm",
+        "unova",
+        "waitse",
+        "yesno"
+    ],
+    // flagWords - list of words to be always considered incorrect
+    // This is useful for offensive words and common spelling errors.
+    // For example "hte" should be "the"
+    "flagWords": [
+        "hte"
+    ]
+}

@@ -1562,7 +1562,7 @@ text Puzzle_SafariImposters_ImposterReveal_Text4_Scientist {
 			"PROF: You see, kids, {PLAYER} has been\n"
 			"miticulously interviewing every one of\l"
 			"you and thought that {STR_VAR_1} is the\l"
-			"most likely canidate.\p"
+			"most likely candidate.\p"
 			"Apparently {STR_VAR_2} been acting\n"
 			"very… … … {PAUSE 20}suspicious.\p"
 			"And so, to unmask them, we're going to--$"
@@ -1611,7 +1611,7 @@ text Puzzle_SafariImposters_ImposterReveal_Text5_Irene {
 			"CHANSEY! Come look and see!$"
 }
 text Puzzle_SafariImposters_ImposterReveal_Text5_Wally {
-			"???: Sorry I'm late! You won't beleive\n"
+			"???: Sorry I'm late! You won't believe\n"
 			"the DRAGON {POKEMON} that I caught!$"
 }
 text Puzzle_SafariImposters_ImposterReveal_Text5_Brendan {
@@ -1624,7 +1624,7 @@ text Puzzle_SafariImposters_ImposterReveal_Text5_May {
 }
 text Puzzle_SafariImposters_ImposterReveal_Text5_Alex {
 			"???: Don't worry, dudes! I'm here!\n"
-			"Got caught up on a RYHORN, no biggie.$$"
+			"Got caught up on a RHYHORN, no biggie.$$"
 }
 
 movement Puzzle_SafariImposters_ImposterReveal_Movement6 {
@@ -1654,7 +1654,7 @@ text Puzzle_SafariImposters_ImposterReveal_Text7 {
 }
 
 text Puzzle_SafariImposters_ImposterReveal_Text8a {
-			"PROF: Yes! Thank you for incapacitaing\n"
+			"PROF: Yes! Thank you for incapacitating\n"
 			"it! I'll take it from here.$"
 }
 text Puzzle_SafariImposters_ImposterReveal_Text8b {
@@ -1748,72 +1748,17 @@ script(local) Puzzle_SafariImposters_PostRight_Scientist {
 	if (flag(FLAG_DEFEATED_DITTO)) {
 	msgbox ("Thanks to you, we managed to return\n"
 			"the DITTO to its ball.\p"
+			"The other {POKEMON} it had captured as\n"
+			"part of its ruse have been released back\l"
+			"into the Safari Zone.\p"
 			"Please, uh, don't speak of this to\n"
 			"anyone outside of here.\p"
 			"The project is supposed to be top\n"
 			"secret, I think for obvious reasons.$", MSGBOX_NPC)
 	} else {
-	msgbox ("They're out searching for the DITTO\n"
-			"again. This time they don't even have\l"
-			"a tracer in it to help.\p"
-			"I'm sure the PROF will be mad, but\n"
-			"really, this is all his fault anyway.\p"
-			"He shouldn't have been taking it out\n"
-			"on walks in the first place!$", MSGBOX_NPC)
+		goto(Puzzle_SafariImposters_PostWrong_Scientist)
 	}
 }
-script(local) Puzzle_SafariImposters_PostRight_Joey {
-	if (var(VAR_CONFIG_IMPOSTER) == IMP_JOEY) {
-	msgbox("Wow, the DITTO could turn into a human?!\n"
-			"And it turned into ME?!\p"
-			"I'm glad you saw through its ruse.", MSGBOX_NPC)
-	} else {
-		
-	}
-}
-script(local) Puzzle_SafariImposters_PostRight_James {
-	if (var(VAR_CONFIG_IMPOSTER) == IMP_JAMES) {
-		
-	} else {
-		
-	}
-}
-script(local) Puzzle_SafariImposters_PostRight_Irene {
-	if (var(VAR_CONFIG_IMPOSTER) == IMP_IRENE) {
-		
-	} else {
-		
-	}
-}
-script(local) Puzzle_SafariImposters_PostRight_Wally {
-	if (var(VAR_CONFIG_IMPOSTER) == IMP_WALLY) {
-		
-	} else {
-		
-	}
-}
-script(local) Puzzle_SafariImposters_PostRight_Brendan {
-	if (var(VAR_CONFIG_IMPOSTER) == IMP_BRENDAN) {
-		
-	} else {
-		
-	}
-}
-script(local) Puzzle_SafariImposters_PostRight_May {
-	if (var(VAR_CONFIG_IMPOSTER) == IMP_MAY) {
-		
-	} else {
-		
-	}
-}
-script(local) Puzzle_SafariImposters_PostRight_Alex {
-	if (var(VAR_CONFIG_IMPOSTER) == IMP_ALEX) {
-		
-	} else {
-		
-	}
-}
-
 script(local) Puzzle_SafariImposters_PostWrong_Scientist {
 	msgbox ("They're out searching for the DITTO\n"
 			"again. This time they don't even have\l"
@@ -1823,6 +1768,19 @@ script(local) Puzzle_SafariImposters_PostWrong_Scientist {
 			"He shouldn't have been taking it out\n"
 			"on walks in the first place!$", MSGBOX_NPC)
 }
+
+script(local) Puzzle_SafariImposters_PostRight_Joey {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_JOEY) {
+	msgbox ("Wow, the DITTO could turn into a human?!\n"
+			"And it turned into ME?!\p"
+			"I'm glad you saw through its ruse.", MSGBOX_NPC)
+	} else {
+		callnative(Imposter_LoadRevealStrings)
+	msgbox ("Wow, the DITTO could turn into a human?!\n"
+			"And it turned into {STR_VAR_3}?!\p"
+			"I'm glad you saw through its ruse.", MSGBOX_NPC)
+	}
+}
 script(local) Puzzle_SafariImposters_PostWrong_Joey {
 	if (var(VAR_CONFIG_IMPOSTER) == IMP_JOEY) {
 	msgbox( "The DITTO could turn into a human?!\n"
@@ -1831,39 +1789,129 @@ script(local) Puzzle_SafariImposters_PostWrong_Joey {
 			"that much like me that you couldn't\l"
 			"tell the difference?$", MSGBOX_NPC)
 	} else {
+		callnative(Imposter_LoadRevealStrings)
+	msgbox ("Wow, the DITTO could turn into a human?!\n"
+			"And it turned into {STR_VAR_3}?!\p"
+			"Why didn't you tell me? I could've\n"
+			"helped figured out who it was…$", MSGBOX_NPC)
+	}
+}
+
+script(local) Puzzle_SafariImposters_PostRight_James {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_JAMES) {
+	msgbox ("So, wait, the imposter had a team\n"
+			"full {SIZE 0}of sharks?!{RESET_SIZE}\p"
+			"… … … … … {SIZE 0}'ts good…{RESET_SIZE} good that\n"
+			"you got rid of him…\l"
+			"{SIZE 7}Let's never speak of him again…{RESET_SIZE}$", MSGBOX_NPC)
+	} else {
 		
 	}
 }
 script(local) Puzzle_SafariImposters_PostWrong_James {
 	if (var(VAR_CONFIG_IMPOSTER) == IMP_JAMES) {
+	msgbox ("{PLAYER}, the imposter had a team\n"
+			"full of {SIZE 0}sharks{RESET_SIZE} and not bugs!\p"
+			"I'm a Bug Catcher! {SIZE 0}And I HATE SHARKS!!{RESET_SIZE}\n"
+			"How could you even THINK that was me?!$", MSGBOX_NPC)
+	} else {
 		
+	}
+}
+
+script(local) Puzzle_SafariImposters_PostRight_Irene {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_IRENE) {
+	msgbox ("That DITTO captured the only other\n"
+			"CHANSEY in the Safari Zone. Thanks to\l"
+			"you the CHANSEY are back together!\p"
+			"Thank you, {PLAYER}! It makes me so\n"
+			"much happier knowing that.$", MSGBOX_NPC)
 	} else {
 		
 	}
 }
 script(local) Puzzle_SafariImposters_PostWrong_Irene {
 	if (var(VAR_CONFIG_IMPOSTER) == IMP_IRENE) {
+	msgbox ("That DITTO captured the only other\n"
+			"CHANSEY in the Safari Zone…\p"
+			"Now the one remaining one will be\n"
+			"all alone, without a mate.\p"
+			"How could you not see that I, as a\n"
+			"{POKEMON} Breeder, would not want to\l"
+			"deprive the Zone of its biodiversity?$", MSGBOX_NPC)
+	} else {
 		
+	}
+}
+
+script(local) Puzzle_SafariImposters_PostRight_Wally {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_WALLY) {
+	msgbox ("Th-there was another ME wandering\n"
+			"around, making people think it was me?!\p"
+			"At least it didn't fool you, {PLAYER}.\n"
+			"Thank you.$", MSGBOX_NPC)
 	} else {
 		
 	}
 }
 script(local) Puzzle_SafariImposters_PostWrong_Wally {
 	if (var(VAR_CONFIG_IMPOSTER) == IMP_WALLY) {
-		
+	msgbox ("Th-there was another ME wandering\n"
+			"around, making people think it was me?!\p"
+			"It fooled everyone! It still might be\n"
+			"out there! Oh god…$", MSGBOX_NPC)
 	} else {
 		
 	}
 }
+
+script(local) Puzzle_SafariImposters_PostRight_Brendan {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_BRENDAN) {
+	msgbox ("I'm glad you figured out that look-\n"
+			"alike wasn't actually me, {PLAYER}.\l"
+			"What tipped you off?\p"
+			"… … What do you mean “AS cowardly”?!\n"
+			"What's that supposed to mean?!$", MSGBOX_NPC)
+	} else {
+		callnative(Imposter_LoadRevealStrings)
+	msgbox ("See?! I told you {STR_VAR_1} seemed\n"
+			"suspicious!\p"
+			"What? I totally did! Maybe I didn't\n"
+			"actually tell you, but I did!$", MSGBOX_NPC)
+	}
+}
 script(local) Puzzle_SafariImposters_PostWrong_Brendan {
 	if (var(VAR_CONFIG_IMPOSTER) == IMP_BRENDAN) {
-		
+	msgbox ("{PLAYER}, how could you not realize\n"
+			"that DITTO wasn't me?! What gives?!\l"
+			"I thought we were friends!$", MSGBOX_NPC)
+	} else {
+		callnative(Imposter_LoadRevealStrings)
+	msgbox ("I told you {STR_VAR_1} seemed\n"
+			"suspicious! Why didn't you listen?!\p"
+			"What? I totally did! Maybe I didn't\n"
+			"actually tell you, but I did!$", MSGBOX_NPC)
+	}
+}
+
+script(local) Puzzle_SafariImposters_PostRight_May {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_MAY) {
+	msgbox ("Oh, {PLAYER}, thanks for dealing with\n"
+			"that doppelganger for me.", MSGBOX_NPC)
 	} else {
 		
 	}
 }
 script(local) Puzzle_SafariImposters_PostWrong_May {
 	if (var(VAR_CONFIG_IMPOSTER) == IMP_MAY) {
+		
+	} else {
+		
+	}
+}
+
+script(local) Puzzle_SafariImposters_PostRight_Alex {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_ALEX) {
 		
 	} else {
 		

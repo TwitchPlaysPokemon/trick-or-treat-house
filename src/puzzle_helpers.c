@@ -1236,12 +1236,20 @@ void Imposter_SetupTalkingPoints(struct ScriptContext *ctx) {
 	// eliminate impossible accusations, change to player accusations
 	var = GetVarPointer(Imposter_ShowTalkingPoints_RNGVars[IMP_JOEY]);
 	if (VarGet(VAR_CONFIG_IMPOSTER) != IMP_JAMES && ACCUSE_IDX(*var) == IMP_JAMES) {
+		// Joey doesn't accuse James if James isn't the imposter
 		*var = (*var & 0x0FFF) | IMP_JOEY;
 	}
 	
 	var = GetVarPointer(Imposter_ShowTalkingPoints_RNGVars[IMP_JAMES]);
 	if (VarGet(VAR_CONFIG_IMPOSTER) != IMP_JOEY && ACCUSE_IDX(*var) == IMP_JOEY) {
+		// James doesn't accuse Joey if Joey isn't the imposter
 		*var = (*var & 0x0FFF) | IMP_JAMES;
+	}
+	
+	var = GetVarPointer(Imposter_ShowTalkingPoints_RNGVars[IMP_BRENDAN]);
+	if (VarGet(VAR_CONFIG_IMPOSTER) == ACCUSE_IDX(*var)) {
+		// Brendan never accuses the correct person
+		*var = (*var & 0x0FFF) | IMP_BRENDAN;
 	}
 }
 
