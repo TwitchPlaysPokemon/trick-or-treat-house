@@ -237,7 +237,7 @@ text TrickHouseCorridor_Text_DenExcuse4 {
 			"Please disregard any baa-ing you hear.\p"
 			"And if you see any wild Wooloo around,\n"
 			"please let us know.\p"
-			"If the Hoenn General Council finds out\l"
+			"If the Hoenn General Council finds out\n"
 			"about a potential invasive species…$"
 }
 text TrickHouseCorridor_Text_DenExcuse5 {

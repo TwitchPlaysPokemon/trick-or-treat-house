@@ -1276,7 +1276,7 @@ static u8 InitEventObjectStateFromTemplate(struct EventObjectTemplate *template,
     eventObject->active = TRUE;
     eventObject->triggerGroundEffectsOnMove = TRUE;
     eventObject->graphicsId = template->graphicsId;
-    eventObject->palVariation = template->palVariation;
+    // eventObject->palVariation = template->palVariation;
     eventObject->movementType = template->movementType;
     eventObject->localId = template->localId;
     eventObject->mapNum = mapNum;

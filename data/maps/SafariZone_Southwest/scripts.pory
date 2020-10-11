@@ -3,7 +3,7 @@ SafariZone_Southwest_MapScripts:: @ 823D266
 	puzzle_info Puzzle_SafariImposters_Name, CommonAuthor_Tustin2121
 	@ map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, SafariZone_Southwest_OnWarpTable
 	map_script MAP_SCRIPT_ON_LOAD, SafariZone_Southwest_OnLoad
-	map_script MAP_SCRIPT_ON_TRANSITION, SafariZone_Southwest_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, SafariZone_Southwest_OnTransition
 	.byte 0
 
 @ SafariZone_Southwest_OnWarpTable: @ 823D284
@@ -26,7 +26,7 @@ script(local) SafariZone_Southwest_OnTransition {
 	// If the player comes into the map from the top
 	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
 	if (var(VAR_INTERACT_Y) == 0) {
-		setweather(WEATHER_RAIN_MED)
+		setweather(WEATHER_RAIN_LIGHT)
 	}
 }
 

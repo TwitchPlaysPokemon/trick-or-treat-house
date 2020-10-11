@@ -63,8 +63,7 @@ struct EventObjectTemplate
 {
     /*0x00*/ u8 localId;
     // /*0x01*/ u8 unk2;
-    /*0x02*/ u16 palVariation:4;
-    /*0x02*/ u16 graphicsId:12;
+    /*0x02*/ u16 graphicsId;
     /*0x04*/ s16 x;
     /*0x06*/ s16 y;
     /*0x08*/ u8 elevation;
@@ -196,8 +195,7 @@ struct EventObject
              u32 isStandingOnTrigger:1;
              u32 useImposterPalette:1;
              int :0;
-    /*0x04*/ u16 palVariation:4;
-             u16 graphicsId:12;
+    /*0x04*/ u16 graphicsId;
     /*0x06*/ u8 spriteId;
     /*0x07*/ u8 movementType;
     /*0x08*/ u8 localId;
@@ -249,7 +247,7 @@ struct EventObjectGraphicsInfo
     /*0x18*/ const union AnimCmd *const *anims;
     /*0x1C*/ const struct SpriteFrameImage *images;
     /*0x20*/ const union AffineAnimCmd *const *affineAnims;
-    /*0x24*/ const u16 *palVariationTable;
+    // /*0x24*/ const u16 *palVariationTable;
 };
 
 enum {

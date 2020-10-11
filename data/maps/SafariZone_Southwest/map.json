@@ -58,14 +58,14 @@
         {
             "elevation": 0,
             "type": "weather",
-            "weather": "COORD_EVENT_WEATHER_RAIN_MED",
+            "weather": "COORD_EVENT_WEATHER_RAIN_LIGHT",
             "x": 27,
             "y": 8
         },
         {
             "elevation": 0,
             "type": "weather",
-            "weather": "COORD_EVENT_WEATHER_RAIN_MED",
+            "weather": "COORD_EVENT_WEATHER_RAIN_LIGHT",
             "x": 27,
             "y": 9
         },

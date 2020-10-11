@@ -72,6 +72,8 @@ void ExitSafariMode(void)
     sSafariZoneStepCounter = 0;
 }
 
+extern const u8 Puzzle_SafariImposters_GameEnds[];
+
 bool8 SafariZoneTakeStep(void)
 {
     if (GetSafariZoneFlag() == FALSE)
@@ -83,7 +85,8 @@ bool8 SafariZoneTakeStep(void)
     sSafariZoneStepCounter--;
     if (sSafariZoneStepCounter == 0)
     {
-        ScriptContext1_SetupScript(EventScript_2A4B8A);
+        // ScriptContext1_SetupScript(EventScript_2A4B8A);
+        ScriptContext1_SetupScript(Puzzle_SafariImposters_GameEnds);
         return TRUE;
     }
     return FALSE;
@@ -91,6 +94,7 @@ bool8 SafariZoneTakeStep(void)
 
 void SafariZoneRetirePrompt(void)
 {
+    //TODO
     ScriptContext1_SetupScript(EventScript_2A4B6F);
 }
 

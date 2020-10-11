@@ -79,10 +79,12 @@ Puzzle_SafariImposters_CandyList:
 @ -----------------------------------------------------
 
 Puzzle_SafariImposters_OnFrame:
+	map_script_2 VAR_LAST_WARP_ID, 0, Puzzle_SafariImposters_EnableMapNameAgain
+	map_script_2 VAR_PUZZLE_STAGE, 0, Puzzle_SafariImposters_IntroCutscene
 	map_script_2 VAR_PUZZLE_STAGE, 3, Puzzle_SafariImposters_ExitCutscene
+	map_script_2 VAR_PUZZLE_STAGE, 6, Puzzle_SafariImposters_OnWarpIn_ImposterReveal
 	.2byte 0
 Puzzle_SafariImposters_WarpTable:
-	map_script_2 VAR_PUZZLE_STAGE, 6, Puzzle_SafariImposters_OnWarpIn_ImposterReveal
 	.2byte 0
 `
 
@@ -110,11 +112,29 @@ script(local) Puzzle_SafariImposters_OnLoad {
 }
 
 script(local) Puzzle_SafariImposters_OnResume {
+	switch(var(VAR_PUZZLE_STAGE)) {
+		case 0: setflag (FLAG_HIDE_MAP_NAME_POPUP)
+		case 3: setflag (FLAG_HIDE_MAP_NAME_POPUP)
+		case 6: setflag (FLAG_HIDE_MAP_NAME_POPUP)
+		case 7: setflag (FLAG_HIDE_MAP_NAME_POPUP)
+		case 8: setflag (FLAG_HIDE_MAP_NAME_POPUP)
+	}
 	if (flag(FLAG_SYS_CTRL_OBJ_DELETE)) {
 		removeobject(LID_SELECTED)
 	}
 }
+script(local) Puzzle_SafariImposters_EnableMapNameAgain {
+	clearflag(FLAG_HIDE_MAP_NAME_POPUP)
+	setvar(VAR_LAST_WARP_ID, -1)
+}
 
+// script Puzzle_SafariImposters_EnterState_ShowTitle {
+// 	if (var(VAR_PUZZLE_STATE) == 1) {
+// 		clearflag(FLAG_HIDE_MAP_NAME_POPUP)
+// 		special(ShowMapNamePopup)
+// 	}
+// 	setvar(VAR_TEMP_1, 2)
+// }
 
 script(local) Puzzle_SafariImposters_SetupPuzzle {
 	random(6)
@@ -178,7 +198,7 @@ script(local) Puzzle_SafariImposters_SetupPuzzle {
 script Puzzle_SafariImposters_EventScript_InfoAttendant {
 	lock
 	faceplayer
-	if (var(VAR_PUZZLE_STAGE) >= 4 || var(VAR_PUZZLE_STAGE) < 7) {
+	if (var(VAR_PUZZLE_STAGE) >= 4 && var(VAR_PUZZLE_STAGE) < 7) {
 		msgbox ("Did you find the imposter yet?")
 	} else {
 		msgbox ("Welcome to the SAFARI ZONE!\n"
@@ -291,6 +311,7 @@ script Puzzle_SafariImposters_EventScript_Alex {
 
 script Puzzle_SafariImposters_EventScript_Scientist {
 	switch(var(VAR_PUZZLE_STAGE)) {
+		case 1: goto(Puzzle_SafariImposters_Intro_Scientist)
 		case 4: goto(Puzzle_SafariImposters_Search_Scientist)
 		case 5: goto(Puzzle_SafariImposters_Select_Scientist)
 		case 7: goto(Puzzle_SafariImposters_PostRight_Scientist)
@@ -364,6 +385,7 @@ script Puzzle_SafariImposters_IntroCutscene {
 	message("It's a DITTO: it could look like\n"
 			"anything in the park, so you need to\l"
 			"catch as many {POKEMON} as you can.\p$")
+	waitmessage
 			
 	applymovement(LID_IRENE, Puzzle_SafariImposters_IntroCutscene_Movement4a)
 	applymovement(LID_WALLY, Puzzle_SafariImposters_IntroCutscene_Movement4b)
@@ -387,22 +409,27 @@ script Puzzle_SafariImposters_IntroCutscene {
 	setflag(FLAG_PUZZLE_PARTY_LOCK)
 	
 	setvar(VAR_PUZZLE_STAGE, 1)
-	removeobject(LID_SCIENTIST)
-	removeobject(LID_JOEY)
-	removeobject(LID_JAMES)
-	removeobject(LID_IRENE)
-	removeobject(LID_WALLY)
-	removeobject(LID_FRIEND_A)
-	removeobject(LID_FRIEND_B)
-	call(Puzzle_SafariImposters_EnterStateSetup)
-	addobject(LID_SCIENTIST)
-	addobject(LID_JOEY)
-	addobject(LID_JAMES)
-	addobject(LID_IRENE)
-	addobject(LID_WALLY)
-	addobject(LID_FRIEND_A)
-	addobject(LID_FRIEND_B)
-	fadescreen(0)
+	// removeobject(LID_SCIENTIST)
+	// removeobject(LID_JOEY)
+	// removeobject(LID_JAMES)
+	// removeobject(LID_IRENE)
+	// removeobject(LID_WALLY)
+	// removeobject(LID_FRIEND_A)
+	// removeobject(LID_FRIEND_B)
+	// call(Puzzle_SafariImposters_EnterStateSetup)
+	// addobject(LID_SCIENTIST)
+	// addobject(LID_JOEY)
+	// addobject(LID_JAMES)
+	// addobject(LID_IRENE)
+	// addobject(LID_WALLY)
+	// addobject(LID_FRIEND_A)
+	// addobject(LID_FRIEND_B)
+	// delay(5)
+	// fadescreenspeed(0, 2)
+	// clearflag(FLAG_HIDE_MAP_NAME_POPUP)
+	// special(ShowMapNamePopup)
+	warpcustom(MAP_PUZZLE_SAFARI_IMPOSTERS, 0xFF, 14, 11)
+	waitstate
 	releaseall
 }
 movement Puzzle_SafariImposters_IntroCutscene_Movement1 {
@@ -410,33 +437,33 @@ movement Puzzle_SafariImposters_IntroCutscene_Movement1 {
 }
 movement Puzzle_SafariImposters_IntroCutscene_Movement2 {
 	face_right
-	delay_16
+	delay_16 * 3
 	face_up
 }
 movement Puzzle_SafariImposters_IntroCutscene_Movement3a {
 	face_down
-	delay_16
+	delay_16 * 3
 	face_right
 }
 movement Puzzle_SafariImposters_IntroCutscene_Movement3b {
 	face_up
-	delay_16
+	delay_16 * 3
 	face_right
 }
 movement Puzzle_SafariImposters_IntroCutscene_Movement4a {
 	face_right
-	delay_16
+	delay_16 * 4
 	face_down
 }
 movement Puzzle_SafariImposters_IntroCutscene_Movement4b {
 	face_left
-	delay_16
+	delay_16 * 3
 	face_down
 }
 movement Puzzle_SafariImposters_IntroCutscene_Movement5 {
 	delay_8
 	face_right
-	delay_16
+	delay_16 * 3
 	face_up
 }
 
@@ -464,6 +491,11 @@ script Puzzle_SafariImposters_EnterStateSetup {
 	
 	setobjectxyperm(LID_FRIEND_B, 13, 9)
 	setobjectmovementtype(LID_FRIEND_B, MOVEMENT_TYPE_LOOK_AROUND)
+}
+
+script(local) Puzzle_SafariImposters_Intro_Scientist {
+	msgbox ("PROF: When you're ready, please\n"
+			"head inside the Safari Zone.$", MSGBOX_NPC)
 }
 
 script(local) Puzzle_SafariImposters_Intro_Joey {
@@ -497,7 +529,7 @@ script(local) Puzzle_SafariImposters_Intro_Wally {
 			"myself out there with all those wild\l"
 			"angry {POKEMON} running around…\p"
 			"But then… maybe I'll find myself a\n"
-			"DRAGON-type {POKEMON}… Those are cool…$")
+			"DRAGON-type {POKEMON}… Those are cool…$", MSGBOX_NPC)
 }
 script(local) Puzzle_SafariImposters_Intro_Brendan {
 	lock
@@ -520,7 +552,7 @@ script(local) Puzzle_SafariImposters_Intro_Brendan {
 	release
 }
 script(local) Puzzle_SafariImposters_Intro_May {
-	msgbox ("{MAY}: Hey, {PLAYER}! You read for this?\p"
+	msgbox ("{MAY}: Hey, {PLAYER}! You ready for this?\p"
 			"Do you think they have HOPPIP here?\n"
 			"I've been meaning to catch one for dad.\p"
 			"I'll never understand how HOPPIP can\n"
@@ -529,8 +561,9 @@ script(local) Puzzle_SafariImposters_Intro_May {
 }
 script(local) Puzzle_SafariImposters_Intro_Alex {
 	msgbox ("{ALEX}: Hey, {PLAYER}. You ready to go?\p"
-			"I'm still preparing myself, but I'll be\n"
-			"along. I've heard there can be spiders\l"
+			"I'm still preparing myself,\n"
+			"but I'll be along.\p"
+			"I've heard there can be spiders\n"
 			"in the tall grass in here.\p"
 			"I reckon if I can mentally prepare for\n"
 			"them, I won't freak out as badly.$", MSGBOX_NPC)
@@ -589,7 +622,7 @@ movement Puzzle_SafariImposters_Movement_EnterSafariZone {
 ///////////////////////////////////////////////////////
 // Time's Up!
 
-script Puzzle_SafariImposters_OutOfBalls {
+script Puzzle_SafariImposters_GameEnds {
 	lockall
 	playse(SE_PIN)
 	applymovement (LID_PLAYER, Common_Movement_ExclamationMark)

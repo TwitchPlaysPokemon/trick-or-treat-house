@@ -59,11 +59,15 @@ script SafariZone_South_EnterSafariZone {
 	waitmovement(LID_SCIENTIST)
 	waitmovement(LID_WALLY)
 	waitmovement(LID_JOEY)
+	removeobject(LID_WALLY)
+	removeobject(LID_JOEY)
 	setobjectxyperm (LID_SCIENTIST, 32, 34)
-	setobjectxyperm (LID_JOEY, 32, 34)
+	setobjectxyperm (LID_JOEY, 20, 31)
 	setobjectxyperm (LID_WALLY, 8, 12)
 	setobjectmovementtype(LID_WALLY, MOVEMENT_TYPE_WANDER_AROUND)
 	setvar (VAR_SAFARI_ZONE_STATE, 0)
+	clearflag(FLAG_HIDE_WALLY_SX)
+	clearflag(FLAG_HIDE_JOEY_SX)
 	
 	// set up this section of the puzzle
 	setflag(FLAG_HIDE_JOEY_SE)
@@ -110,7 +114,10 @@ movement SafariZone_South_Movement_ExitJoeyRunOff {
 
 
 script SafariZone_South_EventScript_ExitAttendant {
-	
+	msgbox ("PROF: I'll be waiting here, keeping an\n"
+			"eye on the tracker.\p"
+			"We'll call you if anything important\n"
+			"happens, alright? Have fun.$", MSGBOX_NPC)
 }
 
 // ----------------------------------------------------
@@ -143,13 +150,14 @@ script SafariZone_EventScript_JoeyFearsSnakes {
 			"… … … eat RATTATA like him… … …\p"
 			"… … …$")
 	waitmessage
+	waitbuttonpress
 	closemessage
 	delay (8)
 	selectpointer(SafariZone_EventScript_JoeyFearsSnakes_MoveTable3, VAR_FACING)
 	applymovement(LID_JOEY, 0)
 	waitmovement(LID_JOEY)
+	removeobject(LID_JOEY)
 	setvar(VAR_JOEY_STATE, 2)
-	setflag(FLAG_HIDE_JOEY_SX)
 	clearflag(FLAG_HIDE_JOEY_SE)
 	release
 }
@@ -158,17 +166,20 @@ raw `
 .align 2
 SafariZone_EventScript_JoeyFearsSnakes_MoveTable:
 	.4byte SafariZone_EventScript_JoeyFearsSnakes_MoveS
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_MoveS
 	.4byte SafariZone_EventScript_JoeyFearsSnakes_MoveN
 	.4byte SafariZone_EventScript_JoeyFearsSnakes_MoveW
 	.4byte SafariZone_EventScript_JoeyFearsSnakes_MoveE
 	.4byte 0
 SafariZone_EventScript_JoeyFearsSnakes_MoveTable2:
 	.4byte Common_Movement_WalkInPlaceUp
+	.4byte Common_Movement_WalkInPlaceUp
 	.4byte Common_Movement_WalkInPlaceDown
 	.4byte Common_Movement_WalkInPlaceRight
 	.4byte Common_Movement_WalkInPlaceLeft
 	.4byte 0
 SafariZone_EventScript_JoeyFearsSnakes_MoveTable3:
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_LeaveS
 	.4byte SafariZone_EventScript_JoeyFearsSnakes_LeaveS
 	.4byte SafariZone_EventScript_JoeyFearsSnakes_Leave
 	.4byte SafariZone_EventScript_JoeyFearsSnakes_Leave
@@ -182,7 +193,7 @@ movement SafariZone_EventScript_JoeyFearsSnakes_MoveN {
 	walk_fast_right
 	walk_fast_down * 2
 	walk_fast_left
-	face_up
+	face_down
 }
 movement SafariZone_EventScript_JoeyFearsSnakes_MoveS {
 	jump_in_place_left
@@ -190,7 +201,7 @@ movement SafariZone_EventScript_JoeyFearsSnakes_MoveS {
 	walk_fast_right
 	walk_fast_up * 2
 	walk_fast_left
-	face_down
+	face_up
 }
 movement SafariZone_EventScript_JoeyFearsSnakes_MoveE {
 	jump_in_place_down
@@ -198,7 +209,7 @@ movement SafariZone_EventScript_JoeyFearsSnakes_MoveE {
 	walk_fast_up
 	walk_fast_left * 2
 	walk_fast_down
-	face_left
+	face_right
 }
 movement SafariZone_EventScript_JoeyFearsSnakes_MoveW {
 	jump_in_place_up
@@ -206,7 +217,7 @@ movement SafariZone_EventScript_JoeyFearsSnakes_MoveW {
 	walk_fast_down
 	walk_fast_right * 2
 	walk_fast_up
-	face_right
+	face_left
 }
 
 movement SafariZone_EventScript_JoeyFearsSnakes_Leave {
@@ -382,7 +393,7 @@ script SafariZone_DisableScript_BrendanFearsThunder {
 script SafariZone_EventScript_BrendanFearsThunder {
 	lockall
 	playse(SE_T_KAMI)
-	delay(8)
+	delay(20)
 	playse(SE_DANSA)
 	applymovement(2, SafariZone_Movement_BrendanFearsThunder1)
 	applymovement(LID_PLAYER, SafariZone_Movement_BrendanFearsThunderP)
