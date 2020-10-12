@@ -1376,7 +1376,7 @@ void ShowTrainerIntroSpeech(void)
     //     else
     //         CopyPyramidTrainerSpeechBefore(LocalIdToPyramidTrainerId(gEventObjects[gApproachingTrainers[gApproachingTrainerId].eventObjectId].localId));
 
-    //     sub_80982B8();
+    //     ShowFieldMessageFromBuffer();
     // }
     // else if (InTrainerHill())
     // {
@@ -1385,7 +1385,7 @@ void ShowTrainerIntroSpeech(void)
     //     else
     //         CopyTrainerHillTrainerText(2, LocalIdToHillTrainerId(gEventObjects[gApproachingTrainers[gApproachingTrainerId].eventObjectId].localId));
 
-    //     sub_80982B8();
+    //     ShowFieldMessageFromBuffer();
     // }
     // else
     {

@@ -29,6 +29,10 @@ Puzzle_SafariImposters_TalkTables::
 	.4byte Puzzle_SafariImposters_TalkTable_AlexAlibi
 	.4byte Puzzle_SafariImposters_TalkTable_AlexImposter
 	.4byte Puzzle_SafariImposters_TalkTable_AlexAccuse
+	@ (buffer)
+	.4byte 0
+	.4byte 0
+	.4byte 0
 `
 
 // ----------------------------------------------------
@@ -100,7 +104,7 @@ text Puzzle_SafariImposters_Text_JoeyAlibi1c {
 }
 
 text Puzzle_SafariImposters_Text_JoeyAlibi2a {
-			"Me and ACE $"
+			"Me and ACE$"
 }
 text Puzzle_SafariImposters_Text_JoeyAlibi2a_I {
 			"My team and I$"
@@ -487,15 +491,15 @@ text Puzzle_SafariImposters_Text_IreneAccuseWally {
 			"happier after getting back.$"
 }
 text Puzzle_SafariImposters_Text_IreneAccuseBrendan {
-			"How's {BRENDAN} doing? He seems more\n"
+			"How's {BRENDAN} doing? He seems more\l"
 			"uptight than usual.$"
 }
 text Puzzle_SafariImposters_Text_IreneAccuseMay {
-			"How's {MAY} doing? She seems a lot\n"
+			"How's {MAY} doing? She seems a lot\l"
 			"less chatty than usual.$"
 }
 text Puzzle_SafariImposters_Text_IreneAccuseAlex {
-			"How's {ALEX} feeling? They seem\n"
+			"How's {ALEX} feeling? They seem\l"
 			"more reserved than usual.$"
 }
 

@@ -82,9 +82,10 @@ Puzzle_SafariImposters_OnFrame:
 	map_script_2 VAR_LAST_WARP_ID, 0, Puzzle_SafariImposters_EnableMapNameAgain
 	map_script_2 VAR_PUZZLE_STAGE, 0, Puzzle_SafariImposters_IntroCutscene
 	map_script_2 VAR_PUZZLE_STAGE, 3, Puzzle_SafariImposters_ExitCutscene
-	map_script_2 VAR_PUZZLE_STAGE, 6, Puzzle_SafariImposters_OnWarpIn_ImposterReveal
+	map_script_2 VAR_PUZZLE_STAGE, 6, Puzzle_SafariImposters_ImposterReveal_Cutscene
 	.2byte 0
 Puzzle_SafariImposters_WarpTable:
+	map_script_2 VAR_PUZZLE_STAGE, 6, Puzzle_SafariImposters_OnWarpIn_ImposterReveal
 	.2byte 0
 `
 
@@ -608,6 +609,7 @@ script Puzzle_SafariImposters_EventScript_EntranceCounterTrigger {
 	
 	special(EnterSafariMode)
 	setvar(VAR_SAFARI_ZONE_STATE, 2)
+	setvar(VAR_PUZZLE_STAGE, 2)
 	// clearflag(FLAG_GOOD_LUCK_SAFARI_ZONE)
 	warp(MAP_SAFARI_ZONE_SOUTH, 0xFF, 32, 33)
 	waitstate
@@ -622,16 +624,38 @@ movement Puzzle_SafariImposters_Movement_EnterSafariZone {
 ///////////////////////////////////////////////////////
 // Time's Up!
 
+script Puzzle_SafariImposters_Retire {
+	msgbox ("You haven't heard anything yet about\n"
+			"the DITTO. You gotta keep looking.$", MSGBOX_SIGN)
+}
+
 script Puzzle_SafariImposters_GameEnds {
 	lockall
 	playse(SE_PIN)
 	applymovement (LID_PLAYER, Common_Movement_ExclamationMark)
-	msgbox ("Huh?\n"
-			"You hear something snap under foot.\p"
-			"You reach down and pick up the broken\n"
-			"pieces of an electronic chip…$")
+	specialvar(VAR_RESULT, GetPlayerState)
+	switch(var(VAR_RESULT)) {
+		case 1: // Acro Bike
+		case 2: // Mach Bike
+			msgbox ("Huh? You hear something snap under\n"
+					"the wheel of your bike tire.\p"
+					"You reach down and pick up the broken\n"
+					"pieces of an electronic chip…$")
+		case 3: // Surfing
+			msgbox ("Huh? There's something floating\n"
+					"in the water nearby.\p"
+					"You reach in and pick up a soggy\n"
+					"electronic chip… it sparks a bit\l"
+					"and then seems to die.$")
+		default:
+			msgbox ("Huh?\n"
+					"You hear something snap under foot.\p"
+					"You reach down and pick up the broken\n"
+					"pieces of an electronic chip…$")
+	}
 	waitmovement (0)
 	playse(SE_PINPON)
+	delay (20)
 	message("PROF: Good news!\n"
 			"The tracking signal has vanished!\l"
 			"Someone has caught the DITTO!\p"
@@ -645,6 +669,7 @@ script Puzzle_SafariImposters_GameEnds {
 
 script Puzzle_SafariImposters_Exit {
 	setvar(VAR_SAFARI_ZONE_STATE, 1)
+	setvar(VAR_PUZZLE_STAGE, 3)
 	special (ExitSafariMode)
 	warp (MAP_PUZZLE_SAFARI_IMPOSTERS, 0xFF, 2, 5)
 	waitstate
@@ -673,6 +698,7 @@ script Puzzle_SafariImposters_ExitCutscene {
 	waitmovement(LID_SCIENTIST)
 	playse(SE_PN_OFF)
 	waitse
+	delay(16)
 	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceLeft)
 	waitmovement(LID_SCIENTIST)
 	delay(8)
@@ -687,6 +713,7 @@ script Puzzle_SafariImposters_ExitCutscene {
 	waitmovement(LID_SCIENTIST)
 	playse(SE_PN_OFF)
 	waitse
+	delay(16)
 	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceLeft)
 	waitmovement(LID_SCIENTIST)
 	delay(8)
@@ -700,12 +727,15 @@ script Puzzle_SafariImposters_ExitCutscene {
 	waitmovement(LID_SCIENTIST)
 	playse(SE_PN_OFF)
 	waitse
+	delay(32)
 	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceLeft)
 	waitmovement(LID_SCIENTIST)
 	msgbox ("I don't understand it! There's no\n"
 			"sign of the DITTO in anyone's parties!\p"
 			"The tracer signal is gone…\n"
 			"It must have been caught…$")
+	removeobject(LID_JAMES)
+	removeobject(LID_FRIEND_A)
 	
 	applymovement(LID_PLAYER, Puzzle_SafariImposters_IntroCutscene_Movement3a)
 	msgbox ("{PLAYER} shows the PROF the broken\n"
@@ -725,19 +755,25 @@ script Puzzle_SafariImposters_ExitCutscene {
 	waitmovement(LID_PLAYER)
 	applymovement(LID_PLAYER, Common_Movement_QuestionMark)
 	waitmovement(LID_PLAYER)
+	waitse
+	delay(32)
 	
 	playse(SE_PC_OFF)
+	waitse
 	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceDown)
 	waitmovement(LID_SCIENTIST)
 	message("No! The battery's died!\p$")
+	waitmessage
 	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceUp)
 	waitmovement(LID_SCIENTIST)
 	message("Well, at least I know you're clean…\n"
-			"There's something I need your help with…\p"
-			"That experimental DITTO? The reason it's\n"
-			"so special is because, well…\p"
+			"I need your help with something…\p"
+			"That experimental DITTO? The reason\n"
+			"it's so special is because, well…\p"
 			"It has the ability to transform into\n"
-			"PEOPLE as well as {POKEMON}.\p$")
+			"PEOPLE as well as {POKEMON}.$")
+	waitmessage
+	waitbuttonpress
 	playse(SE_PIN)
 	applymovement(LID_PLAYER, Common_Movement_ExclamationMark)
 	waitmovement(LID_PLAYER)
@@ -766,12 +802,12 @@ movement Puzzle_SafariImposters_ExitCutscene_Movement1 {
 }
 movement Puzzle_SafariImposters_ExitCutscene_Movement2 {
 	walk_down
-	walk_right * 7
+	walk_right * 8
 }
 movement Puzzle_SafariImposters_ExitCutscene_Movement3 {
 	walk_fast_down
 	walk_fast_left
-	walk_fastest_up
+	walk_in_place_fastest_up
 }
 
 ///////////////////////////////////////////////////////
@@ -855,6 +891,7 @@ script(local) Puzzle_SafariImposters_Search_Joey {
 	faceplayer
 	msgbox ("{JOEY}?: Hey, {PLAYER}, did they find\n"
 			"the DITTO yet? What's up?$")
+	addvar(VAR_SEARCH_STATE, 1)
 	multichoice(20, 6, 116, FALSE)
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
@@ -890,6 +927,7 @@ script(local) Puzzle_SafariImposters_Search_James {
 	msgbox ("{JAMES}?: So, did they find the DITTO\n"
 			"yet? And do you know why they're being\l"
 			"all weird?$")
+	addvar(VAR_SEARCH_STATE, 1)
 	multichoice(20, 6, 116, FALSE)
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
@@ -926,6 +964,7 @@ script(local) Puzzle_SafariImposters_Search_Irene {
 	faceplayer
 	msgbox ("{IRENE}?: What's going on, {PLAYER}?\n"
 			"Did they find the DITTO yet?$")
+	addvar(VAR_SEARCH_STATE, 1)
 	multichoice(20, 6, 116, FALSE)
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
@@ -961,6 +1000,7 @@ script(local) Puzzle_SafariImposters_Search_Wally {
 	faceplayer
 	msgbox ("{WALLY}?: Something feels off, {PLAYER}.\n"
 			"What's going on?$")
+	addvar(VAR_SEARCH_STATE, 1)
 	multichoice(20, 6, 116, FALSE)
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
@@ -974,14 +1014,14 @@ script(local) Puzzle_SafariImposters_Search_Wally {
 						"fight you again until we can heal.$")
 			}
 			else {
-				msgbox("A battle? Here? Uh, sure, alright.$")
 				if (var(VAR_CONFIG_IMPOSTER) != IMP_WALLY) {
-					playse(SE_SELECT)
-					msgbox("I can show off my SALAMENCE to you!\l"
+					msgbox ("A battle? Here? Uh, sure, alright.\p"
+							"I can show off my SALAMENCE to you!\n"
 							"Let's go!$")
 					trainerbattle_no_intro(TRAINER_WALLY_REAL, 
 						"Aw, man… Even with my DRAGON-type…$")
 				} else {
+					msgbox("A battle? Here? Uh, sure, alright.$")
 					trainerbattle_no_intro(TRAINER_WALLY_FAKE, 
 						"Aw, man… If only SALAMENCE wasn't fainted…$")
 				}
@@ -996,6 +1036,7 @@ script(local) Puzzle_SafariImposters_Search_Brendan {
 	faceplayer
 	msgbox ("{BRENDAN}?: Did they find the DITTO yet,\n"
 			"{PLAYER}? They're being coy when I ask.$")
+	addvar(VAR_SEARCH_STATE, 1)
 	multichoice(20, 6, 116, FALSE)
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
@@ -1029,6 +1070,7 @@ script(local) Puzzle_SafariImposters_Search_May {
 	faceplayer
 	msgbox ("{MAY}?: What's going on?\n"
 			"Why is everyone acting so odd?$")
+	addvar(VAR_SEARCH_STATE, 1)
 	multichoice(20, 6, 116, FALSE)
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
@@ -1062,6 +1104,7 @@ script(local) Puzzle_SafariImposters_Search_Alex {
 	faceplayer
 	msgbox ("{ALEX}?: Uh, what's up, {PLAYER}?\n"
 			"Is there something wrong?$")
+	addvar(VAR_SEARCH_STATE, 1)
 	multichoice(20, 6, 116, FALSE)
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
@@ -1222,9 +1265,11 @@ script Puzzle_SafariImposters_OnLoad_ImposterReveal {
 	setmetatile(14, 3, 0x268, FALSE)
 	setmetatile(17, 5, 0x2BA, FALSE)
 	
+	callnative (HidePlayerOnLoad)
 	// Organize the friends into the LID_FRIEND_* vars.
 	// Friend_2 is the imposter if the player selected wrong
 	callnative(Imposter_RandomizeFriendLayout)
+	callnative(Imposter_LoadRevealStrings)
 	
 	setobjectxyperm(LID_SELECTED, 14, 4)
 	setobjectmovementtype(LID_SELECTED, MOVEMENT_TYPE_FACE_DOWN)
@@ -1424,19 +1469,20 @@ script Puzzle_SafariImposters_ImposterReveal_CutsceneWrong {
 	delay(4)
 	applymovement(LID_FRIEND_4, Common_Movement_FaceLeft)
 	waitmovement(LID_FRIEND_2)
-	delay(20)
+	delay(32)
 	
 	// "Ditto!"
 	message(Puzzle_SafariImposters_ImposterReveal_Text7)
 	playmoncry(SPECIES_DITTO, 0)
 	waitmoncry
 	waitmessage
+	delay(32)
 	closemessage
 	
 	applymovement(LID_FRIEND_2, Puzzle_SafariImposters_ImposterReveal_Movement8a)
 	delay(16)
 	applymovement(4, Puzzle_SafariImposters_ImposterReveal_Movement8a)
-	delay(8)
+	delay(12)
 	message(Puzzle_SafariImposters_ImposterReveal_Text8b)
 	delay(4)
 	applymovement(LID_SCIENTIST, Puzzle_SafariImposters_ImposterReveal_Movement8a)
@@ -1444,6 +1490,7 @@ script Puzzle_SafariImposters_ImposterReveal_CutsceneWrong {
 	applymovement(6, Puzzle_SafariImposters_ImposterReveal_Movement8a)
 	waitmessage
 	waitmovement(LID_SCIENTIST)
+	waitbuttonpress
 	closemessage
 	
 	setvar(VAR_PUZZLE_STAGE, 8)
@@ -2006,7 +2053,7 @@ script(local) Puzzle_SafariImposters_PostWrong_Alex {
 			"I wonder if I could train my own\n"
 			"DITTO to do that myself…\p"
 			"Maybe if I'm fast enough, I can\n"
-			"catch the one tht escaped!$", MSGBOX_NPC)
+			"catch the one that escaped!$", MSGBOX_NPC)
 	} else {
 		callnative(Imposter_LoadRevealStrings)
 	msgbox ("You know, I don't think I'd mind\n"

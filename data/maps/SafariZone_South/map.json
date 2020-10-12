@@ -1,5 +1,5 @@
 {
-    "allow_bike": false,
+    "allow_bike": true,
     "allow_cycling": "",
     "allow_escape_rope": false,
     "allow_escaping": "",

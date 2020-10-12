@@ -70,6 +70,16 @@ void SetSelectVariables(struct ScriptContext *ctx)
 	gSpecialVar_0x800A = GetGameStat(GAME_STAT_SELECT_PRESSES);
 }
 
+
+u16 GetPlayerState(void)
+{
+    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_ACRO_BIKE)) return 1;
+    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE)) return 2;
+    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING)) return 3;
+    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_UNDERWATER)) return 4;
+    return 0;
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Puzzle: Scale the Belfry
 // 
@@ -1214,7 +1224,6 @@ void Imposter_LoadRevealStrings(struct ScriptContext *ctx) {
 	}
 }
 
-extern const u8** const Puzzle_SafariImposters_TalkTables[7][3];
 static const u16 Imposter_ShowTalkingPoints_RNGVars[] = {
 	VAR_JOEY_STATE,
 	VAR_JAMES_STATE,
@@ -1231,7 +1240,7 @@ void Imposter_SetupTalkingPoints(struct ScriptContext *ctx) {
 	u16* var;
 	for (i = 0; i < ARRAY_COUNT(Imposter_ShowTalkingPoints_RNGVars); i++) {
 		var = GetVarPointer(Imposter_ShowTalkingPoints_RNGVars[i]);
-		*var = (Random2() & 0xFFF0) | (*var);
+		*var = Random2();
 	}
 	// eliminate impossible accusations, change to player accusations
 	var = GetVarPointer(Imposter_ShowTalkingPoints_RNGVars[IMP_JOEY]);
@@ -1253,6 +1262,9 @@ void Imposter_SetupTalkingPoints(struct ScriptContext *ctx) {
 	}
 }
 
+extern const u8** const Puzzle_SafariImposters_TalkTables[7][3];
+extern const u8 Puzzle_SafariImposters_Text_JoeyAlibi1a[];
+
 void Imposter_ShowTalkingPoints(struct ScriptContext *ctx) {
 	u8 currSpeaker = ctx->data[0];
 	bool8 isImposter = (currSpeaker == VarGet(VAR_CONFIG_IMPOSTER));
@@ -1263,15 +1275,23 @@ void Imposter_ShowTalkingPoints(struct ScriptContext *ctx) {
 	u8 i, x;
 	u8 *str = gStringVar4;
 	
+	// So, for future reference, when using the gStringVar4 directly like this,
+	// NEVER call ShowFieldMessage(), as that calls StringExpandPlaceholders(),
+	// and now you're expanding placeholders in-place, guaranteeing that the
+	// destination string is longer, and thus racing ahead of the src string
+	// and that can cause all sorts of untold horrors and "jumps to invalid addresses".
+	
 	if (isImposter) {
-		for(i = 0; imposterTable[i*4] != NULL; i++) {
-			x = 0x3 & (rng >> (4 + (i*2)));
-			str = StringCopy(str, imposterTable[(i*4)+x]);
+		for(i = 0; imposterTable[i*4] != NULL && i < 6; i++) {
+			x = 0x3 & (rng >> (i*2));
+			// str = ConvertIntToDecimalStringN(str, (i*4)+x, 2, 3);
+			str = StringExpandPlaceholders(str, imposterTable[(i*4)+x]);
 		}
 	} else {
-		for(i = 0; alibiTable[i*4] != NULL; i++) {
-			x = 0x3 & (rng >> (4 + (i*2)));
-			str = StringCopy(str, alibiTable[(i*4)+x]);
+		for(i = 0; alibiTable[i*4] != NULL && i < 6; i++) {
+			x = 0x3 & (rng >> (i*2));
+			// str = ConvertIntToDecimalStringN(str, (i*4)+x, 2, 3);
+			str = StringExpandPlaceholders(str, alibiTable[(i*4)+x]);
 		}
 	}
 	x = ACCUSE_IDX(rng);
@@ -1282,10 +1302,12 @@ void Imposter_ShowTalkingPoints(struct ScriptContext *ctx) {
 	{
 		x = currSpeaker;
 	}
-	str = StringCopy(str, accuseTable[x]);
-	
-	// //TODO: From a table of talking points, compile an alibi or an accusation of someone else 
-	ShowFieldMessage(gStringVar4);
+	str = StringExpandPlaceholders(str, accuseTable[x]);
+	*str = EOS;
+	// If the gStringVar4 buffer is overflown, it rolls into 256 bytes of the 
+	// gStringWorking, which is fine. Beyond that is some link variables we'll never use.
+	// So this should be fiiiiiiine.
+	ShowFieldMessageFromBuffer();
 }
 
 #undef VAR_CONFIG_IMPOSTER

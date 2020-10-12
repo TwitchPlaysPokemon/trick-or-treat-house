@@ -538,3 +538,4 @@ gSpecials:: @ 81DBA64
 	def_special sub_80B3BC4
 	def_special ShowFieldMessageBoxAtTopOfScreen
 	def_special ResetFieldMessageBoxToBottomOfScreen
+	def_special GetPlayerState

@@ -180,8 +180,8 @@ SafariZone_EventScript_JoeyFearsSnakes_MoveTable2:
 	.4byte 0
 SafariZone_EventScript_JoeyFearsSnakes_MoveTable3:
 	.4byte SafariZone_EventScript_JoeyFearsSnakes_LeaveS
-	.4byte SafariZone_EventScript_JoeyFearsSnakes_LeaveS
 	.4byte SafariZone_EventScript_JoeyFearsSnakes_Leave
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_LeaveS
 	.4byte SafariZone_EventScript_JoeyFearsSnakes_Leave
 	.4byte SafariZone_EventScript_JoeyFearsSnakes_Leave
 	.4byte 0
@@ -193,7 +193,7 @@ movement SafariZone_EventScript_JoeyFearsSnakes_MoveN {
 	walk_fast_right
 	walk_fast_down * 2
 	walk_fast_left
-	face_down
+	face_up
 }
 movement SafariZone_EventScript_JoeyFearsSnakes_MoveS {
 	jump_in_place_left
@@ -201,7 +201,7 @@ movement SafariZone_EventScript_JoeyFearsSnakes_MoveS {
 	walk_fast_right
 	walk_fast_up * 2
 	walk_fast_left
-	face_up
+	face_down
 }
 movement SafariZone_EventScript_JoeyFearsSnakes_MoveE {
 	jump_in_place_down
