@@ -173,7 +173,7 @@
 #define FLAG_META_SUBMITTED_WATER            0x9D
 #define FLAG_META_SUBMITTED_SEEDOT           0x9E
 #define FLAG_META_SUBMITTED_CUSHION          0x9F
-#define FLAG_UNUSED_0x0A0                    0xA0
+#define FLAG_HIDE_EXT_GAME_PLAYERS           0xA0
 #define FLAG_UNUSED_0x0A1                    0xA1
 #define FLAG_UNUSED_0x0A2                    0xA2
 #define FLAG_UNUSED_0x0A3                    0xA3
@@ -325,7 +325,7 @@
 #define FLAG_MET_MAXIE_SOOTOPOLIS            0x135
 #define FLAG_MET_SCOTT_RUSTBORO              0x136
 #define FLAG_WALLACE_GOES_TO_SKY_PILLAR      0x137 // Set after speaking to Wallace within the Cave of Origin.
-#define FLAG_RECEIVED_HM07                   0x138
+#define FLAG_TTH_NEWS_REPORT                 0x138
 #define FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS    0x139 // Beat Magma Grunt blocking Magma Hideout entrance.
 #define FLAG_RECEIVED_AURORA_TICKET          0x13A // RECEIVED Aurora Ticket in Mystery Gift
 #define FLAG_RECEIVED_MYSTIC_TICKET          0x13B // RECEIVED Mystic Ticket in Mystery Gift

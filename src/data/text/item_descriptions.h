@@ -2061,7 +2061,7 @@ static const u8 sKingChocDesc[] = _(
     "Restores HP\n"
     "by 30 points.");
 
-static const u8 sGummyBearName[] = _("Gummy Bears");
+static const u8 sGummyBearName[] = _("Gummyursa");
 static const u8 sGummyBearDesc[] = _(
     "Single serving.\n"
     "Raises a random\n"
