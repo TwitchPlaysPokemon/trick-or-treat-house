@@ -954,7 +954,7 @@ static u8 *sub_81D2CD0(u8 *dst, u16 boxId, u16 monId)
         *(str++) = 0;
         *(str++) = 9;
         *(str++) = CHAR_SLASH;
-        *(str++) = CHAR_SPECIAL_F9;
+        *(str++) = CHAR_EXTRA_SYMBOL;
         *(str++) = 5;
         str = ConvertIntToDecimalStringN(str, level, STR_CONV_MODE_LEFT_ALIGN, 3);
         *(str++) = CHAR_SPACE;

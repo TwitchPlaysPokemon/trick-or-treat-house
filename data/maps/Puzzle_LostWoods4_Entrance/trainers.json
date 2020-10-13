@@ -1,7 +1,7 @@
 [
 	{
-		"class": "HERO_OF_TIME",
-		"name": "DREW",
+		"class": "CAMPER",
+		"name": "PAUL",
 		"party": [
 			{
 				"species": "SPECIES_SANDSHREW",
@@ -11,8 +11,83 @@
 		]
 	},
 	{
-		"class": "SKELETON",
-		"name": "JAIME",
+		"class": "NINJA_BOY",
+		"name": "NIGEL",
+		"music": "MALE",
+		"party": [
+			{
+				"species": "SPECIES_VULPIX",
+				"level": 27
+			},
+			{
+				"species": "SPECIES_BRELOOM",
+				"level": 27
+			}
+		]
+	},
+	{
+		"class": "NINJA_BOY",
+		"name": "NIGEL",
+		"music": "MALE",
+		"party": [
+			{
+				"species": "SPECIES_VULPIX",
+				"level": 27
+			},
+			{
+				"species": "SPECIES_BRELOOM",
+				"level": 27
+			}
+		]
+	},
+	{
+		"class": "NINJA_BOY",
+		"name": "NIGEL",
+		"music": "MALE",
+		"party": [
+			{
+				"species": "SPECIES_VULPIX",
+				"level": 27
+			},
+			{
+				"species": "SPECIES_BRELOOM",
+				"level": 27
+			}
+		]
+	},
+	{
+		"class": "NINJA_BOY",
+		"name": "NIGEL",
+		"music": "MALE",
+		"party": [
+			{
+				"species": "SPECIES_VULPIX",
+				"level": 27
+			},
+			{
+				"species": "SPECIES_BRELOOM",
+				"level": 27
+			}
+		]
+	},
+	{
+		"class": "NINJA_BOY",
+		"name": "NIGEL",
+		"music": "MALE",
+		"party": [
+			{
+				"species": "SPECIES_VULPIX",
+				"level": 27
+			},
+			{
+				"species": "SPECIES_BRELOOM",
+				"level": 27
+			}
+		]
+	},
+	{
+		"class": "NINJA_BOY",
+		"name": "NIGEL",
 		"music": "MALE",
 		"party": [
 			{

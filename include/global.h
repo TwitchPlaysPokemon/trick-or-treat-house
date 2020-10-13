@@ -385,7 +385,7 @@ struct BattleFrontier
     /*0xE6E*/ u16 field_E6E;
     /*0xE70*/ struct RentalMon rentalMons[6];
     /*0xEB8*/ u16 battlePoints;
-    /*0xEBA*/ u16 field_EBA;
+    /*0xEBA*/ u16 cardBattlePoints;
     /*0xEBC*/ u32 battlesCount;
     /*0xEC0*/ u16 field_EC0[16];
     /*0xEE0*/ u8 field_EE0;

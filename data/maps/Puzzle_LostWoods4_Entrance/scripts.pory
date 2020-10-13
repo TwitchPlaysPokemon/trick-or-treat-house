@@ -31,5 +31,43 @@ Puzzle_LostWoods4_PrereqItems:
 Puzzle_LostWoods4_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01
 	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_COMMON_01
 	.2byte 0
 `
+
+script Puzzle_LostWoods4_TrainerScript_CamperA5 {
+	trainerbattle_single(TRAINER_01, 
+			"", 
+			"")
+	msgbox ("", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_LostWoods4_TrainerScript_NinjaB2 {
+	trainerbattle_single(TRAINER_02, 
+			"", 
+			"")
+	msgbox ("", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_LostWoods4_TrainerScript_SkeletonB5 {
+	trainerbattle_single(TRAINER_03, 
+			"", 
+			"")
+	msgbox ("", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_LostWoods4_TrainerScript_SkeletonC1 {
+	trainerbattle_single(TRAINER_04, 
+			"", 
+			"")
+	msgbox ("", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_LostWoods4_TrainerScript_AlienC3 {
+	trainerbattle_single(TRAINER_05, 
+			"", 
+			"")
+	msgbox ("", MSGBOX_AUTOCLOSE)
+}

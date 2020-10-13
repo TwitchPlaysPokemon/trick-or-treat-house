@@ -1274,7 +1274,7 @@ static bool32 sub_81963F0(u8 taskId)
         ChangeBgY(0, 0, 0);
         if (!gMatchCallState.triggeredFromScript)
         {
-            sub_81973A4();
+            LoadMessageBoxAndBorderGfx();
             playerObjectId = GetEventObjectIdByLocalIdAndMap(EVENT_OBJ_ID_PLAYER, 0, 0);
             EventObjectClearHeldMovementIfFinished(&gEventObjects[playerObjectId]);
             ScriptMovement_UnfreezeObjectEvents();

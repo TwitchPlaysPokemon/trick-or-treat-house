@@ -1887,7 +1887,7 @@ static void sub_81A3B64(void)
     if (gSaveBlock2Ptr->frontier.battlePoints > 9999)
         gSaveBlock2Ptr->frontier.battlePoints = 9999;
 
-    points = gSaveBlock2Ptr->frontier.field_EBA;
+    points = gSaveBlock2Ptr->frontier.cardBattlePoints;
     points += gUnknown_086118B4[challengeNum][facility][battleMode];
     sub_80EED60(gUnknown_086118B4[challengeNum][facility][battleMode]);
     if (gTrainerBattleOpponent_A == TRAINER_FRONTIER_BRAIN)
@@ -1897,7 +1897,7 @@ static void sub_81A3B64(void)
     }
     if (points > 0xFFFF)
         points = 0xFFFF;
-    gSaveBlock2Ptr->frontier.field_EBA = points;
+    gSaveBlock2Ptr->frontier.cardBattlePoints = points;
 }
 
 static void sub_81A3D30(void)
