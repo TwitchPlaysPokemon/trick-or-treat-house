@@ -2242,6 +2242,7 @@ u8 GetEventObjectIdByXYZ(u16 x, u16 y, u8 z)
 
     for (i = 0; i < EVENT_OBJECTS_COUNT; i++)
     {
+        if (gEventObjects[i].graphicsId == EVENT_OBJ_GFX_TRICK_DOOR_NORTH) continue; //HACK
         if (gEventObjects[i].active)
         {
             if (gEventObjects[i].currentCoords.x == x && gEventObjects[i].currentCoords.y == y && EventObjectDoesZCoordMatch(&gEventObjects[i], z))
@@ -4900,7 +4901,7 @@ static bool8 DoesObjectCollideWithObjectAt(struct EventObject *eventObject, s16 
         {
             if ((curObject->currentCoords.x == x && curObject->currentCoords.y == y) || (curObject->previousCoords.x == x && curObject->previousCoords.y == y))
             {
-                if (curObject->graphicsId == EVENT_OBJ_GFX_TRICK_DOOR_NORTH) return FALSE; //HACK
+                if (curObject->graphicsId == EVENT_OBJ_GFX_TRICK_DOOR_NORTH) continue; //HACK
                 if (AreZCoordsCompatible(eventObject->currentElevation, curObject->currentElevation))
                 {
                     return TRUE;

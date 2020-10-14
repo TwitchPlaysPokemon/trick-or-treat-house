@@ -245,11 +245,11 @@ script Puzzle_SafariImposters_EventScript_InfoAttendant {
 }
 
 script Puzzle_SafariImposters_EventScript_WelcomeAttendant {
-	if (var(VAR_PUZZLE_STAGE) >= 4 || var(VAR_PUZZLE_STAGE) < 7) {
+	if (var(VAR_PUZZLE_STAGE) >= 4 && var(VAR_PUZZLE_STAGE) < 7) {
 		msgbox ("Sorry, the door back to the Trick House\n"
 				"is malfunctioning right now.\p"
 				"(Don't worry, I'm guarding the door.\n"
-				"No one's leaving while I'm here.)$")
+				"No one's leaving while I'm here.)$", MSGBOX_NPC)
 		end
 	}
 	msgbox ("Welcome to the SAFARI ZONE!\p"
@@ -496,8 +496,8 @@ movement Puzzle_SafariImposters_IntroCutscene_Movement5 {
 // Entering the Safari Zone
 
 script Puzzle_SafariImposters_EnterStateSetup {
-	setobjectxyperm(LID_SCIENTIST, 15, 9)
-	setobjectmovementtype(LID_SCIENTIST, MOVEMENT_TYPE_FACE_LEFT)
+	setobjectxyperm(LID_SCIENTIST, 11, 5)
+	setobjectmovementtype(LID_SCIENTIST, MOVEMENT_TYPE_FACE_RIGHT)
 	
 	setobjectxyperm(LID_JOEY, 16, 6)
 	setobjectmovementtype(LID_JOEY, MOVEMENT_TYPE_FACE_LEFT)
@@ -1693,13 +1693,13 @@ movement Puzzle_SafariImposters_ImposterReveal_Movement5b {
 movement Puzzle_SafariImposters_ImposterReveal_Movement5c {
 	emote_question_mark
 	delay_16 * 2
-	face_right
+	face_left
 	delay_16
 	delay_4
 	emote_exclamation_mark
 }
 movement Puzzle_SafariImposters_ImposterReveal_Movement5d {
-	face_right
+	face_left
 	emote_exclamation_mark
 }
 

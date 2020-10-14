@@ -506,6 +506,7 @@ void RemovePuzzleItems(struct ScriptContext *ctx)
 			ptr = StringCopy(ptr, gText_And);
 			(*ptr++) = CHAR_SPACE;
 			ptr = ConvertUIntToDecimalStringN(ptr, gSpecialVar_Result-a, 0, 3);
+			(*ptr++) = CHAR_SPACE;
 			ptr = StringCopy(ptr, gText_MoreItems);
 		}
 		*ptr = EOS;
@@ -522,7 +523,7 @@ void RemoveExtraPokemon(struct ScriptContext *ctx)
 	
 	gSpecialVar_Result = TRUE;
 	for (i = 3; i < PARTY_SIZE; i++) {
-		if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) != SPECIES_NONE) break;
+		if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == SPECIES_NONE) break;
 		SendMonToPC(&gPlayerParty[i]);
 		ZeroMonData(&gPlayerParty[i]);
 	}

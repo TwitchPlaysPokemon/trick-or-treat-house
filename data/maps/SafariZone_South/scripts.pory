@@ -315,17 +315,19 @@ movement SafariZone_Movement_JamesFearsWater2 {
 }
 movement SafariZone_Movement_JamesFearsWater_PlayerA {
 	delay_8 * 3
+	delay_16 * 5
 	face_right
-	delay_8 * 2
+	delay_16 * 4
 	face_up
 }
 movement SafariZone_Movement_JamesFearsWater_PlayerB {
 	delay_8 * 2
+	delay_16 * 5
 	face_right
 	lock_facing_direction
 	walk_left
 	unlock_facing_direction
-	delay_8 * 2
+	delay_16 * 4
 	face_up
 }
 
@@ -475,8 +477,8 @@ script SafariZone_EventScript_MayOnTheRidge {
 	waitmovement(LID_PLAYER)
 	waitmovement(LID_MAY)
 	
-	msgbox ("{MAY}: Hey, {PLAYER}. I think all the\n"
-			"HOPPIP I've been looking for flew away.\p"
+	msgbox ("{MAY}: Hey, {PLAYER}. I think all the HOPPIP\n"
+			"I've been looking for flew away.\p"
 			"There were some here, but I think they\n"
 			"all took off towards the west.\p"
 			"Know any shortcuts from here?$")
@@ -519,15 +521,15 @@ movement SafariZone_Movement_MayOnTheRidge1 {
 }
 movement SafariZone_Movement_MayOnTheRidge2m {
 	face_down
-	delay_16 * 4
+	delay_16 * 6
 	walk_down * 4
 	walk_in_place_fastest_left
 	delay_16 * 3
 }
 movement SafariZone_Movement_MayOnTheRidge2p {
 	walk_down * 2
-	walk_in_place_fastest_right
-	delay_16 * 1
+	walk_in_place_fastest_left
+	delay_16 * 4
 	face_up
 	delay_16 * 2
 	face_down

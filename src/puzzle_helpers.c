@@ -1321,7 +1321,7 @@ void Imposter_ShowTalkingPoints(struct ScriptContext *ctx) {
 }
 
 void Imposter_PopulatePokeblockCase(struct ScriptContext *ctx) {
-	struct PokeBlock block = { 0 };
+	struct Pokeblock block;
 	
 	ClearPokeblocks();
 	
