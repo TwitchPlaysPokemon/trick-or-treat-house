@@ -17,6 +17,7 @@
 #include "task.h"
 #include "trickhouse.h"
 #include "script.h"
+#include "pokeblock.h"
 #include "pokemon_storage_system.h"
 #include "event_object_movement.h"
 #include "overworld.h"
@@ -1083,7 +1084,7 @@ void SetupIcePathLayout(struct ScriptContext *ctx) {
 #define LID_FRIEND_B         VAR_PUZZLE_1B
 #define LID_CUTSCENE_PLAYER  VAR_PUZZLE_1C
 // For the reveal scene
-#define LID_SELECTED         VAR_PUZZLE_1D
+#define LID_SELECTED         VAR_PUZZLE_10
 #define LID_FRIEND_1         VAR_PUZZLE_11
 #define LID_FRIEND_2         VAR_PUZZLE_12
 #define LID_FRIEND_3         VAR_PUZZLE_13
@@ -1139,6 +1140,15 @@ void Imposter_RandomizeFriendLayout(struct ScriptContext *ctx) {
 		friendLayout[a] = friendLayout[b];
 		friendLayout[b] = x;
 	}
+	// The selected goes in slot 6
+	a = 5;
+	for (b = 0; b < 6; b++) {
+		if (friendLayout[b] == VarGet(VAR_IMPOSTER_SELECT)) break;
+	}
+	x = friendLayout[a];
+	friendLayout[a] = friendLayout[b];
+	friendLayout[b] = x;
+	
 	// The imposter goes in slot 2
 	a = 1;
 	for (b = 0; b < 6; b++) {
@@ -1308,6 +1318,14 @@ void Imposter_ShowTalkingPoints(struct ScriptContext *ctx) {
 	// gStringWorking, which is fine. Beyond that is some link variables we'll never use.
 	// So this should be fiiiiiiine.
 	ShowFieldMessageFromBuffer();
+}
+
+void Imposter_PopulatePokeblockCase(struct ScriptContext *ctx) {
+	struct PokeBlock block = { 0 };
+	
+	ClearPokeblocks();
+	
+	AddPokeblock(&block);
 }
 
 #undef VAR_CONFIG_IMPOSTER

@@ -266,15 +266,15 @@ script SafariZone_EventScript_JamesFearsWater {
 	applymovement (2, Common_Movement_WalkInPlaceRight)
 	message("Is that salt water down there?\n"
 			"Oh boy…\p"
-			"Right, nope, I'll find another\n"
-			"HERACROSS before I get any closer\l$")
+			"Right, nope, I'll find another one\n"
+			"before I get any closer to that--\p$")
 	waitmessage
 	waitmovement(2)
 	selectpointer(SafariZone_MovementTable_JamesFearsWater_Player, VAR_INTERACT_X)
 	applymovement(EVENT_OBJ_ID_PLAYER, 0)
 	applymovement(2, SafariZone_Movement_JamesFearsWater2)
 	playse(SE_PIN)
-	message("to-- HI {PLAYER}!! FUNNY YOU HERE\l"
+	message("{PLAYER}!! HI!! FUNNY YOU'RE HERE\n"
 			"I MUST GO YOU SAW NOTHING!!! BYE!!$")
 	waitmessage
 	waitbuttonpress
@@ -309,8 +309,8 @@ movement SafariZone_Movement_JamesFearsWater2 {
 	emote_exclamation_mark
 	delay_16 * 3
 	walk_fast_up * 4
-	walk_fastest_left
-	delay_8
+	walk_in_place_fastest_left
+	delay_16 * 2
 	walk_fast_up * 6
 }
 movement SafariZone_Movement_JamesFearsWater_PlayerA {

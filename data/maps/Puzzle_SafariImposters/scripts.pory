@@ -5,16 +5,19 @@ Puzzle_SafariImposters_MapScripts:: @ 822BBBB
 	puzzle_quip Puzzle_SafariImposters_Quip
 	puzzle_candylist Puzzle_SafariImposters_CandyList
 	puzzle_metavars Puzzle_SafariImposters_Variables
+	puzzle_friendcommentary Puzzle_SafariImposters_Friend
+	puzzle_devcommentary Puzzle_SafariImposters_DevComment
 	map_script MAP_SCRIPT_PUZZLE_SETUP_SCRIPT, Puzzle_SafariImposters_SetupPuzzle
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_SafariImposters_OnLoad
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_SafariImposters_OnResume
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_SafariImposters_OnFrame
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Puzzle_SafariImposters_WarpTable
 	.byte 0
 
 Puzzle_SafariImposters_Name:
 	.string "A Safari Among Friends$"
 Puzzle_SafariImposters_Adjective:
-	.string "suspicious$"
+	.string "{SIZE 0}suspicious{RESET_SIZE}$"
 Puzzle_SafariImposters_Quip:
 	.string "I'm fascinated by this species of\n"
 	.string "{POKEMON} that can hide in plain sight!\p"
@@ -22,10 +25,28 @@ Puzzle_SafariImposters_Quip:
 	.string "the grass, then BAM! It attacks!\p"
 	.string "It's called Amoonguss.\n"
 	.string "Have you heard of it before?$"
+Puzzle_SafariImposters_Friend:
+	.string "{WALLY}: I, uh… I think I'm gonna sit\n"
+	.string "the rest of this Halloween out…\p"
+	.string "That whole DITTO situation was just\n"
+	.string "way too intense for me…\p"
+	.string "I'll head back to the Safari Zone.\n"
+	.string "It was peaceful there…$"
+Puzzle_SafariImposters_DevComment:
+	.string "Tustin2121: In case it wasn't obvious,\n"
+	.string "this puzzle was inspired by Among Us.\p"
+	.string "It's a great game, and this is probably\n"
+	.string "as close as it can get to happening in\l"
+	.string "a single-player format.\p"
+	.string "I actually added the friends popping up\n"
+	.string "throughout other puzzles specifically\l"
+	.string "so players could get to know them more\l"
+	.string "to make this puzzle more viable.$"
 
 .align 2
 Puzzle_SafariImposters_Variables:
-	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_SCIENTIST_2
+	.2byte VAR_QUIP_PERSON,    EVENT_OBJ_GFX_SCIENTIST_2
+	.2byte VAR_ENDROOM_FRIEND, TTH_FRIEND_WALLY
 	.2byte 0
 Puzzle_SafariImposters_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01
@@ -163,6 +184,9 @@ script(local) Puzzle_SafariImposters_SetupPuzzle {
 			setvar(LID_CUTSCENE_PLAYER, LID_ALEX)
 	}
 	setflag(FLAG_HIDE_SCROLL)
+	// Testing only:
+	// setvar(VAR_PUZZLE_STAGE, 4)
+	// callnative(Imposter_SetupTalkingPoints)
 }
 
 
@@ -390,13 +414,13 @@ script Puzzle_SafariImposters_IntroCutscene {
 			
 	applymovement(LID_IRENE, Puzzle_SafariImposters_IntroCutscene_Movement4a)
 	applymovement(LID_WALLY, Puzzle_SafariImposters_IntroCutscene_Movement4b)
-	message("When the tracker energizes,\n"
+	message("When the tracker is captured in a ball,\n"
 			"we'll lose its signal here, so\l"
 			"we'll know when someone catches it.\p"
-			"Then bring it back here and we'll\n"
-			"scan your parties for it.\p"
-			"And feel free to keep any {POKEMON}\n"
-			"you catch, of course.\p"
+			"Then you all will come back here and\n"
+			"we'll scan your parties for it.\p"
+			"And feel free to keep any other\n"
+			"{POKEMON} you catch, of course.\p"
 			"I'm paying for your Safari games, so\n"
 			"whenever you're ready, head on in.$")
 	waitmessage
@@ -597,6 +621,7 @@ script Puzzle_SafariImposters_EventScript_EntranceCounterTrigger {
 	giveitem(ITEM_ROCKSMASH_ITEM, 1)
 	giveitem(ITEM_SURF_ITEM, 1)
 	giveitem(ITEM_DIVE_ITEM, 1)
+	giveitem(ITEM_WATERFALL_ITEM, 1)
 	waitfanfare
 	
 	msgbox ("We'll let you know if any news breaks\n"
@@ -1645,7 +1670,8 @@ text Puzzle_SafariImposters_ImposterReveal_Text4_Scientist {
 			"most likely candidate.\p"
 			"Apparently {STR_VAR_2} been acting\n"
 			"very… … … {PAUSE 20}suspicious.\p"
-			"And so, to unmask them, we're going to--$"
+			"And so, to unmask the DITTO,\n"
+			"we're going to--$"
 }
 
 movement Puzzle_SafariImposters_ImposterReveal_Movement5a {
@@ -1687,8 +1713,8 @@ text Puzzle_SafariImposters_ImposterReveal_Text5_James {
 			"I just had to catch that HERACROSS!$"
 }
 text Puzzle_SafariImposters_ImposterReveal_Text5_Irene {
-			"???: Hey, guys! I managed to catch a\n"
-			"CHANSEY! Come look and see!$"
+			"???: Hey, guys! I was busy talking with\n"
+			"a CHANSEY! I'm here now!$"
 }
 text Puzzle_SafariImposters_ImposterReveal_Text5_Wally {
 			"???: Sorry I'm late! You won't believe\n"
@@ -1828,9 +1854,9 @@ script(local) Puzzle_SafariImposters_PostRight_Scientist {
 	if (flag(FLAG_DEFEATED_DITTO)) {
 	msgbox ("Thanks to you, we managed to return\n"
 			"the DITTO to its ball.\p"
-			"The other {POKEMON} it had captured as\n"
-			"part of its ruse have been released back\l"
-			"into the Safari Zone.\p"
+			"The other {POKEMON} it had captured\n"
+			"as part of its ruse have been released\l"
+			"back into the Safari Zone.\p"
 			"Please, uh, don't speak of this to\n"
 			"anyone outside of here.\p"
 			"The project is supposed to be top\n"
@@ -1940,7 +1966,7 @@ script(local) Puzzle_SafariImposters_PostWrong_Irene {
 			"duplicate any human as well…\l"
 			"with the ability to TALK even…\p"
 			"That's just inviting trouble, I think.\n"
-			"This seems like animal abuse…$")
+			"This seems like animal abuse…$", MSGBOX_NPC)
 	}
 }
 
@@ -1971,7 +1997,7 @@ script(local) Puzzle_SafariImposters_PostWrong_Wally {
 			"with us, we can glide around on my\l"
 			"SALAMENCE and find the fake {STR_VAR_3}!\p"
 			"Oh, yeah, I guess the DITTO probably\n"
-			"would have changed into something else\n"
+			"would have changed into something else\l"
 			"by now.$", MSGBOX_NPC)
 	}
 }
