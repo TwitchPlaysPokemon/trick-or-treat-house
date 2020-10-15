@@ -974,8 +974,6 @@ static void RedrawNumberSelectWindow(u8 windowId, u16 num)
 #define tWindow data[0]
 #define tSelected data[1]
 #define tMax data[2]
-#define tMapMusic data[3]
-
 
 static void Task_InitNumberSelect(u8 taskId)
 {
@@ -1027,6 +1025,15 @@ void ChooseNumber(struct ScriptContext *ctx)
 	
 	tSelected = ctx->data[0];
 	tMax = ctx->data[1];
+}
+
+void ChooseNumberOfTradeItems(struct ScriptContext *ctx)
+{
+	u8 taskId = CreateTask(Task_InitNumberSelect, 0);
+	s16 *data = gTasks[taskId].data;
+	
+	tSelected = 1;
+	tMax = CountTotalItemQuantityInBag(VarGet(VAR_0x8002));
 }
 
 #undef tWindow

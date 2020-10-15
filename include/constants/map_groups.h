@@ -2,13 +2,14 @@
 #define GUARD_CONSTANTS_MAP_GROUPS_H
 
 // Map Group 0
-#define MAP_TRICK_HOUSE_DEV_ENTRANCE (0 | (0 << 8))
-#define MAP_TRICK_HOUSE_EXT          (1 | (0 << 8))
-#define MAP_TRICK_HOUSE_ENTRANCE     (2 | (0 << 8))
-#define MAP_TRICK_HOUSE_END          (3 | (0 << 8))
-#define MAP_TRICK_HOUSE_CORRIDOR     (4 | (0 << 8))
-#define MAP_TRICK_HOUSE_TREE_HOUSE   (5 | (0 << 8))
-#define MAP_TRICK_HOUSE_RESTROOM     (6 | (0 << 8))
+#define MAP_TRICK_HOUSE_DEV_ENTRANCE  (0 | (0 << 8))
+#define MAP_TRICK_HOUSE_EXT           (1 | (0 << 8))
+#define MAP_TRICK_HOUSE_ENTRANCE      (2 | (0 << 8))
+#define MAP_TRICK_HOUSE_END           (3 | (0 << 8))
+#define MAP_TRICK_HOUSE_CORRIDOR      (4 | (0 << 8))
+#define MAP_TRICK_HOUSE_TREE_HOUSE    (5 | (0 << 8))
+#define MAP_TRICK_HOUSE_RESTROOM      (6 | (0 << 8))
+#define MAP_TRICK_HOUSE_EXT_GATEHOUSE (7 | (0 << 8))
 
 // Map Group 1
 #define MAP_TEST_MAP_HALLWAY       (0 | (1 << 8))

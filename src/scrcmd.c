@@ -174,6 +174,9 @@ bool8 ScrCmd_waitstate(struct ScriptContext *ctx)
 bool8 ScrCmd_goto(struct ScriptContext *ctx)
 {
     const u8 *ptr = (const u8 *)ScriptReadWord(ctx);
+    
+    if ((u32)ptr < 4)
+        ptr = (const void *)ctx->data[(u32)ptr];
 
     ScriptJump(ctx, ptr);
     return FALSE;
@@ -188,6 +191,9 @@ bool8 ScrCmd_return(struct ScriptContext *ctx)
 bool8 ScrCmd_call(struct ScriptContext *ctx)
 {
     const u8 *ptr = (const u8 *)ScriptReadWord(ctx);
+    
+    if ((u32)ptr < 4)
+        ptr = (const void *)ctx->data[(u32)ptr];
 
     ScriptCall(ctx, ptr);
     return FALSE;
@@ -510,6 +516,13 @@ bool8 ScrCmd_subvar(struct ScriptContext *ctx)
 {
     u16 *ptr = GetVarPointer(ScriptReadHalfword(ctx));
     *ptr -= VarGet(ScriptReadHalfword(ctx));
+    return FALSE;
+}
+
+bool8 ScrCmd_mulvar(struct ScriptContext *ctx)
+{
+    u16 *ptr = GetVarPointer(ScriptReadHalfword(ctx));
+    *ptr *= VarGet(ScriptReadHalfword(ctx));
     return FALSE;
 }
 
@@ -1389,8 +1402,8 @@ bool8 ScrCmd_message(struct ScriptContext *ctx)
 {
     const u8 *msg = (const u8 *)ScriptReadWord(ctx);
 
-    if (msg == NULL)
-        msg = (const u8 *)ctx->data[0];
+    if ((u32) msg < 4)
+        msg = (const u8 *)ctx->data[(u32) msg];
     ShowFieldMessage(msg);
     return FALSE;
 }
@@ -2027,6 +2040,9 @@ bool8 ScrCmd_dowildbattle(struct ScriptContext *ctx)
 bool8 ScrCmd_pokemart(struct ScriptContext *ctx)
 {
     const void *ptr = (void *)ScriptReadWord(ctx);
+    
+    if (ptr == NULL)
+        ptr = (const u8 *)ctx->data[0];
 
     CreatePokemartMenu(ptr);
     ScriptContext1_Stop();
@@ -2036,6 +2052,9 @@ bool8 ScrCmd_pokemart(struct ScriptContext *ctx)
 bool8 ScrCmd_pokemartdecoration(struct ScriptContext *ctx)
 {
     const void *ptr = (void *)ScriptReadWord(ctx);
+    
+    if (ptr == NULL)
+        ptr = (const u8 *)ctx->data[0];
 
     CreateDecorationShop1Menu(ptr);
     ScriptContext1_Stop();
@@ -2045,6 +2064,9 @@ bool8 ScrCmd_pokemartdecoration(struct ScriptContext *ctx)
 bool8 ScrCmd_pokemartdecoration2(struct ScriptContext *ctx)
 {
     const void *ptr = (void *)ScriptReadWord(ctx);
+    
+    if (ptr == NULL)
+        ptr = (const u8 *)ctx->data[0];
 
     CreateDecorationShop2Menu(ptr);
     ScriptContext1_Stop();

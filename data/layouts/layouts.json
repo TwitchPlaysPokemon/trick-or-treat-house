@@ -1749,6 +1749,16 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Fortree",
             "width": 26
+        },
+        {
+            "blockdata_filepath": "data/layouts/TrickHouseExt_Gatehouse/map.bin",
+            "border_filepath": "data/layouts/TrickHouseExt_Gatehouse/border.bin",
+            "height": 6,
+            "id": "LAYOUT_TRICK_HOUSE_EXT_GATEHOUSE",
+            "name": "TrickHouseExt_Gatehouse_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_Shop",
+            "width": 15
         }
     ],
     "layouts_table_label": "gMapLayouts"

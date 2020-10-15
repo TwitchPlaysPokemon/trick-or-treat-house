@@ -4250,7 +4250,7 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Joey[] = {
     {
     .iv = 0,
     .lvl = 9,
-    .species = SPECIES_MACHOP,
+    .species = SPECIES_RATTATA,
     }
 };
 

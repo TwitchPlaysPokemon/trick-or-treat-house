@@ -169,6 +169,13 @@
 	.2byte \destination
 	.2byte \value
 	.endm
+	
+	@ Changes the value of destination by adding value to it. Overflow is not prevented (0xFFFF + 1 = 0x0000).
+	.macro mulvar destination:req, value:req
+	.byte 0xe8
+	.2byte \destination
+	.2byte \value
+	.endm
 
 	@ Copies the value of source into destination.
 	.macro copyvar destination:req, source:req

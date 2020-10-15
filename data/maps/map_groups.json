@@ -76,7 +76,8 @@
         "TrickHouseEnd",
         "TrickHouseCorridor",
         "TrickHouseTreeHouse",
-        "TrickHouseRestroom"
+        "TrickHouseRestroom",
+        "TrickHouseExt_Gatehouse"
     ],
     "MG_ReferenceMaps": [
         "PetalburgCity",
