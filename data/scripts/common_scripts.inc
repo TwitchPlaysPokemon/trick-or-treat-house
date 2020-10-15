@@ -348,7 +348,15 @@ Common_EventScript_OnTransition_IceStep:
 @ Scripts
 
 Common_EventScript_FacePlayerUp:: @ 822818E
-	turnobject EVENT_OBJ_ID_PLAYER, 2
+	turnobject EVENT_OBJ_ID_PLAYER, DIR_NORTH
+	end
+
+Common_EventScript_FacePlayerWest::
+	turnobject EVENT_OBJ_ID_PLAYER, DIR_WEST
+	end
+
+Common_EventScript_FacePlayerEast::
+	turnobject EVENT_OBJ_ID_PLAYER, DIR_EAST
 	end
 
 Common_EventScript_HideMapNamePopup:: @ 8273D13

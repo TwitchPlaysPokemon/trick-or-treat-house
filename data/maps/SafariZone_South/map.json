@@ -27,18 +27,18 @@
     "coord_events": [
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "SafariZone_EventScript_AlexFearsSpiders",
             "type": "trigger",
-            "var": "VAR_TEMP_0",
+            "var": "VAR_PUZZLE_16",
             "var_value": "0",
             "x": 37,
             "y": 17
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "SafariZone_EventScript_AlexFearsSpiders",
             "type": "trigger",
-            "var": "VAR_TEMP_0",
+            "var": "VAR_PUZZLE_16",
             "var_value": "0",
             "x": 37,
             "y": 16

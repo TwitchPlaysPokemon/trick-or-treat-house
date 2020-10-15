@@ -100,12 +100,16 @@ Puzzle_SafariImposters_CandyList:
 @ -----------------------------------------------------
 
 Puzzle_SafariImposters_OnFrame:
-	map_script_2 VAR_LAST_WARP_ID, 0, Puzzle_SafariImposters_EnableMapNameAgain
+	map_script_2 VAR_LAST_WARP_ID, 0, Puzzle_SafariImposters_OnEnterMapFrame
+	map_script_2 VAR_TEMP_A, 1, Puzzle_SafariImposters_ShowMapTitle
 	map_script_2 VAR_PUZZLE_STAGE, 0, Puzzle_SafariImposters_IntroCutscene
 	map_script_2 VAR_PUZZLE_STAGE, 3, Puzzle_SafariImposters_ExitCutscene
 	map_script_2 VAR_PUZZLE_STAGE, 6, Puzzle_SafariImposters_ImposterReveal_Cutscene
 	.2byte 0
 Puzzle_SafariImposters_WarpTable:
+	map_script_2 VAR_LAST_WARP_ID, 0, Puzzle_SafariImposters_OnEnterMapWarp
+	map_script_2 VAR_PUZZLE_STAGE, 1, Puzzle_SafariImposters_OnMapWarpShowTitle
+	map_script_2 VAR_PUZZLE_STAGE, 4, Common_EventScript_FacePlayerEast
 	map_script_2 VAR_PUZZLE_STAGE, 6, Puzzle_SafariImposters_OnWarpIn_ImposterReveal
 	.2byte 0
 `
@@ -145,9 +149,45 @@ script(local) Puzzle_SafariImposters_OnResume {
 		removeobject(LID_SELECTED)
 	}
 }
-script(local) Puzzle_SafariImposters_EnableMapNameAgain {
+
+script(local) Puzzle_SafariImposters_OnMapWarpShowTitle {
+	setvar(VAR_TEMP_A, 1)
+	turnobject (EVENT_OBJ_ID_PLAYER, 2)
+}
+script(local) Puzzle_SafariImposters_ShowMapTitle {
+	clearflag(FLAG_HIDE_MAP_NAME_POPUP)
+	special(ShowMapNamePopup)
+	setvar(VAR_TEMP_A, 2)
+}
+
+script(local) Puzzle_SafariImposters_OnEnterMapWarp {
+	switch(var(VAR_PUZZLE_STAGE)) {
+		case 1:
+			setvar(VAR_TEMP_A, 1)
+		case 4:
+		case 5:
+			// put the blocking lady to the side so she can step back into place
+			setobjectxyperm(4, 15, 13)
+			setobjectmovementtype(4, MOVEMENT_TYPE_FACE_LEFT)
+	}
+}
+script(local) Puzzle_SafariImposters_OnEnterMapFrame {
 	clearflag(FLAG_HIDE_MAP_NAME_POPUP)
 	setvar(VAR_LAST_WARP_ID, -1)
+	
+	switch(var(VAR_PUZZLE_STAGE)) {
+		case 4:
+		case 5:
+			// step the blocking lady back into place
+			lock
+			applymovement(LID_PLAYER, Common_Movement_WalkUp1)
+			waitmovement(0)
+			applymovement(4, Common_Movement_WalkLeft1)
+			waitmovement(0)
+			applymovement(4, Common_Movement_FaceUp)
+			waitmovement(0)
+			release
+	}
 }
 
 // script Puzzle_SafariImposters_EnterState_ShowTitle {
