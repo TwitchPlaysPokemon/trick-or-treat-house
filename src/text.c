@@ -1436,7 +1436,71 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
     else
         return width;
 }
-
+/*
+void DetermineWordWrapInStrVar4(u16 wrapWidth)
+{
+    u16 width, ;
+    u8* str = gStringVar4;
+    
+    do
+    {
+        switch (*str)
+        {
+        case CHAR_SPACE:
+        
+        
+        case EXT_CTRL_CODE_BEGIN:
+            temp2 = strLocal[strPos++];
+            switch (temp2)
+            {
+            case EXT_CTRL_CODE_COLOR_HIGHLIGHT_SHADOW:
+                ++strPos;
+            case EXT_CTRL_CODE_PLAY_BGM:
+            case EXT_CTRL_CODE_PLAY_SE:
+                ++strPos;
+            case EXT_CTRL_CODE_COLOR:
+            case EXT_CTRL_CODE_HIGHLIGHT:
+            case EXT_CTRL_CODE_SHADOW:
+            case EXT_CTRL_CODE_PALETTE:
+            case EXT_CTRL_CODE_SIZE:
+            case EXT_CTRL_CODE_PAUSE:
+            case EXT_CTRL_CODE_ESCAPE:
+            case EXT_CTRL_CODE_SHIFT_TEXT:
+            case EXT_CTRL_CODE_SHIFT_DOWN:
+            case EXT_CTRL_CODE_CLEAR:
+            case EXT_CTRL_CODE_SKIP:
+            case EXT_CTRL_CODE_CLEAR_TO:
+            case EXT_CTRL_CODE_MIN_LETTER_SPACING:
+                ++strPos;
+                break;
+            case EXT_CTRL_CODE_RESET_SIZE:
+            case EXT_CTRL_CODE_PAUSE_UNTIL_PRESS:
+            case EXT_CTRL_CODE_WAIT_SE:
+            case EXT_CTRL_CODE_FILL_WINDOW:
+            case EXT_CTRL_CODE_JPN:
+            case EXT_CTRL_CODE_ENG:
+            default:
+                break;
+            }
+            break;
+            case CHAR_DYNAMIC:
+        case PLACEHOLDER_BEGIN:
+            ++strPos;
+            break;
+        case CHAR_PROMPT_SCROLL:
+        case CHAR_PROMPT_CLEAR:
+            break;
+        case CHAR_KEYPAD_ICON:
+        case CHAR_EXTRA_SYMBOL:
+            ++strPos;
+        default:
+            ++width;
+            break;
+        }
+    } while (*str != EOS)
+    
+}
+*/
 u8 RenderTextFont9(u8 *pixels, u8 fontId, u8 *str)
 {
     u8 shadowColor;

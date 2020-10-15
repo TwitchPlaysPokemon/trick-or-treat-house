@@ -1417,7 +1417,7 @@ bool8 ScrCmd_messageautoscroll(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_cmdDB(struct ScriptContext *ctx)
+bool8 ScrCmd_message3(struct ScriptContext *ctx)
 {
     const u8 *msg = (const u8 *)ScriptReadWord(ctx);
 
@@ -1426,6 +1426,20 @@ bool8 ScrCmd_cmdDB(struct ScriptContext *ctx)
     LoadMessageBoxAndBorderGfx();
     DrawDialogueFrame(0, 1);
     AddTextPrinterParameterized(0, 1, msg, 0, 1, 0, 0);
+    return FALSE;
+}
+
+// TODO:
+bool8 ScrCmd_messageWordWrap(struct ScriptContext *ctx)
+{
+    const u8 *msg = (const u8 *)ScriptReadWord(ctx);
+
+    if (msg == NULL)
+        msg = (const u8 *)ctx->data[0];
+    
+    StringExpandPlaceholders(gStringVar4, msg);
+    
+    ShowFieldMessageFromBuffer();
     return FALSE;
 }
 

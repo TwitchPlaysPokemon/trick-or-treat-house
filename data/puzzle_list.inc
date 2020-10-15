@@ -50,6 +50,7 @@ gPuzzleList::                                           @ Puzzle Type(s)
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL8             @  BATTLE/MOVEMENT (Ice Floor)
     .2byte MAP_PUZZLE_LOST_WOODS4_ENTRANCE              @  MAZE
     
+    .2byte MAP_PUZZLE_SAFARI_IMPOSTERS                  @  LOGIC
 @   .2byte MAP_META_PUZZLE
 @   .2byte MAP_CREDITS                                  @  MINIGAME
 @   .2byte MAP_TRICK_TREAT_SLATEPORT_CITY1              @  TRICK    (Must be last)
@@ -60,7 +61,6 @@ gPuzzleList::                                           @ Puzzle Type(s)
 .align 2
 gDebugPuzzles::
     .2byte MAP_EMPTY_PUZZLE
-    .2byte MAP_PUZZLE_SAFARI_IMPOSTERS
     .2byte MAP_PUZZLE_SUSPENDED_MAZE
     .2byte MAP_TRICK_TREAT_ALTO_MARE1                   @  TRICK
     .2byte MAP_TRICK_TREAT_FORTREE_CITY                 @  TRICK
