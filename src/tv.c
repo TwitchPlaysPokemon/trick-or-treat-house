@@ -2640,7 +2640,7 @@ void sub_80EECC8(void)
     VarSet(VAR_DAILY_WILDS, VarGet(VAR_DAILY_WILDS) + 1);
 }
 
-void sub_80EECEC(void)
+void IncrementDailyBerryBlender(void)
 {
     VarSet(VAR_DAILY_BLENDER, VarGet(VAR_DAILY_BLENDER) + 1);
 }

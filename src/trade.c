@@ -1402,7 +1402,7 @@ static bool8 sub_8077170(const void *a0, u32 a1)
 
 static void sub_80771AC(u8 a0)
 {
-    sub_800A4D8(a0);
+    SendBlockRequest(a0);
 }
 
 static bool32 sub_80771BC(void)
@@ -1467,7 +1467,7 @@ static bool32 sub_8077260(void)
 
 static void sub_8077288(u8 unused)
 {
-    sub_800ADF8();
+    SetLinkStandbyCallback();
 }
 
 static bool32 _IsLinkTaskFinished(void)
@@ -1615,7 +1615,7 @@ static void sub_80773D0(void)
             if (gWirelessCommType)
             {
                 sub_801048C(TRUE);
-                sub_800ADF8();
+                SetLinkStandbyCallback();
             }
         }
         break;
@@ -2823,7 +2823,7 @@ static void sub_8079490(void)
     {
         if (gWirelessCommType)
         {
-            sub_800ADF8();
+            SetLinkStandbyCallback();
         }
         else
         {
@@ -2863,7 +2863,7 @@ static void sub_8079550(void)
 {
     if (!sub_801048C(FALSE) && sub_807A09C() == 0)
     {
-        sub_800ADF8();
+        SetLinkStandbyCallback();
         gUnknown_0203229C->unk_6F = 13;
     }
 }

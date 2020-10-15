@@ -189,7 +189,7 @@ static void sub_80B2600(u8 taskId)
     gTasks[taskId].data[0]++;
     if (gTasks[taskId].data[0] == 10)
     {
-        sub_800A4D8(2);
+        SendBlockRequest(2);
         DestroyTask(taskId);
     }
 }
@@ -409,7 +409,7 @@ static void sub_80B2A08(u8 taskId)
         card->monSpecies[0] = GetMonData(&gPlayerParty[gSelectedOrderFromParty[0] - 1], MON_DATA_SPECIES, NULL);
         card->monSpecies[1] = GetMonData(&gPlayerParty[gSelectedOrderFromParty[1] - 1], MON_DATA_SPECIES, NULL);
         gTasks[taskId].func = sub_80B2C30;
-        sub_800A4D8(2);
+        SendBlockRequest(2);
     }
 }
 
@@ -877,7 +877,7 @@ static void sub_80B33BC(u8 taskId)
         data[0] = 3;
         break;
     case 3:
-        if (GetBlockReceivedStatus() == sub_800A9D8())
+        if (GetBlockReceivedStatus() == GetLinkPlayerCountAsBitFlags())
         {
             for (i = 0; i < GetLinkPlayerCount(); i++)
             {
@@ -895,7 +895,7 @@ static void sub_80B33BC(u8 taskId)
             data[0] = 5;
         break;
     case 5:
-        sub_800ADF8();
+        SetLinkStandbyCallback();
         data[0] = 6;
         break;
     case 6:
@@ -1120,7 +1120,7 @@ static void sub_80B3894(u8 taskId)
         gUnknown_02032298[0] = 0;
         gUnknown_02032298[1] = 0;
         m4aMPlayAllStop();
-        sub_800ADF8();
+        SetLinkStandbyCallback();
         data[0]++;
         break;
     case 3:

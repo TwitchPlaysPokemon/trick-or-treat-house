@@ -1320,13 +1320,39 @@ void Imposter_ShowTalkingPoints(struct ScriptContext *ctx) {
 	ShowFieldMessageFromBuffer();
 }
 
+#define SET_POKEBLOCK(num, spicyA, dryA, sweetA, bitterA, sourA, colorA) \
+	gSaveBlock1Ptr->pokeblocks[num].spicy = spicyA; \
+	gSaveBlock1Ptr->pokeblocks[num].dry = dryA; \
+	gSaveBlock1Ptr->pokeblocks[num].sweet = sweetA; \
+	gSaveBlock1Ptr->pokeblocks[num].bitter = bitterA; \
+	gSaveBlock1Ptr->pokeblocks[num].sour = sourA; \
+	gSaveBlock1Ptr->pokeblocks[num].feel = spicyA + dryA + sweetA + bitterA + sourA; \
+	gSaveBlock1Ptr->pokeblocks[num].color = colorA;
+
+
 void Imposter_PopulatePokeblockCase(struct ScriptContext *ctx) {
 	struct Pokeblock block;
 	
 	ClearPokeblocks();
-	
-	AddPokeblock(&block);
+	SET_POKEBLOCK( 0,20, 0, 0, 0, 0, PBLOCK_CLR_RED);
+	SET_POKEBLOCK( 1, 0,20, 0, 0, 0, PBLOCK_CLR_BLUE);
+	SET_POKEBLOCK( 2, 0, 0,20, 0, 0, PBLOCK_CLR_PINK);
+	SET_POKEBLOCK( 3, 0, 0, 0,20, 0, PBLOCK_CLR_GREEN);
+	SET_POKEBLOCK( 4, 0, 0, 0, 0,20, PBLOCK_CLR_YELLOW);
+	SET_POKEBLOCK( 5,20, 0, 0, 0, 0, PBLOCK_CLR_RED);
+	SET_POKEBLOCK( 6, 0,20, 0, 0, 0, PBLOCK_CLR_BLUE);
+	SET_POKEBLOCK( 7, 0, 0,20, 0, 0, PBLOCK_CLR_PINK);
+	SET_POKEBLOCK( 8, 0, 0, 0,20, 0, PBLOCK_CLR_GREEN);
+	SET_POKEBLOCK( 9, 0, 0, 0, 0,20, PBLOCK_CLR_YELLOW);
+	SET_POKEBLOCK(10,20, 0, 0, 0, 0, PBLOCK_CLR_RED);
+	SET_POKEBLOCK(11, 0,20, 0, 0, 0, PBLOCK_CLR_BLUE);
+	SET_POKEBLOCK(12, 0, 0,20, 0, 0, PBLOCK_CLR_PINK);
+	SET_POKEBLOCK(13, 0, 0, 0,20, 0, PBLOCK_CLR_GREEN);
+	SET_POKEBLOCK(14, 0, 0, 0, 0,20, PBLOCK_CLR_YELLOW);
+	SET_POKEBLOCK(15,20, 0, 0, 0,15, PBLOCK_CLR_PURPLE);
 }
+
+#undef SET_POKEBLOCK
 
 #undef VAR_CONFIG_IMPOSTER
 #undef VAR_IMPOSTER_SELECT

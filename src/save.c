@@ -912,7 +912,7 @@ void sub_8153688(u8 taskId)
         taskData[0] = 1;
         break;
     case 1:
-        sub_800ADF8();
+        SetLinkStandbyCallback();
         taskData[0] = 2;
         break;
     case 2:
@@ -949,7 +949,7 @@ void sub_8153688(u8 taskId)
     case 7:
         if (taskData[2] == 0)
             ClearContinueGameWarpStatus2();
-        sub_800ADF8();
+        SetLinkStandbyCallback();
         taskData[0] = 8;
         break;
     case 8:
@@ -960,7 +960,7 @@ void sub_8153688(u8 taskId)
         }
         break;
     case 9:
-        sub_800ADF8();
+        SetLinkStandbyCallback();
         taskData[0] = 10;
         break;
     case 10:

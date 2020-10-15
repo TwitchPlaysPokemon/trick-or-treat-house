@@ -589,7 +589,7 @@ void sub_80FDADC(u8 taskId)
 
 void ItemUseOutOfBattle_PokeblockCase(u8 taskId)
 {
-    if (sub_81221AC() == TRUE)
+    if (MenuHelpers_LinkSomething() == TRUE)
     {
         DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].data[3]);
     }

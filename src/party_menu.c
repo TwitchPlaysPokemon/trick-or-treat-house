@@ -1643,7 +1643,7 @@ static void PartyMenuInitCallback(void)
 {
     while (TRUE)
     {
-        if (sub_81221EC() == TRUE || PartyMenuSetup() == TRUE || sub_81221AC() == TRUE)
+        if (MenuHelpers_CallLinkSomething() == TRUE || PartyMenuSetup() == TRUE || MenuHelpers_LinkSomething() == TRUE)
             break;
     }
 }
@@ -1676,7 +1676,7 @@ static bool8 PartyMenuSetup(void)
         gMain.state++;
         break;
     case 5:
-        if (!sub_81221AC())
+        if (!MenuHelpers_LinkSomething())
             ResetTasks();
         gMain.state++;
         break;
@@ -2344,7 +2344,7 @@ u8 sub_81B1360(void)
 
 void Task_HandleChooseMonInput(u8 taskId)
 {
-    if (!gPaletteFade.active && sub_81221EC() != TRUE)
+    if (!gPaletteFade.active && MenuHelpers_CallLinkSomething() != TRUE)
     {
         s8 *ptr = sub_81B13EC();
 
@@ -2481,7 +2481,7 @@ static void sub_81B15D0(u8 taskId, s8 *ptr)
         PlaySE(SE_SELECT);
         if (sub_81B1660(taskId) != TRUE)
         {
-            if (!sub_81221AC())
+            if (!MenuHelpers_LinkSomething())
                 gSpecialVar_0x8004 = 7;
             gUnknown_0203CEE8 = 0;
             *ptr = 7;
@@ -2812,7 +2812,7 @@ bool8 sub_81B1BD4(void)
 
 static void sub_81B1BE8(u8 taskId)
 {
-    if (sub_81221EC() != TRUE)
+    if (MenuHelpers_CallLinkSomething() != TRUE)
     {
         display_pokemon_menu_message(0);
         gTasks[taskId].func = Task_HandleChooseMonInput;
@@ -2825,7 +2825,7 @@ static void sub_81B1C1C(u8 taskId)
     {
         ClearStdWindowAndFrameToTransparent(6, 0);
         ClearWindowTilemap(6);
-        if (sub_81221AC() == TRUE)
+        if (MenuHelpers_LinkSomething() == TRUE)
         {
             gTasks[taskId].func = sub_81B1BE8;
         }
@@ -3828,7 +3828,7 @@ static void sub_81B36FC(u8 taskId)
 
 static void HandleMenuInput(u8 taskId)
 {
-    if (!gPaletteFade.active && sub_81221EC() != TRUE)
+    if (!gPaletteFade.active && MenuHelpers_CallLinkSomething() != TRUE)
     {
         s8 input;
         s16 *data = gTasks[taskId].data;
@@ -4744,7 +4744,7 @@ static void CursorCb_FieldMove(u8 taskId)
 
     sub_81B302C(&gUnknown_0203CEC4->windowId[0]);
     sub_81B302C(&gUnknown_0203CEC4->windowId[1]);
-    if (sub_81221AC() == TRUE || InUnionRoom() == TRUE)
+    if (MenuHelpers_LinkSomething() == TRUE || InUnionRoom() == TRUE)
     {
         if (fieldMove == FIELD_MOVE_MILK_DRINK || fieldMove == FIELD_MOVE_SOFT_BOILED)
             display_pokemon_menu_message(13);

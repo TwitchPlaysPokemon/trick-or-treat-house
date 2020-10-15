@@ -2872,4 +2872,10 @@ extern const u8 gText_Num3[];
 extern const u8 gText_Num4[];
 extern const u8 gText_Num5[];
 
+// Berry Blender
+extern const u8 gText_SavingDontTurnOff2[];
+extern const u8 gText_BlenderMaxSpeedRecord[];
+extern const u8 gText_234Players[];
+
+
 #endif // GUARD_STRINGS_H

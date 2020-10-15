@@ -249,7 +249,7 @@ void PlayerHandleGetRawMonData(void);
 void sub_80587B0(void);
 void sub_805CC00(struct Sprite *sprite);
 void SetCB2ToReshowScreenAfterMenu(void);
-void SetCB2ToReshowScreenAfterMenu2(void);
+void CB2_SetUpReshowBattleScreenAfterMenu2(void);
 void c3_0802FDF4(u8 taskId);
 void ActionSelectionCreateCursorAt(u8 cursorPos, u8 unused);
 void ActionSelectionDestroyCursorAt(u8 cursorPos);

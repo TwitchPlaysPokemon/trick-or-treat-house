@@ -315,14 +315,14 @@ movement SafariZone_Movement_JamesFearsWater2 {
 }
 movement SafariZone_Movement_JamesFearsWater_PlayerA {
 	delay_8 * 3
-	delay_16 * 5
+	delay_16 * 3
 	face_right
 	delay_16 * 4
 	face_up
 }
 movement SafariZone_Movement_JamesFearsWater_PlayerB {
 	delay_8 * 2
-	delay_16 * 5
+	delay_16 * 3
 	face_right
 	lock_facing_direction
 	walk_left

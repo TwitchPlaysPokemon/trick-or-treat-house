@@ -889,7 +889,7 @@ void sub_80587B0(void)
                 if (gWirelessCommType == 0)
                     SetCloseLinkCallback();
                 else
-                    sub_800ADF8();
+                    SetLinkStandbyCallback();
 
                 gBattlerControllerFuncs[gActiveBattler] = sub_80586F8;
             }
@@ -1538,7 +1538,7 @@ void SetCB2ToReshowScreenAfterMenu(void)
     SetMainCallback2(ReshowBattleScreenAfterMenu);
 }
 
-void SetCB2ToReshowScreenAfterMenu2(void)
+void CB2_SetUpReshowBattleScreenAfterMenu2(void)
 {
     SetMainCallback2(ReshowBattleScreenAfterMenu);
 }

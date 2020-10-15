@@ -587,7 +587,7 @@ void sub_801AC54(void)
     case 50:
         if (!UpdatePaletteFade())
         {
-            sub_800ADF8();
+            SetLinkStandbyCallback();
             gMain.state++;
         }
         break;

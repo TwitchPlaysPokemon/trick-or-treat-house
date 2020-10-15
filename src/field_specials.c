@@ -3522,7 +3522,7 @@ static void sub_813B57C(u8 taskId)
         case 7:
             if (IsLinkTaskFinished() == 1)
             {
-                sub_800ADF8();
+                SetLinkStandbyCallback();
                 gTasks[taskId].data[0]++;
             }
             break;

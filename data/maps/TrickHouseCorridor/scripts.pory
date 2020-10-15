@@ -119,12 +119,14 @@ script TrickHouseCorridor_TriggerScript_AdoptionCutscene {
 
 script TrickHouseCorridor_TriggerScript_PartyStop {
 	lock
+	playse(SE_PIN)
 	applymovement (1, TrickHouseCorridor_Movement_PartyStop)
 	waitmovement (1)
 	msgbox ("Where are you going? You must have\n"
 			"only three {POKEMON} with you to\l"
 			"participate in the puzzles.\p"
 			"Please rectify this before returning.$")
+	closemessage
 	applymovement (1, Common_Movement_WalkInPlaceLeft)
 	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkLeft1)
 	waitmovement (EVENT_OBJ_ID_PLAYER)

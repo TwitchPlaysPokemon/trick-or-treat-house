@@ -1,6 +1,46 @@
 #ifndef GUARD_LINK_H
 #define GUARD_LINK_H
 
+#define RFUCMD_SEND_PACKET         0x2F00
+#define RFUCMD_BLENDER_SEND_KEYS   0x4400
+#define RFUCMD_READY_CLOSE_LINK    0x5F00
+#define RFUCMD_READY_EXIT_STANDBY  0x6600
+#define RFUCMD_0x7700              0x7700
+#define RFUCMD_0x7800              0x7800
+#define RFUCMD_0x8800              0x8800
+#define RFUCMD_0x8900              0x8900
+#define RFUCMD_SEND_BLOCK_REQ      0xA100
+#define RFUCMD_SEND_HELD_KEYS      0xBE00
+#define RFUCMD_0xED00              0xED00
+#define RFUCMD_0xEE00              0xEE00
+
+#define RFU_SERIAL_7F7D 0x7F7D
+
+#define RECV_QUEUE_NUM_SLOTS 32
+#define RECV_QUEUE_SLOT_LENGTH (14 * MAX_RFU_PLAYERS)
+
+#define SEND_QUEUE_NUM_SLOTS 40
+#define SEND_QUEUE_SLOT_LENGTH 14
+
+#define BACKUP_QUEUE_NUM_SLOTS 2
+#define BACKUP_QUEUE_SLOT_LENGTH 14
+
+#define RFU_PACKET_SIZE 6
+
+#define RFU_STATUS_OK                   0
+#define RFU_STATUS_FATAL_ERROR          1
+#define RFU_STATUS_CONNECTION_ERROR     2
+#define RFU_STATUS_CHILD_SEND_COMPLETE  3
+#define RFU_STATUS_NEW_CHILD_DETECTED   4
+#define RFU_STATUS_JOIN_GROUP_OK        5
+#define RFU_STATUS_JOIN_GROUP_NO        6
+#define RFU_STATUS_WAIT_ACK_JOIN_GROUP  7
+#define RFU_STATUS_LEAVE_GROUP_NOTICE   8
+#define RFU_STATUS_LEAVE_GROUP          9
+#define RFU_STATUS_10                   10
+#define RFU_STATUS_11                   11
+#define RFU_STATUS_ACK_JOIN_GROUP       12
+
 #define MAX_LINK_PLAYERS 4
 #define MAX_RFU_PLAYERS 5
 #define CMD_LENGTH 8
@@ -48,20 +88,66 @@
 #define EXTRACT_LINK_ERRORS(status) \
 (((status) & LINK_STAT_ERRORS) >> LINK_STAT_ERRORS_SHIFT)
 
-#define LINKCMD_SEND_LINK_TYPE 0x2222
 #define LINKCMD_0x2FFE             0x2FFE
-#define LINKCMD_SEND_HELD_KEYS     0x4444
-#define LINKCMD_0x5555             0x5555
-#define LINKCMD_0x5566             0x5566
 #define LINKCMD_0x5FFF             0x5FFF
-#define LINKCMD_0x6666             0x6666
-#define LINKCMD_0x7777             0x7777
-#define LINKCMD_CONT_BLOCK         0x8888
 #define LINKCMD_0xAAAA             0xAAAA
-#define LINKCMD_0xAAAB             0xAAAB
-#define LINKCMD_INIT_BLOCK         0xBBBB
 #define LINKCMD_SEND_HELD_KEYS_2   0xCAFE
 #define LINKCMD_0xCCCC             0xCCCC
+
+#define LINKCMD_BLENDER_STOP            0x1111
+#define LINKCMD_SEND_LINK_TYPE          0x2222
+#define LINKCMD_BLENDER_SCORE_MISS      0x2345
+#define LINKCMD_READY_EXIT_STANDBY      0x2FFE
+#define LINKCMD_SEND_PACKET             0x2FFF
+#define LINKCMD_BLENDER_SEND_KEYS       0x4444
+#define LINKCMD_BLENDER_SCORE_BEST      0x4523
+#define LINKCMD_BLENDER_SCORE_GOOD      0x5432
+#define LINKCMD_0x5555                  0x5555
+#define LINKCMD_0x5566                  0x5566
+#define LINKCMD_READY_CLOSE_LINK        0x5FFF
+#define LINKCMD_0x6666                  0x6666
+#define LINKCMD_0x7777                  0x7777
+#define LINKCMD_BLENDER_PLAY_AGAIN      0x7779
+#define LINKCMD_0x7FFF                  0x7FFF
+#define LINKCMD_CONT_BLOCK              0x8888
+#define LINKCMD_BLENDER_NO_BERRIES      0x9999
+#define LINKCMD_BLENDER_NO_PBLOCK_SPACE 0xAAAA
+#define LINKCMD_0xAAAB                  0xAAAB
+#define LINKCMD_READY_TO_TRADE          0xAABB
+#define LINKCMD_READY_FINISH_TRADE      0xABCD
+#define LINKCMD_INIT_BLOCK              0xBBBB
+#define LINKCMD_READY_CANCEL_TRADE      0xBBCC
+#define LINKCMD_SEND_HELD_KEYS          0xCAFE
+#define LINKCMD_SEND_BLOCK_REQ          0xCCCC
+#define LINKCMD_START_TRADE             0xCCDD
+#define LINKCMD_CONFIRM_FINISH_TRADE    0xDCBA
+#define LINKCMD_SET_MONS_TO_TRADE       0xDDDD 
+#define LINKCMD_0xDDEE                  0xDDEE
+#define LINKCMD_REQUEST_CANCEL          0xEEAA
+#define LINKCMD_CANCEL_TRADE            0xEEBB
+#define LINKCMD_0xEECC                  0xEECC
+
+#define LINKTYPE_TRADE                 0x1111
+#define LINKTYPE_TRADE_CONNECTING      0x1122
+#define LINKTYPE_TRADE_SETUP           0x1133
+#define LINKTYPE_TRADE_DISCONNECTED    0x1144
+#define LINKTYPE_BATTLE                0x2211
+#define LINKTYPE_0x2222                0x2222  // unused battle?
+#define LINKTYPE_SINGLE_BATTLE         0x2233
+#define LINKTYPE_DOUBLE_BATTLE         0x2244
+#define LINKTYPE_MULTI_BATTLE          0x2255
+#define LINKTYPE_BATTLE_TOWER_50       0x2266
+#define LINKTYPE_BATTLE_TOWER_OPEN     0x2277 
+#define LINKTYPE_BATTLE_TOWER          0x2288
+#define LINKTYPE_RECORD_MIX_BEFORE     0x3311
+#define LINKTYPE_RECORD_MIX_AFTER      0x3322
+#define LINKTYPE_BERRY_BLENDER_SETUP   0x4411
+#define LINKTYPE_BERRY_BLENDER         0x4422
+#define LINKTYPE_MYSTERY_EVENT         0x5501
+#define LINKTYPE_0x5502                0x5502  // unused?
+#define LINKTYPE_EREADER               0x5503
+#define LINKTYPE_CONTEST_GMODE         0x6601
+#define LINKTYPE_CONTEST_EMODE         0x6602
 
 struct LinkStatus
 {
@@ -238,7 +324,7 @@ bool32 InUnionRoom(void);
 void LoadWirelessStatusIndicatorSpriteGfx(void);
 bool8 IsLinkTaskFinished(void);
 void CreateWirelessStatusIndicatorSprite(u8, u8);
-void sub_800ADF8(void);
+void SetLinkStandbyCallback(void);
 void sub_800B488(void);
 void CheckShouldAdvanceLinkState(void);
 void sub_8011BD0(void);
@@ -246,7 +332,7 @@ u8 IsLinkMaster(void);
 void SetCloseLinkCallback(void);
 bool8 HandleLinkConnection(void);
 void SetLinkDebugValues(u32 seed, u32 flags);
-void sub_800A418(void);
+void SetBerryBlenderLinkCallback(void);
 void SetSuppressLinkErrorMessage(bool8 flag);
 void sub_800B524(struct LinkPlayer *linkPlayer);
 u8 GetSioMultiSI(void);
@@ -257,7 +343,7 @@ void sub_800B3A4(u32 who);
 bool32 sub_800A07C(void);
 void sub_800AB98(void);
 void sub_800AA04(u8 a0);
-void sub_800B4C0(void);
+void SetWirelessCommType0(void);
 bool32 sub_800B504(void);
 
 extern u16 gLinkPartnersHeldKeys[6];
@@ -300,8 +386,8 @@ bool32 sub_800A03C(void);
 void SetLocalLinkPlayerId(u8);
 u8 GetSavedPlayerCount(void);
 void sub_8009FAC(void);
-bool8 sub_800A4D8(u8 a0);
-u8 sub_800A9D8(void);
+bool8 SendBlockRequest(u8 a0);
+u8 GetLinkPlayerCountAsBitFlags(void);
 u8 sub_800A0C8(s32, s32);
 u8 sub_800A9A8(void);
 void sub_800AD10(void);

@@ -152,7 +152,7 @@ script(local) Puzzle_SafariImposters_OnResume {
 
 script(local) Puzzle_SafariImposters_OnMapWarpShowTitle {
 	setvar(VAR_TEMP_A, 1)
-	turnobject (EVENT_OBJ_ID_PLAYER, 2)
+	turnobject (EVENT_OBJ_ID_PLAYER, DIR_NORTH)
 }
 script(local) Puzzle_SafariImposters_ShowMapTitle {
 	clearflag(FLAG_HIDE_MAP_NAME_POPUP)
@@ -169,6 +169,8 @@ script(local) Puzzle_SafariImposters_OnEnterMapWarp {
 			// put the blocking lady to the side so she can step back into place
 			setobjectxyperm(4, 15, 13)
 			setobjectmovementtype(4, MOVEMENT_TYPE_FACE_LEFT)
+			setobjectxy(4, 15, 13)
+			turnobject(4, DIR_WEST)
 	}
 }
 script(local) Puzzle_SafariImposters_OnEnterMapFrame {
@@ -186,6 +188,8 @@ script(local) Puzzle_SafariImposters_OnEnterMapFrame {
 			waitmovement(0)
 			applymovement(4, Common_Movement_FaceUp)
 			waitmovement(0)
+			setobjectxyperm(4, 14, 13)
+			setobjectmovementtype(4, MOVEMENT_TYPE_FACE_UP)
 			release
 	}
 }
@@ -662,6 +666,7 @@ script Puzzle_SafariImposters_EventScript_EntranceCounterTrigger {
 	giveitem(ITEM_SURF_ITEM, 1)
 	giveitem(ITEM_DIVE_ITEM, 1)
 	giveitem(ITEM_WATERFALL_ITEM, 1)
+	callnative(Imposter_PopulatePokeblockCase)
 	waitfanfare
 	
 	msgbox ("We'll let you know if any news breaks\n"
