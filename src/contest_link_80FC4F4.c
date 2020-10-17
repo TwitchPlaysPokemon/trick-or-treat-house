@@ -36,7 +36,7 @@ bool8 sub_80FC530(u8 arg0)
 
 bool8 sub_80FC55C(void)
 {
-    if (GetBlockReceivedStatus() == sub_800A9D8())
+    if (GetBlockReceivedStatus() == GetLinkPlayerCountAsBitFlags())
     {
         ResetBlockReceivedFlags();
         return TRUE;
@@ -95,7 +95,7 @@ bool32 sub_80FC670(s16 *arg0)
     case 0:
         if (IsLinkTaskFinished())
         {
-            sub_800ADF8();
+            SetLinkStandbyCallback();
             (*arg0)++;
         }
         return FALSE;
@@ -149,7 +149,7 @@ void sub_80FC6BC(u8 taskId)
     case 10:
         if (++gTasks[taskId].data[11] > 300)
         {
-            sub_800A4D8(2);
+            SendBlockRequest(2);
             gTasks[taskId].data[0] = 1;
         }
         break;
@@ -225,7 +225,7 @@ void sub_80FC894(u8 taskId)
     case 10:
         if (++gTasks[taskId].data[11] > 10)
         {
-            sub_800A4D8(2);
+            SendBlockRequest(2);
             gTasks[taskId].data[0] = 1;
         }
         break;
@@ -476,7 +476,7 @@ void sub_80FCE48(u8 taskId)
     case 10:
         if (++gTasks[taskId].data[11] > 10)
         {
-            sub_800A4D8(2);
+            SendBlockRequest(2);
             gTasks[taskId].data[0] = 1;
         }
         break;

@@ -114,24 +114,28 @@ Common_Movement_FaceUp: @ 82725B2
 	step_end
 
 Common_Movement_BackOffUp1: @ 82725C9
+	face_down
 	lock_facing_direction
 	walk_up
 	unlock_facing_direction
 	step_end
 
 Common_Movement_BackOffDown1:
+	face_up
 	lock_facing_direction
 	walk_down
 	unlock_facing_direction
 	step_end
 
 Common_Movement_BackOffLeft1:
+	face_right
 	lock_facing_direction
 	walk_left
 	unlock_facing_direction
 	step_end
 
 Common_Movement_BackOffRight1:
+	face_left
 	lock_facing_direction
 	walk_right
 	unlock_facing_direction
@@ -344,7 +348,15 @@ Common_EventScript_OnTransition_IceStep:
 @ Scripts
 
 Common_EventScript_FacePlayerUp:: @ 822818E
-	turnobject EVENT_OBJ_ID_PLAYER, 2
+	turnobject EVENT_OBJ_ID_PLAYER, DIR_NORTH
+	end
+
+Common_EventScript_FacePlayerWest::
+	turnobject EVENT_OBJ_ID_PLAYER, DIR_WEST
+	end
+
+Common_EventScript_FacePlayerEast::
+	turnobject EVENT_OBJ_ID_PLAYER, DIR_EAST
 	end
 
 Common_EventScript_HideMapNamePopup:: @ 8273D13

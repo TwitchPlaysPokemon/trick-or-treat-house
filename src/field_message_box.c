@@ -5,11 +5,12 @@
 #include "task.h"
 #include "text.h"
 #include "match_call.h"
+#include "field_message_box.h"
 
 static EWRAM_DATA u8 sFieldMessageBoxMode = 0;
 
-static void textbox_fdecode_auto_and_task_add(u8*, bool32);
-static void textbox_auto_and_task_add(void);
+static void textbox_fdecode_auto_and_task_add(const u8*, bool32);
+static void StartDrawFieldMessage(void);
 
 void InitFieldMessageBox(void)
 {
@@ -27,7 +28,7 @@ static void sub_8098154(u8 taskId)
     switch (task->data[0])
     {
         case 0:
-           sub_81973A4();
+           LoadMessageBoxAndBorderGfx();
            task->data[0]++;
            break;
         case 1:
@@ -55,7 +56,7 @@ static void task_del_textbox(void)
         DestroyTask(taskId);
 }
 
-bool8 ShowFieldMessage(u8 *str)
+bool8 ShowFieldMessage(const u8 *str)
 {
     if (sFieldMessageBoxMode != 0)
         return FALSE;
@@ -73,7 +74,7 @@ void sub_8098214(u8 taskId)
     }
 }
 
-bool8 sub_8098238(u8 *str)
+bool8 sub_8098238(const u8 *str)
 {
     if (sFieldMessageBoxMode != 0)
         return FALSE;
@@ -84,7 +85,7 @@ bool8 sub_8098238(u8 *str)
     return TRUE;
 }
 
-bool8 ShowFieldAutoScrollMessage(u8 *str)
+bool8 ShowFieldAutoScrollMessage(const u8 *str)
 {
     if (sFieldMessageBoxMode != 0)
         return FALSE;
@@ -100,23 +101,25 @@ bool8 sub_80982A0(u8 *str)
     return TRUE;
 }
 
-bool8 sub_80982B8(void)
+// Same as ShowFieldMessage, but instead of accepting a 
+// string arg it just prints whats already in gStringVar4
+bool8 ShowFieldMessageFromBuffer(void)
 {
-    if (sFieldMessageBoxMode != 0)
+    if (sFieldMessageBoxMode != FIELD_MESSAGE_BOX_HIDDEN)
         return FALSE;
-    sFieldMessageBoxMode = 2;
-    textbox_auto_and_task_add();
+    sFieldMessageBoxMode = FIELD_MESSAGE_BOX_NORMAL;
+    StartDrawFieldMessage();
     return TRUE;
 }
 
-static void textbox_fdecode_auto_and_task_add(u8* str, bool32 allowSkippingDelayWithButtonPress)
+static void textbox_fdecode_auto_and_task_add(const u8* str, bool32 allowSkippingDelayWithButtonPress)
 {
     StringExpandPlaceholders(gStringVar4, str);
     AddTextPrinterForMessage(allowSkippingDelayWithButtonPress);
     task_add_textbox();
 }
 
-static void textbox_auto_and_task_add(void)
+static void StartDrawFieldMessage(void)
 {
     AddTextPrinterForMessage(TRUE);
     task_add_textbox();

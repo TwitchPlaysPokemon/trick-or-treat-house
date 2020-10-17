@@ -1192,10 +1192,10 @@ static const u8 sDiveItemDesc[] = _(
     "and diving suit.\n"
     "Allows DIVE.");
 
-static const u8 sWaterfallItemName[] = _("Flippers");
+static const u8 sWaterfallItemName[] = _("Robokarp");
 static const u8 sWaterfallItemDesc[] = _(
-    "A pair of flippers\n"
-    "made of MAGIKARP scales.\n"
+    "A special motor that\n"
+    "can jump up waterfalls.\n"
     "Allows WATERFALL.");
 
 static const u8 sRedScarfName[] = _("Red Scarf");
@@ -1926,6 +1926,68 @@ static const u8 sOldSeaMapDesc[] = _(
     "that shows the way\n"
     "to a certain island.");
 
+// TTH Meta Puzzle Items
+static const u8 sMetaItemRockName[] = _("Inflatable Rock");
+static const u8 sMetaItemRockDesc[] = _(
+    "An inflated rock,\n"
+    "very lightweight\n"
+    "and easy to push.");
+
+static const u8 sMetaItemZigzagName[] = _("Zigzag Cushion");
+static const u8 sMetaItemZigzagDesc[] = _(
+    "This cushion smells\n"
+    "and feels like a\n"
+    "ZIGZAGOON.");
+
+static const u8 sMetaItemLotadName[] = _("Lotad Doll");
+static const u8 sMetaItemLotadDesc[] = _(
+    "A waterlogged,\n"
+    "lost, and forgotten\n"
+    "LOTAD doll.$");
+
+static const u8 sMetaItemGrassName[] = _("Grass Cushion");
+static const u8 sMetaItemGrassDesc[] = _(
+    "A green cushion that\n"
+    "seems to encapsulate\n"
+    "the forest.");
+
+static const u8 sMetaItemDiamondName[] = _("Diamond Cushion");
+static const u8 sMetaItemDiamondDesc[] = _("");
+
+static const u8 sMetaItemSpinName[] = _("Spin Cushion");
+static const u8 sMetaItemSpinDesc[] = _("");
+
+static const u8 sMetaItemDollName[] = _("Magnemite Doll");
+static const u8 sMetaItemDollDesc[] = _("");
+
+static const u8 sMetaItemBallName[] = _("Poké Ball Cushion");
+static const u8 sMetaItemBallDesc[] = _("");
+
+static const u8 sMetaItemKissName[] = _("Kiss Cushion");
+static const u8 sMetaItemKissDesc[] = _("");
+
+static const u8 sMetaItemRoundName[] = _("Round Cushion");
+static const u8 sMetaItemRoundDesc[] = _("");
+
+static const u8 sMetaItemFireName[] = _("Fire Cushion");
+static const u8 sMetaItemFireDesc[] = _("");
+
+static const u8 sMetaItemPikaName[] = _("Pika Cushion");
+static const u8 sMetaItemPikaDesc[] = _("");
+
+static const u8 sMetaItemDuskullName[] = _("Duskull Doll");
+static const u8 sMetaItemDuskullDesc[] = _("");
+
+static const u8 sMetaItemWaterName[] = _("Water Cushion");
+static const u8 sMetaItemWaterDesc[] = _("");
+
+static const u8 sMetaItemSeedotName[] = _("Seedot Doll");
+static const u8 sMetaItemSeedotDesc[] = _("");
+
+static const u8 sMetaItemCushionName[] = _("");
+static const u8 sMetaItemCushionDesc[] = _("");
+
+
 // TTH Candy
 static const u8 sBarQuantum[] = _("bar");
 static const u8 sBoxQuantum[] = _("box");
@@ -1944,7 +2006,7 @@ static const u8 sChocoWhiteDesc[] = _(
     "Restores HP\n"
     "by 60 points.");
 
-static const u8 sChocoSlabName[] = _("White Chocolate");
+static const u8 sChocoSlabName[] = _("Chocolate Slab");
 static const u8 sChocoSlabDesc[] = _(
     "450 gr. Hold;\n"
     "Intimidates enemy.\n"
@@ -1999,7 +2061,7 @@ static const u8 sKingChocDesc[] = _(
     "Restores HP\n"
     "by 30 points.");
 
-static const u8 sGummyBearName[] = _("Gummy Bears");
+static const u8 sGummyBearName[] = _("Gummyursa");
 static const u8 sGummyBearDesc[] = _(
     "Single serving.\n"
     "Raises a random\n"
@@ -2037,13 +2099,13 @@ static const u8 s100GrandDesc[] = _(
 
 static const u8 sMalteserName[] = _("Malteser");
 static const u8 sMalteserDesc[] = _(
-    ".\n"
+    "37g packet.\n"
     "Heals 10 PP\n"
     "for one move.");
 
 static const u8 sCadburyCremeName[] = _("Cadbury Creme");
 static const u8 sCadburyCremeDesc[] = _(
-    ".\n"
+    "Single egg.\n"
     "Heals all PP\n"
     "for one move.");
 
@@ -2098,7 +2160,7 @@ static const u8 sPixieStickDesc[] = _(
 
 static const u8 sTurkishDelightName[] = _("Turkish Delight");
 static const u8 sTurkishDelightDesc[] = _(
-    ".\n"
+    "Chewy squares.\n"
     "Fully heals all\n"
     "PP for all moves.");
 
@@ -2110,9 +2172,9 @@ static const u8 sGobstopperDesc[] = _(
 
 static const u8 sBlackThunderName[] = _("Black Thunder");
 static const u8 sBlackThunderDesc[] = _(
-    ".\n"
-    "\n"
-    ".");
+    "Choco & rice.\n"
+    "Fully restores\n"
+    "HP and Status.");
 
 static const u8 sTobleroneName[] = _("Toblerone");
 static const u8 sTobleroneDesc[] = _(

@@ -1,0 +1,209 @@
+raw `
+Puzzle_EliteFloor_MapScripts::
+	puzzle_info Puzzle_EliteFloor_Name, CommonAuthor_M4UsedRollout
+	puzzle_adjective Puzzle_EliteFloor_Adjective
+	puzzle_quip Puzzle_EliteFloor_Quip
+	puzzle_candylist Puzzle_EliteFloor_CandyList
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_EliteFloor_OnLoad
+	map_script MAP_SCRIPT_PUZZLE_BLACKOUT_SCRIPT, Puzzle_EliteFloor_OnEscapeOrBlackout
+	map_script MAP_SCRIPT_PUZZLE_ESCAPE_SCRIPT, Puzzle_EliteFloor_OnEscapeOrBlackout
+	.byte 0
+
+Puzzle_EliteFloor_Name:
+	.string "The Elite Floor$"
+Puzzle_EliteFloor_Adjective:
+	.string "visually impared$"
+Puzzle_EliteFloor_Quip:
+	.string "My legs hurt from falling so much…$"
+.align 2
+Puzzle_EliteFloor_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_RARE_01
+@	.2byte FLAG_CANDY_RARE_02    @ Unobtainable
+	.2byte 0
+`
+
+script Puzzle_EliteFloor_OnEscapeOrBlackout {
+	poryswitch(TPP_MODE) {
+		1: clearflag(FLAG_TRICK_HOUSE_SCROLL_READ)
+	}
+}
+
+script Puzzle_EliteFloor_OnLoad {
+	checkplayergender
+	switch(var(VAR_RESULT)) {
+		case GENDER_M: setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_MAY_NORMAL)
+		case GENDER_F: setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_TREEKID_NORMAL)
+		case GENDER_N: setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_BRENDAN_NORMAL)
+	}
+}
+
+// Refrenced from TryStartMiscWalkingScripts
+script Puzzle_EliteFloor_DropDownHole {
+	lock
+	if (flag(FLAG_TRICK_HOUSE_SCROLL_READ)) {
+		setwarp(MAP_PUZZLE_ELITE_FLOOR, 3, 0xFF, 0xFF)
+	} else {
+		setwarp(MAP_PUZZLE_ELITE_FLOOR, 2, 0xFF, 0xFF)
+	}
+	special(DoFallWarp)
+	waitstate
+	release
+}
+
+// ----------------------------------------------------
+
+script Puzzle_EliteFloor_EventScript_Expert {
+	if (var(VAR_FACING) == DIR_NORTH) {
+		lock
+		faceplayer
+		msgbox ("Hello there, young one. Can you tell\n"
+				"me, am I floating on air?\p"
+				"No, in fact, I am standing on an\n"
+				"unseen floor!\p"
+				"The other people in this gym are\n"
+				"also standing on a floor.\p"
+				"Perhaps you can use their locations\n"
+				"to figure out where to go yourself?$")
+		applymovement(THIS_EVENT, Common_Movement_FaceOriginalDirection)
+		waitmovement(THIS_EVENT)
+		release
+	} else {
+		msgbox ("Excellent!\n"
+				"It seems you've figured it out!$", MSGBOX_NPC)
+	}
+}
+
+script Puzzle_EliteFloor_EventScript_Mermaid {
+	trainerbattle_single (TRAINER_01, 
+			"I'm flying! I'm swimming in the air!$",
+			"Wow, way to ruin my dreams, dude.$")
+	msgbox ("Tell them how I am defying gravity!\p"
+			"I'm swimming high, defying gravity,\n"
+			"and soon I'll match them in renown!$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_EliteFloor_EventScript_Ghost {
+	msgbox ("Oooooo! You can't see me!\n"
+			"Just like I can't see the floor!\p"
+			"And just like you can't see how\n"
+			"pants-wettingly scared I am about it.\l"
+			"Oooooooo!$", MSGBOX_NPC)
+}
+
+script Puzzle_EliteFloor_EventScript_HexManiac {
+	trainerbattle_single (TRAINER_02, 
+			"Oh, I've moved!\n"
+			"Has that thrown you off?\p"
+			"What if I show you some actual ghosts?!$",
+			"Apparently you're not thrown off by\n"
+			"anything.$")
+	msgbox ("Halloween is the only time I get to\n"
+			"be creepy and not feel out of place.$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_EliteFloor_EventScript_Friend {
+	lock
+	switch (var(VAR_OBJ_GFX_ID_0)) {
+		case EVENT_OBJ_GFX_BRENDAN_NORMAL:
+			msgbox ("Hey, {PLAYER}. How's it going?\n"
+					"Good? Good.\p"
+					"I'm just taking a break in the middle\n"
+					"of the air, ya know? As you do.\p"
+					"Scared? What? Me? Naaahhh!!\n"
+					"I just… don't want to look down.$")
+		case EVENT_OBJ_GFX_MAY_NORMAL:
+			// May's Acrophobia
+			msgbox ("Aaaaaaahhhhhh! Not a fan of this!\n"
+					"Nope! Nope! Nope! Nope! Nope!\p"
+					"She has her eyes to the ceiling,\n"
+					"trying not to look down so hard that\l"
+					"she doesn't even know you're there.$")
+		case EVENT_OBJ_GFX_TREEKID_NORMAL:
+			// Alex's Aracnophibia
+			msgbox ("Hey, {PLAYER}. How's it going?\p"
+					"This is kinda cool, right? Hanging out\n"
+					"in midair and all?\p"
+					"Scared? No.\p"
+					"U-Unless the reason I can't see the\n"
+					"floor is because its made of spider's\l"
+					"web or something… … …\p"
+					"Okay, yes, now I'm scared. Heh… heh…$")
+	}
+	release
+}
+
+
+script Puzzle_EliteFloor_EventScript_Alien {
+	trainerbattle_single (TRAINER_03, 
+			"MUAHAHAHAHAHAHAHA!$",
+			"HAHAHAHAHAHAHAHAHAHAHAHA\n"
+			"HAVE YOU SEE THIS POST?!$")
+	msgbox ("Sorry, I was too distracted laughing\n"
+			"at this internet meme to pay attention.$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_EliteFloor_EventScript_Carver {
+	trainerbattle_single (TRAINER_05, 
+			"Hey, didn't we see you in another\n"
+			"hidden maze?\p"
+			"What is the Trick Master's obession\n"
+			"with hidden mazes?!$",
+			"Wow, you still won!$")
+	msgbox ("With my Psychic mon and his Fighting\n"
+			"ones, I figured we had it in the bag.\p"
+			"Oh well, as long as I'm fighting\n"
+			"alongside my boyfriend, I'm happy.$", MSGBOX_AUTOCLOSE)
+}
+script Puzzle_EliteFloor_EventScript_Zander {
+	trainerbattle_single (TRAINER_04, 
+			"Fortunately this time, we're together,\n"
+			"so maybe we can kick your butt!$",
+			"No more hidden mazes, please?$")
+	msgbox ("Carver and I swapped {POKEMON}\n"
+			"for the evening, just for fun.\p"
+			"I think of it like how he sometimes\n"
+			"wears my shirts in the morning\l"
+			"(and looks so cute in them too).\p"
+			"But just like my shirts are big on him,\n"
+			"and I can't even fit into his shirts…\p"
+			"I guess we're not that good with\n"
+			"each other's {POKEMON}.$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_EliteFloor_EventScript_PLASMA {
+	trainerbattle_single (TRAINER_06, 
+			"YOU! EVILDOER! IT'S TIME TO\n"
+			"D-D-D-! D-D-D-D-D-D-D-D-D-D-DUEL!!$",
+			"What do you mean, “Wrong franchise?”\n"
+			"WHAT'S THAT SUPPOSED TO MEAN?!$")
+	msgbox ("Next time, I'll bring my card game!\n"
+			"THEN YOU'LL BE SORRY!!$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_EliteFloor_EventScript_M4 {
+	lock
+	if (flag(FLAG_TRICK_HOUSE_SCROLL_READ)) {
+		playmoncry(SPECIES_AZUMARILL, 3)
+		msgbox ("Azumarill now seems to be full-on\n"
+				"laughing at your pain now…$")
+	} else {
+		playmoncry(SPECIES_AZUMARILL, 7)
+		msgbox ("This Azumarill seems to be quietly\n"
+				"cackling about something…$")
+	}
+	release
+}
+
+
+script Puzzle_EliteFloor_UnobtainableItemBall {
+	msgbox ("I don't know how you got here, but\n"
+			"good job.$")
+	giveitem_std (ITEM_RARE_CANDY, 2, 1)
+}

@@ -150,6 +150,7 @@ struct Time
     /*0x02*/ s8 hours;
     /*0x03*/ s8 minutes;
     /*0x04*/ s8 seconds;
+    /*0x05*/ s8 dayOfWeek;
 };
 
 #define DEX_FLAGS_NO ((POKEMON_SLOTS_NUMBER / 8) + ((POKEMON_SLOTS_NUMBER % 8) ? 1 : 0))
@@ -385,7 +386,7 @@ struct BattleFrontier
     /*0xE6E*/ u16 field_E6E;
     /*0xE70*/ struct RentalMon rentalMons[6];
     /*0xEB8*/ u16 battlePoints;
-    /*0xEBA*/ u16 field_EBA;
+    /*0xEBA*/ u16 cardBattlePoints;
     /*0xEBC*/ u32 battlesCount;
     /*0xEC0*/ u16 field_EC0[16];
     /*0xEE0*/ u8 field_EE0;
@@ -460,7 +461,8 @@ struct SaveBlock2
     /*0x92*/ u8 filler_90[0x6];
     /*0x98*/ struct Time localTimeOffset;
     /*0xA0*/ struct Time lastBerryTreeUpdate;
-    /*0xA8*/ u32 field_A8; // Written to, but never read.
+    /*0xA8*/ s16 sunOffset;
+    // /*0xA8*/ u32 field_A8; // Written to, but never read.
     /*0xAC*/ u32 encryptionKey;
     /*0xB0*/ struct PlayersApprentice playerApprentice;
     /*0xDC*/ struct Apprentice apprentices[4]; // From record mixing.

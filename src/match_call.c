@@ -1085,7 +1085,7 @@ bool32 TryStartMatchCall(void)
     return FALSE;
 }
 
-void StartMatchCallFromScript(u8 *message)
+void StartMatchCallFromScript(const u8 *message)
 {
     gMatchCallState.triggeredFromScript = 1;
     StartMatchCall();
@@ -1274,10 +1274,10 @@ static bool32 sub_81963F0(u8 taskId)
         ChangeBgY(0, 0, 0);
         if (!gMatchCallState.triggeredFromScript)
         {
-            sub_81973A4();
+            LoadMessageBoxAndBorderGfx();
             playerObjectId = GetEventObjectIdByLocalIdAndMap(EVENT_OBJ_ID_PLAYER, 0, 0);
             EventObjectClearHeldMovementIfFinished(&gEventObjects[playerObjectId]);
-            sub_80D338C();
+            ScriptMovement_UnfreezeObjectEvents();
             UnfreezeEventObjects();
             ScriptContext2_Disable();
         }

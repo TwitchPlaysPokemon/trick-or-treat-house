@@ -24,6 +24,7 @@
 #include "constants/field_tasks.h"
 #include "constants/battle.h"
 #include "constants/metatile_labels.h"
+#include "constants/day_night.h"
 	.include "asm/macros.inc"
 	.include "asm/macros/event.inc"
 	.include "asm/macros/puzzle.inc"
@@ -62,6 +63,8 @@ gSpecialVars:: @ 81DBA0C
 	.4byte gSpecialVar_MetatileX
 	.4byte gSpecialVar_MetatileY
 	.4byte gSpecialVar_LastWarpId
+	.4byte gSpecialVar_SysForceStep
+	.4byte gSpecialVar_BattleMod
 
 	.include "data/specials.inc"
 
@@ -90,6 +93,8 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/TrickHouseEntrance/scripts.inc"
 	.include "data/maps/TrickHouseEnd/scripts.inc"
 	.include "data/maps/TrickHouseCorridor/scripts.inc"
+	.include "data/maps/TrickHouseTreeHouse/scripts.inc"
+	.include "data/maps/TrickHouseRestroom/scripts.inc"
 	
 	@ -------------------------------------------------
 	
@@ -115,6 +120,7 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/Puzzle_WaterTemple/scripts.inc"
 	.include "data/maps/WaterTemple_Lv1/scripts.inc"
 	.include "data/maps/WaterTemple_Lv2/scripts.inc"
+	.include "data/maps/WaterTemple_Secret/scripts.inc"
 	
 	.include "data/maps/Puzzle_LostWoods1_Entrance/scripts.inc"
 	.include "data/maps/LostWoods1_Exit/scripts.inc"
@@ -184,17 +190,86 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/Puzzle_TrainerHill3/scripts.inc"
 	.include "data/maps/Puzzle_TrainerHill4/scripts.inc"
 	
+	.include "data/maps/Puzzle_DiveMaze/scripts.inc"
+	.include "data/maps/DiveMaze_Underwater/scripts.inc"
+	
+	.include "data/maps/Puzzle_SuspendedMaze/scripts.inc"
+	.include "data/maps/SuspendedMaze_B1/scripts.inc"
+
+	.include "data/maps/Puzzle_IcePath/scripts.inc"
+
+	.include "data/maps/Puzzle_TicRacToe/scripts.inc"
+	
+	.include "data/maps/Puzzle_StealthMission/scripts.inc"
+
+	.include "data/maps/Puzzle_MurderExpress/scripts.inc"
+	
+	.include "data/maps/LostWoods4_Room0/scripts.inc"
+	.include "data/maps/LostWoods4_RoomA1/scripts.inc"
+	.include "data/maps/LostWoods4_RoomA2/scripts.inc"
+	.include "data/maps/LostWoods4_RoomA3/scripts.inc"
+	.include "data/maps/LostWoods4_RoomA4/scripts.inc"
+	.include "data/maps/LostWoods4_RoomA5/scripts.inc"
+	.include "data/maps/LostWoods4_RoomA6/scripts.inc"
+	.include "data/maps/LostWoods4_RoomB1/scripts.inc"
+	.include "data/maps/LostWoods4_RoomB2/scripts.inc"
+	.include "data/maps/LostWoods4_RoomB3/scripts.inc"
+	.include "data/maps/LostWoods4_RoomB4/scripts.inc"
+	.include "data/maps/LostWoods4_RoomB5/scripts.inc"
+	.include "data/maps/LostWoods4_RoomB6/scripts.inc"
+	.include "data/maps/LostWoods4_RoomB7/scripts.inc"
+	.include "data/maps/LostWoods4_RoomB8/scripts.inc"
+	.include "data/maps/LostWoods4_RoomB9/scripts.inc"
+	.include "data/maps/LostWoods4_RoomC1/scripts.inc"
+	.include "data/maps/LostWoods4_RoomC2/scripts.inc"
+	.include "data/maps/LostWoods4_RoomC3/scripts.inc"
+	.include "data/maps/LostWoods4_RoomC4/scripts.inc"
+	.include "data/maps/LostWoods4_RoomC5/scripts.inc"
+	.include "data/maps/LostWoods4_RoomC6/scripts.inc"
+	.include "data/maps/LostWoods4_RoomD1/scripts.inc"
+	.include "data/maps/LostWoods4_RoomD2/scripts.inc"
+	.include "data/maps/LostWoods4_RoomD3/scripts.inc"
+	.include "data/maps/LostWoods4_RoomD4/scripts.inc"
+	.include "data/maps/LostWoods4_RoomD5/scripts.inc"
+	
+	.include "data/maps/Puzzle_EliteFloor/scripts.inc"
+	
+	.include "data/maps/Puzzle_SafariImposters/scripts.inc"
+	.include "data/maps/Puzzle_SafariImposters/text.inc"
+	.include "data/maps/SafariZone_Northeast/scripts.inc"
+	.include "data/maps/SafariZone_North/scripts.inc"
+	.include "data/maps/SafariZone_Northwest/scripts.inc"
+	.include "data/maps/SafariZone_Southeast/scripts.inc"
+	.include "data/maps/SafariZone_South/scripts.inc"
+	.include "data/maps/SafariZone_Southwest/scripts.inc"
+	.include "data/maps/SafariZone_RestHouse/scripts.inc"
+	
+	.include "data/maps/Puzzle_ImposterReflection/scripts.inc"
+	
+	.include "data/maps/Puzzle_SootopolisGym/scripts.inc"
+	.include "data/maps/SootopolisGym_B1F/scripts.inc"
+	
+	@ -------------------------------------------------
+
+	.include "data/maps/Puzzle_MetaPuzzleCave/scripts.inc"
+	.include "data/maps/MetaPuzzle_EmptyPuzzle/scripts.inc"
+	.include "data/maps/MetaPuzzle_StrengthRoom/scripts.inc"
+	
 	@ -------------------------------------------------
 	
 	.include "data/maps/TrickTreat_PetalburgCity/scripts.inc"
 	
 	.include "data/maps/TrickTreat_MossdeepCity/scripts.inc"
 	
+	.include "data/maps/TrickTreat_FortreeCity/scripts.inc"
+
+	.include "data/maps/TrickTreat_AltoMare1/scripts.inc"
+	.include "data/maps/TrickTreat_AltoMare2/scripts.inc"
+	
 	.include "data/maps/TrickTreat_SlateportCity1/scripts.inc"
 	.include "data/maps/TrickTreat_SlateportCity2/scripts.inc"
 
-	.include "data/maps/TrickTreat_FortreeCity/scripts.inc"
-
+	.include "data/maps/TrickTreat_GoldenrodCity/scripts.inc"
 	
 	@ -------------------------------------------------
 	
@@ -206,6 +281,8 @@ gStdScripts_End:: @ 81DC2CC
 	.include "data/maps/TestMirrorMovement/scripts.inc"
 	.include "data/maps/TestCopyMovement/scripts.inc"
 	.include "data/maps/IndoorMap/scripts.inc"
+	.include "data/maps/TestMusicRoom/scripts.inc"
+	.include "data/maps/TestAcroBikeMap/scripts.inc"
 	
 	.include "data/maps/FakeSecretBaseCave/scripts.inc"
 	
@@ -6346,26 +6423,4 @@ EventScript_PlayerPCFemale::
 	.include "data/text/birch_speech.inc"
 
 
-	.include "data/maps/TrickHouseTreeHouse/scripts.inc"
-
-	.include "data/maps/TrickHouseRestroom/scripts.inc"
-
-	.include "data/maps/Puzzle_SuspendedMaze/scripts.inc"
-
-	.include "data/maps/SuspendedMaze_B1/scripts.inc"
-
-	.include "data/maps/Puzzle_IcePath/scripts.inc"
-
-	.include "data/maps/TestMusicRoom/scripts.inc"
-
-	.include "data/maps/Puzzle_TicRacToe/scripts.inc"
-
-	.include "data/maps/TrickTreat_AltoMare1/scripts.inc"
-
-	.include "data/maps/TrickTreat_AltoMare2/scripts.inc"
-
-	.include "data/maps/TrickTreat_GoldenrodCity/scripts.inc"
-
-	.include "data/maps/Puzzle_StealthMission/scripts.inc"
-
-	.include "data/maps/Puzzle_MurderExpress/scripts.inc"
+	.include "data/maps/TrickHouseExt_Gatehouse/scripts.inc"

@@ -6,6 +6,7 @@ Puzzle_WaterTemple_MapScripts::
 	puzzle_metavars Puzzle_WaterTemple_Variables
 	puzzle_candylist Puzzle_WaterTemple_CandyList
 	puzzle_devcommentary Puzzle_WaterTemple_DevCommentary
+	puzzle_friendcommentary Puzzle_WaterTemple_FriendCommentary
 	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_WaterTemple_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_WaterTemple_OnResume
 	.byte 0
@@ -19,6 +20,12 @@ Puzzle_WaterTemple_Quip:
 	.string "water puzzle a little bit longer.\p"
 	.string "It makes for a much more interesting\n"
 	.string "swim than just a plain-old swimming pool.$"
+Puzzle_WaterTemple_FriendCommentary:
+	.string "{LINK}: Anything I said to you in\n"
+	.string "there stays between us, alright?\l"
+	.string "No one else needs to know!\p"
+	.string "I'm gonna go catch some bugs.\n"
+	.string "On the LAND. To calm down.$"
 Puzzle_WaterTemple_DevCommentary:
 	.string "Tustin2121: This puzzle was inspired by\n"
 	.string "Zelda water temple puzzles.\p"
@@ -29,7 +36,8 @@ Puzzle_WaterTemple_DevCommentary:
 	.string "exit and reenter the map.$"
 .align 2
 Puzzle_WaterTemple_Variables:
-	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_MERMAID_WALKING
+	.2byte VAR_QUIP_PERSON,    EVENT_OBJ_GFX_MERMAID_WALKING
+	.2byte VAR_ENDROOM_FRIEND, TTH_FRIEND_JAMES
 	.2byte 0
 Puzzle_WaterTemple_CandyList:
 	.2byte FLAG_PUZZLE_ITEM_3  @ ABUNDANT
@@ -508,6 +516,44 @@ script Puzzle_WaterTemple_ItemBall3 {
 script Puzzle_WaterTemple_ItemBall4 {
 	setflag (FLAG_PUZZLE_ITEM_4)
 	goto (Common_EventScript_CandyUncommon)
+}
+
+# -----------------------------------------------------
+
+script Puzzle_WaterTemple_James {
+	lock
+	faceplayer
+	if (!flag(FLAG_PUZZLE_20)) {
+		msgbox ("{LINK}: Ah! {PLAYER}! Good! You're here!\n"
+				"That means you can do the puzzle!\p"
+				"It's not hard! The scroll is right there!\n"
+				"Right across that gap! You could just\l"
+				"swim right over to it!\p"
+				"What?! Me?! SWIM?! NO!!\n"
+				"Are you INSANE?!\p"
+				"Don't you see how deep this water is?!\p"
+				"Don't you know what's in water\n"
+				"THIS FREAKING DEEP?!\p"
+				"SHARKS! ALRIGHT?! SHARKS!!!\p"
+				"There is NO WAY I'm going into THIS\n"
+				"FREAKING DEATH TRAP of a puzzle!!\p"
+				"I'll just be here. SAFE! On DRY LAND.\n"
+				"You do the puzzle.$")
+		setflag(FLAG_PUZZLE_20)
+	} elif (flag(FLAG_TRICK_HOUSE_SCROLL_READ)) {
+		msgbox ("{LINK}: Hurry up and put the code on\n"
+				"the door please, before I have a\l"
+				"full-on panic attack. Please?$")
+	} elif (var(VAR_WATER_LEVEL) == 0) {
+		msgbox ("{LINK}: … … … … …\n"
+				"Sharks. I'm not moving from this spot.$")
+	} else {
+		msgbox ("{LINK}: Nope! The water level could\n"
+				"suddenly raise back up on me!\p"
+				"And then suddenly, I'm swimming with\n"
+				"SHARKS, {PLAYER}! SHARKS!$")
+	}
+	release
 }
 
 # -----------------------------------------------------

@@ -25,7 +25,10 @@ script TrickHouseEnd_OnTransition {
 	setvar(VAR_PUZZLE_STATE, 2)
 	// Disable end person movement when in TPP build
 	poryswitch(TPP_MODE) {
-		1: setobjectmovementtype (2, MOVEMENT_TYPE_LOOK_AROUND)
+		1 {
+			setobjectmovementtype (2, MOVEMENT_TYPE_LOOK_AROUND)
+			setobjectmovementtype (5, MOVEMENT_TYPE_LOOK_AROUND)
+		}
 	}
 	
 	# Because some event objects cause freezing when wandering around
@@ -42,7 +45,7 @@ script TrickHouseEnd_OnTransition {
 	}
 }
 
-# -----------------------------------------------------
+// ----------------------------------------------------
 
 script TrickHouseEnd_EventScript_TrickMasterOutro {
 	lockall
@@ -56,7 +59,7 @@ script TrickHouseEnd_EventScript_TrickMasterOutro {
 	releaseall
 }
 
-# -----------------------------------------------------
+// ----------------------------------------------------
 
 script TrickHouseEnd_EventScript_FinalPuzzlePerson {
 	lock
@@ -67,7 +70,7 @@ script TrickHouseEnd_EventScript_FinalPuzzlePerson {
 	release
 }
 
-# -----------------------------------------------------
+// ----------------------------------------------------
 
 script TrickHouseEnd_EventScript_DevStandIn {
 	lock
@@ -78,7 +81,18 @@ script TrickHouseEnd_EventScript_DevStandIn {
 	release
 }
 
-# -----------------------------------------------------
+// ----------------------------------------------------
+
+script TrickHouseEnd_EventScript_EndroomFriend {
+	lock
+	faceplayer
+	callnative(ShowPuzzleFriendCommentary)
+	waitmessage
+	waitbuttonpress
+	release
+}
+
+// ----------------------------------------------------
 
 script TrickHouseEnd_EventScript_Nurse {
 	lock
@@ -131,6 +145,7 @@ script TrickHouseEnd_EventScript_FinalizePuzzle {
 				"I'll transfer them to your PC.$")
 		callnative (RemoveExtraPokemon)
 	}
+	clearflag(FLAG_PUZZLE_PARTY_LOCK)
 	msgbox ("Good luck on the next puzzle!$")
 	closemessage
 	setvar(VAR_TEMP_2, 1)

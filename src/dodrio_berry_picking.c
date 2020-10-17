@@ -833,7 +833,7 @@ static void sub_8025158(void)
 static bool32 sub_8025170(void)
 {
     u8 r4 = GetBlockReceivedStatus();
-    u8 r0 = sub_800A9D8();
+    u8 r0 = GetLinkPlayerCountAsBitFlags();
     if (r4 == r0)
     {
         ResetBlockReceivedFlags();

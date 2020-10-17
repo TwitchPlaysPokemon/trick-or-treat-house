@@ -1,4 +1,6 @@
-EventScript_2A4B4C:: @ 82A4B4C
+#define VAR_SAFARI_ZONE_STATE   VAR_PUZZLE_03
+
+SafariZone_EventScript_OutOfBallsMidBattle:: @ 82A4B4C
 	setvar VAR_SAFARI_ZONE_STATE, 1
 	special ExitSafariMode
 	@ setwarp MAP_ROUTE121_SAFARI_ZONE_ENTRANCE, 255, 2, 5
@@ -31,7 +33,7 @@ EventScript_2A4B8A:: @ 82A4B8A
 	releaseall
 	goto EventScript_2A4B5D
 
-EventScript_2A4B9B:: @ 82A4B9B
+SafariZone_EventScript_OutOfBalls:: @ 82A4B9B
 	lockall
 	playse SE_PINPON
 	message Text_2A4C56
@@ -97,7 +99,7 @@ Text_2A4CEB: @ 82A4CEB
 	.string "The {STR_VAR_1} was placed\n"
 	.string "on the {POKEBLOCK} FEEDER.$"
 
-Route121_SafariZoneEntrance_Text_2A4D12: @ 82A4D12
+Puzzle_SafariImposters_Text_2A4D12: @ 82A4D12
 	.string "Welcome to the SAFARI ZONE!\p"
 	.string "Here, you may witness many kinds of\n"
 	.string "POKéMON rarely seen in HOENN.\p"
@@ -109,14 +111,14 @@ Route121_SafariZoneEntrance_Text_2A4D12: @ 82A4D12
 	.string "for keeps!\p"
 	.string "Come in and enjoy the SAFARI ZONE!$"
 
-Route121_SafariZoneEntrance_Text_2A4E46: @ 82A4E46
+Puzzle_SafariImposters_Text_2A4E46: @ 82A4E46
 	.string "Welcome to the SAFARI ZONE!\n"
 	.string "Is it your first time here?$"
 
-Route121_SafariZoneEntrance_Text_2A4E7E: @ 82A4E7E
+Puzzle_SafariImposters_Text_2A4E7E: @ 82A4E7E
 	.string "Come in and enjoy the SAFARI ZONE!$"
 
-Route121_SafariZoneEntrance_Text_2A4EA1: @ 82A4EA1
+Puzzle_SafariImposters_Text_2A4EA1: @ 82A4EA1
 	.string "When you enter the SAFARI ZONE, you\n"
 	.string "start with 30 SAFARI BALLS for\l"
 	.string "catching POKéMON.\p"
@@ -125,39 +127,39 @@ Route121_SafariZoneEntrance_Text_2A4EA1: @ 82A4EA1
 	.string "walked 500 steps.\p"
 	.string "Come in and enjoy the SAFARI ZONE!$"
 
-Route121_SafariZoneEntrance_Text_2A4F74: @ 82A4F74
+Puzzle_SafariImposters_Text_2A4F74: @ 82A4F74
 	.string "Welcome to the SAFARI ZONE!\p"
 	.string "All you can catch for just ¥500!\n"
 	.string "Would you like to play a SAFARI Game?$"
 
-Route121_SafariZoneEntrance_Text_2A4FD7: @ 82A4FD7
+Puzzle_SafariImposters_Text_2A4FD7: @ 82A4FD7
 	.string "Okay.\n"
 	.string "Please play another time!$"
 
-Route121_SafariZoneEntrance_Text_2A4FF7: @ 82A4FF7
+Puzzle_SafariImposters_Text_2A4FF7: @ 82A4FF7
 	.string "You don't have enough money.\n"
 	.string "Sorry.$"
 
-Route121_SafariZoneEntrance_Text_2A501B: @ 82A501B
+Puzzle_SafariImposters_Text_2A501B: @ 82A501B
 	.string "That will be ¥500, please.$"
 
-Route121_SafariZoneEntrance_Text_2A5036: @ 82A5036
+Puzzle_SafariImposters_Text_2A5036: @ 82A5036
 	.string "Here are your SAFARI BALLS.$"
 
-Route121_SafariZoneEntrance_Text_2A5052: @ 82A5052
+Puzzle_SafariImposters_Text_2A5052: @ 82A5052
 	.string "{PLAYER} received 30 SAFARI BALLS.$"
 
-Route121_SafariZoneEntrance_Text_2A506F: @ 82A506F
+Puzzle_SafariImposters_Text_2A506F: @ 82A506F
 	.string "We'll let you know when your game\n"
 	.string "is over.\p"
 	.string "So, until then, enjoy yourself, please!\n"
 	.string "Off you go on your wild excursion!$"
 
-Route121_SafariZoneEntrance_Text_2A50E5: @ 82A50E5
+Puzzle_SafariImposters_Text_2A50E5: @ 82A50E5
 	.string "Excuse me!\n"
 	.string "Your PC BOX is full.$"
 
-Route121_SafariZoneEntrance_Text_2A5105: @ 82A5105
+Puzzle_SafariImposters_Text_2A5105: @ 82A5105
 	.string "Excuse me!\n"
 	.string "You seem to be without a {POKEBLOCK} CASE.\p"
 	.string "Your SAFARI Game will be much more\n"
@@ -224,7 +226,7 @@ SafariZone_South_Text_2A553E: @ 82A553E
 	.string "I guess POKéMON must have eaten it\n"
 	.string "without me noticing.$"
 
-Route121_SafariZoneEntrance_Text_2A55BB: @ 82A55BB
+Puzzle_SafariImposters_Text_2A55BB: @ 82A55BB
 	.string "SAFARI ZONE TRAINER TIP!\p"
 	.string "Throw {POKEBLOCK}S at wild POKéMON to make\n"
 	.string "them less likely to flee.$"

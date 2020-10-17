@@ -1,0 +1,53 @@
+{
+    "allow_bike": false,
+    "allow_cycling": "",
+    "allow_escape_rope": false,
+    "allow_escaping": "",
+    "allow_running": false,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_SAFARI_ZONE_REST_HOUSE",
+    "layout": "LAYOUT_SAFARI_ZONE_REST_HOUSE",
+    "map_type": "MAP_TYPE_INDOOR",
+    "music": "MUS_SAFARI",
+    "name": "SafariZone_RestHouse",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_2A",
+            "graphics_id": "TTH_FRIEND_BRENDAN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "SafariZone_EventScript_BrendanInResthouse",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 5,
+            "y": 5
+        }
+    ],
+    "region_map_section": "MAPSEC_SAFARI_ZONE",
+    "requires_flash": false,
+    "show_map_name": false,
+    "warp_events": [
+        {
+            "dest_map": "MAP_SAFARI_ZONE_SOUTHWEST",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 3,
+            "y": 8
+        },
+        {
+            "dest_map": "MAP_SAFARI_ZONE_SOUTHWEST",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 4,
+            "y": 8
+        }
+    ],
+    "weather": "WEATHER_NONE"
+}

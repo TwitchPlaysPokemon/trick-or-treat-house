@@ -107,6 +107,7 @@ const struct MonCoords gTrainerFrontPicCoords[] =
     [TRAINER_PIC_TWINS_PM] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_ALIEN] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_PIKAKID] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_DEV_TUSTIN2121] = {.size = 8, .y_offset = 1},
 };
 
 const struct CompressedSpriteSheet gTrainerFrontPicTable[] =
@@ -184,7 +185,7 @@ const struct CompressedSpriteSheet gTrainerFrontPicTable[] =
     TRAINER_SPRITE(WALLY, gTrainerFrontPic_Wally, 0x800),
     TRAINER_SPRITE(BRENDAN, gTrainerFrontPic_Brendan, 0x800),
     TRAINER_SPRITE(MAY, gTrainerFrontPic_May, 0x800),
-    TRAINER_SPRITE(TREEKID, gTrainerFrontPic_Brendan, 0x800),
+    TRAINER_SPRITE(TREEKID, gTrainerFrontPic_Treekid, 0x800),
     TRAINER_SPRITE(BUG_CATCHER, gTrainerFrontPic_BugCatcher, 0x800),
     TRAINER_SPRITE(POKEMON_RANGER_M, gTrainerFrontPic_PokemonRangerM, 0x800),
     TRAINER_SPRITE(POKEMON_RANGER_F, gTrainerFrontPic_PokemonRangerF, 0x800),
@@ -218,6 +219,7 @@ const struct CompressedSpriteSheet gTrainerFrontPicTable[] =
     TRAINER_SPRITE(TWINS_PM, gTrainerFrontPic_TwinsPM, 0x800),
     TRAINER_SPRITE(ALIEN, gTrainerFrontPic_Alien, 0x800),
     TRAINER_SPRITE(PIKAKID, gTrainerFrontPic_Pikakid, 0x800),
+    TRAINER_SPRITE(DEV_TUSTIN2121, gTrainerFrontPic_DevTustin2121, 0x800),
 };
 
 const struct CompressedSpritePalette gTrainerFrontPicPaletteTable[] =
@@ -329,4 +331,5 @@ const struct CompressedSpritePalette gTrainerFrontPicPaletteTable[] =
     TRAINER_PAL(TWINS_PM, gTrainerPalette_TwinsPM),
     TRAINER_PAL(ALIEN, gTrainerPalette_Alien),
     TRAINER_PAL(PIKAKID, gTrainerPalette_Pikakid),
+    TRAINER_PAL(DEV_TUSTIN2121, gTrainerPalette_DevTustin2121),
 };

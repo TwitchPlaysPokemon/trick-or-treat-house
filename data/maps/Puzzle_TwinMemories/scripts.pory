@@ -29,7 +29,7 @@ Puzzle_TwinMemories_DevCommentary:
 	.string "different configurations for the boulders.$"
 .align 2
 @ Puzzle_TwinMemories_Variables:
-@ 	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER
+@ 	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_HIKER
 @ 	.2byte 0
 Puzzle_TwinMemories_PrereqItems:
 	.2byte ITEM_STRENGTH_ITEM

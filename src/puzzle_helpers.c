@@ -6,6 +6,7 @@
 #include "puzzle_helpers.h"
 #include "sound.h"
 #include "field_camera.h"
+#include "field_message_box.h"
 #include "field_player_avatar.h"
 #include "fieldmap.h"
 #include "palette.h"
@@ -16,6 +17,7 @@
 #include "task.h"
 #include "trickhouse.h"
 #include "script.h"
+#include "pokeblock.h"
 #include "pokemon_storage_system.h"
 #include "event_object_movement.h"
 #include "overworld.h"
@@ -67,6 +69,16 @@ void SetSelectVariables(struct ScriptContext *ctx)
 		gSpecialVar_0x800B = (Random() % max);
 	}
 	gSpecialVar_0x800A = GetGameStat(GAME_STAT_SELECT_PRESSES);
+}
+
+
+u16 GetPlayerState(void)
+{
+    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_ACRO_BIKE)) return 1;
+    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE)) return 2;
+    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING)) return 3;
+    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_UNDERWATER)) return 4;
+    return 0;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1055,3 +1067,325 @@ void SetupIcePathLayout(struct ScriptContext *ctx) {
 
 #undef VAR_CONFIG
 #undef VAR_STORED_RANDOM
+
+///////////////////////////////////////////////////////////////////////////////
+// Puzzle: A Safari Among Friends
+// MAP_PUZZLE_SAFARI_IMPOSTERS
+#define VAR_CONFIG_IMPOSTER  VAR_PUZZLE_01
+#define VAR_IMPOSTER_SELECT  VAR_PUZZLE_02
+#define LID_JOEY             8
+#define LID_JAMES            9
+#define LID_IRENE            10
+#define LID_WALLY            11
+#define LID_BRENDAN          12
+#define LID_MAY              13
+#define LID_ALEX             14
+#define LID_FRIEND_A         VAR_PUZZLE_1A
+#define LID_FRIEND_B         VAR_PUZZLE_1B
+#define LID_CUTSCENE_PLAYER  VAR_PUZZLE_1C
+// For the reveal scene
+#define LID_SELECTED         VAR_PUZZLE_10
+#define LID_FRIEND_1         VAR_PUZZLE_11
+#define LID_FRIEND_2         VAR_PUZZLE_12
+#define LID_FRIEND_3         VAR_PUZZLE_13
+#define LID_FRIEND_4         VAR_PUZZLE_14
+#define LID_FRIEND_5         VAR_PUZZLE_15
+//
+#define VAR_JOEY_STATE         VAR_PUZZLE_10
+#define VAR_JAMES_STATE        VAR_PUZZLE_11
+#define VAR_IRENE_STATE        VAR_PUZZLE_12
+#define VAR_WALLY_STATE        VAR_PUZZLE_13
+#define VAR_BRENDAN_STATE      VAR_PUZZLE_14
+#define VAR_MAY_STATE          VAR_PUZZLE_15
+#define VAR_ALEX_STATE         VAR_PUZZLE_16
+// compare against VAR_CONFIG_IMPOSTER:
+#define IMP_JOEY    0
+#define IMP_JAMES   1
+#define IMP_IRENE   2
+#define IMP_WALLY   3
+#define IMP_BRENDAN 4
+#define IMP_MAY     5
+#define IMP_ALEX    6
+
+extern const u8 gExpandedPlaceholder_Youngster[];
+extern const u8 gExpandedPlaceholder_Link[];
+extern const u8 gExpandedPlaceholder_FairyGirl[];
+extern const u8 gExpandedPlaceholder_Wally[];
+extern const u8 gExpandedPlaceholder_Brendan[];
+extern const u8 gExpandedPlaceholder_May[];
+extern const u8 gExpandedPlaceholder_Alex[];
+
+extern const u8 Puzzle_SafariImposters_ImposterReveal_Text_he[];
+extern const u8 Puzzle_SafariImposters_ImposterReveal_Text_she[];
+extern const u8 Puzzle_SafariImposters_ImposterReveal_Text_they[];
+
+// Because this is just easier to do in native than in script
+
+void Imposter_RandomizeFriendLayout(struct ScriptContext *ctx) {
+	u8 friendLayout[] = { IMP_JOEY, IMP_JAMES, IMP_IRENE, IMP_WALLY, IMP_BRENDAN, IMP_MAY };
+	u8 i, a, b, x;
+	u16 var;
+	
+	if (gSaveBlock2Ptr->playerGender == GENDER_M) {
+		friendLayout[IMP_BRENDAN] = IMP_ALEX;
+	} else if (gSaveBlock2Ptr->playerGender == GENDER_F) {
+		friendLayout[IMP_MAY] = IMP_ALEX;
+	}
+	
+	// Randomize the layout
+	for (i = 0; i < 16; i++) {
+		a = Random() % 6;
+		b = Random() % 6;
+		x = friendLayout[a];
+		friendLayout[a] = friendLayout[b];
+		friendLayout[b] = x;
+	}
+	// The selected goes in slot 6
+	a = 5;
+	for (b = 0; b < 6; b++) {
+		if (friendLayout[b] == VarGet(VAR_IMPOSTER_SELECT)) break;
+	}
+	x = friendLayout[a];
+	friendLayout[a] = friendLayout[b];
+	friendLayout[b] = x;
+	
+	// The imposter goes in slot 2
+	a = 1;
+	for (b = 0; b < 6; b++) {
+		if (friendLayout[b] == VarGet(VAR_CONFIG_IMPOSTER)) break;
+	}
+	x = friendLayout[a];
+	friendLayout[a] = friendLayout[b];
+	friendLayout[b] = x;
+	
+	// Now load in the LIDs into the variables
+	x = 0;
+	for (i = 0; i < 6; i++) {
+		if (friendLayout[i] == VarGet(VAR_IMPOSTER_SELECT)) {
+			var = LID_SELECTED;
+		} else {
+			var = LID_FRIEND_1 + x;
+			x++;
+		}
+		switch(friendLayout[i]) {
+			case IMP_JOEY:    VarSet(var, LID_JOEY); break;
+			case IMP_JAMES:   VarSet(var, LID_JAMES); break;
+			case IMP_IRENE:   VarSet(var, LID_IRENE); break;
+			case IMP_WALLY:   VarSet(var, LID_WALLY); break;
+			case IMP_BRENDAN: VarSet(var, LID_BRENDAN); break;
+			case IMP_MAY:     VarSet(var, LID_MAY); break;
+			case IMP_ALEX:    VarSet(var, LID_ALEX); break;
+		}
+	}
+	
+}
+
+void Imposter_LoadRevealStrings(struct ScriptContext *ctx) {
+	switch(VarGet(VAR_IMPOSTER_SELECT)) {
+		case IMP_JOEY:    StringCopy(gStringVar1, gExpandedPlaceholder_Youngster); break;
+		case IMP_JAMES:   StringCopy(gStringVar1, gExpandedPlaceholder_Link); break;
+		case IMP_IRENE:   StringCopy(gStringVar1, gExpandedPlaceholder_FairyGirl); break;
+		case IMP_WALLY:   StringCopy(gStringVar1, gExpandedPlaceholder_Wally); break;
+		case IMP_BRENDAN: StringCopy(gStringVar1, gExpandedPlaceholder_Brendan); break;
+		case IMP_MAY:     StringCopy(gStringVar1, gExpandedPlaceholder_May); break;
+		case IMP_ALEX:    StringCopy(gStringVar1, gExpandedPlaceholder_Alex); break;
+	}
+	switch(VarGet(VAR_CONFIG_IMPOSTER)) {
+		case IMP_JOEY:
+			StringCopy(gStringVar3, gExpandedPlaceholder_Youngster);
+			VarSet(VAR_OBJ_GFX_ID_0, TTH_FRIEND_JOEY);
+			break;
+		case IMP_JAMES:
+			StringCopy(gStringVar3, gExpandedPlaceholder_Link);
+			VarSet(VAR_OBJ_GFX_ID_0, TTH_FRIEND_JAMES);
+			break;
+		case IMP_IRENE:
+			StringCopy(gStringVar3, gExpandedPlaceholder_FairyGirl);
+			VarSet(VAR_OBJ_GFX_ID_0, TTH_FRIEND_IRENE);
+			break;
+		case IMP_WALLY:
+			StringCopy(gStringVar3, gExpandedPlaceholder_Wally);
+			VarSet(VAR_OBJ_GFX_ID_0, TTH_FRIEND_WALLY);
+			break;
+		case IMP_BRENDAN:
+			StringCopy(gStringVar3, gExpandedPlaceholder_Brendan);
+			VarSet(VAR_OBJ_GFX_ID_0, TTH_FRIEND_BRENDAN);
+			break;
+		case IMP_MAY:
+			StringCopy(gStringVar3, gExpandedPlaceholder_May);
+			VarSet(VAR_OBJ_GFX_ID_0, TTH_FRIEND_MAY);
+			break;
+		case IMP_ALEX:
+			StringCopy(gStringVar3, gExpandedPlaceholder_Alex);
+			VarSet(VAR_OBJ_GFX_ID_0, TTH_FRIEND_ALEX);
+			break;
+	}
+	switch(VarGet(VAR_IMPOSTER_SELECT)) {
+		case IMP_IRENE:
+		case IMP_MAY:
+			StringCopy(gStringVar2, Puzzle_SafariImposters_ImposterReveal_Text_she);
+			break;
+		case IMP_ALEX:
+			StringCopy(gStringVar2, Puzzle_SafariImposters_ImposterReveal_Text_they);
+			break;
+		default:
+			StringCopy(gStringVar2, Puzzle_SafariImposters_ImposterReveal_Text_he);
+			break;
+	}
+}
+
+static const u16 Imposter_ShowTalkingPoints_RNGVars[] = {
+	VAR_JOEY_STATE,
+	VAR_JAMES_STATE,
+	VAR_IRENE_STATE,
+	VAR_WALLY_STATE,
+	VAR_BRENDAN_STATE,
+	VAR_MAY_STATE,
+	VAR_ALEX_STATE,
+};
+#define ACCUSE_IDX(rng)  (0x7 & ((rng) >> 12))
+
+void Imposter_SetupTalkingPoints(struct ScriptContext *ctx) {
+	u8 i, x;
+	u16* var;
+	for (i = 0; i < ARRAY_COUNT(Imposter_ShowTalkingPoints_RNGVars); i++) {
+		var = GetVarPointer(Imposter_ShowTalkingPoints_RNGVars[i]);
+		*var = Random2();
+	}
+	// eliminate impossible accusations, change to player accusations
+	var = GetVarPointer(Imposter_ShowTalkingPoints_RNGVars[IMP_JOEY]);
+	if (VarGet(VAR_CONFIG_IMPOSTER) != IMP_JAMES && ACCUSE_IDX(*var) == IMP_JAMES) {
+		// Joey doesn't accuse James if James isn't the imposter
+		*var = (*var & 0x0FFF) | IMP_JOEY;
+	}
+	
+	var = GetVarPointer(Imposter_ShowTalkingPoints_RNGVars[IMP_JAMES]);
+	if (VarGet(VAR_CONFIG_IMPOSTER) != IMP_JOEY && ACCUSE_IDX(*var) == IMP_JOEY) {
+		// James doesn't accuse Joey if Joey isn't the imposter
+		*var = (*var & 0x0FFF) | IMP_JAMES;
+	}
+	
+	var = GetVarPointer(Imposter_ShowTalkingPoints_RNGVars[IMP_BRENDAN]);
+	if (VarGet(VAR_CONFIG_IMPOSTER) == ACCUSE_IDX(*var)) {
+		// Brendan never accuses the correct person
+		*var = (*var & 0x0FFF) | IMP_BRENDAN;
+	}
+}
+
+extern const u8** const Puzzle_SafariImposters_TalkTables[7][3];
+extern const u8 Puzzle_SafariImposters_Text_JoeyAlibi1a[];
+
+void Imposter_ShowTalkingPoints(struct ScriptContext *ctx) {
+	u8 currSpeaker = ctx->data[0];
+	bool8 isImposter = (currSpeaker == VarGet(VAR_CONFIG_IMPOSTER));
+	const u8** alibiTable = Puzzle_SafariImposters_TalkTables[currSpeaker][0];
+	const u8** imposterTable = Puzzle_SafariImposters_TalkTables[currSpeaker][1];
+	const u8** accuseTable = Puzzle_SafariImposters_TalkTables[currSpeaker][2];
+	u16 rng = VarGet(Imposter_ShowTalkingPoints_RNGVars[currSpeaker]);
+	u8 i, x;
+	u8 *str = gStringVar4;
+	
+	// So, for future reference, when using the gStringVar4 directly like this,
+	// NEVER call ShowFieldMessage(), as that calls StringExpandPlaceholders(),
+	// and now you're expanding placeholders in-place, guaranteeing that the
+	// destination string is longer, and thus racing ahead of the src string
+	// and that can cause all sorts of untold horrors and "jumps to invalid addresses".
+	
+	if (isImposter) {
+		for(i = 0; imposterTable[i*4] != NULL && i < 6; i++) {
+			x = 0x3 & (rng >> (i*2));
+			// str = ConvertIntToDecimalStringN(str, (i*4)+x, 2, 3);
+			str = StringExpandPlaceholders(str, imposterTable[(i*4)+x]);
+		}
+	} else {
+		for(i = 0; alibiTable[i*4] != NULL && i < 6; i++) {
+			x = 0x3 & (rng >> (i*2));
+			// str = ConvertIntToDecimalStringN(str, (i*4)+x, 2, 3);
+			str = StringExpandPlaceholders(str, alibiTable[(i*4)+x]);
+		}
+	}
+	x = ACCUSE_IDX(rng);
+	// if the random accusation is of the player character, change it to such
+	if ((gSaveBlock2Ptr->playerGender == GENDER_M && x == IMP_BRENDAN)
+	||  (gSaveBlock2Ptr->playerGender == GENDER_F && x == IMP_MAY)
+	||  (gSaveBlock2Ptr->playerGender == GENDER_N && x == IMP_ALEX))
+	{
+		x = currSpeaker;
+	}
+	str = StringExpandPlaceholders(str, accuseTable[x]);
+	*str = EOS;
+	// If the gStringVar4 buffer is overflown, it rolls into 256 bytes of the 
+	// gStringWorking, which is fine. Beyond that is some link variables we'll never use.
+	// So this should be fiiiiiiine.
+	ShowFieldMessageFromBuffer();
+}
+
+#define SET_POKEBLOCK(num, spicyA, dryA, sweetA, bitterA, sourA, colorA) \
+	gSaveBlock1Ptr->pokeblocks[num].spicy = spicyA; \
+	gSaveBlock1Ptr->pokeblocks[num].dry = dryA; \
+	gSaveBlock1Ptr->pokeblocks[num].sweet = sweetA; \
+	gSaveBlock1Ptr->pokeblocks[num].bitter = bitterA; \
+	gSaveBlock1Ptr->pokeblocks[num].sour = sourA; \
+	gSaveBlock1Ptr->pokeblocks[num].feel = spicyA + dryA + sweetA + bitterA + sourA; \
+	gSaveBlock1Ptr->pokeblocks[num].color = colorA;
+
+
+void Imposter_PopulatePokeblockCase(struct ScriptContext *ctx) {
+	struct Pokeblock block;
+	
+	ClearPokeblocks();
+	SET_POKEBLOCK( 0,20, 0, 0, 0, 0, PBLOCK_CLR_RED);
+	SET_POKEBLOCK( 1, 0,20, 0, 0, 0, PBLOCK_CLR_BLUE);
+	SET_POKEBLOCK( 2, 0, 0,20, 0, 0, PBLOCK_CLR_PINK);
+	SET_POKEBLOCK( 3, 0, 0, 0,20, 0, PBLOCK_CLR_GREEN);
+	SET_POKEBLOCK( 4, 0, 0, 0, 0,20, PBLOCK_CLR_YELLOW);
+	SET_POKEBLOCK( 5,20, 0, 0, 0, 0, PBLOCK_CLR_RED);
+	SET_POKEBLOCK( 6, 0,20, 0, 0, 0, PBLOCK_CLR_BLUE);
+	SET_POKEBLOCK( 7, 0, 0,20, 0, 0, PBLOCK_CLR_PINK);
+	SET_POKEBLOCK( 8, 0, 0, 0,20, 0, PBLOCK_CLR_GREEN);
+	SET_POKEBLOCK( 9, 0, 0, 0, 0,20, PBLOCK_CLR_YELLOW);
+	SET_POKEBLOCK(10,20, 0, 0, 0, 0, PBLOCK_CLR_RED);
+	SET_POKEBLOCK(11, 0,20, 0, 0, 0, PBLOCK_CLR_BLUE);
+	SET_POKEBLOCK(12, 0, 0,20, 0, 0, PBLOCK_CLR_PINK);
+	SET_POKEBLOCK(13, 0, 0, 0,20, 0, PBLOCK_CLR_GREEN);
+	SET_POKEBLOCK(14, 0, 0, 0, 0,20, PBLOCK_CLR_YELLOW);
+	SET_POKEBLOCK(15,20, 0, 0, 0,15, PBLOCK_CLR_PURPLE);
+}
+
+#undef SET_POKEBLOCK
+
+#undef VAR_CONFIG_IMPOSTER
+#undef VAR_IMPOSTER_SELECT
+#undef LID_JOEY
+#undef LID_JAMES
+#undef LID_IRENE
+#undef LID_WALLY
+#undef LID_BRENDAN
+#undef LID_MAY
+#undef LID_ALEX
+#undef LID_FRIEND_A
+#undef LID_FRIEND_B
+#undef LID_CUTSCENE_PLAYER
+
+#undef LID_SELECTED
+#undef LID_FRIEND_1
+#undef LID_FRIEND_2
+#undef LID_FRIEND_3
+#undef LID_FRIEND_4
+#undef LID_FRIEND_5
+
+#undef VAR_JOEY_STATE
+#undef VAR_JAMES_STATE
+#undef VAR_IRENE_STATE
+#undef VAR_WALLY_STATE
+#undef VAR_BRENDAN_STATE
+#undef VAR_MAY_STATE
+#undef VAR_ALEX_STATE
+
+#undef IMP_JOEY
+#undef IMP_JAMES
+#undef IMP_IRENE
+#undef IMP_WALLY
+#undef IMP_BRENDAN
+#undef IMP_MAY
+#undef IMP_ALEX

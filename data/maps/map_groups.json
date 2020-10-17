@@ -10,6 +10,16 @@
         "Desert_West",
         "Desert_South"
     ],
+    "MG_ImposterPuzzle": [
+        "Puzzle_SafariImposters",
+        "SafariZone_Northwest",
+        "SafariZone_North",
+        "SafariZone_Southwest",
+        "SafariZone_South",
+        "SafariZone_Northeast",
+        "SafariZone_Southeast",
+        "SafariZone_RestHouse"
+    ],
     "MG_LostWoodsPuzzles": [
         "Puzzle_LostWoods1_Entrance",
         "Puzzle_LostWoods2_Entrance",
@@ -30,7 +40,34 @@
         "LostWoods1_Room8",
         "LostWoods1_Room9",
         "LostWoods1_Room10",
-        "LostWoods1_Underwater"
+        "LostWoods1_Underwater",
+        "LostWoods4_Room0",
+        "LostWoods4_RoomA1",
+        "LostWoods4_RoomA2",
+        "LostWoods4_RoomA3",
+        "LostWoods4_RoomA4",
+        "LostWoods4_RoomA5",
+        "LostWoods4_RoomA6",
+        "LostWoods4_RoomB1",
+        "LostWoods4_RoomB2",
+        "LostWoods4_RoomB3",
+        "LostWoods4_RoomB4",
+        "LostWoods4_RoomB5",
+        "LostWoods4_RoomB6",
+        "LostWoods4_RoomB7",
+        "LostWoods4_RoomB8",
+        "LostWoods4_RoomB9",
+        "LostWoods4_RoomC1",
+        "LostWoods4_RoomC2",
+        "LostWoods4_RoomC3",
+        "LostWoods4_RoomC4",
+        "LostWoods4_RoomC5",
+        "LostWoods4_RoomC6",
+        "LostWoods4_RoomD1",
+        "LostWoods4_RoomD2",
+        "LostWoods4_RoomD3",
+        "LostWoods4_RoomD4",
+        "LostWoods4_RoomD5"
     ],
     "MG_PuzzleFramework": [
         "TrickHouseDevEntrance",
@@ -39,7 +76,8 @@
         "TrickHouseEnd",
         "TrickHouseCorridor",
         "TrickHouseTreeHouse",
-        "TrickHouseRestroom"
+        "TrickHouseRestroom",
+        "TrickHouseExt_Gatehouse"
     ],
     "MG_ReferenceMaps": [
         "PetalburgCity",
@@ -133,7 +171,11 @@
         "Puzzle_IcePath",
         "Puzzle_TicRacToe",
         "Puzzle_StealthMission",
-        "Puzzle_MurderExpress"
+        "Puzzle_MurderExpress",
+        "Puzzle_EliteFloor",
+        "Puzzle_DiveMaze",
+        "Puzzle_SootopolisGym",
+        "Puzzle_ImposterReflection"
     ],
     "MG_SingleMapPuzzles2019": [
         "Puzzle_TrickHouseCut",
@@ -171,7 +213,10 @@
         "WaterTemple_Lv2",
         "TrainerHillTemplate",
         "FakeSecretBaseCave",
-        "SuspendedMaze_B1"
+        "SuspendedMaze_B1",
+        "WaterTemple_Secret",
+        "DiveMaze_Underwater",
+        "SootopolisGym_B1F"
     ],
     "MG_TestMaps": [
         "TestMapHallway",
@@ -180,7 +225,13 @@
         "TestMirrorMovement",
         "TestCopyMovement",
         "IndoorMap",
-        "TestMusicRoom"
+        "TestMusicRoom",
+        "TestAcroBikeMap"
+    ],
+    "MG_TheMetaPuzzle": [
+        "Puzzle_MetaPuzzleCave",
+        "MetaPuzzle_EmptyPuzzle",
+        "MetaPuzzle_StrengthRoom"
     ],
     "MG_TrickOrTreatPuzzles": [
         "TrickTreat_PetalburgCity",
@@ -204,6 +255,8 @@
         "MG_DesertPuzzles",
         "MG_TrickOrTreatPuzzles",
         "MG_SpotTheDifferencePuzzles",
+        "MG_ImposterPuzzle",
+        "MG_TheMetaPuzzle",
         "MG_SingleMapPuzzles2019"
     ],
     "layouts_table_label": "gMapLayouts"

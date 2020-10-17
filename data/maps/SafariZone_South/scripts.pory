@@ -1,0 +1,603 @@
+raw `
+#define VAR_SAFARI_ZONE_STATE  VAR_PUZZLE_03
+#define VAR_JOEY_STATE         VAR_PUZZLE_10
+#define VAR_JAMES_STATE        VAR_PUZZLE_11
+#define VAR_IRENE_STATE        VAR_PUZZLE_12
+#define VAR_WALLY_STATE        VAR_PUZZLE_13
+#define VAR_BRENDAN_STATE      VAR_PUZZLE_14
+#define VAR_MAY_STATE          VAR_PUZZLE_15
+#define VAR_ALEX_STATE         VAR_PUZZLE_16
+
+#define FLAG_HIDE_JOEY_SX      FLAG_PUZZLE_21
+#define FLAG_HIDE_JOEY_SE      FLAG_PUZZLE_22
+#define FLAG_HIDE_JAMES_SE     FLAG_PUZZLE_23
+#define FLAG_HIDE_JAMES_NE     FLAG_PUZZLE_24
+#define FLAG_HIDE_IRENE_NX     FLAG_PUZZLE_25
+#define FLAG_HIDE_IRENE_SW     FLAG_PUZZLE_26
+#define FLAG_HIDE_WALLY_SX     FLAG_PUZZLE_27
+#define FLAG_HIDE_WALLY_NW     FLAG_PUZZLE_28
+#define FLAG_HIDE_BRENDAN_SW   FLAG_PUZZLE_29
+#define FLAG_HIDE_BRENDAN_RH   FLAG_PUZZLE_2A
+#define FLAG_HIDE_MAY_NE       FLAG_PUZZLE_2B
+#define FLAG_HIDE_MAY_NC       FLAG_PUZZLE_2C
+#define FLAG_HIDE_ALEX_01      FLAG_PUZZLE_2D
+#define FLAG_HIDE_ALEX_NW      FLAG_PUZZLE_2E
+
+#define LID_SCIENTIST          1
+#define LID_JOEY               2
+#define LID_WALLY              3
+
+@ -----------------------------------------------------
+
+SafariZone_South_MapScripts:: @ 823D279
+	puzzle_info Puzzle_SafariImposters_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ON_TRANSITION, SafariZone_South_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, SafariZone_South_OnFrame
+	.byte 0
+
+SafariZone_South_OnFrame: @ 823D284
+	map_script_2 VAR_SAFARI_ZONE_STATE, 2, SafariZone_South_EnterSafariZone
+	.2byte 0
+
+`
+
+script SafariZone_South_OnTransition {
+	setobjectxyperm (LID_SCIENTIST, 31, 34)
+	setobjectxyperm (LID_JOEY, 27, 35)
+	setobjectxyperm (LID_WALLY, 28, 30)
+	setobjectmovementtype(LID_WALLY, MOVEMENT_TYPE_FACE_UP)
+}
+
+script SafariZone_South_EnterSafariZone {
+	lockall
+	applymovement(LID_PLAYER, Common_Movement_WalkDown1)
+	applymovement(LID_WALLY, SafariZone_South_Movement_ExitWallyRunOff)
+	applymovement(LID_JOEY, SafariZone_South_Movement_ExitJoeyRunOff)
+	waitmovement(LID_PLAYER)
+	
+	applymovement(LID_SCIENTIST, SafariZone_South_Movement_ExitAttendantBlockDoor)
+	waitmovement(LID_SCIENTIST)
+	waitmovement(LID_WALLY)
+	waitmovement(LID_JOEY)
+	removeobject(LID_WALLY)
+	removeobject(LID_JOEY)
+	setobjectxyperm (LID_SCIENTIST, 32, 34)
+	setobjectxyperm (LID_JOEY, 20, 31)
+	setobjectxyperm (LID_WALLY, 8, 12)
+	setobjectmovementtype(LID_WALLY, MOVEMENT_TYPE_WANDER_AROUND)
+	setvar (VAR_SAFARI_ZONE_STATE, 0)
+	clearflag(FLAG_HIDE_WALLY_SX)
+	clearflag(FLAG_HIDE_JOEY_SX)
+	
+	// set up this section of the puzzle
+	setflag(FLAG_HIDE_JOEY_SE)
+	setflag(FLAG_HIDE_JAMES_NE)
+	setflag(FLAG_HIDE_IRENE_SW)
+	setflag(FLAG_HIDE_WALLY_NW)
+	setflag(FLAG_HIDE_BRENDAN_RH)
+	setflag(FLAG_HIDE_MAY_NC)
+	setflag(FLAG_HIDE_ALEX_NW)
+	// Disable the player's analogue
+	checkplayergender
+	switch(var(VAR_RESULT)) {
+		case GENDER_M:
+			setflag(FLAG_HIDE_BRENDAN_SW)
+			setvar(VAR_BRENDAN_STATE, 50)
+		case GENDER_F:
+			setflag(FLAG_HIDE_MAY_NE)
+			setvar(VAR_MAY_STATE, 50)
+		case GENDER_N:
+			setflag(FLAG_HIDE_ALEX_01)
+			setvar(VAR_ALEX_STATE, 50)
+	}
+	
+	releaseall
+}
+
+movement SafariZone_South_Movement_ExitAttendantBlockDoor {
+	walk_right
+	walk_in_place_fastest_down
+}
+
+movement SafariZone_South_Movement_ExitWallyRunOff {
+	face_left
+	delay_16
+	walk_up * 3
+}
+movement SafariZone_South_Movement_ExitJoeyRunOff {
+	face_left
+	delay_16
+	face_right
+	delay_16
+	walk_left * 4
+}
+
+
+script SafariZone_South_EventScript_ExitAttendant {
+	msgbox ("PROF: I'll be waiting here, keeping an\n"
+			"eye on the tracker.\p"
+			"We'll call you if anything important\n"
+			"happens, alright? Have fun.$", MSGBOX_NPC)
+}
+
+// ----------------------------------------------------
+// Joey
+
+raw `
+#define LID_JOEY 2
+`
+
+script SafariZone_EventScript_JoeyFearsSnakes {
+	lock
+	faceplayer
+	message("{JOEY}: Hey, {PLAYER}, how's the\n"
+			"search going?\p"
+			"Me and ACE are sniffing out the--$")
+	waitmessage
+	playmoncry(SPECIES_SEVIPER, 0)
+	waitmoncry
+	selectpointer(SafariZone_EventScript_JoeyFearsSnakes_MoveTable, VAR_FACING)
+	applymovement(LID_JOEY, 0)
+	message("WHAAAAA!! SNAAAAAAKE!!!$")
+	waitmovement(LID_JOEY)
+	selectpointer(SafariZone_EventScript_JoeyFearsSnakes_MoveTable2, VAR_FACING)
+	applymovement(LID_PLAYER, 0)
+	waitmessage
+	waitmovement(LID_PLAYER)
+	message("… {PAUSE 16}… {PAUSE 16}… {PAUSE 16}… {PAUSE 16}… {PAUSE 16}… {PAUSE 16}\n"
+			"Uh… right, yes, sorry, I need to leave…\p"
+			"ACE doesn't like snakes. They tend to\n"
+			"… … … eat RATTATA like him… … …\p"
+			"… … …$")
+	waitmessage
+	waitbuttonpress
+	closemessage
+	delay (8)
+	selectpointer(SafariZone_EventScript_JoeyFearsSnakes_MoveTable3, VAR_FACING)
+	applymovement(LID_JOEY, 0)
+	waitmovement(LID_JOEY)
+	removeobject(LID_JOEY)
+	setvar(VAR_JOEY_STATE, 2)
+	clearflag(FLAG_HIDE_JOEY_SE)
+	release
+}
+
+raw `
+.align 2
+SafariZone_EventScript_JoeyFearsSnakes_MoveTable:
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_MoveS
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_MoveS
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_MoveN
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_MoveW
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_MoveE
+	.4byte 0
+SafariZone_EventScript_JoeyFearsSnakes_MoveTable2:
+	.4byte Common_Movement_WalkInPlaceUp
+	.4byte Common_Movement_WalkInPlaceUp
+	.4byte Common_Movement_WalkInPlaceDown
+	.4byte Common_Movement_WalkInPlaceRight
+	.4byte Common_Movement_WalkInPlaceLeft
+	.4byte 0
+SafariZone_EventScript_JoeyFearsSnakes_MoveTable3:
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_LeaveS
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_Leave
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_LeaveS
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_Leave
+	.4byte SafariZone_EventScript_JoeyFearsSnakes_Leave
+	.4byte 0
+`
+
+movement SafariZone_EventScript_JoeyFearsSnakes_MoveN {
+	jump_in_place_right
+	emote_exclamation_mark
+	walk_fast_right
+	walk_fast_down * 2
+	walk_fast_left
+	face_up
+}
+movement SafariZone_EventScript_JoeyFearsSnakes_MoveS {
+	jump_in_place_left
+	emote_exclamation_mark
+	walk_fast_right
+	walk_fast_up * 2
+	walk_fast_left
+	face_down
+}
+movement SafariZone_EventScript_JoeyFearsSnakes_MoveE {
+	jump_in_place_down
+	emote_exclamation_mark
+	walk_fast_up
+	walk_fast_left * 2
+	walk_fast_down
+	face_right
+}
+movement SafariZone_EventScript_JoeyFearsSnakes_MoveW {
+	jump_in_place_up
+	emote_exclamation_mark
+	walk_fast_down
+	walk_fast_right * 2
+	walk_fast_up
+	face_left
+}
+
+movement SafariZone_EventScript_JoeyFearsSnakes_Leave {
+	walk_up * 8
+}
+movement SafariZone_EventScript_JoeyFearsSnakes_LeaveS {
+	walk_left * 2
+	walk_up * 8
+}
+
+
+raw `
+#undef LID_JOEY
+`
+
+script SafariZone_EventScript_JoeyLikesHisRattata {
+	msgbox ("{JOEY}: This area is nice.\n"
+			"ACE likes it around here.\p"
+			"It's shaded, and near a fresh water\n"
+			"river. And there's other RATTATA\l"
+			"around to socialize with.\p"
+			"Don't worry, he's sniffing around\n"
+			"for any RATTATA that don't smell like\l"
+			"they're actually RATTATA.$", MSGBOX_NPC)
+}
+
+// ----------------------------------------------------
+// James
+
+script SafariZone_DisableScript_JamesFearsWater {
+	setflag(FLAG_HIDE_JAMES_SE)
+	clearflag(FLAG_HIDE_JAMES_NE)
+	setvar(VAR_JAMES_STATE, 1)
+}
+
+script SafariZone_EventScript_JamesFearsWater {
+	lockall
+	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
+	subvar(VAR_INTERACT_X, 18)
+	special(ShowFieldMessageBoxAtTopOfScreen)
+	applymovement (2, SafariZone_Movement_JamesFearsWater1)
+	message("{JAMES}: HERACROSS… Where are you…?\n"
+			"I don't like you leading me over here…\p$")
+	waitmessage
+	waitmovement(2)
+	applymovement (2, Common_Movement_WalkInPlaceRight)
+	message("Is that salt water down there?\n"
+			"Oh boy…\p"
+			"Right, nope, I'll find another one\n"
+			"before I get any closer to that--\p$")
+	waitmessage
+	waitmovement(2)
+	selectpointer(SafariZone_MovementTable_JamesFearsWater_Player, VAR_INTERACT_X)
+	applymovement(EVENT_OBJ_ID_PLAYER, 0)
+	applymovement(2, SafariZone_Movement_JamesFearsWater2)
+	playse(SE_PIN)
+	message("{PLAYER}!! HI!! FUNNY YOU'RE HERE\n"
+			"I MUST GO YOU SAW NOTHING!!! BYE!!$")
+	waitmessage
+	waitbuttonpress
+	closemessage
+	waitmovement(2)
+	removeobject(2)
+	special(ResetFieldMessageBoxToBottomOfScreen)
+	setflag(FLAG_HIDE_JAMES_SE)
+	clearflag(FLAG_HIDE_JAMES_NE)
+	setvar(VAR_JAMES_STATE, 1)
+	releaseall
+}
+
+raw `
+.align 2
+SafariZone_MovementTable_JamesFearsWater_Player:
+	.4byte SafariZone_Movement_JamesFearsWater_PlayerA
+	.4byte SafariZone_Movement_JamesFearsWater_PlayerB
+	.4byte 0
+`
+
+movement SafariZone_Movement_JamesFearsWater1 {
+	walk_in_place_fastest_left
+	delay_16 * 3
+	walk_in_place_fastest_right
+	delay_16 * 3
+	walk_in_place_fastest_down
+}
+movement SafariZone_Movement_JamesFearsWater2 {
+	walk_in_place_fastest_up
+	delay_8
+	emote_exclamation_mark
+	delay_16 * 3
+	walk_fast_up * 4
+	walk_in_place_fastest_left
+	delay_16 * 2
+	walk_fast_up * 6
+}
+movement SafariZone_Movement_JamesFearsWater_PlayerA {
+	delay_8 * 3
+	delay_16 * 3
+	face_right
+	delay_16 * 4
+	face_up
+}
+movement SafariZone_Movement_JamesFearsWater_PlayerB {
+	delay_8 * 2
+	delay_16 * 3
+	face_right
+	lock_facing_direction
+	walk_left
+	unlock_facing_direction
+	delay_16 * 4
+	face_up
+}
+
+script SafariZone_EventScript_JamesBugSearch {
+	msgbox ("{JAMES}: HERACROSS… Where are you…?\p"
+			"This would be so much easier if\n"
+			"I hadn't left my net at home\l"
+			"in favor of the Master Sword…$", MSGBOX_NPC)
+}
+
+// ----------------------------------------------------
+// Irene
+
+script SafariZone_EventScript_IreneHatesBats {
+	// FLAG_HIDE_IRENE_NX
+	msgbox ("{IRENE}: That storm cloud is not moving\n"
+			"is it? I was hoping it would pass over.\p"
+			"It's getting kinda… dark… Do you think\n"
+			"bat would come out in this weather…?\p"
+			"… … … Maybe I should check a different\n"
+			"patch of grass… …$", MSGBOX_NPC)
+	setvar(VAR_IRENE_STATE, 1)
+}
+
+script SafariZone_EventScript_IreneLikesChansey {
+	msgbox ("{IRENE}: {PLAYER}!! Be quiet!!\p"
+			"I think I might have found a nest\n"
+			"just beyond the treeline! Shh!$", MSGBOX_SIGN)
+}
+
+// ----------------------------------------------------
+// Wally
+
+script SafariZone_EventScript_WallyHatesCrowds {
+	msgbox ("{WALLY}: It's so peaceful out here.\p"
+			"Back in the Trick House there's\n"
+			"a big loud crowd around every corner.\p"
+			"But here, it's just calm. The wind\n"
+			"blowing in the trees, the {POKEMON}\l"
+			"walking around in their natural habitat.\p"
+			"It's nice.$", MSGBOX_NPC)
+	setvar(VAR_WALLY_STATE, 1)
+}
+
+script SafariZone_EventScript_WallyLikesDragons {
+	msgbox ("{WALLY}: I saw a DRAGON {POKEMON}!\n"
+			"Up in the storm clouds!\p"
+			"I'm gonna see if I can lure it down\n"
+			"to the ground to catch it!\p"
+			"Careful? This is exhilarating!\n"
+			"Stop sounding like my parents!\p"
+			"I haven't felt like this ever before!\n"
+			"That dragon is gonna be mine!!$", MSGBOX_NPC)
+}
+
+// ----------------------------------------------------
+// Brendan
+
+script SafariZone_DisableScript_BrendanFearsThunder {
+	setvar(VAR_BRENDAN_STATE, 2)
+	setflag(FLAG_HIDE_BRENDAN_SW)
+	clearflag(FLAG_HIDE_BRENDAN_RH)
+}
+
+script SafariZone_EventScript_BrendanFearsThunder {
+	lockall
+	playse(SE_T_KAMI)
+	delay(20)
+	playse(SE_DANSA)
+	applymovement(2, SafariZone_Movement_BrendanFearsThunder1)
+	applymovement(LID_PLAYER, SafariZone_Movement_BrendanFearsThunderP)
+	message("AUGH! NOPE! NOPE! NOPE! NOPE! NOPE!\n"
+			"NOPE! NOPE! NOPE! NOPE! NOPE! NOPE!$")
+	waitmovement(2)
+	removeobject(2)
+	closemessage
+	setvar(VAR_BRENDAN_STATE, 1)
+	setflag(FLAG_HIDE_BRENDAN_SW)
+	clearflag(FLAG_HIDE_BRENDAN_RH)
+	releaseall
+}
+movement SafariZone_Movement_BrendanFearsThunder1 {
+	emote_exclamation_mark
+	jump_2_down
+	player_run_right * 5
+	player_run_down * 4
+	player_run_right * 3
+	player_run_up
+	set_invisible
+}
+movement SafariZone_Movement_BrendanFearsThunderP {
+	delay_8
+	slide_right
+	face_right
+	delay_16
+	face_down
+	delay_16
+	face_right
+}
+
+script SafariZone_EventScript_BrendanInResthouse {
+	if (var(VAR_BRENDAN_STATE) == 1) {
+	msgbox ("Oh, hey, {PLAYER}. How are you?\p"
+			"Me? Oh, fine, fine. I'm just taking\n"
+			"a break in the rest house here.\p"
+			"Hm? Running away? You saw that?!\n"
+			"I-I-I mean-- You didn't see that?\p"
+			"Yeah, there was a giant… … TAUROS!!\n"
+			"R-Running right at me!\l"
+			"Surely you saw it! It was right there!\p"
+			"I mean, how could you NOT run from a\n"
+			"{POKEMON} like that trying to hurt you?\p"
+			"Thunderclap? Nah, no, that was just…\n"
+			"{POKEMON}… fighting… off to the left…$", MSGBOX_NPC)
+			// There are no tauros in this safari zone
+	} else {
+	msgbox ("Oh, hey, {PLAYER}. How are you?\p"
+			"Me? Oh, fine, fine. I'm just taking\n"
+			"a break in the rest house here.\p"
+			"Harsh rains outside, right? I'll just\n"
+			"be here waiting for it to pass…$", MSGBOX_NPC)
+	}
+}
+
+// ----------------------------------------------------
+// May
+
+raw `
+#define LID_MAY   7
+`
+
+script SafariZone_DisableScript_MayOnTheRidge {
+	setflag(FLAG_HIDE_MAY_NE)
+	clearflag(FLAG_HIDE_MAY_NC)
+	setvar(VAR_MAY_STATE, 1)
+}
+script SafariZone_EventScript_MayOnTheRidge {
+	lockall
+	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
+	subvar(VAR_INTERACT_X, 7)
+	
+	// Walks up to player
+	applymovement(LID_MAY, SafariZone_Movement_MayOnTheRidge1)
+	delay(32)
+	selectpointer(SafariZone_MovementTable_MayOnTheRidge1, VAR_INTERACT_X)
+	applymovement(LID_PLAYER, 0)
+	waitmovement(LID_PLAYER)
+	waitmovement(LID_MAY)
+	
+	msgbox ("{MAY}: Hey, {PLAYER}. I think all the HOPPIP\n"
+			"I've been looking for flew away.\p"
+			"There were some here, but I think they\n"
+			"all took off towards the west.\p"
+			"Know any shortcuts from here?$")
+	closemessage
+	// Walk down
+	applymovement(LID_PLAYER, SafariZone_Movement_MayOnTheRidge2p)
+	applymovement(LID_MAY, SafariZone_Movement_MayOnTheRidge2m)
+	waitmovement(LID_PLAYER)
+	waitmovement(LID_MAY)
+	
+	special(ShowFieldMessageBoxAtTopOfScreen)
+	msgbox ("O-Oh… That's… kinda perilous…\p"
+			"You're supposed to BIKE over that?!\p"
+			"You know, I think I'm gonna go the\n"
+			"long way around. Later.$")
+	closemessage
+	// Walks away
+	applymovement(LID_MAY, SafariZone_Movement_MayOnTheRidge3)
+	waitmovement(LID_MAY)
+	removeobject(LID_MAY)
+	
+	special(ResetFieldMessageBoxToBottomOfScreen)
+	setflag(FLAG_HIDE_MAY_NE)
+	clearflag(FLAG_HIDE_MAY_NC)
+	setvar(VAR_MAY_STATE, 1)
+	releaseall
+}
+
+raw `
+.align 2
+SafariZone_MovementTable_MayOnTheRidge1:
+	.4byte Common_Movement_BackOffRight1
+	.4byte Common_Movement_WalkInPlaceLeft
+	.4byte 0
+`
+
+movement SafariZone_Movement_MayOnTheRidge1 {
+	walk_down * 4
+	walk_in_place_fastest_right
+}
+movement SafariZone_Movement_MayOnTheRidge2m {
+	face_down
+	delay_16 * 6
+	walk_down * 4
+	walk_in_place_fastest_left
+	delay_16 * 3
+}
+movement SafariZone_Movement_MayOnTheRidge2p {
+	walk_down * 2
+	walk_in_place_fastest_left
+	delay_16 * 4
+	face_up
+	delay_16 * 2
+	face_down
+}
+movement SafariZone_Movement_MayOnTheRidge3 {
+	walk_right
+	walk_down * 4
+}
+
+script SafariZone_EventScript_MayInTheDesert {
+	msgbox ("{MAY}: I saw some HOPPIP hopping\n"
+			"around over here earlier.\p"
+			"I think they've all taken shelter\n"
+			"from the rain under the rocks.\p"
+			"I will find one to catch.$", MSGBOX_NPC)
+}
+
+// ----------------------------------------------------
+// Alex
+
+script SafariZone_EventScript_AlexFearsSpiders {
+	lockall
+	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
+	subvar(VAR_INTERACT_Y, 16)
+	message("???: Nope nope nope nope nope nope\n"
+			"nope nope nope nope nope nope nope\p$")
+	delay(16)
+	applymovement(LID_PLAYER, Common_Movement_WalkInPlaceRight)
+	waitmovement(LID_PLAYER)
+	delay(8)
+	applymovement(LID_PLAYER, Common_Movement_QuestionMark)
+	waitmovement(LID_PLAYER)
+	waitmessage
+	// biking by
+	
+	message("{ALEX}: Nope! No spiders! Nope!\n"
+			"Spiders bad. Spiders very bad.\l"
+			"Very very bad spiders…$")
+	setobjectxyperm(4, 45, 16)
+	addobject(4)
+	applymovement(4, SafariZone_Movement_AlexFearsSpiders)
+	delay(8*6)
+	if (var(VAR_INTERACT_Y) == 0) {
+		applymovement(LID_PLAYER, Common_Movement_BackOffDown1)
+		waitmovement(LID_PLAYER)
+	}
+	waitmessage
+	waitbuttonpress
+	closemessage
+	waitmovement(4)
+	
+	setobjectxyperm(4, 44, 27)
+	clearflag(FLAG_HIDE_ALEX_NW)
+	setvar(VAR_ALEX_STATE, 1)
+	releaseall
+}
+
+movement SafariZone_Movement_AlexFearsSpiders {
+	walk_fast_left * 16
+}
+
+script SafariZone_EventScript_AlexInTheRain {
+	msgbox ("{ALEX}: I love the rain, don't you?\p"
+			"For one, no spiders. Always a plus.\p"
+			"For another, some of my favorite\n"
+			"{POKEMON} come out in the rain.$", MSGBOX_NPC)
+}
+
+raw `
+#undef VAR_SAFARI_ZONE_STATE
+`

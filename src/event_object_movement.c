@@ -2,12 +2,14 @@
 #include "alloc.h"
 // #include "battle_pyramid.h"
 #include "berry.h"
+#include "day_night.h"
 #include "decoration.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
 #include "faraway_island.h"
 #include "field_camera.h"
+#include "field_weather.h"
 #include "field_effect.h"
 #include "field_effect_helpers.h"
 #include "field_player_avatar.h"
@@ -18,6 +20,7 @@
 #include "palette.h"
 #include "random.h"
 #include "sprite.h"
+#include "script.h"
 #include "task.h"
 #include "trainer_see.h"
 #include "trainer_hill.h"
@@ -52,8 +55,8 @@ static u8 setup##_callback(struct EventObject *eventObject, struct Sprite *sprit
     return 0;\
 }
 
-EWRAM_DATA u8 sCurrentReflectionType = 0;
-EWRAM_DATA u16 sCurrentSpecialObjectPaletteTag = 0;
+// EWRAM_DATA u8 sCurrentReflectionType = 0;
+// EWRAM_DATA u16 sCurrentSpecialObjectPaletteTag = 0;
 EWRAM_DATA struct LockedAnimEventObjects *gLockedAnimEventObjects = {0};
 
 static bool8 EventObjectExecSingleMovementAction(struct EventObject *, struct Sprite *);
@@ -110,14 +113,12 @@ static void UpdateEventObjectVisibility(struct EventObject *, struct Sprite *);
 static void MakeObjectTemplateFromEventObjectTemplate(struct EventObjectTemplate *, struct SpriteTemplate *, const struct SubspriteTable **);
 static void GetEventObjectMovingCameraOffset(s16 *, s16 *);
 static struct EventObjectTemplate *GetEventObjectTemplateByLocalIdAndMap(u8, u8, u8);
-static void LoadEventObjectPalette(u16);
 static void RemoveEventObjectIfOutsideView(struct EventObject *);
 static void sub_808E1B8(u8, s16, s16);
 static void SetPlayerAvatarEventObjectIdAndObjectId(u8, u8);
 static void sub_808E38C(struct EventObject *);
 static u8 sub_808E8F4(const struct SpritePalette *);
 static u8 FindEventObjectPaletteIndexByTag(u16);
-static void sub_808EAB0(u16, u8);
 static bool8 EventObjectDoesZCoordMatch(struct EventObject *, u8);
 static void ObjectCB_CameraObject(struct Sprite *);
 static void CameraObject_0(struct Sprite *);
@@ -129,7 +130,7 @@ static void EventObjectSetSingleMovement(struct EventObject *, struct Sprite *, 
 static void oamt_npc_ministep_reset(struct Sprite *, u8, u8);
 static void UpdateEventObjectSpriteSubpriorityAndVisibility(struct Sprite *);
 
-const u8 gReflectionEffectPaletteMap[] = {1, 1, 6, 7, 8, 9, 6, 7, 8, 9, 11, 11, 0, 0, 0, 0};
+// const u8 gReflectionEffectPaletteMap[] = {1, 1, 6, 7, 8, 9, 6, 7, 8, 9, 11, 11, 0, 0, 0, 0};
 
 const struct SpriteTemplate gCameraSpriteTemplate = {0, 0xFFFF, &gDummyOamData, gDummySpriteAnimTable, NULL, gDummySpriteAffineAnimTable, ObjectCB_CameraObject};
 
@@ -452,6 +453,10 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define EVENT_OBJ_PAL_WALLY                 0x1134
 #define EVENT_OBJ_PAL_TAG_ALIEN             0x1135
 #define EVENT_OBJ_PAL_TREEKID               0x1136
+#define EVENT_OBJ_PAL_DEV_TUSTIN2121        0x1137
+#define EVENT_OBJ_PAL_TAG_POSSESSED         0x1138
+#define EVENT_OBJ_PAL_TAG_QUILAVA           0x1139
+#define EVENT_OBJ_PAL_TAG_FARFETCHD         0x113A
 #define EVENT_OBJ_PAL_TAG_NONE              0x11FF
 
 #include "data/field_event_obj/event_object_graphics_info_pointers.h"
@@ -517,9 +522,12 @@ const struct SpritePalette sEventObjectSpritePalettes[] = {
     {gEvtObjPal_TwinsPlus,    EVENT_OBJ_PAL_TAG_TWINS_PLUS},
     {gEvtObjPal_TwinsMinus,   EVENT_OBJ_PAL_TAG_TWINS_MINUS},
     {gEvtObjPal_Alien,        EVENT_OBJ_PAL_TAG_ALIEN},
+    {gEvtObjPal_Quilava,      EVENT_OBJ_PAL_TAG_QUILAVA},
+    {gEvtObjPal_Farfetchd,    EVENT_OBJ_PAL_TAG_FARFETCHD},
+    {gEvtObjPal_Imposter,     EVENT_OBJ_PAL_TAG_POSSESSED},
     {NULL,                  0x0000},
 };
-
+/*
 const u16 gPlayerReflectionPaletteTags[] = {
     EVENT_OBJ_PAL_TAG_9,
     EVENT_OBJ_PAL_TAG_9,
@@ -700,7 +708,7 @@ const u16 *const gObjectPaletteTagSets[] = {
     gObjectPaletteTags2,
     gObjectPaletteTags3,
 };
-
+*/
 #include "data/field_event_obj/berry_tree_graphics_tables.h"
 #include "data/field_event_obj/field_effect_objects.h"
 
@@ -1251,8 +1259,6 @@ static u8 GetEventObjectIdByLocalId(u8 localId)
     return EVENT_OBJECTS_COUNT;
 }
 
-// This function has the same nonmatching quirk as in Ruby/Sapphire.
-#ifndef NONMATCHING
 static u8 InitEventObjectStateFromTemplate(struct EventObjectTemplate *template, u8 mapNum, u8 mapGroup)
 {
     struct EventObject *eventObject;
@@ -1260,7 +1266,6 @@ static u8 InitEventObjectStateFromTemplate(struct EventObjectTemplate *template,
     s16 x;
     s16 y;
 
-    // mapNum and mapGroup are in the wrong registers (r7/r6 instead of r6/r7)
     if (GetAvailableEventObjectId(template->localId, mapNum, mapGroup, &eventObjectId))
     {
         return EVENT_OBJECTS_COUNT;
@@ -1272,6 +1277,7 @@ static u8 InitEventObjectStateFromTemplate(struct EventObjectTemplate *template,
     eventObject->active = TRUE;
     eventObject->triggerGroundEffectsOnMove = TRUE;
     eventObject->graphicsId = template->graphicsId;
+    // eventObject->palVariation = template->palVariation;
     eventObject->movementType = template->movementType;
     eventObject->localId = template->localId;
     eventObject->mapNum = mapNum;
@@ -1284,7 +1290,6 @@ static u8 InitEventObjectStateFromTemplate(struct EventObjectTemplate *template,
     eventObject->previousCoords.y = y;
     eventObject->currentElevation = template->elevation;
     eventObject->previousElevation = template->elevation;
-    // For some reason, 0x0F is placed in r9, to be used later
     eventObject->range.as_nybbles.x = template->movementRangeX;
     eventObject->range.as_nybbles.y = template->movementRangeY;
     eventObject->trainerType = template->trainerType & 0xFF;
@@ -1307,162 +1312,6 @@ static u8 InitEventObjectStateFromTemplate(struct EventObjectTemplate *template,
     }
     return eventObjectId;
 }
-#else
-static NAKED u8 InitEventObjectStateFromTemplate(struct EventObjectTemplate *template, u8 mapId, u8 mapGroupId)
-{
-    asm_unified("\tpush {r4-r7,lr}\n"
-                "\tmov r7, r9\n"
-                "\tmov r6, r8\n"
-                "\tpush {r6,r7}\n"
-                "\tsub sp, 0x4\n"
-                "\tadds r5, r0, 0\n"
-                "\tlsls r1, 24\n"
-                "\tlsrs r6, r1, 24\n"
-                "\tlsls r2, 24\n"
-                "\tlsrs r7, r2, 24\n"
-                "\tldrb r0, [r5]\n"
-                "\tadds r1, r6, 0\n"
-                "\tadds r2, r7, 0\n"
-                "\tmov r3, sp\n"
-                "\tbl GetAvailableEventObjectId\n"
-                "\tlsls r0, 24\n"
-                "\tcmp r0, 0\n"
-                "\tbeq _0808D66E\n"
-                "\tmovs r0, 0x10\n"
-                "\tb _0808D762\n"
-                "_0808D66E:\n"
-                "\tmov r0, sp\n"
-                "\tldrb r1, [r0]\n"
-                "\tlsls r0, r1, 3\n"
-                "\tadds r0, r1\n"
-                "\tlsls r0, 2\n"
-                "\tldr r1, =gEventObjects\n"
-                "\tadds r4, r0, r1\n"
-                "\tadds r0, r4, 0\n"
-                "\tbl ClearEventObject\n"
-                "\tldrh r3, [r5, 0x4]\n"
-                "\tadds r3, 0x7\n"
-                "\tlsls r3, 16\n"
-                "\tlsrs r3, 16\n"
-                "\tldrh r2, [r5, 0x6]\n"
-                "\tadds r2, 0x7\n"
-                "\tlsls r2, 16\n"
-                "\tlsrs r2, 16\n"
-                "\tldrb r0, [r4]\n"
-                "\tmovs r1, 0x1\n"
-                "\torrs r0, r1\n"
-                "\tmovs r1, 0x4\n"
-                "\torrs r0, r1\n"
-                "\tstrb r0, [r4]\n"
-                "\tldrb r0, [r5, 0x1]\n"
-                "\tstrb r0, [r4, 0x5]\n"
-                "\tldrb r0, [r5, 0x9]\n"
-                "\tstrb r0, [r4, 0x6]\n"
-                "\tldrb r0, [r5]\n"
-                "\tstrb r0, [r4, 0x8]\n"
-                "\tstrb r6, [r4, 0x9]\n"
-                "\tstrb r7, [r4, 0xA]\n"
-                "\tstrh r3, [r4, 0xC]\n"
-                "\tstrh r2, [r4, 0xE]\n"
-                "\tstrh r3, [r4, 0x10]\n"
-                "\tstrh r2, [r4, 0x12]\n"
-                "\tstrh r3, [r4, 0x14]\n"
-                "\tstrh r2, [r4, 0x16]\n"
-                "\tldrb r0, [r5, 0x8]\n"
-                "\tmovs r7, 0xF\n"
-                "\tadds r1, r7, 0\n"
-                "\tands r1, r0\n"
-                "\tldrb r2, [r4, 0xB]\n"
-                "\tmovs r0, 0x10\n"
-                "\tnegs r0, r0\n"
-                "\tmov r8, r0\n"
-                "\tands r0, r2\n"
-                "\torrs r0, r1\n"
-                "\tstrb r0, [r4, 0xB]\n"
-                "\tldrb r1, [r5, 0x8]\n"
-                "\tlsls r1, 4\n"
-                "\tands r0, r7\n"
-                "\torrs r0, r1\n"
-                "\tstrb r0, [r4, 0xB]\n"
-                "\tldrb r1, [r5, 0xA]\n"
-                "\tlsls r1, 28\n"
-                "\tmovs r0, 0xF\n"
-                "\tmov r9, r0\n"
-                "\tlsrs r1, 28\n"
-                "\tldrb r2, [r4, 0x19]\n"
-                "\tmov r0, r8\n"
-                "\tands r0, r2\n"
-                "\torrs r0, r1\n"
-                "\tstrb r0, [r4, 0x19]\n"
-                "\tldrb r1, [r5, 0xA]\n"
-                "\tlsrs r1, 4\n"
-                "\tlsls r1, 4\n"
-                "\tands r0, r7\n"
-                "\torrs r0, r1\n"
-                "\tstrb r0, [r4, 0x19]\n"
-                "\tldrh r0, [r5, 0xC]\n"
-                "\tstrb r0, [r4, 0x7]\n"
-                "\tldrh r0, [r5, 0xE]\n"
-                "\tstrb r0, [r4, 0x1D]\n"
-                "\tldr r1, =gInitialMovementTypeFacingDirections\n"
-                "\tldrb r0, [r5, 0x9]\n"
-                "\tadds r0, r1\n"
-                "\tldrb r1, [r0]\n"
-                "\tadds r0, r4, 0\n"
-                "\tadds r0, 0x20\n"
-                "\tstrb r1, [r0]\n"
-                "\tldrb r1, [r0]\n"
-                "\tadds r0, r4, 0\n"
-                "\tbl SetEventObjectDirection\n"
-                "\tadds r0, r4, 0\n"
-                "\tbl SetEventObjectDynamicGraphicsId\n"
-                "\tldr r1, =gRangedMovementTypes\n"
-                "\tldrb r0, [r4, 0x6]\n"
-                "\tadds r0, r1\n"
-                "\tldrb r0, [r0]\n"
-                "\tcmp r0, 0\n"
-                "\tbeq _0808D75E\n"
-                "\tldrb r2, [r4, 0x19]\n"
-                "\tadds r0, r7, 0\n"
-                "\tands r0, r2\n"
-                "\tcmp r0, 0\n"
-                "\tbne _0808D746\n"
-                "\tlsls r0, r2, 28\n"
-                "\tlsrs r0, 28\n"
-                "\tadds r0, 0x1\n"
-                "\tmov r1, r9\n"
-                "\tands r0, r1\n"
-                "\tmov r1, r8\n"
-                "\tands r1, r2\n"
-                "\torrs r1, r0\n"
-                "\tstrb r1, [r4, 0x19]\n"
-                "_0808D746:\n"
-                "\tldrb r2, [r4, 0x19]\n"
-                "\tmovs r0, 0xF0\n"
-                "\tands r0, r2\n"
-                "\tcmp r0, 0\n"
-                "\tbne _0808D75E\n"
-                "\tlsrs r1, r2, 4\n"
-                "\tadds r1, 0x1\n"
-                "\tlsls r1, 4\n"
-                "\tadds r0, r7, 0\n"
-                "\tands r0, r2\n"
-                "\torrs r0, r1\n"
-                "\tstrb r0, [r4, 0x19]\n"
-                "_0808D75E:\n"
-                "\tmov r0, sp\n"
-                "\tldrb r0, [r0]\n"
-                "_0808D762:\n"
-                "\tadd sp, 0x4\n"
-                "\tpop {r3,r4}\n"
-                "\tmov r8, r3\n"
-                "\tmov r9, r4\n"
-                "\tpop {r4-r7}\n"
-                "\tpop {r1}\n"
-                "\tbx r1\n"
-                ".pool");
-}
-#endif
 
 u8 Unref_TryInitLocalEventObject(u8 localId)
 {
@@ -1582,32 +1431,20 @@ static u8 TrySetupEventObjectSprite(struct EventObjectTemplate *eventObjectTempl
     eventObjectId = InitEventObjectStateFromTemplate(eventObjectTemplate, mapNum, mapGroup);
     if (eventObjectId == EVENT_OBJECTS_COUNT)
         return EVENT_OBJECTS_COUNT;
+    
+    RunOnSpawnEventObjectMapScript(eventObjectId);
 
     eventObject = &gEventObjects[eventObjectId];
     graphicsInfo = GetEventObjectGraphicsInfo(eventObject->graphicsId);
     if (spriteTemplate->paletteTag != 0xFFFF) 
     {
         LoadEventObjectPalette(spriteTemplate->paletteTag);
+        UpdatePaletteGammaType(IndexOfSpritePaletteTag(spriteTemplate->paletteTag), GAMMA_ALT);
     }
-    // paletteSlot = graphicsInfo->paletteSlot;
-    // if (paletteSlot == 0)
-    // {
-    //     LoadPlayerObjectReflectionPalette(graphicsInfo->paletteTag1, 0);
-    // }
-    // else if (paletteSlot == 10)
-    // {
-    //     LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag1, 10);
-    // }
-    // else if (paletteSlot >= 16)
-    // {
-    //     paletteSlot -= 16;
-    //     sub_808EAB0(graphicsInfo->paletteTag1, paletteSlot);
-    // }
 
     if (eventObject->movementType == MOVEMENT_TYPE_INVISIBLE || eventObject->movementType == MOVEMENT_TYPE_HIDDEN2)
         eventObject->invisible = TRUE;
 
-    // *(u16 *)&spriteTemplate->paletteTag = 0xFFFF;
     spriteId = CreateSprite(spriteTemplate, 0, 0, 0);
     if (spriteId == MAX_SPRITES)
     {
@@ -1623,7 +1460,6 @@ static u8 TrySetupEventObjectSprite(struct EventObjectTemplate *eventObjectTempl
         sprite->centerToCornerVecY += 8;
     sprite->pos1.x += 8;
     sprite->pos1.y += 16 + sprite->centerToCornerVecY;
-    // sprite->oam.paletteNum = paletteSlot;
     sprite->coordOffsetEnabled = TRUE;
     sprite->data[0] = eventObjectId;
     eventObject->spriteId = spriteId;
@@ -1754,7 +1590,9 @@ u8 AddPseudoEventObject(u16 graphicsId, void (*callback)(struct Sprite *), s16 x
     return spriteId;
 }
 
-u8 sprite_new(u16 graphicsId, u8 a1, s16 x, s16 y, u8 z, u8 direction)
+// Used to create sprite object events instead of a full object event
+// Used when resources are limiting, e.g. for the audience in contests or group members in Union Room
+u8 CreateObjectSprite(u16 graphicsId, u8 a1, s16 x, s16 y, u8 z, u8 direction)
 {
     u8 spriteId;
     struct Sprite *sprite;
@@ -1767,7 +1605,7 @@ u8 sprite_new(u16 graphicsId, u8 a1, s16 x, s16 y, u8 z, u8 direction)
     *(u16 *)&spriteTemplate.paletteTag = 0xFFFF;
     x += 7;
     y += 7;
-    sub_80930E0(&x, &y, 8, 16);
+    SetSpritePosToOffsetMapCoords(&x, &y, 8, 16);
     spriteId = CreateSpriteAtEnd(&spriteTemplate, x, y, 0);
     if (spriteId != MAX_SPRITES)
     {
@@ -1785,13 +1623,13 @@ u8 sprite_new(u16 graphicsId, u8 a1, s16 x, s16 y, u8 z, u8 direction)
         sprite->coordOffsetEnabled = TRUE;
         sprite->data[0] = a1;
         sprite->data[1] = z;
-        if (graphicsInfo->paletteSlot == 10)
+        // if (graphicsInfo->paletteSlot == 10)
+        // {
+        //     LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag1, graphicsInfo->paletteSlot);
+        // } else
+        if (graphicsInfo->paletteSlot >= 16)
         {
-            LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag1, graphicsInfo->paletteSlot);
-        }
-        else if (graphicsInfo->paletteSlot >= 16)
-        {
-            sub_808EAB0(graphicsInfo->paletteTag1, graphicsInfo->paletteSlot | 0xf0);
+            PatchObjectPalette(graphicsInfo->paletteTag1, graphicsInfo->paletteSlot | 0xf0);
         }
         if (subspriteTables != NULL)
         {
@@ -1930,23 +1768,8 @@ static void sub_808E1B8(u8 eventObjectId, s16 x, s16 y)
     if (spriteTemplate.paletteTag != 0xffff)
     {
         LoadEventObjectPalette(spriteTemplate.paletteTag);
+        UpdatePaletteGammaType(IndexOfSpritePaletteTag(spriteTemplate.paletteTag), GAMMA_ALT);
     }
-    // *(u16 *)&spriteTemplate.paletteTag = 0xFFFF;
-    // paletteSlot = graphicsInfo->paletteSlot;
-    // if (paletteSlot == 0)
-    // {
-    //     LoadPlayerObjectReflectionPalette(graphicsInfo->paletteTag1, graphicsInfo->paletteSlot);
-    // }
-    // else if (paletteSlot == 10)
-    // {
-    //     LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag1, graphicsInfo->paletteSlot);
-    // }
-    // else if (paletteSlot >= 16)
-    // {
-    //     paletteSlot -= 16;
-    //     sub_808EAB0(graphicsInfo->paletteTag1, paletteSlot);
-    // }
-    // *(u16 *)&spriteTemplate.paletteTag = 0xFFFF;
     spriteId = CreateSprite(&spriteTemplate, 0, 0, 0);
     if (spriteId != MAX_SPRITES)
     {
@@ -1968,7 +1791,6 @@ static void sub_808E1B8(u8 eventObjectId, s16 x, s16 y)
         {
             SetSubspriteTables(sprite, subspriteTables);
         }
-        // sprite->oam.paletteNum = paletteSlot;
         sprite->coordOffsetEnabled = TRUE;
         sprite->data[0] = eventObjectId;
         eventObject->spriteId = spriteId;
@@ -2020,14 +1842,14 @@ void EventObjectSetGraphicsId(struct EventObject *eventObject, u16 graphicsId)
     {
         PatchObjectPalette(graphicsInfo->paletteTag1, graphicsInfo->paletteSlot);
     }
-    else if (paletteSlot == 10)
-    {
-        LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag1, graphicsInfo->paletteSlot);
-    }
+    // else if (paletteSlot == 10)
+    // {
+    //     LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag1, graphicsInfo->paletteSlot);
+    // }
     else if (paletteSlot >= 16)
     {
         paletteSlot -= 16;
-        sub_808EAB0(graphicsInfo->paletteTag1, paletteSlot);
+        PatchObjectPalette(graphicsInfo->paletteTag1, paletteSlot);
     }
     sprite->oam.shape = graphicsInfo->oam->shape;
     sprite->oam.size = graphicsInfo->oam->size;
@@ -2102,9 +1924,11 @@ static void get_berry_tree_graphics(struct EventObject *eventObject, struct Spri
         if (berryId > ITEM_TO_BERRY(LAST_BERRY_INDEX))
             berryId = 0;
 
+        LoadEventObjectPalette(gBerryTreePaletteTagTablePointers[berryId][berryStage]);
         EventObjectSetGraphicsId(eventObject, gBerryTreeEventObjectGraphicsIdTablePointers[berryId][berryStage]);
         sprite->images = gBerryTreePicTablePointers[berryId];
-        sprite->oam.paletteNum = gBerryTreePaletteSlotTablePointers[berryId][berryStage];
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(gBerryTreePaletteTagTablePointers[berryId][berryStage]);
+        UpdatePaletteGammaType(sprite->oam.paletteNum, GAMMA_ALT);
         StartSpriteAnim(sprite, berryStage);
     }
 }
@@ -2236,7 +2060,7 @@ void FreeAndReserveObjectSpritePalettes(void)
     gReservedSpritePaletteCount = 12;
 }
 
-static void LoadEventObjectPalette(u16 paletteTag)
+void LoadEventObjectPalette(u16 paletteTag)
 {
     u16 i = FindEventObjectPaletteIndexByTag(paletteTag);
 
@@ -2256,20 +2080,22 @@ void Unused_LoadEventObjectPaletteSet(u16 *paletteTags)
     }
 }
 
+// NOTE: Does not use LoadSpritePaletteDayNight because of naming screen
+// NOTE: DOES use it, because of Dynamic Palettes.
 static u8 sub_808E8F4(const struct SpritePalette *spritePalette)
 {
     if (IndexOfSpritePaletteTag(spritePalette->tag) != 0xFF)
     {
         return 0xFF;
     }
-    return LoadSpritePalette(spritePalette);
+    return LoadSpritePaletteDayNight(spritePalette);
 }
 
 void PatchObjectPalette(u16 paletteTag, u8 paletteSlot)
 {
     u8 paletteIndex = FindEventObjectPaletteIndexByTag(paletteTag);
 
-    LoadPalette(sEventObjectSpritePalettes[paletteIndex].data, 16 * paletteSlot + 0x100, 0x20);
+    LoadPaletteDayNight(sEventObjectSpritePalettes[paletteIndex].data, 16 * paletteSlot + 0x100, 0x20);
 }
 
 void PatchObjectPaletteRange(const u16 *paletteTags, u8 minSlot, u8 maxSlot)
@@ -2295,7 +2121,7 @@ static u8 FindEventObjectPaletteIndexByTag(u16 tag)
     }
     return 0xFF;
 }
-
+/*
 void LoadPlayerObjectReflectionPalette(u16 tag, u8 slot)
 {
     u8 i;
@@ -2326,11 +2152,7 @@ void LoadSpecialObjectReflectionPalette(u16 tag, u8 slot)
         }
     }
 }
-
-static void sub_808EAB0(u16 tag, u8 slot)
-{
-    PatchObjectPalette(tag, slot);
-}
+*/
 
 void unref_sub_808EAC4(struct EventObject *eventObject, s16 x, s16 y)
 {
@@ -2423,6 +2245,7 @@ u8 GetEventObjectIdByXYZ(u16 x, u16 y, u8 z)
 
     for (i = 0; i < EVENT_OBJECTS_COUNT; i++)
     {
+        if (gEventObjects[i].graphicsId == EVENT_OBJ_GFX_TRICK_DOOR_NORTH) continue; //HACK
         if (gEventObjects[i].active)
         {
             if (gEventObjects[i].currentCoords.x == x && gEventObjects[i].currentCoords.y == y && EventObjectDoesZCoordMatch(&gEventObjects[i], z))
@@ -2759,7 +2582,7 @@ void OverrideSecretBaseDecorationSpriteScript(u8 localId, u8 mapNum, u8 mapGroup
         }
     }
 }
-
+/*
 void InitEventObjectPalettes(u8 palSlot)
 {
     FreeAndReserveObjectSpritePalettes();
@@ -2793,6 +2616,7 @@ u16 GetObjectPaletteTag(u8 palSlot)
     }
     return EVENT_OBJ_PAL_TAG_NONE;
 }
+*/
 
 movement_type_empty_callback(MovementType_None)
 movement_type_def(MovementType_WanderAround, gMovementTypeFuncs_WanderAround)
@@ -5080,7 +4904,7 @@ static bool8 DoesObjectCollideWithObjectAt(struct EventObject *eventObject, s16 
         {
             if ((curObject->currentCoords.x == x && curObject->currentCoords.y == y) || (curObject->previousCoords.x == x && curObject->previousCoords.y == y))
             {
-                if (curObject->graphicsId == EVENT_OBJ_GFX_TRICK_DOOR_NORTH) return FALSE; //HACK
+                if (curObject->graphicsId == EVENT_OBJ_GFX_TRICK_DOOR_NORTH) continue; //HACK
                 if (AreZCoordsCompatible(eventObject->currentElevation, curObject->currentElevation))
                 {
                     return TRUE;
@@ -5169,7 +4993,7 @@ void SetSpritePosToMapCoords(s16 mapX, s16 mapY, s16 *destX, s16 *destY)
     *destY = ((mapY - gSaveBlock1Ptr->pos.y) << 4) + dy;
 }
 
-void sub_80930E0(s16 *x, s16 *y, s16 dx, s16 dy)
+void SetSpritePosToOffsetMapCoords(s16 *x, s16 *y, s16 dx, s16 dy)
 {
     SetSpritePosToMapCoords(*x, *y, x, y);
     *x += dx;
@@ -6963,13 +6787,13 @@ bool8 MovementAction_ClearAffineAnim_Step0(struct EventObject *eventObject, stru
 
 bool8 MovementAction_Unknown1_Step0(struct EventObject *eventObject, struct Sprite *sprite)
 {
-    eventObject->unk3_3 = TRUE;
+    eventObject->disableReflection = TRUE;
     return TRUE;
 }
 
 bool8 MovementAction_Unknown2_Step0(struct EventObject *eventObject, struct Sprite *sprite)
 {
-    eventObject->unk3_3 = FALSE;
+    eventObject->disableReflection = FALSE;
     return TRUE;
 }
 
@@ -8260,12 +8084,12 @@ void GroundEffect_StepOnLongGrass(struct EventObject *eventObj, struct Sprite *s
 
 void GroundEffect_WaterReflection(struct EventObject *eventObj, struct Sprite *sprite)
 {
-    SetUpReflection(eventObj, sprite, 0);
+    SetUpReflection(eventObj, sprite, FALSE);
 }
 
 void GroundEffect_IceReflection(struct EventObject *eventObj, struct Sprite *sprite)
 {
-    SetUpReflection(eventObj, sprite, 1);
+    SetUpReflection(eventObj, sprite, TRUE);
 }
 
 void GroundEffect_FlowingWater(struct EventObject *eventObj, struct Sprite *sprite)

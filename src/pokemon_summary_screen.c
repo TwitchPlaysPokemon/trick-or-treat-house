@@ -1116,7 +1116,7 @@ static void SummaryScreen_VBlank(void)
 
 static void SummaryScreen_LoadingCB2(void)
 {
-    while (sub_81221EC() != TRUE && SummaryScreen_LoadGraphics() != TRUE && sub_81221AC() != TRUE);
+    while (MenuHelpers_CallLinkSomething() != TRUE && SummaryScreen_LoadGraphics() != TRUE && MenuHelpers_LinkSomething() != TRUE);
 }
 
 static bool8 SummaryScreen_LoadGraphics(void)
@@ -1463,7 +1463,7 @@ static void BeginCloseSummaryScreen(u8 taskId)
 
 static void CloseSummaryScreen(u8 taskId)
 {
-    if (sub_81221EC() != TRUE && !gPaletteFade.active)
+    if (MenuHelpers_CallLinkSomething() != TRUE && !gPaletteFade.active)
     {
         SetMainCallback2(sMonSummaryScreen->callback);
         gLastViewedMonIndex = sMonSummaryScreen->curMonIndex;
@@ -1481,7 +1481,7 @@ static void CloseSummaryScreen(u8 taskId)
 
 static void HandleInput(u8 taskId)
 {
-    if (sub_81221EC() != TRUE && !gPaletteFade.active)
+    if (MenuHelpers_CallLinkSomething() != TRUE && !gPaletteFade.active)
     {
         if (gMain.newKeys & DPAD_UP)
         {
@@ -1635,7 +1635,7 @@ static void sub_81C0704(u8 taskId)
         gSprites[sMonSummaryScreen->spriteIds[0]].data[2] = 0;
         break;
     default:
-        if (sub_81221EC() == 0 && FuncIsActiveTask(sub_81C20F0) == 0)
+        if (MenuHelpers_CallLinkSomething() == 0 && FuncIsActiveTask(sub_81C20F0) == 0)
         {
             data[0] = 0;
             gTasks[taskId].func = HandleInput;
@@ -1865,7 +1865,7 @@ static void HandleInput_MoveSelect(u8 taskId)
     u8 id = taskId;
     s16 *data = gTasks[taskId].data;
 
-    if (sub_81221EC() != 1)
+    if (MenuHelpers_CallLinkSomething() != 1)
     {
         if (gMain.newKeys & DPAD_UP)
         {
@@ -2000,7 +2000,7 @@ static void sub_81C12E4(u8 taskId)
 {
     s16* data = gTasks[taskId].data;
 
-    if (sub_81221EC() != TRUE)
+    if (MenuHelpers_CallLinkSomething() != TRUE)
     {
         if (gMain.newKeys & DPAD_UP)
         {
@@ -2145,7 +2145,7 @@ static void HandleReplaceMoveInput(u8 taskId)
 {
     s16* data = gTasks[taskId].data;
 
-    if (sub_81221EC() != TRUE)
+    if (MenuHelpers_CallLinkSomething() != TRUE)
     {
         if (gPaletteFade.active != TRUE)
         {

@@ -998,6 +998,231 @@ const union AffineAnimCmd *const gEventObjectRotScalAnimTable_KyogreGroudon[] = 
     gEventObjectRotScalAnim_8509060,
 };
 
+///////////////////////////////////////////////////////////////////////////////
+
+
+const union AnimCmd gEventObject4CellAnim_FaceSouth[] =
+{
+    ANIMCMD_FRAME(0, 16),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_FaceNorth[] =
+{
+    ANIMCMD_FRAME(1, 16),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_FaceWest[] =
+{
+    ANIMCMD_FRAME(2, 16),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_FaceEast[] =
+{
+    ANIMCMD_FRAME(3, 16),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_GoSouth[] =
+{
+    ANIMCMD_FRAME(4, 8),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(5, 8),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_GoNorth[] =
+{
+    ANIMCMD_FRAME(6, 8),
+    ANIMCMD_FRAME(1, 8),
+    ANIMCMD_FRAME(7, 8),
+    ANIMCMD_FRAME(1, 8),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_GoWest[] =
+{
+    ANIMCMD_FRAME(8, 8),
+    ANIMCMD_FRAME(2, 8),
+    ANIMCMD_FRAME(9, 8),
+    ANIMCMD_FRAME(2, 8),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_GoEast[] =
+{
+    ANIMCMD_FRAME(10, 8),
+    ANIMCMD_FRAME( 3, 8),
+    ANIMCMD_FRAME(11, 8),
+    ANIMCMD_FRAME( 3, 8),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_GoFastSouth[] =
+{
+    ANIMCMD_FRAME(4, 4),
+    ANIMCMD_FRAME(0, 4),
+    ANIMCMD_FRAME(5, 4),
+    ANIMCMD_FRAME(0, 4),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_GoFastNorth[] =
+{
+    ANIMCMD_FRAME(6, 4),
+    ANIMCMD_FRAME(1, 4),
+    ANIMCMD_FRAME(7, 4),
+    ANIMCMD_FRAME(1, 4),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_GoFastWest[] =
+{
+    ANIMCMD_FRAME(8, 4),
+    ANIMCMD_FRAME(2, 4),
+    ANIMCMD_FRAME(9, 4),
+    ANIMCMD_FRAME(2, 4),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_GoFastEast[] =
+{
+    ANIMCMD_FRAME(10, 4),
+    ANIMCMD_FRAME( 3, 4),
+    ANIMCMD_FRAME(11, 4),
+    ANIMCMD_FRAME( 3, 4),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_GoFasterSouth[] =
+{
+    ANIMCMD_FRAME(4, 2),
+    ANIMCMD_FRAME(0, 2),
+    ANIMCMD_FRAME(5, 2),
+    ANIMCMD_FRAME(0, 2),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_GoFasterNorth[] =
+{
+    ANIMCMD_FRAME(8, 2),
+    ANIMCMD_FRAME(2, 2),
+    ANIMCMD_FRAME(9, 2),
+    ANIMCMD_FRAME(2, 2),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_GoFasterWest[] =
+{
+    ANIMCMD_FRAME(7, 2),
+    ANIMCMD_FRAME(2, 2),
+    ANIMCMD_FRAME(8, 2),
+    ANIMCMD_FRAME(2, 2),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_GoFasterEast[] =
+{
+    ANIMCMD_FRAME(10, 2),
+    ANIMCMD_FRAME( 3, 2),
+    ANIMCMD_FRAME(11, 2),
+    ANIMCMD_FRAME( 3, 2),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_GoFastestSouth[] =
+{
+    ANIMCMD_FRAME(4, 1),
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_FRAME(5, 1),
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_GoFastestNorth[] =
+{
+    ANIMCMD_FRAME(8, 1),
+    ANIMCMD_FRAME(2, 1),
+    ANIMCMD_FRAME(9, 1),
+    ANIMCMD_FRAME(2, 1),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_GoFastestWest[] =
+{
+    ANIMCMD_FRAME(7, 1),
+    ANIMCMD_FRAME(2, 1),
+    ANIMCMD_FRAME(8, 1),
+    ANIMCMD_FRAME(2, 1),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_GoFastestEast[] =
+{
+    ANIMCMD_FRAME(10, 1),
+    ANIMCMD_FRAME( 3, 1),
+    ANIMCMD_FRAME(11, 1),
+    ANIMCMD_FRAME( 3, 1),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_FarfetchedCut[] =
+{
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(12, 8),
+    ANIMCMD_FRAME(13, 16),
+    ANIMCMD_FRAME(14, 4),
+    ANIMCMD_FRAME(13, 8),
+    ANIMCMD_FRAME(14, 4),
+    ANIMCMD_FRAME(13, 8),
+    ANIMCMD_FRAME(14, 4),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_END,
+};
+
+const union AnimCmd gEventObject4CellAnim_FarfetchedFlyLeft[] =
+{
+    ANIMCMD_FRAME(15, 8),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gEventObject4CellAnim_FarfetchedFlyRight[] =
+{
+    ANIMCMD_FRAME(15, 8, .hFlip = TRUE),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd *const gEventObjectImageAnimTable_Farfetchd[] = {
+    gEventObject4CellAnim_FaceSouth,
+    gEventObject4CellAnim_FaceNorth,
+    gEventObject4CellAnim_FaceWest,
+    gEventObject4CellAnim_FaceEast,
+    gEventObject4CellAnim_GoSouth,
+    gEventObject4CellAnim_GoNorth,
+    gEventObject4CellAnim_GoWest,
+    gEventObject4CellAnim_GoEast,
+    gEventObject4CellAnim_GoFastSouth,
+    gEventObject4CellAnim_GoFastNorth,
+    gEventObject4CellAnim_GoFastWest,
+    gEventObject4CellAnim_GoFastEast,
+    gEventObject4CellAnim_GoFasterSouth,
+    gEventObject4CellAnim_GoFasterNorth,
+    gEventObject4CellAnim_GoFasterWest,
+    gEventObject4CellAnim_GoFasterEast,
+    gEventObject4CellAnim_GoFastestSouth,
+    gEventObject4CellAnim_GoFastestNorth,
+    gEventObject4CellAnim_GoFastestWest,
+    gEventObject4CellAnim_GoFastestEast,
+    gEventObject4CellAnim_FarfetchedCut,
+    gEventObject4CellAnim_FarfetchedFlyLeft,
+    gEventObject4CellAnim_FarfetchedFlyRight,
+};
+
+///////////////////////////////////////////////////////////////////////////////
+
 const struct UnkStruct_085094AC gUnknown_085094AC[] = {
     {
         .anims = gEventObjectImageAnimTable_TrickDoor,
@@ -1025,6 +1250,10 @@ const struct UnkStruct_085094AC gUnknown_085094AC[] = {
     },
     {
         .anims = gEventObjectImageAnimTable_Fishing,
+        .animPos = {1, 3, 0, 2},
+    },
+    {
+        .anims = gEventObjectImageAnimTable_Farfetchd,
         .animPos = {1, 3, 0, 2},
     },
     {

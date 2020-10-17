@@ -1,4 +1,109 @@
 raw `
 Puzzle_TrainerHill4_MapScripts::
+	puzzle_info Puzzle_TrainerHill4_Name, CommonAuthor_GameFreak
+	puzzle_custom_intro Puzzle_TrainerHill4_Intro
+	puzzle_quip Puzzle_TrainerHill4_Quip
+	puzzle_candylist Puzzle_TrainerHill4_CandyList
 	.byte 0
+
+Puzzle_TrainerHill4_Name:
+	.string "Tower 4: The Quickening$"
+Puzzle_TrainerHill4_Intro:
+	.string "Hah! Back once more, are we?\p"
+	.string "This time we're going back for one\n"
+	.string "more bought of mini puzzles in the\l"
+	.string "dreaded Trainer Tower of Terror!\p"
+	.string "Hopefully this last one will give\n"
+	.string "you a bit more challenge.\p"
+	.string "See you on the other side!$"
+Puzzle_TrainerHill4_Quip:
+	.string "Ledges… Why did it have to be ledges?!\p"
+	.string "And then to combine them with\n"
+	.string "waxed floors?! Whyyyyy… … …$"
+.align 2
+Puzzle_TrainerHill4_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_ABUNDANT_05
+	.2byte FLAG_CANDY_ABUNDANT_06
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_COMMON_03
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_RARE_01
+	.2byte 0
+
+@ -----------------------------------------------------
 `
+
+script Puzzle_TrainerHill4_Trainer1A {
+	trainerbattle_single(TRAINER_01, 
+			"I never take a train.$", 
+			"My bike! You've destroyed it!$")
+	msgbox( "I'll take a bike over any train.$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill4_Trainer1B {
+	trainerbattle_single(TRAINER_02, 
+			"You can choose not to believe.$", 
+			"This must be a nightmare!$")
+	msgbox( "I will disappear into the darkness…$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill4_Trainer2A {
+	trainerbattle_single(TRAINER_03, 
+			"CARVER: Hey! Let's battle again!\n"
+			"Third time's the charm, right?$", 
+			"Damn!$")
+	msgbox( "CARVER: Oh well, we tried I guess.\n"
+			"Nothing to it.\p"
+			"Zander will be devastated,\n"
+			"but he'll recover eventually.$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill4_Trainer2B {
+	trainerbattle_single(TRAINER_04, 
+			"ZANDER: Now we've got fully equipped\n"
+			"team's to fight you with!$", 
+			"How?! Are you like\n"
+			"the champion or something?!$")
+	msgbox( "ZANDER: I think at this point, I'm\n"
+			"just gonna go cry in Carver's arms.\p"
+			"Beaten by a kid! Again!$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill4_Trainer3A {
+	trainerbattle_single(TRAINER_05, 
+			"Get ready for an AWESOME TIME!$", 
+			"Aww, couldn't you let me win?\n"
+			"Just this once?$")
+	msgbox( "Did you notice my skill? Wink!$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill4_Trainer3B {
+	trainerbattle_single(TRAINER_06, 
+			"I would like to RAWK OUT!$", 
+			"Go ahead and just crush my dreams,\n"
+			"will ya?$")
+	msgbox( "I want to go wild sometimes too.$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill4_Trainer4A {
+	trainerbattle_single(TRAINER_07, 
+			"Hi! Are you feeling upbeat today?$", 
+			"I can see you're feeling great!$")
+	msgbox( "Your {POKEMON} look ready to hustle!$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill4_Trainer4B {
+	trainerbattle_single(TRAINER_08, 
+			"I seek someone as my idol!$", 
+			"You're like a Heal Bell to me!$")
+	msgbox( "I've decided I choose YOU as my idol!\n"
+			"What's your name?\p"
+			"That's an odd name, “Stranger Danger”.\n"
+			"Very zen.$", MSGBOX_AUTOCLOSE)
+}

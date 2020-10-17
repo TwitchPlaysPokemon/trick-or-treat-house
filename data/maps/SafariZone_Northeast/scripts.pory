@@ -1,0 +1,5 @@
+raw `
+SafariZone_Northeast_MapScripts:: @ 8242C02
+	puzzle_info Puzzle_SafariImposters_Name, CommonAuthor_Tustin2121
+	.byte 0
+`

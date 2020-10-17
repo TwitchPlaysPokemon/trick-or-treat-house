@@ -226,7 +226,7 @@ static const u8 sTileBitAttributes[] =
     [MB_ISOLATED_HORIZONTAL_RAIL] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_VERTICAL_RAIL] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
     [MB_HORIZONTAL_RAIL] = TILE_ATTRIBUTES(TRUE, FALSE, FALSE),
-    [MB_UNUSED_D7] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
+    [MB_ELITE_FLOOR_FALL] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNUSED_D8] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNUSED_D9] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
     [MB_UNUSED_DA] = TILE_ATTRIBUTES(FALSE, FALSE, FALSE),
@@ -1483,6 +1483,14 @@ bool8 MetatileBehavior_IsBlueprint(u8 metatileBehavior)
 bool8 MetatileBehavior_IsBattlePyramidWarp(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_BATTLE_PYRAMID_WARP)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsEliteFloorFallWarp(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_ELITE_FLOOR_FALL)
         return TRUE;
     else
         return FALSE;

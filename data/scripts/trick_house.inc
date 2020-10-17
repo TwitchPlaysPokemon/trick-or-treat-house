@@ -9,6 +9,8 @@ PuzzleCommon_Text_DefaultQuip::
 PuzzleCommon_Text_DefaultDevCommentary::
 	.string "Tustin2121: Uh, this isn't supposed to\n"
 	.string "happen… Ignore this, please.$"
+PuzzleCommon_Text_DefaultFriendCommentary::
+	.string "Sorry, just hanging around.$"
 PuzzleCommon_DefaultSetupScript::
 	end
 PuzzleCommon_DefaultTeardownScript::
@@ -47,7 +49,8 @@ PuzzleCommon_EventScript_IncrementPuzzle::
 	addvar VAR_CURRENT_PUZZLE, 1
 	setvar VAR_PUZZLE_STATE, 0
 	incrementgamestat GAME_STAT_NUM_PUZZLES_COMPLETED
-	callnative CheckLastPuzzle
+	callnative CheckIfNoMorePuzzles
+	callnative AdvanceSunOffset
 	@ fallthrough
 PuzzleCommon_EventScript_ClearPuzzleData::
 	callnative ClearPuzzleEventData

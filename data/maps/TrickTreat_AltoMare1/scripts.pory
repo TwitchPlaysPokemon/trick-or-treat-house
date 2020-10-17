@@ -17,8 +17,8 @@ TrickTreat_AltoMare_Quip:
 	.string "INSERT QUIP HERE$"
 .align 2
 TrickTreat_AltoMare_Variables:
-	.2byte VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_YOUNGSTER
-	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_YOUNGSTER
+	.2byte VAR_INTRO_PERSON, TTH_FRIEND_WALLY
+	.2byte VAR_QUIP_PERSON,  TTH_FRIEND_WALLY
 	.2byte 0
 TrickTreat_AltoMare_CandyList:
 	.2byte 0

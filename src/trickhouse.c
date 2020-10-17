@@ -147,6 +147,19 @@ void RunPuzzleBlackoutScript()
 	}
 }
 
+void RunPuzzleEscapeRopeScript()
+{
+	u16 currPuzzle = GetCurrentPuzzleMapId();
+	if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(TRICK_HOUSE_END))
+	{
+		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_ESCAPE_SCRIPT);
+		if (script != NULL)
+		{
+			ScriptContext2_RunNewScript(script);
+		}
+	}
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 
 bool8 IsAfterFirstLoop()
@@ -171,10 +184,26 @@ void ClearTrainerFlags(struct ScriptContext *ctx)
 	memset(gSaveBlock1Ptr->flags + (FLAG_TRAINER_FLAG_START >> 3), 0, TRAINERS_PERMAP_END >> 3);
 }
 
-void CheckLastPuzzle(struct ScriptContext *ctx)
+// Input VAR_0x8000 = Puzzle to compare to
+void CheckIfNextPuzzleIs(struct ScriptContext *ctx)
+{
+	u16 currPuzzle;
+	u16 i = VarGet(VAR_CURRENT_PUZZLE);
+	i++;
+	if (i < DEBUG_PUZZLE_START)
+		currPuzzle = gPuzzleList[i];
+	else
+		currPuzzle = gDebugPuzzles[i-DEBUG_PUZZLE_START];
+	
+	gSpecialVar_Result = (currPuzzle == gSpecialVar_0x8000);
+}
+
+void CheckIfNoMorePuzzles(struct ScriptContext *ctx)
 {
 	u16 currPuzzle = GetCurrentPuzzleMapId();
+	gSpecialVar_Result = FALSE;
 	if (currPuzzle == 0xFFFF) {
+		gSpecialVar_Result = TRUE;
 		// Temporarily, loop the puzzles.
 		VarSet(VAR_CURRENT_PUZZLE, 0); //reset to 0
 	}
@@ -261,6 +290,18 @@ void ShowPuzzleDevCommentary(struct ScriptContext *ctx)
 	ShowFieldMessage(str);
 }
 
+extern const u8 PuzzleCommon_Text_DefaultFriendCommentary[];
+void ShowPuzzleFriendCommentary(struct ScriptContext *ctx)
+{
+	u16 currPuzzle = GetCurrentPuzzleMapId();
+	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_FRIEND_COMMENTARY);
+	if (str == NULL)
+	{
+		str = PuzzleCommon_Text_DefaultFriendCommentary;
+	}
+	ShowFieldMessage(str);
+}
+
 extern const u8 PuzzleCommon_DefaultVariableAssignments[];
 void AssignPuzzleMetaVariables(struct ScriptContext *ctx)
 {
@@ -268,11 +309,13 @@ void AssignPuzzleMetaVariables(struct ScriptContext *ctx)
 	const u16 *array = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_META_VARIABLES);
 	
 	// Reset introducer to trick master by default
-	VarSet(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_TRICK_MASTER);
+	VarSet(VAR_INTRO_PERSON, EVENT_OBJ_GFX_TRICK_MASTER);
 	// Randomize quip person by default
-	VarSet(VAR_OBJ_GFX_ID_1, (Random() % (EVENT_OBJ_GFX_FISHERMAN - EVENT_OBJ_GFX_BOY_1)) + EVENT_OBJ_GFX_BOY_1);
-	// Set devloper commentator to Tustin by default
-	VarSet(VAR_OBJ_GFX_ID_2, EVENT_OBJ_GFX_TRICK_MASTER);
+	VarSet(VAR_QUIP_PERSON, (Random() % (EVENT_OBJ_GFX_FISHERMAN - EVENT_OBJ_GFX_BOY_1)) + EVENT_OBJ_GFX_BOY_1);
+	// Set developer commentator to Tustin by default
+	VarSet(VAR_DEV_COMMENTATOR, EVENT_OBJ_GFX_DEV_TUSTIN2121);
+	// Set endroom friend to no one by default
+	VarSet(VAR_ENDROOM_FRIEND, EVENT_OBJ_GFX_GHOST);
 	
 	if ((IsAfterFirstLoop() || gMain.debugMode) 
 		&& GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_DEV_COMMENTARY) != NULL) 
@@ -282,13 +325,34 @@ void AssignPuzzleMetaVariables(struct ScriptContext *ctx)
 		FlagSet(FLAG_HIDE_DEVELOPER_COMMENTATOR);
 	}
 	
-	if (array != NULL)
-	{
-		while (array[0] != 0)
-		{
+	if (array != NULL) {
+		while (array[0] != 0) {
 			VarSet(array[0], array[1]);
 			array += 2;
 		}
+	}
+	
+	if (GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_FRIEND_COMMENTARY) != NULL) {
+		// Gotta check to make sure the friend is not the person the player is controlling
+		bool8 shouldShow = TRUE;
+		switch (gSaveBlock2Ptr->playerGender) {
+			case GENDER_M:
+				shouldShow = VarGet(VAR_ENDROOM_FRIEND) != TTH_FRIEND_BRENDAN;
+				break;
+			case GENDER_F:
+				shouldShow = VarGet(VAR_ENDROOM_FRIEND) != TTH_FRIEND_MAY;
+				break;
+			case GENDER_N:
+				shouldShow = VarGet(VAR_ENDROOM_FRIEND) != TTH_FRIEND_ALEX;
+				break;
+		}
+		if (shouldShow) {
+			FlagClear(FLAG_HIDE_ENDROOM_FRIEND);
+		} else {
+			FlagSet(FLAG_HIDE_ENDROOM_FRIEND);
+		}
+	} else {
+		FlagSet(FLAG_HIDE_ENDROOM_FRIEND);
 	}
 }
 
@@ -442,6 +506,7 @@ void RemovePuzzleItems(struct ScriptContext *ctx)
 			ptr = StringCopy(ptr, gText_And);
 			(*ptr++) = CHAR_SPACE;
 			ptr = ConvertUIntToDecimalStringN(ptr, gSpecialVar_Result-a, 0, 3);
+			(*ptr++) = CHAR_SPACE;
 			ptr = StringCopy(ptr, gText_MoreItems);
 		}
 		*ptr = EOS;
@@ -458,7 +523,7 @@ void RemoveExtraPokemon(struct ScriptContext *ctx)
 	
 	gSpecialVar_Result = TRUE;
 	for (i = 3; i < PARTY_SIZE; i++) {
-		if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) != SPECIES_NONE) break;
+		if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL) == SPECIES_NONE) break;
 		SendMonToPC(&gPlayerParty[i]);
 		ZeroMonData(&gPlayerParty[i]);
 	}
@@ -884,8 +949,112 @@ void DoSoundTest(struct ScriptContext *ctx)
 #undef tSelected
 #undef tMax
 
+///////////////////////////////////////////////////////////////////////////////
+// Number Select Dialog
+
+static const struct WindowTemplate sNumberSelectWinTemplate =
+{
+	.bg = 0,
+	.tilemapLeft = 22,
+	.tilemapTop = 11,
+	.width = 6,
+	.height = 2,
+	.paletteNum = 15,
+	.baseBlock = 0x0176,
+};
+
+static void Task_NumberSelect(u8 taskId);
+
+static void RedrawNumberSelectWindow(u8 windowId, u16 num)
+{
+	ConvertIntToDecimalStringN(gStringVar1, num, 2, 6);
+    AddTextPrinterParameterized(windowId, 1, gStringVar1, 0, 1, 0, NULL);
+}
+
+#define tWindow data[0]
+#define tSelected data[1]
+#define tMax data[2]
+
+static void Task_InitNumberSelect(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+	tWindow = AddWindow(&sNumberSelectWinTemplate);
+	
+    DrawStdWindowFrame(tWindow, FALSE);
+	FillWindowPixelBuffer(tWindow, PIXEL_FILL(1));
+	RedrawNumberSelectWindow(tWindow, tSelected);
+    schedule_bg_copy_tilemap_to_vram(0);
+
+    gTasks[taskId].func = Task_NumberSelect;
+}
+
+static void Task_NumberSelect(u8 taskId)
+{
+    s16* data = gTasks[taskId].data;
+
+    if (AdjustQuantityAccordingToDPadInput(&tSelected, tMax) == TRUE)
+    {
+        RedrawNumberSelectWindow(tWindow, tSelected);
+    }
+    else if (gMain.newKeys & A_BUTTON)
+    {
+		gSpecialVar_Result = tSelected;
+        PlaySE(SE_SELECT);
+        ClearStdWindowAndFrameToTransparent(tWindow, 0);
+		ClearWindowTilemap(tWindow);
+		RemoveWindow(tWindow);
+		EnableBothScriptContexts();
+		DestroyTask(taskId);
+    }
+    else if (gMain.newKeys & B_BUTTON)
+    {
+		gSpecialVar_Result = -1;
+        PlaySE(SE_SELECT);
+        ClearStdWindowAndFrameToTransparent(tWindow, 0);
+		ClearWindowTilemap(tWindow);
+		RemoveWindow(tWindow);
+		EnableBothScriptContexts();
+		DestroyTask(taskId);
+    }
+}
+
+void ChooseNumber(struct ScriptContext *ctx)
+{
+	u8 taskId = CreateTask(Task_InitNumberSelect, 0);
+	s16 *data = gTasks[taskId].data;
+	
+	tSelected = ctx->data[0];
+	tMax = ctx->data[1];
+}
+
+void ChooseNumberOfTradeItems(struct ScriptContext *ctx)
+{
+	u8 taskId = CreateTask(Task_InitNumberSelect, 0);
+	s16 *data = gTasks[taskId].data;
+	
+	tSelected = 1;
+	tMax = CountTotalItemQuantityInBag(VarGet(VAR_0x8002));
+}
+
+#undef tWindow
+#undef tSelected
+#undef tMax
+
+///////////////////////////////////////////////////////////////////////////////
 
 void PlayCredits(struct ScriptContext *ctx)
 {
 	SetMainCallback2(CB2_StartCreditsSequence);
 }
+
+void DebugGetGameStat(struct ScriptContext *ctx)
+{
+	gSpecialVar_Result = ctx->data[0] = GetGameStat(ctx->data[1]);
+}
+
+void DebugSetGameStat(struct ScriptContext *ctx)
+{
+	
+	SetGameStat(ctx->data[1], ctx->data[0]);
+}
+

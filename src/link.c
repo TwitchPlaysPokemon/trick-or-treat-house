@@ -541,7 +541,7 @@ static void ProcessRecvCmds(u8 unused)
                 InitBlockSend(block, sizeof(*block));
                 break;
             }
-            case LINKCMD_SEND_HELD_KEYS:
+            case LINKCMD_BLENDER_SEND_KEYS:
                 gLinkPartnersHeldKeys[i] = gRecvCmds[i][1];
                 break;
             case LINKCMD_0x5555:
@@ -626,7 +626,7 @@ static void ProcessRecvCmds(u8 unused)
                 gUnknown_030030EC[i] = TRUE;
                 break;
             case LINKCMD_0xAAAA:
-                sub_800A418();
+                SetBerryBlenderLinkCallback();
                 break;
             case LINKCMD_0xCCCC:
                 SendBlock(0, gUnknown_082ED1A8[gRecvCmds[i][1]].address, gUnknown_082ED1A8[gRecvCmds[i][1]].size);
@@ -649,8 +649,8 @@ static void BuildSendCmd(u16 command)
         case LINKCMD_0x2FFE:
             gSendCmd[0] = LINKCMD_0x2FFE;
             break;
-        case LINKCMD_SEND_HELD_KEYS:
-            gSendCmd[0] = LINKCMD_SEND_HELD_KEYS;
+        case LINKCMD_BLENDER_SEND_KEYS:
+            gSendCmd[0] = LINKCMD_BLENDER_SEND_KEYS;
             gSendCmd[1] = gMain.heldKeys;
             break;
         case LINKCMD_0x5555:
@@ -1012,11 +1012,11 @@ static void LinkCB_BlockSendEnd(void)
 static void sub_800A3F8(void)
 {
     GetMultiplayerId();
-    BuildSendCmd(LINKCMD_SEND_HELD_KEYS);
+    BuildSendCmd(LINKCMD_BLENDER_SEND_KEYS);
     gUnknown_020223C0++;
 }
 
-void sub_800A418(void)
+void SetBerryBlenderLinkCallback(void)
 {
     gUnknown_020223C0 = 0;
     if (gWirelessCommType)
@@ -1065,7 +1065,7 @@ bool8 SendBlock(u8 unused, const void *src, u16 size)
     return InitBlockSend(src, size);
 }
 
-bool8 sub_800A4D8(u8 a0)
+bool8 SendBlockRequest(u8 a0)
 {
     if (gWirelessCommType == TRUE)
     {
@@ -1302,7 +1302,7 @@ u8 sub_800A9A8(void)
     return flags;
 }
 
-u8 sub_800A9D8(void)
+u8 GetLinkPlayerCountAsBitFlags(void)
 {
     int i;
     u8 flags;
@@ -1554,7 +1554,7 @@ static void sub_800AD88(void)
     }
 }
 
-void sub_800ADF8(void)
+void SetLinkStandbyCallback(void)
 {
     if (gWirelessCommType == TRUE)
     {
@@ -1876,7 +1876,7 @@ static void sub_800B4A4(void)
     }
 }
 
-void sub_800B4C0(void)
+void SetWirelessCommType0(void)
 {
     if (gReceivedRemoteLinkPlayers == 0)
     {

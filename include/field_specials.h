@@ -22,7 +22,7 @@ u8 GetSSTidalLocation(s8 *mapGroup, s8 *mapNum, s16 *x, s16 *y);
 void sub_813A128(void);
 void sub_813A878(u8 a0);
 u8 sub_813BADC(u8 a0);
-bool8 sub_813B9C0(void);
+bool8 InPokemonCenter(void);
 void SetShoalItemFlag(u16 v0);
 void UpdateFrontierManiac(u16 a0);
 void UpdateFrontierGambler(u16 a0);

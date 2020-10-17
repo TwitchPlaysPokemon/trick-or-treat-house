@@ -35,7 +35,7 @@ Puzzle_Route110_Items:
 	.2byte ITEM_MACH_BIKE
 	.2byte 0
 Puzzle_Route110_Variables:
-	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_CYCLING_TRIATHLETE_F
+	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_CYCLING_TRIATHLETE_F
 	.2byte 0
 Puzzle_Route110_CandyList:
 	.2byte FLAG_HIDDEN_LIMITED_CANDY_0x6C

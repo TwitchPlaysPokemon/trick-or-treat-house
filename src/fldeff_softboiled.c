@@ -35,7 +35,7 @@ void sub_8161560(u8 taskId)
     gUnknown_0203CEC8.unkA =  gUnknown_0203CEC8.slotId;
     sub_81B0FCC(GetCursorSelectionMonId(), 0x1);
     display_pokemon_menu_message(0x5);
-    gTasks[taskId].func = sub_81B1370;
+    gTasks[taskId].func = Task_HandleChooseMonInput;
 }
 
 void sub_81615A8(u8 taskId)
@@ -48,7 +48,7 @@ void sub_81615A8(u8 taskId)
     {
         gUnknown_0203CEC8.unkB = 0;
         display_pokemon_menu_message(0x0);
-        gTasks[taskId].func = sub_81B1370;
+        gTasks[taskId].func = Task_HandleChooseMonInput;
         return;
     }
 
@@ -89,7 +89,7 @@ static void sub_8161724(u8 taskId)
     ClearStdWindowAndFrameToTransparent(0x6, FALSE);
     ClearWindowTilemap(0x6);
     display_pokemon_menu_message(0);
-    gTasks[taskId].func = sub_81B1370;
+    gTasks[taskId].func = Task_HandleChooseMonInput;
 }
 
 static void sub_8161784(u8 taskId)
@@ -97,7 +97,7 @@ static void sub_8161784(u8 taskId)
     if(sub_81B1BD4() == 1)
         return;
     display_pokemon_menu_message(0x5);
-    gTasks[taskId].func = sub_81B1370;
+    gTasks[taskId].func = Task_HandleChooseMonInput;
 }
 
 static void sub_81617B8(u8 taskId)

@@ -51,8 +51,8 @@ static const u8 sBort_PkmnBrokeFree[] = _("NO!ELF COME OUT");
 static const u8 sBort_ItAppearedCaught[] = _("REGARD AS HAVING CAUGHT AT FIRST");
 static const u8 sBort_AarghAlmostHadIt[] = _("TOO REGRET,ALMOST CAUGHT IT");
 static const u8 sBort_ShootSoClose[] = _("REGRET!ALMOST...");
-static const u8 sBort_GotchaPkmnCaught[] = _("SUCCESS {B_OPPONENT_MON1_NAME}\nCAUGHT{UNKNOWN_A}{PLAY_BGM MUS_KACHI22}\p");
-static const u8 sBort_GotchaPkmnCaught2[] = _("SUCCESS {B_OPPONENT_MON1_NAME}\nCAUGHT{UNKNOWN_A}{PLAY_BGM MUS_KACHI22}{PAUSE 127}");
+static const u8 sBort_GotchaPkmnCaught[] = _("SUCCESS {B_OPPONENT_MON1_NAME}\nCAUGHT{WAIT_SE}{PLAY_BGM MUS_KACHI22}\p");
+static const u8 sBort_GotchaPkmnCaught2[] = _("SUCCESS {B_OPPONENT_MON1_NAME}\nCAUGHT{WAIT_SE}{PLAY_BGM MUS_KACHI22}{PAUSE 127}");
 
 static const u8 sBort_TrainerBlockedBall[] = _("BALL SPRING TO ELF");
 static const u8 sBort_DontBeAThief[] = _("??? ??? ???? ???Y!");
@@ -478,6 +478,7 @@ const u8 * const gElfBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNCHOSEXASDESTINY - 12] = sText_PkmnChoseXAsDestiny,
     [STRINGID_PKMNLOSTFOCUS - 12] = sText_PkmnLostFocus,
     [STRINGID_USENEXTPKMN - 12] = sBort_UseNextPkmn,
+    [STRINGID_PKMNFLEDUSINGSNICKERS - 12] = sText_PkmnFledUsingSnickers,
     [STRINGID_PKMNFLEDUSINGITS - 12] = sText_PkmnFledUsingIts,
     [STRINGID_PKMNFLEDUSING - 12] = sText_PkmnFledUsing,
     [STRINGID_PKMNWASDRAGGEDOUT - 12] = sText_PkmnWasDraggedOut,
@@ -521,6 +522,7 @@ const u8 * const gElfBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNBOXLANETTESPCFULL - 12] = gText_PkmnBoxLanettesPCFull,
     [STRINGID_TRAINER1WINTEXT - 12] = sText_Trainer1WinText,
     [STRINGID_TRAINER2WINTEXT - 12] = sText_Trainer2WinText,
+    [STRINGID_POKEMONATECANDY - 12] = sText_OpponentAteCandy,
 };
 
 // Below are copies from the battle_messages.c file, with their explainations on how they

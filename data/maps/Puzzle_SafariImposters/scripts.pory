@@ -1,0 +1,2173 @@
+raw `
+Puzzle_SafariImposters_MapScripts:: @ 822BBBB
+	puzzle_info Puzzle_SafariImposters_Name, CommonAuthor_Tustin2121
+	puzzle_adjective Puzzle_SafariImposters_Adjective
+	puzzle_quip Puzzle_SafariImposters_Quip
+	puzzle_candylist Puzzle_SafariImposters_CandyList
+	puzzle_metavars Puzzle_SafariImposters_Variables
+	puzzle_friendcommentary Puzzle_SafariImposters_Friend
+	puzzle_devcommentary Puzzle_SafariImposters_DevComment
+	map_script MAP_SCRIPT_PUZZLE_SETUP_SCRIPT, Puzzle_SafariImposters_SetupPuzzle
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_SafariImposters_OnLoad
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_SafariImposters_OnResume
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_SafariImposters_OnFrame
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Puzzle_SafariImposters_WarpTable
+	.byte 0
+
+Puzzle_SafariImposters_Name:
+	.string "A Safari Among Friends$"
+Puzzle_SafariImposters_Adjective:
+	.string "{SIZE 0}suspicious{RESET_SIZE}$"
+Puzzle_SafariImposters_Quip:
+	.string "I'm fascinated by this species of\n"
+	.string "{POKEMON} that can hide in plain sight!\p"
+	.string "You think it's a plain old item in\n"
+	.string "the grass, then BAM! It attacks!\p"
+	.string "It's called Amoonguss.\n"
+	.string "Have you heard of it before?$"
+Puzzle_SafariImposters_Friend:
+	.string "{WALLY}: I, uh… I think I'm gonna sit\n"
+	.string "the rest of this Halloween out…\p"
+	.string "That whole DITTO situation was just\n"
+	.string "way too intense for me…\p"
+	.string "I'll head back to the Safari Zone.\n"
+	.string "It was peaceful there…$"
+Puzzle_SafariImposters_DevComment:
+	.string "Tustin2121: In case it wasn't obvious,\n"
+	.string "this puzzle was inspired by Among Us.\p"
+	.string "It's a great game, and this is probably\n"
+	.string "as close as it can get to happening in\l"
+	.string "a single-player format.\p"
+	.string "I actually added the friends popping up\n"
+	.string "throughout other puzzles specifically\l"
+	.string "so players could get to know them more\l"
+	.string "to make this puzzle more viable.$"
+
+.align 2
+Puzzle_SafariImposters_Variables:
+	.2byte VAR_QUIP_PERSON,    EVENT_OBJ_GFX_SCIENTIST_2
+	.2byte VAR_ENDROOM_FRIEND, TTH_FRIEND_WALLY
+	.2byte 0
+Puzzle_SafariImposters_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_RARE_01
+	.2byte FLAG_CANDY_RARE_02
+	.2byte 0
+
+@ -----------------------------------------------------
+#define VAR_PUZZLE_STAGE       VAR_PUZZLE_00
+#define VAR_CONFIG_IMPOSTER    VAR_PUZZLE_01
+#define VAR_IMPOSTER_SELECT    VAR_PUZZLE_02
+#define VAR_SAFARI_ZONE_STATE  VAR_PUZZLE_03
+#define VAR_SEARCH_STATE       VAR_PUZZLE_04
+
+#define FLAG_HIDE_SCROLL     FLAG_PUZZLE_20
+#define FLAG_DEFEATED_DITTO  FLAG_PUZZLE_30
+#define LID_SCIENTIST        7
+#define LID_JOEY             8
+#define LID_JAMES            9
+#define LID_IRENE            10
+#define LID_WALLY            11
+#define LID_BRENDAN          12
+#define LID_MAY              13
+#define LID_ALEX             14
+#define LID_EXTRA            15
+#define LID_FRIEND_A         VAR_PUZZLE_1A
+#define LID_FRIEND_B         VAR_PUZZLE_1B
+#define LID_CUTSCENE_PLAYER  VAR_PUZZLE_1C
+@ For the reveal scene
+#define LID_SELECTED         VAR_PUZZLE_10
+#define LID_FRIEND_1         VAR_PUZZLE_11
+#define LID_FRIEND_2         VAR_PUZZLE_12
+#define LID_FRIEND_3         VAR_PUZZLE_13
+#define LID_FRIEND_4         VAR_PUZZLE_14
+#define LID_FRIEND_5         VAR_PUZZLE_15
+@ compare against VAR_CONFIG_IMPOSTER:
+#define IMP_JOEY    0
+#define IMP_JAMES   1
+#define IMP_IRENE   2
+#define IMP_WALLY   3
+#define IMP_BRENDAN 4
+#define IMP_MAY     5
+#define IMP_ALEX    6
+
+@ -----------------------------------------------------
+
+Puzzle_SafariImposters_OnFrame:
+	map_script_2 VAR_LAST_WARP_ID, 0, Puzzle_SafariImposters_OnEnterMapFrame
+	map_script_2 VAR_TEMP_A, 1, Puzzle_SafariImposters_ShowMapTitle
+	map_script_2 VAR_PUZZLE_STAGE, 0, Puzzle_SafariImposters_IntroCutscene
+	map_script_2 VAR_PUZZLE_STAGE, 3, Puzzle_SafariImposters_ExitCutscene
+	map_script_2 VAR_PUZZLE_STAGE, 6, Puzzle_SafariImposters_ImposterReveal_Cutscene
+	.2byte 0
+Puzzle_SafariImposters_WarpTable:
+	map_script_2 VAR_LAST_WARP_ID, 0, Puzzle_SafariImposters_OnEnterMapWarp
+	map_script_2 VAR_PUZZLE_STAGE, 1, Puzzle_SafariImposters_OnMapWarpShowTitle
+	map_script_2 VAR_PUZZLE_STAGE, 4, Common_EventScript_FacePlayerEast
+	map_script_2 VAR_PUZZLE_STAGE, 6, Puzzle_SafariImposters_OnWarpIn_ImposterReveal
+	.2byte 0
+`
+
+// VAR_PUZZLE_STAGE:
+//  0 = Intro Cutscene
+//  1 = Ready to Enter into the Safari Zone
+//  2 = Doing Safari Zone
+//  3 = Exiting Safari Zone Cutscene
+//  4 = Imposter Search
+//  5 = Imposter Selection
+//  6 = Imposter Revealed Cutscene
+//  7 = Post Puzzle (Correct)
+//  8 = Post Puzzle (Incorrect)
+script(local) Puzzle_SafariImposters_OnLoad {
+	switch(var(VAR_PUZZLE_STAGE)) {
+		case 0: goto(Puzzle_SafariImposters_OnLoad_IntroSetup)
+		case 1: goto(Puzzle_SafariImposters_EnterStateSetup)
+		case 3: goto(Puzzle_SafariImposters_OnLoad_SetupReturn)
+		case 4: goto(Puzzle_SafariImposters_OnLoad_ImposterSearch)
+		case 5: goto(Puzzle_SafariImposters_OnLoad_ImposterSearch)
+		case 6: goto(Puzzle_SafariImposters_OnLoad_ImposterReveal)
+		case 7: goto(Puzzle_SafariImposters_OnLoad_PostPuzzle)
+		case 8: goto(Puzzle_SafariImposters_OnLoad_PostPuzzle)
+	}
+}
+
+script(local) Puzzle_SafariImposters_OnResume {
+	switch(var(VAR_PUZZLE_STAGE)) {
+		case 0: setflag (FLAG_HIDE_MAP_NAME_POPUP)
+		case 3: setflag (FLAG_HIDE_MAP_NAME_POPUP)
+		case 6: setflag (FLAG_HIDE_MAP_NAME_POPUP)
+		case 7: setflag (FLAG_HIDE_MAP_NAME_POPUP)
+		case 8: setflag (FLAG_HIDE_MAP_NAME_POPUP)
+	}
+	if (flag(FLAG_SYS_CTRL_OBJ_DELETE)) {
+		removeobject(LID_SELECTED)
+	}
+}
+
+script(local) Puzzle_SafariImposters_OnMapWarpShowTitle {
+	setvar(VAR_TEMP_A, 1)
+	turnobject (EVENT_OBJ_ID_PLAYER, DIR_NORTH)
+}
+script(local) Puzzle_SafariImposters_ShowMapTitle {
+	clearflag(FLAG_HIDE_MAP_NAME_POPUP)
+	special(ShowMapNamePopup)
+	setvar(VAR_TEMP_A, 2)
+}
+
+script(local) Puzzle_SafariImposters_OnEnterMapWarp {
+	switch(var(VAR_PUZZLE_STAGE)) {
+		case 1:
+			setvar(VAR_TEMP_A, 1)
+		case 4:
+		case 5:
+			// put the blocking lady to the side so she can step back into place
+			setobjectxyperm(4, 15, 13)
+			setobjectmovementtype(4, MOVEMENT_TYPE_FACE_LEFT)
+			setobjectxy(4, 15, 13)
+			turnobject(4, DIR_WEST)
+	}
+}
+script(local) Puzzle_SafariImposters_OnEnterMapFrame {
+	clearflag(FLAG_HIDE_MAP_NAME_POPUP)
+	setvar(VAR_LAST_WARP_ID, -1)
+	
+	switch(var(VAR_PUZZLE_STAGE)) {
+		case 4:
+		case 5:
+			// step the blocking lady back into place
+			lock
+			applymovement(LID_PLAYER, Common_Movement_WalkUp1)
+			waitmovement(0)
+			applymovement(4, Common_Movement_WalkLeft1)
+			waitmovement(0)
+			applymovement(4, Common_Movement_FaceUp)
+			waitmovement(0)
+			setobjectxyperm(4, 14, 13)
+			setobjectmovementtype(4, MOVEMENT_TYPE_FACE_UP)
+			release
+	}
+}
+
+// script Puzzle_SafariImposters_EnterState_ShowTitle {
+// 	if (var(VAR_PUZZLE_STATE) == 1) {
+// 		clearflag(FLAG_HIDE_MAP_NAME_POPUP)
+// 		special(ShowMapNamePopup)
+// 	}
+// 	setvar(VAR_TEMP_1, 2)
+// }
+
+script(local) Puzzle_SafariImposters_SetupPuzzle {
+	random(6)
+	copyvar(VAR_CONFIG_IMPOSTER, VAR_RESULT)
+	
+	checkplayergender
+	switch(var(VAR_RESULT)) {
+		case GENDER_M:
+			setvar(LID_FRIEND_A, LID_ALEX)
+			setvar(LID_FRIEND_B, LID_MAY)
+			setvar(LID_CUTSCENE_PLAYER, LID_BRENDAN)
+			if (var(VAR_CONFIG_IMPOSTER) == IMP_BRENDAN) {
+				setvar(VAR_CONFIG_IMPOSTER, IMP_ALEX)
+			}
+		case GENDER_F:
+			setvar(LID_FRIEND_A, LID_BRENDAN)
+			setvar(LID_FRIEND_B, LID_ALEX)
+			setvar(LID_CUTSCENE_PLAYER, LID_MAY)
+			if (var(VAR_CONFIG_IMPOSTER) == IMP_MAY) {
+				setvar(VAR_CONFIG_IMPOSTER, IMP_ALEX)
+			}
+		case GENDER_N:
+			setvar(LID_FRIEND_A, LID_BRENDAN)
+			setvar(LID_FRIEND_B, LID_MAY)
+			setvar(LID_CUTSCENE_PLAYER, LID_ALEX)
+	}
+	setflag(FLAG_HIDE_SCROLL)
+	// Testing only:
+	// setvar(VAR_PUZZLE_STAGE, 4)
+	// callnative(Imposter_SetupTalkingPoints)
+}
+
+
+// raw `
+
+// Puzzle_SafariImposters_EventScript_ExitSafariZone:: @ 822BBCB
+// 	lockall
+// 	applymovement LID_PLAYER, Puzzle_SafariImposters_Movement_ExitSafariZone
+// 	waitmovement 0
+// 	setvar VAR_SAFARI_ZONE_STATE, 0
+// 	releaseall
+// 	end
+
+
+
+// Puzzle_SafariImposters_EventScript_InfoAttendant:: @ 822BBEF
+// 	lock
+// 	faceplayer
+// 	msgbox Puzzle_SafariImposters_Text_WelcomeFirstTime, MSGBOX_YESNO
+// 	compare VAR_RESULT, YES
+// 	goto_if_eq Puzzle_SafariImposters_EventScript_FirstTimeInfo
+// 	msgbox Puzzle_SafariImposters_Text_ComeInAndEnjoy, MSGBOX_DEFAULT
+// 	release
+// 	end
+
+// Puzzle_SafariImposters_EventScript_FirstTimeInfo:: @ 822BC0E
+// 	msgbox Puzzle_SafariImposters_Text_FirstTimeInfo, MSGBOX_DEFAULT
+// 	release
+// 	end
+// `
+
+// Things
+
+script Puzzle_SafariImposters_EventScript_InfoAttendant {
+	lock
+	faceplayer
+	if (var(VAR_PUZZLE_STAGE) >= 4 && var(VAR_PUZZLE_STAGE) < 7) {
+		msgbox ("Did you find the imposter yet?")
+	} else {
+		msgbox ("Welcome to the SAFARI ZONE!\n"
+				"Is it your first time here?$", MSGBOX_YESNO)
+		if (var(VAR_RESULT) == YES) {
+			msgbox( "We're gonna give you 30 Safari Balls\n"
+					"for catching {POKEMON}.\p"
+					"We'll call you back if we get notice\n"
+					"that the DITTO has been caught.\p"
+					"Hopefully you'll come back later,\n"
+					"when we don't have wild DITTO around.$")
+		} else {
+			msgbox ("Excellent! We're lifting the usual\n"
+					"step limit this time, and we'll call\l"
+					"you back if the DITTO's signal vanishes.$")
+		}
+	}
+	release
+}
+
+script Puzzle_SafariImposters_EventScript_WelcomeAttendant {
+	if (var(VAR_PUZZLE_STAGE) >= 4 && var(VAR_PUZZLE_STAGE) < 7) {
+		msgbox ("Sorry, the door back to the Trick House\n"
+				"is malfunctioning right now.\p"
+				"(Don't worry, I'm guarding the door.\n"
+				"No one's leaving while I'm here.)$", MSGBOX_NPC)
+		end
+	}
+	msgbox ("Welcome to the SAFARI ZONE!\p"
+			"Here, you may witness many kinds of\n"
+			"POKéMON rarely seen in HOENN.\p"
+			"And, you'll see them in their wild,\n"
+			"untamed state in natural habitats.\p"
+			"What's more, we've thrown open the\n"
+			"gates to POKéMON TRAINERS.\p"
+			"You're encouraged to catch POKéMON\n"
+			"for keeps!\p"
+			"Come in and enjoy the SAFARI ZONE!$", MSGBOX_NPC)
+}
+
+script Puzzle_SafariImposters_EventScript_TrainerTipSign {
+	msgbox ("SAFARI ZONE TRAINER TIP!\p"
+			"Throw {POKEBLOCK}S at wild POKéMON to make\n"
+			"them less likely to flee.$", MSGBOX_SIGN)
+}
+
+script Puzzle_SafariImposters_EventScript_Joey {
+	switch(var(VAR_PUZZLE_STAGE)) {
+		case 1: goto(Puzzle_SafariImposters_Intro_Joey)
+		case 4: goto(Puzzle_SafariImposters_Search_Joey)
+		case 5: goto(Puzzle_SafariImposters_Select_Joey)
+		case 7: goto(Puzzle_SafariImposters_PostRight_Joey)
+		case 8: goto(Puzzle_SafariImposters_PostWrong_Joey)
+	}
+}
+script Puzzle_SafariImposters_EventScript_James {
+	switch(var(VAR_PUZZLE_STAGE)) {
+		case 1: goto(Puzzle_SafariImposters_Intro_James)
+		case 4: goto(Puzzle_SafariImposters_Search_James)
+		case 5: goto(Puzzle_SafariImposters_Select_James)
+		case 7: goto(Puzzle_SafariImposters_PostRight_James)
+		case 8: goto(Puzzle_SafariImposters_PostWrong_James)
+	}
+}
+script Puzzle_SafariImposters_EventScript_Irene {
+	switch(var(VAR_PUZZLE_STAGE)) {
+		case 1: goto(Puzzle_SafariImposters_Intro_Irene)
+		case 4: goto(Puzzle_SafariImposters_Search_Irene)
+		case 5: goto(Puzzle_SafariImposters_Select_Irene)
+		case 7: goto(Puzzle_SafariImposters_PostRight_Irene)
+		case 8: goto(Puzzle_SafariImposters_PostWrong_Irene)
+	}
+}
+script Puzzle_SafariImposters_EventScript_Wally {
+	switch(var(VAR_PUZZLE_STAGE)) {
+		case 1: goto(Puzzle_SafariImposters_Intro_Wally)
+		case 4: goto(Puzzle_SafariImposters_Search_Wally)
+		case 5: goto(Puzzle_SafariImposters_Select_Wally)
+		case 7: goto(Puzzle_SafariImposters_PostRight_Wally)
+		case 8: goto(Puzzle_SafariImposters_PostWrong_Wally)
+	}
+}
+script Puzzle_SafariImposters_EventScript_Brendan {
+	switch(var(VAR_PUZZLE_STAGE)) {
+		case 1: goto(Puzzle_SafariImposters_Intro_Brendan)
+		case 4: goto(Puzzle_SafariImposters_Search_Brendan)
+		case 5: goto(Puzzle_SafariImposters_Select_Brendan)
+		case 7: goto(Puzzle_SafariImposters_PostRight_Brendan)
+		case 8: goto(Puzzle_SafariImposters_PostWrong_Brendan)
+	}
+}
+script Puzzle_SafariImposters_EventScript_May {
+	switch(var(VAR_PUZZLE_STAGE)) {
+		case 1: goto(Puzzle_SafariImposters_Intro_May)
+		case 4: goto(Puzzle_SafariImposters_Search_May)
+		case 5: goto(Puzzle_SafariImposters_Select_May)
+		case 7: goto(Puzzle_SafariImposters_PostRight_May)
+		case 8: goto(Puzzle_SafariImposters_PostWrong_May)
+	}
+}
+script Puzzle_SafariImposters_EventScript_Alex {
+	switch(var(VAR_PUZZLE_STAGE)) {
+		case 1: goto(Puzzle_SafariImposters_Intro_Alex)
+		case 4: goto(Puzzle_SafariImposters_Search_Alex)
+		case 5: goto(Puzzle_SafariImposters_Select_Alex)
+		case 7: goto(Puzzle_SafariImposters_PostRight_Alex)
+		case 8: goto(Puzzle_SafariImposters_PostWrong_Alex)
+	}
+}
+
+script Puzzle_SafariImposters_EventScript_Scientist {
+	switch(var(VAR_PUZZLE_STAGE)) {
+		case 1: goto(Puzzle_SafariImposters_Intro_Scientist)
+		case 4: goto(Puzzle_SafariImposters_Search_Scientist)
+		case 5: goto(Puzzle_SafariImposters_Select_Scientist)
+		case 7: goto(Puzzle_SafariImposters_PostRight_Scientist)
+		case 8: goto(Puzzle_SafariImposters_PostWrong_Scientist)
+	}
+}
+
+///////////////////////////////////////////////////////
+// Intro
+
+script Puzzle_SafariImposters_OnLoad_IntroSetup {
+	setobjectxyperm(LID_SCIENTIST, 15, 9)
+	setobjectmovementtype(LID_SCIENTIST, MOVEMENT_TYPE_FACE_LEFT)
+	
+	setobjectxyperm(LID_JOEY, 12, 9)
+	setobjectmovementtype(LID_JOEY, MOVEMENT_TYPE_FACE_RIGHT)
+	
+	setobjectxyperm(LID_JAMES, 12, 10)
+	setobjectmovementtype(LID_JAMES, MOVEMENT_TYPE_FACE_RIGHT)
+	
+	setobjectxyperm(LID_IRENE, 13, 8)
+	setobjectmovementtype(LID_IRENE, MOVEMENT_TYPE_FACE_DOWN)
+	
+	setobjectxyperm(LID_WALLY, 14, 8)
+	setobjectmovementtype(LID_WALLY, MOVEMENT_TYPE_FACE_DOWN)
+	
+	setobjectxyperm(LID_FRIEND_A, 13, 11)
+	setobjectmovementtype(LID_FRIEND_A, MOVEMENT_TYPE_FACE_UP)
+	
+	setobjectxyperm(LID_FRIEND_B, 15, 11)
+	setobjectmovementtype(LID_FRIEND_B, MOVEMENT_TYPE_FACE_UP)
+}
+script Puzzle_SafariImposters_IntroCutscene {
+	lockall
+	applymovement(LID_SCIENTIST, Common_Movement_FaceDown)
+	waitmovement(LID_SCIENTIST)
+	msgbox ("Ah, good, you're just in time!\p"
+			"The more, the merrier! Come here!$")
+	closemessage
+	
+	applymovement(LID_PLAYER, Puzzle_SafariImposters_IntroCutscene_Movement1)
+	applymovement(LID_FRIEND_A, Common_Movement_FaceRight)
+	applymovement(LID_FRIEND_B, Common_Movement_FaceLeft)
+	waitmovement(LID_PLAYER)
+	applymovement(LID_FRIEND_A, Common_Movement_WalkInPlaceUp)
+	applymovement(LID_FRIEND_B, Common_Movement_WalkInPlaceUp)
+	waitmovement(LID_FRIEND_A)
+	
+	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceDown)
+	waitmovement(LID_SCIENTIST)
+	message("My name is PROFESSOR IMINI, but you\n"
+			"can simply call me the PROF.\p$")
+	waitmessage
+	
+	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceLeft)
+	message("Right, so as I was saying, I need\n"
+			"your help, and I need it quickly.\p"
+			"The experimental DITTO I mentioned\n"
+			"earlier is loose in the Safari Zone.\p$")
+	waitmessage
+			
+	applymovement(LID_PLAYER, Puzzle_SafariImposters_IntroCutscene_Movement2)
+	message("It has a tracker chip in it, but the\n"
+			"error distance on it is rather high.\p"
+			"So I need you all to go in and find\n"
+			"this DITTO in the wild manually.\p$")
+	waitmessage
+	
+	applymovement(LID_JOEY, Puzzle_SafariImposters_IntroCutscene_Movement3a)
+	applymovement(LID_JAMES, Puzzle_SafariImposters_IntroCutscene_Movement3b)
+	message("It's a DITTO: it could look like\n"
+			"anything in the park, so you need to\l"
+			"catch as many {POKEMON} as you can.\p$")
+	waitmessage
+			
+	applymovement(LID_IRENE, Puzzle_SafariImposters_IntroCutscene_Movement4a)
+	applymovement(LID_WALLY, Puzzle_SafariImposters_IntroCutscene_Movement4b)
+	message("When the tracker is captured in a ball,\n"
+			"we'll lose its signal here, so\l"
+			"we'll know when someone catches it.\p"
+			"Then you all will come back here and\n"
+			"we'll scan your parties for it.\p"
+			"And feel free to keep any other\n"
+			"{POKEMON} you catch, of course.\p"
+			"I'm paying for your Safari games, so\n"
+			"whenever you're ready, head on in.$")
+	waitmessage
+	waitbuttonpress
+	closemessage
+	
+	applymovement(LID_SCIENTIST, Puzzle_SafariImposters_IntroCutscene_Movement1)
+	applymovement(LID_WALLY, Puzzle_SafariImposters_IntroCutscene_Movement5)
+	fadescreenspeed(1, 2)
+	waitmovement(LID_SCIENTIST)
+	setflag(FLAG_PUZZLE_PARTY_LOCK)
+	
+	setvar(VAR_PUZZLE_STAGE, 1)
+	// removeobject(LID_SCIENTIST)
+	// removeobject(LID_JOEY)
+	// removeobject(LID_JAMES)
+	// removeobject(LID_IRENE)
+	// removeobject(LID_WALLY)
+	// removeobject(LID_FRIEND_A)
+	// removeobject(LID_FRIEND_B)
+	// call(Puzzle_SafariImposters_EnterStateSetup)
+	// addobject(LID_SCIENTIST)
+	// addobject(LID_JOEY)
+	// addobject(LID_JAMES)
+	// addobject(LID_IRENE)
+	// addobject(LID_WALLY)
+	// addobject(LID_FRIEND_A)
+	// addobject(LID_FRIEND_B)
+	// delay(5)
+	// fadescreenspeed(0, 2)
+	// clearflag(FLAG_HIDE_MAP_NAME_POPUP)
+	// special(ShowMapNamePopup)
+	warpcustom(MAP_PUZZLE_SAFARI_IMPOSTERS, 0xFF, 14, 11)
+	waitstate
+	releaseall
+}
+movement Puzzle_SafariImposters_IntroCutscene_Movement1 {
+	walk_up * 2
+}
+movement Puzzle_SafariImposters_IntroCutscene_Movement2 {
+	face_right
+	delay_16 * 3
+	face_up
+}
+movement Puzzle_SafariImposters_IntroCutscene_Movement3a {
+	face_down
+	delay_16 * 3
+	face_right
+}
+movement Puzzle_SafariImposters_IntroCutscene_Movement3b {
+	face_up
+	delay_16 * 3
+	face_right
+}
+movement Puzzle_SafariImposters_IntroCutscene_Movement4a {
+	face_right
+	delay_16 * 4
+	face_down
+}
+movement Puzzle_SafariImposters_IntroCutscene_Movement4b {
+	face_left
+	delay_16 * 3
+	face_down
+}
+movement Puzzle_SafariImposters_IntroCutscene_Movement5 {
+	delay_8
+	face_right
+	delay_16 * 3
+	face_up
+}
+
+///////////////////////////////////////////////////////
+// Entering the Safari Zone
+
+script Puzzle_SafariImposters_EnterStateSetup {
+	setobjectxyperm(LID_SCIENTIST, 11, 5)
+	setobjectmovementtype(LID_SCIENTIST, MOVEMENT_TYPE_FACE_RIGHT)
+	
+	setobjectxyperm(LID_JOEY, 16, 6)
+	setobjectmovementtype(LID_JOEY, MOVEMENT_TYPE_FACE_LEFT)
+	
+	setobjectxyperm(LID_JAMES, 15, 6)
+	setobjectmovementtype(LID_JAMES, MOVEMENT_TYPE_FACE_RIGHT)
+	
+	setobjectxyperm(LID_IRENE, 14, 3)
+	setobjectmovementtype(LID_IRENE, MOVEMENT_TYPE_LOOK_AROUND)
+	
+	setobjectxyperm(LID_WALLY, 17, 4)
+	setobjectmovementtype(LID_WALLY, MOVEMENT_TYPE_FACE_DOWN_UP_AND_LEFT)
+	
+	setobjectxyperm(LID_FRIEND_A, 12, 3)
+	setobjectmovementtype(LID_FRIEND_A, MOVEMENT_TYPE_FACE_DOWN_AND_LEFT)
+	
+	setobjectxyperm(LID_FRIEND_B, 13, 9)
+	setobjectmovementtype(LID_FRIEND_B, MOVEMENT_TYPE_LOOK_AROUND)
+}
+
+script(local) Puzzle_SafariImposters_Intro_Scientist {
+	msgbox ("PROF: When you're ready, please\n"
+			"head inside the Safari Zone.$", MSGBOX_NPC)
+}
+
+script(local) Puzzle_SafariImposters_Intro_Joey {
+	msgbox ("{JOEY}: We're gonna find this thing!\p"
+			"My top-percentage RATTATA has a great\n"
+			"nose for finding things! Mostly food.\p"
+			"As long as this place doesn't have any\n"
+			"snakes, we'll be fine…\l"
+			"I can't stand snakes…$", MSGBOX_NPC)
+}
+script(local) Puzzle_SafariImposters_Intro_James {
+	msgbox ("{JAMES}: Don't you worry! Leave the\n"
+			"bug-catching to me! I'm an expert!\l"
+			"I'm gonna catch me all the bugs!$", MSGBOX_NPC)
+}
+script(local) Puzzle_SafariImposters_Intro_Irene {
+	msgbox ("{IRENE}: I've heard theres CHANSEY\n"
+			"in Safari Zones like this! I've always\l"
+			"wanted one for myself!\p"
+			"They're so kind and nurturing, and\n"
+			"Breeders like me use them to help\l"
+			"take care of the {POKEMON} they raise.\p"
+			"I hope I run into one! And not anymore\n"
+			"bats. I'm sick of bats swooping down\l"
+			"onto my head all the time at night.$", MSGBOX_NPC)
+}
+script(local) Puzzle_SafariImposters_Intro_Wally {
+	msgbox ("{WALLY}: A-Are we really supposed to\n"
+			"split up and look for this thing??\p"
+			"I dunno how I feel about being by\n"
+			"myself out there with all those wild\l"
+			"angry {POKEMON} running around…\p"
+			"But then… maybe I'll find myself a\n"
+			"DRAGON-type {POKEMON}… Those are cool…$", MSGBOX_NPC)
+}
+script(local) Puzzle_SafariImposters_Intro_Brendan {
+	lock
+	faceplayer
+	message("{BRENDAN}: You ready to find this\n"
+			"thing, {PLAYER}? I am!\p"
+			"I'm gonna catch every {POKEMON} I come\n"
+			"across! Except for fish.\l"
+			"Fish {POKEMON} are for girls.\p")
+	waitmessage
+	checkplayergender
+	if (var(VAR_RESULT) == GENDER_F) {
+		message ("U-Uh, n-no offense.$")
+	} else {
+		message ("Uh… I-I mean… No offense or anything…\n"
+				"A-And I'm not calling you a… uh… …$")
+	}
+	waitmessage
+	waitbuttonpress
+	release
+}
+script(local) Puzzle_SafariImposters_Intro_May {
+	msgbox ("{MAY}: Hey, {PLAYER}! You ready for this?\p"
+			"Do you think they have HOPPIP here?\n"
+			"I've been meaning to catch one for dad.\p"
+			"I'll never understand how HOPPIP can\n"
+			"stand being blown around in the breeze.\l"
+			"I'd be scared out of my wits!$", MSGBOX_NPC)
+}
+script(local) Puzzle_SafariImposters_Intro_Alex {
+	msgbox ("{ALEX}: Hey, {PLAYER}. You ready to go?\p"
+			"I'm still preparing myself,\n"
+			"but I'll be along.\p"
+			"I've heard there can be spiders\n"
+			"in the tall grass in here.\p"
+			"I reckon if I can mentally prepare for\n"
+			"them, I won't freak out as badly.$", MSGBOX_NPC)
+}
+
+
+script Puzzle_SafariImposters_EventScript_EntranceCounterTrigger {
+	lockall
+	applymovement(LID_PLAYER, Common_Movement_WalkInPlaceUp)
+	waitmovement (0)
+	msgbox ("Welcome to the SAFARI ZONE!\n"
+			"And thanks for helping us out here!\p"
+			"Are you ready to begin?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == NO) {
+		msgbox ("Okay.\n"
+				"Please come back when you are.$")
+		closemessage
+		applymovement(LID_PLAYER, Common_Movement_WalkRight1)
+		waitmovement(0)
+		releaseall
+		end
+	}
+	msgbox ("Excellent! Well, here's some supplies\n"
+			"for your Safari Adventure!$")
+	playfanfare(MUS_FANFA4)
+	message("{PLAYER} received 30 Safari Balls,\n"
+			"a {POKEBLOCK} Case, and several tools!$")
+	giveitem(ITEM_POKEBLOCK_CASE, 1)
+	giveitem(ITEM_ACRO_BIKE, 1)
+	giveitem(ITEM_ROCKSMASH_ITEM, 1)
+	giveitem(ITEM_SURF_ITEM, 1)
+	giveitem(ITEM_DIVE_ITEM, 1)
+	giveitem(ITEM_WATERFALL_ITEM, 1)
+	callnative(Imposter_PopulatePokeblockCase)
+	waitfanfare
+	
+	msgbox ("We'll let you know if any news breaks\n"
+			"about finding the DITTO.\p"
+			"Until then, enjoy yourself, please!\n"
+			"Off you go on your wild excursion!$")
+	closemessage
+	applymovement(LID_PLAYER, Puzzle_SafariImposters_Movement_EnterSafariZone)
+	waitmovement (0)
+	
+	special(EnterSafariMode)
+	setvar(VAR_SAFARI_ZONE_STATE, 2)
+	setvar(VAR_PUZZLE_STAGE, 2)
+	// clearflag(FLAG_GOOD_LUCK_SAFARI_ZONE)
+	warp(MAP_SAFARI_ZONE_SOUTH, 0xFF, 32, 33)
+	waitstate
+}
+
+movement Puzzle_SafariImposters_Movement_EnterSafariZone {
+	walk_left * 6
+	walk_down
+	delay_16
+}
+
+///////////////////////////////////////////////////////
+// Time's Up!
+
+script Puzzle_SafariImposters_Retire {
+	msgbox ("You haven't heard anything yet about\n"
+			"the DITTO. You gotta keep looking.$", MSGBOX_SIGN)
+}
+
+script Puzzle_SafariImposters_GameEnds {
+	lockall
+	playse(SE_PIN)
+	applymovement (LID_PLAYER, Common_Movement_ExclamationMark)
+	specialvar(VAR_RESULT, GetPlayerState)
+	switch(var(VAR_RESULT)) {
+		case 1: // Acro Bike
+		case 2: // Mach Bike
+			msgbox ("Huh? You hear something snap under\n"
+					"the wheel of your bike tire.\p"
+					"You reach down and pick up the broken\n"
+					"pieces of an electronic chip…$")
+		case 3: // Surfing
+			msgbox ("Huh? There's something floating\n"
+					"in the water nearby.\p"
+					"You reach in and pick up a soggy\n"
+					"electronic chip… it sparks a bit\l"
+					"and then seems to die.$")
+		default:
+			msgbox ("Huh?\n"
+					"You hear something snap under foot.\p"
+					"You reach down and pick up the broken\n"
+					"pieces of an electronic chip…$")
+	}
+	waitmovement (0)
+	playse(SE_PINPON)
+	delay (20)
+	message("PROF: Good news!\n"
+			"The tracking signal has vanished!\l"
+			"Someone has caught the DITTO!\p"
+			"Everyone return to the entrance\n"
+			"so we can scan your parties!$")
+	waitmessage
+	waitbuttonpress
+	releaseall
+	goto (Puzzle_SafariImposters_Exit)
+}
+
+script Puzzle_SafariImposters_Exit {
+	setvar(VAR_SAFARI_ZONE_STATE, 1)
+	setvar(VAR_PUZZLE_STAGE, 3)
+	special (ExitSafariMode)
+	warp (MAP_PUZZLE_SAFARI_IMPOSTERS, 0xFF, 2, 5)
+	waitstate
+}
+
+///////////////////////////////////////////////////////
+// Exiting the Safari Zone
+
+script Puzzle_SafariImposters_OnLoad_SetupReturn {
+	setobjectxyperm(LID_SCIENTIST, 4, 3)
+	setobjectmovementtype(LID_SCIENTIST, MOVEMENT_TYPE_FACE_LEFT)
+	
+	setobjectxyperm(LID_JAMES, 3, 3)
+	setobjectmovementtype(LID_JAMES, MOVEMENT_TYPE_FACE_RIGHT)
+	
+	setobjectxyperm(LID_FRIEND_A, 2, 3)
+	setobjectmovementtype(LID_FRIEND_A, MOVEMENT_TYPE_FACE_RIGHT)
+}
+
+script Puzzle_SafariImposters_ExitCutscene {
+	lockall
+	applymovement(LID_PLAYER, Puzzle_SafariImposters_ExitCutscene_Movement1)
+	waitmovement(LID_PLAYER)
+	
+	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceUp)
+	waitmovement(LID_SCIENTIST)
+	playse(SE_PN_OFF)
+	waitse
+	delay(16)
+	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceLeft)
+	waitmovement(LID_SCIENTIST)
+	delay(8)
+	applymovement(LID_JAMES, Puzzle_SafariImposters_ExitCutscene_Movement2)
+	delay(8)
+	applymovement(LID_FRIEND_A, Common_Movement_WalkRight1)
+	waitmovement(LID_FRIEND_A)
+	delay(8)
+	
+	applymovement(LID_PLAYER, Common_Movement_WalkRight1)
+	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceUp)
+	waitmovement(LID_SCIENTIST)
+	playse(SE_PN_OFF)
+	waitse
+	delay(16)
+	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceLeft)
+	waitmovement(LID_SCIENTIST)
+	delay(8)
+	applymovement(LID_FRIEND_A, Puzzle_SafariImposters_ExitCutscene_Movement2)
+	delay(8)
+	applymovement(LID_PLAYER, Common_Movement_WalkRight1)
+	waitmovement(LID_PLAYER)
+	delay(8)
+	
+	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceUp)
+	waitmovement(LID_SCIENTIST)
+	playse(SE_PN_OFF)
+	waitse
+	delay(32)
+	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceLeft)
+	waitmovement(LID_SCIENTIST)
+	msgbox ("I don't understand it! There's no\n"
+			"sign of the DITTO in anyone's parties!\p"
+			"The tracer signal is gone…\n"
+			"It must have been caught…$")
+	removeobject(LID_JAMES)
+	removeobject(LID_FRIEND_A)
+	
+	applymovement(LID_PLAYER, Puzzle_SafariImposters_IntroCutscene_Movement3a)
+	msgbox ("{PLAYER} shows the PROF the broken\n"
+			"computer chip.$")
+	closemessage
+	
+	playse(SE_PIN)
+	applymovement(LID_SCIENTIST, Common_Movement_ExclamationMarkAndWait)
+	waitmovement(LID_SCIENTIST)
+	msgbox ("Wait, that's…! Oh no…$")
+	closemessage
+	
+	applymovement(LID_SCIENTIST, Puzzle_SafariImposters_ExitCutscene_Movement3)
+	waitmovement(LID_SCIENTIST)
+	playse(SE_PN_OFF)
+	applymovement(LID_PLAYER, Common_Movement_FaceDown)
+	waitmovement(LID_PLAYER)
+	applymovement(LID_PLAYER, Common_Movement_QuestionMark)
+	waitmovement(LID_PLAYER)
+	waitse
+	delay(32)
+	
+	playse(SE_PC_OFF)
+	waitse
+	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceDown)
+	waitmovement(LID_SCIENTIST)
+	message("No! The battery's died!\p$")
+	waitmessage
+	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceUp)
+	waitmovement(LID_SCIENTIST)
+	message("Well, at least I know you're clean…\n"
+			"I need your help with something…\p"
+			"That experimental DITTO? The reason\n"
+			"it's so special is because, well…\p"
+			"It has the ability to transform into\n"
+			"PEOPLE as well as {POKEMON}.$")
+	waitmessage
+	waitbuttonpress
+	playse(SE_PIN)
+	applymovement(LID_PLAYER, Common_Movement_ExclamationMark)
+	waitmovement(LID_PLAYER)
+	message("{PAUSE 48}Yes, quite.\p"
+			"I suspect one of your friends may be\n"
+			"the IMPOSTER DITTO in disguise!\p"
+			"You know them better than me. I want\n"
+			"you to try and figure out who it is.\p"
+			"But don't alert them! We don't want\n"
+			"the DITTO escaping again.\p"
+			"Go interact with them, see if you can\n"
+			"spot any discrepancies. And then\l"
+			"come back to me when you've got 'em.$")
+	waitmessage
+	waitbuttonpress
+	setvar(VAR_PUZZLE_STAGE, 4)
+	warpsilent(MAP_PUZZLE_SAFARI_IMPOSTERS, 0xFF, 11, 4)
+	callnative(Imposter_SetupTalkingPoints)
+	waitstate
+	releaseall
+}
+movement Puzzle_SafariImposters_ExitCutscene_Movement1 {
+	walk_left
+	walk_up * 2
+	walk_in_place_fastest_right
+}
+movement Puzzle_SafariImposters_ExitCutscene_Movement2 {
+	walk_down
+	walk_right * 8
+}
+movement Puzzle_SafariImposters_ExitCutscene_Movement3 {
+	walk_fast_down
+	walk_fast_left
+	walk_in_place_fastest_up
+}
+
+///////////////////////////////////////////////////////
+// Imposter Search
+
+raw `
+#define  TRAINER_JOEY_REAL       TRAINER_01
+#define  TRAINER_JAMES_REAL      TRAINER_02
+#define  TRAINER_IRENE_REAL      TRAINER_03
+#define  TRAINER_WALLY_REAL      TRAINER_04
+#define  TRAINER_BRENDAN_REAL    TRAINER_05
+#define  TRAINER_MAY_REAL        TRAINER_06
+#define  TRAINER_ALEX_REAL       TRAINER_07
+
+#define  TRAINER_JOEY_FAKE       TRAINER_08
+#define  TRAINER_JAMES_FAKE      TRAINER_09
+#define  TRAINER_IRENE_FAKE      TRAINER_10
+#define  TRAINER_WALLY_FAKE      TRAINER_11
+#define  TRAINER_BRENDAN_FAKE    TRAINER_12
+#define  TRAINER_MAY_FAKE        TRAINER_13
+#define  TRAINER_ALEX_FAKE       TRAINER_14
+`
+
+text(global) Puzzle_SafariImposters_Menu_Report { "Talk$" }
+text(global) Puzzle_SafariImposters_Menu_Battle { "Battle$" }
+text(global) Puzzle_SafariImposters_Menu_Cancel { "Bye$" }
+
+script Puzzle_SafariImposters_OnLoad_ImposterSearch {
+	setobjectxyperm(4, 14, 13)
+	setobjectmovementtype(4, MOVEMENT_TYPE_FACE_UP)
+	
+	setobjectxyperm(LID_SCIENTIST, 8, 4) //standing on trigger
+	setobjectmovementtype(LID_SCIENTIST, MOVEMENT_TYPE_FACE_RIGHT)
+	
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_JOEY) {
+		// Joey stands alone
+		setobjectxyperm(LID_FRIEND_B, 16, 5)
+		setobjectmovementtype(LID_FRIEND_B, MOVEMENT_TYPE_FACE_RIGHT)
+		
+		setobjectxyperm(LID_JAMES, 17, 5)
+		setobjectmovementtype(LID_JAMES, MOVEMENT_TYPE_FACE_LEFT)
+		
+		setobjectxyperm(LID_JOEY, 15, 9)
+		setobjectmovementtype(LID_JOEY, MOVEMENT_TYPE_FACE_DOWN_UP_AND_LEFT)
+	} 
+	elif (var(VAR_CONFIG_IMPOSTER) == IMP_JAMES) {
+		// James stands alone
+		setobjectxyperm(LID_JOEY, 16, 5)
+		setobjectmovementtype(LID_JOEY, MOVEMENT_TYPE_FACE_RIGHT)
+		
+		setobjectxyperm(LID_FRIEND_B, 17, 5)
+		setobjectmovementtype(LID_FRIEND_B, MOVEMENT_TYPE_FACE_LEFT)
+		
+		setobjectxyperm(LID_JAMES, 15, 9)
+		setobjectmovementtype(LID_JAMES, MOVEMENT_TYPE_FACE_DOWN_UP_AND_LEFT)
+	} 
+	else {
+		// Joey and James talking as usual
+		setobjectxyperm(LID_JOEY, 16, 5)
+		setobjectmovementtype(LID_JOEY, MOVEMENT_TYPE_FACE_RIGHT)
+		
+		setobjectxyperm(LID_JAMES, 17, 5)
+		setobjectmovementtype(LID_JAMES, MOVEMENT_TYPE_FACE_LEFT)
+		
+		setobjectxyperm(LID_FRIEND_B, 15, 9)
+		setobjectmovementtype(LID_FRIEND_B, MOVEMENT_TYPE_FACE_DOWN_UP_AND_LEFT)
+	}
+	
+	setobjectxyperm(LID_IRENE, 13, 6)
+	setobjectmovementtype(LID_IRENE, MOVEMENT_TYPE_LOOK_AROUND)
+	
+	setobjectxyperm(LID_WALLY, 14, 3)
+	setobjectmovementtype(LID_WALLY, MOVEMENT_TYPE_LOOK_AROUND)
+	
+	setobjectxyperm(LID_FRIEND_A, 12, 11)
+	setobjectmovementtype(LID_FRIEND_A, MOVEMENT_TYPE_FACE_UP_AND_RIGHT)
+}
+
+script(local) Puzzle_SafariImposters_Search_Joey {
+	lock
+	faceplayer
+	msgbox ("{JOEY}?: Hey, {PLAYER}, did they find\n"
+			"the DITTO yet? What's up?$")
+	addvar(VAR_SEARCH_STATE, 1)
+	multichoice(20, 6, 116, FALSE)
+	switch (var(VAR_RESULT)) {
+		case 0: // Talk
+			loadbyte(0, IMP_JOEY)
+			callnative(Imposter_ShowTalkingPoints)
+			waitmessage
+			waitbuttonpress
+		case 1: // Battle
+			if (defeated(TRAINER_JOEY_REAL) || defeated(TRAINER_JOEY_FAKE)) {
+				msgbox ("You already beat me! I'm not ready\n"
+						"for another go just yet!$")
+			}
+			else {
+				msgbox("Oh, a battle? Now? Uh, alright.\n"
+						"Let's go then!$")
+				if (var(VAR_CONFIG_IMPOSTER) != IMP_JOEY) {
+					trainerbattle_no_intro(TRAINER_JOEY_REAL, 
+						"Man, I always lose…$")
+				} else {
+					trainerbattle_no_intro(TRAINER_JOEY_FAKE, 
+						"I guess I need better POKéMON…$")
+				}
+				msgbox("I guess you caught some good\n"
+						"{POKEMON} today.$")
+			}
+	}
+	release
+}
+
+script(local) Puzzle_SafariImposters_Search_James {
+	lock
+	faceplayer
+	msgbox ("{JAMES}?: So, did they find the DITTO\n"
+			"yet? And do you know why they're being\l"
+			"all weird?$")
+	addvar(VAR_SEARCH_STATE, 1)
+	multichoice(20, 6, 116, FALSE)
+	switch (var(VAR_RESULT)) {
+		case 0: // Talk
+			loadbyte(0, IMP_JAMES)
+			callnative(Imposter_ShowTalkingPoints)
+			waitmessage
+			waitbuttonpress
+		case 1: // Battle
+			if (defeated(TRAINER_JAMES_REAL) || defeated(TRAINER_JAMES_FAKE)) {
+				msgbox ("Wow, chill out. I haven't had the chance\n"
+						"to heal my team. They're not letting\l"
+						"anyone back into the Trick House yet.$")
+			}
+			else {
+				msgbox("Oh, you wanna fight? Uh, sure.\n"
+						"I'll get to show off my team.$")
+				if (var(VAR_CONFIG_IMPOSTER) != IMP_JAMES) {
+					trainerbattle_no_intro(TRAINER_JAMES_REAL, 
+						"Wow, not even HERACROSS could make\n"
+						"a dent in you.$")
+				} else {
+					trainerbattle_no_intro(TRAINER_JAMES_FAKE, 
+						"Wow, not even SHARPEDO could make\n"
+						"a dent in you.$")
+				}
+				msgbox("Don't gloat about your win or anything.$")
+			}
+	}
+	release
+}
+
+script(local) Puzzle_SafariImposters_Search_Irene {
+	lock
+	faceplayer
+	msgbox ("{IRENE}?: What's going on, {PLAYER}?\n"
+			"Did they find the DITTO yet?$")
+	addvar(VAR_SEARCH_STATE, 1)
+	multichoice(20, 6, 116, FALSE)
+	switch (var(VAR_RESULT)) {
+		case 0: // Talk
+			loadbyte(0, IMP_IRENE)
+			callnative(Imposter_ShowTalkingPoints)
+			waitmessage
+			waitbuttonpress
+		case 1: // Battle
+			if (defeated(TRAINER_IRENE_REAL) || defeated(TRAINER_IRENE_FAKE)) {
+				msgbox ("My team isn't recovered.\n"
+						"We can't do another fight right now.$")
+			}
+			else {
+				msgbox("You wanna battle? Uh, alright.$")
+				if (var(VAR_CONFIG_IMPOSTER) != IMP_IRENE) {
+					trainerbattle_no_intro(TRAINER_IRENE_REAL, 
+						"My teams are never really made\n"
+						"for winning battles…$")
+				} else {
+					trainerbattle_no_intro(TRAINER_IRENE_FAKE, 
+						"I guess I need a better team makeup.$")
+				}
+				msgbox("It's fine. I've lost lots of times before.\p"
+						"There was one girl in Unova that won\n"
+						"against me like 75 times. I'm used to it.$")
+			}
+	}
+	release
+}
+
+script(local) Puzzle_SafariImposters_Search_Wally {
+	lock
+	faceplayer
+	msgbox ("{WALLY}?: Something feels off, {PLAYER}.\n"
+			"What's going on?$")
+	addvar(VAR_SEARCH_STATE, 1)
+	multichoice(20, 6, 116, FALSE)
+	switch (var(VAR_RESULT)) {
+		case 0: // Talk
+			loadbyte(0, IMP_WALLY)
+			callnative(Imposter_ShowTalkingPoints)
+			waitmessage
+			waitbuttonpress
+		case 1: // Battle
+			if (defeated(TRAINER_WALLY_REAL) || defeated(TRAINER_WALLY_FAKE)) {
+				msgbox ("You took out my team already. I can't\n"
+						"fight you again until we can heal.$")
+			}
+			else {
+				if (var(VAR_CONFIG_IMPOSTER) != IMP_WALLY) {
+					msgbox ("A battle? Here? Uh, sure, alright.\p"
+							"I can show off my SALAMENCE to you!\n"
+							"Let's go!$")
+					trainerbattle_no_intro(TRAINER_WALLY_REAL, 
+						"Aw, man… Even with my DRAGON-type…$")
+				} else {
+					msgbox("A battle? Here? Uh, sure, alright.$")
+					trainerbattle_no_intro(TRAINER_WALLY_FAKE, 
+						"Aw, man… If only SALAMENCE wasn't fainted…$")
+				}
+				msgbox("I guess I just gotta train harder.$")
+			}
+	}
+	release
+}
+
+script(local) Puzzle_SafariImposters_Search_Brendan {
+	lock
+	faceplayer
+	msgbox ("{BRENDAN}?: Did they find the DITTO yet,\n"
+			"{PLAYER}? They're being coy when I ask.$")
+	addvar(VAR_SEARCH_STATE, 1)
+	multichoice(20, 6, 116, FALSE)
+	switch (var(VAR_RESULT)) {
+		case 0: // Talk
+			loadbyte(0, IMP_BRENDAN)
+			callnative(Imposter_ShowTalkingPoints)
+			waitmessage
+			waitbuttonpress
+		case 1: // Battle
+			if (defeated(TRAINER_BRENDAN_REAL) || defeated(TRAINER_BRENDAN_FAKE)) {
+				msgbox ("Uh, no. Chill out.\n"
+						"I've still gotta visit the heal lady.$")
+			}
+			else {
+				msgbox("I've been challenged to a battle under\n"
+						"weirder circumstances. Sure, let's go.$")
+				if (var(VAR_CONFIG_IMPOSTER) != IMP_BRENDAN) {
+					trainerbattle_no_intro(TRAINER_BRENDAN_REAL, 
+						"Ow, that hurt…$")
+				} else {
+					trainerbattle_no_intro(TRAINER_BRENDAN_FAKE, 
+						"Damn, that stings…$")
+				}
+				msgbox("I guess more training is in order later.$")
+			}
+	}
+	release
+}
+
+script(local) Puzzle_SafariImposters_Search_May {
+	lock
+	faceplayer
+	msgbox ("{MAY}?: What's going on?\n"
+			"Why is everyone acting so odd?$")
+	addvar(VAR_SEARCH_STATE, 1)
+	multichoice(20, 6, 116, FALSE)
+	switch (var(VAR_RESULT)) {
+		case 0: // Talk
+			loadbyte(0, IMP_MAY)
+			callnative(Imposter_ShowTalkingPoints)
+			waitmessage
+			waitbuttonpress
+		case 1: // Battle
+			if (defeated(TRAINER_MAY_REAL) || defeated(TRAINER_MAY_FAKE)) {
+				msgbox ("What? No! My team is still passed out!$")
+			}
+			else {
+				msgbox("Uh, do we have to right now?\p"
+						"Right, lock eyes all that.\n"
+						"Fine, let's battle.$")
+				if (var(VAR_CONFIG_IMPOSTER) != IMP_MAY) {
+					trainerbattle_no_intro(TRAINER_MAY_REAL, 
+						"Down and out…$")
+				} else {
+					trainerbattle_no_intro(TRAINER_MAY_FAKE, 
+						"Shot out of the sky…$")
+				}
+				msgbox("I wasn't really ready for battle anyway.$")
+			}
+	}
+	release
+}
+
+script(local) Puzzle_SafariImposters_Search_Alex {
+	lock
+	faceplayer
+	msgbox ("{ALEX}?: Uh, what's up, {PLAYER}?\n"
+			"Is there something wrong?$")
+	addvar(VAR_SEARCH_STATE, 1)
+	multichoice(20, 6, 116, FALSE)
+	switch (var(VAR_RESULT)) {
+		case 0: // Talk
+			loadbyte(0, IMP_ALEX)
+			callnative(Imposter_ShowTalkingPoints)
+			waitmessage
+			waitbuttonpress
+		case 1: // Battle
+			if (defeated(TRAINER_ALEX_REAL) || defeated(TRAINER_ALEX_FAKE)) {
+				msgbox ("Uh, no. My team's still down from last\n"
+						"time you beat me up and took my candy.$")
+			}
+			else {
+				msgbox ("Sure, why not? There's nothing more\n"
+						"pressing going on right now or anything.$")
+				if (var(VAR_CONFIG_IMPOSTER) != IMP_ALEX) {
+					trainerbattle_no_intro(TRAINER_ALEX_REAL, 
+						"And there goes the battle…$")
+				} else {
+					trainerbattle_no_intro(TRAINER_ALEX_FAKE, 
+						"And there goes the battle…$")
+				}
+				msgbox ("My poor ABSOL… beaten up by a meanie…$")
+			}
+	}
+	release
+}
+
+
+raw `
+#undef TRAINER_JOEY_REAL
+#undef TRAINER_JAMES_REAL
+#undef TRAINER_IRENE_REAL
+#undef TRAINER_WALLY_REAL
+#undef TRAINER_BRENDAN_REAL
+#undef TRAINER_MAY_REAL
+#undef TRAINER_ALEX_REAL
+
+#undef TRAINER_JOEY_FAKE
+#undef TRAINER_JAMES_FAKE
+#undef TRAINER_IRENE_FAKE
+#undef TRAINER_WALLY_FAKE
+#undef TRAINER_BRENDAN_FAKE
+#undef TRAINER_MAY_FAKE
+#undef TRAINER_ALEX_FAKE
+`
+
+script(local) Puzzle_SafariImposters_Search_Scientist {
+	lock
+	faceplayer
+	if (var(VAR_SEARCH_STATE) < 1) {
+		msgbox ("Once you've sus'd out who the imposter\n"
+				"might be, come speak to me.$")
+	} elif (var(VAR_SEARCH_STATE) < 2) {
+		msgbox ("You can't have possibly worked out\n"
+				"who it is from talking with only a\l"
+				"handful of people! Go make sure!$")
+	} else {
+		msgbox ("Do you have an idea who the imposter\n"
+				"could be then?", MSGBOX_YESNO)
+		if (var(VAR_RESULT) == YES) {
+			msgbox ("Very well, point out who you think\n"
+					"it is then. I'll watch.$")
+			setvar(VAR_PUZZLE_STAGE, 5)
+		} else {
+			msgbox ("Let's make sure you know.")
+		}
+	}
+	release
+}
+
+///////////////////////////////////////////////////////
+// Imposter Selection
+
+script(local) Puzzle_SafariImposters_Select_Scientist {
+	msgbox ("Go talk to the person who you think\n"
+			"is the imposter.\p"
+			"We'll be right behind you when you\n"
+			"give the signal.$", MSGBOX_NPC)
+}
+
+script(local) Puzzle_SafariImposters_Select_Joey {
+	lock
+	msgbox ("Do you think {JOEY} is the imposter?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		setvar(VAR_IMPOSTER_SELECT, IMP_JOEY)
+		goto(Puzzle_SafariImposters_Select_Common)
+	}
+	release
+}
+script(local) Puzzle_SafariImposters_Select_James {
+	lock
+	msgbox ("Do you think {JAMES} is the imposter?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		setvar(VAR_IMPOSTER_SELECT, IMP_JAMES)
+		goto(Puzzle_SafariImposters_Select_Common)
+	}
+	release
+}
+script(local) Puzzle_SafariImposters_Select_Irene {
+	lock
+	msgbox ("Do you think {IRENE} is the imposter?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		setvar(VAR_IMPOSTER_SELECT, IMP_IRENE)
+		goto(Puzzle_SafariImposters_Select_Common)
+	}
+	release
+}
+script(local) Puzzle_SafariImposters_Select_Wally {
+	lock
+	msgbox ("Do you think {WALLY} is the imposter?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		setvar(VAR_IMPOSTER_SELECT, IMP_WALLY)
+		goto(Puzzle_SafariImposters_Select_Common)
+	}
+	release
+}
+script(local) Puzzle_SafariImposters_Select_Brendan {
+	lock
+	msgbox ("Do you think {BRENDAN} is the imposter?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		setvar(VAR_IMPOSTER_SELECT, IMP_BRENDAN)
+		goto(Puzzle_SafariImposters_Select_Common)
+	}
+	release
+}
+script(local) Puzzle_SafariImposters_Select_May {
+	lock
+	msgbox ("Do you think {MAY} is the imposter?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		setvar(VAR_IMPOSTER_SELECT, IMP_MAY)
+		goto(Puzzle_SafariImposters_Select_Common)
+	}
+	release
+}
+script(local) Puzzle_SafariImposters_Select_Alex {
+	lock
+	msgbox ("Do you think {ALEX} is the imposter?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		setvar(VAR_IMPOSTER_SELECT, IMP_ALEX)
+		goto(Puzzle_SafariImposters_Select_Common)
+	}
+	release
+}
+
+script(local) Puzzle_SafariImposters_Select_Common {
+	setvar(VAR_PUZZLE_STAGE, 6)
+	warpsilent(MAP_PUZZLE_SAFARI_IMPOSTERS, 0xFF, 14, 5)
+	waitstate
+	release
+}
+
+///////////////////////////////////////////////////////
+// Imposter Revealed Cutscene
+
+script Puzzle_SafariImposters_OnLoad_ImposterReveal {
+	// Move the chair out of the way
+	setmetatile(14, 3, 0x268, FALSE)
+	setmetatile(17, 5, 0x2BA, FALSE)
+	
+	callnative (HidePlayerOnLoad)
+	// Organize the friends into the LID_FRIEND_* vars.
+	// Friend_2 is the imposter if the player selected wrong
+	callnative(Imposter_RandomizeFriendLayout)
+	callnative(Imposter_LoadRevealStrings)
+	
+	setobjectxyperm(LID_SELECTED, 14, 4)
+	setobjectmovementtype(LID_SELECTED, MOVEMENT_TYPE_FACE_DOWN)
+	setobjectxyperm(LID_CUTSCENE_PLAYER, 15, 4)
+	setobjectmovementtype(LID_CUTSCENE_PLAYER, MOVEMENT_TYPE_FACE_LEFT)
+	setobjectxyperm(LID_SCIENTIST, 13, 4)
+	setobjectmovementtype(LID_SCIENTIST, MOVEMENT_TYPE_FACE_RIGHT)
+	
+	setobjectxyperm(LID_FRIEND_1, 12, 5)
+	setobjectmovementtype(LID_FRIEND_1, MOVEMENT_TYPE_FACE_RIGHT)
+	setobjectxyperm(LID_FRIEND_2, 13, 6)
+	setobjectmovementtype(LID_FRIEND_2, MOVEMENT_TYPE_FACE_UP)
+	setobjectxyperm(LID_FRIEND_3, 14, 6)
+	setobjectmovementtype(LID_FRIEND_3, MOVEMENT_TYPE_FACE_UP)
+	setobjectxyperm(LID_FRIEND_4, 15, 6)
+	setobjectmovementtype(LID_FRIEND_4, MOVEMENT_TYPE_FACE_UP)
+	setobjectxyperm(LID_FRIEND_5, 16, 5)
+	setobjectmovementtype(LID_FRIEND_5, MOVEMENT_TYPE_FACE_LEFT)
+	setobjectxyperm(LID_EXTRA, 6, 4)
+	setobjectmovementtype(LID_EXTRA, MOVEMENT_TYPE_FACE_RIGHT)
+	
+	setobjectxyperm(5, 14, 3)
+	setobjectmovementtype(5, MOVEMENT_TYPE_FACE_DOWN)
+	setobjectxyperm(6, 13, 2)
+	setobjectmovementtype(6, MOVEMENT_TYPE_FACE_DOWN)
+	setobjectxyperm(4, 14, 7)
+	setobjectmovementtype(4, MOVEMENT_TYPE_FACE_UP)
+}
+script Puzzle_SafariImposters_OnWarpIn_ImposterReveal {
+	callnative (HidePlayerOnLoad)
+}
+
+script Puzzle_SafariImposters_ImposterReveal_Cutscene {
+	lockall
+	callnative(Imposter_LoadRevealStrings)
+	
+	// "What's going on?"
+	selectpointer(Puzzle_SafariImposters_StringTable_Text1, VAR_IMPOSTER_SELECT)
+	message(0)
+	applymovement(LID_SELECTED, Puzzle_SafariImposters_ImposterReveal_Movement1)
+	waitmessage
+	waitbuttonpress
+	playse(SE_SELECT)
+	waitmovement(LID_SELECTED)
+	// "You're a witch, kid"
+	message(Puzzle_SafariImposters_ImposterReveal_Text2_Scientist)
+	applymovement(LID_SCIENTIST, Puzzle_SafariImposters_ImposterReveal_Movement2)
+	waitmessage
+	waitbuttonpress
+	playse(SE_SELECT)
+	waitmovement(LID_SCIENTIST)
+	// "What?!"
+	selectpointer(Puzzle_SafariImposters_StringTable_Text3, VAR_IMPOSTER_SELECT)
+	message(0)
+	applymovement(LID_SELECTED, Puzzle_SafariImposters_ImposterReveal_Movement3a)
+	applymovement(LID_FRIEND_1, Puzzle_SafariImposters_ImposterReveal_Movement3b)
+	applymovement(LID_FRIEND_2, Puzzle_SafariImposters_ImposterReveal_Movement3c)
+	applymovement(LID_FRIEND_3, Puzzle_SafariImposters_ImposterReveal_Movement3d)
+	applymovement(LID_FRIEND_4, Puzzle_SafariImposters_ImposterReveal_Movement3e)
+	applymovement(LID_FRIEND_5, Puzzle_SafariImposters_ImposterReveal_Movement3f)
+	waitmessage
+	waitbuttonpress
+	playse(SE_SELECT)
+	waitmovement(LID_SELECTED)
+	// "Time to die--"
+	message(Puzzle_SafariImposters_ImposterReveal_Text4_Scientist)
+	applymovement(LID_SCIENTIST, Puzzle_SafariImposters_ImposterReveal_Movement2)
+	waitmessage
+	waitbuttonpress
+	playse(SE_SELECT)
+	waitmovement(LID_SCIENTIST)
+	// "Hey, guys, what did I miss?"
+	selectpointer(Puzzle_SafariImposters_StringTable_Text5, VAR_CONFIG_IMPOSTER)
+	message(0)
+	delay(40)
+	applymovement(LID_SELECTED, Puzzle_SafariImposters_ImposterReveal_Movement5a)
+	delay(4)
+	applymovement(LID_FRIEND_2, Puzzle_SafariImposters_ImposterReveal_Movement5a)
+	applymovement(LID_FRIEND_3, Puzzle_SafariImposters_ImposterReveal_Movement5b)
+	applymovement(LID_FRIEND_5, Puzzle_SafariImposters_ImposterReveal_Movement5d)
+	applymovement(5, Puzzle_SafariImposters_ImposterReveal_Movement5c)
+	delay(8)
+	applymovement(6, Puzzle_SafariImposters_ImposterReveal_Movement5d)
+	applymovement(LID_FRIEND_1, Puzzle_SafariImposters_ImposterReveal_Movement5a)
+	applymovement(LID_FRIEND_4, Puzzle_SafariImposters_ImposterReveal_Movement5b)
+	applymovement(LID_SCIENTIST, Puzzle_SafariImposters_ImposterReveal_Movement5c)
+	applymovement(LID_CUTSCENE_PLAYER, Puzzle_SafariImposters_ImposterReveal_Movement5b)
+	waitmessage
+	waitbuttonpress
+	closemessage
+	// person walks on
+	addobject(LID_EXTRA)
+	applymovement(LID_EXTRA, Puzzle_SafariImposters_ImposterReveal_Movement6)
+	waitmovement(LID_EXTRA)
+	delay(60)
+	message(Puzzle_SafariImposters_ImposterReveal_Text6)
+	waitmessage
+	waitbuttonpress
+	closemessage
+	delay(10)
+	// Everyone turns to the imposter, this is where the scene splits
+	if (var(VAR_IMPOSTER_SELECT) == VAR_CONFIG_IMPOSTER) {
+		goto(Puzzle_SafariImposters_ImposterReveal_CutsceneCorrect)
+	}
+	goto(Puzzle_SafariImposters_ImposterReveal_CutsceneWrong)
+}
+
+script Puzzle_SafariImposters_ImposterReveal_CutsceneCorrect {
+	applymovement(LID_CUTSCENE_PLAYER, Common_Movement_FaceLeft)
+	delay(4)
+	applymovement(LID_SELECTED, Common_Movement_FaceDown)
+	applymovement(LID_FRIEND_5, Common_Movement_FaceLeft)
+	delay(6)
+	applymovement(LID_FRIEND_1, Common_Movement_FaceRight)
+	applymovement(LID_FRIEND_2, Common_Movement_FaceUp)
+	delay(2)
+	applymovement(LID_SCIENTIST, Common_Movement_FaceRight)
+	applymovement(5, Common_Movement_FaceDown)
+	delay(4)
+	applymovement(LID_FRIEND_3, Common_Movement_FaceUp)
+	applymovement(6, Common_Movement_FaceDown)
+	delay(4)
+	applymovement(LID_FRIEND_4, Common_Movement_FaceUp)
+	delay(30)
+	applymovement(LID_SELECTED, Common_Movement_FaceRight)
+	waitmovement(LID_SELECTED)
+	
+	// "Ditto!"
+	message(Puzzle_SafariImposters_ImposterReveal_Text7)
+	playmoncry(SPECIES_DITTO, 0)
+	waitmoncry
+	waitmessage
+	
+	getpartysize
+	if (var(VAR_RESULT) > 0) {
+		setwildbattle(SPECIES_DITTO, 32, ITEM_QUICK_CLAW)
+		setvar(VAR_BATTLE_MOD, BATTLEMOD_NO_WHITEOUT)
+		setflag(FLAG_SYS_CTRL_OBJ_DELETE)
+		dowildbattle
+		clearflag(FLAG_SYS_CTRL_OBJ_DELETE)
+		
+		specialvar(VAR_RESULT, GetBattleOutcome)
+	} else {
+		fadescreen(1)
+		removeobject(LID_SELECTED)
+		setvar(VAR_RESULT, B_OUTCOME_LOST)
+		fadescreen(0)
+	}
+	
+	if (var(VAR_RESULT) == B_OUTCOME_WON || var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
+		setflag(FLAG_DEFEATED_DITTO)
+		message(Puzzle_SafariImposters_ImposterReveal_Text8a)
+		waitmessage
+		waitbuttonpress
+		closemessage
+	} 
+	else {
+		loadword(0, Puzzle_SafariImposters_ImposterReveal_Text8b)
+		switch(var(VAR_RESULT)) {
+			case B_OUTCOME_RAN: loadword(0, Puzzle_SafariImposters_ImposterReveal_Text8c)
+			case B_OUTCOME_PLAYER_TELEPORTED: loadword(0, Puzzle_SafariImposters_ImposterReveal_Text8c)
+		}
+		message(0)
+		applymovement(LID_FRIEND_2, Puzzle_SafariImposters_ImposterReveal_Movement8b)
+		delay(12)
+		applymovement(LID_SCIENTIST, Puzzle_SafariImposters_ImposterReveal_Movement8a)
+		delay(4)
+		applymovement(4, Puzzle_SafariImposters_ImposterReveal_Movement8a)
+		delay(6)
+		applymovement(6, Puzzle_SafariImposters_ImposterReveal_Movement8a)
+		waitmessage
+		waitbuttonpress
+		closemessage
+		waitmovement(LID_SCIENTIST)
+		waitmovement(6)
+		waitmovement(4)
+	}
+	setvar(VAR_PUZZLE_STAGE, 7)
+	warpsilent(MAP_PUZZLE_SAFARI_IMPOSTERS, 0xFF, 14, 5)
+	waitstate
+	releaseall
+}
+script Puzzle_SafariImposters_ImposterReveal_CutsceneWrong {
+	applymovement(LID_CUTSCENE_PLAYER, Common_Movement_FaceDown)
+	applymovement(LID_FRIEND_2, Puzzle_SafariImposters_ImposterReveal_Movement7)
+	delay(4)
+	applymovement(LID_SELECTED, Common_Movement_FaceDown)
+	applymovement(LID_FRIEND_5, Common_Movement_FaceLeft)
+	delay(6)
+	applymovement(LID_FRIEND_1, Common_Movement_FaceDown)
+	delay(2)
+	applymovement(LID_SCIENTIST, Common_Movement_FaceDown)
+	applymovement(5, Common_Movement_FaceDown)
+	delay(4)
+	applymovement(LID_FRIEND_3, Common_Movement_FaceLeft)
+	applymovement(6, Common_Movement_FaceDown)
+	delay(4)
+	applymovement(LID_FRIEND_4, Common_Movement_FaceLeft)
+	waitmovement(LID_FRIEND_2)
+	delay(32)
+	
+	// "Ditto!"
+	message(Puzzle_SafariImposters_ImposterReveal_Text7)
+	playmoncry(SPECIES_DITTO, 0)
+	waitmoncry
+	waitmessage
+	delay(32)
+	closemessage
+	
+	applymovement(LID_FRIEND_2, Puzzle_SafariImposters_ImposterReveal_Movement8a)
+	delay(16)
+	applymovement(4, Puzzle_SafariImposters_ImposterReveal_Movement8a)
+	delay(12)
+	message(Puzzle_SafariImposters_ImposterReveal_Text8b)
+	delay(4)
+	applymovement(LID_SCIENTIST, Puzzle_SafariImposters_ImposterReveal_Movement8a)
+	delay(6)
+	applymovement(6, Puzzle_SafariImposters_ImposterReveal_Movement8a)
+	waitmessage
+	waitmovement(LID_SCIENTIST)
+	waitbuttonpress
+	closemessage
+	
+	setvar(VAR_PUZZLE_STAGE, 8)
+	warpsilent(MAP_PUZZLE_SAFARI_IMPOSTERS, 0xFF, 14, 5)
+	waitstate
+	releaseall
+}
+
+movement Puzzle_SafariImposters_ImposterReveal_Movement1 {
+	walk_in_place_fast_left
+	delay_16 * 2
+	walk_in_place_fast_right
+	delay_16 * 2
+	walk_in_place_fast_down
+}
+
+text Puzzle_SafariImposters_ImposterReveal_Text1_Joey {
+			"{JOEY}?: Wh-what's going on? Guys??\n"
+			"Did I do something wrong?$"
+}
+text Puzzle_SafariImposters_ImposterReveal_Text1_James {
+			"{JAMES}?: Um, what's up, guys?\n"
+			"Is something wrong?$"
+}
+text Puzzle_SafariImposters_ImposterReveal_Text1_Irene {
+			"{IRENE}?: What's up? Why are we\n"
+			"gathering around?$"
+}
+text Puzzle_SafariImposters_ImposterReveal_Text1_Wally {
+			"{WALLY}?: Uhhhhhh… … …\n"
+			"Wh-What's going on, guys?$"
+}
+text Puzzle_SafariImposters_ImposterReveal_Text1_Brendan {
+			"{BRENDAN}?: Oh, uh… did I miss something?\n"
+			"Why is everyone staring at me?$"
+}
+text Puzzle_SafariImposters_ImposterReveal_Text1_May {
+			"{MAY}?: Uh, hi, everyone? Why are\n"
+			"we all gathering around? What'd I do?$"
+}
+text Puzzle_SafariImposters_ImposterReveal_Text1_Alex {
+			"{ALEX}?: Oh, hey, what's going on…?\n"
+			"Is this an intervention for something?$"
+}
+
+movement Puzzle_SafariImposters_ImposterReveal_Movement2 {
+	walk_in_place_down
+	delay_16 * 4
+	walk_in_place_fast_right
+}
+
+text Puzzle_SafariImposters_ImposterReveal_Text2_Scientist {
+			"PROF: Boys and girl…\n"
+			"I have some bad news…\l"
+			"No one seems to have caught the DITTO.\p"
+			"Which leads me and {PLAYER} to believe\n"
+			"that it has transformed into {STR_VAR_1}.$"
+}
+// Shock and horror: What?!
+
+movement Puzzle_SafariImposters_ImposterReveal_Movement3a {
+	emote_exclamation_mark
+	walk_in_place_fastest_left
+	delay_8
+	walk_in_place_fastest_right
+	delay_8
+	walk_in_place_fastest_left
+	delay_8
+	walk_in_place_fastest_right
+	delay_16
+	walk_in_place_fastest_down
+}
+movement Puzzle_SafariImposters_ImposterReveal_Movement3b {
+	delay_2 * 5
+	emote_exclamation_mark
+	delay_8
+	walk_in_place_fastest_down
+	delay_16
+	walk_in_place_fastest_right
+}
+movement Puzzle_SafariImposters_ImposterReveal_Movement3c {
+	delay_2 * 2
+	emote_exclamation_mark
+	delay_16
+	walk_in_place_fastest_left
+	delay_8
+	walk_in_place_fastest_up
+}
+movement Puzzle_SafariImposters_ImposterReveal_Movement3d {
+	delay_2 * 6
+	emote_exclamation_mark
+	delay_8 * 3
+	walk_in_place_fastest_right
+	delay_16
+	walk_in_place_fastest_up
+}
+movement Puzzle_SafariImposters_ImposterReveal_Movement3e {
+	delay_2 * 3
+	emote_exclamation_mark
+	delay_8
+	walk_in_place_fastest_left
+	delay_16
+	walk_in_place_fastest_up
+}
+movement Puzzle_SafariImposters_ImposterReveal_Movement3f {
+	delay_2 * 5
+	emote_exclamation_mark
+	delay_8
+	walk_in_place_fastest_down
+	delay_16
+	walk_in_place_fastest_left
+}
+
+text Puzzle_SafariImposters_ImposterReveal_Text3_Joey {
+			"{JOEY}?: WHAT?! That's insane!\n"
+			"I'm not a DITTO!!$"
+}
+text Puzzle_SafariImposters_ImposterReveal_Text3_James {
+			"{JAMES}?: WHAT?! H-How can it even DO\n"
+			"that?! I'm not--!$"
+}
+text Puzzle_SafariImposters_ImposterReveal_Text3_Irene {
+			"{IRENE}?: WHAT?! That's amazing!\n"
+			"And terrifying! But I'm not--!$"
+}
+text Puzzle_SafariImposters_ImposterReveal_Text3_Wally {
+			"{WALLY}?: WH-WHAT?! N-NO!! I-I-I'M NOT--!\n"
+			"Guys! Com'on it's me!!$"
+}
+text Puzzle_SafariImposters_ImposterReveal_Text3_Brendan {
+			"{BRENDAN}?: WHAAAAA?! That's impossible!\n"
+			"DITTO can't possibly--!$"
+}
+text Puzzle_SafariImposters_ImposterReveal_Text3_May {
+			"{MAY}?: WHAT?! That's not possible!\n"
+			"How would I be--?!$"
+}
+text Puzzle_SafariImposters_ImposterReveal_Text3_Alex {
+			"{ALEX}?: WHAT?! That's a thing?!\n"
+			"That'd be awesome to meet--!$"
+}
+
+
+text(global) Puzzle_SafariImposters_ImposterReveal_Text_he { "he's" }
+text(global) Puzzle_SafariImposters_ImposterReveal_Text_she { "she's" }
+text(global) Puzzle_SafariImposters_ImposterReveal_Text_they { "they've" }
+
+text Puzzle_SafariImposters_ImposterReveal_Text4_Scientist {
+			"PROF: You see, kids, {PLAYER} has been\n"
+			"miticulously interviewing every one of\l"
+			"you and thought that {STR_VAR_1} is the\l"
+			"most likely candidate.\p"
+			"Apparently {STR_VAR_2} been acting\n"
+			"very… … … {PAUSE 20}suspicious.\p"
+			"And so, to unmask the DITTO,\n"
+			"we're going to--$"
+}
+
+movement Puzzle_SafariImposters_ImposterReveal_Movement5a {
+	emote_question_mark
+	delay_16
+	face_right
+	delay_16
+	face_left
+}
+movement Puzzle_SafariImposters_ImposterReveal_Movement5b {
+	emote_question_mark
+	delay_8 * 3
+	face_left
+	delay_16
+	face_right
+	delay_16
+	face_left
+}
+movement Puzzle_SafariImposters_ImposterReveal_Movement5c {
+	emote_question_mark
+	delay_16 * 2
+	face_left
+	delay_16
+	delay_4
+	emote_exclamation_mark
+}
+movement Puzzle_SafariImposters_ImposterReveal_Movement5d {
+	face_left
+	emote_exclamation_mark
+}
+
+
+text Puzzle_SafariImposters_ImposterReveal_Text5_Joey {
+			"???: Hey guys, sorry I'm late! I was\n"
+			"too busy feeding RATTATA some {POKEBLOCK}s.$"
+}
+text Puzzle_SafariImposters_ImposterReveal_Text5_James {
+			"???: Sorry! Sorry I'm late!\n"
+			"I just had to catch that HERACROSS!$"
+}
+text Puzzle_SafariImposters_ImposterReveal_Text5_Irene {
+			"???: Hey, guys! I was busy talking with\n"
+			"a CHANSEY! I'm here now!$"
+}
+text Puzzle_SafariImposters_ImposterReveal_Text5_Wally {
+			"???: Sorry I'm late! You won't believe\n"
+			"the DRAGON {POKEMON} that I caught!$"
+}
+text Puzzle_SafariImposters_ImposterReveal_Text5_Brendan {
+			"???: Hey! Sorry I'm late! I was scanning\n"
+			"some {POKEMON} for dad!$"
+}
+text Puzzle_SafariImposters_ImposterReveal_Text5_May {
+			"???: I'm here! Sorry! I was catching\n"
+			"some cute {POKEMON} to study later!$"
+}
+text Puzzle_SafariImposters_ImposterReveal_Text5_Alex {
+			"???: Don't worry, dudes! I'm here!\n"
+			"Got caught up on a RHYHORN, no biggie.$$"
+}
+
+movement Puzzle_SafariImposters_ImposterReveal_Movement6 {
+	walk_right * 4
+}
+text Puzzle_SafariImposters_ImposterReveal_Text6 {
+			"{STR_VAR_3}: Uhhhhhhhh…$"
+}
+
+movement Puzzle_SafariImposters_ImposterReveal_Movement7 {
+	face_right
+	delay_8
+	face_left
+	delay_8
+	face_right
+	delay_8
+	face_left
+	delay_8
+	face_right
+	delay_8
+	face_left
+	delay_8
+	face_up
+}
+text Puzzle_SafariImposters_ImposterReveal_Text7 {
+			"IMPOSTER DITTO: Woop!$"
+}
+
+text Puzzle_SafariImposters_ImposterReveal_Text8a {
+			"PROF: Yes! Thank you for incapacitating\n"
+			"it! I'll take it from here.$"
+}
+text Puzzle_SafariImposters_ImposterReveal_Text8b {
+			"PROF: It's making a break for the door!\n"
+			"Don't let it get away again!!$"
+}
+text Puzzle_SafariImposters_ImposterReveal_Text8c {
+			"PROF: Why did you let it get away?!\n"
+			"AFTER IT!! BEFORE IT TRANSFORMS AGAIN!!$"
+}
+movement Puzzle_SafariImposters_ImposterReveal_Movement8a {
+	walk_fast_down * 7
+}
+movement Puzzle_SafariImposters_ImposterReveal_Movement8b {
+	face_right
+	lock_facing_direction
+	slide_left
+	unlock_facing_direction
+}
+
+
+raw `
+.align 2
+Puzzle_SafariImposters_StringTable_Text1:
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text1_Joey
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text1_James
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text1_Irene
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text1_Wally
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text1_Brendan
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text1_May
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text1_Alex
+	.4byte 0
+Puzzle_SafariImposters_StringTable_Text3:
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text3_Joey
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text3_James
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text3_Irene
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text3_Wally
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text3_Brendan
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text3_May
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text3_Alex
+	.4byte 0
+Puzzle_SafariImposters_StringTable_Text5:
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text5_Joey
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text5_James
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text5_Irene
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text5_Wally
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text5_Brendan
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text5_May
+	.4byte Puzzle_SafariImposters_ImposterReveal_Text5_Alex
+	.4byte 0
+`
+
+
+///////////////////////////////////////////////////////
+// Post-Puzzle
+
+script Puzzle_SafariImposters_OnLoad_PostPuzzle {
+	clearflag(FLAG_HIDE_SCROLL)
+	
+	if (flag(FLAG_DEFEATED_DITTO)) {
+		setobjectxyperm(LID_SCIENTIST, 11, 4)
+		setobjectmovementtype(LID_SCIENTIST, MOVEMENT_TYPE_FACE_RIGHT)
+	} else {
+		setobjectxyperm(6, 11, 4)
+		setobjectmovementtype(5, MOVEMENT_TYPE_FACE_RIGHT)
+		
+		setobjectxyperm(5, 0, 13)
+		setobjectxyperm(4, 0, 13)
+	}
+	
+	setobjectxyperm(LID_JOEY, 16, 6)
+	setobjectmovementtype(LID_JOEY, MOVEMENT_TYPE_FACE_UP)
+	
+	setobjectxyperm(LID_JAMES, 16, 5)
+	setobjectmovementtype(LID_JAMES, MOVEMENT_TYPE_FACE_DOWN)
+	
+	setobjectxyperm(LID_IRENE, 12, 6)
+	setobjectmovementtype(LID_IRENE, MOVEMENT_TYPE_FACE_DOWN_UP_AND_LEFT)
+	
+	setobjectxyperm(LID_WALLY, 15, 3)
+	setobjectmovementtype(LID_WALLY, MOVEMENT_TYPE_LOOK_AROUND)
+	
+	setobjectxyperm(LID_FRIEND_A, 15, 9)
+	setobjectmovementtype(LID_FRIEND_A, MOVEMENT_TYPE_FACE_DOWN_AND_LEFT)
+	
+	setobjectxyperm(LID_FRIEND_B, 13, 8)
+	setobjectmovementtype(LID_FRIEND_B, MOVEMENT_TYPE_LOOK_AROUND)
+}
+
+script(local) Puzzle_SafariImposters_PostRight_Scientist {
+	if (flag(FLAG_DEFEATED_DITTO)) {
+	msgbox ("Thanks to you, we managed to return\n"
+			"the DITTO to its ball.\p"
+			"The other {POKEMON} it had captured\n"
+			"as part of its ruse have been released\l"
+			"back into the Safari Zone.\p"
+			"Please, uh, don't speak of this to\n"
+			"anyone outside of here.\p"
+			"The project is supposed to be top\n"
+			"secret, I think for obvious reasons.$", MSGBOX_NPC)
+	} else {
+		goto(Puzzle_SafariImposters_PostWrong_Scientist)
+	}
+}
+script(local) Puzzle_SafariImposters_PostWrong_Scientist {
+	msgbox ("They're out searching for the DITTO\n"
+			"again. This time they don't even have\l"
+			"a tracer in it to help.\p"
+			"I'm sure the PROF will be mad, but\n"
+			"really, this is all his fault anyway.\p"
+			"He shouldn't have been taking it out\n"
+			"on walks in the first place!$", MSGBOX_NPC)
+}
+
+script(local) Puzzle_SafariImposters_PostRight_Joey {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_JOEY) {
+	msgbox ("Wow, the DITTO could turn into a human?!\n"
+			"And it turned into ME?!\p"
+			"I'm glad you saw through its ruse.", MSGBOX_NPC)
+	} else {
+		callnative(Imposter_LoadRevealStrings)
+	msgbox ("Wow, the DITTO could turn into a human?!\n"
+			"And it turned into {STR_VAR_3}?!\p"
+			"I'm glad you saw through its ruse.", MSGBOX_NPC)
+	}
+}
+script(local) Puzzle_SafariImposters_PostWrong_Joey {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_JOEY) {
+	msgbox( "The DITTO could turn into a human?!\n"
+			"And it turned into ME?!\p"
+			"{PLAYER}, I don't understand. Was it\n"
+			"that much like me that you couldn't\l"
+			"tell the difference?$", MSGBOX_NPC)
+	} else {
+		callnative(Imposter_LoadRevealStrings)
+	msgbox ("Wow, the DITTO could turn into a human?!\n"
+			"And it turned into {STR_VAR_3}?!\p"
+			"Why didn't you tell me? I could've\n"
+			"helped figured out who it was…$", MSGBOX_NPC)
+	}
+}
+
+script(local) Puzzle_SafariImposters_PostRight_James {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_JAMES) {
+	msgbox ("So, wait, the imposter had a team\n"
+			"full {SIZE 0}of sharks?!{RESET_SIZE}\p"
+			"… … … … … {SIZE 0}'ts good…{RESET_SIZE} good that\n"
+			"you got rid of him…\l"
+			"{SIZE 7}Let's never speak of him again…{RESET_SIZE}$", MSGBOX_NPC)
+	} else {
+		goto_if_unset(FLAG_DEFEATED_DITTO, Puzzle_SafariImposters_PostWrong_James)
+		callnative(Imposter_LoadRevealStrings)
+	msgbox ("The DITTO was hiding as {STR_VAR_3}\n"
+			"this whole time?!\p"
+			"… … … … I think I'm done with\n"
+			"Halloween this year… … …$", MSGBOX_NPC)
+	}
+}
+script(local) Puzzle_SafariImposters_PostWrong_James {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_JAMES) {
+	msgbox ("{PLAYER}, the imposter had a team\n"
+			"full of {SIZE 0}sharks{RESET_SIZE} and not bugs!\p"
+			"I'm a Bug Catcher! {SIZE 0}And I HATE SHARKS!!{RESET_SIZE}\n"
+			"How could you even THINK that was me?!$", MSGBOX_NPC)
+	} else {
+		callnative(Imposter_LoadRevealStrings)
+	msgbox ("The DITTO was hiding as {STR_VAR_3}\n"
+			"this whole time?!\p"
+			"… … And the DITTO is still on the\n"
+			"loose too?!\p"
+			"… … … … I think I'm done with\n"
+			"Halloween this year… … …$", MSGBOX_NPC)
+	}
+}
+
+script(local) Puzzle_SafariImposters_PostRight_Irene {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_IRENE) {
+	msgbox ("That DITTO captured the only other\n"
+			"CHANSEY in the Safari Zone. Thanks to\l"
+			"you the CHANSEY are back together!\p"
+			"Thank you, {PLAYER}! It makes me so\n"
+			"much happier knowing that.$", MSGBOX_NPC)
+	} else {
+		goto(Puzzle_SafariImposters_PostWrong_Irene)
+	}
+}
+script(local) Puzzle_SafariImposters_PostWrong_Irene {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_IRENE) {
+	msgbox ("That DITTO captured the only other\n"
+			"CHANSEY in the Safari Zone…\p"
+			"Now the one remaining one will be\n"
+			"all alone, without a mate.\p"
+			"How could you not see that I, as a\n"
+			"{POKEMON} Breeder, would not want to\l"
+			"deprive the Zone of its biodiversity?$", MSGBOX_NPC)
+	} else {
+	msgbox ("DITTO are very valuable to the\n"
+			"{POKEMON} Breeding community.\p"
+			"They can duplicate any {POKEMON},\n"
+			"allowing a waning population of a\l"
+			"certain species to be revitalized.\p"
+			"But for a DITTO to be able to\n"
+			"duplicate any human as well…\l"
+			"with the ability to TALK even…\p"
+			"That's just inviting trouble, I think.\n"
+			"This seems like animal abuse…$", MSGBOX_NPC)
+	}
+}
+
+script(local) Puzzle_SafariImposters_PostRight_Wally {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_WALLY) {
+	msgbox ("Th-there was another ME wandering\n"
+			"around, making people think it was me?!\p"
+			"At least it didn't fool you, {PLAYER}.\n"
+			"Thank you.$", MSGBOX_NPC)
+	} else {
+		goto_if_unset(FLAG_DEFEATED_DITTO, Puzzle_SafariImposters_PostWrong_Wally)
+		callnative(Imposter_LoadRevealStrings)
+	msgbox ("Whew.\n"
+			"I'm glad everything's back to normal.\p"
+			"I dunno if I'll ever look at {STR_VAR_3}\n"
+			"the same way again, though.$", MSGBOX_NPC)
+	}
+}
+script(local) Puzzle_SafariImposters_PostWrong_Wally {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_WALLY) {
+	msgbox ("Th-there was another ME wandering\n"
+			"around, making people think it was me?!\p"
+			"It fooled everyone! It still might be\n"
+			"out there! Oh god…$", MSGBOX_NPC)
+	} else {
+		callnative(Imposter_LoadRevealStrings)
+	msgbox ("Maybe if we keep the real {STR_VAR_3}\n"
+			"with us, we can glide around on my\l"
+			"SALAMENCE and find the fake {STR_VAR_3}!\p"
+			"Oh, yeah, I guess the DITTO probably\n"
+			"would have changed into something else\l"
+			"by now.$", MSGBOX_NPC)
+	}
+}
+
+script(local) Puzzle_SafariImposters_PostRight_Brendan {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_BRENDAN) {
+	msgbox ("I'm glad you figured out that look-\n"
+			"alike wasn't actually me, {PLAYER}.\l"
+			"What tipped you off?\p"
+			"… … What do you mean “AS cowardly”?!\n"
+			"What's that supposed to mean?!$", MSGBOX_NPC)
+	} else {
+		callnative(Imposter_LoadRevealStrings)
+	msgbox ("See?! I told you {STR_VAR_3} seemed\n"
+			"suspicious!\p"
+			"What? I totally did! Maybe I didn't\n"
+			"actually tell you, but I did!$", MSGBOX_NPC)
+	}
+}
+script(local) Puzzle_SafariImposters_PostWrong_Brendan {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_BRENDAN) {
+	msgbox ("{PLAYER}, how could you not realize\n"
+			"that DITTO wasn't me?! What gives?!\l"
+			"I thought we were friends!$", MSGBOX_NPC)
+	} else {
+		callnative(Imposter_LoadRevealStrings)
+	msgbox ("I told you {STR_VAR_3} seemed\n"
+			"suspicious! Why didn't you listen?!\p"
+			"What? I totally did! Maybe I didn't\n"
+			"actually tell you, but I did!$", MSGBOX_NPC)
+	}
+}
+
+script(local) Puzzle_SafariImposters_PostRight_May {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_MAY) {
+	msgbox ("Oh, {PLAYER}, thanks for dealing with\n"
+			"that doppelganger for me.\p"
+			"It's kinda scary thinking about another\n"
+			"me running around doing weird things.$", MSGBOX_NPC)
+	} else {
+	msgbox ("We were with a doppelganger that\n"
+			"whole time and didn't know it?!$", MSGBOX_NPC)
+	}
+}
+script(local) Puzzle_SafariImposters_PostWrong_May {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_MAY) {
+	msgbox ("Oh, {PLAYER}, didn't you realize that\n"
+			"doppelganger wasn't me?\p"
+			"I guess if you didn't know I was\n"
+			"afraid of heights, you wouldn't have\l"
+			"noticed its team full of birds.\p"
+			"I don't blame you, I'm pretty good at\n"
+			"hiding how scared I am of heights.$", MSGBOX_NPC)
+			// that's a lie
+	} else {
+	msgbox ("We were with a doppelganger that\n"
+			"whole time and didn't know it?!$", MSGBOX_NPC)
+	}
+}
+
+script(local) Puzzle_SafariImposters_PostRight_Alex {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_ALEX) {
+	msgbox ("You know, having a twin like that\n"
+			"would be kind of neat, I think.\p"
+			"I wonder if I could train my own\n"
+			"DITTO to do that myself…$", MSGBOX_NPC)
+	} else {
+		callnative(Imposter_LoadRevealStrings)
+	msgbox ("You know, I don't think I'd mind\n"
+			"having a twin that much.\p"
+			"I wonder how {STR_VAR_3} feels…\n"
+			"I think it'd be awesome.$", MSGBOX_NPC)
+	}
+}
+script(local) Puzzle_SafariImposters_PostWrong_Alex {
+	if (var(VAR_CONFIG_IMPOSTER) == IMP_ALEX) {
+	msgbox ("You know, having a twin like that\n"
+			"would be kind of neat, I think.\p"
+			"I wonder if I could train my own\n"
+			"DITTO to do that myself…\p"
+			"Maybe if I'm fast enough, I can\n"
+			"catch the one that escaped!$", MSGBOX_NPC)
+	} else {
+		callnative(Imposter_LoadRevealStrings)
+	msgbox ("You know, I don't think I'd mind\n"
+			"having a twin that much.\p"
+			"I wonder how {STR_VAR_3} feels…\n"
+			"I think it'd be awesome.$", MSGBOX_NPC)
+	}
+}
+
+raw `
+@ .include "data/maps/Puzzle_SafariImposters/text.inc"
+
+#undef VAR_PUZZLE_STAGE
+#undef VAR_CONFIG_IMPOSTER
+#undef VAR_IMPOSTER_SELECT
+#undef VAR_SAFARI_ZONE_STATE
+#undef VAR_SEARCH_STATE
+#undef FLAG_HIDE_SCROLL
+#undef LID_SCIENTIST
+#undef LID_JOEY
+#undef LID_JAMES
+#undef LID_IRENE
+#undef LID_WALLY
+#undef LID_BRENDAN
+#undef LID_MAY
+#undef LID_ALEX
+#undef LID_EXTRA
+#undef LID_FRIEND_A
+#undef LID_FRIEND_B
+#undef LID_CUTSCENE_PLAYER
+
+#undef LID_SELECTED
+#undef LID_FRIEND_1
+#undef LID_FRIEND_2
+#undef LID_FRIEND_3
+#undef LID_FRIEND_4
+#undef LID_FRIEND_5
+
+#undef IMP_JOEY
+#undef IMP_JAMES
+#undef IMP_IRENE
+#undef IMP_WALLY
+#undef IMP_BRENDAN
+#undef IMP_MAY
+#undef IMP_ALEX
+`

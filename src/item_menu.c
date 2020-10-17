@@ -465,9 +465,9 @@ void CB2_BagMenuFromStartMenu(void)
 void sub_81AABB0(void)
 {
     // if (!InBattlePyramid())
-        GoToBagMenu(RETURN_LOCATION_BATTLE, POCKETS_COUNT, SetCB2ToReshowScreenAfterMenu2);
+        GoToBagMenu(RETURN_LOCATION_BATTLE, POCKETS_COUNT, CB2_SetUpReshowBattleScreenAfterMenu2);
     // else
-    //     sub_81C4F98(1, SetCB2ToReshowScreenAfterMenu2);
+    //     sub_81C4F98(1, CB2_SetUpReshowBattleScreenAfterMenu2);
 }
 
 void CB2_ChooseBerry(void)
@@ -475,7 +475,7 @@ void CB2_ChooseBerry(void)
     GoToBagMenu(RETURN_LOCATION_FIELD_2, BERRIES_POCKET, CB2_ReturnToFieldContinueScript);
 }
 
-void sub_81AABF0(void (*callback)(void))
+void ChooseBerryForMachine(void (*callback)(void))
 {
     GoToBagMenu(RETURN_LOCATION_FIELD_3, BERRIES_POCKET, callback);
 }
@@ -556,7 +556,7 @@ void vblank_cb_bag_menu(void)
 
 void CB2_Bag(void)
 {
-    while(sub_81221EC() != TRUE && SetupBagMenu() != TRUE && sub_81221AC() != TRUE) {};
+    while(MenuHelpers_CallLinkSomething() != TRUE && SetupBagMenu() != TRUE && MenuHelpers_LinkSomething() != TRUE) {};
 }
 
 bool8 SetupBagMenu(void)
@@ -592,7 +592,7 @@ bool8 SetupBagMenu(void)
         gMain.state++;
         break;
     case 6:
-        if (sub_81221AC() == FALSE)
+        if (MenuHelpers_LinkSomething() == FALSE)
             ResetTasks();
         gMain.state++;
         break;
@@ -1077,7 +1077,7 @@ void Task_BagMenu(u8 taskId)
     u16* scrollPos = &gBagPositionStruct.scrollPosition[gBagPositionStruct.pocket];
     u16* cursorPos = &gBagPositionStruct.cursorPosition[gBagPositionStruct.pocket];
     u16 select;
-    if (sub_81221EC() != TRUE && !gPaletteFade.active)
+    if (MenuHelpers_CallLinkSomething() != TRUE && !gPaletteFade.active)
     {
         switch (GetSwitchBagPocketDirection())
         {
@@ -1216,7 +1216,7 @@ void sub_81AC10C(u8 taskId)
 {
     s16* data = gTasks[taskId].data;
 
-    if (!sub_81221AC() && !IsWallysBag())
+    if (!MenuHelpers_LinkSomething() && !IsWallysBag())
     {
         switch (GetSwitchBagPocketDirection())
         {
@@ -1307,7 +1307,7 @@ void sub_81AC3C0(u8 taskId)
     s16* data = gTasks[taskId].data;
     int input;
 
-    if (sub_81221EC() != TRUE)
+    if (MenuHelpers_CallLinkSomething() != TRUE)
     {
         if (gMain.newKeys & SELECT_BUTTON)
         {
@@ -1443,7 +1443,7 @@ void sub_81AC644(u8 unused)
         case 3:
         case 5:
         default:
-            if (sub_81221AC() == TRUE || InUnionRoom() == TRUE)
+            if (MenuHelpers_LinkSomething() == TRUE || InUnionRoom() == TRUE)
             {
                 if (gBagPositionStruct.pocket == KEYITEMS_POCKET || !sub_8122148(gSpecialVar_ItemId))
                 {
@@ -1547,7 +1547,7 @@ void unknown_item_menu_type(u8 taskId)
 
 void Task_HandleInBattleItemMenuInput(u8 taskId)
 {
-    if (sub_81221EC() != TRUE)
+    if (MenuHelpers_CallLinkSomething() != TRUE)
     {
         s8 r4 = Menu_ProcessInputNoWrap();
         switch (r4)
@@ -1568,7 +1568,7 @@ void Task_HandleInBattleItemMenuInput(u8 taskId)
 
 void Task_HandleOutOfBattleItemMenuInput(u8 taskId)
 {
-    if (sub_81221EC() != TRUE)
+    if (MenuHelpers_CallLinkSomething() != TRUE)
     {
         s8 cursorPos = Menu_GetCursorPos();
         if (gMain.newKeys & DPAD_UP)
@@ -2163,7 +2163,7 @@ void DoWallyTutorialBagMenu(void)
     PrepareBagForWallyTutorial();
     AddBagItem(ITEM_POTION, 1);
     AddBagItem(ITEM_POKE_BALL, 1);
-    GoToBagMenu(RETURN_LOCATION_BATTLE_2, ITEMS_POCKET, SetCB2ToReshowScreenAfterMenu2);
+    GoToBagMenu(RETURN_LOCATION_BATTLE_2, ITEMS_POCKET, CB2_SetUpReshowBattleScreenAfterMenu2);
 }
 
 void Task_WallyTutorialBagMenu(u8 taskId)

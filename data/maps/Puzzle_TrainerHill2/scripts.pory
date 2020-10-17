@@ -1,4 +1,98 @@
 raw `
 Puzzle_TrainerHill2_MapScripts::
+	puzzle_info Puzzle_TrainerHill2_Name, CommonAuthor_GameFreak
+	puzzle_custom_intro Puzzle_TrainerHill2_Intro
+	puzzle_quip Puzzle_TrainerHill2_Quip
+	puzzle_candylist Puzzle_TrainerHill2_CandyList
 	.byte 0
+
+Puzzle_TrainerHill2_Name:
+	.string "Tower 2: Tower Harder$"
+Puzzle_TrainerHill2_Intro:
+	.string "Ah! Yes! Good! Welcome back!\p"
+	.string "It's time for another installment of the\n"
+	.string "mini puzzle bonanza happening at\l"
+	.string "the Trainer Hill Tower!\p"
+	.string "See you on the other side!$"
+Puzzle_TrainerHill2_Quip:
+	.string "How do they get the floors so darn\n"
+	.string "slippery like that?$"
+.align 2
+Puzzle_TrainerHill2_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_ABUNDANT_05
+	.2byte FLAG_CANDY_ABUNDANT_06
+	.2byte FLAG_CANDY_ABUNDANT_07
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_03
+	.2byte FLAG_CANDY_RARE_01
+	.2byte 0
+
+@ -----------------------------------------------------
 `
+
+script Puzzle_TrainerHill2_Trainer1A {
+	trainerbattle_single(TRAINER_01, 
+			"I can't lose this hot battle!$", 
+			"Aaahh! No! You're a terrible person!$")
+	msgbox( "Your heart must be ice cold…$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill2_Trainer1B {
+	trainerbattle_single(TRAINER_02, 
+			"Um… I…$", 
+			"Oh… Um… Awww…$")
+	msgbox( "Um… I'm sad…$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill2_Trainer2A {
+	trainerbattle_single(TRAINER_03, 
+			"My power will STOMP YOU!!$", 
+			"I went at it too hard…$")
+	msgbox( "Yes, sir! You look nice and gutsy!$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill2_Trainer2B {
+	trainerbattle_single(TRAINER_04, 
+			"There's some things you can't do alone.$",
+			"We couldn't win together?$")
+	msgbox( "Maybe I need a boyfriend…\n"
+			"Or a girlfriend…$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill2_Trainer3A {
+	trainerbattle_single(TRAINER_05, 
+			"Oh dear, this match is for you…$", 
+			"Oh dear, I am so sorry…$")
+	msgbox( "Is your grandmother strong?\n"
+			"Just curious…$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill2_Trainer3B {
+	trainerbattle_single(TRAINER_06, 
+			"Oh dear, I will win for you…$", 
+			"Oh dear, I am sorry to disappoint you…$")
+	msgbox( "Is your grandfather cool?\n"
+			"Just asking…$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill2_Trainer4A {
+	trainerbattle_single(TRAINER_07, 
+			"You look so hurried! What's the matter?$", 
+			"Does the time worry you?$")
+	msgbox( "You don't have time to chat.$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrainerHill2_Trainer4B {
+	trainerbattle_single(TRAINER_08, 
+			"It's hot… What a stench!$", 
+			"I covet any strong stench!$")
+	msgbox( "My sense of smell isn't what\n"
+			"you'd call normal…$", MSGBOX_AUTOCLOSE)
+}

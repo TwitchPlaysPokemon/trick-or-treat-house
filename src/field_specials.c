@@ -3522,7 +3522,7 @@ static void sub_813B57C(u8 taskId)
         case 7:
             if (IsLinkTaskFinished() == 1)
             {
-                sub_800ADF8();
+                SetLinkStandbyCallback();
                 gTasks[taskId].data[0]++;
             }
             break;
@@ -3628,7 +3628,7 @@ void sub_813B9A0(void)
     }
 }
 
-bool8 sub_813B9C0(void)
+bool8 InPokemonCenter(void)
 {
     static const u16 gUnknown_085B3444[] = {
         // MAP_OLDALE_TOWN_POKEMON_CENTER_1F,

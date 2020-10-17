@@ -205,7 +205,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_switchmaplayout
 	.4byte ScrCmd_bufferselectedstring
 	.4byte ScrCmd_dogroundeffect
-	.4byte ScrCmd_nop1
+	.4byte ScrCmd_loadhalf
 	.4byte ScrCmd_setmonobedient
 	.4byte ScrCmd_checkmonobedience
 	@ .4byte ScrCmd_gotoram
@@ -221,7 +221,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_cmdD8
 	.4byte ScrCmd_cmdD9
 	.4byte ScrCmd_cmdDA
-	.4byte ScrCmd_cmdDB
+	.4byte ScrCmd_message3
 	.4byte ScrCmd_fadescreenswapbuffers
 	.4byte ScrCmd_buffertrainerclassname
 	.4byte ScrCmd_buffertrainername
@@ -234,6 +234,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_buffernumberstring2
 	.4byte ScrCmd_resolveitem
 	.4byte ScrCmd_setfieldeffectargstoobjectloc
+	.4byte ScrCmd_mulvar
 
 gScriptCmdTableEnd:: @ 81DBA08
 	.4byte ScrCmd_nop

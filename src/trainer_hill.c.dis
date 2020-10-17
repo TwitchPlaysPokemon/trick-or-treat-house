@@ -924,7 +924,7 @@ const u8 *GetTrainerHillTrainerScript(void)
 static void sub_81D62B4(void)
 {
     CopyTrainerHillTrainerText(5, gSpecialVar_LastTalked);
-    sub_80982B8();
+    ShowFieldMessageFromBuffer();
 }
 
 static void sub_81D62CC(u16 trainerId, u8 firstMonId)

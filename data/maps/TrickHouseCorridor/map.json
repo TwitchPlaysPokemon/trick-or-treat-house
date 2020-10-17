@@ -77,7 +77,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "TrickHouseCorridor_TriggerScript_PartyStop",
             "type": "trigger",
             "var": "VAR_TEMP_E",
             "var_value": "2",
@@ -86,7 +86,7 @@
         },
         {
             "elevation": 0,
-            "script": "NULL",
+            "script": "TrickHouseCorridor_TriggerScript_PartyStop",
             "type": "trigger",
             "var": "VAR_TEMP_E",
             "var_value": "2",

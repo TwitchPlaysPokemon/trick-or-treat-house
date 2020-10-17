@@ -321,6 +321,19 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "x": 47,
             "y": 13
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_HERO_OF_TIME",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "Puzzle_WaterTemple_James",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 39,
+            "y": 17
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_128",
@@ -333,6 +346,41 @@
             "elevation": 0,
             "x": 10,
             "y": 18
+        },
+        {
+            "dest_map": "MAP_WATER_TEMPLE_SECRET",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 3,
+            "y": 42
+        },
+        {
+            "dest_map": "MAP_WATER_TEMPLE_SECRET",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 4,
+            "y": 42
+        },
+        {
+            "dest_map": "MAP_WATER_TEMPLE_SECRET",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 5,
+            "y": 42
+        },
+        {
+            "dest_map": "MAP_WATER_TEMPLE_SECRET",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 2,
+            "y": 42
+        },
+        {
+            "dest_map": "MAP_WATER_TEMPLE_SECRET",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 6,
+            "y": 42
         }
     ],
     "weather": "WEATHER_SUNNY"

@@ -3072,6 +3072,7 @@ extern const u32 gTrainerFrontPic_Tarzan[];
 extern const u32 gTrainerFrontPic_TwinsPM[];
 extern const u32 gTrainerFrontPic_Alien[];
 extern const u32 gTrainerFrontPic_Pikakid[];
+extern const u32 gTrainerFrontPic_DevTustin2121[];
 
 extern const u32 gTrainerPalette_PlasmaKid[];
 extern const u32 gTrainerPalette_Ghetsis[];
@@ -3086,6 +3087,7 @@ extern const u32 gTrainerPalette_Tarzan[];
 extern const u32 gTrainerPalette_TwinsPM[];
 extern const u32 gTrainerPalette_Alien[];
 extern const u32 gTrainerPalette_Pikakid[];
+extern const u32 gTrainerPalette_DevTustin2121[];
 
 
 extern const u8 gTrainerBackPic_Brendan[];
@@ -4898,16 +4900,16 @@ extern const u16 gUsePokeblockGraph_Pal[];
 extern const u16 gUsePokeblockNatureWin_Pal[];
 
 // Berry blender
-extern const u32 gBerryBlenderArrowTiles[];
-extern const u32 gBerryBlenderStartTiles[];
-extern const u32 gBerryBlenderMarubatsuTiles[];
-extern const u32 gBerryBlenderParticlesTiles[];
-extern const u32 gBerryBlenderCountdownNumbersTiles[];
+extern const u32 gBerryBlenderPlayerArrow_Gfx[];
+extern const u32 gBerryBlenderStart_Gfx[];
+extern const u32 gBerryBlenderScoreSymbols_Gfx[];
+extern const u32 gBerryBlenderParticles_Gfx[];
+extern const u32 gBerryBlenderCountdownNumbers_Gfx[];
 extern const u16 gBerryBlenderMiscPalette[];
 extern const u16 gBerryBlenderArrowPalette[];
-extern const u32 sBlenderCenterGfx[];
-extern const u32 gUnknown_08D91DB8[];
-extern const u32 gUnknown_08D927EC[];
+extern const u32 gBerryBlenderCenter_Gfx[];
+extern const u32 gBerryBlenderOuter_Gfx[];
+extern const u32 gBerryBlenderOuter_Tilemap[];
 
 extern const u32 gSlotMachineReelTime_Gfx[];
 
@@ -4990,14 +4992,14 @@ extern const u16 gEmeraldTrainerCard0Star_Pal[];
 extern const u32 gEmeraldTrainerCard_Gfx[];
 extern const u16 gFireRedTrainerCard0Star_Pal[];
 extern const u32 gFireRedTrainerCard_Gfx[];
-extern const u32 gUnknown_08DD2AE0[];
-extern const u32 gUnknown_08DD21B0[];
-extern const u32 gUnknown_08DD2D30[];
-extern const u32 gUnknown_08DD2010[];
-extern const u32 gUnknown_08DD2B78[];
-extern const u32 gUnknown_08DD228C[];
-extern const u32 gUnknown_08DD2E5C[];
-extern const u32 gUnknown_08DD1F78[];
+extern const u32 gKantoTrainerCardBg_Tilemap[];
+extern const u32 gHoennTrainerCardBack_Tilemap[];
+extern const u32 gKantoTrainerCardBack_Tilemap[];
+extern const u32 gHoennTrainerCardFront_Tilemap[];
+extern const u32 gKantoTrainerCardFront_Tilemap[];
+extern const u32 gHoennTrainerCardFrontLink_Tilemap[];
+extern const u32 gKantoTrainerCardFrontLink_Tilemap[];
+extern const u32 gHoennTrainerCardBg_Tilemap[];
 
 // Frontier Pass
 extern const u32 gUnknown_08DE08C8[];

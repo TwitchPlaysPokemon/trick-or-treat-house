@@ -502,7 +502,7 @@ static void Task_SendPacket(u8 taskId)
         break;
     case 1:
         if (GetMultiplayerId() == 0)
-            sub_800A4D8(1);
+            SendBlockRequest(1);
         task->data[0]++;
         break;
     case 2:
@@ -527,7 +527,7 @@ static void Task_CopyReceiveBuffer(u8 taskId)
     u8 status = GetBlockReceivedStatus();
     u8 handledPlayers = 0;
 
-    if (status == sub_800A9D8())
+    if (status == GetLinkPlayerCountAsBitFlags())
     {
         u8 i;
 
@@ -1006,7 +1006,7 @@ static void Task_DoRecordMixing(u8 taskId)
         }
         break;
     case 8:
-        sub_800ADF8();
+        SetLinkStandbyCallback();
         task->data[0] ++;
         break;
     case 9:

@@ -10,8 +10,7 @@
 @ begins. Therefore, the notes naturally map to the key split table without
 @ any extra offset calculation.
 
-.set KeySplitTable1, . - 15
-	.byte 0  @ 15
+.set KeySplitTable1, . - 16
 	.byte 0  @ 16
 	.byte 0  @ 17
 	.byte 0  @ 18

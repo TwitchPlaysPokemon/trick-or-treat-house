@@ -290,9 +290,11 @@
 #define EVENT_OBJ_GFX_GHOST                          0x10E
 #define EVENT_OBJ_GFX_ALIEN                          0x10F
 #define EVENT_OBJ_GFX_PUSHABLE_CRATE                 0x110
+#define EVENT_OBJ_GFX_QUILAVA                        0x111
+#define EVENT_OBJ_GFX_FARFETCHD                      0x112
+#define EVENT_OBJ_GFX_IMPOSTER_LASS                  0x113
 
-#define EVENT_OBJ_GFX_LAST                           0x111
-#define NUM_OBJECT_GRAPHICS_INFO 	    (EVENT_OBJ_GFX_LAST)
+#define NUM_OBJECT_GRAPHICS_INFO 	                 0x114
 
 // These are dynamic object gfx ids.
 // They correspond with the values of the VAR_OBJ_GFX_ID_X vars.
@@ -316,6 +318,14 @@
 
 #define SPRITE_VAR EVENT_OBJ_GFX_VAR_0
 
+#define TTH_FRIEND_JOEY     EVENT_OBJ_GFX_YOUNGSTER
+#define TTH_FRIEND_JAMES    EVENT_OBJ_GFX_HERO_OF_TIME
+#define TTH_FRIEND_IRENE    EVENT_OBJ_GFX_FAIRY_GIRL
+#define TTH_FRIEND_WALLY    EVENT_OBJ_GFX_WALLY
+#define TTH_FRIEND_BRENDAN  EVENT_OBJ_GFX_BRENDAN_NORMAL
+#define TTH_FRIEND_MAY      EVENT_OBJ_GFX_MAY_NORMAL
+#define TTH_FRIEND_ALEX     EVENT_OBJ_GFX_TREEKID_NORMAL
+
 #define SHADOW_SIZE_S   0
 #define SHADOW_SIZE_M   1
 #define SHADOW_SIZE_L   2
@@ -336,5 +346,7 @@
 
 #define EVENT_OBJ_ID_PLAYER 0x0FF
 #define EVENT_OBJ_ID_CAMERA 0x07F
+
+#define LID_PLAYER   EVENT_OBJ_ID_PLAYER
 
 #endif  // GUARD_CONSTANTS_EVENT_OBJECTS_H

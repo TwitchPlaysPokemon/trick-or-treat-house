@@ -39,7 +39,7 @@ void sub_80ED950(bool8 flag);
 void sub_80EEC80(void);
 void sub_80EECA4(void);
 void sub_80EECC8(void);
-void sub_80EECEC(void);
+void IncrementDailyBerryBlender(void);
 void sub_80F1208(TVShow *shows);
 void sub_80EE44C(u8 nMonsCaught, u8 nPkblkUsed);
 void sub_80F14F8(TVShow *shows);

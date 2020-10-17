@@ -134,7 +134,7 @@ gSpecials:: @ 81DBA64
 	def_special CompareSeedotSize
 	def_special GetLotadSizeRecordInfo
 	def_special CompareLotadSize
-	def_special TV_PutNameRaterShowOnTheAirIfNicknameChanged
+	def_special TV_CheckIfNicknameChanged
 	def_special TV_CopyNicknameToStringVar1AndEnsureTerminated
 	def_special TV_CheckMonOTIDEqualsPlayerID
 	def_special BufferTrendyPhraseString
@@ -170,7 +170,7 @@ gSpecials:: @ 81DBA64
 	def_special ChooseStarter
 	def_special StartWallyTutorialBattle
 	def_special ChangePokemonNickname
-	def_special sub_81B94B0
+	def_special ChoosePartyMon
 	def_special GetFirstFreePokeblockSlot
 	def_special DoBerryBlending
 	def_special PlayRoulette
@@ -339,7 +339,7 @@ gSpecials:: @ 81DBA64
 	def_special SetRoute123Weather
 	def_special ScriptGetMultiplayerId
 	def_special ScriptGetPartyMonSpecies
-	def_special sub_81B98DC
+	def_special IsSelectedMonEgg
 	def_special nullsub_54
 	def_special MoveOutOfSecretBaseFromOutside
 	def_special LoadPlayerBag
@@ -460,8 +460,8 @@ gSpecials:: @ 81DBA64
 	def_special sub_813A080
 	@ def_special sub_81C6A94
 	@ def_special sub_81C4F24
-	def_special sub_81B95E0
-	def_special sub_81B9620
+	def_special DoBattlePyramidMonsHaveHeldItem
+	def_special BattlePyramidChooseMonHeldItems
 	def_special sub_813A76C
 	def_special sub_813A7B8
 	def_special sub_813A958
@@ -530,9 +530,12 @@ gSpecials:: @ 81DBA64
 	def_special ShowTrainerHillRecords
 	def_special PlayerFaceTrainerAfterBattle
 	def_special sub_813B9A0
-	def_special sub_81B9918
+	def_special IsLastMonThatKnowsSurf
 	def_special sub_80722E0
 	def_special TryPrepareSecondApproachingTrainer
 	def_special RemoveRecordsWindow
 	def_special sub_8139C10
 	def_special sub_80B3BC4
+	def_special ShowFieldMessageBoxAtTopOfScreen
+	def_special ResetFieldMessageBoxToBottomOfScreen
+	def_special GetPlayerState

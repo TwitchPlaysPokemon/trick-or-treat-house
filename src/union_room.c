@@ -2364,11 +2364,11 @@ void sub_80140E0(u8 taskId)
     {
     case 0:
         if (GetMultiplayerId() == 0)
-            sub_800A4D8(2);
+            SendBlockRequest(2);
         gTasks[taskId].data[0]++;
         break;
     case 1:
-        if (GetBlockReceivedStatus() == sub_800A9D8())
+        if (GetBlockReceivedStatus() == GetLinkPlayerCountAsBitFlags())
         {
             s32 i;
             u16 *recvBuff;
@@ -2631,7 +2631,7 @@ void sub_8014790(u8 taskId)
             }
             else
             {
-                sub_800ADF8();
+                SetLinkStandbyCallback();
                 data[0] = 3;
             }
         }
@@ -2890,7 +2890,7 @@ void sub_8014A40(u8 taskId)
         Free(data->field_8);
         Free(data->field_0);
         Free(data->field_4);
-        sub_800ADF8();
+        SetLinkStandbyCallback();
         data->state++;
         break;
     case 17:
@@ -3060,7 +3060,7 @@ void sub_8014F48(u8 taskId)
         break;
     case 11:
         data->state++;
-        sub_800ADF8();
+        SetLinkStandbyCallback();
         break;
     case 12:
         if (IsLinkTaskFinished())
@@ -3239,7 +3239,7 @@ void sub_80152F4(u8 taskId)
         break;
     case 13:
         data->state++;
-        sub_800ADF8();
+        SetLinkStandbyCallback();
         break;
     case 14:
         if (IsLinkTaskFinished())
@@ -3629,7 +3629,7 @@ void sub_80156E0(u8 taskId)
         if (PrintOnTextbox(&data->textState, gStringVar4))
         {
             data->state = 41;
-            sub_800ADF8();
+            SetLinkStandbyCallback();
             data->field_98 = 0;
             data->field_9A[0] = 0;
         }
@@ -3828,7 +3828,7 @@ void sub_80156E0(u8 taskId)
         sub_8015664(14, gStringVar4);
         break;
     case 14:
-        sub_800ADF8();
+        SetLinkStandbyCallback();
         data->state = 15;
         break;
     case 15:
@@ -4408,7 +4408,7 @@ u8 sub_8016FF0(struct UnkStruct_Main4 * a0, u32 a1)
 
 bool32 sub_8017020(const u8 *src)
 {
-    sub_81973A4();
+    LoadMessageBoxAndBorderGfx();
     DrawDialogueFrame(0, 1);
     StringExpandPlaceholders(gStringVar4, src);
     AddTextPrinterWithCustomSpeedForMessage(FALSE, 1);
@@ -4432,7 +4432,7 @@ bool8 PrintOnTextbox(u8 *textState, const u8 *str)
     switch (*textState)
     {
     case 0:
-        sub_81973A4();
+        LoadMessageBoxAndBorderGfx();
         DrawDialogueFrame(0, 1);
         StringExpandPlaceholders(gStringVar4, str);
         AddTextPrinterForMessage_2(TRUE);
@@ -5357,7 +5357,7 @@ void sub_8018220(u8 *unused, struct UnkStruct_URoom *arg1, bool8 arg2)
 
     for (i = 0; i < 4; i++)
     {
-        CopyEasyChatWord(arg1->field_C0[i + 3], trainerCard->var_28[i]);
+        CopyEasyChatWord(arg1->field_C0[i + 3], trainerCard->easyChatProfile[i]);
         DynamicPlaceholderTextUtil_SetPlaceholderPtr(i + 4, arg1->field_C0[i + 3]);
     }
 

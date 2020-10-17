@@ -174,6 +174,9 @@ bool8 ScrCmd_waitstate(struct ScriptContext *ctx)
 bool8 ScrCmd_goto(struct ScriptContext *ctx)
 {
     const u8 *ptr = (const u8 *)ScriptReadWord(ctx);
+    
+    if ((u32)ptr < 4)
+        ptr = (const void *)ctx->data[(u32)ptr];
 
     ScriptJump(ctx, ptr);
     return FALSE;
@@ -188,6 +191,9 @@ bool8 ScrCmd_return(struct ScriptContext *ctx)
 bool8 ScrCmd_call(struct ScriptContext *ctx)
 {
     const u8 *ptr = (const u8 *)ScriptReadWord(ctx);
+    
+    if ((u32)ptr < 4)
+        ptr = (const void *)ctx->data[(u32)ptr];
 
     ScriptCall(ctx, ptr);
     return FALSE;
@@ -333,6 +339,14 @@ bool8 ScrCmd_loadword(struct ScriptContext *ctx)
     u8 index = ScriptReadByte(ctx);
 
     ctx->data[index] = ScriptReadWord(ctx);
+    return FALSE;
+}
+
+bool8 ScrCmd_loadhalf(struct ScriptContext *ctx)
+{
+    u8 index = ScriptReadByte(ctx);
+
+    ctx->data[index] = VarGet(ScriptReadHalfword(ctx));
     return FALSE;
 }
 
@@ -502,6 +516,13 @@ bool8 ScrCmd_subvar(struct ScriptContext *ctx)
 {
     u16 *ptr = GetVarPointer(ScriptReadHalfword(ctx));
     *ptr -= VarGet(ScriptReadHalfword(ctx));
+    return FALSE;
+}
+
+bool8 ScrCmd_mulvar(struct ScriptContext *ctx)
+{
+    u16 *ptr = GetVarPointer(ScriptReadHalfword(ctx));
+    *ptr *= VarGet(ScriptReadHalfword(ctx));
     return FALSE;
 }
 
@@ -1302,7 +1323,7 @@ bool8 ScrCmd_createvobject(struct ScriptContext *ctx)
     u8 elevation = ScriptReadByte(ctx);
     u8 direction = ScriptReadByte(ctx);
 
-    sprite_new(graphicsId, v2, x, y, elevation, direction);
+    CreateObjectSprite(graphicsId, v2, x, y, elevation, direction);
     return FALSE;
 }
 
@@ -1358,7 +1379,7 @@ bool8 ScrCmd_releaseall(struct ScriptContext *ctx)
     HideFieldMessageBox();
     playerObjectId = GetEventObjectIdByLocalIdAndMap(EVENT_OBJ_ID_PLAYER, 0, 0);
     EventObjectClearHeldMovementIfFinished(&gEventObjects[playerObjectId]);
-    sub_80D338C();
+    ScriptMovement_UnfreezeObjectEvents();
     UnfreezeEventObjects();
     return FALSE;
 }
@@ -1372,7 +1393,7 @@ bool8 ScrCmd_release(struct ScriptContext *ctx)
         EventObjectClearHeldMovementIfFinished(&gEventObjects[gSelectedEventObject]);
     playerObjectId = GetEventObjectIdByLocalIdAndMap(EVENT_OBJ_ID_PLAYER, 0, 0);
     EventObjectClearHeldMovementIfFinished(&gEventObjects[playerObjectId]);
-    sub_80D338C();
+    ScriptMovement_UnfreezeObjectEvents();
     UnfreezeEventObjects();
     return FALSE;
 }
@@ -1381,8 +1402,8 @@ bool8 ScrCmd_message(struct ScriptContext *ctx)
 {
     const u8 *msg = (const u8 *)ScriptReadWord(ctx);
 
-    if (msg == NULL)
-        msg = (const u8 *)ctx->data[0];
+    if ((u32) msg < 4)
+        msg = (const u8 *)ctx->data[(u32) msg];
     ShowFieldMessage(msg);
     return FALSE;
 }
@@ -1409,15 +1430,29 @@ bool8 ScrCmd_messageautoscroll(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_cmdDB(struct ScriptContext *ctx)
+bool8 ScrCmd_message3(struct ScriptContext *ctx)
 {
     const u8 *msg = (const u8 *)ScriptReadWord(ctx);
 
     if (msg == NULL)
         msg = (const u8 *)ctx->data[0];
-    sub_81973A4();
+    LoadMessageBoxAndBorderGfx();
     DrawDialogueFrame(0, 1);
     AddTextPrinterParameterized(0, 1, msg, 0, 1, 0, 0);
+    return FALSE;
+}
+
+// TODO:
+bool8 ScrCmd_messageWordWrap(struct ScriptContext *ctx)
+{
+    const u8 *msg = (const u8 *)ScriptReadWord(ctx);
+
+    if (msg == NULL)
+        msg = (const u8 *)ctx->data[0];
+    
+    StringExpandPlaceholders(gStringVar4, msg);
+    
+    ShowFieldMessageFromBuffer();
     return FALSE;
 }
 
@@ -2005,6 +2040,9 @@ bool8 ScrCmd_dowildbattle(struct ScriptContext *ctx)
 bool8 ScrCmd_pokemart(struct ScriptContext *ctx)
 {
     const void *ptr = (void *)ScriptReadWord(ctx);
+    
+    if (ptr == NULL)
+        ptr = (const u8 *)ctx->data[0];
 
     CreatePokemartMenu(ptr);
     ScriptContext1_Stop();
@@ -2014,6 +2052,9 @@ bool8 ScrCmd_pokemart(struct ScriptContext *ctx)
 bool8 ScrCmd_pokemartdecoration(struct ScriptContext *ctx)
 {
     const void *ptr = (void *)ScriptReadWord(ctx);
+    
+    if (ptr == NULL)
+        ptr = (const u8 *)ctx->data[0];
 
     CreateDecorationShop1Menu(ptr);
     ScriptContext1_Stop();
@@ -2023,6 +2064,9 @@ bool8 ScrCmd_pokemartdecoration(struct ScriptContext *ctx)
 bool8 ScrCmd_pokemartdecoration2(struct ScriptContext *ctx)
 {
     const void *ptr = (void *)ScriptReadWord(ctx);
+    
+    if (ptr == NULL)
+        ptr = (const u8 *)ctx->data[0];
 
     CreateDecorationShop2Menu(ptr);
     ScriptContext1_Stop();
@@ -2061,7 +2105,7 @@ bool8 ScrCmd_getpricereduction(struct ScriptContext *ctx)
 
 bool8 ScrCmd_choosecontestmon(struct ScriptContext *ctx)
 {
-    sub_81B9404();
+    ChooseContestMon();
     ScriptContext1_Stop();
     return TRUE;
 }

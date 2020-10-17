@@ -465,7 +465,7 @@ static bool32 InitStartMenuStep(void)
         sUnknown_02037619[0]++;
         break;
     case 2:
-        sub_81973A4();
+        LoadMessageBoxAndBorderGfx();
         DrawStdWindowFrame(sub_81979C4(sNumStartMenuActions), FALSE);
         sUnknown_02037619[1] = 0;
         sUnknown_02037619[0]++;

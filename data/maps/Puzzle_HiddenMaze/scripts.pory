@@ -17,7 +17,7 @@ Puzzle_HiddenMaze_Quip:
 	.string "When I grow up, I'm gonna\nbe just like Koga!$"
 .align 2
 Puzzle_HiddenMaze_Variables:
-	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_NINJA_BOY
+	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_NINJA_BOY
 	.2byte 0
 Puzzle_HiddenMaze_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01
@@ -162,7 +162,7 @@ Puzzle_HiddenMaze_Trainer3_Movement2:
 `
 
 script Puzzle_HiddenMaze_Trainer4 {
-	# Carver's boyfriend
+	# Carver's boyfriend, Zander
 	trainerbattle_single (TRAINER_04, 
 			"I hate this place. Carver is right there,\n"
 			"but I can't reach him!$", 

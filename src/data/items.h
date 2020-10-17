@@ -3184,194 +3184,226 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_0E6] =
+    [ITEM_META_ITEM_ROCK] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemRockName,
+        .itemId = ITEM_META_ITEM_ROCK,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemRockDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0E7] =
+    [ITEM_META_ITEM_ZIGZAG] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemZigzagName,
+        .itemId = ITEM_META_ITEM_ZIGZAG,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemZigzagDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0E8] =
+    [ITEM_META_ITEM_LOTAD] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemLotadName,
+        .itemId = ITEM_META_ITEM_LOTAD,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemLotadDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0E9] =
+    [ITEM_META_ITEM_GRASS] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemGrassName,
+        .itemId = ITEM_META_ITEM_GRASS,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemGrassDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0EA] =
+    [ITEM_META_ITEM_DIAMOND] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemDiamondName,
+        .itemId = ITEM_META_ITEM_DIAMOND,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemDiamondDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0EB] =
+    [ITEM_META_ITEM_SPIN] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemSpinName,
+        .itemId = ITEM_META_ITEM_SPIN,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemSpinDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0EC] =
+    [ITEM_META_ITEM_DOLL] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemDollName,
+        .itemId = ITEM_META_ITEM_DOLL,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemDollDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0ED] =
+    [ITEM_META_ITEM_BALL] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemBallName,
+        .itemId = ITEM_META_ITEM_BALL,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemBallDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0EE] =
+    [ITEM_META_ITEM_KISS] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemKissName,
+        .itemId = ITEM_META_ITEM_KISS,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemKissDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0EF] =
+    [ITEM_META_ITEM_ROUND] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemRoundName,
+        .itemId = ITEM_META_ITEM_ROUND,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemRoundDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0F0] =
+    [ITEM_META_ITEM_FIRE] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemFireName,
+        .itemId = ITEM_META_ITEM_FIRE,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemFireDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0F1] =
+    [ITEM_META_ITEM_PIKA] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemPikaName,
+        .itemId = ITEM_META_ITEM_PIKA,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemPikaDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0F2] =
+    [ITEM_META_ITEM_DUSKULL] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemDuskullName,
+        .itemId = ITEM_META_ITEM_DUSKULL,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemDuskullDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0F3] =
+    [ITEM_META_ITEM_WATER] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemWaterName,
+        .itemId = ITEM_META_ITEM_WATER,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemWaterDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0F4] =
+    [ITEM_META_ITEM_SEEDOT] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemSeedotName,
+        .itemId = ITEM_META_ITEM_SEEDOT,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemSeedotDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
 
-    [ITEM_0F5] =
+    [ITEM_META_ITEM_CUSHION] =
     {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
+        .name = sMetaItemCushionName,
+        .itemId = ITEM_META_ITEM_CUSHION,
         .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = 4,
+        .description = sMetaItemCushionDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
@@ -5055,7 +5087,7 @@ const struct Item gItems[] =
 // TTH Candy
     
     [ITEM_CANDY_CHOCOLATE] =
-    {
+    {   // +20HP
         .name = sChocolateName,
         .quantum = sBarQuantum,
         .itemId = ITEM_CANDY_CHOCOLATE,
@@ -5075,7 +5107,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_CHOCOWHITE] =
-    {
+    {   // +50HP
         .name = sChocoWhiteName,
         .quantum = sBarQuantum,
         .itemId = ITEM_CANDY_CHOCOWHITE,
@@ -5094,8 +5126,8 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
     
-    [ITEM_CANDY_CHOCOSLAB] =
-    {
+    [ITEM_CANDY_CHOCOSLAB] = 
+    {   // TODO: Held item: Intimidate
         .name = sChocoSlabName,
         .itemId = ITEM_CANDY_CHOCOSLAB,
         .price = CANDY_COST(2000),
@@ -5109,7 +5141,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_STARBURST] =
-    {
+    {   // Heal Psn
         .name = sStarburstName,
         .itemId = ITEM_CANDY_STARBURST,
         .price = CANDY_COST(100),
@@ -5127,7 +5159,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_LEMONDROP] =
-    {
+    {   // Heal Brn
         .name = sLemonDropName,
         .itemId = ITEM_CANDY_LEMONDROP,
         .price = CANDY_COST(250),
@@ -5145,7 +5177,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_WARHEAD] =
-    {
+    {   // Heal Frz
         .name = sWarheadName,
         .itemId = ITEM_CANDY_WARHEAD,
         .price = CANDY_COST(200),
@@ -5163,7 +5195,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_PRETZEL] =
-    {
+    {   // Heal Slp
         .name = sPretzelName,
         .itemId = ITEM_CANDY_PRETZEL,
         .price = CANDY_COST(250),
@@ -5181,8 +5213,8 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_VEROMANGO] =
-    {
-        .name = sPretzelName,
+    {   // Heal Prz
+        .name = sVeroMangoName,
         .itemId = ITEM_CANDY_VEROMANGO,
         .price = CANDY_COST(200),
         .itemEffect = gItemEffect_HealParalyze,
@@ -5199,7 +5231,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_VIOLETCRUMBLE] =
-    {
+    {   // Heal Confusion
         .name = sVioletCrumbleName,
         .itemId = ITEM_CANDY_VIOLETCRUMBLE,
         .price = CANDY_COST(200),
@@ -5209,15 +5241,15 @@ const struct Item gItems[] =
         .keepItem = TRUE,
         .isCandy = TRUE,
         .pocket = POCKET_CANDY,
-        .type = 1,
-        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .battleUsage = 1,
         .battleUseFunc = ItemUseInBattle_Medicine,
         .secondaryId = 0,
     },
     
     [ITEM_CANDY_GALAXY] =
-    {
+    {   // Heal Attract
         .name = sGalaxyName,
         .itemId = ITEM_CANDY_GALAXY,
         .price = CANDY_COST(200),
@@ -5227,15 +5259,15 @@ const struct Item gItems[] =
         .keepItem = TRUE,
         .isCandy = TRUE,
         .pocket = POCKET_CANDY,
-        .type = 1,
-        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .battleUsage = 1,
         .battleUseFunc = ItemUseInBattle_Medicine,
         .secondaryId = 0,
     },
     
     [ITEM_CANDY_TWIXLEFT] =
-    {
+    {   // +30HP
         .name = sTwixLeftName,
         .quantum = sBarQuantum,
         .itemId = ITEM_CANDY_TWIXLEFT,
@@ -5255,7 +5287,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_TWIXRIGHT] =
-    {
+    {   // +4PP
         .name = sTwixRightName,
         .quantum = sBarQuantum,
         .itemId = ITEM_CANDY_TWIXRIGHT,
@@ -5267,14 +5299,14 @@ const struct Item gItems[] =
         .isCandy = TRUE,
         .pocket = POCKET_CANDY,
         .type = 1,
-        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .fieldUseFunc = ItemUseOutOfBattle_PPRecovery,
         .battleUsage = 1,
         .battleUseFunc = ItemUseInBattle_Medicine,
         .secondaryId = 0,
     },
     
     [ITEM_CANDY_MMMINI] =
-    {
+    {   // +20HP
         .name = sMMMinisName,
         .quantum = sMMMinisQuantum,
         .itemId = ITEM_CANDY_MMMINI,
@@ -5294,7 +5326,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_MMPEANUT] =
-    {
+    {   // +50HP
         .name = sMMPeanutName,
         .quantum = sPacketQuantum,
         .itemId = ITEM_CANDY_MMPEANUT,
@@ -5314,7 +5346,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_KINGCHOCNUT] =
-    {
+    {   // +30HP
         .name = sKingChocName,
         .quantum = sBoxQuantum,
         .plural = sBoxQuantumPlural,
@@ -5335,7 +5367,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_GUMMYBEAR] =
-    {
+    {   // TODO: Raise single random stat when eaten in battle
         .name = sGummyBearName,
         .quantum = sPacketQuantum,
         .itemId = ITEM_CANDY_GUMMYBEAR,
@@ -5353,10 +5385,11 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_REESES] =
-    {
+    {   // Heals statuses
         .name = sReeseCupName,
         .itemId = ITEM_CANDY_REESES,
         .price = CANDY_COST(500),
+        .holdEffect = HOLD_EFFECT_CURE_STATUS,
         .description = sReeseCupDesc,
         .keepItem = TRUE,
         .isCandy = TRUE,
@@ -5370,121 +5403,160 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_BUTTERFINGER] =
-    {
+    {   // +60HP
         .name = sButterfingerName,
         .itemId = ITEM_CANDY_BUTTERFINGER,
         .price = CANDY_COST(200),
+        .itemEffect = gItemEffect_HealHP60,
+        .holdEffect = HOLD_EFFECT_RESTORE_HP,
+        .holdEffectParam = 60,
         .description = sButterfingerDesc,
         .keepItem = TRUE,
         .isCandy = TRUE,
         .pocket = POCKET_CANDY,
         .type = 1,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .battleUseFunc = ItemUseInBattle_Medicine,
         .secondaryId = 0,
     },
     
     [ITEM_CANDY_MILKYWAY] =
-    {
+    {   // +80HP
         .name = sMilkyWayName,
         .itemId = ITEM_CANDY_MILKYWAY,
         .price = CANDY_COST(200),
+        .itemEffect = gItemEffect_HealHP80,
+        .holdEffect = HOLD_EFFECT_RESTORE_HP,
+        .holdEffectParam = 80,
         .description = sMilkyWayDesc,
         .keepItem = TRUE,
         .isCandy = TRUE,
         .pocket = POCKET_CANDY,
         .type = 1,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .battleUseFunc = ItemUseInBattle_Medicine,
         .secondaryId = 0,
     },
     
     [ITEM_CANDY_MILKALUFLEE] =
-    {
+    {   // +100HP
         .name = sMilkaLufleeName,
         .quantum = sBarQuantum,
         .itemId = ITEM_CANDY_MILKALUFLEE,
         .price = CANDY_COST(200),
+        .itemEffect = gItemEffect_HealHP100,
+        .holdEffect = HOLD_EFFECT_RESTORE_HP,
+        .holdEffectParam = 100,
         .description = sMilkaLufleeDesc,
         .keepItem = TRUE,
         .isCandy = TRUE,
         .pocket = POCKET_CANDY,
         .type = 1,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .battleUseFunc = ItemUseInBattle_Medicine,
         .secondaryId = 0,
     },
     
     [ITEM_CANDY_100GRAND] =
-    {
+    {   // +100HP
         .name = s100GrandName,
         .itemId = ITEM_CANDY_100GRAND,
         .price = CANDY_COST(200),
+        .itemEffect = gItemEffect_HealHP100,
+        .holdEffect = HOLD_EFFECT_RESTORE_HP,
+        .holdEffectParam = 100,
         .description = s100GrandDesc,
         .keepItem = TRUE,
         .isCandy = TRUE,
         .pocket = POCKET_CANDY,
         .type = 1,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .battleUseFunc = ItemUseInBattle_Medicine,
         .secondaryId = 0,
     },
     
     [ITEM_CANDY_MALTESERS] =
-    {
+    {   // +10PP one move
         .name = sMalteserName,
         .itemId = ITEM_CANDY_MALTESERS,
         .price = CANDY_COST(200),
+        .holdEffect = HOLD_EFFECT_RESTORE_PP,
+        .holdEffectParam = 10,
         .description = sMalteserDesc,
         .keepItem = TRUE,
         .isCandy = TRUE,
         .pocket = POCKET_CANDY,
         .type = 1,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_PPRecovery,
+        .battleUsage = 1,
+        .itemEffect = gItemEffect_HealPP10,
+        .battleUseFunc = ItemUseInBattle_PPRecovery,
         .secondaryId = 0,
     },
     
     [ITEM_CANDY_CADBURYCREME] =
-    {
+    {   // +All PP one move
         .name = sCadburyCremeName,
         .itemId = ITEM_CANDY_CADBURYCREME,
         .price = CANDY_COST(200),
+        .holdEffect = HOLD_EFFECT_RESTORE_PP,
+        .holdEffectParam = 255,
         .description = sCadburyCremeDesc,
         .keepItem = TRUE,
         .isCandy = TRUE,
         .pocket = POCKET_CANDY,
         .type = 1,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_PPRecovery,
+        .battleUsage = 1,
+        .itemEffect = gItemEffect_MaxEther,
+        .battleUseFunc = ItemUseInBattle_PPRecovery,
         .secondaryId = 0,
     },
     
     [ITEM_CANDY_WUNDERBAR] =
-    {
+    {   // +All PP all moves. TODO: Hold Effect needs to be applied to all moves
         .name = sWunderbarName,
         .itemId = ITEM_CANDY_WUNDERBAR,
         .price = CANDY_COST(200),
+        .holdEffect = HOLD_EFFECT_RESTORE_PP,
+        .holdEffectParam = 255,
         .description = sWunderbarDesc,
         .keepItem = TRUE,
         .isCandy = TRUE,
         .pocket = POCKET_CANDY,
         .type = 1,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_PPRecovery,
+        .battleUsage = 1,
+        .itemEffect = gItemEffect_MaxElixir,
+        .battleUseFunc = ItemUseInBattle_PPRecovery,
         .secondaryId = 0,
     },
     
     [ITEM_CANDY_OREO] =
-    {
+    {   // Heals status
         .name = sOreoCookiesName,
         .quantum = sOreoCookiesQuantum,
         .itemId = ITEM_CANDY_OREO,
         .price = CANDY_COST(200),
+        .holdEffect = HOLD_EFFECT_CURE_STATUS,
         .description = sOreoCookiesDesc,
         .keepItem = TRUE,
         .isCandy = TRUE,
         .pocket = POCKET_CANDY,
         .type = 1,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .itemEffect = gItemEffect_HealAllStatus,
+        .battleUseFunc = ItemUseInBattle_Medicine,
         .secondaryId = 0,
     },
     
     [ITEM_CANDY_COFFEECRISP] =
-    {
+    {   // TODO: 60 HP + Cure Slp/Frz
         .name = sCoffeeCrispName,
         .itemId = ITEM_CANDY_COFFEECRISP,
         .price = CANDY_COST(200),
@@ -5498,7 +5570,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_SAMBOPRISTUR] =
-    {
+    {   // TODO: 60 HP + Cure Brn/Prz
         .name = sSamboPristurName,
         .itemId = ITEM_CANDY_SAMBOPRISTUR,
         .price = CANDY_COST(200),
@@ -5512,37 +5584,42 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_SNICKERS] =
-    {
+    {   // Poke Doll, Smokeball
         .name = sSnickersName,
         .itemId = ITEM_CANDY_SNICKERS,
         .price = CANDY_COST(200),
+        .holdEffect = HOLD_EFFECT_CAN_ALWAYS_RUN,
         .description = sSnickersDesc,
         .keepItem = TRUE,
         .isCandy = TRUE,
         .pocket = POCKET_CANDY,
-        .type = 1,
-        // .battleUsage = 2,
-        // .battleUseFunc = ItemUseInBattle_Escape,
+        .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .battleUsage = 2,
+        .battleUseFunc = ItemUseInBattle_Escape,
         .secondaryId = 0,
     },
     
     [ITEM_CANDY_MARSBAR] =
-    {
+    {   // Full Restore
         .name = sMarsBarName,
         .itemId = ITEM_CANDY_MARSBAR,
         .price = CANDY_COST(200),
+        .holdEffectParam = 255,
         .description = sMarsBarDesc,
         .keepItem = TRUE,
         .isCandy = TRUE,
         .pocket = POCKET_CANDY,
         .type = 1,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .itemEffect = gItemEffect_FullRestore,
+        .battleUseFunc = ItemUseInBattle_Medicine,
         .secondaryId = 0,
     },
     
     [ITEM_CANDY_KITKAT] =
-    {
+    { // Revive
         .name = sKitKatBarName,
         .itemId = ITEM_CANDY_KITKAT,
         .price = CANDY_COST(200),
@@ -5551,26 +5628,31 @@ const struct Item gItems[] =
         .isCandy = TRUE,
         .pocket = POCKET_CANDY,
         .type = 1,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .itemEffect = gItemEffect_Revive,
+        .battleUseFunc = ItemUseInBattle_Medicine,
         .secondaryId = 0,
     },
     
     [ITEM_CANDY_PIXIESTICK] =
-    {
+    { // Bright Powder
         .name = sPixieStickName,
         .itemId = ITEM_CANDY_PIXIESTICK,
         .price = CANDY_COST(200),
+        .holdEffect = HOLD_EFFECT_EVASION_UP,
+        .holdEffectParam = 10,
         .description = sPixieStickDesc,
         .keepItem = TRUE,
         .isCandy = TRUE,
         .pocket = POCKET_CANDY,
-        .type = 1,
+        .type = 4,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
     
     [ITEM_CANDY_TURKISHDELIGHT] =
-    {
+    { // TODO: Elixer
         .name = sTurkishDelightName,
         .itemId = ITEM_CANDY_TURKISHDELIGHT,
         .price = CANDY_COST(200),
@@ -5584,7 +5666,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_GOBSTOPPER] =
-    {
+    { // TODO: Leftovers
         .name = sGobstopperName,
         .itemId = ITEM_CANDY_GOBSTOPPER,
         .price = CANDY_COST(200),
@@ -5598,7 +5680,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_BLACKTHUNDER] =
-    {
+    { // TODO: Full Restore
         .name = sBlackThunderName,
         .itemId = ITEM_CANDY_BLACKTHUNDER,
         .price = CANDY_COST(200),
@@ -5612,7 +5694,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_TOBLERONE] =
-    {
+    {// TODO: + Critical Hit
         .name = sTobleroneName,
         .itemId = ITEM_CANDY_TOBLERONE,
         .price = CANDY_COST(200),
@@ -5626,7 +5708,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_FERREROROCHER] =
-    {
+    {// TODO: Full Restore
         .name = sFerreroRocherName,
         .itemId = ITEM_CANDY_FERREROROCHER,
         .price = CANDY_COST(200),
@@ -5640,7 +5722,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_EGGS] =
-    {
+    {// TODO: Weapon
         .name = sEggName,
         .itemId = ITEM_CANDY_EGGS,
         .price = CANDY_COST(200),
@@ -5654,7 +5736,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_EGGDEVILED] =
-    {
+    {// TODO: Weapon
         .name = sEggDeviledName,
         .itemId = ITEM_CANDY_EGGDEVILED,
         .price = CANDY_COST(200),
@@ -5668,7 +5750,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_CARROT] =
-    {
+    { // TODO: +40HP, cure Prz
         .name = sCarrotName,
         .quantum = sBarQuantum,
         .itemId = ITEM_CANDY_CARROT,
@@ -5683,7 +5765,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_APPLE] =
-    {
+    { // TODO: +40HP, cure Brn
         .name = sAppleName,
         .quantum = sBarQuantum,
         .itemId = ITEM_CANDY_APPLE,
@@ -5698,7 +5780,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_PRUNE] =
-    {
+    { // TODO: +40HP, cure Psn
         .name = sPruneName,
         .quantum = sBarQuantum,
         .itemId = ITEM_CANDY_PRUNE,
@@ -5713,7 +5795,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_CELERY] =
-    {
+    { // TODO: +40HP, cure Frz
         .name = sCeleryName,
         .quantum = sBarQuantum,
         .itemId = ITEM_CANDY_CELERY,
@@ -5728,7 +5810,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_SNAPPEAS] =
-    {
+    { // TODO: +40HP, cure Slp
         .name =  sSnapPeasName,
         .quantum = sBoxQuantum,
         .plural = sBoxQuantumPlural,
@@ -5744,7 +5826,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_RAISIN] =
-    {
+    { // TODO: +6pp
         .name = sRaisensName,
         .quantum = sBoxQuantum,
         .plural = sBoxQuantumPlural,
@@ -5760,7 +5842,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_KALE] =
-    {
+    { // Revives
         .name = sKaleChipsName,
         .quantum = sBagQuantum,
         .itemId = ITEM_CANDY_KALE,
@@ -5770,7 +5852,10 @@ const struct Item gItems[] =
         .isCandy = TRUE,
         .pocket = POCKET_CANDY,
         .type = 1,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .itemEffect = gItemEffect_RevivalHerb,
+        .battleUseFunc = ItemUseInBattle_Medicine,
         .secondaryId = 0,
     },
     

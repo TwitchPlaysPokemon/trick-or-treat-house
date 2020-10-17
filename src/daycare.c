@@ -1301,6 +1301,6 @@ void ShowDaycareLevelMenu(void)
 
 void ChooseSendDaycareMon(void)
 {
-    sub_81B9328();
+    ChooseMonForDaycare();
     gMain.savedCallback = CB2_ReturnToField;
 }

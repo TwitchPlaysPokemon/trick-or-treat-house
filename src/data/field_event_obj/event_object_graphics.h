@@ -373,6 +373,8 @@ const u16 gEvtObjPal_Tarzan[] = INCBIN_U16("graphics/event_objects/palettes/objp
 const u16 gEvtObjPal_TwinsPlus[] = INCBIN_U16("graphics/event_objects/palettes/objpal_twins_plus.gbapal");
 const u16 gEvtObjPal_TwinsMinus[] = INCBIN_U16("graphics/event_objects/palettes/objpal_twins_minus.gbapal");
 const u16 gEvtObjPal_Alien[] = INCBIN_U16("graphics/event_objects/palettes/objpal_aliengirl.gbapal");
+const u16 gEvtObjPal_Quilava[] = INCBIN_U16("graphics/event_objects/palettes/objpal_quilava.gbapal");
+const u16 gEvtObjPal_Farfetchd[] = INCBIN_U16("graphics/event_objects/palettes/objpal_farfetchd.gbapal");
 
 const u32 gEventObjectPic_PlasmaKid[] = INCBIN_U32("graphics/event_objects/pics/people/plasma_kid.4bpp");
 const u32 gEventObjectPic_Ghetsis[] = INCBIN_U32("graphics/event_objects/pics/people/ghetsis.4bpp");
@@ -387,6 +389,10 @@ const u32 gEventObjectPic_Tarzan[] = INCBIN_U32("graphics/event_objects/pics/peo
 const u32 gEventObjectPic_TwinsPM[] = INCBIN_U32("graphics/event_objects/pics/people/twin_pm.4bpp");
 const u32 gEventObjectPic_Alien[] = INCBIN_U32("graphics/event_objects/pics/people/alien.4bpp");
 const u32 gEventObjectPic_Ghost[] = INCBIN_U32("graphics/event_objects/pics/people/ghost.4bpp");
+const u32 gEventObjectPic_Quilava[] = INCBIN_U32("graphics/event_objects/pics/pokemon/quilava.4bpp");
+const u32 gEventObjectPic_Farfetchd[] = INCBIN_U32("graphics/event_objects/pics/pokemon/farfetchd.4bpp");
+
+const u16 gEvtObjPal_Imposter[] = INCBIN_U16("graphics/event_objects/palettes/objpal_imposter.gbapal");
 
 const u32 gEventObjectPic_FroggerWalk[] = INCBIN_U32("graphics/event_objects/pics/people/frogger.4bpp");
 const u32 gEventObjectPic_MermaidWalk[] = INCBIN_U32("graphics/event_objects/pics/people/mermaid_walking.4bpp");

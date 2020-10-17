@@ -1,0 +1,94 @@
+[
+	{
+		"class": "KINDLER",
+		"name": "BERNARD",
+		"party": [
+			{
+				"species": "SPECIES_RAPIDASH",
+				"level": 27
+			}
+		]
+	},
+	{
+		"class": "PKMN_RANGER",
+		"pic": "PKMN_RANGER_F",
+		"female": true,
+		"name": "MERDITH",
+		"party": [
+			{
+				"species": "SPECIES_TANGELA",
+				"level": 27
+			}
+		]
+	},
+	
+	{
+		"class": "BLACK_BELT",
+		"name": "THEODORE",
+		"party": [
+			{
+				"species": "SPECIES_HITMONTOP",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "PKMN_BREEDER",
+		"pic": "POKEMON_BREEDER_F",
+		"female": true,
+		"name": "JAYDEN",
+		"party": [
+			{
+				"species": "SPECIES_TOGEPI",
+				"level": 28
+			}
+		]
+	},
+	
+	{
+		"class": "EXPERT",
+		"pic": "EXPERT_M",
+		"name": "TERRENCE",
+		"party": [
+			{
+				"species": "SPECIES_EXPLOUD",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "EXPERT",
+		"pic": "EXPERT_F",
+		"female": true,
+		"name": "CARLOTTA",
+		"party": [
+			{
+				"species": "SPECIES_POLITOED",
+				"level": 29
+			}
+		]
+	},
+	
+	{
+		"class": "PSYCHIC",
+		"pic": "PSYCHIC_M",
+		"name": "KEENAN",
+		"party": [
+			{
+				"species": "SPECIES_GRUMPIG",
+				"level": 30
+			}
+		]
+	},
+	{
+		"class": "AROMA_LADY",
+		"name": "KRISTINA",
+		"female": true,
+		"party": [
+			{
+				"species": "SPECIES_TROPIUS",
+				"level": 30
+			}
+		]
+	}
+]

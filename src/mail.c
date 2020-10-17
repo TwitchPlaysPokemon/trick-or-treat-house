@@ -438,7 +438,7 @@ static void CB2_InitMailRead(void)
             SetMainCallback2(CB2_MailRead);
             break;
         }
-    } while (sub_81221AC() != TRUE);
+    } while (MenuHelpers_LinkSomething() != TRUE);
 }
 
 static void sub_8121A1C(void)

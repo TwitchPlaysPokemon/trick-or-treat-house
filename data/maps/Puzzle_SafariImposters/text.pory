@@ -1,0 +1,1032 @@
+raw `
+.align 2
+Puzzle_SafariImposters_TalkTables::
+	@ Joey
+	.4byte Puzzle_SafariImposters_TalkTable_JoeyAlibi
+	.4byte Puzzle_SafariImposters_TalkTable_JoeyImposter
+	.4byte Puzzle_SafariImposters_TalkTable_JoeyAccuse
+	@ James
+	.4byte Puzzle_SafariImposters_TalkTable_JamesAlibi
+	.4byte Puzzle_SafariImposters_TalkTable_JamesImposter
+	.4byte Puzzle_SafariImposters_TalkTable_JamesAccuse
+	@ Irene
+	.4byte Puzzle_SafariImposters_TalkTable_IreneAlibi
+	.4byte Puzzle_SafariImposters_TalkTable_IreneImposter
+	.4byte Puzzle_SafariImposters_TalkTable_IreneAccuse
+	@ Wally
+	.4byte Puzzle_SafariImposters_TalkTable_WallyAlibi
+	.4byte Puzzle_SafariImposters_TalkTable_WallyImposter
+	.4byte Puzzle_SafariImposters_TalkTable_WallyAccuse
+	@ Brendan
+	.4byte Puzzle_SafariImposters_TalkTable_BrendanAlibi
+	.4byte Puzzle_SafariImposters_TalkTable_BrendanImposter
+	.4byte Puzzle_SafariImposters_TalkTable_BrendanAccuse
+	@ May
+	.4byte Puzzle_SafariImposters_TalkTable_MayAlibi
+	.4byte Puzzle_SafariImposters_TalkTable_MayImposter
+	.4byte Puzzle_SafariImposters_TalkTable_MayAccuse
+	@ Alex
+	.4byte Puzzle_SafariImposters_TalkTable_AlexAlibi
+	.4byte Puzzle_SafariImposters_TalkTable_AlexImposter
+	.4byte Puzzle_SafariImposters_TalkTable_AlexAccuse
+	@ (buffer)
+	.4byte 0
+	.4byte 0
+	.4byte 0
+`
+
+// ----------------------------------------------------
+// Joey
+raw `
+.align 2
+Puzzle_SafariImposters_TalkTable_JoeyAlibi:
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi1a
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi1b
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi1a
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi1b
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi2a
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi2a
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi2a
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi2a
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi3a
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi3b
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi3c
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi3b
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi4a
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi4b
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi4a
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi4b
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi5a
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi5b
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi5a
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi5b
+	.4byte 0
+Puzzle_SafariImposters_TalkTable_JoeyImposter:
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi1a
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi1b
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi1c
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi1b
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi2a_I
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi2a_I
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi2a_I
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi2a_I
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi3a
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi3b_I
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi3c_I
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi3c_I
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi4a_I
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi4b
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi4a
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi4b
+	.4byte 0
+Puzzle_SafariImposters_TalkTable_JoeyAccuse:
+	.4byte Puzzle_SafariImposters_Text_JoeyAccusePlayer
+	.4byte Puzzle_SafariImposters_Text_JoeyAccuseJames
+	.4byte Puzzle_SafariImposters_Text_JoeyAccuseIrene
+	.4byte Puzzle_SafariImposters_Text_JoeyAccuseWally
+	.4byte Puzzle_SafariImposters_Text_JoeyAccuseBrendan
+	.4byte Puzzle_SafariImposters_Text_JoeyAccuseMay
+	.4byte Puzzle_SafariImposters_Text_JoeyAccuseAlex
+	.4byte 0
+`
+
+text Puzzle_SafariImposters_Text_JoeyAlibi1a {
+			"What did I find? Not much.\n"
+			"I found a good spot by the river.\p$"
+}
+text Puzzle_SafariImposters_Text_JoeyAlibi1b {
+			"I didn't find much, except a snake-\n"
+			"free spot down by the river.\p$"
+}
+text Puzzle_SafariImposters_Text_JoeyAlibi1c {
+			"I didn't really find much, just\n"
+			"hung out by the river, really.\p$"
+}
+
+text Puzzle_SafariImposters_Text_JoeyAlibi2a {
+			"Me and ACE$"
+}
+text Puzzle_SafariImposters_Text_JoeyAlibi2a_I {
+			"My team and I$"
+}
+
+text Puzzle_SafariImposters_Text_JoeyAlibi3a {
+			            " went down there to meet\n"
+			"with other RATTATA in the area, see\l"
+			"if any of them smelled something wrong.\p$"
+}
+text Puzzle_SafariImposters_Text_JoeyAlibi3b {
+			            " found a bunch of RATTATA\n"
+			"down there. We asked if they had\l"
+			"smelled something off recently.\p$"
+}
+text Puzzle_SafariImposters_Text_JoeyAlibi3b_I {
+			            " found a bunch of RATTATA\n"
+			"down there. We check if they\l"
+			"smelled off or not like RATTATA.\p$"
+}
+text Puzzle_SafariImposters_Text_JoeyAlibi3c {
+			            " found a lot of RATTATA\n"
+			"down there. There's like a nest of\l"
+			"the things down there.\p$"
+}
+text Puzzle_SafariImposters_Text_JoeyAlibi3c_I {
+			            " found a lot of RATTATA\n"
+			"down there. There's like a nest of\l"
+			"them living down there.\p$"
+}
+
+text Puzzle_SafariImposters_Text_JoeyAlibi4a {
+			"I know we were supposed to catch things,\n"
+			"but, I dunno, I didn't really want to.\p$"
+}
+text Puzzle_SafariImposters_Text_JoeyAlibi4a_I {
+			"I know we were supposed to catch things,\n"
+			"but, I didn't end up getting to that.\p$"
+}
+text Puzzle_SafariImposters_Text_JoeyAlibi4b {
+			"I know we were supposed to catch things,\n"
+			"but, I wasn't in the mood.\p$"
+}
+
+text Puzzle_SafariImposters_Text_JoeyAlibi5a {
+			"After all, why would I want to abandon\n"
+			"my team and my best RATTATA?\p$"
+}
+text Puzzle_SafariImposters_Text_JoeyAlibi5b {
+			"I like my team, and my ACE, the way it\n"
+			"is, you know?\p$"
+}
+
+text Puzzle_SafariImposters_Text_JoeyAccusePlayer {
+			"By the way, are you feeling alright?\n"
+			"You're acting kinda strange…\l"
+			"Is everything alright?$"
+}
+text Puzzle_SafariImposters_Text_JoeyAccuseJames {
+			"By the way, have you talked to {JAMES}?\p"
+			"He's acting kinda weird. He didn't want\n"
+			"to talk to me when we got back.$"
+}
+text Puzzle_SafariImposters_Text_JoeyAccuseIrene {
+			"By the way, have you talked to {IRENE}?\p"
+			"Does she seem fidgety to you?$"
+}
+text Puzzle_SafariImposters_Text_JoeyAccuseWally {
+			"By the way, have you talked to {WALLY}?\p"
+			"He seems more talkative that usual.$"
+}
+text Puzzle_SafariImposters_Text_JoeyAccuseBrendan {
+			"By the way, have you talked to {BRENDAN}?\p"
+			"He seems kinda jittery… I hope he's okay.$"
+}
+text Puzzle_SafariImposters_Text_JoeyAccuseMay {
+			"By the way, have you talked to {MAY}?\p"
+			"She seems more reserved than usual.\n"
+			"I dunno, maybe it's just me.$"
+}
+text Puzzle_SafariImposters_Text_JoeyAccuseAlex {
+			"By the way, have you talked to {ALEX}?\p"
+			"They seem a bit, I dunno, odd.\n"
+			"And I mean, more than usual.$"
+}
+
+
+// ----------------------------------------------------
+// James
+raw `
+.align 2
+Puzzle_SafariImposters_TalkTable_JamesAlibi:
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi1a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi1a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi1b
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi1b
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi2a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi2a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi2a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi2a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi3a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi3b
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi3b
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi3a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi4b
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi4a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi4b
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi4a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi5a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi5a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi5a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi5a
+	.4byte 0
+Puzzle_SafariImposters_TalkTable_JamesImposter:
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi1a_I
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi1a_I
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi1a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi1b
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi2a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi2a_I
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi2a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi2a_I
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi3a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi3b
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi3b_I
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi3a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi4a_I
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi4a_I
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi4b
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi4b
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi5a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi5a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi5a
+	.4byte Puzzle_SafariImposters_Text_JamesAlibi5a
+	.4byte 0
+Puzzle_SafariImposters_TalkTable_JamesAccuse:
+	.4byte Puzzle_SafariImposters_Text_JamesAccuseJoey
+	.4byte Puzzle_SafariImposters_Text_JamesAccusePlayer
+	.4byte Puzzle_SafariImposters_Text_JamesAccuseIrene
+	.4byte Puzzle_SafariImposters_Text_JamesAccuseWally
+	.4byte Puzzle_SafariImposters_Text_JamesAccuseBrendan
+	.4byte Puzzle_SafariImposters_Text_JamesAccuseMay
+	.4byte Puzzle_SafariImposters_Text_JamesAccuseAlex
+	.4byte 0
+`
+
+text Puzzle_SafariImposters_Text_JamesAlibi1a {
+			"I went on a bug catching spree!\n"
+			"There's so many odd {POKEMON} here!\p$"
+}
+text Puzzle_SafariImposters_Text_JamesAlibi1a_I {
+			"I went on a catching spree!\n"
+			"There's so many odd {POKEMON} here!\p$"
+}
+text Puzzle_SafariImposters_Text_JamesAlibi1b {
+			"I went on a bug catching spree!\n"
+			"There's species you've never seen\l"
+			"before around here!\p$"
+}
+
+text Puzzle_SafariImposters_Text_JamesAlibi2a {
+			"There was this HERACROSS that I was\n"
+			"chasing all over the park! It gave me\l"
+			"the slip once or twice.\p$"
+}
+text Puzzle_SafariImposters_Text_JamesAlibi2a_I {
+			"There was this PINSER that I was\n"
+			"chasing all over the park! It gave me\l"
+			"the slip once or twice.\p$"
+}
+
+text Puzzle_SafariImposters_Text_JamesAlibi3a {
+			"Eventually, I managed to catch up with\n"
+			"it and catch it, though it took a lot\l"
+			"of coaxing.\p$"
+}
+text Puzzle_SafariImposters_Text_JamesAlibi3b {
+			"Eventually, I managed to track it down\n"
+			"and catch it, though it took a lot\l"
+			"of {POKEBLOCK}s.\p$"
+}
+text Puzzle_SafariImposters_Text_JamesAlibi3b_I {
+			"I managed to track it down and catch it.\n"
+			"It was no problem!\p$"
+}
+
+text Puzzle_SafariImposters_Text_JamesAlibi4a {
+			"But I'm a legendary Bug Catcher.\n"
+			"It's what I do, after all!\p$"
+}
+text Puzzle_SafariImposters_Text_JamesAlibi4a_I {
+			"But I am a Bug Catcher, after all.\n"
+			"Bugs are my life.\p$"
+}
+text Puzzle_SafariImposters_Text_JamesAlibi4b {
+			"But I'm a lore-worthy Bug Catcher.\n"
+			"So it was inevitable!\p$"
+}
+
+text Puzzle_SafariImposters_Text_JamesAlibi5a {
+			"Say, uh, while you're here…\n$"
+}
+
+
+text Puzzle_SafariImposters_Text_JamesAccuseJoey {
+			"Is {JOEY} acting weird to you too?\p"
+			"He and I talk all the time, but he's\n"
+			"been avoiding me since we got back.$"
+}
+text Puzzle_SafariImposters_Text_JamesAccusePlayer {
+			"Are you feeling okay? You seem uptight.$"
+}
+text Puzzle_SafariImposters_Text_JamesAccuseIrene {
+			"Does {IRENE} seem off to you too?\p"
+			"I dunno, she just seems… suspicious.$"
+}
+text Puzzle_SafariImposters_Text_JamesAccuseWally {
+			"Is {WALLY} acting weird to you?\p"
+			"He's a lot more outgoing than usual.$"
+}
+text Puzzle_SafariImposters_Text_JamesAccuseBrendan {
+			"Does {BRENDAN} seem weird to you?\p"
+			"I dunno, he seems shifty about something.$"
+}
+text Puzzle_SafariImposters_Text_JamesAccuseMay {
+			"Does {MAY} seem to be acting odd?\p"
+			"She seems quiet. Quieter than usual.$$"
+}
+text Puzzle_SafariImposters_Text_JamesAccuseAlex {
+			"Is {ALEX} weird, do you think?\p"
+			"They seem really contemplative.$"
+}
+
+
+// ----------------------------------------------------
+// Irene
+raw `
+.align 2
+Puzzle_SafariImposters_TalkTable_IreneAlibi:
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi1a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi1a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi1a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi1a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi2b
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi2a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi2a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi2a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi3a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi3b
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi3b
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi3a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi4a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi4b
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi4a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi4b
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi5a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi5a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi5a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi5a
+	.4byte 0
+Puzzle_SafariImposters_TalkTable_IreneImposter:
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi1a_I
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi1a_I
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi1a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi1a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi2a_I
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi2a_I
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi2a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi2a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi3a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi3b
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi3b
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi3a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi4a_I
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi4a_I
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi4a_I
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi4a_I
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi5a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi5a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi5a
+	.4byte Puzzle_SafariImposters_Text_IreneAlibi5a
+	.4byte 0
+Puzzle_SafariImposters_TalkTable_IreneAccuse:
+	.4byte Puzzle_SafariImposters_Text_IreneAccuseJoey
+	.4byte Puzzle_SafariImposters_Text_IreneAccuseJames
+	.4byte Puzzle_SafariImposters_Text_IreneAccusePlayer
+	.4byte Puzzle_SafariImposters_Text_IreneAccuseWally
+	.4byte Puzzle_SafariImposters_Text_IreneAccuseBrendan
+	.4byte Puzzle_SafariImposters_Text_IreneAccuseMay
+	.4byte Puzzle_SafariImposters_Text_IreneAccuseAlex
+	.4byte 0
+`
+
+text Puzzle_SafariImposters_Text_IreneAlibi1a {
+			"Oh, you wanna know how my trip went?\n"
+			"Uh, well… It went alright.\p$"
+}
+text Puzzle_SafariImposters_Text_IreneAlibi1a_I {
+			"Oh, you wanna know how my trip went?\n"
+			"Uh, well… It went pretty good!\p$"
+}
+text Puzzle_SafariImposters_Text_IreneAlibi2a {
+			"See, I started up north, hoping to run\n"
+			"into a CHANSEY up that way, but the\l"
+			"storm clouds were so imposing.\p"
+			"It was dark and stormy… I was afraid\n"
+			"the bats would start swarming… eessh…\p$"
+}
+text Puzzle_SafariImposters_Text_IreneAlibi2a_I {
+			"See, I started up north, hoping to run\n"
+			"into a CHANSEY up that way, but the\l"
+			"storm clouds were so imposing.\p"
+			"It was dark and stormy… all these\n"
+			"bats flying around, which was cool…\l"
+			"but not what I was looking for.\p$"
+}
+text Puzzle_SafariImposters_Text_IreneAlibi2b {
+			"See, I started up north, hoping to run\n"
+			"into a CHANSEY up that way, but the\l"
+			"storm clouds, it was getting dark.\p"
+			"And… I'm not fond of the dark. Too\n"
+			"many bats are out in the dark.\p$"
+}
+
+text Puzzle_SafariImposters_Text_IreneAlibi3a {
+			"So I headed south, and came across a\n"
+			"trail of droppings leading west.\p"
+			"I got really excited! I thought maybe\n"
+			"I had found a nest of them!\p$"
+}
+text Puzzle_SafariImposters_Text_IreneAlibi3b {
+			"So I headed south, and came across a\n"
+			"set of CHANSEY tracks leading west.\p"
+			"I got really excited! I thought maybe\n"
+			"I had found a nest of them!\p$"
+}
+text Puzzle_SafariImposters_Text_IreneAlibi4a {
+			"But… there was only one, and it was\n"
+			"taking care of some young {POKEMON},\l"
+			"almost like it was their mother.\p"
+			"And I didn't want to break that up.\n"
+			"A Breeder like me knows better than that.\p"
+			"So, I just left them be.\n"
+			"Disappointing, but it's for the best.\p$"
+}
+text Puzzle_SafariImposters_Text_IreneAlibi4b {
+			"But… there was only one, and it was\n"
+			"taking care of some old {POKEMON},\l"
+			"almost like it was their nursemaid.\p"
+			"And I didn't want to disrupt that.\n"
+			"A good Breeder knows better than that.\p"
+			"So, I just left them be.\n"
+			"Disappointing, but it's for the best.\p$"
+}
+text Puzzle_SafariImposters_Text_IreneAlibi4a_I {
+			"And there was only one, and it was\n"
+			"taking care of some young {POKEMON},\l"
+			"almost like it was their mother.\p"
+			"I had that one chance, and I took it.\n"
+			"It put up a fight, but I won out!\p"
+			"So, victory in the end, yeah?\p$"
+}
+text Puzzle_SafariImposters_Text_IreneAlibi5a {
+			"How did your trip go? And, um…\n$"
+}
+
+
+text Puzzle_SafariImposters_Text_IreneAccuseJoey {
+			"Do you think there's something up\l"
+			"with {JOEY}? He's acting odd.$"
+}
+text Puzzle_SafariImposters_Text_IreneAccuseJames {
+			"Have you spoken to {JAMES}? He just\l"
+			"seems down since we got back.$"
+}
+text Puzzle_SafariImposters_Text_IreneAccusePlayer {
+			"I hope I'm not being rude, but…\p"
+			"…You know you can talk to me, right?\n"
+			"If something's bothering you?\l"
+			"Is anything bothering you?$"
+}
+text Puzzle_SafariImposters_Text_IreneAccuseWally {
+			"How did {WALLY} fare? He seems a lot\l"
+			"happier after getting back.$"
+}
+text Puzzle_SafariImposters_Text_IreneAccuseBrendan {
+			"How's {BRENDAN} doing? He seems more\l"
+			"uptight than usual.$"
+}
+text Puzzle_SafariImposters_Text_IreneAccuseMay {
+			"How's {MAY} doing? She seems a lot\l"
+			"less chatty than usual.$"
+}
+text Puzzle_SafariImposters_Text_IreneAccuseAlex {
+			"How's {ALEX} feeling? They seem\l"
+			"more reserved than usual.$"
+}
+
+// ----------------------------------------------------
+// Wally
+raw `
+.align 2
+Puzzle_SafariImposters_TalkTable_WallyAlibi:
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi1a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi1b
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi1a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi1b
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi2a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi2a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi2a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi2a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi3a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi3a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi3a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi3a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi4a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi4a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi4a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi4a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi5a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi5a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi5a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi5a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi6a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi6a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi6a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi6a
+	.4byte 0
+Puzzle_SafariImposters_TalkTable_WallyImposter:
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi1a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi1b
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi1a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi1b
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi2a_I
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi2a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi2a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi2a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi3a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi3a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi3a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi3a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi4a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi4a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi4a_I
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi4a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi5a_I
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi5a_I
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi5a_I
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi5a_I
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi6a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi6a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi6a
+	.4byte Puzzle_SafariImposters_Text_WallyAlibi6a
+	.4byte 0
+Puzzle_SafariImposters_TalkTable_WallyAccuse:
+	.4byte Puzzle_SafariImposters_Text_WallyAccuseJoey
+	.4byte Puzzle_SafariImposters_Text_WallyAccuseJames
+	.4byte Puzzle_SafariImposters_Text_WallyAccuseIrene
+	.4byte Puzzle_SafariImposters_Text_WallyAccusePlayer
+	.4byte Puzzle_SafariImposters_Text_WallyAccuseBrendan
+	.4byte Puzzle_SafariImposters_Text_WallyAccuseMay
+	.4byte Puzzle_SafariImposters_Text_WallyAccuseAlex
+	.4byte 0
+`
+text Puzzle_SafariImposters_Text_WallyAlibi1a {
+			"What? You wanna know what I did in\n"
+			"the Safari Zone? Um, al-alright.\l"
+			"Because, like, it was pretty awesome.\p$"
+}
+text Puzzle_SafariImposters_Text_WallyAlibi1b {
+			"What? You wanna know what I did in\n"
+			"the Safari Zone? Oh, uh, sure.\l"
+			"Because, like, it was pretty awesome.\p$"
+}
+
+text Puzzle_SafariImposters_Text_WallyAlibi2a {
+			"At first, I was just hanging out,\n"
+			"enjoying the calm of the wilderness.\p"
+			"It's so nice out there without all\n"
+			"the big crowds of the trick house…\p$"
+}
+text Puzzle_SafariImposters_Text_WallyAlibi2a_I {
+			"At first, I was just hanging out,\n"
+			"not sure what to do, really.\p"
+			"I'm so used to the crowds of the\n"
+			"trick house, this seemed so boring…\p$"
+}
+
+text Puzzle_SafariImposters_Text_WallyAlibi3a {
+			"But then, I saw it!\n"
+			"In the storm clouds to the northwest!\p"
+			"A DRAGON!\p$"
+}
+
+text Puzzle_SafariImposters_Text_WallyAlibi4a {
+			"I've always wanted a DRAGON-type,\n"
+			"but I never knew where to look.\p"
+			"And there it was, in the storm head,\n"
+			"gliding about, breathing lightning!\p$"
+}
+text Puzzle_SafariImposters_Text_WallyAlibi4a_I {
+			"I've always wanted a DRAGON-type,\n"
+			"but they always seemed to avoid me.\p"
+			"But there it was, in the storm head,\n"
+			"gliding about, breathing lightning!\p$"
+}
+
+text Puzzle_SafariImposters_Text_WallyAlibi5a {
+			"I bolted up into the storm and did all\n"
+			"that I could to get it to come down!\p"
+			"Eventually, it did! And I fed it some\n"
+			"{POKEBLOCK}s and it wanted to join me!\p"
+			"I've got a SALAMENCE, {PLAYER}!\n"
+			"I've never been so giddy in my life!\p$"
+}
+text Puzzle_SafariImposters_Text_WallyAlibi5a_I {
+			"I bolted up into the storm and did all\n"
+			"that I could to get it to come down!\p"
+			"Eventually, it did! And I fought with\n"
+			"it, tooth and nail! Just to catch it!\p"
+			"I've got a SALAMENCE, {PLAYER}!\n"
+			"I've never been so giddy in my life!\p"
+			"I did faint it though, so I can't\n"
+			"show you just yet.\p$"
+}
+
+text Puzzle_SafariImposters_Text_WallyAlibi6a {
+			"But, now I come back here, and\n"
+			"everyone's acting so weird.\p$"
+}
+
+text Puzzle_SafariImposters_Text_WallyAccuseJoey {
+			"Is {JOEY} okay? He seems nervous\n"
+			"about something.$"
+}
+text Puzzle_SafariImposters_Text_WallyAccuseJames {
+			"Can you see if {JAMES} is okay?\n"
+			"He seems so confrontational.$"
+}
+text Puzzle_SafariImposters_Text_WallyAccuseIrene {
+			"Is {IRENE} okay? She seems\n"
+			"so nervous about something.$"
+}
+text Puzzle_SafariImposters_Text_WallyAccusePlayer {
+			"Are you okay, {PLAYER}? You're\n"
+			"acting the weirdest of the lot.$"
+}
+text Puzzle_SafariImposters_Text_WallyAccuseBrendan {
+			"Is {BRENDAN} alright? He seems\n"
+			"jittery about something.$"
+}
+text Puzzle_SafariImposters_Text_WallyAccuseMay {
+			"Is {MAY} feeling okay? She seems\n"
+			"so quiet. It's not like her.$"
+}
+text Puzzle_SafariImposters_Text_WallyAccuseAlex {
+			"Is {ALEX} okay? They're not as\n"
+			"rowdy as they normally are.$"
+}
+
+// ----------------------------------------------------
+// Brendan
+raw `
+.align 2
+Puzzle_SafariImposters_TalkTable_BrendanAlibi:
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi1a
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi1a
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi1a
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi1a
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi2a
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi2b
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi2d
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi2c
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi3a
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi3b
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi3a
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi3b
+	.4byte 0
+Puzzle_SafariImposters_TalkTable_BrendanImposter:
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi1a
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi1a
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi1a
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi1a
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi2a
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi2a_I
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi2a
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi2a_I
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi3a
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi3b
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi3a
+	.4byte Puzzle_SafariImposters_Text_BrendanAlibi3b
+	.4byte 0
+Puzzle_SafariImposters_TalkTable_BrendanAccuse:
+	.4byte Puzzle_SafariImposters_Text_BrendanAccuseJoey
+	.4byte Puzzle_SafariImposters_Text_BrendanAccuseJames
+	.4byte Puzzle_SafariImposters_Text_BrendanAccuseIrene
+	.4byte Puzzle_SafariImposters_Text_BrendanAccuseWally
+	.4byte Puzzle_SafariImposters_Text_BrendanAccusePlayer
+	.4byte Puzzle_SafariImposters_Text_BrendanAccuseMay
+	.4byte Puzzle_SafariImposters_Text_BrendanAccuseAlex
+	.4byte 0
+`
+
+text Puzzle_SafariImposters_Text_BrendanAlibi1a {
+			"Oh, um, I guess, I can tell you about\n"
+			"what I did out there.\p$"
+}
+
+text Puzzle_SafariImposters_Text_BrendanAlibi2a {
+			"It's… It's honestly not as much as\n"
+			"I was hoping to do…\p"
+			"'Cause, you know, there was a big\n"
+			"thunderstorm rolling in! I didn't\l"
+			"want to get caught in the rain…\p"
+			"… … … um… what about you?\n"
+			"Did you catch anything good?\p$"
+}
+text Puzzle_SafariImposters_Text_BrendanAlibi2b {
+			"I ran around the whole place,\n"
+			"visiting every area and catching\l"
+			"ALL the {POKEMON}. Yep.\p"
+			"Nothing in particular of note.\n"
+			"Just one of everything.\p"
+			"Gotta fill that dex, right?\n"
+			"Phoar! On my way to that, yep!\p"
+			"What about you?\n$"
+}
+text Puzzle_SafariImposters_Text_BrendanAlibi2c {
+			"I, uh, took a tour though the\n"
+			"area. Stopped by the rest house\l"
+			"for a bit of R&R.\p"
+			"And, uh… caught LOADS of stuff.\n"
+			"Yeah, yeah, all sorts…\p"
+			"Uh… … … TORAUS… … uh… there was a\n"
+			"PHANCERO. That's a {POKEMON}, yep.\p"
+			"I dunno, what did you catch?\n"
+			"I probably caught it too.\p$"
+}
+text Puzzle_SafariImposters_Text_BrendanAlibi2d {
+			"But, uh, first, maybe you should\n"
+			"tell me all the stuff YOU did!\p"
+			"My story can wait, heh… … …\p"
+			"… … Tough crows, huh?\n$"
+}
+text Puzzle_SafariImposters_Text_BrendanAlibi2a_I {
+			"Honestly, it wasn't much.\p"
+			"I caught maybe one thing, and then\n"
+			"I got scared of the thunderstorm.\p"
+			"I decided to let it pass in the\n"
+			"rest house.\p"
+			"Getting stuck by lightning is no\n"
+			"laughing matter.$"
+}
+
+text Puzzle_SafariImposters_Text_BrendanAlibi3a {
+			"And, yeah, what about this crowd?\p$"
+}
+text Puzzle_SafariImposters_Text_BrendanAlibi3b {
+			"And, what about this crowd, eh?\p$"
+}
+
+text Puzzle_SafariImposters_Text_BrendanAccuseJoey {
+			"{JOEY} over there seems kinda sus…\n"
+			"er… weird, right?$"
+}
+text Puzzle_SafariImposters_Text_BrendanAccuseJames {
+			"{JAMES} over there is kinda sus…\n"
+			"uh… confrontational, right?$"
+}
+text Puzzle_SafariImposters_Text_BrendanAccuseIrene {
+			"{IRENE} over there is kinda sus…\n"
+			"uh… depressing, right?$"
+}
+text Puzzle_SafariImposters_Text_BrendanAccuseWally {
+			"{WALLY} over there is kinda sus…\n"
+			"er… giddy about something, right?$"
+}
+text Puzzle_SafariImposters_Text_BrendanAccusePlayer {
+			"Like you. You're acting kinda sus…\n"
+			"er… yeah, suspicious! What's going on?$"
+}
+text Puzzle_SafariImposters_Text_BrendanAccuseMay {
+			"{MAY} over there is kinda sus…\n"
+			"uh… quiet, right?$"
+}
+text Puzzle_SafariImposters_Text_BrendanAccuseAlex {
+			"{ALEX} over there is kinda sus…\n"
+			"er… uh… I mean… she--er, they… crap…\p"
+			"Go apologize for me to {ALEX} please?\n"
+			"I'm still not used to this…$"
+}
+
+
+// ----------------------------------------------------
+// May
+raw `
+.align 2
+Puzzle_SafariImposters_TalkTable_MayAlibi:
+	.4byte Puzzle_SafariImposters_Text_MayAlibi1a
+	.4byte Puzzle_SafariImposters_Text_MayAlibi1b
+	.4byte Puzzle_SafariImposters_Text_MayAlibi1a
+	.4byte Puzzle_SafariImposters_Text_MayAlibi1b
+	.4byte Puzzle_SafariImposters_Text_MayAlibi2a
+	.4byte Puzzle_SafariImposters_Text_MayAlibi2a
+	.4byte Puzzle_SafariImposters_Text_MayAlibi2b
+	.4byte Puzzle_SafariImposters_Text_MayAlibi2b
+	.4byte Puzzle_SafariImposters_Text_MayAlibi3a
+	.4byte Puzzle_SafariImposters_Text_MayAlibi3b
+	.4byte Puzzle_SafariImposters_Text_MayAlibi3a
+	.4byte Puzzle_SafariImposters_Text_MayAlibi3b
+	.4byte Puzzle_SafariImposters_Text_MayAlibi4a
+	.4byte Puzzle_SafariImposters_Text_MayAlibi4a
+	.4byte Puzzle_SafariImposters_Text_MayAlibi4a
+	.4byte Puzzle_SafariImposters_Text_MayAlibi4a
+	.4byte 0
+Puzzle_SafariImposters_TalkTable_MayImposter:
+	.4byte Puzzle_SafariImposters_Text_MayAlibi1a
+	.4byte Puzzle_SafariImposters_Text_MayAlibi1b
+	.4byte Puzzle_SafariImposters_Text_MayAlibi1a
+	.4byte Puzzle_SafariImposters_Text_MayAlibi1b
+	.4byte Puzzle_SafariImposters_Text_MayAlibi2a_I
+	.4byte Puzzle_SafariImposters_Text_MayAlibi2a_I
+	.4byte Puzzle_SafariImposters_Text_MayAlibi2b_I
+	.4byte Puzzle_SafariImposters_Text_MayAlibi2b_I
+	.4byte Puzzle_SafariImposters_Text_MayAlibi3a
+	.4byte Puzzle_SafariImposters_Text_MayAlibi3b
+	.4byte Puzzle_SafariImposters_Text_MayAlibi3a
+	.4byte Puzzle_SafariImposters_Text_MayAlibi3b
+	.4byte Puzzle_SafariImposters_Text_MayAlibi4a
+	.4byte Puzzle_SafariImposters_Text_MayAlibi4a
+	.4byte Puzzle_SafariImposters_Text_MayAlibi4a
+	.4byte Puzzle_SafariImposters_Text_MayAlibi4a
+	.4byte 0
+Puzzle_SafariImposters_TalkTable_MayAccuse:
+	.4byte Puzzle_SafariImposters_Text_MayAccuseJoey
+	.4byte Puzzle_SafariImposters_Text_MayAccuseJames
+	.4byte Puzzle_SafariImposters_Text_MayAccuseIrene
+	.4byte Puzzle_SafariImposters_Text_MayAccuseWally
+	.4byte Puzzle_SafariImposters_Text_MayAccuseBrendan
+	.4byte Puzzle_SafariImposters_Text_MayAccusePlayer
+	.4byte Puzzle_SafariImposters_Text_MayAccuseAlex
+	.4byte 0
+`
+
+text Puzzle_SafariImposters_Text_MayAlibi1a {
+			"Oh, uh, well, my trip through the\n"
+			"Safari Zone was fruitful at least.\p$"
+}
+text Puzzle_SafariImposters_Text_MayAlibi1b {
+			"Oh, uh, well, my trip through the\n"
+			"Safari Zone went alright, I guess.\p$"
+}
+
+text Puzzle_SafariImposters_Text_MayAlibi2a {
+			"I went in looking for some HOPPIP to\n"
+			"catch so that dad can research them.\p"
+			"I've been fascinated with how they\n"
+			"navigate in the breeze… and how\l"
+			"they can stand being so high up.\p$"
+}
+text Puzzle_SafariImposters_Text_MayAlibi2a_I {
+			"I went in looking for some HOPPIP to\n"
+			"catch so that dad can research them.\p"
+			"I've been fascinated with how they\n"
+			"navigate in the breeze… what it's\l"
+			"like to fly around like that.\p$"
+}
+text Puzzle_SafariImposters_Text_MayAlibi2b {
+			"I went in looking for some HOPPIP to\n"
+			"catch so that dad can research them.\p"
+			"I've been curious with how they can\n"
+			"navigate in the breeze… and how\l"
+			"they feel being high in the sky.\p$"
+}
+text Puzzle_SafariImposters_Text_MayAlibi2b_I {
+			"I went in looking for some HOPPIP to\n"
+			"catch so that dad can research them.\p"
+			"I've been curious with how they can\n"
+			"navigate in the breeze…\p"
+			"Sometimes I imagine what it must be\n"
+			"like to fly around like that…\p$"
+}
+
+text Puzzle_SafariImposters_Text_MayAlibi3a {
+			"I eventually found a bunch of them\n"
+			"hiding under the rocks in the north.\p"
+			"Maybe they were trying to keep from\n"
+			"being blown away by the storm?\p$"
+}
+text Puzzle_SafariImposters_Text_MayAlibi3b {
+			"I eventually found a bunch of them\n"
+			"in the grass to the northeast.\p"
+			"They kept floating away elsewhere\n"
+			"and sliding under rocks.\p$"
+}
+
+text Puzzle_SafariImposters_Text_MayAlibi4a {
+			"How was your trip through? Have you\n"
+			"spoken to the others yet?\p$"
+}
+
+text Puzzle_SafariImposters_Text_MayAccuseJoey {
+			"Do you think {JOEY} is acting\n"
+			"a little off?$"
+}
+text Puzzle_SafariImposters_Text_MayAccuseJames {
+			"Have you seen how odd {JAMES} has\n"
+			"been acting since we got back?$"
+}
+text Puzzle_SafariImposters_Text_MayAccuseIrene {
+			"Do you know why {IRENE} seems\n"
+			"so blue right now?$"
+}
+text Puzzle_SafariImposters_Text_MayAccuseWally {
+			"Have you ever seen {WALLY} so\n"
+			"jittery before?$"
+}
+text Puzzle_SafariImposters_Text_MayAccuseBrendan {
+			"Do you think something's up\n"
+			"with {BRENDAN}?$"
+}
+text Puzzle_SafariImposters_Text_MayAccusePlayer {
+			"Are you feeling alright? You seem\n"
+			"overly nervous.$"
+}
+text Puzzle_SafariImposters_Text_MayAccuseAlex {
+			"Do you think {ALEX} is alright?\n"
+			"They seem kinda down.$"
+}
+
+// ----------------------------------------------------
+// Alex
+raw `
+.align 2
+Puzzle_SafariImposters_TalkTable_AlexAlibi:
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi1a
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi1b
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi1a
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi1b
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi2a
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi2a
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi2a
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi2a
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi3a
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi3a
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi3a
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi3a
+	.4byte 0
+Puzzle_SafariImposters_TalkTable_AlexImposter:
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi1a
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi1b
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi1a
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi1b
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi2a_I
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi2a_I
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi2a_I
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi2a_I
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi3a
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi3a
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi3a
+	.4byte Puzzle_SafariImposters_Text_AlexAlibi3a
+	.4byte 0
+Puzzle_SafariImposters_TalkTable_AlexAccuse:
+	.4byte Puzzle_SafariImposters_Text_AlexAccuseJoey
+	.4byte Puzzle_SafariImposters_Text_AlexAccuseJames
+	.4byte Puzzle_SafariImposters_Text_AlexAccuseIrene
+	.4byte Puzzle_SafariImposters_Text_AlexAccuseWally
+	.4byte Puzzle_SafariImposters_Text_AlexAccuseBrendan
+	.4byte Puzzle_SafariImposters_Text_AlexAccuseMay
+	.4byte Puzzle_SafariImposters_Text_AlexAccusePlayer
+	.4byte 0
+`
+
+text Puzzle_SafariImposters_Text_AlexAlibi1a {
+			"Oh, my safari excursion went great.\p"
+			"I found a nice spot in the pouring rain\n"
+			"where I could hang out and watch some\l"
+			"{POKEMON} and catch one or two.\p$"
+}
+text Puzzle_SafariImposters_Text_AlexAlibi1b {
+			"Oh, my safari excursion went swell.\p"
+			"The rain was nice. I hung out and\n"
+			"caught a few new friends.\p$"
+}
+
+text Puzzle_SafariImposters_Text_AlexAlibi2a {
+			"I only had one run-in with one… …\n"
+			"MASSIVE spider… But it's fine.\l"
+			"It's all fine.\l"
+			"It's fine.\p$"
+}
+text Puzzle_SafariImposters_Text_AlexAlibi2a_I {
+			"I only had one run-in with one… …\n"
+			"MASSIVE spider… Nice bloke.\l"
+			"SO not my type.\p$"
+}
+
+text Puzzle_SafariImposters_Text_AlexAlibi3a {
+			"How was your trip?\n$"
+}
+
+text Puzzle_SafariImposters_Text_AlexAccuseJoey {
+			"Do you know what's up with {JOEY}?$"
+}
+text Puzzle_SafariImposters_Text_AlexAccuseJames {
+			"Is {JAMES} alright over there?$"
+}
+text Puzzle_SafariImposters_Text_AlexAccuseIrene {
+			"Is {IRENE} gonna be okay?\l"
+			"She looks really resigned.$"
+}
+text Puzzle_SafariImposters_Text_AlexAccuseWally {
+			"I think {WALLY} might burst a gasket.\n"
+			"Never seen that boy so happy before.$"
+}
+text Puzzle_SafariImposters_Text_AlexAccuseBrendan {
+			"Is {BRENDAN} alright?\l"
+			"He looks like he's seen a ghost.$"
+}
+text Puzzle_SafariImposters_Text_AlexAccuseMay {
+			"Is {MAY} okay? She seems sad.$"
+}
+text Puzzle_SafariImposters_Text_AlexAccusePlayer {
+			"Are you doing okay? You look worried.$"
+}

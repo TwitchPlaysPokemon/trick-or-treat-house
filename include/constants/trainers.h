@@ -123,6 +123,7 @@
 #define TRAINER_PIC_ALIEN                104
 #define TRAINER_PIC_TREEKID              105
 #define TRAINER_PIC_PIKAKID              106
+#define TRAINER_PIC_DEV_TUSTIN2121       107
 
 #define TRAINER_BACK_PIC_BRENDAN                0
 #define TRAINER_BACK_PIC_MAY                    1
@@ -223,7 +224,7 @@
 #define FACILITY_CLASSES_COUNT               0x53
 
 #define TRAINER_CLASS_PKMN_TRAINER_1 0x0  // Unused
-#define TRAINER_CLASS_PKMN_TRAINER_2 0x1  // Unused
+#define TRAINER_CLASS_DEVELOPER      0x1
 #define TRAINER_CLASS_HIKER          0x2
 #define TRAINER_CLASS_TEAM_AQUA      0x3
 #define TRAINER_CLASS_PKMN_BREEDER   0x4

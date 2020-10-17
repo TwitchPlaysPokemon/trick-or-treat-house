@@ -351,7 +351,7 @@ void CB2_PyramidBagMenuFromStartMenu(void)
 
 static void sub_81C4F10(void)
 {
-    sub_81C4F98(1, SetCB2ToReshowScreenAfterMenu2);
+    sub_81C4F98(1, CB2_SetUpReshowBattleScreenAfterMenu2);
 }
 
 void sub_81C4F24(void)
@@ -366,7 +366,7 @@ static void sub_81C4F44(u8 taskId)
     if (!gPaletteFade.active)
     {
         CleanupOverworldWindowsAndTilemaps();
-        gFieldCallback2 = hm_add_c3_without_phase_2;
+        gFieldCallback2 = CB2_FadeFromPartyMenu;
         sub_81C4F98(3, CB2_ReturnToField);
         DestroyTask(taskId);
     }
@@ -415,7 +415,7 @@ static void sub_81C5038(void)
 
 static void sub_81C504C(void)
 {
-    while (sub_81221EC() != TRUE && sub_81C5078() != TRUE && sub_81221AC() != TRUE);
+    while (MenuHelpers_CallLinkSomething() != TRUE && sub_81C5078() != TRUE && MenuHelpers_LinkSomething() != TRUE);
 }
 
 static bool8 sub_81C5078(void)
@@ -445,7 +445,7 @@ static bool8 sub_81C5078(void)
             gMain.state++;
             break;
         case 5:
-            if (!sub_81221AC())
+            if (!MenuHelpers_LinkSomething())
             {
                 ResetTasks();
             }
@@ -837,7 +837,7 @@ static void sub_81C5B4C(u8 taskId)
 static void Task_HandlePyramidBagInput(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
-    if (sub_81221EC() != TRUE && !gPaletteFade.active)
+    if (MenuHelpers_CallLinkSomething() != TRUE && !gPaletteFade.active)
     {
         if (gMain.newKeys & SELECT_BUTTON)
         {
@@ -940,7 +940,7 @@ static void sub_81C5F08(u8 windowId, u8 horizontalCount, u8 verticalCount)
 
 static void HandleFewMenuActionsInput(u8 taskId)
 {
-    if (sub_81221EC() != TRUE)
+    if (MenuHelpers_CallLinkSomething() != TRUE)
     {
         s32 id = Menu_ProcessInputNoWrap();
         switch (id)
@@ -962,7 +962,7 @@ static void HandleFewMenuActionsInput(u8 taskId)
 
 static void HandleMenuActionInput(u8 taskId)
 {
-    if (sub_81221EC() != TRUE)
+    if (MenuHelpers_CallLinkSomething() != TRUE)
     {
         s8 id = Menu_GetCursorPos();
         if (gMain.newKeys & DPAD_UP)
@@ -1275,7 +1275,7 @@ static void Task_BeginItemSwap(u8 taskId)
 static void Task_ItemSwapHandleInput(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
-    if (sub_81221EC() != TRUE)
+    if (MenuHelpers_CallLinkSomething() != TRUE)
     {
         if (gMain.newKeys & SELECT_BUTTON)
         {

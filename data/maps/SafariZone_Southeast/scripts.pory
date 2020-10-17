@@ -1,0 +1,26 @@
+raw `
+SafariZone_Southeast_MapScripts::
+	puzzle_info Puzzle_SafariImposters_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ON_LOAD, SafariZone_Southeast_OnLoad
+	.byte 0
+
+#define VAR_JOEY_STATE         VAR_PUZZLE_10
+#define FLAG_HIDE_JOEY_SX     FLAG_PUZZLE_21
+#define FLAG_HIDE_JOEY_SE     FLAG_PUZZLE_22
+`
+
+script(local) SafariZone_Southeast_OnLoad {
+	// Joey moves into this area
+	if (var(VAR_JOEY_STATE) == 1) {
+		clearflag(FLAG_HIDE_JOEY_SE)
+		setflag(FLAG_HIDE_JOEY_SX)
+	}
+}
+
+raw `
+#undef VAR_JOEY_STATE
+#undef FLAG_HIDE_JOEY_SX
+#undef FLAG_HIDE_JOEY_SE
+`
+
+

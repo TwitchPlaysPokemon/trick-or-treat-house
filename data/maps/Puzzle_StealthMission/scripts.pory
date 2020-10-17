@@ -7,7 +7,8 @@ Puzzle_StealthMission_MapScripts::
 	map_script MAP_SCRIPT_PUZZLE_SETUP_SCRIPT, Puzzle_StealthMission_PuzzleSetup
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_StealthMission_OnLoad
 	map_script MAP_SCRIPT_PUZZLE_EXIT_SCRIPT, Puzzle_StealthMission_OnExit
-	map_script MAP_SCRIPT_PUZZLE_BLACKOUT_SCRIPT, Puzzle_StealthMission_OnBlackout
+	map_script MAP_SCRIPT_PUZZLE_BLACKOUT_SCRIPT, Puzzle_StealthMission_OnEscapeOrBlackout
+	map_script MAP_SCRIPT_PUZZLE_ESCAPE_SCRIPT, Puzzle_StealthMission_OnEscapeOrBlackout
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Puzzle_StealthMission_WarpTable
 	.byte 0
 
@@ -17,6 +18,7 @@ Puzzle_StealthMission_Adjective:
 	.string "stealthy$"
 Puzzle_StealthMission_Quip:
 	.string "$"
+.align 2
 Puzzle_StealthMission_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01
 	.2byte FLAG_CANDY_ABUNDANT_02
@@ -84,7 +86,7 @@ script Puzzle_StealthMission_OnExit {
 	clearflag(FLAG_SYS_KEEP_OBJECTS_WITHIN_MAP)
 	callnative(ClearTrainerFlags)
 }
-script Puzzle_StealthMission_OnBlackout {
+script Puzzle_StealthMission_OnEscapeOrBlackout {
 	clearflag(FLAG_SYS_KEEP_OBJECTS_WITHIN_MAP)
 	callnative(ClearTrainerFlags)
 	// Since part of the puzzle is getting back, reset on blackout

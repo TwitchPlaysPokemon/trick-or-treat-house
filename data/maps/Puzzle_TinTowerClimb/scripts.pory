@@ -6,6 +6,7 @@ Puzzle_TinTowerClimb_MapScripts::
 	puzzle_metavars Puzzle_TinTowerClimb_Variables
 	puzzle_candylist Puzzle_TinTowerClimb_CandyList
 	puzzle_devcommentary Puzzle_TinTowerClimb_DevCommentary
+	puzzle_friendcommentary Puzzle_TinTowerClimb_FriendCommentary
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_TinTowerClimb_OnLoad
 	map_script MAP_SCRIPT_PUZZLE_EXIT_SCRIPT, Puzzle_TinTowerClimb_OnExit
 	.byte 0
@@ -33,6 +34,10 @@ Puzzle_TinTowerClimb_Quip:
 	.string "It took like a month to build!\p"
 	.string "It's actually really hard to move\n"
 	.string "around in…$"
+Puzzle_TinTowerClimb_FriendCommentary:
+	.string "{MAY}: Oh, no… no no no…\n"
+	.string "I did not like this puzzle one bit…\l"
+	.string "That tower was WAY too high up for me.$"
 Puzzle_TinTowerClimb_DevCommentary:
 	.string "Tustin2121: The tileset for this puzzle\n"
 	.string "was recreated from gen 2 references.\p"
@@ -58,7 +63,8 @@ Puzzle_TinTowerClimb_DevCommentary:
 	
 .align 2
 Puzzle_TinTowerClimb_Variables:
-	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HOOH
+	.2byte VAR_QUIP_PERSON,    EVENT_OBJ_GFX_HOOH
+	.2byte VAR_ENDROOM_FRIEND, TTH_FRIEND_MAY
 	.2byte 0
 Puzzle_TinTowerClimb_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01

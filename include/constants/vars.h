@@ -43,6 +43,11 @@
 #define VAR_OBJ_GFX_ID_E           0x401E
 #define VAR_OBJ_GFX_ID_F           0x401F
 
+#define VAR_INTRO_PERSON           VAR_OBJ_GFX_ID_0
+#define VAR_QUIP_PERSON            VAR_OBJ_GFX_ID_1
+#define VAR_DEV_COMMENTATOR        VAR_OBJ_GFX_ID_2
+#define VAR_ENDROOM_FRIEND         VAR_OBJ_GFX_ID_3
+
 // Trick Or Treat House vars
 #define VAR_PUZZLE_00                        0x4020
 #define VAR_PUZZLE_01                        0x4021
@@ -100,7 +105,7 @@
 #define VAR_POISON_STEP_COUNTER              0x404F
 #define VAR_RESET_RTC_ENABLE                 0x4050
 #define VAR_ENIGMA_BERRY_AVAILABLE           0x4051
-#define VAR_0x402E                           0x4052
+#define VAR_CURRENT_SECRET_BASE              0x4052  //VAR_0x402E                           0x4052
 #define VAR_FRONTIER_MANIAC_FACILITY         0x4053
 #define VAR_FRONTIER_GAMBLER_FACILITY        0x4054
 #define VAR_FRONTIER_GAMBLER_SET_FACILITY_F  0x4055
@@ -130,22 +135,22 @@
 #define VAR_POKELOT_PRIZE_PLACE              0x406D
 #define VAR_TIMES_SEEN_BY_TRAINER            0x406E
 #define VAR_LOTAD_SIZE_RECORD                0x406F
-#define VAR_UNUSED_0x4050                    0x4070
-#define VAR_UNUSED_0x4051                    0x4071
-#define VAR_UNUSED_0x4052                    0x4072 // Unused Var
-#define VAR_UNUSED_0x4053                    0x4073
-#define VAR_CURRENT_SECRET_BASE              0x4074 // was probably allocated for VAR_FALLARBOR_TOWN_STATE at one point
-#define VAR_UNUSED_0x4055                    0x4075 // Unused Var
-#define VAR_UNUSED_0x4056                    0x4076 // Unused Var
-#define VAR_UNUSED_0x4057                    0x4077
-#define VAR_UNUSED_0x4058                    0x4078
-#define VAR_UNUSED_0x4059                    0x4079 // Unused Var
-#define VAR_UNUSED_0x405A                    0x407A
-#define VAR_UNUSED_0x405B                    0x407B // Unused Var
-#define VAR_UNUSED_0x405C                    0x407C // Unused Var
-#define VAR_UNUSED_0x405D                    0x407D
-#define VAR_UNUSED_0x405E                    0x407E
-#define VAR_UNUSED_0x405F                    0x407F // Unused Var
+#define VAR_CANDY_TRADE_0                    0x4070
+#define VAR_CANDY_TRADE_1                    0x4071
+#define VAR_CANDY_TRADE_2                    0x4072 // Unused Var
+#define VAR_CANDY_TRADE_3                    0x4073
+#define VAR_CANDY_TRADE_4                    0x4074 // was probably allocated for VAR_FALLARBOR_TOWN_STATE at one point
+#define VAR_CANDY_TRADE_5                    0x4075 // Unused Var
+#define VAR_CANDY_TRADE_6                    0x4076 // Unused Var
+#define VAR_CANDY_TRADE_7                    0x4077
+#define VAR_CANDY_TRADE_8                    0x4078
+#define VAR_CANDY_TRADE_9                    0x4079 // Unused Var
+#define VAR_CANDY_TRADE_A                    0x407A
+#define VAR_CANDY_TRADE_B                    0x407B // Unused Var
+#define VAR_CANDY_TRADE_C                    0x407C // Unused Var
+#define VAR_CANDY_TRADE_D                    0x407D
+#define VAR_CANDY_TRADE_E                    0x407E
+#define VAR_CANDY_TRADE_F                    0x407F // Unused Var
 #define VAR_UNUSED_0x4060                    0x4080
 #define VAR_UNUSED_0x4061                    0x4081 // Unused Var
 #define VAR_UNUSED_0x4062                    0x4082 // Unused Var
@@ -203,7 +208,7 @@
 #define VAR_UNUSED_0x40A1                    0x40B6 // Unused var
 #define VAR_SEAFLOOR_CAVERN_STATE            0x40B7
 #define VAR_CABLE_CAR_STATION_STATE          0x40B8
-#define VAR_SAFARI_ZONE_STATE                0x40B9
+#define VAR_UNUSED_0x40B9                    0x40B9
 #define VAR_UNUSED_0x40A8                    0x40BA // Unused Var
 #define VAR_UNUSED_0x40A9                    0x40BB
 #define VAR_SLATEPORT_MUSEUM_1F_STATE        0x40BC
@@ -305,7 +310,11 @@
 #define VAR_METATILE_X                0x8018
 #define VAR_METATILE_Y                0x8019
 #define VAR_LAST_WARP_ID              0x801A
+#define VAR_SYS_FORCE_STEP            0x801B
+#define VAR_BATTLE_MOD                0x801C
 
 #define THIS_EVENT                    0x800F //alias to VAR_LAST_TALKED
+
+#define BATTLEMOD_NO_WHITEOUT         0x0001
 
 #endif // GUARD_CONSTANTS_VARS_H

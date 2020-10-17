@@ -117,11 +117,11 @@
 #define FLAG_PICKED_UP_SURF_ITEM             0x67
 #define FLAG_PICKED_UP_FLASH_ITEM            0x68
 #define FLAG_PICKED_UP_FLY_ITEM              0x69 // never used
-#define FLAG_PUZZLE_HAS_CHANGED_PARTY        0x6A
+#define FLAG_PUZZLE_PARTY_LOCK               0x6A
 #define FLAG_PUZZLE_HAS_STARTED              0x6B
 #define FLAG_PUZZLE_HAS_COMPLETED            0x6C
 #define FLAG_UNUSED_0x06D                    0x6D
-#define FLAG_UNUSED_0x06E                    0x6E
+#define FLAG_HIDE_ENDROOM_FRIEND             0x6E
 #define FLAG_HIDE_DEVELOPER_COMMENTATOR      0x6F
 
 
@@ -141,39 +141,39 @@
 #define FLAG_DECORATION_13                   0x7D
 #define FLAG_DECORATION_14                   0x7E
 #define FLAG_UNUSED_0x07F                    0x7F
-#define FLAG_UNUSED_0x080                    0x80
-#define FLAG_UNUSED_0x081                    0x81
-#define FLAG_UNUSED_0x082                    0x82
-#define FLAG_UNUSED_0x083                    0x83
-#define FLAG_UNUSED_0x084                    0x84
-#define FLAG_UNUSED_0x085                    0x85
-#define FLAG_UNUSED_0x086                    0x86
-#define FLAG_UNUSED_0x087                    0x87
-#define FLAG_UNUSED_0x088                    0x88
-#define FLAG_UNUSED_0x089                    0x89
-#define FLAG_UNUSED_0x08A                    0x8A
-#define FLAG_UNUSED_0x08B                    0x8B
-#define FLAG_UNUSED_0x08C                    0x8C
-#define FLAG_UNUSED_0x08D                    0x8D
-#define FLAG_UNUSED_0x08E                    0x8E
-#define FLAG_UNUSED_0x08F                    0x8F
-#define FLAG_UNUSED_0x090                    0x90
-#define FLAG_UNUSED_0x091                    0x91
-#define FLAG_UNUSED_0x092                    0x92
-#define FLAG_UNUSED_0x093                    0x93
-#define FLAG_UNUSED_0x094                    0x94
-#define FLAG_UNUSED_0x095                    0x95
-#define FLAG_UNUSED_0x096                    0x96
-#define FLAG_UNUSED_0x097                    0x97
-#define FLAG_UNUSED_0x098                    0x98
-#define FLAG_UNUSED_0x099                    0x99
-#define FLAG_UNUSED_0x09A                    0x9A
-#define FLAG_UNUSED_0x09B                    0x9B
-#define FLAG_UNUSED_0x09C                    0x9C
-#define FLAG_UNUSED_0x09D                    0x9D
-#define FLAG_UNUSED_0x09E                    0x9E
-#define FLAG_UNUSED_0x09F                    0x9F
-#define FLAG_UNUSED_0x0A0                    0xA0
+#define FLAG_META_PICKUP_ROCK                0x80
+#define FLAG_META_PICKUP_ZIGZAG              0x81
+#define FLAG_META_PICKUP_LOTAD               0x82
+#define FLAG_META_PICKUP_GRASS               0x83
+#define FLAG_META_PICKUP_DIAMOND             0x84
+#define FLAG_META_PICKUP_SPIN                0x85
+#define FLAG_META_PICKUP_DOLL                0x86
+#define FLAG_META_PICKUP_BALL                0x87
+#define FLAG_META_PICKUP_KISS                0x88
+#define FLAG_META_PICKUP_ROUND               0x89
+#define FLAG_META_PICKUP_FIRE                0x8A
+#define FLAG_META_PICKUP_PIKA                0x8B
+#define FLAG_META_PICKUP_DUSKULL             0x8C
+#define FLAG_META_PICKUP_WATER               0x8D
+#define FLAG_META_PICKUP_SEEDOT              0x8E
+#define FLAG_META_PICKUP_CUSHION             0x8F
+#define FLAG_META_SUBMITTED_ROCK             0x90
+#define FLAG_META_SUBMITTED_ZIGZAG           0x91
+#define FLAG_META_SUBMITTED_LOTAD            0x92
+#define FLAG_META_SUBMITTED_GRASS            0x93
+#define FLAG_META_SUBMITTED_DIAMOND          0x94
+#define FLAG_META_SUBMITTED_SPIN             0x95
+#define FLAG_META_SUBMITTED_DOLL             0x96
+#define FLAG_META_SUBMITTED_BALL             0x97
+#define FLAG_META_SUBMITTED_KISS             0x98
+#define FLAG_META_SUBMITTED_ROUND            0x99
+#define FLAG_META_SUBMITTED_FIRE             0x9A
+#define FLAG_META_SUBMITTED_PIKA             0x9B
+#define FLAG_META_SUBMITTED_DUSKULL          0x9C
+#define FLAG_META_SUBMITTED_WATER            0x9D
+#define FLAG_META_SUBMITTED_SEEDOT           0x9E
+#define FLAG_META_SUBMITTED_CUSHION          0x9F
+#define FLAG_HIDE_EXT_GAME_PLAYERS           0xA0
 #define FLAG_UNUSED_0x0A1                    0xA1
 #define FLAG_UNUSED_0x0A2                    0xA2
 #define FLAG_UNUSED_0x0A3                    0xA3
@@ -325,7 +325,7 @@
 #define FLAG_MET_MAXIE_SOOTOPOLIS            0x135
 #define FLAG_MET_SCOTT_RUSTBORO              0x136
 #define FLAG_WALLACE_GOES_TO_SKY_PILLAR      0x137 // Set after speaking to Wallace within the Cave of Origin.
-#define FLAG_RECEIVED_HM07                   0x138
+#define FLAG_TTH_NEWS_REPORT                 0x138
 #define FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS    0x139 // Beat Magma Grunt blocking Magma Hideout entrance.
 #define FLAG_RECEIVED_AURORA_TICKET          0x13A // RECEIVED Aurora Ticket in Mystery Gift
 #define FLAG_RECEIVED_MYSTIC_TICKET          0x13B // RECEIVED Mystic Ticket in Mystery Gift
@@ -1287,7 +1287,7 @@
 #define FLAG_SYS_SAFARI_MODE                        (SYSTEM_FLAGS + 0x2C)
 #define FLAG_SYS_CRUISE_MODE                        (SYSTEM_FLAGS + 0x2D)
 #define FLAG_SYS_BORT_MODE                          (SYSTEM_FLAGS + 0x2E) // Should use the Elf battle strings table
-#define FLAG_UNUSED_0x88F                           (SYSTEM_FLAGS + 0x2F) // Unused Flag
+#define FLAG_SYS_DISABLE_FORCED_TRIGGER             (SYSTEM_FLAGS + 0x2F) // Unused Flag
 #define FLAG_SYS_TV_HOME                            (SYSTEM_FLAGS + 0x30)
 #define FLAG_SYS_TV_WATCH                           (SYSTEM_FLAGS + 0x31)
 #define FLAG_SYS_TV_START                           (SYSTEM_FLAGS + 0x32)

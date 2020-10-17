@@ -33,7 +33,7 @@ Puzzle_Loss_DevCommentary:
 	.string "In case that wasn't blindingly obvious…$"
 .align 2
 Puzzle_Loss_Variables:
-	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HIKER
+	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_HIKER
 	.2byte 0
 Puzzle_Loss_CandyList:
 	.2byte FLAG_PUZZLE_ITEM_0  @ Free Candy Counter = 3 * 8 Chocolate Bars

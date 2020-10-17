@@ -555,6 +555,7 @@ extern const u8 EventScript_CannotUseWaterfall[];
 extern const u8 EventScript_UseDive[];
 extern const u8 EventScript_UseDiveUnderwater[];
 extern const u8 EventScript_FallDownHole[];
+extern const u8 Puzzle_EliteFloor_DropDownHole[];
 // extern const u8 BattleFrontier_BattlePyramidEmptySquare_EventScript_252BE8[];
 extern const u8 EventScript_Poison[];
 extern const u8 EventScript_EggHatch[];

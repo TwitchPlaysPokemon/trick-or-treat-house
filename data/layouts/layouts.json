@@ -843,7 +843,7 @@
         {
             "blockdata_filepath": "data/layouts/TrickHouseExt/map.bin",
             "border_filepath": "data/layouts/TrickHouseExt/border.bin",
-            "height": 60,
+            "height": 65,
             "id": "LAYOUT_TRICK_HOUSE_EXT",
             "name": "TrickHouseExt_Layout",
             "primary_tileset": "gTileset_Autumn",
@@ -901,6 +901,16 @@
             "width": 17
         },
         {
+            "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Room/map.bin",
+            "border_filepath": "data/layouts/Puzzle_LostWoods_Room/border.bin",
+            "height": 21,
+            "id": "LAYOUT_PUZZLE_LOST_WOODS_ROOM",
+            "name": "Puzzle_LostWoods_Room_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Petalburg",
+            "width": 21
+        },
+        {
             "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Room0/map.bin",
             "border_filepath": "data/layouts/Puzzle_LostWoods_Room0/border.bin",
             "height": 21,
@@ -921,13 +931,43 @@
             "width": 21
         },
         {
-            "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Room/map.bin",
-            "border_filepath": "data/layouts/Puzzle_LostWoods_Room/border.bin",
+            "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Room2/map.bin",
+            "border_filepath": "data/layouts/Puzzle_LostWoods_Room2/border.bin",
             "height": 21,
-            "id": "LAYOUT_PUZZLE_LOST_WOODS_ROOM",
-            "name": "Puzzle_LostWoods_Room_Layout",
+            "id": "LAYOUT_PUZZLE_LOST_WOODS_ROOM2",
+            "name": "Puzzle_LostWoods_Room2_Layout",
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Petalburg",
+            "width": 21
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Room3/map.bin",
+            "border_filepath": "data/layouts/Puzzle_LostWoods_Room3/border.bin",
+            "height": 21,
+            "id": "LAYOUT_PUZZLE_LOST_WOODS_ROOM3",
+            "name": "Puzzle_LostWoods_Room3_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Mossdeep",
+            "width": 21
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Room4/map.bin",
+            "border_filepath": "data/layouts/Puzzle_LostWoods_Room4/border.bin",
+            "height": 21,
+            "id": "LAYOUT_PUZZLE_LOST_WOODS_ROOM4",
+            "name": "Puzzle_LostWoods_Room4_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Petalburg",
+            "width": 21
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_LostWoods_Room5/map.bin",
+            "border_filepath": "data/layouts/Puzzle_LostWoods_Room5/border.bin",
+            "height": 21,
+            "id": "LAYOUT_PUZZLE_LOST_WOODS_ROOM5",
+            "name": "Puzzle_LostWoods_Room5_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Fortree",
             "width": 21
         },
         {
@@ -963,7 +1003,7 @@
         {
             "blockdata_filepath": "data/layouts/TestMapHallway/map.bin",
             "border_filepath": "data/layouts/TestMapHallway/border.bin",
-            "height": 5,
+            "height": 10,
             "id": "LAYOUT_TEST_MAP_HALLWAY",
             "name": "TestMapHallway_Layout",
             "primary_tileset": "gTileset_Building",
@@ -1203,7 +1243,7 @@
         {
             "blockdata_filepath": "data/layouts/TrickTreat_SlateportCity1/map.bin",
             "border_filepath": "data/layouts/TrickTreat_SlateportCity1/border.bin",
-            "height": 94,
+            "height": 92,
             "id": "LAYOUT_TRICKTREAT_SLATEPORT_CITY1",
             "name": "TrickTreat_SlateportCity1_Layout",
             "primary_tileset": "gTileset_Autumn",
@@ -1529,6 +1569,196 @@
             "primary_tileset": "gTileset_General",
             "secondary_tileset": "gTileset_Facility",
             "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/WaterTemple_Secret/map.bin",
+            "border_filepath": "data/layouts/WaterTemple_Secret/border.bin",
+            "height": 21,
+            "id": "LAYOUT_WATER_TEMPLE_SECRET",
+            "name": "WaterTemple_Secret_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_WaterfallCave",
+            "width": 33
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_EliteFloor/map.bin",
+            "border_filepath": "data/layouts/Puzzle_EliteFloor/border.bin",
+            "height": 30,
+            "id": "LAYOUT_PUZZLE_ELITE_FLOOR",
+            "name": "Puzzle_EliteFloor_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_PetalburgGym",
+            "width": 19
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_DiveMaze/map.bin",
+            "border_filepath": "data/layouts/Puzzle_DiveMaze/border.bin",
+            "height": 50,
+            "id": "LAYOUT_PUZZLE_DIVE_MAZE",
+            "name": "Puzzle_DiveMaze_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Cave",
+            "width": 50
+        },
+        {
+            "blockdata_filepath": "data/layouts/DiveMaze_Underwater/map.bin",
+            "border_filepath": "data/layouts/DiveMaze_Underwater/border.bin",
+            "height": 50,
+            "id": "LAYOUT_DIVE_MAZE_UNDERWATER",
+            "name": "DiveMaze_Underwater_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Underwater",
+            "width": 50
+        },
+        {
+            "blockdata_filepath": "data/layouts/TestAcroBikeMap/map.bin",
+            "border_filepath": "data/layouts/TestAcroBikeMap/border.bin",
+            "height": 20,
+            "id": "LAYOUT_TEST_ACRO_BIKE_MAP",
+            "name": "TestAcroBikeMap_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Lavaridge",
+            "width": 20
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_SootopolisGym/map.bin",
+            "border_filepath": "data/layouts/Puzzle_SootopolisGym/border.bin",
+            "height": 26,
+            "id": "LAYOUT_PUZZLE_SOOTOPOLIS_GYM",
+            "name": "Puzzle_SootopolisGym_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_SootopolisGym",
+            "width": 17
+        },
+        {
+            "blockdata_filepath": "data/layouts/SootopolisGym_B1F/map.bin",
+            "border_filepath": "data/layouts/SootopolisGym_B1F/border.bin",
+            "height": 26,
+            "id": "LAYOUT_SOOTOPOLIS_GYM_B1F",
+            "name": "SootopolisGym_B1F_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_SootopolisGym",
+            "width": 17
+        },
+        {
+            "blockdata_filepath": "data/layouts/MetaPuzzle_EmptyPuzzle/map.bin",
+            "border_filepath": "data/layouts/MetaPuzzle_EmptyPuzzle/border.bin",
+            "height": 7,
+            "id": "LAYOUT_META_PUZZLE_EMPTY_PUZZLE",
+            "name": "MetaPuzzle_EmptyPuzzle_Layout",
+            "primary_tileset": "gTileset_SecretBase",
+            "secondary_tileset": "gTileset_SecretBaseBlueCave",
+            "width": 11
+        },
+        {
+            "blockdata_filepath": "data/layouts/MetaPuzzle_StrengthRoom/map.bin",
+            "border_filepath": "data/layouts/MetaPuzzle_StrengthRoom/border.bin",
+            "height": 19,
+            "id": "LAYOUT_META_PUZZLE_STRENGTH_ROOM",
+            "name": "MetaPuzzle_StrengthRoom_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Cave",
+            "width": 19
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_SafariImposters/map.bin",
+            "border_filepath": "data/layouts/Puzzle_SafariImposters/border.bin",
+            "height": 14,
+            "id": "LAYOUT_PUZZLE_SAFARI_IMPOSTERS",
+            "name": "Puzzle_SafariImposters_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_Shop",
+            "width": 18
+        },
+        {
+            "blockdata_filepath": "data/layouts/SafariZone_Northwest/map.bin",
+            "border_filepath": "data/layouts/SafariZone_Northwest/border.bin",
+            "height": 40,
+            "id": "LAYOUT_SAFARI_ZONE_NORTHWEST",
+            "name": "SafariZone_Northwest_Layout",
+            "primary_tileset": "gTileset_Autumn",
+            "secondary_tileset": "gTileset_Lilycove",
+            "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/SafariZone_North/map.bin",
+            "border_filepath": "data/layouts/SafariZone_North/border.bin",
+            "height": 40,
+            "id": "LAYOUT_SAFARI_ZONE_NORTH",
+            "name": "SafariZone_North_Layout",
+            "primary_tileset": "gTileset_Autumn",
+            "secondary_tileset": "gTileset_Lilycove",
+            "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/SafariZone_Southwest/map.bin",
+            "border_filepath": "data/layouts/SafariZone_Southwest/border.bin",
+            "height": 40,
+            "id": "LAYOUT_SAFARI_ZONE_SOUTHWEST",
+            "name": "SafariZone_Southwest_Layout",
+            "primary_tileset": "gTileset_Autumn",
+            "secondary_tileset": "gTileset_Lilycove",
+            "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/SafariZone_South/map.bin",
+            "border_filepath": "data/layouts/SafariZone_South/border.bin",
+            "height": 40,
+            "id": "LAYOUT_SAFARI_ZONE_SOUTH",
+            "name": "SafariZone_South_Layout",
+            "primary_tileset": "gTileset_Autumn",
+            "secondary_tileset": "gTileset_Lilycove",
+            "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/SafariZone_Northeast/map.bin",
+            "border_filepath": "data/layouts/SafariZone_Northeast/border.bin",
+            "height": 40,
+            "id": "LAYOUT_SAFARI_ZONE_NORTHEAST",
+            "name": "SafariZone_Northeast_Layout",
+            "primary_tileset": "gTileset_Autumn",
+            "secondary_tileset": "gTileset_Lilycove",
+            "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/SafariZone_Southeast/map.bin",
+            "border_filepath": "data/layouts/SafariZone_Southeast/border.bin",
+            "height": 40,
+            "id": "LAYOUT_SAFARI_ZONE_SOUTHEAST",
+            "name": "SafariZone_Southeast_Layout",
+            "primary_tileset": "gTileset_Autumn",
+            "secondary_tileset": "gTileset_Lilycove",
+            "width": 40
+        },
+        {
+            "blockdata_filepath": "data/layouts/SafariZone_RestHouse/map.bin",
+            "border_filepath": "data/layouts/SafariZone_RestHouse/border.bin",
+            "height": 9,
+            "id": "LAYOUT_SAFARI_ZONE_REST_HOUSE",
+            "name": "SafariZone_RestHouse_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_GenericBuilding",
+            "width": 10
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_ImposterReflection/map.bin",
+            "border_filepath": "data/layouts/Puzzle_ImposterReflection/border.bin",
+            "height": 16,
+            "id": "LAYOUT_PUZZLE_IMPOSTER_REFLECTION",
+            "name": "Puzzle_ImposterReflection_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Fortree",
+            "width": 26
+        },
+        {
+            "blockdata_filepath": "data/layouts/TrickHouseExt_Gatehouse/map.bin",
+            "border_filepath": "data/layouts/TrickHouseExt_Gatehouse/border.bin",
+            "height": 6,
+            "id": "LAYOUT_TRICK_HOUSE_EXT_GATEHOUSE",
+            "name": "TrickHouseExt_Gatehouse_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_Shop",
+            "width": 15
         }
     ],
     "layouts_table_label": "gMapLayouts"

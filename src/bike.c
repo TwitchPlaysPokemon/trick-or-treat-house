@@ -387,7 +387,7 @@ static u8 AcroBikeHandleInputWheelieStanding(u8 *newDirection, u16 newKeys, u16 
             return ACRO_TRANS_WHEELIE_TO_NORMAL;
         }
     }
-    if (gPlayerAvatar.bikeFrameCounter >= 40)
+    if (gPlayerAvatar.bikeFrameCounter >= 10)//40)
     {
         *newDirection = direction;
         gPlayerAvatar.acroBikeState = ACRO_STATE_BUNNY_HOP;

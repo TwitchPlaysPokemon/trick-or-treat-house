@@ -5127,7 +5127,7 @@ static void sub_804CF10(u8 arg0)
     *(gBattleStruct->monToSwitchIntoId + gActiveBattler) = 6;
     gBattleStruct->field_93 &= ~(gBitTable[gActiveBattler]);
 
-    BtlController_EmitChoosePokemon(0, PARTY_MUST_CHOOSE_MON, arg0, 0, gBattleStruct->field_60[gActiveBattler]);
+    BtlController_EmitChoosePokemon(0, PARTY_ACTION_SEND_OUT, arg0, 0, gBattleStruct->field_60[gActiveBattler]);
     MarkBattlerForControllerExec(gActiveBattler);
 }
 
@@ -5366,9 +5366,9 @@ static void atk50_openpartyscreen(void)
     else
     {
         if (gBattlescriptCurrInstr[1] & 0x80)
-            hitmarkerFaintBits = PARTY_CHOOSE_MON; // Used here as the caseId for the EmitChoose function.
+            hitmarkerFaintBits = PARTY_ACTION_CHOOSE_MON; // Used here as the caseId for the EmitChoose function.
         else
-            hitmarkerFaintBits = PARTY_MUST_CHOOSE_MON;
+            hitmarkerFaintBits = PARTY_ACTION_SEND_OUT;
 
         battlerId = GetBattlerForBattleScript(gBattlescriptCurrInstr[1] & ~(0x80));
         if (gSpecialStatuses[battlerId].flag40)
@@ -6385,7 +6385,7 @@ static void PutLevelAndGenderOnLvlUpBox(void)
     AddTextPrinter(&printerTemplate, 0xFF, NULL);
 
     txtPtr = gStringVar4;
-    gStringVar4[0] = CHAR_SPECIAL_F9;
+    gStringVar4[0] = CHAR_EXTRA_SYMBOL;
     txtPtr++;
     txtPtr[0] = 5;
     txtPtr++;

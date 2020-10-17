@@ -16,7 +16,7 @@ EmptyPuzzle_DevCommentary:
 	.string "right now.$"
 .align 2
 EmptyPuzzle_Variables:
-	.2byte VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_HOOH
+	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_HOOH
 	.2byte 0
 `
 
