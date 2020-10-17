@@ -83,7 +83,7 @@ void LoadObjectReflectionPalette(struct EventObject *eventObject, struct Sprite 
         // This is so the sprite blends in with the dark water metatile underneath the bridge.
         sprite->data[2] = bridgeReflectionVerticalOffsets[bridgeType - 1];
         // LoadObjectHighBridgeReflectionPalette(eventObject, sprite->oam.paletteNum);
-        LoadEventObjectPalette(EVENT_OBJ_PAL_TAG_10);
+        LoadEventObjectPalette(EVENT_OBJ_PAL_TAG_10); //DayNight?
         sprite->oam.paletteNum = IndexOfSpritePaletteTag(EVENT_OBJ_PAL_TAG_10);
         UpdatePaletteGammaType(sprite->oam.paletteNum, GAMMA_NORMAL);
         UpdateSpritePaletteWithWeather(sprite->oam.paletteNum);

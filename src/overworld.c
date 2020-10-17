@@ -5,6 +5,7 @@
 #include "berry.h"
 #include "bg.h"
 #include "cable_club.h"
+#include "day_night.h"
 #include "clock.h"
 #include "event_data.h"
 #include "field_camera.h"
@@ -1406,6 +1407,7 @@ static void OverworldBasic(void)
     CameraUpdate();
     UpdateCameraPanning();
     BuildOamBuffer();
+    // ProcessImmediateTimeEvents();
     UpdatePaletteFade();
     UpdateTilesetAnimations();
     do_scheduled_bg_tilemap_copies_to_vram();
@@ -1728,6 +1730,7 @@ static void VBlankCB_Field(void)
     FieldUpdateBgTilemapScroll();
     TransferPlttBuffer();
     TransferTilesetAnimsBuffer();
+    // CheckClockForImmediateTimeEvents();
 }
 
 static void InitCurrentFlashLevelScanlineEffect(void)

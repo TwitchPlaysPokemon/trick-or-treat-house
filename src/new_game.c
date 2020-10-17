@@ -167,7 +167,8 @@ void NewGameInitData(void)
     ClearSav1();
     ClearMailData();
     gSaveBlock2Ptr->specialSaveWarpFlags = 0;
-    gSaveBlock2Ptr->field_A8 = 0;
+    gSaveBlock2Ptr->sunOffset = Q_8_8(15 * 6); // Start at 3pm
+    // gSaveBlock2Ptr->field_A8 = 0;
     InitPlayerTrainerId();
     PlayTimeCounter_Reset();
     ClearPokedexFlags();

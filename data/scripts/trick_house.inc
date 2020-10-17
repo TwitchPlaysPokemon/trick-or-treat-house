@@ -50,6 +50,7 @@ PuzzleCommon_EventScript_IncrementPuzzle::
 	setvar VAR_PUZZLE_STATE, 0
 	incrementgamestat GAME_STAT_NUM_PUZZLES_COMPLETED
 	callnative CheckIfNoMorePuzzles
+	callnative AdvanceSunOffset
 	@ fallthrough
 PuzzleCommon_EventScript_ClearPuzzleData::
 	callnative ClearPuzzleEventData

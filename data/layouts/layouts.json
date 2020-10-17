@@ -1676,7 +1676,7 @@
             "height": 40,
             "id": "LAYOUT_SAFARI_ZONE_NORTHWEST",
             "name": "SafariZone_Northwest_Layout",
-            "primary_tileset": "gTileset_General",
+            "primary_tileset": "gTileset_Autumn",
             "secondary_tileset": "gTileset_Lilycove",
             "width": 40
         },
@@ -1686,7 +1686,7 @@
             "height": 40,
             "id": "LAYOUT_SAFARI_ZONE_NORTH",
             "name": "SafariZone_North_Layout",
-            "primary_tileset": "gTileset_General",
+            "primary_tileset": "gTileset_Autumn",
             "secondary_tileset": "gTileset_Lilycove",
             "width": 40
         },
@@ -1696,7 +1696,7 @@
             "height": 40,
             "id": "LAYOUT_SAFARI_ZONE_SOUTHWEST",
             "name": "SafariZone_Southwest_Layout",
-            "primary_tileset": "gTileset_General",
+            "primary_tileset": "gTileset_Autumn",
             "secondary_tileset": "gTileset_Lilycove",
             "width": 40
         },
@@ -1706,7 +1706,7 @@
             "height": 40,
             "id": "LAYOUT_SAFARI_ZONE_SOUTH",
             "name": "SafariZone_South_Layout",
-            "primary_tileset": "gTileset_General",
+            "primary_tileset": "gTileset_Autumn",
             "secondary_tileset": "gTileset_Lilycove",
             "width": 40
         },
@@ -1716,7 +1716,7 @@
             "height": 40,
             "id": "LAYOUT_SAFARI_ZONE_NORTHEAST",
             "name": "SafariZone_Northeast_Layout",
-            "primary_tileset": "gTileset_General",
+            "primary_tileset": "gTileset_Autumn",
             "secondary_tileset": "gTileset_Lilycove",
             "width": 40
         },
@@ -1726,7 +1726,7 @@
             "height": 40,
             "id": "LAYOUT_SAFARI_ZONE_SOUTHEAST",
             "name": "SafariZone_Southeast_Layout",
-            "primary_tileset": "gTileset_General",
+            "primary_tileset": "gTileset_Autumn",
             "secondary_tileset": "gTileset_Lilycove",
             "width": 40
         },

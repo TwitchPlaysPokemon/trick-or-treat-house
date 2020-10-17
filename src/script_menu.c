@@ -811,9 +811,11 @@ const struct MenuAction MultichoiceList_SafariImposter[] =
 
 // defined in TrickHouseDevEntrance/scripts.pory
 extern const u8 PuzzleDebug_TustinsMenu_PuzzlesCompleted[];
+extern const u8 PuzzleDebug_TustinsMenu_SunOffset[];
 const struct MenuAction MultichoiceList_TustinsMenu[] =
 {
-    {PuzzleDebug_TustinsMenu_PuzzlesCompleted, NULL}
+    {PuzzleDebug_TustinsMenu_PuzzlesCompleted, NULL},
+    {PuzzleDebug_TustinsMenu_SunOffset, NULL},
 };
 
 const struct MenuAction MultichoiceList_001[] =

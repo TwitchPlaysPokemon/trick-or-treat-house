@@ -105,10 +105,23 @@ script PuzzleDebug_EventScript_TustinsMenu {
 			}
 			release
 			end
+		case 1: // Puzzle Completed
+			msgbox("Set offset of the sun$")
+			callnative(DebugGetSunOffset)
+			loadword(1, 24*6*256)
+			callnative(ChooseNumber)
+			waitstate
+			if (var(VAR_RESULT) != 0xFFFF) {
+				loadhalf(0, VAR_RESULT)
+				callnative(DebugSetSunOffset)
+			}
+			release
+			end
 	}
 	release
 }
 
 // Menu defined as MultichoiceList_TustinsMenu in script_menu.c
 text(global) PuzzleDebug_TustinsMenu_PuzzlesCompleted { "PuzzCompleted" }
+text(global) PuzzleDebug_TustinsMenu_SunOffset { "Sun Offset" }
 

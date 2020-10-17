@@ -310,8 +310,8 @@
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 18,
-            "y": 3
+            "x": 5,
+            "y": 16
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_110",
