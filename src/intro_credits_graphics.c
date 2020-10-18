@@ -55,7 +55,7 @@ static const u32 gIntro2LatiasTiles[] = INCBIN_U32("graphics/intro/intro2_latias
 
 static void sub_817B62C(struct Sprite *sprite);
 static void nullsub_65(struct Sprite *sprite);
-static void sub_817B7C4(struct Sprite *sprite);
+static void SpriteCB_BikeFollow(struct Sprite *sprite);
 static void nullsub_66(struct Sprite *sprite);
 
 static const struct SpriteTemplate gUnknown_085F504C =
@@ -444,7 +444,7 @@ static const union AnimCmd *const gUnknown_085F51E8[] =
     gUnknown_085F51D4
 };
 
-static const struct SpriteTemplate gUnknown_085F51EC =
+static const struct SpriteTemplate gSpriteTemplate_BikeBrendan =
 {
     .tileTag = 1002,
     .paletteTag = 1002,
@@ -455,7 +455,7 @@ static const struct SpriteTemplate gUnknown_085F51EC =
     .callback = nullsub_65
 };
 
-static const struct SpriteTemplate gUnknown_085F5204 =
+static const struct SpriteTemplate gSpriteTemplate_BikeMay =
 {
     .tileTag = 1003,
     .paletteTag = 1003,
@@ -466,7 +466,7 @@ static const struct SpriteTemplate gUnknown_085F5204 =
     .callback = nullsub_65
 };
 
-static const struct SpriteTemplate gUnknown_085F5204a =
+static const struct SpriteTemplate gSpriteTemplate_BikeTreekid =
 {
     .tileTag = 1006,
     .paletteTag = 1006,
@@ -477,7 +477,7 @@ static const struct SpriteTemplate gUnknown_085F5204a =
     .callback = nullsub_65
 };
 
-static const struct OamData gUnknown_085F521C =
+static const struct OamData sProtagOAMData =
 {
     .y = 160,
     .shape = SPRITE_SHAPE(64x32),
@@ -494,42 +494,42 @@ static const union AnimCmd gUnknown_085F5224[] =
     ANIMCMD_JUMP(0)
 };
 
-static const union AnimCmd *const gUnknown_085F5238[] =
+static const union AnimCmd *const sProtagAnimData[] =
 {
     gUnknown_085F5224
 };
 
-static const struct SpriteTemplate gUnknown_085F523C =
+static const struct SpriteTemplate gSpriteTemplate_Brendan =
 {
     .tileTag = 1001,
-    .paletteTag = 1002,
-    .oam = &gUnknown_085F521C,
-    .anims = gUnknown_085F5238,
+    .paletteTag = 1007,
+    .oam = &sProtagOAMData,
+    .anims = sProtagAnimData,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = sub_817B7C4
+    .callback = SpriteCB_BikeFollow
 };
 
-static const struct SpriteTemplate gUnknown_085F5254 =
+static const struct SpriteTemplate gSpriteTemplate_May =
 {
     .tileTag = 1001,
-    .paletteTag = 1003,
-    .oam = &gUnknown_085F521C,
-    .anims = gUnknown_085F5238,
+    .paletteTag = 1007,
+    .oam = &sProtagOAMData,
+    .anims = sProtagAnimData,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = sub_817B7C4
+    .callback = SpriteCB_BikeFollow
 };
 
-static const struct SpriteTemplate gUnknown_085F5254a =
+static const struct SpriteTemplate gSpriteTemplate_Treekid =
 {
     .tileTag = 1001,
-    .paletteTag = 1006,
-    .oam = &gUnknown_085F521C,
-    .anims = gUnknown_085F5238,
+    .paletteTag = 1007,
+    .oam = &sProtagOAMData,
+    .anims = sProtagAnimData,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = sub_817B7C4
+    .callback = SpriteCB_BikeFollow
 };
 
 static const struct OamData gUnknown_085F526C =
@@ -645,15 +645,18 @@ const struct CompressedSpriteSheet gIntro2FlygonSpriteSheet[] =
 
 const struct SpritePalette gIntroBikeAndFlygonPalette[] =
 {
-    { .data = gIntro2BrendanNoTurnPal, .tag = 1002 },
-    { .data = gIntro2BrendanNoTurnPal, .tag = 1003 },
-    { .data = gIntro2FlygonPal,        .tag = 1004 },
+    // { .data = gIntro2BrendanNoTurnPal, .tag = 1002 },
+    // { .data = gIntro2BrendanNoTurnPal, .tag = 1003 },
+    { .data = gIntro2BrendanPalette,   .tag = 1002 },
+    { .data = gIntro2MayPalette,       .tag = 1003 },
+    // { .data = gIntro2FlygonPal,        .tag = 1004 },
     { .data = gIntro2FlygonPal,        .tag = 1005 },
-    { .data = gIntro2BrendanNoTurnPal, .tag = 1006 }, //?
+    { .data = gIntro2TreekidPalette,   .tag = 1006 }, //?
+    { .data = gIntro2BrendanNoTurnPal, .tag = 1007 }, //?
     {}
 };
 
-const struct CompressedSpriteSheet gUnknown_085F5334[] =
+const struct CompressedSpriteSheet gIntro2BrendanExtendedSpriteSheet[] =
 {
     {
         .data = gIntro2BrendanTiles,
@@ -663,7 +666,7 @@ const struct CompressedSpriteSheet gUnknown_085F5334[] =
     {}
 };
 
-const struct CompressedSpriteSheet gUnknown_085F5344[] =
+const struct CompressedSpriteSheet gIntro2MayExtendedSpriteSheet[] =
 {
     {
         .data = gIntro2MayTiles,
@@ -673,7 +676,7 @@ const struct CompressedSpriteSheet gUnknown_085F5344[] =
     {}
 };
 
-const struct CompressedSpriteSheet gUnknown_085F5344a[] =
+const struct CompressedSpriteSheet gIntro2TreekidExtendedSpriteSheet[] =
 {
     {
         .data = gIntro2TreekidTiles,
@@ -683,7 +686,7 @@ const struct CompressedSpriteSheet gUnknown_085F5344a[] =
     {}
 };
 
-const struct CompressedSpriteSheet gUnknown_085F5354[] =
+const struct CompressedSpriteSheet gIntro2BikeSpriteSheet[] =
 {
     {
         .data = gIntro2BicycleTiles,
@@ -1005,7 +1008,7 @@ static void sub_817B458(u8 taskId)
     }
 }
 
-void sub_817B540(u8 mode)
+void DoPaletteFlicker(u8 mode)
 {
     u16 x;
     u16 y;
@@ -1116,7 +1119,7 @@ static void nullsub_65(struct Sprite *sprite)
 {
 }
 
-static void sub_817B7C4(struct Sprite* sprite)
+static void SpriteCB_BikeFollow(struct Sprite* sprite)
 {
     sprite->invisible = gSprites[sprite->data[0]].invisible;
     sprite->pos1.x = gSprites[sprite->data[0]].pos1.x;
@@ -1127,25 +1130,25 @@ static void sub_817B7C4(struct Sprite* sprite)
 
 u8 intro_create_brendan_sprite(s16 a, s16 b)
 {
-    u8 sprite = CreateSprite(&gUnknown_085F51EC, a, b, 2);
-    u8 brendan = CreateSprite(&gUnknown_085F523C, a, b + 8, 3);
+    u8 sprite = CreateSprite(&gSpriteTemplate_BikeBrendan, a, b, 2);
+    u8 brendan = CreateSprite(&gSpriteTemplate_Brendan, a, b + 8, 3);
     gSprites[brendan].data[0] = sprite;
     return sprite;
 }
 
 u8 intro_create_may_sprite(s16 a, s16 b)
 {
-    u8 sprite = CreateSprite(&gUnknown_085F5204, a, b, 2);
-    u8 may = CreateSprite(&gUnknown_085F5254, a, b + 8, 3);
+    u8 sprite = CreateSprite(&gSpriteTemplate_BikeMay, a, b, 2);
+    u8 may = CreateSprite(&gSpriteTemplate_May, a, b + 8, 3);
     gSprites[may].data[0] = sprite;
     return sprite;
 }
 
 u8 intro_create_treekid_sprite(s16 a, s16 b)
 {
-    u8 sprite = CreateSprite(&gUnknown_085F5204a, a, b, 2);
-    u8 may = CreateSprite(&gUnknown_085F5254a, a, b + 8, 3);
-    gSprites[may].data[0] = sprite;
+    u8 sprite = CreateSprite(&gSpriteTemplate_BikeTreekid, a, b, 2);
+    u8 alex = CreateSprite(&gSpriteTemplate_Treekid, a, b + 8, 3);
+    gSprites[alex].data[0] = sprite;
     return sprite;
 }
 

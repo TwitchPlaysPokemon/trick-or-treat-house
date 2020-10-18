@@ -1148,10 +1148,10 @@ static void sub_817651C(u8 taskIdE)
                 gTasks[taskIdE].data[TDE_1] = 0x7FFF;
             }
         }
-        sub_817B540(0);
+        DoPaletteFlicker(0);
         break;
     case 1:
-        sub_817B540(0);
+        DoPaletteFlicker(0);
         break;
     case 2:
         if (gTasks[taskIdE].data[TDE_1] != 0x7FFF)
@@ -1165,7 +1165,7 @@ static void sub_817651C(u8 taskIdE)
                 gTasks[taskIdE].data[TDE_1] = 0x7FFF;
             }
         }
-        sub_817B540(1);
+        DoPaletteFlicker(1);
         break;
     case 3:
         if (gTasks[taskIdE].data[TDE_1] != 0x7FFF)
@@ -1181,10 +1181,10 @@ static void sub_817651C(u8 taskIdE)
                 gTasks[taskIdE].data[TDE_1] += 1;
             }
         }
-        sub_817B540(1);
+        DoPaletteFlicker(1);
         break;
     case 4:
-        sub_817B540(2);
+        DoPaletteFlicker(2);
         break;
     }
 }
@@ -1297,9 +1297,9 @@ static bool8 sub_8176AB0(u8 data, u8 taskIdA)
         switch (gSaveBlock2Ptr->playerGender) {
             default:
             case GENDER_M:
-                LoadCompressedSpriteSheet(gUnknown_085F5334);
+                LoadCompressedSpriteSheet(gIntro2BrendanExtendedSpriteSheet);
                 LoadCompressedSpriteSheet(gIntro2MaySpriteSheet);
-                LoadCompressedSpriteSheet(gUnknown_085F5354);
+                LoadCompressedSpriteSheet(gIntro2BikeSpriteSheet);
                 LoadSpritePalettes(gUnknown_085F5384);
 
                 spriteId = intro_create_brendan_sprite(120, 46);
@@ -1313,9 +1313,9 @@ static bool8 sub_8176AB0(u8 data, u8 taskIdA)
                 gSprites[spriteId].anims = gUnknown_085E7010;
                 break;
             case GENDER_F:
-                LoadCompressedSpriteSheet(gUnknown_085F5344);
-                LoadCompressedSpriteSheet(gIntro2BrendanSpriteSheet);
-                LoadCompressedSpriteSheet(gUnknown_085F5354);
+                LoadCompressedSpriteSheet(gIntro2MayExtendedSpriteSheet);
+                LoadCompressedSpriteSheet(gIntro2TreekidSpriteSheet);
+                LoadCompressedSpriteSheet(gIntro2BikeSpriteSheet);
                 LoadSpritePalettes(gUnknown_085F5384);
 
                 spriteId = intro_create_may_sprite(120, 46);
@@ -1329,9 +1329,9 @@ static bool8 sub_8176AB0(u8 data, u8 taskIdA)
                 gSprites[spriteId].anims = gUnknown_085E7010;
                 break;
             case GENDER_N:
-                LoadCompressedSpriteSheet(gUnknown_085F5334);
-                LoadCompressedSpriteSheet(gIntro2TreekidSpriteSheet);
-                LoadCompressedSpriteSheet(gUnknown_085F5354);
+                LoadCompressedSpriteSheet(gIntro2TreekidExtendedSpriteSheet);
+                LoadCompressedSpriteSheet(gIntro2BrendanSpriteSheet);
+                LoadCompressedSpriteSheet(gIntro2BikeSpriteSheet);
                 LoadSpritePalettes(gUnknown_085F5384);
 
                 spriteId = intro_create_treekid_sprite(120, 46);
