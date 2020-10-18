@@ -233,8 +233,8 @@ static const union AnimCmd *const gUnknown_085E4B3C[] =
 {
     gUnknown_085E4B30,
 };
-static void sub_816D81C(struct Sprite *sprite);
-static const struct SpriteTemplate gUnknown_085E4B40 =
+static void SpriteCB_Volbeat(struct Sprite *sprite);
+static const struct SpriteTemplate sSpriteTemplate_Volbeat =
 {
     .tileTag = 1500,
     .paletteTag = 1500,
@@ -242,7 +242,7 @@ static const struct SpriteTemplate gUnknown_085E4B40 =
     .anims = gUnknown_085E4B3C,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = sub_816D81C,
+    .callback = SpriteCB_Volbeat,
 };
 static const struct OamData gUnknown_085E4B58 =
 {
@@ -289,8 +289,8 @@ static const union AnimCmd *const gUnknown_085E4B98[] =
     gUnknown_085E4B74,
     gUnknown_085E4B88,
 };
-static void sub_816D9C0(struct Sprite *sprite);
-static const struct SpriteTemplate gUnknown_085E4BA4 =
+static void SpriteCB_Torchick(struct Sprite *sprite);
+static const struct SpriteTemplate sSpriteTemplate_Torchick =
 {
     .tileTag = 1501,
     .paletteTag = 1501,
@@ -298,7 +298,7 @@ static const struct SpriteTemplate gUnknown_085E4BA4 =
     .anims = gUnknown_085E4B98,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = sub_816D9C0,
+    .callback = SpriteCB_Torchick,
 };
 static const struct OamData gUnknown_085E4BBC =
 {
@@ -328,8 +328,8 @@ static const union AnimCmd *const gUnknown_085E4BD8[] =
 {
     gUnknown_085E4BC4,
 };
-static void sub_816DAE8(struct Sprite *sprite);
-static const struct SpriteTemplate gUnknown_085E4BDC =
+static void SpriteCB_Manectric(struct Sprite *sprite);
+static const struct SpriteTemplate sSpriteTemplate_Manectric =
 {
     .tileTag = 1502,
     .paletteTag = 1502,
@@ -337,7 +337,7 @@ static const struct SpriteTemplate gUnknown_085E4BDC =
     .anims = gUnknown_085E4BD8,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = sub_816DAE8,
+    .callback = SpriteCB_Manectric,
 };
 static const struct CompressedSpriteSheet gIntroRayquazaLightningSpriteSheet[] =
 {
@@ -1281,8 +1281,8 @@ static void Task_IntroStartBikeRide(u8 taskId)
 
     LoadSpritePalettes(gIntroBikeAndFlygonPalette);
     LoadSpritePalettes(gIntroPokemonRunningPalette);
-    CreateSprite(&gUnknown_085E4BDC, 0x110, 0x80, 0);
-    CreateSprite(&gUnknown_085E4BA4, 0x120, 0x6E, 1);
+    CreateSprite(&sSpriteTemplate_Manectric, 0x110, 0x80, 0);
+    CreateSprite(&sSpriteTemplate_Torchick, 0x120, 0x6E, 1);
 
     switch (gIntroCharacterGender) {
         default:
@@ -1294,7 +1294,7 @@ static void Task_IntroStartBikeRide(u8 taskId)
     gSprites[spriteId].callback = SpriteCB_IntroGraphicsBicycle;
     gSprites[spriteId].anims = gIntroBicycleAnimationCommands;
     gTasks[taskId].data[1] = spriteId;
-    CreateSprite(&gUnknown_085E4B40, 0x110, 0x50, 0x4);
+    CreateSprite(&sSpriteTemplate_Volbeat, 0x110, 0x50, 0x4);
     spriteId = intro_create_flygon_sprite(-0x40, 0x3C);
     gSprites[spriteId].callback = SpriteCB_IntroGraphicsFlygon;
     gTasks[taskId].data[2] = spriteId;
@@ -1347,7 +1347,7 @@ static void Task_IntroWaitToSetupPart3(u8 taskId)
         gTasks[taskId].func = Task_IntroLoadPart3Graphics;
 }
 
-static void sub_816D81C(struct Sprite *sprite)
+static void SpriteCB_Volbeat(struct Sprite *sprite)
 {
     sprite->data[3] += 4;
     switch (sprite->data[0])
@@ -1431,7 +1431,7 @@ static void sub_816D81C(struct Sprite *sprite)
     }
 }
 
-static void sub_816D9C0(struct Sprite *sprite)
+static void SpriteCB_Torchick(struct Sprite *sprite)
 {
     switch (sprite->data[0])
     {
@@ -1508,7 +1508,7 @@ static void sub_816D9C0(struct Sprite *sprite)
     }
 }
 
-static void sub_816DAE8(struct Sprite *sprite)
+static void SpriteCB_Manectric(struct Sprite *sprite)
 {
     switch (sprite->data[0])
     {
