@@ -1541,7 +1541,7 @@ u8 TrySpawnEventObject(u8 localId, u8 mapNum, u8 mapGroup)
     return TrySpawnEventObjectTemplate(eventObjectTemplate, mapNum, mapGroup, cameraX, cameraY);
 }
 
-static void MakeObjectTemplateFromEventObjectGraphicsInfo(u16 graphicsId, void (*callback)(struct Sprite *), struct SpriteTemplate *spriteTemplate, const struct SubspriteTable **subspriteTables)
+void MakeObjectTemplateFromEventObjectGraphicsInfo(u16 graphicsId, void (*callback)(struct Sprite *), struct SpriteTemplate *spriteTemplate, const struct SubspriteTable **subspriteTables)
 {
     const struct EventObjectGraphicsInfo *graphicsInfo = GetEventObjectGraphicsInfo(graphicsId);
 

@@ -15,10 +15,10 @@ if (!Array.isArray(credits)) {
 	console.error("Credits object is not an array!");
 	return -1;
 }
-if (credits.length != MAX_CARDS) {
-	console.error(`Credits array has the wrong number of cards! (${credits.length} != ${MAX_CARDS})`);
-	return -1;
-}
+// if (credits.length != MAX_CARDS) {
+// 	console.error(`Credits array has the wrong number of cards! (${credits.length} != ${MAX_CARDS})`);
+// 	return -1;
+// }
 for (let card of credits) {
 	if (!Array.isArray(credits)) {
 		console.error(`Cards must be an array! (Card ${_i})`);

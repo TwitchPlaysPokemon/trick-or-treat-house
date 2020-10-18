@@ -7,6 +7,7 @@
 #include "event_data.h"
 #include "gpu_regs.h"
 #include "graphics.h"
+#include "event_object_movement.h"
 #include "international_string_util.h"
 #include "intro_credits_graphics.h"
 #include "m4a.h"
@@ -14,6 +15,7 @@
 #include "pokedex.h"
 #include "random.h"
 #include "sound.h"
+#include "sprite.h"
 #include "starter_choose.h"
 #include "string_util.h"
 #include "task.h"
@@ -26,6 +28,19 @@
 #include "constants/species.h"
 #include "constants/trainers.h"
 #include "constants/vars.h"
+#include "constants/event_objects.h"
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+#define PLAYER_SPEED       1
+#define ITEM_SPEED         2
+#define NUM_CANDY_SPRITES  6
+
+#define COLOR_GRASS           RGB(13, 20, 12)
+#define CREDITS_START_DELAY   72
+// #define CREDITS_DISPLAY_TIME  170
+#define CREDITS_DISPLAY_TIME  (15600/ARRAY_COUNT(gCreditsEntryPointerTable))
 
 // Frame Counts: 
 //   725 = End of Opening Measures
@@ -43,18 +58,20 @@
 
 extern void LoadCreditsMinigameBackground1();
 
+void LoadCandyGraphics();
+
 enum
 {
 	// Task A: Display Credits
 	TDA_STATE = 0,
 	TDA_DISPLAY_TIMER,
 	TDA_CURR_PAGE,
-	TDA_FRAME_COUNT,
 	
 	// Task B: Move Cyclist
 	TDB_STATE = 0,
 	TDB_PLAYER_CYCLIST,
 	TDB_TIMEOUT,
+	TDB_FRAME_COUNT,
 	
 	// Task C: Animate Background
 	TDC_0 = 0,
@@ -65,6 +82,13 @@ enum
 	SPD_CURR_ANIM = 0,
 	SPD_DESTX,
 	SPD_DESTY,
+    
+    SPI_ITEM_STATE = 0,
+    SPI_PAL_ID,
+    SPI_TILE_ID,
+    
+    ITEM_STATE_DISABLED = 0,
+    ITEM_STATE_SPAWNED,
 };
 struct CreditsData
 {
@@ -73,7 +97,7 @@ struct CreditsData
 	u16 taskIdC;
 	u16 taskIdD;
 	u16 taskIdE;
-	u16 itemSprites[8];
+	u8 itemSprites[NUM_CANDY_SPRITES];
 };
 struct CreditsEntry
 {
@@ -164,6 +188,15 @@ static const struct WindowTemplate sWindowTemplates[] =
         .height = 12,
         .paletteNum = 8,
         .baseBlock = 1
+    },
+    {
+        .bg = 0,
+        .tilemapLeft = 1,
+        .tilemapTop = 1,
+        .width = 10,
+        .height = 2,
+        .paletteNum = 10,
+        .baseBlock = 512
     },
     DUMMY_WIN_TEMPLATE,
 };
@@ -265,20 +298,31 @@ static void SpriteCB_Player(struct Sprite *sprite)
 	StartSpriteAnimIfDifferent(sprite, sprite->data[SPD_CURR_ANIM]);
 	if (sprite->pos1.x > sprite->data[SPD_DESTX])
 	{
-		sprite->pos1.x -= 1;
+		sprite->pos1.x -= PLAYER_SPEED;
 	}
 	else if (sprite->pos1.x < sprite->data[SPD_DESTX])
 	{
-		sprite->pos1.x += 1;
+		sprite->pos1.x += PLAYER_SPEED;
 	}
 	if (sprite->pos1.y > sprite->data[SPD_DESTY])
 	{
-		sprite->pos1.y -= 1;
+		sprite->pos1.y -= PLAYER_SPEED;
 	}
 	else if (sprite->pos1.y < sprite->data[SPD_DESTY])
 	{
-		sprite->pos1.y += 1;
+		sprite->pos1.y += PLAYER_SPEED;
 	}
+}
+
+static void SpriteCB_CandyItem(struct Sprite *sprite)
+{
+    switch (sprite->data[SPI_ITEM_STATE]) {
+        case ITEM_STATE_DISABLED:
+            break;
+        case ITEM_STATE_SPAWNED:
+            sprite->pos1.x += ITEM_SPEED;
+            break;
+    }
 }
 
 static bool8 LoadInitialBikingScene(u8 taskId)
@@ -316,7 +360,7 @@ static bool8 LoadInitialBikingScene(u8 taskId)
             default:
             case GENDER_M:
                 LoadCompressedSpriteSheet(gIntroBrendanBikeSpritesheet);
-                LoadCompressedSpriteSheet(gIntro2MaySpriteSheet);
+                // LoadCompressedSpriteSheet(gIntro2MaySpriteSheet);
                 LoadCompressedSpriteSheet(gIntroBikeSpritesheet);
                 LoadSpritePalettes(gIntroBikeSpritePalettes);
 
@@ -327,7 +371,7 @@ static bool8 LoadInitialBikingScene(u8 taskId)
                 break;
             case GENDER_F:
                 LoadCompressedSpriteSheet(gIntroMayBikeSpritesheet);
-                LoadCompressedSpriteSheet(gIntro2BrendanSpriteSheet);
+                // LoadCompressedSpriteSheet(gIntro2BrendanSpriteSheet);
                 LoadCompressedSpriteSheet(gIntroBikeSpritesheet);
                 LoadSpritePalettes(gIntroBikeSpritePalettes);
 
@@ -338,7 +382,7 @@ static bool8 LoadInitialBikingScene(u8 taskId)
                 break;
             case GENDER_N:
                 LoadCompressedSpriteSheet(gIntroTreekidBikeSpritesheet);
-                LoadCompressedSpriteSheet(gIntro2TreekidSpriteSheet);
+                // LoadCompressedSpriteSheet(gIntro2TreekidSpriteSheet);
                 LoadCompressedSpriteSheet(gIntroBikeSpritesheet);
                 LoadSpritePalettes(gIntroBikeSpritePalettes);
 
@@ -351,17 +395,58 @@ static bool8 LoadInitialBikingScene(u8 taskId)
         gMain.state += 1;
         break;
     case 3:
+        LoadCandyGraphics();
+        gMain.state += 1;
+        break;
+    case 4:
 		gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].invisible = FALSE;
 		gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].pos1.x = 272;
 		gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].pos1.y = 46;
 		gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].data[SPD_CURR_ANIM] = 0;
 		gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].data[SPD_DESTX] = 272;
 		gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].data[SPD_DESTY] = 46;
+        
+        
         SetGpuRegistersForBikeScene(0);
         gMain.state = 0;
         return TRUE;
     }
     return FALSE;
+}
+
+extern void MakeObjectTemplateFromEventObjectGraphicsInfo(u16 graphicsId, void (*callback)(struct Sprite *), struct SpriteTemplate *spriteTemplate, const struct SubspriteTable **subspriteTables);
+
+// This is a copy and modification of AddPseudoEventObject
+void LoadCandyGraphics()
+{
+    struct SpriteTemplate *spriteTemplate;
+    const struct SubspriteTable *subspriteTables;
+    struct Sprite *sprite;
+    u8 spriteId, i;
+    
+    spriteTemplate = malloc(sizeof(struct SpriteTemplate));
+    MakeObjectTemplateFromEventObjectGraphicsInfo(EVENT_OBJ_GFX_ITEM_BALL, SpriteCB_CandyItem, spriteTemplate, &subspriteTables);
+    if (spriteTemplate->paletteTag != 0xFFFF)
+    {
+        LoadEventObjectPalette(spriteTemplate->paletteTag);
+    }
+    for (i = 0; i < NUM_CANDY_SPRITES; i++) {
+        spriteId = CreateSprite(spriteTemplate, 0, 0, 0);
+        if (spriteId == MAX_SPRITES) break;
+        sCreditsData->itemSprites[i] = spriteId;
+        
+        sprite = &gSprites[spriteId];
+        // With the below, we won't need the sprite template, which will be freed at the end of this funciton
+        sprite->data[SPI_PAL_ID] = spriteTemplate->paletteTag;
+        sprite->data[SPI_TILE_ID] = spriteTemplate->tileTag;
+        
+        if (subspriteTables != NULL)
+        {
+            SetSubspriteTables(sprite, subspriteTables);
+            sprite->subspriteMode = 2;
+        }
+    }
+    free(spriteTemplate);
 }
 
 
@@ -450,6 +535,15 @@ static void PrintCreditsText2(const u8 *string, u8 y, bool8 isTitle, bool8 isLef
 }
 #endif
 
+static void PrintScore(const u32 score)
+{
+    u8 color[] = {0, 4, 3};
+    ConvertUIntToDecimalStringN(gStringVar4, score, STR_CONV_MODE_RIGHT_ALIGN, 6);
+	FillWindowPixelBuffer(1, PIXEL_FILL(0));
+    AddTextPrinterParameterized4(1, 0, 0, 0, 1, 0, color, -1, gStringVar4);
+	CopyWindowToVram(1, 2);
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 
 void CB2_StartCreditsSequence(void)
@@ -486,10 +580,6 @@ void CB2_StartCreditsSequence(void)
 ///////////////////////////////////////////////////////////////////////////////
 // Task A: Credits Tasks
 
-#define COLOR_LIGHT_GREEN RGB(13, 20, 12)
-#define START_DELAY   72
-#define DISPLAY_TIME  145
-
 static void Task_DisplayCredits(u8 taskId)
 {
 	// u32 frameCount = gTasks[taskIdB].data[0] | (gTasks[taskIdB].data[1] << 16);
@@ -510,7 +600,7 @@ static void Task_DisplayCredits(u8 taskId)
 		if (!gPaletteFade.active)
 		{
 			gTasks[taskId].data[TDA_STATE] = 1;
-			gTasks[taskId].data[TDA_DISPLAY_TIMER] = START_DELAY;
+			gTasks[taskId].data[TDA_DISPLAY_TIMER] = CREDITS_START_DELAY;
 		}
 		return;
 	case 1: // Wait time before first credits
@@ -561,7 +651,7 @@ static void Task_DisplayCredits(u8 taskId)
 			gTasks[taskId].data[TDA_CURR_PAGE] += 1;
 			gTasks[taskId].data[TDA_STATE] += 1;
 			
-			BeginNormalPaletteFade(0x00000300, 0, 16, 0, COLOR_LIGHT_GREEN);
+			BeginNormalPaletteFade(0x00000300, 0, 16, 0, COLOR_GRASS);
 			return;
 		} 
 		else 
@@ -572,7 +662,7 @@ static void Task_DisplayCredits(u8 taskId)
 			CopyWindowToVram(0, 2);
 			gTasks[taskId].data[TDA_CURR_PAGE] += 1;
 			gTasks[taskId].data[TDA_STATE] += 1;
-			BeginNormalPaletteFade(0x00000300, 0, 16, 0, COLOR_LIGHT_GREEN);
+			BeginNormalPaletteFade(0x00000300, 0, 16, 0, COLOR_GRASS);
 			return;
 		}
 		// If the current page is past the page count
@@ -581,7 +671,7 @@ static void Task_DisplayCredits(u8 taskId)
 	case 3:
         if (!gPaletteFade.active)
         {
-            gTasks[taskId].data[TDA_DISPLAY_TIMER] = DISPLAY_TIME;
+            gTasks[taskId].data[TDA_DISPLAY_TIMER] = CREDITS_DISPLAY_TIME;
             gTasks[taskId].data[TDA_STATE] += 1;
         }
         return;
@@ -592,7 +682,7 @@ static void Task_DisplayCredits(u8 taskId)
             return;
         }
 		gTasks[taskId].data[TDA_STATE] += 1;
-		BeginNormalPaletteFade(0x00000300, 0, 0, 16, COLOR_LIGHT_GREEN);
+		BeginNormalPaletteFade(0x00000300, 0, 0, 16, COLOR_GRASS);
 		return;
 	case 5:
         if (!gPaletteFade.active)
@@ -617,15 +707,17 @@ static void Task_DisplayCredits(u8 taskId)
 
 static void Task_WaitPaletteFade(u8 taskId)
 {
+    gTasks[taskId].data[TDB_FRAME_COUNT]++;
     if (!gPaletteFade.active)
 	{
         gTasks[taskId].func = Task_WaitStartGame;
-		gTasks[taskId].data[TDB_TIMEOUT] = START_DELAY*2;
+		gTasks[taskId].data[TDB_TIMEOUT] = CREDITS_START_DELAY*2;
 	}
 }
 
 static void Task_WaitStartGame(u8 taskId)
 {
+    gTasks[taskId].data[TDB_FRAME_COUNT]++;
 	if (gTasks[taskId].data[TDB_TIMEOUT] != 0)
 	{
 		gTasks[taskId].data[TDB_TIMEOUT] -= 1;
@@ -637,9 +729,20 @@ static void Task_WaitStartGame(u8 taskId)
 
 static void Task_PlayGame(u8 taskId)
 {
+    struct Sprite *player;
+	u16 frameCount = gTasks[taskId].data[TDB_FRAME_COUNT]++;
+    
+    PrintScore(frameCount);
+    
+    if (frameCount % 100 == 0) {
+        player = &gSprites[sCreditsData->itemSprites[0]];
+        player->pos1.x = 0;
+        player->pos1.y = 0;
+        player->data[SPI_ITEM_STATE] = ITEM_STATE_SPAWNED;
+    }
+    
 	
-	
-	struct Sprite *player = &gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]];
+	player = &gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]];
 	if (gMain.heldKeys & DPAD_RIGHT) {
 		player->data[SPD_CURR_ANIM] = 2;
 		player->data[SPD_DESTX] = min(player->data[SPD_DESTX]+1, 200);

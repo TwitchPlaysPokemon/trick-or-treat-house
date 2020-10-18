@@ -6,8 +6,8 @@
 	],
 	[
 		"#Project Organizers",
-		"M4 Used Rollout",
-		"diana"
+		"Tustin2121",
+		"M4 Used Rollout"
 	],
 	[
 		"#Framework Programmer",
@@ -26,9 +26,19 @@
 		"Ericchi"
 	],
 	[
-		"#Testers",
+		"#Custom Credits Music",
+		"Arranged by Darren Ang,",
+		"MusicMike512, and Tustin2121"
+	],
+	[
+		"#Testers 2019",
 		["M4 Used Rollout", "red031000"],
 		["mathfreak231", "Kiloby"],
+		"The TPP Chat"
+	],
+	[
+		"#Testers 2020",
+		"Tustin2121",
 		"The TPP Chat"
 	],
 	[
@@ -40,6 +50,7 @@
 	[
 		"#Special Thanks To",
 		"Kurausukun",
+		"Sierraffinity",
 		"The Pokémon Reverse Engineering Project"
 	],
 	[
@@ -47,20 +58,18 @@
 		"The TwitchPlaysPokémon Community"
 	],
 	[
-		"#Puzzle Submissions",
+		"#Puzzle Submissions 2019",
 		"Wilke0",
 		"Chfoo", 
 		"myRattata"
 	],
 	[
-		"#Puzzle Submissions",
+		"#Puzzle Submissions 2020",
 		"Pfaccioxx", 
 		"markenzo51"
 	],
 	[
-		"#Thanks for Your Great Ideas!",
-		"More of them will make it in",
-		"for next year!"
+		"#Thanks for Your Great Ideas!"
 	],
 	
 	
@@ -88,28 +97,46 @@
 	],
 	[
 		"#Programmers",
-		["Hisashi Sogabe", "Akito Mori"],
-		["Tomomichi Ohta", "Hiroyuki Nakamura"],
-		["Nozomu Saito", "Masao Taya"]
+		"Hisashi Sogabe",
+		"Tomomichi Ohta",
+		"Nozomu Saito"
 	],
 	[
 		"#Programmers",
-		["Satoshi Nohara", "Tetsuya Watanabe"],
-		["Miyuki Iwasawa", "Sosuke Tamada"],
-		["Yoshinori Matsuda", "Takenori Ohta"],
+		"Akito Mori",
+		"Hiroyuki Nakamura",
+		"Masao Taya"
+	],
+	[
+		"#Programmers",
+		"Satoshi Nohara",
+		"Miyuki Iwasawa",
+		"Yoshinori Matsuda",
 		"Keita Kagaya"
 	],
 	[
+		"#Programmers",
+		"Tetsuya Watanabe",
+		"Sosuke Tamada",
+		"Takenori Ohta"
+	],
+	[
 		"#Graphic Designers",
-		["Motofumi Fujiwara", "Kenkichi Toyama"],
-		["Satoshi Ohta", "Asuka Iwashita"],
-		["Takao Unno", "Kanako Eo"]
+		"Motofumi Fujiwara",
+		"Satoshi Ohta"
+	],
+	[
+		"#Graphic Designers",
+		"Kenkichi Toyama",
+		"Asuka Iwashita",
+		"Takao Unno"
 	],
 	[
 		"#Graphic Designers",
 		"Ken Sugimori",
 		"Hironobu Yoshida",
-		"Aimi Tomita"
+		"Aimi Tomita",
+		"Kanako Eo"
 	],
 	[
 		"#Music Composition",
@@ -125,10 +152,17 @@
 	],
 	[
 		"#Game Designers",
-		["Shigeki Morimoto", "Suguru Nakatsui"],
-		["Teruyuki Shimoyamada", "Tetsuji Ohta"],
-		["Takeshi Kawachimaru", "Hitomi Sato"],
-		["Akihito Tomisawa", "Kenji Matsushima"]
+		"Shigeki Morimoto",
+		"Teruyuki Shimoyamada",
+		"Takeshi Kawachimaru",
+		"Akihito Tomisawa"
+	],
+	[
+		"#Game Designers",
+		"Suguru Nakatsui",
+		"Tetsuji Ohta",
+		"Hitomi Sato",
+		"Kenji Matsushima"
 	],
 	[
 		"#Game Designers",
@@ -178,21 +212,34 @@
 	],
 	[
 		"#Environment & Tool Programmers",
-		["Hisashi Sogabe","Sosuke Tamada"],
+		"Hisashi Sogabe",
+		"Sosuke Tamada",
 		"Hiroyuki Nakamura",
 		"Akito Mori"
 	],
 	[
 		"#Pokémon Designers",
-		["Ken Sugimori","Hironobu Yoshida"],
-		["Motofumi Fujiwara","Satoshi Ohta"],
-		["Shigeki Morimoto","Asuka Iwashita"]
+		"Ken Sugimori",
+		"Motofumi Fujiwara",
+		"Shigeki Morimoto"
 	],
 	[
 		"#Pokémon Designers",
-		["Takao Unno","Atsuko Nishida"],
-		["Kanako Eo","Muneo Saito"],
-		["Aimi Tomita","Rena Yoshikawa"],
+		"Hironobu Yoshida",
+		"Satoshi Ohta",
+		"Asuka Iwashita"
+	],
+	[
+		"#Pokémon Designers",
+		"Takao Unno",
+		"Kanako Eo",
+		"Aimi Tomita"
+	],
+	[
+		"#Pokémon Designers",
+		"Atsuko Nishida",
+		"Muneo Saito",
+		"Rena Yoshikawa",
 		"Jun Okutani"
 	],
 	[
@@ -210,15 +257,27 @@
 	],
 	[
 		"#Special Thanks",
-		["Kenji Tominaga","Kenjiro Ito"],
-		["Hiroki Enomoto","Michiko Takizawa"],
-		["Kazuya Suyama","Makiko Takada"]
+		"Kenji Tominaga",
+		"Hiroki Enomoto"
 	],
 	[
 		"#Special Thanks",
-		["Mikiko Ohhashi","Takahiro Ohnishi"],
-		["Takanao Kondo","Norihide Okamura"],
-		["Rui Kawaguchi","Shunsuke Kohori"]
+		"Kazuya Suyama",
+		"Kenjiro Ito",
+		"Michiko Takizawa",
+		"Makiko Takada"
+	],
+	[
+		"#Special Thanks",
+		"Mikiko Ohhashi",
+		"Takanao Kondo",
+		"Rui Kawaguchi"
+	],
+	[
+		"#Special Thanks",
+		"Takahiro Ohnishi",
+		"Norihide Okamura",
+		"Shunsuke Kohori"
 	],
 	[
 		"#Information Supervisors",
@@ -229,10 +288,19 @@
 	],
 	[
 		"#Artwork",
-		["Sachiko Nakamichi", "Hideyuki Nakajima"],
-		["Fujiko Nomura", "Hidenori Saeki"],
-		["Yoko Watanabe", "Sakae Kimura"],
-		["Chiaki Shinkai"]
+		"Sachiko Nakamichi",
+		"Fujiko Nomura"
+	],
+	[
+		"#Artwork",
+		"Hideyuki Nakajima",
+		"Hidenori Saeki"
+	],
+	[
+		"#Artwork",
+		"Yoko Watanabe",
+		"Sakae Kimura",
+		"Chiaki Shinkai"
 	],
 	[
 		"#Coordinators",
@@ -247,7 +315,9 @@
 	],
 	[
 		"#Translator",
-		"Nob Ogasawara",
+		"Nob Ogasawara"
+	],
+	[
 		"#Text Editor",
 		"Teresa Lillygren"
 	],
@@ -315,7 +385,10 @@
 	],
 	[
 		"#Executive Producers",
-		"Satoru Iwata",
+		"Satoru Iwata"
+	],
+	[
+		"#Executive Producers",
 		"Tsunekaz Ishihara"
 	]
 ]
