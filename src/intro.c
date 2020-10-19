@@ -1338,7 +1338,7 @@ static void Task_IntroHandleBikeAndFlygonMovement(u8 taskId)
     gIntroGraphicsFlygonYOffset = offset;
     if (gTasks[taskId].data[3] < 512)
         gTasks[taskId].data[3]++;
-    Intro2FlickerPalette(0);
+    // Intro2FlickerPalette(0);
 }
 
 static void Task_IntroWaitToSetupPart3(u8 taskId)

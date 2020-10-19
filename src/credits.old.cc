@@ -1298,9 +1298,9 @@ static bool8 sub_8176AB0(u8 data, u8 taskIdA)
         switch (gSaveBlock2Ptr->playerGender) {
             default:
             case GENDER_M:
-                LoadCompressedSpriteSheet(gIntroBrendanBikeSpritesheet);
+                LoadCompressedSpriteSheet(gIntro2BrendanExtendedSpriteSheet);
                 LoadCompressedSpriteSheet(gIntro2MaySpriteSheet);
-                LoadCompressedSpriteSheet(gIntroBikeSpritesheet);
+                LoadCompressedSpriteSheet(gIntro2BikeSpriteSheet);
                 LoadSpritePalettes(gIntroBikeSpritePalettes);
 
                 spriteId = intro_create_brendan_sprite(120, 46);
@@ -1314,9 +1314,9 @@ static bool8 sub_8176AB0(u8 data, u8 taskIdA)
                 gSprites[spriteId].anims = gUnknown_085E7010;
                 break;
             case GENDER_F:
-                LoadCompressedSpriteSheet(gIntroMayBikeSpritesheet);
+                LoadCompressedSpriteSheet(gIntro2MayExtendedSpriteSheet);
                 LoadCompressedSpriteSheet(gIntro2BrendanSpriteSheet);
-                LoadCompressedSpriteSheet(gIntroBikeSpritesheet);
+                LoadCompressedSpriteSheet(gIntro2BikeSpriteSheet);
                 LoadSpritePalettes(gIntroBikeSpritePalettes);
 
                 spriteId = intro_create_may_sprite(120, 46);
@@ -1330,9 +1330,9 @@ static bool8 sub_8176AB0(u8 data, u8 taskIdA)
                 gSprites[spriteId].anims = gUnknown_085E7010;
                 break;
             case GENDER_N:
-                LoadCompressedSpriteSheet(gIntroBrendanBikeSpritesheet);
+                LoadCompressedSpriteSheet(gIntro2BrendanExtendedSpriteSheet);
                 LoadCompressedSpriteSheet(gIntro2TreekidSpriteSheet);
-                LoadCompressedSpriteSheet(gIntroBikeSpritesheet);
+                LoadCompressedSpriteSheet(gIntro2BikeSpriteSheet);
                 LoadSpritePalettes(gIntroBikeSpritePalettes);
 
                 spriteId = intro_create_treekid_sprite(120, 46);
