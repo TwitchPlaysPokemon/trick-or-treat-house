@@ -289,7 +289,7 @@ static void TintPaletteForDayNight(u16 offset, u16 size)
     if (ShouldTintOverworld())
     {
         u8 tp;
-        RtcCalcLocalTimeFast();
+        // RtcCalcLocalTimeFast();
         tp = GET_TIME_PERIOD();
         TintPalette_CustomToneWithCopy(gPlttBufferPreDN + offset, gPlttBufferUnfaded + offset, size / 2, sTimeOfDayTints[tp][0], sTimeOfDayTints[tp][1], sTimeOfDayTints[tp][2], FALSE);
     }
@@ -298,6 +298,13 @@ static void TintPaletteForDayNight(u16 offset, u16 size)
         CpuCopy16(gPlttBufferPreDN + offset, gPlttBufferUnfaded + offset, size);
     }
     LoadPaletteOverrides();
+}
+
+void ForceTintPaletteForDayNight(u16 offset, u16 size)
+{
+    u8 tp = GET_TIME_PERIOD();
+    TintPalette_CustomToneWithCopy(gPlttBufferPreDN + offset, gPlttBufferUnfaded + offset, size / 2, sTimeOfDayTints[tp][0], sTimeOfDayTints[tp][1], sTimeOfDayTints[tp][2], FALSE);
+    CpuCopy16(gPlttBufferUnfaded + offset, gPlttBufferFaded + offset, size);
 }
 
 void LoadCompressedPaletteDayNight(const void *src, u16 offset, u16 size)

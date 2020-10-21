@@ -22,6 +22,7 @@
 #include "text.h"
 #include "intro.h"
 #include "main.h"
+#include "mgba.h"
 #include "trainer_hill.h"
 
 static void VBlankIntr(void);
@@ -120,6 +121,7 @@ void AgbMain()
     ClearDma3Requests();
     ResetBgs();
     SetDefaultFontsPointer();
+    mgba_open();
     InitHeap(gHeap, HEAP_SIZE);
 
     gSoftResetDisabled = FALSE;

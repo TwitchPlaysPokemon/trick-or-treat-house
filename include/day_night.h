@@ -15,6 +15,7 @@ extern struct PaletteOverride *gPaletteOverrides[];
 
 u8 GetCurrentTimeOfDay(void);
 u8 GetTimeOfDay(s8 hours);
+void ForceTintPaletteForDayNight(u16 offset, u16 size);
 void LoadCompressedPaletteDayNight(const void *src, u16 offset, u16 size);
 void LoadPaletteDayNight(const void *src, u16 offset, u16 size);
 void CheckClockForImmediateTimeEvents(void);

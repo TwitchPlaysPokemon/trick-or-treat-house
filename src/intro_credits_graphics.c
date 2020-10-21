@@ -6,6 +6,7 @@
 #include "task.h"
 #include "main.h"
 #include "graphics.h"
+#include "day_night.h"
 
 struct IntroCreditsSpriteMetadata
 {
@@ -879,17 +880,20 @@ void LoadCreditsMinigameBackground1()
     // Load Grass onto Background 1
     LZ77UnCompVram(gIntro2GrassGfx, (void *)(BG_CHAR_ADDR(1)));
     LZ77UnCompVram(gIntro2GrassMap, (void *)(BG_SCREEN_ADDR(15)));
-    LoadPalette(&gIntro2GrassPal_Day, 240, 32);
+    LoadPaletteDayNight(&gIntro2GrassPal_Day, 240, 32);
+    // LoadPalette(&gIntro2GrassPal_Day, 240, 32);
     
     // Load Sea and Clouds onto Background 2 and 3
     LZ77UnCompVram(gIntro2CloudsGfx, (void *)(VRAM));
     LZ77UnCompVram(gIntro2CloudsMap, (void *)(BG_SCREEN_ADDR(6)));
-    LoadPalette(&gIntro2SkyPal_Day, 0, 96);
+    LoadPaletteDayNight(&gIntro2SkyPal_Afn, 0, 96);
+    // LoadPalette(&gIntro2SkyPal_Afn, 0, 96);
     
     // Load extra clouds as sprites
     LoadCompressedSpriteSheet(gIntro2CloudSpritesheet);
     LZ77UnCompVram(gIntro2Clouds2Gfx, (void *)(VRAM + 0x10000));
-    LoadPalette(&gIntro2CloudsPal_Day, 256, 32);
+    LoadPaletteDayNight(&gIntro2CloudsPal_Afn, 256, 32);
+    // LoadPalette(&gIntro2CloudsPal_Afn, 256, 32);
     LoadIntro2CloudSprites();
     gReservedSpritePaletteCount = 8;
 }

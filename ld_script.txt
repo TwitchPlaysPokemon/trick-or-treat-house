@@ -330,6 +330,8 @@ SECTIONS {
         src/trickhouse.o(.text);
         src/puzzle_helpers.o(.text);
         src/day_night.o(.text);
+        src/mgba.o(.text);
+        src/printf.o(.text);
     } =0
 
     script_data :
@@ -676,6 +678,7 @@ SECTIONS {
         src/trickhouse.o(.rodata);
         src/puzzle_helpers.o(.rodata);
         src/day_night.o(.rodata);
+        src/printf.o(.rodata);
     } =0
 
     song_data :

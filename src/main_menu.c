@@ -16,6 +16,7 @@
 #include "main.h"
 #include "menu.h"
 #include "list_menu.h"
+#include "mgba.h"
 #include "mystery_event_menu.h"
 #include "naming_screen.h"
 #include "option_menu.h"
@@ -720,35 +721,41 @@ static void Task_MainMenuCheckSaveFile(u8 taskId)
             tWirelessAdapterConnected = TRUE;
         switch (gSaveFileStatus)
         {
-            case 1:
+            case SAVE_STATUS_OK:
+                mgba_printf(MGBA_LOG_INFO, "Save file check: OK");
                 tMenuType = HAS_SAVED_GAME;
                 if (IsMysteryGiftEnabled())
                     tMenuType++;
                 gTasks[taskId].func = Task_MainMenuCheckBattery;
                 break;
-            case 2:
+            case SAVE_STATUS_CORRUPT:
+                mgba_printf(MGBA_LOG_INFO, "Save file check: CORRUPT");
                 CreateMainMenuErrorWindow(gText_SaveFileErased);
                 tMenuType = HAS_NO_SAVED_GAME;
                 gTasks[taskId].func = Task_WaitForSaveFileErrorWindow;
                 break;
-            case 10:
+            case SAVE_STATUS_OUTDATED:
+                mgba_printf(MGBA_LOG_INFO, "Save file check: OUTDATED");
                 CreateMainMenuErrorWindow(gText_SaveFileOldTTH);
                 tMenuType = HAS_NO_SAVED_GAME;
                 gTasks[taskId].func = Task_WaitForSaveFileErrorWindow;
                 break;
-            case 0xFF:
+            case SAVE_STATUS_ERROR:
+                mgba_printf(MGBA_LOG_INFO, "Save file check: ERROR");
                 CreateMainMenuErrorWindow(gText_SaveFileCorrupted);
                 gTasks[taskId].func = Task_WaitForSaveFileErrorWindow;
                 tMenuType = HAS_SAVED_GAME;
                 if (IsMysteryGiftEnabled() == TRUE)
                     tMenuType++;
                 break;
-            case 0:
+            case SAVE_STATUS_EMPTY:
             default:
+                mgba_printf(MGBA_LOG_INFO, "Save file check: EMPTY");
                 tMenuType = HAS_NO_SAVED_GAME;
                 gTasks[taskId].func = Task_MainMenuCheckBattery;
                 break;
-            case 4:
+            case SAVE_STATUS_NO_FLASH:
+                mgba_printf(MGBA_LOG_INFO, "Save file check: NO FLASH");
                 CreateMainMenuErrorWindow(gJPText_No1MSubCircuit);
                 gTasks[taskId].tMenuType = HAS_NO_SAVED_GAME;
                 gTasks[taskId].func = Task_WaitForSaveFileErrorWindow;

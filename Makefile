@@ -27,6 +27,7 @@ export LD := $(PREFIX)ld
 # Build Variables
 DISABLE_DEBUG	?= 0
 TPP_MODE		?= 1
+MGBA_DEBUG      ?= 0
 
 # Version branch
 VERSION	:= v1.1.0
@@ -76,7 +77,7 @@ DATA_ASM_BUILDDIR = $(OBJ_DIR)/$(DATA_ASM_SUBDIR)
 SONG_BUILDDIR = $(OBJ_DIR)/$(SONG_SUBDIR)
 MID_BUILDDIR = $(OBJ_DIR)/$(MID_SUBDIR)
 
-ASFLAGS := -mcpu=arm7tdmi --defsym MODERN=$(MODERN) --defsym DISABLE_DEBUG=$(DISABLE_DEBUG) --defsym TPP_MODE=$(TPP_MODE)
+ASFLAGS := -mcpu=arm7tdmi --defsym MODERN=$(MODERN) --defsym DISABLE_DEBUG=$(DISABLE_DEBUG) --defsym TPP_MODE=$(TPP_MODE) --defsym MGBA_DEBUG=$(MGBA_DEBUG)
 
 GCC_VER = $(shell $(CC) -dumpversion)
 
@@ -94,7 +95,7 @@ OBJ_DIR := build/modern
 LIBPATH := -L $(TOOLCHAIN)/lib/gcc/arm-none-eabi/$(GCC_VER)/thumb -L $(TOOLCHAIN)/arm-none-eabi/lib/thumb
 endif
 
-CPPFLAGS := -iquote include -Wno-trigraphs -DMODERN=$(MODERN) -DDISABLE_DEBUG=$(DISABLE_DEBUG) -DTPP_MODE=$(TPP_MODE)
+CPPFLAGS := -iquote include -Wno-trigraphs -DMODERN=$(MODERN) -DDISABLE_DEBUG=$(DISABLE_DEBUG) -DTPP_MODE=$(TPP_MODE) -DMGBA_DEBUG=$(MGBA_DEBUG)
 ifeq ($(MODERN),0)
 CPPFLAGS += -I tools/agbcc/include -I tools/agbcc
 endif
@@ -236,7 +237,7 @@ include songs.mk
 %.rl: % ; $(GFX) $< $@
 sound/direct_sound_samples/cry_%.bin: sound/direct_sound_samples/cry_%.aif ; $(AIF) $< $@ --compress
 sound/%.bin: sound/%.aif ; $(AIF) $< $@
-data/%.inc: data/%.pory; $(SCRIPT) -i $< -o $@ -s TPP_MODE=$(TPP_MODE)
+data/%.inc: data/%.pory; $(SCRIPT) -i $< -o $@ -s TPP_MODE=$(TPP_MODE) -s MGBA_DEBUG=$(MGBA_DEBUG)
 
 $(OBJ_DIR)/copystamped.bin: .git/index
 	$(COPYSTAMP) $(OBJ_DIR)/copystamped.bin `git log -1 --format="-18:s $(VERSION_STR)*%h -19:t %ct"`
