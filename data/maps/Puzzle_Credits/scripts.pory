@@ -1,0 +1,66 @@
+raw `
+Puzzle_Credits_MapScripts::
+	puzzle_info Puzzle_Credits_Name, CommonAuthor_M4UsedRollout
+	map_script MAP_SCRIPT_PUZZLE_CUSTOM_INTRO_SCRIPT, Puzzle_Credits_IntroScript
+	.byte 0
+
+Puzzle_Credits_Name:
+	.string "The Finale$"
+
+#define LID_MASTER 2
+`
+
+script Puzzle_Credits_IntroScript {
+	msgbox ("Ah! You're returned to me one last time!\p"
+			"It seems that you have bested my every\n"
+			"puzzle tonight! I am at a loss!\p"
+			"Congratulations!\n"
+			"You have reached the end.\p"
+			"Allow me to point you towards one last\n"
+			"treat before you turn in for the night.\p"
+			"I have strewn the path to Slateport\n"
+			"with a multitude of candy!\p"
+			"Be sure to steer into it to pick\n"
+			"them all up using {DPAD_UPDOWN}!\p"
+			"And have a Happy Halloween!$")
+	closemessage
+	// Trick Master walks up with player
+	applymovement(LID_PLAYER, Common_Movement_WalkUp2)
+	applymovement(LID_MASTER, Common_Movement_WalkUp2)
+	waitmovement(0)
+	// Open the door to the puzzle
+	opendoor(22, 2)
+	waitdooranim
+	delay(20)
+	// Fade out bg, but don't wait for it
+	loadbyte(3, 1)
+	fadeoutbgm(3)
+	// Put the player on the bike, and fade out screen
+	applymovement(LID_MASTER, Common_Movement_FaceLeft)
+	waitmovement(0)
+	delay(30)
+	callnative(ForcePlayerOntoAcroBike)
+	delay(20)
+	// 
+	special(SpawnCameraObject)
+	applymovement(LID_PLAYER, Puzzle_Credits_Movement_IntroPlayer)
+	applymovement(LID_CAMERA, Puzzle_Credits_Movement_IntroCamera)
+	delay(16)
+	fadescreenspeed(50, 4)
+	waitmovement(0)
+	delay(30)
+	callnative (PlayCredits)
+	waitstate
+	release
+}
+
+movement Puzzle_Credits_Movement_IntroPlayer {
+	walk_up * 9
+}
+movement Puzzle_Credits_Movement_IntroCamera {
+	walk_slow_up * 3
+}
+
+raw `
+#undef LID_MASTER
+`

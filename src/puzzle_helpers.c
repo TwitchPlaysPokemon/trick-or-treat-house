@@ -667,6 +667,11 @@ void ForcePlayerOntoMachBike(struct ScriptContext *ctx)
 	SetPlayerAvatarTransitionFlags(PLAYER_AVATAR_FLAG_MACH_BIKE);
 }
 
+void ForcePlayerOntoAcroBike(struct ScriptContext *ctx)
+{
+	SetPlayerAvatarTransitionFlags(PLAYER_AVATAR_FLAG_ACRO_BIKE);
+}
+
 u16 GetPlayerAvatarBike(void)
 {
     if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_ACRO_BIKE))

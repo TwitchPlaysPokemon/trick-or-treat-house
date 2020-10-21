@@ -233,7 +233,7 @@ extern const u8 PuzzleCommon_Text_FirstPuzzleIntroRound2[];
 void LoadPuzzleIntro(struct ScriptContext *ctx)
 {
 	u16 currPuzzle = GetCurrentPuzzleMapId();
-	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_CUSTOM_INTRO);
+	const u8 *str;// = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_CUSTOM_INTRO);
 	// Set up for generic no-item intro
 	ctx->data[0] = 0;
 	gSpecialVar_Result = 0;
@@ -246,7 +246,14 @@ void LoadPuzzleIntro(struct ScriptContext *ctx)
 			gSpecialVar_Result += 1;
 		}
 	}
+	// Check for custom intro script
+	str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_CUSTOM_INTRO_SCRIPT);
+	if (str != NULL) {
+		ScriptJump(ctx, str);
+		return;
+	}
 	// Check for custom intro
+	str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_CUSTOM_INTRO);
 	if (str != NULL) {
 		gSpecialVar_Result += 2;
 		ctx->data[0] = (u32)str;

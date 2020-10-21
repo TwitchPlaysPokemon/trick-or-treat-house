@@ -1759,6 +1759,16 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_Shop",
             "width": 15
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_Credits/map.bin",
+            "border_filepath": "data/layouts/Puzzle_Credits/border.bin",
+            "height": 5,
+            "id": "LAYOUT_PUZZLE_CREDITS",
+            "name": "Puzzle_Credits_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrickHousePuzzle",
+            "width": 3
         }
     ],
     "layouts_table_label": "gMapLayouts"

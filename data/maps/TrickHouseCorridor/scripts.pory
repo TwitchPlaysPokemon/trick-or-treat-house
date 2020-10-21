@@ -324,112 +324,93 @@ script TrickHouseCorridor_EventScript_EscapeRopeBox {
 	// release
 }
 
+// ----------------------------------------------------
 raw `
-@ -----------------------------------------------------
 #define LID_MASTER 2
+`
 
-TrickHouseCorridor_TriggerScript_RunIntro::
+script TrickHouseCorridor_TriggerScript_RunIntro {
 	lockall
-	getplayerxy VAR_0x8000, VAR_0x8001
-	subvar VAR_0x8001, 7
-	@ Walk up
-	selectpointer TrickHouseCorridor_MovementTable_RunIntro, VAR_0x8001
-	applymovement EVENT_OBJ_ID_PLAYER, 0
-	applymovement LID_MASTER, Common_Movement_WalkLeft1
-	waitmovement EVENT_OBJ_ID_PLAYER
-	@ Introduce puzzle
-	callnative LoadPuzzleIntro
-	switch VAR_RESULT
-	case 0, TrickHouseCorridor_TriggerScript_RunIntro_GenericIntro
-	case 1, TrickHouseCorridor_TriggerScript_RunIntro_GenericItemIntro
-	case 2, TrickHouseCorridor_TriggerScript_RunIntro_CustomIntro
-	case 3, TrickHouseCorridor_TriggerScript_RunIntro_CustomItemIntro
-	end
-
-
-TrickHouseCorridor_TriggerScript_RunIntro_GenericIntro:
-	random 256
-	selectpointer_wrap PuzzleCommon_TextArray_PuzzleIntro_NoItems, VAR_RESULT
-	msgbox_selected
-	goto TrickHouseCorridor_TriggerScript_RunIntro2
-	end
-
-TrickHouseCorridor_TriggerScript_RunIntro_GenericItemIntro:
-	random 256
-	copyvar VAR_0x8001, VAR_RESULT
-	selectpointer_wrap PuzzleCommon_TextArray_PuzzleIntro_Items, VAR_0x8001
-	msgbox_selected
-	@ Give items
-	callnative GiveItemPrerequisites
-	playfanfare MUS_FANFA4
-	message PuzzleCommon_Text_PuzzleIntro_GivenItems
-	waitmessage
-	waitfanfare
-	@ Bye!
-	selectpointer_wrap PuzzleCommon_TextArray_PuzzleIntro_Items_Bye, VAR_0x8001
-	msgbox_selected
-	goto TrickHouseCorridor_TriggerScript_RunIntro2
-	end
-	
-TrickHouseCorridor_TriggerScript_RunIntro_CustomIntro:
-	msgbox_selected
-	goto TrickHouseCorridor_TriggerScript_RunIntro2
-	end
-
-TrickHouseCorridor_TriggerScript_RunIntro_CustomItemIntro:
-	msgbox_selected
-	@ Give items
-	callnative GiveItemPrerequisites
-	playfanfare MUS_FANFA4
-	message PuzzleCommon_Text_PuzzleIntro_GivenItems
-	waitmessage
-	waitfanfare
-	@ Bye!
-	msgbox PuzzleCommon_Text_PuzzleIntro_CommonBye
-	goto TrickHouseCorridor_TriggerScript_RunIntro2
-	end
-	
-
-TrickHouseCorridor_TriggerScript_RunIntro2:
-	@ Leave
+	getplayerxy (VAR_INTERACT_X, VAR_INTERACT_Y)
+	subvar(VAR_INTERACT_Y, 7)
+	// Walk up
+	selectpointer (TrickHouseCorridor_MovementTable_RunIntro, VAR_INTERACT_Y)
+	applymovement (EVENT_OBJ_ID_PLAYER, 0)
+	applymovement (LID_MASTER, Common_Movement_WalkLeft1)
+	waitmovement (EVENT_OBJ_ID_PLAYER)
+	// Introduce puzzle
+	callnative(LoadPuzzleIntro)
+	// Note: If a custom intro script is on the current puzzle,
+	// execution will not reach beyond here, but will jump to that.
+	switch(var(VAR_RESULT)) {
+		case 0: // Generic Intro
+			random(256)
+			selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_NoItems, VAR_RESULT)
+			msgbox_selected
+		case 1: // Generic item intro
+			random(256)
+			copyvar(VAR_0x8001, VAR_RESULT)
+			selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_Items, VAR_0x8001)
+			msgbox_selected
+			// Give items
+			callnative(GiveItemPrerequisites)
+			playfanfare(MUS_FANFA4)
+			message(PuzzleCommon_Text_PuzzleIntro_GivenItems)
+			waitmessage
+			waitfanfare
+			// Bye!
+			selectpointer_wrap (PuzzleCommon_TextArray_PuzzleIntro_Items_Bye, VAR_0x8001)
+			msgbox_selected
+		case 2: // Custom intro
+			msgbox_selected
+		case 3: // Custom item intro
+			msgbox_selected
+			// Give items
+			callnative(GiveItemPrerequisites)
+			playfanfare(MUS_FANFA4)
+			message(PuzzleCommon_Text_PuzzleIntro_GivenItems)
+			waitmessage
+			waitfanfare
+			// Bye!
+			msgbox(PuzzleCommon_Text_PuzzleIntro_CommonBye)
+		default:
+			end
+	}
+	// Leave
 	closemessage
-	compare VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_TRICK_MASTER
-	call_if_eq TrickHouseCorridor_TriggerScript_RunIntro_TrickMasterOut
-	call_if_ne TrickHouseCorridor_TriggerScript_RunIntro_CompanionLeaves
-	@
-	setvar VAR_PUZZLE_STATE, 1
-	setescapewarp MAP_TRICK_HOUSE_CORRIDOR, -1, 22, 3
-	call TrickHouseCorridor_OpenPuzzleDoor
+	if (var(VAR_OBJ_GFX_ID_0) == EVENT_OBJ_GFX_TRICK_MASTER) {
+		// Trick Master warps away
+		setvar(VAR_0x8000, LID_MASTER)
+		call(PuzzleCommon_EventScript_WarpTrickMasterOut)
+		// Player approaches door
+		applymovement(LID_PLAYER, Common_Movement_WalkUp2)
+		waitmovement(0)
+		// Open the door to the puzzle
+		opendoor(22, 2)
+		waitdooranim
+	} else {
+		// Player approaches door
+		applymovement(LID_PLAYER, Common_Movement_WalkUp2)
+		applymovement(LID_MASTER, Common_Movement_WalkUp2)
+		waitmovement(0)
+		// Open the door to the puzzle
+		opendoor(22, 2)
+		waitdooranim
+		// intro character walks through
+		applymovement(LID_MASTER, TrickHouseCorridor_Movement_OtherLeaves)
+		waitmovement(0)
+		removeobject(LID_MASTER)
+		playse(SE_KAIDAN)
+	}
+	setvar(VAR_PUZZLE_STATE, 1)
+	setescapewarp(MAP_TRICK_HOUSE_CORRIDOR, -1, 22, 3)
+	call (TrickHouseCorridor_OpenPuzzleDoor)
 	releaseall
-	end
+}
 
-TrickHouseCorridor_TriggerScript_RunIntro_TrickMasterOut:
-	@ Trick Master warps away
-	setvar VAR_0x8000, LID_MASTER
-	call PuzzleCommon_EventScript_WarpTrickMasterOut
-	@ Player approaches door
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkUp2
-	waitmovement 0
-	@ Open the door to the puzzle
-	opendoor 22, 2
-	waitdooranim
-	return
-
-TrickHouseCorridor_TriggerScript_RunIntro_CompanionLeaves:
-	@ Player approaches door
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkUp2
-	applymovement LID_MASTER, Common_Movement_WalkUp2
-	waitmovement 0
-	@ Open the door to the puzzle
-	opendoor 22, 2
-	waitdooranim
-	@ intro character walks through
-	applymovement LID_MASTER, TrickHouseCorridor_Movement_OtherLeaves
-	waitmovement 0
-	removeobject LID_MASTER
-	playse SE_KAIDAN
-	return
-
+raw `
+#undef LID_MASTER
+@ -----------------------------------------------------
 
 .align 2
 TrickHouseCorridor_MovementTable_RunIntro:

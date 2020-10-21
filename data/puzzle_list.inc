@@ -69,4 +69,5 @@ gDebugPuzzles::
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL1             @  BATTLE/MAZE
     .2byte MAP_PUZZLE_TRICK_HOUSE_TRAPDOORS             @  BATTLE/MAZE
     .2byte MAP_PUZZLE_DESERT_OASIS
+    .2byte MAP_PUZZLE_CREDITS
     .2byte 0xFFFF

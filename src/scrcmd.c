@@ -1094,6 +1094,10 @@ bool8 ScrCmd_fadeoutbgm(struct ScriptContext *ctx)
         FadeOutBGMTemporarily(4 * speed);
     else
         FadeOutBGMTemporarily(4);
+    
+    if (ctx->data[3] == 1) {
+        return FALSE;
+    }
     SetupNativeScript(ctx, IsBGMPausedOrStopped);
     return TRUE;
 }

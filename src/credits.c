@@ -1100,7 +1100,7 @@ static void Task_EndGame6(u8 taskId)
     if (frameCount == FRAMETIME_SONG_OVER)
         FadeOutBGM(8);
         
-    if (frameCount == FRAMETIME_SONG_OVER + 300)
+    if (frameCount == FRAMETIME_SONG_OVER + (60 * 3))
     {
         m4aSongNumStart(MUS_END);
         gTasks[taskId].func = Task_ShowFinal1;
