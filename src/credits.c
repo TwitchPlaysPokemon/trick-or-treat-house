@@ -82,6 +82,8 @@
 extern void LoadCreditsMinigameBackground1();
 
 void LoadCandyGraphics();
+void LoadSunsetGraphics();
+static void SpriteCB_Sunset(struct Sprite *sprite);
 
 enum
 {
@@ -102,6 +104,7 @@ enum
 	
 	// Task D: Flicker Background Palette
     TDD_SUN_DELAY = 0,
+    TDD_SUN_SPRITE,
 	
 	// Sprite Data
 	SPD_CURR_ANIM = 0,
@@ -151,6 +154,29 @@ static const u16 sCreditsPalettes[][16] =
 };
 
 static const u32 gCreditsCopyrightEnd_Gfx[] = INCBIN_U32("graphics/credits/the_end_copyright.4bpp.lz");
+static const u32 gCreditsSunset_Gfx[] = INCBIN_U32("graphics/intro/credits_sunset.4bpp.lz");
+
+const struct CompressedSpriteSheet gCreditsSunsetSpritesheet =
+{
+    .data = gCreditsSunset_Gfx,
+    .size = 0x400,
+    .tag = 2010,
+};
+
+const struct SpriteFrameImage gCreditsSunsetPicTable[] = {
+    obj_frame_tiles(gCreditsSunset_Gfx),
+};
+
+static const struct SpriteTemplate gCreditsSunsetSpriteTemplate = 
+{
+    .tileTag = 2010, //0xFFFF,
+    .paletteTag = 0xFFFF,
+    .oam = &gDummyOamData,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL, //gCreditsSunsetPicTable,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_Sunset
+};
 
 static const u8 sTheEnd_LetterTMap[] =
 {
@@ -429,6 +455,28 @@ static void SpriteCB_CandyItem(struct Sprite *sprite)
     }
 }
 
+static void SpriteCB_Sunset(struct Sprite *sprite)
+{
+    s16 speed, height;
+    s32 offset;
+    if (gSpriteDestroyFlag != 0) {
+        DestroySprite(sprite);
+        return;
+    }
+    
+    speed = sprite->data[0];
+    offset = (sprite->data[1] << 16) + (u16)sprite->data[2];
+    offset += (u16)speed << 4;
+    sprite->data[1] = offset >> 16;
+    sprite->data[2] = offset;
+    sprite->pos1.x = sprite->data[1];
+    
+    height = sprite->data[3];
+    height += 1;
+    sprite->pos1.y = Q_8_8_TO_INT(height);
+    sprite->data[3] = height;
+}
+
 static bool8 LoadInitialBikingScene(u8 taskId)
 {
 	u8 spriteId;
@@ -456,6 +504,7 @@ static bool8 LoadInitialBikingScene(u8 taskId)
 		gSkyBgPanY = 24; //34;
         gSkyBgPanYAdjust = 10;
 		LoadCreditsMinigameBackground1();
+        LoadSunsetGraphics();
         gMain.state += 1;
         break;
     case 2:
@@ -556,6 +605,26 @@ void LoadCandyGraphics()
         }
     }
     free(spriteTemplate);
+}
+
+void LoadSunsetGraphics()
+{
+    u8 sprite;
+    LoadCompressedSpriteSheet(&gCreditsSunsetSpritesheet);
+    LZ77UnCompVram(gCreditsSunset_Gfx, (void *)(VRAM + 0x10400));
+    
+    sprite = CreateSprite(&gCreditsSunsetSpriteTemplate, 120, 0, 105);
+    CalcCenterToCornerVec(&gSprites[sprite], SPRITE_SHAPE(32x32), SPRITE_SIZE(32x32), 0);
+    gSprites[sprite].oam.priority = 3;
+    gSprites[sprite].oam.shape = SPRITE_SHAPE(32x32);
+    gSprites[sprite].oam.size = SPRITE_SIZE(32x32);
+    gSprites[sprite].oam.paletteNum = 0;
+    gSprites[sprite].data[0] = 8;
+    gSprites[sprite].data[1] = 120;
+    gSprites[sprite].data[2] = 0;
+    gSprites[sprite].data[3] = Q_8_8(4);
+    
+    gTasks[sCreditsData->taskIdD].data[TDD_SUN_SPRITE] = sprite;
 }
 
 static void LoadCopyrightScreen(u16 gAddr, u16 vAddr, u16 pAddr)
