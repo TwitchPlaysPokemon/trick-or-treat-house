@@ -39,6 +39,7 @@
 #define ITEM_SPEED         2
 #define NUM_CANDY_SPRITES  6
 #define ITEM_COLLECT_TIMEOUT 32
+#define HORIZON_LINE       (8 * 8)
 
 #define SPRITE_OFFSET_PLAYER_X   32
 #define SPRITE_OFFSET_PLAYER_Y   46
@@ -120,6 +121,11 @@ enum
     ITEM_STATE_SPAWNED,
     ITEM_STATE_COLLECTED,
 };
+struct DynamicSpriteFrameImage
+{
+    u8 *data;
+    u16 size;
+};
 struct CreditsData
 {
 	u16 taskIdA;
@@ -129,6 +135,7 @@ struct CreditsData
     u16 score;
 	u16 total;
 	u8 itemSprites[NUM_CANDY_SPRITES];
+    struct DynamicSpriteFrameImage sunImage;
 };
 struct CreditsEntry
 {
@@ -154,25 +161,35 @@ static const u16 sCreditsPalettes[][16] =
 };
 
 static const u32 gCreditsCopyrightEnd_Gfx[] = INCBIN_U32("graphics/credits/the_end_copyright.4bpp.lz");
-static const u32 gCreditsSunset_Gfx[] = INCBIN_U32("graphics/intro/credits_sunset.4bpp.lz");
+static const u8 gCreditsSunset_Gfx[] = INCBIN_U8("graphics/intro/credits_sunset.4bpp");
+// static const u32 gCreditsSunset_Gfx[] = INCBIN_U32("graphics/intro/credits_sunset.4bpp.lz");
 
-const struct CompressedSpriteSheet gCreditsSunsetSpritesheet =
-{
-    .data = gCreditsSunset_Gfx,
-    .size = 0x400,
-    .tag = 2010,
-};
+// const struct CompressedSpriteSheet gCreditsSunsetSpritesheet =
+// {
+//     .data = gCreditsSunset_Gfx,
+//     .size = 0x400,
+//     .tag = 2010,
+// };
 
 const struct SpriteFrameImage gCreditsSunsetPicTable[] = {
     obj_frame_tiles(gCreditsSunset_Gfx),
 };
 
+static const union AnimCmd sCreditsSunsetAnim[] = {
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
+static const union AnimCmd *const sCreditsSunsetAnimTable[] = {
+    sCreditsSunsetAnim,
+};
+
 static const struct SpriteTemplate gCreditsSunsetSpriteTemplate = 
 {
-    .tileTag = 2010, //0xFFFF,
+    .tileTag = 0xFFFF, //2010,
     .paletteTag = 0xFFFF,
     .oam = &gDummyOamData,
-    .anims = gDummySpriteAnimTable,
+    .anims = sCreditsSunsetAnimTable,
     .images = NULL, //gCreditsSunsetPicTable,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_Sunset
@@ -474,6 +491,34 @@ static void SpriteCB_Sunset(struct Sprite *sprite)
     height = sprite->data[3];
     height += 1;
     sprite->pos1.y = Q_8_8_TO_INT(height);
+    
+    // Modify the tile graphics to cut off the bottom
+    // of the sprite as it reaches the horizon.
+    if (sprite->data[3] >> 8 != height >> 8) // If the sun moved
+    {
+        s16 line = HORIZON_LINE - Q_8_8_TO_INT(height);
+        // If the horizon line is inside the sprite
+        if (line < 32 && line > 0) {
+            // Fill the line with empty pixels to simulate it going beind the horizon.
+            u8 i;
+            u8 tileY = line / 8;
+            u8 subY = line % 8;
+            
+            for(i = 0; i < 32; i += 2) {
+                u8 tileX = i / 8;
+                u8 subX = i % 8;
+                u16 tileIndex = (32/8) * (tileY * 64) + (tileX * 64);
+                u16 subIndex = tileIndex + ((subY * 8) + subX);
+                subIndex /= 2; //from byte index to nibble index
+                // The below line would be much more complex if we were filling
+                // with two disparate colors. As it is, we're erasing, so this is simple.
+                sCreditsData->sunImage.data[subIndex] = PIXEL_FILL(0);
+            }
+        }
+    }
+    // Calling this will update the tile graphics to VRAM
+    StartSpriteAnim(sprite, 0);
+    
     sprite->data[3] = height;
 }
 
@@ -486,7 +531,7 @@ static bool8 LoadInitialBikingScene(u8 taskId)
     default:
     case 0:
 		// Reset everything
-        SetGpuReg(REG_OFFSET_DISPCNT, 0);
+        SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_HBLANK_INTERVAL);
         SetGpuReg(REG_OFFSET_BG3HOFS, 8);
         SetGpuReg(REG_OFFSET_BG3VOFS, 0);
         SetGpuReg(REG_OFFSET_BG2HOFS, 0);
@@ -609,20 +654,26 @@ void LoadCandyGraphics()
 
 void LoadSunsetGraphics()
 {
+    u16 i;
     u8 sprite;
-    LoadCompressedSpriteSheet(&gCreditsSunsetSpritesheet);
-    LZ77UnCompVram(gCreditsSunset_Gfx, (void *)(VRAM + 0x10400));
+    struct SpriteTemplate sunTemplate = gCreditsSunsetSpriteTemplate;
     
-    sprite = CreateSprite(&gCreditsSunsetSpriteTemplate, 120, 0, 105);
+    sCreditsData->sunImage.data = AllocZeroed(sizeof(gCreditsSunset_Gfx));
+    sCreditsData->sunImage.size = sizeof(gCreditsSunset_Gfx);
+    for (i = 0; i < sizeof(gCreditsSunset_Gfx); i++)
+        sCreditsData->sunImage.data[i] = gCreditsSunset_Gfx[i];
+    sunTemplate.images = (struct SpriteFrameImage*)(&sCreditsData->sunImage);
+    
+    sprite = CreateSprite(&sunTemplate, 120, 0, 105);
     CalcCenterToCornerVec(&gSprites[sprite], SPRITE_SHAPE(32x32), SPRITE_SIZE(32x32), 0);
     gSprites[sprite].oam.priority = 3;
     gSprites[sprite].oam.shape = SPRITE_SHAPE(32x32);
     gSprites[sprite].oam.size = SPRITE_SIZE(32x32);
     gSprites[sprite].oam.paletteNum = 0;
-    gSprites[sprite].data[0] = 8;
-    gSprites[sprite].data[1] = 120;
-    gSprites[sprite].data[2] = 0;
-    gSprites[sprite].data[3] = Q_8_8(4);
+    gSprites[sprite].data[0] = 8;  // horizontal pan speed
+    gSprites[sprite].data[1] = 120; // horizontal position whole number
+    gSprites[sprite].data[2] = 0; //horizontal position fractional number (Q16.16)
+    gSprites[sprite].data[3] = Q_8_8(2); //vertical positions
     
     gTasks[sCreditsData->taskIdD].data[TDD_SUN_SPRITE] = sprite;
 }
@@ -812,12 +863,13 @@ void CB2_StartCreditsSequence(void)
 	
 	ResetGpuAndVram();
 	SetVBlankCallback(NULL);
+	SetHBlankCallback(NULL);
 	InitHeap(gHeap, HEAP_SIZE);
 	ResetPaletteFade();
 	ResetTasks();
 	
-	PrepareCreditsGraphics();
 	sCreditsData = AllocZeroed(sizeof(struct CreditsData));
+	PrepareCreditsGraphics();
 	sCreditsData->taskIdA = CreateTask(Task_DisplayCredits, 0);
 	sCreditsData->taskIdB = CreateTask(Task_WaitPaletteFade, 0);
 		
@@ -1111,6 +1163,7 @@ static void Task_EndGame2(u8 taskId)
     }
 }
 
+void EnableVCountIntrAtLine150(void);
 static void Task_EndGame3(u8 taskId)
 {
     gTasks[taskId].data[TDB_FRAME_COUNT]++;
@@ -1118,6 +1171,8 @@ static void Task_EndGame3(u8 taskId)
     CleanupWindowBuffers();
     ResetGpuAndVram();
     ResetPaletteFade();
+    SetHBlankCallback(NULL);
+    EnableVCountIntrAtLine150(); // reset vcount to original
     LoadCopyrightScreen(0, 0x3800, 0);
     ResetSpriteData();
     FreeAllSpritePalettes();
