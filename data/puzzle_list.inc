@@ -52,8 +52,8 @@ gPuzzleList::                                           @ Puzzle Type(s)
     
     .2byte MAP_PUZZLE_SAFARI_IMPOSTERS                  @  LOGIC
 @   .2byte MAP_META_PUZZLE
-@   .2byte MAP_CREDITS                                  @  MINIGAME
-@   .2byte MAP_TRICK_TREAT_SLATEPORT_CITY1              @  TRICK    (Must be last)
+    .2byte MAP_PUZZLE_CREDITS                           @  MINIGAME (Must be last)
+@   .2byte MAP_TRICK_TREAT_SLATEPORT_CITY1  @ (Not actually a puzzle)
     .2byte 0xFFFF
 
 @ Below puzzles don't appear in the main puzzle list, and must be accessed
@@ -64,10 +64,8 @@ gDebugPuzzles::
     .2byte MAP_PUZZLE_SUSPENDED_MAZE
     .2byte MAP_TRICK_TREAT_ALTO_MARE1                   @  TRICK
     .2byte MAP_TRICK_TREAT_FORTREE_CITY                 @  TRICK
-    .2byte MAP_TRICK_TREAT_SLATEPORT_CITY1              @  TRICK    (Must be last)
     .2byte MAP_PUZZLE_FALLING_WATER                     @  ITEM/MOVEMENT
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL1             @  BATTLE/MAZE
     .2byte MAP_PUZZLE_TRICK_HOUSE_TRAPDOORS             @  BATTLE/MAZE
     .2byte MAP_PUZZLE_DESERT_OASIS
-    .2byte MAP_PUZZLE_CREDITS
     .2byte 0xFFFF

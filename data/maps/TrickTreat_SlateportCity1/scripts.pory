@@ -62,8 +62,8 @@ script(local) TrickTreat_SlateportCity1_FromCredits {
 	closemessage
 	
 	applymovement(LID_PLAYER, TrickTreat_SlateportCity1_FromCredits_Movement3)
-	fadescreen(52) // show location
 	fadedefaultbgm
+	fadescreenspeed(52, 3) // show location
 	waitmovement(LID_PLAYER)
 	
 	// TODO: Show Slateport name

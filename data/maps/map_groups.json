@@ -70,6 +70,10 @@
         "LostWoods4_RoomD4",
         "LostWoods4_RoomD5"
     ],
+    "MG_PostGame": [
+        "TrickTreat_SlateportCity1",
+        "TrickTreat_SlateportCity2"
+    ],
     "MG_PuzzleFramework": [
         "TrickHouseDevEntrance",
         "TrickHouseExt",
@@ -241,10 +245,6 @@
         "TrickTreat_AltoMare1",
         "TrickTreat_AltoMare2",
         "TrickTreat_GoldenrodCity"
-    ],
-    "MG_PostGame": [
-        "TrickTreat_SlateportCity1",
-        "TrickTreat_SlateportCity2"
     ],
     "group_order": [
         "MG_PuzzleFramework",

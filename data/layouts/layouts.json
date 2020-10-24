@@ -1243,7 +1243,7 @@
         {
             "blockdata_filepath": "data/layouts/TrickTreat_SlateportCity1/map.bin",
             "border_filepath": "data/layouts/TrickTreat_SlateportCity1/border.bin",
-            "height": 92,
+            "height": 93,
             "id": "LAYOUT_TRICKTREAT_SLATEPORT_CITY1",
             "name": "TrickTreat_SlateportCity1_Layout",
             "primary_tileset": "gTileset_Autumn",
