@@ -1769,6 +1769,26 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_TrickHousePuzzle",
             "width": 3
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_ThinIce/map.bin",
+            "border_filepath": "data/layouts/Puzzle_ThinIce/border.bin",
+            "height": 15,
+            "id": "LAYOUT_PUZZLE_THIN_ICE",
+            "name": "Puzzle_ThinIce_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_SootopolisGym",
+            "width": 21
+        },
+        {
+            "blockdata_filepath": "data/layouts/ThinIce_F2/map.bin",
+            "border_filepath": "data/layouts/ThinIce_F2/border.bin",
+            "height": 15,
+            "id": "LAYOUT_THIN_ICE_F2",
+            "name": "ThinIce_F2_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_SootopolisGym",
+            "width": 21
         }
     ],
     "layouts_table_label": "gMapLayouts"

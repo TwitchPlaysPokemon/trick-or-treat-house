@@ -6426,3 +6426,7 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/TrickHouseExt_Gatehouse/scripts.inc"
 
 	.include "data/maps/Puzzle_Credits/scripts.inc"
+
+	.include "data/maps/Puzzle_ThinIce/scripts.inc"
+
+	.include "data/maps/ThinIce_F2/scripts.inc"

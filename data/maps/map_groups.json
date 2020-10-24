@@ -180,7 +180,8 @@
         "Puzzle_EliteFloor",
         "Puzzle_DiveMaze",
         "Puzzle_SootopolisGym",
-        "Puzzle_ImposterReflection"
+        "Puzzle_ImposterReflection",
+        "Puzzle_ThinIce"
     ],
     "MG_SingleMapPuzzles2019": [
         "Puzzle_TrickHouseCut",
@@ -221,7 +222,8 @@
         "SuspendedMaze_B1",
         "WaterTemple_Secret",
         "DiveMaze_Underwater",
-        "SootopolisGym_B1F"
+        "SootopolisGym_B1F",
+        "ThinIce_F2"
     ],
     "MG_TestMaps": [
         "TestMapHallway",

@@ -67,6 +67,7 @@
 #define MAP_WATER_TEMPLE_SECRET    (7 | (5 << 8))
 #define MAP_DIVE_MAZE_UNDERWATER   (8 | (5 << 8))
 #define MAP_SOOTOPOLIS_GYM_B1F     (9 | (5 << 8))
+#define MAP_THIN_ICE_F2            (10 | (5 << 8))
 
 // Map Group 6
 #define MAP_PETALBURG_CITY   (0 | (6 << 8))
@@ -139,6 +140,7 @@
 #define MAP_PUZZLE_DIVE_MAZE                (17 | (7 << 8))
 #define MAP_PUZZLE_SOOTOPOLIS_GYM           (18 | (7 << 8))
 #define MAP_PUZZLE_IMPOSTER_REFLECTION      (19 | (7 << 8))
+#define MAP_PUZZLE_THIN_ICE                 (20 | (7 << 8))
 
 // Map Group 8
 #define MAP_PUZZLE_LOST_WOODS1_ENTRANCE (0 | (8 << 8))
