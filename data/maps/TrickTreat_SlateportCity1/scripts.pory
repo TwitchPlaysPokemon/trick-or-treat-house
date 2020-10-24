@@ -1,4 +1,86 @@
 raw `
 TrickTreat_SlateportCity1_MapScripts::
+	puzzle_info TrickTreat_SlateportCity_Name, CommonAuthor_GameFreak
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrickTreat_SlateportCity1_FrameTable
 	.byte 0
+
+TrickTreat_SlateportCity_Name:
+	.string "Soliciting Slateport$"
+TrickTreat_SlateportCity1_FrameTable:
+	map_script_2 VAR_LAST_WARP_ID, 0, TrickTreat_SlateportCity1_FromCredits
+	.2byte 0
 `
+
+script(local) TrickTreat_SlateportCity1_FromCredits {
+	lockall
+	special(SpawnCameraObject)
+	clearflag(FLAG_DISABLE_FADE_INIT)
+	clearflag(FLAG_DISABLE_MAP_MUSIC_CHANGE)
+	
+	if (var(VAR_PUZZLE_00) == VAR_PUZZLE_01) {
+		incrementgamestat(GAME_STAT_ALL_CANDY_COLLECTED)
+	}
+	buffernumberstring(0, VAR_PUZZLE_00)
+	message("Candy Collected while biking: {STR_VAR_1}\p$")
+	applymovement(LID_CAMERA, TrickTreat_SlateportCity1_FromCredits_Movement1)
+	waitmovement(0)
+	fadescreen(51) // show player
+	waitmessage
+	
+	copyvar(VAR_PUZZLE_02, VAR_PUZZLE_00)
+	mulvar(VAR_PUZZLE_00, 10)
+	givemoney(VAR_PUZZLE_00, 0)
+	//TODO increment player money by this much?
+	call(PuzzleCommon_EventScript_IncrementPuzzle)
+	
+	applymovement(LID_CAMERA, TrickTreat_SlateportCity1_FromCredits_Movement2C)
+	applymovement(LID_PLAYER, TrickTreat_SlateportCity1_FromCredits_Movement2P)
+	
+	loadhalf(1, GAME_STAT_NUM_PUZZLES_COMPLETED)
+	callnative(DebugGetGameStat)
+	buffernumberstring(0, VAR_RESULT)
+	loadhalf(1, GAME_STAT_ALL_CANDY_COLLECTED)
+	callnative(DebugGetGameStat)
+	buffernumberstring(1, VAR_RESULT)
+	
+	message("Completed {STR_VAR_1} puzzles.\n"
+			"All candy found in {STR_VAR_2} puzzles\p$")
+	waitmovement(LID_PLAYER)
+	waitmessage
+	special(RemoveCameraObject)
+	
+	
+	loadhalf(1, GAME_STAT_CANDY_COLLECTED)
+	callnative(DebugGetGameStat)
+	buffernumberstring(0, VAR_RESULT)
+	
+	message("Total Candy Collected: {STR_VAR_1}\p"
+			"Thanks for playing!\n"
+			"Happy Halloween!$")
+	waitmessage
+	waitbuttonpress
+	closemessage
+	
+	applymovement(LID_PLAYER, TrickTreat_SlateportCity1_FromCredits_Movement3)
+	fadescreen(52) // show location
+	fadedefaultbgm
+	waitmovement(LID_PLAYER)
+	
+	// TODO: Show Slateport name
+	special(ShowMapNamePopup)
+	setflag(FLAG_HIDE_EXT_GAME_PLAYERS) //allow access back to trick house
+	setvar(VAR_LAST_WARP_ID, -1)
+	releaseall
+}
+movement TrickTreat_SlateportCity1_FromCredits_Movement1 {
+	slide_down * 6
+}
+movement TrickTreat_SlateportCity1_FromCredits_Movement2C {
+	walk_slow_up * 3
+}
+movement TrickTreat_SlateportCity1_FromCredits_Movement2P {
+	walk_slow_down * 3
+}
+movement TrickTreat_SlateportCity1_FromCredits_Movement3 {
+	walk_down * 7
+}

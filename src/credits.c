@@ -14,6 +14,7 @@
 #include "m4a.h"
 #include "mgba.h"
 #include "menu.h"
+#include "overworld.h"
 #include "pokedex.h"
 #include "random.h"
 #include "sound.h"
@@ -25,6 +26,7 @@
 #include "trainer_pokemon_sprites.h"
 #include "trig.h"
 #include "window.h"
+#include "constants/maps.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
 #include "constants/species.h"
@@ -106,6 +108,9 @@ enum
 	// Task D: Flicker Background Palette
     TDD_SUN_DELAY = 0,
     TDD_SUN_SPRITE,
+    
+    // Task B during end
+    TDE_BG2_OFFSET = 0,
 	
 	// Sprite Data
 	SPD_CURR_ANIM = 0,
@@ -277,6 +282,16 @@ static const struct WindowTemplate sWindowTemplates[] =
     },
     DUMMY_WIN_TEMPLATE,
 };
+static const struct WindowTemplate sWindowTemplateEnd =
+{
+    .bg = 0,
+    .tilemapLeft = 0,
+    .tilemapTop = 5,
+    .width = 30,
+    .height = 12,
+    .paletteNum = 8,
+    .baseBlock = 512
+};
 
 static const union AnimCmd gUnknown_085E6F84[] =
 {
@@ -351,6 +366,7 @@ static void Task_EndGame4(u8 taskId);
 static void Task_EndGame5(u8 taskId);
 static void Task_EndGame6(u8 taskId);
 static void Task_ShowFinal1(u8 taskId);
+static void CB2_CleanupCredits(void);
 
 ///////////////////////////////////////////////////////////////////////////////
 // Helper Functions
@@ -531,7 +547,7 @@ static bool8 LoadInitialBikingScene(u8 taskId)
     default:
     case 0:
 		// Reset everything
-        SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_HBLANK_INTERVAL);
+        SetGpuReg(REG_OFFSET_DISPCNT, 0);
         SetGpuReg(REG_OFFSET_BG3HOFS, 8);
         SetGpuReg(REG_OFFSET_BG3VOFS, 0);
         SetGpuReg(REG_OFFSET_BG2HOFS, 0);
@@ -1178,7 +1194,7 @@ static void Task_EndGame3(u8 taskId)
     FreeAllSpritePalettes();
     BeginNormalPaletteFade(0xFFFFFFFF, 8, 16, 0, RGB_BLACK);
 
-    SetGpuReg(REG_OFFSET_BG0CNT, BGCNT_PRIORITY(0)
+    SetGpuReg(REG_OFFSET_BG2CNT, BGCNT_PRIORITY(0)
                                | BGCNT_CHARBASE(0)
                                | BGCNT_SCREENBASE(7)
                                | BGCNT_16COLOR
@@ -1186,8 +1202,13 @@ static void Task_EndGame3(u8 taskId)
     EnableInterrupts(INTR_FLAG_VBLANK);
     SetGpuReg(REG_OFFSET_DISPCNT, DISPCNT_MODE_0
                                 | DISPCNT_OBJ_1D_MAP
-                                | DISPCNT_BG0_ON);
-
+                                | DISPCNT_BG0_ON
+                                | DISPCNT_BG2_ON);
+    /* //
+    AddWindow(&sWindowTemplateEnd);
+    PutWindowTilemap(WIN_MAIN);
+    CopyWindowToVram(WIN_MAIN, 3);
+    */
     gTasks[taskId].func = Task_EndGame4;
 }
 
@@ -1207,7 +1228,6 @@ static void Task_EndGame5(u8 taskId)
 {
     u16 frameCount = gTasks[taskId].data[TDB_FRAME_COUNT]++;
     
-    // if (!gPaletteFade.active)
     if (frameCount >= FRAMETIME_FINAL_NOTE)
     {
         LoadTheEndScreen(0x3800, 0);
@@ -1226,7 +1246,28 @@ static void Task_EndGame6(u8 taskId)
         
     if (frameCount == FRAMETIME_SONG_OVER + (60 * 3))
     {
-        m4aSongNumStart(MUS_END);
+        u8 color[] = { 0, 1, 2 };
+        u8 *str;
+        // m4aSongNumStart(MUS_END);
+        InitMapMusic();
+        PlayNewMapMusic(MUS_END);
+        
+        // Reset task data
+        gTasks[taskId].data[TDB_STATE] = 0;
+        gTasks[taskId].data[TDB_PLAYER_CYCLIST] = 0;
+        gTasks[taskId].data[TDB_NEXT_ITEM_ID] = 0;
+        gTasks[taskId].data[TDB_TIMEOUT] = 0;
+        gTasks[taskId].data[TDB_FRAME_COUNT] = 0;
+        /* //
+        str = StringCopy(gStringVar4, sEndingString1);
+        ConvertUIntToDecimalStringN(str, sCreditsData->score, 0, 3);
+        *str++ = CHAR_SLASH;
+        ConvertUIntToDecimalStringN(str, sCreditsData->total, 0, 3);
+        *str++ = EOS;
+        
+        AddTextPrinterParameterized3(0, 1, 8, 8, color, 2, gStringVar4);
+        CopyWindowToVram(WIN_MAIN, 2);
+        */
         gTasks[taskId].func = Task_ShowFinal1;
     }
 }
@@ -1235,15 +1276,26 @@ static void Task_CreditsSoftReset(u8 taskIdA); //TEMP
 
 static void Task_ShowFinal1(u8 taskId)
 {
-    //TODO remove this and convert to sliding into Slateport
-    if (gMain.newKeys)
-    {
-        FadeOutBGM(4);
-        BeginNormalPaletteFade(0xFFFFFFFF, 8, 0, 16, RGB_WHITEALPHA);
-        gTasks[taskId].func = Task_CreditsSoftReset;
-        return;
+    // RunTextPrinters();
+    // if (gTasks[taskId].data[TDE_BG2_OFFSET] < Q_8_8(32)) {
+    if (gTasks[taskId].data[TDE_BG2_OFFSET] < Q_8_8(100)) {
+        gTasks[taskId].data[TDE_BG2_OFFSET] += Q_8_8(0.25);
+        SetGpuReg(REG_OFFSET_BG2VOFS, Q_8_8_TO_INT(gTasks[taskId].data[TDE_BG2_OFFSET]));
+    } else {
+        SetMainCallback2(CB2_CleanupCredits);
+        DestroyTask(taskId);
     }
+    
+    //TODO remove this and convert to sliding into Slateport
+    // if (gMain.newKeys)
+    // {
+    //     FadeOutBGM(4);
+    //     BeginNormalPaletteFade(0xFFFFFFFF, 8, 0, 16, RGB_WHITEALPHA);
+    //     gTasks[taskId].func = Task_CreditsSoftReset;
+    //     return;
+    // }
 }
+
 
 static void Task_CreditsSoftReset(u8 taskIdA)
 {
@@ -1277,5 +1329,33 @@ static void Task_FlickerPalette(u8 taskId)
 	Intro2FlickerPalette(0);
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// Cleanup
 
+static void CB2_CleanupCredits(void)
+{
+    VarSet(VAR_PUZZLE_00, sCreditsData->score);
+    VarSet(VAR_PUZZLE_01, sCreditsData->total);
+    FlagSet(FLAG_DISABLE_FADE_INIT);
+    FlagSet(FLAG_DISABLE_MAP_MUSIC_CHANGE);
+    
+    FREE_AND_SET_NULL(sCreditsData->sunImage.data);
+    FREE_AND_SET_NULL(sCreditsData);
+    
+    SetVBlankCallback(NULL);
+    ResetTasks();
+    ResetSpriteData();
+    ResetPaletteFade();
+    UnsetBgTilemapBuffer(0);
+    UnsetBgTilemapBuffer(1);
+    UnsetBgTilemapBuffer(2);
+    UnsetBgTilemapBuffer(3);
+    ResetBgsAndClearDma3BusyFlags(0);
+    ResetGpuAndVram();
+    
+    SetWarpDestination(MAP_GROUP(TRICK_TREAT_SLATEPORT_CITY1), MAP_NUM(TRICK_TREAT_SLATEPORT_CITY1), 0, -1, -1);
+    WarpIntoMap();
+    gFieldCallback = NULL;
+    SetMainCallback2(CB2_LoadMap);
+}
 

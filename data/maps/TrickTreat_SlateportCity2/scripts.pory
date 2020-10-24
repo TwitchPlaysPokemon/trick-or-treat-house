@@ -1,4 +1,5 @@
 raw `
 TrickTreat_SlateportCity2_MapScripts::
+	puzzle_info TrickTreat_SlateportCity_Name, CommonAuthor_Tustin2121
 	.byte 0
 `

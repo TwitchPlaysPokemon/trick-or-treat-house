@@ -117,6 +117,7 @@ script TrickHouseEnd_EventScript_FinalizePuzzle {
 				"list registered.$")
 	} elif (var(VAR_RESULT) == 1) {
 		msgbox("Good job on getting all that candy.$")
+		incrementgamestat(GAME_STAT_ALL_CANDY_COLLECTED)
 	}
 	special (CanAnyPartyMonsBeHealed)
 	if (var(VAR_RESULT) == FALSE) { # It's backwards for some reason??

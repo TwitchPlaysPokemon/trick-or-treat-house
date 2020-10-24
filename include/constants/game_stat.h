@@ -56,8 +56,10 @@
 #define GAME_STAT_NUM_PUZZLES_COMPLETED     52
 #define GAME_STAT_SELECT_PRESSES            53
 #define GAME_STAT_RULES_DISCOVERED          54
+#define GAME_STAT_CANDY_COLLECTED           55
+#define GAME_STAT_ALL_CANDY_COLLECTED       56 //number of puzzles where all candy was collected
 
-#define NUM_USED_GAME_STATS                 55
+#define NUM_USED_GAME_STATS                 57
 #define NUM_GAME_STATS                      64
 
 #endif // GUARD_CONSTANTS_GAME_STAT_H

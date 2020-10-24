@@ -465,7 +465,7 @@ void ResetGameStats(void)
         SetGameStat(i, 0);
 }
 
-void IncrementGameStat(u8 index)
+void IncrementGameStatBy(u8 index, u8 num)
 {
     if (index < NUM_USED_GAME_STATS)
     {
@@ -478,6 +478,12 @@ void IncrementGameStat(u8 index)
         SetGameStat(index, statVal);
     }
 }
+
+void IncrementGameStat(u8 index)
+{
+    IncrementGameStatBy(index, 1);
+}
+
 
 u32 GetGameStat(u8 index)
 {

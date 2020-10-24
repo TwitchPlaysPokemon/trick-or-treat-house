@@ -5,6 +5,7 @@
 #include "m4a.h"
 #include "main.h"
 #include "pokemon.h"
+#include "event_data.h"
 #include "constants/songs.h"
 #include "task.h"
 
@@ -114,6 +115,7 @@ void MapMusicMain(void)
 
 void ResetMapMusic(void)
 {
+    if (FlagGet(FLAG_DISABLE_MAP_MUSIC_CHANGE)) return;
     sCurrentMapMusic = 0;
     sNextMapMusic = 0;
     sMapMusicState = 0;
@@ -127,6 +129,7 @@ u16 GetCurrentMapMusic(void)
 
 void PlayNewMapMusic(u16 songNum)
 {
+    if (FlagGet(FLAG_DISABLE_MAP_MUSIC_CHANGE)) return;
     sCurrentMapMusic = songNum;
     sNextMapMusic = 0;
     sMapMusicState = 1;
@@ -134,6 +137,7 @@ void PlayNewMapMusic(u16 songNum)
 
 void StopMapMusic(void)
 {
+    if (FlagGet(FLAG_DISABLE_MAP_MUSIC_CHANGE)) return;
     sCurrentMapMusic = 0;
     sNextMapMusic = 0;
     sMapMusicState = 1;
@@ -141,6 +145,7 @@ void StopMapMusic(void)
 
 void FadeOutMapMusic(u8 speed)
 {
+    if (FlagGet(FLAG_DISABLE_MAP_MUSIC_CHANGE)) return;
     if (IsNotWaitingForBGMStop())
         FadeOutBGM(speed);
     sCurrentMapMusic = 0;
@@ -150,6 +155,7 @@ void FadeOutMapMusic(u8 speed)
 
 void FadeOutAndPlayNewMapMusic(u16 songNum, u8 speed)
 {
+    if (FlagGet(FLAG_DISABLE_MAP_MUSIC_CHANGE)) return;
     FadeOutMapMusic(speed);
     sCurrentMapMusic = 0;
     sNextMapMusic = songNum;
@@ -158,6 +164,7 @@ void FadeOutAndPlayNewMapMusic(u16 songNum, u8 speed)
 
 void FadeOutAndFadeInNewMapMusic(u16 songNum, u8 fadeOutSpeed, u8 fadeInSpeed)
 {
+    if (FlagGet(FLAG_DISABLE_MAP_MUSIC_CHANGE)) return;
     FadeOutMapMusic(fadeOutSpeed);
     sCurrentMapMusic = 0;
     sNextMapMusic = songNum;
@@ -167,6 +174,7 @@ void FadeOutAndFadeInNewMapMusic(u16 songNum, u8 fadeOutSpeed, u8 fadeInSpeed)
 
 void FadeInNewMapMusic(u16 songNum, u8 speed)
 {
+    if (FlagGet(FLAG_DISABLE_MAP_MUSIC_CHANGE)) return;
     FadeInNewBGM(songNum, speed);
     sCurrentMapMusic = songNum;
     sNextMapMusic = 0;
@@ -262,10 +270,9 @@ static void CreateFanfareTask(void)
 
 void FadeInNewBGM(u16 songNum, u8 speed)
 {
-    if (gDisableMusic)
-        songNum = 0;
-    if (songNum == MUS_NONE)
-        songNum = 0;
+    if (FlagGet(FLAG_DISABLE_MAP_MUSIC_CHANGE)) return;
+    if (gDisableMusic) songNum = 0;
+    if (songNum == MUS_NONE) songNum = 0;
     m4aSongNumStart(songNum);
     m4aMPlayImmInit(&gMPlayInfo_BGM);
     m4aMPlayVolumeControl(&gMPlayInfo_BGM, 0xFFFF, 0);
@@ -559,10 +566,9 @@ static void RestoreBGMVolumeAfterPokemonCry(void)
 
 void PlayBGM(u16 songNum)
 {
-    if (gDisableMusic)
-        songNum = 0;
-    if (songNum == MUS_NONE)
-        songNum = 0;
+    if (FlagGet(FLAG_DISABLE_MAP_MUSIC_CHANGE)) return;
+    if (gDisableMusic) songNum = 0;
+    if (songNum == MUS_NONE) songNum = 0;
     m4aSongNumStart(songNum);
 }
 

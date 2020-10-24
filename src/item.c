@@ -11,6 +11,7 @@
 #include "load_save.h"
 #include "item_use.h"
 #include "text.h"
+#include "overworld.h"
 #include "random.h"
 // #include "battle_pyramid.h"
 // #include "battle_pyramid_bag.h"
@@ -996,6 +997,8 @@ void ResolveSpecialItemIds(u16 *itemId, u16 *count)
         case ITEM_CANDY_EGGS: (*count) *= 12; break;
         case ITEM_CANDY_EGGDEVILED: (*count) *= 6; break;
     }
+    
+    IncrementGameStatBy(GAME_STAT_CANDY_COLLECTED, *count);
 }
 
 static u16 SanitizeItemId(u16 itemId)

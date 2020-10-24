@@ -764,6 +764,16 @@ void FadeScreen(u8 mode, s8 delay)
         fadeColor = RGB_BLACK;
         fadeOut = TRUE;
         break;
+    case 51: // credits fade: show player only
+        palMask = 0x00010000;
+        fadeColor = RGB_BLACK;
+        fadeOut = FALSE;
+        break;
+    case 52: // credits fade: show everything but player
+        palMask = 0xFFFEFFFF;
+        fadeColor = RGB_BLACK;
+        fadeOut = FALSE;
+        break;
     default:
         return;
     }

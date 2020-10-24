@@ -14,6 +14,8 @@
 #include "text.h"
 #include "script.h"
 #include "trickhouse.h"
+#include "overworld.h"
+#include "constants/maps.h"
 #include "constants/layouts.h"
 #include "constants/region_map_sections.h"
 #include "constants/weather.h"
@@ -159,10 +161,16 @@ void ShowMapNamePopUpWindow(void)
     u8 mapDisplayHeader[0x100];
     u8 *withoutPrefixPtr;
     u8 x;
+    u16 currPuzzle;
     const u8* mapDisplayHeaderSource;
+    const u8* str;
     
-    u16 currPuzzle = GetCurrentPuzzleMapId();
-    const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_NAME);
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(TRICK_TREAT_SLATEPORT_CITY1)) {
+        str = GetMapHeaderString(MAP_TRICK_TREAT_SLATEPORT_CITY1, MAP_SCRIPT_PUZZLE_HEADER_NAME);
+    } else {
+        currPuzzle = GetCurrentPuzzleMapId();
+        str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_NAME);
+    }
     if (str == NULL) 
         str = PuzzleCommon_Text_UntitledPuzzleName;
     withoutPrefixPtr = &(mapDisplayHeader[3]);

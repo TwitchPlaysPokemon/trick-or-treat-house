@@ -238,14 +238,17 @@
         "TrickTreat_PetalburgCity",
         "TrickTreat_MossdeepCity",
         "TrickTreat_FortreeCity",
-        "TrickTreat_SlateportCity1",
-        "TrickTreat_SlateportCity2",
         "TrickTreat_AltoMare1",
         "TrickTreat_AltoMare2",
         "TrickTreat_GoldenrodCity"
     ],
+    "MG_PostGame": [
+        "TrickTreat_SlateportCity1",
+        "TrickTreat_SlateportCity2"
+    ],
     "group_order": [
         "MG_PuzzleFramework",
+        "MG_PostGame",
         "MG_TestMaps",
         "MG_CutsceneMaps",
         "MG_SecretBases",
