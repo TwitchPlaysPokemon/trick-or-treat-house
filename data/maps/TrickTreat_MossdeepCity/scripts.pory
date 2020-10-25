@@ -6,6 +6,7 @@ TrickTreat_MossdeepCity_MapScripts:: @ 81E4A96
 	puzzle_metavars TrickTreat_MossdeepCity_Variables
 	puzzle_setup_script TrickTreat_MossdeepCity_SetupScript
 	puzzle_candylist TrickTreat_MossdeepCity_CandyList
+	puzzle_friendcommentary TrickTreat_MossdeepCity_Friend
 	map_script MAP_SCRIPT_ON_TRANSITION, TrickTreat_MossdeepCity_OnTransition
 	map_script MAP_SCRIPT_ON_RETURN_TO_FIELD, TrickTreat_MossdeepCity_OnReturnToField
 	.byte 0
@@ -43,19 +44,28 @@ TrickTreat_MossdeepCity_MapScripts:: @ 81E4A96
 TrickTreat_MossdeepCity_Name:
 	.string "Malteasers in Mossdeep$"
 TrickTreat_MossdeepCity_Intro:
-	.string "Hey {PLAYER}! Wanna go for another round\n"
-	.string "of Trick or Treating?\p"
+	.string "{IRENE}: Hey {PLAYER}! Wanna go for\n"
+	.string "another round of Trick or Treating?\p"
 	.string "{JOEY} found the way to Mossdeep!\n"
 	.string "He and the others should be there now,\l"
 	.string "collecting all the candy!\p"
 	.string "Let's go!$"
 TrickTreat_MossdeepCity_Quip:
-	.string "{JOEY}: I got a pretty good haul,\n"
-	.string "{PLAYER}. How about you?$"
+	.string "{IRENE}: I'm glad you managed to get\n"
+	.string "your {POKEMON} back. How much candy\l"
+	.string "did you get in the end?\p"
+	.string "Wait, the mother did WHAT?! Haha!\n"
+	.string "That's hilarious! Serves them right!$"
+TrickTreat_MossdeepCity_Friend:
+	.string "{JOEY}: I wonder how much further we\n"
+	.string "could push the door…\p"
+	.string "And if I'll have time to experiment\n"
+	.string "more before we run out of puzzles…$"
 .align 2
 TrickTreat_MossdeepCity_Variables:
-	.2byte VAR_INTRO_PERSON, TTH_FRIEND_IRENE
-	.2byte VAR_QUIP_PERSON,  TTH_FRIEND_JOEY
+	.2byte VAR_INTRO_PERSON,    TTH_FRIEND_IRENE
+	.2byte VAR_QUIP_PERSON,     TTH_FRIEND_IRENE
+	.2byte VAR_ENDROOM_FRIEND,  TTH_FRIEND_JOEY
 	.2byte 0
 TrickTreat_MossdeepCity_CandyList:
 	.2byte FLAG_CANDY_RARE_01
@@ -665,7 +675,8 @@ script TrickTreat_MossdeepCity_CandyGiver_RepentantBoy {
 script TrickTreat_MossdeepCity_ExitGirl {
 	lock
 	faceplayer
-	msgbox ("Hey, {PLAYER}.\nDid you get a good haul?$")
+	msgbox ("{IRENE}: Hey, {PLAYER}.\n"
+			"Did you get a good haul?$")
 	if (flag(FLAG_PUZZLE_PARTY_LOCK) == TRUE) {
 		msgbox ("What?! Your {POKEMON} were stolen?!\p"
 				"Masked boys? I think I saw someone\n"

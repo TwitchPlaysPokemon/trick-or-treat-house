@@ -503,7 +503,8 @@ const union AnimCmd *const gFieldEffectObjectImageAnimTable_LongGrass[] =
     gFieldEffectObjectImageAnim_850CF70,
 };
 
-const struct SpriteTemplate gFieldEffectObjectTemplate_LongGrass = {0xFFFF, 0x1005, &gEventObjectBaseOam_16x16, gFieldEffectObjectImageAnimTable_LongGrass, gFieldEffectObjectPicTable_LongGrass, gDummySpriteAffineAnimTable, UpdateLongGrassFieldEffect};
+const struct SpriteTemplate gFieldEffectObjectTemplate_LongGrass     = {0xFFFF, 0x1005, &gEventObjectBaseOam_16x16, gFieldEffectObjectImageAnimTable_LongGrass, gFieldEffectObjectPicTable_LongGrass, gDummySpriteAffineAnimTable, UpdateLongGrassFieldEffect};
+const struct SpriteTemplate gFieldEffectObjectTemplate_FallLongGrass = {0xFFFF, 0x100A, &gEventObjectBaseOam_16x16, gFieldEffectObjectImageAnimTable_LongGrass, gFieldEffectObjectPicTable_LongGrass, gDummySpriteAffineAnimTable, UpdateFallLongGrassFieldEffect};
 
 const struct SpriteFrameImage gFieldEffectObjectPicTable_Unknown16[] = {
     overworld_frame(gFieldEffectObjectPic_Unknown16, 2, 2, 0),

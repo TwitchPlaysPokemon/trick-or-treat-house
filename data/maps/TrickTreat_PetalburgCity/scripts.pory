@@ -5,6 +5,7 @@ TrickTreat_PetalburgCity_MapScripts::
 	puzzle_quip TrickTreat_PetalburgCity_Quip
 	puzzle_metavars TrickTreat_PetalburgCity_Variables
 	puzzle_candylist TrickTreat_PetalburgCity_CandyList
+	puzzle_friendcommentary TrickTreat_PetalburgCity_Friend
 	map_script MAP_SCRIPT_ON_TRANSITION, TrickTreat_PetalburgCity_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrickTreat_PetalburgCity_FrameTable
 	map_script MAP_SCRIPT_ON_RETURN_TO_FIELD, TrickTreat_PetalburgCity_ReturnToField
@@ -28,10 +29,19 @@ TrickTreat_PetalburgCity_Quip:
 	.string "was too caught up in other people's\l"
 	.string "puzzles to notice our absence…\p"
 	.string "Time for more puzzles then!$"
+TrickTreat_PetalburgCity_Friend:
+	.string "{ALEX}: Hey, {PLAYER}. Was that gym\n"
+	.string "leader actually your dad?\p"
+	.string "Man, his SLAKING was tough as nails…\n"
+	.string "He's not that hard on you, is he?\p"
+	.string "Huh? Oh, no reason… I'm just glad my\n"
+	.string "dad's so accepting of me. Some of my\l"
+	.string "Unova friends aren't so lucky…$"
 .align 2
 TrickTreat_PetalburgCity_Variables:
-	.2byte VAR_INTRO_PERSON, TTH_FRIEND_JOEY
-	.2byte VAR_QUIP_PERSON,  TTH_FRIEND_JOEY
+	.2byte VAR_INTRO_PERSON,    TTH_FRIEND_JOEY
+	.2byte VAR_QUIP_PERSON,     TTH_FRIEND_JOEY
+	.2byte VAR_ENDROOM_FRIEND,  TTH_FRIEND_ALEX
 	.2byte 0
 TrickTreat_PetalburgCity_CandyList:
 	.2byte FLAG_CANDY_RARE_01
@@ -315,6 +325,7 @@ script TrickTreat_PetalburgCity_TriggerScript_SoftBorderEast {
 	} else {
 		msgbox ("There's nothing to see that way.$")
 	}
+	closemessage
 	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkLeft1)
 	waitmovement (0)
 	release
@@ -324,6 +335,7 @@ script TrickTreat_PetalburgCity_TriggerScript_SoftBorderWest {
 	lock
 	msgbox ("Mr. Briney's house looks dark. It's\n"
 			"probably not worth heading that way.$")
+	closemessage
 	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkRight1)
 	waitmovement (0)
 	release

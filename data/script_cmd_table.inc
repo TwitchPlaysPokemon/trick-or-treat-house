@@ -235,6 +235,7 @@ gScriptCmdTable:: @ 81DB67C
 	.4byte ScrCmd_resolveitem
 	.4byte ScrCmd_setfieldeffectargstoobjectloc
 	.4byte ScrCmd_mulvar
+	.4byte ScrCmd_messagewordwrap
 
 gScriptCmdTableEnd:: @ 81DBA08
 	.4byte ScrCmd_nop

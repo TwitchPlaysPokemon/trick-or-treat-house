@@ -866,9 +866,9 @@ Std_ObtainItem_HandleItemType4:: @ 8271B85
 
 Std_ObtainItem_DisplayPutItemInPocket:: @ 8271B95
 	buffernumberstring2 0, VAR_0x8001, 1
-	message gText_ObtainedTheItem
+	messagewordwrap gText_ObtainedTheItem
 	waitfanfare
-	message gText_PutItemInPocket
+	messagewordwrap gText_PutItemInPocket
 	waitmessage
 	waitbuttonpress
 	setvar VAR_RESULT, 1
@@ -949,7 +949,9 @@ EventScript_PickItemUp:: @ 8271C3A
 	@ compare VAR_RESULT, 1
 	@ goto_if_eq EventScript_271C86
 	goto_if_set FLAG_SYS_BORT_MODE, EventScript_PickItemUp_BORT
-	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
+	messagewordwrap gText_PutItemInPocket
+	waitmessage
+	waitbuttonpress
 	return
 
 EventScript_PickItemUp_BORT:
@@ -962,13 +964,13 @@ EventScript_PickItemUp_BORT:
 
 EventScript_271C8F:: @ 8271C8F
 	bufferitemnameplural 0, VAR_0x8004, VAR_0x8005
-	message gText_PlayerFoundOneTMItem
+	messagewordwrap gText_PlayerFoundOneTMItem
 	return
 
 EventScript_271C9B:: @ 8271C9B
 	buffernumberstring2 0, VAR_0x8005
 	goto_if_set FLAG_SYS_BORT_MODE, EventScript_271C9B_BORT
-	message gText_PlayerFoundOneItem
+	messagewordwrap gText_PlayerFoundOneItem
 	return
 
 EventScript_271C9B_BORT:
@@ -1009,14 +1011,14 @@ EventScript_271CE8:: @ 8271CE8
 
 EventScript_271D0E:: @ 8271D0E
 	bufferitemnameplural 0, VAR_0x8004, VAR_0x8006
-	message gText_PlayerFoundOneTMItem
+	messagewordwrap gText_PlayerFoundOneTMItem
 	goto EventScript_271D2A
 	end
 
 EventScript_271D1F:: @ 8271D1F
 	buffernumberstring2 0, VAR_0x8006
 	goto_if_set FLAG_SYS_BORT_MODE, EventScript_271D1F_BORT
-	message gText_PlayerFoundOneItem
+	messagewordwrap gText_PlayerFoundOneItem
 	goto EventScript_271D2A
 	end
 
@@ -1033,7 +1035,10 @@ EventScript_271D2A:: @ 8271D2A
 	@ bufferitemname 1, VAR_0x8004, 1
 	copyvar VAR_0x8004, VAR_0x8008
 	goto_if_set FLAG_SYS_BORT_MODE, EventScript_271D2A_BORT
-	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
+	@ msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
+	messagewordwrap gText_PutItemInPocket
+	waitmessage
+	waitbuttonpress
 	special sub_80EDCE8
 	special SetFlagInVar
 	releaseall
@@ -1050,7 +1055,10 @@ EventScript_271D2A_BORT:
 
 EventScript_271D47:: @ 8271D47
 	buffernumberstring2 0, VAR_0x8006
-	msgbox gText_PlayerFoundOneItem, MSGBOX_DEFAULT
+	@ msgbox gText_PlayerFoundOneItem, MSGBOX_DEFAULT
+	messagewordwrap gText_PlayerFoundOneItem
+	waitmessage
+	waitbuttonpress
 	msgbox gText_TooBadBagIsFull, MSGBOX_DEFAULT
 	setvar VAR_RESULT, 0
 	releaseall
@@ -1924,7 +1932,7 @@ gUnknown_08272A89:: @ 8272A89
 	.string "The BAG is full…$"
 
 gText_PutItemInPocket:: @ 8272A9A
-	.string "{PLAYER} put away the {STR_VAR_2}\nin the {STR_VAR_3} POCKET.$"
+	.string "{PLAYER} put away the {STR_VAR_2} in the {STR_VAR_3} POCKET.$"
 
 gText_PlayerFoundOneItem:: @ 8272ABF
 	.string "{PLAYER} found {STR_VAR_1} {STR_VAR_2}!$"

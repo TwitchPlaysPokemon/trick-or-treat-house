@@ -615,6 +615,24 @@ static const struct BattleBackground gBattleTerrainTable[] =
         .entryTilemap = gBattleTerrainAnimTilemap_LongGrass,
         .palette = gBattleTerrainPalette_LongGrass,
     },
+    
+    [BATTLE_TERRAIN_FALL_GRASS] =
+    {
+        .tileset = gBattleTerrainTiles_TallGrass,
+        .tilemap = gBattleTerrainTilemap_TallGrass,
+        .entryTileset = gBattleTerrainAnimTiles_TallGrass,
+        .entryTilemap = gBattleTerrainAnimTilemap_TallGrass,
+        .palette = gBattleTerrainPalette_Sand,
+    },
+
+    [BATTLE_TERRAIN_FALL_LONG_GRASS] =
+    {
+        .tileset = gBattleTerrainTiles_LongGrass,
+        .tilemap = gBattleTerrainTilemap_LongGrass,
+        .entryTileset = gBattleTerrainAnimTiles_LongGrass,
+        .entryTilemap = gBattleTerrainAnimTilemap_LongGrass,
+        .palette = gBattleTerrainPalette_Sand,
+    },
 
     [BATTLE_TERRAIN_SAND] =
     {

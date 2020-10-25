@@ -2004,7 +2004,7 @@ static const u8 sChocoWhiteName[] = _("White Chocolate");
 static const u8 sChocoWhiteDesc[] = _(
     "Snack sized.\n"
     "Restores HP\n"
-    "by 60 points.");
+    "by 50 points.");
 
 static const u8 sChocoSlabName[] = _("Chocolate Slab");
 static const u8 sChocoSlabDesc[] = _(

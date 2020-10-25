@@ -1022,7 +1022,7 @@ const struct Item gItems[] =
         .pocket = POCKET_GENERAL,
         .type = 1,
         .itemEffect = gItemEffect_RareCandy,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse, //ItemUseOutOfBattle_RareCandy,
+        .fieldUseFunc = ItemUseOutOfBattle_RareCandy,
         .secondaryId = 0,
     },
 
@@ -5752,7 +5752,7 @@ const struct Item gItems[] =
     [ITEM_CANDY_CARROT] =
     { // TODO: +40HP, cure Prz
         .name = sCarrotName,
-        .quantum = sBarQuantum,
+        .quantum = sBagQuantum,
         .itemId = ITEM_CANDY_CARROT,
         .price = CANDY_COST(200),
         .description = sCarrotDesc,
@@ -5767,7 +5767,7 @@ const struct Item gItems[] =
     [ITEM_CANDY_APPLE] =
     { // TODO: +40HP, cure Brn
         .name = sAppleName,
-        .quantum = sBarQuantum,
+        .quantum = sBagQuantum,
         .itemId = ITEM_CANDY_APPLE,
         .price = CANDY_COST(200),
         .description = sAppleDesc,
@@ -5782,7 +5782,6 @@ const struct Item gItems[] =
     [ITEM_CANDY_PRUNE] =
     { // TODO: +40HP, cure Psn
         .name = sPruneName,
-        .quantum = sBarQuantum,
         .itemId = ITEM_CANDY_PRUNE,
         .price = CANDY_COST(200),
         .description = sPruneDesc,
@@ -5797,7 +5796,7 @@ const struct Item gItems[] =
     [ITEM_CANDY_CELERY] =
     { // TODO: +40HP, cure Frz
         .name = sCeleryName,
-        .quantum = sBarQuantum,
+        .quantum = sBagQuantum,
         .itemId = ITEM_CANDY_CELERY,
         .price = CANDY_COST(200),
         .description = sCeleryDesc,

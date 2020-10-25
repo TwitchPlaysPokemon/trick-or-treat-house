@@ -27,6 +27,7 @@ void sub_8156194(struct Sprite*);
 void UpdateFootprintsTireTracksFieldEffect(struct Sprite*);
 void UpdateSplashFieldEffect(struct Sprite*);
 void UpdateLongGrassFieldEffect(struct Sprite*);
+void UpdateFallLongGrassFieldEffect(struct Sprite*);
 void UpdateSandPileFieldEffect(struct Sprite*);
 void UpdateDisguiseFieldEffect(struct Sprite*);
 void UpdateShortGrassFieldEffect(struct Sprite*);

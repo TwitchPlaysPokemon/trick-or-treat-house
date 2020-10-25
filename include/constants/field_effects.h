@@ -75,5 +75,7 @@
 #define FLDEFF_EMOTE_NOTE_G              71
 #define FLDEFF_FALL_GRASS                72
 #define FLDEFF_JUMP_FALL_GRASS           73
+#define FLDEFF_FALL_LONG_GRASS           74
+#define FLDEFF_JUMP_FALL_LONG_GRASS      75
 
 #endif

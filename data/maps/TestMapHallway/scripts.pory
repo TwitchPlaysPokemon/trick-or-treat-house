@@ -57,8 +57,8 @@ script TestMapHallway_GiveAllCandy {
 	release
 }
 
-script TestMapHallway_GiveTestItems2 {
-	giveitem_std (ITEM_POTION, 4, 1)
+script TestMapHallway_GiveTestBears {
+	giveitem_std(ITEM_CANDY_KINGCHOCNUT, 4, 1)
 }
 
 script TestMapHallway_GiveTestItems3 {

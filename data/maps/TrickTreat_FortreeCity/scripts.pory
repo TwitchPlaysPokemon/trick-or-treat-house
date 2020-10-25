@@ -5,6 +5,8 @@ TrickTreat_FortreeCity_MapScripts::
 	puzzle_quip TrickTreat_FortreeCity_Quip
 	puzzle_metavars TrickTreat_FortreeCity_Variables
 	puzzle_candylist TrickTreat_FortreeCity_CandyList
+	puzzle_devcommentary TrickTreat_FortreeCity_Dev
+	puzzle_friendcommentary TrickTreat_FortreeCity_Friend
 	map_script MAP_SCRIPT_ON_RESUME, TrickTreat_FortreeCity_OnResume
 	.byte 0
 
@@ -14,17 +16,39 @@ TrickTreat_FortreeCity_Intro:
 	.string "{LINK}: Hey, {PLAYER}! Ready to go\n"
 	.string "Trick-or-Treating again?\p"
 	.string "{JOEY} figured out how to point\n"
-	.string "the door to Fortree City!"
+	.string "the door to Fortree City!\p"
+	.string "I've always wanted to visit there.\n"
+	.string "Being able to live in a tree house\l"
+	.string "would be so cool!\p"
+	.string "Let's go!$"
 TrickTreat_FortreeCity_Quip:
-	.string "{LINK}: $"
+	.string "{LINK}: What'd you think? I heard\n"
+	.string "they expanded the city recently.\p"
+	.string "I wonder what it looked like before\n"
+	.string "the expansion.$"
+TrickTreat_FortreeCity_Dev:
+	.string "Tustin2121: In case you couldn't tell,\n"
+	.string "this Fortree layout is not vanilla.\p"
+	.string "This is the layout from my first TPP\n"
+	.string "hack, TriHard Emerald.\p"
+	.string "Seriously, why have a tree city if\n"
+	.string "you're not gonna make the most of it?$"
+TrickTreat_FortreeCity_Friend:
+	.string "{JOEY}: I wonder how far away I can\n"
+	.string "point the TRICK MASTER's door…\p"
+	.string "It could go theoretically anywhere,\n"
+	.string "right? He's already given us puzzles\l"
+	.string "in far away regions, after all…$"
 .align 2
 TrickTreat_FortreeCity_Variables:
-	.2byte VAR_INTRO_PERSON, TTH_FRIEND_JAMES
-	.2byte VAR_QUIP_PERSON,  TTH_FRIEND_JAMES
+	.2byte VAR_INTRO_PERSON,    TTH_FRIEND_JAMES
+	.2byte VAR_QUIP_PERSON,     TTH_FRIEND_JAMES
+	.2byte VAR_ENDROOM_FRIEND,  TTH_FRIEND_JOEY
 	.2byte 0
 TrickTreat_FortreeCity_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01
 	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_01
 	.2byte FLAG_CANDY_RARE_01
 	.2byte FLAG_CANDY_RARE_02
 	@ Trick or Treat Spots
@@ -65,6 +89,37 @@ script FortreeCity_SignScript_Gym {
 script FortreeCity_SignScript_DecorShop {
 	msgbox( "Secret Base Decor Shop\n"
 			"“Furnish your bushy abode!”$", MSGBOX_SIGN)
+}
+script FortreeCity_SignScript_TrainerTips {
+	msgbox( "TRAINER TIPS\p"
+			"Up to sixteen decorations and\n"
+			"furniture items can be placed in\l"
+			"a SECRET BASE.\p"
+			"Pick your favorite items and create\n"
+			"your very own SECRET BASE exactly the\l"
+			"way you want.$", MSGBOX_SIGN)
+}
+
+///////////////////////////////////////////////////////
+
+script FortreeCity_TriggerScript_WestSoftBorder {
+	lock
+	msgbox( "All the trick or treating is back\n"
+			"in town, not down this way.$")
+	closemessage
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkUp1)
+	waitmovement (0)
+	release
+}
+
+script FortreeCity_TriggerScript_EastSoftBorder {
+	lock
+	msgbox( "All the trick or treating is back\n"
+			"in town, not down this way.$")
+	closemessage
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkLeft1)
+	waitmovement (0)
+	release
 }
 
 ///////////////////////////////////////////////////////
@@ -196,12 +251,11 @@ script TrickTreat_FortreeCity_CandyGiver_Pokefan {
 script TrickTreat_FortreeCity_CandyGiver_OldLady {
 	lock
 	faceplayer
-	msgbox ("Happy Halloween!\n"
-			"Please take some candy!$")
+	msgbox ("Hello child!\n"
+			"Please take as much as you like!$")
 	giveitem_std (ITEM_CANDY_COMMON, 2)
-	msgbox ("The {POKEMON} CENTER is always there\n"
-			"for trainers everywhere.\p"
-			"Have a good night!$")
+	msgbox ("I love your costume!\p"
+			"Good night!$")
 	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
 	setflag (FLAG_PUZZLE_27)
 	release
@@ -210,12 +264,11 @@ script TrickTreat_FortreeCity_CandyGiver_OldLady {
 script TrickTreat_FortreeCity_CandyGiver_TownBoy {
 	lock
 	faceplayer
-	msgbox ("Happy Halloween!\n"
-			"Please take some candy!$")
+	msgbox ("Trick or Treat!\n"
+			"Here's some candy my mom bought.$")
 	giveitem_std (ITEM_CANDY_ABUNDANT, 2)
-	msgbox ("The {POKEMON} CENTER is always there\n"
-			"for trainers everywhere.\p"
-			"Have a good night!$")
+	msgbox ("Hopefully no more people come by, so\n"
+			"I can have the rest to myself.$")
 	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
 	setflag (FLAG_PUZZLE_28)
 	release
@@ -252,6 +305,25 @@ script TrickTreat_FortreeCity_CandyGiver_Winona {
 	release
 }
 
+script TrickTreat_FortreeCity_NinjaKid {
+	trainerbattle_single (TRAINER_08, 
+			"Ah! You found me! Imma kick your butt\n"
+			"for blowing my cover!$",
+			"Oh, wow, you're good.$",
+			TrickTreat_FortreeCity_NinjaKid_After)
+	msgbox ("Don't tell anyone I'm here!\n"
+			"Especially my mom.$", MSGBOX_AUTOCLOSE)
+}
+script TrickTreat_FortreeCity_NinjaKid_After {
+	msgbox ("Man, now I gotta give you some of my\n"
+			"candy… Here…$")
+	giveitem_std (ITEM_CANDY_RARE, 1)
+	msgbox ("Now don't tell anyone I'm here!\p"
+			"Especially my mom.$")
+	setflag(FLAG_CANDY_RARE_01)
+	release
+}
+
 script TrickTreat_FortreeCity_BuriedItem {
 	lock
 	msgbox ("There's something buried here…$")
@@ -267,7 +339,7 @@ script TrickTreat_FortreeCity_PlasmaMan {
 			"IT IS TIME FOR YOU TO PERISH!!$", 
 			"I HAVE FAILED!! WOE IS ME!!$",
 			TrickTreat_FortreeCity_PlasmaManAfter)
-	msgbox ("Ow, that hurt...$")
+	msgbox ("Ow, that hurt…$")
 }
 script TrickTreat_FortreeCity_PlasmaManAfter {
 	lock
@@ -283,27 +355,32 @@ script TrickTreat_FortreeCity_PlasmaManAfter {
 	waitmessage
 	closemessage
 	removeobject(LID_PLASMAMAN)
+	setflag(FLAG_PUZZLE_2B)
 	
 	setfieldeffectargstoobjectloc(LID_PLASMAMAN, 0)
 	setfieldeffectargument(3, 2)
 	dofieldeffect(FLDEFF_JUMP_FALL_GRASS)
+	delay(8)
 	playse (SE_W070)
 	setvar (VAR_0x8004, 1)  // vertical pan
 	setvar (VAR_0x8005, 1)  // horizontal pan
 	setvar (VAR_0x8006, 8)  // num shakes
 	setvar (VAR_0x8007, 3)  // shake delay
 	special (DoCameraShakeEffect)
-	waitstate
+	delay(16)
 	playse (SE_W070)
 	setvar (VAR_0x8004, 1)  // vertical pan
 	setvar (VAR_0x8005, 1)  // horizontal pan
 	setvar (VAR_0x8006, 8)  // num shakes
 	setvar (VAR_0x8007, 5)  // shake delay
 	special (DoCameraShakeEffect)
-	waitstate
-	waitfieldeffect(FLDEFF_JUMP_FALL_GRASS)
+	delay(16)
+	// waitfieldeffect(FLDEFF_JUMP_FALL_GRASS)
 	
-	msgbox ("Ow!\pI think I'm okay…!$")
+	delay(60)
+	message ("{PAUSE 10}Ow…{PAUSE 16} …{PAUSE 16} …!{PAUSE 16}\pI think I'm okay…!$")
+	waitmessage
+	waitbuttonpress
 	release
 }
 movement TrickTreat_FortreeCity_PlasmaManAfter_Movement {
@@ -318,8 +395,69 @@ movement TrickTreat_FortreeCity_PlasmaManAfter_Movement2 {
 	delay_16
 	delay_16
 	delay_16
+	face_up
 }
 
+
+// ----------------------------------------------------
+
+script TrickTreat_FortreeCity_ExitBoy {
+	lock
+	faceplayer
+	msgbox ("{JAMES}: Hey, {PLAYER}.\n"
+			"How's the haul?$")
+	goto_if_unset(FLAG_PUZZLE_21, TrickTreat_FortreeCity_ExitBoy_Reject1)
+	goto_if_unset(FLAG_PUZZLE_22, TrickTreat_FortreeCity_ExitBoy_Reject1)
+	goto_if_unset(FLAG_PUZZLE_23, TrickTreat_FortreeCity_ExitBoy_Reject1)
+	goto_if_unset(FLAG_PUZZLE_24, TrickTreat_FortreeCity_ExitBoy_Reject1)
+	goto_if_unset(FLAG_PUZZLE_25, TrickTreat_FortreeCity_ExitBoy_Reject1)
+	goto_if_unset(FLAG_PUZZLE_26, TrickTreat_FortreeCity_ExitBoy_Reject1)
+	goto_if_unset(FLAG_PUZZLE_27, TrickTreat_FortreeCity_ExitBoy_Reject1)
+	goto_if_unset(FLAG_PUZZLE_28, TrickTreat_FortreeCity_ExitBoy_Reject1)
+	goto_if_unset(FLAG_PUZZLE_29, TrickTreat_FortreeCity_ExitBoy_Reject1)
+	
+	if (flag(FLAG_PUZZLE_20) == FALSE)
+	{
+		msgbox ("Did you hit the Center?\n"
+				"You can't just pass up free candy!$")
+		release
+		end
+	}
+	if (flag(FLAG_PUZZLE_2A) == FALSE) {
+		msgbox ("Couldn't beat WINONA, huh?\n"
+				"Understandable. I couldn't either.$")
+	}
+	
+	msgbox ("Sweet, time to head back to the\n"
+			"TRICK HOUSE!\p"
+			"{JOEY} is already back there, waiting.$")
+	closemessage
+	applymovement (LID_PLAYER, Common_Movement_BackOffLeft1)
+	waitmovement (0)
+	applymovement (THIS_EVENT, Common_Movement_WalkLeft1)
+	waitmovement (0)
+	applymovement (THIS_EVENT, Common_Movement_WalkInPlaceUp)
+	msgbox ("He writes down the secret code\n"
+			"on the door.\p"
+			"{PLAY_SE SE_PIN}The door unsealed!$")
+	closemessage
+	playse (SE_W070)
+	applymovement (3, Common_Movement_ObjectDoorOpen)
+	waitmovement (0)
+	applymovement (THIS_EVENT, Common_Movement_WalkUp1)
+	waitmovement (0)
+	removeobject (THIS_EVENT)
+	applymovement (3, Common_Movement_ObjectDoorClose)
+	waitmovement (0)
+	setflag (FLAG_TRICK_HOUSE_PASSWORD_ENTERED)
+	release
+}
+script(local) TrickTreat_FortreeCity_ExitBoy_Reject1 {
+	msgbox ("Have you gone to all the houses yet?\n"
+			"What are you waiting for?!$")
+	release
+	end
+}
 
 raw `
 #undef FLAG_HIDE_PLASMAMAN

@@ -9821,6 +9821,12 @@ static void atkE4_getsecretpowereffect(void)
     case BATTLE_TERRAIN_LONG_GRASS:
         gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_SLEEP;
         break;
+    case BATTLE_TERRAIN_FALL_GRASS:
+        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_POISON;
+        break;
+    case BATTLE_TERRAIN_FALL_LONG_GRASS:
+        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_SLEEP;
+        break;
     case BATTLE_TERRAIN_SAND:
         gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_ACC_MINUS_1;
         break;

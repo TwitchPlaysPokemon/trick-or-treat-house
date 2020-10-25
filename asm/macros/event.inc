@@ -1567,6 +1567,11 @@
 	.4byte \pointer
 	.endm
 
+	.macro messagewordwrap pointer:req
+	.byte 0xe9
+	.4byte \pointer
+	.endm
+
 	.macro fadescreenswapbuffers byte:req
 	.byte 0xdc
 	.byte \byte

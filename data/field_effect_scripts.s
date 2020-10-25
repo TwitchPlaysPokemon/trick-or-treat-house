@@ -78,7 +78,9 @@ gFieldEffectScriptPointers:: @ 82DB9D4
 	.4byte gFieldEffectScript_EmoteNoteF
 	.4byte gFieldEffectScript_EmoteNoteG
 	.4byte gFieldEffectScript_FallGrass
-	.4byte gFieldEffectScript_BikeHopTallGrass
+	.4byte gFieldEffectScript_JumpFallGrass   @.4byte gFieldEffectScript_BikeHopTallGrass
+	.4byte gFieldEffectScript_FallLongGrass
+	.4byte gFieldEffectScript_JumpFallLongGrass
 
 gFieldEffectScript_ExclamationMarkIcon1:: @ 82DBAE0
 	field_eff_callnative FldEff_ExclamationMarkIcon
@@ -156,12 +158,20 @@ gFieldEffectScript_LongGrass:: @ 82DBB6A
 	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfo1, FldEff_LongGrass
 	field_eff_end
 
+gFieldEffectScript_FallLongGrass:: @ 82DBB6A
+	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoFall, FldEff_FallLongGrass
+	field_eff_end
+
 gFieldEffectScript_JumpLongGrass:: @ 82DBB74
 	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfo1, FldEff_JumpLongGrass
 	field_eff_end
 
 gFieldEffectScript_JumpFallGrass:: @ 82DBB74
-	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfo1, FldEff_JumpFallGrass
+	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoFall, FldEff_JumpFallGrass
+	field_eff_end
+
+gFieldEffectScript_JumpFallLongGrass:: @ 82DBB74
+	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoFall, FldEff_JumpFallLongGrass
 	field_eff_end
 
 gFieldEffectScript_Unknown19:: @ 82DBB7E

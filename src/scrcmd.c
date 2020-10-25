@@ -28,6 +28,7 @@
 #include "event_obj_lock.h"
 #include "menu.h"
 #include "money.h"
+#include "mgba.h"
 #include "mossdeep_gym.h"
 #include "mystery_event_script.h"
 #include "palette.h"
@@ -1447,7 +1448,7 @@ bool8 ScrCmd_message3(struct ScriptContext *ctx)
 }
 
 // TODO:
-bool8 ScrCmd_messageWordWrap(struct ScriptContext *ctx)
+bool8 ScrCmd_messagewordwrap(struct ScriptContext *ctx)
 {
     const u8 *msg = (const u8 *)ScriptReadWord(ctx);
 
@@ -1455,7 +1456,8 @@ bool8 ScrCmd_messageWordWrap(struct ScriptContext *ctx)
         msg = (const u8 *)ctx->data[0];
     
     StringExpandPlaceholders(gStringVar4, msg);
-    
+    mgba_printf(MGBA_LOG_INFO, "doing messagewordwrap: %S", gStringVar4);
+    DetermineWordWrapInStrVar4(1, 1, 210);
     ShowFieldMessageFromBuffer();
     return FALSE;
 }

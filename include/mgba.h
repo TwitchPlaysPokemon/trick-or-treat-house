@@ -31,20 +31,10 @@
 #define MGBA_LOG_INFO 3
 #define MGBA_LOG_DEBUG 4
 
-#if !MGBA_DEBUG
-
-#define mgba_printf(...)
-#define mgba_open(...)   (0)
-#define mgba_close(...)
-
-#else
-
 // NOTE: To print strings encoded in game format, use %S.
 // To print ascii strings, use %s like normal.
 void mgba_printf(int level, const char* string, ...);
 bool8 mgba_open(void);
 void mgba_close(void);
-
-#endif
 
 #endif

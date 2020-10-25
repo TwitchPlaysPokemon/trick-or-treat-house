@@ -78,7 +78,7 @@
 	},
 	{
 		"class": "POKEFAN",
-		"pic": "POKEFAN_F",
+		"pic": "POKEFAN_M",
 		"name": "DERICK",
 		"music": "SUSPICIOUS",
 		"party": [
@@ -100,6 +100,17 @@
 			{
 				"species": "SPECIES_PIKACHU",
 				"level": 28
+			}
+		]
+	},
+	{
+		"class": "NINJA_BOY",
+		"name": "HIDEKI",
+		"music": "SUSPICIOUS",
+		"party": [
+			{
+				"species": "SPECIES_NINJASK",
+				"level": 31
 			}
 		]
 	}

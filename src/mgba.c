@@ -34,9 +34,9 @@
 
 #if !MGBA_DEBUG
 
-// void mgba_printf(int level, const char* ptr, ...) {}
-// bool8 mgba_open(void) { return FALSE; }
-// void mgba_close(void) {}
+void mgba_printf(int level, const char* ptr, ...) {}
+bool8 mgba_open(void) { return FALSE; }
+void mgba_close(void) {}
 
 #else
 
