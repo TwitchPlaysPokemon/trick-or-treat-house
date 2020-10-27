@@ -1758,7 +1758,7 @@
             "name": "TrickHouseExt_Gatehouse_Layout",
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_Shop",
-            "width": 15
+            "width": 17
         },
         {
             "blockdata_filepath": "data/layouts/Puzzle_Credits/map.bin",

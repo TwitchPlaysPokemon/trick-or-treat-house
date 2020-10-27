@@ -2,3 +2,59 @@ raw `
 TrickHouseExt_Gatehouse_MapScripts::
 	.byte 0
 `
+
+script TrickHouseExt_Gatehouse_ItemGet {
+	lock
+	waitse
+	// We're picking up the following item:
+	copyvar(VAR_0x8000, ITEM_FLUFFY_TAIL)
+	copyvar(VAR_0x8001, 1)
+	
+	copyvar (VAR_0x8004, VAR_0x8000)
+	copyvar (VAR_0x8005, VAR_0x8001)
+	// Check if there's enough space for this item, store result
+	checkitemspace(VAR_0x8000, VAR_0x8001)
+	copyvar(VAR_0x8007, VAR_RESULT)
+	// buffer item name
+	bufferitemnameplural(1, VAR_0x8000, VAR_0x8001)
+	// Play jingle depending on item
+	checkitemtype(VAR_0x8000)
+	call(Std_ObtainItem_BufferItemTypeAndPlayJingle)
+	if (var(VAR_0x8007) == 1) {
+		removeobject(THIS_OBJECT)
+		giveitem(VAR_0x8000, VAR_0x8001)
+		specialvar(VAR_RESULT, CheckTMAndBufferMoveName)
+		copyvar(VAR_0x8008, VAR_RESULT)
+		if (var(VAR_0x8008) == TRUE) {
+			bufferitemnameplural (0, VAR_0x8004, VAR_0x8005)
+			messagewordwrap (gText_PlayerFoundOneTMItem)
+		} else {
+			buffernumberstring2 (0, VAR_0x8005)
+			messagewordwrap (gText_PlayerFoundOneItem)
+		}
+		
+		//TODO Do spoopy here
+		
+		waitfanfare
+		waitmessage
+		bufferitemname (1, VAR_0x8004, VAR_0x8005)
+		
+		messagewordwrap gText_PutItemInPocket
+		waitmessage
+		waitbuttonpress
+	} else {
+		msgbox (gText_ObtainedTheItem, MSGBOX_DEFAULT)
+		msgbox (gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	}
+	release
+}
+
+script TrickHouseExt_Gatehouse_Door {
+	msgbox ("The door won't open.\p"
+			"It's blocked by the Trick Door on the\n"
+			"other side.$", MSGBOX_SIGN)
+}
+
+script TrickHouseExt_Gatehouse_Trigger {
+	
+}

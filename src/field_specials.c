@@ -1406,7 +1406,7 @@ u16 sub_813986C(void)
     }
 }
 
-bool8 sub_81398C0(void)
+bool8 CheckTMAndBufferMoveName(void)
 {
     if (gSpecialVar_0x8004 >= ITEM_TM01 && gSpecialVar_0x8004 <= ITEM_HM08)
     {
