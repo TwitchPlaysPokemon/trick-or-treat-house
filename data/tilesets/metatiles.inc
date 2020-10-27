@@ -630,3 +630,10 @@ gMetatiles_Goldenrod::
 	.align 1
 gMetatileAttributes_Goldenrod::
 	.incbin "data/tilesets/secondary/goldenrod/metatile_attributes.bin"
+	.align 1
+gMetatiles_SlateportExt::
+	.incbin "data/tilesets/secondary/slateportext/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_SlateportExt::
+	.incbin "data/tilesets/secondary/slateportext/metatile_attributes.bin"

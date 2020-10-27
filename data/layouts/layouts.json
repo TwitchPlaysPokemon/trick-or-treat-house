@@ -1337,8 +1337,8 @@
             "id": "LAYOUT_TRICK_TREAT_SLATEPORT_CITY2",
             "name": "TrickTreat_SlateportCity2_Layout",
             "primary_tileset": "gTileset_Autumn",
-            "secondary_tileset": "gTileset_Slateport",
-            "width": 80
+            "secondary_tileset": "gTileset_SlateportExt",
+            "width": 54
         },
         {
             "blockdata_filepath": "data/layouts/Puzzle_TrickHouseOriginal5/map.bin",
@@ -1788,6 +1788,36 @@
             "name": "ThinIce_F2_Layout",
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_SootopolisGym",
+            "width": 21
+        },
+        {
+            "blockdata_filepath": "data/layouts/Harbor/map.bin",
+            "border_filepath": "data/layouts/Harbor/border.bin",
+            "height": 15,
+            "id": "LAYOUT_HARBOR",
+            "name": "Harbor_Layout",
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Facility",
+            "width": 24
+        },
+        {
+            "blockdata_filepath": "data/layouts/SlateportCity_ContestLobby/map.bin",
+            "border_filepath": "data/layouts/SlateportCity_ContestLobby/border.bin",
+            "height": 7,
+            "id": "LAYOUT_SLATEPORT_CITY_CONTEST_LOBBY",
+            "name": "SlateportCity_ContestLobby_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_Contest",
+            "width": 15
+        },
+        {
+            "blockdata_filepath": "data/layouts/SlateportCity_ContestHall/map.bin",
+            "border_filepath": "data/layouts/SlateportCity_ContestHall/border.bin",
+            "height": 18,
+            "id": "LAYOUT_SLATEPORT_CITY_CONTEST_HALL",
+            "name": "SlateportCity_ContestHall_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_Contest",
             "width": 21
         }
     ],

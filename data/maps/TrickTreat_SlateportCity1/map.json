@@ -4,6 +4,102 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_SlateportCity1_SignScript_NameRater",
+            "type": "sign",
+            "x": 7,
+            "y": 19
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+            "script": "Common_EventScript_ShowPokemonCenterSign",
+            "type": "sign",
+            "x": 19,
+            "y": 19
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+            "script": "Common_EventScript_ShowPokemonCenterSign",
+            "type": "sign",
+            "x": 20,
+            "y": 19
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+            "script": "TrickTreat_SlateportCity1_SignScript_TrainerTips",
+            "type": "sign",
+            "x": 28,
+            "y": 70
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_SlateportCity1_SignScript_Harbor",
+            "type": "sign",
+            "x": 23,
+            "y": 12
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+            "script": "TrickTreat_SlateportCity1_SignScript_SeashoreHouse",
+            "type": "sign",
+            "x": 14,
+            "y": 65
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_SlateportCity1_SignScript_Market",
+            "type": "sign",
+            "x": 13,
+            "y": 51
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_SlateportCity1_SignScript_Museum",
+            "type": "sign",
+            "x": 25,
+            "y": 26
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_SlateportCity1_SignScript_CitySign",
+            "type": "sign",
+            "x": 15,
+            "y": 22
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_SlateportCity1_SignScript_FanClub",
+            "type": "sign",
+            "x": 7,
+            "y": 26
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_SlateportCity1_SignScript_ContestHall",
+            "type": "sign",
+            "x": 12,
+            "y": 12
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickTreat_SlateportCity1_SignScript_Shipyard",
+            "type": "sign",
+            "x": 22,
+            "y": 38
+        }
     ],
     "connections": [
         {
@@ -35,8 +131,8 @@
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 3,
-            "y": 27
+            "x": 12,
+            "y": 26
         },
         {
             "elevation": 3,
@@ -63,6 +159,58 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "x": 5,
             "y": 38
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_NURSE",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 17,
+            "y": 20
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_BALL_CUSHION",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+            "script": "PuzzleCommon_EventScript_PokecenterHeal",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
+            "x": 18,
+            "y": 19
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_ALIEN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 4,
+            "y": 19
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_ALIEN",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 20,
+            "y": 44
         }
     ],
     "region_map_section": "MAPSEC_SLATEPORT_CITY",
@@ -75,6 +223,48 @@
             "elevation": 0,
             "x": 17,
             "y": 1
+        },
+        {
+            "dest_map": "MAP_SLATEPORT_CITY_CONTEST_LOBBY",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 9,
+            "y": 12
+        },
+        {
+            "dest_map": "MAP_TRICK_TREAT_SLATEPORT_CITY1",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 3,
+            "y": 26
+        },
+        {
+            "dest_map": "MAP_TRICK_TREAT_SLATEPORT_CITY1",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 29,
+            "y": 26
+        },
+        {
+            "dest_map": "MAP_TRICK_TREAT_SLATEPORT_CITY1",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 30,
+            "y": 26
+        },
+        {
+            "dest_map": "MAP_TRICK_TREAT_SLATEPORT_CITY1",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 11,
+            "y": 65
+        },
+        {
+            "dest_map": "MAP_SLATEPORT_CITY_HARBOR",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 27,
+            "y": 12
         }
     ],
     "weather": "WEATHER_SUNNY"

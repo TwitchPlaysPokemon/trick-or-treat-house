@@ -12,8 +12,11 @@
 #define MAP_TRICK_HOUSE_EXT_GATEHOUSE (7 | (0 << 8))
 
 // Map Group 1
-#define MAP_TRICK_TREAT_SLATEPORT_CITY1 (0 | (1 << 8))
-#define MAP_TRICK_TREAT_SLATEPORT_CITY2 (1 | (1 << 8))
+#define MAP_TRICK_TREAT_SLATEPORT_CITY1  (0 | (1 << 8))
+#define MAP_TRICK_TREAT_SLATEPORT_CITY2  (1 | (1 << 8))
+#define MAP_SLATEPORT_CITY_HARBOR        (2 | (1 << 8))
+#define MAP_SLATEPORT_CITY_CONTEST_LOBBY (3 | (1 << 8))
+#define MAP_SLATEPORT_CITY_CONTEST_HALL  (4 | (1 << 8))
 
 // Map Group 2
 #define MAP_TEST_MAP_HALLWAY       (0 | (2 << 8))

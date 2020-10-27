@@ -5065,11 +5065,11 @@ gBattleDomeMatchNumberText15::
 @ 	set_invisible
 @ 	step_end
 
-LilycoveCity_ContestLobby_Text_2C427C: @ 82C427C
-	.string "BLEND MASTER: Indeed I am!\n"
-	.string "The BLEND MASTER am I!\p"
-	.string "Blend with me, and you shall witness\n"
-	.string "the mastery I bring to blending!$"
+@ LilycoveCity_ContestLobby_Text_2C427C: @ 82C427C
+@ 	.string "BLEND MASTER: Indeed I am!\n"
+@ 	.string "The BLEND MASTER am I!\p"
+@ 	.string "Blend with me, and you shall witness\n"
+@ 	.string "the mastery I bring to blending!$"
 
 LilycoveCity_ContestLobby_Text_2C42F4: @ 82C42F4
 	.string "BLEND MASTER: Hmmm! So, you wish to\n"
@@ -6438,3 +6438,7 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/Puzzle_ThinIce/scripts.inc"
 
 	.include "data/maps/ThinIce_F2/scripts.inc"
+
+	.include "data/maps/SlateportCity_Harbor/scripts.inc"
+	.include "data/maps/SlateportCity_ContestLobby/scripts.inc"
+	.include "data/maps/SlateportCity_ContestHall/scripts.inc"

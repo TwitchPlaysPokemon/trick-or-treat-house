@@ -1,0 +1,38 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": false,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_SLATEPORT_CITY_CONTEST_HALL",
+    "layout": "LAYOUT_SLATEPORT_CITY_CONTEST_HALL",
+    "map_type": "MAP_TYPE_INDOOR",
+    "music": "MUS_CONLOBBY",
+    "name": "SlateportCity_ContestHall",
+    "object_events": [
+    ],
+    "region_map_section": "MAPSEC_SLATEPORT_CITY",
+    "requires_flash": false,
+    "show_map_name": false,
+    "warp_events": [
+        {
+            "dest_map": "MAP_SLATEPORT_CITY_CONTEST_LOBBY",
+            "dest_warp_id": 2,
+            "elevation": 0,
+            "x": 10,
+            "y": 17
+        },
+        {
+            "dest_map": "MAP_SLATEPORT_CITY_CONTEST_LOBBY",
+            "dest_warp_id": 2,
+            "elevation": 0,
+            "x": 11,
+            "y": 17
+        }
+    ],
+    "weather": "WEATHER_SUNNY"
+}

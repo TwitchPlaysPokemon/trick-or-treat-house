@@ -185,7 +185,7 @@
 #define VAR_UNUSED_0x407F                    0x409F // Unused Var
 #define VAR_UNUSED_0x4080                    0x40A0 // Unused Var
 #define VAR_UNUSED_0x4081                    0x40A1 // Unused Var
-#define VAR_UNUSED_0x4082                    0x40A2
+#define VAR_CONTEST_LOCATION                 0x40A2
 #define VAR_UNUSED_0x4083                    0x40A3 // Unused Var
 #define VAR_LINK_CONTEST_ROOM_STATE          0x40A4
 #define VAR_CABLE_CLUB_STATE                 0x40A5
