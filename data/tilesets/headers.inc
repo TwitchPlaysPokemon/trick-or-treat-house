@@ -941,3 +941,14 @@ gTileset_Goldenrod::
 	.4byte gMetatiles_Goldenrod
 	.4byte gMetatileAttributes_Goldenrod
 	.4byte NULL
+
+	.align 2
+gTileset_SlateportExt::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_SlateportExt
+	.4byte gTilesetPalettes_SlateportExt
+	.4byte gMetatiles_SlateportExt
+	.4byte gMetatileAttributes_SlateportExt
+	.4byte NULL

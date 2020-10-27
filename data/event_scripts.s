@@ -6438,3 +6438,5 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/Puzzle_ThinIce/scripts.inc"
 
 	.include "data/maps/ThinIce_F2/scripts.inc"
+
+	.include "data/maps/SlateportCity_Harbor/scripts.inc"

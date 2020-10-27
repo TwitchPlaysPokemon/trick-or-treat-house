@@ -72,7 +72,10 @@
     ],
     "MG_PostGame": [
         "TrickTreat_SlateportCity1",
-        "TrickTreat_SlateportCity2"
+        "TrickTreat_SlateportCity2",
+        "SlateportCity_Harbor",
+        "SlateportCity_ContestLobby",
+        "SlateportCity_ContestHall"
     ],
     "MG_PuzzleFramework": [
         "TrickHouseDevEntrance",

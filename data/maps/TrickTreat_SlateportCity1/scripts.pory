@@ -84,3 +84,59 @@ movement TrickTreat_SlateportCity1_FromCredits_Movement2P {
 movement TrickTreat_SlateportCity1_FromCredits_Movement3 {
 	walk_down * 7
 }
+
+// ----------------------------------------------------
+
+script TrickTreat_SlateportCity1_SignScript_CitySign {
+	msgbox ("SLATEPORT CITY\p"
+			"“The port where people and POKéMON\n"
+			"cross paths.”$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_SignScript_Shipyard {
+	msgbox ("STERN'S SHIPYARD\p"
+			"“Boarding of the SLATEPORT-LILYCOVE\n"
+			"ferry S.S. TIDAL is handled at the\l"
+			"HARBOR.”$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_SignScript_ContestHall {
+	msgbox ("POKéMON CONTEST HALL\n"
+			"“The gathering place for TRAINERS!”$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_SignScript_FanClub {
+	msgbox ("POKéMON FAN CLUB\n"
+			"“Calling all fans of POKéMON!”$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_SignScript_Museum {
+	msgbox ("“The endless sea sustains\n"
+			"all life.”\p"
+			"OCEANIC MUSEUM$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_SignScript_Harbor {
+	msgbox ("SLATEPORT HARBOR\p"
+			"“Enjoy a delightful cruise on\n"
+			"the ferry S.S. TIDAL.”$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_SignScript_Market {
+	msgbox ("SLATEPORT MARKET\n"
+			"“Unique items found nowhere else!”$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_SignScript_NameRater {
+	msgbox ("NAME RATER'S HOUSE\n"
+			"“POKéMON nicknames rated.”$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_SignScript_TrainerTips {
+	msgbox ("TRAINER TIPS\p"
+			"POKéMON at the same level may not\n"
+			"always have identical stats.\p"
+			"POKéMON raised by TRAINERS are said\n"
+			"to grow stronger than wild POKéMON.$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_SignScript_SeashoreHouse {
+	msgbox ("SEASHORE HOUSE\p"
+			"“May hot battles rage on hot sands!\n"
+			"The place for hot TRAINERS!”$", MSGBOX_SIGN)
+}
+
+
+
+

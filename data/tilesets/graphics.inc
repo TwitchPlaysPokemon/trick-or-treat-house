@@ -1932,3 +1932,23 @@ gTilesetPalettes_Goldenrod::
 	.align 2
 gTilesetTiles_Goldenrod::
 	.incbin "data/tilesets/secondary/goldenrod/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_SlateportExt::
+	.incbin "data/tilesets/secondary/slateportext/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/slateportext/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/slateportext/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/slateportext/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/slateportext/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/slateportext/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/slateportext/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/slateportext/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/slateportext/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/slateportext/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/slateportext/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/slateportext/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/slateportext/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_SlateportExt::
+	.incbin "data/tilesets/secondary/slateportext/tiles.4bpp.lz"
