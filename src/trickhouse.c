@@ -607,7 +607,6 @@ void GenerateStarterMon(u16 slot, struct BoxPokemon* mon)
 {
 	const u8* nick;
 	u16 speciesId = SPECIES_UNOWN;
-	bool8 obedient = TRUE;
 	
 	if (FlagGet(FLAG_SYS_RANDOM_DISABLED)) {
 		speciesId = starterPokemon[slot][0];
@@ -624,7 +623,6 @@ void GenerateStarterMon(u16 slot, struct BoxPokemon* mon)
 	
 	CreateBoxMon(mon, speciesId, 30, 32, 0, 0, OT_ID_PRESET, Random32());
 	SetBoxMonData(mon, MON_DATA_OT_NAME, previousOtNames[Random() % ARRAY_COUNT(previousOtNames)]);
-	SetBoxMonData(mon, MON_DATA_OBEDIENCE, &obedient);
 	if (nick != NULL) SetBoxMonData(mon, MON_DATA_NICKNAME, nick);
 }
 
