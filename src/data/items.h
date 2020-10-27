@@ -5826,12 +5826,12 @@ const struct Item gItems[] =
     
     [ITEM_CANDY_RAISIN] =
     { // TODO: +6pp
-        .name = sRaisensName,
+        .name = sRaisinsName,
         .quantum = sBoxQuantum,
         .plural = sBoxQuantumPlural,
         .itemId = ITEM_CANDY_RAISIN,
         .price = CANDY_COST(200),
-        .description = sRaisensDesc,
+        .description = sRaisinsDesc,
         .keepItem = TRUE,
         .isCandy = TRUE,
         .pocket = POCKET_CANDY,

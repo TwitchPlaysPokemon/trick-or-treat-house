@@ -423,7 +423,7 @@ gSpecials:: @ 81DBA64
 	def_special DoMirageTowerCeilingCrumble
 	def_special SetMirageTowerVisibility
 	def_special StartPlayerDescendMirageTower
-	def_special sub_81398C0
+	def_special CheckTMAndBufferMoveName
 	def_special IsWirelessAdapterConnected
 	def_special BerryBlenderLinkBecomeLeader
 	def_special BerryBlenderLinkJoinGroup

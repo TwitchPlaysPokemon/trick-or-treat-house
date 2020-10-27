@@ -49,6 +49,7 @@ PuzzleCommon_EventScript_IncrementPuzzle::
 	addvar VAR_CURRENT_PUZZLE, 1
 	setvar VAR_PUZZLE_STATE, 0
 	incrementgamestat GAME_STAT_NUM_PUZZLES_COMPLETED
+	addvar VAR_CANDY_TRADE_MASTER, 1
 	callnative CheckIfNoMorePuzzles
 	callnative AdvanceSunOffset
 	@ fallthrough

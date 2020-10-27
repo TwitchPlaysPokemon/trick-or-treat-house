@@ -15,6 +15,7 @@
 #include "string_util.h"
 #include "text.h"
 #include "task.h"
+#include "mgba.h"
 #include "trickhouse.h"
 #include "script.h"
 #include "pokeblock.h"
@@ -200,6 +201,7 @@ void PokemonSaysInitPuzzle(struct ScriptContext *ctx)
 		VarSet(VAR_SONG_C, Random() % ARRAY_COUNT(Puzzle_MusicNoteTiles_MusicTableC));
 		VarSet(VAR_SONG_D, Random() % ARRAY_COUNT(Puzzle_MusicNoteTiles_MusicTableD));
 	}
+	mgba_printf(MGBA_LOG_INFO, "Selected songs: %d, %d, %d, %d", VarGet(VAR_SONG_A), VarGet(VAR_SONG_B), VarGet(VAR_SONG_C), VarGet(VAR_SONG_D));
 }
 
 const u16* PokemonSays_GetCurrentSong()
@@ -221,6 +223,7 @@ void PokemonSaysSetupSongScript(struct ScriptContext *ctx)
 	u8* script = AllocZeroed(100); // (13 * numNotes) + 2 (max 6 notes = 80 bytes max)
 	const u16* music = PokemonSays_GetCurrentSong();
 	
+	mgba_printf(MGBA_LOG_INFO, "Creating RAM script for song at %08X...", music);
 	// Create a RAM script to play the music
 	script[i++] = 0x00;
 	for (i = 0; (*music) != PS_NOTE_END; music++)
@@ -230,6 +233,7 @@ void PokemonSaysSetupSongScript(struct ScriptContext *ctx)
 		const struct PokemonSaysNote* note = &sSongNotes[noteIndex];
 		
 		// applymovement(localId, movementScript)
+		mgba_printf(MGBA_LOG_INFO, "applymovement(%d, %08X)", note->localId, note->movement);
 		script[i++] = 0x4F;
 		script[i++] = ((note->localId) >> 0) & 0xFF;
 		script[i++] = ((note->localId) >> 8) & 0xFF;
@@ -238,10 +242,12 @@ void PokemonSaysSetupSongScript(struct ScriptContext *ctx)
 		script[i++] = (((u32)note->movement) >> 16) & 0xFF;
 		script[i++] = (((u32)note->movement) >> 24) & 0xFF;
 		// playse(sound)
+		mgba_printf(MGBA_LOG_INFO, "playse(%d)", note->soundEffect);
 		script[i++] = 0x2F;
 		script[i++] = ((note->soundEffect) >> 0) & 0xFF;
 		script[i++] = ((note->soundEffect) >> 8) & 0xFF;
 		// delay(noteLength)
+		mgba_printf(MGBA_LOG_INFO, "delay(%d)", noteLen);
 		script[i++] = 0x28;
 		script[i++] = ((noteLen) >> 0) & 0xFF;
 		script[i++] = ((noteLen) >> 8) & 0xFF;
@@ -262,6 +268,7 @@ void PokemonSaysSetupSongScript(struct ScriptContext *ctx)
 	
 	if (FlagGet(FLAG_EXTRA_ENABLED) && !FlagGet(FLAG_SHOW_EXTRA_SINGER))
 	{
+		mgba_printf(MGBA_LOG_INFO, "call(Puzzle_MusicNoteTiles_ExtraCurious)");
 		script[i++] = 0x04;
 		script[i++] = (((u32)Puzzle_MusicNoteTiles_ExtraCurious) >>  0) & 0xFF;
 		script[i++] = (((u32)Puzzle_MusicNoteTiles_ExtraCurious) >>  8) & 0xFF;
@@ -273,7 +280,9 @@ void PokemonSaysSetupSongScript(struct ScriptContext *ctx)
 		script[i++] = ((60) >> 8) & 0xFF;
 	}
 	
+	mgba_printf(MGBA_LOG_INFO, "return");
 	script[i++] = 0x03; // return
+	mgba_printf(MGBA_LOG_INFO, "end");
 	script[i++] = 0x02; // end
 	
 	gRamScriptPtr = (const u8*) script;

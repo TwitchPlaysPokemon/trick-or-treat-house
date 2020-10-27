@@ -2230,8 +2230,8 @@ static const u8 sSnapPeasDesc[] = _(
     "Cures Sleep;\n"
     "heals 40 HP.");
 
-static const u8 sRaisensName[] = _("Raisens");
-static const u8 sRaisensDesc[] = _(
+static const u8 sRaisinsName[] = _("Raisins");
+static const u8 sRaisinsDesc[] = _(
     "Small box.\n"
     "Heals 6 PP\n"
     "for all moves.");

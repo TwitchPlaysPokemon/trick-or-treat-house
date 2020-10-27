@@ -7,7 +7,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x2C",
-            "item": "ITEM_NUGGET",
+            "item": "ITEM_CANDY_UNCOMMON",
             "type": "hidden_item",
             "x": 1,
             "y": 8
@@ -23,7 +23,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x2E",
-            "item": "ITEM_SUPER_POTION",
+            "item": "ITEM_CANDY_COMMON",
             "type": "hidden_item",
             "x": 19,
             "y": 3

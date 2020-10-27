@@ -345,8 +345,8 @@ script TrickHouseExt_EventScript_CardGame {
 	callnative(GetNumPuzzlesCompleted)
 	selectpointer_wrap(TrickHouseExt_EventScript_CardGameNamesTable, VAR_RESULT)
 	bufferselectedstring(0)
-	msgbox ("It looks like they're playing a round of\n"
-			"{STR_VAR_1}$", MSGBOX_SIGN)
+	msgbox ("It looks like they're playing a\n"
+			"round of {STR_VAR_1}.$", MSGBOX_SIGN)
 }
 text TrickHouseExt_EventScript_CardGame_Name1 { "Megafight" }
 text TrickHouseExt_EventScript_CardGame_Name2 { "Cards Against {POKEMON}" }
@@ -360,10 +360,10 @@ text TrickHouseExt_EventScript_CardGame_Name8 { "Orans to Orans" }
 raw `
 .align 2
 TrickHouseExt_EventScript_CardGameNamesTable:
-	.4byte TrickHouseExt_EventScript_CardGame_Name1
 	.4byte TrickHouseExt_EventScript_CardGame_Name2
 	.4byte TrickHouseExt_EventScript_CardGame_Name3
 	.4byte TrickHouseExt_EventScript_CardGame_Name4
+	.4byte TrickHouseExt_EventScript_CardGame_Name1
 	.4byte TrickHouseExt_EventScript_CardGame_Name5
 	.4byte TrickHouseExt_EventScript_CardGame_Name6
 	.4byte TrickHouseExt_EventScript_CardGame_Name7
@@ -395,21 +395,24 @@ script TrickHouseExt_EventScript_1EF34A {
 	msgbox ("SEASIDE CYCLING ROAD$", MSGBOX_SIGN)
 }
 
+script TrickHouseExt_EventScript_SlateportSign {
+	msgbox ("ROUTE 110\n"
+			"{DOWN_ARROW} SLATEPORT CITY$", MSGBOX_SIGN)
+}
+
 // ----------------------------------------------------
 // Traders
 
 script TrickHouseExt_OnLoad_Traders {
-	callnative(GetNumPuzzlesCompleted)
-	copyvar(VAR_0x800A, VAR_RESULT)
-	selectpointer_wrap(TrickHouseExt_OnLoad_Traders_ATable, VAR_0x800A)
+	selectpointer_wrap(TrickHouseExt_OnLoad_Traders_ATable, VAR_CANDY_TRADE_MASTER)
 	call(0)
-	selectpointer_wrap(TrickHouseExt_OnLoad_Traders_BTable, VAR_0x800A)
+	selectpointer_wrap(TrickHouseExt_OnLoad_Traders_BTable, VAR_CANDY_TRADE_MASTER)
 	call(0)
-	selectpointer_wrap(TrickHouseExt_OnLoad_Traders_CTable, VAR_0x800A)
+	selectpointer_wrap(TrickHouseExt_OnLoad_Traders_CTable, VAR_CANDY_TRADE_MASTER)
 	call(0)
-	selectpointer_wrap(TrickHouseExt_OnLoad_Traders_DTable, VAR_0x800A)
+	selectpointer_wrap(TrickHouseExt_OnLoad_Traders_DTable, VAR_CANDY_TRADE_MASTER)
 	call(0)
-	setorcopyvar(VAR_CANDY_TRADE_4, VAR_0x800A)
+	copyvar(VAR_CANDY_TRADE_5, VAR_CANDY_TRADE_MASTER)
 	return
 }
 
@@ -476,35 +479,35 @@ script TrickHouseExt_OnLoad_Traders_LoadA1 {
 	setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_SKELETON)
 	setvar(VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_PLASMA_KID)
 	setvar(VAR_OBJ_GFX_ID_2, EVENT_OBJ_GFX_BOY_2)
-	setvar(VAR_CANDY_TRADE_0, 1)
+	setvar(VAR_CANDY_TRADE_1, 1)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadA2 {
 	setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_GIRL_1)
 	setvar(VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_PICNICKER)
 	setvar(VAR_OBJ_GFX_ID_2, EVENT_OBJ_GFX_FAIRY_GIRL)
-	setvar(VAR_CANDY_TRADE_0, 2)
+	setvar(VAR_CANDY_TRADE_1, 2)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadA3 {
 	setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_HERO_OF_TIME)
 	setvar(VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_TWINS_PLUSLE)
 	setvar(VAR_OBJ_GFX_ID_2, EVENT_OBJ_GFX_LITTLE_BOY)
-	setvar(VAR_CANDY_TRADE_0, 3)
+	setvar(VAR_CANDY_TRADE_1, 3)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadA4 {
 	setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_COOK)
 	setvar(VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_BUG_CATCHER)
 	setvar(VAR_OBJ_GFX_ID_2, EVENT_OBJ_GFX_MASKED_BOY)
-	setvar(VAR_CANDY_TRADE_0, 4)
+	setvar(VAR_CANDY_TRADE_1, 4)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadA5 {
 	setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_GAMEBOY_KID)
 	setvar(VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_ALIEN)
 	setvar(VAR_OBJ_GFX_ID_2, EVENT_OBJ_GFX_GHOST)
-	setvar(VAR_CANDY_TRADE_0, 5)
+	setvar(VAR_CANDY_TRADE_1, 5)
 	return
 }
 
@@ -512,71 +515,71 @@ script TrickHouseExt_OnLoad_Traders_LoadA5 {
 script TrickHouseExt_OnLoad_Traders_LoadB1 {
 	setvar(VAR_OBJ_GFX_ID_3, EVENT_OBJ_GFX_CORPSE_BRIDE)
 	setvar(VAR_OBJ_GFX_ID_4, EVENT_OBJ_GFX_MERMAID_WALKING)
-	setvar(VAR_CANDY_TRADE_1, 1)
+	setvar(VAR_CANDY_TRADE_2, 1)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadB2 {
 	setvar(VAR_OBJ_GFX_ID_3, EVENT_OBJ_GFX_REPORTER_F)
 	setvar(VAR_OBJ_GFX_ID_4, EVENT_OBJ_GFX_CAMERAMAN)
-	setvar(VAR_CANDY_TRADE_1, 2)
+	setvar(VAR_CANDY_TRADE_2, 2)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadB3 {
 	setvar(VAR_OBJ_GFX_ID_3, EVENT_OBJ_GFX_PIKACHU)
 	setvar(VAR_OBJ_GFX_ID_4, EVENT_OBJ_GFX_AZUMARILL)
-	setvar(VAR_CANDY_TRADE_1, 3)
+	setvar(VAR_CANDY_TRADE_2, 3)
 	return
 }
 
 
 script TrickHouseExt_OnLoad_Traders_LoadC1 {
 	setvar(VAR_OBJ_GFX_ID_5, EVENT_OBJ_GFX_BLACK_BELT)
-	setvar(VAR_CANDY_TRADE_2, 1)
+	setvar(VAR_CANDY_TRADE_3, 1)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadC2 {
 	setvar(VAR_OBJ_GFX_ID_5, EVENT_OBJ_GFX_RICH_BOY)
-	setvar(VAR_CANDY_TRADE_2, 2)
+	setvar(VAR_CANDY_TRADE_3, 2)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadC3 {
 	setvar(VAR_OBJ_GFX_ID_5, EVENT_OBJ_GFX_GLACIA)
-	setvar(VAR_CANDY_TRADE_2, 3)
+	setvar(VAR_CANDY_TRADE_3, 3)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadC4 {
 	setvar(VAR_OBJ_GFX_ID_5, EVENT_OBJ_GFX_EXPERT_M)
-	setvar(VAR_CANDY_TRADE_2, 4)
+	setvar(VAR_CANDY_TRADE_3, 4)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadC5 {
 	setvar(VAR_OBJ_GFX_ID_5, EVENT_OBJ_GFX_BEAUTY)
-	setvar(VAR_CANDY_TRADE_2, 5)
+	setvar(VAR_CANDY_TRADE_3, 5)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadC6 {
 	setvar(VAR_OBJ_GFX_ID_5, EVENT_OBJ_GFX_ANABEL)
-	setvar(VAR_CANDY_TRADE_2, 6)
+	setvar(VAR_CANDY_TRADE_3, 6)
 	return
 }
 
 
 script TrickHouseExt_OnLoad_Traders_LoadD1 {
-	setvar(VAR_CANDY_TRADE_3, 1)
+	setvar(VAR_CANDY_TRADE_4, 1)
 	setvar(VAR_OBJ_GFX_ID_6, EVENT_OBJ_GFX_NOLAND)
 	setobjectxyperm(20, 41, 38)
 	setobjectmovementtype(20, MOVEMENT_TYPE_FACE_UP_AND_LEFT)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadD2 {
-	setvar(VAR_CANDY_TRADE_3, 2)
+	setvar(VAR_CANDY_TRADE_4, 2)
 	setvar(VAR_OBJ_GFX_ID_6, EVENT_OBJ_GFX_GHETSIS)
 	setobjectxyperm(20, 43, 31)
 	setobjectmovementtype(20, MOVEMENT_TYPE_FACE_DOWN_AND_LEFT)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadD3 {
-	setvar(VAR_CANDY_TRADE_3, 3)
+	setvar(VAR_CANDY_TRADE_4, 3)
 	setvar(VAR_OBJ_GFX_ID_6, EVENT_OBJ_GFX_BRAWLY)
 	setobjectxyperm(20, 37, 48)
 	setobjectmovementtype(20, MOVEMENT_TYPE_FACE_UP_AND_RIGHT)
@@ -888,7 +891,7 @@ script TrickHouseExt_EventScript_Seller {
 	message("Hey, I've got candy here if you wanna\n"
 			"buy or sell anything.$")
 	waitmessage
-	selectpointer_wrap(TrickHouseExt_MartTable, VAR_CANDY_TRADE_4)
+	selectpointer_wrap(TrickHouseExt_MartTable, VAR_CANDY_TRADE_5)
 	pokemart(0)
 	msgbox ("I'll be here all night. Sometimes I get\n"
 			"different candy in too. Later.$")

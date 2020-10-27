@@ -1,4 +1,58 @@
+mapscripts TrickHouseTreeHouse_MapScripts {
+	MAP_SCRIPT_ON_LOAD {
+		selectpointer_wrap(TrickHouseTreeHouse_OnLoad_Traders_ATable, VAR_CANDY_TRADE_MASTER)
+		call(0)
+	}
+}
+
 raw `
-TrickHouseTreeHouse_MapScripts::
-	.byte 0
+.align 2
+TrickHouseTreeHouse_OnLoad_Traders_ATable:
+	.4byte TrickHouseTreeHouse_OnLoad_Traders_LoadA1
+	.4byte TrickHouseTreeHouse_OnLoad_Traders_LoadA2
+	.4byte TrickHouseTreeHouse_OnLoad_Traders_LoadA3
+	.4byte TrickHouseTreeHouse_OnLoad_Traders_LoadA4
+	.4byte TrickHouseTreeHouse_OnLoad_Traders_LoadA5
+	.4byte TrickHouseTreeHouse_OnLoad_Traders_LoadA6
+	.4byte TrickHouseTreeHouse_OnLoad_Traders_LoadA7
+	.4byte TrickHouseTreeHouse_OnLoad_Traders_LoadA8
+	.4byte TrickHouseTreeHouse_OnLoad_Traders_LoadA9
+	.4byte 0
 `
+
+script TrickHouseTreeHouse_OnLoad_Traders_LoadA1 {
+	setvar(VAR_CANDY_TRADE_5, ITEM_TM24_THUNDERBOLT)
+}
+script TrickHouseTreeHouse_OnLoad_Traders_LoadA2 {
+	setvar(VAR_CANDY_TRADE_5, ITEM_TM35_FLAMETHROWER)
+}
+script TrickHouseTreeHouse_OnLoad_Traders_LoadA3 {
+	setvar(VAR_CANDY_TRADE_5, ITEM_TM46_THIEF)
+}
+script TrickHouseTreeHouse_OnLoad_Traders_LoadA4 {
+	setvar(VAR_CANDY_TRADE_5, ITEM_TM03_WATER_PULSE)
+}
+script TrickHouseTreeHouse_OnLoad_Traders_LoadA5 {
+	setvar(VAR_CANDY_TRADE_5, ITEM_TM40_AERIAL_ACE)
+}
+script TrickHouseTreeHouse_OnLoad_Traders_LoadA6 {
+	setvar(VAR_CANDY_TRADE_5, ITEM_TM47_STEEL_WING)
+}
+script TrickHouseTreeHouse_OnLoad_Traders_LoadA7 {
+	setvar(VAR_CANDY_TRADE_5, ITEM_TM28_DIG)
+}
+script TrickHouseTreeHouse_OnLoad_Traders_LoadA8 {
+	setvar(VAR_CANDY_TRADE_5, ITEM_TM31_BRICK_BREAK)
+}
+script TrickHouseTreeHouse_OnLoad_Traders_LoadA9 {
+	setvar(VAR_CANDY_TRADE_5, ITEM_TM30_SHADOW_BALL)
+}
+
+
+
+
+// ----------------------------------------------------
+
+script TrickHouseTreeHouse_EventScript_TraderA {
+	
+}

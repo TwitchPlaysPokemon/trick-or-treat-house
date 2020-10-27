@@ -35,6 +35,14 @@
             "type": "sign",
             "x": 44,
             "y": 51
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickHouseExt_EventScript_SlateportSign",
+            "type": "sign",
+            "x": 50,
+            "y": 57
         }
     ],
     "connections": [

@@ -741,10 +741,10 @@ void TryPrepareSecondApproachingTrainer(void)
 
 #define LOAD_PALETTE(template) \
     u8 spriteId, paletteNum; \
-    LoadEventObjectPalette(template.paletteTag); \
-    paletteNum = IndexOfSpritePaletteTag(template.paletteTag); \
-    UpdatePaletteGammaType(paletteNum, GAMMA_ALT); \
-    UpdateSpritePaletteWithWeather(paletteNum);
+    // LoadEventObjectPalette(template.paletteTag); \
+    // paletteNum = IndexOfSpritePaletteTag(template.paletteTag); \
+    // UpdatePaletteGammaType(paletteNum, GAMMA_ALT); \
+    // UpdateSpritePaletteWithWeather(paletteNum);
     
 
 u8 FldEff_ExclamationMarkIcon(void)

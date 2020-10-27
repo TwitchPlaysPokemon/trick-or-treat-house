@@ -135,22 +135,22 @@
 #define VAR_POKELOT_PRIZE_PLACE              0x406D
 #define VAR_TIMES_SEEN_BY_TRAINER            0x406E
 #define VAR_LOTAD_SIZE_RECORD                0x406F
-#define VAR_CANDY_TRADE_0                    0x4070
+#define VAR_CANDY_TRADE_MASTER               0x4070
 #define VAR_CANDY_TRADE_1                    0x4071
-#define VAR_CANDY_TRADE_2                    0x4072 // Unused Var
+#define VAR_CANDY_TRADE_2                    0x4072
 #define VAR_CANDY_TRADE_3                    0x4073
-#define VAR_CANDY_TRADE_4                    0x4074 // was probably allocated for VAR_FALLARBOR_TOWN_STATE at one point
-#define VAR_CANDY_TRADE_5                    0x4075 // Unused Var
-#define VAR_CANDY_TRADE_6                    0x4076 // Unused Var
+#define VAR_CANDY_TRADE_4                    0x4074
+#define VAR_CANDY_TRADE_5                    0x4075
+#define VAR_CANDY_TRADE_6                    0x4076
 #define VAR_CANDY_TRADE_7                    0x4077
 #define VAR_CANDY_TRADE_8                    0x4078
-#define VAR_CANDY_TRADE_9                    0x4079 // Unused Var
+#define VAR_CANDY_TRADE_9                    0x4079
 #define VAR_CANDY_TRADE_A                    0x407A
-#define VAR_CANDY_TRADE_B                    0x407B // Unused Var
-#define VAR_CANDY_TRADE_C                    0x407C // Unused Var
+#define VAR_CANDY_TRADE_B                    0x407B
+#define VAR_CANDY_TRADE_C                    0x407C
 #define VAR_CANDY_TRADE_D                    0x407D
 #define VAR_CANDY_TRADE_E                    0x407E
-#define VAR_CANDY_TRADE_F                    0x407F // Unused Var
+#define VAR_CANDY_TRADE_F                    0x407F
 #define VAR_UNUSED_0x4060                    0x4080
 #define VAR_UNUSED_0x4061                    0x4081 // Unused Var
 #define VAR_UNUSED_0x4062                    0x4082 // Unused Var

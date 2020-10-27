@@ -217,6 +217,10 @@ void NewGameInitData(void)
     // ResetTrainerHillResults();
     ResetContestLinkResults();
     
+    if (!FlagGet(FLAG_SYS_RANDOM_DISABLED)) {
+        VarSet(VAR_CANDY_TRADE_MASTER, Random() % 3000);
+    }
+    
     if (gMain.debugMode) {
         FlagClear(FLAG_HIDE_DEBUG_OBJECTS);
         VarSet(VAR_INTRO_COUNTER, 2);
