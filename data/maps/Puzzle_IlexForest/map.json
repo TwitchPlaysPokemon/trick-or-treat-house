@@ -604,6 +604,19 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "x": 49,
             "y": 32
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_META_PICKUP_GRASS",
+            "graphics_id": "EVENT_OBJ_GFX_GRASS_CUSHION",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "MetaPuzzle_PickupEvent_GrassCushion",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 9,
+            "y": 12
         }
     ],
     "region_map_section": "MAPSEC_PETALBURG_WOODS",

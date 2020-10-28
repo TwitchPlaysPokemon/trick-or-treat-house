@@ -15,7 +15,7 @@ Puzzle_LostWoods1_Name:
 Puzzle_LostWoods1_Adjective:
 	.string "meandering$"
 Puzzle_LostWoods1_Quip:
-	.string "…$"
+	.string "… … …\n… … …$"
 Puzzle_LostWoods1_DevCommentary:
 	.string "Tustin2121: The inspiration for this\n"
 	.string "puzzle was FireRed's Glitch City during\l"

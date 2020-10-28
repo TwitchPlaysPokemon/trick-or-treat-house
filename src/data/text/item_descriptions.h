@@ -2224,7 +2224,7 @@ static const u8 sCeleryDesc[] = _(
     "Cures Frozen;\n"
     "heals 40 HP.");
 
-static const u8 sSnapPeasName[] = _("SnapPeas");
+static const u8 sSnapPeasName[] = _("Snap Peas");
 static const u8 sSnapPeasDesc[] = _(
     "Pack of six.\n"
     "Cures Sleep;\n"

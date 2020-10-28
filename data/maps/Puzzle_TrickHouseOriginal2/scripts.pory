@@ -129,13 +129,13 @@ Puzzle_TrickHouseOriginal2_EventScript_26BC8C:: @ 826BC8C
 	msgbox Puzzle_TrickHouseOriginal2_Text_26BDEC, MSGBOX_AUTOCLOSE
 	end
 Puzzle_TrickHouseOriginal2_Text_26BD9E: @ 826BD9E
-	.string "Oh! You're on your second TRICK HOUSE\n"
-	.string "challenge!$"
+	.string "Isn't this TRICK HOUSE event rather\n"
+	.string "fun? I'm finding candy everywhere!$"
 Puzzle_TrickHouseOriginal2_Text_26BDCF: @ 826BDCF
-	.string "You're good at battling too?$"
+	.string "You're good at battling!$"
 Puzzle_TrickHouseOriginal2_Text_26BDEC: @ 826BDEC
-	.string "The TRICK MASTER rigged all the tricks\n"
-	.string "in this house all by himself.$"
+	.string "The TRICK MASTER hid all the candy\n"
+	.string "in this event all by himself.$"
 
 
 Puzzle_TrickHouseOriginal2_EventScript_26BCA3:: @ 826BCA3
