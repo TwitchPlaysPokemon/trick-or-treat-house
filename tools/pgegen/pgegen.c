@@ -310,18 +310,21 @@ int main(int argc, char ** argv)
         config_set("DaycareOffset", 0x3030);
         config_set("MoneyOffset", 0x490);
         config_set("EncryptionKeyOffset", 0xAC);
-        config_set("ItemPCOffset", 0x498);
-        config_set("ItemPCCount", 1); //TriHard
-        config_set("ItemPocketOffset", 0x49C); //TriHard
-        config_set("ItemPocketCount", 79); //TriHard
-        config_set("ItemKeyOffset", 0x5D8);
-        config_set("ItemKeyCount", 0x1E);
-        config_set("ItemBallOffset", 0x650);
-        config_set("ItemBallCount", 0x10);
-        config_set("ItemTMOffset", 0x690);
-        config_set("ItemTMCount", 0x40);
-        config_set("ItemBerriesOffset", 0x790);
-        config_set("ItemBerriesCount", 0x2E);
+        int itemsOffset = 0x498;
+        config_set("ItemPCOffset", itemsOffset);
+        config_set("ItemPCCount", 1);
+        config_set("ItemCandyOffset", itemsOffset += 1 * 4);
+        config_set("ItemCandyCount", 50);
+        config_set("ItemPocketOffset", itemsOffset += 50 * 4);
+        config_set("ItemPocketCount", 45);
+        config_set("ItemKeyOffset", itemsOffset += 45 * 4);
+        config_set("ItemKeyCount", 30);
+        config_set("ItemBallOffset", itemsOffset += 30 * 4);
+        config_set("ItemBallCount", 0);
+        config_set("ItemTMOffset", itemsOffset += 0 * 4);
+        config_set("ItemTMCount", 64);
+        config_set("ItemBerriesOffset", itemsOffset += 64 * 4);
+        config_set("ItemBerriesCount", 46);
         config_set("BadgesOffset", 0x10C);
         config_set("IwramClockAddr", sym_get("gLocalTime"));
         config_set("IwramMusicAddr", sym_get("sCurrentMapMusic"));
