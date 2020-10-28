@@ -1,7 +1,128 @@
 raw `
 Puzzle_MetaPuzzleCave_MapScripts::
+	puzzle_info Puzzle_MetaPuzzleCave_Name, CommonAuthor_Tustin2121
+	puzzle_quip Puzzle_MetaPuzzleCave_Quip
+	puzzle_metavars Puzzle_MetaPuzzleCave_Variables
+	puzzle_candylist Puzzle_MetaPuzzleCave_CandyList
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_MetaPuzzleCave_OnLoad
+	map_script MAP_SCRIPT_PUZZLE_CUSTOM_INTRO_SCRIPT, Puzzle_MetaPuzzleCave_IntroScript
 	.byte 0
+
+Puzzle_MetaPuzzleCave_Name:
+	.string "Secret Caverns$"
+Puzzle_MetaPuzzleCave_Quip:
+	@ TODO: When this puzzle is not a stub, this will be a script instead
+	.string "Clearly, no one can do a better job\n"
+	.string "than the TRICK MASTER himself!$"
+.align 2
+Puzzle_MetaPuzzleCave_Variables:
+	.2byte VAR_INTRO_PERSON, EVENT_OBJ_GFX_FLANNERY
+	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_TRICK_MASTER
+	.2byte 0
+Puzzle_MetaPuzzleCave_CandyList:
+	@ TODO: When this puzzle is not a stub, these will mean something
+	.2byte FLAG_PUZZLE_20
+	.2byte FLAG_PUZZLE_20
+	.2byte FLAG_PUZZLE_20
+	.2byte FLAG_PUZZLE_20
+	.2byte FLAG_PUZZLE_20
+	.2byte FLAG_PUZZLE_20
+	.2byte FLAG_PUZZLE_20
+	.2byte FLAG_PUZZLE_20
+	.2byte FLAG_PUZZLE_20
+	.2byte FLAG_PUZZLE_20
+	.2byte FLAG_PUZZLE_20
+	.2byte FLAG_PUZZLE_20
+	.2byte FLAG_PUZZLE_20
+	.2byte FLAG_PUZZLE_20
+	.2byte FLAG_PUZZLE_20
+	.2byte FLAG_PUZZLE_20
+	.2byte FLAG_PUZZLE_20
+	.2byte FLAG_PUZZLE_20
+	.2byte FLAG_PUZZLE_20
+	.2byte FLAG_PUZZLE_20
+	.2byte 0
 `
+
+script Puzzle_MetaPuzzleCave_OnLoad {
+	setmetatile(6, 6, 0x234, FALSE)
+	setmetatile(6, 7, 0x23C, FALSE)
+}
+
+
+script Puzzle_MetaPuzzleCave_IntroScript {
+	if (var(VAR_MISTRESS_STATE) == 0) {
+	msgbox("Oh, uh, hi.\p"
+			"You were probably expecting the TRICK\n"
+			"MASTER. I'm his sister. Long story…\p"
+			"I'm curious, did you pick up any\n"
+			"essences of puzzles tonight?$")
+	} else {
+	msgbox ("Hello again. This is it.\n"
+			"This is my chance.\p"
+			"Did you happen to find any more\n"
+			"essences of puzzles since we last spoke?$")
+	}
+	call(MetaPuzzle_DropOffEvents)
+	if (var(VAR_0x800A) == 0) {
+		if (var(VAR_MISTRESS_STATE) == 0) {
+	msgbox ("Ah, you… haven't…\p"
+			"So that basically means I have no\n"
+			"puzzle for you to do…\p"
+			"<sigh>{PAUSE 30}\n"
+			"Well… there's always next year…$")
+			goto(Puzzle_MetaPuzzleCave_IntroScript_NoPuzzleWalkout)
+		} else {
+	message ("Ah, no, you haven't, so…\p$")
+	waitmessage
+		}
+	}
+	callnative(MetaPuzzle_CountSubmittedItems)
+	buffernumberstring2(1, VAR_RESULT)
+	if (var(VAR_RESULT) < 8) {
+	msgbox ("So, that's… {STR_VAR_1} items…\n"
+			"… …not enough to make my puzzle.\p"
+			"<sigh>{PAUSE 30}\n"
+			"Well… there's always next year…$")
+		goto(Puzzle_MetaPuzzleCave_IntroScript_NoPuzzleWalkout)
+	}
+	elif (var(VAR_RESULT) < 15) {
+		// TODO yay minimum puzzle!
+	}
+	else {
+		// TODO yay full puzzle!
+	}
+}
+
+script Puzzle_MetaPuzzleCave_IntroScript_NoPuzzleWalkout {
+	applymovement(2, Puzzle_MetaPuzzleCave_IntroScript_NoPuzzleWalkout_Move1)
+	applymovement(LID_PLAYER, Puzzle_MetaPuzzleCave_IntroScript_NoPuzzleWalkout_Move2)
+	waitmovement(2)
+	// Player approaches door
+	applymovement(LID_PLAYER, Common_Movement_WalkUp2)
+	waitmovement(0)
+	// Open the door to the puzzle
+	opendoor(22, 2)
+	waitdooranim
+	// Clean up
+	setvar(VAR_PUZZLE_STATE, 1)
+	setescapewarp(MAP_TRICK_HOUSE_CORRIDOR, -1, 22, 3)
+	call (TrickHouseCorridor_OpenPuzzleDoor)
+	releaseall
+}
+
+movement Puzzle_MetaPuzzleCave_IntroScript_NoPuzzleWalkout_Move1 {
+	walk_slow_down
+	walk_slow_left * 2
+	walk_left * 3
+	walk_fast_left * 3
+}
+movement Puzzle_MetaPuzzleCave_IntroScript_NoPuzzleWalkout_Move2 {
+	delay_16
+	face_down
+	delay_16 * 5
+	face_left
+}
 
 // ----------------------------------------------------
 //  1 = BREAKABLE_ROCK => from MAP_PUZZLE_TRICK_HOUSE_ORIGINAL3
@@ -90,3 +211,56 @@ script MetaPuzzle_PickupEvent_SeedotDoll {
 	giveitem_std(ITEM_META_ITEM_SEEDOT, 1, 1)
 }
 
+
+
+script MetaPuzzle_DropOffEvents {
+	setvar(VAR_0x800A, 0)
+	// 
+	setvar(VAR_0x8000, ITEM_META_ITEM_ROCK)
+	checkitem(VAR_0x8000, 1)
+	if (var(VAR_RESULT) == TRUE) {
+	msgbox( "Oh! That Inflatable Rock! I can feel\n"
+			"the rockiness it represents emanating\l"
+			"from it! Yes! Give it here, please!$")
+		call(MetaPuzzle_DropOffEvents_GiveItem)
+	}
+	// 
+	setvar(VAR_0x8000, ITEM_META_ITEM_ZIGZAG)
+	checkitem(VAR_0x8000, 1)
+	if (var(VAR_RESULT) == TRUE) {
+	msgbox( "Oh! That Zigzag Cushion! It's so\n"
+			"furry and full of the will to mimic!\l"
+			"Let me take it, please!$")
+		call(MetaPuzzle_DropOffEvents_GiveItem)
+	}
+	// 
+	setvar(VAR_0x8000, ITEM_META_ITEM_LOTAD)
+	checkitem(VAR_0x8000, 1)
+	if (var(VAR_RESULT) == TRUE) {
+	msgbox( "Oh! That Lotad Doll! I can see how\n"
+			"very moist it is! Allow me to take\l"
+			"it off your hands!$")
+		call(MetaPuzzle_DropOffEvents_GiveItem)
+	}
+	// 
+	setvar(VAR_0x8000, ITEM_META_ITEM_GRASS)
+	checkitem(VAR_0x8000, 1)
+	if (var(VAR_RESULT) == TRUE) {
+	msgbox( "Oh! The Grass Cushion! <sniff!>\n"
+			"I can still smell the PINECO that\l"
+			"passed over it! If you please!$")
+		call(MetaPuzzle_DropOffEvents_GiveItem)
+	}
+	
+	// TODO: More as more are implemented
+	return
+}
+
+script MetaPuzzle_DropOffEvents_GiveItem {
+	bufferitemname(0, VAR_0x8000)
+	msgbox( "{PLAYER} handed over the\n"
+			"{STR_VAR_1}.$")
+	takeitem(VAR_0x8000, 1)
+	addvar(VAR_0x800A, 1)
+	return
+}

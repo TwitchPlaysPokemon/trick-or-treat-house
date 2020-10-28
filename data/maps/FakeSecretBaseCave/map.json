@@ -28,16 +28,16 @@
             "graphics_id": "EVENT_OBJ_GFX_FLANNERY",
             "movement_range_x": 0,
             "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NULL",
+            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+            "script": "FakeSecretBaseCave_Mistress",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "TRAINER_TYPE_NONE",
             "x": 4,
-            "y": 16
+            "y": 17
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_META_SUBMITTED_ROCK",
             "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -50,7 +50,7 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_META_SUBMITTED_ZIGZAG",
             "graphics_id": "EVENT_OBJ_GFX_ZIGZAG_CUSHION",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -63,7 +63,7 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_META_SUBMITTED_DOLL",
             "graphics_id": "EVENT_OBJ_GFX_CYNDAQUIL_DOLL",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -76,7 +76,7 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_META_SUBMITTED_LOTAD",
             "graphics_id": "EVENT_OBJ_GFX_LOTAD_DOLL",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -89,7 +89,7 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_META_SUBMITTED_GRASS",
             "graphics_id": "EVENT_OBJ_GFX_GRASS_CUSHION",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -102,7 +102,7 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_META_SUBMITTED_DIAMOND",
             "graphics_id": "EVENT_OBJ_GFX_DIAMOND_CUSHION",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -115,7 +115,7 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_META_SUBMITTED_SPIN",
             "graphics_id": "EVENT_OBJ_GFX_SPIN_CUSHION",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -128,7 +128,7 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_META_SUBMITTED_BALL",
             "graphics_id": "EVENT_OBJ_GFX_BALL_CUSHION",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -141,7 +141,7 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_META_SUBMITTED_KISS",
             "graphics_id": "EVENT_OBJ_GFX_KISS_CUSHION",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -154,7 +154,7 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_META_SUBMITTED_ROUND",
             "graphics_id": "EVENT_OBJ_GFX_ROUND_CUSHION",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -167,7 +167,7 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_META_SUBMITTED_FIRE",
             "graphics_id": "EVENT_OBJ_GFX_FIRE_CUSHION",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -180,7 +180,7 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_META_SUBMITTED_PIKA",
             "graphics_id": "EVENT_OBJ_GFX_PIKA_CUSHION",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -193,7 +193,7 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_META_SUBMITTED_DUSKULL",
             "graphics_id": "EVENT_OBJ_GFX_DUSKULL_DOLL",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -206,7 +206,7 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_META_SUBMITTED_WATER",
             "graphics_id": "EVENT_OBJ_GFX_WATER_CUSHION",
             "movement_range_x": 0,
             "movement_range_y": 0,
@@ -219,7 +219,7 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
+            "flag": "FLAG_META_SUBMITTED_SEEDOT",
             "graphics_id": "EVENT_OBJ_GFX_SEEDOT_DOLL",
             "movement_range_x": 0,
             "movement_range_y": 0,

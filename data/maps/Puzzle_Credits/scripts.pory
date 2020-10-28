@@ -1,6 +1,6 @@
 raw `
 Puzzle_Credits_MapScripts::
-	puzzle_info Puzzle_Credits_Name, CommonAuthor_M4UsedRollout
+	puzzle_info Puzzle_Credits_Name, CommonAuthor_Tustin2121
 	map_script MAP_SCRIPT_PUZZLE_CUSTOM_INTRO_SCRIPT, Puzzle_Credits_IntroScript
 	.byte 0
 

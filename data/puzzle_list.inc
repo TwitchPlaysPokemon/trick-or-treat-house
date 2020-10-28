@@ -57,6 +57,7 @@ gPuzzleList::                                           @ Puzzle Type(s)
 .align 2
 gDebugPuzzles::
     .2byte MAP_EMPTY_PUZZLE
+    .2byte MAP_PUZZLE_META_PUZZLE_CAVE
     .2byte MAP_TRICK_TREAT_ALTO_MARE1                   @  TRICK (after Mossdeep)
     .2byte MAP_PUZZLE_FALLING_WATER                     @  ITEM/MOVEMENT
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL1             @  BATTLE/MAZE

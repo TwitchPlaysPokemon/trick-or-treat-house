@@ -1403,3 +1403,27 @@ void Imposter_PopulatePokeblockCase(struct ScriptContext *ctx) {
 #undef IMP_BRENDAN
 #undef IMP_MAY
 #undef IMP_ALEX
+
+///////////////////////////////////////////////////////////////////////////////
+// Puzzle: Secret Caverns
+// MAP_PUZZLE_META_PUZZLE_CAVE
+
+void MetaPuzzle_CountSubmittedItems(struct ScriptContext *ctx) {
+	gSpecialVar_Result = 0;
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_ROCK);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_ZIGZAG);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_LOTAD);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_GRASS);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_DIAMOND);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_SPIN);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_DOLL);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_BALL);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_KISS);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_ROUND);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_FIRE);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_PIKA);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_DUSKULL);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_WATER);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_SEEDOT);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_CUSHION);
+}

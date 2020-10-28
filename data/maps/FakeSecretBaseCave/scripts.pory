@@ -1,8 +1,166 @@
 raw `
-FakeSecretBaseCave_MapScripts::
-	.byte 0
+#define LID_MISTRESS  1
 `
+mapscripts FakeSecretBaseCave_MapScripts {
+	MAP_SCRIPT_ON_LOAD {
+		setmetatile(15, 15, 0x234, FALSE)
+		setmetatile(15, 16, 0x23C, FALSE)
+		if (var(VAR_MISTRESS_STATE) == 0) {
+			setobjectmovementtype(LID_MISTRESS, MOVEMENT_TYPE_FACE_UP)
+		}
+		if (var(VAR_MISTRESS_STATE) == 2) {
+			setvar(VAR_MISTRESS_STATE, 1)
+		}
+	}
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_MISTRESS_STATE, 0: FakeSecretBaseCave_MistressIntro
+	]
+}
 
 script FakeSecretBaseCave_DenyPC {
-	msgbox ("It's locked with a password.$", MSGBOX_SIGN)
+	msgbox ("There's a grid of fifteen squares\n"
+			"on screen, like a sliding tile puzzle.\p"
+			"Best not touch it.$", MSGBOX_SIGN)
 }
+
+script FakeSecretBaseCave_MistressIntro {
+	lockall
+	// exclaim
+	applymovement(LID_MISTRESS, Common_Movement_FaceDown)
+	waitmovement(0)
+	applymovement(LID_MISTRESS, Common_Movement_ExclamationMarkAndWait)
+	waitmovement(0)
+	msgbox ("Gah! Who are you?\n"
+			"How did you find my base?!$")
+	closemessage
+	// run over
+	applymovement(LID_MISTRESS, FakeSecretBaseCave_MistressIntro_Movement1)
+	waitmovement(LID_MISTRESS)
+	applymovement(LID_PLAYER, Common_Movement_FaceLeft)
+	message("Oh, love the costume.\n"
+			"Very nice.\p"
+			"Are you participating in the Trick\n"
+			"House event this year?\p"
+			"You are! So you've probably met my\n"
+			"brother then. Maybe you can help me…\p"
+			"Oh, yeah, sorry, my name is Flannery,\n"
+			"but tonight, you can call me…\p$")
+	waitmessage
+	applymovement(LID_MISTRESS, FakeSecretBaseCave_MistressIntro_Movement2)
+	waitmovement(LID_MISTRESS)
+	message("The {COLOR RED}TRICK MISTRESS{COLOR DARK_GREY}!{PAUSE 30}\p$")
+	waitmessage
+	applymovement(LID_MISTRESS, Common_Movement_FaceRight)
+	message("Hm? Gym? Oh, right, Lavaridge. Yeah,\n"
+			"that wasn't really for me in the end.\p$")
+	waitmessage
+	applymovement(LID_MISTRESS, FakeSecretBaseCave_MistressIntro_Movement3a)
+	applymovement(LID_PLAYER, FakeSecretBaseCave_MistressIntro_Movement3b)
+	message("And after last year's Trick House event\n"
+			"I discovered that the TRICK MASTER is\l"
+			"my brother. Well, half-brother…\l"
+			"…long story, I won't bore you with it.\p"
+			"Anyway! You can help me!\n"
+			"Yes, this is good! I need your help!\p$")
+	waitmessage
+	waitmovement(LID_MISTRESS)
+	applymovement(LID_MISTRESS, FakeSecretBaseCave_MistressIntro_Movement4a)
+	applymovement(LID_PLAYER, FakeSecretBaseCave_MistressIntro_Movement4b)
+	message("You see, I want to try and show up my\n"
+			"brother with my own puzzle!\p"
+			"I've got a big idea… but I don't have\n"
+			"the resources to do it yet…\p"
+			"I need you to try and find me… the…\n"
+			"{COLOR BLUE}essence{COLOR DARK_GREY}… of the puzzles you do tonight.\p"
+			"You'll know when you see them.\n"
+			"They're quite out of place.\p"
+			"I want you to pick them up and bring\n"
+			"them to me if you can.\p"
+			"If you bring me at least {COLOR RED}eight{COLOR DARK_GREY}\n"
+			"by the end of the night…\p$")
+	waitmessage
+	applymovement(LID_MISTRESS, Common_Movement_FaceRight)
+	message("I might be able to throw together\n"
+			"a puzzle even greater than my brother\l"
+			"has EVER done before. Maybe.\p$")
+	waitmessage
+	applymovement(LID_MISTRESS, Common_Movement_FaceDown)
+	message("What do you think?\p"
+			"Don't worry too much if you can't\n"
+			"I'll… try and whip something up\l"
+			"even if I don't have the resources…\p"
+			"It'll just be kinda disappointing…\p"
+			"Good luck!$")
+	waitmessage
+	waitbuttonpress
+	setvar(VAR_MISTRESS_STATE, 2)
+	copyobjectxytoperm(LID_MISTRESS)
+	releaseall
+}
+
+movement FakeSecretBaseCave_MistressIntro_Movement1 {
+	walk_down * 3
+	walk_in_place_right * 1
+}
+movement FakeSecretBaseCave_MistressIntro_Movement2 {
+	face_up
+	delay_4
+	face_left
+	delay_4
+	face_down
+	delay_4
+	face_right
+	delay_4
+	face_up
+	delay_4
+	face_left
+	delay_4
+	face_down
+}
+movement FakeSecretBaseCave_MistressIntro_Movement3a {
+	walk_slow_up * 4
+	face_right
+}
+movement FakeSecretBaseCave_MistressIntro_Movement3b {
+	walk_slow_up * 4
+	face_left
+}
+movement FakeSecretBaseCave_MistressIntro_Movement4a {
+	walk_up
+	walk_right
+	face_down
+}
+movement FakeSecretBaseCave_MistressIntro_Movement4b {
+	delay_16
+	face_up
+}
+
+// ----------------------------------------------------
+
+script FakeSecretBaseCave_Mistress {
+	lock
+	faceplayer
+	switch (var(VAR_MISTRESS_STATE)) {
+		case 1:
+			msgbox( "How's tonight been going?\n"
+					"Find anything?")
+			call(MetaPuzzle_DropOffEvents)
+			// TODO: Check if at 9 or 15 items and react accordingly
+			msgbox ("If you find anymore more, please,\n"
+					"don't hesitate to drop them here!$")
+			setvar(VAR_MISTRESS_STATE, 2)
+		case 2:
+			msgbox ("Please try and find me the essence\n"
+					"of puzzles you come across.\p"
+					"Not every puzzle will have something.\n"
+					"It might be quite rare to find.\p"
+					"But if you do find anything,\n"
+					"please give it to me if you can.$")
+	}
+	release
+}
+
+
+raw `
+#undef LID_MISTRESS
+`

@@ -151,7 +151,7 @@
 #define VAR_CANDY_TRADE_D                    0x407D
 #define VAR_CANDY_TRADE_E                    0x407E
 #define VAR_CANDY_TRADE_F                    0x407F
-#define VAR_UNUSED_0x4060                    0x4080
+#define VAR_MISTRESS_STATE                   0x4080 // Trick Mistress
 #define VAR_UNUSED_0x4061                    0x4081 // Unused Var
 #define VAR_UNUSED_0x4062                    0x4082 // Unused Var
 #define VAR_UNUSED_0x4063                    0x4083

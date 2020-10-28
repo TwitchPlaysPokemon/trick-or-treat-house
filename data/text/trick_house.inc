@@ -3,7 +3,7 @@ PuzzleCommon_Text_GameIntro::
 	.string "For I am the greatest living mystery\l"
 	.string "of a man in all of HOENN!\p"
 	.string "They call me… The {TRICK_MASTER}!{PAUSE 40}\n"
-	.string "Wahahaha!\p"
+	.string "Wahahaha!{PAUSE 30}\p"
 	.string "You! You all here!\p"
 	.string "You heard about my wonderful event, the\n"
 	.string "TRICK-OR-TREAT HOUSE, haven't you?\p"
