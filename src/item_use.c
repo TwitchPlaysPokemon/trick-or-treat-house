@@ -290,12 +290,23 @@ void ItemUseOutOfBattle_Itemfinder(u8 var)
     SetUpItemUseOnFieldCallback(var);
 }
 
+extern size_t CountDigits(int value);
+extern void CountCandyItems(struct ScriptContext *ctx);
 void ItemUseOnFieldCB_Itemfinder(u8 taskId)
 {
     if (ItemfinderCheckForHiddenItems(gMapHeader.events, taskId) == TRUE)
         gTasks[taskId].func = sub_80FD504;
     else
-        DisplayItemMessageOnField(taskId, gText_ItemFinderNothing, sub_80FD5CC);
+    {
+        CountCandyItems(NULL); // puts the number of candy items into VAR_RESULT
+        if (gSpecialVar_Result == 0xFF) {
+            DisplayItemMessageOnField(taskId, gText_ItemFinderNothing, sub_80FD5CC);
+        }
+        else {
+            ConvertIntToDecimalStringN(gStringVar1, gSpecialVar_Result, 0, CountDigits(gSpecialVar_Result));
+            DisplayItemMessageOnField(taskId, gText_ItemFinderPuzzleCandyRemaining, sub_80FD5CC);
+        }
+    }
 }
 
 void sub_80FD504(u8 taskId)

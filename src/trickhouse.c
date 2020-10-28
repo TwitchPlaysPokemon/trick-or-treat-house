@@ -442,6 +442,24 @@ void CheckAllCandyGotten(struct ScriptContext *ctx)
 	}
 }
 
+void CountCandyItems(struct ScriptContext *ctx)
+{
+	u8 itemCount = 0, itemGotten = 0;
+	u16 currPuzzle = GetCurrentPuzzleMapId();
+	const u16 *array = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_CANDY_LIST);
+	if (array != NULL) {
+		while (array[0] != 0)
+		{
+			itemCount++;
+			itemGotten += FlagGet(array[0]);
+			array += 1;
+		}
+		gSpecialVar_Result = (itemCount - itemGotten);
+	} else {
+		gSpecialVar_Result = 0xFF;
+	}
+}
+
 void RemovePuzzleItems(struct ScriptContext *ctx)
 {
 	u8 pocket, a, b;

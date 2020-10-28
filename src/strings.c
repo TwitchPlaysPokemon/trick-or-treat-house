@@ -302,6 +302,7 @@ const u8 gText_CantDismountBike[] = _("You can't dismount your BIKE here.{PAUSE_
 const u8 gText_ItemFinderNearby[] = _("Huh?\nThe ITEMFINDER's responding!\pThere's an item buried around here!{PAUSE_UNTIL_PRESS}");
 const u8 gText_ItemFinderOnTop[] = _("Oh!\nThe ITEMFINDER's shaking wildly!{PAUSE_UNTIL_PRESS}");
 const u8 gText_ItemFinderNothing[] = _("… … … …Nope!\nThere's no response.{PAUSE_UNTIL_PRESS}");
+const u8 gText_ItemFinderPuzzleCandyRemaining[] = _("… … … …Nope!\nThere's no response.\pHowever the ITEMFINDER reports\n{STR_VAR_1} candies left in this puzzle.{PAUSE_UNTIL_PRESS}");
 const u8 gText_CoinCase[] = _("Your COINS:\n{STR_VAR_1}{PAUSE_UNTIL_PRESS}");
 const u8 gText_BootedUpTM[] = _("Booted up a TM.");
 const u8 gText_BootedUpHM[] = _("Booted up an HM.");
