@@ -339,6 +339,7 @@ script TrickHouseRestroom_EventScript_Healer {
 		waitmovement (EVENT_OBJ_ID_PLAYER)
 		applymovement(EVENT_OBJ_ID_PLAYER, TrickHouseRestroom_Movement_Healer13)
 		playfanfare(MUS_ME_ASA)
+		special(HealPlayerParty)
 		waitfanfare
 		applymovement(1, TrickHouseRestroom_Movement_Healer20)
 		waitmovement (EVENT_OBJ_ID_PLAYER)

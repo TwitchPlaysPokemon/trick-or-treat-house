@@ -26,12 +26,12 @@ Puzzle_SuspendedMaze_Quip:
 	.string "I know there's Steel-type {POKEMON},\n"
 	.string "but Iron-type? Never heard of it.$"
 Puzzle_SuspendedMaze_DevCommentary:
-	.string "Tustin2121: This maze is an almost perfect\n"
-	.string "copy of the first crossword puzzle that\l"
-	.string "Serebii created during the initial COVID\l"
-	.string "outbreak back in March.\p"
-	.string "Someone said it looked like a maze, and\n"
-	.string "that gave me the idea for it.\p"
+	.string "Tustin2121: This maze is an almost\n"
+	.string "perfect copy of the first crossword\l"
+	.string "puzzle that Serebii created during the\l"
+	.string "initial COVID outbreak back in March.\p"
+	.string "Someone said it looked like a maze,\n"
+	.string "and that gave me the idea for it.\p"
 	.string "(Twitter link: twitter.com/SerebiiNet/\n"
 	.string "status/1241729153319211008)$"
 .align 2
@@ -78,13 +78,23 @@ script Puzzle_SuspendedMaze_SetHoleWarp {
 ///////////////////////////////////////////////////////
 
 script Puzzle_SuspendedMaze_Trainer_Youngster {
-	trainerbattle_single(TRAINER_01, "Hi$", "F$")
-	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+	trainerbattle_single(TRAINER_01, 
+			"This maze looks insane! I'm not sure\n"
+			"I wanna even try it…$", 
+			"Maybe I shouldn't have even tried\n"
+			"to fight you!$")
+	msgbox ("I'm just gonna hang here… Let me\n"
+			"know if you find your way through.$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_SuspendedMaze_Trainer_PlasmaKid {
-	trainerbattle_single(TRAINER_02, "Hi$", "F$")
-	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+	trainerbattle_single(TRAINER_02, 
+			"You! You distracted me!\n"
+			"And then I fell into the drink!!\p"
+			"Time for payback for ruining\n"
+			"my costume!$", 
+			"Damn, so much for payback.$")
+	msgbox ("What even is this place?$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_SuspendedMaze_Trainer_Link {
@@ -98,23 +108,40 @@ script Puzzle_SuspendedMaze_Trainer_Link {
 }
 
 script Puzzle_SuspendedMaze_Trainer_Alien {
-	trainerbattle_single(TRAINER_04, "Hi$", "F$")
-	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+	trainerbattle_single(TRAINER_04, 
+			"You ready for your probing?!$", 
+			"I meant that platonically, chill!$")
+	msgbox ("I was gonna come dressed as a DALEK\n"
+			"but it proved way too heavy to wear…$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_SuspendedMaze_Trainer_FairyGirl {
-	trainerbattle_single(TRAINER_05, "Hi$", "F$")
-	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+	trainerbattle_single(TRAINER_05, 
+			"Oh, hello. Did I get in your way?$", 
+			"Oh, well now you're in my way…$")
+	msgbox ("There's so many cross paths around\n"
+			"here it's so easy to get confused.$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_SuspendedMaze_Trainer_MagmaGirl {
-	trainerbattle_single(TRAINER_06, "Hi$", "F$")
-	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+	trainerbattle_single(TRAINER_06, 
+			"Hey there! Wanna expand your land\n"
+			"with a bad girl like me?$", 
+			"What? You're not into that?$")
+	msgbox ("Don't give me that look!\n"
+			"Team Magma is fairer game than some!\p"
+			"At least when Team Magma killed\n"
+			"people, it was equal opportunity!$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_SuspendedMaze_Trainer_CorpseBride {
-	trainerbattle_single(TRAINER_07, "Hi$", "F$")
-	msgbox ("Bye$", MSGBOX_AUTOCLOSE)
+	trainerbattle_single(TRAINER_07,
+			"Hello.\n"
+			"Have you seen my husband anywhere?\p"
+			"Green skin, bolts in the neck? No?$",
+			"I guess you haven't then.$")
+	msgbox ("If you see my monster, let him know\n"
+			"the kids need picked up.$", MSGBOX_AUTOCLOSE)
 }
 
 ///////////////////////////////////////////////////////
