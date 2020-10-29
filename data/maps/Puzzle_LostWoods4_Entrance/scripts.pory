@@ -52,41 +52,59 @@ Puzzle_LostWoods4_CandyList:
 // Camper walking in circles around a ball
 script Puzzle_LostWoods4_TrainerScript_CamperA5 {
 	trainerbattle_single(TRAINER_01, 
-			"", 
-			"")
-	msgbox ("", MSGBOX_AUTOCLOSE)
+			"Hey! I'm trying to set up camp here!\n"
+			"Don't get in the way!$", 
+			"Alright, I won't get in your way!$")
+	msgbox ("I'm waiting for my partner to get\n"
+			"back so we can set up camp.\p"
+			"He's wandered off into the wilderness\n"
+			"and hasn't returned yet…\p"
+			"I-I hope he's okay…$", MSGBOX_AUTOCLOSE)
 }
 
 // Ninja boy hiding as a tree
 script Puzzle_LostWoods4_TrainerScript_NinjaB2 {
 	trainerbattle_single(TRAINER_02, 
-			"", 
-			"")
-	msgbox ("", MSGBOX_AUTOCLOSE)
+			"Having successfully hid from prey,\n"
+			"the preying mantis ATTACKS!!$", 
+			"Sliced in twain!")
+	msgbox ("I thought I had the prefect plan\n"
+			"of attack.$", MSGBOX_AUTOCLOSE)
 }
 
 // Skeleton hiding as a mountain among breakable rocks
 script Puzzle_LostWoods4_TrainerScript_SkeletonB5 {
 	trainerbattle_single(TRAINER_03, 
-			"", 
-			"")
-	msgbox ("", MSGBOX_AUTOCLOSE)
+			"Raising from the ground, the mountains\n"
+			"move to ATTACK!!$", 
+			"Aw, you weren't scared?$")
+	msgbox ("I've been waiting here for what feels\n"
+			"like DAYS to spring this trap, and\l"
+			"you win so easily. Boo.$", MSGBOX_AUTOCLOSE)
 }
 
 // Skeleton rotating on the spot
 script Puzzle_LostWoods4_TrainerScript_SkeletonC1 {
 	trainerbattle_single(TRAINER_04, 
-			"", 
-			"")
-	msgbox ("", MSGBOX_AUTOCLOSE)
+			"STALFOS ATTACK!!$", 
+			"Wow, you're good.$")
+	msgbox ("I walked away from my camping partner\n"
+			"to change into this costume.\p"
+			"I wanted to scare him, thinking I'd been\n"
+			"turned into a STALFOS or something.\p"
+			"But… I've compleately lost my way…\n"
+			"Have you seen him around?\p"
+			"I-I hope he's okay…$", MSGBOX_AUTOCLOSE)
 }
 
 // Alien in the long grass
 script Puzzle_LostWoods4_TrainerScript_AlienC3 {
 	trainerbattle_single(TRAINER_05, 
-			"", 
-			"")
-	msgbox ("", MSGBOX_AUTOCLOSE)
+			"Hey, um, do you know how to make\n"
+			"crop circles? Asking for a friend…$", 
+			"I'll take that as a 'no'.$")
+	msgbox ("How do aliens do it? They bend the\n"
+			"crops so perfectly without breaking!$", MSGBOX_AUTOCLOSE)
 }
 
 

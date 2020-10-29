@@ -4,9 +4,8 @@
 		"name": "RYAN",
 		"party": [
 			{
-				"species": "SPECIES_SANDSHREW",
-				"level": 28,
-				"moves": ["MOVE_DIG", "MOVE_SAND_ATTACK", "MOVE_POISON_STING", "MOVE_SLASH"]
+				"species": "SPECIES_SANDSLASH",
+				"level": 31
 			}
 		]
 	},
@@ -16,105 +15,50 @@
 		"music": "MALE",
 		"party": [
 			{
-				"species": "SPECIES_VULPIX",
-				"level": 27
-			},
-			{
-				"species": "SPECIES_BRELOOM",
-				"level": 27
+				"species": "SPECIES_SCYTHER",
+				"level": 32
 			}
 		]
 	},
 	{
 		"class": "SKELETON",
-		"name": "NIGEL",
+		"name": "JAMAL",
 		"music": "MALE",
 		"party": [
 			{
-				"species": "SPECIES_VULPIX",
-				"level": 27
-			},
-			{
-				"species": "SPECIES_BRELOOM",
-				"level": 27
+				"species": "SPECIES_ONIX",
+				"level": 32
 			}
 		]
 	},
 	{
-		"class": "NINJA_BOY",
-		"name": "NIGEL",
-		"music": "MALE",
+		"class": "SKELETON",
+		"name": "IAN",
+		"music": "SUSPICIOUS",
 		"party": [
 			{
-				"species": "SPECIES_VULPIX",
-				"level": 27
+				"species": "SPECIES_DUSKULL",
+				"level": 30
 			},
 			{
-				"species": "SPECIES_BRELOOM",
-				"level": 27
+				"species": "SPECIES_HAUNTER",
+				"level": 30
 			}
 		]
 	},
 	{
-		"class": "NINJA_BOY",
-		"name": "NIGEL",
-		"music": "MALE",
-		"party": [
-			{
-				"species": "SPECIES_VULPIX",
-				"level": 27
-			},
-			{
-				"species": "SPECIES_BRELOOM",
-				"level": 27
-			}
-		]
-	},
-	{
-		"class": "NINJA_BOY",
-		"name": "NIGEL",
-		"music": "MALE",
-		"party": [
-			{
-				"species": "SPECIES_VULPIX",
-				"level": 27
-			},
-			{
-				"species": "SPECIES_BRELOOM",
-				"level": 27
-			}
-		]
-	},
-	{
-		"class": "NINJA_BOY",
-		"name": "NIGEL",
-		"music": "MALE",
-		"party": [
-			{
-				"species": "SPECIES_VULPIX",
-				"level": 27
-			},
-			{
-				"species": "SPECIES_BRELOOM",
-				"level": 27
-			}
-		]
-	},
-	{
-		"class": "PICNICKER",
-		"name": "EMILY",
+		"class": "ALIEN",
+		"name": "KELSEY",
 		"female": true,
-		"music": "GIRL",
+		"music": "INTENSE",
 		"party": [
-			{
-				"species": "SPECIES_SANDSHREW",
-				"level": 27,
-				"moves": ["MOVE_DIG", "MOVE_SAND_ATTACK", "MOVE_POISON_STING", "MOVE_SLASH"]
-			},
 			{
 				"species": "SPECIES_BALTOY",
-				"level": 27,
-				"moves": ["MOVE_RAPID_SPIN", "MOVE_MUD_SLAP", "MOVE_PSYBEAM", "MOVE_ROCK_TOMB"]
+				"level": 31
+			},
+			{
+				"species": "SPECIES_NOSEPASS",
+				"level": 31
 			}
 		]
 	}

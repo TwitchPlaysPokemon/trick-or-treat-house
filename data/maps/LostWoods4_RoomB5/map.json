@@ -83,7 +83,7 @@
             "movement_type": "MOVEMENT_TYPE_MOUNTAIN_DISGUISE",
             "script": "Puzzle_LostWoods4_TrainerScript_SkeletonB5",
             "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
+            "trainer_type": "TRAINER_TYPE_BURIED",
             "x": 8,
             "y": 8
         }

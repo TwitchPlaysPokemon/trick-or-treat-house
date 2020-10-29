@@ -604,8 +604,22 @@ static bool8 RevealDisguisedTrainer(u8 taskId, struct Task *task, struct EventOb
 
 static bool8 WaitRevealDisguisedTrainer(u8 taskId, struct Task *task, struct EventObject *trainerObj)
 {
-    if (EventObjectClearHeldMovementIfFinished(trainerObj))
+    if (EventObjectClearHeldMovementIfFinished(trainerObj)) {
+        struct EventObject *playerObj = &gEventObjects[gPlayerAvatar.eventObjectId];
+        if (trainerObj->currentCoords.x < playerObj->currentCoords.x) {
+            trainerObj->facingDirection = DIR_EAST;
+        }
+        if (trainerObj->currentCoords.x > playerObj->currentCoords.x) {
+            trainerObj->facingDirection = DIR_WEST;
+        }
+        if (trainerObj->currentCoords.y < playerObj->currentCoords.y) {
+            trainerObj->facingDirection = DIR_SOUTH;
+        }
+        if (trainerObj->currentCoords.y > playerObj->currentCoords.y) {
+            trainerObj->facingDirection = DIR_NORTH;
+        }
         task->tFuncId = 3;
+    }
 
     return FALSE;
 }
