@@ -260,6 +260,7 @@ const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_UnusedMauvilleOldM
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_UnusedMauvilleOldMan2;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Quilava;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Farfetchd;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Pidgey;
 
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TrickScroll;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_TrickDoorScroll;
@@ -526,6 +527,7 @@ const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] =
     [EVENT_OBJ_GFX_HOOH] =                     &gEventObjectGraphicsInfo_HoOh,
     [EVENT_OBJ_GFX_QUILAVA] =                  &gEventObjectGraphicsInfo_Quilava,
     [EVENT_OBJ_GFX_FARFETCHD] =                &gEventObjectGraphicsInfo_Farfetchd,
+    [EVENT_OBJ_GFX_PIDGEY] =                &gEventObjectGraphicsInfo_Pidgey,
     
     // Trick House Items
     [EVENT_OBJ_GFX_HM_BALL] =                  &gEventObjectGraphicsInfo_HMBall,

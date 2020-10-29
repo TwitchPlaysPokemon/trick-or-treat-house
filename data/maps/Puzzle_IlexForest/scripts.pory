@@ -1087,12 +1087,17 @@ script Puzzle_IlexForest_EventScript_Man {
 				"to cut trees for charcoal.\p"
 				"Now, how can I thank you…\p"
 				"I know! Here, take this!$")
-		call (PuzzleCommon_EventScript_Scroll)
+		playfanfare (MUS_FANFA4)
+		clearflag(FLAG_HIDE_SCROLL)
 		addobject (LID_SCROLL)
+		message (PuzzleCommon_Text_ScrollFound1)
+		waitfanfare
 		msgbox ("I found that scroll lying here\n"
 				"before I left for tea.\p"
 				"I don't know what it is,\n"
 				"but it looks important.$")
+		setflag (FLAG_TRICK_HOUSE_SCROLL_READ)
+		msgbox (PuzzleCommon_Text_ScrollFound2)
 		release
 	} else {
 	msgbox ("Do you want to apprentace as a\n"

@@ -457,6 +457,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define EVENT_OBJ_PAL_TAG_POSSESSED         0x1138
 #define EVENT_OBJ_PAL_TAG_QUILAVA           0x1139
 #define EVENT_OBJ_PAL_TAG_FARFETCHD         0x113A
+#define EVENT_OBJ_PAL_TAG_PIDGEY            0x113B
 #define EVENT_OBJ_PAL_TAG_NONE              0x11FF
 
 #include "data/field_event_obj/event_object_graphics_info_pointers.h"
@@ -524,6 +525,7 @@ const struct SpritePalette sEventObjectSpritePalettes[] = {
     {gEvtObjPal_Alien,        EVENT_OBJ_PAL_TAG_ALIEN},
     {gEvtObjPal_Quilava,      EVENT_OBJ_PAL_TAG_QUILAVA},
     {gEvtObjPal_Farfetchd,    EVENT_OBJ_PAL_TAG_FARFETCHD},
+    {gEvtObjPal_Pidgey,       EVENT_OBJ_PAL_TAG_PIDGEY},
     {gEvtObjPal_Imposter,     EVENT_OBJ_PAL_TAG_POSSESSED},
     {NULL,                  0x0000},
 };

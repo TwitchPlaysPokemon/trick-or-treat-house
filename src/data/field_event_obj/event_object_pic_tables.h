@@ -2305,6 +2305,18 @@ const struct SpriteFrameImage gEventObjectPicTable_Farfetchd[] = {
     overworld_frame(gEventObjectPic_Farfetchd, 4, 4, 15),
 };
 
+const struct SpriteFrameImage gEventObjectPicTable_Pidgey[] = {
+    overworld_frame(gEventObjectPic_Pidgey, 2, 2, 0),
+    overworld_frame(gEventObjectPic_Pidgey, 2, 2, 1),
+    overworld_frame(gEventObjectPic_Pidgey, 2, 2, 2),
+    overworld_frame(gEventObjectPic_Pidgey, 2, 2, 0),
+    overworld_frame(gEventObjectPic_Pidgey, 2, 2, 0),
+    overworld_frame(gEventObjectPic_Pidgey, 2, 2, 1),
+    overworld_frame(gEventObjectPic_Pidgey, 2, 2, 1),
+    overworld_frame(gEventObjectPic_Pidgey, 2, 2, 2),
+    overworld_frame(gEventObjectPic_Pidgey, 2, 2, 2),
+};
+
 const struct SpriteFrameImage gEventObjectPicTable_RubySapphireBrendan[] = {
     overworld_frame(gEventObjectPic_RubySapphireBrendanNormal, 2, 4, 0),
     overworld_frame(gEventObjectPic_RubySapphireBrendanNormal, 2, 4, 1),
