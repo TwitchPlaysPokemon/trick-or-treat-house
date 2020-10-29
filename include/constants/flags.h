@@ -633,7 +633,7 @@
 #define FLAG_HIDDEN_ITEM_UNUSED_0x66                         (FLAG_HIDDEN_ITEMS_START + 0x66)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x67                         (FLAG_HIDDEN_ITEMS_START + 0x67)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x68                         (FLAG_HIDDEN_ITEMS_START + 0x68)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x69                         (FLAG_HIDDEN_ITEMS_START + 0x69)
+#define FLAG_HIDDEN_LIMITED_CANDY_0x69                       (FLAG_HIDDEN_ITEMS_START + 0x69)
 #define FLAG_HIDDEN_LIMITED_CANDY_0x6A                       (FLAG_HIDDEN_ITEMS_START + 0x6A)
 #define FLAG_HIDDEN_LIMITED_CANDY_0x6B                       (FLAG_HIDDEN_ITEMS_START + 0x6B)
 #define FLAG_HIDDEN_LIMITED_CANDY_0x6C                       (FLAG_HIDDEN_ITEMS_START + 0x6C)

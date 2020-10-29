@@ -35,6 +35,58 @@
     "music": "MUS_DAN01",
     "name": "LostWoods4_RoomD1",
     "object_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_4F",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Puzzle_LostWoods1_Mimic",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 10,
+            "y": 8
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_COMMON_03",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyCommon",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 12,
+            "y": 10
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_06",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyAbundant",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 8,
+            "y": 10
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_HEALTHY_01",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyHealthy",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 10,
+            "y": 12
+        }
     ],
     "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
     "requires_flash": false,

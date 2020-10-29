@@ -35,6 +35,19 @@
     "music": "MUS_DAN01",
     "name": "LostWoods4_RoomC5",
     "object_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_RARE_01",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyRare",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 10,
+            "y": 10
+        }
     ],
     "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
     "requires_flash": false,

@@ -49,6 +49,10 @@ Common_EventScript_CandyLimited06:: @ FLAG_HIDDEN_LIMITED_CANDY_0x6A
 	giveitem_std ITEM_RARE_CANDY, 1, 1    @ Used in Fortree City
 	end
 
+Common_EventScript_CandyLimited07:: @ FLAG_HIDDEN_LIMITED_CANDY_0x69
+	giveitem_std ITEM_RARE_CANDY, 1, 1    @ Used in Lost Woods 4
+	end
+
 
 @ -----------------------------------------------------
 @ Below is depreicated

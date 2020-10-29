@@ -33,10 +33,23 @@ Puzzle_LostWoods4_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_02
 	.2byte FLAG_CANDY_ABUNDANT_03
 	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_ABUNDANT_05
+	.2byte FLAG_CANDY_ABUNDANT_06
+	.2byte FLAG_CANDY_ABUNDANT_07
 	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_COMMON_03
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_03
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_HEALTHY_02
+	.2byte FLAG_CANDY_RARE_01
+	.2byte FLAG_HIDDEN_LIMITED_CANDY_0x69
 	.2byte 0
 `
 
+// Camper walking in circles around a ball
 script Puzzle_LostWoods4_TrainerScript_CamperA5 {
 	trainerbattle_single(TRAINER_01, 
 			"", 
@@ -44,6 +57,7 @@ script Puzzle_LostWoods4_TrainerScript_CamperA5 {
 	msgbox ("", MSGBOX_AUTOCLOSE)
 }
 
+// Ninja boy hiding as a tree
 script Puzzle_LostWoods4_TrainerScript_NinjaB2 {
 	trainerbattle_single(TRAINER_02, 
 			"", 
@@ -51,6 +65,7 @@ script Puzzle_LostWoods4_TrainerScript_NinjaB2 {
 	msgbox ("", MSGBOX_AUTOCLOSE)
 }
 
+// Skeleton hiding as a mountain among breakable rocks
 script Puzzle_LostWoods4_TrainerScript_SkeletonB5 {
 	trainerbattle_single(TRAINER_03, 
 			"", 
@@ -58,6 +73,7 @@ script Puzzle_LostWoods4_TrainerScript_SkeletonB5 {
 	msgbox ("", MSGBOX_AUTOCLOSE)
 }
 
+// Skeleton rotating on the spot
 script Puzzle_LostWoods4_TrainerScript_SkeletonC1 {
 	trainerbattle_single(TRAINER_04, 
 			"", 
@@ -65,9 +81,52 @@ script Puzzle_LostWoods4_TrainerScript_SkeletonC1 {
 	msgbox ("", MSGBOX_AUTOCLOSE)
 }
 
+// Alien in the long grass
 script Puzzle_LostWoods4_TrainerScript_AlienC3 {
 	trainerbattle_single(TRAINER_05, 
 			"", 
 			"")
 	msgbox ("", MSGBOX_AUTOCLOSE)
+}
+
+
+script Puzzle_LostWoods4_EventScript_EmptyItems {
+	msgbox ("{PLAYER} found an empty item ball…$", MSGBOX_SIGN)
+}
+
+
+// TODO: Make this a Bonsley instead when we pull in other pokemon
+script Puzzle_LostWoods4_EventScript_VanishTree {
+	lock
+	message ("This tree looks like it can be{PAUSE 90}\n"
+			"vanished??$")
+	applymovement(THIS_EVENT, Puzzle_LostWoods4_Movement_BlinkAway)
+	waitmovement(THIS_EVENT)
+	waitmessage
+	waitbuttonpress
+	removeobject(THIS_EVENT)
+	release
+}
+movement Puzzle_LostWoods4_Movement_BlinkAway {
+	set_invisible
+	delay_4
+	set_visible
+	delay_4
+	set_invisible
+	delay_4
+	set_visible
+	delay_4
+	set_invisible
+	delay_8
+	set_visible
+	delay_8
+	set_invisible
+	delay_8
+	set_visible
+	delay_8
+	set_invisible
+	delay_16
+	set_visible
+	delay_16
+	set_invisible
 }

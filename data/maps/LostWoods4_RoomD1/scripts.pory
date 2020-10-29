@@ -1,5 +1,12 @@
 raw `
 LostWoods4_RoomD1_MapScripts::
 	puzzle_info Puzzle_LostWoods4_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ON_LOAD, LostWoods4_RoomD1_OnLoad
 	.byte 0
 `
+script(local) LostWoods4_RoomD1_OnLoad {
+	setmetatile(10, 8, 0x201, FALSE)
+	setmetatile(10,12, 0x201, FALSE)
+	setmetatile( 8,10, 0x201, FALSE)
+	setmetatile(12,10, 0x201, FALSE)
+}

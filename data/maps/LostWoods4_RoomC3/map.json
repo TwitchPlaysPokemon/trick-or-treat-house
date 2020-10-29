@@ -45,8 +45,8 @@
             "script": "Puzzle_LostWoods4_TrainerScript_AlienC3",
             "trainer_sight_or_berry_tree_id": "1",
             "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 13,
-            "y": 10
+            "x": 9,
+            "y": 7
         }
     ],
     "region_map_section": "MAPSEC_LITTLEROOT_TOWN",

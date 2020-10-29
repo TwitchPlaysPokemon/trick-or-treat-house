@@ -110,14 +110,3 @@ script Puzzle_LostWoods1_Mimic {
 	release
 	end
 }
-
-script Puzzle_LostWoods1_Lamppost {
-	selectpointer_clamp (Puzzle_LostWoods1_Lamppost_TextArray, VAR_PUZZLE_00)
-	msgbox_selected (MSGBOX_SIGN)
-}
-raw `
-.align 2
-Puzzle_LostWoods1_Lamppost_TextArray:
-	.4byte 
-	.4byte 0
-`
