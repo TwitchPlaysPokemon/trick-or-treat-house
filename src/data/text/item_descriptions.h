@@ -1947,8 +1947,8 @@ static const u8 sMetaItemLotadDesc[] = _(
 
 static const u8 sMetaItemGrassName[] = _("Grass Cushion");
 static const u8 sMetaItemGrassDesc[] = _(
-    "A green cushion that\n"
-    "seems to encapsulate\n"
+    "A green cushion\n"
+    "that encapsulates\n"
     "the forest.");
 
 static const u8 sMetaItemDiamondName[] = _("Diamond Cushion");
