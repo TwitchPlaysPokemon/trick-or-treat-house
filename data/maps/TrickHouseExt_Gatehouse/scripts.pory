@@ -1,14 +1,21 @@
 raw `
 TrickHouseExt_Gatehouse_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, TrickHouseExt_Gatehouse_OnLoad
 	.byte 0
+
+#define LID_SPOOPY 2
 `
+
+script TrickHouseExt_Gatehouse_OnLoad {
+	setflag(FLAG_TEMP_2) // Hide the spoopy
+}
 
 script TrickHouseExt_Gatehouse_ItemGet {
 	lock
 	waitse
 	// We're picking up the following item:
-	copyvar(VAR_0x8000, ITEM_FLUFFY_TAIL)
-	copyvar(VAR_0x8001, 1)
+	setvar(VAR_0x8000, ITEM_QUICK_CLAW)
+	setvar(VAR_0x8001, 1)
 	
 	copyvar (VAR_0x8004, VAR_0x8000)
 	copyvar (VAR_0x8005, VAR_0x8001)
@@ -34,6 +41,11 @@ script TrickHouseExt_Gatehouse_ItemGet {
 		}
 		
 		//TODO Do spoopy here
+		setobjectxyperm(LID_SPOOPY, 13, 4)
+		addobject(LID_SPOOPY)
+		delay(18)
+		applymovement(LID_SPOOPY, TrickHouseExt_Gatehouse_ItemGetMovement)
+		setvar(VAR_TEMP_0, 1)
 		
 		waitfanfare
 		waitmessage
@@ -42,11 +54,17 @@ script TrickHouseExt_Gatehouse_ItemGet {
 		messagewordwrap (gText_PutItemInPocket)
 		waitmessage
 		waitbuttonpress
+		removeobject(LID_SPOOPY)
+		setobjectxyperm(LID_SPOOPY, 4, 3)
+		addobject(LID_SPOOPY)
 	} else {
 		msgbox (gText_ObtainedTheItem, MSGBOX_DEFAULT)
 		msgbox (gText_TooBadBagIsFull, MSGBOX_DEFAULT)
 	}
 	release
+}
+movement TrickHouseExt_Gatehouse_ItemGetMovement {
+	walk_slow_left * 4
 }
 
 script TrickHouseExt_Gatehouse_Door {
@@ -56,5 +74,27 @@ script TrickHouseExt_Gatehouse_Door {
 }
 
 script TrickHouseExt_Gatehouse_Trigger {
-	
+	lockall
+	playse(SE_PIN)
+	applymovement(LID_PLAYER, TrickHouseExt_Gatehouse_TriggerMovement)
+	applymovement(LID_SPOOPY, Common_Movement_WalkLeft2)
+	waitmovement(LID_SPOOPY)
+	removeobject(LID_SPOOPY)
+	waitmovement(LID_PLAYER)
+	setvar(VAR_TEMP_0, 2)
+	releaseall
 }
+movement TrickHouseExt_Gatehouse_TriggerMovement {
+	face_down
+	emote_exclamation_mark
+	delay_16 * 2
+	face_up
+	delay_16 * 2
+	face_right
+	delay_16 * 4
+	face_left
+}
+
+raw `
+#undef LID_SPOOPY
+`

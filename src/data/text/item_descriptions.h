@@ -2079,9 +2079,9 @@ static const u8 sButterfingerDesc[] = _(
     "Restores HP\n"
     "by 60 points.");
 
-static const u8 sMilkyWayName[] = _("MilkyWay");
+static const u8 sMilkyWayName[] = _("Milky Way");
 static const u8 sMilkyWayDesc[] = _(
-    "No carmel version.\n"
+    "Global variant.\n"
     "Restores HP\n"
     "by 80 points.");
 
