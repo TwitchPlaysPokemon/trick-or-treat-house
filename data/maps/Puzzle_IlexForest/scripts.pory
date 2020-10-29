@@ -970,15 +970,15 @@ script(local) Puzzle_IlexForest_BirdSpotE6 {
 		case DIR_NORTH:
 			ilex_runto(E7, Puzzle_IlexForest_Movement_A6_A7)
 		case DIR_SOUTH:
-			ilex_runto(E5, Puzzle_IlexForest_Movement_A6_A4)
+			ilex_runto(E4, Puzzle_IlexForest_Movement_A6_A4)
 		default:
-			ilex_runto(E4, Puzzle_IlexForest_Movement_A6_A5)
+			ilex_runto(E5, Puzzle_IlexForest_Movement_A6_A5)
 	}
 }
 script(local) Puzzle_IlexForest_BirdSpotE7 {
 	switch(var(VAR_FACING)) {
 		default:
-			ilex_runto(E7, Puzzle_IlexForest_Movement_A7_A6)
+			ilex_runto(E6, Puzzle_IlexForest_Movement_A7_A6)
 		case DIR_WEST:
 			ilex_runto(E1, Puzzle_IlexForest_Movement_SprintNorth4)
 		case DIR_SOUTH:
