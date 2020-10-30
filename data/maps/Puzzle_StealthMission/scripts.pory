@@ -9,7 +9,7 @@ Puzzle_StealthMission_MapScripts::
 	map_script MAP_SCRIPT_PUZZLE_EXIT_SCRIPT, Puzzle_StealthMission_OnExit
 	map_script MAP_SCRIPT_PUZZLE_BLACKOUT_SCRIPT, Puzzle_StealthMission_OnEscapeOrBlackout
 	map_script MAP_SCRIPT_PUZZLE_ESCAPE_SCRIPT, Puzzle_StealthMission_OnEscapeOrBlackout
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Puzzle_StealthMission_WarpTable
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_StealthMission_FrameTable
 	.byte 0
 
 Puzzle_StealthMission_Name:
@@ -34,7 +34,7 @@ Puzzle_StealthMission_CandyList:
 	.2byte FLAG_CANDY_HEALTHY_01
 	.2byte 0
 
-Puzzle_StealthMission_WarpTable:
+Puzzle_StealthMission_FrameTable:
 	map_script_2 VAR_LAST_WARP_ID, 2, Puzzle_StealthMission_CheckFinished
 	.2byte 0
 
