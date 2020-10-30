@@ -600,4 +600,7 @@ script SafariZone_EventScript_AlexInTheRain {
 
 raw `
 #undef VAR_SAFARI_ZONE_STATE
+#undef LID_SCIENTIST
+#undef LID_JOEY
+#undef LID_WALLY
 `

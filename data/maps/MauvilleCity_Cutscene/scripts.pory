@@ -58,7 +58,7 @@ script(local) MauvilleCity_PanHalloween {
 	applymovement (EVENT_OBJ_ID_PLAYER, MauvilleCity_CameraWalkFinish)
 	fadescreenspeed (1, 6)
 	setvar (VAR_INTRO_COUNTER, 1)
-	warpcustom (MAP_TRICK_HOUSE_EXT, 3, -1, -1)
+	warpcustom (MAP_ROUTE110_CUTSCENE, 0, -1, -1)
 	waitstate
 	releaseall
 }

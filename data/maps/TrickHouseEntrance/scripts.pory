@@ -22,11 +22,24 @@ mapscripts TrickHouseEntrance_MapScripts {
 			setobjectxy(4, 6, 5)   turnobject(4, 2)
 			setobjectxy(5, 4, 5)   turnobject(5, 2)
 			setobjectxy(6, 3, 4)   turnobject(6, 2)
+			setobjectxy(7, 5, 6)   turnobject(7, 2)
 			turnobject(EVENT_OBJ_ID_PLAYER, 2)
 		}
 	]
 	MAP_SCRIPT_ON_TRANSITION {
 		checkplayergender
+		switch(var(VAR_RESULT)) {
+			case GENDER_M:
+				setvar (VAR_OBJ_GFX_ID_A, TTH_FRIEND_ALEX)
+				setvar (VAR_OBJ_GFX_ID_B, TTH_FRIEND_MAY)
+			case GENDER_F:
+				setvar (VAR_OBJ_GFX_ID_A, TTH_FRIEND_BRENDAN)
+				setvar (VAR_OBJ_GFX_ID_B, TTH_FRIEND_ALEX)
+			case GENDER_N:
+				setvar (VAR_OBJ_GFX_ID_A, TTH_FRIEND_BRENDAN)
+				setvar (VAR_OBJ_GFX_ID_B, TTH_FRIEND_MAY)
+		}
+		
 		if (var(VAR_RESULT) == MALE) {
 			// setvar (VAR_OBJ_GFX_ID_A, EVENT_OBJ_GFX_RIVAL_MAY_NORMAL)
 			setvar (VAR_OBJ_GFX_ID_A, EVENT_OBJ_GFX_MAY_NORMAL)
@@ -38,6 +51,7 @@ mapscripts TrickHouseEntrance_MapScripts {
 }
 
 raw `
+#define LID_RIVALB 7
 #define LID_RIVAL 4
 #define LID_JOEY 3
 #define LID_FAIRY 6
@@ -68,12 +82,12 @@ script TrickHouseEntrance_WalkInCutscene {
 	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkUp1)
 	waitmovement (0)
 	msgbox ("You're being watched…$")
-	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceRight)
-	applymovement (LID_RIVAL, Common_Movement_WalkInPlaceLeft)
-	waitmovement (0)
-	msgbox ("{RIVAL}: You felt that too, right?\p"
-			"I wonder if the guy who opened the door\n"
-			"is hiding?$")
+	// applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceRight)
+	// applymovement (LID_RIVAL, Common_Movement_WalkInPlaceLeft)
+	// waitmovement (0)
+	// msgbox ("{RIVAL}: You felt that too, right?\p"
+	// 		"I wonder if the guy who opened the door\n"
+	// 		"is hiding?$")
 	setvar (VAR_INTRO_COUNTER, 3)
 	release
 }
@@ -86,6 +100,7 @@ script TrickHouseEntrance_IntroCutscene {
 	call (PuzzleCommon_EventScript_WarpTrickMasterOut)
 	//
 	opendoor (5, 1)
+	applymovement (LID_RIVALB, Common_Movement_WalkInPlaceUp)
 	applymovement (LID_RIVAL, Common_Movement_WalkInPlaceLeft)
 	applymovement (LID_JOEY, Common_Movement_WalkInPlaceRight)
 	applymovement (LID_FAIRY, Common_Movement_WalkInPlaceRight)
@@ -97,13 +112,13 @@ script TrickHouseEntrance_IntroCutscene {
 	applymovement (LID_FAIRY, Common_Movement_WalkUp1)
 	waitmovement (0)
 	applymovement (LID_FAIRY, Common_Movement_WalkInPlaceDown)
-	message("{FAIRY}: Puzzles? I'm all for that!\n"
-			"Let's go!$")
+	message("{FAIRY}: Yay Puzzles! Let's go!$")
 	applymovement (LID_WALLY, Common_Movement_WalkInPlaceUp)
 	delay (6)
 	applymovement (LID_RIVAL, Common_Movement_WalkInPlaceUp)
 	delay (8)
 	applymovement (LID_PLAYER, Common_Movement_WalkInPlaceUp)
+	applymovement (LID_RIVALB, Common_Movement_WalkInPlaceUp)
 	delay (10)
 	applymovement (LID_JOEY, Common_Movement_WalkInPlaceUp)
 	waitmessage
@@ -119,13 +134,11 @@ script TrickHouseEntrance_IntroCutscene {
 	delay (10)
 	applymovement (LID_LINK, TrickHouseEntrance_Movement1_Link)
 	applymovement (LID_WALLY, Common_Movement_WalkInPlaceRight)
-	msgbox ("{LINK}: That TRICK guy said there was\n"
-			"candy to get, right?!\p"
-			"Yeah! I'm with {FAIRY}!\n"
-			"Coming, {JOEY}?$")
+	msgbox ("{LINK}: Coming, {JOEY}?$")
 	closemessage
 	applymovement (LID_LINK, TrickHouseEntrance_Movement2_Link)
 	applymovement (LID_JOEY, TrickHouseEntrance_Movement2_Joey)
+	applymovement (LID_RIVALB, TrickHouseEntrance_Movement2_RivalB)
 	waitmovement (LID_JOEY)
 	//
 	applymovement (LID_WALLY, Common_Movement_WalkInPlaceDown)
@@ -177,6 +190,15 @@ movement TrickHouseEntrance_Movement2_Joey {
 	walk_right
 	walk_up * 3
 	walk_left * 3
+	walk_up
+	set_invisible
+}
+movement TrickHouseEntrance_Movement2_RivalB {
+	walk_left * 2
+	walk_up * 4
+	walk_right
+	delay_16
+	walk_right
 	walk_up
 	set_invisible
 }
@@ -248,16 +270,16 @@ script TrickHouseEntrance_EventScript_ScrollDoor {
 }
 
 script TrickHouseEntrance_EventScript_Link {
-	msgbox ("{LINK}: Man, I don't see any candy\n"
+	msgbox ("{JAMES}: Man, I don't see any him\n"
 			"around here.\p"
-			"We could be in SLATEPORT right now\n"
+			"We could be in the puzzles right now\n"
 			"hauling in the big dough!$", MSGBOX_NPC)
 }
 script TrickHouseEntrance_EventScript_Joey {
 	lock
-	msgbox ("{JOEY}: {LINK}, chill!\p"
-			"We've got pleanty of time for more\n"
-			"trick-or-treating!$")
+	msgbox ("{JOEY}: {JAMES}, chill!\p"
+			"We've got plenty of time to do the\n"
+			"trick house puzzles!$")
 	playse (SE_SELECT)
 	faceplayer
 	msgbox ("And people call ME the annoying one.\p"
@@ -273,12 +295,31 @@ script TrickHouseEntrance_EventScript_Fairy {
 			"clean recently, so it's not haunted.\p"
 			"Maybe someone's around…$", MSGBOX_NPC)
 }
-script TrickHouseEntrance_EventScript_Rival {
-	msgbox ("{RIVAL}: Maybe we can find who's\n"
+script TrickHouseEntrance_EventScript_RivalA {
+	checkplayergender
+	if (var(VAR_RESULT) == MALE) { // Rival A is Alex
+		goto(TrickHouseEntrance_EventScript_RivalAlex)
+	} else {
+	msgbox ("{BRENDAN}: Maybe we can find who's\n"
 			"watching us if we look around…\p"
 			"Don't worry: if anyone tries to steal\n"
 			"you away, you have us as backup.$", MSGBOX_NPC)
+	}
 }
+script TrickHouseEntrance_EventScript_RivalB {
+	checkplayergender
+	if (var(VAR_RESULT) == FEMALE) { // Rival B is Alex
+		goto(TrickHouseEntrance_EventScript_RivalAlex)
+	} else {
+	msgbox ("{MAY}: I wonder if the TRICK MASTER\n"
+			"is hiding in the same place this year…$", MSGBOX_NPC)
+	}
+}
+script(local) TrickHouseEntrance_EventScript_RivalAlex {
+	msgbox( "{ALEX}: Please tell me I'm not the only\n"
+			"on creeped out right now…$", MSGBOX_NPC)
+}
+
 script TrickHouseEntrance_EventScript_Wally {
 	lock
 	faceplayer

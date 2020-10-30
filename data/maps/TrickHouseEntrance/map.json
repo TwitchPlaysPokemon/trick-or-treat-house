@@ -92,7 +92,7 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "TrickHouseEntrance_EventScript_Rival",
+            "script": "TrickHouseEntrance_EventScript_RivalA",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "TRAINER_TYPE_NONE",
             "x": 6,
@@ -123,6 +123,19 @@
             "trainer_type": "TRAINER_TYPE_NONE",
             "x": 2,
             "y": 4
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDE_TRICK_HOUSE_INTRO_CHARACTERS",
+            "graphics_id": "EVENT_OBJ_GFX_VAR_B",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_UP",
+            "script": "TrickHouseEntrance_EventScript_RivalB",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 3,
+            "y": 6
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_110",
