@@ -54,5 +54,17 @@ script TrickHouseTreeHouse_OnLoad_Traders_LoadA9 {
 // ----------------------------------------------------
 
 script TrickHouseTreeHouse_EventScript_TraderA {
-	
+	msgbox ("We're still getting set up here.\n"
+			"Come back later.$", MSGBOX_NPC)
+}
+script TrickHouseTreeHouse_EventScript_TraderB {
+	msgbox ("I have some sweet TMs on the way.\n"
+			"Come back later.$", MSGBOX_NPC)
+	// msgbox ("I got this sweet TM")
+}
+script TrickHouseTreeHouse_EventScript_TraderC {
+	msgbox ("We're running an exchange up here.\n"
+			"Candy for TMs.\p"
+			"We're… kinda out of TMs at the moment\n"
+			"however, so, um… come back later?$", MSGBOX_NPC)
 }

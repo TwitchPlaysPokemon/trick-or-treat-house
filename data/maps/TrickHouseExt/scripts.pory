@@ -696,7 +696,9 @@ script TrickHouseExt_EventScript_TraderB1 {
 script TrickHouseExt_EventScript_TraderB2 {
 	switch(var(VAR_OBJ_GFX_ID_4)) {
 		case EVENT_OBJ_GFX_MERMAID_WALKING:
-			msgbox("TODO$", MSGBOX_NPC)
+			// msgbox("TODO$", MSGBOX_NPC)
+			msgbox("It's always nice to give my fins\n"
+					"A good stretch!$", MSGBOX_NPC)
 		case EVENT_OBJ_GFX_CAMERAMAN:
 			// Don't lock, make sure the cameraman is still looking around
 			message("(Kid, get out of our shot.)$")
@@ -716,7 +718,11 @@ script TrickHouseExt_EventScript_TraderB2 {
 script TrickHouseExt_EventScript_TraderC1 {
 	switch(var(VAR_OBJ_GFX_ID_5)) {
 		case EVENT_OBJ_GFX_BLACK_BELT:
-			msgbox("TODO$", MSGBOX_NPC)
+			// msgbox("TODO$", MSGBOX_NPC)
+			msgbox("What? It's the classic couple cosume!\n"
+					"The BLACK BELT and his MERMAID!\p"
+					"What do you mean you've never heard\n"
+					"of such a thing before??$", MSGBOX_NPC)
 		case EVENT_OBJ_GFX_RICH_BOY:
 			offertrade(
 				ITEM_CANDY_GOBSTOPPER, 1,
@@ -758,9 +764,12 @@ script TrickHouseExt_EventScript_TraderC1 {
 				"out my dentures.$"
 			)
 		case EVENT_OBJ_GFX_BEAUTY:
-			msgbox("TODO$", MSGBOX_NPC)
+			// msgbox("TODO$", MSGBOX_NPC)
+			msgbox("I love your costume.\n"
+					"Do you like mine too?$", MSGBOX_NPC)
 		case EVENT_OBJ_GFX_ANABEL:
-			msgbox("TODO$", MSGBOX_NPC)
+			// msgbox("TODO$", MSGBOX_NPC)
+			msgbox("Hello. Fine evening isn't it?$", MSGBOX_NPC)
 		default:
 			msgbox("Object event$", MSGBOX_NPC)
 	}
@@ -779,7 +788,9 @@ script TrickHouseExt_EventScript_TraderD1 {
 				"Gobstoppers are.$"
 			)
 		case EVENT_OBJ_GFX_GHETSIS:
-			msgbox("TODO$", MSGBOX_NPC)
+			// msgbox("TODO$", MSGBOX_NPC)
+			msgbox("What are you staring at? I made this\n"
+					"costume myself.$", MSGBOX_NPC)
 		case EVENT_OBJ_GFX_BRAWLY:
 			offertrade(
 				ITEM_CANDY_GOBSTOPPER, 1,
