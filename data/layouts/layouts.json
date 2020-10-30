@@ -1819,6 +1819,16 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_Contest",
             "width": 21
+        },
+        {
+            "blockdata_filepath": "data/layouts/Puzzle_BlockPushing/map.bin",
+            "border_filepath": "data/layouts/Puzzle_BlockPushing/border.bin",
+            "height": 30,
+            "id": "LAYOUT_PUZZLE_BLOCK_PUSHING",
+            "name": "Puzzle_BlockPushing_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_TrickHousePuzzle",
+            "width": 30
         }
     ],
     "layouts_table_label": "gMapLayouts"

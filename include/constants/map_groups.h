@@ -144,6 +144,7 @@
 #define MAP_PUZZLE_SOOTOPOLIS_GYM           (18 | (7 << 8))
 #define MAP_PUZZLE_IMPOSTER_REFLECTION      (19 | (7 << 8))
 #define MAP_PUZZLE_THIN_ICE                 (20 | (7 << 8))
+#define MAP_PUZZLE_BLOCK_PUSHING                        (21 | (7 << 8))
 
 // Map Group 8
 #define MAP_PUZZLE_LOST_WOODS1_ENTRANCE (0 | (8 << 8))

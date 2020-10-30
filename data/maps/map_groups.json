@@ -184,7 +184,8 @@
         "Puzzle_DiveMaze",
         "Puzzle_SootopolisGym",
         "Puzzle_ImposterReflection",
-        "Puzzle_ThinIce"
+        "Puzzle_ThinIce",
+        "Puzzle_BlockPushing"
     ],
     "MG_SingleMapPuzzles2019": [
         "Puzzle_TrickHouseCut",

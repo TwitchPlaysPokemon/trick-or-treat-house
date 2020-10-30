@@ -338,7 +338,7 @@ script TrickHouseExt_EventScript_FinderGirl {
 	msgbox ("Mommy won't let me go swimming in the\n"
 			"river and explore islands.\p"
 			"She says we have swimming at home, but\n"
-			"swimming at home is baby pools…$", MSGBOX_NPC)
+			"swimming at home is a baby pool…$", MSGBOX_NPC)
 }
 
 script TrickHouseExt_EventScript_CardGame {
@@ -602,7 +602,7 @@ setvar VAR_REQUEST_AMT, \rAmt
 loadword 0, \msg1
 loadword 1, \msg2
 loadword 2, \msg3
-call TrickHouseExt_CommonOfferTrade
+goto TrickHouseExt_CommonOfferTrade
 .endm
 
 `
@@ -730,9 +730,26 @@ script TrickHouseExt_EventScript_TraderA2 {
 				"Awww, alright.$",
 				"Thank you!$")
 		case EVENT_OBJ_GFX_BUG_CATCHER:
-			msgbox("TODO$", MSGBOX_NPC)
+			offertrade(
+				ITEM_SUPER_REPEL, 1, 
+				ITEM_CANDY_APPLE, 0,
+				"My BUG {POKEMON} love Apples, but I\n"
+				"don't have any more on me.\p"
+				"Hey, uh, do you have any Apples?\n"
+				"I'll trade some Repels.$",
+				"Man… maybe the store will still have\n"
+				"some left in stock.$",
+				"Sweet! My {POKEMON} will love these!$"
+			)
 		case EVENT_OBJ_GFX_ALIEN:
-			msgbox("TODO$", MSGBOX_NPC)
+			offertrade(
+				ITEM_CANDY_100GRAND, 1,
+				ITEM_CANDY_CHOCOLATE, 5,
+				"Hey, you got a bunch of Chocolate?\n"
+				"I'll trade you a 100 Grand for 5?$",
+				"Your loss.$",
+				"Thanks!$"
+			)
 		default:
 			msgbox("Object event$", MSGBOX_NPC)
 	}
@@ -771,7 +788,8 @@ script TrickHouseExt_EventScript_TraderA3 {
 				"INTO the Oreos!$"
 			)
 		case EVENT_OBJ_GFX_MASKED_BOY:
-			msgbox("TODO$", MSGBOX_NPC)
+			msgbox( "I wanted to dress as the Coronavirus\n"
+					"this year, but my mom wouldn't let me.$", MSGBOX_NPC)
 		case EVENT_OBJ_GFX_GHOST:
 			msgbox("TODO$", MSGBOX_NPC)
 		default:
