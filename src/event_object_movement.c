@@ -523,6 +523,7 @@ const struct SpritePalette sEventObjectSpritePalettes[] = {
     {gEvtObjPal_TwinsPlus,    EVENT_OBJ_PAL_TAG_TWINS_PLUS},
     {gEvtObjPal_TwinsMinus,   EVENT_OBJ_PAL_TAG_TWINS_MINUS},
     {gEvtObjPal_Alien,        EVENT_OBJ_PAL_TAG_ALIEN},
+    {gEvtObjPal_Tustin2121,   EVENT_OBJ_PAL_DEV_TUSTIN2121},
     {gEvtObjPal_Quilava,      EVENT_OBJ_PAL_TAG_QUILAVA},
     {gEvtObjPal_Farfetchd,    EVENT_OBJ_PAL_TAG_FARFETCHD},
     {gEvtObjPal_Pidgey,       EVENT_OBJ_PAL_TAG_PIDGEY},

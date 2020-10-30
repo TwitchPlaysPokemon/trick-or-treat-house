@@ -1,6 +1,28 @@
 #define gItemIconPic_QuestionMark gItemIcon_QuestionMark
 #define gItemIconPal_QuestionMark gItemIconPalette_QuestionMark
 
+extern const u16 gEventObjectPalette0[];
+extern const u16 gEventObjectPalette1[];
+extern const u16 gEventObjectPalette2[];
+extern const u16 gEventObjectPalette3[];
+extern const u32 gEventObjectPic_BreakableRock[];
+extern const u32 gEventObjectPic_ZigzagCushion[];
+extern const u32 gEventObjectPic_LotadDoll[];
+extern const u32 gEventObjectPic_GrassCushion[];
+extern const u32 gEventObjectPic_DiamondCushion[];
+extern const u32 gEventObjectPic_SpinCushion[];
+extern const u32 gEventObjectPic_CyndaquilDoll[];
+extern const u32 gEventObjectPic_BallCushion[];
+extern const u32 gEventObjectPic_KissCushion[];
+extern const u32 gEventObjectPic_RoundCushion[];
+extern const u32 gEventObjectPic_FireCushion[];
+extern const u32 gEventObjectPic_PikaCushion[];
+extern const u32 gEventObjectPic_DuskullDoll[];
+extern const u32 gEventObjectPic_WaterCushion[];
+extern const u32 gEventObjectPic_SeedotDoll[];
+extern const u32 gEventObjectPic_RoundCushion[];
+
+
 const u32 *const gItemIconTable[][2] =
 {
     [ITEM_NONE] =   {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
@@ -252,22 +274,22 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_0E3] =    {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_0E4] =    {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_0E5] =    {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_META_ITEM_ROCK] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_META_ITEM_ZIGZAG] =   {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_META_ITEM_LOTAD] =    {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_META_ITEM_GRASS] =    {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_META_ITEM_DIAMOND] =  {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_META_ITEM_SPIN] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_META_ITEM_DOLL] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_META_ITEM_BALL] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_META_ITEM_KISS] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_META_ITEM_ROUND] =    {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_META_ITEM_FIRE] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_META_ITEM_PIKA] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_META_ITEM_DUSKULL] =  {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_META_ITEM_WATER] =    {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_META_ITEM_SEEDOT] =   {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_META_ITEM_CUSHION] =  {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
+    [ITEM_META_ITEM_ROCK] =     {gEventObjectPic_BreakableRock,   (const u32*) gEventObjectPalette0},
+    [ITEM_META_ITEM_ZIGZAG] =   {gEventObjectPic_ZigzagCushion,   (const u32*) gEventObjectPalette0},
+    [ITEM_META_ITEM_LOTAD] =    {gEventObjectPic_LotadDoll,       (const u32*) gEventObjectPalette2},
+    [ITEM_META_ITEM_GRASS] =    {gEventObjectPic_GrassCushion,    (const u32*) gEventObjectPalette2},
+    [ITEM_META_ITEM_DIAMOND] =  {gEventObjectPic_DiamondCushion,  (const u32*) gEventObjectPalette3},
+    [ITEM_META_ITEM_SPIN] =     {gEventObjectPic_SpinCushion,     (const u32*) gEventObjectPalette0},
+    [ITEM_META_ITEM_DOLL] =     {gEventObjectPic_CyndaquilDoll,   (const u32*) gEventObjectPalette2},
+    [ITEM_META_ITEM_BALL] =     {gEventObjectPic_BallCushion,     (const u32*) gEventObjectPalette2},
+    [ITEM_META_ITEM_KISS] =     {gEventObjectPic_KissCushion,     (const u32*) gEventObjectPalette3},
+    [ITEM_META_ITEM_ROUND] =    {gEventObjectPic_RoundCushion,    (const u32*) gEventObjectPalette0},
+    [ITEM_META_ITEM_FIRE] =     {gEventObjectPic_FireCushion,     (const u32*) gEventObjectPalette1},
+    [ITEM_META_ITEM_PIKA] =     {gEventObjectPic_PikaCushion,     (const u32*) gEventObjectPalette1},
+    [ITEM_META_ITEM_DUSKULL] =  {gEventObjectPic_DuskullDoll,     (const u32*) gEventObjectPalette3},
+    [ITEM_META_ITEM_WATER] =    {gEventObjectPic_WaterCushion,    (const u32*) gEventObjectPalette0},
+    [ITEM_META_ITEM_SEEDOT] =   {gEventObjectPic_SeedotDoll,      (const u32*) gEventObjectPalette2},
+    [ITEM_META_ITEM_CUSHION] =  {gEventObjectPic_RoundCushion,    (const u32*) gEventObjectPalette0},
     [ITEM_CUT_ITEM] =           {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_FLASH_ITEM] =         {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_ROCKSMASH_ITEM] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
@@ -277,7 +299,7 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_DIVE_ITEM] =          {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_WATERFALL_ITEM] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     // Contest hold items
-    [ITEM_RED_SCARF] =  {gItemIcon_Scarf, gItemIconPalette_RedScarf},
+    [ITEM_RED_SCARF] =      {gItemIcon_Scarf, gItemIconPalette_RedScarf},
     [ITEM_BLUE_SCARF] =     {gItemIcon_Scarf, gItemIconPalette_BlueScarf},
     [ITEM_PINK_SCARF] =     {gItemIcon_Scarf, gItemIconPalette_PinkScarf},
     [ITEM_GREEN_SCARF] =    {gItemIcon_Scarf, gItemIconPalette_GreenScarf},
@@ -414,43 +436,43 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_CANDY_WARHEAD] =        {gItemIconPic_warhead, gItemIconPal_warhead},
     [ITEM_CANDY_PRETZEL] =        {gItemIconPic_pretzel, gItemIconPal_pretzel},
     [ITEM_CANDY_VEROMANGO] =      {gItemIconPic_veromango, gItemIconPal_veromango},
-    [ITEM_CANDY_VIOLETCRUMBLE] =  {gItemIconPic_QuestionMark, gItemIconPal_QuestionMark},
-    [ITEM_CANDY_TWIXLEFT] =       {gItemIconPic_twix, gItemIconPal_twix},
-    [ITEM_CANDY_TWIXRIGHT] =      {gItemIconPic_twix, gItemIconPal_twix},
+    [ITEM_CANDY_VIOLETCRUMBLE] =  {gItemIconPic_violetcrumble, gItemIconPal_violetcrumble},
+    [ITEM_CANDY_TWIXLEFT] =       {gItemIconPic_twix, gItemIconPal_twixleft},
+    [ITEM_CANDY_TWIXRIGHT] =      {gItemIconPic_twix, gItemIconPal_twixright},
     [ITEM_CANDY_MMMINI] =         {gItemIconPic_mmmini, gItemIconPal_mmmini},
     [ITEM_CANDY_MMPEANUT] =       {gItemIconPic_mmjumbo, gItemIconPal_mmjumbo},
-    [ITEM_CANDY_KINGCHOCNUT] =    {gItemIconPic_QuestionMark, gItemIconPal_QuestionMark},
+    [ITEM_CANDY_KINGCHOCNUT] =    {gItemIconPic_choconut, gItemIconPal_choconut},
     [ITEM_CANDY_GUMMYBEAR] =      {gItemIconPic_gummybear, gItemIconPal_gummybear},
     [ITEM_CANDY_REESES] =         {gItemIconPic_reesecup, gItemIconPal_reesecup},
     [ITEM_CANDY_BUTTERFINGER] =   {gItemIconPic_butterfinger, gItemIconPal_butterfinger},
-    [ITEM_CANDY_MILKYWAY] =       {gItemIconPic_QuestionMark, gItemIconPal_QuestionMark},
-    [ITEM_CANDY_MILKALUFLEE] =    {gItemIconPic_QuestionMark, gItemIconPal_QuestionMark},
+    [ITEM_CANDY_MILKYWAY] =       {gItemIconPic_milkyway, gItemIconPal_milkyway},
+    [ITEM_CANDY_MILKALUFLEE] =    {gItemIconPic_milkaluffee, gItemIconPal_milkaluffee},
     [ITEM_CANDY_100GRAND] =       {gItemIconPic_100grand, gItemIconPal_100grand},
     [ITEM_CANDY_MALTESERS] =      {gItemIconPic_malteser, gItemIconPal_malteser},
     [ITEM_CANDY_CADBURYCREME] =   {gItemIconPic_cadbury, gItemIconPal_cadbury},
-    [ITEM_CANDY_WUNDERBAR] =      {gItemIconPic_QuestionMark, gItemIconPal_QuestionMark},
+    [ITEM_CANDY_WUNDERBAR] =      {gItemIconPic_wunderbar, gItemIconPal_wunderbar},
     [ITEM_CANDY_OREO] =           {gItemIconPic_oreo, gItemIconPal_oreo},
-    [ITEM_CANDY_COFFEECRISP] =    {gItemIconPic_QuestionMark, gItemIconPal_QuestionMark},
-    [ITEM_CANDY_SAMBOPRISTUR] =   {gItemIconPic_QuestionMark, gItemIconPal_QuestionMark},
-    [ITEM_CANDY_SNICKERS] =       {gItemIconPic_QuestionMark, gItemIconPal_QuestionMark},
-    [ITEM_CANDY_MARSBAR] =        {gItemIconPic_QuestionMark, gItemIconPal_QuestionMark},
-    [ITEM_CANDY_KITKAT] =         {gItemIconPic_QuestionMark, gItemIconPal_QuestionMark},
+    [ITEM_CANDY_COFFEECRISP] =    {gItemIconPic_coffeecrisp, gItemIconPal_coffeecrisp},
+    [ITEM_CANDY_SAMBOPRISTUR] =   {gItemIconPic_sambopristur, gItemIconPal_sambopristur},
+    [ITEM_CANDY_SNICKERS] =       {gItemIconPic_snickers, gItemIconPal_snickers},
+    [ITEM_CANDY_MARSBAR] =        {gItemIconPic_marsbar, gItemIconPal_marsbar},
+    [ITEM_CANDY_KITKAT] =         {gItemIconPic_kitkat, gItemIconPal_kitkat},
     [ITEM_CANDY_PIXIESTICK] =     {gItemIconPic_pixiestick, gItemIconPal_pixiestick},
     [ITEM_CANDY_TURKISHDELIGHT] = {gItemIconPic_turkish, gItemIconPal_turkish},
     [ITEM_CANDY_GOBSTOPPER] =     {gItemIconPic_gobstopper, gItemIconPal_gobstopper},
-    [ITEM_CANDY_BLACKTHUNDER] =   {gItemIconPic_QuestionMark, gItemIconPal_QuestionMark},
+    [ITEM_CANDY_BLACKTHUNDER] =   {gItemIconPic_blackthunder, gItemIconPal_blackthunder},
     [ITEM_CANDY_TOBLERONE] =      {gItemIconPic_toblerone, gItemIconPal_toblerone},
     [ITEM_CANDY_FERREROROCHER] =  {gItemIconPic_fererorocher, gItemIconPal_fererorocher},
-    [ITEM_CANDY_EGGS] =           {gItemIconPic_QuestionMark, gItemIconPal_QuestionMark},
-    [ITEM_CANDY_EGGDEVILED] =     {gItemIconPic_QuestionMark, gItemIconPal_QuestionMark},
+    [ITEM_CANDY_EGGS] =           {gItemIconPic_egg, gItemIconPal_egg},
+    [ITEM_CANDY_EGGDEVILED] =     {gItemIconPic_deviledegg, gItemIconPal_deviledegg},
     [ITEM_CANDY_CARROT] =         {gItemIconPic_carrotstick, gItemIconPal_carrotstick},
     [ITEM_CANDY_APPLE] =          {gItemIconPic_appleslice, gItemIconPal_appleslice},
     [ITEM_CANDY_PRUNE] =          {gItemIconPic_prune, gItemIconPal_prune},
     [ITEM_CANDY_CELERY] =         {gItemIconPic_celerystick, gItemIconPal_celerystick},
-    [ITEM_CANDY_SNAPPEAS] =       {gItemIconPic_QuestionMark, gItemIconPal_QuestionMark},
-    [ITEM_CANDY_RAISIN] =         {gItemIconPic_QuestionMark, gItemIconPal_QuestionMark},
-    [ITEM_CANDY_KALE] =           {gItemIconPic_QuestionMark, gItemIconPal_QuestionMark},
-    [ITEM_CANDY_GALAXY] =         {gItemIconPic_QuestionMark, gItemIconPal_QuestionMark},
+    [ITEM_CANDY_SNAPPEAS] =       {gItemIconPic_snappeas, gItemIconPal_snappeas},
+    [ITEM_CANDY_RAISIN] =         {gItemIconPic_raisin, gItemIconPal_raisin},
+    [ITEM_CANDY_KALE] =           {gItemIconPic_kale, gItemIconPal_kale},
+    [ITEM_CANDY_GALAXY] =         {gItemIconPic_galaxy, gItemIconPal_galaxy},
     
     // Return to field arrow
     [ITEM_FIELD_ARROW] =    {gItemIcon_ReturnToFieldArrow, gItemIconPalette_ReturnToFieldArrow},

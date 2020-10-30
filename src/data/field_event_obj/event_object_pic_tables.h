@@ -2274,6 +2274,18 @@ const struct SpriteFrameImage gEventObjectPicTable_HoOh[] = {
     overworld_frame(gEventObjectPic_HoOh, 4, 4, 1),
 };
 
+const struct SpriteFrameImage gEventObjectPicTable_Tustin2121[] = {
+    overworld_frame(gEventObjectPic_Tustin2121, 2, 4, 0),
+    overworld_frame(gEventObjectPic_Tustin2121, 2, 4, 1),
+    overworld_frame(gEventObjectPic_Tustin2121, 2, 4, 2),
+    overworld_frame(gEventObjectPic_Tustin2121, 2, 4, 0),
+    overworld_frame(gEventObjectPic_Tustin2121, 2, 4, 0),
+    overworld_frame(gEventObjectPic_Tustin2121, 2, 4, 1),
+    overworld_frame(gEventObjectPic_Tustin2121, 2, 4, 1),
+    overworld_frame(gEventObjectPic_Tustin2121, 2, 4, 2),
+    overworld_frame(gEventObjectPic_Tustin2121, 2, 4, 2),
+};
+
 const struct SpriteFrameImage gEventObjectPicTable_Quilava[] = {
     overworld_frame(gEventObjectPic_Quilava, 4, 4, 0),
     overworld_frame(gEventObjectPic_Quilava, 4, 4, 1),

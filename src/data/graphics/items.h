@@ -69,7 +69,8 @@ const u32 gItemIconPic_butterfinger[] = INCBIN_U32("graphics/items/candy/butterf
 const u32 gItemIconPal_butterfinger[] = INCBIN_U32("graphics/items/candy/butterfinger.gbapal.lz");
 
 const u32 gItemIconPic_twix[] = INCBIN_U32("graphics/items/candy/twix.4bpp.lz");
-const u32 gItemIconPal_twix[] = INCBIN_U32("graphics/items/candy/twix.gbapal.lz");
+const u32 gItemIconPal_twixleft[] = INCBIN_U32("graphics/items/candy/twix_left.gbapal.lz");
+const u32 gItemIconPal_twixright[] = INCBIN_U32("graphics/items/candy/twix_right.gbapal.lz");
 
 const u32 gItemIconPic_reesecup[] = INCBIN_U32("graphics/items/candy/reesecup.4bpp.lz");
 const u32 gItemIconPal_reesecup[] = INCBIN_U32("graphics/items/candy/reesecup.gbapal.lz");
@@ -124,6 +125,57 @@ const u32 gItemIconPal_toblerone[] = INCBIN_U32("graphics/items/candy/toblerone.
 
 const u32 gItemIconPic_gummybear[] = INCBIN_U32("graphics/items/candy/gummybear.4bpp.lz");
 const u32 gItemIconPal_gummybear[] = INCBIN_U32("graphics/items/candy/gummybear.gbapal.lz");
+
+const u32 gItemIconPic_choconut[] = INCBIN_U32("graphics/items/candy/choconut.4bpp.lz");
+const u32 gItemIconPal_choconut[] = INCBIN_U32("graphics/items/candy/choconut.gbapal.lz");
+
+const u32 gItemIconPic_coffeecrisp[] = INCBIN_U32("graphics/items/candy/coffeecrisp.4bpp.lz");
+const u32 gItemIconPal_coffeecrisp[] = INCBIN_U32("graphics/items/candy/coffeecrisp.gbapal.lz");
+
+const u32 gItemIconPic_egg[] = INCBIN_U32("graphics/items/candy/egg.4bpp.lz");
+const u32 gItemIconPal_egg[] = INCBIN_U32("graphics/items/candy/egg.gbapal.lz");
+
+const u32 gItemIconPic_deviledegg[] = INCBIN_U32("graphics/items/candy/deviledegg.4bpp.lz");
+const u32 gItemIconPal_deviledegg[] = INCBIN_U32("graphics/items/candy/deviledegg.gbapal.lz");
+
+const u32 gItemIconPic_galaxy[] = INCBIN_U32("graphics/items/candy/galaxy.4bpp.lz");
+const u32 gItemIconPal_galaxy[] = INCBIN_U32("graphics/items/candy/galaxy.gbapal.lz");
+
+const u32 gItemIconPic_snappeas[] = INCBIN_U32("graphics/items/candy/snappeas.4bpp.lz");
+const u32 gItemIconPal_snappeas[] = INCBIN_U32("graphics/items/candy/snappeas.gbapal.lz");
+
+const u32 gItemIconPic_kale[] = INCBIN_U32("graphics/items/candy/kale.4bpp.lz");
+const u32 gItemIconPal_kale[] = INCBIN_U32("graphics/items/candy/kale.gbapal.lz");
+
+const u32 gItemIconPic_kitkat[] = INCBIN_U32("graphics/items/candy/kitkat.4bpp.lz");
+const u32 gItemIconPal_kitkat[] = INCBIN_U32("graphics/items/candy/kitkat.gbapal.lz");
+
+const u32 gItemIconPic_marsbar[] = INCBIN_U32("graphics/items/candy/marsbar.4bpp.lz");
+const u32 gItemIconPal_marsbar[] = INCBIN_U32("graphics/items/candy/marsbar.gbapal.lz");
+
+const u32 gItemIconPic_milkaluffee[] = INCBIN_U32("graphics/items/candy/milkaluffee.4bpp.lz");
+const u32 gItemIconPal_milkaluffee[] = INCBIN_U32("graphics/items/candy/milkaluffee.gbapal.lz");
+
+const u32 gItemIconPic_milkyway[] = INCBIN_U32("graphics/items/candy/milkyway.4bpp.lz");
+const u32 gItemIconPal_milkyway[] = INCBIN_U32("graphics/items/candy/milkyway.gbapal.lz");
+
+const u32 gItemIconPic_sambopristur[] = INCBIN_U32("graphics/items/candy/sambopristur.4bpp.lz");
+const u32 gItemIconPal_sambopristur[] = INCBIN_U32("graphics/items/candy/sambopristur.gbapal.lz");
+
+const u32 gItemIconPic_violetcrumble[] = INCBIN_U32("graphics/items/candy/violetcrumble.4bpp.lz");
+const u32 gItemIconPal_violetcrumble[] = INCBIN_U32("graphics/items/candy/violetcrumble.gbapal.lz");
+
+const u32 gItemIconPic_wunderbar[] = INCBIN_U32("graphics/items/candy/wunderbar.4bpp.lz");
+const u32 gItemIconPal_wunderbar[] = INCBIN_U32("graphics/items/candy/wunderbar.gbapal.lz");
+
+const u32 gItemIconPic_snickers[] = INCBIN_U32("graphics/items/candy/snickers.4bpp.lz");
+const u32 gItemIconPal_snickers[] = INCBIN_U32("graphics/items/candy/snickers.gbapal.lz");
+
+const u32 gItemIconPic_blackthunder[] = INCBIN_U32("graphics/items/candy/blackthunder.4bpp.lz");
+const u32 gItemIconPal_blackthunder[] = INCBIN_U32("graphics/items/candy/blackthunder.gbapal.lz");
+
+const u32 gItemIconPic_raisin[] = INCBIN_U32("graphics/items/candy/raisin.4bpp.lz");
+const u32 gItemIconPal_raisin[] = INCBIN_U32("graphics/items/candy/raisin.gbapal.lz");
 
 // Medicine
 
