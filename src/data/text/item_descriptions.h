@@ -2064,6 +2064,8 @@ static const u8 sKingChocDesc[] = _(
 static const u8 sGummyBearName[] = _("Gummyursa");
 static const u8 sGummyBearDesc[] = _(
     "Single serving.\n"
+    // "Sharply raises\n"
+    // "random stat.");
     "Raises a random\n"
     "stat in battle.");
 
@@ -2126,13 +2128,13 @@ static const u8 sCoffeeCrispName[] = _("Coffee Crisp");
 static const u8 sCoffeeCrispDesc[] = _(
     "Sharing Size.\n"
     "Heals 60 HP;\n"
-    "cures Slp/Frz.");
+    "cures status.");//Slp/Frz.");
 
 static const u8 sSamboPristurName[] = _("Sambó ¥ristur");
 static const u8 sSamboPristurDesc[] = _(
     "250gr bar.\n"
     "Heals 60 HP;\n"
-    "cures Brn/Prz.");
+    "cures status.");//Brn/Prz.");
 
 static const u8 sSnickersName[] = _("Snickers");
 static const u8 sSnickersDesc[] = _(
@@ -2206,7 +2208,7 @@ static const u8 sCarrotDesc[] = _(
     "Cures Paralysis;\n"
     "heals 40 HP.");
 
-static const u8 sAppleName[] = _("Apple Slice");
+static const u8 sAppleName[] = _("Apple Slices");
 static const u8 sAppleDesc[] = _(
     "Bag of six.\n"
     "Cures Burn;\n"

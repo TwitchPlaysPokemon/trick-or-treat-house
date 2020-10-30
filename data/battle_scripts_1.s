@@ -4054,7 +4054,8 @@ BattleScript_IntimidateActivatesLoop:
 	jumpifbyte CMP_GREATER_THAN, cMULTISTRING_CHOOSER, 0x1, BattleScript_IntimidateActivatesLoopIncrement
 	setgraphicalstatchangevalues
 	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-	printstring STRINGID_PKMNCUTSATTACKWITH
+	@printstring STRINGID_PKMNCUTSATTACKWITH
+	printfromtable gIntimidateStringIds
 	waitmessage 0x40
 BattleScript_IntimidateActivatesLoopIncrement:
 	addbyte gBattlerTarget, 0x1
@@ -4278,6 +4279,8 @@ BattleScript_SubstituteFade::
 	printstring STRINGID_PKMNSUBSTITUTEFADED
 	return
 
+@ -----------------------------------------------------
+
 BattleScript_BerryCurePrlzEnd2::
 	call BattleScript_BerryCureParRet
 	end2
@@ -4360,6 +4363,25 @@ BattleScript_BerryCureChosenStatusRet::
 	updatestatusicon BS_SCRIPTING
 	removeitem BS_SCRIPTING
 	return
+
+@ -----------------------------------------------------
+
+BattleScript_BerryCureHPAndStatusEnd2::
+	call BattleScript_BerryCureHPAndStatusRet
+	end2
+
+BattleScript_BerryCureHPAndStatusRet::
+	playanimation BS_SCRIPTING, B_ANIM_ITEM_EFFECT, NULL
+	printstring STRINGID_PKMNSITEMRESTOREDHEALTH
+	waitmessage 0x40
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	healthbarupdate BS_SCRIPTING
+	datahpupdate BS_SCRIPTING
+	updatestatusicon BS_SCRIPTING
+	removeitem BS_SCRIPTING
+	return
+
+@ -----------------------------------------------------
 
 BattleScript_WhiteHerbEnd2::
 	call BattleScript_WhiteHerbRet

@@ -19,6 +19,9 @@ script TrickHouseDevEntrance_EventScript_SpecialBall {
 		givemon (SPECIES_TROPIUS, 50, 0, 0, 0, 0)
 		givemon (SPECIES_LANTURN, 50, 0, 0, 0, 0)
 		
+		// Quilava Moveset
+		setmonmove(0, 1, 150) // Splash
+		
 		giveitem (ITEM_ESCAPE_ROPE, 3)
 		giveitem (ITEM_ITEMFINDER, 1)
 		giveitem (ITEM_MAX_REPEL, 99)

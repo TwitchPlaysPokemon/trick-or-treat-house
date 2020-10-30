@@ -6676,7 +6676,7 @@ bool8 MovementAction_EmoteHeart_Step0(struct EventObject *eventObject, struct Sp
 
 bool8 MovementAction_RevealTrainer_Step0(struct EventObject *eventObject, struct Sprite *sprite)
 {
-    if (eventObject->movementType == MOVEMENT_TYPE_HIDDEN || eventObject->movementType == MOVEMENT_TYPE_HIDDEN2)
+    if (eventObject->movementType == MOVEMENT_TYPE_HIDDEN2)
     {
         sub_80B4578(eventObject);
         return FALSE;
