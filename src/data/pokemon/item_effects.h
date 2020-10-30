@@ -71,6 +71,43 @@ const u8 gItemEffect_HealInfatuation[6] = {
     [0] = ITEM0_INFATUATION,
 };
 
+
+const u8 gItemEffect_HealPoisonAndHP[7] = {
+    [3] = ITEM3_POISON,
+    [4] = ITEM4_HEAL_HP,
+    [6] = 40,
+};
+
+const u8 gItemEffect_HealBurnAndHP[7] = {
+    [3] = ITEM3_BURN,
+    [4] = ITEM4_HEAL_HP,
+    [6] = 40,
+};
+
+const u8 gItemEffect_HealFreezeAndHP[7] = {
+    [3] = ITEM3_FREEZE,
+    [4] = ITEM4_HEAL_HP,
+    [6] = 40,
+};
+
+const u8 gItemEffect_HealSleepAndHP[7] = {
+    [3] = ITEM3_SLEEP,
+    [4] = ITEM4_HEAL_HP,
+    [6] = 40,
+};
+
+const u8 gItemEffect_HealParalyzeAndHP[7] = {
+    [3] = ITEM3_PARALYSIS,
+    [4] = ITEM4_HEAL_HP,
+    [6] = 40,
+};
+
+const u8 gItemEffect_HealStatusAndHP[7] = {
+    [3] = ITEM3_PARALYSIS,
+    [4] = ITEM4_HEAL_HP,
+    [6] = 60,
+};
+
 // const u8 gItemEffect_HealConfusionAndHP[7] = {
 //     [3] = ITEM3_CONFUSION,
 //     [4] = ITEM4_HEAL_HP,
@@ -139,8 +176,13 @@ const u8 gItemEffect_RevivalHerb[10] = {
 };
 
 const u8 gItemEffect_HealPP4[7] = {
-    [4] = ITEM4_HEAL_PP_ALL,
+    [4] = ITEM4_HEAL_PP_ONE | ITEM4_HEAL_PP_ALL,
     [6] = 4,
+};
+
+const u8 gItemEffect_HealPP6[7] = {
+    [4] = ITEM4_HEAL_PP_ONE | ITEM4_HEAL_PP_ALL,
+    [6] = 6,
 };
 
 const u8 gItemEffect_HealPP10[7] = {

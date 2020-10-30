@@ -95,7 +95,10 @@ void SetBagItemsPointers(void)
 
 void CopyItemName(u16 itemId, u8 *dst)
 {
-    StringCopy(dst, ItemId_GetName(itemId));
+    if (FlagGet(FLAG_SYS_BORT_MODE))
+        StringUppercase(dst, ItemId_GetName(itemId));
+    else
+        StringCopy(dst, ItemId_GetName(itemId));
 }
 
 void CopyItemNameHandlePlural(u16 itemId, u8 *dst, u32 quantity)

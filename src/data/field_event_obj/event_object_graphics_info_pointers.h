@@ -258,6 +258,7 @@ const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Storyteller;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Giddy;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_UnusedMauvilleOldMan1;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_UnusedMauvilleOldMan2;
+const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Tustin2121;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Quilava;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Farfetchd;
 const struct EventObjectGraphicsInfo gEventObjectGraphicsInfo_Pidgey;
@@ -559,7 +560,7 @@ const struct EventObjectGraphicsInfo *const gEventObjectGraphicsInfoPointers[] =
     [EVENT_OBJ_GFX_IMPOSTER_LASS] =            &gEventObjectGraphicsInfo_ImposterLass,
     
     // Dev Self-Inserts
-    [EVENT_OBJ_GFX_DEV_TUSTIN2121] =           &gEventObjectGraphicsInfo_TrickMaster, //TODO
+    [EVENT_OBJ_GFX_DEV_TUSTIN2121] =           &gEventObjectGraphicsInfo_Tustin2121,
     
     /** For porymap preview only, as these are aliases for entries above
     [TTH_FRIEND_JOEY] =    &gEventObjectGraphicsInfo_Youngster,

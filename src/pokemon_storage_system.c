@@ -9913,7 +9913,9 @@ static void PrintItemDescription(void)
         description = ItemId_GetDescription(sPSSData->movingItem);
     else
         description = ItemId_GetDescription(sPSSData->cursorMonItem);
-
+    
+    StringExpandPlaceholders(gStringVar4, description);
+    description = gStringVar4;
     FillWindowPixelBuffer(2, PIXEL_FILL(1));
     AddTextPrinterParameterized5(2, 1, description, 4, 0, 0, NULL, 0, 1);
 }

@@ -4732,6 +4732,21 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                     gBattleMons[gActiveBattler].statStages[STAT_ATK] = 12;
                 retVal = FALSE;
             }
+            if ((itemEffect[cmdIndex] & ITEM0_X_RANDOM)
+             && (gBattleMons[gActiveBattler].statStages[STAT_ATK] < 12
+             || gBattleMons[gActiveBattler].statStages[STAT_DEF] < 12
+             || gBattleMons[gActiveBattler].statStages[STAT_SPEED] < 12
+             || gBattleMons[gActiveBattler].statStages[STAT_SPATK] < 12
+             || gBattleMons[gActiveBattler].statStages[STAT_SPDEF] < 12))
+            {
+                u8 i;
+                do { i = Random() % 5; } while (gBattleMons[gActiveBattler].statStages[STAT_ATK + i] == 12);
+                
+                gBattleMons[gActiveBattler].statStages[STAT_ATK + i] += 1; // itemEffect[cmdIndex] & ITEM0_X_RANDOM;
+                if (gBattleMons[gActiveBattler].statStages[STAT_ATK + i] > 12)
+                    gBattleMons[gActiveBattler].statStages[STAT_ATK + i] = 12;
+                retVal = FALSE;
+            }
             break;
         // in-battle stat boosting effects
         case 1:

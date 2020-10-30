@@ -764,5 +764,5 @@ $(EVENTOBJGFXDIR)/people/alien.4bpp: %.4bpp: %.png
 $(EVENTOBJGFXDIR)/people/ghost.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4
 
-$(EVENTOBJGFXDIR)/people/dev_tustin2121.4bpp: %.4bpp: %.png
+$(EVENTOBJGFXDIR)/people/tustin2121.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4

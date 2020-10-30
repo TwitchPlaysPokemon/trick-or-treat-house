@@ -119,18 +119,20 @@ static const u8 sBort_PkmnIdentified[] = _("{B_ATK_NAME_WITH_PREFIX}\nSEE {B_DEF
 static const u8 sBort_PkmnRaisedSpeed[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} {B_SCR_ACTIVE_ABILITY}\nMADE SPED STRONGER!");
 static const u8 sBort_PkmnRaisedFirePowerWith[] = _("{B_DEF_NAME_WITH_PREFIX} {B_DEF_ABILITY}\nMADE FIRE POWER!");
 
-static const u8 sBort_PkmnsItemCuredParalysis[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\ncured paralysis!");
-static const u8 sBort_PkmnsItemCuredPoison[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\ncured poison!");
-static const u8 sBort_PkmnsItemHealedBurn[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nhealed its burn!");
-static const u8 sBort_PkmnsItemDefrostedIt[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\ndefrosted it!");
-static const u8 sBort_PkmnsItemWokeIt[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nwoke it from its sleep!");
+static const u8 sBort_PkmnsItemCuredParalysis[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nUNNUMED");
+static const u8 sBort_PkmnsItemCuredPoison[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nKILLED");
+static const u8 sBort_PkmnsItemHealedBurn[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nBURNT");
+static const u8 sBort_PkmnsItemDefrostedIt[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nHEAT");
+static const u8 sBort_PkmnsItemWokeIt[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nWAKE");
 static const u8 sBort_PkmnsItemSnappedOut[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nsnapped it out of confusion!");
-static const u8 sBort_PkmnsItemCuredProblem[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\ncured its {B_BUFF1} problem!");
-static const u8 sBort_PkmnsItemNormalizedStatus[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nnormalized its status!");
+static const u8 sBort_PkmnsItemCuredProblem[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nRECOVER {B_BUFF1}");
+static const u8 sBort_PkmnsItemNormalizedStatus[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nJUMP NORMAL");
 static const u8 sBort_PkmnsItemRestoredHealth[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nRECOVER");
 static const u8 sBort_PkmnsItemRestoredPP[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nRECOVER");
 static const u8 sBort_PkmnsItemRestoredStatus[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nRECOVER");
 static const u8 sBort_PkmnsItemRestoredHPALittle[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} {B_LAST_ITEM}\nREVERSION");
+
+static const u8 sBort_PkmnCutsAttackWithSlab[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} BIG CANDY\n{B_DEF_NAME_WITH_PREFIX} MAKE SAD");
 
 static const u8 sBort_PkmnMadeItRain[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} {B_SCR_ACTIVE_ABILITY}\nRAIN ENDLES");
 static const u8 sBort_StartedToRain[] = _("RAIN ENDLES");
@@ -346,6 +348,7 @@ const u8 * const gElfBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNRAISEDFIREPOWERWITH - 12] = sBort_PkmnRaisedFirePowerWith,
     [STRINGID_PKMNANCHORSITSELFWITH - 12] = sText_PkmnAnchorsItselfWith,
     [STRINGID_PKMNCUTSATTACKWITH - 12] = sText_PkmnCutsAttackWith,
+    [STRINGID_INTIMIDATESLAB - 12] = sBort_PkmnCutsAttackWithSlab,
     [STRINGID_PKMNPREVENTSSTATLOSSWITH - 12] = sText_PkmnPreventsStatLossWith,
     [STRINGID_PKMNHURTSWITH - 12] = sText_PkmnHurtsWith,
     [STRINGID_PKMNTRACED - 12] = sText_PkmnTraced,

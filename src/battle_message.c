@@ -280,6 +280,7 @@ static const u8 sText_PkmnPreventsConfusionWith[] = _("{B_DEF_NAME_WITH_PREFIX}'
 static const u8 sText_PkmnRaisedFirePowerWith[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY}\nraised its FIRE power!");
 static const u8 sText_PkmnAnchorsItselfWith[] = _("{B_DEF_NAME_WITH_PREFIX} anchors\nitself with {B_DEF_ABILITY}!");
 static const u8 sText_PkmnCutsAttackWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\ncuts {B_DEF_NAME_WITH_PREFIX}'s ATTACK!");
+static const u8 sText_PkmnCutsAttackWithSlab[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s Giant Chocolate Slab\nintimidates {B_DEF_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnPreventsStatLossWith[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}'s {B_SCR_ACTIVE_ABILITY}\nprevents stat loss!");
 static const u8 sText_PkmnHurtsWith[] = _("{B_DEF_NAME_WITH_PREFIX}'s {B_DEF_ABILITY}\nhurt {B_ATK_NAME_WITH_PREFIX}!");
 static const u8 sText_PkmnTraced[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} TRACED\n{B_BUFF1}'s {B_BUFF2}!");
@@ -779,6 +780,11 @@ const u16 gCaughtMonStringIds[] =
 const u16 gTrappingMoves[] =
 {
     MOVE_BIND, MOVE_WRAP, MOVE_FIRE_SPIN, MOVE_CLAMP, MOVE_WHIRLPOOL, MOVE_SAND_TOMB, 0xFFFF
+};
+
+const u16 gIntimidateStringIds[] =
+{
+    STRINGID_PKMNCUTSATTACKWITH, STRINGID_INTIMIDATESLAB
 };
 
 const u8 gText_PkmnIsEvolving[] = _("What?\n{STR_VAR_1} is evolving!");
@@ -2206,8 +2212,14 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
             case B_TXT_PLAYER_NAME: // player name
                 if (gBattleTypeFlags & BATTLE_TYPE_RECORDED)
                     toCpy = gLinkPlayers[0].name;
-                else
-                    toCpy = gSaveBlock2Ptr->playerName;
+                else {
+                    if (BORT) {
+                        StringUppercase(gBattleTextBuff7, gSaveBlock2Ptr->playerName);
+                        toCpy = gBattleTextBuff7;
+                    }
+                    else
+                        toCpy = gSaveBlock2Ptr->playerName;
+                }
                 break;
             case B_TXT_TRAINER1_LOSE_TEXT: // trainerA lose text
                 if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)

@@ -196,6 +196,7 @@ const u8 * const gNormalBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNRAISEDFIREPOWERWITH - 12] = sText_PkmnRaisedFirePowerWith,
     [STRINGID_PKMNANCHORSITSELFWITH - 12] = sText_PkmnAnchorsItselfWith,
     [STRINGID_PKMNCUTSATTACKWITH - 12] = sText_PkmnCutsAttackWith,
+    [STRINGID_INTIMIDATESLAB - 12] = sText_PkmnCutsAttackWithSlab,
     [STRINGID_PKMNPREVENTSSTATLOSSWITH - 12] = sText_PkmnPreventsStatLossWith,
     [STRINGID_PKMNHURTSWITH - 12] = sText_PkmnHurtsWith,
     [STRINGID_PKMNTRACED - 12] = sText_PkmnTraced,

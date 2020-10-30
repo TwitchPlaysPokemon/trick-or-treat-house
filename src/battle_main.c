@@ -163,7 +163,13 @@ EWRAM_DATA u8 gDisplayedStringBattle[300] = {0};
 EWRAM_DATA u8 gBattleTextBuff1[TEXT_BUFF_ARRAY_COUNT] = {0};
 EWRAM_DATA u8 gBattleTextBuff2[TEXT_BUFF_ARRAY_COUNT] = {0};
 EWRAM_DATA u8 gBattleTextBuff3[TEXT_BUFF_ARRAY_COUNT] = {0};
-EWRAM_DATA static u32 sUnusedUnknownArray[25] = {0};
+//EWRAM_DATA static u32 sUnusedUnknownArray[25] = {0};
+EWRAM_DATA u8 gBattleTextBuff4[TEXT_BUFF_ARRAY_COUNT] = {0};
+EWRAM_DATA u8 gBattleTextBuff5[TEXT_BUFF_ARRAY_COUNT] = {0};
+EWRAM_DATA u8 gBattleTextBuff6[TEXT_BUFF_ARRAY_COUNT * 2] = {0};
+EWRAM_DATA u8 gBattleTextBuff7[TEXT_BUFF_ARRAY_COUNT * 2] = {0};
+EWRAM_DATA static u32 sUnusedUnknownArray[1] = {0};
+
 EWRAM_DATA u32 gBattleTypeFlags = 0;
 EWRAM_DATA u8 gBattleTerrain = 0;
 EWRAM_DATA u32 gUnknown_02022FF4 = 0;

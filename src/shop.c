@@ -536,8 +536,11 @@ static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, s
     gShopDataPtr->iconSlot ^= 1;
     if (item != -2)
     {
-        if (gMartInfo.martType == MART_TYPE_NORMAL)
+        if (gMartInfo.martType == MART_TYPE_NORMAL) {
             description = ItemId_GetDescription(item);
+            StringExpandPlaceholders(gStringVar4, description);
+            description = gStringVar4;
+        }
         else
             description = gDecorations[item].description;
     }
