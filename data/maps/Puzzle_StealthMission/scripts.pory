@@ -2,7 +2,8 @@ raw `
 Puzzle_StealthMission_MapScripts::
 	puzzle_info Puzzle_StealthMission_Name, CommonAuthor_Tustin2121
 	puzzle_adjective Puzzle_StealthMission_Adjective
-	@ puzzle_quip Puzzle_StealthMission_Quip
+	puzzle_quip Puzzle_StealthMission_Quip
+	puzzle_metavars Puzzle_StealthMission_Variables
 	puzzle_candylist Puzzle_StealthMission_CandyList
 	map_script MAP_SCRIPT_PUZZLE_SETUP_SCRIPT, Puzzle_StealthMission_PuzzleSetup
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_StealthMission_OnLoad
@@ -17,7 +18,12 @@ Puzzle_StealthMission_Name:
 Puzzle_StealthMission_Adjective:
 	.string "stealthy$"
 Puzzle_StealthMission_Quip:
-	.string "$"
+	.string "YOU MAY HAVE WON THIS TIME, HUMAN,\n"
+	.string "BUT THE ROBOT UPRISING WILL COME.\p"
+	.string "HA.{PAUSE 20} HA.{PAUSE 20} HA.$"
+Puzzle_StealthMission_Variables:
+	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_SKELETON
+	.2byte 0
 .align 2
 Puzzle_StealthMission_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01
@@ -279,21 +285,25 @@ script Puzzle_StealthMission_CheckFinished {
 		release
 		end
 	}
-	lock
 	applymovement(LID_LOOKER, Common_Movement_FaceRight)
 	waitmovement(LID_LOOKER)
 	
 	if (var(VAR_TIMES_SEEN_BY_TRAINER) == 0) {
 		message(Puzzle_StealthMission_Text_LookerFinish_Best)
+		waitmessage
 		giveitem_std(ITEM_CANDY_TOBLERONE, 2)
 	}
 	elif (var(VAR_TIMES_SEEN_BY_TRAINER) < 3) {
 		message(Puzzle_StealthMission_Text_LookerFinish_Good)
+		waitmessage
 	}
 	else {
 		message(Puzzle_StealthMission_Text_LookerFinish_Poor)
+		waitmessage
 	}
 	message(Puzzle_StealthMission_Text_LookerFinish_End)
+	waitmessage
+	waitbuttonpress
 	release
 	// setvar(VAR_0x800A, 0)
 	// special(CanAnyPartyMonsBeHealed)
