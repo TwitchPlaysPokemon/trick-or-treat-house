@@ -52,11 +52,6 @@
             "offset": 42
         },
         {
-            "direction": "left",
-            "map": "MAP_PUZZLE_ROUTE110",
-            "offset": -79
-        },
-        {
             "direction": "down",
             "map": "MAP_TRICK_TREAT_SLATEPORT_CITY1",
             "offset": 31
