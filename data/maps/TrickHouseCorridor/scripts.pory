@@ -308,22 +308,6 @@ text TrickHouseCorridor_Text_DenExcuse12 {
 }
 
 
-script TrickHouseCorridor_EventScript_EscapeRopeBox {
-	// lock
-	// bufferitemname (0, ITEM_ESCAPE_ROPE)
-	// msgbox ("It's a box full of {STR_VAR_1}.$")
-	// getnumitem (ITEM_ESCAPE_ROPE)
-	// if (var(VAR_RESULT) < 5) {
-	// 	setvar (VAR_0x8000, ITEM_ESCAPE_ROPE)
-	// 	setvar (VAR_0x8001, 5)
-	// 	subvar (VAR_0x8001, VAR_RESULT)
-	// 	callstd (0)    # Obtain item
-	// } else {
-	// 	msgbox ("You don't need any more.$")
-	// }
-	// release
-}
-
 // ----------------------------------------------------
 raw `
 #define LID_MASTER 2

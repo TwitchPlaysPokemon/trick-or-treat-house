@@ -168,7 +168,7 @@
     "name": "TrickTreat_FortreeCity",
     "object_events": [
         {
-            "elevation": 3,
+            "elevation": 4,
             "flag": "FLAG_PUZZLE_20",
             "graphics_id": "EVENT_OBJ_GFX_NURSE",
             "movement_range_x": 0,
@@ -402,7 +402,7 @@
             "y": 22
         },
         {
-            "elevation": 3,
+            "elevation": 4,
             "flag": "0",
             "graphics_id": "EVENT_OBJ_GFX_BALL_CUSHION",
             "movement_range_x": 0,

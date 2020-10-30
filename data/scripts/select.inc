@@ -2,6 +2,7 @@
 EventScript_SelectWithoutRegisteredItem:: @ 82736B3
 	lockall
 	incrementgamestat GAME_STAT_SELECT_PRESSES
+	goto_if_set FLAG_SYS_BORT_MODE, EventScript_SelectWithoutRegisteredItem_BORT
 	callnative SetSelectVariables
 	compare VAR_0x800A, 1
 	call_if_le EventScript_SelectWithoutRegisteredItem_First
@@ -24,13 +25,25 @@ EventScript_SelectWithoutRegisteredItem_First:
 	waitbuttonpress
 	return
 	end
-
 gText_SelectWithoutRegisteredItem:: @ 8272C98
 	.string "An item in the BAG can be\n"
 	.string "registered to SELECT for easy use.\p"
 	.string "But you already knew that, so instead,\n"
 	.string "in the future, let's refer to the\l"
 	.string "TRICK OR TREATING HANDBOOK.$"
+	
+EventScript_SelectWithoutRegisteredItem_BORT:
+	message gBORT_SelectWithoutRegisteredItem
+	waitmessage
+	waitbuttonpress
+	releaseall
+	end
+gBORT_SelectWithoutRegisteredItem::
+	.string "PROP CAN BE LOG ON BY PRESSING\n"
+	.string "CONVIENT BUTTON.$"
+	@ .string "WORDS OF OQT!\n"
+	@ .string "THIS MAY BE USEFUL SOMETIME"
+
 
 gSelect_RuleTemplate:
 	.string "{TOT_RULE}{STR_VAR_1}:\n{STR_VAR_2}$"

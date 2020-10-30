@@ -15,7 +15,7 @@ Puzzle_TinTowerClimb_MapScripts::
 Puzzle_TinTowerClimb_Name:
 	.string "Scale the Belfry$"
 Puzzle_TinTowerClimb_Author:
-	.string "GAME FREAK BORT"
+	.string "GAME FREAK BORT$"
 Puzzle_TinTowerClimb_Intro:
 	.string "Hah! Back for another challenge!\n"
 	.string "I have a special treat for you!\p"

@@ -116,7 +116,8 @@ Common_EventScript_ItemFullHeal::
 	end
 
 Common_EventScript_ItemRevive::
-	giveitem_std ITEM_REVIVE, 1, 1
+	@ giveitem_std ITEM_REVIVE, 1, 1
+	giveitem_std ITEM_CANDY_KITKAT, 1, 1
 	end
 
 Common_EventScript_ItemFreshWater::

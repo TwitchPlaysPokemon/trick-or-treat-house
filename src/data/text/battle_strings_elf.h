@@ -2,6 +2,8 @@
 const u8 gBort_BattleMenu[] = _("FIGH{CLEAR_TO 56}BAG\nELF{CLEAR_TO 56}GO");
 const u8 gBort_WhatWillPkmnDo[] = _("{B_ACTIVE_NAME_WITH_PREFIX}\nWHAT?");
 
+const u8 gBort_DadsAdvice[] = _("WORDS OF OQT!\nTHIS MAY BE USEFUL SOMETIME{PAUSE_UNTIL_PRESS}");
+
 static const u8 sBort_OpponentMon1Appeared[] = _("{B_OPPONENT_MON1_NAME}\nJUMP OUT\p");
 static const u8 sBort_WildPkmnAppeared[] = _("WILD {B_OPPONENT_MON1_NAME}\nJUMP OUT\p");
 static const u8 sBort_WildPkmnAppeared2[] = _("WILD {B_OPPONENT_MON1_NAME}\nJUMP OUT\p");
@@ -44,7 +46,7 @@ static const u8 sBort_CantEscape[] = _("CAN'T ESCAPE!\p");
 static const u8 sBort_AttackerCantEscape[] = _("{B_ATK_NAME_WITH_PREFIX}\nCAN'T ESCAPE!");
 static const u8 sBort_WildFled[] = _("{PLAY_SE 0x0011}{B_LINK_OPPONENT1_NAME} ESCAPED!");
 static const u8 sBort_TwoWildFled[] = _("{PLAY_SE 0x0011}{B_LINK_OPPONENT1_NAME}\n{B_LINK_OPPONENT2_NAME} ESCAPED!");
-
+static const u8 sBort_ButNothingHappened[] = _("BUT\nNOT DECIDED");
 
 static const u8 sBort_YouMissedPkmn[] = _("MISSED ELF!");
 static const u8 sBort_PkmnBrokeFree[] = _("NO!ELF COME OUT");
@@ -104,6 +106,9 @@ static const u8 sBort_PkmnMoveDisabledNoMore[] = _("{B_ATK_NAME_WITH_PREFIX}\nOP
 static const u8 sBort_PkmnMoveIsDisabled[] = _("STUNT LOCKED\p");
 static const u8 sBort_PkmnRegainedHealth[] = _("{B_DEF_NAME_WITH_PREFIX}\nCOME BACK!");
 
+static const u8 sBort_ElectricityWeakened[] = _("ELEC POWER\nGO DOWN");
+static const u8 sBort_FireWeakened[] = _("BURN POWER\nGO DOWN");
+
 static const u8 sBort_HitXTimes[] = _("{B_BUFF1}EFFECT");
 static const u8 sBort_PkmnProtectedItself[] = _("{B_DEF_NAME_WITH_PREFIX}\nDEFENSE SYSTEM");
 static const u8 sBort_PkmnProtectedItself2[] = _("BUT {B_ATK_NAME_WITH_PREFIX}\nDEFENCED\lMISSED");
@@ -116,8 +121,8 @@ static const u8 sBort_PkmnSafeguardExpired[] = _("{B_ATK_PREFIX3}\nOPENED FROM\l
 static const u8 sBort_PkmnDugHole[] = _("{B_ATK_NAME_WITH_PREFIX}DRILL HOLE INTO\nTHE EARTH");
 static const u8 sBort_PkmnRageBuilding[] = _("{B_DEF_NAME_WITH_PREFIX} FEELING\nIS STRONGER!");
 static const u8 sBort_PkmnIdentified[] = _("{B_ATK_NAME_WITH_PREFIX}\nSEE {B_DEF_NAME_WITH_PREFIX}'S\lREAL FACE");
-static const u8 sBort_PkmnRaisedSpeed[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} {B_SCR_ACTIVE_ABILITY}\nMADE SPED STRONGER!");
-static const u8 sBort_PkmnRaisedFirePowerWith[] = _("{B_DEF_NAME_WITH_PREFIX} {B_DEF_ABILITY}\nMADE FIRE POWER!");
+static const u8 sBort_PkmnRaisedSpeed[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} {B_SCR_ACTIVE_ABILITY}\nMADE SPED STRONGER");
+static const u8 sBort_PkmnRaisedFirePowerWith[] = _("{B_DEF_NAME_WITH_PREFIX} {B_DEF_ABILITY}\nMADE FIRE POWER");
 
 static const u8 sBort_PkmnsItemCuredParalysis[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nUNNUMED");
 static const u8 sBort_PkmnsItemCuredPoison[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nKILLED");
@@ -371,7 +376,7 @@ const u8 * const gElfBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_NORUNNINGFROMTRAINERS - 12] = sText_NoRunningFromTrainers,
     [STRINGID_CANTESCAPE - 12] = sBort_CantEscape,
     [STRINGID_DONTLEAVEBIRCH - 12] = sText_DontLeaveBirch,
-    [STRINGID_BUTNOTHINGHAPPENED - 12] = sText_ButNothingHappened,
+    [STRINGID_BUTNOTHINGHAPPENED - 12] = sBort_ButNothingHappened,
     [STRINGID_BUTITFAILED - 12] = sBort_ButItFailed,
     [STRINGID_ITHURTCONFUSION - 12] = sBort_ItHurtConfusion,
     [STRINGID_MIRRORMOVEFAILED - 12] = sText_MirrorMoveFailed,
@@ -458,8 +463,8 @@ const u8 * const gElfBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNSXCUREDYPROBLEM - 12] = sText_PkmnsXCuredYProblem,
     [STRINGID_ITSUCKEDLIQUIDOOZE - 12] = sText_ItSuckedLiquidOoze,
     [STRINGID_PKMNTRANSFORMED - 12] = sText_PkmnTransformed,
-    [STRINGID_ELECTRICITYWEAKENED - 12] = sText_ElectricityWeakened,
-    [STRINGID_FIREWEAKENED - 12] = sText_FireWeakened,
+    [STRINGID_ELECTRICITYWEAKENED - 12] = sBort_ElectricityWeakened,
+    [STRINGID_FIREWEAKENED - 12] = sBort_FireWeakened,
     [STRINGID_PKMNHIDUNDERWATER - 12] = sText_PkmnHidUnderwater,
     [STRINGID_PKMNSPRANGUP - 12] = sText_PkmnSprangUp,
     [STRINGID_HMMOVESCANTBEFORGOTTEN - 12] = sText_HMMovesCantBeForgotten,

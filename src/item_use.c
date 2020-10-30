@@ -164,7 +164,10 @@ void DisplayCannotUseItemMessage(u8 taskId, bool8 isUsingRegisteredKeyItemOnFiel
 
 void DisplayDadsAdviceCannotUseItemMessage(u8 taskId, bool8 isUsingRegisteredKeyItemOnField)
 {
-    DisplayCannotUseItemMessage(taskId, isUsingRegisteredKeyItemOnField, gText_DadsAdvice);
+    if (FlagGet(FLAG_SYS_BORT_MODE))
+        DisplayCannotUseItemMessage(taskId, isUsingRegisteredKeyItemOnField, gBort_DadsAdvice);
+    else
+        DisplayCannotUseItemMessage(taskId, isUsingRegisteredKeyItemOnField, gText_DadsAdvice);
 }
 
 void DisplayCannotDismountBikeMessage(u8 taskId, bool8 isUsingRegisteredKeyItemOnField)
