@@ -611,6 +611,12 @@ extern u8 gDisplayedStringBattle[300];
 extern u8 gBattleTextBuff1[TEXT_BUFF_ARRAY_COUNT];
 extern u8 gBattleTextBuff2[TEXT_BUFF_ARRAY_COUNT];
 extern u8 gBattleTextBuff3[TEXT_BUFF_ARRAY_COUNT];
+// Reclaimed from the unused buffer
+extern u8 gBattleTextBuff4[TEXT_BUFF_ARRAY_COUNT];
+extern u8 gBattleTextBuff5[TEXT_BUFF_ARRAY_COUNT];
+extern u8 gBattleTextBuff6[TEXT_BUFF_ARRAY_COUNT * 2];
+extern u8 gBattleTextBuff7[TEXT_BUFF_ARRAY_COUNT * 2];
+
 extern u32 gBattleTypeFlags;
 extern u8 gBattleTerrain;
 extern u32 gUnknown_02022FF4;

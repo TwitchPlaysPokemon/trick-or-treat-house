@@ -2138,7 +2138,7 @@ static const u8 sSamboPristurDesc[] = _(
 
 static const u8 sSnickersName[] = _("Snickers");
 static const u8 sSnickersDesc[] = _(
-    "Sharing size.\n"
+    "Sharing size; Held\n"
     "Calms and keeps\n"
     "away wild {PKMN}.");
 
@@ -2157,8 +2157,8 @@ static const u8 sKitKatBarDesc[] = _(
 static const u8 sPixieStickName[] = _("Pixie Stick");
 static const u8 sPixieStickDesc[] = _(
     "A hold item that\n"
-    "reduces accuracy\n"
-    "by being sweet.");
+    "reduces foe's\n"
+    "accuracy.");
 
 static const u8 sTurkishDelightName[] = _("Turkish Delight");
 static const u8 sTurkishDelightDesc[] = _(

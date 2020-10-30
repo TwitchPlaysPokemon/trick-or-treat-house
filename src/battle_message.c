@@ -2212,8 +2212,14 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
             case B_TXT_PLAYER_NAME: // player name
                 if (gBattleTypeFlags & BATTLE_TYPE_RECORDED)
                     toCpy = gLinkPlayers[0].name;
-                else
-                    toCpy = gSaveBlock2Ptr->playerName;
+                else {
+                    if (BORT) {
+                        StringUppercase(gBattleTextBuff7, gSaveBlock2Ptr->playerName);
+                        toCpy = gBattleTextBuff7;
+                    }
+                    else
+                        toCpy = gSaveBlock2Ptr->playerName;
+                }
                 break;
             case B_TXT_TRAINER1_LOSE_TEXT: // trainerA lose text
                 if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
