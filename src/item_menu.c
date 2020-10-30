@@ -452,7 +452,7 @@ extern const u16 gUnknown_0860F074[];
 
 void ResetBagScrollPositions(void)
 {
-    gBagPositionStruct.pocket = ITEMS_POCKET;
+    gBagPositionStruct.pocket = CANDY_POCKET;
     memset(gBagPositionStruct.cursorPosition, 0, 10);
     memset(gBagPositionStruct.scrollPosition, 0, 10);
 }

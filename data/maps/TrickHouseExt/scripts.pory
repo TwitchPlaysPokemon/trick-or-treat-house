@@ -36,43 +36,37 @@ mapscripts TrickHouseExt_MapScripts {
 			setobjectxyperm (13, 54, 40)
 		}
 		call(TrickHouseExt_OnLoad_Traders)
-		callnative (GetNumPuzzlesCompleted)
-		if (var(VAR_RESULT) > VAR_CURRENT_PUZZLE) {
-			setobjectxyperm (14, 39, 30)
-			setobjectxy (14, 39, 30)
-		} else {
-			setmetatile (39, 30, 0x001, FALSE) 
-			setmetatile (40, 30, 0x001, FALSE) 
-		}
 	}
 }
 
 raw `
-#define LID_BOY 6
-#define LID_GIRL 7
+#define LID_BRENDAN 6
+#define LID_MAY 7
+#define LID_ALEX 14
 #define LID_JOEY 12
-#define LID_GHOST 5
-#define LID_FAIRY 8
+#define LID_IRENE 8
 #define LID_WALLY 9
-#define LID_LINK 10
+#define LID_JAMES 10
+#define LID_GHOST 5
 `
 
 script TrickHouseExt_IntroCutscene {
 	lockall
 	delay (30)
 	setobjectxyperm (4, 0, 0) //remove the cycling road biker
-	addobject (LID_LINK)
+	addobject (LID_JAMES)
 	addobject (LID_GHOST)
-	addobject (LID_BOY)
-	addobject (LID_GIRL)
+	addobject (LID_BRENDAN)
+	addobject (LID_MAY)
+	addobject (LID_ALEX)
 	addobject (LID_WALLY)
-	addobject (LID_FAIRY)
-	applymovement (LID_LINK, TrickHouseExt_IntroCutscene_Movement1_Link)
+	addobject (LID_IRENE)
+	applymovement (LID_JAMES, TrickHouseExt_IntroCutscene_Movement1_Link)
 	applymovement (LID_GHOST, TrickHouseExt_IntroCutscene_Movement1a_Ghost)
-	applymovement (LID_BOY, TrickHouseExt_IntroCutscene_Movement1_Boy)
-	applymovement (LID_GIRL, TrickHouseExt_IntroCutscene_Movement1_Girl)
+	applymovement (LID_BRENDAN, TrickHouseExt_IntroCutscene_Movement1_Boy)
+	applymovement (LID_MAY, TrickHouseExt_IntroCutscene_Movement1_Girl)
 	applymovement (LID_WALLY, TrickHouseExt_IntroCutscene_Movement1_Wally)
-	applymovement (LID_FAIRY, TrickHouseExt_IntroCutscene_Movement1_Fairy)
+	applymovement (LID_IRENE, TrickHouseExt_IntroCutscene_Movement1_Fairy)
 	clearflag (FLAG_DISABLE_FADE_INIT)
 	fadescreenspeed (0, 6)
 	waitmovement (LID_GHOST)
@@ -80,18 +74,18 @@ script TrickHouseExt_IntroCutscene {
 	applymovement (LID_GHOST, TrickHouseExt_IntroCutscene_Movement1b_Ghost)
 	message ("{JOEY}: Hey, guys? Hold up a second.\n"
 			"I'm melting under this thing…$")
-	waitmovement (LID_LINK)
+	waitmovement (LID_JAMES)
 	waitmessage
 	waitbuttonpress
 	playse (SE_SELECT)
 	// Link tells him off as he takes off the costume
-	applymovement (LID_LINK, Common_Movement_WalkUp1)
+	applymovement (LID_JAMES, Common_Movement_WalkUp1)
 	message ("{LINK}: We can't dilly-dally!\p"
 			"We don't have long before Trick-or-\n"
 			"Treating time is over!\p"
 			"There's loads of houses to hit up in\n"
 			"SLATEPORT still!$")
-	waitmovement (LID_LINK)
+	waitmovement (LID_JAMES)
 	delay (16)
 	applymovement (LID_GHOST, Common_Movement_WalkInPlaceUp)
 	delay (30)
@@ -110,13 +104,13 @@ script TrickHouseExt_IntroCutscene {
 	message ("{WALLY}: We haven't been to this house\n"
 			"yet. Let's hit this up first.$")
 	waitmovement (LID_WALLY)
-	applymovement (LID_BOY, Common_Movement_WalkInPlaceUp)
+	applymovement (LID_BRENDAN, Common_Movement_WalkInPlaceUp)
 	delay (3)
 	applymovement (LID_JOEY, Common_Movement_WalkInPlaceUp)
 	delay (5)
-	applymovement (LID_GIRL, Common_Movement_WalkInPlaceUp)
+	applymovement (LID_MAY, Common_Movement_WalkInPlaceUp)
 	delay (10)
-	applymovement (LID_LINK, TrickHouseExt_IntroCutscene_Movement2_Link)
+	applymovement (LID_JAMES, TrickHouseExt_IntroCutscene_Movement2_Link)
 	waitmessage
 	waitbuttonpress
 	playse (SE_SELECT)
@@ -124,13 +118,13 @@ script TrickHouseExt_IntroCutscene {
 	message ("{RIVAL}: That's the TRICK HOUSE.\p"
 			"No one lives there anymore since the\n"
 			"TRICK MASTER went on his journey.$")
-	applymovement (LID_BOY, Common_Movement_WalkInPlaceLeft)
+	applymovement (LID_BRENDAN, Common_Movement_WalkInPlaceLeft)
 	delay (6)
-	applymovement (LID_GIRL, Common_Movement_WalkInPlaceLeft)
+	applymovement (LID_MAY, Common_Movement_WalkInPlaceLeft)
 	delay (4)
 	applymovement (LID_JOEY, Common_Movement_WalkInPlaceRight)
 	delay (6)
-	applymovement (LID_LINK, Common_Movement_WalkInPlaceRight)
+	applymovement (LID_JAMES, Common_Movement_WalkInPlaceRight)
 	waitmessage
 	waitbuttonpress
 	playse (SE_SELECT)
@@ -140,40 +134,40 @@ script TrickHouseExt_IntroCutscene {
 	opendoor (41, 29)
 	waitdooranim
 	playse (SE_PIN)
-	applymovement (LID_LINK, TrickHouseExt_IntroCutscene_Movement3_What)
+	applymovement (LID_JAMES, TrickHouseExt_IntroCutscene_Movement3_What)
 	applymovement (LID_JOEY, TrickHouseExt_IntroCutscene_Movement3_What)
-	applymovement (LID_BOY, TrickHouseExt_IntroCutscene_Movement3_What)
-	applymovement (LID_GIRL, TrickHouseExt_IntroCutscene_Movement3_What)
+	applymovement (LID_BRENDAN, TrickHouseExt_IntroCutscene_Movement3_What)
+	applymovement (LID_MAY, TrickHouseExt_IntroCutscene_Movement3_What)
 	applymovement (LID_WALLY, TrickHouseExt_IntroCutscene_Movement3_Wally)
-	applymovement (LID_FAIRY, TrickHouseExt_IntroCutscene_Movement3_What)
-	waitmovement (LID_FAIRY)
+	applymovement (LID_IRENE, TrickHouseExt_IntroCutscene_Movement3_What)
+	waitmovement (LID_IRENE)
 	// 
 	applymovement (EVENT_OBJ_ID_PLAYER, TrickHouseExt_IntroCutscene_Movement2_Camera)
 	delay (10)
-	applymovement (LID_FAIRY, TrickHouseExt_IntroCutscene_Movement4_Fairy)
+	applymovement (LID_IRENE, TrickHouseExt_IntroCutscene_Movement4_Fairy)
 	msgbox ("{FAIRY}: Uh, hello?$")
 	//
 	closemessage
-	waitmovement (LID_FAIRY)
-	applymovement (LID_FAIRY, TrickHouseExt_IntroCutscene_Movement5_Fairy)
-	waitmovement (LID_FAIRY)
+	waitmovement (LID_IRENE)
+	applymovement (LID_IRENE, TrickHouseExt_IntroCutscene_Movement5_Fairy)
+	waitmovement (LID_IRENE)
 	applymovement (LID_WALLY, TrickHouseExt_IntroCutscene_Movement5_Wally)
 	message("{WALLY}: {FAIRY}! Don't go in there!!\n"
 			"What if it's haunted?!$")
 	waitmovement (LID_WALLY)
-	applymovement (LID_FAIRY, Common_Movement_WalkInPlaceDown)
+	applymovement (LID_IRENE, Common_Movement_WalkInPlaceDown)
 	applymovement (LID_JOEY, TrickHouseExt_IntroCutscene_Movement5_Joey)
 	delay (12)
-	applymovement (LID_GIRL, TrickHouseExt_IntroCutscene_Movement5_Girl)
+	applymovement (LID_MAY, TrickHouseExt_IntroCutscene_Movement5_Girl)
 	delay (10)
-	applymovement (LID_LINK, TrickHouseExt_IntroCutscene_Movement5_Link)
+	applymovement (LID_JAMES, TrickHouseExt_IntroCutscene_Movement5_Link)
 	waitmessage
 	waitbuttonpress
 	playse (SE_SELECT)
 	// 
 	msgbox ("{FAIRY}: Pfft. I'm not scared.\n"
 			"I have my {POKEMON} with me.$")
-	applymovement (LID_FAIRY, TrickHouseExt_IntroCutscene_Movement6_Fairy)
+	applymovement (LID_IRENE, TrickHouseExt_IntroCutscene_Movement6_Fairy)
 	//
 	msgbox ("{WALLY}: B-But I don't! W-WAIT!!$")
 	closemessage
@@ -181,11 +175,11 @@ script TrickHouseExt_IntroCutscene {
 	waitmovement (0)
 	//
 	delay (20)
-	applymovement (LID_LINK, Common_Movement_WalkInPlaceRight)
+	applymovement (LID_JAMES, Common_Movement_WalkInPlaceRight)
 	message ("{LINK}: C'mon, maybe they have candy.$")
-	applymovement (LID_BOY, Common_Movement_WalkInPlaceLeft)
+	applymovement (LID_BRENDAN, Common_Movement_WalkInPlaceLeft)
 	delay (6)
-	applymovement (LID_GIRL, Common_Movement_WalkInPlaceLeft)
+	applymovement (LID_MAY, Common_Movement_WalkInPlaceLeft)
 	delay (8)
 	applymovement (LID_JOEY, Common_Movement_WalkInPlaceRight)
 	waitmessage
@@ -193,15 +187,15 @@ script TrickHouseExt_IntroCutscene {
 	playse (SE_SELECT)
 	//
 	closemessage
-	applymovement (LID_LINK, TrickHouseExt_IntroCutscene_Movement6_Link)
+	applymovement (LID_JAMES, TrickHouseExt_IntroCutscene_Movement6_Link)
 	delay (4)
 	applymovement (LID_JOEY, TrickHouseExt_IntroCutscene_Movement6_Joey)
 	delay (30)
-	applymovement (LID_BOY, Common_Movement_WalkInPlaceRight)
+	applymovement (LID_BRENDAN, Common_Movement_WalkInPlaceRight)
 	delay (30)
-	applymovement (LID_BOY, TrickHouseExt_IntroCutscene_Movement6_Boy)
+	applymovement (LID_BRENDAN, TrickHouseExt_IntroCutscene_Movement6_Boy)
 	delay (5)
-	applymovement (LID_GIRL, TrickHouseExt_IntroCutscene_Movement6_Girl)
+	applymovement (LID_MAY, TrickHouseExt_IntroCutscene_Movement6_Girl)
 	//
 	fadescreenspeed (1, 6)
 	setvar (VAR_INTRO_COUNTER, 2)
@@ -323,13 +317,14 @@ movement TrickHouseExt_IntroCutscene_Movement6_Girl {
 }
 
 raw `
-#undef LID_BOY
-#undef LID_GIRL
+#undef LID_BRENDAN
+#undef LID_MAY
 #undef LID_JOEY
-#undef LID_FAIRY
+#undef LID_IRENE
 #undef LID_WALLY
-#undef LID_LINK
+#undef LID_JAMES
 `
+
 
 // ----------------------------------------------------
 // Visitor People
@@ -622,9 +617,17 @@ script TrickHouseExt_CommonOfferTrade {
 		goto(TrickHouseExt_CommonOfferTrade_Reject)
 	}
 	if (var(VAR_REQUEST_AMT) == 0) {
+		checkitem(VAR_REQUEST, 1)
+		if (var(VAR_RESULT) == FALSE) {
+			msgbox("You don't have any on you.$")
+			release
+			end
+		}
+		
 		bufferitemnameplural(1, VAR_REQUEST, 2)
 		message("How many {STR_VAR_2}\nwill you offer?$")
 		callnative(ChooseNumberOfTradeItems)
+		waitstate
 		// I think the vars are u16, which would make -1 higher than 0
 		// Do this raw instead of with poryscript if statements, so we can use compare_var_to_value directly
 		compare_var_to_value(VAR_RESULT, 1)
@@ -715,7 +718,7 @@ script TrickHouseExt_EventScript_TraderA2 {
 				ITEM_CANDY_BUTTERFINGER, 1,
 				ITEM_CANDY_MILKYWAY, 0,
 				"Need. Need. Got. Got. Got. Need. Got…\p"
-				"Uh, hey, got any Milkyways?\n"
+				"Uh, hey, got any Milky Ways?\n"
 				"I'll trade you my Butterfingers.$",
 				"Aw, alright.\nGot. Got. Got. Need…$",
 				"Sweet! Got this now…\nGot. Need. Got. Got…$")
@@ -771,7 +774,7 @@ script TrickHouseExt_EventScript_TraderA3 {
 				ITEM_CANDY_CHOCOWHITE, 0,
 				"Do you have any white chocolate?\n"
 				"I'll trade you some Gummyursa!$",
-				"Aw, but the little TERRIURSA\n"
+				"Aw, but the little TEDDIURSA\n"
 				"look so cute, don't they?$",
 				"Thank you! My mom bought a load\n"
 				"of Gummyursa and doesn't know what\l"
@@ -791,7 +794,14 @@ script TrickHouseExt_EventScript_TraderA3 {
 			msgbox( "I wanted to dress as the Coronavirus\n"
 					"this year, but my mom wouldn't let me.$", MSGBOX_NPC)
 		case EVENT_OBJ_GFX_GHOST:
-			msgbox("TODO$", MSGBOX_NPC)
+			offertrade(
+				ITEM_CANDY_KITKAT, 1,
+				ITEM_CANDY_BUTTERFINGER, 1,
+				"Got any Butterfingers?\n"
+				"I'll trade one for a KitKat.$",
+				"Aw man.$",
+				"Sweet! Thanks!$"
+			)
 		default:
 			msgbox("Object event$", MSGBOX_NPC)
 	}
@@ -839,7 +849,17 @@ script TrickHouseExt_EventScript_TraderB1 {
 			waitbuttonpress
 			release
 		case EVENT_OBJ_GFX_PIKACHU:
-			msgbox("TODO$", MSGBOX_NPC)
+			offertrade(
+				ITEM_CANDY_PRUNE, 1,
+				ITEM_CANDY_STARBURST, 1,
+				"My mom insists on giving us healthy\n"
+				"snacks for Trick or Treating…\p"
+				"You don't happen to have any Starbursts\n"
+				"would you? I'll trade you my Prune…$",
+				"Yeah, I wouldn't make that trade either…$",
+				"YES! Thank you!\n"
+				"Oh, so sugary… … … …$"
+			)
 		default:
 			msgbox("Object event$", MSGBOX_NPC)
 	}
@@ -855,7 +875,10 @@ script TrickHouseExt_EventScript_TraderB2 {
 			waitbuttonpress
 			closemessage
 		case EVENT_OBJ_GFX_AZUMARILL:
-			msgbox("TODO$", MSGBOX_NPC)
+			msgbox("Do you like my AZUMARILL costume?\n"
+					"My mom made it for me!\p"
+					"My sister made her own PIKACHU\n"
+					"costume though.$", MSGBOX_NPC)
 		default:
 			msgbox("Object event$", MSGBOX_NPC)
 	}
@@ -893,11 +916,51 @@ script TrickHouseExt_EventScript_TraderC1 {
 				"Violet Crumble.$"
 			)
 		case EVENT_OBJ_GFX_EXPERT_M:
-			msgbox("TODO$", MSGBOX_NPC)
+			offertrade(
+				ITEM_CANDY_BLACKTHUNDER, 2,
+				ITEM_CANDY_OREO, 5,
+				"You there. Laddie. Missie. Whatever.\n"
+				"My eyes are bad these days.\p"
+				"Got some Oreos on you? I'll trade five\n"
+				"for a couple Black Thunders.$",
+				"Gah, no one gives out the good cookies\n"
+				"anymore. Only this foreign stuff.$",
+				"Lovely, lovely. Excuse me while I pull\n"
+				"out my dentures.$"
+			)
 		case EVENT_OBJ_GFX_BEAUTY:
 			msgbox("TODO$", MSGBOX_NPC)
 		case EVENT_OBJ_GFX_ANABEL:
 			msgbox("TODO$", MSGBOX_NPC)
+		default:
+			msgbox("Object event$", MSGBOX_NPC)
+	}
+}
+
+script TrickHouseExt_EventScript_TraderD1 {
+	switch(var(VAR_OBJ_GFX_ID_6)) {
+		case EVENT_OBJ_GFX_NOLAND:
+			offertrade(
+				ITEM_CANDY_CHOCOSLAB, 1,
+				ITEM_CANDY_GOBSTOPPER, 1,
+				"Hey, do you happen to have a Gobstopper?\n"
+				"I'll trade you this massive chocolate bar.$",
+				"What? Oh, alright.$",
+				"Cheers! I'm fond of how everlasting\n"
+				"Gobstoppers are.$"
+			)
+		case EVENT_OBJ_GFX_GHETSIS:
+			msgbox("TODO$", MSGBOX_NPC)
+		case EVENT_OBJ_GFX_BRAWLY:
+			offertrade(
+				ITEM_CANDY_GOBSTOPPER, 1,
+				ITEM_CANDY_CHOCOSLAB, 1,
+				"Sup! Got any giant slabs of chocolate?\n"
+				"I'll trade you a Gobstopper for it.$",
+				"Fine fine.$",
+				"Thanks! Not a fan of Gobstoppers myself\n"
+				"but {POKEMON} love to suck on them.$"
+			)
 		default:
 			msgbox("Object event$", MSGBOX_NPC)
 	}
@@ -928,7 +991,7 @@ TrickHouseExt_Mart1:
 	.2byte ITEM_CANDY_MMMINI
 	.2byte ITEM_CANDY_SNICKERS
 	.2byte ITEM_CANDY_REESES
-	.2byte ITEM_CANDY_EGGS
+	@ .2byte ITEM_CANDY_EGGS
 	.2byte ITEM_CANDY_CARROT
 	
 	.2byte ITEM_CANDY_CHOCOLATE
@@ -970,7 +1033,7 @@ TrickHouseExt_Mart4:
 	.2byte ITEM_CANDY_KINGCHOCNUT
 	.2byte ITEM_CANDY_MILKYWAY
 	.2byte ITEM_CANDY_VIOLETCRUMBLE
-	.2byte ITEM_CANDY_EGGDEVILED
+	@ .2byte ITEM_CANDY_EGGDEVILED
 	.2byte ITEM_CANDY_CELERY
 	
 	.2byte ITEM_CANDY_CHOCOLATE
@@ -1033,19 +1096,7 @@ script TrickHouseExt_EventScript_TestDoor {
 	release
 }
 
-script TrickHouseExt_EventScript_BikeCredits {
-	lock
-	callnative (GetNumPuzzlesCompleted)
-	if (var(VAR_RESULT) <= VAR_CURRENT_PUZZLE) { release end }
-	msgbox ("Are you ready to save and ride off\n"
-			"into the sunset?$", MSGBOX_YESNO)
-	if (var(VAR_RESULT) == YES) {
-		callnative (SaveForCredits)
-		waitstate
-		fadenewbgm (MUS_DUMMY)
-		fadescreenspeed (1, 4)
-		callnative (PlayCredits)
-	}
-	release
+script TrickHouseExt_EventScript_BuriedItem1 {
+	msgbox( "There's an item buried here…$")
+	giveitem_std (ITEM_TM27_RETURN, 1, 1)
 }
-

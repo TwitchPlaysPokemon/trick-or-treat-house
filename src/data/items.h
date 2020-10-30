@@ -5193,7 +5193,7 @@ const struct Item gItems[] =
     },
     
     [ITEM_CANDY_CHOCOSLAB] = 
-    {   // TODO: Held item: Intimidate
+    {   // Held item: Intimidate
         .name = sChocoSlabName,
         .itemId = ITEM_CANDY_CHOCOSLAB,
         .price = CANDY_COST(2000),
@@ -5439,7 +5439,7 @@ const struct Item gItems[] =
         .name = sGummyBearName,
         .quantum = sPacketQuantum,
         .itemId = ITEM_CANDY_GUMMYBEAR,
-        .price = CANDY_COST(50),
+        .price = 1, //CANDY_COST(50),
         .holdEffect = HOLD_EFFECT_RANDOM_STAT_UP,
         .holdEffectParam = 1,
         .description = sGummyBearDesc,
@@ -5666,6 +5666,7 @@ const struct Item gItems[] =
     [ITEM_CANDY_SNICKERS] =
     {   // Poke Doll, Smokeball
         .name = sSnickersName,
+        .plural = sSnickersName,
         .itemId = ITEM_CANDY_SNICKERS,
         .price = CANDY_COST(1000),
         .holdEffect = HOLD_EFFECT_CAN_ALWAYS_RUN,
@@ -6027,6 +6028,7 @@ static const u16 gCandyUncommonIds[] = {
     ITEM_CANDY_SNICKERS,
     ITEM_CANDY_MARSBAR,
     ITEM_CANDY_KITKAT,
+    ITEM_CANDY_GALAXY,
     ITEM_CANDY_PIXIESTICK,
     // ITEM_CANDY_EGGDEVILED,
 };

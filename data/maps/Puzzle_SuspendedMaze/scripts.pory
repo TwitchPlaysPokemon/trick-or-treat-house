@@ -93,7 +93,7 @@ script Puzzle_SuspendedMaze_Trainer_PlasmaKid {
 			"And then I fell into the drink!!\p"
 			"Time for payback for ruining\n"
 			"my costume!$", 
-			"Damn, so much for payback.$")
+			"Darn, so much for payback.$")
 	msgbox ("What even is this place?$", MSGBOX_AUTOCLOSE)
 }
 

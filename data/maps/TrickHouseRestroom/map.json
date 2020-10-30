@@ -4,6 +4,30 @@
     "allow_running": true,
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x34",
+            "item": "ITEM_CANDY_COMMON",
+            "type": "hidden_item",
+            "x": 0,
+            "y": 6
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x35",
+            "item": "ITEM_CANDY_ABUNDANT",
+            "type": "hidden_item",
+            "x": 19,
+            "y": 2
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x36",
+            "item": "ITEM_CANDY_UNCOMMON",
+            "type": "hidden_item",
+            "x": 20,
+            "y": 10
+        }
     ],
     "connections": null,
     "coord_events": [

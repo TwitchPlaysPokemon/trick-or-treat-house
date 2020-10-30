@@ -93,7 +93,7 @@ script FakeSecretBaseCave_MistressIntro {
 			"Good luck!$")
 	waitmessage
 	waitbuttonpress
-	setvar(VAR_MISTRESS_STATE, 2)
+	setvar(VAR_MISTRESS_STATE, 1)
 	copyobjectxytoperm(LID_MISTRESS)
 	releaseall
 }
@@ -146,8 +146,13 @@ script FakeSecretBaseCave_Mistress {
 					"Find anything?")
 			call(MetaPuzzle_DropOffEvents)
 			// TODO: Check if at 9 or 15 items and react accordingly
-			msgbox ("If you find anymore more, please,\n"
-					"don't hesitate to drop them here!$")
+			if (var(VAR_0x800A) > 0) {
+				msgbox ("If you find anymore, please,\n"
+						"don't hesitate to drop them here!$")
+			} else {
+				msgbox ("Nothing? Well… It's okay, but let\n"
+						"me know if you do.$")
+			}
 			setvar(VAR_MISTRESS_STATE, 2)
 		case 2:
 			msgbox ("Please try and find me the essence\n"

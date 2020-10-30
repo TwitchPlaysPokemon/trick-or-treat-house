@@ -5,6 +5,7 @@ Puzzle_IlexForest_MapScripts::
 	puzzle_quip Puzzle_IlexForest_Quip
 	puzzle_candylist Puzzle_IlexForest_CandyList
 	puzzle_setup_script Puzzle_IlexForest_Setup
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_IlexForest_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_IlexForest_OnTransition
 	.byte 0
 

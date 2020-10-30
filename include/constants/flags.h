@@ -212,21 +212,21 @@
 #define FLAG_UNUSED_0x0C4                    0xC4
 #define FLAG_UNUSED_0x0C5                    0xC5
 #define FLAG_UNUSED_0x0C6                    0xC6
-#define FLAG_RUSTURF_TUNNEL_OPENED           0xC7
-#define FLAG_RECEIVED_RED_SCARF              0xC8
-#define FLAG_RECEIVED_BLUE_SCARF             0xC9
-#define FLAG_RECEIVED_PINK_SCARF             0xCA
-#define FLAG_RECEIVED_GREEN_SCARF            0xCB
-#define FLAG_RECEIVED_YELLOW_SCARF           0xCC
-#define FLAG_INTERACTED_WITH_STEVEN_SPACE_CENTER    0xCD
-#define FLAG_ENCOUNTERED_LATIAS_OR_LATIOS    0xCE
-#define FLAG_MET_ARCHIE_METEOR_FALLS         0xCF
-#define FLAG_GOT_BASEMENT_KEY_FROM_WATTSON   0xD0
-#define FLAG_GOT_TM24_FROM_WATTSON           0xD1
-#define FLAG_FAN_CLUB_STRENGTH_SHARED        0xD2 // Set when you rate the strength of another trainer in Lilycove's Trainer Fan Club.
-#define FLAG_DEFEATED_RIVAL_RUSTBORO         0xD3
-#define FLAG_RECEIVED_RED_OR_BLUE_ORB        0xD4
-#define FLAG_RECEIVED_PREMIER_BALL_RUSTBORO  0xD5
+#define FLAG_UNUSED_0x0C7	                 0xC7
+#define FLAG_UNUSED_0x0C8	                 0xC8
+#define FLAG_UNUSED_0x0C9	                 0xC9
+#define FLAG_UNUSED_0x0CA	                 0xCA
+#define FLAG_UNUSED_0x0CB	                 0xCB
+#define FLAG_UNUSED_0x0CC	                 0xCC
+#define FLAG_UNUSED_0x0CD	                 0xCD
+#define FLAG_UNUSED_0x0CE	                 0xCE
+#define FLAG_UNUSED_0x0CF	                 0xCF
+#define FLAG_UNUSED_0x0D0	                 0xD0
+#define FLAG_UNUSED_0x0D1	                 0xD1
+#define FLAG_UNUSED_0x0D2	                 0xD2 // Set when you rate the strength of another trainer in Lilycove's Trainer Fan Club.
+#define FLAG_UNUSED_0x0D3	                 0xD3
+#define FLAG_UNUSED_0x0D4	                 0xD4
+#define FLAG_UNUSED_0x0D5	                 0xD5
 #define FLAG_ENABLE_WALLY_MATCH_CALL         0xD6
 #define FLAG_ENABLE_SCOTT_MATCH_CALL         0xD7
 #define FLAG_ENABLE_MOM_MATCH_CALL           0xD8
@@ -576,15 +576,15 @@
 #define FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x2D                    (FLAG_HIDDEN_ITEMS_START + 0x2D)
 #define FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x2E                    (FLAG_HIDDEN_ITEMS_START + 0x2E)
 #define FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x2F                    (FLAG_HIDDEN_ITEMS_START + 0x2F)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x30                         (FLAG_HIDDEN_ITEMS_START + 0x30)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x31                         (FLAG_HIDDEN_ITEMS_START + 0x31)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x32                         (FLAG_HIDDEN_ITEMS_START + 0x32)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x33                         (FLAG_HIDDEN_ITEMS_START + 0x33)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x34                         (FLAG_HIDDEN_ITEMS_START + 0x34)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x35                         (FLAG_HIDDEN_ITEMS_START + 0x35)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x36                         (FLAG_HIDDEN_ITEMS_START + 0x36)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x37                         (FLAG_HIDDEN_ITEMS_START + 0x37)
-#define FLAG_HIDDEN_ITEM_UNUSED_0x38                         (FLAG_HIDDEN_ITEMS_START + 0x38)
+#define FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x30                    (FLAG_HIDDEN_ITEMS_START + 0x30)
+#define FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x31                    (FLAG_HIDDEN_ITEMS_START + 0x31)
+#define FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x32                    (FLAG_HIDDEN_ITEMS_START + 0x32)
+#define FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x33                    (FLAG_HIDDEN_ITEMS_START + 0x33)
+#define FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x34                    (FLAG_HIDDEN_ITEMS_START + 0x34)
+#define FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x35                    (FLAG_HIDDEN_ITEMS_START + 0x35)
+#define FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x36                    (FLAG_HIDDEN_ITEMS_START + 0x36)
+#define FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x37                    (FLAG_HIDDEN_ITEMS_START + 0x37)
+#define FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x38                         (FLAG_HIDDEN_ITEMS_START + 0x38)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x39                         (FLAG_HIDDEN_ITEMS_START + 0x39)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x3A                         (FLAG_HIDDEN_ITEMS_START + 0x3A)
 #define FLAG_HIDDEN_ITEM_UNUSED_0x3B                         (FLAG_HIDDEN_ITEMS_START + 0x3B)

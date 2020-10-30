@@ -43,6 +43,38 @@
             "type": "sign",
             "x": 50,
             "y": 57
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x30",
+            "item": "ITEM_TM26_EARTHQUAKE",
+            "type": "hidden_item",
+            "x": 13,
+            "y": 10
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x31",
+            "item": "ITEM_CANDY_COMMON",
+            "type": "hidden_item",
+            "x": 27,
+            "y": 29
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x32",
+            "item": "ITEM_CANDY_UNCOMMON",
+            "type": "hidden_item",
+            "x": 55,
+            "y": 60
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x33",
+            "item": "ITEM_CANDY_ABUNDANT",
+            "type": "hidden_item",
+            "x": 67,
+            "y": 30
         }
     ],
     "connections": [
@@ -349,16 +381,16 @@
         },
         {
             "elevation": 3,
-            "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BRENDAN_MACH_BIKE",
+            "flag": "FLAG_HIDE_INTRO_CHARACTERS",
+            "graphics_id": "TTH_FRIEND_ALEX",
             "movement_range_x": 0,
             "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_INVISIBLE",
-            "script": "TrickHouseExt_EventScript_BikeCredits",
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 38,
-            "y": 29
+            "x": 49,
+            "y": 34
         },
         {
             "elevation": 3,
@@ -432,7 +464,7 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_LEFT",
-            "script": "NULL",
+            "script": "TrickHouseExt_EventScript_TraderD1",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 41,
@@ -606,6 +638,19 @@
             "trainer_type": "0",
             "x": 34,
             "y": 41
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x38",
+            "graphics_id": "EVENT_OBJ_GFX_BERRY_TREE_EARLY_STAGES",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "TrickHouseExt_EventScript_BuriedItem1",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 8,
+            "y": 28
         }
     ],
     "region_map_section": "MAPSEC_ROUTE_110",
