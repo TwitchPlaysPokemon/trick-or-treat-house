@@ -6444,3 +6444,5 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/SlateportCity_ContestHall/scripts.inc"
 
 	.include "data/maps/Puzzle_BlockPushing/scripts.inc"
+
+	.include "data/maps/Route110_Cutscene/scripts.inc"

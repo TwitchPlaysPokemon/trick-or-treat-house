@@ -39,6 +39,8 @@ script(local) RustboroCity_PanHalloween {
 	closedoor (26, 34)
 	waitdooranim
 	applymovement (7, RustboroCity_Movement_WalkNextGirl)
+	delay (64)
+	applymovement (14, RustboroCity_Movement_WalkNextAlex)
 	waitmovement (7)
 	delay (10)
 	opendoor (30, 28)
@@ -72,6 +74,13 @@ movement RustboroCity_Movement_WalkNextGirl {
 	walk_down
 	walk_right * 4
 	walk_up * 7
+}
+movement RustboroCity_Movement_WalkNextAlex {
+	walk_down * 3
+	delay_16
+	face_right
+	delay_16 * 2
+	face_up
 }
 movement RustboroCity_Movement_SurpriseJump {
 	emote_exclamation_mark

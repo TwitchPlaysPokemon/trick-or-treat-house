@@ -2,7 +2,8 @@
     "MG_CutsceneMaps": [
         "MauvilleCity_Cutscene",
         "RustboroCity_Cutscene",
-        "Puzzle_Credits"
+        "Puzzle_Credits",
+        "Route110_Cutscene"
     ],
     "MG_DesertPuzzles": [
         "Puzzle_Desert_Oasis",

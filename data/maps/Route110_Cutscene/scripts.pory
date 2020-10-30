@@ -1,0 +1,39 @@
+mapscripts Route110_Cutscene_MapScripts {
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_INTRO_COUNTER, 0: Route110_Cutscene_RunIntro
+	]
+	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+		VAR_INTRO_COUNTER, 0 {
+			setflag (FLAG_DISABLE_FADE_INIT)
+			callnative (HidePlayerOnLoad)
+		}
+	]
+}
+
+raw `
+#define LID_JOEY 1
+#define LID_JAMES 2
+#define LID_IRENE 3
+#define LID_WALLY 4
+#define LID_BRENDAN 5
+#define LID_MAY 6
+#define LID_ALEX 7
+#define LID_GHOST 8
+`
+script Route110_Cutscene_RunIntro {
+	lockall
+	delay (30)
+	addobject (LID_JAMES)
+	addobject (LID_GHOST)
+	addobject (LID_BRENDAN)
+	addobject (LID_MAY)
+	addobject (LID_ALEX)
+	addobject (LID_WALLY)
+	addobject (LID_IRENE)
+	
+	
+	
+	
+	
+	releaseall
+}

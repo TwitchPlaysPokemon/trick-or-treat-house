@@ -32,6 +32,7 @@
 #define MAP_MAUVILLE_CITY_CUTSCENE (0 | (3 << 8))
 #define MAP_RUSTBORO_CITY_CUTSCENE (1 | (3 << 8))
 #define MAP_PUZZLE_CREDITS         (2 | (3 << 8))
+#define MAP_ROUTE110_CUTSCENE      (3 | (3 << 8))
 
 // Map Group 4
 #define MAP_SECRET_BASE_RED_CAVE1    (0 | (4 << 8))

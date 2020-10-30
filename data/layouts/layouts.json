@@ -1829,6 +1829,16 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_TrickHousePuzzle",
             "width": 30
+        },
+        {
+            "blockdata_filepath": "data/layouts/Route110_Cutscene/map.bin",
+            "border_filepath": "data/layouts/Route110_Cutscene/border.bin",
+            "height": 20,
+            "id": "LAYOUT_ROUTE110_CUTSCENE",
+            "name": "Route110_Cutscene_Layout",
+            "primary_tileset": "gTileset_Autumn",
+            "secondary_tileset": "gTileset_Route110",
+            "width": 20
         }
     ],
     "layouts_table_label": "gMapLayouts"

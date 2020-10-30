@@ -18,7 +18,7 @@ Puzzle_TrickHouseOriginal6_Intro:
 	.string "This next puzzle is a classic\n"
 	.string "one of mine from back in the day.\p"
 	.string "The gates used to belong to the\n"
-	.string "FORETREE GYM, before they remodeled.\p"
+	.string "FORTREE GYM, before they remodeled.\p"
 	.string "Can you handle it? Wahahahaha!$"
 Puzzle_TrickHouseOriginal6_Quip:
 	.string "I kept getting turned around in there…\p"

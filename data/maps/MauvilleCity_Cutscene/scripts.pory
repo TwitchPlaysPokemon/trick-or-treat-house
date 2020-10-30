@@ -26,6 +26,7 @@ script(local) MauvilleCity_PanHalloween {
 	applymovement (2, Common_Movement_WalkInPlaceRight)
 	waitmovement (3)
 	applymovement (1, Common_Movement_WalkInPlaceRight)
+	applymovement (14, Common_Movement_WalkInPlaceRight)
 	delay (20)
 	applymovement (2, Common_Movement_WalkInPlaceUp)
 	delay (30)
