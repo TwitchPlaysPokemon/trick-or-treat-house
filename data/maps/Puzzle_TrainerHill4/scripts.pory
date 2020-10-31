@@ -11,7 +11,7 @@ Puzzle_TrainerHill4_Name:
 Puzzle_TrainerHill4_Intro:
 	.string "Hah! Back once more, are we?\p"
 	.string "This time we're going back for one\n"
-	.string "more bought of mini puzzles in the\l"
+	.string "more bout of mini puzzles in the\l"
 	.string "dreaded Trainer Tower of Terror!\p"
 	.string "Hopefully this last one will give\n"
 	.string "you a bit more challenge.\p"

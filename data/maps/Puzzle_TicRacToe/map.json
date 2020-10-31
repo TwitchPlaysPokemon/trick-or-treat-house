@@ -115,7 +115,7 @@
     "id": "MAP_PUZZLE_TIC_RAC_TOE",
     "layout": "LAYOUT_PUZZLE_TIC_RAC_TOE",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_NEXTROAD",
     "name": "Puzzle_TicRacToe",
     "object_events": [
         {

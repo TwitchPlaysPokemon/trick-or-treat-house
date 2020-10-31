@@ -5,7 +5,7 @@
     "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
     "bg_events": [
         {
-            "elevation": 3,
+            "elevation": 0,
             "flag": "FLAG_CANDY_RARE_01",
             "item": "ITEM_CANDY_RARE",
             "type": "hidden_item",
@@ -13,7 +13,7 @@
             "y": 42
         },
         {
-            "elevation": 3,
+            "elevation": 0,
             "flag": "FLAG_CANDY_ABUNDANT_02",
             "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
@@ -21,7 +21,7 @@
             "y": 20
         },
         {
-            "elevation": 3,
+            "elevation": 0,
             "flag": "FLAG_CANDY_COMMON_03",
             "item": "ITEM_CANDY_COMMON",
             "type": "hidden_item",
@@ -45,7 +45,7 @@
             "y": 40
         },
         {
-            "elevation": 3,
+            "elevation": 0,
             "flag": "FLAG_CANDY_ABUNDANT_04",
             "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
