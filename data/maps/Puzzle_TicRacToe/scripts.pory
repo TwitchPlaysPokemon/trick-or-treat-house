@@ -63,6 +63,8 @@ script(local) Puzzle_TicRacToe_OnLoad {
 	}
 	if (var(VAR_STEP_TRIGGER) == 2) {
 		setmetatile(4, 4, 0x26A, FALSE)
+	} else {
+		setvar(VAR_STEP_TRIGGER, 0)
 	}
 }
 script(local) Puzzle_TicRacToe_OnExit {
