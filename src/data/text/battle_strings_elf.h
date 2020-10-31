@@ -129,7 +129,7 @@ static const u8 sBort_PkmnsItemCuredPoison[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX
 static const u8 sBort_PkmnsItemHealedBurn[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nBURNT");
 static const u8 sBort_PkmnsItemDefrostedIt[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nHEAT");
 static const u8 sBort_PkmnsItemWokeIt[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nWAKE");
-static const u8 sBort_PkmnsItemSnappedOut[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nsnapped it out of confusion!");
+static const u8 sBort_PkmnsItemSnappedOut[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nORDERED");
 static const u8 sBort_PkmnsItemCuredProblem[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nRECOVER {B_BUFF1}");
 static const u8 sBort_PkmnsItemNormalizedStatus[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nJUMP NORMAL");
 static const u8 sBort_PkmnsItemRestoredHealth[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nRECOVER");
@@ -137,6 +137,7 @@ static const u8 sBort_PkmnsItemRestoredPP[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}
 static const u8 sBort_PkmnsItemRestoredStatus[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} IS {B_LAST_ITEM}\nRECOVER");
 static const u8 sBort_PkmnsItemRestoredHPALittle[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} {B_LAST_ITEM}\nREVERSION");
 
+static const u8 sBort_PkmnsXWoreOff[] = _("{B_ATK_PREFIX1}'s {B_BUFF1}\nNO APPEAR!"); // gussed
 static const u8 sBort_PkmnCutsAttackWithSlab[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} BIG CANDY\n{B_DEF_NAME_WITH_PREFIX} MAKE SAD");
 
 static const u8 sBort_PkmnMadeItRain[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} {B_SCR_ACTIVE_ABILITY}\nRAIN ENDLES");
@@ -500,7 +501,7 @@ const u8 * const gElfBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNALREADYHASBURN - 12] = sText_PkmnAlreadyHasBurn,
     [STRINGID_STATSWONTDECREASE2 - 12] = sText_StatsWontDecrease2,
     [STRINGID_PKMNSXBLOCKSY2 - 12] = sText_PkmnsXBlocksY2,
-    [STRINGID_PKMNSXWOREOFF - 12] = sText_PkmnsXWoreOff,
+    [STRINGID_PKMNSXWOREOFF - 12] = sBort_PkmnsXWoreOff,
     [STRINGID_PKMNRAISEDDEFALITTLE - 12] = sBort_PkmnRaisedDefALittle,
     [STRINGID_PKMNRAISEDSPDEFALITTLE - 12] = sBort_PkmnRaisedSpDefALittle,
     [STRINGID_THEWALLSHATTERED - 12] = sText_TheWallShattered,

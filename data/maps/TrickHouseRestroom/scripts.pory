@@ -345,7 +345,7 @@ script TrickHouseRestroom_EventScript_Healer {
 		waitmovement (EVENT_OBJ_ID_PLAYER)
 		waitmovement (1)
 		special (RemoveCameraObject)
-		msgbox ("Here you are, dearie. You're {POKEMON}\n"
+		msgbox ("Here you are, dearie. Your {POKEMON}\n"
 				"are so well behaved.\p"
 				"Good luck with the puzzles!$")
 		release
