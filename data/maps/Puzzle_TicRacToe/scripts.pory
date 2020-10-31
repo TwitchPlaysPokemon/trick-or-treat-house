@@ -1,7 +1,7 @@
 raw `
 Puzzle_TicRacToe_MapScripts::
 	puzzle_info Puzzle_TicRacToe_Name, Puzzle_TicRacToe_Author
-	@ puzzle_adjective Puzzle_TicRacToe_Adjective
+	puzzle_adjective Puzzle_TicRacToe_Adjective
 	puzzle_quip Puzzle_TicRacToe_Quip
 	@ puzzle_metavars Puzzle_TicRacToe_Variables
 	puzzle_candylist Puzzle_TicRacToe_CandyList
