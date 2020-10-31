@@ -424,6 +424,7 @@ script TrickHouseRestroom_EventScript_Relearner {
 			"{POKEMON} a forgotten move?$", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == NO) {
 		msgbox ("Good luck on the puzzles.$")
+		release
 		end
 	}
 	goto(TrickHouseRestroom_EventScript_Relearner_Choose)
