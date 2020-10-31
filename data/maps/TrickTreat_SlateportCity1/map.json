@@ -127,7 +127,7 @@
             "graphics_id": "EVENT_OBJ_GFX_ANABEL",
             "movement_range_x": 0,
             "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
+            "movement_type": "MOVEMENT_TYPE_HIDDEN",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "TRAINER_TYPE_NONE",
@@ -192,7 +192,7 @@
             "graphics_id": "EVENT_OBJ_GFX_ALIEN",
             "movement_range_x": 0,
             "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
+            "movement_type": "MOVEMENT_TYPE_HIDDEN",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
@@ -205,7 +205,7 @@
             "graphics_id": "EVENT_OBJ_GFX_ALIEN",
             "movement_range_x": 0,
             "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
+            "movement_type": "MOVEMENT_TYPE_HIDDEN",
             "script": "NULL",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
@@ -218,18 +218,18 @@
     "show_map_name": true,
     "warp_events": [
         {
-            "dest_map": "MAP_TRICK_TREAT_SLATEPORT_CITY1",
+            "dest_map": "MAP_SLATEPORT_CITY_CONTEST_LOBBY",
             "dest_warp_id": 0,
             "elevation": 0,
-            "x": 17,
-            "y": 1
+            "x": 9,
+            "y": 11
         },
         {
             "dest_map": "MAP_SLATEPORT_CITY_CONTEST_LOBBY",
             "dest_warp_id": 0,
             "elevation": 0,
-            "x": 9,
-            "y": 12
+            "x": 17,
+            "y": 1
         },
         {
             "dest_map": "MAP_TRICK_TREAT_SLATEPORT_CITY1",

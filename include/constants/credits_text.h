@@ -440,9 +440,9 @@ static const struct CreditsEntry *const gCreditsEntryPointerTable[][10] =
 		NULL,
 	},
 	{
-		_,
 		gCreditsEntry_Testers2020,
 		gCreditsEntry_Tustin2121,
+		gCreditsEntry_M4UsedRollout,
 		gCreditsEntry_TheTPPChat,
 		_,
 		NULL,

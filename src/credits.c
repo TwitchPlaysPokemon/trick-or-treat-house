@@ -1353,7 +1353,7 @@ static void CB2_CleanupCredits(void)
     ResetBgsAndClearDma3BusyFlags(0);
     ResetGpuAndVram();
     
-    SetWarpDestination(MAP_GROUP(TRICK_TREAT_SLATEPORT_CITY1), MAP_NUM(TRICK_TREAT_SLATEPORT_CITY1), 0, -1, -1);
+    SetWarpDestination(MAP_GROUP(TRICK_TREAT_SLATEPORT_CITY1), MAP_NUM(TRICK_TREAT_SLATEPORT_CITY1), 1, -1, -1);
     WarpIntoMap();
     gFieldCallback = NULL;
     SetMainCallback2(CB2_LoadMap);

@@ -68,7 +68,7 @@ script Puzzle_LostWoods4_TrainerScript_NinjaB2 {
 			"Having successfully hid from prey,\n"
 			"the preying mantis ATTACKS!!$", 
 			"Sliced in twain!")
-	msgbox ("I thought I had the prefect plan\n"
+	msgbox ("I thought I had the perfect plan\n"
 			"of attack.$", MSGBOX_AUTOCLOSE)
 }
 

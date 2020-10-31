@@ -7,7 +7,7 @@ TrickTreat_SlateportCity1_MapScripts::
 TrickTreat_SlateportCity_Name:
 	.string "Soliciting Slateport$"
 TrickTreat_SlateportCity1_FrameTable:
-	map_script_2 VAR_LAST_WARP_ID, 0, TrickTreat_SlateportCity1_FromCredits
+	map_script_2 VAR_LAST_WARP_ID, 1, TrickTreat_SlateportCity1_FromCredits
 	.2byte 0
 `
 
