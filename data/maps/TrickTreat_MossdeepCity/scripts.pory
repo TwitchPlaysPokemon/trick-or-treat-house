@@ -7,6 +7,7 @@ TrickTreat_MossdeepCity_MapScripts:: @ 81E4A96
 	puzzle_setup_script TrickTreat_MossdeepCity_SetupScript
 	puzzle_candylist TrickTreat_MossdeepCity_CandyList
 	puzzle_friendcommentary TrickTreat_MossdeepCity_Friend
+	map_script MAP_SCRIPT_ON_LOAD, TrickTreat_MossdeepCity_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, TrickTreat_MossdeepCity_OnTransition
 	map_script MAP_SCRIPT_ON_RETURN_TO_FIELD, TrickTreat_MossdeepCity_OnReturnToField
 	.byte 0
@@ -104,6 +105,10 @@ script TrickTreat_MossdeepCity_SetupScript {
 	random(3)
 	copyvar(VAR_TRICKSTER_D_POS, VAR_RESULT)
 	// Position tricksters initially
+}
+
+script TrickTreat_MossdeepCity_OnLoad {
+	call (TrickTreat_MossdeepCity_Tricksters_Setup)
 }
 
 script TrickTreat_MossdeepCity_OnTransition {
