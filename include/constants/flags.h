@@ -938,10 +938,10 @@
 #define FLAG_HIDE_UNUSED_0x3E1                                      0x3E1
 #define FLAG_HIDE_UNUSED_0x3E2                                      0x3E2
 #define FLAG_HIDE_UNUSED_0x3E3                                      0x3E3
-#define FLAG_HIDE_UNUSED_0x3E4                                      0x3E4
-#define FLAG_HIDE_UNUSED_0x3E5                                      0x3E5
-#define FLAG_HIDE_UNUSED_0x3E6                                      0x3E6
-#define FLAG_HIDE_UNUSED_0x3E7                                      0x3E7
+#define FLAG_SLATEPORT_CANDY_LASS                                   0x3E4
+#define FLAG_SLATEPORT_CANDY_BUGCATCHER                             0x3E5
+#define FLAG_SLATEPORT_CANDY_WATTSON                                0x3E6
+#define FLAG_SLATEPORT_CANDY_NURSE                                  0x3E7
 
 // Item Ball Flags
 #define FLAG_ITEM_ROUTE_102_POTION                                  0x3E8

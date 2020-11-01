@@ -6446,3 +6446,11 @@ EventScript_PlayerPCFemale::
 	.include "data/maps/Puzzle_BlockPushing/scripts.inc"
 
 	.include "data/maps/Route110_Cutscene/scripts.inc"
+
+	.include "data/maps/SlateportCity_PokemonFanClub/scripts.inc"
+
+	.include "data/maps/SlateportCity_OceanicMuseum_1F/scripts.inc"
+
+	.include "data/maps/SlateportCity_OceanicMuseum_2F/scripts.inc"
+
+	.include "data/maps/SlateportCity_SeashoreHouse/scripts.inc"

@@ -76,7 +76,10 @@
         "TrickTreat_SlateportCity2",
         "SlateportCity_Harbor",
         "SlateportCity_ContestLobby",
-        "SlateportCity_ContestHall"
+        "SlateportCity_ContestHall",
+        "SlateportCity_PokemonFanClub",
+        "SlateportCity_OceanicMuseum_1F",
+        "SlateportCity_OceanicMuseum_2F"
     ],
     "MG_PuzzleFramework": [
         "TrickHouseDevEntrance",
@@ -86,7 +89,8 @@
         "TrickHouseCorridor",
         "TrickHouseTreeHouse",
         "TrickHouseRestroom",
-        "TrickHouseExt_Gatehouse"
+        "TrickHouseExt_Gatehouse",
+        "SlateportCity_SeashoreHouse"
     ],
     "MG_ReferenceMaps": [
         "PetalburgCity",

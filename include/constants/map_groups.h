@@ -2,21 +2,25 @@
 #define GUARD_CONSTANTS_MAP_GROUPS_H
 
 // Map Group 0
-#define MAP_TRICK_HOUSE_DEV_ENTRANCE  (0 | (0 << 8))
-#define MAP_TRICK_HOUSE_EXT           (1 | (0 << 8))
-#define MAP_TRICK_HOUSE_ENTRANCE      (2 | (0 << 8))
-#define MAP_TRICK_HOUSE_END           (3 | (0 << 8))
-#define MAP_TRICK_HOUSE_CORRIDOR      (4 | (0 << 8))
-#define MAP_TRICK_HOUSE_TREE_HOUSE    (5 | (0 << 8))
-#define MAP_TRICK_HOUSE_RESTROOM      (6 | (0 << 8))
-#define MAP_TRICK_HOUSE_EXT_GATEHOUSE (7 | (0 << 8))
+#define MAP_TRICK_HOUSE_DEV_ENTRANCE      (0 | (0 << 8))
+#define MAP_TRICK_HOUSE_EXT               (1 | (0 << 8))
+#define MAP_TRICK_HOUSE_ENTRANCE          (2 | (0 << 8))
+#define MAP_TRICK_HOUSE_END               (3 | (0 << 8))
+#define MAP_TRICK_HOUSE_CORRIDOR          (4 | (0 << 8))
+#define MAP_TRICK_HOUSE_TREE_HOUSE        (5 | (0 << 8))
+#define MAP_TRICK_HOUSE_RESTROOM          (6 | (0 << 8))
+#define MAP_TRICK_HOUSE_EXT_GATEHOUSE     (7 | (0 << 8))
+#define MAP_SLATEPORT_CITY_SEASHORE_HOUSE (8 | (0 << 8))
 
 // Map Group 1
-#define MAP_TRICK_TREAT_SLATEPORT_CITY1  (0 | (1 << 8))
-#define MAP_TRICK_TREAT_SLATEPORT_CITY2  (1 | (1 << 8))
-#define MAP_SLATEPORT_CITY_HARBOR        (2 | (1 << 8))
-#define MAP_SLATEPORT_CITY_CONTEST_LOBBY (3 | (1 << 8))
-#define MAP_SLATEPORT_CITY_CONTEST_HALL  (4 | (1 << 8))
+#define MAP_TRICK_TREAT_SLATEPORT_CITY1      (0 | (1 << 8))
+#define MAP_TRICK_TREAT_SLATEPORT_CITY2      (1 | (1 << 8))
+#define MAP_SLATEPORT_CITY_HARBOR            (2 | (1 << 8))
+#define MAP_SLATEPORT_CITY_CONTEST_LOBBY     (3 | (1 << 8))
+#define MAP_SLATEPORT_CITY_CONTEST_HALL      (4 | (1 << 8))
+#define MAP_SLATEPORT_CITY_POKEMON_FAN_CLUB  (5 | (1 << 8))
+#define MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_1F (6 | (1 << 8))
+#define MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_2F (7 | (1 << 8))
 
 // Map Group 2
 #define MAP_TEST_MAP_HALLWAY       (0 | (2 << 8))

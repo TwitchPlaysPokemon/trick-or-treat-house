@@ -1839,6 +1839,46 @@
             "primary_tileset": "gTileset_Autumn",
             "secondary_tileset": "gTileset_Route110",
             "width": 20
+        },
+        {
+            "blockdata_filepath": "data/layouts/SlateportCity_PokemonFanClub/map.bin",
+            "border_filepath": "data/layouts/SlateportCity_PokemonFanClub/border.bin",
+            "height": 11,
+            "id": "LAYOUT_SLATEPORT_CITY_POKEMON_FAN_CLUB",
+            "name": "SlateportCity_PokemonFanClub_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_PokemonFanClub",
+            "width": 14
+        },
+        {
+            "blockdata_filepath": "data/layouts/SlateportCity_OceanicMuseum_1F/map.bin",
+            "border_filepath": "data/layouts/SlateportCity_OceanicMuseum_1F/border.bin",
+            "height": 9,
+            "id": "LAYOUT_SLATEPORT_CITY_OCEANIC_MUSEUM_1F",
+            "name": "SlateportCity_OceanicMuseum_1F_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_OceanicMuseum",
+            "width": 20
+        },
+        {
+            "blockdata_filepath": "data/layouts/SlateportCity_OceanicMuseum_2F/map.bin",
+            "border_filepath": "data/layouts/SlateportCity_OceanicMuseum_2F/border.bin",
+            "height": 9,
+            "id": "LAYOUT_SLATEPORT_CITY_OCEANIC_MUSEUM_2F",
+            "name": "SlateportCity_OceanicMuseum_2F_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_OceanicMuseum",
+            "width": 20
+        },
+        {
+            "blockdata_filepath": "data/layouts/Route109_SeashoreHouse/map.bin",
+            "border_filepath": "data/layouts/Route109_SeashoreHouse/border.bin",
+            "height": 10,
+            "id": "LAYOUT_ROUTE109_SEASHORE_HOUSE",
+            "name": "Route109_SeashoreHouse_Layout",
+            "primary_tileset": "gTileset_Building",
+            "secondary_tileset": "gTileset_SeashoreHouse",
+            "width": 15
         }
     ],
     "layouts_table_label": "gMapLayouts"

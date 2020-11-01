@@ -136,7 +136,166 @@ script TrickTreat_SlateportCity1_SignScript_SeashoreHouse {
 			"“May hot battles rage on hot sands!\n"
 			"The place for hot TRAINERS!”$", MSGBOX_SIGN)
 }
+script TrickTreat_SlateportCity1_SignScript_ClosedSign {
+	msgbox ("Closed for rennovations$", MSGBOX_SIGN)
+}
+
+// ----------------------------------------------------
+// Candy Givers
+
+script TrickTreat_SlateportCity1_CandyGiver_Nurse {
+	lock
+	faceplayer
+	if (flag(FLAG_SLATEPORT_CANDY_NURSE)) {
+		msgbox ("The {POKEMON} CENTER is always there\n"
+				"for trainers everywhere.$")
+	} else {
+		msgbox ("Happy Halloween!\n"
+				"Please take some candy!$")
+		giveitem_std (ITEM_CANDY_ABUNDANT, 2)
+		msgbox ("The {POKEMON} CENTER is always there\n"
+				"for trainers everywhere.\p"
+				"Have a good night!$")
+		setflag (FLAG_SLATEPORT_CANDY_NURSE)
+	}
+	release
+}
+script TrickTreat_SlateportCity1_CandyGiver_Lass {
+	lock
+	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
+	msgbox ("Trick or Treat!\p"
+			"Let's battle for it!$")
+	trainerbattle_no_intro (TRAINER_33, 
+			"Wow, alright. You win.$")
+	setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
+	msgbox ("Do you know how hard it was to win\n"
+			"these off Norman? Sigh. Here.$")
+	giveitem_std (ITEM_CANDY_COMMON, 2)
+	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
+	setflag (FLAG_PUZZLE_23)
+	release
+}
+script TrickTreat_SlateportCity1_CandyGiver_Wattson {
+	lock
+	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
+	msgbox ("Trick or Treat!\p"
+			"Let's battle for it!$")
+	trainerbattle_no_intro (TRAINER_32, 
+			"Wow, alright. You win.$")
+	setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
+	msgbox ("Do you know how hard it was to win\n"
+			"these off Norman? Sigh. Here.$")
+	giveitem_std (ITEM_CANDY_COMMON, 2)
+	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
+	setflag (FLAG_PUZZLE_23)
+	release
+}
+script TrickTreat_SlateportCity1_CandyGiver_BugCatcher {
+	lock
+	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
+	msgbox ("Trick or Treat!\p"
+			"Let's battle for it!$")
+	trainerbattle_no_intro (TRAINER_34, 
+			"Wow, alright. You win.$")
+	setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
+	msgbox ("Do you know how hard it was to win\n"
+			"these off Norman? Sigh. Here.$")
+	giveitem_std (ITEM_CANDY_COMMON, 2)
+	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
+	setflag (FLAG_PUZZLE_23)
+	release
+}
 
 
+// ----------------------------------------------------
+// Town People
+
+script TrickTreat_SlateportCity1_EventScript_Reporter {
+	msgbox ("He seems to be waiting to go live\n"
+			"at any moment.$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_TriggerScript_Reporter {
+	lock
+	msgbox ("Yo! Down in front!$")
+	closemessage
+	applymovement(LID_PLAYER, Common_Movement_BackOffRight1)
+	waitmovement(0)
+	release
+}
+
+
+script TrickTreat_SlateportCity1_EventScript_ShopkeepA {
+	msgbox ("Pupkins for sale!$", MSGBOX_NPC)
+}
+script TrickTreat_SlateportCity1_EventScript_Fisher {
+	msgbox ("Fish for sale!$", MSGBOX_NPC)
+}
+
+script TrickTreat_SlateportCity1_EventScript_WallaceFan1 {
+	msgbox ("AAAAAHHHHHH!!! WALLACE!!!\n"
+			"WILL YOU SIGN THIS FOR ME?!$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_EventScript_WallaceFan3 {
+	msgbox ("WALLACE!!! SIGN MY CHEST PLEASE!!$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_EventScript_WallaceFan2 {
+	msgbox ("WALLACE!!!\n"
+			"CAN I HAVE YOUR AUTOGRAPH?!$", MSGBOX_SIGN)
+}
+
+script TrickTreat_SlateportCity1_EventScript_Regi {
+	msgbox ("Um, it seems to be slumbering here?\n"
+			"what??$", MSGBOX_SIGN)
+}
+
+// ----------------------------------------------------
+// Rigotta People
+
+script TrickTreat_SlateportCity1_EventScript_Generic {
+	msgbox ("They seem enthralled watching the boats\n"
+			"racing around out in the water.$", MSGBOX_SIGN)
+}
+
+script TrickTreat_SlateportCity1_EventScript_Tuber {
+	msgbox ("The boats go WOOOOOOSH!", MSGBOX_NPC)
+}
+script TrickTreat_SlateportCity1_EventScript_TuberMother {
+	msgbox ("Benny, don't you want to sit and watch\n"
+			"the boats instead of running around?\p"
+			"Kids… I tell ya…$", MSGBOX_NPC)
+}
+
+script TrickTreat_SlateportCity1_EventScript_SandLady {
+	msgbox ("My boyfriend buried me!\n"
+			"Then he left me here!\p"
+			"I'm gonna get him back once I can\n"
+			"move again.$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_EventScript_Artist {
+	msgbox ("The Slateport Halloween Regatta is so\n"
+			"inspiring! I shall paint the most\l"
+			"beautiful images of it later!$", MSGBOX_NPC)
+}
+
+script TrickTreat_SlateportCity1_EventScript_Mermaid {
+	msgbox ("She seems to be asleep. Her fins twitch\n"
+			"in the chilly air.$", MSGBOX_SIGN)
+}
+
+script TrickTreat_SlateportCity1_EventScript_Zander {
+	msgbox ("Zander seems to be fast asleep.$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_EventScript_Carver {
+	msgbox ("Carver: Hey, uh… no hard feelings\n"
+			"about that big battle earlier…\p"
+			"Zander's kind of sensitive…\n"
+			"but he'll never admit it…\p"
+			"He still overracts to any slight, after\n"
+			"growing up with people teasing him…\p"
+			"I just hope I'm not contributing to\n"
+			"that in the end.\p"
+			"…uh… you didn't need to know all that.\n"
+			"Happy Halloween!$", MSGBOX_NPC)
+}
 
 

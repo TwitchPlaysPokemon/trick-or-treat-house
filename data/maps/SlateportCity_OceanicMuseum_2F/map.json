@@ -1,0 +1,31 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": false,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_2F",
+    "layout": "LAYOUT_SLATEPORT_CITY_OCEANIC_MUSEUM_2F",
+    "map_type": "MAP_TYPE_INDOOR",
+    "music": "MUS_DAN02",
+    "name": "SlateportCity_OceanicMuseum_2F",
+    "object_events": [
+    ],
+    "region_map_section": "MAPSEC_SLATEPORT_CITY",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_1F",
+            "dest_warp_id": 2,
+            "elevation": 0,
+            "x": 6,
+            "y": 1
+        }
+    ],
+    "weather": "WEATHER_SUNNY"
+}
