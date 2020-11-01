@@ -220,7 +220,7 @@ static void CreateStartMenuTask(TaskFunc followupFunc);
 static void InitSave(void);
 static u8 RunSaveCallback(void);
 static void ShowSaveMessage(const u8 *message, u8 (*saveCallback)(void));
-static void sub_80A0014(void);
+static void ClearTextWindow(void);
 static void HideSaveInfoWindow(void);
 static void SaveStartTimer(void);
 static bool8 SaveSuccesTimer(void);
@@ -768,13 +768,55 @@ static void ItemUseFromStartMenu_EscapeRope(u8 taskId)
     SetUpItemUseOnFieldCallback(taskId);
 }
 
+#if TPP_MODE
+static bool8 EscapeConfirmInputCallback(void)
+{
+    if (RunTextPrintersAndIsPrinter0Active() == TRUE)
+    {
+        return FALSE;
+    }
+    
+    switch (Menu_ProcessInputNoWrapClearOnChoose())
+    {
+    case 0: // Yes
+        sStartMenuCursorPos = 0;
+        ClearDialogWindowAndFrameToTransparent(0, FALSE);
+        CreateTask(ItemUseFromStartMenu_EscapeRope, 0xFF);
+        return TRUE;
+    case -1: // B Button
+    case 1: // No
+        // Back to Start menu
+        sStartMenuCursorPos = 0;
+        ClearDialogWindowAndFrameToTransparent(0, FALSE);
+        InitStartMenu();
+        gMenuCallback = HandleStartMenuInput;
+    }
+    
+    return FALSE;
+}
+
+#endif
+
 static bool8 StartMenuEscapeCallback(void)
 {
+#if !TPP_MODE
+    // Exit immedeately
     RemoveExtraStartMenuWindows();
     HideStartMenu();
     CreateTask(ItemUseFromStartMenu_EscapeRope, 0xFF);
-
     return TRUE;
+#else
+    ClearStdWindowAndFrame(GetStartMenuWindowId(), FALSE);
+    RemoveStartMenuWindow();
+    
+    StringExpandPlaceholders(gStringVar4, gText_ConfirmEscape);
+    sub_819786C(0, TRUE);
+    AddTextPrinterForMessage_2(TRUE);
+    DisplayYesNoMenuWithDefault(1); // Show Yes/No menu
+    
+    gMenuCallback = EscapeConfirmInputCallback;
+    return FALSE;
+#endif
 }
 
 // static bool8 StartMenuBattlePyramidRetireCallback(void)
@@ -959,7 +1001,7 @@ static void SaveGameTask(u8 taskId)
     EnableBothScriptContexts();
 }
 
-static void sub_80A0014(void)
+static void ClearTextWindow(void)
 {
     ClearDialogWindowAndFrame(0, TRUE);
 }
@@ -1054,7 +1096,7 @@ static u8 SaveConfirmInputCallback(void)
     case -1: // B Button
     case 1: // No
         HideSaveInfoWindow();
-        sub_80A0014();
+        ClearTextWindow();
         return SAVE_CANCELED;
     }
 
@@ -1100,7 +1142,7 @@ static u8 SaveOverwriteInputCallback(void)
     case -1: // B Button
     case 1: // No
         HideSaveInfoWindow();
-        sub_80A0014();
+        ClearTextWindow();
         return SAVE_CANCELED;
     }
 
@@ -1229,7 +1271,7 @@ static u8 SaveReturnErrorCallback(void)
 //         return SAVE_CANCELED;
 //     case -1: // B Button
 //     case 1: // No
-//         sub_80A0014();
+//         ClearTextWindow();
 //         return SAVE_SUCCESS;
 //     }
 
