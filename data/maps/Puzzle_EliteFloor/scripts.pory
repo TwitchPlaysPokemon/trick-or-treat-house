@@ -4,6 +4,7 @@ Puzzle_EliteFloor_MapScripts::
 	puzzle_adjective Puzzle_EliteFloor_Adjective
 	puzzle_quip Puzzle_EliteFloor_Quip
 	puzzle_candylist Puzzle_EliteFloor_CandyList
+	puzzle_devcommentary Puzzle_EliteFloor_DevCommentary
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_EliteFloor_OnLoad
 	map_script MAP_SCRIPT_PUZZLE_BLACKOUT_SCRIPT, Puzzle_EliteFloor_OnEscapeOrBlackout
 	map_script MAP_SCRIPT_PUZZLE_ESCAPE_SCRIPT, Puzzle_EliteFloor_OnEscapeOrBlackout
@@ -15,6 +16,15 @@ Puzzle_EliteFloor_Adjective:
 	.string "visually impared$"
 Puzzle_EliteFloor_Quip:
 	.string "My legs hurt from falling so much…$"
+Puzzle_EliteFloor_DevCommentary:
+	.string "Tustin2121: Hang on, my lawyer requires\n"
+	.string "me to read this statement. Ahem:\p"
+	.string "M4 wishes for me to tell you that I\n"
+	.string "built this puzzle to his specifications.\p"
+	.string "But also that I added the laughing\n"
+	.string "Azumarill, not him. He's not that vain.\p"
+	.string "So ordered by the Court of\n"
+	.string "Public Opinion. Kappa$"
 .align 2
 Puzzle_EliteFloor_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01
