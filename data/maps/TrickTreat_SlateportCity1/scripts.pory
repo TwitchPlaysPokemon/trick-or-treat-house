@@ -164,45 +164,50 @@ script TrickTreat_SlateportCity1_CandyGiver_Lass {
 	lock
 	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
 	msgbox ("Trick or Treat!\p"
-			"Let's battle for it!$")
-	trainerbattle_no_intro (TRAINER_33, 
-			"Wow, alright. You win.$")
-	setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
-	msgbox ("Do you know how hard it was to win\n"
-			"these off Norman? Sigh. Here.$")
-	giveitem_std (ITEM_CANDY_COMMON, 2)
+	// 		"Let's battle for it!$")
+	// trainerbattle_no_intro (TRAINER_33, 
+	// 		"Wow, alright. You win.$")
+	// setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
+	// msgbox ("Do you know how hard it was to win\n"
+	// 		"these off Norman? Sigh. Here.$")
+			"Go on, take it. I don't want any more\n"
+			"of these.$")
+	giveitem_std (ITEM_CANDY_ABUNDANT, 6)
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
-	setflag (FLAG_PUZZLE_23)
+	setflag (FLAG_SLATEPORT_CANDY_LASS)
 	release
 }
 script TrickTreat_SlateportCity1_CandyGiver_Wattson {
 	lock
 	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
-	msgbox ("Trick or Treat!\p"
-			"Let's battle for it!$")
-	trainerbattle_no_intro (TRAINER_32, 
-			"Wow, alright. You win.$")
-	setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
-	msgbox ("Do you know how hard it was to win\n"
-			"these off Norman? Sigh. Here.$")
-	giveitem_std (ITEM_CANDY_COMMON, 2)
+	msgbox ("Wahahahaha!\n"
+			"Didn't expect to see me here, did you?\p"
+	// 		"Let's see if you're tough enough for\n"
+	// 		"my candy! Wahahaha!$")
+	// trainerbattle_no_intro (TRAINER_32, 
+	// 		"Wahahaha! Impressive!$")
+	// setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
+	// msgbox ("Excellent! Here, have some of this!$")
+			"Here's some candy for you!\n"
+			"Happy Halloween!$")
+	giveitem_std (ITEM_CANDY_RARE, 2)
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
-	setflag (FLAG_PUZZLE_23)
+	setflag (FLAG_SLATEPORT_CANDY_WATTSON)
 	release
 }
 script TrickTreat_SlateportCity1_CandyGiver_BugCatcher {
 	lock
 	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
-	msgbox ("Trick or Treat!\p"
-			"Let's battle for it!$")
-	trainerbattle_no_intro (TRAINER_34, 
-			"Wow, alright. You win.$")
-	setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
-	msgbox ("Do you know how hard it was to win\n"
-			"these off Norman? Sigh. Here.$")
-	giveitem_std (ITEM_CANDY_COMMON, 2)
+	msgbox ("Oh, um, Merry Christmas or whatever.$")
+	// 		"Let's battle for it!$")
+	// trainerbattle_no_intro (TRAINER_34, 
+	// 		"Wow, alright. You win.$")
+	// setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
+	// msgbox ("Do you know how hard it was to win\n"
+	// 		"these off Norman? Sigh. Here.$")
+	giveitem_std (ITEM_CANDY_COMMON, 4)
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
-	setflag (FLAG_PUZZLE_23)
+	setflag (FLAG_SLATEPORT_CANDY_BUGCATCHER)
 	release
 }
 
