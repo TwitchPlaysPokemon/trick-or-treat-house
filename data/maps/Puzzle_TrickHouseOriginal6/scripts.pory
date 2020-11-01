@@ -7,7 +7,7 @@ Puzzle_TrickHouseOriginal6_MapScripts:: @ 826DDA7
 	puzzle_candylist Puzzle_TrickHouseOriginal6_CandyList
 	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_TrickHouseOriginal6_OnTransition
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Puzzle_TrickHouseOriginal6_MapTable
-	map_script MAP_SCRIPT_PUZZLE_TEARDOWN_SCRIPT, Puzzle_TrickHouseOriginal6_PuzzleTeardown
+	map_script MAP_SCRIPT_PUZZLE_EXIT_SCRIPT, Puzzle_TrickHouseOriginal6_PuzzleTeardown
 	.byte 0
 
 Puzzle_TrickHouseOriginal6_Name:

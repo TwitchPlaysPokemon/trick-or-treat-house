@@ -603,4 +603,5 @@ raw `
 #undef LID_SCIENTIST
 #undef LID_JOEY
 #undef LID_WALLY
+#undef LID_MAY
 `

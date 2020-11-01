@@ -21,10 +21,10 @@ Puzzle_StealthMission_Quip:
 	.string "YOU MAY HAVE WON THIS TIME, HUMAN,\n"
 	.string "BUT THE ROBOT UPRISING WILL COME.\p"
 	.string "HA.{PAUSE 20} HA.{PAUSE 20} HA.$"
+.align 2
 Puzzle_StealthMission_Variables:
 	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_SKELETON
 	.2byte 0
-.align 2
 Puzzle_StealthMission_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01
 	.2byte FLAG_CANDY_ABUNDANT_02
