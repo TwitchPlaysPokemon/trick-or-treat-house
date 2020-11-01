@@ -30,7 +30,7 @@ TPP_MODE		?= 1
 MGBA_DEBUG      ?= 0
 
 # Version branch
-VERSION	:= v2.0.3
+VERSION	:= v2.0.4
 
 ifeq ($(TPP_MODE),1)
 VERSION_STR := $(VERSION)*TPP
