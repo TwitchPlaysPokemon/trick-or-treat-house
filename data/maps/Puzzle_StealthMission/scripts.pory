@@ -81,6 +81,7 @@ script Puzzle_StealthMission_OnLoad {
 	setflag(FLAG_SYS_KEEP_OBJECTS_WITHIN_MAP)
 	poryswitch(TPP_MODE) {
 		1: setflag(FLAG_HIDE_DIFFICULTY)
+		_:
 	}
 	if (flag(FLAG_TRICK_HOUSE_SCROLL_READ) == FALSE) {
 		call(Puzzle_StealthMission_SetStage1)

@@ -42,6 +42,7 @@ Puzzle_EliteFloor_CandyList:
 script Puzzle_EliteFloor_OnEscapeOrBlackout {
 	poryswitch(TPP_MODE) {
 		1: clearflag(FLAG_TRICK_HOUSE_SCROLL_READ)
+		_:
 	}
 }
 

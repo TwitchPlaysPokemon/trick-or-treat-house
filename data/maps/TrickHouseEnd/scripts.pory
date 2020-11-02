@@ -29,6 +29,7 @@ script TrickHouseEnd_OnTransition {
 			setobjectmovementtype (2, MOVEMENT_TYPE_LOOK_AROUND)
 			setobjectmovementtype (5, MOVEMENT_TYPE_LOOK_AROUND)
 		}
+		_:
 	}
 	
 	# Because some event objects cause freezing when wandering around
