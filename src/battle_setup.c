@@ -585,7 +585,8 @@ static void CB2_EndWildBattle(void)
     CpuFill16(0, (void*)(BG_PLTT), BG_PLTT_SIZE);
     ResetOamRange(0, 128);
 
-    if (IsPlayerDefeated(gBattleOutcome) == TRUE && (gSpecialVar_BattleMod & BATTLEMOD_NO_WHITEOUT) != 0)// && !InBattlePyramid() && !InBattlePike())
+    if (IsPlayerDefeated(gBattleOutcome) == TRUE 
+    && (gSpecialVar_BattleMod & BATTLEMOD_NO_WHITEOUT) == 0)// && !InBattlePyramid() && !InBattlePike())
     {
         SetMainCallback2(CB2_WhiteOut);
     }

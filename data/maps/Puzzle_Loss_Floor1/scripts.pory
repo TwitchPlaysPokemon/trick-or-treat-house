@@ -103,6 +103,9 @@ script Puzzle_Loss_Floor1_FreeCandyCounter {
 			end
 		}
 		addvar (VAR_FREE_COUNTER, 1)
+		if (var(VAR_FREE_COUNTER) >= 8) {
+			setflag(FLAG_PUZZLE_ITEM_0)
+		}
 	}
 	message ("Have a good day!$")
 	waitmessage
