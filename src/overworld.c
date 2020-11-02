@@ -730,10 +730,15 @@ void SetLastHealLocationWarp(u8 healLocationId)
 
 void UpdateEscapeWarp(s16 x, s16 y)
 {
-    u8 currMapType = GetCurrentMapType();
-    u8 destMapType = GetMapTypeByGroupAndId(sWarpDestination.mapGroup, sWarpDestination.mapNum);
-    if (IsMapTypeOutdoors(currMapType) && IsMapTypeOutdoors(destMapType) != TRUE)
-        SetEscapeWarp(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, -1, x - 7, y - 6);
+    if (FlagGet(FLAG_PUZZLE_HAS_STARTED)) {
+        SetEscapeWarp(MAP_GROUP(TRICK_HOUSE_CORRIDOR), MAP_NUM(TRICK_HOUSE_CORRIDOR), -1, 22, 3);
+    } else {
+        SetEscapeWarp(MAP_GROUP(TRICK_HOUSE_CORRIDOR), MAP_NUM(TRICK_HOUSE_CORRIDOR), -1, 4, 7);
+    }
+    // u8 currMapType = GetCurrentMapType();
+    // u8 destMapType = GetMapTypeByGroupAndId(sWarpDestination.mapGroup, sWarpDestination.mapNum);
+    // if (IsMapTypeOutdoors(currMapType) && IsMapTypeOutdoors(destMapType) != TRUE)
+    //     SetEscapeWarp(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, -1, x - 7, y - 6);
 }
 
 void SetEscapeWarp(s8 mapGroup, s8 mapNum, s8 warpId, s8 x, s8 y)

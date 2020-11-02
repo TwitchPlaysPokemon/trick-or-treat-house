@@ -169,7 +169,7 @@ script MetaPuzzle_PickupEvent_ZigzagCushion {
 }
 script MetaPuzzle_PickupEvent_LotadDoll {
 	msgbox ("There's a waterlogged LOTAD doll,\n"
-			"lost and washed away, flating here.$")
+			"lost and washed away, floating here.$")
 	giveitem_std(ITEM_META_ITEM_LOTAD, 1, 1)
 }
 script MetaPuzzle_PickupEvent_GrassCushion {

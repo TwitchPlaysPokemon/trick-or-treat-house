@@ -39,14 +39,6 @@ mapscripts TrickHouseEntrance_MapScripts {
 				setvar (VAR_OBJ_GFX_ID_A, TTH_FRIEND_BRENDAN)
 				setvar (VAR_OBJ_GFX_ID_B, TTH_FRIEND_MAY)
 		}
-		
-		if (var(VAR_RESULT) == MALE) {
-			// setvar (VAR_OBJ_GFX_ID_A, EVENT_OBJ_GFX_RIVAL_MAY_NORMAL)
-			setvar (VAR_OBJ_GFX_ID_A, EVENT_OBJ_GFX_MAY_NORMAL)
-		} else {
-			// setvar (VAR_OBJ_GFX_ID_A, EVENT_OBJ_GFX_RIVAL_BRENDAN_NORMAL)
-			setvar (VAR_OBJ_GFX_ID_A, EVENT_OBJ_GFX_BRENDAN_NORMAL)
-		}
 	}
 }
 
