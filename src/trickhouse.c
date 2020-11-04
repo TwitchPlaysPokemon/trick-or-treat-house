@@ -715,6 +715,14 @@ void CleanUpStarterMon(struct ScriptContext *ctx)
 
 ///////////////////////////////////////////////////////////////////////////////
 
+void BufferItemPrice(struct ScriptContext *ctx)
+{
+	gSpecialVar_0x8006 = ItemId_GetPrice(gSpecialVar_0x8004);
+	ConvertIntToDecimalStringN(gStringVar1, gSpecialVar_0x8006, 0, 3);
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
 void SetContinueGameWarp(s8 mapGroup, s8 mapNum, s8 warpId, s8 x, s8 y);
 void SaveForCredits(struct ScriptContext *ctx)
 {

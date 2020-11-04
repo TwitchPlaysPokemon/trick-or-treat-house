@@ -21,7 +21,7 @@
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "TrickHouseTreeHouse_EventScript_TraderA",
+            "script": "TrickHouseTreeHouse_EventScript_Seller",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
             "x": 5,
@@ -50,7 +50,7 @@
             "script": "TrickHouseTreeHouse_EventScript_TraderC",
             "trainer_sight_or_berry_tree_id": "0",
             "trainer_type": "0",
-            "x": 1,
+            "x": 2,
             "y": 3
         }
     ],

@@ -48,23 +48,118 @@ script TrickHouseTreeHouse_OnLoad_Traders_LoadA9 {
 	setvar(VAR_CANDY_TRADE_5, ITEM_TM30_SHADOW_BALL)
 }
 
+// ----------------------------------------------------
 
+script TrickHouseTreeHouse_EventScript_Seller {
+	lock
+	faceplayer
+	message("Hey, I've got candy here if you wanna\n"
+			"buy or sell anything.$")
+	waitmessage
+	selectpointer_wrap(TrickHouseExt_MartTable, VAR_CANDY_TRADE_5)
+	pokemart(0)
+	msgbox ("I'll be here all night. Sometimes I get\n"
+			"different candy in too. Later.$")
+	release
+}
+raw `
+.align 2
+TrickHouseExt_MartTable:
+	.4byte TrickHouseExt_Mart1
+	.4byte TrickHouseExt_Mart2
+	.4byte TrickHouseExt_Mart3
+	.4byte TrickHouseExt_Mart4
+	.4byte 0
 
+TrickHouseExt_Mart1:
+	.2byte ITEM_CANDY_MMMINI
+	.2byte ITEM_CANDY_SNICKERS
+	.2byte ITEM_CANDY_REESES
+	.2byte ITEM_SUPER_REPEL
+	@ .2byte ITEM_CANDY_EGGS
+	.2byte ITEM_CANDY_CARROT
+	
+	.2byte ITEM_CANDY_CHOCOLATE
+	.2byte ITEM_CANDY_STARBURST
+	.2byte ITEM_CANDY_LEMONDROP
+	.2byte ITEM_CANDY_WARHEAD
+	.2byte ITEM_CANDY_PRETZEL
+	.2byte ITEM_CANDY_VEROMANGO
+	.2byte ITEM_NONE
+TrickHouseExt_Mart2:
+	.2byte ITEM_CANDY_MMPEANUT
+	.2byte ITEM_CANDY_MALTESERS
+	.2byte ITEM_CANDY_OREO
+	.2byte ITEM_CANDY_GUMMYBEAR
+	.2byte ITEM_CANDY_APPLE
+	
+	.2byte ITEM_CANDY_CHOCOLATE
+	.2byte ITEM_CANDY_STARBURST
+	.2byte ITEM_CANDY_LEMONDROP
+	.2byte ITEM_CANDY_WARHEAD
+	.2byte ITEM_CANDY_PRETZEL
+	.2byte ITEM_CANDY_VEROMANGO
+	.2byte ITEM_NONE
+TrickHouseExt_Mart3:
+	.2byte ITEM_CANDY_TWIXLEFT
+	.2byte ITEM_CANDY_TWIXRIGHT
+	.2byte ITEM_CANDY_REESES
+	.2byte ITEM_CANDY_CADBURYCREME
+	.2byte ITEM_CANDY_PRUNE
+	
+	.2byte ITEM_CANDY_CHOCOLATE
+	.2byte ITEM_CANDY_STARBURST
+	.2byte ITEM_CANDY_LEMONDROP
+	.2byte ITEM_CANDY_WARHEAD
+	.2byte ITEM_CANDY_PRETZEL
+	.2byte ITEM_CANDY_VEROMANGO
+	.2byte ITEM_NONE
+TrickHouseExt_Mart4:
+	.2byte ITEM_CANDY_KINGCHOCNUT
+	.2byte ITEM_CANDY_MILKYWAY
+	.2byte ITEM_CANDY_VIOLETCRUMBLE
+	.2byte ITEM_CANDY_KITKAT
+	@ .2byte ITEM_CANDY_EGGDEVILED
+	.2byte ITEM_CANDY_CELERY
+	
+	.2byte ITEM_CANDY_CHOCOLATE
+	.2byte ITEM_CANDY_STARBURST
+	.2byte ITEM_CANDY_LEMONDROP
+	.2byte ITEM_CANDY_WARHEAD
+	.2byte ITEM_CANDY_PRETZEL
+	.2byte ITEM_CANDY_VEROMANGO
+	.2byte ITEM_NONE
+`
 
 // ----------------------------------------------------
 
-script TrickHouseTreeHouse_EventScript_TraderA {
-	msgbox ("We're still getting set up here.\n"
-			"Come back later.$", MSGBOX_NPC)
-}
 script TrickHouseTreeHouse_EventScript_TraderB {
-	msgbox ("I have some sweet TMs on the way.\n"
-			"Come back later.$", MSGBOX_NPC)
-	// msgbox ("I got this sweet TM")
+	lock
+	copyvar(VAR_0x8004, VAR_CANDY_TRADE_5)
+	special (CheckTMAndBufferMoveName)
+	callnative(BufferItemPrice)
+	msgbox ("I got this sweet TR for {STR_VAR_2}!\n"
+			"I'll sell it for {STR_VAR_1} candy corns.", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		checkmoney(VAR_0x8006, 0)
+		if (var(VAR_RESULT) == YES) {
+			takemoney(VAR_0x8006, 0)
+			giveitem_std(VAR_0x8004, 1)
+			msgbox("Nice doin' business.$")
+		} else {
+			msgbox("Are you trying to rip me off here?\n"
+					"You don't have the corns!$")
+		}
+	} else {
+		msgbox("Your loss.$")
+	}
+	release
 }
 script TrickHouseTreeHouse_EventScript_TraderC {
-	msgbox ("We're running an exchange up here.\n"
-			"Candy for TMs.\p"
-			"We're… kinda out of TMs at the moment\n"
-			"however, so, um… come back later?$", MSGBOX_NPC)
+	msgbox ("Welcome to the Treehouse Exchange.\p"
+			"Exchange those useless, nasty candy\n"
+			"corns for something you'll actually eat!\l"
+			"And some TRs too maybe!\p"
+			"We really gotta come up\n"
+			"with a better tagline.$", MSGBOX_NPC)
 }

@@ -34,6 +34,7 @@
 #include "string_util.h"
 #include "task.h"
 #include "text.h"
+#include "constants/maps.h"
 #include "constants/bg_event_constants.h"
 #include "constants/event_objects.h"
 #include "constants/flags.h"
@@ -302,7 +303,7 @@ void ItemUseOnFieldCB_Itemfinder(u8 taskId)
     else
     {
         CountCandyItems(NULL); // puts the number of candy items into VAR_RESULT
-        if (gSpecialVar_Result == 0xFF) {
+        if (gSpecialVar_Result == 0xFF || gSaveBlock1Ptr->location.mapGroup <= MAP_GROUP(TRICK_TREAT_SLATEPORT_CITY1)) {
             DisplayItemMessageOnField(taskId, gText_ItemFinderNothing, sub_80FD5CC);
         }
         else {
@@ -912,7 +913,7 @@ void re_escape_rope(u8 taskId)
 
 bool8 CanUseEscapeRopeOnCurrMap(void)
 {
-    if (gMapHeader.flags & 2)
+    if (gMapHeader.flags & MAP_ALLOW_ESCAPING)
         return TRUE;
     else
         return FALSE;

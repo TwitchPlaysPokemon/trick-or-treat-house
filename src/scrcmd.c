@@ -1892,7 +1892,7 @@ bool8 ScrCmd_checkpartymove(struct ScriptContext *ctx)
 
 bool8 ScrCmd_givemoney(struct ScriptContext *ctx)
 {
-    u32 amount = ScriptReadWord(ctx);
+    u32 amount = VarGet(ScriptReadWord(ctx));
     u8 ignore = ScriptReadByte(ctx);
 
     if (!ignore)
@@ -1902,7 +1902,7 @@ bool8 ScrCmd_givemoney(struct ScriptContext *ctx)
 
 bool8 ScrCmd_takemoney(struct ScriptContext *ctx)
 {
-    u32 amount = ScriptReadWord(ctx);
+    u32 amount = VarGet(ScriptReadWord(ctx));
     u8 ignore = ScriptReadByte(ctx);
 
     if (!ignore)
@@ -1912,7 +1912,7 @@ bool8 ScrCmd_takemoney(struct ScriptContext *ctx)
 
 bool8 ScrCmd_checkmoney(struct ScriptContext *ctx)
 {
-    u32 amount = ScriptReadWord(ctx);
+    u32 amount = VarGet(ScriptReadWord(ctx));
     u8 ignore = ScriptReadByte(ctx);
 
     if (!ignore)

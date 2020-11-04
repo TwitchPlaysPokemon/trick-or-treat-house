@@ -806,84 +806,13 @@ script TrickHouseExt_EventScript_TraderD1 {
 	}
 }
 
-script TrickHouseExt_EventScript_Seller {
-	lock
-	faceplayer
-	message("Hey, I've got candy here if you wanna\n"
-			"buy or sell anything.$")
-	waitmessage
-	selectpointer_wrap(TrickHouseExt_MartTable, VAR_CANDY_TRADE_5)
-	pokemart(0)
-	msgbox ("I'll be here all night. Sometimes I get\n"
-			"different candy in too. Later.$")
-	release
+script TrickHouseExt_EventScript_Caller {
+	msgbox ("Hm? Oh! Um, come to the Exchanging\n"
+			"Treehouse or whatever my bro calls it.\p"
+			"I'm supposed to be shouting adverts\n"
+			"or something, but… I'm just so…\l"
+			"close to the high score… …$", MSGBOX_NPC)
 }
-raw `
-.align 2
-TrickHouseExt_MartTable:
-	.4byte TrickHouseExt_Mart1
-	.4byte TrickHouseExt_Mart2
-	.4byte TrickHouseExt_Mart3
-	.4byte TrickHouseExt_Mart4
-	.4byte 0
-
-TrickHouseExt_Mart1:
-	.2byte ITEM_CANDY_MMMINI
-	.2byte ITEM_CANDY_SNICKERS
-	.2byte ITEM_CANDY_REESES
-	@ .2byte ITEM_CANDY_EGGS
-	.2byte ITEM_CANDY_CARROT
-	
-	.2byte ITEM_CANDY_CHOCOLATE
-	.2byte ITEM_CANDY_STARBURST
-	.2byte ITEM_CANDY_LEMONDROP
-	.2byte ITEM_CANDY_WARHEAD
-	.2byte ITEM_CANDY_PRETZEL
-	.2byte ITEM_CANDY_VEROMANGO
-	.2byte ITEM_NONE
-TrickHouseExt_Mart2:
-	.2byte ITEM_CANDY_MMPEANUT
-	.2byte ITEM_CANDY_MALTESERS
-	.2byte ITEM_CANDY_OREO
-	.2byte ITEM_CANDY_GUMMYBEAR
-	.2byte ITEM_CANDY_APPLE
-	
-	.2byte ITEM_CANDY_CHOCOLATE
-	.2byte ITEM_CANDY_STARBURST
-	.2byte ITEM_CANDY_LEMONDROP
-	.2byte ITEM_CANDY_WARHEAD
-	.2byte ITEM_CANDY_PRETZEL
-	.2byte ITEM_CANDY_VEROMANGO
-	.2byte ITEM_NONE
-TrickHouseExt_Mart3:
-	.2byte ITEM_CANDY_TWIXLEFT
-	.2byte ITEM_CANDY_TWIXRIGHT
-	.2byte ITEM_CANDY_REESES
-	.2byte ITEM_CANDY_CADBURYCREME
-	.2byte ITEM_CANDY_PRUNE
-	
-	.2byte ITEM_CANDY_CHOCOLATE
-	.2byte ITEM_CANDY_STARBURST
-	.2byte ITEM_CANDY_LEMONDROP
-	.2byte ITEM_CANDY_WARHEAD
-	.2byte ITEM_CANDY_PRETZEL
-	.2byte ITEM_CANDY_VEROMANGO
-	.2byte ITEM_NONE
-TrickHouseExt_Mart4:
-	.2byte ITEM_CANDY_KINGCHOCNUT
-	.2byte ITEM_CANDY_MILKYWAY
-	.2byte ITEM_CANDY_VIOLETCRUMBLE
-	@ .2byte ITEM_CANDY_EGGDEVILED
-	.2byte ITEM_CANDY_CELERY
-	
-	.2byte ITEM_CANDY_CHOCOLATE
-	.2byte ITEM_CANDY_STARBURST
-	.2byte ITEM_CANDY_LEMONDROP
-	.2byte ITEM_CANDY_WARHEAD
-	.2byte ITEM_CANDY_PRETZEL
-	.2byte ITEM_CANDY_VEROMANGO
-	.2byte ITEM_NONE
-`
 
 // ----------------------------------------------------
 // Borders
