@@ -137,7 +137,7 @@ script TrickTreat_SlateportCity1_SignScript_SeashoreHouse {
 			"The place for hot TRAINERS!”$", MSGBOX_SIGN)
 }
 script TrickTreat_SlateportCity1_SignScript_ClosedSign {
-	msgbox ("Closed for rennovations$", MSGBOX_SIGN)
+	msgbox ("Closed for renovations$", MSGBOX_SIGN)
 }
 
 // ----------------------------------------------------
@@ -254,13 +254,20 @@ script TrickTreat_SlateportCity1_EventScript_Regi {
 }
 
 // ----------------------------------------------------
-// Rigotta People
+// Regatta People
 
+script TrickTreat_SlateportCity1_EventScript_ManSnoozing {
+	msgbox ("He seems to be snoozing.$", MSGBOX_SIGN)
+}
 script TrickTreat_SlateportCity1_EventScript_Generic {
 	msgbox ("They seem enthralled watching the boats\n"
 			"racing around out in the water.$", MSGBOX_SIGN)
 }
 
+script TrickTreat_SlateportCity1_EventScript_Frogger {
+	msgbox ("Nothing like a nice cool dip in the\n"
+			"cold ocean in the middle of autumn!$", MSGBOX_NPC)
+}
 script TrickTreat_SlateportCity1_EventScript_Tuber {
 	msgbox ("The boats go WOOOOOOSH!", MSGBOX_NPC)
 }
@@ -270,6 +277,11 @@ script TrickTreat_SlateportCity1_EventScript_TuberMother {
 			"Kids… I tell ya…$", MSGBOX_NPC)
 }
 
+script TrickTreat_SlateportCity1_EventScript_SandBoyfriend {
+	msgbox( "Oh man, no one's around!\p"
+			"How am I supposed to get my girlfriend\n"
+			"a drink now! She's gonna kill me!$", MSGBOX_NPC)
+}
 script TrickTreat_SlateportCity1_EventScript_SandLady {
 	msgbox ("My boyfriend buried me!\n"
 			"Then he left me here!\p"
@@ -282,6 +294,23 @@ script TrickTreat_SlateportCity1_EventScript_Artist {
 			"beautiful images of it later!$", MSGBOX_NPC)
 }
 
+script TrickTreat_SlateportCity1_EventScript_Quilava {
+	lock
+	faceplayer
+	waitse
+	playmoncry(SPECIES_QUILAVA, 0)
+	msgbox ("This Quilava seems to be lounging here,\n"
+			"looking very relaxed.$")
+	waitmoncry
+	applymovement(THIS_EVENT, Common_Movement_FaceDown)
+	waitmovement(0)
+	release
+}
+
+script TrickTreat_SlateportCity1_EventScript_Link {
+	msgbox ("I bet the King of Red Lions could go\n"
+			"faster than any of the boats out there.$", MSGBOX_NPC)
+}
 script TrickTreat_SlateportCity1_EventScript_Mermaid {
 	msgbox ("She seems to be asleep. Her fins twitch\n"
 			"in the chilly air.$", MSGBOX_SIGN)
@@ -295,7 +324,7 @@ script TrickTreat_SlateportCity1_EventScript_Carver {
 			"about that big battle earlier…\p"
 			"Zander's kind of sensitive…\n"
 			"but he'll never admit it…\p"
-			"He still overracts to any slight, after\n"
+			"He still overreacts to any slight, after\n"
 			"growing up with people teasing him…\p"
 			"I just hope I'm not contributing to\n"
 			"that in the end.\p"

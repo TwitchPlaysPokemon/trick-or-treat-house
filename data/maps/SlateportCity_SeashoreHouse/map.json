@@ -11,7 +11,7 @@
     "id": "MAP_SLATEPORT_CITY_SEASHORE_HOUSE",
     "layout": "LAYOUT_ROUTE109_SEASHORE_HOUSE",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_HIGHTOWN",
     "name": "SlateportCity_SeashoreHouse",
     "object_events": [
     ],

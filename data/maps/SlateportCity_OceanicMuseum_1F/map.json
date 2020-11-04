@@ -11,7 +11,7 @@
     "id": "MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_1F",
     "layout": "LAYOUT_SLATEPORT_CITY_OCEANIC_MUSEUM_1F",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_FINECITY",
     "name": "SlateportCity_OceanicMuseum_1F",
     "object_events": [
     ],
