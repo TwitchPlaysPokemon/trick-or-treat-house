@@ -174,7 +174,6 @@ script Puzzle_IcePath_SetupScript {
 
 script Puzzle_IcePath_PrepBreakOpen {
 	setvar(VAR_HIDDEN_RUNUP, 1)
-	msgbox("Open", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_IcePath_CancelBreakOpen {
@@ -188,25 +187,27 @@ script Puzzle_IcePath_DoBreakOpen {
 	playse (SE_W070)
 	setvar (VAR_0x8004, 3)  // amplitude y
 	setvar (VAR_0x8005, 0)  // amplitude x
-	setvar (VAR_0x8006, 15)  // duration (num shakes)
+	setvar (VAR_0x8006, 15) // duration (num shakes)
 	setvar (VAR_0x8007, 5)  // frequency
 	special (DoCameraShakeEffect)
 	delay (20)
 	// Open the secret area
 	setflag (FLAG_SHOW_HIDDEN_CORNER)
 	call (Puzzle_IcePath_OpenSecretArea)
+	addobject(24)
 	special(DrawWholeMapView)
 	waitstate
 	release
 }
 
 script Puzzle_IcePath_OpenSecretArea {
-	setmetatile(11, 18, 0x378, TRUE)
+	setmetatile(11, 18, 0x37B, TRUE)
 	setmetatile(12, 18, 0x389, TRUE)
 	setmetatile(13, 18, 0x38A, TRUE)
 	setmetatile(11, 19, 0x382, TRUE)
-	setmetatile(12, 19, 0x381, TRUE)
-	setmetatile(13, 19, 0x381, TRUE)
+	setmetatile(12, 19, 0x381, FALSE)
+	setmetatile(13, 19, 0x381, FALSE)
+	setmetatile(14, 19, 0x381, FALSE)
 	setmetatile(11, 20, 0x383, TRUE)
 	setmetatile(12, 20, 0x379, TRUE)
 	setmetatile(13, 20, 0x37A, TRUE)

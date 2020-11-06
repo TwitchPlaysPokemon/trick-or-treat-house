@@ -309,8 +309,8 @@ static const u8 sTrainerPicFacilityClass[][GENDER_COUNT] =
     }, 
     [CARD_TYPE_RS] = 
     {
-        [GENDER_M] = FACILITY_CLASS_RS_BRENDAN, 
-        [GENDER_F] = FACILITY_CLASS_RS_MAY,
+        [GENDER_M] = FACILITY_CLASS_BRENDAN, 
+        [GENDER_F] = FACILITY_CLASS_MAY,
         [GENDER_N] = FACILITY_CLASS_TREEKID, 
     }, 
     [CARD_TYPE_EMERALD] = 

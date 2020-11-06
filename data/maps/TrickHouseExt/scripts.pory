@@ -640,8 +640,8 @@ script TrickHouseExt_EventScript_TraderB1 {
 	switch(var(VAR_OBJ_GFX_ID_3)) {
 		case EVENT_OBJ_GFX_CORPSE_BRIDE:
 			offertrade(
-				ITEM_CANDY_SNICKERS, 1,
 				ITEM_CANDY_MARSBAR, 1,
+				ITEM_CANDY_SNICKERS, 1,
 				"I want your braaaaaaaaiiinnnnsssss…\n"
 				"Or a Snickers if you have one.\l"
 				"(I'll give you a Marsbar).$",

@@ -389,19 +389,19 @@ script Puzzle_StealthMission_SetStage1 {
 }
 script Puzzle_StealthMission_SetStage2 {
 	// Open Vents
-	setmetatile(36, 5, METATILE_DOOR_BOT, FALSE)
-	setmetatile(42, 5, METATILE_DOOR_BOT, FALSE)
+	setmetatile(36, 5, METATILE_DOOR_BOT, TRUE)
+	setmetatile(42, 5, METATILE_DOOR_BOT, TRUE)
 	setmetatile(36, 6, METATILE_VENT_OPENLR, FALSE)
 	setmetatile(42, 6, METATILE_VENT_OPENLR, FALSE)
 	
 	setmetatile(11, 25, METATILE_FLOORA, FALSE)
 	setmetatile(11, 26, METATILE_VENT_OPENTP, FALSE)
-	setmetatile(22, 30, METATILE_DOOR_BOT, FALSE)
+	setmetatile(22, 30, METATILE_DOOR_BOT, TRUE)
 	setmetatile(22, 31, METATILE_VENT_OPENLR, FALSE)
 	
-	setmetatile(51, 31, METATILE_DOOR_BOT, FALSE)
+	setmetatile(51, 31, METATILE_DOOR_BOT, TRUE)
 	setmetatile(51, 32, METATILE_VENT_OPENLR, FALSE)
-	setmetatile(55, 42, METATILE_DOOR_BOT, FALSE)
+	setmetatile(55, 42, METATILE_DOOR_BOT, TRUE)
 	setmetatile(55, 43, METATILE_VENT_OPENLR, FALSE)
 	
 	setflag(FLAG_HIDE_STAGE1)
