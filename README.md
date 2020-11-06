@@ -78,7 +78,3 @@ In addition to the above map script header information, the following can be def
 	}
 ]
 ```
-
-## Restrictions
-
-- Reflections are broken. Try to avoid using reflecting pond water in puzzles.

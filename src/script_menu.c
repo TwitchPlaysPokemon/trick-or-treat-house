@@ -991,7 +991,7 @@ const u8 *const sPCNameStrings[] =
 {
     gText_SomeonesPC,
     gText_LanettesPC,
-    gText_PlayersPC,
+    // gText_PlayersPC,
     gText_LogOff,
 };
 
@@ -1396,8 +1396,8 @@ static void CreatePCMenu(void)
     else
         AddTextPrinterParameterized(windowId, 1, gText_SomeonesPC, y, 1, TEXT_SPEED_FF, NULL);
 
-    StringExpandPlaceholders(gStringVar4, gText_PlayersPC);
-    PrintPlayerNameOnWindow(windowId, gStringVar4, y, 17);
+    // StringExpandPlaceholders(gStringVar4, gText_PlayersPC);
+    // PrintPlayerNameOnWindow(windowId, gStringVar4, y, 17);
     InitMenuInUpperLeftCornerPlaySoundWhenAPressed(windowId, numChoices, 0);
     CopyWindowToVram(windowId, 3);
     sub_80E1FBC(FALSE, numChoices, windowId, 1);

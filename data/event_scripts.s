@@ -1099,42 +1099,44 @@ EventScript_PC:: @ 8271D92
 	special DoPCTurnOnEffect
 	playse SE_PC_ON
 	msgbox Text_BootUpPC, MSGBOX_DEFAULT
-	goto EventScript_271DAC
+	@ goto EventScript_271DAC
+	goto EventScript_271E0E
 	end
 
 EventScript_271DAC:: @ 8271DAC
-	message gText_WhichPCShouldBeAccessed
-	waitmessage
-	special ScrSpecial_CreatePCMenu
-	waitstate
-	goto EventScript_271DBC
+	@ message gText_WhichPCShouldBeAccessed
+	@ waitmessage
+	@ special ScrSpecial_CreatePCMenu
+	@ waitstate
+	@ goto EventScript_271DBC
 	end
 
 EventScript_271DBC:: @ 8271DBC
-	switch VAR_RESULT
-	case 0, EventScript_271E0E
-	case 1, EventScript_271DF9
-	case 2, EventScript_271E54
-	case 3, EventScript_271E47
-	case 127, EventScript_271E47
+	@ switch VAR_RESULT
+	@ case 0, EventScript_271E0E
+	@ case 1, EventScript_271DF9
+	@ case 2, EventScript_271E54
+	@ case 3, EventScript_271E47
+	@ case 127, EventScript_271E47
 	end
 
 EventScript_271DF9:: @ 8271DF9
-	playse SE_PC_LOGIN
-	msgbox gText_AccessedPlayersPC, MSGBOX_DEFAULT
-	special PlayerPC
-	waitstate
-	goto EventScript_271DAC
+	@ playse SE_PC_LOGIN
+	@ msgbox gText_AccessedPlayersPC, MSGBOX_DEFAULT
+	@ special PlayerPC
+	@ waitstate
+	@ goto EventScript_271DAC
 	end
 
 EventScript_271E0E:: @ 8271E0E
 	playse SE_PC_LOGIN
-	call_if_unset FLAG_SYS_PC_LANETTE, EventScript_271E35
-	call_if_set FLAG_SYS_PC_LANETTE, EventScript_271E3E
+	@ call_if_unset FLAG_SYS_PC_LANETTE, EventScript_271E35
+	@ call_if_set FLAG_SYS_PC_LANETTE, EventScript_271E3E
 	msgbox gText_StorageSystemOpened, MSGBOX_DEFAULT
 	special ShowPokemonStorageSystemPC
 	waitstate
-	goto EventScript_271DAC
+	@ goto EventScript_271DAC
+	goto EventScript_271E47
 	end
 
 EventScript_271E35:: @ 8271E35
