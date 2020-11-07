@@ -216,5 +216,5 @@ script Puzzle_EliteFloor_EventScript_M4 {
 script Puzzle_EliteFloor_UnobtainableItemBall {
 	msgbox ("I don't know how you got here, but\n"
 			"good job.$")
-	giveitem_std (ITEM_RARE_CANDY, 2, 1)
+	giveitem_std (ITEM_MASTER_BALL, 1, 1)
 }

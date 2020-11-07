@@ -127,6 +127,7 @@ script Puzzle_LedgeMountain_UnreachableBall {
 			"like Unity or Unreal, and you could get\l"
 			"an actual job or make indie games!\p"
 			"--Tustin2121$")
+	giveitem_std(ITEM_MASTER_BALL, 1, 1)
 }
 
 

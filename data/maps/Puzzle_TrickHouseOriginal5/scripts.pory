@@ -296,5 +296,5 @@ Puzzle_TrickHouseOriginal5_Text_26E61E: @ 826E61E
 script Puzzle_TrickHouseOriginal5_UnobtainableItemBall {
 	msgbox ("I don't know how you got here, but\n"
 			"good job.$")
-	giveitem_std (ITEM_RARE_CANDY, 2, 1)
+	giveitem_std (ITEM_MASTER_BALL, 1, 1)
 }
