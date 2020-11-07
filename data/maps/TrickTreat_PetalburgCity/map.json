@@ -94,7 +94,7 @@
         },
         {
             "elevation": 3,
-            "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x04",
+            "flag": "FLAG_CANDY_ABUNDANT_02",
             "item": "ITEM_CANDY_ABUNDANT",
             "type": "hidden_item",
             "x": 35,
