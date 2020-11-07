@@ -65,7 +65,7 @@ script Puzzle_HiddenMaze_Trainer2 {
 	trainerbattle_single (TRAINER_02, 
 			"You must be faster to dodge the ninja!$", 
 			"Oh, I suppose being strong works too.$")
-	msgbox ("Isn't this palce awesome!\n"
+	msgbox ("Isn't this place awesome!\n"
 			"It's just like Koga's gym!\l"
 			"Koga is my hero!$", MSGBOX_AUTOCLOSE)
 }

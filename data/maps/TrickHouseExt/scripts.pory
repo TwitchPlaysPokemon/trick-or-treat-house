@@ -722,7 +722,7 @@ script TrickHouseExt_EventScript_TraderC1 {
 			msgbox("What? It's the classic couple cosume!\n"
 					"The BLACK BELT and his MERMAID!\p"
 					"What do you mean you've never heard\n"
-					"of such a thing before??$", MSGBOX_NPC)
+					"of such a thing before??$", MSGBOX_NPC) //ERROR: Not actually coupled with a mermaid
 		case EVENT_OBJ_GFX_RICH_BOY:
 			offertrade(
 				ITEM_CANDY_GOBSTOPPER, 1,
