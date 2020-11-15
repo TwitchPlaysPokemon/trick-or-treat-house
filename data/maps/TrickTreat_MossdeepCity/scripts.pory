@@ -96,15 +96,22 @@ TrickTreat_MossdeepCity_CandyList:
 
 script TrickTreat_MossdeepCity_SetupScript {
 	call (TrickTreat_MossdeepCity_Tricksters_Setup)
-	random(3)
-	copyvar(VAR_TRICKSTER_A_POS, VAR_RESULT)
-	random(3)
-	copyvar(VAR_TRICKSTER_B_POS, VAR_RESULT)
-	random(3)
-	copyvar(VAR_TRICKSTER_C_POS, VAR_RESULT)
-	random(3)
-	copyvar(VAR_TRICKSTER_D_POS, VAR_RESULT)
 	// Position tricksters initially
+	if (flag(FLAG_SYS_RANDOM_DISABLED)) {
+		setvar(VAR_TRICKSTER_A_POS, 0)
+		setvar(VAR_TRICKSTER_B_POS, 0)
+		setvar(VAR_TRICKSTER_C_POS, 0)
+		setvar(VAR_TRICKSTER_D_POS, 0)
+	} else {
+		random(3)
+		copyvar(VAR_TRICKSTER_A_POS, VAR_RESULT)
+		random(3)
+		copyvar(VAR_TRICKSTER_B_POS, VAR_RESULT)
+		random(3)
+		copyvar(VAR_TRICKSTER_C_POS, VAR_RESULT)
+		random(3)
+		copyvar(VAR_TRICKSTER_D_POS, VAR_RESULT)
+	}
 }
 
 script TrickTreat_MossdeepCity_OnLoad {
@@ -172,7 +179,7 @@ script TrickTreat_MossdeepCity_Tricksters_Setup {
 	} 
 	else {
 		// Beach hider
-		clearflag (FLAG_TRICKSTER_A_HIDE)
+		// clearflag (FLAG_TRICKSTER_A_HIDE)
 		setobjectmovementtype (LID_TRICKSTER_A, MOVEMENT_TYPE_LOOK_AROUND)
 		switch (var(VAR_TRICKSTER_A_POS)) {
 			case 0: setobjectxyperm (LID_TRICKSTER_A, 12,  9) // Behind house
@@ -180,7 +187,7 @@ script TrickTreat_MossdeepCity_Tricksters_Setup {
 			case 2: setobjectxyperm (LID_TRICKSTER_A, 14, 29) // Behind tree
 		}
 		// Main town area
-		clearflag (FLAG_TRICKSTER_B_HIDE)
+		// clearflag (FLAG_TRICKSTER_B_HIDE)
 		setobjectmovementtype (LID_TRICKSTER_B, MOVEMENT_TYPE_LOOK_AROUND)
 		switch (var(VAR_TRICKSTER_B_POS)) {
 			case 0: setobjectxyperm (LID_TRICKSTER_B, 50,  9) // Behind gym
@@ -188,7 +195,7 @@ script TrickTreat_MossdeepCity_Tricksters_Setup {
 			case 2: setobjectxyperm (LID_TRICKSTER_B, 36, 15) // Behind center
 		}
 		// Upper area (with red herring kid)
-		clearflag (FLAG_TRICKSTER_C_HIDE)
+		// clearflag (FLAG_TRICKSTER_C_HIDE)
 		setobjectmovementtype (LID_TRICKSTER_C, MOVEMENT_TYPE_LOOK_AROUND)
 		switch (var(VAR_TRICKSTER_C_POS)) {
 			case 0: 
@@ -202,7 +209,7 @@ script TrickTreat_MossdeepCity_Tricksters_Setup {
 				setobjectxyperm (LID_RED_HERRING, 78, 29)
 		}
 		// 
-		clearflag (FLAG_TRICKSTER_D_HIDE)
+		// clearflag (FLAG_TRICKSTER_D_HIDE)
 		setobjectmovementtype (LID_TRICKSTER_D, MOVEMENT_TYPE_LOOK_AROUND)
 		switch (var(VAR_TRICKSTER_D_POS)) {
 			case 0: setobjectxyperm (LID_TRICKSTER_D, 42, 33) // Watery trees
@@ -210,7 +217,7 @@ script TrickTreat_MossdeepCity_Tricksters_Setup {
 			case 2: setobjectxyperm (LID_TRICKSTER_D, 25, 15) // Behind house
 		}
 		// Behind the space center, static
-		clearflag (FLAG_TRICKSTER_E_HIDE)
+		// clearflag (FLAG_TRICKSTER_E_HIDE)
 		setobjectmovementtype (LID_TRICKSTER_E, MOVEMENT_TYPE_LOOK_AROUND)
 		setobjectxyperm (LID_TRICKSTER_E, 74, 9)
 	}
@@ -286,6 +293,11 @@ script TrickTreat_MossdeepCity_Tricksters_Trigger {
 	removeobject(LID_TRICKSTER_D)
 	removeobject(LID_TRICKSTER_E)
 	call (TrickTreat_MossdeepCity_Tricksters_Setup)
+	clearflag (FLAG_TRICKSTER_A_HIDE)
+	clearflag (FLAG_TRICKSTER_B_HIDE)
+	clearflag (FLAG_TRICKSTER_C_HIDE)
+	clearflag (FLAG_TRICKSTER_D_HIDE)
+	clearflag (FLAG_TRICKSTER_E_HIDE)
 	closemessage
 	releaseall
 }
