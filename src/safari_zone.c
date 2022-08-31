@@ -58,19 +58,23 @@ void EnterSafariMode(void)
     SetSafariZoneFlag();
     ClearAllPokeblockFeeders();
     gNumSafariBalls = 30;
-    sSafariZoneStepCounter = 500;
+    sSafariZoneStepCounter = 984; //500;
     sSafariZoneCaughtMons = 0;
     sSafariZonePkblkUses = 0;
 }
 
 void ExitSafariMode(void)
 {
-    TryPutSafariFanClubOnAir(sSafariZoneCaughtMons, sSafariZonePkblkUses);
+    // TryPutSafariFanClubOnAir(sSafariZoneCaughtMons, sSafariZonePkblkUses);
     ResetSafariZoneFlag();
     ClearAllPokeblockFeeders();
     gNumSafariBalls = 0;
     sSafariZoneStepCounter = 0;
 }
+
+extern const u8 Puzzle_SafariImposters_GameEnds[];
+extern const u8 Puzzle_SafariImposters_Exit[];
+extern const u8 Puzzle_SafariImposters_Retire[];
 
 bool8 SafariZoneTakeStep(void)
 {
@@ -83,7 +87,8 @@ bool8 SafariZoneTakeStep(void)
     sSafariZoneStepCounter--;
     if (sSafariZoneStepCounter == 0)
     {
-        ScriptContext_SetupScript(SafariZone_EventScript_TimesUp);
+        // ScriptContext_SetupScript(SafariZone_EventScript_TimesUp);
+        ScriptContext_SetupScript(Puzzle_SafariImposters_GameEnds);
         return TRUE;
     }
     return FALSE;
@@ -91,7 +96,8 @@ bool8 SafariZoneTakeStep(void)
 
 void SafariZoneRetirePrompt(void)
 {
-    ScriptContext_SetupScript(SafariZone_EventScript_RetirePrompt);
+    // ScriptContext_SetupScript(SafariZone_EventScript_RetirePrompt);
+    ScriptContext_SetupScript(Puzzle_SafariImposters_Retire);
 }
 
 void CB2_EndSafariBattle(void)
@@ -99,20 +105,29 @@ void CB2_EndSafariBattle(void)
     sSafariZonePkblkUses += gBattleResults.pokeblockThrows;
     if (gBattleOutcome == B_OUTCOME_CAUGHT)
         sSafariZoneCaughtMons++;
-    if (gNumSafariBalls != 0)
+    if (sSafariZoneCaughtMons >= 3) 
+    {
+        ScriptContext1_SetupScript(Puzzle_SafariImposters_GameEnds);
+        ScriptContext1_Stop();
+        SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
+    }
+    else if (gNumSafariBalls != 0)
     {
         SetMainCallback2(CB2_ReturnToField);
     }
     else if (gBattleOutcome == B_OUTCOME_NO_SAFARI_BALLS)
     {
-        RunScriptImmediately(SafariZone_EventScript_OutOfBallsMidBattle);
-        WarpIntoMap();
-        gFieldCallback = FieldCB_ReturnToFieldNoScriptCheckMusic;
-        SetMainCallback2(CB2_LoadMap);
+        // RunScriptImmediately(SafariZone_EventScript_OutOfBallsMidBattle);
+        // WarpIntoMap();
+        // gFieldCallback = FieldCB_ReturnToFieldNoScriptCheckMusic;
+        // SetMainCallback2(CB2_LoadMap);
+        ScriptContext_SetupScript(Puzzle_SafariImposters_GameEnds);
+        ScriptContext_Stop();
+        SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
     }
     else if (gBattleOutcome == B_OUTCOME_CAUGHT)
     {
-        ScriptContext_SetupScript(SafariZone_EventScript_OutOfBalls);
+        ScriptContext_SetupScript(Puzzle_SafariImposters_GameEnds);
         ScriptContext_Stop();
         SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
     }

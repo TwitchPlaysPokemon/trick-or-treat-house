@@ -557,3 +557,83 @@ gMetatiles_UnionRoom::
 	.align 1
 gMetatileAttributes_UnionRoom::
 	.incbin "data/tilesets/secondary/union_room/metatile_attributes.bin"
+
+	.align 1
+gMetatiles_BellTower::
+	.incbin "data/tilesets/secondary/bell_tower/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_BellTower::
+	.incbin "data/tilesets/secondary/bell_tower/metatile_attributes.bin"
+	.align 1
+gMetatiles_TrickHouseMain::
+	.incbin "data/tilesets/secondary/trick_house_main/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_TrickHouseMain::
+	.incbin "data/tilesets/secondary/trick_house_main/metatile_attributes.bin"
+	.align 1
+gMetatiles_WaterfallCave::
+	.incbin "data/tilesets/secondary/waterfall_cave/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_WaterfallCave::
+	.incbin "data/tilesets/secondary/waterfall_cave/metatile_attributes.bin"
+	.align 1
+gMetatiles_Autumn::
+	.incbin "data/tilesets/primary/autumn/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Autumn::
+	.incbin "data/tilesets/primary/autumn/metatile_attributes.bin"
+
+	.align 1
+gMetatiles_TrihardPokemonCenter:: @ 83B1060
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_TrihardPokemonCenter:: @ 83B1EE0
+	.incbin "data/tilesets/secondary/pokemon_center_trihard/metatile_attributes.bin"
+
+	.align 1
+gMetatiles_Desert::
+	.incbin "data/tilesets/secondary/desert/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Desert::
+	.incbin "data/tilesets/secondary/desert/metatile_attributes.bin"
+	.align 1
+gMetatiles_Route110::
+	.incbin "data/tilesets/secondary/route110/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Route110::
+	.incbin "data/tilesets/secondary/route110/metatile_attributes.bin"
+	.align 1
+gMetatiles_AltoMareEast::
+	.incbin "data/tilesets/secondary/altomareeast/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_AltoMareEast::
+	.incbin "data/tilesets/secondary/altomareeast/metatile_attributes.bin"
+	.align 1
+gMetatiles_AltoMareWest::
+	.incbin "data/tilesets/secondary/altomarewest/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_AltoMareWest::
+	.incbin "data/tilesets/secondary/altomarewest/metatile_attributes.bin"
+	.align 1
+gMetatiles_Goldenrod::
+	.incbin "data/tilesets/secondary/goldenrod/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_Goldenrod::
+	.incbin "data/tilesets/secondary/goldenrod/metatile_attributes.bin"
+	.align 1
+gMetatiles_SlateportExt::
+	.incbin "data/tilesets/secondary/slateportext/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_SlateportExt::
+	.incbin "data/tilesets/secondary/slateportext/metatile_attributes.bin"

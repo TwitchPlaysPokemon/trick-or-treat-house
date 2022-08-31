@@ -251,7 +251,7 @@ $(TILESETGFXDIR)/secondary/sootopolis_gym/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 484 -Wnum_tiles
 
 $(TILESETGFXDIR)/secondary/trick_house_puzzle/tiles.4bpp: %.4bpp: %.png
-	$(GFX) $< $@ -num_tiles 294 -Wnum_tiles
+	$(GFX) $< $@ -num_tiles 320 -Wnum_tiles
 
 $(TILESETGFXDIR)/secondary/inside_ship/tiles.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -num_tiles 342 -Wnum_tiles

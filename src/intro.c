@@ -1163,7 +1163,7 @@ void CB2_InitCopyrightScreenAfterTitleScreen(void)
 static void Task_Scene1_Load(u8 taskId)
 {
     SetVBlankCallback(NULL);
-    sIntroCharacterGender = Random() & 1;
+    sIntroCharacterGender = Random() % 3;
     IntroResetGpuRegs();
     SetGpuReg(REG_OFFSET_BG3VOFS, 0);
     SetGpuReg(REG_OFFSET_BG2VOFS, 80);
@@ -1370,12 +1370,12 @@ static void Task_Scene2_CreateSprites(u8 taskId)
 {
     u8 spriteId;
 
-    // Load sprite sheets
-    if (sIntroCharacterGender == MALE)
-        LoadCompressedSpriteSheet(gSpriteSheet_IntroBrendan);
-    else
-        LoadCompressedSpriteSheet(gSpriteSheet_IntroMay);
-
+    switch (gIntroCharacterGender) {
+        default:
+        case GENDER_M: LoadCompressedSpriteSheet(gSpriteSheet_IntroBrendan); break;
+        case GENDER_F: LoadCompressedSpriteSheet(gSpriteSheet_IntroMay); break;
+        case GENDER_N: LoadCompressedSpriteSheet(gSpriteSheet_IntroTreekid); break;
+    }
     LoadCompressedSpriteSheet(gSpriteSheet_IntroBicycle);
     LoadCompressedSpriteSheet(gSpriteSheet_IntroFlygon);
 
@@ -1390,10 +1390,12 @@ static void Task_Scene2_CreateSprites(u8 taskId)
     CreateSprite(&sSpriteTemplate_Manectric, DISPLAY_WIDTH + 32, 128, 0);
     CreateSprite(&sSpriteTemplate_Torchic, DISPLAY_WIDTH + 48, 110, 1);
 
-    if (sIntroCharacterGender == MALE)
-        spriteId = CreateIntroBrendanSprite(DISPLAY_WIDTH + 32, 100);
-    else
-        spriteId = CreateIntroMaySprite(DISPLAY_WIDTH + 32, 100);
+    switch (gIntroCharacterGender) {
+        default:
+        case GENDER_M: spriteId = CreateIntroBrendanSprite(DISPLAY_WIDTH + 32, 100); break;
+        case GENDER_F: spriteId = CreateIntroMaySprite(DISPLAY_WIDTH + 32, 100); break;
+        case GENDER_N: spriteId = CreateIntroTreekidSprite(DISPLAY_WIDTH + 32, 100); break;
+    }
 
     gSprites[spriteId].callback = SpriteCB_PlayerOnBicycle;
     gSprites[spriteId].anims = sAnims_PlayerBicycle;
@@ -1451,7 +1453,7 @@ static void Task_Scene2_BikeRide(u8 taskId)
         gTasks[taskId].tFlygonTimer++;
 
     // Alternate colors of the trees
-    CycleSceneryPalette(0);
+    // CycleSceneryPalette(0);
 }
 
 static void Task_Scene2_End(u8 taskId)

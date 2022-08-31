@@ -33,7 +33,7 @@
 #include "party_menu.h"
 #include "battle_arena.h"
 #include "battle_pike.h"
-#include "battle_pyramid.h"
+// #include "battle_pyramid.h"
 #include "field_specials.h"
 #include "pokemon_summary_screen.h"
 #include "pokenav.h"
@@ -3234,14 +3234,15 @@ static void Cmd_getexp(void)
     switch (gBattleScripting.getexpState)
     {
     case 0: // check if should receive exp at all
-        if (GetBattlerSide(gBattlerFainted) != B_SIDE_OPPONENT || (gBattleTypeFlags &
-             (BATTLE_TYPE_LINK
-              | BATTLE_TYPE_RECORDED_LINK
-              | BATTLE_TYPE_TRAINER_HILL
-              | BATTLE_TYPE_FRONTIER
-              | BATTLE_TYPE_SAFARI
-              | BATTLE_TYPE_BATTLE_TOWER
-              | BATTLE_TYPE_EREADER_TRAINER)))
+        if (TRUE) // Never recieve EXP
+        // if (GetBattlerSide(gBattlerFainted) != B_SIDE_OPPONENT || (gBattleTypeFlags &
+        //      (BATTLE_TYPE_LINK
+        //       | BATTLE_TYPE_RECORDED_LINK
+        //       | BATTLE_TYPE_TRAINER_HILL
+        //       | BATTLE_TYPE_FRONTIER
+        //       | BATTLE_TYPE_SAFARI
+        //       | BATTLE_TYPE_BATTLE_TOWER
+        //       | BATTLE_TYPE_EREADER_TRAINER)))
         {
             gBattleScripting.getexpState = 6; // goto last case
         }
@@ -5553,50 +5554,66 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
 
     if (trainerId == TRAINER_SECRET_BASE)
     {
+#if USE_CANDY_CURRENCY
+        moneyReward = 5 * gBattleStruct->moneyMultiplier;
+#else
         moneyReward = 20 * gBattleResources->secretBase->party.levels[0] * gBattleStruct->moneyMultiplier;
+#endif
     }
     else
     {
-        switch (gTrainers[trainerId].partyFlags)
+        const struct Trainer *trainer = GetTrainer(trainerId);
+#if !USE_CANDY_CURRENCY
+        switch (trainer->partyFlags)
         {
         case 0:
             {
-                const struct TrainerMonNoItemDefaultMoves *party = gTrainers[trainerId].party.NoItemDefaultMoves;
-                lastMonLevel = party[gTrainers[trainerId].partySize - 1].lvl;
+                const struct TrainerMonNoItemDefaultMoves *party = trainer->party.NoItemDefaultMoves;
+                lastMonLevel = party[trainer->partySize - 1].lvl;
             }
             break;
         case F_TRAINER_PARTY_CUSTOM_MOVESET:
             {
-                const struct TrainerMonNoItemCustomMoves *party = gTrainers[trainerId].party.NoItemCustomMoves;
-                lastMonLevel = party[gTrainers[trainerId].partySize - 1].lvl;
+                const struct TrainerMonNoItemCustomMoves *party = trainer->party.NoItemCustomMoves;
+                lastMonLevel = party[trainer->partySize - 1].lvl;
             }
             break;
         case F_TRAINER_PARTY_HELD_ITEM:
             {
-                const struct TrainerMonItemDefaultMoves *party = gTrainers[trainerId].party.ItemDefaultMoves;
-                lastMonLevel = party[gTrainers[trainerId].partySize - 1].lvl;
+                const struct TrainerMonItemDefaultMoves *party = trainer->party.ItemDefaultMoves;
+                lastMonLevel = party[trainer->partySize - 1].lvl;
             }
             break;
         case F_TRAINER_PARTY_CUSTOM_MOVESET | F_TRAINER_PARTY_HELD_ITEM:
             {
-                const struct TrainerMonItemCustomMoves *party = gTrainers[trainerId].party.ItemCustomMoves;
-                lastMonLevel = party[gTrainers[trainerId].partySize - 1].lvl;
+                const struct TrainerMonItemCustomMoves *party = trainer->party.ItemCustomMoves;
+                lastMonLevel = party[trainer->partySize - 1].lvl;
             }
             break;
         }
+#endif
 
         for (; gTrainerMoneyTable[i].classId != 0xFF; i++)
         {
-            if (gTrainerMoneyTable[i].classId == gTrainers[trainerId].trainerClass)
+            if (gTrainerMoneyTable[i].classId == trainer->trainerClass)
                 break;
         }
 
+#if USE_CANDY_CURRENCY
+        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+            moneyReward = 4 * gBattleStruct->moneyMultiplier * gTrainerMoneyTable[i].value;
+        else if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
+            moneyReward = 4 * gBattleStruct->moneyMultiplier * 2 * gTrainerMoneyTable[i].value;
+        else
+            moneyReward = 4 * gBattleStruct->moneyMultiplier * gTrainerMoneyTable[i].value;
+#else
         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
             moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * gTrainerMoneyTable[i].value;
         else if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
             moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * 2 * gTrainerMoneyTable[i].value;
         else
             moneyReward = 4 * lastMonLevel * gBattleStruct->moneyMultiplier * gTrainerMoneyTable[i].value;
+#endif
     }
 
     return moneyReward;
@@ -7373,6 +7390,7 @@ static void Cmd_tryconversiontypechange(void)
 
 static void Cmd_givepaydaymoney(void)
 {
+#if !USE_CANDY_CURRENCY
     if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK)) && gPaydayMoney != 0)
     {
         u32 bonusMoney = gPaydayMoney * gBattleStruct->moneyMultiplier;
@@ -7384,6 +7402,7 @@ static void Cmd_givepaydaymoney(void)
         gBattlescriptCurrInstr = BattleScript_PrintPayDayMoneyString;
     }
     else
+#endif
     {
         gBattlescriptCurrInstr++;
     }
@@ -9525,6 +9544,12 @@ static void Cmd_getsecretpowereffect(void)
     case BATTLE_TERRAIN_LONG_GRASS:
         gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_SLEEP;
         break;
+    case BATTLE_TERRAIN_FALL_GRASS:
+        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_POISON;
+        break;
+    case BATTLE_TERRAIN_FALL_LONG_GRASS:
+        gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_SLEEP;
+        break;
     case BATTLE_TERRAIN_SAND:
         gBattleCommunication[MOVE_EFFECT_BYTE] = MOVE_EFFECT_ACC_MINUS_1;
         break;
@@ -9556,34 +9581,34 @@ static void Cmd_pickup(void)
     u16 species, heldItem;
     u8 ability;
 
-    if (InBattlePike())
-    {
+    // if (InBattlePike())
+    // {
 
-    }
-    else if (InBattlePyramid())
-    {
-        for (i = 0; i < PARTY_SIZE; i++)
-        {
-            species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2);
-            heldItem = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
+    // }
+    // else if (InBattlePyramid())
+    // {
+    //     for (i = 0; i < PARTY_SIZE; i++)
+    //     {
+    //         species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2);
+    //         heldItem = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
 
-            if (GetMonData(&gPlayerParty[i], MON_DATA_ABILITY_NUM))
-                ability = gBaseStats[species].abilities[1];
-            else
-                ability = gBaseStats[species].abilities[0];
+    //         if (GetMonData(&gPlayerParty[i], MON_DATA_ABILITY_NUM))
+    //             ability = gBaseStats[species].abilities[1];
+    //         else
+    //             ability = gBaseStats[species].abilities[0];
 
-            if (ability == ABILITY_PICKUP
-                && species != SPECIES_NONE
-                && species != SPECIES_EGG
-                && heldItem == ITEM_NONE
-                && (Random() % 10) == 0)
-            {
-                heldItem = GetBattlePyramidPickupItemId();
-                SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &heldItem);
-            }
-        }
-    }
-    else
+    //         if (ability == ABILITY_PICKUP
+    //             && species != SPECIES_NONE
+    //             && species != SPECIES_EGG
+    //             && heldItem == ITEM_NONE
+    //             && (Random() % 10) == 0)
+    //         {
+    //             heldItem = GetBattlePyramidPickupItemId();
+    //             SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &heldItem);
+    //         }
+    //     }
+    // }
+    // else
     {
         for (i = 0; i < PARTY_SIZE; i++)
         {

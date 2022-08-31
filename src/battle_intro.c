@@ -24,16 +24,18 @@ static void BattleIntroSlidePartner(u8);
 
 static const TaskFunc sBattleIntroSlideFuncs[] =
 {
-    [BATTLE_TERRAIN_GRASS]      = BattleIntroSlide1,
-    [BATTLE_TERRAIN_LONG_GRASS] = BattleIntroSlide1,
-    [BATTLE_TERRAIN_SAND]       = BattleIntroSlide2,
-    [BATTLE_TERRAIN_UNDERWATER] = BattleIntroSlide2,
-    [BATTLE_TERRAIN_WATER]      = BattleIntroSlide2,
-    [BATTLE_TERRAIN_POND]       = BattleIntroSlide1,
-    [BATTLE_TERRAIN_MOUNTAIN]   = BattleIntroSlide1,
-    [BATTLE_TERRAIN_CAVE]       = BattleIntroSlide1,
-    [BATTLE_TERRAIN_BUILDING]   = BattleIntroSlide3,
-    [BATTLE_TERRAIN_PLAIN]      = BattleIntroSlide3,
+    [BATTLE_TERRAIN_GRASS]             = BattleIntroSlide1,
+    [BATTLE_TERRAIN_LONG_GRASS]        = BattleIntroSlide1,
+    [BATTLE_TERRAIN_SAND]              = BattleIntroSlide2,
+    [BATTLE_TERRAIN_UNDERWATER]        = BattleIntroSlide2,
+    [BATTLE_TERRAIN_WATER]             = BattleIntroSlide2,
+    [BATTLE_TERRAIN_POND]              = BattleIntroSlide1,
+    [BATTLE_TERRAIN_MOUNTAIN]          = BattleIntroSlide1,
+    [BATTLE_TERRAIN_CAVE]              = BattleIntroSlide1,
+    [BATTLE_TERRAIN_BUILDING]          = BattleIntroSlide3,
+    [BATTLE_TERRAIN_PLAIN]             = BattleIntroSlide3,
+    [BATTLE_TERRAIN_FALL_GRASS]        = BattleIntroSlide1,
+    [BATTLE_TERRAIN_FALL_LONG_GRASS]   = BattleIntroSlide1,
 };
 
 void SetAnimBgAttribute(u8 bgId, u8 attributeId, u8 value)

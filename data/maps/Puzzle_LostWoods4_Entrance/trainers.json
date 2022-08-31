@@ -1,0 +1,65 @@
+[
+	{
+		"class": "CAMPER",
+		"name": "RYAN",
+		"party": [
+			{
+				"species": "SPECIES_SANDSLASH",
+				"level": 31
+			}
+		]
+	},
+	{
+		"class": "NINJA_BOY",
+		"name": "NIGEL",
+		"music": "MALE",
+		"party": [
+			{
+				"species": "SPECIES_SCYTHER",
+				"level": 32
+			}
+		]
+	},
+	{
+		"class": "SKELETON",
+		"name": "JAMAL",
+		"music": "MALE",
+		"party": [
+			{
+				"species": "SPECIES_ONIX",
+				"level": 32
+			}
+		]
+	},
+	{
+		"class": "SKELETON",
+		"name": "IAN",
+		"music": "SUSPICIOUS",
+		"party": [
+			{
+				"species": "SPECIES_DUSKULL",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_HAUNTER",
+				"level": 30
+			}
+		]
+	},
+	{
+		"class": "ALIEN",
+		"name": "KELSEY",
+		"female": true,
+		"music": "INTENSE",
+		"party": [
+			{
+				"species": "SPECIES_BALTOY",
+				"level": 31
+			},
+			{
+				"species": "SPECIES_NOSEPASS",
+				"level": 31
+			}
+		]
+	}
+]

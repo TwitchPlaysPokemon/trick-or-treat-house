@@ -2,10 +2,11 @@
 #define GUARD_POKEMON_STORAGE_SYSTEM_H
 
 #define TOTAL_BOXES_COUNT       14
+#define ACCESSABLE_BOXES_COUNT  4
 #define IN_BOX_ROWS             5 // Number of rows, 6 Pokémon per row
 #define IN_BOX_COLUMNS          6 // Number of columns, 5 Pokémon per column
 #define IN_BOX_COUNT            (IN_BOX_ROWS * IN_BOX_COLUMNS)
-#define BOX_NAME_LENGTH         8
+#define BOXES_COUNT             ((gMain.debugMode? TOTAL_BOXES_COUNT : ACCESSABLE_BOXES_COUNT))
 
 /*
             COLUMNS

@@ -106,6 +106,45 @@ enum {
 // Last berry that an NPC can put in
 #define NUM_NPC_BERRIES ITEM_TO_BERRY(ITEM_ASPEAR_BERRY)
 
+enum {
+    BLENDER_MISTER,
+    BLENDER_LADDIE,
+    BLENDER_LASSIE,
+    BLENDER_MASTER,
+    BLENDER_DUDE,
+    BLENDER_MISS
+};
+
+#define BLENDER_MAX_PLAYERS MAX_LINK_PLAYERS
+
+#define NO_PLAYER 0xFF
+
+#define MAX_PROGRESS_BAR 1000
+
+#define MAX_ARROW_POS 0x10000 // By virtue of being u16
+#define MIN_ARROW_SPEED 0x80
+#define ARROW_FALL_ROTATION 0x5800 // The amount the arrow spins as it falls in at the start
+
+// Tile offsets
+#define PROGRESS_BAR_FILLED_TOP    0x80E9
+#define PROGRESS_BAR_FILLED_BOTTOM 0x80F9
+#define PROGRESS_BAR_EMPTY_TOP     0x80E1
+#define PROGRESS_BAR_EMPTY_BOTTOM  0x80F1
+#define RPM_DIGIT 0x8072
+
+// Tile and palette tags
+#define GFXTAG_COUNTDOWN_NUMBERS 12345
+#define GFXTAG_START             12346
+#define GFXTAG_PARTICLES         23456
+#define GFXTAG_PLAYER_ARROW      46545
+#define GFXTAG_SCORE_SYMBOLS     48888
+
+#define PALTAG_PLAYER_ARROW      12312
+#define PALTAG_MISC              46546
+
+// Last berry that an NPC can put in
+#define NUM_NPC_BERRIES ITEM_TO_BERRY(ITEM_ASPEAR_BERRY)
+
 struct BlenderBerry
 {
     u16 itemId;
@@ -865,7 +904,10 @@ static const s16 sBerrySpriteData[][5] =
 // There are only 5 different berries the NPCs will ever use
 // Each of these sets represents 3 berries chosen to be used by the NPCs
 // If the player's berry is one of the 5 possible berries, a set is chosen that excludes it
-static const u8 sOpponentBerrySets[NUM_NPC_BERRIES * 2][3] =
+// There are only 5 different berries the NPCs will ever use
+// Each of these sets represents 3 berries chosen to be used by the NPCs
+// If the player's berry is one of the 5 possible berries, a set is chosen that excludes it
+static const u8 sOpponentBerrySets[NUM_NPC_BERRIES * 2NUM_NPC_BERRIES * 2][3] =
 {
     // These sets are used if the player chose one of the 5 NPC berries
     {ITEM_TO_BERRY(ITEM_ASPEAR_BERRY) - 1, ITEM_TO_BERRY(ITEM_RAWST_BERRY) - 1,  ITEM_TO_BERRY(ITEM_PECHA_BERRY) - 1},   // player chose Cheri Berry
@@ -1036,6 +1078,8 @@ static void InitBerryBlenderWindows(void)
 
 // gSpecialVar_0x8004 is the number of NPC opponents
 // Set to 0 indicates it's a link blender
+// gSpecialVar_0x8004 is the number of NPC opponents
+// Set to 0 indicates it's a link blender
 void DoBerryBlending(void)
 {
     if (sBerryBlender == NULL)
@@ -1117,6 +1161,7 @@ static void CB2_LoadBerryBlender(void)
     case 6:
         if (!gPaletteFade.active)
         {
+            // Go to bag menu to choose berry, set callback to StartBlender
             // Go to bag menu to choose berry, set callback to StartBlender
             FreeAllWindowBuffers();
             UnsetBgTilemapBuffer(2);
@@ -1217,7 +1262,7 @@ static void InitLocalPlayers(u8 opponentsNum)
 {
     switch (opponentsNum)
     {
-    case 0: // Link games have 0 in-game opponents
+    case 0: // Link games have 0 in-game opponents // Link games have 0 in-game opponents
         gInGameOpponentsNo = 0;
         break;
     case 1:
@@ -1363,6 +1408,7 @@ static void CB2_StartBlenderLink(void)
         if (++sBerryBlender->framesToWait > 20)
         {
             // Wait for partners' berries
+            // Wait for partners' berries
             ClearDialogWindowAndFrameToTransparent(4, TRUE);
             if (GetBlockReceivedStatus() == GetLinkPlayerCountAsBitFlags())
             {
@@ -1380,6 +1426,7 @@ static void CB2_StartBlenderLink(void)
     case 11:
         sBerryBlender->numPlayers = GetLinkPlayerCount();
 
+        // Throw 1 player's berry in
         // Throw 1 player's berry in
         for (i = 0; i < BLENDER_MAX_PLAYERS; i++)
         {
@@ -2413,6 +2460,7 @@ static void CalculatePokeblock(struct BlenderBerry *berries, struct Pokeblock *p
     sPokeblockFlavors[FLAVOR_SOUR]   -= multiuseVar;
 
     // Count (and reset) the resulting negative flavors
+    // Count (and reset) the resulting negative flavors
     multiuseVar = 0;
     for (i = 0; i < FLAVOR_COUNT; i++)
     {
@@ -3039,6 +3087,8 @@ static void ProcessLinkPlayerCmds(void)
             u8 i;
 
             // Try to gather responses
+
+            // Try to gather responses
             for (i = 0; i < GetLinkPlayerCount(); i++)
             {
                 if (CheckRecvCmdMatches(gRecvCmds[i][BLENDER_COMM_INPUT_STATE], LINKCMD_SEND_PACKET, RFUCMD_SEND_PACKET))
@@ -3062,6 +3112,8 @@ static void ProcessLinkPlayerCmds(void)
             }
 
             // Count players that have responded, stopping at first non-response
+
+            // Count players that have responded, stopping at first non-response
             for (i = 0; i < GetLinkPlayerCount(); i++)
             {
                 if (sBerryBlender->playerContinueResponses[i] == 0)
@@ -3069,8 +3121,11 @@ static void ProcessLinkPlayerCmds(void)
             }
 
             // If all players responded, handle response
+
+            // If all players responded, handle response
             if (i == GetLinkPlayerCount())
             {
+                // Count players that decided to play again, stopping at first negative response
                 // Count players that decided to play again, stopping at first negative response
                 for (i = 0; i < GetLinkPlayerCount(); i++)
                 {

@@ -169,11 +169,9 @@ static bool8 TryDoMapTransition(void)
     return FALSE;
 }
 
-bool8 GetMapPairFadeToType(u8 _fromType, u8 _toType)
+bool8 GetMapPairFadeToType(u8 fromType, u8 toType)
 {
     u8 i;
-    u8 fromType = _fromType;
-    u8 toType = _toType;
 
     for (i = 0; sTransitionTypes[i].fromType; i++)
     {
@@ -186,11 +184,9 @@ bool8 GetMapPairFadeToType(u8 _fromType, u8 _toType)
     return FALSE;
 }
 
-bool8 GetMapPairFadeFromType(u8 _fromType, u8 _toType)
+bool8 GetMapPairFadeFromType(u8 fromType, u8 toType)
 {
     u8 i;
-    u8 fromType = _fromType;
-    u8 toType = _toType;
 
     for (i = 0; sTransitionTypes[i].fromType; i++)
     {

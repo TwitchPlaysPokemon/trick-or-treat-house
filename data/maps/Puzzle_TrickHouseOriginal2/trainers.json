@@ -1,0 +1,53 @@
+[
+	{
+		"class": "SCHOOL_KID",
+		"pic": "SCHOOL_KID_M",
+		"name": "TED",
+		"party": [
+			{
+				"species": "SPECIES_RALTS",
+				"level": 27,
+				"iv": 10
+			}
+		]
+	},
+	{
+		"class": "MASKED_BOY",
+		"name": "PAUL",
+		"party": [
+			{
+				"species": "SPECIES_NUMEL",
+				"level": 25,
+				"iv": 10
+			},
+			{
+				"species": "SPECIES_ODDISH",
+				"level": 25,
+				"iv": 10
+			},
+			{
+				"species": "SPECIES_WINGULL",
+				"level": 25,
+				"iv": 10
+			}
+		]
+	},
+	{
+		"class": "FAIRY_GIRL",
+		"music": "GIRL",
+		"female": true,
+		"name": "GEORGIA",
+		"party": [
+			{
+				"species": "SPECIES_SHROOMISH",
+				"level": 24,
+				"iv": 10
+			},
+			{
+				"species": "SPECIES_BEAUTIFLY",
+				"level": 24,
+				"iv": 10
+			}
+		]
+	}
+]

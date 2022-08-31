@@ -1,0 +1,278 @@
+raw `
+Puzzle_TicRacToe_MapScripts::
+	puzzle_info Puzzle_TicRacToe_Name, Puzzle_TicRacToe_Author
+	puzzle_adjective Puzzle_TicRacToe_Adjective
+	puzzle_quip Puzzle_TicRacToe_Quip
+	@ puzzle_metavars Puzzle_TicRacToe_Variables
+	puzzle_candylist Puzzle_TicRacToe_CandyList
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_TicRacToe_OnLoad
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TicRacToe_OnResume
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_TicRacToe_FrameTable
+	map_script MAP_SCRIPT_PUZZLE_EXIT_SCRIPT, Puzzle_TicRacToe_OnExit
+	.byte 0
+
+Puzzle_TicRacToe_Name:
+	.string "Tic Rac Toe$"
+Puzzle_TicRacToe_Author:
+	.string "MyRattata$"
+Puzzle_TicRacToe_Adjective:
+	.string "triply$"
+Puzzle_TicRacToe_Quip:
+	.string "I honestly don't get everyone's\n"
+	.string "obsession with Zigzagoon.\p"
+	.string "Like, yeah, it's cute, but so are\n"
+	.string "like half of all {POKEMON}…$"
+.align 2
+Puzzle_TicRacToe_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_RARE_01
+	.2byte 0
+
+
+#define LID_BLOCK_BOY               4
+#define VAR_ZIG1_STATE              VAR_PUZZLE_00
+#define VAR_ZIG2_STATE              VAR_PUZZLE_01
+#define VAR_ZIG3_STATE              VAR_PUZZLE_02
+#define FLAG_ALL_BUTTONS_PRESSED    FLAG_PUZZLE_20
+
+Puzzle_TicRacToe_FrameTable:
+	@ VAR_STEP_TRIGGER is set to 1 by MonitorMultiEventObjectTriggersStepCallback when any npc steps on a trigger
+	map_script_2 VAR_STEP_TRIGGER, 1, Puzzle_TicRacToe_StepTriggerCallback
+	.2byte 0
+`
+
+script(local) Puzzle_TicRacToe_OnLoad {
+	if (var(VAR_ZIG1_STATE) == 0) {
+		setobjectxyperm(1, 2, 14)
+		setobjectmovementtype(1, MOVEMENT_TYPE_FACE_DOWN)
+	}
+	if (var(VAR_ZIG2_STATE) == 0) {
+		setobjectxyperm(2, 13, 9)
+		setobjectmovementtype(2, MOVEMENT_TYPE_FACE_UP)
+	}
+	if (var(VAR_ZIG3_STATE) == 0) {
+		setobjectxyperm(3, 24, 9)
+		setobjectmovementtype(3, MOVEMENT_TYPE_FACE_UP_AND_RIGHT)
+	}
+	if (var(VAR_STEP_TRIGGER) == 2) {
+		setmetatile(4, 4, 0x26A, FALSE)
+	} else {
+		setvar(VAR_STEP_TRIGGER, 0)
+	}
+}
+script(local) Puzzle_TicRacToe_OnExit {
+	clearflag(FLAG_SYS_FAST_BONK)
+}
+script(local) Puzzle_TicRacToe_OnResume {
+	// Setup the NPC Mutli Trigger callback
+	setstepcallback(STEP_CB_NPC_MULTI_TRIGGER)
+}
+script(local) Puzzle_TicRacToe_StepTriggerCallback {
+	if (flag(FLAG_ALL_BUTTONS_PRESSED) == FALSE) {
+		callnative (CountNPCTriggers)
+		if (var(VAR_RESULT) == 3) {
+			playse (SE_SEIKAI)
+			setmetatile(4, 4, 0x26A, FALSE)
+			setflag(FLAG_ALL_BUTTONS_PRESSED)
+			setvar(VAR_STEP_TRIGGER, 2) //disarm step trigger
+			end
+		}
+	}
+	setvar(VAR_STEP_TRIGGER, 0)
+}
+
+
+//-----------------------------------------------------
+
+script Puzzle_TicRacToe_Zigboy {
+	if (var(VAR_ZIG1_STATE) == 0) {
+		lock
+		msgbox("This Zigzagoon is so cute!\p"
+			"I think it wants to play with its\n"
+			"friends but they're with other trainers.\p"
+			"Maybe you can convince them to let\n"
+			"the Zigzagoon play together?$")
+		release
+		end
+	}
+	elif (var(VAR_ZIG1_STATE) == 1) {
+		lock
+		msgbox("Yay! They're playing together!$")
+		release
+		end
+	}
+	elif (var(VAR_ZIG1_STATE) == 2) {
+		goto(Puzzle_TicRacToe_TriggerScript_BlockOut)
+	}
+	elif (var(VAR_ZIG1_STATE) == 3) {
+		lock
+		msgbox("Sorry.$")
+		release
+		end
+	}
+}
+script Puzzle_TrickHouseSlipSliding_Zig1Free {
+	setvar(VAR_ZIG1_STATE, 1)
+	setobjectxyperm(1, 2, 13)
+	setobjectmovementtype(1, MOVEMENT_TYPE_COPY_PLAYER)
+	removeobject(1)
+	addobject(1)
+}
+
+
+script Puzzle_TrickHouseSlipSliding_Alien {
+	trainerbattle_single (TRAINER_01,
+			"Who wants a treat? You do?\p"
+			"Excuse me, I was talking to the {POKEMON}!$",
+			"Oh, you made it slip away!$",
+			Puzzle_TrickHouseSlipSliding_Alien_PostFight)
+	msgbox ("My Zigzagoon ran off… I'm sad now…$", MSGBOX_AUTOCLOSE)
+}
+script Puzzle_TrickHouseSlipSliding_Alien_PostFight {
+	playse (SE_DANSA)
+	applymovement(2, Puzzle_TrickHouseSlipSliding_Zig2Freed)
+	waitmovement(2)
+	setvar(VAR_ZIG2_STATE, 1)
+	setobjectxyperm(2, 13, 10)
+	setobjectmovementtype(2, MOVEMENT_TYPE_COPY_PLAYER)
+	
+	if (var(VAR_ZIG3_STATE) == 1) {
+		goto (Puzzle_TrickHouseSlipSliding_Zig1Free)
+	}
+}
+movement Puzzle_TrickHouseSlipSliding_Zig2Freed {
+	jump_down
+}
+
+
+script Puzzle_TrickHouseSlipSliding_Twins {
+	trainerbattle_double (TRAINER_02,
+			"Who's a cute Ziggy? You're a cute Ziggy!\p"
+			"No! Not you, fat head!$",
+			"No! Ziggy! I didn't call YOU a fat head!$",
+			"Who's a cute Ziggy? You're a cute Ziggy!$",
+			Puzzle_TrickHouseSlipSliding_Twins_PostFight)
+	msgbox ("You made Ziggy run away! You're mean!$", MSGBOX_AUTOCLOSE)
+}
+script Puzzle_TrickHouseSlipSliding_Twins_PostFight {
+	playse (SE_DANSA)
+	applymovement(3, Puzzle_TrickHouseSlipSliding_Zig3Freed)
+	delay (8)
+	playse (SE_DANSA)
+	waitmovement(3)
+	setvar(VAR_ZIG3_STATE, 1)
+	setobjectxyperm(3, 23, 10)
+	setobjectmovementtype(3, MOVEMENT_TYPE_COPY_PLAYER)
+	
+	if (var(VAR_ZIG2_STATE) == 1) {
+		goto (Puzzle_TrickHouseSlipSliding_Zig1Free)
+	}
+}
+movement Puzzle_TrickHouseSlipSliding_Zig3Freed {
+	jump_down
+	jump_left
+}
+
+//-----------------------------------------------------
+
+
+script Puzzle_TicRacToe_TriggerScript_BlockIn {
+	lock
+	//
+	special (SpawnCameraObject)
+	applymovement(LID_BLOCK_BOY, Puzzle_TicRacToe_Movement_BlockIn_Boy)
+	applymovement(EVENT_OBJ_ID_PLAYER, Puzzle_TicRacToe_Movement_BlockIn_Player)
+	waitmovement(EVENT_OBJ_ID_PLAYER)
+	// 
+	msgbox ("OMG these Zigzagoon are SO CUTE!\p"
+			"Just look at them!\n"
+			"They copy your movement!$")
+	closemessage
+	// 
+	applymovement(LID_BLOCK_BOY, Common_Movement_FaceUp)
+	applymovement(EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp)
+	applymovement(EVENT_OBJ_ID_CAMERA, Puzzle_TicRacToe_Movement_BlockIn_Camera)
+	copyobjectxytoperm(1)
+	removeobject(1)
+	addobject(1)
+	copyobjectxytoperm(2)
+	removeobject(2)
+	addobject(2)
+	copyobjectxytoperm(3)
+	removeobject(3)
+	addobject(3)
+	waitmovement(EVENT_OBJ_ID_CAMERA)
+	//
+	special (RemoveCameraObject)
+	copyobjectxytoperm(LID_BLOCK_BOY)
+	setvar(VAR_ZIG1_STATE, 2)
+	setflag(FLAG_SYS_FAST_BONK)
+	release
+}
+script Puzzle_TicRacToe_TriggerScript_BlockOut {
+	lock
+	//
+	special (SpawnCameraObject)
+	applymovement(EVENT_OBJ_ID_CAMERA, Puzzle_TicRacToe_Movement_BlockOut_Camera)
+	//
+	message (".{PAUSE 30}.{PAUSE 30}.{PAUSE 30}Hm?\p"
+			"Oh! I'm in your way, sorry!\p$")
+	delay (90)
+	applymovement(LID_BLOCK_BOY, Common_Movement_FaceRight)
+	waitmovement(LID_BLOCK_BOY)
+	waitmessage
+	//
+	applymovement(LID_BLOCK_BOY, Puzzle_TicRacToe_Movement_BlockOut_Boy)
+	message("I just got so distracted with watching\n"
+			"all the Zigzagoon, ya know?$")
+	waitmovement
+	waitmessage
+	waitbuttonpress
+	//
+	special (RemoveCameraObject)
+	copyobjectxytoperm(LID_BLOCK_BOY)
+	setvar(VAR_ZIG1_STATE, 3)
+	clearflag(FLAG_SYS_FAST_BONK)
+	release
+}
+script Puzzle_TicRacToe_TriggerScript_ResetBlock {
+	setvar(VAR_ZIG1_STATE, 1)
+}
+
+movement Puzzle_TicRacToe_Movement_BlockIn_Boy {
+	face_right
+	emote_exclamation_mark
+	delay_16 * 2
+	walk_fast_right * 2
+}
+movement Puzzle_TicRacToe_Movement_BlockOut_Boy {
+	walk_left * 2
+	walk_in_place_fast_right
+}
+movement Puzzle_TicRacToe_Movement_BlockIn_Player {
+	delay_16 * 3
+	slide_right
+	face_left
+}
+movement Puzzle_TicRacToe_Movement_BlockIn_Camera {
+	walk_diag_northeast
+	walk_up * 2
+}
+movement Puzzle_TicRacToe_Movement_BlockOut_Camera {
+	walk_down * 3
+}
+
+raw `
+#undef LID_BLOCK_BOY
+#undef VAR_ZIG1_STATE
+#undef VAR_ZIG2_STATE
+#undef VAR_ZIG3_STATE
+#undef FLAG_ALL_BUTTONS_PRESSED
+`

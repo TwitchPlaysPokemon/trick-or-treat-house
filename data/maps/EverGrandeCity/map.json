@@ -21,36 +21,9 @@
   ],
   "object_events": [],
   "warp_events": [
-    {
-      "x": 18,
-      "y": 5,
-      "elevation": 0,
-      "dest_map": "MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F",
-      "dest_warp_id": 0
-    },
-    {
-      "x": 27,
-      "y": 48,
-      "elevation": 0,
-      "dest_map": "MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F",
-      "dest_warp_id": 0
-    },
-    {
-      "x": 18,
-      "y": 41,
-      "elevation": 0,
-      "dest_map": "MAP_VICTORY_ROAD_1F",
-      "dest_warp_id": 0
-    },
-    {
-      "x": 18,
-      "y": 27,
-      "elevation": 0,
-      "dest_map": "MAP_VICTORY_ROAD_1F",
-      "dest_warp_id": 1
-    }
   ],
   "coord_events": [
+<<<<<<< HEAD
     {
       "type": "trigger",
       "x": 17,
@@ -150,6 +123,8 @@
       "var_value": "0",
       "script": "EverGrandeCity_EventScript_SetVisitedEverGrande"
     }
+=======
+>>>>>>> 767ec0dec9e2e8eeae26719a8668e155518cf6e3
   ],
   "bg_events": [
     {

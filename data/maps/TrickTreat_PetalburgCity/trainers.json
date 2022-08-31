@@ -1,0 +1,50 @@
+[
+	{
+		"class": "LEADER",
+		"pic": "LEADER_NORMAN",
+		"name": "NORMAN",
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY",
+		"items": ["ITEM_HYPER_POTION"],
+		"party": [
+			{
+				"species": "SPECIES_SLAKING",
+				"iv": 100,
+				"level": 30,
+				"item": "ITEM_SITRUS_BERRY",
+				"moves": ["MOVE_COUNTER", "MOVE_YAWN", "MOVE_FACADE", "MOVE_FAINT_ATTACK"]
+			}
+		]
+	},
+	{
+		"class": "YOUNGSTER",
+		"name": "KYLE",
+		"music": "MALE",
+		"party": [
+			{
+				"species": "SPECIES_MEOWTH",
+				"level": 26
+			},
+			{
+				"species": "SPECIES_EEVEE",
+				"level": 27
+			}
+		]
+	},
+	{
+		"class": "POKEFAN",
+		"pic": "POKEFAN_F",
+		"name": "RACHEL",
+		"female": true,
+		"music": "TWINS",
+		"party": [
+			{
+				"species": "SPECIES_SKITTY",
+				"level": 27
+			},
+			{
+				"species": "SPECIES_ROSELIA",
+				"level": 27
+			}
+		]
+	}
+]

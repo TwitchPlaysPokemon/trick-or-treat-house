@@ -17,9 +17,14 @@
 #include "sound.h"
 #include "task.h"
 #include "constants/field_tasks.h"
+#include "palette.h"
 #include "constants/items.h"
 #include "constants/songs.h"
 #include "constants/metatile_labels.h"
+#include "constants/field_tasks.h"
+
+#include "menu.h"
+#include "string_util.h"
 
 /*  This file handles some persistent tasks that run in the overworld.
  *  - Task_RunTimeBasedEvents: Periodically updates local time and RTC events. Also triggers ambient cries.
@@ -52,51 +57,30 @@ static void DummyPerStepCallback(u8);
 static void AshGrassPerStepCallback(u8);
 static void FortreeBridgePerStepCallback(u8);
 static void PacifidlogBridgePerStepCallback(u8);
+static void WaterTemplePerStepCallback(u8 taskId);
 static void SootopolisGymIcePerStepCallback(u8);
 static void CrackedFloorPerStepCallback(u8);
+static void MonitorEventObjectTriggersStepCallback(u8 taskId);
+static void MonitorMultiEventObjectTriggersStepCallback(u8 taskId);
+extern void HiddenMaze_PulseWallTiles(u8 taskId);
+extern void TrickHouse_CycleTextPalette(u8 taskId);
 static void Task_MuddySlope(u8);
 
 static const TaskFunc sPerStepCallbacks[] =
 {
-    [STEP_CB_DUMMY]             = DummyPerStepCallback,
-    [STEP_CB_ASH]               = AshGrassPerStepCallback,
-    [STEP_CB_FORTREE_BRIDGE]    = FortreeBridgePerStepCallback,
-    [STEP_CB_PACIFIDLOG_BRIDGE] = PacifidlogBridgePerStepCallback,
-    [STEP_CB_SOOTOPOLIS_ICE]    = SootopolisGymIcePerStepCallback,
-    [STEP_CB_TRUCK]             = EndTruckSequence,
-    [STEP_CB_SECRET_BASE]       = SecretBasePerStepCallback,
-    [STEP_CB_CRACKED_FLOOR]     = CrackedFloorPerStepCallback
-};
-
-// Each array has 4 pairs of data, each pair representing two metatiles of a log and their relative position.
-// The 4 pairs are for:
-// 0: If the player is standing on the top of a vertical log
-// 1: If the player is standing on the bottom of a vertical log
-// 2: If the player is standing on the left of a horizontal log
-// 3: If the player is standing on the right of a horizontal log
-// i.e. the element with an offset of 0,0 is the one the player is standing on.
-static const struct PacifidlogMetatileOffsets sHalfSubmergedBridgeMetatileOffsets[] =
-{
-    { 0,  0, METATILE_Pacifidlog_HalfSubmergedLogs_VerticalTop}, {0, 1, METATILE_Pacifidlog_HalfSubmergedLogs_VerticalBottom},
-    { 0, -1, METATILE_Pacifidlog_HalfSubmergedLogs_VerticalTop}, {0, 0, METATILE_Pacifidlog_HalfSubmergedLogs_VerticalBottom},
-    { 0,  0, METATILE_Pacifidlog_HalfSubmergedLogs_HorizontalLeft}, {1, 0, METATILE_Pacifidlog_HalfSubmergedLogs_HorizontalRight},
-    {-1,  0, METATILE_Pacifidlog_HalfSubmergedLogs_HorizontalLeft}, {0, 0, METATILE_Pacifidlog_HalfSubmergedLogs_HorizontalRight}
-};
-
-static const struct PacifidlogMetatileOffsets sFullySubmergedBridgeMetatileOffsets[] =
-{
-    { 0,  0, METATILE_Pacifidlog_SubmergedLogs_VerticalTop}, {0, 1, METATILE_Pacifidlog_SubmergedLogs_VerticalBottom},
-    { 0, -1, METATILE_Pacifidlog_SubmergedLogs_VerticalTop}, {0, 0, METATILE_Pacifidlog_SubmergedLogs_VerticalBottom},
-    { 0,  0, METATILE_Pacifidlog_SubmergedLogs_HorizontalLeft}, {1, 0, METATILE_Pacifidlog_SubmergedLogs_HorizontalRight},
-    {-1,  0, METATILE_Pacifidlog_SubmergedLogs_HorizontalLeft}, {0, 0, METATILE_Pacifidlog_SubmergedLogs_HorizontalRight}
-};
-
-static const struct PacifidlogMetatileOffsets sFloatingBridgeMetatileOffsets[] =
-{
-    { 0,  0, METATILE_Pacifidlog_FloatingLogs_VerticalTop}, {0, 1, METATILE_Pacifidlog_FloatingLogs_VerticalBottom},
-    { 0, -1, METATILE_Pacifidlog_FloatingLogs_VerticalTop}, {0, 0, METATILE_Pacifidlog_FloatingLogs_VerticalBottom},
-    { 0,  0, METATILE_Pacifidlog_FloatingLogs_HorizontalLeft}, {1, 0, METATILE_Pacifidlog_FloatingLogs_HorizontalRight},
-    {-1,  0, METATILE_Pacifidlog_FloatingLogs_HorizontalLeft}, {0, 0, METATILE_Pacifidlog_FloatingLogs_HorizontalRight}
+    [STEP_CB_DUMMY]              = DummyPerStepCallback,
+    [STEP_CB_ASH]                = AshGrassPerStepCallback,
+    [STEP_CB_FORTREE_BRIDGE]     = FortreeBridgePerStepCallback,
+    [STEP_CB_PACIFIDLOG_BRIDGE]  = PacifidlogBridgePerStepCallback, //3
+    [STEP_CB_SOOTOPOLIS_ICE]     = SootopolisGymIcePerStepCallback,
+    [STEP_CB_TRUCK]              = EndTruckSequence,
+    [STEP_CB_SECRET_BASE]        = SecretBasePerStepCallback,
+    [STEP_CB_CRACKED_FLOOR]      = CrackedFloorPerStepCallback,
+    [STEP_CB_WATER_TEMPLE]       = WaterTemplePerStepCallback, //8
+    [STEP_CB_NPC_TRIGGER]        = MonitorEventObjectTriggersStepCallback,
+    [STEP_CB_HIDDEN_WALLS]       = HiddenMaze_PulseWallTiles,
+    [STEP_CB_CYCLE_TEXT_PAL]     = TrickHouse_CycleTextPalette,
+    [STEP_CB_NPC_MULTI_TRIGGER]  = MonitorMultiEventObjectTriggersStepCallback, //12
 };
 
 // Each element corresponds to a y coordinate row in the sootopolis gym 1F map.
@@ -130,6 +114,12 @@ static const u16 sSootopolisGymIceRowVars[] =
     0
 };
 
+static const u16 sMuddySlopeMetatiles[] = {
+    METATILE_ID(General, MuddySlope_Frame0),
+    METATILE_ID(General, MuddySlope_Frame3),
+    METATILE_ID(General, MuddySlope_Frame2),
+    METATILE_ID(General, MuddySlope_Frame1)
+};
 #define tCallbackId data[0]
 
 static void Task_RunPerStepCallback(u8 taskId)
@@ -233,6 +223,36 @@ static void DummyPerStepCallback(u8 taskId)
 {
 
 }
+
+//-----------------------------------------------------------------------------
+// Each array has 4 pairs of data, each pair representing two metatiles of a log and their relative position.
+// The 4 pairs are for:
+// 0: If the player is standing on the top of a vertical log
+// 1: If the player is standing on the bottom of a vertical log
+// 2: If the player is standing on the left of a horizontal log
+// 3: If the player is standing on the right of a horizontal log
+// i.e. the element with an offset of 0,0 is the one the player is standing on.
+static const struct PacifidlogMetatileOffsets sHalfSubmergedBridgeMetatileOffsets[] =
+{
+    { 0,  0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Vertical0)}, {0, 1, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Vertical1)},
+    { 0, -1, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Vertical0)}, {0, 0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Vertical1)},
+    { 0,  0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Horizontal0)}, {1, 0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Horizontal1)},
+    {-1,  0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Horizontal0)}, {0, 0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Horizontal1)}
+};
+static const struct PacifidlogMetatileOffsets sFullySubmergedBridgeMetatileOffsets[] =
+{
+    { 0,  0, METATILE_ID(Pacifidlog, SubmergedLogs_Vertical0)}, {0, 1, METATILE_ID(Pacifidlog, SubmergedLogs_Vertical1)},
+    { 0, -1, METATILE_ID(Pacifidlog, SubmergedLogs_Vertical0)}, {0, 0, METATILE_ID(Pacifidlog, SubmergedLogs_Vertical1)},
+    { 0,  0, METATILE_ID(Pacifidlog, SubmergedLogs_Horizontal0)}, {1, 0, METATILE_ID(Pacifidlog, SubmergedLogs_Horizontal1)},
+    {-1,  0, METATILE_ID(Pacifidlog, SubmergedLogs_Horizontal0)}, {0, 0, METATILE_ID(Pacifidlog, SubmergedLogs_Horizontal1)}
+};
+static const struct PacifidlogMetatileOffsets sFloatingBridgeMetatileOffsets[] =
+{
+    { 0,  0, METATILE_ID(Pacifidlog, FloatingLogs_Vertical0)}, {0, 1, METATILE_ID(Pacifidlog, FloatingLogs_Vertical1)},
+    { 0, -1, METATILE_ID(Pacifidlog, FloatingLogs_Vertical0)}, {0, 0, METATILE_ID(Pacifidlog, FloatingLogs_Vertical1)},
+    { 0,  0, METATILE_ID(Pacifidlog, FloatingLogs_Horizontal0)}, {1, 0, METATILE_ID(Pacifidlog, FloatingLogs_Horizontal1)},
+    {-1,  0, METATILE_ID(Pacifidlog, FloatingLogs_Horizontal0)}, {0, 0, METATILE_ID(Pacifidlog, FloatingLogs_Horizontal1)}
+};
 
 static const struct PacifidlogMetatileOffsets *GetPacifidlogBridgeMetatileOffsets(const struct PacifidlogMetatileOffsets *offsets, u16 metatileBehavior)
 {
@@ -436,6 +456,246 @@ static void PacifidlogBridgePerStepCallback(u8 taskId)
     }
 }
 
+
+//-----------------------------------------------------------------------------
+// they are in pairs but declared as 1D array
+static const struct PacifidlogMetatileOffsets sHalfSubmergedTempleLogsMetatileOffsets[] =
+{
+    { 0,  0, METATILE_ID(WaterfallCave, HalfSubmergedLogs_Vertical0)}, {0, 1, METATILE_ID(WaterfallCave, HalfSubmergedLogs_Vertical1)},
+    { 0, -1, METATILE_ID(WaterfallCave, HalfSubmergedLogs_Vertical0)}, {0, 0, METATILE_ID(WaterfallCave, HalfSubmergedLogs_Vertical1)},
+    { 0,  0, METATILE_ID(WaterfallCave, HalfSubmergedLogs_Horizontal0)}, {1, 0, METATILE_ID(WaterfallCave, HalfSubmergedLogs_Horizontal1)},
+    {-1,  0, METATILE_ID(WaterfallCave, HalfSubmergedLogs_Horizontal0)}, {0, 0, METATILE_ID(WaterfallCave, HalfSubmergedLogs_Horizontal1)}
+};
+static const struct PacifidlogMetatileOffsets sFullySubmergedTempleLogsMetatileOffsets[] =
+{
+    { 0,  0, METATILE_ID(WaterfallCave, SubmergedLogs_Vertical0)}, {0, 1, METATILE_ID(WaterfallCave, SubmergedLogs_Vertical1)},
+    { 0, -1, METATILE_ID(WaterfallCave, SubmergedLogs_Vertical0)}, {0, 0, METATILE_ID(WaterfallCave, SubmergedLogs_Vertical1)},
+    { 0,  0, METATILE_ID(WaterfallCave, SubmergedLogs_Horizontal0)}, {1, 0, METATILE_ID(WaterfallCave, SubmergedLogs_Horizontal1)},
+    {-1,  0, METATILE_ID(WaterfallCave, SubmergedLogs_Horizontal0)}, {0, 0, METATILE_ID(WaterfallCave, SubmergedLogs_Horizontal1)}
+};
+static const struct PacifidlogMetatileOffsets sFloatingTempleLogsMetatileOffsets[] =
+{
+    { 0,  0, METATILE_ID(WaterfallCave, FloatingLogs_Vertical0)}, {0, 1, METATILE_ID(WaterfallCave, FloatingLogs_Vertical1)},
+    { 0, -1, METATILE_ID(WaterfallCave, FloatingLogs_Vertical0)}, {0, 0, METATILE_ID(WaterfallCave, FloatingLogs_Vertical1)},
+    { 0,  0, METATILE_ID(WaterfallCave, FloatingLogs_Horizontal0)}, {1, 0, METATILE_ID(WaterfallCave, FloatingLogs_Horizontal1)},
+    {-1,  0, METATILE_ID(WaterfallCave, FloatingLogs_Horizontal0)}, {0, 0, METATILE_ID(WaterfallCave, FloatingLogs_Horizontal1)}
+};
+
+static const struct PacifidlogMetatileOffsets *GetPacifidlogTempleLogsMetatileOffsets(const struct PacifidlogMetatileOffsets *offsets, u16 metatileBehavior)
+{
+    if (MetatileBehavior_IsPacifilogVerticalLog1(metatileBehavior))
+        return &offsets[0 * 2];
+    else if (MetatileBehavior_IsPacifilogVerticalLog2(metatileBehavior))
+        return &offsets[1 * 2];
+    else if (MetatileBehavior_IsPacifilogHorizontalLog1(metatileBehavior))
+        return &offsets[2 * 2];
+    else if (MetatileBehavior_IsPacifilogHorizontalLog2(metatileBehavior))
+        return &offsets[3 * 2];
+    else
+        return NULL;
+}
+
+static void SetPacifidlogTempleLogsMetatiles(const struct PacifidlogMetatileOffsets *offsets, s16 x, s16 y, bool32 redrawMap)
+{
+    offsets = GetPacifidlogTempleLogsMetatileOffsets(offsets, MapGridGetMetatileBehaviorAt(x, y));
+    if (offsets)
+    {
+        MapGridSetMetatileIdAt(x + offsets[0].x, y + offsets[0].y, offsets[0].tileId);
+        if (redrawMap)
+            CurrentMapDrawMetatileAt(x + offsets[0].x, y + offsets[0].y);
+
+        MapGridSetMetatileIdAt(x + offsets[1].x, y + offsets[1].y, offsets[1].tileId);
+        if (redrawMap)
+            CurrentMapDrawMetatileAt(x + offsets[1].x, y + offsets[1].y);
+    }
+}
+
+static void UpdateHalfSubmergedTempleLogsMetatiles(s16 x, s16 y, bool32 redrawMap)
+{
+    SetPacifidlogTempleLogsMetatiles(sHalfSubmergedTempleLogsMetatileOffsets, x, y, redrawMap);
+}
+
+static void UpdateFullySubmergedTempleLogsMetatiles(s16 x, s16 y, bool32 redrawMap)
+{
+    SetPacifidlogTempleLogsMetatiles(sFullySubmergedTempleLogsMetatileOffsets, x, y, redrawMap);
+}
+
+static void UpdateFloatingTempleLogsMetatiles(s16 x, s16 y, bool32 redrawMap)
+{
+    SetPacifidlogTempleLogsMetatiles(sFloatingTempleLogsMetatileOffsets, x, y, redrawMap);
+}
+
+static bool32 StandingOnNewPacifidlogTempleLogs(s16 x1, s16 y1, s16 x2, s16 y2)
+{
+    u16 metatileBehavior = MapGridGetMetatileBehaviorAt(x2, y2);
+
+    if (MetatileBehavior_IsPacifilogVerticalLog1(metatileBehavior))
+    {
+        if (y1 > y2)
+            return FALSE;
+    }
+    else if (MetatileBehavior_IsPacifilogVerticalLog2(metatileBehavior))
+    {
+        if (y1 < y2)
+            return FALSE;
+    }
+    else if (MetatileBehavior_IsPacifilogHorizontalLog1(metatileBehavior))
+    {
+        if (x1 > x2)
+            return FALSE;
+    }
+    else if (MetatileBehavior_IsPacifilogHorizontalLog2(metatileBehavior))
+    {
+        if (x1 < x2)
+            return FALSE;
+    }
+    return TRUE;
+}
+
+static bool32 StandingOnSamePacifidlogTempleLogs(s16 x1, s16 y1, s16 x2, s16 y2)
+{
+    u16 metatileBehavior = MapGridGetMetatileBehaviorAt(x1, y1);
+
+    if (MetatileBehavior_IsPacifilogVerticalLog1(metatileBehavior))
+    {
+        if (y1 < y2)
+            return FALSE;
+    }
+    else if (MetatileBehavior_IsPacifilogVerticalLog2(metatileBehavior))
+    {
+        if (y1 > y2)
+            return FALSE;
+    }
+    else if (MetatileBehavior_IsPacifilogHorizontalLog1(metatileBehavior))
+    {
+        if (x1 < x2)
+            return FALSE;
+    }
+    else if (MetatileBehavior_IsPacifilogHorizontalLog2(metatileBehavior))
+    {
+        if (x1 > x2)
+            return FALSE;
+    }
+    return TRUE;
+}
+
+#define state data[1]
+#define prevX data[2]
+#define prevY data[3]
+#define storedX data[4]
+#define storedY data[5]
+#define delay data[6]
+#define prevJump data[7]
+
+static void WaterTemplePerStepCallback(u8 taskId)
+{
+    s16 *data;
+    s16 x, y;
+    data = gTasks[taskId].data;
+    PlayerGetDestCoords(&x, &y);
+    switch (state)
+    {
+        case 0: //Init case
+            prevX = x;
+            prevY = y;
+            prevJump = FALSE;
+            UpdateFullySubmergedTempleLogsMetatiles(x, y, TRUE);
+            state = 1;
+            break;
+        case 1: //Usual case
+            if (IsPlayerJumping())
+            {
+                if (prevJump != IsPlayerJumping())
+                {
+                    // Set the previous logs half out of water (prevX/Y), redraw now
+                    UpdateHalfSubmergedTempleLogsMetatiles(prevX, prevY, TRUE);
+                    // Store out of the water location for later use
+                    storedX = prevX;
+                    storedY = prevY;
+                    // Go to delay case
+                    state = 2;
+                    delay = 8;
+                    
+                    prevJump = IsPlayerJumping();
+                    prevX = -1;
+                    prevY = -1;
+                }
+                else
+                {
+                    // Clear last out of water location
+                    storedX = -1;
+                    storedY = -1;
+                }
+            }
+            else if (x != prevX || y != prevY)
+            {
+                // If the player has switched logs (currX, currY, prevX, prevY)
+                if (StandingOnNewPacifidlogTempleLogs(x, y, prevX, prevY))
+                {
+                    // Set the previous logs half out of water (prevX/Y), redraw now
+                    UpdateHalfSubmergedTempleLogsMetatiles(prevX, prevY, TRUE);
+                    // Set the previous logs out of water (prevX/Y), don't redraw
+                    UpdateFloatingTempleLogsMetatiles(prevX, prevY, FALSE);
+                    // Store out of the water location for later use
+                    storedX = prevX;
+                    storedY = prevY;
+                    // Go to delay case
+                    state = 2;
+                    delay = 8;
+                }
+                else
+                {
+                    // Clear last out of water location
+                    storedX = -1;
+                    storedY = -1;
+                }
+                
+                // If the player is standing on the same logs as before
+                if (StandingOnSamePacifidlogTempleLogs(x, y, prevX, prevY))
+                {
+                    // Start submerging current location (currX/Y)
+                    UpdateHalfSubmergedTempleLogsMetatiles(x, y, TRUE);
+                    // Go to delay case
+                    state = 2;
+                    delay = 8;
+                }
+                
+                // Store currX/Y to prevX/Y
+                prevJump = IsPlayerJumping();
+                prevX = x;
+                prevY = y;
+                // Make sound
+                if (MetatileBehavior_IsPacifidlogLog(MapGridGetMetatileBehaviorAt(x, y)) && !IsPlayerJumping())
+                    PlaySE(SE_MIZU);
+            }
+            break;
+        case 2: //Delay case
+            // Once the delay runs out
+            if ((--delay) == 0)
+            {
+                // Draw current location fully submerged
+                UpdateFullySubmergedTempleLogsMetatiles(x, y, TRUE);
+                // If there was a stored previous location
+                if (storedX != -1 && storedY != -1)
+                    // Draw it fully out of water
+                    UpdateFloatingTempleLogsMetatiles(storedX, storedY, TRUE);
+                // Back to usual case
+                state = 1;
+            }
+            break;
+    }
+}
+
+#undef state
+#undef prevX
+#undef prevY
+#undef storedX
+#undef storedY
+#undef delay
+#undef prevJump
+
+//-----------------------------------------------------------------------------
+
 #undef tState
 #undef tPrevX
 #undef tPrevY
@@ -586,49 +846,77 @@ static void FortreeBridgePerStepCallback(u8 taskId)
     }
 }
 
-#undef tState
-#undef tPrevX
-#undef tPrevY
-#undef tOldBridgeX
-#undef tOldBridgeY
-#undef tBounceTime
+//-----------------------------------------------------------------------------
 
-// Boundaries of the ice puzzle in Sootopolis Gym
-#define ICE_PUZZLE_L 3
-#define ICE_PUZZLE_R 13
-#define ICE_PUZZLE_T 6
-#define ICE_PUZZLE_B 19
+#define state      data[1]
+#define prevX      data[2]
+#define prevY      data[3]
+#define crackedX   data[4]
+#define crackedY   data[5]
+#define delayTimer data[6]
 
-#define ICE_PUZZLE_WIDTH  (ICE_PUZZLE_R - ICE_PUZZLE_L + 1)
-#define ICE_PUZZLE_HEIGHT (ICE_PUZZLE_B - ICE_PUZZLE_T + 1)
+#define rectX      data[10]
+#define rectY      data[11]
+#define rectW      data[12]
+#define rectH      data[13]
 
-static bool32 CoordInIcePuzzleRegion(s16 x, s16 y)
+static bool32 CoordInIcePuzzleRegion(s16 *data, s16 x, s16 y);
+
+void SetSootopolisGymCrackedIceConfig(struct ScriptContext *ctx)
 {
-    if ((u16)(x - ICE_PUZZLE_L) < ICE_PUZZLE_WIDTH
-     && (u16)(y - ICE_PUZZLE_T) < ICE_PUZZLE_HEIGHT
-     && sSootopolisGymIceRowVars[y])
-        return TRUE;
-    else
-        return FALSE;
+    u8 taskId = FindTaskIdByFunc(Task_RunPerStepCallback);
+    s16 *data = gTasks[taskId].data;
+    
+    if (taskId == 0xff || data[0] != STEP_CB_SOOTOPOLIS_ICE) return; //can't do anything if cracked ice is not set
+    rectX = ctx->data[0];
+    rectY = ctx->data[1];
+    rectW = ctx->data[2];
+    rectH = ctx->data[3];
 }
 
-static void MarkIcePuzzleCoordVisited(s16 x, s16 y)
-{
-    if (CoordInIcePuzzleRegion(x, y))
-        *GetVarPointer(sSootopolisGymIceRowVars[y]) |= (1 << (x - ICE_PUZZLE_L));
+void SetSootopolisGymCrackedIceMetatilesRegion(s16 *data, s16 dx, s16 dy) {
+    s32 x, y;
+    s32 width = gMapHeader.mapLayout->width;
+    s32 height = gMapHeader.mapLayout->height;
+    
+    for (x = 0; x < width; x++)
+    {
+        for (y = 0; y < height; y++)
+        {
+            if (CoordInIcePuzzleRegion(data, x, y) == TRUE)
+                MapGridSetMetatileIdAt(x + 7, y + 7, 0x202);//METATILE_ID(SootopolisGym, Ice_Cracked));
+        }
+    }
+    MapGridSetMetatileIdAt(dx + 7, dy + 7, 0x201);
+    DrawWholeMapView();
 }
 
-static bool32 IsIcePuzzleCoordVisited(s16 x, s16 y)
+static bool32 CoordInIcePuzzleRegion(s16 *data, s16 x, s16 y)
 {
-    u16 var;
-    if (!CoordInIcePuzzleRegion(x, y))
-        return FALSE;
+    // if ((u16)(x - 3) < 11 && (u16)(y - 6) < 14 && sSootopolisGymIceRowVars[y])
+    //     return TRUE;
+    // else
+    //     return FALSE;
+    if (rectW == 0 || rectH == 0) return FALSE;
+    if (x < rectX || x >= rectX + rectW) return FALSE;
+    if (y < rectY || y >= rectY + rectH) return FALSE;
+    return TRUE;
+}
 
-    var = VarGet(sSootopolisGymIceRowVars[y]);
-    if (var &= (1 << (x - ICE_PUZZLE_L)))
-        return TRUE;
-    else
-        return FALSE;
+static void MarkIcePuzzleCoordVisited(s16 *data, s16 x, s16 y)
+{
+    if (!CoordInIcePuzzleRegion(data, x, y)) return;
+        // *GetVarPointer(sSootopolisGymIceRowVars[y]) |= (1 << (x - 3));
+    *GetVarPointer(VAR_TEMP_0 + (y - rectY)) |= (1 << ( x - rectX ));
+}
+
+static bool32 IsIcePuzzleCoordVisited(s16 *data, s16 x, s16 y)
+{
+    u32 var;
+    if (!CoordInIcePuzzleRegion(data, x, y)) return FALSE;
+    var = VarGet(VAR_TEMP_0 + (y - rectY));
+    
+    return (var & (1 << ( x - rectX ))) != 0;
 }
 
 void SetSootopolisGymCrackedIceMetatiles(void)
@@ -636,108 +924,123 @@ void SetSootopolisGymCrackedIceMetatiles(void)
     s32 x, y;
     s32 width = gMapHeader.mapLayout->width;
     s32 height = gMapHeader.mapLayout->height;
+    u8 taskId = FindTaskIdByFunc(Task_RunPerStepCallback);
+    s16 *data = gTasks[taskId].data;
+    
+    if (taskId == 0xff || data[0] != STEP_CB_SOOTOPOLIS_ICE) return; //can't do anything if cracked ice is not set
+    if (rectW == 0 || rectY == 0) return; //can't do anything without config info
+    
     for (x = 0; x < width; x++)
     {
         for (y = 0; y < height; y++)
         {
-            if (IsIcePuzzleCoordVisited(x, y) == TRUE)
+            if (IsIcePuzzleCoordVisited(data, x, y) == TRUE)
                 MapGridSetMetatileIdAt(x + MAP_OFFSET, y + MAP_OFFSET, METATILE_SootopolisGym_Ice_Cracked);
         }
     }
 }
 
-#define tState data[1]
-#define tPrevX data[2]
-#define tPrevY data[3]
-#define tIceX  data[4]
-#define tIceY  data[5]
-#define tDelay data[6]
-
 static void SootopolisGymIcePerStepCallback(u8 taskId)
 {
-    s16 x, y;
+    s16 x, y; // Note: this X/Y is already offset by view distance
     u16 tileBehavior;
     u16 *iceStepCount;
     s16 *data = gTasks[taskId].data;
-    switch (tState)
+    
+    switch (state)
     {
-    case 0:
-        PlayerGetDestCoords(&x, &y);
-        tPrevX = x;
-        tPrevY = y;
-        tState = 1;
-        break;
-    case 1:
-        PlayerGetDestCoords(&x, &y);
-        // End if player hasn't moved
-        if (x == tPrevX && y == tPrevY)
-            return;
-        
-        tPrevX = x;
-        tPrevY = y;
-        tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
-        iceStepCount = GetVarPointer(VAR_ICE_STEP_COUNT);
-        if (MetatileBehavior_IsThinIce(tileBehavior) == TRUE)
-        {
-            // Thin ice, set it to cracked ice
-            (*iceStepCount)++;
-            tDelay = 4;
-            tState = 2;
-            tIceX = x;
-            tIceY = y;
-        }
-        else if (MetatileBehavior_IsCrackedIce(tileBehavior) == TRUE)
-        {
-            // Cracked ice, set it to broken ice
-            *iceStepCount = 0;
-            tDelay = 4;
-            tState = 3;
-            tIceX = x;
-            tIceY = y;
-        }
-        break;
-    case 2:
-        if (tDelay != 0)
-        {
-            tDelay--;
-        }
-        else
-        {
-            // Crack ice
-            x = tIceX;
-            y = tIceY;
-            PlaySE(SE_ICE_CRACK);
-            MapGridSetMetatileIdAt(x, y, METATILE_SootopolisGym_Ice_Cracked);
-            CurrentMapDrawMetatileAt(x, y);
-            MarkIcePuzzleCoordVisited(x - MAP_OFFSET, y - MAP_OFFSET);
-            tState = 1;
-        }
-        break;
-    case 3:
-        if (tDelay != 0)
-        {
-            tDelay--;
-        }
-        else
-        {
-            // Break ice
-            x = tIceX;
-            y = tIceY;
-            PlaySE(SE_ICE_BREAK);
-            MapGridSetMetatileIdAt(x, y, METATILE_SootopolisGym_Ice_Broken);
-            CurrentMapDrawMetatileAt(x, y);
-            tState = 1;
-        }
-        break;
+        case 0:
+            PlayerGetDestCoords(&x, &y);
+            prevX = x;
+            prevY = y;
+            state = 1;
+            break;
+        case 1:
+            PlayerGetDestCoords(&x, &y);
+            // Return if player hasn't moved
+            if (x == prevX && y == prevY) return;
+            
+            prevX = x;
+            prevY = y;
+            tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
+            iceStepCount = GetVarPointer(VAR_STEP_TRIGGER);
+            if (MetatileBehavior_IsThinIce(tileBehavior) == TRUE)// && CoordInIcePuzzleRegion(data, x, y) == TRUE)
+            {
+                // Thin ice, set it to cracked ice
+                if (CoordInIcePuzzleRegion(data, x - 7, y - 7) == TRUE)
+                {
+                    (*iceStepCount)++;
+                    // ConvertIntToDecimalStringN(gStringVar4, *iceStepCount, 0, 3);
+                    // AddTextPrinterWithCustomSpeedForMessage(FALSE, 0xFF);
+                }
+                else
+                {
+                    MapGridSetMetatileIdAt(x, y, 0); // put down obviously bad tile to show the ice step doesn't count
+                    CurrentMapDrawMetatileAt(x, y);
+                }
+                delayTimer = 4;
+                state = 2;
+                crackedX = x;
+                crackedY = y;
+            }
+            else if (MetatileBehavior_IsCrackedIce(tileBehavior) == TRUE)
+            {
+                // Cracked ice, set it to broken ice
+                *iceStepCount = 0;
+                delayTimer = 4;
+                state = 3;
+                crackedX = x;
+                crackedY = y;
+            }
+            break;
+        case 2:
+            if (delayTimer != 0)
+            {
+                delayTimer--;
+            }
+            else
+            {
+                // Crack ice
+                x = crackedX;
+                y = crackedY;
+                PlaySE(SE_ICE_CRACK);
+                MapGridSetMetatileIdAt(x, y, METATILE_ID(SootopolisGym, Ice_Cracked));
+                CurrentMapDrawMetatileAt(x, y);
+                MarkIcePuzzleCoordVisited(data, x - 7, y - 7);
+                state = 1;
+            }
+            break;
+        case 3:
+            if (delayTimer != 0)
+            {
+                delayTimer--;
+            }
+            else
+            {
+                // Break ice
+                x = crackedX;
+                y = crackedY;
+                PlaySE(SE_ICE_BREAK);
+                MapGridSetMetatileIdAt(x, y, METATILE_ID(SootopolisGym, Ice_Broken));
+                CurrentMapDrawMetatileAt(x, y);
+                state = 1;
+            }
+            break;
     }
 }
 
-#undef tState
-#undef tPrevX
-#undef tPrevY
-#undef tIceX
-#undef tIceY
-#undef tDelay
+#undef state
+#undef prevX
+#undef prevY
+#undef crackedX
+#undef crackedY
+#undef delayTimer
+#undef rectX
+#undef rectY
+#undef rectW
+#undef rectH
+
+//-----------------------------------------------------------------------------
 
 #define tPrevX data[1]
 #define tPrevY data[2]
@@ -786,6 +1089,8 @@ static void SetCrackedFloorHoleMetatile(s16 x, s16 y)
     CurrentMapDrawMetatileAt(x, y);
 }
 
+//-----------------------------------------------------------------------------
+
 #define tPrevX       data[2]
 #define tPrevY       data[3]
 #define tFloor1Delay data[4]
@@ -810,7 +1115,7 @@ static void CrackedFloorPerStepCallback(u8 taskId)
         SetCrackedFloorHoleMetatile(tFloor2X, tFloor2Y);
 
     if (MetatileBehavior_IsCrackedFloorHole(behavior))
-        VarSet(VAR_ICE_STEP_COUNT, 0); // this var does double duty
+        VarSet(VAR_STEP_TRIGGER, 0); // this var does double duty
 
     // End if player hasn't moved
     if (x == tPrevX && y == tPrevY)
@@ -821,7 +1126,7 @@ static void CrackedFloorPerStepCallback(u8 taskId)
     if (MetatileBehavior_IsCrackedFloor(behavior))
     {
         if (GetPlayerSpeed() != PLAYER_SPEED_FASTEST)
-            VarSet(VAR_ICE_STEP_COUNT, 0); // this var does double duty
+            VarSet(VAR_STEP_TRIGGER, 0); // this var does double duty
 
         if (tFloor1Delay == 0)
         {
@@ -847,13 +1152,15 @@ static void CrackedFloorPerStepCallback(u8 taskId)
 #undef tFloor2X
 #undef tFloor2Y
 
+//-----------------------------------------------------------------------------
+
 #define tMapId data[0]
 #define tState data[1]
 #define tPrevX data[2]
 #define tPrevY data[3]
 // data[4] - data[15] are data about up to 4 individual animating muddy slope metatiles
 // They're divided into groups of 3, i.e data[4]-[6] track one metatile, data[7]-[9] another, and so on.
-// For each data triplet, the 1sst is the animation time, and the 2nd/3rd are the x/y coordinates.
+// For each data triplet, the 1st is the animation time, and the 2nd/3rd are the x/y coordinates.
 #define SLOPE_DATA_START 4
 #define SLOPE_DATA_END  (3 * SLOPE_DATA_SIZE + SLOPE_DATA_START) // 13, which is the last slope data start point
 enum {
@@ -952,3 +1259,146 @@ static void Task_MuddySlope(u8 taskId)
         }
     }
 }
+
+//-----------------------------------------------------------------------------
+
+#define tPosX data[1]
+#define tPosY data[2]
+#define tRunningVar data[3]
+#define tRunningIndex data[4]
+
+static void MonitorEventObjectTriggersStepCallback(u8 taskId)
+{
+    s16 x, y, o, t;
+    bool8 standing;
+    struct EventObject *eventObject = NULL;
+    struct CoordEvent *coordEvent = NULL;
+    s16 *data = gTasks[taskId].data;
+    PlayerGetDestCoords(&x, &y);
+    
+    
+    // If the var is still set like we set it, the expected frame table script hasn't completed yet
+    // so don't continue checking.
+    if (tRunningVar != 0) {
+        if (VarGet(tRunningVar) == tRunningIndex) return;
+        // If the var isn't the same, the frame table script has cleared it, we can continue
+        tRunningVar = 0;
+        tRunningIndex = 0;
+    }
+    // Don't recheck if the the player hasn't moved
+    if (gPlayerAvatar.preventStep) tPosX = -1;
+    if (tPosX == x && tPosY == y) return;
+    
+    // For every event object
+    for (o = 0; o < EVENT_OBJECTS_COUNT; o++) {
+        eventObject = &gEventObjects[o];
+        if (eventObject->isPlayer) continue;
+        if (!eventObject->active) continue;
+        if (eventObject->heldMovementActive) return; //continue;
+        
+        // Clear the standing flag, but store its current value in case it needs to be put back
+        standing = eventObject->isStandingOnTrigger;
+        eventObject->isStandingOnTrigger = FALSE;
+        
+        // For every trigger on the map
+        for (t = 0; t < gMapHeader.events->coordEventCount; t++) {
+            coordEvent = &gMapHeader.events->coordEvents[t];
+            if (!coordEvent->npcTrigger) continue;
+            if (eventObject->currentCoords.x != coordEvent->x + 7) continue;
+            if (eventObject->currentCoords.y != coordEvent->y + 7) continue;
+            
+            if (!standing) {
+                // If this event wasn't standing on a trigger before, trigger it now
+                tRunningVar = coordEvent->trigger;
+                tRunningIndex = coordEvent->index;
+                VarSet(tRunningVar, tRunningIndex);
+                // If we got down here, we need to set the flag again
+                eventObject->isStandingOnTrigger = TRUE;
+                return;
+            }
+            eventObject->isStandingOnTrigger = standing;
+        }
+    }
+    tPosX = x;
+    tPosY = y;
+}
+
+#undef tPosX
+#undef tPosY
+#undef tRunningVar
+#undef tRunningIndex
+
+void TrickHouse_CycleTextPalette(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    u16 c1, c2, c3;
+    
+    data[1]++;
+    if (data[1] < 20) return;
+    data[1] = 0;
+    
+    c1 = gPlttBufferFaded[244];
+    c2 = gPlttBufferFaded[246];
+    c3 = gPlttBufferFaded[248];
+    
+    gPlttBufferFaded[244] = c3;
+    gPlttBufferFaded[246] = c1;
+    gPlttBufferFaded[248] = c2;
+}
+
+//-----------------------------------------------------------------------------
+
+#define tPosX data[1]
+#define tPosY data[2]
+
+// The difference between this callback and the previous one
+// is that this one can handle multiple objects stepping on triggers
+// at the same time.
+static void MonitorMultiEventObjectTriggersStepCallback(u8 taskId)
+{
+    s16 x, y, o, t;
+    bool8 standing;
+    struct EventObject *eventObject = NULL;
+    struct CoordEvent *coordEvent = NULL;
+    s16 *data = gTasks[taskId].data;
+    PlayerGetDestCoords(&x, &y);
+    
+    // If the var is still set like we set it, the expected frame table script hasn't completed yet
+    // so don't continue checking.
+    if (VarGet(VAR_STEP_TRIGGER) != 0) return;
+    
+    // For every event object
+    for (o = 0; o < EVENT_OBJECTS_COUNT; o++) {
+        eventObject = &gEventObjects[o];
+        if (eventObject->isPlayer) continue;
+        if (!eventObject->active) continue;
+        if (eventObject->heldMovementActive || eventObject->singleMovementActive) continue;
+        
+        // Clear the standing flag, but store its current value in case it needs to be put back
+        standing = eventObject->isStandingOnTrigger;
+        eventObject->isStandingOnTrigger = FALSE;
+        
+        // For every trigger on the map
+        for (t = 0; t < gMapHeader.events->coordEventCount; t++) {
+            coordEvent = &gMapHeader.events->coordEvents[t];
+            if (!coordEvent->npcTrigger) continue;
+            if (eventObject->currentCoords.x != coordEvent->x + 7) continue;
+            if (eventObject->currentCoords.y != coordEvent->y + 7) continue;
+            
+            if (!standing) {
+                // If this event wasn't standing on a trigger before, trigger it now
+                VarSet(VAR_STEP_TRIGGER, 1);
+            }
+            eventObject->isStandingOnTrigger = TRUE;
+            break;
+        }
+    }
+    tPosX = x;
+    tPosY = y;
+}
+
+#undef tPosX
+#undef tPosY
+#undef tRunningVar
+#undef tRunningIndex
+

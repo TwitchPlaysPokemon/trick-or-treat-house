@@ -98,7 +98,7 @@ void FadeInFromBlack(void)
     FadeScreen(FADE_FROM_BLACK, 0);
 }
 
-void WarpFadeOutScreen(void)
+void WarpFadeOutOutScreen(void)
 {
     u8 currentMapType = GetCurrentMapType();
     switch (GetMapPairFadeToType(currentMapType, GetDestinationWarpMapHeader()->mapType))
@@ -260,13 +260,29 @@ static void SetUpWarpExitTask(void)
     TaskFunc func;
 
     PlayerGetDestCoords(&x, &y);
-    behavior = MapGridGetMetatileBehaviorAt(x, y);
-    if (MetatileBehavior_IsDoor(behavior) == TRUE)
-        func = Task_ExitDoor;
-    else if (MetatileBehavior_IsNonAnimDoor(behavior) == TRUE)
-        func = Task_ExitNonAnimDoor;
+    if ((behavior = GetNonPlayerObjectEventIdByXY(x, y)) < EVENT_OBJECTS_COUNT)
+    {   // For exiting from trick door objects
+        const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(gObjectEvents[behavior].graphicsId);
+        if (graphicsInfo != NULL)
+        {
+            if (graphicsInfo->doorOffsetType == DOOROFFSET_DOWN)
+                func = Task_ExitDoor;
+            else
+                func = Task_ExitNonDoor;
+        }
+        else
+            func = Task_ExitNonDoor;
+    }
     else
-        func = Task_ExitNonDoor;
+    {
+        behavior = MapGridGetMetatileBehaviorAt(x, y);
+        if (MetatileBehavior_IsDoor(behavior) == TRUE)
+            func = Task_ExitDoor;
+        else if (MetatileBehavior_IsNonAnimDoor(behavior) == TRUE)
+            func = Task_ExitNonAnimDoor;
+        else
+            func = Task_ExitNonDoor;
+    }
     CreateTask(func, 10);
 }
 
@@ -481,11 +497,18 @@ static bool32 WaitForWeatherFadeIn(void)
         return FALSE;
 }
 
+static void CheckKeepObjects() {
+    if (!FlagGet(FLAG_SYS_KEEP_OBJECTS_WITHIN_MAP)) return;
+    if (!IsWarpingToSameMap()) return;
+    SetObjectEventLoadFlag(SKIP_OBJECT_EVENT_LOAD);
+}
+
 void DoWarp(void)
 {
+    CheckKeepObjects();
     LockPlayerFieldControls();
     TryFadeOutOldMapMusic();
-    WarpFadeOutScreen();
+    WarpFadeOutOutScreen();
     PlayRainStoppingSoundEffect();
     PlaySE(SE_EXIT);
     gFieldCallback = FieldCB_DefaultWarpExit;
@@ -497,6 +520,16 @@ void DoDiveWarp(void)
     LockPlayerFieldControls();
     TryFadeOutOldMapMusic();
     WarpFadeOutScreen();
+    PlayRainStoppingSoundEffect();
+    gFieldCallback = FieldCB_DefaultWarpExit;
+    CreateTask(Task_WarpAndLoadMap, 10);
+}
+
+void DoCustomWarp(void)
+{
+    CheckKeepObjects();
+    ScriptContext2_Enable();
+    // TryFadeOutOldMapMusic();
     PlayRainStoppingSoundEffect();
     gFieldCallback = FieldCB_DefaultWarpExit;
     CreateTask(Task_WarpAndLoadMap, 10);
@@ -514,6 +547,7 @@ void DoWhiteFadeWarp(void)
 
 void DoDoorWarp(void)
 {
+    CheckKeepObjects();
     LockPlayerFieldControls();
     gFieldCallback = FieldCB_DefaultWarpExit;
     CreateTask(Task_DoDoorWarp, 10);
@@ -548,6 +582,7 @@ void DoLavaridgeGym1FWarp(void)
 // Used by teleporting tiles, e.g. in Aqua Hideout (For the move Teleport see FldEff_TeleportWarpOut)
 void DoTeleportTileWarp(void)
 {
+    CheckKeepObjects();
     LockPlayerFieldControls();
     TryFadeOutOldMapMusic();
     WarpFadeOutScreen();
@@ -719,7 +754,7 @@ static void Task_DoDoorWarp(u8 taskId)
         break;
     case 4:
         TryFadeOutOldMapMusic();
-        WarpFadeOutScreen();
+        WarpFadeOutOutScreen();
         PlayRainStoppingSoundEffect();
         task->tState = 0;
         task->func = Task_WarpAndLoadMap;
@@ -756,7 +791,7 @@ void DoContestHallWarp(void)
 {
     LockPlayerFieldControls();
     TryFadeOutOldMapMusic();
-    WarpFadeOutScreen();
+    WarpFadeOutOutScreen();
     PlayRainStoppingSoundEffect();
     PlaySE(SE_EXIT);
     gFieldCallback = FieldCB_WarpExitFadeFromBlack;

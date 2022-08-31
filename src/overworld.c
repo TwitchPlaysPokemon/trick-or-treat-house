@@ -5,6 +5,7 @@
 #include "berry.h"
 #include "bg.h"
 #include "cable_club.h"
+#include "day_night.h"
 #include "clock.h"
 #include "event_data.h"
 #include "event_object_movement.h"
@@ -55,6 +56,7 @@
 #include "time_events.h"
 #include "trainer_hill.h"
 #include "trainer_pokemon_sprites.h"
+#include "trickhouse.h"
 #include "tv.h"
 #include "scanline_effect.h"
 #include "wild_encounter.h"
@@ -92,8 +94,33 @@ struct CableClubPlayer
 #define FACING_FORCED_LEFT 9
 #define FACING_FORCED_RIGHT 10
 
+// event scripts
+extern const u8 EventScript_WhiteOut[];
+// extern const u8 EventScript_ResetMrBriney[];
+extern const u8 EventScript_DoLinkRoomExit[];
+extern const u8 gEventScript_TradeRoom_TooBusyToNotice[];
+extern const u8 gEventScript_TradeRoom_ReadTrainerCard_NoColor[];
+extern const u8 gEventScript_TradeRoom_ReadTrainerCard_Normal[];
+// extern const u8 EventScript_DoubleBattleColosseum_PlayerSpot0[];
+// extern const u8 EventScript_DoubleBattleColosseum_PlayerSpot1[];
+// extern const u8 EventScript_DoubleBattleColosseum_PlayerSpot2[];
+// extern const u8 EventScript_DoubleBattleColosseum_PlayerSpot3[];
+// extern const u8 EventScript_RecordCenter_Spot0[];
+// extern const u8 EventScript_RecordCenter_Spot1[];
+// extern const u8 EventScript_RecordCenter_Spot2[];
+// extern const u8 EventScript_RecordCenter_Spot3[];
+// extern const u8 EventScript_SingleBattleColosseum_PlayerSpot0[];
+// extern const u8 EventScript_SingleBattleColosseum_PlayerSpot1[];
+// extern const u8 EventScript_TradeCenter_Chair1[];
+// extern const u8 EventScript_TradeCenter_Chair0[];
+extern const u8 EventScript_ConfirmLeaveTradeRoom[];
+extern const u8 EventScript_TerminateLink[];
+
 extern const struct MapLayout *const gMapLayouts[];
 extern const struct MapHeader *const *const gMapGroups[];
+extern const struct MapHeader *const *const gMapGroups_End[];
+extern const int gMaxFlashLevel;
+extern const u16 gOverworldBackgroundLayerFlags[];
 
 static void Overworld_ResetStateAfterWhiteOut(void);
 static void CB2_ReturnToFieldLocal(void);
@@ -361,7 +388,12 @@ static void (*const sMovementStatusHandler[])(struct LinkPlayerObjectEvent *, st
 void DoWhiteOut(void)
 {
     RunScriptImmediately(EventScript_WhiteOut);
+    RunPuzzleBlackoutScript();
+#if USE_CANDY_CURRENCY
+    SetMoney(&gSaveBlock1Ptr->money, GetMoney(&gSaveBlock1Ptr->money) / 4);
+#else
     SetMoney(&gSaveBlock1Ptr->money, GetMoney(&gSaveBlock1Ptr->money) / 2);
+#endif
     HealPlayerParty();
     Overworld_ResetStateAfterWhiteOut();
     SetWarpDestinationToLastHealLocation();
@@ -386,11 +418,12 @@ void Overworld_ResetStateAfterTeleport(void)
     FlagClear(FLAG_SYS_SAFARI_MODE);
     FlagClear(FLAG_SYS_USE_STRENGTH);
     FlagClear(FLAG_SYS_USE_FLASH);
-    RunScriptImmediately(EventScript_ResetMrBriney);
+    // RunScriptImmediately(EventScript_ResetMrBriney);
 }
 
 void Overworld_ResetStateAfterDigEscRope(void)
 {
+    RunPuzzleEscapeRopeScript();
     ResetInitialPlayerAvatarState();
     FlagClear(FLAG_SYS_CYCLING_ROAD);
     FlagClear(FLAG_SYS_CRUISE_MODE);
@@ -420,7 +453,7 @@ static void UpdateMiscOverworldStates(void)
 {
     FlagClear(FLAG_SYS_SAFARI_MODE);
     ChooseAmbientCrySpecies();
-    ResetCyclingRoadChallengeData();
+    // ResetCyclingRoadChallengeData();
     UpdateLocationHistoryForRoamer();
     RoamerMoveToOtherLocationSet();
 }
@@ -433,7 +466,7 @@ void ResetGameStats(void)
         SetGameStat(i, 0);
 }
 
-void IncrementGameStat(u8 index)
+void IncrementGameStatBy(u8 index, u8 num)
 {
     if (index < NUM_USED_GAME_STATS)
     {
@@ -446,6 +479,12 @@ void IncrementGameStat(u8 index)
         SetGameStat(index, statVal);
     }
 }
+
+void IncrementGameStat(u8 index)
+{
+    IncrementGameStatBy(index, 1);
+}
+
 
 u32 GetGameStat(u8 index)
 {
@@ -546,6 +585,7 @@ void ApplyCurrentWarp(void)
     gSaveBlock1Ptr->location = sWarpDestination;
     sFixedDiveWarp = sDummyWarpData;
     sFixedHoleWarp = sDummyWarpData;
+    gSpecialVar_LastWarpId = sWarpDestination.warpId;
 }
 
 static void ClearDiveAndHoleWarps(void)
@@ -579,9 +619,21 @@ static bool32 IsDummyWarp(struct WarpData *warp)
         return TRUE;
 }
 
+bool32 IsWarpingToSameMap()
+{
+    return gSaveBlock1Ptr->location.mapGroup == sWarpDestination.mapGroup
+        && gSaveBlock1Ptr->location.mapNum == sWarpDestination.mapNum;
+}
+
 struct MapHeader const *const Overworld_GetMapHeaderByGroupAndId(u16 mapGroup, u16 mapNum)
 {
+    // Sanity checking
+    if ((u32)&gMapGroups[mapGroup] > (u32)&gMapGroups_End) goto error;
+    if ((u32)&gMapGroups[mapGroup][mapNum] > (u32)&gMapGroups) goto error;
+    
     return gMapGroups[mapGroup][mapNum];
+error:
+    return gMapGroups[0][0];
 }
 
 struct MapHeader const *const GetDestinationWarpMapHeader(void)
@@ -589,18 +641,22 @@ struct MapHeader const *const GetDestinationWarpMapHeader(void)
     return Overworld_GetMapHeaderByGroupAndId(sWarpDestination.mapGroup, sWarpDestination.mapNum);
 }
 
+extern const struct Trainer *gCurrTrainerTable;
+
 static void LoadCurrentMapData(void)
 {
     sLastMapSectionId = gMapHeader.regionMapSectionId;
     gMapHeader = *Overworld_GetMapHeaderByGroupAndId(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
     gSaveBlock1Ptr->mapLayoutId = gMapHeader.mapLayoutId;
     gMapHeader.mapLayout = GetMapLayout();
+    gCurrTrainerTable = gMapHeader.trainerTable;
 }
 
 static void LoadSaveblockMapHeader(void)
 {
     gMapHeader = *Overworld_GetMapHeaderByGroupAndId(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
     gMapHeader.mapLayout = GetMapLayout();
+    gCurrTrainerTable = gMapHeader.trainerTable;
 }
 
 static void SetPlayerCoordsFromWarp(void)
@@ -679,10 +735,15 @@ void SetLastHealLocationWarp(u8 healLocationId)
 
 void UpdateEscapeWarp(s16 x, s16 y)
 {
-    u8 currMapType = GetCurrentMapType();
-    u8 destMapType = GetMapTypeByGroupAndId(sWarpDestination.mapGroup, sWarpDestination.mapNum);
-    if (IsMapTypeOutdoors(currMapType) && IsMapTypeOutdoors(destMapType) != TRUE)
-        SetEscapeWarp(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, WARP_ID_NONE, x - MAP_OFFSET, y - MAP_OFFSET + 1);
+    if (FlagGet(FLAG_PUZZLE_HAS_STARTED)) {
+        SetEscapeWarp(MAP_GROUP(TRICK_HOUSE_CORRIDOR), MAP_NUM(TRICK_HOUSE_CORRIDOR), -1, 22, 3);
+    } else {
+        SetEscapeWarp(MAP_GROUP(TRICK_HOUSE_CORRIDOR), MAP_NUM(TRICK_HOUSE_CORRIDOR), -1, 4, 7);
+    }
+    // u8 currMapType = GetCurrentMapType();
+    // u8 destMapType = GetMapTypeByGroupAndId(sWarpDestination.mapGroup, sWarpDestination.mapNum);
+    // if (IsMapTypeOutdoors(currMapType) && IsMapTypeOutdoors(destMapType) != TRUE)
+    //     SetEscapeWarp(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, WARP_ID_NONE, x - MAP_OFFSET, y - MAP_OFFSET + 1);
 }
 
 void SetEscapeWarp(s8 mapGroup, s8 mapNum, s8 warpId, s8 x, s8 y)
@@ -794,12 +855,14 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     if (gMapHeader.regionMapSectionId != MAPSEC_BATTLE_FRONTIER)
         TransitionMapMusic();
 
+    FlagClear(FLAG_PREVENT_EVENT_OBJECT_DESPAWN);
     ApplyCurrentWarp();
+    RunPuzzleTeardownScript();
     LoadCurrentMapData();
     LoadObjEventTemplatesFromHeader();
     TrySetMapSaveWarpStatus();
     ClearTempFieldEventData();
-    ResetCyclingRoadChallengeData();
+    // ResetCyclingRoadChallengeData();
     RestartWildEncounterImmunitySteps();
     TryUpdateRandomTrainerRematches(mapGroup, mapNum);
     DoTimeBasedEvents();
@@ -821,10 +884,11 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     DoCurrentWeather();
     ResetFieldTasksArgs();
     RunOnResumeMapScript();
-
-    if (gMapHeader.regionMapSectionId != MAPSEC_BATTLE_FRONTIER
-     || gMapHeader.regionMapSectionId != sLastMapSectionId)
-        ShowMapNamePopup();
+    RunPuzzleIntro();
+    
+    // if (gMapHeader.regionMapSectionId != MAPSEC_BATTLE_FRONTIER
+    //  || gMapHeader.regionMapSectionId != sLastMapSectionId)
+    //     ShowMapNamePopup();
 }
 
 static void LoadMapFromWarp(bool32 a1)
@@ -832,14 +896,16 @@ static void LoadMapFromWarp(bool32 a1)
     bool8 isOutdoors;
     bool8 isIndoors;
 
+    FlagClear(FLAG_PREVENT_EVENT_OBJECT_DESPAWN);
+    RunPuzzleTeardownScript();
     LoadCurrentMapData();
     if (!(sObjectEventLoadFlag & SKIP_OBJECT_EVENT_LOAD))
     {
-        if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR)
-            LoadBattlePyramidObjectEventTemplates();
-        else if (InTrainerHill())
-            LoadTrainerHillObjectEventTemplates();
-        else
+        // if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR)
+        //     LoadBattlePyramidObjectEventTemplates();
+        // else if (InTrainerHill())
+        //     LoadTrainerHillObjectEventTemplates();
+        // else
             LoadObjEventTemplatesFromHeader();
     }
 
@@ -849,7 +915,7 @@ static void LoadMapFromWarp(bool32 a1)
     CheckLeftFriendsSecretBase();
     TrySetMapSaveWarpStatus();
     ClearTempFieldEventData();
-    ResetCyclingRoadChallengeData();
+    // ResetCyclingRoadChallengeData();
     RestartWildEncounterImmunitySteps();
     TryUpdateRandomTrainerRematches(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
     if (a1 != TRUE)
@@ -863,11 +929,11 @@ static void LoadMapFromWarp(bool32 a1)
     RunOnTransitionMapScript();
     UpdateLocationHistoryForRoamer();
     RoamerMoveToOtherLocationSet();
-    if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR)
-        InitBattlePyramidMap(FALSE);
-    else if (InTrainerHill())
-        InitTrainerHillMap();
-    else
+    // if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR)
+    //     InitBattlePyramidMap(FALSE);
+    // else if (InTrainerHill())
+    //     InitTrainerHillMap();
+    // else
         InitMap();
 
     if (a1 != TRUE && isIndoors)
@@ -999,142 +1065,30 @@ void SetCurrentMapLayout(u16 mapLayoutId)
     gMapHeader.mapLayout = GetMapLayout();
 }
 
-void SetObjectEventLoadFlag(u8 flag)
+void SetObjectEventLoadFlag(u8 var)
 {
-    sObjectEventLoadFlag = flag;
+    sObjectEventLoadFlag = var;
 }
 
 // Unused, sObjectEventLoadFlag is read directly
-static u8 GetObjectEventLoadFlag(void)
+u8 GetObjectEventLoadFlag(void)
 {
     return sObjectEventLoadFlag;
 }
 
-static bool16 ShouldLegendaryMusicPlayAtLocation(struct WarpData *warp)
-{
-    if (!FlagGet(FLAG_SYS_WEATHER_CTRL))
-        return FALSE;
-    if (warp->mapGroup == 0)
-    {
-        switch (warp->mapNum)
-        {
-        case MAP_NUM(LILYCOVE_CITY):
-        case MAP_NUM(MOSSDEEP_CITY):
-        case MAP_NUM(SOOTOPOLIS_CITY):
-        case MAP_NUM(EVER_GRANDE_CITY):
-        case MAP_NUM(ROUTE124):
-        case MAP_NUM(ROUTE125):
-        case MAP_NUM(ROUTE126):
-        case MAP_NUM(ROUTE127):
-        case MAP_NUM(ROUTE128):
-            return TRUE;
-        default:
-            if (VarGet(VAR_SOOTOPOLIS_CITY_STATE) < 4)
-                return FALSE;
-            switch (warp->mapNum)
-            {
-            case MAP_NUM(ROUTE129):
-            case MAP_NUM(ROUTE130):
-            case MAP_NUM(ROUTE131):
-                return TRUE;
-            }
-        }
-    }
-    return FALSE;
-}
-
-static bool16 NoMusicInSotopolisWithLegendaries(struct WarpData *warp)
-{
-    if (VarGet(VAR_SKY_PILLAR_STATE) != 1)
-        return FALSE;
-    else if (warp->mapGroup != MAP_GROUP(SOOTOPOLIS_CITY))
-        return FALSE;
-    else if (warp->mapNum == MAP_NUM(SOOTOPOLIS_CITY))
-        return TRUE;
-    else
-        return FALSE;
-}
-
-static bool16 IsInfiltratedWeatherInstitute(struct WarpData *warp)
-{
-    if (VarGet(VAR_WEATHER_INSTITUTE_STATE))
-        return FALSE;
-    else if (warp->mapGroup != MAP_GROUP(ROUTE119_WEATHER_INSTITUTE_1F))
-        return FALSE;
-    else if (warp->mapNum == MAP_NUM(ROUTE119_WEATHER_INSTITUTE_1F)
-     || warp->mapNum == MAP_NUM(ROUTE119_WEATHER_INSTITUTE_2F))
-        return TRUE;
-    else
-        return FALSE;
-}
-
-static bool16 IsInflitratedSpaceCenter(struct WarpData *warp)
-{
-    if (VarGet(VAR_MOSSDEEP_CITY_STATE) == 0)
-        return FALSE;
-    else if (VarGet(VAR_MOSSDEEP_CITY_STATE) > 2)
-        return FALSE;
-    else if (warp->mapGroup != MAP_GROUP(MOSSDEEP_CITY_SPACE_CENTER_1F))
-        return FALSE;
-    else if (warp->mapNum == MAP_NUM(MOSSDEEP_CITY_SPACE_CENTER_1F)
-     || warp->mapNum == MAP_NUM(MOSSDEEP_CITY_SPACE_CENTER_2F))
-        return TRUE;
-    return FALSE;
-}
-
 u16 GetLocationMusic(struct WarpData *warp)
 {
-    if (NoMusicInSotopolisWithLegendaries(warp) == TRUE)
-        return MUS_NONE;
-    else if (ShouldLegendaryMusicPlayAtLocation(warp) == TRUE)
-        return MUS_ABNORMAL_WEATHER;
-    else if (IsInflitratedSpaceCenter(warp) == TRUE)
-        return MUS_ENCOUNTER_MAGMA;
-    else if (IsInfiltratedWeatherInstitute(warp) == TRUE)
-        return MUS_MT_CHIMNEY;
-    else
-        return Overworld_GetMapHeaderByGroupAndId(warp->mapGroup, warp->mapNum)->music;
+    return Overworld_GetMapHeaderByGroupAndId(warp->mapGroup, warp->mapNum)->music;
 }
 
 u16 GetCurrLocationDefaultMusic(void)
 {
-    u16 music;
-
-    // Play the desert music only when the sandstorm is active on Route 111.
-    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ROUTE111)
-     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE111)
-     && GetSavedWeather() == WEATHER_SANDSTORM)
-        return MUS_ROUTE111;
-
-    music = GetLocationMusic(&gSaveBlock1Ptr->location);
-    if (music != MUS_ROUTE118)
-    {
-        return music;
-    }
-    else
-    {
-        if (gSaveBlock1Ptr->pos.x < 24)
-            return MUS_ROUTE110;
-        else
-            return MUS_ROUTE119;
-    }
+    return GetLocationMusic(&gSaveBlock1Ptr->location);
 }
 
 u16 GetWarpDestinationMusic(void)
 {
-    u16 music = GetLocationMusic(&sWarpDestination);
-    if (music != MUS_ROUTE118)
-    {
-        return music;
-    }
-    else
-    {
-        if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAUVILLE_CITY)
-         && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAUVILLE_CITY))
-            return MUS_ROUTE110;
-        else
-            return MUS_ROUTE119;
-    }
+    return GetLocationMusic(&sWarpDestination);
 }
 
 void Overworld_ResetMapMusic(void)
@@ -1154,6 +1108,8 @@ void Overworld_PlaySpecialMapMusic(void)
             music = MUS_UNDERWATER;
         else if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING))
             music = MUS_SURF;
+        else if (VarGet(VAR_INTRO_COUNTER) < 2)
+            music = MUS_B_PIKE;
     }
 
     if (music != GetCurrentMapMusic())
@@ -1341,6 +1297,12 @@ u8 GetLastUsedWarpMapType(void)
     return GetMapTypeByWarpData(&gLastUsedWarp);
 }
 
+bool8 CurrentMapIs(u16 mapId)
+{
+    return gSaveBlock1Ptr->location.mapGroup == (mapId >> 8)
+        && gSaveBlock1Ptr->location.mapNum == (mapId & 8);
+}
+
 bool8 IsMapTypeOutdoors(u8 mapType)
 {
     if (mapType == MAP_TYPE_ROUTE
@@ -1425,6 +1387,7 @@ bool32 IsOverworldLinkActive(void)
         return FALSE;
 }
 
+void player_forcestep(void);
 static void DoCB1_Overworld(u16 newKeys, u16 heldKeys)
 {
     struct FieldInput inputStruct;
@@ -1434,7 +1397,11 @@ static void DoCB1_Overworld(u16 newKeys, u16 heldKeys)
     FieldGetPlayerInput(&inputStruct, newKeys, heldKeys);
     if (!ArePlayerFieldControlsLocked())
     {
-        if (ProcessPlayerFieldInput(&inputStruct) == 1)
+        if (gSpecialVar_SysForceStep > 0) {
+            gSpecialVar_SysForceStep--;
+            player_forcestep();
+        } 
+        else if (ProcessPlayerFieldInput(&inputStruct) == 1)
         {
             LockPlayerFieldControls();
             HideMapNamePopUpWindow();
@@ -1460,6 +1427,7 @@ static void OverworldBasic(void)
     CameraUpdate();
     UpdateCameraPanning();
     BuildOamBuffer();
+    // ProcessImmediateTimeEvents();
     UpdatePaletteFade();
     UpdateTilesetAnimations();
     DoScheduledBgTilemapCopiesToVram();
@@ -1529,7 +1497,7 @@ void CB2_NewGame(void)
     PlayTimeCounter_Start();
     ScriptContext_Init();
     UnlockPlayerFieldControls();
-    gFieldCallback = ExecuteTruckSequence;
+    gFieldCallback = NULL; //ExecuteTruckSequence;
     gFieldCallback2 = NULL;
     DoMapLoadLoop(&gMain.state);
     SetFieldVBlankCallback();
@@ -1687,11 +1655,13 @@ void CB2_ReturnToFieldFadeFromBlack(void)
 
 static void FieldCB_FadeTryShowMapPopup(void)
 {
-    if (gMapHeader.showMapName == TRUE && SecretBaseMapPopupEnabled() == TRUE)
-        ShowMapNamePopup();
+    RunPuzzleIntro();
+    // if ((gMapHeader.flags & 0xF8) == 8 && SecretBaseMapPopupEnabled() == TRUE)
+    //     ShowMapNamePopup();
     FieldCB_WarpExitFadeFromBlack();
 }
 
+extern u32 gPuzzleTimer;
 void CB2_ContinueSavedGame(void)
 {
     u8 trainerHillMapId;
@@ -1704,24 +1674,25 @@ void CB2_ContinueSavedGame(void)
 
     LoadSaveblockMapHeader();
     ClearDiveAndHoleWarps();
-    trainerHillMapId = GetCurrentTrainerHillMapId();
-    if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR)
-        LoadBattlePyramidFloorObjectEventScripts();
-    else if (trainerHillMapId != 0 && trainerHillMapId != TRAINER_HILL_ENTRANCE)
-        LoadTrainerHillFloorObjectEventScripts();
-    else
+    // trainerHillMapId = GetCurrentTrainerHillMapId();
+    // if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR)
+    //     LoadBattlePyramidFloorObjectEventScripts();
+    // else if (trainerHillMapId != 0 && trainerHillMapId != TRAINER_HILL_ENTRANCE)
+    //     LoadTrainerHillFloorObjectEventScripts();
+    // else
         LoadSaveblockObjEventScripts();
 
     UnfreezeObjectEvents();
     DoTimeBasedEvents();
     UpdateMiscOverworldStates();
-    if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR)
-        InitBattlePyramidMap(TRUE);
-    else if (trainerHillMapId != 0)
-        InitTrainerHillMap();
-    else
+    // if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR)
+    //     InitBattlePyramidMap(TRUE);
+    // else if (trainerHillMapId != 0)
+    //     InitTrainerHillMap();
+    // else
         InitMapFromSavedGame();
-
+    
+    gPuzzleTimer = 0;
     PlayTimeCounter_Start();
     ScriptContext_Init();
     UnlockPlayerFieldControls();
@@ -1779,18 +1750,20 @@ static void VBlankCB_Field(void)
     FieldUpdateBgTilemapScroll();
     TransferPlttBuffer();
     TransferTilesetAnimsBuffer();
+    // CheckClockForImmediateTimeEvents();
 }
 
 static void InitCurrentFlashLevelScanlineEffect(void)
 {
     u8 flashLevel;
 
-    if (InBattlePyramid_())
-    {
-        WriteBattlePyramidViewScanlineEffectBuffer();
-        ScanlineEffect_SetParams(sFlashEffectParams);
-    }
-    else if ((flashLevel = GetFlashLevel()))
+    // if (InBattlePyramid_())
+    // {
+    //     WriteBattlePyramidViewScanlineEffectBuffer();
+    //     ScanlineEffect_SetParams(sFlashEffectParams);
+    // }
+    // else
+    if ((flashLevel = GetFlashLevel()))
     {
         WriteFlashScanlineEffectBuffer(flashLevel);
         ScanlineEffect_SetParams(sFlashEffectParams);
@@ -1933,8 +1906,9 @@ static bool32 LoadMapInStepsLocal(u8 *state, bool32 a2)
         (*state)++;
         break;
     case 11:
-        if (gMapHeader.showMapName == TRUE && SecretBaseMapPopupEnabled() == TRUE)
-            ShowMapNamePopup();
+        RunPuzzleIntro();
+        // if (gMapHeader.showMapName == TRUE && SecretBaseMapPopupEnabled() == TRUE)
+        //     ShowMapNamePopup();
         (*state)++;
         break;
     case 12:
@@ -1962,7 +1936,7 @@ static bool32 ReturnToFieldLocal(u8 *state)
         break;
     case 1:
         InitViewGraphics();
-        TryLoadTrainerHillEReaderPalette();
+        // TryLoadTrainerHillEReaderPalette();
         (*state)++;
         break;
     case 2:
@@ -2127,10 +2101,7 @@ static void ResumeMap(bool32 a1)
     ResetAllPicSprites();
     ResetCameraUpdateInfo();
     InstallCameraPanAheadCallback();
-    if (!a1)
-        InitObjectEventPalettes(0);
-    else
-        InitObjectEventPalettes(1);
+    FreeAllSpritePalettes();
 
     FieldEffectActiveListClear();
     StartWeather();
@@ -2767,31 +2738,31 @@ static const u8 *TryInteractWithPlayer(struct CableClubPlayer *player)
 // these event scripts runs.
 static u16 GetDirectionForEventScript(const u8 *script)
 {
-    if (script == EventScript_BattleColosseum_4P_PlayerSpot0)
-        return FACING_FORCED_RIGHT;
-    else if (script == EventScript_BattleColosseum_4P_PlayerSpot1)
-        return FACING_FORCED_LEFT;
-    else if (script == EventScript_BattleColosseum_4P_PlayerSpot2)
-        return FACING_FORCED_RIGHT;
-    else if (script == EventScript_BattleColosseum_4P_PlayerSpot3)
-        return FACING_FORCED_LEFT;
-    else if (script == EventScript_RecordCenter_Spot0)
-        return FACING_FORCED_RIGHT;
-    else if (script == EventScript_RecordCenter_Spot1)
-        return FACING_FORCED_LEFT;
-    else if (script == EventScript_RecordCenter_Spot2)
-        return FACING_FORCED_RIGHT;
-    else if (script == EventScript_RecordCenter_Spot3)
-        return FACING_FORCED_LEFT;
-    else if (script == EventScript_BattleColosseum_2P_PlayerSpot0)
-        return FACING_FORCED_RIGHT;
-    else if (script == EventScript_BattleColosseum_2P_PlayerSpot1)
-        return FACING_FORCED_LEFT;
-    else if (script == EventScript_TradeCenter_Chair0)
-        return FACING_FORCED_RIGHT;
-    else if (script == EventScript_TradeCenter_Chair1)
-        return FACING_FORCED_LEFT;
-    else
+    // if (script == EventScript_BattleColosseum_4P_PlayerSpot0)
+    //     return FACING_FORCED_RIGHT;
+    // else if (script == EventScript_BattleColosseum_4P_PlayerSpot1)
+    //     return FACING_FORCED_LEFT;
+    // else if (script == EventScript_BattleColosseum_4P_PlayerSpot2)
+    //     return FACING_FORCED_RIGHT;
+    // else if (script == EventScript_BattleColosseum_4P_PlayerSpot3)
+    //     return FACING_FORCED_LEFT;
+    // else if (script == EventScript_RecordCenter_Spot0)
+    //     return FACING_FORCED_RIGHT;
+    // else if (script == EventScript_RecordCenter_Spot1)
+    //     return FACING_FORCED_LEFT;
+    // else if (script == EventScript_RecordCenter_Spot2)
+    //     return FACING_FORCED_RIGHT;
+    // else if (script == EventScript_RecordCenter_Spot3)
+    //     return FACING_FORCED_LEFT;
+    // else if (script == EventScript_BattleColosseum_2P_PlayerSpot0)
+    //     return FACING_FORCED_RIGHT;
+    // else if (script == EventScript_BattleColosseum_2P_PlayerSpot1)
+    //     return FACING_FORCED_LEFT;
+    // else if (script == EventScript_TradeCenter_Chair0)
+    //     return FACING_FORCED_RIGHT;
+    // else if (script == EventScript_TradeCenter_Chair1)
+    //     return FACING_FORCED_LEFT;
+    // else
         return FACING_NONE;
 }
 

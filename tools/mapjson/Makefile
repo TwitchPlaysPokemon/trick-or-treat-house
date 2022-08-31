@@ -2,7 +2,7 @@ CXX ?= g++
 
 CXXFLAGS := -Wall -std=c++11 -O2
 
-SRCS := json11.cpp mapjson.cpp
+SRCS := json11.cpp mapjson.cpp ../preproc/charmap.cpp ../preproc/utf8.cpp
 
 HEADERS := mapjson.h
 

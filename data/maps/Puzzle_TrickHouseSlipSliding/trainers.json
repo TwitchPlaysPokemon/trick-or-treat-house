@@ -1,0 +1,64 @@
+[
+	{
+		"class": "SKELETON",
+		"name": "SAMMY",
+		"party": [
+			{
+				"species": "SPECIES_DUSKULL",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "ALIEN",
+		"female": true,
+		"name": "LIZ",
+		"party": [
+			{
+				"species": "SPECIES_UNOWN",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_UNOWN",
+				"level": 29
+			},
+			{
+				"species": "SPECIES_UNOWN",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_UNOWN",
+				"level": 31
+			},
+			{
+				"species": "SPECIES_UNOWN",
+				"level": 32
+			}
+		]
+	},
+	{
+		"class": "HERO_OF_TIME",
+		"name": "HANK",
+		"party": [
+			{
+				"species": "SPECIES_SCIZOR",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "FAIRY_GIRL",
+		"female": true,
+		"name": "TRISHA",
+		"party": [
+			{
+				"species": "SPECIES_CLEFAIRY",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_CLEFABLE",
+				"level": 29
+			}
+		]
+	}
+]

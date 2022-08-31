@@ -181,30 +181,30 @@ MoveTutor_EventScript_SubstituteTaught::
 	end
 
 MossdeepCity_EventScript_DynamicPunchTutor::
-	lock
-	faceplayer
-	goto_if_set FLAG_MOVE_TUTOR_TAUGHT_DYNAMICPUNCH, MoveTutor_EventScript_DynamicPunchTaught
-	msgbox MoveTutor_Text_DynamicPunchTeach, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, MoveTutor_EventScript_DynamicPunchDeclined
-	call MoveTutor_EventScript_CanOnlyBeLearnedOnce
-	goto_if_eq VAR_RESULT, NO, MoveTutor_EventScript_DynamicPunchDeclined
-	msgbox MoveTutor_Text_DynamicPunchWhichMon, MSGBOX_DEFAULT
-	setvar VAR_0x8005, TUTOR_MOVE_DYNAMIC_PUNCH
-	call MoveTutor_EventScript_OpenPartyMenu
-	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_DynamicPunchDeclined
-	setflag FLAG_MOVE_TUTOR_TAUGHT_DYNAMICPUNCH
-	goto MoveTutor_EventScript_DynamicPunchTaught
+	@ lock
+	@ faceplayer
+	@ goto_if_set FLAG_MOVE_TUTOR_TAUGHT_DYNAMICPUNCH, MoveTutor_EventScript_DynamicPunchTaught
+	@ msgbox MoveTutor_Text_DynamicPunchTeach, MSGBOX_YESNO
+	@ goto_if_eq VAR_RESULT, NO, MoveTutor_EventScript_DynamicPunchDeclined
+	@ call MoveTutor_EventScript_CanOnlyBeLearnedOnce
+	@ goto_if_eq VAR_RESULT, NO, MoveTutor_EventScript_DynamicPunchDeclined
+	@ msgbox MoveTutor_Text_DynamicPunchWhichMon, MSGBOX_DEFAULT
+	@ setvar VAR_0x8005, TUTOR_MOVE_DYNAMIC_PUNCH
+	@ call MoveTutor_EventScript_OpenPartyMenu
+	@ goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_DynamicPunchDeclined
+	@ setflag FLAG_MOVE_TUTOR_TAUGHT_DYNAMICPUNCH
+	@ goto MoveTutor_EventScript_DynamicPunchTaught
 	end
 
-MoveTutor_EventScript_DynamicPunchDeclined::
-	msgbox MoveTutor_Text_DynamicPunchDeclined, MSGBOX_DEFAULT
-	release
-	end
+@ MoveTutor_EventScript_DynamicPunchDeclined::
+@ 	msgbox MoveTutor_Text_DynamicPunchDeclined, MSGBOX_DEFAULT
+@ 	release
+@ 	end
 
-MoveTutor_EventScript_DynamicPunchTaught::
-	msgbox MoveTutor_Text_DynamicPunchTaught, MSGBOX_DEFAULT
-	release
-	end
+@ MoveTutor_EventScript_DynamicPunchTaught::
+@ 	msgbox MoveTutor_Text_DynamicPunchTaught, MSGBOX_DEFAULT
+@ 	release
+@ 	end
 
 SootopolisCity_PokemonCenter_1F_EventScript_DoubleEdgeTutor::
 	lock

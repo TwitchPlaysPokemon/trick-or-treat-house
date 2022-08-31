@@ -906,18 +906,18 @@ static void CB2_ReturnFromRecord(void)
     sPassData->cursorX = sSavedPassData.cursorX;
     sPassData->cursorY = sSavedPassData.cursorY;
     memset(&sSavedPassData, 0, sizeof(sSavedPassData));
-    switch (InBattlePyramid())
-    {
-    case 1:
-        PlayBGM(MUS_B_PYRAMID);
-        break;
-    case 2:
-        PlayBGM(MUS_B_PYRAMID_TOP);
-        break;
-    default:
+    // switch (InBattlePyramid())
+    // {
+    // case 1:
+    //     PlayBGM(MUS_B_PYRAMID);
+    //     break;
+    // case 2:
+    //     PlayBGM(MUS_B_PYRAMID_TOP);
+    //     break;
+    // default:
         Overworld_PlaySpecialMapMusic();
-        break;
-    }
+    //     break;
+    // }
 
     SetMainCallback2(CB2_ReshowFrontierPass);
 }
@@ -1568,6 +1568,7 @@ static void Task_HandleFrontierMap(u8 taskId)
 
 static u8 MapNumToFrontierFacilityId(u16 mapNum) // id + 1, zero means not a frontier map number
 {
+#if false
     // In Battle Tower
     if ((mapNum >= MAP_NUM(BATTLE_FRONTIER_BATTLE_TOWER_LOBBY) && mapNum <= MAP_NUM(BATTLE_FRONTIER_BATTLE_TOWER_BATTLE_ROOM))
      || (mapNum >= MAP_NUM(BATTLE_FRONTIER_BATTLE_TOWER_MULTI_PARTNER_ROOM) && mapNum <= MAP_NUM(BATTLE_FRONTIER_BATTLE_TOWER_MULTI_BATTLE_ROOM)))
@@ -1614,6 +1615,7 @@ static u8 MapNumToFrontierFacilityId(u16 mapNum) // id + 1, zero means not a fro
         return FRONTIER_FACILITY_PYRAMID + 1;
 
     else
+#endif
         return 0;
 }
 
@@ -1622,7 +1624,7 @@ static void InitFrontierMapSprites(void)
     struct SpriteTemplate sprite;
     u8 spriteId;
     u8 id;
-    s16 x = 0, y;
+    s16 x = 0, y = 0;
 
     FreeAllSpritePalettes();
     LoadSpritePalettes(sSpritePalettes);
@@ -1646,39 +1648,39 @@ static void InitFrontierMapSprites(void)
     {
         s8 mapNum = gSaveBlock1Ptr->location.mapNum;
 
-        if (mapNum == MAP_NUM(BATTLE_FRONTIER_OUTSIDE_WEST)
-            || (mapNum == MAP_NUM(BATTLE_FRONTIER_OUTSIDE_EAST) && (x = 55)))
-        {
-            x += gSaveBlock1Ptr->pos.x;
-            y = gSaveBlock1Ptr->pos.y;
+        // if (mapNum == MAP_NUM(BATTLE_FRONTIER_OUTSIDE_WEST)
+        //     || (mapNum == MAP_NUM(BATTLE_FRONTIER_OUTSIDE_EAST) && (x = 55)))
+        // {
+        //     x += gSaveBlock1Ptr->pos.x;
+        //     y = gSaveBlock1Ptr->pos.y;
 
-            x /= 8;
-            y /= 8;
+        //     x /= 8;
+        //     y /= 8;
 
-            id = 0;
-        }
-        else
-        {
-            id = MapNumToFrontierFacilityId(mapNum);
-            if (id != 0)
-            {
-                x = sMapLandmarks[id - 1].x;
-                y = sMapLandmarks[id - 1].y;
-            }
-            else
-            {
-                // Handle Artisan Cave.
-                if (gSaveBlock1Ptr->escapeWarp.mapNum == MAP_NUM(BATTLE_FRONTIER_OUTSIDE_EAST))
-                    x = gSaveBlock1Ptr->escapeWarp.x + 55;
-                else
-                    x = gSaveBlock1Ptr->escapeWarp.x;
+        //     id = 0;
+        // }
+        // else
+        // {
+        //     id = MapNumToFrontierFacilityId(mapNum);
+        //     if (id != 0)
+        //     {
+        //         x = sMapLandmarks[id - 1].x;
+        //         y = sMapLandmarks[id - 1].y;
+        //     }
+        //     else
+        //     {
+        //         // Handle Artisan Cave.
+        //         if (gSaveBlock1Ptr->escapeWarp.mapNum == MAP_NUM(BATTLE_FRONTIER_OUTSIDE_EAST))
+        //             x = gSaveBlock1Ptr->escapeWarp.x + 55;
+        //         else
+        //             x = gSaveBlock1Ptr->escapeWarp.x;
 
-                y = gSaveBlock1Ptr->escapeWarp.y;
+        //         y = gSaveBlock1Ptr->escapeWarp.y;
 
-                x /= 8;
-                y /= 8;
-            }
-        }
+        //         x /= 8;
+        //         y /= 8;
+        //     }
+        // }
 
         LoadCompressedSpriteSheet(sHeadsSpriteSheet);
         sprite = sSpriteTemplate_PlayerHead;

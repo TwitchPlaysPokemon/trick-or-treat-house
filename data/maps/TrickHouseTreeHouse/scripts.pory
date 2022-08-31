@@ -1,0 +1,165 @@
+mapscripts TrickHouseTreeHouse_MapScripts {
+	MAP_SCRIPT_ON_LOAD {
+		selectpointer_wrap(TrickHouseTreeHouse_OnLoad_Traders_ATable, VAR_CANDY_TRADE_MASTER)
+		call(0)
+	}
+}
+
+raw `
+.align 2
+TrickHouseTreeHouse_OnLoad_Traders_ATable:
+	.4byte TrickHouseTreeHouse_OnLoad_Traders_LoadA1
+	.4byte TrickHouseTreeHouse_OnLoad_Traders_LoadA2
+	.4byte TrickHouseTreeHouse_OnLoad_Traders_LoadA3
+	.4byte TrickHouseTreeHouse_OnLoad_Traders_LoadA4
+	.4byte TrickHouseTreeHouse_OnLoad_Traders_LoadA5
+	.4byte TrickHouseTreeHouse_OnLoad_Traders_LoadA6
+	.4byte TrickHouseTreeHouse_OnLoad_Traders_LoadA7
+	.4byte TrickHouseTreeHouse_OnLoad_Traders_LoadA8
+	.4byte TrickHouseTreeHouse_OnLoad_Traders_LoadA9
+	.4byte 0
+`
+
+script TrickHouseTreeHouse_OnLoad_Traders_LoadA1 {
+	setvar(VAR_CANDY_TRADE_5, ITEM_TM24_THUNDERBOLT)
+}
+script TrickHouseTreeHouse_OnLoad_Traders_LoadA2 {
+	setvar(VAR_CANDY_TRADE_5, ITEM_TM35_FLAMETHROWER)
+}
+script TrickHouseTreeHouse_OnLoad_Traders_LoadA3 {
+	setvar(VAR_CANDY_TRADE_5, ITEM_TM46_THIEF)
+}
+script TrickHouseTreeHouse_OnLoad_Traders_LoadA4 {
+	setvar(VAR_CANDY_TRADE_5, ITEM_TM03_WATER_PULSE)
+}
+script TrickHouseTreeHouse_OnLoad_Traders_LoadA5 {
+	setvar(VAR_CANDY_TRADE_5, ITEM_TM40_AERIAL_ACE)
+}
+script TrickHouseTreeHouse_OnLoad_Traders_LoadA6 {
+	setvar(VAR_CANDY_TRADE_5, ITEM_TM47_STEEL_WING)
+}
+script TrickHouseTreeHouse_OnLoad_Traders_LoadA7 {
+	setvar(VAR_CANDY_TRADE_5, ITEM_TM28_DIG)
+}
+script TrickHouseTreeHouse_OnLoad_Traders_LoadA8 {
+	setvar(VAR_CANDY_TRADE_5, ITEM_TM31_BRICK_BREAK)
+}
+script TrickHouseTreeHouse_OnLoad_Traders_LoadA9 {
+	setvar(VAR_CANDY_TRADE_5, ITEM_TM30_SHADOW_BALL)
+}
+
+// ----------------------------------------------------
+
+script TrickHouseTreeHouse_EventScript_Seller {
+	lock
+	faceplayer
+	message("Hey, I've got candy here if you wanna\n"
+			"buy or sell anything.$")
+	waitmessage
+	selectpointer_wrap(TrickHouseExt_MartTable, VAR_CANDY_TRADE_5)
+	pokemart(0)
+	msgbox ("I'll be here all night. Sometimes I get\n"
+			"different candy in too. Later.$")
+	release
+}
+raw `
+.align 2
+TrickHouseExt_MartTable:
+	.4byte TrickHouseExt_Mart1
+	.4byte TrickHouseExt_Mart2
+	.4byte TrickHouseExt_Mart3
+	.4byte TrickHouseExt_Mart4
+	.4byte 0
+
+TrickHouseExt_Mart1:
+	.2byte ITEM_CANDY_MMMINI
+	.2byte ITEM_CANDY_SNICKERS
+	.2byte ITEM_CANDY_REESES
+	.2byte ITEM_SUPER_REPEL
+	@ .2byte ITEM_CANDY_EGGS
+	.2byte ITEM_CANDY_CARROT
+	
+	.2byte ITEM_CANDY_CHOCOLATE
+	.2byte ITEM_CANDY_STARBURST
+	.2byte ITEM_CANDY_LEMONDROP
+	.2byte ITEM_CANDY_WARHEAD
+	.2byte ITEM_CANDY_PRETZEL
+	.2byte ITEM_CANDY_VEROMANGO
+	.2byte ITEM_NONE
+TrickHouseExt_Mart2:
+	.2byte ITEM_CANDY_MMPEANUT
+	.2byte ITEM_CANDY_MALTESERS
+	.2byte ITEM_CANDY_OREO
+	.2byte ITEM_CANDY_GUMMYBEAR
+	.2byte ITEM_CANDY_APPLE
+	
+	.2byte ITEM_CANDY_CHOCOLATE
+	.2byte ITEM_CANDY_STARBURST
+	.2byte ITEM_CANDY_LEMONDROP
+	.2byte ITEM_CANDY_WARHEAD
+	.2byte ITEM_CANDY_PRETZEL
+	.2byte ITEM_CANDY_VEROMANGO
+	.2byte ITEM_NONE
+TrickHouseExt_Mart3:
+	.2byte ITEM_CANDY_TWIXLEFT
+	.2byte ITEM_CANDY_TWIXRIGHT
+	.2byte ITEM_CANDY_REESES
+	.2byte ITEM_CANDY_CADBURYCREME
+	.2byte ITEM_CANDY_PRUNE
+	
+	.2byte ITEM_CANDY_CHOCOLATE
+	.2byte ITEM_CANDY_STARBURST
+	.2byte ITEM_CANDY_LEMONDROP
+	.2byte ITEM_CANDY_WARHEAD
+	.2byte ITEM_CANDY_PRETZEL
+	.2byte ITEM_CANDY_VEROMANGO
+	.2byte ITEM_NONE
+TrickHouseExt_Mart4:
+	.2byte ITEM_CANDY_KINGCHOCNUT
+	.2byte ITEM_CANDY_MILKYWAY
+	.2byte ITEM_CANDY_VIOLETCRUMBLE
+	.2byte ITEM_CANDY_KITKAT
+	@ .2byte ITEM_CANDY_EGGDEVILED
+	.2byte ITEM_CANDY_CELERY
+	
+	.2byte ITEM_CANDY_CHOCOLATE
+	.2byte ITEM_CANDY_STARBURST
+	.2byte ITEM_CANDY_LEMONDROP
+	.2byte ITEM_CANDY_WARHEAD
+	.2byte ITEM_CANDY_PRETZEL
+	.2byte ITEM_CANDY_VEROMANGO
+	.2byte ITEM_NONE
+`
+
+// ----------------------------------------------------
+
+script TrickHouseTreeHouse_EventScript_TraderB {
+	lock
+	copyvar(VAR_0x8004, VAR_CANDY_TRADE_5)
+	special (CheckTMAndBufferMoveName)
+	callnative(BufferItemPrice)
+	msgbox ("I got this sweet TR for {STR_VAR_2}!\n"
+			"I'll sell it for {STR_VAR_1} candy corns.", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		checkmoney(VAR_0x8006, 0)
+		if (var(VAR_RESULT) == YES) {
+			takemoney(VAR_0x8006, 0)
+			giveitem_std(VAR_0x8004, 1)
+			msgbox("Nice doin' business.$")
+		} else {
+			msgbox("Are you trying to rip me off here?\n"
+					"You don't have the corns!$")
+		}
+	} else {
+		msgbox("Your loss.$")
+	}
+	release
+}
+script TrickHouseTreeHouse_EventScript_TraderC {
+	msgbox ("Welcome to the Treehouse Exchange.\p"
+			"Exchange those useless, nasty candy\n"
+			"corns for something you'll actually eat!\l"
+			"And some TRs too maybe!\p"
+			"We really gotta come up\n"
+			"with a better tagline.$", MSGBOX_NPC)
+}

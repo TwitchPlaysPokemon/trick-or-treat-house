@@ -31,3 +31,6 @@ gText_SaveError::
 gText_SavingDontTurnOffPower::
 	.string "SAVING…\n"
 	.string "DON'T TURN OFF THE POWER.$"
+
+gText_ConfirmEscape::
+	.string "Use an Escape Rope?$"

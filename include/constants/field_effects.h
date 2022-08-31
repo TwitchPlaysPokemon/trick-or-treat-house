@@ -68,6 +68,15 @@
 #define FLDEFF_RAYQUAZA_SPOTLIGHT        64
 #define FLDEFF_DESTROY_DEOXYS_ROCK       65
 #define FLDEFF_MOVE_DEOXYS_ROCK          66
+#define FLDEFF_EMOTE_NOTE_C              67
+#define FLDEFF_EMOTE_NOTE_D              68
+#define FLDEFF_EMOTE_NOTE_E              69
+#define FLDEFF_EMOTE_NOTE_F              70
+#define FLDEFF_EMOTE_NOTE_G              71
+#define FLDEFF_FALL_GRASS                72
+#define FLDEFF_JUMP_FALL_GRASS           73
+#define FLDEFF_FALL_LONG_GRASS           74
+#define FLDEFF_JUMP_FALL_LONG_GRASS      75
 
 #define FLDEFFOBJ_SHADOW_S              0
 #define FLDEFFOBJ_SHADOW_M              1
@@ -106,6 +115,8 @@
 #define FLDEFFOBJ_BUBBLES               34
 #define FLDEFFOBJ_SMALL_SPARKLE         35
 #define FLDEFFOBJ_RAYQUAZA              36
+#define FLDEFFOBJ_FALL_GRASS            37
+#define FLDEFFOBJ_FALL_LONG_GRASS       38
 
 #define FLDEFF_PAL_TAG_CUT_GRASS          0x1000
 #define FLDEFF_PAL_TAG_SECRET_POWER_TREE  0x1003
@@ -114,10 +125,12 @@
 #define FLDEFF_PAL_TAG_POKEBALL_GLOW      0x1007
 #define FLDEFF_PAL_TAG_SECRET_POWER_PLANT 0x1008
 #define FLDEFF_PAL_TAG_POKEBALL_TRAIL     0x1009
+#define FLDEFF_PAL_TAG_GENERAL_FALL       0x100A
 #define FLDEFF_PAL_TAG_ASH                0x100D
 #define FLDEFF_PAL_TAG_SAND_PILLAR        0x100E
 #define FLDEFF_PAL_TAG_SMALL_SPARKLE      0x100F
 #define FLDEFF_PAL_TAG_HOF_MONITOR        0x1010
 #define FLDEFF_PAL_TAG_UNKNOWN            0x1011
+#define FLDEFF_PAL_TAG_EMOTE_NOTES        0x1012
 
 #endif // GUARD_FIELD_EFFECT_CONSTANTS_H

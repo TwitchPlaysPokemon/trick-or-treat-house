@@ -10,6 +10,7 @@
 #include "battle_tv.h"
 #include "bg.h"
 #include "data.h"
+#include "event_data.h"
 #include "item.h"
 #include "item_menu.h"
 #include "link.h"
@@ -35,6 +36,7 @@
 #include "constants/songs.h"
 #include "constants/trainers.h"
 #include "constants/rgb.h"
+#include "constants/flags.h"
 
 static void PlayerHandleGetMonData(void);
 static void PlayerHandleSetMonData(void);
@@ -2572,9 +2574,12 @@ static void HandleChooseActionAfterDma3(void)
     }
 }
 
+extern const u8 gBort_BattleMenu[];
+extern const u8 gBort_WhatWillPkmnDo[];
 static void PlayerHandleChooseAction(void)
 {
     s32 i;
+    bool8 BORT = FlagGet(FLAG_SYS_BORT_MODE);
 
     gBattlerControllerFuncs[gActiveBattler] = HandleChooseActionAfterDma3;
     BattleTv_ClearExplosionFaintCause();
@@ -2584,7 +2589,7 @@ static void PlayerHandleChooseAction(void)
         ActionSelectionDestroyCursorAt(i);
 
     ActionSelectionCreateCursorAt(gActionSelectionCursor[gActiveBattler], 0);
-    BattleStringExpandPlaceholdersToDisplayedString(gText_WhatWillPkmnDo);
+    BattleStringExpandPlaceholdersToDisplayedString((BORT)?gBort_WhatWillPkmnDo: gText_WhatWillPkmnDo);
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_ACTION_PROMPT);
 }
 

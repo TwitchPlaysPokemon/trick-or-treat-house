@@ -1,25 +1,30 @@
 #ifndef GUARD_ITEM_H
 #define GUARD_ITEM_H
 
-#include "constants/item.h"
+#include "constants/items.h"
 
 typedef void (*ItemUseFunc)(u8);
 
 struct Item
 {
-    u8 name[ITEM_NAME_LENGTH];
+    const u8 *name;     // pointer to the name of the item
+    const u8 *plural;   // pointer to the pluralized name of the item, or null to simply append "s".
+    const u8 *quantum;  // pointer to the word used to indicate a single unit in pickup descriptions. If not null, then plural points to plural quantum.
     u16 itemId;
     u16 price;
     u8 holdEffect;
     u8 holdEffectParam;
     const u8 *description;
-    u8 importance;
+    u8 importance:2;
+    u8 keepItem:1;
+    u8 isCandy:1;
+    u8 battleUsage:2;
     bool8 registrability; // unused
     u8 pocket;
     u8 type;
     ItemUseFunc fieldUseFunc;
-    u8 battleUsage;
     ItemUseFunc battleUseFunc;
+    const u8 *const itemEffect;
     u8 secondaryId;
 };
 
@@ -32,6 +37,8 @@ struct BagPocket
 extern const struct Item gItems[];
 extern struct BagPocket gBagPockets[];
 
+u16 GetBagItemQuantity(u16 *quantity);
+void SetBagItemQuantity(u16 *quantity, u16 newValue);
 void ApplyNewEncryptionKeyToBagItems(u32 newKey);
 void ApplyNewEncryptionKeyToBagItems_(u32 newKey);
 void SetBagItemsPointers(void);
@@ -62,18 +69,23 @@ u16 CountTotalItemQuantityInBag(u16 itemId);
 bool8 AddPyramidBagItem(u16 itemId, u16 count);
 bool8 RemovePyramidBagItem(u16 itemId, u16 count);
 const u8 *ItemId_GetName(u16 itemId);
+const u8 *ItemId_GetPluralName(u16 itemId);
+const u8 *ItemId_GetQuantumString(u16 itemId);
 u16 ItemId_GetId(u16 itemId);
 u16 ItemId_GetPrice(u16 itemId);
 u8 ItemId_GetHoldEffect(u16 itemId);
 u8 ItemId_GetHoldEffectParam(u16 itemId);
 const u8 *ItemId_GetDescription(u16 itemId);
 u8 ItemId_GetImportance(u16 itemId);
+u8 ItemId_GetPuzzleItemExclusionFlag(u16 itemId);
 u8 ItemId_GetRegistrability(u16 itemId);
 u8 ItemId_GetPocket(u16 itemId);
 u8 ItemId_GetType(u16 itemId);
 ItemUseFunc ItemId_GetFieldFunc(u16 itemId);
 u8 ItemId_GetBattleUsage(u16 itemId);
+const u8 *const ItemId_GetItemEffect(u16 itemId);
 ItemUseFunc ItemId_GetBattleFunc(u16 itemId);
 u8 ItemId_GetSecondaryId(u16 itemId);
+void ResolveSpecialItemIds(u16 *itemId, u16 *count);
 
 #endif // GUARD_ITEM_H

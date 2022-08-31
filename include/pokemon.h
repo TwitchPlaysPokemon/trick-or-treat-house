@@ -535,4 +535,7 @@ struct MonSpritesGfxManager *CreateMonSpritesGfxManager(u8 managerId, u8 mode);
 void DestroyMonSpritesGfxManager(u8 managerId);
 u8 *MonSpritesGfxManager_GetSpritePtr(u8 managerId, u8 spriteNum);
 
+bool8 SendMonToPCSlot(struct Pokemon* mon, s32 boxNo, s32 boxPos);
+bool8 GetMonFromPCSlot(struct Pokemon* mon, s32 boxNo, s32 boxPos);
+
 #endif // GUARD_POKEMON_H

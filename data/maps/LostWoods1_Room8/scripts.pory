@@ -1,0 +1,10 @@
+raw `
+LostWoods1_Room8_MapScripts::
+	puzzle_info Puzzle_LostWoods1_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ON_LOAD, LostWoods1_Room8_OnLoad
+	.byte 0
+
+LostWoods1_Room8_OnLoad:
+	setmetatile 10, 10, 0x201, FALSE
+	end
+`

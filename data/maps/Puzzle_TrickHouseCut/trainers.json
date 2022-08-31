@@ -1,0 +1,22 @@
+[
+	{
+		"class": "SKELETON",
+		"name": "JEFFERY",
+		"party": [
+			{
+				"species": "SPECIES_ZIGZAGOON",
+				"level": 25
+			}
+		]
+	},
+	{
+		"class": "ALIEN",
+		"name": "EMILY",
+		"party": [
+			{
+				"species": "SPECIES_LOTAD",
+				"level": 25
+			}
+		]
+	}
+]

@@ -1,0 +1,53 @@
+raw `
+Puzzle_TrickHouseCut_MapScripts::
+	puzzle_info Puzzle_TrickHouseCut_Name, CommonAuthor_Trickmaster
+	puzzle_adjective Puzzle_TrickHouseCut_Adjective
+	puzzle_quip Puzzle_TrickHouseCut_Quip
+	puzzle_candylist Puzzle_TrickHouseCut_CandyList
+	.byte 0
+
+Puzzle_TrickHouseCut_Name:
+	.string "Shrub Shredding$"
+Puzzle_TrickHouseCut_Adjective:
+	.string "slicing good$"
+Puzzle_TrickHouseCut_Quip:
+	.string "Sometimes it's better to just do the\n"
+	.string "field moves yourself, you know?$"
+.align 2
+Puzzle_TrickHouseCut_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_ABUNDANT_05
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_COMMON_03
+	.2byte FLAG_CANDY_COMMON_04
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte 0
+
+@ -----------------------------------------------------
+`
+
+script Puzzle_TrickHouseCut_Trainer1 {
+	trainerbattle_single (TRAINER_01, 
+			"Nice costume.\n"
+			"Were you trick-or-treating too?$", 
+			"Ack! My costume got caught!$")
+	msgbox ("Battling in costume is something I've\n"
+			"never done before. How about you?$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrickHouseCut_Trainer2 {
+	trainerbattle_single (TRAINER_02, 
+			"Take me to your leader!$", 
+			"Ah! I come in peace!$")
+	msgbox ("You're a {POKEMON} are you?\p"
+			"I, as an extraterrestrial, have never\n"
+			"seen such a thing before!\p"
+			"Shush, CLEFAIRY and CRESSELIA\n"
+			"don't count.$", MSGBOX_AUTOCLOSE)
+}

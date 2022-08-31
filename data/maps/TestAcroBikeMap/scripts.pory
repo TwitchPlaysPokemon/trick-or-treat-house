@@ -1,0 +1,11 @@
+raw `
+TestAcroBikeMap_MapScripts::
+	.byte 0
+`
+
+script TestAcroBikeMap_GiveBike {
+	checkitem(ITEM_ACRO_BIKE, 1)
+	if (var(VAR_RESULT) == 0) {
+		giveitem_std(ITEM_ACRO_BIKE, 1)
+	}
+}

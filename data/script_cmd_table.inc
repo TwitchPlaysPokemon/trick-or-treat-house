@@ -12,7 +12,8 @@ gScriptCmdTable::
 	.4byte ScrCmd_callstd                   @ 0x09
 	.4byte ScrCmd_gotostd_if                @ 0x0a
 	.4byte ScrCmd_callstd_if                @ 0x0b
-	.4byte ScrCmd_returnram                 @ 0x0c
+@	.4byte ScrCmd_returnram                 @ 0x0c
+	.4byte ScrCmd_gotoram                   @ 0x0c
 	.4byte ScrCmd_endram                    @ 0x0d
 	.4byte ScrCmd_setmysteryeventstatus     @ 0x0e
 	.4byte ScrCmd_loadword                  @ 0x0f
@@ -74,7 +75,8 @@ gScriptCmdTable::
 	.4byte ScrCmd_checkitem                 @ 0x47
 	.4byte ScrCmd_checkitemtype             @ 0x48
 	.4byte ScrCmd_addpcitem                 @ 0x49
-	.4byte ScrCmd_checkpcitem               @ 0x4a
+@ 	.4byte ScrCmd_checkpcitem               @ 0x4a
+	.4byte ScrCmd_checknumitem              @ 0x4a
 	.4byte ScrCmd_adddecoration             @ 0x4b
 	.4byte ScrCmd_removedecoration          @ 0x4c
 	.4byte ScrCmd_checkdecor                @ 0x4d
@@ -114,7 +116,8 @@ gScriptCmdTable::
 	.4byte ScrCmd_multichoice               @ 0x6f
 	.4byte ScrCmd_multichoicedefault        @ 0x70
 	.4byte ScrCmd_multichoicegrid           @ 0x71
-	.4byte ScrCmd_drawbox                   @ 0x72
+@	.4byte ScrCmd_drawbox                   @ 0x72
+	.4byte ScrCmd_warpcustom                @ 0x72
 	.4byte ScrCmd_erasebox                  @ 0x73
 	.4byte ScrCmd_drawboxtext               @ 0x74
 	.4byte ScrCmd_showmonpic                @ 0x75
@@ -199,15 +202,16 @@ gScriptCmdTable::
 	.4byte ScrCmd_setescapewarp             @ 0xc4
 	.4byte ScrCmd_waitmoncry                @ 0xc5
 	.4byte ScrCmd_bufferboxname             @ 0xc6
-	.4byte ScrCmd_nop1                      @ 0xc7
-	.4byte ScrCmd_nop1                      @ 0xc8
-	.4byte ScrCmd_nop1                      @ 0xc9
-	.4byte ScrCmd_nop1                      @ 0xca
-	.4byte ScrCmd_nop1                      @ 0xcb
-	.4byte ScrCmd_nop1                      @ 0xcc
+	.4byte ScrCmd_warptodynamic               @ 0xc7
+	.4byte ScrCmd_callnative_wait             @ 0xc8
+	.4byte ScrCmd_switchmaplayout             @ 0xc9
+	.4byte ScrCmd_bufferselectedstring        @ 0xca
+	.4byte ScrCmd_dogroundeffect              @ 0xcb
+	.4byte ScrCmd_loadhalf                    @ 0xcc
 	.4byte ScrCmd_setmoneventlegal          @ 0xcd
 	.4byte ScrCmd_checkmoneventlegal        @ 0xce
-	.4byte ScrCmd_trywondercardscript       @ 0xcf
+@	.4byte ScrCmd_trywondercardscript       @ 0xcf
+	.4byte ScrCmd_callram                     @ 0xcf
 	.4byte ScrCmd_nop1                      @ 0xd0
 	.4byte ScrCmd_warpspinenter             @ 0xd1
 	.4byte ScrCmd_setmonmetlocation         @ 0xd2
@@ -227,6 +231,13 @@ gScriptCmdTable::
 	.4byte ScrCmd_warpwhitefade             @ 0xe0
 	.4byte ScrCmd_buffercontestname         @ 0xe1
 	.4byte ScrCmd_bufferitemnameplural      @ 0xe2
+	.4byte ScrCmd_selectpointer             @ 0xe3
+	.4byte ScrCmd_selectwarpdestination     @ 0xe4
+	.4byte ScrCmd_buffernumberstring2       @ 0xe5
+	.4byte ScrCmd_resolveitem               @ 0xe6
+	.4byte ScrCmd_setfieldeffectargstoobjectloc @ 0xe7
+	.4byte ScrCmd_mulvar                    @ 0xe8
+	.4byte ScrCmd_messagewordwrap           @ 0xe9
 
 gScriptCmdTableEnd::
 	.4byte ScrCmd_nop

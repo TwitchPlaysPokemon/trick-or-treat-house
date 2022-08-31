@@ -29,7 +29,14 @@ EWRAM_DATA u16 gSpecialVar_LastTalked = 0;
 EWRAM_DATA u16 gSpecialVar_Facing = 0;
 EWRAM_DATA u16 gSpecialVar_MonBoxId = 0;
 EWRAM_DATA u16 gSpecialVar_MonBoxPos = 0;
-EWRAM_DATA u16 gSpecialVar_Unused_0x8014 = 0;
+EWRAM_DATA u16 gSpecialVar_LastErrorNo = 0;
+EWRAM_DATA u16 gSpecialVar_InteractX = 0;
+EWRAM_DATA u16 gSpecialVar_InteractY = 0;
+EWRAM_DATA u16 gSpecialVar_MetatileX = 0;
+EWRAM_DATA u16 gSpecialVar_MetatileY = 0;
+EWRAM_DATA u16 gSpecialVar_LastWarpId = -1;
+EWRAM_DATA u16 gSpecialVar_SysForceStep = 0;
+EWRAM_DATA u16 gSpecialVar_BattleMod = 0;
 EWRAM_DATA static u8 sSpecialFlags[SPECIAL_FLAGS_SIZE] = {0};
 
 extern u16 *const gSpecialVars[];
@@ -128,10 +135,10 @@ void ClearMysteryGiftFlags(void)
     FlagClear(FLAG_MYSTERY_GIFT_9);
     FlagClear(FLAG_MYSTERY_GIFT_10);
     FlagClear(FLAG_MYSTERY_GIFT_11);
-    FlagClear(FLAG_MYSTERY_GIFT_12);
-    FlagClear(FLAG_MYSTERY_GIFT_13);
-    FlagClear(FLAG_MYSTERY_GIFT_14);
-    FlagClear(FLAG_MYSTERY_GIFT_15);
+    // FlagClear(FLAG_MYSTERY_GIFT_12);
+    // FlagClear(FLAG_MYSTERY_GIFT_13);
+    // FlagClear(FLAG_MYSTERY_GIFT_14);
+    // FlagClear(FLAG_MYSTERY_GIFT_15);
 }
 
 void ClearMysteryGiftVars(void)

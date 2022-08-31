@@ -1,0 +1,117 @@
+[
+	{
+		"class": "TARZAN",
+		"name": "CLAYTON",
+		"music": "MALE",
+		"party": [
+			{
+				"species": "SPECIES_SEVIPER",
+				"level": 29,
+				"moves": ["MOVE_CRUNCH", "MOVE_POISON_TAIL", "MOVE_GLARE", "MOVE_IRON_TAIL"]
+			},
+			{
+				"species": "SPECIES_PRIMEAPE",
+				"level": 29,
+				"moves": ["MOVE_RAGE", "MOVE_KARATE_CHOP", "MOVE_BULK_UP", "MOVE_THUNDERBOLT"]
+			}
+		]
+	},
+	{
+		"class": "SKELETON",
+		"name": "BONE JOVI",
+		"music": "MALE",
+		"party": [
+			{
+				"species": "SPECIES_CUBONE",
+				"level": 27,
+				"moves": ["MOVE_BONEMERANG", "MOVE_BONE_CLUB", "MOVE_FOCUS_ENERGY", "MOVE_HEADBUTT"]
+			},
+			{
+				"species": "SPECIES_MAROWAK",
+				"level": 27,
+				"moves": ["MOVE_BONEMERANG", "MOVE_BONE_RUSH", "MOVE_FOCUS_ENERGY", "MOVE_HEADBUTT"]
+			}
+		]
+	},
+	{
+		"class": "MERMAID",
+		"name": "ARIEL",
+		"female": true,
+		"music": "GIRL",
+		"party": [
+			{
+				"species": "SPECIES_KRABBY",
+				"level": 27,
+				"moves": ["MOVE_BUBBLE_BEAM", "MOVE_PROTECT", "MOVE_STOMP", "MOVE_VICE_GRIP"]
+			},
+			{
+				"species": "SPECIES_CORPHISH",
+				"level": 27,
+				"moves": ["MOVE_BUBBLE_BEAM", "MOVE_CRABHAMMER", "MOVE_KNOCK_OFF", "MOVE_RAIN_DANCE"]
+			},
+			{
+				"species": "SPECIES_OCTILLERY",
+				"level": 28,
+				"moves": ["MOVE_OCTAZOOKA", "MOVE_AURORA_BEAM", "MOVE_PSYBEAM", "MOVE_WATERFALL"]
+			}
+		]
+	},
+	{
+		"class": "CORPSE_BRIDE",
+		"name": "HELENA",
+		"female": true,
+		"music": "GIRL",
+		"party": [
+			{
+				"species": "SPECIES_PARAS",
+				"level": 30,
+				"moves": ["MOVE_SPORE", "MOVE_LEECH_LIFE", "MOVE_GIGA_DRAIN", "MOVE_POISON_POWDER"]
+			},
+			{
+				"species": "SPECIES_PARASECT",
+				"level": 31,
+				"moves": ["MOVE_SPORE", "MOVE_SLASH", "MOVE_GIGA_DRAIN", "MOVE_GROWTH"]
+			}
+		]
+	},
+	{
+		"class": "ALIEN",
+		"name": "ALEXA",
+		"female": true,
+		"music": "GIRL",
+		"party": [
+			{
+				"species": "SPECIES_CLEFAIRY",
+				"level": 28,
+				"moves": ["MOVE_METRONOME", "MOVE_MOONLIGHT", "MOVE_LIGHT_SCREEN", "MOVE_MINIMIZE"]
+			},
+			{
+				"species": "SPECIES_LUNATONE",
+				"level": 28,
+				"moves": ["MOVE_COSMIC_POWER", "MOVE_HYPNOSIS", "MOVE_PSYWAVE", "MOVE_ROCK_THROW"]
+			},
+			{
+				"species": "SPECIES_SOLROCK",
+				"level": 28,
+				"moves": ["MOVE_COSMIC_POWER", "MOVE_FIRE_SPIN", "MOVE_PSYWAVE", "MOVE_ROCK_THROW"]
+			}
+		]
+	},
+	{
+		"class": "PLASMA_KID",
+		"name": "M",
+		"music": "MALE",
+		"party": [
+			{
+				"species": "SPECIES_GOLBAT",
+				"level": 30,
+				"moves": ["MOVE_WING_ATTACK", "MOVE_CONFUSE_RAY", "MOVE_TOXIC", "MOVE_STEEL_WING"]
+			},
+			{
+				"species": "SPECIES_GRIMER",
+				"level": 31,
+				"moves": ["MOVE_ACID_ARMOR", "MOVE_SLUDGE", "MOVE_MINIMIZE", "MOVE_THIEF"]
+			}
+		]
+	}
+]

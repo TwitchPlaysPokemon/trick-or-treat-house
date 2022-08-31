@@ -48,7 +48,7 @@
 extern const u8 EventScript_ResetAllMapFlags[];
 
 static void ClearFrontierRecord(void);
-static void WarpToTruck(void);
+static void WarpFirstMap(void);
 static void ResetMiniGamesRecords(void);
 
 EWRAM_DATA bool8 gDifferentSaveFile = FALSE;
@@ -89,8 +89,8 @@ static void InitPlayerTrainerId(void)
 // L=A isnt set here for some reason.
 static void SetDefaultOptions(void)
 {
-    gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_MID;
-    gSaveBlock2Ptr->optionsWindowFrameType = 0;
+    gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_FAST;
+    gSaveBlock2Ptr->optionsWindowFrameType = 13;//0;
     gSaveBlock2Ptr->optionsSound = OPTIONS_SOUND_MONO;
     gSaveBlock2Ptr->optionsBattleStyle = OPTIONS_BATTLE_STYLE_SHIFT;
     gSaveBlock2Ptr->optionsBattleSceneOff = FALSE;
@@ -123,9 +123,13 @@ static void ClearFrontierRecord(void)
     gSaveBlock2Ptr->frontier.opponentNames[1][0] = EOS;
 }
 
-static void WarpToTruck(void)
+static void WarpFirstMap(void)
 {
-    SetWarpDestination(MAP_GROUP(INSIDE_OF_TRUCK), MAP_NUM(INSIDE_OF_TRUCK), WARP_ID_NONE, -1, -1);
+    if (gMain.debugMode) { 
+        SetWarpDestination(MAP_GROUP(TRICK_HOUSE_EXT), MAP_NUM(TRICK_HOUSE_EXT), 1, -1, -1);
+    } else { // Intro was skipped
+        SetWarpDestination(MAP_GROUP(RUSTBORO_CITY_CUTSCENE), MAP_NUM(RUSTBORO_CITY_CUTSCENE), 0, -1, -1);
+    }
     WarpIntoMap();
 }
 
@@ -152,6 +156,7 @@ void NewGameInitData(void)
 
     gDifferentSaveFile = TRUE;
     gSaveBlock2Ptr->encryptionKey = 0;
+    gSaveBlock2Ptr->gameVersionId = GAME_VERSION;
     ZeroPlayerPartyMons();
     ZeroEnemyPartyMons();
     ResetPokedex();
@@ -159,7 +164,8 @@ void NewGameInitData(void)
     ClearSav1();
     ClearAllMail();
     gSaveBlock2Ptr->specialSaveWarpFlags = 0;
-    gSaveBlock2Ptr->gcnLinkFlags = 0;
+    gSaveBlock2Ptr->sunOffset = Q_8_8(15 * 6); // Start at 3pm
+    // gSaveBlock2Ptr->gcnLinkFlags = 0;
     InitPlayerTrainerId();
     PlayTimeCounter_Reset();
     ClearPokedexFlags();
@@ -168,7 +174,11 @@ void NewGameInitData(void)
     ResetGabbyAndTy();
     ClearSecretBases();
     ClearBerryTrees();
+#if USE_CANDY_CURRENCY
+    SetMoney(&gSaveBlock1Ptr->money, 285);
+#else
     SetMoney(&gSaveBlock1Ptr->money, 3000);
+#endif
     SetCoins(0);
     ResetLinkContestBoolean();
     ResetGameStats();
@@ -191,18 +201,29 @@ void NewGameInitData(void)
     InitDewfordTrend();
     ResetFanClub();
     ResetLotteryCorner();
-    WarpToTruck();
+    WarpFirstMap();
     RunScriptImmediately(EventScript_ResetAllMapFlags);
     ResetMiniGamesRecords();
     InitUnionRoomChatRegisteredTexts();
     InitLilycoveLady();
-    ResetAllApprenticeData();
+    // ResetAllApprenticeData();
     ClearRankingHallRecords();
     InitMatchCallCounters();
     ClearMysteryGift();
     WipeTrainerNameRecords();
-    ResetTrainerHillResults();
+    // ResetTrainerHillResults();
     ResetContestLinkResults();
+    
+    if (!FlagGet(FLAG_SYS_RANDOM_DISABLED)) {
+        VarSet(VAR_CANDY_TRADE_MASTER, Random() % 3000);
+    }
+    
+    if (gMain.debugMode) {
+        FlagClear(FLAG_HIDE_DEBUG_OBJECTS);
+        VarSet(VAR_INTRO_COUNTER, 2);
+    } else {
+        FlagSet(FLAG_HIDE_DEBUG_OBJECTS);
+    }
 }
 
 static void ResetMiniGamesRecords(void)

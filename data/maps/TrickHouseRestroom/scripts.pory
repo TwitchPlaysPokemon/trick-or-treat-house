@@ -1,0 +1,567 @@
+mapscripts TrickHouseRestroom_MapScripts {
+	MAP_SCRIPT_ON_LOAD {
+		callnative (GetNumPuzzlesCompleted)
+		copyvar(VAR_0x800B, VAR_RESULT)
+		
+		if (!flag(FLAG_SYS_POKEMON_GET)) {
+			// Position the breeder for cutscene
+			setobjectxyperm(4, 8, 5)
+			setflag(FLAG_TEMP_F) // Hide counter people
+			setvar(VAR_TEMP_A, 1)
+			end
+		} 
+		elif (var(VAR_0x800B) == 0) {
+			setvar(VAR_TEMP_A, 3)
+			end
+		} 
+		else {
+			// Hide all pokeballs
+			setflag(FLAG_TEMP_1)
+			setflag(FLAG_TEMP_2)
+			setflag(FLAG_TEMP_3)
+			setflag(FLAG_TEMP_4)
+			setflag(FLAG_TEMP_5)
+			setflag(FLAG_TEMP_6)
+			setflag(FLAG_TEMP_7)
+			setflag(FLAG_TEMP_8)
+			setflag(FLAG_TEMP_9)
+			setflag(FLAG_TEMP_A)
+			setflag(FLAG_TEMP_B)
+			setflag(FLAG_TEMP_C)
+			// Move the breeder to the table
+			setobjectxyperm(4, 15, 5)
+		}
+		// Move people in and out of the place throughout the night
+		goto (TrickHouseRestroom_OnLoad_SetupVisitors)
+	}
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_TEMP_A, 1: TrickHouseRestroom_EventScript_IntroCutscene
+	]
+}
+
+// Notes: FLAG and VAR USE
+//    FLAG_TEMP_1 - FLAG_TEMP_C = Pokeballs on the table
+//    FLAG_TEMP_F = Making counter people disappear (during intro, due to max sprite limit)
+//    VAR_TEMP_A = Intro Progress
+//    VAR_TEMP_B = Friend Cutscene
+
+script TrickHouseRestroom_EventScript_IntroCutscene {
+	lockall
+	setvar(VAR_TEMP_A, 2)
+	// Walk in
+	applymovement(EVENT_OBJ_ID_PLAYER, TrickHouseRestroom_Movement_IntroPlayer1)
+	waitmovement(EVENT_OBJ_ID_PLAYER)
+	message("This room is called the Den.\p"
+			"You can come here later to heal,\n"
+			"teach moves, or change nicknames.\p$")
+	waitmessage
+	// Turn
+	applymovement(EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceRight)
+	applymovement(17, Common_Movement_WalkInPlaceRight)
+	message("This young man will get you some\n"
+			"{POKEMON} you can borrow for tonight.\p"
+			"If you fall in love with one, he'll be\n"
+			"here afterwards with adoption papers.\p$")
+	waitmessage
+	// Turn back
+	applymovement(EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceUp)
+	applymovement(17, Common_Movement_WalkInPlaceDown)
+	msgbox ("I'll be waiting outside.$")
+	closemessage
+	// Walk inside
+	applymovement(4, TrickHouseRestroom_Movement_IntroBreeder2)
+	applymovement(17, TrickHouseRestroom_Movement_IntroLady2)
+	applymovement(EVENT_OBJ_ID_PLAYER, TrickHouseRestroom_Movement_IntroPlayer2)
+	waitmovement(4)
+	//
+	msgbox ("Here's a selection of my buddies looking\n"
+			"for a good home.\p"
+			"See if any three of them strike\n"
+			"your fancy. I'll be waiting over here.$")
+	closemessage
+	//
+	applymovement(4, TrickHouseRestroom_Movement_IntroBreeder3)
+	applymovement(EVENT_OBJ_ID_PLAYER, TrickHouseRestroom_Movement_IntroPlayer3)
+	// // Generate Starter Pokemon during this movement
+	// setvar (VAR_MON_BOX_POS, 0)
+	// callnative(InitStarterPokemon)
+	// delay (2)
+	// setvar (VAR_MON_BOX_POS, 1)
+	// callnative(GetOrGenerateStarterPokemon)
+	// delay (2)
+	// setvar (VAR_MON_BOX_POS, 2)
+	// callnative(GetOrGenerateStarterPokemon)
+	// delay (2)
+	// setvar (VAR_MON_BOX_POS, 3)
+	// callnative(GetOrGenerateStarterPokemon)
+	// delay (2)
+	// setvar (VAR_MON_BOX_POS, 4)
+	// callnative(GetOrGenerateStarterPokemon)
+	// delay (2)
+	// setvar (VAR_MON_BOX_POS, 5)
+	// callnative(GetOrGenerateStarterPokemon)
+	// delay (2)
+	// setvar (VAR_MON_BOX_POS, 6)
+	// callnative(GetOrGenerateStarterPokemon)
+	// delay (2)
+	// setvar (VAR_MON_BOX_POS, 7)
+	// callnative(GetOrGenerateStarterPokemon)
+	// delay (2)
+	// setvar (VAR_MON_BOX_POS, 8)
+	// callnative(GetOrGenerateStarterPokemon)
+	// delay (2)
+	// setvar (VAR_MON_BOX_POS, 9)
+	// callnative(GetOrGenerateStarterPokemon)
+	// delay (2)
+	// setvar (VAR_MON_BOX_POS, 10)
+	// callnative(GetOrGenerateStarterPokemon)
+	// delay (2)
+	// setvar (VAR_MON_BOX_POS, 11)
+	// callnative(GetOrGenerateStarterPokemon)
+	// delay (2)
+	// // Finished generation
+	waitmovement(4)
+	setobjectxyperm(4, 10, 3)
+	setobjectmovementtype(4, MOVEMENT_TYPE_FACE_RIGHT)
+	clearflag(FLAG_TEMP_F)
+	releaseall
+}
+
+movement TrickHouseRestroom_Movement_IntroPlayer1 {
+	walk_up * 3
+}
+movement TrickHouseRestroom_Movement_IntroBreeder2 {
+	delay_16 * 2
+	delay_8
+	walk_right
+	walk_up * 2
+	walk_right * 7
+	walk_in_place_fastest_down
+}
+movement TrickHouseRestroom_Movement_IntroPlayer2 {
+	walk_right * 5
+	walk_up * 2
+	walk_right * 6
+	walk_in_place_fastest_down
+}
+movement TrickHouseRestroom_Movement_IntroLady2 {
+	delay_16
+	walk_in_place_fastest_right
+	delay_16 * 2
+	walk_down * 4
+	set_invisible
+}
+
+movement TrickHouseRestroom_Movement_IntroBreeder3 {
+	walk_up
+	walk_left * 2
+	walk_down
+	walk_left * 4
+	walk_in_place_fastest_right
+}
+movement TrickHouseRestroom_Movement_IntroPlayer3 {
+	delay_16 * 2
+	delay_8
+	walk_in_place_fastest_left
+	delay_8
+	delay_16 * 3
+	walk_in_place_fastest_down
+}
+
+// ----------------------------------------------------
+
+script TrickHouseRestroom_EventScript_Breeder {
+	if (var(VAR_TEMP_A) == 2) {
+		// Currently getting starting party
+		lock
+		getpartysize
+		switch (var(VAR_RESULT)) {
+			case 0:
+				msgbox ("What's wrong? Don't any of my buddies\n"
+						"appeal to you?\p"
+						"You'll need to choose three to do\n"
+						"the Trick House puzzles.\l"
+						"You don't have to keep them.$")
+				release
+				end
+			case 1:
+				msgbox ("How are you doing? You still need\n"
+						"two more {POKEMON} to do the puzzles.$")
+				release
+				end
+			case 2:
+				msgbox ("How are you doing?\n"
+						"You still need one more {POKEMON}.$")
+				release
+				end
+		}
+		message("How are you doing?\p"
+				"Oh, you've got a party now! Excellent!\p"
+				"Lemme make a note here about\n"
+				"which {POKEMON} you chose…$")
+		waitmessage
+		callnative(CleanUpStarterMon)
+		delay (30)
+		message("Alright, all good!$")
+		waitbuttonpress
+		closemessage
+		setvar(VAR_TEMP_A, 3)
+		// Move the player out
+		applymovement (4, TrickHouseRestroom_Movement_IntroBreeder4)
+		applymovement (EVENT_OBJ_ID_PLAYER, TrickHouseRestroom_Movement_IntroPlayer4)
+		waitmovement (4)
+		msgbox ("Good luck with the puzzles!$")
+		release
+		end
+	}
+	if (var(VAR_TEMP_A) == 3) {
+		lock
+		faceplayer
+		msgbox ("Hey, back to look at more? Don't blame\n"
+				"you: they're pretty cute, aren't they?\p"
+				"But you've got three with you already.\n"
+				"The Trick Master's rules say only three.$")
+		release
+		end
+	}
+	lock
+	msgbox ("Hey, how are my buddies treating you?\n"
+			"Are you treating them well too?\p"
+			"They're rescue {POKEMON}, so they might\n"
+			"be a bit timid at first. But they'll\l"
+			"warm up to you in no time!$")
+	release
+}
+
+movement TrickHouseRestroom_Movement_IntroBreeder4 {
+	walk_left
+	walk_up
+	walk_in_place_fastest_down
+	delay_16
+	walk_down
+	walk_right
+	walk_in_place_fastest_left
+}
+movement TrickHouseRestroom_Movement_IntroPlayer4 {
+	delay_8
+	walk_left * 3
+	walk_in_place_fastest_right
+}
+
+script TrickHouseRestroom_EventScript_Pokeball {
+	lockall
+	getpartysize
+	if (var(VAR_RESULT) >= 3) {
+		msgbox ("You only need three {POKEMON}. You\n"
+				"should leave some for other people.$")
+		releaseall
+		end
+	}
+	
+	copyvar(VAR_MON_BOX_POS, VAR_LAST_TALKED) // Use the local event id to index which starters
+	subvar(VAR_MON_BOX_POS, 5)
+	
+	do {
+		// Sets VAR_0x8001 to the selected mon species, also buffers mon name to STR_VAR_1
+		callnative(GetOrGenerateStarterPokemon) 
+		bufferspeciesname(1, VAR_0x8001) //buffer 2
+		showmonpic (VAR_0x8001, 10, 4)
+		playmoncry (VAR_0x8001, 0)
+		message("The name tag on this {STR_VAR_2} says\n"
+				"“{STR_VAR_1}”.")
+		waitmessage
+		multichoice(20, 6, 114, 0)
+		waitmoncry
+		switch (var(VAR_RESULT)) {
+			case 0: // choose
+				hidemonpic
+				goto (TrickHouseRestroom_EventScript_PokemonChoose)
+			case 1: // Status screen
+				hidemonpic
+				fadescreen(1)
+				callnative (ShowStarterMonSummaryScreen)
+				fadescreen(0)
+			case 2: // Cancel
+				setvar(VAR_RESULT, 127)
+		}
+	} while (var(VAR_RESULT) != 127)
+	hidemonpic
+	releaseall
+}
+text(global) PokemonAdoption_Choose { "Choose" }
+text(global) PokemonAdoption_Status { "Stats" }
+text(global) PokemonAdoption_Exit   { "Cancel" }
+
+script(local) TrickHouseRestroom_EventScript_PokemonChoose {
+	message("You chose {STR_VAR_1} for your party!$")
+	playfanfare (MUS_FANFA4)
+	removeobject (VAR_LAST_TALKED)
+	callnative (GivePlayerStarterMon)
+	waitmessage
+	waitfanfare
+	//
+	message("Would you like to give {STR_VAR_1} a\n"
+			"new nickname?$")
+	waitmessage
+	yesnobox(20, 8)
+	if (var(VAR_RESULT) == YES) {
+		getpartysize
+		copyvar (VAR_0x8004, VAR_RESULT)
+		subvar (VAR_0x8004, 1)
+		call (Common_EventScript_NameReceivedPokemon)
+	}
+	setflag (FLAG_SYS_POKEMON_GET)
+	releaseall
+}
+
+
+// ----------------------------------------------------
+// Counter people
+
+script TrickHouseRestroom_EventScript_Healer {
+	msgbox ("Hello there. Would you like me to\n"
+			"heal your {POKEMON}?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		incrementgamestat(GAME_STAT_USED_POKECENTER)
+		msgbox ("Alright, dearie. Let me have your\n"
+				"{POKEMON} for a moment.\p"
+				"The healing machine is in the back\n"
+				"room, so let me get my cane here…\p"
+				"Sit tight a moment.$")
+		closemessage
+		applymovement(1, TrickHouseRestroom_Movement_Healer10)
+		waitmovement (1)
+		special (SpawnCameraObject)
+		applymovement(EVENT_OBJ_ID_PLAYER, TrickHouseRestroom_Movement_Healer11)
+		waitmovement (EVENT_OBJ_ID_PLAYER)
+		applymovement(EVENT_OBJ_ID_PLAYER, TrickHouseRestroom_Movement_Healer12)
+		playse (SE_DANSA)
+		waitmovement (EVENT_OBJ_ID_PLAYER)
+		applymovement(EVENT_OBJ_ID_PLAYER, TrickHouseRestroom_Movement_Healer13)
+		playfanfare(MUS_ME_ASA)
+		special(HealPlayerParty)
+		waitfanfare
+		applymovement(1, TrickHouseRestroom_Movement_Healer20)
+		waitmovement (EVENT_OBJ_ID_PLAYER)
+		waitmovement (1)
+		special (RemoveCameraObject)
+		msgbox ("Here you are, dearie. Your {POKEMON}\n"
+				"are so well behaved.\p"
+				"Good luck with the puzzles!$")
+		release
+	} else {
+		msgbox ("Good luck, dearie.$")
+		release
+	}
+}
+movement TrickHouseRestroom_Movement_Healer10 {
+	delay_16 * 2
+	face_left
+	delay_16 * 3
+	face_right
+	delay_16 * 2
+	face_up
+	delay_16 * 3
+	walk_slow_up
+	set_invisible
+	delay_16 * 5
+}
+movement TrickHouseRestroom_Movement_Healer11 {
+	face_right
+	delay_16 * 3
+	face_down
+	delay_16 * 2
+	face_up
+	lock_facing_direction
+	walk_down
+	unlock_facing_direction
+	delay_16 * 4
+}
+movement TrickHouseRestroom_Movement_Healer12 {
+	jump_in_place_up
+	delay_16 * 4
+	walk_slow_left
+	walk_slow_up
+	walk_slow_right * 2
+	walk_slow_down
+	walk_slow_left * 2
+	walk_slow_up
+	walk_slow_right * 2
+}
+movement TrickHouseRestroom_Movement_Healer13 {
+	walk_slow_down
+	walk_slow_left * 2
+	walk_slow_up
+	walk_slow_right * 2
+	walk_in_place_up
+	delay_16 * 4
+	walk_fast_left
+	walk_in_place_up
+}
+movement TrickHouseRestroom_Movement_Healer20 {
+	delay_16 * 5
+	face_down
+	set_visible
+	walk_slow_down
+	delay_16 * 2
+	face_right
+	delay_16 * 3
+	face_left
+	delay_16 * 2
+	face_down
+	delay_16 * 2
+	step_end
+}
+
+
+
+script TrickHouseRestroom_EventScript_Relearner {
+	lock
+	msgbox ("I'm the MOVE REMINDER.\p"
+			"I can teach moves that your {POKEMON}\n"
+			"may have forgotten.\p"
+			"Would you like to teach one of your\n"
+			"{POKEMON} a forgotten move?$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == NO) {
+		msgbox ("Good luck on the puzzles.$")
+		release
+		end
+	}
+	goto(TrickHouseRestroom_EventScript_Relearner_Choose)
+}
+script TrickHouseRestroom_EventScript_Relearner_Choose {
+	special (ChooseMonForMoveRelearner)
+	waitstate
+	if (var(VAR_0x8004) == 255) {
+		msgbox ("Good luck on the puzzles.$")
+		release
+		end
+	}
+	elif (var(VAR_0x8005) == 0) {
+		msgbox ("Sorry…\p"
+				"It doesn't appear as if I have any moves\n"
+				"I can teach that POKéMON.$")
+		goto(TrickHouseRestroom_EventScript_Relearner_Choose)
+		end
+	}
+	msgbox ("Which move should I teach?$")
+	special(TeachMoveRelearnerMove)
+	waitstate
+	if (var(VAR_0x8004) == 0) {
+		msgbox ("Want me to teach anyone else?$")
+		goto(TrickHouseRestroom_EventScript_Relearner_Choose)
+		end
+	}
+	msgbox ("Good luck on the puzzles.$")
+	release
+}
+
+
+script TrickHouseRestroom_EventScript_Renamer {
+	lock
+	msgbox( "Hi, hi! I'm the NAME RATER!\n"
+			"I'm the fortune-teller of names!\p"
+			"I shall be pleased to rate your\n"
+			"POKéMON's nickname.$", MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		msgbox("Which POKéMON's nickname should\n"
+				"I critique?$")
+		special (ChoosePartyMon)
+		waitstate
+		if (var(VAR_0x8004) == 255) {
+			goto(TrickHouseRestroom_EventScript_Renamer_End)
+		}
+		specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
+		special(TV_CopyNicknameToStringVar1AndEnsureTerminated)
+		msgbox( "Hmmm… {STR_VAR_1}, is it? That is\n"
+				"quite a fine name you bestowed.\p"
+				"But! What say you, if I were to\n"
+				"suggest a slightly better name?$", MSGBOX_YESNO)
+		if (var(VAR_RESULT) == YES) {
+			msgbox( "Ah, good. Then, what shall the new\n"
+					"nickname be?$")
+			call (Common_EventScript_NameReceivedPokemon)
+			specialvar(VAR_RESULT, TV_CheckIfNicknameChanged)
+			special(TV_CopyNicknameToStringVar1AndEnsureTerminated)
+			if (var(VAR_RESULT) == TRUE) {
+				msgbox ("Done! From now on, this POKéMON\n"
+						"shall be known as {STR_VAR_1}!\p"
+						"It is a better name than before!\n"
+						"How fortunate for you!$")
+				release
+				end
+			} else {
+				msgbox ("Done! From now on, this POKéMON\n"
+						"shall be known as {STR_VAR_1}!\p"
+						"It looks no different from before,\n"
+						"and yet, this is vastly superior!\p"
+						"How fortunate for you!$")
+				release
+				end
+			}
+		} else {
+			goto(TrickHouseRestroom_EventScript_Renamer_End)
+		}
+	}
+	goto(TrickHouseRestroom_EventScript_Renamer_End)
+}
+script TrickHouseRestroom_EventScript_Renamer_End {
+	msgbox("Very well! Good luck tonight!$")
+	release
+}
+
+// ----------------------------------------------------
+
+script(local) TrickHouseRestroom_OnLoad_SetupVisitors {
+	// VAR_0x800B has the number of puzzles completed
+	if (var(VAR_0x800B) > 8 && var(VAR_0x800B) < 12) {
+		// Prof Birch is sitting here
+		setobjectxyperm(18, 11, 5)
+	}
+	
+	setvar(VAR_0x8000, MAP_TRICK_TREAT_PETALBURG_CITY)
+	callnative(CheckIfNextPuzzleIs)
+	if (var(VAR_RESULT)) {
+		setvar(VAR_TEMP_B, 1)
+		setobjectmovementtype(19, MOVEMENT_TYPE_FACE_RIGHT)
+		setobjectxyperm(19, 11, 8)
+		setobjectmovementtype(20, MOVEMENT_TYPE_FACE_UP)
+		setobjectxyperm(20, 12, 9)
+		setobjectmovementtype(21, MOVEMENT_TYPE_FACE_UP)
+		setobjectxyperm(21, 13, 9)
+	}
+}
+
+script TrickHouseRestroom_EventScript_VisitorBirch {
+	msgbox ("Hey, {PLAYER}!\n"
+			"How's your night been so far?\p"
+			"The Trick Master has really outdone\n"
+			"himself this year, hasn't he?\p"
+			"This place is really becoming the\n"
+			"Halloween Hangout House of Hoenn!$", MSGBOX_NPC)
+}
+
+script TrickHouseRestroom_EventScript_VisitorJoey {
+	if (var(VAR_TEMP_B) == 1) {
+		msgbox("{JOEY}: But then therere are these\n"
+				"runes down the side of the door.\p"
+				"I've seen them before in the\n"
+				"Ruins of Alph back in Johto.\p"
+				"They could well be spelling out…$", MSGBOX_SIGN)
+	}
+}
+
+script TrickHouseRestroom_EventScript_VisitorIrene {
+}
+
+script TrickHouseRestroom_EventScript_VisitorWally {
+}
+
+script TrickHouseRestroom_EventScript_VisitorJames {
+	if (var(VAR_TEMP_B) == 1) {
+		msgbox("{LINK}: This could be the best idea\n"
+				"you've ever had, {JOEY}.\p"
+				"Think of all the places we can go\n"
+				"trick or treating at…$", MSGBOX_SIGN)
+	}
+}

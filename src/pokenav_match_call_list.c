@@ -336,7 +336,7 @@ int GetMatchCallTrainerPic(int index)
     if (!state->matchCallEntries[index].isSpecialTrainer)
     {
         index = GetTrainerIdxByRematchIdx(state->matchCallEntries[index].headerId);
-        return gTrainers[index].trainerPic;
+        return GetTrainer(index)->trainerPic;
     }
 
     headerId = state->matchCallEntries[index].headerId;
@@ -344,7 +344,7 @@ int GetMatchCallTrainerPic(int index)
     if (index != REMATCH_TABLE_ENTRIES)
     {
         index = GetTrainerIdxByRematchIdx(index);
-        return gTrainers[index].trainerPic;
+        return GetTrainer(index)->trainerPic;
     }
 
     index = MatchCall_GetOverrideFacilityClass(headerId);
@@ -406,7 +406,7 @@ void BufferMatchCallNameAndDesc(struct PokenavMatchCallEntry *matchCallEntry, u8
     if (!matchCallEntry->isSpecialTrainer)
     {
         int index = GetTrainerIdxByRematchIdx(matchCallEntry->headerId);
-        const struct Trainer *trainer = &gTrainers[index];
+        const struct Trainer *trainer = GetTrainer(index);
         int class = trainer->trainerClass;
         className = gTrainerClassNames[class];
         trainerName = trainer->trainerName;
@@ -494,28 +494,28 @@ static bool32 HasRematchEntry(void)
 
 static bool32 ShouldDoNearbyMessage(void)
 {
-    struct Pokenav_MatchCallMenu *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_MAIN);
-    int selection = PokenavList_GetSelectedIndex();
-    if (!state->matchCallEntries[selection].isSpecialTrainer)
-    {
-        if (GetMatchCallMapSec(selection) == gMapHeader.regionMapSectionId)
-        {
-            if (!gSaveBlock1Ptr->trainerRematches[state->matchCallEntries[selection].headerId])
-                return TRUE;
-        }
-    }
-    else
-    {
-        if (state->matchCallEntries[selection].headerId == MC_HEADER_WATTSON)
-        {
-            if (GetMatchCallMapSec(selection) == gMapHeader.regionMapSectionId
-             && FlagGet(FLAG_BADGE05_GET) == TRUE)
-            {
-                if (!FlagGet(FLAG_WATTSON_REMATCH_AVAILABLE))
-                    return TRUE;
-            }
-        }
-    }
+    // struct Pokenav_MatchCallMenu *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_MAIN);
+    // int selection = PokenavList_GetSelectedIndex();
+    // if (!state->matchCallEntries[selection].isSpecialTrainer)
+    // {
+    //     if (GetMatchCallMapSec(selection) == gMapHeader.regionMapSectionId)
+    //     {
+    //         if (!gSaveBlock1Ptr->trainerRematches[state->matchCallEntries[selection].headerId])
+    //             return TRUE;
+    //     }
+    // }
+    // else
+    // {
+    //     if (state->matchCallEntries[selection].headerId == MC_HEADER_WATTSON)
+    //     {
+    //         if (GetMatchCallMapSec(selection) == gMapHeader.regionMapSectionId
+    //          && FlagGet(FLAG_BADGE05_GET) == TRUE)
+    //         {
+    //             if (!FlagGet(FLAG_WATTSON_REMATCH_AVAILABLE))
+    //                 return TRUE;
+    //         }
+    //     }
+    // }
 
     return FALSE;
 }

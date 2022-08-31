@@ -2492,9 +2492,9 @@ void SetLinkContestPlayerGfx(void)
             if (version == VERSION_RUBY || version == VERSION_SAPPHIRE)
             {
                 if (gLinkPlayers[i].gender == MALE)
-                    gContestMons[i].trainerGfxId = OBJ_EVENT_GFX_LINK_RS_BRENDAN;
+                    gContestMons[i].trainerGfxId = EVENT_OBJ_GFX_BRENDAN_NORMAL;
                 else
-                    gContestMons[i].trainerGfxId = OBJ_EVENT_GFX_LINK_RS_MAY;
+                    gContestMons[i].trainerGfxId = EVENT_OBJ_GFX_MAY_NORMAL;
             }
         }
 
@@ -2638,7 +2638,7 @@ static void Task_ShowContestEntryMonPic(u8 taskId)
         task->data[0]++;
         break;
     case 1:
-        task->data[5] = CreateWindowFromRect(10, 3, 8, 8);
+        task->data[5] = CreateWindowFromRect(10, 3, 8, 8, 100);
         SetStandardWindowBorderStyle(task->data[5], TRUE);
         task->data[0]++;
         break;

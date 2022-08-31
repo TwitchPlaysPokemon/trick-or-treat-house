@@ -19,6 +19,14 @@ enum {
     PALTAG_WEATHER_2
 };
 
+
+enum
+{
+    GAMMA_NONE,
+    GAMMA_NORMAL,
+    GAMMA_ALT,
+};
+
 struct Weather
 {
     union
@@ -228,5 +236,6 @@ void SetWeather(u32 weather);
 void DoCurrentWeather(void);
 void UpdateWeatherPerDay(u16 increment);
 void ResumePausedWeather(void);
+void UpdatePaletteGammaType(u8 index, u8 gammaType);
 
 #endif // GUARD_WEATHER_H

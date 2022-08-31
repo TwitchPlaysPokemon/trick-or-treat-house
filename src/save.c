@@ -478,6 +478,11 @@ static u8 TryLoadSaveSlot(u16 sectorId, struct SaveSectorLocation *locations)
         status = GetSaveValidStatus(locations);
         CopySaveSlotData(FULL_SAVE_SLOT, locations);
     }
+    
+    if (status == 1) {
+        if (gSaveBlock2Ptr->gameVersionId != GAME_VERSION)
+            status = 10;
+    }
 
     return status;
 }
@@ -708,10 +713,10 @@ static void UpdateSaveAddresses(void)
 u8 HandleSavingData(u8 saveType)
 {
     u8 i;
-    u32 *backupVar = gTrainerHillVBlankCounter;
+    // u32 *backupVar = gTrainerHillVBlankCounter;
     u8 *tempAddr;
 
-    gTrainerHillVBlankCounter = NULL;
+    // gTrainerHillVBlankCounter = NULL;
     UpdateSaveAddresses();
     switch (saveType)
     {
@@ -759,7 +764,7 @@ u8 HandleSavingData(u8 saveType)
         WriteSaveSectorOrSlot(FULL_SAVE_SLOT, gRamSaveSectorLocations);
         break;
     }
-    gTrainerHillVBlankCounter = backupVar;
+    // gTrainerHillVBlankCounter = backupVar;
     return 0;
 }
 

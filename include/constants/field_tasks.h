@@ -9,5 +9,10 @@
 #define STEP_CB_TRUCK               5
 #define STEP_CB_SECRET_BASE         6
 #define STEP_CB_CRACKED_FLOOR       7
+#define STEP_CB_WATER_TEMPLE        8
+#define STEP_CB_NPC_TRIGGER         9
+#define STEP_CB_HIDDEN_WALLS        10
+#define STEP_CB_CYCLE_TEXT_PAL      11
+#define STEP_CB_NPC_MULTI_TRIGGER   12
 
 #endif // GUARD_CONSTANTS_FIELD_TASKS_H

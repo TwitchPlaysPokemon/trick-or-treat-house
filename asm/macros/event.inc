@@ -77,7 +77,8 @@
 	.endm
 
 	@ Equivalent to the 'return' command for a RAM script.
-	.macro returnram
+	@ .macro returnram
+	.macro gotoram
 	.byte 0x0c
 	.endm
 
@@ -97,6 +98,13 @@
 	.byte 0x0f
 	.byte \destIndex
 	.4byte \value
+	.endm
+	
+	@ Sets the specified script bank to value or var.
+	.macro loadhalf a:req, value:req
+	.byte 0xcc
+	.byte \a
+	.2byte \value
 	.endm
 
 	@ Sets the value at the specified script data index to a fixed byte value.
@@ -158,6 +166,13 @@
 	@ Changes the value of destination by subtracting value to it. Overflow is not prevented (0x0000 - 1 = 0xFFFF).
 	.macro subvar destination:req, value:req
 	.byte 0x18
+	.2byte \destination
+	.2byte \value
+	.endm
+	
+	@ Changes the value of destination by adding value to it. Overflow is not prevented (0xFFFF + 1 = 0x0000).
+	.macro mulvar destination:req, value:req
+	.byte 0xe8
 	.2byte \destination
 	.2byte \value
 	.endm
@@ -253,6 +268,12 @@
 	@ Calls the native C function stored at func.
 	.macro callnative func:req
 	.byte 0x23
+	.4byte \func
+	.endm
+
+	@ Calls the native C function stored at `func`.
+	.macro callnative_wait func:req
+	.byte 0xc8
 	.4byte \func
 	.endm
 
@@ -518,6 +539,13 @@
 	.2byte \quantity
 	.endm
 
+	@ Attempts to add quantity of item index to the player's Bag. If the player has enough room, the item will be added and variable 0x800D (VAR_RESULT) will be set to 0x0001; otherwise, VAR_RESULT is set to 0x0000.
+	.macro resolveitem index:req, quantity:req
+	.byte 0xE6
+	.2byte \index
+	.2byte \quantity
+	.endm
+
 	@ Removes quantity of the specified item from the player's Bag. If the player has fewer than 'quantity' in their bag
 	@ then none will be removed and VAR_RESULT will be set to FALSE. Otherwise it will be set to TRUE.
 	.macro removeitem itemId:req, quantity=1
@@ -556,12 +584,18 @@
 	.2byte \quantity
 	.endm
 
-	@ Checks for quantity of the specified item in the player's PC.
-	.macro checkpcitem itemId:req, quantity=1
+	@ Checks for quantity amount of item index in the player's PC. Both arguments can be variables.
+	.macro getnumitem index:req
 	.byte 0x4a
-	.2byte \itemId
-	.2byte \quantity
+	.2byte \index
 	.endm
+
+@	@ Checks for quantity of the specified item in the player's PC.
+@	.macro checkpcitem itemId:req, quantity=1
+@	.byte 0x4a
+@	.2byte \itemId
+@	.2byte \quantity
+@	.endm
 
 	@ Adds a decoration to the player's PC.
 	.macro adddecoration decoration:req
@@ -699,6 +733,8 @@
 		.4byte \pointer3 @ event script
 	.elseif \type == TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT
 		.4byte \pointer1 @ text
+	.elseif \type == TRAINER_BATTLE_DOUBLE_NO_INTRO_TEXT
+		.4byte \pointer1 @ text
 	.elseif \type == TRAINER_BATTLE_DOUBLE
 		.4byte \pointer1 @ text
 		.4byte \pointer2 @ text
@@ -774,6 +810,11 @@
 	@ Starts a trainer battle, skipping intro text. Takes a trainer and loss text
 	.macro trainerbattle_no_intro trainer:req, lose_text:req
 	trainerbattle TRAINER_BATTLE_SINGLE_NO_INTRO_TEXT, \trainer, 0, \lose_text
+	.endm
+	
+	@ Starts a trainer battle, skipping intro text, takes a trainer and loss text
+	.macro trainerbattle_no_intro_double trainer:req, lose_text:req
+	trainerbattle TRAINER_BATTLE_DOUBLE_NO_INTRO_TEXT, \trainer, 0, \lose_text
 	.endm
 
 
@@ -923,9 +964,13 @@
 	.byte \ignoreBPress
 	.endm
 
-	@ Nopped in Emerald.
-	.macro drawbox
+	@ Clone of warp that does not play a sound effect nor fade the screen, nor fades the old map music.
+	.macro warpcustom map:req, warp:req, X:req, Y:req
 	.byte 0x72
+	map \map
+	.byte \warp
+	.2byte \X
+	.2byte \Y
 	.endm
 
 	@ Nopped in Emerald, but still consumes parameters.
@@ -1064,6 +1109,7 @@
 	.byte 0x80
 	stringvar \stringVarId
 	.2byte \item
+	.2byte \quantity
 	.endm
 
 	@ Writes the name of the specified decoration to the specified buffer.
@@ -1261,6 +1307,12 @@
 	.byte 0x9d
 	.byte \argNum
 	.2byte \value
+	.endm
+	
+	.macro setfieldeffectargstoobjectloc lid:req, arg:req
+	.byte 0xE7
+	.2byte \lid
+	.byte \arg
 	.endm
 
 	@ Blocks script execution until all playing field effect animations complete.
@@ -1541,40 +1593,49 @@
 	stringvar \stringVarId
 	.2byte \box
 	.endm
-
+	
 	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro textcolor color:req
+	.macro warptodynamic 
 	.byte 0xc7
-	.byte \color
 	.endm
 
-	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro loadhelp text:req
-	.byte 0xc8
-	.4byte \text
-	.endm
+	@ @ Used only in FireRed/LeafGreen, does nothing in Emerald.
+	@ .macro textcolor color:req
+	@ .byte 0xc7
+	@ .byte \color
+	@ .endm
+	
+	@ @ Used only in FireRed/LeafGreen, does nothing in Emerald.
+	@ .macro loadhelp text:req
+	@ .byte 0xc8
+	@ .4byte \text
+	@ .endm
 
-	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro unloadhelp
+	@ Use this command to switch layouts on the fly without reloading the map
+	.macro switchmaplayout index:req
 	.byte 0xc9
+	.2byte \index
 	.endm
 
-	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro signmsg
+	@ Buffers a pointer selected with selectpointer as a string in the given string variable
+	.macro bufferselectedstring index:req
 	.byte 0xca
+	.byte \index
 	.endm
 
-	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro normalmsg
+	@ Runs a ground effect on an object
+	.macro dogroundeffect lid:req, anim:req
 	.byte 0xcb
+	.byte \lid
+	.byte \anim
 	.endm
 
-	@ Used only in FireRed/LeafGreen, does nothing in Emerald.
-	.macro comparehiddenvar a:req, value:req
-	.byte 0xcc
-	.byte \a
-	.4byte \value
-	.endm
+	@ @ Used only in FireRed/LeafGreen, does nothing in Emerald.
+	@ .macro comparehiddenvar a:req, value:req
+	@ .byte 0xcc
+	@ .byte \a
+	@ .4byte \value
+	@ .endm
 
 	@ Sets the eventLegal bit for the Pokemon in the specified slot of the player's party.
 	.macro setmoneventlegal slot:req
@@ -1591,7 +1652,8 @@
 
 	@ Jumps to the ram script saved from a Wonder Card. If there is no valid saved Wonder Card or if the
 	@ ram script is invalid then this does nothing.
-	.macro trywondercardscript
+	@ .macro trywondercardscript
+	.macro callram
 	.byte 0xcf
 	.endm
 
@@ -1674,6 +1736,11 @@
 	.4byte \text
 	.endm
 
+	.macro messagewordwrap pointer:req
+	.byte 0xe9
+	.4byte \pointer
+	.endm
+
 	@ Equivalent to fadescreen but copies gPlttBufferUnfaded to gPaletteDecompressionBuffer on the fade out
 	@ and the reverse on the fade in, in effect saving gPlttBufferUnfaded to restore it.
 	.macro fadescreenswapbuffers mode:req
@@ -1728,7 +1795,53 @@
 	.2byte \item
 	.2byte \quantity
 	.endm
-
+	
+	@ Selects a pointer from the given array and loads it into word 0 (for use with message 0 and other things).
+	@ This version errors if the index goes past the end of the array.
+	@ Note: the array MUST be word-aligned with .align 2
+	.macro selectpointer array:req, index:req
+	.byte 0xe3
+	.4byte \array
+	.2byte \index
+	.byte 0
+	.endm
+	
+	@ Selects a pointer from the given array and loads it into word 0 (for use with message 0 and other things).
+	@ This version wraps the array (modulus) if the index would go past the end of the array.
+	@ Note: the array MUST be word-aligned with .align 2
+	.macro selectpointer_wrap array:req, index:req
+	.byte 0xe3
+	.4byte \array
+	.2byte \index
+	.byte 1
+	.endm
+	
+	@ Selects a pointer from the given array and loads it into word 0 (for use with message 0 and other things).
+	@ This version maxes out at the end of the array if the index would go past it.
+	@ Note: the array MUST be word-aligned with .align 2
+	.macro selectpointer_clamp array:req, index:req
+	.byte 0xe3
+	.4byte \array
+	.2byte \index
+	.byte 2
+	.endm
+	
+	@ Selects a pointer from the given array and loads it into word 0 (for use with message 0 and other things).
+	@ This version errors if the index goes past the end of the array.
+	@ Note: the array MUST be word-aligned with .align 2
+	.macro selectwarpdestination array:req, index:req
+	.byte 0xe4
+	.4byte \array
+	.2byte \index
+	.endm
+	
+	@ Converts the value of input to a decimal string, and writes that string to the specified buffer.
+	.macro buffernumberstring2 out:req, input:req, article=0
+	.byte 0xe5
+	.byte \out
+	.2byte \input
+	.byte \article  @0="one", 1="the"
+	.endm
 
 @ Supplementary
 
@@ -1885,6 +1998,10 @@
 	callstd \type
 	.endm
 
+	.macro msgbox_selected type=MSGBOX_DEFAULT
+	callstd \type
+	.endm
+	
 	@ Gives 'amount' of the specified 'item' to the player and prints a message with fanfare.
 	@ If the player doesn't have space for all the items then as many are added as possible, the
 	@ message indicates there is no room, and VAR_RESULT is set to FALSE. 

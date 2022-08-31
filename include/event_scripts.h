@@ -379,8 +379,8 @@ extern const u8 EventScript_UseCut[];
 extern const u8 EventScript_UseRockSmash[];
 
 //player pc
-extern const u8 LittlerootTown_BrendansHouse_2F_EventScript_TurnOffPlayerPC[];
-extern const u8 LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC[];
+// extern const u8 LittlerootTown_BrendansHouse_2F_EventScript_TurnOffPlayerPC[];
+// extern const u8 LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC[];
 
 // Mauville Old Man (Giddy)
 extern const u8 GiddyText_Is[];
@@ -515,6 +515,7 @@ extern const u8 MauvilleCity_PokemonCenter_1F_Text_HotSpringsStory[];
 extern const u8 LittlerootTown_BrendansHouse_2F_EventScript_PC[];
 extern const u8 LittlerootTown_MaysHouse_2F_EventScript_PC[];
 extern const u8 EventScript_PC[];
+extern const u8 EventScript_PC_DisabledAccess[];
 extern const u8 EventScript_TestSignpostMsg[];
 extern const u8 EventScript_HiddenItemScript[];
 extern const u8 EventScript_TV[];
@@ -524,7 +525,7 @@ extern const u8 EventScript_CableBoxResults[];
 extern const u8 EventScript_PokeBlockFeeder[];
 extern const u8 Route110_TrickHousePuzzle_EventScript_Door[];
 extern const u8 EventScript_RegionMap[];
-extern const u8 EventScript_RunningShoesManual[];
+extern const u8 EventScript_Pumpkin[];
 extern const u8 EventScript_PictureBookShelf[];
 extern const u8 EventScript_BookShelf[];
 extern const u8 EventScript_PokemonCenterBookShelf[];
@@ -532,8 +533,6 @@ extern const u8 EventScript_Vase[];
 extern const u8 EventScript_EmptyTrashCan[];
 extern const u8 EventScript_ShopShelf[];
 extern const u8 EventScript_Blueprint[];
-extern const u8 EventScript_WirelessBoxResults[];
-extern const u8 EventScript_CableBoxResults[];
 extern const u8 EventScript_Questionnaire[];
 extern const u8 EventScript_TrainerHillTimer[];
 extern const u8 EventScript_UseSurf[];
@@ -542,7 +541,8 @@ extern const u8 EventScript_CannotUseWaterfall[];
 extern const u8 EventScript_UseDive[];
 extern const u8 EventScript_UseDiveUnderwater[];
 extern const u8 EventScript_FallDownHole[];
-extern const u8 EventScript_FieldPoison[];
+extern const u8 Puzzle_EliteFloor_DropDownHole[];
+// extern const u8 EventScript_FieldPoison[];
 extern const u8 EventScript_EggHatch[];
 extern const u8 AbnormalWeather_EventScript_EndEventAndCleanup_1[];
 extern const u8 IslandCave_EventScript_OpenRegiEntrance[];
@@ -570,10 +570,10 @@ extern const u8 SecretBase_EventScript_PutAwayDecoration[];
 extern const u8 SecretBase_EventScript_SetDecoration[];
 
 // Battle Pyramid.
-extern const u8 BattlePyramid_Retire[];
-extern const u8 BattlePyramid_WarpToNextFloor[];
-extern const u8 BattlePyramid_TrainerBattle[];
-extern const u8 BattlePyramid_FindItemBall[];
+// extern const u8 BattlePyramid_Retire[];
+// extern const u8 BattlePyramid_WarpToNextFloor[];
+// extern const u8 BattlePyramid_TrainerBattle[];
+// extern const u8 BattlePyramid_FindItemBall[];
 
 // fldeff misc
 extern const u8 SecretBase_EventScript_CaveUseSecretPower[];

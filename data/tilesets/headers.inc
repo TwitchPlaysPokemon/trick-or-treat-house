@@ -830,3 +830,125 @@ gTileset_UnionRoom::
 	.4byte gMetatiles_UnionRoom
 	.4byte gMetatileAttributes_UnionRoom
 	.4byte NULL @ animation callback
+
+	.align 2
+gTileset_BellTower::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_BellTower
+	.4byte gTilesetPalettes_BellTower
+	.4byte gMetatiles_BellTower
+	.4byte gMetatileAttributes_BellTower
+	.4byte NULL
+
+	.align 2
+gTileset_TrickHouseMain::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_TrickHouseMain
+	.4byte gTilesetPalettes_TrickHouseMain
+	.4byte gMetatiles_TrickHouseMain
+	.4byte gMetatileAttributes_TrickHouseMain
+	.4byte NULL
+
+	.align 2
+gTileset_WaterfallCave::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_WaterfallCave
+	.4byte gTilesetPalettes_WaterfallCave
+	.4byte gMetatiles_WaterfallCave
+	.4byte gMetatileAttributes_WaterfallCave
+	.4byte InitTilesetAnim_Pacifidlog
+
+	.align 2
+gTileset_Autumn::
+	.byte TRUE @ is compressed
+	.byte FALSE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Autumn
+	.4byte gTilesetPalettes_Autumn
+	.4byte gMetatiles_Autumn
+	.4byte gMetatileAttributes_Autumn
+	.4byte InitTilesetAnim_General
+
+	.align 2
+gTileset_TrihardPokemonCenter:: @ 83DF8B4
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary tileset
+	.2byte 0 @ padding
+	.4byte gTilesetTiles_TrihardPokemonCenter
+	.4byte gTilesetPalettes_TrihardPokemonCenter
+	.4byte gMetatiles_TrihardPokemonCenter
+	.4byte gMetatileAttributes_TrihardPokemonCenter
+	.4byte NULL @ animation callback
+	.4byte NULL
+
+	.align 2
+gTileset_Desert::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Desert
+	.4byte gTilesetPalettes_Desert
+	.4byte gMetatiles_Desert
+	.4byte gMetatileAttributes_Desert
+	.4byte NULL
+
+	.align 2
+gTileset_Route110::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Route110
+	.4byte gTilesetPalettes_Route110
+	.4byte gMetatiles_Route110
+	.4byte gMetatileAttributes_Route110
+	.4byte NULL
+
+	.align 2
+gTileset_AltoMareEast::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_AltoMareEast
+	.4byte gTilesetPalettes_AltoMareEast
+	.4byte gMetatiles_AltoMareEast
+	.4byte gMetatileAttributes_AltoMareEast
+	.4byte NULL
+
+	.align 2
+gTileset_AltoMareWest::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_AltoMareWest
+	.4byte gTilesetPalettes_AltoMareWest
+	.4byte gMetatiles_AltoMareWest
+	.4byte gMetatileAttributes_AltoMareWest
+	.4byte NULL
+
+	.align 2
+gTileset_Goldenrod::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_Goldenrod
+	.4byte gTilesetPalettes_Goldenrod
+	.4byte gMetatiles_Goldenrod
+	.4byte gMetatileAttributes_Goldenrod
+	.4byte NULL
+
+	.align 2
+gTileset_SlateportExt::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_SlateportExt
+	.4byte gTilesetPalettes_SlateportExt
+	.4byte gMetatiles_SlateportExt
+	.4byte gMetatileAttributes_SlateportExt
+	.4byte NULL

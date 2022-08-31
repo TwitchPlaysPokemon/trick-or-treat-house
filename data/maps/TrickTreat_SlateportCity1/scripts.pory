@@ -1,0 +1,335 @@
+raw `
+TrickTreat_SlateportCity1_MapScripts::
+	puzzle_info TrickTreat_SlateportCity_Name, CommonAuthor_GameFreak
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrickTreat_SlateportCity1_FrameTable
+	.byte 0
+
+TrickTreat_SlateportCity_Name:
+	.string "Soliciting Slateport$"
+TrickTreat_SlateportCity1_FrameTable:
+	map_script_2 VAR_LAST_WARP_ID, 1, TrickTreat_SlateportCity1_FromCredits
+	.2byte 0
+`
+
+script(local) TrickTreat_SlateportCity1_FromCredits {
+	lockall
+	special(SpawnCameraObject)
+	clearflag(FLAG_DISABLE_FADE_INIT)
+	clearflag(FLAG_DISABLE_MAP_MUSIC_CHANGE)
+	
+	if (var(VAR_PUZZLE_00) == VAR_PUZZLE_01) {
+		incrementgamestat(GAME_STAT_ALL_CANDY_COLLECTED)
+	}
+	buffernumberstring(0, VAR_PUZZLE_00)
+	message("Candy Collected while biking: {STR_VAR_1}\p$")
+	applymovement(LID_CAMERA, TrickTreat_SlateportCity1_FromCredits_Movement1)
+	waitmovement(0)
+	fadescreen(51) // show player
+	waitmessage
+	
+	copyvar(VAR_PUZZLE_02, VAR_PUZZLE_00)
+	mulvar(VAR_PUZZLE_00, 10)
+	givemoney(VAR_PUZZLE_00, 0)
+	//TODO increment player money by this much?
+	call(PuzzleCommon_EventScript_IncrementPuzzle)
+	
+	applymovement(LID_CAMERA, TrickTreat_SlateportCity1_FromCredits_Movement2C)
+	applymovement(LID_PLAYER, TrickTreat_SlateportCity1_FromCredits_Movement2P)
+	
+	loadhalf(1, GAME_STAT_NUM_PUZZLES_COMPLETED)
+	callnative(DebugGetGameStat)
+	buffernumberstring(0, VAR_RESULT)
+	loadhalf(1, GAME_STAT_ALL_CANDY_COLLECTED)
+	callnative(DebugGetGameStat)
+	buffernumberstring(1, VAR_RESULT)
+	
+	message("Completed {STR_VAR_1} puzzles.\n"
+			"All candy found in {STR_VAR_2} puzzles\p$")
+	waitmovement(LID_PLAYER)
+	waitmessage
+	special(RemoveCameraObject)
+	
+	
+	loadhalf(1, GAME_STAT_CANDY_COLLECTED)
+	callnative(DebugGetGameStat)
+	buffernumberstring(0, VAR_RESULT)
+	
+	message("Total Candy Collected: {STR_VAR_1}\p"
+			"Thanks for playing!\n"
+			"Happy Halloween!$")
+	waitmessage
+	waitbuttonpress
+	closemessage
+	
+	applymovement(LID_PLAYER, TrickTreat_SlateportCity1_FromCredits_Movement3)
+	fadedefaultbgm
+	fadescreenspeed(52, 3) // show location
+	waitmovement(LID_PLAYER)
+	
+	// TODO: Show Slateport name
+	special(ShowMapNamePopup)
+	setflag(FLAG_HIDE_EXT_GAME_PLAYERS) //allow access back to trick house
+	setvar(VAR_LAST_WARP_ID, -1)
+	releaseall
+}
+movement TrickTreat_SlateportCity1_FromCredits_Movement1 {
+	slide_down * 6
+}
+movement TrickTreat_SlateportCity1_FromCredits_Movement2C {
+	walk_slow_up * 3
+}
+movement TrickTreat_SlateportCity1_FromCredits_Movement2P {
+	walk_slow_down * 3
+}
+movement TrickTreat_SlateportCity1_FromCredits_Movement3 {
+	walk_down * 7
+}
+
+// ----------------------------------------------------
+
+script TrickTreat_SlateportCity1_SignScript_CitySign {
+	msgbox ("SLATEPORT CITY\p"
+			"“The port where people and POKéMON\n"
+			"cross paths.”$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_SignScript_Shipyard {
+	msgbox ("STERN'S SHIPYARD\p"
+			"“Boarding of the SLATEPORT-LILYCOVE\n"
+			"ferry S.S. TIDAL is handled at the\l"
+			"HARBOR.”$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_SignScript_ContestHall {
+	msgbox ("POKéMON CONTEST HALL\n"
+			"“The gathering place for TRAINERS!”$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_SignScript_FanClub {
+	msgbox ("POKéMON FAN CLUB\n"
+			"“Calling all fans of POKéMON!”$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_SignScript_Museum {
+	msgbox ("“The endless sea sustains\n"
+			"all life.”\p"
+			"OCEANIC MUSEUM$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_SignScript_Harbor {
+	msgbox ("SLATEPORT HARBOR\p"
+			"“Enjoy a delightful cruise on\n"
+			"the ferry S.S. TIDAL.”$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_SignScript_Market {
+	msgbox ("SLATEPORT MARKET\n"
+			"“Unique items found nowhere else!”$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_SignScript_NameRater {
+	msgbox ("NAME RATER'S HOUSE\n"
+			"“POKéMON nicknames rated.”$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_SignScript_TrainerTips {
+	msgbox ("TRAINER TIPS\p"
+			"POKéMON at the same level may not\n"
+			"always have identical stats.\p"
+			"POKéMON raised by TRAINERS are said\n"
+			"to grow stronger than wild POKéMON.$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_SignScript_SeashoreHouse {
+	msgbox ("SEASHORE HOUSE\p"
+			"“May hot battles rage on hot sands!\n"
+			"The place for hot TRAINERS!”$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_SignScript_ClosedSign {
+	msgbox ("Closed for renovations$", MSGBOX_SIGN)
+}
+
+// ----------------------------------------------------
+// Candy Givers
+
+script TrickTreat_SlateportCity1_CandyGiver_Nurse {
+	lock
+	faceplayer
+	if (flag(FLAG_SLATEPORT_CANDY_NURSE)) {
+		msgbox ("The {POKEMON} CENTER is always there\n"
+				"for trainers everywhere.$")
+	} else {
+		msgbox ("Happy Halloween!\n"
+				"Please take some candy!$")
+		giveitem_std (ITEM_CANDY_ABUNDANT, 2)
+		msgbox ("The {POKEMON} CENTER is always there\n"
+				"for trainers everywhere.\p"
+				"Have a good night!$")
+		setflag (FLAG_SLATEPORT_CANDY_NURSE)
+	}
+	release
+}
+script TrickTreat_SlateportCity1_CandyGiver_Lass {
+	lock
+	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
+	msgbox ("Trick or Treat!\p"
+	// 		"Let's battle for it!$")
+	// trainerbattle_no_intro (TRAINER_33, 
+	// 		"Wow, alright. You win.$")
+	// setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
+	// msgbox ("Do you know how hard it was to win\n"
+	// 		"these off Norman? Sigh. Here.$")
+			"Go on, take it. I don't want any more\n"
+			"of these.$")
+	giveitem_std (ITEM_CANDY_ABUNDANT, 6)
+	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
+	setflag (FLAG_SLATEPORT_CANDY_LASS)
+	release
+}
+script TrickTreat_SlateportCity1_CandyGiver_Wattson {
+	lock
+	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
+	msgbox ("Wahahahaha!\n"
+			"Didn't expect to see me here, did you?\p"
+	// 		"Let's see if you're tough enough for\n"
+	// 		"my candy! Wahahaha!$")
+	// trainerbattle_no_intro (TRAINER_32, 
+	// 		"Wahahaha! Impressive!$")
+	// setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
+	// msgbox ("Excellent! Here, have some of this!$")
+			"Here's some candy for you!\n"
+			"Happy Halloween!$")
+	giveitem_std (ITEM_CANDY_RARE, 2)
+	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
+	setflag (FLAG_SLATEPORT_CANDY_WATTSON)
+	release
+}
+script TrickTreat_SlateportCity1_CandyGiver_BugCatcher {
+	lock
+	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
+	msgbox ("Oh, um, Merry Christmas or whatever.$")
+	// 		"Let's battle for it!$")
+	// trainerbattle_no_intro (TRAINER_34, 
+	// 		"Wow, alright. You win.$")
+	// setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
+	// msgbox ("Do you know how hard it was to win\n"
+	// 		"these off Norman? Sigh. Here.$")
+	giveitem_std (ITEM_CANDY_COMMON, 4)
+	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
+	setflag (FLAG_SLATEPORT_CANDY_BUGCATCHER)
+	release
+}
+
+
+// ----------------------------------------------------
+// Town People
+
+script TrickTreat_SlateportCity1_EventScript_Reporter {
+	msgbox ("He seems to be waiting to go live\n"
+			"at any moment.$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_TriggerScript_Reporter {
+	lock
+	msgbox ("Yo! Down in front!$")
+	closemessage
+	applymovement(LID_PLAYER, Common_Movement_BackOffRight1)
+	waitmovement(0)
+	release
+}
+
+
+script TrickTreat_SlateportCity1_EventScript_ShopkeepA {
+	msgbox ("Pupkins for sale!$", MSGBOX_NPC)
+}
+script TrickTreat_SlateportCity1_EventScript_Fisher {
+	msgbox ("Fish for sale!$", MSGBOX_NPC)
+}
+
+script TrickTreat_SlateportCity1_EventScript_WallaceFan1 {
+	msgbox ("AAAAAHHHHHH!!! WALLACE!!!\n"
+			"WILL YOU SIGN THIS FOR ME?!$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_EventScript_WallaceFan3 {
+	msgbox ("WALLACE!!! SIGN MY CHEST PLEASE!!$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_EventScript_WallaceFan2 {
+	msgbox ("WALLACE!!!\n"
+			"CAN I HAVE YOUR AUTOGRAPH?!$", MSGBOX_SIGN)
+}
+
+script TrickTreat_SlateportCity1_EventScript_Regi {
+	msgbox ("Um, it seems to be slumbering here?\n"
+			"what??$", MSGBOX_SIGN)
+}
+
+// ----------------------------------------------------
+// Regatta People
+
+script TrickTreat_SlateportCity1_EventScript_ManSnoozing {
+	msgbox ("He seems to be snoozing.$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_EventScript_Generic {
+	msgbox ("They seem enthralled watching the boats\n"
+			"racing around out in the water.$", MSGBOX_SIGN)
+}
+
+script TrickTreat_SlateportCity1_EventScript_Frogger {
+	msgbox ("Nothing like a nice cool dip in the\n"
+			"cold ocean in the middle of autumn!$", MSGBOX_NPC)
+}
+script TrickTreat_SlateportCity1_EventScript_Tuber {
+	msgbox ("The boats go WOOOOOOSH!", MSGBOX_NPC)
+}
+script TrickTreat_SlateportCity1_EventScript_TuberMother {
+	msgbox ("Benny, don't you want to sit and watch\n"
+			"the boats instead of running around?\p"
+			"Kids… I tell ya…$", MSGBOX_NPC)
+}
+
+script TrickTreat_SlateportCity1_EventScript_SandBoyfriend {
+	msgbox( "Oh man, no one's around!\p"
+			"How am I supposed to get my girlfriend\n"
+			"a drink now! She's gonna kill me!$", MSGBOX_NPC)
+}
+script TrickTreat_SlateportCity1_EventScript_SandLady {
+	msgbox ("My boyfriend buried me!\n"
+			"Then he left me here!\p"
+			"I'm gonna get him back once I can\n"
+			"move again.$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_EventScript_Artist {
+	msgbox ("The Slateport Halloween Regatta is so\n"
+			"inspiring! I shall paint the most\l"
+			"beautiful images of it later!$", MSGBOX_NPC)
+}
+
+script TrickTreat_SlateportCity1_EventScript_Quilava {
+	lock
+	faceplayer
+	waitse
+	playmoncry(SPECIES_QUILAVA, 0)
+	msgbox ("This Quilava seems to be lounging here,\n"
+			"looking very relaxed.$")
+	waitmoncry
+	applymovement(THIS_EVENT, Common_Movement_FaceDown)
+	waitmovement(0)
+	release
+}
+
+script TrickTreat_SlateportCity1_EventScript_Link {
+	msgbox ("I bet the King of Red Lions could go\n"
+			"faster than any of the boats out there.$", MSGBOX_NPC)
+}
+script TrickTreat_SlateportCity1_EventScript_Mermaid {
+	msgbox ("She seems to be asleep. Her fins twitch\n"
+			"in the chilly air.$", MSGBOX_SIGN)
+}
+
+script TrickTreat_SlateportCity1_EventScript_Zander {
+	msgbox ("Zander seems to be fast asleep.$", MSGBOX_SIGN)
+}
+script TrickTreat_SlateportCity1_EventScript_Carver {
+	msgbox ("Carver: Hey, uh… no hard feelings\n"
+			"about that big battle earlier…\p"
+			"Zander's kind of sensitive…\n"
+			"but he'll never admit it…\p"
+			"He still overreacts to any slight, after\n"
+			"growing up with people teasing him…\p"
+			"I just hope I'm not contributing to\n"
+			"that in the end.\p"
+			"…uh… you didn't need to know all that.\n"
+			"Happy Halloween!$", MSGBOX_NPC)
+}
+
+

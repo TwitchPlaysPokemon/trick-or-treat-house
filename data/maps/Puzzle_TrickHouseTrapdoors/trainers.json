@@ -1,0 +1,28 @@
+[
+	{
+		"class": "TRIATHLETE",
+		"pic": "RUNNING_TRIATHLETE_M",
+		"name": "BLAKE",
+		"party": [
+			{
+				"species": "SPECIES_DODUO",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "HIKER",
+		"music": "HIKER",
+		"name": "HECTOR",
+		"party": [
+			{
+				"species": "SPECIES_MACHOP",
+				"level": 27
+			},
+			{
+				"species": "SPECIES_GEODUDE",
+				"level": 27
+			}
+		]
+	}
+]

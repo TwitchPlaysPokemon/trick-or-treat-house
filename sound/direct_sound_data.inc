@@ -151,6 +151,10 @@ DirectSoundWaveData_ethnic_flavours_kotsuzumi::
 	.incbin "sound/direct_sound_samples/ethnic_flavours_kotsuzumi.bin"
 
 	.align 2
+DirectSoundWaveData_sc88pro_piano1_36::
+	.incbin "sound/direct_sound_samples/sc88_piano1_36.bin"
+
+	.align 2
 DirectSoundWaveData_sc88pro_piano1_48::
 	.incbin "sound/direct_sound_samples/sc88pro_piano1_48.bin"
 

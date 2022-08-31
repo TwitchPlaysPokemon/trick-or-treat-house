@@ -10,10 +10,14 @@
 #include "strings.h"
 #include "load_save.h"
 #include "item_use.h"
-#include "battle_pyramid.h"
-#include "battle_pyramid_bag.h"
+#include "text.h"
+#include "overworld.h"
+#include "random.h"
+// #include "battle_pyramid.h"
+// #include "battle_pyramid_bag.h"
 #include "constants/items.h"
 #include "constants/hold_effects.h"
+#include "constants/item_effects.h"
 
 extern u16 gUnknown_0203CF30[];
 
@@ -25,16 +29,17 @@ static bool8 CheckPyramidBagHasSpace(u16 itemId, u16 count);
 EWRAM_DATA struct BagPocket gBagPockets[POCKETS_COUNT] = {0};
 
 // rodata
+#include "data/pokemon/item_effects.h"
 #include "data/text/item_descriptions.h"
 #include "data/items.h"
 
 // code
-static u16 GetBagItemQuantity(u16 *quantity)
+u16 GetBagItemQuantity(u16 *quantity)
 {
     return gSaveBlock2Ptr->encryptionKey ^ *quantity;
 }
 
-static void SetBagItemQuantity(u16 *quantity, u16 newValue)
+void SetBagItemQuantity(u16 *quantity, u16 newValue)
 {
     *quantity =  newValue ^ gSaveBlock2Ptr->encryptionKey;
 }
@@ -66,14 +71,17 @@ void ApplyNewEncryptionKeyToBagItems_(u32 newKey) // really GF?
 
 void SetBagItemsPointers(void)
 {
+    gBagPockets[CANDY_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_Candy;
+    gBagPockets[CANDY_POCKET].capacity = BAG_CANDY_COUNT;
+    
     gBagPockets[ITEMS_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_Items;
     gBagPockets[ITEMS_POCKET].capacity = BAG_ITEMS_COUNT;
 
     gBagPockets[KEYITEMS_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_KeyItems;
     gBagPockets[KEYITEMS_POCKET].capacity = BAG_KEYITEMS_COUNT;
 
-    gBagPockets[BALLS_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_PokeBalls;
-    gBagPockets[BALLS_POCKET].capacity = BAG_POKEBALLS_COUNT;
+    // gBagPockets[BALLS_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_PokeBalls;
+    // gBagPockets[BALLS_POCKET].capacity = BAG_POKEBALLS_COUNT;
 
     gBagPockets[TMHM_POCKET].itemSlots = gSaveBlock1Ptr->bagPocket_TMHM;
     gBagPockets[TMHM_POCKET].capacity = BAG_TMHM_COUNT;
@@ -84,24 +92,81 @@ void SetBagItemsPointers(void)
 
 void CopyItemName(u16 itemId, u8 *dst)
 {
-    StringCopy(dst, ItemId_GetName(itemId));
+    if (FlagGet(FLAG_SYS_BORT_MODE))
+        StringUppercase(dst, ItemId_GetName(itemId));
+    else
+        StringCopy(dst, ItemId_GetName(itemId));
 }
 
 void CopyItemNameHandlePlural(u16 itemId, u8 *dst, u32 quantity)
 {
-    if (itemId == ITEM_POKE_BALL)
+    // Handle berries
+    if (itemId >= ITEM_CHERI_BERRY && itemId <= ITEM_ENIGMA_BERRY)
     {
-        if (quantity < 2)
-            StringCopy(dst, ItemId_GetName(ITEM_POKE_BALL));
-        else
-            StringCopy(dst, gText_PokeBalls);
+        GetBerryCountString(dst, gBerries[itemId - ITEM_CHERI_BERRY].name, quantity);
     }
+    // handle singular cases
+    else if (quantity == 1)
+    {
+        // If the item has a quantum string ("a jar of Honey")
+        if (ItemId_GetQuantumString(itemId) != NULL)
+        {
+            dst = StringCopy(dst, ItemId_GetQuantumString(itemId));
+            *dst = CHAR_SPACE; dst++;
+            *dst = CHAR_o; dst++;
+            *dst = CHAR_f; dst++;
+            *dst = CHAR_SPACE; dst++;
+            dst = StringCopy(dst, ItemId_GetName(itemId));
+            *dst = EOS;
+        }
+        // otherwise ("Great Ball")
+        else
+        {
+            StringCopy(dst, ItemId_GetName(itemId));
+        }
+    }
+    // handle plural cases
     else
     {
-        if (itemId >= FIRST_BERRY_INDEX && itemId <= LAST_BERRY_INDEX)
-            GetBerryCountString(dst, gBerries[itemId - FIRST_BERRY_INDEX].name, quantity);
+        // If the item has a quantum string ("2 jars of Honey")
+        if (ItemId_GetQuantumString(itemId) != NULL)
+        {
+            // If the quantum doesn't have a special plural
+            if (ItemId_GetPluralName(itemId) == NULL)
+            {
+                dst = StringCopy(dst, ItemId_GetQuantumString(itemId));
+                *dst = CHAR_s; dst++;
+                *dst = CHAR_SPACE; dst++;
+                *dst = CHAR_o; dst++;
+                *dst = CHAR_f; dst++;
+                *dst = CHAR_SPACE; dst++;
+                dst = StringCopy(dst, ItemId_GetName(itemId));
+                *dst = EOS;
+            }
+            // The plural name is the pluralized quantum in this case 
+            else
+            {
+                dst = StringCopy(dst, ItemId_GetPluralName(itemId));
+                *dst = CHAR_SPACE; dst++;
+                *dst = CHAR_o; dst++;
+                *dst = CHAR_f; dst++;
+                *dst = CHAR_SPACE; dst++;
+                dst = StringCopy(dst, ItemId_GetName(itemId));
+                *dst = EOS;
+            }
+        }
+        // No quantum string, no special plural ("2 Great Balls")
+        else if (ItemId_GetPluralName(itemId) == NULL)
+        {
+            dst = StringCopy(dst, ItemId_GetName(itemId));
+            *dst = CHAR_s; dst++;
+            *dst = EOS;
+        }
+        // No quantum string, special plural ("2 Red Scarves")
         else
-            StringCopy(dst, ItemId_GetName(itemId));
+        {
+            StringCopy(dst, ItemId_GetPluralName(itemId));
+        }
     }
 }
 
@@ -139,8 +204,8 @@ bool8 CheckBagHasItem(u16 itemId, u16 count)
 
     if (ItemId_GetPocket(itemId) == 0)
         return FALSE;
-    if (InBattlePyramid() || FlagGet(FLAG_STORING_ITEMS_IN_PYRAMID_BAG) == TRUE)
-        return CheckPyramidBagHasItem(itemId, count);
+    // if (InBattlePyramid() || FlagGet(FLAG_SPECIAL_FLAG_0x4004) == TRUE)
+    //     return CheckPyramidBagHasItem(itemId, count);
     pocket = ItemId_GetPocket(itemId) - 1;
     // Check for item slots that contain the item
     for (i = 0; i < gBagPockets[pocket].capacity; i++)
@@ -187,10 +252,10 @@ bool8 CheckBagHasSpace(u16 itemId, u16 count)
     if (ItemId_GetPocket(itemId) == POCKET_NONE)
         return FALSE;
 
-    if (InBattlePyramid() || FlagGet(FLAG_STORING_ITEMS_IN_PYRAMID_BAG) == TRUE)
-    {
-        return CheckPyramidBagHasSpace(itemId, count);
-    }
+    // if (InBattlePyramid() || FlagGet(FLAG_SPECIAL_FLAG_0x4004) == TRUE)
+    // {
+    //     return CheckPyramidBagHasSpace(itemId, count);
+    // }
 
     pocket = ItemId_GetPocket(itemId) - 1;
     if (pocket != BERRIES_POCKET)
@@ -244,16 +309,18 @@ bool8 CheckBagHasSpace(u16 itemId, u16 count)
 bool8 AddBagItem(u16 itemId, u16 count)
 {
     u8 i;
+    
+    // ResolveSpecialItemIds(&itemId, &count);
 
     if (ItemId_GetPocket(itemId) == POCKET_NONE)
         return FALSE;
 
     // check Battle Pyramid Bag
-    if (InBattlePyramid() || FlagGet(FLAG_STORING_ITEMS_IN_PYRAMID_BAG) == TRUE)
-    {
-        return AddPyramidBagItem(itemId, count);
-    }
-    else
+    // if (InBattlePyramid() || FlagGet(FLAG_SPECIAL_FLAG_0x4004) == TRUE)
+    // {
+    //     return AddPyramidBagItem(itemId, count);
+    // }
+    // else
     {
         struct BagPocket *itemPocket;
         struct ItemSlot *newItems;
@@ -265,9 +332,9 @@ bool8 AddBagItem(u16 itemId, u16 count)
         newItems = AllocZeroed(itemPocket->capacity * sizeof(struct ItemSlot));
         memcpy(newItems, itemPocket->itemSlots, itemPocket->capacity * sizeof(struct ItemSlot));
 
-        if (pocket != BERRIES_POCKET)
-            slotCapacity = MAX_BAG_ITEM_CAPACITY;
-        else
+        // if (pocket != BERRIES_POCKET)
+        //     slotCapacity = MAX_BAG_ITEM_CAPACITY;
+        // else
             slotCapacity = MAX_BERRY_CAPACITY;
 
         for (i = 0; i < itemPocket->capacity; i++)
@@ -344,6 +411,16 @@ bool8 AddBagItem(u16 itemId, u16 count)
         }
         memcpy(itemPocket->itemSlots, newItems, itemPocket->capacity * sizeof(struct ItemSlot));
         Free(newItems);
+        switch (itemId) {
+            case ITEM_CUT_ITEM:       FlagSet(FLAG_PICKED_UP_CUT_ITEM); break;
+            case ITEM_FLASH_ITEM:     FlagSet(FLAG_PICKED_UP_FLASH_ITEM); break;
+            case ITEM_ROCKSMASH_ITEM: FlagSet(FLAG_PICKED_UP_SMASH_ITEM); break;
+            case ITEM_STRENGTH_ITEM:  FlagSet(FLAG_PICKED_UP_STRENGTH_ITEM); break;
+            case ITEM_SURF_ITEM:      FlagSet(FLAG_PICKED_UP_SURF_ITEM); break;
+            case ITEM_FLY_ITEM:       FlagSet(FLAG_PICKED_UP_FLY_ITEM); break;
+            case ITEM_DIVE_ITEM:      FlagSet(FLAG_PICKED_UP_DIVE_ITEM); break;
+            case ITEM_WATERFALL_ITEM: FlagSet(FLAG_PICKED_UP_WATERFALL_ITEM); break;
+        }
         return TRUE;
     }
 }
@@ -355,13 +432,24 @@ bool8 RemoveBagItem(u16 itemId, u16 count)
 
     if (ItemId_GetPocket(itemId) == POCKET_NONE || itemId == ITEM_NONE)
         return FALSE;
-
-    // check Battle Pyramid Bag
-    if (InBattlePyramid() || FlagGet(FLAG_STORING_ITEMS_IN_PYRAMID_BAG) == TRUE)
-    {
-        return RemovePyramidBagItem(itemId, count);
+    
+    switch (itemId) {
+        case ITEM_CUT_ITEM:       FlagClear(FLAG_PICKED_UP_CUT_ITEM); break;
+        case ITEM_FLASH_ITEM:     FlagClear(FLAG_PICKED_UP_FLASH_ITEM); break;
+        case ITEM_ROCKSMASH_ITEM: FlagClear(FLAG_PICKED_UP_SMASH_ITEM); break;
+        case ITEM_STRENGTH_ITEM:  FlagClear(FLAG_PICKED_UP_STRENGTH_ITEM); break;
+        case ITEM_SURF_ITEM:      FlagClear(FLAG_PICKED_UP_SURF_ITEM); break;
+        case ITEM_FLY_ITEM:       FlagClear(FLAG_PICKED_UP_FLY_ITEM); break;
+        case ITEM_DIVE_ITEM:      FlagClear(FLAG_PICKED_UP_DIVE_ITEM); break;
+        case ITEM_WATERFALL_ITEM: FlagClear(FLAG_PICKED_UP_WATERFALL_ITEM); break;
     }
-    else
+    
+    // check Battle Pyramid Bag
+    // if (InBattlePyramid() || FlagGet(FLAG_SPECIAL_FLAG_0x4004) == TRUE)
+    // {
+    //     return RemovePyramidBagItem(itemId, count);
+    // }
+    // else
     {
         u8 pocket;
         u8 var;
@@ -558,21 +646,21 @@ void RemovePCItem(u8 index, u16 count)
 
 void CompactPCItems(void)
 {
-    u16 i;
-    u16 j;
+    // u16 i;
+    // u16 j;
 
-    for (i = 0; i < PC_ITEMS_COUNT - 1; i++)
-    {
-        for (j = i + 1; j < PC_ITEMS_COUNT; j++)
-        {
-            if (gSaveBlock1Ptr->pcItems[i].itemId == 0)
-            {
-                struct ItemSlot temp = gSaveBlock1Ptr->pcItems[i];
-                gSaveBlock1Ptr->pcItems[i] = gSaveBlock1Ptr->pcItems[j];
-                gSaveBlock1Ptr->pcItems[j] = temp;
-            }
-        }
-    }
+    // for (i = 0; i < PC_ITEMS_COUNT - 1; i++)
+    // {
+    //     for (j = i + 1; j < PC_ITEMS_COUNT; j++)
+    //     {
+    //         if (gSaveBlock1Ptr->pcItems[i].itemId == 0)
+    //         {
+    //             struct ItemSlot temp = gSaveBlock1Ptr->pcItems[i];
+    //             gSaveBlock1Ptr->pcItems[i] = gSaveBlock1Ptr->pcItems[j];
+    //             gSaveBlock1Ptr->pcItems[j] = temp;
+    //         }
+    //     }
+    // }
 }
 
 void SwapRegisteredBike(void)
@@ -691,182 +779,223 @@ u16 CountTotalItemQuantityInBag(u16 itemId)
 
 static bool8 CheckPyramidBagHasItem(u16 itemId, u16 count)
 {
-    u8 i;
-    u16 *items = gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode];
-    u8 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[gSaveBlock2Ptr->frontier.lvlMode];
+    // u8 i;
+    // u16 *items = gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode];
+    // u8 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[gSaveBlock2Ptr->frontier.lvlMode];
 
-    for (i = 0; i < PYRAMID_BAG_ITEMS_COUNT; i++)
-    {
-        if (items[i] == itemId)
-        {
-            if (quantities[i] >= count)
-                return TRUE;
+    // for (i = 0; i < PYRAMID_BAG_ITEMS_COUNT; i++)
+    // {
+    //     if (items[i] == itemId)
+    //     {
+    //         if (quantities[i] >= count)
+    //             return TRUE;
 
-            count -= quantities[i];
-            if (count == 0)
-                return TRUE;
-        }
-    }
+    //         count -= quantities[i];
+    //         if (count == 0)
+    //             return TRUE;
+    //     }
+    // }
 
-    return FALSE;
+    // return FALSE;
 }
 
 static bool8 CheckPyramidBagHasSpace(u16 itemId, u16 count)
 {
-    u8 i;
-    u16 *items = gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode];
-    u8 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[gSaveBlock2Ptr->frontier.lvlMode];
+    // u8 i;
+    // u16 *items = gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode];
+    // u8 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[gSaveBlock2Ptr->frontier.lvlMode];
 
-    for (i = 0; i < PYRAMID_BAG_ITEMS_COUNT; i++)
-    {
-        if (items[i] == itemId || items[i] == ITEM_NONE)
-        {
-            if (quantities[i] + count <= MAX_BAG_ITEM_CAPACITY)
-                return TRUE;
+    // for (i = 0; i < PYRAMID_BAG_ITEMS_COUNT; i++)
+    // {
+    //     if (items[i] == itemId || items[i] == ITEM_NONE)
+    //     {
+    //         if (quantities[i] + count <= MAX_BAG_ITEM_CAPACITY)
+    //             return TRUE;
 
-            count = (quantities[i] + count) - MAX_BAG_ITEM_CAPACITY;
-            if (count == 0)
-                return TRUE;
-        }
-    }
+    //         count = (quantities[i] + count) - MAX_BAG_ITEM_CAPACITY;
+    //         if (count == 0)
+    //             return TRUE;
+    //     }
+    // }
 
-    return FALSE;
+    // return FALSE;
 }
 
 bool8 AddPyramidBagItem(u16 itemId, u16 count)
 {
-    u16 i;
+    // u16 i;
 
-    u16 *items = gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode];
-    u8 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[gSaveBlock2Ptr->frontier.lvlMode];
+    // u16 *items = gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode];
+    // u8 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[gSaveBlock2Ptr->frontier.lvlMode];
 
-    u16 *newItems = Alloc(PYRAMID_BAG_ITEMS_COUNT * sizeof(u16));
-    u8 *newQuantities = Alloc(PYRAMID_BAG_ITEMS_COUNT * sizeof(u8));
+    // u16 *newItems = Alloc(PYRAMID_BAG_ITEMS_COUNT * sizeof(u16));
+    // u8 *newQuantities = Alloc(PYRAMID_BAG_ITEMS_COUNT * sizeof(u8));
 
-    memcpy(newItems, items, PYRAMID_BAG_ITEMS_COUNT * sizeof(u16));
-    memcpy(newQuantities, quantities, PYRAMID_BAG_ITEMS_COUNT * sizeof(u8));
+    // memcpy(newItems, items, PYRAMID_BAG_ITEMS_COUNT * sizeof(u16));
+    // memcpy(newQuantities, quantities, PYRAMID_BAG_ITEMS_COUNT * sizeof(u8));
 
-    for (i = 0; i < PYRAMID_BAG_ITEMS_COUNT; i++)
-    {
-        if (newItems[i] == itemId && newQuantities[i] < MAX_BAG_ITEM_CAPACITY)
-        {
-            newQuantities[i] += count;
-            if (newQuantities[i] > MAX_BAG_ITEM_CAPACITY)
-            {
-                count = newQuantities[i] - MAX_BAG_ITEM_CAPACITY;
-                newQuantities[i] = MAX_BAG_ITEM_CAPACITY;
-            }
-            else
-            {
-                count = 0;
-            }
+    // for (i = 0; i < PYRAMID_BAG_ITEMS_COUNT; i++)
+    // {
+    //     if (newItems[i] == itemId && newQuantities[i] < MAX_BAG_ITEM_CAPACITY)
+    //     {
+    //         newQuantities[i] += count;
+    //         if (newQuantities[i] > MAX_BAG_ITEM_CAPACITY)
+    //         {
+    //             count = newQuantities[i] - MAX_BAG_ITEM_CAPACITY;
+    //             newQuantities[i] = MAX_BAG_ITEM_CAPACITY;
+    //         }
+    //         else
+    //         {
+    //             count = 0;
+    //         }
 
-            if (count == 0)
-                break;
-        }
-    }
+    //         if (count == 0)
+    //             break;
+    //     }
+    // }
 
-    if (count > 0)
-    {
-        for (i = 0; i < PYRAMID_BAG_ITEMS_COUNT; i++)
-        {
-            if (newItems[i] == ITEM_NONE)
-            {
-                newItems[i] = itemId;
-                newQuantities[i] = count;
-                if (newQuantities[i] > MAX_BAG_ITEM_CAPACITY)
-                {
-                    count = newQuantities[i] - MAX_BAG_ITEM_CAPACITY;
-                    newQuantities[i] = MAX_BAG_ITEM_CAPACITY;
-                }
-                else
-                {
-                    count = 0;
-                }
+    // if (count > 0)
+    // {
+    //     for (i = 0; i < PYRAMID_BAG_ITEMS_COUNT; i++)
+    //     {
+    //         if (newItems[i] == ITEM_NONE)
+    //         {
+    //             newItems[i] = itemId;
+    //             newQuantities[i] = count;
+    //             if (newQuantities[i] > MAX_BAG_ITEM_CAPACITY)
+    //             {
+    //                 count = newQuantities[i] - MAX_BAG_ITEM_CAPACITY;
+    //                 newQuantities[i] = MAX_BAG_ITEM_CAPACITY;
+    //             }
+    //             else
+    //             {
+    //                 count = 0;
+    //             }
 
-                if (count == 0)
-                    break;
-            }
-        }
-    }
+    //             if (count == 0)
+    //                 break;
+    //         }
+    //     }
+    // }
 
-    if (count == 0)
-    {
-        memcpy(items, newItems, PYRAMID_BAG_ITEMS_COUNT * sizeof(u16));
-        memcpy(quantities, newQuantities, PYRAMID_BAG_ITEMS_COUNT * sizeof(u8));
-        Free(newItems);
-        Free(newQuantities);
-        return TRUE;
-    }
-    else
-    {
-        Free(newItems);
-        Free(newQuantities);
-        return FALSE;
-    }
+    // if (count == 0)
+    // {
+    //     memcpy(items, newItems, PYRAMID_BAG_ITEMS_COUNT * sizeof(u16));
+    //     memcpy(quantities, newQuantities, PYRAMID_BAG_ITEMS_COUNT * sizeof(u8));
+    //     Free(newItems);
+    //     Free(newQuantities);
+    //     return TRUE;
+    // }
+    // else
+    // {
+    //     Free(newItems);
+    //     Free(newQuantities);
+    //     return FALSE;
+    // }
 }
 
 bool8 RemovePyramidBagItem(u16 itemId, u16 count)
 {
-    u16 i;
+    // u16 i;
 
-    u16 *items = gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode];
-    u8 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[gSaveBlock2Ptr->frontier.lvlMode];
+    // u16 *items = gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode];
+    // u8 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[gSaveBlock2Ptr->frontier.lvlMode];
 
-    i = gPyramidBagMenuState.cursorPosition + gPyramidBagMenuState.scrollPosition;
-    if (items[i] == itemId && quantities[i] >= count)
+    // i = gPyramidBagCursorData.cursorPosition + gPyramidBagCursorData.scrollPosition;
+    // if (items[i] == itemId && quantities[i] >= count)
+    // {
+    //     quantities[i] -= count;
+    //     if (quantities[i] == 0)
+    //         items[i] = ITEM_NONE;
+    //     return TRUE;
+    // }
+    // else
+    // {
+    //     u16 *newItems = Alloc(PYRAMID_BAG_ITEMS_COUNT * sizeof(u16));
+    //     u8 *newQuantities = Alloc(PYRAMID_BAG_ITEMS_COUNT * sizeof(u8));
+
+    //     memcpy(newItems, items, PYRAMID_BAG_ITEMS_COUNT * sizeof(u16));
+    //     memcpy(newQuantities, quantities, PYRAMID_BAG_ITEMS_COUNT * sizeof(u8));
+
+    //     for (i = 0; i < PYRAMID_BAG_ITEMS_COUNT; i++)
+    //     {
+    //         if (newItems[i] == itemId)
+    //         {
+    //             if (newQuantities[i] >= count)
+    //             {
+    //                 newQuantities[i] -= count;
+    //                 count = 0;
+    //                 if (newQuantities[i] == 0)
+    //                     newItems[i] = ITEM_NONE;
+    //             }
+    //             else
+    //             {
+    //                 count -= newQuantities[i];
+    //                 newQuantities[i] = 0;
+    //                 newItems[i] = ITEM_NONE;
+    //             }
+
+    //             if (count == 0)
+    //                 break;
+    //         }
+    //     }
+
+    //     if (count == 0)
+    //     {
+    //         memcpy(items, newItems, PYRAMID_BAG_ITEMS_COUNT * sizeof(u16));
+    //         memcpy(quantities, newQuantities, PYRAMID_BAG_ITEMS_COUNT * sizeof(u8));
+    //         Free(newItems);
+    //         Free(newQuantities);
+    //         return TRUE;
+    //     }
+    //     else
+    //     {
+    //         Free(newItems);
+    //         Free(newQuantities);
+    //         return FALSE;
+    //     }
+    // }
+}
+
+void ResolveSpecialItemIds(u16 *itemId, u16 *count)
+{
+    u16 rand = Random();
+    switch (*itemId)
     {
-        quantities[i] -= count;
-        if (quantities[i] == 0)
-            items[i] = ITEM_NONE;
-        return TRUE;
+        case ITEM_CANDY_ABUNDANT:
+            (*itemId) = gCandyAbundantIds[rand % ARRAY_COUNT(gCandyAbundantIds)];
+            break;
+        case ITEM_CANDY_COMMON:
+            (*itemId) = gCandyCommonIds[rand % ARRAY_COUNT(gCandyCommonIds)];
+            break;
+        case ITEM_CANDY_UNCOMMON:
+            (*itemId) = gCandyUncommonIds[rand % ARRAY_COUNT(gCandyUncommonIds)];
+            break;
+        case ITEM_CANDY_RARE:
+            (*itemId) = gCandyRareIds[rand % ARRAY_COUNT(gCandyRareIds)];
+            break;
+        case ITEM_CANDY_HEALTHY:
+            (*itemId) = gCandyHealthyIds[rand % ARRAY_COUNT(gCandyHealthyIds)];
+            break;
+        default:
+            return;
     }
-    else
+    
+    switch (*itemId)
     {
-        u16 *newItems = Alloc(PYRAMID_BAG_ITEMS_COUNT * sizeof(u16));
-        u8 *newQuantities = Alloc(PYRAMID_BAG_ITEMS_COUNT * sizeof(u8));
-
-        memcpy(newItems, items, PYRAMID_BAG_ITEMS_COUNT * sizeof(u16));
-        memcpy(newQuantities, quantities, PYRAMID_BAG_ITEMS_COUNT * sizeof(u8));
-
-        for (i = 0; i < PYRAMID_BAG_ITEMS_COUNT; i++)
-        {
-            if (newItems[i] == itemId)
-            {
-                if (newQuantities[i] >= count)
-                {
-                    newQuantities[i] -= count;
-                    count = 0;
-                    if (newQuantities[i] == 0)
-                        newItems[i] = ITEM_NONE;
-                }
-                else
-                {
-                    count -= newQuantities[i];
-                    newQuantities[i] = 0;
-                    newItems[i] = ITEM_NONE;
-                }
-
-                if (count == 0)
-                    break;
-            }
-        }
-
-        if (count == 0)
-        {
-            memcpy(items, newItems, PYRAMID_BAG_ITEMS_COUNT * sizeof(u16));
-            memcpy(quantities, newQuantities, PYRAMID_BAG_ITEMS_COUNT * sizeof(u8));
-            Free(newItems);
-            Free(newQuantities);
-            return TRUE;
-        }
-        else
-        {
-            Free(newItems);
-            Free(newQuantities);
-            return FALSE;
-        }
+        case ITEM_CANDY_STARBURST: (*count) *= 3; break;
+        case ITEM_CANDY_LEMONDROP: (*count) *= 3; break;
+        case ITEM_CANDY_WARHEAD: (*count) *= 3; break;
+        case ITEM_CANDY_PRETZEL: (*count) *= 3; break;
+        case ITEM_CANDY_VEROMANGO: (*count) *= 3; break;
+        case ITEM_CANDY_VIOLETCRUMBLE: (*count) *= 3; break;
+        case ITEM_CANDY_MALTESERS: (*count) *= 3; break;
+        case ITEM_CANDY_GUMMYBEAR: (*count) *= 6; break;
+        case ITEM_CANDY_EGGS: (*count) *= 12; break;
+        case ITEM_CANDY_EGGDEVILED: (*count) *= 6; break;
     }
+    
+    IncrementGameStatBy(GAME_STAT_CANDY_COLLECTED, *count);
 }
 
 static u16 SanitizeItemId(u16 itemId)
@@ -880,6 +1009,16 @@ static u16 SanitizeItemId(u16 itemId)
 const u8 *ItemId_GetName(u16 itemId)
 {
     return gItems[SanitizeItemId(itemId)].name;
+}
+
+const u8 *ItemId_GetPluralName(u16 itemId)
+{
+    return gItems[SanitizeItemId(itemId)].plural;
+}
+
+const u8 *ItemId_GetQuantumString(u16 itemId)
+{
+    return gItems[SanitizeItemId(itemId)].quantum;
 }
 
 u16 ItemId_GetId(u16 itemId)
@@ -912,6 +1051,11 @@ u8 ItemId_GetImportance(u16 itemId)
     return gItems[SanitizeItemId(itemId)].importance;
 }
 
+u8 ItemId_GetPuzzleItemExclusionFlag(u16 itemId)
+{
+    return gItems[SanitizeItemId(itemId)].keepItem;
+}
+
 // unused
 u8 ItemId_GetRegistrability(u16 itemId)
 {
@@ -936,6 +1080,11 @@ ItemUseFunc ItemId_GetFieldFunc(u16 itemId)
 u8 ItemId_GetBattleUsage(u16 itemId)
 {
     return gItems[SanitizeItemId(itemId)].battleUsage;
+}
+
+const u8 *const ItemId_GetItemEffect(u16 itemId)
+{
+    return gItems[SanitizeItemId(itemId)].itemEffect;
 }
 
 ItemUseFunc ItemId_GetBattleFunc(u16 itemId)

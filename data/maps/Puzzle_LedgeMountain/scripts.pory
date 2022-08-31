@@ -1,0 +1,133 @@
+raw `
+Puzzle_LedgeMountain_MapScripts::
+	puzzle_info Puzzle_LedgeMountain_Name, CommonAuthor_Tustin2121
+	puzzle_adjective Puzzle_LedgeMountain_Adjective
+	puzzle_quip Puzzle_LedgeMountain_Quip
+	puzzle_metavars Puzzle_LedgeMountain_Variables
+	puzzle_candylist Puzzle_LedgeMountain_CandyList
+	puzzle_devcommentary Puzzle_LedgeMountain_DevCommentary
+	.byte 0
+
+Puzzle_LedgeMountain_Name:
+	.string "The Mountain Trail$"
+Puzzle_LedgeMountain_Adjective:
+	.string "jumpy$"
+Puzzle_LedgeMountain_Quip:
+	.string "I love a good climb in the morning!\n"
+	.string "How about you?$"
+Puzzle_LedgeMountain_DevCommentary:
+	.string "Tustin2121: This puzzle exists because\n"
+	.string "TPP is terrible at ledges.\p"
+	.string "Th-that's really about it…\p"
+	.string "… …Every time I see the clip of chat's\n"
+	.string "reaction to the starting cutscene… …\l"
+	.string "I cackle for like an hour afterwards…\p"
+	.string "Here's a link to the clip:\n"
+	.string "clips.twitch.tv/CuriousBlueWaffleOhMyDog$"
+.align 2
+Puzzle_LedgeMountain_Variables:
+	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_HIKER
+	.2byte 0
+Puzzle_LedgeMountain_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_COMMON_03
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_HEALTHY_02
+	.2byte FLAG_CANDY_RARE_01
+	.2byte FLAG_CANDY_RARE_02
+	.2byte FLAG_HIDDEN_LIMITED_CANDY_0x6D
+	.2byte 0
+
+@ -----------------------------------------------------
+`
+script Puzzle_LedgeMountain_TriggerScript_Intro {
+	lock
+	getplayerxy (VAR_INTERACT_X, VAR_INTERACT_Y)
+	subvar (VAR_INTERACT_Y, 54)
+	
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceUp)
+	waitmovement (0)
+	playse (SE_PIN)
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMarkAndWait)
+	waitmovement (0)
+	
+	playfanfare (MUS_ME_TAMA)
+	selectpointer (Puzzle_LedgeMountain_MovementTable_Intro, VAR_INTERACT_Y)
+	applymovement (EVENT_OBJ_ID_PLAYER, 0)
+	waitmovement (0)
+	
+	special (SpawnCameraObject)
+	applymovement (EVENT_OBJ_ID_CAMERA, Puzzle_LedgeMountain_Movement_CameraPanUp)
+	waitmovement (0)
+	delay (60)
+	waitfanfare
+	setobjectxy (EVENT_OBJ_ID_PLAYER, 20, 55)
+	applymovement (EVENT_OBJ_ID_CAMERA, Puzzle_LedgeMountain_Movement_CameraPanDown)
+	waitmovement (0)
+	special (RemoveCameraObject)
+	delay (10)
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
+	waitmovement (0)
+	setvar (VAR_PUZZLE_00, 1)
+	release
+}
+
+raw `
+.align 2
+Puzzle_LedgeMountain_MovementTable_Intro:
+	.4byte Common_Movement_BackOffDown1
+	.4byte Common_Movement_NoOp
+	.4byte Common_Movement_WalkUp1
+	.4byte Common_Movement_WalkUp2
+	.4byte 0
+`
+movement Puzzle_LedgeMountain_Movement_PlayerAdjust {
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_fast_right
+	walk_in_place_fastest_up
+}
+movement Puzzle_LedgeMountain_Movement_CameraPanUp {
+	walk_slow_diag_northwest * 5
+	walk_slow_up * 2     // 20, 48
+	walk_up * 10         // 20, 38
+	walk_fast_up * 10    // 20, 28
+	walk_fastest_up * 20 // 20, 8
+	walk_fast_up
+	walk_fast_up
+	walk_up
+	walk_up
+	walk_slow_up         //20, 3
+}
+movement Puzzle_LedgeMountain_Movement_CameraPanDown {
+	slide_down * 52
+}
+
+script Puzzle_LedgeMountain_UnreachableBall {
+	msgbox ("Did you really go through all of the\n"
+			"effort required to make and use a\l"
+			"walk-through-walls cheat to get here?\p"
+			"And not only any old walk-through-walls\n"
+			"cheat, but a proper one that ignores\l"
+			"elevation requirements as well?\p"
+			"That's… That's impressive.\n"
+			"I applaud you. Well done.\p"
+			"Why are you not making ROM hacks like\n"
+			"this, or better yet, your own games?\p"
+			"Learn how to program in a game engine,\n"
+			"like Unity or Unreal, and you could get\l"
+			"an actual job or make indie games!\p"
+			"--Tustin2121$")
+	giveitem_std(ITEM_MASTER_BALL, 1, 1)
+}
+
+

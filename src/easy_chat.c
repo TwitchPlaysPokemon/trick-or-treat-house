@@ -4986,7 +4986,7 @@ static void HideStartSelectButtons(void)
 
 static void TryAddInterviewObjectEvents(void)
 {
-    int graphicsId;
+    int graphicsId, graphicsId2;
     u8 spriteId;
 
     switch (GetDisplayedPersonType())
@@ -5014,10 +5014,15 @@ static void TryAddInterviewObjectEvents(void)
         gSprites[spriteId].oam.priority = 0;
         StartSpriteAnim(&gSprites[spriteId], 2);
     }
-
-    // Add object for player (facing right)
+    switch (gSaveBlock2Ptr->playerGender) {
+        default:
+        case GENDER_M: graphicsId2 = EVENT_OBJ_GFX_BRENDAN_NORMAL; break;
+        case GENDER_F: graphicsId2 = EVENT_OBJ_GFX_MAY_NORMAL; break;
+        case GENDER_N: graphicsId2 = EVENT_OBJ_GFX_TREEKID_NORMAL; break;
+    }
+    
     spriteId = CreateObjectGraphicsSprite(
-        gSaveBlock2Ptr->playerGender == MALE ? OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL : OBJ_EVENT_GFX_RIVAL_MAY_NORMAL,
+        graphicsId2,
         SpriteCallbackDummy,
         52,
         40,

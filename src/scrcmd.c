@@ -19,6 +19,7 @@
 #include "field_player_avatar.h"
 #include "field_screen_effect.h"
 #include "field_specials.h"
+#include "field_camera.h"
 #include "field_tasks.h"
 #include "field_weather.h"
 #include "fieldmap.h"
@@ -27,6 +28,7 @@
 #include "main.h"
 #include "menu.h"
 #include "money.h"
+#include "mgba.h"
 #include "mystery_event_script.h"
 #include "palette.h"
 #include "party_menu.h"
@@ -39,6 +41,7 @@
 #include "script_menu.h"
 #include "script_movement.h"
 #include "script_pokemon_util.h"
+#include "strings.h"
 #include "shop.h"
 #include "slot_machine.h"
 #include "sound.h"
@@ -51,9 +54,9 @@
 #include "constants/event_objects.h"
 
 typedef u16 (*SpecialFunc)(void);
-typedef void (*NativeFunc)(void);
+typedef void (*NativeFunc)(struct ScriptContext *ctx);
 
-EWRAM_DATA const u8 *gRamScriptRetAddr = NULL;
+EWRAM_DATA const u8 *gRamScriptPtr = NULL;
 static EWRAM_DATA u32 sAddressOffset = 0; // For relative addressing in vgoto etc., used by saved scripts (e.g. Mystery Event)
 static EWRAM_DATA u16 sPauseCounter = 0;
 static EWRAM_DATA u16 sMovingNpcId = 0;
@@ -62,6 +65,10 @@ static EWRAM_DATA u16 sMovingNpcMapNum = 0;
 static EWRAM_DATA u16 sFieldEffectScriptId = 0;
 
 static u8 sBrailleWindowId;
+
+// Reference to an assembly defined constant, the start of the ROM
+// We don't actually use the value, just the address it's at.
+extern const int Start;
 
 extern const SpecialFunc gSpecials[];
 extern const u8 *gStdScripts[];
@@ -90,6 +97,17 @@ static u8 * const sScriptStringVars[] =
     gStringVar2,
     gStringVar3,
 };
+
+static const u8 ErrStr_ScriptError[] = _("Script Error: {NO}{STR_VAR_2}\n{STR_VAR_1}");
+static bool8 ShowScriptError(struct ScriptContext *ctx, int errno, const u8 *str)
+{
+    u8 n = CountDigits(errno);
+    ConvertIntToDecimalStringN(gStringVar2, errno, 0, n);
+    StringCopy(gStringVar1, str);
+    SetupNativeScript(ctx, IsFieldMessageBoxHidden);
+    ShowFieldMessage(ErrStr_ScriptError);
+    return TRUE;
+}
 
 bool8 ScrCmd_nop(struct ScriptContext *ctx)
 {
@@ -135,8 +153,16 @@ bool8 ScrCmd_callnative(struct ScriptContext *ctx)
 {
     NativeFunc func = (NativeFunc)ScriptReadWord(ctx);
 
-    func();
+    func(ctx);
     return FALSE;
+}
+
+bool8 ScrCmd_callnative_wait(struct ScriptContext *ctx)
+{
+    NativeFunc func = (NativeFunc)ScriptReadWord(ctx);
+
+    func(ctx);
+    return TRUE;
 }
 
 bool8 ScrCmd_waitstate(struct ScriptContext *ctx)
@@ -148,6 +174,9 @@ bool8 ScrCmd_waitstate(struct ScriptContext *ctx)
 bool8 ScrCmd_goto(struct ScriptContext *ctx)
 {
     const u8 *ptr = (const u8 *)ScriptReadWord(ctx);
+
+    if ((u32)ptr < 4)
+        ptr = (const void *)ctx->data[(u32)ptr];
 
     ScriptJump(ctx, ptr);
     return FALSE;
@@ -162,6 +191,9 @@ bool8 ScrCmd_return(struct ScriptContext *ctx)
 bool8 ScrCmd_call(struct ScriptContext *ctx)
 {
     const u8 *ptr = (const u8 *)ScriptReadWord(ctx);
+
+    if ((u32)ptr < 4)
+        ptr = (const void *)ctx->data[(u32)ptr];
 
     ScriptCall(ctx, ptr);
     return FALSE;
@@ -280,9 +312,10 @@ bool8 ScrCmd_callstd_if(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_returnram(struct ScriptContext *ctx)
+// bool8 ScrCmd_returnram(struct ScriptContext *ctx)
+bool8 ScrCmd_gotoram(struct ScriptContext *ctx)
 {
-    ScriptJump(ctx, gRamScriptRetAddr);
+    ScriptJump(ctx, gRamScriptPtr);
     return FALSE;
 }
 
@@ -306,6 +339,14 @@ bool8 ScrCmd_loadword(struct ScriptContext *ctx)
     u8 index = ScriptReadByte(ctx);
 
     ctx->data[index] = ScriptReadWord(ctx);
+    return FALSE;
+}
+
+bool8 ScrCmd_loadhalf(struct ScriptContext *ctx)
+{
+    u8 index = ScriptReadByte(ctx);
+
+    ctx->data[index] = VarGet(ScriptReadHalfword(ctx));
     return FALSE;
 }
 
@@ -476,6 +517,13 @@ bool8 ScrCmd_subvar(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_mulvar(struct ScriptContext *ctx)
+{
+    u16 *ptr = GetVarPointer(ScriptReadHalfword(ctx));
+    *ptr *= VarGet(ScriptReadHalfword(ctx));
+    return FALSE;
+}
+
 bool8 ScrCmd_random(struct ScriptContext *ctx)
 {
     u16 max = VarGet(ScriptReadHalfword(ctx));
@@ -490,6 +538,15 @@ bool8 ScrCmd_additem(struct ScriptContext *ctx)
     u32 quantity = VarGet(ScriptReadHalfword(ctx));
 
     gSpecialVar_Result = AddBagItem(itemId, (u8)quantity);
+    return FALSE;
+}
+
+bool8 ScrCmd_resolveitem(struct ScriptContext *ctx)
+{
+    u16 *itemId = GetVarPointer(ScriptReadHalfword(ctx));
+    u16 *quantity = GetVarPointer(ScriptReadHalfword(ctx));
+    
+    ResolveSpecialItemIds(itemId, quantity);
     return FALSE;
 }
 
@@ -537,14 +594,21 @@ bool8 ScrCmd_addpcitem(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_checkpcitem(struct ScriptContext *ctx)
+bool8 ScrCmd_checknumitem(struct ScriptContext *ctx)
 {
     u16 itemId = VarGet(ScriptReadHalfword(ctx));
-    u16 quantity = VarGet(ScriptReadHalfword(ctx));
 
-    gSpecialVar_Result = CheckPCHasItem(itemId, quantity);
+    gSpecialVar_Result = CountTotalItemQuantityInBag(itemId);
     return FALSE;
 }
+// bool8 ScrCmd_checkpcitem(struct ScriptContext *ctx)
+// {
+//     u16 itemId = VarGet(ScriptReadHalfword(ctx));
+//     u16 quantity = VarGet(ScriptReadHalfword(ctx));
+
+//     gSpecialVar_Result = CheckPCHasItem(itemId, quantity);
+//     return FALSE;
+// }
 
 bool8 ScrCmd_adddecoration(struct ScriptContext *ctx)
 {
@@ -736,6 +800,44 @@ bool8 ScrCmd_setmaplayoutindex(struct ScriptContext *ctx)
     return FALSE;
 }
 
+extern const struct MapLayout *const gMapLayouts[];
+static const u8 ErrStr_switchmaplayout[] = _("switchmaplayout checks failed!{PAUSE 50}");
+bool8 ScrCmd_switchmaplayout(struct ScriptContext *ctx)
+{
+    u16 toId = VarGet(ScriptReadHalfword(ctx)) - 1;
+    u16 fromId = gSaveBlock1Ptr->mapLayoutId - 1;
+    
+    if (fromId == toId) return; //Do nothing
+    { // Sanity checks
+        if (gMapLayouts[fromId] == NULL)
+            return ShowScriptError(ctx, 1, ErrStr_switchmaplayout);
+        if (gMapLayouts[toId] == NULL)
+            return ShowScriptError(ctx, 2, ErrStr_switchmaplayout);
+        if (gMapLayouts[fromId]->width != gMapLayouts[toId]->width) 
+            return ShowScriptError(ctx, 3, ErrStr_switchmaplayout);
+        if (gMapLayouts[fromId]->height != gMapLayouts[toId]->height)
+            return ShowScriptError(ctx, 4, ErrStr_switchmaplayout);
+        if (gMapLayouts[fromId]->primaryTileset != gMapLayouts[toId]->primaryTileset)
+            return ShowScriptError(ctx, 5, ErrStr_switchmaplayout);
+        if (gMapLayouts[fromId]->secondaryTileset != gMapLayouts[toId]->secondaryTileset)
+            return ShowScriptError(ctx, 6, ErrStr_switchmaplayout);
+    }
+    
+    SetCurrentMapLayout(toId + 1);
+    InitMap();
+    MoveCameraAndRedrawMap(0, 0);
+    UpdateAllEventObjectsZCoordAndPriority();
+    return FALSE;
+}
+
+bool8 ScrCmd_warptodynamic(struct ScriptContext *ctx)
+{
+    SetWarpDestinationToDynamicWarp(0);
+    DoWarp();
+    ResetInitialPlayerAvatarState();
+    return TRUE;
+}
+
 bool8 ScrCmd_warp(struct ScriptContext *ctx)
 {
     u8 mapGroup = ScriptReadByte(ctx);
@@ -760,6 +862,20 @@ bool8 ScrCmd_warpsilent(struct ScriptContext *ctx)
 
     SetWarpDestination(mapGroup, mapNum, warpId, x, y);
     DoDiveWarp();
+    ResetInitialPlayerAvatarState();
+    return TRUE;
+}
+
+bool8 ScrCmd_warpcustom(struct ScriptContext *ctx)
+{
+    u8 mapGroup = ScriptReadByte(ctx);
+    u8 mapNum = ScriptReadByte(ctx);
+    u8 warpId = ScriptReadByte(ctx);
+    u16 x = VarGet(ScriptReadHalfword(ctx));
+    u16 y = VarGet(ScriptReadHalfword(ctx));
+
+    SetWarpDestination(mapGroup, mapNum, warpId, x, y);
+    DoCustomWarp();
     ResetInitialPlayerAvatarState();
     return TRUE;
 }
@@ -974,6 +1090,10 @@ bool8 ScrCmd_fadeoutbgm(struct ScriptContext *ctx)
         FadeOutBGMTemporarily(4 * speed);
     else
         FadeOutBGMTemporarily(4);
+    
+    if (ctx->data[3] == 1) {
+        return FALSE;
+    }
     SetupNativeScript(ctx, IsBGMPausedOrStopped);
     return TRUE;
 }
@@ -989,10 +1109,19 @@ bool8 ScrCmd_fadeinbgm(struct ScriptContext *ctx)
     return FALSE;
 }
 
+const static u8 ErrStr_movepointer[] = _("move pointer check failed!{PAUSE 50}");
 bool8 ScrCmd_applymovement(struct ScriptContext *ctx)
 {
     u16 localId = VarGet(ScriptReadHalfword(ctx));
     const void *movementScript = (const void *)ScriptReadWord(ctx);
+    
+    if ((u32)movementScript < 4)
+        movementScript = (const void *)ctx->data[(u32)movementScript];
+    
+    // if (movementScript <= (const void*)&Start) {
+    //     ShowScriptError(ctx, 5, ErrStr_movepointer);
+    //     return FALSE;
+    // }
 
     ScriptMovement_StartObjectMovementScript(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, movementScript);
     sMovingNpcId = localId;
@@ -1005,6 +1134,14 @@ bool8 ScrCmd_applymovementat(struct ScriptContext *ctx)
     const void *movementScript = (const void *)ScriptReadWord(ctx);
     u8 mapGroup = ScriptReadByte(ctx);
     u8 mapNum = ScriptReadByte(ctx);
+
+    if ((u32)movementScript < 4)
+        movementScript = (const void *)ctx->data[(u32)movementScript];
+    
+    if (movementScript <= (const void*)&Start) {
+        ShowScriptError(ctx, 5, ErrStr_movepointer);
+        return FALSE;
+    }
 
     ScriptMovement_StartObjectMovementScript(localId, mapNum, mapGroup, movementScript);
     sMovingNpcId = localId;
@@ -1179,7 +1316,7 @@ bool8 ScrCmd_setobjectmovementtype(struct ScriptContext *ctx)
 
 bool8 ScrCmd_createvobject(struct ScriptContext *ctx)
 {
-    u8 graphicsId = ScriptReadByte(ctx);
+    u16 graphicsId = ScriptReadByte(ctx);
     u8 virtualObjId = ScriptReadByte(ctx);
     u16 x = VarGet(ScriptReadHalfword(ctx));
     u32 y = VarGet(ScriptReadHalfword(ctx));
@@ -1269,8 +1406,8 @@ bool8 ScrCmd_message(struct ScriptContext *ctx)
 {
     const u8 *msg = (const u8 *)ScriptReadWord(ctx);
 
-    if (msg == NULL)
-        msg = (const u8 *)ctx->data[0];
+    if ((u32) msg < 4)
+        msg = (const u8 *)ctx->data[(u32) msg];
     ShowFieldMessage(msg);
     return FALSE;
 }
@@ -1307,6 +1444,21 @@ bool8 ScrCmd_messageinstant(struct ScriptContext *ctx)
     LoadMessageBoxAndBorderGfx();
     DrawDialogueFrame(0, TRUE);
     AddTextPrinterParameterized(0, FONT_NORMAL, msg, 0, 1, 0, NULL);
+    return FALSE;
+}
+
+// TODO:
+bool8 ScrCmd_messagewordwrap(struct ScriptContext *ctx)
+{
+    const u8 *msg = (const u8 *)ScriptReadWord(ctx);
+
+    if (msg == NULL)
+        msg = (const u8 *)ctx->data[0];
+    
+    StringExpandPlaceholders(gStringVar4, msg);
+    mgba_printf(MGBA_LOG_INFO, "doing messagewordwrap: %S", gStringVar4);
+    DetermineWordWrapInStrVar4(1, 1, 210);
+    ShowFieldMessageFromBuffer();
     return FALSE;
 }
 
@@ -1583,6 +1735,7 @@ bool8 ScrCmd_bufferitemname(struct ScriptContext *ctx)
 {
     u8 stringVarIndex = ScriptReadByte(ctx);
     u16 itemId = VarGet(ScriptReadHalfword(ctx));
+    u16 quantity = VarGet(ScriptReadHalfword(ctx));
 
     CopyItemName(itemId, sScriptStringVars[stringVarIndex]);
     return FALSE;
@@ -1635,6 +1788,14 @@ bool8 ScrCmd_bufferstdstring(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_bufferselectedstring(struct ScriptContext *ctx)
+{
+    u8 stringVarIndex = ScriptReadByte(ctx);
+
+    StringCopy(sScriptStringVars[stringVarIndex], (const u8*)ctx->data[0]);
+    return FALSE;
+}
+
 bool8 ScrCmd_buffercontestname(struct ScriptContext *ctx)
 {
     u8 stringVarIndex = ScriptReadByte(ctx);
@@ -1648,6 +1809,9 @@ bool8 ScrCmd_bufferstring(struct ScriptContext *ctx)
 {
     u8 stringVarIndex = ScriptReadByte(ctx);
     const u8 *text = (u8 *)ScriptReadWord(ctx);
+    
+    if (text == NULL)
+        text = (const u8 *)ctx->data[0];
 
     StringCopy(sScriptStringVars[stringVarIndex], text);
     return FALSE;
@@ -1735,7 +1899,7 @@ bool8 ScrCmd_checkpartymove(struct ScriptContext *ctx)
 
 bool8 ScrCmd_addmoney(struct ScriptContext *ctx)
 {
-    u32 amount = ScriptReadWord(ctx);
+    u32 amount = VarGet(ScriptReadWord(ctx));
     u8 ignore = ScriptReadByte(ctx);
 
     if (!ignore)
@@ -1745,7 +1909,7 @@ bool8 ScrCmd_addmoney(struct ScriptContext *ctx)
 
 bool8 ScrCmd_removemoney(struct ScriptContext *ctx)
 {
-    u32 amount = ScriptReadWord(ctx);
+    u32 amount = VarGet(ScriptReadWord(ctx));
     u8 ignore = ScriptReadByte(ctx);
 
     if (!ignore)
@@ -1755,7 +1919,7 @@ bool8 ScrCmd_removemoney(struct ScriptContext *ctx)
 
 bool8 ScrCmd_checkmoney(struct ScriptContext *ctx)
 {
-    u32 amount = ScriptReadWord(ctx);
+    u32 amount = VarGet(ScriptReadWord(ctx));
     u8 ignore = ScriptReadByte(ctx);
 
     if (!ignore)
@@ -1889,6 +2053,9 @@ bool8 ScrCmd_dowildbattle(struct ScriptContext *ctx)
 bool8 ScrCmd_pokemart(struct ScriptContext *ctx)
 {
     const void *ptr = (void *)ScriptReadWord(ctx);
+    
+    if (ptr == NULL)
+        ptr = (const u8 *)ctx->data[0];
 
     CreatePokemartMenu(ptr);
     ScriptContext_Stop();
@@ -1898,6 +2065,9 @@ bool8 ScrCmd_pokemart(struct ScriptContext *ctx)
 bool8 ScrCmd_pokemartdecoration(struct ScriptContext *ctx)
 {
     const void *ptr = (void *)ScriptReadWord(ctx);
+    
+    if (ptr == NULL)
+        ptr = (const u8 *)ctx->data[0];
 
     CreateDecorationShop1Menu(ptr);
     ScriptContext_Stop();
@@ -1908,6 +2078,9 @@ bool8 ScrCmd_pokemartdecoration(struct ScriptContext *ctx)
 bool8 ScrCmd_pokemartdecoration2(struct ScriptContext *ctx)
 {
     const void *ptr = (void *)ScriptReadWord(ctx);
+    
+    if (ptr == NULL)
+        ptr = (const u8 *)ctx->data[0];
 
     CreateDecorationShop2Menu(ptr);
     ScriptContext_Stop();
@@ -1987,6 +2160,19 @@ bool8 ScrCmd_setfieldeffectargument(struct ScriptContext *ctx)
     u8 argNum = ScriptReadByte(ctx);
 
     gFieldEffectArguments[argNum] = (s16)VarGet(ScriptReadHalfword(ctx));
+    return FALSE;
+}
+
+bool8 ScrCmd_setfieldeffectargstoobjectloc(struct ScriptContext *ctx)
+{
+    u16 localId = VarGet(ScriptReadHalfword(ctx));
+    u8 argNum = ScriptReadByte(ctx);
+    u8 evtid = GetEventObjectIdByLocalIdAndMap(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+    struct EventObject *eventObj = &gEventObjects[evtid];
+
+    gFieldEffectArguments[argNum+0] = eventObj->currentCoords.x;
+    gFieldEffectArguments[argNum+1] = eventObj->currentCoords.y;
+    gFieldEffectArguments[argNum+2] = eventObj->previousElevation;
     return FALSE;
 }
 
@@ -2129,6 +2315,15 @@ bool8 ScrCmd_showelevmenu(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_dogroundeffect(struct ScriptContext *ctx)
+{
+    u8 localId = ScriptReadByte(ctx);
+    u8 animId = ScriptReadByte(ctx);
+    
+    DoGroundEffect(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, animId);
+    return FALSE;
+}
+
 bool8 ScrCmd_checkcoins(struct ScriptContext *ctx)
 {
     u16 *ptr = GetVarPointer(ScriptReadHalfword(ctx));
@@ -2227,14 +2422,23 @@ bool8 ScrCmd_checkmoneventlegal(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_trywondercardscript(struct ScriptContext *ctx)
-{
-    const u8 *script = GetSavedRamScriptIfValid();
+// bool8 ScrCmd_trywondercardscript(struct ScriptContext *ctx)
+// {
+//     const u8 *script = GetSavedRamScriptIfValid();
 
-    if (script)
+//     if (script)
+//     {
+//         gRamScriptPtr = ctx->scriptPtr;
+//         ScriptJump(ctx, script);
+//     }
+//     return FALSE;
+// }
+
+bool8 ScrCmd_callram(struct ScriptContext *ctx)
+{
+    if (gRamScriptPtr != NULL)
     {
-        gRamScriptRetAddr = ctx->scriptPtr;
-        ScriptJump(ctx, script);
+        ScriptCall(ctx, gRamScriptPtr);
     }
     return FALSE;
 }
@@ -2308,3 +2512,117 @@ bool8 ScrCmd_warpwhitefade(struct ScriptContext *ctx)
     ResetInitialPlayerAvatarState();
     return TRUE;
 }
+
+const static u8 ErrStr_selectpointer[] = _("selectpointer checks failed!{PAUSE 50}");
+bool8 ScrCmd_selectpointer(struct ScriptContext *ctx)
+{
+    const u8 **ptr = (const u8 **)ScriptReadWord(ctx);
+    u16 index = VarGet(ScriptReadHalfword(ctx));
+    u8 overmethod = ScriptReadByte(ctx);
+    u16 max;
+    
+    if (ptr == NULL)
+    {
+        ptr = (const u8 **)&ctx->data[0];
+        max = 4;
+    }
+    else
+    {
+        for (max = 0; max < 64; max++)
+        {
+            if (ptr[max] == NULL) break;
+        }
+    }
+    switch (overmethod)
+    {
+        default:
+        case 0: //Error if past max
+            break;
+        case 1: //wrap if past max
+            index = index % max;
+            break;
+        case 2: //clamp if past max
+            index = min(index, max-1);
+            break;
+    }
+    // Only load this pointer if it's within the array and pointing to someplace in ROM
+    if (index >= max) return ShowScriptError(ctx, 1, ErrStr_selectpointer);
+    if (ptr[index] <= (const u8*)&Start) return ShowScriptError(ctx, 2, ErrStr_selectpointer);
+    
+    if (index < max && ptr[index] > (const u8*)&Start) 
+    {
+        ctx->data[0] = (u32)ptr[index];
+        ctx->data[1] = 0;
+        ctx->data[2] = 0;
+        ctx->data[3] = 0;
+    }
+    else
+    {
+        ctx->data[0] = (u32)&gText_ScriptError;
+        // Debugging variables:
+        ctx->data[1] = index;
+        ctx->data[2] = max;
+        ctx->data[3] = (u32)ptr;
+        return ShowScriptError(ctx, 10, ErrStr_selectpointer);
+    }
+    return FALSE;
+}
+
+bool8 ScrCmd_selectwarpdestination(struct ScriptContext *ctx)
+{
+    const u16 *ptr = (const u16 *)ScriptReadWord(ctx);
+    u16 index = VarGet(ScriptReadHalfword(ctx));
+    u16 max;
+    
+    if (ptr == NULL) goto errorHandle;
+    // Only load this pointer if it's within the array and pointing to someplace in ROM
+    if (ptr <= (const u16*)&Start) goto errorHandle;
+    
+    for (max = 0; max < 256; max++)
+    {
+        if (ptr[max] == 0xFFFF) break;
+    }
+    if (index >= max) goto errorHandle;
+    
+    {
+        u8 mapGroup = ptr[index] >> 8;
+        u8 mapNum = ptr[index] & 0xFF;
+        SetDynamicWarpWithCoords(0, mapGroup, mapNum, 0, -1, -1);
+    }
+    
+    ctx->data[0] = 0;
+    ctx->data[1] = 0;
+    ctx->data[2] = 0;
+    ctx->data[3] = 0;
+    return FALSE;
+    
+errorHandle:
+    SetDynamicWarpWithCoords(0, 0, 0, 0, -1, -1);
+    ctx->data[0] = 0;
+    // Debugging variables:
+    ctx->data[1] = index;
+    ctx->data[2] = max;
+    ctx->data[3] = (u32)ptr;
+    return FALSE;
+}
+
+bool8 ScrCmd_buffernumberstring2(struct ScriptContext *ctx)
+{
+    u8 stringVarIndex = ScriptReadByte(ctx);
+    u16 v1 = VarGet(ScriptReadHalfword(ctx));
+    u8 v2 = CountDigits(v1);
+    u8 article = ScriptReadByte(ctx);
+    
+    if (v1 == 1) {
+        if (article == 1) {
+            StringCopy(sScriptStringVars[stringVarIndex], gText_The);
+            return FALSE;
+        } else if (article == 2) {
+            //TODO "a/an"?
+        }
+    }
+
+    ConvertIntToNameStringN(sScriptStringVars[stringVarIndex], v1, 0, v2);
+    return FALSE;
+}
+

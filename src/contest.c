@@ -2786,10 +2786,12 @@ void CreateContestMonFromParty(u8 partyIndex)
         StripPlayerNameForLinkContest(name);
     }
     memcpy(gContestMons[gContestPlayerMonIndex].trainerName, name, 8);
-    if (gSaveBlock2Ptr->playerGender == MALE)
-        gContestMons[gContestPlayerMonIndex].trainerGfxId = OBJ_EVENT_GFX_LINK_BRENDAN;
-    else
-        gContestMons[gContestPlayerMonIndex].trainerGfxId = OBJ_EVENT_GFX_LINK_MAY;
+    switch (gSaveBlock2Ptr->playerGender) {
+        default:
+        case GENDER_M: gContestMons[gContestPlayerMonIndex].trainerGfxId = OBJ_EVENT_GFX_BRENDAN_NORMAL; break;
+        case GENDER_F: gContestMons[gContestPlayerMonIndex].trainerGfxId = EVENT_OBJ_GFX_MAY_NORMAL; break;
+        case GENDER_N: gContestMons[gContestPlayerMonIndex].trainerGfxId = OBJ_EVENT_GFX_TREEKID_NORMAL; break;
+    }
     gContestMons[gContestPlayerMonIndex].aiFlags = 0;
     gContestMons[gContestPlayerMonIndex].highestRank = 0;
     gContestMons[gContestPlayerMonIndex].species = GetMonData(&gPlayerParty[partyIndex], MON_DATA_SPECIES);

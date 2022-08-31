@@ -1,0 +1,421 @@
+mapscripts TrickHouseCorridor_MapScripts {
+	MAP_SCRIPT_ON_LOAD {
+		if (var(VAR_PUZZLE_STATE) == 2) {
+			call (TrickHouseCorridor_OpenBackDoor)
+		}
+		if (var(VAR_PUZZLE_STATE) == 1) {
+			call(TrickHouseCorridor_OpenPuzzleDoor)
+		}
+		if (flag(FLAG_PUZZLE_PARTY_LOCK)) {
+			// Position the rental lady in the door of the den
+			setobjectxyperm(1, 10, 5)
+			setobjectmovementtype(1, MOVEMENT_TYPE_FACE_DOWN)
+			if (var(VAR_DEN_BLOCKED_EXCUSE) == 0) {
+				random(12)
+				copyvar(VAR_DEN_BLOCKED_EXCUSE, VAR_RESULT)
+				addvar(VAR_DEN_BLOCKED_EXCUSE, 1)
+			}
+		}
+		elif (!flag(FLAG_SYS_POKEMON_GET)) {
+			// enable the rental mon cutscene
+			setvar (VAR_TEMP_E, 1) 
+			// Position the rental lady in the path
+			setobjectxyperm(1, 11, 7)
+		}
+		else {
+			getpartysize
+			if (var(VAR_RESULT) != 3) {
+				// Enable party size stop triggers
+				setvar(VAR_TEMP_E, 2)
+			}
+		}
+	}
+	MAP_SCRIPT_ON_TRANSITION {
+		callnative(SetupPuzzleWarp)
+		callnative(AssignPuzzleMetaVariables)
+	}
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_PUZZLE_STATE, 2: TrickHouseCorridor_IncrementPuzzle
+	]
+}
+
+// Notes: FLAG and VAR USE
+// 		VAR_TEMP_E = 1 - Adoption Mon Cutscene Triggers
+// 		VAR_TEMP_E = 2 - Trainer does not meed party requirements
+// 		VAR_TEMP_D = Random excuse for not allowing access to Den
+
+
+script(local) TrickHouseCorridor_OpenPuzzleDoor {
+	setmetatile (22, 2, 0x01F, FALSE)
+	return
+}
+script(local) TrickHouseCorridor_OpenBackDoor {
+	setmetatile (4, 6, 0x01E, TRUE)
+	return
+}
+script(local) TrickHouseCorridor_CloseBackDoor {
+	setmetatile (4, 6, 0x20B, TRUE)
+	return
+}
+
+// ----------------------------------------------------
+
+script(local) TrickHouseCorridor_IncrementPuzzle {
+	clearflag (FLAG_IS_PUZZLE_INTRODUCED)
+	call (PuzzleCommon_EventScript_IncrementPuzzle)
+	clearflag (FLAG_HIDE_TRICK_HOUSE_INTRO_CHAR)
+	callnative (SetupPuzzleWarp)
+	callnative (AssignPuzzleMetaVariables)
+	setvar (VAR_DEN_BLOCKED_EXCUSE, 0)
+	call (TrickHouseCorridor_CloseBackDoor)
+}
+
+// -----------------------------------------------------
+
+script TrickHouseCorridor_EventScript_Lady {
+	if (flag(FLAG_PUZZLE_PARTY_LOCK)) {
+		lock
+		faceplayer
+		message (TrickHouseCorridor_Text_DenExcuseStart)
+		waitmessage
+		selectpointer_wrap(TrickHouseCorridor_StringTable_DenExcuses, VAR_DEN_BLOCKED_EXCUSE)
+		message (0)
+		waitmessage
+		waitbuttonpress
+		applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
+		release
+		end
+	}
+	msgbox ("If you ever need to rest, feel free to\n"
+			"stop in the Den to my right.$", MSGBOX_NPC)
+}
+
+script TrickHouseCorridor_TriggerScript_AdoptionCutscene {
+	getplayerxy (VAR_0x8000, VAR_0x8001)
+	subvar (VAR_0x8001, 7)
+	lock
+	// Walk up to lady in hallway
+	selectpointer (TrickHouseCorridor_MovementTable_PokemonTableStop, VAR_0x8001)
+	applymovement (EVENT_OBJ_ID_PLAYER, 0)
+	waitmovement (0)
+	//
+	msgbox ("Welcome to the PUZZLE CHALLENGE.\p"
+			"The TRICK MASTER recommends that\n"
+			"trainers have a three-{POKEMON} party\l"
+			"on them for the upcoming puzzles.\p"
+			"I see that you do not have that many.\p"
+			"It's alright, we have a breeder here\n"
+			"tonight with some rescue {POKEMON}.\p"
+			"Right this way, please.$")
+	closemessage
+	// She leads you into the Den
+	applymovement (1, TrickHouseCorridor_Movement_PokemonTableStop_Lady)
+	applymovement (EVENT_OBJ_ID_PLAYER, TrickHouseCorridor_Movement_PokemonTableStop_Player)
+	waitmovement (EVENT_OBJ_ID_PLAYER)
+	warp(MAP_TRICK_HOUSE_RESTROOM, 0, 0, 0)
+	waitstate
+	releaseall
+}
+
+script TrickHouseCorridor_TriggerScript_PartyStop {
+	lock
+	playse(SE_PIN)
+	applymovement (1, TrickHouseCorridor_Movement_PartyStop)
+	waitmovement (1)
+	msgbox ("Where are you going? You must have\n"
+			"only three {POKEMON} with you to\l"
+			"participate in the puzzles.\p"
+			"Please rectify this before returning.$")
+	closemessage
+	applymovement (1, Common_Movement_WalkInPlaceLeft)
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkLeft1)
+	waitmovement (EVENT_OBJ_ID_PLAYER)
+	release
+}
+movement TrickHouseCorridor_Movement_PartyStop {
+	emote_exclamation_mark
+	walk_in_place_fastest_down
+	delay_16 * 3
+}
+
+// script(local) TrickHouseCorridor_GivePokemonTeam {
+// 	givemon (SPECIES_GROVYLE, 30, 0, 0, 0, 0)
+// 	givemon (SPECIES_COMBUSKEN, 30, 0, 0, 0, 0)
+// 	givemon (SPECIES_MARSHTOMP, 30, 0, 0, 0, 0)
+// 	# Grovyle Moveset
+// 	setmonmove(0, 0, 348) # Leaf Blade
+// 	setmonmove(0, 1, 157) # Rock Slide
+// 	setmonmove(0, 2, 280) # Brick Break
+// 	setmonmove(0, 3, 210) # Fury Cutter
+// 	# Combusken Moveset
+// 	setmonmove(1, 0, 53)  # Flamethrower
+// 	setmonmove(1, 1, 24)  # Double Kick 
+// 	setmonmove(1, 2, 332) # Aerial Ace
+// 	setmonmove(1, 3, 339) # Bulk Up
+// 	# Marshtomp Moveset
+// 	setmonmove(2, 0, 352) # Water Pulse
+// 	setmonmove(2, 1, 231) # Iron Tail
+// 	setmonmove(2, 2, 89)  # Earthquake
+// 	setmonmove(2, 3, 341) # Mud Shot
+// 	# Fanfare
+// 	setflag (FLAG_SYS_POKEMON_GET)
+// 	message("Received GROVYLE, COMBUSKEN, and\n"
+// 			"MARSHTOMP from the lady!")
+// 	playfanfare (MUS_FANFA5)
+// 	waitfanfare
+// 	waitmessage
+// 	return
+// }
+
+raw `
+@ -----------------------------------------------------
+.align 2
+TrickHouseCorridor_StringTable_DenExcuses:
+	.4byte TrickHouseCorridor_Text_DenExcuseStart
+	.4byte TrickHouseCorridor_Text_DenExcuse1
+	.4byte TrickHouseCorridor_Text_DenExcuse2
+	.4byte TrickHouseCorridor_Text_DenExcuse3
+	.4byte TrickHouseCorridor_Text_DenExcuse4
+	.4byte TrickHouseCorridor_Text_DenExcuse5
+	.4byte TrickHouseCorridor_Text_DenExcuse6
+	.4byte TrickHouseCorridor_Text_DenExcuse7
+	.4byte TrickHouseCorridor_Text_DenExcuse8
+	.4byte TrickHouseCorridor_Text_DenExcuse9
+	.4byte TrickHouseCorridor_Text_DenExcuse10
+	.4byte TrickHouseCorridor_Text_DenExcuse11
+	.4byte TrickHouseCorridor_Text_DenExcuse12
+	.4byte 0
+
+.align 2
+TrickHouseCorridor_MovementTable_PokemonTableStop:
+	.4byte TrickHouseCorridor_Movement_PokemonTableStop1
+	.4byte TrickHouseCorridor_Movement_PokemonTableStop2
+	.4byte 0
+`
+movement TrickHouseCorridor_Movement_PokemonTableStop1 {
+	walk_right
+}
+movement TrickHouseCorridor_Movement_PokemonTableStop2 {
+	walk_up
+	walk_right
+}
+movement TrickHouseCorridor_Movement_PokemonTableStop_Lady {
+	walk_up
+	walk_left
+	walk_up * 2
+	set_invisible
+}
+movement TrickHouseCorridor_Movement_PokemonTableStop_Player {
+	delay_16
+	walk_in_place_fastest_up
+	delay_16
+	walk_up * 3
+	set_invisible
+}
+
+text TrickHouseCorridor_Text_DenExcuseStart {
+			"I'm sorry.\n"
+			"The Den is currently closed.\p$"
+}
+text TrickHouseCorridor_Text_DenExcuse1 {
+			"There's been an… incident, and we're\n"
+			"currently deep cleaning.\p"
+			"The vomit should be cleaned up\n"
+			"by the time you finish the puzzle.$"
+}
+text TrickHouseCorridor_Text_DenExcuse2 {
+			"There's been an… incident, but the\n"
+			"exorcism should be completed by\l"
+			"the time you finish the puzzle.$"
+}
+text TrickHouseCorridor_Text_DenExcuse3 {
+			"There's been an… incident, but the\n"
+			"rampaging Tauros has been recaptured.\p"
+			"The broken china should be cleaned up\n"
+			"by the time you finish the puzzle.$"
+}
+text TrickHouseCorridor_Text_DenExcuse4 {
+			"There's been an… incident.\n"
+			"Please disregard any baa-ing you hear.\p"
+			"And if you see any wild Wooloo around,\n"
+			"please let us know.\p"
+			"If the Hoenn General Council finds out\n"
+			"about a potential invasive species…$"
+}
+text TrickHouseCorridor_Text_DenExcuse5 {
+			"There's been an… incident.\p"
+			"Service staff are underserved,\n"
+			"maintenence staff are under repairs,\l"
+			"and hospitality staff are inhospitable.\p"
+			"The unions are divided on how to address\n"
+			"the solution, but the details should be\l"
+			"generalized by your next puzzle.$"
+}
+text TrickHouseCorridor_Text_DenExcuse6 {
+			"There's been an… incident. But don't\n"
+			"worry: the candy thief was caught.\p"
+			"The mess of chocolate, however, will\n"
+			"take a little while yet to clean up.$"
+}
+text TrickHouseCorridor_Text_DenExcuse7 {
+			"There's been an… incident. But don't\n"
+			"worry: the Celebi are fixing the time\l"
+			"paradoxes as we speak.\p"
+			"Or… before we speak…\n"
+			"Or have we not yet spoken…?\p"
+			"Anyway, it will have been already cleaned\n"
+			"up when you finish the previous puzzle.$"
+}
+text TrickHouseCorridor_Text_DenExcuse8 {
+			"There's been an… incident.\p"
+			"Nothing related to the Coronavirus,\n"
+			"I assure you. But do wear a mask.\p"
+			"Deep cleaning should be done by the\n"
+			"time you finish the puzzle.$"
+}
+text TrickHouseCorridor_Text_DenExcuse9 {
+			"There's been an… incident.\p"
+			"No, not that kind of incident,\n"
+			"the other kind of incident.\p"
+			"No, not that kind either, the\n"
+			"other other kind of incident.\p"
+			"Don't worry, the incident kind will\n"
+			"be determined by your next puzzle.$"
+}
+text TrickHouseCorridor_Text_DenExcuse10 {
+			"There's been an… incident.\n"
+			"But nothing related to the pandemic!\p"
+			"No, this is realted to a DIFFERENT\n"
+			"world-spanning virus that demands\l"
+			"quarentining to stem the spread.\p"
+			"But fear not, unlike the other kind,\n"
+			"it'll be contained by your next puzzle.$"
+}
+text TrickHouseCorridor_Text_DenExcuse11 {
+			"There's been an… incident.\n"
+			"It may or may not involve noodles.\p"
+			"Said incident should be resolved by\n"
+			"the time you finish this puzzle.\l"
+			"And tell TVTropes hi for me.$"
+}
+text TrickHouseCorridor_Text_DenExcuse12 {
+			"There's been an… incident. A mix-up,\n"
+			"if you will, and we're fixing it up.\p"
+			"The white rabbit thing should be pushing\n"
+			"the rules back in line, and by the time\l"
+			"you finish this puzzle, the healing lady\l"
+			"should no longer be considered 'WIN'.$"
+}
+
+
+// ----------------------------------------------------
+raw `
+#define LID_MASTER 2
+`
+
+script TrickHouseCorridor_TriggerScript_RunIntro {
+	lockall
+	getplayerxy (VAR_INTERACT_X, VAR_INTERACT_Y)
+	subvar(VAR_INTERACT_Y, 7)
+	// Walk up
+	selectpointer (TrickHouseCorridor_MovementTable_RunIntro, VAR_INTERACT_Y)
+	applymovement (EVENT_OBJ_ID_PLAYER, 0)
+	applymovement (LID_MASTER, Common_Movement_WalkLeft1)
+	waitmovement (EVENT_OBJ_ID_PLAYER)
+	// Introduce puzzle
+	callnative(LoadPuzzleIntro)
+	// Note: If a custom intro script is on the current puzzle,
+	// execution will not reach beyond here, but will jump to that.
+	switch(var(VAR_RESULT)) {
+		case 0: // Generic Intro
+			random(256)
+			selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_NoItems, VAR_RESULT)
+			msgbox_selected
+		case 1: // Generic item intro
+			random(256)
+			copyvar(VAR_0x8001, VAR_RESULT)
+			selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_Items, VAR_0x8001)
+			msgbox_selected
+			// Give items
+			callnative(GiveItemPrerequisites)
+			playfanfare(MUS_FANFA4)
+			message(PuzzleCommon_Text_PuzzleIntro_GivenItems)
+			waitmessage
+			waitfanfare
+			// Bye!
+			selectpointer_wrap (PuzzleCommon_TextArray_PuzzleIntro_Items_Bye, VAR_0x8001)
+			msgbox_selected
+		case 2: // Custom intro
+			msgbox_selected
+		case 3: // Custom item intro
+			msgbox_selected
+			// Give items
+			callnative(GiveItemPrerequisites)
+			playfanfare(MUS_FANFA4)
+			message(PuzzleCommon_Text_PuzzleIntro_GivenItems)
+			waitmessage
+			waitfanfare
+			// Bye!
+			msgbox(PuzzleCommon_Text_PuzzleIntro_CommonBye)
+		default:
+			end
+	}
+	// Leave
+	closemessage
+	if (var(VAR_OBJ_GFX_ID_0) == EVENT_OBJ_GFX_TRICK_MASTER) {
+		// Trick Master warps away
+		setvar(VAR_0x8000, LID_MASTER)
+		call(PuzzleCommon_EventScript_WarpTrickMasterOut)
+		// Player approaches door
+		applymovement(LID_PLAYER, Common_Movement_WalkUp2)
+		waitmovement(0)
+		// Open the door to the puzzle
+		opendoor(22, 2)
+		waitdooranim
+	} else {
+		// Player approaches door
+		applymovement(LID_PLAYER, Common_Movement_WalkUp2)
+		applymovement(LID_MASTER, Common_Movement_WalkUp2)
+		waitmovement(0)
+		// Open the door to the puzzle
+		opendoor(22, 2)
+		waitdooranim
+		// intro character walks through
+		applymovement(LID_MASTER, TrickHouseCorridor_Movement_OtherLeaves)
+		waitmovement(0)
+		removeobject(LID_MASTER)
+		playse(SE_KAIDAN)
+	}
+	setvar(VAR_PUZZLE_STATE, 1)
+	setescapewarp(MAP_TRICK_HOUSE_CORRIDOR, -1, 22, 3)
+	call (TrickHouseCorridor_OpenPuzzleDoor)
+	releaseall
+}
+
+raw `
+#undef LID_MASTER
+@ -----------------------------------------------------
+
+.align 2
+TrickHouseCorridor_MovementTable_RunIntro:
+	.4byte Common_Movement_WalkRight2
+	.4byte TrickHouseCorridor_Movement_RunIntro2
+	.4byte 0
+`
+
+movement TrickHouseCorridor_Movement_RunIntro2 {
+	walk_right
+	walk_up
+	walk_right
+}
+movement TrickHouseCorridor_Movement_OtherLeaves {
+	walk_up
+	walk_left
+	walk_up
+	walk_up
+	set_invisible
+}
+
+raw `
+#undef LID_MASTER
+`

@@ -79,6 +79,13 @@ struct SaveSector
 #define SECTOR_SIGNATURE_OFFSET offsetof(struct SaveSector, signature)
 #define SECTOR_COUNTER_OFFSET   offsetof(struct SaveSector, counter)
 
+#define SAVE_STATUS_EMPTY    0
+#define SAVE_STATUS_OK       1
+#define SAVE_STATUS_CORRUPT  2
+#define SAVE_STATUS_NO_FLASH 4
+#define SAVE_STATUS_OUTDATED 10
+#define SAVE_STATUS_ERROR    0xFF
+
 extern u16 gLastWrittenSector;
 extern u32 gLastSaveCounter;
 extern u16 gLastKnownGoodSector;

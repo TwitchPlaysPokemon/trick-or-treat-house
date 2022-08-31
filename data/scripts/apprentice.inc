@@ -1,3 +1,4 @@
+#include "constants/apprentice.h"
 .set LOCALID_APPRENTICE, 6
 
 BattleFrontier_BattleTowerLobby_EventScript_Apprentice::
@@ -247,3 +248,4 @@ Apprentice_Movement_Leave:
 	slide_down
 	slide_down
 	step_end
+

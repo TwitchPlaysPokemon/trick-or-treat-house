@@ -1,0 +1,100 @@
+raw `
+TrickHouseExt_Gatehouse_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, TrickHouseExt_Gatehouse_OnLoad
+	.byte 0
+
+#define LID_SPOOPY 2
+`
+
+script TrickHouseExt_Gatehouse_OnLoad {
+	setflag(FLAG_TEMP_2) // Hide the spoopy
+}
+
+script TrickHouseExt_Gatehouse_ItemGet {
+	lock
+	waitse
+	// We're picking up the following item:
+	setvar(VAR_0x8004, ITEM_QUICK_CLAW)
+	setvar(VAR_0x8005, 1)
+	
+	copyvar (VAR_0x8000, VAR_0x8004)
+	copyvar (VAR_0x8001, VAR_0x8005)
+	// Check if there's enough space for this item, store result
+	checkitemspace(VAR_0x8004, VAR_0x8005)
+	copyvar(VAR_0x8007, VAR_RESULT)
+	// buffer item name
+	bufferitemnameplural(1, VAR_0x8004, VAR_0x8005)
+	// Play jingle depending on item
+	checkitemtype(VAR_0x8004)
+	call(Std_ObtainItem_BufferItemTypeAndPlayJingle)
+	if (var(VAR_0x8007) == 1) {
+		removeobject(THIS_EVENT)
+		giveitem(VAR_0x8004, VAR_0x8005)
+		specialvar(VAR_RESULT, CheckTMAndBufferMoveName)
+		copyvar(VAR_0x8008, VAR_RESULT)
+		if (var(VAR_0x8008) == TRUE) {
+			bufferitemnameplural (0, VAR_0x8004, VAR_0x8005)
+			messagewordwrap (gText_PlayerFoundOneTMItem)
+		} else {
+			buffernumberstring2 (0, VAR_0x8005)
+			messagewordwrap (gText_PlayerFoundOneItem)
+		}
+		
+		//TODO Do spoopy here
+		setobjectxyperm(LID_SPOOPY, 13, 4)
+		addobject(LID_SPOOPY)
+		delay(18)
+		applymovement(LID_SPOOPY, TrickHouseExt_Gatehouse_ItemGetMovement)
+		setvar(VAR_TEMP_0, 1)
+		
+		waitfanfare
+		waitmessage
+		bufferitemname (1, VAR_0x8004, VAR_0x8005)
+		
+		messagewordwrap (gText_PutItemInPocket)
+		waitmessage
+		waitbuttonpress
+		removeobject(LID_SPOOPY)
+		setobjectxyperm(LID_SPOOPY, 4, 3)
+		addobject(LID_SPOOPY)
+	} else {
+		msgbox (gText_ObtainedTheItem, MSGBOX_DEFAULT)
+		msgbox (gText_TooBadBagIsFull, MSGBOX_DEFAULT)
+	}
+	release
+}
+movement TrickHouseExt_Gatehouse_ItemGetMovement {
+	walk_slow_left * 4
+}
+
+script TrickHouseExt_Gatehouse_Door {
+	msgbox ("The door won't open.\p"
+			"It's blocked by the Trick Door on the\n"
+			"other side.$", MSGBOX_SIGN)
+}
+
+script TrickHouseExt_Gatehouse_Trigger {
+	lockall
+	playse(SE_PIN)
+	applymovement(LID_PLAYER, TrickHouseExt_Gatehouse_TriggerMovement)
+	applymovement(LID_SPOOPY, Common_Movement_WalkLeft2)
+	waitmovement(LID_SPOOPY)
+	removeobject(LID_SPOOPY)
+	waitmovement(LID_PLAYER)
+	setvar(VAR_TEMP_0, 2)
+	releaseall
+}
+movement TrickHouseExt_Gatehouse_TriggerMovement {
+	face_down
+	emote_exclamation_mark
+	delay_16 * 2
+	face_up
+	delay_16 * 2
+	face_right
+	delay_16 * 4
+	face_left
+}
+
+raw `
+#undef LID_SPOOPY
+`

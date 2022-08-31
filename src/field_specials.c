@@ -66,9 +66,11 @@
 #include "constants/metatile_labels.h"
 #include "palette.h"
 
+
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
-static EWRAM_DATA u32 sBikeCyclingTimer = 0;
+EWRAM_DATA u32 sBikeCyclingTimer = 0;
+EWRAM_DATA u32 gPuzzleTimer = 0;
 static EWRAM_DATA u8 sSlidingDoorNextFrameCounter = 0;
 static EWRAM_DATA u8 sSlidingDoorFrame = 0;
 static EWRAM_DATA u8 sTutorMoveAndElevatorWindowId = 0;
@@ -140,128 +142,6 @@ void Special_ViewWallClock(void)
     gMain.savedCallback = CB2_ReturnToField;
     SetMainCallback2(CB2_ViewWallClock);
     LockPlayerFieldControls();
-}
-
-void ResetCyclingRoadChallengeData(void)
-{
-    gBikeCyclingChallenge = FALSE;
-    gBikeCollisions = 0;
-    sBikeCyclingTimer = 0;
-}
-
-void Special_BeginCyclingRoadChallenge(void)
-{
-    gBikeCyclingChallenge = TRUE;
-    gBikeCollisions = 0;
-    sBikeCyclingTimer = gMain.vblankCounter1;
-}
-
-u16 GetPlayerAvatarBike(void)
-{
-    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_ACRO_BIKE))
-        return 1;
-    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE))
-        return 2;
-    return 0;
-}
-
-static void DetermineCyclingRoadResults(u32 numFrames, u8 numBikeCollisions)
-{
-    u8 result;
-
-    if (numBikeCollisions < 100)
-    {
-        ConvertIntToDecimalStringN(gStringVar1, numBikeCollisions, STR_CONV_MODE_LEFT_ALIGN, 2);
-        StringAppend(gStringVar1, gText_SpaceTimes);
-    }
-    else
-    {
-        StringCopy(gStringVar1, gText_99TimesPlus);
-    }
-
-    if (numFrames < 3600)
-    {
-        ConvertIntToDecimalStringN(gStringVar2, numFrames / 60, STR_CONV_MODE_RIGHT_ALIGN, 2);
-        gStringVar2[2] = CHAR_DEC_SEPARATOR;
-        ConvertIntToDecimalStringN(&gStringVar2[3], ((numFrames % 60) * 100) / 60, STR_CONV_MODE_LEADING_ZEROS, 2);
-        StringAppend(gStringVar2, gText_SpaceSeconds);
-    }
-    else
-    {
-        StringCopy(gStringVar2, gText_1MinutePlus);
-    }
-
-    result = 0;
-    if (numBikeCollisions == 0)
-        result = 5;
-    else if (numBikeCollisions < 4)
-        result = 4;
-    else if (numBikeCollisions < 10)
-        result = 3;
-    else if (numBikeCollisions < 20)
-        result = 2;
-    else if (numBikeCollisions < 100)
-        result = 1;
-
-    if (numFrames / 60 <= 10)
-        result += 5;
-    else if (numFrames / 60 <= 15)
-        result += 4;
-    else if (numFrames / 60 <= 20)
-        result += 3;
-    else if (numFrames / 60 <= 40)
-        result += 2;
-    else if (numFrames / 60 < 60)
-        result += 1;
-
-    gSpecialVar_Result = result;
-}
-
-void FinishCyclingRoadChallenge(void)
-{
-    const u32 numFrames = gMain.vblankCounter1 - sBikeCyclingTimer;
-
-    DetermineCyclingRoadResults(numFrames, gBikeCollisions);
-    RecordCyclingRoadResults(numFrames, gBikeCollisions);
-}
-
-static void RecordCyclingRoadResults(u32 numFrames, u8 numBikeCollisions)
-{
-    u16 low = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_L);
-    u16 high = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_H);
-    u32 framesRecord = low + (high << 16);
-
-    if (framesRecord > numFrames || framesRecord == 0)
-    {
-        VarSet(VAR_CYCLING_ROAD_RECORD_TIME_L, numFrames);
-        VarSet(VAR_CYCLING_ROAD_RECORD_TIME_H, numFrames >> 16);
-        VarSet(VAR_CYCLING_ROAD_RECORD_COLLISIONS, numBikeCollisions);
-    }
-}
-
-u16 GetRecordedCyclingRoadResults(void)
-{
-    u16 low = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_L);
-    u16 high = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_H);
-    u32 framesRecord = low + (high << 16);
-
-    if (framesRecord == 0)
-        return FALSE;
-
-    DetermineCyclingRoadResults(framesRecord, VarGet(VAR_CYCLING_ROAD_RECORD_COLLISIONS));
-    return TRUE;
-}
-
-void UpdateCyclingRoadState(void)
-{
-    if (gLastUsedWarp.mapNum == MAP_NUM(ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE) && gLastUsedWarp.mapGroup == MAP_GROUP(ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE))
-        return;
-
-    if (VarGet(VAR_CYCLING_CHALLENGE_STATE) == 2 || VarGet(VAR_CYCLING_CHALLENGE_STATE) == 3)
-    {
-        VarSet(VAR_CYCLING_CHALLENGE_STATE, 0);
-        Overworld_SetSavedMusic(MUS_DUMMY);
-    }
 }
 
 void SetSSTidalFlag(void)
@@ -343,127 +223,27 @@ u8 GetSSTidalLocation(s8 *mapGroup, s8 *mapNum, s16 *x, s16 *y)
 
 bool32 ShouldDoWallyCall(void)
 {
-    if (FlagGet(FLAG_ENABLE_FIRST_WALLY_POKENAV_CALL))
-    {
-        switch (gMapHeader.mapType)
-        {
-        case MAP_TYPE_TOWN:
-        case MAP_TYPE_CITY:
-        case MAP_TYPE_ROUTE:
-        case MAP_TYPE_OCEAN_ROUTE:
-            if (++(*GetVarPointer(VAR_WALLY_CALL_STEP_COUNTER)) < 250)
-                return FALSE;
-            break;
-        default:
-            return FALSE;
-        }
-    }
-    else
-    {
-        return FALSE;
-    }
-
-    return TRUE;
+    return FALSE;
 }
 
 bool32 ShouldDoScottFortreeCall(void)
 {
-    if (FlagGet(FLAG_SCOTT_CALL_FORTREE_GYM))
-    {
-        switch (gMapHeader.mapType)
-        {
-        case MAP_TYPE_TOWN:
-        case MAP_TYPE_CITY:
-        case MAP_TYPE_ROUTE:
-        case MAP_TYPE_OCEAN_ROUTE:
-            if (++(*GetVarPointer(VAR_SCOTT_FORTREE_CALL_STEP_COUNTER)) < 10)
-                return FALSE;
-            break;
-        default:
-            return FALSE;
-        }
-    }
-    else
-    {
-        return FALSE;
-    }
-
-    return TRUE;
+    return FALSE;
 }
 
 bool32 ShouldDoScottBattleFrontierCall(void)
 {
-    if (FlagGet(FLAG_SCOTT_CALL_BATTLE_FRONTIER))
-    {
-        switch (gMapHeader.mapType)
-        {
-        case MAP_TYPE_TOWN:
-        case MAP_TYPE_CITY:
-        case MAP_TYPE_ROUTE:
-        case MAP_TYPE_OCEAN_ROUTE:
-            if (++(*GetVarPointer(VAR_SCOTT_BF_CALL_STEP_COUNTER)) < 10)
-                return FALSE;
-            break;
-        default:
-            return FALSE;
-        }
-    }
-    else
-    {
-        return FALSE;
-    }
-
-    return TRUE;
+    return FALSE;
 }
 
 bool32 ShouldDoRoxanneCall(void)
 {
-    if (FlagGet(FLAG_ENABLE_ROXANNE_FIRST_CALL))
-    {
-        switch (gMapHeader.mapType)
-        {
-        case MAP_TYPE_TOWN:
-        case MAP_TYPE_CITY:
-        case MAP_TYPE_ROUTE:
-        case MAP_TYPE_OCEAN_ROUTE:
-            if (++(*GetVarPointer(VAR_ROXANNE_CALL_STEP_COUNTER)) < 250)
-                return FALSE;
-            break;
-        default:
-            return FALSE;
-        }
-    }
-    else
-    {
-        return FALSE;
-    }
-
-    return TRUE;
+    return FALSE;
 }
 
 bool32 ShouldDoRivalRayquazaCall(void)
 {
-    if (FlagGet(FLAG_DEFEATED_MAGMA_SPACE_CENTER))
-    {
-        switch (gMapHeader.mapType)
-        {
-        case MAP_TYPE_TOWN:
-        case MAP_TYPE_CITY:
-        case MAP_TYPE_ROUTE:
-        case MAP_TYPE_OCEAN_ROUTE:
-            if (++(*GetVarPointer(VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER)) < 250)
-                return FALSE;
-            break;
-        default:
-            return FALSE;
-        }
-    }
-    else
-    {
-        return FALSE;
-    }
-
-    return TRUE;
+    return FALSE;
 }
 
 u8 GetLinkPartnerNames(void)
@@ -502,7 +282,7 @@ void SpawnLinkPartnerObjectEvent(void)
     };
     u8 myLinkPlayerNumber;
     u8 playerFacingDirection;
-    u8 linkSpriteId;
+    u16 linkSpriteId;
     u8 i;
 
     myLinkPlayerNumber = GetMultiplayerId();
@@ -532,27 +312,11 @@ void SpawnLinkPartnerObjectEvent(void)
     {
         if (myLinkPlayerNumber != i)
         {
-            switch ((u8)gLinkPlayers[i].version)
-            {
-            case VERSION_RUBY:
-            case VERSION_SAPPHIRE:
-                if (gLinkPlayers[i].gender == 0)
-                    linkSpriteId = OBJ_EVENT_GFX_LINK_RS_BRENDAN;
-                else
-                    linkSpriteId = OBJ_EVENT_GFX_LINK_RS_MAY;
-                break;
-            case VERSION_EMERALD:
-                if (gLinkPlayers[i].gender == 0)
-                    linkSpriteId = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL;
-                else
-                    linkSpriteId = OBJ_EVENT_GFX_RIVAL_MAY_NORMAL;
-                break;
-            default:
-                if (gLinkPlayers[i].gender == 0)
-                    linkSpriteId = OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL;
-                else
-                    linkSpriteId = OBJ_EVENT_GFX_RIVAL_MAY_NORMAL;
-                break;
+            switch (gLinkPlayers[i].gender) {
+                default:
+                case GENDER_M: linkSpriteId = EVENT_OBJ_GFX_BRENDAN_NORMAL; break;
+                case GENDER_F: linkSpriteId = EVENT_OBJ_GFX_MAY_NORMAL; break;
+                case GENDER_N: linkSpriteId = EVENT_OBJ_GFX_TREEKID_NORMAL; break;
             }
             SpawnSpecialObjectEventParameterized(linkSpriteId, movementTypes[j], 240 - i, coordOffsets[j][0] + x + MAP_OFFSET, coordOffsets[j][1] + y + MAP_OFFSET, 0);
             LoadLinkPartnerObjectEventSpritePalette(linkSpriteId, 240 - i, i);
@@ -563,15 +327,13 @@ void SpawnLinkPartnerObjectEvent(void)
     }
 }
 
-static void LoadLinkPartnerObjectEventSpritePalette(u8 graphicsId, u8 localEventId, u8 paletteNum)
+static void LoadLinkPartnerObjectEventSpritePalette(u16 graphicsId, u8 localEventId, u8 paletteNum)
 {
     u8 adjustedPaletteNum;
     // Note: This temp var is necessary; paletteNum += 6 doesn't match.
     adjustedPaletteNum = paletteNum + 6;
-    if (graphicsId == OBJ_EVENT_GFX_LINK_RS_BRENDAN ||
-        graphicsId == OBJ_EVENT_GFX_LINK_RS_MAY ||
-        graphicsId == OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL ||
-        graphicsId == OBJ_EVENT_GFX_RIVAL_MAY_NORMAL)
+    if (graphicsId == OBJ_EVENT_GFX_BRENDAN_NORMAL ||
+        graphicsId == OBJ_EVENT_GFX_MAY_NORMAL)
     {
         u8 obj = GetObjectEventIdByLocalIdAndMap(localEventId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
         if (obj != OBJECT_EVENTS_COUNT)
@@ -582,16 +344,16 @@ static void LoadLinkPartnerObjectEventSpritePalette(u8 graphicsId, u8 localEvent
 
             switch (graphicsId)
             {
-            case OBJ_EVENT_GFX_LINK_RS_BRENDAN:
-                LoadPalette(gObjectEventPal_RubySapphireBrendan, 0x100 + (adjustedPaletteNum << 4), 0x20);
-                break;
-            case OBJ_EVENT_GFX_LINK_RS_MAY:
-                LoadPalette(gObjectEventPal_RubySapphireMay, 0x100 + (adjustedPaletteNum << 4), 0x20);
-                break;
-            case OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL:
+            // case OBJ_EVENT_GFX_LINK_RS_BRENDAN:
+                // LoadPalette(gObjectEventPal_RubySapphireBrendan, 0x100 + (adjustedPaletteNum << 4), 0x20);
+            //     break;
+            // case OBJ_EVENT_GFX_LINK_RS_MAY:
+                // LoadPalette(gObjectEventPal_RubySapphireMay, 0x100 + (adjustedPaletteNum << 4), 0x20);
+            //     break;
+            case OBJ_EVENT_GFX_BRENDAN_NORMAL:
                 LoadPalette(gObjectEventPal_Brendan, 0x100 + (adjustedPaletteNum << 4), 0x20);
                 break;
-            case OBJ_EVENT_GFX_RIVAL_MAY_NORMAL:
+            case OBJ_EVENT_GFX_MAY_NORMAL:
                 LoadPalette(gObjectEventPal_May, 0x100 + (adjustedPaletteNum << 4), 0x20);
                 break;
             }
@@ -917,10 +679,10 @@ u8 GetBattleOutcome(void)
 
 void CableCarWarp(void)
 {
-    if (gSpecialVar_0x8004 != 0)
-        SetWarpDestination(MAP_GROUP(ROUTE112_CABLE_CAR_STATION), MAP_NUM(ROUTE112_CABLE_CAR_STATION), WARP_ID_NONE, 6, 4);
-    else
-        SetWarpDestination(MAP_GROUP(MT_CHIMNEY_CABLE_CAR_STATION), MAP_NUM(MT_CHIMNEY_CABLE_CAR_STATION), WARP_ID_NONE, 6, 4);
+    // if (gSpecialVar_0x8004 != 0)
+    //     SetWarpDestination(MAP_GROUP(ROUTE112_CABLE_CAR_STATION), MAP_NUM(ROUTE112_CABLE_CAR_STATION), WARP_ID_NONE, 6, 4);
+    // else
+    //     SetWarpDestination(MAP_GROUP(MT_CHIMNEY_CABLE_CAR_STATION), MAP_NUM(MT_CHIMNEY_CABLE_CAR_STATION), WARP_ID_NONE, 6, 4);
 }
 
 void SetHiddenItemFlag(void)
@@ -1129,21 +891,21 @@ void EndLotteryCornerComputerEffect(void)
     DrawWholeMapView();
 }
 
-void SetTrickHouseNuggetFlag(void)
-{
-    u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_HIDDEN_ITEM_TRICK_HOUSE_NUGGET;
-    *specVar = flag;
-    FlagSet(flag);
-}
+// void SetTrickHouseNuggetFlag(void)
+// {
+//     u16 *specVar = &gSpecialVar_0x8004;
+//     u16 flag = FLAG_HIDDEN_ITEM_TRICK_HOUSE_NUGGET;
+//     *specVar = flag;
+//     FlagSet(flag);
+// }
 
-void ResetTrickHouseNuggetFlag(void)
-{
-    u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_HIDDEN_ITEM_TRICK_HOUSE_NUGGET;
-    *specVar = flag;
-    FlagClear(flag);
-}
+// void ResetTrickHouseNuggetFlag(void)
+// {
+//     u16 *specVar = &gSpecialVar_0x8004;
+//     u16 flag = FLAG_HIDDEN_ITEM_TRICK_HOUSE_NUGGET;
+//     *specVar = flag;
+//     FlagClear(flag);
+// }
 
 bool8 CheckLeadMonCool(void)
 {
@@ -1283,49 +1045,49 @@ u16 GetSlotMachineId(void)
     return sSlotMachineIds[rnd % SLOT_MACHINE_COUNT];
 }
 
-bool8 FoundAbandonedShipRoom1Key(void)
-{
-    u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_1_KEY;
-    *specVar = flag;
-    if (!FlagGet(flag))
-        return FALSE;
+// bool8 FoundAbandonedShipRoom1Key(void)
+// {
+//     u16 *specVar = &gSpecialVar_0x8004;
+//     u16 flag = FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_1_KEY;
+//     *specVar = flag;
+//     if (!FlagGet(flag))
+//         return FALSE;
+// 
+//     return TRUE;
+// }
 
-    return TRUE;
-}
+// bool8 FoundAbandonedShipRoom2Key(void)
+// {
+//     u16 *specVar = &gSpecialVar_0x8004;
+//     u16 flag = FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_2_KEY;
+//     *specVar = flag;
+//     if (!FlagGet(flag))
+//         return FALSE;
+// 
+//     return TRUE;
+// }
 
-bool8 FoundAbandonedShipRoom2Key(void)
-{
-    u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_2_KEY;
-    *specVar = flag;
-    if (!FlagGet(flag))
-        return FALSE;
+// bool8 FoundAbandonedShipRoom4Key(void)
+// {
+//     u16 *specVar = &gSpecialVar_0x8004;
+//     u16 flag = FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_4_KEY;
+//     *specVar = flag;
+//     if (!FlagGet(flag))
+//         return FALSE;
+// 
+//     return TRUE;
+// }
 
-    return TRUE;
-}
-
-bool8 FoundAbandonedShipRoom4Key(void)
-{
-    u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_4_KEY;
-    *specVar = flag;
-    if (!FlagGet(flag))
-        return FALSE;
-
-    return TRUE;
-}
-
-bool8 FoundAbandonedShipRoom6Key(void)
-{
-    u16 *specVar = &gSpecialVar_0x8004;
-    u16 flag = FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_6_KEY;
-    *specVar = flag;
-    if (!FlagGet(flag))
-        return FALSE;
-
-    return TRUE;
-}
+// bool8 FoundAbandonedShipRoom6Key(void)
+// {
+//     u16 *specVar = &gSpecialVar_0x8004;
+//     u16 flag = FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_6_KEY;
+//     *specVar = flag;
+//     if (!FlagGet(flag))
+//         return FALSE;
+// 
+//     return TRUE;
+// }
 
 bool8 LeadMonHasEffortRibbon(void)
 {
@@ -1355,21 +1117,21 @@ bool8 Special_AreLeadMonEVsMaxedOut(void)
 
 u8 TryUpdateRusturfTunnelState(void)
 {
-    if (!FlagGet(FLAG_RUSTURF_TUNNEL_OPENED)
-        && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(RUSTURF_TUNNEL)
-        && gSaveBlock1Ptr->location.mapNum == MAP_NUM(RUSTURF_TUNNEL))
-    {
-        if (FlagGet(FLAG_HIDE_RUSTURF_TUNNEL_ROCK_1))
-        {
-            VarSet(VAR_RUSTURF_TUNNEL_STATE, 4);
-            return TRUE;
-        }
-        else if (FlagGet(FLAG_HIDE_RUSTURF_TUNNEL_ROCK_2))
-        {
-            VarSet(VAR_RUSTURF_TUNNEL_STATE, 5);
-            return TRUE;
-        }
-    }
+    // if (!FlagGet(FLAG_RUSTURF_TUNNEL_OPENED)
+    //     && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(RUSTURF_TUNNEL)
+    //     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(RUSTURF_TUNNEL))
+    // {
+    //     if (FlagGet(FLAG_HIDE_RUSTURF_TUNNEL_ROCK_1))
+    //     {
+    //         VarSet(VAR_RUSTURF_TUNNEL_STATE, 4);
+    //         return TRUE;
+    //     }
+    //     else if (FlagGet(FLAG_HIDE_RUSTURF_TUNNEL_ROCK_2))
+    //     {
+    //         VarSet(VAR_RUSTURF_TUNNEL_STATE, 5);
+    //         return TRUE;
+    //     }
+    // }
     return FALSE;
 }
 
@@ -1427,13 +1189,13 @@ bool8 IsPokerusInParty(void)
 void ShakeCamera(void)
 {
     u8 taskId = CreateTask(Task_ShakeCamera, 9);
-    gTasks[taskId].horizontalPan = gSpecialVar_0x8005;
+    gTasks[taskId].horizontalPan = gSpecialVar_0x8005; //amplitude x
     gTasks[taskId].delayCounter = 0;
-    gTasks[taskId].numShakes = gSpecialVar_0x8006;
-    gTasks[taskId].delay = gSpecialVar_0x8007;
-    gTasks[taskId].verticalPan = gSpecialVar_0x8004;
+    gTasks[taskId].numShakes = gSpecialVar_0x8006; //duration (num shakes)
+    gTasks[taskId].delay = gSpecialVar_0x8007; //frequency
+    gTasks[taskId].verticalPan = gSpecialVar_0x8004; //amplitude y
     SetCameraPanningCallback(NULL);
-    PlaySE(SE_M_STRENGTH);
+    // PlaySE(SE_M_STRENGTH);
 }
 
 static void Task_ShakeCamera(u8 taskId)
@@ -1468,10 +1230,10 @@ static void StopCameraShake(u8 taskId)
 #undef delay
 #undef verticalPan
 
-bool8 FoundBlackGlasses(void)
-{
-    return FlagGet(FLAG_HIDDEN_ITEM_ROUTE_116_BLACK_GLASSES);
-}
+// bool8 FoundBlackGlasses(void)
+// {
+//     return FlagGet(FLAG_HIDDEN_ITEM_ROUTE_116_BLACK_GLASSES);
+// }
 
 void SetRoute119Weather(void)
 {
@@ -1618,10 +1380,10 @@ bool8 IsBadEggInParty(void)
 
 bool8 InMultiPartnerRoom(void)
 {
-    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(BATTLE_FRONTIER_BATTLE_TOWER_MULTI_PARTNER_ROOM)
-        && gSaveBlock1Ptr->location.mapNum == MAP_NUM(BATTLE_FRONTIER_BATTLE_TOWER_MULTI_PARTNER_ROOM) &&
-        VarGet(VAR_FRONTIER_BATTLE_MODE) == FRONTIER_MODE_MULTIS)
-        return TRUE;
+    // if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(BATTLE_FRONTIER_BATTLE_TOWER_MULTI_PARTNER_ROOM)
+    //     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(BATTLE_FRONTIER_BATTLE_TOWER_MULTI_PARTNER_ROOM) &&
+    //     VarGet(VAR_FRONTIER_BATTLE_MODE) == FRONTIER_MODE_MULTIS)
+    //     return TRUE;
     return FALSE;
 }
 
@@ -1702,32 +1464,32 @@ static const u16 sElevatorWindowTiles_Descending[][3] =
 
 void SetDeptStoreFloor(void)
 {
-    u8 deptStoreFloor;
-    switch (gSaveBlock1Ptr->dynamicWarp.mapNum)
-    {
-    case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_1F):
-        deptStoreFloor = DEPT_STORE_FLOORNUM_1F;
-        break;
-    case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_2F):
-        deptStoreFloor = DEPT_STORE_FLOORNUM_2F;
-        break;
-    case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_3F):
-        deptStoreFloor = DEPT_STORE_FLOORNUM_3F;
-        break;
-    case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_4F):
-        deptStoreFloor = DEPT_STORE_FLOORNUM_4F;
-        break;
-    case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_5F):
-        deptStoreFloor = DEPT_STORE_FLOORNUM_5F;
-        break;
-    case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_ROOFTOP):
-        deptStoreFloor = DEPT_STORE_FLOORNUM_ROOFTOP;
-        break;
-    default:
-        deptStoreFloor = DEPT_STORE_FLOORNUM_1F;
-        break;
-    }
-    VarSet(VAR_DEPT_STORE_FLOOR, deptStoreFloor);
+    // u8 deptStoreFloor;
+    // switch (gSaveBlock1Ptr->dynamicWarp.mapNum)
+    // {
+    // case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_1F):
+    //     deptStoreFloor = DEPT_STORE_FLOORNUM_1F;
+    //     break;
+    // case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_2F):
+    //     deptStoreFloor = DEPT_STORE_FLOORNUM_2F;
+    //     break;
+    // case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_3F):
+    //     deptStoreFloor = DEPT_STORE_FLOORNUM_3F;
+    //     break;
+    // case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_4F):
+    //     deptStoreFloor = DEPT_STORE_FLOORNUM_4F;
+    //     break;
+    // case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_5F):
+    //     deptStoreFloor = DEPT_STORE_FLOORNUM_5F;
+    //     break;
+    // case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_ROOFTOP):
+    //     deptStoreFloor = DEPT_STORE_FLOORNUM_ROOFTOP;
+    //     break;
+    // default:
+    //     deptStoreFloor = DEPT_STORE_FLOORNUM_1F;
+    //     break;
+    // }
+    // VarSet(VAR_DEPT_STORE_FLOOR, deptStoreFloor);
 }
 
 u16 GetDeptStoreDefaultFloorChoice(void)
@@ -1735,32 +1497,32 @@ u16 GetDeptStoreDefaultFloorChoice(void)
     sLilycoveDeptStore_NeverRead = 0;
     sLilycoveDeptStore_DefaultFloorChoice = 0;
 
-    if (gSaveBlock1Ptr->dynamicWarp.mapGroup == MAP_GROUP(LILYCOVE_CITY_DEPARTMENT_STORE_1F))
-    {
-        switch (gSaveBlock1Ptr->dynamicWarp.mapNum)
-        {
-        case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_5F):
-            sLilycoveDeptStore_NeverRead = 0;
-            sLilycoveDeptStore_DefaultFloorChoice = 0;
-            break;
-        case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_4F):
-            sLilycoveDeptStore_NeverRead = 0;
-            sLilycoveDeptStore_DefaultFloorChoice = 1;
-            break;
-        case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_3F):
-            sLilycoveDeptStore_NeverRead = 0;
-            sLilycoveDeptStore_DefaultFloorChoice = 2;
-            break;
-        case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_2F):
-            sLilycoveDeptStore_NeverRead = 0;
-            sLilycoveDeptStore_DefaultFloorChoice = 3;
-            break;
-        case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_1F):
-            sLilycoveDeptStore_NeverRead = 0;
-            sLilycoveDeptStore_DefaultFloorChoice = 4;
-            break;
-        }
-    }
+    // if (gSaveBlock1Ptr->dynamicWarp.mapGroup == MAP_GROUP(LILYCOVE_CITY_DEPARTMENT_STORE_1F))
+    // {
+    //     switch (gSaveBlock1Ptr->dynamicWarp.mapNum)
+    //     {
+    //     case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_5F):
+    //         sLilycoveDeptStore_NeverRead = 0;
+    //         sLilycoveDeptStore_DefaultFloorChoice = 0;
+    //         break;
+    //     case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_4F):
+    //         sLilycoveDeptStore_NeverRead = 0;
+    //         sLilycoveDeptStore_DefaultFloorChoice = 1;
+    //         break;
+    //     case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_3F):
+    //         sLilycoveDeptStore_NeverRead = 0;
+    //         sLilycoveDeptStore_DefaultFloorChoice = 2;
+    //         break;
+    //     case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_2F):
+    //         sLilycoveDeptStore_NeverRead = 0;
+    //         sLilycoveDeptStore_DefaultFloorChoice = 3;
+    //         break;
+    //     case MAP_NUM(LILYCOVE_CITY_DEPARTMENT_STORE_1F):
+    //         sLilycoveDeptStore_NeverRead = 0;
+    //         sLilycoveDeptStore_DefaultFloorChoice = 4;
+    //         break;
+    //     }
+    // }
 
     return sLilycoveDeptStore_DefaultFloorChoice;
 }
@@ -1935,24 +1697,24 @@ bool8 UsedPokemonCenterWarp(void)
 {
     static const u16 sPokemonCenters[] =
     {
-        MAP_OLDALE_TOWN_POKEMON_CENTER_1F,
-        MAP_DEWFORD_TOWN_POKEMON_CENTER_1F,
-        MAP_LAVARIDGE_TOWN_POKEMON_CENTER_1F,
-        MAP_FALLARBOR_TOWN_POKEMON_CENTER_1F,
-        MAP_VERDANTURF_TOWN_POKEMON_CENTER_1F,
-        MAP_PACIFIDLOG_TOWN_POKEMON_CENTER_1F,
-        MAP_PETALBURG_CITY_POKEMON_CENTER_1F,
-        MAP_SLATEPORT_CITY_POKEMON_CENTER_1F,
-        MAP_MAUVILLE_CITY_POKEMON_CENTER_1F,
-        MAP_RUSTBORO_CITY_POKEMON_CENTER_1F,
-        MAP_FORTREE_CITY_POKEMON_CENTER_1F,
-        MAP_LILYCOVE_CITY_POKEMON_CENTER_1F,
-        MAP_MOSSDEEP_CITY_POKEMON_CENTER_1F,
-        MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_1F,
-        MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F,
-        MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F,
-        MAP_BATTLE_FRONTIER_POKEMON_CENTER_1F,
-        MAP_UNION_ROOM,
+        // MAP_OLDALE_TOWN_POKEMON_CENTER_1F,
+        // MAP_DEWFORD_TOWN_POKEMON_CENTER_1F,
+        // MAP_LAVARIDGE_TOWN_POKEMON_CENTER_1F,
+        // MAP_FALLARBOR_TOWN_POKEMON_CENTER_1F,
+        // MAP_VERDANTURF_TOWN_POKEMON_CENTER_1F,
+        // MAP_PACIFIDLOG_TOWN_POKEMON_CENTER_1F,
+        // MAP_PETALBURG_CITY_POKEMON_CENTER_1F,
+        // MAP_SLATEPORT_CITY_POKEMON_CENTER_1F,
+        // MAP_MAUVILLE_CITY_POKEMON_CENTER_1F,
+        // MAP_RUSTBORO_CITY_POKEMON_CENTER_1F,
+        // MAP_FORTREE_CITY_POKEMON_CENTER_1F,
+        // MAP_LILYCOVE_CITY_POKEMON_CENTER_1F,
+        // MAP_MOSSDEEP_CITY_POKEMON_CENTER_1F,
+        // MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_1F,
+        // MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F,
+        // MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F,
+        // MAP_BATTLE_FRONTIER_POKEMON_CENTER_1F,
+        // MAP_UNION_ROOM,
         0xFFFF
     };
 
@@ -1970,8 +1732,8 @@ bool8 UsedPokemonCenterWarp(void)
 
 bool32 PlayerNotAtTrainerHillEntrance(void)
 {
-    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(TRAINER_HILL_ENTRANCE) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(TRAINER_HILL_ENTRANCE))
-        return FALSE;
+    // if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(TRAINER_HILL_ENTRANCE) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(TRAINER_HILL_ENTRANCE))
+    //     return FALSE;
 
     return TRUE;
 }
@@ -1985,147 +1747,147 @@ void UpdateFrontierManiac(u16 daysSince)
 
 void ShowFrontierManiacMessage(void)
 {
-    static const u8 *const sFrontierManiacMessages[][FRONTIER_MANIAC_MESSAGE_COUNT] =
-    {
-        [FRONTIER_MANIAC_TOWER_SINGLES] =
-        {
-            BattleFrontier_Lounge2_Text_SalonMaidenIsThere,
-            BattleFrontier_Lounge2_Text_SalonMaidenSilverMons,
-            BattleFrontier_Lounge2_Text_SalonMaidenGoldMons
-        },
-        [FRONTIER_MANIAC_TOWER_DOUBLES] =
-        {
-            BattleFrontier_Lounge2_Text_DoubleBattleAdvice1,
-            BattleFrontier_Lounge2_Text_DoubleBattleAdvice2,
-            BattleFrontier_Lounge2_Text_DoubleBattleAdvice3
-        },
-        [FRONTIER_MANIAC_TOWER_MULTIS] =
-        {
-            BattleFrontier_Lounge2_Text_MultiBattleAdvice,
-            BattleFrontier_Lounge2_Text_MultiBattleAdvice,
-            BattleFrontier_Lounge2_Text_MultiBattleAdvice
-        },
-        [FRONTIER_MANIAC_TOWER_LINK] =
-        {
-            BattleFrontier_Lounge2_Text_LinkMultiBattleAdvice,
-            BattleFrontier_Lounge2_Text_LinkMultiBattleAdvice,
-            BattleFrontier_Lounge2_Text_LinkMultiBattleAdvice
-        },
-        [FRONTIER_MANIAC_DOME] =
-        {
-            BattleFrontier_Lounge2_Text_DomeAceIsThere,
-            BattleFrontier_Lounge2_Text_DomeAceSilverMons,
-            BattleFrontier_Lounge2_Text_DomeAceGoldMons
-        },
-        [FRONTIER_MANIAC_FACTORY] =
-        {
-            BattleFrontier_Lounge2_Text_FactoryHeadIsThere,
-            BattleFrontier_Lounge2_Text_FactoryHeadSilverMons,
-            BattleFrontier_Lounge2_Text_FactoryHeadGoldMons
-        },
-        [FRONTIER_MANIAC_PALACE] =
-        {
-            BattleFrontier_Lounge2_Text_PalaceMavenIsThere,
-            BattleFrontier_Lounge2_Text_PalaceMavenSilverMons,
-            BattleFrontier_Lounge2_Text_PalaceMavenGoldMons
-        },
-        [FRONTIER_MANIAC_ARENA] =
-        {
-            BattleFrontier_Lounge2_Text_ArenaTycoonIsThere,
-            BattleFrontier_Lounge2_Text_ArenaTycoonSilverMons,
-            BattleFrontier_Lounge2_Text_ArenaTycoonGoldMons
-        },
-        [FRONTIER_MANIAC_PIKE] =
-        {
-            BattleFrontier_Lounge2_Text_PikeQueenIsThere,
-            BattleFrontier_Lounge2_Text_PikeQueenSilverMons,
-            BattleFrontier_Lounge2_Text_PikeQueenGoldMons
-        },
-        [FRONTIER_MANIAC_PYRAMID] =
-        {
-            BattleFrontier_Lounge2_Text_PyramidKingIsThere,
-            BattleFrontier_Lounge2_Text_PyramidKingSilverMons,
-            BattleFrontier_Lounge2_Text_PyramidKingGoldMons
-        },
-    };
+    // static const u8 *const sFrontierManiacMessages[][FRONTIER_MANIAC_MESSAGE_COUNT] =
+    // {
+    //     [FRONTIER_MANIAC_TOWER_SINGLES] =
+    //     {
+    //         BattleFrontier_Lounge2_Text_SalonMaidenIsThere,
+    //         BattleFrontier_Lounge2_Text_SalonMaidenSilverMons,
+    //         BattleFrontier_Lounge2_Text_SalonMaidenGoldMons
+    //     },
+    //     [FRONTIER_MANIAC_TOWER_DOUBLES] =
+    //     {
+    //         BattleFrontier_Lounge2_Text_DoubleBattleAdvice1,
+    //         BattleFrontier_Lounge2_Text_DoubleBattleAdvice2,
+    //         BattleFrontier_Lounge2_Text_DoubleBattleAdvice3
+    //     },
+    //     [FRONTIER_MANIAC_TOWER_MULTIS] =
+    //     {
+    //         BattleFrontier_Lounge2_Text_MultiBattleAdvice,
+    //         BattleFrontier_Lounge2_Text_MultiBattleAdvice,
+    //         BattleFrontier_Lounge2_Text_MultiBattleAdvice
+    //     },
+    //     [FRONTIER_MANIAC_TOWER_LINK] =
+    //     {
+    //         BattleFrontier_Lounge2_Text_LinkMultiBattleAdvice,
+    //         BattleFrontier_Lounge2_Text_LinkMultiBattleAdvice,
+    //         BattleFrontier_Lounge2_Text_LinkMultiBattleAdvice
+    //     },
+    //     [FRONTIER_MANIAC_DOME] =
+    //     {
+    //         BattleFrontier_Lounge2_Text_DomeAceIsThere,
+    //         BattleFrontier_Lounge2_Text_DomeAceSilverMons,
+    //         BattleFrontier_Lounge2_Text_DomeAceGoldMons
+    //     },
+    //     [FRONTIER_MANIAC_FACTORY] =
+    //     {
+    //         BattleFrontier_Lounge2_Text_FactoryHeadIsThere,
+    //         BattleFrontier_Lounge2_Text_FactoryHeadSilverMons,
+    //         BattleFrontier_Lounge2_Text_FactoryHeadGoldMons
+    //     },
+    //     [FRONTIER_MANIAC_PALACE] =
+    //     {
+    //         BattleFrontier_Lounge2_Text_PalaceMavenIsThere,
+    //         BattleFrontier_Lounge2_Text_PalaceMavenSilverMons,
+    //         BattleFrontier_Lounge2_Text_PalaceMavenGoldMons
+    //     },
+    //     [FRONTIER_MANIAC_ARENA] =
+    //     {
+    //         BattleFrontier_Lounge2_Text_ArenaTycoonIsThere,
+    //         BattleFrontier_Lounge2_Text_ArenaTycoonSilverMons,
+    //         BattleFrontier_Lounge2_Text_ArenaTycoonGoldMons
+    //     },
+    //     [FRONTIER_MANIAC_PIKE] =
+    //     {
+    //         BattleFrontier_Lounge2_Text_PikeQueenIsThere,
+    //         BattleFrontier_Lounge2_Text_PikeQueenSilverMons,
+    //         BattleFrontier_Lounge2_Text_PikeQueenGoldMons
+    //     },
+    //     [FRONTIER_MANIAC_PYRAMID] =
+    //     {
+    //         BattleFrontier_Lounge2_Text_PyramidKingIsThere,
+    //         BattleFrontier_Lounge2_Text_PyramidKingSilverMons,
+    //         BattleFrontier_Lounge2_Text_PyramidKingGoldMons
+    //     },
+    // };
 
-    static const u8 sFrontierManiacStreakThresholds[][FRONTIER_MANIAC_MESSAGE_COUNT - 1] =
-    {
-        [FRONTIER_MANIAC_TOWER_SINGLES] = { 21, 56 },
-        [FRONTIER_MANIAC_TOWER_DOUBLES] = { 21, 35 },
-        [FRONTIER_MANIAC_TOWER_MULTIS]  = { 255, 255 },
-        [FRONTIER_MANIAC_TOWER_LINK]    = { 255, 255 },
-        [FRONTIER_MANIAC_DOME]          = { 2, 4 },
-        [FRONTIER_MANIAC_FACTORY]       = { 7, 21 },
-        [FRONTIER_MANIAC_PALACE]        = { 7, 21 },
-        [FRONTIER_MANIAC_ARENA]         = { 14, 28 },
-        [FRONTIER_MANIAC_PIKE]          = { 13, 112 }, //BUG: 112 (0x70) is probably a mistake; the Pike Queen is battled twice well before that
-        [FRONTIER_MANIAC_PYRAMID]       = { 7, 56 }
-    };
+    // static const u8 sFrontierManiacStreakThresholds[][FRONTIER_MANIAC_MESSAGE_COUNT - 1] =
+    // {
+    //     [FRONTIER_MANIAC_TOWER_SINGLES] = { 21, 56 },
+    //     [FRONTIER_MANIAC_TOWER_DOUBLES] = { 21, 35 },
+    //     [FRONTIER_MANIAC_TOWER_MULTIS]  = { 255, 255 },
+    //     [FRONTIER_MANIAC_TOWER_LINK]    = { 255, 255 },
+    //     [FRONTIER_MANIAC_DOME]          = { 2, 4 },
+    //     [FRONTIER_MANIAC_FACTORY]       = { 7, 21 },
+    //     [FRONTIER_MANIAC_PALACE]        = { 7, 21 },
+    //     [FRONTIER_MANIAC_ARENA]         = { 14, 28 },
+    //     [FRONTIER_MANIAC_PIKE]          = { 13, 112 }, //BUG: 112 (0x70) is probably a mistake; the Pike Queen is battled twice well before that
+    //     [FRONTIER_MANIAC_PYRAMID]       = { 7, 56 }
+    // };
 
-    u8 i;
-    u16 winStreak = 0;
-    u16 facility = VarGet(VAR_FRONTIER_MANIAC_FACILITY);
+    // u8 i;
+    // u16 winStreak = 0;
+    // u16 facility = VarGet(VAR_FRONTIER_MANIAC_FACILITY);
 
-    switch (facility)
-    {
-    case FRONTIER_MANIAC_TOWER_SINGLES:
-    case FRONTIER_MANIAC_TOWER_DOUBLES:
-    case FRONTIER_MANIAC_TOWER_MULTIS:
-    case FRONTIER_MANIAC_TOWER_LINK:
-        if (gSaveBlock2Ptr->frontier.towerWinStreaks[facility][FRONTIER_LVL_50]
-            >= gSaveBlock2Ptr->frontier.towerWinStreaks[facility][FRONTIER_LVL_OPEN])
-            winStreak = gSaveBlock2Ptr->frontier.towerWinStreaks[facility][FRONTIER_LVL_50];
-        else
-            winStreak = gSaveBlock2Ptr->frontier.towerWinStreaks[facility][FRONTIER_LVL_OPEN];
-        break;
-    case FRONTIER_MANIAC_DOME:
-        if (gSaveBlock2Ptr->frontier.domeWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_50]
-            >= gSaveBlock2Ptr->frontier.domeWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_OPEN])
-            winStreak = gSaveBlock2Ptr->frontier.domeWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_50];
-        else
-            winStreak = gSaveBlock2Ptr->frontier.domeWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_OPEN];
-        break;
-    case FRONTIER_MANIAC_FACTORY:
-        if (gSaveBlock2Ptr->frontier.factoryWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_50]
-            >= gSaveBlock2Ptr->frontier.factoryWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_OPEN])
-            winStreak = gSaveBlock2Ptr->frontier.factoryWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_50];
-        else
-            winStreak = gSaveBlock2Ptr->frontier.factoryWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_OPEN];
-        break;
-    case FRONTIER_MANIAC_PALACE:
-        if (gSaveBlock2Ptr->frontier.palaceWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_50]
-            >= gSaveBlock2Ptr->frontier.palaceWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_OPEN])
-            winStreak = gSaveBlock2Ptr->frontier.palaceWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_50];
-        else
-            winStreak = gSaveBlock2Ptr->frontier.palaceWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_OPEN];
-        break;
-    case FRONTIER_MANIAC_ARENA:
-        if (gSaveBlock2Ptr->frontier.arenaWinStreaks[FRONTIER_LVL_50]
-            >= gSaveBlock2Ptr->frontier.arenaWinStreaks[FRONTIER_LVL_OPEN])
-            winStreak = gSaveBlock2Ptr->frontier.arenaWinStreaks[FRONTIER_LVL_50];
-        else
-            winStreak = gSaveBlock2Ptr->frontier.arenaWinStreaks[FRONTIER_LVL_OPEN];
-        break;
-    case FRONTIER_MANIAC_PIKE:
-        if (gSaveBlock2Ptr->frontier.pikeWinStreaks[FRONTIER_LVL_50]
-            >= gSaveBlock2Ptr->frontier.pikeWinStreaks[FRONTIER_LVL_OPEN])
-            winStreak = gSaveBlock2Ptr->frontier.pikeWinStreaks[FRONTIER_LVL_50];
-        else
-            winStreak = gSaveBlock2Ptr->frontier.pikeWinStreaks[FRONTIER_LVL_OPEN];
-        break;
-    case FRONTIER_MANIAC_PYRAMID:
-        if (gSaveBlock2Ptr->frontier.pyramidWinStreaks[FRONTIER_LVL_50]
-            >= gSaveBlock2Ptr->frontier.pyramidWinStreaks[FRONTIER_LVL_OPEN])
-            winStreak = gSaveBlock2Ptr->frontier.pyramidWinStreaks[FRONTIER_LVL_50];
-        else
-            winStreak = gSaveBlock2Ptr->frontier.pyramidWinStreaks[FRONTIER_LVL_OPEN];
-        break;
-    }
+    // switch (facility)
+    // {
+    // case FRONTIER_MANIAC_TOWER_SINGLES:
+    // case FRONTIER_MANIAC_TOWER_DOUBLES:
+    // case FRONTIER_MANIAC_TOWER_MULTIS:
+    // case FRONTIER_MANIAC_TOWER_LINK:
+    //     if (gSaveBlock2Ptr->frontier.towerWinStreaks[facility][FRONTIER_LVL_50]
+    //         >= gSaveBlock2Ptr->frontier.towerWinStreaks[facility][FRONTIER_LVL_OPEN])
+    //         winStreak = gSaveBlock2Ptr->frontier.towerWinStreaks[facility][FRONTIER_LVL_50];
+    //     else
+    //         winStreak = gSaveBlock2Ptr->frontier.towerWinStreaks[facility][FRONTIER_LVL_OPEN];
+    //     break;
+    // case FRONTIER_MANIAC_DOME:
+    //     if (gSaveBlock2Ptr->frontier.domeWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_50]
+    //         >= gSaveBlock2Ptr->frontier.domeWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_OPEN])
+    //         winStreak = gSaveBlock2Ptr->frontier.domeWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_50];
+    //     else
+    //         winStreak = gSaveBlock2Ptr->frontier.domeWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_OPEN];
+    //     break;
+    // case FRONTIER_MANIAC_FACTORY:
+    //     if (gSaveBlock2Ptr->frontier.factoryWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_50]
+    //         >= gSaveBlock2Ptr->frontier.factoryWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_OPEN])
+    //         winStreak = gSaveBlock2Ptr->frontier.factoryWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_50];
+    //     else
+    //         winStreak = gSaveBlock2Ptr->frontier.factoryWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_OPEN];
+    //     break;
+    // case FRONTIER_MANIAC_PALACE:
+    //     if (gSaveBlock2Ptr->frontier.palaceWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_50]
+    //         >= gSaveBlock2Ptr->frontier.palaceWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_OPEN])
+    //         winStreak = gSaveBlock2Ptr->frontier.palaceWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_50];
+    //     else
+    //         winStreak = gSaveBlock2Ptr->frontier.palaceWinStreaks[FRONTIER_MODE_SINGLES][FRONTIER_LVL_OPEN];
+    //     break;
+    // case FRONTIER_MANIAC_ARENA:
+    //     if (gSaveBlock2Ptr->frontier.arenaWinStreaks[FRONTIER_LVL_50]
+    //         >= gSaveBlock2Ptr->frontier.arenaWinStreaks[FRONTIER_LVL_OPEN])
+    //         winStreak = gSaveBlock2Ptr->frontier.arenaWinStreaks[FRONTIER_LVL_50];
+    //     else
+    //         winStreak = gSaveBlock2Ptr->frontier.arenaWinStreaks[FRONTIER_LVL_OPEN];
+    //     break;
+    // case FRONTIER_MANIAC_PIKE:
+    //     if (gSaveBlock2Ptr->frontier.pikeWinStreaks[FRONTIER_LVL_50]
+    //         >= gSaveBlock2Ptr->frontier.pikeWinStreaks[FRONTIER_LVL_OPEN])
+    //         winStreak = gSaveBlock2Ptr->frontier.pikeWinStreaks[FRONTIER_LVL_50];
+    //     else
+    //         winStreak = gSaveBlock2Ptr->frontier.pikeWinStreaks[FRONTIER_LVL_OPEN];
+    //     break;
+    // case FRONTIER_MANIAC_PYRAMID:
+    //     if (gSaveBlock2Ptr->frontier.pyramidWinStreaks[FRONTIER_LVL_50]
+    //         >= gSaveBlock2Ptr->frontier.pyramidWinStreaks[FRONTIER_LVL_OPEN])
+    //         winStreak = gSaveBlock2Ptr->frontier.pyramidWinStreaks[FRONTIER_LVL_50];
+    //     else
+    //         winStreak = gSaveBlock2Ptr->frontier.pyramidWinStreaks[FRONTIER_LVL_OPEN];
+    //     break;
+    // }
 
-    for (i = 0; i < FRONTIER_MANIAC_MESSAGE_COUNT - 1 && sFrontierManiacStreakThresholds[facility][i] < winStreak; i++);
+    // for (i = 0; i < FRONTIER_MANIAC_MESSAGE_COUNT - 1 && sFrontierManiacStreakThresholds[facility][i] < winStreak; i++);
 
-    ShowFieldMessage(sFrontierManiacMessages[facility][i]);
+    // ShowFieldMessage(sFrontierManiacMessages[facility][i]);
 }
 
 // gSpecialVar_0x8005 and 0x8006 here are used by MoveElevator
@@ -3301,15 +3063,15 @@ static void WaitForDeoxysRockMovement(u8 taskId)
 
 void IncrementBirthIslandRockStepCount(void)
 {
-    u16 var = VarGet(VAR_DEOXYS_ROCK_STEP_COUNT);
-    if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(BIRTH_ISLAND_EXTERIOR) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(BIRTH_ISLAND_EXTERIOR))
-    {
-        var++;
-        if (var > 99)
-            VarSet(VAR_DEOXYS_ROCK_STEP_COUNT, 0);
-        else
-            VarSet(VAR_DEOXYS_ROCK_STEP_COUNT, var);
-    }
+    // u16 var = VarGet(VAR_DEOXYS_ROCK_STEP_COUNT);
+    // if (gSaveBlock1Ptr->location.mapNum == MAP_NUM(BIRTH_ISLAND_EXTERIOR) && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(BIRTH_ISLAND_EXTERIOR))
+    // {
+    //     var++;
+    //     if (var > 99)
+    //         VarSet(VAR_DEOXYS_ROCK_STEP_COUNT, 0);
+    //     else
+    //         VarSet(VAR_DEOXYS_ROCK_STEP_COUNT, var);
+    // }
 }
 
 void SetDeoxysRockPalette(void)
@@ -3426,83 +3188,83 @@ bool32 GetAbnormalWeatherMapNameAndType(void)
 
 bool8 AbnormalWeatherHasExpired(void)
 {
-    // Duplicate array.
-    static const u8 sAbnormalWeatherMapNumbers[] =
-    {
-        MAP_NUM(ROUTE114),
-        MAP_NUM(ROUTE114),
-        MAP_NUM(ROUTE115),
-        MAP_NUM(ROUTE115),
-        MAP_NUM(ROUTE116),
-        MAP_NUM(ROUTE116),
-        MAP_NUM(ROUTE118),
-        MAP_NUM(ROUTE118),
-        MAP_NUM(ROUTE105),
-        MAP_NUM(ROUTE105),
-        MAP_NUM(ROUTE125),
-        MAP_NUM(ROUTE125),
-        MAP_NUM(ROUTE127),
-        MAP_NUM(ROUTE127),
-        MAP_NUM(ROUTE129),
-        MAP_NUM(ROUTE129)
-    };
+    // // Duplicate array.
+    // static const u8 sAbnormalWeatherMapNumbers[] =
+    // {
+    //     MAP_NUM(ROUTE114),
+    //     MAP_NUM(ROUTE114),
+    //     MAP_NUM(ROUTE115),
+    //     MAP_NUM(ROUTE115),
+    //     MAP_NUM(ROUTE116),
+    //     MAP_NUM(ROUTE116),
+    //     MAP_NUM(ROUTE118),
+    //     MAP_NUM(ROUTE118),
+    //     MAP_NUM(ROUTE105),
+    //     MAP_NUM(ROUTE105),
+    //     MAP_NUM(ROUTE125),
+    //     MAP_NUM(ROUTE125),
+    //     MAP_NUM(ROUTE127),
+    //     MAP_NUM(ROUTE127),
+    //     MAP_NUM(ROUTE129),
+    //     MAP_NUM(ROUTE129)
+    // };
 
-    u16 steps = VarGet(VAR_ABNORMAL_WEATHER_STEP_COUNTER);
-    u16 abnormalWeather = VarGet(VAR_ABNORMAL_WEATHER_LOCATION);
+    // u16 steps = VarGet(VAR_ABNORMAL_WEATHER_STEP_COUNTER);
+    // u16 abnormalWeather = VarGet(VAR_ABNORMAL_WEATHER_LOCATION);
 
-    if (abnormalWeather == ABNORMAL_WEATHER_NONE)
+    // if (abnormalWeather == ABNORMAL_WEATHER_NONE)
+    //     return FALSE;
+
+    // if (++steps > 999)
+    // {
+    //     VarSet(VAR_ABNORMAL_WEATHER_STEP_COUNTER, 0);
+    //     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(UNDERWATER_MARINE_CAVE))
+    //     {
+    //         switch (gSaveBlock1Ptr->location.mapNum)
+    //         {
+    //         case MAP_NUM(UNDERWATER_MARINE_CAVE):
+    //         case MAP_NUM(MARINE_CAVE_ENTRANCE):
+    //         case MAP_NUM(MARINE_CAVE_END):
+    //         case MAP_NUM(TERRA_CAVE_ENTRANCE):
+    //         case MAP_NUM(TERRA_CAVE_END):
+    //             VarSet(VAR_SHOULD_END_ABNORMAL_WEATHER, 1);
+    //             return FALSE;
+    //         default:
+    //             break;
+    //         }
+    //     }
+
+    //     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(UNDERWATER_ROUTE127))
+    //     {
+    //         switch (gSaveBlock1Ptr->location.mapNum)
+    //         {
+    //         case MAP_NUM(UNDERWATER_ROUTE127):
+    //         case MAP_NUM(UNDERWATER_ROUTE129):
+    //         case MAP_NUM(UNDERWATER_ROUTE105):
+    //         case MAP_NUM(UNDERWATER_ROUTE125):
+    //             VarSet(VAR_SHOULD_END_ABNORMAL_WEATHER, 1);
+    //             return FALSE;
+    //         default:
+    //             break;
+    //         }
+    //     }
+
+    //     if (gSaveBlock1Ptr->location.mapNum == sAbnormalWeatherMapNumbers[abnormalWeather - 1] &&
+    //         gSaveBlock1Ptr->location.mapGroup == 0)
+    //     {
+    //         return TRUE;
+    //     }
+    //     else
+    //     {
+    //         VarSet(VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_NONE);
+    //         return FALSE;
+    //     }
+    // }
+    // else
+    // {
+    //     VarSet(VAR_ABNORMAL_WEATHER_STEP_COUNTER, steps);
         return FALSE;
-
-    if (++steps > 999)
-    {
-        VarSet(VAR_ABNORMAL_WEATHER_STEP_COUNTER, 0);
-        if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(UNDERWATER_MARINE_CAVE))
-        {
-            switch (gSaveBlock1Ptr->location.mapNum)
-            {
-            case MAP_NUM(UNDERWATER_MARINE_CAVE):
-            case MAP_NUM(MARINE_CAVE_ENTRANCE):
-            case MAP_NUM(MARINE_CAVE_END):
-            case MAP_NUM(TERRA_CAVE_ENTRANCE):
-            case MAP_NUM(TERRA_CAVE_END):
-                VarSet(VAR_SHOULD_END_ABNORMAL_WEATHER, 1);
-                return FALSE;
-            default:
-                break;
-            }
-        }
-
-        if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(UNDERWATER_ROUTE127))
-        {
-            switch (gSaveBlock1Ptr->location.mapNum)
-            {
-            case MAP_NUM(UNDERWATER_ROUTE127):
-            case MAP_NUM(UNDERWATER_ROUTE129):
-            case MAP_NUM(UNDERWATER_ROUTE105):
-            case MAP_NUM(UNDERWATER_ROUTE125):
-                VarSet(VAR_SHOULD_END_ABNORMAL_WEATHER, 1);
-                return FALSE;
-            default:
-                break;
-            }
-        }
-
-        if (gSaveBlock1Ptr->location.mapNum == sAbnormalWeatherMapNumbers[abnormalWeather - 1] &&
-            gSaveBlock1Ptr->location.mapGroup == 0)
-        {
-            return TRUE;
-        }
-        else
-        {
-            VarSet(VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_NONE);
-            return FALSE;
-        }
-    }
-    else
-    {
-        VarSet(VAR_ABNORMAL_WEATHER_STEP_COUNTER, steps);
-        return FALSE;
-    }
+    // }
 }
 
 void Unused_SetWeatherSunny(void)
@@ -3513,31 +3275,31 @@ void Unused_SetWeatherSunny(void)
 // All mart employees have a local id of 1, so function always returns 1
 u32 GetMartEmployeeObjectEventId(void)
 {
-    static const u8 sPokeMarts[][3] =
-    {
-        { MAP_GROUP(OLDALE_TOWN_MART),     MAP_NUM(OLDALE_TOWN_MART),     LOCALID_OLDALE_MART_CLERK },
-        { MAP_GROUP(LAVARIDGE_TOWN_MART),  MAP_NUM(LAVARIDGE_TOWN_MART),  LOCALID_LAVARIDGE_MART_CLERK },
-        { MAP_GROUP(FALLARBOR_TOWN_MART),  MAP_NUM(FALLARBOR_TOWN_MART),  LOCALID_FALLARBOR_MART_CLERK },
-        { MAP_GROUP(VERDANTURF_TOWN_MART), MAP_NUM(VERDANTURF_TOWN_MART), LOCALID_VERDANTURF_MART_CLERK },
-        { MAP_GROUP(PETALBURG_CITY_MART),  MAP_NUM(PETALBURG_CITY_MART),  LOCALID_PETALBURG_MART_CLERK },
-        { MAP_GROUP(SLATEPORT_CITY_MART),  MAP_NUM(SLATEPORT_CITY_MART),  LOCALID_SLATEPORT_MART_CLERK },
-        { MAP_GROUP(MAUVILLE_CITY_MART),   MAP_NUM(MAUVILLE_CITY_MART),   LOCALID_MAUVILLE_MART_CLERK },
-        { MAP_GROUP(RUSTBORO_CITY_MART),   MAP_NUM(RUSTBORO_CITY_MART),   LOCALID_RUSTBORO_MART_CLERK },
-        { MAP_GROUP(FORTREE_CITY_MART),    MAP_NUM(FORTREE_CITY_MART),    LOCALID_FORTREE_MART_CLERK },
-        { MAP_GROUP(MOSSDEEP_CITY_MART),   MAP_NUM(MOSSDEEP_CITY_MART),   LOCALID_MOSSDEEP_MART_CLERK },
-        { MAP_GROUP(SOOTOPOLIS_CITY_MART), MAP_NUM(SOOTOPOLIS_CITY_MART), LOCALID_SOOTOPOLIS_MART_CLERK },
-        { MAP_GROUP(BATTLE_FRONTIER_MART), MAP_NUM(BATTLE_FRONTIER_MART), LOCALID_BATTLE_FRONTIER_MART_CLERK }
-    };
+    // static const u8 sPokeMarts[][3] =
+    // {
+    //     { MAP_GROUP(OLDALE_TOWN_MART),     MAP_NUM(OLDALE_TOWN_MART),     LOCALID_OLDALE_MART_CLERK },
+    //     { MAP_GROUP(LAVARIDGE_TOWN_MART),  MAP_NUM(LAVARIDGE_TOWN_MART),  LOCALID_LAVARIDGE_MART_CLERK },
+    //     { MAP_GROUP(FALLARBOR_TOWN_MART),  MAP_NUM(FALLARBOR_TOWN_MART),  LOCALID_FALLARBOR_MART_CLERK },
+    //     { MAP_GROUP(VERDANTURF_TOWN_MART), MAP_NUM(VERDANTURF_TOWN_MART), LOCALID_VERDANTURF_MART_CLERK },
+    //     { MAP_GROUP(PETALBURG_CITY_MART),  MAP_NUM(PETALBURG_CITY_MART),  LOCALID_PETALBURG_MART_CLERK },
+    //     { MAP_GROUP(SLATEPORT_CITY_MART),  MAP_NUM(SLATEPORT_CITY_MART),  LOCALID_SLATEPORT_MART_CLERK },
+    //     { MAP_GROUP(MAUVILLE_CITY_MART),   MAP_NUM(MAUVILLE_CITY_MART),   LOCALID_MAUVILLE_MART_CLERK },
+    //     { MAP_GROUP(RUSTBORO_CITY_MART),   MAP_NUM(RUSTBORO_CITY_MART),   LOCALID_RUSTBORO_MART_CLERK },
+    //     { MAP_GROUP(FORTREE_CITY_MART),    MAP_NUM(FORTREE_CITY_MART),    LOCALID_FORTREE_MART_CLERK },
+    //     { MAP_GROUP(MOSSDEEP_CITY_MART),   MAP_NUM(MOSSDEEP_CITY_MART),   LOCALID_MOSSDEEP_MART_CLERK },
+    //     { MAP_GROUP(SOOTOPOLIS_CITY_MART), MAP_NUM(SOOTOPOLIS_CITY_MART), LOCALID_SOOTOPOLIS_MART_CLERK },
+    //     { MAP_GROUP(BATTLE_FRONTIER_MART), MAP_NUM(BATTLE_FRONTIER_MART), LOCALID_BATTLE_FRONTIER_MART_CLERK }
+    // };
 
-    u8 i;
-    for (i = 0; i < ARRAY_COUNT(sPokeMarts); i++)
-    {
-        if (gSaveBlock1Ptr->location.mapGroup == sPokeMarts[i][0])
-        {
-            if (gSaveBlock1Ptr->location.mapNum == sPokeMarts[i][1])
-                return sPokeMarts[i][2];
-        }
-    }
+    // u8 i;
+    // for (i = 0; i < ARRAY_COUNT(sPokeMarts); i++)
+    // {
+    //     if (gSaveBlock1Ptr->location.mapGroup == sPokeMarts[i][0])
+    //     {
+    //         if (gSaveBlock1Ptr->location.mapNum == sPokeMarts[i][1])
+    //             return sPokeMarts[i][2];
+    //     }
+    // }
     return 1;
 }
 
@@ -3553,13 +3315,13 @@ bool32 IsTrainerRegistered(void)
 }
 
 // Always returns FALSE
-bool32 ShouldDistributeEonTicket(void)
-{
-    if (!VarGet(VAR_DISTRIBUTE_EON_TICKET))
-        return FALSE;
+// bool32 ShouldDistributeEonTicket(void)
+// {
+//     if (!VarGet(VAR_DISTRIBUTE_EON_TICKET))
+//         return FALSE;
 
-    return TRUE;
-}
+//     return TRUE;
+// }
 
 #define tState data[0]
 
@@ -3813,27 +3575,27 @@ bool8 InPokemonCenter(void)
 {
     static const u16 sPokemonCenters[] =
     {
-        MAP_OLDALE_TOWN_POKEMON_CENTER_1F,
-        MAP_DEWFORD_TOWN_POKEMON_CENTER_1F,
-        MAP_LAVARIDGE_TOWN_POKEMON_CENTER_1F,
-        MAP_FALLARBOR_TOWN_POKEMON_CENTER_1F,
-        MAP_VERDANTURF_TOWN_POKEMON_CENTER_1F,
-        MAP_PACIFIDLOG_TOWN_POKEMON_CENTER_1F,
-        MAP_PETALBURG_CITY_POKEMON_CENTER_1F,
-        MAP_SLATEPORT_CITY_POKEMON_CENTER_1F,
-        MAP_MAUVILLE_CITY_POKEMON_CENTER_1F,
-        MAP_RUSTBORO_CITY_POKEMON_CENTER_1F,
-        MAP_FORTREE_CITY_POKEMON_CENTER_1F,
-        MAP_LILYCOVE_CITY_POKEMON_CENTER_1F,
-        MAP_MOSSDEEP_CITY_POKEMON_CENTER_1F,
-        MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_1F,
-        MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F,
-        MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F,
-        MAP_BATTLE_FRONTIER_POKEMON_CENTER_1F,
-        MAP_BATTLE_COLOSSEUM_2P,
-        MAP_TRADE_CENTER,
-        MAP_RECORD_CORNER,
-        MAP_BATTLE_COLOSSEUM_4P,
+        // MAP_OLDALE_TOWN_POKEMON_CENTER_1F,
+        // MAP_DEWFORD_TOWN_POKEMON_CENTER_1F,
+        // MAP_LAVARIDGE_TOWN_POKEMON_CENTER_1F,
+        // MAP_FALLARBOR_TOWN_POKEMON_CENTER_1F,
+        // MAP_VERDANTURF_TOWN_POKEMON_CENTER_1F,
+        // MAP_PACIFIDLOG_TOWN_POKEMON_CENTER_1F,
+        // MAP_PETALBURG_CITY_POKEMON_CENTER_1F,
+        // MAP_SLATEPORT_CITY_POKEMON_CENTER_1F,
+        // MAP_MAUVILLE_CITY_POKEMON_CENTER_1F,
+        // MAP_RUSTBORO_CITY_POKEMON_CENTER_1F,
+        // MAP_FORTREE_CITY_POKEMON_CENTER_1F,
+        // MAP_LILYCOVE_CITY_POKEMON_CENTER_1F,
+        // MAP_MOSSDEEP_CITY_POKEMON_CENTER_1F,
+        // MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_1F,
+        // MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F,
+        // MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F,
+        // MAP_BATTLE_FRONTIER_POKEMON_CENTER_1F,
+        // MAP_BATTLE_COLOSSEUM_2P,
+        // MAP_TRADE_CENTER,
+        // MAP_RECORD_CORNER,
+        // MAP_BATTLE_COLOSSEUM_4P,
         0xFFFF
     };
 
@@ -3909,18 +3671,18 @@ void TryLoseFansFromPlayTimeAfterLinkBattle(void)
 
 void UpdateTrainerFanClubGameClear(void)
 {
-    if (!GET_TRAINER_FAN_CLUB_FLAG(FANCLUB_GOT_FIRST_FANS))
-    {
-        SetPlayerGotFirstFans();
-        SetInitialFansOfPlayer();
-        gSaveBlock1Ptr->vars[VAR_FANCLUB_LOSE_FAN_TIMER - VARS_START] = gSaveBlock2Ptr->playTimeHours;
-        FlagClear(FLAG_HIDE_FANCLUB_OLD_LADY);
-        FlagClear(FLAG_HIDE_FANCLUB_BOY);
-        FlagClear(FLAG_HIDE_FANCLUB_LITTLE_BOY);
-        FlagClear(FLAG_HIDE_FANCLUB_LADY);
-        FlagClear(FLAG_HIDE_LILYCOVE_FAN_CLUB_INTERVIEWER);
-        VarSet(VAR_LILYCOVE_FAN_CLUB_STATE, 1);
-    }
+    // if (!GET_TRAINER_FAN_CLUB_FLAG(FANCLUB_GOT_FIRST_FANS))
+    // {
+    //     SetPlayerGotFirstFans();
+    //     SetInitialFansOfPlayer();
+    //     gSaveBlock1Ptr->vars[VAR_FANCLUB_LOSE_FAN_TIMER - VARS_START] = gSaveBlock2Ptr->playTimeHours;
+    //     FlagClear(FLAG_HIDE_FANCLUB_OLD_LADY);
+    //     FlagClear(FLAG_HIDE_FANCLUB_BOY);
+    //     FlagClear(FLAG_HIDE_FANCLUB_LITTLE_BOY);
+    //     FlagClear(FLAG_HIDE_FANCLUB_LADY);
+    //     FlagClear(FLAG_HIDE_LILYCOVE_FAN_CLUB_INTERVIEWER);
+    //     VarSet(VAR_LILYCOVE_FAN_CLUB_STATE, 1);
+    // }
 }
 
 // If the player has < 3 fans, gain a new fan whenever the counter reaches 20+
@@ -3928,35 +3690,36 @@ void UpdateTrainerFanClubGameClear(void)
 // Participating at Battle Tower or in a Secret Base battle increments the counter by 1
 u8 TryGainNewFanFromCounter(u8 incrementId)
 {
-    static const u8 sCounterIncrements[] =
-    {
-        [FANCOUNTER_DEFEATED_DRAKE]    = 2,
-        [FANCOUNTER_BATTLED_AT_BASE]   = 1,
-        [FANCOUNTER_FINISHED_CONTEST]  = 2,
-        [FANCOUNTER_USED_BATTLE_TOWER] = 1
-    };
+    // static const u8 sCounterIncrements[] =
+    // {
+    //     [FANCOUNTER_DEFEATED_DRAKE]    = 2,
+    //     [FANCOUNTER_BATTLED_AT_BASE]   = 1,
+    //     [FANCOUNTER_FINISHED_CONTEST]  = 2,
+    //     [FANCOUNTER_USED_BATTLE_TOWER] = 1
+    // };
 
-    if (VarGet(VAR_LILYCOVE_FAN_CLUB_STATE) == 2)
-    {
-        if (GET_TRAINER_FAN_CLUB_COUNTER + sCounterIncrements[incrementId] > 19)
-        {
-            if (GetNumFansOfPlayerInTrainerFanClub() < 3)
-            {
-                PlayerGainRandomTrainerFan();
-                CLEAR_TRAINER_FAN_CLUB_COUNTER;
-            }
-            else
-            {
-                SET_TRAINER_FAN_CLUB_COUNTER(20);
-            }
-        }
-        else
-        {
-            INCR_TRAINER_FAN_CLUB_COUNTER(sCounterIncrements[incrementId]);
-        }
-    }
+    // if (VarGet(VAR_LILYCOVE_FAN_CLUB_STATE) == 2)
+    // {
+    //     if (GET_TRAINER_FAN_CLUB_COUNTER + sCounterIncrements[incrementId] > 19)
+    //     {
+    //         if (GetNumFansOfPlayerInTrainerFanClub() < 3)
+    //         {
+    //             PlayerGainRandomTrainerFan();
+    //             CLEAR_TRAINER_FAN_CLUB_COUNTER;
+    //         }
+    //         else
+    //         {
+    //             SET_TRAINER_FAN_CLUB_COUNTER(20);
+    //         }
+    //     }
+    //     else
+    //     {
+    //         INCR_TRAINER_FAN_CLUB_COUNTER(sCounterIncrements[incrementId]);
+    //     }
+    // }
 
-    return GET_TRAINER_FAN_CLUB_COUNTER;
+    // return GET_TRAINER_FAN_CLUB_COUNTER;
+    return FALSE;
 }
 
 
@@ -4169,14 +3932,14 @@ static void BufferFanClubTrainerName_(struct LinkBattleRecords *linkRecords, u8 
 
 void UpdateTrainerFansAfterLinkBattle(void)
 {
-    if (VarGet(VAR_LILYCOVE_FAN_CLUB_STATE) == 2)
-    {
-        TryLoseFansFromPlayTimeAfterLinkBattle();
-        if (gBattleOutcome == B_OUTCOME_WON)
-            PlayerGainRandomTrainerFan();
-        else
-            PlayerLoseRandomTrainerFan();
-    }
+    // if (VarGet(VAR_LILYCOVE_FAN_CLUB_STATE) == 2)
+    // {
+    //     TryLoseFansFromPlayTimeAfterLinkBattle();
+    //     if (gBattleOutcome == B_OUTCOME_WON)
+    //         PlayerGainRandomTrainerFan();
+    //     else
+    //         PlayerLoseRandomTrainerFan();
+    // }
 }
 
 static bool8 DidPlayerGetFirstFans(void)

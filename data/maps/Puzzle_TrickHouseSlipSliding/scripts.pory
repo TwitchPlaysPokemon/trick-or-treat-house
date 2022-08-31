@@ -1,0 +1,88 @@
+raw `
+Puzzle_TrickHouseSlipSliding_MapScripts::
+	puzzle_info Puzzle_TrickHouseSlipSliding_Name, Puzzle_TrickHouseSlipSliding_Author
+	puzzle_adjective Puzzle_TrickHouseSlipSliding_Adjective
+	@ puzzle_quip Puzzle_TrickHouseSlipSliding_Quip
+	puzzle_candylist Puzzle_TrickHouseSlipSliding_CandyList
+	.byte 0
+
+Puzzle_TrickHouseSlipSliding_Name:
+	.string "Slip 'n Spin$"   @ We need a better name for this puzzle...
+Puzzle_TrickHouseSlipSliding_Author:
+	.string "Marco$"
+Puzzle_TrickHouseSlipSliding_Adjective:
+ 	.string "slippery$"
+Puzzle_TrickHouseSlipSliding_Quip:
+ 	.string "slippery$"
+
+.align 2
+Puzzle_TrickHouseSlipSliding_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_COMMON_03
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_RARE_01
+	.2byte 0
+`
+
+script Puzzle_TrickHouseSlipSliding_YellowButton {
+	doMossTiles (0)
+	setflag (FLAG_TEMP_1)
+}
+
+script Puzzle_TrickHouseSlipSliding_BlueButton {
+	doMossTiles (1)
+}
+
+script Puzzle_TrickHouseSlipSliding_RedButton {
+	doMossTiles (4)
+}
+
+script Puzzle_TrickHouseSlipSliding_Skeleboy {
+	trainerbattle_single (TRAINER_01,
+			"What? You think you can just push me\n"
+			"around or something?$",
+			"Okay, I guess you can.$")
+	if (flag(FLAG_TEMP_1)) {
+		msgbox ("Please don't press the yellow button\n"
+				"again? This place is slippery enough.$", MSGBOX_AUTOCLOSE)
+	} else {
+		msgbox ("What? I'm not moving. If you want to\n"
+				"get past me, you need to do it yourself.\p"
+				"With a yellow button, I mean.\n"
+				"Don't push me.$", MSGBOX_AUTOCLOSE)
+	}
+}
+
+script Puzzle_TrickHouseSlipSliding_AlienGirl {
+	trainerbattle_single (TRAINER_02,
+			"Hello, {PLAYER}. I've had my eye on you\n"
+			"for a while now.$",
+			"Oh, I actually guessed your name right?\n"
+			"Wow, I'm getting good at this.$")
+	msgbox ("Don't mind me. I'm not staring at you.\n"
+			"I'm “observing”. It's what we aliens do.$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrickHouseSlipSliding_Link {
+	trainerbattle_single (TRAINER_03,
+			"Ow! Hey! What gives?!$",
+			"Don't make me use my sword…!$")
+	msgbox ("If I had my hookshot, I could get out\n"
+			"of here easily.$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_TrickHouseSlipSliding_FairyGirl {
+	trainerbattle_single (TRAINER_04,
+			"Don't worry, I got you.\n"
+			"Wanna battle before you leave?$",
+			"Time to slide away!$")
+	msgbox ("I hope you found the red switch, or\n"
+			"you're not gonna get very far…$", MSGBOX_AUTOCLOSE)
+}

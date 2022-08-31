@@ -1,0 +1,28 @@
+[
+	{
+		"class": "DEVELOPER",
+		"pic": "DEV_TUSTIN2121",
+		"name": "Tustin2121",
+		"music": "MALE",
+		"party": [
+			{
+				"species": "SPECIES_QUILAVA",
+				"moves": ["MOVE_FLAME_WHEEL", "MOVE_EXTRASENSORY", "MOVE_AERIAL_ACE", "MOVE_CUT"],
+				"level": 32
+			}
+		]
+	},
+	{
+		"class": "DEVELOPER",
+		"pic": "DEV_TUSTIN2121",
+		"name": "Tustin2121",
+		"music": "MALE",
+		"party": [
+			{
+				"species": "SPECIES_QUILAVA",
+				"moves": ["MOVE_FLAME_WHEEL", "MOVE_EXTRASENSORY", "MOVE_AERIAL_ACE", "MOVE_CUT"],
+				"level": 32
+			}
+		]
+	}
+]

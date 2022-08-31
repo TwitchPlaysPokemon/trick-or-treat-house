@@ -1,7 +1,7 @@
 #include "global.h"
 #include "battle.h"
 #include "battle_pike.h"
-#include "battle_pyramid.h"
+// #include "battle_pyramid.h"
 #include "event_data.h"
 #include "field_message_box.h"
 #include "field_poison.h"
@@ -89,8 +89,8 @@ static void Task_TryFieldPoisonWhiteOut(u8 taskId)
             if (AllMonsFainted())
             {
                 // Battle facilities have their own white out script to handle the challenge loss
-                if (InBattlePyramid() | InBattlePike() || InTrainerHillChallenge())
-                    gSpecialVar_Result = FLDPSN_FRONTIER_WHITEOUT;
+                // if (InBattlePyramid() | InBattlePike() || InTrainerHillChallenge())
+                //     gSpecialVar_Result = FLDPSN_FRONTIER_WHITEOUT;
                 else
                     gSpecialVar_Result = FLDPSN_WHITEOUT;
             }

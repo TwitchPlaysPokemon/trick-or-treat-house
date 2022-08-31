@@ -4,6 +4,7 @@
 #include "event_object_movement.h"
 #include "field_effect.h"
 #include "field_player_avatar.h"
+#include "field_weather.h"
 #include "pokemon.h"
 #include "script.h"
 #include "script_movement.h"
@@ -12,12 +13,15 @@
 #include "trainer_see.h"
 #include "trainer_hill.h"
 #include "util.h"
-#include "battle_pyramid.h"
+// #include "battle_pyramid.h"
 #include "constants/battle_setup.h"
 #include "constants/event_objects.h"
 #include "constants/event_object_movement.h"
 #include "constants/field_effects.h"
 #include "constants/trainer_types.h"
+
+extern const struct SpritePalette sEventObjectSpritePalettes[];
+extern const struct SpritePalette gFieldEffectObjectPaletteInfo0;
 
 // this file's functions
 static u8 CheckTrainer(u8 objectEventId);
@@ -57,11 +61,17 @@ bool8 gTrainerApproachedPlayer;
 
 // EWRAM
 EWRAM_DATA u8 gApproachingTrainerId = 0;
+EWRAM_DATA struct Trainer *gCurrTrainerTable = NULL;
 
 // const rom data
 static const u8 sEmotion_ExclamationMarkGfx[] = INCBIN_U8("graphics/field_effects/pics/emotion_exclamation.4bpp");
 static const u8 sEmotion_QuestionMarkGfx[] = INCBIN_U8("graphics/field_effects/pics/emotion_question.4bpp");
 static const u8 sEmotion_HeartGfx[] = INCBIN_U8("graphics/field_effects/pics/emotion_heart.4bpp");
+static const u8 sEmotion_EmoteNoteC[] = INCBIN_U8("graphics/misc/emotion_note_c.4bpp");
+static const u8 sEmotion_EmoteNoteD[] = INCBIN_U8("graphics/misc/emotion_note_d.4bpp");
+static const u8 sEmotion_EmoteNoteE[] = INCBIN_U8("graphics/misc/emotion_note_e.4bpp");
+static const u8 sEmotion_EmoteNoteF[] = INCBIN_U8("graphics/misc/emotion_note_f.4bpp");
+static const u8 sEmotion_EmoteNoteG[] = INCBIN_U8("graphics/misc/emotion_note_g.4bpp");
 
 static u8 (*const sDirectionalApproachDistanceFuncs[])(struct ObjectEvent *trainerObj, s16 range, s16 x, s16 y) =
 {
@@ -147,6 +157,30 @@ static const struct SpriteFrameImage sSpriteImageTable_HeartIcon[] =
     }
 };
 
+static const struct SpriteFrameImage sSpriteImageTable_EmoteNote[] =
+{
+    {
+        .data = sEmotion_EmoteNoteC,
+        .size = 0x80
+    },
+    {
+        .data = sEmotion_EmoteNoteD,
+        .size = 0x80
+    },
+    {
+        .data = sEmotion_EmoteNoteE,
+        .size = 0x80
+    },
+    {
+        .data = sEmotion_EmoteNoteF,
+        .size = 0x80
+    },
+    {
+        .data = sEmotion_EmoteNoteG,
+        .size = 0x80
+    },
+};
+
 static const union AnimCmd sSpriteAnim_Icons1[] =
 {
     ANIMCMD_FRAME(0, 60),
@@ -159,16 +193,37 @@ static const union AnimCmd sSpriteAnim_Icons2[] =
     ANIMCMD_END
 };
 
+static const union AnimCmd sSpriteAnim_Icons3[] =
+{
+    ANIMCMD_FRAME(2, 60),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sSpriteAnim_Icons4[] =
+{
+    ANIMCMD_FRAME(3, 60),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sSpriteAnim_Icons5[] =
+{
+    ANIMCMD_FRAME(4, 60),
+    ANIMCMD_END
+};
+
 static const union AnimCmd *const sSpriteAnimTable_Icons[] =
 {
     sSpriteAnim_Icons1,
-    sSpriteAnim_Icons2
+    sSpriteAnim_Icons2,
+    sSpriteAnim_Icons3,
+    sSpriteAnim_Icons4,
+    sSpriteAnim_Icons5,
 };
 
 static const struct SpriteTemplate sSpriteTemplate_ExclamationQuestionMark =
 {
     .tileTag = TAG_NONE,
-    .paletteTag = TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_BRENDAN,
     .oam = &sOamData_Icons,
     .anims = sSpriteAnimTable_Icons,
     .images = sSpriteImageTable_ExclamationQuestionMark,
@@ -187,6 +242,17 @@ static const struct SpriteTemplate sSpriteTemplate_HeartIcon =
     .callback = SpriteCB_TrainerIcons
 };
 
+static const struct SpriteTemplate sSpriteTemplate_EmoteNote =
+{
+    .tileTag = 0xffff,
+    .paletteTag = FLDEFF_PAL_TAG_EMOTE_NOTES,
+    .oam = &sOamData_Icons,
+    .anims = sSpriteAnimTable_Icons,
+    .images = sSpriteImageTable_EmoteNote,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_TrainerIcons
+};
+
 // code
 bool8 CheckForTrainersWantingBattle(void)
 {
@@ -198,10 +264,11 @@ bool8 CheckForTrainersWantingBattle(void)
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
         u8 numTrainers;
+        u8 trainerType = gEventObjects[i].trainerType;// & (~TRAINER_TYPE_KEEP_LOADED);
 
         if (!gObjectEvents[i].active)
             continue;
-        if (gObjectEvents[i].trainerType != TRAINER_TYPE_NORMAL && gObjectEvents[i].trainerType != TRAINER_TYPE_BURIED)
+        if (trainerType != TRAINER_TYPE_NORMAL && trainerType != TRAINER_TYPE_BURIED)
             continue;
 
         numTrainers = CheckTrainer(i);
@@ -222,6 +289,7 @@ bool8 CheckForTrainersWantingBattle(void)
         ResetTrainerOpponentIds();
         ConfigureAndSetUpOneTrainerBattle(gApproachingTrainers[gNoOfApproachingTrainers - 1].objectEventId,
                                           gApproachingTrainers[gNoOfApproachingTrainers - 1].trainerScriptPtr);
+        VarSet(VAR_TIMES_SEEN_BY_TRAINER, VarGet(VAR_TIMES_SEEN_BY_TRAINER)+1);
         gTrainerApproachedPlayer = TRUE;
         return TRUE;
     }
@@ -234,6 +302,7 @@ bool8 CheckForTrainersWantingBattle(void)
                                        gApproachingTrainers[i].trainerScriptPtr);
         }
         SetUpTwoTrainersBattle();
+        VarSet(VAR_TIMES_SEEN_BY_TRAINER, VarGet(VAR_TIMES_SEEN_BY_TRAINER)+2);
         gApproachingTrainerId = 0;
         gTrainerApproachedPlayer = TRUE;
         return TRUE;
@@ -251,22 +320,22 @@ static u8 CheckTrainer(u8 objectEventId)
     u8 numTrainers = 1;
     u8 approachDistance;
 
-    if (InTrainerHill() == TRUE)
-        scriptPtr = GetTrainerHillTrainerScript();
-    else
+    // if (InTrainerHill() == TRUE)
+    //     scriptPtr = GetTrainerHillTrainerScript();
+    // else
         scriptPtr = GetObjectEventScriptPointerByObjectEventId(objectEventId);
 
-    if (InBattlePyramid())
-    {
-        if (GetBattlePyramidTrainerFlag(objectEventId))
-            return 0;
-    }
-    else if (InTrainerHill() == TRUE)
-    {
-        if (GetHillTrainerFlag(objectEventId))
-            return 0;
-    }
-    else
+    // if (InBattlePyramid())
+    // {
+    //     if (GetBattlePyramidTrainerFlag(objectEventId))
+    //         return 0;
+    // }
+    // else if (InTrainerHill() == TRUE)
+    // {
+    //     if (GetHillTrainerFlag(objectEventId))
+    //         return 0;
+    // }
+    // else
     {
         if (GetTrainerFlagFromScriptPointer(scriptPtr))
             return 0;
@@ -303,9 +372,10 @@ static u8 GetTrainerApproachDistance(struct ObjectEvent *trainerObj)
     s16 x, y;
     u8 i;
     u8 approachDistance;
+    u8 trainerType = trainerObj->trainerType;// & (~TRAINER_TYPE_KEEP_LOADED);
 
     PlayerGetDestCoords(&x, &y);
-    if (trainerObj->trainerType == TRAINER_TYPE_NORMAL)  // can only see in one direction
+    if (trainerType == TRAINER_TYPE_NORMAL)  // can only see in one direction
     {
         approachDistance = sDirectionalApproachDistanceFuncs[trainerObj->facingDirection - 1](trainerObj, trainerObj->trainerRange_berryTreeId, x, y);
         return CheckPathBetweenTrainerAndPlayer(trainerObj, approachDistance, trainerObj->facingDirection);
@@ -394,11 +464,12 @@ static u8 CheckPathBetweenTrainerAndPlayer(struct ObjectEvent *trainerObj, u8 ap
     trainerObj->rangeX = 0;
     trainerObj->rangeY = 0;
 
-    collision = GetCollisionAtCoords(trainerObj, x, y, direction);
+    collision = GetCollisionFlagsAtCoords(trainerObj, x, y, direction);
 
     trainerObj->rangeX = rangeX;
     trainerObj->rangeY = rangeY;
-    if (collision == COLLISION_OBJECT_EVENT)
+    // if (collision == COLLISION_OBJECT_EVENT)
+    if ((collision & 0x18) != 0)
         return approachDistance;
 
     return 0;
@@ -480,7 +551,7 @@ static bool8 WaitTrainerExclamationMark(u8 taskId, struct Task *task, struct Obj
         task->tFuncId++; // TRSEE_MOVE_TO_PLAYER
         if (trainerObj->movementType == MOVEMENT_TYPE_TREE_DISGUISE || trainerObj->movementType == MOVEMENT_TYPE_MOUNTAIN_DISGUISE)
             task->tFuncId = TRSEE_REVEAL_DISGUISE;
-        if (trainerObj->movementType == MOVEMENT_TYPE_BURIED)
+        if (trainerObj->movementType == MOVEMENT_TYPE_BURIED || trainerObj->movementType == MOVEMENT_TYPE_HIDDEN2)
             task->tFuncId = TRSEE_REVEAL_BURIED;
         return TRUE;
     }
@@ -554,8 +625,22 @@ static bool8 RevealDisguisedTrainer(u8 taskId, struct Task *task, struct ObjectE
 // TRSEE_REVEAL_DISGUISE_WAIT
 static bool8 WaitRevealDisguisedTrainer(u8 taskId, struct Task *task, struct ObjectEvent *trainerObj)
 {
-    if (ObjectEventClearHeldMovementIfFinished(trainerObj))
+    if (ObjectEventClearHeldMovementIfFinished(trainerObj)) {
+        struct EventObject *playerObj = &gEventObjects[gPlayerAvatar.eventObjectId];
+        if (trainerObj->currentCoords.x < playerObj->currentCoords.x) {
+            trainerObj->facingDirection = DIR_EAST;
+        }
+        if (trainerObj->currentCoords.x > playerObj->currentCoords.x) {
+            trainerObj->facingDirection = DIR_WEST;
+        }
+        if (trainerObj->currentCoords.y < playerObj->currentCoords.y) {
+            trainerObj->facingDirection = DIR_SOUTH;
+        }
+        if (trainerObj->currentCoords.y > playerObj->currentCoords.y) {
+            trainerObj->facingDirection = DIR_NORTH;
+        }
         task->tFuncId = TRSEE_MOVE_TO_PLAYER;
+    }
 
     return FALSE;
 }
@@ -599,6 +684,7 @@ static bool8 JumpInPlaceBuriedTrainer(u8 taskId, struct Task *task, struct Objec
 
         sprite = &gSprites[trainerObj->spriteId];
         sprite->oam.priority = 2;
+        trainerObj->invisible = FALSE;
         ObjectEventClearHeldMovementIfFinished(trainerObj);
         ObjectEventSetHeldMovement(trainerObj, GetJumpInPlaceMovementAction(trainerObj->facingDirection));
         task->tFuncId++;
@@ -693,9 +779,18 @@ void TryPrepareSecondApproachingTrainer(void)
 #define sData4      data[4]
 #define sFldEffId   data[7]
 
+#define LOAD_PALETTE(template) \
+    u8 spriteId, paletteNum; \
+    // LoadEventObjectPalette(template.paletteTag); \
+    // paletteNum = IndexOfSpritePaletteTag(template.paletteTag); \
+    // UpdatePaletteGammaType(paletteNum, GAMMA_ALT); \
+    // UpdateSpritePaletteWithWeather(paletteNum);
+    
+
 u8 FldEff_ExclamationMarkIcon(void)
 {
-    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x53);
+    LOAD_PALETTE(sSpriteTemplate_ExclamationQuestionMark)
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x53);
 
     if (spriteId != MAX_SPRITES)
         SetIconSpriteData(&gSprites[spriteId], FLDEFF_EXCLAMATION_MARK_ICON, 0);
@@ -705,7 +800,8 @@ u8 FldEff_ExclamationMarkIcon(void)
 
 u8 FldEff_QuestionMarkIcon(void)
 {
-    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x52);
+    LOAD_PALETTE(sSpriteTemplate_ExclamationQuestionMark)
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x52);
 
     if (spriteId != MAX_SPRITES)
         SetIconSpriteData(&gSprites[spriteId], FLDEFF_QUESTION_MARK_ICON, 1);
@@ -715,7 +811,8 @@ u8 FldEff_QuestionMarkIcon(void)
 
 u8 FldEff_HeartIcon(void)
 {
-    u8 spriteId = CreateSpriteAtEnd(&sSpriteTemplate_HeartIcon, 0, 0, 0x52);
+    LOAD_PALETTE(sSpriteTemplate_HeartIcon)
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_HeartIcon, 0, 0, 0x52);
 
     if (spriteId != MAX_SPRITES)
     {
@@ -727,6 +824,63 @@ u8 FldEff_HeartIcon(void)
 
     return 0;
 }
+
+u8 FldEff_EmoteNoteC(void)
+{
+    LOAD_PALETTE(sSpriteTemplate_EmoteNote)
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
+
+    if (spriteId != MAX_SPRITES)
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE_NOTE_C, 0);
+
+    return 0;
+}
+
+u8 FldEff_EmoteNoteD(void)
+{
+    LOAD_PALETTE(sSpriteTemplate_EmoteNote)
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
+
+    if (spriteId != MAX_SPRITES)
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE_NOTE_D, 1);
+
+    return 0;
+}
+
+u8 FldEff_EmoteNoteE(void)
+{
+    LOAD_PALETTE(sSpriteTemplate_EmoteNote)
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
+
+    if (spriteId != MAX_SPRITES)
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE_NOTE_E, 2);
+
+    return 0;
+}
+
+u8 FldEff_EmoteNoteF(void)
+{
+    LOAD_PALETTE(sSpriteTemplate_EmoteNote)
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
+
+    if (spriteId != MAX_SPRITES)
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE_NOTE_F, 3);
+
+    return 0;
+}
+
+u8 FldEff_EmoteNoteG(void)
+{
+    LOAD_PALETTE(sSpriteTemplate_EmoteNote)
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
+
+    if (spriteId != MAX_SPRITES)
+        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE_NOTE_G, 4);
+
+    return 0;
+}
+
+#undef LOAD_PALETTE
 
 static void SetIconSpriteData(struct Sprite *sprite, u16 fldEffId, u8 spriteAnimNum)
 {

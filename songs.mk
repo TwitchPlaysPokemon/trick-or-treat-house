@@ -609,6 +609,9 @@ $(MID_SUBDIR)/mus_littleroot_test.s: %.s: %.mid
 $(MID_SUBDIR)/mus_credits.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G101 -V100
 
+$(MID_SUBDIR)/mus_thankfor1.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G101 -V100
+
 $(MID_SUBDIR)/mus_title.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G059 -V090
 

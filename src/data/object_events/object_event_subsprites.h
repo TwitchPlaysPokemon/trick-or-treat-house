@@ -182,6 +182,103 @@ static const struct SubspriteTable sOamTables_16x32[] = {
     {ARRAY_COUNT(sOamTable_16x32_4), sOamTable_16x32_4}
 };
 
+const struct Subsprite sOamTable_32x16_0[] = {
+    { 
+        .x = -16,
+        .y = -8,
+        .shape = 1, 
+        .size = 2, 
+        .tileOffset = 0, 
+        .priority = 2
+    }
+};
+
+const struct Subsprite sOamTable_32x16_1[] = {
+    { 
+        .x = -16,
+        .y = -8,
+        .shape = 1, 
+        .size = 2, 
+        .tileOffset = 0, 
+        .priority = 1
+    }
+};
+
+const struct Subsprite sOamTable_32x16_2[] = {
+    { 
+        .x = -16,
+        .y = -8,
+        .shape = 0, 
+        .size = 1, 
+        .tileOffset = 0, 
+        .priority = 2
+    },
+    { 
+        .x = -16,
+        .y =  0,
+        .shape = 1, 
+        .size = 0, 
+        .tileOffset = 4, 
+        .priority = 2
+    },
+    { 
+        .x = -16,
+        .y =  8,
+        .shape = 1, 
+        .size = 0, 
+        .tileOffset = 6, 
+        .priority = 3
+    }
+};
+
+const struct Subsprite sOamTable_32x16_3[] = {
+    { 
+        .x = -16,
+        .y = -8,
+        .shape = 0, 
+        .size = 1, 
+        .tileOffset = 0, 
+        .priority = 2
+    },
+    { 
+        .x = -16,
+        .y =  0,
+        .shape = 0, 
+        .size = 1, 
+        .tileOffset = 4, 
+        .priority = 3
+    }
+};
+
+const struct Subsprite sOamTable_32x16_4[] = {
+    { 
+        .x = -16,
+        .y = -8,
+        .shape = 0, 
+        .size = 1, 
+        .tileOffset = 0, 
+        .priority = 1
+    },
+    { 
+        .x = -16,
+        .y =  0,
+        .shape = 0, 
+        .size = 1, 
+        .tileOffset = 4, 
+        .priority = 3
+    }
+};
+
+const struct SubspriteTable sOamTables_32x16[] = {
+    {},
+    {ARRAY_COUNT(sOamTable_32x16_0), sOamTable_32x16_0},
+    {ARRAY_COUNT(sOamTable_32x16_1), sOamTable_32x16_1},
+    {ARRAY_COUNT(sOamTable_32x16_2), sOamTable_32x16_2},
+    {ARRAY_COUNT(sOamTable_32x16_3), sOamTable_32x16_3},
+    {ARRAY_COUNT(sOamTable_32x16_4), sOamTable_32x16_4}
+};
+
+
 static const struct Subsprite sOamTable_32x32_0[] = {
     {
         .x = -16,

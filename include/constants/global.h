@@ -5,28 +5,32 @@
 // In Gen 4 only, migrated Pokemon with Diamond, Pearl, or Platinum's ID show as "----------".
 // Gen 5 and up read Diamond, Pearl, or Platinum's ID as "Sinnoh".
 // In Gen 4 and up, migrated Pokemon with HeartGold or SoulSilver's ID show the otherwise unused "Johto" string.
-#define VERSION_SAPPHIRE 1
-#define VERSION_RUBY 2
-#define VERSION_EMERALD 3
-#define VERSION_FIRE_RED 4
-#define VERSION_LEAF_GREEN 5
-#define VERSION_HEART_GOLD 7
-#define VERSION_SOUL_SILVER 8
-#define VERSION_DIAMOND 10
-#define VERSION_PEARL 11
-#define VERSION_PLATINUM 12
-#define VERSION_GAMECUBE 15
+#define VERSION_SAPPHIRE     1
+#define VERSION_RUBY         2
+#define VERSION_EMERALD      3
+#define VERSION_FIRE_RED     4
+#define VERSION_LEAF_GREEN   5
+#define VERSION_HEART_GOLD   7
+#define VERSION_SOUL_SILVER  8
+#define VERSION_DIAMOND     10
+#define VERSION_PEARL       11
+#define VERSION_PLATINUM    12
+#define VERSION_GAMECUBE    15
 
-#define LANGUAGE_JAPANESE 1
-#define LANGUAGE_ENGLISH  2
-#define LANGUAGE_FRENCH   3
-#define LANGUAGE_ITALIAN  4
-#define LANGUAGE_GERMAN   5
-#define LANGUAGE_KOREAN   6 // 6 goes unused but the theory is it was meant to be Korean
-#define LANGUAGE_SPANISH  7
-#define NUM_LANGUAGES     7
+// TTH Version Detection
+#define VERSION_TTH_2019     0  // The game version detection was not in the 2019 release
+#define VERSION_TTH_2020    20
 
-#define GAME_VERSION (VERSION_EMERALD)
+#define LANGUAGE_JAPANESE    1
+#define LANGUAGE_ENGLISH     2
+#define LANGUAGE_FRENCH      3
+#define LANGUAGE_ITALIAN     4
+#define LANGUAGE_GERMAN      5
+#define LANGUAGE_KOREAN      6 // 6 goes unused but the theory is it was meant to be Korean
+#define LANGUAGE_SPANISH     7
+#define NUM_LANGUAGES        7
+
+#define GAME_VERSION (VERSION_TTH_2020) //(VERSION_EMERALD)
 #define GAME_LANGUAGE (LANGUAGE_ENGLISH)
 
 // party sizes
@@ -46,10 +50,12 @@
 #define SECRET_BASES_COUNT 20
 #define TV_SHOWS_COUNT 25
 #define POKE_NEWS_COUNT 16
-#define PC_ITEMS_COUNT 50
-#define BAG_ITEMS_COUNT 30
+#define PC_ITEMS_COUNT 1
+#define BAG_CANDY_COUNT 50
+#define BAG_ITEMS_COUNT 45
+// #define BAG_ITEMS_COUNT 79
 #define BAG_KEYITEMS_COUNT 30
-#define BAG_POKEBALLS_COUNT 16
+// #define BAG_POKEBALLS_COUNT 16
 #define BAG_TMHM_COUNT 64
 #define BAG_BERRIES_COUNT 46
 #define OBJECT_EVENT_TEMPLATES_COUNT 64
@@ -109,7 +115,10 @@
 
 #define MALE 0
 #define FEMALE 1
-#define GENDER_COUNT 2
+#define GENDER_M 0
+#define GENDER_F 1
+#define GENDER_N 2
+#define GENDER_COUNT 3
 
 #define BARD_SONG_LENGTH       6
 #define NUM_STORYTELLER_TALES  4

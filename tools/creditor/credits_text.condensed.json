@@ -1,0 +1,270 @@
+[
+	[
+		"#Pokémon HACK VERSION",
+		"#Hack Credits"
+	],
+	[],
+	[],
+	[],
+	[],
+	[],
+	[],
+	[],
+	[],
+	[],
+	[],
+	[],
+	[],
+	[
+		"#Pokémon EMERALD VERSION",
+		"#Original Credits"
+	],
+	[
+		"#Director",
+		"Shigeki Morimoto"
+	],
+	[
+		"#Art Director",
+		"Ken Sugimori",
+		"#World Director",
+		"Junichi Masuda"
+	],
+	[
+		"#Lead Programmer",
+		"Hisashi Sogabe",
+		"#Lead Graphic Artist",
+		"Motofumi Fujiwara"
+	],
+	[
+		"#Programmers",
+		["Hisashi Sogabe", "Akito Mori"],
+		["Tomomichi Ohta", "Hiroyuki Nakamura"],
+		["Nozomu Saito", "Masao Taya"]
+	],
+	[
+		"#Programmers",
+		["Satoshi Nohara", "Tetsuya Watanabe"],
+		["Miyuki Iwasawa", "Sosuke Tamada"],
+		["Yoshinori Matsuda", "Takenori Ohta"],
+		"Keita Kagaya"
+	],
+	[
+		"#Graphic Designers",
+		["Motofumi Fujiwara", "Kenkichi Toyama"],
+		["Satoshi Ohta", "Asuka Iwashita"],
+		["Takao Unno", "Kanako Eo"]
+	],
+	[
+		"#Graphic Designers",
+		"Ken Sugimori",
+		"Hironobu Yoshida",
+		"Aimi Tomita"
+	],
+	[
+		"#Music Composition",
+		"Go Ichinose",
+		"Junichi Masuda",
+		"Morikazu Aoki",
+		"Hitomi Sato"
+	],
+	[
+		"#Sound Effects & Pokémon Voices",
+		"Go Ichinose",
+		"Morikazu Aoki"
+	],
+	[
+		"#Game Designers",
+		["Shigeki Morimoto", "Suguru Nakatsui"],
+		["Teruyuki Shimoyamada", "Tetsuji Ohta"],
+		["Takeshi Kawachimaru", "Hitomi Sato"],
+		["Akihito Tomisawa", "Kenji Matsushima"]
+	],
+	[
+		"#Game Designers",
+		"Junichi Masuda",
+		"Koji Nishino",
+		"Shigeru Ohmori",
+		"Tadashi Takahashi"
+	],
+	[
+		"#Scenario Plot",
+		"Akihito Tomisawa",
+		"Junichi Masuda",
+		"Koji Nishino"
+	],
+	[
+		"#Scenario",
+		"Akihito Tomisawa",
+		"Hitomi Sato",
+		"Toshinobu Matsumiya"
+	],
+	[
+		"#Script Designers",
+		"Tomomichi Ohta",
+		"Satoshi Nohara"
+	],
+	[
+		"#Map Designers",
+		"Suguru Nakatsui",
+		"Teruyuki Shimoyamada",
+		"Shigeru Ohmori",
+		"Tetsuji Ohta"
+	],
+	[
+		"#Battle Frontier Data",
+		"Tetsuji Ohta"
+	],
+	[
+		"#Parametric Designers",
+		"Teruyuki Shimoyamada",
+		"Shigeki Morimoto",
+		"Tetsuji Ohta",
+		"Koji Nishino"
+	],
+	[
+		"#Pokédex Text",
+		"Kenji Matsushima"
+	],
+	[
+		"#Environment & Tool Programmers",
+		["Hisashi Sogabe","Sosuke Tamada"],
+		"Hiroyuki Nakamura",
+		"Akito Mori"
+	],
+	[
+		"#Pokémon Designers",
+		["Ken Sugimori","Hironobu Yoshida"],
+		["Motofumi Fujiwara","Satoshi Ohta"],
+		["Shigeki Morimoto","Asuka Iwashita"]
+	],
+	[
+		"#Pokémon Designers",
+		["Takao Unno","Atsuko Nishida"],
+		["Kanako Eo","Muneo Saito"],
+		["Aimi Tomita","Rena Yoshikawa"],
+		"Jun Okutani"
+	],
+	[
+		"#Support Programmers",
+		"Satoshi Mitsuhara",
+		"Daisuke Hoshino"
+	],
+	[
+		"#NCL Product Testing",
+		"NCL Super Mario Club"
+	],
+	[
+		"#Package & Manual Illustration",
+		"Ken Sugimori"
+	],
+	[
+		"#Special Thanks",
+		["Kenji Tominaga","Kenjiro Ito"],
+		["Hiroki Enomoto","Michiko Takizawa"],
+		["Kazuya Suyama","Makiko Takada"]
+	],
+	[
+		"#Special Thanks",
+		["Mikiko Ohhashi","Takahiro Ohnishi"],
+		["Takanao Kondo","Norihide Okamura"],
+		["Rui Kawaguchi","Shunsuke Kohori"]
+	],
+	[
+		"#Information Supervisors",
+		"Kazuyuki Terada",
+		"Yuri Sakurai",
+		"Yumi Funasaka",
+		"Naoko Yanase"
+	],
+	[
+		"#Artwork",
+		["Sachiko Nakamichi", "Hideyuki Nakajima"],
+		["Fujiko Nomura", "Hidenori Saeki"],
+		["Yoko Watanabe", "Sakae Kimura"],
+		["Chiaki Shinkai"]
+	],
+	[
+		"#Coordinators",
+		"Kazuki Yoshihara",
+		"Akira Kinashi",
+		"Retsuji Nomoto"
+	],
+	[
+		"#English Version Coordinators",
+		"Hiro Nakamura",
+		"Seth McMahill"
+	],
+	[
+		"#Translator",
+		"Nob Ogasawara",
+		"#Text Editor",
+		"Teresa Lillygren"
+	],
+	[
+		"#NCL Coordinator",
+		"Kimiko Nakamichi"
+	],
+	[
+		"#Programmers",
+		"Teruki Murakawa",
+		"Souichi Yamamoto",
+		"Yuichiro Ito",
+		"Akira Kinashi"
+	],
+	[
+		"#Graphic Designer",
+		"Akira Kinashi"
+	],
+	[
+		"#Environment & Tool Programmers",
+		"Teruki Murakawa",
+		"Souichi Yamamoto",
+		"Kimiko Nakamichi"
+	],
+	[
+		"#NOA Product Testing",
+		"Thomas Hertzog",
+		"Erik Johnson",
+		"Mika Kurosawa"
+	],
+	[
+		"#Braille Code Check",
+		"National Federation of the Blind",
+		"Patricia A. Maurer",
+		"Japan Braille Library",
+		"European Blind Union"
+	],
+	[
+		"#Braille Code Check",
+		"Australian Braille Authority",
+		"Royal New Zealand Federation for the Blind"
+	],
+	[
+		"#Special Thanks",
+		"Hiroyuki Uesugi",
+		"Motoyasu Tojima",
+		"Nicola Pratt-Barlow",
+		"Shellie Dow"
+	],
+	[
+		"#Task Managers",
+		"Azusa Tajima",
+		"Shusaku Egami"
+	],
+	[
+		"#Producers",
+		"Hiroyuki Jinnai",
+		"Hitoshi Yamagami",
+		"Gakuji Nomoto",
+		"Hiroaki Tsuru"
+	],
+	[
+		"#Executive Director",
+		"Satoshi Tajiri"
+	],
+	[
+		"#Executive Producers",
+		"Satoru Iwata",
+		"Tsunekaz Ishihara"
+	]
+]

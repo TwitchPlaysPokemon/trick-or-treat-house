@@ -1,0 +1,10 @@
+raw `
+LostWoods1_Room1_MapScripts::
+	puzzle_info Puzzle_LostWoods1_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ON_TRANSITION, LostWoods1_Room1_OnTransition
+	.byte 0
+
+LostWoods1_Room1_OnTransition:
+	setvar VAR_PUZZLE_01, 1
+	end
+`

@@ -1,0 +1,171 @@
+raw `
+TrickHouseEnd_MapScripts::
+	map_script MAP_SCRIPT_ON_LOAD, TrickHouseEnd_OnLoad
+	map_script MAP_SCRIPT_ON_TRANSITION, TrickHouseEnd_OnTransition
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, TrickHouseEnd_WarpTable
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrickHouseEnd_FrameTable
+	.byte 0
+	
+@----------------------------------------------------------
+
+TrickHouseEnd_WarpTable:
+	map_script_2 VAR_TEMP_0, 0, Common_EventScript_FacePlayerUp
+	.2byte 0
+
+TrickHouseEnd_FrameTable:
+	map_script_2 VAR_TRICK_MASTER_INTRO, 0, TrickHouseEnd_EventScript_TrickMasterOutro
+	.2byte 0
+`
+
+script TrickHouseEnd_OnLoad {
+	callnative(AssignPuzzleMetaVariables)
+}
+
+script TrickHouseEnd_OnTransition {
+	setvar(VAR_PUZZLE_STATE, 2)
+	// Disable end person movement when in TPP build
+	poryswitch(TPP_MODE) {
+		1 {
+			setobjectmovementtype (2, MOVEMENT_TYPE_LOOK_AROUND)
+			setobjectmovementtype (5, MOVEMENT_TYPE_LOOK_AROUND)
+		}
+		_:
+	}
+	
+	# Because some event objects cause freezing when wandering around
+	switch (var(VAR_OBJ_GFX_ID_1)) {
+		case EVENT_OBJ_GFX_LUGIA:     setobjectmovementtype (2, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN)
+		case EVENT_OBJ_GFX_HOOH:      setobjectmovementtype (2, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN)
+		case EVENT_OBJ_GFX_DEOXYS:    setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+		case EVENT_OBJ_GFX_KYOGRE_1:  setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+		case EVENT_OBJ_GFX_GROUDON_1: setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+		case EVENT_OBJ_GFX_KYOGRE_2:  setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+		case EVENT_OBJ_GFX_GROUDON_2: setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+		case EVENT_OBJ_GFX_KYOGRE_3:  setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+		case EVENT_OBJ_GFX_GROUDON_3: setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+	}
+}
+
+// ----------------------------------------------------
+
+script TrickHouseEnd_EventScript_TrickMasterOutro {
+	lockall
+	applymovement (3, Common_Movement_ExclamationMarkAndWait)
+	waitmovement (0)
+	setvar (VAR_TRICK_MASTER_INTRO, 2)
+	msgbox (PuzzleCommon_Text_FirstPuzzleAfterword)
+	closemessage
+	setvar (VAR_0x8000, 3)
+	call (PuzzleCommon_EventScript_WarpTrickMasterOut)
+	releaseall
+}
+
+// ----------------------------------------------------
+
+script TrickHouseEnd_EventScript_FinalPuzzlePerson {
+	lock
+	faceplayer
+	callnative(ShowPuzzleQuip)
+	waitmessage
+	waitbuttonpress
+	release
+}
+
+// ----------------------------------------------------
+
+script TrickHouseEnd_EventScript_DevStandIn {
+	lock
+	faceplayer
+	callnative(ShowPuzzleDevCommentary)
+	waitmessage
+	waitbuttonpress
+	release
+}
+
+// ----------------------------------------------------
+
+script TrickHouseEnd_EventScript_EndroomFriend {
+	lock
+	faceplayer
+	callnative(ShowPuzzleFriendCommentary)
+	waitmessage
+	waitbuttonpress
+	release
+}
+
+// ----------------------------------------------------
+
+script TrickHouseEnd_EventScript_Nurse {
+	lock
+	faceplayer
+	compare (VAR_TEMP_2, 1)
+	goto_if_eq (TrickHouseEnd_EventScript_FinalizePuzzle1)
+	call (TrickHouseEnd_EventScript_FinalizePuzzle)
+	release
+}
+script TrickHouseEnd_TriggerScript_Nurse {
+	lock
+	applymovement (1, Common_Movement_FacePlayer)
+	waitmovement (0)
+	call (TrickHouseEnd_EventScript_FinalizePuzzle)
+	release
+}
+script TrickHouseEnd_EventScript_FinalizePuzzle {
+	# msgbox ("Good job on that puzzle.$")
+	callnative(CheckAllCandyGotten)
+	if (var(VAR_RESULT) == 0xFF) {
+		msgbox("Odd, this puzzle has no candy\n"
+				"list registered.$")
+	} elif (var(VAR_RESULT) == 1) {
+		msgbox("Good job on getting all that candy.$")
+		incrementgamestat(GAME_STAT_ALL_CANDY_COLLECTED)
+	}
+	special (CanAnyPartyMonsBeHealed)
+	if (var(VAR_RESULT) == FALSE) { # It's backwards for some reason??
+		msgbox ("Let me heal your POKéMON.$")
+		closemessage
+		fadescreen(1)
+		playfanfare(MUS_ME_ASA)
+		special(HealPlayerParty)
+		waitfanfare
+		fadescreen(0)
+	}
+	callnative(RemovePuzzleItems)
+	if (var(VAR_RESULT) != FALSE) {
+		msgbox("I'll be needing those puzzle items\n"
+			   "from you.$")
+		msgbox("You hand over {STR_VAR_1}.$")
+		if (var(VAR_0x800A) > 0) {
+			buffernumberstring (0, VAR_0x800A)
+			msgbox("You're handed {STR_VAR_1} candy corn\n"
+					"as compensation.$")
+		}
+	}
+	getpartysize
+	if (var(VAR_RESULT) > 3) {
+		msgbox ("Oh, you have some extra {POKEMON} on you.\n"
+				"I'll transfer them to your PC.$")
+		callnative (RemoveExtraPokemon)
+	}
+	clearflag(FLAG_PUZZLE_PARTY_LOCK)
+	msgbox ("Good luck on the next puzzle!$")
+	closemessage
+	setvar(VAR_TEMP_2, 1)
+	return
+}
+script TrickHouseEnd_EventScript_FinalizePuzzle1 {
+	callnative (GatherLastPuzzleStats)
+	if (var(VAR_RESULT) == TRUE) {
+		buffernumberstring (0, VAR_0x8002)
+		buffernumberstring (1, VAR_0x8003)
+		buffernumberstring (2, VAR_0x8004)
+		msgbox ("It took you {STR_VAR_1}h {STR_VAR_2}m {STR_VAR_3}s to complete\n"
+				"{PUZZLE_NAME} (by {PUZZLE_AUTHOR}).")
+		buffernumberstring2 (0, VAR_0x8000)
+		buffernumberstring2 (1, VAR_0x8001)
+		msgbox ("You managed to find {STR_VAR_2} of\n"
+				"the {STR_VAR_1} candy locations.")
+	}
+	msgbox ("Good luck on the next puzzle!$")
+	release
+}

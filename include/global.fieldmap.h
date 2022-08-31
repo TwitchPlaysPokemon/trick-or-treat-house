@@ -63,11 +63,20 @@ struct BackupMapLayout
     u16 *map;
 };
 
+enum
+{
+    TrainerType_None = 0,
+    TrainerType_Normal = 1,
+    TrainerType_SeeAllDirs = 3,
+    TrainerType_BumpToInteract = 5,
+    TrainerType_KeepLoaded = 6,
+};
+
 struct ObjectEventTemplate
 {
     /*0x00*/ u8 localId;
-    /*0x01*/ u8 graphicsId;
-    /*0x02*/ u8 inConnection; // Leftover from FRLG
+    // /*0x01*/ u8 unk2;
+    /*0x02*/ u16 graphicsId;
     /*0x04*/ s16 x;
     /*0x06*/ s16 y;
     /*0x08*/ u8 elevation;
@@ -93,8 +102,10 @@ struct CoordEvent
 {
     s16 x, y;
     u8 elevation;
+    u8 npcTrigger:1;
     u16 trigger;
     u16 index;
+    u8 filler_A[0x2];
     u8 *script;
 };
 
@@ -156,9 +167,10 @@ struct MapHeader
     /* 0x1A */ bool8 allowCycling:1;
                bool8 allowEscaping:1; // Escape Rope and Dig
                bool8 allowRunning:1;
-               bool8 showMapName:5; // the last 4 bits are unused
+               bool8 showMapName:1; // the last 4 bits are unused
                                     // but the 5 bit sized bitfield is required to match
     /* 0x1B */ u8 battleType;
+    /* 0x1C */ const struct Trainer *trainerTable;
 };
 
 
@@ -192,10 +204,12 @@ struct ObjectEvent
              u32 disableJumpLandingGroundEffect:1;
              u32 fixedPriority:1;
              u32 hideReflection:1;
-    /*0x04*/ u8 spriteId;
-    /*0x05*/ u8 graphicsId;
-    /*0x06*/ u8 movementType;
-    /*0x07*/ u8 trainerType;
+             u32 isStandingOnTrigger:1;
+             u32 useImposterPalette:1;
+             int :0;
+    /*0x04*/ u16 graphicsId;
+    /*0x06*/ u8 spriteId;
+    /*0x07*/ u8 movementType;
     /*0x08*/ u8 localId;
     /*0x09*/ u8 mapNum;
     /*0x0A*/ u8 mapGroup;
@@ -208,16 +222,17 @@ struct ObjectEvent
              u16 movementDirection:4;
              u16 rangeX:4;
              u16 rangeY:4;
-    /*0x1A*/ u8 fieldEffectSpriteId;
-    /*0x1B*/ u8 warpArrowSpriteId;
-    /*0x1C*/ u8 movementActionId;
-    /*0x1D*/ u8 trainerRange_berryTreeId;
-    /*0x1E*/ u8 currentMetatileBehavior;
-    /*0x1F*/ u8 previousMetatileBehavior;
-    /*0x20*/ u8 previousMovementDirection;
-    /*0x21*/ u8 directionSequenceIndex;
-    /*0x22*/ u8 playerCopyableMovement; // COPY_MOVE_*
-    /*size = 0x24*/
+    /*0x1A*/ u8 trainerType;
+    /*0x1B*/ u8 fieldEffectSpriteId;
+    /*0x1C*/ u8 warpArrowSpriteId;
+    /*0x1D*/ u8 movementActionId;
+    /*0x1E*/ u8 trainerRange_berryTreeId;
+    /*0x1F*/ u8 currentMetatileBehavior;
+    /*0x20*/ u8 previousMetatileBehavior;
+    /*0x21*/ u8 previousMovementDirection;
+    /*0x22*/ u8 directionSequenceIndex;
+    /*0x23*/ u8 playerCopyableMovement; // COPY_MOVE_*
+    /*size = 0x25*/
 };
 
 struct ObjectEventGraphicsInfo
@@ -232,12 +247,14 @@ struct ObjectEventGraphicsInfo
              u8 shadowSize:2;
              u8 inanimate:1;
              u8 disableReflectionPaletteLoad:1;
-    /*0x0D*/ u8 tracks;
+    /*0x0D*/ u8 doorOffsetType:2;
+             u8 tracks:2;
     /*0x10*/ const struct OamData *oam;
     /*0x14*/ const struct SubspriteTable *subspriteTables;
     /*0x18*/ const union AnimCmd *const *anims;
     /*0x1C*/ const struct SpriteFrameImage *images;
     /*0x20*/ const union AffineAnimCmd *const *affineAnims;
+    // /*0x24*/ const u16 *palVariationTable;
 };
 
 enum {

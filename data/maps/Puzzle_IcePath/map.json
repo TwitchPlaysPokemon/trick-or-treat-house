@@ -1,0 +1,578 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_04",
+            "item": "ITEM_CANDY_ABUNDANT",
+            "type": "hidden_item",
+            "x": 37,
+            "y": 2
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_05",
+            "item": "ITEM_CANDY_ABUNDANT",
+            "type": "hidden_item",
+            "x": 25,
+            "y": 14
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_UNCOMMON_02",
+            "item": "ITEM_CANDY_UNCOMMON",
+            "type": "hidden_item",
+            "x": 37,
+            "y": 26
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_COMMON_04",
+            "item": "ITEM_CANDY_COMMON",
+            "type": "hidden_item",
+            "x": 20,
+            "y": 46
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_COMMON_05",
+            "item": "ITEM_CANDY_COMMON",
+            "type": "hidden_item",
+            "x": 31,
+            "y": 43
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_06",
+            "item": "ITEM_CANDY_ABUNDANT",
+            "type": "hidden_item",
+            "x": 53,
+            "y": 24
+        }
+    ],
+    "connections": null,
+    "coord_events": [
+        {
+            "elevation": 0,
+            "script": "Puzzle_IcePath_FallDownHole1",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 57,
+            "y": 3
+        },
+        {
+            "elevation": 0,
+            "script": "Puzzle_IcePath_FallDownHole2",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 58,
+            "y": 14
+        },
+        {
+            "elevation": 0,
+            "script": "Puzzle_IcePath_FallDownHole3",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 51,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "script": "Puzzle_IcePath_FallDownHole4",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "0",
+            "x": 50,
+            "y": 8
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "1",
+            "x": 57,
+            "y": 3
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "2",
+            "x": 58,
+            "y": 14
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "3",
+            "x": 51,
+            "y": 13
+        },
+        {
+            "elevation": 0,
+            "npcTrigger": "TRUE",
+            "script": "NULL",
+            "type": "trigger",
+            "var": "VAR_STEP_TRIGGER",
+            "var_value": "4",
+            "x": 50,
+            "y": 8
+        },
+        {
+            "elevation": 0,
+            "script": "Puzzle_IcePath_PrepBreakOpen",
+            "type": "trigger",
+            "var": "VAR_TEMP_1",
+            "var_value": "0",
+            "x": 19,
+            "y": 19
+        },
+        {
+            "elevation": 0,
+            "script": "Puzzle_IcePath_CancelBreakOpen",
+            "type": "trigger",
+            "var": "VAR_TEMP_1",
+            "var_value": "1",
+            "x": 19,
+            "y": 22
+        },
+        {
+            "elevation": 0,
+            "script": "Puzzle_IcePath_DoBreakOpen",
+            "type": "trigger",
+            "var": "VAR_TEMP_1",
+            "var_value": "1",
+            "x": 14,
+            "y": 19
+        }
+    ],
+    "id": "MAP_PUZZLE_ICE_PATH",
+    "layout": "LAYOUT_PUZZLE_ICE_PATH",
+    "map_type": "MAP_TYPE_UNDERGROUND",
+    "music": "MUS_DAN02",
+    "name": "Puzzle_IcePath",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "EventScript_StrengthBoulder",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 36,
+            "y": 26
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_23",
+            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "EventScript_StrengthBoulder",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 53,
+            "y": 9
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_22",
+            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "EventScript_StrengthBoulder",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 54,
+            "y": 10
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_20",
+            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "EventScript_StrengthBoulder",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 57,
+            "y": 8
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_21",
+            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "EventScript_StrengthBoulder",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 63,
+            "y": 8
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "EventScript_StrengthBoulder",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 53,
+            "y": 47
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_NORTH",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 4,
+            "y": 18
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_STONE",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "PuzzleCommon_EventScript_ExitDoorObject",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
+            "x": 33,
+            "y": 24
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_24",
+            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 12,
+            "y": 33
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_25",
+            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 13,
+            "y": 43
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_26",
+            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 4,
+            "y": 42
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_27",
+            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 5,
+            "y": 37
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_SCROLL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "PuzzleCommon_EventScript_Scroll",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 57,
+            "y": 50
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PICKED_UP_STRENGTH_ITEM",
+            "graphics_id": "EVENT_OBJ_GFX_HM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_ItemStrength",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 31,
+            "y": 6
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_COMMON_01",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyCommon",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 35,
+            "y": 8
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_UNCOMMON_01",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyUncommon",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 32,
+            "y": 22
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_COMMON_02",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyCommon",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 1,
+            "y": 32
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_01",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyAbundant",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 1,
+            "y": 47
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_COMMON_03",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyCommon",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 37,
+            "y": 49
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_RARE_01",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyRare",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 52,
+            "y": 48
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_02",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyAbundant",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 49,
+            "y": 34
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_03",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyAbundant",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 9,
+            "y": 39
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_07",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyAbundant",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 54,
+            "y": 22
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_TEMP_10",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Puzzle_IcePath_PickupSecretItem",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 12,
+            "y": 19
+        }
+    ],
+    "region_map_section": "MAPSEC_SHOAL_CAVE",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 4,
+            "y": 18
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 2,
+            "elevation": 0,
+            "x": 37,
+            "y": 4
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 1,
+            "elevation": 0,
+            "x": 49,
+            "y": 16
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 4,
+            "elevation": 0,
+            "x": 63,
+            "y": 4
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 3,
+            "elevation": 0,
+            "x": 18,
+            "y": 31
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 6,
+            "elevation": 0,
+            "x": 10,
+            "y": 41
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 5,
+            "elevation": 0,
+            "x": 50,
+            "y": 46
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 8,
+            "elevation": 0,
+            "x": 62,
+            "y": 46
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 7,
+            "elevation": 0,
+            "x": 32,
+            "y": 36
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 10,
+            "elevation": 0,
+            "x": 32,
+            "y": 48
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 9,
+            "elevation": 0,
+            "x": 55,
+            "y": 26
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 12,
+            "elevation": 0,
+            "x": 48,
+            "y": 22
+        },
+        {
+            "dest_map": "MAP_PUZZLE_ICE_PATH",
+            "dest_warp_id": 11,
+            "elevation": 0,
+            "x": 37,
+            "y": 12
+        }
+    ],
+    "weather": "WEATHER_SUNNY"
+}

@@ -1,9 +1,4 @@
 TOOLCHAIN := $(DEVKITARM)
-COMPARE ?= 0
-
-ifeq (compare,$(MAKECMDGOALS))
-  COMPARE := 1
-endif
 
 # don't use dkP's base_tools anymore
 # because the redefinition of $(CC) conflicts
@@ -30,14 +25,35 @@ LD := $(PREFIX)ld
 MODERNCC := $(PREFIX)gcc
 PATH_MODERNCC := PATH=$(TOOLCHAIN)/bin:PATH $(MODERNCC)
 
-ifeq ($(OS),Windows_NT)
-EXE := .exe
+# Build Variables
+DISABLE_DEBUG	?= 0
+TPP_MODE		?= 1
+MGBA_DEBUG      ?= 0
+
+# Version branch
+VERSION	:= v2.0.4
+
+ifeq ($(TPP_MODE),1)
+VERSION_STR := $(VERSION)*TPP
 else
-EXE :=
+VERSION_STR := $(VERSION)
 endif
 
-TITLE       := POKEMON EMER
+ifeq ($(OS),Windows_NT)
+EXE := .exe
+EXE2 := .exe
+else 
+EXE :=
+ifeq ($(shell uname),Darwin)
+EXE2 := -mac
+else
+EXE2 := -nix
+endif
+endif
+
+TITLE       := TRICKTREAT H
 GAME_CODE   := BPEE
+GAME_NAME	:= Trick or Treat House (English)
 MAKER_CODE  := 01
 REVISION    := 0
 MODERN      ?= 0
@@ -63,12 +79,12 @@ else
   CPP := $(PREFIX)cpp
 endif
 
-ROM_NAME := pokeemerald.gba
+ROM_NAME := tricktreat.gba
 ELF_NAME := $(ROM_NAME:.gba=.elf)
 MAP_NAME := $(ROM_NAME:.gba=.map)
 OBJ_DIR_NAME := build/emerald
 
-MODERN_ROM_NAME := pokeemerald_modern.gba
+MODERN_ROM_NAME := tricktreat_modern.gba
 MODERN_ELF_NAME := $(MODERN_ROM_NAME:.gba=.elf)
 MODERN_MAP_NAME := $(MODERN_ROM_NAME:.gba=.map)
 MODERN_OBJ_DIR_NAME := build/modern
@@ -78,6 +94,7 @@ SHELL := /bin/bash -o pipefail
 ELF = $(ROM:.gba=.elf)
 MAP = $(ROM:.gba=.map)
 SYM = $(ROM:.gba=.sym)
+PGEINI = $(ROM:.gba=.pge.ini)
 
 C_SUBDIR = src
 GFLIB_SUBDIR = gflib
@@ -114,7 +131,7 @@ LIBPATH := -L "$(dir $(shell $(PATH_MODERNCC) -mthumb -print-file-name=libgcc.a)
 LIB := $(LIBPATH) -lc -lnosys -lgcc -L../../libagbsyscall -lagbsyscall
 endif
 
-CPPFLAGS := -iquote include -iquote $(GFLIB_SUBDIR) -Wno-trigraphs -DMODERN=$(MODERN)
+CPPFLAGS := -iquote include -iquote $(GFLIB_SUBDIR) -Wno-trigraphs -DMODERN=$(MODERN) -DDISABLE_DEBUG=$(DISABLE_DEBUG) -DTPP_MODE=$(TPP_MODE) -DMGBA_DEBUG=$(MGBA_DEBUG)
 ifneq ($(MODERN),1)
 CPPFLAGS += -I tools/agbcc/include -I tools/agbcc -nostdinc -undef
 endif
@@ -131,6 +148,10 @@ RAMSCRGEN := tools/ramscrgen/ramscrgen$(EXE)
 FIX := tools/gbafix/gbafix$(EXE)
 MAPJSON := tools/mapjson/mapjson$(EXE)
 JSONPROC := tools/jsonproc/jsonproc$(EXE)
+SCRIPT := tools/poryscript/poryscript$(EXE2)
+COPYSTAMP := tools/copystamp/copystamp$(EXE)
+PGEGEN := tools/pgegen/pgegen$(EXE)
+
 
 PERL := perl
 
@@ -222,14 +243,11 @@ $(TOOLDIRS):
 	@$(MAKE) -C $@
 
 rom: $(ROM)
-ifeq ($(COMPARE),1)
-	@$(SHA1) rom.sha1
-endif
 
-# For contributors to make sure a change didn't affect the contents of the ROM.
-compare: all
+ini: $(PGEINI)
 
-clean: mostlyclean clean-tools
+
+clean: mostlyclean cleanmaps clean-tools
 
 clean-tools:
 	@$(foreach tooldir,$(TOOLDIRS),$(MAKE) clean -C $(tooldir);)
@@ -239,10 +257,14 @@ mostlyclean: tidynonmodern tidymodern
 	rm -f $(CRY_SUBDIR)/*.bin
 	rm -f $(MID_SUBDIR)/*.s
 	find . \( -iname '*.1bpp' -o -iname '*.4bpp' -o -iname '*.8bpp' -o -iname '*.gbapal' -o -iname '*.lz' -o -iname '*.rl' -o -iname '*.latfont' -o -iname '*.hwjpnfont' -o -iname '*.fwjpnfont' \) -exec rm {} +
+	rm -f $(AUTO_GEN_TARGETS)
+	rm -f $(patsubst %.pory,%.inc,$(shell find data/ -type f -name '*.pory'))
+	
+cleanmaps:
+	rm -f $(DATA_ASM_BUILDDIR)/maps.o $(DATA_ASM_BUILDDIR)/map_events.o
 	rm -f $(DATA_ASM_SUBDIR)/layouts/layouts.inc $(DATA_ASM_SUBDIR)/layouts/layouts_table.inc
 	rm -f $(DATA_ASM_SUBDIR)/maps/connections.inc $(DATA_ASM_SUBDIR)/maps/events.inc $(DATA_ASM_SUBDIR)/maps/groups.inc $(DATA_ASM_SUBDIR)/maps/headers.inc
 	find $(DATA_ASM_SUBDIR)/maps \( -iname 'connections.inc' -o -iname 'events.inc' -o -iname 'header.inc' \) -exec rm {} +
-	rm -f $(AUTO_GEN_TARGETS)
 	@$(MAKE) clean -C libagbsyscall
 
 tidy: tidynonmodern tidymodern
@@ -269,6 +291,7 @@ include songs.mk
 %.png: ;
 %.pal: ;
 %.aif: ;
+%.pory: ;
 
 %.1bpp: %.png  ; $(GFX) $< $@
 %.4bpp: %.png  ; $(GFX) $< $@
@@ -279,7 +302,12 @@ include songs.mk
 %.rl: % ; $(GFX) $< $@
 $(CRY_SUBDIR)/%.bin: $(CRY_SUBDIR)/%.aif ; $(AIF) $< $@ --compress
 sound/%.bin: sound/%.aif ; $(AIF) $< $@
+data/%.inc: data/%.pory; $(SCRIPT) -i $< -o $@ -s TPP_MODE=$(TPP_MODE) -s MGBA_DEBUG=$(MGBA_DEBUG)
 
+$(OBJ_DIR)/copystamped.bin: .git/index
+	$(COPYSTAMP) $(OBJ_DIR)/copystamped.bin `git log -1 --format="-18:s $(VERSION_STR)*%h -19:t %ct"`
+$(OBJ_DIR)/copystamped.bin.lz: $(OBJ_DIR)/copystamped.bin
+	$(GFX) $(OBJ_DIR)/copystamped.bin $@
 
 ifeq ($(MODERN),0)
 $(C_BUILDDIR)/libc.o: CC1 := tools/agbcc/bin/old_agbcc$(EXE)
@@ -424,6 +452,10 @@ $(ELF): $(OBJ_DIR)/ld_script.ld $(OBJS) libagbsyscall
 $(ROM): $(ELF)
 	$(OBJCOPY) -O binary $< $@
 	$(FIX) $@ -p --silent
+#	nm -SBgn $< > $(ROM:.gba=.sym)
+
+$(PGEINI): $(ELF)
+	$(PGEGEN) $< $@ --code $(GAME_CODE) --name "$(GAME_NAME)"
 
 modern: all
 
@@ -436,3 +468,4 @@ libagbsyscall:
 
 $(SYM): $(ELF)
 	$(OBJDUMP) -t $< | sort -u | grep -E "^0[2389]" | $(PERL) -p -e 's/^(\w{8}) (\w).{6} \S+\t(\w{8}) (\S+)$$/\1 \2 \3 \4/g' > $@
+

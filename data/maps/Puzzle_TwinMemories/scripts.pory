@@ -1,0 +1,233 @@
+raw `
+Puzzle_TwinMemories_MapScripts::
+	puzzle_info Puzzle_TwinMemories_Name, CommonAuthor_Tustin2121
+	puzzle_adjective Puzzle_TwinMemories_Adjective
+	puzzle_quip Puzzle_TwinMemories_Quip
+	@ puzzle_metavars Puzzle_TwinMemories_Variables
+	puzzle_item_prereqs Puzzle_TwinMemories_PrereqItems
+	puzzle_candylist Puzzle_TwinMemories_CandyList
+	puzzle_setup_script Puzzle_TwinMemories_SetupScript
+	puzzle_devcommentary Puzzle_TwinMemories_DevCommentary
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TwinMemories_OnResume
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_TwinMemories_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_TwinMemories_FrameTable
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Puzzle_TwinMemories_MapTable
+	.byte 0
+
+Puzzle_TwinMemories_Name:
+	.string "Twin Memories$"
+Puzzle_TwinMemories_Adjective:
+	.string "memzorizing$" @intentional mispelling
+Puzzle_TwinMemories_Quip:
+	.string "This puzzle seems familiar. I can't\n"
+	.string "put my finger on how, though…$"
+Puzzle_TwinMemories_DevCommentary:
+	.string "Tustin2121: This puzzle takes its concept\n"
+	.string "and its name from Zelda BotW.\p"
+	.string "After the 2019 release, this puzzle was\n"
+	.string "updated to randomly select from ten\l"
+	.string "different configurations for the boulders.$"
+.align 2
+@ Puzzle_TwinMemories_Variables:
+@ 	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_HIKER
+@ 	.2byte 0
+Puzzle_TwinMemories_PrereqItems:
+	.2byte ITEM_STRENGTH_ITEM
+	.2byte 0
+Puzzle_TwinMemories_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte 0
+
+Puzzle_TwinMemories_FrameTable:
+	@ VAR_STEP_TRIGGER is set to 1 by MonitorEventObjectTriggersStepCallback when any npc steps on a trigger
+	map_script_2 VAR_STEP_TRIGGER, 1, Puzzle_TwinMemories_CheckPuzzleSolved1
+	map_script_2 VAR_STEP_TRIGGER, 2, Puzzle_TwinMemories_CheckPuzzleSolved2
+	map_script_2 VAR_STEP_TRIGGER, 3, Puzzle_TwinMemories_TriggerTrappedFailsafe
+	.2byte 0
+Puzzle_TwinMemories_MapTable:
+	map_script_2 VAR_LAST_WARP_ID, 3, Puzzle_TwinMemories_SetupLeftBoulders
+	map_script_2 VAR_LAST_WARP_ID, 4, Puzzle_TwinMemories_SetupRightBoulders
+	.2byte 0
+Puzzle_TwinMemories_OnResume:
+	@ Setup the NPC Trigger step callback MonitorEventObjectTriggersStepCallback
+	setstepcallback STEP_CB_NPC_TRIGGER 
+	end
+
+@ -----------------------------------------------------
+@ Puzzle configurations:
+.macro twinm_config a:req, b:req, c:req, d:req, e:req, f:req
+.byte \a, \b, \c, \d, \e, \f
+inc __enum__
+.endm
+
+enum_start
+@           [ 0] [ 1] [ 2] [ 3] [ 4]
+@           [ 5] [ 6] [ 7] [ 8] [ 9]
+@           [10] [11]      [13] [14]
+@           [15] [16] [17] [18] [19]
+@           [20] [21] [22] [23] [24]
+Puzzle_TwinMemories_Configs:: @ const u8 [][6]
+	twinm_config  4,  6, 14, 17, 20, 23
+	twinm_config  1,  8, 11, 15, 22, 24
+	twinm_config  1,  6, 10, 16, 22, 18
+	twinm_config  4,  5,  8, 16, 19, 20
+	twinm_config  4,  5,  8, 16, 19, 20
+	twinm_config  2, 10, 14, 22,  6, 18
+	twinm_config  3,  6, 14,  5, 16, 23
+	twinm_config  0, 11,  2, 22, 13, 24
+	twinm_config  0,  8, 10, 17, 24, 21
+	twinm_config 21, 18, 14,  5,  2,  4
+
+enum _TWINM_CONFIG_COUNT
+Puzzle_TwinMemories_ConfigCount::
+	.byte _TWINM_CONFIG_COUNT
+
+@ -----------------------------------------------------
+#define VAR_CONFIG_LEFT   VAR_PUZZLE_00
+#define VAR_CONFIG_RIGHT  VAR_PUZZLE_01
+#define FLAG_SOLVE_LEFT   FLAG_PUZZLE_20
+#define FLAG_SOLVE_RIGHT  FLAG_PUZZLE_21
+`
+script(local) Puzzle_TwinMemories_SetupScript {
+	// First time setup only
+	if (flag(FLAG_SYS_RANDOM_DISABLED) == TRUE) {
+		setvar(VAR_CONFIG_LEFT, 0)
+		setvar(VAR_CONFIG_RIGHT, 1)
+	} else {
+		random(_TWINM_CONFIG_COUNT)
+		copyvar(VAR_CONFIG_LEFT, VAR_RESULT)
+		do {
+			random(_TWINM_CONFIG_COUNT)
+			copyvar(VAR_CONFIG_RIGHT, VAR_RESULT)
+		}
+		while(var(VAR_CONFIG_LEFT) == VAR_CONFIG_RIGHT)
+	}
+}
+
+script Puzzle_TwinMemories_OnLoad {
+	if (flag(FLAG_SOLVE_LEFT) == TRUE) {
+		call (Puzzle_TwinMemories_OpenLeftDoors)
+	}
+	if (flag(FLAG_SOLVE_RIGHT) == TRUE) {
+		call (Puzzle_TwinMemories_OpenRightDoors)
+	}
+}
+
+script Puzzle_TwinMemories_OpenLeftDoors {
+	setmetatile (5, 3, 0x24B, FALSE)
+	setmetatile (6, 3, 0x208, FALSE)
+	setmetatile (7, 3, 0x24C, FALSE)
+	setmetatile (5, 4, 0x253, FALSE)
+	setmetatile (6, 4, 0x208, FALSE)
+	setmetatile (7, 4, 0x254, FALSE)
+	setmetatile (5, 5, 0x208, FALSE)
+	setmetatile (6, 5, 0x208, FALSE)
+	setmetatile (7, 5, 0x208, FALSE)
+	return
+}
+script Puzzle_TwinMemories_OpenRightDoors {
+	setmetatile (25, 3, 0x248, FALSE)
+	setmetatile (26, 3, 0x208, FALSE)
+	setmetatile (27, 3, 0x249, FALSE)
+	setmetatile (25, 4, 0x250, FALSE)
+	setmetatile (26, 4, 0x208, FALSE)
+	setmetatile (27, 4, 0x251, FALSE)
+	setmetatile (25, 5, 0x208, FALSE)
+	setmetatile (26, 5, 0x208, FALSE)
+	setmetatile (27, 5, 0x208, FALSE)
+	return
+}
+
+script Puzzle_TwinMemories_SetupLeftBoulders {
+	loadword(0, VAR_CONFIG_LEFT)  //config var
+	loadword(1, COORDXY(2 , 7))   // x/ybase
+	
+	callnative (SetupTwinMemoriesBoulders)
+}
+script Puzzle_TwinMemories_SetupRightBoulders {
+	loadword(0, VAR_CONFIG_RIGHT)  //config var
+	loadword(1, COORDXY(22 , 7))   // x/ybase
+	
+	callnative (SetupTwinMemoriesBoulders)
+}
+
+
+script Puzzle_TwinMemories_CheckPuzzleSolved1 {
+	if (flag(FLAG_SOLVE_LEFT) == FALSE) {
+		loadword(0, VAR_CONFIG_RIGHT)  //config var
+		loadword(1, COORDXY(2 , 7))   // x/ybase
+		
+		callnative (CountTwinMemoriesBoulders)
+		if (var(VAR_RESULT) == 6) {
+			playse (SE_SEIKAI)
+			setflag (FLAG_SOLVE_LEFT)
+			call (Puzzle_TwinMemories_OpenLeftDoors)
+			special (DrawWholeMapView)
+		}
+	}
+	setvar (VAR_STEP_TRIGGER, 0)
+}
+script Puzzle_TwinMemories_CheckPuzzleSolved2 {
+	if (flag(FLAG_SOLVE_RIGHT) == FALSE) {
+		loadword(0, VAR_CONFIG_LEFT)  //config var
+		loadword(1, COORDXY(22 , 7))   // x/ybase
+		
+		callnative (CountTwinMemoriesBoulders)
+		if (var(VAR_RESULT) == 6) {
+			playse (SE_SEIKAI)
+			setflag (FLAG_SOLVE_RIGHT)
+			call (Puzzle_TwinMemories_OpenRightDoors)
+			special (DrawWholeMapView)
+		}
+	}
+	setvar (VAR_STEP_TRIGGER, 0)
+}
+script Puzzle_TwinMemories_TriggerTrappedFailsafe {
+	lock
+	playse (SE_HAZURE)
+	msgbox ("Triggering anti-trapping fail-safe!$")
+	
+	playse (SE_M_STRENGTH)
+	setvar (VAR_0x8004, 3)  #amplitude y
+	setvar (VAR_0x8005, 3)  #amplitude x
+	setvar (VAR_0x8006, 10)  #duration (num shakes)
+	setvar (VAR_0x8007, 5)  #frequency
+	special (DoCameraShakeEffect)
+	
+	delay (5)
+	setobjectxy (2, 20, 25)
+	delay (5)
+	setobjectxy (3, 21, 25)
+	delay (5)
+	setobjectxy (4, 22, 25)
+	delay (5)
+	setobjectxy (5, 23, 25)
+	delay (5)
+	setobjectxy (6, 24, 25)
+	delay (5)
+	setobjectxy (7, 25, 25)
+	waitstate
+	
+	msgbox ("Please reenter the room to reset,\n"
+			"and try not to get trapped again!$")
+	setvar (VAR_STEP_TRIGGER, 0)
+	release
+}
+
+script Puzzle_TwinMemories_VarCheck {
+	buffernumberstring(0, VAR_CONFIG_LEFT)
+	buffernumberstring(1, VAR_CONFIG_RIGHT)
+	buffernumberstring(2, VAR_LAST_ERROR_NO)
+	msgbox ("Config check: Left={STR_VAR_1}\nRight={STR_VAR_2} Error={STR_VAR_3}$", MSGBOX_SIGN)
+}
+
+raw `
+#undef VAR_CONFIG_LEFT
+#undef VAR_CONFIG_RIGHT
+#undef FLAG_SOLVE_LEFT
+#undef FLAG_SOLVE_RIGHT
+`

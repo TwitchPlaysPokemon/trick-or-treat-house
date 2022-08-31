@@ -1,0 +1,185 @@
+raw `
+Puzzle_SuspendedMaze_MapScripts::
+	puzzle_info Puzzle_SuspendedMaze_Name, Puzzle_SuspendedMaze_Author
+	puzzle_adjective Puzzle_SuspendedMaze_Adjective
+	puzzle_quip Puzzle_SuspendedMaze_Quip
+	puzzle_metavars Puzzle_SuspendedMaze_Variables
+	puzzle_item_prereqs Puzzle_SuspendedMaze_PrereqItems
+	puzzle_candylist Puzzle_SuspendedMaze_CandyList
+	puzzle_devcommentary Puzzle_SuspendedMaze_DevCommentary
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_SuspendedMaze_OnLoad
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_SuspendedMaze_SetHoleWarp
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Common_FrameTable_CrackedGround_FallDownHole
+	map_script MAP_SCRIPT_ON_TRANSITION, Common_OnResume_FixCrackedGround
+	.byte 0
+	
+	
+Puzzle_SuspendedMaze_Name:
+	.string "Cross-Path Caverns$"
+Puzzle_SuspendedMaze_Author:
+	.string "Serebii.net$"
+Puzzle_SuspendedMaze_Adjective:
+	.string "criss-crossing$"
+Puzzle_SuspendedMaze_Quip:
+	.string "What's nine letters and is considered\n"
+	.string "“The Iron {POKEMON}”?\p"
+	.string "I know there's Steel-type {POKEMON},\n"
+	.string "but Iron-type? Never heard of it.$"
+Puzzle_SuspendedMaze_DevCommentary:
+	.string "Tustin2121: This maze is an almost\n"
+	.string "perfect copy of the first crossword\l"
+	.string "puzzle that Serebii created during the\l"
+	.string "initial COVID outbreak back in March.\p"
+	.string "Someone said it looked like a maze,\n"
+	.string "and that gave me the idea for it.\p"
+	.string "(Twitter link: twitter.com/SerebiiNet/\n"
+	.string "status/1241729153319211008)$"
+.align 2
+Puzzle_SuspendedMaze_Variables:
+	.2byte 0
+Puzzle_SuspendedMaze_PrereqItems:
+	.2byte ITEM_SURF_ITEM
+	.2byte 0
+Puzzle_SuspendedMaze_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_ABUNDANT_05
+	.2byte FLAG_CANDY_ABUNDANT_06
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_COMMON_03
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_HEALTHY_02
+	.2byte FLAG_CANDY_RARE_01
+	.2byte FLAG_CANDY_RARE_02
+	.2byte 0
+
+@ -----------------------------------------------------
+#define LID_PLASMAMAN    17
+#define FLAG_PLASMAMAN   FLAG_PUZZLE_20
+#define VAR_PLASMAMAN    VAR_PUZZLE_00
+`
+
+script Puzzle_SuspendedMaze_OnLoad {
+	if (flag(FLAG_PLASMAMAN) == FALSE) {
+		setmetatile(9, 45, 0x236, FALSE)
+	}
+}
+
+script Puzzle_SuspendedMaze_SetHoleWarp {
+	setstepcallback(STEP_CB_CRACKED_FLOOR)
+	setholewarp(MAP_SUSPENDED_MAZE_B1, 255, 0, 0)
+}
+
+///////////////////////////////////////////////////////
+
+script Puzzle_SuspendedMaze_Trainer_Youngster {
+	trainerbattle_single(TRAINER_01, 
+			"This maze looks insane! I'm not sure\n"
+			"I wanna even try it…$", 
+			"Maybe I shouldn't have even tried\n"
+			"to fight you!$")
+	msgbox ("I'm just gonna hang here… Let me\n"
+			"know if you find your way through.$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_SuspendedMaze_Trainer_PlasmaKid {
+	trainerbattle_single(TRAINER_02, 
+			"You! You distracted me!\n"
+			"And then I fell into the drink!!\p"
+			"Time for payback for ruining\n"
+			"my costume!$", 
+			"Darn, so much for payback.$")
+	msgbox ("What even is this place?$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_SuspendedMaze_Trainer_Link {
+	trainerbattle_single(TRAINER_03, 
+			"I'll be using all three of my masks\n"
+			"to take you down!$", 
+			"My transformation masks!$")
+	msgbox ("Now how am I gonna stop the moon from\n"
+			"crashing into the earth?!\p"
+			"Where's that Ocarina when I need it?!$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_SuspendedMaze_Trainer_Alien {
+	trainerbattle_single(TRAINER_04, 
+			"You ready for your probing?!$", 
+			"I meant that platonically, chill!$")
+	msgbox ("I was gonna come dressed as a DALEK\n"
+			"but it proved way too heavy to wear…$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_SuspendedMaze_Trainer_FairyGirl {
+	trainerbattle_single(TRAINER_05, 
+			"Oh, hello. Did I get in your way?$", 
+			"Oh, well now you're in my way…$")
+	msgbox ("There's so many cross paths around\n"
+			"here it's so easy to get confused.$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_SuspendedMaze_Trainer_MagmaGirl {
+	trainerbattle_single(TRAINER_06, 
+			"Hey there! Wanna expand your land\n"
+			"with a bad girl like me?$", 
+			"What? You're not into that?$")
+	msgbox ("Don't give me that look!\n"
+			"Team Magma is fairer game than some!\p"
+			"At least when Team Magma killed\n"
+			"people, it was equal opportunity!$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_SuspendedMaze_Trainer_CorpseBride {
+	trainerbattle_single(TRAINER_07,
+			"Hello.\n"
+			"Have you seen my husband anywhere?\p"
+			"Green skin, bolts in the neck? No?$",
+			"I guess you haven't then.$")
+	msgbox ("If you see my monster, let him know\n"
+			"the kids need picked up.$", MSGBOX_AUTOCLOSE)
+}
+
+///////////////////////////////////////////////////////
+
+script Puzzle_SuspendedMaze_TriggerScript_FakeTrainer {
+	lock
+	setvar(VAR_PLASMAMAN, 1)
+	applymovement(LID_PLASMAMAN, Common_Movement_FaceLeft)
+	waitmovement(LID_PLASMAMAN)
+	playbgm(MUS_HAGESHII, 0) // INTENSE encounter music
+	applymovement(LID_PLASMAMAN, Common_Movement_ExclamationMarkAndWait)
+	waitmovement(LID_PLASMAMAN)
+	delay(20)
+	
+	applymovement(LID_PLASMAMAN, Puzzle_SuspendedMaze_Movement_FakeTrainer)
+	delay(30)
+	setmetatile(9, 45, 0x237, TRUE)
+	special(DrawWholeMapView)
+	waitmovement(LID_PLASMAMAN)
+	removeobject(LID_PLASMAMAN)
+	playse(SE_RU_HYUU)
+	delay(60)
+	fadedefaultbgm
+	release
+}
+movement Puzzle_SuspendedMaze_Movement_FakeTrainer {
+	walk_left * 2
+	walk_in_place_left * 3
+	walk_in_place_slow_left * 2
+	walk_in_place_fast_left * 3
+	walk_in_place_fastest_left * 5
+	delay_16 * 3
+	set_invisible
+}
+
+
+raw `
+#undef LID_PLASMAMAN
+#undef FLAG_PLASMAMAN
+#undef VAR_PLASMAMAN 
+`

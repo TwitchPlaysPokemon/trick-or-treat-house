@@ -1,6 +1,46 @@
 #ifndef GUARD_LINK_H
 #define GUARD_LINK_H
 
+#define RFUCMD_SEND_PACKET         0x2F00
+#define RFUCMD_BLENDER_SEND_KEYS   0x4400
+#define RFUCMD_READY_CLOSE_LINK    0x5F00
+#define RFUCMD_READY_EXIT_STANDBY  0x6600
+#define RFUCMD_0x7700              0x7700
+#define RFUCMD_0x7800              0x7800
+#define RFUCMD_0x8800              0x8800
+#define RFUCMD_0x8900              0x8900
+#define RFUCMD_SEND_BLOCK_REQ      0xA100
+#define RFUCMD_SEND_HELD_KEYS      0xBE00
+#define RFUCMD_0xED00              0xED00
+#define RFUCMD_0xEE00              0xEE00
+
+#define RFU_SERIAL_7F7D 0x7F7D
+
+#define RECV_QUEUE_NUM_SLOTS 32
+#define RECV_QUEUE_SLOT_LENGTH (14 * MAX_RFU_PLAYERS)
+
+#define SEND_QUEUE_NUM_SLOTS 40
+#define SEND_QUEUE_SLOT_LENGTH 14
+
+#define BACKUP_QUEUE_NUM_SLOTS 2
+#define BACKUP_QUEUE_SLOT_LENGTH 14
+
+#define RFU_PACKET_SIZE 6
+
+#define RFU_STATUS_OK                   0
+#define RFU_STATUS_FATAL_ERROR          1
+#define RFU_STATUS_CONNECTION_ERROR     2
+#define RFU_STATUS_CHILD_SEND_COMPLETE  3
+#define RFU_STATUS_NEW_CHILD_DETECTED   4
+#define RFU_STATUS_JOIN_GROUP_OK        5
+#define RFU_STATUS_JOIN_GROUP_NO        6
+#define RFU_STATUS_WAIT_ACK_JOIN_GROUP  7
+#define RFU_STATUS_LEAVE_GROUP_NOTICE   8
+#define RFU_STATUS_LEAVE_GROUP          9
+#define RFU_STATUS_10                   10
+#define RFU_STATUS_11                   11
+#define RFU_STATUS_ACK_JOIN_GROUP       12
+
 #define MAX_LINK_PLAYERS 4
 #define MAX_RFU_PLAYERS 5
 #define CMD_LENGTH 8

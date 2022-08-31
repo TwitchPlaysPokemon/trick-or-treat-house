@@ -29,6 +29,7 @@
 #include "task.h"
 #include "text.h"
 #include "text_window.h"
+#include "berry.h"
 #include "constants/items.h"
 #include "constants/songs.h"
 #include "constants/rgb.h"
@@ -445,7 +446,7 @@ static const struct ListMenuTemplate sPokeblockListMenuTemplate =
 
 void OpenPokeblockCase(u8 caseId, void (*callback)(void))
 {
-    sPokeblockMenu = Alloc(sizeof(*sPokeblockMenu));
+    sPokeblockMenu = Alloc(sizeof(struct PokeblockMenuStruct));
     sPokeblockMenu->caseId = caseId;
     sPokeblockMenu->callbackOnUse = NULL;
     sPokeblockMenu->arrowTaskId = TASK_NONE;

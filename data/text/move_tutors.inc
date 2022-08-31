@@ -163,30 +163,30 @@ MoveTutor_Text_SubstituteTaught:
 	.string "own lives to the utmost!\p"
 	.string "I hope you'll get that way, too!$"
 
-MoveTutor_Text_DynamicPunchTeach:
-	.string "I can't do this anymore!\p"
-	.string "It's utterly hopeless!\p"
-	.string "I'm a FIGHTING-type TRAINER,\n"
-	.string "so I can't win at the MOSSDEEP GYM\l"
-	.string "no matter how hard I try!\p"
-	.string "Argh! Punch! Punch! Punch!\n"
-	.string "Punch! Punch! Punch!\p"
-	.string "What, don't look at me that way!\n"
-	.string "I'm only hitting the ground!\p"
-	.string "Or do you want me to teach your\n"
-	.string "POKéMON DYNAMICPUNCH?$"
+@ MoveTutor_Text_DynamicPunchTeach:
+@ 	.string "I can't do this anymore!\p"
+@ 	.string "It's utterly hopeless!\p"
+@ 	.string "I'm a FIGHTING-type TRAINER,\n"
+@ 	.string "so I can't win at the MOSSDEEP GYM\l"
+@ 	.string "no matter how hard I try!\p"
+@ 	.string "Argh! Punch! Punch! Punch!\n"
+@ 	.string "Punch! Punch! Punch!\p"
+@ 	.string "What, don't look at me that way!\n"
+@ 	.string "I'm only hitting the ground!\p"
+@ 	.string "Or do you want me to teach your\n"
+@ 	.string "POKéMON DYNAMICPUNCH?$"
 
-MoveTutor_Text_DynamicPunchDeclined:
-	.string "Darn! You're even making fun of me?\n"
-	.string "Punch! Punch! Punch!$"
+@ MoveTutor_Text_DynamicPunchDeclined:
+@ 	.string "Darn! You're even making fun of me?\n"
+@ 	.string "Punch! Punch! Punch!$"
 
-MoveTutor_Text_DynamicPunchWhichMon:
-	.string "What? You do? You're a good person!\n"
-	.string "Which POKéMON should I teach?$"
+@ MoveTutor_Text_DynamicPunchWhichMon:
+@ 	.string "What? You do? You're a good person!\n"
+@ 	.string "Which POKéMON should I teach?$"
 
-MoveTutor_Text_DynamicPunchTaught:
-	.string "I want you to win at the MOSSDEEP GYM\n"
-	.string "using that DYNAMICPUNCH!$"
+@ MoveTutor_Text_DynamicPunchTaught:
+@ 	.string "I want you to win at the MOSSDEEP GYM\n"
+@ 	.string "using that DYNAMICPUNCH!$"
 
 MoveTutor_Text_DoubleEdgeTeach:
 	.string "Sigh…\p"

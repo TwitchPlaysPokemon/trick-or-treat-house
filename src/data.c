@@ -62,6 +62,14 @@ const struct SpriteFrameImage gTrainerBackPicTable_May[] =
     gTrainerBackPic_May + 0x1800, 0x0800,
 };
 
+const struct SpriteFrameImage gTrainerBackPicTable_Treekid[] =
+{
+    gTrainerBackPic_Treekid, 0x0800,
+    gTrainerBackPic_Treekid + 0x0800, 0x0800,
+    gTrainerBackPic_Treekid + 0x1000, 0x0800,
+    gTrainerBackPic_Treekid + 0x1800, 0x0800,
+};
+
 const struct SpriteFrameImage gTrainerBackPicTable_Red[] =
 {
     gTrainerBackPic_Red, 0x0800,
@@ -326,3 +334,19 @@ const union AnimCmd *const gAnims_MonPic[] =
 #include "data/trainers.h"
 #include "data/text/species_names.h"
 #include "data/text/move_names.h"
+
+extern const struct Trainer *gCurrTrainerTable;
+
+const struct Trainer* GetTrainer(int tId)
+{
+    if (tId == 0) return &gTrainers[0];
+    if (tId < TRAINERS_PERMAP_END && gCurrTrainerTable != NULL)
+    {
+        return &gCurrTrainerTable[tId-1];
+    }
+    else
+    {
+        // if (tId > TRAINERS_PERMAP_END) tId -= TRAINERS_PERMAP_END;
+        return &gTrainers[tId % ARRAY_COUNT(gTrainers)];
+    }
+}

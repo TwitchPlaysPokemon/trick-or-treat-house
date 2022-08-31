@@ -173,6 +173,7 @@ static const u16 sHoennTrainerCard4Star_Pal[]    = INCBIN_U16("graphics/trainer_
 static const u16 sKantoTrainerCard4Star_Pal[]    = INCBIN_U16("graphics/trainer_card/four_stars_fr.gbapal");
 static const u16 sHoennTrainerCardFemaleBg_Pal[] = INCBIN_U16("graphics/trainer_card/female_bg.gbapal");
 static const u16 sKantoTrainerCardFemaleBg_Pal[] = INCBIN_U16("graphics/trainer_card/female_bg_fr.gbapal");
+static const u16 sHoennTrainerCardNeutralBg_Pal[]= INCBIN_U16("graphics/trainer_card/neutral_bg.gbapal");
 static const u16 sHoennTrainerCardBadges_Pal[]   = INCBIN_U16("graphics/trainer_card/badges.gbapal");
 static const u16 sKantoTrainerCardBadges_Pal[]   = INCBIN_U16("graphics/trainer_card/badges_fr.gbapal");
 static const u16 sTrainerCardGold_Pal[]          = INCBIN_U16("graphics/trainer_card/gold.gbapal");
@@ -281,32 +282,37 @@ static const u8 sTrainerPicOffset[2][GENDER_COUNT][2] =
 {
     // Kanto
     {
-        [MALE]   = {13, 4},
-        [FEMALE] = {13, 4}
+        [GENDER_M] = {13, 4}, 
+        [GENDER_F] = {13, 4},
+        [GENDER_N] = {13, 4},
     },
     // Hoenn
     {
-        [MALE]   = {1, 0},
-        [FEMALE] = {1, 0}
+        [GENDER_M] = {1, 0}, 
+        [GENDER_F] = {1, 0},
+        [GENDER_N] = {1, 0},
     },
 };
 
-static const u8 sTrainerPicFacilityClass[][GENDER_COUNT] =
+static const u8 sTrainerPicFacilityClass[][GENDER_COUNT] = 
 {
-    [CARD_TYPE_FRLG] =
+    [CARD_TYPE_FRLG] = 
     {
-        [MALE]   = FACILITY_CLASS_RED,
-        [FEMALE] = FACILITY_CLASS_LEAF
-    },
-    [CARD_TYPE_RS] =
+        [GENDER_M] = FACILITY_CLASS_RED, 
+        [GENDER_F] = FACILITY_CLASS_LEAF,
+        [GENDER_N] = FACILITY_CLASS_LEAF,
+    }, 
+    [CARD_TYPE_RS] = 
     {
-        [MALE]   = FACILITY_CLASS_RS_BRENDAN,
-        [FEMALE] = FACILITY_CLASS_RS_MAY
-    },
-    [CARD_TYPE_EMERALD] =
+        [GENDER_M] = FACILITY_CLASS_BRENDAN, 
+        [GENDER_F] = FACILITY_CLASS_MAY,
+        [GENDER_N] = FACILITY_CLASS_TREEKID, 
+    }, 
+    [CARD_TYPE_EMERALD] = 
     {
-        [MALE]   = FACILITY_CLASS_BRENDAN,
-        [FEMALE] = FACILITY_CLASS_MAY
+        [GENDER_M] = FACILITY_CLASS_BRENDAN, 
+        [GENDER_F] = FACILITY_CLASS_MAY,
+        [GENDER_N] = FACILITY_CLASS_TREEKID, 
     }
 };
 
@@ -1426,8 +1432,19 @@ static u8 SetCardBgsAndPals(void)
         {
             LoadPalette(sHoennTrainerCardStarPals[sData->trainerCard.stars], 0, 96);
             LoadPalette(sHoennTrainerCardBadges_Pal, 48, 32);
-            if (sData->trainerCard.gender != MALE)
-                LoadPalette(sHoennTrainerCardFemaleBg_Pal, 16, 32);
+            switch (sData->trainerCard.gender)
+            {
+                default:
+                case GENDER_M:
+                    // Included in the already loaded palette
+                    break;
+                case GENDER_F:
+                    LoadPalette(sHoennTrainerCardFemaleBg_Pal, 16, 32);
+                    break;
+                case GENDER_N:
+                    LoadPalette(sHoennTrainerCardNeutralBg_Pal, 16, 32);
+                    break;
+            }
         }
         else
         {

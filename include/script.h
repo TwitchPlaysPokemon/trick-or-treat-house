@@ -49,6 +49,8 @@ void RunOnTransitionMapScript(void);
 void RunOnResumeMapScript(void);
 void RunOnReturnToFieldMapScript(void);
 void RunOnDiveWarpMapScript(void);
+void RunOnSpawnEventObjectMapScript(u8 objId);
+u8 *GetMapHeaderString(u16 mapId, u8 tag);
 bool8 TryRunOnFrameMapScript(void);
 void TryRunOnWarpIntoMapScript(void);
 u32 CalculateRamScriptChecksum(void);

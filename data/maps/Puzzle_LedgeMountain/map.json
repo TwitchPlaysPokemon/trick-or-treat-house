@@ -1,0 +1,262 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_UNCOMMON_01",
+            "item": "ITEM_CANDY_UNCOMMON",
+            "type": "hidden_item",
+            "x": 20,
+            "y": 40
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_01",
+            "item": "ITEM_CANDY_ABUNDANT",
+            "type": "hidden_item",
+            "x": 5,
+            "y": 31
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_02",
+            "item": "ITEM_CANDY_ABUNDANT",
+            "type": "hidden_item",
+            "x": 32,
+            "y": 43
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_03",
+            "item": "ITEM_CANDY_ABUNDANT",
+            "type": "hidden_item",
+            "x": 32,
+            "y": 26
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_COMMON_03",
+            "item": "ITEM_CANDY_COMMON",
+            "type": "hidden_item",
+            "x": 28,
+            "y": 4
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_UNCOMMON_02",
+            "item": "ITEM_CANDY_UNCOMMON",
+            "type": "hidden_item",
+            "x": 7,
+            "y": 59
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_ABUNDANT_04",
+            "item": "ITEM_CANDY_ABUNDANT",
+            "type": "hidden_item",
+            "x": 5,
+            "y": 39
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_HEALTHY_01",
+            "item": "ITEM_CANDY_HEALTHY",
+            "type": "hidden_item",
+            "x": 18,
+            "y": 23
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_HEALTHY_02",
+            "item": "ITEM_CANDY_HEALTHY",
+            "type": "hidden_item",
+            "x": 19,
+            "y": 6
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_RARE_02",
+            "item": "ITEM_CANDY_RARE",
+            "type": "hidden_item",
+            "x": 21,
+            "y": 30
+        }
+    ],
+    "connections": [
+        {
+            "direction": "right",
+            "map": "MAP_LEDGE_MOUNTAIN_SUPPORT",
+            "offset": 47
+        },
+        {
+            "direction": "left",
+            "map": "MAP_LEDGE_MOUNTAIN_SUPPORT",
+            "offset": 47
+        }
+    ],
+    "coord_events": [
+        {
+            "elevation": 0,
+            "script": "Puzzle_LedgeMountain_TriggerScript_Intro",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_00",
+            "var_value": "0",
+            "x": 25,
+            "y": 57
+        },
+        {
+            "elevation": 0,
+            "script": "Puzzle_LedgeMountain_TriggerScript_Intro",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_00",
+            "var_value": "0",
+            "x": 25,
+            "y": 56
+        },
+        {
+            "elevation": 0,
+            "script": "Puzzle_LedgeMountain_TriggerScript_Intro",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_00",
+            "var_value": "0",
+            "x": 25,
+            "y": 55
+        },
+        {
+            "elevation": 0,
+            "script": "Puzzle_LedgeMountain_TriggerScript_Intro",
+            "type": "trigger",
+            "var": "VAR_PUZZLE_00",
+            "var_value": "0",
+            "x": 25,
+            "y": 54
+        }
+    ],
+    "id": "MAP_PUZZLE_LEDGE_MOUNTAIN",
+    "layout": "LAYOUT_PUZZLE_LEDGE_MOUNTAIN",
+    "map_type": "MAP_TYPE_ROUTE",
+    "music": "MUS_KAZANBAI",
+    "name": "Puzzle_LedgeMountain",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_NORTH",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 33,
+            "y": 56
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_STONE",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "PuzzleCommon_EventScript_ExitDoorObject",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
+            "x": 36,
+            "y": 53
+        },
+        {
+            "elevation": 3,
+            "flag": "0",
+            "graphics_id": "EVENT_OBJ_GFX_TRICK_SCROLL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "PuzzleCommon_EventScript_Scroll",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 20,
+            "y": 3
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_LIMITED_CANDY_0x6D",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+            "script": "Common_EventScript_CandyLimited03",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 11,
+            "y": 4
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_COMMON_01",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyCommon",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 1,
+            "y": 60
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_COMMON_02",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyCommon",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 36,
+            "y": 45
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_PUZZLE_ITEM_1",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Puzzle_LedgeMountain_UnreachableBall",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 33,
+            "y": 5
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_CANDY_RARE_01",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "Common_EventScript_CandyRare",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "TRAINER_TYPE_NONE",
+            "x": 38,
+            "y": 61
+        }
+    ],
+    "region_map_section": "MAPSEC_FALLARBOR_TOWN",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
+            "dest_warp_id": 0,
+            "elevation": 0,
+            "x": 33,
+            "y": 56
+        }
+    ],
+    "weather": "WEATHER_SUNNY"
+}

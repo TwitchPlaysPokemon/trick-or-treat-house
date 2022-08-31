@@ -1,0 +1,46 @@
+[
+	
+	{
+		"class": "LEADER",
+		"pic": "LEADER_WATTSON",
+		"name": "WATTSON",
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY",
+		"items": ["ITEM_HYPER_POTION"],
+		"party": [
+			{
+				"species": "SPECIES_MAGNETON",
+				"iv": 100,
+				"level": 30,
+				"item": "ITEM_CANDY_GOBSTOPPER",
+				"moves": ["MOVE_SUPERSONIC", "MOVE_SHOCK_WAVE", "MOVE_THUNDER_WAVE", "MOVE_SONIC_BOOM"]
+			}
+		]
+	},
+	{
+		"class": "LASS",
+		"name": "MELIA",
+		"female": true,
+		"music": "TWINS",
+		"party": [
+			{
+				"species": "SPECIES_MEOWTH",
+				"level": 30
+			}
+		]
+	},
+	{
+		"class": "BUG_CATCHER",
+		"name": "NOAH",
+		"music": "TWINS",
+		"party": [
+			{
+				"species": "SPECIES_SKITTY",
+				"level": 27
+			},
+			{
+				"species": "SPECIES_ROSELIA",
+				"level": 27
+			}
+		]
+	}
+]

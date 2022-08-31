@@ -1,0 +1,113 @@
+[
+	{
+		"class": "MERMAID",
+		"music": "SWIMMER",
+		"female": true,
+		"name": "ELPHABA",
+		"party": [
+			{
+				"species": "SPECIES_PELIPPER",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_MANTINE",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "HEX_MANIAC",
+		"name": "EDNA",
+		"female": true,
+		"music": "SUSPICIOUS",
+		"party": [
+			{
+				"species": "SPECIES_HAUNTER",
+				"level": 27
+			},
+			{
+				"species": "SPECIES_MISDREAVUS",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "ALIEN",
+		"name": "REY",
+		"female": true,
+		"music": "SUSPICIOUS",
+		"party": [
+			{
+				"species": "SPECIES_MUK",
+				"item": "ITEM_TM36_SLUDGE_BOMB",
+				"level": 26
+			}
+		]
+	},
+	{
+		"class": "BLACK_BELT",
+		"name": "ZANDER",
+		"music": "INTENSE",
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT",
+		"party": [
+			{
+				"species": "SPECIES_HARIYAMA",
+				"level": 28,
+				"iv": 100
+			},
+			{
+				"species": "SPECIES_SOLROCK",
+				"level": 28,
+				"iv": 100
+			}
+		]
+	},
+	{
+		"class": "PSYCHIC",
+		"pic": "PSYCHIC_M",
+		"name": "CARVER",
+		"music": "SUSPICIOUS",
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT",
+		"party": [
+			{
+				"species": "SPECIES_RALTS",
+				"level": 28,
+				"iv": 100
+			},
+			{
+				"species": "SPECIES_MEDICHAM",
+				"level": 28,
+				"iv": 100
+			}
+		]
+	},
+	{
+		"class": "PLASMA_KID",
+		"name": "YUGI",
+		"music": "COOL",
+		"party": [
+			{
+				"species": "SPECIES_KADABRA",
+				"item": "ITEM_TWISTED_SPOON",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_TANGELA",
+				"item": "ITEM_SILK_SCARF",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "NINJA_BOY",
+		"name": "YASU",
+		"music": "SUSPICIOUS",
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT",
+		"party": [
+			{
+				"species": "SPECIES_NINJASK",
+				"level": 29
+			}
+		]
+	}
+]

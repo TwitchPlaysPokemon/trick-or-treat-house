@@ -1,6 +1,9 @@
 #ifndef GUARD_POKEBLOCK_H
 #define GUARD_POKEBLOCK_H
 
+#include "berry.h"
+#include "constants/pokemon.h"
+
 #define TAG_POKEBLOCK       14818
 
 enum
@@ -11,6 +14,15 @@ enum
     PBLOCK_CLR_PINK,
     PBLOCK_CLR_GREEN,
     PBLOCK_CLR_YELLOW,
+    PBLOCK_CLR_PURPLE,
+    PBLOCK_CLR_INDIGO,
+    PBLOCK_CLR_BROWN,
+    PBLOCK_CLR_LITE_BLUE,
+    PBLOCK_CLR_OLIVE,
+    PBLOCK_CLR_GRAY,
+    PBLOCK_CLR_BLACK,
+    PBLOCK_CLR_WHITE,
+    PBLOCK_CLR_GOLD,,
     PBLOCK_CLR_PURPLE,
     PBLOCK_CLR_INDIGO,
     PBLOCK_CLR_BROWN,
@@ -40,6 +52,8 @@ enum
     PBLOCK_CASE_FEEDER,
     PBLOCK_CASE_GIVE
 };
+
+#define NUM_NATURES     25
 
 // use pokeblock
 extern u8 gPokeblockMonId;

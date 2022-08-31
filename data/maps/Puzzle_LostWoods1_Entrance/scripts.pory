@@ -1,0 +1,112 @@
+raw `
+Puzzle_LostWoods1_Entrance_MapScripts::
+	puzzle_info Puzzle_LostWoods1_Name, CommonAuthor_Tustin2121
+	puzzle_adjective Puzzle_LostWoods1_Adjective
+	puzzle_quip Puzzle_LostWoods1_Quip
+	puzzle_metavars Puzzle_LostWoods1_Variables
+	puzzle_item_prereqs Puzzle_LostWoods1_PrereqItems
+	puzzle_candylist Puzzle_LostWoods1_CandyList
+	puzzle_devcommentary Puzzle_LostWoods1_DevCommentary
+	.byte 0
+
+
+Puzzle_LostWoods1_Name:
+	.string "A Song in the Forest$"
+Puzzle_LostWoods1_Adjective:
+	.string "meandering$"
+Puzzle_LostWoods1_Quip:
+	.string "… … …\n… … …$"
+Puzzle_LostWoods1_DevCommentary:
+	.string "Tustin2121: The inspiration for this\n"
+	.string "puzzle was FireRed's Glitch City during\l"
+	.string "TwitchPlaysPokemon's run of Burning Red.\p"
+	.string "Our resident binary hacker Kip made the\n"
+	.string "map connect on the edges to itself, so\l"
+	.string "you could run endlessly in one direction\l"
+	.string "across the map, if you were so inclined.\p"
+	.string "This puzzle is ten or so nearly identical\n"
+	.string "maps, and the whole maze is in how they\l"
+	.string "connect to one another.$"
+.align 2
+Puzzle_LostWoods1_Variables:
+	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_HERO_OF_TIME
+	.2byte 0
+Puzzle_LostWoods1_PrereqItems:
+	.2byte ITEM_SURF_ITEM
+	.2byte 0
+Puzzle_LostWoods1_CandyList:
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_ABUNDANT_05
+	.2byte FLAG_CANDY_ABUNDANT_06
+	.2byte FLAG_CANDY_ABUNDANT_07
+	.2byte FLAG_CANDY_RARE_01
+	.2byte FLAG_HIDDEN_LIMITED_CANDY_0x6E
+	.2byte 0
+
+@ -----------------------------------------------------
+`
+
+script Puzzle_LostWoods1_Wanderer1 {
+	trainerbattle_single (TRAINER_01,
+			"I'm so lost right now!\n"
+			"Let's battle while I get my bearings!$",
+			"Wow, now I'm even more turned around!$")
+	msgbox ("Is it just me, or does this path\n"
+			"seem familiar to you?\p"
+			"I feel like I've walked it before\n"
+			"in someone else's shoes.$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_LostWoods1_Wanderer2 {
+	msgbox ("I've been wandering in circles for\n"
+			"what feels like hours now…\p"
+			"I've lost count how many times I've\n"
+			"seen that lamppost…$", MSGBOX_NPC)
+}
+
+script Puzzle_LostWoods1_Wanderer3 {
+	trainerbattle_single (TRAINER_02,
+			"AUGH! DON'T HURT ME!$",
+			"Oh! Sorry, I thought you were\n"
+			"another kid with a sword!$")
+	msgbox ("People have been mistaking me for a\n"
+			"“Skull Kid” while I've been in here.\p"
+			"It's irritating. I'm just looking\n"
+			"for candy and things to collect!$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_LostWoods1_Wanderer4 {
+	trainerbattle_single (TRAINER_03,
+			"I don't know which way to go!$",
+			"I thought maybe a battle would jog my\n"
+			"memory, but it only made me sad.$")
+	msgbox ("I think I've narrowed it down to one\n"
+			"of these two directions.\p"
+			"But I'm a little scared to try one,\n"
+			"in case I end up back at that lamppost!$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_LostWoods1_Mimic {
+	lock
+	faceplayer
+	setwildbattle (SPECIES_ELECTRODE, 30, ITEM_NONE)
+	waitse
+	playmoncry (SPECIES_ELECTRODE, 2)
+	delay (40)
+	waitmoncry
+	setflag (FLAG_SYS_CTRL_OBJ_DELETE)
+	dowildbattle
+	clearflag (FLAG_SYS_CTRL_OBJ_DELETE)
+	if (var(VAR_RESULT) == 1 || var(VAR_RESULT) == 4 || var(VAR_RESULT) == 5) {
+		setflag (FLAG_PUZZLE_4F)
+		goto (Common_EventScript_RemoveLastTalkedObject)
+	}
+	setflag (FLAG_PUZZLE_4F)
+	release
+	end
+}

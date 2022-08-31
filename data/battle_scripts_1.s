@@ -2948,9 +2948,11 @@ BattleScript_LocalBattleLost::
 	jumpifbattletype BATTLE_TYPE_TRAINER_HILL, BattleScript_LocalBattleLostPrintTrainersWinText
 	jumpifbattletype BATTLE_TYPE_EREADER_TRAINER, BattleScript_LocalBattleLostEnd
 	jumpifhalfword CMP_EQUAL, gTrainerBattleOpponent_A, TRAINER_SECRET_BASE, BattleScript_LocalBattleLostEnd
+	jumpifhalfword CMP_EQUAL, gSpecialVar_BattleMod, 0x1, BattleScript_LocalBattleLostEnd
 BattleScript_LocalBattleLostPrintWhiteOut::
 	printstring STRINGID_PLAYERWHITEOUT
 	waitmessage B_WAIT_TIME_LONG
+BattleScript_LocalBattleLostPrintWhiteOutFinal::
 	printstring STRINGID_PLAYERWHITEOUT2
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_LocalBattleLostEnd::
@@ -3051,6 +3053,12 @@ BattleScript_SmokeBallEscape::
 	playanimation BS_ATTACKER, B_ANIM_SMOKEBALL_ESCAPE
 	printstring STRINGID_PKMNFLEDUSINGITS
 	waitmessage B_WAIT_TIME_LONG
+	end2
+
+BattleScript_SnickersEscape::
+	playanimation BS_ATTACKER, B_ANIM_SMOKEBALL_ESCAPE
+	printstring STRINGID_PKMNFLEDUSINGSNICKERS
+	waitmessage 0x40
 	end2
 
 BattleScript_RanAwayUsingMonAbility::
@@ -4034,7 +4042,8 @@ BattleScript_IntimidateActivatesLoop:
 	jumpifbyte CMP_GREATER_THAN, cMULTISTRING_CHOOSER, 1, BattleScript_IntimidateActivatesLoopIncrement
 	setgraphicalstatchangevalues
 	playanimation BS_TARGET, B_ANIM_STATS_CHANGE, sB_ANIM_ARG1
-	printstring STRINGID_PKMNCUTSATTACKWITH
+	@printstring STRINGID_PKMNCUTSATTACKWITH
+	printfromtable gIntimidateStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_IntimidateActivatesLoopIncrement:
 	addbyte gBattlerTarget, 1
@@ -4259,6 +4268,8 @@ BattleScript_SubstituteFade::
 	printstring STRINGID_PKMNSUBSTITUTEFADED
 	return
 
+@ -----------------------------------------------------
+
 BattleScript_BerryCurePrlzEnd2::
 	call BattleScript_BerryCureParRet
 	end2
@@ -4341,6 +4352,25 @@ BattleScript_BerryCureChosenStatusRet::
 	updatestatusicon BS_SCRIPTING
 	removeitem BS_SCRIPTING
 	return
+
+@ -----------------------------------------------------
+
+BattleScript_BerryCureHPAndStatusEnd2::
+	call BattleScript_BerryCureHPAndStatusRet
+	end2
+
+BattleScript_BerryCureHPAndStatusRet::
+	playanimation BS_SCRIPTING, B_ANIM_ITEM_EFFECT
+	printstring STRINGID_PKMNSITEMRESTOREDHEALTH
+	waitmessage B_WAIT_TIME_LONG
+	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE
+	healthbarupdate BS_SCRIPTING
+	datahpupdate BS_SCRIPTING
+	updatestatusicon BS_SCRIPTING
+	removeitem BS_SCRIPTING
+	return
+
+@ -----------------------------------------------------
 
 BattleScript_WhiteHerbEnd2::
 	call BattleScript_WhiteHerbRet

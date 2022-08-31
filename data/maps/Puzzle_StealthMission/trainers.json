@@ -1,0 +1,362 @@
+[
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_ELECTRODE",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_BALTOY",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_GOLEM",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_WEEZING",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_PINECO",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_ELECTRODE",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_CLAYDOL",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_EXEGGCUTE",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_WEEZING",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_PINECO",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_VOLTORB",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_SEEDOT",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_GRAVELER",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_WEEZING",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_FORRETRESS",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_ELECTRODE",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_BALTOY",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_GOLEM",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_WEEZING",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_MEW",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_VOLTORB",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_NOSEPASS",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_GOLEM",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_WEEZING",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_PINECO",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_ELECTRODE",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_BALTOY",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_GOLEM",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_WEEZING",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_PINECO",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	}
+]

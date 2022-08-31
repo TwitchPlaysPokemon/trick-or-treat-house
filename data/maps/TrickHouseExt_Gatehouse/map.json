@@ -1,0 +1,97 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": false,
+    "allow_running": false,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickHouseExt_Gatehouse_Door",
+            "type": "sign",
+            "x": 12,
+            "y": 6
+        },
+        {
+            "elevation": 0,
+            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+            "script": "TrickHouseExt_Gatehouse_Door",
+            "type": "sign",
+            "x": 13,
+            "y": 6
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x37",
+            "item": "ITEM_CANDY_ABUNDANT",
+            "type": "hidden_item",
+            "x": 0,
+            "y": 5
+        }
+    ],
+    "connections": null,
+    "coord_events": [
+        {
+            "elevation": 0,
+            "script": "TrickHouseExt_Gatehouse_Trigger",
+            "type": "trigger",
+            "var": "VAR_TEMP_0",
+            "var_value": "1",
+            "x": 5,
+            "y": 4
+        }
+    ],
+    "id": "MAP_TRICK_HOUSE_EXT_GATEHOUSE",
+    "layout": "LAYOUT_TRICK_HOUSE_EXT_GATEHOUSE",
+    "map_type": "MAP_TYPE_INDOOR",
+    "music": "MUS_HIDERI",
+    "name": "TrickHouseExt_Gatehouse",
+    "object_events": [
+        {
+            "elevation": 3,
+            "flag": "FLAG_RECEIVED_QUICK_CLAW",
+            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_NONE",
+            "script": "TrickHouseExt_Gatehouse_ItemGet",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 10,
+            "y": 2
+        },
+        {
+            "elevation": 3,
+            "flag": "FLAG_TEMP_2",
+            "graphics_id": "EVENT_OBJ_GFX_BRAWLY",
+            "movement_range_x": 0,
+            "movement_range_y": 0,
+            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+            "script": "NULL",
+            "trainer_sight_or_berry_tree_id": "0",
+            "trainer_type": "0",
+            "x": 4,
+            "y": 3
+        }
+    ],
+    "region_map_section": "MAPSEC_ROUTE_110",
+    "requires_flash": true,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_TRICK_HOUSE_EXT",
+            "dest_warp_id": 5,
+            "elevation": 0,
+            "x": 1,
+            "y": 5
+        },
+        {
+            "dest_map": "MAP_TRICK_HOUSE_EXT",
+            "dest_warp_id": 5,
+            "elevation": 0,
+            "x": 2,
+            "y": 5
+        }
+    ],
+    "weather": "WEATHER_SHADE"
+}

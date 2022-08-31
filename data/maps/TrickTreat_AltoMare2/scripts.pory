@@ -1,0 +1,71 @@
+raw `
+TrickTreat_AltoMare2_MapScripts::
+	.byte 0
+
+@ -----------------------------------------------------
+#define VAR_CLIMB_BRIDGE        VAR_PUZZLE_1F
+
+`
+
+script TrickTreat_AltoMare2_SignScript_GymSign {
+	msgbox ("ALTO MARE POKéMON GYM\n"
+			"LEADER: SYLVIA\l"
+			"“The reliable lady!”$", MSGBOX_SIGN)
+}
+script TrickTreat_AltoMare2_SignScript_GymDirectionSign {
+	msgbox ("{UP_ARROW} ALTO MARE GYM$", MSGBOX_SIGN)
+}
+script TrickTreat_AltoMare2_SignScript_EggRoad {
+	msgbox ("EGG ROAD\n"
+			"“A straight line to run across!”$", MSGBOX_SIGN)
+}
+script TrickTreat_AltoMare2_SignScript_SurfSign {
+	msgbox ("Notice to trainers:\n"
+			"Surfing from dock is prohibited during\l"
+			"festival season races!$", MSGBOX_SIGN)
+}
+script TrickTreat_AltoMare2_SignScript_Square {
+	msgbox ("ALTO MARE SQUARE\n"
+			"{DOWN_ARROW} BOTANICAL TUNNEL$", MSGBOX_SIGN)
+}
+script TrickTreat_AltoMare2_SignScript_SquareTunnel {
+	msgbox ("{UP_ARROW} ALTO MARE SQUARE\n"
+			"Beware dark tunnel!$", MSGBOX_SIGN)
+}
+script TrickTreat_AltoMare2_SignScript_MoveTutor {
+	msgbox ("MOVE TUTOR'S HOUSE\n"
+			"“Moves taught to POKéMON!”$", MSGBOX_SIGN)
+}
+script TrickTreat_AltoMare2_SignScript_Park {
+	msgbox ("ALTO MARE PARK$", MSGBOX_SIGN)
+}
+
+//========== The Bridge ===============================
+
+script TrickTreat_AltoMare1_TriggerScript_ClimbRampWest {
+	applymovement(EVENT_OBJ_ID_PLAYER, TrickTreat_AltoMare1_MovementScript_ClimbRampWest)
+	waitmovement(0)
+	addvar(VAR_CLIMB_BRIDGE, 1)
+}
+script TrickTreat_AltoMare1_TriggerScript_DescendRampEast {
+	applymovement(EVENT_OBJ_ID_PLAYER, TrickTreat_AltoMare1_MovementScript_DescendRampEast)
+	waitmovement(0)
+	subvar(VAR_CLIMB_BRIDGE, 1)
+}
+
+movement TrickTreat_AltoMare1_MovementScript_ClimbRampWest {
+	lock_facing_direction
+	walk_diag_northwest
+	walk_left
+	unlock_facing_direction
+}
+movement TrickTreat_AltoMare1_MovementScript_DescendRampEast {
+	lock_facing_direction
+	walk_diag_southeast
+	walk_right
+	unlock_facing_direction
+}
+
+raw `
+#undef VAR_CLIMB_BRIDGE
+`

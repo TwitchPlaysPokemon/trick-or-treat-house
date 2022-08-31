@@ -6,6 +6,7 @@
 #include "task.h"
 #include "main.h"
 #include "graphics.h"
+#include "day_night.h"
 #include "constants/rgb.h"
 
 /*
@@ -22,6 +23,8 @@
 #define TAG_MAY     1003
 #define TAG_FLYGON_LATIOS  1004
 #define TAG_FLYGON_LATIAS  1005
+#define TAG_TREEKID 1006
+#define TAG_EXTRA   1007
 
 // Used for the Clouds/Trees/Houses sprites that pass by in the background
 #define TAG_MOVING_SCENERY 2000
@@ -63,7 +66,8 @@ static const u32 sHouseSilhouette_Gfx[]   = INCBIN_U32("graphics/intro/scene_2/h
 static const u16 sBrendanCredits_Pal[]    = INCBIN_U16("graphics/intro/scene_2/brendan_credits.gbapal");
 static const u32 sBrendanCredits_Gfx[]    = INCBIN_U32("graphics/intro/scene_2/brendan_credits.4bpp.lz");
 static const u16 sMayCredits_Pal[]        = INCBIN_U16("graphics/intro/scene_2/may_credits.gbapal");
-static const u16 sUnused[0xF0]            = {0};
+static const u16 sTreekidCredits_Pal[]    = INCBIN_U16("graphics/intro/scene_2/treekid.gbapal");
+static const u32 sTreekidCredits_Gfx[]    = INCBIN_U32("graphics/intro/scene_2/treekid.4bpp.lz");
 static const u32 sMayCredits_Gfx[]        = INCBIN_U32("graphics/intro/scene_2/may_credits.4bpp.lz");
 static const u32 sBicycle_Gfx[]           = INCBIN_U32("graphics/intro/scene_2/bicycle.4bpp.lz");
 static const u16 sLatios_Pal[]            = INCBIN_U16("graphics/intro/scene_2/latios.gbapal");
@@ -71,10 +75,10 @@ static const u32 sLatios_Gfx[]            = INCBIN_U32("graphics/intro/scene_2/l
 static const u16 sLatias_Pal[]            = INCBIN_U16("graphics/intro/scene_2/latias.gbapal");
 static const u32 sLatias_Gfx[]            = INCBIN_U32("graphics/intro/scene_2/latias.4bpp.lz");
 
-static void SpriteCB_MovingScenery(struct Sprite *sprite);
-static void SpriteCB_Player(struct Sprite *sprite);
-static void SpriteCB_Bicycle(struct Sprite *sprite);
-static void SpriteCB_FlygonLeftHalf(struct Sprite *sprite);
+static void sub_817B62C(struct Sprite *sprite);
+static void nullsub_65(struct Sprite *sprite);
+static void SpriteCB_BikeFollow(struct Sprite *sprite);
+static void nullsub_66(struct Sprite *sprite);
 
 static const struct SpriteTemplate sSpriteTemplate_MovingScenery =
 {
@@ -484,7 +488,18 @@ static const struct SpriteTemplate sSpriteTemplate_May =
     .callback = SpriteCB_Player
 };
 
-static const struct OamData sOamData_Bicycle =
+static const struct SpriteTemplate gSpriteTemplate_BikeTreekid =
+{
+    .tileTag = TAG_TREEKID,
+    .paletteTag = TAG_TREEKID,
+    .oam = &sOamData_Player,
+    .anims = sAnims_Player,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_Player
+};
+
+static const struct OamData sProtagOAMData =
 {
     .y = DISPLAY_HEIGHT,
     .shape = SPRITE_SHAPE(64x32),
@@ -509,7 +524,7 @@ static const union AnimCmd *const sAnims_Bicycle[] =
 static const struct SpriteTemplate sSpriteTemplate_BrendanBicycle =
 {
     .tileTag = TAG_BICYCLE,
-    .paletteTag = TAG_BRENDAN,
+    .paletteTag = TAG_EXTRA,
     .oam = &sOamData_Bicycle,
     .anims = sAnims_Bicycle,
     .images = NULL,
@@ -520,12 +535,23 @@ static const struct SpriteTemplate sSpriteTemplate_BrendanBicycle =
 static const struct SpriteTemplate sSpriteTemplate_MayBicycle =
 {
     .tileTag = TAG_BICYCLE,
-    .paletteTag = TAG_MAY,
+    .paletteTag = TAG_EXTRA,
     .oam = &sOamData_Bicycle,
     .anims = sAnims_Bicycle,
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = SpriteCB_Bicycle
+    .callback = SpriteCB_BikeFollow
+};
+
+static const struct SpriteTemplate gSpriteTemplate_Treekid =
+{
+    .tileTag = TAG_BICYCLE,
+    .paletteTag = TAG_EXTRA,
+    .oam = &sProtagOAMData,
+    .anims = sProtagAnimData,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_BikeFollow
 };
 
 static const struct OamData sOamData_Flygon =
@@ -576,25 +602,38 @@ static const struct SpriteTemplate sSpriteTemplate_FlygonLatias =
     .callback = SpriteCB_FlygonLeftHalf
 };
 
-const struct CompressedSpriteSheet gSpriteSheet_IntroBrendan[] =
-{
-    {
-        .data = gIntroBrendan_Gfx,
-        .size = 0x2000,
-        .tag = TAG_BRENDAN
-    },
-    {}
-};
+// const struct CompressedSpriteSheet gSpriteSheet_IntroBrendan[] =
+// {
+//     {
+//         // .data = gIntroBrendan_Gfx,
+//         .data = gIntro2BrendanTiles,
+//         .size = 0x2000,
+//         .tag = TAG_BRENDAN
+//     },
+//     {}
+// };
 
-const struct CompressedSpriteSheet gSpriteSheet_IntroMay[] =
-{
-    {
-        .data = gIntroMay_Gfx,
-        .size = 0x2000,
-        .tag = TAG_MAY
-    },
-    {}
-};
+// const struct CompressedSpriteSheet gIntro2MaySpriteSheet[] =
+// {
+//     {
+//         // .data = gIntroMay_Gfx,
+//         .data = gIntro2MayTiles,
+//         .size = 0x2000,
+//         .tag = TAG_MAY
+//     },
+//     {}
+// };
+
+// const struct CompressedSpriteSheet gIntro2TreekidSpriteSheet[] =
+// {
+//     {
+//         // .data = gIntro2TreekidNoTurnGfx,
+//         .data = gIntro2TreekidTiles,
+//         .size = 0x2000,
+//         .tag = 1003
+//     },
+//     {}
+// };
 
 const struct CompressedSpriteSheet gSpriteSheet_IntroBicycle[] =
 {
@@ -629,10 +668,12 @@ const struct CompressedSpriteSheet gSpriteSheet_IntroFlygon[] =
 
 const struct SpritePalette gSpritePalettes_IntroPlayerFlygon[] =
 {
-    { .data = gIntroPlayer_Pal, .tag = TAG_BRENDAN },
-    { .data = gIntroPlayer_Pal, .tag = TAG_MAY },
-    { .data = gIntroFlygon_Pal, .tag = TAG_FLYGON_LATIOS },
-    { .data = gIntroFlygon_Pal, .tag = TAG_FLYGON_LATIAS },
+    { .data = sBrendanCredits_Pal, .tag = TAG_BRENDAN },
+    { .data = sMayCredits_Pal,     .tag = TAG_MAY },
+    { .data = gIntroFlygon_Pal,    .tag = TAG_FLYGON_LATIOS },
+    { .data = gIntroFlygon_Pal,    .tag = TAG_FLYGON_LATIAS },
+    { .data = sTreekidCredits_Pal, .tag = TAG_TREEKID },
+    { .data = gIntroPlayer_Pal,    .tag = TAG_EXTRA },
     {}
 };
 
@@ -652,6 +693,16 @@ const struct CompressedSpriteSheet gSpriteSheet_CreditsMay[] =
         .data = sMayCredits_Gfx,
         .size = 0x3800,
         .tag = TAG_MAY
+    },
+    {}
+};
+
+const struct CompressedSpriteSheet gSpriteSheet_CreditsTreekid[] =
+{
+    {
+        .data = sTreekidCredits_Gfx,
+        .size = 0x3800,
+        .tag = TAG_TREEKID
     },
     {}
 };
@@ -694,6 +745,7 @@ const struct SpritePalette gSpritePalettes_Credits[] =
     { .data = sMayCredits_Pal,     .tag = TAG_MAY },
     { .data = sLatios_Pal,         .tag = TAG_FLYGON_LATIOS },
     { .data = sLatias_Pal,         .tag = TAG_FLYGON_LATIAS },
+    { .data = gTreekidCredits_Pal, .tag = TAG_TREEKID },
     {}
 };
 
@@ -713,6 +765,16 @@ const struct CompressedSpriteSheet gSpriteSheet_CreditsRivalMay[] =
         .data = sMayCredits_Gfx,
         .size = 0x2000,
         .tag = TAG_MAY
+    },
+    {}
+};
+
+const struct CompressedSpriteSheet gSpriteSheet_CreditsRivalTreekid[] =
+{
+    {
+        .data = sTreekidCredits_Gfx,
+        .size = 0x2000,
+        .tag = TAG_TREEKID
     },
     {}
 };
@@ -834,6 +896,34 @@ void SetIntroPart2BgCnt(u8 scenery)
         break;
     }
 }
+///////////////////////////////////////////////////////////////////////////////
+// Credits Minigame
+
+void LoadCreditsMinigameBackground1()
+{
+    // Load Grass onto Background 1
+    LZ77UnCompVram(sGrass_Gfx, (void *)(BG_CHAR_ADDR(1)));
+    LZ77UnCompVram(sGrass_Tilemap, (void *)(BG_SCREEN_ADDR(15)));
+    LoadPaletteDayNight(&sGrass_Pal, 240, sizeof(sGrass_Pal));
+    // LoadPalette(&sGrass_Pal, 240, sizeof(sGrass_Pal));
+    
+    // Load Sea and Clouds onto Background 2 and 3
+    LZ77UnCompVram(sCloudsBg_Gfx, (void *)(VRAM));
+    LZ77UnCompVram(sCloudsBg_Tilemap, (void *)(BG_SCREEN_ADDR(6)));
+    LoadPaletteDayNight(&sCloudsBg_Pal, 0, sizeof(sCloudsBg_Pal));
+    // LoadPalette(&sCloudsBg_Pal, 0, sizeof(sCloudsBg_Pal));
+    
+    // Load extra clouds as sprites
+    LoadCompressedSpriteSheet(sSpriteSheet_Clouds);
+    LZ77UnCompVram(sClouds_Gfx, (void *)(OBJ_VRAM0));
+    LoadPaletteDayNight(&sCloudsSunset_Pal, 256, sizeof(sCloudsSunset_Pal));
+    // LoadPalette(&sCloudsSunset_Pal, 256, sizeof(sCloudsSunset_Pal));
+    CreateCloudSprites();
+    gReservedSpritePaletteCount = 8;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
 
 void LoadCreditsSceneGraphics(u8 scene)
 {
@@ -1079,6 +1169,10 @@ static void CreateMovingScenerySprites(bool8 hasVerticalMove, const struct Intro
         gSprites[sprite].tXOffset = metadata[i].xOff;
         gSprites[sprite].tXPos = 0;
     }
+
+static void CreateTreeSprites(void)
+{
+    CreateMovingScenerySprites(TRUE, sSpriteMetadata_Trees, sAnims_Trees, 12);
 }
 
 #undef tHasVerticalMove
@@ -1127,6 +1221,14 @@ u8 CreateIntroMaySprite(s16 x, s16 y)
 {
     u8 playerSpriteId = CreateSprite(&sSpriteTemplate_May, x, y, 2);
     u8 bicycleSpriteId = CreateSprite(&sSpriteTemplate_MayBicycle, x, y + 8, 3);
+    gSprites[bicycleSpriteId].sPlayerSpriteId = playerSpriteId;
+    return playerSpriteId;
+}
+
+u8 CreateIntroTreekidSprite(s16 x, s16 y)
+{
+    u8 playerSpriteId = CreateSprite(&sSpriteTemplate_Treekid, x, y, 2);
+    u8 bicycleSpriteId = CreateSprite(&sSpriteTemplate_TreekidBicycle, x, y + 8, 3);
     gSprites[bicycleSpriteId].sPlayerSpriteId = playerSpriteId;
     return playerSpriteId;
 }

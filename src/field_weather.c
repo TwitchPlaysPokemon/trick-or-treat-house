@@ -13,18 +13,12 @@
 #include "start_menu.h"
 #include "sound.h"
 #include "sprite.h"
+#include "event_data.h"
 #include "task.h"
 #include "trig.h"
 #include "gpu_regs.h"
 
 #define DROUGHT_COLOR_INDEX(color) ((((color) >> 1) & 0xF) | (((color) >> 2) & 0xF0) | (((color) >> 3) & 0xF00))
-
-enum
-{
-    GAMMA_NONE,
-    GAMMA_NORMAL,
-    GAMMA_ALT,
-};
 
 struct RGBColor
 {
@@ -116,7 +110,7 @@ void (*const gWeatherPalStateFuncs[])(void) =
 
 // This table specifies which of the gamma shift tables should be
 // applied to each of the background and sprite palettes.
-static const u8 sBasePaletteGammaTypes[32] =
+EWRAM_DATA u8 sBasePaletteGammaTypes[32] =
 {
     // background palettes
     GAMMA_NORMAL,
@@ -160,11 +154,11 @@ void StartWeather(void)
 {
     if (!FuncIsActiveTask(Task_WeatherMain))
     {
-        u8 index = AllocSpritePalette(TAG_WEATHER_START);
+        u8 index = 15; //AllocSpritePalette(TAG_WEATHER_START);
         CpuCopy32(gFogPalette, &gPlttBufferUnfaded[0x100 + index * 16], 32);
         BuildGammaShiftTables();
         gWeatherPtr->altGammaSpritePalIndex = index;
-        gWeatherPtr->weatherPicSpritePalIndex = AllocSpritePalette(PALTAG_WEATHER_2);
+        // gWeatherPtr->weatherPicSpritePalIndex = AllocSpritePalette(PALTAG_WEATHER_2);
         gWeatherPtr->rainSpriteCount = 0;
         gWeatherPtr->curRainSpriteIndex = 0;
         gWeatherPtr->cloudSpritesCreated = 0;
@@ -282,6 +276,11 @@ static void BuildGammaShiftTables(void)
     u32 v10;
     u16 v11;
     s16 dunno;
+    u8 i;
+    
+    for (i = 0; i <=12; i++) {
+        sBasePaletteGammaTypes[i] = GAMMA_NORMAL;
+    }
 
     sPaletteGammaTypes = sBasePaletteGammaTypes;
     for (v0 = 0; v0 <= 1; v0++)
@@ -734,9 +733,12 @@ void ApplyWeatherGammaShiftIfIdle_Gradual(u8 gammaIndex, u8 gammaTargetIndex, u8
 
 void FadeScreen(u8 mode, s8 delay)
 {
+    u32 palMask = 0xFFFFFFFF;
     u32 fadeColor;
     bool8 fadeOut;
     bool8 useWeatherPal;
+    
+    if (FlagGet(FLAG_DISABLE_FADE_INIT)) return;
 
     switch (mode)
     {
@@ -755,6 +757,21 @@ void FadeScreen(u8 mode, s8 delay)
     case FADE_TO_WHITE:
         fadeColor = RGB_WHITEALPHA;
         fadeOut = TRUE;
+        break;
+    case 50: // credits fade
+        palMask = 0xFFFEFFFF;
+        fadeColor = RGB_BLACK;
+        fadeOut = TRUE;
+        break;
+    case 51: // credits fade: show player only
+        palMask = 0x00010000;
+        fadeColor = RGB_BLACK;
+        fadeOut = FALSE;
+        break;
+    case 52: // credits fade: show everything but player
+        palMask = 0xFFFEFFFF;
+        fadeColor = RGB_BLACK;
+        fadeOut = FALSE;
         break;
     default:
         return;
@@ -781,7 +798,7 @@ void FadeScreen(u8 mode, s8 delay)
         if (useWeatherPal)
             CpuFastCopy(gPlttBufferFaded, gPlttBufferUnfaded, PLTT_BUFFER_SIZE * 2);
 
-        BeginNormalPaletteFade(PALETTES_ALL, delay, 0, 16, fadeColor);
+        BeginNormalPaletteFade(palMask, delay, 0, 16, fadeColor);
         gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_SCREEN_FADING_OUT;
     }
     else
@@ -790,7 +807,7 @@ void FadeScreen(u8 mode, s8 delay)
         if (useWeatherPal)
             gWeatherPtr->fadeScreenCounter = 0;
         else
-            BeginNormalPaletteFade(PALETTES_ALL, delay, 16, 0, fadeColor);
+            BeginNormalPaletteFade(palMask, delay, 16, 0, fadeColor);
 
         gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_SCREEN_FADING_IN;
         gWeatherPtr->fadeInFirstFrame = TRUE;
@@ -857,10 +874,12 @@ static bool8 IsFirstFrameOfWeatherFadeIn(void)
         return FALSE;
 }
 
-void LoadCustomWeatherSpritePalette(const u16 *palette)
+void LoadCustomWeatherSpritePalette(const struct SpritePalette *palette)
 {
-    LoadPalette(palette, 0x100 + gWeatherPtr->weatherPicSpritePalIndex * 16, 32);
-    UpdateSpritePaletteWithWeather(gWeatherPtr->weatherPicSpritePalIndex);
+    LoadSpritePalette(palette);
+    UpdateSpritePaletteWithWeather(IndexOfSpritePaletteTag(palette->tag));
+    // LoadPalette(palette, 0x100 + gWeatherPtr->weatherPicSpritePalIndex * 16, 32);
+    // UpdateSpritePaletteWithWeather(gWeatherPtr->weatherPicSpritePalIndex);
 }
 
 static void LoadDroughtWeatherPalette(u8 *palsIndex, u8 *palsOffset)
@@ -1101,4 +1120,10 @@ void PreservePaletteInWeather(u8 preservedPalIndex)
 void ResetPreservedPalettesInWeather(void)
 {
     sPaletteGammaTypes = sBasePaletteGammaTypes;
+}
+
+void UpdatePaletteGammaType(u8 index, u8 gammaType)
+{
+    if (index != 0xFF)
+        sBasePaletteGammaTypes[index+16] = gammaType;
 }

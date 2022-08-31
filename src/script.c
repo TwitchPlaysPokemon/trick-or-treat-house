@@ -3,6 +3,7 @@
 #include "event_data.h"
 #include "mystery_gift.h"
 #include "util.h"
+#include "overworld.h"
 #include "constants/event_objects.h"
 #include "constants/map_scripts.h"
 
@@ -20,7 +21,7 @@ enum {
     CONTEXT_SHUTDOWN,
 };
 
-extern const u8 *gRamScriptRetAddr;
+extern const u8 *gRamScriptPtr;
 
 static u8 sGlobalScriptContextStatus;
 static struct ScriptContext sGlobalScriptContext;
@@ -269,6 +270,26 @@ void RunScriptImmediately(const u8 *ptr)
     while (RunScriptCommand(&sImmediateScriptContext) == TRUE);
 }
 
+u8 *MapHeaderGetScriptTableForMapId(u16 mapid, u8 tag)
+{
+    const u8 *mapScripts = Overworld_GetMapHeaderByGroupAndId(mapid >> 8, mapid & 0xFF)->mapScripts;
+
+    if (!mapScripts)
+        return NULL;
+
+    while (1)
+    {
+        if (!*mapScripts)
+            return NULL;
+        if (*mapScripts == tag)
+        {
+            mapScripts++;
+            return (u8 *)(mapScripts[0] + (mapScripts[1] << 8) + (mapScripts[2] << 16) + (mapScripts[3] << 24));
+        }
+        mapScripts += 5;
+    }
+}
+
 u8 *MapHeaderGetScriptTable(u8 tag)
 {
     const u8 *mapScripts = gMapHeader.mapScripts;
@@ -350,6 +371,18 @@ void RunOnDiveWarpMapScript(void)
     MapHeaderRunScriptType(MAP_SCRIPT_ON_DIVE_WARP);
 }
 
+void RunOnSpawnEventObjectMapScript(u8 objId)
+{
+    gSpecialVar_LastTalked = objId;
+    MapHeaderRunScriptType(MAP_SCRIPT_ON_SPAWN_EVENT_OBJECT);
+}
+
+u8 *GetMapHeaderString(u16 mapId, u8 tag)
+{
+    if (mapId == 0xFFFF) return NULL;
+    return MapHeaderGetScriptTableForMapId(mapId, tag);
+}
+
 bool8 TryRunOnFrameMapScript(void)
 {
     u8 *ptr = MapHeaderCheckScriptTable(MAP_SCRIPT_ON_FRAME_TABLE);
@@ -399,7 +432,7 @@ bool8 InitRamScript(const u8 *script, u16 scriptSize, u8 mapGroup, u8 mapNum, u8
 const u8 *GetRamScript(u8 objectId, const u8 *script)
 {
     struct RamScriptData *scriptData = &gSaveBlock1Ptr->ramScript.data;
-    gRamScriptRetAddr = NULL;
+    gRamScriptPtr = NULL;
     if (scriptData->magic != RAM_SCRIPT_MAGIC)
         return script;
     if (scriptData->mapGroup != gSaveBlock1Ptr->location.mapGroup)
@@ -415,7 +448,7 @@ const u8 *GetRamScript(u8 objectId, const u8 *script)
     }
     else
     {
-        gRamScriptRetAddr = script;
+        gRamScriptPtr = script;
         return scriptData->script;
     }
 }

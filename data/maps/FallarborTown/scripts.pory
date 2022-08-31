@@ -1,0 +1,27 @@
+raw `
+FallarborTown_MapScripts:: @ 81EB1FA
+	.byte 0
+
+FallarborTown_EventScript_1EB250:: @ 81EB250
+	msgbox FallarborTown_Text_1EB4C2, MSGBOX_SIGN
+	end
+FallarborTown_Text_1EB4C2: @ 81EB4C2
+	.string "BATTLE TENT FALLARBOR SITE\n"
+	.string "“May the Greatest Teams Gather!”$"
+
+
+FallarborTown_EventScript_1EB259:: @ 81EB259
+	msgbox FallarborTown_Text_1EB4FE, MSGBOX_SIGN
+	end
+FallarborTown_Text_1EB4FE: @ 81EB4FE
+	.string "FALLARBOR TOWN\n"
+	.string "“A farm community with small gardens.”$"
+
+
+FallarborTown_EventScript_1EB262:: @ 81EB262
+	msgbox FallarborTown_Text_1EB534, MSGBOX_SIGN
+	end
+FallarborTown_Text_1EB534: @ 81EB534
+	.string "MOVE TUTOR'S HOUSE\n"
+	.string "“New moves taught to POKéMON.”$"
+`

@@ -90,6 +90,7 @@
 #define B_OUTCOME_NO_SAFARI_BALLS      8
 #define B_OUTCOME_FORFEITED            9
 #define B_OUTCOME_MON_TELEPORTED       10
+#define B_OUTCOME_LOST_NO_MONS         0xB
 #define B_OUTCOME_LINK_BATTLE_RAN      (1 << 7) // 128
 
 // Non-volatile status conditions
@@ -291,16 +292,18 @@
 #define MOVE_EFFECT_CERTAIN             (1 << 7) // 128
 
 // Battle terrain defines for gBattleTerrain.
-#define BATTLE_TERRAIN_GRASS        0
-#define BATTLE_TERRAIN_LONG_GRASS   1
-#define BATTLE_TERRAIN_SAND         2
-#define BATTLE_TERRAIN_UNDERWATER   3
-#define BATTLE_TERRAIN_WATER        4
-#define BATTLE_TERRAIN_POND         5
-#define BATTLE_TERRAIN_MOUNTAIN     6
-#define BATTLE_TERRAIN_CAVE         7
-#define BATTLE_TERRAIN_BUILDING     8
-#define BATTLE_TERRAIN_PLAIN        9
+#define BATTLE_TERRAIN_GRASS             0
+#define BATTLE_TERRAIN_LONG_GRASS        1
+#define BATTLE_TERRAIN_SAND              2
+#define BATTLE_TERRAIN_UNDERWATER        3
+#define BATTLE_TERRAIN_WATER             4
+#define BATTLE_TERRAIN_POND              5
+#define BATTLE_TERRAIN_MOUNTAIN          6
+#define BATTLE_TERRAIN_CAVE              7
+#define BATTLE_TERRAIN_BUILDING          8
+#define BATTLE_TERRAIN_PLAIN             9
+#define BATTLE_TERRAIN_FALL_GRASS        10
+#define BATTLE_TERRAIN_FALL_LONG_GRASS   11
 
 #define B_WAIT_TIME_LONG  64
 #define B_WAIT_TIME_MED   48
@@ -313,8 +316,9 @@
 #define NUM_CASTFORM_FORMS  4
 #define CASTFORM_SUBSTITUTE (1 << 7)
 
-#define FLEE_ITEM    1
-#define FLEE_ABILITY 2
+#define FLEE_ITEM     1
+#define FLEE_ABILITY  2
+#define FLEE_SNICKERS 3
 
 // Return value for IsRunningFromBattleImpossible.
 #define BATTLE_RUN_SUCCESS        0

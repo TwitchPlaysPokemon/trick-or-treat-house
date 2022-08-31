@@ -28,6 +28,10 @@ using std::numeric_limits;
 using json11::Json;
 
 #include "mapjson.h"
+#include "../preproc/utf8.h"
+#include "../preproc/charmap.h"
+
+Charmap* g_charmap;
 
 
 string read_text_file(string filepath) {
@@ -49,6 +53,30 @@ string read_text_file(string filepath) {
     return text;
 }
 
+string read_trainers_file(string mappath) {
+    size_t lastSlash = mappath.find_last_of("/");
+    string basedir = mappath.substr(0, lastSlash);
+    string filepath = basedir + "/trainers.json";
+    
+    // fprintf(stdout, "Trainer file path: %s\n", filepath.c_str());
+    
+    ifstream in_file(filepath);
+    if (!in_file.is_open())
+        return string();
+    
+    string text;
+    
+    in_file.seekg(0, std::ios::end);
+    text.resize(in_file.tellg());
+
+    in_file.seekg(0, std::ios::beg);
+    in_file.read(&text[0], text.size());
+
+    in_file.close();
+    
+    return text;
+}
+
 void write_text_file(string filepath, string text) {
     ofstream out_file(filepath, std::ofstream::binary);
 
@@ -58,6 +86,134 @@ void write_text_file(string filepath, string text) {
     out_file << text;
 
     out_file.close();
+}
+
+void generate_trainer_table_text(ostringstream &text, string tablename, Json trainer_data) {
+    ostringstream table;
+    ostringstream parties;
+    
+    table << ".align 2\n";
+    table << tablename << "::\n";
+    
+    for (unsigned int i = 0; i < trainer_data.array_items().size(); i++)
+    {
+        auto trainer = trainer_data[i];
+        auto party = trainer["party"];
+        auto partyType = 0;
+        for (unsigned int i = 0; i < party.array_items().size(); i++) {
+            if (party[i].object_items().find("moves") != party[i].object_items().end())
+                partyType |= 1;
+            if (party[i].object_items().find("item") != party[i].object_items().end())
+                partyType |= 2;
+        }
+        
+        table << tablename << "_Trainer" << (i+1) << ":\n";
+        table << "\t.byte " << partyType << "\n";
+        table << "\t.byte TRAINER_CLASS_" << trainer["class"].string_value() << "\n";
+        
+        if (trainer.object_items().find("music") != trainer.object_items().end())
+            table << "\t.byte TRAINER_ENCOUNTER_MUSIC_" << trainer["music"].string_value();
+        else
+            table << "\t.byte TRAINER_ENCOUNTER_MUSIC_MALE";
+        
+        if (trainer.object_items().find("female") != trainer.object_items().end())
+            table << "| F_TRAINER_FEMALE\n";
+        else
+            table << "\n";
+        
+        if (trainer.object_items().find("pic") != trainer.object_items().end())
+            table << "\t.byte TRAINER_PIC_" << trainer["pic"].string_value() << "\n";
+        else
+            table << "\t.byte TRAINER_PIC_" << trainer["class"].string_value() << "\n";
+        
+        string name = trainer["name"].string_value();
+        table << "\t.byte ";
+        for (unsigned int i = 0; i < 11; i++) {
+            if (i < name.size()) {
+                auto unicode  = DecodeUtf8(&name[i]);
+                table << "0x" << std::hex << (g_charmap->Char(unicode.code)[0] & 0xFF) << ", ";
+            } else {
+                table << "0xFF, ";
+            }
+        }
+        table << "0xFF\n" << std::dec;
+        
+        table << "\t.2byte ";
+        if (trainer.object_items().find("items") != trainer.object_items().end()) {
+            auto items = trainer["items"].array_items();
+            for (unsigned int i = 0; i < 4; i++) {
+                if (i < items.size()) {
+                    table << items[i].string_value();
+                } else {
+                    table << "0";
+                }
+                if (i < 3) table << ", ";
+            }
+            table << "\n";
+        } else
+            table << "0, 0, 0, 0\n";
+        
+        if (trainer.object_items().find("doubleBattle") != trainer.object_items().end() && trainer["doubleBattle"].bool_value())
+            table << "\t.byte 1\n";
+        else
+            table << "\t.byte 0\n";
+        
+        table << "\t.byte " << party.array_items().size() << "\n";
+        
+        table << ".align 2\n";
+        
+        if (trainer.object_items().find("aiFlags") != trainer.object_items().end())
+            table << "\t.4byte " << trainer["aiFlags"].string_value() << "\n";
+        else
+            table << "\t.4byte AI_SCRIPT_CHECK_BAD_MOVE\n";
+        
+        parties << ".align 2\n";
+        table << "\t.4byte " << tablename << "_Trainer" << (i+1) << "Party\n";
+        parties << tablename << "_Trainer" << (i+1) << "Party:\n";
+        
+        for (unsigned int i = 0; i < party.array_items().size(); i++) {
+            auto mon = party[i];
+            if (mon.object_items().find("iv") != mon.object_items().end())
+                parties << "\t.2byte " << mon["iv"].number_value() << "\n";
+            else
+                parties << "\t.2byte 0\n";
+            
+            parties << "\t.byte " << mon["level"].number_value() << "\n";
+            parties << "\t.byte 0  @ padding\n";
+            // parties << ".align 2\n";
+            parties << "\t.2byte " << mon["species"].string_value() << "\n";
+            
+            if (partyType & 2) {
+                if (mon.object_items().find("item") != mon.object_items().end())
+                    parties << "\t.2byte " << mon["item"].string_value() << "\n";
+                else
+                    parties << "\t.2byte 0\n";
+            }
+            
+            if (partyType & 1) {
+                if (mon.object_items().find("moves") == mon.object_items().end())
+                    FATAL_ERROR("Failed to provide moves for a party member on a party that has custom moves.\n");
+                
+                parties << "\t.2byte ";
+                for (unsigned int i = 0; i < 4; i++) {
+                    if (i < mon["moves"].array_items().size()) {
+                        parties << mon["moves"][i].string_value();
+                    } else {
+                        parties << "MOVE_NONE";
+                    }
+                    if (i < 3) parties << ", ";
+                }
+                parties << "\n";
+                if ((partyType & 2) == 0) parties << "\t.2byte 0  @ padding\n";
+            }
+            
+            if (partyType == 0) {
+                parties << "\t.2byte 0  @ padding\n";
+            }
+        }
+    }
+    
+    text << table.str() << "\n\n" << parties.str() << "\n\n";
 }
 
 string generate_map_header_text(Json map_data, Json layouts_data, string version) {
@@ -76,11 +232,12 @@ string generate_map_header_text(Json map_data, Json layouts_data, string version
     Json layout = matched[0];
 
     ostringstream text;
-
+    
     text << "@\n@ DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/" 
          << map_data["name"].string_value() 
          << "/map.json\n@\n\n";
 
+    text << ".align 2\n";
     text << map_data["name"].string_value() << ":\n"
          << "\t.4byte " << layout["name"].string_value() << "\n";
 
@@ -117,7 +274,23 @@ string generate_map_header_text(Json map_data, Json layouts_data, string version
              << "allow_running=" << map_data["allow_running"].bool_value() << ", "
              << "show_map_name=" << map_data["show_map_name"].bool_value() << "\n";
 
-     text << "\t.byte " << map_data["battle_scene"].string_value() << "\n\n";
+    text << "\t.byte " << map_data["battle_scene"].string_value() << "\n";
+    
+    if (map_data.object_items().find("trainers") != map_data.object_items().end())
+    {
+        if (map_data["trainers"].is_string())
+        {
+            text << "\t.4byte "<< map_data["trainers"].string_value() << "\n\n";
+        }
+        else
+        {
+            string tableName = map_data["name"].string_value() + "_TrainerTable";
+            text << "\t.4byte "<< tableName << "\n\n";
+            generate_trainer_table_text(text, tableName, map_data["trainers"]);
+        }
+    }
+    else
+        text << "\t.4byte 0\n\n";
 
     return text.str();
 }
@@ -127,11 +300,12 @@ string generate_map_connections_text(Json map_data) {
         return string("\n");
 
     ostringstream text;
-
+    
     text << "@\n@ DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/" 
          << map_data["name"].string_value() 
          << "/map.json\n@\n\n";
 
+    text << ".align 2\n";
     text << map_data["name"].string_value() << "_MapConnectionsList:\n";
 
     for (auto &connection : map_data["connections"].array_items()) {
@@ -159,14 +333,16 @@ string generate_map_events_text(Json map_data) {
          << "/map.json\n@\n\n";
 
     string objects_label, warps_label, coords_label, bgs_label;
-
+    text << ".align 2\n";
+    
     if (map_data["object_events"].array_items().size() > 0) {
         objects_label = map_data["name"].string_value() + "_ObjectEvents";
         text << objects_label << ":\n";
         for (unsigned int i = 0; i < map_data["object_events"].array_items().size(); i++) {
             auto obj_event = map_data["object_events"].array_items()[i];
             text << "\tobject_event " << i + 1 << ", "
-                 << obj_event["graphics_id"].string_value() << ", 0, "
+                 << obj_event["graphics_id"].string_value() << ", "
+                 << (obj_event["pal_variation"].is_string()? obj_event["pal_variation"].string_value() : "0") << ", "
                  << obj_event["x"].int_value() << ", "
                  << obj_event["y"].int_value() << ", "
                  << obj_event["elevation"].int_value() << ", "
@@ -210,7 +386,11 @@ string generate_map_events_text(Json map_data) {
                      << coord_event["elevation"].int_value() << ", "
                      << coord_event["var"].string_value() << ", "
                      << coord_event["var_value"].string_value() << ", "
-                     << coord_event["script"].string_value() << "\n";
+                     << coord_event["script"].string_value();
+                if (coord_event.object_items().find("npcTrigger") != coord_event.object_items().end()) {
+                    text <<  ", npcTrigger=" << coord_event["npcTrigger"].string_value();
+                }
+                text << "\n";
             }
             else if (coord_event["type"] == "weather") {
                 text << "\tcoord_weather_event "
@@ -276,6 +456,7 @@ void process_map(string map_filepath, string layouts_filepath, string version) {
 
     string mapdata_json_text = read_text_file(map_filepath);
     string layouts_json_text = read_text_file(layouts_filepath);
+    string trainers_file = read_trainers_file(map_filepath);
 
     Json map_data = Json::parse(mapdata_json_text, mapdata_err);
     if (map_data == Json())
@@ -284,6 +465,16 @@ void process_map(string map_filepath, string layouts_filepath, string version) {
     Json layouts_data = Json::parse(layouts_json_text, layouts_err);
     if (layouts_data == Json())
         FATAL_ERROR("%s\n", layouts_err.c_str());
+    
+    if (!trainers_file.empty())
+    {
+        fprintf(stdout, "TRAINERS FILE FOUND!");
+        Json trainer_data = Json::parse(trainers_file, mapdata_err);
+        if (trainer_data == Json())
+            FATAL_ERROR("%s\n", mapdata_err.c_str());
+        
+        const_cast<Json::object&>(map_data.object_items())["trainers"] = trainer_data;
+    }
 
     string header_text = generate_map_header_text(map_data, layouts_data, version);
     string events_text = generate_map_events_text(map_data);
@@ -302,6 +493,7 @@ string generate_groups_text(Json groups_data) {
 
     for (auto &key : groups_data["group_order"].array_items()) {
         string group = key.string_value();
+        text << ".align 2\n";
         text << group << "::\n";
         auto maps = groups_data[group].array_items();
         for (Json &map_name : maps)
@@ -313,6 +505,7 @@ string generate_groups_text(Json groups_data) {
     for (auto &group : groups_data["group_order"].array_items())
         text << "\t.4byte " << group.string_value() << "\n";
     text << "\n";
+    text << "gMapGroups_End::\n";
 
     return text.str();
 }
@@ -535,12 +728,15 @@ int main(int argc, char *argv[]) {
     string mode(mode_arg);
     if (mode != "layouts" && mode != "map" && mode != "groups")
         FATAL_ERROR("ERROR: <mode> must be 'layouts', 'map', or 'groups'.\n");
+    
+    g_charmap = new Charmap("charmap.txt"); //TODO make not hardcoded path
 
     if (mode == "map") {
         if (argc != 5)
             FATAL_ERROR("USAGE: mapjson map <game-version> <map_file> <layouts_file>\n");
 
         string filepath(argv[3]);
+        string path(argv[3]);
         string layouts_filepath(argv[4]);
 
         process_map(filepath, layouts_filepath, version);

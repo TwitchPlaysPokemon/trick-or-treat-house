@@ -5,12 +5,16 @@
 #include "fieldmap.h"
 #include "metatile_behavior.h"
 #include "task.h"
+#include "constants/flags.h"
+#include "constants/maps.h"
 #include "constants/songs.h"
 #include "constants/metatile_labels.h"
 
-#define DOOR_SOUND_NORMAL  0
-#define DOOR_SOUND_SLIDING 1
-#define DOOR_SOUND_ARENA   2
+#define DOOR_SOUND_NORMAL        0
+#define DOOR_SOUND_SLIDING       1
+#define DOOR_SOUND_ARENA         2
+#define DOOR_SOUND_TRICK_SCROLL  3
+#define DOOR_SOUND_TRICK_STONE   4
 
 struct DoorGraphics
 {
@@ -132,6 +136,20 @@ static const u16 sDoorNullPalette48[16] = {};
 static const u8 sDoorAnimTiles_TrainerHillRoofElevator[] = INCBIN_U8("graphics/door_anims/trainer_hill_roof_elevator.4bpp");
 static const u16 sDoorNullPalette49[16] = {};
 
+const u8 DoorAnimTiles_TrickScroll[][0x100] =
+{
+    INCBIN_U8("graphics/door_anims/trickscroll/0.4bpp"),
+    INCBIN_U8("graphics/door_anims/trickscroll/1.4bpp"),
+    INCBIN_U8("graphics/door_anims/trickscroll/2.4bpp"),
+};
+
+const u8 DoorAnimTiles_TrickStone[][0x100] =
+{
+    INCBIN_U8("graphics/door_anims/trickstone/0.4bpp"),
+    INCBIN_U8("graphics/door_anims/trickstone/1.4bpp"),
+    INCBIN_U8("graphics/door_anims/trickstone/2.4bpp"),
+};
+
 static const struct DoorAnimFrame sDoorOpenAnimFrames[] =
 {
     {4, -1},
@@ -219,9 +237,12 @@ static const u8 sDoorAnimPalettes_BattleDomePreBattleRoom[] = {9, 9, 7, 7, 7, 7,
 static const u8 sDoorAnimPalettes_BattleTentInterior[] = {9, 9, 9, 9, 9, 9, 9, 9};
 static const u8 sDoorAnimPalettes_TrainerHillLobbyElevator[] = {7, 7, 7, 7, 7, 7, 7, 7};
 static const u8 sDoorAnimPalettes_TrainerHillRoofElevator[] = {9, 9, 7, 7, 7, 7, 7, 7};
+const u8 DoorAnimPalettes_TrickHouse[] = {2, 2, 2, 2, 2, 2, 2, 2};
 
 static const struct DoorGraphics sDoorAnimGraphicsTable[] =
 {
+    {0x01C, DOOR_SOUND_TRICK_STONE, 1, DoorAnimTiles_TrickStone, DoorAnimPalettes_TrickHouse},
+    {0x01E, DOOR_SOUND_TRICK_SCROLL, 1, DoorAnimTiles_TrickScroll, DoorAnimPalettes_TrickHouse},
     {METATILE_General_Door,                                 DOOR_SOUND_NORMAL,  1, sDoorAnimTiles_General, sDoorAnimPalettes_General},
     {METATILE_General_Door_PokeCenter,                      DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_PokeCenter, sDoorAnimPalettes_PokeCenter},
     {METATILE_General_Door_Gym,                             DOOR_SOUND_SLIDING, 1, sDoorAnimTiles_Gym, sDoorAnimPalettes_Gym},
@@ -508,20 +529,45 @@ static void Debug_FieldAnimateDoorOpen(u32 x, u32 y)
     StartDoorOpenAnimation(sDoorAnimGraphicsTable, x, y);
 }
 
+static void Task_WaitObjectEventDoorAnim(u8 taskId)
+{
+    u8 objId = gTasks[taskId].data[0];
+    if (ObjectEventCheckHeldMovementStatus(&gObjectEvents[objId]) != TRUE)
+        DestroyTask(taskId);
+}
+
+u8 StartObjectEventOpenCloseAnim(u8 objId, u8 dir)
+{
+    u8 taskId = CreateTask(Task_WaitObjectEventDoorAnim, 0x50);
+    gTasks[taskId].data[0] = objId;
+    ObjectEventSetHeldMovement(&gObjectEvents[objId], GetWalkInPlaceNormalMovementAction(dir));
+    return taskId;
+}
+
 void FieldSetDoorOpened(u32 x, u32 y)
 {
-    if (MetatileBehavior_IsDoor(MapGridGetMetatileBehaviorAt(x, y)))
+    u8 objId;
+    if ((objId = GetNonPlayerObjectEventIdByXY(x, y)) < OBJECT_EVENTS_COUNT && IsObjectDoor(objId))
+        ObjectEventTurn(&gObjectEvents[objId], DIR_NORTH);
+    else if (MetatileBehavior_IsDoor(MapGridGetMetatileBehaviorAt(x, y)))
         DrawOpenedDoor(sDoorAnimGraphicsTable, x, y);
 }
 
 void FieldSetDoorClosed(u32 x, u32 y)
 {
+    u8 objId;
+    if ((objId = GetNonPlayerObjectEventIdByXY(x, y)) < OBJECT_EVENTS_COUNT && IsObjectDoor(objId))
+        ObjectEventTurn(&gObjectEvents[objId], DIR_SOUTH);
     if (MetatileBehavior_IsDoor(MapGridGetMetatileBehaviorAt(x, y)))
         DrawClosedDoor(sDoorAnimGraphicsTable, x, y);
 }
 
 s8 FieldAnimateDoorClose(u32 x, u32 y)
 {
+    u8 objId;
+    if ((objId = GetNonPlayerObjectEventIdByXY(x, y)) < OBJECT_EVENTS_COUNT)
+        if (IsObjectDoor(objId))
+            return StartObjectEventOpenCloseAnim(objId, DIR_SOUTH);
     if (!MetatileBehavior_IsDoor(MapGridGetMetatileBehaviorAt(x, y)))
         return -1;
     else
@@ -530,6 +576,10 @@ s8 FieldAnimateDoorClose(u32 x, u32 y)
 
 s8 FieldAnimateDoorOpen(u32 x, u32 y)
 {
+    u8 objId;
+    if ((objId = GetNonPlayerObjectEventIdByXY(x, y)) < OBJECT_EVENTS_COUNT)
+        if (IsObjectDoor(objId))
+            return StartObjectEventOpenCloseAnim(objId, DIR_NORTH);
     if (!MetatileBehavior_IsDoor(MapGridGetMetatileBehaviorAt(x, y)))
         return -1;
     else
@@ -551,6 +601,11 @@ u32 GetDoorSoundEffect(u32 x, u32 y)
         return SE_SLIDING_DOOR;
     else if (sound == DOOR_SOUND_ARENA)
         return SE_REPEL;
+    else if (sound == DOOR_SOUND_TRICK_SCROLL)
+        return SE_TRUCK_UNLOAD;
+    else if (sound == DOOR_SOUND_TRICK_STONE)
+        return SE_M_STRENGTH; // Strength
+        // return SE_M_EARTHQUAKE; // Earthquake
     else
         return SE_DOOR;
 }
@@ -558,13 +613,13 @@ u32 GetDoorSoundEffect(u32 x, u32 y)
 // Opens the Battle Tower multi partner's door in sync with the player's door
 static bool8 ShouldUseMultiCorridorDoor(void)
 {
-    if (FlagGet(FLAG_ENABLE_MULTI_CORRIDOR_DOOR))
-    {
-        if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(BATTLE_FRONTIER_BATTLE_TOWER_MULTI_CORRIDOR)
-            && gSaveBlock1Ptr->location.mapNum == MAP_NUM(BATTLE_FRONTIER_BATTLE_TOWER_MULTI_CORRIDOR))
-        {
-            return TRUE;
-        }
-    }
+    // if (FlagGet(FLAG_ENABLE_MULTI_CORRIDOR_DOOR))
+    // {
+    //     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(BATTLE_FRONTIER_BATTLE_TOWER_MULTI_CORRIDOR)
+    //        && gSaveBlock1Ptr->location.mapNum == MAP_NUM(BATTLE_FRONTIER_BATTLE_TOWER_MULTI_CORRIDOR))
+    //     {
+    //         return TRUE;
+    //     }
+    // }
     return FALSE;
 }

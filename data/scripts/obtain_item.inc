@@ -96,6 +96,7 @@ Std_FindItem::
 	lock
 	faceplayer
 	waitse
+	resolveitem VAR_0x8000, VAR_0x8001
 	copyvar VAR_0x8004, ITEMID
 	copyvar VAR_0x8005, AMOUNT
 	checkitemspace ITEMID, AMOUNT
@@ -117,23 +118,39 @@ EventScript_PickUpItem::
 	call_if_eq VAR_0x8008, FALSE, EventScript_FoundItem
 	waitfanfare
 	waitmessage
-	bufferitemnameplural STR_VAR_2, VAR_0x8004, VAR_0x8005
-	pyramid_inchallenge
-	goto_if_eq VAR_RESULT, TRUE, EventScript_PutBattlePyramidItemInBag
-	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
+	@ bufferitemnameplural STR_VAR_2, VAR_0x8004, VAR_0x8005
+	bufferitemname 1, VAR_0x8004, VAR_0x8005
+	@ pyramid_inchallenge
+	@ goto_if_eq VAR_RESULT, TRUE, EventScript_PutBattlePyramidItemInBag
+	@ msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
+	goto_if_set FLAG_SYS_BORT_MODE, EventScript_PickItemUp_BORT
+	messagewordwrap gText_PutItemInPocket
+	waitmessage
+	waitbuttonpress
 	return
 
-EventScript_PutBattlePyramidItemInBag::
-	msgbox gText_PlayerPutItemInBag, MSGBOX_DEFAULT
+EventScript_PickItemUp_BORT:
+	callnative BORTizeBufferedStrings
+	msgbox gBort_PutItemInPocket, MSGBOX_DEFAULT
 	return
+@ EventScript_PutBattlePyramidItemInBag::
+@ 	msgbox gText_PlayerPutItemInBag, MSGBOX_DEFAULT
+@ 	return
 
 EventScript_FoundTMHM::
 	bufferitemnameplural STR_VAR_1, VAR_0x8004, VAR_0x8005
-	message gText_PlayerFoundOneTMHM
+	messagewordwrap gText_PlayerFoundOneTMHM
 	return
 
 EventScript_FoundItem::
-	message gText_PlayerFoundOneItem
+	buffernumberstring2 0, VAR_0x8005
+	goto_if_set FLAG_SYS_BORT_MODE, EventScript_FoundItem_BORT
+	messagewordwrap gText_PlayerFoundOneItem
+	return
+
+EventScript_FoundItem_BORT:
+	callnative BORTizeBufferedStrings
+	message gBort_PlayerFoundOneItem
 	return
 
 EventScript_NoRoomToPickUpItem::
@@ -145,9 +162,10 @@ EventScript_NoRoomToPickUpItem::
 EventScript_HiddenItemScript::
 	lockall
 	waitse
-	additem VAR_0x8005
+	resolveitem VAR_0x8005, VAR_0x8006
+	additem VAR_0x8005, VAR_0x8006
 	copyvar VAR_0x8007, VAR_RESULT
-	bufferitemnameplural STR_VAR_2, VAR_0x8005, 1
+	bufferitemnameplural STR_VAR_2, VAR_0x8005, VAR_0x8006
 	checkitemtype VAR_0x8005
 	call EventScript_BufferPocketNameAndTryFanfare
 	goto_if_eq VAR_0x8007, TRUE, EventScript_PickUpHiddenItem
@@ -169,23 +187,46 @@ EventScript_FoundHiddenTMHM::
 	end
 
 EventScript_FoundHiddenItem::
-	message gText_PlayerFoundOneItem
+	buffernumberstring2 0, VAR_0x8006
+	goto_if_set FLAG_SYS_BORT_MODE, EventScript_FoundHiddenItem_BORT
+	messagewordwrap gText_PlayerFoundOneItem
 	goto EventScript_PutHiddenItemInPocket
 	end
+EventScript_FoundHiddenItem_BORT:
+	callnative BORTizeBufferedStrings
+	message gBort_PlayerFoundOneItem
+	goto EventScript_271D2A
+	end
+
 
 EventScript_PutHiddenItemInPocket::
 	waitmessage
 	waitfanfare
-	bufferitemnameplural STR_VAR_2, VAR_0x8004, 1
+	bufferitemnameplural STR_VAR_2, VAR_0x8004, VAR_0x8006
 	copyvar VAR_0x8004, VAR_0x8008
+	goto_if_set FLAG_SYS_BORT_MODE, EventScript_PutHiddenItemInPocket_BORT
 	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
+	messagewordwrap gText_PutItemInPocket
+	waitmessage
+	waitbuttonpress
+	special TryPutTreasureInvestigatorsOnAir
+	special SetHiddenItemFlag
+	releaseall
+	end
+EventScript_PutHiddenItemInPocket_BORT:
+	callnative BORTizeBufferedStrings
+	msgbox gBort_PutItemInPocket, MSGBOX_DEFAULT
 	special TryPutTreasureInvestigatorsOnAir
 	special SetHiddenItemFlag
 	releaseall
 	end
 
 EventScript_NoRoomForHiddenItem::
-	msgbox gText_PlayerFoundOneItem, MSGBOX_DEFAULT
+	buffernumberstring2 0, VAR_0x8006
+	@ msgbox gText_PlayerFoundOneItem, MSGBOX_DEFAULT
+	messagewordwrap gText_PlayerFoundOneItem
+	waitmessage
+	waitbuttonpress
 	msgbox gText_TooBadBagIsFull, MSGBOX_DEFAULT
 	setvar VAR_RESULT, 0
 	releaseall

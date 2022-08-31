@@ -1,10 +1,13 @@
 #include "global.h"
+#include "rotating_gate.h"
 #include "bike.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "fieldmap.h"
 #include "sound.h"
 #include "sprite.h"
+#include "script.h"
+#include "constants/maps.h"
 #include "constants/songs.h"
 
 #define ROTATING_GATE_TILE_TAG 0x1300
@@ -177,7 +180,7 @@ enum
 {
     PUZZLE_NONE,
     PUZZLE_FORTREE_CITY_GYM,
-    PUZZLE_ROUTE110_TRICK_HOUSE_PUZZLE6,
+    PUZZLE_PUZZLE_TRICK_HOUSE_PUZZLE6,
 };
 
 // structure
@@ -616,21 +619,9 @@ static EWRAM_DATA u8 sRotatingGate_GateSpriteIds[ROTATING_GATE_PUZZLE_MAX] = {0}
 static EWRAM_DATA const struct RotatingGatePuzzle *sRotatingGate_PuzzleConfig = NULL;
 static EWRAM_DATA u8 sRotatingGate_PuzzleCount = 0;
 
-static s32 GetCurrentMapRotatingGatePuzzleType(void)
+static s32 DoesCurrentMapHaveRotatingGatePuzzle(void)
 {
-    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(FORTREE_CITY_GYM) &&
-        gSaveBlock1Ptr->location.mapNum == MAP_NUM(FORTREE_CITY_GYM))
-    {
-        return PUZZLE_FORTREE_CITY_GYM;
-    }
-
-    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(ROUTE110_TRICK_HOUSE_PUZZLE6) &&
-        gSaveBlock1Ptr->location.mapNum == MAP_NUM(ROUTE110_TRICK_HOUSE_PUZZLE6))
-    {
-        return PUZZLE_ROUTE110_TRICK_HOUSE_PUZZLE6;
-    }
-
-    return PUZZLE_NONE;
+    return (gRotatingGate_PuzzleConfig != NULL && gRotatingGate_PuzzleCount > 0);
 }
 
 static void RotatingGate_ResetAllGateOrientations(void)
@@ -675,23 +666,7 @@ static void RotatingGate_RotateInDirection(u8 gateId, u32 rotationDirection)
 
 static void RotatingGate_LoadPuzzleConfig(void)
 {
-    s32 puzzleType = GetCurrentMapRotatingGatePuzzleType();
     u32 i;
-
-    switch (puzzleType)
-    {
-    case PUZZLE_FORTREE_CITY_GYM:
-        sRotatingGate_PuzzleConfig = sRotatingGate_FortreePuzzleConfig;
-        sRotatingGate_PuzzleCount = ARRAY_COUNT(sRotatingGate_FortreePuzzleConfig);
-        break;
-    case PUZZLE_ROUTE110_TRICK_HOUSE_PUZZLE6:
-        sRotatingGate_PuzzleConfig = sRotatingGate_TrickHousePuzzleConfig;
-        sRotatingGate_PuzzleCount = ARRAY_COUNT(sRotatingGate_TrickHousePuzzleConfig);
-        break;
-    case PUZZLE_NONE:
-    default:
-        return;
-    }
 
     for (i = 0; i < ROTATING_GATE_PUZZLE_MAX - 1; i++)
         sRotatingGate_GateSpriteIds[i] = MAX_SPRITES;
@@ -737,6 +712,7 @@ static u8 RotatingGate_CreateGate(u8 gateId, s16 deltaX, s16 deltaY)
 
     template.tileTag = gate->shape + ROTATING_GATE_TILE_TAG;
 
+    //TODO LoadPalette(template.paletteTag) // A black to white gradient
     spriteId = CreateSprite(&template, 0, 0, 0x94);
     if (spriteId == MAX_SPRITES)
         return MAX_SPRITES;
@@ -926,27 +902,36 @@ static u8 RotatingGate_GetRotationInfo(u8 direction, s16 x, s16 y)
     return ptr[y * 4 + x];
 }
 
-void RotatingGate_InitPuzzle(void)
+void RotatingGate_InitPuzzle(struct ScriptContext *ctx)
 {
-    if (GetCurrentMapRotatingGatePuzzleType())
+    gRotatingGate_PuzzleConfig = (const struct RotatingGatePuzzle*) ctx->data[0];
+    gRotatingGate_PuzzleCount = (u8)ctx->data[1];
+    
+    if (DoesCurrentMapHaveRotatingGatePuzzle())
     {
         RotatingGate_LoadPuzzleConfig();
         RotatingGate_ResetAllGateOrientations();
     }
 }
 
-void RotatingGatePuzzleCameraUpdate(u16 deltaX, u16 deltaY)
+void RotatingGate_DestroyPuzzle(struct ScriptContext *ctx)
 {
-    if (GetCurrentMapRotatingGatePuzzleType())
+    gRotatingGate_PuzzleConfig = NULL;
+    gRotatingGate_PuzzleCount = 0;
+}
+
+void RotatingGatePuzzleCameraUpdate(s16 deltaX, s16 deltaY)
+{
+    if (DoesCurrentMapHaveRotatingGatePuzzle())
     {
         RotatingGate_CreateGatesWithinViewport(deltaX, deltaY);
         RotatingGate_DestroyGatesOutsideViewport();
     }
 }
 
-void RotatingGate_InitPuzzleAndGraphics(void)
+void RotatingGate_InitPuzzleAndGraphics()
 {
-    if (GetCurrentMapRotatingGatePuzzleType())
+    if (DoesCurrentMapHaveRotatingGatePuzzle())
     {
         LoadRotatingGatePics();
         RotatingGate_LoadPuzzleConfig();
@@ -958,7 +943,7 @@ bool8 CheckForRotatingGatePuzzleCollision(u8 direction, s16 x, s16 y)
 {
     s32 i;
 
-    if (!GetCurrentMapRotatingGatePuzzleType())
+    if (!DoesCurrentMapHaveRotatingGatePuzzle())
         return FALSE;
     for (i = 0; i < sRotatingGate_PuzzleCount; i++)
     {
@@ -996,7 +981,7 @@ bool8 CheckForRotatingGatePuzzleCollisionWithoutAnimation(u8 direction, s16 x, s
 {
     s32 i;
 
-    if (!GetCurrentMapRotatingGatePuzzleType())
+    if (!DoesCurrentMapHaveRotatingGatePuzzle())
         return FALSE;
     for (i = 0; i < sRotatingGate_PuzzleCount; i++)
     {

@@ -22,6 +22,7 @@ struct FieldInput
     u8 dpadDirection;
 };
 
+bool8 DoForcedMovementScriptTriggers(void);
 void FieldClearPlayerInput(struct FieldInput *pStruct);
 void FieldGetPlayerInput(struct FieldInput *pStruct, u16 keys, u16 heldKeys);
 int ProcessPlayerFieldInput(struct FieldInput *pStruct);

@@ -1244,20 +1244,20 @@ static void OpponentHandleDrawTrainerPic(void)
     {
         trainerPicId = GetFrontierBrainTrainerPicIndex();
     }
-    else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
-    {
-        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
-        {
-            if (gActiveBattler == 1)
-                trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_A);
-            else
-                trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_B);
-        }
-        else
-        {
-            trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_A);
-        }
-    }
+    // else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
+    // {
+    //     if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+    //     {
+    //         if (gActiveBattler == 1)
+    //             trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_A);
+    //         else
+    //             trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_B);
+    //     }
+    //     else
+    //     {
+    //         trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_A);
+    //     }
+    // }
     else if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
     {
         if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_TOWER_LINK_MULTI))
@@ -1279,13 +1279,13 @@ static void OpponentHandleDrawTrainerPic(void)
     else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
     {
         if (gActiveBattler != 1)
-            trainerPicId = gTrainers[gTrainerBattleOpponent_B].trainerPic;
+            trainerPicId = GetTrainer(gTrainerBattleOpponent_B)->trainerPic;
         else
-            trainerPicId = gTrainers[gTrainerBattleOpponent_A].trainerPic;
+            trainerPicId = GetTrainer(gTrainerBattleOpponent_A)->trainerPic;
     }
     else
     {
-        trainerPicId = gTrainers[gTrainerBattleOpponent_A].trainerPic;
+        trainerPicId = GetTrainer(gTrainerBattleOpponent_A)->trainerPic;
     }
 
     if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TWO_OPPONENTS))
@@ -1328,20 +1328,20 @@ static void OpponentHandleTrainerSlide(void)
     {
         trainerPicId = GetFrontierBrainTrainerPicIndex();
     }
-    else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
-    {
-        if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
-        {
-            if (gActiveBattler == 1)
-                trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_A);
-            else
-                trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_B);
-        }
-        else
-        {
-            trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_A);
-        }
-    }
+    // else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
+    // {
+    //     if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+    //     {
+    //         if (gActiveBattler == 1)
+    //             trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_A);
+    //         else
+    //             trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_B);
+    //     }
+    //     else
+    //     {
+    //         trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_A);
+    //     }
+    // }
     else if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
     {
         if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_TOWER_LINK_MULTI))
@@ -1363,13 +1363,13 @@ static void OpponentHandleTrainerSlide(void)
     else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
     {
         if (gActiveBattler != 1)
-            trainerPicId = gTrainers[gTrainerBattleOpponent_B].trainerPic;
+            trainerPicId = GetTrainer(gTrainerBattleOpponent_B)->trainerPic;
         else
-            trainerPicId = gTrainers[gTrainerBattleOpponent_A].trainerPic;
+            trainerPicId = GetTrainer(gTrainerBattleOpponent_A)->trainerPic;
     }
     else
     {
-        trainerPicId = gTrainers[gTrainerBattleOpponent_A].trainerPic;
+        trainerPicId = GetTrainer(gTrainerBattleOpponent_A)->trainerPic;
     }
 
     DecompressTrainerFrontPic(trainerPicId, gActiveBattler);

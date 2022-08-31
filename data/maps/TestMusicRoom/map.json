@@ -1,0 +1,31 @@
+{
+    "allow_bike": false,
+    "allow_escape_rope": true,
+    "allow_running": true,
+    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+    "bg_events": [
+    ],
+    "connections": null,
+    "coord_events": [
+    ],
+    "id": "MAP_TEST_MUSIC_ROOM",
+    "layout": "LAYOUT_TEST_MUSIC_ROOM",
+    "map_type": "MAP_TYPE_UNDERGROUND",
+    "music": "MUS_DUMMY",
+    "name": "TestMusicRoom",
+    "object_events": [
+    ],
+    "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
+    "requires_flash": false,
+    "show_map_name": true,
+    "warp_events": [
+        {
+            "dest_map": "MAP_TEST_MAP_HALLWAY",
+            "dest_warp_id": 4,
+            "elevation": 0,
+            "x": 10,
+            "y": 15
+        }
+    ],
+    "weather": "WEATHER_SUNNY"
+}

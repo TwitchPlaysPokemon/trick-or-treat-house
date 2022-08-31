@@ -44,52 +44,52 @@ SlateportCity_PokemonFanClub_EventScript_AlreadyInterviewed2::
 	end
 
 SlateportCity_OceanicMuseum_1F_EventScript_Reporter::
-	lock
-	faceplayer
-	setvar VAR_0x8005, TVSHOW_RECENT_HAPPENINGS
-	special InterviewBefore
-	goto_if_eq VAR_RESULT, TRUE, SlateportCity_OceanicMuseum_1F_EventScript_AlreadyInterviewed
-	copyvar VAR_0x8009, VAR_0x8006
-	goto_if_set FLAG_OCEANIC_MUSEUM_MET_REPORTER, SlateportCity_OceanicMuseum_1F_EventScript_RequestInterviewShort
-	setflag FLAG_OCEANIC_MUSEUM_MET_REPORTER
-	msgbox SlateportCity_OceanicMuseum_1F_Text_InterviewRequest, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, SlateportCity_OceanicMuseum_1F_EventScript_AcceptInterview
-	goto_if_eq VAR_RESULT, NO, SlateportCity_OceanicMuseum_1F_EventScript_DeclineInterview
+	@ lock
+	@ faceplayer
+	@ setvar VAR_0x8005, TVSHOW_RECENT_HAPPENINGS
+	@ special InterviewBefore
+	@ goto_if_eq VAR_RESULT, TRUE, SlateportCity_OceanicMuseum_1F_EventScript_AlreadyInterviewed
+	@ copyvar VAR_0x8009, VAR_0x8006
+	@ goto_if_set FLAG_OCEANIC_MUSEUM_MET_REPORTER, SlateportCity_OceanicMuseum_1F_EventScript_RequestInterviewShort
+	@ setflag FLAG_OCEANIC_MUSEUM_MET_REPORTER
+	@ msgbox SlateportCity_OceanicMuseum_1F_Text_InterviewRequest, MSGBOX_YESNO
+	@ goto_if_eq VAR_RESULT, YES, SlateportCity_OceanicMuseum_1F_EventScript_AcceptInterview
+	@ goto_if_eq VAR_RESULT, NO, SlateportCity_OceanicMuseum_1F_EventScript_DeclineInterview
 	end
 
-SlateportCity_OceanicMuseum_1F_EventScript_RequestInterviewShort::
-	msgbox SlateportCity_OceanicMuseum_1F_Text_InterviewRequestShort, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, SlateportCity_OceanicMuseum_1F_EventScript_AcceptInterview
-	goto_if_eq VAR_RESULT, NO, SlateportCity_OceanicMuseum_1F_EventScript_DeclineInterview
-	end
+@ SlateportCity_OceanicMuseum_1F_EventScript_RequestInterviewShort::
+@ 	msgbox SlateportCity_OceanicMuseum_1F_Text_InterviewRequestShort, MSGBOX_YESNO
+@ 	goto_if_eq VAR_RESULT, YES, SlateportCity_OceanicMuseum_1F_EventScript_AcceptInterview
+@ 	goto_if_eq VAR_RESULT, NO, SlateportCity_OceanicMuseum_1F_EventScript_DeclineInterview
+@ 	end
 
-SlateportCity_OceanicMuseum_1F_EventScript_AcceptInterview::
-	msgbox SlateportCity_OceanicMuseum_1F_Text_TellMeExperienceInvolvingPokemon, MSGBOX_DEFAULT
-	setvar VAR_0x8004, EASY_CHAT_TYPE_INTERVIEW
-	copyvar VAR_0x8005, VAR_0x8009
-	setvar VAR_0x8006, EASY_CHAT_PERSON_REPORTER_MALE
-	call Common_ShowEasyChatScreen
-	lock
-	faceplayer
-	goto_if_eq VAR_RESULT, 1, SlateportCity_OceanicMuseum_1F_EventScript_SubmitResponse
-	goto_if_eq VAR_RESULT, 0, SlateportCity_OceanicMuseum_1F_EventScript_DeclineInterview
-	end
+@ SlateportCity_OceanicMuseum_1F_EventScript_AcceptInterview::
+@ 	msgbox SlateportCity_OceanicMuseum_1F_Text_TellMeExperienceInvolvingPokemon, MSGBOX_DEFAULT
+@ 	setvar VAR_0x8004, EASY_CHAT_TYPE_INTERVIEW
+@ 	copyvar VAR_0x8005, VAR_0x8009
+@ 	setvar VAR_0x8006, EASY_CHAT_PERSON_REPORTER_MALE
+@ 	call Common_ShowEasyChatScreen
+@ 	lock
+@ 	faceplayer
+@ 	goto_if_eq VAR_RESULT, 1, SlateportCity_OceanicMuseum_1F_EventScript_SubmitResponse
+@ 	goto_if_eq VAR_RESULT, 0, SlateportCity_OceanicMuseum_1F_EventScript_DeclineInterview
+@ 	end
 
-SlateportCity_OceanicMuseum_1F_EventScript_DeclineInterview::
-	msgbox SlateportCity_OceanicMuseum_1F_Text_LetMeKnowIfYouHaveStory, MSGBOX_DEFAULT
-	release
-	end
+@ SlateportCity_OceanicMuseum_1F_EventScript_DeclineInterview::
+@ 	msgbox SlateportCity_OceanicMuseum_1F_Text_LetMeKnowIfYouHaveStory, MSGBOX_DEFAULT
+@ 	release
+@ 	end
 
-SlateportCity_OceanicMuseum_1F_EventScript_SubmitResponse::
-	msgbox SlateportCity_OceanicMuseum_1F_Text_ThatsAllForInterview, MSGBOX_DEFAULT
-	setvar VAR_0x8005, TVSHOW_RECENT_HAPPENINGS
-	goto Interview_EventScript_EndInterview
-	end
+@ SlateportCity_OceanicMuseum_1F_EventScript_SubmitResponse::
+@ 	msgbox SlateportCity_OceanicMuseum_1F_Text_ThatsAllForInterview, MSGBOX_DEFAULT
+@ 	setvar VAR_0x8005, TVSHOW_RECENT_HAPPENINGS
+@ 	goto Interview_EventScript_EndInterview
+@ 	end
 
-SlateportCity_OceanicMuseum_1F_EventScript_AlreadyInterviewed::
-	msgbox SlateportCity_OceanicMuseum_1F_Text_BetterWriteUpStory, MSGBOX_DEFAULT
-	release
-	end
+@ SlateportCity_OceanicMuseum_1F_EventScript_AlreadyInterviewed::
+@ 	msgbox SlateportCity_OceanicMuseum_1F_Text_BetterWriteUpStory, MSGBOX_DEFAULT
+@ 	release
+@ 	end
 
 SlateportCity_PokemonFanClub_EventScript_Reporter::
 	lock
@@ -213,21 +213,21 @@ LilycoveCity_ContestLobby_EventScript_AlreadyInterviewed::
 	end
 
 LilycoveCity_ContestLobby_EventScript_TryShowContestReporter::
-	goto_if_ne VAR_CONTEST_HALL_STATE, 2, LilycoveCity_ContestLobby_EventScript_DontShowContestReporter
-	setvar VAR_0x8005, TVSHOW_BRAVO_TRAINER_POKEMON_PROFILE
-	special InterviewBefore
-	goto_if_eq VAR_RESULT, TRUE, LilycoveCity_ContestLobby_EventScript_DontShowContestReporter
-	switch VAR_CONTEST_TYPE
-	case 0, LilycoveCity_ContestLobby_EventScript_DontShowContestReporter
-	case 2, LilycoveCity_ContestLobby_EventScript_ShowContestReporter
-	case 1, LilycoveCity_ContestLobby_EventScript_ShowContestReporter
-	case 3, LilycoveCity_ContestLobby_EventScript_ShowContestReporter
-	case 4, LilycoveCity_ContestLobby_EventScript_ShowContestReporter
-	case 5, LilycoveCity_ContestLobby_EventScript_DontShowContestReporter
+	@ goto_if_ne VAR_CONTEST_HALL_STATE, 2, LilycoveCity_ContestLobby_EventScript_DontShowContestReporter
+	@ setvar VAR_0x8005, TVSHOW_BRAVO_TRAINER_POKEMON_PROFILE
+	@ special InterviewBefore
+	@ goto_if_eq VAR_RESULT, TRUE, LilycoveCity_ContestLobby_EventScript_DontShowContestReporter
+	@ switch VAR_CONTEST_TYPE
+	@ case 0, LilycoveCity_ContestLobby_EventScript_DontShowContestReporter
+	@ case 2, LilycoveCity_ContestLobby_EventScript_ShowContestReporter
+	@ case 1, LilycoveCity_ContestLobby_EventScript_ShowContestReporter
+	@ case 3, LilycoveCity_ContestLobby_EventScript_ShowContestReporter
+	@ case 4, LilycoveCity_ContestLobby_EventScript_ShowContestReporter
+	@ case 5, LilycoveCity_ContestLobby_EventScript_DontShowContestReporter
 	end
 
 LilycoveCity_ContestLobby_EventScript_ShowContestReporter::
-	clearflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER
+	@ clearflag FLAG_HIDE_LILYCOVE_CONTEST_HALL_REPORTER
 	return
 
 LilycoveCity_ContestLobby_EventScript_DontShowContestReporter::

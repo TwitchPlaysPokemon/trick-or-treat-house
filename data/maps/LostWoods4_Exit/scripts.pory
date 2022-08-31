@@ -1,0 +1,4 @@
+raw `
+LostWoods4_Exit_MapScripts::
+	.byte 0
+`

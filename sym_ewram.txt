@@ -141,10 +141,13 @@
 	.include "src/mirage_tower.o"
 	.include "src/pokemon_summary_screen.o"
 	.include "src/pokedex_area_region_map.o"
-	.include "src/battle_pyramid_bag.o"
 	.include "src/pokenav.o"
 	.include "src/pokenav_list.o"
 	.include "src/menu_specialized.o"
 	.include "src/faraway_island.o"
-	.include "src/trainer_hill.o"
 	.include "src/rayquaza_scene.o"
+	.include "src/trickhouse.o"
+	.include "src/day_night.o"
+
+gSoundInfo:
+	.space 0xFB0

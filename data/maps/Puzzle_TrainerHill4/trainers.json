@@ -1,0 +1,162 @@
+[
+	{
+		"class": "TRIATHLETE",
+		"pic": "CYCLING_TRIATHLETE_M",
+		"name": "ALFONSO",
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT",
+		"party": [
+			{
+				"species": "SPECIES_MAGNETON",
+				"item": "ITEM_MAGNET",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_PINSIR",
+				"item": "ITEM_QUICK_CLAW",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "PSYCHIC",
+		"pic": "PSYCHIC_F",
+		"name": "EDIE",
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT",
+		"party": [
+			{
+				"species": "SPECIES_MISDREAVUS",
+				"item": "ITEM_FOCUS_BAND",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_CLAYDOL",
+				"item": "ITEM_SHELL_BELL",
+				"level": 28
+			}
+		]
+	},
+	
+	{
+		"class": "PSYCHIC",
+		"pic": "PSYCHIC_M",
+		"name": "CARVER",
+		"music": "SUSPICIOUS",
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT",
+		"party": [
+			{
+				"species": "SPECIES_KIRLIA",
+				"item": "ITEM_BLACK_GLASSES",
+				"level": 30,
+				"iv": 100
+			},
+			{
+				"species": "SPECIES_SOLROCK",
+				"item": "ITEM_HARD_STONE",
+				"level": 30,
+				"iv": 100
+			},
+			{
+				"species": "SPECIES_ALAKAZAM",
+				"item": "ITEM_TWISTED_SPOON",
+				"level": 30,
+				"iv": 100
+			}
+		]
+	},
+	{
+		"class": "BLACK_BELT",
+		"name": "ZANDER",
+		"music": "INTENSE",
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT",
+		"party": [
+			{
+				"species": "SPECIES_HARIYAMA",
+				"item": "ITEM_BLACK_BELT",
+				"level": 30,
+				"iv": 100
+			},
+			{
+				"species": "SPECIES_MEDICHAM",
+				"item": "ITEM_SCOPE_LENS",
+				"level": 30,
+				"iv": 100
+			},
+			{
+				"species": "SPECIES_HERACROSS",
+				"item": "ITEM_SHELL_BELL",
+				"level": 30,
+				"iv": 100
+			}
+		]
+	},
+	
+	{
+		"class": "RICH_BOY",
+		"name": "ENRIQUE",
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT",
+		"party": [
+			{
+				"species": "SPECIES_WOOPER",
+				"item": "ITEM_FIGY_BERRY",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_PSYDUCK",
+				"item": "ITEM_AGUAV_BERRY",
+				"level": 30
+			}
+		]
+	},
+	{
+		"class": "LADY",
+		"name": "COLLEEN",
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT",
+		"party": [
+			{
+				"species": "SPECIES_ELECTABUZZ",
+				"item": "ITEM_MAGNET",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_PINECO",
+				"item": "ITEM_SILK_SCARF",
+				"level": 30
+			}
+		]
+	},
+	
+	{
+		"class": "PARASOL_LADY",
+		"name": "ANNABELL",
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT",
+		"party": [
+			{
+				"species": "SPECIES_JYNX",
+				"item": "ITEM_BRIGHT_POWDER",
+				"level": 31
+			},
+			{
+				"species": "SPECIES_JIGGLYPUFF",
+				"item": "ITEM_BRIGHT_POWDER",
+				"level": 31
+			}
+		]
+	},
+	{
+		"class": "COLLECTOR",
+		"name": "COLEMAN",
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT",
+		"party": [
+			{
+				"species": "SPECIES_DUSCLOPS",
+				"item": "ITEM_SALAC_BERRY",
+				"level": 31
+			},
+			{
+				"species": "SPECIES_EXEGGUTOR",
+				"item": "ITEM_SHELL_BELL",
+				"level": 31
+			}
+		]
+	}
+]

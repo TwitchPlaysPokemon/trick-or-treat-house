@@ -72,6 +72,15 @@ gFieldEffectScriptPointers::
 	.4byte gFieldEffectScript_RayquazaSpotlight         @ FLDEFF_RAYQUAZA_SPOTLIGHT
 	.4byte gFieldEffectScript_DestroyDeoxysRock         @ FLDEFF_DESTROY_DEOXYS_ROCK
 	.4byte gFieldEffectScript_MoveDeoxysRock            @ FLDEFF_MOVE_DEOXYS_ROCK
+	.4byte gFieldEffectScript_EmoteNoteC
+	.4byte gFieldEffectScript_EmoteNoteD
+	.4byte gFieldEffectScript_EmoteNoteE
+	.4byte gFieldEffectScript_EmoteNoteF
+	.4byte gFieldEffectScript_EmoteNoteG
+	.4byte gFieldEffectScript_FallGrass
+	.4byte gFieldEffectScript_JumpFallGrass   @.4byte gFieldEffectScript_BikeHopTallGrass
+	.4byte gFieldEffectScript_FallLongGrass
+	.4byte gFieldEffectScript_JumpFallLongGrass
 
 gFieldEffectScript_ExclamationMarkIcon1::
 	field_eff_callnative FldEff_ExclamationMarkIcon
@@ -91,6 +100,10 @@ gFieldEffectScript_Shadow::
 
 gFieldEffectScript_TallGrass::
 	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect1, FldEff_TallGrass
+	field_eff_end
+
+gFieldEffectScript_FallGrass::
+	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoFall, FldEff_FallGrass
 	field_eff_end
 
 gFieldEffectScript_Ripple::
@@ -145,8 +158,20 @@ gFieldEffectScript_LongGrass::
 	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect1, FldEff_LongGrass
 	field_eff_end
 
+gFieldEffectScript_FallLongGrass::
+	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoFall, FldEff_FallLongGrass
+	field_eff_end
+
 gFieldEffectScript_JumpLongGrass::
 	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect1, FldEff_JumpLongGrass
+	field_eff_end
+
+gFieldEffectScript_JumpFallGrass::
+	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoFall, FldEff_JumpFallGrass
+	field_eff_end
+
+gFieldEffectScript_JumpFallLongGrass::
+	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoFall, FldEff_JumpFallLongGrass
 	field_eff_end
 
 gFieldEffectScript_UnusedGrass::
@@ -342,4 +367,24 @@ gFieldEffectScript_DestroyDeoxysRock::
 
 gFieldEffectScript_MoveDeoxysRock::
 	field_eff_callnative FldEff_MoveDeoxysRock
+	field_eff_end
+
+gFieldEffectScript_EmoteNoteC::
+	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoEmoteNote, FldEff_EmoteNoteC
+	field_eff_end
+
+gFieldEffectScript_EmoteNoteD::
+	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoEmoteNote, FldEff_EmoteNoteD
+	field_eff_end
+
+gFieldEffectScript_EmoteNoteE::
+	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoEmoteNote, FldEff_EmoteNoteE
+	field_eff_end
+
+gFieldEffectScript_EmoteNoteF::
+	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoEmoteNote, FldEff_EmoteNoteF
+	field_eff_end
+
+gFieldEffectScript_EmoteNoteG::
+	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoEmoteNote, FldEff_EmoteNoteG
 	field_eff_end

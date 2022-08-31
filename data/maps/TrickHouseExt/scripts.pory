@@ -1,0 +1,871 @@
+mapscripts TrickHouseExt_MapScripts {
+	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+		VAR_LAST_WARP_ID, 3 {
+			callnative (HidePlayerOnLoad)
+			setflag (FLAG_DISABLE_FADE_INIT)
+			setvar (VAR_INTRO_COUNTER, 1)
+			clearflag (FLAG_HIDE_INTRO_CHARACTERS)
+		}
+	]
+	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_INTRO_COUNTER, 1: TrickHouseExt_IntroCutscene
+	]
+	MAP_SCRIPT_ON_LOAD {
+		callnative (IsCurrentPuzzleCyclingRoad)
+		if (var(VAR_RESULT) == TRUE) {
+			// Make the level look like it's being used for the puzzle
+			setmetatile (47, 41, 0x02A, FALSE) //teleporters
+			setmetatile (51, 33, 0x02A, FALSE)
+			setmetatile (46, 48, 0x02A, FALSE)
+			setmetatile (58, 41, 0x02A, FALSE)
+			setmetatile (50, 31, 0x3FE, TRUE) //fence 1
+			setmetatile (50, 32, 0x288, TRUE)
+			setmetatile (50, 33, 0x288, TRUE)
+			setmetatile (50, 34, 0x288, TRUE)
+			setmetatile (50, 35, 0x3FF, TRUE)
+			setmetatile (52, 40, 0x2B4, TRUE) //planter
+			setmetatile (53, 40, 0x2B4, TRUE)
+			setmetatile (52, 41, 0x2BC, TRUE)
+			setmetatile (53, 41, 0x2BC, TRUE)
+			setmetatile (61, 35, 0x291, TRUE) //fence 2
+			setmetatile (62, 35, 0x291, TRUE) 
+			setmetatile (63, 35, 0x291, TRUE) 
+			setmetatile (64, 35, 0x291, TRUE) 
+			
+			setobjectxyperm (11, 49, 48)
+			setobjectxyperm (13, 54, 40)
+		}
+		call(TrickHouseExt_OnLoad_Traders)
+	}
+}
+
+
+script TrickHouseExt_IntroCutscene {
+}
+
+movement TrickHouseExt_IntroCutscene_Movement1_Link {
+	walk_left * 10
+	walk_down * 2
+}
+movement TrickHouseExt_IntroCutscene_Movement1a_Ghost {
+	delay_16 * 5
+	walk_left * 6
+}
+movement TrickHouseExt_IntroCutscene_Movement1b_Ghost {
+	walk_left * 4
+	walk_in_place_down
+}
+movement TrickHouseExt_IntroCutscene_Movement1_Wally {
+	delay_16 * 4
+	walk_left * 7
+	delay_16 * 3
+	walk_up
+	walk_in_place_left
+}
+movement TrickHouseExt_IntroCutscene_Movement1_Boy {
+	delay_16 * 3
+	walk_left * 7
+}
+movement TrickHouseExt_IntroCutscene_Movement1_Girl {
+	delay_16 * 1
+	walk_left * 8
+}
+movement TrickHouseExt_IntroCutscene_Movement1_Fairy {
+	delay_16 * 2
+	walk_left * 11
+	walk_in_place_right
+}
+
+movement TrickHouseExt_IntroCutscene_Movement2_Wally {
+	walk_left
+	walk_up * 2
+	walk_in_place_down
+}
+movement TrickHouseExt_IntroCutscene_Movement2_Link {
+	walk_right
+	walk_in_place_up
+}
+
+movement TrickHouseExt_IntroCutscene_Movement2_Camera {
+	walk_up * 2
+}
+movement TrickHouseExt_IntroCutscene_Movement3_Wally {
+	walk_in_place_fastest_up
+	emote_exclamation_mark
+	lock_facing_direction
+	jump_down
+	unlock_facing_direction
+}
+movement TrickHouseExt_IntroCutscene_Movement3_What {
+	walk_in_place_fastest_up
+	emote_exclamation_mark
+	delay_16 * 3
+}
+
+movement TrickHouseExt_IntroCutscene_Movement4_Fairy {
+	walk_right * 2
+	walk_up
+}
+
+movement TrickHouseExt_IntroCutscene_Movement5_Fairy {
+	walk_right
+	walk_up
+}
+movement TrickHouseExt_IntroCutscene_Movement5_Wally {
+	emote_exclamation_mark
+	walk_fast_up
+}
+movement TrickHouseExt_IntroCutscene_Movement5_Girl {
+	walk_right * 2
+	walk_up * 2
+}
+movement TrickHouseExt_IntroCutscene_Movement5_Link {
+	walk_up * 2
+}
+movement TrickHouseExt_IntroCutscene_Movement5_Joey {
+	walk_up
+}
+
+movement TrickHouseExt_IntroCutscene_Movement6_Fairy {
+	walk_up
+	set_invisible
+}
+movement TrickHouseExt_IntroCutscene_Movement6_Wally {
+	walk_fast_up * 2
+	set_invisible
+}
+movement TrickHouseExt_IntroCutscene_Movement6_Link {
+	walk_right
+	walk_up * 3
+	set_invisible
+}
+movement TrickHouseExt_IntroCutscene_Movement6_Joey {
+	walk_right * 2
+	walk_up * 3
+	set_invisible
+}
+movement TrickHouseExt_IntroCutscene_Movement6_Boy {
+	walk_left
+	walk_up * 3
+	set_invisible
+}
+movement TrickHouseExt_IntroCutscene_Movement6_Girl {
+	walk_left * 2
+	walk_up * 3
+	set_invisible
+}
+
+// ----------------------------------------------------
+// Visitor People
+
+script TrickHouseExt_EventScript_FinderGirl {
+	msgbox ("Mommy won't let me go swimming in the\n"
+			"river and explore islands.\p"
+			"She says we have swimming at home, but\n"
+			"swimming at home is a baby pool…$", MSGBOX_NPC)
+}
+
+script TrickHouseExt_EventScript_CardGame {
+	callnative(GetNumPuzzlesCompleted)
+	selectpointer_wrap(TrickHouseExt_EventScript_CardGameNamesTable, VAR_RESULT)
+	bufferselectedstring(0)
+	msgbox ("It looks like they're playing a\n"
+			"round of {STR_VAR_1}.$", MSGBOX_SIGN)
+}
+text TrickHouseExt_EventScript_CardGame_Name1 { "Megafight" }
+text TrickHouseExt_EventScript_CardGame_Name2 { "Cards Against {POKEMON}" }
+text TrickHouseExt_EventScript_CardGame_Name3 { "Munchkinville" }
+text TrickHouseExt_EventScript_CardGame_Name4 { "Dungeons and Druddigon" }
+text TrickHouseExt_EventScript_CardGame_Name5 { "Magic the Get-Together" }
+text TrickHouseExt_EventScript_CardGame_Name6 { "Coronavirus Inc" }
+text TrickHouseExt_EventScript_CardGame_Name7 { "Duo" }
+text TrickHouseExt_EventScript_CardGame_Name8 { "Orans to Orans" }
+
+raw `
+.align 2
+TrickHouseExt_EventScript_CardGameNamesTable:
+	.4byte TrickHouseExt_EventScript_CardGame_Name2
+	.4byte TrickHouseExt_EventScript_CardGame_Name3
+	.4byte TrickHouseExt_EventScript_CardGame_Name4
+	.4byte TrickHouseExt_EventScript_CardGame_Name1
+	.4byte TrickHouseExt_EventScript_CardGame_Name5
+	.4byte TrickHouseExt_EventScript_CardGame_Name6
+	.4byte TrickHouseExt_EventScript_CardGame_Name7
+	.4byte TrickHouseExt_EventScript_CardGame_Name8
+	.4byte 0
+
+`
+
+// ----------------------------------------------------
+// Signs
+
+script TrickHouseExt_EventScript_1EF380 {
+	msgbox ("TRAINER TIPS\p"
+			"The items in the BAG can be reorganized\n"
+			"by pressing SELECT.$", MSGBOX_SIGN)
+}
+
+script TrickHouseExt_EventScript_1EF389 {
+	msgbox ("“Three steps {RIGHT_ARROW} and two steps {UP_ARROW}\n"
+			"to reach the wondrous TRICK HOUSE.”$", MSGBOX_SIGN)
+}
+
+script TrickHouseExt_EventScript_1EF35C {
+	msgbox ("ROUTE 110\n"
+			"{LEFT_ARROW} ROUTE 103$", MSGBOX_SIGN)
+}
+
+script TrickHouseExt_EventScript_1EF34A {
+	msgbox ("SEASIDE CYCLING ROAD$", MSGBOX_SIGN)
+}
+
+script TrickHouseExt_EventScript_SlateportSign {
+	msgbox ("ROUTE 110\n"
+			"{DOWN_ARROW} SLATEPORT CITY$", MSGBOX_SIGN)
+}
+
+// ----------------------------------------------------
+// Traders
+
+script TrickHouseExt_OnLoad_Traders {
+	selectpointer_wrap(TrickHouseExt_OnLoad_Traders_ATable, VAR_CANDY_TRADE_MASTER)
+	call(0)
+	selectpointer_wrap(TrickHouseExt_OnLoad_Traders_BTable, VAR_CANDY_TRADE_MASTER)
+	call(0)
+	selectpointer_wrap(TrickHouseExt_OnLoad_Traders_CTable, VAR_CANDY_TRADE_MASTER)
+	call(0)
+	selectpointer_wrap(TrickHouseExt_OnLoad_Traders_DTable, VAR_CANDY_TRADE_MASTER)
+	call(0)
+	copyvar(VAR_CANDY_TRADE_5, VAR_CANDY_TRADE_MASTER)
+	return
+}
+
+raw `
+.align 2
+TrickHouseExt_OnLoad_Traders_ATable:
+	.4byte TrickHouseExt_OnLoad_Traders_LoadA1
+	.4byte TrickHouseExt_OnLoad_Traders_LoadA2
+	.4byte TrickHouseExt_OnLoad_Traders_LoadA3
+	.4byte TrickHouseExt_OnLoad_Traders_LoadA4
+	.4byte TrickHouseExt_OnLoad_Traders_LoadA5
+	.4byte 0
+TrickHouseExt_OnLoad_Traders_BTable:
+	.4byte TrickHouseExt_OnLoad_Traders_LoadB1
+	.4byte TrickHouseExt_OnLoad_Traders_LoadB1
+	.4byte TrickHouseExt_OnLoad_Traders_LoadB2
+	.4byte TrickHouseExt_OnLoad_Traders_LoadB2
+	.4byte TrickHouseExt_OnLoad_Traders_LoadB3
+	.4byte TrickHouseExt_OnLoad_Traders_LoadB3
+	.4byte 0
+TrickHouseExt_OnLoad_Traders_CTable:
+	.4byte TrickHouseExt_OnLoad_Traders_LoadC1
+	.4byte TrickHouseExt_OnLoad_Traders_LoadC1
+	.4byte TrickHouseExt_OnLoad_Traders_LoadC1
+	.4byte TrickHouseExt_OnLoad_Traders_LoadC2
+	.4byte TrickHouseExt_OnLoad_Traders_LoadC2
+	.4byte TrickHouseExt_OnLoad_Traders_LoadC2
+	.4byte TrickHouseExt_OnLoad_Traders_LoadC3
+	.4byte TrickHouseExt_OnLoad_Traders_LoadC3
+	.4byte TrickHouseExt_OnLoad_Traders_LoadC3
+	.4byte TrickHouseExt_OnLoad_Traders_LoadC4
+	.4byte TrickHouseExt_OnLoad_Traders_LoadC4
+	.4byte TrickHouseExt_OnLoad_Traders_LoadC4
+	.4byte TrickHouseExt_OnLoad_Traders_LoadC5
+	.4byte TrickHouseExt_OnLoad_Traders_LoadC5
+	.4byte TrickHouseExt_OnLoad_Traders_LoadC5
+	.4byte TrickHouseExt_OnLoad_Traders_LoadC6
+	.4byte TrickHouseExt_OnLoad_Traders_LoadC6
+	.4byte TrickHouseExt_OnLoad_Traders_LoadC6
+	.4byte 0
+TrickHouseExt_OnLoad_Traders_DTable:
+	.4byte TrickHouseExt_OnLoad_Traders_LoadD1
+	.4byte TrickHouseExt_OnLoad_Traders_LoadD1
+	.4byte TrickHouseExt_OnLoad_Traders_LoadD1
+	.4byte TrickHouseExt_OnLoad_Traders_LoadD1
+	.4byte TrickHouseExt_OnLoad_Traders_LoadD1
+	.4byte TrickHouseExt_OnLoad_Traders_LoadD1
+	.4byte TrickHouseExt_OnLoad_Traders_LoadD2
+	.4byte TrickHouseExt_OnLoad_Traders_LoadD2
+	.4byte TrickHouseExt_OnLoad_Traders_LoadD2
+	.4byte TrickHouseExt_OnLoad_Traders_LoadD2
+	.4byte TrickHouseExt_OnLoad_Traders_LoadD2
+	.4byte TrickHouseExt_OnLoad_Traders_LoadD2
+	.4byte TrickHouseExt_OnLoad_Traders_LoadD3
+	.4byte TrickHouseExt_OnLoad_Traders_LoadD3
+	.4byte TrickHouseExt_OnLoad_Traders_LoadD3
+	.4byte TrickHouseExt_OnLoad_Traders_LoadD3
+	.4byte TrickHouseExt_OnLoad_Traders_LoadD3
+	.4byte TrickHouseExt_OnLoad_Traders_LoadD3
+	.4byte 0
+`
+
+script TrickHouseExt_OnLoad_Traders_LoadA1 {
+	setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_SKELETON)
+	setvar(VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_PLASMA_KID)
+	setvar(VAR_OBJ_GFX_ID_2, EVENT_OBJ_GFX_BOY_2)
+	setvar(VAR_CANDY_TRADE_1, 1)
+	return
+}
+script TrickHouseExt_OnLoad_Traders_LoadA2 {
+	setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_GIRL_1)
+	setvar(VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_PICNICKER)
+	setvar(VAR_OBJ_GFX_ID_2, EVENT_OBJ_GFX_FAIRY_GIRL)
+	setvar(VAR_CANDY_TRADE_1, 2)
+	return
+}
+script TrickHouseExt_OnLoad_Traders_LoadA3 {
+	setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_HERO_OF_TIME)
+	setvar(VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_TWINS_PLUSLE)
+	setvar(VAR_OBJ_GFX_ID_2, EVENT_OBJ_GFX_LITTLE_BOY)
+	setvar(VAR_CANDY_TRADE_1, 3)
+	return
+}
+script TrickHouseExt_OnLoad_Traders_LoadA4 {
+	setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_COOK)
+	setvar(VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_BUG_CATCHER)
+	setvar(VAR_OBJ_GFX_ID_2, EVENT_OBJ_GFX_MASKED_BOY)
+	setvar(VAR_CANDY_TRADE_1, 4)
+	return
+}
+script TrickHouseExt_OnLoad_Traders_LoadA5 {
+	setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_GAMEBOY_KID)
+	setvar(VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_ALIEN)
+	setvar(VAR_OBJ_GFX_ID_2, EVENT_OBJ_GFX_GHOST)
+	setvar(VAR_CANDY_TRADE_1, 5)
+	return
+}
+
+
+script TrickHouseExt_OnLoad_Traders_LoadB1 {
+	setvar(VAR_OBJ_GFX_ID_3, EVENT_OBJ_GFX_CORPSE_BRIDE)
+	setvar(VAR_OBJ_GFX_ID_4, EVENT_OBJ_GFX_MERMAID_WALKING)
+	setvar(VAR_CANDY_TRADE_2, 1)
+	return
+}
+script TrickHouseExt_OnLoad_Traders_LoadB2 {
+	setvar(VAR_OBJ_GFX_ID_3, EVENT_OBJ_GFX_REPORTER_F)
+	setvar(VAR_OBJ_GFX_ID_4, EVENT_OBJ_GFX_CAMERAMAN)
+	setvar(VAR_CANDY_TRADE_2, 2)
+	return
+}
+script TrickHouseExt_OnLoad_Traders_LoadB3 {
+	setvar(VAR_OBJ_GFX_ID_3, EVENT_OBJ_GFX_PIKACHU)
+	setvar(VAR_OBJ_GFX_ID_4, EVENT_OBJ_GFX_AZUMARILL)
+	setvar(VAR_CANDY_TRADE_2, 3)
+	return
+}
+
+
+script TrickHouseExt_OnLoad_Traders_LoadC1 {
+	setvar(VAR_OBJ_GFX_ID_5, EVENT_OBJ_GFX_BLACK_BELT)
+	setvar(VAR_CANDY_TRADE_3, 1)
+	return
+}
+script TrickHouseExt_OnLoad_Traders_LoadC2 {
+	setvar(VAR_OBJ_GFX_ID_5, EVENT_OBJ_GFX_RICH_BOY)
+	setvar(VAR_CANDY_TRADE_3, 2)
+	return
+}
+script TrickHouseExt_OnLoad_Traders_LoadC3 {
+	setvar(VAR_OBJ_GFX_ID_5, EVENT_OBJ_GFX_GLACIA)
+	setvar(VAR_CANDY_TRADE_3, 3)
+	return
+}
+script TrickHouseExt_OnLoad_Traders_LoadC4 {
+	setvar(VAR_OBJ_GFX_ID_5, EVENT_OBJ_GFX_EXPERT_M)
+	setvar(VAR_CANDY_TRADE_3, 4)
+	return
+}
+script TrickHouseExt_OnLoad_Traders_LoadC5 {
+	setvar(VAR_OBJ_GFX_ID_5, EVENT_OBJ_GFX_BEAUTY)
+	setvar(VAR_CANDY_TRADE_3, 5)
+	return
+}
+script TrickHouseExt_OnLoad_Traders_LoadC6 {
+	setvar(VAR_OBJ_GFX_ID_5, EVENT_OBJ_GFX_ANABEL)
+	setvar(VAR_CANDY_TRADE_3, 6)
+	return
+}
+
+
+script TrickHouseExt_OnLoad_Traders_LoadD1 {
+	setvar(VAR_CANDY_TRADE_4, 1)
+	setvar(VAR_OBJ_GFX_ID_6, EVENT_OBJ_GFX_NOLAND)
+	setobjectxyperm(20, 41, 38)
+	setobjectmovementtype(20, MOVEMENT_TYPE_FACE_UP_AND_LEFT)
+	return
+}
+script TrickHouseExt_OnLoad_Traders_LoadD2 {
+	setvar(VAR_CANDY_TRADE_4, 2)
+	setvar(VAR_OBJ_GFX_ID_6, EVENT_OBJ_GFX_GHETSIS)
+	setobjectxyperm(20, 43, 31)
+	setobjectmovementtype(20, MOVEMENT_TYPE_FACE_DOWN_AND_LEFT)
+	return
+}
+script TrickHouseExt_OnLoad_Traders_LoadD3 {
+	setvar(VAR_CANDY_TRADE_4, 3)
+	setvar(VAR_OBJ_GFX_ID_6, EVENT_OBJ_GFX_BRAWLY)
+	setobjectxyperm(20, 37, 48)
+	setobjectmovementtype(20, MOVEMENT_TYPE_FACE_UP_AND_RIGHT)
+	return
+}
+
+// ----------------------------------------------------
+
+raw `
+#define VAR_OFFER        VAR_0x8000
+#define VAR_OFFER_AMT    VAR_0x8001
+#define VAR_REQUEST      VAR_0x8002
+#define VAR_REQUEST_AMT  VAR_0x8003
+
+.macro offertrade oItem:req, oAmt:req, rItem:req, rAmt:req, msg1:req, msg2:req, msg3:req
+setvar VAR_OFFER, \oItem
+setvar VAR_OFFER_AMT, \oAmt
+setvar VAR_REQUEST, \rItem
+setvar VAR_REQUEST_AMT, \rAmt
+loadword 0, \msg1
+loadword 1, \msg2
+loadword 2, \msg3
+goto TrickHouseExt_CommonOfferTrade
+.endm
+
+`
+
+// Input: 
+//   0x8000 - Item Offered
+//   0x8001 - Amount Offered
+//   0x8002 - Item Requested
+//   0x8003 - Amount Requested
+//   data[0] - String for offer
+//   data[1] - String for refusal
+script TrickHouseExt_CommonOfferTrade {
+	lock
+	faceplayer
+	msgbox_selected(MSGBOX_YESNO)
+	if (var(VAR_RESULT) == NO) {
+		goto(TrickHouseExt_CommonOfferTrade_Reject)
+	}
+	if (var(VAR_REQUEST_AMT) == 0) {
+		checkitem(VAR_REQUEST, 1)
+		if (var(VAR_RESULT) == FALSE) {
+			msgbox("You don't have any on you.$")
+			release
+			end
+		}
+		
+		bufferitemnameplural(1, VAR_REQUEST, 2)
+		message("How many {STR_VAR_2}\nwill you offer?$")
+		callnative(ChooseNumberOfTradeItems)
+		waitstate
+		// I think the vars are u16, which would make -1 higher than 0
+		// Do this raw instead of with poryscript if statements, so we can use compare_var_to_value directly
+		compare_var_to_value(VAR_RESULT, 1)
+		goto_if_lt(TrickHouseExt_CommonOfferTrade_Reject)
+		compare_var_to_value(VAR_RESULT, -1)
+		goto_if_eq(TrickHouseExt_CommonOfferTrade_Reject)
+		
+		copyvar(VAR_REQUEST_AMT, VAR_RESULT)
+		mulvar(VAR_OFFER_AMT, VAR_RESULT)
+	}
+	checkitem(VAR_REQUEST, VAR_REQUEST_AMT)
+	if (var(VAR_RESULT) == FALSE) {
+		msgbox("You don't have what I asked for.$")
+		release
+		end
+	}
+	checkitemspace(VAR_OFFER, VAR_OFFER_AMT)
+	if (var(VAR_RESULT) == FALSE) {
+		msgbox("You don't have enough space, somehow.$")
+		release
+		end
+	}
+	buffernumberstring2(0, VAR_REQUEST_AMT)
+	bufferitemnameplural(1, VAR_REQUEST, VAR_REQUEST_AMT)
+	takeitem(VAR_REQUEST, VAR_REQUEST_AMT)
+	message("{PLAYER} traded away\n"
+			"{STR_VAR_1} {STR_VAR_2}$")
+	giveitem_std(VAR_OFFER, VAR_OFFER_AMT)
+	message(2)
+	waitmessage
+	waitbuttonpress
+	release
+}
+script(local) TrickHouseExt_CommonOfferTrade_Reject {
+	message(1)
+	waitmessage
+	waitbuttonpress
+	release
+}
+
+
+script TrickHouseExt_EventScript_TraderA1 {
+	switch(var(VAR_OBJ_GFX_ID_0)) {
+		case EVENT_OBJ_GFX_SKELETON:
+			offertrade(
+				ITEM_CANDY_TWIXLEFT, 1,
+				ITEM_CANDY_TWIXRIGHT, 0,
+				"Got. Got. Got. Need. Got. Need. Need…\p"
+				"Uh, hey, got any Left Twixes?\n"
+				"I'll trade you for some Right ones.$",
+				"Aw, alright.\nGot. Need. Got. Got…$",
+				"Thanks!\nLet's see, got that now…$")
+		case EVENT_OBJ_GFX_GIRL_1:
+			offertrade(
+				ITEM_CANDY_WARHEAD, 1,
+				ITEM_CANDY_PRETZEL, 0,
+				"Excuse me. Do you have any Pretzels?\n"
+				"I'll trade you some Warheads.$",
+				"Oh, alright.$",
+				"Thank you!\n"
+				"I like Pretzels more than Warheads.$")
+		case EVENT_OBJ_GFX_HERO_OF_TIME:
+			msgbox("My mom put me in charge of keeping my\n"
+					"siblings out of trouble tonight.\p"
+					"They're such a handful… I don't know\n"
+					"how she does it all the time…$", MSGBOX_NPC)
+		case EVENT_OBJ_GFX_COOK:
+			offertrade(
+				ITEM_CANDY_TURKISHDELIGHT, 1, 
+				ITEM_CANDY_CADBURYCREME, 2,
+				"Would you like some of my homemade\n"
+				"Turkish Delight? I'll trade you for\l"
+				"a couple Cadbury Creme Eggs!$",
+				"Very well, enjoy your evening!$",
+				"Enjoy!$")
+		case EVENT_OBJ_GFX_GAMEBOY_KID:
+			msgbox("You wanna duel? I've got the {POKEMON}\n"
+					"TRADING CARD GAME for GBA.\p"
+					"Oh, you don't? Loser, haha.$", MSGBOX_NPC)
+		default:
+			msgbox("Object event$", MSGBOX_NPC)
+	}
+}
+script TrickHouseExt_EventScript_TraderA2 {
+	switch(var(VAR_OBJ_GFX_ID_1)) {
+		case EVENT_OBJ_GFX_PLASMA_KID:
+			offertrade(
+				ITEM_CANDY_BUTTERFINGER, 1,
+				ITEM_CANDY_MILKYWAY, 0,
+				"Need. Need. Got. Got. Got. Need. Got…\p"
+				"Uh, hey, got any Milky Ways?\n"
+				"I'll trade you my Butterfingers.$",
+				"Aw, alright.\nGot. Got. Got. Need…$",
+				"Sweet! Got this now…\nGot. Need. Got. Got…$")
+		case EVENT_OBJ_GFX_PICNICKER:
+			msgbox("No, you can't join our clique.$", MSGBOX_NPC)
+		case EVENT_OBJ_GFX_TWINS_PLUSLE:
+			offertrade(
+				ITEM_CANDY_VEROMANGO, 1, 
+				ITEM_CANDY_STARBURST, 0,
+				"Bleh, I hate Vero Mango. I'll trade\n"
+				"you. Do you have any Starbursts?$",
+				"Awww, alright.$",
+				"Thank you!$")
+		case EVENT_OBJ_GFX_BUG_CATCHER:
+			offertrade(
+				ITEM_SUPER_REPEL, 1, 
+				ITEM_CANDY_APPLE, 0,
+				"My BUG {POKEMON} love Apples, but I\n"
+				"don't have any more on me.\p"
+				"Hey, uh, do you have any Apples?\n"
+				"I'll trade some Repels.$",
+				"Man… maybe the store will still have\n"
+				"some left in stock.$",
+				"Sweet! My {POKEMON} will love these!$"
+			)
+		case EVENT_OBJ_GFX_ALIEN:
+			offertrade(
+				ITEM_CANDY_100GRAND, 1,
+				ITEM_CANDY_CHOCOLATE, 5,
+				"Hey, you got a bunch of Chocolate?\n"
+				"I'll trade you a 100 Grand for 5?$",
+				"Your loss.$",
+				"Thanks!$"
+			)
+		default:
+			msgbox("Object event$", MSGBOX_NPC)
+	}
+}
+script TrickHouseExt_EventScript_TraderA3 {
+	switch(var(VAR_OBJ_GFX_ID_2)) {
+		case EVENT_OBJ_GFX_BOY_2:
+			offertrade(
+				ITEM_CANDY_TWIXRIGHT, 1,
+				ITEM_CANDY_TWIXLEFT, 0,
+				"Need. Got. Need. Got. Got. Got. Need…\p"
+				"Uh, hey, got any Right Twixes?\n"
+				"I'll trade you for some Left ones.$",
+				"Aw, alright.\nNeed. Need. Got. Need…$",
+				"Awesome! Thanks!\nGot. Got. Got. Need…$")
+		case EVENT_OBJ_GFX_FAIRY_GIRL:
+			offertrade(
+				ITEM_CANDY_GUMMYBEAR, 3,
+				ITEM_CANDY_CHOCOWHITE, 0,
+				"Do you have any white chocolate?\n"
+				"I'll trade you some Gummyursa!$",
+				"Aw, but the little TEDDIURSA\n"
+				"look so cute, don't they?$",
+				"Thank you! My mom bought a load\n"
+				"of Gummyursa and doesn't know what\l"
+				"to do with all of the leftovers.$"
+			)
+		case EVENT_OBJ_GFX_LITTLE_BOY:
+			offertrade(
+				ITEM_CANDY_OREO, 1,
+				ITEM_CANDY_MMMINI, 0,
+				"I have Oreos. I'm not sharing.\n"
+				"Unless you have mini M&M's…$",
+				"I didn't want your M&M's anyway.$",
+				"Yessss! Now I can put the M&M's\n"
+				"INTO the Oreos!$"
+			)
+		case EVENT_OBJ_GFX_MASKED_BOY:
+			msgbox( "I wanted to dress as the Coronavirus\n"
+					"this year, but my mom wouldn't let me.$", MSGBOX_NPC)
+		case EVENT_OBJ_GFX_GHOST:
+			offertrade(
+				ITEM_CANDY_KITKAT, 1,
+				ITEM_CANDY_BUTTERFINGER, 1,
+				"Got any Butterfingers?\n"
+				"I'll trade one for a KitKat.$",
+				"Aw man.$",
+				"Sweet! Thanks!$"
+			)
+		default:
+			msgbox("Object event$", MSGBOX_NPC)
+	}
+}
+
+script TrickHouseExt_EventScript_TraderB1 {
+	switch(var(VAR_OBJ_GFX_ID_3)) {
+		case EVENT_OBJ_GFX_CORPSE_BRIDE:
+			offertrade(
+				ITEM_CANDY_MARSBAR, 1,
+				ITEM_CANDY_SNICKERS, 1,
+				"I want your braaaaaaaaiiinnnnsssss…\n"
+				"Or a Snickers if you have one.\l"
+				"(I'll give you a Marsbar).$",
+				"My hunger for brains continues…\n"
+				"Blaaarrrrrggggggghhhhhhhhh…$",
+				"Schweet. Now I can sate my hunger.\p"
+				"…{PAUSE 10} …{PAUSE 10} …{PAUSE 10} Brains.$"
+			)
+		case EVENT_OBJ_GFX_REPORTER_F:
+			if (!flag(FLAG_TTH_NEWS_REPORT)) {
+				lockall
+				applymovement(18, Common_Movement_FaceDown)
+				applymovement(19, Common_Movement_FaceUp)
+				waitmovement(18)
+		message("…And yet through it all… the kids seem\n"
+				"to be loving the PUZZLING… to be had…\l"
+				"inside the bowels… of the TRICK HOUSE.\p"
+				"Reporting from Route 110, this is\n"
+				"Lisa McCallum for Vulpix-53 NEWS.$")
+				waitmessage
+				waitbuttonpress
+				setflag(FLAG_TTH_NEWS_REPORT)
+				releaseall
+			}
+			lock
+			faceplayer
+	message("Hm? Oh, you wouldn't have happened to\n"
+			"see the TRICK MASTER around, have you?\p"
+			"We need to get an interview from him\n"
+			"for this piece.\p"
+			"It's supposed to be run tonight at 11,\n"
+			"but if we can't get an interview…$")
+			waitmessage
+			waitbuttonpress
+			release
+		case EVENT_OBJ_GFX_PIKACHU:
+			offertrade(
+				ITEM_CANDY_PRUNE, 1,
+				ITEM_CANDY_STARBURST, 1,
+				"My mom insists on giving us healthy\n"
+				"snacks for Trick or Treating…\p"
+				"You don't happen to have any Starbursts\n"
+				"would you? I'll trade you my Prune…$",
+				"Yeah, I wouldn't make that trade either…$",
+				"YES! Thank you!\n"
+				"Oh, so sugary… … … …$"
+			)
+		default:
+			msgbox("Object event$", MSGBOX_NPC)
+	}
+}
+script TrickHouseExt_EventScript_TraderB2 {
+	switch(var(VAR_OBJ_GFX_ID_4)) {
+		case EVENT_OBJ_GFX_MERMAID_WALKING:
+			// msgbox("TODO$", MSGBOX_NPC)
+			msgbox("It's always nice to give my fins\n"
+					"A good stretch!$", MSGBOX_NPC)
+		case EVENT_OBJ_GFX_CAMERAMAN:
+			// Don't lock, make sure the cameraman is still looking around
+			message("(Kid, get out of our shot.)$")
+			waitmessage
+			waitbuttonpress
+			closemessage
+		case EVENT_OBJ_GFX_AZUMARILL:
+			msgbox("Do you like my AZUMARILL costume?\n"
+					"My mom made it for me!\p"
+					"My sister made her own PIKACHU\n"
+					"costume though.$", MSGBOX_NPC)
+		default:
+			msgbox("Object event$", MSGBOX_NPC)
+	}
+}
+
+script TrickHouseExt_EventScript_TraderC1 {
+	switch(var(VAR_OBJ_GFX_ID_5)) {
+		case EVENT_OBJ_GFX_BLACK_BELT:
+			// msgbox("TODO$", MSGBOX_NPC)
+			msgbox("What? It's the classic couple cosume!\n"
+					"The BLACK BELT and his MERMAID!\p"
+					"What do you mean you've never heard\n"
+					"of such a thing before??$", MSGBOX_NPC) //ERROR: Not actually coupled with a mermaid
+		case EVENT_OBJ_GFX_RICH_BOY:
+			offertrade(
+				ITEM_CANDY_GOBSTOPPER, 1,
+				ITEM_CANDY_CHOCOLATE, 20,
+				"I need a lot of chocolate. Like\n"
+				"around twenty bars worth of it.\p"
+				"I need it fast.\n"
+				"No, don't ask questions.\p"
+				"I can offer you an Everlasthing\n"
+				"Gobstopper in trade.\p"
+				"What do you think?\n"
+				"20 Chocolate for 1 Gobstopper?$",
+				"I figured not. It's fine, whatever.$",
+				"Really? Or, you're wonderful!\n"
+				"Now back to the prank planning.$"
+			)
+		case EVENT_OBJ_GFX_GLACIA:
+			offertrade(
+				ITEM_CANDY_KITKAT, 1,
+				ITEM_CANDY_VIOLETCRUMBLE, 3,
+				"Hello child. Would you happen to\n"
+				"have a few Violet Crumble?\l"
+				"I'll give you a KitKat for three.$",
+				"Very well. Good day.$",
+				"Thank you. I so do love me some\n"
+				"Violet Crumble.$"
+			)
+		case EVENT_OBJ_GFX_EXPERT_M:
+			offertrade(
+				ITEM_CANDY_BLACKTHUNDER, 2,
+				ITEM_CANDY_OREO, 5,
+				"You there. Laddie. Missie. Whatever.\n"
+				"My eyes are bad these days.\p"
+				"Got some Oreos on you? I'll trade five\n"
+				"for a couple Black Thunders.$",
+				"Gah, no one gives out the good cookies\n"
+				"anymore. Only this foreign stuff.$",
+				"Lovely, lovely. Excuse me while I pull\n"
+				"out my dentures.$"
+			)
+		case EVENT_OBJ_GFX_BEAUTY:
+			// msgbox("TODO$", MSGBOX_NPC)
+			msgbox("I love your costume.\n"
+					"Do you like mine too?$", MSGBOX_NPC)
+		case EVENT_OBJ_GFX_ANABEL:
+			// msgbox("TODO$", MSGBOX_NPC)
+			msgbox("Hello. Fine evening isn't it?$", MSGBOX_NPC)
+		default:
+			msgbox("Object event$", MSGBOX_NPC)
+	}
+}
+
+script TrickHouseExt_EventScript_TraderD1 {
+	switch(var(VAR_OBJ_GFX_ID_6)) {
+		case EVENT_OBJ_GFX_NOLAND:
+			offertrade(
+				ITEM_CANDY_CHOCOSLAB, 1,
+				ITEM_CANDY_GOBSTOPPER, 1,
+				"Hey, do you happen to have a Gobstopper?\n"
+				"I'll trade you this massive chocolate bar.$",
+				"What? Oh, alright.$",
+				"Cheers! I'm fond of how everlasting\n"
+				"Gobstoppers are.$"
+			)
+		case EVENT_OBJ_GFX_GHETSIS:
+			// msgbox("TODO$", MSGBOX_NPC)
+			msgbox("What are you staring at? I made this\n"
+					"costume myself.$", MSGBOX_NPC)
+		case EVENT_OBJ_GFX_BRAWLY:
+			offertrade(
+				ITEM_CANDY_GOBSTOPPER, 1,
+				ITEM_CANDY_CHOCOSLAB, 1,
+				"Sup! Got any giant slabs of chocolate?\n"
+				"I'll trade you a Gobstopper for it.$",
+				"Fine fine.$",
+				"Thanks! Not a fan of Gobstoppers myself\n"
+				"but {POKEMON} love to suck on them.$"
+			)
+		default:
+			msgbox("Object event$", MSGBOX_NPC)
+	}
+}
+
+script TrickHouseExt_EventScript_Caller {
+	msgbox ("Hm? Oh! Um, come to the Exchanging\n"
+			"Treehouse or whatever my bro calls it.\p"
+			"I'm supposed to be shouting adverts\n"
+			"or something, but… I'm just so…\l"
+			"close to the high score… …$", MSGBOX_NPC)
+}
+
+// ----------------------------------------------------
+// Borders
+
+script TrickHouseExt_EventScript_SoftBorderSouth {
+	lock
+	msgbox ("You probably shouldn't go any further.\p"
+			"Your buddies and you were gonna Trick\n"
+			"or Treat in Slateport after this.$")
+	closemessage
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkUp1)
+	waitmovement (0)
+	release
+}
+
+script TrickHouseExt_EventScript_SoftBorderNorth {
+	lock
+	msgbox ("You probably shouldn't go any further.\p"
+			"Don't want to risk getting bogged down\n"
+			"in the tall grass.$")
+	closemessage
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkDown1)
+	waitmovement (0)
+	release
+}
+
+script TrickHouseExt_EventScript_SoftBorderWest {
+	lock
+	msgbox ("You probably shouldn't go any further.\n"
+			"You already hit Oldale anyway.$")
+	closemessage
+	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkRight1)
+	waitmovement (0)
+	release
+}
+
+// ----------------------------------------------------
+// Others
+
+script TrickHouseExt_EventScript_TestDoor {
+	lock
+	msgbox ("This leads to the Dev Entrance.\n"
+			"Enter?$", MSGBOX_YESNO)
+	closemessage
+	compare (VAR_RESULT, NO)
+	goto_if_eq (Common_EventScript_ReleaseEnd)
+	call (PuzzleCommon_EventScript_DoDoorEnterAnimation)
+	warp (MAP_TRICK_HOUSE_DEV_ENTRANCE, 0, 0xff, 0xff)
+	waitstate
+	release
+}
+
+script TrickHouseExt_EventScript_BuriedItem1 {
+	msgbox( "There's an item buried here…$")
+	giveitem_std (ITEM_TM27_RETURN, 1, 1)
+}

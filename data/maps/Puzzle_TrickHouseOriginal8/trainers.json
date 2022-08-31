@@ -1,0 +1,68 @@
+[
+	{
+		"class": "COOLTRAINER",
+		"music": "COOL",
+		"pic": "COOLTRAINER_M",
+		"name": "VINCENT",
+		"items": ["ITEM_FULL_RESTORE"],
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY",
+		"party": [
+			{
+				"species": "SPECIES_SABLEYE",
+				"level": 28,
+				"iv": 100
+			},
+			{
+				"species": "SPECIES_MEDICHAM",
+				"level": 28,
+				"iv": 100
+			},
+			{
+				"species": "SPECIES_SHARPEDO",
+				"level": 28,
+				"iv": 100
+			}
+		]
+	},
+	{
+		"class": "COOLTRAINER",
+		"music": "COOL",
+		"female": true,
+		"pic": "COOLTRAINER_F",
+		"name": "KEIRA",
+		"items": ["ITEM_FULL_RESTORE"],
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY",
+		"party": [
+			{
+				"species": "SPECIES_LAIRON",
+				"level": 29,
+				"iv": 100
+			},
+			{
+				"species": "SPECIES_MANECTRIC",
+				"level": 29,
+				"iv": 100
+			}
+		]
+	},
+	{
+		"class": "COOLTRAINER",
+		"music": "COOL",
+		"pic": "COOLTRAINER_M",
+		"name": "LEROY",
+		"items": ["ITEM_FULL_RESTORE"],
+		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY",
+		"party": [
+			{
+				"species": "SPECIES_MAWILE",
+				"level": 28,
+				"iv": 100
+			},
+			{
+				"species": "SPECIES_STARMIE",
+				"level": 28,
+				"iv": 100
+			}
+		]
+	}
+]

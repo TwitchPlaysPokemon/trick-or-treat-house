@@ -718,13 +718,13 @@ static const u8 *const sHallFacilityToRecordsText[] =
 
 static const u16 sFrontierBrainTrainerIds[NUM_FRONTIER_FACILITIES] =
 {
-    [FRONTIER_FACILITY_TOWER]   = TRAINER_ANABEL,
-    [FRONTIER_FACILITY_DOME]    = TRAINER_TUCKER,
-    [FRONTIER_FACILITY_PALACE]  = TRAINER_SPENSER,
-    [FRONTIER_FACILITY_ARENA]   = TRAINER_GRETA,
-    [FRONTIER_FACILITY_FACTORY] = TRAINER_NOLAND,
-    [FRONTIER_FACILITY_PIKE]    = TRAINER_LUCY,
-    [FRONTIER_FACILITY_PYRAMID] = TRAINER_BRANDON,
+    // [FRONTIER_FACILITY_TOWER]   = TRAINER_ANABEL,
+    // [FRONTIER_FACILITY_DOME]    = TRAINER_TUCKER,
+    // [FRONTIER_FACILITY_PALACE]  = TRAINER_SPENSER,
+    // [FRONTIER_FACILITY_ARENA]   = TRAINER_GRETA,
+    // [FRONTIER_FACILITY_FACTORY] = TRAINER_NOLAND,
+    // [FRONTIER_FACILITY_PIKE]    = TRAINER_LUCY,
+    // [FRONTIER_FACILITY_PYRAMID] = TRAINER_BRANDON,
 };
 
 static const u8 *const sFrontierBrainPlayerLostSilverTexts[NUM_FRONTIER_FACILITIES] =
@@ -1705,8 +1705,8 @@ void CopyFrontierTrainerText(u8 whichText, u16 trainerId)
             FrontierSpeechToString(gFacilityTrainers[trainerId].speechBefore);
         else if (trainerId < TRAINER_RECORD_MIXING_APPRENTICE)
             FrontierSpeechToString(gSaveBlock2Ptr->frontier.towerRecords[trainerId - TRAINER_RECORD_MIXING_FRIEND].greeting);
-        else
-            BufferApprenticeChallengeText(trainerId - TRAINER_RECORD_MIXING_APPRENTICE);
+        // else
+        //     BufferApprenticeChallengeText(trainerId - TRAINER_RECORD_MIXING_APPRENTICE);
         break;
     case FRONTIER_PLAYER_LOST_TEXT:
         if (trainerId == TRAINER_EREADER)
@@ -1756,19 +1756,19 @@ void CopyFrontierTrainerText(u8 whichText, u16 trainerId)
             else
                 FrontierSpeechToString(gSaveBlock2Ptr->frontier.towerRecords[trainerId - TRAINER_RECORD_MIXING_FRIEND].speechLost);
         }
-        else
-        {
-            if (gBattleTypeFlags & BATTLE_TYPE_RECORDED)
-            {
-                trainerId = GetRecordedBattleApprenticeId();
-                FrontierSpeechToString(gApprentices[trainerId].speechLost);
-            }
-            else
-            {
-                trainerId = gSaveBlock2Ptr->apprentices[trainerId - TRAINER_RECORD_MIXING_APPRENTICE].id;
-                FrontierSpeechToString(gApprentices[trainerId].speechLost);
-            }
-        }
+        // else
+        // {
+        //     if (gBattleTypeFlags & BATTLE_TYPE_RECORDED)
+        //     {
+        //         trainerId = GetRecordedBattleApprenticeId();
+        //         FrontierSpeechToString(gApprentices[trainerId].speechLost);
+        //     }
+        //     else
+        //     {
+        //         trainerId = gSaveBlock2Ptr->apprentices[trainerId - TRAINER_RECORD_MIXING_APPRENTICE].id;
+        //         FrontierSpeechToString(gApprentices[trainerId].speechLost);
+        //     }
+        // }
         break;
     }
 }
@@ -2449,7 +2449,7 @@ u8 GetFrontierBrainTrainerPicIndex(void)
     else
         facility = VarGet(VAR_FRONTIER_FACILITY);
 
-    return gTrainers[sFrontierBrainTrainerIds[facility]].trainerPic;
+    return GetTrainer(sFrontierBrainTrainerIds[facility])->trainerPic;
 }
 
 u8 GetFrontierBrainTrainerClass(void)
@@ -2461,7 +2461,7 @@ u8 GetFrontierBrainTrainerClass(void)
     else
         facility = VarGet(VAR_FRONTIER_FACILITY);
 
-    return gTrainers[sFrontierBrainTrainerIds[facility]].trainerClass;
+    return GetTrainer(gFacilityToBrainTrainerId[facility])->trainerClass;
 }
 
 void CopyFrontierBrainTrainerName(u8 *dst)
@@ -2475,7 +2475,7 @@ void CopyFrontierBrainTrainerName(u8 *dst)
         facility = VarGet(VAR_FRONTIER_FACILITY);
 
     for (i = 0; i < PLAYER_NAME_LENGTH; i++)
-        dst[i] = gTrainers[sFrontierBrainTrainerIds[facility]].trainerName[i];
+        dst[i] = GetTrainer(gFacilityToBrainTrainerId[facility])->trainerName[i];
 
     dst[i] = EOS;
 }

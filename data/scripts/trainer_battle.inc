@@ -50,6 +50,15 @@ EventScript_DoNoIntroTrainerBattle::
 	dotrainerbattle
 	gotopostbattlescript
 
+EventScript_DoDoubleTainerBattle:: @ Used in Loss Puzzle
+	applymovement VAR_LAST_TALKED, Movement_RevealTrainer
+	waitmovement 0
+	special HasEnoughMonsForDoubleBattle
+	goto_if_ne VAR_RESULT, 0, EventScript_NoDoubleTrainerBattle
+	special PlayTrainerEncounterMusic
+	PlayTrainerEncounterMusic
+	gotopostbattlescript
+
 EventScript_TryDoRematchBattle::
 	call EventScript_RevealTrainer
 	specialvar VAR_RESULT, IsTrainerReadyForRematch
@@ -122,10 +131,3 @@ EventScript_EndTrainerBattle::
 	gotobeatenscript
 	releaseall
 	end
-
-Std_MsgboxAutoclose::
-	message NULL
-	waitmessage
-	waitbuttonpress
-	release
-	return

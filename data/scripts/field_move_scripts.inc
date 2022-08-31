@@ -1,12 +1,16 @@
-@ Interact with cuttable tree
-EventScript_CutTree::
+@ -----------------------------------------------------
+
+Common_EventScript_ItemCut::
+	giveitem_std ITEM_CUT_ITEM, 1, 1
+	end
+
+EventScript_CutTree:: @ 82906BB
 	lockall
-	goto_if_unset FLAG_BADGE01_GET, EventScript_CheckTreeCantCut
-	checkpartymove MOVE_CUT
-	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CheckTreeCantCut
-	setfieldeffectargument 0, VAR_RESULT
-	bufferpartymonnick STR_VAR_1, VAR_RESULT
-	buffermovename STR_VAR_2, MOVE_CUT
+	checkitem ITEM_CUT_ITEM, 1
+	goto_if_eq VAR_RESULT, 0, EventScript_CheckTreeCantCut
+	@ setfieldeffectargument 0, VAR_RESULT
+	@ bufferpartymonnick 0, VAR_RESULT
+	buffermovename 1, MOVE_CUT
 	msgbox Text_WantToCut, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_CancelCut
 	msgbox Text_MonUsedFieldMove, MSGBOX_DEFAULT
@@ -50,22 +54,26 @@ Text_WantToCut:
 	.string "CUT down!\p"
 	.string "Would you like to CUT it?$"
 
-Text_MonUsedFieldMove:
-	.string "{STR_VAR_1} used {STR_VAR_2}!$"
+Text_MonUsedHM: @ 8290771
+	.string "You used {STR_VAR_2}!$"
 
 Text_CantCut:
 	.string "This tree looks like it can be\n"
 	.string "CUT down!$"
 
-@ Interact with smashable rock
-EventScript_RockSmash::
+@ -----------------------------------------------------
+
+Common_EventScript_ItemRockSmash::
+	giveitem_std ITEM_ROCKSMASH_ITEM, 1, 1
+	end
+
+EventScript_RockSmash:: @ 82907A6
 	lockall
-	goto_if_unset FLAG_BADGE03_GET, EventScript_CantSmashRock
-	checkpartymove MOVE_ROCK_SMASH
-	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantSmashRock
-	setfieldeffectargument 0, VAR_RESULT
-	bufferpartymonnick STR_VAR_1, VAR_RESULT
-	buffermovename STR_VAR_2, MOVE_ROCK_SMASH
+	checkitem ITEM_ROCKSMASH_ITEM, 1
+	goto_if_eq VAR_RESULT, 0, EventScript_CantSmashRock
+	@ setfieldeffectargument 0, VAR_RESULT
+	@ bufferpartymonnick 0, VAR_RESULT
+	buffermovename 1, MOVE_ROCK_SMASH
 	msgbox Text_WantToSmash, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_CancelSmash
 	msgbox Text_MonUsedFieldMove, MSGBOX_DEFAULT
@@ -121,12 +129,17 @@ Text_CantSmash:
 	.string "It's a rugged rock, but a POKéMON\n"
 	.string "may be able to smash it.$"
 
-EventScript_StrengthBoulder::
+@ -----------------------------------------------------
+
+Common_EventScript_ItemStrength::
+	giveitem_std ITEM_STRENGTH_ITEM, 1, 1
+	end
+
+EventScript_StrengthBoulder:: @ 82908BA
 	lockall
-	goto_if_unset FLAG_BADGE04_GET, EventScript_CantStrength
 	goto_if_set FLAG_SYS_USE_STRENGTH, EventScript_CheckActivatedBoulder
-	checkpartymove MOVE_STRENGTH
-	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantStrength
+	checkitem ITEM_STRENGTH_ITEM, 1
+	goto_if_eq VAR_RESULT, 0 EventScript_CantStrength
 	setfieldeffectargument 0, VAR_RESULT
 	msgbox Text_WantToStrength, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_CancelStrength
@@ -164,30 +177,36 @@ EventScript_CancelStrength::
 	releaseall
 	end
 
-Text_WantToStrength:
-	.string "It's a big boulder, but a POKéMON\n"
+Text_WantToStrength: @ 829092C
+	.string "It's a big {BOULDER}, but a POKéMON\n"
 	.string "may be able to push it aside.\p"
 	.string "Would you like to use STRENGTH?$"
 
 Text_MonUsedStrength:
-	.string "{STR_VAR_1} used STRENGTH!\p"
-	.string "{STR_VAR_1}'s STRENGTH made it\n"
-	.string "possible to move boulders around!$"
+	.string "You used STRENGTH!\p"
+	.string "Your STRENGTH made it\n"
+	.string "possible to move {BOULDER}s around!$"
 
 Text_CantStrength:
-	.string "It's a big boulder, but a POKéMON\n"
+	.string "It's a big {BOULDER}, but a POKéMON\n"
 	.string "may be able to push it aside.$"
 
 Text_StrengthActivated:
 	.string "STRENGTH made it possible to move\n"
-	.string "boulders around.$"
+	.string "{BOULDER}s around.$"
+
+@ -----------------------------------------------------
+
+Common_EventScript_ItemWaterfall::
+	giveitem_std ITEM_WATERFALL_ITEM, 1, 1
+	end
 
 EventScript_UseWaterfall::
 	lockall
-	checkpartymove MOVE_WATERFALL
-	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantWaterfall
-	bufferpartymonnick STR_VAR_1, VAR_RESULT
-	setfieldeffectargument 0, VAR_RESULT
+	checkitem ITEM_WATERFALL_ITEM, 1
+	goto_if_eq VAR_RESULT, 0, EventScript_CantWaterfall
+	@ bufferpartymonnick 0, VAR_RESULT
+	@ setfieldeffectargument 0, VAR_RESULT
 	msgbox Text_WantToWaterfall, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_EndWaterfall
 	msgbox Text_MonUsedWaterfall, MSGBOX_DEFAULT
@@ -212,15 +231,52 @@ Text_WantToWaterfall:
 	.string "It's a large waterfall.\n"
 	.string "Would you like to use WATERFALL?$"
 
-Text_MonUsedWaterfall:
-	.string "{STR_VAR_1} used WATERFALL.$"
+Text_MonUsedWaterfall: @ 8290AFC
+	.string "You used WATERFALL.$"
+
+@ -----------------------------------------------------
+
+Common_EventScript_ItemSurf::
+	giveitem_std ITEM_SURF_ITEM, 1, 1
+	end
+
+EventScript_UseSurf:: @ 8271EA0
+	checkitem ITEM_SURF_ITEM, 1
+	goto_if_eq VAR_RESULT, 0, EventScript_CantSurf
+	@ bufferpartymonnick 0, VAR_RESULT
+	@ setfieldeffectargument 0, VAR_RESULT
+	lockall
+	msgbox gText_WantToUseSurf, MSGBOX_YESNO
+	compare VAR_RESULT, 0
+	goto_if_eq EventScript_CancelSurf
+	msgbox gText_PlayerUsedSurf, MSGBOX_DEFAULT
+	dofieldeffect FLDEFF_USE_SURF
+
+EventScript_CancelSurf:: @ 8271ED5
+	releaseall
+
+EventScript_CantSurf:: @ 8271ED6
+	end
+
+gText_WantToUseSurf:: @ 8272FD6
+	.string "The water is dyed a deep blue…\nWould you like to SURF?$"
+
+gText_PlayerUsedSurf:: @ 827300D
+	.string "You used SURF!$"
+
+
+@ -----------------------------------------------------
+
+Common_EventScript_ItemDive::
+	giveitem_std ITEM_DIVE_ITEM, 1, 1
+	end
 
 EventScript_UseDive::
 	lockall
-	checkpartymove MOVE_DIVE
-	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantDive
-	bufferpartymonnick STR_VAR_1, VAR_RESULT
-	setfieldeffectargument 0, VAR_RESULT
+	checkitem ITEM_DIVE_ITEM, 1
+	goto_if_eq VAR_RESULT, 0, EventScript_CantDive
+	@ bufferpartymonnick 0, VAR_RESULT
+	@ setfieldeffectargument 0, VAR_RESULT
 	setfieldeffectargument 1, 1
 	msgbox Text_WantToDive, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_EndDive
@@ -240,10 +296,10 @@ EventScript_EndDive::
 
 EventScript_UseDiveUnderwater::
 	lockall
-	checkpartymove MOVE_DIVE
-	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantSurface
-	bufferpartymonnick STR_VAR_1, VAR_RESULT
-	setfieldeffectargument 0, VAR_RESULT
+	checkitem ITEM_DIVE_ITEM, 1
+	goto_if_eq VAR_RESULT, 0, EventScript_CantSurface
+	@ bufferpartymonnick 0, VAR_RESULT
+	@ setfieldeffectargument 0, VAR_RESULT
 	setfieldeffectargument 1, 1
 	msgbox Text_WantToSurface, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, EventScript_EndSurface
@@ -270,8 +326,8 @@ Text_WantToDive:
 	.string "The sea is deep here.\n"
 	.string "Would you like to use DIVE?$"
 
-Text_MonUsedDive:
-	.string "{STR_VAR_1} used DIVE.$"
+Text_MonUsedDive: @ 8290C1A
+	.string "You used DIVE.$"
 
 Text_CantSurface:
 	.string "Light is filtering down from above.\n"
@@ -281,7 +337,17 @@ Text_WantToSurface:
 	.string "Light is filtering down from above.\n"
 	.string "Would you like to use DIVE?$"
 
-EventScript_FailSweetScent::
+@ -----------------------------------------------------
+
+Common_EventScript_ItemFlash::
+	giveitem_std ITEM_FLASH_ITEM, 1, 1
+	end
+
+Common_EventScript_ItemFly::
+	giveitem_std ITEM_FLY_ITEM, 1, 1
+	end
+
+EventScript_FailSweetScent:: @ 8290CAE
 	msgbox Text_FailSweetScent, MSGBOX_SIGN
 	end
 

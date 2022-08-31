@@ -486,14 +486,14 @@ static void PlayerPC_Decoration(u8 taskId)
 
 static void PlayerPC_TurnOff(u8 taskId)
 {
-    if (sTopMenuNumOptions == NUM_BEDROOM_PC_OPTIONS) // Flimsy way to determine if Bedroom PC is in use
-    {
-        if (gSaveBlock2Ptr->playerGender == MALE)
-            ScriptContext_SetupScript(LittlerootTown_BrendansHouse_2F_EventScript_TurnOffPlayerPC);
-        else
-            ScriptContext_SetupScript(LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC);
-    }
-    else
+    // if (sTopMenuNumOptions == NUM_BEDROOM_PC_OPTIONS) // Flimsy way to determine if Bedroom PC is in use
+    // {
+    //     if (gSaveBlock2Ptr->playerGender == MALE)
+    //         ScriptContext_SetupScript(LittlerootTown_BrendansHouse_2F_EventScript_TurnOffPlayerPC);
+    //     else
+    //         ScriptContext_SetupScript(LittlerootTown_MaysHouse_2F_EventScript_TurnOffPlayerPC);
+    // }
+    // else
     {
         ScriptContext_Enable();
     }
@@ -1045,6 +1045,9 @@ static void ItemStorage_PrintDescription(s32 id)
     // Get item description (or Cancel text)
     if (id != LIST_CANCEL)
         description = (u8 *)ItemId_GetDescription(gSaveBlock1Ptr->pcItems[id].itemId);
+        StringExpandPlaceholders(gStringVar4, description);
+        description = gStringVar4;
+    }
     else
         description = ItemStorage_GetMessage(MSG_GO_BACK_TO_PREV);
 
@@ -1160,36 +1163,38 @@ static const u8 *ItemStorage_GetMessage(u16 itemId)
 
     switch(itemId)
     {
-    case MSG_GO_BACK_TO_PREV:
-        string = gText_GoBackPrevMenu;
-        break;
-    case MSG_HOW_MANY_TO_WITHDRAW:
-        string = gText_WithdrawHowManyItems;
-        break;
-    case MSG_WITHDREW_ITEM:
-        string = gText_WithdrawXItems;
-        break;
-    case MSG_HOW_MANY_TO_TOSS:
-        string = gText_TossHowManyVar1s;
-        break;
-    case MSG_THREW_AWAY_ITEM:
-        string = gText_ThrewAwayVar2Var1s;
-        break;
-    case MSG_NO_MORE_ROOM:
-        string = gText_NoRoomInBag;
-        break;
-    case MSG_TOO_IMPORTANT:
-        string = gText_TooImportantToToss;
-        break;
-    case MSG_OKAY_TO_THROW_AWAY:
-        string = gText_ConfirmTossItems;
-        break;
-    case MSG_SWITCH_WHICH_ITEM:
-        string = gText_MoveVar1Where;
-        break;
-    default:
-        string = ItemId_GetDescription(itemId);
-        break;
+        case ITEMPC_GO_BACK_TO_PREV:
+            string = gText_GoBackPrevMenu;
+            break;
+        case ITEMPC_HOW_MANY_TO_WITHDRAW:
+            string = gText_WithdrawHowManyItems;
+            break;
+        case ITEMPC_WITHDREW_THING:
+            string = gText_WithdrawXItems;
+            break;
+        case ITEMPC_HOW_MANY_TO_TOSS:
+            string = gText_TossHowManyVar1s;
+            break;
+        case ITEMPC_THREW_AWAY_ITEM:
+            string = gText_ThrewAwayVar2Var1s;
+            break;
+        case ITEMPC_NO_MORE_ROOM:
+            string = gText_NoRoomInBag;
+            break;
+        case ITEMPC_TOO_IMPORTANT:
+            string = gText_TooImportantToToss;
+            break;
+        case ITEMPC_OKAY_TO_THROW_AWAY:
+            string = gText_ConfirmTossItems;
+            break;
+        case ITEMPC_SWITCH_WHICH_ITEM:
+            string = gText_MoveVar1Where;
+            break;
+        default:
+            string = ItemId_GetDescription(itemId);
+            StringExpandPlaceholders(gStringVar4, string);
+            string = gStringVar4;
+            break;
     }
     return string;
 }

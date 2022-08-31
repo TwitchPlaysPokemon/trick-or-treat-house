@@ -33,6 +33,11 @@ EventScript_PlayersHouseMovie::
 	msgbox PlayersHouse_1F_Text_TheresAMovieOnTV, MSGBOX_DEFAULT
 	releaseall
 	end
+LittlerootTown_BrendansHouse_1F_Text_1F7F0F: @ 81F7F0F
+	.string "There is a movie on TV.\p"
+	.string "Two men are dancing on a big piano\n"
+	.string "keyboard.\p"
+	.string "Better get going!$"
 
 @ special InitRoamer is a junk call. Its input var (VAR_0x8004) hasn't been set, and
 @ It's called again when Mom actually asks for the color, overwriting
@@ -45,6 +50,16 @@ EventScript_PlayersHouseLatiNewsFlash::
 	special TurnOffTVScreen
 	releaseall
 	end
+LittlerootTown_BrendansHouse_1F_Text_1F826F: @ 81F826F
+	.string "We bring you this emergency\n"
+	.string "news flash!\p"
+	.string "In various HOENN locales, there have\n"
+	.string "been reports of a BZZT…colored\l"
+	.string "POKéMON in flight.\p"
+	.string "The identity of this POKéMON is\n"
+	.string "currently unknown.\p"
+	.string "We now return you to the regular\n"
+	.string "movie program.$"
 
 @ The following is a loop for the TV show messages
 @ VAR_RESULT is set to TRUE when the show has printed its final message

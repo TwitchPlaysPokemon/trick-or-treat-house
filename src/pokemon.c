@@ -6,7 +6,7 @@
 #include "battle_controllers.h"
 #include "battle_message.h"
 #include "battle_pike.h"
-#include "battle_pyramid.h"
+// #include "battle_pyramid.h"
 #include "battle_setup.h"
 #include "battle_tower.h"
 #include "data.h"
@@ -1987,10 +1987,19 @@ static const struct SpriteTemplate sTrainerBackSpriteTemplates[] =
         .affineAnims = gAffineAnims_BattleSpritePlayerSide,
         .callback = SpriteCB_BattleSpriteStartSlideLeft,
     },
-    [TRAINER_BACK_PIC_RED] = {
+    [TRAINER_BACK_PIC_TREEKID] = {
         .tileTag = TAG_NONE,
         .paletteTag = 0,
         .oam = &gOamData_BattleSpritePlayerSide,
+        .anims = NULL,
+        .images = gTrainerBackPicTable_Treekid,
+        .affineAnims = gUnknown_082FF618,
+        .callback = sub_8039BB4,
+    },
+    [TRAINER_BACK_PIC_RED] = {
+        .tileTag = TAG_NONE,
+        .paletteTag = 0,
+        .oam = &gOamData_831ACB0,
         .anims = NULL,
         .images = gTrainerBackPicTable_Red,
         .affineAnims = gAffineAnims_BattleSpritePlayerSide,
@@ -2517,37 +2526,37 @@ void CreateBattleTowerMon_HandleLevel(struct Pokemon *mon, struct BattleTowerPok
     CalculateMonStats(mon);
 }
 
-void CreateApprenticeMon(struct Pokemon *mon, const struct Apprentice *src, u8 monId)
-{
-    s32 i;
-    u16 evAmount;
-    u8 language;
-    u32 otId = gApprentices[src->id].otId;
-    u32 personality = ((gApprentices[src->id].otId >> 8) | ((gApprentices[src->id].otId & 0xFF) << 8))
-                    + src->party[monId].species + src->number;
+// void CreateApprenticeMon(struct Pokemon *mon, const struct Apprentice *src, u8 monId)
+// {
+//     s32 i;
+//     u16 evAmount;
+//     u8 language;
+//     u32 otId = gApprentices[src->id].otId;
+//     u32 personality = ((gApprentices[src->id].otId >> 8) | ((gApprentices[src->id].otId & 0xFF) << 8))
+//                     + src->party[monId].species + src->number;
 
-    CreateMon(mon,
-              src->party[monId].species,
-              GetFrontierEnemyMonLevel(src->lvlMode - 1),
-              MAX_PER_STAT_IVS,
-              TRUE,
-              personality,
-              OT_ID_PRESET,
-              otId);
+//     CreateMon(mon,
+//               src->party[monId].species,
+//               GetFrontierEnemyMonLevel(src->lvlMode - 1),
+//               MAX_PER_STAT_IVS,
+//               TRUE,
+//               personality,
+//               OT_ID_PRESET,
+//               otId);
 
-    SetMonData(mon, MON_DATA_HELD_ITEM, &src->party[monId].item);
-    for (i = 0; i < MAX_MON_MOVES; i++)
-        SetMonMoveSlot(mon, src->party[monId].moves[i], i);
+//     SetMonData(mon, MON_DATA_HELD_ITEM, &src->party[monId].item);
+//     for (i = 0; i < MAX_MON_MOVES; i++)
+//         SetMonMoveSlot(mon, src->party[monId].moves[i], i);
 
-    evAmount = MAX_TOTAL_EVS / NUM_STATS;
-    for (i = 0; i < NUM_STATS; i++)
-        SetMonData(mon, MON_DATA_HP_EV + i, &evAmount);
+//     evAmount = MAX_TOTAL_EVS / NUM_STATS;
+//     for (i = 0; i < NUM_STATS; i++)
+//         SetMonData(mon, MON_DATA_HP_EV + i, &evAmount);
 
-    language = src->language;
-    SetMonData(mon, MON_DATA_LANGUAGE, &language);
-    SetMonData(mon, MON_DATA_OT_NAME, GetApprenticeNameInLanguage(src->id, language));
-    CalculateMonStats(mon);
-}
+//     language = src->language;
+//     SetMonData(mon, MON_DATA_LANGUAGE, &language);
+//     SetMonData(mon, MON_DATA_OT_NAME, GetApprenticeNameInLanguage(src->id, language));
+//     CalculateMonStats(mon);
+// }
 
 void CreateMonWithEVSpreadNatureOTID(struct Pokemon *mon, u16 species, u8 level, u8 nature, u8 fixedIV, u8 evSpread, u32 otId)
 {
@@ -4417,11 +4426,31 @@ static u8 SendMonToPC(struct Pokemon *mon)
         }
 
         boxNo++;
-        if (boxNo == TOTAL_BOXES_COUNT)
+        if (boxNo == BOXES_COUNT)
             boxNo = 0;
     } while (boxNo != StorageGetCurrentBox());
 
     return MON_CANT_GIVE;
+}
+
+bool8 SendMonToPCSlot(struct Pokemon* mon, s32 boxNo, s32 boxPos)
+{
+    struct BoxPokemon* monInSlot = GetBoxedMonPtr(boxNo, boxPos);
+    if (GetBoxMonData(monInSlot, MON_DATA_SPECIES, NULL) == SPECIES_NONE)
+    {
+        MonRestorePP(mon);
+        CopyMon(monInSlot, &mon->box, sizeof(mon->box));
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 GetMonFromPCSlot(struct Pokemon* mon, s32 boxNo, s32 boxPos)
+{
+    BoxMonAtToMon(boxNo, boxPos, mon);
+    if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_NONE) return FALSE;
+    ZeroBoxMonAt(boxNo, boxPos);
+    return TRUE;
 }
 
 u8 CalculatePlayerPartyCount(void)
@@ -4567,7 +4596,7 @@ bool8 IsPokemonStorageFull(void)
 {
     s32 i, j;
 
-    for (i = 0; i < TOTAL_BOXES_COUNT; i++)
+    for (i = 0; i < BOXES_COUNT; i++)
         for (j = 0; j < IN_BOX_COUNT; j++)
             if (GetBoxMonDataAt(i, j, MON_DATA_SPECIES) == SPECIES_NONE)
                 return FALSE;
@@ -4754,9 +4783,10 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
     }
 
     // Skip using the item if it won't do anything
-    if (!ITEM_HAS_EFFECT(item))
-        return TRUE;
-    if (gItemEffectTable[item - ITEM_POTION] == NULL && item != ITEM_ENIGMA_BERRY)
+    // if (!ITEM_HAS_EFFECT(item))
+    //     return TRUE;
+    // if (gItemEffectTable[item - ITEM_POTION] == NULL && item != ITEM_ENIGMA_BERRY)
+    if (ItemId_GetItemEffect(item) == NULL && item != ITEM_ENIGMA_BERRY)
         return TRUE;
 
     // Get item effect
@@ -4769,7 +4799,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
     }
     else
     {
-        itemEffect = gItemEffectTable[item - ITEM_POTION];
+        itemEffect = ItemId_GetItemEffect(item); //gItemEffectTable[item - ITEM_POTION];
     }
 
     // Do item effect
@@ -4803,6 +4833,21 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                 gBattleMons[gActiveBattler].statStages[STAT_ATK] += itemEffect[i] & ITEM0_X_ATTACK;
                 if (gBattleMons[gActiveBattler].statStages[STAT_ATK] > MAX_STAT_STAGE)
                     gBattleMons[gActiveBattler].statStages[STAT_ATK] = MAX_STAT_STAGE;
+                retVal = FALSE;
+            }
+            if ((itemEffect[cmdIndex] & ITEM0_X_RANDOM)
+             && (gBattleMons[gActiveBattler].statStages[STAT_ATK] < 12
+             || gBattleMons[gActiveBattler].statStages[STAT_DEF] < 12
+             || gBattleMons[gActiveBattler].statStages[STAT_SPEED] < 12
+             || gBattleMons[gActiveBattler].statStages[STAT_SPATK] < 12
+             || gBattleMons[gActiveBattler].statStages[STAT_SPDEF] < 12))
+            {
+                u8 i;
+                do { i = Random() % 5; } while (gBattleMons[gActiveBattler].statStages[STAT_ATK + i] == 12);
+                
+                gBattleMons[gActiveBattler].statStages[STAT_ATK + i] += 1; // itemEffect[cmdIndex] & ITEM0_X_RANDOM;
+                if (gBattleMons[gActiveBattler].statStages[STAT_ATK + i] > 12)
+                    gBattleMons[gActiveBattler].statStages[STAT_ATK + i] = 12;
                 retVal = FALSE;
             }
             break;
@@ -5278,7 +5323,7 @@ u8 GetItemEffectParamOffset(u16 itemId, u8 effectByte, u8 effectBit)
 
     offset = ITEM_EFFECT_ARG_START;
 
-    temp = gItemEffectTable[itemId - ITEM_POTION];
+    temp = ItemId_GetItemEffect(itemId); //gItemEffectTable[itemId - ITEM_POTION];
 
     if (!temp && itemId != ITEM_ENIGMA_BERRY)
         return 0;
@@ -5403,7 +5448,7 @@ u8 *UseStatIncreaseItem(u16 itemId)
     }
     else
     {
-        itemEffect = gItemEffectTable[itemId - ITEM_POTION];
+        itemEffect = ItemId_GetItemEffect(itemId); //gItemEffectTable[itemId - ITEM_POTION];
     }
 
     gPotentialItemEffectBattler = gBattlerInMenuId;
@@ -5811,11 +5856,11 @@ s32 GetBattlerMultiplayerId(u16 id)
 
 u8 GetTrainerEncounterMusicId(u16 trainerOpponentId)
 {
-    if (InBattlePyramid())
-        return GetTrainerEncounterMusicIdInBattlePyramid(trainerOpponentId);
-    else if (InTrainerHillChallenge())
-        return GetTrainerEncounterMusicIdInTrainerHill(trainerOpponentId);
-    else
+    // if (InBattlePyramid())
+    //     return GetTrainerEncounterMusicIdInBattlePyramid(trainerOpponentId);
+    // else if (InTrainerHillChallenge())
+    //     return GetTrainerEncounterMusicIdInTrainerHill(trainerOpponentId);
+    // else
         return TRAINER_ENCOUNTER_MUSIC(trainerOpponentId);
 }
 
@@ -5857,9 +5902,9 @@ u16 ModifyStatByNature(u8 nature, u16 stat, u8 statIndex)
 
 #define IS_LEAGUE_BATTLE                                                                \
     ((gBattleTypeFlags & BATTLE_TYPE_TRAINER)                                           \
-    && (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_ELITE_FOUR    \
-     || gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_LEADER        \
-     || gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_CHAMPION))    \
+    && (GetTrainer(gTrainerBattleOpponent_A)->trainerClass == TRAINER_CLASS_ELITE_FOUR    \
+     || GetTrainer(gTrainerBattleOpponent_A)->trainerClass == TRAINER_CLASS_LEADER        \
+     || GetTrainer(gTrainerBattleOpponent_A)->trainerClass == TRAINER_CLASS_CHAMPION))    \
 
 void AdjustFriendship(struct Pokemon *mon, u8 event)
 {
@@ -6355,7 +6400,7 @@ u16 GetBattleBGM(void)
         else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
             trainerClass = TRAINER_CLASS_EXPERT;
         else
-            trainerClass = gTrainers[gTrainerBattleOpponent_A].trainerClass;
+            trainerClass = GetTrainer(gTrainerBattleOpponent_A)->trainerClass;
 
         switch (trainerClass)
         {
@@ -6374,7 +6419,7 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_RIVAL:
             if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
                 return MUS_VS_RIVAL;
-            if (!StringCompare(gTrainers[gTrainerBattleOpponent_A].trainerName, gText_BattleWallyName))
+            if (!StringCompare(GetTrainer(gTrainerBattleOpponent_A)->trainerName, gText_BattleWallyName))
                 return MUS_VS_TRAINER;
             return MUS_VS_RIVAL;
         case TRAINER_CLASS_ELITE_FOUR:
@@ -6657,11 +6702,11 @@ const u8 *GetTrainerPartnerName(void)
 {
     if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
     {
-        if (gPartnerTrainerId == TRAINER_STEVEN_PARTNER)
-        {
-            return gTrainers[TRAINER_STEVEN].trainerName;
-        }
-        else
+        // if (gPartnerTrainerId == TRAINER_STEVEN_PARTNER)
+        // {
+        //     return GetTrainer(TRAINER_STEVEN)->trainerName;
+        // }
+        // else
         {
             GetFrontierTrainerName(gStringVar1, gPartnerTrainerId);
             return gStringVar1;
@@ -6859,10 +6904,13 @@ u16 FacilityClassToPicIndex(u16 facilityClass)
 
 u16 PlayerGenderToFrontTrainerPicId(u8 playerGender)
 {
-    if (playerGender != MALE)
-        return FacilityClassToPicIndex(FACILITY_CLASS_MAY);
-    else
-        return FacilityClassToPicIndex(FACILITY_CLASS_BRENDAN);
+    switch (playerGender)
+    {
+        default:
+        case GENDER_M: return FacilityClassToPicIndex(FACILITY_CLASS_BRENDAN);
+        case GENDER_F: return FacilityClassToPicIndex(FACILITY_CLASS_MAY);
+        case GENDER_N: return FacilityClassToPicIndex(FACILITY_CLASS_TREEKID);
+    }
 }
 
 void HandleSetPokedexFlag(u16 nationalNum, u8 caseId, u32 personality)
@@ -6882,14 +6930,14 @@ const u8 *GetTrainerClassNameFromId(u16 trainerId)
 {
     if (trainerId >= TRAINERS_COUNT)
         trainerId = TRAINER_NONE;
-    return gTrainerClassNames[gTrainers[trainerId].trainerClass];
+    return gTrainerClassNames[GetTrainer(trainerId)->trainerClass];
 }
 
 const u8 *GetTrainerNameFromId(u16 trainerId)
 {
     if (trainerId >= TRAINERS_COUNT)
         trainerId = TRAINER_NONE;
-    return gTrainers[trainerId].trainerName;
+    return GetTrainer(trainerId)->trainerName;
 }
 
 bool8 HasTwoFramesAnimation(u16 species)
@@ -6904,8 +6952,8 @@ static bool8 ShouldSkipFriendshipChange(void)
 {
     if (gMain.inBattle && gBattleTypeFlags & (BATTLE_TYPE_FRONTIER))
         return TRUE;
-    if (!gMain.inBattle && (InBattlePike() || InBattlePyramid()))
-        return TRUE;
+    // if (!gMain.inBattle && (InBattlePike() || InBattlePyramid()))
+    //     return TRUE;
     return FALSE;
 }
 

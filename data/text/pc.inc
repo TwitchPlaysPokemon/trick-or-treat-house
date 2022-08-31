@@ -1,3 +1,7 @@
+Text_CantBootPC:
+	.string "There's an out-of-order sign\n"
+	.string "taped to the monitor of this PC.$"
+	
 Text_BootUpPC:
 	.string "{PLAYER} booted up the PC.$"
 

@@ -1,13 +1,21 @@
 #include "global.h"
 #include "string_util.h"
+#include "event_data.h"
 #include "text.h"
+#include "script.h"
+#include "trickhouse.h"
+#include "overworld.h"
+#include "constants/maps.h"
+#include "constants/map_scripts.h"
+#include "constants/vars.h"
 #include "strings.h"
 
 EWRAM_DATA u8 gStringVar1[0x100] = {0};
 EWRAM_DATA u8 gStringVar2[0x100] = {0};
 EWRAM_DATA u8 gStringVar3[0x100] = {0};
 EWRAM_DATA u8 gStringVar4[0x3E8] = {0};
-EWRAM_DATA static u8 sUnknownStringVar[16] = {0};
+
+EWRAM_DATA u8 gStringWorking[0x100] = {0};
 
 static const u8 sDigits[] = __("0123456789ABCDEF");
 
@@ -158,6 +166,32 @@ bool8 IsStringLengthAtLeast(const u8 *str, s32 n)
             return TRUE;
 
     return FALSE;
+}
+
+extern const u8 gText_The[];
+extern const u8 gText_Num1[];
+extern const u8 gText_Num2[];
+extern const u8 gText_Num3[];
+extern const u8 gText_Num4[];
+extern const u8 gText_Num5[];
+u8 *ConvertIntToTheNameStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 n)
+{
+    switch (value) {
+        case 1: return StringCopy(dest, gText_The);
+        default: return ConvertIntToNameStringN(dest, value, mode, n);
+    }
+}
+
+u8 *ConvertIntToNameStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 n)
+{
+    switch (value) {
+        case 1: return StringCopy(dest, gText_Num1);
+        case 2: return StringCopy(dest, gText_Num2);
+        case 3: return StringCopy(dest, gText_Num3);
+        case 4: return StringCopy(dest, gText_Num4);
+        case 5: return StringCopy(dest, gText_Num5);
+        default: return ConvertIntToDecimalStringN(dest, value, mode, n);
+    }
 }
 
 u8 *ConvertIntToDecimalStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 n)
@@ -332,6 +366,76 @@ u8 *ConvertIntToHexStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 
     return dest;
 }
 
+u8 *StringUppercase(u8 *dest, const u8 *src)
+{
+    for (;;)
+    {
+        u8 c = *src++;
+        
+        switch (c)
+        {
+            case EXT_CTRL_CODE_BEGIN:
+                *dest++ = c;
+                c = *src++;
+                *dest++ = c;
+
+                switch (c)
+                {
+                    case EXT_CTRL_CODE_RESET_SIZE:
+                    case EXT_CTRL_CODE_PAUSE_UNTIL_PRESS:
+                    case EXT_CTRL_CODE_FILL_WINDOW:
+                    case EXT_CTRL_CODE_JPN:
+                    case EXT_CTRL_CODE_ENG:
+                    case EXT_CTRL_CODE_PAUSE_MUSIC:
+                    case EXT_CTRL_CODE_RESUME_MUSIC:
+                        break;
+                    case EXT_CTRL_CODE_COLOR_HIGHLIGHT_SHADOW:
+                        *dest++ = *src++;
+                    case EXT_CTRL_CODE_PLAY_BGM:
+                        *dest++ = *src++;
+                    default:
+                        *dest++ = *src++;
+                }
+                break;
+            case EOS:
+                *dest = EOS;
+                return dest;
+            case CHAR_PROMPT_SCROLL:
+            case CHAR_PROMPT_CLEAR:
+            case CHAR_NEWLINE:
+            case CHAR_a: *dest++ = CHAR_A; break;
+            case CHAR_b: *dest++ = CHAR_B; break;
+            case CHAR_c: *dest++ = CHAR_C; break;
+            case CHAR_d: *dest++ = CHAR_D; break;
+            case CHAR_e: *dest++ = CHAR_E; break;
+            case CHAR_f: *dest++ = CHAR_F; break;
+            case CHAR_g: *dest++ = CHAR_G; break;
+            case CHAR_h: *dest++ = CHAR_H; break;
+            case CHAR_i: *dest++ = CHAR_I; break;
+            case CHAR_j: *dest++ = CHAR_J; break;
+            case CHAR_k: *dest++ = CHAR_K; break;
+            case CHAR_l: *dest++ = CHAR_L; break;
+            case CHAR_m: *dest++ = CHAR_M; break;
+            case CHAR_n: *dest++ = CHAR_N; break;
+            case CHAR_o: *dest++ = CHAR_O; break;
+            case CHAR_p: *dest++ = CHAR_P; break;
+            case CHAR_q: *dest++ = CHAR_Q; break;
+            case CHAR_r: *dest++ = CHAR_R; break;
+            case CHAR_s: *dest++ = CHAR_S; break;
+            case CHAR_t: *dest++ = CHAR_T; break;
+            case CHAR_u: *dest++ = CHAR_U; break;
+            case CHAR_v: *dest++ = CHAR_V; break;
+            case CHAR_w: *dest++ = CHAR_W; break;
+            case CHAR_x: *dest++ = CHAR_X; break;
+            case CHAR_y: *dest++ = CHAR_Y; break;
+            case CHAR_z: *dest++ = CHAR_Z; break;
+            default:
+                *dest++ = c;
+        }
+    }
+}
+
+
 u8 *StringExpandPlaceholders(u8 *dest, const u8 *src)
 {
     for (;;)
@@ -420,14 +524,20 @@ u8 *StringBraille(u8 *dest, const u8 *src)
     }
 }
 
-static const u8 *ExpandPlaceholder_UnknownStringVar(void)
+extern const u8 gText_ExpandedPlaceholder_Empty[];
+static const u8 *ExpandPlaceholder_Empty(void)
 {
-    return sUnknownStringVar;
+    return gText_ExpandedPlaceholder_Empty;
 }
 
 static const u8 *ExpandPlaceholder_PlayerName(void)
 {
-    return gSaveBlock2Ptr->playerName;
+    if (FlagGet(FLAG_SYS_BORT_MODE)) {
+        StringUppercase(gStringWorking, gSaveBlock2Ptr->playerName);
+        return gStringWorking;
+    } else {
+        return gSaveBlock2Ptr->playerName;
+    }
 }
 
 static const u8 *ExpandPlaceholder_StringVar1(void)
@@ -445,14 +555,8 @@ static const u8 *ExpandPlaceholder_StringVar3(void)
     return gStringVar3;
 }
 
-static const u8 *ExpandPlaceholder_KunChan(void)
-{
-    if (gSaveBlock2Ptr->playerGender == MALE)
-        return gText_ExpandedPlaceholder_Kun;
-    else
-        return gText_ExpandedPlaceholder_Chan;
-}
-
+extern const u8 gText_ExpandedPlaceholder_Brendan[];
+extern const u8 gText_ExpandedPlaceholder_May[];
 static const u8 *ExpandPlaceholder_RivalName(void)
 {
     if (gSaveBlock2Ptr->playerGender == MALE)
@@ -461,39 +565,122 @@ static const u8 *ExpandPlaceholder_RivalName(void)
         return gText_ExpandedPlaceholder_Brendan;
 }
 
-static const u8 *ExpandPlaceholder_Version(void)
+extern const u8 gText_ExpandedPlaceholder_Pokemon[];
+static const u8 *ExpandPlaceholder_Pokemon(void)
 {
-    return gText_ExpandedPlaceholder_Emerald;
+    return gText_ExpandedPlaceholder_Pokemon;
 }
 
-static const u8 *ExpandPlaceholder_Aqua(void)
+extern const u8 gText_ExpandedPlaceholder_TrickMasterShiny[];
+static const u8 *ExpandPlaceholder_TrickMaster(void)
 {
-    return gText_ExpandedPlaceholder_Aqua;
+    return gText_ExpandedPlaceholder_TrickMasterShiny;
 }
 
-static const u8 *ExpandPlaceholder_Magma(void)
+extern const u8 gText_ExpandedPlaceholder_Youngster[];
+static const u8 *ExpandPlaceholder_Youngster(void)
 {
-    return gText_ExpandedPlaceholder_Magma;
+    return gText_ExpandedPlaceholder_Youngster;
 }
 
-static const u8 *ExpandPlaceholder_Archie(void)
+extern const u8 gText_ExpandedPlaceholder_Wally[];
+static const u8 *ExpandPlaceholder_Wally(void)
 {
-    return gText_ExpandedPlaceholder_Archie;
+    return gText_ExpandedPlaceholder_Wally;
 }
 
-static const u8 *ExpandPlaceholder_Maxie(void)
+extern const u8 gText_ExpandedPlaceholder_Link[];
+static const u8 *ExpandPlaceholder_Link(void)
 {
-    return gText_ExpandedPlaceholder_Maxie;
+    return gText_ExpandedPlaceholder_Link;
 }
 
-static const u8 *ExpandPlaceholder_Kyogre(void)
+extern const u8 gText_ExpandedPlaceholder_FairyGirl[];
+static const u8 *ExpandPlaceholder_FairyGirl(void)
 {
-    return gText_ExpandedPlaceholder_Kyogre;
+    return gText_ExpandedPlaceholder_FairyGirl;
 }
 
-static const u8 *ExpandPlaceholder_Groudon(void)
+extern const u8 gText_ExpandedPlaceholder_Brendan[];
+static const u8 *ExpandPlaceholder_Brendan(void)
 {
-    return gText_ExpandedPlaceholder_Groudon;
+    return gText_ExpandedPlaceholder_Brendan;
+}
+
+extern const u8 gText_ExpandedPlaceholder_May[];
+static const u8 *ExpandPlaceholder_May(void)
+{
+    return gText_ExpandedPlaceholder_May;
+}
+
+extern const u8 gText_ExpandedPlaceholder_Alex[];
+static const u8 *ExpandPlaceholder_Alex(void)
+{
+    return gText_ExpandedPlaceholder_Alex;
+}
+
+extern const u8 gText_ExpandedPlaceholder_ToTRuleNo[];
+static const u8 *ExpandPlaceholder_ToTRuleNo(void)
+{
+    return gText_ExpandedPlaceholder_ToTRuleNo;
+}
+
+extern const u8 gText_ExpandedPlaceholder_Boulder[];
+extern const u8 gText_ExpandedPlaceholder_Crate[];
+static const u8 *ExpandPlaceholder_Boulder(void)
+{
+    if (CurrentMapIs(MAP_PUZZLE_STEALTH_MISSION)) {
+        return gText_ExpandedPlaceholder_Crate;
+    }
+    return gText_ExpandedPlaceholder_Boulder;
+}
+
+extern const u8 PuzzleCommon_Text_UntitledPuzzleName[];
+static const u8 *ExpandPlaceholder_PuzzleName(void)
+{
+    u16 currPuzzle = GetCurrentPuzzleMapId();
+	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_NAME);
+	if (str == NULL)
+	{
+		str = PuzzleCommon_Text_UntitledPuzzleName;
+	}
+    return str;
+}
+
+extern const u8 PuzzleCommon_Text_DefaultAuthor[];
+static const u8 *ExpandPlaceholder_PuzzleAuthor(void)
+{
+    u16 currPuzzle = GetCurrentPuzzleMapId();
+	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_AUTHOR);
+	if (str == NULL)
+	{
+		str = PuzzleCommon_Text_DefaultAuthor;
+	}
+    return str;
+}
+
+extern const u8 PuzzleCommon_Text_DefaultAdjective[];
+static const u8 *ExpandPlaceholder_PuzzleAdjective(void)
+{
+    u16 currPuzzle = GetCurrentPuzzleMapId();
+	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_ADJECTIVE);
+	if (str == NULL)
+	{
+		str = PuzzleCommon_Text_DefaultAdjective;
+	}
+    return str;
+}
+
+extern const u8 PuzzleCommon_Text_DefaultQuip[];
+static const u8 *ExpandPlaceholder_PuzzleQuip(void)
+{
+    u16 currPuzzle = GetCurrentPuzzleMapId();
+	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_QUIP);
+	if (str == NULL)
+	{
+		str = PuzzleCommon_Text_DefaultQuip;
+	}
+    return str;
 }
 
 const u8 *GetExpandedPlaceholder(u32 id)
@@ -502,20 +689,30 @@ const u8 *GetExpandedPlaceholder(u32 id)
 
     static const ExpandPlaceholderFunc funcs[] =
     {
-        [PLACEHOLDER_ID_UNKNOWN]      = ExpandPlaceholder_UnknownStringVar,
-        [PLACEHOLDER_ID_PLAYER]       = ExpandPlaceholder_PlayerName,
-        [PLACEHOLDER_ID_STRING_VAR_1] = ExpandPlaceholder_StringVar1,
-        [PLACEHOLDER_ID_STRING_VAR_2] = ExpandPlaceholder_StringVar2,
-        [PLACEHOLDER_ID_STRING_VAR_3] = ExpandPlaceholder_StringVar3,
-        [PLACEHOLDER_ID_KUN]          = ExpandPlaceholder_KunChan,
-        [PLACEHOLDER_ID_RIVAL]        = ExpandPlaceholder_RivalName,
-        [PLACEHOLDER_ID_VERSION]      = ExpandPlaceholder_Version,
-        [PLACEHOLDER_ID_AQUA]         = ExpandPlaceholder_Aqua,
-        [PLACEHOLDER_ID_MAGMA]        = ExpandPlaceholder_Magma,
-        [PLACEHOLDER_ID_ARCHIE]       = ExpandPlaceholder_Archie,
-        [PLACEHOLDER_ID_MAXIE]        = ExpandPlaceholder_Maxie,
-        [PLACEHOLDER_ID_KYOGRE]       = ExpandPlaceholder_Kyogre,
-        [PLACEHOLDER_ID_GROUDON]      = ExpandPlaceholder_Groudon,
+        ExpandPlaceholder_Empty,       // 00
+        ExpandPlaceholder_PlayerName,
+        ExpandPlaceholder_StringVar1,
+        ExpandPlaceholder_StringVar2,
+        ExpandPlaceholder_StringVar3,  // 04
+        ExpandPlaceholder_Pokemon,
+        ExpandPlaceholder_TrickMaster,
+        ExpandPlaceholder_RivalName,
+        ExpandPlaceholder_Youngster,
+        ExpandPlaceholder_Wally,       // 09
+        ExpandPlaceholder_Link,        // 0A
+        ExpandPlaceholder_FairyGirl,   // 0B
+        ExpandPlaceholder_Brendan,     // 0C
+        ExpandPlaceholder_May,         // 0D
+        ExpandPlaceholder_Alex,        // 0E
+        ExpandPlaceholder_Empty,       // 0F
+        
+        ExpandPlaceholder_PuzzleName,       // 10
+        ExpandPlaceholder_PuzzleAuthor,     // 11
+        ExpandPlaceholder_PuzzleAdjective,  // 12
+        ExpandPlaceholder_PuzzleQuip,       // 13
+        ExpandPlaceholder_ToTRuleNo,        // 14
+        ExpandPlaceholder_Boulder,          // 15
+        
     };
 
     if (id >= ARRAY_COUNT(funcs))
@@ -683,6 +880,7 @@ u8 GetExtCtrlCodeLength(u8 code)
         [EXT_CTRL_CODE_ENG]                    = 1,
         [EXT_CTRL_CODE_PAUSE_MUSIC]            = 1,
         [EXT_CTRL_CODE_RESUME_MUSIC]           = 1,
+        [EXT_CTRL_CODE_PLAY_MON_CRY]           = 2,
     };
 
     u8 length = 0;

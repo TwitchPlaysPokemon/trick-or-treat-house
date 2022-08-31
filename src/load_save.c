@@ -20,9 +20,10 @@ static void ApplyNewEncryptionKeyToAllEncryptedData(u32 encryptionKey);
 
 struct LoadedSaveData
 {
+ /*0x0000*/ struct ItemSlot candy[BAG_CANDY_COUNT];
  /*0x0000*/ struct ItemSlot items[BAG_ITEMS_COUNT];
  /*0x0078*/ struct ItemSlot keyItems[BAG_KEYITEMS_COUNT];
- /*0x00F0*/ struct ItemSlot pokeBalls[BAG_POKEBALLS_COUNT];
+//  /*0x00F0*/ struct ItemSlot pokeBalls[BAG_POKEBALLS_COUNT];
  /*0x0130*/ struct ItemSlot TMsHMs[BAG_TMHM_COUNT];
  /*0x0230*/ struct ItemSlot berries[BAG_BERRIES_COUNT];
  /*0x02E8*/ struct Mail mail[MAIL_COUNT];
@@ -71,7 +72,7 @@ void SetSaveBlocksPointers(u16 offset)
 {
     struct SaveBlock1** sav1_LocalVar = &gSaveBlock1Ptr;
 
-    offset = (offset + Random()) & (SAVEBLOCK_MOVE_RANGE - 4);
+    offset = 0; //(offset + Random()) & (SAVEBLOCK_MOVE_RANGE - 4);
 
     gSaveBlock2Ptr = (void *)(&gSaveblock2) + offset;
     *sav1_LocalVar = (void *)(&gSaveblock1) + offset;
@@ -94,7 +95,7 @@ void MoveSaveBlocks_ResetHeap(void)
     hblankCB = gMain.hblankCallback;
     gMain.vblankCallback = NULL;
     gMain.hblankCallback = NULL;
-    gTrainerHillVBlankCounter = NULL;
+    // gTrainerHillVBlankCounter = NULL;
 
     saveBlock2Copy = (struct SaveBlock2 *)(gHeap);
     saveBlock1Copy = (struct SaveBlock1 *)(gHeap + sizeof(struct SaveBlock2));
@@ -126,7 +127,7 @@ void MoveSaveBlocks_ResetHeap(void)
     gMain.vblankCallback = vblankCB;
 
     // create a new encryption key
-    encryptionKey = (Random() << 16) + (Random());
+    encryptionKey = 0; //(Random() << 16) + (Random());
     ApplyNewEncryptionKeyToAllEncryptedData(encryptionKey);
     gSaveBlock2Ptr->encryptionKey = encryptionKey;
 }
@@ -208,6 +209,9 @@ void CopyPartyAndObjectsFromSave(void)
 void LoadPlayerBag(void)
 {
     int i;
+    // load player candy.
+    for (i = 0; i < BAG_CANDY_COUNT; i++)
+        gLoadedSaveData.candy[i] = gSaveBlock1Ptr->bagPocket_Candy[i];
 
     // load player items.
     for (i = 0; i < BAG_ITEMS_COUNT; i++)
@@ -217,9 +221,9 @@ void LoadPlayerBag(void)
     for (i = 0; i < BAG_KEYITEMS_COUNT; i++)
         gLoadedSaveData.keyItems[i] = gSaveBlock1Ptr->bagPocket_KeyItems[i];
 
-    // load player pokeballs.
-    for (i = 0; i < BAG_POKEBALLS_COUNT; i++)
-        gLoadedSaveData.pokeBalls[i] = gSaveBlock1Ptr->bagPocket_PokeBalls[i];
+    // // load player pokeballs.
+    // for (i = 0; i < BAG_POKEBALLS_COUNT; i++)
+    //     gLoadedSaveData.pokeBalls[i] = gSaveBlock1Ptr->bagPocket_PokeBalls[i];
 
     // load player TMs and HMs.
     for (i = 0; i < BAG_TMHM_COUNT; i++)
@@ -240,6 +244,10 @@ void SavePlayerBag(void)
 {
     int i;
     u32 encryptionKeyBackup;
+    
+    // save player candy.
+    for (i = 0; i < BAG_CANDY_COUNT; i++)
+        gSaveBlock1Ptr->bagPocket_Candy[i] = gLoadedSaveData.candy[i];
 
     // save player items.
     for (i = 0; i < BAG_ITEMS_COUNT; i++)
@@ -249,9 +257,9 @@ void SavePlayerBag(void)
     for (i = 0; i < BAG_KEYITEMS_COUNT; i++)
         gSaveBlock1Ptr->bagPocket_KeyItems[i] = gLoadedSaveData.keyItems[i];
 
-    // save player pokeballs.
-    for (i = 0; i < BAG_POKEBALLS_COUNT; i++)
-        gSaveBlock1Ptr->bagPocket_PokeBalls[i] = gLoadedSaveData.pokeBalls[i];
+    // // save player pokeballs.
+    // for (i = 0; i < BAG_POKEBALLS_COUNT; i++)
+    //     gSaveBlock1Ptr->bagPocket_PokeBalls[i] = gLoadedSaveData.pokeBalls[i];
 
     // save player TMs and HMs.
     for (i = 0; i < BAG_TMHM_COUNT; i++)

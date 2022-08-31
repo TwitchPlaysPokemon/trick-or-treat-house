@@ -1,6 +1,7 @@
 #include "global.h"
-#include "battle_pyramid.h"
+// #include "battle_pyramid.h"
 #include "bg.h"
+#include "day_night.h"
 #include "fieldmap.h"
 #include "fldeff.h"
 #include "fldeff_misc.h"
@@ -13,6 +14,7 @@
 #include "script.h"
 #include "secret_base.h"
 #include "trainer_hill.h"
+#include "trickhouse.h"
 #include "tv.h"
 #include "constants/rgb.h"
 #include "constants/metatile_behaviors.h"
@@ -72,6 +74,7 @@ void InitMap(void)
 {
     InitMapLayoutData(&gMapHeader);
     SetOccupiedSecretBaseEntranceMetatiles(gMapHeader.events);
+    RunPuzzleSetupScript();
     RunOnLoadMapScript();
 }
 
@@ -81,20 +84,21 @@ void InitMapFromSavedGame(void)
     InitSecretBaseAppearance(FALSE);
     SetOccupiedSecretBaseEntranceMetatiles(gMapHeader.events);
     LoadSavedMapView();
+    // RunPuzzleSetupScript();
     RunOnLoadMapScript();
     UpdateTVScreensOnMap(gBackupMapLayout.width, gBackupMapLayout.height);
 }
 
 void InitBattlePyramidMap(bool8 setPlayerPosition)
 {
-    CpuFastFill(MAPGRID_UNDEFINED << 16 | MAPGRID_UNDEFINED, sBackupMapData, sizeof(sBackupMapData));
-    GenerateBattlePyramidFloorLayout(sBackupMapData, setPlayerPosition);
+    // CpuFastFill(MAPGRID_UNDEFINED << 16 | MAPGRID_UNDEFINED, sBackupMapData, sizeof(sBackupMapData));
+    // GenerateBattlePyramidFloorLayout(sBackupMapData, setPlayerPosition);
 }
 
 void InitTrainerHillMap(void)
 {
-    CpuFastFill(MAPGRID_UNDEFINED << 16 | MAPGRID_UNDEFINED, sBackupMapData, sizeof(sBackupMapData));
-    GenerateTrainerHillFloorLayout(sBackupMapData);
+    // CpuFastFill(MAPGRID_UNDEFINED << 16 | MAPGRID_UNDEFINED, sBackupMapData, sizeof(sBackupMapData));
+    // GenerateTrainerHillFloorLayout(sBackupMapData);
 }
 
 static void InitMapLayoutData(struct MapHeader *mapHeader)
@@ -878,18 +882,18 @@ void LoadTilesetPalette(struct Tileset const *tileset, u16 destOffset, u16 size)
     {
         if (tileset->isSecondary == FALSE)
         {
-            LoadPalette(&black, destOffset, 2);
-            LoadPalette(((u16 *)tileset->palettes) + 1, destOffset + 1, size - 2);
+            LoadPaletteDayNight(&black, destOffset, 2);
+            LoadPaletteDayNight(((u16 *)tileset->palettes) + 1, destOffset + 1, size - 2);
             FieldmapPaletteDummy(destOffset + 1, (size - 2) >> 1);
         }
         else if (tileset->isSecondary == TRUE)
         {
-            LoadPalette(((u16 *)tileset->palettes) + (NUM_PALS_IN_PRIMARY * 16), destOffset, size);
+            LoadPaletteDayNight(((u16 *)tileset->palettes) + (NUM_PALS_IN_PRIMARY * 16), destOffset, size);
             FieldmapPaletteDummy(destOffset, size >> 1);
         }
         else
         {
-            LoadCompressedPalette((u32 *)tileset->palettes, destOffset, size);
+            LoadCompressedPaletteDayNight((u32 *)tileset->palettes, destOffset, size);
             FieldmapPaletteDummy(destOffset, size >> 1);
         }
     }
