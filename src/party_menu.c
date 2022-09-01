@@ -5145,6 +5145,16 @@ static void Task_TryLearningNextMoveAfterText(u8 taskId)
         Task_TryLearningNextMove(taskId);
 }
 
+static void DisplayExpPoints(u8 taskId, TaskFunc task, u8 holdEffectParam)
+{
+    PlaySE(SE_USE_ITEM);
+    ConvertIntToDecimalStringN(gStringVar2, sExpCandyExperienceTable[holdEffectParam], STR_CONV_MODE_LEFT_ALIGN, 3);
+    StringExpandPlaceholders(gStringVar4, gText_PkmnGainedExp);
+    DisplayPartyMenuMessage(gStringVar4, FALSE);
+    ScheduleBgCopyTilemapToVram(2);
+    gTasks[taskId].func = task;
+}
+
 void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
 {
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
@@ -5152,6 +5162,7 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
     s16 *arrayPtr = ptr->data;
     u16 *itemPtr = &gSpecialVar_ItemId;
     bool8 cannotUseEffect;
+    u8 holdEffectParam = ItemId_GetHoldEffectParam(*itemPtr);
     sInitialLevel = GetMonData(mon, MON_DATA_LEVEL);
 
     if (sInitialLevel != MAX_LEVEL)
@@ -5182,8 +5193,18 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
         if (sFinalLevel > sInitialLevel)
         {
             PlayFanfareByFanfareNum(FANFARE_LEVEL_UP);
-            ConvertIntToDecimalStringN(gStringVar2, sFinalLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
-            StringExpandPlaceholders(gStringBuffer, gText_PkmnElevatedToLvVar2);
+            if (holdEffectParam == 0) // Rare Candy
+            {
+                ConvertIntToDecimalStringN(gStringVar2, sFinalLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
+                StringExpandPlaceholders(gStringBuffer, gText_PkmnElevatedToLvVar2);
+            }
+            else // Exp Candies
+            {
+                ConvertIntToDecimalStringN(gStringVar2, sExpCandyExperienceTable[holdEffectParam - 1], STR_CONV_MODE_LEFT_ALIGN, 6);
+                ConvertIntToDecimalStringN(gStringVar3, sFinalLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
+                StringExpandPlaceholders(gStringBuffer, gText_PkmnGainedExpAndElevatedToLvVar3);
+            }
+
             DisplayPartyMenuMessage(gStringBuffer, TRUE);
             ScheduleBgCopyTilemapToVram(2);
             gTasks[taskId].func = Task_DisplayLevelUpStatsPg1;
@@ -5192,7 +5213,7 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
         {
             PlaySE(SE_USE_ITEM);
             gPartyMenuUseExitCallback = FALSE;
-            ConvertIntToDecimalStringN(gStringVar2, sExpCandyExperienceTable[ItemId_GetHoldEffectParam(*itemPtr)], STR_CONV_MODE_LEFT_ALIGN, 3);
+            ConvertIntToDecimalStringN(gStringVar2, sExpCandyExperienceTable[holdEffectParam - 1], STR_CONV_MODE_LEFT_ALIGN, 6);
             StringExpandPlaceholders(gStringBuffer, gText_PkmnGainedExp);
             DisplayPartyMenuMessage(gStringBuffer, FALSE);
             ScheduleBgCopyTilemapToVram(2);
