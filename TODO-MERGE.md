@@ -1,10 +1,10 @@
-- [ ] Check Makefile over
-- [ ] eventObject->unk3_3 -> disableReflection -> hideReflection
-- [ ] gRamScriptRetAddr -> gRamScriptPtr
+- [x] Check Makefile over
+- [X] eventObject->unk3_3 -> disableReflection -> hideReflection
+- [X] gRamScriptRetAddr -> gRamScriptPtr
 - [ ] Layouts.json and map_groups.json - double check
 - [ ] Check m4a_1.s. We replaced it with a new version and they moved it into src. But also we're gonna merge in the music expansion, which also changes it.
-- [ ] VAR_ICE_STEP_COUNT -> VAR_STEP_TRIGGER
-- [ ] Remove apprentace
+- [X] VAR_ICE_STEP_COUNT -> VAR_STEP_TRIGGER
+- [ ] Remove apprentice
 - [ ] constants/items.h - Convert tabs to spaces
 - [ ] GetCollisionFlagsAtCoords - make flag for mismatch == 2
 - [ ] MovementAction_RevealTrainer_Step0 - is it MOVEMENT_TYPE_HIDDEN2 or MOVEMENT_TYPE_BURIED?

@@ -4,7 +4,7 @@
 // field 0 masks
 #define ITEM0_X_ATTACK          0x0F
 #define ITEM0_X_RANDOM          0x10
-#define ITEM0_HIGH_CRIT         0x20 // For Dire Hit, works the same way as move Focus Energy.
+#define ITEM0_HIGH_CRIT         0x20 // For Dire Hit, works the same way as move Focus Energy. // ITEM0_DIRE_HIT
 #define ITEM0_SACRED_ASH        0x40
 #define ITEM0_INFATUATION       0x80
 

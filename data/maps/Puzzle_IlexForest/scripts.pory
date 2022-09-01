@@ -1101,7 +1101,7 @@ script Puzzle_IlexForest_EventScript_Man {
 		msgbox (PuzzleCommon_Text_ScrollFound2)
 		release
 	} else {
-	msgbox ("Do you want to apprentace as a\n"
+	msgbox ("Do you want to apprentice as a\n"
 			"charcoal maker with me?\p"
 			"You'll be first-rate in ten years!$", MSGBOX_NPC)
 	}

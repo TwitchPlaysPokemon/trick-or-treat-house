@@ -798,11 +798,6 @@ static bool8 TryStartWarpEventScript(struct MapPosition *position, u16 metatileB
             DoSpinExitWarp();
             return TRUE;
         }
-        // if (MetatileBehavior_IsMtPyreHole(metatileBehavior) == TRUE)
-        // {
-        //     ScriptContext_SetupScript(EventScript_FallDownHoleMtPyre);
-        //     return TRUE;
-        // }
         if (MetatileBehavior_IsMossdeepGymWarp(metatileBehavior) == TRUE)
         {
             DoMossdeepGymWarp();

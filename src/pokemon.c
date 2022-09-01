@@ -4819,7 +4819,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
             }
 
             // Dire Hit
-            if ((itemEffect[i] & ITEM0_DIRE_HIT)
+            if ((itemEffect[i] & ITEM0_HIGH_CRIT)
              && !(gBattleMons[gActiveBattler].status2 & STATUS2_FOCUS_ENERGY))
             {
                 gBattleMons[gActiveBattler].status2 |= STATUS2_FOCUS_ENERGY;
@@ -5458,7 +5458,7 @@ u8 *UseStatIncreaseItem(u16 itemId)
         if (itemEffect[i] & (ITEM0_X_ATTACK | ITEM1_X_SPEED | ITEM2_X_SPATK))
             BufferStatRoseMessage(i * 2);
 
-        if (itemEffect[i] & (ITEM0_DIRE_HIT | ITEM1_X_DEFEND | ITEM2_X_ACCURACY))
+        if (itemEffect[i] & (ITEM0_HIGH_CRIT | ITEM1_X_DEFEND | ITEM2_X_ACCURACY))
         {
             if (i != 0) // Dire Hit is the only ITEM0 above
             {

@@ -309,7 +309,7 @@ const u8 gItemEffect_GuardSpec[8] = {
 // The full constant is commented next to it
 
 const u8 gItemEffect_DireHit[8] = {
-    [0] = 1 << 5, // ITEM0_DIRE_HIT
+    [0] = 1 << 5, // ITEM0_HIGH_CRIT
     [5] = ITEM5_FRIENDSHIP_LOW | ITEM5_FRIENDSHIP_MID,
     STAT_BOOST_FRIENDSHIP_CHANGE,
 };
