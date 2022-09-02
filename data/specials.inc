@@ -214,15 +214,10 @@ gSpecials::
 	def_special SetCB2WhiteOut
 	@ def_special RotatingGate_InitPuzzle
 	def_special RotatingGate_InitPuzzleAndGraphics
-	def_special SetSSTidalFlag
-	def_special ResetSSTidalFlag
 	def_special EnterSafariMode
 	def_special ExitSafariMode
 	def_special GetPokeblockFeederInFront
 	def_special OpenPokeblockCaseOnFeeder
-	def_special IsMirageIslandPresent
-	def_special UpdateShoalTideFlag
-	def_special InitBirchState
 	def_special ScriptGetPokedexInfo
 	def_special ShowPokedexRatingMessage
 	def_special DoPCTurnOnEffect
@@ -309,7 +304,6 @@ gSpecials::
 	def_special Script_FacePlayer
 	def_special Script_ClearHeldMovement
 	def_special InitRoamer
-	def_special TryUpdateRusturfTunnelState
 	def_special IsGrassTypeInParty
 	def_special DoContestHallWarp
 	def_special PutZigzagoonInPlayerParty

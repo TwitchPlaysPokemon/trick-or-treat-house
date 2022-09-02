@@ -144,83 +144,6 @@ void Special_ViewWallClock(void)
     LockPlayerFieldControls();
 }
 
-void SetSSTidalFlag(void)
-{
-    FlagSet(FLAG_SYS_CRUISE_MODE);
-    *GetVarPointer(VAR_CRUISE_STEP_COUNT) = 0;
-}
-
-void ResetSSTidalFlag(void)
-{
-    FlagClear(FLAG_SYS_CRUISE_MODE);
-}
-
-// Returns TRUE if the Cruise is over
-bool32 CountSSTidalStep(u16 delta)
-{
-    if (!FlagGet(FLAG_SYS_CRUISE_MODE) || (*GetVarPointer(VAR_CRUISE_STEP_COUNT) += delta) < SS_TIDAL_MAX_STEPS)
-        return FALSE;
-
-    return TRUE;
-}
-
-u8 GetSSTidalLocation(s8 *mapGroup, s8 *mapNum, s16 *x, s16 *y)
-{
-    u16 *varCruiseStepCount = GetVarPointer(VAR_CRUISE_STEP_COUNT);
-    switch (*GetVarPointer(VAR_SS_TIDAL_STATE))
-    {
-    case SS_TIDAL_BOARD_SLATEPORT:
-    case SS_TIDAL_LAND_SLATEPORT:
-        return SS_TIDAL_LOCATION_SLATEPORT;
-    case SS_TIDAL_HALFWAY_LILYCOVE:
-    case SS_TIDAL_EXIT_CURRENTS_RIGHT:
-        return SS_TIDAL_LOCATION_ROUTE131;
-    case SS_TIDAL_LAND_LILYCOVE:
-    case SS_TIDAL_BOARD_LILYCOVE:
-        return SS_TIDAL_LOCATION_LILYCOVE;
-    case SS_TIDAL_DEPART_LILYCOVE:
-    case SS_TIDAL_EXIT_CURRENTS_LEFT:
-        return SS_TIDAL_LOCATION_ROUTE124;
-    case SS_TIDAL_DEPART_SLATEPORT:
-        if (*varCruiseStepCount < 60)
-        {
-            *mapNum = MAP_NUM(ROUTE134);
-            *x = *varCruiseStepCount + 19;
-        }
-        else if (*varCruiseStepCount < 140)
-        {
-            *mapNum = MAP_NUM(ROUTE133);
-            *x = *varCruiseStepCount - 60;
-        }
-        else
-        {
-            *mapNum = MAP_NUM(ROUTE132);
-            *x = *varCruiseStepCount - 140;
-        }
-        break;
-    case SS_TIDAL_HALFWAY_SLATEPORT:
-        if (*varCruiseStepCount < 66)
-        {
-            *mapNum = MAP_NUM(ROUTE132);
-            *x = 65 - *varCruiseStepCount;
-        }
-        else if (*varCruiseStepCount < 146)
-        {
-            *mapNum = MAP_NUM(ROUTE133);
-            *x = 145 - *varCruiseStepCount;
-        }
-        else
-        {
-            *mapNum = MAP_NUM(ROUTE134);
-            *x = 224 - *varCruiseStepCount;
-        }
-        break;
-    }
-    *mapGroup = MAP_GROUP(ROUTE132);
-    *y = 20;
-    return SS_TIDAL_LOCATION_CURRENTS;
-}
-
 bool32 ShouldDoWallyCall(void)
 {
     return FALSE;
@@ -1115,26 +1038,6 @@ bool8 Special_AreLeadMonEVsMaxedOut(void)
     return FALSE;
 }
 
-u8 TryUpdateRusturfTunnelState(void)
-{
-    // if (!FlagGet(FLAG_RUSTURF_TUNNEL_OPENED)
-    //     && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(RUSTURF_TUNNEL)
-    //     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(RUSTURF_TUNNEL))
-    // {
-    //     if (FlagGet(FLAG_HIDE_RUSTURF_TUNNEL_ROCK_1))
-    //     {
-    //         VarSet(VAR_RUSTURF_TUNNEL_STATE, 4);
-    //         return TRUE;
-    //     }
-    //     else if (FlagGet(FLAG_HIDE_RUSTURF_TUNNEL_ROCK_2))
-    //     {
-    //         VarSet(VAR_RUSTURF_TUNNEL_STATE, 5);
-    //         return TRUE;
-    //     }
-    // }
-    return FALSE;
-}
-
 void SetShoalItemFlag(u16 unused)
 {
     FlagSet(FLAG_SYS_SHOAL_ITEM);
@@ -1740,9 +1643,9 @@ bool32 PlayerNotAtTrainerHillEntrance(void)
 
 void UpdateFrontierManiac(u16 daysSince)
 {
-    u16 *var = GetVarPointer(VAR_FRONTIER_MANIAC_FACILITY);
-    *var += daysSince;
-    *var %= FRONTIER_MANIAC_FACILITY_COUNT;
+    // u16 *var = GetVarPointer(VAR_FRONTIER_MANIAC_FACILITY);
+    // *var += daysSince;
+    // *var %= FRONTIER_MANIAC_FACILITY_COUNT;
 }
 
 void ShowFrontierManiacMessage(void)

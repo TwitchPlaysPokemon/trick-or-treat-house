@@ -433,11 +433,6 @@ Common_EventScript_BufferTrendyPhrase::
 	special BufferTrendyPhraseString
 	return
 
-EventScript_BackupMrBrineyLocation::
-	copyvar VAR_0x8008, VAR_BRINEY_LOCATION
-	setvar VAR_BRINEY_LOCATION, 0
-	return
-
 	@ .include "data/scripts/surf.inc"
 	.include "data/scripts/rival_graphics.inc"
 	@ .include "data/scripts/set_gym_trainers.inc"
@@ -505,18 +500,6 @@ Movement_FerryDepart:
 	walk_right
 	walk_right
 	step_end
-
-EventScript_HideMrBriney::
-	@ setflag FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
-	@ setflag FLAG_HIDE_MR_BRINEY_BOAT_DEWFORD_TOWN
-	@ setflag FLAG_HIDE_ROUTE_109_MR_BRINEY
-	@ setflag FLAG_HIDE_ROUTE_109_MR_BRINEY_BOAT
-	@ setflag FLAG_HIDE_ROUTE_104_MR_BRINEY
-	@ setflag FLAG_HIDE_ROUTE_104_MR_BRINEY_BOAT
-	@ setflag FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY
-	@ setflag FLAG_HIDE_BRINEYS_HOUSE_PEEKO
-	@ setvar VAR_BRINEY_LOCATION, 0
-	return
 
 RusturfTunnel_EventScript_SetRusturfTunnelOpen::
 	@ removeobject LOCALID_WANDAS_BF

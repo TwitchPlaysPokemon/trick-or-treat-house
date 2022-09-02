@@ -1,7 +1,6 @@
 #include "global.h"
 #include "event_data.h"
 #include "rtc.h"
-#include "time_events.h"
 #include "field_specials.h"
 #include "lottery_corner.h"
 #include "dewford_trend.h"
@@ -46,7 +45,6 @@ static void UpdatePerDay(struct Time *localTime)
         UpdateTVShowsPerDay(daysSince);
         UpdateWeatherPerDay(daysSince);
         UpdatePartyPokerusTime(daysSince);
-        UpdateMirageRnd(daysSince);
         UpdateBirchState(daysSince);
         UpdateFrontierManiac(daysSince);
         UpdateFrontierGambler(daysSince);

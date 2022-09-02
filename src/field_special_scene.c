@@ -280,77 +280,77 @@ void EndTruckSequence(u8 taskId)
 
 bool8 TrySetPortholeWarpDestination(void)
 {
-    s8 mapGroup, mapNum;
-    s16 x, y;
+    // s8 mapGroup, mapNum;
+    // s16 x, y;
 
-    if (GetSSTidalLocation(&mapGroup, &mapNum, &x, &y) != SS_TIDAL_LOCATION_CURRENTS)
-    {
+    // if (GetSSTidalLocation(&mapGroup, &mapNum, &x, &y) != SS_TIDAL_LOCATION_CURRENTS)
+    // {
         return FALSE;
-    }
-    else
-    {
-        SetWarpDestination(mapGroup, mapNum, WARP_ID_NONE, x, y);
-        return TRUE;
-    }
+    // }
+    // else
+    // {
+    //     SetWarpDestination(mapGroup, mapNum, WARP_ID_NONE, x, y);
+    //     return TRUE;
+    // }
 }
 
 void Task_HandlePorthole(u8 taskId)
 {
-    s16 *data = gTasks[taskId].data;
-    u16 *cruiseState = GetVarPointer(VAR_SS_TIDAL_STATE);
-    struct WarpData *location = &gSaveBlock1Ptr->location;
+    // s16 *data = gTasks[taskId].data;
+    // u16 *cruiseState = GetVarPointer(VAR_SS_TIDAL_STATE);
+    // struct WarpData *location = &gSaveBlock1Ptr->location;
 
-    switch (data[0])
-    {
-    case INIT_PORTHOLE: // finish fading before making porthole finish.
-        if (!gPaletteFade.active)
-        {
-            data[1] = 0;
-            data[0] = EXECUTE_MOVEMENT; // execute movement before checking if should be exited. strange?
-        }
-        break;
-    case IDLE_CHECK:
-        if (JOY_NEW(A_BUTTON))
-            data[1] = 1;
-        if (!ScriptMovement_IsObjectMovementFinished(OBJ_EVENT_ID_PLAYER, location->mapNum, location->mapGroup))
-            return;
-        if (CountSSTidalStep(1) == TRUE)
-        {
-            if (*cruiseState == SS_TIDAL_DEPART_SLATEPORT)
-                *cruiseState = SS_TIDAL_EXIT_CURRENTS_RIGHT;
-            else
-                *cruiseState = SS_TIDAL_EXIT_CURRENTS_LEFT;
-            data[0] = EXIT_PORTHOLE;
-            return;
-        }
-        data[0] = EXECUTE_MOVEMENT;
-        //fallthrough
-    case EXECUTE_MOVEMENT:
-        if (data[1])
-        {
-            data[0] = EXIT_PORTHOLE;
-            return;
-        }
+    // switch (data[0])
+    // {
+    // case INIT_PORTHOLE: // finish fading before making porthole finish.
+    //     if (!gPaletteFade.active)
+    //     {
+    //         data[1] = 0;
+    //         data[0] = EXECUTE_MOVEMENT; // execute movement before checking if should be exited. strange?
+    //     }
+    //     break;
+    // case IDLE_CHECK:
+    //     if (JOY_NEW(A_BUTTON))
+    //         data[1] = 1;
+    //     if (!ScriptMovement_IsObjectMovementFinished(OBJ_EVENT_ID_PLAYER, location->mapNum, location->mapGroup))
+    //         return;
+    //     if (CountSSTidalStep(1) == TRUE)
+    //     {
+    //         if (*cruiseState == SS_TIDAL_DEPART_SLATEPORT)
+    //             *cruiseState = SS_TIDAL_EXIT_CURRENTS_RIGHT;
+    //         else
+    //             *cruiseState = SS_TIDAL_EXIT_CURRENTS_LEFT;
+    //         data[0] = EXIT_PORTHOLE;
+    //         return;
+    //     }
+    //     data[0] = EXECUTE_MOVEMENT;
+    //     //fallthrough
+    // case EXECUTE_MOVEMENT:
+    //     if (data[1])
+    //     {
+    //         data[0] = EXIT_PORTHOLE;
+    //         return;
+    //     }
 
-        if (*cruiseState == SS_TIDAL_DEPART_SLATEPORT)
-        {
-            ScriptMovement_StartObjectMovementScript(OBJ_EVENT_ID_PLAYER, location->mapNum, location->mapGroup, sSSTidalSailEastMovementScript);
-            data[0] = IDLE_CHECK;
-        }
-        else
-        {
-            ScriptMovement_StartObjectMovementScript(OBJ_EVENT_ID_PLAYER, location->mapNum, location->mapGroup, sSSTidalSailWestMovementScript);
-            data[0] = IDLE_CHECK;
-        }
-        break;
-    case EXIT_PORTHOLE:
-        FlagClear(FLAG_DONT_TRANSITION_MUSIC);
-        FlagClear(FLAG_HIDE_MAP_NAME_POPUP);
-        SetWarpDestinationToDynamicWarp(0);
-        DoDiveWarp();
+    //     if (*cruiseState == SS_TIDAL_DEPART_SLATEPORT)
+    //     {
+    //         ScriptMovement_StartObjectMovementScript(OBJ_EVENT_ID_PLAYER, location->mapNum, location->mapGroup, sSSTidalSailEastMovementScript);
+    //         data[0] = IDLE_CHECK;
+    //     }
+    //     else
+    //     {
+    //         ScriptMovement_StartObjectMovementScript(OBJ_EVENT_ID_PLAYER, location->mapNum, location->mapGroup, sSSTidalSailWestMovementScript);
+    //         data[0] = IDLE_CHECK;
+    //     }
+    //     break;
+    // case EXIT_PORTHOLE:
+    //     FlagClear(FLAG_DONT_TRANSITION_MUSIC);
+    //     FlagClear(FLAG_HIDE_MAP_NAME_POPUP);
+    //     SetWarpDestinationToDynamicWarp(0);
+    //     DoDiveWarp();
         DestroyTask(taskId);
-        break;
-    }
+    //     break;
+    // }
 }
 
 static void ShowSSTidalWhileSailing(void)
