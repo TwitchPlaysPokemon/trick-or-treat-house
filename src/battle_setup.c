@@ -1125,7 +1125,7 @@ const u8 *BattleSetup_ConfigureTrainerBattle(const u8 *data)
         return EventScript_DoNoIntroTrainerBattle;
     case TRAINER_BATTLE_DOUBLE_NO_INTRO_TEXT:
         TrainerBattleLoadArgs(sOrdinaryNoIntroBattleParams, data);
-        return EventScript_DoDoubleTainerBattle;
+        return EventScript_DoNoIntroDoubleTrainerBattle;
     case TRAINER_BATTLE_DOUBLE:
         TrainerBattleLoadArgs(sDoubleBattleParams, data);
         SetMapVarsToTrainer();

@@ -422,9 +422,9 @@ bool8 TryRunFromBattle(u8 battler)
     {
         gLastUsedItem = gBattleMons[battler].item;
         if (gLastUsedItem == ITEM_CANDY_SNICKERS) {
-            gProtectStructs[battler].fleeFlag = FLEE_SNICKERS;
+            gProtectStructs[battler].fleeType = FLEE_SNICKERS;
         } else {
-            gProtectStructs[battler].fleeFlag = FLEE_ITEM;
+            gProtectStructs[battler].fleeType = FLEE_ITEM;
         }
         effect++;
     }

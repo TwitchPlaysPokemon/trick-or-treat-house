@@ -34,6 +34,7 @@
 #include "new_game.h"
 #include "save.h"
 #include "strings.h"
+#include "constants/flags.h"
 #include "constants/game_stat.h"
 #include "constants/items.h"
 #include "constants/rgb.h"
@@ -66,45 +67,6 @@ enum {
     CANT_PLAY_NO_BERRIES,
     CANT_PLAY_NO_PKBLCK_SPACE
 };
-
-enum {
-    BLENDER_MISTER,
-    BLENDER_LADDIE,
-    BLENDER_LASSIE,
-    BLENDER_MASTER,
-    BLENDER_DUDE,
-    BLENDER_MISS
-};
-
-#define BLENDER_MAX_PLAYERS MAX_LINK_PLAYERS
-
-#define NO_PLAYER 0xFF
-
-#define MAX_PROGRESS_BAR 1000
-
-#define MAX_ARROW_POS 0x10000 // By virtue of being u16
-#define MIN_ARROW_SPEED 0x80
-#define ARROW_FALL_ROTATION 0x5800 // The amount the arrow spins as it falls in at the start
-
-// Tile offsets
-#define PROGRESS_BAR_FILLED_TOP    0x80E9
-#define PROGRESS_BAR_FILLED_BOTTOM 0x80F9
-#define PROGRESS_BAR_EMPTY_TOP     0x80E1
-#define PROGRESS_BAR_EMPTY_BOTTOM  0x80F1
-#define RPM_DIGIT 0x8072
-
-// Tile and palette tags
-#define GFXTAG_COUNTDOWN_NUMBERS 12345
-#define GFXTAG_START             12346
-#define GFXTAG_PARTICLES         23456
-#define GFXTAG_PLAYER_ARROW      46545
-#define GFXTAG_SCORE_SYMBOLS     48888
-
-#define PALTAG_PLAYER_ARROW      12312
-#define PALTAG_MISC              46546
-
-// Last berry that an NPC can put in
-#define NUM_NPC_BERRIES ITEM_TO_BERRY(ITEM_ASPEAR_BERRY)
 
 enum {
     BLENDER_MISTER,
@@ -907,7 +869,7 @@ static const s16 sBerrySpriteData[][5] =
 // There are only 5 different berries the NPCs will ever use
 // Each of these sets represents 3 berries chosen to be used by the NPCs
 // If the player's berry is one of the 5 possible berries, a set is chosen that excludes it
-static const u8 sOpponentBerrySets[NUM_NPC_BERRIES * 2NUM_NPC_BERRIES * 2][3] =
+static const u8 sOpponentBerrySets[NUM_NPC_BERRIES * 2][3] =
 {
     // These sets are used if the player chose one of the 5 NPC berries
     {ITEM_TO_BERRY(ITEM_ASPEAR_BERRY) - 1, ITEM_TO_BERRY(ITEM_RAWST_BERRY) - 1,  ITEM_TO_BERRY(ITEM_PECHA_BERRY) - 1},   // player chose Cheri Berry

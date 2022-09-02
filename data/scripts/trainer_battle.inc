@@ -50,7 +50,7 @@ EventScript_DoNoIntroTrainerBattle::
 	dotrainerbattle
 	gotopostbattlescript
 
-EventScript_DoDoubleTainerBattle:: @ Used in Loss Puzzle
+EventScript_DoNoIntroDoubleTrainerBattle:: @ Used in Loss Puzzle
 	applymovement VAR_LAST_TALKED, Movement_RevealTrainer
 	waitmovement 0
 	special HasEnoughMonsForDoubleBattle
