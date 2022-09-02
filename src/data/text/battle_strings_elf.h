@@ -53,8 +53,8 @@ static const u8 sBort_PkmnBrokeFree[] = _("NO!ELF COME OUT");
 static const u8 sBort_ItAppearedCaught[] = _("REGARD AS HAVING CAUGHT AT FIRST");
 static const u8 sBort_AarghAlmostHadIt[] = _("TOO REGRET,ALMOST CAUGHT IT");
 static const u8 sBort_ShootSoClose[] = _("REGRET!ALMOST...");
-static const u8 sBort_GotchaPkmnCaught[] = _("SUCCESS {B_OPPONENT_MON1_NAME}\nCAUGHT{WAIT_SE}{PLAY_BGM MUS_KACHI22}\p");
-static const u8 sBort_GotchaPkmnCaught2[] = _("SUCCESS {B_OPPONENT_MON1_NAME}\nCAUGHT{WAIT_SE}{PLAY_BGM MUS_KACHI22}{PAUSE 127}");
+static const u8 sBort_GotchaPkmnCaught[] = _("SUCCESS {B_OPPONENT_MON1_NAME}\nCAUGHT{WAIT_SE}{PLAY_BGM MUS_CAUGHT}\p");
+static const u8 sBort_GotchaPkmnCaught2[] = _("SUCCESS {B_OPPONENT_MON1_NAME}\nCAUGHT{WAIT_SE}{PLAY_BGM MUS_CAUGHT}{PAUSE 127}");
 
 static const u8 sBort_TrainerBlockedBall[] = _("BALL SPRING TO ELF");
 static const u8 sBort_DontBeAThief[] = _("??? ??? ???? ???Y!");
@@ -271,7 +271,7 @@ const u8 * const gElfBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNSTORINGENERGY - BATTLESTRINGS_TABLE_START] = sText_PkmnStoringEnergy,
     [STRINGID_PKMNUNLEASHEDENERGY - BATTLESTRINGS_TABLE_START] = sText_PkmnUnleashedEnergy,
     [STRINGID_PKMNFATIGUECONFUSION - BATTLESTRINGS_TABLE_START] = sText_PkmnFatigueConfusion,
-    [STRINGID_PKMNPICKEDUPITEM - BATTLESTRINGS_TABLE_START] = sText_PkmnPickedUpItem,
+    [STRINGID_PLAYERPICKEDUPMONEY - BATTLESTRINGS_TABLE_START] = sText_PlayerPickedUpMoney,
     [STRINGID_PKMNUNAFFECTED - BATTLESTRINGS_TABLE_START] = sBort_PkmnUnaffected,
     [STRINGID_PKMNTRANSFORMEDINTO - BATTLESTRINGS_TABLE_START] = sText_PkmnTransformedInto,
     [STRINGID_PKMNMADESUBSTITUTE - BATTLESTRINGS_TABLE_START] = sText_PkmnMadeSubstitute,
@@ -362,10 +362,10 @@ const u8 * const gElfBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_STATROSE - BATTLESTRINGS_TABLE_START] = sBort_StatRose,
     [STRINGID_STATHARSHLY - BATTLESTRINGS_TABLE_START] = sBort_StatHarshly,
     [STRINGID_STATFELL - BATTLESTRINGS_TABLE_START] = sBort_StatFell,
-    [STRINGID_PKMNSSTATCHANGED - BATTLESTRINGS_TABLE_START] = sText_PkmnsStatChanged,
-    [STRINGID_PKMNSSTATCHANGED2 - BATTLESTRINGS_TABLE_START] = gText_PkmnsStatChanged2,
-    [STRINGID_PKMNSSTATCHANGED3 - BATTLESTRINGS_TABLE_START] = sText_PkmnsStatChanged3,
-    [STRINGID_PKMNSSTATCHANGED4 - BATTLESTRINGS_TABLE_START] = sText_PkmnsStatChanged4,
+    [STRINGID_ATTACKERSSTATROSE - BATTLESTRINGS_TABLE_START] = sText_AttackersStatRose,
+    [STRINGID_DEFENDERSSTATROSE - BATTLESTRINGS_TABLE_START] = gText_DefendersStatRose,
+    [STRINGID_ATTACKERSSTATFELL - BATTLESTRINGS_TABLE_START] = sText_AttackersStatFell,
+    [STRINGID_DEFENDERSSTATFELL - BATTLESTRINGS_TABLE_START] = sText_DefendersStatFell,
     [STRINGID_CRITICALHIT - BATTLESTRINGS_TABLE_START] = sBort_CriticalHit,
     [STRINGID_ONEHITKO - BATTLESTRINGS_TABLE_START] = sText_OneHitKO,
     [STRINGID_123POOF - BATTLESTRINGS_TABLE_START] = sText_123Poof,
@@ -474,7 +474,7 @@ const u8 * const gElfBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_SOOTHINGAROMA - BATTLESTRINGS_TABLE_START] = sText_SoothingAroma,
     [STRINGID_ITEMSCANTBEUSEDNOW - BATTLESTRINGS_TABLE_START] = sText_ItemsCantBeUsedNow,
     [STRINGID_FORXCOMMAYZ - BATTLESTRINGS_TABLE_START] = sText_ForXCommaYZ,
-    [STRINGID_USINGXTHEYOFZN - BATTLESTRINGS_TABLE_START] = sText_UsingXTheYOfZN,
+    [STRINGID_USINGITEMSTATOFPKMNROSE - BATTLESTRINGS_TABLE_START] = sText_UsingItemTheStatOfPkmnRose,
     [STRINGID_PKMNUSEDXTOGETPUMPED - BATTLESTRINGS_TABLE_START] = sText_PkmnUsedXToGetPumped,
     [STRINGID_PKMNSXMADEYUSELESS - BATTLESTRINGS_TABLE_START] = sText_PkmnsXMadeYUseless,
     [STRINGID_PKMNTRAPPEDBYSANDTOMB - BATTLESTRINGS_TABLE_START] = sText_PkmnTrappedBySandTomb,
@@ -527,8 +527,8 @@ const u8 * const gElfBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_FORFEITEDMATCH - BATTLESTRINGS_TABLE_START] = sText_ForfeitedMatch,
     [STRINGID_PKMNTRANSFERREDSOMEONESPC - BATTLESTRINGS_TABLE_START] = gText_PkmnTransferredSomeonesPC,
     [STRINGID_PKMNTRANSFERREDLANETTESPC - BATTLESTRINGS_TABLE_START] = gText_PkmnTransferredLanettesPC,
-    [STRINGID_PKMNBOXSOMEONESPCFULL - BATTLESTRINGS_TABLE_START] = gText_PkmnBoxSomeonesPCFull,
-    [STRINGID_PKMNBOXLANETTESPCFULL - BATTLESTRINGS_TABLE_START] = gText_PkmnBoxLanettesPCFull,
+    [STRINGID_PKMNBOXSOMEONESPCFULL - BATTLESTRINGS_TABLE_START] = gText_PkmnTransferredSomeonesPCBoxFull,
+    [STRINGID_PKMNBOXLANETTESPCFULL - BATTLESTRINGS_TABLE_START] = gText_PkmnTransferredLanettesPCBoxFull,
     [STRINGID_TRAINER1WINTEXT - BATTLESTRINGS_TABLE_START] = sText_Trainer1WinText,
     [STRINGID_TRAINER2WINTEXT - BATTLESTRINGS_TABLE_START] = sText_Trainer2WinText,
     [STRINGID_POKEMONATECANDY - BATTLESTRINGS_TABLE_START] = sText_OpponentAteCandy,
@@ -697,7 +697,7 @@ void BufferStringBattle_BORT(u16 stringID)
         }
         else
         {
-            if (gTrainerBattleOpponent_A == TRAINER_LINK_OPPONENT || gBattleTypeFlags & BATTLE_TYPE_x2000000)
+            if (gTrainerBattleOpponent_A == TRAINER_LINK_OPPONENT || gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK)
             {
                 if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
                     stringPtr = sText_LinkTrainer2WithdrewPkmn;
@@ -772,7 +772,7 @@ void BufferStringBattle_BORT(u16 stringID)
                 switch (gBattleTextBuff1[0])
                 {
                 case B_OUTCOME_WON:
-                    if (gBattleTypeFlags & BATTLE_TYPE_x800000)
+                    if (gBattleTypeFlags & BATTLE_TYPE_RECORDED_IS_MASTER)
                         stringPtr = sText_TwoInGameTrainersDefeated;
                     else
                         stringPtr = sText_TwoLinkTrainersDefeated;
@@ -785,7 +785,7 @@ void BufferStringBattle_BORT(u16 stringID)
                     break;
                 }
             }
-            else if (gTrainerBattleOpponent_A == TRAINER_OPPONENT_C00)
+            else if (gTrainerBattleOpponent_A == TRAINER_UNION_ROOM)
             {
                 switch (gBattleTextBuff1[0])
                 {

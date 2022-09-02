@@ -2729,7 +2729,6 @@ static void SpriteCB_Flicker(struct Sprite *sprite)
         {
             sprite->invisible = FALSE;
             sprite->callback = SpriteCallbackDummy_2;
-            sFlickerArray[0] = 0;
         }
     }
 }
