@@ -849,7 +849,7 @@ void CountTwinMemoriesBoulders(struct ScriptContext *ctx) {
 	xbase = COORD_X(ctx->data[1]);
 	ybase = COORD_Y(ctx->data[1]);
 	
-	for (o = 0; o < EVENT_OBJECTS_COUNT; o++) {
+	for (o = 0; o < OBJECT_EVENTS_COUNT; o++) {
 		eventObject = &gEventObjects[o];
         if (eventObject->isPlayer) continue;
         if (!eventObject->active) continue;
@@ -885,7 +885,7 @@ void SetupTwinMemoriesBoulders(struct ScriptContext *ctx) {
 	ybase = COORD_Y(ctx->data[1]);
 	
 	// boulders are 2, 3, 4, 5, 6, 7
-	for (o = 0; o < EVENT_OBJECTS_COUNT; o++) {
+	for (o = 0; o < OBJECT_EVENTS_COUNT; o++) {
 		eventObject = &gEventObjects[o];
 		if (eventObject->localId >= 2 && eventObject->localId <= 7) {
 			i = currConfig[eventObject->localId-2];
@@ -1027,7 +1027,7 @@ void CountNPCTriggers(struct ScriptContext *ctx) {
 	
 	gSpecialVar_Result = 0;
 	
-	for (o = 0; o < EVENT_OBJECTS_COUNT; o++) {
+	for (o = 0; o < OBJECT_EVENTS_COUNT; o++) {
 		eventObject = &gEventObjects[o];
         if (eventObject->isPlayer) continue;
         if (!eventObject->active) continue;

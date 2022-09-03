@@ -99,7 +99,7 @@
 #define VAR_REPEL_STEP_COUNT                 0x4045
 #define VAR_STEP_TRIGGER                     0x4046 // Used for the ice cracking puzzle, the mach bike floor cracking puzzle, and npc triggers
 #define VAR_STARTER_MON                      0x4047
-#define VAR_UNUSED_0x4048                    0x4048
+#define VAR_FRIENDSHIP_STEP_COUNTER          0x4048
 #define VAR_UNUSED_0x4049                    0x4049
 #define VAR_SECRET_BASE_MAP                  0x404A
 #define VAR_CYCLING_ROAD_RECORD_COLLISIONS   0x404B

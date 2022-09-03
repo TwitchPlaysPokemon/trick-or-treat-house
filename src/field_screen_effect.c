@@ -260,7 +260,7 @@ static void SetUpWarpExitTask(void)
     TaskFunc func;
 
     PlayerGetDestCoords(&x, &y);
-    if ((behavior = GetNonPlayerObjectEventIdByXY(x, y)) < EVENT_OBJECTS_COUNT)
+    if ((behavior = GetNonPlayerObjectEventIdByXY(x, y)) < OBJECT_EVENTS_COUNT)
     {   // For exiting from trick door objects
         const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(gObjectEvents[behavior].graphicsId);
         if (graphicsInfo != NULL)

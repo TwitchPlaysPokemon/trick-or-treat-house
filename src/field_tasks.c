@@ -1290,7 +1290,7 @@ static void MonitorEventObjectTriggersStepCallback(u8 taskId)
     if (tPosX == x && tPosY == y) return;
     
     // For every event object
-    for (o = 0; o < EVENT_OBJECTS_COUNT; o++) {
+    for (o = 0; o < OBJECT_EVENTS_COUNT; o++) {
         eventObject = &gEventObjects[o];
         if (eventObject->isPlayer) continue;
         if (!eventObject->active) continue;
@@ -1368,7 +1368,7 @@ static void MonitorMultiEventObjectTriggersStepCallback(u8 taskId)
     if (VarGet(VAR_STEP_TRIGGER) != 0) return;
     
     // For every event object
-    for (o = 0; o < EVENT_OBJECTS_COUNT; o++) {
+    for (o = 0; o < OBJECT_EVENTS_COUNT; o++) {
         eventObject = &gEventObjects[o];
         if (eventObject->isPlayer) continue;
         if (!eventObject->active) continue;

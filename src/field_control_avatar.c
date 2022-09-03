@@ -354,8 +354,8 @@ static const u8 *GetBumpInteractObjectEventScript(struct MapPosition *position, 
     u8 objectEventId;
     const u8 *script;
 
-    objectEventId = GetObjectEventIdByXYZ(position->x, position->y, position->height);
-    if (objectEventId == EVENT_OBJECTS_COUNT || gObjectEvents[objectEventId].localId == OBJ_EVENT_ID_PLAYER)
+    objectEventId = GetObjectEventIdByPosition(position->x, position->y, position->elevation);
+    if (objectEventId == OBJECT_EVENTS_COUNT || gObjectEvents[objectEventId].localId == OBJ_EVENT_ID_PLAYER)
         return NULL;
     
     if (gObjectEvents[objectEventId].trainerType != TRAINER_TYPE_BUMP_TO_INTERACT)

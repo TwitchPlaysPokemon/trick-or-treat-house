@@ -87,6 +87,7 @@ u8 GetMoveDirectionAnimNum(u8);
 u8 GetObjectEventIdByLocalIdAndMap(u8, u8, u8);
 bool8 TryGetObjectEventIdByLocalIdAndMap(u8, u8, u8, u8 *);
 u8 GetObjectEventIdByXY(s16, s16);
+u8 GetObjectEventIdByPosition(u16 x, u16 y, u8 elevation); // GetObjectEventIdByXYZ
 u8 GetNonPlayerObjectEventIdByXY(s16, s16);
 void SetObjectEventDirection(struct ObjectEvent *, u8);
 u8 GetFirstInactiveObjectEventId(void);
@@ -136,7 +137,6 @@ u8 GetCollisionAtCoords(struct ObjectEvent *, s16, s16, u32);
 void MoveCoords(u8, s16 *, s16 *);
 bool8 ObjectEventIsHeldMovementActive(struct ObjectEvent *);
 u8 ObjectEventClearHeldMovementIfFinished(struct ObjectEvent *);
-u8 GetObjectEventIdByPosition(u16 x, u16 y, u8 elevation);
 void SetTrainerMovementType(struct ObjectEvent *objectEvent, u8 movementType);
 u8 GetTrainerFacingDirectionMovementType(u8 direction);
 const u8 *GetObjectEventScriptPointerByObjectEventId(u8 objectEventId);
