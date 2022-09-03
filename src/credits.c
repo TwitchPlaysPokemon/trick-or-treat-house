@@ -157,13 +157,7 @@ struct CreditsItemSpawn
 EWRAM_DATA bool8 gHasHallOfFameRecords = 0;
 static EWRAM_DATA struct CreditsData *sCreditsData = {0};
 
-static const u16 sCreditsPalettes[][16] =
-{
-    INCBIN_U16("graphics/credits/credits_1.gbapal"),
-    INCBIN_U16("graphics/credits/credits_2.gbapal"),
-    INCBIN_U16("graphics/credits/credits_3.gbapal"),
-    INCBIN_U16("graphics/credits/credits_4.gbapal"),
-};
+static const u16 sCreditsPalettes[][16] = INCBIN_U16("graphics/credits/credits.gbapal");;
 
 static const u32 gCreditsCopyrightEnd_Gfx[] = INCBIN_U32("graphics/credits/the_end_copyright.4bpp.lz");
 static const u8 gCreditsSunset_Gfx[] = INCBIN_U8("graphics/intro/credits_sunset.4bpp");
@@ -200,7 +194,7 @@ static const struct SpriteTemplate gCreditsSunsetSpriteTemplate =
     .callback = SpriteCB_Sunset
 };
 
-static const u8 sTheEnd_LetterTMap[] =
+static const u8 sTheEnd_LetterMap_T[] =
 {
     0,    1, 0,
     0xFF, 1, 0xFF,
@@ -575,34 +569,34 @@ static bool8 LoadInitialBikingScene(u8 taskId)
         switch (gSaveBlock2Ptr->playerGender) {
             default:
             case GENDER_M:
-                LoadCompressedSpriteSheet(gIntro2BrendanExtendedSpriteSheet);
-                // LoadCompressedSpriteSheet(gIntro2MaySpriteSheet);
-                LoadCompressedSpriteSheet(gIntro2BikeSpriteSheet);
-                LoadSpritePalettes(gIntroBikeAndFlygonPalette);
+                LoadCompressedSpriteSheet(gSpriteSheet_CreditsBrendan);
+                // LoadCompressedSpriteSheet(gSpriteSheet_CreditsRivalMay);
+                LoadCompressedSpriteSheet(gSpriteSheet_CreditsBicycle);
+                LoadSpritePalettes(gSpritePalettes_Credits);
 
-                spriteId = intro_create_brendan_sprite(120, 46);
+                spriteId = CreateIntroBrendanSprite(120, 46);
                 gTasks[taskId].data[TDB_PLAYER_CYCLIST] = spriteId;
                 gSprites[spriteId].callback = SpriteCB_Player;
                 gSprites[spriteId].anims = sAnims_Player;
                 break;
             case GENDER_F:
-                LoadCompressedSpriteSheet(gIntro2MayExtendedSpriteSheet);
-                // LoadCompressedSpriteSheet(gIntro2BrendanSpriteSheet);
-                LoadCompressedSpriteSheet(gIntro2BikeSpriteSheet);
-                LoadSpritePalettes(gIntroBikeAndFlygonPalette);
+                LoadCompressedSpriteSheet(gSpriteSheet_CreditsMay);
+                // LoadCompressedSpriteSheet(gSpriteSheet_CreditsRivalBrendan);
+                LoadCompressedSpriteSheet(gSpriteSheet_CreditsBicycle);
+                LoadSpritePalettes(gSpritePalettes_Credits);
 
-                spriteId = intro_create_may_sprite(120, 46);
+                spriteId = CreateIntroMaySprite(120, 46);
                 gTasks[taskId].data[TDB_PLAYER_CYCLIST] = spriteId;
                 gSprites[spriteId].callback = SpriteCB_Player;
                 gSprites[spriteId].anims = sAnims_Player;
                 break;
             case GENDER_N:
-                LoadCompressedSpriteSheet(gIntro2TreekidExtendedSpriteSheet);
-                // LoadCompressedSpriteSheet(gIntro2TreekidSpriteSheet);
-                LoadCompressedSpriteSheet(gIntro2BikeSpriteSheet);
-                LoadSpritePalettes(gIntroBikeAndFlygonPalette);
+                LoadCompressedSpriteSheet(gSpriteSheet_CreditsTreekid);
+                // LoadCompressedSpriteSheet(gSpriteSheet_CreditsTreekid);
+                LoadCompressedSpriteSheet(gSpriteSheet_CreditsBicycle);
+                LoadSpritePalettes(gSpritePalettes_Credits);
 
-                spriteId = intro_create_treekid_sprite(120, 46);
+                spriteId = CreateIntroTreekidSprite(120, 46);
                 gTasks[taskId].data[TDB_PLAYER_CYCLIST] = spriteId;
                 gSprites[spriteId].callback = SpriteCB_Player;
                 gSprites[spriteId].anims = sAnims_Player;
@@ -618,12 +612,12 @@ static bool8 LoadInitialBikingScene(u8 taskId)
 		gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].invisible = FALSE;
 		gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].x = 240;
 		gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].y = 0;
-		gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].pos2.x = SPRITE_OFFSET_PLAYER_X;
-		gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].pos2.y = SPRITE_OFFSET_PLAYER_Y;
+		gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].x2 = SPRITE_OFFSET_PLAYER_X;
+		gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].y2 = SPRITE_OFFSET_PLAYER_Y;
 		gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].data[SPD_CURR_ANIM] = 0;
 		gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].data[SPD_DESTX] = 240;
 		gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].data[SPD_DESTY] = 0;
-        SetGpuRegistersForBikeScene(0);
+        SetCreditsSceneBgCnt(0);
         gMain.state = 0;
         return TRUE;
     }
@@ -644,7 +638,7 @@ void LoadCandyGraphics()
     MakeObjectTemplateFromEventObjectGraphicsInfo(OBJ_EVENT_GFX_ITEM_BALL, SpriteCB_CandyItem, spriteTemplate, &subspriteTables);
     if (spriteTemplate->paletteTag != 0xFFFF)
     {
-        LoadEventObjectPalette(spriteTemplate->paletteTag);
+        LoadObjectEventPalette(spriteTemplate->paletteTag);
     }
     for (i = 0; i < NUM_CANDY_SPRITES; i++) {
         spriteId = CreateSprite(spriteTemplate, 0, 0, 6);
@@ -654,8 +648,8 @@ void LoadCandyGraphics()
         sprite = &gSprites[spriteId];
         sprite->x = -32;
         sprite->y = 0;
-        sprite->pos2.x = SPRITE_OFFSET_ITEM_X;
-        sprite->pos2.y = SPRITE_OFFSET_ITEM_Y;
+        sprite->x2 = SPRITE_OFFSET_ITEM_X;
+        sprite->y2 = SPRITE_OFFSET_ITEM_Y;
         sprite->oam.priority = 1;
         // With the below, we won't need the sprite template, which will be freed at the end of this funciton
         sprite->data[SPI_PAL_ID] = spriteTemplate->paletteTag;
@@ -758,12 +752,12 @@ static void LoadTheEndScreen(u16 vAddr, u16 palette)
     for (pos = 0; pos < 32 * 32; pos++)
         ((u16 *) (VRAM + vAddr))[pos] = baseTile + 1;
 
-    LoadEndScreenCharacter(sTheEnd_LetterTMap, 3, 7, vAddr, palette);
-    LoadEndScreenCharacter(sTheEnd_LetterHMap, 7, 7, vAddr, palette);
-    LoadEndScreenCharacter(sTheEnd_LetterEMap, 11, 7, vAddr, palette);
-    LoadEndScreenCharacter(sTheEnd_LetterEMap, 16, 7, vAddr, palette);
-    LoadEndScreenCharacter(sTheEnd_LetterNMap, 20, 7, vAddr, palette);
-    LoadEndScreenCharacter(sTheEnd_LetterDMap, 24, 7, vAddr, palette);
+    LoadEndScreenCharacter(sTheEnd_LetterMap_T, 3, 7, vAddr, palette);
+    LoadEndScreenCharacter(sTheEnd_LetterMap_H, 7, 7, vAddr, palette);
+    LoadEndScreenCharacter(sTheEnd_LetterMap_E, 11, 7, vAddr, palette);
+    LoadEndScreenCharacter(sTheEnd_LetterMap_E, 16, 7, vAddr, palette);
+    LoadEndScreenCharacter(sTheEnd_LetterMap_N, 20, 7, vAddr, palette);
+    LoadEndScreenCharacter(sTheEnd_LetterMap_D, 24, 7, vAddr, palette);
 }
 
 
@@ -897,13 +891,13 @@ void CB2_StartCreditsSequence(void)
             break;
     }
 	
-	sCreditsData->taskIdC = CreateBikeBackgroundAnimationTask(0, 0x2000, 0x20, 8);
+	sCreditsData->taskIdC = CreateBicycleBgAnimationTask(0, 0x2000, 0x20, 8);
 	sCreditsData->taskIdD = CreateTask(Task_FlickerPalette, 0);
 	
 	BeginNormalPaletteFade(0xFFFFFFFF, 0, 16, 0, RGB_BLACK);
 	EnableInterrupts(INTR_FLAG_VBLANK);
 	SetVBlankCallback(CreditsVBlankCallback);
-	m4aSongNumStart(MUS_THANKFOR);
+	m4aSongNumStart(MUS_CREDITS);
 	SetMainCallback2(CB2_RunCreditsSequence);
 }
 
@@ -1328,7 +1322,7 @@ static void Task_FlickerPalette(u8 taskId)
         ForceTintPaletteForDayNight(256, 256);
     }
     
-	Intro2FlickerPalette(0);
+	CycleSceneryPalette(0);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

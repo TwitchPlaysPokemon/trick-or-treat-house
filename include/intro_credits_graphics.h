@@ -25,13 +25,14 @@ extern u16 gIntroCredits_MovingSceneryVBase;
 extern s16 gIntroCredits_MovingSceneryVOffset;
 extern s16 gIntroCredits_MovingSceneryState;
 
-extern const struct CompressedSpriteSheet gSpriteSheet_IntroBrendan[];
-extern const struct CompressedSpriteSheet gSpriteSheet_IntroMay[];
+// extern const struct CompressedSpriteSheet gSpriteSheet_IntroBrendan[];
+// extern const struct CompressedSpriteSheet gSpriteSheet_IntroMay[];
 extern const struct CompressedSpriteSheet gSpriteSheet_IntroBicycle[];
 extern const struct CompressedSpriteSheet gSpriteSheet_IntroFlygon[];
 extern const struct SpritePalette gSpritePalettes_IntroPlayerFlygon[];
 extern const struct CompressedSpriteSheet gSpriteSheet_CreditsBrendan[];
 extern const struct CompressedSpriteSheet gSpriteSheet_CreditsMay[];
+extern const struct CompressedSpriteSheet gSpriteSheet_CreditsTreekid[];
 extern const struct CompressedSpriteSheet gSpriteSheet_CreditsBicycle[];
 extern const struct CompressedSpriteSheet gSpriteSheet_CreditsRivalBrendan[];
 extern const struct CompressedSpriteSheet gSpriteSheet_CreditsRivalMay[];
@@ -45,6 +46,7 @@ u8 CreateBicycleBgAnimationTask(u8 mode, u16 bg1Speed, u16 bg2Speed, u16 bg3Spee
 void CycleSceneryPalette(u8);
 u8 CreateIntroBrendanSprite(s16 x, s16 y);
 u8 CreateIntroMaySprite(s16 x, s16 y);
+u8 CreateIntroTreekidSprite(s16 x, s16 y);
 u8 CreateIntroFlygonSprite(s16 x, s16 y);
 
 #endif // GUARD_INTRO_CREDITS_GRAPHICS_H

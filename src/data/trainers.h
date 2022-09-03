@@ -1,6 +1,5 @@
 #define DUMMY_TRAINER(name) \
     { \
-        .partyFlags = 0, \
         .trainerClass = TRAINER_CLASS_DEVELOPER, \
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE, \
         .trainerPic = TRAINER_PIC_YOUNGSTER, \
@@ -8,7 +7,6 @@
         .items = {}, \
         .doubleBattle = FALSE, \
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE, \
-        .partySize = ARRAY_COUNT(sParty_Joey), \
         .party = NO_ITEM_DEFAULT_MOVES(sParty_Joey), \
     }
 
@@ -16,7 +14,6 @@
 const struct Trainer gTrainers[] = {
     [TRAINER_NONE] =
     {
-        .partyFlags = 0,
         .trainerClass = TRAINER_CLASS_DEVELOPER,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_YOUNGSTER,
@@ -24,7 +21,6 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .partySize = ARRAY_COUNT(sParty_Joey),
         .party = NO_ITEM_DEFAULT_MOVES(sParty_Joey),
     },
     

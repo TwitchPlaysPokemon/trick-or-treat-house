@@ -781,7 +781,7 @@ void TryPrepareSecondApproachingTrainer(void)
 
 #define LOAD_PALETTE(template) \
     u8 spriteId, paletteNum; \
-    // LoadEventObjectPalette(template.paletteTag); \
+    // LoadObjectEventPalette(template.paletteTag); \
     // paletteNum = IndexOfSpritePaletteTag(template.paletteTag); \
     // UpdatePaletteGammaType(paletteNum, GAMMA_ALT); \
     // UpdateSpritePaletteWithWeather(paletteNum);

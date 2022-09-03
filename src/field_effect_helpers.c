@@ -90,14 +90,14 @@ static void LoadObjectReflectionPalette(struct ObjectEvent *objectEvent, struct 
         // This is so the sprite blends in with the dark water metatile underneath the bridge.
         sprite->data[2] = bridgeReflectionVerticalOffsets[bridgeType - 1];
         // LoadObjectHighBridgeReflectionPalette(eventObject, sprite->oam.paletteNum);
-        LoadEventObjectPalette(EVENT_OBJ_PAL_TAG_10); //DayNight?
+        LoadObjectEventPalette(EVENT_OBJ_PAL_TAG_10); //DayNight?
         sprite->oam.paletteNum = IndexOfSpritePaletteTag(EVENT_OBJ_PAL_TAG_10);
         UpdatePaletteGammaType(sprite->oam.paletteNum, GAMMA_NORMAL);
         UpdateSpritePaletteWithWeather(sprite->oam.paletteNum);
     }
     else if (eventObject->useImposterPalette && gInfo->paletteTag2 != EVENT_OBJ_PAL_TAG_NONE)
     {
-        LoadEventObjectPalette(gInfo->paletteTag2);
+        LoadObjectEventPalette(gInfo->paletteTag2);
         sprite->oam.paletteNum = IndexOfSpritePaletteTag(gInfo->paletteTag2);
         UpdatePaletteGammaType(sprite->oam.paletteNum, GAMMA_NORMAL);
         UpdateSpritePaletteWithWeather(sprite->oam.paletteNum);
@@ -1937,7 +1937,7 @@ void LoadFieldEffectPalette(u8 fieldEffect)
     spriteTemplate = gFieldEffectObjectTemplatePointers[fieldEffect];
     if (spriteTemplate->paletteTag != 0xFFFF)
     {
-        LoadEventObjectPalette(spriteTemplate->paletteTag);
+        LoadObjectEventPalette(spriteTemplate->paletteTag);
         UpdatePaletteGammaType(IndexOfSpritePaletteTag(spriteTemplate->paletteTag), GAMMA_NORMAL);
     }
 }

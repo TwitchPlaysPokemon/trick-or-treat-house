@@ -263,7 +263,7 @@
 #define VAR_UNUSED_0x40E9                    0x40E9
 #define VAR_UNUSED_0x40EA                    0x40EA
 #define VAR_UNUSED_0x40EB                    0x40EB
-#define VAR_UNUSED_0x40EC                    0x40EC
+#define VAR_CONTEST_HALL_STATE               0x40EC
 #define VAR_DAILY_SLOTS                      0x40ED
 #define VAR_DAILY_WILDS                      0x40EE
 #define VAR_DAILY_BLENDER                    0x40EF

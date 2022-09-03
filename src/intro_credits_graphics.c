@@ -613,7 +613,7 @@ static const struct SpriteTemplate sSpriteTemplate_FlygonLatias =
 //     {}
 // };
 
-// const struct CompressedSpriteSheet gIntro2MaySpriteSheet[] =
+// const struct CompressedSpriteSheet gSpriteSheet_IntroMay[] =
 // {
 //     {
 //         // .data = gIntroMay_Gfx,
@@ -624,7 +624,7 @@ static const struct SpriteTemplate sSpriteTemplate_FlygonLatias =
 //     {}
 // };
 
-// const struct CompressedSpriteSheet gIntro2TreekidSpriteSheet[] =
+// const struct CompressedSpriteSheet gSpriteSheet_IntroTreekid[] =
 // {
 //     {
 //         // .data = gIntro2TreekidNoTurnGfx,
