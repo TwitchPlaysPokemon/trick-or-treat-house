@@ -794,7 +794,7 @@ static bool8 TryPushBoulder(s16 x, s16 y, u8 direction)
 
         if (objectEventId != OBJECT_EVENTS_COUNT 
         && (gObjectEvents[objectEventId].graphicsId == OBJ_EVENT_GFX_PUSHABLE_BOULDER
-         || gEventObjects[eventObjectId].graphicsId == OBJ_EVENT_GFX_PUSHABLE_CRATE))
+         || gObjectEvents[objectEventId].graphicsId == OBJ_EVENT_GFX_PUSHABLE_CRATE))
         {
             x = gObjectEvents[objectEventId].currentCoords.x;
             y = gObjectEvents[objectEventId].currentCoords.y;

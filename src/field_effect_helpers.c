@@ -32,7 +32,7 @@ void SynchroniseSurfAnim(struct ObjectEvent *, struct Sprite *);
 void SynchroniseSurfPosition(struct ObjectEvent *, struct Sprite *);
 static void UpdateBobbingEffect(struct ObjectEvent *, struct Sprite *, struct Sprite *);
 static void SpriteCB_UnderwaterSurfBlob(struct Sprite *);
-static u32 ShowDisguiseFieldEffect(u8, u8);
+static u32 ShowDisguiseFieldEffect(u8, u8, u8);
 void LoadSpecialReflectionPalette(struct Sprite *sprite);
 
 extern u16 gReflectionPaletteBuffer[];
@@ -73,7 +73,10 @@ static s16 GetReflectionVerticalOffset(struct ObjectEvent *objectEvent)
     return GetObjectEventGraphicsInfo(objectEvent->graphicsId)->height - 2;
 }
 
-static void LoadObjectReflectionPalette(struct ObjectEvent *objectEvent, struct Sprite *reflectionSprite)
+// Hack, copied from field_effect_helpers
+#define OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION       0x1102
+
+static void LoadObjectReflectionPalette(struct ObjectEvent *objectEvent, struct Sprite *sprite) // sprite is the reflection sprite
 {
     u8 bridgeType;
     u16 bridgeReflectionVerticalOffsets[] = {
@@ -81,8 +84,11 @@ static void LoadObjectReflectionPalette(struct ObjectEvent *objectEvent, struct 
         [BRIDGE_TYPE_POND_MED - 1] = 28,
         [BRIDGE_TYPE_POND_HIGH - 1] = 44
     };
-    reflectionSprite->sReflectionVerticalOffset = 0;
-    if (!GetObjectEventGraphicsInfo(objectEvent->graphicsId)->disableReflectionPaletteLoad
+    const struct ObjectEventGraphicsInfo *gInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
+    
+    sprite->sReflectionVerticalOffset = 0;
+    
+    if (!gInfo->disableReflectionPaletteLoad
      && ((bridgeType = MetatileBehavior_GetBridgeType(objectEvent->previousMetatileBehavior))
       || (bridgeType = MetatileBehavior_GetBridgeType(objectEvent->currentMetatileBehavior))))
     {
@@ -95,17 +101,17 @@ static void LoadObjectReflectionPalette(struct ObjectEvent *objectEvent, struct 
         UpdatePaletteGammaType(sprite->oam.paletteNum, GAMMA_NORMAL);
         UpdateSpritePaletteWithWeather(sprite->oam.paletteNum);
     }
-    else if (objectEvent->useImposterPalette && gInfo->paletteTag2 != EVENT_OBJ_PAL_TAG_NONE)
+    else if (objectEvent->useImposterPalette && gInfo->reflectionPaletteTag != OBJ_EVENT_PAL_TAG_NONE)
     {
-        LoadObjectEventPalette(gInfo->paletteTag2);
-        sprite->oam.paletteNum = IndexOfSpritePaletteTag(gInfo->paletteTag2);
+        LoadObjectEventPalette(gInfo->reflectionPaletteTag);
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(gInfo->reflectionPaletteTag);
         UpdatePaletteGammaType(sprite->oam.paletteNum, GAMMA_NORMAL);
         UpdateSpritePaletteWithWeather(sprite->oam.paletteNum);
     }
     else
     {
         LoadSpecialReflectionPalette(sprite);
-        // LoadObjectRegularReflectionPalette(objectEvent, reflectionSprite->oam.paletteNum);
+        // LoadObjectRegularReflectionPalette(objectEvent, sprite->oam.paletteNum);
     }
 }
 /*
@@ -278,7 +284,7 @@ u32 FldEff_Shadow(void)
 
     objectEventId = GetObjectEventIdByLocalIdAndMap(gFieldEffectArguments[0], gFieldEffectArguments[1], gFieldEffectArguments[2]);
     graphicsInfo = GetObjectEventGraphicsInfo(gObjectEvents[objectEventId].graphicsId);
-    LoadFieldEffectPalette(gShadowEffectTemplateIds[graphicsInfo->shadowSize]);
+    LoadFieldEffectPalette(sShadowEffectTemplateIds[graphicsInfo->shadowSize]); // TODO: Dynamic Palette: wtf?? Not palette tags!
     spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[sShadowEffectTemplateIds[graphicsInfo->shadowSize]], 0, 0, 0x94);
     if (spriteId != MAX_SPRITES)
     {
@@ -1322,7 +1328,7 @@ void UpdateSurfBlobFieldEffect(struct Sprite *sprite)
     sprite->oam.priority = playerSprite->oam.priority;
 }
 
-static void SynchroniseSurfAnim(struct ObjectEvent *playerObj, struct Sprite *sprite)
+void SynchroniseSurfAnim(struct ObjectEvent *playerObj, struct Sprite *sprite)
 {
     // Indexes into sAnimTable_SurfBlob
     u8 surfBlobDirectionAnims[] = {
@@ -1588,7 +1594,7 @@ static u32 ShowDisguiseFieldEffect(u8 fldEff, u8 fldEffObj, u8 paletteNum)
         FieldEffectActiveListRemove(fldEff);
         return MAX_SPRITES;
     }
-    LoadFieldEffectPalette(templateIdx);
+    LoadFieldEffectPalette(fldEffObj);
     spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[fldEffObj], 0, 0, 0);
     if (spriteId != MAX_SPRITES)
     {

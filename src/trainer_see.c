@@ -264,7 +264,7 @@ bool8 CheckForTrainersWantingBattle(void)
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
         u8 numTrainers;
-        u8 trainerType = gEventObjects[i].trainerType;// & (~TRAINER_TYPE_KEEP_LOADED);
+        u8 trainerType = gObjectEvents[i].trainerType;// & (~TRAINER_TYPE_KEEP_LOADED);
 
         if (!gObjectEvents[i].active)
             continue;
@@ -626,7 +626,7 @@ static bool8 RevealDisguisedTrainer(u8 taskId, struct Task *task, struct ObjectE
 static bool8 WaitRevealDisguisedTrainer(u8 taskId, struct Task *task, struct ObjectEvent *trainerObj)
 {
     if (ObjectEventClearHeldMovementIfFinished(trainerObj)) {
-        struct EventObject *playerObj = &gEventObjects[gPlayerAvatar.eventObjectId];
+        struct EventObject *playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
         if (trainerObj->currentCoords.x < playerObj->currentCoords.x) {
             trainerObj->facingDirection = DIR_EAST;
         }

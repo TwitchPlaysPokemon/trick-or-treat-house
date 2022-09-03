@@ -4,6 +4,7 @@
 #include "field_camera.h"
 #include "fieldmap.h"
 #include "metatile_behavior.h"
+#include "event_object_movement.h"
 #include "task.h"
 #include "constants/flags.h"
 #include "constants/maps.h"

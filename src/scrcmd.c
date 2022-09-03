@@ -2167,8 +2167,8 @@ bool8 ScrCmd_setfieldeffectargstoobjectloc(struct ScriptContext *ctx)
 {
     u16 localId = VarGet(ScriptReadHalfword(ctx));
     u8 argNum = ScriptReadByte(ctx);
-    u8 evtid = GetEventObjectIdByLocalIdAndMap(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
-    struct EventObject *eventObj = &gEventObjects[evtid];
+    u8 evtid = GetobjectEventIdByLocalIdAndMap(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+    struct EventObject *eventObj = &gObjectEvents[evtid];
 
     gFieldEffectArguments[argNum+0] = eventObj->currentCoords.x;
     gFieldEffectArguments[argNum+1] = eventObj->currentCoords.y;

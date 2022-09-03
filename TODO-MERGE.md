@@ -64,6 +64,7 @@
 	OBJ_EVENT_PAL_TAG_LUGIA                   0x1121       EVENT_OBJ_PAL_TAG_32
 	OBJ_EVENT_PAL_TAG_RS_BRENDAN              0x1122       EVENT_OBJ_PAL_TAG_33
 	OBJ_EVENT_PAL_TAG_RS_MAY                  0x1123       EVENT_OBJ_PAL_TAG_34
+- [ ] Remove duplicate OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION when figuring out if day/night is done correctly.
 
 - [ ] gStringVar4 -> gStringBuffer
 - [ ] re_escape_rope -> ItemUseOnFieldCB_EscapeRope

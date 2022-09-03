@@ -1291,7 +1291,7 @@ static void MonitorEventObjectTriggersStepCallback(u8 taskId)
     
     // For every event object
     for (o = 0; o < OBJECT_EVENTS_COUNT; o++) {
-        eventObject = &gEventObjects[o];
+        eventObject = &gObjectEvents[o];
         if (eventObject->isPlayer) continue;
         if (!eventObject->active) continue;
         if (eventObject->heldMovementActive) return; //continue;
@@ -1369,7 +1369,7 @@ static void MonitorMultiEventObjectTriggersStepCallback(u8 taskId)
     
     // For every event object
     for (o = 0; o < OBJECT_EVENTS_COUNT; o++) {
-        eventObject = &gEventObjects[o];
+        eventObject = &gObjectEvents[o];
         if (eventObject->isPlayer) continue;
         if (!eventObject->active) continue;
         if (eventObject->heldMovementActive || eventObject->singleMovementActive) continue;

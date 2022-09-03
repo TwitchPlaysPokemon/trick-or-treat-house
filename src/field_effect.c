@@ -1395,7 +1395,7 @@ static void Task_UseFly(u8 taskId)
 
 void HidePlayerOnLoad(struct ScriptContext *ctx)
 {
-    gEventObjects[gPlayerAvatar.eventObjectId].invisible = TRUE;
+    gObjectEvents[gPlayerAvatar.objectEventId].invisible = TRUE;
 }
 
 static void FieldCallback_FlyIntoMap(void)
