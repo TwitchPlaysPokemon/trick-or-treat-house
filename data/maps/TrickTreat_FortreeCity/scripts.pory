@@ -107,7 +107,7 @@ script FortreeCity_TriggerScript_WestSoftBorder {
 	msgbox( "All the trick or treating is back\n"
 			"in town, not down this way.$")
 	closemessage
-	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkUp1)
+	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp1)
 	waitmovement (0)
 	release
 }
@@ -117,7 +117,7 @@ script FortreeCity_TriggerScript_EastSoftBorder {
 	msgbox( "All the trick or treating is back\n"
 			"in town, not down this way.$")
 	closemessage
-	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkLeft1)
+	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft1)
 	waitmovement (0)
 	release
 }
@@ -347,7 +347,7 @@ script TrickTreat_FortreeCity_PlasmaManAfter {
 			"WHAT SHALL I DO?!\p$")
 	waitmessage
 	applymovement(LID_PLASMAMAN, TrickTreat_FortreeCity_PlasmaManAfter_Movement)
-	applymovement(EVENT_OBJ_ID_PLAYER, TrickTreat_FortreeCity_PlasmaManAfter_Movement2)
+	applymovement(OBJ_EVENT_ID_PLAYER, TrickTreat_FortreeCity_PlasmaManAfter_Movement2)
 	message("I CANNOT REST UNTIL--- shi--!$")
 	delay(20)
 	playse(SE_PIN)

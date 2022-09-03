@@ -275,11 +275,11 @@ TrickHouseEnd_EventScript_Nurse::
 @ 	applymovement 1, TrickHouseEnd_Movement_26B08B
 @ 	waitmovement 0
 @ 	playse SE_W153
-@ 	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceDown
+@ 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
 @ 	waitmovement 0
 @ 	msgbox TrickHouseEnd_Text_26B8BD, MSGBOX_DEFAULT
 @ 	closemessage
-@ 	applymovement EVENT_OBJ_ID_PLAYER, TrickHouseEnd_Movement_26B089
+@ 	applymovement OBJ_EVENT_ID_PLAYER, TrickHouseEnd_Movement_26B089
 @ 	waitmovement 0
 @ 	delay 4
 @ 	turnobject 1, 4

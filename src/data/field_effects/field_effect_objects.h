@@ -102,7 +102,7 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_TallGrass = {
     .callback = UpdateTallGrassFieldEffect,
 };
 
-const struct SpriteTemplate gFieldEffectObjectTemplate_TallGrass = {
+const struct SpriteTemplate gFieldEffectObjectTemplate_FallGrass = {
     .tileTag = TAG_NONE,
     .paletteTag = FLDEFF_PAL_TAG_GENERAL_FALL,
     .oam = &gObjectEventBaseOam_16x16,

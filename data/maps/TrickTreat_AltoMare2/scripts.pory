@@ -43,12 +43,12 @@ script TrickTreat_AltoMare2_SignScript_Park {
 //========== The Bridge ===============================
 
 script TrickTreat_AltoMare1_TriggerScript_ClimbRampWest {
-	applymovement(EVENT_OBJ_ID_PLAYER, TrickTreat_AltoMare1_MovementScript_ClimbRampWest)
+	applymovement(OBJ_EVENT_ID_PLAYER, TrickTreat_AltoMare1_MovementScript_ClimbRampWest)
 	waitmovement(0)
 	addvar(VAR_CLIMB_BRIDGE, 1)
 }
 script TrickTreat_AltoMare1_TriggerScript_DescendRampEast {
-	applymovement(EVENT_OBJ_ID_PLAYER, TrickTreat_AltoMare1_MovementScript_DescendRampEast)
+	applymovement(OBJ_EVENT_ID_PLAYER, TrickTreat_AltoMare1_MovementScript_DescendRampEast)
 	waitmovement(0)
 	subvar(VAR_CLIMB_BRIDGE, 1)
 }

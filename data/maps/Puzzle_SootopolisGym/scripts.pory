@@ -154,7 +154,7 @@ script(local) Puzzle_SootopolisGym_UnlockStairs3 {
 script(local) Puzzle_SootopolisGym_FallThroughIce {
 	lockall
 	delay (20)
-	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_SetInvisible)
+	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_SetInvisible)
 	waitmovement (0)
 	playse (SE_RU_HYUU)
 	delay (60)

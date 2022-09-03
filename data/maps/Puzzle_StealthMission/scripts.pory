@@ -269,8 +269,8 @@ script Puzzle_StealthMission_EventScript_Scroll {
 	playse(SE_HINSI)
 	delay(30)
 	playse(SE_PIN)
-	applymovement(EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark)
-	waitmovement(EVENT_OBJ_ID_PLAYER)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
 	msgbox ("The alarm's going off!")
 	
 	pokenavcall(Puzzle_StealthMission_Text_LookerPhonecall)

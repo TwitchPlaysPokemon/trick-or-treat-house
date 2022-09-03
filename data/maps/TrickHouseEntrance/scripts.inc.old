@@ -133,7 +133,7 @@ Route110_TrickHouseEntrance_EventScript_269C15:: @ 8269C15
 	addobject 1
 	showobjectat 1, MAP_TRICK_HOUSE_ENTRANCE
 	turnobject 1, 4
-	turnobject EVENT_OBJ_ID_PLAYER, 3
+	turnobject OBJ_EVENT_ID_PLAYER, 3
 	end
 
 Route110_TrickHouseEntrance_EventScript_269C26:: @ 8269C26
@@ -236,9 +236,9 @@ Route110_TrickHouseEntrance_EventScript_269D3B:: @ 8269D3B
 
 Route110_TrickHouseEntrance_EventScript_269D6E:: @ 8269D6E
 	playse SE_PIN
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMark
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_Delay48
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48
 	waitmovement 0
 	compare VAR_CURRENT_PUZZLE, 0
 	call_if_eq Route110_TrickHouseEntrance_EventScript_269DEE
@@ -506,9 +506,9 @@ Route110_TrickHouseEntrance_EventScript_26A126:: @ 826A126
 	setmetatile 5, 1, METATILE_GenericBuilding_TrickHouse_Stairs_Down, 0
 	special DrawWholeMapView
 	delay 20
-	applymovement EVENT_OBJ_ID_PLAYER, Route110_TrickHouseEntrance_Movement_2725C9
+	applymovement OBJ_EVENT_ID_PLAYER, Route110_TrickHouseEntrance_Movement_2725C9
 	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Route110_TrickHouseEntrance_Movement_26A1A7
+	applymovement OBJ_EVENT_ID_PLAYER, Route110_TrickHouseEntrance_Movement_26A1A7
 	waitmovement 0
 	switch VAR_CURRENT_PUZZLE
 	case 0, Route110_TrickHouseEntrance_EventScript_26A1A9

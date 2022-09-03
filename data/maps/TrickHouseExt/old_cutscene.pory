@@ -101,7 +101,7 @@ script TrickHouseExt_IntroCutscene_2019 {
 	applymovement (LID_IRENE, TrickHouseExt_IntroCutscene_Movement3_What)
 	waitmovement (LID_IRENE)
 	// 
-	applymovement (EVENT_OBJ_ID_PLAYER, TrickHouseExt_IntroCutscene_Movement2_Camera)
+	applymovement (OBJ_EVENT_ID_PLAYER, TrickHouseExt_IntroCutscene_Movement2_Camera)
 	delay (10)
 	applymovement (LID_IRENE, TrickHouseExt_IntroCutscene_Movement4_Fairy)
 	msgbox ("{FAIRY}: Uh, hello?$")

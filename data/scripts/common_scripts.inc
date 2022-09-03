@@ -326,7 +326,7 @@ Common_OnResume_FixCrackedGround:: @ 82A8331
 EventScript_FallDownHole:: @ 82A8337
 	lockall
 	delay 20
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_SetInvisible
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_SetInvisible
 	waitmovement 0
 	playse SE_RU_HYUU
 	delay 60
@@ -348,15 +348,15 @@ Common_EventScript_OnTransition_IceStep:
 @ Scripts
 
 Common_EventScript_FacePlayerUp:: @ 822818E
-	turnobject EVENT_OBJ_ID_PLAYER, DIR_NORTH
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_NORTH
 	end
 
 Common_EventScript_FacePlayerWest::
-	turnobject EVENT_OBJ_ID_PLAYER, DIR_WEST
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_WEST
 	end
 
 Common_EventScript_FacePlayerEast::
-	turnobject EVENT_OBJ_ID_PLAYER, DIR_EAST
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_EAST
 	end
 
 Common_EventScript_HideMapNamePopup:: @ 8273D13

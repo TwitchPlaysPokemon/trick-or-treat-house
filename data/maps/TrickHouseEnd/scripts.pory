@@ -34,15 +34,15 @@ script TrickHouseEnd_OnTransition {
 	
 	# Because some event objects cause freezing when wandering around
 	switch (var(VAR_OBJ_GFX_ID_1)) {
-		case OBJ_EVENT_GFX_LUGIA:     setobjectmovementtype (2, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN)
-		case OBJ_EVENT_GFX_HOOH:      setobjectmovementtype (2, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN)
-		case OBJ_EVENT_GFX_DEOXYS:    setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
-		case OBJ_EVENT_GFX_KYOGRE_1:  setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
-		case OBJ_EVENT_GFX_GROUDON_1: setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
-		case OBJ_EVENT_GFX_KYOGRE_2:  setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
-		case OBJ_EVENT_GFX_GROUDON_2: setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
-		case OBJ_EVENT_GFX_KYOGRE_3:  setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
-		case OBJ_EVENT_GFX_GROUDON_3: setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+		case OBJ_EVENT_GFX_LUGIA:          setobjectmovementtype (2, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN)
+		case OBJ_EVENT_GFX_HOOH:           setobjectmovementtype (2, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN)
+		case OBJ_EVENT_GFX_DEOXYS:         setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+		case OBJ_EVENT_GFX_KYOGRE_FRONT:   setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+		case OBJ_EVENT_GFX_GROUDON_FRONT:  setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+		case OBJ_EVENT_GFX_KYOGRE_ASLEEP:  setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+		case OBJ_EVENT_GFX_GROUDON_ASLEEP: setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+		case OBJ_EVENT_GFX_KYOGRE_SIDE:    setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
+		case OBJ_EVENT_GFX_GROUDON_SIDE:   setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
 	}
 }
 

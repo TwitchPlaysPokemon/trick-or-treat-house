@@ -80,9 +80,8 @@ static u8 setup##_callback(struct ObjectEvent *objectEvent, struct Sprite *sprit
 
 // EWRAM_DATA u8 sCurrentReflectionType = 0;
 // EWRAM_DATA u16 sCurrentSpecialObjectPaletteTag = 0;
-stac EWRAM_DATA struct LockedAnimObjectEvents *sLockedAnimObjectEvents = {0};
+static EWRAM_DATA struct LockedAnimObjectEvents *sLockedAnimObjectEvents = {0};
 
-static void MoveCoordsInDirection(u32, s16 *, s16 *, s16, s16);
 static bool8 ObjectEventExecSingleMovementAction(struct ObjectEvent *, struct Sprite *);
 static void SetMovementDelay(struct Sprite *, s16);
 static bool8 WaitForMovementDelay(struct Sprite *);
@@ -137,7 +136,6 @@ static void UpdateObjectEventVisibility(struct ObjectEvent *, struct Sprite *);
 static void MakeSpriteTemplateFromObjectEventTemplate(struct ObjectEventTemplate *, struct SpriteTemplate *, const struct SubspriteTable **);
 static void GetObjectEventMovingCameraOffset(s16 *, s16 *);
 static struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8, u8, u8);
-static void LoadObjectEventPalette(u16);
 static void RemoveObjectEventIfOutsideView(struct ObjectEvent *);
 static void SpawnObjectEventOnReturnToField(u8, s16, s16);
 static void SetPlayerAvatarObjectEventIdAndObjectId(u8, u8);
@@ -258,7 +256,7 @@ static void (*const sMovementTypeCallbacks[])(struct Sprite *) =
     [MOVEMENT_TYPE_COPY_PLAYER_COUNTERCLOCKWISE_IN_GRASS] = MovementType_CopyPlayerInGrass,
     [MOVEMENT_TYPE_COPY_PLAYER_CLOCKWISE_IN_GRASS] = MovementType_CopyPlayerInGrass,
     [MOVEMENT_TYPE_BURIED] = MovementType_Buried,
-    [MOVEMENT_TYPE_HIDDEN2] = MovementType_Hidden,
+    [MOVEMENT_TYPE_HIDDEN2] = MovementType_Buried,
     [MOVEMENT_TYPE_WALK_IN_PLACE_DOWN] = MovementType_WalkInPlace,
     [MOVEMENT_TYPE_WALK_IN_PLACE_UP] = MovementType_WalkInPlace,
     [MOVEMENT_TYPE_WALK_IN_PLACE_LEFT] = MovementType_WalkInPlace,
@@ -418,8 +416,6 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_NPC_2_REFLECTION        0x1108
 #define OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION        0x1109
 #define OBJ_EVENT_PAL_TAG_NPC_4_REFLECTION        0x110A
-#define OBJ_EVENT_PAL_TAG_QUINTY_PLUMP            0x110B
-#define OBJ_EVENT_PAL_TAG_QUINTY_PLUMP_REFLECTION 0x110C
 #define OBJ_EVENT_PAL_TAG_TRUCK                   0x110D
 #define OBJ_EVENT_PAL_TAG_VIGOROTH                0x110E
 #define OBJ_EVENT_PAL_TAG_ZIGZAGOON               0x110F
@@ -490,8 +486,6 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_BrendanReflection,     OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION},
     {gObjectEventPal_BridgeReflection,      OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION},
     {gObjectEventPal_PlayerUnderwater,      OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER},
-    {gObjectEventPal_QuintyPlump,           OBJ_EVENT_PAL_TAG_QUINTY_PLUMP},
-    {gObjectEventPal_QuintyPlumpReflection, OBJ_EVENT_PAL_TAG_QUINTY_PLUMP_REFLECTION},
     {gObjectEventPal_Truck,                 OBJ_EVENT_PAL_TAG_TRUCK},
     {gObjectEventPal_Vigoroth,              OBJ_EVENT_PAL_TAG_VIGOROTH},
     {gObjectEventPal_EnemyZigzagoon,        OBJ_EVENT_PAL_TAG_ZIGZAGOON},
@@ -513,30 +507,30 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Lugia,                 OBJ_EVENT_PAL_TAG_LUGIA},
     {gObjectEventPal_RubySapphireBrendan,   OBJ_EVENT_PAL_TAG_RS_BRENDAN},
     {gObjectEventPal_RubySapphireMay,       OBJ_EVENT_PAL_TAG_RS_MAY},
-    {gEventObjectPaletteTrickHouse,         OBJ_EVENT_PAL_TAG_TRICK_HOUSE},
-    {gEvtObjPal_TrickMaster,                OBJ_EVENT_PAL_TAG_TRICK_MASTER},
-    {gEvtObjPal_Torchick,                   OBJ_EVENT_PAL_MAY},
-    {gEvtObjPal_Mudkid,                     OBJ_EVENT_PAL_BRANDON},
-    {gEvtObjPal_Treekid,                    OBJ_EVENT_PAL_TREEKID},
-    {gEvtObjPal_Elvis,                      OBJ_EVENT_PAL_WALLY},
-    {gEvtObjPal_PlasmaKid,                  OBJ_EVENT_PAL_TAG_PLASMA_KID},
-    {gEvtObjPal_Ghetsis,                    OBJ_EVENT_PAL_TAG_GHETSIS},
-    {gEvtObjPal_Frogger,                    OBJ_EVENT_PAL_TAG_FROGGER},
-    {gEvtObjPal_Mermaid,                    OBJ_EVENT_PAL_TAG_MERMAID},
-    {gEvtObjPal_MaskedBoy,                  OBJ_EVENT_PAL_TAG_MASKED_BOY},
-    {gEvtObjPal_FairyGirl,                  OBJ_EVENT_PAL_TAG_FAIRY_GIRL},
-    {gEvtObjPal_CorpseBride,                OBJ_EVENT_PAL_TAG_CORPSE_BRIDE},
-    {gEvtObjPal_HeroOfTime,                 OBJ_EVENT_PAL_TAG_HERO_OF_TIME},
-    {gEvtObjPal_Skeleton,                   OBJ_EVENT_PAL_TAG_SKELETON},
-    {gEvtObjPal_Tarzan,                     OBJ_EVENT_PAL_TAG_TARZAN},
-    {gEvtObjPal_TwinsPlus,                  OBJ_EVENT_PAL_TAG_TWINS_PLUS},
-    {gEvtObjPal_TwinsMinus,                 OBJ_EVENT_PAL_TAG_TWINS_MINUS},
-    {gEvtObjPal_Alien,                      OBJ_EVENT_PAL_TAG_ALIEN},
-    {gEvtObjPal_Tustin2121,                 OBJ_EVENT_PAL_DEV_TUSTIN2121},
-    {gEvtObjPal_Quilava,                    OBJ_EVENT_PAL_TAG_QUILAVA},
-    {gEvtObjPal_Farfetchd,                  OBJ_EVENT_PAL_TAG_FARFETCHD},
-    {gEvtObjPal_Pidgey,                     OBJ_EVENT_PAL_TAG_PIDGEY},
-    {gEvtObjPal_Imposter,                   OBJ_EVENT_PAL_TAG_POSSESSED},
+    {gObjectEventPal_TrickHouse,            OBJ_EVENT_PAL_TAG_TRICK_HOUSE},
+    {gObjectEventPal_TrickMaster,           OBJ_EVENT_PAL_TAG_TRICK_MASTER},
+    {gObjectEventPal_Torchick,              OBJ_EVENT_PAL_MAY},
+    {gObjectEventPal_Mudkid,                OBJ_EVENT_PAL_BRANDON},
+    {gObjectEventPal_Treekid,               OBJ_EVENT_PAL_TREEKID},
+    {gObjectEventPal_Elvis,                 OBJ_EVENT_PAL_WALLY},
+    {gObjectEventPal_PlasmaKid,             OBJ_EVENT_PAL_TAG_PLASMA_KID},
+    {gObjectEventPal_Ghetsis,               OBJ_EVENT_PAL_TAG_GHETSIS},
+    {gObjectEventPal_Frogger,               OBJ_EVENT_PAL_TAG_FROGGER},
+    {gObjectEventPal_Mermaid,               OBJ_EVENT_PAL_TAG_MERMAID},
+    {gObjectEventPal_MaskedBoy,             OBJ_EVENT_PAL_TAG_MASKED_BOY},
+    {gObjectEventPal_FairyGirl,             OBJ_EVENT_PAL_TAG_FAIRY_GIRL},
+    {gObjectEventPal_CorpseBride,           OBJ_EVENT_PAL_TAG_CORPSE_BRIDE},
+    {gObjectEventPal_HeroOfTime,            OBJ_EVENT_PAL_TAG_HERO_OF_TIME},
+    {gObjectEventPal_Skeleton,              OBJ_EVENT_PAL_TAG_SKELETON},
+    {gObjectEventPal_Tarzan,                OBJ_EVENT_PAL_TAG_TARZAN},
+    {gObjectEventPal_TwinsPlus,             OBJ_EVENT_PAL_TAG_TWINS_PLUS},
+    {gObjectEventPal_TwinsMinus,            OBJ_EVENT_PAL_TAG_TWINS_MINUS},
+    {gObjectEventPal_Alien,                 OBJ_EVENT_PAL_TAG_ALIEN},
+    {gObjectEventPal_Tustin2121,            OBJ_EVENT_PAL_DEV_TUSTIN2121},
+    {gObjectEventPal_Quilava,               OBJ_EVENT_PAL_TAG_QUILAVA},
+    {gObjectEventPal_Farfetchd,             OBJ_EVENT_PAL_TAG_FARFETCHD},
+    {gObjectEventPal_Pidgey,                OBJ_EVENT_PAL_TAG_PIDGEY},
+    {gObjectEventPal_Imposter,              OBJ_EVENT_PAL_TAG_POSSESSED},
     {},
 };
 /*
@@ -566,13 +560,6 @@ static const struct PairedPalettes sPlayerReflectionPaletteSets[] = {
     {OBJ_EVENT_PAL_TAG_MAY,               sReflectionPaletteTags_May},
     {OBJ_EVENT_PAL_TAG_PLAYER_UNDERWATER, sReflectionPaletteTags_PlayerUnderwater},
     {OBJ_EVENT_PAL_TAG_NONE,              NULL},
-};
-
-static const u16 sReflectionPaletteTags_QuintyPlump[] = {
-    OBJ_EVENT_PAL_TAG_QUINTY_PLUMP_REFLECTION,
-    OBJ_EVENT_PAL_TAG_QUINTY_PLUMP_REFLECTION,
-    OBJ_EVENT_PAL_TAG_QUINTY_PLUMP_REFLECTION,
-    OBJ_EVENT_PAL_TAG_QUINTY_PLUMP_REFLECTION,
 };
 
 static const u16 sReflectionPaletteTags_Truck[] = {
@@ -648,7 +635,6 @@ static const u16 sReflectionPaletteTags_RedLeaf[] = {
 static const struct PairedPalettes sSpecialObjectReflectionPaletteSets[] = {
     {OBJ_EVENT_PAL_TAG_BRENDAN,          sReflectionPaletteTags_Brendan},
     {OBJ_EVENT_PAL_TAG_MAY,              sReflectionPaletteTags_May},
-    {OBJ_EVENT_PAL_TAG_QUINTY_PLUMP,     sReflectionPaletteTags_QuintyPlump},
     {OBJ_EVENT_PAL_TAG_TRUCK,            sReflectionPaletteTags_Truck},
     {OBJ_EVENT_PAL_TAG_VIGOROTH,         sReflectionPaletteTags_VigorothMover},
     {OBJ_EVENT_PAL_TAG_MOVING_BOX,       sReflectionPaletteTags_MovingBox},
@@ -1281,9 +1267,9 @@ u8 GetObjectEventIdByXY(s16 x, s16 y)
 u8 GetNonPlayerObjectEventIdByXY(s16 x, s16 y)
 {
     u8 i;
-    for (i = 0; i < EVENT_OBJECTS_COUNT; i++)
+    for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
-        if (gObjectEvents[i].active && gObjectEvents[i].localId != EVENT_OBJ_ID_PLAYER && gObjectEvents[i].currentCoords.x == x && gObjectEvents[i].currentCoords.y == y)
+        if (gObjectEvents[i].active && gObjectEvents[i].localId != OBJ_EVENT_ID_PLAYER && gObjectEvents[i].currentCoords.x == x && gObjectEvents[i].currentCoords.y == y)
             break;
     }
 
@@ -1452,8 +1438,8 @@ void RemoveAllObjectEventsExceptPlayer(void)
 
 bool8 IsObjectDoor(u8 objId)
 {
-    struct EventObject *eventObject = eventObject = &gEventObjects[objId];
-    const struct EventObjectGraphicsInfo *graphicsInfo = GetEventObjectGraphicsInfo(eventObject->graphicsId);
+    struct ObjectEvent *objectEvent = objectEvent = &gObjectEvents[objId];
+    const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
     return graphicsInfo->doorOffsetType == DOOROFFSET_DOWN;
 }
 
@@ -1470,7 +1456,7 @@ static u8 TrySetupObjectEventSprite(struct ObjectEventTemplate *objectEventTempl
     if (objectEventId == OBJECT_EVENTS_COUNT)
         return OBJECT_EVENTS_COUNT;
     
-    RunOnSpawnEventObjectMapScript(objectEventId);
+    RunOnSpawnObjectEventMapScript(objectEventId);
 
     objectEvent = &gObjectEvents[objectEventId];
     graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
@@ -1555,7 +1541,6 @@ u8 SpawnSpecialObjectEventParameterized(u16 graphicsId, u8 movementBehavior, u8 
     y -= MAP_OFFSET;
     objectEventTemplate.localId = localId;
     objectEventTemplate.graphicsId = graphicsId;
-    objectEventTemplate.inConnection = 0;
     objectEventTemplate.x = x;
     objectEventTemplate.y = y;
     objectEventTemplate.elevation = elevation;
@@ -1947,7 +1932,7 @@ static void SetBerryTreeGraphics(struct ObjectEvent *objectEvent, struct Sprite 
             berryId = 0;
 
         LoadObjectEventPalette(gBerryTreePaletteTagTablePointers[berryId][berryStage]);
-        EventObjectSetGraphicsId(objectEvent, gBerryTreeEventObjectGraphicsIdTablePointers[berryId][berryStage]);
+        ObjectEventSetGraphicsId(objectEvent, gBerryTreeObjectEventGraphicsIdTablePointers[berryId][berryStage]);
         sprite->images = gBerryTreePicTablePointers[berryId];
         sprite->oam.paletteNum = IndexOfSpritePaletteTag(gBerryTreePaletteTagTablePointers[berryId][berryStage]);
         UpdatePaletteGammaType(sprite->oam.paletteNum, GAMMA_ALT);
@@ -2008,24 +1993,24 @@ void AllowObjectAtPosTriggerGroundEffects(s16 x, s16 y)
     }
 }
 
-void GroundEffect_JumpLandingDust(struct EventObject *eventObj, struct Sprite *sprite);
-void GroundEffect_JumpOnWater(struct EventObject *eventObj, struct Sprite *sprite);
-void GroundEffect_JumpOnShallowWater(struct EventObject *eventObj, struct Sprite *sprite);
+void GroundEffect_JumpLandingDust(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_JumpOnWater(struct ObjectEvent *objEvent, struct Sprite *sprite);
+void GroundEffect_JumpOnShallowWater(struct ObjectEvent *objEvent, struct Sprite *sprite);
 void DoGroundEffect(u8 localId, u8 mapNum, u8 mapGroup, u8 animId)
 {
-    u8 eventObjectId;
-    struct EventObject *eventObject;
+    u8 objectEventId;
+    struct ObjectEvent *objectEvent;
     struct Sprite *sprite;
     
-    if (!TryGetEventObjectIdByLocalIdAndMap(localId, mapNum, mapGroup, &eventObjectId))
+    if (!TryGetObjectEventIdByLocalIdAndMap(localId, mapNum, mapGroup, &objectEventId))
     {
-        eventObject = &gEventObjects[eventObjectId];
-        sprite = &gSprites[eventObject->spriteId];
+        objectEvent = &gObjectEvents[objectEventId];
+        sprite = &gSprites[objectEvent->spriteId];
         switch (animId)
         {
-            case 0: GroundEffect_JumpLandingDust(eventObject, sprite); break;
-            case 1: GroundEffect_JumpOnWater(eventObject, sprite); break;
-            case 2: GroundEffect_JumpOnShallowWater(eventObject, sprite); break;
+            case 0: GroundEffect_JumpLandingDust(objectEvent, sprite); break;
+            case 1: GroundEffect_JumpOnWater(objectEvent, sprite); break;
+            case 2: GroundEffect_JumpOnShallowWater(objectEvent, sprite); break;
         }
     }
 }
@@ -2107,7 +2092,7 @@ void PatchObjectPalette(u16 paletteTag, u8 paletteSlot)
 {
     u8 paletteIndex = FindObjectEventPaletteIndexByTag(paletteTag);
 
-    LoadPaletteDayNight(sEventObjectSpritePalettes[paletteIndex].data, 16 * paletteSlot + 0x100, 0x20);
+    LoadPaletteDayNight(sObjectEventSpritePalettes[paletteIndex].data, 16 * paletteSlot + 0x100, 0x20);
 }
 
 void PatchObjectPaletteRange(const u16 *paletteTags, u8 minSlot, u8 maxSlot)
@@ -2275,8 +2260,8 @@ u8 GetObjectEventIdByPosition(u16 x, u16 y, u8 elevation)
 static bool8 ObjectEventDoesElevationMatch(struct ObjectEvent *objectEvent, u8 elevation)
 {
     // Allow grabbing/interacting with things on land from surfing and visa versa
-    if (eventObject->currentElevation == 1 && elevation == 3) return TRUE;
-    if (eventObject->currentElevation == 3 && elevation == 1) return TRUE;
+    if (objectEvent->currentElevation == 1 && elevation == 3) return TRUE;
+    if (objectEvent->currentElevation == 3 && elevation == 1) return TRUE;
     if (objectEvent->currentElevation != 0 && elevation != 0 && objectEvent->currentElevation != elevation)
         return FALSE;
 
@@ -2722,9 +2707,7 @@ bool8 ObjectEventIsTrainerAndCloseToPlayer(struct ObjectEvent *objectEvent)
 
     if (!TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_DASH))
         return FALSE;
-    }
     if (trainerType != TRAINER_TYPE_NORMAL && trainerType != TRAINER_TYPE_BURIED)
-    {
         return FALSE;
 
     PlayerGetDestCoords(&playerX, &playerY);
@@ -4778,7 +4761,7 @@ static bool8 IsCoordOutsideObjectEventMovementRange(struct ObjectEvent *objectEv
     s16 bottom;
     
     // Max range = move anywhere on the map
-    if (eventObject->range.as_byte == 0xFF)
+    if (objectEvent->rangeX == 0xF && objectEvent->rangeY == 0xF)
         return FALSE;
 
     if (objectEvent->rangeX != 0)
@@ -7547,7 +7530,7 @@ static void GetGroundEffectFlags_TallGrassOnSpawn(struct ObjectEvent *objEvent, 
 {
     if (MetatileBehavior_IsTallGrass(objEvent->currentMetatileBehavior))
         *flags |= GROUND_EFFECT_FLAG_TALL_GRASS_ON_SPAWN;
-    else if (MetatileBehavior_IsAutumnGrass(eventObj->currentMetatileBehavior))
+    else if (MetatileBehavior_IsAutumnGrass(objEvent->currentMetatileBehavior))
         *flags |= GROUND_EFFECT_FLAG_FALL_GRASS_ON_SPAWN;
 }
 
@@ -7555,7 +7538,7 @@ static void GetGroundEffectFlags_TallGrassOnBeginStep(struct ObjectEvent *objEve
 {
     if (MetatileBehavior_IsTallGrass(objEvent->currentMetatileBehavior))
         *flags |= GROUND_EFFECT_FLAG_TALL_GRASS_ON_MOVE;
-    else if (MetatileBehavior_IsAutumnGrass(eventObj->currentMetatileBehavior))
+    else if (MetatileBehavior_IsAutumnGrass(objEvent->currentMetatileBehavior))
         *flags |= GROUND_EFFECT_FLAG_FALL_GRASS_ON_MOVE;
 }
 
@@ -7563,7 +7546,7 @@ static void GetGroundEffectFlags_LongGrassOnSpawn(struct ObjectEvent *objEvent, 
 {
     if (MetatileBehavior_IsLongGrass(objEvent->currentMetatileBehavior))
         *flags |= GROUND_EFFECT_FLAG_LONG_GRASS_ON_SPAWN;
-    if (MetatileBehavior_IsAutumnLongGrass(eventObj->currentMetatileBehavior))
+    if (MetatileBehavior_IsAutumnLongGrass(objEvent->currentMetatileBehavior))
         *flags |= GROUND_EFFECT_FLAG_FALL_LONG_GRASS_ON_SPAWN;
 }
 
@@ -7571,7 +7554,7 @@ static void GetGroundEffectFlags_LongGrassOnBeginStep(struct ObjectEvent *objEve
 {
     if (MetatileBehavior_IsLongGrass(objEvent->currentMetatileBehavior))
         *flags |= GROUND_EFFECT_FLAG_LONG_GRASS_ON_MOVE;
-    if (MetatileBehavior_IsAutumnLongGrass(eventObj->currentMetatileBehavior))
+    if (MetatileBehavior_IsAutumnLongGrass(objEvent->currentMetatileBehavior))
         *flags |= GROUND_EFFECT_FLAG_FALL_LONG_GRASS_ON_MOVE;
 }
 
@@ -7851,12 +7834,12 @@ static void UpdateObjectEventElevationAndPriority(struct ObjectEvent *objEvent, 
     sprite->oam.priority = sElevationToPriority[objEvent->previousElevation];
 }
 
-void UpdateAllEventObjectsZCoordAndPriority()
+void UpdateAllObjectEventsZCoordAndPriority()
 {
     u8 oid;
-    for (oid = 0; oid < ARRAY_COUNT(gEventObjects); oid++) {
-        if (!gEventObjects[oid].active) continue;
-        UpdateEventObjectZCoordAndPriority(&gEventObjects[oid], &gSprites[gEventObjects[oid].spriteId]);
+    for (oid = 0; oid < ARRAY_COUNT(gObjectEvents); oid++) {
+        if (!gObjectEvents[oid].active) continue;
+        UpdateObjectEventElevationAndPriority(&gObjectEvents[oid], &gSprites[gObjectEvents[oid].spriteId]);
     }
 }
 
@@ -7981,15 +7964,41 @@ void GroundEffect_SpawnOnFallGrass(struct ObjectEvent *objEvent, struct Sprite *
 
 void GroundEffect_StepOnFallGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
 {
-    gFieldEffectArguments[0] = eventObj->currentCoords.x;
-    gFieldEffectArguments[1] = eventObj->currentCoords.y;
-    gFieldEffectArguments[2] = eventObj->previousElevation;
+    gFieldEffectArguments[0] = objEvent->currentCoords.x;
+    gFieldEffectArguments[1] = objEvent->currentCoords.y;
+    gFieldEffectArguments[2] = objEvent->previousElevation;
     gFieldEffectArguments[3] = 2;
     gFieldEffectArguments[4] = (objEvent->localId << 8) | objEvent->mapNum;
     gFieldEffectArguments[5] = objEvent->mapGroup;
     gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
     gFieldEffectArguments[7] = 0;
     FieldEffectStart(FLDEFF_FALL_GRASS);
+}
+
+void GroundEffect_SpawnOnFallLongGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
+{
+    gFieldEffectArguments[0] = objEvent->currentCoords.x;
+    gFieldEffectArguments[1] = objEvent->currentCoords.y;
+    gFieldEffectArguments[2] = objEvent->previousElevation;
+    gFieldEffectArguments[3] = 2;
+    gFieldEffectArguments[4] = objEvent->localId << 8 | objEvent->mapNum;
+    gFieldEffectArguments[5] = objEvent->mapGroup;
+    gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
+    gFieldEffectArguments[7] = 1;
+    FieldEffectStart(FLDEFF_FALL_LONG_GRASS);
+}
+
+void GroundEffect_StepOnFallLongGrass(struct ObjectEvent *objEvent, struct Sprite *sprite)
+{
+    gFieldEffectArguments[0] = objEvent->currentCoords.x;
+    gFieldEffectArguments[1] = objEvent->currentCoords.y;
+    gFieldEffectArguments[2] = objEvent->previousElevation;
+    gFieldEffectArguments[3] = 2;
+    gFieldEffectArguments[4] = (objEvent->localId << 8) | objEvent->mapNum;
+    gFieldEffectArguments[5] = objEvent->mapGroup;
+    gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
+    gFieldEffectArguments[7] = 0;
+    FieldEffectStart(FLDEFF_FALL_LONG_GRASS);
 }
 
 void GroundEffect_WaterReflection(struct ObjectEvent *objEvent, struct Sprite *sprite)
@@ -8259,7 +8268,7 @@ static void DoGroundEffects_OnSpawn(struct ObjectEvent *objEvent, struct Sprite 
 {
     u32 flags;
 
-    if (objEvent->triggerGroundEffectsOnMove && !eventObj->invisible)
+    if (objEvent->triggerGroundEffectsOnMove && !objEvent->invisible)
     {
         flags = 0;
         UpdateObjectEventElevationAndPriority(objEvent, sprite);
@@ -8275,7 +8284,7 @@ static void DoGroundEffects_OnBeginStep(struct ObjectEvent *objEvent, struct Spr
 {
     u32 flags;
 
-    if (objEvent->triggerGroundEffectsOnMove && !eventObj->invisible)
+    if (objEvent->triggerGroundEffectsOnMove && !objEvent->invisible)
     {
         flags = 0;
         UpdateObjectEventElevationAndPriority(objEvent, sprite);
@@ -8292,7 +8301,7 @@ static void DoGroundEffects_OnFinishStep(struct ObjectEvent *objEvent, struct Sp
 {
     u32 flags;
 
-    if (objEvent->triggerGroundEffectsOnStop && !eventObj->invisible)
+    if (objEvent->triggerGroundEffectsOnStop && !objEvent->invisible)
     {
         flags = 0;
         UpdateObjectEventElevationAndPriority(objEvent, sprite);
@@ -9146,47 +9155,47 @@ u8 MovementAction_FlyDown_Step1(struct ObjectEvent *objectEvent, struct Sprite *
 // though this function returns TRUE without doing anything, this header is required due to being in an array of functions which needs it.
 u8 MovementAction_Fly_Finish(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
-    EventObjectGetLocalIdAndMap(eventObject, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
     FieldEffectStart(FLDEFF_EMOTE_NOTE_G);
     sprite->data[2] = 1;
     return TRUE;
 }
 
-bool8 MovementAction_EmoteNoteC_Step0(struct EventObject *eventObject, struct Sprite *sprite)
+bool8 MovementAction_EmoteNoteC_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
-    EventObjectGetLocalIdAndMap(eventObject, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
     FieldEffectStart(FLDEFF_EMOTE_NOTE_C);
     sprite->data[2] = 1;
     return TRUE;
 }
 
-bool8 MovementAction_EmoteNoteD_Step0(struct EventObject *eventObject, struct Sprite *sprite)
+bool8 MovementAction_EmoteNoteD_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
-    EventObjectGetLocalIdAndMap(eventObject, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
     FieldEffectStart(FLDEFF_EMOTE_NOTE_D);
     sprite->data[2] = 1;
     return TRUE;
 }
 
-bool8 MovementAction_EmoteNoteE_Step0(struct EventObject *eventObject, struct Sprite *sprite)
+bool8 MovementAction_EmoteNoteE_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
-    EventObjectGetLocalIdAndMap(eventObject, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
     FieldEffectStart(FLDEFF_EMOTE_NOTE_E);
     sprite->data[2] = 1;
     return TRUE;
 }
 
-bool8 MovementAction_EmoteNoteF_Step0(struct EventObject *eventObject, struct Sprite *sprite)
+bool8 MovementAction_EmoteNoteF_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
-    EventObjectGetLocalIdAndMap(eventObject, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
     FieldEffectStart(FLDEFF_EMOTE_NOTE_F);
     sprite->data[2] = 1;
     return TRUE;
 }
 
-bool8 MovementAction_EmoteNoteG_Step0(struct EventObject *eventObject, struct Sprite *sprite)
+bool8 MovementAction_EmoteNoteG_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
-    EventObjectGetLocalIdAndMap(eventObject, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
+    ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
     FieldEffectStart(FLDEFF_EMOTE_NOTE_G);
     sprite->data[2] = 1;
     return TRUE;

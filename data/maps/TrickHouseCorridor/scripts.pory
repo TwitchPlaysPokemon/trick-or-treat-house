@@ -96,7 +96,7 @@ script TrickHouseCorridor_TriggerScript_AdoptionCutscene {
 	lock
 	// Walk up to lady in hallway
 	selectpointer (TrickHouseCorridor_MovementTable_PokemonTableStop, VAR_0x8001)
-	applymovement (EVENT_OBJ_ID_PLAYER, 0)
+	applymovement (OBJ_EVENT_ID_PLAYER, 0)
 	waitmovement (0)
 	//
 	msgbox ("Welcome to the PUZZLE CHALLENGE.\p"
@@ -110,8 +110,8 @@ script TrickHouseCorridor_TriggerScript_AdoptionCutscene {
 	closemessage
 	// She leads you into the Den
 	applymovement (1, TrickHouseCorridor_Movement_PokemonTableStop_Lady)
-	applymovement (EVENT_OBJ_ID_PLAYER, TrickHouseCorridor_Movement_PokemonTableStop_Player)
-	waitmovement (EVENT_OBJ_ID_PLAYER)
+	applymovement (OBJ_EVENT_ID_PLAYER, TrickHouseCorridor_Movement_PokemonTableStop_Player)
+	waitmovement (OBJ_EVENT_ID_PLAYER)
 	warp(MAP_TRICK_HOUSE_RESTROOM, 0, 0, 0)
 	waitstate
 	releaseall
@@ -128,8 +128,8 @@ script TrickHouseCorridor_TriggerScript_PartyStop {
 			"Please rectify this before returning.$")
 	closemessage
 	applymovement (1, Common_Movement_WalkInPlaceLeft)
-	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkLeft1)
-	waitmovement (EVENT_OBJ_ID_PLAYER)
+	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft1)
+	waitmovement (OBJ_EVENT_ID_PLAYER)
 	release
 }
 movement TrickHouseCorridor_Movement_PartyStop {
@@ -319,9 +319,9 @@ script TrickHouseCorridor_TriggerScript_RunIntro {
 	subvar(VAR_INTERACT_Y, 7)
 	// Walk up
 	selectpointer (TrickHouseCorridor_MovementTable_RunIntro, VAR_INTERACT_Y)
-	applymovement (EVENT_OBJ_ID_PLAYER, 0)
+	applymovement (OBJ_EVENT_ID_PLAYER, 0)
 	applymovement (LID_MASTER, Common_Movement_WalkLeft1)
-	waitmovement (EVENT_OBJ_ID_PLAYER)
+	waitmovement (OBJ_EVENT_ID_PLAYER)
 	// Introduce puzzle
 	callnative(LoadPuzzleIntro)
 	// Note: If a custom intro script is on the current puzzle,

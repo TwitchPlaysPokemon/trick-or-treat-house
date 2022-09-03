@@ -14,7 +14,7 @@ mapscripts RustboroCity_Cutscene_MapScripts {
 script(local) RustboroCity_PanHalloween {
 	lockall
 	delay (60)
-	applymovement (EVENT_OBJ_ID_PLAYER, RustboroCity_CameraWalk)
+	applymovement (OBJ_EVENT_ID_PLAYER, RustboroCity_CameraWalk)
 	clearflag (FLAG_DISABLE_FADE_INIT)
 	fadescreenspeed (0, 6)
 	// Fade up screen, pan across city
@@ -51,9 +51,9 @@ script(local) RustboroCity_PanHalloween {
 	playse (SE_DANSA)
 	applymovement (7, RustboroCity_Movement_SurpriseJump)
 	// 
-	waitmovement (EVENT_OBJ_ID_PLAYER)
+	waitmovement (OBJ_EVENT_ID_PLAYER)
 	// Fade down screen
-	applymovement (EVENT_OBJ_ID_PLAYER, RustboroCity_CameraWalkFinish)
+	applymovement (OBJ_EVENT_ID_PLAYER, RustboroCity_CameraWalkFinish)
 	fadescreenspeed (1, 6)
 	warpcustom (MAP_MAUVILLE_CITY_CUTSCENE, 0, -1, -1)
 	waitstate

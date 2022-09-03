@@ -88,7 +88,7 @@ script TrickTreat_PetalburgCity_Introduction {
 	setvar (VAR_PUZZLE_00, 1)
 	setvar (THIS_EVENT, 12)
 	applymovement (THIS_EVENT, Common_Movement_WalkInPlaceLeft)
-	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceRight)
+	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
 	waitmovement (0)
 	msgbox ("{JOEY}: Alright, looks like Trick\n"
 			"or Treating is still going on here.\p"
@@ -106,7 +106,7 @@ script TrickTreat_PetalburgCity_Introduction {
 	waitmovement (0)
 	setobjectxy (THIS_EVENT, 41, 17)
 	setobjectxyperm (THIS_EVENT, 41, 17)
-	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceDown)
+	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown)
 	clearflag (FLAG_HIDE_MAP_NAME_POPUP)
 	release
 	special (ShowMapNamePopup)
@@ -288,7 +288,7 @@ script TrickTreat_PetalburgCity_ExitYoungster {
 			"know we've gone?$")
 	closemessage
 	if (var(VAR_FACING) == DIR_EAST) {
-		applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_BackOffLeft1)
+		applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_BackOffLeft1)
 		waitmovement (0)
 	}
 	applymovement (THIS_EVENT, Common_Movement_WalkLeft1)
@@ -326,7 +326,7 @@ script TrickTreat_PetalburgCity_TriggerScript_SoftBorderEast {
 		msgbox ("There's nothing to see that way.$")
 	}
 	closemessage
-	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkLeft1)
+	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft1)
 	waitmovement (0)
 	release
 }
@@ -336,7 +336,7 @@ script TrickTreat_PetalburgCity_TriggerScript_SoftBorderWest {
 	msgbox ("Mr. Briney's house looks dark. It's\n"
 			"probably not worth heading that way.$")
 	closemessage
-	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkRight1)
+	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight1)
 	waitmovement (0)
 	release
 }

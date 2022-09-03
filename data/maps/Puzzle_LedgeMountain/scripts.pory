@@ -52,15 +52,15 @@ script Puzzle_LedgeMountain_TriggerScript_Intro {
 	getplayerxy (VAR_INTERACT_X, VAR_INTERACT_Y)
 	subvar (VAR_INTERACT_Y, 54)
 	
-	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceUp)
+	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp)
 	waitmovement (0)
 	playse (SE_PIN)
-	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_ExclamationMarkAndWait)
+	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMarkAndWait)
 	waitmovement (0)
 	
 	playfanfare (MUS_ME_TAMA)
 	selectpointer (Puzzle_LedgeMountain_MovementTable_Intro, VAR_INTERACT_Y)
-	applymovement (EVENT_OBJ_ID_PLAYER, 0)
+	applymovement (OBJ_EVENT_ID_PLAYER, 0)
 	waitmovement (0)
 	
 	special (SpawnCameraObject)
@@ -68,12 +68,12 @@ script Puzzle_LedgeMountain_TriggerScript_Intro {
 	waitmovement (0)
 	delay (60)
 	waitfanfare
-	setobjectxy (EVENT_OBJ_ID_PLAYER, 20, 55)
+	setobjectxy (OBJ_EVENT_ID_PLAYER, 20, 55)
 	applymovement (EVENT_OBJ_ID_CAMERA, Puzzle_LedgeMountain_Movement_CameraPanDown)
 	waitmovement (0)
 	special (RemoveCameraObject)
 	delay (10)
-	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
+	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
 	waitmovement (0)
 	setvar (VAR_PUZZLE_00, 1)
 	release

@@ -174,9 +174,9 @@ PuzzleCommon_EventScript_DoDoorEnterAnimation_Stone::
 	playse SE_M_STRENGTH
 	applymovement THIS_EVENT, Common_Movement_ObjectDoorOpen
 	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkUp1
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp1
 	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_SetInvisible
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_SetInvisible
 	waitmovement 0
 	applymovement THIS_EVENT, Common_Movement_ObjectDoorClose
 	waitmovement 0
@@ -186,9 +186,9 @@ PuzzleCommon_EventScript_DoDoorEnterAnimation::
 	playse SE_TRACK_HAIKI
 	applymovement THIS_EVENT, Common_Movement_ObjectDoorOpen
 	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkUp1
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp1
 	waitmovement 0
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_SetInvisible
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_SetInvisible
 	waitmovement 0
 	applymovement THIS_EVENT, Common_Movement_ObjectDoorClose
 	waitmovement 0
@@ -274,7 +274,7 @@ PuzzleCommon_EventScript_PokecenterHeal::
 	@ Open door, walk in
 	opendoor VAR_METATILE_X, VAR_METATILE_Y
 	waitdooranim
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_EnterCenter
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_EnterCenter
 	waitmovement 0
 	closedoor VAR_METATILE_X, VAR_METATILE_Y
 	waitdooranim
@@ -288,7 +288,7 @@ PuzzleCommon_EventScript_PokecenterHeal::
 	@ Open door, walk out
 	opendoor VAR_METATILE_X, VAR_METATILE_Y
 	waitdooranim
-	applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_ExitCenter
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExitCenter
 	waitmovement 0
 	closedoor VAR_METATILE_X, VAR_METATILE_Y
 	waitdooranim

@@ -271,7 +271,7 @@ script SafariZone_EventScript_JamesFearsWater {
 	waitmessage
 	waitmovement(2)
 	selectpointer(SafariZone_MovementTable_JamesFearsWater_Player, VAR_INTERACT_X)
-	applymovement(EVENT_OBJ_ID_PLAYER, 0)
+	applymovement(OBJ_EVENT_ID_PLAYER, 0)
 	applymovement(2, SafariZone_Movement_JamesFearsWater2)
 	playse(SE_PIN)
 	message("{PLAYER}!! HI!! FUNNY YOU'RE HERE\n"

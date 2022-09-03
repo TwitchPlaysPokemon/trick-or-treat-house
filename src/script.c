@@ -371,7 +371,7 @@ void RunOnDiveWarpMapScript(void)
     MapHeaderRunScriptType(MAP_SCRIPT_ON_DIVE_WARP);
 }
 
-void RunOnSpawnEventObjectMapScript(u8 objId)
+void RunOnSpawnObjectEventMapScript(u8 objId)
 {
     gSpecialVar_LastTalked = objId;
     MapHeaderRunScriptType(MAP_SCRIPT_ON_SPAWN_EVENT_OBJECT);

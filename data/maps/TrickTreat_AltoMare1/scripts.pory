@@ -69,12 +69,12 @@ script TrickTreat_AltoMare1_SignScript_SphereRuins {
 //========== The Bridge ===============================
 
 script TrickTreat_AltoMare1_TriggerScript_ClimbRampEast {
-	applymovement(EVENT_OBJ_ID_PLAYER, TrickTreat_AltoMare1_MovementScript_ClimbRampEast)
+	applymovement(OBJ_EVENT_ID_PLAYER, TrickTreat_AltoMare1_MovementScript_ClimbRampEast)
 	waitmovement(0)
 	addvar(VAR_CLIMB_BRIDGE, 1)
 }
 script TrickTreat_AltoMare1_TriggerScript_DescendRampWest {
-	applymovement(EVENT_OBJ_ID_PLAYER, TrickTreat_AltoMare1_MovementScript_DescendRampWest)
+	applymovement(OBJ_EVENT_ID_PLAYER, TrickTreat_AltoMare1_MovementScript_DescendRampWest)
 	waitmovement(0)
 	subvar(VAR_CLIMB_BRIDGE, 1)
 }

@@ -229,11 +229,11 @@ script TrickTreat_MossdeepCity_Tricksters_Trigger {
 	getplayerxy (VAR_INTERACT_X, VAR_INTERACT_Y)
 	subvar (VAR_INTERACT_Y, 31)
 	selectpointer (TrickTreat_MossdeepCity_Tricksters_Movement0Table, VAR_INTERACT_Y)
-	applymovement (EVENT_OBJ_ID_PLAYER, 0)
+	applymovement (OBJ_EVENT_ID_PLAYER, 0)
 	applymovement (LID_TRICKSTER_C, Common_Movement_WalkLeft2)
-	waitmovement (EVENT_OBJ_ID_PLAYER)
-	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceRight)
-	waitmovement (EVENT_OBJ_ID_PLAYER)
+	waitmovement (OBJ_EVENT_ID_PLAYER)
+	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
+	waitmovement (OBJ_EVENT_ID_PLAYER)
 	waitmovement (LID_TRICKSTER_C)
 	addobject(LID_TRICKSTER_A)
 	addobject(LID_TRICKSTER_B)
@@ -251,13 +251,13 @@ script TrickTreat_MossdeepCity_Tricksters_Trigger {
 	message ("The Trick?{PAUSE 40}\nOr the Treat?\p$")
 	delay (22)
 	playse (SE_PIN)
-	applymovement (EVENT_OBJ_ID_PLAYER, TrickTreat_MossdeepCity_Tricksters_MovementPlayerPanic)
+	applymovement (OBJ_EVENT_ID_PLAYER, TrickTreat_MossdeepCity_Tricksters_MovementPlayerPanic)
 	applymovement (LID_TRICKSTER_D, TrickTreat_MossdeepCity_Tricksters_Movement4)
 	waitmovement(LID_TRICKSTER_A)
 	waitmovement(LID_TRICKSTER_B)
 	waitmovement(LID_TRICKSTER_D)
 	waitmovement(LID_TRICKSTER_E)
-	waitmovement(EVENT_OBJ_ID_PLAYER)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
 	#
 	waitmessage
 	msgbox ("What? You think we want a battle?\n"
@@ -271,7 +271,7 @@ script TrickTreat_MossdeepCity_Tricksters_Trigger {
 	setvar (VAR_TRICK_STOLEN_MON, 6) # Note: Order is important here
 	#
 	playse (SE_PIN)
-	applymovement (EVENT_OBJ_ID_PLAYER, TrickTreat_MossdeepCity_Tricksters_MovementPlayerPanic)
+	applymovement (OBJ_EVENT_ID_PLAYER, TrickTreat_MossdeepCity_Tricksters_MovementPlayerPanic)
 	applymovement (LID_TRICKSTER_A, TrickTreat_MossdeepCity_Tricksters_RunAway1)
 	applymovement (LID_TRICKSTER_B, TrickTreat_MossdeepCity_Tricksters_RunAway2)
 	applymovement (LID_TRICKSTER_C, TrickTreat_MossdeepCity_Tricksters_RunAway3)
@@ -286,7 +286,7 @@ script TrickTreat_MossdeepCity_Tricksters_Trigger {
 	waitmovement(LID_TRICKSTER_C)
 	waitmovement(LID_TRICKSTER_D)
 	waitmovement(LID_TRICKSTER_E)
-	waitmovement(EVENT_OBJ_ID_PLAYER)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
 	removeobject(LID_TRICKSTER_A)
 	removeobject(LID_TRICKSTER_B)
 	removeobject(LID_TRICKSTER_C)
@@ -749,7 +749,7 @@ script TrickTreat_MossdeepCity_ExitGirl {
 			"{JOEY} is already back there, waiting.$")
 	closemessage
 	if (var(VAR_FACING) == DIR_WEST) {
-		applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_BackOffDown1)
+		applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_BackOffDown1)
 		waitmovement (0)
 	}
 	applymovement (THIS_EVENT, Common_Movement_WalkRight2)

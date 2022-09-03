@@ -152,7 +152,7 @@ script(local) Puzzle_SafariImposters_OnResume {
 
 script(local) Puzzle_SafariImposters_OnMapWarpShowTitle {
 	setvar(VAR_TEMP_A, 1)
-	turnobject (EVENT_OBJ_ID_PLAYER, DIR_NORTH)
+	turnobject (OBJ_EVENT_ID_PLAYER, DIR_NORTH)
 }
 script(local) Puzzle_SafariImposters_ShowMapTitle {
 	clearflag(FLAG_HIDE_MAP_NAME_POPUP)

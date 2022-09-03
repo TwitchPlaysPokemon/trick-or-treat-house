@@ -1010,31 +1010,31 @@ static const union AffineAnimCmd *const sAffineAnimTable_KyogreGroudon[] = {
 ///////////////////////////////////////////////////////////////////////////////
 
 
-const union AnimCmd gAnim4Cell_FaceSouth[] =
+static const union AnimCmd sAnim4Cell_FaceSouth[] =
 {
     ANIMCMD_FRAME(0, 16),
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_FaceNorth[] =
+static const union AnimCmd sAnim4Cell_FaceNorth[] =
 {
     ANIMCMD_FRAME(1, 16),
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_FaceWest[] =
+static const union AnimCmd sAnim4Cell_FaceWest[] =
 {
     ANIMCMD_FRAME(2, 16),
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_FaceEast[] =
+static const union AnimCmd sAnim4Cell_FaceEast[] =
 {
     ANIMCMD_FRAME(3, 16),
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_GoSouth[] =
+static const union AnimCmd sAnim4Cell_GoSouth[] =
 {
     ANIMCMD_FRAME(4, 8),
     ANIMCMD_FRAME(0, 8),
@@ -1043,7 +1043,7 @@ const union AnimCmd gAnim4Cell_GoSouth[] =
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_GoNorth[] =
+static const union AnimCmd sAnim4Cell_GoNorth[] =
 {
     ANIMCMD_FRAME(6, 8),
     ANIMCMD_FRAME(1, 8),
@@ -1052,7 +1052,7 @@ const union AnimCmd gAnim4Cell_GoNorth[] =
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_GoWest[] =
+static const union AnimCmd sAnim4Cell_GoWest[] =
 {
     ANIMCMD_FRAME(8, 8),
     ANIMCMD_FRAME(2, 8),
@@ -1061,7 +1061,7 @@ const union AnimCmd gAnim4Cell_GoWest[] =
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_GoEast[] =
+static const union AnimCmd sAnim4Cell_GoEast[] =
 {
     ANIMCMD_FRAME(10, 8),
     ANIMCMD_FRAME( 3, 8),
@@ -1070,7 +1070,7 @@ const union AnimCmd gAnim4Cell_GoEast[] =
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_GoFastSouth[] =
+static const union AnimCmd sAnim4Cell_GoFastSouth[] =
 {
     ANIMCMD_FRAME(4, 4),
     ANIMCMD_FRAME(0, 4),
@@ -1079,7 +1079,7 @@ const union AnimCmd gAnim4Cell_GoFastSouth[] =
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_GoFastNorth[] =
+static const union AnimCmd sAnim4Cell_GoFastNorth[] =
 {
     ANIMCMD_FRAME(6, 4),
     ANIMCMD_FRAME(1, 4),
@@ -1088,7 +1088,7 @@ const union AnimCmd gAnim4Cell_GoFastNorth[] =
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_GoFastWest[] =
+static const union AnimCmd sAnim4Cell_GoFastWest[] =
 {
     ANIMCMD_FRAME(8, 4),
     ANIMCMD_FRAME(2, 4),
@@ -1097,7 +1097,7 @@ const union AnimCmd gAnim4Cell_GoFastWest[] =
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_GoFastEast[] =
+static const union AnimCmd sAnim4Cell_GoFastEast[] =
 {
     ANIMCMD_FRAME(10, 4),
     ANIMCMD_FRAME( 3, 4),
@@ -1106,7 +1106,7 @@ const union AnimCmd gAnim4Cell_GoFastEast[] =
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_GoFasterSouth[] =
+static const union AnimCmd sAnim4Cell_GoFasterSouth[] =
 {
     ANIMCMD_FRAME(4, 2),
     ANIMCMD_FRAME(0, 2),
@@ -1115,7 +1115,7 @@ const union AnimCmd gAnim4Cell_GoFasterSouth[] =
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_GoFasterNorth[] =
+static const union AnimCmd sAnim4Cell_GoFasterNorth[] =
 {
     ANIMCMD_FRAME(8, 2),
     ANIMCMD_FRAME(2, 2),
@@ -1124,7 +1124,7 @@ const union AnimCmd gAnim4Cell_GoFasterNorth[] =
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_GoFasterWest[] =
+static const union AnimCmd sAnim4Cell_GoFasterWest[] =
 {
     ANIMCMD_FRAME(7, 2),
     ANIMCMD_FRAME(2, 2),
@@ -1133,7 +1133,7 @@ const union AnimCmd gAnim4Cell_GoFasterWest[] =
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_GoFasterEast[] =
+static const union AnimCmd sAnim4Cell_GoFasterEast[] =
 {
     ANIMCMD_FRAME(10, 2),
     ANIMCMD_FRAME( 3, 2),
@@ -1142,7 +1142,7 @@ const union AnimCmd gAnim4Cell_GoFasterEast[] =
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_GoFastestSouth[] =
+static const union AnimCmd sAnim4Cell_GoFastestSouth[] =
 {
     ANIMCMD_FRAME(4, 1),
     ANIMCMD_FRAME(0, 1),
@@ -1151,7 +1151,7 @@ const union AnimCmd gAnim4Cell_GoFastestSouth[] =
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_GoFastestNorth[] =
+static const union AnimCmd sAnim4Cell_GoFastestNorth[] =
 {
     ANIMCMD_FRAME(8, 1),
     ANIMCMD_FRAME(2, 1),
@@ -1160,7 +1160,7 @@ const union AnimCmd gAnim4Cell_GoFastestNorth[] =
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_GoFastestWest[] =
+static const union AnimCmd sAnim4Cell_GoFastestWest[] =
 {
     ANIMCMD_FRAME(7, 1),
     ANIMCMD_FRAME(2, 1),
@@ -1169,7 +1169,7 @@ const union AnimCmd gAnim4Cell_GoFastestWest[] =
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_GoFastestEast[] =
+static const union AnimCmd sAnim4Cell_GoFastestEast[] =
 {
     ANIMCMD_FRAME(10, 1),
     ANIMCMD_FRAME( 3, 1),
@@ -1178,7 +1178,7 @@ const union AnimCmd gAnim4Cell_GoFastestEast[] =
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_FarfetchedCut[] =
+static const union AnimCmd sAnim4Cell_FarfetchedCut[] =
 {
     ANIMCMD_FRAME(0, 8),
     ANIMCMD_FRAME(12, 8),
@@ -1192,42 +1192,42 @@ const union AnimCmd gAnim4Cell_FarfetchedCut[] =
     ANIMCMD_END,
 };
 
-const union AnimCmd gAnim4Cell_FarfetchedFlyLeft[] =
+static const union AnimCmd sAnim4Cell_FarfetchedFlyLeft[] =
 {
     ANIMCMD_FRAME(15, 8),
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd gAnim4Cell_FarfetchedFlyRight[] =
+static const union AnimCmd sAnim4Cell_FarfetchedFlyRight[] =
 {
     ANIMCMD_FRAME(15, 8, .hFlip = TRUE),
     ANIMCMD_JUMP(0),
 };
 
-const union AnimCmd *const gAnimTable_Farfetchd[] = {
-    gAnim4Cell_FaceSouth,
-    gAnim4Cell_FaceNorth,
-    gAnim4Cell_FaceWest,
-    gAnim4Cell_FaceEast,
-    gAnim4Cell_GoSouth,
-    gAnim4Cell_GoNorth,
-    gAnim4Cell_GoWest,
-    gAnim4Cell_GoEast,
-    gAnim4Cell_GoFastSouth,
-    gAnim4Cell_GoFastNorth,
-    gAnim4Cell_GoFastWest,
-    gAnim4Cell_GoFastEast,
-    gAnim4Cell_GoFasterSouth,
-    gAnim4Cell_GoFasterNorth,
-    gAnim4Cell_GoFasterWest,
-    gAnim4Cell_GoFasterEast,
-    gAnim4Cell_GoFastestSouth,
-    gAnim4Cell_GoFastestNorth,
-    gAnim4Cell_GoFastestWest,
-    gAnim4Cell_GoFastestEast,
-    gAnim4Cell_FarfetchedCut,
-    gAnim4Cell_FarfetchedFlyLeft,
-    gAnim4Cell_FarfetchedFlyRight,
+static const union AnimCmd *const sAnimTable_Farfetchd[] = {
+    sAnim4Cell_FaceSouth,
+    sAnim4Cell_FaceNorth,
+    sAnim4Cell_FaceWest,
+    sAnim4Cell_FaceEast,
+    sAnim4Cell_GoSouth,
+    sAnim4Cell_GoNorth,
+    sAnim4Cell_GoWest,
+    sAnim4Cell_GoEast,
+    sAnim4Cell_GoFastSouth,
+    sAnim4Cell_GoFastNorth,
+    sAnim4Cell_GoFastWest,
+    sAnim4Cell_GoFastEast,
+    sAnim4Cell_GoFasterSouth,
+    sAnim4Cell_GoFasterNorth,
+    sAnim4Cell_GoFasterWest,
+    sAnim4Cell_GoFasterEast,
+    sAnim4Cell_GoFastestSouth,
+    sAnim4Cell_GoFastestNorth,
+    sAnim4Cell_GoFastestWest,
+    sAnim4Cell_GoFastestEast,
+    sAnim4Cell_FarfetchedCut,
+    sAnim4Cell_FarfetchedFlyLeft,
+    sAnim4Cell_FarfetchedFlyRight,
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1263,7 +1263,7 @@ static const struct StepAnimTable sStepAnimTables[] = {
         .animPos = {1, 3, 0, 2},
     },
     {
-        .anims = gAnimTable_Farfetchd,
+        .anims = sAnimTable_Farfetchd,
         .animPos = {1, 3, 0, 2},
     },
     {},

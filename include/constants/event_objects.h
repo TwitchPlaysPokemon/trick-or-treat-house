@@ -187,8 +187,8 @@
 #define OBJ_EVENT_GFX_SUBMARINE_SHADOW               0x0AB
 #define OBJ_EVENT_GFX_VIGOROTH_CARRYING_BOX          0x0AC
 #define OBJ_EVENT_GFX_VIGOROTH_FACING_AWAY           0x0AD
-#define OBJ_EVENT_GFX_RAYQUAZA_1                     0x0AE
-#define OBJ_EVENT_GFX_RAYQUAZA_2                     0x0AF
+#define OBJ_EVENT_GFX_RAYQUAZA_STILL                 0x0AE
+#define OBJ_EVENT_GFX_RAYQUAZA                       0x0AF
 
 #define OBJ_EVENT_GFX_NATU_DOLL                      0x0B0
 #define OBJ_EVENT_GFX_MAGNEMITE_DOLL                 0x0B1
@@ -244,22 +244,22 @@
 #define OBJ_EVENT_GFX_BIG_REGISTEEL_DOLL             0x0E3
 #define OBJ_EVENT_GFX_LATIAS                         0x0E4
 #define OBJ_EVENT_GFX_LATIOS                         0x0E5
-#define OBJ_EVENT_GFX_KYOGRE_1                       0x0E6
-#define OBJ_EVENT_GFX_KYOGRE_2                       0x0E7
-#define OBJ_EVENT_GFX_KYOGRE_3                       0x0E8
-#define OBJ_EVENT_GFX_GROUDON_1                      0x0E9
-#define OBJ_EVENT_GFX_GROUDON_2                      0x0EA
-#define OBJ_EVENT_GFX_GROUDON_3                      0x0EB
+#define OBJ_EVENT_GFX_KYOGRE_FRONT                   0x0E6
+#define OBJ_EVENT_GFX_KYOGRE_ASLEEP                  0x0E7
+#define OBJ_EVENT_GFX_KYOGRE_SIDE                    0x0E8
+#define OBJ_EVENT_GFX_GROUDON_FRONT                  0x0E9
+#define OBJ_EVENT_GFX_GROUDON_ASLEEP                 0x0EA
+#define OBJ_EVENT_GFX_GROUDON_SIDE                   0x0EB
 #define OBJ_EVENT_GFX_REGIROCK                       0x0EC
 #define OBJ_EVENT_GFX_REGICE                         0x0ED
 #define OBJ_EVENT_GFX_REGISTEEL                      0x0EE
 #define OBJ_EVENT_GFX_SKITTY                         0x0EF
-#define OBJ_EVENT_GFX_KECLEON_1                      0x0F0
+#define OBJ_EVENT_GFX_KECLEON                        0x0F0
 #define OBJ_EVENT_GFX_ZIGZAGOON_2                    0x0F1
 #define OBJ_EVENT_GFX_PIKACHU                        0x0F2
 #define OBJ_EVENT_GFX_AZUMARILL                      0x0F3
 #define OBJ_EVENT_GFX_WINGULL                        0x0F4
-#define OBJ_EVENT_GFX_KECLEON_2                      0x0F5
+#define OBJ_EVENT_GFX_KECLEON_BRIDGE_SHADOW          0x0F5
 #define OBJ_EVENT_GFX_AZURILL                        0x0F6
 #define OBJ_EVENT_GFX_POOCHYENA                      0x0F7
 #define OBJ_EVENT_GFX_KIRLIA                         0x0F8
@@ -295,11 +295,12 @@
 #define OBJ_EVENT_GFX_IMPOSTER_LASS                  0x113
 #define OBJ_EVENT_GFX_PIDGEY                         0x114
 
-#define NUM_OBJECT_GRAPHICS_INFO 	                 0x115
+#define NUM_OBJ_EVENT_GFX                            0x115
 
 // These are dynamic object gfx ids.
 // They correspond with the values of the VAR_OBJ_GFX_ID_X vars.
 // More info about them in include/constants/vars.h
+#define OBJ_EVENT_GFX_VARS  0x1F0
 #define OBJ_EVENT_GFX_VAR_0 0x1F0
 #define OBJ_EVENT_GFX_VAR_1 0x1F1
 #define OBJ_EVENT_GFX_VAR_2 0x1F2

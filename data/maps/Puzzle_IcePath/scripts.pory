@@ -224,7 +224,7 @@ script Puzzle_IcePath_PickupSecretItem {
 script Puzzle_IcePath_FallDownHole_Common {
 	lockall
 	delay (10)
-	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_SetInvisible)
+	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_SetInvisible)
 	waitmovement(0)
 	playse (SE_RU_HYUU)
 	delay (60)

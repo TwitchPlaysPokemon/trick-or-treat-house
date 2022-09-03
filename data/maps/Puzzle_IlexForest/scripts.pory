@@ -466,13 +466,13 @@ script(local) Puzzle_IlexForest_BirdSpotBtoC {
 			setvar (VAR_BIRD_LOCATION, _ILEX_BIRDSPOT_C1)
 			// Animate the bird
 			applymovement(LID_BIRD, Puzzle_IlexForest_Movement_BtoC_Bird1)
-			applymovement(EVENT_OBJ_ID_PLAYER, Puzzle_IlexForest_Movement_BtoC_Player1)
+			applymovement(OBJ_EVENT_ID_PLAYER, Puzzle_IlexForest_Movement_BtoC_Player1)
 			waitmovement(LID_BIRD)
 			playse(SE_PIN)
 			delay (48)
 			//
 			applymovement(LID_BIRD, Puzzle_IlexForest_Movement_BtoC_Bird2)
-			applymovement(EVENT_OBJ_ID_PLAYER, Puzzle_IlexForest_Movement_BtoC_Player2)
+			applymovement(OBJ_EVENT_ID_PLAYER, Puzzle_IlexForest_Movement_BtoC_Player2)
 			applymovement(LID_BALL, Puzzle_IlexForest_Movement_BtoC_Ball2)
 			delay (4)
 			playmoncry (SPECIES_FARFETCHD, 0)

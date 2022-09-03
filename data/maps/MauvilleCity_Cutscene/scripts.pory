@@ -14,7 +14,7 @@ script(local) MauvilleCity_PanHalloween {
 	lockall
 	delay (30)
 	setdooropen (26, 5)
-	applymovement (EVENT_OBJ_ID_PLAYER, MauvilleCity_CameraWalk)
+	applymovement (OBJ_EVENT_ID_PLAYER, MauvilleCity_CameraWalk)
 	clearflag (FLAG_DISABLE_FADE_INIT)
 	applymovement (11, MauvilleCity_Movement_Girl)
 	fadescreenspeed (0, 6)
@@ -53,9 +53,9 @@ script(local) MauvilleCity_PanHalloween {
 	playse (SE_DANSA)
 	
 	
-	waitmovement (EVENT_OBJ_ID_PLAYER)
+	waitmovement (OBJ_EVENT_ID_PLAYER)
 	// Fade down screen
-	applymovement (EVENT_OBJ_ID_PLAYER, MauvilleCity_CameraWalkFinish)
+	applymovement (OBJ_EVENT_ID_PLAYER, MauvilleCity_CameraWalkFinish)
 	fadescreenspeed (1, 6)
 	setvar (VAR_INTRO_COUNTER, 1)
 	warpcustom (MAP_ROUTE110_CUTSCENE, 0, -1, -1)

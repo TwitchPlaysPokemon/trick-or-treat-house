@@ -23,7 +23,7 @@ mapscripts TrickHouseEntrance_MapScripts {
 			setobjectxy(5, 4, 5)   turnobject(5, 2)
 			setobjectxy(6, 3, 4)   turnobject(6, 2)
 			setobjectxy(7, 5, 6)   turnobject(7, 2)
-			turnobject(EVENT_OBJ_ID_PLAYER, 2)
+			turnobject(OBJ_EVENT_ID_PLAYER, 2)
 		}
 	]
 	MAP_SCRIPT_ON_TRANSITION {
@@ -71,10 +71,10 @@ script(local) TrickHouseEntrance_OnWarp_Setup {
 
 script TrickHouseEntrance_WalkInCutscene {
 	lock
-	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkUp1)
+	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp1)
 	waitmovement (0)
 	msgbox ("You're being watched…$")
-	// applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceRight)
+	// applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
 	// applymovement (LID_RIVAL, Common_Movement_WalkInPlaceLeft)
 	// waitmovement (0)
 	// msgbox ("{RIVAL}: You felt that too, right?\p"

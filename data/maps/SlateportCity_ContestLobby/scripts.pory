@@ -48,12 +48,12 @@ SlateportCity_ContestLobby_EventScript_21A670::
 	@ delay 20
 	@ applymovement 1, Common_Movement_WalkInPlaceRight
 	@ waitmovement 0
-	@ applymovement EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceLeft
+	@ applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft
 	@ waitmovement 0
 	@ msgbox LilycoveCity_ContestLobby_Text_27B653, MSGBOX_DEFAULT
 	@ closemessage
 	@ applymovement 1, SlateportCity_ContestLobby_Movement_21A6FD
-	@ applymovement EVENT_OBJ_ID_PLAYER, LilycoveCity_ContestLobby_Movement_21A6E8
+	@ applymovement OBJ_EVENT_ID_PLAYER, LilycoveCity_ContestLobby_Movement_21A6E8
 	@ waitmovement 0
 	@ setdynamicwarp MAP_SLATEPORT_CITY_CONTEST_LOBBY, 0xFF, 5, 4
 	@ releaseall

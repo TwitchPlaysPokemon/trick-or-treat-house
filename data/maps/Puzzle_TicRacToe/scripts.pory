@@ -188,8 +188,8 @@ script Puzzle_TicRacToe_TriggerScript_BlockIn {
 	//
 	special (SpawnCameraObject)
 	applymovement(LID_BLOCK_BOY, Puzzle_TicRacToe_Movement_BlockIn_Boy)
-	applymovement(EVENT_OBJ_ID_PLAYER, Puzzle_TicRacToe_Movement_BlockIn_Player)
-	waitmovement(EVENT_OBJ_ID_PLAYER)
+	applymovement(OBJ_EVENT_ID_PLAYER, Puzzle_TicRacToe_Movement_BlockIn_Player)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
 	// 
 	msgbox ("OMG these Zigzagoon are SO CUTE!\p"
 			"Just look at them!\n"
@@ -197,7 +197,7 @@ script Puzzle_TicRacToe_TriggerScript_BlockIn {
 	closemessage
 	// 
 	applymovement(LID_BLOCK_BOY, Common_Movement_FaceUp)
-	applymovement(EVENT_OBJ_ID_PLAYER, Common_Movement_FaceUp)
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp)
 	applymovement(EVENT_OBJ_ID_CAMERA, Puzzle_TicRacToe_Movement_BlockIn_Camera)
 	copyobjectxytoperm(1)
 	removeobject(1)
