@@ -1,23 +1,23 @@
 MysteryGiftScript_VisitingTrainer::
-	setvaddress MysteryGiftScript_VisitingTrainer
-	special ValidateEReaderTrainer
-	vgoto_if_eq VAR_RESULT, 0, MysteryGiftScript_VisitingTrainerArrived
-	lock
-	faceplayer
-	vmessage sText_MysteryGiftVisitingTrainerInstructions
-	waitmessage
-	waitbuttonpress
-	release
-	end
+@ 	setvaddress MysteryGiftScript_VisitingTrainer
+@ 	special ValidateEReaderTrainer
+@ 	vgoto_if_eq VAR_RESULT, 0, MysteryGiftScript_VisitingTrainerArrived
+@ 	lock
+@ 	faceplayer
+@ 	vmessage sText_MysteryGiftVisitingTrainerInstructions
+@ 	waitmessage
+@ 	waitbuttonpress
+@ 	release
+@ 	end
 
-MysteryGiftScript_VisitingTrainerArrived:
-	lock
-	faceplayer
-	vmessage sText_MysteryGiftVisitingTrainerArrived
-	waitmessage
-	waitbuttonpress
-	release
-	end
+@ MysteryGiftScript_VisitingTrainerArrived:
+@ 	lock
+@ 	faceplayer
+@ 	vmessage sText_MysteryGiftVisitingTrainerArrived
+@ 	waitmessage
+@ 	waitbuttonpress
+@ 	release
+@ 	end
 
 sText_MysteryGiftVisitingTrainerInstructions:
 	.string "Thank you for using the MYSTERY\n"

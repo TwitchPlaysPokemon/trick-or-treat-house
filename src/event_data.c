@@ -124,18 +124,18 @@ bool32 IsMysteryGiftEnabled(void)
 
 void ClearMysteryGiftFlags(void)
 {
-    FlagClear(FLAG_MYSTERY_GIFT_DONE);
-    FlagClear(FLAG_MYSTERY_GIFT_1);
-    FlagClear(FLAG_MYSTERY_GIFT_2);
-    FlagClear(FLAG_MYSTERY_GIFT_3);
-    FlagClear(FLAG_MYSTERY_GIFT_4);
-    FlagClear(FLAG_MYSTERY_GIFT_5);
-    FlagClear(FLAG_MYSTERY_GIFT_6);
-    FlagClear(FLAG_MYSTERY_GIFT_7);
-    FlagClear(FLAG_MYSTERY_GIFT_8);
-    FlagClear(FLAG_MYSTERY_GIFT_9);
-    FlagClear(FLAG_MYSTERY_GIFT_10);
-    FlagClear(FLAG_MYSTERY_GIFT_11);
+    // FlagClear(FLAG_MYSTERY_GIFT_DONE);
+    // FlagClear(FLAG_MYSTERY_GIFT_1);
+    // FlagClear(FLAG_MYSTERY_GIFT_2);
+    // FlagClear(FLAG_MYSTERY_GIFT_3);
+    // FlagClear(FLAG_MYSTERY_GIFT_4);
+    // FlagClear(FLAG_MYSTERY_GIFT_5);
+    // FlagClear(FLAG_MYSTERY_GIFT_6);
+    // FlagClear(FLAG_MYSTERY_GIFT_7);
+    // FlagClear(FLAG_MYSTERY_GIFT_8);
+    // FlagClear(FLAG_MYSTERY_GIFT_9);
+    // FlagClear(FLAG_MYSTERY_GIFT_10);
+    // FlagClear(FLAG_MYSTERY_GIFT_11);
     // FlagClear(FLAG_MYSTERY_GIFT_12);
     // FlagClear(FLAG_MYSTERY_GIFT_13);
     // FlagClear(FLAG_MYSTERY_GIFT_14);
@@ -144,14 +144,14 @@ void ClearMysteryGiftFlags(void)
 
 void ClearMysteryGiftVars(void)
 {
-    VarSet(VAR_GIFT_PICHU_SLOT, 0);
-    VarSet(VAR_GIFT_UNUSED_1, 0);
-    VarSet(VAR_GIFT_UNUSED_2, 0);
-    VarSet(VAR_GIFT_UNUSED_3, 0);
-    VarSet(VAR_GIFT_UNUSED_4, 0);
-    VarSet(VAR_GIFT_UNUSED_5, 0);
-    VarSet(VAR_GIFT_UNUSED_6, 0);
-    VarSet(VAR_GIFT_UNUSED_7, 0);
+    // VarSet(VAR_GIFT_PICHU_SLOT, 0);
+    // VarSet(VAR_GIFT_UNUSED_1, 0);
+    // VarSet(VAR_GIFT_UNUSED_2, 0);
+    // VarSet(VAR_GIFT_UNUSED_3, 0);
+    // VarSet(VAR_GIFT_UNUSED_4, 0);
+    // VarSet(VAR_GIFT_UNUSED_5, 0);
+    // VarSet(VAR_GIFT_UNUSED_6, 0);
+    // VarSet(VAR_GIFT_UNUSED_7, 0);
 }
 
 void DisableResetRTC(void)

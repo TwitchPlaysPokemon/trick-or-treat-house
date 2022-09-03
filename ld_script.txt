@@ -330,9 +330,7 @@ SECTIONS {
         src/pokenav_ribbons_summary.o(.text);
         src/pokenav_match_call_data.o(.text);
         src/menu_specialized.o(.text);
-        src/ereader_helpers.o(.text);
         src/faraway_island.o(.text);
-        src/ereader_screen.o(.text);
         src/rayquaza_scene.o(.text);
         src/walda_phrase.o(.text);
         src/contest_link_util.o(.text);
@@ -687,9 +685,7 @@ SECTIONS {
         src/pokenav_ribbons_summary.o(.rodata);
         src/pokenav_match_call_data.o(.rodata);
         src/menu_specialized.o(.rodata);
-        src/ereader_helpers.o(.rodata);
         src/faraway_island.o(.rodata);
-        src/ereader_screen.o(.rodata);
         src/trainer_hill.o(.rodata);
         src/rayquaza_scene.o(.rodata);
         src/walda_phrase.o(.rodata);
@@ -1299,7 +1295,6 @@ SECTIONS {
     multiboot_data :
     ALIGN(4)
     {
-        data/multiboot_ereader.o(.rodata);
         data/multiboot_berry_glitch_fix.o(.rodata);
         data/multiboot_pokemon_colosseum.o(.rodata);
     } =0
