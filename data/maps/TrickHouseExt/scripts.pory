@@ -300,89 +300,89 @@ TrickHouseExt_OnLoad_Traders_DTable:
 `
 
 script TrickHouseExt_OnLoad_Traders_LoadA1 {
-	setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_SKELETON)
-	setvar(VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_PLASMA_KID)
-	setvar(VAR_OBJ_GFX_ID_2, EVENT_OBJ_GFX_BOY_2)
+	setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_SKELETON)
+	setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_PLASMA_KID)
+	setvar(VAR_OBJ_GFX_ID_2, OBJ_EVENT_GFX_BOY_2)
 	setvar(VAR_CANDY_TRADE_1, 1)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadA2 {
-	setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_GIRL_1)
-	setvar(VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_PICNICKER)
-	setvar(VAR_OBJ_GFX_ID_2, EVENT_OBJ_GFX_FAIRY_GIRL)
+	setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_GIRL_1)
+	setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_PICNICKER)
+	setvar(VAR_OBJ_GFX_ID_2, OBJ_EVENT_GFX_FAIRY_GIRL)
 	setvar(VAR_CANDY_TRADE_1, 2)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadA3 {
-	setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_HERO_OF_TIME)
-	setvar(VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_TWINS_PLUSLE)
-	setvar(VAR_OBJ_GFX_ID_2, EVENT_OBJ_GFX_LITTLE_BOY)
+	setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_HERO_OF_TIME)
+	setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_TWINS_PLUSLE)
+	setvar(VAR_OBJ_GFX_ID_2, OBJ_EVENT_GFX_LITTLE_BOY)
 	setvar(VAR_CANDY_TRADE_1, 3)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadA4 {
-	setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_COOK)
-	setvar(VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_BUG_CATCHER)
-	setvar(VAR_OBJ_GFX_ID_2, EVENT_OBJ_GFX_MASKED_BOY)
+	setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_COOK)
+	setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_BUG_CATCHER)
+	setvar(VAR_OBJ_GFX_ID_2, OBJ_EVENT_GFX_MASKED_BOY)
 	setvar(VAR_CANDY_TRADE_1, 4)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadA5 {
-	setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_GAMEBOY_KID)
-	setvar(VAR_OBJ_GFX_ID_1, EVENT_OBJ_GFX_ALIEN)
-	setvar(VAR_OBJ_GFX_ID_2, EVENT_OBJ_GFX_GHOST)
+	setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_GAMEBOY_KID)
+	setvar(VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_ALIEN)
+	setvar(VAR_OBJ_GFX_ID_2, OBJ_EVENT_GFX_GHOST)
 	setvar(VAR_CANDY_TRADE_1, 5)
 	return
 }
 
 
 script TrickHouseExt_OnLoad_Traders_LoadB1 {
-	setvar(VAR_OBJ_GFX_ID_3, EVENT_OBJ_GFX_CORPSE_BRIDE)
-	setvar(VAR_OBJ_GFX_ID_4, EVENT_OBJ_GFX_MERMAID_WALKING)
+	setvar(VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_CORPSE_BRIDE)
+	setvar(VAR_OBJ_GFX_ID_4, OBJ_EVENT_GFX_MERMAID_WALKING)
 	setvar(VAR_CANDY_TRADE_2, 1)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadB2 {
-	setvar(VAR_OBJ_GFX_ID_3, EVENT_OBJ_GFX_REPORTER_F)
-	setvar(VAR_OBJ_GFX_ID_4, EVENT_OBJ_GFX_CAMERAMAN)
+	setvar(VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_REPORTER_F)
+	setvar(VAR_OBJ_GFX_ID_4, OBJ_EVENT_GFX_CAMERAMAN)
 	setvar(VAR_CANDY_TRADE_2, 2)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadB3 {
-	setvar(VAR_OBJ_GFX_ID_3, EVENT_OBJ_GFX_PIKACHU)
-	setvar(VAR_OBJ_GFX_ID_4, EVENT_OBJ_GFX_AZUMARILL)
+	setvar(VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_PIKACHU)
+	setvar(VAR_OBJ_GFX_ID_4, OBJ_EVENT_GFX_AZUMARILL)
 	setvar(VAR_CANDY_TRADE_2, 3)
 	return
 }
 
 
 script TrickHouseExt_OnLoad_Traders_LoadC1 {
-	setvar(VAR_OBJ_GFX_ID_5, EVENT_OBJ_GFX_BLACK_BELT)
+	setvar(VAR_OBJ_GFX_ID_5, OBJ_EVENT_GFX_BLACK_BELT)
 	setvar(VAR_CANDY_TRADE_3, 1)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadC2 {
-	setvar(VAR_OBJ_GFX_ID_5, EVENT_OBJ_GFX_RICH_BOY)
+	setvar(VAR_OBJ_GFX_ID_5, OBJ_EVENT_GFX_RICH_BOY)
 	setvar(VAR_CANDY_TRADE_3, 2)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadC3 {
-	setvar(VAR_OBJ_GFX_ID_5, EVENT_OBJ_GFX_GLACIA)
+	setvar(VAR_OBJ_GFX_ID_5, OBJ_EVENT_GFX_GLACIA)
 	setvar(VAR_CANDY_TRADE_3, 3)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadC4 {
-	setvar(VAR_OBJ_GFX_ID_5, EVENT_OBJ_GFX_EXPERT_M)
+	setvar(VAR_OBJ_GFX_ID_5, OBJ_EVENT_GFX_EXPERT_M)
 	setvar(VAR_CANDY_TRADE_3, 4)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadC5 {
-	setvar(VAR_OBJ_GFX_ID_5, EVENT_OBJ_GFX_BEAUTY)
+	setvar(VAR_OBJ_GFX_ID_5, OBJ_EVENT_GFX_BEAUTY)
 	setvar(VAR_CANDY_TRADE_3, 5)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadC6 {
-	setvar(VAR_OBJ_GFX_ID_5, EVENT_OBJ_GFX_ANABEL)
+	setvar(VAR_OBJ_GFX_ID_5, OBJ_EVENT_GFX_ANABEL)
 	setvar(VAR_CANDY_TRADE_3, 6)
 	return
 }
@@ -390,21 +390,21 @@ script TrickHouseExt_OnLoad_Traders_LoadC6 {
 
 script TrickHouseExt_OnLoad_Traders_LoadD1 {
 	setvar(VAR_CANDY_TRADE_4, 1)
-	setvar(VAR_OBJ_GFX_ID_6, EVENT_OBJ_GFX_NOLAND)
+	setvar(VAR_OBJ_GFX_ID_6, OBJ_EVENT_GFX_NOLAND)
 	setobjectxyperm(20, 41, 38)
 	setobjectmovementtype(20, MOVEMENT_TYPE_FACE_UP_AND_LEFT)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadD2 {
 	setvar(VAR_CANDY_TRADE_4, 2)
-	setvar(VAR_OBJ_GFX_ID_6, EVENT_OBJ_GFX_GHETSIS)
+	setvar(VAR_OBJ_GFX_ID_6, OBJ_EVENT_GFX_GHETSIS)
 	setobjectxyperm(20, 43, 31)
 	setobjectmovementtype(20, MOVEMENT_TYPE_FACE_DOWN_AND_LEFT)
 	return
 }
 script TrickHouseExt_OnLoad_Traders_LoadD3 {
 	setvar(VAR_CANDY_TRADE_4, 3)
-	setvar(VAR_OBJ_GFX_ID_6, EVENT_OBJ_GFX_BRAWLY)
+	setvar(VAR_OBJ_GFX_ID_6, OBJ_EVENT_GFX_BRAWLY)
 	setobjectxyperm(20, 37, 48)
 	setobjectmovementtype(20, MOVEMENT_TYPE_FACE_UP_AND_RIGHT)
 	return
@@ -500,7 +500,7 @@ script(local) TrickHouseExt_CommonOfferTrade_Reject {
 
 script TrickHouseExt_EventScript_TraderA1 {
 	switch(var(VAR_OBJ_GFX_ID_0)) {
-		case EVENT_OBJ_GFX_SKELETON:
+		case OBJ_EVENT_GFX_SKELETON:
 			offertrade(
 				ITEM_CANDY_TWIXLEFT, 1,
 				ITEM_CANDY_TWIXRIGHT, 0,
@@ -509,7 +509,7 @@ script TrickHouseExt_EventScript_TraderA1 {
 				"I'll trade you for some Right ones.$",
 				"Aw, alright.\nGot. Need. Got. Got…$",
 				"Thanks!\nLet's see, got that now…$")
-		case EVENT_OBJ_GFX_GIRL_1:
+		case OBJ_EVENT_GFX_GIRL_1:
 			offertrade(
 				ITEM_CANDY_WARHEAD, 1,
 				ITEM_CANDY_PRETZEL, 0,
@@ -518,12 +518,12 @@ script TrickHouseExt_EventScript_TraderA1 {
 				"Oh, alright.$",
 				"Thank you!\n"
 				"I like Pretzels more than Warheads.$")
-		case EVENT_OBJ_GFX_HERO_OF_TIME:
+		case OBJ_EVENT_GFX_HERO_OF_TIME:
 			msgbox("My mom put me in charge of keeping my\n"
 					"siblings out of trouble tonight.\p"
 					"They're such a handful… I don't know\n"
 					"how she does it all the time…$", MSGBOX_NPC)
-		case EVENT_OBJ_GFX_COOK:
+		case OBJ_EVENT_GFX_COOK:
 			offertrade(
 				ITEM_CANDY_TURKISHDELIGHT, 1, 
 				ITEM_CANDY_CADBURYCREME, 2,
@@ -532,7 +532,7 @@ script TrickHouseExt_EventScript_TraderA1 {
 				"a couple Cadbury Creme Eggs!$",
 				"Very well, enjoy your evening!$",
 				"Enjoy!$")
-		case EVENT_OBJ_GFX_GAMEBOY_KID:
+		case OBJ_EVENT_GFX_GAMEBOY_KID:
 			msgbox("You wanna duel? I've got the {POKEMON}\n"
 					"TRADING CARD GAME for GBA.\p"
 					"Oh, you don't? Loser, haha.$", MSGBOX_NPC)
@@ -542,7 +542,7 @@ script TrickHouseExt_EventScript_TraderA1 {
 }
 script TrickHouseExt_EventScript_TraderA2 {
 	switch(var(VAR_OBJ_GFX_ID_1)) {
-		case EVENT_OBJ_GFX_PLASMA_KID:
+		case OBJ_EVENT_GFX_PLASMA_KID:
 			offertrade(
 				ITEM_CANDY_BUTTERFINGER, 1,
 				ITEM_CANDY_MILKYWAY, 0,
@@ -551,9 +551,9 @@ script TrickHouseExt_EventScript_TraderA2 {
 				"I'll trade you my Butterfingers.$",
 				"Aw, alright.\nGot. Got. Got. Need…$",
 				"Sweet! Got this now…\nGot. Need. Got. Got…$")
-		case EVENT_OBJ_GFX_PICNICKER:
+		case OBJ_EVENT_GFX_PICNICKER:
 			msgbox("No, you can't join our clique.$", MSGBOX_NPC)
-		case EVENT_OBJ_GFX_TWINS_PLUSLE:
+		case OBJ_EVENT_GFX_TWINS_PLUSLE:
 			offertrade(
 				ITEM_CANDY_VEROMANGO, 1, 
 				ITEM_CANDY_STARBURST, 0,
@@ -561,7 +561,7 @@ script TrickHouseExt_EventScript_TraderA2 {
 				"you. Do you have any Starbursts?$",
 				"Awww, alright.$",
 				"Thank you!$")
-		case EVENT_OBJ_GFX_BUG_CATCHER:
+		case OBJ_EVENT_GFX_BUG_CATCHER:
 			offertrade(
 				ITEM_SUPER_REPEL, 1, 
 				ITEM_CANDY_APPLE, 0,
@@ -573,7 +573,7 @@ script TrickHouseExt_EventScript_TraderA2 {
 				"some left in stock.$",
 				"Sweet! My {POKEMON} will love these!$"
 			)
-		case EVENT_OBJ_GFX_ALIEN:
+		case OBJ_EVENT_GFX_ALIEN:
 			offertrade(
 				ITEM_CANDY_100GRAND, 1,
 				ITEM_CANDY_CHOCOLATE, 5,
@@ -588,7 +588,7 @@ script TrickHouseExt_EventScript_TraderA2 {
 }
 script TrickHouseExt_EventScript_TraderA3 {
 	switch(var(VAR_OBJ_GFX_ID_2)) {
-		case EVENT_OBJ_GFX_BOY_2:
+		case OBJ_EVENT_GFX_BOY_2:
 			offertrade(
 				ITEM_CANDY_TWIXRIGHT, 1,
 				ITEM_CANDY_TWIXLEFT, 0,
@@ -597,7 +597,7 @@ script TrickHouseExt_EventScript_TraderA3 {
 				"I'll trade you for some Left ones.$",
 				"Aw, alright.\nNeed. Need. Got. Need…$",
 				"Awesome! Thanks!\nGot. Got. Got. Need…$")
-		case EVENT_OBJ_GFX_FAIRY_GIRL:
+		case OBJ_EVENT_GFX_FAIRY_GIRL:
 			offertrade(
 				ITEM_CANDY_GUMMYBEAR, 3,
 				ITEM_CANDY_CHOCOWHITE, 0,
@@ -609,7 +609,7 @@ script TrickHouseExt_EventScript_TraderA3 {
 				"of Gummyursa and doesn't know what\l"
 				"to do with all of the leftovers.$"
 			)
-		case EVENT_OBJ_GFX_LITTLE_BOY:
+		case OBJ_EVENT_GFX_LITTLE_BOY:
 			offertrade(
 				ITEM_CANDY_OREO, 1,
 				ITEM_CANDY_MMMINI, 0,
@@ -619,10 +619,10 @@ script TrickHouseExt_EventScript_TraderA3 {
 				"Yessss! Now I can put the M&M's\n"
 				"INTO the Oreos!$"
 			)
-		case EVENT_OBJ_GFX_MASKED_BOY:
+		case OBJ_EVENT_GFX_MASKED_BOY:
 			msgbox( "I wanted to dress as the Coronavirus\n"
 					"this year, but my mom wouldn't let me.$", MSGBOX_NPC)
-		case EVENT_OBJ_GFX_GHOST:
+		case OBJ_EVENT_GFX_GHOST:
 			offertrade(
 				ITEM_CANDY_KITKAT, 1,
 				ITEM_CANDY_BUTTERFINGER, 1,
@@ -638,7 +638,7 @@ script TrickHouseExt_EventScript_TraderA3 {
 
 script TrickHouseExt_EventScript_TraderB1 {
 	switch(var(VAR_OBJ_GFX_ID_3)) {
-		case EVENT_OBJ_GFX_CORPSE_BRIDE:
+		case OBJ_EVENT_GFX_CORPSE_BRIDE:
 			offertrade(
 				ITEM_CANDY_MARSBAR, 1,
 				ITEM_CANDY_SNICKERS, 1,
@@ -650,7 +650,7 @@ script TrickHouseExt_EventScript_TraderB1 {
 				"Schweet. Now I can sate my hunger.\p"
 				"…{PAUSE 10} …{PAUSE 10} …{PAUSE 10} Brains.$"
 			)
-		case EVENT_OBJ_GFX_REPORTER_F:
+		case OBJ_EVENT_GFX_REPORTER_F:
 			if (!flag(FLAG_TTH_NEWS_REPORT)) {
 				lockall
 				applymovement(18, Common_Movement_FaceDown)
@@ -677,7 +677,7 @@ script TrickHouseExt_EventScript_TraderB1 {
 			waitmessage
 			waitbuttonpress
 			release
-		case EVENT_OBJ_GFX_PIKACHU:
+		case OBJ_EVENT_GFX_PIKACHU:
 			offertrade(
 				ITEM_CANDY_PRUNE, 1,
 				ITEM_CANDY_STARBURST, 1,
@@ -695,17 +695,17 @@ script TrickHouseExt_EventScript_TraderB1 {
 }
 script TrickHouseExt_EventScript_TraderB2 {
 	switch(var(VAR_OBJ_GFX_ID_4)) {
-		case EVENT_OBJ_GFX_MERMAID_WALKING:
+		case OBJ_EVENT_GFX_MERMAID_WALKING:
 			// msgbox("TODO$", MSGBOX_NPC)
 			msgbox("It's always nice to give my fins\n"
 					"A good stretch!$", MSGBOX_NPC)
-		case EVENT_OBJ_GFX_CAMERAMAN:
+		case OBJ_EVENT_GFX_CAMERAMAN:
 			// Don't lock, make sure the cameraman is still looking around
 			message("(Kid, get out of our shot.)$")
 			waitmessage
 			waitbuttonpress
 			closemessage
-		case EVENT_OBJ_GFX_AZUMARILL:
+		case OBJ_EVENT_GFX_AZUMARILL:
 			msgbox("Do you like my AZUMARILL costume?\n"
 					"My mom made it for me!\p"
 					"My sister made her own PIKACHU\n"
@@ -717,13 +717,13 @@ script TrickHouseExt_EventScript_TraderB2 {
 
 script TrickHouseExt_EventScript_TraderC1 {
 	switch(var(VAR_OBJ_GFX_ID_5)) {
-		case EVENT_OBJ_GFX_BLACK_BELT:
+		case OBJ_EVENT_GFX_BLACK_BELT:
 			// msgbox("TODO$", MSGBOX_NPC)
 			msgbox("What? It's the classic couple cosume!\n"
 					"The BLACK BELT and his MERMAID!\p"
 					"What do you mean you've never heard\n"
 					"of such a thing before??$", MSGBOX_NPC) //ERROR: Not actually coupled with a mermaid
-		case EVENT_OBJ_GFX_RICH_BOY:
+		case OBJ_EVENT_GFX_RICH_BOY:
 			offertrade(
 				ITEM_CANDY_GOBSTOPPER, 1,
 				ITEM_CANDY_CHOCOLATE, 20,
@@ -739,7 +739,7 @@ script TrickHouseExt_EventScript_TraderC1 {
 				"Really? Or, you're wonderful!\n"
 				"Now back to the prank planning.$"
 			)
-		case EVENT_OBJ_GFX_GLACIA:
+		case OBJ_EVENT_GFX_GLACIA:
 			offertrade(
 				ITEM_CANDY_KITKAT, 1,
 				ITEM_CANDY_VIOLETCRUMBLE, 3,
@@ -750,7 +750,7 @@ script TrickHouseExt_EventScript_TraderC1 {
 				"Thank you. I so do love me some\n"
 				"Violet Crumble.$"
 			)
-		case EVENT_OBJ_GFX_EXPERT_M:
+		case OBJ_EVENT_GFX_EXPERT_M:
 			offertrade(
 				ITEM_CANDY_BLACKTHUNDER, 2,
 				ITEM_CANDY_OREO, 5,
@@ -763,11 +763,11 @@ script TrickHouseExt_EventScript_TraderC1 {
 				"Lovely, lovely. Excuse me while I pull\n"
 				"out my dentures.$"
 			)
-		case EVENT_OBJ_GFX_BEAUTY:
+		case OBJ_EVENT_GFX_BEAUTY:
 			// msgbox("TODO$", MSGBOX_NPC)
 			msgbox("I love your costume.\n"
 					"Do you like mine too?$", MSGBOX_NPC)
-		case EVENT_OBJ_GFX_ANABEL:
+		case OBJ_EVENT_GFX_ANABEL:
 			// msgbox("TODO$", MSGBOX_NPC)
 			msgbox("Hello. Fine evening isn't it?$", MSGBOX_NPC)
 		default:
@@ -777,7 +777,7 @@ script TrickHouseExt_EventScript_TraderC1 {
 
 script TrickHouseExt_EventScript_TraderD1 {
 	switch(var(VAR_OBJ_GFX_ID_6)) {
-		case EVENT_OBJ_GFX_NOLAND:
+		case OBJ_EVENT_GFX_NOLAND:
 			offertrade(
 				ITEM_CANDY_CHOCOSLAB, 1,
 				ITEM_CANDY_GOBSTOPPER, 1,
@@ -787,11 +787,11 @@ script TrickHouseExt_EventScript_TraderD1 {
 				"Cheers! I'm fond of how everlasting\n"
 				"Gobstoppers are.$"
 			)
-		case EVENT_OBJ_GFX_GHETSIS:
+		case OBJ_EVENT_GFX_GHETSIS:
 			// msgbox("TODO$", MSGBOX_NPC)
 			msgbox("What are you staring at? I made this\n"
 					"costume myself.$", MSGBOX_NPC)
-		case EVENT_OBJ_GFX_BRAWLY:
+		case OBJ_EVENT_GFX_BRAWLY:
 			offertrade(
 				ITEM_CANDY_GOBSTOPPER, 1,
 				ITEM_CANDY_CHOCOSLAB, 1,

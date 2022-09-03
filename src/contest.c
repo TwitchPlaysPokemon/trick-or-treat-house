@@ -2789,7 +2789,7 @@ void CreateContestMonFromParty(u8 partyIndex)
     switch (gSaveBlock2Ptr->playerGender) {
         default:
         case GENDER_M: gContestMons[gContestPlayerMonIndex].trainerGfxId = OBJ_EVENT_GFX_BRENDAN_NORMAL; break;
-        case GENDER_F: gContestMons[gContestPlayerMonIndex].trainerGfxId = EVENT_OBJ_GFX_MAY_NORMAL; break;
+        case GENDER_F: gContestMons[gContestPlayerMonIndex].trainerGfxId = OBJ_EVENT_GFX_MAY_NORMAL; break;
         case GENDER_N: gContestMons[gContestPlayerMonIndex].trainerGfxId = OBJ_EVENT_GFX_TREEKID_NORMAL; break;
     }
     gContestMons[gContestPlayerMonIndex].aiFlags = 0;

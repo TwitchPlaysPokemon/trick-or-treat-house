@@ -113,7 +113,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_ITEM_RUSTBORO_CITY_X_DEFEND",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -126,7 +126,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_NURSE",
+            "graphics_id": "OBJ_EVENT_GFX_NURSE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -139,7 +139,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WALLY",
+            "graphics_id": "OBJ_EVENT_GFX_WALLY",
             "movement_range_x": 0,
             "movement_range_y": 13,
             "movement_type": "MOVEMENT_TYPE_WALK_DOWN_AND_UP",
@@ -152,7 +152,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_FAIRY_GIRL",
+            "graphics_id": "OBJ_EVENT_GFX_FAIRY_GIRL",
             "movement_range_x": 0,
             "movement_range_y": 13,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_UP",
@@ -165,7 +165,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BRENDAN_NORMAL",
+            "graphics_id": "OBJ_EVENT_GFX_BRENDAN_NORMAL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -178,7 +178,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_GHOST",
+            "graphics_id": "OBJ_EVENT_GFX_GHOST",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -191,7 +191,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAY_NORMAL",
+            "graphics_id": "OBJ_EVENT_GFX_MAY_NORMAL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -204,7 +204,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_HERO_OF_TIME",
+            "graphics_id": "OBJ_EVENT_GFX_HERO_OF_TIME",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -217,7 +217,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_NINJA_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -230,7 +230,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MASKED_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_MASKED_BOY",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -243,7 +243,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_ROXANNE",
+            "graphics_id": "OBJ_EVENT_GFX_ROXANNE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -256,7 +256,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_ALIEN",
+            "graphics_id": "OBJ_EVENT_GFX_ALIEN",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -269,7 +269,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAXIE",
+            "graphics_id": "OBJ_EVENT_GFX_MAXIE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
@@ -282,7 +282,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TREEKID_NORMAL",
+            "graphics_id": "OBJ_EVENT_GFX_TREEKID_NORMAL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",

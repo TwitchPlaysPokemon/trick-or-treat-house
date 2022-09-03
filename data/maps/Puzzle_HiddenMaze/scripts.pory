@@ -17,7 +17,7 @@ Puzzle_HiddenMaze_Quip:
 	.string "When I grow up, I'm gonna\nbe just like Koga!$"
 .align 2
 Puzzle_HiddenMaze_Variables:
-	.2byte VAR_QUIP_PERSON,  EVENT_OBJ_GFX_NINJA_BOY
+	.2byte VAR_QUIP_PERSON,  OBJ_EVENT_GFX_NINJA_BOY
 	.2byte 0
 Puzzle_HiddenMaze_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01
@@ -34,18 +34,18 @@ Puzzle_HiddenMaze_OnResume:
 	end
 
 Puzzle_HiddenMaze_OnLoad:
-	setvar VAR_OBJ_GFX_ID_A, EVENT_OBJ_GFX_RICH_BOY
-	setvar VAR_OBJ_GFX_ID_B, EVENT_OBJ_GFX_ITEM_BALL
+	setvar VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_RICH_BOY
+	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_ITEM_BALL
 	checktrainerflag TRAINER_03
 	call_if_eq Puzzle_HiddenMaze_OnLoad_HeroReveal
 	checktrainerflag TRAINER_06
 	call_if_eq Puzzle_HiddenMaze_OnLoad_NinjaReveal
 	end
 Puzzle_HiddenMaze_OnLoad_HeroReveal:
-	setvar VAR_OBJ_GFX_ID_A, EVENT_OBJ_GFX_PLASMA_KID
+	setvar VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_PLASMA_KID
 	return
 Puzzle_HiddenMaze_OnLoad_NinjaReveal:
-	setvar VAR_OBJ_GFX_ID_B, EVENT_OBJ_GFX_NINJA_BOY
+	setvar VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_NINJA_BOY
 	return
 
 @ -----------------------------------------------------
@@ -92,7 +92,7 @@ script Puzzle_HiddenMaze_Trainer3Trigger {
 	applymovement (EVENT_OBJ_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
 	msgbox ("DID YOU THINK YOU COULD SLIP BY ME?!?!$")
 	closemessage
-	setvar (VAR_OBJ_GFX_ID_A, EVENT_OBJ_GFX_PLASMA_KID)
+	setvar (VAR_OBJ_GFX_ID_A, OBJ_EVENT_GFX_PLASMA_KID)
 	applymovement (4, Puzzle_HiddenMaze_Trainer3_Movement2)
 	waitmovement (0)
 	removeobject (4)
@@ -193,7 +193,7 @@ script Puzzle_HiddenMaze_Trainer6 {
 	checktrainerflag (TRAINER_06)
 	goto_if_eq (Puzzle_HiddenMaze_Trainer6A)
 	playbgm (MUS_AYASII, 0)
-	setvar (VAR_OBJ_GFX_ID_B, EVENT_OBJ_GFX_NINJA_BOY)
+	setvar (VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_NINJA_BOY)
 	applymovement (7, Common_Movement_ExclamationMarkAndWait)
 	waitmovement (0)
 	removeobject (7)

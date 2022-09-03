@@ -49,9 +49,9 @@ script Puzzle_EliteFloor_OnEscapeOrBlackout {
 script Puzzle_EliteFloor_OnLoad {
 	checkplayergender
 	switch(var(VAR_RESULT)) {
-		case GENDER_M: setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_MAY_NORMAL)
-		case GENDER_F: setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_TREEKID_NORMAL)
-		case GENDER_N: setvar(VAR_OBJ_GFX_ID_0, EVENT_OBJ_GFX_BRENDAN_NORMAL)
+		case GENDER_M: setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_MAY_NORMAL)
+		case GENDER_F: setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_TREEKID_NORMAL)
+		case GENDER_N: setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_BRENDAN_NORMAL)
 	}
 }
 
@@ -122,21 +122,21 @@ script Puzzle_EliteFloor_EventScript_HexManiac {
 script Puzzle_EliteFloor_EventScript_Friend {
 	lock
 	switch (var(VAR_OBJ_GFX_ID_0)) {
-		case EVENT_OBJ_GFX_BRENDAN_NORMAL:
+		case OBJ_EVENT_GFX_BRENDAN_NORMAL:
 			msgbox ("Hey, {PLAYER}. How's it going?\n"
 					"Good? Good.\p"
 					"I'm just taking a break in the middle\n"
 					"of the air, ya know? As you do.\p"
 					"Scared? What? Me? Naaahhh!!\n"
 					"I just… don't want to look down.$")
-		case EVENT_OBJ_GFX_MAY_NORMAL:
+		case OBJ_EVENT_GFX_MAY_NORMAL:
 			// May's Acrophobia
 			msgbox ("Aaaaaaahhhhhh! Not a fan of this!\n"
 					"Nope! Nope! Nope! Nope! Nope!\p"
 					"She has her eyes to the ceiling,\n"
 					"trying not to look down so hard that\l"
 					"she doesn't even know you're there.$")
-		case EVENT_OBJ_GFX_TREEKID_NORMAL:
+		case OBJ_EVENT_GFX_TREEKID_NORMAL:
 			// Alex's Aracnophibia
 			msgbox ("Hey, {PLAYER}. How's it going?\p"
 					"This is kinda cool, right? Hanging out\n"

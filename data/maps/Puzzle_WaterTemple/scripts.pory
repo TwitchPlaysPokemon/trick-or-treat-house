@@ -36,7 +36,7 @@ Puzzle_WaterTemple_DevCommentary:
 	.string "exit and reenter the map.$"
 .align 2
 Puzzle_WaterTemple_Variables:
-	.2byte VAR_QUIP_PERSON,    EVENT_OBJ_GFX_MERMAID_WALKING
+	.2byte VAR_QUIP_PERSON,    OBJ_EVENT_GFX_MERMAID_WALKING
 	.2byte VAR_ENDROOM_FRIEND, TTH_FRIEND_JAMES
 	.2byte 0
 Puzzle_WaterTemple_CandyList:
@@ -88,7 +88,7 @@ script Puzzle_WaterTemple_UpdateWaterLevel {
 		setflag (FLAG_PUZZLE_41)
 		setflag (FLAG_PUZZLE_42)
 		setflag (FLAG_PUZZLE_4E)
-		setvar (VAR_OBJ_GFX_ID_E, EVENT_OBJ_GFX_FROGGER)
+		setvar (VAR_OBJ_GFX_ID_E, OBJ_EVENT_GFX_FROGGER)
 	} else {
 		# Else show the items
 		if (flag(FLAG_PUZZLE_ITEM_0) == FALSE) {
@@ -101,7 +101,7 @@ script Puzzle_WaterTemple_UpdateWaterLevel {
 			clearflag (FLAG_PUZZLE_41)
 		}
 		clearflag (FLAG_PUZZLE_4E)
-		setvar (VAR_OBJ_GFX_ID_E, EVENT_OBJ_GFX_FROGGER_WALKING)
+		setvar (VAR_OBJ_GFX_ID_E, OBJ_EVENT_GFX_FROGGER_WALKING)
 	}
 	
 	# If the water level is higher than the red level, hide items on that level
@@ -110,8 +110,8 @@ script Puzzle_WaterTemple_UpdateWaterLevel {
 		setflag (FLAG_PUZZLE_44)
 		setflag (FLAG_PUZZLE_45)
 		setflag (FLAG_PUZZLE_4F)
-		setvar (VAR_OBJ_GFX_ID_F, EVENT_OBJ_GFX_TUBER_M_SWIMMING)
-		setvar (VAR_OBJ_GFX_ID_D, EVENT_OBJ_GFX_FROGGER)
+		setvar (VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_TUBER_M_SWIMMING)
+		setvar (VAR_OBJ_GFX_ID_D, OBJ_EVENT_GFX_FROGGER)
 	} else {
 		# Else show the items
 		if (flag(FLAG_PUZZLE_ITEM_1) == FALSE) {
@@ -124,8 +124,8 @@ script Puzzle_WaterTemple_UpdateWaterLevel {
 			clearflag (FLAG_PUZZLE_44)
 		}
 		clearflag (FLAG_PUZZLE_4F)
-		setvar (VAR_OBJ_GFX_ID_F, EVENT_OBJ_GFX_TUBER_M)
-		setvar (VAR_OBJ_GFX_ID_D, EVENT_OBJ_GFX_FROGGER_WALKING)
+		setvar (VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_TUBER_M)
+		setvar (VAR_OBJ_GFX_ID_D, OBJ_EVENT_GFX_FROGGER_WALKING)
 	}
 }
 
@@ -193,7 +193,7 @@ script Puzzle_WaterTemple_DrainToLevel1 {
 	setvar (VAR_0x8001, 2)
 	callnative (WaterTempleDrainTo1)
 	# Refresh the graphic of the swimmer (and make him not move due to engine limitations)
-	setvar (VAR_OBJ_GFX_ID_D, EVENT_OBJ_GFX_FROGGER_WALKING)
+	setvar (VAR_OBJ_GFX_ID_D, OBJ_EVENT_GFX_FROGGER_WALKING)
 	copyobjectxytoperm (6)
 	setobjectmovementtype (6, MOVEMENT_TYPE_LOOK_AROUND)
 	removeobject (6)
@@ -432,7 +432,7 @@ script Puzzle_WaterTemple_FillToLevel0 {
 	callnative (WaterTempleFillTo0)
 	delay (10)
 	# Refresh the graphic of the tuber (and make him not move due to engine limitations)
-	setvar (VAR_OBJ_GFX_ID_F, EVENT_OBJ_GFX_TUBER_M_SWIMMING)
+	setvar (VAR_OBJ_GFX_ID_F, OBJ_EVENT_GFX_TUBER_M_SWIMMING)
 	copyobjectxytoperm (4)
 	setobjectmovementtype (4, MOVEMENT_TYPE_LOOK_AROUND)
 	removeobject (4)

@@ -63,7 +63,7 @@ Puzzle_TinTowerClimb_DevCommentary:
 	
 .align 2
 Puzzle_TinTowerClimb_Variables:
-	.2byte VAR_QUIP_PERSON,    EVENT_OBJ_GFX_HOOH
+	.2byte VAR_QUIP_PERSON,    OBJ_EVENT_GFX_HOOH
 	.2byte VAR_ENDROOM_FRIEND, TTH_FRIEND_MAY
 	.2byte 0
 Puzzle_TinTowerClimb_CandyList:

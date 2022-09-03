@@ -49,7 +49,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_MASTER",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_MASTER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -62,7 +62,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_TRICK_HOUSE_INTRO_CHARACTERS",
-            "graphics_id": "EVENT_OBJ_GFX_HERO_OF_TIME",
+            "graphics_id": "OBJ_EVENT_GFX_HERO_OF_TIME",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -75,7 +75,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_TRICK_HOUSE_INTRO_CHARACTERS",
-            "graphics_id": "EVENT_OBJ_GFX_YOUNGSTER",
+            "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -88,7 +88,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_TRICK_HOUSE_INTRO_CHARACTERS",
-            "graphics_id": "EVENT_OBJ_GFX_VAR_A",
+            "graphics_id": "OBJ_EVENT_GFX_VAR_A",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -101,7 +101,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WALLY",
+            "graphics_id": "OBJ_EVENT_GFX_WALLY",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -114,7 +114,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_TRICK_HOUSE_INTRO_CHARACTERS",
-            "graphics_id": "EVENT_OBJ_GFX_FAIRY_GIRL",
+            "graphics_id": "OBJ_EVENT_GFX_FAIRY_GIRL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -127,7 +127,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_TRICK_HOUSE_INTRO_CHARACTERS",
-            "graphics_id": "EVENT_OBJ_GFX_VAR_B",
+            "graphics_id": "OBJ_EVENT_GFX_VAR_B",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",

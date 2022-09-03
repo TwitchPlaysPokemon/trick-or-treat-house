@@ -103,7 +103,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_4",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_4",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -116,7 +116,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_TRICK_HOUSE_INTRO_CHAR",
-            "graphics_id": "EVENT_OBJ_GFX_VAR_0",
+            "graphics_id": "OBJ_EVENT_GFX_VAR_0",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -129,7 +129,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MOVING_BOX",
+            "graphics_id": "OBJ_EVENT_GFX_MOVING_BOX",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",

@@ -127,7 +127,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_SCROLL",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_SCROLL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -140,7 +140,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_NORTH",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_NORTH",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -153,7 +153,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_SCROLL",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -166,7 +166,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SCOTT",
+            "graphics_id": "OBJ_EVENT_GFX_SCOTT",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -179,7 +179,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
+            "graphics_id": "OBJ_EVENT_GFX_SKELETON",
             "movement_range_x": 10,
             "movement_range_y": 6,
             "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_LEFT_UP_RIGHT",
@@ -192,7 +192,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_2A",
-            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
+            "graphics_id": "OBJ_EVENT_GFX_SKELETON",
             "movement_range_x": 0,
             "movement_range_y": 6,
             "movement_type": "MOVEMENT_TYPE_WALK_DOWN_AND_UP",
@@ -205,7 +205,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
+            "graphics_id": "OBJ_EVENT_GFX_SKELETON",
             "movement_range_x": 7,
             "movement_range_y": 6,
             "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_LEFT_RIGHT_DOWN",
@@ -218,7 +218,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_2A",
-            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
+            "graphics_id": "OBJ_EVENT_GFX_SKELETON",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_RIGHT",
@@ -231,7 +231,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_21",
-            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
+            "graphics_id": "OBJ_EVENT_GFX_SKELETON",
             "movement_range_x": 5,
             "movement_range_y": 3,
             "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_LEFT_DOWN_RIGHT",
@@ -244,7 +244,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
+            "graphics_id": "OBJ_EVENT_GFX_SKELETON",
             "movement_range_x": 3,
             "movement_range_y": 4,
             "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_RIGHT_DOWN_LEFT",
@@ -257,7 +257,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
+            "graphics_id": "OBJ_EVENT_GFX_SKELETON",
             "movement_range_x": 9,
             "movement_range_y": 8,
             "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_RIGHT_UP_LEFT",
@@ -270,7 +270,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_21",
-            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
+            "graphics_id": "OBJ_EVENT_GFX_SKELETON",
             "movement_range_x": 0,
             "movement_range_y": 4,
             "movement_type": "MOVEMENT_TYPE_WALK_DOWN_AND_UP",
@@ -283,7 +283,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_20",
-            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
+            "graphics_id": "OBJ_EVENT_GFX_SKELETON",
             "movement_range_x": 2,
             "movement_range_y": 5,
             "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_DOWN_RIGHT_LEFT",
@@ -296,7 +296,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_20",
-            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
+            "graphics_id": "OBJ_EVENT_GFX_SKELETON",
             "movement_range_x": 2,
             "movement_range_y": 5,
             "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_UP_LEFT_RIGHT",
@@ -309,7 +309,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_21",
-            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
+            "graphics_id": "OBJ_EVENT_GFX_SKELETON",
             "movement_range_x": 0,
             "movement_range_y": 4,
             "movement_type": "MOVEMENT_TYPE_WALK_UP_AND_DOWN",
@@ -322,7 +322,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
+            "graphics_id": "OBJ_EVENT_GFX_SKELETON",
             "movement_range_x": 6,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WANDER_RIGHT_AND_LEFT",
@@ -335,7 +335,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_2A",
-            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
+            "graphics_id": "OBJ_EVENT_GFX_SKELETON",
             "movement_range_x": 5,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
@@ -348,7 +348,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_CRATE",
+            "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_CRATE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -361,7 +361,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
+            "graphics_id": "OBJ_EVENT_GFX_SKELETON",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT_AND_RIGHT",
@@ -374,7 +374,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_2A",
-            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
+            "graphics_id": "OBJ_EVENT_GFX_SKELETON",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_ROTATE_CLOCKWISE",
@@ -387,7 +387,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_CRATE",
+            "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_CRATE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -400,7 +400,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_CRATE",
+            "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_CRATE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -413,7 +413,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_21",
-            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
+            "graphics_id": "OBJ_EVENT_GFX_SKELETON",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -426,7 +426,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_CRATE",
+            "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_CRATE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -439,7 +439,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_ITEM_0",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -452,7 +452,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PICKED_UP_STRENGTH_ITEM",
-            "graphics_id": "EVENT_OBJ_GFX_HM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_HM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -465,7 +465,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_21",
-            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
+            "graphics_id": "OBJ_EVENT_GFX_SKELETON",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -478,7 +478,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_21",
-            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
+            "graphics_id": "OBJ_EVENT_GFX_SKELETON",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -491,7 +491,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_21",
-            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
+            "graphics_id": "OBJ_EVENT_GFX_SKELETON",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -504,7 +504,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_CRATE",
+            "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_CRATE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -517,7 +517,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SCOTT",
+            "graphics_id": "OBJ_EVENT_GFX_SCOTT",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -530,7 +530,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_SKELETON",
+            "graphics_id": "OBJ_EVENT_GFX_SKELETON",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -543,7 +543,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_CANDY_UNCOMMON_01",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -556,7 +556,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_CANDY_RARE_01",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -569,7 +569,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_CANDY_ABUNDANT_01",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -582,7 +582,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_CANDY_COMMON_01",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -595,7 +595,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_CANDY_ABUNDANT_02",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -608,7 +608,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_CANDY_ABUNDANT_03",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -621,7 +621,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_CANDY_UNCOMMON_02",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",

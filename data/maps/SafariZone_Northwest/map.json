@@ -66,7 +66,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_CANDY_UNCOMMON_02",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -79,7 +79,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_2E",
-            "graphics_id": "EVENT_OBJ_GFX_TREEKID_NORMAL",
+            "graphics_id": "OBJ_EVENT_GFX_TREEKID_NORMAL",
             "movement_range_x": 3,
             "movement_range_y": 3,
             "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
@@ -92,7 +92,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_28",
-            "graphics_id": "EVENT_OBJ_GFX_WALLY",
+            "graphics_id": "OBJ_EVENT_GFX_WALLY",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",

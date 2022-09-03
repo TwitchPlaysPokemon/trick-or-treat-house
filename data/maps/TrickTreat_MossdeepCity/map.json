@@ -116,7 +116,7 @@
         {
             "elevation": 5,
             "flag": "FLAG_CANDY_ABUNDANT_01",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -129,7 +129,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_SCROLL_ROOM",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_SCROLL_ROOM",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -142,7 +142,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_STONE",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_STONE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -155,7 +155,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_22",
-            "graphics_id": "EVENT_OBJ_GFX_TATE",
+            "graphics_id": "OBJ_EVENT_GFX_TATE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -168,7 +168,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_22",
-            "graphics_id": "EVENT_OBJ_GFX_LIZA",
+            "graphics_id": "OBJ_EVENT_GFX_LIZA",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -181,7 +181,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_20",
-            "graphics_id": "EVENT_OBJ_GFX_NURSE",
+            "graphics_id": "OBJ_EVENT_GFX_NURSE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
@@ -194,7 +194,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_21",
-            "graphics_id": "EVENT_OBJ_GFX_MART_EMPLOYEE",
+            "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
@@ -207,7 +207,7 @@
         {
             "elevation": 5,
             "flag": "FLAG_PUZZLE_25",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_4",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_4",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
@@ -220,7 +220,7 @@
         {
             "elevation": 5,
             "flag": "FLAG_PUZZLE_23",
-            "graphics_id": "EVENT_OBJ_GFX_STEVEN",
+            "graphics_id": "OBJ_EVENT_GFX_STEVEN",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
@@ -233,7 +233,7 @@
         {
             "elevation": 5,
             "flag": "FLAG_PUZZLE_24",
-            "graphics_id": "EVENT_OBJ_GFX_COOK",
+            "graphics_id": "OBJ_EVENT_GFX_COOK",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
@@ -246,7 +246,7 @@
         {
             "elevation": 5,
             "flag": "FLAG_PUZZLE_26",
-            "graphics_id": "EVENT_OBJ_GFX_EXPERT_M",
+            "graphics_id": "OBJ_EVENT_GFX_EXPERT_M",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
@@ -259,7 +259,7 @@
         {
             "elevation": 7,
             "flag": "FLAG_PUZZLE_28",
-            "graphics_id": "EVENT_OBJ_GFX_WOMAN_2",
+            "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
@@ -272,7 +272,7 @@
         {
             "elevation": 7,
             "flag": "FLAG_PUZZLE_29",
-            "graphics_id": "EVENT_OBJ_GFX_MASKED_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_MASKED_BOY",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
@@ -285,7 +285,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_27",
-            "graphics_id": "EVENT_OBJ_GFX_CAMPER",
+            "graphics_id": "OBJ_EVENT_GFX_CAMPER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",
@@ -298,7 +298,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_2A",
-            "graphics_id": "EVENT_OBJ_GFX_FAIRY_GIRL",
+            "graphics_id": "OBJ_EVENT_GFX_FAIRY_GIRL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
@@ -311,7 +311,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_CANDY_RARE_01",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -324,7 +324,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_CANDY_UNCOMMON_01",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -337,7 +337,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_CANDY_RARE_02",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -350,7 +350,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_CANDY_COMMON_01",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -363,7 +363,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_30",
-            "graphics_id": "EVENT_OBJ_GFX_MASKED_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_MASKED_BOY",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -376,7 +376,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_31",
-            "graphics_id": "EVENT_OBJ_GFX_MASKED_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_MASKED_BOY",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -389,7 +389,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_32",
-            "graphics_id": "EVENT_OBJ_GFX_MASKED_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_MASKED_BOY",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -402,7 +402,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_33",
-            "graphics_id": "EVENT_OBJ_GFX_MASKED_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_MASKED_BOY",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -415,7 +415,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_34",
-            "graphics_id": "EVENT_OBJ_GFX_MASKED_BOY",
+            "graphics_id": "OBJ_EVENT_GFX_MASKED_BOY",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -428,7 +428,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_35",
-            "graphics_id": "EVENT_OBJ_GFX_SCHOOL_KID_M",
+            "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_M",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -441,7 +441,7 @@
         {
             "elevation": 5,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BALL_CUSHION",
+            "graphics_id": "OBJ_EVENT_GFX_BALL_CUSHION",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",

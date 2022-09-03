@@ -641,7 +641,7 @@ void LoadCandyGraphics()
     u8 spriteId, i;
     
     spriteTemplate = malloc(sizeof(struct SpriteTemplate));
-    MakeObjectTemplateFromEventObjectGraphicsInfo(EVENT_OBJ_GFX_ITEM_BALL, SpriteCB_CandyItem, spriteTemplate, &subspriteTables);
+    MakeObjectTemplateFromEventObjectGraphicsInfo(OBJ_EVENT_GFX_ITEM_BALL, SpriteCB_CandyItem, spriteTemplate, &subspriteTables);
     if (spriteTemplate->paletteTag != 0xFFFF)
     {
         LoadEventObjectPalette(spriteTemplate->paletteTag);

@@ -137,7 +137,7 @@
         {
             "elevation": 4,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_SCROLL",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_SCROLL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -150,7 +150,7 @@
         {
             "elevation": 4,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_STONE",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_STONE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -163,7 +163,7 @@
         {
             "elevation": 6,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_SCROLL",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -176,7 +176,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_CYCLING_TRIATHLETE_M",
+            "graphics_id": "OBJ_EVENT_GFX_CYCLING_TRIATHLETE_M",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -189,7 +189,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PICKED_UP_SURF_ITEM",
-            "graphics_id": "EVENT_OBJ_GFX_HM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_HM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -202,7 +202,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDDEN_LIMITED_CANDY_0x6C",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -215,7 +215,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_CANDY_RARE_01",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",

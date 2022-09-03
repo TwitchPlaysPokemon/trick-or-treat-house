@@ -1094,7 +1094,7 @@ static void ShowPostBattleHintText(void)
         case HINT_REMAINING_ITEMS:
             for (i = 0; i < GetNumBattlePyramidEventObjects(); i++)
             {
-                if (events[i].graphicsId == EVENT_OBJ_GFX_ITEM_BALL && events[i].x != 0x7FFF && events[i].y != 0x7FFF)
+                if (events[i].graphicsId == OBJ_EVENT_GFX_ITEM_BALL && events[i].x != 0x7FFF && events[i].y != 0x7FFF)
                     textIndex++;
             }
             i = 1;
@@ -1650,7 +1650,7 @@ void LoadBattlePyramidFloorEventObjectScripts(void)
 
     for (i = 0; i < EVENT_OBJECT_TEMPLATES_COUNT; i++)
     {
-        if (events[i].graphicsId != EVENT_OBJ_GFX_ITEM_BALL)
+        if (events[i].graphicsId != OBJ_EVENT_GFX_ITEM_BALL)
             events[i].script = BattlePyramid_TrainerBattle;
         else
             events[i].script = BattlePyramid_FindItemBall;
@@ -1884,9 +1884,9 @@ static bool8 TrySetPyramidEventObjectPositionAtCoords(u8 objType, u8 x, u8 y, u8
         if (mapHeader->events->eventObjects[i].x != x || mapHeader->events->eventObjects[i].y != y)
             continue;
 
-        if (objType != OBJ_TRAINERS || mapHeader->events->eventObjects[i].graphicsId == EVENT_OBJ_GFX_ITEM_BALL)
+        if (objType != OBJ_TRAINERS || mapHeader->events->eventObjects[i].graphicsId == OBJ_EVENT_GFX_ITEM_BALL)
         {
-            if (objType != OBJ_ITEMS || mapHeader->events->eventObjects[i].graphicsId != EVENT_OBJ_GFX_ITEM_BALL)
+            if (objType != OBJ_ITEMS || mapHeader->events->eventObjects[i].graphicsId != OBJ_EVENT_GFX_ITEM_BALL)
                 continue;
         }
 
@@ -1903,7 +1903,7 @@ static bool8 TrySetPyramidEventObjectPositionAtCoords(u8 objType, u8 x, u8 y, u8
             floorEvents[eventObjectId].x += (squareId % 4) * 8;
             floorEvents[eventObjectId].y += (squareId / 4) * 8;
             floorEvents[eventObjectId].localId = eventObjectId + 1;
-            if (floorEvents[eventObjectId].graphicsId != EVENT_OBJ_GFX_ITEM_BALL)
+            if (floorEvents[eventObjectId].graphicsId != OBJ_EVENT_GFX_ITEM_BALL)
             {
                 i = GetUniqueTrainerId(eventObjectId);
                 floorEvents[eventObjectId].graphicsId = GetBattleFacilityTrainerGfxId(i);

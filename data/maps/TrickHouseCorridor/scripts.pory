@@ -362,7 +362,7 @@ script TrickHouseCorridor_TriggerScript_RunIntro {
 	}
 	// Leave
 	closemessage
-	if (var(VAR_OBJ_GFX_ID_0) == EVENT_OBJ_GFX_TRICK_MASTER) {
+	if (var(VAR_OBJ_GFX_ID_0) == OBJ_EVENT_GFX_TRICK_MASTER) {
 		// Trick Master warps away
 		setvar(VAR_0x8000, LID_MASTER)
 		call(PuzzleCommon_EventScript_WarpTrickMasterOut)

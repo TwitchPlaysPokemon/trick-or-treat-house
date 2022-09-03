@@ -853,7 +853,7 @@ void CountTwinMemoriesBoulders(struct ScriptContext *ctx) {
 		eventObject = &gEventObjects[o];
         if (eventObject->isPlayer) continue;
         if (!eventObject->active) continue;
-		if (eventObject->graphicsId != EVENT_OBJ_GFX_PUSHABLE_BOULDER) continue;
+		if (eventObject->graphicsId != OBJ_EVENT_GFX_PUSHABLE_BOULDER) continue;
 		if (!eventObject->isStandingOnTrigger) continue;
 		
 		x = (eventObject->currentCoords.x - 7 - xbase) / 2;

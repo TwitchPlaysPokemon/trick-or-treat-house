@@ -49,7 +49,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_20",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_SCROLL",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -62,7 +62,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_22",
-            "graphics_id": "EVENT_OBJ_GFX_AZURILL",
+            "graphics_id": "OBJ_EVENT_GFX_AZURILL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -75,7 +75,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_22",
-            "graphics_id": "EVENT_OBJ_GFX_AZURILL",
+            "graphics_id": "OBJ_EVENT_GFX_AZURILL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -88,7 +88,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_22",
-            "graphics_id": "EVENT_OBJ_GFX_AZURILL",
+            "graphics_id": "OBJ_EVENT_GFX_AZURILL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -101,7 +101,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_22",
-            "graphics_id": "EVENT_OBJ_GFX_AZURILL",
+            "graphics_id": "OBJ_EVENT_GFX_AZURILL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -114,7 +114,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_22",
-            "graphics_id": "EVENT_OBJ_GFX_AZURILL",
+            "graphics_id": "OBJ_EVENT_GFX_AZURILL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -127,7 +127,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_AZURILL",
+            "graphics_id": "OBJ_EVENT_GFX_AZURILL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_INVISIBLE",

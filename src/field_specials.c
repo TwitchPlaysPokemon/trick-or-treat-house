@@ -237,9 +237,9 @@ void SpawnLinkPartnerObjectEvent(void)
         {
             switch (gLinkPlayers[i].gender) {
                 default:
-                case GENDER_M: linkSpriteId = EVENT_OBJ_GFX_BRENDAN_NORMAL; break;
-                case GENDER_F: linkSpriteId = EVENT_OBJ_GFX_MAY_NORMAL; break;
-                case GENDER_N: linkSpriteId = EVENT_OBJ_GFX_TREEKID_NORMAL; break;
+                case GENDER_M: linkSpriteId = OBJ_EVENT_GFX_BRENDAN_NORMAL; break;
+                case GENDER_F: linkSpriteId = OBJ_EVENT_GFX_MAY_NORMAL; break;
+                case GENDER_N: linkSpriteId = OBJ_EVENT_GFX_TREEKID_NORMAL; break;
             }
             SpawnSpecialObjectEventParameterized(linkSpriteId, movementTypes[j], 240 - i, coordOffsets[j][0] + x + MAP_OFFSET, coordOffsets[j][1] + y + MAP_OFFSET, 0);
             LoadLinkPartnerObjectEventSpritePalette(linkSpriteId, 240 - i, i);

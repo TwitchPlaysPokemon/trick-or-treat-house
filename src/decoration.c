@@ -1404,7 +1404,7 @@ static void SetUpPlacingDecorationPlayerAvatar(u8 taskId, struct PlaceDecoration
             sDecor_CameraSpriteObjectIdx2 = CreateObjectGraphicsSprite(OBJ_EVENT_GFX_MAY_DECORATING, SpriteCallbackDummy, x, 72, 0);
             break;
         case GENDER_N: 
-            sDecor_CameraSpriteObjectIdx2 = CreateObjectGraphicsSprite(EVENT_OBJ_GFX_TREEKID_DECORATING, SpriteCallbackDummy, x, 72, 0);
+            sDecor_CameraSpriteObjectIdx2 = CreateObjectGraphicsSprite(OBJ_EVENT_GFX_TREEKID_DECORATING, SpriteCallbackDummy, x, 72, 0);
             break;
     }
 
@@ -2305,7 +2305,7 @@ static void SetUpPuttingAwayDecorationPlayerAvatar(void)
             sDecor_CameraSpriteObjectIdx2 = CreateObjectGraphicsSprite(OBJ_EVENT_GFX_MAY_DECORATING, SpriteCallbackDummy,126, 72, 0);
             break;
         case GENDER_N: 
-            sDecor_CameraSpriteObjectIdx2 = CreateObjectGraphicsSprite(EVENT_OBJ_GFX_TREEKID_DECORATING, SpriteCallbackDummy, 126, 72, 0);
+            sDecor_CameraSpriteObjectIdx2 = CreateObjectGraphicsSprite(OBJ_EVENT_GFX_TREEKID_DECORATING, SpriteCallbackDummy, 126, 72, 0);
             break;
     }
 

@@ -101,7 +101,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PLASMA_KID",
+            "graphics_id": "OBJ_EVENT_GFX_PLASMA_KID",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -114,7 +114,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TWINS_PLUSLE",
+            "graphics_id": "OBJ_EVENT_GFX_TWINS_PLUSLE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -127,7 +127,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_HEX_MANIAC",
+            "graphics_id": "OBJ_EVENT_GFX_HEX_MANIAC",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -140,7 +140,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_CANDY_ABUNDANT_01",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -153,7 +153,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PSYCHIC_M",
+            "graphics_id": "OBJ_EVENT_GFX_PSYCHIC_M",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -166,7 +166,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TWINS_MINUN",
+            "graphics_id": "OBJ_EVENT_GFX_TWINS_MINUN",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -179,7 +179,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_GHETSIS",
+            "graphics_id": "OBJ_EVENT_GFX_GHETSIS",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -192,7 +192,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_HOUSE_STATUE",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_HOUSE_STATUE",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -205,7 +205,7 @@
         {
             "elevation": 0,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_HOUSE_STATUE",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_HOUSE_STATUE",
             "movement_range_x": 1,
             "movement_range_y": 1,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -218,7 +218,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_SCROLL",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -231,7 +231,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_CANDY_RARE_01",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -244,7 +244,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_CANDY_ABUNDANT_02",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",

@@ -17,7 +17,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MAY_NORMAL",
+            "graphics_id": "OBJ_EVENT_GFX_MAY_NORMAL",
             "movement_range_x": 15,
             "movement_range_y": 15,
             "movement_type": "MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE",
@@ -30,7 +30,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_YOUNGSTER",
+            "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
             "movement_range_x": 15,
             "movement_range_y": 15,
             "movement_type": "MOVEMENT_TYPE_COPY_PLAYER_COUNTERCLOCKWISE",
@@ -43,7 +43,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_GIRL_2",
+            "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
             "movement_range_x": 15,
             "movement_range_y": 15,
             "movement_type": "MOVEMENT_TYPE_COPY_PLAYER_CLOCKWISE",

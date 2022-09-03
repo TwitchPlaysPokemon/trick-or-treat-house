@@ -91,7 +91,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_NORTH",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_NORTH",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -104,7 +104,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_STONE_ROOM",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_STONE_ROOM",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -117,7 +117,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_SCROLL",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -130,7 +130,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_VAR_F",
+            "graphics_id": "OBJ_EVENT_GFX_VAR_F",
             "movement_range_x": 3,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT",
@@ -143,7 +143,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_VAR_E",
+            "graphics_id": "OBJ_EVENT_GFX_VAR_E",
             "movement_range_x": 5,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT",
@@ -156,7 +156,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_VAR_D",
+            "graphics_id": "OBJ_EVENT_GFX_VAR_D",
             "movement_range_x": 0,
             "movement_range_y": 6,
             "movement_type": "MOVEMENT_TYPE_WALK_DOWN_AND_UP",
@@ -169,7 +169,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_MERMAID",
+            "graphics_id": "OBJ_EVENT_GFX_MERMAID",
             "movement_range_x": 0,
             "movement_range_y": 6,
             "movement_type": "MOVEMENT_TYPE_WALK_UP_AND_DOWN",
@@ -182,7 +182,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_43",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -195,7 +195,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDDEN_LIMITED_CANDY_0x6F",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -208,7 +208,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_40",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -221,7 +221,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_HOUSE_STATUE",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_HOUSE_STATUE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -234,7 +234,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_4F",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_HOUSE_STATUE",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_HOUSE_STATUE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -247,7 +247,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_4F",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_HOUSE_STATUE",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_HOUSE_STATUE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -260,7 +260,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_4E",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_HOUSE_STATUE",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_HOUSE_STATUE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -273,7 +273,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_41",
-            "graphics_id": "EVENT_OBJ_GFX_HM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_HM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -286,7 +286,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_45",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -299,7 +299,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_42",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -312,7 +312,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_44",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -325,7 +325,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_HERO_OF_TIME",
+            "graphics_id": "OBJ_EVENT_GFX_HERO_OF_TIME",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",

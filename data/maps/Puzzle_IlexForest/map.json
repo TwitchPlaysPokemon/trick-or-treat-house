@@ -387,7 +387,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_TEMP_1",
-            "graphics_id": "EVENT_OBJ_GFX_CUTTABLE_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -400,7 +400,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_TEMP_2",
-            "graphics_id": "EVENT_OBJ_GFX_BREAKABLE_ROCK",
+            "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -413,7 +413,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PIDGEY",
+            "graphics_id": "OBJ_EVENT_GFX_PIDGEY",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -426,7 +426,7 @@
         {
             "elevation": 4,
             "flag": "FLAG_PICKED_UP_SURF_ITEM",
-            "graphics_id": "EVENT_OBJ_GFX_HM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_HM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -439,7 +439,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_SCROLL",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_SCROLL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -452,7 +452,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_DOOR_STONE",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_STONE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -465,7 +465,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_21",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_SCROLL",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -478,7 +478,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PICKED_UP_SMASH_ITEM",
-            "graphics_id": "EVENT_OBJ_GFX_HM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_HM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -491,7 +491,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_BOY_2",
+            "graphics_id": "OBJ_EVENT_GFX_BOY_2",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -504,7 +504,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_20",
-            "graphics_id": "EVENT_OBJ_GFX_HIKER",
+            "graphics_id": "OBJ_EVENT_GFX_HIKER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -517,7 +517,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_TEMP_3",
-            "graphics_id": "EVENT_OBJ_GFX_CUTTABLE_TREE",
+            "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -530,7 +530,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PICKED_UP_CUT_ITEM",
-            "graphics_id": "EVENT_OBJ_GFX_HM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_HM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -543,7 +543,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_PUZZLE_ITEM_0",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -556,7 +556,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_DEBUG_OBJECTS",
-            "graphics_id": "EVENT_OBJ_GFX_GRASS_CUSHION",
+            "graphics_id": "OBJ_EVENT_GFX_GRASS_CUSHION",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -569,7 +569,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_CANDY_RARE_02",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -582,7 +582,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_CANDY_ABUNDANT_02",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -595,7 +595,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_CANDY_UNCOMMON_02",
-            "graphics_id": "EVENT_OBJ_GFX_ITEM_BALL",
+            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -608,7 +608,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_META_PICKUP_GRASS",
-            "graphics_id": "EVENT_OBJ_GFX_GRASS_CUSHION",
+            "graphics_id": "OBJ_EVENT_GFX_GRASS_CUSHION",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",

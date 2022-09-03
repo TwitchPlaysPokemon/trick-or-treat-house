@@ -577,7 +577,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_TRICK_SCROLL",
+            "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -590,7 +590,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -603,7 +603,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -616,7 +616,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -629,7 +629,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -642,7 +642,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -655,7 +655,7 @@
         {
             "elevation": 3,
             "flag": "0",
-            "graphics_id": "EVENT_OBJ_GFX_PUSHABLE_BOULDER",
+            "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",
@@ -668,7 +668,7 @@
         {
             "elevation": 3,
             "flag": "FLAG_HIDE_DEBUG_OBJECTS",
-            "graphics_id": "EVENT_OBJ_GFX_ROUND_CUSHION",
+            "graphics_id": "OBJ_EVENT_GFX_ROUND_CUSHION",
             "movement_range_x": 0,
             "movement_range_y": 0,
             "movement_type": "MOVEMENT_TYPE_NONE",

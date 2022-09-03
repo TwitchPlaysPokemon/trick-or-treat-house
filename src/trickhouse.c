@@ -316,13 +316,13 @@ void AssignPuzzleMetaVariables(struct ScriptContext *ctx)
 	const u16 *array = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_META_VARIABLES);
 	
 	// Reset introducer to trick master by default
-	VarSet(VAR_INTRO_PERSON, EVENT_OBJ_GFX_TRICK_MASTER);
+	VarSet(VAR_INTRO_PERSON, OBJ_EVENT_GFX_TRICK_MASTER);
 	// Randomize quip person by default
-	VarSet(VAR_QUIP_PERSON, (Random() % (EVENT_OBJ_GFX_FISHERMAN - EVENT_OBJ_GFX_BOY_1)) + EVENT_OBJ_GFX_BOY_1);
+	VarSet(VAR_QUIP_PERSON, (Random() % (OBJ_EVENT_GFX_FISHERMAN - OBJ_EVENT_GFX_BOY_1)) + OBJ_EVENT_GFX_BOY_1);
 	// Set developer commentator to Tustin by default
-	VarSet(VAR_DEV_COMMENTATOR, EVENT_OBJ_GFX_DEV_TUSTIN2121);
+	VarSet(VAR_DEV_COMMENTATOR, OBJ_EVENT_GFX_DEV_TUSTIN2121);
 	// Set endroom friend to no one by default
-	VarSet(VAR_ENDROOM_FRIEND, EVENT_OBJ_GFX_GHOST);
+	VarSet(VAR_ENDROOM_FRIEND, OBJ_EVENT_GFX_GHOST);
 	
 	if ((IsAfterFirstLoop() || gMain.debugMode) 
 		&& GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_DEV_COMMENTARY) != NULL) 
