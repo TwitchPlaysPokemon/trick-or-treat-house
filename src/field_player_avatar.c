@@ -234,7 +234,7 @@ static bool8 (*const sArrowWarpMetatileBehaviorChecks[])(u8) =
     [DIR_EAST - 1]  = MetatileBehavior_IsEastArrowWarp,
 };
 
-// static const u8 sRivalAvatarGfxIds[][2] =
+// static const gfxId_t sRivalAvatarGfxIds[][2] =
 // {
 //     [PLAYER_AVATAR_STATE_NORMAL]     = {OBJ_EVENT_GFX_BRENDAN_NORMAL,     OBJ_EVENT_GFX_MAY_NORMAL},
 //     [PLAYER_AVATAR_STATE_MACH_BIKE]  = {OBJ_EVENT_GFX_BRENDAN_MACH_BIKE,  OBJ_EVENT_GFX_MAY_MACH_BIKE},
@@ -246,7 +246,7 @@ static bool8 (*const sArrowWarpMetatileBehaviorChecks[])(u8) =
 //     [PLAYER_AVATAR_STATE_WATERING]   = {OBJ_EVENT_GFX_BRENDAN_WATERING,   OBJ_EVENT_GFX_MAY_WATERING}
 // };
 
-static const u8 sPlayerAvatarGfxIds[][3] =
+static const gfxId_t sPlayerAvatarGfxIds[][3] =
 {
     [PLAYER_AVATAR_STATE_NORMAL]     = {OBJ_EVENT_GFX_BRENDAN_NORMAL,     OBJ_EVENT_GFX_MAY_NORMAL,     OBJ_EVENT_GFX_TREEKID_NORMAL},
     [PLAYER_AVATAR_STATE_MACH_BIKE]  = {OBJ_EVENT_GFX_BRENDAN_MACH_BIKE,  OBJ_EVENT_GFX_MAY_MACH_BIKE,  OBJ_EVENT_GFX_TREEKID_MACH_BIKE},
@@ -258,21 +258,21 @@ static const u8 sPlayerAvatarGfxIds[][3] =
     [PLAYER_AVATAR_STATE_WATERING]   = {OBJ_EVENT_GFX_BRENDAN_WATERING,   OBJ_EVENT_GFX_MAY_WATERING,   OBJ_EVENT_GFX_TREEKID_WATERING},
 };
 
-static const u8 sFRLGAvatarGfxIds[GENDER_COUNT] =
+static const gfxId_t sFRLGAvatarGfxIds[GENDER_COUNT] =
 {
     [MALE]   = OBJ_EVENT_GFX_RED,
     [FEMALE] = OBJ_EVENT_GFX_LEAF
 };
 
-static const u8 sRSAvatarGfxIds[GENDER_COUNT] =
-{
-    [MALE]   = OBJ_EVENT_GFX_LINK_RS_BRENDAN,
-    [FEMALE] = OBJ_EVENT_GFX_LINK_RS_MAY
-};
+// static const gfxId_t sRSAvatarGfxIds[GENDER_COUNT] =
+// {
+//     [MALE]   = OBJ_EVENT_GFX_LINK_RS_BRENDAN,
+//     [FEMALE] = OBJ_EVENT_GFX_LINK_RS_MAY
+// };
 
-static const u8 sPlayerAvatarGfxToStateFlag[GENDER_COUNT][5][2] =
+static const gfxId_t sPlayerAvatarGfxToStateFlag[GENDER_COUNT][5][2] =
 {
-    [MALE] =
+    [GENDER_M] =
     {
         {OBJ_EVENT_GFX_BRENDAN_NORMAL,     PLAYER_AVATAR_FLAG_ON_FOOT},
         {OBJ_EVENT_GFX_BRENDAN_MACH_BIKE,  PLAYER_AVATAR_FLAG_MACH_BIKE},
@@ -280,7 +280,7 @@ static const u8 sPlayerAvatarGfxToStateFlag[GENDER_COUNT][5][2] =
         {OBJ_EVENT_GFX_BRENDAN_SURFING,    PLAYER_AVATAR_FLAG_SURFING},
         {OBJ_EVENT_GFX_BRENDAN_UNDERWATER, PLAYER_AVATAR_FLAG_UNDERWATER},
     },
-    [FEMALE] =
+    [GENDER_F] =
     {
         {OBJ_EVENT_GFX_MAY_NORMAL,         PLAYER_AVATAR_FLAG_ON_FOOT},
         {OBJ_EVENT_GFX_MAY_MACH_BIKE,      PLAYER_AVATAR_FLAG_MACH_BIKE},
@@ -288,7 +288,7 @@ static const u8 sPlayerAvatarGfxToStateFlag[GENDER_COUNT][5][2] =
         {OBJ_EVENT_GFX_MAY_SURFING,        PLAYER_AVATAR_FLAG_SURFING},
         {OBJ_EVENT_GFX_MAY_UNDERWATER,     PLAYER_AVATAR_FLAG_UNDERWATER},
     },
-    //nonbinary
+    [GENDER_N] =
     {
         {OBJ_EVENT_GFX_TREEKID_NORMAL,     PLAYER_AVATAR_FLAG_ON_FOOT},
         {OBJ_EVENT_GFX_TREEKID_MACH_BIKE,  PLAYER_AVATAR_FLAG_MACH_BIKE},
@@ -771,13 +771,13 @@ static bool8 CanStopSurfing(s16 x, s16 y, u8 direction)
     }
 }
 
-static bool8 ShouldJumpLedge(struct EventObject *playerEventObj, s16 x, s16 y, u8 dir)
+static bool8 ShouldJumpLedge(struct ObjectEvent *playerObjEvent, s16 x, s16 y, u8 dir)
 {
     u8 ret;
     if (GetLedgeJumpDirection(x, y, dir) != DIR_NONE) 
     {
         MoveCoordsInDirection(dir, &x, &y, 1, 1);
-        ret = GetCollisionAtCoords(playerEventObj, x, y, dir);
+        ret = GetCollisionAtCoords(playerObjEvent, x, y, dir);
         if (ret == 3 || ret == 0)
             return TRUE;
         else
@@ -1286,33 +1286,34 @@ void StopPlayerAvatar(void)
     }
 }
 
-u16 GetRivalAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
+gfxId_t GetRivalAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
 {
     return sPlayerAvatarGfxIds[state][gender];
     // return sRivalAvatarGfxIds[state][gender];
 }
 
-u16 GetPlayerAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
+gfxId_t GetPlayerAvatarGraphicsIdByStateIdAndGender(u8 state, u8 gender)
 {
     return sPlayerAvatarGfxIds[state][gender];
 }
 
-u16 GetFRLGAvatarGraphicsIdByGender(u8 gender)
+gfxId_t GetFRLGAvatarGraphicsIdByGender(u8 gender)
 {
     return sFRLGAvatarGfxIds[gender];
 }
 
-u16 GetRSAvatarGraphicsIdByGender(u8 gender)
+gfxId_t GetRSAvatarGraphicsIdByGender(u8 gender)
 {
-    return sRSAvatarGfxIds[gender];
+    // return sRSAvatarGfxIds[gender];
+    return sFRLGAvatarGfxIds[gender];
 }
 
-u16 GetPlayerAvatarGraphicsIdByStateId(u8 state)
+gfxId_t GetPlayerAvatarGraphicsIdByStateId(u8 state)
 {
     return GetPlayerAvatarGraphicsIdByStateIdAndGender(state, gPlayerAvatar.gender);
 }
 
-u8 GetPlayerAvatarGenderByGraphicsId(u16 gfxId)
+u8 GetPlayerAvatarGenderByGraphicsId(gfxId_t gfxId)
 {
     return gfxId >> 3;
 }
@@ -1368,7 +1369,7 @@ void SetPlayerAvatarStateMask(u8 flags)
     gPlayerAvatar.flags |= flags;
 }
 
-static u8 GetPlayerAvatarStateTransitionByGraphicsId(u16 graphicsId, u8 gender)
+static u8 GetPlayerAvatarStateTransitionByGraphicsId(gfxId_t graphicsId, u8 gender)
 {
     u8 i;
 
@@ -1393,7 +1394,7 @@ u16 GetPlayerAvatarGraphicsIdByCurrentState(void)
     return 0;
 }
 
-void SetPlayerAvatarExtraStateTransition(u8 graphicsId, u8 transitionFlag)
+void SetPlayerAvatarExtraStateTransition(gfxId_t graphicsId, u8 transitionFlag)
 {
     u8 stateFlag = GetPlayerAvatarStateTransitionByGraphicsId(graphicsId, gPlayerAvatar.gender);
 
@@ -1707,8 +1708,8 @@ static void Task_WaitStopSurfing(u8 taskId)
     if (ObjectEventClearHeldMovementIfFinished(playerObjEvent))
     {
         if (FlagGet(FLAG_SYS_CYCLING_ROAD)) {
-            EventObjectSetGraphicsId(playerObjEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_MACH_BIKE));
-            EventObjectSetHeldMovement(playerObjEvent, GetFaceDirectionMovementAction(playerObjEvent->facingDirection));
+            ObjectEventSetGraphicsId(playerObjEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_MACH_BIKE));
+            ObjectEventSetHeldMovement(playerObjEvent, GetFaceDirectionMovementAction(playerObjEvent->facingDirection));
         } else {
             ObjectEventSetGraphicsId(playerObjEvent, GetPlayerAvatarGraphicsIdByStateId(PLAYER_AVATAR_STATE_NORMAL));
             ObjectEventSetHeldMovement(playerObjEvent, GetFaceDirectionMovementAction(playerObjEvent->facingDirection));
@@ -1716,7 +1717,7 @@ static void Task_WaitStopSurfing(u8 taskId)
         gPlayerAvatar.preventStep = FALSE;
         UnlockPlayerFieldControls();
         DestroySprite(&gSprites[playerObjEvent->fieldEffectSpriteId]);
-        playerEventObj->triggerGroundEffectsOnMove = TRUE;
+        playerObjEvent->triggerGroundEffectsOnMove = TRUE;
         DestroyTask(taskId);
     }
 }
@@ -2194,7 +2195,7 @@ bool32 IsPlayerSpinExitActive(void)
 }
 
 static const u8 sSpinDirections[] = {DIR_SOUTH, DIR_WEST, DIR_EAST, DIR_NORTH, DIR_SOUTH};
-extern void UpdateEventObjectZCoordAndPriority(struct EventObject *eventObj, struct Sprite *sprite);
+extern void UpdateObjectEventZCoordAndPriority(struct ObjectEvent *eventObj, struct Sprite *sprite);
 
 static void Task_DoPlayerSpinEntrance(u8 taskId)
 {
@@ -2253,7 +2254,7 @@ static void Task_DoPlayerSpinEntrance(u8 taskId)
                 sprite->oam.priority = tPriority;
                 sprite->subpriority = tSubpriority;
                 CameraObjectReset1();
-                UpdateEventObjectZCoordAndPriority(object, sprite);
+                UpdateObjectEventZCoordAndPriority(object, sprite);
                 DestroyTask(taskId);
             }
             break;

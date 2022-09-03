@@ -63,7 +63,7 @@ struct StepAnimTable
 
 struct PairedPalettes
 {
-    u16 tag;
+    palTag_t tag;
     const u16 *data;
 };
 
@@ -78,9 +78,9 @@ extern const struct OamData gObjectEventBaseOam_32x32;
 extern const struct SpriteTemplate *const gFieldEffectObjectTemplatePointers[];
 extern const u8 gReflectionEffectPaletteMap[];
 
-extern const u16 *const gBerryTreeObjectEventGraphicsIdTablePointers[];
+extern const gfxId_t *const gBerryTreeObjectEventGraphicsIdTablePointers[];
 extern const struct SpriteFrameImage *const gBerryTreePicTablePointers[];
-extern const u16 *const gBerryTreePaletteTagTablePointers[];
+extern const palTag_t *const gBerryTreePaletteTagTablePointers[];
 
 void ResetObjectEvents(void);
 u8 GetMoveDirectionAnimNum(u8);
@@ -104,17 +104,17 @@ void SetSpritePosToOffsetMapCoords(s16 *, s16 *, s16, s16);
 void ObjectEventClearHeldMovement(struct ObjectEvent *);
 void ObjectEventClearHeldMovementIfActive(struct ObjectEvent *);
 void TrySpawnObjectEvents(s16, s16);
-u8 CreateObjectSprite(u16 graphicsId, u8 a1, s16 x, s16 y, u8 z, u8 direction);
+u8 CreateObjectSprite(gfxId_t graphicsId, u8 a1, s16 x, s16 y, u8 z, u8 direction);
 u8 CreateObjectGraphicsSprite(u16, void (*)(struct Sprite *), s16 x, s16 y, u8 subpriority);
 u8 TrySpawnObjectEvent(u8, u8, u8);
-u8 SpawnSpecialObjectEventParameterized(u16 graphicsId, u8 movementBehavior, u8 localId, s16 x, s16 y, u8 elevation);
+u8 SpawnSpecialObjectEventParameterized(gfxId_t graphicsId, u8 movementBehavior, u8 localId, s16 x, s16 y, u8 elevation);
 u8 SpawnSpecialObjectEvent(struct ObjectEventTemplate *);
 void SetSpritePosToMapCoords(s16, s16, s16 *, s16 *);
 void CameraObjectReset1(void);
-void ObjectEventSetGraphicsId(struct ObjectEvent *, u16 graphicsId);
+void ObjectEventSetGraphicsId(struct ObjectEvent *, gfxId_t graphicsId);
 void ObjectEventTurn(struct ObjectEvent *, u8);
 void ObjectEventTurnByLocalIdAndMap(u8, u8, u8, u8);
-const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(u16 graphicsId);
+const struct ObjectEventGraphicsInfo *GetObjectEventGraphicsInfo(gfxId_t graphicsId);
 void SetObjectInvisibility(u8, u8, u8, bool8);
 void FreeAndReserveObjectSpritePalettes(void);
 void SetObjectEventSpritePosByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup, s16 x, s16 y);
@@ -181,7 +181,7 @@ void ObjectEventUpdateElevation(struct ObjectEvent *objEvent);
 void SetObjectSubpriorityByElevation(u8, struct Sprite *, u8);
 void UnfreezeObjectEvent(struct ObjectEvent *);
 u8 FindLockedObjectEventIndex(struct ObjectEvent *);
-void LoadObjectEventPalette(u16 paletteTag);
+void LoadObjectEventPalette(palTag_t paletteTag);
 void SetAndStartSpriteAnim(struct Sprite *, u8, u8);
 bool8 SpriteAnimEnded(struct Sprite *);
 void UnfreezeObjectEvents(void);
@@ -195,7 +195,7 @@ u8 GetMoveDirectionFastestAnimNum(u8);
 void MoveCoordsInDirection(u32 dir, s16 *x, s16 *y, s16 deltaX, s16 deltaY);
 u8 GetLedgeJumpDirection(s16, s16, u8);
 void CameraObjectSetFollowedSpriteId(u8 objectId);
-u16 GetObjectPaletteTag(u8 palSlot);
+palTag_t GetObjectPaletteTag(u8 palSlot);
 void UpdateObjectEventSpriteInvisibility(struct Sprite *sprite, bool8 invisible);
 s16 GetFigure8XOffset(s16 idx);
 s16 GetFigure8YOffset(s16 idx);
@@ -203,7 +203,7 @@ void CameraObjectReset2(void);
 u8 GetObjectEventBerryTreeId(u8 objectEventId);
 void SetBerryTreeJustPicked(u8 mapId, u8 mapNumber, u8 mapGroup);
 bool8 IsBerryTreeSparkling(u8, u8, u8);
-void UpdateAllEventObjectsZCoordAndPriority();
+void UpdateAllObjectEventsZCoordAndPriority();
 void DoGroundEffect(u8 localId, u8 mapNum, u8 mapGroup, u8 animId);
 bool8 IsObjectDoor(u8 objId);
 
@@ -424,9 +424,9 @@ u8 MovementType_Invisible_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementType_Invisible_Step1(struct ObjectEvent *, struct Sprite *);
 u8 MovementType_Invisible_Step2(struct ObjectEvent *, struct Sprite *);
 
-u8 CreateVirtualObject(u16 graphicsId, u8 virtualObjId, s16 x, s16 y, u8 elevation, u8 direction);
+u8 CreateVirtualObject(gfxId_t graphicsId, u8 virtualObjId, s16 x, s16 y, u8 elevation, u8 direction);
 void TurnVirtualObject(u8 virtualObjId, u8 direction);
-void SetVirtualObjectGraphics(u8 virtualObjId, u16 graphicsId);
+void SetVirtualObjectGraphics(u8 virtualObjId, gfxId_t graphicsId);
 void SetVirtualObjectInvisibility(u8 virtualObjId, bool32 invisible);
 bool32 IsVirtualObjectInvisible(u8 virtualObjId);
 void SetVirtualObjectSpriteAnim(u8 virtualObjId, u8 animNum);

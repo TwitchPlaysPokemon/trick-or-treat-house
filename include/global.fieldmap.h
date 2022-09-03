@@ -34,6 +34,8 @@ enum {
 #define METATILE_ROW_WIDTH 8
 
 typedef void (*TilesetCB)(void);
+typedef u16 gfxId_t;
+typedef u16 palTag_t;
 
 struct Tileset
 {
@@ -76,7 +78,7 @@ struct ObjectEventTemplate
 {
     /*0x00*/ u8 localId;
     // /*0x01*/ u8 inConnection;
-    /*0x02*/ u16 graphicsId;
+    /*0x02*/ gfxId_t graphicsId;
     /*0x04*/ s16 x;
     /*0x06*/ s16 y;
     /*0x08*/ u8 elevation;
@@ -207,7 +209,7 @@ struct ObjectEvent
              u32 isStandingOnTrigger:1;
              u32 useImposterPalette:1;
              int :0;
-    /*0x04*/ u16 graphicsId;
+    /*0x04*/ gfxId_t graphicsId;
     /*0x06*/ u8 spriteId;
     /*0x07*/ u8 movementType;
     /*0x08*/ u8 localId;
@@ -238,8 +240,8 @@ struct ObjectEvent
 struct ObjectEventGraphicsInfo
 {
     /*0x00*/ u16 tileTag;
-    /*0x02*/ u16 paletteTag;
-    /*0x04*/ u16 reflectionPaletteTag;
+    /*0x02*/ palTag_t paletteTag;
+    /*0x04*/ palTag_t reflectionPaletteTag;
     /*0x06*/ u16 size;
     /*0x08*/ s16 width;
     /*0x0A*/ s16 height;

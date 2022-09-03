@@ -826,7 +826,7 @@ bool8 ScrCmd_switchmaplayout(struct ScriptContext *ctx)
     SetCurrentMapLayout(toId + 1);
     InitMap();
     MoveCameraAndRedrawMap(0, 0);
-    UpdateAllEventObjectsZCoordAndPriority();
+    UpdateAllObjectEventsZCoordAndPriority();
     return FALSE;
 }
 
@@ -1316,7 +1316,7 @@ bool8 ScrCmd_setobjectmovementtype(struct ScriptContext *ctx)
 
 bool8 ScrCmd_createvobject(struct ScriptContext *ctx)
 {
-    u16 graphicsId = ScriptReadByte(ctx);
+    gfxId_t graphicsId = ScriptReadByte(ctx);
     u8 virtualObjId = ScriptReadByte(ctx);
     u16 x = VarGet(ScriptReadHalfword(ctx));
     u32 y = VarGet(ScriptReadHalfword(ctx));
@@ -2168,7 +2168,7 @@ bool8 ScrCmd_setfieldeffectargstoobjectloc(struct ScriptContext *ctx)
     u16 localId = VarGet(ScriptReadHalfword(ctx));
     u8 argNum = ScriptReadByte(ctx);
     u8 evtid = GetobjectEventIdByLocalIdAndMap(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
-    struct EventObject *eventObj = &gObjectEvents[evtid];
+    struct ObjectEvent *eventObj = &gObjectEvents[evtid];
 
     gFieldEffectArguments[argNum+0] = eventObj->currentCoords.x;
     gFieldEffectArguments[argNum+1] = eventObj->currentCoords.y;

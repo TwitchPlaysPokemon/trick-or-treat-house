@@ -287,7 +287,7 @@ void PokemonSaysSetupSongScript(struct ScriptContext *ctx)
 	
 	gRamScriptPtr = (const u8*) script;
 	
-	// gSpecialVar_Result = InitRamScript_NoEventObject(script, i);
+	// gSpecialVar_Result = InitRamScript_NoObjectEvent(script, i);
 }
 
 void PokemonSaysTeardownSongScript(struct ScriptContext *ctx)
@@ -836,7 +836,7 @@ extern const u8 Puzzle_TwinMemories_ConfigCount;
 void CountTwinMemoriesBoulders(struct ScriptContext *ctx) {
 	s16 o, i;
 	s16 xbase = 0, ybase = 0, x, y;
-	struct EventObject *eventObject = NULL;
+	struct ObjectEvent *objectEvent = NULL;
     struct CoordEvent *coordEvent = NULL;
 	const u8 *currConfig;
 	
@@ -850,14 +850,14 @@ void CountTwinMemoriesBoulders(struct ScriptContext *ctx) {
 	ybase = COORD_Y(ctx->data[1]);
 	
 	for (o = 0; o < OBJECT_EVENTS_COUNT; o++) {
-		eventObject = &gObjectEvents[o];
-        if (eventObject->isPlayer) continue;
-        if (!eventObject->active) continue;
-		if (eventObject->graphicsId != OBJ_EVENT_GFX_PUSHABLE_BOULDER) continue;
-		if (!eventObject->isStandingOnTrigger) continue;
+		objectEvent = &gObjectEvents[o];
+        if (objectEvent->isPlayer) continue;
+        if (!objectEvent->active) continue;
+		if (objectEvent->graphicsId != OBJ_EVENT_GFX_PUSHABLE_BOULDER) continue;
+		if (!objectEvent->isStandingOnTrigger) continue;
 		
-		x = (eventObject->currentCoords.x - 7 - xbase) / 2;
-		y = (eventObject->currentCoords.y - 7 - ybase) / 2;
+		x = (objectEvent->currentCoords.x - 7 - xbase) / 2;
+		y = (objectEvent->currentCoords.y - 7 - ybase) / 2;
 		x = (x * 5) + y; //the index of the tile being stood on
 		
 		for (i = 0; i < 6; i++) {
@@ -873,7 +873,7 @@ void CountTwinMemoriesBoulders(struct ScriptContext *ctx) {
 void SetupTwinMemoriesBoulders(struct ScriptContext *ctx) {
 	s16 o, i;
 	s16 xbase, ybase, x, y;
-	struct EventObject *eventObject = NULL;
+	struct ObjectEvent *objectEvent = NULL;
 	const u8 *currConfig;
 	
 	// Only load this pointer if it's within the array and pointing to someplace in ROM
@@ -886,12 +886,12 @@ void SetupTwinMemoriesBoulders(struct ScriptContext *ctx) {
 	
 	// boulders are 2, 3, 4, 5, 6, 7
 	for (o = 0; o < OBJECT_EVENTS_COUNT; o++) {
-		eventObject = &gObjectEvents[o];
-		if (eventObject->localId >= 2 && eventObject->localId <= 7) {
-			i = currConfig[eventObject->localId-2];
+		objectEvent = &gObjectEvents[o];
+		if (objectEvent->localId >= 2 && objectEvent->localId <= 7) {
+			i = currConfig[objectEvent->localId-2];
 			x = ((i / 5) * 2) + xbase + 7;
 			y = ((i % 5) * 2) + ybase + 7;
-			MoveEventObjectToMapCoords(eventObject, x, y);
+			MoveObjectEventToMapCoords(objectEvent, x, y);
 		}
 	}
 	gSpecialVar_LastErrorNo = 0;
@@ -989,23 +989,23 @@ extern const u8 *Puzzle_IlexForest_ConfigCount;
 void LoadBirdLocation(struct ScriptContext *ctx)
 {
 	s32 i;
-	struct EventObjectTemplate *savObjTemplates;
+	struct ObjectEventTemplate *savObjTemplates;
 	
 	u16 idx = VarGet(VAR_BIRD_LOCATION);
 	const struct BirdSpot *spot = &Puzzle_IlexForest_BirdSpots[idx];
 	if (((u32)spot) >= (u32)Puzzle_IlexForest_ConfigCount) return;
 	
 	// Loop through the event templates and find the bird
-	savObjTemplates = gSaveBlock1Ptr->eventObjectTemplates;
+	savObjTemplates = gSaveBlock1Ptr->objectEventTemplates;
 	for (i = 0; i < EVENT_OBJECT_TEMPLATES_COUNT; i++)
     {
-        struct EventObjectTemplate *eventObjectTemplate = &savObjTemplates[i];
-        if (eventObjectTemplate->localId == LID_BIRD)
+        struct ObjectEventTemplate *objectEventTemplate = &savObjTemplates[i];
+        if (objectEventTemplate->localId == LID_BIRD)
         {
 			// Set the bird's location and script to the current location
-            eventObjectTemplate->x = spot->x;
-            eventObjectTemplate->y = spot->y;
-			eventObjectTemplate->script = spot->script;
+            objectEventTemplate->x = spot->x;
+            objectEventTemplate->y = spot->y;
+			objectEventTemplate->script = spot->script;
             break;
         }
     }
@@ -1021,17 +1021,17 @@ void LoadBirdLocation(struct ScriptContext *ctx)
 void CountNPCTriggers(struct ScriptContext *ctx) {
 	s16 o, i, x, y;
 	int mid;
-	struct EventObject *eventObject = NULL;
+	struct ObjectEvent *objectEvent = NULL;
     struct CoordEvent *coordEvent = NULL;
 	const u8 *currConfig;
 	
 	gSpecialVar_Result = 0;
 	
 	for (o = 0; o < OBJECT_EVENTS_COUNT; o++) {
-		eventObject = &gObjectEvents[o];
-        if (eventObject->isPlayer) continue;
-        if (!eventObject->active) continue;
-		if (!eventObject->isStandingOnTrigger) continue;
+		objectEvent = &gObjectEvents[o];
+        if (objectEvent->isPlayer) continue;
+        if (!objectEvent->active) continue;
+		if (!objectEvent->isStandingOnTrigger) continue;
 		
 		gSpecialVar_Result++;
 	}

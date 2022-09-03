@@ -800,14 +800,14 @@ static void CreateCableCarSprites(void)
     u8 spriteId;
     u8 i;
 
-    u16 playerGraphicsIds[4] = {
+    gfxId_t playerGraphicsIds[4] = {
         OBJ_EVENT_GFX_BRENDAN_NORMAL,
         OBJ_EVENT_GFX_MAY_NORMAL,
         OBJ_EVENT_GFX_TREEKID_NORMAL,
         OBJ_EVENT_GFX_PROTAG4_NORMAL,
     };
     u16 rval = Random();
-    u8 hikerGraphicsIds[4] = {
+    gfxId_t hikerGraphicsIds[4] = {
         OBJ_EVENT_GFX_HIKER,
         OBJ_EVENT_GFX_CAMPER,
         OBJ_EVENT_GFX_PICNICKER,

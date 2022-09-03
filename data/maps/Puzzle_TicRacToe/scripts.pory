@@ -43,7 +43,7 @@ Puzzle_TicRacToe_CandyList:
 #define FLAG_ALL_BUTTONS_PRESSED    FLAG_PUZZLE_20
 
 Puzzle_TicRacToe_FrameTable:
-	@ VAR_STEP_TRIGGER is set to 1 by MonitorMultiEventObjectTriggersStepCallback when any npc steps on a trigger
+	@ VAR_STEP_TRIGGER is set to 1 by MonitorMultiObjectEventTriggersStepCallback when any npc steps on a trigger
 	map_script_2 VAR_STEP_TRIGGER, 1, Puzzle_TicRacToe_StepTriggerCallback
 	.2byte 0
 `

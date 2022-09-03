@@ -20,7 +20,7 @@
 #include "constants/field_effects.h"
 #include "constants/trainer_types.h"
 
-extern const struct SpritePalette sEventObjectSpritePalettes[];
+extern const struct SpritePalette sObjectEventSpritePalettes[];
 extern const struct SpritePalette gFieldEffectObjectPaletteInfo0;
 
 // this file's functions
@@ -626,7 +626,7 @@ static bool8 RevealDisguisedTrainer(u8 taskId, struct Task *task, struct ObjectE
 static bool8 WaitRevealDisguisedTrainer(u8 taskId, struct Task *task, struct ObjectEvent *trainerObj)
 {
     if (ObjectEventClearHeldMovementIfFinished(trainerObj)) {
-        struct EventObject *playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
+        struct ObjectEvent *playerObj = &gObjectEvents[gPlayerAvatar.objectEventId];
         if (trainerObj->currentCoords.x < playerObj->currentCoords.x) {
             trainerObj->facingDirection = DIR_EAST;
         }

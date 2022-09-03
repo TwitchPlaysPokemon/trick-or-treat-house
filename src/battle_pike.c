@@ -26,7 +26,7 @@
 
 struct PikeRoomNPC
 {
-    u16 graphicsId;
+    gfxId_t graphicsId;
     u8 speechId1;
     u8 speechId2;
     u8 speechId3;
@@ -573,7 +573,7 @@ static void SetupRoomObjectEvents(void)
         objGfx1 = OBJ_EVENT_GFX_LINK_RECEPTIONIST;
         break;
     case PIKE_ROOM_NPC:
-        objGfx1 = (u16)(GetNPCRoomGraphicsId());
+        objGfx1 = (gfxId_t)(GetNPCRoomGraphicsId());
         break;
     case PIKE_ROOM_STATUS:
         objGfx1 = OBJ_EVENT_GFX_GENTLEMAN;
@@ -1091,7 +1091,7 @@ static u8 GetNextRoomType(void)
     return nextRoomType;
 }
 
-static u16 GetNPCRoomGraphicsId(void)
+static gfxId_t GetNPCRoomGraphicsId(void)
 {
     sNpcId = Random() % ARRAY_COUNT(sNPCTable);
     return sNPCTable[sNpcId].graphicsId;

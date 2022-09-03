@@ -624,9 +624,9 @@ static bool8 LoadInitialBikingScene(u8 taskId)
     return FALSE;
 }
 
-extern void MakeObjectTemplateFromEventObjectGraphicsInfo(u16 graphicsId, void (*callback)(struct Sprite *), struct SpriteTemplate *spriteTemplate, const struct SubspriteTable **subspriteTables);
+extern void MakeObjectTemplateFromObjectEventGraphicsInfo(gfxId_t graphicsId, void (*callback)(struct Sprite *), struct SpriteTemplate *spriteTemplate, const struct SubspriteTable **subspriteTables);
 
-// This is a copy and modification of AddPseudoEventObject
+// This is a copy and modification of AddPseudoObjectEvent
 void LoadCandyGraphics()
 {
     struct SpriteTemplate *spriteTemplate;
@@ -635,7 +635,7 @@ void LoadCandyGraphics()
     u8 spriteId, i;
     
     spriteTemplate = malloc(sizeof(struct SpriteTemplate));
-    MakeObjectTemplateFromEventObjectGraphicsInfo(OBJ_EVENT_GFX_ITEM_BALL, SpriteCB_CandyItem, spriteTemplate, &subspriteTables);
+    MakeObjectTemplateFromObjectEventGraphicsInfo(OBJ_EVENT_GFX_ITEM_BALL, SpriteCB_CandyItem, spriteTemplate, &subspriteTables);
     if (spriteTemplate->paletteTag != 0xFFFF)
     {
         LoadObjectEventPalette(spriteTemplate->paletteTag);

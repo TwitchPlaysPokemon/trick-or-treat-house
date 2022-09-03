@@ -53,7 +53,7 @@ Puzzle_IcePath_CandyList:
 	.2byte 0
 
 Puzzle_IcePath_FrameTable:
-	@ VAR_STEP_TRIGGER is set to 1 by MonitorEventObjectTriggersStepCallback when any npc steps on a trigger
+	@ VAR_STEP_TRIGGER is set to 1 by MonitorObjectEventTriggersStepCallback when any npc steps on a trigger
 	map_script_2 VAR_STEP_TRIGGER, 1, Puzzle_IcePath_BoulderDownHole1
 	map_script_2 VAR_STEP_TRIGGER, 2, Puzzle_IcePath_BoulderDownHole2
 	map_script_2 VAR_STEP_TRIGGER, 3, Puzzle_IcePath_BoulderDownHole3
@@ -61,7 +61,7 @@ Puzzle_IcePath_FrameTable:
 	.2byte 0
 `
 script Puzzle_IcePath_OnResume {
-	// Setup the NPC Trigger step callback MonitorEventObjectTriggersStepCallback
+	// Setup the NPC Trigger step callback MonitorObjectEventTriggersStepCallback
 	setstepcallback (STEP_CB_NPC_TRIGGER)
 }
 

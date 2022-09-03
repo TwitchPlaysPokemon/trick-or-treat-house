@@ -60,8 +60,8 @@ static void PacifidlogBridgePerStepCallback(u8);
 static void WaterTemplePerStepCallback(u8 taskId);
 static void SootopolisGymIcePerStepCallback(u8);
 static void CrackedFloorPerStepCallback(u8);
-static void MonitorEventObjectTriggersStepCallback(u8 taskId);
-static void MonitorMultiEventObjectTriggersStepCallback(u8 taskId);
+static void MonitorObjectEventTriggersStepCallback(u8 taskId);
+static void MonitorMultiObjectEventTriggersStepCallback(u8 taskId);
 extern void HiddenMaze_PulseWallTiles(u8 taskId);
 extern void TrickHouse_CycleTextPalette(u8 taskId);
 static void Task_MuddySlope(u8);
@@ -77,10 +77,10 @@ static const TaskFunc sPerStepCallbacks[] =
     [STEP_CB_SECRET_BASE]        = SecretBasePerStepCallback,
     [STEP_CB_CRACKED_FLOOR]      = CrackedFloorPerStepCallback,
     [STEP_CB_WATER_TEMPLE]       = WaterTemplePerStepCallback, //8
-    [STEP_CB_NPC_TRIGGER]        = MonitorEventObjectTriggersStepCallback,
+    [STEP_CB_NPC_TRIGGER]        = MonitorObjectEventTriggersStepCallback,
     [STEP_CB_HIDDEN_WALLS]       = HiddenMaze_PulseWallTiles,
     [STEP_CB_CYCLE_TEXT_PAL]     = TrickHouse_CycleTextPalette,
-    [STEP_CB_NPC_MULTI_TRIGGER]  = MonitorMultiEventObjectTriggersStepCallback, //12
+    [STEP_CB_NPC_MULTI_TRIGGER]  = MonitorMultiObjectEventTriggersStepCallback, //12
 };
 
 // Each element corresponds to a y coordinate row in the sootopolis gym 1F map.
@@ -1267,11 +1267,11 @@ static void Task_MuddySlope(u8 taskId)
 #define tRunningVar data[3]
 #define tRunningIndex data[4]
 
-static void MonitorEventObjectTriggersStepCallback(u8 taskId)
+static void MonitorObjectEventTriggersStepCallback(u8 taskId)
 {
     s16 x, y, o, t;
     bool8 standing;
-    struct EventObject *eventObject = NULL;
+    struct ObjectEvent *objectEvent = NULL;
     struct CoordEvent *coordEvent = NULL;
     s16 *data = gTasks[taskId].data;
     PlayerGetDestCoords(&x, &y);
@@ -1291,21 +1291,21 @@ static void MonitorEventObjectTriggersStepCallback(u8 taskId)
     
     // For every event object
     for (o = 0; o < OBJECT_EVENTS_COUNT; o++) {
-        eventObject = &gObjectEvents[o];
-        if (eventObject->isPlayer) continue;
-        if (!eventObject->active) continue;
-        if (eventObject->heldMovementActive) return; //continue;
+        objectEvent = &gObjectEvents[o];
+        if (objectEvent->isPlayer) continue;
+        if (!objectEvent->active) continue;
+        if (objectEvent->heldMovementActive) return; //continue;
         
         // Clear the standing flag, but store its current value in case it needs to be put back
-        standing = eventObject->isStandingOnTrigger;
-        eventObject->isStandingOnTrigger = FALSE;
+        standing = objectEvent->isStandingOnTrigger;
+        objectEvent->isStandingOnTrigger = FALSE;
         
         // For every trigger on the map
         for (t = 0; t < gMapHeader.events->coordEventCount; t++) {
             coordEvent = &gMapHeader.events->coordEvents[t];
             if (!coordEvent->npcTrigger) continue;
-            if (eventObject->currentCoords.x != coordEvent->x + 7) continue;
-            if (eventObject->currentCoords.y != coordEvent->y + 7) continue;
+            if (objectEvent->currentCoords.x != coordEvent->x + 7) continue;
+            if (objectEvent->currentCoords.y != coordEvent->y + 7) continue;
             
             if (!standing) {
                 // If this event wasn't standing on a trigger before, trigger it now
@@ -1313,10 +1313,10 @@ static void MonitorEventObjectTriggersStepCallback(u8 taskId)
                 tRunningIndex = coordEvent->index;
                 VarSet(tRunningVar, tRunningIndex);
                 // If we got down here, we need to set the flag again
-                eventObject->isStandingOnTrigger = TRUE;
+                objectEvent->isStandingOnTrigger = TRUE;
                 return;
             }
-            eventObject->isStandingOnTrigger = standing;
+            objectEvent->isStandingOnTrigger = standing;
         }
     }
     tPosX = x;
@@ -1354,11 +1354,11 @@ void TrickHouse_CycleTextPalette(u8 taskId)
 // The difference between this callback and the previous one
 // is that this one can handle multiple objects stepping on triggers
 // at the same time.
-static void MonitorMultiEventObjectTriggersStepCallback(u8 taskId)
+static void MonitorMultiObjectEventTriggersStepCallback(u8 taskId)
 {
     s16 x, y, o, t;
     bool8 standing;
-    struct EventObject *eventObject = NULL;
+    struct ObjectEvent *objectEvent = NULL;
     struct CoordEvent *coordEvent = NULL;
     s16 *data = gTasks[taskId].data;
     PlayerGetDestCoords(&x, &y);
@@ -1369,27 +1369,27 @@ static void MonitorMultiEventObjectTriggersStepCallback(u8 taskId)
     
     // For every event object
     for (o = 0; o < OBJECT_EVENTS_COUNT; o++) {
-        eventObject = &gObjectEvents[o];
-        if (eventObject->isPlayer) continue;
-        if (!eventObject->active) continue;
-        if (eventObject->heldMovementActive || eventObject->singleMovementActive) continue;
+        objectEvent = &gObjectEvents[o];
+        if (objectEvent->isPlayer) continue;
+        if (!objectEvent->active) continue;
+        if (objectEvent->heldMovementActive || objectEvent->singleMovementActive) continue;
         
         // Clear the standing flag, but store its current value in case it needs to be put back
-        standing = eventObject->isStandingOnTrigger;
-        eventObject->isStandingOnTrigger = FALSE;
+        standing = objectEvent->isStandingOnTrigger;
+        objectEvent->isStandingOnTrigger = FALSE;
         
         // For every trigger on the map
         for (t = 0; t < gMapHeader.events->coordEventCount; t++) {
             coordEvent = &gMapHeader.events->coordEvents[t];
             if (!coordEvent->npcTrigger) continue;
-            if (eventObject->currentCoords.x != coordEvent->x + 7) continue;
-            if (eventObject->currentCoords.y != coordEvent->y + 7) continue;
+            if (objectEvent->currentCoords.x != coordEvent->x + 7) continue;
+            if (objectEvent->currentCoords.y != coordEvent->y + 7) continue;
             
             if (!standing) {
                 // If this event wasn't standing on a trigger before, trigger it now
                 VarSet(VAR_STEP_TRIGGER, 1);
             }
-            eventObject->isStandingOnTrigger = TRUE;
+            objectEvent->isStandingOnTrigger = TRUE;
             break;
         }
     }

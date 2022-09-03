@@ -2,7 +2,7 @@
 #include "constants/items.h"
 #include "constants/moves.h"
 
-static const u16 sContestLadyMonGfxId[] =
+static const gfxId_t sContestLadyMonGfxId[] =
 {
     [CONTEST_CATEGORY_COOL]   = OBJ_EVENT_GFX_ZIGZAGOON_1,
     [CONTEST_CATEGORY_BEAUTY] = OBJ_EVENT_GFX_SKITTY,
@@ -11,7 +11,7 @@ static const u16 sContestLadyMonGfxId[] =
     [CONTEST_CATEGORY_TOUGH]  = OBJ_EVENT_GFX_PIKACHU
 };
 
-static const u16 sLilycoveLadyGfxId[] =
+static const gfxId_t sLilycoveLadyGfxId[] =
 {
     OBJ_EVENT_GFX_WOMAN_4,
     OBJ_EVENT_GFX_WOMAN_2,

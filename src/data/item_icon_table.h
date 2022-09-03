@@ -1,26 +1,26 @@
 #define gItemIconPic_QuestionMark gItemIcon_QuestionMark
 #define gItemIconPal_QuestionMark gItemIconPalette_QuestionMark
 
-extern const u16 gEventObjectPalette0[];
-extern const u16 gEventObjectPalette1[];
-extern const u16 gEventObjectPalette2[];
-extern const u16 gEventObjectPalette3[];
-extern const u32 gEventObjectPic_BreakableRock[];
-extern const u32 gEventObjectPic_ZigzagCushion[];
-extern const u32 gEventObjectPic_LotadDoll[];
-extern const u32 gEventObjectPic_GrassCushion[];
-extern const u32 gEventObjectPic_DiamondCushion[];
-extern const u32 gEventObjectPic_SpinCushion[];
-extern const u32 gEventObjectPic_CyndaquilDoll[];
-extern const u32 gEventObjectPic_BallCushion[];
-extern const u32 gEventObjectPic_KissCushion[];
-extern const u32 gEventObjectPic_RoundCushion[];
-extern const u32 gEventObjectPic_FireCushion[];
-extern const u32 gEventObjectPic_PikaCushion[];
-extern const u32 gEventObjectPic_DuskullDoll[];
-extern const u32 gEventObjectPic_WaterCushion[];
-extern const u32 gEventObjectPic_SeedotDoll[];
-extern const u32 gEventObjectPic_RoundCushion[];
+extern const u16 gObjectEventPalette0[];
+extern const u16 gObjectEventPalette1[];
+extern const u16 gObjectEventPalette2[];
+extern const u16 gObjectEventPalette3[];
+extern const u32 gObjectEventPic_BreakableRock[];
+extern const u32 gObjectEventPic_ZigzagCushion[];
+extern const u32 gObjectEventPic_LotadDoll[];
+extern const u32 gObjectEventPic_GrassCushion[];
+extern const u32 gObjectEventPic_DiamondCushion[];
+extern const u32 gObjectEventPic_SpinCushion[];
+extern const u32 gObjectEventPic_CyndaquilDoll[];
+extern const u32 gObjectEventPic_BallCushion[];
+extern const u32 gObjectEventPic_KissCushion[];
+extern const u32 gObjectEventPic_RoundCushion[];
+extern const u32 gObjectEventPic_FireCushion[];
+extern const u32 gObjectEventPic_PikaCushion[];
+extern const u32 gObjectEventPic_DuskullDoll[];
+extern const u32 gObjectEventPic_WaterCushion[];
+extern const u32 gObjectEventPic_SeedotDoll[];
+extern const u32 gObjectEventPic_RoundCushion[];
 
 
 const u32 *const gItemIconTable[][2] =
@@ -273,22 +273,22 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_0E3] =    {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_0E4] =    {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_0E5] =    {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
-    [ITEM_META_ITEM_ROCK] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gEventObjectPic_BreakableRock,   (const u32*) gEventObjectPalette0},
-    [ITEM_META_ITEM_ZIGZAG] =   {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gEventObjectPic_ZigzagCushion,   (const u32*) gEventObjectPalette0},
-    [ITEM_META_ITEM_LOTAD] =    {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gEventObjectPic_LotadDoll,       (const u32*) gEventObjectPalette2},
-    [ITEM_META_ITEM_GRASS] =    {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gEventObjectPic_GrassCushion,    (const u32*) gEventObjectPalette2},
-    [ITEM_META_ITEM_DIAMOND] =  {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gEventObjectPic_DiamondCushion,  (const u32*) gEventObjectPalette3},
-    [ITEM_META_ITEM_SPIN] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gEventObjectPic_SpinCushion,     (const u32*) gEventObjectPalette0},
-    [ITEM_META_ITEM_DOLL] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gEventObjectPic_CyndaquilDoll,   (const u32*) gEventObjectPalette2},
-    [ITEM_META_ITEM_BALL] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gEventObjectPic_BallCushion,     (const u32*) gEventObjectPalette2},
-    [ITEM_META_ITEM_KISS] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gEventObjectPic_KissCushion,     (const u32*) gEventObjectPalette3},
-    [ITEM_META_ITEM_ROUND] =    {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gEventObjectPic_RoundCushion,    (const u32*) gEventObjectPalette0},
-    [ITEM_META_ITEM_FIRE] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gEventObjectPic_FireCushion,     (const u32*) gEventObjectPalette1},
-    [ITEM_META_ITEM_PIKA] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gEventObjectPic_PikaCushion,     (const u32*) gEventObjectPalette1},
-    [ITEM_META_ITEM_DUSKULL] =  {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gEventObjectPic_DuskullDoll,     (const u32*) gEventObjectPalette3},
-    [ITEM_META_ITEM_WATER] =    {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gEventObjectPic_WaterCushion,    (const u32*) gEventObjectPalette0},
-    [ITEM_META_ITEM_SEEDOT] =   {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gEventObjectPic_SeedotDoll,      (const u32*) gEventObjectPalette2},
-    [ITEM_META_ITEM_CUSHION] =  {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gEventObjectPic_RoundCushion,    (const u32*) gEventObjectPalette0},
+    [ITEM_META_ITEM_ROCK] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gObjectEventPic_BreakableRock,   (const u32*) gObjectEventPalette0},
+    [ITEM_META_ITEM_ZIGZAG] =   {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gObjectEventPic_ZigzagCushion,   (const u32*) gObjectEventPalette0},
+    [ITEM_META_ITEM_LOTAD] =    {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gObjectEventPic_LotadDoll,       (const u32*) gObjectEventPalette2},
+    [ITEM_META_ITEM_GRASS] =    {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gObjectEventPic_GrassCushion,    (const u32*) gObjectEventPalette2},
+    [ITEM_META_ITEM_DIAMOND] =  {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gObjectEventPic_DiamondCushion,  (const u32*) gObjectEventPalette3},
+    [ITEM_META_ITEM_SPIN] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gObjectEventPic_SpinCushion,     (const u32*) gObjectEventPalette0},
+    [ITEM_META_ITEM_DOLL] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gObjectEventPic_CyndaquilDoll,   (const u32*) gObjectEventPalette2},
+    [ITEM_META_ITEM_BALL] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gObjectEventPic_BallCushion,     (const u32*) gObjectEventPalette2},
+    [ITEM_META_ITEM_KISS] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gObjectEventPic_KissCushion,     (const u32*) gObjectEventPalette3},
+    [ITEM_META_ITEM_ROUND] =    {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gObjectEventPic_RoundCushion,    (const u32*) gObjectEventPalette0},
+    [ITEM_META_ITEM_FIRE] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gObjectEventPic_FireCushion,     (const u32*) gObjectEventPalette1},
+    [ITEM_META_ITEM_PIKA] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gObjectEventPic_PikaCushion,     (const u32*) gObjectEventPalette1},
+    [ITEM_META_ITEM_DUSKULL] =  {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gObjectEventPic_DuskullDoll,     (const u32*) gObjectEventPalette3},
+    [ITEM_META_ITEM_WATER] =    {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gObjectEventPic_WaterCushion,    (const u32*) gObjectEventPalette0},
+    [ITEM_META_ITEM_SEEDOT] =   {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gObjectEventPic_SeedotDoll,      (const u32*) gObjectEventPalette2},
+    [ITEM_META_ITEM_CUSHION] =  {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark}, // {gObjectEventPic_RoundCushion,    (const u32*) gObjectEventPalette0},
     [ITEM_CUT_ITEM] =           {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_FLASH_ITEM] =         {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
     [ITEM_ROCKSMASH_ITEM] =     {gItemIcon_QuestionMark, gItemIconPalette_QuestionMark},
