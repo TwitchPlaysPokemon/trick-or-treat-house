@@ -107,8 +107,8 @@ void CB2_EndSafariBattle(void)
         sSafariZoneCaughtMons++;
     if (sSafariZoneCaughtMons >= 3) 
     {
-        ScriptContext1_SetupScript(Puzzle_SafariImposters_GameEnds);
-        ScriptContext1_Stop();
+        ScriptContext_SetupScript(Puzzle_SafariImposters_GameEnds);
+        ScriptContext_Stop();
         SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
     }
     else if (gNumSafariBalls != 0)

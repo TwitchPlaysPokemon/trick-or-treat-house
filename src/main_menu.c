@@ -559,7 +559,7 @@ static const u8 *const sFemalePresetNames[] = {
     gText_DefaultNameHalie
 };
 
-static const u8 *const gNonbinPresetNames[] = {
+static const u8 *const sNonbinPresetNames[] = {
     gText_DefaultNameJamie,
     gText_DefaultNameAlex,
     gText_DefaultNameBlake,
@@ -1725,7 +1725,7 @@ static void Task_NewGameBirchSpeech_WaitToShowGenderPicker(u8 taskId)
     {
         NewGameBirchSpeech_ClearGenderTextWindows();
         
-        CopyBgTilemapBufferToVram(gNewGameBirchSpeechTextWindows[1].bg);
+        CopyBgTilemapBufferToVram(sNewGameBirchSpeechTextWindows[1].bg);
         AddTextPrinterParameterized2(1, 1, &gText_Birch_ControlBoy[0], 0xFF, NULL, 1, 0, 2);
         AddTextPrinterParameterized2(2, 1, &gText_Birch_ControlKid[0], 0xFF, NULL, 1, 0, 2);
         AddTextPrinterParameterized2(3, 1, &gText_Birch_ControlGirl[0], 0xFF, NULL, 1, 0, 2);
@@ -2044,7 +2044,7 @@ static void Task_NewGameBirchSpeech_WaitForSpriteFadeInAndRandomAsk(u8 taskId)
 
 static void NewGameBirchSpeech_ShowRandomAskMenu(void)
 {
-    DrawMainMenuWindowBorder(&gNewGameBirchSpeechTextWindows[3], 0xF3);
+    DrawMainMenuWindowBorder(&sNewGameBirchSpeechTextWindows[3], 0xF3);
     FillWindowPixelBuffer(3, PIXEL_FILL(1));
     PrintMenuTable(3, 2, sMenuActions_RandomAsk);
     InitMenuInUpperLeftCornerPlaySoundWhenAPressed(3, 2, 0);
@@ -2554,7 +2554,7 @@ static void NewGameBirchSpeech_SetDefaultPlayerName(u8 nameId)
     switch (gSaveBlock2Ptr->playerGender)
     {
         case GENDER_M: name = sMalePresetNames[nameId]; break;
-        case GENDER_F: name = gFemalePresetNames[nameId]; break;
+        case GENDER_F: name = sFemalePresetNames[nameId]; break;
         case GENDER_N: name = sNonbinPresetNames[nameId]; break;
     }
     for (i = 0; i < PLAYER_NAME_LENGTH; i++)

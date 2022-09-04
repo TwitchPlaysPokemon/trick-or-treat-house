@@ -17,7 +17,6 @@
 #include "mystery_gift_menu.h"
 #include "union_room.h"
 #include "title_screen.h"
-#include "ereader_screen.h"
 #include "international_string_util.h"
 #include "list_menu.h"
 #include "string_util.h"

@@ -29,9 +29,9 @@
 //   determined by the data for the corresponding MAPSEC in gRegionMapEntries.
 
 // Only maps in the following map groups have their encounters considered for the area screen
-#define MAP_GROUP_TOWNS_AND_ROUTES MAP_GROUP(PETALBURG_CITY)
-#define MAP_GROUP_DUNGEONS MAP_GROUP(METEOR_FALLS_1F_1R)
-#define MAP_GROUP_SPECIAL_AREA MAP_GROUP(SAFARI_ZONE_NORTHWEST)
+// #define MAP_GROUP_TOWNS_AND_ROUTES MAP_GROUP(PETALBURG_CITY)
+// #define MAP_GROUP_DUNGEONS MAP_GROUP(METEOR_FALLS_1F_1R)
+// #define MAP_GROUP_SPECIAL_AREA MAP_GROUP(SAFARI_ZONE_NORTHWEST)
 
 #define AREA_SCREEN_WIDTH 32
 #define AREA_SCREEN_HEIGHT 20
@@ -267,40 +267,40 @@ static void FindMapsWithMon(u16 species)
         // in the regular wild encounter table) to the area map.
         // This only applies to Feebas on Route 119, but it was clearly set
         // up to allow handling others.
-        for (i = 0; sFeebasData[i][0] != NUM_SPECIES; i++)
-        {
-            if (species == sFeebasData[i][0])
-            {
-                switch (sFeebasData[i][1])
-                {
-                case MAP_GROUP_TOWNS_AND_ROUTES:
-                    SetAreaHasMon(sFeebasData[i][1], sFeebasData[i][2]);
-                    break;
-                case MAP_GROUP_DUNGEONS:
-                case MAP_GROUP_SPECIAL_AREA:
-                    SetSpecialMapHasMon(sFeebasData[i][1], sFeebasData[i][2]);
-                    break;
-                }
-            }
-        }
+        // for (i = 0; sFeebasData[i][0] != NUM_SPECIES; i++)
+        // {
+        //     if (species == sFeebasData[i][0])
+        //     {
+        //         switch (sFeebasData[i][1])
+        //         {
+        //         case MAP_GROUP_TOWNS_AND_ROUTES:
+        //             SetAreaHasMon(sFeebasData[i][1], sFeebasData[i][2]);
+        //             break;
+        //         case MAP_GROUP_DUNGEONS:
+        //         case MAP_GROUP_SPECIAL_AREA:
+        //             SetSpecialMapHasMon(sFeebasData[i][1], sFeebasData[i][2]);
+        //             break;
+        //         }
+        //     }
+        // }
 
         // Add regular species to the area map
-        for (i = 0; gWildMonHeaders[i].mapGroup != MAP_GROUP(UNDEFINED); i++)
-        {
-            if (MapHasSpecies(&gWildMonHeaders[i], species))
-            {
-                switch (gWildMonHeaders[i].mapGroup)
-                {
-                case MAP_GROUP_TOWNS_AND_ROUTES:
-                    SetAreaHasMon(gWildMonHeaders[i].mapGroup, gWildMonHeaders[i].mapNum);
-                    break;
-                case MAP_GROUP_DUNGEONS:
-                case MAP_GROUP_SPECIAL_AREA:
-                    SetSpecialMapHasMon(gWildMonHeaders[i].mapGroup, gWildMonHeaders[i].mapNum);
-                    break;
-                }
-            }
-        }
+        // for (i = 0; gWildMonHeaders[i].mapGroup != MAP_GROUP(UNDEFINED); i++)
+        // {
+        //     if (MapHasSpecies(&gWildMonHeaders[i], species))
+        //     {
+        //         switch (gWildMonHeaders[i].mapGroup)
+        //         {
+        //         case MAP_GROUP_TOWNS_AND_ROUTES:
+        //             SetAreaHasMon(gWildMonHeaders[i].mapGroup, gWildMonHeaders[i].mapNum);
+        //             break;
+        //         case MAP_GROUP_DUNGEONS:
+        //         case MAP_GROUP_SPECIAL_AREA:
+        //             SetSpecialMapHasMon(gWildMonHeaders[i].mapGroup, gWildMonHeaders[i].mapNum);
+        //             break;
+        //         }
+        //     }
+        // }
     }
     else
     {

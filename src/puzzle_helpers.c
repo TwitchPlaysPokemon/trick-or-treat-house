@@ -1,7 +1,7 @@
 #include "global.h"
 #include "global.fieldmap.h"
 #include "event_data.h"
-#include "alloc.h"
+#include "malloc.h"
 #include "script.h"
 #include "puzzle_helpers.h"
 #include "sound.h"
@@ -146,14 +146,14 @@ extern const u8 Puzzle_MusicNoteTiles_ExtraCurious[];
 
 const struct PokemonSaysNote sSongNotes[] = {
 	[PS_NOTE_END] = { 0, 0, MUS_DUMMY, NULL },
-	[PS_NOTE_C] = { 2, 0x2C0, SE_TOY_C, Common_Movement_EmoteNoteC },
-	[PS_NOTE_D] = { 3, 0x2C1, SE_TOY_D, Common_Movement_EmoteNoteD },
-	[PS_NOTE_E] = { 4, 0x2C2, SE_TOY_E, Common_Movement_EmoteNoteE },
-	[PS_NOTE_F] = { 5, 0x2C3, SE_TOY_F, Common_Movement_EmoteNoteF },
-	[PS_NOTE_G] = { 6, 0x2C4, SE_TOY_G, Common_Movement_EmoteNoteG },
-	[PS_NOTE_A] = { 7, 0x000, SE_TOY_A, Common_Movement_EmoteNoteC },
-	[PS_NOTE_B] = { 7, 0x000, SE_TOY_B, Common_Movement_EmoteNoteD },
-	[PS_NOTE_C1]= { 7, 0x000, SE_TOY_C1,Common_Movement_EmoteNoteE },
+	[PS_NOTE_C] = { 2, 0x2C0, SE_NOTE_C, Common_Movement_EmoteNoteC },
+	[PS_NOTE_D] = { 3, 0x2C1, SE_NOTE_D, Common_Movement_EmoteNoteD },
+	[PS_NOTE_E] = { 4, 0x2C2, SE_NOTE_E, Common_Movement_EmoteNoteE },
+	[PS_NOTE_F] = { 5, 0x2C3, SE_NOTE_F, Common_Movement_EmoteNoteF },
+	[PS_NOTE_G] = { 6, 0x2C4, SE_NOTE_G, Common_Movement_EmoteNoteG },
+	[PS_NOTE_A] = { 7, 0x000, SE_NOTE_A, Common_Movement_EmoteNoteC },
+	[PS_NOTE_B] = { 7, 0x000, SE_NOTE_B, Common_Movement_EmoteNoteD },
+	[PS_NOTE_C1]= { 7, 0x000, SE_NOTE_C_HIGH,Common_Movement_EmoteNoteE },
 };
 
 #define NOTE(l, length)   ((PS_NOTE_##l << 8) | length)
@@ -304,7 +304,7 @@ void PokemonSaysPlayExtraNote(struct ScriptContext *ctx)
 	
 	if (!FlagGet(FLAG_TILES_ACTIVE))
     {
-        PlaySE(SE_HAZURE);
+        PlaySE(SE_FAILURE);
 		gSpecialVar_Result = FALSE;
         return;
     }
@@ -330,7 +330,7 @@ void PokemonSaysPlayExtraNote(struct ScriptContext *ctx)
 	}
     else
     {
-        PlaySE(SE_HAZURE);
+        PlaySE(SE_FAILURE);
         // FlagClear(FLAG_TILES_ACTIVE);
         VarSet(VAR_NUM_CORRECT_STEPS, 0);
 		gSpecialVar_Result = FALSE;
@@ -382,7 +382,7 @@ void HandlePuzzleMusicTileStep(u32 metatileId)
     }
     else
     {
-        PlaySE(SE_HAZURE);
+        PlaySE(SE_FAILURE);
         // FlagClear(FLAG_TILES_ACTIVE);
         VarSet(VAR_NUM_CORRECT_STEPS, 0);
     }
@@ -830,6 +830,9 @@ void UpdateCyclingRoadState(void) {
 // Puzzle: Twin Memories 
 // MAP_PUZZLE_TWIN_MEMORIES
 
+#define COORD_X(a) (a & 0xFFFF)
+#define COORD_Y(a) (a >> 16)
+
 extern const u8 Puzzle_TwinMemories_Configs[][6];
 extern const u8 Puzzle_TwinMemories_ConfigCount;
 
@@ -997,7 +1000,7 @@ void LoadBirdLocation(struct ScriptContext *ctx)
 	
 	// Loop through the event templates and find the bird
 	savObjTemplates = gSaveBlock1Ptr->objectEventTemplates;
-	for (i = 0; i < EVENT_OBJECT_TEMPLATES_COUNT; i++)
+	for (i = 0; i < OBJECT_EVENT_TEMPLATES_COUNT; i++)
     {
         struct ObjectEventTemplate *objectEventTemplate = &savObjTemplates[i];
         if (objectEventTemplate->localId == LID_BIRD)
@@ -1067,10 +1070,10 @@ void SetupIcePathLayout(struct ScriptContext *ctx) {
 			bool8 hasRock = (Puzzle_IcePath_ConfigTable[c][i] >> (13 - b)) & 0x1;
 			if (hasRock) {
 				switch (Random2() % 4) {
-					case 0: MapGridSetMetatileIdAt(9 + b, 8 + i, 0x037D | METATILE_COLLISION_MASK); break;
-					case 1: MapGridSetMetatileIdAt(9 + b, 8 + i, 0x037E | METATILE_COLLISION_MASK); break;
-					case 2: MapGridSetMetatileIdAt(9 + b, 8 + i, 0x039A | METATILE_COLLISION_MASK); break;
-					case 3: MapGridSetMetatileIdAt(9 + b, 8 + i, 0x039E | METATILE_COLLISION_MASK); break;
+					case 0: MapGridSetMetatileIdAt(9 + b, 8 + i, 0x037D | MAPGRID_METATILE_ID_MASK); break;
+					case 1: MapGridSetMetatileIdAt(9 + b, 8 + i, 0x037E | MAPGRID_METATILE_ID_MASK); break;
+					case 2: MapGridSetMetatileIdAt(9 + b, 8 + i, 0x039A | MAPGRID_METATILE_ID_MASK); break;
+					case 3: MapGridSetMetatileIdAt(9 + b, 8 + i, 0x039E | MAPGRID_METATILE_ID_MASK); break;
 				}
 			}
 		}

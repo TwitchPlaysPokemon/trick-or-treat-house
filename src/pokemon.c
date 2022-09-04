@@ -1992,13 +1992,13 @@ static const struct SpriteTemplate sTrainerBackSpriteTemplates[] =
         .oam = &gOamData_BattleSpritePlayerSide,
         .anims = NULL,
         .images = gTrainerBackPicTable_Treekid,
-        .affineAnims = gUnknown_082FF618,
-        .callback = sub_8039BB4,
+        .affineAnims = gAffineAnims_BattleSpritePlayerSide,
+        .callback = SpriteCB_BattleSpriteStartSlideLeft,
     },
     [TRAINER_BACK_PIC_RED] = {
         .tileTag = TAG_NONE,
         .paletteTag = 0,
-        .oam = &gOamData_831ACB0,
+        .oam = &gOamData_BattleSpritePlayerSide,
         .anims = NULL,
         .images = gTrainerBackPicTable_Red,
         .affineAnims = gAffineAnims_BattleSpritePlayerSide,
@@ -4803,7 +4803,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                     gBattleMons[gActiveBattler].statStages[STAT_ATK] = MAX_STAT_STAGE;
                 retVal = FALSE;
             }
-            if ((itemEffect[cmdIndex] & ITEM0_X_RANDOM)
+            if ((itemEffect[i] & ITEM0_X_RANDOM)
              && (gBattleMons[gActiveBattler].statStages[STAT_ATK] < 12
              || gBattleMons[gActiveBattler].statStages[STAT_DEF] < 12
              || gBattleMons[gActiveBattler].statStages[STAT_SPEED] < 12
@@ -6609,28 +6609,28 @@ void SetWildMonHeldItem(void)
             chanceNoItem = 20;
             chanceNotRare = 80;
         }
-        if (gMapHeader.mapLayoutId == LAYOUT_ALTERING_CAVE)
-        {
-            s32 alteringCaveId = GetWildMonTableIdInAlteringCave(species);
-            if (alteringCaveId != 0)
-            {
-                // In active Altering Cave, use special item list
-                if (rnd < chanceNotRare)
-                    return;
-                SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &sAlteringCaveWildMonHeldItems[alteringCaveId].item);
-            }
-            else
-            {
-                // In inactive Altering Cave, use normal items
-                if (rnd < chanceNoItem)
-                    return;
-                if (rnd < chanceNotRare)
-                    SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &gBaseStats[species].itemCommon);
-                else
-                    SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &gBaseStats[species].itemRare);
-            }
-        }
-        else
+        // if (gMapHeader.mapLayoutId == LAYOUT_ALTERING_CAVE)
+        // {
+        //     s32 alteringCaveId = GetWildMonTableIdInAlteringCave(species);
+        //     if (alteringCaveId != 0)
+        //     {
+        //         // In active Altering Cave, use special item list
+        //         if (rnd < chanceNotRare)
+        //             return;
+        //         SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &sAlteringCaveWildMonHeldItems[alteringCaveId].item);
+        //     }
+        //     else
+        //     {
+        //         // In inactive Altering Cave, use normal items
+        //         if (rnd < chanceNoItem)
+        //             return;
+        //         if (rnd < chanceNotRare)
+        //             SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &gBaseStats[species].itemCommon);
+        //         else
+        //             SetMonData(&gEnemyParty[0], MON_DATA_HELD_ITEM, &gBaseStats[species].itemRare);
+        //     }
+        // }
+        // else
         {
             if (gBaseStats[species].itemCommon == gBaseStats[species].itemRare && gBaseStats[species].itemCommon != ITEM_NONE)
             {

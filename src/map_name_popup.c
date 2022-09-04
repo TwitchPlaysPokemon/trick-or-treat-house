@@ -197,7 +197,7 @@ void ShowMapNamePopUpWindow(void)
 #define TILE_BOT_EDGE_START 0x22F
 #define TILE_BOT_EDGE_END   0x23A
 
-static void DrawMapNamePopUpFrame(u8 bg, u8 x, u8 y, u8 deltaX, u8 deltaY, u8 unused)
+static void WindowFunc_DrawMapNamePlate(u8 bg, u8 x, u8 y, u8 width, u8 height, u8 paletteNum)
 {
     s32 i;
 

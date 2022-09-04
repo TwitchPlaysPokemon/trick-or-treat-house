@@ -575,7 +575,7 @@ static bool8 TryStartMiscWalkingScripts(u16 metatileBehavior)
     }
     // else if (MetatileBehavior_IsBattlePyramidWarp(metatileBehavior))
     // {
-    //     ScriptContext1_SetupScript(BattleFrontier_BattlePyramidEmptySquare_EventScript_252BE8);
+    //     ScriptContext_SetupScript(BattleFrontier_BattlePyramidEmptySquare_EventScript_252BE8);
     //     return TRUE;
     // }
     else if (MetatileBehavior_IsSecretBaseGlitterMat(metatileBehavior) == TRUE)

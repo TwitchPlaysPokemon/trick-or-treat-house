@@ -1043,7 +1043,7 @@ static void ItemStorage_PrintDescription(s32 id)
     u8 windowId = sItemStorageMenu->windowIds[ITEMPC_WIN_MESSAGE];
 
     // Get item description (or Cancel text)
-    if (id != LIST_CANCEL)
+    if (id != LIST_CANCEL) {
         description = (u8 *)ItemId_GetDescription(gSaveBlock1Ptr->pcItems[id].itemId);
         StringExpandPlaceholders(gStringVar4, description);
         description = gStringVar4;
@@ -1163,31 +1163,31 @@ static const u8 *ItemStorage_GetMessage(u16 itemId)
 
     switch(itemId)
     {
-        case ITEMPC_GO_BACK_TO_PREV:
+        case MSG_GO_BACK_TO_PREV:
             string = gText_GoBackPrevMenu;
             break;
-        case ITEMPC_HOW_MANY_TO_WITHDRAW:
+        case MSG_HOW_MANY_TO_WITHDRAW:
             string = gText_WithdrawHowManyItems;
             break;
-        case ITEMPC_WITHDREW_THING:
+        case MSG_WITHDREW_ITEM:
             string = gText_WithdrawXItems;
             break;
-        case ITEMPC_HOW_MANY_TO_TOSS:
+        case MSG_HOW_MANY_TO_TOSS:
             string = gText_TossHowManyVar1s;
             break;
-        case ITEMPC_THREW_AWAY_ITEM:
+        case MSG_THREW_AWAY_ITEM:
             string = gText_ThrewAwayVar2Var1s;
             break;
-        case ITEMPC_NO_MORE_ROOM:
+        case MSG_NO_MORE_ROOM:
             string = gText_NoRoomInBag;
             break;
-        case ITEMPC_TOO_IMPORTANT:
+        case MSG_TOO_IMPORTANT:
             string = gText_TooImportantToToss;
             break;
-        case ITEMPC_OKAY_TO_THROW_AWAY:
+        case MSG_OKAY_TO_THROW_AWAY:
             string = gText_ConfirmTossItems;
             break;
-        case ITEMPC_SWITCH_WHICH_ITEM:
+        case MSG_SWITCH_WHICH_ITEM:
             string = gText_MoveVar1Where;
             break;
         default:

@@ -793,11 +793,11 @@ struct WonderNewsMetadata
 
 struct WonderNews
 {
-    u16 unk_00;
-    u8 unk_02;
-    u8 unk_03;
-    u8 unk_04[40];
-    u8 unk_2C[10][40];
+    u16 id;
+    u8 sendType; // SEND_TYPE_*
+    u8 bgType;
+    u8 titleText[WONDER_NEWS_TEXT_LENGTH];
+    u8 bodyText[WONDER_NEWS_BODY_TEXT_LINES][WONDER_NEWS_TEXT_LENGTH];
 };
 
 struct WonderCard

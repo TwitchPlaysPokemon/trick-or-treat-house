@@ -284,7 +284,7 @@ void ItemUseOutOfBattle_Itemfinder(u8 var)
     SetUpItemUseOnFieldCallback(var);
 }
 
-static extern size_t CountDigits(int value);
+extern size_t CountDigits(int value);
 extern void CountCandyItems(struct ScriptContext *ctx);
 void ItemUseOnFieldCB_Itemfinder(u8 taskId)
 {
@@ -836,13 +836,13 @@ static void RemoveUsedItem(void)
     StringExpandPlaceholders(gStringVar4, gText_PlayerUsedVar2);
     // if (!InBattlePyramid())
     // {
-        sub_81AB9A8(ItemId_GetPocket(gSpecialVar_ItemId));
-        SetInitialScrollAndCursorPositions(ItemId_GetPocket(gSpecialVar_ItemId));
+        UpdatePocketItemList(ItemId_GetPocket(gSpecialVar_ItemId));
+        UpdatePocketListPosition(ItemId_GetPocket(gSpecialVar_ItemId));
     // }
     // else
     // {
-    //     sub_81C5924();
-    //     sub_81C59BC();
+    //     UpdatePyramidBagList();
+    //     UpdatePyramidBagCursorPos();
     // }
 }
 

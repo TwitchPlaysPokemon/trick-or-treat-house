@@ -621,7 +621,7 @@ static EWRAM_DATA u8 sRotatingGate_PuzzleCount = 0;
 
 static s32 DoesCurrentMapHaveRotatingGatePuzzle(void)
 {
-    return (gRotatingGate_PuzzleConfig != NULL && gRotatingGate_PuzzleCount > 0);
+    return (sRotatingGate_PuzzleConfig != NULL && sRotatingGate_PuzzleCount > 0);
 }
 
 static void RotatingGate_ResetAllGateOrientations(void)
@@ -904,8 +904,8 @@ static u8 RotatingGate_GetRotationInfo(u8 direction, s16 x, s16 y)
 
 void RotatingGate_InitPuzzle(struct ScriptContext *ctx)
 {
-    gRotatingGate_PuzzleConfig = (const struct RotatingGatePuzzle*) ctx->data[0];
-    gRotatingGate_PuzzleCount = (u8)ctx->data[1];
+    sRotatingGate_PuzzleConfig = (const struct RotatingGatePuzzle*) ctx->data[0];
+    sRotatingGate_PuzzleCount = (u8)ctx->data[1];
     
     if (DoesCurrentMapHaveRotatingGatePuzzle())
     {
@@ -916,8 +916,8 @@ void RotatingGate_InitPuzzle(struct ScriptContext *ctx)
 
 void RotatingGate_DestroyPuzzle(struct ScriptContext *ctx)
 {
-    gRotatingGate_PuzzleConfig = NULL;
-    gRotatingGate_PuzzleCount = 0;
+    sRotatingGate_PuzzleConfig = NULL;
+    sRotatingGate_PuzzleCount = 0;
 }
 
 void RotatingGatePuzzleCameraUpdate(s16 deltaX, s16 deltaY)

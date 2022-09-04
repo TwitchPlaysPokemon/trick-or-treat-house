@@ -679,7 +679,6 @@ gText_LegendaryFlewAway::
 
 	.include "data/text/pc_transfer.inc"
 	.include "data/text/questionnaire.inc"
-	.include "data/text/abnormal_weather.inc"
 
 	.include "data/scripts/select.inc"
 
@@ -727,7 +726,6 @@ Common_EventScript_LegendaryFlewAway::
 
 	.include "data/scripts/pc_transfer.inc"
 	.include "data/scripts/questionnaire.inc"
-	.include "data/scripts/abnormal_weather.inc"
 	.include "data/scripts/trainer_script.inc"
 	.include "data/scripts/berry_tree.inc"
 	.include "data/scripts/secret_base.inc"

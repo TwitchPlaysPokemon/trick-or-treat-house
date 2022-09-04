@@ -35,7 +35,7 @@
 
 #include "global.h"
 #include "printf.h"
-#include "alloc.h"
+#include "malloc.h"
 #include "text.h"
 #include "string_util.h"
 

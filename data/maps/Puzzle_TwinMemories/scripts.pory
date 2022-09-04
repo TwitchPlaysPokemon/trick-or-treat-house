@@ -188,7 +188,7 @@ script Puzzle_TwinMemories_CheckPuzzleSolved2 {
 }
 script Puzzle_TwinMemories_TriggerTrappedFailsafe {
 	lock
-	playse (SE_HAZURE)
+	playse (SE_FAILURE)
 	msgbox ("Triggering anti-trapping fail-safe!$")
 	
 	playse (SE_M_STRENGTH)
