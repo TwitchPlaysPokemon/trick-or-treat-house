@@ -2438,7 +2438,7 @@ u8 GetFrontierBrainTrainerClass(void)
     else
         facility = VarGet(VAR_FRONTIER_FACILITY);
 
-    return GetTrainer(gFacilityToBrainTrainerId[facility])->trainerClass;
+    return GetTrainer(sFrontierBrainTrainerIds[facility])->trainerClass;
 }
 
 void CopyFrontierBrainTrainerName(u8 *dst)
@@ -2452,7 +2452,7 @@ void CopyFrontierBrainTrainerName(u8 *dst)
         facility = VarGet(VAR_FRONTIER_FACILITY);
 
     for (i = 0; i < PLAYER_NAME_LENGTH; i++)
-        dst[i] = GetTrainer(gFacilityToBrainTrainerId[facility])->trainerName[i];
+        dst[i] = GetTrainer(sFrontierBrainTrainerIds[facility])->trainerName[i];
 
     dst[i] = EOS;
 }

@@ -304,8 +304,7 @@ void FieldCB_WarpExitFadeFromWhite(void)
 
 void FieldCB_WarpExitFadeFromBlack(void)
 {
-    if (!OnTrainerHillEReaderChallengeFloor()) // always false
-        Overworld_PlaySpecialMapMusic();
+    Overworld_PlaySpecialMapMusic();
     FadeInFromBlack();
     SetUpWarpExitTask();
     LockPlayerFieldControls();
@@ -528,7 +527,7 @@ void DoDiveWarp(void)
 void DoCustomWarp(void)
 {
     CheckKeepObjects();
-    ScriptContext2_Enable();
+    LockPlayerFieldControls();
     // TryFadeOutOldMapMusic();
     PlayRainStoppingSoundEffect();
     gFieldCallback = FieldCB_DefaultWarpExit;

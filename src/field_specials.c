@@ -92,7 +92,7 @@ void SetPlayerGotFirstFans(void);
 u16 GetNumFansOfPlayerInTrainerFanClub(void);
 
 static void RecordCyclingRoadResults(u32, u8);
-static void LoadLinkPartnerObjectEventSpritePalette(u8, u8, u8);
+static void LoadLinkPartnerObjectEventSpritePalette(gfxId_t, u8, u8);
 static void Task_PetalburgGymSlideOpenRoomDoors(u8);
 static void PetalburgGymSetDoorMetatiles(u8, u16);
 static void Task_PCTurnOnEffect(u8);
@@ -2370,205 +2370,206 @@ void SetBattleTowerLinkPlayerGfx(void)
 
 void ShowNatureGirlMessage(void)
 {
-    static const u8 *const sNatureGirlMessages[NUM_NATURES] = {
-        [NATURE_HARDY]   = BattleFrontier_Lounge5_Text_NatureGirlHardy,
-        [NATURE_LONELY]  = BattleFrontier_Lounge5_Text_NatureGirlLonely,
-        [NATURE_BRAVE]   = BattleFrontier_Lounge5_Text_NatureGirlBrave,
-        [NATURE_ADAMANT] = BattleFrontier_Lounge5_Text_NatureGirlAdamant,
-        [NATURE_NAUGHTY] = BattleFrontier_Lounge5_Text_NatureGirlNaughty,
-        [NATURE_BOLD]    = BattleFrontier_Lounge5_Text_NatureGirlBold,
-        [NATURE_DOCILE]  = BattleFrontier_Lounge5_Text_NatureGirlDocileNaiveQuietQuirky,
-        [NATURE_RELAXED] = BattleFrontier_Lounge5_Text_NatureGirlRelaxed,
-        [NATURE_IMPISH]  = BattleFrontier_Lounge5_Text_NatureGirlImpish,
-        [NATURE_LAX]     = BattleFrontier_Lounge5_Text_NatureGirlLax,
-        [NATURE_TIMID]   = BattleFrontier_Lounge5_Text_NatureGirlTimid,
-        [NATURE_HASTY]   = BattleFrontier_Lounge5_Text_NatureGirlHasty,
-        [NATURE_SERIOUS] = BattleFrontier_Lounge5_Text_NatureGirlSerious,
-        [NATURE_JOLLY]   = BattleFrontier_Lounge5_Text_NatureGirlJolly,
-        [NATURE_NAIVE]   = BattleFrontier_Lounge5_Text_NatureGirlDocileNaiveQuietQuirky,
-        [NATURE_MODEST]  = BattleFrontier_Lounge5_Text_NatureGirlModest,
-        [NATURE_MILD]    = BattleFrontier_Lounge5_Text_NatureGirlMild,
-        [NATURE_QUIET]   = BattleFrontier_Lounge5_Text_NatureGirlDocileNaiveQuietQuirky,
-        [NATURE_BASHFUL] = BattleFrontier_Lounge5_Text_NatureGirlBashful,
-        [NATURE_RASH]    = BattleFrontier_Lounge5_Text_NatureGirlRash,
-        [NATURE_CALM]    = BattleFrontier_Lounge5_Text_NatureGirlCalm,
-        [NATURE_GENTLE]  = BattleFrontier_Lounge5_Text_NatureGirlGentle,
-        [NATURE_SASSY]   = BattleFrontier_Lounge5_Text_NatureGirlSassy,
-        [NATURE_CAREFUL] = BattleFrontier_Lounge5_Text_NatureGirlCareful,
-        [NATURE_QUIRKY]  = BattleFrontier_Lounge5_Text_NatureGirlDocileNaiveQuietQuirky,
-    };
+    // static const u8 *const sNatureGirlMessages[NUM_NATURES] = {
+    //     [NATURE_HARDY]   = BattleFrontier_Lounge5_Text_NatureGirlHardy,
+    //     [NATURE_LONELY]  = BattleFrontier_Lounge5_Text_NatureGirlLonely,
+    //     [NATURE_BRAVE]   = BattleFrontier_Lounge5_Text_NatureGirlBrave,
+    //     [NATURE_ADAMANT] = BattleFrontier_Lounge5_Text_NatureGirlAdamant,
+    //     [NATURE_NAUGHTY] = BattleFrontier_Lounge5_Text_NatureGirlNaughty,
+    //     [NATURE_BOLD]    = BattleFrontier_Lounge5_Text_NatureGirlBold,
+    //     [NATURE_DOCILE]  = BattleFrontier_Lounge5_Text_NatureGirlDocileNaiveQuietQuirky,
+    //     [NATURE_RELAXED] = BattleFrontier_Lounge5_Text_NatureGirlRelaxed,
+    //     [NATURE_IMPISH]  = BattleFrontier_Lounge5_Text_NatureGirlImpish,
+    //     [NATURE_LAX]     = BattleFrontier_Lounge5_Text_NatureGirlLax,
+    //     [NATURE_TIMID]   = BattleFrontier_Lounge5_Text_NatureGirlTimid,
+    //     [NATURE_HASTY]   = BattleFrontier_Lounge5_Text_NatureGirlHasty,
+    //     [NATURE_SERIOUS] = BattleFrontier_Lounge5_Text_NatureGirlSerious,
+    //     [NATURE_JOLLY]   = BattleFrontier_Lounge5_Text_NatureGirlJolly,
+    //     [NATURE_NAIVE]   = BattleFrontier_Lounge5_Text_NatureGirlDocileNaiveQuietQuirky,
+    //     [NATURE_MODEST]  = BattleFrontier_Lounge5_Text_NatureGirlModest,
+    //     [NATURE_MILD]    = BattleFrontier_Lounge5_Text_NatureGirlMild,
+    //     [NATURE_QUIET]   = BattleFrontier_Lounge5_Text_NatureGirlDocileNaiveQuietQuirky,
+    //     [NATURE_BASHFUL] = BattleFrontier_Lounge5_Text_NatureGirlBashful,
+    //     [NATURE_RASH]    = BattleFrontier_Lounge5_Text_NatureGirlRash,
+    //     [NATURE_CALM]    = BattleFrontier_Lounge5_Text_NatureGirlCalm,
+    //     [NATURE_GENTLE]  = BattleFrontier_Lounge5_Text_NatureGirlGentle,
+    //     [NATURE_SASSY]   = BattleFrontier_Lounge5_Text_NatureGirlSassy,
+    //     [NATURE_CAREFUL] = BattleFrontier_Lounge5_Text_NatureGirlCareful,
+    //     [NATURE_QUIRKY]  = BattleFrontier_Lounge5_Text_NatureGirlDocileNaiveQuietQuirky,
+    // };
 
-    u8 nature;
+    // u8 nature;
 
-    if (gSpecialVar_0x8004 >= PARTY_SIZE)
-        gSpecialVar_0x8004 = 0;
+    // if (gSpecialVar_0x8004 >= PARTY_SIZE)
+    //     gSpecialVar_0x8004 = 0;
 
-    nature = GetNature(&gPlayerParty[gSpecialVar_0x8004]);
-    ShowFieldMessage(sNatureGirlMessages[nature]);
+    // nature = GetNature(&gPlayerParty[gSpecialVar_0x8004]);
+    // ShowFieldMessage(sNatureGirlMessages[nature]);
 }
 
 void UpdateFrontierGambler(u16 daysSince)
 {
-    u16 *var = GetVarPointer(VAR_FRONTIER_GAMBLER_CHALLENGE);
-    *var += daysSince;
-    *var %= FRONTIER_GAMBLER_CHALLENGE_COUNT;
+    // u16 *var = GetVarPointer(VAR_FRONTIER_GAMBLER_CHALLENGE);
+    // *var += daysSince;
+    // *var %= FRONTIER_GAMBLER_CHALLENGE_COUNT;
 }
 
 void ShowFrontierGamblerLookingMessage(void)
 {
-    static const u8 *const sFrontierGamblerLookingMessages[] =
-    {
-        BattleFrontier_Lounge3_Text_ChallengeBattleTowerSingle,
-        BattleFrontier_Lounge3_Text_ChallengeBattleTowerDouble,
-        BattleFrontier_Lounge3_Text_ChallengeBattleTowerMulti,
-        BattleFrontier_Lounge3_Text_ChallengeBattleDomeSingle,
-        BattleFrontier_Lounge3_Text_ChallengeBattleDomeDouble,
-        BattleFrontier_Lounge3_Text_ChallengeBattleFactorySingle,
-        BattleFrontier_Lounge3_Text_ChallengeBattleFactoryDouble,
-        BattleFrontier_Lounge3_Text_ChallengeBattlePalaceSingle,
-        BattleFrontier_Lounge3_Text_ChallengeBattlePalaceDouble,
-        BattleFrontier_Lounge3_Text_ChallengeBattleArena,
-        BattleFrontier_Lounge3_Text_ChallengeBattlePike,
-        BattleFrontier_Lounge3_Text_ChallengeBattlePyramid,
-    };
+    // static const u8 *const sFrontierGamblerLookingMessages[] =
+    // {
+    //     BattleFrontier_Lounge3_Text_ChallengeBattleTowerSingle,
+    //     BattleFrontier_Lounge3_Text_ChallengeBattleTowerDouble,
+    //     BattleFrontier_Lounge3_Text_ChallengeBattleTowerMulti,
+    //     BattleFrontier_Lounge3_Text_ChallengeBattleDomeSingle,
+    //     BattleFrontier_Lounge3_Text_ChallengeBattleDomeDouble,
+    //     BattleFrontier_Lounge3_Text_ChallengeBattleFactorySingle,
+    //     BattleFrontier_Lounge3_Text_ChallengeBattleFactoryDouble,
+    //     BattleFrontier_Lounge3_Text_ChallengeBattlePalaceSingle,
+    //     BattleFrontier_Lounge3_Text_ChallengeBattlePalaceDouble,
+    //     BattleFrontier_Lounge3_Text_ChallengeBattleArena,
+    //     BattleFrontier_Lounge3_Text_ChallengeBattlePike,
+    //     BattleFrontier_Lounge3_Text_ChallengeBattlePyramid,
+    // };
 
-    u16 challenge = VarGet(VAR_FRONTIER_GAMBLER_CHALLENGE);
-    ShowFieldMessage(sFrontierGamblerLookingMessages[challenge]);
-    VarSet(VAR_FRONTIER_GAMBLER_SET_CHALLENGE, challenge);
+    // u16 challenge = VarGet(VAR_FRONTIER_GAMBLER_CHALLENGE);
+    // ShowFieldMessage(sFrontierGamblerLookingMessages[challenge]);
+    // VarSet(VAR_FRONTIER_GAMBLER_SET_CHALLENGE, challenge);
 }
 
 void ShowFrontierGamblerGoMessage(void)
 {
-    static const u8 *const sFrontierGamblerGoMessages[] =
-    {
-        BattleFrontier_Lounge3_Text_GetToBattleTowerSingle,
-        BattleFrontier_Lounge3_Text_GetToBattleTowerDouble,
-        BattleFrontier_Lounge3_Text_GetToBattleTowerMulti,
-        BattleFrontier_Lounge3_Text_GetToBattleDomeSingle,
-        BattleFrontier_Lounge3_Text_GetToBattleDomeDouble,
-        BattleFrontier_Lounge3_Text_GetToBattleFactorySingle,
-        BattleFrontier_Lounge3_Text_GetToBattleFactoryDouble,
-        BattleFrontier_Lounge3_Text_GetToBattlePalaceSingle,
-        BattleFrontier_Lounge3_Text_GetToBattlePalaceDouble,
-        BattleFrontier_Lounge3_Text_GetToBattleArena,
-        BattleFrontier_Lounge3_Text_GetToBattlePike,
-        BattleFrontier_Lounge3_Text_GetToBattlePyramid,
-    };
+    // static const u8 *const sFrontierGamblerGoMessages[] =
+    // {
+    //     BattleFrontier_Lounge3_Text_GetToBattleTowerSingle,
+    //     BattleFrontier_Lounge3_Text_GetToBattleTowerDouble,
+    //     BattleFrontier_Lounge3_Text_GetToBattleTowerMulti,
+    //     BattleFrontier_Lounge3_Text_GetToBattleDomeSingle,
+    //     BattleFrontier_Lounge3_Text_GetToBattleDomeDouble,
+    //     BattleFrontier_Lounge3_Text_GetToBattleFactorySingle,
+    //     BattleFrontier_Lounge3_Text_GetToBattleFactoryDouble,
+    //     BattleFrontier_Lounge3_Text_GetToBattlePalaceSingle,
+    //     BattleFrontier_Lounge3_Text_GetToBattlePalaceDouble,
+    //     BattleFrontier_Lounge3_Text_GetToBattleArena,
+    //     BattleFrontier_Lounge3_Text_GetToBattlePike,
+    //     BattleFrontier_Lounge3_Text_GetToBattlePyramid,
+    // };
 
-    ShowFieldMessage(sFrontierGamblerGoMessages[VarGet(VAR_FRONTIER_GAMBLER_SET_CHALLENGE)]);
+    // ShowFieldMessage(sFrontierGamblerGoMessages[VarGet(VAR_FRONTIER_GAMBLER_SET_CHALLENGE)]);
 }
 
 void FrontierGamblerSetWonOrLost(bool8 won)
 {
-    static const u16 sFrontierChallenges[] =
-    {
-        FRONTIER_CHALLENGE(FRONTIER_FACILITY_TOWER,   FRONTIER_MODE_SINGLES),
-        FRONTIER_CHALLENGE(FRONTIER_FACILITY_TOWER,   FRONTIER_MODE_DOUBLES),
-        FRONTIER_CHALLENGE(FRONTIER_FACILITY_TOWER,   FRONTIER_MODE_MULTIS),
-        FRONTIER_CHALLENGE(FRONTIER_FACILITY_DOME,    FRONTIER_MODE_SINGLES),
-        FRONTIER_CHALLENGE(FRONTIER_FACILITY_DOME,    FRONTIER_MODE_DOUBLES),
-        FRONTIER_CHALLENGE(FRONTIER_FACILITY_FACTORY, FRONTIER_MODE_SINGLES),
-        FRONTIER_CHALLENGE(FRONTIER_FACILITY_FACTORY, FRONTIER_MODE_DOUBLES),
-        FRONTIER_CHALLENGE(FRONTIER_FACILITY_PALACE,  FRONTIER_MODE_SINGLES),
-        FRONTIER_CHALLENGE(FRONTIER_FACILITY_PALACE,  FRONTIER_MODE_DOUBLES),
-        FRONTIER_CHALLENGE(FRONTIER_FACILITY_ARENA,   FRONTIER_MODE_SINGLES),
-        FRONTIER_CHALLENGE(FRONTIER_FACILITY_PIKE,    FRONTIER_MODE_SINGLES),
-        FRONTIER_CHALLENGE(FRONTIER_FACILITY_PYRAMID, FRONTIER_MODE_SINGLES)
-    };
+    // static const u16 sFrontierChallenges[] =
+    // {
+    //     FRONTIER_CHALLENGE(FRONTIER_FACILITY_TOWER,   FRONTIER_MODE_SINGLES),
+    //     FRONTIER_CHALLENGE(FRONTIER_FACILITY_TOWER,   FRONTIER_MODE_DOUBLES),
+    //     FRONTIER_CHALLENGE(FRONTIER_FACILITY_TOWER,   FRONTIER_MODE_MULTIS),
+    //     FRONTIER_CHALLENGE(FRONTIER_FACILITY_DOME,    FRONTIER_MODE_SINGLES),
+    //     FRONTIER_CHALLENGE(FRONTIER_FACILITY_DOME,    FRONTIER_MODE_DOUBLES),
+    //     FRONTIER_CHALLENGE(FRONTIER_FACILITY_FACTORY, FRONTIER_MODE_SINGLES),
+    //     FRONTIER_CHALLENGE(FRONTIER_FACILITY_FACTORY, FRONTIER_MODE_DOUBLES),
+    //     FRONTIER_CHALLENGE(FRONTIER_FACILITY_PALACE,  FRONTIER_MODE_SINGLES),
+    //     FRONTIER_CHALLENGE(FRONTIER_FACILITY_PALACE,  FRONTIER_MODE_DOUBLES),
+    //     FRONTIER_CHALLENGE(FRONTIER_FACILITY_ARENA,   FRONTIER_MODE_SINGLES),
+    //     FRONTIER_CHALLENGE(FRONTIER_FACILITY_PIKE,    FRONTIER_MODE_SINGLES),
+    //     FRONTIER_CHALLENGE(FRONTIER_FACILITY_PYRAMID, FRONTIER_MODE_SINGLES)
+    // };
 
-    u16 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
-    u16 challenge = VarGet(VAR_FRONTIER_GAMBLER_SET_CHALLENGE);
-    u16 frontierFacilityId = VarGet(VAR_FRONTIER_FACILITY);
+    // u16 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
+    // u16 challenge = VarGet(VAR_FRONTIER_GAMBLER_SET_CHALLENGE);
+    // u16 frontierFacilityId = VarGet(VAR_FRONTIER_FACILITY);
 
-    if (VarGet(VAR_FRONTIER_GAMBLER_STATE) == FRONTIER_GAMBLER_PLACED_BET)
-    {
-        if (sFrontierChallenges[challenge] ==  FRONTIER_CHALLENGE(frontierFacilityId, battleMode))
-        {
-            if (won)
-                VarSet(VAR_FRONTIER_GAMBLER_STATE, FRONTIER_GAMBLER_WON);
-            else
-                VarSet(VAR_FRONTIER_GAMBLER_STATE, FRONTIER_GAMBLER_LOST);
-        }
-    }
+    // if (VarGet(VAR_FRONTIER_GAMBLER_STATE) == FRONTIER_GAMBLER_PLACED_BET)
+    // {
+    //     if (sFrontierChallenges[challenge] ==  FRONTIER_CHALLENGE(frontierFacilityId, battleMode))
+    //     {
+    //         if (won)
+    //             VarSet(VAR_FRONTIER_GAMBLER_STATE, FRONTIER_GAMBLER_WON);
+    //         else
+    //             VarSet(VAR_FRONTIER_GAMBLER_STATE, FRONTIER_GAMBLER_LOST);
+    //     }
+    // }
 }
 
 void UpdateBattlePointsWindow(void)
 {
-    u8 string[32];
-    u32 x;
-    StringCopy(ConvertIntToDecimalStringN(string, gSaveBlock2Ptr->frontier.battlePoints, STR_CONV_MODE_RIGHT_ALIGN, 4), gText_BP);
-    x = GetStringRightAlignXOffset(FONT_NORMAL, string, 48);
-    AddTextPrinterParameterized(sBattlePointsWindowId, FONT_NORMAL, string, x, 1, 0, NULL);
+    // u8 string[32];
+    // u32 x;
+    // StringCopy(ConvertIntToDecimalStringN(string, gSaveBlock2Ptr->frontier.battlePoints, STR_CONV_MODE_RIGHT_ALIGN, 4), gText_BP);
+    // x = GetStringRightAlignXOffset(FONT_NORMAL, string, 48);
+    // AddTextPrinterParameterized(sBattlePointsWindowId, FONT_NORMAL, string, x, 1, 0, NULL);
 }
 
 void ShowBattlePointsWindow(void)
 {
-    static const struct WindowTemplate sBattlePoints_WindowTemplate =
-    {
-        .bg = 0,
-        .tilemapLeft = 1,
-        .tilemapTop = 1,
-        .width = 6,
-        .height = 2,
-        .paletteNum = 15,
-        .baseBlock = 8,
-    };
+    // static const struct WindowTemplate sBattlePoints_WindowTemplate =
+    // {
+    //     .bg = 0,
+    //     .tilemapLeft = 1,
+    //     .tilemapTop = 1,
+    //     .width = 6,
+    //     .height = 2,
+    //     .paletteNum = 15,
+    //     .baseBlock = 8,
+    // };
 
-    sBattlePointsWindowId = AddWindow(&sBattlePoints_WindowTemplate);
-    SetStandardWindowBorderStyle(sBattlePointsWindowId, FALSE);
-    UpdateBattlePointsWindow();
-    CopyWindowToVram(sBattlePointsWindowId, COPYWIN_GFX);
+    // sBattlePointsWindowId = AddWindow(&sBattlePoints_WindowTemplate);
+    // SetStandardWindowBorderStyle(sBattlePointsWindowId, FALSE);
+    // UpdateBattlePointsWindow();
+    // CopyWindowToVram(sBattlePointsWindowId, COPYWIN_GFX);
 }
 
 void CloseBattlePointsWindow(void)
 {
-    ClearStdWindowAndFrameToTransparent(sBattlePointsWindowId, TRUE);
-    RemoveWindow(sBattlePointsWindowId);
+    // ClearStdWindowAndFrameToTransparent(sBattlePointsWindowId, TRUE);
+    // RemoveWindow(sBattlePointsWindowId);
 }
 
 void TakeFrontierBattlePoints(void)
 {
-    if (gSaveBlock2Ptr->frontier.battlePoints < gSpecialVar_0x8004)
-        gSaveBlock2Ptr->frontier.battlePoints = 0;
-    else
-        gSaveBlock2Ptr->frontier.battlePoints -= gSpecialVar_0x8004;
+    // if (gSaveBlock2Ptr->frontier.battlePoints < gSpecialVar_0x8004)
+    //     gSaveBlock2Ptr->frontier.battlePoints = 0;
+    // else
+    //     gSaveBlock2Ptr->frontier.battlePoints -= gSpecialVar_0x8004;
 }
 
 void GiveFrontierBattlePoints(void)
 {
-    if (gSaveBlock2Ptr->frontier.battlePoints + gSpecialVar_0x8004 > MAX_BATTLE_FRONTIER_POINTS)
-        gSaveBlock2Ptr->frontier.battlePoints = MAX_BATTLE_FRONTIER_POINTS;
-    else
-        gSaveBlock2Ptr->frontier.battlePoints = gSaveBlock2Ptr->frontier.battlePoints + gSpecialVar_0x8004;
+    // if (gSaveBlock2Ptr->frontier.battlePoints + gSpecialVar_0x8004 > MAX_BATTLE_FRONTIER_POINTS)
+    //     gSaveBlock2Ptr->frontier.battlePoints = MAX_BATTLE_FRONTIER_POINTS;
+    // else
+    //     gSaveBlock2Ptr->frontier.battlePoints = gSaveBlock2Ptr->frontier.battlePoints + gSpecialVar_0x8004;
 }
 
 u16 GetFrontierBattlePoints(void)
 {
-    return gSaveBlock2Ptr->frontier.battlePoints;
+    // return gSaveBlock2Ptr->frontier.battlePoints;
+    return 0;
 }
 
 void ShowFrontierExchangeCornerItemIconWindow(void)
 {
-    static const struct WindowTemplate sFrontierExchangeCorner_ItemIconWindowTemplate =
-    {
-        .bg = 0,
-        .tilemapLeft = 2,
-        .tilemapTop = 9,
-        .width = 4,
-        .height = 4,
-        .paletteNum = 15,
-        .baseBlock = 20,
-    };
+    // static const struct WindowTemplate sFrontierExchangeCorner_ItemIconWindowTemplate =
+    // {
+    //     .bg = 0,
+    //     .tilemapLeft = 2,
+    //     .tilemapTop = 9,
+    //     .width = 4,
+    //     .height = 4,
+    //     .paletteNum = 15,
+    //     .baseBlock = 20,
+    // };
 
-    sFrontierExchangeCorner_ItemIconWindowId = AddWindow(&sFrontierExchangeCorner_ItemIconWindowTemplate);
-    SetStandardWindowBorderStyle(sFrontierExchangeCorner_ItemIconWindowId, FALSE);
-    CopyWindowToVram(sFrontierExchangeCorner_ItemIconWindowId, COPYWIN_GFX);
+    // sFrontierExchangeCorner_ItemIconWindowId = AddWindow(&sFrontierExchangeCorner_ItemIconWindowTemplate);
+    // SetStandardWindowBorderStyle(sFrontierExchangeCorner_ItemIconWindowId, FALSE);
+    // CopyWindowToVram(sFrontierExchangeCorner_ItemIconWindowId, COPYWIN_GFX);
 }
 
 void CloseFrontierExchangeCornerItemIconWindow(void)
 {
-    ClearStdWindowAndFrameToTransparent(sFrontierExchangeCorner_ItemIconWindowId, TRUE);
-    RemoveWindow(sFrontierExchangeCorner_ItemIconWindowId);
+    // ClearStdWindowAndFrameToTransparent(sFrontierExchangeCorner_ItemIconWindowId, TRUE);
+    // RemoveWindow(sFrontierExchangeCorner_ItemIconWindowId);
 }
 
 #define TAG_ITEM_ICON 5500
@@ -2715,31 +2716,31 @@ static void ShowBattleFrontierTutorMoveDescription(u8 menu, u16 selection)
 {
     static const u8 *const sBattleFrontier_TutorMoveDescriptions1[] =
     {
-        BattleFrontier_Lounge7_Text_SoftboiledDesc,
-        BattleFrontier_Lounge7_Text_SeismicTossDesc,
-        BattleFrontier_Lounge7_Text_DreamEaterDesc,
-        BattleFrontier_Lounge7_Text_MegaPunchDesc,
-        BattleFrontier_Lounge7_Text_MegaKickDesc,
-        BattleFrontier_Lounge7_Text_BodySlamDesc,
-        BattleFrontier_Lounge7_Text_RockSlideDesc,
-        BattleFrontier_Lounge7_Text_CounterDesc,
-        BattleFrontier_Lounge7_Text_ThunderWaveDesc,
-        BattleFrontier_Lounge7_Text_SwordsDanceDesc,
+        // BattleFrontier_Lounge7_Text_SoftboiledDesc,
+        // BattleFrontier_Lounge7_Text_SeismicTossDesc,
+        // BattleFrontier_Lounge7_Text_DreamEaterDesc,
+        // BattleFrontier_Lounge7_Text_MegaPunchDesc,
+        // BattleFrontier_Lounge7_Text_MegaKickDesc,
+        // BattleFrontier_Lounge7_Text_BodySlamDesc,
+        // BattleFrontier_Lounge7_Text_RockSlideDesc,
+        // BattleFrontier_Lounge7_Text_CounterDesc,
+        // BattleFrontier_Lounge7_Text_ThunderWaveDesc,
+        // BattleFrontier_Lounge7_Text_SwordsDanceDesc,
         gText_Exit,
     };
 
     static const u8 *const sBattleFrontier_TutorMoveDescriptions2[] =
     {
-        BattleFrontier_Lounge7_Text_DefenseCurlDesc,
-        BattleFrontier_Lounge7_Text_SnoreDesc,
-        BattleFrontier_Lounge7_Text_MudSlapDesc,
-        BattleFrontier_Lounge7_Text_SwiftDesc,
-        BattleFrontier_Lounge7_Text_IcyWindDesc,
-        BattleFrontier_Lounge7_Text_EndureDesc,
-        BattleFrontier_Lounge7_Text_PsychUpDesc,
-        BattleFrontier_Lounge7_Text_IcePunchDesc,
-        BattleFrontier_Lounge7_Text_ThunderPunchDesc,
-        BattleFrontier_Lounge7_Text_FirePunchDesc,
+        // BattleFrontier_Lounge7_Text_DefenseCurlDesc,
+        // BattleFrontier_Lounge7_Text_SnoreDesc,
+        // BattleFrontier_Lounge7_Text_MudSlapDesc,
+        // BattleFrontier_Lounge7_Text_SwiftDesc,
+        // BattleFrontier_Lounge7_Text_IcyWindDesc,
+        // BattleFrontier_Lounge7_Text_EndureDesc,
+        // BattleFrontier_Lounge7_Text_PsychUpDesc,
+        // BattleFrontier_Lounge7_Text_IcePunchDesc,
+        // BattleFrontier_Lounge7_Text_ThunderPunchDesc,
+        // BattleFrontier_Lounge7_Text_FirePunchDesc,
         gText_Exit,
     };
 
@@ -2930,38 +2931,38 @@ static void Task_DeoxysRockInteraction(u8 taskId)
 
 static void ChangeDeoxysRockLevel(u8 rockLevel)
 {
-    u8 objectEventId;
-    LoadPalette(&sDeoxysRockPalettes[rockLevel], 0x1A0, 8);
-    TryGetObjectEventIdByLocalIdAndMap(LOCALID_BIRTH_ISLAND_EXTERIOR_ROCK, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, &objectEventId);
+    // u8 objectEventId;
+    // LoadPalette(&sDeoxysRockPalettes[rockLevel], 0x1A0, 8);
+    // TryGetObjectEventIdByLocalIdAndMap(LOCALID_BIRTH_ISLAND_EXTERIOR_ROCK, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, &objectEventId);
 
-    if (rockLevel == 0)
-        PlaySE(SE_M_CONFUSE_RAY);
-    else
-        PlaySE(SE_RG_DEOXYS_MOVE);
+    // if (rockLevel == 0)
+    //     PlaySE(SE_M_CONFUSE_RAY);
+    // else
+    //     PlaySE(SE_RG_DEOXYS_MOVE);
 
-    CreateTask(WaitForDeoxysRockMovement, 8);
-    gFieldEffectArguments[0] = LOCALID_BIRTH_ISLAND_EXTERIOR_ROCK;
-    gFieldEffectArguments[1] = MAP_NUM(BIRTH_ISLAND_EXTERIOR);
-    gFieldEffectArguments[2] = MAP_GROUP(BIRTH_ISLAND_EXTERIOR);
-    gFieldEffectArguments[3] = sDeoxysRockCoords[rockLevel][0];
-    gFieldEffectArguments[4] = sDeoxysRockCoords[rockLevel][1];
+    // CreateTask(WaitForDeoxysRockMovement, 8);
+    // gFieldEffectArguments[0] = LOCALID_BIRTH_ISLAND_EXTERIOR_ROCK;
+    // gFieldEffectArguments[1] = MAP_NUM(BIRTH_ISLAND_EXTERIOR);
+    // gFieldEffectArguments[2] = MAP_GROUP(BIRTH_ISLAND_EXTERIOR);
+    // gFieldEffectArguments[3] = sDeoxysRockCoords[rockLevel][0];
+    // gFieldEffectArguments[4] = sDeoxysRockCoords[rockLevel][1];
 
-    if (rockLevel == 0)
-        gFieldEffectArguments[5] = 60;
-    else
-        gFieldEffectArguments[5] = 5;
+    // if (rockLevel == 0)
+    //     gFieldEffectArguments[5] = 60;
+    // else
+    //     gFieldEffectArguments[5] = 5;
 
-    FieldEffectStart(FLDEFF_MOVE_DEOXYS_ROCK);
-    SetObjEventTemplateCoords(LOCALID_BIRTH_ISLAND_EXTERIOR_ROCK, sDeoxysRockCoords[rockLevel][0], sDeoxysRockCoords[rockLevel][1]);
+    // FieldEffectStart(FLDEFF_MOVE_DEOXYS_ROCK);
+    // SetObjEventTemplateCoords(LOCALID_BIRTH_ISLAND_EXTERIOR_ROCK, sDeoxysRockCoords[rockLevel][0], sDeoxysRockCoords[rockLevel][1]);
 }
 
 static void WaitForDeoxysRockMovement(u8 taskId)
 {
-    if (FieldEffectActiveListContains(FLDEFF_MOVE_DEOXYS_ROCK) == FALSE)
-    {
-        ScriptContext_Enable();
-        DestroyTask(taskId);
-    }
+    // if (FieldEffectActiveListContains(FLDEFF_MOVE_DEOXYS_ROCK) == FALSE)
+    // {
+    //     ScriptContext_Enable();
+    //     DestroyTask(taskId);
+    // }
 }
 
 void IncrementBirthIslandRockStepCount(void)
@@ -2979,8 +2980,8 @@ void IncrementBirthIslandRockStepCount(void)
 
 void SetDeoxysRockPalette(void)
 {
-    LoadPalette(&sDeoxysRockPalettes[(u8)VarGet(VAR_DEOXYS_ROCK_LEVEL)], 0x1A0, 8);
-    BlendPalettes(0x04000000, 16, 0);
+    // LoadPalette(&sDeoxysRockPalettes[(u8)VarGet(VAR_DEOXYS_ROCK_LEVEL)], 0x1A0, 8);
+    // BlendPalettes(0x04000000, 16, 0);
 }
 
 void SetPCBoxToSendMon(u8 boxId)
@@ -3033,60 +3034,61 @@ bool8 IsDestinationBoxFull(void)
 
 void CreateAbnormalWeatherEvent(void)
 {
-    u16 randomValue = Random();
-    VarSet(VAR_ABNORMAL_WEATHER_STEP_COUNTER, 0);
+    // u16 randomValue = Random();
+    // VarSet(VAR_ABNORMAL_WEATHER_STEP_COUNTER, 0);
 
-    if (FlagGet(FLAG_DEFEATED_KYOGRE) == TRUE)
-    {
-        VarSet(VAR_ABNORMAL_WEATHER_LOCATION, (randomValue % TERRA_CAVE_LOCATIONS) + TERRA_CAVE_LOCATIONS_START);
-    }
-    else if (FlagGet(FLAG_DEFEATED_GROUDON) == TRUE)
-    {
-        VarSet(VAR_ABNORMAL_WEATHER_LOCATION, (randomValue % MARINE_CAVE_LOCATIONS) + MARINE_CAVE_LOCATIONS_START);
-    }
-    else if ((randomValue & 1) == 0)
-    {
-        randomValue = Random();
-        VarSet(VAR_ABNORMAL_WEATHER_LOCATION, (randomValue % TERRA_CAVE_LOCATIONS) + TERRA_CAVE_LOCATIONS_START);
-    }
-    else
-    {
-        randomValue = Random();
-        VarSet(VAR_ABNORMAL_WEATHER_LOCATION, (randomValue % MARINE_CAVE_LOCATIONS) + MARINE_CAVE_LOCATIONS_START);
-    }
+    // if (FlagGet(FLAG_DEFEATED_KYOGRE) == TRUE)
+    // {
+    //     VarSet(VAR_ABNORMAL_WEATHER_LOCATION, (randomValue % TERRA_CAVE_LOCATIONS) + TERRA_CAVE_LOCATIONS_START);
+    // }
+    // else if (FlagGet(FLAG_DEFEATED_GROUDON) == TRUE)
+    // {
+    //     VarSet(VAR_ABNORMAL_WEATHER_LOCATION, (randomValue % MARINE_CAVE_LOCATIONS) + MARINE_CAVE_LOCATIONS_START);
+    // }
+    // else if ((randomValue & 1) == 0)
+    // {
+    //     randomValue = Random();
+    //     VarSet(VAR_ABNORMAL_WEATHER_LOCATION, (randomValue % TERRA_CAVE_LOCATIONS) + TERRA_CAVE_LOCATIONS_START);
+    // }
+    // else
+    // {
+    //     randomValue = Random();
+    //     VarSet(VAR_ABNORMAL_WEATHER_LOCATION, (randomValue % MARINE_CAVE_LOCATIONS) + MARINE_CAVE_LOCATIONS_START);
+    // }
 }
 
 // Saves the map name for the current abnormal weather location in gStringVar1, then
 // returns TRUE if the weather is for Kyogre, and FALSE if it's for Groudon.
 bool32 GetAbnormalWeatherMapNameAndType(void)
 {
-    static const u8 sAbnormalWeatherMapNumbers[] = {
-        MAP_NUM(ROUTE114),
-        MAP_NUM(ROUTE114),
-        MAP_NUM(ROUTE115),
-        MAP_NUM(ROUTE115),
-        MAP_NUM(ROUTE116),
-        MAP_NUM(ROUTE116),
-        MAP_NUM(ROUTE118),
-        MAP_NUM(ROUTE118),
-        MAP_NUM(ROUTE105),
-        MAP_NUM(ROUTE105),
-        MAP_NUM(ROUTE125),
-        MAP_NUM(ROUTE125),
-        MAP_NUM(ROUTE127),
-        MAP_NUM(ROUTE127),
-        MAP_NUM(ROUTE129),
-        MAP_NUM(ROUTE129)
-    };
+    // static const u8 sAbnormalWeatherMapNumbers[] = {
+    //     MAP_NUM(ROUTE114),
+    //     MAP_NUM(ROUTE114),
+    //     MAP_NUM(ROUTE115),
+    //     MAP_NUM(ROUTE115),
+    //     MAP_NUM(ROUTE116),
+    //     MAP_NUM(ROUTE116),
+    //     MAP_NUM(ROUTE118),
+    //     MAP_NUM(ROUTE118),
+    //     MAP_NUM(ROUTE105),
+    //     MAP_NUM(ROUTE105),
+    //     MAP_NUM(ROUTE125),
+    //     MAP_NUM(ROUTE125),
+    //     MAP_NUM(ROUTE127),
+    //     MAP_NUM(ROUTE127),
+    //     MAP_NUM(ROUTE129),
+    //     MAP_NUM(ROUTE129)
+    // };
 
-    u16 abnormalWeather = VarGet(VAR_ABNORMAL_WEATHER_LOCATION);
+    // u16 abnormalWeather = VarGet(VAR_ABNORMAL_WEATHER_LOCATION);
 
-    GetMapName(gStringVar1, sAbnormalWeatherMapNumbers[abnormalWeather - 1], 0);
+    // GetMapName(gStringVar1, sAbnormalWeatherMapNumbers[abnormalWeather - 1], 0);
 
-    if (abnormalWeather < MARINE_CAVE_LOCATIONS_START)
-        return FALSE;
-    else
-        return TRUE;
+    // if (abnormalWeather < MARINE_CAVE_LOCATIONS_START)
+    //     return FALSE;
+    // else
+    //     return TRUE;
+    return FALSE;
 }
 
 bool8 AbnormalWeatherHasExpired(void)
@@ -3470,8 +3472,8 @@ void GetBattlePyramidHint(void)
 // Used to avoid a potential softlock if the player respawns on Dewford with no way off
 void ResetHealLocationFromDewford(void)
 {
-    if (gSaveBlock1Ptr->lastHealLocation.mapGroup == MAP_GROUP(DEWFORD_TOWN) && gSaveBlock1Ptr->lastHealLocation.mapNum == MAP_NUM(DEWFORD_TOWN))
-        SetLastHealLocationWarp(HEAL_LOCATION_PETALBURG_CITY);
+    // if (gSaveBlock1Ptr->lastHealLocation.mapGroup == MAP_GROUP(DEWFORD_TOWN) && gSaveBlock1Ptr->lastHealLocation.mapNum == MAP_NUM(DEWFORD_TOWN))
+    //     SetLastHealLocationWarp(HEAL_LOCATION_PETALBURG_CITY);
 }
 
 bool8 InPokemonCenter(void)
@@ -3548,28 +3550,28 @@ bool8 InPokemonCenter(void)
 #define FANCLUB_COUNTER    0x007F
 #define FANCLUB_FAN_FLAGS  0xFF80
 
-#define GET_TRAINER_FAN_CLUB_FLAG(flag) (FANCLUB_BITFIELD >> (flag) & 1)
-#define SET_TRAINER_FAN_CLUB_FLAG(flag) (FANCLUB_BITFIELD |= 1 << (flag))
-#define FLIP_TRAINER_FAN_CLUB_FLAG(flag)(FANCLUB_BITFIELD ^= 1 << (flag))
+// #define GET_TRAINER_FAN_CLUB_FLAG(flag) (FANCLUB_BITFIELD >> (flag) & 1)
+// #define SET_TRAINER_FAN_CLUB_FLAG(flag) (FANCLUB_BITFIELD |= 1 << (flag))
+// #define FLIP_TRAINER_FAN_CLUB_FLAG(flag)(FANCLUB_BITFIELD ^= 1 << (flag))
 
-#define GET_TRAINER_FAN_CLUB_COUNTER        (FANCLUB_BITFIELD & FANCLUB_COUNTER)
-#define SET_TRAINER_FAN_CLUB_COUNTER(count) (FANCLUB_BITFIELD = (FANCLUB_BITFIELD & FANCLUB_FAN_FLAGS) | (count))
-#define INCR_TRAINER_FAN_CLUB_COUNTER(count)(FANCLUB_BITFIELD += (count))
-#define CLEAR_TRAINER_FAN_CLUB_COUNTER      (FANCLUB_BITFIELD &= ~(FANCLUB_COUNTER))
+// #define GET_TRAINER_FAN_CLUB_COUNTER        (FANCLUB_BITFIELD & FANCLUB_COUNTER)
+// #define SET_TRAINER_FAN_CLUB_COUNTER(count) (FANCLUB_BITFIELD = (FANCLUB_BITFIELD & FANCLUB_FAN_FLAGS) | (count))
+// #define INCR_TRAINER_FAN_CLUB_COUNTER(count)(FANCLUB_BITFIELD += (count))
+// #define CLEAR_TRAINER_FAN_CLUB_COUNTER      (FANCLUB_BITFIELD &= ~(FANCLUB_COUNTER))
 
 void ResetFanClub(void)
 {
-    gSaveBlock1Ptr->vars[VAR_FANCLUB_FAN_COUNTER - VARS_START] = 0;
-    gSaveBlock1Ptr->vars[VAR_FANCLUB_LOSE_FAN_TIMER - VARS_START] = 0;
+    // gSaveBlock1Ptr->vars[VAR_FANCLUB_FAN_COUNTER - VARS_START] = 0;
+    // gSaveBlock1Ptr->vars[VAR_FANCLUB_LOSE_FAN_TIMER - VARS_START] = 0;
 }
 
 void TryLoseFansFromPlayTimeAfterLinkBattle(void)
 {
-    if (DidPlayerGetFirstFans())
-    {
-        TryLoseFansFromPlayTime();
-        gSaveBlock1Ptr->vars[VAR_FANCLUB_LOSE_FAN_TIMER - VARS_START] = gSaveBlock2Ptr->playTimeHours;
-    }
+    // if (DidPlayerGetFirstFans())
+    // {
+    //     TryLoseFansFromPlayTime();
+    //     gSaveBlock1Ptr->vars[VAR_FANCLUB_LOSE_FAN_TIMER - VARS_START] = gSaveBlock2Ptr->playTimeHours;
+    // }
 }
 
 void UpdateTrainerFanClubGameClear(void)
@@ -3603,21 +3605,21 @@ u8 TryGainNewFanFromCounter(u8 incrementId)
 
     // if (VarGet(VAR_LILYCOVE_FAN_CLUB_STATE) == 2)
     // {
-    //     if (GET_TRAINER_FAN_CLUB_COUNTER + sCounterIncrements[incrementId] > 19)
+        // if (GET_TRAINER_FAN_CLUB_COUNTER + sCounterIncrements[incrementId] > 19)
     //     {
     //         if (GetNumFansOfPlayerInTrainerFanClub() < 3)
     //         {
     //             PlayerGainRandomTrainerFan();
-    //             CLEAR_TRAINER_FAN_CLUB_COUNTER;
+                // CLEAR_TRAINER_FAN_CLUB_COUNTER;
     //         }
     //         else
     //         {
-    //             SET_TRAINER_FAN_CLUB_COUNTER(20);
+                // SET_TRAINER_FAN_CLUB_COUNTER(20);
     //         }
     //     }
     //     else
     //     {
-    //         INCR_TRAINER_FAN_CLUB_COUNTER(sCounterIncrements[incrementId]);
+            // INCR_TRAINER_FAN_CLUB_COUNTER(sCounterIncrements[incrementId]);
     //     }
     // }
 
@@ -3632,35 +3634,36 @@ u8 TryGainNewFanFromCounter(u8 incrementId)
 // If all the members are already fans of the player then this redundantly sets the first fan in the list to be a fan
 static u16 PlayerGainRandomTrainerFan(void)
 {
-    static const u8 sFanClubMemberIds[NUM_TRAINER_FAN_CLUB_MEMBERS] =
-    {
-        FANCLUB_MEMBER1,
-        FANCLUB_MEMBER2,
-        FANCLUB_MEMBER3,
-        FANCLUB_MEMBER4,
-        FANCLUB_MEMBER5,
-        FANCLUB_MEMBER6,
-        FANCLUB_MEMBER7,
-        FANCLUB_MEMBER8
-    };
+    // static const u8 sFanClubMemberIds[NUM_TRAINER_FAN_CLUB_MEMBERS] =
+    // {
+    //     FANCLUB_MEMBER1,
+    //     FANCLUB_MEMBER2,
+    //     FANCLUB_MEMBER3,
+    //     FANCLUB_MEMBER4,
+    //     FANCLUB_MEMBER5,
+    //     FANCLUB_MEMBER6,
+    //     FANCLUB_MEMBER7,
+    //     FANCLUB_MEMBER8
+    // };
 
-    u8 i;
-    u8 idx = 0;
+    // u8 i;
+    // u8 idx = 0;
 
-    for (i = 0; i < ARRAY_COUNT(sFanClubMemberIds); i++)
-    {
-        if (!GET_TRAINER_FAN_CLUB_FLAG(sFanClubMemberIds[i]))
-        {
-            idx = i;
-            if (Random() & 1)
-            {
-                SET_TRAINER_FAN_CLUB_FLAG(sFanClubMemberIds[idx]);
-                return idx;
-            }
-        }
-    }
-    SET_TRAINER_FAN_CLUB_FLAG(sFanClubMemberIds[idx]);
-    return idx;
+    // for (i = 0; i < ARRAY_COUNT(sFanClubMemberIds); i++)
+    // {
+    //     // if (!GET_TRAINER_FAN_CLUB_FLAG(sFanClubMemberIds[i]))
+    //     {
+    //         idx = i;
+    //         if (Random() & 1)
+    //         {
+    //             // SET_TRAINER_FAN_CLUB_FLAG(sFanClubMemberIds[idx]);
+    //             return idx;
+    //         }
+    //     }
+    // }
+    // // SET_TRAINER_FAN_CLUB_FLAG(sFanClubMemberIds[idx]);
+    // return idx;
+    return 0;
 }
 
 // Loops through the fan club members, and if theyre a fan of the player there is a 50% chance for them to stop being a fan
@@ -3668,41 +3671,42 @@ static u16 PlayerGainRandomTrainerFan(void)
 // If no fan was lost while looping, the last current fan in the list will stop being a fan
 static u16 PlayerLoseRandomTrainerFan(void)
 {
-    static const u8 sFanClubMemberIds[NUM_TRAINER_FAN_CLUB_MEMBERS] =
-    {
-        FANCLUB_MEMBER1,
-        FANCLUB_MEMBER6,
-        FANCLUB_MEMBER7,
-        FANCLUB_MEMBER4,
-        FANCLUB_MEMBER3,
-        FANCLUB_MEMBER5,
-        FANCLUB_MEMBER8,
-        FANCLUB_MEMBER2
-    };
+    // static const u8 sFanClubMemberIds[NUM_TRAINER_FAN_CLUB_MEMBERS] =
+    // {
+    //     FANCLUB_MEMBER1,
+    //     FANCLUB_MEMBER6,
+    //     FANCLUB_MEMBER7,
+    //     FANCLUB_MEMBER4,
+    //     FANCLUB_MEMBER3,
+    //     FANCLUB_MEMBER5,
+    //     FANCLUB_MEMBER8,
+    //     FANCLUB_MEMBER2
+    // };
 
-    u8 i;
-    u8 idx = 0;
+    // u8 i;
+    // u8 idx = 0;
 
-    if (GetNumFansOfPlayerInTrainerFanClub() == 1)
-        return 0;
+    // if (GetNumFansOfPlayerInTrainerFanClub() == 1)
+    //     return 0;
 
-    for (i = 0; i < ARRAY_COUNT(sFanClubMemberIds); i++)
-    {
-        if (GET_TRAINER_FAN_CLUB_FLAG(sFanClubMemberIds[i]))
-        {
-            idx = i;
-            if (Random() & 1)
-            {
-                FLIP_TRAINER_FAN_CLUB_FLAG(sFanClubMemberIds[idx]);
-                return idx;
-            }
-        }
-    }
+    // for (i = 0; i < ARRAY_COUNT(sFanClubMemberIds); i++)
+    // {
+    //     // if (GET_TRAINER_FAN_CLUB_FLAG(sFanClubMemberIds[i]))
+    //     {
+    //         idx = i;
+    //         if (Random() & 1)
+    //         {
+    //             // FLIP_TRAINER_FAN_CLUB_FLAG(sFanClubMemberIds[idx]);
+    //             return idx;
+    //         }
+    //     }
+    // }
 
-    if (GET_TRAINER_FAN_CLUB_FLAG(sFanClubMemberIds[idx]))
-        FLIP_TRAINER_FAN_CLUB_FLAG(sFanClubMemberIds[idx]);
+    // if (GET_TRAINER_FAN_CLUB_FLAG(sFanClubMemberIds[idx]))
+    //     FLIP_TRAINER_FAN_CLUB_FLAG(sFanClubMemberIds[idx]);
 
-    return idx;
+    // return idx;
+    return 0;
 }
 
 u16 GetNumFansOfPlayerInTrainerFanClub(void)
@@ -3710,11 +3714,11 @@ u16 GetNumFansOfPlayerInTrainerFanClub(void)
     u8 i;
     u8 numFans = 0;
 
-    for (i = 0; i < NUM_TRAINER_FAN_CLUB_MEMBERS; i++)
-    {
-        if (GET_TRAINER_FAN_CLUB_FLAG(i + FANCLUB_MEMBER1))
-            numFans++;
-    }
+    // for (i = 0; i < NUM_TRAINER_FAN_CLUB_MEMBERS; i++)
+    // {
+    //     // if (GET_TRAINER_FAN_CLUB_FLAG(i + FANCLUB_MEMBER1))
+    //         numFans++;
+    // }
 
     return numFans;
 }
@@ -3722,115 +3726,116 @@ u16 GetNumFansOfPlayerInTrainerFanClub(void)
 // If the player has > 5 fans in the Trainer Fan Club, then lose 1 fan for every 12 hours since the last fan loss / timer reset
 void TryLoseFansFromPlayTime(void)
 {
-    u8 i = 0;
-    if (gSaveBlock2Ptr->playTimeHours < 999)
-    {
-        while (TRUE)
-        {
-            if (GetNumFansOfPlayerInTrainerFanClub() < 5)
-            {
-                gSaveBlock1Ptr->vars[VAR_FANCLUB_LOSE_FAN_TIMER - VARS_START] = gSaveBlock2Ptr->playTimeHours;
-                break;
-            }
-            else if (i == NUM_TRAINER_FAN_CLUB_MEMBERS)
-            {
-                break;
-            }
-            else if (gSaveBlock2Ptr->playTimeHours - gSaveBlock1Ptr->vars[VAR_FANCLUB_LOSE_FAN_TIMER - VARS_START] < 12)
-            {
-                return;
-            }
-            PlayerLoseRandomTrainerFan();
-            gSaveBlock1Ptr->vars[VAR_FANCLUB_LOSE_FAN_TIMER - VARS_START] += 12;
-            i++;
-        }
-    }
+    // u8 i = 0;
+    // if (gSaveBlock2Ptr->playTimeHours < 999)
+    // {
+    //     while (TRUE)
+    //     {
+    //         if (GetNumFansOfPlayerInTrainerFanClub() < 5)
+    //         {
+    //             gSaveBlock1Ptr->vars[VAR_FANCLUB_LOSE_FAN_TIMER - VARS_START] = gSaveBlock2Ptr->playTimeHours;
+    //             break;
+    //         }
+    //         else if (i == NUM_TRAINER_FAN_CLUB_MEMBERS)
+    //         {
+    //             break;
+    //         }
+    //         else if (gSaveBlock2Ptr->playTimeHours - gSaveBlock1Ptr->vars[VAR_FANCLUB_LOSE_FAN_TIMER - VARS_START] < 12)
+    //         {
+    //             return;
+    //         }
+    //         PlayerLoseRandomTrainerFan();
+    //         gSaveBlock1Ptr->vars[VAR_FANCLUB_LOSE_FAN_TIMER - VARS_START] += 12;
+    //         i++;
+    //     }
+    // }
 }
 
 bool8 IsFanClubMemberFanOfPlayer(void)
 {
-    return GET_TRAINER_FAN_CLUB_FLAG(gSpecialVar_0x8004);
+    // return GET_TRAINER_FAN_CLUB_FLAG(gSpecialVar_0x8004);
+    return FALSE;
 }
 
 static void SetInitialFansOfPlayer(void)
 {
-    SET_TRAINER_FAN_CLUB_FLAG(FANCLUB_MEMBER6);
-    SET_TRAINER_FAN_CLUB_FLAG(FANCLUB_MEMBER1);
-    SET_TRAINER_FAN_CLUB_FLAG(FANCLUB_MEMBER3);
+    // SET_TRAINER_FAN_CLUB_FLAG(FANCLUB_MEMBER6);
+    // SET_TRAINER_FAN_CLUB_FLAG(FANCLUB_MEMBER1);
+    // SET_TRAINER_FAN_CLUB_FLAG(FANCLUB_MEMBER3);
 }
 
 void BufferFanClubTrainerName(void)
 {
-    u8 whichLinkTrainer = 0;
-    u8 whichNPCTrainer = 0;
-    switch (gSpecialVar_0x8004)
-    {
-    case FANCLUB_MEMBER1:
-        break;
-    case FANCLUB_MEMBER2:
-        break;
-    case FANCLUB_MEMBER3:
-        whichLinkTrainer = 0;
-        whichNPCTrainer = 3;
-        break;
-    case FANCLUB_MEMBER4:
-        whichLinkTrainer = 0;
-        whichNPCTrainer = 1;
-        break;
-    case FANCLUB_MEMBER5:
-        whichLinkTrainer = 1;
-        whichNPCTrainer = 0;
-        break;
-    case FANCLUB_MEMBER6:
-        whichLinkTrainer = 0;
-        whichNPCTrainer = 4;
-        break;
-    case FANCLUB_MEMBER7:
-        whichLinkTrainer = 1;
-        whichNPCTrainer = 5;
-        break;
-    case FANCLUB_MEMBER8:
-        break;
-    }
-    BufferFanClubTrainerName_(&gSaveBlock1Ptr->linkBattleRecords, whichLinkTrainer, whichNPCTrainer);
+    // u8 whichLinkTrainer = 0;
+    // u8 whichNPCTrainer = 0;
+    // switch (gSpecialVar_0x8004)
+    // {
+    // case FANCLUB_MEMBER1:
+    //     break;
+    // case FANCLUB_MEMBER2:
+    //     break;
+    // case FANCLUB_MEMBER3:
+    //     whichLinkTrainer = 0;
+    //     whichNPCTrainer = 3;
+    //     break;
+    // case FANCLUB_MEMBER4:
+    //     whichLinkTrainer = 0;
+    //     whichNPCTrainer = 1;
+    //     break;
+    // case FANCLUB_MEMBER5:
+    //     whichLinkTrainer = 1;
+    //     whichNPCTrainer = 0;
+    //     break;
+    // case FANCLUB_MEMBER6:
+    //     whichLinkTrainer = 0;
+    //     whichNPCTrainer = 4;
+    //     break;
+    // case FANCLUB_MEMBER7:
+    //     whichLinkTrainer = 1;
+    //     whichNPCTrainer = 5;
+    //     break;
+    // case FANCLUB_MEMBER8:
+    //     break;
+    // }
+    // BufferFanClubTrainerName_(&gSaveBlock1Ptr->linkBattleRecords, whichLinkTrainer, whichNPCTrainer);
 }
 
 static void BufferFanClubTrainerName_(struct LinkBattleRecords *linkRecords, u8 whichLinkTrainer, u8 whichNPCTrainer)
 {
-    struct LinkBattleRecord *record = &linkRecords->entries[whichLinkTrainer];
-    if (record->name[0] == EOS)
-    {
-        switch (whichNPCTrainer)
-        {
-        case 0:
-            StringCopy(gStringVar1, gText_Wallace);
-            break;
-        case 1:
-            StringCopy(gStringVar1, gText_Steven);
-            break;
-        case 2:
-            StringCopy(gStringVar1, gText_Brawly);
-            break;
-        case 3:
-            StringCopy(gStringVar1, gText_Winona);
-            break;
-        case 4:
-            StringCopy(gStringVar1, gText_Phoebe);
-            break;
-        case 5:
-            StringCopy(gStringVar1, gText_Glacia);
-            break;
-        default:
-            StringCopy(gStringVar1, gText_Wallace);
-            break;
-        }
-    }
-    else
-    {
-        StringCopyN(gStringVar1, record->name, PLAYER_NAME_LENGTH);
-        gStringVar1[PLAYER_NAME_LENGTH] = EOS;
-        ConvertInternationalString(gStringVar1, linkRecords->languages[whichLinkTrainer]);
-    }
+    // struct LinkBattleRecord *record = &linkRecords->entries[whichLinkTrainer];
+    // if (record->name[0] == EOS)
+    // {
+    //     switch (whichNPCTrainer)
+    //     {
+    //     case 0:
+    //         StringCopy(gStringVar1, gText_Wallace);
+    //         break;
+    //     case 1:
+    //         StringCopy(gStringVar1, gText_Steven);
+    //         break;
+    //     case 2:
+    //         StringCopy(gStringVar1, gText_Brawly);
+    //         break;
+    //     case 3:
+    //         StringCopy(gStringVar1, gText_Winona);
+    //         break;
+    //     case 4:
+    //         StringCopy(gStringVar1, gText_Phoebe);
+    //         break;
+    //     case 5:
+    //         StringCopy(gStringVar1, gText_Glacia);
+    //         break;
+    //     default:
+    //         StringCopy(gStringVar1, gText_Wallace);
+    //         break;
+    //     }
+    // }
+    // else
+    // {
+    //     StringCopyN(gStringVar1, record->name, PLAYER_NAME_LENGTH);
+    //     gStringVar1[PLAYER_NAME_LENGTH] = EOS;
+    //     ConvertInternationalString(gStringVar1, linkRecords->languages[whichLinkTrainer]);
+    // }
 }
 
 void UpdateTrainerFansAfterLinkBattle(void)
@@ -3847,16 +3852,18 @@ void UpdateTrainerFansAfterLinkBattle(void)
 
 static bool8 DidPlayerGetFirstFans(void)
 {
-    return GET_TRAINER_FAN_CLUB_FLAG(FANCLUB_GOT_FIRST_FANS);
+    // return GET_TRAINER_FAN_CLUB_FLAG(FANCLUB_GOT_FIRST_FANS);
+    return FALSE;
 }
 
 void SetPlayerGotFirstFans(void)
 {
-    SET_TRAINER_FAN_CLUB_FLAG(FANCLUB_GOT_FIRST_FANS);
+    // SET_TRAINER_FAN_CLUB_FLAG(FANCLUB_GOT_FIRST_FANS);
 }
 
 // return value is always ignored
 u8 Script_TryGainNewFanFromCounter(void)
 {
-    return TryGainNewFanFromCounter(gSpecialVar_0x8004);
+    // return TryGainNewFanFromCounter(gSpecialVar_0x8004);
+    return 0;
 }

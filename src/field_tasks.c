@@ -234,24 +234,24 @@ static void DummyPerStepCallback(u8 taskId)
 // i.e. the element with an offset of 0,0 is the one the player is standing on.
 static const struct PacifidlogMetatileOffsets sHalfSubmergedBridgeMetatileOffsets[] =
 {
-    { 0,  0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Vertical0)}, {0, 1, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Vertical1)},
-    { 0, -1, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Vertical0)}, {0, 0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Vertical1)},
-    { 0,  0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Horizontal0)}, {1, 0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Horizontal1)},
-    {-1,  0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Horizontal0)}, {0, 0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_Horizontal1)}
+    { 0,  0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_VerticalTop)}, {0, 1, METATILE_ID(Pacifidlog, HalfSubmergedLogs_VerticalBottom)},
+    { 0, -1, METATILE_ID(Pacifidlog, HalfSubmergedLogs_VerticalTop)}, {0, 0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_VerticalBottom)},
+    { 0,  0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_HorizontalLeft)}, {1, 0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_HorizontalRight)},
+    {-1,  0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_HorizontalLeft)}, {0, 0, METATILE_ID(Pacifidlog, HalfSubmergedLogs_HorizontalRight)}
 };
 static const struct PacifidlogMetatileOffsets sFullySubmergedBridgeMetatileOffsets[] =
 {
-    { 0,  0, METATILE_ID(Pacifidlog, SubmergedLogs_Vertical0)}, {0, 1, METATILE_ID(Pacifidlog, SubmergedLogs_Vertical1)},
-    { 0, -1, METATILE_ID(Pacifidlog, SubmergedLogs_Vertical0)}, {0, 0, METATILE_ID(Pacifidlog, SubmergedLogs_Vertical1)},
-    { 0,  0, METATILE_ID(Pacifidlog, SubmergedLogs_Horizontal0)}, {1, 0, METATILE_ID(Pacifidlog, SubmergedLogs_Horizontal1)},
-    {-1,  0, METATILE_ID(Pacifidlog, SubmergedLogs_Horizontal0)}, {0, 0, METATILE_ID(Pacifidlog, SubmergedLogs_Horizontal1)}
+    { 0,  0, METATILE_ID(Pacifidlog, SubmergedLogs_VerticalTop)}, {0, 1, METATILE_ID(Pacifidlog, SubmergedLogs_VerticalBottom)},
+    { 0, -1, METATILE_ID(Pacifidlog, SubmergedLogs_VerticalTop)}, {0, 0, METATILE_ID(Pacifidlog, SubmergedLogs_VerticalBottom)},
+    { 0,  0, METATILE_ID(Pacifidlog, SubmergedLogs_HorizontalLeft)}, {1, 0, METATILE_ID(Pacifidlog, SubmergedLogs_HorizontalRight)},
+    {-1,  0, METATILE_ID(Pacifidlog, SubmergedLogs_HorizontalLeft)}, {0, 0, METATILE_ID(Pacifidlog, SubmergedLogs_HorizontalRight)}
 };
 static const struct PacifidlogMetatileOffsets sFloatingBridgeMetatileOffsets[] =
 {
-    { 0,  0, METATILE_ID(Pacifidlog, FloatingLogs_Vertical0)}, {0, 1, METATILE_ID(Pacifidlog, FloatingLogs_Vertical1)},
-    { 0, -1, METATILE_ID(Pacifidlog, FloatingLogs_Vertical0)}, {0, 0, METATILE_ID(Pacifidlog, FloatingLogs_Vertical1)},
-    { 0,  0, METATILE_ID(Pacifidlog, FloatingLogs_Horizontal0)}, {1, 0, METATILE_ID(Pacifidlog, FloatingLogs_Horizontal1)},
-    {-1,  0, METATILE_ID(Pacifidlog, FloatingLogs_Horizontal0)}, {0, 0, METATILE_ID(Pacifidlog, FloatingLogs_Horizontal1)}
+    { 0,  0, METATILE_ID(Pacifidlog, FloatingLogs_VerticalTop)}, {0, 1, METATILE_ID(Pacifidlog, FloatingLogs_VerticalBottom)},
+    { 0, -1, METATILE_ID(Pacifidlog, FloatingLogs_VerticalTop)}, {0, 0, METATILE_ID(Pacifidlog, FloatingLogs_VerticalBottom)},
+    { 0,  0, METATILE_ID(Pacifidlog, FloatingLogs_HorizontalLeft)}, {1, 0, METATILE_ID(Pacifidlog, FloatingLogs_HorizontalRight)},
+    {-1,  0, METATILE_ID(Pacifidlog, FloatingLogs_HorizontalLeft)}, {0, 0, METATILE_ID(Pacifidlog, FloatingLogs_HorizontalRight)}
 };
 
 static const struct PacifidlogMetatileOffsets *GetPacifidlogBridgeMetatileOffsets(const struct PacifidlogMetatileOffsets *offsets, u16 metatileBehavior)
@@ -483,13 +483,13 @@ static const struct PacifidlogMetatileOffsets sFloatingTempleLogsMetatileOffsets
 
 static const struct PacifidlogMetatileOffsets *GetPacifidlogTempleLogsMetatileOffsets(const struct PacifidlogMetatileOffsets *offsets, u16 metatileBehavior)
 {
-    if (MetatileBehavior_IsPacifilogVerticalLog1(metatileBehavior))
+    if (MetatileBehavior_IsPacifidlogVerticalLogTop(metatileBehavior))
         return &offsets[0 * 2];
-    else if (MetatileBehavior_IsPacifilogVerticalLog2(metatileBehavior))
+    else if (MetatileBehavior_IsPacifidlogVerticalLogBottom(metatileBehavior))
         return &offsets[1 * 2];
-    else if (MetatileBehavior_IsPacifilogHorizontalLog1(metatileBehavior))
+    else if (MetatileBehavior_IsPacifidlogHorizontalLogLeft(metatileBehavior))
         return &offsets[2 * 2];
-    else if (MetatileBehavior_IsPacifilogHorizontalLog2(metatileBehavior))
+    else if (MetatileBehavior_IsPacifidlogHorizontalLogRight(metatileBehavior))
         return &offsets[3 * 2];
     else
         return NULL;
@@ -500,11 +500,11 @@ static void SetPacifidlogTempleLogsMetatiles(const struct PacifidlogMetatileOffs
     offsets = GetPacifidlogTempleLogsMetatileOffsets(offsets, MapGridGetMetatileBehaviorAt(x, y));
     if (offsets)
     {
-        MapGridSetMetatileIdAt(x + offsets[0].x, y + offsets[0].y, offsets[0].tileId);
+        MapGridSetMetatileIdAt(x + offsets[0].x, y + offsets[0].y, offsets[0].metatileId);
         if (redrawMap)
             CurrentMapDrawMetatileAt(x + offsets[0].x, y + offsets[0].y);
 
-        MapGridSetMetatileIdAt(x + offsets[1].x, y + offsets[1].y, offsets[1].tileId);
+        MapGridSetMetatileIdAt(x + offsets[1].x, y + offsets[1].y, offsets[1].metatileId);
         if (redrawMap)
             CurrentMapDrawMetatileAt(x + offsets[1].x, y + offsets[1].y);
     }
@@ -529,22 +529,22 @@ static bool32 StandingOnNewPacifidlogTempleLogs(s16 x1, s16 y1, s16 x2, s16 y2)
 {
     u16 metatileBehavior = MapGridGetMetatileBehaviorAt(x2, y2);
 
-    if (MetatileBehavior_IsPacifilogVerticalLog1(metatileBehavior))
+    if (MetatileBehavior_IsPacifidlogVerticalLogTop(metatileBehavior))
     {
         if (y1 > y2)
             return FALSE;
     }
-    else if (MetatileBehavior_IsPacifilogVerticalLog2(metatileBehavior))
+    else if (MetatileBehavior_IsPacifidlogVerticalLogBottom(metatileBehavior))
     {
         if (y1 < y2)
             return FALSE;
     }
-    else if (MetatileBehavior_IsPacifilogHorizontalLog1(metatileBehavior))
+    else if (MetatileBehavior_IsPacifidlogHorizontalLogLeft(metatileBehavior))
     {
         if (x1 > x2)
             return FALSE;
     }
-    else if (MetatileBehavior_IsPacifilogHorizontalLog2(metatileBehavior))
+    else if (MetatileBehavior_IsPacifidlogHorizontalLogRight(metatileBehavior))
     {
         if (x1 < x2)
             return FALSE;
@@ -556,22 +556,22 @@ static bool32 StandingOnSamePacifidlogTempleLogs(s16 x1, s16 y1, s16 x2, s16 y2)
 {
     u16 metatileBehavior = MapGridGetMetatileBehaviorAt(x1, y1);
 
-    if (MetatileBehavior_IsPacifilogVerticalLog1(metatileBehavior))
+    if (MetatileBehavior_IsPacifidlogVerticalLogTop(metatileBehavior))
     {
         if (y1 < y2)
             return FALSE;
     }
-    else if (MetatileBehavior_IsPacifilogVerticalLog2(metatileBehavior))
+    else if (MetatileBehavior_IsPacifidlogVerticalLogBottom(metatileBehavior))
     {
         if (y1 > y2)
             return FALSE;
     }
-    else if (MetatileBehavior_IsPacifilogHorizontalLog1(metatileBehavior))
+    else if (MetatileBehavior_IsPacifidlogHorizontalLogLeft(metatileBehavior))
     {
         if (x1 < x2)
             return FALSE;
     }
-    else if (MetatileBehavior_IsPacifilogHorizontalLog2(metatileBehavior))
+    else if (MetatileBehavior_IsPacifidlogHorizontalLogRight(metatileBehavior))
     {
         if (x1 > x2)
             return FALSE;
@@ -666,7 +666,7 @@ static void WaterTemplePerStepCallback(u8 taskId)
                 prevY = y;
                 // Make sound
                 if (MetatileBehavior_IsPacifidlogLog(MapGridGetMetatileBehaviorAt(x, y)) && !IsPlayerJumping())
-                    PlaySE(SE_MIZU);
+                    PlaySE(SE_PUDDLE);
             }
             break;
         case 2: //Delay case
@@ -845,6 +845,13 @@ static void FortreeBridgePerStepCallback(u8 taskId)
         break;
     }
 }
+
+#undef tState
+#undef tPrevX
+#undef tPrevY
+#undef tOldBridgeX
+#undef tOldBridgeY
+#undef tBounceTime
 
 //-----------------------------------------------------------------------------
 
@@ -1170,13 +1177,6 @@ enum {
     SLOPE_DATA_SIZE
 };
 #define tSlopeAnimTime(i) data[(i) * SLOPE_DATA_SIZE + SLOPE_DATA_START + SLOPE_TIME]
-
-static const u16 sMuddySlopeMetatiles[] = {
-    METATILE_General_MuddySlope_Frame0,
-    METATILE_General_MuddySlope_Frame3,
-    METATILE_General_MuddySlope_Frame2,
-    METATILE_General_MuddySlope_Frame1
-};
 
 #define SLOPE_ANIM_TIME 32
 #define SLOPE_ANIM_STEP_TIME (SLOPE_ANIM_TIME / (int)ARRAY_COUNT(sMuddySlopeMetatiles))
