@@ -32,16 +32,16 @@ Puzzle_TrickHouseSlipSliding_CandyList:
 `
 
 script Puzzle_TrickHouseSlipSliding_YellowButton {
-	doMossTiles (0)
+	do_rotating_tile (0)
 	setflag (FLAG_TEMP_1)
 }
 
 script Puzzle_TrickHouseSlipSliding_BlueButton {
-	doMossTiles (1)
+	do_rotating_tile (1)
 }
 
 script Puzzle_TrickHouseSlipSliding_RedButton {
-	doMossTiles (4)
+	do_rotating_tile (4)
 }
 
 script Puzzle_TrickHouseSlipSliding_Skeleboy {

@@ -119,7 +119,7 @@ EventScript_PickUpItem::
 	waitfanfare
 	waitmessage
 	@ bufferitemnameplural STR_VAR_2, VAR_0x8004, VAR_0x8005
-	bufferitemname 1, VAR_0x8004, VAR_0x8005
+	bufferitemnameplural 1, VAR_0x8004, VAR_0x8005
 	@ pyramid_inchallenge
 	@ goto_if_eq VAR_RESULT, TRUE, EventScript_PutBattlePyramidItemInBag
 	@ msgbox gText_PutItemInPocket, MSGBOX_DEFAULT

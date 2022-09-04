@@ -10,6 +10,7 @@
 #include "text.h"
 #include "blit.h"
 #include "menu.h"
+#include "mgba.h"
 #include "dynamic_placeholder_text_util.h"
 #include "fonts.h"
 
@@ -1047,7 +1048,7 @@ static u16 RenderText(struct TextPrinter *textPrinter)
                 textPrinter->printerTemplate.currentChar++;
                 currChar |= (*textPrinter->printerTemplate.currentChar << 8);
                 textPrinter->printerTemplate.currentChar++;
-                PlayCry5(currChar, 0);
+                PlayCry_Script(currChar, 0);
                 return RENDER_REPEAT;
             case EXT_CTRL_CODE_SHIFT_TEXT:
                 textPrinter->printerTemplate.currentX = textPrinter->printerTemplate.x + *textPrinter->printerTemplate.currentChar;
@@ -1457,7 +1458,6 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
             case EXT_CTRL_CODE_ENG:
                 isJapanese = 0;
                 break;
-            case EXT_CTRL_CODE_RESET_SIZE:
             case EXT_CTRL_CODE_PAUSE_UNTIL_PRESS:
             case EXT_CTRL_CODE_WAIT_SE:
             case EXT_CTRL_CODE_FILL_WINDOW:
@@ -1609,7 +1609,7 @@ void DetermineWordWrapInStrVar4(u8 fontId, s16 letterSpacing, const u16 wrapWidt
             case EXT_CTRL_CODE_SHIFT_DOWN:
                 ++str;
                 break;
-            case EXT_CTRL_CODE_SIZE:
+            case EXT_CTRL_CODE_FONT:
                 func = GetFontWidthFunc(*++str);
                 if (func == NULL)
                     return;

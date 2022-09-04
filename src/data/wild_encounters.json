@@ -171,7 +171,8 @@
                 "species": "SPECIES_NOSEPASS"
               }
             ]
-          },
+          }
+        },
         {
           "map": "MAP_TRICK_HOUSE_EXT",
           "base_label": "gTrickHouseExt",
@@ -1001,11 +1002,6 @@
           }
         }
       ]
-    },
-    {
-      "label": "gBattlePyramidWildMonHeaders",
-      "for_maps": false,
-      "encounters": []
     },
     {
       "label": "gBattlePyramidWildMonHeaders",

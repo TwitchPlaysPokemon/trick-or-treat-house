@@ -214,13 +214,13 @@ GabbyAndTy_EventScript_FacePlayerNorth::
 
 GabbyAndTy_EventScript_FacePlayerSouth::
 	applymovement VAR_0x8004, GabbyAndTy_Movement_WalkInPlaceUp
-	applymovement VAR_0x8005, Common_Movement_WalkInPlaceFasterUp
+	applymovement VAR_0x8005, Common_Movement_WalkInPlaceUp
 	waitmovement 0
 	return
 
 GabbyAndTy_EventScript_FacePlayerEast::
 	applymovement VAR_0x8004, GabbyAndTy_Movement_WalkInPlaceLeft
-	applymovement VAR_0x8005, Common_Movement_WalkInPlaceFasterLeft
+	applymovement VAR_0x8005, Common_Movement_WalkInPlaceLeft
 	waitmovement 0
 	return
 

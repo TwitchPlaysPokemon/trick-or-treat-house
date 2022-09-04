@@ -140,7 +140,7 @@ Route104_PrettyPetalFlowerShop_Text_ThisIsPrettyPetalFlowerShop:
 	.string "Spreading flowers all over the world!$"
 
 Route104_PrettyPetalFlowerShop_Text_LearnAboutBerries:
-	.string "{PLAYER}{KUN}, would you like to learn about\n"
+	.string "{PLAYER}, would you like to learn about\n"
 	.string "BERRIES?$"
 
 Route104_PrettyPetalFlowerShop_Text_IntroLearnAboutBerries:

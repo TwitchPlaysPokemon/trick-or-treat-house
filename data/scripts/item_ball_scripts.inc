@@ -1,56 +1,56 @@
 
 Common_EventScript_CandyAbundant::
-	giveitem_std ITEM_CANDY_ABUNDANT, 1, 1
+	giveitem ITEM_CANDY_ABUNDANT, 1
 	end
 
 Common_EventScript_CandyCommon::
-	giveitem_std ITEM_CANDY_COMMON, 1, 1
+	giveitem ITEM_CANDY_COMMON, 1
 	end
 
 Common_EventScript_CandyUncommon::
-	giveitem_std ITEM_CANDY_UNCOMMON, 1, 1
+	giveitem ITEM_CANDY_UNCOMMON, 1
 	end
 
 Common_EventScript_CandyHealthy::
-	giveitem_std ITEM_CANDY_HEALTHY, 1, 1
+	giveitem ITEM_CANDY_HEALTHY, 1
 	end
 
 Common_EventScript_CandyRare::
-	giveitem_std ITEM_CANDY_RARE, 1, 1
+	giveitem ITEM_CANDY_RARE, 1
 	end
 
 @ -----------------------------------------------------
 
 Common_EventScript_ItemItemfinder::
-	giveitem_std ITEM_ITEMFINDER, 1, 1
+	giveitem ITEM_ITEMFINDER, 1
 	end
 
 Common_EventScript_CandyLimited01:: @ FLAG_HIDDEN_LIMITED_CANDY_0x6F
-	giveitem_std ITEM_RARE_CANDY, 1, 1    @ Used in Water Temple
+	giveitem ITEM_RARE_CANDY, 1    @ Used in Water Temple
 	end
 
 Common_EventScript_CandyLimited02:: @ FLAG_HIDDEN_LIMITED_CANDY_0x6E
-	giveitem_std ITEM_RARE_CANDY, 1, 1    @ Used in Lost Woods 1
+	giveitem ITEM_RARE_CANDY, 1    @ Used in Lost Woods 1
 	end
 
 Common_EventScript_CandyLimited03:: @ FLAG_HIDDEN_LIMITED_CANDY_0x6D
-	giveitem_std ITEM_RARE_CANDY, 1, 1    @ Used in Ledge Mountain
+	giveitem ITEM_RARE_CANDY, 1    @ Used in Ledge Mountain
 	end
 
 Common_EventScript_CandyLimited04:: @ FLAG_HIDDEN_LIMITED_CANDY_0x6C
-	giveitem_std ITEM_RARE_CANDY, 1, 1    @ Used in Route 110
+	giveitem ITEM_RARE_CANDY, 1    @ Used in Route 110
 	end
 
 Common_EventScript_CandyLimited05:: @ FLAG_HIDDEN_LIMITED_CANDY_0x6B
-	giveitem_std ITEM_RARE_CANDY, 1, 1    @ Used in Petalburg City
+	giveitem ITEM_RARE_CANDY, 1    @ Used in Petalburg City
 	end
 
 Common_EventScript_CandyLimited06:: @ FLAG_HIDDEN_LIMITED_CANDY_0x6A
-	giveitem_std ITEM_RARE_CANDY, 1, 1    @ Used in Fortree City
+	giveitem ITEM_RARE_CANDY, 1    @ Used in Fortree City
 	end
 
 Common_EventScript_CandyLimited07:: @ FLAG_HIDDEN_LIMITED_CANDY_0x69
-	giveitem_std ITEM_RARE_CANDY, 1, 1    @ Used in Lost Woods 4
+	giveitem ITEM_RARE_CANDY, 1    @ Used in Lost Woods 4
 	end
 
 
@@ -60,195 +60,183 @@ Common_EventScript_CandyLimited07:: @ FLAG_HIDDEN_LIMITED_CANDY_0x69
 
 Common_EventScript_ItemChocolateBar::
 Common_EventScript_ItemPotion::
-	giveitem_std ITEM_POTION, 1, 1
+	giveitem ITEM_POTION, 1
 	end
 
 Common_EventScript_ItemStarburst::
 Common_EventScript_ItemAntidote::
-	giveitem_std ITEM_ANTIDOTE, 1, 1
+	giveitem ITEM_ANTIDOTE, 1
 	end
 
 Common_EventScript_ItemLemonDrop::
 Common_EventScript_ItemBurnHeal::
-	giveitem_std ITEM_BURN_HEAL, 1, 1
+	giveitem ITEM_BURN_HEAL, 1
 	end
 
 Common_EventScript_ItemWarheads::
 Common_EventScript_ItemIceHeal::
-	giveitem_std ITEM_ICE_HEAL, 1, 1
+	giveitem ITEM_ICE_HEAL, 1
 	end
 
 Common_EventScript_ItemPretzels::
 Common_EventScript_ItemAwakening::
-	giveitem_std ITEM_AWAKENING, 1, 1
+	giveitem ITEM_AWAKENING, 1
 	end
 
 Common_EventScript_ItemVeroMango::
 Common_EventScript_ItemParlyzHeal::
-	giveitem_std ITEM_PARALYZE_HEAL, 1, 1
+	giveitem ITEM_PARALYZE_HEAL, 1
 	end
 
 Common_EventScript_Item100GrandBar::
 Common_EventScript_ItemHundredGrandBar::
 Common_EventScript_ItemGrandBar::
 Common_EventScript_ItemFullRestore::
-	giveitem_std ITEM_FULL_RESTORE, 1, 1
+	giveitem ITEM_FULL_RESTORE, 1
 	end
 
 Common_EventScript_ItemWhiteChoco::
 Common_EventScript_ItemMaxPotion::
-	giveitem_std ITEM_MAX_POTION, 1, 1
+	giveitem ITEM_MAX_POTION, 1
 	end
 
 Common_EventScript_ItemButterfinger::
 Common_EventScript_ItemHyperPotion::
-	giveitem_std ITEM_HYPER_POTION, 1, 1
+	giveitem ITEM_HYPER_POTION, 1
 	end
 
 Common_EventScript_ItemTwix::
 Common_EventScript_ItemSuperPotion::
-	giveitem_std ITEM_SUPER_POTION, 1, 1
+	giveitem ITEM_SUPER_POTION, 1
 	end
 
 Common_EventScript_ItemReeseCups::
 Common_EventScript_ItemFullHeal::
-	giveitem_std ITEM_FULL_HEAL, 1, 1
+	giveitem ITEM_FULL_HEAL, 1
 	end
 
 Common_EventScript_ItemRevive::
-	@ giveitem_std ITEM_REVIVE, 1, 1
-	giveitem_std ITEM_CANDY_KITKAT, 1, 1
+	@ giveitem ITEM_REVIVE, 1
+	giveitem ITEM_CANDY_KITKAT, 1
 	end
 
 Common_EventScript_ItemFreshWater::
-	giveitem_std ITEM_FRESH_WATER, 1, 1
+	giveitem ITEM_FRESH_WATER, 1
 	end
 
 Common_EventScript_ItemSodaPop::
-	giveitem_std ITEM_SODA_POP, 1, 1
+	giveitem ITEM_SODA_POP, 1
 	end
 
 Common_EventScript_ItemLemonade::
-	giveitem_std ITEM_LEMONADE, 1, 1
+	giveitem ITEM_LEMONADE, 1
 	end
 
 Common_EventScript_ItemMoomooMilk::
-	giveitem_std ITEM_MOOMOO_MILK, 1, 1
+	giveitem ITEM_MOOMOO_MILK, 1
 	end
 
 Common_EventScript_ItemCarrotStick::
 Common_EventScript_ItemEnergyPowder::
-	giveitem_std ITEM_ENERGY_POWDER, 1, 1
+	giveitem ITEM_ENERGY_POWDER, 1
 	end
 
 Common_EventScript_ItemAppleSlice::
 Common_EventScript_ItemEnergyRoot::
-	giveitem_std ITEM_ENERGY_ROOT, 1, 1
+	giveitem ITEM_ENERGY_ROOT, 1
 	end
 
 Common_EventScript_ItemPrune::
 Common_EventScript_ItemHealPowder::
-	giveitem_std ITEM_HEAL_POWDER, 1, 1
+	giveitem ITEM_HEAL_POWDER, 1
 	end
 
 Common_EventScript_ItemCeleryStick::
 Common_EventScript_ItemRivialHerb::
-	giveitem_std ITEM_REVIVAL_HERB, 1, 1
+	giveitem ITEM_REVIVAL_HERB, 1
 	end
 
 Common_EventScript_ItemMaltesers::
 Common_EventScript_ItemEther::
-	giveitem_std ITEM_ETHER, 1, 1
+	giveitem ITEM_ETHER, 1
 	end
 
 Common_EventScript_ItemCadburyCreme::
 Common_EventScript_ItemMaxEther::
-	giveitem_std ITEM_MAX_ETHER, 1, 1
+	giveitem ITEM_MAX_ETHER, 1
 	end
 
 Common_EventScript_ItemSnowball::
 Common_EventScript_ItemElixer::
-	giveitem_std ITEM_ELIXIR, 1, 1
+	giveitem ITEM_ELIXIR, 1
 	end
 
 Common_EventScript_ItemTurkishDelight::
 Common_EventScript_ItemMaxElixer::
-	giveitem_std ITEM_MAX_ELIXIR, 1, 1
+	giveitem ITEM_MAX_ELIXIR, 1
 	end
 
 Common_EventScript_ItemOreoCookie::
 Common_EventScript_ItemLavaCookie::
-	giveitem_std ITEM_LAVA_COOKIE, 1, 1
+	giveitem ITEM_LAVA_COOKIE, 1
 	end
 
 Common_EventScript_ItemMMMinis::
 Common_EventScript_ItemTinyMushroom::
-	giveitem_std ITEM_TINY_MUSHROOM, 1, 1
+	giveitem ITEM_TINY_MUSHROOM, 1
 	end
 
 Common_EventScript_ItemMMBig::
 Common_EventScript_ItemBigMushroom::
-	giveitem_std ITEM_BIG_MUSHROOM, 1, 1
+	giveitem ITEM_BIG_MUSHROOM, 1
 	end
 
 Common_EventScript_ItemGobstopper::
 Common_EventScript_ItemPearl::
-	giveitem_std ITEM_PEARL, 1, 1
+	giveitem ITEM_PEARL, 1
 	end
 
 Common_EventScript_ItemGiantChocoSlab::
 Common_EventScript_ItemBigPearl::
-	giveitem_std ITEM_BIG_PEARL, 1, 1
+	giveitem ITEM_BIG_PEARL, 1
 	end
 
 Common_EventScript_ItemPixieStix::
 Common_EventScript_ItemStardust::
-	giveitem_std ITEM_STARDUST, 1, 1
+	giveitem ITEM_STARDUST, 1
 	end
 
 Common_EventScript_ItemFerreroRocher::
 Common_EventScript_ItemStarPiece::
-	giveitem_std ITEM_STAR_PIECE, 1, 1
+	giveitem ITEM_STAR_PIECE, 1
 	end
 
 Common_EventScript_ItemToblerone::
 Common_EventScript_ItemNugget::
-	giveitem_std ITEM_NUGGET, 1, 1
+	giveitem ITEM_NUGGET, 1
 	end
 
 Common_EventScript_ItemGummyBear::
 Common_EventScript_ItemHeartScale::
-	giveitem_std ITEM_HEART_SCALE, 1, 1
+	giveitem ITEM_HEART_SCALE, 1
 	end
-=======
 
 Common_EventScript_ItemRareCandy::
-	giveitem_std ITEM_RARE_CANDY, 1, 1
+	giveitem ITEM_RARE_CANDY, 1
 	end
 
 Common_EventScript_ItemPokeDoll::
-	giveitem_std ITEM_POKE_DOLL, 1, 1
+	giveitem ITEM_POKE_DOLL, 1
 	end
 
 Common_EventScript_ItemFluffyTail::
-	giveitem_std ITEM_FLUFFY_TAIL, 1, 1
+	giveitem ITEM_FLUFFY_TAIL, 1
 	end
 
 @ -----------------------------------------------------
 
 Common_EventScript_PickupRareItem::
-	giveitem_std ITEM_RARE_CANDY, 1, 1
+	giveitem ITEM_RARE_CANDY, 1
 	end
 
 
-Common_EventScript_ItemFluffyTail::
-	giveitem_std ITEM_FLUFFY_TAIL, 1, 1
-	end
-
-@ -----------------------------------------------------
-
-Common_EventScript_PickupRareItem::
-	giveitem_std ITEM_RARE_CANDY, 1, 1
-	end
-
->>>>>>> 767ec0dec9e2e8eeae26719a8668e155518cf6e3

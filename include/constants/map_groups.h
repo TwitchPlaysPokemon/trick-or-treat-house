@@ -1,7 +1,11 @@
 #ifndef GUARD_CONSTANTS_MAP_GROUPS_H
 #define GUARD_CONSTANTS_MAP_GROUPS_H
 
-// Map Group 0
+//
+// DO NOT MODIFY THIS FILE! It is auto-generated from data/maps/map_groups.json
+//
+
+// MG_PuzzleFramework
 #define MAP_TRICK_HOUSE_DEV_ENTRANCE  (0 | (0 << 8))
 #define MAP_TRICK_HOUSE_EXT           (1 | (0 << 8))
 #define MAP_TRICK_HOUSE_ENTRANCE      (2 | (0 << 8))
@@ -11,7 +15,7 @@
 #define MAP_TRICK_HOUSE_RESTROOM      (6 | (0 << 8))
 #define MAP_TRICK_HOUSE_EXT_GATEHOUSE (7 | (0 << 8))
 
-// Map Group 1
+// MG_PostGame
 #define MAP_TRICK_TREAT_SLATEPORT_CITY1      (0 | (1 << 8))
 #define MAP_TRICK_TREAT_SLATEPORT_CITY2      (1 | (1 << 8))
 #define MAP_SLATEPORT_CITY_HARBOR            (2 | (1 << 8))
@@ -22,7 +26,7 @@
 #define MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_2F (7 | (1 << 8))
 #define MAP_SLATEPORT_CITY_SEASHORE_HOUSE    (8 | (1 << 8))
 
-// Map Group 2
+// MG_TestMaps
 #define MAP_TEST_MAP_HALLWAY       (0 | (2 << 8))
 #define MAP_TEST_LAYOUT_SWITCHING  (1 | (2 << 8))
 #define MAP_TEST_LAYOUT_SWITCHING2 (2 | (2 << 8))
@@ -32,13 +36,13 @@
 #define MAP_TEST_MUSIC_ROOM        (6 | (2 << 8))
 #define MAP_TEST_ACRO_BIKE_MAP     (7 | (2 << 8))
 
-// Map Group 3
+// MG_CutsceneMaps
 #define MAP_MAUVILLE_CITY_CUTSCENE (0 | (3 << 8))
 #define MAP_RUSTBORO_CITY_CUTSCENE (1 | (3 << 8))
 #define MAP_PUZZLE_CREDITS         (2 | (3 << 8))
 #define MAP_ROUTE110_CUTSCENE      (3 | (3 << 8))
 
-// Map Group 4
+// MG_SecretBases
 #define MAP_SECRET_BASE_RED_CAVE1    (0 | (4 << 8))
 #define MAP_SECRET_BASE_BROWN_CAVE1  (1 | (4 << 8))
 #define MAP_SECRET_BASE_BLUE_CAVE1   (2 | (4 << 8))
@@ -64,7 +68,7 @@
 #define MAP_SECRET_BASE_TREE4        (22 | (4 << 8))
 #define MAP_SECRET_BASE_SHRUB4       (23 | (4 << 8))
 
-// Map Group 5
+// MG_SupportMaps
 #define MAP_EMPTY_PUZZLE           (0 | (5 << 8))
 #define MAP_LEDGE_MOUNTAIN_SUPPORT (1 | (5 << 8))
 #define MAP_WATER_TEMPLE_LV1       (2 | (5 << 8))
@@ -77,57 +81,57 @@
 #define MAP_SOOTOPOLIS_GYM_B1F     (9 | (5 << 8))
 #define MAP_THIN_ICE_F2            (10 | (5 << 8))
 
-// Map Group 6
-#define MAP_PETALBURG_CITY   (0 | (6 << 8))
-#define MAP_SLATEPORT_CITY   (1 | (6 << 8))
-#define MAP_MAUVILLE_CITY    (2 | (6 << 8))
-#define MAP_RUSTBORO_CITY    (3 | (6 << 8))
-#define MAP_FORTREE_CITY     (4 | (6 << 8))
-#define MAP_LILYCOVE_CITY    (5 | (6 << 8))
-#define MAP_SOOTOPOLIS_CITY  (6 | (6 << 8))
-#define MAP_EVER_GRANDE_CITY (7 | (6 << 8))
-#define MAP_LITTLEROOT_TOWN  (8 | (6 << 8))
-#define MAP_OLDALE_TOWN      (9 | (6 << 8))
-#define MAP_DEWFORD_TOWN     (10 | (6 << 8))
-#define MAP_LAVARIDGE_TOWN   (11 | (6 << 8))
-#define MAP_FALLARBOR_TOWN   (12 | (6 << 8))
-#define MAP_VERDANTURF_TOWN  (13 | (6 << 8))
-#define MAP_PACIFIDLOG_TOWN  (14 | (6 << 8))
-#define MAP_ROUTE101         (15 | (6 << 8))
-#define MAP_ROUTE102         (16 | (6 << 8))
-#define MAP_ROUTE103         (17 | (6 << 8))
-#define MAP_ROUTE104         (18 | (6 << 8))
-#define MAP_ROUTE105         (19 | (6 << 8))
-#define MAP_ROUTE106         (20 | (6 << 8))
-#define MAP_ROUTE107         (21 | (6 << 8))
-#define MAP_ROUTE108         (22 | (6 << 8))
-#define MAP_ROUTE109         (23 | (6 << 8))
-#define MAP_ROUTE111         (24 | (6 << 8))
-#define MAP_ROUTE112         (25 | (6 << 8))
-#define MAP_ROUTE113         (26 | (6 << 8))
-#define MAP_ROUTE114         (27 | (6 << 8))
-#define MAP_ROUTE115         (28 | (6 << 8))
-#define MAP_ROUTE116         (29 | (6 << 8))
-#define MAP_ROUTE117         (30 | (6 << 8))
-#define MAP_ROUTE118         (31 | (6 << 8))
-#define MAP_ROUTE119         (32 | (6 << 8))
-#define MAP_ROUTE120         (33 | (6 << 8))
-#define MAP_ROUTE121         (34 | (6 << 8))
-#define MAP_ROUTE122         (35 | (6 << 8))
-#define MAP_ROUTE123         (36 | (6 << 8))
-#define MAP_ROUTE124         (37 | (6 << 8))
-#define MAP_ROUTE125         (38 | (6 << 8))
-#define MAP_ROUTE126         (39 | (6 << 8))
-#define MAP_ROUTE127         (40 | (6 << 8))
-#define MAP_ROUTE128         (41 | (6 << 8))
-#define MAP_ROUTE129         (42 | (6 << 8))
-#define MAP_ROUTE130         (43 | (6 << 8))
-#define MAP_ROUTE131         (44 | (6 << 8))
-#define MAP_ROUTE132         (45 | (6 << 8))
-#define MAP_ROUTE133         (46 | (6 << 8))
-#define MAP_ROUTE134         (47 | (6 << 8))
+// MG_ReferenceMaps
+#define MAP_PETALBURG_CITY  (0 | (6 << 8))
+#define MAP_SLATEPORT_CITY  (1 | (6 << 8))
+#define MAP_MAUVILLE_CITY   (2 | (6 << 8))
+#define MAP_RUSTBORO_CITY   (3 | (6 << 8))
+#define MAP_FORTREE_CITY    (4 | (6 << 8))
+#define MAP_LILYCOVE_CITY   (5 | (6 << 8))
+#define MAP_SOOTOPOLIS_CITY (6 | (6 << 8))
+#define                     (7 | (6 << 8))
+#define MAP_LITTLEROOT_TOWN (8 | (6 << 8))
+#define MAP_OLDALE_TOWN     (9 | (6 << 8))
+#define MAP_DEWFORD_TOWN    (10 | (6 << 8))
+#define MAP_LAVARIDGE_TOWN  (11 | (6 << 8))
+#define MAP_FALLARBOR_TOWN  (12 | (6 << 8))
+#define MAP_VERDANTURF_TOWN (13 | (6 << 8))
+#define MAP_PACIFIDLOG_TOWN (14 | (6 << 8))
+#define MAP_ROUTE101        (15 | (6 << 8))
+#define MAP_ROUTE102        (16 | (6 << 8))
+#define MAP_ROUTE103        (17 | (6 << 8))
+#define MAP_ROUTE104        (18 | (6 << 8))
+#define MAP_ROUTE105        (19 | (6 << 8))
+#define MAP_ROUTE106        (20 | (6 << 8))
+#define MAP_ROUTE107        (21 | (6 << 8))
+#define MAP_ROUTE108        (22 | (6 << 8))
+#define MAP_ROUTE109        (23 | (6 << 8))
+#define MAP_ROUTE111        (24 | (6 << 8))
+#define MAP_ROUTE112        (25 | (6 << 8))
+#define MAP_ROUTE113        (26 | (6 << 8))
+#define MAP_ROUTE114        (27 | (6 << 8))
+#define MAP_ROUTE115        (28 | (6 << 8))
+#define MAP_ROUTE116        (29 | (6 << 8))
+#define MAP_ROUTE117        (30 | (6 << 8))
+#define MAP_ROUTE118        (31 | (6 << 8))
+#define MAP_ROUTE119        (32 | (6 << 8))
+#define MAP_ROUTE120        (33 | (6 << 8))
+#define MAP_ROUTE121        (34 | (6 << 8))
+#define MAP_ROUTE122        (35 | (6 << 8))
+#define MAP_ROUTE123        (36 | (6 << 8))
+#define MAP_ROUTE124        (37 | (6 << 8))
+#define MAP_ROUTE125        (38 | (6 << 8))
+#define MAP_ROUTE126        (39 | (6 << 8))
+#define MAP_ROUTE127        (40 | (6 << 8))
+#define MAP_ROUTE128        (41 | (6 << 8))
+#define MAP_ROUTE129        (42 | (6 << 8))
+#define MAP_ROUTE130        (43 | (6 << 8))
+#define MAP_ROUTE131        (44 | (6 << 8))
+#define MAP_ROUTE132        (45 | (6 << 8))
+#define MAP_ROUTE133        (46 | (6 << 8))
+#define MAP_ROUTE134        (47 | (6 << 8))
 
-// Map Group 7
+// MG_SingleMapPuzzles
 #define MAP_PUZZLE_TRICK_HOUSE_TRAPDOORS    (0 | (7 << 8))
 #define MAP_PUZZLE_TRICK_HOUSE_SPINTILES    (1 | (7 << 8))
 #define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL1    (2 | (7 << 8))
@@ -151,7 +155,7 @@
 #define MAP_PUZZLE_THIN_ICE                 (20 | (7 << 8))
 #define MAP_PUZZLE_BLOCK_PUSHING            (21 | (7 << 8))
 
-// Map Group 8
+// MG_LostWoodsPuzzles
 #define MAP_PUZZLE_LOST_WOODS1_ENTRANCE (0 | (8 << 8))
 #define MAP_PUZZLE_LOST_WOODS2_ENTRANCE (1 | (8 << 8))
 #define MAP_PUZZLE_LOST_WOODS3_ENTRANCE (2 | (8 << 8))
@@ -200,14 +204,14 @@
 #define MAP_LOST_WOODS4_ROOM_D4         (45 | (8 << 8))
 #define MAP_LOST_WOODS4_ROOM_D5         (46 | (8 << 8))
 
-// Map Group 9
+// MG_DesertPuzzles
 #define MAP_PUZZLE_DESERT_OASIS (0 | (9 << 8))
 #define MAP_DESERT_EAST         (1 | (9 << 8))
 #define MAP_DESERT_NORTH        (2 | (9 << 8))
 #define MAP_DESERT_WEST         (3 | (9 << 8))
 #define MAP_DESERT_SOUTH        (4 | (9 << 8))
 
-// Map Group 10
+// MG_TrickOrTreatPuzzles
 #define MAP_TRICK_TREAT_PETALBURG_CITY (0 | (10 << 8))
 #define MAP_TRICK_TREAT_MOSSDEEP_CITY  (1 | (10 << 8))
 #define MAP_TRICK_TREAT_FORTREE_CITY   (2 | (10 << 8))
@@ -215,7 +219,7 @@
 #define MAP_TRICK_TREAT_ALTO_MARE2     (4 | (10 << 8))
 #define MAP_TRICK_TREAT_GOLDENROD_CITY (5 | (10 << 8))
 
-// Map Group 11
+// MG_SpotTheDifferencePuzzles
 #define MAP_PUZZLE_SPOT_DIFFERENCE_HALLWAY (0 | (11 << 8))
 #define MAP_PUZZLE_SPOT_DIFFERENCE_1_LEFT  (1 | (11 << 8))
 #define MAP_PUZZLE_SPOT_DIFFERENCE_1_RIGHT (2 | (11 << 8))
@@ -224,7 +228,7 @@
 #define MAP_PUZZLE_SPOT_DIFFERENCE_3_LEFT  (5 | (11 << 8))
 #define MAP_PUZZLE_SPOT_DIFFERENCE_3_RIGHT (6 | (11 << 8))
 
-// Map Group 12
+// MG_ImposterPuzzle
 #define MAP_PUZZLE_SAFARI_IMPOSTERS (0 | (12 << 8))
 #define MAP_SAFARI_ZONE_NORTHWEST   (1 | (12 << 8))
 #define MAP_SAFARI_ZONE_NORTH       (2 | (12 << 8))
@@ -234,12 +238,12 @@
 #define MAP_SAFARI_ZONE_SOUTHEAST   (6 | (12 << 8))
 #define MAP_SAFARI_ZONE_REST_HOUSE  (7 | (12 << 8))
 
-// Map Group 13
+// MG_TheMetaPuzzle
 #define MAP_PUZZLE_META_PUZZLE_CAVE   (0 | (13 << 8))
 #define MAP_META_PUZZLE_EMPTY_PUZZLE  (1 | (13 << 8))
 #define MAP_META_PUZZLE_STRENGTH_ROOM (2 | (13 << 8))
 
-// Map Group 14
+// MG_SingleMapPuzzles2019
 #define MAP_PUZZLE_TRICK_HOUSE_CUT       (0 | (14 << 8))
 #define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL2 (1 | (14 << 8))
 #define MAP_PUZZLE_TRICK_HOUSE_ORIGINAL3 (2 | (14 << 8))

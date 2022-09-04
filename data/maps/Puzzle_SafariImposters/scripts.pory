@@ -17,7 +17,7 @@ Puzzle_SafariImposters_MapScripts:: @ 822BBBB
 Puzzle_SafariImposters_Name:
 	.string "A Safari Among Friends$"
 Puzzle_SafariImposters_Adjective:
-	.string "{SIZE 0}suspicious{RESET_SIZE}$"
+	.string "{FONT_SMALL}suspicious{RESET_SIZE}$"
 Puzzle_SafariImposters_Quip:
 	.string "I'm fascinated by this species of\n"
 	.string "{POKEMON} that can hide in plain sight!\p"
@@ -1951,10 +1951,10 @@ script(local) Puzzle_SafariImposters_PostWrong_Joey {
 script(local) Puzzle_SafariImposters_PostRight_James {
 	if (var(VAR_CONFIG_IMPOSTER) == IMP_JAMES) {
 	msgbox ("So, wait, the imposter had a team\n"
-			"full {SIZE 0}of sharks?!{RESET_SIZE}\p"
-			"… … … … … {SIZE 0}'ts good…{RESET_SIZE} good that\n"
+			"full {FONT_SMALL}of sharks?!{RESET_SIZE}\p"
+			"… … … … … {FONT_SMALL}'ts good…{RESET_SIZE} good that\n"
 			"you got rid of him…\l"
-			"{SIZE 7}Let's never speak of him again…{RESET_SIZE}$", MSGBOX_NPC)
+			"{FONT_NARROW}Let's never speak of him again…{RESET_SIZE}$", MSGBOX_NPC)
 	} else {
 		goto_if_unset(FLAG_DEFEATED_DITTO, Puzzle_SafariImposters_PostWrong_James)
 		callnative(Imposter_LoadRevealStrings)
@@ -1967,8 +1967,8 @@ script(local) Puzzle_SafariImposters_PostRight_James {
 script(local) Puzzle_SafariImposters_PostWrong_James {
 	if (var(VAR_CONFIG_IMPOSTER) == IMP_JAMES) {
 	msgbox ("{PLAYER}, the imposter had a team\n"
-			"full of {SIZE 0}sharks{RESET_SIZE} and not bugs!\p"
-			"I'm a Bug Catcher! {SIZE 0}And I HATE SHARKS!!{RESET_SIZE}\n"
+			"full of {FONT_SMALL}sharks{RESET_SIZE} and not bugs!\p"
+			"I'm a Bug Catcher! {FONT_SMALL}And I HATE SHARKS!!{RESET_SIZE}\n"
 			"How could you even THINK that was me?!$", MSGBOX_NPC)
 	} else {
 		callnative(Imposter_LoadRevealStrings)

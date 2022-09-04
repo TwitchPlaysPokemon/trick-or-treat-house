@@ -56,7 +56,7 @@ EventScript_DoNoIntroDoubleTrainerBattle:: @ Used in Loss Puzzle
 	special HasEnoughMonsForDoubleBattle
 	goto_if_ne VAR_RESULT, 0, EventScript_NoDoubleTrainerBattle
 	special PlayTrainerEncounterMusic
-	PlayTrainerEncounterMusic
+	dotrainerbattle
 	gotopostbattlescript
 
 EventScript_TryDoRematchBattle::

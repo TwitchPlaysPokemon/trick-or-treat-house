@@ -40,23 +40,23 @@ Puzzle_TrickHouseOriginal7_CandyList:
 @ -----------------------------------------------------
 
 Puzzle_TrickHouseOriginal7_EventScript_26E31B:: @ 826E31B
-	doMossTiles 0
+	do_rotating_tile 0
 	end
 
 Puzzle_TrickHouseOriginal7_EventScript_26E331:: @ 826E331
-	doMossTiles 1
+	do_rotating_tile 1
 	end
 
 Puzzle_TrickHouseOriginal7_EventScript_26E347:: @ 826E347
-	doMossTiles 2
+	do_rotating_tile 2
 	end
 
 Puzzle_TrickHouseOriginal7_EventScript_26E35D:: @ 826E35D
-	doMossTiles 3
+	do_rotating_tile 3
 	end
 
 Puzzle_TrickHouseOriginal7_EventScript_26E373:: @ 826E373
-	doMossTiles 4
+	do_rotating_tile 4
 	end
 
 Puzzle_TrickHouseOriginal7_EventScript_Plasmaboy:: @ 826E389

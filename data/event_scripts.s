@@ -27,7 +27,7 @@
 #include "constants/flags.h"
 #include "constants/frontier_util.h"
 #include "constants/game_stat.h"
-#include "constants/item.h"
+@ #include "constants/item.h"
 #include "constants/items.h"
 #include "constants/heal_locations.h"
 #include "constants/layouts.h"
@@ -396,7 +396,6 @@ gStdScripts_End::
 	.include "data/scripts/std_msgbox.inc"
 	.include "data/scripts/trainer_battle.inc"
 	.include "data/scripts/new_game.inc"
-	.include "data/scripts/hall_of_fame.inc"
 
 EventScript_WhiteOut:: @ 8271857
 	end
@@ -406,21 +405,6 @@ EventScript_WhiteOut:: @ 8271857
 	.include "data/scripts/obtain_item.inc"
 	.include "data/scripts/record_mix.inc"
 	.include "data/scripts/pc.inc"
-
-@ scripts/notices.inc? signs.inc? See comment about text/notices.inc
-Common_EventScript_ShowPokemartSign::
-	msgbox gText_PokemartSign, MSGBOX_SIGN
-	end
-
-Common_EventScript_ShowPokemonCenterSign::
-	msgbox gText_PokemonCenterSign, MSGBOX_SIGN
-	end
-
-Common_ShowEasyChatScreen::
-	fadescreen FADE_TO_BLACK
-	special ShowEasyChatScreen
-	fadescreen FADE_FROM_BLACK
-	return
 
 Common_EventScript_ReadyPetalburgGymForBattle::
 	clearflag FLAG_HIDE_PETALBURG_GYM_GREETER
@@ -448,11 +432,6 @@ Common_EventScript_NoRoomForDecor::
 
 Common_EventScript_SetAbnormalWeather::
 	setweather WEATHER_ABNORMAL
-	return
-
-Common_EventScript_PlayGymBadgeFanfare::
-	playfanfare MUS_OBTAIN_BADGE
-	waitfanfare
 	return
 
 Common_EventScript_OutOfCenterPartyHeal::
@@ -512,7 +491,7 @@ RusturfTunnel_EventScript_SetRusturfTunnelOpen::
 
 EventScript_UnusedBoardFerry::
 	delay 30
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceUp
 	waitmovement 0
 	showobjectat OBJ_EVENT_ID_PLAYER, 0
 	delay 30
@@ -552,7 +531,6 @@ Common_EventScript_PlayerHandedOverTheItem::
 	return
 
 	.include "data/scripts/elite_four.inc"
-	.include "data/scripts/movement.inc"
 	.include "data/scripts/check_furniture.inc"
 	.include "data/text/record_mix.inc"
 	.include "data/text/pc.inc"
@@ -561,14 +539,6 @@ Common_EventScript_PlayerHandedOverTheItem::
 	.include "data/text/obtain_item.inc"
 
 @ The below and surf.inc could be split into some text/notices.inc
-gText_PokemartSign::
-	.string "“Selected items for your convenience!”\n"
-	.string "POKéMON MART$"
-
-gText_PokemonCenterSign::
-	.string "“Rejuvenate your tired partners!”\n"
-	.string "POKéMON CENTER$"
-
 gText_MomOrDadMightLikeThisProgram::
 	.string "{STR_VAR_1} might like this program.\n"
 	.string "… … … … … … … … … … … … … … … …\p"
@@ -581,10 +551,6 @@ gText_WhichFloorWouldYouLike::
 gText_SandstormIsVicious::
 	.string "The sandstorm is vicious.\n"
 	.string "It's impossible to keep going.$"
-
-gText_SelectWithoutRegisteredItem::
-	.string "An item in the BAG can be\n"
-	.string "registered to SELECT for easy use.$"
 
 gText_PokemonTrainerSchoolEmail::
 	.string "There's an e-mail from POKéMON TRAINER\n"
@@ -684,9 +650,6 @@ gText_LegendaryFlewAway::
 
 	.include "data/scripts/field_poison.inc"
 
-Common_EventScript_NopReturn::
-	return
-
 @ Unused
 EventScript_CableClub_SetVarResult1::
 	setvar VAR_RESULT, 1
@@ -747,7 +710,6 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/scripts/profile_man.inc"
 	.include "data/scripts/day_care.inc"
 	.include "data/scripts/flash.inc"
-	.include "data/scripts/players_house.inc"
 	.include "data/scripts/berry_blender.inc"
 	.include "data/text/mauville_man.inc"
 	.include "data/text/trainers.inc"
@@ -760,7 +722,6 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/text/braille.inc"
 	.include "data/text/berries.inc"
 	.include "data/text/shoal_cave.inc"
-	.include "data/text/check_furniture.inc"
 	.include "data/scripts/lilycove_lady.inc"
 	.include "data/text/match_call.inc"
 	.include "data/text/battle_dome.inc"

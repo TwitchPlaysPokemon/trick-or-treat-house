@@ -32,7 +32,7 @@ CommonAuthor_M4UsedRollout::
 PuzzleDebug_EventScript_ShowPuzzleSelect::
 	lockall
 	playse SE_SELECT
-	message3 PuzzleDebug_Text_PuzzleSelect
+	messageinstant PuzzleDebug_Text_PuzzleSelect
 	waitmessage
 	callnative ShowPuzzleSelect
 	waitstate @ script pauses here until manually reenabled

@@ -98,8 +98,8 @@ script Puzzle_StealthMission_OnEscapeOrBlackout {
 	callnative(ClearTrainerFlags)
 	// Since part of the puzzle is getting back, reset on blackout
 	clearflag(FLAG_TRICK_HOUSE_SCROLL_READ)
-	takeitem(ITEM_STRENGTH_ITEM, 1)
-	takeitem(ITEM_CARD_KEY, 1)
+	removeitem(ITEM_STRENGTH_ITEM, 1)
+	removeitem(ITEM_CARD_KEY, 1)
 	clearflag(FLAG_PUZZLE_ITEM_0)
 	
 	setflag(FLAG_DID_BLACKOUT)
@@ -292,7 +292,7 @@ script Puzzle_StealthMission_CheckFinished {
 	if (var(VAR_TIMES_SEEN_BY_TRAINER) == 0) {
 		message(Puzzle_StealthMission_Text_LookerFinish_Best)
 		waitmessage
-		giveitem_std(ITEM_CANDY_TOBLERONE, 2)
+		giveitem(ITEM_CANDY_TOBLERONE, 2)
 	}
 	elif (var(VAR_TIMES_SEEN_BY_TRAINER) < 3) {
 		message(Puzzle_StealthMission_Text_LookerFinish_Good)
@@ -319,7 +319,7 @@ script Puzzle_StealthMission_CheckFinished {
 ///////////////////////////////////////////////////////
 
 script Puzzle_StealthMission_PickupKeycard {
-	giveitem_std(ITEM_CARD_KEY, 1, 1)
+	giveitem(ITEM_CARD_KEY, 1)
 }
 script Puzzle_StealthMission_SignScript_OpenDoorA {
 	lock

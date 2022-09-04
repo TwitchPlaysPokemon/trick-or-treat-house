@@ -49,7 +49,7 @@ script TrickHouseExt_Gatehouse_ItemGet {
 		
 		waitfanfare
 		waitmessage
-		bufferitemname (1, VAR_0x8004, VAR_0x8005)
+		bufferitemnameplural (1, VAR_0x8004, VAR_0x8005)
 		
 		messagewordwrap (gText_PutItemInPocket)
 		waitmessage

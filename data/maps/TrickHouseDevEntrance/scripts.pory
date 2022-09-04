@@ -15,9 +15,9 @@ script TrickHouseDevEntrance_EventScript_Red {
 script TrickHouseDevEntrance_EventScript_SpecialBall {
 	lock
 	if (flag(FLAG_SYS_POKEMON_GET) == FALSE) {
-		givemon (SPECIES_QUILAVA, 50, 0, 0, 0, 0)
-		givemon (SPECIES_TROPIUS, 50, 0, 0, 0, 0)
-		givemon (SPECIES_LANTURN, 50, 0, 0, 0, 0)
+		givemon (SPECIES_QUILAVA, 50)
+		givemon (SPECIES_TROPIUS, 50)
+		givemon (SPECIES_LANTURN, 50)
 		
 		// Quilava Moveset
 		setmonmove(0, 1, 150) // Splash
@@ -34,9 +34,9 @@ script TrickHouseDevEntrance_EventScript_SpecialBall {
 script TrickHouseDevEntrance_EventScript_Pokeball {
 	lock
 	if (flag(FLAG_SYS_POKEMON_GET) == FALSE) {
-		givemon (SPECIES_GROVYLE, 30, 0, 0, 0, 0)
-		givemon (SPECIES_COMBUSKEN, 30, 0, 0, 0, 0)
-		givemon (SPECIES_MARSHTOMP, 30, 0, 0, 0, 0)
+		givemon (SPECIES_GROVYLE, 30)
+		givemon (SPECIES_COMBUSKEN, 30)
+		givemon (SPECIES_MARSHTOMP, 30)
 		
 		#Grovyle Moveset
 		setmonmove(0, 0, 348) # Leaf Blade

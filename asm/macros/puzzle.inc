@@ -90,14 +90,14 @@ GATE_ORIENTATION_270 = 3
 
 @ -----------------------------------------------------
 
-.macro doMossTiles x:req
+.macro do_rotating_tile x:req
 playse SE_MU_PACHI
 waitse
 playse SE_TU_SAA
-mosstiles_initTiles 1
-mosstiles_moveEvents \x
+initrotatingtilepuzzle 1
+moverotatingtileobjects \x
 waitmovement 0
-mosstiles_turnEvents
+turnrotatingtileobjects
 waitmovement 0
-mosstiles_finishTiles
+freerotatingtilepuzzle
 .endm

@@ -10,10 +10,6 @@ gText_PutItemInPocket:: @ Must be printed with messagewordwrap
 gText_PlayerFoundOneItem:: @ Must be printed with messagewordwrap
 	.string "{PLAYER} found {STR_VAR_1} {STR_VAR_2}!$"
 
-gText_TooBadBagIsFull::
-	.string "Too bad!\n"
-	.string "The BAG is full…$"
-
 gText_PlayerPutItemInBag::
 	.string "{PLAYER} put away the {STR_VAR_2}\n"
 	.string "in the BAG.$"

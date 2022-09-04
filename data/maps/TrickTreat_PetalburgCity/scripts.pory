@@ -166,7 +166,7 @@ script TrickTreat_PetalburgCity_CandyGiver_Nurse {
 	faceplayer
 	msgbox ("Happy Halloween!\n"
 			"Please take some candy!$")
-	giveitem_std (ITEM_CANDY_ABUNDANT, 2)
+	giveitem(ITEM_CANDY_ABUNDANT, 2)
 	msgbox ("The {POKEMON} CENTER is always there\n"
 			"for trainers everywhere.\p"
 			"Have a good night!$")
@@ -180,7 +180,7 @@ script TrickTreat_PetalburgCity_CandyGiver_Mart {
 	faceplayer
 	msgbox ("Trick or Treat!\n"
 			"Please take some candy!$")
-	giveitem_std (ITEM_CANDY_ABUNDANT, 2)
+	giveitem(ITEM_CANDY_ABUNDANT, 2)
 	msgbox ("Be sure to drop by the MART for all your\n"
 			"{POKEMON} supply needs!\p"
 			"Have a good night!$")
@@ -200,7 +200,7 @@ script TrickTreat_PetalburgCity_CandyGiver_Norman {
 	msgbox ("Maybe I'll see you in my gym\n"
 			"for a badge in near the future.\p"
 			"But for now, this'll have to do.$")
-	giveitem_std (ITEM_CANDY_UNCOMMON, 1)
+	giveitem(ITEM_CANDY_UNCOMMON, 1)
 	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
 	setflag (FLAG_PUZZLE_22)
 	release
@@ -218,7 +218,7 @@ script TrickTreat_PetalburgCity_CandyGiver_Youngster {
 	setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
 	msgbox ("Do you know how hard it was to win\n"
 			"these off Norman? Sigh. Here.$")
-	giveitem_std (ITEM_CANDY_COMMON, 2)
+	giveitem(ITEM_CANDY_COMMON, 2)
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
 	setflag (FLAG_PUZZLE_23)
 	release
@@ -235,7 +235,7 @@ script TrickTreat_PetalburgCity_CandyGiver_WallysHouse {
 			"Splendid! Splendid!$")
 	setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
 	msgbox ("Here's something healthy for winning!$")
-	giveitem_std (ITEM_CANDY_HEALTHY, 2)
+	giveitem(ITEM_CANDY_HEALTHY, 2)
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
 	setflag (FLAG_PUZZLE_24)
 	release
@@ -247,7 +247,7 @@ script TrickTreat_PetalburgCity_CandyGiver_House {
 	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
 	msgbox ("Happy Halloween!\n"
 			"That's a good costume. Here you go!$")
-	giveitem_std (ITEM_CANDY_ABUNDANT, 4)
+	giveitem(ITEM_CANDY_ABUNDANT, 4)
 	msgbox ("Have a good night!$")
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
 	setflag (FLAG_PUZZLE_25)

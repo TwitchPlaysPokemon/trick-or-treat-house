@@ -2,14 +2,14 @@
 - [X] eventObject->unk3_3 -> disableReflection -> hideReflection
 - [X] gRamScriptRetAddr -> gRamScriptPtr
 - [ ] Layouts.json and map_groups.json - double check
-- [ ] Check m4a_1.s. We replaced it with a new version and they moved it into src. But also we're gonna merge in the music expansion, which also changes it.
+- [x] Check m4a_1.s. We replaced it with a new version and they moved it into src. But also we're gonna merge in the music expansion, which also changes it.
 - [X] VAR_ICE_STEP_COUNT -> VAR_STEP_TRIGGER
 - [X] Remove apprentice
 - [ ] constants/items.h - Convert tabs to spaces
 - [ ] GetCollisionFlagsAtCoords - make flag for mismatch == 2
 - [ ] MovementAction_RevealTrainer_Step0 - is it MOVEMENT_TYPE_HIDDEN2 or MOVEMENT_TYPE_BURIED?
 - [ ] Rename MOVEMENT_TYPE_HIDDEN2 to something else?
-- [ ] mosstiles:
+- [X] mosstiles:
 	.4byte ScrCmd_mosstiles_moveEvents     .4byte ScrCmd_moverotatingtileobjects   @ 0xd3
 	.4byte ScrCmd_mosstiles_turnEvents     .4byte ScrCmd_turnrotatingtileobjects   @ 0xd4
 	.4byte ScrCmd_mosstiles_initTiles      .4byte ScrCmd_initrotatingtilepuzzle    @ 0xd5
@@ -80,7 +80,7 @@
 - [ ] GetLocationMusic -> make map script
 - [ ] Decapitalize contest_hall.inc
 - [ ] Fix field moves to instead of saying "Used move!", the text box reads a description of what's happening.
-- [ ] Wipe out all {KUN} again
+- [X] Wipe out all {KUN} again
 - [ ] Intro credit graphics may need to be added to headers.
 - [ ] map_name_popup.c - Modify and use the defines??
 - [ ] load_save.c - Remove all the DMA stuff, get rid of the DMA structs

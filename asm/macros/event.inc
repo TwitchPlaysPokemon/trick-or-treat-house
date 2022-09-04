@@ -641,7 +641,7 @@
 	@ If localId is 0, then the id of the last-moved object will be used instead. If the specified object
 	@ is not currently being manipulated with applymovement, then this command does nothing.
 	@ If no map is specified, then the current map is used.
-	.macro waitmovement localId:req, map
+	.macro waitmovement localId=0, map
 		.ifb \map
 			.byte 0x51
 			.2byte \localId
@@ -1109,7 +1109,6 @@
 	.byte 0x80
 	stringvar \stringVarId
 	.2byte \item
-	.2byte \quantity
 	.endm
 
 	@ Writes the name of the specified decoration to the specified buffer.

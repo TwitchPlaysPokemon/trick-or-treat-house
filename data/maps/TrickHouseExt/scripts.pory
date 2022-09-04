@@ -481,10 +481,10 @@ script TrickHouseExt_CommonOfferTrade {
 	}
 	buffernumberstring2(0, VAR_REQUEST_AMT)
 	bufferitemnameplural(1, VAR_REQUEST, VAR_REQUEST_AMT)
-	takeitem(VAR_REQUEST, VAR_REQUEST_AMT)
+	removeitem(VAR_REQUEST, VAR_REQUEST_AMT)
 	message("{PLAYER} traded away\n"
 			"{STR_VAR_1} {STR_VAR_2}$")
-	giveitem_std(VAR_OFFER, VAR_OFFER_AMT)
+	giveitem(VAR_OFFER, VAR_OFFER_AMT)
 	message(2)
 	waitmessage
 	waitbuttonpress
@@ -867,5 +867,5 @@ script TrickHouseExt_EventScript_TestDoor {
 
 script TrickHouseExt_EventScript_BuriedItem1 {
 	msgbox( "There's an item buried here…$")
-	giveitem_std (ITEM_TM27_RETURN, 1, 1)
+	giveitem(ITEM_TM27_RETURN, 1)
 }

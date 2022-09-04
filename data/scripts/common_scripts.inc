@@ -34,6 +34,11 @@ Common_Movement_ExclamationMarkAndWait:: @ 8272598
 	delay_16
 	step_end
 
+Common_Movement_Delay32:
+	delay_16
+	delay_16
+	step_end
+
 Common_Movement_Delay48: @ 827259A
 	delay_16
 	delay_16
@@ -199,6 +204,22 @@ Common_Movement_WalkRight3:
 	walk_right
 	walk_right
 	walk_right
+	step_end
+
+Common_Movement_WalkUp4:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+Common_Movement_WalkUp6:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
 	step_end
 
 Common_Movement_WalkUpOutOfFrame:

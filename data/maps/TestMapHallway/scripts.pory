@@ -58,21 +58,21 @@ script TestMapHallway_GiveAllCandy {
 }
 
 script TestMapHallway_GiveTestBears {
-	giveitem_std(ITEM_CANDY_KINGCHOCNUT, 4, 1)
+	giveitem(ITEM_CANDY_KINGCHOCNUT, 4)
 }
 
 script TestMapHallway_GiveTestItems3 {
-	giveitem_std (ITEM_LEFTOVERS, 1, 1)
+	giveitem(ITEM_LEFTOVERS, 1)
 }
 
 script TestMapHallway_GiveTestItems4 {
-	giveitem_std (ITEM_LEFTOVERS, 2, 1)
+	giveitem(ITEM_LEFTOVERS, 2)
 }
 
 script TestMapHallway_GiveTestItems5 {
-	giveitem_std (ITEM_SOFT_SAND, 1, 1)
+	giveitem(ITEM_SOFT_SAND, 1)
 }
 
 script TestMapHallway_GiveTestItems6 {
-	giveitem_std (ITEM_SOFT_SAND, 3, 1)
+	giveitem(ITEM_SOFT_SAND, 3)
 }

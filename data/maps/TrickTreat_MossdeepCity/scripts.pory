@@ -499,7 +499,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Nurse {
 	faceplayer
 	msgbox ("Happy Halloween!\n"
 			"Please take some candy!$")
-	giveitem_std (ITEM_CANDY_ABUNDANT, 2)
+	giveitem(ITEM_CANDY_ABUNDANT, 2)
 	msgbox ("The {POKEMON} CENTER is always there\n"
 			"for trainers everywhere.\p"
 			"Have a good night!$")
@@ -513,7 +513,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Mart {
 	faceplayer
 	msgbox ("Trick or Treat!\n"
 			"Please take some candy!$")
-	giveitem_std (ITEM_CANDY_ABUNDANT, 2)
+	giveitem(ITEM_CANDY_ABUNDANT, 2)
 	msgbox ("Be sure to drop by the MART for all your\n"
 			"{POKEMON} supply needs!\p"
 			"Have a good night!$")
@@ -540,7 +540,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Leader {
 			"LIZA: Here's some candy!\p"
 			"TATE: Maybe we'll see you…\n"
 			"LIZA: Later in the year!$")
-	giveitem_std (ITEM_CANDY_UNCOMMON, 2)
+	giveitem(ITEM_CANDY_UNCOMMON, 2)
 	# PuzzleCommon_EventScript_StandingCandyGiverLeave, but for two
 	closemessage
 	applymovement (4, Common_Movement_WalkInPlaceUp)
@@ -582,10 +582,10 @@ script TrickTreat_MossdeepCity_CandyGiver_Steven {
 		setflag (FLAG_BEAT_STEVEN)
 		msgbox ("If you keep this up, you might just\n"
 			"be champion some day.$")
-		giveitem_std (ITEM_CANDY_TOBLERONE, 3)
+		giveitem(ITEM_CANDY_TOBLERONE, 3)
 	} else {
 		msgbox("Very well, I'll just give you the treat.$")
-		giveitem_std (ITEM_CANDY_TOBLERONE, 1)
+		giveitem(ITEM_CANDY_TOBLERONE, 1)
 	}
 	msgbox ("Happy Halloween!$")
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
@@ -600,7 +600,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Cook {
 	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
 	msgbox ("Boo! Hahahahahaha!\n"
 			"Here's some treats I just whipped up!$")
-	giveitem_std (ITEM_CANDY_ABUNDANT, 4)
+	giveitem(ITEM_CANDY_ABUNDANT, 4)
 	msgbox ("Time to make some more!$")
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
 	setflag (FLAG_PUZZLE_24)
@@ -614,7 +614,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Lady {
 	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
 	msgbox ("Trick or Treat!\n"
 			"Take your pick!$")
-	giveitem_std (ITEM_CANDY_UNCOMMON, 3)
+	giveitem(ITEM_CANDY_UNCOMMON, 3)
 	msgbox ("Have a good night!$")
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
 	setflag (FLAG_PUZZLE_25)
@@ -632,7 +632,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Expert {
 	setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
 	msgbox ("You're so full of potential!\n"
 			"Here's a treat!$")
-	giveitem_std (ITEM_CANDY_HEALTHY, 3)
+	giveitem(ITEM_CANDY_HEALTHY, 3)
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
 	setflag (FLAG_PUZZLE_26)
 	release
@@ -650,7 +650,7 @@ script TrickTreat_MossdeepCity_CandyGiver_Camper {
 	setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
 	msgbox ("I'm not giving you ALL of my haul.\n"
 			"You can have this.$")
-	giveitem_std (ITEM_CANDY_UNCOMMON, 1)
+	giveitem(ITEM_CANDY_UNCOMMON, 1)
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
 	setflag (FLAG_PUZZLE_27)
 	release
@@ -666,9 +666,9 @@ script TrickTreat_MossdeepCity_CandyGiver_Mother {
 			"didn't they?\p"
 			"They're grounded until Febuary.\n"
 			"Take all the candy you want.$")
-	giveitem_std (ITEM_CANDY_CHOCOLATE, 35)
-	giveitem_std (ITEM_CANDY_BLACKTHUNDER, 15)
-	giveitem_std (ITEM_CANDY_KITKAT, 3)
+	giveitem(ITEM_CANDY_CHOCOLATE, 35)
+	giveitem(ITEM_CANDY_BLACKTHUNDER, 15)
+	giveitem(ITEM_CANDY_KITKAT, 3)
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
 	setflag (FLAG_PUZZLE_28)
 	release
@@ -681,7 +681,7 @@ script TrickTreat_MossdeepCity_CandyGiver_RepentantBoy {
 	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
 	msgbox ("My daddy told me to give these to you\n"
 			"and to say sorry…$")
-	giveitem_std (ITEM_CANDY_SNICKERS, 2)
+	giveitem(ITEM_CANDY_SNICKERS, 2)
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
 	setflag (FLAG_PUZZLE_29)
 	release
