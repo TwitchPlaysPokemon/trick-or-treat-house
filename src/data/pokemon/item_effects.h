@@ -191,17 +191,17 @@ const u8 gItemEffect_HealPP10[7] = {
 };
 
 const u8 gItemEffect_MaxEther[7] = {
-    [4] = ITEM4_HEAL_PP_ONE | ITEM4_HEAL_PP,
+    [4] = ITEM4_HEAL_PP_ONE | ITEM4_HEAL_PP_ALL,
     [6] = ITEM6_HEAL_PP_FULL,
 };
 
 const u8 gItemEffect_Elixir[7] = {
-    [4] = ITEM4_HEAL_PP,
+    [4] = ITEM4_HEAL_PP_ALL,
     [6] = 10, // Amount of PP to recover
 };
 
 const u8 gItemEffect_MaxElixir[7] = {
-    [4] = ITEM4_HEAL_PP,
+    [4] = ITEM4_HEAL_PP_ALL,
     [6] = ITEM6_HEAL_PP_FULL,
 };
 
@@ -377,7 +377,7 @@ const u8 gItemEffect_AspearBerry[6] = {
 };
 
 const u8 gItemEffect_LeppaBerry[7] = {
-    [4] = ITEM4_HEAL_PP_ONE | ITEM4_HEAL_PP,
+    [4] = ITEM4_HEAL_PP_ONE | ITEM4_HEAL_PP_ALL,
     [6] = 10, // Amount of PP to recover
 };
 
@@ -510,7 +510,7 @@ const u8 gItemEffect_TamatoBerry[10] = {
 //     [ITEM_POMEG_BERRY - ITEM_POTION] = gItemEffect_PomegBerry,
 //     [ITEM_KELPSY_BERRY - ITEM_POTION] = gItemEffect_KelpsyBerry,
 //     [ITEM_QUALOT_BERRY - ITEM_POTION] = gItemEffect_QualotBerry,
-//     [ITEM_HONDEW_BERRY - ITEM_POTION] = gItemEffect_HondrewBerry,
+//     [ITEM_HONDEW_BERRY - ITEM_POTION] = gItemEffect_HondewBerry,
 //     [ITEM_GREPA_BERRY - ITEM_POTION] = gItemEffect_GrepaBerry,
 //     [ITEM_TAMATO_BERRY - ITEM_POTION] = gItemEffect_TamatoBerry,
 //     [LAST_BERRY_INDEX - ITEM_POTION] = NULL

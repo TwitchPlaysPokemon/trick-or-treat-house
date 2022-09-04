@@ -27,6 +27,8 @@
 - [ ] Remove unused event object graphics:
 	gObjectEventGraphicsInfo_LinkBrendan
 	gObjectEventGraphicsInfo_LinkMay
+- [ ] Figure out if sBagSpriteAnimTable and specifically the ex-ball, now candy sprite animation should be moved, 
+      and what even is going on with that I don't know...
 - [ ] Palette Tags:
 	OBJ_EVENT_PAL_TAG_BRENDAN                 0x1100       EVENT_OBJ_PAL_TAG_8
 	OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION      0x1101       EVENT_OBJ_PAL_TAG_9

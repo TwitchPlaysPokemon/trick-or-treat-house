@@ -5075,7 +5075,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                         effectFlags &= ~(ITEM4_REVIVE >> 2);
                         break;
 
-                    case 3: // ITEM4_HEAL_PP
+                    case 3: // ITEM4_HEAL_PP_ALL
                         if (!(effectFlags & (ITEM4_HEAL_PP_ONE >> 3)))
                         {
                             // Heal PP for all moves
@@ -5339,7 +5339,7 @@ u8 GetItemEffectParamOffset(u16 itemId, u8 effectByte, u8 effectBit)
                             return offset;
                         offset++;
                         break;
-                    case 3: // ITEM4_HEAL_PP
+                    case 3: // ITEM4_HEAL_PP_ALL
                         if (i == effectByte && (effectFlags & effectBit))
                             return offset;
                         offset++;

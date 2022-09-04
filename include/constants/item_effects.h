@@ -32,7 +32,7 @@
 #define ITEM4_EV_HP             0x1
 #define ITEM4_EV_ATK            0x2
 #define ITEM4_HEAL_HP           0x4
-#define ITEM4_HEAL_PP           0x8
+#define ITEM4_HEAL_PP_ALL           0x8
 #define ITEM4_HEAL_PP_ONE       0x10
 #define ITEM4_PP_UP             0x20
 #define ITEM4_REVIVE            0x40
@@ -58,7 +58,7 @@
 #define ITEM6_HEAL_HP_HALF   ((u8) -2)
 #define ITEM6_HEAL_HP_LVL_UP ((u8) -3)
 
-// Special PP recovery amounts for ITEM4_HEAL_PP
+// Special PP recovery amounts for ITEM4_HEAL_PP_ALL
 #define ITEM6_HEAL_PP_FULL   0x7F
 
 // Amount of EV modified by ITEM4_EV_HP, ITEM4_EV_ATK, ITEM5_EV_DEF, ITEM5_EV_SPEED, ITEM5_EV_SPDEF and ITEM5_EV_SPATK

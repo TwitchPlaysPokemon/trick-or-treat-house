@@ -2068,7 +2068,7 @@ const struct Item gItems[] =
         .description = sHondewBerryDesc,
         .pocket = POCKET_BERRIES,
         .type = ITEM_USE_PARTY_MENU,
-        .itemEffect = gItemEffect_HondrewBerry,
+        .itemEffect = gItemEffect_HondewBerry,
         .fieldUseFunc = ItemUseOutOfBattle_ReduceEV,
     },
 

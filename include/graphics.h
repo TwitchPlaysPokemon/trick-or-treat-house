@@ -4038,6 +4038,7 @@ extern const u32 gIntroRayquazaClouds_Tilemap[];
 extern const u16 gIntroGameFreakTextFade_Pal[];
 extern const u32 gIntroBrendan_Gfx[];
 extern const u32 gIntroMay_Gfx[];
+extern const u32 gIntroTreekid_Gfx[];
 extern const u16 gIntroPlayer_Pal[];
 extern const u16 gIntroFlygon_Pal[];
 extern const u32 gIntroFlygon_Gfx[];

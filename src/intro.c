@@ -1370,11 +1370,11 @@ static void Task_Scene2_CreateSprites(u8 taskId)
 {
     u8 spriteId;
 
-    switch (gIntroCharacterGender) {
+    switch (sIntroCharacterGender) {
         default:
-        case GENDER_M: LoadCompressedSpriteSheet(gSpriteSheet_IntroBrendan); break;
-        case GENDER_F: LoadCompressedSpriteSheet(gSpriteSheet_IntroMay); break;
-        case GENDER_N: LoadCompressedSpriteSheet(gSpriteSheet_IntroTreekid); break;
+        case GENDER_M: LoadCompressedSpriteSheet(gSpriteSheet_CreditsBrendan); break;
+        case GENDER_F: LoadCompressedSpriteSheet(gSpriteSheet_CreditsMay); break;
+        case GENDER_N: LoadCompressedSpriteSheet(gSpriteSheet_CreditsTreekid); break;
     }
     LoadCompressedSpriteSheet(gSpriteSheet_IntroBicycle);
     LoadCompressedSpriteSheet(gSpriteSheet_IntroFlygon);
@@ -1390,7 +1390,7 @@ static void Task_Scene2_CreateSprites(u8 taskId)
     CreateSprite(&sSpriteTemplate_Manectric, DISPLAY_WIDTH + 32, 128, 0);
     CreateSprite(&sSpriteTemplate_Torchic, DISPLAY_WIDTH + 48, 110, 1);
 
-    switch (gIntroCharacterGender) {
+    switch (sIntroCharacterGender) {
         default:
         case GENDER_M: spriteId = CreateIntroBrendanSprite(DISPLAY_WIDTH + 32, 100); break;
         case GENDER_F: spriteId = CreateIntroMaySprite(DISPLAY_WIDTH + 32, 100); break;
