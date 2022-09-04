@@ -1879,6 +1879,66 @@
             "primary_tileset": "gTileset_Building",
             "secondary_tileset": "gTileset_SeashoreHouse",
             "width": 15
+        },
+        {
+            "id": "LAYOUT_CONTEST_HALL",
+            "name": "ContestHall_Layout",
+            "width": 15,
+            "height": 11,
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Contest",
+            "border_filepath": "data/layouts/ContestHall/border.bin",
+            "blockdata_filepath": "data/layouts/ContestHall/map.bin"
+        },
+        {
+            "id": "LAYOUT_CONTEST_HALL_BEAUTY",
+            "name": "ContestHallBeauty_Layout",
+            "width": 15,
+            "height": 11,
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Contest",
+            "border_filepath": "data/layouts/ContestHallBeauty/border.bin",
+            "blockdata_filepath": "data/layouts/ContestHallBeauty/map.bin"
+        },
+        {
+            "id": "LAYOUT_CONTEST_HALL_TOUGH",
+            "name": "ContestHallTough_Layout",
+            "width": 15,
+            "height": 11,
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Contest",
+            "border_filepath": "data/layouts/ContestHallTough/border.bin",
+            "blockdata_filepath": "data/layouts/ContestHallTough/map.bin"
+        },
+        {
+            "id": "LAYOUT_CONTEST_HALL_COOL",
+            "name": "ContestHallCool_Layout",
+            "width": 15,
+            "height": 11,
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Contest",
+            "border_filepath": "data/layouts/ContestHallCool/border.bin",
+            "blockdata_filepath": "data/layouts/ContestHallCool/map.bin"
+        },
+        {
+            "id": "LAYOUT_CONTEST_HALL_SMART",
+            "name": "ContestHallSmart_Layout",
+            "width": 15,
+            "height": 11,
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Contest",
+            "border_filepath": "data/layouts/ContestHallSmart/border.bin",
+            "blockdata_filepath": "data/layouts/ContestHallSmart/map.bin"
+        },
+        {
+            "id": "LAYOUT_CONTEST_HALL_CUTE",
+            "name": "ContestHallCute_Layout",
+            "width": 15,
+            "height": 11,
+            "primary_tileset": "gTileset_General",
+            "secondary_tileset": "gTileset_Contest",
+            "border_filepath": "data/layouts/ContestHallCute/border.bin",
+            "blockdata_filepath": "data/layouts/ContestHallCute/map.bin"
         }
     ],
     "layouts_table_label": "gMapLayouts"

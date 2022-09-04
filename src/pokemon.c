@@ -1350,8 +1350,6 @@ const struct SpindaSpot gSpindaSpotGraphics[] =
     {.x = 34, .y = 26, .image = INCBIN_U16("graphics/spinda_spots/spot_3.bin")}
 };
 
-#include "data/pokemon/item_effects.h"
-
 const s8 gNatureStatTable[NUM_NATURES][NUM_NATURE_STATS] =
 {
                        // Atk Def Spd Sp.Atk Sp.Def
