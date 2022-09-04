@@ -975,7 +975,7 @@ static void ForceSaveGameTask(u8 taskId)
     }
 
     DestroyTask(taskId);
-    EnableBothScriptContexts();
+    ScriptContext_Enable();
 }
 
 static void ShowSaveMessage(const u8 *message, u8 (*saveCallback)(void))

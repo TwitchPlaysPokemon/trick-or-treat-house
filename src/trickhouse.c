@@ -8,7 +8,7 @@
 #include "task.h"
 #include "credits.h"
 #include "bg.h"
-#include "alloc.h"
+#include "malloc.h"
 #include "window.h"
 #include "text.h"
 #include "text_window.h"
@@ -80,7 +80,7 @@ void RunPuzzleSetupScript()
 		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_SETUP_SCRIPT);
 		if (script != NULL)
 		{
-			ScriptContext2_RunNewScript(script);
+			RunScriptImmediately(script);
 		}
 		// 
 		FlagSet(FLAG_PUZZLE_HAS_STARTED);
@@ -114,7 +114,7 @@ void RunPuzzleTeardownScript()
 		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_TEARDOWN_SCRIPT);
 		if (script != NULL)
 		{
-			ScriptContext2_RunNewScript(script);
+			RunScriptImmediately(script);
 		}
 		
 		FlagClear(FLAG_PUZZLE_HAS_STARTED);
@@ -129,7 +129,7 @@ void RunPuzzleTeardownScript()
 		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_EXIT_SCRIPT);
 		if (script != NULL)
 		{
-			ScriptContext2_RunNewScript(script);
+			RunScriptImmediately(script);
 		}
 	}
 }
@@ -142,7 +142,7 @@ void RunPuzzleBlackoutScript()
 		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_BLACKOUT_SCRIPT);
 		if (script != NULL)
 		{
-			ScriptContext2_RunNewScript(script);
+			RunScriptImmediately(script);
 		}
 	}
 }
@@ -155,7 +155,7 @@ void RunPuzzleEscapeRopeScript()
 		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_ESCAPE_SCRIPT);
 		if (script != NULL)
 		{
-			ScriptContext2_RunNewScript(script);
+			RunScriptImmediately(script);
 		}
 	}
 }
@@ -171,7 +171,7 @@ void ClearPuzzleEventData(struct ScriptContext *ctx)
 {
 	memset(gSaveBlock1Ptr->flags + 0x04, 0, 0x0A);
 	memset(gSaveBlock1Ptr->vars  + 0x20, 0, 0x40);
-	memset(gSaveBlock1Ptr->flags + (FLAG_TRAINER_FLAG_START >> 3), 0, TRAINERS_PERMAP_END >> 3);
+	memset(gSaveBlock1Ptr->flags + (TRAINER_FLAGS_START >> 3), 0, TRAINERS_PERMAP_END >> 3);
 	memset(gSaveBlock1Ptr->flags + (FLAG_HIDDEN_ITEMS_START >> 3), 0, 0x20 >> 3);
 	FlagClear(FLAG_PUZZLE_HAS_STARTED);
 	FlagClear(FLAG_PUZZLE_HAS_COMPLETED);
@@ -181,7 +181,7 @@ void ClearPuzzleEventData(struct ScriptContext *ctx)
 
 void ClearTrainerFlags(struct ScriptContext *ctx)
 {
-	memset(gSaveBlock1Ptr->flags + (FLAG_TRAINER_FLAG_START >> 3), 0, TRAINERS_PERMAP_END >> 3);
+	memset(gSaveBlock1Ptr->flags + (TRAINER_FLAGS_START >> 3), 0, TRAINERS_PERMAP_END >> 3);
 }
 
 // Input VAR_0x8000 = Puzzle to compare to
@@ -661,7 +661,7 @@ void GetOrGenerateStarterPokemon(struct ScriptContext *ctx)
 	gSpecialVar_0x8001 = GetBoxMonData(mon, MON_DATA_SPECIES, NULL);
 	
 	GetBoxMonData(mon, MON_DATA_NICKNAME, gStringVar1);
-    StringGetEnd10(gStringVar1);
+    StringGet_Nickname(gStringVar1);
 }
 
 void ShowStarterMonSummaryScreen(struct ScriptContext *ctx)
@@ -670,7 +670,7 @@ void ShowStarterMonSummaryScreen(struct ScriptContext *ctx)
 	struct BoxPokemon* mon = GetBoxedMonPtr(STARTER_BOX, slot);
 	if (gSpecialVar_MonBoxPos >= 12) return;
 	
-	ShowPokemonSummaryScreen(PSS_MODE_BOX, mon, 0, 0, CB2_ReturnToField);
+	ShowPokemonSummaryScreen(SUMMARY_MODE_BOX, mon, 0, 0, CB2_ReturnToField);
 	gFieldCallback = FieldCB_ContinueScriptHandleMusic;
 }
 
@@ -826,7 +826,7 @@ static void Task_InitPuzzleSelect(u8 taskId)
     DrawStdWindowFrame(tWindow, FALSE);
 	FillWindowPixelBuffer(tWindow, PIXEL_FILL(1));
 	RedrawPuzzleSelectWindow(tWindow, tSelected, tMode);
-    schedule_bg_copy_tilemap_to_vram(0);
+    ScheduleBgCopyTilemapToVram(0);
 
     gTasks[taskId].func = Task_PuzzleSelect;
 }
@@ -871,7 +871,7 @@ exit:
 	RemoveWindow(tWindow);
 	ClearStdWindowAndFrame(GetMapNamePopUpWindowId(), TRUE);
 	RemoveMapNamePopUpWindow();
-	EnableBothScriptContexts();
+	ScriptContext_Enable();
 	DestroyTask(taskId);
 }
 
@@ -909,7 +909,7 @@ static void RedrawSongSelectWindow(u8 windowId, u16 num)
 {
 	const u8* txt = DebugScript_Text_SoundTest_SFX;
 	num--;
-	if (num >= MUS_TETSUJI) txt = DebugScript_Text_SoundTest_BGM;
+	if (num >= MUS_LITTLEROOT_TEST) txt = DebugScript_Text_SoundTest_BGM;
 	if (num >= PH_TRAP_BLEND) txt = DebugScript_Text_SoundTest_PH;
 	
 	ConvertIntToDecimalStringN(gStringVar1, num, 2, 3);
@@ -927,7 +927,7 @@ static void Task_InitMusicSelect(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
 	
-	tSelected = MUS_TETSUJI + 1;
+	tSelected = MUS_LITTLEROOT_TEST + 1;
 	tMax = PH_NURSE_SOLO + 1;
 	tWindow = AddWindow(&sSoundTestWinTemplate);
 	tMapMusic = GetCurrentMapMusic();
@@ -936,7 +936,7 @@ static void Task_InitMusicSelect(u8 taskId)
     DrawStdWindowFrame(tWindow, FALSE);
 	FillWindowPixelBuffer(tWindow, PIXEL_FILL(1));
 	RedrawSongSelectWindow(tWindow, tSelected);
-    schedule_bg_copy_tilemap_to_vram(0);
+    ScheduleBgCopyTilemapToVram(0);
 
     gTasks[taskId].func = Task_MusicSelect;
 }
@@ -964,7 +964,7 @@ static void Task_MusicSelect(u8 taskId)
         ClearStdWindowAndFrameToTransparent(tWindow, 0);
 		ClearWindowTilemap(tWindow);
 		RemoveWindow(tWindow);
-		EnableBothScriptContexts();
+		ScriptContext_Enable();
 		ResetMapMusic();
 		PlayNewMapMusic(tMapMusic);
 		DestroyTask(taskId);
@@ -1014,7 +1014,7 @@ static void Task_InitNumberSelect(u8 taskId)
     DrawStdWindowFrame(tWindow, FALSE);
 	FillWindowPixelBuffer(tWindow, PIXEL_FILL(1));
 	RedrawNumberSelectWindow(tWindow, tSelected);
-    schedule_bg_copy_tilemap_to_vram(0);
+    ScheduleBgCopyTilemapToVram(0);
 
     gTasks[taskId].func = Task_NumberSelect;
 }
@@ -1034,7 +1034,7 @@ static void Task_NumberSelect(u8 taskId)
         ClearStdWindowAndFrameToTransparent(tWindow, 0);
 		ClearWindowTilemap(tWindow);
 		RemoveWindow(tWindow);
-		EnableBothScriptContexts();
+		ScriptContext_Enable();
 		DestroyTask(taskId);
     }
     else if (gMain.newKeys & B_BUTTON)
@@ -1044,7 +1044,7 @@ static void Task_NumberSelect(u8 taskId)
         ClearStdWindowAndFrameToTransparent(tWindow, 0);
 		ClearWindowTilemap(tWindow);
 		RemoveWindow(tWindow);
-		EnableBothScriptContexts();
+		ScriptContext_Enable();
 		DestroyTask(taskId);
     }
 }

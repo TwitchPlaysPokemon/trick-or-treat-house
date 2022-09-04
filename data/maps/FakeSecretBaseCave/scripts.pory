@@ -48,7 +48,7 @@ script FakeSecretBaseCave_MistressIntro {
 	waitmessage
 	applymovement(LID_MISTRESS, FakeSecretBaseCave_MistressIntro_Movement2)
 	waitmovement(LID_MISTRESS)
-	message("The {COLOR RED}TRICK MISTRESS{COLOR DARK_GREY}!{PAUSE 30}\p$")
+	message("The {COLOR RED}TRICK MISTRESS{COLOR DARK_GRAY}!{PAUSE 30}\p$")
 	waitmessage
 	applymovement(LID_MISTRESS, Common_Movement_FaceRight)
 	message("Hm? Gym? Oh, right, Lavaridge. Yeah,\n"
@@ -71,12 +71,12 @@ script FakeSecretBaseCave_MistressIntro {
 			"I've got a big idea… but I don't have\n"
 			"the resources to do it yet…\p"
 			"I need you to try and find me… the…\n"
-			"{COLOR BLUE}essence{COLOR DARK_GREY}… of the puzzles you do tonight.\p"
+			"{COLOR BLUE}essence{COLOR DARK_GRAY}… of the puzzles you do tonight.\p"
 			"You'll know when you see them.\n"
 			"They're quite out of place.\p"
 			"I want you to pick them up and bring\n"
 			"them to me if you can.\p"
-			"If you bring me at least {COLOR RED}eight{COLOR DARK_GREY}\n"
+			"If you bring me at least {COLOR RED}eight{COLOR DARK_GRAY}\n"
 			"by the end of the night…\p$")
 	waitmessage
 	applymovement(LID_MISTRESS, Common_Movement_FaceRight)

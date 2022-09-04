@@ -20,6 +20,9 @@
 #include "constants/field_effects.h"
 #include "constants/trainer_types.h"
 
+// Copied from event_object_movement.c
+#define OBJ_EVENT_PAL_TAG_BRENDAN                 0x1100
+
 extern const struct SpritePalette sObjectEventSpritePalettes[];
 extern const struct SpritePalette gFieldEffectObjectPaletteInfo0;
 

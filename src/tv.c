@@ -5484,7 +5484,6 @@ static void DoTVShowPokemonAngler(void)
 
     show = &gSaveBlock1Ptr->tvShows[gSpecialVar_0x8004];
     gSpecialVar_Result = FALSE;
-<<<<<<< HEAD
     if (show->pokemonAngler.nBites < show->pokemonAngler.nFails)
         sTVShowState = 0;
     else
@@ -5563,8 +5562,8 @@ static void DoTVShowTodaysRivalTrainer(void)
             // case LAYOUT_SS_TIDAL_CORRIDOR:
             // case LAYOUT_SS_TIDAL_LOWER_DECK:
             // case LAYOUT_SS_TIDAL_ROOMS:
-                sTVShowState = 10;
-                break;
+            //     sTVShowState = 10;
+            //     break;
             default:
                 sTVShowState = 9;
                 break;

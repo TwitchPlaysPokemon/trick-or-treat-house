@@ -538,7 +538,7 @@ static void BuyMenuPrintItemDescriptionAndShowItemIcon(s32 item, bool8 onInit, s
     sShopData->iconSlot ^= 1;
     if (item != LIST_CANCEL)
     {
-        if (sMartInfo.martType == MART_TYPE_NORMAL)
+        if (sMartInfo.martType == MART_TYPE_NORMAL) {
             description = ItemId_GetDescription(item);
             StringExpandPlaceholders(gStringVar4, description);
             description = gStringVar4;
