@@ -956,13 +956,21 @@ script Puzzle_SafariImposters_OnLoad_ImposterSearch {
 	setobjectmovementtype(LID_FRIEND_A, MOVEMENT_TYPE_FACE_UP_AND_RIGHT)
 }
 
+script(local) Puzzle_SafariImposters_ShowImposterMenu {
+	loaddynamic(0, Puzzle_SafariImposters_Menu_Report)
+	loaddynamic(1, Puzzle_SafariImposters_Menu_Battle)
+	loaddynamic(2, Puzzle_SafariImposters_Menu_Cancel)
+	multichoice(20, 6, 3, FALSE)
+	return
+}
+
 script(local) Puzzle_SafariImposters_Search_Joey {
 	lock
 	faceplayer
 	msgbox ("{JOEY}?: Hey, {PLAYER}, did they find\n"
 			"the DITTO yet? What's up?$")
 	addvar(VAR_SEARCH_STATE, 1)
-	multichoice(20, 6, 116, FALSE)
+	call(Puzzle_SafariImposters_ShowImposterMenu)
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
 			loadbyte(0, IMP_JOEY)
@@ -998,7 +1006,7 @@ script(local) Puzzle_SafariImposters_Search_James {
 			"yet? And do you know why they're being\l"
 			"all weird?$")
 	addvar(VAR_SEARCH_STATE, 1)
-	multichoice(20, 6, 116, FALSE)
+	call(Puzzle_SafariImposters_ShowImposterMenu)
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
 			loadbyte(0, IMP_JAMES)
@@ -1035,7 +1043,7 @@ script(local) Puzzle_SafariImposters_Search_Irene {
 	msgbox ("{IRENE}?: What's going on, {PLAYER}?\n"
 			"Did they find the DITTO yet?$")
 	addvar(VAR_SEARCH_STATE, 1)
-	multichoice(20, 6, 116, FALSE)
+	call(Puzzle_SafariImposters_ShowImposterMenu)
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
 			loadbyte(0, IMP_IRENE)
@@ -1071,7 +1079,7 @@ script(local) Puzzle_SafariImposters_Search_Wally {
 	msgbox ("{WALLY}?: Something feels off, {PLAYER}.\n"
 			"What's going on?$")
 	addvar(VAR_SEARCH_STATE, 1)
-	multichoice(20, 6, 116, FALSE)
+	call(Puzzle_SafariImposters_ShowImposterMenu)
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
 			loadbyte(0, IMP_WALLY)
@@ -1107,7 +1115,7 @@ script(local) Puzzle_SafariImposters_Search_Brendan {
 	msgbox ("{BRENDAN}?: Did they find the DITTO yet,\n"
 			"{PLAYER}? They're being coy when I ask.$")
 	addvar(VAR_SEARCH_STATE, 1)
-	multichoice(20, 6, 116, FALSE)
+	call(Puzzle_SafariImposters_ShowImposterMenu)
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
 			loadbyte(0, IMP_BRENDAN)
@@ -1141,7 +1149,7 @@ script(local) Puzzle_SafariImposters_Search_May {
 	msgbox ("{MAY}?: What's going on?\n"
 			"Why is everyone acting so odd?$")
 	addvar(VAR_SEARCH_STATE, 1)
-	multichoice(20, 6, 116, FALSE)
+	call(Puzzle_SafariImposters_ShowImposterMenu)
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
 			loadbyte(0, IMP_MAY)
@@ -1175,7 +1183,7 @@ script(local) Puzzle_SafariImposters_Search_Alex {
 	msgbox ("{ALEX}?: Uh, what's up, {PLAYER}?\n"
 			"Is there something wrong?$")
 	addvar(VAR_SEARCH_STATE, 1)
-	multichoice(20, 6, 116, FALSE)
+	call(Puzzle_SafariImposters_ShowImposterMenu)
 	switch (var(VAR_RESULT)) {
 		case 0: // Talk
 			loadbyte(0, IMP_ALEX)

@@ -48,7 +48,12 @@ SecretBase_EventScript_PCCancel::
 	end
 
 SecretBase_EventScript_PCMainMenuWithRegister::
-	multichoice 0, 0, MULTI_BASE_PC_WITH_REGISTRY, FALSE
+	loaddynamic 0, gText_Decoration2
+	loaddynamic 1, gText_PackUp
+	loaddynamic 2, gText_Registry
+	loaddynamic 3, gText_Exit
+	multichoice 0, 0, 4, FALSE
+	@ multichoice 0, 0, MULTI_BASE_PC_WITH_REGISTRY, FALSE
 	switch VAR_RESULT
 	case 0, SecretBase_EventScript_PCDecorationMenu
 	case 1, SecretBase_EventScript_PCPackUp
@@ -58,7 +63,11 @@ SecretBase_EventScript_PCMainMenuWithRegister::
 	end
 
 SecretBase_EventScript_PCMainMenuWithoutRegister::
-	multichoice 0, 0, MULTI_BASE_PC_NO_REGISTRY, FALSE
+	loaddynamic 0, gText_Decoration2
+	loaddynamic 1, gText_PackUp
+	loaddynamic 2, gText_Exit
+	multichoice 0, 0, 3, FALSE
+	@ multichoice 0, 0, MULTI_BASE_PC_NO_REGISTRY, FALSE
 	switch VAR_RESULT
 	case 0, SecretBase_EventScript_PCDecorationMenu
 	case 1, SecretBase_EventScript_PCPackUp
@@ -97,7 +106,12 @@ SecretBase_EventScript_RecordMixingPC::
 SecretBase_EventScript_PCRegisterMenu::
 	message SecretBase_Text_WhatWouldYouLikeToDo
 	waitmessage
-	multichoice 0, 0, MULTI_REGISTER_MENU, FALSE
+	loaddynamic 0, gMenuText_Register
+	loaddynamic 1, gText_Registry
+	loaddynamic 2, gText_Information
+	loaddynamic 3, gText_Cancel2
+	multichoice 0, 0, 4, FALSE
+	@ multichoice 0, 0, MULTI_REGISTER_MENU, FALSE
 	switch VAR_RESULT
 	case 0, SecretBase_EventScript_PCRegister
 	case 1, SecretBase_EventScript_PCRegistryMenu

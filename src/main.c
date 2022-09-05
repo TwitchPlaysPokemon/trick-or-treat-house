@@ -31,6 +31,7 @@ static void HBlankIntr(void);
 static void VCountIntr(void);
 static void SerialIntr(void);
 static void IntrDummy(void);
+void SeedRngWithRtc(void);
 
 const u8 gGameVersion = GAME_VERSION;
 
@@ -216,16 +217,6 @@ void EnableVCountIntrAtLine150(void)
     SetGpuReg(REG_OFFSET_DISPSTAT, gpuReg | DISPSTAT_VCOUNT_INTR);
     EnableInterrupts(INTR_FLAG_VCOUNT);
 }
-
-// FRLG commented this out to remove RTC, however Emerald didn't undo this!
-#ifdef BUGFIX
-static void SeedRngWithRtc(void)
-{
-    u32 seed = RtcGetMinuteCount();
-    seed = (seed >> 16) ^ (seed & 0xFFFF);
-    SeedRng(seed);
-}
-#endif
 
 void InitKeys(void)
 {

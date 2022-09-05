@@ -10,6 +10,7 @@
 #include "data.h"
 #include "decoration.h"
 #include "decoration_inventory.h"
+#include "dynamic_placeholder_text_util.h"
 #include "event_data.h"
 #include "field_door.h"
 #include "field_effect.h"
@@ -807,7 +808,7 @@ bool8 ScrCmd_switchmaplayout(struct ScriptContext *ctx)
     u16 toId = VarGet(ScriptReadHalfword(ctx)) - 1;
     u16 fromId = gSaveBlock1Ptr->mapLayoutId - 1;
     
-    if (fromId == toId) return; //Do nothing
+    if (fromId == toId) return FALSE; //Do nothing
     { // Sanity checks
         if (gMapLayouts[fromId] == NULL)
             return ShowScriptError(ctx, 1, ErrStr_switchmaplayout);
@@ -1455,8 +1456,8 @@ bool8 ScrCmd_messagewordwrap(struct ScriptContext *ctx)
     if (msg == NULL)
         msg = (const u8 *)ctx->data[0];
     
-    StringExpandPlaceholders(gStringVar4, msg);
-    mgba_printf(MGBA_LOG_INFO, "doing messagewordwrap: %S", gStringVar4);
+    StringExpandPlaceholders(gStringBuffer, msg);
+    mgba_printf(MGBA_LOG_INFO, "doing messagewordwrap: %S", gStringBuffer);
     DetermineWordWrapInStrVar4(1, 1, 210);
     ShowFieldMessageFromBuffer();
     return FALSE;
@@ -1512,13 +1513,17 @@ bool8 ScrCmd_multichoice(struct ScriptContext *ctx)
     u8 multichoiceId = ScriptReadByte(ctx);
     bool8 ignoreBPress = ScriptReadByte(ctx);
 
+    // mgba_printf(MGBA_LOG_INFO, "multichoice");
+    mgba_printf(MGBA_LOG_INFO, "multichoice: %d, %d, %d, %d", left, top, multichoiceId, ignoreBPress);
     if (ScriptMenu_Multichoice(left, top, multichoiceId, ignoreBPress) == TRUE)
     {
+        mgba_printf(MGBA_LOG_INFO, "multichoice success!");
         ScriptContext_Stop();
         return TRUE;
     }
     else
     {
+        mgba_printf(MGBA_LOG_INFO, "multichoice failed!");
         return FALSE;
     }
 }
@@ -1542,14 +1547,12 @@ bool8 ScrCmd_multichoicedefault(struct ScriptContext *ctx)
     }
 }
 
-bool8 ScrCmd_drawbox(struct ScriptContext *ctx)
+bool8 ScrCmd_loaddynamic(struct ScriptContext *ctx)
 {
-    /*u8 left = ScriptReadByte(ctx);
-    u8 top = ScriptReadByte(ctx);
-    u8 right = ScriptReadByte(ctx);
-    u8 bottom = ScriptReadByte(ctx);
-
-    MenuDrawTextWindow(left, top, right, bottom);*/
+    u8 id = ScriptReadByte(ctx);
+    u8 *ptr = (u8 *)ScriptReadWord(ctx);
+    
+    DynamicPlaceholderTextUtil_SetPlaceholderPtr(id, ptr);
     return FALSE;
 }
 
@@ -1645,16 +1648,16 @@ bool8 ScrCmd_braillemessage(struct ScriptContext *ctx)
     // + 6 for the 6 bytes at the start of a braille message (brailleformat macro)
     // In RS these bytes are used to position the text and window, but
     // in Emerald they are unused and position is calculated below instead
-    StringExpandPlaceholders(gStringVar4, ptr + 6);
+    StringExpandPlaceholders(gStringBuffer, ptr + 6);
 
-    width = GetStringWidth(FONT_BRAILLE, gStringVar4, -1) / 8u;
+    width = GetStringWidth(FONT_BRAILLE, gStringBuffer, -1) / 8u;
 
     if (width > 28)
         width = 28;
 
-    for (i = 0, height = 4; gStringVar4[i] != EOS;)
+    for (i = 0, height = 4; gStringBuffer[i] != EOS;)
     {
-        if (gStringVar4[i++] == CHAR_NEWLINE)
+        if (gStringBuffer[i++] == CHAR_NEWLINE)
             height += 3;
     }
 
@@ -1682,7 +1685,7 @@ bool8 ScrCmd_braillemessage(struct ScriptContext *ctx)
     DrawStdWindowFrame(sBrailleWindowId, FALSE);
     PutWindowTilemap(sBrailleWindowId);
     FillWindowPixelBuffer(sBrailleWindowId, PIXEL_FILL(1));
-    AddTextPrinterParameterized(sBrailleWindowId, FONT_BRAILLE, gStringVar4, xText, yText, TEXT_SKIP_DRAW, NULL);
+    AddTextPrinterParameterized(sBrailleWindowId, FONT_BRAILLE, gStringBuffer, xText, yText, TEXT_SKIP_DRAW, NULL);
     CopyWindowToVram(sBrailleWindowId, COPYWIN_FULL);
     return FALSE;
 }
@@ -1820,7 +1823,7 @@ bool8 ScrCmd_vbuffermessage(struct ScriptContext *ctx)
 {
     const u8 *ptr = (u8 *)(ScriptReadWord(ctx) - sAddressOffset);
 
-    StringExpandPlaceholders(gStringVar4, ptr);
+    StringExpandPlaceholders(gStringBuffer, ptr);
     return FALSE;
 }
 

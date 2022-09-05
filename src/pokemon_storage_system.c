@@ -9189,8 +9189,8 @@ static void PrintItemDescription(void)
     else
         description = ItemId_GetDescription(sStorage->displayMonItemId);
     
-    StringExpandPlaceholders(gStringVar4, description);
-    description = gStringVar4;
+    StringExpandPlaceholders(gStringBuffer, description);
+    description = gStringBuffer;
     FillWindowPixelBuffer(WIN_ITEM_DESC, PIXEL_FILL(1));
     AddTextPrinterParameterized5(WIN_ITEM_DESC, FONT_NORMAL, description, 4, 0, 0, NULL, 0, 1);
 }

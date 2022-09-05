@@ -8,7 +8,11 @@ ProfileMan_EventScript_Man::
 
 ProfileMan_EventScript_AskToSeeProfile::
 	msgbox ProfileMan_Text_MayISeeYourProfile, MSGBOX_DEFAULT
-	multichoice 17, 6, MULTI_YESNOINFO_2, FALSE
+	loaddynamic 0, gText_Yes
+	loaddynamic 1, gText_No
+	loaddynamic 2, gText_Info2
+	multichoice 17, 6, 3, FALSE
+	@ multichoice 17, 6, MULTI_YESNOINFO_2, FALSE
 	switch VAR_RESULT
 	case 0, ProfileMan_EventScript_CreateProfile
 	case 1, ProfileMan_EventScript_DeclineShowProfile
@@ -58,7 +62,11 @@ ProfileMan_EventScript_GivenProfileBefore::
 
 ProfileMan_EventScript_AskToSeeNewProfile::
 	msgbox ProfileMan_Text_MayISeeYourNewProfile, MSGBOX_DEFAULT
-	multichoice 17, 6, MULTI_YESNOINFO_2, FALSE
+	loaddynamic 0, gText_Yes
+	loaddynamic 1, gText_No
+	loaddynamic 2, gText_Info2
+	multichoice 17, 6, 3, FALSE
+	@ multichoice 17, 6, MULTI_YESNOINFO_2, FALSE
 	switch VAR_RESULT
 	case 0, ProfileMan_EventScript_CreateNewProfile
 	case 1, ProfileMan_EventScript_DeclineNewProfile

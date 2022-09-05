@@ -249,20 +249,34 @@
 #define TEXT_DYNAMIC_COLOR_5    0xE // Usually blue-green
 #define TEXT_DYNAMIC_COLOR_6    0xF // Usually cerulean
 
-#define PLACEHOLDER_ID_UNKNOWN       0x0
-#define PLACEHOLDER_ID_PLAYER        0x1
-#define PLACEHOLDER_ID_STRING_VAR_1  0x2
-#define PLACEHOLDER_ID_STRING_VAR_2  0x3
-#define PLACEHOLDER_ID_STRING_VAR_3  0x4
-#define PLACEHOLDER_ID_KUN           0x5
-#define PLACEHOLDER_ID_RIVAL         0x6
-#define PLACEHOLDER_ID_VERSION       0x7
-#define PLACEHOLDER_ID_AQUA          0x8
-#define PLACEHOLDER_ID_MAGMA         0x9
-#define PLACEHOLDER_ID_ARCHIE        0xA
-#define PLACEHOLDER_ID_MAXIE         0xB
-#define PLACEHOLDER_ID_KYOGRE        0xC
-#define PLACEHOLDER_ID_GROUDON       0xD
+#define PLACEHOLDER_ID_UNKNOWN       0x00
+#define PLACEHOLDER_ID_PLAYER        0x01
+#define PLACEHOLDER_ID_STRING_VAR_1  0x02
+#define PLACEHOLDER_ID_STRING_VAR_2  0x03
+#define PLACEHOLDER_ID_STRING_VAR_3  0x04
+#define PLACEHOLDER_ID_STRING_VAR_4  0x05
+#define PLACEHOLDER_ID_STRING_VAR_5  0x06
+#define PLACEHOLDER_ID_STRING_VAR_6  0x07
+
+#define PLACEHOLDER_ID_TRICK_MASTER   0x0F
+#define PLACEHOLDER_ID_RIVAL          0x10
+#define PLACEHOLDER_ID_BRENDAN        0x11
+#define PLACEHOLDER_ID_MAY            0x12
+#define PLACEHOLDER_ID_ALEX           0x13
+#define PLACEHOLDER_ID_WALLY          0x14
+#define PLACEHOLDER_ID_YOUNGSTER      0x15
+#define PLACEHOLDER_ID_JOEY           0x15
+#define PLACEHOLDER_ID_JAMES          0x16
+#define PLACEHOLDER_ID_LINK           0x16
+#define PLACEHOLDER_ID_IRENE          0x17
+#define PLACEHOLDER_ID_FAIRY          0x17
+
+#define PLACEHOLDER_ID_PUZZLE_NAME       0x20
+#define PLACEHOLDER_ID_PUZZLE_AUTHOR     0x21
+#define PLACEHOLDER_ID_PUZZLE_ADJECTIVE  0x22
+#define PLACEHOLDER_ID_PUZZLE_QUIP       0x23
+#define PLACEHOLDER_ID_TOT_RULE          0x24
+#define PLACEHOLDER_ID_BOULDER           0x25
 
 // battle placeholders are located in battle_message.h
 

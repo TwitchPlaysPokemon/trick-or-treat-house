@@ -13,7 +13,10 @@
 EWRAM_DATA u8 gStringVar1[0x100] = {0};
 EWRAM_DATA u8 gStringVar2[0x100] = {0};
 EWRAM_DATA u8 gStringVar3[0x100] = {0};
-EWRAM_DATA u8 gStringVar4[0x3E8] = {0};
+EWRAM_DATA u8 gStringVar4[0x100] = {0};
+EWRAM_DATA u8 gStringVar5[0x100] = {0};
+EWRAM_DATA u8 gStringVar6[0x100] = {0};
+EWRAM_DATA u8 gStringBuffer[0x3E8] = {0};
 
 EWRAM_DATA u8 gStringWorking[0x100] = {0};
 
@@ -555,6 +558,21 @@ static const u8 *ExpandPlaceholder_StringVar3(void)
     return gStringVar3;
 }
 
+static const u8 *ExpandPlaceholder_StringVar4(void)
+{
+    return gStringVar4;
+}
+
+static const u8 *ExpandPlaceholder_StringVar5(void)
+{
+    return gStringVar5;
+}
+
+static const u8 *ExpandPlaceholder_StringVar6(void)
+{
+    return gStringVar6;
+}
+
 extern const u8 gText_ExpandedPlaceholder_Brendan[];
 extern const u8 gText_ExpandedPlaceholder_May[];
 static const u8 *ExpandPlaceholder_RivalName(void)
@@ -563,12 +581,6 @@ static const u8 *ExpandPlaceholder_RivalName(void)
         return gText_ExpandedPlaceholder_May;
     else
         return gText_ExpandedPlaceholder_Brendan;
-}
-
-extern const u8 gText_ExpandedPlaceholder_Pokemon[];
-static const u8 *ExpandPlaceholder_Pokemon(void)
-{
-    return gText_ExpandedPlaceholder_Pokemon;
 }
 
 extern const u8 gText_ExpandedPlaceholder_TrickMasterShiny[];
@@ -689,29 +701,46 @@ const u8 *GetExpandedPlaceholder(u32 id)
 
     static const ExpandPlaceholderFunc funcs[] =
     {
-        ExpandPlaceholder_Empty,       // 00
-        ExpandPlaceholder_PlayerName,
-        ExpandPlaceholder_StringVar1,
-        ExpandPlaceholder_StringVar2,
-        ExpandPlaceholder_StringVar3,  // 04
-        ExpandPlaceholder_Pokemon,
-        ExpandPlaceholder_TrickMaster,
-        ExpandPlaceholder_RivalName,
-        ExpandPlaceholder_Youngster,
-        ExpandPlaceholder_Wally,       // 09
-        ExpandPlaceholder_Link,        // 0A
-        ExpandPlaceholder_FairyGirl,   // 0B
-        ExpandPlaceholder_Brendan,     // 0C
-        ExpandPlaceholder_May,         // 0D
-        ExpandPlaceholder_Alex,        // 0E
-        ExpandPlaceholder_Empty,       // 0F
+        [0x00] = ExpandPlaceholder_Empty,
+        [0x01] = ExpandPlaceholder_PlayerName,
+        [0x02] = ExpandPlaceholder_StringVar1,
+        [0x03] = ExpandPlaceholder_StringVar2,
+        [0x04] = ExpandPlaceholder_StringVar3,
+        [0x05] = ExpandPlaceholder_StringVar4,
+        [0x06] = ExpandPlaceholder_StringVar5,
+        [0x07] = ExpandPlaceholder_StringVar6,
+        [0x08] = ExpandPlaceholder_Empty,
+        [0x09] = ExpandPlaceholder_Empty,
+        [0x0A] = ExpandPlaceholder_Empty,
+        [0x0B] = ExpandPlaceholder_Empty,
+        [0x0C] = ExpandPlaceholder_Empty,
+        [0x0D] = ExpandPlaceholder_Empty,
+        [0x0E] = ExpandPlaceholder_Empty,
+        [0x0F] = ExpandPlaceholder_TrickMaster,
         
-        ExpandPlaceholder_PuzzleName,       // 10
-        ExpandPlaceholder_PuzzleAuthor,     // 11
-        ExpandPlaceholder_PuzzleAdjective,  // 12
-        ExpandPlaceholder_PuzzleQuip,       // 13
-        ExpandPlaceholder_ToTRuleNo,        // 14
-        ExpandPlaceholder_Boulder,          // 15
+        [0x10] = ExpandPlaceholder_RivalName,
+        [0x11] = ExpandPlaceholder_Brendan,
+        [0x12] = ExpandPlaceholder_May,
+        [0x13] = ExpandPlaceholder_Alex,
+        [0x14] = ExpandPlaceholder_Wally,
+        [0x15] = ExpandPlaceholder_Youngster,
+        [0x16] = ExpandPlaceholder_Link,
+        [0x17] = ExpandPlaceholder_FairyGirl,
+        [0x18] = ExpandPlaceholder_Empty,
+        [0x19] = ExpandPlaceholder_Empty,
+        [0x1A] = ExpandPlaceholder_Empty,
+        [0x1B] = ExpandPlaceholder_Empty,
+        [0x1C] = ExpandPlaceholder_Empty,
+        [0x1D] = ExpandPlaceholder_Empty,
+        [0x1E] = ExpandPlaceholder_Empty,
+        [0x1F] = ExpandPlaceholder_Empty,
+        
+        [0x20] = ExpandPlaceholder_PuzzleName,
+        [0x21] = ExpandPlaceholder_PuzzleAuthor,
+        [0x22] = ExpandPlaceholder_PuzzleAdjective,
+        [0x23] = ExpandPlaceholder_PuzzleQuip,
+        [0x24] = ExpandPlaceholder_ToTRuleNo,
+        [0x25] = ExpandPlaceholder_Boulder,
         
     };
 

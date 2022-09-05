@@ -926,7 +926,7 @@
 	.byte \x
 	.byte \y
 	.endm
-
+	
 	@ Displays a multichoice box from which the user can choose a selection, and blocks script execution until a selection is made.
 	@ Lists of options are predefined (sMultichoiceLists) and the one to be used is specified with multichoiceId.
 	@ If ignoreBPress is set to a non-zero value, then the user will not be allowed to back out of the multichoice with the B button.
@@ -973,13 +973,11 @@
 	.2byte \Y
 	.endm
 
-	@ Nopped in Emerald, but still consumes parameters.
-	.macro erasebox left:req, top:req, right:req, bottom:req
+	@ 
+	.macro loaddynamic idx:req, ptr:req
 	.byte 0x73
-	.byte \left
-	.byte \top
-	.byte \right
-	.byte \bottom
+	.byte \idx
+	.4byte \ptr
 	.endm
 
 	@ Nopped in Emerald, but still consumes parameters.
@@ -1077,6 +1075,12 @@
 		.byte 1
 	.elseif \id == STR_VAR_3
 		.byte 2
+	.elseif \id == STR_VAR_4
+		.byte 3
+	.elseif \id == STR_VAR_5
+		.byte 4
+	.elseif \id == STR_VAR_6
+		.byte 5
 	.else
 		.byte \id
 	.endif
@@ -1533,7 +1537,7 @@
 	.4byte \text
 	.endm
 
-	@ Expands the given text at the pointer (- the relative address set by setvaddress) into gStringVar4
+	@ Expands the given text at the pointer (- the relative address set by setvaddress) into gStringBuffer
 	.macro vbuffermessage text:req
 	.byte 0xbe
 	.4byte \text

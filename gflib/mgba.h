@@ -24,17 +24,29 @@
 
 #include "gba/types.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-#define MGBA_LOG_FATAL 0
-#define MGBA_LOG_ERROR 1
-#define MGBA_LOG_WARN 2
-#define MGBA_LOG_INFO 3
-#define MGBA_LOG_DEBUG 4
+#define MGBA_LOG_FATAL  (0)
+#define MGBA_LOG_ERROR  (1)
+#define MGBA_LOG_WARN   (2)
+#define MGBA_LOG_INFO   (3)
+#define MGBA_LOG_DEBUG  (4)
 
-// NOTE: To print strings encoded in game format, use %S.
-// To print ascii strings, use %s like normal.
-void mgba_printf(int level, const char* string, ...);
+#define MGBA_REG_DEBUG_MAX (256)
+
+void mgba_printf(s32 level, const char* string, ...);
 bool8 mgba_open(void);
 void mgba_close(void);
+void mgba_assert(const char *pFile, s32 nLine, const char *pExpression, bool32 nStopProgram);
+void mgba_printEncoded(s32 level, const char *encodedString);
+
+#define MGBA_ASSERT(exp) (exp) ? ((void*)0) : mgba_assert(__FILE__, __LINE__, #exp, 1);
+#define MGBA_WARNING(exp) (exp) ? ((void*)0) : mgba_assert(__FILE__, __LINE__, #exp, 0);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

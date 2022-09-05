@@ -2,15 +2,15 @@ Known issues:
 - [ ] Manectric on the intro screen is yellow instead of blue for some reason.
 - [ ] Brendan and May's overworld palettes are incorrect, probably using the old palette.
 - [ ] Fall grass overworld effect is broken.
-- [ ] "Allie put it away in the candy p--" [cut off] "Allie put it away in the \n Candy pocket". Both bad.
-	- [ ] messagewordwrap is broken
-	- [ ] Text box is duplicated.
+- [X] "Allie put it away in the candy p--" [cut off] "Allie put it away in the \n Candy pocket". Both bad.
+	- [x] messagewordwrap is broken
+	- [X] Text box is duplicated.
 
 Others:
 - [x] Check Makefile over
 - [X] eventObject->unk3_3 -> disableReflection -> hideReflection
 - [X] gRamScriptRetAddr -> gRamScriptPtr
-- [ ] Layouts.json and map_groups.json - double check
+- [X] Layouts.json and map_groups.json - double check
 - [x] Check m4a_1.s. We replaced it with a new version and they moved it into src. But also we're gonna merge in the music expansion, which also changes it.
 - [X] VAR_ICE_STEP_COUNT -> VAR_STEP_TRIGGER
 - [X] Remove apprentice

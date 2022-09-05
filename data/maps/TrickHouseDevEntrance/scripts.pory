@@ -89,7 +89,9 @@ script PuzzleDebug_EventScript_TustinsMenu {
 	faceplayer
 	msgbox ("Tustin2121: What do you need to change?$")
 	closemessage
-	multichoice(0, 0, 115, FALSE)
+	loaddynamic(0, "PuzzCompleted")
+	loaddynamic(1, "Sun Offset")
+	multichoice(0, 0, 2, FALSE)
 	switch (var(VAR_RESULT)) {
 		case 127: // Cancel
 			release
@@ -125,6 +127,4 @@ script PuzzleDebug_EventScript_TustinsMenu {
 }
 
 // Menu defined as MultichoiceList_TustinsMenu in script_menu.c
-text(global) PuzzleDebug_TustinsMenu_PuzzlesCompleted { "PuzzCompleted" }
-text(global) PuzzleDebug_TustinsMenu_SunOffset { "Sun Offset" }
 

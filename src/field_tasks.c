@@ -977,7 +977,7 @@ static void SootopolisGymIcePerStepCallback(u8 taskId)
                 if (CoordInIcePuzzleRegion(data, x - 7, y - 7) == TRUE)
                 {
                     (*iceStepCount)++;
-                    // ConvertIntToDecimalStringN(gStringVar4, *iceStepCount, 0, 3);
+                    // ConvertIntToDecimalStringN(gStringBuffer, *iceStepCount, 0, 3);
                     // AddTextPrinterWithCustomSpeedForMessage(FALSE, 0xFF);
                 }
                 else

@@ -1383,6 +1383,15 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
             case PLACEHOLDER_ID_STRING_VAR_3:
                 bufferPointer = gStringVar3;
                 break;
+            case PLACEHOLDER_ID_STRING_VAR_4:
+                bufferPointer = gStringVar4;
+                break;
+            case PLACEHOLDER_ID_STRING_VAR_5:
+                bufferPointer = gStringVar5;
+                break;
+            case PLACEHOLDER_ID_STRING_VAR_6:
+                bufferPointer = gStringVar6;
+                break;
             default:
                 return 0;
             }
@@ -1515,7 +1524,7 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
 
 void DetermineWordWrapInStrVar4(u8 fontId, s16 letterSpacing, const u16 wrapWidth)
 {
-    u8 *str = gStringVar4;
+    u8 *str = gStringBuffer;
     bool8 isJapanese;
     int minGlyphWidth;
     u32 (*func)(u16 glyphId, bool32 isJapanese);
@@ -1531,7 +1540,7 @@ void DetermineWordWrapInStrVar4(u8 fontId, s16 letterSpacing, const u16 wrapWidt
 
     isJapanese = 0;
     minGlyphWidth = 0;
-    mgba_printf(MGBA_LOG_INFO, "Determining Wordwrap: %S", gStringVar4);
+    mgba_printf(MGBA_LOG_INFO, "Determining Wordwrap: %S", gStringBuffer);
 
     func = GetFontWidthFunc(fontId);
     if (func == NULL)

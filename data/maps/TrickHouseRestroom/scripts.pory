@@ -270,7 +270,10 @@ script TrickHouseRestroom_EventScript_Pokeball {
 		message("The name tag on this {STR_VAR_2} says\n"
 				"“{STR_VAR_1}”.")
 		waitmessage
-		multichoice(20, 6, 114, 0)
+		loaddynamic(0, "Choose")
+		loaddynamic(1, "Stats")
+		loaddynamic(2, "Cancel")
+		multichoice(20, 6, 3, 0)
 		waitmoncry
 		switch (var(VAR_RESULT)) {
 			case 0: // choose
@@ -288,9 +291,6 @@ script TrickHouseRestroom_EventScript_Pokeball {
 	hidemonpic
 	releaseall
 }
-text(global) PokemonAdoption_Choose { "Choose" }
-text(global) PokemonAdoption_Status { "Stats" }
-text(global) PokemonAdoption_Exit   { "Cancel" }
 
 script(local) TrickHouseRestroom_EventScript_PokemonChoose {
 	message("You chose {STR_VAR_1} for your party!$")

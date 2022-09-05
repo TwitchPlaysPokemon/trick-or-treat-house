@@ -853,9 +853,9 @@ static void PrintCreditsText2(const u8 *string, u8 y, bool8 isTitle, bool8 isLef
 static void PrintScore(const u32 score)
 {
     u8 color[] = {0, 2, 1};
-    ConvertUIntToDecimalStringN(gStringVar4, score, STR_CONV_MODE_RIGHT_ALIGN, 6);
+    ConvertUIntToDecimalStringN(gStringBuffer, score, STR_CONV_MODE_RIGHT_ALIGN, 6);
 	FillWindowPixelBuffer(WIN_SCORE, PIXEL_FILL(0));
-    AddTextPrinterParameterized4(WIN_SCORE, 1, 10, 0, 1, 0, color, -1, gStringVar4);
+    AddTextPrinterParameterized4(WIN_SCORE, 1, 10, 0, 1, 0, color, -1, gStringBuffer);
 	CopyWindowToVram(WIN_SCORE, 2);
 }
 
@@ -863,7 +863,7 @@ static void PrintScoreStringVar4()
 {
     u8 color[] = {0, 2, 1};
 	FillWindowPixelBuffer(WIN_SCORE, PIXEL_FILL(0));
-    AddTextPrinterParameterized4(WIN_SCORE, 1, 10, 0, 1, 0, color, -1, gStringVar4);
+    AddTextPrinterParameterized4(WIN_SCORE, 1, 10, 0, 1, 0, color, -1, gStringBuffer);
 	CopyWindowToVram(WIN_SCORE, 2);
 }
 
@@ -909,9 +909,9 @@ static void Task_DisplayCredits(u8 taskId)
 	// u32 frameCount = gTasks[taskIdB].data[0] | (gTasks[taskIdB].data[1] << 16);
 	// frameCount++;
 	
-	// ConvertUIntToDecimalStringN(gStringVar4, frameCount, STR_CONV_MODE_RIGHT_ALIGN, 6);
+	// ConvertUIntToDecimalStringN(gStringBuffer, frameCount, STR_CONV_MODE_RIGHT_ALIGN, 6);
 	// FillWindowPixelBuffer(0, PIXEL_FILL(0));
-	// PrintCreditsText(gStringVar4, 5, FALSE);
+	// PrintCreditsText(gStringBuffer, 5, FALSE);
 	// CopyWindowToVram(0, 2);
 	
 	// gTasks[taskIdB].data[0] = (frameCount & 0x0000FFFF) >>  0; 
@@ -983,9 +983,9 @@ static void Task_DisplayCredits(u8 taskId)
             //*
             gTasks[taskId].data[TDA_STATE] = 10;
             /*/
-			ConvertUIntToDecimalStringN(gStringVar4, gTasks[taskId].data[TDA_CURR_PAGE], STR_CONV_MODE_RIGHT_ALIGN, 3);
+			ConvertUIntToDecimalStringN(gStringBuffer, gTasks[taskId].data[TDA_CURR_PAGE], STR_CONV_MODE_RIGHT_ALIGN, 3);
 			FillWindowPixelBuffer(WIN_MAIN, PIXEL_FILL(0));
-			PrintCreditsText(gStringVar4, 5, FALSE);
+			PrintCreditsText(gStringBuffer, 5, FALSE);
 			CopyWindowToVram(WIN_MAIN, 2);
 			gTasks[taskId].data[TDA_CURR_PAGE] += 1;
 			gTasks[taskId].data[TDA_STATE] += 1;
@@ -1065,7 +1065,7 @@ static void Task_PlayGame(u8 taskId)
     
     // PrintScore(frameCount);
     /* {
-        u8* str = gStringVar4;
+        u8* str = gStringBuffer;
         str = ConvertIntToHexStringN(str, sprite->x, 0, 3);
         *str++ = CHAR_SPACE;
         *str++ = CHAR_SPACE;
@@ -1255,13 +1255,13 @@ static void Task_EndGame6(u8 taskId)
         gTasks[taskId].data[TDB_TIMEOUT] = 0;
         gTasks[taskId].data[TDB_FRAME_COUNT] = 0;
         /* //
-        str = StringCopy(gStringVar4, sEndingString1);
+        str = StringCopy(gStringBuffer, sEndingString1);
         ConvertUIntToDecimalStringN(str, sCreditsData->score, 0, 3);
         *str++ = CHAR_SLASH;
         ConvertUIntToDecimalStringN(str, sCreditsData->total, 0, 3);
         *str++ = EOS;
         
-        AddTextPrinterParameterized3(0, 1, 8, 8, color, 2, gStringVar4);
+        AddTextPrinterParameterized3(0, 1, 8, 8, color, 2, gStringBuffer);
         CopyWindowToVram(WIN_MAIN, 2);
         */
         gTasks[taskId].func = Task_ShowFinal1;

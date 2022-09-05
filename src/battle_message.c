@@ -2345,12 +2345,12 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                 if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
                 {
                     CopyFrontierTrainerText(FRONTIER_PLAYER_WON_TEXT, gTrainerBattleOpponent_A);
-                    toCpy = gStringVar4;
+                    toCpy = gStringBuffer;
                 }
                 // else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
                 // {
                 //     CopyTrainerHillTrainerText(TRAINER_HILL_TEXT_PLAYER_WON, gTrainerBattleOpponent_A);
-                //     toCpy = gStringVar4;
+                //     toCpy = gStringBuffer;
                 // }
                 else
                 {
@@ -2361,12 +2361,12 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                 if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
                 {
                     CopyFrontierTrainerText(FRONTIER_PLAYER_LOST_TEXT, gTrainerBattleOpponent_A);
-                    toCpy = gStringVar4;
+                    toCpy = gStringBuffer;
                 }
                 // else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
                 // {
                 //     CopyTrainerHillTrainerText(TRAINER_HILL_TEXT_PLAYER_LOST, gTrainerBattleOpponent_A);
-                //     toCpy = gStringVar4;
+                //     toCpy = gStringBuffer;
                 // }
                 break;
             case B_TXT_26: // ?
@@ -2442,12 +2442,12 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                 if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
                 {
                     CopyFrontierTrainerText(FRONTIER_PLAYER_WON_TEXT, gTrainerBattleOpponent_B);
-                    toCpy = gStringVar4;
+                    toCpy = gStringBuffer;
                 }
                 // else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
                 // {
                 //     CopyTrainerHillTrainerText(TRAINER_HILL_TEXT_PLAYER_WON, gTrainerBattleOpponent_B);
-                //     toCpy = gStringVar4;
+                //     toCpy = gStringBuffer;
                 // }
                 else
                 {
@@ -2458,12 +2458,12 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                 if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
                 {
                     CopyFrontierTrainerText(FRONTIER_PLAYER_LOST_TEXT, gTrainerBattleOpponent_B);
-                    toCpy = gStringVar4;
+                    toCpy = gStringBuffer;
                 }
                 // else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
                 // {
                 //     CopyTrainerHillTrainerText(TRAINER_HILL_TEXT_PLAYER_LOST, gTrainerBattleOpponent_B);
-                //     toCpy = gStringVar4;
+                //     toCpy = gStringBuffer;
                 // }
                 break;
             case B_TXT_PARTNER_CLASS:

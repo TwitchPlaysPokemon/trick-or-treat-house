@@ -1300,9 +1300,9 @@ void Imposter_ShowTalkingPoints(struct ScriptContext *ctx) {
 	const u8** accuseTable = Puzzle_SafariImposters_TalkTables[currSpeaker][2];
 	u16 rng = VarGet(Imposter_ShowTalkingPoints_RNGVars[currSpeaker]);
 	u8 i, x;
-	u8 *str = gStringVar4;
+	u8 *str = gStringBuffer;
 	
-	// So, for future reference, when using the gStringVar4 directly like this,
+	// So, for future reference, when using the gStringBuffer directly like this,
 	// NEVER call ShowFieldMessage(), as that calls StringExpandPlaceholders(),
 	// and now you're expanding placeholders in-place, guaranteeing that the
 	// destination string is longer, and thus racing ahead of the src string
@@ -1331,7 +1331,7 @@ void Imposter_ShowTalkingPoints(struct ScriptContext *ctx) {
 	}
 	str = StringExpandPlaceholders(str, accuseTable[x]);
 	*str = EOS;
-	// If the gStringVar4 buffer is overflown, it rolls into 256 bytes of the 
+	// If the gStringBuffer buffer is overflown, it rolls into 256 bytes of the 
 	// gStringWorking, which is fine. Beyond that is some link variables we'll never use.
 	// So this should be fiiiiiiine.
 	ShowFieldMessageFromBuffer();
