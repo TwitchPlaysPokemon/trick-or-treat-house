@@ -1309,4 +1309,4 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_Rayquaza = {
 
 static const struct SpritePalette sSpritePalette_Unused = {gObjectEventPal_Npc3, FLDEFF_PAL_TAG_UNKNOWN};
 
-static const struct SpritePalette sSpritePalette_EmoteNote = {gObjectEventPal_EmoteNote, FLDEFF_PAL_TAG_EMOTE_NOTES};
+const struct SpritePalette sSpritePalette_EmoteNote = {gObjectEventPal_EmoteNote, FLDEFF_PAL_TAG_EMOTE_NOTES};

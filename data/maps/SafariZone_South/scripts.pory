@@ -396,7 +396,7 @@ script SafariZone_EventScript_BrendanFearsThunder {
 	lockall
 	playse(SE_T_KAMI)
 	delay(20)
-	playse(SE_DANSA)
+	playse(SE_LEDGE)
 	applymovement(2, SafariZone_Movement_BrendanFearsThunder1)
 	applymovement(LID_PLAYER, SafariZone_Movement_BrendanFearsThunderP)
 	message("AUGH! NOPE! NOPE! NOPE! NOPE! NOPE!\n"

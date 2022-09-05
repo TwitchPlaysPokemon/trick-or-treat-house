@@ -56,7 +56,7 @@ script Route110_Cutscene_RunIntro {
 	message("{JAMES}: Guys! Com'on!\n"
 			"It's already started!!$")
 	applymovement(LID_JAMES, Route110_Cutscene_RunIntro_Move1a)
-	playse(SE_DANSA)
+	playse(SE_LEDGE)
 	waitmessage
 	waitbuttonpress
 	playse (SE_SELECT)
@@ -168,7 +168,7 @@ script Route110_Cutscene_RunIntro {
 	playse (SE_SELECT)
 	//
 	applymovement(LID_JAMES, Route110_Cutscene_RunIntro_Move7)
-	playse (SE_DANSA)
+	playse (SE_LEDGE)
 	message("{JAMES}: Stop dilly-dallying already!\n"
 			"Let's get inside so we can start!$")
 	waitmessage

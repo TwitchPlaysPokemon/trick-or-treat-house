@@ -44,7 +44,7 @@
     "id": "MAP_TRICK_HOUSE_EXT_GATEHOUSE",
     "layout": "LAYOUT_TRICK_HOUSE_EXT_GATEHOUSE",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_HIDERI",
+    "music": "MUS_WEATHER_GROUDON",
     "name": "TrickHouseExt_Gatehouse",
     "object_events": [
         {

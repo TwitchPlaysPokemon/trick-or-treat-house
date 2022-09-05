@@ -207,7 +207,7 @@
     "id": "MAP_TRICK_HOUSE_EXT",
     "layout": "LAYOUT_TRICK_HOUSE_EXT",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_DOORO_X1",
+    "music": "MUS_ROUTE110",
     "name": "TrickHouseExt",
     "object_events": [
         {

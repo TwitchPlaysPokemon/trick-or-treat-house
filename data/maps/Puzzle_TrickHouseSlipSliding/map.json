@@ -102,7 +102,7 @@
     "id": "MAP_PUZZLE_TRICK_HOUSE_SLIP_SLIDING",
     "layout": "LAYOUT_PUZZLE_TRICK_HOUSE_SLIP_SLIDING",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_KARAKURI",
+    "music": "MUS_TRICK_HOUSE",
     "name": "Puzzle_TrickHouseSlipSliding",
     "object_events": [
         {

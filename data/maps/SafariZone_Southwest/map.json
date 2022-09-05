@@ -58,63 +58,63 @@
         {
             "elevation": 0,
             "type": "weather",
-            "weather": "COORD_EVENT_WEATHER_RAIN_LIGHT",
+            "weather": "COORD_EVENT_WEATHER_RAIN",
             "x": 27,
             "y": 8
         },
         {
             "elevation": 0,
             "type": "weather",
-            "weather": "COORD_EVENT_WEATHER_RAIN_LIGHT",
+            "weather": "COORD_EVENT_WEATHER_RAIN",
             "x": 27,
             "y": 9
         },
         {
             "elevation": 0,
             "type": "weather",
-            "weather": "COORD_EVENT_WEATHER_CLOUDS",
+            "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS",
             "x": 34,
             "y": 7
         },
         {
             "elevation": 0,
             "type": "weather",
-            "weather": "COORD_EVENT_WEATHER_CLOUDS",
+            "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS",
             "x": 34,
             "y": 8
         },
         {
             "elevation": 0,
             "type": "weather",
-            "weather": "COORD_EVENT_WEATHER_CLOUDS",
+            "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS",
             "x": 34,
             "y": 9
         },
         {
             "elevation": 0,
             "type": "weather",
-            "weather": "COORD_EVENT_WEATHER_CLOUDS",
+            "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS",
             "x": 31,
             "y": 14
         },
         {
             "elevation": 0,
             "type": "weather",
-            "weather": "COORD_EVENT_WEATHER_CLOUDS",
+            "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS",
             "x": 30,
             "y": 14
         },
         {
             "elevation": 0,
             "type": "weather",
-            "weather": "COORD_EVENT_WEATHER_CLOUDS",
+            "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS",
             "x": 29,
             "y": 14
         },
         {
             "elevation": 0,
             "type": "weather",
-            "weather": "COORD_EVENT_WEATHER_CLOUDS",
+            "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS",
             "x": 8,
             "y": 4
         }
@@ -122,7 +122,7 @@
     "id": "MAP_SAFARI_ZONE_SOUTHWEST",
     "layout": "LAYOUT_SAFARI_ZONE_SOUTHWEST",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_SAFARI",
+    "music": "MUS_SAFARI_ZONE",
     "name": "SafariZone_Southwest",
     "object_events": [
         {
@@ -164,5 +164,5 @@
             "y": 7
         }
     ],
-    "weather": "WEATHER_CLOUDS"
+    "weather": "WEATHER_SUNNY_CLOUDS"
 }

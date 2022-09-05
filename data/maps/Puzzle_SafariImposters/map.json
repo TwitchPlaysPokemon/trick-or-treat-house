@@ -30,7 +30,7 @@
     "id": "MAP_PUZZLE_SAFARI_IMPOSTERS",
     "layout": "LAYOUT_PUZZLE_SAFARI_IMPOSTERS",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_MACHI_S3",
+    "music": "MUS_FORTREE",
     "name": "Puzzle_SafariImposters",
     "object_events": [
         {

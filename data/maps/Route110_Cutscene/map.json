@@ -11,7 +11,7 @@
     "id": "MAP_ROUTE110_CUTSCENE",
     "layout": "LAYOUT_ROUTE110_CUTSCENE",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_DAN02",
+    "music": "MUS_ABANDONED_SHIP",
     "name": "Route110_Cutscene",
     "object_events": [
         {

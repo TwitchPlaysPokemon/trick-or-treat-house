@@ -9,6 +9,8 @@
 - [ ] GetCollisionFlagsAtCoords - make flag for mismatch == 2
 - [ ] MovementAction_RevealTrainer_Step0 - is it MOVEMENT_TYPE_HIDDEN2 or MOVEMENT_TYPE_BURIED?
 - [ ] Rename MOVEMENT_TYPE_HIDDEN2 to something else?
+- [ ] Search through MUS_ABANDONED_SHIP and replace them all
+- [ ] graphics/shop/candy.png does not say "candy".
 - [X] mosstiles:
 	.4byte ScrCmd_mosstiles_moveEvents     .4byte ScrCmd_moverotatingtileobjects   @ 0xd3
 	.4byte ScrCmd_mosstiles_turnEvents     .4byte ScrCmd_turnrotatingtileobjects   @ 0xd4

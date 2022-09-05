@@ -17,7 +17,7 @@
     "id": "MAP_LOST_WOODS1_UNDERWATER",
     "layout": "LAYOUT_LOST_WOODS1_UNDERWATER",
     "map_type": "MAP_TYPE_UNDERWATER",
-    "music": "MUS_DEEPDEEP",
+    "music": "MUS_UNDERWATER",
     "name": "LostWoods1_Underwater",
     "object_events": [
         {

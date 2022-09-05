@@ -83,7 +83,7 @@
     "id": "MAP_PUZZLE_TRICK_HOUSE_CUT",
     "layout": "LAYOUT_PUZZLE_TRICK_HOUSE_CUT",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_NEXTROAD",
+    "music": "MUS_ROUTE104",
     "name": "Puzzle_TrickHouseCut",
     "object_events": [
         {

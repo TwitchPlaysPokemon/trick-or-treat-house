@@ -50,7 +50,7 @@ script(local) MauvilleCity_PanHalloween {
 	delay (16)
 	playse (SE_WALL_HIT)
 	delay (60)
-	playse (SE_DANSA)
+	playse (SE_LEDGE)
 	
 	
 	waitmovement (OBJ_EVENT_ID_PLAYER)

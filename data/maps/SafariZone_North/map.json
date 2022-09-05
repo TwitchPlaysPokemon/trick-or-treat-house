@@ -29,7 +29,7 @@
     "id": "MAP_SAFARI_ZONE_NORTH",
     "layout": "LAYOUT_SAFARI_ZONE_NORTH",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_SAFARI",
+    "music": "MUS_SAFARI_ZONE",
     "name": "SafariZone_North",
     "object_events": [
         {
@@ -155,5 +155,5 @@
     "show_map_name": true,
     "warp_events": [
     ],
-    "weather": "WEATHER_RAIN_LIGHT"
+    "weather": "WEATHER_RAIN"
 }

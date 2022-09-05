@@ -27,7 +27,7 @@
     "id": "MAP_DESERT_NORTH",
     "layout": "LAYOUT_DESERT_NORTH",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_HIDERI",
+    "music": "MUS_WEATHER_GROUDON",
     "name": "Desert_North",
     "object_events": [
     ],

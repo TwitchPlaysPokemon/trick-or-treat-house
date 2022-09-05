@@ -11,7 +11,7 @@
     "id": "MAP_TEST_MAP_HALLWAY",
     "layout": "LAYOUT_TEST_MAP_HALLWAY",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_KARAKURI",
+    "music": "MUS_TRICK_HOUSE",
     "name": "TestMapHallway",
     "object_events": [
         {

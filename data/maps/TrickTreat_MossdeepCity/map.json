@@ -110,7 +110,7 @@
     "id": "MAP_TRICK_TREAT_MOSSDEEP_CITY",
     "layout": "LAYOUT_MOSSDEEP_CITY",
     "map_type": "MAP_TYPE_CITY",
-    "music": "MUS_GOTOWN",
+    "music": "MUS_RUSTBORO",
     "name": "TrickTreat_MossdeepCity",
     "object_events": [
         {

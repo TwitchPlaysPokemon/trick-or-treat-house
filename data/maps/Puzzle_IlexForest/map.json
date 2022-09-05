@@ -381,7 +381,7 @@
     "id": "MAP_PUZZLE_ILEX_FOREST",
     "layout": "LAYOUT_PUZZLE_ILEX_FOREST",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_RG_NANAISEKI",
+    "music": "MUS_RG_SEVII_DUNGEON",
     "name": "Puzzle_IlexForest",
     "object_events": [
         {

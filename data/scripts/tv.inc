@@ -30,8 +30,8 @@ EventScript_MomDadMightLikeThis1::
 	end
 
 EventScript_PlayersHouseMovie::
-	msgbox PlayersHouse_1F_Text_TheresAMovieOnTV, MSGBOX_DEFAULT
-	releaseall
+	@ msgbox PlayersHouse_1F_Text_TheresAMovieOnTV, MSGBOX_DEFAULT
+	@ releaseall
 	end
 LittlerootTown_BrendansHouse_1F_Text_1F7F0F: @ 81F7F0F
 	.string "There is a movie on TV.\p"
@@ -43,12 +43,12 @@ LittlerootTown_BrendansHouse_1F_Text_1F7F0F: @ 81F7F0F
 @ It's called again when Mom actually asks for the color, overwriting
 @ whatever it does here.
 EventScript_PlayersHouseLatiNewsFlash::
-	msgbox PlayersHouse_1F_Text_LatiEmergencyNewsFlash, MSGBOX_DEFAULT
-	special InitRoamer
-	clearflag FLAG_SYS_TV_LATIAS_LATIOS
-	setflag FLAG_LATIOS_OR_LATIAS_ROAMING
-	special TurnOffTVScreen
-	releaseall
+	@ msgbox PlayersHouse_1F_Text_LatiEmergencyNewsFlash, MSGBOX_DEFAULT
+	@ special InitRoamer
+	@ clearflag FLAG_SYS_TV_LATIAS_LATIOS
+	@ setflag FLAG_LATIOS_OR_LATIAS_ROAMING
+	@ special TurnOffTVScreen
+	@ releaseall
 	end
 LittlerootTown_BrendansHouse_1F_Text_1F826F: @ 81F826F
 	.string "We bring you this emergency\n"

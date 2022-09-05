@@ -81,6 +81,7 @@
 #define WIN_MAIN   0
 #define WIN_SCORE  1
 
+EWRAM_DATA bool8 gSpriteDestroyFlag = 0;
 
 extern void LoadCreditsMinigameBackground1();
 

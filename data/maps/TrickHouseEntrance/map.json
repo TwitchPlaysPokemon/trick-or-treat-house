@@ -43,7 +43,7 @@
     "id": "MAP_TRICK_HOUSE_ENTRANCE",
     "layout": "LAYOUT_TRICK_HOUSE_ENTRANCE",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_KARAKURI",
+    "music": "MUS_TRICK_HOUSE",
     "name": "TrickHouseEntrance",
     "object_events": [
         {

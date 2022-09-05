@@ -11,7 +11,7 @@
     "id": "MAP_SLATEPORT_CITY_POKEMON_FAN_CLUB",
     "layout": "LAYOUT_SLATEPORT_CITY_POKEMON_FAN_CLUB",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_ABANDONED_SHIP",
     "name": "SlateportCity_PokemonFanClub",
     "object_events": [
     ],

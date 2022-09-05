@@ -571,7 +571,7 @@
     "id": "MAP_PUZZLE_TWIN_MEMORIES",
     "layout": "LAYOUT_PUZZLE_TWIN_MEMORIES",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_MABOROSI",
+    "music": "MUS_SEALED_CHAMBER",
     "name": "Puzzle_TwinMemories",
     "object_events": [
         {

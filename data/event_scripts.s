@@ -631,10 +631,6 @@ gText_ThankYouForAccessingMysteryGift::
 	.string "Thank you for accessing the\n"
 	.string "MYSTERY GIFT System.$"
 
-gText_PlayerFoundOneTMHM::
-	.string "{PLAYER} found one {STR_VAR_1}\n"
-	.string "{STR_VAR_2}!$"
-
 gText_Sudowoodo_Attacked::
 	.string "The weird tree doesn't like the\n"
 	.string "WAILMER PAIL!\p"
@@ -687,13 +683,74 @@ Common_EventScript_LegendaryFlewAway::
 	release
 	end
 
+
+EventScript_WaterSudowoodo::
+	lock
+	faceplayer
+	special DoWateringBerryTreeAnim
+	waitstate
+	waitse
+	playse SE_SUDOWOODO_SHAKE
+	applymovement LOCALID_SUDOWOODO, Movement_SudowoodoShake
+	waitmovement 0
+	msgbox gText_Sudowoodo_Attacked, MSGBOX_DEFAULT
+	closemessage
+	waitse
+	playmoncry SPECIES_SUDOWOODO, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setvar VAR_LAST_TALKED, LOCALID_SUDOWOODO
+	setwildbattle SPECIES_SUDOWOODO, 40
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, EventScript_DefeatedSudowoodo
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, EventScript_DefeatedSudowoodo
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, EventScript_DefeatedSudowoodo
+	setflag FLAG_DEFEATED_SUDOWOODO
+	release
+	end
+
+EventScript_DefeatedSudowoodo::
+	setflag FLAG_DEFEATED_SUDOWOODO
+	goto Common_EventScript_RemoveStaticPokemon
+	end
+
+Movement_SudowoodoShake:
+	face_right
+	delay_8
+	face_down
+	delay_8
+	face_left
+	delay_8
+	face_down
+	delay_8
+	face_right
+	delay_8
+	face_down
+	delay_8
+	face_left
+	delay_8
+	face_down
+	step_end
+
+gText_LinkStandby3::
+	.string "Link standby…$"
+gText_LinkRecordCouldntBeSaved::
+	.string "There was an error of some sort.\n"
+	.string "Your record could not be saved.$"
+
+@------------------------------------------------------
+
 	.include "data/scripts/pc_transfer.inc"
 	.include "data/scripts/questionnaire.inc"
 	.include "data/scripts/trainer_script.inc"
 	.include "data/scripts/berry_tree.inc"
 	.include "data/scripts/secret_base.inc"
-	@ .include "data/scripts/cable_club.inc"
-	@ .include "data/text/cable_club.inc"
+	.include "data/scripts/shared_secret_base.inc"
+	.include "data/scripts/cable_club.inc"
+	.include "data/text/cable_club.inc"
 	.include "data/scripts/contest_hall.inc"
 	.include "data/text/contest_strings.inc"
 	.include "data/text/contest_link.inc"

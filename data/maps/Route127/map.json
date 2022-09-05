@@ -22,7 +22,7 @@
     "id": "MAP_ROUTE127",
     "layout": "LAYOUT_ROUTE127",
     "map_type": "MAP_TYPE_OCEAN_ROUTE",
-    "music": "MUS_DOORO_X3",
+    "music": "MUS_ROUTE120",
     "name": "Route127",
     "object_events": [
     ],

@@ -19,7 +19,7 @@
     "id": "MAP_PUZZLE_SOOT_SACK_MAZE",
     "layout": "LAYOUT_PUZZLE_SOOT_SACK_MAZE",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_KAZANBAI",
+    "music": "MUS_ROUTE113",
     "name": "Puzzle_SootSackMaze",
     "object_events": [
         {

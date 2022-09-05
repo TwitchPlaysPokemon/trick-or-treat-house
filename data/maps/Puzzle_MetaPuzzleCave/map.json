@@ -11,7 +11,7 @@
     "id": "MAP_PUZZLE_META_PUZZLE_CAVE",
     "layout": "LAYOUT_FAKE_SECRET_BASE_CAVE",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_ABANDONED_SHIP",
     "name": "Puzzle_MetaPuzzleCave",
     "object_events": [
         {

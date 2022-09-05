@@ -51,7 +51,7 @@
     "id": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL8",
     "layout": "LAYOUT_PUZZLE_TRICK_HOUSE_PUZZLE8",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DOORO_X3",
+    "music": "MUS_ROUTE120",
     "name": "Puzzle_TrickHouseOriginal8",
     "object_events": [
         {

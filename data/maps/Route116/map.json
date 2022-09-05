@@ -22,7 +22,7 @@
     "id": "MAP_ROUTE116",
     "layout": "LAYOUT_ROUTE116",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_NEXTROAD",
+    "music": "MUS_ROUTE104",
     "name": "Route116",
     "object_events": [
     ],

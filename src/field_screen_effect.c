@@ -98,7 +98,7 @@ void FadeInFromBlack(void)
     FadeScreen(FADE_FROM_BLACK, 0);
 }
 
-void WarpFadeOutOutScreen(void)
+void WarpFadeOutScreen(void)
 {
     u8 currentMapType = GetCurrentMapType();
     switch (GetMapPairFadeToType(currentMapType, GetDestinationWarpMapHeader()->mapType))
@@ -507,7 +507,7 @@ void DoWarp(void)
     CheckKeepObjects();
     LockPlayerFieldControls();
     TryFadeOutOldMapMusic();
-    WarpFadeOutOutScreen();
+    WarpFadeOutScreen();
     PlayRainStoppingSoundEffect();
     PlaySE(SE_EXIT);
     gFieldCallback = FieldCB_DefaultWarpExit;
@@ -753,7 +753,7 @@ static void Task_DoDoorWarp(u8 taskId)
         break;
     case 4:
         TryFadeOutOldMapMusic();
-        WarpFadeOutOutScreen();
+        WarpFadeOutScreen();
         PlayRainStoppingSoundEffect();
         task->tState = 0;
         task->func = Task_WarpAndLoadMap;
@@ -790,7 +790,7 @@ void DoContestHallWarp(void)
 {
     LockPlayerFieldControls();
     TryFadeOutOldMapMusic();
-    WarpFadeOutOutScreen();
+    WarpFadeOutScreen();
     PlayRainStoppingSoundEffect();
     PlaySE(SE_EXIT);
     gFieldCallback = FieldCB_WarpExitFadeFromBlack;

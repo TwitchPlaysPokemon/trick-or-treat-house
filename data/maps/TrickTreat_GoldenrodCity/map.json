@@ -11,7 +11,7 @@
     "id": "MAP_TRICK_TREAT_GOLDENROD_CITY",
     "layout": "LAYOUT_TRICK_TREAT_GOLDENROD_CITY",
     "map_type": "MAP_TYPE_CITY",
-    "music": "MUS_DAN02",
+    "music": "MUS_ABANDONED_SHIP",
     "name": "TrickTreat_GoldenrodCity",
     "object_events": [
     ],

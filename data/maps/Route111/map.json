@@ -27,7 +27,7 @@
     "id": "MAP_ROUTE111",
     "layout": "LAYOUT_ROUTE111",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_DOORO_X1",
+    "music": "MUS_ROUTE110",
     "name": "Route111",
     "object_events": [
     ],

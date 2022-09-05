@@ -43,7 +43,7 @@
     "id": "MAP_PUZZLE_MUSIC_NOTE_TILES",
     "layout": "LAYOUT_PUZZLE_MUSIC_NOTE_TILES",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_TEST4",
+    "music": "MUS_LINK_CONTEST_P4",
     "name": "Puzzle_MusicNoteTiles",
     "object_events": [
         {

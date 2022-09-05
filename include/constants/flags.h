@@ -144,7 +144,7 @@
 #define FLAG_DECORATION_12                   0x07C
 #define FLAG_DECORATION_13                   0x07D
 #define FLAG_DECORATION_14                   0x07E
-#define FLAG_UNUSED_0x07F                    0x07F
+#define FLAG_HIDE_SECRET_BASE_TRAINER        0x07F
 #define FLAG_META_PICKUP_ROCK                0x080
 #define FLAG_META_PICKUP_ZIGZAG              0x081
 #define FLAG_META_PICKUP_LOTAD               0x082

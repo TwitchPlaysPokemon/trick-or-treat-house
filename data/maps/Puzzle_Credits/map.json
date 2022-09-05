@@ -11,7 +11,7 @@
     "id": "MAP_PUZZLE_CREDITS",
     "layout": "LAYOUT_PUZZLE_CREDITS",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_ABANDONED_SHIP",
     "name": "Puzzle_Credits",
     "object_events": [
         {

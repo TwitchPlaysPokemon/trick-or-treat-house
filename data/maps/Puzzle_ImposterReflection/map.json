@@ -11,7 +11,7 @@
     "id": "MAP_PUZZLE_IMPOSTER_REFLECTION",
     "layout": "LAYOUT_PUZZLE_IMPOSTER_REFLECTION",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_DAN02",
+    "music": "MUS_ABANDONED_SHIP",
     "name": "Puzzle_ImposterReflection",
     "object_events": [
         {

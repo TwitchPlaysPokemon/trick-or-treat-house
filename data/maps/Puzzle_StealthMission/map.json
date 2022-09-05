@@ -121,7 +121,7 @@
     "id": "MAP_PUZZLE_STEALTH_MISSION",
     "layout": "LAYOUT_PUZZLE_STEALTH_MISSION",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_AJITO",
+    "music": "MUS_AQUA_MAGMA_HIDEOUT",
     "name": "Puzzle_StealthMission",
     "object_events": [
         {

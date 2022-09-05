@@ -27,7 +27,7 @@
     "id": "MAP_DESERT_EAST",
     "layout": "LAYOUT_DESERT_EAST",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_HIDERI",
+    "music": "MUS_WEATHER_GROUDON",
     "name": "Desert_East",
     "object_events": [
     ],

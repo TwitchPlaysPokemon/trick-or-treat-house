@@ -272,7 +272,7 @@
     "id": "MAP_PUZZLE_SUSPENDED_MAZE",
     "layout": "LAYOUT_PUZZLE_SUSPENDED_MAZE",
     "map_type": "MAP_TYPE_UNDERGROUND",
-    "music": "MUS_DAN02",
+    "music": "MUS_ABANDONED_SHIP",
     "name": "Puzzle_SuspendedMaze",
     "object_events": [
         {

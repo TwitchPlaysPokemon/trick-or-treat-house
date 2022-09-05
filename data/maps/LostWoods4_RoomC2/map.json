@@ -40,7 +40,7 @@
     "id": "MAP_LOST_WOODS4_ROOM_C2",
     "layout": "LAYOUT_PUZZLE_LOST_WOODS_ROOM",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_DAN01",
+    "music": "MUS_PETALBURG_WOODS",
     "name": "LostWoods4_RoomC2",
     "object_events": [
     ],
@@ -50,5 +50,5 @@
     "trainers": "Puzzle_LostWoods4_Entrance_TrainerTable",
     "warp_events": [
     ],
-    "weather": "WEATHER_FOG_2"
+    "weather": "WEATHER_FOG_DIAGONAL"
 }

@@ -176,7 +176,7 @@ BattleScript_RunByUsingItem::
 BattleScript_RunByUsingSnickers::
 	printstring STRINGID_POKEMONATECANDY
 	pause 0x40
-	playse SE_NIGERU
+	playse SE_FLEE
 	setbyte gBattleOutcome, B_OUTCOME_MON_FLED
 	finishturn
 

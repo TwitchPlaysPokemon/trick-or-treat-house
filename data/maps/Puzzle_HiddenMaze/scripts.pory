@@ -85,7 +85,7 @@ script Puzzle_HiddenMaze_Trainer3Trigger {
 	lock
 	playbgm (MUS_KAKKOII, 0)
 	applymovement (4, Puzzle_HiddenMaze_Trainer3_Movement1)
-	playse (SE_DANSA)
+	playse (SE_LEDGE)
 	waitmovement (0)
 	msgbox ("HALT, EVILDOER!!$")
 	playse (SE_SELECT)

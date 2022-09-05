@@ -4360,7 +4360,7 @@ BattleScript_BerryCureHPAndStatusEnd2::
 	end2
 
 BattleScript_BerryCureHPAndStatusRet::
-	playanimation BS_SCRIPTING, B_ANIM_ITEM_EFFECT
+	playanimation BS_SCRIPTING, B_ANIM_HELD_ITEM_EFFECT
 	printstring STRINGID_PKMNSITEMRESTOREDHEALTH
 	waitmessage B_WAIT_TIME_LONG
 	orword gHitMarker, HITMARKER_IGNORE_SUBSTITUTE

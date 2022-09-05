@@ -1381,14 +1381,14 @@ extern const u8 gText_TrainerHill3F[];
 extern const u8 gText_TrainerHill4F[];
 
 // Cable Club multichoice text
-extern const u8 CableClub_Text_TradeUsingLinkCable[];
-extern const u8 CableClub_Text_BattleUsingLinkCable[];
-extern const u8 CableClub_Text_RecordCornerUsingLinkCable[];
-extern const u8 CableClub_Text_CancelSelectedItem[];
-extern const u8 CableClub_Text_YouMayTradeHere[];
-extern const u8 CableClub_Text_YouMayBattleHere[];
-extern const u8 CableClub_Text_CanMixRecords[];
-extern const u8 CableClub_Text_CanMakeBerryPowder[];
+// extern const u8 CableClub_Text_TradeUsingLinkCable[];
+// extern const u8 CableClub_Text_BattleUsingLinkCable[];
+// extern const u8 CableClub_Text_RecordCornerUsingLinkCable[];
+// extern const u8 CableClub_Text_CancelSelectedItem[];
+// extern const u8 CableClub_Text_YouMayTradeHere[];
+// extern const u8 CableClub_Text_YouMayBattleHere[];
+// extern const u8 CableClub_Text_CanMixRecords[];
+// extern const u8 CableClub_Text_CanMakeBerryPowder[];
 
 // Frontier records.
 extern const u8 gText_WinStreak[];
@@ -1801,7 +1801,7 @@ extern const u8 gText_JustOnePkmn[];
 
 // battle main
 extern const u8 gText_LinkStandby3[];
-extern const u8 BattleFrontier_BattleTowerBattleRoom_Text_RecordCouldntBeSaved[];
+extern const u8 gText_LinkRecordCouldntBeSaved[];
 extern const u8 gText_Poison[];
 extern const u8 gText_Sleep[];
 extern const u8 gText_Paralysis[];

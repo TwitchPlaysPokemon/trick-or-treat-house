@@ -272,7 +272,7 @@
     "id": "MAP_SUSPENDED_MAZE_B1",
     "layout": "LAYOUT_SUSPENDED_MAZE_B1",
     "map_type": "MAP_TYPE_UNDERGROUND",
-    "music": "MUS_DAN02",
+    "music": "MUS_ABANDONED_SHIP",
     "name": "SuspendedMaze_B1",
     "object_events": [
         {

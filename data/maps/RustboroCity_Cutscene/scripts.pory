@@ -48,7 +48,7 @@ script(local) RustboroCity_PanHalloween {
 	applymovement (13, Common_Movement_SetVisible)
 	waitse
 	delay (8)
-	playse (SE_DANSA)
+	playse (SE_LEDGE)
 	applymovement (7, RustboroCity_Movement_SurpriseJump)
 	// 
 	waitmovement (OBJ_EVENT_ID_PLAYER)

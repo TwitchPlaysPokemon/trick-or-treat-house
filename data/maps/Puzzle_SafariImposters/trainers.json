@@ -57,7 +57,7 @@
 		]
 	},
 	{
-		"class": "PKMN_TRAINER_3",
+		"class": "RIVAL",
 		"name": "WALLY",
 		"pic": "WALLY",
 		"party": [
@@ -76,7 +76,7 @@
 		]
 	},
 	{
-		"class": "PKMN_TRAINER_3",
+		"class": "RIVAL",
 		"name": "BRENDAN",
 		"pic": "BRENDAN",
 		"party": [
@@ -98,7 +98,7 @@
 		]
 	},
 	{
-		"class": "PKMN_TRAINER_3",
+		"class": "RIVAL",
 		"name": "MAY",
 		"pic": "MAY",
 		"female": true,
@@ -118,7 +118,7 @@
 		]
 	},
 	{
-		"class": "PKMN_TRAINER_3",
+		"class": "RIVAL",
 		"name": "ALEX",
 		"pic": "TREEKID",
 		"female": true,
@@ -198,7 +198,7 @@
 		]
 	},
 	{
-		"class": "PKMN_TRAINER_3",
+		"class": "RIVAL",
 		"name": "WALLY",
 		"pic": "WALLY",
 		"party": [
@@ -217,7 +217,7 @@
 		]
 	},
 	{
-		"class": "PKMN_TRAINER_3",
+		"class": "RIVAL",
 		"name": "BRENDAN",
 		"pic": "BRENDAN",
 		"party": [
@@ -239,7 +239,7 @@
 		]
 	},
 	{
-		"class": "PKMN_TRAINER_3",
+		"class": "RIVAL",
 		"name": "MAY",
 		"pic": "MAY",
 		"female": true,
@@ -259,7 +259,7 @@
 		]
 	},
 	{
-		"class": "PKMN_TRAINER_3",
+		"class": "RIVAL",
 		"name": "ALEX",
 		"pic": "TREEKID",
 		"female": true,

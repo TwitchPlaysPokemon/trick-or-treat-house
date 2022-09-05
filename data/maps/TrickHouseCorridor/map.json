@@ -97,7 +97,7 @@
     "id": "MAP_TRICK_HOUSE_CORRIDOR",
     "layout": "LAYOUT_TRICK_HOUSE_CORRIDOR",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_KARAKURI",
+    "music": "MUS_TRICK_HOUSE",
     "name": "TrickHouseCorridor",
     "object_events": [
         {

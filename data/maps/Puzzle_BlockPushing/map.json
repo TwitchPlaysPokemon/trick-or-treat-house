@@ -11,7 +11,7 @@
     "id": "MAP_PUZZLE_BLOCK_PUSHING",
     "layout": "LAYOUT_PUZZLE_BLOCK_PUSHING",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_ABANDONED_SHIP",
     "name": "Puzzle_BlockPushing",
     "object_events": [
         {

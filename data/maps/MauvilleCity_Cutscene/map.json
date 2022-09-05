@@ -96,7 +96,7 @@
     "id": "MAP_MAUVILLE_CITY_CUTSCENE",
     "layout": "LAYOUT_MAUVILLE_CITY",
     "map_type": "MAP_TYPE_CITY",
-    "music": "MUS_GOTOWN",
+    "music": "MUS_RUSTBORO",
     "name": "MauvilleCity_Cutscene",
     "object_events": [
         {

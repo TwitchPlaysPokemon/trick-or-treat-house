@@ -164,7 +164,7 @@
     "id": "MAP_TRICK_TREAT_FORTREE_CITY",
     "layout": "LAYOUT_TRICKTREAT_FORTREE_CITY",
     "map_type": "MAP_TYPE_CITY",
-    "music": "MUS_MACHI_S3",
+    "music": "MUS_FORTREE",
     "name": "TrickTreat_FortreeCity",
     "object_events": [
         {

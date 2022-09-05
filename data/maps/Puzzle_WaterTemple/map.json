@@ -85,7 +85,7 @@
     "id": "MAP_PUZZLE_WATER_TEMPLE",
     "layout": "LAYOUT_PUZZLE_WATER_TEMPLE",
     "map_type": "MAP_TYPE_UNDERGROUND",
-    "music": "MUS_DAN02",
+    "music": "MUS_ABANDONED_SHIP",
     "name": "Puzzle_WaterTemple",
     "object_events": [
         {

@@ -11,7 +11,7 @@
     "id": "MAP_PUZZLE_THIN_ICE",
     "layout": "LAYOUT_PUZZLE_THIN_ICE",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_ABANDONED_SHIP",
     "name": "Puzzle_ThinIce",
     "object_events": [
     ],

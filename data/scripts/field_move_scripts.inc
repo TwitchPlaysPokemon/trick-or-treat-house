@@ -54,7 +54,7 @@ Text_WantToCut:
 	.string "CUT down!\p"
 	.string "Would you like to CUT it?$"
 
-Text_MonUsedHM: @ 8290771
+Text_MonUsedFieldMove: @ 8290771
 	.string "You used {STR_VAR_2}!$"
 
 Text_CantCut:

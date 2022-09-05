@@ -335,7 +335,7 @@ script TrickHouseRestroom_EventScript_Healer {
 		applymovement(OBJ_EVENT_ID_PLAYER, TrickHouseRestroom_Movement_Healer11)
 		waitmovement (OBJ_EVENT_ID_PLAYER)
 		applymovement(OBJ_EVENT_ID_PLAYER, TrickHouseRestroom_Movement_Healer12)
-		playse (SE_DANSA)
+		playse (SE_LEDGE)
 		waitmovement (OBJ_EVENT_ID_PLAYER)
 		applymovement(OBJ_EVENT_ID_PLAYER, TrickHouseRestroom_Movement_Healer13)
 		playfanfare(MUS_ME_ASA)

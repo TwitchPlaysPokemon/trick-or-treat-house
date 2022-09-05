@@ -67,7 +67,7 @@
     "id": "MAP_PUZZLE_LOSS_FLOOR2",
     "layout": "LAYOUT_TRIHARD_POKEMON_CENTER_2F",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_POKECEN",
+    "music": "MUS_POKE_CENTER",
     "name": "Puzzle_Loss_Floor2",
     "object_events": [
         {

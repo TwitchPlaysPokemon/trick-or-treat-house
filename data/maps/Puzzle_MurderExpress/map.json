@@ -11,7 +11,7 @@
     "id": "MAP_PUZZLE_MURDER_EXPRESS",
     "layout": "LAYOUT_PUZZLE_MURDER_EXPRESS",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_ABANDONED_SHIP",
     "name": "Puzzle_MurderExpress",
     "object_events": [
         {

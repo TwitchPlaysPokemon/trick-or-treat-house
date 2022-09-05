@@ -22,7 +22,7 @@
     "id": "MAP_FALLARBOR_TOWN",
     "layout": "LAYOUT_FALLARBOR_TOWN",
     "map_type": "MAP_TYPE_TOWN",
-    "music": "MUS_TONEKUSA",
+    "music": "MUS_FALLARBOR",
     "name": "FallarborTown",
     "object_events": [
     ],

@@ -309,7 +309,7 @@
 #define MUS_MOVE_DELETED            378 // MUS_ME_WASURE
 #define MUS_ENCOUNTER_GIRL          379 // MUS_SYOUJOEYE
 #define MUS_ENCOUNTER_MALE          380 // MUS_BOYEYE
-#define MUS_ABANDONED_SHIP          381 // MUS_DAN02
+#define MUS_ABANDONED_SHIP          381 // MUS_ABANDONED_SHIP
 #define MUS_FORTREE                 382 // MUS_MACHI_S3
 #define MUS_BIRCH_LAB               383 // MUS_ODAMAKI
 #define MUS_B_TOWER_RS              384 // MUS_B_TOWER
@@ -355,13 +355,13 @@
 #define MUS_VICTORY_AQUA_MAGMA      424 // MUS_KACHI4
 #define MUS_CABLE_CAR               425 // MUS_ROPEWAY
 #define MUS_GAME_CORNER             426 // MUS_CASINO
-#define MUS_DEWFORD                 427 // MUS_HIGHTOWN
+#define MUS_DEWFORD                 427 // MUS_DEWFORD
 #define MUS_SAFARI_ZONE             428 // MUS_SAFARI
 #define MUS_VICTORY_ROAD            429 // MUS_C_ROAD
 #define MUS_AQUA_MAGMA_HIDEOUT      430 // MUS_AJITO
 #define MUS_SAILING                 431 // MUS_M_BOAT
 #define MUS_MT_PYRE                 432 // MUS_M_DUNGON
-#define MUS_SLATEPORT               433 // MUS_FINECITY
+#define MUS_SLATEPORT               433 // MUS_SLATEPORT
 #define MUS_MT_PYRE_EXTERIOR        434 // MUS_MACHUPI
 #define MUS_SCHOOL                  435 // MUS_P_SCHOOL
 #define MUS_HALL_OF_FAME            436 // MUS_DENDOU
@@ -380,7 +380,7 @@
 #define MUS_ENCOUNTER_TWINS         449 // MUS_HUTAGO
 #define MUS_ENCOUNTER_ELITE_FOUR    450 // MUS_SITENNOU
 #define MUS_ENCOUNTER_HIKER         451 // MUS_YAMA_EYE
-#define MUS_CONTEST_LOBBY           452 // MUS_CONLOBBY
+#define MUS_CONTEST_LOBBY           452 // MUS_CONTEST_LOBBY
 #define MUS_ENCOUNTER_INTERVIEWER   453 // MUS_INTER_V
 #define MUS_ENCOUNTER_CHAMPION      454 // MUS_DAIGO
 #define MUS_CREDITS                 455 // MUS_THANKFOR

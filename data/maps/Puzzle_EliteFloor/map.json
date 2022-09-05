@@ -11,7 +11,7 @@
     "id": "MAP_PUZZLE_ELITE_FLOOR",
     "layout": "LAYOUT_PUZZLE_ELITE_FLOOR",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_FIELD13",
+    "music": "MUS_GSC_ROUTE38",
     "name": "Puzzle_EliteFloor",
     "object_events": [
         {

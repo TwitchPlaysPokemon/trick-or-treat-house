@@ -136,7 +136,7 @@ script Puzzle_TrickHouseSlipSliding_Alien {
 	msgbox ("My Zigzagoon ran off… I'm sad now…$", MSGBOX_AUTOCLOSE)
 }
 script Puzzle_TrickHouseSlipSliding_Alien_PostFight {
-	playse (SE_DANSA)
+	playse (SE_LEDGE)
 	applymovement(2, Puzzle_TrickHouseSlipSliding_Zig2Freed)
 	waitmovement(2)
 	setvar(VAR_ZIG2_STATE, 1)
@@ -162,10 +162,10 @@ script Puzzle_TrickHouseSlipSliding_Twins {
 	msgbox ("You made Ziggy run away! You're mean!$", MSGBOX_AUTOCLOSE)
 }
 script Puzzle_TrickHouseSlipSliding_Twins_PostFight {
-	playse (SE_DANSA)
+	playse (SE_LEDGE)
 	applymovement(3, Puzzle_TrickHouseSlipSliding_Zig3Freed)
 	delay (8)
-	playse (SE_DANSA)
+	playse (SE_LEDGE)
 	waitmovement(3)
 	setvar(VAR_ZIG3_STATE, 1)
 	setobjectxyperm(3, 23, 10)

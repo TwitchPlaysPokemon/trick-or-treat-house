@@ -103,7 +103,7 @@ gFieldEffectScript_TallGrass::
 	field_eff_end
 
 gFieldEffectScript_FallGrass::
-	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoFall, FldEff_FallGrass
+	field_eff_loadfadedpal_callnative gSpritePalette_FallFieldEffect, FldEff_FallGrass
 	field_eff_end
 
 gFieldEffectScript_Ripple::
@@ -159,7 +159,7 @@ gFieldEffectScript_LongGrass::
 	field_eff_end
 
 gFieldEffectScript_FallLongGrass::
-	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoFall, FldEff_FallLongGrass
+	field_eff_loadfadedpal_callnative gSpritePalette_FallFieldEffect, FldEff_FallLongGrass
 	field_eff_end
 
 gFieldEffectScript_JumpLongGrass::
@@ -167,11 +167,11 @@ gFieldEffectScript_JumpLongGrass::
 	field_eff_end
 
 gFieldEffectScript_JumpFallGrass::
-	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoFall, FldEff_JumpFallGrass
+	field_eff_loadfadedpal_callnative gSpritePalette_FallFieldEffect, FldEff_JumpFallGrass
 	field_eff_end
 
 gFieldEffectScript_JumpFallLongGrass::
-	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoFall, FldEff_JumpFallLongGrass
+	field_eff_loadfadedpal_callnative gSpritePalette_FallFieldEffect, FldEff_JumpFallLongGrass
 	field_eff_end
 
 gFieldEffectScript_UnusedGrass::
@@ -370,21 +370,21 @@ gFieldEffectScript_MoveDeoxysRock::
 	field_eff_end
 
 gFieldEffectScript_EmoteNoteC::
-	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoEmoteNote, FldEff_EmoteNoteC
+	field_eff_loadfadedpal_callnative sSpritePalette_EmoteNote, FldEff_EmoteNoteC
 	field_eff_end
 
 gFieldEffectScript_EmoteNoteD::
-	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoEmoteNote, FldEff_EmoteNoteD
+	field_eff_loadfadedpal_callnative sSpritePalette_EmoteNote, FldEff_EmoteNoteD
 	field_eff_end
 
 gFieldEffectScript_EmoteNoteE::
-	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoEmoteNote, FldEff_EmoteNoteE
+	field_eff_loadfadedpal_callnative sSpritePalette_EmoteNote, FldEff_EmoteNoteE
 	field_eff_end
 
 gFieldEffectScript_EmoteNoteF::
-	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoEmoteNote, FldEff_EmoteNoteF
+	field_eff_loadfadedpal_callnative sSpritePalette_EmoteNote, FldEff_EmoteNoteF
 	field_eff_end
 
 gFieldEffectScript_EmoteNoteG::
-	field_eff_loadfadedpal_callnative gFieldEffectObjectPaletteInfoEmoteNote, FldEff_EmoteNoteG
+	field_eff_loadfadedpal_callnative sSpritePalette_EmoteNote, FldEff_EmoteNoteG
 	field_eff_end

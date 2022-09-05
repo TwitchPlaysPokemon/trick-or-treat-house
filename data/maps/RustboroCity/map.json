@@ -107,7 +107,7 @@
     "id": "MAP_RUSTBORO_CITY",
     "layout": "LAYOUT_RUSTBORO_CITY",
     "map_type": "MAP_TYPE_CITY",
-    "music": "MUS_GOTOWN",
+    "music": "MUS_RUSTBORO",
     "name": "RustboroCity",
     "object_events": [
     ],

@@ -51,7 +51,7 @@
     "id": "MAP_PUZZLE_SPOT_DIFFERENCE_2_RIGHT",
     "layout": "LAYOUT_PUZZLE_SPOT_DIFFERENCE_2_RIGHT",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_MACHUPI",
+    "music": "MUS_MT_PYRE_EXTERIOR",
     "name": "Puzzle_SpotDifference_2_Right",
     "object_events": [
         {

@@ -27,7 +27,7 @@
     "id": "MAP_DESERT_WEST",
     "layout": "LAYOUT_DESERT_WEST",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_KAZANBAI",
+    "music": "MUS_ROUTE113",
     "name": "Desert_West",
     "object_events": [
     ],

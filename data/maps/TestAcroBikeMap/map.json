@@ -11,7 +11,7 @@
     "id": "MAP_TEST_ACRO_BIKE_MAP",
     "layout": "LAYOUT_TEST_ACRO_BIKE_MAP",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_DAN02",
+    "music": "MUS_ABANDONED_SHIP",
     "name": "TestAcroBikeMap",
     "object_events": [
         {

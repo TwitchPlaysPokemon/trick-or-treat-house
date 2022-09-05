@@ -11,7 +11,7 @@
     "id": "MAP_THIN_ICE_F2",
     "layout": "LAYOUT_THIN_ICE_F2",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_DAN02",
+    "music": "MUS_ABANDONED_SHIP",
     "name": "ThinIce_F2",
     "object_events": [
     ],

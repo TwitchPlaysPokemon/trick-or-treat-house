@@ -11,7 +11,7 @@
     "id": "MAP_PUZZLE_FALLING_WATER",
     "layout": "LAYOUT_PUZZLE_FALLING_WATER",
     "map_type": "MAP_TYPE_OCEAN_ROUTE",
-    "music": "MUS_FIELD13",
+    "music": "MUS_GSC_ROUTE38",
     "name": "Puzzle_FallingWater",
     "object_events": [
         {

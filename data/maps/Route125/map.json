@@ -17,7 +17,7 @@
     "id": "MAP_ROUTE125",
     "layout": "LAYOUT_ROUTE125",
     "map_type": "MAP_TYPE_OCEAN_ROUTE",
-    "music": "MUS_DOORO_X3",
+    "music": "MUS_ROUTE120",
     "name": "Route125",
     "object_events": [
     ],

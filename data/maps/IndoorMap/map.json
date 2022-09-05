@@ -10,8 +10,8 @@
     ],
     "id": "MAP_INDOOR_MAP",
     "layout": "LAYOUT_INDOOR_MAP",
-    "map_type": "MAP_TYPE_UNUSED_1",
-    "music": "MUS_KARAKURI",
+    "map_type": "MAP_TYPE_NONE",
+    "music": "MUS_TRICK_HOUSE",
     "name": "IndoorMap",
     "object_events": [
     ],

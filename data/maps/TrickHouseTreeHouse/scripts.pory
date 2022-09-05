@@ -136,7 +136,7 @@ TrickHouseExt_Mart4:
 script TrickHouseTreeHouse_EventScript_TraderB {
 	lock
 	copyvar(VAR_0x8004, VAR_CANDY_TRADE_5)
-	special (CheckTMAndBufferMoveName)
+	special (BufferTMHMMoveName)
 	callnative(BufferItemPrice)
 	msgbox ("I got this sweet TR for {STR_VAR_2}!\n"
 			"I'll sell it for {STR_VAR_1} candy corns.", MSGBOX_YESNO)

@@ -17,7 +17,7 @@
     "id": "MAP_PUZZLE_LOST_WOODS1_ENTRANCE",
     "layout": "LAYOUT_PUZZLE_LOST_WOODS_ENTRANCE",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_RG_T_MORI",
+    "music": "MUS_RG_VIRIDIAN_FOREST",
     "name": "Puzzle_LostWoods1_Entrance",
     "object_events": [
     ],

@@ -11,7 +11,7 @@
     "id": "MAP_SLATEPORT_CITY_CONTEST_HALL",
     "layout": "LAYOUT_SLATEPORT_CITY_CONTEST_HALL",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_CONLOBBY",
+    "music": "MUS_CONTEST_LOBBY",
     "name": "SlateportCity_ContestHall",
     "object_events": [
     ],

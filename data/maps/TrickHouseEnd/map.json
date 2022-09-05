@@ -36,7 +36,7 @@
     "id": "MAP_TRICK_HOUSE_END",
     "layout": "LAYOUT_TRICK_HOUSE_END",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_KARAKURI",
+    "music": "MUS_TRICK_HOUSE",
     "name": "TrickHouseEnd",
     "object_events": [
         {

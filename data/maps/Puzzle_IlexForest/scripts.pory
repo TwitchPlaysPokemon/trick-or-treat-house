@@ -329,7 +329,7 @@ script(local) Puzzle_IlexForest_BirdSpotAtoB {
 	playmoncry (SPECIES_FARFETCHD, 0)
 	applymovement(LID_BIRD, Puzzle_IlexForest_Movement_AtoB_Bird2)
 	delay(32)
-	playse(SE_DANSA)
+	playse(SE_LEDGE)
 	waitmovement(LID_BIRD)
 	applymovement(LID_BIRD, Puzzle_IlexForest_Movement_AtoB_Bird3)
 	applymovement(LID_BALL, Puzzle_IlexForest_Movement_AtoB_Ball)
@@ -715,7 +715,7 @@ script(local) Puzzle_IlexForest_BirdSpotCtoD {
 		// Animate the bird
 		applymovement(LID_BIRD, Puzzle_IlexForest_Movement_CtoD_Bird1)
 		waitmovement(LID_BIRD)
-		playse(SE_DANSA)
+		playse(SE_LEDGE)
 		//
 		applymovement(LID_BIRD, Puzzle_IlexForest_Movement_CtoD_Bird2)
 		waitmovement(LID_BIRD)

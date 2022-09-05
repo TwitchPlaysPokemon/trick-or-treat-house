@@ -17,7 +17,7 @@
     "id": "MAP_DIVE_MAZE_UNDERWATER",
     "layout": "LAYOUT_DIVE_MAZE_UNDERWATER",
     "map_type": "MAP_TYPE_UNDERWATER",
-    "music": "MUS_DAN02",
+    "music": "MUS_ABANDONED_SHIP",
     "name": "DiveMaze_Underwater",
     "object_events": [
     ],

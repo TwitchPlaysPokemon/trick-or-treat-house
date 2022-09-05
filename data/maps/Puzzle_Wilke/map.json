@@ -43,7 +43,7 @@
     "id": "MAP_PUZZLE_WILKE",
     "layout": "LAYOUT_PUZZLE_WILKE",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_MACHI_S3",
+    "music": "MUS_FORTREE",
     "name": "Puzzle_Wilke",
     "object_events": [
         {

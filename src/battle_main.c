@@ -2598,7 +2598,7 @@ static void AskRecordBattle(void)
         }
         else
         {
-            BattleStringExpandPlaceholdersToDisplayedString(BattleFrontier_BattleTowerBattleRoom_Text_RecordCouldntBeSaved);
+            BattleStringExpandPlaceholdersToDisplayedString(gText_LinkRecordCouldntBeSaved);
             BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MSG);
             gBattleCommunication[1] = 128; // Delay
             gBattleCommunication[MULTIUSE_STATE]++;

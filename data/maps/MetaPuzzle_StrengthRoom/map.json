@@ -11,7 +11,7 @@
     "id": "MAP_META_PUZZLE_STRENGTH_ROOM",
     "layout": "LAYOUT_META_PUZZLE_STRENGTH_ROOM",
     "map_type": "MAP_TYPE_SECRET_BASE",
-    "music": "MUS_DAN02",
+    "music": "MUS_ABANDONED_SHIP",
     "name": "MetaPuzzle_StrengthRoom",
     "object_events": [
         {

@@ -32,7 +32,7 @@
     "id": "MAP_LOST_WOODS1_ROOM2",
     "layout": "LAYOUT_PUZZLE_LOST_WOODS_ROOM",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_RG_T_MORI",
+    "music": "MUS_RG_VIRIDIAN_FOREST",
     "name": "LostWoods1_Room2",
     "object_events": [
         {

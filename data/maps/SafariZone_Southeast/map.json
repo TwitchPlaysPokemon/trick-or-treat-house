@@ -76,7 +76,7 @@
     "id": "MAP_SAFARI_ZONE_SOUTHEAST",
     "layout": "LAYOUT_SAFARI_ZONE_SOUTHEAST",
     "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_SAFARI",
+    "music": "MUS_SAFARI_ZONE",
     "name": "SafariZone_Southeast",
     "object_events": [
         {

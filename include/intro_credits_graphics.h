@@ -19,7 +19,6 @@ enum {
 
 extern u16 gSkyBgPanY;
 extern s16 gSkyBgPanYAdjust;
-extern s16 gSpriteDestroyFlag;
 
 extern u16 gIntroCredits_MovingSceneryVBase;
 extern s16 gIntroCredits_MovingSceneryVOffset;
