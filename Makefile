@@ -156,7 +156,7 @@ PGEGEN := tools/pgegen/pgegen$(EXE)
 
 PERL := perl
 
-TOOLDIRS := $(filter-out tools/agbcc tools/binutils tools/poryscript tools/creditor,$(wildcard tools/*))
+TOOLDIRS := $(filter-out tools/agbcc tools/binutils tools/porymap.app tools/poryscript tools/pgegen tools/creditor,$(wildcard tools/*))
 TOOLBASE = $(TOOLDIRS:tools/%=%)
 TOOLS = $(foreach tool,$(TOOLBASE),tools/$(tool)/$(tool)$(EXE))
 
@@ -305,10 +305,10 @@ $(CRY_SUBDIR)/%.bin: $(CRY_SUBDIR)/%.aif ; $(AIF) $< $@ --compress
 sound/%.bin: sound/%.aif ; $(AIF) $< $@
 data/%.inc: data/%.pory; $(SCRIPT) -i $< -o $@ -s TPP_MODE=$(TPP_MODE) -s MGBA_DEBUG=$(MGBA_DEBUG)
 
-$(OBJ_DIR)/copystamped.bin: .git/index
-	$(COPYSTAMP) $(OBJ_DIR)/copystamped.bin `git log -1 --format="-18:s $(VERSION_STR)*%h -19:t %ct"`
-$(OBJ_DIR)/copystamped.bin.lz: $(OBJ_DIR)/copystamped.bin
-	$(GFX) $(OBJ_DIR)/copystamped.bin $@
+build/copystamped.bin: .git/index
+	$(COPYSTAMP) build/copystamped.bin `git log -1 --format="-18:s $(VERSION_STR)*%h -19:t %ct"`
+build/copystamped.bin.lz: build/copystamped.bin
+	$(GFX) build/copystamped.bin $@
 
 ifeq ($(MODERN),0)
 $(C_BUILDDIR)/libc.o: CC1 := tools/agbcc/bin/old_agbcc$(EXE)

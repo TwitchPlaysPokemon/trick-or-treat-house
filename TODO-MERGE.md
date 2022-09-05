@@ -1,3 +1,12 @@
+Known issues:
+- [ ] Manectric on the intro screen is yellow instead of blue for some reason.
+- [ ] Brendan and May's overworld palettes are incorrect, probably using the old palette.
+- [ ] Fall grass overworld effect is broken.
+- [ ] "Allie put it away in the candy p--" [cut off] "Allie put it away in the \n Candy pocket". Both bad.
+	- [ ] messagewordwrap is broken
+	- [ ] Text box is duplicated.
+
+Others:
 - [x] Check Makefile over
 - [X] eventObject->unk3_3 -> disableReflection -> hideReflection
 - [X] gRamScriptRetAddr -> gRamScriptPtr
@@ -31,7 +40,7 @@
 	gObjectEventGraphicsInfo_LinkMay
 - [ ] Figure out if sBagSpriteAnimTable and specifically the ex-ball, now candy sprite animation should be moved, 
       and what even is going on with that I don't know...
-- [ ] Palette Tags:
+- [X] Palette Tags:
 	OBJ_EVENT_PAL_TAG_BRENDAN                 0x1100       EVENT_OBJ_PAL_TAG_8
 	OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION      0x1101       EVENT_OBJ_PAL_TAG_9
 	OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION       0x1102       EVENT_OBJ_PAL_TAG_10

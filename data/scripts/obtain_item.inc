@@ -205,7 +205,7 @@ EventScript_PutHiddenItemInPocket::
 	bufferitemnameplural STR_VAR_2, VAR_0x8004, VAR_0x8006
 	copyvar VAR_0x8004, VAR_0x8008
 	goto_if_set FLAG_SYS_BORT_MODE, EventScript_PutHiddenItemInPocket_BORT
-	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
+	@ msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
 	messagewordwrap gText_PutItemInPocket
 	waitmessage
 	waitbuttonpress
