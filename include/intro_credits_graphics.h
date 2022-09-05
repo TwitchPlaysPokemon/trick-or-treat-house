@@ -24,9 +24,9 @@ extern u16 gIntroCredits_MovingSceneryVBase;
 extern s16 gIntroCredits_MovingSceneryVOffset;
 extern s16 gIntroCredits_MovingSceneryState;
 
-// extern const struct CompressedSpriteSheet gSpriteSheet_IntroBrendan[];
-// extern const struct CompressedSpriteSheet gSpriteSheet_IntroMay[];
-// extern const struct CompressedSpriteSheet gSpriteSheet_IntroTreekid[];
+extern const struct CompressedSpriteSheet gSpriteSheet_IntroBrendan[];
+extern const struct CompressedSpriteSheet gSpriteSheet_IntroMay[];
+extern const struct CompressedSpriteSheet gSpriteSheet_IntroTreekid[];
 extern const struct CompressedSpriteSheet gSpriteSheet_IntroBicycle[];
 extern const struct CompressedSpriteSheet gSpriteSheet_IntroFlygon[];
 extern const struct SpritePalette gSpritePalettes_IntroPlayerFlygon[];

@@ -66,9 +66,9 @@ static const u32 sHouseSilhouette_Gfx[]   = INCBIN_U32("graphics/intro/scene_2/h
 static const u16 sBrendanCredits_Pal[]    = INCBIN_U16("graphics/intro/scene_2/brendan_credits.gbapal");
 static const u32 sBrendanCredits_Gfx[]    = INCBIN_U32("graphics/intro/scene_2/brendan_credits.4bpp.lz");
 static const u16 sMayCredits_Pal[]        = INCBIN_U16("graphics/intro/scene_2/may_credits.gbapal");
+static const u32 sMayCredits_Gfx[]        = INCBIN_U32("graphics/intro/scene_2/may_credits.4bpp.lz");
 static const u16 sTreekidCredits_Pal[]    = INCBIN_U16("graphics/intro/scene_2/treekid.gbapal");
 static const u32 sTreekidCredits_Gfx[]    = INCBIN_U32("graphics/intro/scene_2/treekid.4bpp.lz");
-static const u32 sMayCredits_Gfx[]        = INCBIN_U32("graphics/intro/scene_2/may_credits.4bpp.lz");
 static const u32 sBicycle_Gfx[]           = INCBIN_U32("graphics/intro/scene_2/bicycle.4bpp.lz");
 static const u16 sLatios_Pal[]            = INCBIN_U16("graphics/intro/scene_2/latios.gbapal");
 static const u32 sLatios_Gfx[]            = INCBIN_U32("graphics/intro/scene_2/latios.4bpp.lz");
@@ -601,12 +601,12 @@ static const struct SpriteTemplate sSpriteTemplate_FlygonLatias =
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = SpriteCB_FlygonLeftHalf
 };
-/*
+
 const struct CompressedSpriteSheet gSpriteSheet_IntroBrendan[] =
 {
     {
-        .data = gIntroBrendan_Gfx,
-        // .data = gIntro2BrendanTiles,
+        // .data = gIntroBrendan_Gfx,
+        .data = sBrendanCredits_Gfx,
         .size = 0x2000,
         .tag = TAG_BRENDAN
     },
@@ -616,8 +616,8 @@ const struct CompressedSpriteSheet gSpriteSheet_IntroBrendan[] =
 const struct CompressedSpriteSheet gSpriteSheet_IntroMay[] =
 {
     {
-        .data = gIntroMay_Gfx,
-        // .data = gIntro2MayTiles,
+        // .data = gIntroMay_Gfx,
+        .data = sMayCredits_Gfx,
         .size = 0x2000,
         .tag = TAG_MAY
     },
@@ -627,14 +627,14 @@ const struct CompressedSpriteSheet gSpriteSheet_IntroMay[] =
 const struct CompressedSpriteSheet gSpriteSheet_IntroTreekid[] =
 {
     {
-        .data = gIntroTreekid_Gfx,
-        // .data = gIntro2TreekidTiles,
+        // .data = gIntroTreekid_Gfx,
+        .data = sTreekidCredits_Gfx,
         .size = 0x2000,
         .tag = TAG_TREEKID
     },
     {}
 };
-*/
+
 const struct CompressedSpriteSheet gSpriteSheet_IntroBicycle[] =
 {
     {
@@ -746,6 +746,7 @@ const struct SpritePalette gSpritePalettes_Credits[] =
     { .data = sLatios_Pal,         .tag = TAG_FLYGON_LATIOS },
     { .data = sLatias_Pal,         .tag = TAG_FLYGON_LATIAS },
     { .data = sTreekidCredits_Pal, .tag = TAG_TREEKID },
+    { .data = gIntroPlayer_Pal,    .tag = TAG_EXTRA },
     {}
 };
 

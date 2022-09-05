@@ -1372,9 +1372,9 @@ static void Task_Scene2_CreateSprites(u8 taskId)
 
     switch (sIntroCharacterGender) {
         default:
-        case GENDER_M: LoadCompressedSpriteSheet(gSpriteSheet_CreditsBrendan); break;
-        case GENDER_F: LoadCompressedSpriteSheet(gSpriteSheet_CreditsMay); break;
-        case GENDER_N: LoadCompressedSpriteSheet(gSpriteSheet_CreditsTreekid); break;
+        case GENDER_M: LoadCompressedSpriteSheet(gSpriteSheet_IntroBrendan); break;
+        case GENDER_F: LoadCompressedSpriteSheet(gSpriteSheet_IntroMay); break;
+        case GENDER_N: LoadCompressedSpriteSheet(gSpriteSheet_IntroTreekid); break;
     }
     LoadCompressedSpriteSheet(gSpriteSheet_IntroBicycle);
     LoadCompressedSpriteSheet(gSpriteSheet_IntroFlygon);
