@@ -12,7 +12,7 @@ MysteryGiftScript_MysticTicket::
 	@ waitbuttonpress
 	@ checkitemspace ITEM_MYSTIC_TICKET
 	@ vgoto_if_eq VAR_RESULT, FALSE, MysticTicket_NoBagSpace
-	@ giveitem ITEM_MYSTIC_TICKET
+	@ giveitem_std ITEM_MYSTIC_TICKET
 	@ setflag FLAG_ENABLE_SHIP_NAVEL_ROCK
 	@ setflag FLAG_RECEIVED_MYSTIC_TICKET
 	@ vmessage sText_MysticTicketUseAtPort

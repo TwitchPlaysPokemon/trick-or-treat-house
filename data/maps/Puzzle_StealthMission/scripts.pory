@@ -292,7 +292,7 @@ script Puzzle_StealthMission_CheckFinished {
 	if (var(VAR_TIMES_SEEN_BY_TRAINER) == 0) {
 		message(Puzzle_StealthMission_Text_LookerFinish_Best)
 		waitmessage
-		giveitem(ITEM_CANDY_TOBLERONE, 2)
+		giveitem_std(ITEM_CANDY_TOBLERONE, 2)
 	}
 	elif (var(VAR_TIMES_SEEN_BY_TRAINER) < 3) {
 		message(Puzzle_StealthMission_Text_LookerFinish_Good)
@@ -319,7 +319,7 @@ script Puzzle_StealthMission_CheckFinished {
 ///////////////////////////////////////////////////////
 
 script Puzzle_StealthMission_PickupKeycard {
-	giveitem(ITEM_CARD_KEY, 1)
+	giveitem_std(ITEM_CARD_KEY, 1)
 }
 script Puzzle_StealthMission_SignScript_OpenDoorA {
 	lock

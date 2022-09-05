@@ -11,7 +11,7 @@ MysteryGiftScript_OldSeaMap::
 	waitbuttonpress
 	checkitemspace ITEM_OLD_SEA_MAP
 	vgoto_if_eq VAR_RESULT, FALSE, OldSeaMap_NoBagSpace
-	giveitem ITEM_OLD_SEA_MAP
+	giveitem_std ITEM_OLD_SEA_MAP
 	setflag FLAG_ENABLE_SHIP_FARAWAY_ISLAND
 	setflag FLAG_RECEIVED_OLD_SEA_MAP
 	vmessage sText_MysteryGiftOldSeaMapUseAtPort

@@ -11,7 +11,7 @@ MysteryGiftScript_AuroraTicket::
 	waitbuttonpress
 	checkitemspace ITEM_AURORA_TICKET
 	vgoto_if_eq VAR_RESULT, FALSE, AuroraTicket_NoBagSpace
-	giveitem ITEM_AURORA_TICKET
+	giveitem_std ITEM_AURORA_TICKET
 	setflag FLAG_ENABLE_SHIP_BIRTH_ISLAND
 	setflag FLAG_RECEIVED_AURORA_TICKET
 	vmessage sText_AuroraTicketUseAtPort

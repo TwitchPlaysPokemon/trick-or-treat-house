@@ -122,9 +122,9 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
 	call EventScript_ResetAllBerries
 	@ give initial candy haul
-	giveitem ITEM_CANDY_CHOCOLATE, 5
-	giveitem ITEM_CANDY_STARBURST, 2
-	giveitem ITEM_CANDY_REESES, 6
-	giveitem ITEM_CANDY_PRETZEL, 2
-	giveitem ITEM_CANDY_OREO, 12
+	additem ITEM_CANDY_CHOCOLATE, 5
+	additem ITEM_CANDY_STARBURST, 2
+	additem ITEM_CANDY_REESES, 6
+	additem ITEM_CANDY_PRETZEL, 2
+	additem ITEM_CANDY_OREO, 12
 	end

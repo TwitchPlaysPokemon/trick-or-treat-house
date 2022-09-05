@@ -129,7 +129,7 @@ script TrickTreat_FortreeCity_CandyGiver_Nurse {
 	faceplayer
 	msgbox ("Happy Halloween!\n"
 			"Please take some candy!$")
-	giveitem(ITEM_CANDY_ABUNDANT, 2)
+	giveitem_std(ITEM_CANDY_ABUNDANT, 2)
 	msgbox ("The {POKEMON} CENTER is always there\n"
 			"for trainers everywhere.\p"
 			"Have a good night!$")
@@ -145,7 +145,7 @@ script TrickTreat_FortreeCity_CandyGiver_Camper {
 			"these cookies by summer's end, but\l"
 			"I never managed to.\p"
 			"So, here, have some of them, please!$")
-	giveitem(ITEM_LAVA_COOKIE, 12)
+	giveitem_std(ITEM_LAVA_COOKIE, 12)
 	msgbox ("Don't worry, they're not stale or\n"
 			"anything. At least they shouldn't be.\p"
 			"Good night!$")
@@ -159,7 +159,7 @@ script TrickTreat_FortreeCity_CandyGiver_Fatman {
 	faceplayer
 	msgbox ("Oh good! You can have my last piece\n"
 			"of candy so I don't eat it.$")
-	giveitem(ITEM_CANDY_UNCOMMON, 1)
+	giveitem_std(ITEM_CANDY_UNCOMMON, 1)
 	msgbox ("Right, time to turn in for the night.$")
 	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
 	setflag (FLAG_PUZZLE_22)
@@ -174,7 +174,7 @@ script TrickTreat_FortreeCity_CandyGiver_Tarzan {
 			"You strong! Me beaten!$")
 	msgbox ("You win! You get candy!\n"
 			"Make Halloween Happy!$")
-	giveitem(ITEM_CANDY_ABUNDANT, 3)
+	giveitem_std(ITEM_CANDY_ABUNDANT, 3)
 	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
 	setflag (FLAG_PUZZLE_24)
 	release
@@ -208,7 +208,7 @@ script TrickTreat_FortreeCity_CandyGiver_FairyGirl {
 		trainerbattle_no_intro (TRAINER_03, 
 			"Alright, you can have the treat too!$")
 	}
-	giveitem(ITEM_CANDY_UNCOMMON, 1)
+	giveitem_std(ITEM_CANDY_UNCOMMON, 1)
 	msgbox ("Happy Halloween!$")
 	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
 	setflag (FLAG_PUZZLE_23)
@@ -227,7 +227,7 @@ script TrickTreat_FortreeCity_CandyGiver_ExpertLady {
 			"to success!$")
 	msgbox ("Very good, child. Here, have a snack\n"
 			"to help promote your mind and body.$")
-	giveitem(ITEM_CANDY_HEALTHY, 3)
+	giveitem_std(ITEM_CANDY_HEALTHY, 3)
 	msgbox ("Nighty night! Hehehehe!$")
 	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
 	setflag (FLAG_PUZZLE_25)
@@ -242,7 +242,7 @@ script TrickTreat_FortreeCity_CandyGiver_Pokefan {
 	trainerbattle_no_intro (TRAINER_06, 
 			"Very impressive!$")
 	msgbox ("Thanks for the show! Here's some candy!$")
-	giveitem(ITEM_CANDY_ABUNDANT, 1)
+	giveitem_std(ITEM_CANDY_ABUNDANT, 1)
 	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
 	setflag (FLAG_PUZZLE_26)
 	release
@@ -253,7 +253,7 @@ script TrickTreat_FortreeCity_CandyGiver_OldLady {
 	faceplayer
 	msgbox ("Hello child!\n"
 			"Please take as much as you like!$")
-	giveitem(ITEM_CANDY_COMMON, 2)
+	giveitem_std(ITEM_CANDY_COMMON, 2)
 	msgbox ("I love your costume!\p"
 			"Good night!$")
 	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
@@ -266,7 +266,7 @@ script TrickTreat_FortreeCity_CandyGiver_TownBoy {
 	faceplayer
 	msgbox ("Trick or Treat!\n"
 			"Here's some candy my mom bought.$")
-	giveitem(ITEM_CANDY_ABUNDANT, 2)
+	giveitem_std(ITEM_CANDY_ABUNDANT, 2)
 	msgbox ("Hopefully no more people come by, so\n"
 			"I can have the rest to myself.$")
 	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
@@ -280,7 +280,7 @@ script TrickTreat_FortreeCity_CandyGiver_Pokekid {
 	msgbox ("Pika pi!$")
 	trainerbattle_no_intro (TRAINER_07, 
 			"Pikachu!$")
-	giveitem(ITEM_CANDY_COMMON, 2)
+	giveitem_std(ITEM_CANDY_COMMON, 2)
 	msgbox ("Pika!$")
 	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
 	setflag (FLAG_PUZZLE_29)
@@ -296,7 +296,7 @@ script TrickTreat_FortreeCity_CandyGiver_Winona {
 			"can be as graceful in battle as I!$")
 	trainerbattle_no_intro (TRAINER_01, 
 			"My, you are quite graceful indeed!$")
-	giveitem(ITEM_CANDY_RARE, 1)
+	giveitem_std(ITEM_CANDY_RARE, 1)
 	msgbox ("Perhaps you will come by for a real\n"
 			"gym challenge later?\p"
 			"Until then, goodnight.$")
@@ -317,7 +317,7 @@ script TrickTreat_FortreeCity_NinjaKid {
 script TrickTreat_FortreeCity_NinjaKid_After {
 	msgbox ("Man, now I gotta give you some of my\n"
 			"candy… Here…$")
-	giveitem(ITEM_CANDY_RARE, 1)
+	giveitem_std(ITEM_CANDY_RARE, 1)
 	msgbox ("Now don't tell anyone I'm here!\p"
 			"Especially my mom.$")
 	setflag(FLAG_CANDY_RARE_01)
@@ -327,7 +327,7 @@ script TrickTreat_FortreeCity_NinjaKid_After {
 script TrickTreat_FortreeCity_BuriedItem {
 	lock
 	msgbox ("There's something buried here…$")
-	giveitem(ITEM_CANDY_RARE, 1)
+	giveitem_std(ITEM_CANDY_RARE, 1)
 	release
 }
 

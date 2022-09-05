@@ -1,7 +1,7 @@
 @ -----------------------------------------------------
 
 Common_EventScript_ItemCut::
-	giveitem ITEM_CUT_ITEM, 1
+	giveitem_std ITEM_CUT_ITEM, 1
 	end
 
 EventScript_CutTree:: @ 82906BB
@@ -64,7 +64,7 @@ Text_CantCut:
 @ -----------------------------------------------------
 
 Common_EventScript_ItemRockSmash::
-	giveitem ITEM_ROCKSMASH_ITEM, 1
+	giveitem_std ITEM_ROCKSMASH_ITEM, 1
 	end
 
 EventScript_RockSmash:: @ 82907A6
@@ -131,7 +131,7 @@ Text_CantSmash:
 @ -----------------------------------------------------
 
 Common_EventScript_ItemStrength::
-	giveitem ITEM_STRENGTH_ITEM, 1
+	giveitem_std ITEM_STRENGTH_ITEM, 1
 	end
 
 EventScript_StrengthBoulder:: @ 82908BA
@@ -197,7 +197,7 @@ Text_StrengthActivated:
 @ -----------------------------------------------------
 
 Common_EventScript_ItemWaterfall::
-	giveitem ITEM_WATERFALL_ITEM, 1
+	giveitem_std ITEM_WATERFALL_ITEM, 1
 	end
 
 EventScript_UseWaterfall::
@@ -236,7 +236,7 @@ Text_MonUsedWaterfall: @ 8290AFC
 @ -----------------------------------------------------
 
 Common_EventScript_ItemSurf::
-	giveitem ITEM_SURF_ITEM, 1
+	giveitem_std ITEM_SURF_ITEM, 1
 	end
 
 EventScript_UseSurf:: @ 8271EA0
@@ -267,7 +267,7 @@ gText_PlayerUsedSurf:: @ 827300D
 @ -----------------------------------------------------
 
 Common_EventScript_ItemDive::
-	giveitem ITEM_DIVE_ITEM, 1
+	giveitem_std ITEM_DIVE_ITEM, 1
 	end
 
 EventScript_UseDive::
@@ -339,11 +339,11 @@ Text_WantToSurface:
 @ -----------------------------------------------------
 
 Common_EventScript_ItemFlash::
-	giveitem ITEM_FLASH_ITEM, 1
+	giveitem_std ITEM_FLASH_ITEM, 1
 	end
 
 Common_EventScript_ItemFly::
-	giveitem ITEM_FLY_ITEM, 1
+	giveitem_std ITEM_FLY_ITEM, 1
 	end
 
 EventScript_FailSweetScent:: @ 8290CAE

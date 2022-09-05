@@ -660,12 +660,12 @@ script Puzzle_SafariImposters_EventScript_EntranceCounterTrigger {
 	playfanfare(MUS_OBTAIN_ITEM)
 	message("{PLAYER} received 30 Safari Balls,\n"
 			"a {POKEBLOCK} Case, and several tools!$")
-	giveitem(ITEM_POKEBLOCK_CASE, 1)
-	giveitem(ITEM_ACRO_BIKE, 1)
-	giveitem(ITEM_ROCKSMASH_ITEM, 1)
-	giveitem(ITEM_SURF_ITEM, 1)
-	giveitem(ITEM_DIVE_ITEM, 1)
-	giveitem(ITEM_WATERFALL_ITEM, 1)
+	additem(ITEM_POKEBLOCK_CASE, 1)
+	additem(ITEM_ACRO_BIKE, 1)
+	additem(ITEM_ROCKSMASH_ITEM, 1)
+	additem(ITEM_SURF_ITEM, 1)
+	additem(ITEM_DIVE_ITEM, 1)
+	additem(ITEM_WATERFALL_ITEM, 1)
 	callnative(Imposter_PopulatePokeblockCase)
 	waitfanfare
 	

@@ -152,7 +152,7 @@ script TrickTreat_SlateportCity1_CandyGiver_Nurse {
 	} else {
 		msgbox ("Happy Halloween!\n"
 				"Please take some candy!$")
-		giveitem(ITEM_CANDY_ABUNDANT, 2)
+		giveitem_std(ITEM_CANDY_ABUNDANT, 2)
 		msgbox ("The {POKEMON} CENTER is always there\n"
 				"for trainers everywhere.\p"
 				"Have a good night!$")
@@ -172,7 +172,7 @@ script TrickTreat_SlateportCity1_CandyGiver_Lass {
 	// 		"these off Norman? Sigh. Here.$")
 			"Go on, take it. I don't want any more\n"
 			"of these.$")
-	giveitem(ITEM_CANDY_ABUNDANT, 6)
+	giveitem_std(ITEM_CANDY_ABUNDANT, 6)
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
 	setflag (FLAG_SLATEPORT_CANDY_LASS)
 	release
@@ -190,7 +190,7 @@ script TrickTreat_SlateportCity1_CandyGiver_Wattson {
 	// msgbox ("Excellent! Here, have some of this!$")
 			"Here's some candy for you!\n"
 			"Happy Halloween!$")
-	giveitem(ITEM_CANDY_RARE, 2)
+	giveitem_std(ITEM_CANDY_RARE, 2)
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
 	setflag (FLAG_SLATEPORT_CANDY_WATTSON)
 	release
@@ -205,7 +205,7 @@ script TrickTreat_SlateportCity1_CandyGiver_BugCatcher {
 	// setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
 	// msgbox ("Do you know how hard it was to win\n"
 	// 		"these off Norman? Sigh. Here.$")
-	giveitem(ITEM_CANDY_COMMON, 4)
+	giveitem_std(ITEM_CANDY_COMMON, 4)
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
 	setflag (FLAG_SLATEPORT_CANDY_BUGCATCHER)
 	release

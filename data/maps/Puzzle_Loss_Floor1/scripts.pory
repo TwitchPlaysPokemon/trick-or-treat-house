@@ -93,7 +93,7 @@ script Puzzle_Loss_Floor1_FreeCandyCounter {
 		message (0)
 		waitmessage
 		waitbuttonpress
-		giveitem(ITEM_CANDY_CHOCOLATE, 3)
+		giveitem_std(ITEM_CANDY_CHOCOLATE, 3)
 		if (var(VAR_RESULT) == NO) {
 			message ("Oh, you don't have enough room.\n"
 					"Feel free to return when you do.$")

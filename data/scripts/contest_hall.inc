@@ -30,7 +30,7 @@ LilycoveCity_ContestLobby_EventScript_ReceptionWelcome::
 
 LilycoveCity_ContestLobby_EventScript_GivePokeblockCase::
 	msgbox LilycoveCity_ContestLobby_Text_ReceptionDontHavePokeblockCase, MSGBOX_DEFAULT
-	giveitem ITEM_POKEBLOCK_CASE
+	giveitem_std ITEM_POKEBLOCK_CASE
 	setflag FLAG_RECEIVED_POKEBLOCK_CASE
 	msgbox LilycoveCity_ContestLobby_Text_NowThatWeveClearedThatUp, MSGBOX_DEFAULT
 	return
@@ -42,7 +42,7 @@ LilycoveCity_ContestLobby_EventScript_PickUpPrize::
 	end
 
 LilycoveCity_ContestLobby_EventScript_GiveLuxuryBallAtCounter::
-	giveitem ITEM_LUXURY_BALL
+	giveitem_std ITEM_LUXURY_BALL
 	goto_if_eq VAR_RESULT, FALSE, LilycoveCity_ContestLobby_EventScript_NoRoomForLuxuryBallAtCounter
 	setvar VAR_CONTEST_PRIZE_PICKUP, 0
 	closemessage
@@ -1150,7 +1150,7 @@ ContestHall_EventScript_NoRoomForLuxuryBall::
 	return
 
 ContestHall_EventScript_GiveLuxuryBall::
-	giveitem ITEM_LUXURY_BALL
+	giveitem_std ITEM_LUXURY_BALL
 	goto_if_eq VAR_RESULT, FALSE, ContestHall_EventScript_NoRoomForLuxuryBall
 	lockall
 	msgbox ContestHall_Text_CongratsPleaseCompeteAgain, MSGBOX_DEFAULT

@@ -9,7 +9,7 @@ MysteryGiftScript_BattleCard::
 	@ vmessage sText_MysteryGiftBattleCountCard_WonPrize
 	@ waitmessage
 	@ waitbuttonpress
-	@ giveitem ITEM_POTION
+	@ giveitem_std ITEM_POTION
 	@ release
 	@ setflag FLAG_MYSTERY_GIFT_DONE
 	end

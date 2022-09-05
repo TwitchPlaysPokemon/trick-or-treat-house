@@ -2005,7 +2005,7 @@
 	@ If the player doesn't have space for all the items then as many are added as possible, the
 	@ message indicates there is no room, and VAR_RESULT is set to FALSE. 
 	@ Otherwise VAR_RESULT is set to TRUE, and the message indicates they have received the item(s).
-	.macro giveitem item:req, amount=1
+	.macro giveitem_std item:req, amount=1
 	setorcopyvar VAR_0x8000, \item
 	setorcopyvar VAR_0x8001, \amount
 	callstd STD_OBTAIN_ITEM
@@ -2013,7 +2013,7 @@
 
 	@ For picking up items in the overworld. Similar to giveitem, but with different language and
 	@ sets the flag of the last-talked to object (the item the player picked up).
-	.macro finditem item:req, amount=1
+	.macro finditem_std item:req, amount=1
 	setorcopyvar VAR_0x8000, \item
 	setorcopyvar VAR_0x8001, \amount
 	callstd STD_FIND_ITEM

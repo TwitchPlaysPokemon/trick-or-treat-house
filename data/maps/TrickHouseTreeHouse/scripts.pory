@@ -144,7 +144,7 @@ script TrickHouseTreeHouse_EventScript_TraderB {
 		checkmoney(VAR_0x8006, 0)
 		if (var(VAR_RESULT) == YES) {
 			removemoney(VAR_0x8006, 0)
-			giveitem(VAR_0x8004, 1)
+			giveitem_std(VAR_0x8004, 1)
 			msgbox("Nice doin' business.$")
 		} else {
 			msgbox("Are you trying to rip me off here?\n"
