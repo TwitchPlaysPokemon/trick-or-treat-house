@@ -83,7 +83,7 @@ script Puzzle_HiddenMaze_Trainer3A {
 script Puzzle_HiddenMaze_Trainer3Trigger {
 	# Hidden super hero transformation
 	lock
-	playbgm (MUS_KAKKOII, 0)
+	playbgm (MUS_ENCOUNTER_COOL, 0)
 	applymovement (4, Puzzle_HiddenMaze_Trainer3_Movement1)
 	playse (SE_LEDGE)
 	waitmovement (0)
@@ -103,7 +103,7 @@ script Puzzle_HiddenMaze_Trainer3Trigger {
 	waitmovement (0)
 	# Sparkle
 	setvar (VAR_RESULT, 1)
-	playse (SE_REAPOKE)
+	playse (SE_SHINY)
 	setfieldeffectargument (0, 2)
 	setfieldeffectargument (1, 13)
 	setfieldeffectargument (2, 0)
@@ -192,7 +192,7 @@ script Puzzle_HiddenMaze_Trainer6 {
 	lock
 	checktrainerflag (TRAINER_06)
 	goto_if_eq (Puzzle_HiddenMaze_Trainer6A)
-	playbgm (MUS_AYASII, 0)
+	playbgm (MUS_ENCOUNTER_SUSPICIOUS, 0)
 	setvar (VAR_OBJ_GFX_ID_B, OBJ_EVENT_GFX_NINJA_BOY)
 	applymovement (7, Common_Movement_ExclamationMarkAndWait)
 	waitmovement (0)

@@ -202,7 +202,7 @@ script TrickTreat_FortreeCity_CandyGiver_FairyGirl {
 		msgbox("Hey, you chose the treat!\n"
 			"Congrats!$")
 	} else {
-		playbgm(MUS_HUTAGO, FALSE)
+		playbgm(MUS_ENCOUNTER_TWINS, FALSE)
 		msgbox("Hey, you chose the trick!\n"
 			"Time to fight!$")
 		trainerbattle_no_intro (TRAINER_03, 
@@ -366,14 +366,14 @@ script TrickTreat_FortreeCity_PlasmaManAfter {
 	setvar (VAR_0x8005, 1)  // horizontal pan
 	setvar (VAR_0x8006, 8)  // num shakes
 	setvar (VAR_0x8007, 3)  // shake delay
-	special (DoCameraShakeEffect)
+	special (ShakeCamera)
 	delay(16)
 	playse (SE_M_STRENGTH)
 	setvar (VAR_0x8004, 1)  // vertical pan
 	setvar (VAR_0x8005, 1)  // horizontal pan
 	setvar (VAR_0x8006, 8)  // num shakes
 	setvar (VAR_0x8007, 5)  // shake delay
-	special (DoCameraShakeEffect)
+	special (ShakeCamera)
 	delay(16)
 	// waitfieldeffect(FLDEFF_JUMP_FALL_GRASS)
 	

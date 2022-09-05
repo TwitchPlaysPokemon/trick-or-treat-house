@@ -164,7 +164,7 @@ script Puzzle_TwinMemories_CheckPuzzleSolved1 {
 		
 		callnative (CountTwinMemoriesBoulders)
 		if (var(VAR_RESULT) == 6) {
-			playse (SE_SEIKAI)
+			playse (SE_SUCCESS)
 			setflag (FLAG_SOLVE_LEFT)
 			call (Puzzle_TwinMemories_OpenLeftDoors)
 			special (DrawWholeMapView)
@@ -179,7 +179,7 @@ script Puzzle_TwinMemories_CheckPuzzleSolved2 {
 		
 		callnative (CountTwinMemoriesBoulders)
 		if (var(VAR_RESULT) == 6) {
-			playse (SE_SEIKAI)
+			playse (SE_SUCCESS)
 			setflag (FLAG_SOLVE_RIGHT)
 			call (Puzzle_TwinMemories_OpenRightDoors)
 			special (DrawWholeMapView)
@@ -197,7 +197,7 @@ script Puzzle_TwinMemories_TriggerTrappedFailsafe {
 	setvar (VAR_0x8005, 3)  #amplitude x
 	setvar (VAR_0x8006, 10)  #duration (num shakes)
 	setvar (VAR_0x8007, 5)  #frequency
-	special (DoCameraShakeEffect)
+	special (ShakeCamera)
 	
 	delay (5)
 	setobjectxy (2, 20, 25)

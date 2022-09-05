@@ -765,7 +765,7 @@ static bool8 StartMenuLinkModePlayerNameCallback(void)
 
 // References to things in item_use.c
 void SetUpItemUseOnFieldCallback(u8 taskId);
-extern void(*sItemUseOnFieldCallback)(u8 taskId);
+extern void(*sItemUseOnFieldCB)(u8 taskId);
 
 static void re_escape_field(u8 taskId)
 {
@@ -777,7 +777,7 @@ static void re_escape_field(u8 taskId)
 
 static void ItemUseFromStartMenu_EscapeRope(u8 taskId)
 {
-    sItemUseOnFieldCallback = re_escape_field;
+    sItemUseOnFieldCB = re_escape_field;
     gTasks[taskId].data[3] = 1; // dont fade to black! Not in a submenu.
     SetUpItemUseOnFieldCallback(taskId);
 }

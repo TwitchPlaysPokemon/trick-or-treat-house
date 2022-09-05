@@ -11,7 +11,7 @@ script Puzzle_SpotDifference_3_Right_Trigger {
         msgbox("It's just a pile of ash.$")
     } else {
         setvar(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS, 6)
-        playfanfare(MUS_ME_B_SMALL)
+        playfanfare(MUS_SLOTS_WIN)
         msgbox("CORRECT!\n"
                "{PLAYER} found the different pile of ash!$")
         waitfanfare

@@ -53,7 +53,7 @@ script Puzzle_Wilke_TalkToRacc1 {
 	lockall
 	faceplayer
 	if (flag(FLAG_TRICK_HOUSE_SCROLL_READ) == FALSE) {
-		playfanfare (MUS_FANFA4)
+		playfanfare (MUS_OBTAIN_ITEM)
 		message ("{PLAYER} found Ziggy.$")
 		waitfanfare
 		msgbox ("Ziggy hands {PLAYER} the scroll.$")

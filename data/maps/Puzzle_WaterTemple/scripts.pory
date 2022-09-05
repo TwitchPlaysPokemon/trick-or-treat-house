@@ -163,7 +163,7 @@ script Puzzle_WaterTemple_DrainToLevel1 {
 	setvar (VAR_0x8005, 0)  #amplitude x
 	setvar (VAR_0x8006, 15)  #duration (num shakes)
 	setvar (VAR_0x8007, 5)  #frequency
-	special (DoCameraShakeEffect)
+	special (ShakeCamera)
 	delay (20)
 	# water starts rushing out
 	setvar (VAR_0x8001, 0)
@@ -187,7 +187,7 @@ script Puzzle_WaterTemple_DrainToLevel1 {
 	setvar (VAR_0x8005, 0)  #amplitude x
 	setvar (VAR_0x8006, 11)  #duration (num shakes)
 	setvar (VAR_0x8007, 5)  #frequency
-	special (DoCameraShakeEffect)
+	special (ShakeCamera)
 	delay (60)
 	# lower even more
 	setvar (VAR_0x8001, 2)
@@ -204,7 +204,7 @@ script Puzzle_WaterTemple_DrainToLevel1 {
 	setvar (VAR_0x8005, 0)  #amplitude x
 	setvar (VAR_0x8006, 11)  #duration (num shakes)
 	setvar (VAR_0x8007, 5)  #frequency
-	special (DoCameraShakeEffect)
+	special (ShakeCamera)
 	delay (40)
 	# switch to new water level
 	setvar (VAR_WATER_LEVEL, 1)
@@ -248,7 +248,7 @@ script Puzzle_WaterTemple_DrainToLevel2 {
 	setvar (VAR_0x8005, 0)  #amplitude x
 	setvar (VAR_0x8006, 15)  #duration (num shakes)
 	setvar (VAR_0x8007, 5)  #frequency
-	special (DoCameraShakeEffect)
+	special (ShakeCamera)
 	delay (20)
 	
 	# water starts rushing out
@@ -273,7 +273,7 @@ script Puzzle_WaterTemple_DrainToLevel2 {
 	setvar (VAR_0x8005, 0)  #amplitude x
 	setvar (VAR_0x8006, 11)  #duration (num shakes)
 	setvar (VAR_0x8007, 5)  #frequency
-	special (DoCameraShakeEffect)
+	special (ShakeCamera)
 	delay (60)
 	# lower even more
 	setvar (VAR_0x8001, 2)
@@ -287,7 +287,7 @@ script Puzzle_WaterTemple_DrainToLevel2 {
 	setvar (VAR_0x8005, 0)  #amplitude x
 	setvar (VAR_0x8006, 11)  #duration (num shakes)
 	setvar (VAR_0x8007, 5)  #frequency
-	special (DoCameraShakeEffect)
+	special (ShakeCamera)
 	delay (40)
 	
 	setvar (VAR_WATER_LEVEL, 2)
@@ -318,7 +318,7 @@ script Puzzle_WaterTemple_FillToLevel1 {
 	setvar (VAR_0x8005, 0)  #amplitude x
 	setvar (VAR_0x8006, 15)  #duration (num shakes)
 	setvar (VAR_0x8007, 5)  #frequency
-	special (DoCameraShakeEffect)
+	special (ShakeCamera)
 	delay (20)
 	
 	# water starts rushing in
@@ -351,7 +351,7 @@ script Puzzle_WaterTemple_FillToLevel1 {
 	setvar (VAR_0x8005, 0)  #amplitude x
 	setvar (VAR_0x8006, 11)  #duration (num shakes)
 	setvar (VAR_0x8007, 5)  #frequency
-	special (DoCameraShakeEffect)
+	special (ShakeCamera)
 	# raise even more
 	setvar (VAR_0x8001, 4)
 	callnative (WaterTempleFillTo1)
@@ -381,7 +381,7 @@ script Puzzle_WaterTemple_FillToLevel1 {
 	setvar (VAR_0x8005, 0)  #amplitude x
 	setvar (VAR_0x8006, 11)  #duration (num shakes)
 	setvar (VAR_0x8007, 5)  #frequency
-	special (DoCameraShakeEffect)
+	special (ShakeCamera)
 	delay (40)
 	
 	releaseall
@@ -410,7 +410,7 @@ script Puzzle_WaterTemple_FillToLevel0 {
 	setvar (VAR_0x8005, 0)  #amplitude x
 	setvar (VAR_0x8006, 15)  #duration (num shakes)
 	setvar (VAR_0x8007, 5)  #frequency
-	special (DoCameraShakeEffect)
+	special (ShakeCamera)
 	delay (20)
 	
 	# water starts rushing in
@@ -449,7 +449,7 @@ script Puzzle_WaterTemple_FillToLevel0 {
 	setvar (VAR_0x8005, 0)  #amplitude x
 	setvar (VAR_0x8006, 11)  #duration (num shakes)
 	setvar (VAR_0x8007, 5)  #frequency
-	special (DoCameraShakeEffect)
+	special (ShakeCamera)
 	# raise even more
 	setvar (VAR_0x8001, 4)
 	callnative (WaterTempleFillTo0)
@@ -479,7 +479,7 @@ script Puzzle_WaterTemple_FillToLevel0 {
 	setvar (VAR_0x8005, 0)  #amplitude x
 	setvar (VAR_0x8006, 11)  #duration (num shakes)
 	setvar (VAR_0x8007, 5)  #frequency
-	special (DoCameraShakeEffect)
+	special (ShakeCamera)
 	delay (40)
 	
 	releaseall

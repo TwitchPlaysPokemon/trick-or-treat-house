@@ -1124,13 +1124,13 @@ void SetupIcePathLayout(struct ScriptContext *ctx) {
 #define IMP_MAY     5
 #define IMP_ALEX    6
 
-extern const u8 gExpandedPlaceholder_Youngster[];
-extern const u8 gExpandedPlaceholder_Link[];
-extern const u8 gExpandedPlaceholder_FairyGirl[];
-extern const u8 gExpandedPlaceholder_Wally[];
-extern const u8 gExpandedPlaceholder_Brendan[];
-extern const u8 gExpandedPlaceholder_May[];
-extern const u8 gExpandedPlaceholder_Alex[];
+extern const u8 gText_ExpandedPlaceholder_Youngster[];
+extern const u8 gText_ExpandedPlaceholder_Link[];
+extern const u8 gText_ExpandedPlaceholder_FairyGirl[];
+extern const u8 gText_ExpandedPlaceholder_Wally[];
+extern const u8 gText_ExpandedPlaceholder_Brendan[];
+extern const u8 gText_ExpandedPlaceholder_May[];
+extern const u8 gText_ExpandedPlaceholder_Alex[];
 
 extern const u8 Puzzle_SafariImposters_ImposterReveal_Text_he[];
 extern const u8 Puzzle_SafariImposters_ImposterReveal_Text_she[];
@@ -1199,41 +1199,41 @@ void Imposter_RandomizeFriendLayout(struct ScriptContext *ctx) {
 
 void Imposter_LoadRevealStrings(struct ScriptContext *ctx) {
 	switch(VarGet(VAR_IMPOSTER_SELECT)) {
-		case IMP_JOEY:    StringCopy(gStringVar1, gExpandedPlaceholder_Youngster); break;
-		case IMP_JAMES:   StringCopy(gStringVar1, gExpandedPlaceholder_Link); break;
-		case IMP_IRENE:   StringCopy(gStringVar1, gExpandedPlaceholder_FairyGirl); break;
-		case IMP_WALLY:   StringCopy(gStringVar1, gExpandedPlaceholder_Wally); break;
-		case IMP_BRENDAN: StringCopy(gStringVar1, gExpandedPlaceholder_Brendan); break;
-		case IMP_MAY:     StringCopy(gStringVar1, gExpandedPlaceholder_May); break;
-		case IMP_ALEX:    StringCopy(gStringVar1, gExpandedPlaceholder_Alex); break;
+		case IMP_JOEY:    StringCopy(gStringVar1, gText_ExpandedPlaceholder_Youngster); break;
+		case IMP_JAMES:   StringCopy(gStringVar1, gText_ExpandedPlaceholder_Link); break;
+		case IMP_IRENE:   StringCopy(gStringVar1, gText_ExpandedPlaceholder_FairyGirl); break;
+		case IMP_WALLY:   StringCopy(gStringVar1, gText_ExpandedPlaceholder_Wally); break;
+		case IMP_BRENDAN: StringCopy(gStringVar1, gText_ExpandedPlaceholder_Brendan); break;
+		case IMP_MAY:     StringCopy(gStringVar1, gText_ExpandedPlaceholder_May); break;
+		case IMP_ALEX:    StringCopy(gStringVar1, gText_ExpandedPlaceholder_Alex); break;
 	}
 	switch(VarGet(VAR_CONFIG_IMPOSTER)) {
 		case IMP_JOEY:
-			StringCopy(gStringVar3, gExpandedPlaceholder_Youngster);
+			StringCopy(gStringVar3, gText_ExpandedPlaceholder_Youngster);
 			VarSet(VAR_OBJ_GFX_ID_0, TTH_FRIEND_JOEY);
 			break;
 		case IMP_JAMES:
-			StringCopy(gStringVar3, gExpandedPlaceholder_Link);
+			StringCopy(gStringVar3, gText_ExpandedPlaceholder_Link);
 			VarSet(VAR_OBJ_GFX_ID_0, TTH_FRIEND_JAMES);
 			break;
 		case IMP_IRENE:
-			StringCopy(gStringVar3, gExpandedPlaceholder_FairyGirl);
+			StringCopy(gStringVar3, gText_ExpandedPlaceholder_FairyGirl);
 			VarSet(VAR_OBJ_GFX_ID_0, TTH_FRIEND_IRENE);
 			break;
 		case IMP_WALLY:
-			StringCopy(gStringVar3, gExpandedPlaceholder_Wally);
+			StringCopy(gStringVar3, gText_ExpandedPlaceholder_Wally);
 			VarSet(VAR_OBJ_GFX_ID_0, TTH_FRIEND_WALLY);
 			break;
 		case IMP_BRENDAN:
-			StringCopy(gStringVar3, gExpandedPlaceholder_Brendan);
+			StringCopy(gStringVar3, gText_ExpandedPlaceholder_Brendan);
 			VarSet(VAR_OBJ_GFX_ID_0, TTH_FRIEND_BRENDAN);
 			break;
 		case IMP_MAY:
-			StringCopy(gStringVar3, gExpandedPlaceholder_May);
+			StringCopy(gStringVar3, gText_ExpandedPlaceholder_May);
 			VarSet(VAR_OBJ_GFX_ID_0, TTH_FRIEND_MAY);
 			break;
 		case IMP_ALEX:
-			StringCopy(gStringVar3, gExpandedPlaceholder_Alex);
+			StringCopy(gStringVar3, gText_ExpandedPlaceholder_Alex);
 			VarSet(VAR_OBJ_GFX_ID_0, TTH_FRIEND_ALEX);
 			break;
 	}

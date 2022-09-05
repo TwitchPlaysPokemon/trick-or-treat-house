@@ -58,18 +58,18 @@ script Puzzle_LedgeMountain_TriggerScript_Intro {
 	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMarkAndWait)
 	waitmovement (0)
 	
-	playfanfare (MUS_ME_TAMA)
+	playfanfare (MUS_AWAKEN_LEGEND)
 	selectpointer (Puzzle_LedgeMountain_MovementTable_Intro, VAR_INTERACT_Y)
 	applymovement (OBJ_EVENT_ID_PLAYER, 0)
 	waitmovement (0)
 	
 	special (SpawnCameraObject)
-	applymovement (EVENT_OBJ_ID_CAMERA, Puzzle_LedgeMountain_Movement_CameraPanUp)
+	applymovement (OBJ_EVENT_ID_CAMERA, Puzzle_LedgeMountain_Movement_CameraPanUp)
 	waitmovement (0)
 	delay (60)
 	waitfanfare
 	setobjectxy (OBJ_EVENT_ID_PLAYER, 20, 55)
-	applymovement (EVENT_OBJ_ID_CAMERA, Puzzle_LedgeMountain_Movement_CameraPanDown)
+	applymovement (OBJ_EVENT_ID_CAMERA, Puzzle_LedgeMountain_Movement_CameraPanDown)
 	waitmovement (0)
 	special (RemoveCameraObject)
 	delay (10)

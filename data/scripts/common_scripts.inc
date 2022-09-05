@@ -311,7 +311,7 @@ gText_BattleTentClosed:
 @ 	return
 
 Common_EventScript_PlayGymBadgeFanfare:: @ 827207E
-	playfanfare MUS_ME_BACHI
+	playfanfare MUS_OBTAIN_BADGE
 	waitfanfare
 	return
 
@@ -323,10 +323,10 @@ Common_EventScript_PlayRivalMusic:: @ 81ECD11
 	goto_if_eq Common_EventScript_PlayRivalMusic_Boy
 	return
 Common_EventScript_PlayRivalMusic_Girl: @ 81ECD29
-	playbgm MUS_GIRL_SUP, 1
+	playbgm MUS_ENCOUNTER_MAY, 1
 	return
 Common_EventScript_PlayRivalMusic_Boy: @ 81ECD2E
-	playbgm MUS_BOY_SUP, 1
+	playbgm MUS_ENCOUNTER_BRENDAN, 1
 	return
 
 Common_EventScript_FadeMusicToMapMusic::
@@ -349,7 +349,7 @@ EventScript_FallDownHole:: @ 82A8337
 	delay 20
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_SetInvisible
 	waitmovement 0
-	playse SE_RU_HYUU
+	playse SE_FALL
 	delay 60
 	warphole MAP_UNDEFINED
 	waitstate
@@ -391,7 +391,7 @@ Common_EventScript_NameReceivedPokemon:: @ 82723DD
 	return
 
 Common_EventScript_SetWeatherAlternating:: @ 827207A
-	setweather WEATHER_ALTERNATING
+	setweather WEATHER_ABNORMAL
 	return
 
 Common_ShowEasyChatScreen:: @ 8271E7C

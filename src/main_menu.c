@@ -171,7 +171,7 @@
 static EWRAM_DATA bool8 sStartedPokeBallTask = 0;
 static EWRAM_DATA u16 sCurrItemAndOptionMenuCheck = 0;
 
-static IWRAM_DATA u8 sBirchSpeechMainTaskId;
+static u8 sBirchSpeechMainTaskId;
 
 // Static ROM declarations
 

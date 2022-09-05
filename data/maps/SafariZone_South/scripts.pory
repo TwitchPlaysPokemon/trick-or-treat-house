@@ -394,7 +394,7 @@ script SafariZone_DisableScript_BrendanFearsThunder {
 
 script SafariZone_EventScript_BrendanFearsThunder {
 	lockall
-	playse(SE_T_KAMI)
+	playse(SE_THUNDER)
 	delay(20)
 	playse(SE_LEDGE)
 	applymovement(2, SafariZone_Movement_BrendanFearsThunder1)

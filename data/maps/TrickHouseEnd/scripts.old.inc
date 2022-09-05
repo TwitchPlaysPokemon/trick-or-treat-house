@@ -226,7 +226,7 @@ TrickHouseEnd_EventScript_Nurse::
 @ TrickHouseEnd_EventScript_26AFCF:: @ 826AFCF
 @ 	applymovement 1, TrickHouseEnd_Movement_269E36
 @ 	waitmovement 0
-@ 	playse SE_W153
+@ 	playse SE_M_EXPLOSION
 @ 	applymovement 1, TrickHouseEnd_Movement_269E3F
 @ 	waitmovement 0
 @ 	removeobject 1
@@ -274,7 +274,7 @@ TrickHouseEnd_EventScript_Nurse::
 @ 	delay 20
 @ 	applymovement 1, TrickHouseEnd_Movement_26B08B
 @ 	waitmovement 0
-@ 	playse SE_W153
+@ 	playse SE_M_EXPLOSION
 @ 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceDown
 @ 	waitmovement 0
 @ 	msgbox TrickHouseEnd_Text_26B8BD, MSGBOX_DEFAULT

@@ -73,7 +73,7 @@ static void SetDistanceOfClosestHiddenItem(u8, s16, s16);
 static void CB2_OpenPokeblockFromBag(void);
 
 // EWRAM variables
-EWRAM_DATA static void(*sItemUseOnFieldCB)(u8 taskId) = NULL;
+EWRAM_DATA void(*sItemUseOnFieldCB)(u8 taskId) = NULL;
 
 // Below is set TRUE by UseRegisteredKeyItemOnField
 #define tUsingRegisteredKeyItem  data[3]
@@ -115,7 +115,7 @@ static void SetUpItemUseCallback(u8 taskId)
     // }
 }
 
-static void SetUpItemUseOnFieldCallback(u8 taskId)
+void SetUpItemUseOnFieldCallback(u8 taskId)
 {
     if (gTasks[taskId].tUsingRegisteredKeyItem != TRUE)
     {

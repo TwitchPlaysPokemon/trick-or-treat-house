@@ -550,13 +550,13 @@ script TrickTreat_MossdeepCity_CandyGiver_Leader {
 	waitdooranim
 	applymovement (4, Common_Movement_WalkUp1)
 	waitmovement(0)
-	playse (SE_KAIDAN)
+	playse (SE_EXIT)
 	removeobject (4)
 	applymovement (5, Common_Movement_WalkRight1)
 	waitmovement(0)
 	applymovement (5, Common_Movement_WalkUp1)
 	waitmovement(0)
-	playse (SE_KAIDAN)
+	playse (SE_EXIT)
 	removeobject (5)
 	closedoor (46, 11)
 	waitdooranim

@@ -189,7 +189,7 @@ script Puzzle_IcePath_DoBreakOpen {
 	setvar (VAR_0x8005, 0)  // amplitude x
 	setvar (VAR_0x8006, 15) // duration (num shakes)
 	setvar (VAR_0x8007, 5)  // frequency
-	special (DoCameraShakeEffect)
+	special (ShakeCamera)
 	delay (20)
 	// Open the secret area
 	setflag (FLAG_SHOW_HIDDEN_CORNER)
@@ -226,7 +226,7 @@ script Puzzle_IcePath_FallDownHole_Common {
 	delay (10)
 	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_SetInvisible)
 	waitmovement(0)
-	playse (SE_RU_HYUU)
+	playse (SE_FALL)
 	delay (60)
 	special (DoFallWarp)
 	waitstate
@@ -276,14 +276,14 @@ script Puzzle_IcePath_BoulderDownHole_Common {
 	setvar(VAR_STEP_TRIGGER, 0)
 	delay (10)
 	removeobject(VAR_0x800A)
-	playse (SE_RU_HYUU)
+	playse (SE_FALL)
 	delay (30)
 	playse (SE_M_STRENGTH)
 	setvar (VAR_0x8004, 1)  // vertical pan
 	setvar (VAR_0x8005, 1)  // horizontal pan
 	setvar (VAR_0x8006, 8)  // num shakes
 	setvar (VAR_0x8007, 5)  // shake delay
-	special (DoCameraShakeEffect)
+	special (ShakeCamera)
 	delay (60)
 	return
 }

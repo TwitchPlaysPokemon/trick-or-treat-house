@@ -120,12 +120,12 @@ script TrickHouseEnd_EventScript_FinalizePuzzle {
 		msgbox("Good job on getting all that candy.$")
 		incrementgamestat(GAME_STAT_ALL_CANDY_COLLECTED)
 	}
-	special (CanAnyPartyMonsBeHealed)
-	if (var(VAR_RESULT) == FALSE) { # It's backwards for some reason??
+	special (IsPartyFullHealed)
+	if (var(VAR_RESULT) == FALSE) {
 		msgbox ("Let me heal your POKéMON.$")
 		closemessage
 		fadescreen(1)
-		playfanfare(MUS_ME_ASA)
+		playfanfare(MUS_HEAL)
 		special(HealPlayerParty)
 		waitfanfare
 		fadescreen(0)

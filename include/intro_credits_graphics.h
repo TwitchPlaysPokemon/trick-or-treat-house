@@ -17,8 +17,8 @@ enum {
     SCENE_CITY_NIGHT,
 };
 
-extern u16 gSkyBgPanY;
-extern s16 gSkyBgPanYAdjust;
+extern u16 gIntroCredits_MovingSceneryVBase;
+extern s16 gIntroCredits_MovingSceneryVOffset;
 
 extern u16 gIntroCredits_MovingSceneryVBase;
 extern s16 gIntroCredits_MovingSceneryVOffset;

@@ -25,7 +25,7 @@ script Puzzle_SpotDifference_2_Left_DoSparkles {
     }
 
     special(SpawnCameraObject)
-    applymovement(EVENT_OBJ_ID_CAMERA, Puzzle_SpotDifference_2_Movement_CameraPanUp)
+    applymovement(OBJ_EVENT_ID_CAMERA, Puzzle_SpotDifference_2_Movement_CameraPanUp)
     waitmovement(0)
     special(RemoveCameraObject)
     delay(20)
@@ -44,7 +44,7 @@ script Puzzle_SpotDifference_2_Left_DoSparkles {
     waitfieldeffect(FLDEFF_SPARKLE)
     delay(10)
     special(SpawnCameraObject)
-    applymovement(EVENT_OBJ_ID_CAMERA, Puzzle_SpotDifference_2_Movement_CameraPanDown)
+    applymovement(OBJ_EVENT_ID_CAMERA, Puzzle_SpotDifference_2_Movement_CameraPanDown)
     waitmovement(0)
     special(RemoveCameraObject)
 }

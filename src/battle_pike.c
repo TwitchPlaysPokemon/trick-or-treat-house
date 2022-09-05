@@ -72,7 +72,6 @@ static void BufferTrainerIntro(void);
 static void GetCurrentRoomPikeQueenFightType(void);
 static void HealSomeMonsBeforePikeQueen(void);
 static void SetHealingroomTypesDisabled(void);
-static void IsPartyFullHealed(void);
 static void SaveMonHeldItems(void);
 static void RestoreMonHeldItems(void);
 static void InitPikeChallenge(void);
@@ -1544,7 +1543,7 @@ static void SetHealingroomTypesDisabled(void)
     gSaveBlock2Ptr->frontier.pikeHealingRoomsDisabled = gSpecialVar_0x8005;
 }
 
-static void IsPartyFullHealed(void)
+void IsPartyFullHealed(void)
 {
     u8 i, j;
 

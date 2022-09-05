@@ -294,7 +294,7 @@ text(global) PokemonAdoption_Exit   { "Cancel" }
 
 script(local) TrickHouseRestroom_EventScript_PokemonChoose {
 	message("You chose {STR_VAR_1} for your party!$")
-	playfanfare (MUS_FANFA4)
+	playfanfare (MUS_OBTAIN_ITEM)
 	removeobject (VAR_LAST_TALKED)
 	callnative (GivePlayerStarterMon)
 	waitmessage
@@ -338,7 +338,7 @@ script TrickHouseRestroom_EventScript_Healer {
 		playse (SE_LEDGE)
 		waitmovement (OBJ_EVENT_ID_PLAYER)
 		applymovement(OBJ_EVENT_ID_PLAYER, TrickHouseRestroom_Movement_Healer13)
-		playfanfare(MUS_ME_ASA)
+		playfanfare(MUS_HEAL)
 		special(HealPlayerParty)
 		waitfanfare
 		applymovement(1, TrickHouseRestroom_Movement_Healer20)
@@ -472,7 +472,7 @@ script TrickHouseRestroom_EventScript_Renamer {
 			goto(TrickHouseRestroom_EventScript_Renamer_End)
 		}
 		specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
-		special(TV_CopyNicknameToStringVar1AndEnsureTerminated)
+		special(BufferMonNickname)
 		msgbox( "Hmmm… {STR_VAR_1}, is it? That is\n"
 				"quite a fine name you bestowed.\p"
 				"But! What say you, if I were to\n"
@@ -481,8 +481,8 @@ script TrickHouseRestroom_EventScript_Renamer {
 			msgbox( "Ah, good. Then, what shall the new\n"
 					"nickname be?$")
 			call (Common_EventScript_NameReceivedPokemon)
-			specialvar(VAR_RESULT, TV_CheckIfNicknameChanged)
-			special(TV_CopyNicknameToStringVar1AndEnsureTerminated)
+			specialvar(VAR_RESULT, TryPutNameRaterShowOnTheAir)//TV_CheckIfNicknameChanged)
+			special(BufferMonNickname)
 			if (var(VAR_RESULT) == TRUE) {
 				msgbox ("Done! From now on, this POKéMON\n"
 						"shall be known as {STR_VAR_1}!\p"

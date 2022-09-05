@@ -657,7 +657,7 @@ script Puzzle_SafariImposters_EventScript_EntranceCounterTrigger {
 	}
 	msgbox ("Excellent! Well, here's some supplies\n"
 			"for your Safari Adventure!$")
-	playfanfare(MUS_FANFA4)
+	playfanfare(MUS_OBTAIN_ITEM)
 	message("{PLAYER} received 30 Safari Balls,\n"
 			"a {POKEBLOCK} Case, and several tools!$")
 	giveitem(ITEM_POKEBLOCK_CASE, 1)
@@ -724,7 +724,7 @@ script Puzzle_SafariImposters_GameEnds {
 					"pieces of an electronic chip…$")
 	}
 	waitmovement (0)
-	playse(SE_PINPON)
+	playse(SE_DING_DONG)
 	delay (20)
 	message("PROF: Good news!\n"
 			"The tracking signal has vanished!\l"
@@ -766,7 +766,7 @@ script Puzzle_SafariImposters_ExitCutscene {
 	
 	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceUp)
 	waitmovement(LID_SCIENTIST)
-	playse(SE_PN_OFF)
+	playse(SE_POKENAV_OFF)
 	waitse
 	delay(16)
 	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceLeft)
@@ -781,7 +781,7 @@ script Puzzle_SafariImposters_ExitCutscene {
 	applymovement(LID_PLAYER, Common_Movement_WalkRight1)
 	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceUp)
 	waitmovement(LID_SCIENTIST)
-	playse(SE_PN_OFF)
+	playse(SE_POKENAV_OFF)
 	waitse
 	delay(16)
 	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceLeft)
@@ -795,7 +795,7 @@ script Puzzle_SafariImposters_ExitCutscene {
 	
 	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceUp)
 	waitmovement(LID_SCIENTIST)
-	playse(SE_PN_OFF)
+	playse(SE_POKENAV_OFF)
 	waitse
 	delay(32)
 	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceLeft)
@@ -820,7 +820,7 @@ script Puzzle_SafariImposters_ExitCutscene {
 	
 	applymovement(LID_SCIENTIST, Puzzle_SafariImposters_ExitCutscene_Movement3)
 	waitmovement(LID_SCIENTIST)
-	playse(SE_PN_OFF)
+	playse(SE_POKENAV_OFF)
 	applymovement(LID_PLAYER, Common_Movement_FaceDown)
 	waitmovement(LID_PLAYER)
 	applymovement(LID_PLAYER, Common_Movement_QuestionMark)

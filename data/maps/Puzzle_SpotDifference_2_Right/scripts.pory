@@ -18,7 +18,7 @@ script Puzzle_SpotDifference_2_Right_DoSparkles {
     }
 
     special(SpawnCameraObject)
-    applymovement(EVENT_OBJ_ID_CAMERA, Puzzle_SpotDifference_2_Movement_CameraPanUp)
+    applymovement(OBJ_EVENT_ID_CAMERA, Puzzle_SpotDifference_2_Movement_CameraPanUp)
     waitmovement(0)
     special(RemoveCameraObject)
     delay(20)
@@ -41,7 +41,7 @@ script Puzzle_SpotDifference_2_Right_DoSparkles {
     waitfieldeffect(FLDEFF_SPARKLE)
     delay(10)
     special(SpawnCameraObject)
-    applymovement(EVENT_OBJ_ID_CAMERA, Puzzle_SpotDifference_2_Movement_CameraPanDown)
+    applymovement(OBJ_EVENT_ID_CAMERA, Puzzle_SpotDifference_2_Movement_CameraPanDown)
     waitmovement(0)
     special(RemoveCameraObject)
 }
@@ -53,7 +53,7 @@ script Puzzle_SpotDifference_2_Right_Trigger {
         msgbox("There's nothing here.$")
     } else {
         setvar(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS, 4)
-        playfanfare(MUS_ME_B_SMALL)
+        playfanfare(MUS_SLOTS_WIN)
         msgbox("CORRECT!\n"
                "{PLAYER} found the different sparkle!$")
         waitfanfare

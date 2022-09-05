@@ -334,9 +334,9 @@ script(local) Puzzle_IlexForest_BirdSpotAtoB {
 	applymovement(LID_BIRD, Puzzle_IlexForest_Movement_AtoB_Bird3)
 	applymovement(LID_BALL, Puzzle_IlexForest_Movement_AtoB_Ball)
 	delay(16)
-	playse(SE_KON)
+	playse(SE_BALL_BOUNCE_1)
 	waitmovement(LID_BIRD)
-	playse(SE_KON2)
+	playse(SE_BALL_BOUNCE_2)
 	// Set the bird's perm location and script based on the bird spot id
 	callnative(LoadBirdLocation)
 	// Remove/Add bird so position is correct
@@ -477,7 +477,7 @@ script(local) Puzzle_IlexForest_BirdSpotBtoC {
 			delay (4)
 			playmoncry (SPECIES_FARFETCHD, 0)
 			delay (28)
-			playse(SE_KON)
+			playse(SE_BALL_BOUNCE_1)
 			waitmovement(LID_BIRD)
 			// Set the bird's perm location and script based on the bird spot id
 			callnative(LoadBirdLocation)
@@ -881,7 +881,7 @@ script(local) Puzzle_IlexForest_BirdSpotDtoE {
 	setmetatile(27, 24, 0x001, FALSE)
 	setmetatile(26, 25, 0x001, FALSE)
 	setmetatile(27, 25, 0x001, FALSE)
-	playse(SE_W015)
+	playse(SE_M_CUT)
 	special (DrawWholeMapView)
 	fadescreenspeed(2, 3)
 	waitse
@@ -1088,7 +1088,7 @@ script Puzzle_IlexForest_EventScript_Man {
 				"to cut trees for charcoal.\p"
 				"Now, how can I thank you…\p"
 				"I know! Here, take this!$")
-		playfanfare (MUS_FANFA4)
+		playfanfare (MUS_OBTAIN_ITEM)
 		clearflag(FLAG_HIDE_SCROLL)
 		addobject (LID_SCROLL)
 		message (PuzzleCommon_Text_ScrollFound1)

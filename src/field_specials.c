@@ -69,7 +69,7 @@
 
 EWRAM_DATA bool8 gBikeCyclingChallenge = FALSE;
 EWRAM_DATA u8 gBikeCollisions = 0;
-EWRAM_DATA u32 sBikeCyclingTimer = 0;
+EWRAM_DATA u32 gBikeCyclingTimer = 0;
 EWRAM_DATA u32 gPuzzleTimer = 0;
 static EWRAM_DATA u8 sSlidingDoorNextFrameCounter = 0;
 static EWRAM_DATA u8 sSlidingDoorFrame = 0;
@@ -3243,7 +3243,7 @@ void BattleTowerReconnectLink(void)
 
 void LinkRetireStatusWithBattleTowerPartner(void)
 {
-    CreateTask(Task_LinkRetireStatusWithBattleTowerPartner, 5);
+    // CreateTask(Task_LinkRetireStatusWithBattleTowerPartner, 5);
 }
 
 // Communicate with a Battle Tower link partner to tell them
@@ -3253,124 +3253,124 @@ void LinkRetireStatusWithBattleTowerPartner(void)
 // gSpecialVar_0x8005: Partner's choice (read from gBlockRecvBuffer[1][0])
 static void Task_LinkRetireStatusWithBattleTowerPartner(u8 taskId)
 {
-    switch (gTasks[taskId].tState)
-    {
-    case 0:
-        if (!FuncIsActiveTask(Task_ReconnectWithLinkPlayers))
-            gTasks[taskId].tState++;
-        break;
-    case 1:
-        if (IsLinkTaskFinished() == TRUE)
-        {
-            if (GetMultiplayerId() == 0)
-            {
-                // Player is link leader, skip sending data
-                gTasks[taskId].tState++;
-            }
-            else
-            {
-                // Send value of gSpecialVar_0x8004 to leader
-                // Will either be BATTLE_TOWER_LINK_CONTINUE or BATTLE_TOWER_LINK_RETIRE
-                SendBlock(BitmaskAllOtherLinkPlayers(), &gSpecialVar_0x8004, sizeof(gSpecialVar_0x8004));
-                gTasks[taskId].tState++;
-            }
-        }
-        break;
-    case 2:
-        if (GetBlockReceivedStatus() & 2)
-        {
-            if (GetMultiplayerId() == 0)
-            {
-                // Player is leader, read partner's choice
-                // and determine if play should continue
-                gSpecialVar_0x8005 = gBlockRecvBuffer[1][0];
-                ResetBlockReceivedFlag(1);
+    // switch (gTasks[taskId].tState)
+    // {
+    // case 0:
+    //     if (!FuncIsActiveTask(Task_ReconnectWithLinkPlayers))
+    //         gTasks[taskId].tState++;
+    //     break;
+    // case 1:
+    //     if (IsLinkTaskFinished() == TRUE)
+    //     {
+    //         if (GetMultiplayerId() == 0)
+    //         {
+    //             // Player is link leader, skip sending data
+    //             gTasks[taskId].tState++;
+    //         }
+    //         else
+    //         {
+    //             // Send value of gSpecialVar_0x8004 to leader
+    //             // Will either be BATTLE_TOWER_LINK_CONTINUE or BATTLE_TOWER_LINK_RETIRE
+    //             SendBlock(BitmaskAllOtherLinkPlayers(), &gSpecialVar_0x8004, sizeof(gSpecialVar_0x8004));
+    //             gTasks[taskId].tState++;
+    //         }
+    //     }
+    //     break;
+    // case 2:
+    //     if (GetBlockReceivedStatus() & 2)
+    //     {
+    //         if (GetMultiplayerId() == 0)
+    //         {
+    //             // Player is leader, read partner's choice
+    //             // and determine if play should continue
+    //             gSpecialVar_0x8005 = gBlockRecvBuffer[1][0];
+    //             ResetBlockReceivedFlag(1);
 
-                if (gSpecialVar_0x8004 == BATTLE_TOWER_LINK_RETIRE
-                 && gSpecialVar_0x8005 == BATTLE_TOWER_LINK_RETIRE)
-                    gSpecialVar_Result = BATTLE_TOWER_LINKSTAT_BOTH_RETIRE;
-                else if (gSpecialVar_0x8004 == BATTLE_TOWER_LINK_CONTINUE
-                      && gSpecialVar_0x8005 == BATTLE_TOWER_LINK_RETIRE)
-                    gSpecialVar_Result = BATTLE_TOWER_LINKSTAT_MEMBER_RETIRE;
-                else if (gSpecialVar_0x8004 == BATTLE_TOWER_LINK_RETIRE
-                      && gSpecialVar_0x8005 == BATTLE_TOWER_LINK_CONTINUE)
-                    gSpecialVar_Result = BATTLE_TOWER_LINKSTAT_LEADER_RETIRE;
-                else
-                    gSpecialVar_Result = BATTLE_TOWER_LINKSTAT_CONTINUE;
-            }
-            gTasks[taskId].tState++;
-        }
-        break;
-    case 3:
-        if (IsLinkTaskFinished() == TRUE)
-        {
-            if (GetMultiplayerId() != 0)
-            {
-                // Player is not link leader, wait for leader's response
-                gTasks[taskId].tState++;
-            }
-            else
-            {
-                // Send whether or not play should continue
-                SendBlock(BitmaskAllOtherLinkPlayers(), &gSpecialVar_Result, sizeof(gSpecialVar_Result));
-                gTasks[taskId].tState++;
-            }
-        }
-        break;
-    case 4:
-        if (GetBlockReceivedStatus() & 1)
-        {
-            if (GetMultiplayerId() != 0)
-            {
-                // Player is not link leader, read leader's response
-                gSpecialVar_Result = gBlockRecvBuffer[0][0];
-                ResetBlockReceivedFlag(0);
-                gTasks[taskId].tState++;
-            }
-            else
-            {
-                gTasks[taskId].tState++;
-            }
-        }
-        break;
-    case 5:
-        // Print message if partner chose to retire (and player didn't)
-        if (GetMultiplayerId() == 0)
-        {
-            if (gSpecialVar_Result == BATTLE_TOWER_LINKSTAT_MEMBER_RETIRE)
-                ShowFieldAutoScrollMessage(gText_YourPartnerHasRetired);
-        }
-        else
-        {
-            if (gSpecialVar_Result == BATTLE_TOWER_LINKSTAT_LEADER_RETIRE)
-                ShowFieldAutoScrollMessage(gText_YourPartnerHasRetired);
-        }
-        gTasks[taskId].tState++;
-        break;
-    case 6:
-        if (!IsTextPrinterActive(0))
-            gTasks[taskId].tState++;
-        break;
-    case 7:
-        if (IsLinkTaskFinished() == TRUE)
-        {
-            SetLinkStandbyCallback();
-            gTasks[taskId].tState++;
-        }
-        break;
-    case 8:
-        if (IsLinkTaskFinished() == TRUE)
-            gTasks[taskId].tState++;
-        break;
-    case 9:
-        if (gWirelessCommType == 0)
-            SetCloseLinkCallback();
+    //             if (gSpecialVar_0x8004 == BATTLE_TOWER_LINK_RETIRE
+    //              && gSpecialVar_0x8005 == BATTLE_TOWER_LINK_RETIRE)
+    //                 gSpecialVar_Result = BATTLE_TOWER_LINKSTAT_BOTH_RETIRE;
+    //             else if (gSpecialVar_0x8004 == BATTLE_TOWER_LINK_CONTINUE
+    //                   && gSpecialVar_0x8005 == BATTLE_TOWER_LINK_RETIRE)
+    //                 gSpecialVar_Result = BATTLE_TOWER_LINKSTAT_MEMBER_RETIRE;
+    //             else if (gSpecialVar_0x8004 == BATTLE_TOWER_LINK_RETIRE
+    //                   && gSpecialVar_0x8005 == BATTLE_TOWER_LINK_CONTINUE)
+    //                 gSpecialVar_Result = BATTLE_TOWER_LINKSTAT_LEADER_RETIRE;
+    //             else
+    //                 gSpecialVar_Result = BATTLE_TOWER_LINKSTAT_CONTINUE;
+    //         }
+    //         gTasks[taskId].tState++;
+    //     }
+    //     break;
+    // case 3:
+    //     if (IsLinkTaskFinished() == TRUE)
+    //     {
+    //         if (GetMultiplayerId() != 0)
+    //         {
+    //             // Player is not link leader, wait for leader's response
+    //             gTasks[taskId].tState++;
+    //         }
+    //         else
+    //         {
+    //             // Send whether or not play should continue
+    //             SendBlock(BitmaskAllOtherLinkPlayers(), &gSpecialVar_Result, sizeof(gSpecialVar_Result));
+    //             gTasks[taskId].tState++;
+    //         }
+    //     }
+    //     break;
+    // case 4:
+    //     if (GetBlockReceivedStatus() & 1)
+    //     {
+    //         if (GetMultiplayerId() != 0)
+    //         {
+    //             // Player is not link leader, read leader's response
+    //             gSpecialVar_Result = gBlockRecvBuffer[0][0];
+    //             ResetBlockReceivedFlag(0);
+    //             gTasks[taskId].tState++;
+    //         }
+    //         else
+    //         {
+    //             gTasks[taskId].tState++;
+    //         }
+    //     }
+    //     break;
+    // case 5:
+    //     // Print message if partner chose to retire (and player didn't)
+    //     if (GetMultiplayerId() == 0)
+    //     {
+    //         if (gSpecialVar_Result == BATTLE_TOWER_LINKSTAT_MEMBER_RETIRE)
+    //             ShowFieldAutoScrollMessage(gText_YourPartnerHasRetired);
+    //     }
+    //     else
+    //     {
+    //         if (gSpecialVar_Result == BATTLE_TOWER_LINKSTAT_LEADER_RETIRE)
+    //             ShowFieldAutoScrollMessage(gText_YourPartnerHasRetired);
+    //     }
+    //     gTasks[taskId].tState++;
+    //     break;
+    // case 6:
+    //     if (!IsTextPrinterActive(0))
+    //         gTasks[taskId].tState++;
+    //     break;
+    // case 7:
+    //     if (IsLinkTaskFinished() == TRUE)
+    //     {
+    //         SetLinkStandbyCallback();
+    //         gTasks[taskId].tState++;
+    //     }
+    //     break;
+    // case 8:
+    //     if (IsLinkTaskFinished() == TRUE)
+    //         gTasks[taskId].tState++;
+    //     break;
+    // case 9:
+    //     if (gWirelessCommType == 0)
+    //         SetCloseLinkCallback();
 
-        gBattleTypeFlags = sBattleTowerMultiBattleTypeFlags;
+    //     gBattleTypeFlags = sBattleTowerMultiBattleTypeFlags;
         ScriptContext_Enable();
         DestroyTask(taskId);
-        break;
-    }
+    //     break;
+    // }
 }
 
 #undef tState

@@ -338,7 +338,7 @@ script TrickHouseCorridor_TriggerScript_RunIntro {
 			msgbox_selected
 			// Give items
 			callnative(GiveItemPrerequisites)
-			playfanfare(MUS_FANFA4)
+			playfanfare(MUS_OBTAIN_ITEM)
 			message(PuzzleCommon_Text_PuzzleIntro_GivenItems)
 			waitmessage
 			waitfanfare
@@ -351,7 +351,7 @@ script TrickHouseCorridor_TriggerScript_RunIntro {
 			msgbox_selected
 			// Give items
 			callnative(GiveItemPrerequisites)
-			playfanfare(MUS_FANFA4)
+			playfanfare(MUS_OBTAIN_ITEM)
 			message(PuzzleCommon_Text_PuzzleIntro_GivenItems)
 			waitmessage
 			waitfanfare
@@ -384,7 +384,7 @@ script TrickHouseCorridor_TriggerScript_RunIntro {
 		applymovement(LID_MASTER, TrickHouseCorridor_Movement_OtherLeaves)
 		waitmovement(0)
 		removeobject(LID_MASTER)
-		playse(SE_KAIDAN)
+		playse(SE_EXIT)
 	}
 	setvar(VAR_PUZZLE_STATE, 1)
 	setescapewarp(MAP_TRICK_HOUSE_CORRIDOR, -1, 22, 3)

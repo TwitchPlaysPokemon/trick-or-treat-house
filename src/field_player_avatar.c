@@ -2195,7 +2195,7 @@ bool32 IsPlayerSpinExitActive(void)
 }
 
 static const u8 sSpinDirections[] = {DIR_SOUTH, DIR_WEST, DIR_EAST, DIR_NORTH, DIR_SOUTH};
-extern void UpdateObjectEventZCoordAndPriority(struct ObjectEvent *eventObj, struct Sprite *sprite);
+extern void UpdateObjectEventElevationAndPriority(struct ObjectEvent *eventObj, struct Sprite *sprite);
 
 static void Task_DoPlayerSpinEntrance(u8 taskId)
 {
@@ -2254,7 +2254,7 @@ static void Task_DoPlayerSpinEntrance(u8 taskId)
                 sprite->oam.priority = tPriority;
                 sprite->subpriority = tSubpriority;
                 CameraObjectReset1();
-                UpdateObjectEventZCoordAndPriority(object, sprite);
+                UpdateObjectEventElevationAndPriority(object, sprite);
                 DestroyTask(taskId);
             }
             break;

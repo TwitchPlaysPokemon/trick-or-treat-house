@@ -195,7 +195,7 @@ EventScript_FoundHiddenItem::
 EventScript_FoundHiddenItem_BORT:
 	callnative BORTizeBufferedStrings
 	message gBort_PlayerFoundOneItem
-	goto EventScript_271D2A
+	goto EventScript_PutHiddenItemInPocket
 	end
 
 

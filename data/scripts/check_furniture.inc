@@ -53,3 +53,16 @@ EventScript_Blueprint::
 Text_Blueprint:
 	.string "A blueprint of some sort?\n"
 	.string "It's too complicated!$"
+
+EventScript_RegionMap::
+	lockall
+	msgbox Common_Text_LookCloserAtMap, MSGBOX_DEFAULT
+	fadescreen FADE_TO_BLACK
+	special FieldShowRegionMap
+	waitstate
+	releaseall
+	end
+Common_Text_LookCloserAtMap:
+	.string "{PLAYER} took a closer look at the\n"
+	.string "HOENN region map.$"
+

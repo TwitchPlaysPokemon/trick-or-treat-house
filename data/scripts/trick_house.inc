@@ -93,7 +93,7 @@ PuzzleCommon_Text_DoorBackside:
 PuzzleCommon_EventScript_Scroll::
 	lock
 	goto_if_set FLAG_TRICK_HOUSE_SCROLL_READ, PuzzleCommon_EventScript_ScrollExamine
-	playfanfare MUS_FANFA4
+	playfanfare MUS_OBTAIN_ITEM
 	message PuzzleCommon_Text_ScrollFound1
 	waitfanfare
 	setflag FLAG_TRICK_HOUSE_SCROLL_READ
@@ -183,7 +183,7 @@ PuzzleCommon_EventScript_DoDoorEnterAnimation_Stone::
 	return
 
 PuzzleCommon_EventScript_DoDoorEnterAnimation::
-	playse SE_TRACK_HAIKI
+	playse SE_TRUCK_UNLOAD
 	applymovement THIS_EVENT, Common_Movement_ObjectDoorOpen
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp1
@@ -208,7 +208,7 @@ Common_Movement_ObjectDoorClose: @ 82725A6
 PuzzleCommon_EventScript_WarpTrickMasterOut:: @ 826AFCF
 	applymovement VAR_0x8000, PuzzleCommon_Movement_TrickMasterWarpAway1
 	waitmovement 0
-	playse SE_W153
+	playse SE_M_EXPLOSION
 	applymovement VAR_0x8000, PuzzleCommon_Movement_TrickMasterWarpAway2
 	waitmovement 0
 	removeobject VAR_0x8000
@@ -245,7 +245,7 @@ PuzzleCommon_EventScript_StandingCandyGiverLeave::
 	waitdooranim
 	applymovement VAR_LAST_TALKED, Common_Movement_WalkUp1
 	waitmovement 0
-	playse SE_KAIDAN
+	playse SE_EXIT
 	removeobject VAR_LAST_TALKED
 	closedoor VAR_METATILE_X, VAR_METATILE_Y
 	waitdooranim
@@ -281,7 +281,7 @@ PuzzleCommon_EventScript_PokecenterHeal::
 	delay 10
 	@ Fade screen, heal
 	fadescreen 1
-	playfanfare MUS_ME_ASA
+	playfanfare MUS_HEAL
 	special HealPlayerParty
 	waitfanfare
 	fadescreen 0

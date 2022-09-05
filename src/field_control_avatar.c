@@ -622,11 +622,11 @@ static bool8 TryStartStepCountScript(u16 metatileBehavior)
             ScriptContext_SetupScript(EventScript_EggHatch);
             return TRUE;
         }
-        if (AbnormalWeatherHasExpired() == TRUE)
-        {
-            ScriptContext_SetupScript(AbnormalWeather_EventScript_EndEventAndCleanup_1);
-            return TRUE;
-        }
+        // if (AbnormalWeatherHasExpired() == TRUE)
+        // {
+        //     ScriptContext_SetupScript(AbnormalWeather_EventScript_EndEventAndCleanup_1);
+        //     return TRUE;
+        // }
         // if (ShouldDoBrailleRegicePuzzle() == TRUE)
         // {
         //     ScriptContext_SetupScript(IslandCave_EventScript_OpenRegiEntrance);

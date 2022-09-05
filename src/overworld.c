@@ -118,7 +118,7 @@ extern const u8 EventScript_TerminateLink[];
 extern const struct MapLayout *const gMapLayouts[];
 extern const struct MapHeader *const *const gMapGroups[];
 extern const struct MapHeader *const *const gMapGroups_End[];
-extern const int gMaxFlashLevel;
+extern const s32 gMaxFlashLevel;
 extern const u16 gOverworldBackgroundLayerFlags[];
 
 static void Overworld_ResetStateAfterWhiteOut(void);

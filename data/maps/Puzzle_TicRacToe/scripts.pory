@@ -78,7 +78,7 @@ script(local) Puzzle_TicRacToe_StepTriggerCallback {
 	if (flag(FLAG_ALL_BUTTONS_PRESSED) == FALSE) {
 		callnative (CountNPCTriggers)
 		if (var(VAR_RESULT) == 3) {
-			playse (SE_SEIKAI)
+			playse (SE_SUCCESS)
 			setmetatile(4, 4, 0x26A, FALSE)
 			setflag(FLAG_ALL_BUTTONS_PRESSED)
 			setvar(VAR_STEP_TRIGGER, 2) //disarm step trigger
@@ -198,7 +198,7 @@ script Puzzle_TicRacToe_TriggerScript_BlockIn {
 	// 
 	applymovement(LID_BLOCK_BOY, Common_Movement_FaceUp)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp)
-	applymovement(EVENT_OBJ_ID_CAMERA, Puzzle_TicRacToe_Movement_BlockIn_Camera)
+	applymovement(OBJ_EVENT_ID_CAMERA, Puzzle_TicRacToe_Movement_BlockIn_Camera)
 	copyobjectxytoperm(1)
 	removeobject(1)
 	addobject(1)
@@ -208,7 +208,7 @@ script Puzzle_TicRacToe_TriggerScript_BlockIn {
 	copyobjectxytoperm(3)
 	removeobject(3)
 	addobject(3)
-	waitmovement(EVENT_OBJ_ID_CAMERA)
+	waitmovement(OBJ_EVENT_ID_CAMERA)
 	//
 	special (RemoveCameraObject)
 	copyobjectxytoperm(LID_BLOCK_BOY)
@@ -220,7 +220,7 @@ script Puzzle_TicRacToe_TriggerScript_BlockOut {
 	lock
 	//
 	special (SpawnCameraObject)
-	applymovement(EVENT_OBJ_ID_CAMERA, Puzzle_TicRacToe_Movement_BlockOut_Camera)
+	applymovement(OBJ_EVENT_ID_CAMERA, Puzzle_TicRacToe_Movement_BlockOut_Camera)
 	//
 	message (".{PAUSE 30}.{PAUSE 30}.{PAUSE 30}Hm?\p"
 			"Oh! I'm in your way, sorry!\p$")

@@ -690,7 +690,7 @@ static void Task_CreditsLoadGrassScene(u8 taskIdA)
                                     | DISPCNT_OBJ_ON);
 
         gMain.state = 0;
-        gSpriteDestroyFlag = 0;
+        gIntroCredits_MovingSceneryState = 0;
         gTasks[taskIdA].func = Task_WaitPaletteFade;
         break;
     }
@@ -1054,13 +1054,13 @@ static void sub_817624C(u8 taskIdC)
     switch (gTasks[taskIdC].data[TDC_0])
     {
     case 0:
-        gSkyBgPanYAdjust = Sin((gTasks[taskIdC].data[TDC_5] >> 1) & 0x7F, 12);
+        gIntroCredits_MovingSceneryVOffset = Sin((gTasks[taskIdC].data[TDC_5] >> 1) & 0x7F, 12);
         gTasks[taskIdC].data[TDC_5]++;
         break;
     case 1:
-        if (gSkyBgPanYAdjust != 0)
+        if (gIntroCredits_MovingSceneryVOffset != 0)
         {
-            gSkyBgPanYAdjust = Sin((gTasks[taskIdC].data[TDC_5] >> 1) & 0x7F, 12);
+            gIntroCredits_MovingSceneryVOffset = Sin((gTasks[taskIdC].data[TDC_5] >> 1) & 0x7F, 12);
             gTasks[taskIdC].data[TDC_5]++;
         }
         else
@@ -1074,7 +1074,7 @@ static void sub_817624C(u8 taskIdC)
         if (gTasks[taskIdC].data[TDC_5] < 64)
         {
             gTasks[taskIdC].data[TDC_5]++;
-            gSkyBgPanYAdjust = Sin(gTasks[taskIdC].data[TDC_5] & 0x7F, 20);
+            gIntroCredits_MovingSceneryVOffset = Sin(gTasks[taskIdC].data[TDC_5] & 0x7F, 20);
         }
         else
         {
@@ -1102,7 +1102,7 @@ static void sub_817624C(u8 taskIdC)
         if (gTasks[taskIdC].data[TDC_5] > 0)
         {
             gTasks[taskIdC].data[TDC_5]--;
-            gSkyBgPanYAdjust = Sin(gTasks[taskIdC].data[TDC_5] & 0x7F, 20);
+            gIntroCredits_MovingSceneryVOffset = Sin(gTasks[taskIdC].data[TDC_5] & 0x7F, 20);
         }
         else
         {
@@ -1289,8 +1289,8 @@ static bool8 sub_8176AB0(u8 data, u8 taskIdA)
         gMain.state = 1;
         break;
     case 1:
-        gSkyBgPanY = 34;
-        gSkyBgPanYAdjust = 0;
+        gIntroCredits_MovingSceneryVBase = 34;
+        gIntroCredits_MovingSceneryVOffset = 0;
         LoadCreditsBackgroundScenery(data);
         gMain.state += 1;
         break;
@@ -1383,7 +1383,7 @@ static void ResetCreditsTasks(u8 taskIdA)
         gTasks[taskIdA].data[TDA_TASK_D_ID] = 0;
     }
 
-    gSpriteDestroyFlag = 1;
+    gIntroCredits_MovingSceneryState = 1;
 }
 
 static void LoadTheEndScreen(u16 arg0, u16 arg1, u16 arg2)
@@ -1445,7 +1445,7 @@ static void sub_8176E40(u16 arg0, u16 palette)
 
 static void sub_8176EE8(struct Sprite *sprite)
 {
-    if (gSpriteDestroyFlag != 0)
+    if (gIntroCredits_MovingSceneryState != 0)
     {
         DestroySprite(sprite);
         return;
@@ -1482,7 +1482,7 @@ static void sub_8176EE8(struct Sprite *sprite)
 
 static void sub_8176F90(struct Sprite *sprite)
 {
-    if (gSpriteDestroyFlag != 0)
+    if (gIntroCredits_MovingSceneryState != 0)
     {
         DestroySprite(sprite);
         return;
@@ -1501,7 +1501,7 @@ static void sub_8176F90(struct Sprite *sprite)
             StartSpriteAnimIfDifferent(sprite, 2);
         if (sprite->pos1.x > -32)
             sprite->pos1.x -= 2;
-        sprite->pos2.y = -gSkyBgPanYAdjust;
+        sprite->pos2.y = -gIntroCredits_MovingSceneryVOffset;
         break;
     case 2:
         sprite->data[7] += 1;
@@ -1519,7 +1519,7 @@ static void sub_8176F90(struct Sprite *sprite)
 
 static void sub_8177050(struct Sprite *sprite)
 {
-    if (gSpriteDestroyFlag)
+    if (gIntroCredits_MovingSceneryState)
     {
         FreeAndDestroyMonPicSprite(sprite->data[6]);
         return;
@@ -1629,7 +1629,7 @@ static u8 MakeMonSprite(u16 nationalDexNum, s16 x, s16 y, u16 position)
 
 static void sub_81772B8(struct Sprite *sprite)
 {
-    if (gSprites[sprite->data[0]].data[0] == 10 || gSpriteDestroyFlag)
+    if (gSprites[sprite->data[0]].data[0] == 10 || gIntroCredits_MovingSceneryState)
     {
         DestroySprite(sprite);
         return;

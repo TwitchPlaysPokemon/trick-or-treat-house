@@ -46,6 +46,8 @@
 #define METATILE_Building_TV_On  0x003
 #define METATILE_Building_PC_Off 0x004
 #define METATILE_Building_PC_On  0x005
+#define METATILE_Building_DrapeDoor_Top    0x016
+#define METATILE_Building_DrapeDoor_Bottom 0x01E
 
 // gTileset_PokemonCenter
 #define METATILE_PokemonCenter_Door_CableClub  0x264

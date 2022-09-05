@@ -140,7 +140,7 @@ Puzzle_TrickHouseOriginal5_EventScript_ToggleSwitch1:: @ 826E1FE
 	call_if_unset FLAG_SWITCH_1, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch1On
 	call_if_set FLAG_SWITCH_1, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch1Off
 	special DrawWholeMapView
-	playse SE_TK_KASYA
+	playse SE_CLICK
 	goto_if_unset FLAG_SWITCH_1, Puzzle_TrickHouseOriginal5_EventScript_26E2E9
 	goto_if_set FLAG_SWITCH_1, Puzzle_TrickHouseOriginal5_EventScript_26E2EE
 	end
@@ -151,7 +151,7 @@ Puzzle_TrickHouseOriginal5_EventScript_ToggleSwitch2:: @ 826E22D
 	call_if_unset FLAG_SWITCH_2, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch2On
 	call_if_set FLAG_SWITCH_2, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch2Off
 	special DrawWholeMapView
-	playse SE_TK_KASYA
+	playse SE_CLICK
 	goto_if_unset FLAG_SWITCH_2, Puzzle_TrickHouseOriginal5_EventScript_26E2F3
 	goto_if_set FLAG_SWITCH_2, Puzzle_TrickHouseOriginal5_EventScript_26E2F8
 	end
@@ -162,7 +162,7 @@ Puzzle_TrickHouseOriginal5_EventScript_ToggleSwitch3:: @ 826E25C
 	call_if_unset FLAG_SWITCH_3, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch3On
 	call_if_set FLAG_SWITCH_3, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch3Off
 	special DrawWholeMapView
-	playse SE_TK_KASYA
+	playse SE_CLICK
 	goto_if_unset FLAG_SWITCH_3, Puzzle_TrickHouseOriginal5_EventScript_26E2FD
 	goto_if_set FLAG_SWITCH_3, Puzzle_TrickHouseOriginal5_EventScript_26E302
 	end
@@ -173,7 +173,7 @@ Puzzle_TrickHouseOriginal5_EventScript_ToggleSwitch4:: @ 826E28B
 	call_if_unset FLAG_SWITCH_4, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch4On
 	call_if_set FLAG_SWITCH_4, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch4Off
 	special DrawWholeMapView
-	playse SE_TK_KASYA
+	playse SE_CLICK
 	goto_if_unset FLAG_SWITCH_4, Puzzle_TrickHouseOriginal5_EventScript_26E307
 	goto_if_set FLAG_SWITCH_4, Puzzle_TrickHouseOriginal5_EventScript_26E30C
 	end
@@ -184,7 +184,7 @@ Puzzle_TrickHouseOriginal5_EventScript_ToggleSwitch5:: @ 826E2BA
 	call_if_unset FLAG_SWITCH_5, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch5On
 	call_if_set FLAG_SWITCH_5, Puzzle_TrickHouseOriginal5_EventScript_SetSwitch5Off
 	special DrawWholeMapView
-	playse SE_TK_KASYA
+	playse SE_CLICK
 	goto_if_unset FLAG_SWITCH_5, Puzzle_TrickHouseOriginal5_EventScript_26E311
 	goto_if_set FLAG_SWITCH_5, Puzzle_TrickHouseOriginal5_EventScript_26E316
 	end

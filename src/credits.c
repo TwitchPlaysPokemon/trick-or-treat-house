@@ -81,8 +81,6 @@
 #define WIN_MAIN   0
 #define WIN_SCORE  1
 
-EWRAM_DATA bool8 gSpriteDestroyFlag = 0;
-
 extern void LoadCreditsMinigameBackground1();
 
 void LoadCandyGraphics();
@@ -304,8 +302,9 @@ static const union AnimCmd sAnim_Player_PedalCoast[] =
     ANIMCMD_FRAME(128, 8),
     ANIMCMD_FRAME(192, 8),
 	ANIMCMD_LOOP(8),
-    ANIMCMD_FRAME(0, 80),
-    ANIMCMD_FRAME(0, 80),
+    ANIMCMD_FRAME(0, 60),
+    ANIMCMD_FRAME(0, 60),
+    ANIMCMD_FRAME(0, 40),
 	ANIMCMD_LOOP(8),
     ANIMCMD_JUMP(0),
 };
@@ -406,7 +405,7 @@ static void ResetCreditsTasks(void)
         DestroyTask(sCreditsData->taskIdD);
         sCreditsData->taskIdD = 0;
     }
-    gSpriteDestroyFlag = 1;
+    gIntroCredits_MovingSceneryState = 1;
 }
 
 static void CleanupWindowBuffers(void)
@@ -420,7 +419,7 @@ static void CleanupWindowBuffers(void)
 
 static void SpriteCB_Player(struct Sprite *sprite)
 {
-    if (gSpriteDestroyFlag != 0) {
+    if (gIntroCredits_MovingSceneryState != 0) {
         DestroySprite(sprite);
         return;
     }
@@ -449,7 +448,7 @@ static void SpriteCB_Player(struct Sprite *sprite)
 
 static void SpriteCB_CandyItem(struct Sprite *sprite)
 {
-    if (gSpriteDestroyFlag != 0) {
+    if (gIntroCredits_MovingSceneryState != 0) {
         DestroySprite(sprite);
         return;
     }
@@ -489,7 +488,7 @@ static void SpriteCB_Sunset(struct Sprite *sprite)
 {
     s16 speed, height;
     s32 offset;
-    if (gSpriteDestroyFlag != 0) {
+    if (gIntroCredits_MovingSceneryState != 0) {
         DestroySprite(sprite);
         return;
     }
@@ -559,8 +558,8 @@ static bool8 LoadInitialBikingScene(u8 taskId)
         break;
     case 1:
 		// Load Background elements
-		gSkyBgPanY = 24; //34;
-        gSkyBgPanYAdjust = 10;
+		gIntroCredits_MovingSceneryVBase = 24; //34;
+        gIntroCredits_MovingSceneryVOffset = 10;
 		LoadCreditsMinigameBackground1();
         LoadSunsetGraphics();
         gMain.state += 1;
@@ -625,7 +624,7 @@ static bool8 LoadInitialBikingScene(u8 taskId)
     return FALSE;
 }
 
-extern void MakeObjectTemplateFromObjectEventGraphicsInfo(gfxId_t graphicsId, void (*callback)(struct Sprite *), struct SpriteTemplate *spriteTemplate, const struct SubspriteTable **subspriteTables);
+extern void CopyObjectGraphicsInfoToSpriteTemplate(gfxId_t graphicsId, void (*callback)(struct Sprite *), struct SpriteTemplate *spriteTemplate, const struct SubspriteTable **subspriteTables);
 
 // This is a copy and modification of AddPseudoObjectEvent
 void LoadCandyGraphics()
@@ -636,7 +635,7 @@ void LoadCandyGraphics()
     u8 spriteId, i;
     
     spriteTemplate = malloc(sizeof(struct SpriteTemplate));
-    MakeObjectTemplateFromObjectEventGraphicsInfo(OBJ_EVENT_GFX_ITEM_BALL, SpriteCB_CandyItem, spriteTemplate, &subspriteTables);
+    CopyObjectGraphicsInfoToSpriteTemplate(OBJ_EVENT_GFX_ITEM_BALL, SpriteCB_CandyItem, spriteTemplate, &subspriteTables);
     if (spriteTemplate->paletteTag != 0xFFFF)
     {
         LoadObjectEventPalette(spriteTemplate->paletteTag);

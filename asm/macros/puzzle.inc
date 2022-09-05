@@ -91,9 +91,9 @@ GATE_ORIENTATION_270 = 3
 @ -----------------------------------------------------
 
 .macro do_rotating_tile x:req
-playse SE_MU_PACHI
+playse SE_SWITCH
 waitse
-playse SE_TU_SAA
+playse SE_REPEL
 initrotatingtilepuzzle 1
 moverotatingtileobjects \x
 waitmovement 0

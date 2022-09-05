@@ -129,7 +129,7 @@ script Puzzle_TinTowerClimb_Scroll {
 		msgbox("SCROLL HAS SECRET TO KEY$")
 		release
 	} else {
-		playfanfare(MUS_FANFA4)
+		playfanfare(MUS_OBTAIN_ITEM)
 		message("{PLAYER}!SCROLL FIND$")
 		waitfanfare
 		setflag(FLAG_TRICK_HOUSE_SCROLL_READ)

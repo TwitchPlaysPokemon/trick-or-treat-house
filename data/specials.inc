@@ -247,7 +247,7 @@ gSpecials::
 	def_special CallBattleFactoryFunction
 	def_special CallBattlePikeFunction
 	@ def_special CallBattlePyramidFunction
-	def_special CanAnyPartyMonsBeHealed
+	def_special IsPartyFullHealed
 	def_special StopMapMusic
 	def_special CallVerdanturfTentFunction
 	def_special CallFallarborTentFunction
@@ -290,7 +290,7 @@ gSpecials::
 	def_special ShouldDoBrailleRegirockEffectOld
 	def_special DoOrbEffect
 	def_special FadeOutOrbEffect
-	def_special WaitWeather
+	@ def_special WaitWeather
 	@ def_special BufferEReaderTrainerName
 	def_special GetSlotMachineId
 	def_special GetPlayerFacingDirection

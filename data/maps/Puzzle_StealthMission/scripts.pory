@@ -255,18 +255,18 @@ script Puzzle_StealthMission_EventScript_Scroll {
 	//call (PuzzleCommon_EventScript_Scroll)
 	lock
 	goto_if_set(FLAG_TRICK_HOUSE_SCROLL_READ, PuzzleCommon_EventScript_ScrollExamine)
-	playfanfare(MUS_FANFA4)
+	playfanfare(MUS_OBTAIN_ITEM)
 	message(PuzzleCommon_Text_ScrollFound1)
 	waitfanfare
 	setflag(FLAG_TRICK_HOUSE_SCROLL_READ)
 	msgbox(PuzzleCommon_Text_ScrollFound2)
 	closemessage
 	
-	playse(SE_JIHANKI)
+	playse(SE_VEND)
 	call(Puzzle_StealthMission_SetStage2)
 	special (DrawWholeMapView)
 	
-	playse(SE_HINSI)
+	playse(SE_LOW_HEALTH)
 	delay(30)
 	playse(SE_PIN)
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
@@ -307,7 +307,7 @@ script Puzzle_StealthMission_CheckFinished {
 	waitbuttonpress
 	release
 	// setvar(VAR_0x800A, 0)
-	// special(CanAnyPartyMonsBeHealed)
+	// special(IsPartyFullHealed)
 	// if (var(VAR_RESULT) == FALSE) { # It's backwards for some reason??
 	// 	addvar(VAR_0x800A, 1)
 	// }
@@ -327,7 +327,7 @@ script Puzzle_StealthMission_SignScript_OpenDoorA {
 	if (var(VAR_RESULT)) {
 		msgbox("You swipe the CARD KEY in the reader,\n"
 				"and the door opens!$")
-		playse(SE_JIHANKI)
+		playse(SE_VEND)
 		setflag(FLAG_DOORA_OPEN)
 		call (Puzzle_StealthMission_SetDoorA)
 		special (DrawWholeMapView)
@@ -342,7 +342,7 @@ script Puzzle_StealthMission_SignScript_OpenDoorB {
 	if (var(VAR_RESULT)) {
 		msgbox("You swipe the CARD KEY in the reader,\n"
 				"and the door opens!$")
-		playse(SE_JIHANKI)
+		playse(SE_VEND)
 		setflag(FLAG_DOORB_OPEN)
 		call (Puzzle_StealthMission_SetDoorB)
 		special (DrawWholeMapView)

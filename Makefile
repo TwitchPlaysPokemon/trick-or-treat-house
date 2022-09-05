@@ -1,4 +1,5 @@
 TOOLCHAIN := $(DEVKITARM)
+MODERN := 1
 
 # don't use dkP's base_tools anymore
 # because the redefinition of $(CC) conflicts

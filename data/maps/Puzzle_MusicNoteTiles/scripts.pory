@@ -104,7 +104,7 @@ script Puzzle_MusicNoteTiles_Extra {
             end
         }
         applymovement(VAR_LAST_TALKED, Puzzle_MusicNoteTiles_ExtraBreakOut)
-        playse(SE_W280) //breaking
+        playse(SE_M_BRICK_BREAK) //breaking
         setobjectmovementtype(7, MOVEMENT_TYPE_LOOK_AROUND)
         setmetatile(14, 4, 0x208, FALSE)
         special (DrawWholeMapView)
