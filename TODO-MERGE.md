@@ -1,12 +1,23 @@
 Known issues:
 - [ ] Manectric on the intro screen is yellow instead of blue for some reason.
-- [ ] Brendan and May's overworld palettes are incorrect, probably using the old palette.
+- [X] Brendan and May's overworld palettes are incorrect, probably using the old palette.
 - [ ] Fall grass overworld effect is broken.
 - [X] "Allie put it away in the candy p--" [cut off] "Allie put it away in the \n Candy pocket". Both bad.
 	- [x] messagewordwrap is broken
 	- [X] Text box is duplicated.
+- [ ] Puzzle name tag is thinner than it should be, and it's cutting off the puzzle titles.
+- [X] Puzzle 1: Item ball in the middle gives out "20 ????????!"
+	- [X] It then leaves the message on screen, and does not wordwrap it.
+	- [X] Nor does the item ball disappear.
+	- [X] All item balls seem to fail in this way.
+	- [X] "Got  2 Shears!"
+	- [X] It actually gives out 1 and not 20.
+	- [X] At the end: "You hand over 2 ??????, and the Shears."
 
 Others:
+- [ ] Add enhancement where something tells the player if they got the scroll already.
+	- I was thinking the costume could change, but that would likely require a map reload of figuring out how to change the graphic without a reload.
+	- Could just add it to the pause screen, in a side window
 - [x] Check Makefile over
 - [X] eventObject->unk3_3 -> disableReflection -> hideReflection
 - [X] gRamScriptRetAddr -> gRamScriptPtr

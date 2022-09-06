@@ -319,7 +319,7 @@ script Puzzle_StealthMission_CheckFinished {
 ///////////////////////////////////////////////////////
 
 script Puzzle_StealthMission_PickupKeycard {
-	giveitem_std(ITEM_CARD_KEY, 1)
+	finditem_std(ITEM_CARD_KEY, 1)
 }
 script Puzzle_StealthMission_SignScript_OpenDoorA {
 	lock

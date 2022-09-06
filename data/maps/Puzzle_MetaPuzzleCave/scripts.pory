@@ -159,56 +159,56 @@ movement Puzzle_MetaPuzzleCave_IntroScript_NoPuzzleWalkout_Move2 {
 
 script MetaPuzzle_PickupEvent_InflatableRock {
 	msgbox ("This rock appears to be… inflatable…?$")
-	giveitem_std(ITEM_META_ITEM_ROCK, 1)
+	finditem_std(ITEM_META_ITEM_ROCK, 1)
 }
 script MetaPuzzle_PickupEvent_ZigzagCushion {
 	msgbox ("This soft fluffy cushion is covered in\n"
 			"ZIGZAGOON sheddings, like they've been\l"
 			"laying on it a lot.$")
-	giveitem_std(ITEM_META_ITEM_ZIGZAG, 1)
+	finditem_std(ITEM_META_ITEM_ZIGZAG, 1)
 }
 script MetaPuzzle_PickupEvent_LotadDoll {
 	msgbox ("There's a waterlogged LOTAD doll,\n"
 			"lost and washed away, floating here.$")
-	giveitem_std(ITEM_META_ITEM_LOTAD, 1)
+	finditem_std(ITEM_META_ITEM_LOTAD, 1)
 }
 script MetaPuzzle_PickupEvent_GrassCushion {
 	msgbox ("Weird, there's a pillow just lying\n"
 			"here on the forest floor.$")
-	giveitem_std(ITEM_META_ITEM_GRASS, 1)
+	finditem_std(ITEM_META_ITEM_GRASS, 1)
 }
 script MetaPuzzle_PickupEvent_DiamondCushion {
-	giveitem_std(ITEM_META_ITEM_DIAMOND, 1)
+	finditem_std(ITEM_META_ITEM_DIAMOND, 1)
 }
 script MetaPuzzle_PickupEvent_SpinCushion {
-	giveitem_std(ITEM_META_ITEM_SPIN, 1)
+	finditem_std(ITEM_META_ITEM_SPIN, 1)
 }
 script MetaPuzzle_PickupEvent_MagnemiteDoll {
-	giveitem_std(ITEM_META_ITEM_DOLL, 1)
+	finditem_std(ITEM_META_ITEM_DOLL, 1)
 }
 script MetaPuzzle_PickupEvent_BallCusion {
-	giveitem_std(ITEM_META_ITEM_BALL, 1)
+	finditem_std(ITEM_META_ITEM_BALL, 1)
 }
 script MetaPuzzle_PickupEvent_KissCushion {
-	giveitem_std(ITEM_META_ITEM_KISS, 1)
+	finditem_std(ITEM_META_ITEM_KISS, 1)
 }
 script MetaPuzzle_PickupEvent_RoundCushion {
-	giveitem_std(ITEM_META_ITEM_ROUND, 1)
+	finditem_std(ITEM_META_ITEM_ROUND, 1)
 }
 script MetaPuzzle_PickupEvent_FireCushion {
-	giveitem_std(ITEM_META_ITEM_FIRE, 1)
+	finditem_std(ITEM_META_ITEM_FIRE, 1)
 }
 script MetaPuzzle_PickupEvent_PikaCushion {
-	giveitem_std(ITEM_META_ITEM_PIKA, 1)
+	finditem_std(ITEM_META_ITEM_PIKA, 1)
 }
 script MetaPuzzle_PickupEvent_DuskullDoll {
-	giveitem_std(ITEM_META_ITEM_DUSKULL, 1)
+	finditem_std(ITEM_META_ITEM_DUSKULL, 1)
 }
 script MetaPuzzle_PickupEvent_WaterCushion {
-	giveitem_std(ITEM_META_ITEM_WATER, 1)
+	finditem_std(ITEM_META_ITEM_WATER, 1)
 }
 script MetaPuzzle_PickupEvent_SeedotDoll {
-	giveitem_std(ITEM_META_ITEM_SEEDOT, 1)
+	finditem_std(ITEM_META_ITEM_SEEDOT, 1)
 }
 
 

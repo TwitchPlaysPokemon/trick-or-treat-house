@@ -2,6 +2,7 @@
 .set AMOUNT, VAR_0x8001
 
 Std_ObtainItem::
+	resolveitem ITEMID, AMOUNT
 	additem ITEMID, AMOUNT
 	copyvar VAR_0x8007, VAR_RESULT
 	call EventScript_ObtainItemMessage
@@ -17,8 +18,8 @@ EventScript_ObtainItemMessage::
 
 EventScript_BufferPocketNameAndTryFanfare::
 	switch VAR_RESULT
-	case POCKET_CANDY,   EventScript_BufferPokeballsPocket
-	case POCKET_GENERAL,      EventScript_BufferItemsPocket
+	case POCKET_CANDY,      EventScript_BufferPokeballsPocket
+	case POCKET_GENERAL,    EventScript_BufferItemsPocket
 	case POCKET_KEY_ITEMS,  EventScript_BufferKeyItemsPocket
 	case POCKET_TM_HM,      EventScript_BufferTMHMsPocket
 	case POCKET_BERRIES,    EventScript_BufferBerriesPocket
@@ -50,9 +51,12 @@ EventScript_BufferBerriesPocket::
 	return
 
 EventScript_ObtainedItem::
-	message gText_ObtainedTheItem
+	buffernumberstring2 0, AMOUNT, 1
+	messagewordwrap gText_ObtainedTheItem
 	waitfanfare
-	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
+	messagewordwrap gText_PutItemInPocket
+	waitmessage
+	waitbuttonpress
 	setvar VAR_RESULT, TRUE
 	return
 
@@ -96,7 +100,7 @@ Std_FindItem::
 	lock
 	faceplayer
 	waitse
-	resolveitem VAR_0x8000, VAR_0x8001
+	resolveitem ITEMID, AMOUNT
 	copyvar VAR_0x8004, ITEMID
 	copyvar VAR_0x8005, AMOUNT
 	checkitemspace ITEMID, AMOUNT
@@ -120,6 +124,7 @@ EventScript_PickUpItem::
 	waitmessage
 	@ bufferitemnameplural STR_VAR_2, VAR_0x8004, VAR_0x8005
 	bufferitemnameplural 1, VAR_0x8004, VAR_0x8005
+	setvar VAR_0x8004, 12  @ ???
 	@ pyramid_inchallenge
 	@ goto_if_eq VAR_RESULT, TRUE, EventScript_PutBattlePyramidItemInBag
 	@ msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
@@ -154,7 +159,10 @@ EventScript_FoundItem_BORT:
 	return
 
 EventScript_NoRoomToPickUpItem::
-	msgbox gText_ObtainedTheItem, MSGBOX_DEFAULT
+	@ msgbox gText_ObtainedTheItem, MSGBOX_DEFAULT
+	messagewordwrap gText_ObtainedTheItem
+	waitmessage
+	waitbuttonpress
 	msgbox gText_TooBadBagIsFull, MSGBOX_DEFAULT
 	setvar VAR_RESULT, FALSE
 	return
@@ -181,8 +189,8 @@ EventScript_PickUpHiddenItem::
 	end
 
 EventScript_FoundHiddenTMHM::
-	bufferitemnameplural STR_VAR_1, VAR_0x8004, 1
-	message gText_PlayerFoundOneTMHM
+	bufferitemnameplural STR_VAR_1, VAR_0x8004, VAR_0x8006
+	messagewordwrap gText_PlayerFoundOneTMHM
 	goto EventScript_PutHiddenItemInPocket
 	end
 

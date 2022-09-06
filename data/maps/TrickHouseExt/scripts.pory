@@ -867,5 +867,5 @@ script TrickHouseExt_EventScript_TestDoor {
 
 script TrickHouseExt_EventScript_BuriedItem1 {
 	msgbox( "There's an item buried here…$")
-	giveitem_std(ITEM_TM27_RETURN, 1)
+	finditem_std(ITEM_TM27_RETURN, 1)
 }
