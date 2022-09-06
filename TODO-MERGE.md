@@ -25,8 +25,8 @@ Others:
 - [x] Check m4a_1.s. We replaced it with a new version and they moved it into src. But also we're gonna merge in the music expansion, which also changes it.
 - [X] VAR_ICE_STEP_COUNT -> VAR_STEP_TRIGGER
 - [X] Remove apprentice
-- [ ] constants/items.h - Convert tabs to spaces
-- [ ] GetCollisionFlagsAtCoords - make flag for mismatch == 2
+- [X] constants/items.h - Convert tabs to spaces
+- [-] GetCollisionFlagsAtCoords - make flag for mismatch == 2
 - [ ] MovementAction_RevealTrainer_Step0 - is it MOVEMENT_TYPE_HIDDEN2 or MOVEMENT_TYPE_BURIED?
 - [ ] Rename MOVEMENT_TYPE_HIDDEN2 to something else?
 - [ ] Search through MUS_ABANDONED_SHIP and replace them all
@@ -42,8 +42,8 @@ Others:
 - [ ] Convert player_forcestep to new naming scheme, also figure out wtf it's doing again
 - [ ] Convert the DoorAnimTiles_TrickScroll to a single image, like the other door animations
 - [ ] item effects - clean up and remove duplicated / unused item effects
-- [ ] UpdateAllEventObjectsZCoordAndPriority -> update for Elevation
-- [ ] Moving graphics:
+- [x] UpdateAllEventObjectsZCoordAndPriority -> update for Elevation
+- [X] Moving graphics:
 	- const u32 gIntro2BrendanNoTurnGfx[] = INCBIN_U32("graphics/intro/intro2_brendan_noturn.4bpp.lz");
 	+ const u32 gIntroBrendan_Gfx[] = INCBIN_U32("graphics/intro/scene_2/brendan.4bpp.lz");
 - [ ] Remove unused event object graphics:
@@ -94,28 +94,28 @@ Others:
 - [ ] re_escape_rope -> ItemUseOnFieldCB_EscapeRope
 - [ ] intro.c - Remove unused data sUnusedData
 - [ ] graphics.c - Remove random garbage at the end and various spacing
-- [ ] Double check gTrainer is not referenced
-- [ ] ShowNatureGirlMessage and others below it: need to comment out arrays?
-- [ ] Add gStringVar4-6, rearrange placeholders to put names into 0x1X
+- [X] Double check gTrainer is not referenced
+- [x] ShowNatureGirlMessage and others below it: need to comment out arrays?
+- [X] Add gStringVar4-6, rearrange placeholders to put names into 0x1X
 - [ ] Strip out all the match calls.
 - [ ] sElevationToPriority and sElevationToSubspriteTableNum comments to pokeemerald
 - [ ] GetLocationMusic -> make map script
 - [ ] Decapitalize contest_hall.inc
 - [ ] Fix field moves to instead of saying "Used move!", the text box reads a description of what's happening.
 - [X] Wipe out all {KUN} again
-- [ ] Intro credit graphics may need to be added to headers.
+- [x] Intro credit graphics may need to be added to headers.
 - [ ] map_name_popup.c - Modify and use the defines??
 - [ ] load_save.c - Remove all the DMA stuff, get rid of the DMA structs
 - [ ] Reorganize Flags and Vars
 	- [ ] Remove Temporary Aliases from Vars
 - [ ] /sound/direct_sound_samples/sc88_piano1_36.bin -> /sound/direct_sound_samples/sc88pro_piano1_36.bin
 - [ ] graphics/interface/candy.4bpp.lz -> graphics/shop/candy.4bpp.lz
-- [ ] move mgba and printf into gflib folder.
+- [X] move mgba and printf into gflib folder.
 - [ ] Metatile behavior:
 	MetatileBehavior_IsAquaHideoutWarp  ->  MetatileBehavior_IsTeleportWarp
 	MetatileBehavior_IsWarpOrBridge -> MetatileBehavior_IsUnionRoomWarp
 
-- [ ] Recreate script_menu.c:
+- [x] Recreate script_menu.c:
 	extern const u8 PokemonAdoption_Choose[];
 	extern const u8 PokemonAdoption_Status[];
 	extern const u8 PokemonAdoption_Exit[];

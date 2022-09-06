@@ -766,8 +766,8 @@ static bool8 StartMenuLinkModePlayerNameCallback(void)
 // References to things in item_use.c
 void SetUpItemUseOnFieldCallback(u8 taskId);
 extern void(*sItemUseOnFieldCB)(u8 taskId);
-
-static void re_escape_field(u8 taskId)
+// Modified copy of the one in item_use.c
+static void ItemUseOnFieldCB_EscapeRope(u8 taskId)
 {
     Overworld_ResetStateAfterDigEscRope();
     ResetInitialPlayerAvatarState();
@@ -777,7 +777,7 @@ static void re_escape_field(u8 taskId)
 
 static void ItemUseFromStartMenu_EscapeRope(u8 taskId)
 {
-    sItemUseOnFieldCB = re_escape_field;
+    sItemUseOnFieldCB = ItemUseOnFieldCB_EscapeRope;
     gTasks[taskId].data[3] = 1; // dont fade to black! Not in a submenu.
     SetUpItemUseOnFieldCallback(taskId);
 }
