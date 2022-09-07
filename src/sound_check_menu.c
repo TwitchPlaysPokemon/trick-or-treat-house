@@ -148,7 +148,7 @@ static void Task_InitSoundCheckMenu(u8 taskId);
 static void Task_InitSoundCheckMenu_CreateWindows(u8);
 static void Task_HandleDrawingSoundCheckMenuText(u8);
 static void Task_ProcessSoundCheckMenuInputAndRedraw(u8);
-static void Task_ExitToTitleScreen(u8);
+static void Task_ExitToPreviousScreen(u8);
 static void HighlightSelectedWindow(u8);
 static void PrintSoundNumber(u16, u8);
 static void PrintPaddedString(const u8 *const, u8);
@@ -181,11 +181,12 @@ static void VBlankCB_SoundCheckMenu(void)
     ProcessSpriteCopyRequests();
     TransferPlttBuffer();
 
-    if (sIsFastForwarding != 0)
+    if (sIsFastForwarding > 0)
     {
         m4aSoundMain();
         m4aSoundMain();
         m4aSoundMain();
+        sIsFastForwarding--;
     }
 }
 
@@ -258,25 +259,25 @@ void CB2_StartSoundCheckMenu(void)
 
 static void Task_InitSoundCheckMenu_CreateWindows(u8 taskId) // SanitizeDayCareMailForRuby
 {
-    const u8 soundcheckStr[] = _("SOUND TEST{CLEAR_TO 120}A: PLAY  B: EXIT");
+    const u8 soundcheckStr[] = _("SOUND TEST{CLEAR_TO 120}{A_BUTTON}: PLAY  {B_BUTTON}: STOP");
+    const u8 driverStr[] =     _("{START_BUTTON}: EXIT {SELECT_BUTTON}: FF {CLEAR_TO 120}{R_BUTTON}: CRY TEST ");
     const u8 bgmStr[] = _("MUSIC");
     const u8 seStr[] = _("SOUND EFFECTS");
     const u8 upDownStr[] = _("{LEFT_ARROW}PREV {RIGHT_ARROW}NEXT");
-    const u8 driverStr[] = _("R: CRY TEST");
 
     if (!gPaletteFade.active)
     {
         SetStandardWindowBorderStyle(WIN_INFO, FALSE);
-        AddTextPrinterParameterized(WIN_INFO, 2, soundcheckStr, 0, 0, TEXT_SKIP_DRAW, NULL);
-        AddTextPrinterParameterized(WIN_INFO, 2, driverStr, 120, 14, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(WIN_INFO, FONT_SHORT, soundcheckStr, 0, 0, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(WIN_INFO, FONT_SHORT, driverStr, 0, 14, TEXT_SKIP_DRAW, NULL);
         PutWindowTilemapAndCopyWindowToVram(WIN_INFO);
         SetStandardWindowBorderStyle(WIN_MUS, FALSE);
-        AddTextPrinterParameterized(WIN_MUS, 2, bgmStr, 0, 0, TEXT_SKIP_DRAW, NULL);
-        AddTextPrinterParameterized(WIN_MUS, 2, upDownStr, 100, 0, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(WIN_MUS, FONT_SHORT, bgmStr, 0, 0, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(WIN_MUS, FONT_SHORT, upDownStr, 100, 0, TEXT_SKIP_DRAW, NULL);
         PutWindowTilemapAndCopyWindowToVram(WIN_MUS);
         SetStandardWindowBorderStyle(WIN_SE, FALSE);
-        AddTextPrinterParameterized(WIN_SE, 2, seStr, 0, 0, TEXT_SKIP_DRAW, NULL);
-        AddTextPrinterParameterized(WIN_SE, 2, upDownStr, 100, 0, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(WIN_SE, FONT_SHORT, seStr, 0, 0, TEXT_SKIP_DRAW, NULL);
+        AddTextPrinterParameterized(WIN_SE, FONT_SHORT, upDownStr, 100, 0, TEXT_SKIP_DRAW, NULL);
         PutWindowTilemapAndCopyWindowToVram(WIN_SE);
         SetGpuReg(REG_OFFSET_WIN0H, WIN_RANGE(0, 239));
         SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(0, 48));
@@ -362,9 +363,14 @@ static bool8 Task_ProcessSoundCheckMenuInput(u8 taskId) // sub_080E8688
     }
     else if (JOY_NEW(B_BUTTON))
     {
+        m4aSongNumStop(gTasks[taskId].tBgmIndexOld + (SONGS_START - 1));
+        gTasks[taskId].tBgmIndexOld = 0;
+    }
+    else if (JOY_NEW(START_BUTTON))
+    {
         m4aSongNumStart(SE_SELECT);
         BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 16, RGB(0, 0, 0));
-        gTasks[taskId].func = Task_ExitToTitleScreen;
+        gTasks[taskId].func = Task_ExitToPreviousScreen;
     }
     else if (JOY_REPEAT(DPAD_UP | DPAD_DOWN))
     {
@@ -410,7 +416,7 @@ static bool8 Task_ProcessSoundCheckMenuInput(u8 taskId) // sub_080E8688
     }
     else if (JOY_HELD(SELECT_BUTTON))
     {
-        sIsFastForwarding = 1;
+        sIsFastForwarding = 10;
     }
     else
     {
@@ -425,7 +431,7 @@ static void Task_ProcessSoundCheckMenuInputAndRedraw(u8 taskId) // sub_080E8878
         gTasks[taskId].func = Task_HandleDrawingSoundCheckMenuText;
 }
 
-static void Task_ExitToTitleScreen(u8 taskId) // sub_080E88A8
+static void Task_ExitToPreviousScreen(u8 taskId) // sub_080E88A8
 {
     u8 windowId;
 
@@ -436,7 +442,7 @@ static void Task_ExitToTitleScreen(u8 taskId) // sub_080E88A8
             DestroyWindow(windowId);
         }
         DestroyTask(taskId);
-        SetMainCallback2(CB2_InitTitleScreen);
+        SetMainCallback2(gMain.savedCallback);
     }
 }
 
@@ -469,15 +475,15 @@ static void PrintSoundNumber(u16 soundIndex, u8 windowId) // sub_080E8928
 static void PrintPaddedString(const u8 *const string, u8 windowId) // sub_080E8978
 {
     u8 i;
-    u8 str[32];
+    u8 str[42];
 
-    for (i = 0; i < 31; i++)
+    for (i = 0; i < 41; i++)
         str[i] = CHAR_SPACE; // pad string.
 
-    str[31] = EOS;
-
-    for (i = 0; string[i] != EOS && i < 31; i++)
+    for (i = 0; string[i] != EOS && i < 41; i++)
         str[i] = string[i];
+
+    str[41] = EOS;
 
     AddTextPrinterParameterized(windowId, 2, str, 32, 14, TEXT_SKIP_DRAW, NULL);
     PutWindowTilemapAndCopyWindowToVram(windowId);
@@ -732,7 +738,7 @@ static void PrintDriverTestMenuText(void) // sub_080E900C
     PrintSignedNumber(sDriverTest_Stereo, 200, 112, 1);
 }
 
-static void PrintSignedNumber(int n, u16 x, u16 y, u8 digits) // sub_080E90C0
+static void PrintSignedNumber(int n, u16 x, u16 y, u8 digits) // no more than 6 digits!
 {
     const int powersOfTen[6] =
     {
@@ -749,9 +755,9 @@ static void PrintSignedNumber(int n, u16 x, u16 y, u8 digits) // sub_080E90C0
     s8 negative;
     s8 someVar2;
 
-    for (i = 0; i <= digits; i++)
+    for (i = 0; i <= digits+1; i++)
         str[i] = CHAR_SPACE;
-    str[digits + 1] = EOS;
+    str[digits + 2] = EOS;
 
     negative = FALSE;
     if (n < 0)
@@ -1918,7 +1924,7 @@ static void DestroyWindow(u8 windowId) // sub_080E9750
     X(PH_NURSE_SOLO            , "PH-NURSE-SOLO"            ) \
 
 // Create BGM list
-#define X(songId, name) static const u8 sBGMName_##songId[] = _(name);
+#define X(songId, name) static const u8 sBGMName_##songId[] = _(#songId);
 SOUND_LIST_BGM
 #undef X
 
