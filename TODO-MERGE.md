@@ -1,3 +1,41 @@
+Feature Merging:
+- [X] Update from modern pokeemerald
+	- [ ] Update from modern porymap
+- [X] Pull in music expansion
+- [ ] Pull in RHH Expansion
+	- [ ] Grab graphics for Pret + RHH intro from speedchoice-ex
+	- [ ] Insert this after the gamefreak logo, during intro.
+	- [ ] Switch pokemon in intro to Gourgeist (possibly randomly selects the size?)
+- [ ] Convert to Triple Layer metatiles
+	- [ ] Fix broken metatile in Water Temple, finally
+- [ ] Feature branch: Follow Me:  https://github.com/ghoulslash/pokeemerald/tree/follow_me 
+- [ ] Feature branch: Sideways Stairs
+- [ ] Feature branch: overworld expansion (double check that this is all correct in TTH from this)
+- [ ] Feature branch: dynamic overworld palettes (double check ditto)
+- [ ] Feature branch: Item descriptions on pickup: https://github.com/ghoulslash/pokeemerald/tree/item_desc_header 
+- [ ] Feature branch: Pokemon decryption and compression: https://github.com/ghoulslash/pokeemerald/tree/box_expansion
+- [ ] Tutorial: Improve loading of battle terrain (possibly)
+- [ ] Tutorial: Fix snow weather
+- [ ] Tutorial: Missing text function RESET_SIZE
+- [ ] Tutorial: Improve WaitForVBlank
+- [ ] Tutorial: EWRAM summary screen improvements?
+- [ ] Tutorial: Custom Border Dimensions (porymap supported)
+- [ ] Tutorial: Trigger map scripts by flag
+- [ ] Tutorial: Run Custom Script on Trainer Sight?
+- [ ] Port soaring? https://github.com/camthesaxman/pokeruby/tree/soar_2
+- [ ] https://msikma.github.tio/pokesprite/overview/inventory.html
+	- [ ] Check to see if the items from RHH need updated sprites? See if there's any I could use?
+	- [ ] The TR icons could be useful, as well as the EXP candy.
+	- [ ] Possibly use some curry ingredients for candy?
+- [ ] Pull from merrp's stuff: https://github.com/aarant/pokeemerald
+	- [ ] Dynamic overworld palettes & reflections compatable with vanilla berry trees (from followers)
+	- [ ] (look into "detect newer emulators/hardware)
+	- [ ] Day/Night + window lights + lamp lights from the lighting branch
+
+
+
+
+
 Known issues:
 - [ ] Manectric on the intro screen is yellow instead of blue for some reason.
 - [X] Brendan and May's overworld palettes are incorrect, probably using the old palette.
@@ -15,6 +53,9 @@ Known issues:
 	- [X] At the end: "You hand over 2 ??????, and the Shears."
 
 Others:
+- [ ] Reorganize save file, so that version check is first, before trainer name.
+- [ ] Add map script for getting map overworld music
+- [ ] Add map script for getting battle music
 - [ ] Add enhancement where something tells the player if they got the scroll already.
 	- I was thinking the costume could change, but that would likely require a map reload of figuring out how to change the graphic without a reload.
 	- Could just add it to the pause screen, in a side window
