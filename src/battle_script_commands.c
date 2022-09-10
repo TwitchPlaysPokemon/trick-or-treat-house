@@ -6968,21 +6968,22 @@ static void Cmd_getmoneyreward(void)
     else
     {
         s32 i, count;
-        for (i = 0; i < PARTY_SIZE; i++)
-        {
-            if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) != SPECIES_NONE
-             && GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) != SPECIES_EGG)
-            {
-                if (GetMonData(&gPlayerParty[i], MON_DATA_LEVEL) > sPartyLevel)
-                    sPartyLevel = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
-            }
-        }
-        for (count = 0, i = 0; i < ARRAY_COUNT(sBadgeFlags); i++)
-        {
-            if (FlagGet(sBadgeFlags[i]) == TRUE)
-                ++count;
-        }
-        money = sWhiteOutBadgeMoney[count] * sPartyLevel;
+        // for (i = 0; i < PARTY_SIZE; i++)
+        // {
+        //     if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) != SPECIES_NONE
+        //      && GetMonData(&gPlayerParty[i], MON_DATA_SPECIES2) != SPECIES_EGG)
+        //     {
+        //         if (GetMonData(&gPlayerParty[i], MON_DATA_LEVEL) > sPartyLevel)
+        //             sPartyLevel = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
+        //     }
+        // }
+        // for (count = 0, i = 0; i < ARRAY_COUNT(sBadgeFlags); i++)
+        // {
+        //     if (FlagGet(sBadgeFlags[i]) == TRUE)
+        //         ++count;
+        // }
+        // money = sWhiteOutBadgeMoney[count] * sPartyLevel;
+        money = 15 + (Random2() % 32);
         RemoveMoney(&gSaveBlock1Ptr->money, money);
     }
 

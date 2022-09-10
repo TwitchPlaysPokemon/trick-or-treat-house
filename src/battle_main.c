@@ -3508,6 +3508,13 @@ static void DoBattleIntro(void)
     case 16: // print player sends out
         if (!(gBattleTypeFlags & BATTLE_TYPE_SAFARI))
         {
+            if (!HasMonInParty())
+            {
+                PrepareStringBattle(STRINGID_PLAYERNOPKMN, GetBattlerAtPosition(B_POSITION_PLAYER_LEFT));
+                gBattleMainFunc = TryDoEventsBeforeFirstTurn;
+                return;
+            }
+            
             if (gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK && !(gBattleTypeFlags & BATTLE_TYPE_RECORDED_IS_MASTER))
                 gActiveBattler = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
             else
@@ -3594,6 +3601,14 @@ static void TryDoEventsBeforeFirstTurn(void)
 
     if (gBattleControllerExecFlags)
         return;
+    
+    // If no pokemon in party, go straight to white out.
+    if (!HasMonInParty())
+    {
+        gBattleOutcome = B_OUTCOME_LOST_NO_MONS;
+        gBattleMainFunc = BattleTurnPassed;
+        return;
+    }
 
     // Set invalid mons as absent(for example when starting a double battle with only one pokemon).
     if (!(gBattleTypeFlags & BATTLE_TYPE_SAFARI))
