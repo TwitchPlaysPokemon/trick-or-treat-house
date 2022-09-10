@@ -2,10 +2,10 @@ Feature Merging:
 - [X] Update from modern pokeemerald
 	- [ ] Update from modern porymap
 - [X] Pull in music expansion
-- [ ] Pull in RHH Expansion
+- [X] Pull in RHH Expansion
 	- [ ] Grab graphics for Pret + RHH intro from speedchoice-ex
 	- [ ] Insert this after the gamefreak logo, during intro.
-	- [ ] Switch pokemon in intro to Gourgeist (possibly randomly selects the size?)
+	- [X] Switch pokemon in intro to Gourgeist (possibly randomly selects the size?)
 - [ ] Convert to Triple Layer metatiles
 	- [ ] Fix broken metatile in Water Temple, finally
 - [ ] Feature branch: Follow Me:  https://github.com/ghoulslash/pokeemerald/tree/follow_me 
