@@ -932,7 +932,8 @@ static const struct OamData sOamData_TriangleCursor = {
     .affineParam = 0,
 };
 
-static const struct SpriteTemplate sSpriteTemplate_TriangleCursor = {
+static const struct SpriteTemplate sSpriteTemplate_TriangleCursor =
+{
     .tileTag = PALTAG_TRIANGLE_CURSOR,
     .paletteTag = GFXTAG_TRIANGLE_CURSOR,
     .oam = &sOamData_TriangleCursor,
@@ -993,7 +994,8 @@ static const union AnimCmd *const sAnims_RectangleCursor[] = {
     [RECTCURSOR_ANIM_ON_LETTER] = sAnim_RectangleCursor_OnLetter,
 };
 
-static const struct SpriteTemplate sSpriteTemplate_RectangleCursor = {
+static const struct SpriteTemplate sSpriteTemplate_RectangleCursor =
+{
     .tileTag = GFXTAG_RECTANGLE_CURSOR,
     .paletteTag = PALTAG_RECTANGLE_CURSOR,
     .oam = &sOamData_RectangleCursor,
@@ -1063,7 +1065,8 @@ static const union AnimCmd *const sAnims_ModeWindow[] = {
     [MODEWINDOW_ANIM_TRANSITION]  = sAnim_ModeWindow_Transition,
 };
 
-static const struct SpriteTemplate sSpriteTemplate_ModeWindow = {
+static const struct SpriteTemplate sSpriteTemplate_ModeWindow =
+{
     .tileTag = GFXTAG_MODE_WINDOW,
     .paletteTag = PALTAG_MISC_UI,
     .oam = &sOamData_ModeWindow,
@@ -1089,7 +1092,8 @@ static const struct OamData sOamData_ButtonWindow = {
     .affineParam = 0,
 };
 
-static const struct SpriteTemplate sSpriteTemplate_ButtonWindow = {
+static const struct SpriteTemplate sSpriteTemplate_ButtonWindow =
+{
     .tileTag = GFXTAG_BUTTON_WINDOW,
     .paletteTag = PALTAG_MISC_UI,
     .oam = &sOamData_ButtonWindow,
@@ -1147,7 +1151,8 @@ static const union AnimCmd *const sAnims_TwoFrame[] = {
     sAnim_Frame1,
 };
 
-static const struct SpriteTemplate sSpriteTemplate_StartSelectButton = {
+static const struct SpriteTemplate sSpriteTemplate_StartSelectButton =
+{
     .tileTag = GFXTAG_START_SELECT_BUTTONS,
     .paletteTag = PALTAG_MISC_UI,
     .oam = &sOamData_StartSelectButton,
@@ -1157,7 +1162,8 @@ static const struct SpriteTemplate sSpriteTemplate_StartSelectButton = {
     .callback = SpriteCallbackDummy,
 };
 
-static const struct SpriteTemplate sSpriteTemplate_ScrollIndicator = {
+static const struct SpriteTemplate sSpriteTemplate_ScrollIndicator =
+{
     .tileTag = GFXTAG_SCROLL_INDICATOR,
     .paletteTag = PALTAG_MISC_UI,
     .oam = &sOamData_ScrollIndicator,

@@ -59,6 +59,38 @@ Others:
 - [ ] Add enhancement where something tells the player if they got the scroll already.
 	- I was thinking the costume could change, but that would likely require a map reload of figuring out how to change the graphic without a reload.
 	- Could just add it to the pause screen, in a side window
+- [ ] ITEM0_DIRE_HIT -> ITEM0_HIGH_CRIT
+- [ ] trainers.h -> change encounterMusic_gender to encounterMusic (any music) and split off gender.
+- [ ] Change Relic items descriptions to instead say that "collectors may value it highly", as it needs to be specially sold in order to have value.
+- [ ] Change some mulch to KEEP to allow use for the growing puzzle element puzzle.
+- [ ] TryDoEventsBeforeFirstTurn add
+	if (!HasMonInParty())
+	{
+		PrepareStringBattle(STRINGID_PLAYERNOPKMN, GetBattlerAtPosition(position));
+		gBattleMainFunc = TryDoEventsBeforeFirstTurn;
+		return;
+	}
+- [ ] Fix the following in battle_main.c
+	if (ItemId_GetPocket(gLastUsedItem) == POCKET_POKE_BALLS)
+		gBattleStruct->throwingPokeBall = TRUE;
+- [ ] In battle_util.c
+	case ABILITYEFFECT_ON_SWITCHIN: // 0
+		// HACK:
+		if (ItemId_GetHoldEffect(gBattleMons[battler].item) == HOLD_EFFECT_INTIMIDATE) {
+			if (!(gSpecialStatuses[battler].intimidatedMon))
+			{
+				gStatuses3[battler] |= STATUS3_INTIMIDATE_POKES;
+				gSpecialStatuses[battler].intimidatedMon = 1;
+			}
+		}
+	// ....
+	case ABILITYEFFECT_INTIMIDATE1:
+		if (|| ItemId_GetHoldEffect(gBattleMons[i].item) == HOLD_EFFECT_INTIMIDATE))
+			gBattleCommunication[MULTISTRING_CHOOSER] = (ItemId_GetHoldEffect(gBattleMons[i].item) == HOLD_EFFECT_INTIMIDATE);
+- [ ] In battle_util.c, implement HOLD_EFFECT_CURE_PAR_HP and others
+- [ ] Remove all sText_* from battle_strings_elf.h table and change the lookup function to fallback to the normal table in case of null pointer
+- [ ] Double check that gIntimidateStringIds is being used to look up for slab stuff.
+- [ ] Syncronize the changes to BufferStringBattle with BORT mode
 - [x] Check Makefile over
 - [X] eventObject->unk3_3 -> disableReflection -> hideReflection
 - [X] gRamScriptRetAddr -> gRamScriptPtr

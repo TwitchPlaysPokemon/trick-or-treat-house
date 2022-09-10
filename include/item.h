@@ -2,6 +2,7 @@
 #define GUARD_ITEM_H
 
 #include "constants/items.h"
+#include "constants/item_config.h"
 
 typedef void (*ItemUseFunc)(u8);
 
@@ -19,13 +20,15 @@ struct Item
     u8 keepItem:1;
     u8 isCandy:1;
     u8 battleUsage:2;
-    bool8 registrability; // unused
+    bool8 registrability:1;
+    bool8 altQuantum:1;
     u8 pocket;
     u8 type;
     ItemUseFunc fieldUseFunc;
     ItemUseFunc battleUseFunc;
     const u8 *const itemEffect;
     u8 secondaryId;
+    u8 flingPower;
 };
 
 struct BagPocket
@@ -71,6 +74,7 @@ bool8 RemovePyramidBagItem(u16 itemId, u16 count);
 const u8 *ItemId_GetName(u16 itemId);
 const u8 *ItemId_GetPluralName(u16 itemId);
 const u8 *ItemId_GetQuantumString(u16 itemId);
+bool8 ItemId_UsesAltQuantumString(u16 itemId);
 u16 ItemId_GetId(u16 itemId);
 u16 ItemId_GetPrice(u16 itemId);
 u8 ItemId_GetHoldEffect(u16 itemId);
@@ -86,6 +90,7 @@ u8 ItemId_GetBattleUsage(u16 itemId);
 const u8 *const ItemId_GetItemEffect(u16 itemId);
 ItemUseFunc ItemId_GetBattleFunc(u16 itemId);
 u8 ItemId_GetSecondaryId(u16 itemId);
+u8 ItemId_GetFlingPower(u16 itemId);
 void ResolveSpecialItemIds(u16 *itemId, u16 *count);
 
 #endif // GUARD_ITEM_H

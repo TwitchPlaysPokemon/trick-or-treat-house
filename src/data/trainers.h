@@ -6,7 +6,7 @@
         .trainerName = name, \
         .items = {}, \
         .doubleBattle = FALSE, \
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE, \
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE, \
         .party = NO_ITEM_DEFAULT_MOVES(sParty_Joey), \
     }
 
@@ -20,7 +20,7 @@ const struct Trainer gTrainers[] = {
         .trainerName = _("JOEY"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
         .party = NO_ITEM_DEFAULT_MOVES(sParty_Joey),
     },
     
