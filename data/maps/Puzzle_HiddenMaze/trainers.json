@@ -15,7 +15,7 @@
 		"class": "NINJA_BOY",
 		"name": "RILEY",
 		"music": "SUSPICIOUS",
-		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT",
+		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT",
 		"party": [
 			{
 				"species": "SPECIES_NINCADA",
@@ -84,7 +84,7 @@
 		"class": "NINJA_BOY",
 		"name": "YASU",
 		"music": "SUSPICIOUS",
-		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT",
+		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT",
 		"party": [
 			{
 				"species": "SPECIES_NINJASK",

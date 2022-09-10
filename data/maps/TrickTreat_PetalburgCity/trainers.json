@@ -3,7 +3,7 @@
 		"class": "LEADER",
 		"pic": "LEADER_NORMAN",
 		"name": "NORMAN",
-		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE | AI_SCRIPT_TRY_TO_FAINT | AI_SCRIPT_CHECK_VIABILITY",
+		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY",
 		"items": ["ITEM_HYPER_POTION"],
 		"party": [
 			{
@@ -11,7 +11,7 @@
 				"iv": 100,
 				"level": 30,
 				"item": "ITEM_SITRUS_BERRY",
-				"moves": ["MOVE_COUNTER", "MOVE_YAWN", "MOVE_FACADE", "MOVE_FAINT_ATTACK"]
+				"moves": ["MOVE_COUNTER", "MOVE_YAWN", "MOVE_FACADE", "MOVE_FEINT_ATTACK"]
 			}
 		]
 	},

@@ -13,7 +13,7 @@
 			{
 				"species": "SPECIES_SLAKING",
 				"level": 32,
-				"moves": ["MOVE_FOCUS_PUNCH", "MOVE_YAWN", "MOVE_SLACK_OFF", "MOVE_FAINT_ATTACK"]
+				"moves": ["MOVE_FOCUS_PUNCH", "MOVE_YAWN", "MOVE_SLACK_OFF", "MOVE_FEINT_ATTACK"]
 			}
 		]
 	},

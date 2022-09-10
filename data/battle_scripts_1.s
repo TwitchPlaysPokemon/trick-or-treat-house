@@ -9152,6 +9152,19 @@ BattleScript_MentalHerbCureRet::
 BattleScript_MentalHerbCureEnd2::
 	call BattleScript_MentalHerbCureRet
 	end2
+	
+BattleScript_InfatuationCureRet::
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
+	printstring STRINGID_ATKGOTOVERINFATUATION
+	waitmessage B_WAIT_TIME_LONG
+	updatestatusicon BS_SCRIPTING
+	removeitem BS_SCRIPTING
+	copybyte gBattlerAttacker, sSAVED_BATTLER   @ restore the original attacker just to be safe
+	return
+	
+BattleScript_InfatuationCureEnd2::
+	call BattleScript_InfatuationCureRet
+	end2
 
 @ -----------------------------------------------------
 

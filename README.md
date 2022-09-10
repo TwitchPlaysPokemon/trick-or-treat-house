@@ -61,7 +61,7 @@ In addition to the above map script header information, the following can be def
 		"pic": "YOUNGSTER", // Trainer pic, Prepended with "TRAINER_PIC_". Defaults to the same as "class".
 		"items": ["ITEM_POTION"], // Up to 4 items.
 		"doubleBattle": false, //
-		"aiFlags": "AI_SCRIPT_CHECK_BAD_MOVE", // Pasted as-is into the data. Defaults to AI_SCRIPT_CHECK_BAD_MOVE if not present.
+		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE", // Pasted as-is into the data. Defaults to AI_FLAG_CHECK_BAD_MOVE if not present.
 		"party": [
 			{
 				"species": "SPECIES_RATTATA", // Required

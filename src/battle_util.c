@@ -649,19 +649,19 @@ bool8 TryRunFromBattle(u8 battler)
     #endif
     else if (GetBattlerAbility(battler) == ABILITY_RUN_AWAY)
     {
-        if (InBattlePyramid())
-        {
-            gBattleStruct->runTries++;
-            pyramidMultiplier = GetPyramidRunMultiplier();
-            speedVar = (gBattleMons[battler].speed * pyramidMultiplier) / (gBattleMons[BATTLE_OPPOSITE(battler)].speed) + (gBattleStruct->runTries * 30);
-            if (speedVar > (Random() & 0xFF))
-            {
-                gLastUsedAbility = ABILITY_RUN_AWAY;
-                gProtectStructs[battler].fleeType = FLEE_ABILITY;
-                effect++;
-            }
-        }
-        else
+        // if (InBattlePyramid())
+        // {
+        //     gBattleStruct->runTries++;
+        //     pyramidMultiplier = GetPyramidRunMultiplier();
+        //     speedVar = (gBattleMons[battler].speed * pyramidMultiplier) / (gBattleMons[BATTLE_OPPOSITE(battler)].speed) + (gBattleStruct->runTries * 30);
+        //     if (speedVar > (Random() & 0xFF))
+        //     {
+        //         gLastUsedAbility = ABILITY_RUN_AWAY;
+        //         gProtectStructs[battler].fleeType = FLEE_ABILITY;
+        //         effect++;
+        //     }
+        // }
+        // else
         {
             gLastUsedAbility = ABILITY_RUN_AWAY;
             gProtectStructs[battler].fleeType = FLEE_ABILITY;
@@ -678,14 +678,15 @@ bool8 TryRunFromBattle(u8 battler)
         if (!IsBattlerAlive(runningFromBattler))
             runningFromBattler |= BIT_FLANK;
 
-        if (InBattlePyramid())
-        {
-            pyramidMultiplier = GetPyramidRunMultiplier();
-            speedVar = (gBattleMons[battler].speed * pyramidMultiplier) / (gBattleMons[runningFromBattler].speed) + (gBattleStruct->runTries * 30);
-            if (speedVar > (Random() & 0xFF))
-                effect++;
-        }
-        else if (gBattleMons[battler].speed < gBattleMons[runningFromBattler].speed)
+        // if (InBattlePyramid())
+        // {
+        //     pyramidMultiplier = GetPyramidRunMultiplier();
+        //     speedVar = (gBattleMons[battler].speed * pyramidMultiplier) / (gBattleMons[runningFromBattler].speed) + (gBattleStruct->runTries * 30);
+        //     if (speedVar > (Random() & 0xFF))
+        //         effect++;
+        // }
+        // else 
+        if (gBattleMons[battler].speed < gBattleMons[runningFromBattler].speed)
         {
             speedVar = (gBattleMons[battler].speed * 128) / (gBattleMons[runningFromBattler].speed) + (gBattleStruct->runTries * 30);
             if (speedVar > (Random() & 0xFF))
@@ -7046,6 +7047,17 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
                     gBattleMons[battlerId].status2 &= ~STATUS2_CONFUSION;
                     BattleScriptExecute(BattleScript_BerryCureChosenStatusEnd2);
                     effect = ITEM_STATUS_CHANGE;
+                }
+                break;
+            case HOLD_EFFECT_CURE_ATTRACT:
+                // Check infatuation
+                if (gBattleMons[battlerId].status2 & STATUS2_INFATUATION)
+                {
+                    gBattleMons[battlerId].status2 &= ~STATUS2_INFATUATION;
+                    gBattleScripting.savedBattler = gBattlerAttacker;
+                    gBattlerAttacker = battlerId;
+                    BattleScriptExecute(BattleScript_InfatuationCureEnd2);
+                    effect = ITEM_EFFECT_OTHER;
                 }
                 break;
             case HOLD_EFFECT_MENTAL_HERB:

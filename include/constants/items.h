@@ -909,6 +909,7 @@
 #define ITEM_POKE_FLUTE                724
 #define ITEM_FAME_CHECKER              725
 #define ITEM_TEACHY_TV                 726
+#define ITEM_ITEMFINDER                ITEM_DOWSING_MACHINE
 
 // Story Key Items
 #define ITEM_SS_TICKET                 727

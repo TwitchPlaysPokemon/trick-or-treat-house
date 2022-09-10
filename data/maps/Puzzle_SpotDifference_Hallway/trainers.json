@@ -42,7 +42,7 @@
 			{
 				"species": "SPECIES_KRABBY",
 				"level": 27,
-				"moves": ["MOVE_BUBBLE_BEAM", "MOVE_PROTECT", "MOVE_STOMP", "MOVE_VICE_GRIP"]
+				"moves": ["MOVE_BUBBLE_BEAM", "MOVE_PROTECT", "MOVE_STOMP", "MOVE_VISE_GRIP"]
 			},
 			{
 				"species": "SPECIES_CORPHISH",

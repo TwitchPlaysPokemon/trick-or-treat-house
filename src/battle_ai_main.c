@@ -1903,7 +1903,7 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
                     }
                 }
 
-                /*if (AI_THINKING_STRUCT->aiFlags == AI_SCRIPT_CHECK_BAD_MOVE //Only basic AI
+                /*if (AI_THINKING_STRUCT->aiFlags == AI_FLAG_CHECK_BAD_MOVE //Only basic AI
                 && IS_DOUBLE_BATTLE) //Make the regular AI know how to use Protect minimally in Doubles
                 {
                     u8 shouldProtect = ShouldProtect(battlerAtk, battlerDef, move);

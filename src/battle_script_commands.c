@@ -5299,21 +5299,6 @@ static void Cmd_moveend(void)
             gBattleStruct->moveEffect2 = 0;
             gBattleScripting.moveendState++;
             break;
-        case MOVEEND_ITEM_EFFECTS_TARGET:
-            if (ItemBattleEffects(ITEMEFFECT_TARGET, gBattlerTarget, FALSE))
-                effect = TRUE;
-            gBattleScripting.moveendState++;
-            break;
-        case MOVEEND_MOVE_EFFECTS2: // For effects which should happen after target items, for example Knock Off after damage from Rocky Helmet.
-            switch (gBattleStruct->moveEffect2)
-            {
-            case MOVE_EFFECT_KNOCK_OFF:
-                effect = TryKnockOffBattleScript(gBattlerTarget);
-                break;
-            }
-            gBattleStruct->moveEffect2 = 0;
-            gBattleScripting.moveendState++;
-            break;
         case MOVEEND_ITEM_EFFECTS_ALL: // item effects for all battlers
             if (ItemBattleEffects(ITEMEFFECT_MOVE_END, 0, FALSE))
                 effect = TRUE;

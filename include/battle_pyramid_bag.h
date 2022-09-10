@@ -68,6 +68,6 @@ void Task_CloseBattlePyramidBagMessage(u8 taskId);
 void TryStoreHeldItemsInPyramidBag(void);
 void ChooseItemsToTossFromPyramidBag(void);
 void CloseBattlePyramidBag(u8 taskId);
-void DisplayItemMessageInBattlePyramid(u8 taskId, const u8 *str, void (*callback)(u8 taskId));
+// void DisplayItemMessageInBattlePyramid(u8 taskId, const u8 *str, void (*callback)(u8 taskId));
 
 #endif // GUARD_BATTLE_PYRAMID_BAG_H

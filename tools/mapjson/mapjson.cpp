@@ -165,7 +165,7 @@ void generate_trainer_table_text(ostringstream &text, string tablename, Json tra
         if (trainer.object_items().find("aiFlags") != trainer.object_items().end())
             table << "\t.4byte " << trainer["aiFlags"].string_value() << "\n";
         else
-            table << "\t.4byte AI_SCRIPT_CHECK_BAD_MOVE\n";
+            table << "\t.4byte AI_FLAG_CHECK_BAD_MOVE\n";
         
         parties << ".align 2\n";
         table << "\t.4byte " << tablename << "_Trainer" << (i+1) << "Party\n";
