@@ -157,7 +157,7 @@ PGEGEN := tools/pgegen/pgegen$(EXE)
 
 PERL := perl
 
-TOOLDIRS := $(filter-out tools/agbcc tools/binutils tools/porymap.app tools/poryscript tools/pgegen tools/creditor,$(wildcard tools/*))
+TOOLDIRS := $(filter-out tools/agbcc tools/binutils tools/reference tools/porymap.app tools/poryscript tools/pgegen tools/creditor,$(wildcard tools/*))
 TOOLBASE = $(TOOLDIRS:tools/%=%)
 TOOLS = $(foreach tool,$(TOOLBASE),tools/$(tool)/$(tool)$(EXE))
 

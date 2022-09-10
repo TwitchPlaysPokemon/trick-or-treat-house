@@ -1,0 +1,1611 @@
+~~~~~~~~~~~~~~~
+Text File : itemname_plural_classified
+~~~~~~~~~~~~~~~
+None
+Master Balls
+Ultra Balls
+Great Balls
+Poké Balls
+Safari Balls
+Net Balls
+Dive Balls
+Nest Balls
+Repeat Balls
+Timer Balls
+Luxury Balls
+Premier Balls
+Dusk Balls
+Heal Balls
+Quick Balls
+Cherish Balls
+Potions
+Antidotes
+Burn Heals
+Ice Heals
+Awakenings
+Paralyze Heals
+Full Restores
+Max Potions
+Hyper Potions
+Super Potions
+Full Heals
+Revives
+Max Revives
+bottles of Fresh Water
+bottles of Soda Pop
+cans of Lemonade
+bottles of Moomoo Milk
+doses of Energy Powder
+Energy Roots
+doses of Heal Powder
+Revival Herbs
+Ethers
+Max Ethers
+Elixirs
+Max Elixirs
+Lava Cookies
+cups of Berry Juice
+bags of Sacred Ash
+bottles of HP Up
+bottles of Protein
+bottles of Iron
+bottles of Carbos
+bottles of Calcium
+Rare Candies
+bottles of PP Up
+bottles of Zinc
+bottles of PP Max
+Old Gateaux
+Guard Specs.
+Dire Hits
+X Attacks
+X Defenses
+X Speeds
+X Accuracies
+X Sp. Atks
+X Sp. Defs
+Poké Dolls
+Fluffy Tails
+Blue Flutes
+Yellow Flutes
+Red Flutes
+Black Flutes
+White Flutes
+piles of Shoal Salt
+Shoal Shells
+Red Shards
+Blue Shards
+Yellow Shards
+Green Shards
+Super Repels
+Max Repels
+Escape Ropes
+Repels
+Sun Stones
+Moon Stones
+Fire Stones
+Thunder Stones
+Water Stones
+Leaf Stones
+Tiny Mushrooms
+Big Mushrooms
+Pearls
+Big Pearls
+bags of Stardust
+Star Pieces
+Nuggets
+Heart Scales
+jars of Honey
+bags of Growth Mulch
+bags of Damp Mulch
+bags of Stable Mulch
+bags of Gooey Mulch
+Root Fossils
+Claw Fossils
+Helix Fossils
+Dome Fossils
+Old Ambers
+Armor Fossils
+Skull Fossils
+Rare Bones
+Shiny Stones
+Dusk Stones
+Dawn Stones
+Oval Stones
+Odd Keystones
+Griseous Orbs
+cups of Tea
+???
+Autographs
+Douse Drives
+Shock Drives
+Burn Drives
+Chill Drives
+???
+Pokémon Box Links
+Medicine Pockets
+TM Cases
+Candy Jars
+Power-Up Pockets
+Clothing Trunks
+Catching Pockets
+Battle Pockets
+???
+???
+???
+???
+???
+Sweet Hearts
+Adamant Orbs
+Lustrous Orbs
+pieces of Greet Mail
+pieces of Favored Mail
+pieces of RSVP Mail
+pieces of Thanks Mail
+pieces of Inquiry Mail
+pieces of Like Mail
+pieces of Reply Mail
+pieces of Bridge Mail S
+pieces of Bridge Mail D
+pieces of Bridge Mail T
+pieces of Bridge Mail V
+pieces of Bridge Mail M
+Cheri Berries
+Chesto Berries
+Pecha Berries
+Rawst Berries
+Aspear Berries
+Leppa Berries
+Oran Berries
+Persim Berries
+Lum Berries
+Sitrus Berries
+Figy Berries
+Wiki Berries
+Mago Berries
+Aguav Berries
+Iapapa Berries
+Razz Berries
+Bluk Berries
+Nanab Berries
+Wepear Berries
+Pinap Berries
+Pomeg Berries
+Kelpsy Berries
+Qualot Berries
+Hondew Berries
+Grepa Berries
+Tamato Berries
+Cornn Berries
+Magost Berries
+Rabuta Berries
+Nomel Berries
+Spelon Berries
+Pamtre Berries
+Watmel Berries
+Durin Berries
+Belue Berries
+Occa Berries
+Passho Berries
+Wacan Berries
+Rindo Berries
+Yache Berries
+Chople Berries
+Kebia Berries
+Shuca Berries
+Coba Berries
+Payapa Berries
+Tanga Berries
+Charti Berries
+Kasib Berries
+Haban Berries
+Colbur Berries
+Babiri Berries
+Chilan Berries
+Liechi Berries
+Ganlon Berries
+Salac Berries
+Petaya Berries
+Apicot Berries
+Lansat Berries
+Starf Berries
+Enigma Berries
+Micle Berries
+Custap Berries
+Jaboca Berries
+Rowap Berries
+bags of Bright Powder
+White Herbs
+Macho Braces
+Exp. Shares
+Quick Claws
+Soothe Bells
+Mental Herbs
+Choice Bands
+King’s Rocks
+piles of Silver Powder
+Amulet Coins
+Cleanse Tags
+Soul Dews
+Deep Sea Teeth
+Deep Sea Scales
+Smoke Balls
+Everstones
+Focus Bands
+Lucky Eggs
+Scope Lenses
+Metal Coats
+servings of Leftovers
+Dragon Scales
+Light Balls
+bags of Soft Sand
+Hard Stones
+Miracle Seeds
+pairs of Black Glasses
+Black Belts
+Magnets
+Mystic Waters
+Sharp Beaks
+Poison Barbs
+pieces of Never-Melt Ice
+Spell Tags
+Twisted Spoons
+pieces of Charcoal
+Dragon Fangs
+Silk Scarves
+Upgrades
+Shell Bells
+jars of Sea Incense
+jars of Lax Incense
+Lucky Punches
+bags of Metal Powder
+Thick Clubs
+Leeks
+Red Scarves
+Blue Scarves
+Pink Scarves
+Green Scarves
+Yellow Scarves
+Wide Lenses
+Muscle Bands
+pairs of Wise Glasses
+Expert Belts
+Light Clays
+Life Orbs
+Power Herbs
+Toxic Orbs
+Flame Orbs
+bags of Quick Powder
+Focus Sashes
+Zoom Lenses
+Metronomes
+Iron Balls
+Lagging Tails
+Destiny Knots
+blobs of Black Sludge
+Icy Rocks
+Smooth Rocks
+Heat Rocks
+Damp Rocks
+Grip Claws
+Choice Scarves
+Sticky Barbs
+Power Bracers
+Power Belts
+Power Lenses
+Power Bands
+Power Anklets
+Power Weights
+Shed Shells
+Big Roots
+pairs of Choice Specs
+Flame Plates
+Splash Plates
+Zap Plates
+Meadow Plates
+Icicle Plates
+Fist Plates
+Toxic Plates
+Earth Plates
+Sky Plates
+Mind Plates
+Insect Plates
+Stone Plates
+Spooky Plates
+Draco Plates
+Dread Plates
+Iron Plates
+jars of Odd Incense
+jars of Rock Incense
+jars of Full Incense
+jars of Wave Incense
+jars of Rose Incense
+jars of Luck Incense
+jars of Pure Incense
+Protectors
+Electirizers
+Magmarizers
+Dubious Discs
+scraps of Reaper Cloth
+Razor Claws
+Razor Fangs
+TM01s
+TM02s
+TM03s
+TM04s
+TM05s
+TM06s
+TM07s
+TM08s
+TM09s
+TM10s
+TM11s
+TM12s
+TM13s
+TM14s
+TM15s
+TM16s
+TM17s
+TM18s
+TM19s
+TM20s
+TM21s
+TM22s
+TM23s
+TM24s
+TM25s
+TM26s
+TM27s
+TM28s
+TM29s
+TM30s
+TM31s
+TM32s
+TM33s
+TM34s
+TM35s
+TM36s
+TM37s
+TM38s
+TM39s
+TM40s
+TM41s
+TM42s
+TM43s
+TM44s
+TM45s
+TM46s
+TM47s
+TM48s
+TM49s
+TM50s
+TM51s
+TM52s
+TM53s
+TM54s
+TM55s
+TM56s
+TM57s
+TM58s
+TM59s
+TM60s
+TM61s
+TM62s
+TM63s
+TM64s
+TM65s
+TM66s
+TM67s
+TM68s
+TM69s
+TM70s
+TM71s
+TM72s
+TM73s
+TM74s
+TM75s
+TM76s
+TM77s
+TM78s
+TM79s
+TM80s
+TM81s
+TM82s
+TM83s
+TM84s
+TM85s
+TM86s
+TM87s
+TM88s
+TM89s
+TM90s
+TM91s
+TM92s
+HM01s
+HM02s
+HM03s
+HM04s
+HM05s
+HM06s
+???
+???
+Explorer Kits
+Loot Sacks
+Rule Books
+Poké Radars
+Point Cards
+Journals
+Seal Cases
+Fashion Cases
+Seal Bags
+Pal Pads
+Works Keys
+Old Charms
+Galactic Keys
+Red Chains
+Town Maps
+Vs. Seekers
+Coin Cases
+Old Rods
+Good Rods
+Super Rods
+Sprayducks
+Poffin Cases
+Bikes
+Suite Keys
+Oak’s Letters
+Lunar Wings
+Member Cards
+Azure Flutes
+S.S. Tickets
+Contest Passes
+Magma Stones
+Parcels
+Coupon 1s
+Coupon 2s
+Coupon 3s
+Storage Keys
+Secret Potions
+Vs. Recorders
+Gracideas
+Secret Keys
+Apricorn Boxes
+Unown Reports
+Berry Pots
+Dowsing Machines
+Blue Cards
+Slowpoke Tails
+Clear Bells
+Card Keys
+Basement Keys
+Squirt Bottles
+Red Scales
+Lost Items
+Passes
+Machine Parts
+Silver Wings
+Rainbow Wings
+Mystery Eggs
+Red Apricorns
+Blue Apricorns
+Yellow Apricorns
+Green Apricorns
+Pink Apricorns
+White Apricorns
+Black Apricorns
+Fast Balls
+Level Balls
+Lure Balls
+Heavy Balls
+Love Balls
+Friend Balls
+Moon Balls
+Sport Balls
+Park Balls
+Photo Albums
+GB Sounds
+Tidal Bells
+Rage Candy Bars
+Data Card 01s
+Data Card 02s
+Data Card 03s
+Data Card 04s
+Data Card 05s
+Data Card 06s
+Data Card 07s
+Data Card 08s
+Data Card 09s
+Data Card 10s
+Data Card 11s
+Data Card 12s
+Data Card 13s
+Data Card 14s
+Data Card 15s
+Data Card 16s
+Data Card 17s
+Data Card 18s
+Data Card 19s
+Data Card 20s
+Data Card 21s
+Data Card 22s
+Data Card 23s
+Data Card 24s
+Data Card 25s
+Data Card 26s
+Data Card 27s
+Jade Orbs
+Lock Capsules
+Red Orbs
+Blue Orbs
+Enigma Stones
+Prism Scales
+Eviolites
+Float Stones
+Rocky Helmets
+Air Balloons
+Red Cards
+Ring Targets
+Binding Bands
+Absorb Bulbs
+Cell Batteries
+Eject Buttons
+Fire Gems
+Water Gems
+Electric Gems
+Grass Gems
+Ice Gems
+Fighting Gems
+Poison Gems
+Ground Gems
+Flying Gems
+Psychic Gems
+Bug Gems
+Rock Gems
+Ghost Gems
+Dragon Gems
+Dark Gems
+Steel Gems
+Normal Gems
+Health Feathers
+Muscle Feathers
+Resist Feathers
+Genius Feathers
+Clever Feathers
+Swift Feathers
+Pretty Feathers
+Cover Fossils
+Plume Fossils
+Liberty Passes
+Pass Orbs
+Dream Balls
+Poké Toys
+Prop Cases
+Dragon Skulls
+Balm Mushrooms
+Big Nuggets
+Pearl Strings
+Comet Shards
+Relic Coppers
+Relic Silvers
+Relic Golds
+Relic Vases
+Relic Bands
+Relic Statues
+Relic Crowns
+Casteliacones
+Dire Hit 2s
+X Speed 2s
+X Sp. Atk 2s
+X Sp. Def 2s
+X Defense 2s
+X Attack 2s
+X Accuracy 2s
+X Speed 3s
+X Sp. Atk 3s
+X Sp. Def 3s
+X Defense 3s
+X Attack 3s
+X Accuracy 3s
+X Speed 6s
+X Sp. Atk 6s
+X Sp. Def 6s
+X Defense 6s
+X Attack 6s
+X Accuracy 6s
+Ability Urges
+Item Drops
+Item Urges
+Reset Urges
+Dire Hit 3s
+Light Stones
+Dark Stones
+TM93s
+TM94s
+TM95s
+Xtransceivers
+???
+Gram 1s
+Gram 2s
+Gram 3s
+Xtransceivers
+Medal Boxes
+DNA Splicers
+DNA Splicers
+Permits
+Oval Charms
+Shiny Charms
+Plasma Cards
+Grubby Hankies
+Colress Machines
+Dropped Items
+Dropped Items
+Reveal Glasses
+Weakness Policies
+Assault Vests
+Holo Casters
+Prof’s Letters
+pairs of Roller Skates
+Pixie Plates
+Ability Capsules
+dollops of Whipped Dream
+Sachets
+Luminous Mosses
+Snowballs
+pairs of Safety Goggles
+Poké Flutes
+bags of Rich Mulch
+bags of Surprise Mulch
+bags of Boost Mulch
+bags of Amaze Mulch
+Gengarites
+Gardevoirites
+Ampharosites
+Venusaurites
+Charizardite Xs
+Blastoisinites
+Mewtwonite Xs
+Mewtwonite Ys
+Blazikenites
+Medichamites
+Houndoominites
+Aggronites
+Banettites
+Tyranitarites
+Scizorites
+Pinsirites
+Aerodactylites
+Lucarionites
+Abomasites
+Kangaskhanites
+Gyaradosites
+Absolites
+Charizardite Ys
+Alakazites
+Heracronites
+Mawilites
+Manectites
+Garchompites
+Latiasites
+Latiosites
+Roseli Berries
+Kee Berries
+Maranga Berries
+Sprinklotads
+TM96s
+TM97s
+TM98s
+TM99s
+TM100s
+Power Plant Passes
+Mega Rings
+Intriguing Stones
+Common Stones
+Discount Coupons
+Elevator Keys
+TMV Passes
+Honor of Kalos emblems
+Adventure Guides
+Strange Souvenirs
+Lens Cases
+Makeup Bags
+Travel Trunks
+Lumiose Galettes
+Shalour Sables
+Jaw Fossils
+Sail Fossils
+Looker Tickets
+Bikes
+Holo Casters
+Fairy Gems
+Mega Charms
+Mega Gloves
+Mach Bikes
+Acro Bikes
+Wailmer Pails
+cases of Devon Parts
+Soot Sacks
+Basement Keys
+Pokéblock Kits
+Letters
+Eon Tickets
+Scanners
+pairs of Go-Goggles
+Meteorites
+Keys to Room 1
+Keys to Room 2
+Keys to Room 4
+Keys to Room 6
+Storage Keys
+Devon Scopes
+S.S. Tickets
+HM07s
+sets of Devon Scuba Gear
+Contest Costumes
+Contest Costumes
+Magma Suits
+Aqua Suits
+Pair of Tickets
+Mega Bracelets
+Mega Pendants
+pairs of Mega Glasses
+Mega Anchors
+Mega Stickpins
+Mega Tiaras
+Mega Anklets
+Meteorites
+Swampertites
+Sceptilites
+Sablenites
+Altarianites
+Galladites
+Audinites
+Metagrossites
+Sharpedonites
+Slowbronites
+Steelixites
+Pidgeotites
+Glalitites
+Diancites
+Prison Bottles
+Mega Cuffs
+Cameruptites
+Lopunnites
+Salamencites
+Beedrillites
+Meteorites
+Meteorites
+Key Stones
+Meteorite Shards
+Eon Flutes
+pieces of Normalium Z
+pieces of Firium Z
+pieces of Waterium Z
+pieces of Electrium Z
+pieces of Grassium Z
+pieces of Icium Z
+pieces of Fightinium Z
+pieces of Poisonium Z
+pieces of Groundium Z
+pieces Flyinium Z
+pieces Psychium Z
+pieces of Buginium Z
+pieces of Rockium Z
+pieces of Ghostium Z
+pieces of Dragonium Z
+pieces of Darkinium Z
+pieces of Steelium Z
+pieces of Fairium Z
+pieces of Pikanium Z
+Bottle Caps
+Gold Bottle Caps
+Z-Rings
+pieces of Decidium Z
+pieces of Incinium Z
+pieces of Primarium Z
+pieces of Tapunium Z
+pieces of Marshadium Z
+pieces of Aloraichium Z
+pieces of Snorlium Z
+pieces of Eevium Z
+pieces of Mewnium Z
+pieces of Normalium Z
+pieces of Firium Z
+pieces of Waterium Z
+pieces of Electrium Z
+pieces of Grassium Z
+pieces of Icium Z
+pieces of Fightinium Z
+pieces of Poisonium Z
+pieces of Groundium Z
+pieces of Flyinium Z
+pieces of Psychium Z
+pieces of Buginium Z
+pieces of Rockium Z
+pieces of Ghostium Z
+pieces of Dragonium Z
+pieces of Darkinium Z
+pieces of Steelium Z
+pieces of Fairium Z
+pieces of Pikanium Z
+pieces of Decidium Z
+pieces of Incinium Z
+pieces of Primarium Z
+pieces of Tapunium Z
+pieces of Marshadium Z
+pieces of Aloraichium Z
+pieces of Snorlium Z
+pieces of Eevium Z
+pieces of Mewnium Z
+pieces of Pikashunium Z
+pieces of Pikashunium Z
+???
+???
+???
+???
+Forage Bags
+Fishing Rods
+Professor’s Masks
+Festival Tickets
+Sparkling Stones
+Adrenaline Orbs
+Zygarde Cubes
+???
+Ice Stones
+Ride Pagers
+Beast Balls
+Big Malasadas
+Red Nectars
+Yellow Nectars
+Pink Nectars
+Purple Nectars
+Sun Flutes
+Moon Flutes
+???
+Enigmatic Cards
+Silver Razz Berries
+Golden Razz Berries
+Silver Nanab Berries
+Golden Nanab Berries
+Silver Pinap Berries
+Golden Pinap Berries
+???
+???
+???
+???
+???
+Secret Keys
+S.S. Tickets
+Silph Scopes
+Parcels
+Card Keys
+sets of Gold Teeth
+Lift Keys
+Terrain Extenders
+Protective Pads
+Electric Seeds
+Psychic Seeds
+Misty Seeds
+Grassy Seeds
+Stretchy Springs
+Chalky Stones
+Marbles
+Lone Earrings
+pieces of Beach Glass
+Gold Leaves
+Silver Leaves
+Polished Mud Balls
+Tropical Shells
+Leaf Letters
+Leaf Letters
+Small Bouquets
+???
+???
+???
+Lures
+Super Lures
+Max Lures
+bags of Pewter Crunchies
+Fighting Memories
+Flying Memories
+Poison Memories
+Ground Memories
+Rock Memories
+Bug Memories
+Ghost Memories
+Steel Memories
+Fire Memories
+Water Memories
+Grass Memories
+Electric Memories
+Psychic Memories
+Ice Memories
+Dragon Memories
+Dark Memories
+Fairy Memories
+pieces of Solganium Z
+pieces of Lunalium Z
+pieces of Ultranecrozium Z
+pieces of Mimikium Z
+pieces of Lycanium Z
+pieces of Kommonium Z
+pieces of Solganium Z
+pieces of Lunalium Z
+pieces of Ultranecrozium Z
+pieces of Mimikium Z
+pieces of Lycanium Z
+pieces of Kommonium Z
+Z-Power Rings
+Pink Petals
+Orange Petals
+Blue Petals
+Red Petals
+Green Petals
+Yellow Petals
+Purple Petals
+Rainbow Flowers
+Surge Badges
+N-Solarizers
+N-Lunarizers
+N-Solarizers
+N-Lunarizers
+pieces of Ilima Normalium Z
+Left Poké Balls
+Roto Hatches
+Roto Bargains
+Roto Prize Money
+Roto Exp. Points
+Roto Friendships
+Roto Encounters
+Roto Stealths
+Roto HP Restores
+Roto PP Restores
+Roto Boosts
+Roto Catches
+Health Candies
+Mighty Candies
+Tough Candies
+Smart Candies
+Courage Candies
+Quick Candies
+Health Candies L
+Mighty Candies L
+Tough Candies L
+Smart Candies L
+Courage Candies L
+Quick Candies L
+Health Candies XL
+Mighty Candies XL
+Tough Candies XL
+Smart Candies XL
+Courage Candies XL
+Quick Candies XL
+Bulbasaur Candies
+Charmander Candies
+Squirtle Candies
+Caterpie Candies
+Weedle Candies
+Pidgey Candies
+Rattata Candies
+Spearow Candies
+Ekans Candies
+Pikachu Candies
+Sandshrew Candies
+Nidoran♀ Candies
+Nidoran♂ Candies
+Clefairy Candies
+Vulpix Candies
+Jigglypuff Candies
+Zubat Candies
+Oddish Candies
+Paras Candies
+Venonat Candies
+Diglett Candies
+Meowth Candies
+Psyduck Candies
+Mankey Candies
+Growlithe Candies
+Poliwag Candies
+Abra Candies
+Machop Candies
+Bellsprout Candies
+Tentacool Candies
+Geodude Candies
+Ponyta Candies
+Slowpoke Candies
+Magnemite Candies
+Farfetch’d Candies
+Doduo Candies
+Seel Candies
+Grimer Candies
+Shellder Candies
+Gastly Candies
+Onix Candies
+Drowzee Candies
+Krabby Candies
+Voltorb Candies
+Exeggcute Candies
+Cubone Candies
+Hitmonlee Candies
+Hitmonchan Candies
+Lickitung Candies
+Koffing Candies
+Rhyhorn Candies
+Chansey Candies
+Tangela Candies
+Kangaskhan Candies
+Horsea Candies
+Goldeen Candies
+Staryu Candies
+Mr. Mime Candies
+Scyther Candies
+Jynx Candies
+Electabuzz Candies
+Pinsir Candies
+Tauros Candies
+Magikarp Candies
+Lapras Candies
+Ditto Candies
+Eevee Candies
+Porygon Candies
+Omanyte Candies
+Kabuto Candies
+Aerodactyl Candies
+Snorlax Candies
+Articuno Candies
+Zapdos Candies
+Moltres Candies
+Dratini Candies
+Mewtwo Candies
+Mew Candies
+Meltan Candies
+Magmar Candies
+???
+???
+???
+???
+???
+???
+???
+???
+???
+???
+???
+???
+???
+???
+???
+???
+letters of Endorsement
+Pokémon Box Links
+Wishing Stars
+Dynamax Bands
+???
+???
+Fishing Rods
+Rotom Bikes
+???
+???
+packs of Sausages
+Bob’s Food Tins
+Bach’s Food Tins
+Tins of Beans
+loaves of Bread
+bags of Pasta
+bags of Mixed Mushrooms
+packs of Smoke-Poke Tail
+Large Leeks
+Fancy Apples
+bags of Brittle Bones
+Packs of Potatoes
+Pungent Roots
+bags of Salad Mix
+packs of Fried Food
+Boiled Eggs
+sets of Camping Gear
+???
+???
+Rusted Swords
+Rusted Shields
+Fossilized Birds
+Fossilized Fish
+Fossilized Drakes
+Fossilized Dinos
+Strawberry Sweets
+Love Sweets
+Berry Sweets
+Clover Sweets
+Flower Sweets
+Star Sweets
+Ribbon Sweets
+Sweet Apples
+Tart Apples
+bottles of Throat Spray
+Eject Packs
+pairs of Heavy-Duty Boots
+Blunder Policies
+vouchers for Room Service
+Utility Umbrellas
+Exp. Candies XS
+Exp. Candies S
+Exp. Candies M
+Exp. Candies L
+Exp. Candies XL
+Dynamax Candies
+TR00s
+TR01s
+TR02s
+TR03s
+TR04s
+TR05s
+TR06s
+TR07s
+TR08s
+TR09s
+TR10s
+TR11s
+TR12s
+TR13s
+TR14s
+TR15s
+TR16s
+TR17s
+TR18s
+TR19s
+TR20s
+TR21s
+TR22s
+TR23s
+TR24s
+TR25s
+TR26s
+TR27s
+TR28s
+TR29s
+TR30s
+TR31s
+TR32s
+TR33s
+TR34s
+TR35s
+TR36s
+TR37s
+TR38s
+TR39s
+TR40s
+TR41s
+TR42s
+TR43s
+TR44s
+TR45s
+TR46s
+TR47s
+TR48s
+TR49s
+TR50s
+TR51s
+TR52s
+TR53s
+TR54s
+TR55s
+TR56s
+TR57s
+TR58s
+TR59s
+TR60s
+TR61s
+TR62s
+TR63s
+TR64s
+TR65s
+TR66s
+TR67s
+TR68s
+TR69s
+TR70s
+TR71s
+TR72s
+TR73s
+TR74s
+TR75s
+TR76s
+TR77s
+TR78s
+TR79s
+TR80s
+TR81s
+TR82s
+TR83s
+TR84s
+TR85s
+TR86s
+TR87s
+TR88s
+TR89s
+TR90s
+TR91s
+TR92s
+TR93s
+TR94s
+TR95s
+TR96s
+TR97s
+TR98s
+TR99s
+TM00s
+sprigs of Lonely Mint
+sprigs of Adamant Mint
+sprigs of Naughty Mint
+sprigs of Brave Mint
+sprigs of Bold Mint
+sprigs of Impish Mint
+sprigs of Lax Mint
+sprigs of Relaxed Mint
+sprigs of Modest Mint
+sprigs of Mild Mint
+sprigs of Rash Mint
+sprigs of Quiet Mint
+sprigs of Calm Mint
+sprigs of Gentle Mint
+sprigs of Careful Mint
+sprigs of Sassy Mint
+sprigs of Timid Mint
+sprigs of Hasty Mint
+sprigs of Jolly Mint
+sprigs of Naive Mint
+sprigs of Serious Mint
+Wishing Pieces
+Cracked Pots
+Chipped Pots
+sets of Hi-tech Earbuds
+Fruit Bunches
+wheels of Moomoo Cheese
+bottles of Spice Mix
+packs of Fresh Cream
+boxes of Packaged Curry
+packs of Coconut Milk
+cups of Instant Noodles
+bags of Precooked Burger
+bottles of Gigantamix
+Wishing Chips
+Rotom Bikes
+Catching Charms
+???
+Old Letters
+Band Autographs
+copies of Sonia’s Book
+???
+???
+???
+???
+???
+???
+Rotom Catalogs
+★And458s
+★And15s
+★And337s
+★And603s
+★And390s
+★Sgr6879s
+★Sgr6859s
+★Sgr6913s
+★Sgr7348s
+★Sgr7121s
+★Sgr6746s
+★Sgr7194s
+★Sgr7337s
+★Sgr7343s
+★Sgr6812s
+★Sgr7116s
+★Sgr7264s
+★Sgr7597s
+★Del7882s
+★Del7906s
+★Del7852s
+★Psc596s
+★Psc361s
+★Psc510s
+★Psc437s
+★Psc8773s
+★Lep1865s
+★Lep1829s
+★Boo5340s
+★Boo5506s
+★Boo5435s
+★Boo5602s
+★Boo5733s
+★Boo5235s
+★Boo5351s
+★Hya3748s
+★Hya3903s
+★Hya3418s
+★Hya3482s
+★Hya3845s
+★Eri1084s
+★Eri472s
+★Eri1666s
+★Eri897s
+★Eri1231s
+★Eri874s
+★Eri1298s
+★Eri1325s
+★Eri984s
+★Eri1464s
+★Eri1393s
+★Eri850s
+★Tau1409s
+★Tau1457s
+★Tau1165s
+★Tau1791s
+★Tau1910s
+★Tau1346s
+★Tau1373s
+★Tau1412s
+★CMa2491s
+★CMa2693s
+★CMa2294s
+★CMa2827s
+★CMa2282s
+★CMa2618s
+★CMa2657s
+★CMa2646s
+★UMa4905s
+★UMa4301s
+★UMa5191s
+★UMa5054s
+★UMa4295s
+★UMa4660s
+★UMa4554s
+★UMa4069s
+★UMa3569s
+★UMa3323s
+★UMa4033s
+★UMa4377s
+★UMa4375s
+★UMa4518s
+★UMa3594s
+★Vir5056s
+★Vir4825s
+★Vir4932s
+★Vir4540s
+★Vir4689s
+★Vir5338s
+★Vir4910s
+★Vir5315s
+★Vir5359s
+★Vir5409s
+★Vir5107s
+★Ari617s
+★Ari553s
+★Ari546s
+★Ari951s
+★Ori1713s
+★Ori2061s
+★Ori1790s
+★Ori1903s
+★Ori1948s
+★Ori2004s
+★Ori1852s
+★Ori1879s
+★Ori1899s
+★Ori1543s
+★Cas21s
+★Cas168s
+★Cas403s
+★Cas153s
+★Cas542s
+★Cas219s
+★Cas265s
+★Cnc3572s
+★Cnc3208s
+★Cnc3461s
+★Cnc3449s
+★Cnc3429s
+★Cnc3627s
+★Cnc3268s
+★Cnc3249s
+★Com4968s
+★Crv4757s
+★Crv4623s
+★Crv4662s
+★Crv4786s
+★Aur1708s
+★Aur2088s
+★Aur1605s
+★Aur2095s
+★Aur1577s
+★Aur1641s
+★Aur1612s
+★Pav7790s
+★Cet911s
+★Cet681s
+★Cet188s
+★Cet539s
+★Cet804s
+★Cep8974s
+★Cep8162s
+★Cep8238s
+★Cep8417s
+★Cen5267s
+★Cen5288s
+★Cen551s
+★Cen5459s
+★Cen5460s
+★CMi2943s
+★CMi2845s
+★Equ8131s
+★Vul7405s
+★UMi424s
+★UMi5563s
+★UMi5735s
+★UMi6789s
+★Crt4287s
+★Lyr7001s
+★Lyr7178s
+★Lyr7106s
+★Lyr7298s
+★Ara6585s
+★Sco6134s
+★Sco6527s
+★Sco6553s
+★Sco5953s
+★Sco5984s
+★Sco6508s
+★Sco6084s
+★Sco5944s
+★Sco6630s
+★Sco6027s
+★Sco6247s
+★Sco6252s
+★Sco5928s
+★Sco6241s
+★Sco6165s
+★Tri544s
+★Leo3982s
+★Leo4534s
+★Leo4357s
+★Leo4057s
+★Leo4359s
+★Leo4031s
+★Leo3852s
+★Leo3905s
+★Leo3773s
+★Gru8425s
+★Gru8636s
+★Gru8353s
+★Lib5685s
+★Lib5531s
+★Lib5787s
+★Lib5603s
+★Pup3165s
+★Pup3185s
+★Pup3045s
+★Cyg7924s
+★Cyg7417s
+★Cyg7796s
+★Cyg8301s
+★Cyg7949s
+★Cyg7528s
+★Oct7228s
+★Col1956s
+★Col2040s
+★Col2177s
+★Gem2990s
+★Gem2891s
+★Gem2421s
+★Gem2473s
+★Gem2216s
+★Gem2777s
+★Gem2650s
+★Gem2286s
+★Gem2484s
+★Gem2930s
+★Peg8775s
+★Peg8781s
+★Peg39s
+★Peg8308s
+★Peg8650s
+★Peg8634s
+★Peg8684s
+★Peg8450s
+★Peg8880s
+★Peg8905s
+★Oph6556s
+★Oph6378s
+★Oph6603s
+★Oph6149s
+★Oph6056s
+★Oph6075s
+★Ser5854s
+★Ser7141s
+★Ser5879s
+★Her6406s
+★Her6148s
+★Her6410s
+★Her6526s
+★Her6117s
+★Her6008s
+★Per936s
+★Per1017s
+★Per1131s
+★Per1228s
+★Per834s
+★Per941s
+★Phe99s
+★Phe338s
+★Vel3634s
+★Vel3485s
+★Vel3734s
+★Aqr8232s
+★Aqr8414s
+★Aqr8709s
+★Aqr8518s
+★Aqr7950s
+★Aqr8499s
+★Aqr8610s
+★Aqr8264s
+★Cru4853s
+★Cru4730s
+★Cru4763s
+★Cru4700s
+★Cru4656s
+★PsA8728s
+★TrA6217s
+★Cap7776s
+★Cap7754s
+★Cap8278s
+★Cap8322s
+★Cap7773s
+★Sge7479s
+★Car2326s
+★Car3685s
+★Car3307s
+★Car3699s
+★Dra5744s
+★Dra5291s
+★Dra6705s
+★Dra6536s
+★Dra7310s
+★Dra6688s
+★Dra4434s
+★Dra6370s
+★Dra7462s
+★Dra6396s
+★Dra6132s
+★Dra6636s
+★CVn4915s
+★CVn4785s
+★CVn4846s
+★Aql7595s
+★Aql7557s
+★Aql7525s
+★Aql7602s
+★Aql7235s
+combs of Max Honey
+clusters of Max Mushrooms
+Galarica Twigs
+Galarica Cuffs
+Style Cards
+Armor Passes
+Rotom Bikes
+Rotom Bikes
+Exp. Charms
+pieces of Armorite Ore
+Mark Charms
+sets of Reins of Unity
+sets of Reins of Unity
+Galarica Wreaths
+copies of Legendary Clue 1
+copies of Legendary Clue 2
+copies of Legendary Clue 3
+copies of a Legendary Clue?
+Crown Passes
+Wooden Crowns
+Radiant Petals
+tufts of White Mane Hair
+tufts of Black Mane Hair
+Iceroot Carrots
+Shaderoot Carrots
+pieces of Dynite Ore
+bags of Carrot Seeds
+Ability Patches
+sets of Reins of Unity
