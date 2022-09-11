@@ -13,6 +13,7 @@
 #include "fldeff.h"
 #include "gpu_regs.h"
 #include "main.h"
+#include "mgba.h"
 #include "mirage_tower.h"
 #include "menu.h"
 #include "metatile_behavior.h"
@@ -3137,7 +3138,7 @@ u8 FldEff_NPCFlyOut(void)
     u8 spriteId;
     struct Sprite *sprite;
     
-    LoadFieldEffectPalette(26);
+    LoadFieldEffectPalette(FLDEFFOBJ_BIRD);
     spriteId = CreateSprite(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_BIRD], 0x78, 0, 1);
     sprite = &gSprites[spriteId];
 
@@ -3321,10 +3322,9 @@ static u8 CreateFlyBirdSprite(void)
 {
     u8 spriteId;
     struct Sprite *sprite;
-    LoadFieldEffectPalette(26);
+    LoadFieldEffectPalette(FLDEFFOBJ_BIRD);
     spriteId = CreateSprite(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_BIRD], 0xff, 0xb4, 0x1);
     sprite = &gSprites[spriteId];
-    sprite->oam.paletteNum = 0;
     sprite->oam.priority = 1;
     sprite->callback = SpriteCB_FlyBirdLeaveBall;
     return spriteId;
@@ -3925,3 +3925,14 @@ void ResetFieldMessageBoxToBottomOfScreen()
     SetGpuReg(REG_OFFSET_BG0VOFS, 0);
 }
 
+void MarkEventObjectAsImposter(struct ScriptContext* ctx)
+{
+    u32 i;
+    // mgba_printf(MGBA_LOG_INFO, "MarkEventObjectAsImposter: %d", gSpecialVar_LastTalked);
+    for (i = 0; i < OBJECT_EVENTS_COUNT; i++) {
+        if (gObjectEvents[i].localId == gSpecialVar_LastTalked) {
+            gObjectEvents[i].useImposterPalette = TRUE;
+            return;
+        }
+    }
+}

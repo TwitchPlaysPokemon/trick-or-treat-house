@@ -71,7 +71,7 @@ enum
     TrainerType_Normal = 1,
     TrainerType_SeeAllDirs = 3,
     TrainerType_BumpToInteract = 5,
-    TrainerType_KeepLoaded = 6,
+    // TrainerType_KeepLoaded = 6,
 };
 
 struct ObjectEventTemplate

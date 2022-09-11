@@ -784,7 +784,7 @@ void TryPrepareSecondApproachingTrainer(void)
 
 #define LOAD_PALETTE(template) \
     u8 spriteId, paletteNum; \
-    // LoadObjectEventPalette(template.paletteTag); \
+    LoadObjectEventPalette(template.paletteTag); \
     // paletteNum = IndexOfSpritePaletteTag(template.paletteTag); \
     // UpdatePaletteGammaType(paletteNum, GAMMA_ALT); \
     // UpdateSpritePaletteWithWeather(paletteNum);
@@ -793,7 +793,7 @@ void TryPrepareSecondApproachingTrainer(void)
 u8 FldEff_ExclamationMarkIcon(void)
 {
     LOAD_PALETTE(sSpriteTemplate_ExclamationQuestionMark)
-    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x53);
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x53); //0x52);
 
     if (spriteId != MAX_SPRITES)
         SetIconSpriteData(&gSprites[spriteId], FLDEFF_EXCLAMATION_MARK_ICON, 0);

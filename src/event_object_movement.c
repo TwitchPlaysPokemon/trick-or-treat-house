@@ -169,7 +169,6 @@ static bool8 AreElevationsCompatible(u8, u8);
 
 static const struct SpriteFrameImage sPicTable_PechaBerryTree[];
 
-const u8 gReflectionEffectPaletteMap[] = {1, 1, 6, 7, 8, 9, 6, 7, 8, 9, 11, 11, 0, 0, 0, 0};
 
 static const struct SpriteTemplate sCameraSpriteTemplate = {
     .tileTag = 0,
@@ -465,13 +464,13 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_PIDGEY                  0x113B
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
-#include "data/object_events/object_event_graphics_info_pointers.h"
 #include "data/field_effects/field_effect_object_template_pointers.h"
 #include "data/object_events/object_event_pic_tables.h"
 #include "data/object_events/object_event_anims.h"
 #include "data/object_events/base_oam.h"
 #include "data/object_events/object_event_subsprites.h"
 #include "data/object_events/object_event_graphics_info.h"
+#include "data/object_events/object_event_graphics_info_pointers.h"
 
 static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Npc1,                  OBJ_EVENT_PAL_TAG_NPC_1},
@@ -1344,6 +1343,7 @@ static u8 InitObjectEventStateFromTemplate(struct ObjectEventTemplate *template,
         if (objectEvent->rangeY == 0)
             objectEvent->rangeY++;
     }
+    RunOnSpawnObjectEventMapScript(objectEvent->localId);
     return objectEventId;
 }
 
@@ -1456,8 +1456,6 @@ static u8 TrySetupObjectEventSprite(struct ObjectEventTemplate *objectEventTempl
     if (objectEventId == OBJECT_EVENTS_COUNT)
         return OBJECT_EVENTS_COUNT;
     
-    RunOnSpawnObjectEventMapScript(objectEventId);
-
     objectEvent = &gObjectEvents[objectEventId];
     graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
     if (spriteTemplate->paletteTag != TAG_NONE) 
@@ -1484,6 +1482,7 @@ static u8 TrySetupObjectEventSprite(struct ObjectEventTemplate *objectEventTempl
         sprite->centerToCornerVecY += 8;
     sprite->x += 8;
     sprite->y += 16 + sprite->centerToCornerVecY;
+    sprite->oam.paletteNum = IndexOfSpritePaletteTag(spriteTemplate->paletteTag);
     sprite->coordOffsetEnabled = TRUE;
     sprite->sObjEventId = objectEventId;
     objectEvent->spriteId = spriteId;
@@ -1632,7 +1631,12 @@ u8 CreateVirtualObject(gfxId_t graphicsId, u8 virtualObjId, s16 x, s16 y, u8 ele
 
     graphicsInfo = GetObjectEventGraphicsInfo(graphicsId);
     CopyObjectGraphicsInfoToSpriteTemplate(graphicsId, SpriteCB_VirtualObject, &spriteTemplate, &subspriteTables);
-    *(u16 *)&spriteTemplate.paletteTag = TAG_NONE;
+    // *(u16 *)&spriteTemplate.paletteTag = TAG_NONE;
+    if (spriteTemplate.paletteTag != TAG_NONE)
+    {
+        LoadObjectEventPalette(spriteTemplate.paletteTag);
+        UpdatePaletteGammaType(IndexOfSpritePaletteTag(spriteTemplate.paletteTag), GAMMA_ALT);
+    }
     x += MAP_OFFSET;
     y += MAP_OFFSET;
     SetSpritePosToOffsetMapCoords(&x, &y, 8, 16);
@@ -1645,9 +1649,10 @@ u8 CreateVirtualObject(gfxId_t graphicsId, u8 virtualObjId, s16 x, s16 y, u8 ele
         if (graphicsInfo->doorOffsetType == DOOROFFSET_DOWN)
             sprite->centerToCornerVecY += 8;
         sprite->y += sprite->centerToCornerVecY;
-        sprite->oam.paletteNum = graphicsInfo->paletteSlot;
-        if (sprite->oam.paletteNum >= 16)
-            sprite->oam.paletteNum -= 16;
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(spriteTemplate.paletteTag);
+        // sprite->oam.paletteNum = graphicsInfo->paletteSlot;
+        // if (sprite->oam.paletteNum >= 16)
+        //     sprite->oam.paletteNum -= 16;
 
         sprite->coordOffsetEnabled = TRUE;
         sprite->sVirtualObjId = virtualObjId;
@@ -1655,8 +1660,8 @@ u8 CreateVirtualObject(gfxId_t graphicsId, u8 virtualObjId, s16 x, s16 y, u8 ele
         // if (graphicsInfo->paletteSlot == 10)
         //     LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
         // else 
-        if (graphicsInfo->paletteSlot >= 16)
-            _PatchObjectPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot | 0xf0);
+        // if (graphicsInfo->paletteSlot >= 16)
+        //     _PatchObjectPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot | 0xf0);
 
         if (subspriteTables != NULL)
         {
@@ -1722,7 +1727,7 @@ void RemoveObjectEventsOutsideView(void)
             struct ObjectEvent *objectEvent = &gObjectEvents[i];
             struct ObjectEventTemplate *template = FindObjectEventTemplateByLocalId(objectEvent->localId, gSaveBlock1Ptr->objectEventTemplates, gMapHeader.events->objectEventCount);
 
-            if (objectEvent->active && !objectEvent->isPlayer)
+            if (objectEvent->active && !objectEvent->isPlayer && (template->trainerType & TRAINER_TYPE_KEEP_LOADED) == 0)
                 RemoveObjectEventIfOutsideView(objectEvent);
         }
     }
@@ -1804,7 +1809,8 @@ static void SpawnObjectEventOnReturnToField(u8 objectEventId, s16 x, s16 y)
         }
         if (subspriteTables != NULL)
             SetSubspriteTables(sprite, subspriteTables);
-
+        
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(spriteTemplate.paletteTag);
         sprite->coordOffsetEnabled = TRUE;
         sprite->sObjEventId = objectEventId;
         objectEvent->spriteId = i;
@@ -1846,30 +1852,21 @@ void ObjectEventSetGraphicsId(struct ObjectEvent *objectEvent, gfxId_t graphicsI
 {
     const struct ObjectEventGraphicsInfo *graphicsInfo;
     struct Sprite *sprite;
-    u8 paletteSlot;
+    // u8 paletteSlot;
 
     graphicsInfo = GetObjectEventGraphicsInfo(graphicsId);
     sprite = &gSprites[objectEvent->spriteId];
-    paletteSlot = graphicsInfo->paletteSlot;
-    if (paletteSlot == 0)
+    if (graphicsInfo->paletteTag != TAG_NONE)
     {
-        PatchObjectPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
-    }
-    // else if (paletteSlot == 10)
-    // {
-    //     LoadSpecialObjectReflectionPalette(graphicsInfo->paletteTag, graphicsInfo->paletteSlot);
-    // }
-    else if (paletteSlot >= 16)
-    {
-        paletteSlot -= 16;
-        _PatchObjectPalette(graphicsInfo->paletteTag, paletteSlot);
+        LoadObjectEventPalette(graphicsInfo->paletteTag);
+        UpdatePaletteGammaType(IndexOfSpritePaletteTag(graphicsInfo->paletteTag), GAMMA_ALT);
     }
     sprite->oam.shape = graphicsInfo->oam->shape;
     sprite->oam.size = graphicsInfo->oam->size;
     sprite->images = graphicsInfo->images;
     sprite->anims = graphicsInfo->anims;
     sprite->subspriteTables = graphicsInfo->subspriteTables;
-    sprite->oam.paletteNum = paletteSlot;
+    sprite->oam.paletteNum = IndexOfSpritePaletteTag(graphicsInfo->paletteTag);
     objectEvent->inanimate = graphicsInfo->inanimate;
     objectEvent->graphicsId = graphicsId;
     SetSpritePosToMapCoords(objectEvent->currentCoords.x, objectEvent->currentCoords.y, &sprite->x, &sprite->y);

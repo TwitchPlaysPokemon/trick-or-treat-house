@@ -4,6 +4,7 @@
 #include "mystery_gift.h"
 #include "util.h"
 #include "overworld.h"
+#include "mgba.h"
 #include "constants/event_objects.h"
 #include "constants/map_scripts.h"
 
@@ -373,8 +374,9 @@ void RunOnDiveWarpMapScript(void)
 
 void RunOnSpawnObjectEventMapScript(u8 objId)
 {
+    // mgba_printf(MGBA_LOG_INFO, "RunOnSpawnObjectEventMapScript: %d", objId);
     gSpecialVar_LastTalked = objId;
-    MapHeaderRunScriptType(MAP_SCRIPT_ON_SPAWN_EVENT_OBJECT);
+    MapHeaderRunScriptType(MAP_SCRIPT_ON_SPAWN_OBJECT_EVENT);
 }
 
 u8 *GetMapHeaderString(u16 mapId, u8 tag)

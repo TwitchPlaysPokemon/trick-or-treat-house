@@ -11,7 +11,7 @@ Feature Merging:
 - [ ] Feature branch: Follow Me:  https://github.com/ghoulslash/pokeemerald/tree/follow_me 
 - [ ] Feature branch: Sideways Stairs
 - [ ] Feature branch: overworld expansion (double check that this is all correct in TTH from this)
-- [ ] Feature branch: dynamic overworld palettes (double check ditto)
+- [X] Feature branch: dynamic overworld palettes (double check ditto)
 - [ ] Feature branch: Item descriptions on pickup: https://github.com/ghoulslash/pokeemerald/tree/item_desc_header 
 - [ ] Feature branch: Pokemon decryption and compression: https://github.com/ghoulslash/pokeemerald/tree/box_expansion
 - [ ] Tutorial: Improve loading of battle terrain (possibly)
@@ -42,9 +42,20 @@ Known issues:
 - [ ] Farfetch'd Forest: When the farfetch'd flies, do hideReflection=true and add a shadow field effect or something; also disable ripples
 - [ ] Breeder in the Den doesn't look at you when talking.
 - [ ] PC in den does not use the dynamic menu system, needs to be updated with such.
+
+
+Changes:
 - [ ] Lost Woods 1: Use Amongous instead of electrode?
+- [ ] Towers: Change up pokemon to be more diverse?
+- [ ] Towers: Possibly add follower friend to help?
+- [ ] Change the emerald text border to orange themed.
+	- [ ] Also add an optional text box for person's name using short/narrow text
 
 Others:
+- [ ] Scripting Overhaul
+	- [ ] Add command which prints to mgba. 
+		- [ ] In poryscript, may need to specifically make ascii strings.
+		- [ ] Possibly make one version of command print encoded
 - [ ] Reorganize save file, so that version check is first, before trainer name.
 - [ ] Add map script for getting map overworld music
 - [ ] Add map script for getting battle music
@@ -102,7 +113,6 @@ Others:
 	.4byte ScrCmd_mosstiles_turnEvents     .4byte ScrCmd_turnrotatingtileobjects   @ 0xd4
 	.4byte ScrCmd_mosstiles_initTiles      .4byte ScrCmd_initrotatingtilepuzzle    @ 0xd5
 	.4byte ScrCmd_mosstiles_finishTiles    .4byte ScrCmd_freerotatingtilepuzzle    @ 0xd6
-- [ ] Redo the scripting
 - [ ] Look into adding Hidden2 after TRSEE_REVEAL_BURIED_WAIT in trainer_see.c
 - [ ] Specials
 - [ ] Convert player_forcestep to new naming scheme, also figure out wtf it's doing again

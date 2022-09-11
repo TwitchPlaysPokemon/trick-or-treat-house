@@ -9,6 +9,7 @@ TrickTreat_PetalburgCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, TrickTreat_PetalburgCity_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrickTreat_PetalburgCity_FrameTable
 	map_script MAP_SCRIPT_ON_RETURN_TO_FIELD, TrickTreat_PetalburgCity_ReturnToField
+	map_script MAP_SCRIPT_ON_SPAWN_OBJECT_EVENT, TrickTreat_PetalburgCity_OnSpawnObject
 	.byte 0
 
 TrickTreat_PetalburgCity_Name:
@@ -65,6 +66,7 @@ TrickTreat_PetalburgCity_FrameTable:
 
 @ -----------------------------------------------------
 #define METATILE_DoorOff 0x021
+#define LID_IMPOSTER_GIRL 14
 `
 
 script(local) TrickTreat_PetalburgCity_OnTransition {
@@ -80,6 +82,12 @@ script(local) TrickTreat_PetalburgCity_OnTransition {
 script(local) TrickTreat_PetalburgCity_ReturnToField {
 	if (var(VAR_METATILE_X) > 0) {
 		setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
+	}
+}
+
+script(local) TrickTreat_PetalburgCity_OnSpawnObject {
+	if (var(VAR_LAST_TALKED) == LID_IMPOSTER_GIRL) {
+		callnative (MarkEventObjectAsImposter)
 	}
 }
 
@@ -136,6 +144,7 @@ script TrickTreat_PetalburgCity_WallySign {
 script TrickTreat_PetalburgCity_EventScript_Lass {
 	lock
 	faceplayer
+	callnative (MarkEventObjectAsImposter)
 	if (var(VAR_METATILE_Y) == 22 && var(VAR_METATILE_X) >= 17 && var(VAR_METATILE_X) <= 21) {
 		msgbox ("Hm? You look flushed.\n"
 				"Is something wrong?\p"
@@ -343,4 +352,5 @@ script TrickTreat_PetalburgCity_TriggerScript_SoftBorderWest {
 
 raw `
 #undef METATILE_DoorOff
+#undef LID_IMPOSTER_GIRL
 `
