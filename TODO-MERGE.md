@@ -34,23 +34,15 @@ Feature Merging:
 
 
 
-
-
 Known issues:
 - [ ] Manectric on the intro screen is yellow instead of blue for some reason.
-- [X] Brendan and May's overworld palettes are incorrect, probably using the old palette.
 - [ ] Fall grass overworld effect is broken.
-- [X] "Allie put it away in the candy p--" [cut off] "Allie put it away in the \n Candy pocket". Both bad.
-	- [x] messagewordwrap is broken
-	- [X] Text box is duplicated.
 - [ ] Puzzle name tag is thinner than it should be, and it's cutting off the puzzle titles.
-- [X] Puzzle 1: Item ball in the middle gives out "20 ????????!"
-	- [X] It then leaves the message on screen, and does not wordwrap it.
-	- [X] Nor does the item ball disappear.
-	- [X] All item balls seem to fail in this way.
-	- [X] "Got  2 Shears!"
-	- [X] It actually gives out 1 and not 20.
-	- [X] At the end: "You hand over 2 ??????, and the Shears."
+- [ ] Pokemon Says: When the high note is used, the azuril breaking out of the jar counts as a bad note, but talking to it after it breaks out isn't counted as a bad note.
+- [ ] Farfetch'd Forest: When the farfetch'd flies, do hideReflection=true and add a shadow field effect or something; also disable ripples
+- [ ] Breeder in the Den doesn't look at you when talking.
+- [ ] PC in den does not use the dynamic menu system, needs to be updated with such.
+- [ ] Lost Woods 1: Use Amongous instead of electrode?
 
 Others:
 - [ ] Reorganize save file, so that version check is first, before trainer name.
@@ -188,34 +180,5 @@ Others:
 - [ ] Metatile behavior:
 	MetatileBehavior_IsAquaHideoutWarp  ->  MetatileBehavior_IsTeleportWarp
 	MetatileBehavior_IsWarpOrBridge -> MetatileBehavior_IsUnionRoomWarp
-
-- [x] Recreate script_menu.c:
-	extern const u8 PokemonAdoption_Choose[];
-	extern const u8 PokemonAdoption_Status[];
-	extern const u8 PokemonAdoption_Exit[];
-	const struct MenuAction MultichoiceList_MonAdoption[] =
-	{
-		{PokemonAdoption_Choose, NULL},
-		{PokemonAdoption_Status, NULL},
-		{PokemonAdoption_Exit, NULL},
-	};
-
-	extern const u8 Puzzle_SafariImposters_Menu_Report[];
-	extern const u8 Puzzle_SafariImposters_Menu_Battle[];
-	extern const u8 Puzzle_SafariImposters_Menu_Cancel[];
-	const struct MenuAction MultichoiceList_SafariImposter[] =
-	{
-		{Puzzle_SafariImposters_Menu_Report, NULL},
-		{Puzzle_SafariImposters_Menu_Battle, NULL},
-		{Puzzle_SafariImposters_Menu_Cancel, NULL},
-	};
-
-	// defined in TrickHouseDevEntrance/scripts.pory
-	extern const u8 PuzzleDebug_TustinsMenu_PuzzlesCompleted[];
-	extern const u8 PuzzleDebug_TustinsMenu_SunOffset[];
-	const struct MenuAction MultichoiceList_TustinsMenu[] =
-	{
-		{PuzzleDebug_TustinsMenu_PuzzlesCompleted, NULL},
-		{PuzzleDebug_TustinsMenu_SunOffset, NULL},
-	};
+- [ ] Add more strings to PuzzleCommon_TextArray_SecretCodes in trick_house.inc
 

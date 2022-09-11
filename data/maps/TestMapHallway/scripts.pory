@@ -58,7 +58,7 @@ script TestMapHallway_GiveAllCandy {
 }
 
 script TestMapHallway_GiveTestBears {
-	finditem_std(ITEM_CANDY_KINGCHOCNUT, 4)
+	finditem_std(ITEM_CANDY_ABUNDANT, 1)
 }
 
 script TestMapHallway_GiveTestItems3 {

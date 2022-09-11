@@ -180,7 +180,7 @@ void CopyItemNameHandlePlural(u16 itemId, u8 *dst, u32 quantity)
             }
         }
         // No quantum string, no special plural ("2 Great Balls")
-        else if (ItemId_GetPluralName(itemId) == ITEM_NAME_PLURAL_ES)
+        else if (ItemId_GetPluralName(itemId) == ITEM_NAME_PLURAL_S)
         {
             dst = StringCopy(dst, ItemId_GetName(itemId));
             *dst = CHAR_s; dst++;
@@ -828,7 +828,7 @@ bool8 RemovePyramidBagItem(u16 itemId, u16 count)
 
 void ResolveSpecialItemIds(u16 *itemId, u16 *count)
 {
-    mgba_printf(MGBA_LOG_INFO, "ResolveSpecialItemIds, before = %X, %d", *itemId, *count);
+    mgba_printf(MGBA_LOG_INFO, "ResolveSpecialItemIds, before = %d, %d", *itemId, *count);
     
     u16 rand = Random();
     switch (*itemId)
@@ -868,7 +868,7 @@ void ResolveSpecialItemIds(u16 *itemId, u16 *count)
     
     IncrementGameStatBy(GAME_STAT_CANDY_COLLECTED, *count);
     
-    mgba_printf(MGBA_LOG_INFO, "ResolveSpecialItemIds, after = %X, %d", *itemId, *count);
+    mgba_printf(MGBA_LOG_INFO, "ResolveSpecialItemIds, after = %d, %d", *itemId, *count);
 }
 
 static u16 SanitizeItemId(u16 itemId)

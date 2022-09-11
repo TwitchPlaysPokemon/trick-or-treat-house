@@ -54,9 +54,9 @@ script Puzzle_Wilke_TalkToRacc1 {
 	faceplayer
 	if (flag(FLAG_TRICK_HOUSE_SCROLL_READ) == FALSE) {
 		playfanfare (MUS_OBTAIN_ITEM)
-		message ("{PLAYER} found Ziggy.$")
+		message ("{PLAYER} found Ziggy!$")
 		waitfanfare
-		msgbox ("Ziggy hands {PLAYER} the scroll.$")
+		msgbox ("Ziggy gives {PLAYER} the scroll.$")
 		msgbox (PuzzleCommon_Text_ScrollFound2)
 		setflag (FLAG_TRICK_HOUSE_SCROLL_READ)
 		setobjectmovementtype (1, MOVEMENT_TYPE_LOOK_AROUND)

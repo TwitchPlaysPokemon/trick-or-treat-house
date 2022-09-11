@@ -13,6 +13,7 @@
 #include "strings.h"
 #include "task.h"
 #include "text.h"
+#include "dynamic_placeholder_text_util.h"
 #include "constants/field_specials.h"
 #include "constants/items.h"
 #include "constants/script_menu.h"
@@ -101,7 +102,8 @@ static void DrawMultichoiceMenu(u8 left, u8 top, u8 multichoiceId, bool8 ignoreB
 
     for (i = 0; i < count; i++)
     {
-        width = DisplayTextAndGetWidth(actions[i].text, width);
+        if (DynamicPlaceholderTextUtil_GetPlaceholderPtr(i) == NULL) continue;
+        width = DisplayTextAndGetWidth(DynamicPlaceholderTextUtil_GetPlaceholderPtr(i), width);
     }
 
     newWidth = ConvertPixelWidthToTileWidth(width);

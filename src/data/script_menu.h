@@ -776,74 +776,74 @@ static const struct MenuAction MultichoiceList_ForcedStartMenu[] =
 //     {gText_Exit},
 // };
 
-const u8 gText_DynamicMenuString1[] = _("{DYNAMIC 0}");
-const u8 gText_DynamicMenuString2[] = _("{DYNAMIC 1}");
-const u8 gText_DynamicMenuString3[] = _("{DYNAMIC 2}");
-const u8 gText_DynamicMenuString4[] = _("{DYNAMIC 3}");
-const u8 gText_DynamicMenuString5[] = _("{DYNAMIC 4}");
-const u8 gText_DynamicMenuString6[] = _("{DYNAMIC 5}");
-const u8 gText_DynamicMenuString7[] = _("{DYNAMIC 6}");
-const u8 gText_DynamicMenuString8[] = _("{DYNAMIC 7}");
+// const u8 gText_DynamicMenuString1[] = _("{DYNAMIC 0}");
+// const u8 gText_DynamicMenuString2[] = _("{DYNAMIC 1}");
+// const u8 gText_DynamicMenuString3[] = _("{DYNAMIC 2}");
+// const u8 gText_DynamicMenuString4[] = _("{DYNAMIC 3}");
+// const u8 gText_DynamicMenuString5[] = _("{DYNAMIC 4}");
+// const u8 gText_DynamicMenuString6[] = _("{DYNAMIC 5}");
+// const u8 gText_DynamicMenuString7[] = _("{DYNAMIC 6}");
+// const u8 gText_DynamicMenuString8[] = _("{DYNAMIC 7}");
 
 static const struct MenuAction MultichoiceList_Dynamic1[] = 
 {
-    {gText_DynamicMenuString1},
+    {NULL},
 };
 static const struct MenuAction MultichoiceList_Dynamic2[] = 
 {
-    {gText_DynamicMenuString1},
-    {gText_DynamicMenuString2},
+    {NULL},
+    {NULL},
 };
 static const struct MenuAction MultichoiceList_Dynamic3[] = 
 {
-    {gText_DynamicMenuString1},
-    {gText_DynamicMenuString2},
-    {gText_DynamicMenuString3},
+    {NULL},
+    {NULL},
+    {NULL},
 };
 static const struct MenuAction MultichoiceList_Dynamic4[] = 
 {
-    {gText_DynamicMenuString1},
-    {gText_DynamicMenuString2},
-    {gText_DynamicMenuString3},
-    {gText_DynamicMenuString4},
+    {NULL},
+    {NULL},
+    {NULL},
+    {NULL},
 };
 static const struct MenuAction MultichoiceList_Dynamic5[] = 
 {
-    {gText_DynamicMenuString1},
-    {gText_DynamicMenuString2},
-    {gText_DynamicMenuString3},
-    {gText_DynamicMenuString4},
-    {gText_DynamicMenuString5},
+    {NULL},
+    {NULL},
+    {NULL},
+    {NULL},
+    {NULL},
 };
 static const struct MenuAction MultichoiceList_Dynamic6[] = 
 {
-    {gText_DynamicMenuString1},
-    {gText_DynamicMenuString2},
-    {gText_DynamicMenuString3},
-    {gText_DynamicMenuString4},
-    {gText_DynamicMenuString5},
-    {gText_DynamicMenuString6},
+    {NULL},
+    {NULL},
+    {NULL},
+    {NULL},
+    {NULL},
+    {NULL},
 };
 static const struct MenuAction MultichoiceList_Dynamic7[] = 
 {
-    {gText_DynamicMenuString1},
-    {gText_DynamicMenuString2},
-    {gText_DynamicMenuString3},
-    {gText_DynamicMenuString4},
-    {gText_DynamicMenuString5},
-    {gText_DynamicMenuString6},
-    {gText_DynamicMenuString7},
+    {NULL},
+    {NULL},
+    {NULL},
+    {NULL},
+    {NULL},
+    {NULL},
+    {NULL},
 };
 static const struct MenuAction MultichoiceList_Dynamic8[] = 
 {
-    {gText_DynamicMenuString1},
-    {gText_DynamicMenuString2},
-    {gText_DynamicMenuString3},
-    {gText_DynamicMenuString4},
-    {gText_DynamicMenuString5},
-    {gText_DynamicMenuString6},
-    {gText_DynamicMenuString7},
-    {gText_DynamicMenuString8},
+    {NULL},
+    {NULL},
+    {NULL},
+    {NULL},
+    {NULL},
+    {NULL},
+    {NULL},
+    {NULL},
 };
 
 

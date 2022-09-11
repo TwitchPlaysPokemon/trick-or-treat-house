@@ -10351,6 +10351,7 @@ const struct Item gItems[] =
         .itemId = ITEM_DOWSING_MACHINE,
         .price = 0,
         .description = sDowsingMachineDesc,
+        .keepItem = TRUE,
         .importance = 1,
         .registrability = TRUE,
         .pocket = POCKET_KEY_ITEMS,

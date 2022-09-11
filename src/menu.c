@@ -526,7 +526,7 @@ static u16 GetStandardFrameBaseTileNum(void)
 u8 AddMapNamePopUpWindow(void)
 {
     if (sMapNamePopupWindowId == WINDOW_NONE)
-        sMapNamePopupWindowId = AddWindowParameterized(0, 1, 1, 10, 3, 14, 0x107);
+        sMapNamePopupWindowId = AddWindowParameterized(0, 1, 1, 14, 3, 14, 0x107);
     return sMapNamePopupWindowId;
 }
 
@@ -1601,14 +1601,24 @@ u8 InitMenuInUpperLeftCornerNormal(u8 windowId, u8 itemCount, u8 initialCursorPo
     return InitMenuInUpperLeftCorner(windowId, itemCount, initialCursorPos, FALSE);
 }
 
+static const u8 sText_Error[] = _("<STR ERROR>");
+
 void PrintMenuTable(u8 windowId, u8 itemCount, const struct MenuAction *menuActions)
 {
     u32 i;
 
-    // for (i = 0; i < itemCount; i++)
-    //     AddTextPrinterParameterized(windowId, 1, menuActions[i].text, 8, (i * 16) + 1, TEXT_SKIP_DRAW, NULL);
     for (i = 0; i < itemCount; i++)
-        AddTextPrinterParameterized(windowId, 1, DynamicPlaceholderTextUtil_GetPlaceholderPtr(i), 8, (i * 16) + 1, TEXT_SKIP_DRAW, NULL);
+    {
+        if (menuActions[i].text != NULL) {
+            AddTextPrinterParameterized(windowId, 1, menuActions[i].text, 8, (i * 16) + 1, TEXT_SKIP_DRAW, NULL);
+        } 
+        else if (DynamicPlaceholderTextUtil_GetPlaceholderPtr(i) != NULL) {
+            AddTextPrinterParameterized(windowId, 1, DynamicPlaceholderTextUtil_GetPlaceholderPtr(i), 8, (i * 16) + 1, TEXT_SKIP_DRAW, NULL);
+        }
+        else {
+            AddTextPrinterParameterized(windowId, 1, sText_Error, 8, (i * 16) + 1, TEXT_SKIP_DRAW, NULL);
+        }
+    }
 
     CopyWindowToVram(windowId, COPYWIN_GFX);
 }
