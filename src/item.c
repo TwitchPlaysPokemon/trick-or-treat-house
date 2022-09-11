@@ -13,6 +13,7 @@
 #include "text.h"
 #include "overworld.h"
 #include "random.h"
+#include "mgba.h"
 // #include "battle_pyramid.h"
 // #include "battle_pyramid_bag.h"
 #include "constants/items.h"
@@ -98,8 +99,14 @@ void CopyItemName(u16 itemId, u8 *dst)
         StringCopy(dst, ItemId_GetName(itemId));
 }
 
+extern void WaitForVBlank(void);
 void CopyItemNameHandlePlural(u16 itemId, u8 *dst, u32 quantity)
 {
+    mgba_printf(MGBA_LOG_INFO, "CopyItemNameHandlePlural = %d", itemId);
+    mgba_printf(MGBA_LOG_INFO, "ItemId_GetName = %X", ItemId_GetName(itemId));
+    mgba_printf(MGBA_LOG_INFO, "ItemId_GetPluralName = %X", ItemId_GetPluralName(itemId));
+    mgba_printf(MGBA_LOG_INFO, "ItemId_GetQuantumString = %X", ItemId_GetQuantumString(itemId));
+    
     // Handle berries
     if (itemId >= ITEM_CHERI_BERRY && itemId <= ITEM_ENIGMA_BERRY)
     {
@@ -193,6 +200,7 @@ void CopyItemNameHandlePlural(u16 itemId, u8 *dst, u32 quantity)
             StringCopy(dst, ItemId_GetPluralName(itemId));
         }
     }
+    mgba_printf(MGBA_LOG_INFO, "bottom of CopyItemNameHandlePlural");
 }
 
 void GetBerryCountString(u8 *dst, const u8 *berryName, u32 quantity)
@@ -820,6 +828,8 @@ bool8 RemovePyramidBagItem(u16 itemId, u16 count)
 
 void ResolveSpecialItemIds(u16 *itemId, u16 *count)
 {
+    mgba_printf(MGBA_LOG_INFO, "ResolveSpecialItemIds, before = %X, %d", *itemId, *count);
+    
     u16 rand = Random();
     switch (*itemId)
     {
@@ -857,6 +867,8 @@ void ResolveSpecialItemIds(u16 *itemId, u16 *count)
     }
     
     IncrementGameStatBy(GAME_STAT_CANDY_COLLECTED, *count);
+    
+    mgba_printf(MGBA_LOG_INFO, "ResolveSpecialItemIds, after = %X, %d", *itemId, *count);
 }
 
 static u16 SanitizeItemId(u16 itemId)

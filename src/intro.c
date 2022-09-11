@@ -175,6 +175,8 @@ static EWRAM_DATA u16 sFlygonYOffset = 0;
 u32 gIntroFrameCounter;
 struct GcmbStruct gMultibootProgramStruct;
 
+const u32 gIntroCopyright_Tilemap[] = INCBIN_U32("build/copystamped.bin.lz");
+
 static const u16 sIntroDrops_Pal[]            = INCBIN_U16("graphics/intro/scene_1/drops.gbapal");
 static const u16 sIntroLogo_Pal[]             = INCBIN_U16("graphics/intro/scene_1/logo.gbapal");
 static const u32 sIntroDropsLogo_Gfx[]        = INCBIN_U32("graphics/intro/scene_1/drops_logo.4bpp.lz");

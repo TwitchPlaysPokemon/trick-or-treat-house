@@ -63,14 +63,15 @@ Others:
 - [ ] trainers.h -> change encounterMusic_gender to encounterMusic (any music) and split off gender.
 - [ ] Change Relic items descriptions to instead say that "collectors may value it highly", as it needs to be specially sold in order to have value.
 - [ ] Change some mulch to KEEP to allow use for the growing puzzle element puzzle.
-- [ ] TryDoEventsBeforeFirstTurn add
+- [ ] Implement GAME_STAT_NUM_CANDY_TRADES
+- [X] TryDoEventsBeforeFirstTurn add
 	if (!HasMonInParty())
 	{
 		PrepareStringBattle(STRINGID_PLAYERNOPKMN, GetBattlerAtPosition(position));
 		gBattleMainFunc = TryDoEventsBeforeFirstTurn;
 		return;
 	}
-- [ ] Fix the following in battle_main.c
+- [X] Fix the following in battle_main.c
 	if (ItemId_GetPocket(gLastUsedItem) == POCKET_POKE_BALLS)
 		gBattleStruct->throwingPokeBall = TRUE;
 - [ ] In battle_util.c

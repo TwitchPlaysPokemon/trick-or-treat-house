@@ -10925,6 +10925,335 @@ const struct Item gItems[] =
 
 #pragma endregion
 
+#pragma region TTH HM Items
+
+
+    [ITEM_META_ITEM_ROCK] =
+    {
+        .name = sMetaItemRockName,
+        .itemId = ITEM_META_ITEM_ROCK,
+        .price = 0,
+        .description = sMetaItemRockDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_META_ITEM_ZIGZAG] =
+    {
+        .name = sMetaItemZigzagName,
+        .itemId = ITEM_META_ITEM_ZIGZAG,
+        .price = 0,
+        .description = sMetaItemZigzagDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_META_ITEM_LOTAD] =
+    {
+        .name = sMetaItemLotadName,
+        .itemId = ITEM_META_ITEM_LOTAD,
+        .price = 0,
+        .description = sMetaItemLotadDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_META_ITEM_GRASS] =
+    {
+        .name = sMetaItemGrassName,
+        .itemId = ITEM_META_ITEM_GRASS,
+        .price = 0,
+        .description = sMetaItemGrassDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_META_ITEM_DIAMOND] =
+    {
+        .name = sMetaItemDiamondName,
+        .itemId = ITEM_META_ITEM_DIAMOND,
+        .price = 0,
+        .description = sMetaItemDiamondDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_META_ITEM_SPIN] =
+    {
+        .name = sMetaItemSpinName,
+        .itemId = ITEM_META_ITEM_SPIN,
+        .price = 0,
+        .description = sMetaItemSpinDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_META_ITEM_DOLL] =
+    {
+        .name = sMetaItemDollName,
+        .itemId = ITEM_META_ITEM_DOLL,
+        .price = 0,
+        .description = sMetaItemDollDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_META_ITEM_BALL] =
+    {
+        .name = sMetaItemBallName,
+        .itemId = ITEM_META_ITEM_BALL,
+        .price = 0,
+        .description = sMetaItemBallDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_META_ITEM_KISS] =
+    {
+        .name = sMetaItemKissName,
+        .itemId = ITEM_META_ITEM_KISS,
+        .price = 0,
+        .description = sMetaItemKissDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_META_ITEM_ROUND] =
+    {
+        .name = sMetaItemRoundName,
+        .itemId = ITEM_META_ITEM_ROUND,
+        .price = 0,
+        .description = sMetaItemRoundDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_META_ITEM_FIRE] =
+    {
+        .name = sMetaItemFireName,
+        .itemId = ITEM_META_ITEM_FIRE,
+        .price = 0,
+        .description = sMetaItemFireDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_META_ITEM_PIKA] =
+    {
+        .name = sMetaItemPikaName,
+        .itemId = ITEM_META_ITEM_PIKA,
+        .price = 0,
+        .description = sMetaItemPikaDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_META_ITEM_DUSKULL] =
+    {
+        .name = sMetaItemDuskullName,
+        .itemId = ITEM_META_ITEM_DUSKULL,
+        .price = 0,
+        .description = sMetaItemDuskullDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_META_ITEM_WATER] =
+    {
+        .name = sMetaItemWaterName,
+        .itemId = ITEM_META_ITEM_WATER,
+        .price = 0,
+        .description = sMetaItemWaterDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_META_ITEM_SEEDOT] =
+    {
+        .name = sMetaItemSeedotName,
+        .itemId = ITEM_META_ITEM_SEEDOT,
+        .price = 0,
+        .description = sMetaItemSeedotDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_META_ITEM_CUSHION] =
+    {
+        .name = sMetaItemCushionName,
+        .itemId = ITEM_META_ITEM_CUSHION,
+        .price = 0,
+        .description = sMetaItemCushionDesc,
+        .importance = 1,
+        .keepItem = TRUE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 2,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+    
+#pragma endregion
+
+#pragma region TTH Meta Items
+
+    [ITEM_CUT_ITEM] =
+    {
+        .name = sCutItemName,
+        .itemId = ITEM_CUT_ITEM,
+        .price = 0,
+        .description = sCutItemDesc,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_FLASH_ITEM] =
+    {
+        .name = sFlashItemName,
+        .itemId = ITEM_FLASH_ITEM,
+        .price = 0,
+        .description = sFlashItemDesc,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_ROCKSMASH_ITEM] =
+    {
+        .name = sRockSmashItemName,
+        .itemId = ITEM_ROCKSMASH_ITEM,
+        .price = 0,
+        .description = sRockSmashItemDesc,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_STRENGTH_ITEM] =
+    {
+        .name = sStrengthItemName,
+        .itemId = ITEM_STRENGTH_ITEM,
+        .price = 0,
+        .description = sStrengthItemDesc,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_SURF_ITEM] =
+    {
+        .name = sSurfItemName,
+        .itemId = ITEM_SURF_ITEM,
+        .price = 0,
+        .description = sSurfItemDesc,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_FLY_ITEM] =
+    {
+        .name = sFlyItemName,
+        .itemId = ITEM_FLY_ITEM,
+        .price = 0,
+        .description = sFlyItemDesc,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_DIVE_ITEM] =
+    {
+        .name = sDiveItemName,
+        .itemId = ITEM_DIVE_ITEM,
+        .price = 0,
+        .description = sDiveItemDesc,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_WATERFALL_ITEM] =
+    {
+        .name = sWaterfallItemName,
+        .itemId = ITEM_WATERFALL_ITEM,
+        .price = 0,
+        .description = sWaterfallItemDesc,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = 4,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+#pragma endregion
+
 #pragma region TTH Candy
 
     [ITEM_CANDY_ABUNDANT] =

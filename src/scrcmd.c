@@ -123,6 +123,7 @@ bool8 ScrCmd_nop1(struct ScriptContext *ctx)
 
 bool8 ScrCmd_end(struct ScriptContext *ctx)
 {
+    mgba_printf(MGBA_LOG_INFO, "====");
     StopScript(ctx);
     return FALSE;
 }

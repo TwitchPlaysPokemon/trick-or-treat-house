@@ -4725,6 +4725,123 @@ static const u8 sSapphireDesc[] = _(
 
 #pragma endregion
 
+#pragma region TTH Meta Items
+
+static const u8 sMetaItemRockName[] = _("Inflatable Rock");
+static const u8 sMetaItemRockDesc[] = _(
+    "An inflated rock,\n"
+    "very lightweight\n"
+    "and easy to push.");
+
+static const u8 sMetaItemZigzagName[] = _("Zigzag Cushion");
+static const u8 sMetaItemZigzagDesc[] = _(
+    "This cushion smells\n"
+    "and feels like a\n"
+    "ZIGZAGOON.");
+
+static const u8 sMetaItemLotadName[] = _("Lotad Doll");
+static const u8 sMetaItemLotadDesc[] = _(
+    "A waterlogged,\n"
+    "lost, and forgotten\n"
+    "LOTAD doll.$");
+
+static const u8 sMetaItemGrassName[] = _("Grass Cushion");
+static const u8 sMetaItemGrassDesc[] = _(
+    "A green cushion\n"
+    "that encapsulates\n"
+    "the forest.");
+
+static const u8 sMetaItemDiamondName[] = _("Diamond Cushion");
+static const u8 sMetaItemDiamondDesc[] = _("");
+
+static const u8 sMetaItemSpinName[] = _("Spin Cushion");
+static const u8 sMetaItemSpinDesc[] = _("");
+
+static const u8 sMetaItemDollName[] = _("Magnemite Doll");
+static const u8 sMetaItemDollDesc[] = _("");
+
+static const u8 sMetaItemBallName[] = _("Poké Ball Cushion");
+static const u8 sMetaItemBallDesc[] = _("");
+
+static const u8 sMetaItemKissName[] = _("Kiss Cushion");
+static const u8 sMetaItemKissDesc[] = _("");
+
+static const u8 sMetaItemRoundName[] = _("Round Cushion");
+static const u8 sMetaItemRoundDesc[] = _("");
+
+static const u8 sMetaItemFireName[] = _("Fire Cushion");
+static const u8 sMetaItemFireDesc[] = _("");
+
+static const u8 sMetaItemPikaName[] = _("Pika Cushion");
+static const u8 sMetaItemPikaDesc[] = _("");
+
+static const u8 sMetaItemDuskullName[] = _("Duskull Doll");
+static const u8 sMetaItemDuskullDesc[] = _("");
+
+static const u8 sMetaItemWaterName[] = _("Water Cushion");
+static const u8 sMetaItemWaterDesc[] = _("");
+
+static const u8 sMetaItemSeedotName[] = _("Seedot Doll");
+static const u8 sMetaItemSeedotDesc[] = _("");
+
+static const u8 sMetaItemCushionName[] = _("");
+static const u8 sMetaItemCushionDesc[] = _("");
+
+#pragma endregion
+
+#pragma region TTH HM Items
+
+
+static const u8 sCutItemName[] = _("Shears");
+static const u8 sCutItemDesc[] = _(
+    "A pair of shears\n"
+    "for gardening.\n"
+    "Allows CUT.");
+
+static const u8 sFlashItemName[] = _("Flashlight");
+static const u8 sFlashItemDesc[] = _(
+    "A battery-powered\n"
+    "light source. \n"
+    "Allows FLASH.");
+
+static const u8 sRockSmashItemName[] = _("Pickaxe");
+static const u8 sRockSmashItemDesc[] = _(
+    "A large, heavy\n"
+    "mining pick.\n"
+    "Allows ROCK SMASH.");
+
+static const u8 sStrengthItemName[] = _("Dolly");
+static const u8 sStrengthItemDesc[] = _(
+    "A two-wheeled red\n"
+    "moving dolly.\n"
+    "Allows STRENGTH.");
+
+static const u8 sSurfItemName[] = _("Inflatable Raft");
+static const u8 sSurfItemDesc[] = _(
+    "An inflatable\n"
+    "rubber dinghy.\n"
+    "Allows SURF.");
+
+static const u8 sFlyItemName[] = _("<Fly Item>");
+static const u8 sFlyItemDesc[] = _(
+    "An inflatable\n"
+    "rubber dinghy.\n"
+    "Allows FLY.");
+
+static const u8 sDiveItemName[] = _("Scuba Gear");
+static const u8 sDiveItemDesc[] = _(
+    "Some SCUBA gear\n"
+    "and diving suit.\n"
+    "Allows DIVE.");
+
+static const u8 sWaterfallItemName[] = _("Robokarp");
+static const u8 sWaterfallItemDesc[] = _(
+    "A special motor that\n"
+    "can jump up waterfalls.\n"
+    "Allows WATERFALL.");
+
+#pragma endregion
+
 #pragma region TTH Candy
 
 static const u8 sChocolateName[] = _("Chocolate");

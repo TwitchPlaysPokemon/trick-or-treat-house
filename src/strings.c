@@ -1272,7 +1272,7 @@ const u8 gText_ThunderPunch48BP[] = _("THUNDERPUNCH{CLEAR_TO 0x4E}48BP");
 const u8 gText_FirePunch48BP[] = _("FIRE PUNCH{CLEAR_TO 0x4E}48BP");
 const u8 gText_PkmnFainted_FldPsn[] = _("{STR_VAR_1} fainted…\p\n");
 const u8 gText_Marco[] = _("MARCO");
-const u8 gText_TrainerCardName[] = _("NAME: ");
+const u8 gText_TrainerCardName[] = _("{FONT_SMALL_NARROW}NAME: {FONT_NORMAL}");
 const u8 gText_TrainerCardIDNo[] = _("IDNo.");
 #if USE_CANDY_CURRENCY
 const u8 gText_TrainerCardMoney[] = _("CANDY CORN");
@@ -1281,12 +1281,13 @@ const u8 gText_TrainerCardMoney[] = _("MONEY");
 #endif
 const u8 gText_PokeDollar[] = _("¥"); // Unused
 const u8 gText_TrainerCardPokedex[] = _("POKéDEX");
+const u8 gText_TrainerCardPuzzles[] = _("PUZZLES COMPLETED");
 const u8 gText_EmptyString6[] = _("");
 const u8 gText_Colon2[] = _(":");
 const u8 gText_Points[] = _(" points"); // Unused
 const u8 gText_TrainerCardTime[] = _("TIME");
 const u8 gJPText_BattlePoints[] = _("ゲ-ムポイント"); // Unused. Name presumed, translation is Game Points
-const u8 gText_Var1sTrainerCard[] = _("{STR_VAR_1}'s TRAINER CARD");
+const u8 gText_Var1sTrainerCard[] = _("{STR_VAR_1}'s Trainer Card");
 const u8 gText_HallOfFameDebut[] = _("HALL OF FAME DEBUT  ");
 const u8 gText_LinkBattles[] = _("LINK BATTLES");
 const u8 gText_LinkCableBattles[] = _("LINK CABLE BATTLES");

@@ -390,7 +390,7 @@ static void SerialIntr(void)
 static void IntrDummy(void)
 {}
 
-static void WaitForVBlank(void)
+void WaitForVBlank(void)
 {
     gMain.intrCheck &= ~INTR_FLAG_VBLANK;
 

@@ -2049,6 +2049,7 @@ bool8 UseRegisteredKeyItemOnField(void)
     {
         if (CheckBagHasItem(gSaveBlock1Ptr->registeredItem, 1) == TRUE)
         {
+            IncrementGameStat(GAME_STAT_SELECT_PRESSES);
             LockPlayerFieldControls();
             FreezeObjectEvents();
             PlayerFreeze();
