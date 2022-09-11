@@ -42,6 +42,7 @@ Known issues:
 - [ ] Farfetch'd Forest: When the farfetch'd flies, do hideReflection=true and add a shadow field effect or something; also disable ripples
 - [ ] Breeder in the Den doesn't look at you when talking.
 - [ ] PC in den does not use the dynamic menu system, needs to be updated with such.
+- [ ] Trick-Or-Treating: The hopping out of the ground to battle bug is back!
 
 
 Changes:

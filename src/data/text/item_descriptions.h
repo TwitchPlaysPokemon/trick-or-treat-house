@@ -5050,7 +5050,7 @@ static const u8 sEggDeviledDesc[] = _(
     "60% acc; 12 Dmg.\n"
     "-1 Def; Confuses.");
 
-static const u8 sCarrotName[] = _("Carrot Stick");
+static const u8 sCarrotName[] = _("Carrot Sticks");
 static const u8 sCarrotDesc[] = _(
     "With Ranch dip.\n"
     "Cures Paralysis;\n"
@@ -5068,7 +5068,7 @@ static const u8 sPruneDesc[] = _(
     "Cures Poison;\n"
     "heals 40 HP.");
 
-static const u8 sCeleryName[] = _("Celery Stick");
+static const u8 sCeleryName[] = _("Celery Sticks");
 static const u8 sCeleryDesc[] = _(
     "Peanut Butter dip.\n"
     "Cures Frozen;\n"

@@ -374,9 +374,15 @@ void RunOnDiveWarpMapScript(void)
 
 void RunOnSpawnObjectEventMapScript(u8 objId)
 {
-    // mgba_printf(MGBA_LOG_INFO, "RunOnSpawnObjectEventMapScript: %d", objId);
-    gSpecialVar_LastTalked = objId;
-    MapHeaderRunScriptType(MAP_SCRIPT_ON_SPAWN_OBJECT_EVENT);
+    u8 *ptr = MapHeaderGetScriptTable(MAP_SCRIPT_ON_SPAWN_OBJECT_EVENT);
+    u16 oldTalked;
+    if (ptr) {
+        // mgba_printf(MGBA_LOG_INFO, "RunOnSpawnObjectEventMapScript: %d", objId);
+        oldTalked = gSpecialVar_LastTalked;
+        gSpecialVar_LastTalked = objId;
+        RunScriptImmediately(ptr);
+        gSpecialVar_LastTalked = oldTalked;
+    }
 }
 
 u8 *GetMapHeaderString(u16 mapId, u8 tag)

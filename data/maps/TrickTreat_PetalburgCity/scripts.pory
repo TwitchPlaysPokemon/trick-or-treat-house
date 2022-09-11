@@ -298,10 +298,10 @@ script TrickTreat_PetalburgCity_ExitYoungster {
 	closemessage
 	if (var(VAR_FACING) == DIR_EAST) {
 		applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_BackOffLeft1)
-		waitmovement (0)
+		waitmovement (OBJ_EVENT_ID_PLAYER)
 	}
 	applymovement (THIS_EVENT, Common_Movement_WalkLeft1)
-	waitmovement (0)
+	waitmovement (THIS_EVENT)
 	applymovement (THIS_EVENT, Common_Movement_WalkInPlaceUp)
 	msgbox ("{JOEY} wrote down the secret code\n"
 			"on the door.\p"
@@ -309,12 +309,12 @@ script TrickTreat_PetalburgCity_ExitYoungster {
 	closemessage
 	playse (SE_M_STRENGTH)
 	applymovement (4, Common_Movement_ObjectDoorOpen)
-	waitmovement (0)
+	waitmovement (4)
 	applymovement (THIS_EVENT, Common_Movement_WalkUp1)
-	waitmovement (0)
+	waitmovement (THIS_EVENT)
 	removeobject (THIS_EVENT)
 	applymovement (4, Common_Movement_ObjectDoorClose)
-	waitmovement (0)
+	waitmovement (4)
 	setflag (FLAG_TRICK_HOUSE_PASSWORD_ENTERED)
 	release
 }
