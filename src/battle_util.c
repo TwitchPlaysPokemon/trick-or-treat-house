@@ -4291,6 +4291,15 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
     switch (caseID)
     {
     case ABILITYEFFECT_ON_SWITCHIN: // 0
+        // Hack for Chocolate Slab
+        if (ItemId_GetHoldEffect(gBattleMons[battler].item) == HOLD_EFFECT_INTIMIDATE) {
+            if (!(gSpecialStatuses[battler].intimidatedMon))
+            {
+                gBattleResources->flags->flags[battler] |= RESOURCE_FLAG_INTIMIDATED;
+                gSpecialStatuses[battler].intimidatedMon = TRUE;
+            }
+        }
+        
         gBattleScripting.battler = battler;
         switch (gLastUsedAbility)
         {
@@ -5844,11 +5853,13 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
     case ABILITYEFFECT_INTIMIDATE2:
         for (i = 0; i < gBattlersCount; i++)
         {
-            if (GetBattlerAbility(i) == ABILITY_INTIMIDATE && gBattleResources->flags->flags[i] & RESOURCE_FLAG_INTIMIDATED
+            bool8 hasIntimidate = (GetBattlerAbility(i) == ABILITY_INTIMIDATE) || ItemId_GetHoldEffect(gBattleMons[i].item) == HOLD_EFFECT_INTIMIDATE;
+            if (hasIntimidate && gBattleResources->flags->flags[i] & RESOURCE_FLAG_INTIMIDATED
                 && (IsBattlerAlive(BATTLE_OPPOSITE(i)) || IsBattlerAlive(BATTLE_PARTNER(BATTLE_OPPOSITE(i))))) // At least one opposing mon has to be alive.
             {
                 gBattleResources->flags->flags[i] &= ~RESOURCE_FLAG_INTIMIDATED;
                 gLastUsedAbility = ABILITY_INTIMIDATE;
+                gBattleCommunication[MULTISTRING_CHOOSER] = (ItemId_GetHoldEffect(gBattleMons[i].item) == HOLD_EFFECT_INTIMIDATE);
                 if (caseID == ABILITYEFFECT_INTIMIDATE1)
                 {
                     BattleScriptPushCursorAndCallback(BattleScript_IntimidateActivatesEnd3);

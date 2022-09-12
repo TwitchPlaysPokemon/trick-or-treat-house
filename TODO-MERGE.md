@@ -45,7 +45,8 @@ Known issues:
 - [ ] Trick-Or-Treating: The hopping out of the ground to battle bug is back!
 - [ ] Ice Path: GAME BREAKING!! Something happened to the rocks on the ice, and now they don't collide.
 - [ ] Twin Memories: GAME BREAKING!! The boulders are not showing up??
-- [ ] Intimidate uses the The Big Chocolate Slab message. Also, the big chocolate slab maybe should use the ability slide.
+- [X] Intimidate uses the The Big Chocolate Slab message. Also, the big chocolate slab maybe should use the ability slide.
+- [ ] Mountain Trail: mapping error in a corner of the ledge. Either collision is needed or move to lower layer.
 
 Changes:
 - [ ] Lost Woods 1: Use Amongous instead of electrode?
@@ -96,7 +97,7 @@ Others:
 			gBattleCommunication[MULTISTRING_CHOOSER] = (ItemId_GetHoldEffect(gBattleMons[i].item) == HOLD_EFFECT_INTIMIDATE);
 - [ ] In battle_util.c, implement HOLD_EFFECT_CURE_PAR_HP and others
 - [ ] Remove all sText_* from battle_strings_elf.h table and change the lookup function to fallback to the normal table in case of null pointer
-- [ ] Double check that gIntimidateStringIds is being used to look up for slab stuff.
+- [X] Double check that gIntimidateStringIds is being used to look up for slab stuff.
 - [ ] Syncronize the changes to BufferStringBattle with BORT mode
 - [x] Check Makefile over
 - [X] eventObject->unk3_3 -> disableReflection -> hideReflection
