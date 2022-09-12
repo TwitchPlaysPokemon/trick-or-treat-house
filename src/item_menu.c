@@ -1607,6 +1607,7 @@ static void OpenContextMenu(u8 taskId)
         {
             switch (gBagPosition.pocket)
             {
+            case CANDY_POCKET:
             case ITEMS_POCKET:
                 gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;
                 gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_ItemsPocket);
