@@ -37,6 +37,8 @@ PuzzleDebug_EventScript_ShowPuzzleSelect::
 	callnative ShowPuzzleSelect
 	waitstate @ script pauses here until manually reenabled
 	closemessage
+	setvar VAR_PUZZLE_STATE, 0
+	call PuzzleCommon_EventScript_ClearPuzzleData
 	releaseall
 	end
 PuzzleDebug_Text_PuzzleSelect:

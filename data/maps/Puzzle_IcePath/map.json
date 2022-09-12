@@ -162,7 +162,7 @@
     "id": "MAP_PUZZLE_ICE_PATH",
     "layout": "LAYOUT_PUZZLE_ICE_PATH",
     "map_type": "MAP_TYPE_UNDERGROUND",
-    "music": "MUS_ABANDONED_SHIP",
+    "music": "MUS_HG_ICE_PATH",
     "name": "Puzzle_IcePath",
     "object_events": [
         {

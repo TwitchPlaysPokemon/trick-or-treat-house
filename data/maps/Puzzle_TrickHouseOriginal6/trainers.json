@@ -1,7 +1,7 @@
 [
 	{
 		"class": "PKMN_RANGER",
-		"music": "COOL",
+		"music": "ENC_MUS_EM_COOL",
 		"pic": "PKMN_RANGER_F",
 		"female": true,
 		"name": "SOPHIA",
@@ -22,7 +22,7 @@
 	},
 	{
 		"class": "BIRD_KEEPER",
-		"music": "COOL",
+		"music": "ENC_MUS_EM_COOL",
 		"name": "BENNY",
 		"party": [
 			{
@@ -41,7 +41,7 @@
 	},
 	{
 		"class": "PKMN_RANGER",
-		"music": "COOL",
+		"music": "ENC_MUS_EM_COOL",
 		"pic": "PKMN_RANGER_M",
 		"name": "SEBASTIAN",
 		"items": ["ITEM_FULL_RESTORE"],

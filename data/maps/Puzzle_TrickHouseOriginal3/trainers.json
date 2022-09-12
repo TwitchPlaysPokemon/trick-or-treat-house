@@ -11,7 +11,7 @@
 	},
 	{
 		"class": "PICNICKER",
-		"music": "GIRL",
+		"music": "ENC_MUS_EM_GIRL",
 		"female": true,
 		"name": "MARTHA",
 		"party": [
@@ -27,7 +27,7 @@
 	},
 	{
 		"class": "HIKER",
-		"music": "HIKER",
+		"music": "ENC_MUS_EM_HIKER",
 		"name": "ALAN",
 		"party": [
 			{

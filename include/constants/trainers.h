@@ -389,20 +389,66 @@
 #define TRAINER_CLASS_PIKAKID        0x4F
 #define TRAINER_CLASS_SAGE_BORT      0x50
 
-#define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
-#define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music
-#define TRAINER_ENCOUNTER_MUSIC_GIRL         2 // used for male Tubers and Young Couples too
-#define TRAINER_ENCOUNTER_MUSIC_SUSPICIOUS   3
-#define TRAINER_ENCOUNTER_MUSIC_INTENSE      4
-#define TRAINER_ENCOUNTER_MUSIC_COOL         5
-#define TRAINER_ENCOUNTER_MUSIC_AQUA         6
-#define TRAINER_ENCOUNTER_MUSIC_MAGMA        7
-#define TRAINER_ENCOUNTER_MUSIC_SWIMMER      8
-#define TRAINER_ENCOUNTER_MUSIC_TWINS        9 // used for other trainer classes too
-#define TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR  10
-#define TRAINER_ENCOUNTER_MUSIC_HIKER       11 // used for other trainer classes too
-#define TRAINER_ENCOUNTER_MUSIC_INTERVIEWER 12
-#define TRAINER_ENCOUNTER_MUSIC_RICH        13 // Rich Boys and Gentlemen
+#define ENC_MUS_EM_MALE               0 // standard male encounter music
+#define ENC_MUS_EM_FEMALE             1 // standard female encounter music
+#define ENC_MUS_EM_GIRL               2 // used for male Tubers and Young Couples too
+#define ENC_MUS_EM_SUSPICIOUS         3
+#define ENC_MUS_EM_INTENSE            4
+#define ENC_MUS_EM_COOL               5
+#define ENC_MUS_EM_AQUA               6
+#define ENC_MUS_EM_MAGMA              7
+#define ENC_MUS_EM_SWIMMER            8
+#define ENC_MUS_EM_TWINS              9 // used for other trainer classes too
+#define ENC_MUS_EM_ELITE_FOUR        10
+#define ENC_MUS_EM_HIKER             11 // used for other trainer classes too
+#define ENC_MUS_EM_INTERVIEWER       12
+#define ENC_MUS_EM_RICH              13 // Rich Boys and Gentlemen
+#define ENC_MUS_EM_RIVAL_M           14
+#define ENC_MUS_EM_RIVAL_F           15
+#define ENC_MUS_EM_GYM_LEADER        16
+#define ENC_MUS_EM_TEAM_LEADER       17
+#define ENC_MUS_EM_CHAMP             18
+#define ENC_MUS_EN_FRONTIER          19
+#define ENC_MUS_FR_ROCKET            20
+#define ENC_MUS_FR_GIRL              21
+#define ENC_MUS_FR_BOY               22
+#define ENC_MUS_FR_RIVAL             23
+#define ENC_MUS_FR_GYM               24
+#define ENC_MUS_FR_CHAMP             25
+#define ENC_MUS_DP_BOY               26
+#define ENC_MUS_DP_GIRL              27
+#define ENC_MUS_DP_TWINS             28
+#define ENC_MUS_DP_INTENSE           29
+#define ENC_MUS_DP_GALACTIC          30
+#define ENC_MUS_DP_TEAM_ADMIN        31
+#define ENC_MUS_DP_TEAM_LEADER       32
+#define ENC_MUS_DP_LADY              33
+#define ENC_MUS_DP_HIKER             34
+#define ENC_MUS_DP_RITZY             35
+#define ENC_MUS_DP_SNECKY            36
+#define ENC_MUS_DP_SUSPICIOUS        37
+#define ENC_MUS_DP_ACE_TRAINER       38
+#define ENC_MUS_DP_MARATHON          39
+#define ENC_MUS_DP_ARTIST            40
+#define ENC_MUS_DP_GYM_LEADER        41  
+#define ENC_MUS_DP_ELITE_FOUR        42
+#define ENC_MUS_DP_CYNTHIA           43
+#define ENC_MUS_DP_FRONTIER          44
+#define ENC_MUS_HG_RIVAL             45
+#define ENC_MUS_HG_CLAIR             46
+#define ENC_MUS_HG_LASS              47
+#define ENC_MUS_HG_YOUNGSTER         48
+#define ENC_MUS_HG_GHOSTLY           49
+#define ENC_MUS_HG_SAGE              50
+#define ENC_MUS_HG_KIMONO            51
+#define ENC_MUS_HG_ROCKET            52
+#define ENC_MUS_HG_TOYBOX            53
+#define ENC_MUS_HG_ROUGHHOUSE        54
+#define ENC_MUS_HG_SNEAKY            55
+#define ENC_MUS_HG_GYM_LEADER        56
+#define ENC_MUS_HG_KANTO_LEADER      57
+#define ENC_MUS_HG_CHAMPION          58
+#define ENC_MUS_HG_FRONTIER          59
 
 #define F_TRAINER_FEMALE (1 << 7)
 

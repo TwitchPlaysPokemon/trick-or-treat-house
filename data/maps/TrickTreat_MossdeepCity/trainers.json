@@ -27,7 +27,7 @@
 		"class": "RIVAL",
 		"pic": "STEVEN",
 		"name": "STEVEN",
-		"music": "MALE",
+		"music": "ENC_MUS_EM_MALE",
 		"items": ["ITEM_FULL_RESTORE"],
 		"party": [
 			{
@@ -49,7 +49,7 @@
 		"class": "EXPERT",
 		"pic": "EXPERT_M",
 		"name": "PAXTON",
-		"music": "INTENSE",
+		"music": "ENC_MUS_EM_INTENSE",
 		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY",
 		"party": [
 			{
@@ -65,7 +65,7 @@
 	{
 		"class": "CAMPER",
 		"name": "DREW",
-		"music": "MALE",
+		"music": "ENC_MUS_EM_MALE",
 		"party": [
 			{
 				"species": "SPECIES_SANDSHREW",

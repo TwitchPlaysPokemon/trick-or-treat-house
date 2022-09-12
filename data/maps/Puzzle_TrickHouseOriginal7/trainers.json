@@ -1,7 +1,7 @@
 [
 	{
 		"class": "PLASMA_KID",
-		"music": "INTENSE",
+		"music": "ENC_MUS_EM_INTENSE",
 		"name": "JOSHUA",
 		"party": [
 			{
@@ -16,7 +16,7 @@
 	},
 	{
 		"class": "HEX_MANIAC",
-		"music": "SUSPICIOUS",
+		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"female": true,
 		"name": "PATRICIA",
 		"party": [
@@ -32,7 +32,7 @@
 	},
 	{
 		"class": "TWINS_PM",
-		"music": "TWINS",
+		"music": "ENC_MUS_EM_TWINS",
 		"female": true,
 		"doubleBattle": true,
 		"name": "AMY & LIV",
@@ -49,7 +49,7 @@
 	},
 	{
 		"class": "PSYCHIC",
-		"music": "INTENSE",
+		"music": "ENC_MUS_EM_INTENSE",
 		"pic": "PSYCHIC_F",
 		"female": true,
 		"name": "MARIELA",
@@ -62,7 +62,7 @@
 	},
 	{
 		"class": "PSYCHIC",
-		"music": "INTENSE",
+		"music": "ENC_MUS_EM_INTENSE",
 		"pic": "PSYCHIC_M",
 		"name": "ALVARO",
 		"party": [
@@ -78,7 +78,7 @@
 	},
 	{
 		"class": "GHETSIS",
-		"music": "RICH",
+		"music": "ENC_MUS_EM_RICH",
 		"name": "EVERETT",
 		"party": [
 			{

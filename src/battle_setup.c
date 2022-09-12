@@ -247,6 +247,70 @@ static const struct TrainerBattleParameter sTrainerBContinueScriptBattleParams[]
     {&sTrainerBattleEndScript,      TRAINER_PARAM_LOAD_SCRIPT_RET_ADDR},
 };
 
+static const u16 sTrainerEncounterMusicTable[] =
+{
+    [ENC_MUS_EM_MALE]        = MUS_ENCOUNTER_MALE,
+    [ENC_MUS_EM_FEMALE]      = MUS_ENCOUNTER_FEMALE,
+    [ENC_MUS_EM_GIRL]        = MUS_ENCOUNTER_GIRL,
+    [ENC_MUS_EM_SUSPICIOUS]  = MUS_ENCOUNTER_SUSPICIOUS,
+    [ENC_MUS_EM_INTENSE]     = MUS_ENCOUNTER_INTENSE,
+    [ENC_MUS_EM_COOL]        = MUS_ENCOUNTER_COOL,
+    [ENC_MUS_EM_AQUA]        = MUS_ENCOUNTER_AQUA,
+    [ENC_MUS_EM_MAGMA]       = MUS_ENCOUNTER_MAGMA,
+    [ENC_MUS_EM_SWIMMER]     = MUS_ENCOUNTER_SWIMMER,
+    [ENC_MUS_EM_TWINS]       = MUS_ENCOUNTER_TWINS,
+    [ENC_MUS_EM_ELITE_FOUR]  = MUS_ENCOUNTER_ELITE_FOUR,
+    [ENC_MUS_EM_HIKER]       = MUS_ENCOUNTER_HIKER,
+    [ENC_MUS_EM_INTERVIEWER] = MUS_ENCOUNTER_INTERVIEWER,
+    [ENC_MUS_EM_RICH]        = MUS_ENCOUNTER_RICH,
+    [ENC_MUS_EM_RIVAL_M]     = MUS_ENCOUNTER_BRENDAN,
+    [ENC_MUS_EM_RIVAL_F]     = MUS_ENCOUNTER_MAY,
+    [ENC_MUS_EM_GYM_LEADER]   = MUS_ENCOUNTER_INTENSE,
+    [ENC_MUS_EM_TEAM_LEADER]  = MUS_ENCOUNTER_AQUA,
+    [ENC_MUS_EM_CHAMP]       = MUS_ENCOUNTER_CHAMPION,
+    [ENC_MUS_EN_FRONTIER]    = MUS_ENCOUNTER_ELITE_FOUR,
+    [ENC_MUS_FR_ROCKET]      = MUS_RG_ENCOUNTER_ROCKET,
+    [ENC_MUS_FR_GIRL]        = MUS_RG_ENCOUNTER_GIRL,
+    [ENC_MUS_FR_BOY]         = MUS_RG_ENCOUNTER_BOY,
+    [ENC_MUS_FR_RIVAL]       = MUS_RG_ENCOUNTER_RIVAL,
+    [ENC_MUS_FR_GYM]         = MUS_RG_ENCOUNTER_GYM_LEADER,
+    [ENC_MUS_FR_CHAMP]       = MUS_RG_ENCOUNTER_GYM_LEADER,
+    [ENC_MUS_DP_BOY]         = MUS_DP_ENCOUNTER_BOY,
+    [ENC_MUS_DP_GIRL]        = MUS_DP_ENCOUNTER_GIRL,
+    [ENC_MUS_DP_TWINS]       = MUS_DP_ENCOUNTER_TWINS,
+    [ENC_MUS_DP_INTENSE]     = MUS_DP_ENCOUNTER_INTENSE,
+    [ENC_MUS_DP_GALACTIC]    = MUS_DP_ENCOUNTER_GALACTIC,
+    [ENC_MUS_DP_TEAM_ADMIN]  = MUS_DP_ENCOUNTER_GALACTIC,
+    [ENC_MUS_DP_TEAM_LEADER] = MUS_DP_ENCOUNTER_GALACTIC,
+    [ENC_MUS_DP_LADY]        = MUS_DP_ENCOUNTER_LADY,
+    [ENC_MUS_DP_HIKER]       = MUS_DP_ENCOUNTER_HIKER,
+    [ENC_MUS_DP_RITZY]       = MUS_DP_ENCOUNTER_RICH,
+    [ENC_MUS_DP_SNECKY]      = MUS_DP_ENCOUNTER_SAILOR,
+    [ENC_MUS_DP_SUSPICIOUS]  = MUS_DP_ENCOUNTER_SUSPICIOUS,
+    [ENC_MUS_DP_ACE_TRAINER] = MUS_DP_ENCOUNTER_ACE_TRAINER,
+    [ENC_MUS_DP_MARATHON]    = MUS_DP_ENCOUNTER_CYCLIST,
+    [ENC_MUS_DP_ARTIST]      = MUS_DP_ENCOUNTER_ARTIST,
+    [ENC_MUS_DP_GYM_LEADER]  = MUS_DP_ENCOUNTER_ELITE_FOUR,
+    [ENC_MUS_DP_ELITE_FOUR]  = MUS_DP_ENCOUNTER_ELITE_FOUR,
+    [ENC_MUS_DP_CYNTHIA]     = MUS_DP_ENCOUNTER_CHAMPION,
+    [ENC_MUS_DP_FRONTIER]    = MUS_DP_ENCOUNTER_INTENSE,
+    [ENC_MUS_HG_RIVAL]       = MUS_HG_ENCOUNTER_RIVAL,
+    [ENC_MUS_HG_CLAIR]       = MUS_HG_CLAIR,
+    [ENC_MUS_HG_LASS]        = MUS_HG_ENCOUNTER_GIRL_1,
+    [ENC_MUS_HG_YOUNGSTER]   = MUS_HG_ENCOUNTER_BOY_1,
+    [ENC_MUS_HG_GHOSTLY]     = MUS_HG_ENCOUNTER_SUSPICIOUS_1,
+    [ENC_MUS_HG_SAGE]        = MUS_HG_ENCOUNTER_SAGE,
+    [ENC_MUS_HG_KIMONO]      = MUS_HG_ENCOUNTER_KIMONO_GIRL,
+    [ENC_MUS_HG_ROCKET]      = MUS_HG_ENCOUNTER_ROCKET,
+    [ENC_MUS_HG_TOYBOX]      = MUS_HG_ENCOUNTER_GIRL_2,
+    [ENC_MUS_HG_ROUGHHOUSE]  = MUS_HG_ENCOUNTER_BOY_2,
+    [ENC_MUS_HG_SNEAKY]      = MUS_HG_ENCOUNTER_SUSPICIOUS_2,
+    [ENC_MUS_HG_GYM_LEADER]  = MUS_HG_ENCOUNTER_BOY_1,
+    [ENC_MUS_HG_KANTO_LEADER]= MUS_HG_ENCOUNTER_BOY_2,
+    [ENC_MUS_HG_CHAMPION]    = MUS_DP_ENCOUNTER_CHAMPION,
+    [ENC_MUS_HG_FRONTIER]    = MUS_HG_ENCOUNTER_SUSPICIOUS_2,
+};
+
 #define REMATCH(trainer1, trainer2, trainer3, trainer4, trainer5, map)  \
 {                                                                       \
     .trainerIds = {trainer1, trainer2, trainer3, trainer4, trainer5},   \
@@ -1487,50 +1551,11 @@ void PlayTrainerEncounterMusic(void)
     if (sTrainerBattleMode != TRAINER_BATTLE_CONTINUE_SCRIPT_NO_MUSIC
         && sTrainerBattleMode != TRAINER_BATTLE_CONTINUE_SCRIPT_DOUBLE_NO_MUSIC)
     {
-        switch (GetTrainerEncounterMusicId(trainerId))
-        {
-        case TRAINER_ENCOUNTER_MUSIC_MALE:
-            music = MUS_ENCOUNTER_MALE;
-            break;
-        case TRAINER_ENCOUNTER_MUSIC_FEMALE:
-            music = MUS_ENCOUNTER_FEMALE;
-            break;
-        case TRAINER_ENCOUNTER_MUSIC_GIRL:
-            music = MUS_ENCOUNTER_GIRL;
-            break;
-        case TRAINER_ENCOUNTER_MUSIC_INTENSE:
-            music = MUS_ENCOUNTER_INTENSE;
-            break;
-        case TRAINER_ENCOUNTER_MUSIC_COOL:
-            music = MUS_ENCOUNTER_COOL;
-            break;
-        case TRAINER_ENCOUNTER_MUSIC_AQUA:
-            music = MUS_ENCOUNTER_AQUA;
-            break;
-        case TRAINER_ENCOUNTER_MUSIC_MAGMA:
-            music = MUS_ENCOUNTER_MAGMA;
-            break;
-        case TRAINER_ENCOUNTER_MUSIC_SWIMMER:
-            music = MUS_ENCOUNTER_SWIMMER;
-            break;
-        case TRAINER_ENCOUNTER_MUSIC_TWINS:
-            music = MUS_ENCOUNTER_TWINS;
-            break;
-        case TRAINER_ENCOUNTER_MUSIC_ELITE_FOUR:
-            music = MUS_ENCOUNTER_ELITE_FOUR;
-            break;
-        case TRAINER_ENCOUNTER_MUSIC_HIKER:
-            music = MUS_ENCOUNTER_HIKER;
-            break;
-        case TRAINER_ENCOUNTER_MUSIC_INTERVIEWER:
-            music = MUS_ENCOUNTER_INTERVIEWER;
-            break;
-        case TRAINER_ENCOUNTER_MUSIC_RICH:
-            music = MUS_ENCOUNTER_RICH;
-            break;
-        default:
-            music = MUS_ENCOUNTER_SUSPICIOUS;
+        music = GetTrainerEncounterMusicId(trainerId);
+        if (music >= ARRAY_COUNT(sTrainerEncounterMusicTable)) {
+            music = ENC_MUS_EM_SUSPICIOUS;
         }
+        music = sTrainerEncounterMusicTable[music];
         PlayNewMapMusic(music);
     }
 }

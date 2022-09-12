@@ -56,7 +56,7 @@ In addition to the above map script header information, the following can be def
 	{
 		"class": "YOUNGSTER", // Trainer class, prepended with "TRAINER_CLASS_". Required.
 		"name": "JOEY", // Required.
-		"music": "INTENSE", // Prepended with "TRAINER_ENCOUNTER_MUSIC_"
+		"music": "ENC_MUS_EM_INTENSE",
 		"female": false, // If true, sets the female flag.
 		"pic": "YOUNGSTER", // Trainer pic, Prepended with "TRAINER_PIC_". Defaults to the same as "class".
 		"items": ["ITEM_POTION"], // Up to 4 items.

@@ -1,7 +1,7 @@
 [
 	{
 		"class": "PSYCHIC",
-		"music": "INTENSE",
+		"music": "ENC_MUS_EM_INTENSE",
 		"pic": "PSYCHIC_M",
 		"name": "JOSHUA",
 		"party": [
@@ -17,7 +17,7 @@
 	},
 	{
 		"class": "HEX_MANIAC",
-		"music": "SUSPICIOUS",
+		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"female": true,
 		"name": "PATRICIA",
 		"party": [
@@ -29,7 +29,7 @@
 	},
 	{
 		"class": "ALIEN",
-		"music": "GIRL",
+		"music": "ENC_MUS_EM_GIRL",
 		"female": true,
 		"name": "ALEXIS",
 		"party": [

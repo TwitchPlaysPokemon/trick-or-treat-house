@@ -19,7 +19,7 @@
 	{
 		"class": "PLASMA_KID",
 		"name": "JEREMY",
-		"music": "COOL",
+		"music": "ENC_MUS_EM_COOL",
 		"party": [
 			{
 				"species": "SPECIES_ZIGZAGOON",
@@ -37,7 +37,7 @@
 		"class": "FAIRY_GIRL",
 		"name": "KAYLEE",
 		"female": true,
-		"music": "TWINS",
+		"music": "ENC_MUS_EM_TWINS",
 		"party": [
 			{
 				"species": "SPECIES_ILLUMISE",
@@ -52,7 +52,7 @@
 	{
 		"class": "TARZAN",
 		"name": "MAGEE",
-		"music": "INTENSE",
+		"music": "ENC_MUS_EM_INTENSE",
 		"party": [
 			{
 				"species": "SPECIES_PRIMEAPE",
@@ -64,7 +64,7 @@
 		"class": "EXPERT",
 		"pic": "EXPERT_F",
 		"name": "EUNICE",
-		"music": "INTENSE",
+		"music": "ENC_MUS_EM_INTENSE",
 		"party": [
 			{
 				"species": "SPECIES_KADABRA",
@@ -80,7 +80,7 @@
 		"class": "POKEFAN",
 		"pic": "POKEFAN_M",
 		"name": "DERICK",
-		"music": "SUSPICIOUS",
+		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"party": [
 			{
 				"species": "SPECIES_SNUBBULL",
@@ -95,7 +95,7 @@
 	{
 		"class": "PIKAKID",
 		"name": "LUCY",
-		"music": "SUSPICIOUS",
+		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"party": [
 			{
 				"species": "SPECIES_PIKACHU",
@@ -106,7 +106,7 @@
 	{
 		"class": "NINJA_BOY",
 		"name": "HIDEKI",
-		"music": "SUSPICIOUS",
+		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"party": [
 			{
 				"species": "SPECIES_NINJASK",

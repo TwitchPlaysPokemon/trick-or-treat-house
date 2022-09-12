@@ -43,7 +43,9 @@ Known issues:
 - [ ] Breeder in the Den doesn't look at you when talking.
 - [ ] PC in den does not use the dynamic menu system, needs to be updated with such.
 - [ ] Trick-Or-Treating: The hopping out of the ground to battle bug is back!
-
+- [ ] Ice Path: GAME BREAKING!! Something happened to the rocks on the ice, and now they don't collide.
+- [ ] Twin Memories: GAME BREAKING!! The boulders are not showing up??
+- [ ] Intimidate uses the The Big Chocolate Slab message. Also, the big chocolate slab maybe should use the ability slide.
 
 Changes:
 - [ ] Lost Woods 1: Use Amongous instead of electrode?

@@ -12,7 +12,7 @@
 	{
 		"class": "NINJA_BOY",
 		"name": "NIGEL",
-		"music": "MALE",
+		"music": "ENC_MUS_EM_MALE",
 		"party": [
 			{
 				"species": "SPECIES_SCYTHER",
@@ -23,7 +23,7 @@
 	{
 		"class": "SKELETON",
 		"name": "JAMAL",
-		"music": "MALE",
+		"music": "ENC_MUS_EM_MALE",
 		"party": [
 			{
 				"species": "SPECIES_ONIX",
@@ -34,7 +34,7 @@
 	{
 		"class": "SKELETON",
 		"name": "IAN",
-		"music": "SUSPICIOUS",
+		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"party": [
 			{
 				"species": "SPECIES_DUSKULL",
@@ -50,7 +50,7 @@
 		"class": "ALIEN",
 		"name": "KELSEY",
 		"female": true,
-		"music": "INTENSE",
+		"music": "ENC_MUS_EM_INTENSE",
 		"party": [
 			{
 				"species": "SPECIES_BALTOY",

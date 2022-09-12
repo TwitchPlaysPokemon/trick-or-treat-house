@@ -7452,48 +7452,114 @@ u16 GetBattleBGM(void)
         return MUS_VS_TRAINER;
     else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
     {
-        u8 trainerClass;
-
-        if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
-            trainerClass = GetFrontierOpponentClass(gTrainerBattleOpponent_A);
-        else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
-            trainerClass = TRAINER_CLASS_EXPERT;
-        else
-            trainerClass = GetTrainer(gTrainerBattleOpponent_A)->trainerClass;
-
-        switch (trainerClass)
+        u8 encounterMusic = TRAINER_ENCOUNTER_MUSIC(gTrainerBattleOpponent_A);
+        
+        switch (encounterMusic)
         {
-        case TRAINER_CLASS_AQUA_LEADER:
-        case TRAINER_CLASS_MAGMA_LEADER:
-            return MUS_VS_AQUA_MAGMA_LEADER;
-        case TRAINER_CLASS_TEAM_AQUA:
-        case TRAINER_CLASS_TEAM_MAGMA:
-        case TRAINER_CLASS_AQUA_ADMIN:
-        case TRAINER_CLASS_MAGMA_ADMIN:
-            return MUS_VS_AQUA_MAGMA;
-        case TRAINER_CLASS_LEADER:
-            return MUS_VS_GYM_LEADER;
-        case TRAINER_CLASS_CHAMPION:
-            return MUS_VS_CHAMPION;
-        case TRAINER_CLASS_RIVAL:
-            if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
-                return MUS_VS_RIVAL;
-            if (!StringCompare(GetTrainer(gTrainerBattleOpponent_A)->trainerName, gText_BattleWallyName))
-                return MUS_VS_TRAINER;
-            return MUS_VS_RIVAL;
-        case TRAINER_CLASS_ELITE_FOUR:
-            return MUS_VS_ELITE_FOUR;
-        case TRAINER_CLASS_SALON_MAIDEN:
-        case TRAINER_CLASS_DOME_ACE:
-        case TRAINER_CLASS_PALACE_MAVEN:
-        case TRAINER_CLASS_ARENA_TYCOON:
-        case TRAINER_CLASS_FACTORY_HEAD:
-        case TRAINER_CLASS_PIKE_QUEEN:
-        case TRAINER_CLASS_PYRAMID_KING:
-            return MUS_VS_FRONTIER_BRAIN;
-        default:
-            return MUS_VS_TRAINER;
+            case ENC_MUS_EM_MALE:         return MUS_VS_TRAINER;
+            case ENC_MUS_EM_FEMALE:       return MUS_VS_TRAINER;
+            case ENC_MUS_EM_GIRL:         return MUS_VS_TRAINER;
+            case ENC_MUS_EM_SUSPICIOUS:   return MUS_VS_TRAINER;
+            case ENC_MUS_EM_INTENSE:      return MUS_VS_TRAINER;
+            case ENC_MUS_EM_COOL:         return MUS_VS_TRAINER;
+            case ENC_MUS_EM_AQUA:         return MUS_VS_AQUA_MAGMA;
+            case ENC_MUS_EM_MAGMA:        return MUS_VS_AQUA_MAGMA;
+            case ENC_MUS_EM_SWIMMER:      return MUS_VS_TRAINER;
+            case ENC_MUS_EM_TWINS:        return MUS_VS_TRAINER;
+            case ENC_MUS_EM_ELITE_FOUR:   return MUS_VS_ELITE_FOUR;
+            case ENC_MUS_EM_HIKER:        return MUS_VS_TRAINER;
+            case ENC_MUS_EM_INTERVIEWER:  return MUS_VS_TRAINER;
+            case ENC_MUS_EM_RICH:         return MUS_VS_TRAINER;
+            case ENC_MUS_EM_RIVAL_M:      return MUS_VS_RIVAL;
+            case ENC_MUS_EM_RIVAL_F:      return MUS_VS_RIVAL;
+            case ENC_MUS_EM_CHAMP:        return MUS_VS_CHAMPION;
+            case ENC_MUS_EM_GYM_LEADER:   return MUS_VS_GYM_LEADER;
+            case ENC_MUS_EM_TEAM_LEADER:  return MUS_VS_AQUA_MAGMA_LEADER;
+            case ENC_MUS_EN_FRONTIER:     return MUS_VS_FRONTIER_BRAIN;
+            case ENC_MUS_FR_ROCKET:       return MUS_RG_VS_TRAINER;
+            case ENC_MUS_FR_GIRL:         return MUS_RG_VS_TRAINER;
+            case ENC_MUS_FR_BOY:          return MUS_RG_VS_TRAINER;
+            case ENC_MUS_FR_RIVAL:        return MUS_RG_VS_TRAINER;
+            case ENC_MUS_FR_GYM:          return MUS_RG_VS_GYM_LEADER;
+            case ENC_MUS_FR_CHAMP:        return MUS_RG_VS_CHAMPION;
+            case ENC_MUS_DP_BOY:          return MUS_DP_VS_TRAINER;
+            case ENC_MUS_DP_GIRL:         return MUS_DP_VS_TRAINER;
+            case ENC_MUS_DP_TWINS:        return MUS_DP_VS_TRAINER;
+            case ENC_MUS_DP_INTENSE:      return MUS_DP_VS_TRAINER;
+            case ENC_MUS_DP_GALACTIC:     return MUS_DP_VS_GALACTIC;
+            case ENC_MUS_DP_TEAM_ADMIN:   return MUS_DP_VS_GALACTIC_COMMANDER;
+            case ENC_MUS_DP_TEAM_LEADER:  return MUS_DP_VS_GALACTIC_BOSS;
+            case ENC_MUS_DP_LADY:         return MUS_DP_VS_TRAINER;
+            case ENC_MUS_DP_HIKER:        return MUS_DP_VS_TRAINER;
+            case ENC_MUS_DP_RITZY:        return MUS_DP_VS_TRAINER;
+            case ENC_MUS_DP_SNECKY:       return MUS_DP_VS_TRAINER;
+            case ENC_MUS_DP_SUSPICIOUS:   return MUS_DP_VS_TRAINER;
+            case ENC_MUS_DP_ACE_TRAINER:  return MUS_DP_VS_TRAINER;
+            case ENC_MUS_DP_MARATHON:     return MUS_DP_VS_TRAINER;
+            case ENC_MUS_DP_ARTIST:       return MUS_DP_VS_TRAINER;
+            case ENC_MUS_DP_GYM_LEADER:   return MUS_DP_VS_GYM_LEADER;
+            case ENC_MUS_DP_ELITE_FOUR:   return MUS_DP_VS_ELITE_FOUR;
+            case ENC_MUS_DP_CYNTHIA:      return MUS_DP_VS_CHAMPION;
+            case ENC_MUS_DP_FRONTIER:     return MUS_PL_VS_FRONTIER_BRAIN;
+            case ENC_MUS_HG_RIVAL:        return MUS_HG_VS_RIVAL;
+            case ENC_MUS_HG_CLAIR:        return MUS_HG_VS_TRAINER;
+            case ENC_MUS_HG_LASS:         return MUS_HG_VS_TRAINER;
+            case ENC_MUS_HG_YOUNGSTER:    return MUS_HG_VS_TRAINER;
+            case ENC_MUS_HG_GHOSTLY:      return MUS_HG_VS_TRAINER;
+            case ENC_MUS_HG_SAGE:         return MUS_HG_VS_TRAINER;
+            case ENC_MUS_HG_KIMONO:       return MUS_HG_VS_TRAINER;
+            case ENC_MUS_HG_ROCKET:       return MUS_HG_VS_ROCKET;
+            case ENC_MUS_HG_TOYBOX:       return MUS_HG_VS_TRAINER_KANTO;
+            case ENC_MUS_HG_ROUGHHOUSE:   return MUS_HG_VS_TRAINER_KANTO;
+            case ENC_MUS_HG_SNEAKY:       return MUS_HG_VS_TRAINER_KANTO;
+            case ENC_MUS_HG_GYM_LEADER:   return MUS_HG_VS_GYM_LEADER;
+            case ENC_MUS_HG_KANTO_LEADER: return MUS_HG_VS_GYM_LEADER_KANTO;
+            case ENC_MUS_HG_CHAMPION:     return MUS_HG_VS_CHAMPION;
+            case ENC_MUS_HG_FRONTIER:     return MUS_HG_VS_FRONTIER_BRAIN;
+            default:                      return MUS_VS_TRAINER;
         }
+        
+
+        // if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
+        //     trainerClass = GetFrontierOpponentClass(gTrainerBattleOpponent_A);
+        // else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
+        //     trainerClass = TRAINER_CLASS_EXPERT;
+        // else
+            // trainerClass = GetTrainer(gTrainerBattleOpponent_A)->trainerClass;
+
+        // switch (trainerClass)
+        // {
+        // case TRAINER_CLASS_AQUA_LEADER:
+        // case TRAINER_CLASS_MAGMA_LEADER:
+        //     return MUS_VS_AQUA_MAGMA_LEADER;
+        // case TRAINER_CLASS_TEAM_AQUA:
+        // case TRAINER_CLASS_TEAM_MAGMA:
+        // case TRAINER_CLASS_AQUA_ADMIN:
+        // case TRAINER_CLASS_MAGMA_ADMIN:
+        //     return MUS_VS_AQUA_MAGMA;
+        // case TRAINER_CLASS_LEADER:
+        //     return MUS_VS_GYM_LEADER;
+        // case TRAINER_CLASS_CHAMPION:
+        //     return MUS_VS_CHAMPION;
+        // case TRAINER_CLASS_RIVAL:
+        //     if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
+        //         return MUS_VS_RIVAL;
+        //     if (!StringCompare(GetTrainer(gTrainerBattleOpponent_A)->trainerName, gText_BattleWallyName))
+        //         return MUS_VS_TRAINER;
+        //     return MUS_VS_RIVAL;
+        // case TRAINER_CLASS_ELITE_FOUR:
+        //     return MUS_VS_ELITE_FOUR;
+        // case TRAINER_CLASS_SALON_MAIDEN:
+        // case TRAINER_CLASS_DOME_ACE:
+        // case TRAINER_CLASS_PALACE_MAVEN:
+        // case TRAINER_CLASS_ARENA_TYCOON:
+        // case TRAINER_CLASS_FACTORY_HEAD:
+        // case TRAINER_CLASS_PIKE_QUEEN:
+        // case TRAINER_CLASS_PYRAMID_KING:
+        //     return MUS_VS_FRONTIER_BRAIN;
+        // default:
+        //     return MUS_VS_TRAINER;
+        // }
     }
     else
     {

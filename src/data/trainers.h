@@ -1,7 +1,7 @@
 #define DUMMY_TRAINER(name) \
     { \
         .trainerClass = TRAINER_CLASS_DEVELOPER, \
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE, \
+        .encounterMusic_gender = ENC_MUS_EM_MALE, \
         .trainerPic = TRAINER_PIC_YOUNGSTER, \
         .trainerName = name, \
         .items = {}, \
@@ -15,7 +15,7 @@ const struct Trainer gTrainers[] = {
     [TRAINER_NONE] =
     {
         .trainerClass = TRAINER_CLASS_DEVELOPER,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
+        .encounterMusic_gender = ENC_MUS_EM_MALE,
         .trainerPic = TRAINER_PIC_YOUNGSTER,
         .trainerName = _("JOEY"),
         .items = {},

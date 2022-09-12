@@ -11,7 +11,7 @@
 	},
 	{
 		"class": "FROGGER",
-		"music": "SWIMMER",
+		"music": "ENC_MUS_EM_SWIMMER",
 		"name": "LEONARDO",
 		"party": [
 			{
@@ -22,7 +22,7 @@
 	},
 	{
 		"class": "FROGGER",
-		"music": "SWIMMER",
+		"music": "ENC_MUS_EM_SWIMMER",
 		"name": "REED",
 		"party": [
 			{
@@ -37,7 +37,7 @@
 	},
 	{
 		"class": "MERMAID",
-		"music": "SWIMMER",
+		"music": "ENC_MUS_EM_SWIMMER",
 		"female": true,
 		"name": "TINA",
 		"party": [

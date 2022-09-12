@@ -10361,3 +10361,64 @@ bool32 CanTargetBattler(u8 battlerAtk, u8 battlerDef, u16 move)
         return FALSE;   // Pokémon affected by Heal Block cannot target allies with Pollen Puff
     return TRUE;
 }
+
+u16 GetVictoryMusicForBGM(u16 bgmId)
+{
+    switch (bgmId)
+    {
+    case MUS_VS_WILD:                     return MUS_VICTORY_WILD;
+    case MUS_VS_AQUA_MAGMA:               return MUS_VICTORY_AQUA_MAGMA;
+    case MUS_VS_TRAINER:                  return MUS_VICTORY_TRAINER;
+    case MUS_VS_GYM_LEADER:               return MUS_VICTORY_GYM_LEADER;
+    case MUS_VS_CHAMPION:                 return MUS_VICTORY_LEAGUE;
+    case MUS_VS_REGI:                     return MUS_VICTORY_WILD;
+    case MUS_VS_KYOGRE_GROUDON:           return MUS_VICTORY_WILD;
+    case MUS_VS_RIVAL:                    return MUS_VICTORY_TRAINER;
+    case MUS_VS_ELITE_FOUR:               return MUS_VICTORY_LEAGUE;
+    case MUS_VS_AQUA_MAGMA_LEADER:        return MUS_VICTORY_AQUA_MAGMA;
+    case MUS_RG_VS_GYM_LEADER:            return MUS_RG_VICTORY_GYM_LEADER;
+    case MUS_RG_VS_TRAINER:               return MUS_RG_VICTORY_TRAINER;
+    case MUS_RG_VS_WILD:                  return MUS_RG_VICTORY_WILD;
+    case MUS_RG_VS_CHAMPION:              return MUS_VICTORY_LEAGUE;
+    case MUS_RG_VS_DEOXYS:                return MUS_VICTORY_WILD;
+    case MUS_RG_VS_MEWTWO:                return MUS_VICTORY_WILD;
+    case MUS_RG_VS_LEGEND:                return MUS_VICTORY_WILD;
+    case MUS_VS_RAYQUAZA:                 return MUS_VICTORY_WILD;
+    case MUS_VS_FRONTIER_BRAIN:           return MUS_VICTORY_GYM_LEADER;
+    case MUS_VS_MEW:                      return MUS_VICTORY_WILD;
+    case MUS_DP_VS_WILD:                  return MUS_DP_VICTORY_WILD;
+    case MUS_DP_VS_GYM_LEADER:            return MUS_DP_VICTORY_GYM_LEADER;
+    case MUS_DP_VS_UXIE_MESPRIT_AZELF:    return MUS_DP_VICTORY_WILD;
+    case MUS_DP_VS_TRAINER:               return MUS_DP_VICTORY_TRAINER;
+    case MUS_DP_VS_GALACTIC_BOSS:         return MUS_DP_VICTORY_GALACTIC;
+    case MUS_DP_VS_DIALGA_PALKIA:         return MUS_DP_VICTORY_WILD;
+    case MUS_DP_VS_CHAMPION:              return MUS_DP_VICTORY_CHAMPION;
+    case MUS_DP_VS_GALACTIC:              return MUS_DP_VICTORY_GALACTIC;
+    case MUS_DP_VS_RIVAL:                 return MUS_DP_VICTORY_TRAINER;
+    case MUS_DP_VS_ARCEUS:                return MUS_DP_VICTORY_WILD;
+    case MUS_DP_VS_LEGEND:                return MUS_DP_VICTORY_WILD;
+    case MUS_DP_VS_GALACTIC_COMMANDER:    return MUS_DP_VICTORY_GALACTIC;
+    case MUS_DP_VS_ELITE_FOUR:            return MUS_DP_VICTORY_ELITE_FOUR;
+    case MUS_PL_VS_GIRATINA:              return MUS_DP_VICTORY_WILD;
+    case MUS_PL_VS_FRONTIER_BRAIN:        return MUS_PL_VICTORY_FRONTIER_BRAIN;
+    case MUS_PL_VS_REGI:                  return MUS_DP_VICTORY_WILD;
+    case MUS_HG_VS_WILD:                  return MUS_HG_VICTORY_WILD;
+    case MUS_HG_VS_TRAINER:               return MUS_HG_VICTORY_TRAINER;
+    case MUS_HG_VS_GYM_LEADER:            return MUS_HG_VICTORY_GYM_LEADER;
+    case MUS_HG_VS_RIVAL:                 return MUS_HG_VICTORY_TRAINER;
+    case MUS_HG_VS_ROCKET:                return MUS_HG_VICTORY_TRAINER;
+    case MUS_HG_VS_SUICUNE:               return MUS_HG_VICTORY_WILD;
+    case MUS_HG_VS_ENTEI:                 return MUS_HG_VICTORY_WILD;
+    case MUS_HG_VS_RAIKOU:                return MUS_HG_VICTORY_WILD;
+    case MUS_HG_VS_CHAMPION:              return MUS_HG_VICTORY_GYM_LEADER;
+    case MUS_HG_VS_WILD_KANTO:            return MUS_HG_VICTORY_TRAINER;
+    case MUS_HG_VS_TRAINER_KANTO:         return MUS_HG_VICTORY_TRAINER;
+    case MUS_HG_VS_GYM_LEADER_KANTO:      return MUS_HG_VICTORY_GYM_LEADER;
+    case MUS_HG_VS_HO_OH:                 return MUS_HG_VICTORY_WILD;
+    case MUS_HG_VS_LUGIA:                 return MUS_HG_VICTORY_WILD;
+    case MUS_HG_VS_KYOGRE_GROUDON:        return MUS_HG_VICTORY_WILD;
+    case MUS_HG_VS_ARCEUS:                return MUS_HG_VICTORY_WILD;
+    case MUS_HG_VS_FRONTIER_BRAIN:        return MUS_HG_VICTORY_FRONTIER_BRAIN;
+    default: return MUS_VICTORY_WILD;
+    }
+}

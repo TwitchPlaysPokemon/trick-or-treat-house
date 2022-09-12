@@ -112,9 +112,9 @@ void generate_trainer_table_text(ostringstream &text, string tablename, Json tra
         table << "\t.byte TRAINER_CLASS_" << trainer["class"].string_value() << "\n";
         
         if (trainer.object_items().find("music") != trainer.object_items().end())
-            table << "\t.byte TRAINER_ENCOUNTER_MUSIC_" << trainer["music"].string_value();
+            table << "\t.byte " << trainer["music"].string_value();
         else
-            table << "\t.byte TRAINER_ENCOUNTER_MUSIC_MALE";
+            table << "\t.byte ENC_MUS_EM_MALE";
         
         if (trainer.object_items().find("female") != trainer.object_items().end())
             table << "| F_TRAINER_FEMALE\n";

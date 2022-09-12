@@ -20,7 +20,7 @@
 		"class": "LASS",
 		"name": "MELIA",
 		"female": true,
-		"music": "TWINS",
+		"music": "ENC_MUS_EM_TWINS",
 		"party": [
 			{
 				"species": "SPECIES_MEOWTH",
@@ -31,7 +31,7 @@
 	{
 		"class": "BUG_CATCHER",
 		"name": "NOAH",
-		"music": "TWINS",
+		"music": "ENC_MUS_EM_TWINS",
 		"party": [
 			{
 				"species": "SPECIES_SKITTY",

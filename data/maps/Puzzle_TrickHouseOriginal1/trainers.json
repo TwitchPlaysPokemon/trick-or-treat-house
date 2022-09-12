@@ -1,7 +1,7 @@
 [
 	{
 		"class": "LASS",
-		"music": "FEMALE",
+		"music": "ENC_MUS_EM_FEMALE",
 		"female": true,
 		"name": "SALLY",
 		"party": [
@@ -27,7 +27,7 @@
 	},
 	{
 		"class": "LASS",
-		"music": "FEMALE",
+		"music": "ENC_MUS_EM_FEMALE",
 		"female": true,
 		"name": "ROBIN",
 		"party": [

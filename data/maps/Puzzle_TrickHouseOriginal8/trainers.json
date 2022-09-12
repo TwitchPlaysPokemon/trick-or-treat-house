@@ -1,7 +1,7 @@
 [
 	{
 		"class": "COOLTRAINER",
-		"music": "COOL",
+		"music": "ENC_MUS_EM_COOL",
 		"pic": "COOLTRAINER_M",
 		"name": "VINCENT",
 		"items": ["ITEM_FULL_RESTORE"],
@@ -26,7 +26,7 @@
 	},
 	{
 		"class": "COOLTRAINER",
-		"music": "COOL",
+		"music": "ENC_MUS_EM_COOL",
 		"female": true,
 		"pic": "COOLTRAINER_F",
 		"name": "KEIRA",
@@ -47,7 +47,7 @@
 	},
 	{
 		"class": "COOLTRAINER",
-		"music": "COOL",
+		"music": "ENC_MUS_EM_COOL",
 		"pic": "COOLTRAINER_M",
 		"name": "LEROY",
 		"items": ["ITEM_FULL_RESTORE"],

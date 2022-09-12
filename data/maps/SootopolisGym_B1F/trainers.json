@@ -1,7 +1,7 @@
 [
 	{
 		"class": "MERMAID",
-		"music": "SWIMMER",
+		"music": "ENC_MUS_EM_SWIMMER",
 		"female": true,
 		"name": "PENELOPE",
 		"party": [
@@ -18,7 +18,7 @@
 	{
 		"class": "FROGGER",
 		"name": "EWAN",
-		"music": "SUSPICIOUS",
+		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"party": [
 			{
 				"species": "SPECIES_POLITOED",
@@ -30,7 +30,7 @@
 	{
 		"class": "HIKER",
 		"name": "MONTY",
-		"music": "INTENSE",
+		"music": "ENC_MUS_EM_INTENSE",
 		"party": [
 			{
 				"species": "SPECIES_AGGRON",
@@ -41,7 +41,7 @@
 	{
 		"class": "NINJA_BOY",
 		"name": "BENNY",
-		"music": "SUSPICIOUS",
+		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"party": [
 			{
 				"species": "SPECIES_CACTURNE",
@@ -53,7 +53,7 @@
 	{
 		"class": "GHETSIS",
 		"name": "CARVER",
-		"music": "SUSPICIOUS",
+		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"party": [
 			{
 				"species": "SPECIES_CHIMECHO",
@@ -64,7 +64,7 @@
 	{
 		"class": "MASKED_BOY",
 		"name": "LUKAS",
-		"music": "COOL",
+		"music": "ENC_MUS_EM_COOL",
 		"party": [
 			{
 				"species": "SPECIES_SHUPPET",
@@ -75,7 +75,7 @@
 	{
 		"class": "PLASMA_KID",
 		"name": "OLIVIER",
-		"music": "COOL",
+		"music": "ENC_MUS_EM_COOL",
 		"party": [
 			{
 				"species": "SPECIES_SNORUNT",
@@ -91,7 +91,7 @@
 		"class": "ALIEN",
 		"name": "ARYA",
 		"female": true,
-		"music": "SUSPICIOUS",
+		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"party": [
 			{
 				"species": "SPECIES_MASQUERAIN",

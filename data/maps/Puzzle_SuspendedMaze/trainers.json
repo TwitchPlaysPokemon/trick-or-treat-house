@@ -92,7 +92,7 @@
 		"class": "CORPSE_BRIDE",
 		"name": "FIONA",
 		"female": true,
-		"music": "GIRL",
+		"music": "ENC_MUS_EM_GIRL",
 		"party": [
 			{
 				"species": "SPECIES_PARASECT",

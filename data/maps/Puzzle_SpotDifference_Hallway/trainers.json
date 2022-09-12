@@ -2,7 +2,7 @@
 	{
 		"class": "TARZAN",
 		"name": "CLAYTON",
-		"music": "MALE",
+		"music": "ENC_MUS_EM_MALE",
 		"party": [
 			{
 				"species": "SPECIES_SEVIPER",
@@ -19,7 +19,7 @@
 	{
 		"class": "SKELETON",
 		"name": "BONE JOVI",
-		"music": "MALE",
+		"music": "ENC_MUS_EM_MALE",
 		"party": [
 			{
 				"species": "SPECIES_CUBONE",
@@ -37,7 +37,7 @@
 		"class": "MERMAID",
 		"name": "ARIEL",
 		"female": true,
-		"music": "GIRL",
+		"music": "ENC_MUS_EM_GIRL",
 		"party": [
 			{
 				"species": "SPECIES_KRABBY",
@@ -60,7 +60,7 @@
 		"class": "CORPSE_BRIDE",
 		"name": "HELENA",
 		"female": true,
-		"music": "GIRL",
+		"music": "ENC_MUS_EM_GIRL",
 		"party": [
 			{
 				"species": "SPECIES_PARAS",
@@ -78,7 +78,7 @@
 		"class": "ALIEN",
 		"name": "ALEXA",
 		"female": true,
-		"music": "GIRL",
+		"music": "ENC_MUS_EM_GIRL",
 		"party": [
 			{
 				"species": "SPECIES_CLEFAIRY",
@@ -100,7 +100,7 @@
 	{
 		"class": "PLASMA_KID",
 		"name": "M",
-		"music": "MALE",
+		"music": "ENC_MUS_EM_MALE",
 		"party": [
 			{
 				"species": "SPECIES_GOLBAT",

@@ -18,7 +18,7 @@
 	{
 		"class": "YOUNGSTER",
 		"name": "KYLE",
-		"music": "MALE",
+		"music": "ENC_MUS_EM_MALE",
 		"party": [
 			{
 				"species": "SPECIES_MEOWTH",
@@ -35,7 +35,7 @@
 		"pic": "POKEFAN_F",
 		"name": "RACHEL",
 		"female": true,
-		"music": "TWINS",
+		"music": "ENC_MUS_EM_TWINS",
 		"party": [
 			{
 				"species": "SPECIES_SKITTY",

@@ -12,7 +12,7 @@
 	},
 	{
 		"class": "HIKER",
-		"music": "HIKER",
+		"music": "ENC_MUS_EM_HIKER",
 		"name": "HECTOR",
 		"party": [
 			{

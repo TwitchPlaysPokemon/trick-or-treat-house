@@ -34,7 +34,7 @@
 	},
 	{
 		"class": "FAIRY_GIRL",
-		"music": "GIRL",
+		"music": "ENC_MUS_EM_GIRL",
 		"female": true,
 		"name": "GEORGIA",
 		"party": [

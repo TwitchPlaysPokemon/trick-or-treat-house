@@ -13,7 +13,7 @@
 	{
 		"class": "SKELETON",
 		"name": "JAIME",
-		"music": "MALE",
+		"music": "ENC_MUS_EM_MALE",
 		"party": [
 			{
 				"species": "SPECIES_VULPIX",
@@ -29,7 +29,7 @@
 		"class": "PICNICKER",
 		"name": "EMILY",
 		"female": true,
-		"music": "GIRL",
+		"music": "ENC_MUS_EM_GIRL",
 		"party": [
 			{
 				"species": "SPECIES_SANDSHREW",
