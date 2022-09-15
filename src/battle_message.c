@@ -3046,13 +3046,21 @@ static void IllusionNickHack(u32 battlerId, u32 partyId, u8 *dst)
                 && &gEnemyParty[id] != mon
                 && &gEnemyParty[id] != partnerMon)
             {
+#ifdef BORT_REPLACEMENT
+                GetBortifiedPokemonName(&gEnemyParty[id], dst);
+#else
                 GetMonData(&gEnemyParty[id], MON_DATA_NICKNAME, dst);
+#endif
                 return;
             }
         }
     }
 
+#ifdef BORT_REPLACEMENT
+    GetBortifiedPokemonName(mon, dst);
+#else
     GetMonData(mon, MON_DATA_NICKNAME, dst);
+#endif
 }
 
 void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)

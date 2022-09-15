@@ -54,6 +54,8 @@ Changes:
 - [ ] Towers: Possibly add follower friend to help?
 - [ ] Change the emerald text border to orange themed.
 	- [ ] Also add an optional text box for person's name using short/narrow text
+- [ ] BORT: Go over the sGrammarMoveUsedTable and see if there's an updated version.
+- [ ] Wild Pokemon should drop items, if only so a wild battle doesn't just end without the victory music.
 
 Others:
 - [ ] Scripting Overhaul

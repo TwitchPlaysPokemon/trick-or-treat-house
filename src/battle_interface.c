@@ -28,6 +28,7 @@
 #include "item.h"
 #include "item_icon.h"
 #include "item_use.h"
+#include "event_data.h"
 #include "constants/battle_anim.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
@@ -2954,13 +2955,17 @@ static void ClearAbilityName(u8 spriteId1, u8 spriteId2)
                         FALSE);
 }
 
+const u8* GetBortSpecies(u16 species);
 static void PrintBattlerOnAbilityPopUp(u8 battlerId, u8 spriteId1, u8 spriteId2)
 {
     int i;
     u8 lastChar;
     u8* name;
     u8 monName[POKEMON_NAME_LENGTH + 3] = {0};
-    u8* nick = gBattleMons[battlerId].nickname;
+    const u8* nick = gBattleMons[battlerId].nickname;
+    if (FlagGet(FLAG_SYS_BORT_MODE)) {
+        nick = GetBortSpecies(gBattleMons[battlerId].species);
+    }
 
     for (i = 0; i < POKEMON_NAME_LENGTH; ++i)
     {
@@ -2983,6 +2988,7 @@ static void PrintBattlerOnAbilityPopUp(u8 battlerId, u8 spriteId1, u8 spriteId2)
     }
 
     name[0] = EOS;
+    StringUppercase(monName, monName);
     PrintOnAbilityPopUp((const u8 *)monName,
                         (void*)(OBJ_VRAM0) + (gSprites[spriteId1].oam.tileNum * 32),
                         (void*)(OBJ_VRAM0) + (gSprites[spriteId2].oam.tileNum * 32),
@@ -2992,9 +2998,14 @@ static void PrintBattlerOnAbilityPopUp(u8 battlerId, u8 spriteId1, u8 spriteId2)
                         FALSE);
 }
 
+extern const u8 gBort_AbilityNames[][7 + 1];
 static void PrintAbilityOnAbilityPopUp(u32 ability, u8 spriteId1, u8 spriteId2)
 {
-    PrintOnAbilityPopUp(gAbilityNames[ability],
+    const u8* name = gAbilityNames[ability];
+    if (FlagGet(FLAG_SYS_BORT_MODE)) {
+        name = gBort_AbilityNames[ability];
+    }
+    PrintOnAbilityPopUp(name,
                         (void*)(OBJ_VRAM0) + (gSprites[spriteId1].oam.tileNum * 32) + 256,
                         (void*)(OBJ_VRAM0) + (gSprites[spriteId2].oam.tileNum * 32) + 256,
                         6, 0,

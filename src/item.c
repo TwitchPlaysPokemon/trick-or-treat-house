@@ -114,10 +114,11 @@ void CopyItemName(u16 itemId, u8 *dst)
 extern void WaitForVBlank(void);
 void CopyItemNameHandlePlural(u16 itemId, u8 *dst, u32 quantity)
 {
-    mgba_printf(MGBA_LOG_INFO, "CopyItemNameHandlePlural = %d", itemId);
-    mgba_printf(MGBA_LOG_INFO, "ItemId_GetName = %X", ItemId_GetName(itemId));
-    mgba_printf(MGBA_LOG_INFO, "ItemId_GetPluralName = %X", ItemId_GetPluralName(itemId));
-    mgba_printf(MGBA_LOG_INFO, "ItemId_GetQuantumString = %X", ItemId_GetQuantumString(itemId));
+    if (FlagGet(FLAG_SYS_BORT_MODE)) 
+    {   // in BORT mode, don't bother with plurals or quantums or any of that.
+        CopyItemName(itemId, dst);
+        return;
+    }
     
     // Handle berries
     if (itemId >= ITEM_CHERI_BERRY && itemId <= ITEM_ENIGMA_BERRY)
@@ -212,7 +213,6 @@ void CopyItemNameHandlePlural(u16 itemId, u8 *dst, u32 quantity)
             StringCopy(dst, ItemId_GetPluralName(itemId));
         }
     }
-    mgba_printf(MGBA_LOG_INFO, "bottom of CopyItemNameHandlePlural");
 }
 
 void GetBerryCountString(u8 *dst, const u8 *berryName, u32 quantity)

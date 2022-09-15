@@ -59,7 +59,7 @@
     "id": "MAP_PUZZLE_TIN_TOWER_CLIMB",
     "layout": "LAYOUT_PUZZLE_TIN_TOWER_CLIMB",
     "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_B_ARENA",
+    "music": "MUS_HG_BELL_TOWER",
     "name": "Puzzle_TinTowerClimb",
     "object_events": [
         {

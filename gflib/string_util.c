@@ -537,6 +537,7 @@ static const u8 *ExpandPlaceholder_PlayerName(void)
 {
     if (FlagGet(FLAG_SYS_BORT_MODE)) {
         StringUppercase(gStringWorking, gSaveBlock2Ptr->playerName);
+        gStringWorking[4] = EOS; // truncate to 4 characters
         return gStringWorking;
     } else {
         return gSaveBlock2Ptr->playerName;

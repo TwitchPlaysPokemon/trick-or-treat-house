@@ -419,6 +419,15 @@ void BufferStringBattle_BORT(u16 stringID)
     BattleStringExpandPlaceholdersToDisplayedString(stringPtr);
 }
 
+const u8* GetBortSpecies(u16 species)
+{
+    const u8* bname = gBort_SpeciesNames[species];
+    if (bname == NULL || species >= ARRAY_COUNT(gBort_SpeciesNames) || *bname == 0x00) {
+        return gSpeciesNames[species];
+    }
+    return bname;
+}
+
 void GetBortifiedPokemonName(struct Pokemon* mon, u8* dst)
 {
     if (FlagGet(FLAG_SYS_BORT_MODE)) {
@@ -430,6 +439,7 @@ void GetBortifiedPokemonName(struct Pokemon* mon, u8* dst)
             GetMonData(mon, MON_DATA_NICKNAME, gBattleTextBuff7);
             StringGet_Nickname(gBattleTextBuff7);
             StringUppercase(dst, gBattleTextBuff7);
+            dst[5] = EOS; // truncate name
         } else {
             StringCopy(dst, bname);
         }

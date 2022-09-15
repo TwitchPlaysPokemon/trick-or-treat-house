@@ -7674,9 +7674,16 @@ u16 GetBattleBGM(void)
         case SPECIES_ARCEUS_FAIRY:
             return MUS_DP_VS_ARCEUS;
         #endif
-        default:
-            return MUS_VS_WILD;
+        default: break;
         }
+        u16 mapMusic = gMapHeader.music;
+        if (mapMusic > HG_MUSIC_START)
+            return MUS_HG_VS_WILD;
+        if (mapMusic > DP_MUSIC_START)
+            return MUS_DP_VS_WILD;
+        if (mapMusic > RG_MUSIC_START && mapMusic <= RG_MUSIC_END)
+            return MUS_RG_VS_WILD;
+        return MUS_VS_WILD;
     }
 }
 
