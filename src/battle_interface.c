@@ -2088,6 +2088,7 @@ static void SpriteCB_StatusSummaryBalls_OnSwitchout(struct Sprite *sprite)
     sprite->y2 = gSprites[barSpriteId].y2;
 }
 
+extern void GetBortifiedPokemonName(struct Pokemon* mon, u8* dst);
 static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
 {
     u8 nickname[POKEMON_NAME_LENGTH + 1];
@@ -2100,8 +2101,9 @@ static void UpdateNickInHealthbox(u8 healthboxSpriteId, struct Pokemon *mon)
         mon = illusionMon;
 
     StringCopy(gDisplayedStringBattle, gText_HealthboxNickname);
-    GetMonData(mon, MON_DATA_NICKNAME, nickname);
-    StringGet_Nickname(nickname);
+    // GetMonData(mon, MON_DATA_NICKNAME, nickname);
+    // StringGet_Nickname(nickname);
+    GetBortifiedPokemonName(mon, nickname);
     ptr = StringAppend(gDisplayedStringBattle, nickname);
 
     gender = GetMonGender(mon);

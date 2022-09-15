@@ -403,9 +403,6 @@ u8 *StringUppercase(u8 *dest, const u8 *src)
             case EOS:
                 *dest = EOS;
                 return dest;
-            case CHAR_PROMPT_SCROLL:
-            case CHAR_PROMPT_CLEAR:
-            case CHAR_NEWLINE:
             case CHAR_a: *dest++ = CHAR_A; break;
             case CHAR_b: *dest++ = CHAR_B; break;
             case CHAR_c: *dest++ = CHAR_C; break;
@@ -432,6 +429,9 @@ u8 *StringUppercase(u8 *dest, const u8 *src)
             case CHAR_x: *dest++ = CHAR_X; break;
             case CHAR_y: *dest++ = CHAR_Y; break;
             case CHAR_z: *dest++ = CHAR_Z; break;
+            case CHAR_PROMPT_SCROLL:
+            case CHAR_PROMPT_CLEAR:
+            case CHAR_NEWLINE:
             default:
                 *dest++ = c;
         }

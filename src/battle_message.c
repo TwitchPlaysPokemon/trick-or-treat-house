@@ -2371,6 +2371,7 @@ static const u8 *TryGetStatusString(u8 *src)
     return NULL;
 }
 
+#ifndef BORT_REPLACEMENT
 static void GetBattlerNick(u32 battlerId, u8 *dst)
 {
     struct Pokemon *mon, *illusionMon;
@@ -2386,6 +2387,7 @@ static void GetBattlerNick(u32 battlerId, u8 *dst)
     GetMonData(mon, MON_DATA_NICKNAME, dst);
     StringGet_Nickname(dst);
 }
+#endif
 
 #define HANDLE_NICKNAME_STRING_CASE(battlerId)                          \
     if (GetBattlerSide(battlerId) != B_SIDE_PLAYER)                     \
@@ -2490,6 +2492,7 @@ static const u8 *BattleStringGetPlayerName(u8 *text, u8 battlerId)
         {
             if (BORT) {
                 StringUppercase(gBattleTextBuff7, gSaveBlock2Ptr->playerName);
+                gBattleTextBuff7[4] = EOS; // cut off name to 4 characters
                 toCpy = gBattleTextBuff7;
             }
             else
@@ -2510,6 +2513,7 @@ static const u8 *BattleStringGetPlayerName(u8 *text, u8 battlerId)
         {
             if (BORT) {
                 StringUppercase(gBattleTextBuff7, gSaveBlock2Ptr->playerName);
+                gBattleTextBuff7[4] = EOS; // cut off name to 4 characters
                 toCpy = gBattleTextBuff7;
             }
             else
@@ -2545,8 +2549,10 @@ static const u8 *BattleStringGetOpponentClassByTrainerId(u16 trainerId)
     //     toCpy = gTrainerClassNames[GetTrainerHillOpponentClass(trainerId)];
     else if (gBattleTypeFlags & BATTLE_TYPE_EREADER_TRAINER)
         toCpy = gTrainerClassNames[GetEreaderTrainerClassId()];
-    else
+    else {
+        // Possibly TODO: use a gBort_TrainerClassNames array
         toCpy = gTrainerClassNames[GetTrainer(trainerId)->trainerClass];
+    }
 
     return toCpy;
 }
@@ -2683,6 +2689,7 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                 HANDLE_NICKNAME_STRING_CASE(gBattleScripting.battler)
                 break;
             case B_TXT_CURRENT_MOVE: // current move name
+#ifndef BORT_REPLACEMENT
                 if (gBattleStruct->zmove.active)
                     toCpy = GetZMoveName(gBattleMsgDataPtr->currentMove);
                 else if (gBattleMsgDataPtr->currentMove >= MOVES_COUNT)
@@ -2690,7 +2697,11 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                 else
                     toCpy = gMoveNames[gBattleMsgDataPtr->currentMove];
                 break;
+#else
+                toCpy = CopyMoveName(gBattleMsgDataPtr->currentMove);
+#endif
             case B_TXT_LAST_MOVE: // originally used move name
+#ifndef BORT_REPLACEMENT
                 if (gBattleStruct->zmove.active)
                     toCpy = GetZMoveName(gBattleMsgDataPtr->originallyUsedMove);
                 else if (gBattleMsgDataPtr->originallyUsedMove >= MOVES_COUNT)
@@ -2698,6 +2709,9 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                 else
                     toCpy = gMoveNames[gBattleMsgDataPtr->originallyUsedMove];
                 break;
+#else
+                toCpy = CopyMoveName(gBattleMsgDataPtr->originallyUsedMove);
+#endif
             case B_TXT_LAST_ITEM: // last used item
                 if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK))
                 {
@@ -2741,6 +2755,7 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                     toCpy = text;
                 }
                 break;
+#ifndef BORT_REPLACEMENT
             case B_TXT_LAST_ABILITY: // last used ability
                 toCpy = gAbilityNames[gLastUsedAbility];
                 break;
@@ -2756,6 +2771,23 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
             case B_TXT_EFF_ABILITY: // effect battlerId ability
                 toCpy = gAbilityNames[sBattlerAbilities[gEffectBattler]];
                 break;
+#else
+            case B_TXT_LAST_ABILITY: // last used ability
+                toCpy = CopyAbilityName(gLastUsedAbility);
+                break;
+            case B_TXT_ATK_ABILITY: // attacker ability
+                toCpy = CopyAbilityName(sBattlerAbilities[gBattlerAttacker]);
+                break;
+            case B_TXT_DEF_ABILITY: // target ability
+                toCpy = CopyAbilityName(sBattlerAbilities[gBattlerTarget]);
+                break;
+            case B_TXT_SCR_ACTIVE_ABILITY: // scripting active ability
+                toCpy = CopyAbilityName(sBattlerAbilities[gBattleScripting.battler]);
+                break;
+            case B_TXT_EFF_ABILITY: // effect battlerId ability
+                toCpy = CopyAbilityName(sBattlerAbilities[gEffectBattler]);
+                break;
+#endif
             case B_TXT_TRAINER1_CLASS: // trainer class name
                 toCpy = BattleStringGetOpponentClassByTrainerId(gTrainerBattleOpponent_A);
                 break;
@@ -3058,11 +3090,19 @@ void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
             srcID += src[srcID + 1] + 3;
             break;
         case B_BUFF_MOVE: // move name
-            StringAppend(dst, gMoveNames[T1_READ_16(&src[srcID + 1])]);
+            if (BORT) {
+                StringAppend(dst, gBort_MoveNames[T1_READ_16(&src[srcID + 1])]);
+            } else {
+                StringAppend(dst, gMoveNames[T1_READ_16(&src[srcID + 1])]);
+            }
             srcID += 3;
             break;
         case B_BUFF_TYPE: // type name
-            StringAppend(dst, gTypeNames[src[srcID + 1]]);
+            if (BORT) {
+                StringAppend(dst, gBort_Types[src[srcID + 1]]);
+            } else {
+                StringAppend(dst, gTypeNames[src[srcID + 1]]);
+            }
             srcID += 2;
             break;
         case B_BUFF_MON_NICK_WITH_PREFIX: // poke nick with prefix
@@ -3105,10 +3145,9 @@ void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
             else
             {
                 if (GetBattlerSide(src[srcID + 1]) == B_SIDE_PLAYER)
-                    GetMonData(&gPlayerParty[src[srcID + 2]], MON_DATA_NICKNAME, dst);
+                    GetBortifiedPokemonName(&gPlayerParty[src[srcID + 2]], dst);
                 else
-                    GetMonData(&gEnemyParty[src[srcID + 2]], MON_DATA_NICKNAME, dst);
-                StringGet_Nickname(dst);
+                    GetBortifiedPokemonName(&gEnemyParty[src[srcID + 2]], dst);
             }
             srcID += 3;
             break;

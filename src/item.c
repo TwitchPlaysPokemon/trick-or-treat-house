@@ -33,6 +33,7 @@ EWRAM_DATA struct BagPocket gBagPockets[POCKETS_COUNT] = {0};
 #include "data/pokemon/item_effects.h"
 #include "data/text/item_descriptions.h"
 #include "data/items.h"
+#include "data/text/elf/item_names.h"
 
 // code
 u16 GetBagItemQuantity(u16 *quantity)
@@ -91,10 +92,21 @@ void SetBagItemsPointers(void)
     gBagPockets[BERRIES_POCKET].capacity = BAG_BERRIES_COUNT;
 }
 
+static u16 SanitizeItemId(u16 itemId);
 void CopyItemName(u16 itemId, u8 *dst)
 {
-    if (FlagGet(FLAG_SYS_BORT_MODE))
-        StringUppercase(dst, ItemId_GetName(itemId));
+    itemId = SanitizeItemId(itemId);
+    if (FlagGet(FLAG_SYS_BORT_MODE)) {
+        const u8* name = gBort_ItemNames[itemId];
+        if (name == NULL || itemId >= ARRAY_COUNT(gBort_ItemNames) || *name == 0x00) {
+            // Get the normal item name if there's no BORT name
+            StringUppercase(dst, ItemId_GetName(itemId));
+        }
+        else {
+            StringCopy(dst, name);
+        }
+        dst[8] = EOS; // truncate item name to 7 chars
+    }
     else
         StringCopy(dst, ItemId_GetName(itemId));
 }
