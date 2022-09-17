@@ -33,7 +33,7 @@ build/
 .DS_Store
 *.ddump
 .idea/
-porymap.project.cfg
+porymap.user.cfg
 *.a
 .fuse_hidden*
 *.sna
