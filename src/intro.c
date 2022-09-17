@@ -224,9 +224,9 @@ static const struct CompressedSpriteSheet sSpriteSheet_RhhLogo[] =
 {
     {sRhhLogo_PoweredBy, 0x140, TAG_RHH_LOGO3},
     {sRhhLogo_PretSub_Gtx, 0x180, TAG_RHH_LOGO1A},
-    {sRhhLogo_RhhSub_Gtx, 0x1C0, TAG_RHH_LOGO2A},
-    {sRhhLogo_Pret_Gtx, 0x800, TAG_RHH_LOGO1},
-    {sRhhLogo_Rhh_Gtx, 0x800, TAG_RHH_LOGO2},
+    {sRhhLogo_RhhSub_Gtx, 0x120, TAG_RHH_LOGO2A},
+    {sRhhLogo_Pret_Gtx, 0x500, TAG_RHH_LOGO1},
+    {sRhhLogo_Rhh_Gtx, 0x400, TAG_RHH_LOGO2},
     {},
 };
 static const struct SpritePalette sSpritePalette_RhhLogo[] =
@@ -313,31 +313,24 @@ static const struct SubspriteTable sSubspriteTable_RhhLogo_PretSubtitle[] =
 static const struct Subsprite sSubsprites_RhhLogo_RhhSubtitle[] =
 {
     {
-        .x = -56, .y = 0,
+        .x = -40, .y = 0,
         .shape = SPRITE_SHAPE(32x8),
         .size = SPRITE_SIZE(32x8),
         .tileOffset = 0,
         .priority = 1,
     },
     {
-        .x = -24, .y = 0,
+        .x = -8, .y = 0,
         .shape = SPRITE_SHAPE(32x8),
         .size = SPRITE_SIZE(32x8),
         .tileOffset = 4,
         .priority = 1,
     },
     {
-        .x = 8, .y = 0,
-        .shape = SPRITE_SHAPE(32x8),
-        .size = SPRITE_SIZE(32x8),
+        .x = 24, .y = 0,
+        .shape = SPRITE_SHAPE(8x8),
+        .size = SPRITE_SIZE(8x8),
         .tileOffset = 8,
-        .priority = 1,
-    },
-    {
-        .x = 40, .y = 0,
-        .shape = SPRITE_SHAPE(16x8),
-        .size = SPRITE_SIZE(16x8),
-        .tileOffset = 12,
         .priority = 1,
     }
 };
@@ -3583,6 +3576,10 @@ static u8 CreateGameFreakLogoSprites(s16 x, s16 y, s16 unused)
 
 #pragma endregion
 
+#define tScale  data[1]
+#define tRot    data[2]
+#define tPos    data[3]
+/*
 static void SpriteCB_FlygonSilhouette(struct Sprite *sprite)
 {
     sprite->data[7]++;
@@ -3594,13 +3591,13 @@ static void SpriteCB_FlygonSilhouette(struct Sprite *sprite)
 
         s16 a, b, c, d;
 
-        sin1 = gSineTable[(u8)sprite->data[2]];
-        sin2 = gSineTable[(u8)(sprite->data[2] + 64)];
+        sin1 = gSineTable[(u8)sprite->tRot];
+        sin2 = gSineTable[(u8)(sprite->tRot + 64)];
 
-        d = Q_8_8_TO_INT(sin2 * sprite->data[1]);
-        c = Q_8_8_TO_INT(-sin1 * sprite->data[1]);
-        b = Q_8_8_TO_INT(sin1 * sprite->data[1]);
-        a = Q_8_8_TO_INT(sin2 * sprite->data[1]);
+        d = Q_8_8_TO_INT(sin2 * sprite->tScale);
+        c = Q_8_8_TO_INT(-sin1 * sprite->tScale);
+        b = Q_8_8_TO_INT(sin1 * sprite->tScale);
+        a = Q_8_8_TO_INT(sin2 * sprite->tScale);
 
         SetOamMatrix(1, a, b, c, d);
     }
@@ -3614,35 +3611,93 @@ static void SpriteCB_FlygonSilhouette(struct Sprite *sprite)
         CalcCenterToCornerVec(sprite, SPRITE_SHAPE(64x32), SPRITE_SIZE(64x32), ST_OAM_AFFINE_DOUBLE);
         sprite->invisible = FALSE;
         sprite->sState = 1;
-        sprite->data[1] = 0x80;
-        sprite->data[2] = 0;
-        sprite->data[3] = 0;
+        sprite->tScale = 0x80;
+        sprite->tRot   = 0;
+        sprite->tPos   = 0;
         break;
     case 1:
-        sprite->x2 = -Sin((u8)sprite->data[3], 140);
-        sprite->y2 = -Sin((u8)sprite->data[3], 120);
-        sprite->data[1] += 7;
-        sprite->data[3] += 3;
+        sprite->x2 = -Sin((u8)sprite->tPos, 140);
+        sprite->y2 = -Sin((u8)sprite->tPos, 120);
+        sprite->tScale += 7;
+        sprite->tPos   += 3;
         if (sprite->x + sprite->x2 <= -16)
         {
             sprite->oam.priority = 3;
             sprite->sState++;
             sprite->x = 20;
             sprite->y = 40;
-            sprite->data[1] = 0x200;
-            sprite->data[2] = 0;
-            sprite->data[3] = 0x10;
+            sprite->tScale = 0x200;
+            sprite->tRot   = 0;
+            sprite->tPos   = 0x10;
         }
         break;
     case 2:
         sprite->x2 = Sin((u8)sprite->data[3], 34);
         sprite->y2 = -Cos((u8)sprite->data[3], 60);
-        sprite->data[1] += 2;
+        sprite->tScale += 2;
         if (sprite->data[7] % 5 == 0)
             sprite->data[3]++;
         break;
     }
 }
+/*/
+static void SpriteCB_FlygonSilhouette(struct Sprite *sprite)
+{
+    sprite->data[7]++;
+
+    switch (sprite->sState)
+    {
+    case 0:
+    default:
+        sprite->oam.affineMode = 3;
+        sprite->oam.matrixNum = 1;
+        CalcCenterToCornerVec(sprite, 1, 3, 3);
+        sprite->invisible = FALSE;
+        sprite->sState = 1;
+        sprite->tScale = 128;
+        sprite->tRot   = -24;
+        sprite->tPos   = 0;
+        break;
+    case 1: {
+            s16 sin, cos;
+            s16 a, b, c, d;
+
+            if (sprite->tPos < 80)
+            {
+                sprite->y2 = -Sin((u8)sprite->tPos, 120);
+                sprite->x2 = -Sin((u8)sprite->tPos, 140);
+                if (sprite->tPos > 64)
+                    sprite->oam.priority = 3;
+            }
+            sin = gSineTable[(u8)sprite->tRot ];
+            cos = gSineTable[(u8)(sprite->tRot + 64)];
+            d = Q_8_8_TO_INT( cos * sprite->tScale);
+            c = Q_8_8_TO_INT(-sin * sprite->tScale);
+            b = Q_8_8_TO_INT( sin * sprite->tScale);
+            a = Q_8_8_TO_INT( cos * sprite->tScale);
+
+            SetOamMatrix(1, a, b, c, d);
+
+            if (sprite->tScale < 256) sprite->tScale += 8;
+            else                      sprite->tScale += 30;
+            
+            if (sprite->tRot < 24)           sprite->tRot += 1;
+            
+            if (sprite->tPos < 64)           sprite->tPos += 2;
+            else if (!(sprite->data[7] & 3)) sprite->tPos += 1;
+            
+            if (!(sprite->data[7] & 2)) {
+                if (sprite->tScale < 256) sprite->x += 2;
+                else                      sprite->x += 1;
+            }
+            break;
+        }
+    }
+}
+//*/
+#undef tScale
+#undef tRot
+#undef tPos
 
 static void SpriteCB_RayquazaOrb(struct Sprite *sprite)
 {
@@ -3698,8 +3753,15 @@ static void SpriteCB_RhhLogo_Follow(struct Sprite *sprite)
     if (sprite->tFollow != -1) {
         sprite->x = gSprites[sprite->tFollow].x + sprite->tOffsetX;
         sprite->y = gSprites[sprite->tFollow].y + sprite->tOffsetY;
+    } else {
+            if (gIntroFrameCounter == TIMER_PAN_UP) sprite->tCurrY = Q_8_8(sprite->y);
+            if (gIntroFrameCounter > TIMER_PAN_UP) {
+                sprite->tCurrY += Q_8_8(0.9);
+                sprite->y = Q_8_8_TO_INT(sprite->tCurrY);
+            }        
     }
     if (gIntroFrameCounter > TIMER_PAN_UP+64) {
+    // if (gIntroFrameCounter > TIMER_END_PAN_UP) {
         DestroySprite(sprite);
     }
 }
@@ -3717,8 +3779,13 @@ static void SpriteCB_RhhLogo_Logo(struct Sprite *sprite)
         
         sprite->y = Q_8_8_TO_INT(sprite->tDestY) + 32 - Sin((sprite->tTimer>>1), 32);
     }
-    
+    if (gIntroFrameCounter == TIMER_PAN_UP) sprite->tCurrY = Q_8_8(sprite->y);
+    if (gIntroFrameCounter > TIMER_PAN_UP) {
+        sprite->tCurrY += Q_8_8(0.7);
+        sprite->y = Q_8_8_TO_INT(sprite->tCurrY);
+    }
     if (gIntroFrameCounter > TIMER_PAN_UP+64) {
+    // if (gIntroFrameCounter > TIMER_END_PAN_UP) {
         DestroySprite(sprite);
     }
 }
