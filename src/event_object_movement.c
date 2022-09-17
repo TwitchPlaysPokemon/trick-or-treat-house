@@ -2259,6 +2259,8 @@ static bool8 ObjectEventDoesElevationMatch(struct ObjectEvent *objectEvent, u8 e
     // Allow grabbing/interacting with things on land from surfing and visa versa
     if (objectEvent->currentElevation == 1 && elevation == 3) return TRUE;
     if (objectEvent->currentElevation == 3 && elevation == 1) return TRUE;
+    if (objectEvent->currentElevation == 1 && elevation == 4) return TRUE;
+    if (objectEvent->currentElevation == 4 && elevation == 1) return TRUE;
     if (objectEvent->currentElevation != 0 && elevation != 0 && objectEvent->currentElevation != elevation)
         return FALSE;
 
@@ -7795,6 +7797,8 @@ bool8 IsElevationMismatchAt(u8 elevation, s16 x, s16 y)
     // Allow interaction between lowest ground and surfing
     if (mapElevation == 3 && elevation == 1) return 2;
     if (mapElevation == 1 && elevation == 3) return 2;
+    if (mapElevation == 4 && elevation == 1) return 2;
+    if (mapElevation == 1 && elevation == 4) return 2;
     
     if (mapElevation != elevation)
         return TRUE;
