@@ -26,6 +26,8 @@
 #include "constants/rgb.h"
 #include "constants/battle_anim.h"
 
+#pragma region Forward Declarations
+
 /*
     The intro is grouped into the following scenes
     Scene 0. Copyright screen
@@ -60,6 +62,9 @@ static void SpriteCB_Sparkle(struct Sprite *sprite);
 static void SpriteCB_LogoLetter(struct Sprite *sprite);
 static void SpriteCB_GameFreakLogo(struct Sprite *sprite);
 static void SpriteCB_FlygonSilhouette(struct Sprite *sprite);
+static u8 CreateRHHLogoSprites();
+static void SpriteCB_RhhLogo_Follow(struct Sprite *sprite);
+static void SpriteCB_RhhLogo_Logo(struct Sprite *sprite);
 
 // Scene 2 main tasks
 static void Task_Scene2_Load(u8);
@@ -112,16 +117,22 @@ extern const struct CompressedSpriteSheet gBattleAnimPicTable[];
 extern const struct CompressedSpritePalette gBattleAnimPaletteTable[];
 extern const struct SpriteTemplate gAncientPowerRockSpriteTemplate[];
 
-#define TAG_VOLBEAT   1500
-#define TAG_TORCHIC   1501
-#define TAG_MANECTRIC 1502
-#define TAG_LIGHTNING 1503
-#define TAG_BUBBLES   1504
-#define TAG_SPARKLE   1505
+#define TAG_VOLBEAT       1500
+#define TAG_TORCHIC       1501
+#define TAG_MANECTRIC     1502
+#define TAG_LIGHTNING     1503
+#define TAG_BUBBLES       1504
+#define TAG_SPARKLE       1505
+#define TAG_RHH_LOGO1     1506
+#define TAG_RHH_LOGO1A    1507
+#define TAG_RHH_LOGO2     1508
+#define TAG_RHH_LOGO2A    1509
+#define TAG_RHH_LOGO3     1510
 
 #define GFXTAG_DROPS_LOGO 2000
 #define PALTAG_DROPS      2000
 #define PALTAG_LOGO       2001
+#define PALTAG_RHH_LOGO   2005
 
 #define TAG_FLYGON_SILHOUETTE 2002
 #define TAG_RAYQUAZA_ORB      2003
@@ -146,8 +157,10 @@ extern const struct SpriteTemplate gAncientPowerRockSpriteTemplate[];
 #define TIMER_LOGO_DISAPPEAR            272
 #define TIMER_SMALL_DROP_1              368
 #define TIMER_SMALL_DROP_2              384
-#define TIMER_SPARKLES                  560
-#define TIMER_FLYGON_SILHOUETTE_APPEAR  832
+#define TIMER_POWERED_BY_FADE           480
+#define TIMER_SPARKLES                  739
+#define TIMER_PAN_UP                    739
+#define TIMER_FLYGON_SILHOUETTE_APPEAR  880
 #define TIMER_END_PAN_UP                904
 #define TIMER_END_SCENE_1              1007
 #define TIMER_START_SCENE_2            1026
@@ -197,12 +210,221 @@ static const u16 sIntroMisc_Pal[]             = INCBIN_U16("graphics/intro/scene
 static const u32 sIntroMisc_Gfx[]             = INCBIN_U32("graphics/intro/scene_3/misc.4bpp.lz"); // Rayquza orb, and misc unused gfx
 static const u16 sIntroFlygonSilhouette_Pal[] = INCBIN_U16("graphics/intro/scene_1/flygon.gbapal");
 static const u32 sIntroLati_Gfx[]             = INCBIN_U32("graphics/intro/scene_1/lati.4bpp.lz"); // Unused
-static const u8 sUnusedData[] = {
-    0x02, 0x03, 0x04, 0x05, 0x01, 0x01, 0x01, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x02, 0x0D,
-    0x0E, 0x0F, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x02, 0x0D, 0x0E, 0x0F,
-    0x10, 0x11, 0x12, 0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x1F, 0x20, 0x21, 0x02, 0x0D, 0x0E, 0x0F, 0x10,
-    0x11, 0x12, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2A, 0x00
+
+static const u16 sRhhLogo_Pal[]               = INCBIN_U16("graphics/intro/rhh_pal.gbapal");
+static const u32 sRhhLogo_Pret_Gtx[]          = INCBIN_U32("graphics/intro/rhh_pret.4bpp.lz");
+static const u32 sRhhLogo_PretSub_Gtx[]       = INCBIN_U32("graphics/intro/rhh_pret_sub.4bpp.lz");
+static const u32 sRhhLogo_Rhh_Gtx[]           = INCBIN_U32("graphics/intro/rhh_rhh.4bpp.lz");
+static const u32 sRhhLogo_RhhSub_Gtx[]        = INCBIN_U32("graphics/intro/rhh_rhh_sub.4bpp.lz");
+static const u32 sRhhLogo_PoweredBy[]         = INCBIN_U32("graphics/intro/rhh_powered_by.4bpp.lz");
+
+#pragma endregion
+
+static const struct CompressedSpriteSheet sSpriteSheet_RhhLogo[] =
+{
+    {sRhhLogo_PoweredBy, 0x140, TAG_RHH_LOGO3},
+    {sRhhLogo_PretSub_Gtx, 0x180, TAG_RHH_LOGO1A},
+    {sRhhLogo_RhhSub_Gtx, 0x1C0, TAG_RHH_LOGO2A},
+    {sRhhLogo_Pret_Gtx, 0x800, TAG_RHH_LOGO1},
+    {sRhhLogo_Rhh_Gtx, 0x800, TAG_RHH_LOGO2},
+    {},
 };
+static const struct SpritePalette sSpritePalette_RhhLogo[] =
+{
+    {sRhhLogo_Pal, PALTAG_RHH_LOGO}, // Lightning palette re-used
+    {},
+};
+
+static const struct Subsprite sSubsprites_RhhLogo_PretTitle[] =
+{   // Set up as one big section for the first three letters, and the last letter divided up below
+    // The division is needed to make the sprite tile correctly
+    {   // PRE
+        .x = -40, .y = 0,
+        .shape = SPRITE_SHAPE(64x32),
+        .size = SPRITE_SIZE(64x32),
+        .tileOffset = 0,
+        .priority = 1,
+    },
+    {   // T
+        .x = 24, .y = 0,
+        .shape = SPRITE_SHAPE(16x32),
+        .size = SPRITE_SIZE(16x32),
+        .tileOffset = 32,
+        .priority = 1,
+    }
+};
+static const struct SubspriteTable sSubspriteTable_RhhLogo_PretTitle[] =
+    { ARRAY_COUNT(sSubsprites_RhhLogo_PretTitle), sSubsprites_RhhLogo_PretTitle };
+
+static const struct Subsprite sSubsprites_RhhLogo_RhhTitle[] =
+{   // Set up with each letter in a 4x4 box, taking up a 3x4 area, shifted together
+    {   // R
+        .x = -36, .y = 0,
+        .shape = SPRITE_SHAPE(32x32),
+        .size = SPRITE_SIZE(32x32),
+        .tileOffset = 0,
+        .priority = 1,
+    },
+    {   // H
+        .x = -12, .y = 0,
+        .shape = SPRITE_SHAPE(32x32),
+        .size = SPRITE_SIZE(32x32),
+        .tileOffset = 16,
+        .priority = 1,
+    },
+    {   // H
+        .x = 12, .y = 0,
+        .shape = SPRITE_SHAPE(32x32),
+        .size = SPRITE_SIZE(32x32),
+        .tileOffset = 16,
+        .priority = 1,
+    },
+};
+static const struct SubspriteTable sSubspriteTable_RhhLogo_RhhTitle[] =
+    { ARRAY_COUNT(sSubsprites_RhhLogo_RhhTitle), sSubsprites_RhhLogo_RhhTitle };
+
+static const struct Subsprite sSubsprites_RhhLogo_PretSubtitle[] =
+{
+    {
+        .x = -48, .y = 0,
+        .shape = SPRITE_SHAPE(32x8),
+        .size = SPRITE_SIZE(32x8),
+        .tileOffset = 0,
+        .priority = 1,
+    },
+    {
+        .x = -16, .y = 0,
+        .shape = SPRITE_SHAPE(32x8),
+        .size = SPRITE_SIZE(32x8),
+        .tileOffset = 4,
+        .priority = 1,
+    },
+    {
+        .x = 16, .y = 0,
+        .shape = SPRITE_SHAPE(32x8),
+        .size = SPRITE_SIZE(32x8),
+        .tileOffset = 8,
+        .priority = 1,
+    }
+};
+static const struct SubspriteTable sSubspriteTable_RhhLogo_PretSubtitle[] =
+    { ARRAY_COUNT(sSubsprites_RhhLogo_PretSubtitle), sSubsprites_RhhLogo_PretSubtitle };
+
+static const struct Subsprite sSubsprites_RhhLogo_RhhSubtitle[] =
+{
+    {
+        .x = -56, .y = 0,
+        .shape = SPRITE_SHAPE(32x8),
+        .size = SPRITE_SIZE(32x8),
+        .tileOffset = 0,
+        .priority = 1,
+    },
+    {
+        .x = -24, .y = 0,
+        .shape = SPRITE_SHAPE(32x8),
+        .size = SPRITE_SIZE(32x8),
+        .tileOffset = 4,
+        .priority = 1,
+    },
+    {
+        .x = 8, .y = 0,
+        .shape = SPRITE_SHAPE(32x8),
+        .size = SPRITE_SIZE(32x8),
+        .tileOffset = 8,
+        .priority = 1,
+    },
+    {
+        .x = 40, .y = 0,
+        .shape = SPRITE_SHAPE(16x8),
+        .size = SPRITE_SIZE(16x8),
+        .tileOffset = 12,
+        .priority = 1,
+    }
+};
+static const struct SubspriteTable sSubspriteTable_RhhLogo_RhhSubtitle[] =
+    { ARRAY_COUNT(sSubsprites_RhhLogo_RhhSubtitle), sSubsprites_RhhLogo_RhhSubtitle };
+
+static const struct Subsprite sSubsprites_RhhLogo_PoweredBy[] =
+{
+    {
+        .x = -40, .y = 0,
+        .shape = SPRITE_SHAPE(32x8),
+        .size = SPRITE_SIZE(32x8),
+        .tileOffset = 0,
+        .priority = 1,
+    },
+    {
+        .x = -8, .y = 0,
+        .shape = SPRITE_SHAPE(32x8),
+        .size = SPRITE_SIZE(32x8),
+        .tileOffset = 4,
+        .priority = 1,
+    },
+    {
+        .x = 24, .y = 0,
+        .shape = SPRITE_SHAPE(16x8),
+        .size = SPRITE_SIZE(16x8),
+        .tileOffset = 8,
+        .priority = 1,
+    }
+};
+static const struct SubspriteTable sSubspriteTable_RhhLogo_PoweredBy[] =
+    { ARRAY_COUNT(sSubsprites_RhhLogo_PoweredBy), sSubsprites_RhhLogo_PoweredBy };
+
+static const struct OamData sOamData_RhhLogoBig =
+{
+    .x = 0, .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_BLEND,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(64x32),
+    .matrixNum = 0,
+    .size = SPRITE_SIZE(64x32),
+    .tileNum = 0,
+    .priority = 1,
+    .paletteNum = 0,
+    .affineParam = 0,
+};
+static const struct OamData sOamData_RhhLogoSmall =
+{
+    .x = 0, .y = 0,
+    .affineMode = ST_OAM_AFFINE_OFF,
+    .objMode = ST_OAM_OBJ_BLEND,
+    .mosaic = FALSE,
+    .bpp = ST_OAM_4BPP,
+    .shape = SPRITE_SHAPE(32x8),
+    .matrixNum = 0,
+    .size = SPRITE_SIZE(32x8),
+    .tileNum = 0,
+    .priority = 1,
+    .paletteNum = 0,
+    .affineParam = 0,
+};
+
+static const struct SpriteTemplate sSpriteTemplate_RhhLogoBig =
+{
+    .tileTag = TAG_RHH_LOGO1,
+    .paletteTag = PALTAG_RHH_LOGO,
+    .oam = &sOamData_RhhLogoBig,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_RhhLogo_Logo,
+};
+static const struct SpriteTemplate sSpriteTemplate_RhhLogoSmall =
+{
+    .tileTag = TAG_RHH_LOGO1,
+    .paletteTag = PALTAG_RHH_LOGO,
+    .oam = &sOamData_RhhLogoBig,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCB_RhhLogo_Follow,
+};
+
+#pragma region Definitions
+
 static const struct CompressedSpriteSheet sSpriteSheet_Sparkle[] =
 {
     {gIntroSparkle_Gfx, 0x400, TAG_SPARKLE},
@@ -1026,6 +1248,7 @@ static const struct SpritePalette sSpritePalette_RayquazaOrb[] =
     {},
 };
 
+#pragma endregion
 
 static void VBlankCB_Intro(void)
 {
@@ -1059,6 +1282,8 @@ static void LoadCopyrightGraphics(u16 tilesetAddress, u16 tilemapAddress, u16 pa
     LZ77UnCompVram(gIntroCopyright_Tilemap, (void *)(VRAM + tilemapAddress));
     LoadPalette(gIntroCopyright_Pal, paletteAddress, 32);
 }
+
+#pragma region Copy Screen
 
 static void SerialCB_CopyrightScreen(void)
 {
@@ -1160,6 +1385,10 @@ void CB2_InitCopyrightScreenAfterTitleScreen(void)
     SetUpCopyrightScreen();
 }
 
+#pragma endregion
+
+#pragma region Scene 1
+
 #define sBigDropSpriteId data[0]
 
 static void Task_Scene1_Load(u8 taskId)
@@ -1190,6 +1419,9 @@ static void Task_Scene1_Load(u8 taskId)
     LoadSpritePalettes(sSpritePalettes_Intro1);
     LoadCompressedSpriteSheet(sSpriteSheet_Sparkle);
     LoadSpritePalettes(sSpritePalette_Sparkle);
+    for (u32 i = 0; i < ARRAY_COUNT(sSpriteSheet_RhhLogo) - 1; i++)
+        LoadCompressedSpriteSheet(&sSpriteSheet_RhhLogo[i]);
+    LoadSpritePalettes(sSpritePalette_RhhLogo);
     CpuCopy16(&gPlttBufferUnfaded[0x100], &gPlttBufferUnfaded[0x1F0], 0x20);
     CpuCopy16(&gPlttBufferUnfaded[0x100], &gPlttBufferUnfaded[0x1E1], 0x1E);
     CpuCopy16(&gPlttBufferUnfaded[0x100], &gPlttBufferUnfaded[0x1D2], 0x1C);
@@ -1240,11 +1472,18 @@ static void Task_Scene1_WaterDrops(u8 taskId)
 
     if (gIntroFrameCounter == TIMER_SMALL_DROP_2)
         CreateWaterDrop(200, 60, 0x400, 9, 0x80, TRUE);
+    
+    if (gIntroFrameCounter == TIMER_POWERED_BY_FADE) {
+        CreateRHHLogoSprites();
+        CreateTask(Task_BlendLogoIn, 0);
+    }
 
-    if (gIntroFrameCounter == TIMER_SPARKLES)
+    if (gIntroFrameCounter == TIMER_SPARKLES) {
+        CreateTask(Task_BlendLogoOut, 0);
         CreateTask(Task_CreateSparkles, 0);
+    }
 
-    if (gIntroFrameCounter > TIMER_SPARKLES)
+    if (gIntroFrameCounter > TIMER_PAN_UP)
     {
         gTasks[taskId].tBg2PosHi = 80;
         gTasks[taskId].tBg2PosLo = 0;
@@ -1307,21 +1546,21 @@ static void Task_Scene1_PanUp(u8 taskId)
 
         // Slide bg 2 downward
         offset = (gTasks[taskId].tBg2PosHi << 16) + (u16)gTasks[taskId].tBg2PosLo;
-        offset -= 0x6000;
+        offset -= 0xC000; //0x6000;
         gTasks[taskId].tBg2PosHi = offset >> 16;
         gTasks[taskId].tBg2PosLo = offset;
         SetGpuReg(REG_OFFSET_BG2VOFS, gTasks[taskId].tBg2PosHi);
 
         // Slide bg 1 downward
         offset = (gTasks[taskId].tBg1PosHi << 16) + (u16)gTasks[taskId].tBg1PosLo;
-        offset -= 0x8000;
+        offset -= 0x10000; //0x8000;
         gTasks[taskId].tBg1PosHi = offset >> 16;
         gTasks[taskId].tBg1PosLo = offset;
         SetGpuReg(REG_OFFSET_BG1VOFS, gTasks[taskId].tBg1PosHi);
 
         // Slide bg 3 downward
         offset = (gTasks[taskId].tBg3PosHi << 16) + (u16)gTasks[taskId].tBg3PosLo;
-        offset -= 0xC000;
+        offset -= 0x18000; //0xC000;
         gTasks[taskId].tBg3PosHi = offset >> 16;
         gTasks[taskId].tBg3PosLo = offset;
         SetGpuReg(REG_OFFSET_BG0VOFS, gTasks[taskId].tBg3PosHi);
@@ -1349,6 +1588,10 @@ static void Task_Scene1_End(u8 taskId)
     if (gIntroFrameCounter > TIMER_START_SCENE_2)
         gTasks[taskId].func = Task_Scene2_Load;
 }
+
+#pragma endregion
+
+#pragma region Scene 2
 
 static void Task_Scene2_Load(u8 taskId)
 {
@@ -1711,6 +1954,10 @@ static void SpriteCB_Manectric(struct Sprite *sprite)
 
 #undef sSinIdx
 #undef sCosIdx
+
+#pragma endregion
+
+#pragma region Scene 3
 
 #define tAlpha        data[0]
 #define tZoomDiv      data[1]
@@ -2693,6 +2940,8 @@ static void Task_RayquazaAttack(u8 taskId)
     }
 }
 
+#pragma endregion
+
 static void IntroResetGpuRegs(void)
 {
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
@@ -2824,6 +3073,8 @@ void PanFadeAndZoomScreen(u16 screenX, u16 screenY, u16 zoom, u16 alpha)
     SetGpuReg(REG_OFFSET_BG2Y_L, dest.dy);
     SetGpuReg(REG_OFFSET_BG2Y_H, dest.dy >> 16);
 }
+
+#pragma region Water Drop Sprite CBs
 
 static void SpriteCB_WaterDrop_Ripple(struct Sprite *sprite)
 {
@@ -3066,6 +3317,8 @@ static u8 CreateWaterDrop(s16 x, s16 y, u16 c, u16 d, u16 e, u8 fallImmediately)
     return oldSpriteId;
 }
 
+#pragma endregion
+
 // State is handled by Task_Scene2_BikeRide
 static void SpriteCB_PlayerOnBicycle(struct Sprite *sprite)
 {
@@ -3158,6 +3411,8 @@ static void SpriteCB_Flygon(struct Sprite *sprite)
 }
 
 #undef sSinIdx
+
+#pragma region GF Logo Sprites
 
 #define sTimer      data[1]
 #define sLetterId   data[2]
@@ -3326,6 +3581,8 @@ static u8 CreateGameFreakLogoSprites(s16 x, s16 y, s16 unused)
 #undef sLetterX
 #undef COLOR_CHANGES
 
+#pragma endregion
+
 static void SpriteCB_FlygonSilhouette(struct Sprite *sprite)
 {
     sprite->data[7]++;
@@ -3418,3 +3675,119 @@ static void SpriteCB_RayquazaOrb(struct Sprite *sprite)
         break;
     }
 }
+
+#define tTimer      data[1]
+#define tCurrY      data[2]
+#define tDestY      data[3]
+#define tFollow     data[1]
+#define tOffsetX    data[2]
+#define tOffsetY    data[3]
+#define TIMER_END_FADE_IN     64
+#define TIMER_BEGIN_FADE_OUT  200
+#define TIMER_END_FADE_OUT   (TIMER_BEGIN_FADE_OUT+64)
+
+//TODO: Grab "Powered By" text
+// - Set up a series of 6 16x8 sprites for the small texts, attach _Sub to them
+// - Set up two large 64x32 sprites for the main logos, attach _Mater to one, _Sum to the other
+// - Have PRET logo on left, shifting downward slowly
+// - Have RHH logo on right, shifting upward slowly
+// - Have "Powered By" line up top, with _Powered attached, controlling opacity
+// - Adjust timing, aiming to fade away just before pan up
+static void SpriteCB_RhhLogo_Follow(struct Sprite *sprite)
+{
+    if (sprite->tFollow != -1) {
+        sprite->x = gSprites[sprite->tFollow].x + sprite->tOffsetX;
+        sprite->y = gSprites[sprite->tFollow].y + sprite->tOffsetY;
+    }
+    if (gIntroFrameCounter > TIMER_PAN_UP+64) {
+        DestroySprite(sprite);
+    }
+}
+
+static void SpriteCB_RhhLogo_Logo(struct Sprite *sprite)
+{
+    // if (sprite->tCurrY > sprite->tDestY + Q_8_8(0.2)) {
+    //     sprite->tCurrY -= Q_8_8(0.10);
+    // } else if (sprite->tCurrY < sprite->tDestY - Q_8_8(0.2)) {
+    //     sprite->tCurrY += Q_8_8(0.10);
+    // }
+    // sprite->y = Q_8_8_TO_INT(sprite->tCurrY);
+    if (sprite->tTimer < 64*2) {
+        sprite->tTimer++;
+        
+        sprite->y = Q_8_8_TO_INT(sprite->tDestY) + 32 - Sin((sprite->tTimer>>1), 32);
+    }
+    
+    if (gIntroFrameCounter > TIMER_PAN_UP+64) {
+        DestroySprite(sprite);
+    }
+}
+
+static u8 CreateRHHLogoSprites()
+{
+    // Stack-based sprite template so we don't have to have multiple
+    // in-ROM templates. This should be fine as long as we ensure that
+    // the created sprite points instead to the ROM-based template.
+    struct SpriteTemplate template;
+    u8 sIdMaster, sIdSub;
+    
+    { // Create PRET logo
+        template = sSpriteTemplate_RhhLogoBig;
+        template.tileTag = TAG_RHH_LOGO1;
+        sIdMaster = CreateSprite(&template, 120-60, 60, 0);
+        SetSubspriteTables(&gSprites[sIdMaster], sSubspriteTable_RhhLogo_PretTitle);
+        gSprites[sIdMaster].template = &sSpriteTemplate_RhhLogoBig;
+        gSprites[sIdMaster].tCurrY = Q_8_8(80);
+        gSprites[sIdMaster].tDestY = Q_8_8(70);
+        gSprites[sIdMaster].tTimer = 32;
+        
+        // TODO: Create pret subtitle
+        template = sSpriteTemplate_RhhLogoSmall;
+        template.tileTag = TAG_RHH_LOGO1A;
+        sIdSub = CreateSprite(&template, 120, 38, 0);
+        SetSubspriteTables(&gSprites[sIdSub], sSubspriteTable_RhhLogo_PretSubtitle);
+        gSprites[sIdSub].template = &sSpriteTemplate_RhhLogoSmall;
+        gSprites[sIdSub].tFollow = sIdMaster;
+        gSprites[sIdSub].tOffsetX = -4;
+        gSprites[sIdSub].tOffsetY = 40;
+    }
+    { // Create RHH logo
+        template = sSpriteTemplate_RhhLogoBig;
+        template.tileTag = TAG_RHH_LOGO2;
+        sIdMaster = CreateSprite(&template, 120+60, 100, 0);
+        SetSubspriteTables(&gSprites[sIdMaster], sSubspriteTable_RhhLogo_RhhTitle);
+        gSprites[sIdMaster].template = &sSpriteTemplate_RhhLogoBig;
+        gSprites[sIdMaster].tCurrY = Q_8_8(80);
+        gSprites[sIdMaster].tDestY = Q_8_8(70);
+        gSprites[sIdMaster].tTimer = 32;
+        
+        // TODO: Create pret subtitle
+        template = sSpriteTemplate_RhhLogoSmall;
+        template.tileTag = TAG_RHH_LOGO2A;
+        sIdSub = CreateSprite(&template, 120, 38, 0);
+        SetSubspriteTables(&gSprites[sIdSub], sSubspriteTable_RhhLogo_RhhSubtitle);
+        gSprites[sIdSub].template = &sSpriteTemplate_RhhLogoSmall;
+        gSprites[sIdSub].tFollow = sIdMaster;
+        gSprites[sIdSub].tOffsetX = 4;
+        gSprites[sIdSub].tOffsetY = 40;
+    }
+    { // Create Powered By
+        template = sSpriteTemplate_RhhLogoSmall;
+        template.tileTag = TAG_RHH_LOGO3;
+        sIdSub = CreateSprite(&template, 120, 38, 0);
+        SetSubspriteTables(&gSprites[sIdSub], sSubspriteTable_RhhLogo_PoweredBy);
+        gSprites[sIdSub].template = &sSpriteTemplate_RhhLogoSmall;
+        gSprites[sIdSub].tFollow = -1;
+    }
+    
+    // Create RHH Logo
+    // TODO
+    
+    // Create Pret subtitle
+    // Create RHH subtitle
+    // Create "Powered By"
+    
+}
+
+#undef sTimer
+#undef tFollow
