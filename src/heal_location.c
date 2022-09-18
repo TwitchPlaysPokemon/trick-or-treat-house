@@ -18,20 +18,22 @@ u32 GetHealLocationIndexByMap(u16 mapGroup, u16 mapNum)
 
 const struct HealLocation *GetHealLocationByMap(u16 mapGroup, u16 mapNum)
 {
-    u32 index = GetHealLocationIndexByMap(mapGroup, mapNum);
+    // u32 index = GetHealLocationIndexByMap(mapGroup, mapNum);
 
-    if (index == 0)
-        return NULL;
-    else
-        return &sHealLocations[index - 1];
+    // if (index == 0)
+    //     return NULL;
+    // else
+    //     return &sHealLocations[index - 1];
+    return &sHealLocations[0];
 }
 
 const struct HealLocation *GetHealLocation(u32 index)
 {
-    if (index == 0)
-        return NULL;
-    else if (index > ARRAY_COUNT(sHealLocations))
-        return NULL;
-    else
-        return &sHealLocations[index - 1];
+    return &sHealLocations[0];
+    // if (index == 0)
+    //     return NULL;
+    // else if (index > ARRAY_COUNT(sHealLocations))
+    //     return NULL;
+    // else
+    //     return &sHealLocations[index - 1];
 }
