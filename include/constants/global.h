@@ -23,6 +23,7 @@
 // TTH Version Detection
 #define VERSION_TTH_2019     0  // The game version detection was not in the 2019 release
 #define VERSION_TTH_2020    20
+#define VERSION_TTH_v3      21
 
 #define LANGUAGE_JAPANESE    1
 #define LANGUAGE_ENGLISH     2
@@ -33,7 +34,7 @@
 #define LANGUAGE_SPANISH     7
 #define NUM_LANGUAGES        7
 
-#define GAME_VERSION (VERSION_TTH_2020) //(VERSION_EMERALD)
+#define GAME_VERSION (VERSION_TTH_v3) //(VERSION_EMERALD)
 #define GAME_LANGUAGE (LANGUAGE_ENGLISH)
 
 // party sizes

@@ -1,6 +1,5 @@
 #include "global.h"
 #include "strings.h"
-#include "battle_pyramid_bag.h"
 #include "item_menu.h"
 
 ALIGNED(4)
@@ -338,13 +337,13 @@ const u8 *const gBagMenu_ReturnToStrings[] =
     [ITEMMENULOCATION_PCBOX]               = gText_ThePC
 };
 
-const u8 *const gPyramidBagMenu_ReturnToStrings[] =
-{
-    [PYRAMIDBAG_LOC_FIELD]       = gText_TheField,
-    [PYRAMIDBAG_LOC_BATTLE]      = gText_TheBattle,
-    [PYRAMIDBAG_LOC_PARTY]       = gText_ThePokemonList,
-    [PYRAMIDBAG_LOC_CHOOSE_TOSS] = gText_TheField
-};
+// const u8 *const gPyramidBagMenu_ReturnToStrings[] =
+// {
+//     [PYRAMIDBAG_LOC_FIELD]       = gText_TheField,
+//     [PYRAMIDBAG_LOC_BATTLE]      = gText_TheBattle,
+//     [PYRAMIDBAG_LOC_PARTY]       = gText_ThePokemonList,
+//     [PYRAMIDBAG_LOC_CHOOSE_TOSS] = gText_TheField
+// };
 
 const u8 gText_ReturnToVar1[] = _("Return to\n{STR_VAR_1}.");
 const u8 gText_CandyPocket[] = _("CANDY");

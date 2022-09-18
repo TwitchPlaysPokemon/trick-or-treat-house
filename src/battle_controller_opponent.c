@@ -3,17 +3,14 @@
 #include "battle_ai_main.h"
 #include "battle_ai_util.h"
 #include "battle_anim.h"
-#include "battle_arena.h"
 #include "battle_controllers.h"
 #include "battle_message.h"
 #include "battle_interface.h"
 #include "battle_setup.h"
-#include "battle_tower.h"
 #include "battle_tv.h"
 #include "battle_z_move.h"
 #include "bg.h"
 #include "data.h"
-#include "frontier_util.h"
 #include "item.h"
 #include "link.h"
 #include "main.h"
@@ -1251,42 +1248,42 @@ static void OpponentHandleDrawTrainerPic(void)
     {
         trainerPicId = GetSecretBaseTrainerPicIndex();
     }
-    else if (gTrainerBattleOpponent_A == TRAINER_FRONTIER_BRAIN)
-    {
-        trainerPicId = GetFrontierBrainTrainerPicIndex();
-    }
-    // else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
+    // else if (gTrainerBattleOpponent_A == TRAINER_FRONTIER_BRAIN)
     // {
-    //     if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+    //     trainerPicId = GetFrontierBrainTrainerPicIndex();
+    // }
+    // // else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
+    // // {
+    // //     if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
+    // //     {
+    // //         if (gActiveBattler == 1)
+    // //             trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_A);
+    // //         else
+    // //             trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_B);
+    // //     }
+    // //     else
+    // //     {
+    // //         trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_A);
+    // //     }
+    // // }
+    // else if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
+    // {
+    //     if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_TOWER_LINK_MULTI))
     //     {
     //         if (gActiveBattler == 1)
-    //             trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_A);
+    //             trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_A);
     //         else
-    //             trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_B);
+    //             trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_B);
     //     }
     //     else
     //     {
-    //         trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_A);
+    //         trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_A);
     //     }
     // }
-    else if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
-    {
-        if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_TOWER_LINK_MULTI))
-        {
-            if (gActiveBattler == 1)
-                trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_A);
-            else
-                trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_B);
-        }
-        else
-        {
-            trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_A);
-        }
-    }
-    else if (gBattleTypeFlags & BATTLE_TYPE_EREADER_TRAINER)
-    {
-        trainerPicId = GetEreaderTrainerFrontSpriteId();
-    }
+    // else if (gBattleTypeFlags & BATTLE_TYPE_EREADER_TRAINER)
+    // {
+    //     trainerPicId = GetEreaderTrainerFrontSpriteId();
+    // }
     else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
     {
         if (gActiveBattler != 1)
@@ -1335,10 +1332,10 @@ static void OpponentHandleTrainerSlide(void)
     {
         trainerPicId = GetSecretBaseTrainerPicIndex();
     }
-    else if (gTrainerBattleOpponent_A == TRAINER_FRONTIER_BRAIN)
-    {
-        trainerPicId = GetFrontierBrainTrainerPicIndex();
-    }
+    // else if (gTrainerBattleOpponent_A == TRAINER_FRONTIER_BRAIN)
+    // {
+    //     trainerPicId = GetFrontierBrainTrainerPicIndex();
+    // }
     // else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
     // {
     //     if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
@@ -1353,24 +1350,24 @@ static void OpponentHandleTrainerSlide(void)
     //         trainerPicId = GetTrainerHillTrainerFrontSpriteId(gTrainerBattleOpponent_A);
     //     }
     // }
-    else if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
-    {
-        if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_TOWER_LINK_MULTI))
-        {
-            if (gActiveBattler == 1)
-                trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_A);
-            else
-                trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_B);
-        }
-        else
-        {
-            trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_A);
-        }
-    }
-    else if (gBattleTypeFlags & BATTLE_TYPE_EREADER_TRAINER)
-    {
-        trainerPicId = GetEreaderTrainerFrontSpriteId();
-    }
+    // else if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
+    // {
+    //     if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_TOWER_LINK_MULTI))
+    //     {
+    //         if (gActiveBattler == 1)
+    //             trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_A);
+    //         else
+    //             trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_B);
+    //     }
+    //     else
+    //     {
+    //         trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_A);
+    //     }
+    // }
+    // else if (gBattleTypeFlags & BATTLE_TYPE_EREADER_TRAINER)
+    // {
+    //     trainerPicId = GetEreaderTrainerFrontSpriteId();
+    // }
     else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
     {
         if (gActiveBattler != 1)
@@ -1527,7 +1524,7 @@ static void OpponentHandlePrintString(void)
     BufferStringBattle(*stringId);
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MSG);
     gBattlerControllerFuncs[gActiveBattler] = CompleteOnInactiveTextPrinter;
-    BattleArena_DeductSkillPoints(gActiveBattler, *stringId);
+    // BattleArena_DeductSkillPoints(gActiveBattler, *stringId);
 }
 
 static void OpponentHandlePrintSelectionString(void)

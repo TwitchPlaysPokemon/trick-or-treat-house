@@ -8,7 +8,6 @@
 #include "link.h"
 #include "bg.h"
 #include "sound.h"
-#include "frontier_pass.h"
 #include "overworld.h"
 #include "menu.h"
 #include "text.h"
@@ -760,10 +759,10 @@ static void TrainerCard_GenerateCardForPlayer(struct TrainerCard *trainerCard)
     memset(trainerCard, 0, sizeof(struct TrainerCard));
     trainerCard->version = GAME_VERSION;
     SetPlayerCardData(trainerCard, CARD_TYPE_EMERALD);
-    trainerCard->hasAllFrontierSymbols = HasAllFrontierSymbols();
-    trainerCard->frontierBP = gSaveBlock2Ptr->frontier.cardBattlePoints;
-    if (trainerCard->hasAllFrontierSymbols)
-        trainerCard->stars++;
+    // trainerCard->hasAllFrontierSymbols = HasAllFrontierSymbols();
+    // trainerCard->frontierBP = gSaveBlock2Ptr->frontier.cardBattlePoints;
+    // if (trainerCard->hasAllFrontierSymbols)
+    //     trainerCard->stars++;
 
     if (trainerCard->gender == FEMALE)
         trainerCard->facilityClass = gLinkPlayerFacilityClasses[(trainerCard->trainerId % NUM_FEMALE_LINK_FACILITY_CLASSES) + NUM_MALE_LINK_FACILITY_CLASSES];
@@ -776,10 +775,10 @@ void TrainerCard_GenerateCardForLinkPlayer(struct TrainerCard *trainerCard)
     memset(trainerCard, 0, 0x60);
     trainerCard->version = GAME_VERSION;
     SetPlayerCardData(trainerCard, CARD_TYPE_EMERALD);
-    trainerCard->linkHasAllFrontierSymbols = HasAllFrontierSymbols();
-    *((u16 *)&trainerCard->linkPoints.frontier) = gSaveBlock2Ptr->frontier.cardBattlePoints;
-    if (trainerCard->linkHasAllFrontierSymbols)
-        trainerCard->stars++;
+    // trainerCard->linkHasAllFrontierSymbols = HasAllFrontierSymbols();
+    // *((u16 *)&trainerCard->linkPoints.frontier) = gSaveBlock2Ptr->frontier.cardBattlePoints;
+    // if (trainerCard->linkHasAllFrontierSymbols)
+    //     trainerCard->stars++;
 
     if (trainerCard->gender == FEMALE)
         trainerCard->facilityClass = gLinkPlayerFacilityClasses[(trainerCard->trainerId % NUM_FEMALE_LINK_FACILITY_CLASSES) + NUM_MALE_LINK_FACILITY_CLASSES];
@@ -1852,9 +1851,9 @@ void ShowPlayerTrainerCard(void (*callback)(void))
 {
     sData = AllocZeroed(sizeof(*sData));
     sData->callback2 = callback;
-    if (callback == CB2_ReshowFrontierPass)
-        sData->blendColor = RGB_WHITE;
-    else
+    // if (callback == CB2_ReshowFrontierPass)
+    //     sData->blendColor = RGB_WHITE;
+    // else
         sData->blendColor = RGB_BLACK;
 
     if (InUnionRoom() == TRUE)

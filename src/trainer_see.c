@@ -13,7 +13,6 @@
 #include "trainer_see.h"
 #include "trainer_hill.h"
 #include "util.h"
-// #include "battle_pyramid.h"
 #include "constants/battle_setup.h"
 #include "constants/event_objects.h"
 #include "constants/event_object_movement.h"

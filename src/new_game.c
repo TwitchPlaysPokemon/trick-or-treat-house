@@ -27,7 +27,6 @@
 #include "battle_records.h"
 #include "item.h"
 #include "pokedex.h"
-#include "frontier_util.h"
 #include "pokedex.h"
 #include "save.h"
 #include "link_rfu.h"
@@ -117,10 +116,10 @@ void ClearAllContestWinnerPics(void)
 
 static void ClearFrontierRecord(void)
 {
-    CpuFill32(0, &gSaveBlock2Ptr->frontier, sizeof(gSaveBlock2Ptr->frontier));
+    // CpuFill32(0, &gSaveBlock2Ptr->frontier, sizeof(gSaveBlock2Ptr->frontier));
 
-    gSaveBlock2Ptr->frontier.opponentNames[0][0] = EOS;
-    gSaveBlock2Ptr->frontier.opponentNames[1][0] = EOS;
+    // gSaveBlock2Ptr->frontier.opponentNames[0][0] = EOS;
+    // gSaveBlock2Ptr->frontier.opponentNames[1][0] = EOS;
 }
 
 static void WarpFirstMap(void)
@@ -156,7 +155,9 @@ void NewGameInitData(void)
 
     gDifferentSaveFile = TRUE;
     gSaveBlock2Ptr->encryptionKey = 0;
-    gSaveBlock2Ptr->gameVersionId = GAME_VERSION;
+    gSaveBlock2Ptr->gameVersion.sentinel = 0xFF;
+    gSaveBlock2Ptr->gameVersion.revision = 0;
+    gSaveBlock2Ptr->gameVersion.gameId = GAME_VERSION;
     ZeroPlayerPartyMons();
     ZeroEnemyPartyMons();
     ResetPokedex();
@@ -206,7 +207,7 @@ void NewGameInitData(void)
     ResetMiniGamesRecords();
     InitUnionRoomChatRegisteredTexts();
     InitLilycoveLady();
-    ClearRankingHallRecords();
+    // ClearRankingHallRecords();
     InitMatchCallCounters();
     ClearMysteryGift();
     WipeTrainerNameRecords();

@@ -1,6 +1,5 @@
 #include "global.h"
 #include "malloc.h"
-// #include "battle_pyramid.h"
 #include "berry.h"
 #include "day_night.h"
 #include "decoration.h"

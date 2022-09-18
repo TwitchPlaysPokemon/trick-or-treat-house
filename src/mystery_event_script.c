@@ -1,6 +1,5 @@
 #include "global.h"
 #include "berry.h"
-#include "battle_tower.h"
 #include "easy_chat.h"
 #include "event_data.h"
 #include "mail.h"
@@ -357,11 +356,11 @@ bool8 MEScrCmd_givepokemon(struct ScriptContext *ctx)
 
 bool8 MEScrCmd_addtrainer(struct ScriptContext *ctx)
 {
-    u32 data = ScriptReadWord(ctx) - ctx->mOffset + ctx->mScriptBase;
-    memcpy(&gSaveBlock2Ptr->frontier.ereaderTrainer, (void *)data, sizeof(gSaveBlock2Ptr->frontier.ereaderTrainer));
-    ValidateEReaderTrainer();
-    StringExpandPlaceholders(gStringBuffer, gText_MysteryEventNewTrainer);
-    ctx->mStatus = MEVENT_STATUS_SUCCESS;
+    // u32 data = ScriptReadWord(ctx) - ctx->mOffset + ctx->mScriptBase;
+    // memcpy(&gSaveBlock2Ptr->frontier.ereaderTrainer, (void *)data, sizeof(gSaveBlock2Ptr->frontier.ereaderTrainer));
+    // ValidateEReaderTrainer();
+    // StringExpandPlaceholders(gStringBuffer, gText_MysteryEventNewTrainer);
+    // ctx->mStatus = MEVENT_STATUS_SUCCESS;
     return FALSE;
 }
 

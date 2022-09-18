@@ -6,7 +6,6 @@
 #include "battle_interface.h"
 #include "battle_message.h"
 #include "battle_setup.h"
-#include "battle_tower.h"
 #include "battle_tv.h"
 #include "bg.h"
 #include "data.h"
@@ -1679,7 +1678,7 @@ static void LinkPartnerHandleEndLinkBattle(void)
 {
     RecordedBattle_RecordAllBattlerData(&gBattleResources->bufferA[gActiveBattler][4]);
     gBattleOutcome = gBattleResources->bufferA[gActiveBattler][1];
-    gSaveBlock2Ptr->frontier.disableRecordBattle = gBattleResources->bufferA[gActiveBattler][2];
+    // gSaveBlock2Ptr->frontier.disableRecordBattle = gBattleResources->bufferA[gActiveBattler][2];
     FadeOutMapMusic(5);
     BeginFastPaletteFade(3);
     LinkPartnerBufferExecCompleted();

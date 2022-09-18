@@ -1,7 +1,4 @@
 #include "global.h"
-#include "battle_pike.h"
-// #include "battle_pyramid.h"
-// #include "battle_pyramid_bag.h"
 #include "bg.h"
 #include "event_data.h"
 #include "event_object_movement.h"
@@ -13,8 +10,6 @@
 #include "field_specials.h"
 #include "field_weather.h"
 #include "field_screen_effect.h"
-#include "frontier_pass.h"
-#include "frontier_util.h"
 #include "gpu_regs.h"
 #include "international_string_util.h"
 #include "item_menu.h"
@@ -270,10 +265,10 @@ static void BuildStartMenuActions(void)
     {
         BuildSafariZoneStartMenu();
     }
-    else if (InBattlePike())
-    {
-        BuildBattlePikeStartMenu();
-    }
+    // else if (InBattlePike())
+    // {
+    //     BuildBattlePikeStartMenu();
+    // }
     // else if (InBattlePyramid())
     // {
     //     BuildBattlePyramidStartMenu();
@@ -406,17 +401,17 @@ static void ShowSafariBallsWindow(void)
 
 static void ShowPyramidFloorWindow(void)
 {
-    if (gSaveBlock2Ptr->frontier.curChallengeBattleNum == FRONTIER_STAGES_PER_CHALLENGE)
-        sBattlePyramidFloorWindowId = AddWindow(&sPyramidFloorWindowTemplate_1);
-    else
-        sBattlePyramidFloorWindowId = AddWindow(&sPyramidFloorWindowTemplate_2);
+    // if (gSaveBlock2Ptr->frontier.curChallengeBattleNum == FRONTIER_STAGES_PER_CHALLENGE)
+    //     sBattlePyramidFloorWindowId = AddWindow(&sPyramidFloorWindowTemplate_1);
+    // else
+    //     sBattlePyramidFloorWindowId = AddWindow(&sPyramidFloorWindowTemplate_2);
 
-    PutWindowTilemap(sBattlePyramidFloorWindowId);
-    DrawStdWindowFrame(sBattlePyramidFloorWindowId, FALSE);
-    StringCopy(gStringVar1, sPyramidFloorNames[gSaveBlock2Ptr->frontier.curChallengeBattleNum]);
-    StringExpandPlaceholders(gStringBuffer, gText_BattlePyramidFloor);
-    AddTextPrinterParameterized(sBattlePyramidFloorWindowId, FONT_NORMAL, gStringBuffer, 0, 1, TEXT_SKIP_DRAW, NULL);
-    CopyWindowToVram(sBattlePyramidFloorWindowId, COPYWIN_GFX);
+    // PutWindowTilemap(sBattlePyramidFloorWindowId);
+    // DrawStdWindowFrame(sBattlePyramidFloorWindowId, FALSE);
+    // StringCopy(gStringVar1, sPyramidFloorNames[gSaveBlock2Ptr->frontier.curChallengeBattleNum]);
+    // StringExpandPlaceholders(gStringBuffer, gText_BattlePyramidFloor);
+    // AddTextPrinterParameterized(sBattlePyramidFloorWindowId, FONT_NORMAL, gStringBuffer, 0, 1, TEXT_SKIP_DRAW, NULL);
+    // CopyWindowToVram(sBattlePyramidFloorWindowId, COPYWIN_GFX);
 }
 
 static void RemoveExtraStartMenuWindows(void)
@@ -695,8 +690,8 @@ static bool8 StartMenuPlayerNameCallback(void)
 
         if (IsOverworldLinkActive() || InUnionRoom())
             ShowPlayerTrainerCard(CB2_ReturnToFieldWithOpenMenu); // Display trainer card
-        else if (FlagGet(FLAG_SYS_FRONTIER_PASS))
-            ShowFrontierPass(CB2_ReturnToFieldWithOpenMenu); // Display frontier pass
+        // else if (FlagGet(FLAG_SYS_FRONTIER_PASS))
+        //     ShowFrontierPass(CB2_ReturnToFieldWithOpenMenu); // Display frontier pass
         else
             ShowPlayerTrainerCard(CB2_ReturnToFieldWithOpenMenu); // Display trainer card
 

@@ -79,18 +79,18 @@ enum {
     MON_DATA_SPECIES2,
     MON_DATA_IVS,
     MON_DATA_CHAMPION_RIBBON,
-    MON_DATA_WINNING_RIBBON,
-    MON_DATA_VICTORY_RIBBON,
     MON_DATA_ARTIST_RIBBON,
-    MON_DATA_EFFORT_RIBBON,
-    MON_DATA_MARINE_RIBBON,
-    MON_DATA_LAND_RIBBON,
-    MON_DATA_SKY_RIBBON,
-    MON_DATA_COUNTRY_RIBBON,
-    MON_DATA_NATIONAL_RIBBON,
-    MON_DATA_EARTH_RIBBON,
-    MON_DATA_WORLD_RIBBON,
-    MON_DATA_UNUSED_RIBBONS,
+    // MON_DATA_WINNING_RIBBON,
+    // MON_DATA_VICTORY_RIBBON,
+    // MON_DATA_EFFORT_RIBBON,
+    // MON_DATA_MARINE_RIBBON,
+    // MON_DATA_LAND_RIBBON,
+    // MON_DATA_SKY_RIBBON,
+    // MON_DATA_COUNTRY_RIBBON,
+    // MON_DATA_NATIONAL_RIBBON,
+    // MON_DATA_EARTH_RIBBON,
+    // MON_DATA_WORLD_RIBBON,
+    // MON_DATA_UNUSED_RIBBONS,
     MON_DATA_EVENT_LEGAL,
     MON_DATA_KNOWN_MOVES,
     MON_DATA_RIBBON_COUNT,
@@ -102,124 +102,79 @@ enum {
     MON_DATA_SPDEF2,
 };
 
-struct PokemonSubstruct0
-{
-    /*0x00*/ u16 species;
-    /*0x02*/ u16 heldItem;
-    /*0x04*/ u32 experience;
-    /*0x08*/ u8 ppBonuses;
-    /*0x09*/ u8 friendship;
-    /*0x0A*/ u16 pokeball:5; //31 balls
-             u16 filler:11;
-}; /* size = 12 */
-
-struct PokemonSubstruct1
-{
-    /*0x00*/ u16 moves[MAX_MON_MOVES];
-    /*0x08*/ u8 pp[MAX_MON_MOVES];
-}; /* size = 12 */
-
-struct PokemonSubstruct2
-{
-    /*0x00*/ u8 hpEV;
-    /*0x01*/ u8 attackEV;
-    /*0x02*/ u8 defenseEV;
-    /*0x03*/ u8 speedEV;
-    /*0x04*/ u8 spAttackEV;
-    /*0x05*/ u8 spDefenseEV;
-    /*0x06*/ u8 cool;
-    /*0x07*/ u8 beauty;
-    /*0x08*/ u8 cute;
-    /*0x09*/ u8 smart;
-    /*0x0A*/ u8 tough;
-    /*0x0B*/ u8 sheen;
-}; /* size = 12 */
-
-struct PokemonSubstruct3
-{
- /* 0x00 */ u8 pokerus;
- /* 0x01 */ u8 metLocation;
-
- /* 0x02 */ u16 metLevel:7;
- /* 0x02 */ u16 metGame:4;
- /* 0x03 */ u16 unused1:4;
- /* 0x03 */ u16 otGender:1;
-
- /* 0x04 */ u32 hpIV:5;
- /* 0x04 */ u32 attackIV:5;
- /* 0x05 */ u32 defenseIV:5;
- /* 0x05 */ u32 speedIV:5;
- /* 0x05 */ u32 spAttackIV:5;
- /* 0x06 */ u32 spDefenseIV:5;
- /* 0x07 */ u32 isEgg:1;
- /* 0x07 */ u32 unused2:1;
-
- /* 0x08 */ u32 coolRibbon:3;
- /* 0x08 */ u32 beautyRibbon:3;
- /* 0x08 */ u32 cuteRibbon:3;
- /* 0x09 */ u32 smartRibbon:3;
- /* 0x09 */ u32 toughRibbon:3;
- /* 0x09 */ u32 championRibbon:1;
- /* 0x0A */ u32 winningRibbon:1;
- /* 0x0A */ u32 victoryRibbon:1;
- /* 0x0A */ u32 artistRibbon:1;
- /* 0x0A */ u32 effortRibbon:1;
- /* 0x0A */ u32 marineRibbon:1; // never distributed
- /* 0x0A */ u32 landRibbon:1; // never distributed
- /* 0x0A */ u32 skyRibbon:1; // never distributed
- /* 0x0A */ u32 countryRibbon:1; // distributed during Pokémon Festa '04 and '05 to tournament winners
- /* 0x0B */ u32 nationalRibbon:1;
- /* 0x0B */ u32 earthRibbon:1;
- /* 0x0B */ u32 worldRibbon:1; // distributed during Pokémon Festa '04 and '05 to tournament winners
- /* 0x0B */ u32 unusedRibbons:2; // discarded in Gen 4
- /* 0x0B */ u32 abilityNum:2;
- /* 0x0B */ u32 eventLegal:1; // controls Mew & Deoxys obedience; if set, Pokémon is a fateful encounter in Gen 4+; set for in-game event island legendaries, some distributed events, and Pokémon from XD: Gale of Darkness.
-}; /* size = 12 */
-
-// Number of bytes in the largest Pokémon substruct.
-// They are assumed to be the same size, and will be padded to
-// the largest size by the union.
-// By default they are all 12 bytes.
-#define NUM_SUBSTRUCT_BYTES (max(sizeof(struct PokemonSubstruct0),     \
-                             max(sizeof(struct PokemonSubstruct1),     \
-                             max(sizeof(struct PokemonSubstruct2),     \
-                                 sizeof(struct PokemonSubstruct3)))))
-
-union PokemonSubstruct
-{
-    struct PokemonSubstruct0 type0;
-    struct PokemonSubstruct1 type1;
-    struct PokemonSubstruct2 type2;
-    struct PokemonSubstruct3 type3;
-    u16 raw[NUM_SUBSTRUCT_BYTES / 2]; // /2 because it's u16, not u8
-};
-
 struct BoxPokemon
 {
-    u32 personality;
-    u32 otId;
-    u8 nickname[POKEMON_NAME_LENGTH];
-    u8 language;
-    u8 isBadEgg:1;
-    u8 hasSpecies:1;
-    u8 isEgg:1;
-    u8 unused:5;
-    u8 otName[PLAYER_NAME_LENGTH];
-    u8 markings;
-    u16 checksum;
-    u16 unknown;
+    /*0x00*/ u32 personality;
+    /*0x04*/ u32 otId;
+    /*0x08*/ u8 nickname[POKEMON_NAME_LENGTH];
+    /*0x12*/ u8 language:3; // 7 possible languages
+             u8 pokerus:5; // 1-0xF is the timer. 0x10 is set when timer runs out
+    /*0x13*/ u8 isBadEgg:1;
+             u8 hasSpecies:1;
+             u8 isEgg:1;
+             u8 eventLegal:1; // controls Mew & Deoxys obedience;
+             u8 markings:4; // 15 combinations as per sAnims_MarkingCombo
+    /*0x14*/ u8 otName[PLAYER_NAME_LENGTH];
+    /*0x1F*/ u8 metLocation;
+    /*0x20*/ u16 species;
+    /*0x22*/ u16 heldItem;
+    /*0x24*/ u32 experience;
+    /*0x28*/ u16 metLevel:7;
+             u16 metGame:4;
+             u16 otGender:2;
+             u16 :0; // 5 bits
+    /*0x2A*/ u16 moves[MAX_MON_MOVES];
+    /*0x32*/ u8 pp[MAX_MON_MOVES];
+    /*0x36*/ u8 ppBonuses;
+    /*0x37*/ u8 friendship;
+    /*0x38*/ u32 pokeball:6;
+             u32 abilityNum:2;
+             u32 coolRibbon:3;
+             u32 beautyRibbon:3;
+             u32 cuteRibbon:3;
+             u32 smartRibbon:3;
+             u32 toughRibbon:3;
+             u32 championRibbon:1;
+             u32 artistRibbon:1;
+             u32 :0; 
+    /*0x3C*/ u32 hpIV:5;
+             u32 attackIV:5;
+             u32 defenseIV:5;
+             u32 speedIV:5;
+             u32 spAttackIV:5;
+             u32 spDefenseIV:5;
+             u32 :0; // 2 bits
+    /*0x40*/ u8 hpEV;
+    /*0x41*/ u8 attackEV;
+    /*0x42*/ u8 defenseEV;
+    /*0x43*/ u8 speedEV;
+    /*0x44*/ u8 spAttackEV;
+    /*0x45*/ u8 spDefenseEV; 
+    /*0x46*/ u8 cool;
+    /*0x47*/ u8 beauty;
+    /*0x48*/ u8 cute;
+    /*0x49*/ u8 smart;
+    /*0x4A*/ u8 tough;
+    /*0x4B*/ u8 sheen;
+    /*0x4C*/ u16 checksum;
+    /*0x4E*/ // 2 bytes padding due to alignment rules
+};  /*0x50*/
 
-    union
-    {
-        u32 raw[(NUM_SUBSTRUCT_BYTES * 4) / 4]; // *4 because there are 4 substructs, /4 because it's u32, not u8
-        union PokemonSubstruct substructs[4];
-    } secure;
+_Static_assert(sizeof(struct BoxPokemon) == 0x4C, "BoxPokemon is not expected size!");
+
+struct BoxPokemonChecksummer
+{
+    /*0x00*/ u32 data[(sizeof(struct BoxPokemon)-4)/4];
+    /*0x4C*/ u16 checksum;
 };
+
+_Static_assert(sizeof(struct BoxPokemon) == sizeof(struct BoxPokemonChecksummer), "BoxPokemonChecksummer is not the same size as BoxPokemon!");
+_Static_assert(offsetof(struct BoxPokemon, checksum) == offsetof(struct BoxPokemonChecksummer, checksum), "BoxPokemonChecksummer does not structurally match BoxPokemon!");
 
 struct Pokemon
 {
-    struct BoxPokemon box;
-    u32 status;
+    /*0x00*/ struct BoxPokemon box;
+    /*0x50*/ u32 status;
     u8 level;
     u8 mail;
     u16 hp;

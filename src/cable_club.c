@@ -589,14 +589,14 @@ void TryBattleLinkup(void)
         maxPlayers = 4;
         gLinkType = LINKTYPE_MULTI_BATTLE;
         break;
-    case USING_BATTLE_TOWER:
-        minPlayers = 2;
-        if (gSaveBlock2Ptr->frontier.lvlMode == FRONTIER_LVL_50)
-            gLinkType = LINKTYPE_BATTLE_TOWER_50;
-        else
-            gLinkType = LINKTYPE_BATTLE_TOWER_OPEN;
+    // case USING_BATTLE_TOWER:
+    //     minPlayers = 2;
+    //     if (gSaveBlock2Ptr->frontier.lvlMode == FRONTIER_LVL_50)
+    //         gLinkType = LINKTYPE_BATTLE_TOWER_50;
+    //     else
+    //         gLinkType = LINKTYPE_BATTLE_TOWER_OPEN;
 
-        break;
+    //     break;
     }
 
     CreateLinkupTask(minPlayers, maxPlayers);
@@ -738,12 +738,12 @@ u8 CreateTask_ReestablishCableClubLink(void)
     case USING_MULTI_BATTLE:
         gLinkType = LINKTYPE_MULTI_BATTLE;
         break;
-    case USING_BATTLE_TOWER:
-        if (gSaveBlock2Ptr->frontier.lvlMode == FRONTIER_LVL_50)
-            gLinkType = LINKTYPE_BATTLE_TOWER_50;
-        else
-            gLinkType = LINKTYPE_BATTLE_TOWER_OPEN;
-        break;
+    // case USING_BATTLE_TOWER:
+    //     if (gSaveBlock2Ptr->frontier.lvlMode == FRONTIER_LVL_50)
+    //         gLinkType = LINKTYPE_BATTLE_TOWER_50;
+    //     else
+    //         gLinkType = LINKTYPE_BATTLE_TOWER_OPEN;
+    //     break;
     case USING_TRADE_CENTER:
         gLinkType = LINKTYPE_TRADE;
         break;

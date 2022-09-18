@@ -155,7 +155,6 @@ SECTIONS {
         src/option_menu.o(.text);
         src/pokedex.o(.text);
         src/trainer_card.o(.text);
-        src/frontier_pass.o(.text);
         src/pokemon_storage_system.o(.text);
         src/pokemon_icon.o(.text);
         src/script_movement.o(.text);
@@ -259,7 +258,6 @@ SECTIONS {
         src/fldeff_softboiled.o(.text);
         src/decoration_inventory.o(.text);
         src/roamer.o(.text);
-        src/battle_tower.o(.text);
         src/use_pokeblock.o(.text);
         src/battle_controller_wally.o(.text);
         src/player_pc.o(.text);
@@ -289,14 +287,9 @@ SECTIONS {
         src/trainer_pokemon_sprites.o(.text);
         src/lilycove_lady.o(.text);
         src/battle_dome.o(.text);
-        src/battle_palace.o(.text);
         src/match_call.o(.text);
         src/menu.o(.text);
         src/battle_factory_screen.o(.text);
-        src/frontier_util.o(.text);
-        src/battle_arena.o(.text);
-        src/battle_factory.o(.text);
-        src/battle_pike.o(.text);
         src/rotating_tile_puzzle.o(.text);
         src/item_menu.o(.text);
         src/list_menu.o(.text);
@@ -538,7 +531,6 @@ SECTIONS {
         src/option_menu.o(.rodata);
         src/pokedex.o(.rodata);
         src/trainer_card.o(.rodata);
-        src/frontier_pass.o(.rodata);
         src/pokemon_storage_system.o(.rodata);
         src/pokemon_icon.o(.rodata);
         src/fldeff_cut.o(.rodata);
@@ -623,7 +615,6 @@ SECTIONS {
         src/battle_anim_effects_3.o(.rodata);
         src/move_relearner.o(.rodata);
         src/roamer.o(.rodata);
-        src/battle_tower.o(.rodata);
         src/use_pokeblock.o(.rodata);
         src/battle_controller_wally.o(.rodata);
         src/player_pc.o(.rodata);
@@ -651,14 +642,9 @@ SECTIONS {
         src/trainer_pokemon_sprites.o(.rodata);
         src/lilycove_lady.o(.rodata);
         src/battle_dome.o(.rodata);
-        src/battle_palace.o(.rodata);
         src/match_call.o(.rodata);
         src/menu.o(.rodata);
         src/battle_factory_screen.o(.rodata);
-        src/frontier_util.o(.rodata);
-        src/battle_arena.o(.rodata);
-        src/battle_factory.o(.rodata);
-        src/battle_pike.o(.rodata);
         src/rotating_tile_puzzle.o(.rodata);
         src/item_menu.o(.rodata);
         src/list_menu.o(.rodata);

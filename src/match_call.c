@@ -1889,81 +1889,81 @@ static bool32 ShouldTrainerRequestBattle(int matchCallId)
 
 static u16 GetFrontierStreakInfo(u16 facilityId, u32 *topicTextId)
 {
-    int i;
-    int j;
+    // int i;
+    // int j;
     u16 streak = 0;
 
-    switch (facilityId)
-    {
-    case FRONTIER_FACILITY_DOME:
-        for (i = 0; i < (int)ARRAY_COUNT(gSaveBlock2Ptr->frontier.domeRecordWinStreaks); i++)
-        {
-            for (j = 0; j < FRONTIER_LVL_MODE_COUNT; j++)
-            {
-                if (streak < gSaveBlock2Ptr->frontier.domeRecordWinStreaks[i][j])
-                    streak = gSaveBlock2Ptr->frontier.domeRecordWinStreaks[i][j];
-            }
-        }
-        *topicTextId = GEN_TOPIC_B_DOME - 1;
-        break;
-    case MATCH_CALL_PIKE:
-        for (i = 0; i < FRONTIER_LVL_MODE_COUNT; i++)
-        {
-            if (streak < gSaveBlock2Ptr->frontier.pikeRecordStreaks[i])
-                streak = gSaveBlock2Ptr->frontier.pikeRecordStreaks[i];
-        }
-        *topicTextId = GEN_TOPIC_B_PIKE - 1;
-        break;
-    case FRONTIER_FACILITY_TOWER:
-        for (i = 0; i < (int)ARRAY_COUNT(gSaveBlock2Ptr->frontier.towerRecordWinStreaks); i++)
-        {
-            for (j = 0; j < FRONTIER_LVL_MODE_COUNT; j++)
-            {
-                if (streak < gSaveBlock2Ptr->frontier.towerRecordWinStreaks[i][j])
-                    streak = gSaveBlock2Ptr->frontier.towerRecordWinStreaks[i][j];
-            }
-        }
-        *topicTextId = GEN_TOPIC_STREAK_RECORD - 1;
-        break;
-    case FRONTIER_FACILITY_PALACE:
-        for (i = 0; i < (int)ARRAY_COUNT(gSaveBlock2Ptr->frontier.palaceRecordWinStreaks); i++)
-        {
-            for (j = 0; j < FRONTIER_LVL_MODE_COUNT; j++)
-            {
-                if (streak < gSaveBlock2Ptr->frontier.palaceRecordWinStreaks[i][j])
-                    streak = gSaveBlock2Ptr->frontier.palaceRecordWinStreaks[i][j];
-            }
-        }
-        *topicTextId = GEN_TOPIC_STREAK_RECORD - 1;
-        break;
-    case MATCH_CALL_FACTORY:
-        for (i = 0; i < (int)ARRAY_COUNT(gSaveBlock2Ptr->frontier.factoryRecordWinStreaks); i++)
-        {
-            for (j = 0; j < FRONTIER_LVL_MODE_COUNT; j++)
-            {
-                if (streak < gSaveBlock2Ptr->frontier.factoryRecordWinStreaks[i][j])
-                    streak = gSaveBlock2Ptr->frontier.factoryRecordWinStreaks[i][j];
-            }
-        }
-        *topicTextId = GEN_TOPIC_STREAK_RECORD - 1;
-        break;
-    case FRONTIER_FACILITY_ARENA:
-        for (i = 0; i < FRONTIER_LVL_MODE_COUNT; i++)
-        {
-            if (streak < gSaveBlock2Ptr->frontier.arenaRecordStreaks[i])
-                streak = gSaveBlock2Ptr->frontier.arenaRecordStreaks[i];
-        }
-        *topicTextId = GEN_TOPIC_STREAK_RECORD - 1;
-        break;
-    case FRONTIER_FACILITY_PYRAMID:
-        for (i = 0; i < FRONTIER_LVL_MODE_COUNT; i++)
-        {
-            if (streak < gSaveBlock2Ptr->frontier.pyramidRecordStreaks[i])
-                streak = gSaveBlock2Ptr->frontier.pyramidRecordStreaks[i];
-        }
-        *topicTextId = GEN_TOPIC_B_PYRAMID - 1;
-        break;
-    }
+    // switch (facilityId)
+    // {
+    // case FRONTIER_FACILITY_DOME:
+    //     for (i = 0; i < (int)ARRAY_COUNT(gSaveBlock2Ptr->frontier.domeRecordWinStreaks); i++)
+    //     {
+    //         for (j = 0; j < FRONTIER_LVL_MODE_COUNT; j++)
+    //         {
+    //             if (streak < gSaveBlock2Ptr->frontier.domeRecordWinStreaks[i][j])
+    //                 streak = gSaveBlock2Ptr->frontier.domeRecordWinStreaks[i][j];
+    //         }
+    //     }
+    //     *topicTextId = GEN_TOPIC_B_DOME - 1;
+    //     break;
+    // case MATCH_CALL_PIKE:
+    //     for (i = 0; i < FRONTIER_LVL_MODE_COUNT; i++)
+    //     {
+    //         if (streak < gSaveBlock2Ptr->frontier.pikeRecordStreaks[i])
+    //             streak = gSaveBlock2Ptr->frontier.pikeRecordStreaks[i];
+    //     }
+    //     *topicTextId = GEN_TOPIC_B_PIKE - 1;
+    //     break;
+    // case FRONTIER_FACILITY_TOWER:
+    //     for (i = 0; i < (int)ARRAY_COUNT(gSaveBlock2Ptr->frontier.towerRecordWinStreaks); i++)
+    //     {
+    //         for (j = 0; j < FRONTIER_LVL_MODE_COUNT; j++)
+    //         {
+    //             if (streak < gSaveBlock2Ptr->frontier.towerRecordWinStreaks[i][j])
+    //                 streak = gSaveBlock2Ptr->frontier.towerRecordWinStreaks[i][j];
+    //         }
+    //     }
+    //     *topicTextId = GEN_TOPIC_STREAK_RECORD - 1;
+    //     break;
+    // case FRONTIER_FACILITY_PALACE:
+    //     for (i = 0; i < (int)ARRAY_COUNT(gSaveBlock2Ptr->frontier.palaceRecordWinStreaks); i++)
+    //     {
+    //         for (j = 0; j < FRONTIER_LVL_MODE_COUNT; j++)
+    //         {
+    //             if (streak < gSaveBlock2Ptr->frontier.palaceRecordWinStreaks[i][j])
+    //                 streak = gSaveBlock2Ptr->frontier.palaceRecordWinStreaks[i][j];
+    //         }
+    //     }
+    //     *topicTextId = GEN_TOPIC_STREAK_RECORD - 1;
+    //     break;
+    // case MATCH_CALL_FACTORY:
+    //     for (i = 0; i < (int)ARRAY_COUNT(gSaveBlock2Ptr->frontier.factoryRecordWinStreaks); i++)
+    //     {
+    //         for (j = 0; j < FRONTIER_LVL_MODE_COUNT; j++)
+    //         {
+    //             if (streak < gSaveBlock2Ptr->frontier.factoryRecordWinStreaks[i][j])
+    //                 streak = gSaveBlock2Ptr->frontier.factoryRecordWinStreaks[i][j];
+    //         }
+    //     }
+    //     *topicTextId = GEN_TOPIC_STREAK_RECORD - 1;
+    //     break;
+    // case FRONTIER_FACILITY_ARENA:
+    //     for (i = 0; i < FRONTIER_LVL_MODE_COUNT; i++)
+    //     {
+    //         if (streak < gSaveBlock2Ptr->frontier.arenaRecordStreaks[i])
+    //             streak = gSaveBlock2Ptr->frontier.arenaRecordStreaks[i];
+    //     }
+    //     *topicTextId = GEN_TOPIC_STREAK_RECORD - 1;
+    //     break;
+    // case FRONTIER_FACILITY_PYRAMID:
+    //     for (i = 0; i < FRONTIER_LVL_MODE_COUNT; i++)
+    //     {
+    //         if (streak < gSaveBlock2Ptr->frontier.pyramidRecordStreaks[i])
+    //             streak = gSaveBlock2Ptr->frontier.pyramidRecordStreaks[i];
+    //     }
+    //     *topicTextId = GEN_TOPIC_B_PYRAMID - 1;
+    //     break;
+    // }
 
     return streak;
 }

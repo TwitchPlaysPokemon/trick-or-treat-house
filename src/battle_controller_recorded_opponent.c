@@ -6,7 +6,6 @@
 #include "battle_interface.h"
 #include "battle_message.h"
 #include "battle_setup.h"
-#include "battle_tower.h"
 #include "battle_tv.h"
 #include "bg.h"
 #include "data.h"
@@ -1215,14 +1214,14 @@ static void RecordedOpponentHandleDrawTrainerPic(void)
         else // first mon
             xPos = 200;
 
-        if (gBattleTypeFlags & BATTLE_TYPE_BATTLE_TOWER)
-        {
-            if (gActiveBattler == 1)
-                trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_A);
-            else
-                trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_B);
-        }
-        else
+        // if (gBattleTypeFlags & BATTLE_TYPE_BATTLE_TOWER)
+        // {
+        //     if (gActiveBattler == 1)
+        //         trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_A);
+        //     else
+        //         trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_B);
+        // }
+        // else
         {
             trainerPicId = PlayerGenderToFrontTrainerPicId(GetActiveBattlerLinkPlayerGender());
         }

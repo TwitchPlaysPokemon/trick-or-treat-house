@@ -12,7 +12,6 @@
 #include "link.h"
 #include "link_rfu.h"
 #include "tv.h"
-#include "battle_tower.h"
 #include "window.h"
 #include "mystery_event_script.h"
 #include "secret_base.h"
@@ -57,7 +56,7 @@ struct PlayerRecordRS
     OldMan oldMan;
     struct DewfordTrend dewfordTrends[SAVED_TRENDS_COUNT];
     struct RecordMixingDaycareMail daycareMail;
-    struct RSBattleTowerRecord battleTowerRecord;
+    // struct RSBattleTowerRecord battleTowerRecord;
     u16 giftItem;
     u16 padding[50];
 };
@@ -120,8 +119,8 @@ static void Task_DoRecordMixing(u8);
 static void ReceiveRankingHallRecords(struct PlayerHallRecords *, size_t, u32);
 static void GetRecordMixingDaycareMail(struct RecordMixingDaycareMail *);
 static void SanitizeDaycareMailForRuby(struct RecordMixingDaycareMail *);
-static void SanitizeEmeraldBattleTowerRecord(struct EmeraldBattleTowerRecord *);
-static void SanitizeRubyBattleTowerRecord(struct RSBattleTowerRecord *);
+// static void SanitizeEmeraldBattleTowerRecord(struct EmeraldBattleTowerRecord *);
+// static void SanitizeRubyBattleTowerRecord(struct RSBattleTowerRecord *);
 
 static const u8 sPlayerIdxOrders_2Player[] = {1, 0};
 
@@ -167,120 +166,120 @@ void RecordMixingPlayerSpotTriggered(void)
 // these variables were const in R/S, but had to become changeable because of saveblocks changing RAM position
 static void SetSrcLookupPointers(void)
 {
-    sSecretBasesSave = gSaveBlock1Ptr->secretBases;
-    sTvShowsSave = gSaveBlock1Ptr->tvShows;
-    sPokeNewsSave = gSaveBlock1Ptr->pokeNews;
-    sOldManSave = &gSaveBlock1Ptr->oldMan;
-    sDewfordTrendsSave = gSaveBlock1Ptr->dewfordTrends;
-    sRecordMixMailSave = &sRecordMixMail;
-    sBattleTowerSave = &gSaveBlock2Ptr->frontier.towerPlayer;
-    sLilycoveLadySave = &gSaveBlock1Ptr->lilycoveLady;
-    sBattleTowerSave_Duplicate = &gSaveBlock2Ptr->frontier.towerPlayer;
+    // sSecretBasesSave = gSaveBlock1Ptr->secretBases;
+    // sTvShowsSave = gSaveBlock1Ptr->tvShows;
+    // sPokeNewsSave = gSaveBlock1Ptr->pokeNews;
+    // sOldManSave = &gSaveBlock1Ptr->oldMan;
+    // sDewfordTrendsSave = gSaveBlock1Ptr->dewfordTrends;
+    // sRecordMixMailSave = &sRecordMixMail;
+    // // sBattleTowerSave = &gSaveBlock2Ptr->frontier.towerPlayer;
+    // sLilycoveLadySave = &gSaveBlock1Ptr->lilycoveLady;
+    // // sBattleTowerSave_Duplicate = &gSaveBlock2Ptr->frontier.towerPlayer;
 }
 
 static void PrepareUnknownExchangePacket(struct PlayerRecordRS *dest)
 {
-    memcpy(dest->secretBases, sSecretBasesSave, sizeof(dest->secretBases));
-    memcpy(dest->tvShows, sTvShowsSave, sizeof(dest->tvShows));
-    SanitizeTVShowLocationsForRuby(dest->tvShows);
-    memcpy(dest->pokeNews, sPokeNewsSave, sizeof(dest->pokeNews));
-    memcpy(&dest->oldMan, sOldManSave, sizeof(dest->oldMan));
-    memcpy(dest->dewfordTrends, sDewfordTrendsSave, sizeof(dest->dewfordTrends));
-    GetRecordMixingDaycareMail(&dest->daycareMail);
-    EmeraldBattleTowerRecordToRuby(sBattleTowerSave, &dest->battleTowerRecord);
+    // memcpy(dest->secretBases, sSecretBasesSave, sizeof(dest->secretBases));
+    // memcpy(dest->tvShows, sTvShowsSave, sizeof(dest->tvShows));
+    // SanitizeTVShowLocationsForRuby(dest->tvShows);
+    // memcpy(dest->pokeNews, sPokeNewsSave, sizeof(dest->pokeNews));
+    // memcpy(&dest->oldMan, sOldManSave, sizeof(dest->oldMan));
+    // memcpy(dest->dewfordTrends, sDewfordTrendsSave, sizeof(dest->dewfordTrends));
+    // GetRecordMixingDaycareMail(&dest->daycareMail);
+    // // EmeraldBattleTowerRecordToRuby(sBattleTowerSave, &dest->battleTowerRecord);
 
-    if (GetMultiplayerId() == 0)
-        dest->giftItem = GetRecordMixingGift();
+    // if (GetMultiplayerId() == 0)
+    //     dest->giftItem = GetRecordMixingGift();
 }
 
 static void PrepareExchangePacketForRubySapphire(struct PlayerRecordRS *dest)
 {
-    memcpy(dest->secretBases, sSecretBasesSave, sizeof(dest->secretBases));
-    ClearJapaneseSecretBases(dest->secretBases);
-    memcpy(dest->tvShows, sTvShowsSave, sizeof(dest->tvShows));
-    SanitizeTVShowsForRuby(dest->tvShows);
-    memcpy(dest->pokeNews, sPokeNewsSave, sizeof(dest->pokeNews));
-    memcpy(&dest->oldMan, sOldManSave, sizeof(dest->oldMan));
-    SanitizeMauvilleOldManForRuby(&dest->oldMan);
-    memcpy(dest->dewfordTrends, sDewfordTrendsSave, sizeof(dest->dewfordTrends));
-    GetRecordMixingDaycareMail(&dest->daycareMail);
-    SanitizeDaycareMailForRuby(&dest->daycareMail);
-    EmeraldBattleTowerRecordToRuby(sBattleTowerSave, &dest->battleTowerRecord);
-    SanitizeRubyBattleTowerRecord(&dest->battleTowerRecord);
+    // memcpy(dest->secretBases, sSecretBasesSave, sizeof(dest->secretBases));
+    // ClearJapaneseSecretBases(dest->secretBases);
+    // memcpy(dest->tvShows, sTvShowsSave, sizeof(dest->tvShows));
+    // SanitizeTVShowsForRuby(dest->tvShows);
+    // memcpy(dest->pokeNews, sPokeNewsSave, sizeof(dest->pokeNews));
+    // memcpy(&dest->oldMan, sOldManSave, sizeof(dest->oldMan));
+    // SanitizeMauvilleOldManForRuby(&dest->oldMan);
+    // memcpy(dest->dewfordTrends, sDewfordTrendsSave, sizeof(dest->dewfordTrends));
+    // GetRecordMixingDaycareMail(&dest->daycareMail);
+    // SanitizeDaycareMailForRuby(&dest->daycareMail);
+    // // EmeraldBattleTowerRecordToRuby(sBattleTowerSave, &dest->battleTowerRecord);
+    // // SanitizeRubyBattleTowerRecord(&dest->battleTowerRecord);
 
-    if (GetMultiplayerId() == 0)
-        dest->giftItem = GetRecordMixingGift();
+    // if (GetMultiplayerId() == 0)
+    //     dest->giftItem = GetRecordMixingGift();
 }
 
 static void PrepareExchangePacket(void)
 {
-    SetPlayerSecretBaseParty();
-    DeactivateAllNormalTVShows();
-    SetSrcLookupPointers();
+    // SetPlayerSecretBaseParty();
+    // DeactivateAllNormalTVShows();
+    // SetSrcLookupPointers();
 
-    if (Link_AnyPartnersPlayingRubyOrSapphire())
-    {
-        if (LinkDummy_Return2() == 0)
-            PrepareUnknownExchangePacket(&sSentRecord->ruby);
-        else
-            PrepareExchangePacketForRubySapphire(&sSentRecord->ruby);
-    }
-    else
-    {
-        memcpy(sSentRecord->emerald.secretBases, sSecretBasesSave, sizeof(sSentRecord->emerald.secretBases));
-        memcpy(sSentRecord->emerald.tvShows, sTvShowsSave, sizeof(sSentRecord->emerald.tvShows));
-        memcpy(sSentRecord->emerald.pokeNews, sPokeNewsSave, sizeof(sSentRecord->emerald.pokeNews));
-        memcpy(&sSentRecord->emerald.oldMan, sOldManSave, sizeof(sSentRecord->emerald.oldMan));
-        memcpy(&sSentRecord->emerald.lilycoveLady, sLilycoveLadySave, sizeof(sSentRecord->emerald.lilycoveLady));
-        memcpy(sSentRecord->emerald.dewfordTrends, sDewfordTrendsSave, sizeof(sSentRecord->emerald.dewfordTrends));
-        GetRecordMixingDaycareMail(&sSentRecord->emerald.daycareMail);
-        memcpy(&sSentRecord->emerald.battleTowerRecord, sBattleTowerSave, sizeof(sSentRecord->emerald.battleTowerRecord));
-        SanitizeEmeraldBattleTowerRecord(&sSentRecord->emerald.battleTowerRecord);
+    // if (Link_AnyPartnersPlayingRubyOrSapphire())
+    // {
+    //     if (LinkDummy_Return2() == 0)
+    //         PrepareUnknownExchangePacket(&sSentRecord->ruby);
+    //     else
+    //         PrepareExchangePacketForRubySapphire(&sSentRecord->ruby);
+    // }
+    // else
+    // {
+    //     memcpy(sSentRecord->emerald.secretBases, sSecretBasesSave, sizeof(sSentRecord->emerald.secretBases));
+    //     memcpy(sSentRecord->emerald.tvShows, sTvShowsSave, sizeof(sSentRecord->emerald.tvShows));
+    //     memcpy(sSentRecord->emerald.pokeNews, sPokeNewsSave, sizeof(sSentRecord->emerald.pokeNews));
+    //     memcpy(&sSentRecord->emerald.oldMan, sOldManSave, sizeof(sSentRecord->emerald.oldMan));
+    //     memcpy(&sSentRecord->emerald.lilycoveLady, sLilycoveLadySave, sizeof(sSentRecord->emerald.lilycoveLady));
+    //     memcpy(sSentRecord->emerald.dewfordTrends, sDewfordTrendsSave, sizeof(sSentRecord->emerald.dewfordTrends));
+    //     GetRecordMixingDaycareMail(&sSentRecord->emerald.daycareMail);
+    //     memcpy(&sSentRecord->emerald.battleTowerRecord, sBattleTowerSave, sizeof(sSentRecord->emerald.battleTowerRecord));
+    //     // SanitizeEmeraldBattleTowerRecord(&sSentRecord->emerald.battleTowerRecord);
 
-        if (GetMultiplayerId() == 0)
-            sSentRecord->emerald.giftItem = GetRecordMixingGift();
+    //     if (GetMultiplayerId() == 0)
+    //         sSentRecord->emerald.giftItem = GetRecordMixingGift();
 
-        GetPlayerHallRecords(&sSentRecord->emerald.hallRecords);
-    }
+    //     GetPlayerHallRecords(&sSentRecord->emerald.hallRecords);
+    // }
 }
 
 static void ReceiveExchangePacket(u32 multiplayerId)
 {
-    if (Link_AnyPartnersPlayingRubyOrSapphire())
-    {
-        // Ruby/Sapphire
-        CalculateDaycareMailRandSum((void *)sReceivedRecords->ruby.tvShows);
-        ReceiveSecretBasesData(sReceivedRecords->ruby.secretBases, sizeof(sReceivedRecords->ruby), multiplayerId);
-        ReceiveDaycareMailData(&sReceivedRecords->ruby.daycareMail, sizeof(sReceivedRecords->ruby), multiplayerId, sReceivedRecords->ruby.tvShows);
-        ReceiveBattleTowerData(&sReceivedRecords->ruby.battleTowerRecord, sizeof(sReceivedRecords->ruby), multiplayerId);
-        ReceiveTvShowsData(sReceivedRecords->ruby.tvShows, sizeof(sReceivedRecords->ruby), multiplayerId);
-        ReceivePokeNewsData(sReceivedRecords->ruby.pokeNews, sizeof(sReceivedRecords->ruby), multiplayerId);
-        ReceiveOldManData(&sReceivedRecords->ruby.oldMan, sizeof(sReceivedRecords->ruby), multiplayerId);
-        ReceiveDewfordTrendData(sReceivedRecords->ruby.dewfordTrends, sizeof(sReceivedRecords->ruby), multiplayerId);
-        ReceiveGiftItem(&sReceivedRecords->ruby.giftItem, multiplayerId);
-    }
-    else
-    {
-        // Emerald
-        CalculateDaycareMailRandSum((void *)sReceivedRecords->emerald.tvShows);
-        ReceiveSecretBasesData(sReceivedRecords->emerald.secretBases, sizeof(sReceivedRecords->emerald), multiplayerId);
-        ReceiveTvShowsData(sReceivedRecords->emerald.tvShows, sizeof(sReceivedRecords->emerald), multiplayerId);
-        ReceivePokeNewsData(sReceivedRecords->emerald.pokeNews, sizeof(sReceivedRecords->emerald), multiplayerId);
-        ReceiveOldManData(&sReceivedRecords->emerald.oldMan, sizeof(sReceivedRecords->emerald), multiplayerId);
-        ReceiveDewfordTrendData(sReceivedRecords->emerald.dewfordTrends, sizeof(sReceivedRecords->emerald), multiplayerId);
-        ReceiveDaycareMailData(&sReceivedRecords->emerald.daycareMail, sizeof(sReceivedRecords->emerald), multiplayerId, sReceivedRecords->emerald.tvShows);
-        ReceiveBattleTowerData(&sReceivedRecords->emerald.battleTowerRecord, sizeof(sReceivedRecords->emerald), multiplayerId);
-        ReceiveGiftItem(&sReceivedRecords->emerald.giftItem, multiplayerId);
-        ReceiveLilycoveLadyData(&sReceivedRecords->emerald.lilycoveLady, sizeof(sReceivedRecords->emerald), multiplayerId);
-        ReceiveRankingHallRecords(&sReceivedRecords->emerald.hallRecords, sizeof(sReceivedRecords->emerald), (u8)multiplayerId);
-    }
+    // if (Link_AnyPartnersPlayingRubyOrSapphire())
+    // {
+    //     // Ruby/Sapphire
+    //     CalculateDaycareMailRandSum((void *)sReceivedRecords->ruby.tvShows);
+    //     ReceiveSecretBasesData(sReceivedRecords->ruby.secretBases, sizeof(sReceivedRecords->ruby), multiplayerId);
+    //     ReceiveDaycareMailData(&sReceivedRecords->ruby.daycareMail, sizeof(sReceivedRecords->ruby), multiplayerId, sReceivedRecords->ruby.tvShows);
+    //     // ReceiveBattleTowerData(&sReceivedRecords->ruby.battleTowerRecord, sizeof(sReceivedRecords->ruby), multiplayerId);
+    //     ReceiveTvShowsData(sReceivedRecords->ruby.tvShows, sizeof(sReceivedRecords->ruby), multiplayerId);
+    //     ReceivePokeNewsData(sReceivedRecords->ruby.pokeNews, sizeof(sReceivedRecords->ruby), multiplayerId);
+    //     ReceiveOldManData(&sReceivedRecords->ruby.oldMan, sizeof(sReceivedRecords->ruby), multiplayerId);
+    //     ReceiveDewfordTrendData(sReceivedRecords->ruby.dewfordTrends, sizeof(sReceivedRecords->ruby), multiplayerId);
+    //     ReceiveGiftItem(&sReceivedRecords->ruby.giftItem, multiplayerId);
+    // }
+    // else
+    // {
+    //     // Emerald
+    //     CalculateDaycareMailRandSum((void *)sReceivedRecords->emerald.tvShows);
+    //     ReceiveSecretBasesData(sReceivedRecords->emerald.secretBases, sizeof(sReceivedRecords->emerald), multiplayerId);
+    //     ReceiveTvShowsData(sReceivedRecords->emerald.tvShows, sizeof(sReceivedRecords->emerald), multiplayerId);
+    //     ReceivePokeNewsData(sReceivedRecords->emerald.pokeNews, sizeof(sReceivedRecords->emerald), multiplayerId);
+    //     ReceiveOldManData(&sReceivedRecords->emerald.oldMan, sizeof(sReceivedRecords->emerald), multiplayerId);
+    //     ReceiveDewfordTrendData(sReceivedRecords->emerald.dewfordTrends, sizeof(sReceivedRecords->emerald), multiplayerId);
+    //     ReceiveDaycareMailData(&sReceivedRecords->emerald.daycareMail, sizeof(sReceivedRecords->emerald), multiplayerId, sReceivedRecords->emerald.tvShows);
+    //     ReceiveBattleTowerData(&sReceivedRecords->emerald.battleTowerRecord, sizeof(sReceivedRecords->emerald), multiplayerId);
+    //     ReceiveGiftItem(&sReceivedRecords->emerald.giftItem, multiplayerId);
+    //     ReceiveLilycoveLadyData(&sReceivedRecords->emerald.lilycoveLady, sizeof(sReceivedRecords->emerald), multiplayerId);
+    //     ReceiveRankingHallRecords(&sReceivedRecords->emerald.hallRecords, sizeof(sReceivedRecords->emerald), (u8)multiplayerId);
+    // }
 }
 
 static void PrintTextOnRecordMixing(const u8 *src)
 {
-    DrawDialogueFrame(0, FALSE);
-    AddTextPrinterParameterized(0, FONT_NORMAL, src, 0, 1, 0, NULL);
-    CopyWindowToVram(0, COPYWIN_FULL);
+    // DrawDialogueFrame(0, FALSE);
+    // AddTextPrinterParameterized(0, FONT_NORMAL, src, 0, 1, 0, NULL);
+    // CopyWindowToVram(0, COPYWIN_FULL);
 }
 
 #define tCounter data[0]
@@ -642,34 +641,34 @@ static void ReceiveOldManData(OldMan *records, size_t recordSize, u8 multiplayer
 
 static void ReceiveBattleTowerData(void *records, size_t recordSize, u8 multiplayerId)
 {
-    struct EmeraldBattleTowerRecord *battleTowerRecord;
-    struct BattleTowerPokemon *btPokemon;
-    u32 mixIndices[MAX_LINK_PLAYERS];
-    s32 i;
+    // struct EmeraldBattleTowerRecord *battleTowerRecord;
+    // struct BattleTowerPokemon *btPokemon;
+    // u32 mixIndices[MAX_LINK_PLAYERS];
+    // s32 i;
 
-    ShufflePlayerIndices(mixIndices);
-    if (Link_AnyPartnersPlayingRubyOrSapphire())
-    {
-        if (RubyBattleTowerRecordToEmerald((void *)records + recordSize * mixIndices[multiplayerId], (void *)records + recordSize * multiplayerId) == TRUE)
-        {
-            battleTowerRecord = (void *)records + recordSize * multiplayerId;
-            battleTowerRecord->language = gLinkPlayers[mixIndices[multiplayerId]].language;
-            CalcEmeraldBattleTowerChecksum(battleTowerRecord);
-        }
-    }
-    else
-    {
-        memcpy((void *)records + recordSize * multiplayerId, (void *)records + recordSize * mixIndices[multiplayerId], sizeof(struct EmeraldBattleTowerRecord));
-        battleTowerRecord = (void *)records + recordSize * multiplayerId;
-        for (i = 0; i < MAX_FRONTIER_PARTY_SIZE; i++)
-        {
-            btPokemon = &battleTowerRecord->party[i];
-            if (btPokemon->species != SPECIES_NONE && IsStringJapanese(btPokemon->nickname))
-                ConvertInternationalString(btPokemon->nickname, LANGUAGE_JAPANESE);
-        }
-        CalcEmeraldBattleTowerChecksum(battleTowerRecord);
-    }
-    PutNewBattleTowerRecord((void *)records + recordSize * multiplayerId);
+    // ShufflePlayerIndices(mixIndices);
+    // if (Link_AnyPartnersPlayingRubyOrSapphire())
+    // {
+    //     // if (RubyBattleTowerRecordToEmerald((void *)records + recordSize * mixIndices[multiplayerId], (void *)records + recordSize * multiplayerId) == TRUE)
+    //     // {
+    //     //     battleTowerRecord = (void *)records + recordSize * multiplayerId;
+    //     //     battleTowerRecord->language = gLinkPlayers[mixIndices[multiplayerId]].language;
+    //     //     CalcEmeraldBattleTowerChecksum(battleTowerRecord);
+    //     // }
+    // }
+    // else
+    // {
+    //     memcpy((void *)records + recordSize * multiplayerId, (void *)records + recordSize * mixIndices[multiplayerId], sizeof(struct EmeraldBattleTowerRecord));
+    //     battleTowerRecord = (void *)records + recordSize * multiplayerId;
+    //     for (i = 0; i < MAX_FRONTIER_PARTY_SIZE; i++)
+    //     {
+    //         btPokemon = &battleTowerRecord->party[i];
+    //         if (btPokemon->species != SPECIES_NONE && IsStringJapanese(btPokemon->nickname))
+    //             ConvertInternationalString(btPokemon->nickname, LANGUAGE_JAPANESE);
+    //     }
+    //     CalcEmeraldBattleTowerChecksum(battleTowerRecord);
+    // }
+    // // PutNewBattleTowerRecord((void *)records + recordSize * multiplayerId);
 }
 
 static void ReceiveLilycoveLadyData(LilycoveLady *records, size_t recordSize, u8 multiplayerId)
@@ -1055,41 +1054,41 @@ static void Task_DoRecordMixing(u8 taskId)
 
 void GetPlayerHallRecords(struct PlayerHallRecords *dst)
 {
-    s32 i, j;
+    // s32 i, j;
 
-    for (i = 0; i < HALL_FACILITIES_COUNT; i++)
-    {
-        for (j = 0; j < FRONTIER_LVL_MODE_COUNT; j++)
-        {
-            CopyTrainerId(dst->onePlayer[i][j].id, gSaveBlock2Ptr->playerTrainerId);
-            dst->onePlayer[i][j].language = GAME_LANGUAGE;
-            StringCopy(dst->onePlayer[i][j].name, gSaveBlock2Ptr->playerName);
-        }
-    }
+    // for (i = 0; i < HALL_FACILITIES_COUNT; i++)
+    // {
+    //     for (j = 0; j < FRONTIER_LVL_MODE_COUNT; j++)
+    //     {
+    //         CopyTrainerId(dst->onePlayer[i][j].id, gSaveBlock2Ptr->playerTrainerId);
+    //         dst->onePlayer[i][j].language = GAME_LANGUAGE;
+    //         StringCopy(dst->onePlayer[i][j].name, gSaveBlock2Ptr->playerName);
+    //     }
+    // }
 
-    for (j = 0; j < FRONTIER_LVL_MODE_COUNT; j++)
-    {
-        dst->twoPlayers[j].language = GAME_LANGUAGE;
-        CopyTrainerId(dst->twoPlayers[j].id1, gSaveBlock2Ptr->playerTrainerId);
-        CopyTrainerId(dst->twoPlayers[j].id2, gSaveBlock2Ptr->frontier.opponentTrainerIds[j]);
-        StringCopy(dst->twoPlayers[j].name1, gSaveBlock2Ptr->playerName);
-        StringCopy(dst->twoPlayers[j].name2, gSaveBlock2Ptr->frontier.opponentNames[j]);
-    }
+    // for (j = 0; j < FRONTIER_LVL_MODE_COUNT; j++)
+    // {
+    //     dst->twoPlayers[j].language = GAME_LANGUAGE;
+    //     CopyTrainerId(dst->twoPlayers[j].id1, gSaveBlock2Ptr->playerTrainerId);
+    //     CopyTrainerId(dst->twoPlayers[j].id2, gSaveBlock2Ptr->frontier.opponentTrainerIds[j]);
+    //     StringCopy(dst->twoPlayers[j].name1, gSaveBlock2Ptr->playerName);
+    //     StringCopy(dst->twoPlayers[j].name2, gSaveBlock2Ptr->frontier.opponentNames[j]);
+    // }
 
-    for (i = 0; i < FRONTIER_LVL_MODE_COUNT; i++)
-    {
-        dst->onePlayer[RANKING_HALL_TOWER_SINGLES][i].winStreak = gSaveBlock2Ptr->frontier.towerRecordWinStreaks[FRONTIER_MODE_SINGLES][i];
-        dst->onePlayer[RANKING_HALL_TOWER_DOUBLES][i].winStreak = gSaveBlock2Ptr->frontier.towerRecordWinStreaks[FRONTIER_MODE_DOUBLES][i];
-        dst->onePlayer[RANKING_HALL_TOWER_MULTIS][i].winStreak = gSaveBlock2Ptr->frontier.towerRecordWinStreaks[FRONTIER_MODE_MULTIS][i];
-        dst->onePlayer[RANKING_HALL_DOME][i].winStreak = gSaveBlock2Ptr->frontier.domeRecordWinStreaks[FRONTIER_MODE_SINGLES][i];
-        dst->onePlayer[RANKING_HALL_PALACE][i].winStreak = gSaveBlock2Ptr->frontier.palaceRecordWinStreaks[FRONTIER_MODE_SINGLES][i];
-        dst->onePlayer[RANKING_HALL_ARENA][i].winStreak = gSaveBlock2Ptr->frontier.arenaRecordStreaks[i];
-        dst->onePlayer[RANKING_HALL_FACTORY][i].winStreak = gSaveBlock2Ptr->frontier.factoryRecordWinStreaks[FRONTIER_MODE_SINGLES][i];
-        dst->onePlayer[RANKING_HALL_PIKE][i].winStreak = gSaveBlock2Ptr->frontier.pikeRecordStreaks[i];
-        dst->onePlayer[RANKING_HALL_PYRAMID][i].winStreak = gSaveBlock2Ptr->frontier.pyramidRecordStreaks[i];
+    // for (i = 0; i < FRONTIER_LVL_MODE_COUNT; i++)
+    // {
+    //     dst->onePlayer[RANKING_HALL_TOWER_SINGLES][i].winStreak = gSaveBlock2Ptr->frontier.towerRecordWinStreaks[FRONTIER_MODE_SINGLES][i];
+    //     dst->onePlayer[RANKING_HALL_TOWER_DOUBLES][i].winStreak = gSaveBlock2Ptr->frontier.towerRecordWinStreaks[FRONTIER_MODE_DOUBLES][i];
+    //     dst->onePlayer[RANKING_HALL_TOWER_MULTIS][i].winStreak = gSaveBlock2Ptr->frontier.towerRecordWinStreaks[FRONTIER_MODE_MULTIS][i];
+    //     dst->onePlayer[RANKING_HALL_DOME][i].winStreak = gSaveBlock2Ptr->frontier.domeRecordWinStreaks[FRONTIER_MODE_SINGLES][i];
+    //     dst->onePlayer[RANKING_HALL_PALACE][i].winStreak = gSaveBlock2Ptr->frontier.palaceRecordWinStreaks[FRONTIER_MODE_SINGLES][i];
+    //     dst->onePlayer[RANKING_HALL_ARENA][i].winStreak = gSaveBlock2Ptr->frontier.arenaRecordStreaks[i];
+    //     dst->onePlayer[RANKING_HALL_FACTORY][i].winStreak = gSaveBlock2Ptr->frontier.factoryRecordWinStreaks[FRONTIER_MODE_SINGLES][i];
+    //     dst->onePlayer[RANKING_HALL_PIKE][i].winStreak = gSaveBlock2Ptr->frontier.pikeRecordStreaks[i];
+    //     dst->onePlayer[RANKING_HALL_PYRAMID][i].winStreak = gSaveBlock2Ptr->frontier.pyramidRecordStreaks[i];
 
-        dst->twoPlayers[i].winStreak = gSaveBlock2Ptr->frontier.towerRecordWinStreaks[FRONTIER_MODE_LINK_MULTIS][i];
-    }
+    //     dst->twoPlayers[i].winStreak = gSaveBlock2Ptr->frontier.towerRecordWinStreaks[FRONTIER_MODE_LINK_MULTIS][i];
+    // }
 }
 
 static void GetNewHallRecords(struct RecordMixingHallRecords *dst, void *records, size_t recordSize, u32 multiplayerId, s32 linkPlayerCount)
@@ -1276,21 +1275,21 @@ static void SanitizeDaycareMailForRuby(struct RecordMixingDaycareMail *src)
     }
 }
 
-static void SanitizeRubyBattleTowerRecord(struct RSBattleTowerRecord *src)
-{
+// static void SanitizeRubyBattleTowerRecord(struct RSBattleTowerRecord *src)
+// {
 
-}
+// }
 
-static void SanitizeEmeraldBattleTowerRecord(struct EmeraldBattleTowerRecord *dst)
-{
-    s32 i;
+// static void SanitizeEmeraldBattleTowerRecord(struct EmeraldBattleTowerRecord *dst)
+// {
+//     s32 i;
 
-    for (i = 0; i < MAX_FRONTIER_PARTY_SIZE; i++)
-    {
-        struct BattleTowerPokemon *towerMon = &dst->party[i];
-        if (towerMon->species != SPECIES_NONE)
-            StripExtCtrlCodes(towerMon->nickname);
-    }
+//     for (i = 0; i < MAX_FRONTIER_PARTY_SIZE; i++)
+//     {
+//         struct BattleTowerPokemon *towerMon = &dst->party[i];
+//         if (towerMon->species != SPECIES_NONE)
+//             StripExtCtrlCodes(towerMon->nickname);
+//     }
 
-    CalcEmeraldBattleTowerChecksum(dst);
-}
+//     CalcEmeraldBattleTowerChecksum(dst);
+// }

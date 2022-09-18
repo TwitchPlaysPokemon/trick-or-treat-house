@@ -1543,8 +1543,8 @@ void BtlController_EmitEndLinkBattle(u8 bufferId, u8 battleOutcome)
 {
     sBattleBuffersTransferData[0] = CONTROLLER_ENDLINKBATTLE;
     sBattleBuffersTransferData[1] = battleOutcome;
-    sBattleBuffersTransferData[2] = gSaveBlock2Ptr->frontier.disableRecordBattle;
-    sBattleBuffersTransferData[3] = gSaveBlock2Ptr->frontier.disableRecordBattle;
+    // sBattleBuffersTransferData[2] = gSaveBlock2Ptr->frontier.disableRecordBattle;
+    // sBattleBuffersTransferData[3] = gSaveBlock2Ptr->frontier.disableRecordBattle;
     sBattleBuffersTransferData[5] = sBattleBuffersTransferData[4] = RecordedBattle_BufferNewBattlerData(&sBattleBuffersTransferData[6]);
     PrepareBufferDataTransfer(bufferId, sBattleBuffersTransferData, sBattleBuffersTransferData[4] + 6);
 }

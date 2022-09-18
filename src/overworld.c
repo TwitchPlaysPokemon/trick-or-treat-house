@@ -1,6 +1,5 @@
 #include "global.h"
 #include "overworld.h"
-#include "battle_pyramid.h"
 #include "battle_setup.h"
 #include "berry.h"
 #include "bg.h"
@@ -59,7 +58,6 @@
 #include "tv.h"
 #include "scanline_effect.h"
 #include "wild_encounter.h"
-#include "frontier_util.h"
 #include "constants/abilities.h"
 #include "constants/layouts.h"
 #include "constants/map_types.h"
@@ -1656,8 +1654,8 @@ void CB2_ContinueSavedGame(void)
     FieldClearVBlankHBlankCallbacks();
     StopMapMusic();
     ResetSafariZoneFlag_();
-    if (gSaveFileStatus == SAVE_STATUS_ERROR)
-        ResetWinStreaks();
+    // if (gSaveFileStatus == SAVE_STATUS_ERROR)
+    //     ResetWinStreaks();
 
     LoadSaveblockMapHeader();
     ClearDiveAndHoleWarps();
@@ -1744,12 +1742,6 @@ static void InitCurrentFlashLevelScanlineEffect(void)
 {
     u8 flashLevel;
 
-    // if (InBattlePyramid_())
-    // {
-    //     WriteBattlePyramidViewScanlineEffectBuffer();
-    //     ScanlineEffect_SetParams(sFlashEffectParams);
-    // }
-    // else
     if ((flashLevel = GetFlashLevel()))
     {
         WriteFlashScanlineEffectBuffer(flashLevel);

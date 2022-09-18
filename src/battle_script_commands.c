@@ -38,9 +38,6 @@
 #include "rtc.h"
 #include "party_menu.h"
 #include "constants/battle_config.h"
-#include "battle_arena.h"
-#include "battle_pike.h"
-// #include "battle_pyramid.h"
 #include "field_specials.h"
 #include "pokemon_summary_screen.h"
 #include "pokenav.h"
@@ -4733,8 +4730,8 @@ static void Cmd_return(void)
 
 static void Cmd_end(void)
 {
-    if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
-        BattleArena_AddSkillPoints(gBattlerAttacker);
+    // if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
+    //     BattleArena_AddSkillPoints(gBattlerAttacker);
 
     gMoveResultFlags = 0;
     gActiveBattler = 0;
@@ -5902,8 +5899,8 @@ static void Cmd_switchinanim(void)
 
     gBattlescriptCurrInstr += 3;
 
-    if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
-        BattleArena_InitPoints();
+    // if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
+    //     BattleArena_InitPoints();
 }
 
 bool32 CanBattlerSwitch(u32 battlerId)
@@ -8241,16 +8238,16 @@ static void Cmd_various(void)
             gBattleCommunication[MULTISTRING_CHOOSER] = sBattlePalaceNatureToFlavorTextId[GetNatureFromPersonality(gBattleMons[gActiveBattler].personality)];
         }
         break;
-    case VARIOUS_ARENA_JUDGMENT_WINDOW:
-        i = BattleArena_ShowJudgmentWindow(&gBattleCommunication[0]);
+    // case VARIOUS_ARENA_JUDGMENT_WINDOW:
+    //     i = BattleArena_ShowJudgmentWindow(&gBattleCommunication[0]);
 
-        // BattleArena_ShowJudgmentWindow's last state was an intermediate step.
-        // Return without advancing the current instruction so that it will be called again.
-        if (i == ARENA_RESULT_RUNNING)
-            return;
+    //     // BattleArena_ShowJudgmentWindow's last state was an intermediate step.
+    //     // Return without advancing the current instruction so that it will be called again.
+    //     if (i == ARENA_RESULT_RUNNING)
+    //         return;
 
-        gBattleCommunication[1] = i;
-        break;
+    //     gBattleCommunication[1] = i;
+    //     break;
     case VARIOUS_ARENA_OPPONENT_MON_LOST:
         gBattleMons[1].hp = 0;
         gHitMarker |= HITMARKER_FAINTED(1);
@@ -8279,12 +8276,12 @@ static void Cmd_various(void)
         BtlController_EmitYesNoBox(BUFFER_A);
         MarkBattlerForControllerExec(gActiveBattler);
         break;
-    case VARIOUS_DRAW_ARENA_REF_TEXT_BOX:
-        DrawArenaRefereeTextBox();
-        break;
-    case VARIOUS_ERASE_ARENA_REF_TEXT_BOX:
-        EraseArenaRefereeTextBox();
-        break;
+    // case VARIOUS_DRAW_ARENA_REF_TEXT_BOX:
+    //     DrawArenaRefereeTextBox();
+    //     break;
+    // case VARIOUS_ERASE_ARENA_REF_TEXT_BOX:
+    //     EraseArenaRefereeTextBox();
+    //     break;
     case VARIOUS_ARENA_JUDGMENT_STRING:
         BattleStringExpandPlaceholdersToDisplayedString(gRefereeStringsTable[gBattlescriptCurrInstr[1]]);
         BattlePutTextOnWindow(gDisplayedStringBattle, ARENA_WIN_JUDGMENT_TEXT);

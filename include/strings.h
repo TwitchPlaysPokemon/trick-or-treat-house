@@ -1069,7 +1069,7 @@ extern const u8 gText_OneDash[];
 extern const u8 gText_TwoDashes[];
 
 extern const u8 *const gBagMenu_ReturnToStrings[];
-extern const u8 *const gPyramidBagMenu_ReturnToStrings[];
+// extern const u8 *const gPyramidBagMenu_ReturnToStrings[];
 
 extern const u8 gText_NumPlayerLink[];
 extern const u8 gText_ConfirmLinkWhenPlayersReady[];

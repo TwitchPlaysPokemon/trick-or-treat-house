@@ -480,8 +480,10 @@ static u8 TryLoadSaveSlot(u16 sectorId, struct SaveSectorLocation *locations)
     }
     
     if (status == 1) {
-        if (gSaveBlock2Ptr->gameVersionId != GAME_VERSION)
-            status = 10;
+        if (gSaveBlock2Ptr->gameVersion.sentinel != 0xFF)
+            status = SAVE_STATUS_OUTDATED;
+        if (gSaveBlock2Ptr->gameVersion.gameId != GAME_VERSION)
+            status = SAVE_STATUS_OUTDATED;
     }
 
     return status;

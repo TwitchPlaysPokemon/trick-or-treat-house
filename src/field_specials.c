@@ -1,7 +1,6 @@
 #include "global.h"
 #include "malloc.h"
 #include "battle.h"
-#include "battle_tower.h"
 #include "cable_club.h"
 #include "data.h"
 #include "decoration.h"
@@ -911,11 +910,6 @@ u16 GetBestBattleTowerStreak(void)
     return GetGameStat(GAME_STAT_BATTLE_TOWER_BEST_STREAK);
 }
 
-void BufferEReaderTrainerName(void)
-{
-    GetEreaderTrainerName(gStringVar1);
-}
-
 u16 GetSlotMachineId(void)
 {
     static const u8 sSlotMachineRandomSeeds[SLOT_MACHINE_COUNT] = {12, 2, 4, 5, 1, 8, 7, 11, 3, 10, 9, 6};
@@ -1001,20 +995,21 @@ u16 GetSlotMachineId(void)
 
 bool8 LeadMonHasEffortRibbon(void)
 {
-    return GetMonData(&gPlayerParty[GetLeadMonIndex()], MON_DATA_EFFORT_RIBBON, NULL);
+    // return GetMonData(&gPlayerParty[GetLeadMonIndex()], MON_DATA_EFFORT_RIBBON, NULL);
+    return FALSE;
 }
 
 void GiveLeadMonEffortRibbon(void)
 {
-    bool8 ribbonSet;
-    struct Pokemon *leadMon;
-    IncrementGameStat(GAME_STAT_RECEIVED_RIBBONS);
-    FlagSet(FLAG_SYS_RIBBON_GET);
-    ribbonSet = TRUE;
-    leadMon = &gPlayerParty[GetLeadMonIndex()];
-    SetMonData(leadMon, MON_DATA_EFFORT_RIBBON, &ribbonSet);
-    if (GetRibbonCount(leadMon) > NUM_CUTIES_RIBBONS)
-        TryPutSpotTheCutiesOnAir(leadMon, MON_DATA_EFFORT_RIBBON);
+    // bool8 ribbonSet;
+    // struct Pokemon *leadMon;
+    // IncrementGameStat(GAME_STAT_RECEIVED_RIBBONS);
+    // FlagSet(FLAG_SYS_RIBBON_GET);
+    // ribbonSet = TRUE;
+    // leadMon = &gPlayerParty[GetLeadMonIndex()];
+    // SetMonData(leadMon, MON_DATA_EFFORT_RIBBON, &ribbonSet);
+    // if (GetRibbonCount(leadMon) > NUM_CUTIES_RIBBONS)
+    //     TryPutSpotTheCutiesOnAir(leadMon, MON_DATA_EFFORT_RIBBON);
 }
 
 bool8 Special_AreLeadMonEVsMaxedOut(void)
@@ -1783,30 +1778,30 @@ void ShowFrontierManiacMessage(void)
 // gSpecialVar_0x8005 and 0x8006 here are used by MoveElevator
 void BufferBattleTowerElevatorFloors(void)
 {
-    static const u16 sBattleTowerStreakThresholds[] = {
-        7, 14, 21, 28, 35, 49, 63, 77, 91, 0
-    };
+    // static const u16 sBattleTowerStreakThresholds[] = {
+    //     7, 14, 21, 28, 35, 49, 63, 77, 91, 0
+    // };
 
-    u8 i;
-    u16 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
-    u8 lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
+    // u8 i;
+    // u16 battleMode = VarGet(VAR_FRONTIER_BATTLE_MODE);
+    // u8 lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
 
-    if (battleMode == FRONTIER_MODE_MULTIS && !FlagGet(FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER))
-    {
-        gSpecialVar_0x8005 = 5;
-        gSpecialVar_0x8006 = 4;
-        return;
-    }
+    // if (battleMode == FRONTIER_MODE_MULTIS && !FlagGet(FLAG_CHOSEN_MULTI_BATTLE_NPC_PARTNER))
+    // {
+    //     gSpecialVar_0x8005 = 5;
+    //     gSpecialVar_0x8006 = 4;
+    //     return;
+    // }
 
-    for (i = 0; i < ARRAY_COUNT(sBattleTowerStreakThresholds) - 1; i++)
-    {
-        if (sBattleTowerStreakThresholds[i] > gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][lvlMode])
-        {
-            gSpecialVar_0x8005 = 4;
-            gSpecialVar_0x8006 = i + 5;
-            return;
-        }
-    }
+    // for (i = 0; i < ARRAY_COUNT(sBattleTowerStreakThresholds) - 1; i++)
+    // {
+    //     if (sBattleTowerStreakThresholds[i] > gSaveBlock2Ptr->frontier.towerWinStreaks[battleMode][lvlMode])
+    //     {
+    //         gSpecialVar_0x8005 = 4;
+    //         gSpecialVar_0x8006 = i + 5;
+    //         return;
+    //     }
+    // }
 
     gSpecialVar_0x8005 = 4;
     gSpecialVar_0x8006 = 12;

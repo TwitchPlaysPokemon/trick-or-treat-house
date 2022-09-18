@@ -673,7 +673,7 @@ void InitHostRfuGameData(struct RfuGameData *data, u8 activity, bool32 startedAc
     data->activity = activity;
     data->startedActivity = startedActivity;
     data->compatibility.language = GAME_LANGUAGE;
-    data->compatibility.version = GAME_VERSION;
+    // data->compatibility.version = GAME_VERSION;
     data->compatibility.hasNews = FALSE;
     data->compatibility.hasCard = FALSE;
     data->compatibility.unknown = FALSE;

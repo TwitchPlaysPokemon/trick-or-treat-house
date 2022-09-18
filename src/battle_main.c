@@ -3,15 +3,12 @@
 #include "battle_anim.h"
 #include "battle_ai_main.h"
 #include "battle_ai_util.h"
-#include "battle_arena.h"
 #include "battle_controllers.h"
 #include "battle_interface.h"
 #include "battle_main.h"
 #include "battle_message.h"
-// #include "battle_pyramid.h"
 #include "battle_scripts.h"
 #include "battle_setup.h"
-#include "battle_tower.h"
 #include "battle_util.h"
 #include "berry.h"
 #include "bg.h"
@@ -576,7 +573,7 @@ static void CB2_InitBattleInternal(void)
     }
 
     gMain.inBattle = TRUE;
-    gSaveBlock2Ptr->frontier.disableRecordBattle = FALSE;
+    // gSaveBlock2Ptr->frontier.disableRecordBattle = FALSE;
 
     for (i = 0; i < PARTY_SIZE; i++)
         AdjustFriendship(&gPlayerParty[i], FRIENDSHIP_EVENT_LEAGUE_BATTLE);
@@ -1061,39 +1058,39 @@ static void CB2_HandleStartMultiPartnerBattle(void)
             LoadWirelessStatusIndicatorSpriteGfx();
         // fall through
     case 1:
-        if (gBattleTypeFlags & BATTLE_TYPE_LINK)
-        {
-            if (gReceivedRemoteLinkPlayers != 0)
-            {
-                u8 language;
+        // if (gBattleTypeFlags & BATTLE_TYPE_LINK)
+        // {
+        //     if (gReceivedRemoteLinkPlayers != 0)
+        //     {
+        //         u8 language;
 
-                gLinkPlayers[0].id = 0;
-                gLinkPlayers[1].id = 2;
-                gLinkPlayers[2].id = 1;
-                gLinkPlayers[3].id = 3;
-                GetFrontierTrainerName(gLinkPlayers[2].name, gTrainerBattleOpponent_A);
-                GetFrontierTrainerName(gLinkPlayers[3].name, gTrainerBattleOpponent_B);
-                GetBattleTowerTrainerLanguage(&language, gTrainerBattleOpponent_A);
-                gLinkPlayers[2].language = language;
-                GetBattleTowerTrainerLanguage(&language, gTrainerBattleOpponent_B);
-                gLinkPlayers[3].language = language;
+        //         gLinkPlayers[0].id = 0;
+        //         gLinkPlayers[1].id = 2;
+        //         gLinkPlayers[2].id = 1;
+        //         gLinkPlayers[3].id = 3;
+        //         // GetFrontierTrainerName(gLinkPlayers[2].name, gTrainerBattleOpponent_A);
+        //         // GetFrontierTrainerName(gLinkPlayers[3].name, gTrainerBattleOpponent_B);
+        //         // GetBattleTowerTrainerLanguage(&language, gTrainerBattleOpponent_A);
+        //         // gLinkPlayers[2].language = language;
+        //         // GetBattleTowerTrainerLanguage(&language, gTrainerBattleOpponent_B);
+        //         // gLinkPlayers[3].language = language;
 
-                if (IsLinkTaskFinished())
-                {
-                    // 0x300
-                    *(&gBattleStruct->multiBuffer.linkBattlerHeader.versionSignatureLo) = 0;
-                    *(&gBattleStruct->multiBuffer.linkBattlerHeader.versionSignatureHi) = 3;
-                    BufferPartyVsScreenHealth_AtStart();
-                    SetPlayerBerryDataInBattleStruct();
-                    SendBlock(BitmaskAllOtherLinkPlayers(), &gBattleStruct->multiBuffer.linkBattlerHeader, sizeof(gBattleStruct->multiBuffer.linkBattlerHeader));
-                    gBattleCommunication[MULTIUSE_STATE] = 2;
-                }
+        //         if (IsLinkTaskFinished())
+        //         {
+        //             // 0x300
+        //             *(&gBattleStruct->multiBuffer.linkBattlerHeader.versionSignatureLo) = 0;
+        //             *(&gBattleStruct->multiBuffer.linkBattlerHeader.versionSignatureHi) = 3;
+        //             BufferPartyVsScreenHealth_AtStart();
+        //             SetPlayerBerryDataInBattleStruct();
+        //             SendBlock(BitmaskAllOtherLinkPlayers(), &gBattleStruct->multiBuffer.linkBattlerHeader, sizeof(gBattleStruct->multiBuffer.linkBattlerHeader));
+        //             gBattleCommunication[MULTIUSE_STATE] = 2;
+        //         }
 
-                if (gWirelessCommType)
-                    CreateWirelessStatusIndicatorSprite(0, 0);
-            }
-        }
-        else
+        //         if (gWirelessCommType)
+        //             CreateWirelessStatusIndicatorSprite(0, 0);
+        //     }
+        // }
+        // else
         {
             if (!(gBattleTypeFlags & BATTLE_TYPE_RECORDED))
                 gBattleTypeFlags |= BATTLE_TYPE_IS_MASTER;
@@ -1270,7 +1267,7 @@ static void CB2_HandleStartMultiPartnerBattle(void)
         // Finish, start battle
         if (BattleInitAllSprites(&gBattleCommunication[SPRITES_INIT_STATE1], &gBattleCommunication[SPRITES_INIT_STATE2]))
         {
-            TrySetLinkBattleTowerEnemyPartyLevel();
+            // TrySetLinkBattleTowerEnemyPartyLevel();
             gPreBattleCallback1 = gMain.callback1;
             gMain.callback1 = BattleMainCB1;
             SetMainCallback2(BattleMainCB2);
@@ -2163,7 +2160,8 @@ static void EndLinkBattleInSteps(void)
 
             for (i = 0; i < battlerCount && (gLinkPlayers[i].version & 0xFF) == VERSION_EMERALD; i++);
 
-            if (!gSaveBlock2Ptr->frontier.disableRecordBattle && i == battlerCount)
+            // if (!gSaveBlock2Ptr->frontier.disableRecordBattle && i == battlerCount)
+            if (i == battlerCount)
             {
                 if (FlagGet(FLAG_SYS_FRONTIER_PASS))
                 {
@@ -3365,8 +3363,8 @@ static void DoBattleIntro(void)
                 break;
             }
 
-            if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
-                BattleArena_InitPoints();
+            // if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
+            //     BattleArena_InitPoints();
         }
 
         if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
@@ -5063,7 +5061,7 @@ static void HandleEndTurn_BattleLost(void)
             {
                 gBattlescriptCurrInstr = BattleScript_PrintPlayerForfeitedLinkBattle;
                 gBattleOutcome &= ~B_OUTCOME_LINK_BATTLE_RAN;
-                gSaveBlock2Ptr->frontier.disableRecordBattle = TRUE;
+                // gSaveBlock2Ptr->frontier.disableRecordBattle = TRUE;
             }
             else
             {
@@ -5095,7 +5093,7 @@ static void HandleEndTurn_RanFromBattle(void)
     {
         gBattlescriptCurrInstr = BattleScript_PrintPlayerForfeited;
         gBattleOutcome = B_OUTCOME_FORFEITED;
-        gSaveBlock2Ptr->frontier.disableRecordBattle = TRUE;
+        // gSaveBlock2Ptr->frontier.disableRecordBattle = TRUE;
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
     {

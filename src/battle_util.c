@@ -1,8 +1,6 @@
 #include "global.h"
 #include "battle.h"
 #include "battle_anim.h"
-#include "battle_arena.h"
-#include "battle_pyramid.h"
 #include "battle_util.h"
 #include "battle_controllers.h"
 #include "battle_interface.h"
@@ -46,6 +44,7 @@
 #include "constants/trainers.h"
 #include "constants/weather.h"
 #include "constants/pokemon.h"
+#include "constants/party_menu.h"
 
 extern struct Evolution gEvolutionTable[][EVOS_PER_MON];
 
@@ -491,8 +490,8 @@ void HandleAction_UseMove(void)
         gBattlescriptCurrInstr = gBattleScriptsForMoveEffects[gBattleMoves[gCurrentMove].effect];
     }
 
-    if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
-        BattleArena_AddMindPoints(gBattlerAttacker);
+    // if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
+    //     BattleArena_AddMindPoints(gBattlerAttacker);
 
     // Record HP of each battler
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
@@ -732,7 +731,7 @@ void HandleAction_Run(void)
         }
 
         gBattleOutcome |= B_OUTCOME_LINK_BATTLE_RAN;
-        gSaveBlock2Ptr->frontier.disableRecordBattle = TRUE;
+        // gSaveBlock2Ptr->frontier.disableRecordBattle = TRUE;
     }
     else
     {
@@ -10431,5 +10430,44 @@ u16 GetVictoryMusicForBGM(u16 bgmId)
     case MUS_HG_VS_ARCEUS:                return MUS_HG_VICTORY_WILD;
     case MUS_HG_VS_FRONTIER_BRAIN:        return MUS_HG_VICTORY_FRONTIER_BRAIN;
     default: return MUS_VICTORY_WILD;
+    }
+}
+
+void IsPartyFullHealed(void)
+{
+    u8 i, j;
+
+    gSpecialVar_Result = TRUE;
+    for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
+    {
+        bool32 canBeHealed = FALSE;
+        struct Pokemon *mon = &gPlayerParty[i];
+        u16 curr = GetMonData(mon, MON_DATA_HP);
+        u16 max = GetMonData(mon, MON_DATA_MAX_HP);
+        if (curr >= max && GetAilmentFromStatus(GetMonData(mon, MON_DATA_STATUS)) == AILMENT_NONE)
+        {
+            u8 ppBonuses = GetMonData(mon, MON_DATA_PP_BONUSES);
+            for (j = 0; j < MAX_MON_MOVES; j++)
+            {
+                u16 move = GetMonData(mon, MON_DATA_MOVE1 + j);
+                max = CalculatePPWithBonus(move, ppBonuses, j);
+                curr = GetMonData(mon, MON_DATA_PP1 + j);
+                if (curr < max)
+                {
+                    canBeHealed = TRUE;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            canBeHealed = TRUE;
+        }
+
+        if (canBeHealed == TRUE)
+        {
+            gSpecialVar_Result = FALSE;
+            break;
+        }
     }
 }

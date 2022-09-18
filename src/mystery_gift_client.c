@@ -3,7 +3,6 @@
 #include "decompress.h"
 #include "overworld.h"
 #include "script.h"
-#include "battle_tower.h"
 #include "mystery_gift.h"
 #include "mystery_event_script.h"
 #include "mystery_gift_client.h"
@@ -231,10 +230,10 @@ static u32 Client_Run(struct MysteryGiftClient * client)
     case CLI_SAVE_RAM_SCRIPT:
         InitRamScript_NoObjectEvent(client->recvBuffer, sizeof(struct RamScriptData));
         break;
-    case CLI_RECV_EREADER_TRAINER:
-        memcpy(&gSaveBlock2Ptr->frontier.ereaderTrainer, client->recvBuffer, sizeof(gSaveBlock2Ptr->frontier.ereaderTrainer));
-        ValidateEReaderTrainer();
-        break;
+    // case CLI_RECV_EREADER_TRAINER:
+    //     memcpy(&gSaveBlock2Ptr->frontier.ereaderTrainer, client->recvBuffer, sizeof(gSaveBlock2Ptr->frontier.ereaderTrainer));
+    //     ValidateEReaderTrainer();
+    //     break;
     case CLI_RUN_BUFFER_SCRIPT:
         memcpy(gDecompressionBuffer, client->recvBuffer, MG_LINK_BUFFER_SIZE);
         client->funcId = FUNC_RUN_BUFFER;

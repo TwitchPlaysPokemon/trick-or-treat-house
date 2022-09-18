@@ -14,7 +14,6 @@
 #include "field_message_box.h"
 #include "easy_chat.h"
 #include "battle.h"
-#include "battle_tower.h"
 #include "contest.h"
 #include "item.h"
 #include "link.h"
@@ -1465,26 +1464,26 @@ void BravoTrainerPokemonProfile_BeforeInterview2(u8 contestStandingPlace)
 
 static void InterviewAfter_BravoTrainerBattleTowerProfile(void)
 {
-    TVShow *show = &gSaveBlock1Ptr->tvShows[sCurTVShowSlot];
-    show->bravoTrainerTower.kind = TVSHOW_BRAVO_TRAINER_BATTLE_TOWER_PROFILE;
-    show->bravoTrainerTower.active = TRUE;
-    StringCopy(show->bravoTrainerTower.trainerName, gSaveBlock2Ptr->playerName);
-    StringCopy(show->bravoTrainerTower.pokemonName, gSaveBlock2Ptr->frontier.towerInterview.opponentName);
-    show->bravoTrainerTower.species = gSaveBlock2Ptr->frontier.towerInterview.playerSpecies;
-    show->bravoTrainerTower.defeatedSpecies = gSaveBlock2Ptr->frontier.towerInterview.opponentSpecies;
-    show->bravoTrainerTower.numFights = GetCurrentBattleTowerWinStreak(gSaveBlock2Ptr->frontier.towerLvlMode, 0);
-    show->bravoTrainerTower.wonTheChallenge = gSaveBlock2Ptr->frontier.towerBattleOutcome;
-    if (gSaveBlock2Ptr->frontier.towerLvlMode == FRONTIER_LVL_50)
-        show->bravoTrainerTower.btLevel = FRONTIER_MAX_LEVEL_50;
-    else
-        show->bravoTrainerTower.btLevel = FRONTIER_MAX_LEVEL_OPEN;
-    show->bravoTrainerTower.interviewResponse = gSpecialVar_0x8004;
-    StorePlayerIdInNormalShow(show);
-    show->bravoTrainerTower.language = gGameLanguage;
-    if (show->bravoTrainerTower.language == LANGUAGE_JAPANESE || gSaveBlock2Ptr->frontier.towerInterview.opponentLanguage == LANGUAGE_JAPANESE)
-        show->bravoTrainerTower.pokemonNameLanguage = LANGUAGE_JAPANESE;
-    else
-        show->bravoTrainerTower.pokemonNameLanguage = gSaveBlock2Ptr->frontier.towerInterview.opponentLanguage;
+    // TVShow *show = &gSaveBlock1Ptr->tvShows[sCurTVShowSlot];
+    // show->bravoTrainerTower.kind = TVSHOW_BRAVO_TRAINER_BATTLE_TOWER_PROFILE;
+    // show->bravoTrainerTower.active = TRUE;
+    // StringCopy(show->bravoTrainerTower.trainerName, gSaveBlock2Ptr->playerName);
+    // StringCopy(show->bravoTrainerTower.pokemonName, gSaveBlock2Ptr->frontier.towerInterview.opponentName);
+    // show->bravoTrainerTower.species = gSaveBlock2Ptr->frontier.towerInterview.playerSpecies;
+    // show->bravoTrainerTower.defeatedSpecies = gSaveBlock2Ptr->frontier.towerInterview.opponentSpecies;
+    // show->bravoTrainerTower.numFights = GetCurrentBattleTowerWinStreak(gSaveBlock2Ptr->frontier.towerLvlMode, 0);
+    // show->bravoTrainerTower.wonTheChallenge = gSaveBlock2Ptr->frontier.towerBattleOutcome;
+    // if (gSaveBlock2Ptr->frontier.towerLvlMode == FRONTIER_LVL_50)
+    //     show->bravoTrainerTower.btLevel = FRONTIER_MAX_LEVEL_50;
+    // else
+    //     show->bravoTrainerTower.btLevel = FRONTIER_MAX_LEVEL_OPEN;
+    // show->bravoTrainerTower.interviewResponse = gSpecialVar_0x8004;
+    // StorePlayerIdInNormalShow(show);
+    // show->bravoTrainerTower.language = gGameLanguage;
+    // if (show->bravoTrainerTower.language == LANGUAGE_JAPANESE || gSaveBlock2Ptr->frontier.towerInterview.opponentLanguage == LANGUAGE_JAPANESE)
+    //     show->bravoTrainerTower.pokemonNameLanguage = LANGUAGE_JAPANESE;
+    // else
+    //     show->bravoTrainerTower.pokemonNameLanguage = gSaveBlock2Ptr->frontier.towerInterview.opponentLanguage;
 }
 
 void TryPutSmartShopperOnAir(void)
@@ -1855,7 +1854,7 @@ void TryPutTodaysRivalTrainerOnAir(void)
             if (FlagGet(sGoldSymbolFlags[i]) == TRUE)
                 show->rivalTrainer.nGoldSymbols++;
         }
-        show->rivalTrainer.battlePoints = gSaveBlock2Ptr->frontier.battlePoints;
+        // show->rivalTrainer.battlePoints = gSaveBlock2Ptr->frontier.battlePoints;
         StringCopy(show->rivalTrainer.playerName, gSaveBlock2Ptr->playerName);
         StorePlayerIdInRecordMixShow(show);
         show->rivalTrainer.language = gGameLanguage;
@@ -2267,17 +2266,17 @@ u8 GetRibbonCount(struct Pokemon *pokemon)
     nRibbons += GetMonData(pokemon, MON_DATA_SMART_RIBBON);
     nRibbons += GetMonData(pokemon, MON_DATA_TOUGH_RIBBON);
     nRibbons += GetMonData(pokemon, MON_DATA_CHAMPION_RIBBON);
-    nRibbons += GetMonData(pokemon, MON_DATA_WINNING_RIBBON);
-    nRibbons += GetMonData(pokemon, MON_DATA_VICTORY_RIBBON);
     nRibbons += GetMonData(pokemon, MON_DATA_ARTIST_RIBBON);
-    nRibbons += GetMonData(pokemon, MON_DATA_EFFORT_RIBBON);
-    nRibbons += GetMonData(pokemon, MON_DATA_MARINE_RIBBON);
-    nRibbons += GetMonData(pokemon, MON_DATA_LAND_RIBBON);
-    nRibbons += GetMonData(pokemon, MON_DATA_SKY_RIBBON);
-    nRibbons += GetMonData(pokemon, MON_DATA_COUNTRY_RIBBON);
-    nRibbons += GetMonData(pokemon, MON_DATA_NATIONAL_RIBBON);
-    nRibbons += GetMonData(pokemon, MON_DATA_EARTH_RIBBON);
-    nRibbons += GetMonData(pokemon, MON_DATA_WORLD_RIBBON);
+    // nRibbons += GetMonData(pokemon, MON_DATA_WINNING_RIBBON);
+    // nRibbons += GetMonData(pokemon, MON_DATA_VICTORY_RIBBON);
+    // nRibbons += GetMonData(pokemon, MON_DATA_EFFORT_RIBBON);
+    // nRibbons += GetMonData(pokemon, MON_DATA_MARINE_RIBBON);
+    // nRibbons += GetMonData(pokemon, MON_DATA_LAND_RIBBON);
+    // nRibbons += GetMonData(pokemon, MON_DATA_SKY_RIBBON);
+    // nRibbons += GetMonData(pokemon, MON_DATA_COUNTRY_RIBBON);
+    // nRibbons += GetMonData(pokemon, MON_DATA_NATIONAL_RIBBON);
+    // nRibbons += GetMonData(pokemon, MON_DATA_EARTH_RIBBON);
+    // nRibbons += GetMonData(pokemon, MON_DATA_WORLD_RIBBON);
     return nRibbons;
 }
 
@@ -2289,17 +2288,17 @@ static u8 MonDataIdxToRibbon(u8 monDataIdx)
     if (monDataIdx == MON_DATA_CUTE_RIBBON)     return CUTE_RIBBON_NORMAL;
     if (monDataIdx == MON_DATA_SMART_RIBBON)    return SMART_RIBBON_NORMAL;
     if (monDataIdx == MON_DATA_TOUGH_RIBBON)    return TOUGH_RIBBON_NORMAL;
-    if (monDataIdx == MON_DATA_WINNING_RIBBON)  return WINNING_RIBBON;
-    if (monDataIdx == MON_DATA_VICTORY_RIBBON)  return VICTORY_RIBBON;
-    if (monDataIdx == MON_DATA_ARTIST_RIBBON)   return ARTIST_RIBBON;
-    if (monDataIdx == MON_DATA_EFFORT_RIBBON)   return EFFORT_RIBBON;
-    if (monDataIdx == MON_DATA_MARINE_RIBBON)   return MARINE_RIBBON;
-    if (monDataIdx == MON_DATA_LAND_RIBBON)     return LAND_RIBBON;
-    if (monDataIdx == MON_DATA_SKY_RIBBON)      return SKY_RIBBON;
-    if (monDataIdx == MON_DATA_COUNTRY_RIBBON)  return COUNTRY_RIBBON;
-    if (monDataIdx == MON_DATA_NATIONAL_RIBBON) return NATIONAL_RIBBON;
-    if (monDataIdx == MON_DATA_EARTH_RIBBON)    return EARTH_RIBBON;
-    if (monDataIdx == MON_DATA_WORLD_RIBBON)    return WORLD_RIBBON;
+    // if (monDataIdx == MON_DATA_WINNING_RIBBON)  return WINNING_RIBBON;
+    // if (monDataIdx == MON_DATA_VICTORY_RIBBON)  return VICTORY_RIBBON;
+    // if (monDataIdx == MON_DATA_ARTIST_RIBBON)   return ARTIST_RIBBON;
+    // if (monDataIdx == MON_DATA_EFFORT_RIBBON)   return EFFORT_RIBBON;
+    // if (monDataIdx == MON_DATA_MARINE_RIBBON)   return MARINE_RIBBON;
+    // if (monDataIdx == MON_DATA_LAND_RIBBON)     return LAND_RIBBON;
+    // if (monDataIdx == MON_DATA_SKY_RIBBON)      return SKY_RIBBON;
+    // if (monDataIdx == MON_DATA_COUNTRY_RIBBON)  return COUNTRY_RIBBON;
+    // if (monDataIdx == MON_DATA_NATIONAL_RIBBON) return NATIONAL_RIBBON;
+    // if (monDataIdx == MON_DATA_EARTH_RIBBON)    return EARTH_RIBBON;
+    // if (monDataIdx == MON_DATA_WORLD_RIBBON)    return WORLD_RIBBON;
     return CHAMPION_RIBBON;
 }
 
@@ -2403,10 +2402,10 @@ void TryPutFrontierTVShowOnAir(u16 winStreak, u8 facilityAndMode)
             show->frontier.species1 = GetMonData(&gPlayerParty[0], MON_DATA_SPECIES, NULL);
             show->frontier.species2 = GetMonData(&gPlayerParty[1], MON_DATA_SPECIES, NULL);
             break;
-        case FRONTIER_SHOW_TOWER_LINK_MULTIS:
-            show->frontier.species1 = GetMonData(&gSaveBlock1Ptr->playerParty[gSaveBlock2Ptr->frontier.selectedPartyMons[0] - 1], MON_DATA_SPECIES, NULL);
-            show->frontier.species2 = GetMonData(&gSaveBlock1Ptr->playerParty[gSaveBlock2Ptr->frontier.selectedPartyMons[1] - 1], MON_DATA_SPECIES, NULL);
-            break;
+        // case FRONTIER_SHOW_TOWER_LINK_MULTIS:
+        //     show->frontier.species1 = GetMonData(&gSaveBlock1Ptr->playerParty[gSaveBlock2Ptr->frontier.selectedPartyMons[0] - 1], MON_DATA_SPECIES, NULL);
+        //     show->frontier.species2 = GetMonData(&gSaveBlock1Ptr->playerParty[gSaveBlock2Ptr->frontier.selectedPartyMons[1] - 1], MON_DATA_SPECIES, NULL);
+        //     break;
         }
         StorePlayerIdInRecordMixShow(show);
         show->frontier.language = gGameLanguage;

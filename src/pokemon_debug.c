@@ -732,7 +732,7 @@ static void BattleLoadOpponentMonSpriteGfxCustom(u16 species, bool8 isFemale, bo
     LoadPalette(gDecompressionBuffer, 0x80 + battlerId * 16, 0x20);
 }
 
-static bool8 IsCastformForm(species)
+static bool8 IsCastformForm(u32 species)
 {
     if (species == SPECIES_CASTFORM_SUNNY || species == SPECIES_CASTFORM_RAINY || species == SPECIES_CASTFORM_SNOWY)
         return TRUE;
@@ -740,7 +740,7 @@ static bool8 IsCastformForm(species)
     return FALSE;
 }
 
-static u8 GetCastformYCustom(species)
+static u8 GetCastformYCustom(u32 species)
 {
     u8 ret;
     switch (species)

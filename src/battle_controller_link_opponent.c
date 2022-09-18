@@ -6,7 +6,6 @@
 #include "battle_interface.h"
 #include "battle_message.h"
 #include "battle_setup.h"
-#include "battle_tower.h"
 #include "battle_tv.h"
 #include "bg.h"
 #include "data.h"
@@ -1230,14 +1229,14 @@ static void LinkOpponentHandleDrawTrainerPic(void)
         else // first mon
             xPos = 200;
 
-        if (gBattleTypeFlags & BATTLE_TYPE_BATTLE_TOWER)
-        {
-            if (gActiveBattler == B_POSITION_OPPONENT_LEFT)
-                trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_A);
-            else
-                trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_B);
-        }
-        else
+        // if (gBattleTypeFlags & BATTLE_TYPE_BATTLE_TOWER)
+        // {
+        //     if (gActiveBattler == B_POSITION_OPPONENT_LEFT)
+        //         trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_A);
+        //     else
+        //         trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_B);
+        // }
+        // else
         {
             if ((gLinkPlayers[GetBattlerMultiplayerId(gActiveBattler)].version & 0xFF) == VERSION_FIRE_RED
             || (gLinkPlayers[GetBattlerMultiplayerId(gActiveBattler)].version & 0xFF) == VERSION_LEAF_GREEN)
@@ -1308,26 +1307,26 @@ static void LinkOpponentHandleDrawTrainerPic(void)
 
 static void LinkOpponentHandleTrainerSlide(void)
 {
-    u32 trainerPicId;
+    // u32 trainerPicId;
 
-    if (gActiveBattler == 1)
-        trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_A);
-    else
-        trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_B);
+    // if (gActiveBattler == 1)
+    //     trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_A);
+    // else
+    //     trainerPicId = GetFrontierTrainerFrontSpriteId(gTrainerBattleOpponent_B);
 
-    DecompressTrainerFrontPic(trainerPicId, gActiveBattler);
-    SetMultiuseSpriteTemplateToTrainerBack(trainerPicId, GetBattlerPosition(gActiveBattler));
-    gBattlerSpriteIds[gActiveBattler] = CreateSprite(&gMultiuseSpriteTemplate, 176, (8 - gTrainerFrontPicCoords[trainerPicId].size) * 4 + 40, 0x1E);
+    // DecompressTrainerFrontPic(trainerPicId, gActiveBattler);
+    // SetMultiuseSpriteTemplateToTrainerBack(trainerPicId, GetBattlerPosition(gActiveBattler));
+    // gBattlerSpriteIds[gActiveBattler] = CreateSprite(&gMultiuseSpriteTemplate, 176, (8 - gTrainerFrontPicCoords[trainerPicId].size) * 4 + 40, 0x1E);
 
-    gSprites[gBattlerSpriteIds[gActiveBattler]].x2 = 96;
-    gSprites[gBattlerSpriteIds[gActiveBattler]].x += 32;
-    gSprites[gBattlerSpriteIds[gActiveBattler]].sSpeedX = -2;
-    gSprites[gBattlerSpriteIds[gActiveBattler]].oam.paletteNum = IndexOfSpritePaletteTag(gTrainerFrontPicPaletteTable[trainerPicId].tag);
-    gSprites[gBattlerSpriteIds[gActiveBattler]].oam.affineParam = trainerPicId;
-    gSprites[gBattlerSpriteIds[gActiveBattler]].callback = SpriteCB_TrainerSlideIn;
+    // gSprites[gBattlerSpriteIds[gActiveBattler]].x2 = 96;
+    // gSprites[gBattlerSpriteIds[gActiveBattler]].x += 32;
+    // gSprites[gBattlerSpriteIds[gActiveBattler]].sSpeedX = -2;
+    // gSprites[gBattlerSpriteIds[gActiveBattler]].oam.paletteNum = IndexOfSpritePaletteTag(gTrainerFrontPicPaletteTable[trainerPicId].tag);
+    // gSprites[gBattlerSpriteIds[gActiveBattler]].oam.affineParam = trainerPicId;
+    // gSprites[gBattlerSpriteIds[gActiveBattler]].callback = SpriteCB_TrainerSlideIn;
 
-    gBattlerControllerFuncs[gActiveBattler] = CompleteOnBankSpriteCallbackDummy2; // this line is redundant, because LinkOpponentBufferExecCompleted changes the battle battlerId function
-    LinkOpponentBufferExecCompleted();
+    // gBattlerControllerFuncs[gActiveBattler] = CompleteOnBankSpriteCallbackDummy2; // this line is redundant, because LinkOpponentBufferExecCompleted changes the battle battlerId function
+    // LinkOpponentBufferExecCompleted();
 }
 
 #undef sSpeedX
@@ -1837,7 +1836,7 @@ static void LinkOpponentHandleEndLinkBattle(void)
     else
         gBattleOutcome = gBattleResources->bufferA[gActiveBattler][1] ^ B_OUTCOME_DREW;
 
-    gSaveBlock2Ptr->frontier.disableRecordBattle = gBattleResources->bufferA[gActiveBattler][2];
+    // gSaveBlock2Ptr->frontier.disableRecordBattle = gBattleResources->bufferA[gActiveBattler][2];
     FadeOutMapMusic(5);
     BeginFastPaletteFade(3);
     LinkOpponentBufferExecCompleted();

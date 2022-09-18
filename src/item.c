@@ -14,8 +14,6 @@
 #include "overworld.h"
 #include "random.h"
 #include "mgba.h"
-// #include "battle_pyramid.h"
-// #include "battle_pyramid_bag.h"
 #include "constants/items.h"
 #include "constants/hold_effects.h"
 #include "constants/item_effects.h"

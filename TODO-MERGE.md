@@ -6,14 +6,14 @@ Feature Merging:
 	- [X] Grab graphics for Pret + RHH intro from speedchoice-ex
 	- [X] Insert this after the gamefreak logo, during intro.
 	- [X] Switch pokemon in intro to Gourgeist (possibly randomly selects the size?)
-- [ ] Convert to Triple Layer metatiles
-	- [ ] Fix broken metatile in Water Temple, finally
+- [X] Convert to Triple Layer metatiles
+	- [X] Fix broken metatile in Water Temple, finally
 - [ ] Feature branch: Follow Me:  https://github.com/ghoulslash/pokeemerald/tree/follow_me 
 - [ ] Feature branch: Sideways Stairs
 - [ ] Feature branch: overworld expansion (double check that this is all correct in TTH from this)
 - [X] Feature branch: dynamic overworld palettes (double check ditto)
 - [ ] Feature branch: Item descriptions on pickup: https://github.com/ghoulslash/pokeemerald/tree/item_desc_header 
-- [ ] Feature branch: Pokemon decryption and compression: https://github.com/ghoulslash/pokeemerald/tree/box_expansion
+- [X] Feature branch: Pokemon decryption and compression: https://github.com/ghoulslash/pokeemerald/tree/box_expansion
 - [ ] Tutorial: Improve loading of battle terrain (possibly)
 - [ ] Tutorial: Fix snow weather
 - [ ] Tutorial: Missing text function RESET_SIZE

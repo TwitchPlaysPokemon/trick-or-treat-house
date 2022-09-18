@@ -7,7 +7,6 @@
 #include "battle_message.h"
 #include "battle_interface.h"
 #include "battle_setup.h"
-#include "battle_tower.h"
 #include "battle_z_move.h"
 #include "bg.h"
 #include "data.h"
@@ -1315,7 +1314,7 @@ static void PlayerPartnerHandleDrawTrainerPic(void)
     }
     else
     {
-        trainerPicId = GetFrontierTrainerFrontSpriteId(gPartnerTrainerId);
+        trainerPicId = TRAINER_BACK_PIC_RED;
         xPos = 32;
         yPos = (8 - gTrainerFrontPicCoords[trainerPicId].size) * 4 + 80;
     }
@@ -1813,7 +1812,7 @@ static void PlayerPartnerHandleIntroTrainerBallThrow(void)
     }
     else
     {
-        u8 spriteId = GetFrontierTrainerFrontSpriteId(gPartnerTrainerId);
+        u8 spriteId = TRAINER_BACK_PIC_RED;
         LoadCompressedPalette(gTrainerFrontPicPaletteTable[spriteId].data, 0x100 + paletteNum * 16, 32);
     }
 

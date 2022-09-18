@@ -4,7 +4,6 @@
 #include "event_data.h"
 #include "easy_chat.h"
 #include "script.h"
-#include "battle_tower.h"
 #include "wonder_news.h"
 #include "string_util.h"
 #include "new_game.h"
@@ -136,7 +135,7 @@ void ClearSavedWonderCardAndRelated(void)
     ClearRamScript();
     ClearMysteryGiftFlags();
     ClearMysteryGiftVars();
-    ClearEReaderTrainer(&gSaveBlock2Ptr->frontier.ereaderTrainer);
+    // ClearEReaderTrainer(&gSaveBlock2Ptr->frontier.ereaderTrainer);
 }
 
 bool32 SaveWonderCard(const struct WonderCard *card)

@@ -394,8 +394,8 @@ static void Task_TryBecomeLinkLeader(u8 taskId)
     switch (data->state)
     {
     case LL_STATE_INIT:
-        if (gSpecialVar_0x8004 == LINK_GROUP_BATTLE_TOWER && gSaveBlock2Ptr->frontier.lvlMode == FRONTIER_LVL_OPEN)
-            gSpecialVar_0x8004++;
+        // if (gSpecialVar_0x8004 == LINK_GROUP_BATTLE_TOWER && gSaveBlock2Ptr->frontier.lvlMode == FRONTIER_LVL_OPEN)
+        //     gSpecialVar_0x8004++;
         gPlayerCurrActivity = sLinkGroupToActivityAndCapacity[gSpecialVar_0x8004];
         sPlayerActivityGroupSize = sLinkGroupToActivityAndCapacity[gSpecialVar_0x8004] >> 8;
         SetHostRfuGameData(gPlayerCurrActivity, 0, FALSE);
@@ -987,8 +987,8 @@ static void Task_TryJoinLinkGroup(u8 taskId)
     switch (data->state)
     {
     case LG_STATE_INIT:
-        if (gSpecialVar_0x8004 == LINK_GROUP_BATTLE_TOWER && gSaveBlock2Ptr->frontier.lvlMode == FRONTIER_LVL_OPEN)
-            gSpecialVar_0x8004++;
+        // if (gSpecialVar_0x8004 == LINK_GROUP_BATTLE_TOWER && gSaveBlock2Ptr->frontier.lvlMode == FRONTIER_LVL_OPEN)
+        //     gSpecialVar_0x8004++;
         gPlayerCurrActivity = sLinkGroupToURoomActivity[gSpecialVar_0x8004];
         SetHostRfuGameData(gPlayerCurrActivity, 0, FALSE);
         SetWirelessCommType1();

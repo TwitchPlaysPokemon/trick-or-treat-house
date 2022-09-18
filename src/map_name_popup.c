@@ -1,5 +1,4 @@
 #include "global.h"
-// #include "battle_pyramid.h"
 #include "bg.h"
 #include "event_data.h"
 #include "gpu_regs.h"

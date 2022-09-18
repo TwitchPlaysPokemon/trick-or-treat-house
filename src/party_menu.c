@@ -5,9 +5,6 @@
 #include "battle_controllers.h"
 #include "battle_gfx_sfx_util.h"
 #include "battle_interface.h"
-#include "battle_pike.h"
-// #include "battle_pyramid.h"
-// #include "battle_pyramid_bag.h"
 #include "bg.h"
 #include "contest.h"
 #include "data.h"
@@ -24,7 +21,6 @@
 #include "fieldmap.h"
 #include "fldeff.h"
 #include "fldeff_misc.h"
-#include "frontier_util.h"
 #include "gpu_regs.h"
 #include "graphics.h"
 #include "international_string_util.h"
@@ -2612,7 +2608,7 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
     //     }
     // }
 
-    if (!InBattlePike())
+    // if (!InBattlePike())
     {
         if (GetMonData(&mons[1], MON_DATA_SPECIES) != SPECIES_NONE)
             AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SWITCH);
@@ -5977,12 +5973,12 @@ static bool8 GetBattleEntryEligibility(struct Pokemon *mon)
     case FACILITY_UNION_ROOM:
         return TRUE;
     default: // Battle Frontier
-        species = GetMonData(mon, MON_DATA_SPECIES);
-        for (; gFrontierBannedSpecies[i] != 0xFFFF; i++)
-        {
-            if (gFrontierBannedSpecies[i] == species)
-                return FALSE;
-        }
+    //     species = GetMonData(mon, MON_DATA_SPECIES);
+    //     for (; gFrontierBannedSpecies[i] != 0xFFFF; i++)
+    //     {
+    //         if (gFrontierBannedSpecies[i] == species)
+    //             return FALSE;
+    //     }
         return TRUE;
     }
 }

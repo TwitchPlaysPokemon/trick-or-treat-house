@@ -237,22 +237,22 @@ gSpecials::
 	def_special FinishCyclingRoadChallenge
 	def_special UpdateCyclingRoadState
 	def_special GetLeadMonFriendshipScore
-	def_special CallFrontierUtilFunc
-	def_special CallBattleTowerFunc
-	def_special CallBattleDomeFunction
-	def_special CallBattlePalaceFunction
+	@ def_special CallFrontierUtilFunc
+	@ def_special CallBattleTowerFunc
+	@ @ def_special CallBattleDomeFunction
+	@ def_special CallBattlePalaceFunction
 	@ def_special CopyEReaderTrainerGreeting
-	def_special DoSpecialTrainerBattle
-	def_special CallBattleArenaFunction
-	def_special CallBattleFactoryFunction
-	def_special CallBattlePikeFunction
+	@ def_special DoSpecialTrainerBattle
+	@ def_special CallBattleArenaFunction
+	@ def_special CallBattleFactoryFunction
+	@ def_special CallBattlePikeFunction
 	@ def_special CallBattlePyramidFunction
 	def_special IsPartyFullHealed
 	def_special StopMapMusic
-	def_special CallVerdanturfTentFunction
-	def_special CallFallarborTentFunction
-	def_special CallSlateportTentFunction
-	def_special ChoosePartyForBattleFrontier
+	@ def_special CallVerdanturfTentFunction
+	@ def_special CallFallarborTentFunction
+	@ def_special CallSlateportTentFunction
+	@ def_special ChoosePartyForBattleFrontier
 	@ def_special ValidateEReaderTrainer
 	def_special GetBestBattleTowerStreak
 	def_special ReducePlayerPartyToSelectedMons
@@ -291,7 +291,6 @@ gSpecials::
 	def_special DoOrbEffect
 	def_special FadeOutOrbEffect
 	@ def_special WaitWeather
-	@ def_special BufferEReaderTrainerName
 	def_special GetSlotMachineId
 	def_special GetPlayerFacingDirection
 	@ def_special FoundAbandonedShipRoom1Key
@@ -343,7 +342,7 @@ gSpecials::
 	def_special HasAllHoennMons
 	def_special MonOTNameNotPlayer
 	def_special BufferLottoTicketNumber
-	def_special TryHideBattleTowerReporter
+	@ def_special TryHideBattleTowerReporter
 	def_special DoesPartyHaveEnigmaBerry
 	def_special GenerateContestRand
 	def_special SetChampionSaveWarp
@@ -442,8 +441,8 @@ gSpecials::
 	def_special LinkContestTryShowWirelessIndicator
 	def_special LinkContestTryHideWirelessIndicator
 	def_special IsWirelessContest
-	def_special ShowRankingHallRecordsWindow
-	def_special ScrollRankingHallRecordsWindow
+	@ def_special ShowRankingHallRecordsWindow
+	@ def_special ScrollRankingHallRecordsWindow
 	def_special ShowFrontierManiacMessage
 	def_special IsContestWithRSPlayer
 	def_special ClearLinkContestFlags
