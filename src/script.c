@@ -25,9 +25,9 @@ enum {
 extern const u8 *gRamScriptPtr;
 
 static u8 sGlobalScriptContextStatus;
-static struct ScriptContext sGlobalScriptContext;
-static struct ScriptContext sImmediateScriptContext;
 static bool8 sLockFieldControls;
+struct ScriptContext sGlobalScriptContext;
+struct ScriptContext sImmediateScriptContext;
 
 extern ScrCmdFunc gScriptCmdTable[];
 extern ScrCmdFunc gScriptCmdTableEnd[];
@@ -46,9 +46,10 @@ void InitScriptContext(struct ScriptContext *ctx, void *cmdTable, void *cmdTable
 
     for (i = 0; i < (int)ARRAY_COUNT(ctx->data); i++)
         ctx->data[i] = 0;
-
     for (i = 0; i < (int)ARRAY_COUNT(ctx->stack); i++)
         ctx->stack[i] = NULL;
+    for (i = 0; i < (int)ARRAY_COUNT(ctx->locals); i++)
+        ctx->locals[i] = 0;
 }
 
 u8 SetupBytecodeScript(struct ScriptContext *ctx, const u8 *ptr)
@@ -270,6 +271,16 @@ void RunScriptImmediately(const u8 *ptr)
     SetupBytecodeScript(&sImmediateScriptContext, ptr);
     while (RunScriptCommand(&sImmediateScriptContext) == TRUE);
 }
+
+u16* GetArgPointer(u16 id)
+{
+    if (sImmediateScriptContext.mode != SCRIPT_MODE_STOPPED)
+        return &sImmediateScriptContext.locals[id - SPECIAL_VARS_START];
+    else
+        return &sGlobalScriptContext.locals[id - SPECIAL_VARS_START];
+}
+
+// ----------------------------------------------------------------------------
 
 u8 *MapHeaderGetScriptTableForMapId(u16 mapid, u8 tag)
 {

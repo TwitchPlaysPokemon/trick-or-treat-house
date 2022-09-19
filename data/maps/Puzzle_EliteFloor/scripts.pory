@@ -59,9 +59,9 @@ script Puzzle_EliteFloor_OnLoad {
 script Puzzle_EliteFloor_DropDownHole {
 	lock
 	if (flag(FLAG_TRICK_HOUSE_SCROLL_READ)) {
-		setwarp(MAP_PUZZLE_ELITE_FLOOR, 3, 0xFF, 0xFF)
+		setwarp(0, MAP_PUZZLE_ELITE_FLOOR, 3, 0xFF, 0xFF)
 	} else {
-		setwarp(MAP_PUZZLE_ELITE_FLOOR, 2, 0xFF, 0xFF)
+		setwarp(0, MAP_PUZZLE_ELITE_FLOOR, 2, 0xFF, 0xFF)
 	}
 	special(DoFallWarp)
 	waitstate

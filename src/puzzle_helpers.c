@@ -31,6 +31,7 @@
 #include "constants/map_groups.h"
 #include "constants/vars.h"
 #include "constants/species.h"
+#include "constants/script_cmds.h"
 
 // Reference to an assembly defined constant, the start of the ROM
 // We don't actually use the value, just the address it's at.
@@ -234,7 +235,7 @@ void PokemonSaysSetupSongScript(struct ScriptContext *ctx)
 		
 		// applymovement(localId, movementScript)
 		mgba_printf(MGBA_LOG_INFO, "applymovement(%d, %08X)", note->localId, note->movement);
-		script[i++] = 0x4F;
+		script[i++] = SCRCMD_APPLYMOVEMENT;
 		script[i++] = ((note->localId) >> 0) & 0xFF;
 		script[i++] = ((note->localId) >> 8) & 0xFF;
 		script[i++] = (((u32)note->movement) >>  0) & 0xFF;
@@ -243,12 +244,12 @@ void PokemonSaysSetupSongScript(struct ScriptContext *ctx)
 		script[i++] = (((u32)note->movement) >> 24) & 0xFF;
 		// playse(sound)
 		mgba_printf(MGBA_LOG_INFO, "playse(%d)", note->soundEffect);
-		script[i++] = 0x2F;
+		script[i++] = SCRCMD_PLAYSE;
 		script[i++] = ((note->soundEffect) >> 0) & 0xFF;
 		script[i++] = ((note->soundEffect) >> 8) & 0xFF;
 		// delay(noteLength)
 		mgba_printf(MGBA_LOG_INFO, "delay(%d)", noteLen);
-		script[i++] = 0x28;
+		script[i++] = SCRCMD_DELAY;
 		script[i++] = ((noteLen) >> 0) & 0xFF;
 		script[i++] = ((noteLen) >> 8) & 0xFF;
 		
@@ -257,33 +258,33 @@ void PokemonSaysSetupSongScript(struct ScriptContext *ctx)
 		}
 		
 		// ConvertIntToHexStringN(gStringVar1, (u32)note, STR_CONV_MODE_LEADING_ZEROS, 8);
-		// script[i++] = 0x67; // message
+		// script[i++] = SCRCMD_MESSAGE; // message
 		// script[i++] = (((u32) Puzzle_MusicNoteTiles_TEST) >>  0) & 0xFF;
 		// script[i++] = (((u32) Puzzle_MusicNoteTiles_TEST) >>  8) & 0xFF;
 		// script[i++] = (((u32) Puzzle_MusicNoteTiles_TEST) >> 16) & 0xFF;
 		// script[i++] = (((u32) Puzzle_MusicNoteTiles_TEST) >> 24) & 0xFF;
-		// script[i++] = 0x66; // waitmessage
-		// script[i++] = 0x6d; // waitbuttonpress
+		// script[i++] = SCRCMD_WAITMESSAGE; // waitmessage
+		// script[i++] = SCRCMD_WAITBUTTONPRESS; // waitbuttonpress
 	}
 	
 	if (FlagGet(FLAG_EXTRA_ENABLED) && !FlagGet(FLAG_SHOW_EXTRA_SINGER))
 	{
 		mgba_printf(MGBA_LOG_INFO, "call(Puzzle_MusicNoteTiles_ExtraCurious)");
-		script[i++] = 0x04;
+		script[i++] = SCRCMD_CALL;
 		script[i++] = (((u32)Puzzle_MusicNoteTiles_ExtraCurious) >>  0) & 0xFF;
 		script[i++] = (((u32)Puzzle_MusicNoteTiles_ExtraCurious) >>  8) & 0xFF;
 		script[i++] = (((u32)Puzzle_MusicNoteTiles_ExtraCurious) >> 16) & 0xFF;
 		script[i++] = (((u32)Puzzle_MusicNoteTiles_ExtraCurious) >> 24) & 0xFF;
 	} else {
-		script[i++] = 0x28; // delay(60)
+		script[i++] = SCRCMD_DELAY; // delay(60)
 		script[i++] = ((60) >> 0) & 0xFF;
 		script[i++] = ((60) >> 8) & 0xFF;
 	}
 	
 	mgba_printf(MGBA_LOG_INFO, "return");
-	script[i++] = 0x03; // return
+	script[i++] = SCRCMD_RETURN; // return
 	mgba_printf(MGBA_LOG_INFO, "end");
-	script[i++] = 0x02; // end
+	script[i++] = SCRCMD_END; // end
 	
 	gRamScriptPtr = (const u8*) script;
 	

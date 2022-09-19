@@ -1,5 +1,6 @@
 #include "global.h"
 #include "rtc.h"
+#include "script.h"
 #include "string_util.h"
 #include "text.h"
 
@@ -376,4 +377,9 @@ u32 RtcGetMinuteCount(void)
 u32 RtcGetLocalDayCount(void)
 {
     return RtcGetDayCount(&sRtc);
+}
+
+void InitClock(struct ScriptContext* ctx)
+{
+    RtcInitLocalTimeOffset(ctx->locals[0], ctx->locals[1]);
 }

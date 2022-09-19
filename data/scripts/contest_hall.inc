@@ -58,9 +58,9 @@ LilycoveCity_ContestLobby_EventScript_NoRoomForLuxuryBallAtCounter::
 LilycoveCity_ContestLobby_EventScript_AskEnterContest::
 	message LilycoveCity_ContestLobby_Text_EnterContest1
 	waitmessage
-	loaddynamic 0, gText_Enter2
-	loaddynamic 1, gText_Info2
-	loaddynamic 2, gText_Exit
+	loaddynamicstring 0, gText_Enter2
+	loaddynamicstring 1, gText_Info2
+	loaddynamicstring 2, gText_Exit
 	multichoice 0, 0, 3, FALSE
 	@ multichoice 0, 0, MULTI_ENTERINFO, FALSE
 	switch VAR_RESULT
@@ -73,10 +73,10 @@ LilycoveCity_ContestLobby_EventScript_AskEnterContest::
 LilycoveCity_ContestLobby_EventScript_ContestInfo::
 	message LilycoveCity_ContestLobby_Text_WhichTopic1
 	waitmessage
-	loaddynamic 0, gText_WhatsAContest
-	loaddynamic 1, gText_TypesOfContests
-	loaddynamic 2, gText_Ranks
-	loaddynamic 3, gText_Cancel2
+	loaddynamicstring 0, gText_WhatsAContest
+	loaddynamicstring 1, gText_TypesOfContests
+	loaddynamicstring 2, gText_Ranks
+	loaddynamicstring 3, gText_Cancel2
 	multichoice 0, 0, 4, FALSE
 	@ multichoice 0, 0, MULTI_CONTEST_INFO, FALSE
 	switch VAR_RESULT
@@ -122,11 +122,11 @@ LilycoveCity_ContestLobby_EventScript_ChooseContestMon::
 LilycoveCity_ContestLobby_EventScript_ChooseContestRank::
 	message LilycoveCity_ContestLobby_Text_EnterWhichRank
 	waitmessage
-	loaddynamic 0, gText_NormalRank
-	loaddynamic 1, gText_SuperRank
-	loaddynamic 2, gText_HyperRank
-	loaddynamic 3, gText_MasterRank
-	loaddynamic 4, gText_Exit
+	loaddynamicstring 0, gText_NormalRank
+	loaddynamicstring 1, gText_SuperRank
+	loaddynamicstring 2, gText_HyperRank
+	loaddynamicstring 3, gText_MasterRank
+	loaddynamicstring 4, gText_Exit
 	multichoice 0, 0, 5, FALSE
 	@ multichoice 0, 0, MULTI_CONTEST_RANK, FALSE
 	switch VAR_RESULT
@@ -163,12 +163,12 @@ LilycoveCity_ContestLobby_EventScript_EnterMasterRank::
 LilycoveCity_ContestLobby_EventScript_ChooseContestType::
 	message LilycoveCity_ContestLobby_Text_EnterWhichContest1
 	waitmessage
-	loaddynamic 0, gText_CoolnessContest
-	loaddynamic 1, gText_BeautyContest
-	loaddynamic 2, gText_CutenessContest
-	loaddynamic 3, gText_SmartnessContest
-	loaddynamic 4, gText_ToughnessContest
-	loaddynamic 5, gText_Exit
+	loaddynamicstring 0, gText_CoolnessContest
+	loaddynamicstring 1, gText_BeautyContest
+	loaddynamicstring 2, gText_CutenessContest
+	loaddynamicstring 3, gText_SmartnessContest
+	loaddynamicstring 4, gText_ToughnessContest
+	loaddynamicstring 5, gText_Exit
 	multichoice 0, 0, 6, FALSE
 	@ multichoice 0, 0, MULTI_CONTEST_TYPE, FALSE
 	switch VAR_RESULT

@@ -52,9 +52,11 @@
 #include "tv.h"
 #include "window.h"
 #include "constants/event_objects.h"
+#include "constants/script_cmds.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(struct ScriptContext *ctx);
+typedef bool8 (*SrcCmd)(struct ScriptContext *ctx);
 
 EWRAM_DATA const u8 *gRamScriptPtr = NULL;
 static EWRAM_DATA u32 sAddressOffset = 0; // For relative addressing in vgoto etc., used by saved scripts (e.g. Mystery Event)
@@ -127,14 +129,6 @@ bool8 ScrCmd_end(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_gotonative(struct ScriptContext *ctx)
-{
-    bool8 (*addr)(void) = (bool8 (*)(void))ScriptReadWord(ctx);
-
-    SetupNativeScript(ctx, addr);
-    return TRUE;
-}
-
 bool8 ScrCmd_special(struct ScriptContext *ctx)
 {
     u16 index = ScriptReadHalfword(ctx);
@@ -151,20 +145,20 @@ bool8 ScrCmd_specialvar(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_waitnative(struct ScriptContext *ctx)
+{
+    bool8 (*addr)(void) = (bool8 (*)(void))ScriptReadWord(ctx);
+
+    SetupNativeScript(ctx, addr);
+    return TRUE;
+}
+
 bool8 ScrCmd_callnative(struct ScriptContext *ctx)
 {
     NativeFunc func = (NativeFunc)ScriptReadWord(ctx);
 
     func(ctx);
     return FALSE;
-}
-
-bool8 ScrCmd_callnative_wait(struct ScriptContext *ctx)
-{
-    NativeFunc func = (NativeFunc)ScriptReadWord(ctx);
-
-    func(ctx);
-    return TRUE;
 }
 
 bool8 ScrCmd_waitstate(struct ScriptContext *ctx)
@@ -313,7 +307,7 @@ bool8 ScrCmd_callstd_if(struct ScriptContext *ctx)
     }
     return FALSE;
 }
-
+/*
 // bool8 ScrCmd_returnram(struct ScriptContext *ctx)
 bool8 ScrCmd_gotoram(struct ScriptContext *ctx)
 {
@@ -334,7 +328,7 @@ bool8 ScrCmd_setmysteryeventstatus(struct ScriptContext *ctx)
 
     SetMysteryEventScriptStatus(status);
     return FALSE;
-}
+} */
 
 bool8 ScrCmd_loadword(struct ScriptContext *ctx)
 {
@@ -352,22 +346,6 @@ bool8 ScrCmd_loadhalf(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_loadbytefromptr(struct ScriptContext *ctx)
-{
-    u8 index = ScriptReadByte(ctx);
-
-    ctx->data[index] = *(const u8 *)ScriptReadWord(ctx);
-    return FALSE;
-}
-
-bool8 ScrCmd_setptr(struct ScriptContext *ctx)
-{
-    u8 value = ScriptReadByte(ctx);
-
-    *(u8 *)ScriptReadWord(ctx) = value;
-    return FALSE;
-}
-
 bool8 ScrCmd_loadbyte(struct ScriptContext *ctx)
 {
     u8 index = ScriptReadByte(ctx);
@@ -376,11 +354,11 @@ bool8 ScrCmd_loadbyte(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_setptrbyte(struct ScriptContext *ctx)
+bool8 ScrCmd_loadarg(struct ScriptContext *ctx)
 {
     u8 index = ScriptReadByte(ctx);
 
-    *(u8 *)ScriptReadWord(ctx) = ctx->data[index];
+    ctx->locals[index] = VarGet(ScriptReadHalfword(ctx));
     return FALSE;
 }
 
@@ -390,13 +368,6 @@ bool8 ScrCmd_copylocal(struct ScriptContext *ctx)
     u8 srcIndex = ScriptReadByte(ctx);
 
     ctx->data[destIndex] = ctx->data[srcIndex];
-    return FALSE;
-}
-
-bool8 ScrCmd_copybyte(struct ScriptContext *ctx)
-{
-    u8 *ptr = (u8 *)ScriptReadWord(ctx);
-    *ptr = *(const u8 *)ScriptReadWord(ctx);
     return FALSE;
 }
 
@@ -744,21 +715,6 @@ bool8 ScrCmd_delay(struct ScriptContext *ctx)
     return TRUE;
 }
 
-bool8 ScrCmd_initclock(struct ScriptContext *ctx)
-{
-    u8 hour = VarGet(ScriptReadHalfword(ctx));
-    u8 minute = VarGet(ScriptReadHalfword(ctx));
-
-    RtcInitLocalTimeOffset(hour, minute);
-    return FALSE;
-}
-
-bool8 ScrCmd_dotimebasedevents(struct ScriptContext *ctx)
-{
-    DoTimeBasedEvents();
-    return FALSE;
-}
-
 bool8 ScrCmd_gettime(struct ScriptContext *ctx)
 {
     RtcCalcLocalTime();
@@ -794,7 +750,7 @@ bool8 ScrCmd_setstepcallback(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_setmaplayoutindex(struct ScriptContext *ctx)
+bool8 ScrCmd_setmaplayout(struct ScriptContext *ctx)
 {
     u16 value = VarGet(ScriptReadHalfword(ctx));
 
@@ -832,6 +788,92 @@ bool8 ScrCmd_switchmaplayout(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_setwarp(struct ScriptContext *ctx)
+{
+    u8 destType = ScriptReadByte(ctx);
+    u8 mapGroup = ScriptReadByte(ctx);
+    u8 mapNum = ScriptReadByte(ctx);
+    u8 warpId = ScriptReadByte(ctx);
+    u16 x = VarGet(ScriptReadHalfword(ctx));
+    u16 y = VarGet(ScriptReadHalfword(ctx));
+    
+    switch (destType) {
+        case WARPTYPE_DYNAMIC:
+            SetDynamicWarpWithCoords(0, mapGroup, mapNum, warpId, x, y);
+            SetWarpDestinationToDynamicWarp(0);
+            break;
+        case WARPTYPE_DIVE:
+            SetFixedDiveWarp(mapGroup, mapNum, warpId, x, y);
+            break;
+        case WARPTYPE_HOLE:
+            SetFixedHoleWarp(mapGroup, mapNum, warpId, x, y);
+            break;
+        case WARPTYPE_ESCAPE:
+            SetEscapeWarp(mapGroup, mapNum, warpId, x, y);
+            break;
+        default:
+            SetWarpDestination(mapGroup, mapNum, warpId, x, y);
+            break;
+    }
+    return FALSE;
+}
+
+bool8 ScrCmd_dowarp(struct ScriptContext *ctx)
+{
+    u8 destType = ScriptReadByte(ctx);
+    u8 warpType = ScriptReadByte(ctx);
+    u16 x, y;
+    
+    switch (destType) {
+        case WARPTYPE_DYNAMIC:
+            SetWarpDestinationToDynamicWarp(0);
+            break;
+        case WARPTYPE_HOLE:
+            PlayerGetDestCoords(&x, &y);
+            SetWarpDestinationToFixedHoleWarp(x - MAP_OFFSET, y - MAP_OFFSET);
+            break;
+        case WARPTYPE_ESCAPE:
+            SetWarpDestinationToEscapeWarp();
+            break;
+        default:
+            break;
+    }
+    switch (warpType) {
+        case DOWARP_SILENT:
+            DoDiveWarp();
+            break;
+        case DOWARP_DOOR:
+            DoDoorWarp();
+            break;
+        case DOWARP_HOLE:
+            DoFallWarp();
+            break;
+        case DOWARP_TELEPORT:
+            DoTeleportTileWarp();
+            break;
+        case DOWARP_SPIN_ENTER:
+            SetSpinStartFacingDir(GetPlayerFacingDirection());
+            DoSpinEnterWarp();
+            break;
+        case DOWARP_MOSSDEEP:
+            DoMossdeepGymWarp();
+            break;
+        case DOWARP_WHITEFADE:
+            DoWhiteFadeWarp();
+            break;
+        case DOWARP_CUSTOM:
+            DoCustomWarp();
+            break;
+        case DOWARP_STANDARD:
+        default:
+            DoWarp();
+            break;
+    }
+    ResetInitialPlayerAvatarState();
+    return TRUE;
+}
+
+/*
 bool8 ScrCmd_warptodynamic(struct ScriptContext *ctx)
 {
     SetWarpDestinationToDynamicWarp(0);
@@ -942,18 +984,6 @@ bool8 ScrCmd_warpmossdeepgym(struct ScriptContext *ctx)
     return TRUE;
 }
 
-bool8 ScrCmd_setwarp(struct ScriptContext *ctx)
-{
-    u8 mapGroup = ScriptReadByte(ctx);
-    u8 mapNum = ScriptReadByte(ctx);
-    u8 warpId = ScriptReadByte(ctx);
-    u16 x = VarGet(ScriptReadHalfword(ctx));
-    u16 y = VarGet(ScriptReadHalfword(ctx));
-
-    SetWarpDestination(mapGroup, mapNum, warpId, x, y);
-    return FALSE;
-}
-
 bool8 ScrCmd_setdynamicwarp(struct ScriptContext *ctx)
 {
     u8 mapGroup = ScriptReadByte(ctx);
@@ -1001,6 +1031,7 @@ bool8 ScrCmd_setescapewarp(struct ScriptContext *ctx)
     SetEscapeWarp(mapGroup, mapNum, warpId, x, y);
     return FALSE;
 }
+//*/
 
 bool8 ScrCmd_getplayerxy(struct ScriptContext *ctx)
 {
@@ -1548,7 +1579,7 @@ bool8 ScrCmd_multichoicedefault(struct ScriptContext *ctx)
     }
 }
 
-bool8 ScrCmd_loaddynamic(struct ScriptContext *ctx)
+bool8 ScrCmd_loaddynamicstring(struct ScriptContext *ctx)
 {
     u8 id = ScriptReadByte(ctx);
     u8 *ptr = (u8 *)ScriptReadWord(ctx);
@@ -1574,32 +1605,6 @@ bool8 ScrCmd_multichoicegrid(struct ScriptContext *ctx)
     {
         return FALSE;
     }
-}
-
-bool8 ScrCmd_erasebox(struct ScriptContext *ctx)
-{
-    u8 left = ScriptReadByte(ctx);
-    u8 top = ScriptReadByte(ctx);
-    u8 right = ScriptReadByte(ctx);
-    u8 bottom = ScriptReadByte(ctx);
-
-    // Menu_EraseWindowRect(left, top, right, bottom);
-    return FALSE;
-}
-
-bool8 ScrCmd_drawboxtext(struct ScriptContext *ctx)
-{
-    u8 left = ScriptReadByte(ctx);
-    u8 top = ScriptReadByte(ctx);
-    u8 multichoiceId = ScriptReadByte(ctx);
-    bool8 ignoreBPress = ScriptReadByte(ctx);
-
-    /*if (Multichoice(left, top, multichoiceId, ignoreBPress) == TRUE)
-    {
-        ScriptContext_Stop();
-        return TRUE;
-    }*/
-    return FALSE;
 }
 
 bool8 ScrCmd_showmonpic(struct ScriptContext *ctx)
@@ -2316,26 +2321,6 @@ bool8 ScrCmd_setdoorclosed(struct ScriptContext *ctx)
     return FALSE;
 }
 
-// Below two are functions for elevators in RS, do nothing in Emerald
-bool8 ScrCmd_addelevmenuitem(struct ScriptContext *ctx)
-{
-    u8 v3 = ScriptReadByte(ctx);
-    u16 v5 = VarGet(ScriptReadHalfword(ctx));
-    u16 v7 = VarGet(ScriptReadHalfword(ctx));
-    u16 v9 = VarGet(ScriptReadHalfword(ctx));
-
-    //ScriptAddElevatorMenuItem(v3, v5, v7, v9);
-    return FALSE;
-}
-
-bool8 ScrCmd_showelevmenu(struct ScriptContext *ctx)
-{
-    /*ScriptShowElevatorMenu();
-    ScriptContext_Stop();
-    return TRUE;*/
-    return FALSE;
-}
-
 bool8 ScrCmd_dogroundeffect(struct ScriptContext *ctx)
 {
     u8 localId = ScriptReadByte(ctx);
@@ -2463,7 +2448,7 @@ bool8 ScrCmd_callram(struct ScriptContext *ctx)
     }
     return FALSE;
 }
-
+/*
 // This warp is only used by the Union Room.
 // For the warp used by the Aqua Hideout, see DoTeleportTileWarp
 bool8 ScrCmd_warpspinenter(struct ScriptContext *ctx)
@@ -2479,7 +2464,7 @@ bool8 ScrCmd_warpspinenter(struct ScriptContext *ctx)
     DoSpinEnterWarp();
     ResetInitialPlayerAvatarState();
     return TRUE;
-}
+} */
 
 bool8 ScrCmd_setmonmetlocation(struct ScriptContext *ctx)
 {
@@ -2519,7 +2504,7 @@ void SetMovingNpcId(u16 npcId)
 {
     sMovingNpcId = npcId;
 }
-
+/*
 bool8 ScrCmd_warpwhitefade(struct ScriptContext *ctx)
 {
     u8 mapGroup = ScriptReadByte(ctx);
@@ -2532,7 +2517,7 @@ bool8 ScrCmd_warpwhitefade(struct ScriptContext *ctx)
     DoWhiteFadeWarp();
     ResetInitialPlayerAvatarState();
     return TRUE;
-}
+}*/
 
 const static u8 ErrStr_selectpointer[] = _("selectpointer checks failed!{PAUSE 50}");
 bool8 ScrCmd_selectpointer(struct ScriptContext *ctx)
@@ -2646,4 +2631,234 @@ bool8 ScrCmd_buffernumberstring2(struct ScriptContext *ctx)
     ConvertIntToNameStringN(sScriptStringVars[stringVarIndex], v1, 0, v2);
     return FALSE;
 }
+
+//-----------------------------------------------------------------------------
+
+#include "constants/script_cmds.h"
+
+__attribute__((section("script_data")))
+const SrcCmd gScriptCmdTable[NUM_SCRCMDS] = {
+	[SCRCMD_NOP]                      = ScrCmd_nop,
+	[SCRCMD_END]                      = ScrCmd_end,
+	[SCRCMD_RETURN]                   = ScrCmd_return,
+	[SCRCMD_GOTO]                     = ScrCmd_goto,
+	[SCRCMD_CALL]                     = ScrCmd_call,
+	[SCRCMD_GOTO_IF]                  = ScrCmd_goto_if,
+	[SCRCMD_CALL_IF]                  = ScrCmd_call_if,
+	[SCRCMD_CALLNATIVE]               = ScrCmd_callnative,
+	[SCRCMD_WAITNATIVE]               = ScrCmd_waitnative,
+	[SCRCMD_WAITSTATE]                = ScrCmd_waitstate,
+	[SCRCMD_DELAY]                    = ScrCmd_delay,
+	[SCRCMD_LOADWORD]                 = ScrCmd_loadword,
+	[SCRCMD_LOADHALF]                 = ScrCmd_loadhalf,
+	[SCRCMD_LOADBYTE]                 = ScrCmd_loadbyte,
+	[SCRCMD_LOADARG]                  = ScrCmd_loadarg,
+	[SCRCMD_COPYLOCAL]                = ScrCmd_copylocal,
+	[SCRCMD_CMP_LOC2LOC]              = ScrCmd_compare_local_to_local,
+	[SCRCMD_CMP_LOC2VAL]              = ScrCmd_compare_local_to_value,
+	[SCRCMD_CMP_LOC2PTR]              = ScrCmd_compare_local_to_ptr,
+	[SCRCMD_CMP_PTR2LOC]              = ScrCmd_compare_ptr_to_local,
+	[SCRCMD_CMP_PTR2VAL]              = ScrCmd_compare_ptr_to_value,
+	[SCRCMD_CMP_PTR2PTR]              = ScrCmd_compare_ptr_to_ptr,
+	[SCRCMD_CMP_VAR2VAL]              = ScrCmd_compare_var_to_value,
+	[SCRCMD_CMP_VAR2VAR]              = ScrCmd_compare_var_to_var,
+	[SCRCMD_SETVAR]                   = ScrCmd_setvar,
+	[SCRCMD_ADDVAR]                   = ScrCmd_addvar,
+	[SCRCMD_SUBVAR]                   = ScrCmd_subvar,
+	[SCRCMD_COPYVAR]                  = ScrCmd_copyvar,
+	[SCRCMD_SET_COPYVAR]              = ScrCmd_setorcopyvar,
+	[SCRCMD_MULVAR]                   = ScrCmd_mulvar,
+	[SCRCMD_SETFLAG]                  = ScrCmd_setflag,
+	[SCRCMD_CLEARFLAG]                = ScrCmd_clearflag,
+	[SCRCMD_CHECKFLAG]                = ScrCmd_checkflag,
+	[SCRCMD_LOCK]                     = ScrCmd_lock,
+	[SCRCMD_RELEASE]                  = ScrCmd_release,
+	[SCRCMD_LOCKALL]                  = ScrCmd_lockall,
+	[SCRCMD_RELEASEALL]               = ScrCmd_releaseall,
+	[SCRCMD_LOCKFORTRAINER]           = ScrCmd_lockfortrainer,
+	[SCRCMD_SETWARP]                  = ScrCmd_setwarp,
+	[SCRCMD_DOWARP]                   = ScrCmd_dowarp,
+	[SCRCMD_RANDOM]                   = ScrCmd_random,
+	[SCRCMD_FACEPLAYER]               = ScrCmd_faceplayer,
+	[SCRCMD_TURNOBJECT]               = ScrCmd_turnobject,
+	[SCRCMD_CREATEVOBJECT]            = ScrCmd_createvobject,
+	[SCRCMD_TURNVOBJECT]              = ScrCmd_turnvobject,
+	[SCRCMD_SETMAPLAYOUT]             = ScrCmd_setmaplayout,
+	[SCRCMD_SWITCHMAPLAYOUT]          = ScrCmd_switchmaplayout, // Should be separate table?
+	[SCRCMD_CALLRAM]                  = ScrCmd_callram,
+	
+	[SCRCMD_ADDOBJECT]                = ScrCmd_addobject,
+	[SCRCMD_ADDOBJECT_AT]             = ScrCmd_addobjectat,
+	[SCRCMD_REMOVEOBJECT]             = ScrCmd_removeobject,
+	[SCRCMD_REMOVEOBJECT_AT]          = ScrCmd_removeobjectat,
+	[SCRCMD_APPLYMOVEMENT]            = ScrCmd_applymovement,
+	[SCRCMD_APPLYMOVEMENT_AT]         = ScrCmd_applymovementat,
+	[SCRCMD_WAITMOVEMENT]             = ScrCmd_waitmovement,
+	[SCRCMD_WAITMOVEMENT_AT]          = ScrCmd_waitmovementat,
+	[SCRCMD_SHOWOBJECT_AT]            = ScrCmd_showobjectat,
+	[SCRCMD_HIDEOBJECT_AT]            = ScrCmd_hideobjectat,
+	[SCRCMD_SETOBJECTXY]              = ScrCmd_setobjectxy,
+	[SCRCMD_SETOBJECTXYPERM]          = ScrCmd_setobjectxyperm,
+	[SCRCMD_COPYOBJECTXYTOPERM]       = ScrCmd_copyobjectxytoperm,
+	[SCRCMD_SETOBJECTMOVEMENTTYPE]    = ScrCmd_setobjectmovementtype,
+	[SCRCMD_SETOBJECTSUBPRIORITY]     = ScrCmd_setobjectsubpriority,
+	[SCRCMD_RESETOBJECTSUBPRIORITY]   = ScrCmd_resetobjectsubpriority,
+	[SCRCMD_PLAYSE]                   = ScrCmd_playse,
+	[SCRCMD_WAITSE]                   = ScrCmd_waitse,
+	[SCRCMD_PLAYFANFARE]              = ScrCmd_playfanfare,
+	[SCRCMD_WAITFANFARE]              = ScrCmd_waitfanfare,
+	[SCRCMD_PLAYBGM]                  = ScrCmd_playbgm,
+	[SCRCMD_SAVEBGM]                  = ScrCmd_savebgm,
+	[SCRCMD_FADEDEFAULTBGM]           = ScrCmd_fadedefaultbgm,
+	[SCRCMD_FADENEWBGM]               = ScrCmd_fadenewbgm,
+	[SCRCMD_FADEOUTBGM]               = ScrCmd_fadeoutbgm,
+	[SCRCMD_FADEINBGM]                = ScrCmd_fadeinbgm,
+	[SCRCMD_OPENDOOR]                 = ScrCmd_opendoor,
+	[SCRCMD_CLOSEDOOR]                = ScrCmd_closedoor,
+	[SCRCMD_WAITDOORANIM]             = ScrCmd_waitdooranim,
+	[SCRCMD_SETDOOROPEN]              = ScrCmd_setdooropen,
+	[SCRCMD_SETDOORCLOSED]            = ScrCmd_setdoorclosed,
+	[SCRCMD_SETSTEPCALLBACK]          = ScrCmd_setstepcallback,
+	[SCRCMD_MESSAGE]                  = ScrCmd_message,
+	[SCRCMD_WAITMESSAGE]              = ScrCmd_waitmessage,
+	[SCRCMD_CLOSEMESSAGE]             = ScrCmd_closemessage,
+	[SCRCMD_MESSAGE_AUTOSCROLL]       = ScrCmd_messageautoscroll,
+	[SCRCMD_MESSAGE_INSTANT]          = ScrCmd_messageinstant,
+	[SCRCMD_MESSAGE_WORDWRAP]         = ScrCmd_messagewordwrap,
+	[SCRCMD_WAITBUTTONPRESS]          = ScrCmd_waitbuttonpress,
+	[SCRCMD_YESNOBOX]                 = ScrCmd_yesnobox,
+	[SCRCMD_LOADDYNAMICSTRING]        = ScrCmd_loaddynamicstring,
+	[SCRCMD_MULTICHOICE]              = ScrCmd_multichoice,
+	[SCRCMD_MULTICHOICE_DEFAULT]      = ScrCmd_multichoicedefault,
+	[SCRCMD_MULTICHOICE_GRID]         = ScrCmd_multichoicegrid,
+	[SCRCMD_BRAILLE_MESSAGE]          = ScrCmd_braillemessage,
+	[SCRCMD_BRAILLE_CLOSEMESSAGE]     = ScrCmd_closebraillemessage,
+	[SCRCMD_POKENAVCALL]              = ScrCmd_pokenavcall,
+	[SCRCMD_GETTIME]                  = ScrCmd_gettime,
+	[SCRCMD_ADDITEM]                  = ScrCmd_additem,
+	[SCRCMD_REMOVEITEM]               = ScrCmd_removeitem,
+	[SCRCMD_RESOLVEITEM]              = ScrCmd_resolveitem,
+	[SCRCMD_CHECKITEM]                = ScrCmd_checkitem,
+	[SCRCMD_CHECKITEMSPACE]           = ScrCmd_checkitemspace,
+	[SCRCMD_CHECKITEMTYPE]            = ScrCmd_checkitemtype,
+	[SCRCMD_CHECKNUMITEM]             = ScrCmd_checknumitem,
+	[SCRCMD_ADDDECOR]                 = ScrCmd_adddecoration,
+	[SCRCMD_REMOVEDECOR]              = ScrCmd_removedecoration,
+	[SCRCMD_CHECKDECOR]               = ScrCmd_checkdecor,
+	[SCRCMD_CHECKDECORSPACE]          = ScrCmd_checkdecorspace,
+	[SCRCMD_ADDPCITEM]                = ScrCmd_addpcitem,
+	[SCRCMD_GETPLAYERXY]              = ScrCmd_getplayerxy,
+	[SCRCMD_CHECKPLAYERGENDER]        = ScrCmd_checkplayergender,
+	[SCRCMD_GETPARTYSIZE]             = ScrCmd_getpartysize,
+	[SCRCMD_CHECKPARTYMOVE]           = ScrCmd_checkpartymove,
+	[SCRCMD_GIVEMON]                  = ScrCmd_givemon,
+	[SCRCMD_GIVEEGG]                  = ScrCmd_giveegg,
+	[SCRCMD_PLAYMONCRY]               = ScrCmd_playmoncry,
+	[SCRCMD_WAITMONCRY]               = ScrCmd_waitmoncry,
+	[SCRCMD_SETMONMOVE]               = ScrCmd_setmonmove,
+	[SCRCMD_SETMONEVENTLEGAL]         = ScrCmd_setmoneventlegal,
+	[SCRCMD_CHECKMONEVENTLEGAL]       = ScrCmd_checkmoneventlegal,
+	[SCRCMD_SETMONMETLOCATION]        = ScrCmd_setmonmetlocation,
+	[SCRCMD_SHOWMONPIC]               = ScrCmd_showmonpic,
+	[SCRCMD_HIDEMONPIC]               = ScrCmd_hidemonpic,
+	[SCRCMD_ADDMONEY]                 = ScrCmd_addmoney,
+	[SCRCMD_REMOVEMONEY]              = ScrCmd_removemoney,
+	[SCRCMD_CHECKMONEY]               = ScrCmd_checkmoney,
+	[SCRCMD_SHOWMONEYBOX]             = ScrCmd_showmoneybox,
+	[SCRCMD_HIDEMONEYBOX]             = ScrCmd_hidemoneybox,
+	[SCRCMD_UPDATEMONEYBOX]           = ScrCmd_updatemoneybox,
+	
+	[SCRCMD_BUFFERSTRING]             = ScrCmd_bufferstring,
+	[SCRCMD_BUFFERNUMBERSTRING]       = ScrCmd_buffernumberstring,
+	[SCRCMD_BUFFERNUMBERSTRING2]      = ScrCmd_buffernumberstring2,
+	[SCRCMD_BUFFERSTDSTRING]          = ScrCmd_bufferstdstring,
+	[SCRCMD_BUFFERLEADMONSPECIESNAME] = ScrCmd_bufferleadmonspeciesname,
+	[SCRCMD_BUFFERPARTYMONNICK]       = ScrCmd_bufferpartymonnick,
+	[SCRCMD_BUFFERMOVENAME]           = ScrCmd_buffermovename,
+	[SCRCMD_BUFFERITEMNAME]           = ScrCmd_bufferitemname,
+	[SCRCMD_BUFFERITEMNAMEPLURAL]     = ScrCmd_bufferitemnameplural,
+	[SCRCMD_BUFFERDECORATIONNAME]     = ScrCmd_bufferdecorationname,
+	[SCRCMD_BUFFERBOXNAME]            = ScrCmd_bufferboxname,
+	[SCRCMD_BUFFERSELECTEDSTRING]     = ScrCmd_bufferselectedstring,
+	[SCRCMD_BUFFERTRAINERCLASSNAME]   = ScrCmd_buffertrainerclassname,
+	[SCRCMD_BUFFERTRAINERNAME]        = ScrCmd_buffertrainername,
+	[SCRCMD_BUFFERCONTESTNAME]        = ScrCmd_buffercontestname,
+	[SCRCMD_BUFFERSPECIESNAME]        = ScrCmd_bufferspeciesname,
+	
+	[SCRCMD_TRAINERBATTLE]            = ScrCmd_trainerbattle,
+	[SCRCMD_DOTRAINERBATTLE]          = ScrCmd_dotrainerbattle,
+	[SCRCMD_GOTOPOSTBATTLESCRIPT]     = ScrCmd_gotopostbattlescript,
+	[SCRCMD_GOTOBEATENSCRIPT]         = ScrCmd_gotobeatenscript,
+	[SCRCMD_CHECKTRAINERFLAG]         = ScrCmd_checktrainerflag,
+	[SCRCMD_SETTRAINERFLAG]           = ScrCmd_settrainerflag,
+	[SCRCMD_CLEARTRAINERFLAG]         = ScrCmd_cleartrainerflag,
+	[SCRCMD_CHECKCOINS]               = ScrCmd_checkcoins,
+	[SCRCMD_ADDCOINS]                 = ScrCmd_addcoins,
+	[SCRCMD_REMOVECOINS]              = ScrCmd_removecoins,
+	[SCRCMD_SHOWCOINSBOX]             = ScrCmd_showcoinsbox,
+	[SCRCMD_HIDECOINSBOX]             = ScrCmd_hidecoinsbox,
+	[SCRCMD_UPDATECOINSBOX]           = ScrCmd_updatecoinsbox,
+	[SCRCMD_INCREMENTGAMESTAT]        = ScrCmd_incrementgamestat,
+	[SCRCMD_SELECTPOINTER]            = ScrCmd_selectpointer,
+	[SCRCMD_SELECTWARPDESTINATION]    = ScrCmd_selectwarpdestination,
+	
+	[SCRCMD_FADESCREEN]               = ScrCmd_fadescreen,
+	[SCRCMD_FADESCREENSPEED]          = ScrCmd_fadescreenspeed,
+	[SCRCMD_FADESCREENSWAPBUFFERS]    = ScrCmd_fadescreenswapbuffers,
+	[SCRCMD_SETFLASHLEVEL]            = ScrCmd_setflashlevel,
+	[SCRCMD_ANIMATEFLASH]             = ScrCmd_animateflash,
+	[SCRCMD_POKEMART]                 = ScrCmd_pokemart,
+	[SCRCMD_POKEMARTDECORATION]       = ScrCmd_pokemartdecoration,
+	[SCRCMD_POKEMARTDECORATION2]      = ScrCmd_pokemartdecoration2,
+	[SCRCMD_SETBERRYTREE]             = ScrCmd_setberrytree,
+	
+	[SCRCMD_DOFIELDEFFECT]            = ScrCmd_dofieldeffect,
+	[SCRCMD_SETFIELDEFFECTARGUMENT]   = ScrCmd_setfieldeffectargument,
+	[SCRCMD_SETFIELDEFFECTARGSTOOBJECTLOC] = ScrCmd_setfieldeffectargstoobjectloc,
+	[SCRCMD_WAITFIELDEFFECT]          = ScrCmd_waitfieldeffect,
+	[SCRCMD_DOGROUNDEFFECT]           = ScrCmd_dogroundeffect,
+	[SCRCMD_SETRESPAWN]               = ScrCmd_setrespawn,
+	[SCRCMD_SETMETATILE]              = ScrCmd_setmetatile,
+	[SCRCMD_RESETWEATHER]             = ScrCmd_resetweather,
+	[SCRCMD_SETWEATHER]               = ScrCmd_setweather,
+	[SCRCMD_DOWEATHER]                = ScrCmd_doweather,
+	[SCRCMD_SETWILDBATTLE]            = ScrCmd_setwildbattle,
+	[SCRCMD_DOWILDBATTLE]             = ScrCmd_dowildbattle,
+	
+	
+	// TO BE REMOVED
+	[SCRCMD_MOVEROTATINGTILEOBJECTS]   = ScrCmd_moverotatingtileobjects,
+	[SCRCMD_TURNROTATINGTILEOBJECTS]   = ScrCmd_turnrotatingtileobjects,
+	[SCRCMD_INITROTATINGTILEPUZZLE]    = ScrCmd_initrotatingtilepuzzle,
+	[SCRCMD_FREEROTATINGTILEPUZZLE]    = ScrCmd_freerotatingtilepuzzle,
+	[SCRCMD_SPECIAL]                   = ScrCmd_special,
+	[SCRCMD_SPECIALVAR]                = ScrCmd_specialvar,
+	[SCRCMD_CALLSTD]                   = ScrCmd_callstd,
+	[SCRCMD_CALLSTD_IF]                = ScrCmd_callstd_if,
+	[SCRCMD_SHOWCONTESTPAINTING]       = ScrCmd_showcontestpainting,
+	[SCRCMD_PLAYSLOTMACHINE]           = ScrCmd_playslotmachine,
+	[SCRCMD_CHOOSECONTESTMON]          = ScrCmd_choosecontestmon,
+	[SCRCMD_STARTCONTEST]              = ScrCmd_startcontest,
+	[SCRCMD_SHOWCONTESTRESULTS]        = ScrCmd_showcontestresults,
+	[SCRCMD_CONTESTLINKTRANSFER]       = ScrCmd_contestlinktransfer,
+	[SCRCMD_GETPOKENEWSACTIVE]         = ScrCmd_getpokenewsactive,
+	[SCRCMD_SELECTAPPROACHINGTRAINER]  = ScrCmd_selectapproachingtrainer,
+	
+	
+	// TODO 
+	// [0xB8] = ScrCmd_setvaddress,
+	// [0xB9] = ScrCmd_vgoto,
+	// [0xBA] = ScrCmd_vcall,
+	// [0xBB] = ScrCmd_vgoto_if,
+	// [0xBC] = ScrCmd_vcall_if,
+	// [0xBD] = ScrCmd_vmessage,
+	// [0xBE] = ScrCmd_vbuffermessage,
+	// [0xBF] = ScrCmd_vbufferstring,
+	
+};
+__attribute__((section("script_data")))
+const SrcCmd gScriptCmdTableEnd[1] = {};
+
+
+
 

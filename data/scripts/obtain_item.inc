@@ -73,7 +73,7 @@ EventScript_PlayFanfareObtainedTMHM::
 	return
 
 Std_ObtainDecoration::
-	adddecoration ITEMID
+	adddecor ITEMID
 	copyvar VAR_0x8007, VAR_RESULT
 	call EventScript_ObtainDecorationMessage
 	return

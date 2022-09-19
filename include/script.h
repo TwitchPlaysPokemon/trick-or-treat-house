@@ -11,12 +11,14 @@ struct ScriptContext
     u8 stackDepth;
     u8 mode;
     u8 comparisonResult;
+    // u8 unused
     u8 (*nativePtr)(void);
     const u8 *scriptPtr;
-    const u8 *stack[20];
     ScrCmdFunc *cmdTable;
     ScrCmdFunc *cmdTableEnd;
-    u32 data[4];
+    const u8 *stack[20];
+    u32 data[6];
+    u16 locals[0x10];
 };
 
 #define ScriptReadByte(ctx) (*(ctx->scriptPtr++))
@@ -60,6 +62,7 @@ const u8 *GetRamScript(u8 objectId, const u8 *script);
 bool32 ValidateSavedRamScript(void);
 u8 *GetSavedRamScriptIfValid(void);
 void InitRamScript_NoObjectEvent(u8 *script, u16 scriptSize);
+u16* GetArgPointer(u16 id);
 
 // srccmd.h
 void SetMovingNpcId(u16 npcId);

@@ -957,9 +957,9 @@ script Puzzle_SafariImposters_OnLoad_ImposterSearch {
 }
 
 script(local) Puzzle_SafariImposters_ShowImposterMenu {
-	loaddynamic(0, Puzzle_SafariImposters_Menu_Report)
-	loaddynamic(1, Puzzle_SafariImposters_Menu_Battle)
-	loaddynamic(2, Puzzle_SafariImposters_Menu_Cancel)
+	loaddynamicstring(0, Puzzle_SafariImposters_Menu_Report)
+	loaddynamicstring(1, Puzzle_SafariImposters_Menu_Battle)
+	loaddynamicstring(2, Puzzle_SafariImposters_Menu_Cancel)
 	multichoice(20, 6, 3, FALSE)
 	return
 }

@@ -270,9 +270,9 @@ script TrickHouseRestroom_EventScript_Pokeball {
 		message("The name tag on this {STR_VAR_2} says\n"
 				"“{STR_VAR_1}”.")
 		waitmessage
-		loaddynamic(0, "Choose")
-		loaddynamic(1, "Stats")
-		loaddynamic(2, "Cancel")
+		loaddynamicstring(0, "Choose")
+		loaddynamicstring(1, "Stats")
+		loaddynamicstring(2, "Cancel")
 		multichoice(20, 6, 3, 0)
 		waitmoncry
 		switch (var(VAR_RESULT)) {

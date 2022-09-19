@@ -64,11 +64,11 @@ Puzzle_WaterTemple_OnResume: @ 81EBAC0
 
 script Puzzle_WaterTemple_OnTransition {
 	if (var(VAR_WATER_LEVEL) == 0) {
-		setmaplayoutindex (LAYOUT_WATER_TEMPLE_LV2)
+		setmaplayout (LAYOUT_WATER_TEMPLE_LV2)
 	} elif (var(VAR_WATER_LEVEL) == 1) {
-		setmaplayoutindex (LAYOUT_WATER_TEMPLE_LV1)
+		setmaplayout (LAYOUT_WATER_TEMPLE_LV1)
 	} else {
-		setmaplayoutindex (LAYOUT_PUZZLE_WATER_TEMPLE)
+		setmaplayout (LAYOUT_PUZZLE_WATER_TEMPLE)
 	}
 	call (Puzzle_WaterTemple_UpdateWaterLevel)
 }

@@ -671,9 +671,9 @@ BerryBlender_EventScript_StartDecideLinkLeader:
 BerryBlender_EventScript_DecideLinkLeader:
 	message LilycoveCity_ContestLobby_Text_PleaseDecideLinkLeader
 	waitmessage
-	loaddynamic 0, gText_JoinGroup
-	loaddynamic 1, gText_BecomeLeader
-	loaddynamic 2, gText_Exit
+	loaddynamicstring 0, gText_JoinGroup
+	loaddynamicstring 1, gText_BecomeLeader
+	loaddynamicstring 2, gText_Exit
 	multichoice 16, 6, 3, FALSE
 	@ multichoice 16, 6, MULTI_LINK_LEADER, FALSE
 	switch VAR_RESULT

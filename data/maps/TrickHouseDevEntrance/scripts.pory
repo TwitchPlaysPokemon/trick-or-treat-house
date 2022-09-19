@@ -89,8 +89,8 @@ script PuzzleDebug_EventScript_TustinsMenu {
 	faceplayer
 	msgbox ("Tustin2121: What do you need to change?$")
 	closemessage
-	loaddynamic(0, "PuzzCompleted")
-	loaddynamic(1, "Sun Offset")
+	loaddynamicstring(0, "PuzzCompleted")
+	loaddynamicstring(1, "Sun Offset")
 	multichoice(0, 0, 2, FALSE)
 	switch (var(VAR_RESULT)) {
 		case 127: // Cancel

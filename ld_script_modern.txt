@@ -57,6 +57,7 @@ SECTIONS {
     script_data :
     ALIGN(4)
     {
+        src/scrcmd.o(script_data)
 		data/*.o(script_data);
     } =0
 

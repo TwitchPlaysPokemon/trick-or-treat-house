@@ -197,8 +197,8 @@ script TrickTreat_FortreeCity_CandyGiver_FairyGirl {
 		copyvar(VAR_0x800A, VAR_RESULT)
 	}
 	// Show "Right" or "Left" menu, funnily enough used in Foretree usually
-	loaddynamic(0, gText_Right)
-	loaddynamic(0, gText_Left)
+	loaddynamicstring(0, gText_Right)
+	loaddynamicstring(0, gText_Left)
 	multichoice(0, 0, 2, FALSE)
 	if (var(VAR_RESULT) == VAR_0x800A) { // chose correctly
 		msgbox("Hey, you chose the treat!\n"

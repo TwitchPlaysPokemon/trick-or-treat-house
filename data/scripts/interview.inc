@@ -249,8 +249,8 @@ BattleFrontier_BattleTowerLobby_EventScript_Reporter::
 BattleFrontier_BattleTowerLobby_EventScript_AcceptInterview::
 	message BattleFrontier_BattleTowerLobby_Text_HowDidBattleTowerTurnOut
 	waitmessage
-	loaddynamic 0, gText_Satisfied
-	loaddynamic 1, gText_Dissatisfied
+	loaddynamicstring 0, gText_Satisfied
+	loaddynamicstring 1, gText_Dissatisfied
 	multichoice 20, 8, 2, FALSE
 	@ multichoice 20, 8, MULTI_SATISFACTION, TRUE
 	copyvar VAR_0x8008, VAR_RESULT

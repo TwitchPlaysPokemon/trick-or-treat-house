@@ -234,36 +234,36 @@ script Puzzle_IcePath_FallDownHole_Common {
 }
 script Puzzle_IcePath_FallDownHole1 {
 	if (flag(FLAG_BOULDER_HIDE_LOWER_1)) {
-		setwarp(MAP_PUZZLE_ICE_PATH, -1, 12, 33)
+		setwarp(0, MAP_PUZZLE_ICE_PATH, -1, 12, 33)
 	} else {
-		setwarp(MAP_PUZZLE_ICE_PATH, -1, 12, 32)
+		setwarp(0, MAP_PUZZLE_ICE_PATH, -1, 12, 32)
 	}
 	call(Puzzle_IcePath_FallDownHole_Common)
 	releaseall
 }
 script Puzzle_IcePath_FallDownHole2 {
 	if (flag(FLAG_BOULDER_HIDE_LOWER_2)) {
-		setwarp(MAP_PUZZLE_ICE_PATH, -1, 13, 43)
+		setwarp(0, MAP_PUZZLE_ICE_PATH, -1, 13, 43)
 	} else {
-		setwarp(MAP_PUZZLE_ICE_PATH, -1, 14, 43)
+		setwarp(0, MAP_PUZZLE_ICE_PATH, -1, 14, 43)
 	}
 	call(Puzzle_IcePath_FallDownHole_Common)
 	releaseall
 }
 script Puzzle_IcePath_FallDownHole3 {
 	if (flag(FLAG_BOULDER_HIDE_LOWER_3)) {
-		setwarp(MAP_PUZZLE_ICE_PATH, -1, 4, 42)
+		setwarp(0, MAP_PUZZLE_ICE_PATH, -1, 4, 42)
 	} else {
-		setwarp(MAP_PUZZLE_ICE_PATH, -1, 4, 43)
+		setwarp(0, MAP_PUZZLE_ICE_PATH, -1, 4, 43)
 	}
 	call(Puzzle_IcePath_FallDownHole_Common)
 	releaseall
 }
 script Puzzle_IcePath_FallDownHole4 {
 	if (flag(FLAG_BOULDER_HIDE_LOWER_4)) {
-		setwarp(MAP_PUZZLE_ICE_PATH, -1, 5, 37)
+		setwarp(0, MAP_PUZZLE_ICE_PATH, -1, 5, 37)
 	} else {
-		setwarp(MAP_PUZZLE_ICE_PATH, -1, 5, 36)
+		setwarp(0, MAP_PUZZLE_ICE_PATH, -1, 5, 36)
 	}
 	call(Puzzle_IcePath_FallDownHole_Common)
 	releaseall
