@@ -1071,10 +1071,10 @@ void SetupIcePathLayout(struct ScriptContext *ctx) {
 			bool8 hasRock = (Puzzle_IcePath_ConfigTable[c][i] >> (13 - b)) & 0x1;
 			if (hasRock) {
 				switch (Random2() % 4) {
-					case 0: MapGridSetMetatileIdAt(9 + b, 8 + i, 0x037D | MAPGRID_METATILE_ID_MASK); break;
-					case 1: MapGridSetMetatileIdAt(9 + b, 8 + i, 0x037E | MAPGRID_METATILE_ID_MASK); break;
-					case 2: MapGridSetMetatileIdAt(9 + b, 8 + i, 0x039A | MAPGRID_METATILE_ID_MASK); break;
-					case 3: MapGridSetMetatileIdAt(9 + b, 8 + i, 0x039E | MAPGRID_METATILE_ID_MASK); break;
+					case 0: MapGridSetMetatileIdAt(9 + b, 8 + i, METATILE_Cave_IceRock0 | MAPGRID_COLLISION_MASK); break;
+					case 1: MapGridSetMetatileIdAt(9 + b, 8 + i, METATILE_Cave_IceRock1 | MAPGRID_COLLISION_MASK); break;
+					case 2: MapGridSetMetatileIdAt(9 + b, 8 + i, METATILE_Cave_IceRock2 | MAPGRID_COLLISION_MASK); break;
+					case 3: MapGridSetMetatileIdAt(9 + b, 8 + i, METATILE_Cave_IceRock3 | MAPGRID_COLLISION_MASK); break;
 				}
 			}
 		}

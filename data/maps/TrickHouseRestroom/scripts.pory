@@ -225,6 +225,7 @@ script TrickHouseRestroom_EventScript_Breeder {
 		end
 	}
 	lock
+	faceplayer
 	msgbox ("Hey, how are my buddies treating you?\n"
 			"Are you treating them well too?\p"
 			"They're rescue {POKEMON}, so they might\n"

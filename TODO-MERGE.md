@@ -42,10 +42,10 @@ Known issues:
 - [X] Puzzle name tag is thinner than it should be, and it's cutting off the puzzle titles.
 - [ ] Pokemon Says: When the high note is used, the azuril breaking out of the jar counts as a bad note, but talking to it after it breaks out isn't counted as a bad note.
 - [ ] Farfetch'd Forest: When the farfetch'd flies, do hideReflection=true and add a shadow field effect or something; also disable ripples
-- [ ] Breeder in the Den doesn't look at you when talking.
+- [X] Breeder in the Den doesn't look at you when talking.
 - [x] PC in den does not use the dynamic menu system, needs to be updated with such.
 - [X] Trick-Or-Treating: The hopping out of the ground to battle bug is back!
-- [ ] Ice Path: GAME BREAKING!! Something happened to the rocks on the ice, and now they don't collide.
+- [X] Ice Path: GAME BREAKING!! Something happened to the rocks on the ice, and now they don't collide.
 - [ ] Twin Memories: GAME BREAKING!! The boulders are not showing up??
 - [X] Intimidate uses the The Big Chocolate Slab message. Also, the big chocolate slab maybe should use the ability slide.
 - [ ] Mountain Trail: mapping error in a corner of the ledge. Either collision is needed or move to lower layer.
