@@ -44,7 +44,7 @@ Known issues:
 - [ ] Farfetch'd Forest: When the farfetch'd flies, do hideReflection=true and add a shadow field effect or something; also disable ripples
 - [ ] Breeder in the Den doesn't look at you when talking.
 - [x] PC in den does not use the dynamic menu system, needs to be updated with such.
-- [ ] Trick-Or-Treating: The hopping out of the ground to battle bug is back!
+- [X] Trick-Or-Treating: The hopping out of the ground to battle bug is back!
 - [ ] Ice Path: GAME BREAKING!! Something happened to the rocks on the ice, and now they don't collide.
 - [ ] Twin Memories: GAME BREAKING!! The boulders are not showing up??
 - [X] Intimidate uses the The Big Chocolate Slab message. Also, the big chocolate slab maybe should use the ability slide.
