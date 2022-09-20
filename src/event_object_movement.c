@@ -8221,12 +8221,12 @@ static void (*const sGroundEffectFuncs[])(struct ObjectEvent *objEvent, struct S
     GroundEffect_ShortGrass,            // GROUND_EFFECT_FLAG_SHORT_GRASS
     GroundEffect_HotSprings,            // GROUND_EFFECT_FLAG_HOT_SPRINGS
     GroundEffect_Seaweed,               // GROUND_EFFECT_FLAG_SEAWEED
-    GroundEffect_SpawnOnFallGrass,
-    GroundEffect_StepOnFallGrass,
-    GroundEffect_JumpOnFallGrass,
-    GroundEffect_SpawnOnFallLongGrass,
-    GroundEffect_StepOnFallLongGrass,
-    GroundEffect_JumpOnFallLongGrass,
+    GroundEffect_SpawnOnFallGrass,      // GROUND_EFFECT_FLAG_FALL_GRASS_ON_SPAWN
+    GroundEffect_StepOnFallGrass,       // GROUND_EFFECT_FLAG_FALL_GRASS_ON_MOVE
+    GroundEffect_JumpOnFallGrass,       // GROUND_EFFECT_FLAG_LAND_IN_FALL_GRASS
+    GroundEffect_SpawnOnFallLongGrass,  // GROUND_EFFECT_FLAG_FALL_LONG_GRASS_ON_SPAWN
+    GroundEffect_StepOnFallLongGrass,   // GROUND_EFFECT_FLAG_FALL_LONG_GRASS_ON_MOVE
+    GroundEffect_JumpOnFallLongGrass,   // GROUND_EFFECT_FLAG_LAND_IN_FALL_LONG_GRASS
 };
 
 static void DoFlaggedGroundEffects(struct ObjectEvent *objEvent, struct Sprite *sprite, u32 flags)

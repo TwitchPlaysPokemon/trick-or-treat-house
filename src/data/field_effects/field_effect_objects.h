@@ -110,7 +110,7 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_FallGrass = {
     .anims = sAnimTable_TallGrass,
     .images = sPicTable_TallGrass,
     .affineAnims = gDummySpriteAffineAnimTable,
-    .callback = UpdateTallGrassFieldEffect,
+    .callback = UpdateFallGrassFieldEffect,
 };
 
 static const struct SpriteFrameImage sPicTable_Ripple[] = {

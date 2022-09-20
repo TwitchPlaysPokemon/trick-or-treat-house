@@ -77,10 +77,10 @@ gFieldEffectScriptPointers::
 	.4byte gFieldEffectScript_EmoteNoteE                @ FLDEFF_EMOTE_NOTE_E
 	.4byte gFieldEffectScript_EmoteNoteF                @ FLDEFF_EMOTE_NOTE_F
 	.4byte gFieldEffectScript_EmoteNoteG                @ FLDEFF_EMOTE_NOTE_G
-	.4byte gFieldEffectScript_FallGrass
-	.4byte gFieldEffectScript_JumpFallGrass   @.4byte gFieldEffectScript_BikeHopTallGrass
-	.4byte gFieldEffectScript_FallLongGrass
-	.4byte gFieldEffectScript_JumpFallLongGrass
+	.4byte gFieldEffectScript_FallGrass                 @ FLDEFF_FALL_GRASS
+	.4byte gFieldEffectScript_JumpFallGrass             @ FLDEFF_JUMP_FALL_GRASS
+	.4byte gFieldEffectScript_FallLongGrass             @ FLDEFF_FALL_LONG_GRASS
+	.4byte gFieldEffectScript_JumpFallLongGrass         @ FLDEFF_JUMP_FALL_LONG_GRASS
 
 gFieldEffectScript_ExclamationMarkIcon1::
 	field_eff_callnative FldEff_ExclamationMarkIcon
