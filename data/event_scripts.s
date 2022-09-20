@@ -34,6 +34,7 @@
 #include "constants/layouts.h"
 #include "constants/lilycove_lady.h"
 #include "constants/map_scripts.h"
+#include "constants/map_groups.h"
 #include "constants/maps.h"
 #include "constants/mauville_old_man.h"
 #include "constants/metatile_labels.h"

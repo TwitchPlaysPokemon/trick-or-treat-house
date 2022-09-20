@@ -35,6 +35,7 @@
 #include "string_util.h"
 #include "task.h"
 #include "text.h"
+#include "constants/map_groups.h"
 #include "constants/maps.h"
 #include "constants/event_bg.h"
 #include "constants/event_objects.h"

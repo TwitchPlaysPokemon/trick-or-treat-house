@@ -33,6 +33,7 @@
 #include "constants/battle_frontier.h"
 #include "constants/cable_club.h"
 #include "constants/songs.h"
+#include "constants/maps.h"
 #include "constants/trainers.h"
 
 static const struct WindowTemplate sWindowTemplate_LinkPlayerCount = {

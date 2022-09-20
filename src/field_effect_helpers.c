@@ -1,5 +1,6 @@
 #include "global.h"
 #include "event_object_movement.h"
+#include "event_data.h"
 #include "field_camera.h"
 #include "field_effect.h"
 #include "field_effect_helpers.h"
@@ -11,6 +12,7 @@
 #include "sound.h"
 #include "sprite.h"
 #include "trig.h"
+#include "mgba.h"
 #include "constants/rgb.h"
 #include "constants/field_effects.h"
 #include "constants/songs.h"
@@ -71,7 +73,7 @@ void SetUpReflection(struct ObjectEvent *objectEvent, struct Sprite *sprite, boo
 
 static s16 GetReflectionVerticalOffset(struct ObjectEvent *objectEvent)
 {
-    return GetObjectEventGraphicsInfo(objectEvent->graphicsId)->height - 2;
+    return GetObjectEventGraphicsInfo(objectEvent->graphicsId)->height - 2 + VarGet(VAR_SYS_REFLECTION_OFFSET);
 }
 
 // Hack, copied from field_effect_helpers

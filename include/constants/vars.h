@@ -105,7 +105,7 @@
 #define VAR_CYCLING_ROAD_RECORD_COLLISIONS   0x404B
 #define VAR_CYCLING_ROAD_RECORD_TIME_L       0x404C
 #define VAR_CYCLING_ROAD_RECORD_TIME_H       0x404D
-#define VAR_UNUSED_0x404E                    0x404E
+#define VAR_SYS_REFLECTION_OFFSET            0x404E // Offset of reflection, in pixels
 #define VAR_POISON_STEP_COUNTER              0x404F
 #define VAR_RESET_RTC_ENABLE                 0x4050
 #define VAR_UNUSED_0x4051                    0x4051

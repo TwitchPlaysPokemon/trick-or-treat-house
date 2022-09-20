@@ -5,6 +5,7 @@
 #include "constants/flags.h"
 #include "constants/items.h"
 #include "constants/map_scripts.h"
+#include "constants/map_groups.h"
 #include "constants/maps.h"
 #include "constants/secret_bases.h"
 #include "constants/vars.h"

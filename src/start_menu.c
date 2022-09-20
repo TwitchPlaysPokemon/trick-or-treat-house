@@ -41,6 +41,7 @@
 #include "constants/battle_frontier.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "constants/map_groups.h"
 #include "constants/maps.h"
 
 // Menu actions

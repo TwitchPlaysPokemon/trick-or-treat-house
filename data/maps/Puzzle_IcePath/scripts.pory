@@ -221,6 +221,17 @@ script Puzzle_IcePath_PickupSecretItem {
 
 //-----------------------------------------------------
 
+script Puzzle_IcePath_SetReflectionHigh {
+	setvar (VAR_SYS_REFLECTION_OFFSET, 14)
+	releaseall
+}
+script Puzzle_IcePath_SetReflectionNormal {
+	setvar (VAR_SYS_REFLECTION_OFFSET, 0)
+	releaseall
+}
+
+//-----------------------------------------------------
+
 script Puzzle_IcePath_FallDownHole_Common {
 	lockall
 	delay (10)

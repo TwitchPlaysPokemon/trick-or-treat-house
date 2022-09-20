@@ -14,6 +14,7 @@
 #include "script.h"
 #include "trickhouse.h"
 #include "overworld.h"
+#include "constants/map_groups.h"
 #include "constants/maps.h"
 #include "constants/layouts.h"
 #include "constants/region_map_sections.h"
