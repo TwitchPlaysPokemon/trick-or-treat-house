@@ -72,11 +72,11 @@ gFieldEffectScriptPointers::
 	.4byte gFieldEffectScript_RayquazaSpotlight         @ FLDEFF_RAYQUAZA_SPOTLIGHT
 	.4byte gFieldEffectScript_DestroyDeoxysRock         @ FLDEFF_DESTROY_DEOXYS_ROCK
 	.4byte gFieldEffectScript_MoveDeoxysRock            @ FLDEFF_MOVE_DEOXYS_ROCK
-	.4byte gFieldEffectScript_EmoteNoteC
-	.4byte gFieldEffectScript_EmoteNoteD
-	.4byte gFieldEffectScript_EmoteNoteE
-	.4byte gFieldEffectScript_EmoteNoteF
-	.4byte gFieldEffectScript_EmoteNoteG
+	.4byte gFieldEffectScript_EmoteNoteC                @ FLDEFF_EMOTE_NOTE_C
+	.4byte gFieldEffectScript_EmoteNoteD                @ FLDEFF_EMOTE_NOTE_D
+	.4byte gFieldEffectScript_EmoteNoteE                @ FLDEFF_EMOTE_NOTE_E
+	.4byte gFieldEffectScript_EmoteNoteF                @ FLDEFF_EMOTE_NOTE_F
+	.4byte gFieldEffectScript_EmoteNoteG                @ FLDEFF_EMOTE_NOTE_G
 	.4byte gFieldEffectScript_FallGrass
 	.4byte gFieldEffectScript_JumpFallGrass   @.4byte gFieldEffectScript_BikeHopTallGrass
 	.4byte gFieldEffectScript_FallLongGrass
@@ -370,6 +370,7 @@ gFieldEffectScript_MoveDeoxysRock::
 	field_eff_end
 
 gFieldEffectScript_EmoteNoteC::
+	@ field_eff_loadfadedpal_callnative sSpritePalette_EmoteNote, FldEff_QuestionMarkIcon
 	field_eff_loadfadedpal_callnative sSpritePalette_EmoteNote, FldEff_EmoteNoteC
 	field_eff_end
 

@@ -246,7 +246,7 @@ static const struct SpriteTemplate sSpriteTemplate_HeartIcon =
 
 static const struct SpriteTemplate sSpriteTemplate_EmoteNote =
 {
-    .tileTag = 0xffff,
+    .tileTag = TAG_NONE,
     .paletteTag = FLDEFF_PAL_TAG_EMOTE_NOTES,
     .oam = &sOamData_Icons,
     .anims = sSpriteAnimTable_Icons,
@@ -783,7 +783,7 @@ void TryPrepareSecondApproachingTrainer(void)
 
 #define LOAD_PALETTE(template) \
     u8 spriteId, paletteNum; \
-    LoadObjectEventPalette(template.paletteTag); \
+    // LoadObjectEventPalette(template.paletteTag); \
     // paletteNum = IndexOfSpritePaletteTag(template.paletteTag); \
     // UpdatePaletteGammaType(paletteNum, GAMMA_ALT); \
     // UpdateSpritePaletteWithWeather(paletteNum);
@@ -795,7 +795,11 @@ u8 FldEff_ExclamationMarkIcon(void)
     spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x53); //0x52);
 
     if (spriteId != MAX_SPRITES)
-        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EXCLAMATION_MARK_ICON, 0);
+    {
+        struct Sprite *sprite = &gSprites[spriteId];
+        SetIconSpriteData(sprite, FLDEFF_EXCLAMATION_MARK_ICON, 0);
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(sprite->template->paletteTag);
+    }
 
     return 0;
 }
@@ -806,7 +810,11 @@ u8 FldEff_QuestionMarkIcon(void)
     spriteId = CreateSpriteAtEnd(&sSpriteTemplate_ExclamationQuestionMark, 0, 0, 0x52);
 
     if (spriteId != MAX_SPRITES)
-        SetIconSpriteData(&gSprites[spriteId], FLDEFF_QUESTION_MARK_ICON, 1);
+    {
+        struct Sprite *sprite = &gSprites[spriteId];
+        SetIconSpriteData(sprite, FLDEFF_QUESTION_MARK_ICON, 1);
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(sprite->template->paletteTag);
+    }
 
     return 0;
 }
@@ -819,9 +827,8 @@ u8 FldEff_HeartIcon(void)
     if (spriteId != MAX_SPRITES)
     {
         struct Sprite *sprite = &gSprites[spriteId];
-
         SetIconSpriteData(sprite, FLDEFF_HEART_ICON, 0);
-        sprite->oam.paletteNum = 2;
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(sprite->template->paletteTag);
     }
 
     return 0;
@@ -833,7 +840,11 @@ u8 FldEff_EmoteNoteC(void)
     spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
 
     if (spriteId != MAX_SPRITES)
-        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE_NOTE_C, 0);
+    {
+        struct Sprite *sprite = &gSprites[spriteId];
+        SetIconSpriteData(sprite, FLDEFF_EMOTE_NOTE_C, 0);
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(sprite->template->paletteTag);
+    }
 
     return 0;
 }
@@ -844,7 +855,11 @@ u8 FldEff_EmoteNoteD(void)
     spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
 
     if (spriteId != MAX_SPRITES)
-        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE_NOTE_D, 1);
+    {
+        struct Sprite *sprite = &gSprites[spriteId];
+        SetIconSpriteData(sprite, FLDEFF_EMOTE_NOTE_D, 1);
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(sprite->template->paletteTag);
+    }
 
     return 0;
 }
@@ -855,7 +870,11 @@ u8 FldEff_EmoteNoteE(void)
     spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
 
     if (spriteId != MAX_SPRITES)
-        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE_NOTE_E, 2);
+    {
+        struct Sprite *sprite = &gSprites[spriteId];
+        SetIconSpriteData(sprite, FLDEFF_EMOTE_NOTE_E, 2);
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(sprite->template->paletteTag);
+    }
 
     return 0;
 }
@@ -866,7 +885,11 @@ u8 FldEff_EmoteNoteF(void)
     spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
 
     if (spriteId != MAX_SPRITES)
-        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE_NOTE_F, 3);
+    {
+        struct Sprite *sprite = &gSprites[spriteId];
+        SetIconSpriteData(sprite, FLDEFF_EMOTE_NOTE_F, 3);
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(sprite->template->paletteTag);
+    }
 
     return 0;
 }
@@ -877,7 +900,11 @@ u8 FldEff_EmoteNoteG(void)
     spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
 
     if (spriteId != MAX_SPRITES)
-        SetIconSpriteData(&gSprites[spriteId], FLDEFF_EMOTE_NOTE_G, 4);
+    {
+        struct Sprite *sprite = &gSprites[spriteId];
+        SetIconSpriteData(sprite, FLDEFF_EMOTE_NOTE_G, 4);
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(sprite->template->paletteTag);
+    }
 
     return 0;
 }

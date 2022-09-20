@@ -592,16 +592,17 @@ u32 FldEff_FallGrass(void)
     if (spriteId != MAX_SPRITES)
     {
         sprite = &gSprites[spriteId];
-        sprite->oam.priority = ElevationToPriority(gFieldEffectArguments[2]);
+        sprite->coordOffsetEnabled = TRUE;
+        sprite->oam.priority = gFieldEffectArguments[3];
         sprite->sElevation = gFieldEffectArguments[2];
         sprite->sX = gFieldEffectArguments[0];
         sprite->sY = gFieldEffectArguments[1];
         sprite->sMapNum = gFieldEffectArguments[4]; // Also sLocalId
         sprite->sMapGroup = gFieldEffectArguments[5];
         sprite->sCurrentMap = gFieldEffectArguments[6];
-        
+
         if (gFieldEffectArguments[7])
-            SeekSpriteAnim(sprite, 4);
+            SeekSpriteAnim(sprite, 4); // Skip to end of anim
     }
     return 0;
 }

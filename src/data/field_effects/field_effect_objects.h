@@ -1,6 +1,7 @@
 const struct SpritePalette gSpritePalette_GeneralFieldEffect0 = {gFieldEffectObjectPalette0, FLDEFF_PAL_TAG_GENERAL_0};
 const struct SpritePalette gSpritePalette_GeneralFieldEffect1 = {gFieldEffectObjectPalette1, FLDEFF_PAL_TAG_GENERAL_1};
 const struct SpritePalette gSpritePalette_FallFieldEffect = {gFieldEffectObjectPaletteFall, FLDEFF_PAL_TAG_GENERAL_FALL};
+const struct SpritePalette sSpritePalette_EmoteNote = {gObjectEventPal_EmoteNote, FLDEFF_PAL_TAG_EMOTE_NOTES};
 
 static const union AnimCmd sAnim_Shadow[] =
 {
@@ -1308,5 +1309,3 @@ const struct SpriteTemplate gFieldEffectObjectTemplate_Rayquaza = {
 };
 
 static const struct SpritePalette sSpritePalette_Unused = {gObjectEventPal_Npc3, FLDEFF_PAL_TAG_UNKNOWN};
-
-const struct SpritePalette sSpritePalette_EmoteNote = {gObjectEventPal_EmoteNote, FLDEFF_PAL_TAG_EMOTE_NOTES};

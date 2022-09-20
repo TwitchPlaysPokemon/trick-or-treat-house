@@ -7958,7 +7958,7 @@ void GroundEffect_SpawnOnFallGrass(struct ObjectEvent *objEvent, struct Sprite *
     gFieldEffectArguments[4] = objEvent->localId << 8 | objEvent->mapNum;
     gFieldEffectArguments[5] = objEvent->mapGroup;
     gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
-    gFieldEffectArguments[7] = 1;
+    gFieldEffectArguments[7] = TRUE; // skip to end of anim
     FieldEffectStart(FLDEFF_FALL_GRASS);
 }
 
@@ -7971,7 +7971,7 @@ void GroundEffect_StepOnFallGrass(struct ObjectEvent *objEvent, struct Sprite *s
     gFieldEffectArguments[4] = (objEvent->localId << 8) | objEvent->mapNum;
     gFieldEffectArguments[5] = objEvent->mapGroup;
     gFieldEffectArguments[6] = (u8)gSaveBlock1Ptr->location.mapNum << 8 | (u8)gSaveBlock1Ptr->location.mapGroup;
-    gFieldEffectArguments[7] = 0;
+    gFieldEffectArguments[7] = FALSE; // don't skip to end of anim
     FieldEffectStart(FLDEFF_FALL_GRASS);
 }
 
@@ -9155,9 +9155,6 @@ u8 MovementAction_FlyDown_Step1(struct ObjectEvent *objectEvent, struct Sprite *
 // though this function returns TRUE without doing anything, this header is required due to being in an array of functions which needs it.
 u8 MovementAction_Fly_Finish(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
-    ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
-    FieldEffectStart(FLDEFF_EMOTE_NOTE_G);
-    sprite->data[2] = 1;
     return TRUE;
 }
 
@@ -9165,7 +9162,7 @@ bool8 MovementAction_EmoteNoteC_Step0(struct ObjectEvent *objectEvent, struct Sp
 {
     ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
     FieldEffectStart(FLDEFF_EMOTE_NOTE_C);
-    sprite->data[2] = 1;
+    sprite->sActionFuncId = 1;
     return TRUE;
 }
 
@@ -9173,7 +9170,7 @@ bool8 MovementAction_EmoteNoteD_Step0(struct ObjectEvent *objectEvent, struct Sp
 {
     ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
     FieldEffectStart(FLDEFF_EMOTE_NOTE_D);
-    sprite->data[2] = 1;
+    sprite->sActionFuncId = 1;
     return TRUE;
 }
 
@@ -9181,7 +9178,7 @@ bool8 MovementAction_EmoteNoteE_Step0(struct ObjectEvent *objectEvent, struct Sp
 {
     ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
     FieldEffectStart(FLDEFF_EMOTE_NOTE_E);
-    sprite->data[2] = 1;
+    sprite->sActionFuncId = 1;
     return TRUE;
 }
 
@@ -9189,7 +9186,7 @@ bool8 MovementAction_EmoteNoteF_Step0(struct ObjectEvent *objectEvent, struct Sp
 {
     ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
     FieldEffectStart(FLDEFF_EMOTE_NOTE_F);
-    sprite->data[2] = 1;
+    sprite->sActionFuncId = 1;
     return TRUE;
 }
 
@@ -9197,6 +9194,6 @@ bool8 MovementAction_EmoteNoteG_Step0(struct ObjectEvent *objectEvent, struct Sp
 {
     ObjectEventGetLocalIdAndMap(objectEvent, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
     FieldEffectStart(FLDEFF_EMOTE_NOTE_G);
-    sprite->data[2] = 1;
+    sprite->sActionFuncId = 1;
     return TRUE;
 }

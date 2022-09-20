@@ -66,11 +66,23 @@ script TrickHouseDevEntrance_EventScript_Pokeball {
 
 script TrickHouseDevEntrance_EventScript_SoundTest {
 	lockall
-	callnative (DoSoundTest)
-	playse (SE_SELECT)
-	message ("Sound Test: {START_BUTTON} Exit$")
-	waitstate //script pauses here until manually reenabled
-	closemessage
+	applymovement(THIS_EVENT, Common_Movement_QuestionMark)
+	playse(SE_PIN)
+	waitmovement
+	delay(120)
+	applymovement(THIS_EVENT, Common_Movement_ExclamationMark)
+	playse(SE_PIN)
+	waitmovement
+	delay(120)
+	applymovement(THIS_EVENT, Common_Movement_EmoteNoteC)
+	playse(SE_PIN)
+	waitmovement
+	delay(120)
+	// callnative (DoSoundTest)
+	// playse (SE_SELECT)
+	// message ("Sound Test: {START_BUTTON} Exit$")
+	// waitstate //script pauses here until manually reenabled
+	// closemessage
 	releaseall
 }
 
