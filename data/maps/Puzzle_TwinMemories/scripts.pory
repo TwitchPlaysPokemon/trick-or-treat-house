@@ -91,7 +91,7 @@ Puzzle_TwinMemories_ConfigCount::
 #define VAR_CONFIG_RIGHT  VAR_PUZZLE_01
 #define FLAG_SOLVE_LEFT   FLAG_PUZZLE_20
 #define FLAG_SOLVE_RIGHT  FLAG_PUZZLE_21
-#define COORDS_XY(x,y)      ((y<<4)|(x))
+#define COORDS_XY(x,y)      ((y<<16)|(x))
 `
 script(local) Puzzle_TwinMemories_SetupScript {
 	// First time setup only

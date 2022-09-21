@@ -39,6 +39,8 @@ extern const int Start;
 
 extern const u8* gRamScriptPtr;
 
+///////////////////////////////////////////////////////////////////////////////
+#pragma region // Common Functions
 // Some common debugging helpers
 
 void PrintData0(struct ScriptContext *ctx)
@@ -83,8 +85,9 @@ u16 GetPlayerState(void)
     return 0;
 }
 
+#pragma endregion
 ///////////////////////////////////////////////////////////////////////////////
-// Puzzle: Scale the Belfry
+#pragma region // Puzzle: Scale the Belfry
 // 
 
 extern u8 gStringWorking[0x100];
@@ -101,8 +104,9 @@ void BORTizeBufferedStrings(struct ScriptContext *ctx)
 }
 
 
+#pragma endregion
 ///////////////////////////////////////////////////////////////////////////////
-// Puzzle: Pokemon Says 
+#pragma region // Puzzle: Pokemon Says 
 // MAP_PUZZLE_MUSIC_NOTE_TILES
 
 #define FLAG_HIDE_SCROLL            FLAG_PUZZLE_20
@@ -404,8 +408,9 @@ void HandlePuzzleMusicTileStep(u32 metatileId)
 #undef VAR_SONG_C
 #undef VAR_SONG_D
 
+#pragma endregion
 ///////////////////////////////////////////////////////////////////////////////
-// Puzzle: Waterflow Caverns 
+#pragma region // Puzzle: Waterflow Caverns 
 // MAP_PUZZLE_WATER_TEMPLE
 
 #define X (x+7)
@@ -649,8 +654,9 @@ void WaterTempleFillTo0(struct ScriptContext *ctx)
 #undef X
 #undef Y
 
+#pragma endregion
 ///////////////////////////////////////////////////////////////////////////////
-// Puzzle: Route 110 Road 
+#pragma region // Puzzle: Route 110 Road 
 // MAP_PUZZLE_ROUTE110
 
 extern bool8 gBikeCyclingChallenge;
@@ -827,8 +833,9 @@ void UpdateCyclingRoadState(void) {
 
 #undef VAR_CYCLING_CHALLENGE_STATE
 
+#pragma endregion
 ///////////////////////////////////////////////////////////////////////////////
-// Puzzle: Twin Memories 
+#pragma region // Puzzle: Twin Memories 
 // MAP_PUZZLE_TWIN_MEMORIES
 
 #define COORD_X(a) (a & 0xFFFF)
@@ -887,22 +894,25 @@ void SetupTwinMemoriesBoulders(struct ScriptContext *ctx) {
 	
 	xbase = COORD_X(ctx->data[1]);
 	ybase = COORD_Y(ctx->data[1]);
+	mgba_printf(MGBA_LOG_INFO, "TwinMem: xbaae=%d, ybase=%d", xbase, ybase);
 	
 	// boulders are 2, 3, 4, 5, 6, 7
 	for (o = 0; o < OBJECT_EVENTS_COUNT; o++) {
 		objectEvent = &gObjectEvents[o];
 		if (objectEvent->localId >= 2 && objectEvent->localId <= 7) {
 			i = currConfig[objectEvent->localId-2];
-			x = ((i / 5) * 2) + xbase + 7;
-			y = ((i % 5) * 2) + ybase + 7;
+			x = ((i / 5) * 2) + xbase + MAP_OFFSET;
+			y = ((i % 5) * 2) + ybase + MAP_OFFSET;
 			MoveObjectEventToMapCoords(objectEvent, x, y);
+			mgba_printf(MGBA_LOG_INFO, "TwinMem: object %d moved to spot[%d] (%d, %d)", objectEvent->localId, i, x, y);
 		}
 	}
 	gSpecialVar_LastErrorNo = 0;
 }
 
+#pragma endregion
 ///////////////////////////////////////////////////////////////////////////////
-// Puzzle: Koga's Labyrinth 
+#pragma region // Puzzle: Koga's Labyrinth 
 // MAP_PUZZLE_HIDDEN_MAZE
 
 #define PALETTE_SLOT_SRC (10*16+11)
@@ -934,8 +944,9 @@ void HiddenMaze_PulseWallTiles(u8 taskId)
 #undef PALETTE_SLOT_SRC
 #undef PALETTE_SLOT_DST
 
+#pragma endregion
 ///////////////////////////////////////////////////////////////////////////////
-// Trick or Treating in Mossdeep
+#pragma region // Trick or Treating in Mossdeep
 // MAP_TRICK_TREAT_MOSSDEEP_CITY
 
 #define VAR_TRICK_STOLEN_MON VAR_PUZZLE_00
@@ -963,9 +974,9 @@ void MossdeepStealPokemon(struct ScriptContext *ctx)
 
 #undef VAR_TRICK_STOLEN_MON 
 
-
+#pragma endregion
 ///////////////////////////////////////////////////////////////////////////////
-// Route 110 Cycling Maze
+#pragma region // Route 110 Cycling Maze
 // MAP_PUZZLE_ROUTE110
 
 void IsCurrentPuzzleCyclingRoad(struct ScriptContext *ctx)
@@ -974,8 +985,9 @@ void IsCurrentPuzzleCyclingRoad(struct ScriptContext *ctx)
 	VarSet(VAR_RESULT, currPuzzle == MAP_PUZZLE_ROUTE110);
 }
 
+#pragma endregion
 ///////////////////////////////////////////////////////////////////////////////
-// Puzzle: A Bird in the Bush
+#pragma region // Puzzle: A Bird in the Bush
 // MAP_PUZZLE_ILEX_FOREST
 
 #define VAR_BIRD_LOCATION   VAR_PUZZLE_00
@@ -1018,8 +1030,9 @@ void LoadBirdLocation(struct ScriptContext *ctx)
 #undef LID_BIRD
 #undef VAR_BIRD_LOCATION
 
+#pragma endregion
 ///////////////////////////////////////////////////////////////////////////////
-// Puzzle: Tic Rac Toe
+#pragma region // Puzzle: Tic Rac Toe
 // MAP_PUZZLE_TIC_RAC_TOE
 
 void CountNPCTriggers(struct ScriptContext *ctx) {
@@ -1041,8 +1054,9 @@ void CountNPCTriggers(struct ScriptContext *ctx) {
 	}
 }
 
+#pragma endregion
 ///////////////////////////////////////////////////////////////////////////////
-// Puzzle: The Frozen Excursion
+#pragma region // Puzzle: The Frozen Excursion
 // MAP_PUZZLE_ICE_PATH
 
 #define VAR_CONFIG                VAR_PUZZLE_00
@@ -1086,8 +1100,9 @@ void SetupIcePathLayout(struct ScriptContext *ctx) {
 #undef VAR_CONFIG
 #undef VAR_STORED_RANDOM
 
+#pragma endregion
 ///////////////////////////////////////////////////////////////////////////////
-// Puzzle: A Safari Among Friends
+#pragma region // Puzzle: A Safari Among Friends
 // MAP_PUZZLE_SAFARI_IMPOSTERS
 #define VAR_CONFIG_IMPOSTER  VAR_PUZZLE_01
 #define VAR_IMPOSTER_SELECT  VAR_PUZZLE_02
@@ -1408,8 +1423,9 @@ void Imposter_PopulatePokeblockCase(struct ScriptContext *ctx) {
 #undef IMP_MAY
 #undef IMP_ALEX
 
+#pragma endregion
 ///////////////////////////////////////////////////////////////////////////////
-// Puzzle: Secret Caverns
+#pragma region // Puzzle: Secret Caverns
 // MAP_PUZZLE_META_PUZZLE_CAVE
 
 void MetaPuzzle_CountSubmittedItems(struct ScriptContext *ctx) {
@@ -1431,3 +1447,6 @@ void MetaPuzzle_CountSubmittedItems(struct ScriptContext *ctx) {
 	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_SEEDOT);
 	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_CUSHION);
 }
+
+#pragma endregion
+///////////////////////////////////////////////////////////////////////////////

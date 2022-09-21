@@ -46,7 +46,7 @@ Known issues:
 - [x] PC in den does not use the dynamic menu system, needs to be updated with such.
 - [X] Trick-Or-Treating: The hopping out of the ground to battle bug is back!
 - [X] Ice Path: GAME BREAKING!! Something happened to the rocks on the ice, and now they don't collide.
-- [ ] Twin Memories: GAME BREAKING!! The boulders are not showing up??
+- [X] Twin Memories: GAME BREAKING!! The boulders are not showing up??
 - [X] Intimidate uses the The Big Chocolate Slab message. Also, the big chocolate slab maybe should use the ability slide.
 - [ ] Mountain Trail: mapping error in a corner of the ledge. Either collision is needed or move to lower layer.
 
