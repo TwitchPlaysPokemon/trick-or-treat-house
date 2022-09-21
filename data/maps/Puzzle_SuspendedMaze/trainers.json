@@ -2,6 +2,7 @@
 	{
 		"class": "SKELETON",
 		"name": "MIKEY",
+		"music": "ENC_MUS_DP_MARATHON",
 		"party": [
 			{
 				"species": "SPECIES_VULPIX",
@@ -15,6 +16,7 @@
 	},
 	{
 		"class": "PLASMA_KID",
+		"music": "ENC_MUS_DP_ACE_TRAINER",
 		"name": "RODRIGO",
 		"party": [
 			{
@@ -30,6 +32,7 @@
 	{
 		"class": "HERO_OF_TIME",
 		"name": "ALEX",
+		"music": "ENC_MUS_DP_INTENSE",
 		"party": [
 			{
 				"species": "SPECIES_NUZLEAF",
@@ -49,6 +52,7 @@
 		"class": "ALIEN",
 		"female": true,
 		"name": "TANYA",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"party": [
 			{
 				"species": "SPECIES_LUNATONE",
@@ -61,6 +65,7 @@
 		"class": "FAIRY_GIRL",
 		"female": true,
 		"name": "CHELSEA",
+		"music": "ENC_MUS_DP_LADY",
 		"party": [
 			{
 				"species": "SPECIES_PONYTA",
@@ -77,6 +82,7 @@
 		"pic": "MAGMA_GRUNT_F",
 		"female": true,
 		"name": "CHELSEA",
+		"music": "ENC_MUS_EM_MAGMA",
 		"party": [
 			{
 				"species": "SPECIES_NUMEL",
@@ -92,7 +98,7 @@
 		"class": "CORPSE_BRIDE",
 		"name": "FIONA",
 		"female": true,
-		"music": "ENC_MUS_EM_GIRL",
+		"music": "ENC_MUS_DP_SNECKY",
 		"party": [
 			{
 				"species": "SPECIES_PARASECT",

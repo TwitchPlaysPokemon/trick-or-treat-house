@@ -151,7 +151,7 @@ script Puzzle_SuspendedMaze_TriggerScript_FakeTrainer {
 	setvar(VAR_PLASMAMAN, 1)
 	applymovement(LID_PLASMAMAN, Common_Movement_FaceLeft)
 	waitmovement(LID_PLASMAMAN)
-	playbgm(MUS_ENCOUNTER_INTENSE, 0)
+	playbgm(MUS_DP_ENCOUNTER_ACE_TRAINER, 0)
 	applymovement(LID_PLASMAMAN, Common_Movement_ExclamationMarkAndWait)
 	waitmovement(LID_PLASMAMAN)
 	delay(20)

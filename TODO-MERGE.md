@@ -61,17 +61,18 @@ Changes:
 - [ ] Wild Pokemon should drop items, if only so a wild battle doesn't just end without the victory music.
 
 Others:
-- [ ] Scripting Overhaul
+- [X] Scripting Overhaul
 	- [ ] Add command which prints to mgba. 
 		- [ ] In poryscript, may need to specifically make ascii strings.
 		- [ ] Possibly make one version of command print encoded
-- [ ] Reorganize save file, so that version check is first, before trainer name.
+- [X] Reorganize save file, so that version check is first, before trainer name.
 - [ ] Add map script for getting map overworld music
+	- [ ] GetLocationMusic -> make map script
 - [ ] Add map script for getting battle music
 - [ ] Add enhancement where something tells the player if they got the scroll already.
 	- I was thinking the costume could change, but that would likely require a map reload of figuring out how to change the graphic without a reload.
 	- Could just add it to the pause screen, in a side window
-- [ ] ITEM0_DIRE_HIT -> ITEM0_HIGH_CRIT
+- [X] ITEM0_DIRE_HIT -> ITEM0_HIGH_CRIT
 - [ ] trainers.h -> change encounterMusic_gender to encounterMusic (any music) and split off gender.
 - [ ] Change Relic items descriptions to instead say that "collectors may value it highly", as it needs to be specially sold in order to have value.
 - [ ] Change some mulch to KEEP to allow use for the growing puzzle element puzzle.
@@ -86,7 +87,7 @@ Others:
 - [X] Fix the following in battle_main.c
 	if (ItemId_GetPocket(gLastUsedItem) == POCKET_POKE_BALLS)
 		gBattleStruct->throwingPokeBall = TRUE;
-- [ ] In battle_util.c
+- [X] In battle_util.c
 	case ABILITYEFFECT_ON_SWITCHIN: // 0
 		// HACK:
 		if (ItemId_GetHoldEffect(gBattleMons[battler].item) == HOLD_EFFECT_INTIMIDATE) {
@@ -103,7 +104,7 @@ Others:
 - [ ] In battle_util.c, implement HOLD_EFFECT_CURE_PAR_HP and others
 - [ ] Remove all sText_* from battle_strings_elf.h table and change the lookup function to fallback to the normal table in case of null pointer
 - [X] Double check that gIntimidateStringIds is being used to look up for slab stuff.
-- [ ] Syncronize the changes to BufferStringBattle with BORT mode
+- [X] Syncronize the changes to BufferStringBattle with BORT mode
 - [x] Check Makefile over
 - [X] eventObject->unk3_3 -> disableReflection -> hideReflection
 - [X] gRamScriptRetAddr -> gRamScriptPtr
@@ -113,8 +114,8 @@ Others:
 - [X] Remove apprentice
 - [X] constants/items.h - Convert tabs to spaces
 - [-] GetCollisionFlagsAtCoords - make flag for mismatch == 2
-- [ ] MovementAction_RevealTrainer_Step0 - is it MOVEMENT_TYPE_HIDDEN2 or MOVEMENT_TYPE_BURIED?
-- [ ] Rename MOVEMENT_TYPE_HIDDEN2 to something else?
+- [X] MovementAction_RevealTrainer_Step0 - is it MOVEMENT_TYPE_HIDDEN2 or MOVEMENT_TYPE_BURIED?
+- [X] Rename MOVEMENT_TYPE_HIDDEN2 to something else?
 - [ ] Search through MUS_ABANDONED_SHIP and replace them all
 - [ ] graphics/shop/candy.png does not say "candy".
 - [X] mosstiles:
@@ -122,7 +123,7 @@ Others:
 	.4byte ScrCmd_mosstiles_turnEvents     .4byte ScrCmd_turnrotatingtileobjects   @ 0xd4
 	.4byte ScrCmd_mosstiles_initTiles      .4byte ScrCmd_initrotatingtilepuzzle    @ 0xd5
 	.4byte ScrCmd_mosstiles_finishTiles    .4byte ScrCmd_freerotatingtilepuzzle    @ 0xd6
-- [ ] Look into adding Hidden2 after TRSEE_REVEAL_BURIED_WAIT in trainer_see.c
+- [X] Look into adding Hidden2 after TRSEE_REVEAL_BURIED_WAIT in trainer_see.c
 - [ ] Specials
 - [ ] Convert player_forcestep to new naming scheme, also figure out wtf it's doing again
 - [ ] Convert the DoorAnimTiles_TrickScroll to a single image, like the other door animations
@@ -175,28 +176,27 @@ Others:
 	OBJ_EVENT_PAL_TAG_RS_MAY                  0x1123       EVENT_OBJ_PAL_TAG_34
 - [ ] Remove duplicate OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION when figuring out if day/night is done correctly.
 
-- [ ] gStringVar4 -> gStringBuffer
-- [ ] re_escape_rope -> ItemUseOnFieldCB_EscapeRope
-- [ ] intro.c - Remove unused data sUnusedData
-- [ ] graphics.c - Remove random garbage at the end and various spacing
+- [X] gStringVar4 -> gStringBuffer
+- [X] re_escape_rope -> ItemUseOnFieldCB_EscapeRope
+- [X] intro.c - Remove unused data sUnusedData
+- [X] graphics.c - Remove random garbage at the end and various spacing
 - [X] Double check gTrainer is not referenced
 - [x] ShowNatureGirlMessage and others below it: need to comment out arrays?
 - [X] Add gStringVar4-6, rearrange placeholders to put names into 0x1X
 - [ ] Strip out all the match calls.
 - [ ] sElevationToPriority and sElevationToSubspriteTableNum comments to pokeemerald
-- [ ] GetLocationMusic -> make map script
 - [ ] Decapitalize contest_hall.inc
 - [ ] Fix field moves to instead of saying "Used move!", the text box reads a description of what's happening.
 - [X] Wipe out all {KUN} again
 - [x] Intro credit graphics may need to be added to headers.
 - [ ] map_name_popup.c - Modify and use the defines??
-- [ ] load_save.c - Remove all the DMA stuff, get rid of the DMA structs
-- [ ] Reorganize Flags and Vars
+- [X] load_save.c - Remove all the DMA stuff, get rid of the DMA structs
+- [X] Reorganize Flags and Vars
 	- [ ] Remove Temporary Aliases from Vars
-- [ ] /sound/direct_sound_samples/sc88_piano1_36.bin -> /sound/direct_sound_samples/sc88pro_piano1_36.bin
-- [ ] graphics/interface/candy.4bpp.lz -> graphics/shop/candy.4bpp.lz
+- [X] /sound/direct_sound_samples/sc88_piano1_36.bin -> /sound/direct_sound_samples/sc88pro_piano1_36.bin
+- [X] graphics/interface/candy.4bpp.lz -> graphics/shop/candy.4bpp.lz
 - [X] move mgba and printf into gflib folder.
-- [ ] Metatile behavior:
+- [X] Metatile behavior:
 	MetatileBehavior_IsAquaHideoutWarp  ->  MetatileBehavior_IsTeleportWarp
 	MetatileBehavior_IsWarpOrBridge -> MetatileBehavior_IsUnionRoomWarp
 - [ ] Add more strings to PuzzleCommon_TextArray_SecretCodes in trick_house.inc
