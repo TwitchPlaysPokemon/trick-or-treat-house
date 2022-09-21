@@ -8,7 +8,7 @@
   "weather": "WEATHER_SUNNY",
   "map_type": "MAP_TYPE_UNDERGROUND",
   "allow_cycling": false,
-  "allow_escaping": false,
+  "allow_escaping": true,
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
@@ -383,7 +383,5 @@
       "item": "ITEM_CANDY_COMMON",
       "flag": "FLAG_CANDY_COMMON_05"
     }
-  ],
-  "allow_bike": "",
-  "allow_escape_rope": ""
+  ]
 }

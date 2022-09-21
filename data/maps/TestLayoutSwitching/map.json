@@ -1,39 +1,41 @@
 {
-    "allow_bike": false,
-    "allow_escape_rope": true,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "TestLayoutSwitching_SignScript_Switch",
-            "type": "sign",
-            "x": 2,
-            "y": 4
-        }
-    ],
-    "connections": null,
-    "coord_events": [
-    ],
-    "id": "MAP_TEST_LAYOUT_SWITCHING",
-    "layout": "LAYOUT_TEST_LAYOUT_SWITCHING",
-    "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_TRICK_HOUSE",
-    "name": "TestLayoutSwitching",
-    "object_events": [
-    ],
-    "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
-    "requires_flash": false,
-    "show_map_name": true,
-    "warp_events": [
-        {
-            "dest_map": "MAP_TEST_MAP_HALLWAY",
-            "dest_warp_id": 1,
-            "elevation": 0,
-            "x": 2,
-            "y": 1
-        }
-    ],
-    "weather": "WEATHER_SUNNY"
+  "id": "MAP_TEST_LAYOUT_SWITCHING",
+  "name": "TestLayoutSwitching",
+  "layout": "LAYOUT_TEST_LAYOUT_SWITCHING",
+  "music": "MUS_TRICK_HOUSE",
+  "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+
+  ],
+  "warp_events": [
+    {
+      "x": 2,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_TEST_MAP_HALLWAY",
+      "dest_warp_id": 1
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 2,
+      "y": 4,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "TestLayoutSwitching_SignScript_Switch"
+    }
+  ]
 }

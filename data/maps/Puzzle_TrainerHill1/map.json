@@ -1,383 +1,384 @@
 {
-    "allow_bike": false,
-    "allow_escape_rope": true,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_COMMON_02",
-            "item": "ITEM_CANDY_COMMON",
-            "type": "hidden_item",
-            "x": 6,
-            "y": 32
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_UNCOMMON_01",
-            "item": "ITEM_CANDY_UNCOMMON",
-            "type": "hidden_item",
-            "x": 12,
-            "y": 58
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_HEALTHY_01",
-            "item": "ITEM_CANDY_HEALTHY",
-            "type": "hidden_item",
-            "x": 7,
-            "y": 38
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_COMMON_03",
-            "item": "ITEM_CANDY_COMMON",
-            "type": "hidden_item",
-            "x": 31,
-            "y": 36
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_COMMON_04",
-            "item": "ITEM_CANDY_COMMON",
-            "type": "hidden_item",
-            "x": 3,
-            "y": 17
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_COMMON_05",
-            "item": "ITEM_CANDY_COMMON",
-            "type": "hidden_item",
-            "x": 31,
-            "y": 9
-        }
-    ],
-    "connections": null,
-    "coord_events": [
-    ],
-    "id": "MAP_PUZZLE_TRAINER_HILL1",
-    "layout": "LAYOUT_PUZZLE_TRAINER_HILL1",
-    "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_B_TOWER",
-    "name": "Puzzle_TrainerHill1",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_NORTH",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 34,
-            "y": 67
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_STONE",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "PuzzleCommon_EventScript_ExitDoorObject",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
-            "x": 15,
-            "y": 57
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "PuzzleCommon_EventScript_Scroll",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 12,
-            "y": 61
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_LASS",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-            "script": "Puzzle_TrainerHill1_Trainer1B",
-            "trainer_sight_or_berry_tree_id": "5",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 10,
-            "y": 38
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_MAN_3",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-            "script": "Puzzle_TrainerHill1_Trainer1A",
-            "trainer_sight_or_berry_tree_id": "5",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 4,
-            "y": 38
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_MAN_4",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-            "script": "Puzzle_TrainerHill1_Trainer2A",
-            "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 27,
-            "y": 33
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-            "script": "Puzzle_TrainerHill1_Trainer2B",
-            "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 31,
-            "y": 33
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_MAN_4",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Puzzle_TrainerHill1_Trainer4A",
-            "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 30,
-            "y": 7
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-            "script": "Puzzle_TrainerHill1_Trainer4B",
-            "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 33,
-            "y": 10
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-            "script": "Puzzle_TrainerHill1_Trainer3B",
-            "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 13,
-            "y": 11
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_MANIAC",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-            "script": "Puzzle_TrainerHill1_Trainer3A",
-            "trainer_sight_or_berry_tree_id": "3",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 9,
-            "y": 11
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_ABUNDANT_01",
-            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Common_EventScript_CandyAbundant",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 32,
-            "y": 57
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_TEALA",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-            "script": "Puzzle_TrainerHill_Reception",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 36,
-            "y": 60
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_COMMON_01",
-            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Common_EventScript_CandyCommon",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 14,
-            "y": 37
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_ABUNDANT_02",
-            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Common_EventScript_CandyAbundant",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 36,
-            "y": 46
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_RARE_01",
-            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Common_EventScript_CandyRare",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 7,
-            "y": 8
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_ABUNDANT_03",
-            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Common_EventScript_CandyAbundant",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 13,
-            "y": 19
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_ABUNDANT_04",
-            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Common_EventScript_CandyAbundant",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "0",
-            "x": 31,
-            "y": 5
-        }
-    ],
-    "region_map_section": "MAPSEC_TRAINER_HILL",
-    "requires_flash": false,
-    "show_map_name": true,
-    "warp_events": [
-        {
-            "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
-            "dest_warp_id": 0,
-            "elevation": 0,
-            "x": 34,
-            "y": 67
-        },
-        {
-            "dest_map": "MAP_PUZZLE_TRAINER_HILL1",
-            "dest_warp_id": 2,
-            "elevation": 0,
-            "x": 34,
-            "y": 53
-        },
-        {
-            "dest_map": "MAP_PUZZLE_TRAINER_HILL1",
-            "dest_warp_id": 1,
-            "elevation": 0,
-            "x": 2,
-            "y": 27
-        },
-        {
-            "dest_map": "MAP_PUZZLE_TRAINER_HILL1",
-            "dest_warp_id": 4,
-            "elevation": 0,
-            "x": 12,
-            "y": 27
-        },
-        {
-            "dest_map": "MAP_PUZZLE_TRAINER_HILL1",
-            "dest_warp_id": 3,
-            "elevation": 0,
-            "x": 24,
-            "y": 27
-        },
-        {
-            "dest_map": "MAP_PUZZLE_TRAINER_HILL1",
-            "dest_warp_id": 6,
-            "elevation": 0,
-            "x": 34,
-            "y": 27
-        },
-        {
-            "dest_map": "MAP_PUZZLE_TRAINER_HILL1",
-            "dest_warp_id": 5,
-            "elevation": 0,
-            "x": 2,
-            "y": 1
-        },
-        {
-            "dest_map": "MAP_PUZZLE_TRAINER_HILL1",
-            "dest_warp_id": 8,
-            "elevation": 0,
-            "x": 12,
-            "y": 1
-        },
-        {
-            "dest_map": "MAP_PUZZLE_TRAINER_HILL1",
-            "dest_warp_id": 7,
-            "elevation": 0,
-            "x": 24,
-            "y": 1
-        },
-        {
-            "dest_map": "MAP_PUZZLE_TRAINER_HILL1",
-            "dest_warp_id": 10,
-            "elevation": 0,
-            "x": 34,
-            "y": 1
-        },
-        {
-            "dest_map": "MAP_PUZZLE_TRAINER_HILL1",
-            "dest_warp_id": 9,
-            "elevation": 0,
-            "x": 9,
-            "y": 57
-        }
-    ],
-    "weather": "WEATHER_SUNNY"
+  "id": "MAP_PUZZLE_TRAINER_HILL1",
+  "name": "Puzzle_TrainerHill1",
+  "layout": "LAYOUT_PUZZLE_TRAINER_HILL1",
+  "music": "MUS_B_TOWER",
+  "region_map_section": "MAPSEC_TRAINER_HILL",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_NORTH",
+      "x": 34,
+      "y": 67,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_STONE",
+      "x": 15,
+      "y": 57,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PuzzleCommon_EventScript_ExitDoorObject",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
+      "x": 12,
+      "y": 61,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PuzzleCommon_EventScript_Scroll",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LASS",
+      "x": 10,
+      "y": 38,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "5",
+      "script": "Puzzle_TrainerHill1_Trainer1B",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_3",
+      "x": 4,
+      "y": 38,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "5",
+      "script": "Puzzle_TrainerHill1_Trainer1A",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_4",
+      "x": 27,
+      "y": 33,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "Puzzle_TrainerHill1_Trainer2A",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WOMAN_2",
+      "x": 31,
+      "y": 33,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "Puzzle_TrainerHill1_Trainer2B",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_4",
+      "x": 30,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "Puzzle_TrainerHill1_Trainer4A",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
+      "x": 33,
+      "y": 10,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "Puzzle_TrainerHill1_Trainer4B",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
+      "x": 13,
+      "y": 11,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "Puzzle_TrainerHill1_Trainer3B",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MANIAC",
+      "x": 9,
+      "y": 11,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "Puzzle_TrainerHill1_Trainer3A",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 32,
+      "y": 57,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "0",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_CandyAbundant",
+      "flag": "FLAG_CANDY_ABUNDANT_01"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TEALA",
+      "x": 36,
+      "y": 60,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "0",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Puzzle_TrainerHill_Reception",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 14,
+      "y": 37,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "0",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_CandyCommon",
+      "flag": "FLAG_CANDY_COMMON_01"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 36,
+      "y": 46,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "0",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_CandyAbundant",
+      "flag": "FLAG_CANDY_ABUNDANT_02"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 7,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "0",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_CandyRare",
+      "flag": "FLAG_CANDY_RARE_01"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 13,
+      "y": 19,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "0",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_CandyAbundant",
+      "flag": "FLAG_CANDY_ABUNDANT_03"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 31,
+      "y": 5,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "0",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_CandyAbundant",
+      "flag": "FLAG_CANDY_ABUNDANT_04"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 34,
+      "y": 67,
+      "elevation": 0,
+      "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 34,
+      "y": 53,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_TRAINER_HILL1",
+      "dest_warp_id": 2
+    },
+    {
+      "x": 2,
+      "y": 27,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_TRAINER_HILL1",
+      "dest_warp_id": 1
+    },
+    {
+      "x": 12,
+      "y": 27,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_TRAINER_HILL1",
+      "dest_warp_id": 4
+    },
+    {
+      "x": 24,
+      "y": 27,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_TRAINER_HILL1",
+      "dest_warp_id": 3
+    },
+    {
+      "x": 34,
+      "y": 27,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_TRAINER_HILL1",
+      "dest_warp_id": 6
+    },
+    {
+      "x": 2,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_TRAINER_HILL1",
+      "dest_warp_id": 5
+    },
+    {
+      "x": 12,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_TRAINER_HILL1",
+      "dest_warp_id": 8
+    },
+    {
+      "x": 24,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_TRAINER_HILL1",
+      "dest_warp_id": 7
+    },
+    {
+      "x": 34,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_TRAINER_HILL1",
+      "dest_warp_id": 10
+    },
+    {
+      "x": 9,
+      "y": 57,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_TRAINER_HILL1",
+      "dest_warp_id": 9
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 6,
+      "y": 32,
+      "elevation": 3,
+      "item": "ITEM_CANDY_COMMON",
+      "flag": "FLAG_CANDY_COMMON_02"
+    },
+    {
+      "type": "hidden_item",
+      "x": 12,
+      "y": 58,
+      "elevation": 3,
+      "item": "ITEM_CANDY_UNCOMMON",
+      "flag": "FLAG_CANDY_UNCOMMON_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 7,
+      "y": 38,
+      "elevation": 3,
+      "item": "ITEM_CANDY_HEALTHY",
+      "flag": "FLAG_CANDY_HEALTHY_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 31,
+      "y": 36,
+      "elevation": 3,
+      "item": "ITEM_CANDY_COMMON",
+      "flag": "FLAG_CANDY_COMMON_03"
+    },
+    {
+      "type": "hidden_item",
+      "x": 3,
+      "y": 17,
+      "elevation": 3,
+      "item": "ITEM_CANDY_COMMON",
+      "flag": "FLAG_CANDY_COMMON_04"
+    },
+    {
+      "type": "hidden_item",
+      "x": 31,
+      "y": 9,
+      "elevation": 3,
+      "item": "ITEM_CANDY_COMMON",
+      "flag": "FLAG_CANDY_COMMON_05"
+    }
+  ]
 }

@@ -1,356 +1,356 @@
 {
-    "allow_bike": false,
-    "allow_escape_rope": true,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_UNCOMMON_01",
-            "item": "ITEM_CANDY_UNCOMMON",
-            "type": "hidden_item",
-            "x": 11,
-            "y": 21
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_COMMON_01",
-            "item": "ITEM_CANDY_COMMON",
-            "type": "hidden_item",
-            "x": 13,
-            "y": 20
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_ABUNDANT_03",
-            "item": "ITEM_CANDY_ABUNDANT",
-            "type": "hidden_item",
-            "x": 14,
-            "y": 2
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_ABUNDANT_04",
-            "item": "ITEM_CANDY_ABUNDANT",
-            "type": "hidden_item",
-            "x": 0,
-            "y": 14
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_COMMON_02",
-            "item": "ITEM_CANDY_COMMON",
-            "type": "hidden_item",
-            "x": 9,
-            "y": 5
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_ABUNDANT_05",
-            "item": "ITEM_CANDY_ABUNDANT",
-            "type": "hidden_item",
-            "x": 13,
-            "y": 12
-        }
-    ],
-    "connections": null,
-    "coord_events": [
-        {
-            "elevation": 0,
-            "script": "Puzzle_TrickHouseOriginal7_EventScript_26E31B",
-            "type": "trigger",
-            "var": "VAR_TEMP_1",
-            "var_value": "0",
-            "x": 8,
-            "y": 19
-        },
-        {
-            "elevation": 0,
-            "script": "Puzzle_TrickHouseOriginal7_EventScript_26E331",
-            "type": "trigger",
-            "var": "VAR_TEMP_1",
-            "var_value": "0",
-            "x": 0,
-            "y": 14
-        },
-        {
-            "elevation": 0,
-            "script": "Puzzle_TrickHouseOriginal7_EventScript_26E347",
-            "type": "trigger",
-            "var": "VAR_TEMP_1",
-            "var_value": "0",
-            "x": 6,
-            "y": 6
-        },
-        {
-            "elevation": 0,
-            "script": "Puzzle_TrickHouseOriginal7_EventScript_26E35D",
-            "type": "trigger",
-            "var": "VAR_TEMP_1",
-            "var_value": "0",
-            "x": 9,
-            "y": 7
-        }
-    ],
-    "id": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
-    "layout": "LAYOUT_PUZZLE_TRICK_HOUSE_PUZZLE7",
-    "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_ROUTE119",
-    "name": "Puzzle_TrickHouseOriginal7",
-    "object_events": [
-        {
-            "elevation": 0,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_PLASMA_KID",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-            "script": "Puzzle_TrickHouseOriginal7_EventScript_Plasmaboy",
-            "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 9,
-            "y": 20
-        },
-        {
-            "elevation": 0,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_TWINS_PLUSLE",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-            "script": "Puzzle_TrickHouseOriginal7_EventScript_26E3B7",
-            "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 9,
-            "y": 12
-        },
-        {
-            "elevation": 0,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_HEX_MANIAC",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-            "script": "Puzzle_TrickHouseOriginal7_EventScript_26E3A0",
-            "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 8,
-            "y": 17
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_ABUNDANT_01",
-            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "Common_EventScript_CandyAbundant",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 5,
-            "y": 12
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_PSYCHIC_M",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "Puzzle_TrickHouseOriginal7_EventScript_PsychicBoy",
-            "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 10,
-            "y": 2
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_TWINS_MINUN",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_FACE_UP",
-            "script": "Puzzle_TrickHouseOriginal7_EventScript_26E3CE",
-            "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 8,
-            "y": 13
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_GHETSIS",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-            "script": "Puzzle_TrickHouseOriginal7_EventScript_Ghetsis",
-            "trainer_sight_or_berry_tree_id": "1",
-            "trainer_type": "TRAINER_TYPE_NORMAL",
-            "x": 9,
-            "y": 2
-        },
-        {
-            "elevation": 0,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_TRICK_HOUSE_STATUE",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "0x0",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 4,
-            "y": 17
-        },
-        {
-            "elevation": 0,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_TRICK_HOUSE_STATUE",
-            "movement_range_x": 1,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "0x0",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 4,
-            "y": 6
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "PuzzleCommon_EventScript_Scroll",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 6,
-            "y": 17
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_RARE_01",
-            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Common_EventScript_CandyRare",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 1,
-            "y": 2
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_ABUNDANT_02",
-            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Common_EventScript_CandyAbundant",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 13,
-            "y": 20
-        }
-    ],
-    "region_map_section": "MAPSEC_ROUTE_110",
-    "requires_flash": false,
-    "show_map_name": false,
-    "warp_events": [
-        {
-            "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
-            "dest_warp_id": 0,
-            "elevation": 3,
-            "x": 1,
-            "y": 21
-        },
-        {
-            "comment": "This is here to make sure later warps are all aligned properly.",
-            "dest_map": "MAP_TRICK_HOUSE_ENTRANCE",
-            "dest_warp_id": 2,
-            "elevation": 3,
-            "x": 1,
-            "y": 23
-        },
-        {
-            "dest_map": "MAP_TRICK_HOUSE_END",
-            "dest_warp_id": 0,
-            "elevation": 3,
-            "x": 13,
-            "y": 1
-        },
-        {
-            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
-            "dest_warp_id": 4,
-            "elevation": 0,
-            "x": 13,
-            "y": 4
-        },
-        {
-            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
-            "dest_warp_id": 3,
-            "elevation": 0,
-            "x": 7,
-            "y": 3
-        },
-        {
-            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
-            "dest_warp_id": 6,
-            "elevation": 0,
-            "x": 13,
-            "y": 11
-        },
-        {
-            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
-            "dest_warp_id": 5,
-            "elevation": 0,
-            "x": 4,
-            "y": 3
-        },
-        {
-            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
-            "dest_warp_id": 8,
-            "elevation": 0,
-            "x": 1,
-            "y": 17
-        },
-        {
-            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
-            "dest_warp_id": 7,
-            "elevation": 0,
-            "x": 0,
-            "y": 11
-        },
-        {
-            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
-            "dest_warp_id": 10,
-            "elevation": 0,
-            "x": 2,
-            "y": 3
-        },
-        {
-            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
-            "dest_warp_id": 9,
-            "elevation": 0,
-            "x": 4,
-            "y": 13
-        },
-        {
-            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
-            "dest_warp_id": 12,
-            "elevation": 0,
-            "x": 1,
-            "y": 3
-        },
-        {
-            "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
-            "dest_warp_id": 11,
-            "elevation": 0,
-            "x": 8,
-            "y": 12
-        }
-    ],
-    "weather": "WEATHER_NONE"
+  "id": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+  "name": "Puzzle_TrickHouseOriginal7",
+  "layout": "LAYOUT_PUZZLE_TRICK_HOUSE_PUZZLE7",
+  "music": "MUS_ROUTE119",
+  "region_map_section": "MAPSEC_ROUTE_110",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PLASMA_KID",
+      "x": 9,
+      "y": 20,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "Puzzle_TrickHouseOriginal7_EventScript_Plasmaboy",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TWINS_PLUSLE",
+      "x": 9,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "Puzzle_TrickHouseOriginal7_EventScript_26E3B7",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HEX_MANIAC",
+      "x": 8,
+      "y": 17,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "Puzzle_TrickHouseOriginal7_EventScript_26E3A0",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 5,
+      "y": 12,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_CandyAbundant",
+      "flag": "FLAG_CANDY_ABUNDANT_01"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PSYCHIC_M",
+      "x": 10,
+      "y": 2,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "Puzzle_TrickHouseOriginal7_EventScript_PsychicBoy",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TWINS_MINUN",
+      "x": 8,
+      "y": 13,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "Puzzle_TrickHouseOriginal7_EventScript_26E3CE",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GHETSIS",
+      "x": 9,
+      "y": 2,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "Puzzle_TrickHouseOriginal7_EventScript_Ghetsis",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRICK_HOUSE_STATUE",
+      "x": 4,
+      "y": 17,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRICK_HOUSE_STATUE",
+      "x": 4,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
+      "x": 6,
+      "y": 17,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PuzzleCommon_EventScript_Scroll",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 1,
+      "y": 2,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_CandyRare",
+      "flag": "FLAG_CANDY_RARE_01"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 13,
+      "y": 20,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_CandyAbundant",
+      "flag": "FLAG_CANDY_ABUNDANT_02"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 1,
+      "y": 21,
+      "elevation": 3,
+      "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 1,
+      "y": 23,
+      "elevation": 3,
+      "dest_map": "MAP_TRICK_HOUSE_ENTRANCE",
+      "dest_warp_id": 2,
+      "comment": "This is here to make sure later warps are all aligned properly."
+    },
+    {
+      "x": 13,
+      "y": 1,
+      "elevation": 3,
+      "dest_map": "MAP_TRICK_HOUSE_END",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 13,
+      "y": 4,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+      "dest_warp_id": 4
+    },
+    {
+      "x": 7,
+      "y": 3,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+      "dest_warp_id": 3
+    },
+    {
+      "x": 13,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+      "dest_warp_id": 6
+    },
+    {
+      "x": 4,
+      "y": 3,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+      "dest_warp_id": 5
+    },
+    {
+      "x": 1,
+      "y": 17,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+      "dest_warp_id": 8
+    },
+    {
+      "x": 0,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+      "dest_warp_id": 7
+    },
+    {
+      "x": 2,
+      "y": 3,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+      "dest_warp_id": 10
+    },
+    {
+      "x": 4,
+      "y": 13,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+      "dest_warp_id": 9
+    },
+    {
+      "x": 1,
+      "y": 3,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+      "dest_warp_id": 12
+    },
+    {
+      "x": 8,
+      "y": 12,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7",
+      "dest_warp_id": 11
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Puzzle_TrickHouseOriginal7_EventScript_26E31B"
+    },
+    {
+      "type": "trigger",
+      "x": 0,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Puzzle_TrickHouseOriginal7_EventScript_26E331"
+    },
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Puzzle_TrickHouseOriginal7_EventScript_26E347"
+    },
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Puzzle_TrickHouseOriginal7_EventScript_26E35D"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 11,
+      "y": 21,
+      "elevation": 3,
+      "item": "ITEM_CANDY_UNCOMMON",
+      "flag": "FLAG_CANDY_UNCOMMON_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 13,
+      "y": 20,
+      "elevation": 3,
+      "item": "ITEM_CANDY_COMMON",
+      "flag": "FLAG_CANDY_COMMON_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 14,
+      "y": 2,
+      "elevation": 3,
+      "item": "ITEM_CANDY_ABUNDANT",
+      "flag": "FLAG_CANDY_ABUNDANT_03"
+    },
+    {
+      "type": "hidden_item",
+      "x": 0,
+      "y": 14,
+      "elevation": 3,
+      "item": "ITEM_CANDY_ABUNDANT",
+      "flag": "FLAG_CANDY_ABUNDANT_04"
+    },
+    {
+      "type": "hidden_item",
+      "x": 9,
+      "y": 5,
+      "elevation": 3,
+      "item": "ITEM_CANDY_COMMON",
+      "flag": "FLAG_CANDY_COMMON_02"
+    },
+    {
+      "type": "hidden_item",
+      "x": 13,
+      "y": 12,
+      "elevation": 3,
+      "item": "ITEM_CANDY_ABUNDANT",
+      "flag": "FLAG_CANDY_ABUNDANT_05"
+    }
+  ]
 }

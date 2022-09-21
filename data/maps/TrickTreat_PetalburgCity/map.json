@@ -1,376 +1,376 @@
 {
-    "allow_bike": true,
-    "allow_escape_rope": false,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "TrickTreat_PetalburgCity_GymSign",
-            "type": "sign",
-            "x": 27,
-            "y": 10
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-            "script": "Common_EventScript_ShowPokemartSign",
-            "type": "sign",
-            "x": 36,
-            "y": 12
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-            "script": "Common_EventScript_ShowPokemonCenterSign",
-            "type": "sign",
-            "x": 31,
-            "y": 16
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "TrickTreat_PetalburgCity_CitySign",
-            "type": "sign",
-            "x": 27,
-            "y": 16
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-            "script": "Common_EventScript_ShowPokemonCenterSign",
-            "type": "sign",
-            "x": 32,
-            "y": 16
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
-            "script": "Common_EventScript_ShowPokemartSign",
-            "type": "sign",
-            "x": 37,
-            "y": 12
-        },
-        {
-            "elevation": 0,
-            "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-            "script": "TrickTreat_PetalburgCity_WallySign",
-            "type": "sign",
-            "x": 18,
-            "y": 9
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_UNCOMMON_01",
-            "item": "ITEM_CANDY_UNCOMMON",
-            "type": "hidden_item",
-            "x": 21,
-            "y": 29
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_COMMON_01",
-            "item": "ITEM_CANDY_COMMON",
-            "type": "hidden_item",
-            "x": 28,
-            "y": 24
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_COMMON_02",
-            "item": "ITEM_CANDY_COMMON",
-            "type": "hidden_item",
-            "x": 15,
-            "y": 8
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_ABUNDANT_01",
-            "item": "ITEM_CANDY_ABUNDANT",
-            "type": "hidden_item",
-            "x": 23,
-            "y": 8
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_ABUNDANT_02",
-            "item": "ITEM_CANDY_ABUNDANT",
-            "type": "hidden_item",
-            "x": 35,
-            "y": 13
-        }
-    ],
-    "connections": null,
-    "coord_events": [
-        {
-            "elevation": 0,
-            "script": "TrickTreat_PetalburgCity_TriggerScript_SoftBorderEast",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 42,
-            "y": 18
-        },
-        {
-            "elevation": 0,
-            "script": "TrickTreat_PetalburgCity_TriggerScript_SoftBorderEast",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 42,
-            "y": 19
-        },
-        {
-            "elevation": 0,
-            "script": "TrickTreat_PetalburgCity_TriggerScript_SoftBorderWest",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 8,
-            "y": 13
-        },
-        {
-            "elevation": 0,
-            "script": "TrickTreat_PetalburgCity_TriggerScript_SoftBorderWest",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 8,
-            "y": 12
-        },
-        {
-            "elevation": 0,
-            "script": "TrickTreat_PetalburgCity_TriggerScript_SoftBorderWest",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 8,
-            "y": 11
-        },
-        {
-            "elevation": 0,
-            "script": "TrickTreat_PetalburgCity_TriggerScript_SoftBorderEast",
-            "type": "trigger",
-            "var": "VAR_TEMP_0",
-            "var_value": "0",
-            "x": 42,
-            "y": 17
-        }
-    ],
-    "id": "MAP_TRICK_TREAT_PETALBURG_CITY",
-    "layout": "LAYOUT_TRICKTREAT_PETALBURG_CITY",
-    "map_type": "MAP_TYPE_CITY",
-    "music": "MUS_PETALBURG",
-    "name": "TrickTreat_PetalburgCity",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDDEN_LIMITED_CANDY_0x6B",
-            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Common_EventScript_CandyLimited05",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 29,
-            "y": 2
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_RARE_01",
-            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Common_EventScript_CandyRare",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 13,
-            "y": 28
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_SCROLL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "PuzzleCommon_EventScript_EntranceDoorObject",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
-            "x": 30,
-            "y": 9
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_STONE",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "PuzzleCommon_EventScript_ExitDoorObject",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
-            "x": 40,
-            "y": 16
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_PICKED_UP_SURF_ITEM",
-            "graphics_id": "OBJ_EVENT_GFX_HM_BALL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Common_EventScript_ItemSurf",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 30,
-            "y": 13
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_PUZZLE_24",
-            "graphics_id": "OBJ_EVENT_GFX_POKEFAN_F",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_INVISIBLE",
-            "script": "TrickTreat_PetalburgCity_CandyGiver_WallysHouse",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 17,
-            "y": 5
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_PUZZLE_25",
-            "graphics_id": "OBJ_EVENT_GFX_MAN_4",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_INVISIBLE",
-            "script": "TrickTreat_PetalburgCity_CandyGiver_House",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 20,
-            "y": 19
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_PUZZLE_23",
-            "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_INVISIBLE",
-            "script": "TrickTreat_PetalburgCity_CandyGiver_Youngster",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 30,
-            "y": 24
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_PUZZLE_20",
-            "graphics_id": "OBJ_EVENT_GFX_NURSE",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
-            "script": "TrickTreat_PetalburgCity_CandyGiver_Nurse",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 30,
-            "y": 17
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_PUZZLE_22",
-            "graphics_id": "OBJ_EVENT_GFX_NORMAN",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
-            "script": "TrickTreat_PetalburgCity_CandyGiver_Norman",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 25,
-            "y": 9
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_PUZZLE_21",
-            "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
-            "script": "TrickTreat_PetalburgCity_CandyGiver_Mart",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 35,
-            "y": 13
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_TRICK_HOUSE_PASSWORD_ENTERED",
-            "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
-            "script": "TrickTreat_PetalburgCity_ExitYoungster",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 41,
-            "y": 17
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY",
-            "movement_range_x": 8,
-            "movement_range_y": 5,
-            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-            "script": "TrickTreat_PetalburgCity_EventScript_Boy",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_KEEP_LOADED",
-            "x": 20,
-            "y": 12
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_IMPOSTER_LASS",
-            "movement_range_x": 5,
-            "movement_range_y": 1,
-            "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-            "script": "TrickTreat_PetalburgCity_EventScript_Lass",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_KEEP_LOADED",
-            "x": 22,
-            "y": 21
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_BALL_CUSHION",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_INVISIBLE",
-            "script": "PuzzleCommon_EventScript_PokecenterHeal",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
-            "x": 30,
-            "y": 16
-        }
-    ],
-    "region_map_section": "MAPSEC_PETALBURG_CITY",
-    "requires_flash": false,
-    "show_map_name": true,
-    "warp_events": [
-        {
-            "dest_map": "MAP_TRICK_TREAT_PETALBURG_CITY",
-            "dest_warp_id": 0,
-            "elevation": 0,
-            "x": 30,
-            "y": 9
-        }
-    ],
-    "weather": "WEATHER_SUNNY"
+  "id": "MAP_TRICK_TREAT_PETALBURG_CITY",
+  "name": "TrickTreat_PetalburgCity",
+  "layout": "LAYOUT_TRICKTREAT_PETALBURG_CITY",
+  "music": "MUS_PETALBURG",
+  "region_map_section": "MAPSEC_PETALBURG_CITY",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_CITY",
+  "allow_cycling": false,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 29,
+      "y": 2,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_CandyLimited05",
+      "flag": "FLAG_HIDDEN_LIMITED_CANDY_0x6B"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 13,
+      "y": 28,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_CandyRare",
+      "flag": "FLAG_CANDY_RARE_01"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_SCROLL",
+      "x": 30,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PuzzleCommon_EventScript_EntranceDoorObject",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_STONE",
+      "x": 40,
+      "y": 16,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PuzzleCommon_EventScript_ExitDoorObject",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HM_BALL",
+      "x": 30,
+      "y": 13,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_ItemSurf",
+      "flag": "FLAG_PICKED_UP_SURF_ITEM"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POKEFAN_F",
+      "x": 17,
+      "y": 5,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TrickTreat_PetalburgCity_CandyGiver_WallysHouse",
+      "flag": "FLAG_PUZZLE_24"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MAN_4",
+      "x": 20,
+      "y": 19,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TrickTreat_PetalburgCity_CandyGiver_House",
+      "flag": "FLAG_PUZZLE_25"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
+      "x": 30,
+      "y": 24,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TrickTreat_PetalburgCity_CandyGiver_Youngster",
+      "flag": "FLAG_PUZZLE_23"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_NURSE",
+      "x": 30,
+      "y": 17,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TrickTreat_PetalburgCity_CandyGiver_Nurse",
+      "flag": "FLAG_PUZZLE_20"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_NORMAN",
+      "x": 25,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TrickTreat_PetalburgCity_CandyGiver_Norman",
+      "flag": "FLAG_PUZZLE_22"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",
+      "x": 35,
+      "y": 13,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TrickTreat_PetalburgCity_CandyGiver_Mart",
+      "flag": "FLAG_PUZZLE_21"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
+      "x": 41,
+      "y": 17,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TrickTreat_PetalburgCity_ExitYoungster",
+      "flag": "FLAG_TRICK_HOUSE_PASSWORD_ENTERED"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY",
+      "x": 20,
+      "y": 12,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 8,
+      "movement_range_y": 5,
+      "trainer_type": "TRAINER_TYPE_KEEP_LOADED",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TrickTreat_PetalburgCity_EventScript_Boy",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_IMPOSTER_LASS",
+      "x": 22,
+      "y": 21,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 5,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_KEEP_LOADED",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TrickTreat_PetalburgCity_EventScript_Lass",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BALL_CUSHION",
+      "x": 30,
+      "y": 16,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PuzzleCommon_EventScript_PokecenterHeal",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 30,
+      "y": 9,
+      "elevation": 0,
+      "dest_map": "MAP_TRICK_TREAT_PETALBURG_CITY",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 18,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "TrickTreat_PetalburgCity_TriggerScript_SoftBorderEast"
+    },
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "TrickTreat_PetalburgCity_TriggerScript_SoftBorderEast"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "TrickTreat_PetalburgCity_TriggerScript_SoftBorderWest"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 12,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "TrickTreat_PetalburgCity_TriggerScript_SoftBorderWest"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "TrickTreat_PetalburgCity_TriggerScript_SoftBorderWest"
+    },
+    {
+      "type": "trigger",
+      "x": 42,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "TrickTreat_PetalburgCity_TriggerScript_SoftBorderEast"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "sign",
+      "x": 27,
+      "y": 10,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "TrickTreat_PetalburgCity_GymSign"
+    },
+    {
+      "type": "sign",
+      "x": 36,
+      "y": 12,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "Common_EventScript_ShowPokemartSign"
+    },
+    {
+      "type": "sign",
+      "x": 31,
+      "y": 16,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "Common_EventScript_ShowPokemonCenterSign"
+    },
+    {
+      "type": "sign",
+      "x": 27,
+      "y": 16,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "TrickTreat_PetalburgCity_CitySign"
+    },
+    {
+      "type": "sign",
+      "x": 32,
+      "y": 16,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "Common_EventScript_ShowPokemonCenterSign"
+    },
+    {
+      "type": "sign",
+      "x": 37,
+      "y": 12,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "Common_EventScript_ShowPokemartSign"
+    },
+    {
+      "type": "sign",
+      "x": 18,
+      "y": 9,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "TrickTreat_PetalburgCity_WallySign"
+    },
+    {
+      "type": "hidden_item",
+      "x": 21,
+      "y": 29,
+      "elevation": 3,
+      "item": "ITEM_CANDY_UNCOMMON",
+      "flag": "FLAG_CANDY_UNCOMMON_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 28,
+      "y": 24,
+      "elevation": 3,
+      "item": "ITEM_CANDY_COMMON",
+      "flag": "FLAG_CANDY_COMMON_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 15,
+      "y": 8,
+      "elevation": 3,
+      "item": "ITEM_CANDY_COMMON",
+      "flag": "FLAG_CANDY_COMMON_02"
+    },
+    {
+      "type": "hidden_item",
+      "x": 23,
+      "y": 8,
+      "elevation": 3,
+      "item": "ITEM_CANDY_ABUNDANT",
+      "flag": "FLAG_CANDY_ABUNDANT_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 35,
+      "y": 13,
+      "elevation": 3,
+      "item": "ITEM_CANDY_ABUNDANT",
+      "flag": "FLAG_CANDY_ABUNDANT_02"
+    }
+  ]
 }

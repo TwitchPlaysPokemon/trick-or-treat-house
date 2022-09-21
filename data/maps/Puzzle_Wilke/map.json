@@ -1,148 +1,149 @@
 {
-    "allow_bike": false,
-    "allow_escape_rope": false,
-    "allow_running": false,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_ABUNDANT_01",
-            "item": "ITEM_CANDY_ABUNDANT",
-            "type": "hidden_item",
-            "x": 14,
-            "y": 3
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_ABUNDANT_02",
-            "item": "ITEM_CANDY_ABUNDANT",
-            "type": "hidden_item",
-            "x": 10,
-            "y": 7
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_ABUNDANT_03",
-            "item": "ITEM_CANDY_ABUNDANT",
-            "type": "hidden_item",
-            "x": 20,
-            "y": 3
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_COMMON_01",
-            "item": "ITEM_CANDY_COMMON",
-            "type": "hidden_item",
-            "x": 4,
-            "y": 6
-        }
-    ],
-    "connections": null,
-    "coord_events": [
-    ],
-    "id": "MAP_PUZZLE_WILKE",
-    "layout": "LAYOUT_PUZZLE_WILKE",
-    "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_FORTREE",
-    "name": "Puzzle_Wilke",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_ZIGZAGOON_2",
-            "movement_range_x": 15,
-            "movement_range_y": 15,
-            "movement_type": "MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE",
-            "script": "Puzzle_Wilke_TalkToRacc1",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_KEEP_LOADED",
-            "x": 11,
-            "y": 0
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_SUDOWOODO",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "NULL",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 21,
-            "y": 8
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_TEMP_1",
-            "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "EventScript_CutTree",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 10,
-            "y": 6
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_PUZZLE_20",
-            "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "PuzzleCommon_EventScript_Scroll",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 5,
-            "y": 4
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_SCROLL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Puzzle_Wilke_EnterDoor",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
-            "x": 6,
-            "y": 3
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_STONE",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "PuzzleCommon_EventScript_ExitDoorObject",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
-            "x": 3,
-            "y": 3
-        }
-    ],
-    "region_map_section": "MAPSEC_ROUTE_110",
-    "requires_flash": false,
-    "show_map_name": false,
-    "warp_events": [
-        {
-            "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
-            "dest_warp_id": 0,
-            "elevation": 0,
-            "x": 6,
-            "y": 3
-        },
-        {
-            "dest_map": "MAP_TRICK_HOUSE_END",
-            "dest_warp_id": 0,
-            "elevation": 0,
-            "x": 2,
-            "y": 5
-        }
-    ],
-    "weather": "WEATHER_NONE"
+  "id": "MAP_PUZZLE_WILKE",
+  "name": "Puzzle_Wilke",
+  "layout": "LAYOUT_PUZZLE_WILKE",
+  "music": "MUS_FORTREE",
+  "region_map_section": "MAPSEC_ROUTE_110",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": true,
+  "allow_running": false,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ZIGZAGOON_2",
+      "x": 11,
+      "y": 0,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE",
+      "movement_range_x": 15,
+      "movement_range_y": 15,
+      "trainer_type": "TRAINER_TYPE_KEEP_LOADED",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Puzzle_Wilke_TalkToRacc1",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SUDOWOODO",
+      "x": 21,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CUTTABLE_TREE",
+      "x": 10,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_CutTree",
+      "flag": "FLAG_TEMP_1"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
+      "x": 5,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PuzzleCommon_EventScript_Scroll",
+      "flag": "FLAG_PUZZLE_20"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_SCROLL",
+      "x": 6,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Puzzle_Wilke_EnterDoor",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_STONE",
+      "x": 3,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PuzzleCommon_EventScript_ExitDoorObject",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 6,
+      "y": 3,
+      "elevation": 0,
+      "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 2,
+      "y": 5,
+      "elevation": 0,
+      "dest_map": "MAP_TRICK_HOUSE_END",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 14,
+      "y": 3,
+      "elevation": 3,
+      "item": "ITEM_CANDY_ABUNDANT",
+      "flag": "FLAG_CANDY_ABUNDANT_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 10,
+      "y": 7,
+      "elevation": 3,
+      "item": "ITEM_CANDY_ABUNDANT",
+      "flag": "FLAG_CANDY_ABUNDANT_02"
+    },
+    {
+      "type": "hidden_item",
+      "x": 20,
+      "y": 3,
+      "elevation": 3,
+      "item": "ITEM_CANDY_ABUNDANT",
+      "flag": "FLAG_CANDY_ABUNDANT_03"
+    },
+    {
+      "type": "hidden_item",
+      "x": 4,
+      "y": 6,
+      "elevation": 3,
+      "item": "ITEM_CANDY_COMMON",
+      "flag": "FLAG_CANDY_COMMON_01"
+    }
+  ]
 }

@@ -700,7 +700,5 @@
       "item": "ITEM_CANDY_ABUNDANT",
       "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x33"
     }
-  ],
-  "allow_bike": "",
-  "allow_escape_rope": ""
+  ]
 }

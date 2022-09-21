@@ -306,7 +306,5 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "RustboroCity_EventScript_1E0919"
     }
-  ],
-  "allow_bike": "",
-  "allow_escape_rope": ""
+  ]
 }

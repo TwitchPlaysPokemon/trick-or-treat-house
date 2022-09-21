@@ -1,54 +1,57 @@
 {
-    "allow_bike": false,
-    "allow_escape_rope": true,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_UNCOMMON_01",
-            "item": "ITEM_CANDY_UNCOMMON",
-            "type": "hidden_item",
-            "x": 8,
-            "y": 8
-        }
-    ],
-    "connections": [
-        {
-            "direction": "down",
-            "map": "MAP_LOST_WOODS4_ROOM_B7",
-            "offset": 0
-        },
-        {
-            "direction": "left",
-            "map": "MAP_LOST_WOODS4_ROOM0",
-            "offset": 0
-        },
-        {
-            "direction": "right",
-            "map": "MAP_LOST_WOODS4_ROOM_B9",
-            "offset": 0
-        },
-        {
-            "direction": "up",
-            "map": "MAP_LOST_WOODS4_ROOM_D4",
-            "offset": 0
-        }
-    ],
-    "coord_events": [
-    ],
-    "id": "MAP_LOST_WOODS4_ROOM_B8",
-    "layout": "LAYOUT_PUZZLE_LOST_WOODS_ROOM",
-    "map_type": "MAP_TYPE_ROUTE",
-    "music": "MUS_PETALBURG_WOODS",
-    "name": "LostWoods4_RoomB8",
-    "object_events": [
-    ],
-    "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
-    "requires_flash": false,
-    "show_map_name": true,
-    "trainers": "Puzzle_LostWoods4_Entrance_TrainerTable",
-    "warp_events": [
-    ],
-    "weather": "WEATHER_SUNNY"
+  "id": "MAP_LOST_WOODS4_ROOM_B8",
+  "name": "LostWoods4_RoomB8",
+  "layout": "LAYOUT_PUZZLE_LOST_WOODS_ROOM",
+  "music": "MUS_PETALBURG_WOODS",
+  "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_ROUTE",
+  "allow_cycling": false,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "direction": "down",
+      "offset": 0,
+      "map": "MAP_LOST_WOODS4_ROOM_B7"
+    },
+    {
+      "direction": "left",
+      "offset": 0,
+      "map": "MAP_LOST_WOODS4_ROOM0"
+    },
+    {
+      "direction": "right",
+      "offset": 0,
+      "map": "MAP_LOST_WOODS4_ROOM_B9"
+    },
+    {
+      "direction": "up",
+      "offset": 0,
+      "map": "MAP_LOST_WOODS4_ROOM_D4"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 8,
+      "y": 8,
+      "elevation": 3,
+      "item": "ITEM_CANDY_UNCOMMON",
+      "flag": "FLAG_CANDY_UNCOMMON_01"
+    }
+  ],
+  "trainers": "Puzzle_LostWoods4_Entrance_TrainerTable"
 }

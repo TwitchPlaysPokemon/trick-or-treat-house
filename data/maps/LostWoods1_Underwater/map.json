@@ -1,43 +1,46 @@
 {
-    "allow_bike": false,
-    "allow_escape_rope": true,
-    "allow_running": false,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-    ],
-    "connections": [
-        {
-            "direction": "emerge",
-            "map": "MAP_LOST_WOODS1_ROOM6",
-            "offset": 0
-        }
-    ],
-    "coord_events": [
-    ],
-    "id": "MAP_LOST_WOODS1_UNDERWATER",
-    "layout": "LAYOUT_LOST_WOODS1_UNDERWATER",
-    "map_type": "MAP_TYPE_UNDERWATER",
-    "music": "MUS_UNDERWATER",
-    "name": "LostWoods1_Underwater",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "FLAG_HIDDEN_LIMITED_CANDY_0x6E",
-            "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "Common_EventScript_CandyLimited02",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 4,
-            "y": 3
-        }
-    ],
-    "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
-    "requires_flash": false,
-    "show_map_name": true,
-    "warp_events": [
-    ],
-    "weather": "WEATHER_SUNNY"
+  "id": "MAP_LOST_WOODS1_UNDERWATER",
+  "name": "LostWoods1_Underwater",
+  "layout": "LAYOUT_LOST_WOODS1_UNDERWATER",
+  "music": "MUS_UNDERWATER",
+  "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_UNDERWATER",
+  "allow_cycling": false,
+  "allow_escaping": true,
+  "allow_running": false,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "direction": "emerge",
+      "offset": 0,
+      "map": "MAP_LOST_WOODS1_ROOM6"
+    }
+  ],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 4,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_CandyLimited02",
+      "flag": "FLAG_HIDDEN_LIMITED_CANDY_0x6E"
+    }
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
 }

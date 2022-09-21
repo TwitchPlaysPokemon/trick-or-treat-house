@@ -1,161 +1,162 @@
 {
-    "allow_bike": false,
-    "allow_escape_rope": true,
-    "allow_running": true,
-    "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-    "bg_events": [
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_UNCOMMON_01",
-            "item": "ITEM_CANDY_UNCOMMON",
-            "type": "hidden_item",
-            "x": 9,
-            "y": 7
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_ABUNDANT_01",
-            "item": "ITEM_CANDY_ABUNDANT",
-            "type": "hidden_item",
-            "x": 0,
-            "y": 13
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_ABUNDANT_02",
-            "item": "ITEM_CANDY_ABUNDANT",
-            "type": "hidden_item",
-            "x": 13,
-            "y": 2
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_CANDY_COMMON_01",
-            "item": "ITEM_CANDY_COMMON",
-            "type": "hidden_item",
-            "x": 7,
-            "y": 4
-        }
-    ],
-    "connections": null,
-    "coord_events": [
-    ],
-    "id": "MAP_PUZZLE_MUSIC_NOTE_TILES",
-    "layout": "LAYOUT_PUZZLE_MUSIC_NOTE_TILES",
-    "map_type": "MAP_TYPE_INDOOR",
-    "music": "MUS_LINK_CONTEST_P4",
-    "name": "Puzzle_MusicNoteTiles",
-    "object_events": [
-        {
-            "elevation": 3,
-            "flag": "FLAG_PUZZLE_20",
-            "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_NONE",
-            "script": "PuzzleCommon_EventScript_Scroll",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 7,
-            "y": 8
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_PUZZLE_22",
-            "graphics_id": "OBJ_EVENT_GFX_AZURILL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "Puzzle_MusicNoteTiles_Pokemon",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 5,
-            "y": 7
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_PUZZLE_22",
-            "graphics_id": "OBJ_EVENT_GFX_AZURILL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "Puzzle_MusicNoteTiles_Pokemon",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 6,
-            "y": 7
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_PUZZLE_22",
-            "graphics_id": "OBJ_EVENT_GFX_AZURILL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "Puzzle_MusicNoteTiles_Pokemon",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 7,
-            "y": 7
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_PUZZLE_22",
-            "graphics_id": "OBJ_EVENT_GFX_AZURILL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "Puzzle_MusicNoteTiles_Pokemon",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 8,
-            "y": 7
-        },
-        {
-            "elevation": 3,
-            "flag": "FLAG_PUZZLE_22",
-            "graphics_id": "OBJ_EVENT_GFX_AZURILL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-            "script": "Puzzle_MusicNoteTiles_Pokemon",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 9,
-            "y": 7
-        },
-        {
-            "elevation": 3,
-            "flag": "0",
-            "graphics_id": "OBJ_EVENT_GFX_AZURILL",
-            "movement_range_x": 0,
-            "movement_range_y": 0,
-            "movement_type": "MOVEMENT_TYPE_INVISIBLE",
-            "script": "Puzzle_MusicNoteTiles_Extra",
-            "trainer_sight_or_berry_tree_id": "0",
-            "trainer_type": "TRAINER_TYPE_NONE",
-            "x": 14,
-            "y": 4
-        }
-    ],
-    "region_map_section": "MAPSEC_ROUTE_110",
-    "requires_flash": false,
-    "show_map_name": true,
-    "warp_events": [
-        {
-            "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
-            "dest_warp_id": 0,
-            "elevation": 0,
-            "x": 7,
-            "y": 13
-        },
-        {
-            "dest_map": "MAP_TRICK_HOUSE_END",
-            "dest_warp_id": 0,
-            "elevation": 0,
-            "x": 7,
-            "y": 1
-        }
-    ],
-    "weather": "WEATHER_SUNNY"
+  "id": "MAP_PUZZLE_MUSIC_NOTE_TILES",
+  "name": "Puzzle_MusicNoteTiles",
+  "layout": "LAYOUT_PUZZLE_MUSIC_NOTE_TILES",
+  "music": "MUS_LINK_CONTEST_P4",
+  "region_map_section": "MAPSEC_ROUTE_110",
+  "requires_flash": false,
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
+      "x": 7,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PuzzleCommon_EventScript_Scroll",
+      "flag": "FLAG_PUZZLE_20"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AZURILL",
+      "x": 5,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Puzzle_MusicNoteTiles_Pokemon",
+      "flag": "FLAG_PUZZLE_22"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AZURILL",
+      "x": 6,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Puzzle_MusicNoteTiles_Pokemon",
+      "flag": "FLAG_PUZZLE_22"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AZURILL",
+      "x": 7,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Puzzle_MusicNoteTiles_Pokemon",
+      "flag": "FLAG_PUZZLE_22"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AZURILL",
+      "x": 8,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Puzzle_MusicNoteTiles_Pokemon",
+      "flag": "FLAG_PUZZLE_22"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AZURILL",
+      "x": 9,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Puzzle_MusicNoteTiles_Pokemon",
+      "flag": "FLAG_PUZZLE_22"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AZURILL",
+      "x": 14,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Puzzle_MusicNoteTiles_Extra",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 7,
+      "y": 13,
+      "elevation": 0,
+      "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 7,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_TRICK_HOUSE_END",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 9,
+      "y": 7,
+      "elevation": 3,
+      "item": "ITEM_CANDY_UNCOMMON",
+      "flag": "FLAG_CANDY_UNCOMMON_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 0,
+      "y": 13,
+      "elevation": 3,
+      "item": "ITEM_CANDY_ABUNDANT",
+      "flag": "FLAG_CANDY_ABUNDANT_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 13,
+      "y": 2,
+      "elevation": 3,
+      "item": "ITEM_CANDY_ABUNDANT",
+      "flag": "FLAG_CANDY_ABUNDANT_02"
+    },
+    {
+      "type": "hidden_item",
+      "x": 7,
+      "y": 4,
+      "elevation": 3,
+      "item": "ITEM_CANDY_COMMON",
+      "flag": "FLAG_CANDY_COMMON_01"
+    }
+  ]
 }
