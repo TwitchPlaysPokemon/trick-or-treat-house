@@ -78,21 +78,21 @@ static const struct FollowerSpriteGraphics gFollowerAlternateSprites[] =
 {
     //FORMAT:
     //{WALKING/RUNNING SPRITE ID, MACH BIKE SPRITE ID, ACRO BIKE SPRITE ID, SURFING SPRITE ID},
-    [0] = {
+    {
         .normalId = OBJ_EVENT_GFX_BRENDAN_NORMAL,
         .machBikeId = OBJ_EVENT_GFX_BRENDAN_MACH_BIKE,
         .acroBikeId = OBJ_EVENT_GFX_BRENDAN_ACRO_BIKE,
         .surfId = OBJ_EVENT_GFX_BRENDAN_SURFING,
         .underwaterId = OBJ_EVENT_GFX_BRENDAN_UNDERWATER,
     },
-    [1] = {
+    {
         .normalId = OBJ_EVENT_GFX_MAY_NORMAL,
         .machBikeId = OBJ_EVENT_GFX_MAY_MACH_BIKE,
         .acroBikeId = OBJ_EVENT_GFX_MAY_ACRO_BIKE,
         .surfId = OBJ_EVENT_GFX_MAY_SURFING,
         .underwaterId = OBJ_EVENT_GFX_MAY_UNDERWATER,
     },
-    [2] = {
+    {
         .normalId = OBJ_EVENT_GFX_TREEKID_NORMAL,
         .machBikeId = OBJ_EVENT_GFX_TREEKID_MACH_BIKE,
         .acroBikeId = OBJ_EVENT_GFX_TREEKID_ACRO_BIKE,
@@ -834,12 +834,6 @@ void Task_DoDoorWarp(u8 taskId)
 
         TryFadeOutOldMapMusic();
         WarpFadeOutScreen();
-        PlayRainStoppingSoundEffect();
-        task->data[0] = 0;
-        task->func = Task_WarpAndLoadMap;
-        break;
-    case 5:
-        TryFadeOutOldMapMusic();
         PlayRainStoppingSoundEffect();
         task->data[0] = 0;
         task->func = Task_WarpAndLoadMap;

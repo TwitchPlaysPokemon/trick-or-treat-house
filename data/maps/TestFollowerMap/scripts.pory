@@ -1,0 +1,16 @@
+mapscripts TestFollowerMap_MapScripts {}
+
+script TestFollowerMap_EventScript_JoeyFollow {
+	lockall
+	checkfollower
+	if (var(VAR_RESULT) == FALSE) {
+		msgbox("Joey is now following you.")
+		setfollower(1, FOLLOWER_FLAG_CAN_LEAVE_ROUTE)
+	}
+	else {
+		msgbox("Joey is no longer following.")
+		destroyfollower
+	}
+	releaseall
+}
+

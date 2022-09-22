@@ -35,6 +35,7 @@
 #define MAP_INDOOR_MAP             (5 | (2 << 8))
 #define MAP_TEST_MUSIC_ROOM        (6 | (2 << 8))
 #define MAP_TEST_ACRO_BIKE_MAP     (7 | (2 << 8))
+#define MAP_TEST_FOLLOWER_MAP      (8 | (2 << 8))
 
 // MG_CutsceneMaps
 #define MAP_MAUVILLE_CITY_CUTSCENE (0 | (3 << 8))

@@ -46,7 +46,8 @@
     "TestCopyMovement",
     "IndoorMap",
     "TestMusicRoom",
-    "TestAcroBikeMap"
+    "TestAcroBikeMap",
+    "TestFollowerMap"
   ],
   "MG_CutsceneMaps": [
     "MauvilleCity_Cutscene",

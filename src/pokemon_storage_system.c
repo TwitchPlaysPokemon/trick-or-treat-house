@@ -40,6 +40,7 @@
 #include "constants/moves.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "constants/map_groups.h"
 
 /*
     NOTE: This file is large. Some general groups of functions have

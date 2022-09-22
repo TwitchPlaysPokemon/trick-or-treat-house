@@ -1270,7 +1270,11 @@ u8 GetNonPlayerObjectEventIdByXY(s16 x, s16 y)
     u8 i;
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
-        if (gObjectEvents[i].active && gObjectEvents[i].localId != OBJ_EVENT_ID_PLAYER && gObjectEvents[i].currentCoords.x == x && gObjectEvents[i].currentCoords.y == y)
+        if (gObjectEvents[i].active 
+            && gObjectEvents[i].localId != OBJ_EVENT_ID_PLAYER 
+            && gObjectEvents[i].localId != GetFollowerLocalId()
+            && gObjectEvents[i].currentCoords.x == x 
+            && gObjectEvents[i].currentCoords.y == y)
             break;
     }
 

@@ -3,8 +3,6 @@
 
 #include "sprite.h"
 #include "config.h"
-#include "constants/region_map_sections.h"
-#include "constants/map_groups.h"
 
 #define GET_BASE_SPECIES_ID(speciesId) (GetFormSpeciesId(speciesId, 0))
 #define FORM_SPECIES_END (0xffff)

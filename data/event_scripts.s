@@ -785,3 +785,5 @@ gText_LinkRecordCouldntBeSaved::
 	.include "data/maps/SlateportCity_OceanicMuseum_2F/scripts.inc"
 
 	.include "data/maps/SlateportCity_SeashoreHouse/scripts.inc"
+
+	.include "data/maps/TestFollowerMap/scripts.inc"

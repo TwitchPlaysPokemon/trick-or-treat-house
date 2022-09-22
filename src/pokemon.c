@@ -42,6 +42,8 @@
 #include "constants/item_effects.h"
 #include "constants/items.h"
 #include "constants/layouts.h"
+#include "constants/region_map_sections.h"
+#include "constants/map_groups.h"
 #include "constants/moves.h"
 #include "constants/songs.h"
 #include "constants/species.h"

@@ -17,6 +17,7 @@
 #include "constants/event_objects.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "constants/map_groups.h"
 #include "constants/metatile_labels.h"
 
 struct MirageTowerPulseBlend
