@@ -29,7 +29,7 @@ Feature Merging:
 	- [ ] Possibly use some curry ingredients for candy?
 - [ ] Pull from merrp's stuff: https://github.com/aarant/pokeemerald
 	- [ ] Dynamic overworld palettes & reflections compatable with vanilla berry trees (from followers)
-	- [ ] (look into "detect newer emulators/hardware)
+	- [-] (look into "detect newer emulators/hardware)
 	- [ ] Day/Night + window lights + lamp lights from the lighting branch
 
 
@@ -59,6 +59,16 @@ Changes:
 	- [ ] Also add an optional text box for person's name using short/narrow text
 - [ ] BORT: Go over the sGrammarMoveUsedTable and see if there's an updated version.
 - [ ] Wild Pokemon should drop items, if only so a wild battle doesn't just end without the victory music.
+- [ ] Change the party screen to only include 3 pokemon if there are only 3 pokemon in the party.
+	- [ ] Make all three boxes spread out and large.
+- [ ] Followers:
+	- [ ] Trick Treat Petalburg: No one joins you
+	- [ ] Trick Treat Fortree: Brendan / Treekid joins you.
+	- [ ] Trick Treat Mossdeep: Treekid / May joins you.
+	- [ ] Tower 1: Joey joins
+	- [ ] Tower 2: Irene joins
+	- [ ] Tower 3: James joins
+	- [ ] Tower 4: Wally joins ("It sounded like you guys were having a lot of fun...")
 
 Others:
 - [X] Scripting Overhaul

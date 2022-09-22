@@ -2150,6 +2150,8 @@
     @ remove the following NPC (assumes there will only ever be one)
     .macro destroyfollower
     callnative DestroyFollower
+	setvar VAR_FOLLOWER_STATE, 0
+	setvar VAR_FOLLOWER_IDENTITY, FOLLOWER_ID_NONE
     .endm
     
     @ makes the player and follower face one another
