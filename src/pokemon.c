@@ -47,7 +47,6 @@
 #include "constants/species.h"
 #include "constants/trainers.h"
 #include "constants/weather.h"
-#include "constants/battle_config.h"
 
 struct SpeciesItem
 {

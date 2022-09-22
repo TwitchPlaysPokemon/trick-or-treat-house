@@ -16,7 +16,6 @@
 #include "script.h"
 #include "battle_debug.h"
 #include "constants/abilities.h"
-#include "constants/battle_config.h"
 #include "constants/game_stat.h"
 #include "constants/items.h"
 #include "constants/layouts.h"

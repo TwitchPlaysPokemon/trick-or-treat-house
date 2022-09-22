@@ -1,7 +1,7 @@
 #ifndef GUARD_CONSTANTS_SPECIES_H
 #define GUARD_CONSTANTS_SPECIES_H
 
-#include "constants/pokemon_config.h"
+#include "config.h"
 
 #define SPECIES_NONE 0
 #define SPECIES_BULBASAUR 1

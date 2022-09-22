@@ -2,8 +2,8 @@
 #define GUARD_POKEMON_H
 
 #include "sprite.h"
+#include "config.h"
 #include "constants/region_map_sections.h"
-#include "constants/pokemon_config.h"
 #include "constants/map_groups.h"
 
 #define GET_BASE_SPECIES_ID(speciesId) (GetFormSpeciesId(speciesId, 0))
@@ -282,7 +282,6 @@ struct BaseStats
             u8 flags;
 };
 
-#include "constants/battle_config.h"
 struct BattleMove
 {
     u16 effect;

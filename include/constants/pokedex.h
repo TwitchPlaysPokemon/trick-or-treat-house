@@ -1,7 +1,7 @@
 #ifndef GUARD_CONSTANTS_POKEDEX_H
 #define GUARD_CONSTANTS_POKEDEX_H
 
-#include "constants/pokemon_config.h"
+#include "config.h"
 // National Pokedex order. Gen 4+ mons and forms are not disabled by P_NEW_POKEMON to keep pokedex_orders.h clean.
 enum {
     NATIONAL_DEX_NONE,

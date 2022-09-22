@@ -23,7 +23,6 @@
 #include "palette.h"
 #include "contest.h"
 #include "constants/songs.h"
-#include "constants/battle_config.h"
 #include "constants/rgb.h"
 #include "constants/battle_palace.h"
 

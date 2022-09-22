@@ -1,7 +1,7 @@
 #ifndef GUARD_BATTLE_MESSAGE_H
 #define GUARD_BATTLE_MESSAGE_H
 
-#include "constants/battle_config.h"
+#include "config.h"
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
     #define TEXT_BUFF_ARRAY_COUNT   17

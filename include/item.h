@@ -1,8 +1,8 @@
 #ifndef GUARD_ITEM_H
 #define GUARD_ITEM_H
 
+#include "config.h"
 #include "constants/items.h"
-#include "constants/item_config.h"
 
 typedef void (*ItemUseFunc)(u8);
 
