@@ -213,6 +213,7 @@ void NewGameInitData(void)
     WipeTrainerNameRecords();
     // ResetTrainerHillResults();
     ResetContestLinkResults();
+    memset(&gSaveBlock2Ptr->follower, 0, sizeof(gSaveBlock2Ptr->follower)); // clear follower data
     
     if (!FlagGet(FLAG_SYS_RANDOM_DISABLED)) {
         VarSet(VAR_CANDY_TRADE_MASTER, Random() % 3000);

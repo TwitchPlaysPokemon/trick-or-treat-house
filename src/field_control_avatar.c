@@ -4,6 +4,7 @@
 #include "coord_event_weather.h"
 #include "daycare.h"
 #include "faraway_island.h"
+#include "follow_me.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
@@ -342,7 +343,9 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
 
     // if (InTrainerHill() == TRUE)
     //     script = GetTrainerHillTrainerScript();
-    // else
+    if (objectEventId == GetFollowerObjectId())
+        script = GetFollowerScriptPointer();
+    else
         script = GetObjectEventScriptPointerByObjectEventId(objectEventId);
 
     script = GetRamScript(gSpecialVar_LastTalked, script);
@@ -501,10 +504,10 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
 
 static const u8 *GetInteractedWaterScript(struct MapPosition *unused1, u8 metatileBehavior, u8 direction)
 {
-    if (FlagGet(FLAG_PICKED_UP_SURF_ITEM) == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE)
+    if (FlagGet(FLAG_PICKED_UP_SURF_ITEM) == TRUE && IsPlayerFacingSurfableFishableWater() == TRUE && CheckFollowerFlag(FOLLOWER_FLAG_CAN_SURF))
         return EventScript_UseSurf;
 
-    if (MetatileBehavior_IsWaterfall(metatileBehavior) == TRUE)
+    if (MetatileBehavior_IsWaterfall(metatileBehavior) == TRUE && CheckFollowerFlag(FOLLOWER_FLAG_CAN_WATERFALL))
     {
         if (FlagGet(FLAG_PICKED_UP_WATERFALL_ITEM) == TRUE && IsPlayerSurfingNorth() == TRUE)
             return EventScript_UseWaterfall;
@@ -516,6 +519,9 @@ static const u8 *GetInteractedWaterScript(struct MapPosition *unused1, u8 metati
 
 static bool32 TrySetupDiveDownScript(void)
 {
+    if (!CheckFollowerFlag(FOLLOWER_FLAG_CAN_DIVE))
+        return FALSE;
+    
     if (FlagGet(FLAG_PICKED_UP_DIVE_ITEM) && TrySetDiveWarp() == 2)
     {
         ScriptContext_SetupScript(EventScript_UseDive);
@@ -526,6 +532,9 @@ static bool32 TrySetupDiveDownScript(void)
 
 static bool32 TrySetupDiveEmergeScript(void)
 {
+    if (!CheckFollowerFlag(FOLLOWER_FLAG_CAN_DIVE))
+        return FALSE;
+    
     if (FlagGet(FLAG_PICKED_UP_DIVE_ITEM) && gMapHeader.mapType == MAP_TYPE_UNDERWATER && TrySetDiveWarp() == 1)
     {
         ScriptContext_SetupScript(EventScript_UseDiveUnderwater);

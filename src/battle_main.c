@@ -5338,6 +5338,11 @@ static void ReturnFromBattleToOverworld(void)
 
     m4aSongNumStop(SE_LOW_HEALTH);
     SetMainCallback2(gMain.savedCallback);
+    
+#if POST_BATTLE_FOLLOWER_FIX
+    FollowMe_WarpSetEnd();
+    gObjectEvents[GetFollowerObjectId()].invisible = TRUE;
+#endif
 }
 
 void RunBattleScriptCommands_PopCallbacksStack(void)

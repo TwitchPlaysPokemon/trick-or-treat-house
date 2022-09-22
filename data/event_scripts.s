@@ -61,6 +61,7 @@
 #include "constants/battle.h"
 #include "constants/metatile_labels.h"
 #include "constants/day_night.h"
+#include "constants/follow_me.h"
 	.include "asm/macros.inc"
 	.include "asm/macros/event.inc"
 	.include "asm/macros/puzzle.inc"

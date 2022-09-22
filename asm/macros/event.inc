@@ -2138,3 +2138,27 @@
 	setvar VAR_0x8002, \tryMultiple
 	special TrySpecialOverworldEvo
 	.endm
+	
+	@ sets an NPC up to follow the player
+    .macro setfollower localId:req, flags:req, customScript=NULL
+    loadarg 0, \localId
+	loadarg 1, \flags
+	loadword 0, \customScript
+	callnative SetUpFollowerSprite
+    .endm
+    
+    @ remove the following NPC (assumes there will only ever be one)
+    .macro destroyfollower
+    callnative DestroyFollower
+    .endm
+    
+    @ makes the player and follower face one another
+    .macro facefollower
+    callnative PlayerFaceFollowerSprite
+    .endm
+    
+    @ checks if you have a follower. returns the result to VAR_RESULT
+    .macro checkfollower
+    callnative CheckPlayerHasFollower
+    .endm
+	

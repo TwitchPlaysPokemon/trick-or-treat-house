@@ -348,10 +348,12 @@
 
 // Special object event local ids
 #define OBJ_EVENT_ID_PLAYER 0xFF
+#define OBJ_EVENT_ID_FOLLOWER 0xFE
 #define OBJ_EVENT_ID_CAMERA 0x7F
 
-#define LID_PLAYER   OBJ_EVENT_ID_PLAYER
-#define LID_CAMERA   OBJ_EVENT_ID_CAMERA
+#define LID_PLAYER    OBJ_EVENT_ID_PLAYER
+#define LID_FOLLOWER  OBJ_EVENT_ID_FOLLOWER
+#define LID_CAMERA    OBJ_EVENT_ID_CAMERA
 
 // Object event local ids referenced in C files
 #define LOCALID_ROUTE111_PLAYER_FALLING 45

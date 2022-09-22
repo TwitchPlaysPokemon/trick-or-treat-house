@@ -24,11 +24,13 @@
 #include "trainer_see.h"
 #include "trainer_hill.h"
 #include "util.h"
+#include "follow_me.h"
 #include "constants/event_object_movement.h"
 #include "constants/event_objects.h"
 #include "constants/field_effects.h"
 #include "constants/items.h"
 #include "constants/mauville_old_man.h"
+#include "constants/metatile_behaviors.h"
 #include "constants/trainer_types.h"
 #include "constants/union_room.h"
 
@@ -134,7 +136,6 @@ static u16 GetObjectEventFlagIdByObjectEventId(gfxId_t);
 static void UpdateObjectEventVisibility(struct ObjectEvent *, struct Sprite *);
 static void MakeSpriteTemplateFromObjectEventTemplate(struct ObjectEventTemplate *, struct SpriteTemplate *, const struct SubspriteTable **);
 static void GetObjectEventMovingCameraOffset(s16 *, s16 *);
-static struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8, u8, u8);
 static void RemoveObjectEventIfOutsideView(struct ObjectEvent *);
 static void SpawnObjectEventOnReturnToField(u8, s16, s16);
 static void SetPlayerAvatarObjectEventIdAndObjectId(u8, u8);
@@ -1235,6 +1236,8 @@ u8 GetFirstInactiveObjectEventId(void)
 
 u8 GetObjectEventIdByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroupId)
 {
+    if (localId == OBJ_EVENT_ID_FOLLOWER)
+        return GetFollowerObjectId();
     if (localId < OBJ_EVENT_ID_PLAYER)
         return GetObjectEventIdByLocalIdAndMapInternal(localId, mapNum, mapGroupId);
 
@@ -1396,7 +1399,7 @@ static bool8 GetAvailableObjectEventId(u16 localId, u8 mapNum, u8 mapGroup, u8 *
     return FALSE;
 }
 
-static void RemoveObjectEvent(struct ObjectEvent *objectEvent)
+void RemoveObjectEvent(struct ObjectEvent *objectEvent)
 {
     objectEvent->active = FALSE;
     RemoveObjectEventInternal(objectEvent);
@@ -1499,7 +1502,7 @@ static u8 TrySetupObjectEventSprite(struct ObjectEventTemplate *objectEventTempl
     return objectEventId;
 }
 
-static u8 TrySpawnObjectEventTemplate(struct ObjectEventTemplate *objectEventTemplate, u8 mapNum, u8 mapGroup, s16 cameraX, s16 cameraY)
+u8 TrySpawnObjectEventTemplate(struct ObjectEventTemplate *objectEventTemplate, u8 mapNum, u8 mapGroup, s16 cameraX, s16 cameraY)
 {
     u8 objectEventId;
     struct SpriteTemplate spriteTemplate;
@@ -1726,8 +1729,13 @@ void RemoveObjectEventsOutsideView(void)
             struct ObjectEvent *objectEvent = &gObjectEvents[i];
             struct ObjectEventTemplate *template = FindObjectEventTemplateByLocalId(objectEvent->localId, gSaveBlock1Ptr->objectEventTemplates, gMapHeader.events->objectEventCount);
 
-            if (objectEvent->active && !objectEvent->isPlayer && (template->trainerType & TRAINER_TYPE_KEEP_LOADED) == 0)
+            if (objectEvent->active 
+                && !objectEvent->isPlayer 
+                && (template->trainerType & TRAINER_TYPE_KEEP_LOADED) == 0 
+                && i != GetFollowerObjectId())
+            {
                 RemoveObjectEventIfOutsideView(objectEvent);
+            }
         }
     }
 }
@@ -2488,7 +2496,7 @@ u8 GetObjectEventBerryTreeId(u8 objectEventId)
     return gObjectEvents[objectEventId].trainerRange_berryTreeId;
 }
 
-static struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup)
+struct ObjectEventTemplate *GetObjectEventTemplateByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup)
 {
     struct ObjectEventTemplate *templates;
     const struct MapHeader *mapHeader;
@@ -4798,7 +4806,7 @@ static bool8 DoesObjectCollideWithObjectAt(struct ObjectEvent *objectEvent, s16 
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
         curObject = &gObjectEvents[i];
-        if (curObject->active && curObject != objectEvent)
+        if (curObject->active && curObject != objectEvent && !FollowMe_IsCollisionExempt(curObject, objectEvent))
         {
             if ((curObject->currentCoords.x == x && curObject->currentCoords.y == y) || (curObject->previousCoords.x == x && curObject->previousCoords.y == y))
             {
@@ -4948,6 +4956,7 @@ bool8 ObjectEventSetHeldMovement(struct ObjectEvent *objectEvent, u8 movementAct
     objectEvent->heldMovementActive = TRUE;
     objectEvent->heldMovementFinished = FALSE;
     gSprites[objectEvent->spriteId].sActionFuncId = 0;
+    FollowMe(objectEvent, movementActionId, FALSE);
     return FALSE;
 }
 
@@ -9196,4 +9205,28 @@ bool8 MovementAction_EmoteNoteG_Step0(struct ObjectEvent *objectEvent, struct Sp
     FieldEffectStart(FLDEFF_EMOTE_NOTE_G);
     sprite->sActionFuncId = 1;
     return TRUE;
+}
+
+u16 GetMiniStepCount(u8 speed)
+{
+    return (u16)sStepTimes[speed];
+}
+
+void RunMiniStep(struct Sprite *sprite, u8 speed, u8 currentFrame)
+{
+    sNpcStepFuncTables[speed][currentFrame](sprite, sprite->data[3]);
+}
+
+bool8 PlayerIsUnderWaterfall(struct ObjectEvent *objectEvent)
+{
+    s16 x;
+    s16 y;
+
+    x = objectEvent->currentCoords.x;
+    y = objectEvent->currentCoords.y;
+    MoveCoordsInDirection(DIR_NORTH, &x, &y, 0, 1);
+    if (MetatileBehavior_IsWaterfall(MapGridGetMetatileBehaviorAt(x, y)))
+        return TRUE;
+
+    return FALSE;
 }

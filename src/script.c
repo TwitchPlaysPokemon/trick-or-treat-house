@@ -267,9 +267,11 @@ void ScriptContext_Enable(void)
 // scripts (except the frame table scripts).
 void RunScriptImmediately(const u8 *ptr)
 {
+    // TODO: Save off gSpecialVars?
     InitScriptContext(&sImmediateScriptContext, gScriptCmdTable, gScriptCmdTableEnd);
     SetupBytecodeScript(&sImmediateScriptContext, ptr);
     while (RunScriptCommand(&sImmediateScriptContext) == TRUE);
+    // TODO: Pop gSpecialVars?
 }
 
 u16* GetArgPointer(u16 id)

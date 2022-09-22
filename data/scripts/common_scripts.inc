@@ -146,7 +146,7 @@ Common_Movement_BackOffRight1:
 	unlock_facing_direction
 	step_end
 
-Common_Movement_WalkUp1: @ 82725C9
+Common_Movement_WalkUp1:
 	walk_up
 	step_end
 
@@ -447,3 +447,25 @@ Common_Text_DummiedOut:
 	.string "This event is dummied out.\n"
 	.string "If you see this message, it's a bug.$"
 
+
+@ Follower scripts
+Follower_MoveIntoPlayer::
+	loadarg 0, 0  @ select movement
+	callnative FollowerTrainerSightingPositionFix
+	goto_if_eq VAR_RESULT, 0xFFFF, Common_EventScript_NopReturn
+	selectpointer_clamp Follower_MovementFixTable, VAR_RESULT
+	applymovement LID_FOLLOWER, 0
+	waitmovement LID_FOLLOWER
+	loadarg 0, 1  @ forcefully reposition follower
+	callnative FollowerTrainerSightingPositionFix
+	return
+	
+
+.align 2
+Follower_MovementFixTable:
+	.4byte Common_Movement_WalkDown1
+	.4byte Common_Movement_WalkDown1
+	.4byte Common_Movement_WalkUp1
+	.4byte Common_Movement_WalkLeft1
+	.4byte Common_Movement_WalkRight1
+	.4byte 0
