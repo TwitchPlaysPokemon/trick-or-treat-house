@@ -530,7 +530,7 @@ static void Debug_FieldAnimateDoorOpen(u32 x, u32 y)
     StartDoorOpenAnimation(sDoorAnimGraphicsTable, x, y);
 }
 
-static void Task_WaitObjectEventDoorAnim(u8 taskId)
+void Task_WaitObjectEventDoorAnim(u8 taskId)
 {
     u8 objId = gTasks[taskId].data[0];
     if (ObjectEventCheckHeldMovementStatus(&gObjectEvents[objId]) != TRUE)

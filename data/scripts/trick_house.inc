@@ -76,7 +76,8 @@ PuzzleCommon_Text_DoorFrontside:
 
 PuzzleCommon_EventScript_EntranceDoorObject_WarpToCorridor:
 	call PuzzleCommon_EventScript_DoDoorEnterAnimation
-	warp MAP_TRICK_HOUSE_CORRIDOR, 0, -1, -1
+	setwarp WARPTYPE_STANDARD, MAP_TRICK_HOUSE_CORRIDOR, 0
+	dowarp WARPTYPE_STANDARD, DOWARP_SILENT
 	waitstate
 	release
 	end
@@ -133,7 +134,8 @@ PuzzleCommon_EventScript_ExitDoorObject::
 	goto_if_unset FLAG_IS_BUMP_INTERACTION, PuzzleCommon_EventScript_ExamineDoor
 	@ If the player bumped into this object, make it act like a door
 	call PuzzleCommon_EventScript_DoDoorEnterAnimation_Stone
-	warp MAP_TRICK_HOUSE_END, 0, 0xff, 0xff
+	setwarp WARPTYPE_STANDARD, MAP_TRICK_HOUSE_END, 0
+	dowarp WARPTYPE_STANDARD, DOWARP_SILENT
 	waitstate
 	release
 	end
@@ -176,9 +178,12 @@ PuzzleCommon_EventScript_DoDoorEnterAnimation_Stone::
 	playse SE_M_STRENGTH
 	applymovement THIS_EVENT, Common_Movement_ObjectDoorOpen
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp1
+	loadarg 0, 0  @ select movement
+	callnative FollowerIntoPlayer
+	goto_if_ne VAR_RESULT, 0xFFFF, PuzzleCommon_EventScript_DoDoorEnterAnimation_Follower
+	applymovement LID_PLAYER, Common_Movement_WalkUp1
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_SetInvisible
+	applymovement LID_PLAYER, Common_Movement_SetInvisible
 	waitmovement 0
 	applymovement THIS_EVENT, Common_Movement_ObjectDoorClose
 	waitmovement 0
@@ -188,9 +193,36 @@ PuzzleCommon_EventScript_DoDoorEnterAnimation::
 	playse SE_TRUCK_UNLOAD
 	applymovement THIS_EVENT, Common_Movement_ObjectDoorOpen
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp1
+	loadarg 0, 0  @ select movement
+	callnative FollowerIntoPlayer
+	goto_if_ne VAR_RESULT, 0xFFFF, PuzzleCommon_EventScript_DoDoorEnterAnimation_Follower
+	applymovement LID_PLAYER, Common_Movement_WalkUp1
 	waitmovement 0
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_SetInvisible
+	applymovement LID_PLAYER, Common_Movement_SetInvisible
+	waitmovement 0
+	applymovement THIS_EVENT, Common_Movement_ObjectDoorClose
+	waitmovement 0
+	return
+
+PuzzleCommon_EventScript_DoDoorEnterAnimation_Follower::
+	selectpointer_clamp Follower_MovementFixTable, VAR_RESULT
+	applymovement LID_FOLLOWER, 0
+	applymovement LID_PLAYER, Common_Movement_WalkUp1
+	waitmovement LID_PLAYER
+	waitmovement LID_FOLLOWER
+	applymovement LID_PLAYER, Common_Movement_SetInvisible
+	applymovement LID_FOLLOWER, Common_Movement_WalkUp1
+	waitmovement LID_PLAYER
+	@ Don't close door, follower walking through
+	return
+
+PuzzleCommon_EventScript_DoDoorExitAnimation_Follower::
+	playse SE_TRUCK_UNLOAD
+	applymovement THIS_EVENT, Common_Movement_ObjectDoorOpen
+	waitmovement 0
+	applymovement LID_FOLLOWER, Common_Movement_SetVisible
+	waitmovement 0
+	applymovement LID_FOLLOWER, Common_Movement_WalkDown1
 	waitmovement 0
 	applymovement THIS_EVENT, Common_Movement_ObjectDoorClose
 	waitmovement 0

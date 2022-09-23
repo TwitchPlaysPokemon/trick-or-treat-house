@@ -17,6 +17,7 @@
 #include "event_data.h"
 #include "sound.h"
 #include "trig.h"
+#include "mgba.h"
 #include "metatile_behavior.h"
 #include "constants/event_object_movement.h"
 #include "constants/event_objects.h"
@@ -375,14 +376,14 @@ static u8 DetermineFollowerState(struct ObjectEvent* follower, u8 state, u8 dire
 {
     u8 newState = MOVEMENT_INVALID;
 #if SIDEWAYS_STAIRS_IMPLEMENTED == TRUE
-	u8 collision = COLLISION_NONE;
-	s16 followerX = follower->currentCoords.x;
-	s16 followerY = follower->currentCoords.y;
-	u8 currentBehavior = MapGridGetMetatileBehaviorAt(followerX, followerY);
-	u8 nextBehavior;
-	
-	MoveCoords(direction, &followerX, &followerY);
-	nextBehavior = MapGridGetMetatileBehaviorAt(followerX, followerY);
+    u8 collision = COLLISION_NONE;
+    s16 followerX = follower->currentCoords.x;
+    s16 followerY = follower->currentCoords.y;
+    u8 currentBehavior = MapGridGetMetatileBehaviorAt(followerX, followerY);
+    u8 nextBehavior;
+    
+    MoveCoords(direction, &followerX, &followerY);
+    nextBehavior = MapGridGetMetatileBehaviorAt(followerX, followerY);
 #endif
 
     if (IsStateMovement(state) && gSaveBlock2Ptr->follower.delayedState)
@@ -392,20 +393,20 @@ static u8 DetermineFollowerState(struct ObjectEvent* follower, u8 state, u8 dire
     follower->disableAnim = FALSE; //follower->field1 &= 0xFB;
     
 #if SIDEWAYS_STAIRS_IMPLEMENTED == TRUE
-	// clear overwrite movement
-	follower->directionOverwrite = DIR_NONE;
-	
-	//sideways stairs checks
-	collision = GetSidewaysStairsCollision(follower, direction, currentBehavior, nextBehavior, collision);
-	switch (collision)
-	{
-	case COLLISION_SIDEWAYS_STAIRS_TO_LEFT:
-		follower->directionOverwrite = GetLeftSideStairsDirection(direction);
-		break;
-	case COLLISION_SIDEWAYS_STAIRS_TO_RIGHT:
-		follower->directionOverwrite = GetRightSideStairsDirection(direction);
-		break;
-	}
+    // clear overwrite movement
+    follower->directionOverwrite = DIR_NONE;
+    
+    //sideways stairs checks
+    collision = GetSidewaysStairsCollision(follower, direction, currentBehavior, nextBehavior, collision);
+    switch (collision)
+    {
+    case COLLISION_SIDEWAYS_STAIRS_TO_LEFT:
+        follower->directionOverwrite = GetLeftSideStairsDirection(direction);
+        break;
+    case COLLISION_SIDEWAYS_STAIRS_TO_RIGHT:
+        follower->directionOverwrite = GetRightSideStairsDirection(direction);
+        break;
+    }
 #endif
     
     switch (state) 
@@ -853,6 +854,8 @@ static u8 GetPlayerFaceToDoorDirection(struct ObjectEvent* player, struct Object
     return DIR_NORTH;
 }
 
+extern void Task_WaitObjectEventDoorAnim(u8 taskId);
+extern const u8 PuzzleCommon_EventScript_DoDoorExitAnimation_Follower[];
 static void Task_FollowerOutOfDoor(u8 taskId)
 {
     struct ObjectEvent *follower = &gObjectEvents[GetFollowerMapObjId()];
@@ -872,9 +875,20 @@ static void Task_FollowerOutOfDoor(u8 taskId)
     case 0:
         FreezeObjectEvents();
         task->data[1] = FieldAnimateDoorOpen(follower->currentCoords.x, follower->currentCoords.y);
-        if (task->data[1] != -1)
-            PlaySE(GetDoorSoundEffect(*x, *y)); //only play SE for animating doors
-        
+        if (task->data[1] != -1) {
+            // For object doors:
+            if (gTasks[task->data[1]].func == Task_WaitObjectEventDoorAnim) {
+                struct ObjectEvent* door = &gObjectEvents[gTasks[task->data[1]].data[0]];
+                gSpecialVar_LastTalked = door->localId;
+                ScriptContext_SetupScript(PuzzleCommon_EventScript_DoDoorExitAnimation_Follower);
+                task->data[0] = 10;
+                break;
+            }
+            // For tileset doors:
+            else {
+                PlaySE(GetDoorSoundEffect(*x, *y)); //only play SE for animating doors
+            }
+        }
         task->data[0] = 1;
         break;
     case 1:
@@ -907,6 +921,13 @@ static void Task_FollowerOutOfDoor(u8 taskId)
         gSaveBlock2Ptr->follower.comeOutDoorStairs = 0;
         gPlayerAvatar.preventStep = FALSE; //Player can move again
         DestroyTask(taskId);
+        break;
+    case 10:
+        if (!ScriptContext_IsEnabled()) // wait until script is done
+        {
+            UnfreezeObjectEvents();
+            task->data[0] = 4;
+        }
         break;
     }
 }
@@ -1276,7 +1297,7 @@ bool8 CheckFollowerFlag(u16 flag)
 
 static u8 GetPlayerMapObjId(void)
 {
-	return gPlayerAvatar.objectEventId;
+    return gPlayerAvatar.objectEventId;
 }
 
 u16 FollowerPositionFix(u8 offset, bool8 doFix)
@@ -1372,10 +1393,10 @@ bool8 FollowerComingThroughDoor(void)
 //            flags - Follower flags.
 void SetUpFollowerSprite(struct ScriptContext* ctx)
 {
-	u16 localId = ctx->locals[0];
-	u16 flags = ctx->locals[1];
-	const u8* customScript = (const u8*)ctx->data[0];
-	
+    u16 localId = ctx->locals[0];
+    u16 flags = ctx->locals[1];
+    const u8* customScript = (const u8*)ctx->data[0];
+    
     TurnNPCIntoFollower(localId, flags, customScript);
 }
 

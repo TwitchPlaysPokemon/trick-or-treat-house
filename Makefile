@@ -1,5 +1,6 @@
 TOOLCHAIN := $(DEVKITARM)
 MODERN := 1
+DEBUGGER ?= 0
 
 # don't use dkP's base_tools anymore
 # because the redefinition of $(CC) conflicts
@@ -85,10 +86,17 @@ ELF_NAME := $(ROM_NAME:.gba=.elf)
 MAP_NAME := $(ROM_NAME:.gba=.map)
 OBJ_DIR_NAME := build/emerald
 
-MODERN_ROM_NAME := tricktreat_modern.gba
-MODERN_ELF_NAME := $(MODERN_ROM_NAME:.gba=.elf)
-MODERN_MAP_NAME := $(MODERN_ROM_NAME:.gba=.map)
-MODERN_OBJ_DIR_NAME := build/modern
+ifeq ($(DEBUGGER),1)
+  MODERN_ROM_NAME := tricktreat_debug.gba
+  MODERN_ELF_NAME := $(MODERN_ROM_NAME:.gba=.elf)
+  MODERN_MAP_NAME := $(MODERN_ROM_NAME:.gba=.map)
+  MODERN_OBJ_DIR_NAME := build/debug
+else
+  MODERN_ROM_NAME := tricktreat_modern.gba
+  MODERN_ELF_NAME := $(MODERN_ROM_NAME:.gba=.elf)
+  MODERN_MAP_NAME := $(MODERN_ROM_NAME:.gba=.map)
+  MODERN_OBJ_DIR_NAME := build/modern
+endif
 
 SHELL := /bin/bash -o pipefail
 
@@ -125,8 +133,11 @@ LIBPATH := -L ../../tools/agbcc/lib
 LIB := $(LIBPATH) -lgcc -lc -L../../libagbsyscall -lagbsyscall
 else
 CC1              = $(shell $(PATH_MODERNCC) --print-prog-name=cc1) -quiet
-override CFLAGS += -mthumb -mthumb-interwork -O2 -mabi=apcs-gnu -mtune=arm7tdmi -march=armv4t -fno-toplevel-reorder -Wno-pointer-to-int-cast
-# override CFLAGS += -mthumb -mthumb-interwork -Og -mabi=apcs-gnu -mtune=arm7tdmi -march=armv4t -fno-toplevel-reorder -Wno-pointer-to-int-cast -g
+ifeq ($(DEBUGGER),1)
+  override CFLAGS += -mthumb -mthumb-interwork -Og -mabi=apcs-gnu -mtune=arm7tdmi -march=armv4t -fno-toplevel-reorder -Wno-pointer-to-int-cast -g
+else
+  override CFLAGS += -mthumb -mthumb-interwork -O2 -mabi=apcs-gnu -mtune=arm7tdmi -march=armv4t -fno-toplevel-reorder -Wno-pointer-to-int-cast
+endif
 ROM := $(MODERN_ROM_NAME)
 OBJ_DIR := $(MODERN_OBJ_DIR_NAME)
 LIBPATH := -L "$(dir $(shell $(PATH_MODERNCC) -mthumb -print-file-name=libgcc.a))" -L "$(dir $(shell $(PATH_MODERNCC) -mthumb -print-file-name=libnosys.a))" -L "$(dir $(shell $(PATH_MODERNCC) -mthumb -print-file-name=libc.a))"
