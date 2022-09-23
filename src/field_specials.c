@@ -3783,5 +3783,5 @@ u8 Script_TryGainNewFanFromCounter(void)
 
 void GetCurrentMapId(struct ScriptContext *ctx)
 {
-    gSpecialVar_Result = (gSaveBlock1Ptr->location.mapGroup << 16) || (gSaveBlock1Ptr->location.mapNum);
+    gSpecialVar_Result = (gSaveBlock1Ptr->location.mapNum) | (gSaveBlock1Ptr->location.mapGroup << 8);
 }

@@ -257,26 +257,29 @@ script TrickTreat_SlateportCity1_EventScript_Regi {
 // Haunting follower
 raw `
 #define VAR_ANNOYANCE_LOOP VAR_TEMP_F
+#define LID_GHOST 42
 `
 
 script TrickTreat_SlateportCity1_TriggerScript_HauntingKidStart {
 	checkfollower
 	if (var(VAR_RESULT) == FALSE) {
-		setfollower
+		setfollower(LID_GHOST, FOLLOWER_FLAG_CAN_LEAVE_ROUTE | FOLLOWER_FLAG_CLEAR_ON_WHITE_OUT)
 		setvar(VAR_FOLLOWER_STATE, 0)
 		setvar(VAR_ANNOYANCE_LOOP, 0)
 		setvar(VAR_FOLLOWER_IDENTITY, FOLLOWER_ID_GHOSTKID)
 	}
+	release
 }
 script TrickTreat_SlateportCity1_TriggerScript_HauntingKidEnd {
 	destroyfollower
 	// Kid simply vanishes
+	release
 }
 
 script TrickTreat_SlateportCity1_EventScript_HauntingKid {
 	lock
 	faceplayer
-	callnative GetCurrentMapId
+	callnative(GetCurrentMapId)
 	goto_if_eq (VAR_RESULT, MAP_TRICK_TREAT_SLATEPORT_CITY1, TrickTreat_SlateportCity1_EventScript_HauntingKid_Slateport1)
 	goto_if_eq (VAR_RESULT, MAP_TRICK_TREAT_SLATEPORT_CITY2, TrickTreat_SlateportCity1_EventScript_HauntingKid_Slateport1) //TODO
 	goto_if_eq (VAR_RESULT, MAP_SLATEPORT_CITY_HARBOR, TrickTreat_SlateportCity1_EventScript_HauntingKid_Harbor)
@@ -290,12 +293,13 @@ script TrickTreat_SlateportCity1_EventScript_HauntingKid {
 	goto_if_eq (VAR_RESULT, MAP_SLATEPORT_CITY_SEASHORE_HOUSE, TrickTreat_SlateportCity1_EventScript_HauntingKid_Slateport1) //TODO
 	
 	// Somehow left the designated area.
-	msgbox("oooOO-- Wait, where are we?\p
-			Oh no, I should go! Later dude!$")
+	msgbox( "oooOO-- Wait, where are we?\p"
+			"Oh no, I should go! Later dude!$")
+	closemessage
 	fadescreen(FADE_TO_BLACK)
-	delay 5
+	delay (5)
 	destroyfollower
-	delay 1
+	delay (1)
 	fadescreen(FADE_FROM_BLACK)
 	release
 }
@@ -341,12 +345,13 @@ text(local) TrickTreat_SlateportCity1_Text_HauntingKid_5 {
 	"Hey.$"
 }
 text(local) TrickTreat_SlateportCity1_Text_HauntingKid_6 {
-	"Hey, mister.\n
-	What'cha doing?$"
+	"Hey, mister.\n"
+	"What'cha doing?$"
 }
 
 raw `
 #undef VAR_ANNOYANCE_LOOP
+#undef LID_GHOST
 `
 
 // ----------------------------------------------------

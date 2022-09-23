@@ -14,6 +14,7 @@
 #include "constants/trainer_types.h"
 #include "constants/berry.h"
 #include "constants/field_tasks.h"
+#include "constants/follow_me.h"
 	.include "asm/macros.inc"
 	.include "constants/constants.inc"
 
