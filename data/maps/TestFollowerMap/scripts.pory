@@ -1,11 +1,15 @@
 mapscripts TestFollowerMap_MapScripts {}
 
+raw `
+#define FOLLOW_FLAGS FOLLOWER_FLAG_CAN_LEAVE_ROUTE | FOLLOWER_FLAG_CAN_SURF
+`
+
 script TestFollowerMap_EventScript_JoeyFollow {
 	lockall
 	checkfollower
 	if (var(VAR_RESULT) == FALSE) {
 		msgbox("Joey is now following you.")
-		setfollower(1, FOLLOWER_FLAG_CAN_LEAVE_ROUTE)
+		setfollower(1, FOLLOW_FLAGS)
 	}
 	else {
 		msgbox("Joey is no longer following.")
@@ -14,3 +18,90 @@ script TestFollowerMap_EventScript_JoeyFollow {
 	releaseall
 }
 
+script TestFollowerMap_EventScript_AlexFollow {
+	lockall
+	checkfollower
+	if (var(VAR_RESULT) == FALSE) {
+		msgbox("Alex is now following you.")
+		setfollower(3, FOLLOW_FLAGS | FOLLOWER_FLAG_HAS_RUNNING_FRAMES)
+	}
+	else {
+		msgbox("Alex is no longer following.")
+		destroyfollower
+	}
+	releaseall
+}
+
+script TestFollowerMap_EventScript_BrendanFollow {
+	lockall
+	checkfollower
+	if (var(VAR_RESULT) == FALSE) {
+		msgbox("Brendan is now following you.")
+		setfollower(4, FOLLOW_FLAGS | FOLLOWER_FLAG_HAS_RUNNING_FRAMES)
+	}
+	else {
+		msgbox("Brendan is no longer following.")
+		destroyfollower
+	}
+	releaseall
+}
+
+script TestFollowerMap_EventScript_JamesFollow {
+	lockall
+	checkfollower
+	if (var(VAR_RESULT) == FALSE) {
+		msgbox("James is now following you.")
+		setfollower(5, FOLLOW_FLAGS)
+	}
+	else {
+		msgbox("James is no longer following.")
+		destroyfollower
+	}
+	releaseall
+}
+
+script TestFollowerMap_EventScript_IreneFollow {
+	lockall
+	checkfollower
+	if (var(VAR_RESULT) == FALSE) {
+		msgbox("Irene is now following you.")
+		setfollower(6, FOLLOW_FLAGS)
+	}
+	else {
+		msgbox("Irene is no longer following.")
+		destroyfollower
+	}
+	releaseall
+}
+
+script TestFollowerMap_EventScript_MayFollow {
+	lockall
+	checkfollower
+	if (var(VAR_RESULT) == FALSE) {
+		msgbox("May is now following you.")
+		setfollower(7, FOLLOW_FLAGS | FOLLOWER_FLAG_HAS_RUNNING_FRAMES)
+	}
+	else {
+		msgbox("May is no longer following.")
+		destroyfollower
+	}
+	releaseall
+}
+
+script TestFollowerMap_EventScript_WallyFollow {
+	lockall
+	checkfollower
+	if (var(VAR_RESULT) == FALSE) {
+		msgbox("Wally is now following you.")
+		setfollower(8, FOLLOW_FLAGS)
+	}
+	else {
+		msgbox("Wally is no longer following.")
+		destroyfollower
+	}
+	releaseall
+}
+
+raw `
+#undef FOLLOW_FLAGS
+`

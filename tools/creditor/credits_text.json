@@ -5,12 +5,13 @@
 		"#Hack Credits"
 	],
 	[
+		"#Original Concept and",
 		"#Project Organizers",
 		"Tustin2121",
-		"M4 Used Rollout"
+		"M4_used_rollout"
 	],
 	[
-		"#Framework Programmer",
+		"#TTH Framework",
 		"Tustin2121"
 	],
 	[
@@ -18,6 +19,16 @@
 		"Tustin2121",
 		"ShantyTown",
 		"Ericchi"
+	],
+	[
+		"#RHH Expansion Project",
+		["DizzyEggg", "AsparagusEduardo"],
+		["GriffinRichards", "LOuroboros"]
+	],
+	[
+		"#Feature Branches",
+		["#Follow Me", "Ghoulslash"],
+		["#Intro Logos", "Xhyzi"]
 	],
 	[
 		"#Custom Art",
@@ -31,27 +42,15 @@
 		"MusicMike512, and Tustin2121"
 	],
 	[
-		"#Testers 2019",
+		"#Beta Testers",
 		["M4 Used Rollout", "red031000"],
 		["mathfreak231", "Kiloby"],
 		"The TPP Chat"
 	],
 	[
-		"#Testers 2020",
-		"Tustin2121",
-		"M4 Used Rollout",
-		"The TPP Chat"
-	],
-	[
-		"#Original Concept",
-		"M4 Used Rollout",
-		"diana",
-		"Tustin2121"
-	],
-	[
 		"#Special Thanks To",
-		"Kurausukun",
-		"Sierraffinity",
+		["Kurausukun", "Sierraffinity"],
+		"The RHH Expansion Project",
 		"The Pokémon Reverse Engineering Project"
 	],
 	[
