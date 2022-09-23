@@ -254,6 +254,102 @@ script TrickTreat_SlateportCity1_EventScript_Regi {
 }
 
 // ----------------------------------------------------
+// Haunting follower
+raw `
+#define VAR_ANNOYANCE_LOOP VAR_TEMP_F
+`
+
+script TrickTreat_SlateportCity1_TriggerScript_HauntingKidStart {
+	checkfollower
+	if (var(VAR_RESULT) == FALSE) {
+		setfollower
+		setvar(VAR_FOLLOWER_STATE, 0)
+		setvar(VAR_ANNOYANCE_LOOP, 0)
+		setvar(VAR_FOLLOWER_IDENTITY, FOLLOWER_ID_GHOSTKID)
+	}
+}
+script TrickTreat_SlateportCity1_TriggerScript_HauntingKidEnd {
+	destroyfollower
+	// Kid simply vanishes
+}
+
+script TrickTreat_SlateportCity1_EventScript_HauntingKid {
+	lock
+	faceplayer
+	callnative GetCurrentMapId
+	goto_if_eq (VAR_RESULT, MAP_TRICK_TREAT_SLATEPORT_CITY1, TrickTreat_SlateportCity1_EventScript_HauntingKid_Slateport1)
+	goto_if_eq (VAR_RESULT, MAP_TRICK_TREAT_SLATEPORT_CITY2, TrickTreat_SlateportCity1_EventScript_HauntingKid_Slateport1) //TODO
+	goto_if_eq (VAR_RESULT, MAP_SLATEPORT_CITY_HARBOR, TrickTreat_SlateportCity1_EventScript_HauntingKid_Harbor)
+	// TODO: When contests are re-added, if the kid is following, put him in the audience
+	// TODO: Add the kid as a participant in berry blending
+	goto_if_eq (VAR_RESULT, MAP_SLATEPORT_CITY_CONTEST_LOBBY, TrickTreat_SlateportCity1_EventScript_HauntingKid_Slateport1) //TODO
+	goto_if_eq (VAR_RESULT, MAP_SLATEPORT_CITY_CONTEST_HALL, TrickTreat_SlateportCity1_EventScript_HauntingKid_Slateport1) //TODO
+	goto_if_eq (VAR_RESULT, MAP_SLATEPORT_CITY_POKEMON_FAN_CLUB, TrickTreat_SlateportCity1_EventScript_HauntingKid_Slateport1) //TODO
+	goto_if_eq (VAR_RESULT, MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_1F, TrickTreat_SlateportCity1_EventScript_HauntingKid_Slateport1) //TODO
+	goto_if_eq (VAR_RESULT, MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_2F, TrickTreat_SlateportCity1_EventScript_HauntingKid_Slateport1) //TODO
+	goto_if_eq (VAR_RESULT, MAP_SLATEPORT_CITY_SEASHORE_HOUSE, TrickTreat_SlateportCity1_EventScript_HauntingKid_Slateport1) //TODO
+	
+	// Somehow left the designated area.
+	msgbox("oooOO-- Wait, where are we?\p
+			Oh no, I should go! Later dude!$")
+	fadescreen(FADE_TO_BLACK)
+	delay 5
+	destroyfollower
+	delay 1
+	fadescreen(FADE_FROM_BLACK)
+	release
+}
+script(local) TrickTreat_SlateportCity1_EventScript_HauntingKid_Slateport1 {
+	selectpointer_clamp(TrickTreat_SlateportCity1_TextTable_HauntingKid_City, VAR_ANNOYANCE_LOOP)
+	msgbox_selected
+	addvar(VAR_ANNOYANCE_LOOP, 1)
+	release
+}
+script(local) TrickTreat_SlateportCity1_EventScript_HauntingKid_Harbor {
+msgbox("oooOOOOoooo…\n"
+		"This place is cool looking.\p"
+		"My mommy never lets me come in here.$")
+	release
+}
+
+raw `
+.align 2
+TrickTreat_SlateportCity1_TextTable_HauntingKid_City:
+	.4byte TrickTreat_SlateportCity1_Text_HauntingKid_1
+	.4byte TrickTreat_SlateportCity1_Text_HauntingKid_2
+	.4byte TrickTreat_SlateportCity1_Text_HauntingKid_3
+	.4byte TrickTreat_SlateportCity1_Text_HauntingKid_4
+	.4byte TrickTreat_SlateportCity1_Text_HauntingKid_5
+	.4byte TrickTreat_SlateportCity1_Text_HauntingKid_5
+	.4byte TrickTreat_SlateportCity1_Text_HauntingKid_5
+	.4byte TrickTreat_SlateportCity1_Text_HauntingKid_6
+	.4byte 0
+`
+text(local) TrickTreat_SlateportCity1_Text_HauntingKid_1 {
+	"oooOOOOooooo…$"
+}
+text(local) TrickTreat_SlateportCity1_Text_HauntingKid_2 {
+	"ooOOoooOOOoooOOOooo…$"
+}
+text(local) TrickTreat_SlateportCity1_Text_HauntingKid_3 {
+	"I'm a ghoOOooooOOst…$"
+}
+text(local) TrickTreat_SlateportCity1_Text_HauntingKid_4 {
+	"Are you scaaaAAArd…?$"
+}
+text(local) TrickTreat_SlateportCity1_Text_HauntingKid_5 {
+	"Hey.$"
+}
+text(local) TrickTreat_SlateportCity1_Text_HauntingKid_6 {
+	"Hey, mister.\n
+	What'cha doing?$"
+}
+
+raw `
+#undef VAR_ANNOYANCE_LOOP
+`
+
+// ----------------------------------------------------
 // Regatta People
 
 script TrickTreat_SlateportCity1_EventScript_ManSnoozing {

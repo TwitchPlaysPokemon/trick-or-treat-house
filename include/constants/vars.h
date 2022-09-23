@@ -108,9 +108,9 @@
 #define VAR_SYS_REFLECTION_OFFSET            0x404E // Offset of reflection, in pixels
 #define VAR_POISON_STEP_COUNTER              0x404F
 #define VAR_RESET_RTC_ENABLE                 0x4050
-#define VAR_UNUSED_0x4051                    0x4051
-#define VAR_CURRENT_SECRET_BASE              0x4052
-#define VAR_UNUSED_0x4053                    0x4053
+#define VAR_CURRENT_SECRET_BASE              0x4051
+#define VAR_FOLLOWER_STATE                   0x4052
+#define VAR_FOLLOWER_IDENTITY                0x4053
 #define VAR_UNUSED_0x4054                    0x4054
 #define VAR_UNUSED_0x4055                    0x4055
 #define VAR_UNUSED_0x4056                    0x4056
