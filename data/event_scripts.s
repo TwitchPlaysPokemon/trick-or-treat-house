@@ -787,3 +787,5 @@ gText_LinkRecordCouldntBeSaved::
 	.include "data/maps/SlateportCity_SeashoreHouse/scripts.inc"
 
 	.include "data/maps/TestFollowerMap/scripts.inc"
+
+	.include "data/maps/TrickHouseRestroom_Choose/scripts.inc"

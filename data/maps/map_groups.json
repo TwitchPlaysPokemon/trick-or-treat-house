@@ -15,7 +15,8 @@
     "MG_SpotTheDifferencePuzzles",
     "MG_ImposterPuzzle",
     "MG_TheMetaPuzzle",
-    "MG_SingleMapPuzzles2019"
+    "MG_SingleMapPuzzles2019",
+    "MG_SingleMapPuzzles2020"
   ],
   "MG_PuzzleFramework": [
     "TrickHouseDevEntrance",
@@ -25,7 +26,8 @@
     "TrickHouseCorridor",
     "TrickHouseTreeHouse",
     "TrickHouseRestroom",
-    "TrickHouseExt_Gatehouse"
+    "TrickHouseExt_Gatehouse",
+    "TrickHouseRestroom_Choose"
   ],
   "MG_PostGame": [
     "TrickTreat_SlateportCity1",
@@ -142,28 +144,17 @@
     "Route131",
     "Route132",
     "Route133",
-    "Route134"
+    "Route134",
+    "TrickHouseRestroomOld"
   ],
   "MG_SingleMapPuzzles": [
     "Puzzle_TrickHouseTrapdoors",
     "Puzzle_TrickHouseSpintiles",
     "Puzzle_TrickHouseOriginal1",
-    "Puzzle_IlexForest",
     "Puzzle_SootSackMaze",
-    "Puzzle_TrickHouseSlipSliding",
     "Puzzle_FallingWater",
-    "Puzzle_TrainerHill1",
-    "Puzzle_TrainerHill2",
-    "Puzzle_TrainerHill3",
-    "Puzzle_TrainerHill4",
-    "Puzzle_SuspendedMaze",
-    "Puzzle_IcePath",
-    "Puzzle_TicRacToe",
-    "Puzzle_StealthMission",
     "Puzzle_MurderExpress",
-    "Puzzle_EliteFloor",
     "Puzzle_DiveMaze",
-    "Puzzle_SootopolisGym",
     "Puzzle_ImposterReflection",
     "Puzzle_ThinIce",
     "Puzzle_BlockPushing"
@@ -275,5 +266,19 @@
     "Puzzle_Loss_Floor2",
     "Puzzle_TwinMemories",
     "Puzzle_HiddenMaze"
+  ],
+  "MG_SingleMapPuzzles2020": [
+    "Puzzle_IlexForest",
+    "Puzzle_TrickHouseSlipSliding",
+    "Puzzle_TrainerHill1",
+    "Puzzle_TrainerHill2",
+    "Puzzle_TrainerHill3",
+    "Puzzle_TrainerHill4",
+    "Puzzle_SuspendedMaze",
+    "Puzzle_IcePath",
+    "Puzzle_TicRacToe",
+    "Puzzle_StealthMission",
+    "Puzzle_EliteFloor",
+    "Puzzle_SootopolisGym"
   ]
 }

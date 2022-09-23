@@ -1464,12 +1464,22 @@
     {
       "id": "LAYOUT_TRICK_HOUSE_RESTROOM",
       "name": "TrickHouseRestroom_Layout",
-      "width": 21,
-      "height": 11,
+      "width": 14,
+      "height": 12,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_PokemonDayCare",
       "border_filepath": "data/layouts/TrickHouseRestroom/border.bin",
       "blockdata_filepath": "data/layouts/TrickHouseRestroom/map.bin"
+    },
+    {
+      "id": "LAYOUT_TRICK_HOUSE_RESTROOM_OLD",
+      "name": "TrickHouseRestroomOld_Layout",
+      "width": 21,
+      "height": 11,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonDayCare",
+      "border_filepath": "data/layouts/TrickHouseRestroomOld/border.bin",
+      "blockdata_filepath": "data/layouts/TrickHouseRestroomOld/map.bin"
     },
     {
       "id": "LAYOUT_PUZZLE_SUSPENDED_MAZE",
@@ -1950,6 +1960,16 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/TestFollowerMap/border.bin",
       "blockdata_filepath": "data/layouts/TestFollowerMap/map.bin"
+    },
+    {
+      "id": "LAYOUT_TRICK_HOUSE_RESTROOM_CHOOSE",
+      "name": "TrickHouseRestroom_Choose_Layout",
+      "width": 14,
+      "height": 12,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonDayCare",
+      "border_filepath": "data/layouts/TrickHouseRestroom_Choose/border.bin",
+      "blockdata_filepath": "data/layouts/TrickHouseRestroom_Choose/map.bin"
     }
   ]
 }
