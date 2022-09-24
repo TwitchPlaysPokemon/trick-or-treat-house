@@ -19,7 +19,7 @@ Feature Merging:
 - [ ] Tutorial: Missing text function RESET_SIZE
 - [ ] Tutorial: Improve WaitForVBlank
 - [ ] Tutorial: EWRAM summary screen improvements?
-- [ ] Tutorial: Custom Border Dimensions (porymap supported)
+- [X] Tutorial: Custom Border Dimensions (porymap supported)
 - [ ] Tutorial: Trigger map scripts by flag
 - [ ] Tutorial: Run Custom Script on Trainer Sight?
 - [ ] Port soaring? https://github.com/camthesaxman/pokeruby/tree/soar_2
