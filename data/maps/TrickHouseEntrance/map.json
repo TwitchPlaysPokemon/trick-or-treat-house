@@ -68,7 +68,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WALLY",
-      "x": 4,
+      "x": 7,
       "y": 4,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -159,7 +159,7 @@
     },
     {
       "type": "hidden_item",
-      "x": 6,
+      "x": 9,
       "y": 4,
       "elevation": 3,
       "item": "ITEM_CANDY_ABUNDANT",

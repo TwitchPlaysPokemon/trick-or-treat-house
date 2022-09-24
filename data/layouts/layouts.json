@@ -1970,6 +1970,16 @@
       "secondary_tileset": "gTileset_PokemonDayCare",
       "border_filepath": "data/layouts/TrickHouseRestroom_Choose/border.bin",
       "blockdata_filepath": "data/layouts/TrickHouseRestroom_Choose/map.bin"
+    },
+    {
+      "id": "LAYOUT_TRICK_HOUSE_ENTRANCE_INTRO",
+      "name": "TrickHouseEntrance_Intro_Layout",
+      "width": 12,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_TrickHouseMain",
+      "border_filepath": "data/layouts/TrickHouseEntrance_Intro/border.bin",
+      "blockdata_filepath": "data/layouts/TrickHouseEntrance_Intro/map.bin"
     }
   ]
 }

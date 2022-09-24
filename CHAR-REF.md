@@ -1,0 +1,98 @@
+# Character Reference
+
+## Protagonist Group
+
+- Brendan, Researcher
+	- Mudkid Costume
+	- Home region: Hoenn
+	- Son of the Birch family, 
+	- Team: 
+		- Marshtomb
+		- Magcargo
+		- Umbreon
+	- Traits:
+		- Likes: 
+		- Dislikes: 
+		- Phobia: Fear of Lightning / Thunder
+- May, Contest Coordinator
+	- Torchick Costume
+	- Home region: Hoenn, formerly Unova
+	- Daughter of the gym leader Norman, neighbor of the Birch's
+	- Team: 
+		- Combusken
+		- Herdier
+		- Baltoy
+	- Traits:
+		- Likes: 
+		- Dislikes: 
+		- Phobia: Acrophobia, Fear of heights
+- Alex, Ace Trainer
+	- Treekid Costume
+	- Home region: Sinnoh, formerly Unova
+	- Enby cousin of May's, on trip from Sinnoh to visit
+	- Team: 
+		- Bronzor
+		- Golett
+		- Falinks
+	- Traits:
+		- Likes: 
+		- Dislikes: 
+		- Phobia: Arachnophobia, Fear of spiders
+- Joey, Youngster
+	- ???? Costume
+	- Home region: Johto
+	- Friend of James, visiting from Johto for the Slateport Autumn Regatta 
+	- Team: 
+		- Rattata "Ace"
+		- Mareep "Shep"
+		- Hoothoot "Tiktok"
+	- Traits:
+		- Likes: 
+		- Dislikes: 
+		- Phobia: Fear of snakes
+- James, Bugcatcher
+	- Link Costume
+	- Home region: Hoenn, formerly Johto
+	- Penpal of Joey
+	- Team: 
+		- Heracross (with Hercrosite)
+		- Spinarak
+		- Vikavolt
+	- Traits:
+		- Likes: 
+		- Dislikes: 
+		- Phobia: Fear of Sharks
+- Irene, Breeder
+	- Fairy Costume
+	- Home region: Unova
+	- Girlfriend of Alex, visiting for the Regatta and meet Alex
+	- Team: 
+		- Drilbur
+		- Marill
+		- Dedenne
+	- Traits:
+		- Likes: 
+		- Dislikes: 
+		- Phobia: Fear of the dark
+- Wally, Ace Trainer
+	- Elvis Costume
+	- Home region: Hoenn
+	- Rival to May
+	- Team: 
+		- Gallade (with Galladite)
+		- Magneton
+		- Fletchinder (pre Safari)
+		- Salamence (post Safari)
+	- Traits:
+		- Likes: 
+		- Dislikes: 
+		- Phobia: Fear of crowds
+
+## Others
+
+- Birch, Professor
+	- Orange Lab Coat for a Costume
+	- Home region: Hoenn
+- AJ, Champion
+	- ???? Costume
+	- Home Region: Johto

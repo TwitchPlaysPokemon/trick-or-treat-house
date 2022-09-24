@@ -1,3 +1,7 @@
+raw `
+#define LID_LADY   1
+#define LID_MASTER 2
+`
 mapscripts TrickHouseCorridor_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
 		if (var(VAR_PUZZLE_STATE) == 2) {
@@ -8,8 +12,8 @@ mapscripts TrickHouseCorridor_MapScripts {
 		}
 		if (flag(FLAG_PUZZLE_PARTY_LOCK)) {
 			// Position the rental lady in the door of the den
-			setobjectxyperm(1, 10, 5)
-			setobjectmovementtype(1, MOVEMENT_TYPE_FACE_DOWN)
+			setobjectxyperm(LID_LADY, 10, 5)
+			setobjectmovementtype(LID_LADY, MOVEMENT_TYPE_FACE_DOWN)
 			if (var(VAR_DEN_BLOCKED_EXCUSE) == 0) {
 				random(12)
 				copyvar(VAR_DEN_BLOCKED_EXCUSE, VAR_RESULT)
@@ -20,7 +24,7 @@ mapscripts TrickHouseCorridor_MapScripts {
 			// enable the rental mon cutscene
 			setvar (VAR_TEMP_E, 1) 
 			// Position the rental lady in the path
-			setobjectxyperm(1, 11, 7)
+			setobjectxyperm(LID_LADY, 11, 7)
 		}
 		else {
 			getpartysize
@@ -46,15 +50,16 @@ mapscripts TrickHouseCorridor_MapScripts {
 
 
 script(local) TrickHouseCorridor_OpenPuzzleDoor {
-	setmetatile (22, 2, 0x01F, FALSE)
+	setmetatile (22, 1, METATILE_Building_ScrollDoor_OpenTop, TRUE)
+	setmetatile (22, 2, METATILE_Building_ScrollDoor_OpenBottom, FALSE)
 	return
 }
 script(local) TrickHouseCorridor_OpenBackDoor {
-	setmetatile (4, 6, 0x01E, TRUE)
+	setmetatile (4, 6, METATILE_Building_ScrollDoor_ClosedBottom, TRUE)
 	return
 }
 script(local) TrickHouseCorridor_CloseBackDoor {
-	setmetatile (4, 6, 0x20B, TRUE)
+	setmetatile (4, 6, METATILE_TrickHouseMain_ScrollNonDoor_Bottom, TRUE)
 	return
 }
 
@@ -96,7 +101,7 @@ script TrickHouseCorridor_TriggerScript_AdoptionCutscene {
 	lock
 	// Walk up to lady in hallway
 	selectpointer (TrickHouseCorridor_MovementTable_PokemonTableStop, VAR_0x8001)
-	applymovement (OBJ_EVENT_ID_PLAYER, 0)
+	applymovement (LID_PLAYER, 0)
 	waitmovement (0)
 	//
 	msgbox ("Welcome to the PUZZLE CHALLENGE.\p"
@@ -109,10 +114,10 @@ script TrickHouseCorridor_TriggerScript_AdoptionCutscene {
 			"Right this way, please.$")
 	closemessage
 	// She leads you into the Den
-	applymovement (1, TrickHouseCorridor_Movement_PokemonTableStop_Lady)
-	applymovement (OBJ_EVENT_ID_PLAYER, TrickHouseCorridor_Movement_PokemonTableStop_Player)
-	waitmovement (OBJ_EVENT_ID_PLAYER)
-	warp(MAP_TRICK_HOUSE_RESTROOM, 0, 0, 0)
+	applymovement (LID_LADY, TrickHouseCorridor_Movement_PokemonTableStop_Lady)
+	applymovement (LID_PLAYER, TrickHouseCorridor_Movement_PokemonTableStop_Player)
+	waitmovement (LID_PLAYER)
+	warp(MAP_TRICK_HOUSE_RESTROOM_CHOOSE, 0)
 	waitstate
 	releaseall
 }
@@ -120,14 +125,14 @@ script TrickHouseCorridor_TriggerScript_AdoptionCutscene {
 script TrickHouseCorridor_TriggerScript_PartyStop {
 	lock
 	playse(SE_PIN)
-	applymovement (1, TrickHouseCorridor_Movement_PartyStop)
-	waitmovement (1)
+	applymovement (LID_LADY, TrickHouseCorridor_Movement_PartyStop)
+	waitmovement (LID_LADY)
 	msgbox ("Where are you going? You must have\n"
 			"only three {POKEMON} with you to\l"
 			"participate in the puzzles.\p"
 			"Please rectify this before returning.$")
 	closemessage
-	applymovement (1, Common_Movement_WalkInPlaceLeft)
+	applymovement (LID_LADY, Common_Movement_WalkInPlaceLeft)
 	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_WalkLeft1)
 	waitmovement (OBJ_EVENT_ID_PLAYER)
 	release
@@ -137,35 +142,6 @@ movement TrickHouseCorridor_Movement_PartyStop {
 	walk_in_place_fastest_down
 	delay_16 * 3
 }
-
-// script(local) TrickHouseCorridor_GivePokemonTeam {
-// 	givemon (SPECIES_GROVYLE, 30, 0, 0, 0, 0)
-// 	givemon (SPECIES_COMBUSKEN, 30, 0, 0, 0, 0)
-// 	givemon (SPECIES_MARSHTOMP, 30, 0, 0, 0, 0)
-// 	# Grovyle Moveset
-// 	setmonmove(0, 0, 348) # Leaf Blade
-// 	setmonmove(0, 1, 157) # Rock Slide
-// 	setmonmove(0, 2, 280) # Brick Break
-// 	setmonmove(0, 3, 210) # Fury Cutter
-// 	# Combusken Moveset
-// 	setmonmove(1, 0, 53)  # Flamethrower
-// 	setmonmove(1, 1, 24)  # Double Kick 
-// 	setmonmove(1, 2, 332) # Aerial Ace
-// 	setmonmove(1, 3, 339) # Bulk Up
-// 	# Marshtomp Moveset
-// 	setmonmove(2, 0, 352) # Water Pulse
-// 	setmonmove(2, 1, 231) # Iron Tail
-// 	setmonmove(2, 2, 89)  # Earthquake
-// 	setmonmove(2, 3, 341) # Mud Shot
-// 	# Fanfare
-// 	setflag (FLAG_SYS_POKEMON_GET)
-// 	message("Received GROVYLE, COMBUSKEN, and\n"
-// 			"MARSHTOMP from the lady!")
-// 	playfanfare (MUS_FANFA5)
-// 	waitfanfare
-// 	waitmessage
-// 	return
-// }
 
 raw `
 @ -----------------------------------------------------
@@ -245,7 +221,7 @@ text TrickHouseCorridor_Text_DenExcuse4 {
 text TrickHouseCorridor_Text_DenExcuse5 {
 			"There's been an… incident.\p"
 			"Service staff are underserved,\n"
-			"maintenence staff are under repairs,\l"
+			"maintenance staff are under repairs,\l"
 			"and hospitality staff are inhospitable.\p"
 			"The unions are divided on how to address\n"
 			"the solution, but the details should be\l"
@@ -287,7 +263,7 @@ text TrickHouseCorridor_Text_DenExcuse10 {
 			"But nothing related to the pandemic!\p"
 			"No, this is realted to a DIFFERENT\n"
 			"world-spanning virus that demands\l"
-			"quarentining to stem the spread.\p"
+			"quarantining to stem the spread.\p"
 			"But fear not, unlike the other kind,\n"
 			"it'll be contained by your next puzzle.$"
 }
@@ -309,9 +285,6 @@ text TrickHouseCorridor_Text_DenExcuse12 {
 
 
 // ----------------------------------------------------
-raw `
-#define LID_MASTER 2
-`
 
 script TrickHouseCorridor_TriggerScript_RunIntro {
 	lockall
@@ -393,7 +366,6 @@ script TrickHouseCorridor_TriggerScript_RunIntro {
 }
 
 raw `
-#undef LID_MASTER
 @ -----------------------------------------------------
 
 .align 2
@@ -418,4 +390,5 @@ movement TrickHouseCorridor_Movement_OtherLeaves {
 
 raw `
 #undef LID_MASTER
+#undef LID_LADY
 `

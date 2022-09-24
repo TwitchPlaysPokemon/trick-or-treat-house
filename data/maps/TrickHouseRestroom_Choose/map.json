@@ -16,15 +16,15 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_CAMPER",
-      "x": 6,
-      "y": 10,
+      "x": 8,
+      "y": 7,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "TrickHouseRestroom_EventScript_Breeder",
+      "script": "TrickHouseRestroom_Choose_EventScript_Breeder",
       "flag": "0"
     },
     {
@@ -186,7 +186,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_4",
       "x": 6,
-      "y": 5,
+      "y": 6,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -194,7 +194,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_SYS_POKEMON_GET"
+      "flag": "FLAG_TEMP_F"
     }
   ],
   "warp_events": [
@@ -214,7 +214,15 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 10,
+      "elevation": 0,
+      "var": "VAR_CROSS_MAP_TRIGGER",
+      "var_value": "0",
+      "script": "TrickHouseRestroom_Choose_EventScript_Breeder"
+    }
   ],
   "bg_events": [
     {

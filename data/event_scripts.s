@@ -788,4 +788,6 @@ gText_LinkRecordCouldntBeSaved::
 
 	.include "data/maps/TestFollowerMap/scripts.inc"
 
+	.include "data/maps/TrickHouseRestroomOld/scripts.inc"
 	.include "data/maps/TrickHouseRestroom_Choose/scripts.inc"
+	.include "data/maps/TrickHouseEntrance_Intro/scripts.inc"

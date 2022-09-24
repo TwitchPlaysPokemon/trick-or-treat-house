@@ -564,6 +564,10 @@ static bool8 TryStartCoordEventScript(struct MapPosition *position)
 
     if (script == NULL)
         return FALSE;
+    gSpecialVar_InteractX = position->x;
+    gSpecialVar_InteractY = position->y;
+    gSpecialVar_MetatileX = position->x - MAP_OFFSET;
+    gSpecialVar_MetatileY = position->y - MAP_OFFSET;
     ScriptContext_SetupScript(script);
     return TRUE;
 }

@@ -462,6 +462,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_QUILAVA                 0x1139
 #define OBJ_EVENT_PAL_TAG_FARFETCHD               0x113A
 #define OBJ_EVENT_PAL_TAG_PIDGEY                  0x113B
+#define OBJ_EVENT_PAL_TAG_BIRCH                   0x113C
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -529,6 +530,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Quilava,               OBJ_EVENT_PAL_TAG_QUILAVA},
     {gObjectEventPal_Farfetchd,             OBJ_EVENT_PAL_TAG_FARFETCHD},
     {gObjectEventPal_Pidgey,                OBJ_EVENT_PAL_TAG_PIDGEY},
+    {gObjectEventPal_ProfBirch,             OBJ_EVENT_PAL_TAG_BIRCH},
     {gObjectEventPal_Imposter,              OBJ_EVENT_PAL_TAG_POSSESSED},
     {},
 };

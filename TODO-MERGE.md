@@ -42,6 +42,7 @@ Known issues:
 
 
 Changes:
+- [ ] Dialog box name plates
 - [ ] Followers: If the player enters the end room with a follower, the game will automatically put the follower on the second tile of the door and remove the follower from the player's follow. The removed follower will say something generic based on GFX id or puzzle script.
 - [ ] Add newer-gen mons to the rental sequence.
 - [ ] Lost Woods 1: Use Amongous instead of electrode?
@@ -100,7 +101,7 @@ Others:
 - [ ] Fix field moves to instead of saying "Used move!", the text box reads a description of what's happening.
 - [ ] map_name_popup.c - Modify and use the defines??
 - [X] Reorganize Flags and Vars
-	- [ ] Remove Temporary Aliases from Vars
+	- [X] Remove Temporary Aliases from Vars
 - [ ] Add more strings to PuzzleCommon_TextArray_SecretCodes in trick_house.inc
 
 ----------------------------------------------------------

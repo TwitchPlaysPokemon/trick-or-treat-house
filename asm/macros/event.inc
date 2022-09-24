@@ -938,6 +938,18 @@
 	.2byte \localId
 	.byte \movementType
 	.endm
+	
+	.macro speakername text:req
+	@ TODO
+	.endm
+	
+	.macro speakername_common text:req
+	@ TODO CommonName_\text
+	.endm
+	
+	.macro clearspeaker
+	@ TODO gText_ExpandedPlaceholder_\text
+	.endm
 
 	@ If a standard message box (or its text) is being drawn on-screen, this command blocks script execution until the
 	@ box and its text have been fully drawn.

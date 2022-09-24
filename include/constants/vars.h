@@ -248,7 +248,7 @@
 #define VAR_UNUSED_0x40DA                    0x40DA
 #define VAR_SS_TIDAL_SCOTT_STATE             0x40DB // On Chopping Block
 #define VAR_ROAMER_POKEMON                   0x40DC // 0 = Latias, 1 = Latios
-#define VAR_TRAINER_HILL_IS_ACTIVE           0x40DD // On Chopping Block
+#define VAR_CROSS_MAP_TRIGGER                0x40DD
 #define VAR_UNUSED_0x40DE                    0x40DE
 #define VAR_UNUSED_0x40DF                    0x40DF
 #define VAR_UNUSED_0x40E0                    0x40E0

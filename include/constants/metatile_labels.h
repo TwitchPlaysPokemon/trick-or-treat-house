@@ -112,12 +112,18 @@
 #define METATILE_BrendansMaysHouse_MovingBox_Open    0x270
 
 // gTileset_Building
-#define METATILE_Building_DrapeDoor_Bottom  0x01E
-#define METATILE_Building_DrapeDoor_Top     0x016
-#define METATILE_Building_PC_Off            0x004
-#define METATILE_Building_PC_On             0x005
-#define METATILE_Building_TV_Off            0x002
-#define METATILE_Building_TV_On             0x003
+#define METATILE_Building_PC_Off                   0x004
+#define METATILE_Building_PC_On                    0x005
+#define METATILE_Building_ScrollDoor_ClosedBottom  0x01E
+#define METATILE_Building_ScrollDoor_ClosedTop     0x016
+#define METATILE_Building_ScrollDoor_OpenBottom    0x01F
+#define METATILE_Building_ScrollDoor_OpenTop       0x017
+#define METATILE_Building_StoneDoor_ClosedBottom   0x01C
+#define METATILE_Building_StoneDoor_ClosedTop      0x014
+#define METATILE_Building_StoneDoor_OpenBottom     0x01D
+#define METATILE_Building_StoneDoor_OpenTop        0x015
+#define METATILE_Building_TV_Off                   0x002
+#define METATILE_Building_TV_On                    0x003
 
 // gTileset_Cave
 #define METATILE_Cave_CrackedFloor                       0x22F
@@ -751,6 +757,9 @@
 #define METATILE_TrainerHill_Door_Elevator_Lobby  0x32C
 #define METATILE_TrainerHill_Door_Elevator_Roof   0x383
 #define METATILE_TrainerHill_GreenFloorTile       0x307
+
+// gTileset_TrickHouseMain
+#define METATILE_TrickHouseMain_ScrollNonDoor_Bottom  0x20B
 
 // gTileset_TrickHousePuzzle
 #define METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Down       0x263

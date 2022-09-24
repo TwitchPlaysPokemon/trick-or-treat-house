@@ -39,10 +39,11 @@
 #define MAP_TEST_FOLLOWER_MAP      (8 | (2 << 8))
 
 // MG_CutsceneMaps
-#define MAP_MAUVILLE_CITY_CUTSCENE (0 | (3 << 8))
-#define MAP_RUSTBORO_CITY_CUTSCENE (1 | (3 << 8))
-#define MAP_PUZZLE_CREDITS         (2 | (3 << 8))
-#define MAP_ROUTE110_CUTSCENE      (3 | (3 << 8))
+#define MAP_MAUVILLE_CITY_CUTSCENE     (0 | (3 << 8))
+#define MAP_RUSTBORO_CITY_CUTSCENE     (1 | (3 << 8))
+#define MAP_PUZZLE_CREDITS             (2 | (3 << 8))
+#define MAP_ROUTE110_CUTSCENE          (3 | (3 << 8))
+#define MAP_TRICK_HOUSE_ENTRANCE_INTRO (4 | (3 << 8))
 
 // MG_SecretBases
 #define MAP_SECRET_BASE_RED_CAVE1    (0 | (4 << 8))

@@ -264,6 +264,28 @@ Common_Movement_KecleonShowAnim: @ 82723C7
 	set_visible
 	step_end
 
+@ Common Character Names
+
+CommonName_TrickMaster::
+CommonName_TRICK_MASTER::
+	.string "Trick Master$"
+CommonName_BRENDAN::
+	.string "{BRENDAN}$"
+CommonName_MAY::
+	.string "{MAY}$"
+CommonName_ALEX::
+	.string "{ALEX}$"
+CommonName_JOEY::
+CommonName_YOUNGSTER::
+	.string "{JOEY}$"
+CommonName_JAMES::
+CommonName_LINK::
+	.string "{JAMES}$"
+CommonName_IRENE::
+CommonName_FAIRY::
+	.string "{IRENE}$"
+
+
 @ Message Scripts
 
 Common_EventScript_ShowBagIsFull:: @ 8272054

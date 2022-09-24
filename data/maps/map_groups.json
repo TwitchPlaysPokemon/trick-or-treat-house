@@ -55,7 +55,8 @@
     "MauvilleCity_Cutscene",
     "RustboroCity_Cutscene",
     "Puzzle_Credits",
-    "Route110_Cutscene"
+    "Route110_Cutscene",
+    "TrickHouseEntrance_Intro"
   ],
   "MG_SecretBases": [
     "SecretBase_RedCave1",
