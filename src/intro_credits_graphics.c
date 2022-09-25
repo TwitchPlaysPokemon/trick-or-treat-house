@@ -906,13 +906,13 @@ void LoadCreditsMinigameBackground1()
     LZ77UnCompVram(sGrass_Gfx, (void *)(BG_CHAR_ADDR(1)));
     LZ77UnCompVram(sGrass_Tilemap, (void *)(BG_SCREEN_ADDR(15)));
     LoadPaletteDayNight(&sGrass_Pal, 240, sizeof(sGrass_Pal));
-    // LoadPalette(&sGrass_Pal, 240, sizeof(sGrass_Pal));
+    // LoadPalette(&sGrassSunset_Pal, 240, sizeof(sGrassSunset_Pal));
     
     // Load Sea and Clouds onto Background 2 and 3
     LZ77UnCompVram(sCloudsBg_Gfx, (void *)(VRAM));
     LZ77UnCompVram(sCloudsBg_Tilemap, (void *)(BG_SCREEN_ADDR(6)));
-    LoadPaletteDayNight(&sCloudsBg_Pal, 0, sizeof(sCloudsBg_Pal));
-    // LoadPalette(&sCloudsBg_Pal, 0, sizeof(sCloudsBg_Pal));
+    LoadPaletteDayNight(&sCloudsBgSunset_Pal, 0, sizeof(sCloudsBgSunset_Pal));
+    // LoadPalette(&sCloudsBgSunset_Pal, 0, sizeof(sCloudsBgSunset_Pal));
     
     // Load extra clouds as sprites
     LoadCompressedSpriteSheet(sSpriteSheet_Clouds);

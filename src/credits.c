@@ -53,30 +53,36 @@
 #define PLAY_AREA_MIN_X    8
 #define PLAY_AREA_MAX_X    (PLAY_AREA_MIN_X+160)
 
+#define SUN_HORIZONTAL_PAN_SPEED 4
+
+struct CreditsItemSpawn
+{
+    u16 frameNum;
+    s8 height;
+};
+#include "constants/credits_items.h"
+
 // Frame Counts: 
-//   725 = End of Opening Measures
-//  2100 = End of First Phrase
-//  3660 = End of Second Phrase
-//  5100 = End of Third Phrase
-//  6500 = End of Fourth Phrase
-//  8090 = End of Fifth Phrase
-//  9500 = End of Sixth Phrase
-// 12480 = Start of Ending Phrase
-// 15192 = Start of Pokemon Leitmotif
-#define FRAMETIME_LEITMOTIF    15192
-// 15570 = Start of Denouement
-#define FRAMETIME_DENOUEMENT   15570
-// 16300 = Final Note
-#define FRAMETIME_FINAL_NOTE   16300
-// 16500 = End of Song
-#define FRAMETIME_SONG_OVER    16500
+// FRAMETIME_END_OPENING = End of Opening Measures
+// FRAMETIME_END_1ST_PHRASE = End of First Phrase
+// FRAMETIME_END_2ND_PHRASE = End of Second Phrase
+// FRAMETIME_END_3RD_PHRASE = End of Third Phrase
+// FRAMETIME_END_4TH_PHRASE = End of Fourth Phrase
+// FRAMETIME_END_5TH_PHRASE = End of Fifth Phrase
+// FRAMETIME_END_6TH_PHRASE = End of Sixth Phrase
+// FRAMETIME_START_END_PHRASE = Start of Ending Phrase
+// FRAMETIME_START_PKMN_LIETMOTIF = Start of Pokemon Leitmotif
+// FRAMETIME_START_DENOUEMENT = Start of Denouement
+// FRAMETIME_FINAL_NOTE = Final Note
+// FRAMETIME_SONG_OVER = End of Song
+
 
 
 // #define COLOR_GRASS               RGB(23, 18, 9)
 #define COLOR_GRASS               gPlttBufferUnfaded[253]
 #define CREDITS_START_DELAY       72
 // #define CREDITS_DISPLAY_TIME   170
-#define CREDITS_DISPLAY_TIME      (((FRAMETIME_DENOUEMENT - CREDITS_START_DELAY)/ARRAY_COUNT(gCreditsEntryPointerTable))-45)
+#define CREDITS_DISPLAY_TIME      (((FRAMETIME_START_DENOUEMENT - CREDITS_START_DELAY)/ARRAY_COUNT(gCreditsEntryPointerTable))-45)
 
 
 #define WIN_MAIN   0
@@ -147,11 +153,6 @@ struct CreditsEntry
     u8 unk; // Never read
     bool8 isTitle;
     const u8 *text;
-};
-struct CreditsItemSpawn
-{
-    u16 frameNum;
-    s8 height;
 };
 
 EWRAM_DATA bool8 gHasHallOfFameRecords = 0;
@@ -240,7 +241,6 @@ static const u8 sTheEnd_LetterMap_D[] =
 };
 
 #include "constants/credits_text.h"
-#include "constants/credits_items.h"
 
 static const struct BgTemplate sBackgroundTemplates[] =
 {
@@ -362,6 +362,7 @@ static void Task_EndGame5(u8 taskId);
 static void Task_EndGame6(u8 taskId);
 static void Task_ShowFinal1(u8 taskId);
 static void CB2_CleanupCredits(void);
+static u8 CreateCreditsBicycleBgAnimationTask(u8 mode, u16 bg1Speed, u16 bg2Speed, u16 bg3Speed);
 
 ///////////////////////////////////////////////////////////////////////////////
 // Helper Functions
@@ -683,7 +684,7 @@ void LoadSunsetGraphics()
     gSprites[sprite].oam.shape = SPRITE_SHAPE(32x32);
     gSprites[sprite].oam.size = SPRITE_SIZE(32x32);
     gSprites[sprite].oam.paletteNum = 0;
-    gSprites[sprite].data[0] = 8;  // horizontal pan speed
+    gSprites[sprite].data[0] = SUN_HORIZONTAL_PAN_SPEED;  // horizontal pan speed
     gSprites[sprite].data[1] = 120; // horizontal position whole number
     gSprites[sprite].data[2] = 0; //horizontal position fractional number (Q16.16)
     gSprites[sprite].data[3] = Q_8_8(2); //vertical positions
@@ -880,6 +881,9 @@ void CB2_StartCreditsSequence(void)
 	InitHeap(gHeap, HEAP_SIZE);
 	ResetPaletteFade();
 	ResetTasks();
+    
+    gMain.vblankCounter1 = 0;
+    gMain.vblankCounter2 = 0;
 	
 	sCreditsData = AllocZeroed(sizeof(struct CreditsData));
 	PrepareCreditsGraphics();
@@ -892,7 +896,7 @@ void CB2_StartCreditsSequence(void)
             break;
     }
 	
-	sCreditsData->taskIdC = CreateBicycleBgAnimationTask(0, 0x2000, 0x20, 8);
+	sCreditsData->taskIdC = CreateCreditsBicycleBgAnimationTask(0, 0x2000, 0x20, SUN_HORIZONTAL_PAN_SPEED);
 	sCreditsData->taskIdD = CreateTask(Task_FlickerPalette, 0);
 	
 	BeginNormalPaletteFade(0xFFFFFFFF, 0, 16, 0, RGB_BLACK);
@@ -1036,7 +1040,6 @@ static void Task_DisplayCredits(u8 taskId)
 
 static void Task_WaitPaletteFade(u8 taskId)
 {
-    gTasks[taskId].data[TDB_FRAME_COUNT]++;
     if (!gPaletteFade.active)
 	{
         gTasks[taskId].func = Task_WaitStartGame;
@@ -1046,7 +1049,6 @@ static void Task_WaitPaletteFade(u8 taskId)
 
 static void Task_WaitStartGame(u8 taskId)
 {
-    gTasks[taskId].data[TDB_FRAME_COUNT]++;
 	if (gTasks[taskId].data[TDB_TIMEOUT] != 0)
 	{
 		gTasks[taskId].data[TDB_TIMEOUT] -= 1;
@@ -1062,7 +1064,7 @@ static void Task_PlayGame(u8 taskId)
     struct Sprite *sprite;
     s16 i, l, r, t, b;
     u16 *itemId = &gTasks[taskId].data[TDB_NEXT_ITEM_ID];
-	u16 frameCount = gTasks[taskId].data[TDB_FRAME_COUNT]++;
+    u32 frameCount = gMain.vblankCounter1;
     
     // PrintScore(frameCount);
     /* {
@@ -1075,7 +1077,9 @@ static void Task_PlayGame(u8 taskId)
     } // */
     
     // if (frameCount % 100 == 0) {
-    // if (gMain.newKeys & (A_BUTTON | B_BUTTON)) {
+    if (gMain.newKeys & (A_BUTTON | B_BUTTON)) {
+        mgba_printf(MGBA_LOG_INFO, "FRAME: %5d", frameCount);
+    }
     if (frameCount > itemSpawns[sCreditsData->total].frameNum - 110) {
         sprite = &gSprites[sCreditsData->itemSprites[*itemId]];
         sprite->x = -32;
@@ -1086,11 +1090,11 @@ static void Task_PlayGame(u8 taskId)
         }
         sprite->data[SPI_ITEM_STATE] = ITEM_STATE_SPAWNED;
         
-        mgba_printf(MGBA_LOG_INFO, 
-                    "SPAWN: [% 3d] = { % 5d,% 3d },", 
-                    sCreditsData->total, 
-                    itemSpawns[sCreditsData->total].frameNum, 
-                    sprite->y);
+        // mgba_printf(MGBA_LOG_INFO, 
+        //             "SPAWN: [%3d] = { %5d,%3d },", 
+        //             sCreditsData->total, 
+        //             itemSpawns[sCreditsData->total].frameNum, 
+        //             sprite->y);
         
         *itemId = (*itemId + 1) % NUM_CANDY_SPRITES;
         sCreditsData->total++;
@@ -1134,7 +1138,7 @@ static void Task_PlayGame(u8 taskId)
     }
     PrintScore(sCreditsData->score);
     
-    if (gTasks[taskId].data[TDB_FRAME_COUNT] >= FRAMETIME_DENOUEMENT)
+    if (frameCount >= FRAMETIME_START_DENOUEMENT)
     {
         gTasks[taskId].func = Task_EndGame1;
     }
@@ -1142,19 +1146,19 @@ static void Task_PlayGame(u8 taskId)
 
 static void Task_EndGame1(u8 taskId)
 {
-    u16 frameCount = gTasks[taskId].data[TDB_FRAME_COUNT]++;
+    u32 frameCount = gMain.vblankCounter1;
     
-    if (frameCount < FRAMETIME_DENOUEMENT + 60)
+    if (frameCount < FRAMETIME_START_DENOUEMENT + 60)
     {
         // Do nothing
     }
-    else if (frameCount < FRAMETIME_DENOUEMENT + 120)
+    else if (frameCount < FRAMETIME_START_DENOUEMENT + 120)
     {
         // gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].data[SPD_DESTX] = -64;
         gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].data[SPD_DESTX] = 120 - SPRITE_OFFSET_PLAYER_X;
         gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].data[SPD_DESTY] = 0;
     }
-    else if (frameCount < FRAMETIME_DENOUEMENT + 240)
+    else if (frameCount < FRAMETIME_START_DENOUEMENT + 240)
     {
         gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].data[SPD_DESTX] = -64;
         gSprites[gTasks[taskId].data[TDB_PLAYER_CYCLIST]].data[SPD_DESTY] = 0;
@@ -1168,7 +1172,6 @@ static void Task_EndGame1(u8 taskId)
 
 static void Task_EndGame2(u8 taskId)
 {
-    u16 frameCount = gTasks[taskId].data[TDB_FRAME_COUNT]++;
     if (!gPaletteFade.active)
     {
         ResetCreditsTasks();
@@ -1179,7 +1182,6 @@ static void Task_EndGame2(u8 taskId)
 void EnableVCountIntrAtLine150(void);
 static void Task_EndGame3(u8 taskId)
 {
-    gTasks[taskId].data[TDB_FRAME_COUNT]++;
     
     CleanupWindowBuffers();
     ResetGpuAndVram();
@@ -1211,7 +1213,7 @@ static void Task_EndGame3(u8 taskId)
 
 static void Task_EndGame4(u8 taskId)
 {
-    u16 frameCount = gTasks[taskId].data[TDB_FRAME_COUNT]++;
+    u32 frameCount = gMain.vblankCounter1;
     
     if (gPaletteFade.active) return;
     // if (frameCount < FRAMETIME_FINAL_NOTE - 215) return;
@@ -1223,7 +1225,7 @@ static void Task_EndGame4(u8 taskId)
 
 static void Task_EndGame5(u8 taskId)
 {
-    u16 frameCount = gTasks[taskId].data[TDB_FRAME_COUNT]++;
+    u32 frameCount = gMain.vblankCounter1;
     
     if (frameCount >= FRAMETIME_FINAL_NOTE)
     {
@@ -1235,7 +1237,7 @@ static void Task_EndGame5(u8 taskId)
 
 static void Task_EndGame6(u8 taskId)
 {
-    u16 frameCount = gTasks[taskId].data[TDB_FRAME_COUNT]++;
+    u32 frameCount = gMain.vblankCounter1;
     if (gPaletteFade.active) return;
     
     if (frameCount == FRAMETIME_SONG_OVER)
@@ -1302,6 +1304,84 @@ static void Task_CreditsSoftReset(u8 taskIdA)
 
 ///////////////////////////////////////////////////////////////////////////////
 // Task C: Animate Background
+
+#define tMode     data[0] // Can be 0-2, but only != 0 matters. Determines vertical movement for bg2
+#define tBg1Speed data[1]
+#define tBg1PosHi data[2]
+#define tBg1PosLo data[3]
+#define tBg2Speed data[4]
+#define tBg2PosHi data[5]
+#define tBg2PosLo data[6]
+#define tBg3Speed data[7]
+#define tBg3PosHi data[8]
+#define tBg3PosLo data[9]
+
+static void Task_BicycleBgAnimation(u8 taskId)
+{
+    s16 bg1Speed;
+    s16 bg2Speed;
+    s16 bg3Speed;
+    s32 offset;
+
+    // Move BG1
+    bg1Speed = gTasks[taskId].tBg1Speed;
+    if (bg1Speed != 0)
+    {
+        offset = (gTasks[taskId].tBg1PosHi << 16) + (u16)gTasks[taskId].tBg1PosLo;
+        offset -= (u16)bg1Speed << 4;
+        gTasks[taskId].tBg1PosHi = offset >> 16;
+        gTasks[taskId].tBg1PosLo = offset;
+        SetGpuReg(REG_OFFSET_BG1HOFS, gTasks[taskId].tBg1PosHi);
+        SetGpuReg(REG_OFFSET_BG1VOFS, gIntroCredits_MovingSceneryVBase + gIntroCredits_MovingSceneryVOffset);
+    }
+
+    // Move BG2
+    bg2Speed = gTasks[taskId].tBg2Speed;
+    if (bg2Speed != 0)
+    {
+        offset = (gTasks[taskId].tBg2PosHi << 16) + (u16)gTasks[taskId].tBg2PosLo;
+        offset -= (u16)bg2Speed << 4;
+        gTasks[taskId].tBg2PosHi = offset >> 16;
+        gTasks[taskId].tBg2PosLo = offset;
+        SetGpuReg(REG_OFFSET_BG2HOFS, gTasks[taskId].tBg2PosHi);
+        if (gTasks[taskId].tMode != 0)
+            SetGpuReg(REG_OFFSET_BG2VOFS, gIntroCredits_MovingSceneryVBase + gIntroCredits_MovingSceneryVOffset);
+        else
+            SetGpuReg(REG_OFFSET_BG2VOFS, gIntroCredits_MovingSceneryVBase);
+    }
+
+    // Move BG3
+    bg3Speed = gTasks[taskId].tBg3Speed;
+    if (bg3Speed != 0)
+    {
+        offset = (gTasks[taskId].tBg3PosHi << 16) + (u16)gTasks[taskId].tBg3PosLo;
+        offset -= (u16)bg3Speed << 4;
+        gTasks[taskId].tBg3PosHi = offset >> 16;
+        gTasks[taskId].tBg3PosLo = offset;
+        SetGpuReg(REG_OFFSET_BG3HOFS, gTasks[taskId].tBg3PosHi);
+        SetGpuReg(REG_OFFSET_BG3VOFS, gIntroCredits_MovingSceneryVBase);
+    }
+}
+
+// Create task that manages the moving backgrounds during the bicycle ride
+static u8 CreateCreditsBicycleBgAnimationTask(u8 mode, u16 bg1Speed, u16 bg2Speed, u16 bg3Speed)
+{
+    u8 taskId = CreateTask(Task_BicycleBgAnimation, 0);
+
+    gTasks[taskId].tMode = mode;
+    gTasks[taskId].tBg1Speed = bg1Speed;
+    gTasks[taskId].tBg1PosHi = 0;
+    gTasks[taskId].tBg1PosLo = 0;
+    gTasks[taskId].tBg2Speed = bg2Speed;
+    gTasks[taskId].tBg2PosHi = 0;
+    gTasks[taskId].tBg2PosLo = 0;
+    gTasks[taskId].tBg3Speed = bg3Speed;
+    gTasks[taskId].tBg3PosHi = 8;
+    gTasks[taskId].tBg3PosLo = 0;
+    Task_BicycleBgAnimation(taskId);
+    return taskId;
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // Task D: Flicker Background Palette
