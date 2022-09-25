@@ -276,9 +276,11 @@ void FollowMe(struct ObjectEvent* npc, u8 state, bool8 ignoreScriptActive)
             gSaveBlock2Ptr->follower.comeOutDoorStairs = 0;
         }
         
-        follower->invisible = FALSE;
-        MoveObjectEventToMapCoords(follower, player->currentCoords.x, player->currentCoords.y);
-        ObjectEventTurn(follower, player->facingDirection); //The follower should be facing the same direction as the player when it comes out of hiding
+        if (follower->invisible == TRUE) {
+            follower->invisible = FALSE;
+            // MoveObjectEventToMapCoords(follower, player->currentCoords.x, player->currentCoords.y);
+            ObjectEventTurn(follower, player->facingDirection); //The follower should be facing the same direction as the player when it comes out of hiding
+        }
 
         if (gSaveBlock2Ptr->follower.createSurfBlob == 2) //Recreate surf blob
         {
@@ -1179,7 +1181,7 @@ void FollowMe_WarpSetEnd()
 {
     struct ObjectEvent *player;
     struct ObjectEvent *follower;
-    u8 toY;
+    u8 toY, toX, shouldHide;
     
     if (!gSaveBlock2Ptr->follower.inProgress)
         return;
@@ -1189,9 +1191,23 @@ void FollowMe_WarpSetEnd()
 
     gSaveBlock2Ptr->follower.warpEnd = 1;
     PlayerLogCoordinates(player);
-
-    toY = gSaveBlock2Ptr->follower.comeOutDoorStairs == 1 ? (player->currentCoords.y - 1) : player->currentCoords.y;
-    MoveObjectEventToMapCoords(follower, player->currentCoords.x, toY);
+    
+    shouldHide = TRUE;
+    toY = player->currentCoords.y;
+    toX = player->currentCoords.x;
+    if (gSaveBlock2Ptr->follower.comeOutDoorStairs == 1) {
+        toY -= 1;
+    }
+    else if (MetatileBehavior_IsSouthArrowWarp(MapGridGetMetatileBehaviorAt(toX, toY))) {
+        if (MetatileBehavior_IsSouthArrowWarp(MapGridGetMetatileBehaviorAt(toX-1, toY))) {
+            toX -= 1; shouldHide = FALSE;
+        }
+        else if (MetatileBehavior_IsSouthArrowWarp(MapGridGetMetatileBehaviorAt(toX+1, toY))) {
+            toX += 1; shouldHide = FALSE;
+        }
+    }
+    MoveObjectEventToMapCoords(follower, toX, toY);
+    follower->invisible = shouldHide;
     
     follower->facingDirection = player->facingDirection;
     follower->movementDirection = player->movementDirection;
