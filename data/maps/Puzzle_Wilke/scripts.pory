@@ -8,6 +8,7 @@ Puzzle_Wilke_MapScripts::
 	puzzle_candylist Puzzle_Wilke_CandyList
 	puzzle_devcommentary Puzzle_Wilke_DevCommentary
 	map_script MAP_SCRIPT_PUZZLE_SETUP_SCRIPT, Puzzle_Wilke_Setup
+	map_script MAP_SCRIPT_ON_EXIT_PUZZLE_WITH_PARTNER, Puzzle_Wilke_ExitPuzzleWithRacc
 	.byte 0
 
 Puzzle_Wilke_Name:
@@ -15,11 +16,9 @@ Puzzle_Wilke_Name:
 Puzzle_Wilke_Author:
 	.string "wilke0$"
 Puzzle_Wilke_Adjective:
-	.string "boundry breaking$"
+	.string "boundary breaking$"
 Puzzle_Wilke_Quip:
-	.string "{PLAY_CRY}"
-	.2byte SPECIES_ZIGZAGOON
-	.string "Ziggy seems happy to have helped.$"
+	.string "Ziggy seems tired now.$"
 Puzzle_Wilke_DevCommentary:
 	.string "Tustin2121: Props to wilke0 for a) being\n"
 	.string "the only person to submit a fully\l"
@@ -48,6 +47,61 @@ Puzzle_Wilke_Setup:
 
 @ -----------------------------------------------------
 `
+script(local) Puzzle_Wilke_ExitPuzzleWithRacc {
+	applymovement(LID_PLAYER, Common_Movement_FaceRight)
+	applymovement(VAR_ENDROOM_PARTNER_ID, Common_Movement_FaceLeft)
+	waitmovement(LID_PLAYER)
+	// Hop twice
+	applymovement(VAR_ENDROOM_PARTNER_ID, Puzzle_Wilke_Movement_Hop)
+	playse(SE_LEDGE)
+	waitmovement(VAR_ENDROOM_PARTNER_ID)
+	applymovement(VAR_ENDROOM_PARTNER_ID, Puzzle_Wilke_Movement_Hop)
+	playse(SE_LEDGE)
+	waitmovement(VAR_ENDROOM_PARTNER_ID)
+	// cry
+	waitse
+	playmoncry (SPECIES_ZIGZAGOON, 0)
+	message ("Ziggy seems happy to have helped!$")
+	waitmessage
+	waitmoncry
+	waitbuttonpress
+	closemessage
+	// move to spot
+	applymovement (LID_PLAYER, Puzzle_Wilke_Movement_PlayerResume)
+	applymovement (VAR_ENDROOM_PARTNER_ID, Puzzle_Wilke_Movement_MoveSpot)
+	waitmovement(VAR_ENDROOM_PARTNER_ID)
+	// slp
+	setvar(VAR_QUIP_PERSON, OBJ_EVENT_GFX_ZIGZAGOON_SLP)
+	setobjectmovementtype(VAR_ENDROOM_PARTNER_ID, MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_DOWN)
+	copyobjectxytoperm(VAR_ENDROOM_PARTNER_ID)
+	removeobject(VAR_ENDROOM_PARTNER_ID) // re-add object
+	addobject(VAR_ENDROOM_PARTNER_ID)
+	setobjectmovementtype(VAR_ENDROOM_PARTNER_ID, MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_DOWN)
+	return
+}
+
+movement Puzzle_Wilke_Movement_Hop {
+	jump_in_place_left
+}
+movement Puzzle_Wilke_Movement_MoveSpot {
+	walk_fast_up
+	walk_fast_left
+	walk_fast_up * 2
+	delay_1
+	// spin around
+	walk_in_place_fast_right
+	walk_in_place_fast_down
+	walk_in_place_fast_left
+	walk_in_place_fast_up
+	walk_in_place_fast_right
+	walk_in_place_fast_down
+	walk_in_place_fast_left
+	delay_16 * 2
+}
+movement Puzzle_Wilke_Movement_PlayerResume {
+	delay_4
+	walk_in_place_fastest_up
+}
 
 script Puzzle_Wilke_TalkToRacc1 {
 	lockall
@@ -59,22 +113,26 @@ script Puzzle_Wilke_TalkToRacc1 {
 		msgbox ("Ziggy gives {PLAYER} the scroll.$")
 		msgbox (PuzzleCommon_Text_ScrollFound2)
 		setflag (FLAG_TRICK_HOUSE_SCROLL_READ)
-		setobjectmovementtype (1, MOVEMENT_TYPE_LOOK_AROUND)
+		//setobjectmovementtype (1, MOVEMENT_TYPE_LOOK_AROUND)
+		setfollower(THIS_EVENT, FOLLOWER_FLAG_CAN_LEAVE_ROUTE | FOLLOWER_FLAG_CLEAR_ON_WHITE_OUT, Puzzle_Wilke_TalkToRacc2)
 		addobject (4)
 		releaseall
 		end
 	}
+	// waitse
+	// playmoncry (SPECIES_ZIGZAGOON, 0)
+	// msgbox ("Ziggy: Guguu$")
+	// waitmoncry
+	releaseall
+}
+
+script Puzzle_Wilke_TalkToRacc2 {
+	lockall
+	facefollower
 	waitse
 	playmoncry (SPECIES_ZIGZAGOON, 0)
 	msgbox ("Ziggy: Guguu$")
 	waitmoncry
 	releaseall
-}
-
-script Puzzle_Wilke_EnterDoor {
-	lock
-	call (PuzzleCommon_EventScript_DoDoorEnterAnimation)
-	warp (MAP_TRICK_HOUSE_CORRIDOR, 0, -1, -1)
-	release
 }
 

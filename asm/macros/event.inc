@@ -2153,10 +2153,16 @@
 	
 	@ sets an NPC up to follow the player
     .macro setfollower localId:req, flags:req, customScript=NULL
-    loadarg 0, \localId
-	loadarg 1, \flags
-	loadword 0, \customScript
-	callnative SetUpFollowerSprite
+	.if \customScript == NULL
+		loadarg 0, \localId
+		loadarg 1, \flags
+		callnative SetUpFollowerSprite
+	.else
+		loadarg 0, \localId
+		loadarg 1, \flags | FOLLOWER_FLAG_CUSTOM_FOLLOW_SCRIPT
+		loadword 0, \customScript
+		callnative SetUpFollowerSprite
+	.endif
     .endm
     
     @ remove the following NPC (assumes there will only ever be one)

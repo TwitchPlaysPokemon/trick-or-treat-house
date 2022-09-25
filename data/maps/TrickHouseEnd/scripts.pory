@@ -14,6 +14,7 @@ TrickHouseEnd_WarpTable:
 
 TrickHouseEnd_FrameTable:
 	map_script_2 VAR_TRICK_MASTER_INTRO, 0, TrickHouseEnd_EventScript_TrickMasterOutro
+	map_script_2 FLAG_TEMP_10, 1,  TrickHouseEnd_OnExitWithPartner
 	.2byte 0
 `
 
@@ -23,6 +24,13 @@ script TrickHouseEnd_OnLoad {
 
 script TrickHouseEnd_OnTransition {
 	setvar(VAR_PUZZLE_STATE, 2)
+	
+	checkfollower
+	if (var(VAR_RESULT) == TRUE) {
+		callnative(SetupEndRoom_PartnerFinalize)
+		destroyfollower
+	}
+	
 	// Disable end person movement when in TPP build
 	poryswitch(TPP_MODE) {
 		1 {
@@ -31,7 +39,6 @@ script TrickHouseEnd_OnTransition {
 		}
 		_:
 	}
-	
 	# Because some event objects cause freezing when wandering around
 	switch (var(VAR_OBJ_GFX_ID_1)) {
 		case OBJ_EVENT_GFX_LUGIA:          setobjectmovementtype (2, MOVEMENT_TYPE_WALK_IN_PLACE_DOWN)
@@ -44,6 +51,11 @@ script TrickHouseEnd_OnTransition {
 		case OBJ_EVENT_GFX_KYOGRE_SIDE:    setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
 		case OBJ_EVENT_GFX_GROUDON_SIDE:   setobjectmovementtype (2, MOVEMENT_TYPE_FACE_DOWN)
 	}
+}
+
+script TrickHouseEnd_OnExitWithPartner {
+	callnative(RunExitPuzzleWithPartnerScript)
+	clearflag(FLAG_TEMP_10)
 }
 
 // ----------------------------------------------------

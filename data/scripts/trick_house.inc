@@ -25,7 +25,7 @@ CommonAuthor_GameFreak::
 CommonAuthor_Tustin2121::
 	.string "Tustin2121$"
 CommonAuthor_M4UsedRollout::
-	.string "M4UsedRollout$"
+	.string "M4_used_rollout$"
 
 @ -----------------------------------------------------
 
@@ -65,8 +65,7 @@ PuzzleCommon_EventScript_ClearPuzzleData::
 PuzzleCommon_EventScript_EntranceDoorObject::
 	lock
 	@ Check for facing the correct direction
-	compare VAR_FACING, 2 @north
-	goto_if_ne PuzzleCommon_EventScript_EntranceDoorObject_Backside
+	goto_if_ne VAR_FACING, DIR_NORTH, PuzzleCommon_EventScript_EntranceDoorObject_Backside
 	goto_if_set FLAG_IS_BUMP_INTERACTION, PuzzleCommon_EventScript_EntranceDoorObject_WarpToCorridor
 	msgbox PuzzleCommon_Text_DoorFrontside
 	release

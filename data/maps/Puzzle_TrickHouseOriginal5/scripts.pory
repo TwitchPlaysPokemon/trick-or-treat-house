@@ -39,6 +39,7 @@ Puzzle_TrickHouseOriginal5_CandyList:
 #define FLAG_SWITCH_3  FLAG_PUZZLE_22
 #define FLAG_SWITCH_4  FLAG_PUZZLE_23
 #define FLAG_SWITCH_5  FLAG_PUZZLE_24
+#define FLAG_PUZZLE_STATE VAR_PUZZLE_01
 
 
 Puzzle_TrickHouseOriginal5_OnResume: @ 826E0A6
@@ -104,7 +105,7 @@ Puzzle_TrickHouseOriginal5_EventScript_SetSwitch5Off:: @ 826E185
 	return
 
 Puzzle_TrickHouseOriginal5_OnTransition: @ 826E198
-	compare VAR_TRICK_HOUSE_PUZZLE_7_STATE_2, 1
+	compare FLAG_PUZZLE_STATE, 1
 	goto_if_eq Common_EventScript_NopEnd
 	clearflag FLAG_SWITCH_1
 	clearflag FLAG_SWITCH_2
@@ -114,21 +115,21 @@ Puzzle_TrickHouseOriginal5_OnTransition: @ 826E198
 	end
 
 Puzzle_TrickHouseOriginal5_OnLoad: @ 826E1B4
-	compare VAR_TRICK_HOUSE_PUZZLE_7_STATE_2, 1
+	compare FLAG_PUZZLE_STATE, 1
 	call_if_eq Puzzle_TrickHouseOriginal5_EventScript_26E0AC
 	end
 
 Puzzle_TrickHouseOriginal5_FrameTable: @ 826E1C0
-	map_script_2 VAR_TRICK_HOUSE_PUZZLE_7_STATE_2, 1, Puzzle_TrickHouseOriginal5_EventScript_26E1CA
+	map_script_2 FLAG_PUZZLE_STATE, 1, Puzzle_TrickHouseOriginal5_EventScript_26E1CA
 	.2byte 0
 
 Puzzle_TrickHouseOriginal5_EventScript_26E1CA:: @ 826E1CA
-	setvar VAR_TRICK_HOUSE_PUZZLE_7_STATE_2, 0
+	setvar FLAG_PUZZLE_STATE, 0
 	end
 
 Puzzle_TrickHouseOriginal5_EventScript_26E1ED:: @ 826E1ED
 	lockall
-	setvar VAR_TRICK_HOUSE_PUZZLE_7_STATE_2, 1
+	setvar FLAG_PUZZLE_STATE, 1
 	warpteleport MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7, 255, 3, 19
 	waitstate
 	releaseall
@@ -291,6 +292,7 @@ Puzzle_TrickHouseOriginal5_Text_26E61E: @ 826E61E
 #undef FLAG_SWITCH_3
 #undef FLAG_SWITCH_4
 #undef FLAG_SWITCH_5
+#undef FLAG_PUZZLE_STATE
 `
 
 script Puzzle_TrickHouseOriginal5_UnobtainableItemBall {

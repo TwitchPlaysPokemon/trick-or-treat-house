@@ -49,6 +49,7 @@
 #define VAR_QUIP_PERSON            VAR_OBJ_GFX_ID_1
 #define VAR_DEV_COMMENTATOR        VAR_OBJ_GFX_ID_2
 #define VAR_ENDROOM_FRIEND         VAR_OBJ_GFX_ID_3
+#define VAR_ENDROOM_PARTNER_ID     VAR_TEMP_F
 
 // Trick Or Treat House vars
 #define VAR_PUZZLE_00                        0x4020
@@ -83,10 +84,6 @@
 #define VAR_PUZZLE_1D                        0x403D
 #define VAR_PUZZLE_1E                        0x403E
 #define VAR_PUZZLE_1F                        0x403F
-// temporary aliases
-#define VAR_TRICK_HOUSE_PUZZLE_7_STATE       VAR_PUZZLE_00
-#define VAR_TRICK_HOUSE_PUZZLE_8_STATE       VAR_PUZZLE_00
-#define VAR_TRICK_HOUSE_PUZZLE_7_STATE_2     VAR_PUZZLE_01
 
 // trick house system variables
 #define VAR_CURRENT_PUZZLE                   0x4040 

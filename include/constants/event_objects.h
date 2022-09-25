@@ -294,8 +294,9 @@
 #define OBJ_EVENT_GFX_FARFETCHD                      0x112
 #define OBJ_EVENT_GFX_IMPOSTER_LASS                  0x113
 #define OBJ_EVENT_GFX_PIDGEY                         0x114
+#define OBJ_EVENT_GFX_ZIGZAGOON_SLP                  0x115
 
-#define NUM_OBJ_EVENT_GFX                            0x115
+#define NUM_OBJ_EVENT_GFX                            0x116
 
 // These are dynamic object gfx ids.
 // They correspond with the values of the VAR_OBJ_GFX_ID_X vars.

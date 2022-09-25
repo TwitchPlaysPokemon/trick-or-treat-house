@@ -1954,6 +1954,18 @@ static const struct SpriteFrameImage sPicTable_Zigzagoon[] = {
     overworld_frame(gObjectEventPic_Zigzagoon, 2, 2, 2),
 };
 
+static const struct SpriteFrameImage sPicTable_ZigzagoonSlp[] = {
+    overworld_frame(gObjectEventPic_ZigzagoonSlp, 2, 2, 0),
+    overworld_frame(gObjectEventPic_ZigzagoonSlp, 2, 2, 1),
+    overworld_frame(gObjectEventPic_ZigzagoonSlp, 2, 2, 1),
+    overworld_frame(gObjectEventPic_ZigzagoonSlp, 2, 2, 1),
+    overworld_frame(gObjectEventPic_ZigzagoonSlp, 2, 2, 1),
+    overworld_frame(gObjectEventPic_ZigzagoonSlp, 2, 2, 1),
+    overworld_frame(gObjectEventPic_ZigzagoonSlp, 2, 2, 1),
+    overworld_frame(gObjectEventPic_ZigzagoonSlp, 2, 2, 1),
+    overworld_frame(gObjectEventPic_ZigzagoonSlp, 2, 2, 1),
+};
+
 static const struct SpriteFrameImage sPicTable_Pikachu[] = {
     overworld_frame(gObjectEventPic_Pikachu, 2, 2, 0),
     overworld_frame(gObjectEventPic_Pikachu, 2, 2, 1),

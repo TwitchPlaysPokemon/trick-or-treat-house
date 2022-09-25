@@ -29,6 +29,8 @@
 #include "international_string_util.h"
 #include "pokemon_summary_screen.h"
 #include "field_screen_effect.h"
+#include "event_object_movement.h"
+#include "mgba.h"
 #include "constants/map_scripts.h"
 #include "constants/maps.h"
 #include "constants/map_groups.h"
@@ -64,6 +66,7 @@ u16 GetCurrentPuzzleMapId()
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+#pragma region Puzzle Script Calls
 
 extern const u8 PuzzleCommon_DefaultSetupScript[];
 void RunPuzzleSetupScript()
@@ -157,6 +160,47 @@ void RunPuzzleEscapeRopeScript()
 	}
 }
 
+void SetupEndRoom_PartnerFinalize()
+{
+	u32 gfxId = 0;
+	// struct ObjectEvent* evt = NULL;
+	struct ObjectEventTemplate* gEventObjectTemplates = gSaveBlock1Ptr->objectEventTemplates;
+	struct ObjectEventTemplate* evt = NULL;
+	
+	u16 currPuzzle = GetCurrentPuzzleMapId();
+	
+	if (!gSaveBlock2Ptr->follower.inProgress) return;
+	if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(TRICK_HOUSE_END)) return;
+	
+	// If the follower matches the person who's quipping, move the quip event to the door
+	if (VarGet(VAR_QUIP_PERSON) == gSaveBlock2Ptr->follower.graphicsId) {
+		gfxId = OBJ_EVENT_GFX_VAR_1;
+	}
+	// If the follower matches the friend, move the friend event to the door
+	else if (VarGet(VAR_ENDROOM_FRIEND) == gSaveBlock2Ptr->follower.graphicsId) {
+		gfxId = OBJ_EVENT_GFX_VAR_3;
+	}
+	
+	// Follower does not match anything
+	if (!gfxId) return;
+	
+	// Find the object event that matches the follower graphic
+	for (int i = 0; i < OBJECT_EVENT_TEMPLATES_COUNT; i++)
+    {
+        if (gEventObjectTemplates[i].graphicsId == gfxId) {
+			evt = &gEventObjectTemplates[i];
+			break;
+		}
+	}
+	
+	if (evt == NULL) return;
+	// MoveObjectEventToMapCoords(evt, 12, 6);
+	SetObjEventTemplateCoords(evt->localId, 12, 6);
+	VarSet(VAR_ENDROOM_PARTNER_ID, evt->localId);
+	FlagSet(FLAG_TEMP_10); // Set flag to run a script, if present
+}
+
+#pragma endregion
 ///////////////////////////////////////////////////////////////////////////////
 
 bool8 IsAfterFirstLoop()
@@ -304,6 +348,19 @@ void ShowPuzzleFriendCommentary(struct ScriptContext *ctx)
 		str = PuzzleCommon_Text_DefaultFriendCommentary;
 	}
 	ShowFieldMessage(str);
+}
+
+void RunExitPuzzleWithPartnerScript(struct ScriptContext *ctx)
+{
+	u16 currPuzzle = GetCurrentPuzzleMapId();
+	if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(TRICK_HOUSE_END))
+	{
+		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_ON_EXIT_PUZZLE_WITH_PARTNER);
+		if (script != NULL)
+		{
+			ScriptCall(ctx, script);
+		}
+	}
 }
 
 extern const u8 PuzzleCommon_DefaultVariableAssignments[];

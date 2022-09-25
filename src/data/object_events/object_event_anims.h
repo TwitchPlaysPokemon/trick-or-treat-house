@@ -627,6 +627,38 @@ static const union AnimCmd sAnim_HoOhStayStill[] =
     ANIMCMD_JUMP(0),
 };
 
+static const union AnimCmd sAnim_ZiggySleep[] =
+{
+    ANIMCMD_FRAME(0, 16),
+    ANIMCMD_FRAME(0, 16),
+    ANIMCMD_FRAME(3, 16),
+    ANIMCMD_FRAME(3, 16),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnimTable_ZiggySlp[] = {
+    [ANIM_STD_FACE_SOUTH] = sAnim_ZiggySleep,
+    [ANIM_STD_FACE_NORTH] = sAnim_ZiggySleep,
+    [ANIM_STD_FACE_WEST] = sAnim_ZiggySleep,
+    [ANIM_STD_FACE_EAST] = sAnim_ZiggySleep,
+    [ANIM_STD_GO_SOUTH] = sAnim_ZiggySleep,
+    [ANIM_STD_GO_NORTH] = sAnim_ZiggySleep,
+    [ANIM_STD_GO_WEST] = sAnim_ZiggySleep,
+    [ANIM_STD_GO_EAST] = sAnim_ZiggySleep,
+    [ANIM_STD_GO_FAST_SOUTH] = sAnim_ZiggySleep,
+    [ANIM_STD_GO_FAST_NORTH] = sAnim_ZiggySleep,
+    [ANIM_STD_GO_FAST_WEST] = sAnim_ZiggySleep,
+    [ANIM_STD_GO_FAST_EAST] = sAnim_ZiggySleep,
+    [ANIM_STD_GO_FASTER_SOUTH] = sAnim_ZiggySleep,
+    [ANIM_STD_GO_FASTER_NORTH] = sAnim_ZiggySleep,
+    [ANIM_STD_GO_FASTER_WEST] = sAnim_ZiggySleep,
+    [ANIM_STD_GO_FASTER_EAST] = sAnim_ZiggySleep,
+    [ANIM_STD_GO_FASTEST_SOUTH] = sAnim_ZiggySleep,
+    [ANIM_STD_GO_FASTEST_NORTH] = sAnim_ZiggySleep,
+    [ANIM_STD_GO_FASTEST_WEST] = sAnim_ZiggySleep,
+    [ANIM_STD_GO_FASTEST_EAST] = sAnim_ZiggySleep,
+};
+
 static const union AnimCmd *const sAnimTable_Inanimate[] = {
     [ANIM_STAY_STILL] = sAnim_StayStill,
 };

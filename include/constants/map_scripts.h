@@ -18,6 +18,7 @@
 
     2. ON_TRANSITION: Run during the transition to the map
                       Used to set map-specific flags/vars, update object positions/movement types, set weather, etc
+                      The EventObjects have NOT yet been set up, so only expect to change the EventObjectTemplates
 
     5. ON_WARP_INTO_MAP_TABLE: Run after the map's objects are loaded.
                                This is a table of scripts; only the first script whose condition is satisfied is run.
@@ -64,6 +65,7 @@
 #define MAP_SCRIPT_PUZZLE_EXIT_SCRIPT           0x43
 #define MAP_SCRIPT_PUZZLE_BLACKOUT_SCRIPT       0x44
 #define MAP_SCRIPT_PUZZLE_ESCAPE_SCRIPT         0x45
+#define MAP_SCRIPT_ON_EXIT_PUZZLE_WITH_PARTNER  0x46
 
 
 #endif // GUARD_CONSTANTS_MAP_SCRIPTS_H

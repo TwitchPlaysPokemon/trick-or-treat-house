@@ -20,7 +20,7 @@ Feature Merging:
 - [ ] Tutorial: Improve WaitForVBlank
 - [ ] Tutorial: EWRAM summary screen improvements?
 - [X] Tutorial: Custom Border Dimensions (porymap supported)
-- [ ] Tutorial: Trigger map scripts by flag
+- [X] Tutorial: Trigger map scripts by flag
 - [ ] Tutorial: Run Custom Script on Trainer Sight?
 - [ ] Port soaring? https://github.com/camthesaxman/pokeruby/tree/soar_2
 - [ ] https://msikma.github.tio/pokesprite/overview/inventory.html

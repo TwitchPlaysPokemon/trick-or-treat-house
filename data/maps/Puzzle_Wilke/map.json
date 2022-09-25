@@ -76,7 +76,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Puzzle_Wilke_EnterDoor",
+      "script": "PuzzleCommon_EventScript_EntranceDoorObject",
       "flag": "0"
     },
     {
