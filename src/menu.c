@@ -18,6 +18,7 @@
 #include "task.h"
 #include "text_window.h"
 #include "window.h"
+#include "map_name_popup.h"
 #include "dynamic_placeholder_text_util.h"
 #include "constants/songs.h"
 
@@ -526,7 +527,7 @@ static u16 GetStandardFrameBaseTileNum(void)
 u8 AddMapNamePopUpWindow(void)
 {
     if (sMapNamePopupWindowId == WINDOW_NONE)
-        sMapNamePopupWindowId = AddWindowParameterized(0, 1, 1, 14, 3, 14, 0x107);
+        sMapNamePopupWindowId = AddWindowParameterized(0, 1, 1, MAP_NAME_WINDOW_WIDTH, 3, 14, 0x107);
     return sMapNamePopupWindowId;
 }
 

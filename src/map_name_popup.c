@@ -178,7 +178,7 @@ void ShowMapNamePopUpWindow(void)
     
     AddMapNamePopUpWindow();
     LoadMapNamePopUpWindowBg();
-    x = GetStringCenterAlignXOffset(FONT_NARROW, withoutPrefixPtr, 8*14);
+    x = GetStringCenterAlignXOffset(FONT_NARROW, withoutPrefixPtr, 8*MAP_NAME_WINDOW_WIDTH);
     mapDisplayHeader[0] = EXT_CTRL_CODE_BEGIN;
     mapDisplayHeader[1] = EXT_CTRL_CODE_HIGHLIGHT;
     mapDisplayHeader[2] = TEXT_COLOR_TRANSPARENT;
@@ -237,6 +237,6 @@ void LoadMapNamePopUpWindowBg(void)
     PutWindowTilemap(popupWindowId);
     
     LoadPalette(gMapPopUp_Pal, 0xE0, 0x20);
-    FillWindowPixelRect(popupWindowId, PIXEL_FILL(3), 0, 0, 8*14, 3);
-    FillWindowPixelRect(popupWindowId, PIXEL_FILL(1), 0, 3, 8*14, 8*3-3);
+    FillWindowPixelRect(popupWindowId, PIXEL_FILL(3), 0, 0, 8*MAP_NAME_WINDOW_WIDTH, 3);
+    FillWindowPixelRect(popupWindowId, PIXEL_FILL(1), 0, 3, 8*MAP_NAME_WINDOW_WIDTH, 8*3-3);
 }

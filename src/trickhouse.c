@@ -762,7 +762,7 @@ static void ShowMapNamePopUpWindow(u16 num, bool8 mode)
 
     AddMapNamePopUpWindow();
     LoadMapNamePopUpWindowBg();
-    x = GetStringCenterAlignXOffset(7, withoutPrefixPtr, 8*14);
+    x = GetStringCenterAlignXOffset(7, withoutPrefixPtr, 8*MAP_NAME_WINDOW_WIDTH);
     mapDisplayHeader[0] = EXT_CTRL_CODE_BEGIN;
     mapDisplayHeader[1] = EXT_CTRL_CODE_HIGHLIGHT;
     mapDisplayHeader[2] = TEXT_COLOR_TRANSPARENT;
