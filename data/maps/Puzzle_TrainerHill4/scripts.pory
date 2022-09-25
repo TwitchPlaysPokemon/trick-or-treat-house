@@ -107,3 +107,40 @@ script Puzzle_TrainerHill4_Trainer4B {
 			"That's an odd name, “Stranger Danger”.\n"
 			"Very zen.$", MSGBOX_AUTOCLOSE)
 }
+
+// ----------------------------------------------------
+
+script Puzzle_TrainerHill4_Kecleon {
+	lock
+	faceplayer
+	if (defeated(TRAINER_03)) {
+		msgbox ("Something unseeable is in the way.\n"
+				"Want to poke at it?$", MSGBOX_YESNO)
+		if (var(VAR_RESULT)) {
+			msgbox ("{PLAYER} poked the air with a stick.\p"
+					"An invisible Pokémon became completely\n"
+					"visible!\p"
+					"The startled Pokémon fled!$")
+			closemessage
+			applymovement(THIS_EVENT, Common_Movement_KecleonShowAnim)
+			waitmovement
+			waitse
+			playmoncry(SPECIES_KECLEON, 2)
+			delay (40)
+			waitmoncry
+			switch (var(VAR_FACING)) {
+				case DIR_NORTH: applymovement (THIS_EVENT, Common_Movement_WalkUp1)
+				case DIR_SOUTH: applymovement (THIS_EVENT, Common_Movement_WalkDown1)
+				case DIR_EAST: applymovement (THIS_EVENT, Common_Movement_WalkRight1)
+				case DIR_WEST: applymovement (THIS_EVENT, Common_Movement_WalkLeft1)
+			}
+			
+			waitmovement
+			removeobject(THIS_EVENT)
+		}
+	} else {
+		msgbox ("Something unseeable is in the way.$")
+	}
+	release
+	end
+}
