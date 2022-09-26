@@ -34,3 +34,8 @@ gText_SavingDontTurnOffPower::
 
 gText_ConfirmEscape::
 	.string "Use an Escape Rope?$"
+gText_ConfirmEscape_ResetWarning::
+	.string "WARNING: This puzzle is designed to\n"
+	.string "reset your progress on escaping!\p"
+	.string "Are you sure you wish to use an\n"
+	.string "Escape Rope?$"

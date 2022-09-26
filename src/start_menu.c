@@ -38,6 +38,7 @@
 #include "trainer_card.h"
 #include "window.h"
 #include "union_room.h"
+#include "trickhouse.h"
 #include "constants/battle_frontier.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
@@ -778,14 +779,8 @@ static void ItemUseFromStartMenu_EscapeRope(u8 taskId)
     SetUpItemUseOnFieldCallback(taskId);
 }
 
-#if TPP_MODE
-static bool8 EscapeConfirmInputCallback(void)
+static bool8 EscapeConfirmInputCallback2(void)
 {
-    if (RunTextPrintersAndIsPrinter0Active() == TRUE)
-    {
-        return FALSE;
-    }
-    
     switch (Menu_ProcessInputNoWrapClearOnChoose())
     {
     case 0: // Yes
@@ -801,32 +796,35 @@ static bool8 EscapeConfirmInputCallback(void)
         InitStartMenu();
         gMenuCallback = HandleStartMenuInput;
     }
-    
     return FALSE;
 }
 
-#endif
+static bool8 EscapeConfirmInputCallback1(void)
+{
+    if (RunTextPrintersAndIsPrinter0Active() == TRUE)
+    {
+        return FALSE;
+    }
+    DisplayYesNoMenuWithDefault(1); // Show Yes/No menu
+    gMenuCallback = EscapeConfirmInputCallback2;
+    return FALSE;
+}
 
 static bool8 StartMenuEscapeCallback(void)
 {
-#if !TPP_MODE
-    // Exit immedeately
-    RemoveExtraStartMenuWindows();
-    HideStartMenu();
-    CreateTask(ItemUseFromStartMenu_EscapeRope, 0xFF);
-    return TRUE;
-#else
+    const u8* str = gText_ConfirmEscape;
+    if (CheckForPuzzleEscapeRopeScript()) {
+        str = gText_ConfirmEscape_ResetWarning;
+    }
     ClearStdWindowAndFrame(GetStartMenuWindowId(), FALSE);
     RemoveStartMenuWindow();
     
-    StringExpandPlaceholders(gStringBuffer, gText_ConfirmEscape);
+    StringExpandPlaceholders(gStringBuffer, str);
     LoadMessageBoxAndFrameGfx(0, TRUE);
     AddTextPrinterForMessage_2(TRUE);
-    DisplayYesNoMenuWithDefault(1); // Show Yes/No menu
     
-    gMenuCallback = EscapeConfirmInputCallback;
+    gMenuCallback = EscapeConfirmInputCallback1;
     return FALSE;
-#endif
 }
 
 // void ShowBattlePyramidStartMenu(void)

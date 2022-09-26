@@ -147,6 +147,17 @@ void RunPuzzleBlackoutScript()
 	}
 }
 
+bool8 CheckForPuzzleEscapeRopeScript()
+{
+	u16 currPuzzle = GetCurrentPuzzleMapId();
+	const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_ESCAPE_SCRIPT);
+	if (script != NULL)
+	{
+		return TRUE;
+	}
+	return FALSE;
+}
+
 void RunPuzzleEscapeRopeScript()
 {
 	u16 currPuzzle = GetCurrentPuzzleMapId();

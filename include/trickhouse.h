@@ -7,5 +7,6 @@ void RunPuzzleIntro();
 void RunPuzzleTeardownScript();
 void RunPuzzleBlackoutScript();
 void RunPuzzleEscapeRopeScript();
+bool8 CheckForPuzzleEscapeRopeScript();
 
 #endif // GUARD_TRICKHOUSE_H

@@ -17,7 +17,7 @@ Feature Merging:
 - [ ] Tutorial: Improve loading of battle terrain (possibly)
 - [ ] Tutorial: Fix snow weather
 - [ ] Tutorial: Missing text function RESET_SIZE
-- [ ] Tutorial: Improve WaitForVBlank
+- [X] Tutorial: Improve WaitForVBlank
 - [ ] Tutorial: EWRAM summary screen improvements?
 - [X] Tutorial: Custom Border Dimensions (porymap supported)
 - [X] Tutorial: Trigger map scripts by flag
