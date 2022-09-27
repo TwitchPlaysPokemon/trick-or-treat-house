@@ -1187,18 +1187,14 @@ static void TrainerBattleLoadArgs(const struct TrainerBattleParameter *specs, co
 
 void SetMapVarsToTrainer(void)
 {
-    mgba_printf(MGBA_LOG_INFO, "SetMapVarsToTrainer lid=%d  oppo=%d", sTrainerObjectEventLocalId, gTrainerBattleOpponent_A);
+    // mgba_printf(MGBA_LOG_INFO, "SetMapVarsToTrainer lid=%d  oppo=%d", sTrainerObjectEventLocalId, gTrainerBattleOpponent_A);
     if (sTrainerObjectEventLocalId != 0)
     {
         gSpecialVar_LastTalked = sTrainerObjectEventLocalId;
         gSelectedObjectEvent = GetObjectEventIdByLocalIdAndMap(sTrainerObjectEventLocalId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
     }
-    if (!FlagGet(FLAG_SYS_BORT_MODE)) {
-        if (gTrainerBattleOpponent_B != 0) {
-            gSpeakerName = GetTrainer(gTrainerBattleOpponent_B)->trainerName;
-        } else if (gTrainerBattleOpponent_A != 0) {
-            gSpeakerName = GetTrainer(gTrainerBattleOpponent_A)->trainerName;
-        }
+    if (gTrainerBattleOpponent_A != 0) {
+        gSpeakerName = GetTrainer(gTrainerBattleOpponent_A)->trainerName;
     }
 }
 
@@ -1578,10 +1574,14 @@ static const u8 *ReturnEmptyStringIfNull(const u8 *string)
 
 static const u8 *GetIntroSpeechOfApproachingTrainer(void)
 {
-    if (gApproachingTrainerId == 0)
+    if (gApproachingTrainerId == 0) {
+        gSpeakerName = GetTrainer(gTrainerBattleOpponent_A)->trainerName;
         return ReturnEmptyStringIfNull(sTrainerAIntroSpeech);
-    else
+    }
+    else {
+        gSpeakerName = GetTrainer(gTrainerBattleOpponent_B)->trainerName;
         return ReturnEmptyStringIfNull(sTrainerBIntroSpeech);
+    }
 }
 
 const u8 *GetTrainerALoseText(void)

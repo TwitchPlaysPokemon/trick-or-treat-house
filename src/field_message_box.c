@@ -6,6 +6,7 @@
 #include "text.h"
 #include "match_call.h"
 #include "field_message_box.h"
+#include "event_data.h"
 #include "mgba.h"
 
 static EWRAM_DATA u8 sFieldMessageBoxMode = 0;
@@ -132,7 +133,10 @@ extern void FillDialogFramePlate();
 extern int GetDialogFramePlateWidth();
 static void ExpandStringAndStartDrawFieldMessage(const u8 *str, bool32 allowSkippingDelayWithButtonPress)
 {
+    if (FlagGet(FLAG_SYS_BORT_MODE)) gSpeakerName = NULL; // Don't show names in BORT mode
     if (gSpeakerName != NULL) {
+        // mgba_printf(MGBA_LOG_INFO, "DRAWING SPEAKER NAME: ");
+        // mgba_printEncoded(MGBA_LOG_INFO, gSpeakerName);
         int strLen = GetStringWidth(FONT_SMALL, gSpeakerName, -1);
         if (strLen > 0) {
             strLen = GetDialogFramePlateWidth()/2 - strLen/2;
