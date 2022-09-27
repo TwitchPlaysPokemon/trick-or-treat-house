@@ -284,6 +284,8 @@ CommonName_LINK::
 CommonName_IRENE::
 CommonName_FAIRY::
 	.string "{IRENE}$"
+CommonName_WALLY::
+	.string "{WALLY}$"
 
 
 @ Message Scripts

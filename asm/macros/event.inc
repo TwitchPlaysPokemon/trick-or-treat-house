@@ -940,14 +940,18 @@
 	.endm
 	
 	.macro speakername text:req
-	@ TODO
+	.byte SCRCMD_SETSPEAKERNAM
+	.4byte \text
 	.endm
 	
 	.macro speakername_common text:req
-	@ TODO CommonName_\text
+	.byte SCRCMD_SETSPEAKERNAM
+	.4byte CommonName_\text
 	.endm
 	
 	.macro clearspeaker
+	.byte SCRCMD_SETSPEAKERNAM
+	.4byte NULL
 	@ TODO gText_ExpandedPlaceholder_\text
 	.endm
 

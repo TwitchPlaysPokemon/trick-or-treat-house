@@ -102,7 +102,8 @@ script PuzzleDebug_EventScript_PlayCredits {
 script PuzzleDebug_EventScript_TustinsMenu {
 	lock
 	faceplayer
-	msgbox ("Tustin2121: What do you need to change?$")
+	speakername("Tustin2121$")
+	msgbox ("What do you need to change?$")
 	closemessage
 	loaddynamicstring(0, "PuzzCompleted")
 	loaddynamicstring(1, "Sun Offset")

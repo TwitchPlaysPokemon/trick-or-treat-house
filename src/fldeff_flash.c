@@ -328,6 +328,7 @@ static void Task_EnterCaveTransition3(u8 taskId)
         gTasks[taskId].data[2]++;
         gTasks[taskId].data[2]++;
         LoadPalette(&sCaveTransitionPalette_Enter[15 - count], 0xE0, 2 * (count + 1));
+        // Note: This actually loads both Enter and Exit (right after it in memory) when count > 8
     }
     else
     {

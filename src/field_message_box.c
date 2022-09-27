@@ -8,6 +8,7 @@
 #include "field_message_box.h"
 
 static EWRAM_DATA u8 sFieldMessageBoxMode = 0;
+EWRAM_DATA const u8* gSpeakerName = NULL;
 
 static void ExpandStringAndStartDrawFieldMessage(const u8 *, bool32);
 static void StartDrawFieldMessage(void);
@@ -30,13 +31,23 @@ static void Task_DrawFieldMessage(u8 taskId)
     switch (task->tState)
     {
         case 0:
-           LoadMessageBoxAndBorderGfx();
-           task->tState++;
-           break;
+            LoadMessageBoxAndBorderGfx();
+            task->tState++;
+            break;
         case 1:
-           DrawDialogueFrame(0, TRUE);
-           task->tState++;
-           break;
+            if (gSpeakerName != NULL) {
+                // FillWindowPixelBuffer(1, PIXEL_FILL(15));
+                // RunTextPrinters();
+                DrawDialogueFrameWithFrame(0, TRUE);
+                PutWindowTilemap(1);
+                // CopyWindowToVram(1, COPYWIN_FULL);
+            }
+            else {
+                DrawDialogueFrame(0, TRUE);
+            } 
+            task->tState++;
+            break;
+            // TODO, new case, draw name
         case 2:
             if (RunTextPrintersAndIsPrinter0Active() != TRUE)
             {
@@ -117,8 +128,27 @@ bool8 ShowFieldMessageFromBuffer(void)
     return TRUE;
 }
 
+extern void FillDialogFramePlate();
+extern int GetDialogFramePlateWidth();
 static void ExpandStringAndStartDrawFieldMessage(const u8 *str, bool32 allowSkippingDelayWithButtonPress)
 {
+    if (gSpeakerName != NULL) {
+        int strLen = GetStringWidth(FONT_SMALL, gSpeakerName, -1);
+        strLen = GetDialogFramePlateWidth()/2 - strLen/2;
+        if (strLen > 0) {
+            gStringVar6[0] = EXT_CTRL_CODE_BEGIN;
+            gStringVar6[1] = EXT_CTRL_CODE_CLEAR_TO;
+            gStringVar6[2] = strLen;
+            StringExpandPlaceholders(&gStringVar6[3], gSpeakerName);
+        } else {
+            StringExpandPlaceholders(&gStringVar6[0], gSpeakerName);
+        }
+        FillDialogFramePlate();
+        // FillWindowPixelBuffer(1, PIXEL_FILL(15));
+        AddTextPrinterParameterized2(1, FONT_SMALL, gStringVar6, 0, NULL, 1, 0, 2);
+        PutWindowTilemap(1);
+        CopyWindowToVram(1, COPYWIN_FULL);
+    }
     StringExpandPlaceholders(gStringBuffer, str);
     AddTextPrinterForMessage(allowSkippingDelayWithButtonPress);
     CreateTask_DrawFieldMessage();
@@ -135,6 +165,7 @@ void HideFieldMessageBox(void)
     DestroyTask_DrawFieldMessage();
     ClearDialogWindowAndFrame(0, TRUE);
     sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
+    gSpeakerName = NULL;
 }
 
 u8 GetFieldMessageBoxMode(void)
@@ -161,4 +192,9 @@ void StopFieldMessage(void)
 {
     DestroyTask_DrawFieldMessage();
     sFieldMessageBoxMode = FIELD_MESSAGE_BOX_HIDDEN;
+}
+
+void SetSpeakerName(const u8* name)
+{
+    gSpeakerName = name;
 }

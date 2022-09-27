@@ -18,5 +18,6 @@ bool8 IsFieldMessageBoxHidden(void);
 u8 GetFieldMessageBoxMode(void);
 void StopFieldMessage(void);
 void InitFieldMessageBox(void);
+void SetSpeakerName(const u8* name);
 
 #endif // GUARD_FIELD_MESSAGE_BOX_H

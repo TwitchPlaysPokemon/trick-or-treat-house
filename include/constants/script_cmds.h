@@ -185,6 +185,7 @@
 #define SCRCMD_DOWEATHER                0xB2
 #define SCRCMD_SETWILDBATTLE            0xB3
 #define SCRCMD_DOWILDBATTLE             0xB4
+#define SCRCMD_SETSPEAKERNAM            0xB5
 
 // TODO REMOVE
 #define SCRCMD_MOVEROTATINGTILEOBJECTS   0xE9
