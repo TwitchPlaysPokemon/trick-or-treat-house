@@ -53,7 +53,7 @@ script Puzzle_TrainerHill2_Trainer1B {
 
 script Puzzle_TrainerHill2_Trainer2A {
 	trainerbattle_single(TRAINER_03, 
-			"My power will STOMP YOU!!$", 
+			"My power will PUMMEL YOU!!$", 
 			"I went at it too hard…$")
 	msgbox( "Yes, sir! You look nice and gutsy!$", MSGBOX_AUTOCLOSE)
 }

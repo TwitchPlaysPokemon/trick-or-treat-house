@@ -1,7 +1,7 @@
 [
 	{
 		"class": "TARZAN",
-		"name": "CLAYTON",
+		"name": "Clayton",
 		"music": "ENC_MUS_EM_MALE",
 		"party": [
 			{
@@ -18,7 +18,7 @@
 	},
 	{
 		"class": "SKELETON",
-		"name": "BONE JOVI",
+		"name": "Bone Jovi",
 		"music": "ENC_MUS_EM_MALE",
 		"party": [
 			{
@@ -35,7 +35,7 @@
 	},
 	{
 		"class": "MERMAID",
-		"name": "ARIEL",
+		"name": "Ariel",
 		"female": true,
 		"music": "ENC_MUS_EM_GIRL",
 		"party": [
@@ -58,7 +58,7 @@
 	},
 	{
 		"class": "CORPSE_BRIDE",
-		"name": "HELENA",
+		"name": "Helena",
 		"female": true,
 		"music": "ENC_MUS_EM_GIRL",
 		"party": [
@@ -76,7 +76,7 @@
 	},
 	{
 		"class": "ALIEN",
-		"name": "ALEXA",
+		"name": "Alexa",
 		"female": true,
 		"music": "ENC_MUS_EM_GIRL",
 		"party": [

@@ -3,7 +3,7 @@
 		"class": "MERMAID",
 		"music": "ENC_MUS_EM_SWIMMER",
 		"female": true,
-		"name": "PENELOPE",
+		"name": "Penelope",
 		"party": [
 			{
 				"species": "SPECIES_CLAMPERL",
@@ -17,7 +17,7 @@
 	},
 	{
 		"class": "FROGGER",
-		"name": "EWAN",
+		"name": "Ewan",
 		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"party": [
 			{
@@ -29,7 +29,7 @@
 	
 	{
 		"class": "HIKER",
-		"name": "MONTY",
+		"name": "Monty",
 		"music": "ENC_MUS_EM_INTENSE",
 		"party": [
 			{
@@ -40,7 +40,7 @@
 	},
 	{
 		"class": "NINJA_BOY",
-		"name": "BENNY",
+		"name": "Benny",
 		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"party": [
 			{
@@ -52,7 +52,7 @@
 	
 	{
 		"class": "GHETSIS",
-		"name": "CARVER",
+		"name": "Carver",
 		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"party": [
 			{
@@ -63,7 +63,7 @@
 	},
 	{
 		"class": "MASKED_BOY",
-		"name": "LUKAS",
+		"name": "Lukas",
 		"music": "ENC_MUS_EM_COOL",
 		"party": [
 			{
@@ -74,7 +74,7 @@
 	},
 	{
 		"class": "PLASMA_KID",
-		"name": "OLIVIER",
+		"name": "Olivier",
 		"music": "ENC_MUS_EM_COOL",
 		"party": [
 			{
@@ -89,7 +89,7 @@
 	},
 	{
 		"class": "ALIEN",
-		"name": "ARYA",
+		"name": "Arya",
 		"female": true,
 		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"party": [

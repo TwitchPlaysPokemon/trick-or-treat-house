@@ -2,7 +2,7 @@
 	{
 		"class": "LEADER",
 		"pic": "LEADER_TATE_AND_LIZA",
-		"name": "TATE&LIZA",
+		"name": "Tate&Liza",
 		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY",
 		"items": ["ITEM_HYPER_POTION"],
 		"doubleBattle": true,
@@ -26,7 +26,7 @@
 	{
 		"class": "RIVAL",
 		"pic": "STEVEN",
-		"name": "STEVEN",
+		"name": "Steven",
 		"music": "ENC_MUS_EM_MALE",
 		"items": ["ITEM_FULL_RESTORE"],
 		"party": [
@@ -48,7 +48,7 @@
 	{
 		"class": "EXPERT",
 		"pic": "EXPERT_M",
-		"name": "PAXTON",
+		"name": "Paxton",
 		"music": "ENC_MUS_EM_INTENSE",
 		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY",
 		"party": [
@@ -64,7 +64,7 @@
 	},
 	{
 		"class": "CAMPER",
-		"name": "DREW",
+		"name": "Drew",
 		"music": "ENC_MUS_EM_MALE",
 		"party": [
 			{

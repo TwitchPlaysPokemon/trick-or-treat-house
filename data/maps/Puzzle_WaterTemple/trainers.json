@@ -1,7 +1,7 @@
 [
 	{
 		"class": "TUBER_M",
-		"name": "TIMMY",
+		"name": "Timmy",
 		"party": [
 			{
 				"species": "SPECIES_TOTODILE",
@@ -12,7 +12,7 @@
 	{
 		"class": "FROGGER",
 		"music": "ENC_MUS_EM_SWIMMER",
-		"name": "LEONARDO",
+		"name": "Leonardo",
 		"party": [
 			{
 				"species": "SPECIES_CARVANHA",
@@ -23,7 +23,7 @@
 	{
 		"class": "FROGGER",
 		"music": "ENC_MUS_EM_SWIMMER",
-		"name": "REED",
+		"name": "Reed",
 		"party": [
 			{
 				"species": "SPECIES_SPHEAL",
@@ -39,7 +39,7 @@
 		"class": "MERMAID",
 		"music": "ENC_MUS_EM_SWIMMER",
 		"female": true,
-		"name": "TINA",
+		"name": "Tina",
 		"party": [
 			{
 				"species": "SPECIES_CHINCHOU",

@@ -2,7 +2,7 @@
 	{
 		"class": "ALIEN",
 		"female": true,
-		"name": "LIZ",
+		"name": "Liz",
 		"party": [
 			{
 				"species": "SPECIES_POOCHYENA",
@@ -16,7 +16,7 @@
 	},
 	{
 		"class": "TWINS_PM",
-		"name": "TIA & LEA",
+		"name": "Tia & Lea",
 		"party": [
 			{
 				"species": "SPECIES_LOTAD",

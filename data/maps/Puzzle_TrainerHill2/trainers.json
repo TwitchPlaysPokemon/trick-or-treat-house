@@ -1,10 +1,10 @@
 [
 	{
 		"class": "KINDLER",
-		"name": "BERNARD",
+		"name": "Bernard",
 		"party": [
 			{
-				"species": "SPECIES_RAPIDASH",
+				"species": "SPECIES_PYROAR",
 				"level": 27
 			}
 		]
@@ -13,10 +13,10 @@
 		"class": "PKMN_RANGER",
 		"pic": "PKMN_RANGER_F",
 		"female": true,
-		"name": "MERDITH",
+		"name": "Merdith",
 		"party": [
 			{
-				"species": "SPECIES_TANGELA",
+				"species": "SPECIES_LURANTIS",
 				"level": 27
 			}
 		]
@@ -24,10 +24,10 @@
 	
 	{
 		"class": "BLACK_BELT",
-		"name": "THEODORE",
+		"name": "Theodore",
 		"party": [
 			{
-				"species": "SPECIES_HITMONTOP",
+				"species": "SPECIES_CRABRAWLER",
 				"level": 28
 			}
 		]
@@ -36,7 +36,7 @@
 		"class": "PKMN_BREEDER",
 		"pic": "POKEMON_BREEDER_F",
 		"female": true,
-		"name": "JAYDEN",
+		"name": "Jayden",
 		"party": [
 			{
 				"species": "SPECIES_TOGEPI",
@@ -48,7 +48,7 @@
 	{
 		"class": "EXPERT",
 		"pic": "EXPERT_M",
-		"name": "TERRENCE",
+		"name": "Terrence",
 		"party": [
 			{
 				"species": "SPECIES_EXPLOUD",
@@ -60,10 +60,10 @@
 		"class": "EXPERT",
 		"pic": "EXPERT_F",
 		"female": true,
-		"name": "CARLOTTA",
+		"name": "Carlotta",
 		"party": [
 			{
-				"species": "SPECIES_POLITOED",
+				"species": "SPECIES_GRAPPLOCT",
 				"level": 29
 			}
 		]
@@ -72,7 +72,7 @@
 	{
 		"class": "PSYCHIC",
 		"pic": "PSYCHIC_M",
-		"name": "KEENAN",
+		"name": "Keenan",
 		"party": [
 			{
 				"species": "SPECIES_GRUMPIG",
@@ -82,11 +82,11 @@
 	},
 	{
 		"class": "AROMA_LADY",
-		"name": "KRISTINA",
+		"name": "Kristina",
 		"female": true,
 		"party": [
 			{
-				"species": "SPECIES_TROPIUS",
+				"species": "SPECIES_ROSERADE",
 				"level": 30
 			}
 		]

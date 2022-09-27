@@ -1,7 +1,7 @@
 [
 	{
 		"class": "HERO_OF_TIME",
-		"name": "DREW",
+		"name": "Drew",
 		"party": [
 			{
 				"species": "SPECIES_SANDSHREW",
@@ -12,7 +12,7 @@
 	},
 	{
 		"class": "SKELETON",
-		"name": "JAIME",
+		"name": "Jaime",
 		"music": "ENC_MUS_EM_MALE",
 		"party": [
 			{
@@ -27,7 +27,7 @@
 	},
 	{
 		"class": "PICNICKER",
-		"name": "EMILY",
+		"name": "Emily",
 		"female": true,
 		"music": "ENC_MUS_EM_GIRL",
 		"party": [

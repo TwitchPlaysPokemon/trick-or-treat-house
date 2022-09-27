@@ -2,7 +2,7 @@
 	{
 		"class": "LEADER",
 		"pic": "LEADER_NORMAN",
-		"name": "NORMAN",
+		"name": "Norman",
 		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY",
 		"items": ["ITEM_HYPER_POTION"],
 		"party": [
@@ -17,7 +17,7 @@
 	},
 	{
 		"class": "YOUNGSTER",
-		"name": "KYLE",
+		"name": "Kyle",
 		"music": "ENC_MUS_EM_MALE",
 		"party": [
 			{
@@ -33,7 +33,7 @@
 	{
 		"class": "POKEFAN",
 		"pic": "POKEFAN_F",
-		"name": "RACHEL",
+		"name": "Rachel",
 		"female": true,
 		"music": "ENC_MUS_EM_TWINS",
 		"party": [

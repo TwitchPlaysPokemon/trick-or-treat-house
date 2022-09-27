@@ -2,7 +2,7 @@
 	{
 		"class": "SCHOOL_KID",
 		"pic": "SCHOOL_KID_M",
-		"name": "TED",
+		"name": "Ted",
 		"party": [
 			{
 				"species": "SPECIES_RALTS",
@@ -13,7 +13,7 @@
 	},
 	{
 		"class": "MASKED_BOY",
-		"name": "PAUL",
+		"name": "Paul",
 		"party": [
 			{
 				"species": "SPECIES_NUMEL",
@@ -36,7 +36,7 @@
 		"class": "FAIRY_GIRL",
 		"music": "ENC_MUS_EM_GIRL",
 		"female": true,
-		"name": "GEORGIA",
+		"name": "Georgia",
 		"party": [
 			{
 				"species": "SPECIES_SHROOMISH",

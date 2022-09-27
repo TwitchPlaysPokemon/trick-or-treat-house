@@ -1150,8 +1150,6 @@
 		.byte 3
 	.elseif \id == STR_VAR_5
 		.byte 4
-	.elseif \id == STR_VAR_6
-		.byte 5
 	.else
 		.byte \id
 	.endif

@@ -1,7 +1,7 @@
 [
 	{
 		"class": "SR_AND_JR",
-		"name": "KATE & LIZ",
+		"name": "Kate & Liz",
 		"music": "ENC_MUS_EM_TWINS",
 		"doubleBattle": true,
 		"party": [
@@ -19,7 +19,7 @@
 	},
 	{
 		"class": "LASS",
-		"name": "EMILY",
+		"name": "Emily",
 		"party": [
 			{
 				"species": "SPECIES_LOTAD",

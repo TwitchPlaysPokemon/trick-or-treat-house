@@ -1,10 +1,10 @@
 [
 	{
 		"class": "GENTLEMAN",
-		"name": "TERRANCE",
+		"name": "Terrance",
 		"party": [
 			{
-				"species": "SPECIES_PIKACHU",
+				"species": "SPECIES_DELIBIRD",
 				"item": "ITEM_SITRUS_BERRY",
 				"level": 28
 			}
@@ -12,11 +12,11 @@
 	},
 	{
 		"class": "LADY",
-		"name": "ELIZABETH",
+		"name": "Elizabeth",
 		"female": true,
 		"party": [
 			{
-				"species": "SPECIES_CLAMPERL",
+				"species": "SPECIES_THROH",
 				"item": "ITEM_SILK_SCARF",
 				"level": 28
 			}
@@ -25,10 +25,10 @@
 	
 	{
 		"class": "YOUNGSTER",
-		"name": "BREYDEN",
+		"name": "Breyden",
 		"party": [
 			{
-				"species": "SPECIES_CHARMELEON",
+				"species": "SPECIES_RABOOT",
 				"item": "ITEM_CHARCOAL",
 				"level": 29
 			}
@@ -38,10 +38,10 @@
 		"class": "TUBER_F",
 		"pic": "TUBER_F",
 		"female": true,
-		"name": "ANIYA",
+		"name": "Aniya",
 		"party": [
 			{
-				"species": "SPECIES_WYNAUT",
+				"species": "SPECIES_TOXEL",
 				"item": "ITEM_LEFTOVERS",
 				"level": 29
 			}
@@ -52,10 +52,10 @@
 		"class": "PKMN_RANGER",
 		"pic": "PKMN_RANGER_F",
 		"female": true,
-		"name": "NORA",
+		"name": "Nora",
 		"party": [
 			{
-				"species": "SPECIES_FORRETRESS",
+				"species": "SPECIES_LYCANROC_DUSK",
 				"level": 30
 			}
 		]
@@ -63,7 +63,7 @@
 	{
 		"class": "PKMN_RANGER",
 		"pic": "PKMN_RANGER_M",
-		"name": "GAV",
+		"name": "Gav",
 		"party": [
 			{
 				"species": "SPECIES_GLIGAR",
@@ -75,10 +75,10 @@
 	{
 		"class": "COOLTRAINER",
 		"pic": "COOLTRAINER_M",
-		"name": "RODERICK",
+		"name": "Roderick",
 		"party": [
 			{
-				"species": "SPECIES_MACHAMP",
+				"species": "SPECIES_BEWEAR",
 				"item": "ITEM_LEFTOVERS",
 				"level": 31
 			},
@@ -93,10 +93,10 @@
 		"class": "COOLTRAINER",
 		"pic": "COOLTRAINER_F",
 		"female": true,
-		"name": "ALICIA",
+		"name": "Alicia",
 		"party": [
 			{
-				"species": "SPECIES_NINETALES",
+				"species": "SPECIES_NINETALES_ALOLAN",
 				"item": "ITEM_WHITE_HERB",
 				"level": 31
 			},

@@ -1,7 +1,7 @@
 [
 	{
 		"class": "SKELETON",
-		"name": "JEFFERY",
+		"name": "Jeffery",
 		"party": [
 			{
 				"species": "SPECIES_ZIGZAGOON",
@@ -11,7 +11,7 @@
 	},
 	{
 		"class": "ALIEN",
-		"name": "EMILY",
+		"name": "Emily",
 		"party": [
 			{
 				"species": "SPECIES_LOTAD",

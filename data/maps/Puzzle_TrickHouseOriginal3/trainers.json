@@ -1,7 +1,7 @@
 [
 	{
 		"class": "CAMPER",
-		"name": "JUSTIN",
+		"name": "Justin",
 		"party": [
 			{
 				"species": "SPECIES_KECLEON",
@@ -13,7 +13,7 @@
 		"class": "PICNICKER",
 		"music": "ENC_MUS_EM_GIRL",
 		"female": true,
-		"name": "MARTHA",
+		"name": "Martha",
 		"party": [
 			{
 				"species": "SPECIES_SKITTY",
@@ -28,7 +28,7 @@
 	{
 		"class": "HIKER",
 		"music": "ENC_MUS_EM_HIKER",
-		"name": "ALAN",
+		"name": "Alan",
 		"party": [
 			{
 				"species": "SPECIES_GEODUDE",

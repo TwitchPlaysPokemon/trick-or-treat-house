@@ -4,7 +4,7 @@
 		"music": "ENC_MUS_EM_COOL",
 		"pic": "PKMN_RANGER_F",
 		"female": true,
-		"name": "SOPHIA",
+		"name": "Sophia",
 		"items": ["ITEM_FULL_RESTORE"],
 		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY",
 		"party": [
@@ -23,7 +23,7 @@
 	{
 		"class": "BIRD_KEEPER",
 		"music": "ENC_MUS_EM_COOL",
-		"name": "BENNY",
+		"name": "Benny",
 		"party": [
 			{
 				"species": "SPECIES_SWELLOW",
@@ -43,7 +43,7 @@
 		"class": "PKMN_RANGER",
 		"music": "ENC_MUS_EM_COOL",
 		"pic": "PKMN_RANGER_M",
-		"name": "SEBASTIAN",
+		"name": "Sebastian",
 		"items": ["ITEM_FULL_RESTORE"],
 		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY",
 		"party": [

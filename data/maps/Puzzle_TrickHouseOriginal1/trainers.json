@@ -3,7 +3,7 @@
 		"class": "LASS",
 		"music": "ENC_MUS_EM_FEMALE",
 		"female": true,
-		"name": "SALLY",
+		"name": "Sally",
 		"party": [
 			{
 				"species": "SPECIES_ODDISH",
@@ -13,7 +13,7 @@
 	},
 	{
 		"class": "YOUNGSTER",
-		"name": "EDDIE",
+		"name": "Eddie",
 		"party": [
 			{
 				"species": "SPECIES_ZIGZAGOON",
@@ -29,7 +29,7 @@
 		"class": "LASS",
 		"music": "ENC_MUS_EM_FEMALE",
 		"female": true,
-		"name": "ROBIN",
+		"name": "Robin",
 		"party": [
 			{
 				"species": "SPECIES_SKITTY",

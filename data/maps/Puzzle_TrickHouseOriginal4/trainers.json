@@ -3,7 +3,7 @@
 		"class": "BATTLE_GIRL",
 		"music": "ENC_MUS_DP_INTENSE",
 		"female": true,
-		"name": "KORA",
+		"name": "Kora",
 		"party": [
 			{
 				"species": "SPECIES_MEDITITE",
@@ -15,7 +15,7 @@
 	{
 		"class": "BLACK_BELT",
 		"music": "ENC_MUS_DP_HIKER",
-		"name": "YUJI",
+		"name": "Yuji",
 		"party": [
 			{
 				"species": "SPECIES_MAKUHITA",
@@ -33,7 +33,7 @@
 		"class": "BATTLE_GIRL",
 		"music": "ENC_MUS_DP_GIRL",
 		"female": true,
-		"name": "PAULA",
+		"name": "Paula",
 		"party": [
 			{
 				"species": "SPECIES_BRELOOM",

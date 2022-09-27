@@ -1,7 +1,7 @@
 [
 	{
 		"class": "CAMPER",
-		"name": "RYAN",
+		"name": "Ryan",
 		"party": [
 			{
 				"species": "SPECIES_SANDSLASH",
@@ -11,7 +11,7 @@
 	},
 	{
 		"class": "NINJA_BOY",
-		"name": "NIGEL",
+		"name": "Nigel",
 		"music": "ENC_MUS_EM_MALE",
 		"party": [
 			{
@@ -22,7 +22,7 @@
 	},
 	{
 		"class": "SKELETON",
-		"name": "JAMAL",
+		"name": "Jamal",
 		"music": "ENC_MUS_EM_MALE",
 		"party": [
 			{
@@ -33,7 +33,7 @@
 	},
 	{
 		"class": "SKELETON",
-		"name": "IAN",
+		"name": "Ian",
 		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"party": [
 			{
@@ -48,7 +48,7 @@
 	},
 	{
 		"class": "ALIEN",
-		"name": "KELSEY",
+		"name": "Kelsey",
 		"female": true,
 		"music": "ENC_MUS_EM_INTENSE",
 		"party": [

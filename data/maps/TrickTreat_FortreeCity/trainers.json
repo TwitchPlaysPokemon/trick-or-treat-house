@@ -2,7 +2,7 @@
 	{
 		"class": "LEADER",
 		"pic": "LEADER_WINONA",
-		"name": "WINONA",
+		"name": "Winona",
 		"female": true,
 		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY",
 		"items": ["ITEM_HYPER_POTION"],
@@ -18,7 +18,7 @@
 	},
 	{
 		"class": "PLASMA_KID",
-		"name": "JEREMY",
+		"name": "Jeremy",
 		"music": "ENC_MUS_EM_COOL",
 		"party": [
 			{
@@ -35,7 +35,7 @@
 	},
 	{
 		"class": "FAIRY_GIRL",
-		"name": "KAYLEE",
+		"name": "Kaylee",
 		"female": true,
 		"music": "ENC_MUS_EM_TWINS",
 		"party": [
@@ -51,7 +51,7 @@
 	},
 	{
 		"class": "TARZAN",
-		"name": "MAGEE",
+		"name": "Magee",
 		"music": "ENC_MUS_EM_INTENSE",
 		"party": [
 			{
@@ -63,7 +63,7 @@
 	{
 		"class": "EXPERT",
 		"pic": "EXPERT_F",
-		"name": "EUNICE",
+		"name": "Eunice",
 		"music": "ENC_MUS_EM_INTENSE",
 		"party": [
 			{
@@ -79,7 +79,7 @@
 	{
 		"class": "POKEFAN",
 		"pic": "POKEFAN_M",
-		"name": "DERICK",
+		"name": "Derick",
 		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"party": [
 			{
@@ -94,7 +94,7 @@
 	},
 	{
 		"class": "PIKAKID",
-		"name": "LUCY",
+		"name": "Lucy",
 		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"party": [
 			{
@@ -105,7 +105,7 @@
 	},
 	{
 		"class": "NINJA_BOY",
-		"name": "HIDEKI",
+		"name": "Hideki",
 		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"party": [
 			{

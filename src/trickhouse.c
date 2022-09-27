@@ -264,8 +264,8 @@ void CheckIfNoMorePuzzles(struct ScriptContext *ctx)
 void GetTrainerIDMod(struct ScriptContext *ctx)
 {
     u16 trainerId = (gSaveBlock2Ptr->playerTrainerId[1] << 8) | gSaveBlock2Ptr->playerTrainerId[0];
-	if (gSpecialVar_0x8000 == 0) gSpecialVar_0x8000 = 5;
-    gSpecialVar_Result = trainerId % gSpecialVar_0x8000;
+	if (ctx->locals[0] == 0) ctx->locals[0] = 5;
+    gSpecialVar_Result = trainerId % ctx->locals[0];
 }
 
 void GetNumPuzzlesCompleted(struct ScriptContext *ctx)

@@ -2,7 +2,7 @@
 	{
 		"class": "PLASMA_KID",
 		"music": "ENC_MUS_EM_INTENSE",
-		"name": "JOSHUA",
+		"name": "Joshua",
 		"party": [
 			{
 				"species": "SPECIES_KADABRA",
@@ -18,7 +18,7 @@
 		"class": "HEX_MANIAC",
 		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"female": true,
-		"name": "PATRICIA",
+		"name": "Patricia",
 		"party": [
 			{
 				"species": "SPECIES_BANETTE",
@@ -35,7 +35,7 @@
 		"music": "ENC_MUS_EM_TWINS",
 		"female": true,
 		"doubleBattle": true,
-		"name": "AMY & LIV",
+		"name": "Amy & LIV",
 		"party": [
 			{
 				"species": "SPECIES_PLUSLE",
@@ -52,7 +52,7 @@
 		"music": "ENC_MUS_EM_INTENSE",
 		"pic": "PSYCHIC_F",
 		"female": true,
-		"name": "MARIELA",
+		"name": "Mariela",
 		"party": [
 			{
 				"species": "SPECIES_CHIMECHO",
@@ -64,7 +64,7 @@
 		"class": "PSYCHIC",
 		"music": "ENC_MUS_EM_INTENSE",
 		"pic": "PSYCHIC_M",
-		"name": "ALVARO",
+		"name": "Alvaro",
 		"party": [
 			{
 				"species": "SPECIES_BANETTE",
@@ -79,7 +79,7 @@
 	{
 		"class": "GHETSIS",
 		"music": "ENC_MUS_EM_RICH",
-		"name": "EVERETT",
+		"name": "Everett",
 		"party": [
 			{
 				"species": "SPECIES_WOBBUFFET",

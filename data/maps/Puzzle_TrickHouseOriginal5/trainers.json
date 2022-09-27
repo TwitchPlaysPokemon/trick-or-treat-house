@@ -3,7 +3,7 @@
 		"class": "PSYCHIC",
 		"music": "ENC_MUS_EM_INTENSE",
 		"pic": "PSYCHIC_M",
-		"name": "JOSHUA",
+		"name": "Joshua",
 		"party": [
 			{
 				"species": "SPECIES_KADABRA",
@@ -19,7 +19,7 @@
 		"class": "HEX_MANIAC",
 		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"female": true,
-		"name": "PATRICIA",
+		"name": "Patricia",
 		"party": [
 			{
 				"species": "SPECIES_BANETTE",
@@ -31,7 +31,7 @@
 		"class": "ALIEN",
 		"music": "ENC_MUS_EM_GIRL",
 		"female": true,
-		"name": "ALEXIS",
+		"name": "Alexis",
 		"party": [
 			{
 				"species": "SPECIES_KIRLIA",

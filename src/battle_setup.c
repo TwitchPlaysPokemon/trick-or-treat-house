@@ -34,6 +34,7 @@
 #include "mirage_tower.h"
 #include "field_screen_effect.h"
 #include "data.h"
+#include "mgba.h"
 #include "constants/battle_frontier.h"
 #include "constants/battle_setup.h"
 #include "constants/game_stat.h"
@@ -1186,10 +1187,18 @@ static void TrainerBattleLoadArgs(const struct TrainerBattleParameter *specs, co
 
 void SetMapVarsToTrainer(void)
 {
+    mgba_printf(MGBA_LOG_INFO, "SetMapVarsToTrainer lid=%d  oppo=%d", sTrainerObjectEventLocalId, gTrainerBattleOpponent_A);
     if (sTrainerObjectEventLocalId != 0)
     {
         gSpecialVar_LastTalked = sTrainerObjectEventLocalId;
         gSelectedObjectEvent = GetObjectEventIdByLocalIdAndMap(sTrainerObjectEventLocalId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
+    }
+    if (!FlagGet(FLAG_SYS_BORT_MODE)) {
+        if (gTrainerBattleOpponent_B != 0) {
+            gSpeakerName = GetTrainer(gTrainerBattleOpponent_B)->trainerName;
+        } else if (gTrainerBattleOpponent_A != 0) {
+            gSpeakerName = GetTrainer(gTrainerBattleOpponent_A)->trainerName;
+        }
     }
 }
 

@@ -1372,29 +1372,8 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
             lineWidth = 0;
             break;
         case PLACEHOLDER_BEGIN:
-            switch (*++str)
-            {
-            case PLACEHOLDER_ID_STRING_VAR_1:
-                bufferPointer = gStringVar1;
-                break;
-            case PLACEHOLDER_ID_STRING_VAR_2:
-                bufferPointer = gStringVar2;
-                break;
-            case PLACEHOLDER_ID_STRING_VAR_3:
-                bufferPointer = gStringVar3;
-                break;
-            case PLACEHOLDER_ID_STRING_VAR_4:
-                bufferPointer = gStringVar4;
-                break;
-            case PLACEHOLDER_ID_STRING_VAR_5:
-                bufferPointer = gStringVar5;
-                break;
-            case PLACEHOLDER_ID_STRING_VAR_6:
-                bufferPointer = gStringVar6;
-                break;
-            default:
-                return 0;
-            }
+            bufferPointer = GetExpandedPlaceholder(*++str);
+            // fallthrough
         case CHAR_DYNAMIC:
             if (bufferPointer == NULL)
                 bufferPointer = DynamicPlaceholderTextUtil_GetPlaceholderPtr(*++str);

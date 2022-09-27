@@ -3,7 +3,7 @@
 		"class": "MERMAID",
 		"music": "ENC_MUS_EM_SWIMMER",
 		"female": true,
-		"name": "ELPHABA",
+		"name": "Elphaba",
 		"party": [
 			{
 				"species": "SPECIES_PELIPPER",
@@ -17,7 +17,7 @@
 	},
 	{
 		"class": "HEX_MANIAC",
-		"name": "EDNA",
+		"name": "Edna",
 		"female": true,
 		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"party": [
@@ -33,7 +33,7 @@
 	},
 	{
 		"class": "ALIEN",
-		"name": "REY",
+		"name": "Rey",
 		"female": true,
 		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"party": [
@@ -46,7 +46,7 @@
 	},
 	{
 		"class": "BLACK_BELT",
-		"name": "ZANDER",
+		"name": "Zander",
 		"music": "ENC_MUS_EM_INTENSE",
 		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT",
 		"party": [
@@ -65,7 +65,7 @@
 	{
 		"class": "PSYCHIC",
 		"pic": "PSYCHIC_M",
-		"name": "CARVER",
+		"name": "Carver",
 		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT",
 		"party": [
@@ -83,7 +83,7 @@
 	},
 	{
 		"class": "PLASMA_KID",
-		"name": "YUGI",
+		"name": "Yugi",
 		"music": "ENC_MUS_EM_COOL",
 		"party": [
 			{
@@ -100,7 +100,7 @@
 	},
 	{
 		"class": "NINJA_BOY",
-		"name": "YASU",
+		"name": "Yasu",
 		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT",
 		"party": [

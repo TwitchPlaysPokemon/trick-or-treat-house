@@ -6,6 +6,7 @@
 #include "text.h"
 #include "match_call.h"
 #include "field_message_box.h"
+#include "mgba.h"
 
 static EWRAM_DATA u8 sFieldMessageBoxMode = 0;
 EWRAM_DATA const u8* gSpeakerName = NULL;
@@ -40,14 +41,13 @@ static void Task_DrawFieldMessage(u8 taskId)
                 // RunTextPrinters();
                 DrawDialogueFrameWithFrame(0, TRUE);
                 PutWindowTilemap(1);
-                // CopyWindowToVram(1, COPYWIN_FULL);
+                CopyWindowToVram(1, COPYWIN_FULL);
             }
             else {
                 DrawDialogueFrame(0, TRUE);
             } 
             task->tState++;
             break;
-            // TODO, new case, draw name
         case 2:
             if (RunTextPrintersAndIsPrinter0Active() != TRUE)
             {
@@ -134,18 +134,18 @@ static void ExpandStringAndStartDrawFieldMessage(const u8 *str, bool32 allowSkip
 {
     if (gSpeakerName != NULL) {
         int strLen = GetStringWidth(FONT_SMALL, gSpeakerName, -1);
-        strLen = GetDialogFramePlateWidth()/2 - strLen/2;
         if (strLen > 0) {
-            gStringVar6[0] = EXT_CTRL_CODE_BEGIN;
-            gStringVar6[1] = EXT_CTRL_CODE_CLEAR_TO;
-            gStringVar6[2] = strLen;
-            StringExpandPlaceholders(&gStringVar6[3], gSpeakerName);
+            strLen = GetDialogFramePlateWidth()/2 - strLen/2;
+            gNamePlateBuffer[0] = EXT_CTRL_CODE_BEGIN;
+            gNamePlateBuffer[1] = EXT_CTRL_CODE_CLEAR_TO;
+            gNamePlateBuffer[2] = strLen;
+            StringExpandPlaceholders(&gNamePlateBuffer[3], gSpeakerName);
         } else {
-            StringExpandPlaceholders(&gStringVar6[0], gSpeakerName);
+            StringExpandPlaceholders(&gNamePlateBuffer[0], gSpeakerName);
         }
         FillDialogFramePlate();
         // FillWindowPixelBuffer(1, PIXEL_FILL(15));
-        AddTextPrinterParameterized2(1, FONT_SMALL, gStringVar6, 0, NULL, 1, 0, 2);
+        AddTextPrinterParameterized2(1, FONT_SMALL, gNamePlateBuffer, 0, NULL, 1, 0, 2);
         PutWindowTilemap(1);
         CopyWindowToVram(1, COPYWIN_FULL);
     }

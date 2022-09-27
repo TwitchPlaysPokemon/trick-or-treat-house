@@ -55,10 +55,10 @@ script Puzzle_TrainerHill4_Trainer1B {
 
 script Puzzle_TrainerHill4_Trainer2A {
 	trainerbattle_single(TRAINER_03, 
-			"CARVER: Hey! Let's battle again!\n"
+			"Hey! Let's battle again!\n"
 			"Third time's the charm, right?$", 
 			"Damn!$")
-	msgbox( "CARVER: Oh well, we tried I guess.\n"
+	msgbox( "Oh well, we tried I guess.\n"
 			"Nothing to it.\p"
 			"Zander will be devastated,\n"
 			"but he'll recover eventually.$", MSGBOX_AUTOCLOSE)
@@ -66,11 +66,11 @@ script Puzzle_TrainerHill4_Trainer2A {
 
 script Puzzle_TrainerHill4_Trainer2B {
 	trainerbattle_single(TRAINER_04, 
-			"ZANDER: Now we've got fully equipped\n"
+			"Now we've got fully equipped\n"
 			"team's to fight you with!$", 
 			"How?! Are you like\n"
 			"the champion or something?!$")
-	msgbox( "ZANDER: I think at this point, I'm\n"
+	msgbox( "I think at this point, I'm\n"
 			"just gonna go cry in Carver's arms.\p"
 			"Beaten by a kid! Again!$", MSGBOX_AUTOCLOSE)
 }

@@ -56,7 +56,7 @@ mapscripts TrickHouseEntrance_MapScripts {
 }
 
 script(local) TrickHouseEntrance_OnWarp_Setup {
-	setvar (VAR_0x8000, 6)
+	loadarg(0, 6)
 	callnative (GetTrainerIDMod)
 	setobjectmovementtype (1, MOVEMENT_TYPE_INVISIBLE)
 	addobject (1)
@@ -91,7 +91,7 @@ script TrickHouseEntrance_WalkInCutscene {
 script TrickHouseEntrance_IntroCutscene {
 	lockall
 	setstepcallback (STEP_CB_CYCLE_TEXT_PAL)
-	speakername (CommonName_TrickMaster)
+	speakername_common(TRICK_MASTER)
 	msgbox (PuzzleCommon_Text_GameIntro, MSGBOX_SIGN)
 	setstepcallback (STEP_CB_DUMMY)
 	setvar (VAR_0x8000, 1)
@@ -282,9 +282,9 @@ script TrickHouseEntrance_EventScript_TrickMaster {
 }
 script TrickHouseEntrance_EventScript_FindTrickMaster {
 	lockall
-	setvar (VAR_0x8000, 6)
+	loadarg(0, 6)
 	callnative (GetTrainerIDMod)
-	speakername (CommonName_TrickMaster)
+	speakername_common(TRICK_MASTER)
 	switch (var(VAR_RESULT)) {
 		case 0: msgbox ("Hah? Girr…\p"
 				"How did you know I concealed myself\n"

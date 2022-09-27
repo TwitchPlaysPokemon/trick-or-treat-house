@@ -1,7 +1,7 @@
 [
 	{
 		"class": "SKELETON",
-		"name": "SAMMY",
+		"name": "Sammy",
 		"party": [
 			{
 				"species": "SPECIES_DUSKULL",
@@ -12,7 +12,7 @@
 	{
 		"class": "ALIEN",
 		"female": true,
-		"name": "LIZ",
+		"name": "Liz",
 		"party": [
 			{
 				"species": "SPECIES_UNOWN",
@@ -38,7 +38,7 @@
 	},
 	{
 		"class": "HERO_OF_TIME",
-		"name": "HANK",
+		"name": "Hank",
 		"party": [
 			{
 				"species": "SPECIES_SCIZOR",
@@ -49,7 +49,7 @@
 	{
 		"class": "FAIRY_GIRL",
 		"female": true,
-		"name": "TRISHA",
+		"name": "Trisha",
 		"party": [
 			{
 				"species": "SPECIES_CLEFAIRY",

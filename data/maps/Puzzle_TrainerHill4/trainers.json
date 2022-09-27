@@ -2,17 +2,17 @@
 	{
 		"class": "TRIATHLETE",
 		"pic": "CYCLING_TRIATHLETE_M",
-		"name": "ALFONSO",
+		"name": "Alfonso",
 		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT",
 		"party": [
 			{
-				"species": "SPECIES_MAGNETON",
+				"species": "SPECIES_MAGNEZONE",
 				"item": "ITEM_MAGNET",
 				"level": 28
 			},
 			{
 				"species": "SPECIES_PINSIR",
-				"item": "ITEM_QUICK_CLAW",
+				"item": "ITEM_PINSIRITE",
 				"level": 28
 			}
 		]
@@ -20,7 +20,7 @@
 	{
 		"class": "PSYCHIC",
 		"pic": "PSYCHIC_F",
-		"name": "EDIE",
+		"name": "Edie",
 		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT",
 		"party": [
 			{
@@ -29,7 +29,7 @@
 				"level": 28
 			},
 			{
-				"species": "SPECIES_CLAYDOL",
+				"species": "SPECIES_MIMIKYU",
 				"item": "ITEM_SHELL_BELL",
 				"level": 28
 			}
@@ -39,19 +39,19 @@
 	{
 		"class": "PSYCHIC",
 		"pic": "PSYCHIC_M",
-		"name": "CARVER",
+		"name": "Carver",
 		"music": "ENC_MUS_EM_SUSPICIOUS",
 		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT",
 		"party": [
 			{
-				"species": "SPECIES_KIRLIA",
-				"item": "ITEM_BLACK_GLASSES",
+				"species": "SPECIES_RAPIDASH_GALARIAN",
+				"item": "ITEM_PIXIE_PLATE",
 				"level": 30,
 				"iv": 100
 			},
 			{
-				"species": "SPECIES_SOLROCK",
-				"item": "ITEM_HARD_STONE",
+				"species": "SPECIES_GALLADE",
+				"item": "ITEM_BLACK_GLASSES",
 				"level": 30,
 				"iv": 100
 			},
@@ -65,7 +65,7 @@
 	},
 	{
 		"class": "BLACK_BELT",
-		"name": "ZANDER",
+		"name": "Zander",
 		"music": "ENC_MUS_EM_INTENSE",
 		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT",
 		"party": [
@@ -82,7 +82,7 @@
 				"iv": 100
 			},
 			{
-				"species": "SPECIES_HERACROSS",
+				"species": "SPECIES_SNEASEL_HISUIAN",
 				"item": "ITEM_SHELL_BELL",
 				"level": 30,
 				"iv": 100
@@ -92,16 +92,16 @@
 	
 	{
 		"class": "RICH_BOY",
-		"name": "ENRIQUE",
+		"name": "Enrique",
 		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT",
 		"party": [
 			{
-				"species": "SPECIES_WOOPER",
+				"species": "SPECIES_TOXTRICITY",
 				"item": "ITEM_FIGY_BERRY",
 				"level": 30
 			},
 			{
-				"species": "SPECIES_PSYDUCK",
+				"species": "SPECIES_RILLABOOM",
 				"item": "ITEM_AGUAV_BERRY",
 				"level": 30
 			}
@@ -109,16 +109,16 @@
 	},
 	{
 		"class": "LADY",
-		"name": "COLLEEN",
+		"name": "Colleen",
 		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT",
 		"party": [
 			{
-				"species": "SPECIES_ELECTABUZZ",
-				"item": "ITEM_MAGNET",
+				"species": "SPECIES_MORGREM",
+				"item": "ITEM_BLACK_GLASSES",
 				"level": 30
 			},
 			{
-				"species": "SPECIES_PINECO",
+				"species": "SPECIES_EXPLOUD",
 				"item": "ITEM_SILK_SCARF",
 				"level": 30
 			}
@@ -127,7 +127,7 @@
 	
 	{
 		"class": "PARASOL_LADY",
-		"name": "ANNABELL",
+		"name": "Annabell",
 		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT",
 		"party": [
 			{
@@ -144,7 +144,7 @@
 	},
 	{
 		"class": "COLLECTOR",
-		"name": "COLEMAN",
+		"name": "Coleman",
 		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT",
 		"party": [
 			{
@@ -153,7 +153,7 @@
 				"level": 31
 			},
 			{
-				"species": "SPECIES_EXEGGUTOR",
+				"species": "SPECIES_EXEGGUTOR_ALOLAN",
 				"item": "ITEM_SHELL_BELL",
 				"level": 31
 			}

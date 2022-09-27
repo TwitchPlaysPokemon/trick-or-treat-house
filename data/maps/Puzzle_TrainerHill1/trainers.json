@@ -2,7 +2,7 @@
 	{
 		"class": "COOLTRAINER",
 		"pic": "COOLTRAINER_M",
-		"name": "ALFRED",
+		"name": "Alfred",
 		"party": [
 			{
 				"species": "SPECIES_SNORLAX",
@@ -14,10 +14,10 @@
 		"class": "PSYCHIC",
 		"pic": "PSYCHIC_F",
 		"female": true,
-		"name": "EDIE",
+		"name": "Edie",
 		"party": [
 			{
-				"species": "SPECIES_GARDEVOIR",
+				"species": "SPECIES_LILLIGANT",
 				"level": 27
 			}
 		]
@@ -26,7 +26,7 @@
 	{
 		"class": "PKMN_BREEDER",
 		"pic": "POKEMON_BREEDER_M",
-		"name": "SALVADORE",
+		"name": "Salvadore",
 		"party": [
 			{
 				"species": "SPECIES_NIDOKING",
@@ -38,7 +38,7 @@
 		"class": "PKMN_BREEDER",
 		"pic": "POKEMON_BREEDER_F",
 		"female": true,
-		"name": "VERONICA",
+		"name": "Veronica",
 		"party": [
 			{
 				"species": "SPECIES_NIDOQUEEN",
@@ -49,7 +49,7 @@
 	
 	{
 		"class": "RUIN_MANIAC",
-		"name": "ABRAHAM",
+		"name": "Abraham",
 		"party": [
 			{
 				"species": "SPECIES_SMEARGLE",
@@ -59,10 +59,11 @@
 	},
 	{
 		"class": "YOUNGSTER",
-		"name": "LUC",
+		"name": "Luca",
 		"party": [
 			{
 				"species": "SPECIES_CUBONE",
+				"heldItem": "ITEM_GROUNDIUM_Z",
 				"level": 29
 			}
 		]
@@ -70,10 +71,10 @@
 	
 	{
 		"class": "BIRD_KEEPER",
-		"name": "DANE",
+		"name": "Dane",
 		"party": [
 			{
-				"species": "SPECIES_NOCTOWL",
+				"species": "SPECIES_ORICORIO",
 				"level": 30
 			}
 		]
@@ -82,10 +83,10 @@
 		"class": "TRIATHLETE",
 		"pic": "SWIMMING_TRIATHLETE_F",
 		"female": true,
-		"name": "STEPHANIE",
+		"name": "Stephanie",
 		"party": [
 			{
-				"species": "SPECIES_VAPOREON",
+				"species": "SPECIES_WISHIWASHI",
 				"level": 30
 			}
 		]

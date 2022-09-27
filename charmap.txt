@@ -338,7 +338,6 @@ STR_VAR_2      = FD 03
 STR_VAR_3      = FD 04
 STR_VAR_4      = FD 05
 STR_VAR_5      = FD 06
-STR_VAR_6      = FD 07
 
 TRICK_MASTER   = FD 0F
 
@@ -426,14 +425,13 @@ B_DEF_TEAM2 = FD 3B
 B_ACTIVE_NAME = FD 3C
 B_ACTIVE_NAME2 = FD 3D @ no Illusion check
 
-@ indicates the end of a town/city name (before " TOWN" or " CITY")
-NAME_END = FC 00
 
 @ special 0xF7 character
 DYNAMIC  =   F7
 
 @ more text functions
 
+END = FC 00
 COLOR = FC 01 @ use a color listed below right after
 HIGHLIGHT = FC 02 @ same as fc 01
 SHADOW = FC 03 @ same as fc 01

@@ -16,9 +16,9 @@ EWRAM_DATA u8 gStringVar2[0x100] = {0};
 EWRAM_DATA u8 gStringVar3[0x100] = {0};
 EWRAM_DATA u8 gStringVar4[0x100] = {0};
 EWRAM_DATA u8 gStringVar5[0x100] = {0};
-EWRAM_DATA u8 gStringVar6[0x100] = {0};
 EWRAM_DATA u8 gStringBuffer[0x3E8] = {0};
 
+EWRAM_DATA u8 gNamePlateBuffer[0x20] = {0};
 EWRAM_DATA u8 gStringWorking[0x100] = {0};
 
 static const u8 sDigits[] = __("0123456789ABCDEF");
@@ -570,11 +570,6 @@ static const u8 *ExpandPlaceholder_StringVar5(void)
     return gStringVar5;
 }
 
-static const u8 *ExpandPlaceholder_StringVar6(void)
-{
-    return gStringVar6;
-}
-
 extern const u8 gText_ExpandedPlaceholder_Brendan[];
 extern const u8 gText_ExpandedPlaceholder_May[];
 static const u8 *ExpandPlaceholder_RivalName(void)
@@ -710,7 +705,7 @@ const u8 *GetExpandedPlaceholder(u32 id)
         [0x04] = ExpandPlaceholder_StringVar3,
         [0x05] = ExpandPlaceholder_StringVar4,
         [0x06] = ExpandPlaceholder_StringVar5,
-        [0x07] = ExpandPlaceholder_StringVar6,
+        [0x07] = ExpandPlaceholder_Empty,
         [0x08] = ExpandPlaceholder_Empty,
         [0x09] = ExpandPlaceholder_Empty,
         [0x0A] = ExpandPlaceholder_Empty,

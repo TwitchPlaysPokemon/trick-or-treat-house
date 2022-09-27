@@ -299,6 +299,16 @@ script TrickHouseCorridor_TriggerScript_RunIntro {
 	callnative(LoadPuzzleIntro)
 	// Note: If a custom intro script is on the current puzzle,
 	// execution will not reach beyond here, but will jump to that.
+	switch(var(VAR_INTRO_PERSON)) {
+		case OBJ_EVENT_GFX_TRICK_MASTER: speakername_common(TRICK_MASTER)
+		case TTH_FRIEND_JOEY: speakername_common(JOEY)
+		case TTH_FRIEND_JAMES: speakername_common(JAMES)
+		case TTH_FRIEND_IRENE: speakername_common(IRENE)
+		case TTH_FRIEND_WALLY: speakername_common(WALLY)
+		case TTH_FRIEND_BRENDAN: speakername_common(BRENDAN)
+		case TTH_FRIEND_MAY: speakername_common(MAY)
+		case TTH_FRIEND_ALEX: speakername_common(ALEX)
+	}
 	switch(var(VAR_RESULT)) {
 		case 0: // Generic Intro
 			random(256)
