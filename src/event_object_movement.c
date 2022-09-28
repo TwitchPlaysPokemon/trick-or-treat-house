@@ -463,6 +463,15 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_FARFETCHD               0x113A
 #define OBJ_EVENT_PAL_TAG_PIDGEY                  0x113B
 #define OBJ_EVENT_PAL_TAG_BIRCH                   0x113C
+#define OBJ_EVENT_PAL_TAG_NPC_1_BROWN             0x113D
+#define OBJ_EVENT_PAL_TAG_NPC_2_BROWN             0x113E
+#define OBJ_EVENT_PAL_TAG_NPC_3_BROWN             0x113F
+#define OBJ_EVENT_PAL_TAG_NPC_4_BROWN             0x1140
+#define OBJ_EVENT_PAL_TAG_NPC_1_BLACK             0x1141
+#define OBJ_EVENT_PAL_TAG_NPC_2_BLACK             0x1142
+#define OBJ_EVENT_PAL_TAG_NPC_3_BLACK             0x1143
+#define OBJ_EVENT_PAL_TAG_NPC_4_BLACK             0x1144
+#define OBJ_EVENT_PAL_TAG_NPC_1_BLACKALT          0x1145
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -478,10 +487,19 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Npc2,                  OBJ_EVENT_PAL_TAG_NPC_2},
     {gObjectEventPal_Npc3,                  OBJ_EVENT_PAL_TAG_NPC_3},
     {gObjectEventPal_Npc4,                  OBJ_EVENT_PAL_TAG_NPC_4},
+    {gObjectEventPal_Npc1Brown,             OBJ_EVENT_PAL_TAG_NPC_1_BROWN},
+    {gObjectEventPal_Npc2Brown,             OBJ_EVENT_PAL_TAG_NPC_2_BROWN},
+    {gObjectEventPal_Npc3Brown,             OBJ_EVENT_PAL_TAG_NPC_3_BROWN},
+    {gObjectEventPal_Npc4Brown,             OBJ_EVENT_PAL_TAG_NPC_4_BROWN},
+    {gObjectEventPal_Npc1Black,             OBJ_EVENT_PAL_TAG_NPC_1_BLACK},
+    {gObjectEventPal_Npc2Black,             OBJ_EVENT_PAL_TAG_NPC_2_BLACK},
+    {gObjectEventPal_Npc3Black,             OBJ_EVENT_PAL_TAG_NPC_3_BLACK},
+    {gObjectEventPal_Npc4Black,             OBJ_EVENT_PAL_TAG_NPC_4_BLACK},
     {gObjectEventPal_Npc1Reflection,        OBJ_EVENT_PAL_TAG_NPC_1_REFLECTION},
     {gObjectEventPal_Npc2Reflection,        OBJ_EVENT_PAL_TAG_NPC_2_REFLECTION},
     {gObjectEventPal_Npc3Reflection,        OBJ_EVENT_PAL_TAG_NPC_3_REFLECTION},
     {gObjectEventPal_Npc4Reflection,        OBJ_EVENT_PAL_TAG_NPC_4_REFLECTION},
+    {gObjectEventPal_Npc1BlackAlt,          OBJ_EVENT_PAL_TAG_NPC_1_BLACKALT},
     {gObjectEventPal_Mudkid,                OBJ_EVENT_PAL_TAG_BRENDAN},
     {gObjectEventPal_BrendanReflection,     OBJ_EVENT_PAL_TAG_BRENDAN_REFLECTION},
     {gObjectEventPal_BridgeReflection,      OBJ_EVENT_PAL_TAG_BRIDGE_REFLECTION},

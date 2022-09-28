@@ -219,8 +219,8 @@ def pgegen(args):
     gTrainerClassNames = elf.get_sym('gTrainerClassNames')
     config_set('TrainerClasses', f'{gTrainerClassNames.st_value & 0xFFFFFF:X}')
     config_set('NumberOfTrainerClasses', f'{gTrainerClassNames.st_size // 13}')
-    gTrainerFrontPicTable = elf.get_sym('gTrainerFrontPicTable')
-    gTrainerFrontPicPaletteTable = elf.get_sym('gTrainerFrontPicPaletteTable')
+    # gTrainerFrontPicTable = elf.get_sym('gTrainerFrontPicTable')   # TODO replaced with gTrainerFrontPicInfoTable[].spritesheet
+    # gTrainerFrontPicPaletteTable = elf.get_sym('gTrainerFrontPicPaletteTable') # TODO replaced with gTrainerFrontPicInfoTable[].palette
     config_set('TrainerImageTable', f'{gTrainerFrontPicTable.st_value & 0xFFFFFF:X}')
     size = gTrainerFrontPicPaletteTable.st_value - gTrainerFrontPicTable.st_value
     config_set('NumberOfTrainerImages', f'{size // 8}')

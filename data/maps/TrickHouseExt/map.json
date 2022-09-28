@@ -83,84 +83,6 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GHOST",
-      "x": 49,
-      "y": 33,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_HIDE_INTRO_CHARACTERS"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_BRENDAN_NORMAL",
-      "x": 49,
-      "y": 32,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_HIDE_INTRO_CHARACTERS"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_MAY_NORMAL",
-      "x": 49,
-      "y": 34,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_HIDE_INTRO_CHARACTERS"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_FAIRY_GIRL",
-      "x": 49,
-      "y": 32,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_HIDE_INTRO_CHARACTERS"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_WALLY",
-      "x": 49,
-      "y": 34,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_HIDE_INTRO_CHARACTERS"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_HERO_OF_TIME",
-      "x": 49,
-      "y": 33,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_HIDE_INTRO_CHARACTERS"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
       "x": 68,
       "y": 59,
@@ -174,19 +96,6 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
-      "x": 70,
-      "y": 59,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_HIDE_INTRO_CHARACTERS"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 69,
       "y": 59,
@@ -198,19 +107,6 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_PUZZLE_ITEM_E"
-    },
-    {
-      "graphics_id": "TTH_FRIEND_ALEX",
-      "x": 49,
-      "y": 34,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "FLAG_HIDE_INTRO_CHARACTERS"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_0",
@@ -343,7 +239,7 @@
       "flag": "FLAG_HIDE_EXT_GAME_PLAYERS"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_M",
+      "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_M2",
       "x": 48,
       "y": 60,
       "elevation": 3,
@@ -447,7 +343,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GAMEBOY_KID",
+      "graphics_id": "OBJ_EVENT_GFX_GAMEBOY_KID3",
       "x": 34,
       "y": 41,
       "elevation": 3,

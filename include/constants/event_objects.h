@@ -296,7 +296,19 @@
 #define OBJ_EVENT_GFX_PIDGEY                         0x114
 #define OBJ_EVENT_GFX_ZIGZAGOON_SLP                  0x115
 
-#define NUM_OBJ_EVENT_GFX                            0x116
+#define OBJ_EVENT_GFX_GAMEBOY_KID2                   0x116
+#define OBJ_EVENT_GFX_GAMEBOY_KID3                   0x117
+#define OBJ_EVENT_GFX_CAMPER2                        0x118
+#define OBJ_EVENT_GFX_CAMPER3                        0x119
+#define OBJ_EVENT_GFX_WOMAN_5A                       0x11A
+#define OBJ_EVENT_GFX_PSYCHIC_M2                     0x11B
+#define OBJ_EVENT_GFX_SCHOOL_KID_M2                  0x11C
+#define OBJ_EVENT_GFX_YOUNGSTER2                     0x11D
+#define OBJ_EVENT_GFX_YOUNGSTER3                     0x11E
+#define OBJ_EVENT_GFX_PICNICKER2                     0x11F
+#define OBJ_EVENT_GFX_PICNICKER3                     0x120
+
+#define NUM_OBJ_EVENT_GFX                            0x121
 
 // These are dynamic object gfx ids.
 // They correspond with the values of the VAR_OBJ_GFX_ID_X vars.

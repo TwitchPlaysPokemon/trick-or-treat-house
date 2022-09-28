@@ -631,10 +631,10 @@ void BattleGfxSfxDummy2(u16 species)
 void DecompressTrainerFrontPic(u16 frontPicId, u8 battlerId)
 {
     u8 position = GetBattlerPosition(battlerId);
-    DecompressPicFromTable(&gTrainerFrontPicTable[frontPicId],
+    DecompressPicFromTable(&gTrainerFrontPicInfoTable[frontPicId].spritesheet,
                            gMonSpritesGfxPtr->sprites.ptr[position],
                            SPECIES_NONE);
-    LoadCompressedSpritePalette(&gTrainerFrontPicPaletteTable[frontPicId]);
+    LoadCompressedSpritePalette(&gTrainerFrontPicInfoTable[frontPicId].palette);
 }
 
 void DecompressTrainerBackPic(u16 backPicId, u8 battlerId)
@@ -653,7 +653,7 @@ void BattleGfxSfxDummy3(u8 gender)
 
 void FreeTrainerFrontPicPalette(u16 frontPicId)
 {
-    FreeSpritePaletteByTag(gTrainerFrontPicPaletteTable[frontPicId].tag);
+    FreeSpritePaletteByTag(gTrainerFrontPicInfoTable[frontPicId].palette.tag);
 }
 
 // Unused.

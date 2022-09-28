@@ -118,7 +118,6 @@ EventScript_ResetAllMapFlags::
 	.if DISABLE_DEBUG
 	setflag FLAG_HIDE_DEBUG_OBJECTS
 	.endif
-	setflag FLAG_HIDE_INTRO_CHARACTERS
 	setflag FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
 	call EventScript_ResetAllBerries
 	@ give initial candy haul

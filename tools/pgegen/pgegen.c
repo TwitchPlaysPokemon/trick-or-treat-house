@@ -149,7 +149,7 @@ int main(int argc, char ** argv)
     config_set("PokemonNormalPal", rom_sym_get("gMonPaletteTable"));
     config_set("PokemonShinyPal", rom_sym_get("gMonShinyPaletteTable"));
     config_set("PokemonAnimations", rom_sym_get("gMonFrontPicTable"));
-    config_set("FrontAnimationTable", rom_sym_get("gTrainerFrontAnimsPtrTable"));
+    //config_set("FrontAnimationTable", rom_sym_get("gTrainerFrontAnimsPtrTable")); //TODO: Changed to gTrainerFrontPicInfoTable
     config_set("BackAnimTable", rom_sym_get("gTrainerBackAnimsPtrTable"));
     //config_set("AnimDelayTable", rom_sym_get(""));
     config_set("IconPointerTable", rom_sym_get("gMonIconTable"));
@@ -240,13 +240,13 @@ int main(int argc, char ** argv)
     Elf32_Sym * gTrainerClassNames = GetSymbolByName("gTrainerClassNames");
     config_set("TrainerClasses", gTrainerClassNames->st_value - 0x8000000);
     config_set_dec("NumberOfTrainerClasses", gTrainerClassNames->st_size / 13);
-    Elf32_Sym * gTrainerFrontPicTable = GetSymbolByName("gTrainerFrontPicTable");
-    Elf32_Sym * gTrainerFrontPicPaletteTable = GetSymbolByName("gTrainerFrontPicPaletteTable");
-    config_set("TrainerImageTable", gTrainerFrontPicTable->st_value - 0x8000000);
-    unsigned size = gTrainerFrontPicPaletteTable->st_value - gTrainerFrontPicTable->st_value;
-    config_set("NumberOfTrainerImages", size / 8);
-    config_set("TrainerPaletteTable", gTrainerFrontPicPaletteTable->st_value - 0x8000000);
-    config_set("DexSizeTrainerSprite", 0);
+    // Elf32_Sym * gTrainerFrontPicTable = GetSymbolByName("gTrainerFrontPicTable"); // TODO replaced with gTrainerFrontPicInfoTable[].spritesheet
+    // Elf32_Sym * gTrainerFrontPicPaletteTable = GetSymbolByName("gTrainerFrontPicPaletteTable"); // TODO replaced with gTrainerFrontPicInfoTable[].palette
+    // config_set("TrainerImageTable", gTrainerFrontPicTable->st_value - 0x8000000);
+    // unsigned size = gTrainerFrontPicPaletteTable->st_value - gTrainerFrontPicTable->st_value;
+    // config_set("NumberOfTrainerImages", size / 8);
+    // config_set("TrainerPaletteTable", gTrainerFrontPicPaletteTable->st_value - 0x8000000);
+    // config_set("DexSizeTrainerSprite", 0);
     Elf32_Sym * gIngameTrades = GetSymbolByName("gIngameTrades");
     config_set("TradeData", gIngameTrades->st_value - 0x8000000);
     config_set_dec("NumberOfTrades", gIngameTrades->st_size / 60);

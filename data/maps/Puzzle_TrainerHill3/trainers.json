@@ -50,7 +50,7 @@
 	
 	{
 		"class": "PKMN_RANGER",
-		"pic": "PKMN_RANGER_F",
+		"pic": "PKMN_RANGER_F3",
 		"female": true,
 		"name": "Nora",
 		"party": [

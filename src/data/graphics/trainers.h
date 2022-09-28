@@ -112,6 +112,7 @@ const u32 gTrainerPalette_PokemonBreederF[] = INCBIN_U32("graphics/trainers/pale
 
 const u32 gTrainerFrontPic_PsychicM[] = INCBIN_U32("graphics/trainers/front_pics/psychic_m_front_pic.4bpp.lz");
 const u32 gTrainerPalette_PsychicM[] = INCBIN_U32("graphics/trainers/palettes/psychic_m.gbapal.lz");
+const u32 gTrainerPalette_PsychicM2[] = INCBIN_U32("graphics/trainers/palettes/psychic_m_black.gbapal.lz");
 
 const u32 gTrainerFrontPic_PsychicF[] = INCBIN_U32("graphics/trainers/front_pics/psychic_f_front_pic.4bpp.lz");
 const u32 gTrainerPalette_PsychicF[] = INCBIN_U32("graphics/trainers/palettes/psychic_f.gbapal.lz");
@@ -172,6 +173,8 @@ const u32 gTrainerPalette_PokefanF[] = INCBIN_U32("graphics/trainers/palettes/po
 
 const u32 gTrainerFrontPic_Youngster[] = INCBIN_U32("graphics/trainers/front_pics/youngster_front_pic.4bpp.lz");
 const u32 gTrainerPalette_Youngster[] = INCBIN_U32("graphics/trainers/palettes/youngster.gbapal.lz");
+const u32 gTrainerPalette_Youngster2[] = INCBIN_U32("graphics/trainers/palettes/youngster_brown.gbapal.lz");
+const u32 gTrainerPalette_Youngster3[] = INCBIN_U32("graphics/trainers/palettes/youngster_black.gbapal.lz");
 
 const u32 gTrainerFrontPic_ChampionWallace[] = INCBIN_U32("graphics/trainers/front_pics/champion_wallace_front_pic.4bpp.lz");
 const u32 gTrainerPalette_ChampionWallace[] = INCBIN_U32("graphics/trainers/palettes/champion_wallace.gbapal.lz");
@@ -238,9 +241,13 @@ const u32 gTrainerPalette_BugCatcher[] = INCBIN_U32("graphics/trainers/palettes/
 
 const u32 gTrainerFrontPic_PokemonRangerM[] = INCBIN_U32("graphics/trainers/front_pics/pokemon_ranger_m_front_pic.4bpp.lz");
 const u32 gTrainerPalette_PokemonRangerM[] = INCBIN_U32("graphics/trainers/palettes/pokemon_ranger_m.gbapal.lz");
+const u32 gTrainerPalette_PokemonRangerM2[] = INCBIN_U32("graphics/trainers/palettes/pokemon_ranger_m_brown.gbapal.lz");
+const u32 gTrainerPalette_PokemonRangerM3[] = INCBIN_U32("graphics/trainers/palettes/pokemon_ranger_m_black.gbapal.lz");
 
 const u32 gTrainerFrontPic_PokemonRangerF[] = INCBIN_U32("graphics/trainers/front_pics/pokemon_ranger_f_front_pic.4bpp.lz");
 const u32 gTrainerPalette_PokemonRangerF[] = INCBIN_U32("graphics/trainers/palettes/pokemon_ranger_f.gbapal.lz");
+const u32 gTrainerPalette_PokemonRangerF2[] = INCBIN_U32("graphics/trainers/palettes/pokemon_ranger_f_brown.gbapal.lz");
+const u32 gTrainerPalette_PokemonRangerF3[] = INCBIN_U32("graphics/trainers/palettes/pokemon_ranger_f_black.gbapal.lz");
 
 const u32 gTrainerFrontPic_MagmaLeaderMaxie[] = INCBIN_U32("graphics/trainers/front_pics/magma_leader_maxie_front_pic.4bpp.lz");
 const u32 gTrainerPalette_MagmaLeaderMaxie[] = INCBIN_U32("graphics/trainers/palettes/magma_leader_maxie.gbapal.lz");

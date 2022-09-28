@@ -116,10 +116,21 @@ extern const struct CompressedSpritePalette gMonPaletteTable[];
 extern const struct CompressedSpritePalette gMonPaletteTableFemale[];
 extern const struct CompressedSpritePalette gMonShinyPaletteTable[];
 extern const struct CompressedSpritePalette gMonShinyPaletteTableFemale[];
-extern const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[];
-extern const struct MonCoords gTrainerFrontPicCoords[];
-extern const struct CompressedSpriteSheet gTrainerFrontPicTable[];
-extern const struct CompressedSpritePalette gTrainerFrontPicPaletteTable[];
+
+
+struct TrainerPicInfo
+{
+    struct CompressedSpriteSheet spritesheet;
+    struct CompressedSpritePalette palette;
+    struct MonCoords coords;
+    const union AnimCmd *const *const anim;
+};
+
+extern const struct TrainerPicInfo gTrainerFrontPicInfoTable[];
+// extern const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[];
+// extern const struct MonCoords gTrainerFrontPicCoords[];
+// extern const struct CompressedSpriteSheet gTrainerFrontPicTable[];
+// extern const struct CompressedSpritePalette gTrainerFrontPicPaletteTable[];
 extern const union AnimCmd *const *const gTrainerBackAnimsPtrTable[];
 extern const struct MonCoords gTrainerBackPicCoords[];
 extern const struct CompressedSpriteSheet gTrainerBackPicTable[]; // functionally unused

@@ -17,6 +17,7 @@
 	},
 	{
 		"class": "YOUNGSTER",
+		"pic": "YOUNGSTER2",
 		"name": "Kyle",
 		"music": "ENC_MUS_EM_MALE",
 		"party": [

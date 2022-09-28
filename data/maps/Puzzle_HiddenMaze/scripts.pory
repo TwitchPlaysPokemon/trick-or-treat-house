@@ -161,7 +161,7 @@ Puzzle_HiddenMaze_Trainer3_Movement2:
 	step_end
 `
 
-script Puzzle_HiddenMaze_Trainer4 {
+script Puzzle_HiddenMaze_Zander {
 	# Carver's boyfriend, Zander
 	trainerbattle_single (TRAINER_04, 
 			"I hate this place. Carver is right there,\n"
@@ -173,7 +173,7 @@ script Puzzle_HiddenMaze_Trainer4 {
 			"attention…$", MSGBOX_AUTOCLOSE)
 }
 
-script Puzzle_HiddenMaze_Trainer5 {
+script Puzzle_HiddenMaze_Carver {
 	# Carver
 	trainerbattle_single (TRAINER_05, 
 			"Ah! How'd you get over here from there?!\n"

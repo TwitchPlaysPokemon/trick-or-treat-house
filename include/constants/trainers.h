@@ -127,6 +127,17 @@
 #define TRAINER_PIC_TREEKID              105
 #define TRAINER_PIC_PIKAKID              106
 #define TRAINER_PIC_DEV_TUSTIN2121       107
+#define TRAINER_PIC_PSYCHIC_M2           108
+#define TRAINER_PIC_YOUNGSTER2           109
+#define TRAINER_PIC_YOUNGSTER3           110
+#define TRAINER_PIC_PKMN_RANGER_M2       111
+#define TRAINER_PIC_POKEMON_RANGER_M2    111
+#define TRAINER_PIC_PKMN_RANGER_M3       112
+#define TRAINER_PIC_POKEMON_RANGER_M3    112
+#define TRAINER_PIC_PKMN_RANGER_F2       113
+#define TRAINER_PIC_POKEMON_RANGER_F2    113
+#define TRAINER_PIC_PKMN_RANGER_F3       114
+#define TRAINER_PIC_POKEMON_RANGER_F3    114
 
 // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
 #define TRAINER_BACK_PIC_BRENDAN                0
