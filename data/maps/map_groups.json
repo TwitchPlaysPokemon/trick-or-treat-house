@@ -246,7 +246,8 @@
   "MG_TheMetaPuzzle": [
     "Puzzle_MetaPuzzleCave",
     "MetaPuzzle_EmptyPuzzle",
-    "MetaPuzzle_StrengthRoom"
+    "MetaPuzzle_StrengthRoom",
+    "Meta_LedgeRoom"
   ],
   "MG_SingleMapPuzzles2019": [
     "Puzzle_TrickHouseCut",

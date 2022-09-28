@@ -234,6 +234,7 @@
 #define MAP_PUZZLE_META_PUZZLE_CAVE   (0 | (13 << 8))
 #define MAP_META_PUZZLE_EMPTY_PUZZLE  (1 | (13 << 8))
 #define MAP_META_PUZZLE_STRENGTH_ROOM (2 | (13 << 8))
+#define MAP_META_LEDGE_ROOM           (3 | (13 << 8))
 
 // MG_SingleMapPuzzles2019
 #define MAP_PUZZLE_TRICK_HOUSE_CUT       (0 | (14 << 8))

@@ -2376,6 +2376,18 @@
       "secondary_tileset": "gTileset_TrickHouseMain",
       "border_filepath": "data/layouts/TrickHouseEntrance_Intro/border.bin",
       "blockdata_filepath": "data/layouts/TrickHouseEntrance_Intro/map.bin"
+    },
+    {
+      "id": "LAYOUT_META_LEDGE_ROOM",
+      "name": "Meta_LedgeRoom_Layout",
+      "width": 32,
+      "height": 32,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Meta_LedgeRoom/border.bin",
+      "blockdata_filepath": "data/layouts/Meta_LedgeRoom/map.bin"
     }
   ]
 }

@@ -1,0 +1,132 @@
+html {
+    position: fixed;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+	font-family: sans-serif;
+    font-size: small;
+}
+body {
+	display: flex;
+    height: 100%;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+	margin: 0;
+}
+main {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    grid-template:
+        "x1y1 x2y1 x3y1 x4y1"
+        "x1y2 x2y2 x3y2 x4y2"
+        "x1y3 x2y3 x3y3 x4y3"
+        "x1y4 x2y4 x3y4 x4y4"
+		/ 25% 25% 25% 25%;
+}
+
+main > div {
+	display: block;
+	position: relative;
+    width: 72px; height: 72px;
+    margin: 6px; padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+    justify-content: center;
+}
+main > div.empty {
+	border: none;
+	margin: 5px;
+}
+
+main > div.loc-1x1 { grid-area: x1y1; }
+main > div.loc-2x1 { grid-area: x2y1; }
+main > div.loc-3x1 { grid-area: x3y1; }
+main > div.loc-4x1 { grid-area: x4y1; }
+main > div.loc-1x2 { grid-area: x1y2; }
+main > div.loc-2x2 { grid-area: x2y2; }
+main > div.loc-3x2 { grid-area: x3y2; }
+main > div.loc-4x2 { grid-area: x4y2; }
+main > div.loc-1x3 { grid-area: x1y3; }
+main > div.loc-2x3 { grid-area: x2y3; }
+main > div.loc-3x3 { grid-area: x3y3; }
+main > div.loc-4x3 { grid-area: x4y3; }
+main > div.loc-1x4 { grid-area: x1y4; }
+main > div.loc-2x4 { grid-area: x2y4; }
+main > div.loc-3x4 { grid-area: x3y4; }
+main > div.loc-4x4 { grid-area: x4y4; }
+
+main > div.enter-north::before,
+main > div.enter-south::before, 
+main > div.enter-east::before,
+main > div.enter-west::before 
+{
+	content: " ";
+	display: block;
+	position: absolute;
+	background-color: #ffab00;
+	border: 1px solid black;
+}
+main > div.exit-north::after,
+main > div.exit-south::after, 
+main > div.exit-east::after,
+main > div.exit-west::after 
+{
+	content: " ";
+	display: block;
+	position: absolute;
+	background-color: #ffab00;
+	border: 1px solid black;
+}
+
+main > div.enter-north::before, main > div.exit-north::after {
+	width: 10px; height: 15px;
+	top: -7px; left: calc(50% - 10px/2);
+}
+main > div.enter-south::before, main > div.exit-south::after {
+	width: 10px; height: 15px;
+	bottom: -7px; left: calc(50% - 10px/2);
+}
+main > div.enter-east::before, main > div.exit-east::after {
+	width: 15px; height: 10px;
+	top: calc(50% - 10px/2); right: -7px;
+}
+main > div.enter-west::before, main > div.exit-west::after {
+	width: 15px; height: 10px;
+	top: calc(50% - 10px/2); left: -7px;
+}
+
+aside {
+	position: absolute;
+	width: 20%;
+	top: 0; bottom: 0;
+}
+aside#left {
+	left: 0;
+}
+aside#right {
+	right: 0;
+}
+aside#left li {
+	display: block;
+}
+
+em {
+	display: inline-block;
+}
+em.PD::before { content: '#'; }
+em.Ct::before { content: 'Ct'; }
+em.RS::before { content: 'RS'; }
+em.St::before { content: 'St'; }
+em.Sf::before { content: 'Sf'; }
+em.Dv::before { content: 'Dv'; }
+em.Wf::before { content: 'Wf'; }
+em.Sc::before { content: '%'; }
+
+em.PD, em.Sc {
+	position: absolute;
+	top: 50%; left: 50%;
+}

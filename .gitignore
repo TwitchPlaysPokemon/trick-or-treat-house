@@ -39,7 +39,6 @@ porymap.user.cfg
 *.sna
 *.diff
 *.sym
-*.js
 
 .vscode/*
 tricktreat.sym
