@@ -20,12 +20,32 @@ main {
     justify-content: center;
     align-items: center;
     justify-items: center;
-    grid-template:
-        "x1y1 x2y1 x3y1 x4y1"
-        "x1y2 x2y2 x3y2 x4y2"
-        "x1y3 x2y3 x3y3 x4y3"
-        "x1y4 x2y4 x3y4 x4y4"
-		/ 25% 25% 25% 25%;
+}
+main.size4 {
+	grid-template:
+		"x1y1 x2y1 x3y1 x4y1"
+		"x1y2 x2y2 x3y2 x4y2"
+		"x1y3 x2y3 x3y3 x4y3"
+		"x1y4 x2y4 x3y4 x4y4"
+		/ 1fr 1fr 1fr 1fr;
+}
+main.size3 {
+	grid-template:
+		"x1y1 x2y1 x3y1"
+		"x1y2 x2y2 x3y2"
+		"x1y3 x2y3 x3y3"
+		/ 1fr 1fr 1fr;
+}
+main.size2 {
+	grid-template:
+		"x1y1 x2y1"
+		"x1y2 x2y2"
+		/ 1fr 1fr;
+}
+main.size1 {
+	grid-template:
+		"x1y1 x2y1"
+		/ 1fr 1fr;
 }
 
 main > div {
@@ -98,6 +118,21 @@ main > div.enter-west::before, main > div.exit-west::after {
 	width: 15px; height: 10px;
 	top: calc(50% - 10px/2); left: -7px;
 }
+main > div.locked {
+	background-color: #ffd6bb;
+}
+div.visited {
+	background-color: #c6fccf;
+}
+main > div > p {
+	margin-block: 4px;
+}
+p.supplies {
+	color: blue;
+}
+p.requires {
+	color: red;
+}
 
 aside {
 	position: absolute;
@@ -110,7 +145,7 @@ aside#left {
 aside#right {
 	right: 0;
 }
-aside#left li {
+aside li {
 	display: block;
 }
 
