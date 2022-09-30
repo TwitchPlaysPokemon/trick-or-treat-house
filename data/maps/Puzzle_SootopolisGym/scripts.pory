@@ -1,8 +1,8 @@
 raw `
 Puzzle_SootopolisGym_MapScripts::
-	puzzle_info Puzzle_SootopolisGym_Name, CommonAuthor_GameFreak
+	puzzle_info Puzzle_SootopolisGym_Name, CommonAuthor_GameFreak, PUZZLE_FLAG_GAME_FREAK
 	puzzle_custom_intro Puzzle_SootopolisGym_Intro
-	puzzle_quip Puzzle_SootopolisGym_Quip
+	puzzle_quip Puzzle_SootopolisGym_Quip, Puzzle_SootopolisGym_QuipSpeaker
 	puzzle_metavars Puzzle_SootopolisGym_Variables
 	puzzle_candylist Puzzle_SootopolisGym_CandyList
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_SootopolisGym_OnFrame
@@ -27,7 +27,8 @@ Puzzle_SootopolisGym_Intro:
 	.string "See you on the other side!$"
 Puzzle_SootopolisGym_Quip:
 	.string "That wasn't so hard, was it?$"
-
+Puzzle_SootopolisGym_QuipSpeaker:
+	.string "Wallace$"
 .align 2
 Puzzle_SootopolisGym_Variables:
 	.2byte VAR_QUIP_PERSON,  OBJ_EVENT_GFX_WALLACE

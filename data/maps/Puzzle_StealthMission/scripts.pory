@@ -1,26 +1,39 @@
 raw `
 Puzzle_StealthMission_MapScripts::
-	puzzle_info Puzzle_StealthMission_Name, CommonAuthor_Tustin2121
+	puzzle_info Puzzle_StealthMission_Name, CommonAuthor_Tustin2121, PUZZLE_FLAG_INSPIRED_BY, Puzzle_StealthMission_Inspiration
 	puzzle_adjective Puzzle_StealthMission_Adjective
-	puzzle_quip Puzzle_StealthMission_Quip
+	puzzle_quip Puzzle_StealthMission_Quip, Puzzle_StealthMission_QuipSpeaker
 	puzzle_metavars Puzzle_StealthMission_Variables
 	puzzle_candylist Puzzle_StealthMission_CandyList
-	map_script MAP_SCRIPT_PUZZLE_SETUP_SCRIPT, Puzzle_StealthMission_PuzzleSetup
+	puzzle_devcommentary Puzzle_StealthMission_DevCommentary
+	map_script MAP_SCRIPT_ON_PUZZLE_SETUP, Puzzle_StealthMission_PuzzleSetup
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_StealthMission_OnLoad
-	map_script MAP_SCRIPT_PUZZLE_EXIT_SCRIPT, Puzzle_StealthMission_OnExit
-	map_script MAP_SCRIPT_PUZZLE_BLACKOUT_SCRIPT, Puzzle_StealthMission_OnEscapeOrBlackout
-	map_script MAP_SCRIPT_PUZZLE_ESCAPE_SCRIPT, Puzzle_StealthMission_OnEscapeOrBlackout
+	map_script MAP_SCRIPT_ON_PUZZLE_EXIT, Puzzle_StealthMission_OnExit
+	map_script MAP_SCRIPT_ON_PUZZLE_BLACKOUT, Puzzle_StealthMission_OnEscapeOrBlackout
+	map_script MAP_SCRIPT_ON_PUZZLE_ESCAPE, Puzzle_StealthMission_OnEscapeOrBlackout
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_StealthMission_FrameTable
 	.byte 0
 
 Puzzle_StealthMission_Name:
 	.string "Mission Impassable$"
+Puzzle_StealthMission_Inspiration:
+	.string "Ephraim225$" @ built by: Tustin2121
 Puzzle_StealthMission_Adjective:
 	.string "stealthy$"
 Puzzle_StealthMission_Quip:
 	.string "YOU MAY HAVE WON THIS TIME, HUMAN,\n"
 	.string "BUT THE ROBOT UPRISING WILL COME.\p"
 	.string "HA.{PAUSE 20} HA.{PAUSE 20} HA.$"
+Puzzle_StealthMission_QuipSpeaker:
+	.string "ANDROID$"
+Puzzle_StealthMission_DevCommentary:
+	.string "This puzzle was shamefully ripped off\n"
+	.string "of the first mission from the hack\l"
+	.string "Pokemon FireRed VR Missions.\p"
+	.string "That hack has a lot of battle-related\n"
+	.string "puzzles in it, which are beyond the scope\l"
+	.string "of TTH, so be sure to check it out.$"
+
 .align 2
 Puzzle_StealthMission_Variables:
 	.2byte VAR_QUIP_PERSON,  OBJ_EVENT_GFX_SKELETON

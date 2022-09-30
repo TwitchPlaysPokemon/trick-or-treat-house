@@ -171,7 +171,7 @@ bool8 ScrCmd_goto(struct ScriptContext *ctx)
 {
     const u8 *ptr = (const u8 *)ScriptReadWord(ctx);
 
-    if ((u32)ptr < 4)
+    if ((u32)ptr < ARRAY_COUNT(ctx->data))
         ptr = (const void *)ctx->data[(u32)ptr];
 
     ScriptJump(ctx, ptr);
@@ -188,7 +188,7 @@ bool8 ScrCmd_call(struct ScriptContext *ctx)
 {
     const u8 *ptr = (const u8 *)ScriptReadWord(ctx);
 
-    if ((u32)ptr < 4)
+    if ((u32)ptr < ARRAY_COUNT(ctx->data))
         ptr = (const void *)ctx->data[(u32)ptr];
 
     ScriptCall(ctx, ptr);
@@ -1168,7 +1168,7 @@ bool8 ScrCmd_applymovementat(struct ScriptContext *ctx)
     u8 mapGroup = ScriptReadByte(ctx);
     u8 mapNum = ScriptReadByte(ctx);
 
-    if ((u32)movementScript < 4)
+    if ((u32)movementScript < ARRAY_COUNT(ctx->data))
         movementScript = (const void *)ctx->data[(u32)movementScript];
     
     if (movementScript <= (const void*)&Start) {
@@ -1446,7 +1446,7 @@ bool8 ScrCmd_message(struct ScriptContext *ctx)
 {
     const u8 *msg = (const u8 *)ScriptReadWord(ctx);
 
-    if ((u32) msg < 4)
+    if ((u32) msg < ARRAY_COUNT(ctx->data))
         msg = (const u8 *)ctx->data[(u32) msg];
     ShowFieldMessage(msg);
     return FALSE;
@@ -1591,7 +1591,10 @@ bool8 ScrCmd_loaddynamicstring(struct ScriptContext *ctx)
     u8 id = ScriptReadByte(ctx);
     u8 *ptr = (u8 *)ScriptReadWord(ctx);
     
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(id, ptr);
+    if ((u32)ptr < ARRAY_COUNT(ctx->data))
+        ptr = (const u8*)ctx->data[(u32)ptr];
+    
+    DynamicPlaceholder_Set(id, ptr);
     return FALSE;
 }
 

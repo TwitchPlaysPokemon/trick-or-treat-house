@@ -3184,15 +3184,15 @@ static void BufferMonTrainerMemo(void)
     struct PokeSummary *sum = &sMonSummaryScreen->summary;
     const u8 *text;
 
-    DynamicPlaceholderTextUtil_Reset();
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, sMemoNatureTextColor);
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(1, sMemoMiscTextColor);
+    DynamicPlaceholder_Reset();
+    DynamicPlaceholder_Set(0, sMemoNatureTextColor);
+    DynamicPlaceholder_Set(1, sMemoMiscTextColor);
     BufferNatureString();
 
     // if (InBattleFactory() == TRUE || InSlateportBattleTent() == TRUE || IsInGamePartnerMon() == TRUE)
     if (IsInGamePartnerMon() == TRUE)
     {
-        DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringBuffer, gText_XNature);
+        DynamicPlaceholder_Expand(gStringBuffer, gText_XNature);
     }
     else
     {
@@ -3203,7 +3203,7 @@ static void BufferMonTrainerMemo(void)
         if (sum->metLocation < MAPSEC_NONE)
         {
             GetMapNameHandleAquaHideout(metLocationString, sum->metLocation);
-            DynamicPlaceholderTextUtil_SetPlaceholderPtr(4, metLocationString);
+            DynamicPlaceholder_Set(4, metLocationString);
         }
 
         if (DoesMonOTMatchOwner() == TRUE)
@@ -3226,7 +3226,7 @@ static void BufferMonTrainerMemo(void)
             text = gText_XNatureObtainedInTrade;
         }
 
-        DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringBuffer, text);
+        DynamicPlaceholder_Expand(gStringBuffer, text);
         Free(metLevelString);
         Free(metLocationString);
     }
@@ -3240,8 +3240,8 @@ static void PrintMonTrainerMemo(void)
 static void BufferNatureString(void)
 {
     struct PokemonSummaryScreenData *sumStruct = sMonSummaryScreen;
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(2, gNatureNamePointers[sumStruct->summary.nature]);
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(5, gText_EmptyString5);
+    DynamicPlaceholder_Set(2, gNatureNamePointers[sumStruct->summary.nature]);
+    DynamicPlaceholder_Set(5, gText_EmptyString5);
 }
 
 static void GetMetLevelString(u8 *output)
@@ -3250,7 +3250,7 @@ static void GetMetLevelString(u8 *output)
     if (level == 0)
         level = EGG_HATCH_LEVEL;
     ConvertIntToDecimalStringN(output, level, STR_CONV_MODE_LEFT_ALIGN, 3);
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(3, output);
+    DynamicPlaceholder_Set(3, output);
 }
 
 static bool8 DoesMonOTMatchOwner(void)
@@ -3467,12 +3467,12 @@ static void BufferLeftColumnStats(void)
     ConvertIntToDecimalStringN(attackString, sMonSummaryScreen->summary.atk, STR_CONV_MODE_RIGHT_ALIGN, 7);
     ConvertIntToDecimalStringN(defenseString, sMonSummaryScreen->summary.def, STR_CONV_MODE_RIGHT_ALIGN, 7);
 
-    DynamicPlaceholderTextUtil_Reset();
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, currentHPString);
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(1, maxHPString);
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(2, attackString);
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(3, defenseString);
-    DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringBuffer, sStatsLeftColumnLayout);
+    DynamicPlaceholder_Reset();
+    DynamicPlaceholder_Set(0, currentHPString);
+    DynamicPlaceholder_Set(1, maxHPString);
+    DynamicPlaceholder_Set(2, attackString);
+    DynamicPlaceholder_Set(3, defenseString);
+    DynamicPlaceholder_Expand(gStringBuffer, sStatsLeftColumnLayout);
 
     Free(currentHPString);
     Free(maxHPString);
@@ -3491,11 +3491,11 @@ static void BufferRightColumnStats(void)
     ConvertIntToDecimalStringN(gStringVar2, sMonSummaryScreen->summary.spdef, STR_CONV_MODE_RIGHT_ALIGN, 3);
     ConvertIntToDecimalStringN(gStringVar3, sMonSummaryScreen->summary.speed, STR_CONV_MODE_RIGHT_ALIGN, 3);
 
-    DynamicPlaceholderTextUtil_Reset();
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, gStringVar1);
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(1, gStringVar2);
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(2, gStringVar3);
-    DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringBuffer, sStatsRightColumnLayout);
+    DynamicPlaceholder_Reset();
+    DynamicPlaceholder_Set(0, gStringVar1);
+    DynamicPlaceholder_Set(1, gStringVar2);
+    DynamicPlaceholder_Set(2, gStringVar3);
+    DynamicPlaceholder_Expand(gStringBuffer, sStatsRightColumnLayout);
 }
 
 static void PrintRightColumnStats(void)
@@ -3607,10 +3607,10 @@ static void PrintMoveNameAndPP(u8 moveIndex)
         PrintTextOnWindow(moveNameWindowId, gMoveNames[move], 0, moveIndex * 16 + 1, 0, 1);
         ConvertIntToDecimalStringN(gStringVar1, summary->pp[moveIndex], STR_CONV_MODE_RIGHT_ALIGN, 2);
         ConvertIntToDecimalStringN(gStringVar2, pp, STR_CONV_MODE_RIGHT_ALIGN, 2);
-        DynamicPlaceholderTextUtil_Reset();
-        DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, gStringVar1);
-        DynamicPlaceholderTextUtil_SetPlaceholderPtr(1, gStringVar2);
-        DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringBuffer, sMovesPPLayout);
+        DynamicPlaceholder_Reset();
+        DynamicPlaceholder_Set(0, gStringVar1);
+        DynamicPlaceholder_Set(1, gStringVar2);
+        DynamicPlaceholder_Expand(gStringBuffer, sMovesPPLayout);
         text = gStringBuffer;
         ppState = GetCurrentPpToMaxPpState(summary->pp[moveIndex], pp) + 9;
         x = GetStringRightAlignXOffset(FONT_NORMAL, text, 44);
@@ -3778,10 +3778,10 @@ static void PrintNewMoveDetailsOrCancelText(void)
             PrintTextOnWindow(windowId1, gMoveNames[move], 0, 65, 0, 5);
 
         ConvertIntToDecimalStringN(gStringVar1, gBattleMoves[move].pp, STR_CONV_MODE_RIGHT_ALIGN, 2);
-        DynamicPlaceholderTextUtil_Reset();
-        DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, gStringVar1);
-        DynamicPlaceholderTextUtil_SetPlaceholderPtr(1, gStringVar1);
-        DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringBuffer, sMovesPPLayout);
+        DynamicPlaceholder_Reset();
+        DynamicPlaceholder_Set(0, gStringVar1);
+        DynamicPlaceholder_Set(1, gStringVar1);
+        DynamicPlaceholder_Expand(gStringBuffer, sMovesPPLayout);
         PrintTextOnWindow(windowId2, gStringBuffer, GetStringRightAlignXOffset(FONT_NORMAL, gStringBuffer, 44), 65, 0, 12);
     }
 }

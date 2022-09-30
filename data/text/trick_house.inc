@@ -73,127 +73,222 @@ PuzzleCommon_Text_FirstPuzzleIntroRound2::
 	.string "A shadow of one of my old puzzles,\n"
 	.string "but useful for weeding out those\l"
 	.string "unworthy to behold the greatness of\l"
-	.string "the puzzles you've experianced tonight!\p"
+	.string "the puzzles you've experienced tonight!\p"
 	.string "See you on the other side!$"
+
+@ -----------------------------------------------------
+
+PuzzleCommon_Text_PuzzleIntro_Generic::
+	.string "{DYNAMIC 0}\p" @ Greeting
+	.string "{DYNAMIC 2}\p" @ AuthoredBy
+	.string "{DYNAMIC 1}$" @ Farewell
+PuzzleCommon_Text_PuzzleIntro_GenericItem1::
+	.string "{DYNAMIC 0}\p" @ Greeting
+	.string "{DYNAMIC 2}\p" @ AuthoredBy
+	.string "{DYNAMIC 3}$" @ ItemLede
+PuzzleCommon_Text_PuzzleIntro_GenericItem2::
+	.string "{DYNAMIC 1}$" @ Farewell
 
 PuzzleCommon_Text_PuzzleIntro_CommonBye::
 	.string "See you on the other side!$"
-PuzzleCommon_Text_PuzzleIntro_GivenItems:
+PuzzleCommon_Text_PuzzleIntro_GivenItems::
 	.string "You're handed {STR_VAR_1}!{PAUSE 20}$"
 
 @ -----------------------------------------------------
 
 .align 2
-PuzzleCommon_TextArray_PuzzleIntro_NoItems::
-	.4byte PuzzleCommon_TextArray_PuzzleIntro_NoItems00
-	.4byte PuzzleCommon_TextArray_PuzzleIntro_NoItems01
-	.4byte PuzzleCommon_TextArray_PuzzleIntro_NoItems02
-	.4byte PuzzleCommon_TextArray_PuzzleIntro_NoItems03
-	.4byte PuzzleCommon_TextArray_PuzzleIntro_NoItems04
+PuzzleCommon_TextArray_PuzzleIntro_Greeting::
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_GreetingA
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_GreetingB
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_GreetingC
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_GreetingD
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_GreetingE
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_GreetingF
 	.4byte 0
-
-PuzzleCommon_TextArray_PuzzleIntro_NoItems00:
+PuzzleCommon_TextArray_PuzzleIntro_GreetingA:
 	.string "Hah! You've returned for another\n"
-	.string "challenge!\p"
-	.string "This next one is a {PUZZLE_ADJECTIVE}\n"
-	.string "puzzle to be sure!\p"
-	.string "I collected it off a fellow who called\n"
-	.string "themself {PUZZLE_AUTHOR}.\p"
-	.string "Let us see how you do with it!$"
-PuzzleCommon_TextArray_PuzzleIntro_NoItems01:
-	.string "Hah! Back for more then?\p"
-	.string "This next puzzle is a {PUZZLE_ADJECTIVE}\n"
-	.string "by one {PUZZLE_AUTHOR}.\p"
-	.string "Can you handle it? Wahahahaha!$"
-PuzzleCommon_TextArray_PuzzleIntro_NoItems02:
-	.string "That last one was a pushover for you,\n"
-	.string "it seems!\p"
-	.string "Let's see how you do with this next\n"
-	.string "one, a {PUZZLE_ADJECTIVE} kind of\l"
-	.string "puzzle, thought up by {PUZZLE_AUTHOR}.\p"
-	.string "Good luck! Wahahahaha!$"
-PuzzleCommon_TextArray_PuzzleIntro_NoItems03:
-	.string "You're good at these puzzles, aren't you?\p"
-	.string "But this next one is a {PUZZLE_ADJECTIVE}\n"
-	.string "one to be sure.\p"
-	.string "It's one I collected it off someone\n"
-	.string "called {PUZZLE_AUTHOR}.\p"
-	.string "See you on the other side!$"
-PuzzleCommon_TextArray_PuzzleIntro_NoItems04:
+	.string "challenge!$"
+PuzzleCommon_TextArray_PuzzleIntro_GreetingB:
+	.string "Hah! Back for more?$"
+PuzzleCommon_TextArray_PuzzleIntro_GreetingC:
+	.string "That last one as a tough one,\n"
+	.string "wasn't it? Hah!$"
+PuzzleCommon_TextArray_PuzzleIntro_GreetingD:
+	.string "Hah! You're doing well tonight?$"
+PuzzleCommon_TextArray_PuzzleIntro_GreetingE:
 	.string "Hah! Seems like you made it through that\n"
-	.string "last one with ease!\p"
-	.string "This next puzzle I borrowed from one\n"
-	.string "{PUZZLE_AUTHOR} who I met on my travels.\p"
-	.string "I'd call it {PUZZLE_ADJECTIVE}.\p"
-	.string "Let's see how you handle it!$"
-	
+	.string "last one with ease!$"
+PuzzleCommon_TextArray_PuzzleIntro_GreetingF:
+	.string "Hah! Welcome back!\n"
+	.string "How did that last one go?$"
 
 @ -----------------------------------------------------
 
 .align 2
-PuzzleCommon_TextArray_PuzzleIntro_Items::
-	.4byte PuzzleCommon_TextArray_PuzzleIntro_Items00
-	.4byte PuzzleCommon_TextArray_PuzzleIntro_Items01
-	.4byte PuzzleCommon_TextArray_PuzzleIntro_Items02
-	.4byte PuzzleCommon_TextArray_PuzzleIntro_Items03
-	.4byte PuzzleCommon_TextArray_PuzzleIntro_Items04
+PuzzleCommon_TextArray_PuzzleIntro_Farewell::
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_FarewellA
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_FarewellB
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_FarewellC
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_FarewellD
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_FarewellE
 	.4byte 0
-PuzzleCommon_TextArray_PuzzleIntro_Items_Bye::
-	.4byte PuzzleCommon_TextArray_PuzzleIntro_Items00b
-	.4byte PuzzleCommon_TextArray_PuzzleIntro_Items01b
-	.4byte PuzzleCommon_TextArray_PuzzleIntro_Items02b
-	.4byte PuzzleCommon_TextArray_PuzzleIntro_Items03b
-	.4byte PuzzleCommon_TextArray_PuzzleIntro_Items04b
-	.4byte 0
+PuzzleCommon_TextArray_PuzzleIntro_FarewellA:
+	.string "See you on the other side!$"
+PuzzleCommon_TextArray_PuzzleIntro_FarewellB:
+	.string "Let us see how you do with it!$"
+PuzzleCommon_TextArray_PuzzleIntro_FarewellC:
+	.string "Good luck! Wahahahaha!$"
+PuzzleCommon_TextArray_PuzzleIntro_FarewellD:
+	.string "Let's see how you handle it!$"
+PuzzleCommon_TextArray_PuzzleIntro_FarewellE:
+	.string "Wahahahaha!$"
 
-PuzzleCommon_TextArray_PuzzleIntro_Items00:
-	.string "Hah! You've returned for another\n"
-	.string "challenge!\p"
+@ -----------------------------------------------------
+
+.align 2
+PuzzleCommon_TextArray_PuzzleIntro_ItemsLede::
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_ItemsLedeA
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_ItemsLedeB
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_ItemsLedeC
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_ItemsLedeD
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_ItemsLedeE
+	.4byte 0
+PuzzleCommon_TextArray_PuzzleIntro_ItemsLedeA:
+	.string "Ah, but you will need a thing or two\n"
+	.string "before you start this one.$"
+PuzzleCommon_TextArray_PuzzleIntro_ItemsLedeB:
+	.string "But before I go, you'll need these.$"
+PuzzleCommon_TextArray_PuzzleIntro_ItemsLedeC:
+	.string "Ah, but first, you'll need these.$"
+PuzzleCommon_TextArray_PuzzleIntro_ItemsLedeD:
+	.string "I was given these things, which\n"
+	.string "you'll need for the puzzle.$"
+PuzzleCommon_TextArray_PuzzleIntro_ItemsLedeE:
+	.string "You're going to need these!$"
+
+@ -----------------------------------------------------
+
+.align 2
+PuzzleCommon_TextArray_PuzzleIntro_AuthoredBy::
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_AuthoredByA
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_AuthoredByB
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_AuthoredByC
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_AuthoredByD
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_AuthoredByE
+	.4byte 0
+PuzzleCommon_TextArray_PuzzleIntro_AuthoredByA:
 	.string "This next one is a {PUZZLE_ADJECTIVE}\n"
 	.string "puzzle to be sure!\p"
 	.string "I collected it off a fellow who called\n"
-	.string "themself {PUZZLE_AUTHOR}.\p"
-	.string "Ah, but this one you will need a thing\n"
-	.string "or two before you start.$"
-PuzzleCommon_TextArray_PuzzleIntro_Items00b:
-	.string "Let us see how you do!$"
-PuzzleCommon_TextArray_PuzzleIntro_Items01:
-	.string "Hah! Back for more then?\p"
+	.string "themself {PUZZLE_AUTHOR}.$"
+PuzzleCommon_TextArray_PuzzleIntro_AuthoredByB:
 	.string "This next puzzle is a {PUZZLE_ADJECTIVE}\n"
-	.string "by one {PUZZLE_AUTHOR}.\p"
-	.string "Can you handle it? Wahahahaha!\p"
-	.string "But before I go, you'll need these.$"
-PuzzleCommon_TextArray_PuzzleIntro_Items01b:
-	.string "As I was saying, Wahahahaha!$"
-PuzzleCommon_TextArray_PuzzleIntro_Items02:
-	.string "That last one was a pushover for you,\n"
-	.string "it seems!\p"
+	.string "one, by one {PUZZLE_AUTHOR}.$"
+PuzzleCommon_TextArray_PuzzleIntro_AuthoredByC:
 	.string "Let's see how you do with this next\n"
 	.string "one, a {PUZZLE_ADJECTIVE} kind of\l"
-	.string "puzzle, thought up by {PUZZLE_AUTHOR}.\p"
-	.string "Here's what you'll need for the puzzle.$"
-PuzzleCommon_TextArray_PuzzleIntro_Items02b:
-	.string "Good luck! Wahahahaha!$"
-PuzzleCommon_TextArray_PuzzleIntro_Items03:
-	.string "You're good at these puzzles, aren't you?\p"
-	.string "But this next one is a {PUZZLE_ADJECTIVE}\n"
-	.string "one to be sure.\p"
+	.string "puzzle, thought up by {PUZZLE_AUTHOR}.$"
+PuzzleCommon_TextArray_PuzzleIntro_AuthoredByD:
+	.string "This next one is a {PUZZLE_ADJECTIVE}\n"
+	.string "puzzle to be sure.\p"
 	.string "It's one I collected it off someone\n"
-	.string "called {PUZZLE_AUTHOR}.\p"
-	.string "I also collected these things, which\n"
-	.string "you'll need for the puzzle.$"
-PuzzleCommon_TextArray_PuzzleIntro_Items03b:
-	.string "See you on the other side!$"
-PuzzleCommon_TextArray_PuzzleIntro_Items04:
-	.string "Hah! Seems like you made it through that\n"
-	.string "last one with ease!\p"
+	.string "called {PUZZLE_AUTHOR}.$"
+PuzzleCommon_TextArray_PuzzleIntro_AuthoredByE:
 	.string "This next puzzle I borrowed from one\n"
 	.string "{PUZZLE_AUTHOR} who I met on my travels.\p"
-	.string "I'd call it {PUZZLE_ADJECTIVE}.\p"
-	.string "Ah, but first, you'll need these.$"
-PuzzleCommon_TextArray_PuzzleIntro_Items04b:
-	.string "Let's see how you handle it!$"
+	.string "I'd call it {PUZZLE_ADJECTIVE}.$"
 
+@ -----------------------------------------------------
+
+.align 2
+PuzzleCommon_TextArray_PuzzleIntro_InspiredBy::
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_InspiredByA
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_InspiredByB
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_InspiredByC
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_InspiredByD
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_InspiredByE
+	.4byte 0
+@ Note: PUZZLE_AUTHOR is the inspiration in this instance
+PuzzleCommon_TextArray_PuzzleIntro_InspiredByA:
+	.string "This next one is a {PUZZLE_ADJECTIVE}\n"
+	.string "puzzle to be sure!\p"
+	.string "It was inspired by {PUZZLE_AUTHOR}.$"
+PuzzleCommon_TextArray_PuzzleIntro_InspiredByB:
+	.string "This next puzzle is a {PUZZLE_ADJECTIVE}\n"
+	.string "one, inspired by {PUZZLE_AUTHOR}!$"
+PuzzleCommon_TextArray_PuzzleIntro_InspiredByC:
+	.string "Let's see how you do with this next\n"
+	.string "one, a {PUZZLE_ADJECTIVE} kind of\l"
+	.string "puzzle, thanks to the inspiration\l"
+	.string "{PUZZLE_AUTHOR} provided.$"
+PuzzleCommon_TextArray_PuzzleIntro_InspiredByD:
+	.string "This next one is a {PUZZLE_ADJECTIVE}\n"
+	.string "puzzle to be sure.\p"
+	.string "I was inspired by {PUZZLE_AUTHOR}.$"
+PuzzleCommon_TextArray_PuzzleIntro_InspiredByE:
+	.string "This next puzzle was inspired by my\n"
+	.string "interactions with {PUZZLE_AUTHOR}.\p"
+	.string "I'd call it {PUZZLE_ADJECTIVE}.$"
+
+@ -----------------------------------------------------
+
+.align 2
+PuzzleCommon_TextArray_PuzzleIntro_BuiltBy::
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_BuiltByA
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_BuiltByB
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_BuiltByC
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_BuiltByD
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_BuiltByE
+	.4byte 0
+PuzzleCommon_TextArray_PuzzleIntro_BuiltByA:
+	.string "This next one is a {PUZZLE_ADJECTIVE}\n"
+	.string "puzzle, built by {PUZZLE_AUTHOR}!$"
+PuzzleCommon_TextArray_PuzzleIntro_BuiltByB:
+	.string "This next puzzle is a {PUZZLE_ADJECTIVE}\n"
+	.string "one, put together by {PUZZLE_AUTHOR}.$"
+PuzzleCommon_TextArray_PuzzleIntro_BuiltByC:
+	.string "Let's see how you do with this next\n"
+	.string "one, a {PUZZLE_ADJECTIVE} kind of\l"
+	.string "puzzle, compiled by {PUZZLE_AUTHOR}.$"
+PuzzleCommon_TextArray_PuzzleIntro_BuiltByD:
+	.string "This next one is a {PUZZLE_ADJECTIVE}\n"
+	.string "puzzle to be sure.\p"
+	.string "Someone called {PUZZLE_AUTHOR} put\n"
+	.string "it together for me!$"
+PuzzleCommon_TextArray_PuzzleIntro_BuiltByE:
+	.string "This next puzzle I borrowed from one\n"
+	.string "{PUZZLE_AUTHOR}, who built it for me.\p"
+	.string "I'd call it {PUZZLE_ADJECTIVE}.$"
+
+@ -----------------------------------------------------
+
+.align 2
+PuzzleCommon_TextArray_PuzzleIntro_GameFreak::
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_GameFreakA
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_GameFreakB
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_GameFreakC
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_GameFreakD
+	.4byte PuzzleCommon_TextArray_PuzzleIntro_GameFreakE
+	.4byte 0
+PuzzleCommon_TextArray_PuzzleIntro_GameFreakA:
+	.string "I stumbled upon this {PUZZLE_ADJECTIVE}\n"
+	.string "puzzle in my travels.$"
+PuzzleCommon_TextArray_PuzzleIntro_GameFreakB:
+	.string "I found this {PUZZLE_ADJECTIVE} puzzle\n"
+	.string "out in the wider world!$"
+PuzzleCommon_TextArray_PuzzleIntro_GameFreakC:
+	.string "This next puzzle is one I discovered\n"
+	.string "on my worldly travels.\p"
+	.string "I'd call it {PUZZLE_ADJECTIVE}!$"
+PuzzleCommon_TextArray_PuzzleIntro_GameFreakD:
+	.string "This next puzzle is inspired by my\n"
+	.string "travels to regions far and near!\p"
+	.string "It's a {PUZZLE_ADJECTIVE} one\n"
+	.string "to be sure!$"
+PuzzleCommon_TextArray_PuzzleIntro_GameFreakE:
+	.string "While travelling the world, I came\n"
+	.string "upon this {PUZZLE_ADJECTIVE} puzzle,\l"
+	.string "which I will share with you today!$"
 
 @ -----------------------------------------------------
 
@@ -214,24 +309,44 @@ PuzzleCommon_TextArray_SecretCodes_END::
 	.4byte 0
 
 PuzzleCommon_Text_SecretCode01:
-	.string "This is Halloween!$"
+	.string "Halloween Haunts!$"
 PuzzleCommon_Text_SecretCode02:
-	.string "PUMPKABOO scream in the dead of night…$"
+	.string "Pumpkaboo Screams!$"
 PuzzleCommon_Text_SecretCode03:
-	.string "Ride with the moon in the dead of night…$"
+	.string "Phantasmal Assailant!$"
 PuzzleCommon_Text_SecretCode04:
-	.string "I am the shadow on the moon at night…$"
+	.string "Arachnophobia!$"
 PuzzleCommon_Text_SecretCode05:
-	.string "The clown with the tearaway face…$"
+	.string "Eye of Newt!$" @ TODO: Newt Pokemon
 PuzzleCommon_Text_SecretCode06:
-	.string "Watch out for EKANS!$"
+	.string "Midnight Monster!$"
 PuzzleCommon_Text_SecretCode07:
-	.string "It's just a bunch of Hocus Pocus!$"
+	.string "Hocus Pocus!$"
 PuzzleCommon_Text_SecretCode08:
-	.string "Double double, toil and trouble…$"
+	.string "Nightmare Moon!$"
 PuzzleCommon_Text_SecretCode09:
 	.string "Nevermore!$"
 PuzzleCommon_Text_SecretCode10:
-	.string "Something wicked this way comes…$"
+	.string "Trevenant Tricks!$"
 PuzzleCommon_Text_SecretCode11:
-	.string "Don't look behind you…$"
+	.string "Cauldron Boils!$"
+PuzzleCommon_Text_SecretCode12:
+	.string "Witch's Fancy!$"
+PuzzleCommon_Text_SecretCode13:
+	.string "Cursed Corvoknight!$"
+PuzzleCommon_Text_SecretCode14:
+	.string "Yamask Menace!$"
+PuzzleCommon_Text_SecretCode15:
+	.string "Zombie Paras!$"
+PuzzleCommon_Text_SecretCode16:
+	.string "Ghastly Vision!$"
+PuzzleCommon_Text_SecretCode17:
+	.string "Gengar Spite!$"
+PuzzleCommon_Text_SecretCode18:
+	.string "Misdreavus Malpractice!$"
+PuzzleCommon_Text_SecretCode19:
+	.string "Hidden Mimikyu!$"
+PuzzleCommon_Text_SecretCode20:
+	.string "Haunted Mansion!$"
+PuzzleCommon_Text_SecretCode21:
+	.string "Chandelure Shakes!$"

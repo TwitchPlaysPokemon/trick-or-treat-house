@@ -66,9 +66,9 @@ Changes:
 	- [ ] Trick Treat Petalburg: No one joins you
 	- [ ] Trick Treat Fortree: Brendan / Treekid joins you.
 	- [ ] Trick Treat Mossdeep: Treekid / May joins you.
-	- [ ] Tower 1: Joey joins
+	- [ ] Tower 1: James joins
 	- [ ] Tower 2: Irene joins
-	- [ ] Tower 3: James joins
+	- [ ] Tower 3: Joey joins
 	- [ ] Tower 4: Wally joins ("It sounded like you guys were having a lot of fun...")
 
 

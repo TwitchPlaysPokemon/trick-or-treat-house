@@ -284,6 +284,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     
     // Dev Self-Inserts
     [OBJ_EVENT_GFX_DEV_TUSTIN2121] =           &gObjectEventGraphicsInfo_Tustin2121,
+    [OBJ_EVENT_GFX_DEV_SHANTYTOWN] =           &gObjectEventGraphicsInfo_Scientist1, // TODO
     
     /** For porymap preview only, as these are aliases for entries above
     [TTH_FRIEND_JOEY] =    &gObjectEventGraphicsInfo_Youngster,

@@ -1867,9 +1867,9 @@ static bool32 ProcessReceivedChatMessage(u8 *dest, u8 *recvMessage)
     case CHAT_MESSAGE_JOIN:
         if (sChat->multiplayerId != name[PLAYER_NAME_LENGTH + 1])
         {
-            DynamicPlaceholderTextUtil_Reset();
-            DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, name);
-            DynamicPlaceholderTextUtil_ExpandPlaceholders(dest, gText_F700JoinedChat);
+            DynamicPlaceholder_Reset();
+            DynamicPlaceholder_Set(0, name);
+            DynamicPlaceholder_Expand(dest, gText_F700JoinedChat);
             return TRUE;
         }
         break;
@@ -1887,9 +1887,9 @@ static bool32 ProcessReceivedChatMessage(u8 *dest, u8 *recvMessage)
     case CHAT_MESSAGE_LEAVE:
         if (sChat->multiplayerId != *recvMessage)
         {
-            DynamicPlaceholderTextUtil_Reset();
-            DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, name);
-            DynamicPlaceholderTextUtil_ExpandPlaceholders(dest, gText_F700LeftChat);
+            DynamicPlaceholder_Reset();
+            DynamicPlaceholder_Set(0, name);
+            DynamicPlaceholder_Expand(dest, gText_F700LeftChat);
             return TRUE;
         }
         break;
@@ -2625,9 +2625,9 @@ static bool32 Display_PrintLeaderLeft(u8 *state)
     switch (*state)
     {
     case 0:
-        DynamicPlaceholderTextUtil_Reset();
+        DynamicPlaceholder_Reset();
         str = GetChatHostName();
-        DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, str);
+        DynamicPlaceholder_Set(0, str);
         AddStdMessageWindow(STDMESSAGE_LEADER_LEFT, 0);
         CopyWindowToVram(sDisplay->messageWindowId, COPYWIN_FULL);
         (*state)++;
@@ -2694,8 +2694,8 @@ static bool32 Display_PrintSavedTheGame(u8 *state)
     switch (*state)
     {
     case 0:
-        DynamicPlaceholderTextUtil_Reset();
-        DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, gSaveBlock2Ptr->playerName);
+        DynamicPlaceholder_Reset();
+        DynamicPlaceholder_Set(0, gSaveBlock2Ptr->playerName);
         AddStdMessageWindow(STDMESSAGE_SAVED_THE_GAME, 0);
         CopyWindowToVram(sDisplay->messageWindowId, COPYWIN_FULL);
         (*state)++;
@@ -2799,7 +2799,7 @@ static void AddStdMessageWindow(int msgId, u16 bg0vofs)
 
     if (sDisplayStdMessages[msgId].hasPlaceholders)
     {
-        DynamicPlaceholderTextUtil_ExpandPlaceholders(sDisplay->expandedPlaceholdersBuffer, sDisplayStdMessages[msgId].text);
+        DynamicPlaceholder_Expand(sDisplay->expandedPlaceholdersBuffer, sDisplayStdMessages[msgId].text);
         str = sDisplay->expandedPlaceholdersBuffer;
     }
     else

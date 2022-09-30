@@ -27,7 +27,7 @@ TrickTreat_FortreeCity_Quip:
 	.string "I wonder what it looked like before\n"
 	.string "the expansion.$"
 TrickTreat_FortreeCity_Dev:
-	.string "Tustin2121: In case you couldn't tell,\n"
+	.string "In case you couldn't tell,\n"
 	.string "this Fortree layout is not vanilla.\p"
 	.string "This is the layout from my first TPP\n"
 	.string "hack, TriHard Emerald.\p"

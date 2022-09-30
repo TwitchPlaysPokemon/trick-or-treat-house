@@ -1,6 +1,6 @@
 raw `
 Puzzle_SuspendedMaze_MapScripts::
-	puzzle_info Puzzle_SuspendedMaze_Name, Puzzle_SuspendedMaze_Author
+	puzzle_info Puzzle_SuspendedMaze_Name, CommonAuthor_Tustin2121, PUZZLE_FLAG_INSPIRED_BY, Puzzle_SuspendedMaze_Author
 	puzzle_adjective Puzzle_SuspendedMaze_Adjective
 	puzzle_quip Puzzle_SuspendedMaze_Quip
 	puzzle_metavars Puzzle_SuspendedMaze_Variables
@@ -12,7 +12,6 @@ Puzzle_SuspendedMaze_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Common_FrameTable_CrackedGround_FallDownHole
 	map_script MAP_SCRIPT_ON_TRANSITION, Common_OnResume_FixCrackedGround
 	.byte 0
-	
 	
 Puzzle_SuspendedMaze_Name:
 	.string "Cross-Path Caverns$"
@@ -26,10 +25,10 @@ Puzzle_SuspendedMaze_Quip:
 	.string "I know there's Steel-type {POKEMON},\n"
 	.string "but Iron-type? Never heard of it.$"
 Puzzle_SuspendedMaze_DevCommentary:
-	.string "Tustin2121: This maze is an almost\n"
-	.string "perfect copy of the first crossword\l"
-	.string "puzzle that Serebii created during the\l"
-	.string "initial COVID outbreak back in March.\p"
+	.string "This maze is an almost perfect copy\n"
+	.string "of the first crossword puzzle that\l"
+	.string "Serebii created during the initial\l"
+	.string "COVID outbreak back in March 2020.\p"
 	.string "Someone said it looked like a maze,\n"
 	.string "and that gave me the idea for it.\p"
 	.string "(Twitter link: twitter.com/SerebiiNet/\n"

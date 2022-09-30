@@ -295,8 +295,6 @@ script TrickHouseCorridor_TriggerScript_RunIntro {
 	applymovement (OBJ_EVENT_ID_PLAYER, 0)
 	applymovement (LID_MASTER, Common_Movement_WalkLeft1)
 	waitmovement (OBJ_EVENT_ID_PLAYER)
-	// Introduce puzzle
-	callnative(LoadPuzzleIntro)
 	// Note: If a custom intro script is on the current puzzle,
 	// execution will not reach beyond here, but will jump to that.
 	switch(var(VAR_INTRO_PERSON)) {
@@ -309,16 +307,37 @@ script TrickHouseCorridor_TriggerScript_RunIntro {
 		case TTH_FRIEND_MAY: speakername_common(MAY)
 		case TTH_FRIEND_ALEX: speakername_common(ALEX)
 	}
-	switch(var(VAR_RESULT)) {
+	// Introduce puzzle
+	callnative(LoadPuzzleIntro)
+	
+	// "Welcome back!"
+	random(256)
+	selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_Greeting, VAR_RESULT)
+	loaddynamicstring(0, 0)
+	// "See you in the back!"
+	random(256)
+	selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_Farewell, VAR_RESULT)
+	loaddynamicstring(1, 0)
+	// Puzzle adjective / credit
+	random(256)
+	switch(var(VAR_0x8006)) {
+		case PUZZLE_FLAG_INSPIRED_BY: selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_InspiredBy, VAR_RESULT)
+		case PUZZLE_FLAG_BUILT_BY:    selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_BuiltBy, VAR_RESULT)
+		case PUZZLE_FLAG_GAME_FREAK:  selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_GameFreak, VAR_RESULT)
+		default:                      selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_AuthoredBy, VAR_RESULT)
+	}
+	loaddynamicstring(2, 0)
+	// "First, items..."
+	random(256)
+	selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_ItemsLede, VAR_RESULT)
+	loaddynamicstring(3, 0)
+	
+	switch(var(VAR_0x8005)) {
 		case 0: // Generic Intro
-			random(256)
-			selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_NoItems, VAR_RESULT)
-			msgbox_selected
+			msgbox (PuzzleCommon_Text_PuzzleIntro_Generic)
 		case 1: // Generic item intro
-			random(256)
-			copyvar(VAR_0x8001, VAR_RESULT)
-			selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_Items, VAR_0x8001)
-			msgbox_selected
+			// Introduction
+			msgbox(PuzzleCommon_Text_PuzzleIntro_GenericItem1)
 			// Give items
 			callnative(GiveItemPrerequisites)
 			playfanfare(MUS_OBTAIN_ITEM)
@@ -326,8 +345,7 @@ script TrickHouseCorridor_TriggerScript_RunIntro {
 			waitmessage
 			waitfanfare
 			// Bye!
-			selectpointer_wrap (PuzzleCommon_TextArray_PuzzleIntro_Items_Bye, VAR_0x8001)
-			msgbox_selected
+			msgbox (PuzzleCommon_Text_PuzzleIntro_GenericItem2)
 		case 2: // Custom intro
 			msgbox_selected
 		case 3: // Custom item intro
@@ -339,8 +357,9 @@ script TrickHouseCorridor_TriggerScript_RunIntro {
 			waitmessage
 			waitfanfare
 			// Bye!
-			msgbox(PuzzleCommon_Text_PuzzleIntro_CommonBye)
+			msgbox(PuzzleCommon_Text_PuzzleIntro_GenericItem2)
 		default:
+			msgbox("Error!$")
 			end
 	}
 	// Leave
@@ -374,6 +393,7 @@ script TrickHouseCorridor_TriggerScript_RunIntro {
 	call (TrickHouseCorridor_OpenPuzzleDoor)
 	releaseall
 }
+
 
 raw `
 @ -----------------------------------------------------

@@ -7,7 +7,7 @@ Puzzle_SafariImposters_MapScripts:: @ 822BBBB
 	puzzle_metavars Puzzle_SafariImposters_Variables
 	puzzle_friendcommentary Puzzle_SafariImposters_Friend
 	puzzle_devcommentary Puzzle_SafariImposters_DevComment
-	map_script MAP_SCRIPT_PUZZLE_SETUP_SCRIPT, Puzzle_SafariImposters_SetupPuzzle
+	map_script MAP_SCRIPT_ON_PUZZLE_SETUP, Puzzle_SafariImposters_SetupPuzzle
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_SafariImposters_OnLoad
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_SafariImposters_OnResume
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_SafariImposters_OnFrame
@@ -33,8 +33,8 @@ Puzzle_SafariImposters_Friend:
 	.string "I'll head back to the Safari Zone.\n"
 	.string "It was peaceful there…$"
 Puzzle_SafariImposters_DevComment:
-	.string "Tustin2121: In case it wasn't obvious,\n"
-	.string "this puzzle was inspired by Among Us.\p"
+	.string "In case it wasn't obvious, this\n"
+	.string "puzzle was inspired by Among Us.\p"
 	.string "It's a great game, and this is probably\n"
 	.string "as close as it can get to happening in\l"
 	.string "a single-player format.\p"

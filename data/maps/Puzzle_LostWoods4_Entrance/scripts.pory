@@ -2,7 +2,7 @@ raw `
 Puzzle_LostWoods4_Entrance_MapScripts::
 	puzzle_info Puzzle_LostWoods4_Name, CommonAuthor_Tustin2121
 	puzzle_adjective Puzzle_LostWoods4_Adjective
-	puzzle_quip Puzzle_LostWoods4_Quip
+	puzzle_quip Puzzle_LostWoods4_Quip, Puzzle_LostWoods4_QuipSpeaker
 	puzzle_metavars Puzzle_LostWoods4_Variables
 	puzzle_item_prereqs Puzzle_LostWoods4_PrereqItems
 	puzzle_candylist Puzzle_LostWoods4_CandyList
@@ -14,10 +14,12 @@ Puzzle_LostWoods4_Name:
 Puzzle_LostWoods4_Adjective:
 	.string "non-euclidean$"
 Puzzle_LostWoods4_Quip:
-	.string "…$"
+	.string "… … …\n… … …$" @TODO: Figure out a new quipper, this joke already done by Lost Woods 1
+Puzzle_LostWoods4_QuipSpeaker:
+	.string "Link$"
 Puzzle_LostWoods4_DevCommentary:
-	.string "Tustin2121: This was the original design\n$"
-	.string "for the 'Lost Woods' puzzle, complete\l"
+	.string "This was the original design for\n"
+	.string "the 'Lost Woods' puzzle, complete\l"
 	.string "with the Antichamber-esque looping back\l"
 	.string "upon oneself.\p"
 	.string "Obviously this is the extreme case, and\n"

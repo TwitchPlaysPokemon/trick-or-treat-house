@@ -4873,21 +4873,21 @@ static void ShowResults(void)
         strWidth = GetStringWidth(FONT_NORMAL, gText_AnnouncingPrizes, -1);
         x = (224 - strWidth) / 2;
         AddTextPrinterParameterized(sGfx->windowIds[0], FONT_NORMAL, gText_AnnouncingPrizes, x, 1, TEXT_SKIP_DRAW, NULL);
-        DynamicPlaceholderTextUtil_Reset();
+        DynamicPlaceholder_Reset();
         CopyItemName(GetPrizeItemId(), gStringVar1);
-        DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, gStringVar1);
-        DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringBuffer, gText_FirstPlacePrize);
+        DynamicPlaceholder_Set(0, gStringVar1);
+        DynamicPlaceholder_Expand(gStringBuffer, gText_FirstPlacePrize);
         AddTextPrinterParameterized(sGfx->windowIds[1], FONT_NORMAL, gStringBuffer, 0, 1, TEXT_SKIP_DRAW, NULL);
         prizeState = TryGivePrize();
         if (prizeState != PRIZE_RECEIVED && prizeState != NO_PRIZE)
         {
-            DynamicPlaceholderTextUtil_Reset();
+            DynamicPlaceholder_Reset();
             CopyItemName(GetPrizeItemId(), gStringVar1);
-            DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, gStringVar1);
+            DynamicPlaceholder_Set(0, gStringVar1);
             if (prizeState == PRIZE_NO_ROOM)
-                DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringBuffer, gText_CantHoldAnyMore);
+                DynamicPlaceholder_Expand(gStringBuffer, gText_CantHoldAnyMore);
             else if (prizeState == PRIZE_FILLED_BAG)
-                DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringBuffer, gText_FilledStorageSpace);
+                DynamicPlaceholder_Expand(gStringBuffer, gText_FilledStorageSpace);
             AddTextPrinterParameterized(sGfx->windowIds[1], FONT_NORMAL, gStringBuffer, 0, 41, TEXT_SKIP_DRAW, NULL);
         }
         CopyWindowToVram(sGfx->windowIds[0], COPYWIN_GFX);

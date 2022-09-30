@@ -51,7 +51,7 @@
 #define OBJ_EVENT_GFX_TRICK_DOOR_STONE_ROOM          0x029
 #define OBJ_EVENT_GFX_TRICK_DOOR_NORTH               0x02A
 #define OBJ_EVENT_GFX_DEV_TUSTIN2121                 0x02B
-#define OBJ_EVENT_GFX_DEV_1                          0x02C
+#define OBJ_EVENT_GFX_DEV_SHANTYTOWN                 0x02C
 #define OBJ_EVENT_GFX_DEV_2                          0x02D
 #define OBJ_EVENT_GFX_DEV_3                          0x02E
 #define OBJ_EVENT_GFX_DEV_4                          0x02F

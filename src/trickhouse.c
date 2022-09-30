@@ -77,7 +77,7 @@ void RunPuzzleSetupScript()
 		gSaveBlock1Ptr->location.mapNum == (currPuzzle & 0xFF))
 	{
 		// Find and run a setup script
-		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_SETUP_SCRIPT);
+		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_ON_PUZZLE_SETUP);
 		if (script != NULL)
 		{
 			RunScriptImmediately(script);
@@ -111,7 +111,7 @@ void RunPuzzleTeardownScript()
 		gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(TRICK_HOUSE_END) &&
 		gSaveBlock1Ptr->location.mapNum == MAP_NUM(TRICK_HOUSE_END))
 	{
-		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_TEARDOWN_SCRIPT);
+		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_ON_PUZZLE_TEARDOWN);
 		if (script != NULL)
 		{
 			RunScriptImmediately(script);
@@ -126,7 +126,7 @@ void RunPuzzleTeardownScript()
 	if (gLastUsedWarp.mapGroup != MAP_GROUP(TRICK_HOUSE_END) &&
 		gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(TRICK_HOUSE_END))
 	{
-		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_EXIT_SCRIPT);
+		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_ON_PUZZLE_EXIT);
 		if (script != NULL)
 		{
 			RunScriptImmediately(script);
@@ -139,7 +139,7 @@ void RunPuzzleBlackoutScript()
 	u16 currPuzzle = GetCurrentPuzzleMapId();
 	if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(TRICK_HOUSE_END))
 	{
-		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_BLACKOUT_SCRIPT);
+		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_ON_PUZZLE_BLACKOUT);
 		if (script != NULL)
 		{
 			RunScriptImmediately(script);
@@ -150,7 +150,7 @@ void RunPuzzleBlackoutScript()
 bool8 CheckForPuzzleEscapeRopeScript()
 {
 	u16 currPuzzle = GetCurrentPuzzleMapId();
-	const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_ESCAPE_SCRIPT);
+	const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_ON_PUZZLE_ESCAPE);
 	if (script != NULL)
 	{
 		return TRUE;
@@ -163,7 +163,7 @@ void RunPuzzleEscapeRopeScript()
 	u16 currPuzzle = GetCurrentPuzzleMapId();
 	if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(TRICK_HOUSE_END))
 	{
-		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_ESCAPE_SCRIPT);
+		const u8 *script = GetMapHeaderString(currPuzzle, MAP_SCRIPT_ON_PUZZLE_ESCAPE);
 		if (script != NULL)
 		{
 			RunScriptImmediately(script);
@@ -288,18 +288,24 @@ void LoadPuzzleIntro(struct ScriptContext *ctx)
 	const u8 *str;// = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_CUSTOM_INTRO);
 	// Set up for generic no-item intro
 	ctx->data[0] = 0;
-	gSpecialVar_Result = 0;
+	gSpecialVar_0x8005 = 0; // Intro type
+	gSpecialVar_0x8006 = 0; // Authorship type
 	
+	// Check the flags for this puzzle for what sort of intro to have
+	{
+		const u32 flags = (u32)MapHeaderGetScriptTableForMapId(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_FLAGS);
+		gSpecialVar_0x8006 = (u16)(flags & PUZZLE_FLAGS_AUTHORSHIP);
+	}
 	// Check if this puzzle has items
 	{
 		const u16 *array = (u16*)GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_PREREQ_LIST);
 		if (array != NULL && array[0] != ITEM_NONE) {
 			// Use generic item intro
-			gSpecialVar_Result += 1;
+			gSpecialVar_0x8005 += 1;
 		}
 	}
 	// Check for custom intro script
-	str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_CUSTOM_INTRO_SCRIPT);
+	str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_ON_PUZZLE_CUSTOM_INTRO);
 	if (str != NULL) {
 		ScriptJump(ctx, str);
 		return;
@@ -307,18 +313,18 @@ void LoadPuzzleIntro(struct ScriptContext *ctx)
 	// Check for custom intro
 	str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_CUSTOM_INTRO);
 	if (str != NULL) {
-		gSpecialVar_Result += 2;
+		gSpecialVar_0x8005 += 2;
 		ctx->data[0] = (u32)str;
 		return;
 	}
 	// Check if this is the first puzzle, load as a custom intro
 	if (VarGet(VAR_CURRENT_PUZZLE) == 0) { //first puzzle
 		if (IsAfterFirstLoop()) {
-			gSpecialVar_Result += 2;
+			gSpecialVar_0x8005 += 2;
 			ctx->data[0] = (u32)PuzzleCommon_Text_FirstPuzzleIntroRound2;
 			return;
 		} else {
-			gSpecialVar_Result += 2;
+			gSpecialVar_0x8005 += 2;
 			ctx->data[0] = (u32)PuzzleCommon_Text_FirstPuzzleIntro;
 			return;
 		}
@@ -329,15 +335,20 @@ extern const u8 PuzzleCommon_Text_DefaultQuip[];
 void ShowPuzzleQuip(struct ScriptContext *ctx)
 {
 	u16 currPuzzle = GetCurrentPuzzleMapId();
-	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_QUIP);
+	const u8* str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_QUIP);
+	const u8* name = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_QUIP_SPEAKER);
 	if (str == NULL)
 	{
+		name = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_AUTHOR);
 		str = PuzzleCommon_Text_DefaultQuip;
 	}
+	SetSpeakerName(name);
 	ShowFieldMessage(str);
 }
 
 extern const u8 PuzzleCommon_Text_DefaultDevCommentary[];
+extern const u8 CommonAuthor_Tustin2121[];
+extern const u8 CommonAuthor_ShantyTown[];
 void ShowPuzzleDevCommentary(struct ScriptContext *ctx)
 {
 	u16 currPuzzle = GetCurrentPuzzleMapId();
@@ -345,6 +356,10 @@ void ShowPuzzleDevCommentary(struct ScriptContext *ctx)
 	if (str == NULL)
 	{
 		str = PuzzleCommon_Text_DefaultDevCommentary;
+	}
+	switch (VarGet(VAR_DEV_COMMENTATOR)) {
+		case OBJ_EVENT_GFX_DEV_TUSTIN2121: SetSpeakerName(CommonAuthor_Tustin2121); break;
+		case OBJ_EVENT_GFX_DEV_SHANTYTOWN: SetSpeakerName(CommonAuthor_ShantyTown); break;
 	}
 	ShowFieldMessage(str);
 }

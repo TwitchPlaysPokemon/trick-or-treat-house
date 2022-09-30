@@ -1,6 +1,6 @@
 raw `
 Puzzle_IcePath_MapScripts::
-	puzzle_info Puzzle_IcePath_Name, CommonAuthor_GameFreak
+	puzzle_info Puzzle_IcePath_Name, CommonAuthor_GameFreak, PUZZLE_FLAG_GAME_FREAK
 	puzzle_custom_intro Puzzle_IcePath_Intro
 	puzzle_quip Puzzle_IcePath_Quip
 	puzzle_setup_script Puzzle_IcePath_SetupScript

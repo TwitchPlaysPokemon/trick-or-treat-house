@@ -2,7 +2,7 @@
   "id": "MAP_PUZZLE_TRAINER_HILL4",
   "name": "Puzzle_TrainerHill4",
   "layout": "LAYOUT_PUZZLE_TRAINER_HILL4",
-  "music": "MUS_B_TOWER",
+  "music": "MUS_B_TOWER_RS",
   "region_map_section": "MAPSEC_TRAINER_HILL",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",

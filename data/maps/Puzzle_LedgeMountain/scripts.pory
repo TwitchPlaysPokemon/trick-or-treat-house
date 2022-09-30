@@ -1,6 +1,6 @@
 raw `
 Puzzle_LedgeMountain_MapScripts::
-	puzzle_info Puzzle_LedgeMountain_Name, CommonAuthor_Tustin2121
+	puzzle_info Puzzle_LedgeMountain_Name, CommonAuthor_Tustin2121, PUZZLE_FLAG_INSPIRED_BY, Puzzle_LedgeMountain_Inspiration
 	puzzle_adjective Puzzle_LedgeMountain_Adjective
 	puzzle_quip Puzzle_LedgeMountain_Quip
 	puzzle_metavars Puzzle_LedgeMountain_Variables
@@ -10,13 +10,15 @@ Puzzle_LedgeMountain_MapScripts::
 
 Puzzle_LedgeMountain_Name:
 	.string "The Mountain Trail$"
+Puzzle_LedgeMountain_Inspiration:
+	.string "TPP Chat$" @ Tustin2121
 Puzzle_LedgeMountain_Adjective:
 	.string "jumpy$"
 Puzzle_LedgeMountain_Quip:
 	.string "I love a good climb in the morning!\n"
 	.string "How about you?$"
-Puzzle_LedgeMountain_DevCommentary:
-	.string "Tustin2121: This puzzle exists because\n"
+Puzzle_LedgeMountain_DevCommentary: 
+	.string "This puzzle exists because\n"
 	.string "TPP is terrible at ledges.\p"
 	.string "Th-that's really about it…\p"
 	.string "… …Every time I see the clip of chat's\n"

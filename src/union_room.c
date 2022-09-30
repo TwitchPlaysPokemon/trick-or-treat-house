@@ -4268,8 +4268,8 @@ static s32 GetChatLeaderActionRequestMessage(u8 *dst, u32 gender, u16 *activityD
         else
         {
             for (i = 0; i < RFU_CHILD_MAX; i++)
-                DynamicPlaceholderTextUtil_SetPlaceholderPtr(i, uroom->activityRequestStrbufs[i]);
-            DynamicPlaceholderTextUtil_ExpandPlaceholders(dst, sText_OfferToTradeMon);
+                DynamicPlaceholder_Set(i, uroom->activityRequestStrbufs[i]);
+            DynamicPlaceholder_Expand(dst, sText_OfferToTradeMon);
         }
         result = 1;
         break;
@@ -4444,59 +4444,59 @@ static void ViewURoomPartnerTrainerCard(u8 *unused, struct WirelessLink_URoom *d
     s32 i;
     s32 n;
 
-    DynamicPlaceholderTextUtil_Reset();
+    DynamicPlaceholder_Reset();
 
     StringCopy(data->trainerCardStrBuffer[0], gTrainerClassNames[GetUnionRoomTrainerClass()]);
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, data->trainerCardStrBuffer[0]);
+    DynamicPlaceholder_Set(0, data->trainerCardStrBuffer[0]);
 
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(1, trainerCard->playerName);
+    DynamicPlaceholder_Set(1, trainerCard->playerName);
 
     StringCopy(data->trainerCardColorStrBuffer, sCardColorTexts[trainerCard->stars]);
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(2, data->trainerCardColorStrBuffer);
+    DynamicPlaceholder_Set(2, data->trainerCardColorStrBuffer);
 
     ConvertIntToDecimalStringN(data->trainerCardStrBuffer[2], trainerCard->caughtMonsCount, STR_CONV_MODE_LEFT_ALIGN, 3);
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(3, data->trainerCardStrBuffer[2]);
+    DynamicPlaceholder_Set(3, data->trainerCardStrBuffer[2]);
 
     ConvertIntToDecimalStringN(data->trainerCardStrBuffer[3], trainerCard->playTimeHours, STR_CONV_MODE_LEFT_ALIGN, 3);
     ConvertIntToDecimalStringN(data->trainerCardStrBuffer[4], trainerCard->playTimeMinutes, STR_CONV_MODE_LEADING_ZEROS, 2);
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(4, data->trainerCardStrBuffer[3]);
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(5, data->trainerCardStrBuffer[4]);
+    DynamicPlaceholder_Set(4, data->trainerCardStrBuffer[3]);
+    DynamicPlaceholder_Set(5, data->trainerCardStrBuffer[4]);
 
-    DynamicPlaceholderTextUtil_ExpandPlaceholders(data->trainerCardMsgStrBuffer, sText_TrainerCardInfoPage1);
+    DynamicPlaceholder_Expand(data->trainerCardMsgStrBuffer, sText_TrainerCardInfoPage1);
     StringCopy(gStringBuffer, data->trainerCardMsgStrBuffer);
 
     n = trainerCard->linkBattleWins;
     if (n > 9999)
         n = 9999;
     ConvertIntToDecimalStringN(data->trainerCardStrBuffer[0], n, STR_CONV_MODE_LEFT_ALIGN, 4);
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, data->trainerCardStrBuffer[0]);
+    DynamicPlaceholder_Set(0, data->trainerCardStrBuffer[0]);
 
     n = trainerCard->linkBattleLosses;
     if (n > 9999)
         n = 9999;
     ConvertIntToDecimalStringN(data->trainerCardStrBuffer[1], n, STR_CONV_MODE_LEFT_ALIGN, 4);
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(2, data->trainerCardStrBuffer[1]);
+    DynamicPlaceholder_Set(2, data->trainerCardStrBuffer[1]);
 
     ConvertIntToDecimalStringN(data->trainerCardStrBuffer[2], trainerCard->pokemonTrades, STR_CONV_MODE_LEFT_ALIGN, 5);
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(3, data->trainerCardStrBuffer[2]);
+    DynamicPlaceholder_Set(3, data->trainerCardStrBuffer[2]);
 
     for (i = 0; i < TRAINER_CARD_PROFILE_LENGTH; i++)
     {
         CopyEasyChatWord(data->trainerCardStrBuffer[i + 3], trainerCard->easyChatProfile[i]);
-        DynamicPlaceholderTextUtil_SetPlaceholderPtr(i + 4, data->trainerCardStrBuffer[i + 3]);
+        DynamicPlaceholder_Set(i + 4, data->trainerCardStrBuffer[i + 3]);
     }
 
-    DynamicPlaceholderTextUtil_ExpandPlaceholders(data->trainerCardMsgStrBuffer, sText_TrainerCardInfoPage2);
+    DynamicPlaceholder_Expand(data->trainerCardMsgStrBuffer, sText_TrainerCardInfoPage2);
     StringAppend(gStringBuffer, data->trainerCardMsgStrBuffer);
 
     if (isParent == TRUE)
     {
-        DynamicPlaceholderTextUtil_ExpandPlaceholders(data->trainerCardMsgStrBuffer, sText_FinishedCheckingPlayersTrainerCard);
+        DynamicPlaceholder_Expand(data->trainerCardMsgStrBuffer, sText_FinishedCheckingPlayersTrainerCard);
         StringAppend(gStringBuffer, data->trainerCardMsgStrBuffer);
     }
     else if (isParent == FALSE)
     {
-        DynamicPlaceholderTextUtil_ExpandPlaceholders(data->trainerCardMsgStrBuffer, sGladToMeetYouTexts[trainerCard->gender]);
+        DynamicPlaceholder_Expand(data->trainerCardMsgStrBuffer, sGladToMeetYouTexts[trainerCard->gender]);
         StringAppend(gStringBuffer, data->trainerCardMsgStrBuffer);
     }
 }

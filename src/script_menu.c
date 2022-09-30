@@ -102,8 +102,8 @@ static void DrawMultichoiceMenu(u8 left, u8 top, u8 multichoiceId, bool8 ignoreB
 
     for (i = 0; i < count; i++)
     {
-        if (DynamicPlaceholderTextUtil_GetPlaceholderPtr(i) == NULL) continue;
-        width = DisplayTextAndGetWidth(DynamicPlaceholderTextUtil_GetPlaceholderPtr(i), width);
+        if (DynamicPlaceholder_Get(i) == NULL) continue;
+        width = DisplayTextAndGetWidth(DynamicPlaceholder_Get(i), width);
     }
 
     newWidth = ConvertPixelWidthToTileWidth(width);

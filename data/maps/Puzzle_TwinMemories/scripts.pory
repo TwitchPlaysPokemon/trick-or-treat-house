@@ -1,6 +1,6 @@
 raw `
 Puzzle_TwinMemories_MapScripts::
-	puzzle_info Puzzle_TwinMemories_Name, CommonAuthor_Tustin2121
+	puzzle_info Puzzle_TwinMemories_Name, CommonAuthor_Tustin2121, PUZZLE_FLAG_INSPIRED_BY, Puzzle_TwinMemories_Inspiration
 	puzzle_adjective Puzzle_TwinMemories_Adjective
 	puzzle_quip Puzzle_TwinMemories_Quip
 	@ puzzle_metavars Puzzle_TwinMemories_Variables
@@ -16,13 +16,15 @@ Puzzle_TwinMemories_MapScripts::
 
 Puzzle_TwinMemories_Name:
 	.string "Twin Memories$"
+Puzzle_TwinMemories_Inspiration: @ More like "blatantly stolen from"
+	.string "a pair of shrines$"
 Puzzle_TwinMemories_Adjective:
 	.string "memzorizing$" @intentional mispelling
 Puzzle_TwinMemories_Quip:
 	.string "This puzzle seems familiar. I can't\n"
 	.string "put my finger on how, though…$"
 Puzzle_TwinMemories_DevCommentary:
-	.string "Tustin2121: This puzzle takes its concept\n"
+	.string "This puzzle takes its concept\n"
 	.string "and its name from Zelda BotW.\p"
 	.string "After the 2019 release, this puzzle was\n"
 	.string "updated to randomly select from ten\l"

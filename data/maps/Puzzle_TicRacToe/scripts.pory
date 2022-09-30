@@ -8,7 +8,7 @@ Puzzle_TicRacToe_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_TicRacToe_OnLoad
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TicRacToe_OnResume
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_TicRacToe_FrameTable
-	map_script MAP_SCRIPT_PUZZLE_EXIT_SCRIPT, Puzzle_TicRacToe_OnExit
+	map_script MAP_SCRIPT_ON_PUZZLE_EXIT, Puzzle_TicRacToe_OnExit
 	.byte 0
 
 Puzzle_TicRacToe_Name:

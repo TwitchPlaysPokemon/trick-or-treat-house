@@ -1555,8 +1555,8 @@ void PrintMenuTable(u8 windowId, u8 itemCount, const struct MenuAction *menuActi
         if (menuActions[i].text != NULL) {
             AddTextPrinterParameterized(windowId, 1, menuActions[i].text, 8, (i * 16) + 1, TEXT_SKIP_DRAW, NULL);
         } 
-        else if (DynamicPlaceholderTextUtil_GetPlaceholderPtr(i) != NULL) {
-            AddTextPrinterParameterized(windowId, 1, DynamicPlaceholderTextUtil_GetPlaceholderPtr(i), 8, (i * 16) + 1, TEXT_SKIP_DRAW, NULL);
+        else if (DynamicPlaceholder_Get(i) != NULL) {
+            AddTextPrinterParameterized(windowId, 1, DynamicPlaceholder_Get(i), 8, (i * 16) + 1, TEXT_SKIP_DRAW, NULL);
         }
         else {
             AddTextPrinterParameterized(windowId, 1, sText_Error, 8, (i * 16) + 1, TEXT_SKIP_DRAW, NULL);

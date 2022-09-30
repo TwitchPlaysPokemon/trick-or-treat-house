@@ -27,7 +27,7 @@ Puzzle_WaterTemple_FriendCommentary:
 	.string "I'm gonna go catch some bugs.\n"
 	.string "On the LAND. To calm down.$"
 Puzzle_WaterTemple_DevCommentary:
-	.string "Tustin2121: This puzzle was inspired by\n"
+	.string "This puzzle was inspired by\n"
 	.string "Zelda water temple puzzles.\p"
 	.string "I had to implement on-the-fly map layout\n"
 	.string "switching just for this puzzle.\p"

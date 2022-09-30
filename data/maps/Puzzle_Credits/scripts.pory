@@ -1,7 +1,7 @@
 raw `
 Puzzle_Credits_MapScripts::
 	puzzle_info Puzzle_Credits_Name, CommonAuthor_Tustin2121
-	map_script MAP_SCRIPT_PUZZLE_CUSTOM_INTRO_SCRIPT, Puzzle_Credits_IntroScript
+	map_script MAP_SCRIPT_ON_PUZZLE_CUSTOM_INTRO, Puzzle_Credits_IntroScript
 	.byte 0
 
 Puzzle_Credits_Name:

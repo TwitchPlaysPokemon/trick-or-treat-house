@@ -2894,21 +2894,21 @@ static void GetQuizTitle(u8 *dst)
 {
     u8 name[32];
     struct SaveBlock1 *saveBlock1 = gSaveBlock1Ptr;
-    DynamicPlaceholderTextUtil_Reset();
+    DynamicPlaceholder_Reset();
 
     // Buffer author's name
     if (StringLength(saveBlock1->lilycoveLady.quiz.playerName) != 0)
     {
         TVShowConvertInternationalString(name, saveBlock1->lilycoveLady.quiz.playerName, saveBlock1->lilycoveLady.quiz.language);
-        DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, name);
+        DynamicPlaceholder_Set(0, name);
     }
     else
     {
-        DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, gText_Lady);
+        DynamicPlaceholder_Set(0, gText_Lady);
     }
 
     // "<author>'s Quiz"
-    DynamicPlaceholderTextUtil_ExpandPlaceholders(dst, gText_F700sQuiz);
+    DynamicPlaceholder_Expand(dst, gText_F700sQuiz);
 }
 
 static void BufferCurrentPhraseToStringVar2(void)

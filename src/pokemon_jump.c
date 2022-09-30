@@ -3663,10 +3663,10 @@ static void PrintPrizeMessage(u16 itemId, u16 quantity)
 {
     CopyItemNameHandlePlural(itemId, sPokemonJumpGfx->itemName, quantity);
     ConvertIntToDecimalStringN(sPokemonJumpGfx->itemQuantityStr, quantity, STR_CONV_MODE_LEFT_ALIGN, 1);
-    DynamicPlaceholderTextUtil_Reset();
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, sPokemonJumpGfx->itemName);
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(1, sPokemonJumpGfx->itemQuantityStr);
-    DynamicPlaceholderTextUtil_ExpandPlaceholders(sPokemonJumpGfx->prizeMsg, gText_AwesomeWonF701F700);
+    DynamicPlaceholder_Reset();
+    DynamicPlaceholder_Set(0, sPokemonJumpGfx->itemName);
+    DynamicPlaceholder_Set(1, sPokemonJumpGfx->itemQuantityStr);
+    DynamicPlaceholder_Expand(sPokemonJumpGfx->prizeMsg, gText_AwesomeWonF701F700);
     sPokemonJumpGfx->msgWindowId = AddMessageWindow(4, 8, 22, 4);
     AddTextPrinterParameterized(sPokemonJumpGfx->msgWindowId, FONT_NORMAL, sPokemonJumpGfx->prizeMsg, 0, 1, TEXT_SKIP_DRAW, NULL);
     CopyWindowToVram(sPokemonJumpGfx->msgWindowId, COPYWIN_GFX);
@@ -3677,9 +3677,9 @@ static void PrintPrizeMessage(u16 itemId, u16 quantity)
 static void PrintPrizeFilledBagMessage(u16 itemId)
 {
     CopyItemName(itemId, sPokemonJumpGfx->itemName);
-    DynamicPlaceholderTextUtil_Reset();
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, sPokemonJumpGfx->itemName);
-    DynamicPlaceholderTextUtil_ExpandPlaceholders(sPokemonJumpGfx->prizeMsg, gText_FilledStorageSpace2);
+    DynamicPlaceholder_Reset();
+    DynamicPlaceholder_Set(0, sPokemonJumpGfx->itemName);
+    DynamicPlaceholder_Expand(sPokemonJumpGfx->prizeMsg, gText_FilledStorageSpace2);
     sPokemonJumpGfx->msgWindowId = AddMessageWindow(4, 8, 22, 4);
     AddTextPrinterParameterized(sPokemonJumpGfx->msgWindowId, FONT_NORMAL, sPokemonJumpGfx->prizeMsg, 0, 1, TEXT_SKIP_DRAW, NULL);
     CopyWindowToVram(sPokemonJumpGfx->msgWindowId, COPYWIN_GFX);
@@ -3690,9 +3690,9 @@ static void PrintPrizeFilledBagMessage(u16 itemId)
 static void PrintNoRoomForPrizeMessage(u16 itemId)
 {
     CopyItemName(itemId, sPokemonJumpGfx->itemName);
-    DynamicPlaceholderTextUtil_Reset();
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, sPokemonJumpGfx->itemName);
-    DynamicPlaceholderTextUtil_ExpandPlaceholders(sPokemonJumpGfx->prizeMsg, gText_CantHoldMore);
+    DynamicPlaceholder_Reset();
+    DynamicPlaceholder_Set(0, sPokemonJumpGfx->itemName);
+    DynamicPlaceholder_Expand(sPokemonJumpGfx->prizeMsg, gText_CantHoldMore);
     sPokemonJumpGfx->msgWindowId = AddMessageWindow(4, 9, 22, 2);
     AddTextPrinterParameterized(sPokemonJumpGfx->msgWindowId, FONT_NORMAL, sPokemonJumpGfx->prizeMsg, 0, 1, TEXT_SKIP_DRAW, NULL);
     CopyWindowToVram(sPokemonJumpGfx->msgWindowId, COPYWIN_GFX);

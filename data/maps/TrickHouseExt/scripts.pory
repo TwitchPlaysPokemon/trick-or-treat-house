@@ -421,6 +421,7 @@ script TrickHouseExt_EventScript_TraderA1 {
 				"Very well, enjoy your evening!$",
 				"Enjoy!$")
 		case OBJ_EVENT_GFX_GAMEBOY_KID:
+		case OBJ_EVENT_GFX_GAMEBOY_KID2:
 			msgbox("You wanna duel? I've got the {POKEMON}\n"
 					"TRADING CARD GAME for GBA.\p"
 					"Oh, you don't? Loser, haha.$", MSGBOX_NPC)

@@ -1,13 +1,13 @@
 raw `
 Puzzle_Wilke_MapScripts::
-	puzzle_info Puzzle_Wilke_Name, Puzzle_Wilke_Author
+	puzzle_info Puzzle_Wilke_Name, Puzzle_Wilke_Author, PUZZLE_FLAG_BUILT_BY
 	puzzle_adjective Puzzle_Wilke_Adjective
 	puzzle_quip Puzzle_Wilke_Quip
 	puzzle_metavars Puzzle_Wilke_Variables
 	puzzle_item_prereqs Puzzle_Wilke_PrereqItems
 	puzzle_candylist Puzzle_Wilke_CandyList
 	puzzle_devcommentary Puzzle_Wilke_DevCommentary
-	map_script MAP_SCRIPT_PUZZLE_SETUP_SCRIPT, Puzzle_Wilke_Setup
+	map_script MAP_SCRIPT_ON_PUZZLE_SETUP, Puzzle_Wilke_Setup
 	map_script MAP_SCRIPT_ON_EXIT_PUZZLE_WITH_PARTNER, Puzzle_Wilke_ExitPuzzleWithRacc
 	.byte 0
 
@@ -20,7 +20,7 @@ Puzzle_Wilke_Adjective:
 Puzzle_Wilke_Quip:
 	.string "Ziggy seems tired now.$"
 Puzzle_Wilke_DevCommentary:
-	.string "Tustin2121: Props to wilke0 for a) being\n"
+	.string "Props to wilke0 for a) being\n"
 	.string "the only person to submit a fully\l"
 	.string "implemented puzzle that I could just\l"
 	.string "drop right into the project…\p"

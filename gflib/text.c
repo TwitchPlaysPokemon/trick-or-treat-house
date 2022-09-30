@@ -1376,7 +1376,7 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
             // fallthrough
         case CHAR_DYNAMIC:
             if (bufferPointer == NULL)
-                bufferPointer = DynamicPlaceholderTextUtil_GetPlaceholderPtr(*++str);
+                bufferPointer = DynamicPlaceholder_Get(*++str);
             while (*bufferPointer != EOS)
             {
                 glyphWidth = func(*bufferPointer++, isJapanese);
@@ -1544,23 +1544,11 @@ void DetermineWordWrapInStrVar4(u8 fontId, s16 letterSpacing, const u16 wrapWidt
             lineWidth = 0;
             break;
         case PLACEHOLDER_BEGIN:
-            switch (*++str)
-            {
-                case PLACEHOLDER_ID_STRING_VAR_1:
-                    bufferPointer = gStringVar1;
-                    break;
-                case PLACEHOLDER_ID_STRING_VAR_2:
-                    bufferPointer = gStringVar2;
-                    break;
-                case PLACEHOLDER_ID_STRING_VAR_3:
-                    bufferPointer = gStringVar3;
-                    break;
-                default:
-                    return;
-            }
+            bufferPointer = GetExpandedPlaceholder(*++str);
+            // fall through
         case CHAR_DYNAMIC:
             if (bufferPointer == NULL)
-                bufferPointer = DynamicPlaceholderTextUtil_GetPlaceholderPtr(*++str);
+                bufferPointer = DynamicPlaceholder_Get(*++str);
             while (*bufferPointer != EOS)
             {
                 glyphWidth = func(*bufferPointer++, isJapanese);

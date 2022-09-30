@@ -1,8 +1,16 @@
-.macro puzzle_info name:req, author:req
+.macro puzzle_info name:req, author:req, flags=0, author2=NULL
 .byte MAP_SCRIPT_PUZZLE_HEADER_NAME
 .4byte \name
 .byte MAP_SCRIPT_PUZZLE_HEADER_AUTHOR
 .4byte \author
+.byte MAP_SCRIPT_PUZZLE_HEADER_FLAGS
+.4byte \flags
+.byte MAP_SCRIPT_PUZZLE_HEADER_AUTHOR_INTRO
+.if \author2 == NULL
+	.4byte \author
+.else
+	.4byte \author2
+.endif
 .endm
 
 .macro puzzle_item_prereqs list:req
@@ -20,9 +28,13 @@
 .4byte \string
 .endm
 
-.macro puzzle_quip string:req
+.macro puzzle_quip string:req, speaker=NULL
 .byte MAP_SCRIPT_PUZZLE_HEADER_QUIP
 .4byte \string
+.if \speaker != NULL
+	.byte MAP_SCRIPT_PUZZLE_HEADER_QUIP_SPEAKER
+	.4byte \speaker
+.endif
 .endm
 
 .macro puzzle_custom_intro string:req
@@ -36,12 +48,12 @@
 .endm
 
 .macro puzzle_setup_script pointer:req
-.byte MAP_SCRIPT_PUZZLE_SETUP_SCRIPT
+.byte MAP_SCRIPT_ON_PUZZLE_SETUP
 .4byte \pointer
 .endm
 
 .macro puzzle_teardown_script pointer:req
-.byte MAP_SCRIPT_PUZZLE_TEARDOWN_SCRIPT
+.byte MAP_SCRIPT_ON_PUZZLE_TEARDOWN
 .4byte \pointer
 .endm
 

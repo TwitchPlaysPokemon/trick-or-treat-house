@@ -1,6 +1,6 @@
 raw `
 Puzzle_Loss_Floor1_MapScripts::
-	puzzle_info Puzzle_Loss_Name, Puzzle_Loss_Author
+	puzzle_info Puzzle_Loss_Name, CommonAuthor_Tustin2121, PUZZLE_FLAG_INSPIRED_BY, Puzzle_Loss_Inspiration
 	puzzle_adjective Puzzle_Loss_Adjective
 	puzzle_quip Puzzle_Loss_Quip
 	puzzle_metavars Puzzle_Loss_Variables
@@ -11,25 +11,25 @@ Puzzle_Loss_Floor1_MapScripts::
 
 Puzzle_Loss_Name:
 	.string "Misplaced$"
-Puzzle_Loss_Author:
+Puzzle_Loss_Inspiration:
 	.string "the Internet$" @ Tustin2121
 Puzzle_Loss_Adjective:
 	.string "memable$"
 Puzzle_Loss_Quip:
 	.string "Is this loss?$"
 Puzzle_Loss_DevCommentary:
-	.string "Tustin2121: This puzzle was borne out of\n"
-	.string "a fear that people would submit memes as\l"
+	.string "This puzzle was borne out of a fear\n"
+	.string "that people would submit memes as\l"
 	.string "puzzles for this hack.\p"
-	.string "So this puzzle is all memes and references\n"
-	.string "to past TPP runs.\p"
+	.string "So this puzzle is all memes and\n"
+	.string "references to past TPP runs.\p"
 	.string "The design of the Center itself is pulled\n"
 	.string "directly from TriHard Emerald, which had\l"
 	.string "just been completed and ran as a TPP run\l"
-	.string "2 months prior to the TTH 2019 release.\l"
+	.string "2 months prior to the TTH 2019 release.\p"
 	.string "It's a Pokemon Center because it's\n"
 	.string "supposed to be like a hospital.\p"
-	.string "Because the puzzle is Loss…{PAUSE 10}\n"
+	.string "Because the puzzle is Loss…{PAUSE 40}\n"
 	.string "In case that wasn't blindingly obvious…$"
 .align 2
 Puzzle_Loss_Variables:

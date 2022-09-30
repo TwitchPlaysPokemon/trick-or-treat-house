@@ -1618,7 +1618,7 @@ static void PrintResultsText(struct BerryCrushGame * game, u8 page, u8 sp14, u8 
 
     for (i = 0; i < game->playerCount; y += 14, i++)
     {
-        DynamicPlaceholderTextUtil_Reset();
+        DynamicPlaceholder_Reset();
         switch (page)
         {
         case RESULTS_PAGE_PRESSES:
@@ -1659,8 +1659,8 @@ static void PrintResultsText(struct BerryCrushGame * game, u8 page, u8 sp14, u8 
         else
             StringCopy(gStringVar3, gText_1DotF700);
         gStringVar3[0] = ranking + CHAR_1;
-        DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, game->players[playerId].name);
-        DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringBuffer, gStringVar3);
+        DynamicPlaceholder_Set(0, game->players[playerId].name);
+        DynamicPlaceholder_Expand(gStringBuffer, gStringVar3);
         AddTextPrinterParameterized3(game->gfx.resultsWindowId, FONT_SHORT, 4, y, sTextColorTable[COLORID_GRAY], 0, gStringBuffer);
     }
 }

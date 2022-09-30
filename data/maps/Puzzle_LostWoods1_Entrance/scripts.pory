@@ -1,8 +1,8 @@
 raw `
 Puzzle_LostWoods1_Entrance_MapScripts::
-	puzzle_info Puzzle_LostWoods1_Name, CommonAuthor_Tustin2121
+	puzzle_info Puzzle_LostWoods1_Name, CommonAuthor_Tustin2121, PUZZLE_FLAG_INSPIRED_BY, Puzzle_LostWoods1_Inspiration
 	puzzle_adjective Puzzle_LostWoods1_Adjective
-	puzzle_quip Puzzle_LostWoods1_Quip
+	puzzle_quip Puzzle_LostWoods1_Quip, Puzzle_LostWoods1_QuipSpeaker
 	puzzle_metavars Puzzle_LostWoods1_Variables
 	puzzle_item_prereqs Puzzle_LostWoods1_PrereqItems
 	puzzle_candylist Puzzle_LostWoods1_CandyList
@@ -12,13 +12,17 @@ Puzzle_LostWoods1_Entrance_MapScripts::
 
 Puzzle_LostWoods1_Name:
 	.string "A Song in the Forest$"
+Puzzle_LostWoods1_Inspiration:
+	.string "an old N64 game$" @ tustin2121
 Puzzle_LostWoods1_Adjective:
 	.string "meandering$"
 Puzzle_LostWoods1_Quip:
 	.string "… … …\n… … …$"
+Puzzle_LostWoods1_QuipSpeaker:
+	.string "Link$"
 Puzzle_LostWoods1_DevCommentary:
-	.string "Tustin2121: The inspiration for this\n"
-	.string "puzzle was FireRed's Glitch City during\l"
+	.string "The inspiration for this puzzle was\n"
+	.string "FireRed's Glitch City during\l"
 	.string "TwitchPlaysPokemon's run of Burning Red.\p"
 	.string "Our resident binary hacker Kip made the\n"
 	.string "map connect on the edges to itself, so\l"

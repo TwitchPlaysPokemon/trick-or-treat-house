@@ -7,7 +7,7 @@ PuzzleCommon_Text_DefaultAdjective::
 PuzzleCommon_Text_DefaultQuip::
 	.string "{PUZZLE_AUTHOR}: What did you think\nof my puzzle?$"
 PuzzleCommon_Text_DefaultDevCommentary::
-	.string "Tustin2121: Uh, this isn't supposed to\n"
+	.string "Uh, this isn't supposed to\n"
 	.string "happen… Ignore this, please.$"
 PuzzleCommon_Text_DefaultFriendCommentary::
 	.string "Sorry, just hanging around.$"
@@ -26,6 +26,8 @@ CommonAuthor_Tustin2121::
 	.string "Tustin2121$"
 CommonAuthor_M4UsedRollout::
 	.string "M4_used_rollout$"
+CommonAuthor_ShantyTown::
+	.string "ShantyTown$"
 
 @ -----------------------------------------------------
 

@@ -5,7 +5,7 @@ Puzzle_MetaPuzzleCave_MapScripts::
 	puzzle_metavars Puzzle_MetaPuzzleCave_Variables
 	puzzle_candylist Puzzle_MetaPuzzleCave_CandyList
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_MetaPuzzleCave_OnLoad
-	map_script MAP_SCRIPT_PUZZLE_CUSTOM_INTRO_SCRIPT, Puzzle_MetaPuzzleCave_IntroScript
+	map_script MAP_SCRIPT_ON_PUZZLE_CUSTOM_INTRO, Puzzle_MetaPuzzleCave_IntroScript
 	.byte 0
 
 Puzzle_MetaPuzzleCave_Name:

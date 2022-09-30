@@ -6,18 +6,18 @@ Puzzle_EliteFloor_MapScripts::
 	puzzle_candylist Puzzle_EliteFloor_CandyList
 	puzzle_devcommentary Puzzle_EliteFloor_DevCommentary
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_EliteFloor_OnLoad
-	map_script MAP_SCRIPT_PUZZLE_BLACKOUT_SCRIPT, Puzzle_EliteFloor_OnEscapeOrBlackout
-	map_script MAP_SCRIPT_PUZZLE_ESCAPE_SCRIPT, Puzzle_EliteFloor_OnEscapeOrBlackout
+	map_script MAP_SCRIPT_ON_PUZZLE_BLACKOUT, Puzzle_EliteFloor_OnEscapeOrBlackout
+	map_script MAP_SCRIPT_ON_PUZZLE_ESCAPE, Puzzle_EliteFloor_OnEscapeOrBlackout
 	.byte 0
 
 Puzzle_EliteFloor_Name:
 	.string "The Elite Floor$"
 Puzzle_EliteFloor_Adjective:
-	.string "visually impared$"
+	.string "visually impaired$"
 Puzzle_EliteFloor_Quip:
 	.string "My legs hurt from falling so much…$"
 Puzzle_EliteFloor_DevCommentary:
-	.string "Tustin2121: Hang on, my lawyer requires\n"
+	.string "Hang on, my lawyer requires\n"
 	.string "me to read this statement. Ahem:\p"
 	.string "M4 wishes for me to tell you that I\n"
 	.string "built this puzzle to his specifications.\p"

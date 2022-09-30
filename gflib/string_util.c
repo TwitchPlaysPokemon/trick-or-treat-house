@@ -21,6 +21,9 @@ EWRAM_DATA u8 gStringBuffer[0x3E8] = {0};
 EWRAM_DATA u8 gNamePlateBuffer[0x20] = {0};
 EWRAM_DATA u8 gStringWorking[0x100] = {0};
 
+// static EWRAM_DATA const u8 *sStringPointers[8] = {};
+static EWRAM_DATA const u8 *sDynamicStringPointers[8] = {};
+
 static const u8 sDigits[] = __("0123456789ABCDEF");
 
 static const s32 sPowersOfTen[] =
@@ -36,6 +39,9 @@ static const s32 sPowersOfTen[] =
      100000000,
     1000000000,
 };
+
+// ----------------------------------------------
+#pragma region Copying / Appending / Transforming
 
 u8 *StringCopy_Nickname(u8 *dest, const u8 *src)
 {
@@ -171,6 +177,118 @@ bool8 IsStringLengthAtLeast(const u8 *str, s32 n)
 
     return FALSE;
 }
+
+u8 *StringUppercase(u8 *dest, const u8 *src)
+{
+    for (;;)
+    {
+        u8 c = *src++;
+        
+        switch (c)
+        {
+            case EXT_CTRL_CODE_BEGIN:
+                *dest++ = c;
+                c = *src++;
+                *dest++ = c;
+
+                switch (c)
+                {
+                    case EXT_CTRL_CODE_RESET_SIZE:
+                    case EXT_CTRL_CODE_PAUSE_UNTIL_PRESS:
+                    case EXT_CTRL_CODE_FILL_WINDOW:
+                    case EXT_CTRL_CODE_JPN:
+                    case EXT_CTRL_CODE_ENG:
+                    case EXT_CTRL_CODE_PAUSE_MUSIC:
+                    case EXT_CTRL_CODE_RESUME_MUSIC:
+                        break;
+                    case EXT_CTRL_CODE_COLOR_HIGHLIGHT_SHADOW:
+                        *dest++ = *src++;
+                    case EXT_CTRL_CODE_PLAY_BGM:
+                        *dest++ = *src++;
+                    default:
+                        *dest++ = *src++;
+                }
+                break;
+            case EOS:
+                *dest = EOS;
+                return dest;
+            case CHAR_a: *dest++ = CHAR_A; break;
+            case CHAR_b: *dest++ = CHAR_B; break;
+            case CHAR_c: *dest++ = CHAR_C; break;
+            case CHAR_d: *dest++ = CHAR_D; break;
+            case CHAR_e: *dest++ = CHAR_E; break;
+            case CHAR_f: *dest++ = CHAR_F; break;
+            case CHAR_g: *dest++ = CHAR_G; break;
+            case CHAR_h: *dest++ = CHAR_H; break;
+            case CHAR_i: *dest++ = CHAR_I; break;
+            case CHAR_j: *dest++ = CHAR_J; break;
+            case CHAR_k: *dest++ = CHAR_K; break;
+            case CHAR_l: *dest++ = CHAR_L; break;
+            case CHAR_m: *dest++ = CHAR_M; break;
+            case CHAR_n: *dest++ = CHAR_N; break;
+            case CHAR_o: *dest++ = CHAR_O; break;
+            case CHAR_p: *dest++ = CHAR_P; break;
+            case CHAR_q: *dest++ = CHAR_Q; break;
+            case CHAR_r: *dest++ = CHAR_R; break;
+            case CHAR_s: *dest++ = CHAR_S; break;
+            case CHAR_t: *dest++ = CHAR_T; break;
+            case CHAR_u: *dest++ = CHAR_U; break;
+            case CHAR_v: *dest++ = CHAR_V; break;
+            case CHAR_w: *dest++ = CHAR_W; break;
+            case CHAR_x: *dest++ = CHAR_X; break;
+            case CHAR_y: *dest++ = CHAR_Y; break;
+            case CHAR_z: *dest++ = CHAR_Z; break;
+            case CHAR_PROMPT_SCROLL:
+            case CHAR_PROMPT_CLEAR:
+            case CHAR_NEWLINE:
+            default:
+                *dest++ = c;
+        }
+    }
+}
+
+
+u8 *StringBraille(u8 *dest, const u8 *src)
+{
+    const u8 setBrailleFont[] = {
+        EXT_CTRL_CODE_BEGIN,
+        EXT_CTRL_CODE_FONT,
+        FONT_BRAILLE,
+        EOS
+    };
+    const u8 gotoLine2[] = {
+        CHAR_NEWLINE,
+        EXT_CTRL_CODE_BEGIN,
+        EXT_CTRL_CODE_SHIFT_DOWN,
+        2,
+        EOS
+    };
+
+    dest = StringCopy(dest, setBrailleFont);
+
+    for (;;)
+    {
+        u8 c = *src++;
+
+        switch (c)
+        {
+        case EOS:
+            *dest = c;
+            return dest;
+        case CHAR_NEWLINE:
+            dest = StringCopy(dest, gotoLine2);
+            break;
+        default:
+            *dest++ = c;
+            *dest++ = c + NUM_BRAILLE_CHARS;
+            break;
+        }
+    }
+}
+
+#pragma endregion
+// ----------------------------------------------
+#pragma region Number Strings
 
 extern const u8 gText_The[];
 extern const u8 gText_Num1[];
@@ -370,75 +488,8 @@ u8 *ConvertIntToHexStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 
     return dest;
 }
 
-u8 *StringUppercase(u8 *dest, const u8 *src)
-{
-    for (;;)
-    {
-        u8 c = *src++;
-        
-        switch (c)
-        {
-            case EXT_CTRL_CODE_BEGIN:
-                *dest++ = c;
-                c = *src++;
-                *dest++ = c;
-
-                switch (c)
-                {
-                    case EXT_CTRL_CODE_RESET_SIZE:
-                    case EXT_CTRL_CODE_PAUSE_UNTIL_PRESS:
-                    case EXT_CTRL_CODE_FILL_WINDOW:
-                    case EXT_CTRL_CODE_JPN:
-                    case EXT_CTRL_CODE_ENG:
-                    case EXT_CTRL_CODE_PAUSE_MUSIC:
-                    case EXT_CTRL_CODE_RESUME_MUSIC:
-                        break;
-                    case EXT_CTRL_CODE_COLOR_HIGHLIGHT_SHADOW:
-                        *dest++ = *src++;
-                    case EXT_CTRL_CODE_PLAY_BGM:
-                        *dest++ = *src++;
-                    default:
-                        *dest++ = *src++;
-                }
-                break;
-            case EOS:
-                *dest = EOS;
-                return dest;
-            case CHAR_a: *dest++ = CHAR_A; break;
-            case CHAR_b: *dest++ = CHAR_B; break;
-            case CHAR_c: *dest++ = CHAR_C; break;
-            case CHAR_d: *dest++ = CHAR_D; break;
-            case CHAR_e: *dest++ = CHAR_E; break;
-            case CHAR_f: *dest++ = CHAR_F; break;
-            case CHAR_g: *dest++ = CHAR_G; break;
-            case CHAR_h: *dest++ = CHAR_H; break;
-            case CHAR_i: *dest++ = CHAR_I; break;
-            case CHAR_j: *dest++ = CHAR_J; break;
-            case CHAR_k: *dest++ = CHAR_K; break;
-            case CHAR_l: *dest++ = CHAR_L; break;
-            case CHAR_m: *dest++ = CHAR_M; break;
-            case CHAR_n: *dest++ = CHAR_N; break;
-            case CHAR_o: *dest++ = CHAR_O; break;
-            case CHAR_p: *dest++ = CHAR_P; break;
-            case CHAR_q: *dest++ = CHAR_Q; break;
-            case CHAR_r: *dest++ = CHAR_R; break;
-            case CHAR_s: *dest++ = CHAR_S; break;
-            case CHAR_t: *dest++ = CHAR_T; break;
-            case CHAR_u: *dest++ = CHAR_U; break;
-            case CHAR_v: *dest++ = CHAR_V; break;
-            case CHAR_w: *dest++ = CHAR_W; break;
-            case CHAR_x: *dest++ = CHAR_X; break;
-            case CHAR_y: *dest++ = CHAR_Y; break;
-            case CHAR_z: *dest++ = CHAR_Z; break;
-            case CHAR_PROMPT_SCROLL:
-            case CHAR_PROMPT_CLEAR:
-            case CHAR_NEWLINE:
-            default:
-                *dest++ = c;
-        }
-    }
-}
-
+#pragma endregion
+// ----------------------------------------------
 
 u8 *StringExpandPlaceholders(u8 *dest, const u8 *src)
 {
@@ -454,6 +505,12 @@ u8 *StringExpandPlaceholders(u8 *dest, const u8 *src)
             placeholderId = *src++;
             expandedString = GetExpandedPlaceholder(placeholderId);
             dest = StringExpandPlaceholders(dest, expandedString);
+            break;
+        case CHAR_DYNAMIC:
+            placeholderId = *src++;
+            if (sDynamicStringPointers[placeholderId] != NULL) {
+                dest = StringExpandPlaceholders(dest, sDynamicStringPointers[placeholderId]);
+            }
             break;
         case EXT_CTRL_CODE_BEGIN:
             *dest++ = c;
@@ -489,44 +546,56 @@ u8 *StringExpandPlaceholders(u8 *dest, const u8 *src)
         }
     }
 }
+// ----------------------------------------------
+#pragma region Dynamic Strings
 
-u8 *StringBraille(u8 *dest, const u8 *src)
+
+void DynamicPlaceholder_Reset(void)
 {
-    const u8 setBrailleFont[] = {
-        EXT_CTRL_CODE_BEGIN,
-        EXT_CTRL_CODE_FONT,
-        FONT_BRAILLE,
-        EOS
-    };
-    const u8 gotoLine2[] = {
-        CHAR_NEWLINE,
-        EXT_CTRL_CODE_BEGIN,
-        EXT_CTRL_CODE_SHIFT_DOWN,
-        2,
-        EOS
-    };
-
-    dest = StringCopy(dest, setBrailleFont);
-
-    for (;;)
-    {
-        u8 c = *src++;
-
-        switch (c)
-        {
-        case EOS:
-            *dest = c;
-            return dest;
-        case CHAR_NEWLINE:
-            dest = StringCopy(dest, gotoLine2);
-            break;
-        default:
-            *dest++ = c;
-            *dest++ = c + NUM_BRAILLE_CHARS;
-            break;
-        }
+    for (int i = 0; i < ARRAY_COUNT(sDynamicStringPointers); i++) {
+        sDynamicStringPointers[i] = NULL;
     }
 }
+
+void DynamicPlaceholder_Set(u8 idx, const u8 *ptr)
+{
+    if (idx < ARRAY_COUNT(sDynamicStringPointers))
+    {
+        sDynamicStringPointers[idx] = ptr;
+    }
+}
+
+u8 *DynamicPlaceholder_Expand(u8 *dest, const u8 *src)
+{
+    while (*src != EOS)
+    {
+        if (*src != CHAR_DYNAMIC)
+        {
+            *dest++ = *src++;
+        }
+        else
+        {
+            src++;
+            if (sDynamicStringPointers[*src] != NULL)
+            {
+                dest = StringCopy(dest, sDynamicStringPointers[*src]);
+            }
+            src++;
+        }
+    }
+    *dest = EOS;
+    return dest;
+}
+
+const u8 *DynamicPlaceholder_Get(u8 idx)
+{
+    return sDynamicStringPointers[idx];
+}
+
+
+#pragma endregion
+// ----------------------------------------------
+#pragma region Placeholders
 
 extern const u8 gText_ExpandedPlaceholder_Empty[];
 static const u8 *ExpandPlaceholder_Empty(void)
@@ -660,7 +729,7 @@ extern const u8 PuzzleCommon_Text_DefaultAuthor[];
 static const u8 *ExpandPlaceholder_PuzzleAuthor(void)
 {
     u16 currPuzzle = GetCurrentPuzzleMapId();
-	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_AUTHOR);
+	const u8 *str = GetMapHeaderString(currPuzzle, MAP_SCRIPT_PUZZLE_HEADER_AUTHOR_INTRO);
 	if (str == NULL)
 	{
 		str = PuzzleCommon_Text_DefaultAuthor;
@@ -746,6 +815,10 @@ const u8 *GetExpandedPlaceholder(u32 id)
     else
         return funcs[id]();
 }
+
+#pragma endregion
+// ----------------------------------------------
+#pragma region Other Utilities
 
 u8 *StringFill(u8 *dest, u8 c, u16 n)
 {
@@ -1003,3 +1076,5 @@ void StripExtCtrlCodes(u8 *str)
     }
     str[destIndex] = EOS;
 }
+
+#pragma endregion

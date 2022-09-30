@@ -4292,7 +4292,7 @@ static void PrintMessage(u8 id)
 {
     u8 *txtPtr;
 
-    DynamicPlaceholderTextUtil_Reset();
+    DynamicPlaceholder_Reset();
     switch (sMessages[id].format)
     {
     case MSG_VAR_NONE:
@@ -4300,12 +4300,12 @@ static void PrintMessage(u8 id)
     case MSG_VAR_MON_NAME_1:
     case MSG_VAR_MON_NAME_2:
     case MSG_VAR_MON_NAME_3:
-        DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, sStorage->displayMonName);
+        DynamicPlaceholder_Set(0, sStorage->displayMonName);
         break;
     case MSG_VAR_RELEASE_MON_1:
     case MSG_VAR_RELEASE_MON_2:
     case MSG_VAR_RELEASE_MON_3:
-        DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, sStorage->releaseMonName);
+        DynamicPlaceholder_Set(0, sStorage->releaseMonName);
         break;
     case MSG_VAR_ITEM_NAME:
         if (IsMovingItem())
@@ -4317,11 +4317,11 @@ static void PrintMessage(u8 id)
             txtPtr--;
 
         *txtPtr = EOS;
-        DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, sStorage->itemName);
+        DynamicPlaceholder_Set(0, sStorage->itemName);
         break;
     }
 
-    DynamicPlaceholderTextUtil_ExpandPlaceholders(sStorage->messageText, sMessages[id].text);
+    DynamicPlaceholder_Expand(sStorage->messageText, sMessages[id].text);
     FillWindowPixelBuffer(WIN_MESSAGE, PIXEL_FILL(1));
     AddTextPrinterParameterized(WIN_MESSAGE, FONT_NORMAL, sStorage->messageText, 0, 1, TEXT_SKIP_DRAW, NULL);
     DrawTextBorderOuter(WIN_MESSAGE, 2, 14);

@@ -1,6 +1,6 @@
 raw `
 Puzzle_TrainerHill4_MapScripts::
-	puzzle_info Puzzle_TrainerHill4_Name, CommonAuthor_GameFreak
+	puzzle_info Puzzle_TrainerHill4_Name, CommonAuthor_GameFreak, PUZZLE_FLAG_GAME_FREAK
 	puzzle_custom_intro Puzzle_TrainerHill4_Intro
 	puzzle_quip Puzzle_TrainerHill4_Quip
 	puzzle_candylist Puzzle_TrainerHill4_CandyList
