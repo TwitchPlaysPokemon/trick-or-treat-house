@@ -5,7 +5,7 @@
   "music": "MUS_DP_FOLLOW_ME",
   "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
   "requires_flash": false,
-  "weather": "WEATHER_NONE",
+  "weather": "WEATHER_SNOW",
   "map_type": "MAP_TYPE_TOWN",
   "allow_cycling": false,
   "allow_escaping": false,

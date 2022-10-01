@@ -15,13 +15,14 @@ Feature Merging:
 - [ ] Feature branch: Item descriptions on pickup: https://github.com/ghoulslash/pokeemerald/tree/item_desc_header 
 - [X] Feature branch: Pokemon decryption and compression: https://github.com/ghoulslash/pokeemerald/tree/box_expansion
 - [ ] Tutorial: Improve loading of battle terrain (possibly)
-- [ ] Tutorial: Fix snow weather
+- [X] Tutorial: Fix snow weather
 - [ ] Tutorial: Missing text function RESET_SIZE
 - [X] Tutorial: Improve WaitForVBlank
 - [ ] Tutorial: EWRAM summary screen improvements?
 - [X] Tutorial: Custom Border Dimensions (porymap supported)
 - [X] Tutorial: Trigger map scripts by flag
 - [ ] Tutorial: Run Custom Script on Trainer Sight?
+- [ ] Tutorial: Trainer Class Based Poké Balls
 - [ ] Port soaring? https://github.com/camthesaxman/pokeruby/tree/soar_2
 - [ ] https://msikma.github.tio/pokesprite/overview/inventory.html
 	- [ ] Check to see if the items from RHH need updated sprites? See if there's any I could use?
