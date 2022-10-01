@@ -310,29 +310,30 @@ script TrickHouseCorridor_TriggerScript_RunIntro {
 	// Introduce puzzle
 	callnative(LoadPuzzleIntro)
 	
-	// "Welcome back!"
-	random(256)
-	selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_Greeting, VAR_RESULT)
-	loaddynamicstring(0, 0)
-	// "See you in the back!"
-	random(256)
-	selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_Farewell, VAR_RESULT)
-	loaddynamicstring(1, 0)
-	// Puzzle adjective / credit
-	random(256)
-	switch(var(VAR_0x8006)) {
-		case PUZZLE_FLAG_INSPIRED_BY: selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_InspiredBy, VAR_RESULT)
-		case PUZZLE_FLAG_BUILT_BY:    selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_BuiltBy, VAR_RESULT)
-		case PUZZLE_FLAG_GAME_FREAK:  selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_GameFreak, VAR_RESULT)
-		default:                      selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_AuthoredBy, VAR_RESULT)
-	}
-	loaddynamicstring(2, 0)
-	// "First, items..."
-	random(256)
-	selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_ItemsLede, VAR_RESULT)
-	loaddynamicstring(3, 0)
-	
-	switch(var(VAR_0x8005)) {
+	if (var(VAR_0x8005) < 2) { // generic intros
+		// "Welcome back!"
+		random(256)
+		selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_Greeting, VAR_RESULT)
+		loaddynamicstring(0, 0)
+		// "See you in the back!"
+		random(256)
+		selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_Farewell, VAR_RESULT)
+		loaddynamicstring(1, 0)
+		// Puzzle adjective / credit
+		random(256)
+		switch(var(VAR_0x8006)) {
+			case PUZZLE_FLAG_INSPIRED_BY: selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_InspiredBy, VAR_RESULT)
+			case PUZZLE_FLAG_BUILT_BY:    selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_BuiltBy, VAR_RESULT)
+			case PUZZLE_FLAG_GAME_FREAK:  selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_GameFreak, VAR_RESULT)
+			default:                      selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_AuthoredBy, VAR_RESULT)
+		}
+		loaddynamicstring(2, 0)
+		// "First, items..."
+		random(256)
+		selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_ItemsLede, VAR_RESULT)
+		loaddynamicstring(3, 0)
+		
+		switch(var(VAR_0x8005)) {
 		case 0: // Generic Intro
 			msgbox (PuzzleCommon_Text_PuzzleIntro_Generic)
 		case 1: // Generic item intro
@@ -346,22 +347,31 @@ script TrickHouseCorridor_TriggerScript_RunIntro {
 			waitfanfare
 			// Bye!
 			msgbox (PuzzleCommon_Text_PuzzleIntro_GenericItem2)
-		case 2: // Custom intro
-			msgbox_selected
-		case 3: // Custom item intro
-			msgbox_selected
-			// Give items
-			callnative(GiveItemPrerequisites)
-			playfanfare(MUS_OBTAIN_ITEM)
-			message(PuzzleCommon_Text_PuzzleIntro_GivenItems)
-			waitmessage
-			waitfanfare
-			// Bye!
-			msgbox(PuzzleCommon_Text_PuzzleIntro_GenericItem2)
 		default:
-			msgbox("Error!$")
-			end
+			msgbox("Object event! Generic!$")
+		}
+	} 
+	else { // custom intros
+		switch(var(VAR_0x8005)) {
+			case 2: // Custom intro
+				msgbox_selected
+			case 3: // Custom item intro
+				msgbox_selected
+				// Give items
+				callnative(GiveItemPrerequisites)
+				playfanfare(MUS_OBTAIN_ITEM)
+				message(PuzzleCommon_Text_PuzzleIntro_GivenItems)
+				waitmessage
+				waitfanfare
+				// Bye!
+				random(256)
+				selectpointer_wrap(PuzzleCommon_TextArray_PuzzleIntro_Farewell, VAR_RESULT)
+				msgbox_selected
+			default:
+				msgbox("Object event! Custom!$")
+		}
 	}
+	
 	// Leave
 	closemessage
 	if (var(VAR_OBJ_GFX_ID_0) == OBJ_EVENT_GFX_TRICK_MASTER) {

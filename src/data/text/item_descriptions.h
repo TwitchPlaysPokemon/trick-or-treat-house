@@ -4810,7 +4810,7 @@ static const u8 sRockSmashItemDesc[] = _(
     "mining pick.\n"
     "Allows ROCK SMASH.");
 
-static const u8 sStrengthItemName[] = _("Dolly");
+static const u8 sStrengthItemName[] = _("Moving Dolly");
 static const u8 sStrengthItemDesc[] = _(
     "A two-wheeled red\n"
     "moving dolly.\n"

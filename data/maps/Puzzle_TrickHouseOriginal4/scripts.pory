@@ -15,7 +15,7 @@ Puzzle_TrickHouseOriginal4_Intro:
 	.string "I made in my youth.\p"
 	.string "The boulders were a bear to bring\n"
 	.string "into the basement, but it bore fruit.\p"
-	.string "Good luck! Wahahahaha!$"
+	.string "You'll need this!$"
 Puzzle_TrickHouseOriginal4_Quip:
 	.string "Wew! That was quite the workout!\p"
 	.string "No wonder people usually get their\n"

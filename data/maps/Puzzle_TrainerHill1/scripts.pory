@@ -11,7 +11,7 @@ Puzzle_TrainerHill1_Name:
 Puzzle_TrainerHill1_Intro:
 	.string "Oh ho! Back for another round then?\p"
 	.string "So, indulge me a moment: In this past\n"
-	.string "year, I discovered a wonderful discovery!\p"
+	.string "year, I discovered a wonderful thing!\p"
 	.string "A strange tower, embedded in the rocks\n"
 	.string "north of here, offers trainers battles\l"
 	.string "and mini puzzles to solve!\p"
