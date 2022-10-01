@@ -63,6 +63,7 @@
 #include "constants/layouts.h"
 #include "constants/map_types.h"
 #include "constants/map_groups.h"
+#include "constants/map_scripts.h"
 #include "constants/region_map_sections.h"
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
@@ -388,6 +389,7 @@ static void (*const sMovementStatusHandler[])(struct LinkPlayerObjectEvent *, st
 void DoWhiteOut(void)
 {
     RunScriptImmediately(EventScript_WhiteOut);
+    RunPuzzleBlackoutScript();
 #if (B_WHITEOUT_MONEY == GEN_3) && (!USE_CANDY_CURRENCY)
     SetMoney(&gSaveBlock1Ptr->money, GetMoney(&gSaveBlock1Ptr->money) / 2);
 #endif
@@ -1079,6 +1081,18 @@ u8 GetObjectEventLoadFlag(void)
 
 u16 GetLocationMusic(struct WarpData *warp)
 {
+    // Save off old Result
+    u16 savedRes = gSpecialVar_Result, musSel;
+    gSpecialVar_Result = MUS_NONE;
+    MapHeaderRunScriptType(MAP_SCRIPT_ON_PLAY_MAP_MUSIC);
+    // restore it
+    musSel = gSpecialVar_Result;
+    gSpecialVar_Result = savedRes;
+    // If there was a script, and it returned something...
+    if (musSel != MUS_NONE) {
+        return musSel;
+    }
+    // If no script was provided, return default
     return Overworld_GetMapHeaderByGroupAndId(warp->mapGroup, warp->mapNum)->music;
 }
 

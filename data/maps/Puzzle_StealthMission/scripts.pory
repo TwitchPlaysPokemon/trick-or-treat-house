@@ -11,7 +11,9 @@ Puzzle_StealthMission_MapScripts::
 	map_script MAP_SCRIPT_ON_PUZZLE_EXIT, Puzzle_StealthMission_OnExit
 	map_script MAP_SCRIPT_ON_PUZZLE_BLACKOUT, Puzzle_StealthMission_OnEscapeOrBlackout
 	map_script MAP_SCRIPT_ON_PUZZLE_ESCAPE, Puzzle_StealthMission_OnEscapeOrBlackout
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_StealthMission_OnResume
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_StealthMission_FrameTable
+	map_script MAP_SCRIPT_ON_PLAY_MAP_MUSIC, Puzzle_StealthMission_OnPlayMapMusic
 	.byte 0
 
 Puzzle_StealthMission_Name:
@@ -67,6 +69,16 @@ Puzzle_StealthMission_FrameTable:
 #define FLAG_HIDE_DIFFICULTY   FLAG_PUZZLE_2A
 #define FLAG_DID_BLACKOUT      FLAG_PUZZLE_2B
 #define VAR_MISSION_STATE      VAR_PUZZLE_00
+#define VAR_WARNING_STATE      VAR_PUZZLE_01
+
+#define MISSION_STATE_INIT 0
+#define MISSION_STATE_STARTED 1
+#define MISSION_STATE_ESCAPING 10
+#define MISSION_STATE_DONE 11
+
+#define WARNING_STATE_INIT 0
+#define WARNING_STATE_PRIMED 1
+#define WARNING_STATE_DONE 2
 
 #define METATILE_BLACK           0x201
 #define METATILE_VENT_LEFT       0x39B
@@ -101,13 +113,19 @@ script Puzzle_StealthMission_OnLoad {
 	} else {
 		call(Puzzle_StealthMission_SetStage2)
 	}
+	if (var(VAR_MISSION_STATE) == MISSION_STATE_DONE) {
+		call (Puzzle_StealthMission_CloseEntryDoor)
+		callnative(DrawWholeMapView)
+	}
 }
 script Puzzle_StealthMission_OnExit {
 	clearflag(FLAG_SYS_KEEP_OBJECTS_WITHIN_MAP)
+	goto_if_eq(VAR_MISSION_STATE, MISSION_STATE_DONE, Common_EventScript_NopEnd)
 	callnative(ClearTrainerFlags)
 }
 script Puzzle_StealthMission_OnEscapeOrBlackout {
 	clearflag(FLAG_SYS_KEEP_OBJECTS_WITHIN_MAP)
+	goto_if_eq(VAR_MISSION_STATE, MISSION_STATE_DONE, Common_EventScript_NopEnd)
 	callnative(ClearTrainerFlags)
 	// Since part of the puzzle is getting back, reset on blackout
 	clearflag(FLAG_TRICK_HOUSE_SCROLL_READ)
@@ -116,44 +134,63 @@ script Puzzle_StealthMission_OnEscapeOrBlackout {
 	clearflag(FLAG_PUZZLE_ITEM_0)
 	
 	setflag(FLAG_DID_BLACKOUT)
-	setvar(VAR_MISSION_STATE, 1)
+	setvar(VAR_MISSION_STATE, MISSION_STATE_STARTED)
 	goto (Puzzle_StealthMission_PuzzleSetup)
+}
+
+script(local) Puzzle_StealthMission_OnResume {
+	if (var(VAR_TIMES_SEEN_BY_TRAINER) > 0 && var(VAR_WARNING_STATE) < WARNING_STATE_PRIMED) {
+		setvar(VAR_WARNING_STATE, WARNING_STATE_PRIMED)
+	}
+}
+script(local) Puzzle_StealthMission_OnPlayMapMusic {
+	if (var(VAR_MISSION_STATE) == MISSION_STATE_ESCAPING) {
+		setvar(VAR_RESULT, MUS_DP_GALACTIC_HQ)
+	} else {
+		setvar(VAR_RESULT, MUS_DP_GALACTIC_ETERNA_BUILDING)
+	}
 }
 
 ///////////////////////////////////////////////////////
 
+text Puzzle_StealthMission_NameVinDiesel { "Vin Diesel?$" }
+text Puzzle_StealthMission_NameLooker { "Looker$" }
 
-text Puzzle_StealthMission_Text_LookerIntro {
+text Puzzle_StealthMission_Text_LookerIntro1 {
 			"What?! Who are you?!\n"
 			"Doesn't matter! I need your help!\p"
-			"What? No, I'm not Vin Deisel!\n"
-			"I'm only disguised as him!\p"
+			"What? No, I'm not Vin Diesel!\n"
+			"I'm just under cover AS Vin Diesel!\p"
+			"I'm from the international police.\n"
+			"Just call me “Looker”.\p$"
+}
+text Puzzle_StealthMission_Text_LookerIntro2 {
 			"Listen! I need you to head up those\n"
 			"stairs and find the deactivation codes!\p"
 			"BUT DON'T{PAUSE 20} GET{PAUSE 20} CAUGHT!!\p"
 			"They've got security androids all over\n"
-			"the shop and they won't hesistate in\l"
+			"the shop and they won't hesitate in\l"
 			"trying to terminate you!\p"
 			"What? No, I can't do it myself!\n"
 			"I'm trying to keep the alarm quiet!\p"
 			"Go! Quickly! Don't get seen!!$"
 }
 text Puzzle_StealthMission_Text_LookerWaiting {
-			"VIN DEISEL: What are you waiting for?!\n"
+			"What are you waiting for?!\n"
 			"Go find those deactivation codes!\p"
 			"They're probably way in the back, likely\n"
 			"on a paper scroll. Paper can't be hacked.\p"
 			"And don't get seen!$"
 }
 text Puzzle_StealthMission_Text_LookerLeaveWarning {
-			"VIN DEISEL: Uh, just so you know: If you\n"
+			"Uh, just so you know: If you\n"
 			"leave, the security androids WILL reset!$"
 }
 text Puzzle_StealthMission_Text_LookerReturnWarning {
-			"VIN DEISEL: Oh, good, you're back.\p"
+			"Oh, good, you're back.\p"
 			"I'm sorry to say, but all of the\n"
 			"security androids have reset while\l"
-			"were gone.\p"
+			"you were gone.\p"
 			"Oh, and they changed the security codes\n"
 			"so you'll need to get them again.\p"
 			"So, uh, good luck.$"
@@ -161,7 +198,7 @@ text Puzzle_StealthMission_Text_LookerReturnWarning {
 text Puzzle_StealthMission_Text_LookerPhonecall {
 			"… … … … … …\n"
 			"… … … … … Beep!\p"
-			"VIN DEISEL: Kid?! Are you alright?\p"
+			"LOOKER: Kid?! Are you alright?\p"
 			"Sorry, I accidentally touched\n"
 			"something and now the whole\l"
 			"bloody facility is alerted!\p"
@@ -176,26 +213,28 @@ text Puzzle_StealthMission_Text_LookerPhonecall {
 			"… … … … … Click!$"
 }
 text Puzzle_StealthMission_Text_LookerFinish_Best {
-			"VIN DEISEL: Phoar! You made it back!\p"
+			"Phoar! You made it back!\p"
 			"And you didn't even get seen once!\n"
 			"That's amazing! Here's a treat to\l"
-			"celebrate a job well done!$"
+			"celebrate a job well done!\p$"
 }
 text Puzzle_StealthMission_Text_LookerFinish_Good {
-			"VIN DEISEL: Phew! You made it back!\p"
+			"Phew! You made it back!\p"
 			"At least the androids didn't manage\n"
 			"to do enough damage.\p$"
 }
 text Puzzle_StealthMission_Text_LookerFinish_Poor {
-			"VIN DEISEL: Gah! You made it back!\p"
+			"Gah! You made it back!\p"
 			"I was worried there for a moment! You\n"
 			"skirted by on the skin of your teeth!\p$"
 }
 text Puzzle_StealthMission_Text_LookerFinish_End {
-			"Right, I'll be taking those codes,\n"
+			"Right, I've locked them off so they\n"
+			"can't chase you down anymore!\p"
+			"I'll be taking those codes,\n"
 			"and you can get out of here!\p"
 			"The door back is right over there.\n"
-			"Cheers!$"
+			"Cheers, mate!$"
 }
 text Puzzle_StealthMission_Text_LookerFinish_After {
 			"Have a good evening! Cheers!$"
@@ -209,38 +248,50 @@ script Puzzle_StealthMission_EventScript_DeactivatedAndroid {
 			"and wires are poking out.$", MSGBOX_SIGN)
 }
 
+script(local) Puzzle_StealthMission_EventScript_Intro {
+	playbgm(MUS_PL_LOOKER, FALSE)
+	speakername(Puzzle_StealthMission_NameVinDiesel)
+	message (Puzzle_StealthMission_Text_LookerIntro1)
+	waitmessage
+	speakername(Puzzle_StealthMission_NameLooker)
+	message (Puzzle_StealthMission_Text_LookerIntro2)
+	waitmessage
+	waitbuttonpress
+	closemessage
+	applymovement(LID_LOOKER, Common_Movement_FaceUp)
+	fadedefaultbgm
+	waitmovement(LID_LOOKER)
+	setvar(VAR_MISSION_STATE, MISSION_STATE_STARTED)
+	return
+}
 script Puzzle_StealthMission_TriggerScript_Intro {
 	lock
 	applymovement(LID_LOOKER, Common_Movement_FaceRight)
 	waitmovement(LID_LOOKER)
 	applymovement(LID_LOOKER, Common_Movement_ExclamationMarkAndWait)
+	playse(SE_PIN)
 	waitmovement(LID_LOOKER)
-	msgbox (Puzzle_StealthMission_Text_LookerIntro)
-	closemessage
-	applymovement(LID_LOOKER, Common_Movement_FaceUp)
-	waitmovement(LID_LOOKER)
-	setvar(VAR_MISSION_STATE, 1)
+	applymovement(LID_PLAYER, Common_Movement_FaceLeft)
+	call(Puzzle_StealthMission_EventScript_Intro)
 	release
 }
 script Puzzle_StealthMission_EventScript_Looker {
 	switch(var(VAR_MISSION_STATE)) {
-		case 0:
+		case MISSION_STATE_INIT:
 			lock
 			faceplayer
+			waitse
 			applymovement(LID_LOOKER, Common_Movement_ExclamationMarkAndWait)
+			playse(SE_PIN)
 			waitmovement(LID_LOOKER)
-			msgbox (Puzzle_StealthMission_Text_LookerIntro)
-			closemessage
-			applymovement(LID_LOOKER, Common_Movement_FaceUp)
-			waitmovement(LID_LOOKER)
-			setvar(VAR_MISSION_STATE, 1)
+			call(Puzzle_StealthMission_EventScript_Intro)
 			release
 			end
-		case 1:
+		case MISSION_STATE_STARTED:
+			speakername(Puzzle_StealthMission_NameLooker)
 			msgbox(Puzzle_StealthMission_Text_LookerWaiting, MSGBOX_NPC)
-		case 2:
-			msgbox(Puzzle_StealthMission_Text_LookerWaiting, MSGBOX_NPC)
-		case 10:
+		case MISSION_STATE_DONE:
+			speakername(Puzzle_StealthMission_NameLooker)
 			msgbox(Puzzle_StealthMission_Text_LookerFinish_After, MSGBOX_NPC)
 	}
 }
@@ -250,7 +301,9 @@ script Puzzle_StealthMission_TriggerScript_LeaveWarning {
 	applymovement(LID_LOOKER, Common_Movement_FaceDown)
 	waitmovement(LID_LOOKER)
 	applymovement(LID_LOOKER, Common_Movement_ExclamationMarkAndWait)
+	playse(SE_PIN)
 	waitmovement(LID_LOOKER)
+	speakername(Puzzle_StealthMission_NameLooker)
 	if (flag(FLAG_DID_BLACKOUT)) {
 		msgbox (Puzzle_StealthMission_Text_LookerReturnWarning)
 	} else {
@@ -259,7 +312,7 @@ script Puzzle_StealthMission_TriggerScript_LeaveWarning {
 	closemessage
 	applymovement(LID_LOOKER, Common_Movement_FaceUp)
 	waitmovement(LID_LOOKER)
-	setvar(VAR_MISSION_STATE, 2)
+	setvar(VAR_WARNING_STATE, WARNING_STATE_DONE)
 	release
 }
 
@@ -275,63 +328,89 @@ script Puzzle_StealthMission_EventScript_Scroll {
 	msgbox(PuzzleCommon_Text_ScrollFound2)
 	closemessage
 	
+	fadenewbgm(MUS_NONE)
 	playse(SE_VEND)
 	call(Puzzle_StealthMission_SetStage2)
 	special (DrawWholeMapView)
+	waitse
 	
 	playse(SE_LOW_HEALTH)
 	delay(30)
 	playse(SE_PIN)
-	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark)
+	applymovement(OBJ_EVENT_ID_PLAYER, Puzzle_StealthMission_Movement_Alarm)
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 	msgbox ("The alarm's going off!")
 	
+	playbgm(MUS_PL_LOOKER, FALSE)
 	pokenavcall(Puzzle_StealthMission_Text_LookerPhonecall)
 	waitmessage
-	setvar(VAR_MISSION_STATE, 10)
+	setvar(VAR_MISSION_STATE, MISSION_STATE_ESCAPING)
+	fadedefaultbgm
 	release
+}
+movement Puzzle_StealthMission_Movement_Alarm {
+	emote_exclamation_mark
+	delay_8
+	walk_in_place_fastest_left
+	delay_8
+	walk_in_place_fastest_right
+	delay_8
+	walk_in_place_fastest_up
+	delay_8
+	walk_in_place_fastest_down
 }
 
 script Puzzle_StealthMission_CheckFinished {
 	lock
 	setvar(VAR_LAST_WARP_ID, -1)
-	if (var(VAR_MISSION_STATE) < 10) {
+	if (var(VAR_MISSION_STATE) != MISSION_STATE_ESCAPING) {
 		release
 		end
 	}
-	applymovement(LID_LOOKER, Common_Movement_FaceRight)
-	waitmovement(LID_LOOKER)
+	delay(10)
+	playse(SE_VEND)
+	call(Puzzle_StealthMission_CloseEntryDoor)
+	callnative(DrawWholeMapView)
 	
+	delay(10)
+	applymovement(LID_LOOKER, Common_Movement_FaceRight)
+	applymovement(LID_PLAYER, Common_Movement_FaceLeft)
+	waitmovement(LID_LOOKER)
+	playbgm(MUS_PL_LOOKER, FALSE)
+	
+	speakername(Puzzle_StealthMission_NameLooker)
 	if (var(VAR_TIMES_SEEN_BY_TRAINER) == 0) {
 		message(Puzzle_StealthMission_Text_LookerFinish_Best)
+		applymovement(LID_LOOKER, Common_Movement_WalkRight2)
 		waitmessage
+		waitmovement(LID_LOOKER)
 		giveitem_std(ITEM_CANDY_TOBLERONE, 2)
 	}
 	elif (var(VAR_TIMES_SEEN_BY_TRAINER) < 3) {
 		message(Puzzle_StealthMission_Text_LookerFinish_Good)
 		waitmessage
+		applymovement(LID_LOOKER, Common_Movement_WalkRight2)
 	}
 	else {
 		message(Puzzle_StealthMission_Text_LookerFinish_Poor)
 		waitmessage
+		applymovement(LID_LOOKER, Common_Movement_WalkRight2)
 	}
+	speakername(Puzzle_StealthMission_NameLooker)
 	message(Puzzle_StealthMission_Text_LookerFinish_End)
+	waitmovement(LID_LOOKER)
 	waitmessage
 	waitbuttonpress
+	setvar(VAR_MISSION_STATE, MISSION_STATE_DONE)
+	setvar(VAR_WARNING_STATE, WARNING_STATE_DONE) // Disable the warning, as it's no longer relevant
+	fadedefaultbgm
 	release
-	// setvar(VAR_0x800A, 0)
-	// special(IsPartyFullHealed)
-	// if (var(VAR_RESULT) == FALSE) { # It's backwards for some reason??
-	// 	addvar(VAR_0x800A, 1)
-	// }
-	
-	//TODO: Choose Best, Good, or Poor performance report based on number of encounters
-	// Perhaps the Best candy shouldn't be counted towards the candy list?
 }
 
 ///////////////////////////////////////////////////////
 
 script Puzzle_StealthMission_PickupKeycard {
+	setvar(VAR_WARNING_STATE, WARNING_STATE_PRIMED)
 	finditem_std(ITEM_CARD_KEY, 1)
 }
 script Puzzle_StealthMission_SignScript_OpenDoorA {
@@ -364,11 +443,40 @@ script Puzzle_StealthMission_SignScript_OpenDoorB {
 	}
 	release
 }
+script Puzzle_StealthMission_StrengthCrate {
+	lockall
+	if (flag(FLAG_SYS_USE_STRENGTH)) {
+		msgbox ("STRENGTH made it possible to move\n"
+				"these crates around.$", MSGBOX_DEFAULT)
+		releaseall
+		end
+	}
+	checkitem (ITEM_STRENGTH_ITEM, 1)
+	if (var(VAR_RESULT) == 0) {
+		msgbox ("It's a heavy crate, but a special item\n"
+				"may be able to push it around.$", MSGBOX_DEFAULT)
+		releaseall
+		end
+	}
+	setfieldeffectargument (0, VAR_RESULT)
+	msgbox ("It's a heavy crate, but a special item\n"
+			"may be able to push it around.\p"
+			"Would you like to use the Dolly?$", MSGBOX_YESNO)
+	goto_if_eq (VAR_RESULT, NO, Common_EventScript_CloseReleaseAllEnd)
+	closemessage
+	dofieldeffect (FLDEFF_USE_STRENGTH)
+	waitstate
+	setflag (FLAG_SYS_USE_STRENGTH)
+	msgbox ("You pull out the Dolly!\p"
+			"Your Dolly made it possible\n"
+			"to move heavy crates around!$", MSGBOX_DEFAULT)
+	releaseall
+}
 
 
 ///////////////////////////////////////////////////////
 
-script Puzzle_StealthMission_SetStage1 {
+script(local) Puzzle_StealthMission_SetStage1 {
 	
 	// Close Vents
 	setmetatile(36, 5, METATILE_BLACK, TRUE)
@@ -400,7 +508,7 @@ script Puzzle_StealthMission_SetStage1 {
 	call(Puzzle_StealthMission_SetDoorD)
 	return
 }
-script Puzzle_StealthMission_SetStage2 {
+script(local) Puzzle_StealthMission_SetStage2 {
 	// Open Vents
 	setmetatile(36, 5, METATILE_DOOR_BOT, TRUE)
 	setmetatile(42, 5, METATILE_DOOR_BOT, TRUE)
@@ -432,7 +540,7 @@ script Puzzle_StealthMission_SetStage2 {
 	return
 }
 
-script Puzzle_StealthMission_SetDoorA {
+script(local) Puzzle_StealthMission_SetDoorA {
 	if (flag(FLAG_DOORA_OPEN)) {
 		setmetatile(26, 39, METATILE_FLOORA, FALSE)
 		setmetatile(27, 39, METATILE_FLOORA, FALSE)
@@ -457,7 +565,7 @@ script Puzzle_StealthMission_SetDoorA {
 	return
 }
 
-script Puzzle_StealthMission_SetDoorB {
+script(local) Puzzle_StealthMission_SetDoorB {
 	if (flag(FLAG_DOORB_OPEN)) {
 		setmetatile(26, 10, METATILE_FLOORA, FALSE)
 		setmetatile(27, 10, METATILE_FLOORA, FALSE)
@@ -476,7 +584,7 @@ script Puzzle_StealthMission_SetDoorB {
 	return
 }
 
-script Puzzle_StealthMission_SetDoorC {
+script(local) Puzzle_StealthMission_SetDoorC {
 	if (flag(FLAG_DOORC_OPEN)) {
 		setmetatile(49, 26, METATILE_FLOORA, FALSE)
 		setmetatile(50, 26, METATILE_FLOORA, FALSE)
@@ -495,7 +603,7 @@ script Puzzle_StealthMission_SetDoorC {
 	return
 }
 
-script Puzzle_StealthMission_SetDoorD {
+script(local) Puzzle_StealthMission_SetDoorD {
 	if (flag(FLAG_DOORD_OPEN)) {
 		setmetatile(49, 13, METATILE_FLOORA, FALSE)
 		setmetatile(50, 13, METATILE_FLOORA, FALSE)
@@ -511,6 +619,16 @@ script Puzzle_StealthMission_SetDoorD {
 		setmetatile(49, 15, METATILE_FLOORA_SHADOW, FALSE)
 		setmetatile(50, 15, METATILE_FLOORA_SHADOW, FALSE)
 	}
+	return
+}
+
+script(local) Puzzle_StealthMission_CloseEntryDoor {
+	setmetatile(7, 43, METATILE_Facility_NewMauvilleDoor_Closed_Tile0, TRUE)
+	setmetatile(8, 43, METATILE_Facility_NewMauvilleDoor_Closed_Tile1, TRUE)
+	setmetatile(9, 43, METATILE_Facility_NewMauvilleDoor_Closed_Tile2, TRUE)
+	setmetatile(7, 44, METATILE_Facility_NewMauvilleDoor_Closed_Tile3, TRUE)
+	setmetatile(8, 44, METATILE_Facility_NewMauvilleDoor_Closed_Tile4, TRUE)
+	setmetatile(9, 44, METATILE_Facility_NewMauvilleDoor_Closed_Tile5, TRUE)
 	return
 }
 

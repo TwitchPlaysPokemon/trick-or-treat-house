@@ -2,7 +2,7 @@
   "id": "MAP_PUZZLE_STEALTH_MISSION",
   "name": "Puzzle_StealthMission",
   "layout": "LAYOUT_PUZZLE_STEALTH_MISSION",
-  "music": "MUS_AQUA_MAGMA_HIDEOUT",
+  "music": "MUS_DP_GALACTIC_ETERNA_BUILDING",
   "region_map_section": "MAPSEC_CELADON_CITY",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -245,7 +245,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_StrengthBoulder",
+      "script": "Puzzle_StealthMission_StrengthCrate",
       "flag": "0"
     },
     {
@@ -284,7 +284,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_StrengthBoulder",
+      "script": "Puzzle_StealthMission_StrengthCrate",
       "flag": "0"
     },
     {
@@ -297,7 +297,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_StrengthBoulder",
+      "script": "Puzzle_StealthMission_StrengthCrate",
       "flag": "0"
     },
     {
@@ -323,7 +323,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_StrengthBoulder",
+      "script": "Puzzle_StealthMission_StrengthCrate",
       "flag": "0"
     },
     {
@@ -401,7 +401,7 @@
       "movement_range_y": 0,
       "trainer_type": "0",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Puzzle_StealthMission_StrengthCrate",
       "flag": "0"
     },
     {
@@ -567,45 +567,45 @@
       "x": 8,
       "y": 48,
       "elevation": 0,
-      "var": "VAR_PUZZLE_00",
+      "var": "VAR_PUZZLE_01",
       "var_value": "1",
-      "script": "NULL"
+      "script": "Puzzle_StealthMission_TriggerScript_LeaveWarning"
     },
     {
       "type": "trigger",
       "x": 7,
       "y": 48,
       "elevation": 0,
-      "var": "VAR_PUZZLE_00",
+      "var": "VAR_PUZZLE_01",
       "var_value": "1",
-      "script": "NULL"
+      "script": "Puzzle_StealthMission_TriggerScript_LeaveWarning"
     },
     {
       "type": "trigger",
       "x": 9,
       "y": 48,
       "elevation": 0,
-      "var": "VAR_PUZZLE_00",
+      "var": "VAR_PUZZLE_01",
       "var_value": "1",
-      "script": "NULL"
+      "script": "Puzzle_StealthMission_TriggerScript_LeaveWarning"
     },
     {
       "type": "trigger",
       "x": 6,
       "y": 49,
       "elevation": 0,
-      "var": "VAR_PUZZLE_00",
+      "var": "VAR_PUZZLE_01",
       "var_value": "1",
-      "script": "NULL"
+      "script": "Puzzle_StealthMission_TriggerScript_LeaveWarning"
     },
     {
       "type": "trigger",
       "x": 10,
       "y": 49,
       "elevation": 0,
-      "var": "VAR_PUZZLE_00",
+      "var": "VAR_PUZZLE_01",
       "var_value": "1",
-      "script": "NULL"
+      "script": "Puzzle_StealthMission_TriggerScript_LeaveWarning"
     }
   ],
   "bg_events": [

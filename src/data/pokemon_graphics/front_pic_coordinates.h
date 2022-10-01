@@ -4988,12 +4988,12 @@ const struct MonCoords gMonFrontPicCoords[] =
     [SPECIES_VOLTORB_HISUIAN] =
     {
         .size = MON_COORDS_SIZE(32, 32),
-        .y_offset = 0,
+        .y_offset = 11,
     },
     [SPECIES_ELECTRODE_HISUIAN] =
     {
         .size = MON_COORDS_SIZE(48, 48),
-        .y_offset = 0,
+        .y_offset = 8,
     },
     [SPECIES_TYPHLOSION_HISUIAN] =
     {

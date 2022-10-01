@@ -292,6 +292,7 @@ void FieldCB_DefaultWarpExit(void)
     SetUpWarpExitTask();
     FollowMe_WarpSetEnd();
     LockPlayerFieldControls();
+    SetObjectEventLoadFlag(0);
 }
 
 void FieldCB_WarpExitFadeFromWhite(void)
@@ -300,6 +301,7 @@ void FieldCB_WarpExitFadeFromWhite(void)
     FadeInFromWhite();
     SetUpWarpExitTask();
     LockPlayerFieldControls();
+    SetObjectEventLoadFlag(0);
 }
 
 void FieldCB_WarpExitFadeFromBlack(void)
@@ -308,6 +310,7 @@ void FieldCB_WarpExitFadeFromBlack(void)
     FadeInFromBlack();
     SetUpWarpExitTask();
     LockPlayerFieldControls();
+    SetObjectEventLoadFlag(0);
 }
 
 static void FieldCB_SpinEnterWarp(void)
@@ -317,6 +320,7 @@ static void FieldCB_SpinEnterWarp(void)
     PlaySE(SE_WARP_OUT);
     CreateTask(Task_SpinEnterWarp, 10);
     LockPlayerFieldControls();
+    SetObjectEventLoadFlag(0);
 }
 
 static void FieldCB_MossdeepGymWarpExit(void)
@@ -326,7 +330,7 @@ static void FieldCB_MossdeepGymWarpExit(void)
     PlaySE(SE_WARP_OUT);
     CreateTask(Task_ExitNonDoor, 10);
     LockPlayerFieldControls();
-    SetObjectEventLoadFlag((~SKIP_OBJECT_EVENT_LOAD) & 0xF);
+    SetObjectEventLoadFlag(0);
 }
 
 static void Task_ExitDoor(u8 taskId)

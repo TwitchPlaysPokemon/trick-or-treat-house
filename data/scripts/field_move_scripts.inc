@@ -122,10 +122,10 @@ EventScript_CancelSmash::
 
 Text_WantToSmash:
 	.string "This rock appears to be breakable.\n"
-	.string "Would you like to use ROCK SMASH?$"
+	.string "Would you like to use the Pickaxe?$"
 
 Text_CantSmash:
-	.string "It's a rugged rock, but a POKéMON\n"
+	.string "It's a rugged rock, but a special item\n"
 	.string "may be able to smash it.$"
 
 @ -----------------------------------------------------
@@ -177,22 +177,22 @@ EventScript_CancelStrength::
 	end
 
 Text_WantToStrength: @ 829092C
-	.string "It's a big {BOULDER}, but a POKéMON\n"
+	.string "It's a big boulder, but a special item\n"
 	.string "may be able to push it aside.\p"
-	.string "Would you like to use STRENGTH?$"
+	.string "Would you like to use the Dolly?$"
 
 Text_MonUsedStrength:
-	.string "You used STRENGTH!\p"
-	.string "Your STRENGTH made it\n"
-	.string "possible to move {BOULDER}s around!$"
+	.string "You pull out the Dolly!\p"
+	.string "Your Dolly made it possible\n"
+	.string "to move boulders around!$"
 
 Text_CantStrength:
-	.string "It's a big {BOULDER}, but a POKéMON\n"
+	.string "It's a big boulder, but a special item\n"
 	.string "may be able to push it aside.$"
 
 Text_StrengthActivated:
-	.string "STRENGTH made it possible to move\n"
-	.string "{BOULDER}s around.$"
+	.string "Your Dolly made it possible to move\n"
+	.string "boulders around.$"
 
 @ -----------------------------------------------------
 

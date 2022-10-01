@@ -1,6 +1,7 @@
 [
 	{
 		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
@@ -13,18 +14,7 @@
 	},
 	{
 		"class": "SECURITY",
-		"pic": "SKELETON",
-		"name": "ANDROID",
-		"party": [
-			{
-				"species": "SPECIES_BALTOY",
-				"moves": ["MOVE_EXPLOSION"],
-				"level": 50
-			}
-		]
-	},
-	{
-		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
@@ -37,6 +27,7 @@
 	},
 	{
 		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
@@ -49,6 +40,7 @@
 	},
 	{
 		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
@@ -61,18 +53,7 @@
 	},
 	{
 		"class": "SECURITY",
-		"pic": "SKELETON",
-		"name": "ANDROID",
-		"party": [
-			{
-				"species": "SPECIES_ELECTRODE",
-				"moves": ["MOVE_EXPLOSION"],
-				"level": 50
-			}
-		]
-	},
-	{
-		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
@@ -85,11 +66,12 @@
 	},
 	{
 		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
 			{
-				"species": "SPECIES_EXEGGCUTE",
+				"species": "SPECIES_ELECTRODE_HISUIAN",
 				"moves": ["MOVE_EXPLOSION"],
 				"level": 50
 			}
@@ -97,11 +79,12 @@
 	},
 	{
 		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
 			{
-				"species": "SPECIES_WEEZING",
+				"species": "SPECIES_WEEZING_GALARIAN",
 				"moves": ["MOVE_EXPLOSION"],
 				"level": 50
 			}
@@ -109,11 +92,12 @@
 	},
 	{
 		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
 			{
-				"species": "SPECIES_PINECO",
+				"species": "SPECIES_GOLEM_ALOLAN",
 				"moves": ["MOVE_EXPLOSION"],
 				"level": 50
 			}
@@ -121,18 +105,7 @@
 	},
 	{
 		"class": "SECURITY",
-		"pic": "SKELETON",
-		"name": "ANDROID",
-		"party": [
-			{
-				"species": "SPECIES_VOLTORB",
-				"moves": ["MOVE_EXPLOSION"],
-				"level": 50
-			}
-		]
-	},
-	{
-		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
@@ -145,11 +118,12 @@
 	},
 	{
 		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
 			{
-				"species": "SPECIES_GRAVELER",
+				"species": "SPECIES_DRIFBLIM",
 				"moves": ["MOVE_EXPLOSION"],
 				"level": 50
 			}
@@ -157,42 +131,7 @@
 	},
 	{
 		"class": "SECURITY",
-		"pic": "SKELETON",
-		"name": "ANDROID",
-		"party": [
-			{
-				"species": "SPECIES_WEEZING",
-				"moves": ["MOVE_EXPLOSION"],
-				"level": 50
-			}
-		]
-	},
-	{
-		"class": "SECURITY",
-		"pic": "SKELETON",
-		"name": "ANDROID",
-		"party": [
-			{
-				"species": "SPECIES_FORRETRESS",
-				"moves": ["MOVE_EXPLOSION"],
-				"level": 50
-			}
-		]
-	},
-	{
-		"class": "SECURITY",
-		"pic": "SKELETON",
-		"name": "ANDROID",
-		"party": [
-			{
-				"species": "SPECIES_ELECTRODE",
-				"moves": ["MOVE_EXPLOSION"],
-				"level": 50
-			}
-		]
-	},
-	{
-		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
@@ -205,11 +144,12 @@
 	},
 	{
 		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
 			{
-				"species": "SPECIES_GOLEM",
+				"species": "SPECIES_PINECO",
 				"moves": ["MOVE_EXPLOSION"],
 				"level": 50
 			}
@@ -217,11 +157,12 @@
 	},
 	{
 		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
 			{
-				"species": "SPECIES_WEEZING",
+				"species": "SPECIES_AZELF",
 				"moves": ["MOVE_EXPLOSION"],
 				"level": 50
 			}
@@ -229,6 +170,20 @@
 	},
 	{
 		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_REGIROCK",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
@@ -241,6 +196,72 @@
 	},
 	{
 		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_REGIDRAGO",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_GIGALITH",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_GARBODOR",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_FERROTHORN",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_VOLCANION",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
@@ -253,6 +274,20 @@
 	},
 	{
 		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
+		"pic": "SKELETON",
+		"name": "ANDROID",
+		"party": [
+			{
+				"species": "SPECIES_VOLTORB_HISUIAN",
+				"moves": ["MOVE_EXPLOSION"],
+				"level": 50
+			}
+		]
+	},
+	{
+		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
@@ -265,11 +300,12 @@
 	},
 	{
 		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
 			{
-				"species": "SPECIES_GOLEM",
+				"species": "SPECIES_GRAVELER",
 				"moves": ["MOVE_EXPLOSION"],
 				"level": 50
 			}
@@ -277,11 +313,12 @@
 	},
 	{
 		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
 			{
-				"species": "SPECIES_WEEZING",
+				"species": "SPECIES_FORRETRESS",
 				"moves": ["MOVE_EXPLOSION"],
 				"level": 50
 			}
@@ -289,11 +326,12 @@
 	},
 	{
 		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
 			{
-				"species": "SPECIES_PINECO",
+				"species": "SPECIES_GOURGEIST",
 				"moves": ["MOVE_EXPLOSION"],
 				"level": 50
 			}
@@ -301,11 +339,12 @@
 	},
 	{
 		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
 			{
-				"species": "SPECIES_ELECTRODE",
+				"species": "SPECIES_SKUNTANK",
 				"moves": ["MOVE_EXPLOSION"],
 				"level": 50
 			}
@@ -313,11 +352,12 @@
 	},
 	{
 		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
 			{
-				"species": "SPECIES_BALTOY",
+				"species": "SPECIES_MINIOR",
 				"moves": ["MOVE_EXPLOSION"],
 				"level": 50
 			}
@@ -325,11 +365,12 @@
 	},
 	{
 		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
 			{
-				"species": "SPECIES_GOLEM",
+				"species": "SPECIES_TURTONATOR",
 				"moves": ["MOVE_EXPLOSION"],
 				"level": 50
 			}
@@ -337,23 +378,12 @@
 	},
 	{
 		"class": "SECURITY",
+		"music": "ENC_MUS_DP_GALACTIC",
 		"pic": "SKELETON",
 		"name": "ANDROID",
 		"party": [
 			{
-				"species": "SPECIES_WEEZING",
-				"moves": ["MOVE_EXPLOSION"],
-				"level": 50
-			}
-		]
-	},
-	{
-		"class": "SECURITY",
-		"pic": "SKELETON",
-		"name": "ANDROID",
-		"party": [
-			{
-				"species": "SPECIES_PINECO",
+				"species": "SPECIES_SOLROCK",
 				"moves": ["MOVE_EXPLOSION"],
 				"level": 50
 			}
