@@ -1,26 +1,13 @@
 Feature Merging:
-- [X] Update from modern pokeemerald
-	- [X] Update from modern porymap
-- [X] Pull in music expansion
-- [X] Pull in RHH Expansion
-	- [X] Grab graphics for Pret + RHH intro from speedchoice-ex
-	- [X] Insert this after the gamefreak logo, during intro.
-	- [X] Switch pokemon in intro to Gourgeist (possibly randomly selects the size?)
-- [X] Convert to Triple Layer metatiles
-	- [X] Fix broken metatile in Water Temple, finally
 - [X] Feature branch: Follow Me:  https://github.com/ghoulslash/pokeemerald/tree/follow_me 
 - [ ] Feature branch: Sideways Stairs
 - [ ] Feature branch: overworld expansion (double check that this is all correct in TTH from this)
 - [X] Feature branch: dynamic overworld palettes (double check ditto)
 - [ ] Feature branch: Item descriptions on pickup: https://github.com/ghoulslash/pokeemerald/tree/item_desc_header 
-- [X] Feature branch: Pokemon decryption and compression: https://github.com/ghoulslash/pokeemerald/tree/box_expansion
 - [ ] Tutorial: Improve loading of battle terrain (possibly)
 - [X] Tutorial: Fix snow weather
 - [ ] Tutorial: Missing text function RESET_SIZE
-- [X] Tutorial: Improve WaitForVBlank
 - [ ] Tutorial: EWRAM summary screen improvements?
-- [X] Tutorial: Custom Border Dimensions (porymap supported)
-- [X] Tutorial: Trigger map scripts by flag
 - [ ] Tutorial: Run Custom Script on Trainer Sight?
 - [ ] Tutorial: Trainer Class Based Poké Balls
 - [ ] Port soaring? https://github.com/camthesaxman/pokeruby/tree/soar_2
@@ -39,7 +26,6 @@ Known issues:
 - [ ] Pokemon Says: When the high note is used, the azuril breaking out of the jar counts as a bad note, but talking to it after it breaks out isn't counted as a bad note.
 - [ ] Farfetch'd Forest: When the farfetch'd flies, do hideReflection=true and add a shadow field effect or something; also disable ripples
 - [ ] Mountain Trail: mapping error in a corner of the ledge. Either collision is needed or move to lower layer.
-- [X] graphics/shop/candy.png does not say "candy".
 
 
 Changes:
@@ -47,9 +33,6 @@ Changes:
 	- Look at fldeff_flash.c, copy Task_EnterCaveTransition3 (and related chain), and make a custom transition palette which goes from white, through several colors, to black, and doesn't fade out like the vanilla transition does.
 	- Perhaps going into the door, the colors go from inside to out (so opposite Task_EnterCaveTransition3).
 		- And then when exiting, they go outside in, return trip.
-- [X] Dialog box name plates
-	- [ ] Fix centering errors.
-- [X] Followers: If the player enters the end room with a follower, the game will automatically put the follower on the second tile of the door and remove the follower from the player's follow. The removed follower will say something generic based on GFX id or puzzle script.
 - [ ] Add newer-gen mons to the rental sequence.
 - [ ] Lost Woods 1: Use Amongous instead of electrode?
 - [ ] Towers: Change up pokemon to be more diverse?
