@@ -49,7 +49,9 @@
     "IndoorMap",
     "TestMusicRoom",
     "TestAcroBikeMap",
-    "TestFollowerMap"
+    "TestFollowerMap",
+    "MetaPuzzle_EmptyPuzzle",
+    "MetaPuzzle_StrengthRoom"
   ],
   "MG_CutsceneMaps": [
     "MauvilleCity_Cutscene",
@@ -244,10 +246,20 @@
     "SafariZone_RestHouse"
   ],
   "MG_TheMetaPuzzle": [
-    "Puzzle_MetaPuzzleCave",
-    "MetaPuzzle_EmptyPuzzle",
-    "MetaPuzzle_StrengthRoom",
-    "Meta_LedgeRoom"
+    "Puzzle_MetaPuzzle",
+    "Meta_NullRoom",
+    "Meta_EmptyFilled",
+    "Meta_EmptyNW",
+    "Meta_EmptyNE",
+    "Meta_EmptySW",
+    "Meta_EmptySE",
+    "Meta_EmptyNS",
+    "Meta_EmptyWE",
+    "Meta_EmptyS",
+    "Meta_Entrance",
+    "Meta_LavaridgeSprings",
+    "Meta_LedgeRoom",
+    "Meta_FinalBluff"
   ],
   "MG_SingleMapPuzzles2019": [
     "Puzzle_TrickHouseCut",

@@ -76,3 +76,18 @@ script TestMapHallway_GiveTestItems5 {
 script TestMapHallway_GiveTestItems6 {
 	finditem_std(ITEM_SOFT_SAND, 3)
 }
+
+script TestMapHallway_ReturnToHallway_EntranceObject {
+	lock
+	// Check for facing the correct direction
+	goto_if_ne (VAR_FACING, DIR_NORTH, PuzzleCommon_EventScript_EntranceDoorObject_Backside)
+	if (flag(FLAG_IS_BUMP_INTERACTION)) {
+		call (PuzzleCommon_EventScript_DoDoorEnterAnimation)
+		dowarp (WARPTYPE_DYNAMIC, DOWARP_SILENT)
+		waitstate
+		release
+	}
+	msgbox (PuzzleCommon_Text_DoorFrontside)
+	release
+	end
+}

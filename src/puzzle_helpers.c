@@ -1426,7 +1426,79 @@ void Imposter_PopulatePokeblockCase(struct ScriptContext *ctx) {
 #pragma endregion
 ///////////////////////////////////////////////////////////////////////////////
 #pragma region // Puzzle: Secret Caverns
-// MAP_PUZZLE_META_PUZZLE_CAVE
+// MAP_PUZZLE_META_PUZZLE
+
+// width = lower 8bits, height = upper 8 bits
+#define VAR_GRID_SIZE         VAR_PUZZLE_00
+#define VAR_ROOM_ID_0_0       VAR_PUZZLE_01
+#define VAR_ROOM_RESERVE_END  VAR_PUZZLE_10
+
+#define MAP_PLACEHOLDER_N     MAP_META_EMPTY_SW
+#define MAP_PLACEHOLDER_S     MAP_META_EMPTY_NE
+#define MAP_PLACEHOLDER_W     MAP_META_EMPTY_SE
+#define MAP_PLACEHOLDER_E     MAP_META_EMPTY_NW
+#define MAP_PLACEHOLDER_NW    MAP_META_EMPTY_S
+#define MAP_PLACEHOLDER_NE    MAP_META_EMPTY_NS
+#define MAP_PLACEHOLDER_SW    MAP_META_EMPTY_WE
+#define MAP_PLACEHOLDER_SE    MAP_META_EMPTY_FILLED
+
+#pragma push_macro("MAP_GROUP")
+#pragma push_macro("MAP_NUM")
+
+#undef MAP_GROUP
+#undef MAP_NUM
+
+#define MAP_GROUP(map) (map >> 8)
+#define MAP_NUM(map) (map & 0xFF)
+
+u16* MetaPuzzle_GetRoomGridVarPointer(int x, int y) {
+	u8 width  = (VarGet(VAR_GRID_SIZE) >> 0) & 0xFF;
+	u8 height = (VarGet(VAR_GRID_SIZE) >> 8) & 0xFF;
+	
+	if (0 <= x && x < width && 0 <= y && y < height) {
+		return &GetVarPointer(VAR_ROOM_ID_0_0)[(y * width) + x];
+	}
+	return NULL;
+}
+
+u16 MetaPuzzle_FindCurrentRoomLocation() {
+	u8 width  = (VarGet(VAR_GRID_SIZE) >> 0) & 0xFF;
+	u8 height = (VarGet(VAR_GRID_SIZE) >> 8) & 0xFF;
+	u16* grid = GetVarPointer(VAR_ROOM_ID_0_0);
+	u16 mapId = (gSaveBlock1Ptr->location.mapGroup << 8) | gSaveBlock1Ptr->location.mapNum;
+	
+	for (int i = 0; i < (width * height); i++) {
+		if (grid[i] == mapId) return i;
+	}
+	return -1;
+}
+
+
+// The only connection that's ever going to get passed in here is a connection residing in gMapHeader,
+// so just assume that gMapHeader is the owner of this connection.
+struct MapHeader const *const MetaPuzzle_GetMapConnection(struct MapConnection *connection) {
+	u8 width  = (VarGet(VAR_GRID_SIZE) >> 0) & 0xFF;
+	u8 height = (VarGet(VAR_GRID_SIZE) >> 8) & 0xFF;
+	if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(MAP_PLACEHOLDER_N)) goto error;
+	int i = MetaPuzzle_FindCurrentRoomLocation();
+	int x = i % width; 
+	int y = i / width;
+	u16* ptr = NULL;
+	switch(connection->mapNum) {
+		case MAP_NUM(MAP_PLACEHOLDER_N):   ptr = MetaPuzzle_GetRoomGridVarPointer(x + 0, y - 1); break;
+		case MAP_NUM(MAP_PLACEHOLDER_S):   ptr = MetaPuzzle_GetRoomGridVarPointer(x + 0, y + 1); break;
+		case MAP_NUM(MAP_PLACEHOLDER_W):   ptr = MetaPuzzle_GetRoomGridVarPointer(x - 1, y + 0); break;
+		case MAP_NUM(MAP_PLACEHOLDER_E):   ptr = MetaPuzzle_GetRoomGridVarPointer(x + 1, y + 0); break;
+		case MAP_NUM(MAP_PLACEHOLDER_NW):  ptr = MetaPuzzle_GetRoomGridVarPointer(x - 1, y - 1); break;
+		case MAP_NUM(MAP_PLACEHOLDER_NE):  ptr = MetaPuzzle_GetRoomGridVarPointer(x + 1, y - 1); break;
+		case MAP_NUM(MAP_PLACEHOLDER_SW):  ptr = MetaPuzzle_GetRoomGridVarPointer(x - 1, y + 1); break;
+		case MAP_NUM(MAP_PLACEHOLDER_SE):  ptr = MetaPuzzle_GetRoomGridVarPointer(x + 1, y + 1); break;
+	}
+	if (ptr == NULL) goto error;
+	return Overworld_GetMapHeaderByGroupAndId(MAP_GROUP(*ptr), MAP_NUM(*ptr));
+error:
+	return Overworld_GetMapHeaderByGroupAndId(MAP_GROUP(MAP_META_EMPTY_FILLED), MAP_NUM(MAP_META_EMPTY_FILLED));
+}
 
 void MetaPuzzle_CountSubmittedItems(struct ScriptContext *ctx) {
 	gSpecialVar_Result = 0;
@@ -1447,6 +1519,9 @@ void MetaPuzzle_CountSubmittedItems(struct ScriptContext *ctx) {
 	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_SEEDOT);
 	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_CUSHION);
 }
+
+#pragma pop_macro("MAP_GROUP")
+#pragma pop_macro("MAP_NUM")
 
 #pragma endregion
 ///////////////////////////////////////////////////////////////////////////////

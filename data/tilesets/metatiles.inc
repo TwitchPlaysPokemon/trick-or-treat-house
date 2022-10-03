@@ -637,3 +637,10 @@ gMetatiles_SlateportExt::
 	.align 1
 gMetatileAttributes_SlateportExt::
 	.incbin "data/tilesets/secondary/slateportext/metatile_attributes.bin"
+	.align 1
+gMetatiles_MetaTileset::
+	.incbin "data/tilesets/primary/metatileset/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_MetaTileset::
+	.incbin "data/tilesets/primary/metatileset/metatile_attributes.bin"

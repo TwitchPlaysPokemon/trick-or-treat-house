@@ -952,3 +952,14 @@ gTileset_SlateportExt::
 	.4byte gMetatiles_SlateportExt
 	.4byte gMetatileAttributes_SlateportExt
 	.4byte NULL
+
+	.align 2
+gTileset_MetaTileset::
+	.byte TRUE @ is compressed
+	.byte FALSE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_MetaTileset
+	.4byte gTilesetPalettes_MetaTileset
+	.4byte gMetatiles_MetaTileset
+	.4byte gMetatileAttributes_MetaTileset
+	.4byte InitTilesetAnim_General

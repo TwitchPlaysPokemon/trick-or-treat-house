@@ -1,0 +1,69 @@
+{
+  "id": "MAP_META_ENTRANCE",
+  "name": "Meta_Entrance",
+  "layout": "LAYOUT_META_ENTRANCE",
+  "music": "MUS_ABANDONED_SHIP",
+  "region_map_section": "MAPSEC_LAVARIDGE_TOWN",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "direction": "down",
+      "offset": 0,
+      "map": "MAP_META_EMPTY_NE"
+    },
+    {
+      "direction": "left",
+      "offset": 0,
+      "map": "MAP_META_EMPTY_SE"
+    },
+    {
+      "direction": "right",
+      "offset": 0,
+      "map": "MAP_META_EMPTY_NW"
+    },
+    {
+      "direction": "up",
+      "offset": 0,
+      "map": "MAP_META_EMPTY_SW"
+    },
+    {
+      "direction": "down",
+      "offset": 40,
+      "map": "MAP_META_EMPTY_FILLED"
+    },
+    {
+      "direction": "up",
+      "offset": -40,
+      "map": "MAP_META_EMPTY_S"
+    },
+    {
+      "direction": "right",
+      "offset": -40,
+      "map": "MAP_META_EMPTY_NS"
+    },
+    {
+      "direction": "left",
+      "offset": 40,
+      "map": "MAP_META_EMPTY_WE"
+    }
+  ],
+  "object_events": [
+
+  ],
+  "warp_events": [
+
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

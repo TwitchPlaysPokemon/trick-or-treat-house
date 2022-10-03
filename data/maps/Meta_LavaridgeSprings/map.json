@@ -1,0 +1,87 @@
+{
+  "id": "MAP_META_LAVARIDGE_SPRINGS",
+  "name": "Meta_LavaridgeSprings",
+  "layout": "LAYOUT_META_LAVARIDGE_SPRINGS",
+  "music": "MUS_ABANDONED_SHIP",
+  "region_map_section": "MAPSEC_LAVARIDGE_TOWN",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "direction": "down",
+      "offset": 0,
+      "map": "MAP_META_EMPTY_NE"
+    },
+    {
+      "direction": "left",
+      "offset": 0,
+      "map": "MAP_META_EMPTY_SE"
+    },
+    {
+      "direction": "right",
+      "offset": 0,
+      "map": "MAP_META_EMPTY_NW"
+    },
+    {
+      "direction": "up",
+      "offset": 0,
+      "map": "MAP_META_EMPTY_SW"
+    },
+    {
+      "direction": "down",
+      "offset": 40,
+      "map": "MAP_META_EMPTY_FILLED"
+    },
+    {
+      "direction": "up",
+      "offset": -40,
+      "map": "MAP_META_EMPTY_S"
+    },
+    {
+      "direction": "right",
+      "offset": -40,
+      "map": "MAP_META_EMPTY_NS"
+    },
+    {
+      "direction": "left",
+      "offset": 40,
+      "map": "MAP_META_EMPTY_WE"
+    }
+  ],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_SCROLL_ROOM",
+      "x": 23,
+      "y": 11,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TestMapHallway_ReturnToHallway_EntranceObject",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 23,
+      "y": 11,
+      "elevation": 0,
+      "dest_map": "MAP_NONE",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
+}

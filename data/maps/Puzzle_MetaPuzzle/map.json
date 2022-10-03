@@ -1,6 +1,6 @@
 {
-  "id": "MAP_PUZZLE_META_PUZZLE_CAVE",
-  "name": "Puzzle_MetaPuzzleCave",
+  "id": "MAP_PUZZLE_META_PUZZLE",
+  "name": "Puzzle_MetaPuzzle",
   "layout": "LAYOUT_FAKE_SECRET_BASE_CAVE",
   "music": "MUS_ABANDONED_SHIP",
   "region_map_section": "MAPSEC_ROUTE_103",

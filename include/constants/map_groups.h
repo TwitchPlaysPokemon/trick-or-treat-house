@@ -28,15 +28,17 @@
 #define MAP_SLATEPORT_CITY_SEASHORE_HOUSE    (8 | (1 << 8))
 
 // MG_TestMaps
-#define MAP_TEST_MAP_HALLWAY       (0 | (2 << 8))
-#define MAP_TEST_LAYOUT_SWITCHING  (1 | (2 << 8))
-#define MAP_TEST_LAYOUT_SWITCHING2 (2 | (2 << 8))
-#define MAP_TEST_MIRROR_MOVEMENT   (3 | (2 << 8))
-#define MAP_TEST_COPY_MOVEMENT     (4 | (2 << 8))
-#define MAP_INDOOR_MAP             (5 | (2 << 8))
-#define MAP_TEST_MUSIC_ROOM        (6 | (2 << 8))
-#define MAP_TEST_ACRO_BIKE_MAP     (7 | (2 << 8))
-#define MAP_TEST_FOLLOWER_MAP      (8 | (2 << 8))
+#define MAP_TEST_MAP_HALLWAY          (0 | (2 << 8))
+#define MAP_TEST_LAYOUT_SWITCHING     (1 | (2 << 8))
+#define MAP_TEST_LAYOUT_SWITCHING2    (2 | (2 << 8))
+#define MAP_TEST_MIRROR_MOVEMENT      (3 | (2 << 8))
+#define MAP_TEST_COPY_MOVEMENT        (4 | (2 << 8))
+#define MAP_INDOOR_MAP                (5 | (2 << 8))
+#define MAP_TEST_MUSIC_ROOM           (6 | (2 << 8))
+#define MAP_TEST_ACRO_BIKE_MAP        (7 | (2 << 8))
+#define MAP_TEST_FOLLOWER_MAP         (8 | (2 << 8))
+#define MAP_META_PUZZLE_EMPTY_PUZZLE  (9 | (2 << 8))
+#define MAP_META_PUZZLE_STRENGTH_ROOM (10 | (2 << 8))
 
 // MG_CutsceneMaps
 #define MAP_MAUVILLE_CITY_CUTSCENE     (0 | (3 << 8))
@@ -231,10 +233,20 @@
 #define MAP_SAFARI_ZONE_REST_HOUSE  (7 | (12 << 8))
 
 // MG_TheMetaPuzzle
-#define MAP_PUZZLE_META_PUZZLE_CAVE   (0 | (13 << 8))
-#define MAP_META_PUZZLE_EMPTY_PUZZLE  (1 | (13 << 8))
-#define MAP_META_PUZZLE_STRENGTH_ROOM (2 | (13 << 8))
-#define MAP_META_LEDGE_ROOM           (3 | (13 << 8))
+#define MAP_PUZZLE_META_PUZZLE     (0 | (13 << 8))
+#define MAP_META_NULL_ROOM         (1 | (13 << 8))
+#define MAP_META_EMPTY_FILLED      (2 | (13 << 8))
+#define MAP_META_EMPTY_NW          (3 | (13 << 8))
+#define MAP_META_EMPTY_NE          (4 | (13 << 8))
+#define MAP_META_EMPTY_SW          (5 | (13 << 8))
+#define MAP_META_EMPTY_SE          (6 | (13 << 8))
+#define MAP_META_EMPTY_NS          (7 | (13 << 8))
+#define MAP_META_EMPTY_WE          (8 | (13 << 8))
+#define MAP_META_EMPTY_S           (9 | (13 << 8))
+#define MAP_META_ENTRANCE          (10 | (13 << 8))
+#define MAP_META_LAVARIDGE_SPRINGS (11 | (13 << 8))
+#define MAP_META_LEDGE_ROOM        (12 | (13 << 8))
+#define MAP_META_FINAL_BLUFF       (13 | (13 << 8))
 
 // MG_SingleMapPuzzles2019
 #define MAP_PUZZLE_TRICK_HOUSE_CUT       (0 | (14 << 8))

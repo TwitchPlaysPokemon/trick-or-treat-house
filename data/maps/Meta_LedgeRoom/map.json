@@ -12,7 +12,48 @@
   "allow_running": false,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": 0,
+  "connections": [
+    {
+      "direction": "down",
+      "offset": 0,
+      "map": "MAP_META_EMPTY_NE"
+    },
+    {
+      "direction": "left",
+      "offset": 0,
+      "map": "MAP_META_EMPTY_SE"
+    },
+    {
+      "direction": "right",
+      "offset": 0,
+      "map": "MAP_META_EMPTY_NW"
+    },
+    {
+      "direction": "up",
+      "offset": 0,
+      "map": "MAP_META_EMPTY_SW"
+    },
+    {
+      "direction": "down",
+      "offset": 40,
+      "map": "MAP_META_EMPTY_FILLED"
+    },
+    {
+      "direction": "up",
+      "offset": -40,
+      "map": "MAP_META_EMPTY_S"
+    },
+    {
+      "direction": "right",
+      "offset": -40,
+      "map": "MAP_META_EMPTY_NS"
+    },
+    {
+      "direction": "left",
+      "offset": 40,
+      "map": "MAP_META_EMPTY_WE"
+    }
+  ],
   "object_events": [
 
   ],

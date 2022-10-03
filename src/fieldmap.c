@@ -16,6 +16,8 @@
 #include "tv.h"
 #include "constants/rgb.h"
 #include "constants/metatile_behaviors.h"
+#include "constants/maps.h"
+#include "constants/map_groups.h"
 
 struct ConnectionFlags
 {
@@ -70,8 +72,13 @@ static bool8 IsCoordInIncomingConnectingMap(int coord, int srcMax, int destMax, 
 
 #define GetMapGridBlockAt(x, y) (AreCoordsWithinMapGridBounds(x, y) ? gBackupMapLayout.map[x + gBackupMapLayout.width * y] : GetBorderBlockAt(x, y))
 
+extern struct MapHeader const *const MetaPuzzle_GetMapConnection(struct MapConnection *connection);
 struct MapHeader const *const GetMapHeaderFromConnection(struct MapConnection *connection)
 {
+    // if (GetCurrentPuzzleMapId() == MAP_PUZZLE_META_PUZZLE && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PUZZLE_META_PUZZLE)) {
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PUZZLE_META_PUZZLE)) {
+        return MetaPuzzle_GetMapConnection(connection);
+    }
     return Overworld_GetMapHeaderByGroupAndId(connection->mapGroup, connection->mapNum);
 }
 

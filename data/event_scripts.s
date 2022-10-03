@@ -285,11 +285,27 @@ gStdScripts_End::
 	.include "data/maps/Puzzle_SootopolisGym/scripts.inc"
 	.include "data/maps/SootopolisGym_B1F/scripts.inc"
 	
-	@ -------------------------------------------------
-
-	.include "data/maps/Puzzle_MetaPuzzleCave/scripts.inc"
 	.include "data/maps/MetaPuzzle_EmptyPuzzle/scripts.inc"
 	.include "data/maps/MetaPuzzle_StrengthRoom/scripts.inc"
+	
+	@ -------------------------------------------------
+
+	.include "data/maps/Puzzle_MetaPuzzle/scripts.inc"
+	
+	.include "data/maps/Meta_NullRoom/scripts.inc"
+	.include "data/maps/Meta_EmptyNW/scripts.inc"
+	.include "data/maps/Meta_EmptyNE/scripts.inc"
+	.include "data/maps/Meta_EmptySW/scripts.inc"
+	.include "data/maps/Meta_EmptySE/scripts.inc"
+	.include "data/maps/Meta_EmptyNS/scripts.inc"
+	.include "data/maps/Meta_EmptyWE/scripts.inc"
+	.include "data/maps/Meta_EmptyS/scripts.inc"
+	.include "data/maps/Meta_EmptyFilled/scripts.inc"
+	
+	.include "data/maps/Meta_Entrance/scripts.inc"
+	.include "data/maps/Meta_LavaridgeSprings/scripts.inc"
+	.include "data/maps/Meta_LedgeRoom/scripts.inc"
+	.include "data/maps/Meta_FinalBluff/scripts.inc"
 	
 	@ -------------------------------------------------
 	
@@ -792,4 +808,3 @@ gText_LinkRecordCouldntBeSaved::
 	.include "data/maps/TrickHouseRestroom_Choose/scripts.inc"
 	.include "data/maps/TrickHouseEntrance_Intro/scripts.inc"
 
-	.include "data/maps/Meta_LedgeRoom/scripts.inc"
