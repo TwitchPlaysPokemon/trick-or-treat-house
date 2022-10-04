@@ -848,7 +848,7 @@ bool8 SetDiveWarpDive(u16 x, u16 y)
     return SetDiveWarp(CONNECTION_DIVE, x, y);
 }
 
-void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
+void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum, bool8 redraw)
 {
     s32 paletteIndex;
 
@@ -888,6 +888,9 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
     ResetFieldTasksArgs();
     RunOnResumeMapScript();
     RunPuzzleIntro();
+    
+    // Doesn't look good when going from left to right, fine when going up to down
+    // if (redraw) DrawWholeMapView();
     
     // if (gMapHeader.regionMapSectionId != MAPSEC_BATTLE_FRONTIER
     //  || gMapHeader.regionMapSectionId != sLastMapSectionId)

@@ -2374,6 +2374,10 @@ static const struct SpriteFrameImage sPicTable_TrickDoorNorth[] = {
     obj_frame_tiles(gObjectEventPic_TrickDoorNorth),
 };
 
+static const struct SpriteFrameImage sPicTable_MetaPedestal[] = {
+    obj_frame_tiles(gObjectEventPic_MetaPedestal),
+};
+
 static const struct SpriteFrameImage sPicTable_TrickDoorScroll[] = {
     overworld_frame(gObjectEventPic_TrickDoorScroll, 8, 8, 0),
     overworld_frame(gObjectEventPic_TrickDoorScroll, 8, 8, 1),

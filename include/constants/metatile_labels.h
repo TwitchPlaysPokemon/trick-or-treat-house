@@ -363,6 +363,14 @@
 #define METATILE_Mauville_MirageTower_TileE   0x3DD
 #define METATILE_Mauville_MirageTower_TileF   0x3E3
 
+// gTileset_MetaTileset
+#define METATILE_MetaTileset_Planks_HorzLeft   0x038
+#define METATILE_MetaTileset_Planks_HorzMid    0x041
+#define METATILE_MetaTileset_Planks_HorzRight  0x039
+#define METATILE_MetaTileset_Planks_VertBot    0x048
+#define METATILE_MetaTileset_Planks_VertMid    0x049
+#define METATILE_MetaTileset_Planks_VertTop    0x040
+
 // gTileset_MeteorFalls
 #define METATILE_MeteorFalls_CaveEntrance_Bottom  0x24E
 #define METATILE_MeteorFalls_CaveEntrance_Left    0x24D

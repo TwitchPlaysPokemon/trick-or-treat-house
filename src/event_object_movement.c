@@ -472,6 +472,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_NPC_3_BLACK             0x1143
 #define OBJ_EVENT_PAL_TAG_NPC_4_BLACK             0x1144
 #define OBJ_EVENT_PAL_TAG_NPC_1_BLACKALT          0x1145
+#define OBJ_EVENT_PAL_TAG_META_PEDESTAL           0x1146
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -550,6 +551,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Pidgey,                OBJ_EVENT_PAL_TAG_PIDGEY},
     {gObjectEventPal_ProfBirch,             OBJ_EVENT_PAL_TAG_BIRCH},
     {gObjectEventPal_Imposter,              OBJ_EVENT_PAL_TAG_POSSESSED},
+    {gObjectEventPal_MetaPedestal,          OBJ_EVENT_PAL_TAG_META_PEDESTAL},
     {},
 };
 /*

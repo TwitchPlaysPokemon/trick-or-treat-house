@@ -93,7 +93,7 @@ void SetContinueGameWarpToDynamicWarp(int unused);
 const struct MapConnection *GetMapConnection(u8 dir);
 bool8 SetDiveWarpEmerge(u16 x, u16 y);
 bool8 SetDiveWarpDive(u16 x, u16 y);
-void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum);
+void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum, bool8 redraw);
 void ResetInitialPlayerAvatarState(void);
 void StoreInitialPlayerAvatarState(void);
 bool32 Overworld_IsBikingAllowed(void);

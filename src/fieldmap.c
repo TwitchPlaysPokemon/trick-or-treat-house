@@ -4,6 +4,7 @@
 #include "fieldmap.h"
 #include "fldeff.h"
 #include "fldeff_misc.h"
+#include "field_camera.h"
 #include "menu.h"
 #include "mirage_tower.h"
 #include "overworld.h"
@@ -14,6 +15,7 @@
 #include "trainer_hill.h"
 #include "trickhouse.h"
 #include "tv.h"
+#include "puzzle_helpers.h"
 #include "constants/rgb.h"
 #include "constants/metatile_behaviors.h"
 #include "constants/maps.h"
@@ -31,7 +33,7 @@ EWRAM_DATA static u16 sBackupMapData[MAX_MAP_DATA_SIZE] = {0};
 EWRAM_DATA struct MapHeader gMapHeader = {0};
 EWRAM_DATA struct Camera gCamera = {0};
 EWRAM_DATA static struct ConnectionFlags sMapConnectionFlags = {0};
-EWRAM_DATA static u32 sFiller = 0; // without this, the next file won't align properly
+// EWRAM_DATA static u32 sFiller = 0; // without this, the next file won't align properly
 
 struct BackupMapLayout gBackupMapLayout;
 
@@ -47,7 +49,7 @@ static void InitBackupMapLayoutConnections(struct MapHeader *mapHeader);
 static void LoadSavedMapView(void);
 static bool8 SkipCopyingMetatileFromSavedMap(u16 *mapBlock, u16 mapWidth, u8 yMode);
 static struct MapConnection *GetIncomingConnection(u8 direction, int x, int y);
-static bool8 IsPosInIncomingConnectingMap(u8 direction, int x, int y, struct MapConnection *connection);
+static bool8 IsPosInIncomingConnectingMap(u8 direction, int x, int y, struct MapConnection* connection);
 static bool8 IsCoordInIncomingConnectingMap(int coord, int srcMax, int destMax, int offset);
 
 #define GetBorderBlockAt(x, y) ({                                                                 \
@@ -72,7 +74,6 @@ static bool8 IsCoordInIncomingConnectingMap(int coord, int srcMax, int destMax, 
 
 #define GetMapGridBlockAt(x, y) (AreCoordsWithinMapGridBounds(x, y) ? gBackupMapLayout.map[x + gBackupMapLayout.width * y] : GetBorderBlockAt(x, y))
 
-extern struct MapHeader const *const MetaPuzzle_GetMapConnection(struct MapConnection *connection);
 struct MapHeader const *const GetMapHeaderFromConnection(struct MapConnection *connection)
 {
     // if (GetCurrentPuzzleMapId() == MAP_PUZZLE_META_PUZZLE && gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(PUZZLE_META_PUZZLE)) {
@@ -146,6 +147,7 @@ static void InitBackupMapLayoutData(u16 *map, u16 width, u16 height)
     }
 }
 
+void MetaPuzzle_FillRoomConnections();
 static void InitBackupMapLayoutConnections(struct MapHeader *mapHeader)
 {
     int count;
@@ -182,6 +184,7 @@ static void InitBackupMapLayoutConnections(struct MapHeader *mapHeader)
             }
         }
     }
+    MetaPuzzle_FillRoomConnections();
 }
 
 static void FillConnection(int x, int y, struct MapHeader const *connectedMapHeader, int x2, int y2, int width, int height)
@@ -680,7 +683,7 @@ bool8 CameraMove(int x, int y)
         old_y = gSaveBlock1Ptr->pos.y;
         connection = GetIncomingConnection(direction, gSaveBlock1Ptr->pos.x, gSaveBlock1Ptr->pos.y);
         SetPositionFromConnection(connection, direction, x, y);
-        LoadMapFromCameraTransition(connection->mapGroup, connection->mapNum);
+        LoadMapFromCameraTransition(connection->mapGroup, connection->mapNum, connection->resolved);
         gCamera.active = TRUE;
         gCamera.x = old_x - gSaveBlock1Ptr->pos.x;
         gCamera.y = old_y - gSaveBlock1Ptr->pos.y;
@@ -706,8 +709,13 @@ static struct MapConnection *GetIncomingConnection(u8 direction, int x, int y)
     connection = connections->connections;
     for (i = 0; i < count; i++, connection++)
     {
-        if (connection->direction == direction && IsPosInIncomingConnectingMap(direction, x, y, connection) == TRUE)
-            return connection;
+        if (connection->direction == direction) {
+            connection = MetaPuzzle_ResolveMapConnection(connection);
+            if (IsPosInIncomingConnectingMap(direction, x, y, connection) == TRUE)
+                return connection;
+        }
+        // if (connection->direction == direction && IsPosInIncomingConnectingMap(direction, x, y, connection) == TRUE)
+        //     return connection;
     }
     return NULL;
 }

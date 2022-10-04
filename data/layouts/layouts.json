@@ -2417,7 +2417,7 @@
       "id": "LAYOUT_META_ENTRANCE",
       "name": "Meta_Entrance_Layout",
       "width": 40,
-      "height": 14,
+      "height": 40,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_MetaTileset",

@@ -1,4 +1,10 @@
 raw `
+#define VAR_GRID_SIZE         VAR_PUZZLE_00
+#define VAR_ROOM_ID_0_0       VAR_PUZZLE_01
+#define VAR_ROOM_RESERVE_END  VAR_PUZZLE_10
+
+
+
 Puzzle_MetaPuzzle_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
 	puzzle_quip Puzzle_MetaPuzzle_Quip
@@ -43,12 +49,15 @@ Puzzle_MetaPuzzle_CandyList:
 	.2byte FLAG_PUZZLE_20
 	.2byte 0
 `
+// ----------------------------------------------------
 
 script Puzzle_MetaPuzzle_OnLoad {
 	setmetatile(6, 6, 0x234, FALSE)
 	setmetatile(6, 7, 0x23C, FALSE)
 }
 
+// ----------------------------------------------------
+// Intro Script
 
 script Puzzle_MetaPuzzle_IntroScript {
 	if (var(VAR_MISTRESS_STATE) == 0) {
@@ -211,8 +220,6 @@ script MetaPuzzle_PickupEvent_SeedotDoll {
 	finditem_std(ITEM_META_ITEM_SEEDOT, 1)
 }
 
-
-
 script MetaPuzzle_DropOffEvents {
 	setvar(VAR_0x800A, 0)
 	// 
@@ -264,3 +271,27 @@ script MetaPuzzle_DropOffEvents_GiveItem {
 	addvar(VAR_0x800A, 1)
 	return
 }
+
+// ----------------------------------------------------
+
+script MetaPuzzle_UsePedestal {
+	lockall
+	// TODO everything
+	setvar(VAR_GRID_SIZE, (2 << 8) | (2))
+	setvar(VAR_ROOM_ID_0_0 + 0, MAP_META_LEDGE_ROOM)
+	setvar(VAR_ROOM_ID_0_0 + 1, MAP_META_NULL_ROOM)
+	setvar(VAR_ROOM_ID_0_0 + 2, MAP_META_LAVARIDGE_SPRINGS)
+	setvar(VAR_ROOM_ID_0_0 + 3, MAP_META_FINAL_BLUFF)
+	// setvar(VAR_ROOM_ID_0_0 + 3, MAP_META_NULL_ROOM)
+	
+	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
+	setwarp(WARPTYPE_STANDARD, MAP_META_LAVARIDGE_SPRINGS, VAR_INTERACT_X, VAR_INTERACT_Y)
+	dowarp(WARPTYPE_STANDARD, DOWARP_SILENT)
+	releaseall
+}
+
+raw `
+#undef VAR_GRID_SIZE       
+#undef VAR_ROOM_ID_0_0     
+#undef VAR_ROOM_RESERVE_END
+`

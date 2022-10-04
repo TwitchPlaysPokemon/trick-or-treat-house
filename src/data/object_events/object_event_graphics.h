@@ -465,6 +465,9 @@ const u32 gObjectEventPic_FroggerWalk[] = INCBIN_U32("graphics/object_events/pic
 
 const u32 gObjectEventPic_MermaidWalk[] = INCBIN_U32("graphics/object_events/pics/people/mermaid_walking.4bpp");
 
+const u32 gObjectEventPic_MetaPedestal[] = INCBIN_U32("graphics/object_events/pics/misc/meta_pedestal.4bpp");
+const u16 gObjectEventPal_MetaPedestal[] = INCBIN_U16("graphics/object_events/pics/misc/meta_pedestal.gbapal");
+
 
 //-------------------------------------------------------------------
 // const u16 gUnusedObjectEventPalette[] = INCBIN_U16("graphics/object_events/palettes/unused_palette.gbapal");

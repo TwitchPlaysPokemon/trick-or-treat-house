@@ -262,6 +262,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_TRICK_DOOR_STONE] =         &gObjectEventGraphicsInfo_TrickDoorStone,
     [OBJ_EVENT_GFX_TRICK_DOOR_STONE_ROOM] =    &gObjectEventGraphicsInfo_TrickDoorStoneRoom,
     [OBJ_EVENT_GFX_TRICK_DOOR_NORTH] =         &gObjectEventGraphicsInfo_TrickDoorNorth,
+    [OBJ_EVENT_GFX_META_PEDESTAL] =            &gObjectEventGraphicsInfo_MetaPedestal,
     
     // Halloween Costumes
     [OBJ_EVENT_GFX_TRICK_MASTER] =             &gObjectEventGraphicsInfo_TrickMaster,

@@ -1589,7 +1589,7 @@ bool8 ScrCmd_multichoicedefault(struct ScriptContext *ctx)
 bool8 ScrCmd_loaddynamicstring(struct ScriptContext *ctx)
 {
     u8 id = ScriptReadByte(ctx);
-    u8 *ptr = (u8 *)ScriptReadWord(ctx);
+    const u8 *ptr = (u8 *)ScriptReadWord(ctx);
     
     if ((u32)ptr < ARRAY_COUNT(ctx->data))
         ptr = (const u8*)ctx->data[(u32)ptr];
