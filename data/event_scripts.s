@@ -808,3 +808,7 @@ gText_LinkRecordCouldntBeSaved::
 	.include "data/maps/TrickHouseRestroom_Choose/scripts.inc"
 	.include "data/maps/TrickHouseEntrance_Intro/scripts.inc"
 
+
+	.include "data/maps/Meta_IceCorner/scripts.inc"
+
+	.include "data/maps/Meta_LogFlotilla/scripts.inc"

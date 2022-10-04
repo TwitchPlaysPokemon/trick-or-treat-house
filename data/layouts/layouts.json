@@ -2532,6 +2532,30 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/Meta_EmptyFilled/border.bin",
       "blockdata_filepath": "data/layouts/Meta_EmptyFilled/map.bin"
+    },
+    {
+      "id": "LAYOUT_META_ICE_CORNER",
+      "name": "Meta_IceCorner_Layout",
+      "width": 40,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_MetaTileset",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Meta_IceCorner/border.bin",
+      "blockdata_filepath": "data/layouts/Meta_IceCorner/map.bin"
+    },
+    {
+      "id": "LAYOUT_META_LOG_FLOTILLA",
+      "name": "Meta_LogFlotilla_Layout",
+      "width": 40,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_MetaTileset",
+      "secondary_tileset": "gTileset_WaterfallCave",
+      "border_filepath": "data/layouts/Meta_LogFlotilla/border.bin",
+      "blockdata_filepath": "data/layouts/Meta_LogFlotilla/map.bin"
     }
   ]
 }

@@ -259,7 +259,9 @@
     "Meta_Entrance",
     "Meta_LavaridgeSprings",
     "Meta_LedgeRoom",
-    "Meta_FinalBluff"
+    "Meta_FinalBluff",
+    "Meta_IceCorner",
+    "Meta_LogFlotilla"
   ],
   "MG_SingleMapPuzzles2019": [
     "Puzzle_TrickHouseCut",
