@@ -42,7 +42,7 @@ const PARTS = [
 	//
 	{ id:12, name:"Forest Clearing", exits:["SE", "NW"], supplies:['#', "Ct"], requires:[], },
 	//
-	{ id:13, name:"13", exits:["NE"], supplies:['#'], requires:[], },
+	{ id:13, name:"Berry Breezeway", exits:["NE"], supplies:['#'], requires:[], },
 	//
 	{ id:14, name:"Subduction Zone", exits:["WE"], supplies:[], requires:['Sf'], },
 	//

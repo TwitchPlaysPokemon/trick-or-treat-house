@@ -14,6 +14,7 @@
 		- Likes: 
 		- Dislikes: 
 		- Phobia: Fear of Lightning / Thunder
+			- Puzzle of Fear: Musharna's Revenge
 - May, Contest Coordinator
 	- Torchick Costume
 	- Home region: Hoenn, formerly Unova
@@ -26,6 +27,7 @@
 		- Likes: 
 		- Dislikes: 
 		- Phobia: Acrophobia, Fear of heights
+			- Puzzle of Fear: Musharna's Revenge
 - Alex, Ace Trainer
 	- Treekid Costume
 	- Home region: Sinnoh, formerly Unova
@@ -38,6 +40,7 @@
 		- Likes: 
 		- Dislikes: 
 		- Phobia: Arachnophobia, Fear of spiders
+			- Puzzle of Fear: Musharna's Revenge
 - Joey, Youngster
 	- ???? Costume
 	- Home region: Johto
@@ -50,6 +53,7 @@
 		- Likes: 
 		- Dislikes: 
 		- Phobia: Fear of snakes
+			- Puzzle of Fear: Ledge Mountain
 - James, Bugcatcher
 	- Link Costume
 	- Home region: Hoenn, formerly Johto
@@ -62,6 +66,7 @@
 		- Likes: 
 		- Dislikes: 
 		- Phobia: Fear of Sharks
+			- Puzzle of Fear: Water Temple
 - Irene, Breeder
 	- Fairy Costume
 	- Home region: Unova
@@ -74,6 +79,7 @@
 		- Likes: 
 		- Dislikes: 
 		- Phobia: Fear of the dark
+			- Puzzle of Fear: (Darkness Maze?)
 - Wally, Ace Trainer
 	- Elvis Costume
 	- Home region: Hoenn
@@ -87,6 +93,7 @@
 		- Likes: 
 		- Dislikes: 
 		- Phobia: Fear of crowds
+			- Puzzle of Fear: Musharna's Revenge
 
 ## Others
 
