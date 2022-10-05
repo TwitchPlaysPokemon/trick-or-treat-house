@@ -644,3 +644,11 @@ gMetatiles_MetaTileset::
 	.align 1
 gMetatileAttributes_MetaTileset::
 	.incbin "data/tilesets/primary/metatileset/metatile_attributes.bin"
+
+	.align 1
+gMetatiles_BikePath::
+	.incbin "data/tilesets/secondary/bikepath/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_BikePath::
+	.incbin "data/tilesets/secondary/bikepath/metatile_attributes.bin"

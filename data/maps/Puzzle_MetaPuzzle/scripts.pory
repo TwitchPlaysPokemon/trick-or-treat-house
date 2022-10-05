@@ -278,10 +278,10 @@ script MetaPuzzle_UsePedestal {
 	lockall
 	// TODO everything
 	setvar(VAR_GRID_SIZE, (2 << 8) | (2))
-	setvar(VAR_ROOM_ID_0_0 + 0, MAP_META_LEDGE_ROOM)
+	setvar(VAR_ROOM_ID_0_0 + 0, MAP_META_BIKE_PATH)
 	setvar(VAR_ROOM_ID_0_0 + 1, MAP_META_NULL_ROOM)
 	setvar(VAR_ROOM_ID_0_0 + 2, MAP_META_LAVARIDGE_SPRINGS)
-	setvar(VAR_ROOM_ID_0_0 + 3, MAP_META_FINAL_BLUFF)
+	setvar(VAR_ROOM_ID_0_0 + 3, MAP_META_ICE_CORNER)
 	// setvar(VAR_ROOM_ID_0_0 + 3, MAP_META_NULL_ROOM)
 	
 	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)

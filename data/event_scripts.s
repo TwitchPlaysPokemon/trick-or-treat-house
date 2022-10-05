@@ -812,3 +812,5 @@ gText_LinkRecordCouldntBeSaved::
 	.include "data/maps/Meta_IceCorner/scripts.inc"
 
 	.include "data/maps/Meta_LogFlotilla/scripts.inc"
+
+	.include "data/maps/Meta_BikePath/scripts.inc"

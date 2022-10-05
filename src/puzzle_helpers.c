@@ -1474,6 +1474,7 @@ const struct MetaConnections sMetaRoomConnections[] = {
 	[MAP_NUM(MAP_META_FINAL_BLUFF)] = { .west=1, },
 	[MAP_NUM(MAP_META_ICE_CORNER)] = { .south=1, .west=1, },
 	[MAP_NUM(MAP_META_LOG_FLOTILLA)] = { .south=1, .east=1, },
+	[MAP_NUM(MAP_META_BIKE_PATH)] = { .south=1, .north=1, },
 };
 
 u16* MetaPuzzle_GetRoomGridVarPointer(int x, int y) {

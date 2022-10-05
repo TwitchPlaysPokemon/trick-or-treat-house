@@ -249,6 +249,7 @@
 #define MAP_META_FINAL_BLUFF       (13 | (13 << 8))
 #define MAP_META_ICE_CORNER        (14 | (13 << 8))
 #define MAP_META_LOG_FLOTILLA      (15 | (13 << 8))
+#define MAP_META_BIKE_PATH         (16 | (13 << 8))
 
 // MG_SingleMapPuzzles2019
 #define MAP_PUZZLE_TRICK_HOUSE_CUT       (0 | (14 << 8))

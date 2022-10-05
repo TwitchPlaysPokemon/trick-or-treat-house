@@ -2445,7 +2445,7 @@
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_MetaTileset",
-      "secondary_tileset": "gTileset_Petalburg",
+      "secondary_tileset": "gTileset_Mauville",
       "border_filepath": "data/layouts/Meta_NullRoom/border.bin",
       "blockdata_filepath": "data/layouts/Meta_NullRoom/map.bin"
     },
@@ -2556,6 +2556,18 @@
       "secondary_tileset": "gTileset_WaterfallCave",
       "border_filepath": "data/layouts/Meta_LogFlotilla/border.bin",
       "blockdata_filepath": "data/layouts/Meta_LogFlotilla/map.bin"
+    },
+    {
+      "id": "LAYOUT_META_BIKE_PATH",
+      "name": "Meta_BikePath_Layout",
+      "width": 40,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_MetaTileset",
+      "secondary_tileset": "gTileset_BikePath",
+      "border_filepath": "data/layouts/Meta_BikePath/border.bin",
+      "blockdata_filepath": "data/layouts/Meta_BikePath/map.bin"
     }
   ]
 }

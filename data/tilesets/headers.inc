@@ -963,3 +963,14 @@ gTileset_MetaTileset::
 	.4byte gMetatiles_MetaTileset
 	.4byte gMetatileAttributes_MetaTileset
 	.4byte InitTilesetAnim_General
+
+	.align 2
+gTileset_BikePath::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_BikePath
+	.4byte gTilesetPalettes_BikePath
+	.4byte gMetatiles_BikePath
+	.4byte gMetatileAttributes_BikePath
+	.4byte NULL

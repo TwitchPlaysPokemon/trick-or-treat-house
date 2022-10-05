@@ -261,7 +261,8 @@
     "Meta_LedgeRoom",
     "Meta_FinalBluff",
     "Meta_IceCorner",
-    "Meta_LogFlotilla"
+    "Meta_LogFlotilla",
+    "Meta_BikePath"
   ],
   "MG_SingleMapPuzzles2019": [
     "Puzzle_TrickHouseCut",
