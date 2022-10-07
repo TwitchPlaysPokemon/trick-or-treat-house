@@ -4760,8 +4760,8 @@ static const u8 sMetaItemSpinDesc[] = _("");
 static const u8 sMetaItemDollName[] = _("Magnemite Doll");
 static const u8 sMetaItemDollDesc[] = _("");
 
-static const u8 sMetaItemBallName[] = _("Poké Ball Cushion");
-static const u8 sMetaItemBallDesc[] = _("");
+static const u8 sMetaItemWheelName[] = _("Poké Ball Cushion");
+static const u8 sMetaItemWheelDesc[] = _("");
 
 static const u8 sMetaItemKissName[] = _("Kiss Cushion");
 static const u8 sMetaItemKissDesc[] = _("");

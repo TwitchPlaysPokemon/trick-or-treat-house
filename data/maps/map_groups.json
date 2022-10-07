@@ -262,7 +262,15 @@
     "Meta_FinalBluff",
     "Meta_IceCorner",
     "Meta_LogFlotilla",
-    "Meta_BikePath"
+    "Meta_BikePath",
+    "Meta_PokeStage",
+    "Meta_ZiggyRoom",
+    "Meta_ForestClearing",
+    "Meta_ZipSlide",
+    "Meta_KogaElbow",
+    "Meta_SubductionZone",
+    "Meta_DiveMaze",
+    "Meta_BerryRoom"
   ],
   "MG_SingleMapPuzzles2019": [
     "Puzzle_TrickHouseCut",

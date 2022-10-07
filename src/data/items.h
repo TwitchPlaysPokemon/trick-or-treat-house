@@ -11027,12 +11027,12 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_META_ITEM_BALL] =
+    [ITEM_META_ITEM_WHEEL] =
     {
-        .name = sMetaItemBallName,
-        .itemId = ITEM_META_ITEM_BALL,
+        .name = sMetaItemWheelName,
+        .itemId = ITEM_META_ITEM_WHEEL,
         .price = 0,
-        .description = sMetaItemBallDesc,
+        .description = sMetaItemWheelDesc,
         .importance = 1,
         .keepItem = TRUE,
         .pocket = POCKET_KEY_ITEMS,

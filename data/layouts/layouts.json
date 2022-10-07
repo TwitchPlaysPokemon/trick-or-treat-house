@@ -2568,6 +2568,102 @@
       "secondary_tileset": "gTileset_BikePath",
       "border_filepath": "data/layouts/Meta_BikePath/border.bin",
       "blockdata_filepath": "data/layouts/Meta_BikePath/map.bin"
+    },
+    {
+      "id": "LAYOUT_META_POKE_STAGE",
+      "name": "Meta_PokeStage_Layout",
+      "width": 40,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_MetaTileset",
+      "secondary_tileset": "gTileset_PetalburgGym",
+      "border_filepath": "data/layouts/Meta_PokeStage/border.bin",
+      "blockdata_filepath": "data/layouts/Meta_PokeStage/map.bin"
+    },
+    {
+      "id": "LAYOUT_META_ZIGGY_ROOM",
+      "name": "Meta_ZiggyRoom_Layout",
+      "width": 40,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_MetaTileset",
+      "secondary_tileset": "gTileset_Fortree",
+      "border_filepath": "data/layouts/Meta_ZiggyRoom/border.bin",
+      "blockdata_filepath": "data/layouts/Meta_ZiggyRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_META_FOREST_CLEARING",
+      "name": "Meta_ForestClearing_Layout",
+      "width": 40,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_MetaTileset",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Meta_ForestClearing/border.bin",
+      "blockdata_filepath": "data/layouts/Meta_ForestClearing/map.bin"
+    },
+    {
+      "id": "LAYOUT_META_ZIP_SLIDE",
+      "name": "Meta_ZipSlide_Layout",
+      "width": 40,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_MetaTileset",
+      "secondary_tileset": "gTileset_TrickHousePuzzle",
+      "border_filepath": "data/layouts/Meta_ZipSlide/border.bin",
+      "blockdata_filepath": "data/layouts/Meta_ZipSlide/map.bin"
+    },
+    {
+      "id": "LAYOUT_META_KOGA_ELBOW",
+      "name": "Meta_KogaElbow_Layout",
+      "width": 40,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_MetaTileset",
+      "secondary_tileset": "gTileset_TrickHousePuzzle",
+      "border_filepath": "data/layouts/Meta_KogaElbow/border.bin",
+      "blockdata_filepath": "data/layouts/Meta_KogaElbow/map.bin"
+    },
+    {
+      "id": "LAYOUT_META_SUBDUCTION_ZONE",
+      "name": "Meta_SubductionZone_Layout",
+      "width": 40,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_MetaTileset",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Meta_SubductionZone/border.bin",
+      "blockdata_filepath": "data/layouts/Meta_SubductionZone/map.bin"
+    },
+    {
+      "id": "LAYOUT_META_DIVE_MAZE",
+      "name": "Meta_DiveMaze_Layout",
+      "width": 40,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_MetaTileset",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Meta_DiveMaze/border.bin",
+      "blockdata_filepath": "data/layouts/Meta_DiveMaze/map.bin"
+    },
+    {
+      "id": "LAYOUT_META_BERRY_ROOM",
+      "name": "Meta_BerryRoom_Layout",
+      "width": 40,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_MetaTileset",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/Meta_BerryRoom/border.bin",
+      "blockdata_filepath": "data/layouts/Meta_BerryRoom/map.bin"
     }
   ]
 }

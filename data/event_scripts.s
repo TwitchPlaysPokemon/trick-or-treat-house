@@ -306,6 +306,17 @@ gStdScripts_End::
 	.include "data/maps/Meta_LavaridgeSprings/scripts.inc"
 	.include "data/maps/Meta_LedgeRoom/scripts.inc"
 	.include "data/maps/Meta_FinalBluff/scripts.inc"
+	.include "data/maps/Meta_IceCorner/scripts.inc"
+	.include "data/maps/Meta_LogFlotilla/scripts.inc"
+	.include "data/maps/Meta_BikePath/scripts.inc"
+	.include "data/maps/Meta_PokeStage/scripts.inc"
+	.include "data/maps/Meta_ZiggyRoom/scripts.inc"
+	.include "data/maps/Meta_ForestClearing/scripts.inc"
+	.include "data/maps/Meta_ZipSlide/scripts.inc"
+	.include "data/maps/Meta_KogaElbow/scripts.inc"
+	.include "data/maps/Meta_SubductionZone/scripts.inc"
+	.include "data/maps/Meta_DiveMaze/scripts.inc"
+	.include "data/maps/Meta_BerryRoom/scripts.inc"
 	
 	@ -------------------------------------------------
 	
@@ -808,9 +819,3 @@ gText_LinkRecordCouldntBeSaved::
 	.include "data/maps/TrickHouseRestroom_Choose/scripts.inc"
 	.include "data/maps/TrickHouseEntrance_Intro/scripts.inc"
 
-
-	.include "data/maps/Meta_IceCorner/scripts.inc"
-
-	.include "data/maps/Meta_LogFlotilla/scripts.inc"
-
-	.include "data/maps/Meta_BikePath/scripts.inc"

@@ -196,7 +196,7 @@ script MetaPuzzle_PickupEvent_MagnemiteDoll {
 	finditem_std(ITEM_META_ITEM_DOLL, 1)
 }
 script MetaPuzzle_PickupEvent_BallCusion {
-	finditem_std(ITEM_META_ITEM_BALL, 1)
+	finditem_std(ITEM_META_ITEM_WHEEL, 1)
 }
 script MetaPuzzle_PickupEvent_KissCushion {
 	finditem_std(ITEM_META_ITEM_KISS, 1)

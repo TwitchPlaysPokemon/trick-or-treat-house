@@ -32,6 +32,7 @@
 #include "constants/vars.h"
 #include "constants/species.h"
 #include "constants/script_cmds.h"
+#include "constants/items.h"
 
 // Reference to an assembly defined constant, the start of the ROM
 // We don't actually use the value, just the address it's at.
@@ -1453,29 +1454,75 @@ void Imposter_PopulatePokeblockCase(struct ScriptContext *ctx) {
 
 EWRAM_DATA static struct MapConnection sWorkingConnection = {0};
 
-struct MetaConnections {
+struct MetaRoomInfo {
+	u16 requiredItem;
 	bool8 north:1;
 	bool8 south:1;
 	bool8 west:1;
 	bool8 east:1;
 };
 
-const struct MetaConnections sMetaRoomConnections[] = {
-	[MAP_NUM(MAP_META_EMPTY_NW)] = { .north=1, .west=1, },
-	[MAP_NUM(MAP_META_EMPTY_NE)] = { .north=1, .east=1, },
-	[MAP_NUM(MAP_META_EMPTY_SW)] = { .south=1, .west=1, },
-	[MAP_NUM(MAP_META_EMPTY_SE)] = { .south=1, .east=1, },
-	[MAP_NUM(MAP_META_EMPTY_NS)] = { .north=1, .south=1, },
-	[MAP_NUM(MAP_META_EMPTY_WE)] = { .west=1, .east=1, },
-	[MAP_NUM(MAP_META_EMPTY_S)] = { .south=1, },
-	[MAP_NUM(MAP_META_ENTRANCE)] = { .north=1 },
-	[MAP_NUM(MAP_META_LAVARIDGE_SPRINGS)] = { .north=1, .west=1, .south=1, .east=1 },
-	[MAP_NUM(MAP_META_LEDGE_ROOM)] = { .north=1, .east=1, },
-	[MAP_NUM(MAP_META_FINAL_BLUFF)] = { .west=1, },
-	[MAP_NUM(MAP_META_ICE_CORNER)] = { .south=1, .west=1, },
-	[MAP_NUM(MAP_META_LOG_FLOTILLA)] = { .south=1, .east=1, },
-	[MAP_NUM(MAP_META_BIKE_PATH)] = { .south=1, .north=1, },
+const struct MetaRoomInfo sMetaRoomInfo[] = {
+	[MAP_NUM(MAP_META_NULL_ROOM)]         = {},
+	[MAP_NUM(MAP_META_EMPTY_FILLED)]      = {},
+	[MAP_NUM(MAP_META_EMPTY_NW)]          = { .north=1, .west=1,  .requiredItem=ITEM_NONE, },
+	[MAP_NUM(MAP_META_EMPTY_NE)]          = { .north=1, .east=1,  .requiredItem=ITEM_NONE, },
+	[MAP_NUM(MAP_META_EMPTY_SW)]          = { .south=1, .west=1,  .requiredItem=ITEM_NONE, },
+	[MAP_NUM(MAP_META_EMPTY_SE)]          = { .south=1, .east=1,  .requiredItem=ITEM_NONE, },
+	[MAP_NUM(MAP_META_EMPTY_NS)]          = { .north=1, .south=1, .requiredItem=ITEM_NONE, },
+	[MAP_NUM(MAP_META_EMPTY_WE)]          = { .west=1,  .east=1,  .requiredItem=ITEM_NONE, },
+	[MAP_NUM(MAP_META_EMPTY_S)]           = { .south=1,           .requiredItem=ITEM_NONE, },
+	[MAP_NUM(MAP_META_ENTRANCE)]          = { .north=1,           .requiredItem=ITEM_NONE, },
+	[MAP_NUM(MAP_META_LAVARIDGE_SPRINGS)] = { .north=1, .east=1,  .requiredItem=ITEM_META_ITEM_ROUND, },
+	[MAP_NUM(MAP_META_LEDGE_ROOM)]        = { .north=1, .east=1,  .requiredItem=ITEM_META_ITEM_SPIN, },
+	[MAP_NUM(MAP_META_FINAL_BLUFF)]       = { .west=1,            .requiredItem=ITEM_META_ITEM_ROCK, },
+	[MAP_NUM(MAP_META_ICE_CORNER)]        = { .south=1, .west=1,  .requiredItem=ITEM_META_ITEM_DIAMOND, },
+	[MAP_NUM(MAP_META_LOG_FLOTILLA)]      = { .south=1, .east=1,  .requiredItem=ITEM_META_ITEM_LOTAD, },
+	[MAP_NUM(MAP_META_BIKE_PATH)]         = { .south=1, .north=1, .requiredItem=ITEM_META_ITEM_WHEEL, },
+	[MAP_NUM(MAP_META_POKE_STAGE)]        = { .south=1,           .requiredItem=ITEM_META_ITEM_DOLL, },
+	[MAP_NUM(MAP_META_ZIGGY_ROOM)]        = { .south=1, .west=1,  .requiredItem=ITEM_META_ITEM_ZIGZAG, },
+	[MAP_NUM(MAP_META_FOREST_CLEARING)]   = { .south=1, .east=1,  .requiredItem=ITEM_META_ITEM_GRASS, },
+	[MAP_NUM(MAP_META_ZIP_SLIDE)]         = { .west=1,  .east=1,  .requiredItem=ITEM_META_ITEM_PIKA, },
+	[MAP_NUM(MAP_META_KOGA_ELBOW)]        = { .north=1, .west=1,  .requiredItem=ITEM_META_ITEM_DUSKULL, },
+	[MAP_NUM(MAP_META_SUBDUCTION_ZONE)]   = { .west=1,  .east=1,  .requiredItem=ITEM_META_ITEM_FIRE, },
+	[MAP_NUM(MAP_META_DIVE_MAZE)]         = { .north=1, .south=1, .requiredItem=ITEM_META_ITEM_WATER, },
+	[MAP_NUM(MAP_META_BERRY_ROOM)]        = { .north=1, .east=1,  .requiredItem=ITEM_META_ITEM_KISS, },
+	// [MAP_NUM(MAP_META_ROOM_15)]        = { .north=1, .west=1,  .requiredItem=ITEM_META_ITEM_SEEDOT, },
 };
+
+const u16 sMetaRoom_FallbackList_s4_1x1[] = { MAP_META_BERRY_ROOM, MAP_META_EMPTY_NE, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s4_2x1[] = { MAP_META_LOG_FLOTILLA, MAP_META_EMPTY_SE, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s4_3x1[] = { MAP_META_FINAL_BLUFF, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s4_4x1[] = { MAP_META_POKE_STAGE, MAP_META_EMPTY_S, MAP_NONE };
+
+const u16 sMetaRoom_FallbackList_s4_1x2[] = { MAP_META_ZIGGY_ROOM, MAP_META_EMPTY_SW, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s4_2x2[] = { MAP_META_ICE_CORNER, MAP_META_EMPTY_SW, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s4_3x2[] = { /*MAP_META_ROOM_15,*/ MAP_META_EMPTY_NW, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s4_4x2[] = { MAP_META_SUBDUCTION_ZONE, MAP_META_EMPTY_WE, MAP_NONE };
+
+const u16 sMetaRoom_FallbackList_s4_1x3[] = { MAP_META_DIVE_MAZE, MAP_META_EMPTY_NS, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s4_2x3[] = { MAP_META_BIKE_PATH, MAP_META_EMPTY_NS, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s4_3x3[] = { MAP_META_FOREST_CLEARING, MAP_META_EMPTY_SE, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s4_4x3[] = { MAP_META_KOGA_ELBOW, MAP_META_EMPTY_NW, MAP_NONE };
+
+const u16 sMetaRoom_FallbackList_s4_1x4[] = { MAP_META_LEDGE_ROOM, MAP_META_EMPTY_NE, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s4_2x4[] = { MAP_META_ZIP_SLIDE, MAP_META_EMPTY_WE, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s4_3x4[] = { MAP_META_LAVARIDGE_SPRINGS, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s4_4x4[] = { MAP_META_NULL_ROOM, MAP_NONE };
+
+
+const u16 sMetaRoom_FallbackList_s3_1x1[] = { MAP_META_LOG_FLOTILLA, MAP_META_FOREST_CLEARING, MAP_META_EMPTY_SE, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s3_2x1[] = { MAP_META_LEDGE_ROOM, MAP_META_BERRY_ROOM, MAP_META_EMPTY_NE, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s3_3x1[] = { MAP_META_SUBDUCTION_ZONE, MAP_META_ZIP_SLIDE, MAP_META_EMPTY_WE, MAP_NONE };
+
+const u16 sMetaRoom_FallbackList_s3_1x2[] = { MAP_META_FINAL_BLUFF, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s3_2x2[] = { MAP_META_BIKE_PATH, MAP_META_DIVE_MAZE, MAP_META_EMPTY_NS, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s3_3x2[] = { MAP_META_KOGA_ELBOW, /*MAP_META_ROOM_15,*/ MAP_META_EMPTY_NW, MAP_NONE };
+
+const u16 sMetaRoom_FallbackList_s3_1x3[] = { MAP_META_ZIGGY_ROOM, MAP_META_ICE_CORNER, MAP_META_EMPTY_SW, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s3_2x3[] = { MAP_META_LAVARIDGE_SPRINGS, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s3_3x3[] = { MAP_META_NULL_ROOM, MAP_NONE };
+
 
 u16* MetaPuzzle_GetRoomGridVarPointer(int x, int y) {
 	u8 width  = (VarGet(VAR_GRID_SIZE) >> 0) & 0xFF;
@@ -1585,25 +1632,25 @@ void MetaPuzzle_FillRoomConnections() {
 	u16 myId = (gSaveBlock1Ptr->location.mapGroup << 8) | gSaveBlock1Ptr->location.mapNum;
 	{	//	north
 		u16 oid = MetaPuzzle_GetRoomGridValue(x + 0, y - 1);
-		if (sMetaRoomConnections[MAP_NUM(myId)].north && sMetaRoomConnections[MAP_NUM(oid)].south) {
+		if (sMetaRoomInfo[MAP_NUM(myId)].north && sMetaRoomInfo[MAP_NUM(oid)].south) {
 			MetaPuzzle_AddVertPlanksAt(19, 0);
 		}
 	}
 	{	//	south
 		u16 oid = MetaPuzzle_GetRoomGridValue(x + 0, y + 1);
-		if (sMetaRoomConnections[MAP_NUM(myId)].south && sMetaRoomConnections[MAP_NUM(oid)].north) {
+		if (sMetaRoomInfo[MAP_NUM(myId)].south && sMetaRoomInfo[MAP_NUM(oid)].north) {
 			MetaPuzzle_AddVertPlanksAt(19, 40);
 		}
 	}
 	{	//	west
 		u16 oid = MetaPuzzle_GetRoomGridValue(x - 1, y + 0);
-		if (sMetaRoomConnections[MAP_NUM(myId)].west && sMetaRoomConnections[MAP_NUM(oid)].east) {
+		if (sMetaRoomInfo[MAP_NUM(myId)].west && sMetaRoomInfo[MAP_NUM(oid)].east) {
 			MetaPuzzle_AddHorzPlanksAt(0, 19);
 		}
 	}
 	{	//	east
 		u16 oid = MetaPuzzle_GetRoomGridValue(x + 1, y + 0);
-		if (sMetaRoomConnections[MAP_NUM(myId)].east && sMetaRoomConnections[MAP_NUM(oid)].west) {
+		if (sMetaRoomInfo[MAP_NUM(myId)].east && sMetaRoomInfo[MAP_NUM(oid)].west) {
 			MetaPuzzle_AddHorzPlanksAt(40, 19);
 		}
 	}

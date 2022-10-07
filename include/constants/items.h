@@ -952,7 +952,7 @@
 #define ITEM_META_ITEM_DIAMOND         762
 #define ITEM_META_ITEM_SPIN            763
 #define ITEM_META_ITEM_DOLL            764
-#define ITEM_META_ITEM_BALL            765
+#define ITEM_META_ITEM_WHEEL           765
 #define ITEM_META_ITEM_KISS            766
 #define ITEM_META_ITEM_ROUND           767
 #define ITEM_META_ITEM_FIRE            768
