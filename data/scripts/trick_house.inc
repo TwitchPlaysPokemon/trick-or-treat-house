@@ -96,14 +96,17 @@ PuzzleCommon_Text_DoorBackside:
 
 PuzzleCommon_EventScript_Scroll::
 	lock
+	call PuzzleCommon_EventScript_ScrollReturn
+	release
+	end
+PuzzleCommon_EventScript_ScrollReturn::
 	goto_if_set FLAG_TRICK_HOUSE_SCROLL_READ, PuzzleCommon_EventScript_ScrollExamine
 	playfanfare MUS_OBTAIN_ITEM
 	message PuzzleCommon_Text_ScrollFound1
 	waitfanfare
 	setflag FLAG_TRICK_HOUSE_SCROLL_READ
 	msgbox PuzzleCommon_Text_ScrollFound2
-	release
-	end
+	return
 PuzzleCommon_Text_ScrollFound1:
 	.string "{PLAYER} found a scroll.$"
 PuzzleCommon_Text_ScrollFound2:
@@ -111,8 +114,7 @@ PuzzleCommon_Text_ScrollFound2:
 	.string "written on the scroll.$"
 PuzzleCommon_EventScript_ScrollExamine:
 	msgbox PuzzleCommon_Text_ScrollExamine
-	release
-	end
+	return
 PuzzleCommon_Text_ScrollExamine:
 	.string "A secret code is written on it.$"
 

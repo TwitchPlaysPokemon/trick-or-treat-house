@@ -49,6 +49,7 @@ u8 *MapHeaderCheckScriptTable(u8 tag);
 void RunOnLoadMapScript(void);
 void RunOnTransitionMapScript(void);
 void RunOnResumeMapScript(void);
+void RunOnUnloadMapScript(void);
 void RunOnReturnToFieldMapScript(void);
 void RunOnDiveWarpMapScript(void);
 void RunOnSpawnObjectEventMapScript(u8 objId);

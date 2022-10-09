@@ -53,23 +53,34 @@ script Puzzle_EliteFloor_OnLoad {
 		case GENDER_F: setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_TREEKID_NORMAL)
 		case GENDER_N: setvar(VAR_OBJ_GFX_ID_0, OBJ_EVENT_GFX_BRENDAN_NORMAL)
 	}
+	call (Puzzle_EliteFloor_UpdateWarp)
 }
 
-// Refrenced from TryStartMiscWalkingScripts
+script Puzzle_EliteFloor_UpdateWarp {
+	if (flag(FLAG_TRICK_HOUSE_SCROLL_READ)) {
+		setwarp(WARPTYPE_AUXILIARY, MAP_PUZZLE_ELITE_FLOOR, 3)
+	} else {
+		setwarp(WARPTYPE_AUXILIARY, MAP_PUZZLE_ELITE_FLOOR, 2)
+	}
+	return
+}
+
+// Referenced from TryStartMiscWalkingScripts
 script Puzzle_EliteFloor_DropDownHole {
 	lock
-	if (flag(FLAG_TRICK_HOUSE_SCROLL_READ)) {
-		setwarp(0, MAP_PUZZLE_ELITE_FLOOR, 3, 0xFF, 0xFF)
-	} else {
-		setwarp(0, MAP_PUZZLE_ELITE_FLOOR, 2, 0xFF, 0xFF)
-	}
-	special(DoFallWarp)
+	dowarp(WARPTYPE_AUXILIARY, DOWARP_HOLE)
 	waitstate
 	release
 }
 
 // ----------------------------------------------------
 
+script Puzzle_EliteFloor_EventScript_Scroll {
+	lock
+	call(PuzzleCommon_EventScript_ScrollReturn)
+	call(Puzzle_EliteFloor_UpdateWarp)
+	release
+}
 script Puzzle_EliteFloor_EventScript_Expert {
 	if (var(VAR_FACING) == DIR_NORTH) {
 		lock

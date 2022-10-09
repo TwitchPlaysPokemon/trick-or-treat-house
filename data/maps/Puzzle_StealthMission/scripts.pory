@@ -318,14 +318,8 @@ script Puzzle_StealthMission_TriggerScript_LeaveWarning {
 
 
 script Puzzle_StealthMission_EventScript_Scroll {
-	//call (PuzzleCommon_EventScript_Scroll)
 	lock
-	goto_if_set(FLAG_TRICK_HOUSE_SCROLL_READ, PuzzleCommon_EventScript_ScrollExamine)
-	playfanfare(MUS_OBTAIN_ITEM)
-	message(PuzzleCommon_Text_ScrollFound1)
-	waitfanfare
-	setflag(FLAG_TRICK_HOUSE_SCROLL_READ)
-	msgbox(PuzzleCommon_Text_ScrollFound2)
+	call(PuzzleCommon_EventScript_ScrollReturn)
 	closemessage
 	
 	fadenewbgm(MUS_NONE)

@@ -46,6 +46,7 @@
 #define MAP_SCRIPT_ON_RETURN_TO_FIELD           0x07
 #define MAP_SCRIPT_ON_SPAWN_OBJECT_EVENT        0x08
 #define MAP_SCRIPT_ON_PLAY_MAP_MUSIC            0x09
+#define MAP_SCRIPT_ON_UNLOAD                    0x0A
 
 #define MAP_SCRIPT_PUZZLE_HEADER_NAME           0x20
 #define MAP_SCRIPT_PUZZLE_HEADER_AUTHOR         0x21

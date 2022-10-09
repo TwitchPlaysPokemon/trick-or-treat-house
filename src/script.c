@@ -382,6 +382,11 @@ void RunOnResumeMapScript(void)
     MapHeaderRunScriptType(MAP_SCRIPT_ON_RESUME);
 }
 
+void RunOnUnloadMapScript(void)
+{
+    MapHeaderRunScriptType(MAP_SCRIPT_ON_UNLOAD);
+}
+
 void RunOnReturnToFieldMapScript(void)
 {
     MapHeaderRunScriptType(MAP_SCRIPT_ON_RETURN_TO_FIELD);

@@ -794,8 +794,9 @@ bool8 ScrCmd_setwarp(struct ScriptContext *ctx)
     u8 mapGroup = ScriptReadByte(ctx);
     u8 mapNum = ScriptReadByte(ctx);
     u8 warpId = ScriptReadByte(ctx);
-    u16 x = VarGet(ScriptReadHalfword(ctx));
-    u16 y = VarGet(ScriptReadHalfword(ctx));
+    s16 x = VarGet(ScriptReadHalfword(ctx));
+    s16 y = VarGet(ScriptReadHalfword(ctx));
+    // mgba_printf(MGBA_LOG_INFO, "ScrCmd_setwarp(%d, %d, %d, %d, %d, %d)", destType, mapGroup, mapNum, warpId, x, y);
     
     switch (destType) {
         case WARPTYPE_DYNAMIC:
@@ -810,6 +811,16 @@ bool8 ScrCmd_setwarp(struct ScriptContext *ctx)
             break;
         case WARPTYPE_ESCAPE:
             SetEscapeWarp(mapGroup, mapNum, warpId, x, y);
+            break;
+        case WARPTYPE_AUXILIARY:
+            if (x == -1 || y == -1) {
+                // mgba_printf(MGBA_LOG_INFO, "SetAuxilaryWarp(%d, %d, %d)", mapGroup, mapNum, warpId);
+                SetAuxilaryWarp(mapGroup, mapNum, warpId);
+            }
+            else {
+                // mgba_printf(MGBA_LOG_INFO, "SetAuxilaryWarpWithCoords(%d, %d, %d, %d, %d)", mapGroup, mapNum, warpId, x, y);
+                SetAuxilaryWarpWithCoords(mapGroup, mapNum, warpId, x, y);
+            } 
             break;
         default:
             SetWarpDestination(mapGroup, mapNum, warpId, x, y);
@@ -834,6 +845,9 @@ bool8 ScrCmd_dowarp(struct ScriptContext *ctx)
             break;
         case WARPTYPE_ESCAPE:
             SetWarpDestinationToEscapeWarp();
+            break;
+        case WARPTYPE_AUXILIARY:
+            SetWarpDestinationToAuxilaryWarp();
             break;
         default:
             break;

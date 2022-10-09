@@ -119,3 +119,7 @@ freerotatingtilepuzzle
 .macro set_meta_visited_flag flag:req
 setflag FLAG_PUZZLE_20 + (\flag & 0xFF)
 .endm
+
+.macro check_meta_visited_flag flag:req
+checkflag FLAG_PUZZLE_20 + (\flag & 0xFF)
+.endm

@@ -206,7 +206,7 @@
       "movement_range_y": 0,
       "trainer_type": "0",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "PuzzleCommon_EventScript_Scroll",
+      "script": "Puzzle_EliteFloor_EventScript_Scroll",
       "flag": "0"
     },
     {

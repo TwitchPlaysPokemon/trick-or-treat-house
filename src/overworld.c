@@ -31,6 +31,7 @@
 #include "main.h"
 #include "malloc.h"
 #include "m4a.h"
+#include "mgba.h"
 #include "map_name_popup.h"
 #include "match_call.h"
 #include "menu.h"
@@ -225,6 +226,7 @@ EWRAM_DATA struct WarpData gLastUsedWarp = {0};
 EWRAM_DATA static struct WarpData sWarpDestination = {0};  // new warp position
 EWRAM_DATA static struct WarpData sFixedDiveWarp = {0};
 EWRAM_DATA static struct WarpData sFixedHoleWarp = {0};
+EWRAM_DATA static struct WarpData sAuxilaryWarp = {0};
 EWRAM_DATA static u16 sLastMapSectionId = 0;
 EWRAM_DATA static struct InitialPlayerAvatarState sInitialPlayerAvatarState = {0};
 EWRAM_DATA static u16 sAmbientCrySpecies = 0;
@@ -687,6 +689,7 @@ static void SetPlayerCoordsFromWarp(void)
 
 void WarpIntoMap(void)
 {
+    RunOnUnloadMapScript();
     ApplyCurrentWarp();
     LoadCurrentMapData();
     SetPlayerCoordsFromWarp();
@@ -715,6 +718,23 @@ void SetDynamicWarpWithCoords(s32 unused, s8 mapGroup, s8 mapNum, s8 warpId, s8 
 void SetWarpDestinationToDynamicWarp(u8 unusedWarpId)
 {
     sWarpDestination = gSaveBlock1Ptr->dynamicWarp;
+}
+
+void SetAuxilaryWarp(s8 mapGroup, s8 mapNum, s8 warpId)
+{
+    SetWarpData(&sAuxilaryWarp, mapGroup, mapNum, warpId, gSaveBlock1Ptr->pos.x, gSaveBlock1Ptr->pos.y);
+}
+
+void SetAuxilaryWarpWithCoords(s8 mapGroup, s8 mapNum, s8 warpId, s8 x, s8 y)
+{
+    SetWarpData(&sAuxilaryWarp, mapGroup, mapNum, warpId, x, y);
+}
+
+void SetWarpDestinationToAuxilaryWarp()
+{
+    mgba_printf(MGBA_LOG_INFO, "setting warp to AUX => (%d, %d | %d | %d, %d)", 
+        sAuxilaryWarp.mapGroup, sAuxilaryWarp.mapNum, sAuxilaryWarp.warpId, sAuxilaryWarp.x, sAuxilaryWarp.y);
+    sWarpDestination = sAuxilaryWarp;
 }
 
 void SetWarpDestinationToHealLocation(u8 healLocationId)
@@ -859,6 +879,7 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum, bool8 redraw)
         TransitionMapMusic();
 
     FlagClear(FLAG_PREVENT_EVENT_OBJECT_DESPAWN);
+    RunOnUnloadMapScript();
     ApplyCurrentWarp();
     RunPuzzleTeardownScript();
     LoadCurrentMapData();

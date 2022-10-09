@@ -214,6 +214,7 @@
 #define WARPTYPE_DIVE        2
 #define WARPTYPE_HOLE        3
 #define WARPTYPE_ESCAPE      4
+#define WARPTYPE_AUXILIARY   5
 
 #define DOWARP_STANDARD     0
 #define DOWARP_SILENT       1

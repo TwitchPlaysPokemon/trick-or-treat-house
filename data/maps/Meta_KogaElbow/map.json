@@ -106,13 +106,376 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_ALWAYS_TRUE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_META_PEDESTAL",
+      "x": 19,
+      "y": 19,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MetaPuzzle_UsePedestal",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MASKED_BOY",
+      "x": 17,
+      "y": 25,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BARD",
+      "x": 14,
+      "y": 25,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CAMPER3",
+      "x": 14,
+      "y": 13,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_NURSE",
+      "x": 24,
+      "y": 13,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_MART_EMPLOYEE",
+      "x": 25,
+      "y": 14,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CAMERAMAN",
+      "x": 26,
+      "y": 21,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_GAMEBOY_KID2",
+      "x": 25,
+      "y": 16,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DEV_TUSTIN2121",
+      "x": 22,
+      "y": 26,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_AZUMARILL",
+      "x": 23,
+      "y": 27,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
     }
   ],
   "warp_events": [
 
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 21,
+      "y": 21,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CompletePuzzle"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 18,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 8,
+      "y": 20,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 21,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 28,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 31,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 21,
+      "y": 29,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 27,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 27,
+      "y": 22,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 27,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 28,
+      "y": 20,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 27,
+      "y": 18,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 28,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 24,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 14,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 21,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 20,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 18,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 18,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    },
+    {
+      "type": "trigger",
+      "x": 21,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Meta_KogaElbow_TriggerScript_CheckpointLocation"
+    }
   ],
   "bg_events": [
 

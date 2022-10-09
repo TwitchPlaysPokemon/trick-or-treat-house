@@ -2,9 +2,106 @@ raw `
 Meta_KogaElbow_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_KogaElbow_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, Meta_KogaElbow_OnResume
+	map_script MAP_SCRIPT_ON_LOAD, Meta_KogaElbow_OnLoad
+	map_script MAP_SCRIPT_ON_UNLOAD, Meta_KogaElbow_OnUnload
 	.byte 0
 `
+script(local) Meta_KogaElbow_OnLoad {
+	check_meta_visited_flag(MAP_META_KOGA_ELBOW)
+	goto_if(FALSE, Common_EventScript_NopReturn)
+	call(Meta_KogaElbow_PlaceTopShortcut)
+	call(Meta_KogaElbow_PlaceSideShortcut)
+	setmetatile(21, 21, METATILE_TrickHousePuzzle_Button_Pressed, FALSE)
+	setvar(VAR_TEMP_0, 1)
+	return
+}
 
 script(local) Meta_KogaElbow_OnTransition {
+	// set_meta_visited_flag(MAP_META_KOGA_ELBOW)
+}
+
+script(local) Meta_KogaElbow_OnResume {
+	setstepcallback(STEP_CB_HIDDEN_WALLS)
+}
+script(local) Meta_KogaElbow_OnUnload {
+	setstepcallback(STEP_CB_DUMMY)
+}
+
+//-----------------------------------------------------
+
+script(local) Meta_KogaElbow_PlaceTopShortcut {
+	setmetatile(19, 11, METATILE_MetaTileset_Planks_VertTop, FALSE)
+	setmetatile(20, 11, METATILE_MetaTileset_Planks_VertTop, FALSE)
+	setmetatile(19, 12, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(20, 12, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(19, 13, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(20, 13, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(19, 14, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(20, 14, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(19, 15, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(20, 15, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(19, 16, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(20, 16, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(19, 17, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(20, 17, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(19, 18, METATILE_MetaTileset_Planks_VertBot, FALSE)
+	setmetatile(20, 18, METATILE_MetaTileset_Planks_VertBot, FALSE)
+	return
+}
+script(local) Meta_KogaElbow_PlaceSideShortcut {
+	setmetatile(12, 19, METATILE_MetaTileset_Planks_HorzLeft, FALSE)
+	setmetatile(12, 20, METATILE_MetaTileset_Planks_HorzLeft, FALSE)
+	setmetatile(13, 19, METATILE_MetaTileset_Planks_HorzMid, FALSE)
+	setmetatile(13, 20, METATILE_MetaTileset_Planks_HorzMid, FALSE)
+	setmetatile(14, 19, METATILE_MetaTileset_Planks_HorzMid, FALSE)
+	setmetatile(14, 20, METATILE_MetaTileset_Planks_HorzMid, FALSE)
+	setmetatile(15, 19, METATILE_MetaTileset_Planks_HorzMid, FALSE)
+	setmetatile(15, 20, METATILE_MetaTileset_Planks_HorzMid, FALSE)
+	setmetatile(16, 19, METATILE_MetaTileset_Planks_HorzMid, FALSE)
+	setmetatile(16, 20, METATILE_MetaTileset_Planks_HorzMid, FALSE)
+	setmetatile(17, 19, METATILE_MetaTileset_Planks_HorzMid, FALSE)
+	setmetatile(17, 20, METATILE_MetaTileset_Planks_HorzMid, FALSE)
+	setmetatile(18, 19, METATILE_MetaTileset_Planks_HorzRight, FALSE)
+	setmetatile(18, 20, METATILE_MetaTileset_Planks_HorzRight, FALSE)
+	return
+}
+
+//-----------------------------------------------------
+
+script Meta_KogaElbow_TriggerScript_CompletePuzzle {
+	lock
+	setmetatile(21, 21, METATILE_TrickHousePuzzle_Button_Pressed, FALSE)
 	set_meta_visited_flag(MAP_META_KOGA_ELBOW)
+	playse (SE_PIN)
+	delay(40)
+	
+	call (Meta_KogaElbow_PlaceTopShortcut)
+	special(DrawWholeMapView)
+	playse (SE_M_STRENGTH)
+	setvar (VAR_0x8004, 2)  #amplitude y
+	setvar (VAR_0x8005, 0)  #amplitude x
+	setvar (VAR_0x8006, 2)  #duration (num shakes)
+	setvar (VAR_0x8007, 5)  #frequency
+	special (ShakeCamera)
+	waitstate
+	
+	call (Meta_KogaElbow_PlaceSideShortcut)
+	special(DrawWholeMapView)
+	playse (SE_M_STRENGTH)
+	setvar (VAR_0x8004, 2)  #amplitude y
+	setvar (VAR_0x8005, 0)  #amplitude x
+	setvar (VAR_0x8006, 2)  #duration (num shakes)
+	setvar (VAR_0x8007, 5)  #frequency
+	special (ShakeCamera)
+	waitstate
+	setvar(VAR_TEMP_0, 1)
+	release
+}
+
+script Meta_KogaElbow_TriggerScript_CheckpointLocation {
+	// getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
+	// setwarp(WARPTYPE_AUXILIARY, MAP_META_KOGA_ELBOW, -1, VAR_INTERACT_X, VAR_INTERACT_Y)
+	setwarp(WARPTYPE_AUXILIARY, MAP_META_KOGA_ELBOW)
+	release
 }
