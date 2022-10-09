@@ -1,1 +1,10 @@
-mapscripts Meta_FinalBluff_MapScripts {}
+raw `
+Meta_FinalBluff_MapScripts::
+	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ON_TRANSITION, Meta_FinalBluff_OnTransition
+	.byte 0
+`
+
+script(local) Meta_FinalBluff_OnTransition {
+	set_meta_visited_flag(MAP_META_FINAL_BLUFF)
+}

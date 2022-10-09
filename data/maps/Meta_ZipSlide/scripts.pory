@@ -1,1 +1,10 @@
-mapscripts Meta_ZipSlide_MapScripts {}
+raw `
+Meta_ZipSlide_MapScripts::
+	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ON_TRANSITION, Meta_ZipSlide_OnTransition
+	.byte 0
+`
+
+script(local) Meta_ZipSlide_OnTransition {
+	set_meta_visited_flag(MAP_META_ZIP_SLIDE)
+}

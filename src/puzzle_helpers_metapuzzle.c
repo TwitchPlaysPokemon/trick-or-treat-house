@@ -146,7 +146,7 @@ const struct MetaRoomInfo sMetaRoomInfo[] = {
 	[MAP_NUM(MAP_META_EMPTY_WE)]          = { .west=1,  .east=1,  .tileTag=TAG_ICON_UNKNOWN,  .palTag=TAG_ICON_UNKNOWN, .requiredItem=ITEM_NONE, },
 	[MAP_NUM(MAP_META_EMPTY_S)]           = { .south=1,           .tileTag=TAG_ICON_UNKNOWN,  .palTag=TAG_ICON_UNKNOWN, .requiredItem=ITEM_NONE, },
 	[MAP_NUM(MAP_META_ENTRANCE)]          = { .north=1,           .tileTag=TAG_ICON_UNKNOWN,  .palTag=TAG_ICON_UNKNOWN, .requiredItem=ITEM_NONE, },
-	[MAP_NUM(MAP_META_LAVARIDGE_SPRINGS)] = { .north=1, .east=1,  .tileTag=TAG_ICON_LAVARIDGE,.palTag=TAG_PAL_NPC1,     .requiredItem=ITEM_META_ITEM_ROUND, },
+	[MAP_NUM(MAP_META_LAVARIDGE_SPRINGS)] = { .south=1, .east=1,  .tileTag=TAG_ICON_LAVARIDGE,.palTag=TAG_PAL_NPC1,     .requiredItem=ITEM_META_ITEM_ROUND, },
 	[MAP_NUM(MAP_META_LEDGE_ROOM)]        = { .north=1, .east=1,  .tileTag=TAG_ICON_LEDGE,    .palTag=TAG_PAL_NPC1,     .requiredItem=ITEM_META_ITEM_SPIN, },
 	[MAP_NUM(MAP_META_FINAL_BLUFF)]       = { .west=1,            .tileTag=TAG_ICON_FINAL,    .palTag=TAG_PAL_NPC1,     .requiredItem=ITEM_META_ITEM_ROCK, },
 	[MAP_NUM(MAP_META_ICE_CORNER)]        = { .south=1, .west=1,  .tileTag=TAG_ICON_ICE,      .palTag=TAG_ICON_ICE,     .requiredItem=ITEM_META_ITEM_DIAMOND, },
@@ -627,7 +627,7 @@ static void SetupSlidingTiles() {
 		struct SlidingTile* tile = &sSlidingTileScene->tiles[i];
 		tile->roomId = MAP_NUM(VarGet(VAR_ROOM_ID_0_0 + i));
 		MGBA_ASSERT(tile->roomId > 0 && tile->roomId < ARRAY_COUNT(sMetaRoomInfo));
-		mgba_printf(MGBA_LOG_WARN, "Tile %d: VAR=%x %x / %x => (%d == %d)", i, VAR_ROOM_ID_0_0+i, VarGet(VAR_ROOM_ID_0_0+i), tile->roomId, MAP_GROUP(tile->roomId), MAP_GROUP(MAP_PLACEHOLDER_S));
+		// mgba_printf(MGBA_LOG_WARN, "Tile %d: VAR=%x %x / %x => (%d == %d)", i, VAR_ROOM_ID_0_0+i, VarGet(VAR_ROOM_ID_0_0+i), tile->roomId, MAP_GROUP(tile->roomId), MAP_GROUP(MAP_PLACEHOLDER_S));
 		
 		sSlidingTileScene->tilePointers[i] = i;
 		if (tile->roomId == MAP_NUM(MAP_META_NULL_ROOM)) {
@@ -650,7 +650,7 @@ static void SetupSlidingTiles() {
 		if (room->east) {
 			tile->subsprites[x++] = sTileSubsprites[SS_TILE_EAST_EXIT];
 		}
-		mgba_printf(MGBA_LOG_WARN, "Tile %d: x=%d", i, x);
+		// mgba_printf(MGBA_LOG_WARN, "Tile %d: x=%d", i, x);
 		MGBA_ASSERT(x <= ARRAY_COUNT(tile->subsprites));
 		tile->subspriteTable.subspriteCount = x; 
 		tile->subspriteTable.subsprites = tile->subsprites;
@@ -795,7 +795,7 @@ static void CB2_LoadSlidingTile(void)
 	
 	SetupSlidingTiles();
 	
-	BeginNormalPaletteFade(PALETTES_ALL, 3, 0x10, 0, RGB_BLACK);
+	BeginNormalPaletteFade(PALETTES_ALL, 0, 0x10, 0, RGB_BLACK);
 	EnableInterrupts(DISPSTAT_VBLANK);
 	SetVBlankCallback(VBlankCB_SlidingTile);
 	SetMainCallback2(CB2_SlidingTileMain);

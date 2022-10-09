@@ -113,3 +113,9 @@ turnrotatingtileobjects
 waitmovement 0
 freerotatingtilepuzzle
 .endm
+
+@ -----------------------------------------------------
+
+.macro set_meta_visited_flag flag:req
+setflag FLAG_PUZZLE_20 + (\flag & 0xFF)
+.endm

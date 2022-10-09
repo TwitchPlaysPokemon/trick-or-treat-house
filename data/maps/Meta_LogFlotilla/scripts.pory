@@ -1,1 +1,10 @@
-mapscripts Meta_LogFlotilla_MapScripts {}
+raw `
+Meta_LogFlotilla_MapScripts::
+	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ON_TRANSITION, Meta_ELogFlotilla_OnTransition
+	.byte 0
+`
+
+script(local) Meta_ELogFlotilla_OnTransition {
+	set_meta_visited_flag(MAP_META_LOG_FLOTILLA)
+}

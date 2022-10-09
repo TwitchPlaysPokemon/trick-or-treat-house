@@ -1,1 +1,5 @@
-mapscripts Meta_EmptyFilled_MapScripts {}
+raw `
+Meta_EmptyFilled_MapScripts::
+	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+	.byte 0
+`

@@ -327,14 +327,16 @@ script MetaPuzzle_UsePedestal {
 		setvar (VAR_0x8007, 5)  #frequency
 		special (ShakeCamera)
 		applymovement(LID_PLAYER, MetaPuzzle_ChangeRoomLayout_PlayerReact)
-		delay (80)
+		// delay (81)
+		waitstate
 		# continue shaking
 		setvar (VAR_0x8004, 2)  #amplitude y
 		setvar (VAR_0x8005, 0)  #amplitude x
 		setvar (VAR_0x8006, 11)  #duration (num shakes)
 		setvar (VAR_0x8007, 5)  #frequency
 		special (ShakeCamera)
-		delay (60)
+		// delay (61)
+		waitstate
 		waitmovement(LID_PLAYER)
 		# final shaking
 		setvar (VAR_0x8004, 1)  #amplitude y
@@ -342,7 +344,8 @@ script MetaPuzzle_UsePedestal {
 		setvar (VAR_0x8006, 11)  #duration (num shakes)
 		setvar (VAR_0x8007, 5)  #frequency
 		special (ShakeCamera)
-		delay (40)
+		waitstate
+		// delay (40)
 	}
 	releaseall
 }
