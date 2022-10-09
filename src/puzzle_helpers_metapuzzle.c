@@ -5,6 +5,7 @@
 #include "puzzle_helpers.h"
 #include "decompress.h"
 #include "field_camera.h"
+#include "global.fieldmap.h"
 #include "field_message_box.h"
 #include "field_player_avatar.h"
 #include "fieldmap.h"
@@ -27,6 +28,7 @@
 #include "graphics.h"
 #include "scanline_effect.h"
 #include "text_window.h"
+#include "constants/global.h"
 #include "constants/rgb.h"
 #include "constants/maps.h"
 #include "constants/flags.h"
@@ -133,34 +135,134 @@ struct MetaRoomInfo {
 	bool8 south:1;
 	bool8 west:1;
 	bool8 east:1;
+	const struct ObjectEventTemplate* connObj;
 };
 
-const struct MetaRoomInfo sMetaRoomInfo[] = {
-	[MAP_NUM(MAP_META_NULL_ROOM)]         = {},
-	[MAP_NUM(MAP_META_EMPTY_FILLED)]      = {},
-	[MAP_NUM(MAP_META_EMPTY_NW)]          = { .north=1, .west=1,  .tileTag=TAG_ICON_UNKNOWN,  .palTag=TAG_ICON_UNKNOWN, .requiredItem=ITEM_NONE, },
-	[MAP_NUM(MAP_META_EMPTY_NE)]          = { .north=1, .east=1,  .tileTag=TAG_ICON_UNKNOWN,  .palTag=TAG_ICON_UNKNOWN, .requiredItem=ITEM_NONE, },
-	[MAP_NUM(MAP_META_EMPTY_SW)]          = { .south=1, .west=1,  .tileTag=TAG_ICON_UNKNOWN,  .palTag=TAG_ICON_UNKNOWN, .requiredItem=ITEM_NONE, },
-	[MAP_NUM(MAP_META_EMPTY_SE)]          = { .south=1, .east=1,  .tileTag=TAG_ICON_UNKNOWN,  .palTag=TAG_ICON_UNKNOWN, .requiredItem=ITEM_NONE, },
-	[MAP_NUM(MAP_META_EMPTY_NS)]          = { .north=1, .south=1, .tileTag=TAG_ICON_UNKNOWN,  .palTag=TAG_ICON_UNKNOWN, .requiredItem=ITEM_NONE, },
-	[MAP_NUM(MAP_META_EMPTY_WE)]          = { .west=1,  .east=1,  .tileTag=TAG_ICON_UNKNOWN,  .palTag=TAG_ICON_UNKNOWN, .requiredItem=ITEM_NONE, },
-	[MAP_NUM(MAP_META_EMPTY_S)]           = { .south=1,           .tileTag=TAG_ICON_UNKNOWN,  .palTag=TAG_ICON_UNKNOWN, .requiredItem=ITEM_NONE, },
-	[MAP_NUM(MAP_META_ENTRANCE)]          = { .north=1,           .tileTag=TAG_ICON_UNKNOWN,  .palTag=TAG_ICON_UNKNOWN, .requiredItem=ITEM_NONE, },
-	[MAP_NUM(MAP_META_LAVARIDGE_SPRINGS)] = { .south=1, .east=1,  .tileTag=TAG_ICON_LAVARIDGE,.palTag=TAG_PAL_NPC1,     .requiredItem=ITEM_META_ITEM_ROUND, },
-	[MAP_NUM(MAP_META_LEDGE_ROOM)]        = { .north=1, .east=1,  .tileTag=TAG_ICON_LEDGE,    .palTag=TAG_PAL_NPC1,     .requiredItem=ITEM_META_ITEM_SPIN, },
-	[MAP_NUM(MAP_META_FINAL_BLUFF)]       = { .west=1,            .tileTag=TAG_ICON_FINAL,    .palTag=TAG_PAL_NPC1,     .requiredItem=ITEM_META_ITEM_ROCK, },
-	[MAP_NUM(MAP_META_ICE_CORNER)]        = { .south=1, .west=1,  .tileTag=TAG_ICON_ICE,      .palTag=TAG_ICON_ICE,     .requiredItem=ITEM_META_ITEM_DIAMOND, },
-	[MAP_NUM(MAP_META_LOG_FLOTILLA)]      = { .south=1, .east=1,  .tileTag=TAG_ICON_LOG,      .palTag=TAG_PAL_NPC3,     .requiredItem=ITEM_META_ITEM_LOTAD, },
-	[MAP_NUM(MAP_META_BIKE_PATH)]         = { .south=1, .north=1, .tileTag=TAG_ICON_BIKE,     .palTag=TAG_PAL_NPC3,     .requiredItem=ITEM_META_ITEM_WHEEL, },
-	[MAP_NUM(MAP_META_POKE_STAGE)]        = { .south=1,           .tileTag=TAG_ICON_STAGE,    .palTag=TAG_PAL_NPC1,     .requiredItem=ITEM_META_ITEM_DOLL, },
-	[MAP_NUM(MAP_META_ZIGGY_ROOM)]        = { .south=1, .west=1,  .tileTag=TAG_ICON_ZIGGY,    .palTag=TAG_PAL_NPC1,     .requiredItem=ITEM_META_ITEM_ZIGZAG, },
-	[MAP_NUM(MAP_META_FOREST_CLEARING)]   = { .south=1, .east=1,  .tileTag=TAG_ICON_FOREST,   .palTag=TAG_PAL_NPC3,     .requiredItem=ITEM_META_ITEM_GRASS, },
-	[MAP_NUM(MAP_META_ZIP_SLIDE)]         = { .west=1,  .east=1,  .tileTag=TAG_ICON_ZIP,      .palTag=TAG_PAL_NPC2,     .requiredItem=ITEM_META_ITEM_PIKA, },
-	[MAP_NUM(MAP_META_KOGA_ELBOW)]        = { .north=1, .west=1,  .tileTag=TAG_ICON_KOGA,     .palTag=TAG_PAL_NPC4,     .requiredItem=ITEM_META_ITEM_DUSKULL, },
-	[MAP_NUM(MAP_META_SUBDUCTION_ZONE)]   = { .west=1,  .east=1,  .tileTag=TAG_ICON_FIRE,     .palTag=TAG_PAL_NPC2,     .requiredItem=ITEM_META_ITEM_FIRE, },
-	[MAP_NUM(MAP_META_DIVE_MAZE)]         = { .north=1, .south=1, .tileTag=TAG_ICON_DIVE,     .palTag=TAG_PAL_NPC1,     .requiredItem=ITEM_META_ITEM_WATER, },
-	[MAP_NUM(MAP_META_BERRY_ROOM)]        = { .north=1, .east=1,  .tileTag=TAG_ICON_BERRY,    .palTag=TAG_ICON_BERRY,   .requiredItem=ITEM_META_ITEM_KISS, },
-	// [MAP_NUM(MAP_META_ROOM_15)]        = { .north=1, .west=1,  .tileTag=TAG_ICON_UNKNOWN,  .palTag=TAG_ICON_UNKNOWN, .requiredItem=ITEM_META_ITEM_SEEDOT, },
+// In-connection objects
+static const struct ObjectEventTemplate sConnObject_EndDoor = {
+	.graphicsId = OBJ_EVENT_GFX_TRICK_DOOR_STONE_ROOM,
+	.x = 18, .y = 1, .elevation = 3,
+};
+
+static const struct MetaRoomInfo sMetaRoomInfo[] = {
+	[MAP_NUM(MAP_META_NULL_ROOM)] = {},
+	[MAP_NUM(MAP_META_EMPTY_FILLED)] = {},
+	[MAP_NUM(MAP_META_EMPTY_NW)] = {
+		.north=1, .west=1, 
+		.tileTag=TAG_ICON_UNKNOWN, .palTag=TAG_ICON_UNKNOWN, 
+		.requiredItem=ITEM_NONE,
+	},
+	[MAP_NUM(MAP_META_EMPTY_NE)] = {
+		.north=1, .east=1, 
+		.tileTag=TAG_ICON_UNKNOWN, .palTag=TAG_ICON_UNKNOWN, 
+		.requiredItem=ITEM_NONE,
+	},
+	[MAP_NUM(MAP_META_EMPTY_SW)] = {
+		.south=1, .west=1, 
+		.tileTag=TAG_ICON_UNKNOWN, .palTag=TAG_ICON_UNKNOWN, 
+		.requiredItem=ITEM_NONE,
+	},
+	[MAP_NUM(MAP_META_EMPTY_SE)] = {
+		.south=1, .east=1, 
+		.tileTag=TAG_ICON_UNKNOWN, .palTag=TAG_ICON_UNKNOWN, 
+		.requiredItem=ITEM_NONE,
+	},
+	[MAP_NUM(MAP_META_EMPTY_NS)] = {
+		.north=1, .south=1,
+		.tileTag=TAG_ICON_UNKNOWN, .palTag=TAG_ICON_UNKNOWN, 
+		.requiredItem=ITEM_NONE,
+	},
+	[MAP_NUM(MAP_META_EMPTY_WE)] = {
+		.west=1,  .east=1, 
+		.tileTag=TAG_ICON_UNKNOWN, .palTag=TAG_ICON_UNKNOWN, 
+		.requiredItem=ITEM_NONE,
+	},
+	[MAP_NUM(MAP_META_EMPTY_S)] = {
+		.south=1,          
+		.tileTag=TAG_ICON_UNKNOWN, .palTag=TAG_ICON_UNKNOWN, 
+		.requiredItem=ITEM_NONE,
+	},
+	[MAP_NUM(MAP_META_ENTRANCE)] = {
+		.north=1,          
+		.tileTag=TAG_ICON_UNKNOWN, .palTag=TAG_ICON_UNKNOWN, 
+		.requiredItem=ITEM_NONE,
+	},
+	[MAP_NUM(MAP_META_LAVARIDGE_SPRINGS)] = {
+		.south=1, .east=1, 
+		.tileTag=TAG_ICON_LAVARIDGE, .palTag=TAG_PAL_NPC1,     
+		.requiredItem=ITEM_META_ITEM_ROUND,
+	},
+	[MAP_NUM(MAP_META_LEDGE_ROOM)] = {
+		.north=1, .east=1, 
+		.tileTag=TAG_ICON_LEDGE, .palTag=TAG_PAL_NPC1,     
+		.requiredItem=ITEM_META_ITEM_SPIN,
+	},
+	[MAP_NUM(MAP_META_FINAL_BLUFF)] = {
+		.west=1,           
+		.tileTag=TAG_ICON_FINAL, .palTag=TAG_PAL_NPC1,     
+		.requiredItem=ITEM_META_ITEM_ROCK,
+		.connObj=&sConnObject_EndDoor,
+	},
+	[MAP_NUM(MAP_META_ICE_CORNER)] = {
+		.south=1, .west=1, 
+		.tileTag=TAG_ICON_ICE, .palTag=TAG_ICON_ICE,     
+		.requiredItem=ITEM_META_ITEM_DIAMOND,
+	},
+	[MAP_NUM(MAP_META_LOG_FLOTILLA)] = {
+		.south=1, .east=1, 
+		.tileTag=TAG_ICON_LOG, .palTag=TAG_PAL_NPC3,     
+		.requiredItem=ITEM_META_ITEM_LOTAD,
+	},
+	[MAP_NUM(MAP_META_BIKE_PATH)] = {
+		.south=1, .north=1,
+		.tileTag=TAG_ICON_BIKE, .palTag=TAG_PAL_NPC3,     
+		.requiredItem=ITEM_META_ITEM_WHEEL,
+	},
+	[MAP_NUM(MAP_META_POKE_STAGE)] = {
+		.south=1,          
+		.tileTag=TAG_ICON_STAGE, .palTag=TAG_PAL_NPC1,     
+		.requiredItem=ITEM_META_ITEM_DOLL,
+	},
+	[MAP_NUM(MAP_META_ZIGGY_ROOM)] = {
+		.south=1, .west=1, 
+		.tileTag=TAG_ICON_ZIGGY, .palTag=TAG_PAL_NPC1,     
+		.requiredItem=ITEM_META_ITEM_ZIGZAG,
+	},
+	[MAP_NUM(MAP_META_FOREST_CLEARING)] = {
+		.south=1, .east=1, 
+		.tileTag=TAG_ICON_FOREST, .palTag=TAG_PAL_NPC3,     
+		.requiredItem=ITEM_META_ITEM_GRASS,
+	},
+	[MAP_NUM(MAP_META_ZIP_SLIDE)] = {
+		.west=1,  .east=1, 
+		.tileTag=TAG_ICON_ZIP, .palTag=TAG_PAL_NPC2,     
+		.requiredItem=ITEM_META_ITEM_PIKA,
+	},
+	[MAP_NUM(MAP_META_KOGA_ELBOW)] = {
+		.north=1, .west=1, 
+		.tileTag=TAG_ICON_KOGA, .palTag=TAG_PAL_NPC4,     
+		.requiredItem=ITEM_META_ITEM_DUSKULL,
+	},
+	[MAP_NUM(MAP_META_SUBDUCTION_ZONE)] = {
+		.west=1,  .east=1, 
+		.tileTag=TAG_ICON_FIRE, .palTag=TAG_PAL_NPC2,     
+		.requiredItem=ITEM_META_ITEM_FIRE,
+	},
+	[MAP_NUM(MAP_META_DIVE_MAZE)] = {
+		.north=1, .south=1,
+		.tileTag=TAG_ICON_DIVE, .palTag=TAG_PAL_NPC1,     
+		.requiredItem=ITEM_META_ITEM_WATER,
+	},
+	[MAP_NUM(MAP_META_BERRY_ROOM)] = {
+		.north=1, .east=1, 
+		.tileTag=TAG_ICON_BERRY, .palTag=TAG_ICON_BERRY,   
+		.requiredItem=ITEM_META_ITEM_KISS,
+	}, /*
+	[MAP_NUM(MAP_META_ROOM_15)] = {
+		.north=1, .west=1, 
+		.tileTag=TAG_ICON_UNKNOWN, .palTag=TAG_ICON_UNKNOWN, 
+		.requiredItem=ITEM_META_ITEM_SEEDOT,
+	}, //*/
 };
 
 const u16 sMetaRoom_FallbackList_s4_1x1[] = { MAP_META_BERRY_ROOM, MAP_META_EMPTY_NE, MAP_NONE };
@@ -295,6 +397,26 @@ static void MetaPuzzle_AddHorzPlanksAt(int x, int y) {
 	MapGridSetMetatileIdAt(MAP_OFFSET + x + 1, MAP_OFFSET + y + 1, METATILE_MetaTileset_Planks_HorzRight);
 }
 
+static void MetaPuzzle_InsertConnectionObjects(u16 roomId, u8 idx, int offX, int offY) {
+	if (sMetaRoomInfo[MAP_NUM(roomId)].connObj == NULL) return;
+	
+	struct ObjectEventTemplate* obj = NULL;
+	struct ObjectEventTemplate* over = sMetaRoomInfo[MAP_NUM(roomId)].connObj;
+	
+	for (int i = 0; i < OBJECT_EVENT_TEMPLATES_COUNT; i++) {
+		if (gSaveBlock1Ptr->objectEventTemplates[i].graphicsId == (OBJ_EVENT_GFX_VAR_0 + idx)) {
+			obj = &gSaveBlock1Ptr->objectEventTemplates[i];
+			break;
+		}
+	}
+	if (obj == NULL) return;
+	obj->graphicsId = over->graphicsId;
+	obj->flagId = over->flagId;
+	obj->x = over->x + offX;
+	obj->y = over->y + offY;
+	obj->elevation = over->elevation;
+}
+
 void MetaPuzzle_FillRoomConnections() {
 	if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(MAP_PLACEHOLDER_N)) return;
 	u8 width  = (VarGet(VAR_GRID_SIZE) >> 0) & 0xFF;
@@ -308,24 +430,28 @@ void MetaPuzzle_FillRoomConnections() {
 		if (sMetaRoomInfo[MAP_NUM(myId)].north && sMetaRoomInfo[MAP_NUM(oid)].south) {
 			MetaPuzzle_AddVertPlanksAt(19, 0);
 		}
+		MetaPuzzle_InsertConnectionObjects(oid, 0, 0, -40);
 	}
 	{	//	south
 		u16 oid = MetaPuzzle_GetRoomGridValue(x + 0, y + 1);
 		if (sMetaRoomInfo[MAP_NUM(myId)].south && sMetaRoomInfo[MAP_NUM(oid)].north) {
 			MetaPuzzle_AddVertPlanksAt(19, 40);
 		}
+		MetaPuzzle_InsertConnectionObjects(oid, 0, 0, 40);
 	}
 	{	//	west
 		u16 oid = MetaPuzzle_GetRoomGridValue(x - 1, y + 0);
 		if (sMetaRoomInfo[MAP_NUM(myId)].west && sMetaRoomInfo[MAP_NUM(oid)].east) {
 			MetaPuzzle_AddHorzPlanksAt(0, 19);
 		}
+		MetaPuzzle_InsertConnectionObjects(oid, 0, -40, 0);
 	}
 	{	//	east
 		u16 oid = MetaPuzzle_GetRoomGridValue(x + 1, y + 0);
 		if (sMetaRoomInfo[MAP_NUM(myId)].east && sMetaRoomInfo[MAP_NUM(oid)].west) {
 			MetaPuzzle_AddHorzPlanksAt(40, 19);
 		}
+		MetaPuzzle_InsertConnectionObjects(oid, 0, 40, 0);
 	}
 }
 

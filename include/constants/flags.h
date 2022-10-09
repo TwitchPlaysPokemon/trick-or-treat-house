@@ -1610,6 +1610,9 @@
 #define FLAG_DISABLE_MAP_MUSIC_CHANGE           0x4009
 #define SPECIAL_FLAGS_END                       (SPECIAL_FLAGS_START + 0x7F)
 
+#define FLAG_ALWAYS_FALSE                       0x4100
+#define FLAG_ALWAYS_TRUE                        0x4101
+
 // Candy aliases
 #define FLAG_CANDY_ABUNDANT_01        FLAG_HIDDEN_ITEM_PUZZLE_0x00
 #define FLAG_CANDY_ABUNDANT_02        FLAG_HIDDEN_ITEM_PUZZLE_0x01

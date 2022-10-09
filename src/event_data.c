@@ -235,9 +235,10 @@ u8 FlagClear(u16 id)
 bool8 FlagGet(u16 id)
 {
     u8 *ptr = GetFlagPointer(id);
-
-    if (!ptr)
-        return FALSE;
+    
+    if (id == FLAG_ALWAYS_FALSE) return FALSE;
+    if (id == FLAG_ALWAYS_TRUE) return TRUE;
+    if (!ptr) return FALSE;
 
     if (!(((*ptr) >> (id & 7)) & 1))
         return FALSE;
