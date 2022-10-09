@@ -10419,4 +10419,69 @@ extern const u8 gMailTilemap_Retro[];
 extern const u8 gMonMarkingsMenu_Gfx[];
 extern const u16 gMonMarkingsMenu_Pal[];
 
+extern const u16 gObjectEventPal_Npc1[];
+extern const u16 gObjectEventPal_Npc2[];
+extern const u16 gObjectEventPal_Npc3[];
+extern const u16 gObjectEventPal_Npc4[];
+extern const u32 gObjectEventPic_MetaItem_Lavaridge[];
+#define          gObjectEventPal_MetaItem_Lavaridge  gObjectEventPal_Npc1
+extern const u32 gItemIconPic_MetaItem_Lavaridge[];
+#define          gItemIconPal_MetaItem_Lavaridge  gObjectEventPal_Npc1
+extern const u32 gObjectEventPic_MetaItem_FinalBluff[];
+#define          gObjectEventPal_MetaItem_FinalBluff  gObjectEventPal_Npc1
+extern const u32 gItemIconPic_MetaItem_FinalBluff[];
+#define          gItemIconPal_MetaItem_FinalBluff  gObjectEventPal_Npc1
+extern const u32 gObjectEventPic_MetaItem_LedgeValley[];
+#define          gObjectEventPal_MetaItem_LedgeValley  gObjectEventPal_Npc1
+extern const u32 gItemIconPic_MetaItem_LedgeValley[];
+#define          gItemIconPal_MetaItem_LedgeValley  gObjectEventPal_Npc1
+extern const u32 gObjectEventPic_MetaItem_IceCorner[];
+extern const u16 gObjectEventPal_MetaItem_IceCorner[];
+extern const u32 gItemIconPic_MetaItem_IceCorner[];
+extern const u16 gItemIconPal_MetaItem_IceCorner[];
+extern const u32 gObjectEventPic_MetaItem_LogFlotilla[];
+#define          gObjectEventPal_MetaItem_LogFlotilla  gObjectEventPal_Npc3
+extern const u32 gItemIconPic_MetaItem_LogFlotilla[];
+#define          gItemIconPal_MetaItem_LogFlotilla  gObjectEventPal_Npc3
+extern const u32 gObjectEventPic_MetaItem_BikePath[];
+#define          gObjectEventPal_MetaItem_BikePath  gObjectEventPal_Npc3
+extern const u32 gItemIconPic_MetaItem_BikePath[];
+#define          gItemIconPal_MetaItem_BikePath  gObjectEventPal_Npc3
+extern const u32 gObjectEventPic_MetaItem_PokeStage[];
+#define          gObjectEventPal_MetaItem_PokeStage  gObjectEventPal_Npc1
+extern const u32 gItemIconPic_MetaItem_PokeStage[];
+#define          gItemIconPal_MetaItem_PokeStage  gObjectEventPal_Npc1
+extern const u32 gObjectEventPic_MetaItem_ZiggyRoom[];
+#define          gObjectEventPal_MetaItem_ZiggyRoom  gObjectEventPal_Npc1
+extern const u32 gItemIconPic_MetaItem_ZiggyRoom[];
+#define          gItemIconPal_MetaItem_ZiggyRoom  gObjectEventPal_Npc1
+extern const u32 gObjectEventPic_MetaItem_ForestRoom[];
+#define          gObjectEventPal_MetaItem_ForestRoom  gObjectEventPal_Npc3
+extern const u32 gItemIconPic_MetaItem_ForestRoom[];
+#define          gItemIconPal_MetaItem_ForestRoom  gObjectEventPal_Npc3
+extern const u32 gObjectEventPic_MetaItem_ZipRoom[];
+#define gObjectEventPal_MetaItem_ZipRoom  gObjectEventPal_Npc2
+extern const u32 gItemIconPic_MetaItem_ZipRoom[];
+#define gItemIconPal_MetaItem_ZipRoom  gObjectEventPal_Npc2
+extern const u32 gObjectEventPic_MetaItem_KogaRoom[];
+#define          gObjectEventPal_MetaItem_KogaRoom  gObjectEventPal_Npc4
+extern const u32 gItemIconPic_MetaItem_KogaRoom[];
+#define          gItemIconPal_MetaItem_KogaRoom  gObjectEventPal_Npc4
+extern const u32 gObjectEventPic_MetaItem_FireRoom[];
+#define          gObjectEventPal_MetaItem_FireRoom  gObjectEventPal_Npc2
+extern const u32 gItemIconPic_MetaItem_FireRoom[];
+#define          gItemIconPal_MetaItem_FireRoom  gObjectEventPal_Npc2
+extern const u32 gObjectEventPic_MetaItem_DiveMaze[];
+#define          gObjectEventPal_MetaItem_DiveMaze  gObjectEventPal_Npc1
+extern const u32 gItemIconPic_MetaItem_DiveMaze[];
+#define          gItemIconPal_MetaItem_DiveMaze  gObjectEventPal_Npc1
+extern const u32 gObjectEventPic_MetaItem_BerryRoom[];
+extern const u16 gObjectEventPal_MetaItem_BerryRoom[];
+extern const u32 gItemIconPic_MetaItem_BerryRoom[];
+extern const u16 gItemIconPal_MetaItem_BerryRoom[];
+extern const u32 gObjectEventPic_MetaItem_Room15[];
+extern const u16 gObjectEventPal_MetaItem_Room15[];
+extern const u32 gItemIconPic_MetaItem_Room15[];
+extern const u16 gItemIconPal_MetaItem_Room15[];
+
 #endif //GUARD_GRAPHICS_H

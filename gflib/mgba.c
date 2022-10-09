@@ -22,6 +22,8 @@
 #include <stdarg.h>
 #include "gba/types.h"
 #include "gba/defines.h"
+#include "gba/multiboot.h"
+#include "gba/syscall.h"
 #include "mgba.h"
 #include "printf.h"
 #include "characters.h"
@@ -154,7 +156,9 @@ void mgba_assert(const char *pFile, s32 nLine, const char *pExpression, bool32 n
     if (nStopProgram)
     {
         mgba_printfBounded(MGBA_LOG_ERROR, "ASSERTION FAILED  FILE=[%s] LINE=[%d]  EXP=[%s]", pFile, nLine, pExpression);
-        asm(".hword 0xEFFF");
+        // asm(".hword 0xEFFF");
+        SoftReset(RESET_ALL);
+        while(1) ;
     }
     else
     {

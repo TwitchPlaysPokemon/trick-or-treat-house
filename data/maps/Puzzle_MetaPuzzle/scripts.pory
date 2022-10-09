@@ -274,20 +274,88 @@ script MetaPuzzle_DropOffEvents_GiveItem {
 
 // ----------------------------------------------------
 
-script MetaPuzzle_UsePedestal {
+script MetaPuzzle_TestSetup4x4 {
 	lockall
-	// TODO everything
-	setvar(VAR_GRID_SIZE, (2 << 8) | (2))
-	setvar(VAR_ROOM_ID_0_0 + 0, MAP_META_BIKE_PATH)
-	setvar(VAR_ROOM_ID_0_0 + 1, MAP_META_NULL_ROOM)
-	setvar(VAR_ROOM_ID_0_0 + 2, MAP_META_LAVARIDGE_SPRINGS)
-	setvar(VAR_ROOM_ID_0_0 + 3, MAP_META_ICE_CORNER)
-	// setvar(VAR_ROOM_ID_0_0 + 3, MAP_META_NULL_ROOM)
+	setvar(VAR_GRID_SIZE, (4 << 8) | (4))
+	setvar(VAR_ROOM_ID_0_0 + 0, MAP_META_BERRY_ROOM)
+	setvar(VAR_ROOM_ID_0_0 + 1, MAP_META_LOG_FLOTILLA)
+	setvar(VAR_ROOM_ID_0_0 + 2, MAP_META_FINAL_BLUFF)
+	setvar(VAR_ROOM_ID_0_0 + 3, MAP_META_POKE_STAGE)
+	
+	setvar(VAR_ROOM_ID_0_0 + 4, MAP_META_ZIGGY_ROOM)
+	setvar(VAR_ROOM_ID_0_0 + 5, MAP_META_ICE_CORNER)
+	setvar(VAR_ROOM_ID_0_0 + 6, MAP_META_EMPTY_NW)
+	setvar(VAR_ROOM_ID_0_0 + 7, MAP_META_SUBDUCTION_ZONE)
+	
+	setvar(VAR_ROOM_ID_0_0 + 8, MAP_META_DIVE_MAZE)
+	setvar(VAR_ROOM_ID_0_0 + 9, MAP_META_BIKE_PATH)
+	setvar(VAR_ROOM_ID_0_0 + 10, MAP_META_FOREST_CLEARING)
+	setvar(VAR_ROOM_ID_0_0 + 11, MAP_META_KOGA_ELBOW)
+	
+	setvar(VAR_ROOM_ID_0_0 + 12, MAP_META_LEDGE_ROOM)
+	setvar(VAR_ROOM_ID_0_0 + 13, MAP_META_ZIP_SLIDE)
+	setvar(VAR_ROOM_ID_0_0 + 14, MAP_META_LAVARIDGE_SPRINGS)
+	setvar(VAR_ROOM_ID_0_0 + 15, MAP_META_NULL_ROOM)
+	
+	message("Setup 4x4$")
+	waitmessage
+	waitbuttonpress
 	
 	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
 	setwarp(WARPTYPE_STANDARD, MAP_META_LAVARIDGE_SPRINGS, VAR_INTERACT_X, VAR_INTERACT_Y)
 	dowarp(WARPTYPE_STANDARD, DOWARP_SILENT)
 	releaseall
+}
+script MetaPuzzle_UsePedestal {
+	lockall
+	
+	callnative(MetaPuzzle_OpenSlidingPuzzle)
+	waitstate
+	// MetaPuzzle_OpenSlidingPuzzle will reload the map
+	
+	// getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
+	// setwarp(WARPTYPE_STANDARD, MAP_META_LAVARIDGE_SPRINGS, VAR_INTERACT_X, VAR_INTERACT_Y)
+	// dowarp(WARPTYPE_STANDARD, DOWARP_SILENT)
+	
+	if (var(VAR_RESULT) == TRUE) {
+		# Start shaking
+		playse (SE_M_EARTHQUAKE)
+		playse (SE_M_STRENGTH)
+		setvar (VAR_0x8004, 5)  #amplitude y
+		setvar (VAR_0x8005, 0)  #amplitude x
+		setvar (VAR_0x8006, 15)  #duration (num shakes)
+		setvar (VAR_0x8007, 5)  #frequency
+		special (ShakeCamera)
+		applymovement(LID_PLAYER, MetaPuzzle_ChangeRoomLayout_PlayerReact)
+		delay (80)
+		# continue shaking
+		setvar (VAR_0x8004, 2)  #amplitude y
+		setvar (VAR_0x8005, 0)  #amplitude x
+		setvar (VAR_0x8006, 11)  #duration (num shakes)
+		setvar (VAR_0x8007, 5)  #frequency
+		special (ShakeCamera)
+		delay (60)
+		waitmovement(LID_PLAYER)
+		# final shaking
+		setvar (VAR_0x8004, 1)  #amplitude y
+		setvar (VAR_0x8005, 0)  #amplitude x
+		setvar (VAR_0x8006, 11)  #duration (num shakes)
+		setvar (VAR_0x8007, 5)  #frequency
+		special (ShakeCamera)
+		delay (40)
+	}
+	releaseall
+}
+movement MetaPuzzle_ChangeRoomLayout_PlayerReact {
+	delay_16
+	emote_exclamation_mark
+	delay_2
+	walk_in_place_fast_right
+	delay_2
+	walk_in_place_fast_left
+	delay_2
+	delay_1
+	walk_in_place_fast_down
 }
 
 raw `
