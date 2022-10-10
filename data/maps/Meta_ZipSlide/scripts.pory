@@ -2,9 +2,123 @@ raw `
 Meta_ZipSlide_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_ZipSlide_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, Meta_ZipSlide_OnLoad
 	.byte 0
 `
 
 script(local) Meta_ZipSlide_OnTransition {
+	// set_meta_visited_flag(MAP_META_ZIP_SLIDE)
+}
+script(local) Meta_ZipSlide_OnLoad {
+	check_meta_visited_flag(MAP_META_ZIP_SLIDE)
+	goto_if(FALSE, Common_EventScript_NopReturn)
+	setmetatile(19, 7, METATILE_TrickHousePuzzle_Button_Pressed, FALSE)
+	setmetatile(11, 21, METATILE_TrickHousePuzzle_Door_Shuttered, FALSE)
+	setmetatile(28, 21, METATILE_TrickHousePuzzle_Door_Shuttered, FALSE)
+	setvar(VAR_TEMP_0, 1)
+	return
+}
+//-----------------------------------------------------
+
+script Meta_ZipSlide_Switch1 {
+	lock
+	if (flag(FLAG_TEMP_10)) {
+		clearflag(FLAG_TEMP_10)
+		setmetatile(23, 22, METATILE_TrickHousePuzzle_Lever_Off, TRUE)
+		setmetatile(26, 26, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Right, FALSE)
+	} else {
+		setflag(FLAG_TEMP_10)
+		setmetatile(23, 22, METATILE_TrickHousePuzzle_Lever_On, TRUE)
+		setmetatile(26, 26, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Down, FALSE)
+	}
+	callnative(DrawWholeMapView)
+	playse(SE_PIN)
+	release
+}
+script Meta_ZipSlide_Switch2 {
+	lock
+	if (flag(FLAG_TEMP_11)) {
+		clearflag(FLAG_TEMP_11)
+		setmetatile(27, 19, METATILE_TrickHousePuzzle_Lever_Off, TRUE)
+		setmetatile(21, 19, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Left, FALSE)
+	} else {
+		setflag(FLAG_TEMP_11)
+		setmetatile(27, 19, METATILE_TrickHousePuzzle_Lever_On, TRUE)
+		setmetatile(21, 19, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Down, FALSE)
+	}
+	callnative(DrawWholeMapView)
+	playse(SE_PIN)
+	release
+}
+script Meta_ZipSlide_Switch3 {
+	lock
+	if (flag(FLAG_TEMP_12)) {
+		clearflag(FLAG_TEMP_12)
+		setmetatile(27, 14, METATILE_TrickHousePuzzle_Lever_Off, TRUE)
+		setmetatile(24, 13, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Left, FALSE)
+	} else {
+		setflag(FLAG_TEMP_12)
+		setmetatile(27, 14, METATILE_TrickHousePuzzle_Lever_On, TRUE)
+		setmetatile(24, 13, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Up, FALSE)
+	}
+	callnative(DrawWholeMapView)
+	playse(SE_PIN)
+	release
+}
+script Meta_ZipSlide_Switch4 {
+	lock
+	if (flag(FLAG_TEMP_13)) {
+		clearflag(FLAG_TEMP_13)
+		setmetatile(21, 10, METATILE_TrickHousePuzzle_Lever_Off, TRUE)
+		setmetatile(21, 9, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Up, FALSE)
+	} else {
+		setflag(FLAG_TEMP_13)
+		setmetatile(21, 10, METATILE_TrickHousePuzzle_Lever_On, TRUE)
+		setmetatile(21, 9, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Left, FALSE)
+	}
+	callnative(DrawWholeMapView)
+	playse(SE_PIN)
+	release
+}
+script Meta_ZipSlide_Switch5 {
+	lock
+	if (flag(FLAG_TEMP_14)) {
+		clearflag(FLAG_TEMP_14)
+		setmetatile(18, 12, METATILE_TrickHousePuzzle_Lever_Off, TRUE)
+		setmetatile(15, 13, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Down, FALSE)
+	} else {
+		setflag(FLAG_TEMP_14)
+		setmetatile(18, 12, METATILE_TrickHousePuzzle_Lever_On, TRUE)
+		setmetatile(15, 13, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Left, FALSE)
+	}
+	callnative(DrawWholeMapView)
+	playse(SE_PIN)
+	release
+}
+script Meta_ZipSlide_Switch6 {
+	lock
+	if (flag(FLAG_TEMP_15)) {
+		clearflag(FLAG_TEMP_15)
+		setmetatile(16, 9, METATILE_TrickHousePuzzle_Lever_Off, TRUE)
+		setmetatile(18, 8, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Right, FALSE)
+	} else {
+		setflag(FLAG_TEMP_15)
+		setmetatile(16, 9, METATILE_TrickHousePuzzle_Lever_On, TRUE)
+		setmetatile(18, 8, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Up, FALSE)
+	}
+	callnative(DrawWholeMapView)
+	playse(SE_PIN)
+	release
+}
+
+script Meta_ZipSlide_TriggerScript_CompletePuzzle {
+	lock
+	setmetatile(19, 7, METATILE_TrickHousePuzzle_Button_Pressed, FALSE)
+	setmetatile(11, 21, METATILE_TrickHousePuzzle_Door_Shuttered, FALSE)
+	setmetatile(28, 21, METATILE_TrickHousePuzzle_Door_Shuttered, FALSE)
 	set_meta_visited_flag(MAP_META_ZIP_SLIDE)
+	playse (SE_PIN)
+	setvar(VAR_TEMP_0, 1)
+	callnative(DrawWholeMapView)
+	release
 }

@@ -27,6 +27,15 @@ Known issues:
 - [ ] Farfetch'd Forest: When the farfetch'd flies, do hideReflection=true and add a shadow field effect or something; also disable ripples
 - [X] Mountain Trail: mapping error in a corner of the ledge. Either collision is needed or move to lower layer.
 
+Meta Puzzle Polish:
+- [ ] Needs background for sliding tile screen.
+	- [ ] Version for size 3
+	- [ ] Version for size 4
+- [ ] Koga's Elbow: Add interactions with floating people
+	- [ ] Make Tustin a fight.
+- [ ] Zip Slide: Fill in item balls with candy.
+	- [ ] Also possibly make a new meta tile behavior that is a slide when elevated priority but is normal walking under it.
+
 
 Changes:
 - [ ] When entering/exiting the puzzle door/stone door, custom transition into and out of the door.

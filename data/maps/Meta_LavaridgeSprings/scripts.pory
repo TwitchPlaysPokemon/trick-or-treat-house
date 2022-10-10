@@ -8,3 +8,31 @@ Meta_LavaridgeSprings_MapScripts::
 script(local) Meta_LavaridgeSprings_OnTransition {
 	set_meta_visited_flag(MAP_META_LAVARIDGE_SPRINGS)
 }
+
+script Meta_LavaridgeSprings_EventScript_TestOpen {
+	lock
+	playse(SE_PIN)
+	setmetatile(19, 9, 0x271, 0)
+	setmetatile(20, 9, 0x271, 0)
+	setmetatile(19, 8, 0x071, 0)
+	setmetatile(20, 8, 0x071, 0)
+	setmetatile(19, 0, 0x001, 0)
+	setmetatile(20, 0, 0x001, 0)
+	setmetatile(19, -1, 0x001, 0)
+	setmetatile(20, -1, 0x001, 0)
+	setmetatile(19, -2, 0x001, 0)
+	setmetatile(20, -2, 0x001, 0)
+	
+	setmetatile(9, 19, 0x271, 0)
+	setmetatile(9, 20, 0x271, 0)
+	setmetatile(8, 19, 0x071, 0)
+	setmetatile(8, 20, 0x071, 0)
+	setmetatile(0, 19, 0x001, 0)
+	setmetatile(0, 20, 0x001, 0)
+	setmetatile(-1, 19, 0x001, 0)
+	setmetatile(-1, 20, 0x001, 0)
+	setmetatile(-2, 19, 0x001, 0)
+	setmetatile(-2, 20, 0x001, 0)
+	callnative(DrawWholeMapView)
+	release
+}
