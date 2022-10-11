@@ -114,7 +114,7 @@ void BORTizeBufferedStrings(struct ScriptContext *ctx)
 #define FLAG_TILES_ACTIVE           FLAG_PUZZLE_21
 #define FLAG_HIDE_SINGERS           FLAG_PUZZLE_22
 #define FLAG_SHOW_EXTRA_SINGER      FLAG_PUZZLE_23
-#define FLAG_EXTRA_ENABLED     FLAG_PUZZLE_24
+#define FLAG_EXTRA_ENABLED          FLAG_PUZZLE_24
 #define VAR_CURR_SONG               VAR_PUZZLE_00
 #define VAR_NUM_CORRECT_STEPS       VAR_PUZZLE_01
 #define VAR_TARGET_TILE             VAR_PUZZLE_02
@@ -123,6 +123,8 @@ void BORTizeBufferedStrings(struct ScriptContext *ctx)
 #define VAR_SONG_B                  VAR_PUZZLE_0B
 #define VAR_SONG_C                  VAR_PUZZLE_0C
 #define VAR_SONG_D                  VAR_PUZZLE_0D
+#define NUM_BYTES_PER_NOTE          13
+#define NUM_MAX_NOTES               8
 
 struct PokemonSaysNote {
 	u8 localId;
@@ -152,14 +154,14 @@ extern const u8 Puzzle_MusicNoteTiles_ExtraCurious[];
 
 const struct PokemonSaysNote sSongNotes[] = {
 	[PS_NOTE_END] = { 0, 0, MUS_DUMMY, NULL },
-	[PS_NOTE_C] = { 2, 0x2C0, SE_NOTE_C, Common_Movement_EmoteNoteC },
-	[PS_NOTE_D] = { 3, 0x2C1, SE_NOTE_D, Common_Movement_EmoteNoteD },
-	[PS_NOTE_E] = { 4, 0x2C2, SE_NOTE_E, Common_Movement_EmoteNoteE },
-	[PS_NOTE_F] = { 5, 0x2C3, SE_NOTE_F, Common_Movement_EmoteNoteF },
-	[PS_NOTE_G] = { 6, 0x2C4, SE_NOTE_G, Common_Movement_EmoteNoteG },
-	[PS_NOTE_A] = { 7, 0x000, SE_NOTE_A, Common_Movement_EmoteNoteC },
-	[PS_NOTE_B] = { 7, 0x000, SE_NOTE_B, Common_Movement_EmoteNoteD },
-	[PS_NOTE_C1]= { 7, 0x000, SE_NOTE_C_HIGH,Common_Movement_EmoteNoteE },
+	[PS_NOTE_C] = { 2, 0x2C0, SE_NOTE_C, Common_Movement_EmoteNoteC }, // Yellow
+	[PS_NOTE_D] = { 3, 0x2C1, SE_NOTE_D, Common_Movement_EmoteNoteD }, // Blue
+	[PS_NOTE_E] = { 4, 0x2C2, SE_NOTE_E, Common_Movement_EmoteNoteE }, // Green
+	[PS_NOTE_F] = { 5, 0x2C3, SE_NOTE_F, Common_Movement_EmoteNoteF }, // Pink
+	[PS_NOTE_G] = { 6, 0x2C4, SE_NOTE_G, Common_Movement_EmoteNoteG }, // Red
+	[PS_NOTE_A] = { 9, 0x2C5, SE_NOTE_A, Common_Movement_EmoteNoteC }, // Cyan
+	[PS_NOTE_B] = { 8, 0x2C6, SE_NOTE_B, Common_Movement_EmoteNoteD }, // White
+	[PS_NOTE_C1]= { 7, 0x2C7, SE_NOTE_C_HIGH,Common_Movement_EmoteNoteE }, // Orange
 };
 
 #define NOTE(l, length)   ((PS_NOTE_##l << 8) | length)
@@ -192,6 +194,17 @@ static const u16 Puzzle_MusicNoteTiles_MusicTableD[][7] = {
 	{ NOTE(G, 15), NOTE(E, 15), NOTE(C, 30), NOTE(E, 30), NOTE(G, 30), NOTE(C1, 30), PS_NOTE_END }, // US National Anthem Start
 };
 
+static const u16 Puzzle_MusicNoteTiles_MusicTableMeta[][10] = {
+	{ NOTE(B, 30), NOTE(A, 30), NOTE(A, 30), NOTE(D, 10), NOTE(B, 10), NOTE(A, 10), NOTE(F, 60), PS_NOTE_END}, // Nocturn of Shadow
+	{ NOTE(F, 20), NOTE(D, 20), NOTE(F, 20), NOTE(D, 20), NOTE(A, 20), NOTE(F, 20), NOTE(A, 20), NOTE(F, 20), PS_NOTE_END}, // Bolero of Fire
+	{ NOTE(D, 60), NOTE(F, 30), NOTE(D, 30), NOTE(A, 60), NOTE(F, 60), NOTE(D, 60), PS_NOTE_END}, // Requiem of Spirit
+	{ NOTE(D, 60), NOTE(B, 30), NOTE(A, 60), NOTE(F, 30), NOTE(E, 60), NOTE(D, 20), NOTE(C, 20), NOTE(E, 60), PS_NOTE_END}, // Midna's Lament (transposed)
+	
+	// D,D,D,D,D-E-F... F-G-A,A-^-B,BAGF, G,A  // Star Fox Theme
+	// C,E-G, F,A-C, BAG // Pokemon Leitmotif
+	
+};
+
 
 void PokemonSaysInitPuzzle(struct ScriptContext *ctx)
 {
@@ -221,12 +234,11 @@ const u16* PokemonSays_GetCurrentSong()
 	}
 }
 
-
 extern u8 gStringWorking[];
 void PokemonSaysSetupSongScript(struct ScriptContext *ctx)
 {
 	u8 i = 0, lastSingId = 0;
-	u8* script = AllocZeroed(100); // (13 * numNotes) + 2 (max 6 notes = 80 bytes max)
+	u8* script = AllocZeroed((NUM_BYTES_PER_NOTE * NUM_MAX_NOTES) + 10); // (13 * numNotes) + 2 (max 6 notes = 80 bytes max)
 	const u16* music = PokemonSays_GetCurrentSong();
 	
 	mgba_printf(MGBA_LOG_INFO, "Creating RAM script for song at %08X...", music);

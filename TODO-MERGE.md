@@ -25,7 +25,7 @@ Known issues:
 - [ ] Manectric on the intro screen is yellow instead of blue for some reason.
 - [ ] Pokemon Says: When the high note is used, the azuril breaking out of the jar counts as a bad note, but talking to it after it breaks out isn't counted as a bad note.
 - [ ] Farfetch'd Forest: When the farfetch'd flies, do hideReflection=true and add a shadow field effect or something; also disable ripples
-- [X] Mountain Trail: mapping error in a corner of the ledge. Either collision is needed or move to lower layer.
+- [ ] BORT Mode: Not all abilities have been translated.
 
 Meta Puzzle Polish:
 - [ ] Needs background for sliding tile screen.
