@@ -2275,11 +2275,12 @@ u8 GetObjectEventIdByPosition(u16 x, u16 y, u8 elevation) // GetObjectEventIdByX
 
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
-        if (gObjectEvents[i].graphicsId == OBJ_EVENT_GFX_TRICK_DOOR_NORTH) continue; //HACK
+        // if (gObjectEvents[i].graphicsId == OBJ_EVENT_GFX_TRICK_DOOR_NORTH) continue; //HACK
         if (gObjectEvents[i].active)
         {
             if (gObjectEvents[i].currentCoords.x == x
              && gObjectEvents[i].currentCoords.y == y
+             && GetObjectEventGraphicsInfo(gObjectEvents[i].graphicsId) != DOOROFFSET_UP
              && ObjectEventDoesElevationMatch(&gObjectEvents[i], elevation))
                 return i;
         }

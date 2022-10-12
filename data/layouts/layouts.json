@@ -2433,7 +2433,7 @@
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_MetaTileset",
-      "secondary_tileset": "gTileset_Fallarbor",
+      "secondary_tileset": "gTileset_EverGrande",
       "border_filepath": "data/layouts/Meta_FinalBluff/border.bin",
       "blockdata_filepath": "data/layouts/Meta_FinalBluff/map.bin"
     },
