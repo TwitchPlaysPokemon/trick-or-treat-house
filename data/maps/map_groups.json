@@ -51,7 +51,8 @@
     "TestAcroBikeMap",
     "TestFollowerMap",
     "MetaPuzzle_EmptyPuzzle",
-    "MetaPuzzle_StrengthRoom"
+    "MetaPuzzle_StrengthRoom",
+    "TestPyramidTileset"
   ],
   "MG_CutsceneMaps": [
     "MauvilleCity_Cutscene",

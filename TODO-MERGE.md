@@ -35,6 +35,9 @@ Meta Puzzle Polish:
 	- [ ] Make Tustin a fight.
 - [ ] Zip Slide: Fill in item balls with candy.
 	- [ ] Also possibly make a new meta tile behavior that is a slide when elevated priority but is normal walking under it.
+- [ ] Ziggy Forest: Double check all interactions and both orders to solving the puzzle.
+	- [ ] Fix the Sudo fight so it jumps up onto the walkway before the fight. (Don't use reveal_trainer, I guess.)
+	- [ ] Test to make sure you can't take the waterfall item from the baby until the mom shows up.
 
 
 Changes:

@@ -10,9 +10,12 @@
 #define STEP_CB_SECRET_BASE         6
 #define STEP_CB_CRACKED_FLOOR       7
 #define STEP_CB_WATER_TEMPLE        8
-#define STEP_CB_NPC_TRIGGER         9
-#define STEP_CB_HIDDEN_WALLS        10
-#define STEP_CB_CYCLE_TEXT_PAL      11
-#define STEP_CB_NPC_MULTI_TRIGGER   12
+#define STEP_CB_HIDDEN_WALLS        9
+#define STEP_CB_CYCLE_TEXT_PAL      10
+
+#define NPC_TRIGGER_CB_NONE           0
+#define NPC_TRIGGER_CB_BOULDER_PUSH   1
+#define NPC_TRIGGER_CB_COPY_MOVEMENT  2
+#define NPC_TRIGGER_CB_COPY_MULTI     3
 
 #endif // GUARD_CONSTANTS_FIELD_TASKS_H

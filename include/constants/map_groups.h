@@ -39,6 +39,7 @@
 #define MAP_TEST_FOLLOWER_MAP         (8 | (2 << 8))
 #define MAP_META_PUZZLE_EMPTY_PUZZLE  (9 | (2 << 8))
 #define MAP_META_PUZZLE_STRENGTH_ROOM (10 | (2 << 8))
+#define MAP_TEST_PYRAMID_TILESET      (11 | (2 << 8))
 
 // MG_CutsceneMaps
 #define MAP_MAUVILLE_CITY_CUTSCENE     (0 | (3 << 8))

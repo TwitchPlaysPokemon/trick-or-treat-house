@@ -60,27 +60,33 @@ static void PacifidlogBridgePerStepCallback(u8);
 static void WaterTemplePerStepCallback(u8 taskId);
 static void SootopolisGymIcePerStepCallback(u8);
 static void CrackedFloorPerStepCallback(u8);
-static void MonitorObjectEventTriggersStepCallback(u8 taskId);
-static void MonitorMultiObjectEventTriggersStepCallback(u8 taskId);
+static void MonitorBoulderPushTriggersStepCallback(u8 taskId);
+static void MonitorEventMovementTriggersStepCallback(u8 taskId);
+static void MonitorMultiEventMovementTriggersStepCallback(u8 taskId);
 extern void HiddenMaze_PulseWallTiles(u8 taskId);
 extern void TrickHouse_CycleTextPalette(u8 taskId);
 static void Task_MuddySlope(u8);
 
 static const TaskFunc sPerStepCallbacks[] =
 {
-    [STEP_CB_DUMMY]              = DummyPerStepCallback,
-    [STEP_CB_ASH]                = AshGrassPerStepCallback,
-    [STEP_CB_FORTREE_BRIDGE]     = FortreeBridgePerStepCallback,
-    [STEP_CB_PACIFIDLOG_BRIDGE]  = PacifidlogBridgePerStepCallback, //3
-    [STEP_CB_SOOTOPOLIS_ICE]     = SootopolisGymIcePerStepCallback,
-    [STEP_CB_TRUCK]              = EndTruckSequence,
-    [STEP_CB_SECRET_BASE]        = SecretBasePerStepCallback,
-    [STEP_CB_CRACKED_FLOOR]      = CrackedFloorPerStepCallback,
-    [STEP_CB_WATER_TEMPLE]       = WaterTemplePerStepCallback, //8
-    [STEP_CB_NPC_TRIGGER]        = MonitorObjectEventTriggersStepCallback,
-    [STEP_CB_HIDDEN_WALLS]       = HiddenMaze_PulseWallTiles,
-    [STEP_CB_CYCLE_TEXT_PAL]     = TrickHouse_CycleTextPalette,
-    [STEP_CB_NPC_MULTI_TRIGGER]  = MonitorMultiObjectEventTriggersStepCallback, //12
+    [STEP_CB_DUMMY]                 = DummyPerStepCallback,
+    [STEP_CB_ASH]                   = AshGrassPerStepCallback,
+    [STEP_CB_FORTREE_BRIDGE]        = FortreeBridgePerStepCallback,
+    [STEP_CB_PACIFIDLOG_BRIDGE]     = PacifidlogBridgePerStepCallback, //3
+    [STEP_CB_SOOTOPOLIS_ICE]        = SootopolisGymIcePerStepCallback,
+    [STEP_CB_TRUCK]                 = EndTruckSequence,
+    [STEP_CB_SECRET_BASE]           = SecretBasePerStepCallback,
+    [STEP_CB_CRACKED_FLOOR]         = CrackedFloorPerStepCallback,
+    [STEP_CB_WATER_TEMPLE]          = WaterTemplePerStepCallback, //8
+    [STEP_CB_HIDDEN_WALLS]          = HiddenMaze_PulseWallTiles,
+    [STEP_CB_CYCLE_TEXT_PAL]        = TrickHouse_CycleTextPalette,
+};
+
+static const TaskFunc sNpcTriggerCallbacks[] = {
+    [NPC_TRIGGER_CB_NONE]           = DummyPerStepCallback,
+    [NPC_TRIGGER_CB_BOULDER_PUSH]   = MonitorBoulderPushTriggersStepCallback,
+    [NPC_TRIGGER_CB_COPY_MULTI]     = MonitorMultiEventMovementTriggersStepCallback, //12
+    [NPC_TRIGGER_CB_COPY_MOVEMENT]  = MonitorEventMovementTriggersStepCallback,
 };
 
 // Each element corresponds to a y coordinate row in the sootopolis gym 1F map.
@@ -128,6 +134,12 @@ static void Task_RunPerStepCallback(u8 taskId)
     sPerStepCallbacks[idx](taskId);
 }
 
+static void Task_RunNPCTriggerCallback(u8 taskId)
+{
+    int idx = gTasks[taskId].tCallbackId;
+    sNpcTriggerCallbacks[idx](taskId);
+}
+
 #define tState           data[0]
 #define tAmbientCryState data[1]
 #define tAmbientCryDelay data[2]
@@ -172,6 +184,12 @@ void SetUpFieldTasks(void)
         u8 taskId = CreateTask(Task_RunPerStepCallback, 80);
         gTasks[taskId].tCallbackId = STEP_CB_DUMMY;
     }
+    
+    if (!FuncIsActiveTask(Task_RunNPCTriggerCallback))
+    {
+        u8 taskId = CreateTask(Task_RunNPCTriggerCallback, 80);
+        gTasks[taskId].tCallbackId = NPC_TRIGGER_CB_NONE;
+    }
 
     if (!FuncIsActiveTask(Task_MuddySlope))
         CreateTask(Task_MuddySlope, 80);
@@ -198,14 +216,32 @@ void ActivatePerStepCallback(u8 callbackId)
     }
 }
 
+void ActivateNpcTriggerCallback(u8 callbackId)
+{
+    u8 taskId = FindTaskIdByFunc(Task_RunNPCTriggerCallback);
+    if (taskId != TASK_NONE)
+    {
+        s32 i;
+        s16 *data = gTasks[taskId].data;
+
+        for (i = 0; i < NUM_TASK_DATA; i++)
+            data[i] = 0;
+
+        if (callbackId >= ARRAY_COUNT(sNpcTriggerCallbacks))
+            tCallbackId = NPC_TRIGGER_CB_NONE;
+        else
+            tCallbackId = callbackId;
+    }
+}
+
 void ResetFieldTasksArgs(void)
 {
     u8 taskId;
     s16 *data;
 
-    taskId = FindTaskIdByFunc(Task_RunPerStepCallback);
-    if (taskId != TASK_NONE)
-        data = gTasks[taskId].data;
+    // taskId = FindTaskIdByFunc(Task_RunPerStepCallback);
+    // if (taskId != TASK_NONE)
+    //     data = gTasks[taskId].data;
 
     taskId = FindTaskIdByFunc(Task_RunTimeBasedEvents);
     if (taskId != TASK_NONE)
@@ -1267,7 +1303,7 @@ static void Task_MuddySlope(u8 taskId)
 #define tRunningVar data[3]
 #define tRunningIndex data[4]
 
-static void MonitorObjectEventTriggersStepCallback(u8 taskId)
+static void MonitorBoulderPushTriggersStepCallback(u8 taskId)
 {
     s16 x, y, o, t;
     bool8 standing;
@@ -1304,8 +1340,8 @@ static void MonitorObjectEventTriggersStepCallback(u8 taskId)
         for (t = 0; t < gMapHeader.events->coordEventCount; t++) {
             coordEvent = &gMapHeader.events->coordEvents[t];
             if (!coordEvent->npcTrigger) continue;
-            if (objectEvent->currentCoords.x != coordEvent->x + 7) continue;
-            if (objectEvent->currentCoords.y != coordEvent->y + 7) continue;
+            if (objectEvent->currentCoords.x != coordEvent->x + MAP_OFFSET) continue;
+            if (objectEvent->currentCoords.y != coordEvent->y + MAP_OFFSET) continue;
             
             if (!standing) {
                 // If this event wasn't standing on a trigger before, trigger it now
@@ -1354,7 +1390,7 @@ void TrickHouse_CycleTextPalette(u8 taskId)
 // The difference between this callback and the previous one
 // is that this one can handle multiple objects stepping on triggers
 // at the same time.
-static void MonitorMultiObjectEventTriggersStepCallback(u8 taskId)
+static void MonitorMultiEventMovementTriggersStepCallback(u8 taskId)
 {
     s16 x, y, o, t;
     bool8 standing;
@@ -1382,8 +1418,8 @@ static void MonitorMultiObjectEventTriggersStepCallback(u8 taskId)
         for (t = 0; t < gMapHeader.events->coordEventCount; t++) {
             coordEvent = &gMapHeader.events->coordEvents[t];
             if (!coordEvent->npcTrigger) continue;
-            if (objectEvent->currentCoords.x != coordEvent->x + 7) continue;
-            if (objectEvent->currentCoords.y != coordEvent->y + 7) continue;
+            if (objectEvent->currentCoords.x != coordEvent->x + MAP_OFFSET) continue;
+            if (objectEvent->currentCoords.y != coordEvent->y + MAP_OFFSET) continue;
             
             if (!standing) {
                 // If this event wasn't standing on a trigger before, trigger it now
@@ -1391,6 +1427,71 @@ static void MonitorMultiObjectEventTriggersStepCallback(u8 taskId)
             }
             objectEvent->isStandingOnTrigger = TRUE;
             break;
+        }
+    }
+    tPosX = x;
+    tPosY = y;
+}
+
+#undef tPosX
+#undef tPosY
+#undef tRunningVar
+#undef tRunningIndex
+
+//-----------------------------------------------------------------------------
+
+#define tPosX data[1]
+#define tPosY data[2]
+#define tRunningVar data[3]
+#define tRunningIndex data[4]
+
+static void MonitorEventMovementTriggersStepCallback(u8 taskId)
+{
+    s16 x, y, o, t;
+    bool8 standing;
+    struct ObjectEvent *objectEvent = NULL;
+    struct CoordEvent *coordEvent = NULL;
+    s16 *data = gTasks[taskId].data;
+    PlayerGetDestCoords(&x, &y);
+    
+    // If the var is still set like we set it, the expected frame table script hasn't completed yet
+    // so don't continue checking.
+    if (tRunningVar != 0) {
+        if (VarGet(tRunningVar) == tRunningIndex) return;
+        // If the var isn't the same, the frame table script has cleared it, we can continue
+        tRunningVar = 0;
+        tRunningIndex = 0;
+    }
+    
+    // For every event object
+    for (o = 0; o < OBJECT_EVENTS_COUNT; o++) {
+        objectEvent = &gObjectEvents[o];
+        if (objectEvent->isPlayer) continue;
+        if (!objectEvent->active) continue;
+        if (objectEvent->heldMovementActive) return; //continue;
+        if (objectEvent->singleMovementActive) return; //continue;
+        
+        // Clear the standing flag, but store its current value in case it needs to be put back
+        standing = objectEvent->isStandingOnTrigger;
+        objectEvent->isStandingOnTrigger = FALSE;
+        
+        // For every trigger on the map
+        for (t = 0; t < gMapHeader.events->coordEventCount; t++) {
+            coordEvent = &gMapHeader.events->coordEvents[t];
+            if (!coordEvent->npcTrigger) continue;
+            if (objectEvent->currentCoords.x != coordEvent->x + MAP_OFFSET) continue;
+            if (objectEvent->currentCoords.y != coordEvent->y + MAP_OFFSET) continue;
+            
+            if (!standing) {
+                // If this event wasn't standing on a trigger before, trigger it now
+                tRunningVar = coordEvent->trigger;
+                tRunningIndex = coordEvent->index;
+                VarSet(tRunningVar, tRunningIndex);
+                // If we got down here, we need to set the flag again
+                objectEvent->isStandingOnTrigger = TRUE;
+                return;
+            }
+            objectEvent->isStandingOnTrigger = standing;
         }
     }
     tPosX = x;

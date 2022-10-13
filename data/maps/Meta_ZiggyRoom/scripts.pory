@@ -1,10 +1,540 @@
 raw `
+
+#define LID_ZIGGY_MOM 5
+#define LID_ZIGGY_KID 6
+#define LID_SUDO 12
+#define LID_HM_BALL 10
+
+#define VAR_KID_QUEST  VAR_TEMP_A
+#define VAR_MOM_QUEST  VAR_TEMP_B
+#define FLAG_MOM_DONE  FLAG_TEMP_10
+#define FLAG_KID_DONE  FLAG_TEMP_11
+
 Meta_ZiggyRoom_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_ZiggyRoom_OnTransition
+	@ map_script MAP_SCRIPT_ON_LOAD, Meta_ZiggyRoom_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Meta_ZiggyRoom_FrameTable
+	map_script MAP_SCRIPT_ON_RESUME, Meta_ZiggyRoom_OnResume
+	map_script MAP_SCRIPT_ON_UNLOAD, Meta_ZiggyRoom_OnUnload
 	.byte 0
-`
 
+Meta_ZiggyRoom_FrameTable:
+	@ VAR_STEP_TRIGGER is set to 1 by MonitorObjectEventTriggersStepCallback when any npc steps on a trigger
+	map_script_2 VAR_STEP_TRIGGER, 1, Meta_ZiggyRoom_FinishMomRoute
+	map_script_2 VAR_STEP_TRIGGER, 2, Meta_ZiggyRoom_FinishKidRoute
+	.2byte 0
+`
 script(local) Meta_ZiggyRoom_OnTransition {
-	set_meta_visited_flag(MAP_META_ZIGGY_ROOM)
+	check_meta_visited_flag(MAP_META_ZIGGY_ROOM)
+	goto_if(FALSE, Common_EventScript_NopReturn)
+	setobjectxyperm(LID_ZIGGY_MOM, 14, 23)
+	setobjectmovementtype(LID_ZIGGY_MOM, MOVEMENT_TYPE_FACE_DOWN)
+	setobjectxyperm(LID_ZIGGY_KID, 14, 23)
+	setobjectmovementtype(LID_ZIGGY_KID, MOVEMENT_TYPE_FACE_UP)
+	setobjectxyperm(LID_HM_BALL, 16, 23)
+	setvar(VAR_KID_QUEST, 10)
+	setvar(VAR_MOM_QUEST, 10)
+	return
 }
+script(local) Meta_ZiggyRoom_OnResume {
+	setstepcallback(STEP_CB_FORTREE_BRIDGE)
+	setnpctriggercallback(NPC_TRIGGER_CB_COPY_MOVEMENT)
+}
+script(local) Meta_ZiggyRoom_OnUnload {
+	setstepcallback(STEP_CB_DUMMY)
+	setnpctriggercallback(NPC_TRIGGER_CB_NONE)
+}
+	
+// script(local) Meta_ZiggyRoom_OnLoad {
+// 	setflag(FLAG_SYS_FAST_BONK)
+// }
+
+//-----------------------------------------------------
+// Mom's Route
+
+movement Meta_ZiggyRoom_SudoShake {
+	face_right
+	delay_8
+	face_down
+	delay_8
+	face_left
+	delay_8
+	face_down
+	delay_8
+	face_right
+	delay_8
+	face_down
+	delay_8
+	face_left
+	delay_8
+	face_down
+}
+
+script Meta_ZiggyRoom_WaterSpot1 {
+	lock
+	goto_if_ne(VAR_MOM_QUEST, 0, Common_EventScript_ReleaseEnd)
+	// ------------------------------------------------
+	checkitem (ITEM_WAILMER_PAIL)
+	if (var(VAR_RESULT) == FALSE) {
+		msgbox ("There seems to be a Sudowoodo below you,\n"
+				"blocking the Zigzagoon in.$")
+		goto(Common_EventScript_ReleaseEnd)
+	}
+	msgbox ("There seems to be a Sudowoodo below you,\n"
+			"blocking the Zigzagoon in.\p"
+			"Pour water on it?", MSGBOX_YESNO)
+	goto_if_eq(VAR_RESULT, NO, Common_EventScript_ReleaseEnd)
+	// ------------------------------------------------
+	message("You watered the 'tree'.$")
+	waitmessage
+	special(DoWateringBerryTreeAnim)
+	delay(60)
+	waitse
+	playse (SE_SUDOWOODO_SHAKE)
+	applymovement(LID_SUDO, Meta_ZiggyRoom_SudoShake)
+	waitstate
+	waitmovement(LID_SUDO)
+	// ------------------------------------------------
+	applymovement(LID_SUDO, Meta_ZiggyRoom_SudoRun1)
+	playse(SE_LEDGE)  delay(16)
+	playse(SE_LEDGE)  delay(16)
+	playse(SE_LEDGE)  delay(16)
+	playse(SE_LEDGE)  delay(16)
+	playse(SE_LEDGE)  delay(16)
+	playse(SE_LEDGE)  delay(16)
+	waitmovement(LID_SUDO)
+	setobjectxy(LID_SUDO, 19, 10)
+	msgbox("The Sudowoodo angrily moved away!$")
+	setvar(VAR_MOM_QUEST, 1)
+	release
+}
+movement Meta_ZiggyRoom_SudoRun1 {
+	lock_facing_direction
+	jump_in_place_down
+	jump_in_place_down
+	jump_right * 3
+	jump_up
+	unlock_facing_direction
+}
+
+script Meta_ZiggyRoom_WaterSpot2 {
+	lock
+	goto_if_ne(VAR_MOM_QUEST, 1, Common_EventScript_ReleaseEnd)
+	// ------------------------------------------------
+	// checkitem (ITEM_WAILMER_PAIL) // Assume that we have the pail from this point on
+	msgbox ("The Sudowoodo is blocking the way\n"
+			"again, it seems.\p"
+			"Pour more water on it?", MSGBOX_YESNO)
+	goto_if_eq(VAR_RESULT, NO, Common_EventScript_ReleaseEnd)
+	// ------------------------------------------------
+	message("You watered the 'tree'.$")
+	waitmessage
+	special(DoWateringBerryTreeAnim)
+	delay(60)
+	waitse
+	playse (SE_SUDOWOODO_SHAKE)
+	applymovement(LID_SUDO, Meta_ZiggyRoom_SudoShake)
+	waitstate
+	waitmovement(LID_SUDO)
+	// ------------------------------------------------
+	applymovement(LID_SUDO, Meta_ZiggyRoom_SudoRun2)
+	playse(SE_LEDGE)  delay(16)
+	playse(SE_LEDGE)  delay(16)
+	playse(SE_LEDGE)  delay(16)
+	playse(SE_LEDGE)  delay(16)
+	playse(SE_LEDGE)  delay(16)
+	waitmovement(LID_SUDO)
+	setobjectxy(LID_SUDO, 30, 9)
+	msgbox("The Sudowoodo angrily moved away!$")
+	setvar(VAR_MOM_QUEST, 2)
+	release
+}
+movement Meta_ZiggyRoom_SudoRun2 {
+	lock_facing_direction
+	jump_in_place_down
+	jump_in_place_down
+	jump_up * 2
+	jump_right
+	unlock_facing_direction
+}
+
+script Meta_ZiggyRoom_WaterSpot3 {
+	lock
+	goto_if_ne(VAR_MOM_QUEST, 2, Common_EventScript_ReleaseEnd)
+	// ------------------------------------------------
+	// checkitem (ITEM_WAILMER_PAIL) // Assume that we have the pail from this point on
+	msgbox ("The Sudowoodo is chilling here,\n"
+			"minding its own business.\p"
+			"Pour more water on it?", MSGBOX_YESNO)
+	goto_if_eq(VAR_RESULT, NO, Common_EventScript_ReleaseEnd)
+	// ------------------------------------------------
+	message("You watered the 'tree'.$")
+	waitmessage
+	special(DoWateringBerryTreeAnim)
+	delay(60)
+	waitse
+	playse (SE_SUDOWOODO_SHAKE)
+	applymovement(LID_SUDO, Meta_ZiggyRoom_SudoShake)
+	waitstate
+	waitmovement(LID_SUDO)
+	// ------------------------------------------------
+	applymovement(LID_SUDO, Meta_ZiggyRoom_SudoRun3)
+	playse(SE_LEDGE)  delay(16)
+	playse(SE_LEDGE)  delay(16)
+	playse(SE_LEDGE)  delay(16)
+	playse(SE_LEDGE)  delay(16)
+	playse(SE_LEDGE)  delay(16)
+	playse(SE_LEDGE)  delay(16)
+	waitmovement(LID_SUDO)
+	setobjectxy(LID_SUDO, 20, 21)
+	msgbox("The Sudowoodo angrily moved away!$")
+	setvar(VAR_MOM_QUEST, 3)
+	release
+}
+movement Meta_ZiggyRoom_SudoRun3 {
+	lock_facing_direction
+	jump_in_place_down
+	jump_in_place_down
+	jump_down * 4
+	unlock_facing_direction
+}
+
+script Meta_ZiggyRoom_WaterSpot4 {
+	lock
+	goto_if_ne(VAR_MOM_QUEST, 3, Common_EventScript_ReleaseEnd)
+	// ------------------------------------------------
+	// checkitem (ITEM_WAILMER_PAIL) // Assume that we have the pail from this point on
+	msgbox ("The Sudowoodo has moved to yet another\n"
+			"inconvenient location.\p"
+			"Pour more water on it?", MSGBOX_YESNO)
+	goto_if_eq(VAR_RESULT, NO, Common_EventScript_ReleaseEnd)
+	// ------------------------------------------------
+	message("You watered the…{PAUSE 20} uh…$")
+	delay(16)
+	applymovement(LID_SUDO, Meta_ZiggyRoom_SudoRun4a)
+	playse(SE_LEDGE)  delay(16)
+	playse(SE_LEDGE)  delay(16)
+	waitmessage
+	waitmovement(LID_SUDO)
+	closemessage
+	// 
+	applymovement(LID_SUDO, Meta_ZiggyRoom_SudoRun4b)
+	waitmovement(LID_SUDO)
+	applymovement(LID_PLAYER, Common_Movement_FaceUp)
+	waitmovement(LID_PLAYER)
+	playmoncry(SPECIES_SUDOWOODO, CRY_MODE_ECHO_START)
+	setwildbattle(SPECIES_SUDOWOODO, 30, ITEM_HARD_STONE)
+	waitmoncry
+	dowildbattle
+	setobjectxy(LID_SUDO, 9, 14)
+	// ------------------------------------------------
+	setvar(VAR_MOM_QUEST, 4)
+	release
+}
+movement Meta_ZiggyRoom_SudoRun4a {
+	jump_in_place_up
+	jump_up
+	set_invisible
+	walk_fast_up
+	walk_fast_left
+	face_down
+}
+movement Meta_ZiggyRoom_SudoRun4b {
+	reveal_trainer
+}
+
+script Meta_ZiggyRoom_FinishMomRoute {
+	selectobject(LID_ZIGGY_MOM)
+	// ziggy sounds, jumps happily
+	playmoncry(SPECIES_ZIGZAGOON, CRY_MODE_NORMAL)
+	waitmoncry
+	lock
+	// ----------------------
+	fadescreen(FADE_TO_BLACK)
+	loadarg(0, 15)
+	loadarg(1, 23)
+	callnative(TeleportCamera)
+	fadescreen(FADE_FROM_BLACK)
+	// ----------------------
+	setflag(FLAG_MOM_DONE)
+	if (flag(FLAG_KID_DONE)) {
+		applymovement(LID_ZIGGY_MOM, Meta_ZiggyRoom_FinishMomRoute_MovementMom1)
+		delay (16)   playse(SE_LEDGE)
+		waitmovement(LID_ZIGGY_MOM)
+		call(Meta_ZiggyRoom_CompletePuzzle)
+	} else {
+		applymovement(LID_ZIGGY_MOM, Meta_ZiggyRoom_FinishMomRoute_MovementNoKid)
+		playse(SE_LEDGE)
+		waitmovement(LID_ZIGGY_MOM)
+		playmoncry(SPECIES_ZIGZAGOON, CRY_MODE_ECHO_START)
+		waitmoncry
+		delay (60)
+		copyobjectxytoperm(LID_ZIGGY_MOM)
+		setobjectmovementtype(LID_ZIGGY_MOM, MOVEMENT_TYPE_LOOK_AROUND)
+		// Re-spawn to apply movement type
+		removeobject(LID_ZIGGY_MOM)
+		addobject(LID_ZIGGY_MOM)
+	}
+	// ----------------------
+	fadescreen(FADE_TO_BLACK)
+	callnative(ResetCameraToPlayer)
+	fadescreen(FADE_FROM_BLACK)
+	
+	setvar(VAR_STEP_TRIGGER, 0)
+	release
+}
+movement Meta_ZiggyRoom_FinishMomRoute_MovementNoKid {
+	jump_2_down
+	delay_8
+	face_left
+	delay_16
+	face_right
+	delay_16
+	walk_slow_down
+	walk_slow_left
+	delay_8
+	face_down
+}
+movement Meta_ZiggyRoom_FinishMomRoute_MovementMom1 {
+	walk_left
+	jump_2_down
+	delay_8
+	walk_down
+	face_right
+}
+
+//-----------------------------------------------------
+// Kid's Route
+
+script Meta_ZiggyRoom_StartKidRoute {
+	lock
+	applymovement(LID_ZIGGY_KID, Meta_ZiggyRoom_StartKidRoute_Movement)
+	playse(SE_LEDGE)
+	waitmovement(LID_ZIGGY_KID)
+	applymovement(LID_ZIGGY_KID, Meta_ZiggyRoom_StartKidRoute_Movement)
+	playse(SE_LEDGE)
+	waitmovement(LID_ZIGGY_KID)
+	playmoncry(SPECIES_ZIGZAGOON, CRY_MODE_HIGH_PITCH)
+	waitmoncry
+	setobjectxy(LID_HM_BALL, 22, 29)
+	playse(SE_BALL_BOUNCE_1)
+	message("The baby Zigzagoon picked the ball up\n"
+			"in its maw.$")
+	waitmessage
+	waitbuttonpress
+	setvar(VAR_KID_QUEST, 1)
+	release
+}
+movement Meta_ZiggyRoom_StartKidRoute_Movement {
+	jump_in_place_up
+}
+
+script Meta_ZiggyRoom_FinishKidRoute {
+	selectobject(LID_ZIGGY_KID)
+	// ziggy sounds, jumps happily
+	playmoncry(SPECIES_ZIGZAGOON, CRY_MODE_HIGH_PITCH)
+	waitmoncry
+	lock
+	// ----------------------
+	fadescreen(FADE_TO_BLACK)
+	loadarg(0, 15)
+	loadarg(1, 23)
+	callnative(TeleportCamera)
+	if (flag(FLAG_MOM_DONE)) {
+		applymovement(LID_ZIGGY_MOM, Common_Movement_FaceLeft)
+	}
+	fadescreen(FADE_FROM_BLACK)
+	// ----------------------
+	setflag(FLAG_KID_DONE)
+	setvar(VAR_KID_QUEST, 10)
+	if (flag(FLAG_MOM_DONE)) {
+		applymovement(LID_ZIGGY_KID, Meta_ZiggyRoom_FinishKidRoute_MovementKid1)
+		playse(SE_LEDGE)
+		waitmovement(LID_ZIGGY_KID)
+		waitse
+		setobjectxy(LID_HM_BALL, 16, 23)
+		playse(SE_BALL_BOUNCE_1)
+		call(Meta_ZiggyRoom_CompletePuzzle)
+	} else {
+		applymovement(LID_ZIGGY_KID, Meta_ZiggyRoom_FinishKidRoute_MovementNoMom)
+		playse(SE_LEDGE)
+		waitmovement(LID_ZIGGY_KID)
+		playmoncry(SPECIES_ZIGZAGOON, CRY_MODE_ROAR_1)
+		waitmoncry
+		delay (30)
+		applymovement(LID_ZIGGY_KID, Common_Movement_FaceUp)
+		waitmovement(LID_ZIGGY_KID)
+		setobjectxy(LID_HM_BALL, 16, 23)
+		playse(SE_BALL_BOUNCE_1)
+		delay (60)
+		copyobjectxytoperm(LID_ZIGGY_KID)
+		setobjectmovementtype(LID_ZIGGY_KID, MOVEMENT_TYPE_FACE_UP)
+		// Re-spawn to apply movement type
+		removeobject(LID_ZIGGY_KID)
+		addobject(LID_ZIGGY_KID)
+	}
+	// ----------------------
+	fadescreen(FADE_TO_BLACK)
+	callnative(ResetCameraToPlayer)
+	fadescreen(FADE_FROM_BLACK)
+	
+	setvar(VAR_STEP_TRIGGER, 0)
+	release
+}
+movement Meta_ZiggyRoom_FinishKidRoute_MovementNoMom {
+	jump_2_left
+	delay_16 * 2
+	face_up
+	delay_16
+	face_down
+	delay_16
+	face_left
+	delay_16 * 2
+}
+movement Meta_ZiggyRoom_FinishKidRoute_MovementKid1 {
+	jump_2_left
+	delay_16 * 2
+}
+
+script Meta_ZiggyRoom_CompletePuzzle {
+	// mom and kid reunite
+	delay (30)
+	applymovement(LID_ZIGGY_MOM, Meta_ZiggyRoom_CompletePuzzle_MovementMom2)
+	playse(SE_PIN)
+	waitmovement(LID_ZIGGY_MOM)
+	applymovement(LID_ZIGGY_KID, Meta_ZiggyRoom_CompletePuzzle_MovementKid2)
+	playse(SE_LEDGE)
+	waitmovement(LID_ZIGGY_KID)
+	applymovement(LID_ZIGGY_MOM, Common_Movement_FaceDown)
+	waitmovement(LID_ZIGGY_MOM)
+	delay(60)
+	playmoncry(SPECIES_ZIGZAGOON, CRY_MODE_HIGH_PITCH)
+	waitmoncry
+	playmoncry(SPECIES_ZIGZAGOON, CRY_MODE_NORMAL)
+	waitmoncry
+	//
+	set_meta_visited_flag(MAP_META_ZIGGY_ROOM)
+	//
+	copyobjectxytoperm(LID_ZIGGY_KID)
+	setobjectmovementtype(LID_ZIGGY_KID, MOVEMENT_TYPE_FACE_UP)
+	copyobjectxytoperm(LID_ZIGGY_MOM)
+	setobjectmovementtype(LID_ZIGGY_MOM, MOVEMENT_TYPE_FACE_DOWN)
+	// Re-spawn to apply movement type
+	removeobject(LID_ZIGGY_KID)
+	addobject(LID_ZIGGY_KID)
+	removeobject(LID_ZIGGY_MOM)
+	addobject(LID_ZIGGY_MOM)
+	return
+}
+movement Meta_ZiggyRoom_CompletePuzzle_MovementMom2 {
+	face_right
+	emote_exclamation_mark
+	delay_16 * 2
+}
+movement Meta_ZiggyRoom_CompletePuzzle_MovementKid2 {
+	jump_in_place_left
+	walk_fastest_left * 2
+	face_up
+}
+
+//-----------------------------------------------------
+
+script Meta_ZiggyRoom_EnterTreeLevel {
+	setflag(FLAG_SYS_FAST_BONK)
+	release
+}
+script Meta_ZiggyRoom_ExitTreeLevel {
+	clearflag(FLAG_SYS_FAST_BONK)
+	release
+}
+
+//-----------------------------------------------------
+
+script Meta_ZiggyRoom_ZiggyMom {
+	if (flag(FLAG_KID_DONE)) {
+		msgbox( "It's snuggling its baby!$", MSGBOX_AUTOCLOSE)
+	} else {
+		msgbox( "It seems to be looking for its baby…$", MSGBOX_AUTOCLOSE)
+	}
+}
+script Meta_ZiggyRoom_ZiggyBaby {
+	if (flag(FLAG_MOM_DONE)) {
+		msgbox( "It's happily rubbing up against\n"
+				"its mommy's soft fur!$", MSGBOX_AUTOCLOSE)
+	} else {
+		msgbox( "It seems to be hugging the ball for\n"
+				"comfort… It hisses if you go near.$", MSGBOX_AUTOCLOSE)
+	}
+}
+
+script Meta_ZiggyRoom_Ranger {
+	lock
+	faceplayer //TODO: change in relation to puzzle completeness
+	switch (var(VAR_MOM_QUEST)) {
+		case 0:
+	msgbox( "That poor Zigzagoon mother!\n"
+			"She got separated from her baby!\p"
+			"If I had a water can, I'd help her out\n"
+			"by chasing off that Sudowoodo blocking\l"
+			"her path out of there!$")
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+	msgbox( "Please help that Zigzagoon find her\n"
+			"child! I'm sure they'll thank you!$")
+		case 10:
+	msgbox( "Thanks for your help!$")
+	}
+	applymovement(THIS_EVENT, Common_Movement_FaceUp)
+	waitmovement
+	release
+}
+
+script Meta_ZiggyRoom_WaterCan {
+	// FLAG_PUZZLE_ITEM_0
+	finditem_std (ITEM_WAILMER_PAIL, 1)
+}
+
+script Meta_ZiggyRoom_FinalItem {
+	if (!flag(FLAG_MOM_DONE)) {
+		lock
+		waitse
+		applymovement(LID_ZIGGY_KID, Meta_ZiggyRoom_KidRejectItem)
+		playse(SE_LEDGE) delay(16)
+		playse(SE_LEDGE) delay(16)
+		waitmovement(LID_ZIGGY_KID)
+		playmoncry(SPECIES_ZIGZAGOON, CRY_MODE_ECHO_START)
+		waitmoncry
+		message ("The baby Zigzagoon refuses to let you\n"
+				"take the item!$")
+		waitmessage
+		waitbuttonpress
+		closemessage
+		applymovement(LID_ZIGGY_KID, Common_Movement_FaceUp)
+		waitmovement(LID_ZIGGY_KID)
+		release
+	} else {
+		finditem_std (ITEM_WATERFALL_ITEM, 1)
+	}
+}
+movement Meta_ZiggyRoom_KidRejectItem {
+	jump_in_place_left
+	jump_in_place_left
+}
+
+// Step 1: Cut to get to water can
+// Step 2: Pour water on Sudo
+// Step 3: repeat until Ziggy mom is out
+
+// Step 1: Look at Ziggy baby, playing with item ball
+// "It seems to be playing with that thing?"
+// Step 2: Guide baby to central area
+// Step 3: Baby puts down ball, but doesn't let player pick it up, because its his!
+
+// Step 4: Go down and take item from baby, now that mommy is back
+
+raw `
+#undef LID_SUDO
+`

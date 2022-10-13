@@ -5,6 +5,7 @@
 #include "util.h"
 #include "overworld.h"
 #include "mgba.h"
+#include "field_player_avatar.h"
 #include "constants/event_objects.h"
 #include "constants/map_scripts.h"
 
@@ -267,11 +268,16 @@ void ScriptContext_Enable(void)
 // scripts (except the frame table scripts).
 void RunScriptImmediately(const u8 *ptr)
 {
+    u16 savedFacing = gSpecialVar_Facing;
+    gSpecialVar_Facing = GetPlayerFacingDirection();
+    
     // TODO: Save off gSpecialVars?
     InitScriptContext(&sImmediateScriptContext, gScriptCmdTable, gScriptCmdTableEnd);
     SetupBytecodeScript(&sImmediateScriptContext, ptr);
     while (RunScriptCommand(&sImmediateScriptContext) == TRUE);
     // TODO: Pop gSpecialVars?
+    
+    gSpecialVar_Facing = savedFacing;
 }
 
 u16* GetArgPointer(u16 id)

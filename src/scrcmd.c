@@ -750,6 +750,12 @@ bool8 ScrCmd_setstepcallback(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_setnpctriggercallback(struct ScriptContext *ctx)
+{
+    ActivateNpcTriggerCallback(ScriptReadByte(ctx));
+    return FALSE;
+}
+
 bool8 ScrCmd_setmaplayout(struct ScriptContext *ctx)
 {
     u16 value = VarGet(ScriptReadHalfword(ctx));
@@ -2417,6 +2423,14 @@ bool8 ScrCmd_selectapproachingtrainer(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_selectobject(struct ScriptContext *ctx)
+{
+    u8 localId = ScriptReadByte(ctx);
+    
+    gSelectedObjectEvent = GetObjectEventIdByLocalIdAndMap(localId, gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
+    return FALSE;
+}
+
 bool8 ScrCmd_lockfortrainer(struct ScriptContext *ctx)
 {
     if (IsOverworldLinkActive())
@@ -2743,6 +2757,7 @@ const SrcCmd gScriptCmdTable[NUM_SCRCMDS] = {
 	[SCRCMD_SETDOOROPEN]              = ScrCmd_setdooropen,
 	[SCRCMD_SETDOORCLOSED]            = ScrCmd_setdoorclosed,
 	[SCRCMD_SETSTEPCALLBACK]          = ScrCmd_setstepcallback,
+	[SCRCMD_SETNPCTRIGGERCALLBACK]    = ScrCmd_setnpctriggercallback,
 	[SCRCMD_MESSAGE]                  = ScrCmd_message,
 	[SCRCMD_WAITMESSAGE]              = ScrCmd_waitmessage,
 	[SCRCMD_CLOSEMESSAGE]             = ScrCmd_closemessage,
@@ -2868,6 +2883,7 @@ const SrcCmd gScriptCmdTable[NUM_SCRCMDS] = {
 	[SCRCMD_CONTESTLINKTRANSFER]       = ScrCmd_contestlinktransfer,
 	[SCRCMD_GETPOKENEWSACTIVE]         = ScrCmd_getpokenewsactive,
 	[SCRCMD_SELECTAPPROACHINGTRAINER]  = ScrCmd_selectapproachingtrainer,
+	[SCRCMD_SELECTOBJECT]              = ScrCmd_selectobject,
 	
 	
 	// TODO 

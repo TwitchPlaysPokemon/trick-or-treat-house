@@ -1992,3 +1992,23 @@ gTilesetPalettes_BikePath::
 	.align 2
 gTilesetTiles_BikePath::
 	.incbin "data/tilesets/secondary/bikepath/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_FortreeMeta::
+	.incbin "data/tilesets/secondary/fortree_meta/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/fortree_meta/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/fortree_meta/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/fortree_meta/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/fortree_meta/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/fortree_meta/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/fortree_meta/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/fortree_meta/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/fortree_meta/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/fortree_meta/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/fortree_meta/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/fortree_meta/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/fortree_meta/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_FortreeMeta::
+	.incbin "data/tilesets/secondary/fortree_meta/tiles.4bpp.lz"

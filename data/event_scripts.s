@@ -819,3 +819,5 @@ gText_LinkRecordCouldntBeSaved::
 	.include "data/maps/TrickHouseRestroom_Choose/scripts.inc"
 	.include "data/maps/TrickHouseEntrance_Intro/scripts.inc"
 
+
+	.include "data/maps/TestPyramidTileset/scripts.inc"

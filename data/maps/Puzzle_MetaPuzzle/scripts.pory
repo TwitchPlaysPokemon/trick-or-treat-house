@@ -3,6 +3,9 @@ raw `
 #define VAR_ROOM_ID_0_0       VAR_PUZZLE_01
 #define VAR_ROOM_RESERVE_END  VAR_PUZZLE_10
 
+// FLAG_PUZZLE_20 (+25) = Visited/Finished room flags
+// ...FLAG_PUZZLE_39
+// FLAG_PUZZLE_ITEM_0 = watering can in Ziggy room
 
 
 Puzzle_MetaPuzzle_MapScripts::

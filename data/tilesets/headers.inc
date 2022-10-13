@@ -974,3 +974,14 @@ gTileset_BikePath::
 	.4byte gMetatiles_BikePath
 	.4byte gMetatileAttributes_BikePath
 	.4byte NULL
+
+	.align 2
+gTileset_FortreeMeta::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_FortreeMeta
+	.4byte gTilesetPalettes_FortreeMeta
+	.4byte gMetatiles_FortreeMeta
+	.4byte gMetatileAttributes_FortreeMeta
+	.4byte NULL

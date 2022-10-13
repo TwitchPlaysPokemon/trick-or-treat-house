@@ -895,6 +895,25 @@ void RemoveCameraObject(void)
     RemoveObjectEventByLocalIdAndMap(OBJ_EVENT_ID_CAMERA, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
 }
 
+void TeleportCamera(struct ScriptContext* ctx)
+{
+    s16 destX = ctx->locals[0];
+    s16 destY = ctx->locals[1];
+    s16 deltaX = destX - gSaveBlock1Ptr->pos.x;
+    s16 deltaY = destY - gSaveBlock1Ptr->pos.y;
+    MoveCameraAndRedrawMap(deltaX, deltaY);
+}
+
+void ResetCameraToPlayer(struct ScriptContext* ctx)
+{
+    struct ObjectEvent* player = &gObjectEvents[gPlayerAvatar.objectEventId];
+    s16 destX = player->currentCoords.x - MAP_OFFSET;
+    s16 destY = player->currentCoords.y - MAP_OFFSET;
+    s16 deltaX = destX - gSaveBlock1Ptr->pos.x;
+    s16 deltaY = destY - gSaveBlock1Ptr->pos.y;
+    MoveCameraAndRedrawMap(deltaX, deltaY);
+}
+
 u8 GetPokeblockNameByMonNature(void)
 {
     return CopyMonFavoritePokeblockName(GetNature(&gPlayerParty[GetLeadMonIndex()]), gStringVar1);

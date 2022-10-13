@@ -3,6 +3,7 @@
 
 void SetUpFieldTasks(void);
 void ActivatePerStepCallback(u8 callbackId);
+void ActivateNpcTriggerCallback(u8 callbackId);
 void ResetFieldTasksArgs(void);
 void SetSootopolisGymCrackedIceMetatiles(void);
 

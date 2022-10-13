@@ -62,7 +62,7 @@ Puzzle_IcePath_FrameTable:
 `
 script Puzzle_IcePath_OnResume {
 	// Setup the NPC Trigger step callback MonitorObjectEventTriggersStepCallback
-	setstepcallback (STEP_CB_NPC_TRIGGER)
+	setnpctriggercallback (NPC_TRIGGER_CB_BOULDER_PUSH)
 }
 
 raw `

@@ -4256,7 +4256,7 @@ bool8 MovementType_CopyPlayer_Step0(struct ObjectEvent *objectEvent, struct Spri
 {
     ClearObjectEventMovement(objectEvent, sprite);
     if (objectEvent->directionSequenceIndex == 0)
-        objectEvent->directionSequenceIndex = GetPlayerFacingDirection();
+        objectEvent->directionSequenceIndex = DIR_NORTH; //GetPlayerFacingDirection(); // Fuck this stupidity
     sprite->sTypeFuncId = 1;
     return TRUE;
 }

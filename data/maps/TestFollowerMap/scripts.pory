@@ -4,6 +4,37 @@ raw `
 #define FOLLOW_FLAGS FOLLOWER_FLAG_CAN_LEAVE_ROUTE | FOLLOWER_FLAG_CAN_SURF
 `
 
+script TestFollowerMap_EventScript_TestCutsceneCamera {
+	lock
+	// getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
+	fadescreen(FADE_TO_BLACK)
+	loadarg(0, 5)
+	loadarg(1, 5)
+	callnative(TeleportCamera)
+	fadescreen(FADE_FROM_BLACK)
+	// 
+	delay(10)
+	applymovement(1, TestFollowerMap_Movement_TestCutsceneCamera)
+	waitmovement(1)
+	delay(10)
+	// 
+	fadescreen(FADE_TO_BLACK)
+	callnative(ResetCameraToPlayer)
+	fadescreen(FADE_FROM_BLACK)
+	release
+}
+movement TestFollowerMap_Movement_TestCutsceneCamera {
+	walk_down * 3
+	walk_left
+	walk_up
+	walk_right
+	walk_up * 2
+	walk_in_place_down
+}
+
+
+
+
 script TestFollowerMap_EventScript_JoeyFollow {
 	lockall
 	checkfollower

@@ -124,7 +124,7 @@
       "dest_warp_id": 0
     },
     {
-      "x": 5,
+      "x": 13,
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_TEST_FOLLOWER_MAP",
@@ -135,6 +135,20 @@
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_META_LAVARIDGE_SPRINGS",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 5,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_META_ZIGGY_ROOM",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 11,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_INDOOR_MAP",
       "dest_warp_id": 0
     }
   ],

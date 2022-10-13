@@ -33,6 +33,7 @@
 #include "constants/maps.h"
 #include "constants/flags.h"
 #include "constants/metatile_labels.h"
+#include "constants/event_object_movement.h"
 #include "constants/songs.h"
 #include "constants/event_objects.h"
 #include "constants/map_groups.h"
@@ -143,6 +144,15 @@ static const struct ObjectEventTemplate sConnObject_EndDoor = {
 	.graphicsId = OBJ_EVENT_GFX_TRICK_DOOR_STONE_ROOM,
 	.x = 18, .y = 1, .elevation = 3,
 };
+static const struct ObjectEventTemplate sConnObject_RegiIce = {
+	.graphicsId = OBJ_EVENT_GFX_BIG_REGICE_DOLL,
+	.x = 36, .y = 19, .elevation = 3,
+};
+static const struct ObjectEventTemplate sConnObject_Ziggy = {
+	.graphicsId = OBJ_EVENT_GFX_ZIGZAGOON_1,
+	.movementType = MOVEMENT_TYPE_LOOK_AROUND,
+	.x = 16, .y = 1, .elevation = 3,
+};
 
 static const struct MetaRoomInfo sMetaRoomInfo[] = {
 	[MAP_NUM(MAP_META_NULL_ROOM)] = {},
@@ -207,6 +217,7 @@ static const struct MetaRoomInfo sMetaRoomInfo[] = {
 		.south=1, .west=1, 
 		.tileTag=TAG_ICON_ICE, .palTag=TAG_ICON_ICE,     
 		.requiredItem=ITEM_META_ITEM_DIAMOND,
+		.connObj=&sConnObject_RegiIce,
 	},
 	[MAP_NUM(MAP_META_LOG_FLOTILLA)] = {
 		.south=1, .east=1, 
@@ -227,6 +238,7 @@ static const struct MetaRoomInfo sMetaRoomInfo[] = {
 		.south=1, .west=1, 
 		.tileTag=TAG_ICON_ZIGGY, .palTag=TAG_PAL_NPC1,     
 		.requiredItem=ITEM_META_ITEM_ZIGZAG,
+		.connObj=&sConnObject_Ziggy,
 	},
 	[MAP_NUM(MAP_META_FOREST_CLEARING)] = {
 		.south=1, .east=1, 
@@ -401,7 +413,7 @@ static void MetaPuzzle_InsertConnectionObjects(u16 roomId, u8 idx, int offX, int
 	if (sMetaRoomInfo[MAP_NUM(roomId)].connObj == NULL) return;
 	
 	struct ObjectEventTemplate* obj = NULL;
-	struct ObjectEventTemplate* over = sMetaRoomInfo[MAP_NUM(roomId)].connObj;
+	const struct ObjectEventTemplate* over = sMetaRoomInfo[MAP_NUM(roomId)].connObj;
 	
 	for (int i = 0; i < OBJECT_EVENT_TEMPLATES_COUNT; i++) {
 		if (gSaveBlock1Ptr->objectEventTemplates[i].graphicsId == (OBJ_EVENT_GFX_VAR_0 + idx)) {
@@ -411,6 +423,9 @@ static void MetaPuzzle_InsertConnectionObjects(u16 roomId, u8 idx, int offX, int
 	}
 	if (obj == NULL) return;
 	obj->graphicsId = over->graphicsId;
+	obj->movementType = over->movementType;
+	obj->movementRangeX = over->movementRangeX;
+	obj->movementRangeY = over->movementRangeY;
 	obj->flagId = over->flagId;
 	obj->x = over->x + offX;
 	obj->y = over->y + offY;

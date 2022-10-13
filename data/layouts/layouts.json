@@ -1542,8 +1542,8 @@
       "name": "IndoorMap_Layout",
       "width": 20,
       "height": 20,
-      "border_width": 2,
-      "border_height": 2,
+      "border_width": 3,
+      "border_height": 3,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_GenericBuilding",
       "border_filepath": "data/layouts/IndoorMap/border.bin",
@@ -2589,7 +2589,7 @@
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_MetaTileset",
-      "secondary_tileset": "gTileset_Fortree",
+      "secondary_tileset": "gTileset_FortreeMeta",
       "border_filepath": "data/layouts/Meta_ZiggyRoom/border.bin",
       "blockdata_filepath": "data/layouts/Meta_ZiggyRoom/map.bin"
     },
@@ -2664,6 +2664,18 @@
       "secondary_tileset": "gTileset_Petalburg",
       "border_filepath": "data/layouts/Meta_BerryRoom/border.bin",
       "blockdata_filepath": "data/layouts/Meta_BerryRoom/map.bin"
+    },
+    {
+      "id": "LAYOUT_TEST_PYRAMID_TILESET",
+      "name": "TestPyramidTileset_Layout",
+      "width": 20,
+      "height": 20,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Autumn",
+      "secondary_tileset": "gTileset_BattlePyramid",
+      "border_filepath": "data/layouts/TestPyramidTileset/border.bin",
+      "blockdata_filepath": "data/layouts/TestPyramidTileset/map.bin"
     }
   ]
 }

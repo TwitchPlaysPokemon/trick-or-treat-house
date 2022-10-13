@@ -1443,6 +1443,12 @@
 	.byte \stepCbId
 	.endm
 
+	@ Enables the overworld task specified by stepCbId (NPC_TRIGGER_CB_*). Only 1 can be active at a time. See src/field_tasks.c for more.
+	.macro setnpctriggercallback stepCbId:req
+	.byte SCRCMD_SETNPCTRIGGERCALLBACK
+	.byte \stepCbId
+	.endm
+
 	@ Sets the specified object's sprite's subpriority, and sets fixedPriority to TRUE.
 	@ Only used to hide the player and Briney behind the boat.
 	.macro setobjectsubpriority localId:req, map:req, subpriority:req
@@ -1747,6 +1753,12 @@
 	@ Sets the selected object to the id of the currently approaching trainer.
 	.macro selectapproachingtrainer
 	.byte SCRCMD_SELECTAPPROACHINGTRAINER
+	.endm
+
+	@ Sets the selected object to the id of the currently approaching trainer.
+	.macro selectobject lid:req
+	.byte SCRCMD_SELECTOBJECT
+	.byte \lid
 	.endm
 
 	@ Freezes all objects immediately except the player and the approaching trainers.

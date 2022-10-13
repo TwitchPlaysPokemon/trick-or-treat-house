@@ -72,7 +72,7 @@ script(local) Puzzle_TicRacToe_OnExit {
 }
 script(local) Puzzle_TicRacToe_OnResume {
 	// Setup the NPC Mutli Trigger callback
-	setstepcallback(STEP_CB_NPC_MULTI_TRIGGER)
+	setnpctriggercallback(NPC_TRIGGER_CB_COPY_MULTI)
 }
 script(local) Puzzle_TicRacToe_StepTriggerCallback {
 	if (flag(FLAG_ALL_BUTTONS_PRESSED) == FALSE) {

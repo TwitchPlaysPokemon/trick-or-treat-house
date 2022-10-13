@@ -56,7 +56,7 @@ Puzzle_TwinMemories_MapTable:
 	.2byte 0
 Puzzle_TwinMemories_OnResume:
 	@ Setup the NPC Trigger step callback MonitorObjectEventTriggersStepCallback
-	setstepcallback STEP_CB_NPC_TRIGGER 
+	setnpctriggercallback NPC_TRIGGER_CB_BOULDER_PUSH 
 	end
 
 @ -----------------------------------------------------

@@ -652,3 +652,11 @@ gMetatiles_BikePath::
 	.align 1
 gMetatileAttributes_BikePath::
 	.incbin "data/tilesets/secondary/bikepath/metatile_attributes.bin"
+
+	.align 1
+gMetatiles_FortreeMeta::
+	.incbin "data/tilesets/secondary/fortree_meta/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_FortreeMeta::
+	.incbin "data/tilesets/secondary/fortree_meta/metatile_attributes.bin"
