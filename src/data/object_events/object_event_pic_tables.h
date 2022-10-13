@@ -2378,6 +2378,16 @@ static const struct SpriteFrameImage sPicTable_MetaPedestal[] = {
     obj_frame_tiles(gObjectEventPic_MetaPedestal),
 };
 
+static const struct SpriteFrameImage sPicTable_TrickButton[] = {
+    overworld_frame(gObjectEventPic_TrickButton, 2, 2, 0),
+    overworld_frame(gObjectEventPic_TrickButton, 2, 2, 1),
+};
+
+static const struct SpriteFrameImage sPicTable_TrickSwitch[] = {
+    overworld_frame(gObjectEventPic_TrickSwitch, 2, 2, 0),
+    overworld_frame(gObjectEventPic_TrickSwitch, 2, 2, 1),
+};
+
 static const struct SpriteFrameImage sPicTable_TrickDoorScroll[] = {
     overworld_frame(gObjectEventPic_TrickDoorScroll, 8, 8, 0),
     overworld_frame(gObjectEventPic_TrickDoorScroll, 8, 8, 1),

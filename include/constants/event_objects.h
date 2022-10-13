@@ -308,8 +308,10 @@
 #define OBJ_EVENT_GFX_PICNICKER2                     0x11F
 #define OBJ_EVENT_GFX_PICNICKER3                     0x120
 #define OBJ_EVENT_GFX_META_PEDESTAL                  0x121
+#define OBJ_EVENT_GFX_TRICK_BUTTON                   0x122
+#define OBJ_EVENT_GFX_TRICK_SWITCH                   0x123
 
-#define NUM_OBJ_EVENT_GFX                            0x122
+#define NUM_OBJ_EVENT_GFX                            0x124
 
 // These are dynamic object gfx ids.
 // They correspond with the values of the VAR_OBJ_GFX_ID_X vars.

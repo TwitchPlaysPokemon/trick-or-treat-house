@@ -871,6 +871,41 @@ const union AnimCmd *const sAnimTable_TrickDoor[] = {
     [ANIM_STD_GO_FASTEST_EAST] = gAnim_DoorClosed,
 };
 
+const union AnimCmd gAnim_SwitchOff[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd gAnim_SwitchOn[] =
+{
+    ANIMCMD_FRAME(1, 1),
+    ANIMCMD_JUMP(0),
+};
+
+const union AnimCmd *const sAnimTable_TrickPuzzleSwitch[] = {
+    [ANIM_STD_FACE_SOUTH] = gAnim_SwitchOff,
+    [ANIM_STD_FACE_NORTH] = gAnim_SwitchOn,
+    [ANIM_STD_FACE_WEST] = gAnim_SwitchOff,
+    [ANIM_STD_FACE_EAST] = gAnim_SwitchOff,
+    [ANIM_STD_GO_SOUTH] = gAnim_SwitchOff,
+    [ANIM_STD_GO_NORTH] = gAnim_SwitchOn,
+    [ANIM_STD_GO_WEST] = gAnim_SwitchOff,
+    [ANIM_STD_GO_EAST] = gAnim_SwitchOff,
+    [ANIM_STD_GO_FAST_SOUTH] = gAnim_SwitchOff,
+    [ANIM_STD_GO_FAST_NORTH] = gAnim_SwitchOn,
+    [ANIM_STD_GO_FAST_WEST] = gAnim_SwitchOff,
+    [ANIM_STD_GO_FAST_EAST] = gAnim_SwitchOff,
+    [ANIM_STD_GO_FASTER_SOUTH] = gAnim_SwitchOff,
+    [ANIM_STD_GO_FASTER_NORTH] = gAnim_SwitchOn,
+    [ANIM_STD_GO_FASTER_WEST] = gAnim_SwitchOff,
+    [ANIM_STD_GO_FASTER_EAST] = gAnim_SwitchOff,
+    [ANIM_STD_GO_FASTEST_SOUTH] = gAnim_SwitchOff,
+    [ANIM_STD_GO_FASTEST_NORTH] = gAnim_SwitchOn,
+    [ANIM_STD_GO_FASTEST_WEST] = gAnim_SwitchOff,
+    [ANIM_STD_GO_FASTEST_EAST] = gAnim_SwitchOff,
+};
+
 static const union AnimCmd *const sAnimTable_BrendanMayNormal[] = {
     [ANIM_STD_FACE_SOUTH] = sAnim_FaceSouth,
     [ANIM_STD_FACE_NORTH] = sAnim_FaceNorth,

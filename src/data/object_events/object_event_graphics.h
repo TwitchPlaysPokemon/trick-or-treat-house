@@ -393,6 +393,8 @@ const u16 gObjectEventPal_EmoteNote[] = INCBIN_U16("graphics/misc/emotion_note_c
 //-------------------------------------------------------------------
 // Trick Treat
 const u32 gObjectEventPic_TrickScroll[] = INCBIN_U32("graphics/object_events/pics/misc/trick_scroll.4bpp");
+const u32 gObjectEventPic_TrickButton[] = INCBIN_U32("graphics/object_events/pics/misc/trick_button.4bpp");
+const u32 gObjectEventPic_TrickSwitch[] = INCBIN_U32("graphics/object_events/pics/misc/trick_switch.4bpp");
 const u32 gObjectEventPic_TrickDoorScroll[] = INCBIN_U32("graphics/object_events/pics/misc/trick_door_scroll.4bpp");
 const u32 gObjectEventPic_TrickDoorScrollRoom[] = INCBIN_U32("graphics/object_events/pics/misc/trick_door_scroll_room.4bpp");
 const u32 gObjectEventPic_TrickDoorStone[] = INCBIN_U32("graphics/object_events/pics/misc/trick_door_stone.4bpp");
