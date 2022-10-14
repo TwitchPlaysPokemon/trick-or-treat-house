@@ -25,7 +25,7 @@
       "trainer_type": "0",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MetaPuzzle_PickupEvent_LotadDoll",
-      "flag": "FLAG_META_PICKUP_LOTAD"
+      "flag": "FLAG_META_PICKUP_LOG_FLOAT"
     }
   ],
   "warp_events": [

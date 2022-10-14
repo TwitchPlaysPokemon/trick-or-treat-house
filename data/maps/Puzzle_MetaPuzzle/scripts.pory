@@ -171,53 +171,53 @@ movement Puzzle_MetaPuzzle_IntroScript_NoPuzzleWalkout_Move2 {
 
 script MetaPuzzle_PickupEvent_InflatableRock {
 	msgbox ("This rock appears to be… inflatable…?$")
-	finditem_std(ITEM_META_ITEM_ROCK, 1)
+	finditem_std(ITEM_META_ITEM_FINAL_BLUFF, 1)
 }
 script MetaPuzzle_PickupEvent_ZigzagCushion {
 	msgbox ("This soft fluffy cushion is covered in\n"
 			"ZIGZAGOON sheddings, like they've been\l"
 			"laying on it a lot.$")
-	finditem_std(ITEM_META_ITEM_ZIGZAG, 1)
+	finditem_std(ITEM_META_ITEM_ZIGGY, 1)
 }
 script MetaPuzzle_PickupEvent_LotadDoll {
 	msgbox ("There's a waterlogged LOTAD doll,\n"
 			"lost and washed away, floating here.$")
-	finditem_std(ITEM_META_ITEM_LOTAD, 1)
+	finditem_std(ITEM_META_ITEM_LOG_FLOAT, 1)
 }
 script MetaPuzzle_PickupEvent_GrassCushion {
 	msgbox ("Weird, there's a pillow just lying\n"
 			"here on the forest floor.$")
-	finditem_std(ITEM_META_ITEM_GRASS, 1)
+	finditem_std(ITEM_META_ITEM_FOREST, 1)
 }
 script MetaPuzzle_PickupEvent_DiamondCushion {
-	finditem_std(ITEM_META_ITEM_DIAMOND, 1)
+	finditem_std(ITEM_META_ITEM_ICE_CORNER, 1)
 }
 script MetaPuzzle_PickupEvent_SpinCushion {
-	finditem_std(ITEM_META_ITEM_SPIN, 1)
+	finditem_std(ITEM_META_ITEM_LEDGE, 1)
 }
 script MetaPuzzle_PickupEvent_MagnemiteDoll {
-	finditem_std(ITEM_META_ITEM_DOLL, 1)
+	finditem_std(ITEM_META_ITEM_POKE_STAGE, 1)
 }
 script MetaPuzzle_PickupEvent_BallCusion {
-	finditem_std(ITEM_META_ITEM_WHEEL, 1)
+	finditem_std(ITEM_META_ITEM_BIKE_PATH, 1)
 }
 script MetaPuzzle_PickupEvent_KissCushion {
-	finditem_std(ITEM_META_ITEM_KISS, 1)
+	finditem_std(ITEM_META_ITEM_BERRY, 1)
 }
 script MetaPuzzle_PickupEvent_RoundCushion {
-	finditem_std(ITEM_META_ITEM_ROUND, 1)
+	finditem_std(ITEM_META_ITEM_LAVARIDGE, 1)
 }
 script MetaPuzzle_PickupEvent_FireCushion {
 	finditem_std(ITEM_META_ITEM_FIRE, 1)
 }
 script MetaPuzzle_PickupEvent_PikaCushion {
-	finditem_std(ITEM_META_ITEM_PIKA, 1)
+	finditem_std(ITEM_META_ITEM_ZIP_SLIDE, 1)
 }
 script MetaPuzzle_PickupEvent_DuskullDoll {
-	finditem_std(ITEM_META_ITEM_DUSKULL, 1)
+	finditem_std(ITEM_META_ITEM_KOGA, 1)
 }
 script MetaPuzzle_PickupEvent_WaterCushion {
-	finditem_std(ITEM_META_ITEM_WATER, 1)
+	finditem_std(ITEM_META_ITEM_DIVE, 1)
 }
 script MetaPuzzle_PickupEvent_SeedotDoll {
 	finditem_std(ITEM_META_ITEM_SEEDOT, 1)
@@ -226,7 +226,7 @@ script MetaPuzzle_PickupEvent_SeedotDoll {
 script MetaPuzzle_DropOffEvents {
 	setvar(VAR_0x800A, 0)
 	// 
-	setvar(VAR_0x8000, ITEM_META_ITEM_ROCK)
+	setvar(VAR_0x8000, ITEM_META_ITEM_FINAL_BLUFF)
 	checkitem(VAR_0x8000, 1)
 	if (var(VAR_RESULT) == TRUE) {
 	msgbox( "Oh! That Inflatable Rock! I can feel\n"
@@ -235,7 +235,7 @@ script MetaPuzzle_DropOffEvents {
 		call(MetaPuzzle_DropOffEvents_GiveItem)
 	}
 	// 
-	setvar(VAR_0x8000, ITEM_META_ITEM_ZIGZAG)
+	setvar(VAR_0x8000, ITEM_META_ITEM_ZIGGY)
 	checkitem(VAR_0x8000, 1)
 	if (var(VAR_RESULT) == TRUE) {
 	msgbox( "Oh! That Zigzag Cushion! It's so\n"
@@ -244,7 +244,7 @@ script MetaPuzzle_DropOffEvents {
 		call(MetaPuzzle_DropOffEvents_GiveItem)
 	}
 	// 
-	setvar(VAR_0x8000, ITEM_META_ITEM_LOTAD)
+	setvar(VAR_0x8000, ITEM_META_ITEM_LOG_FLOAT)
 	checkitem(VAR_0x8000, 1)
 	if (var(VAR_RESULT) == TRUE) {
 	msgbox( "Oh! That Lotad Doll! I can see how\n"
@@ -253,7 +253,7 @@ script MetaPuzzle_DropOffEvents {
 		call(MetaPuzzle_DropOffEvents_GiveItem)
 	}
 	// 
-	setvar(VAR_0x8000, ITEM_META_ITEM_GRASS)
+	setvar(VAR_0x8000, ITEM_META_ITEM_FOREST)
 	checkitem(VAR_0x8000, 1)
 	if (var(VAR_RESULT) == TRUE) {
 	msgbox( "Oh! The Grass Cushion! <sniff!>\n"

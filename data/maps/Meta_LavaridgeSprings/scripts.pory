@@ -6,7 +6,7 @@ Meta_LavaridgeSprings_MapScripts::
 `
 
 script(local) Meta_LavaridgeSprings_OnTransition {
-	set_meta_visited_flag(MAP_META_LAVARIDGE_SPRINGS)
+	set_META_visited_flag(MAP_META_LAVARIDGE)
 }
 
 script Meta_LavaridgeSprings_EventScript_TestOpen {

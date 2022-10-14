@@ -38,7 +38,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_META_SUBMITTED_ROCK"
+      "flag": "FLAG_META_SUBMITTED_FINAL_BLUFF"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ZIGZAG_CUSHION",
@@ -51,7 +51,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_META_SUBMITTED_ZIGZAG"
+      "flag": "FLAG_META_SUBMITTED_ZIGGY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CYNDAQUIL_DOLL",
@@ -64,7 +64,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_META_SUBMITTED_DOLL"
+      "flag": "FLAG_META_SUBMITTED_POKE_STAGE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LOTAD_DOLL",
@@ -77,7 +77,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_META_SUBMITTED_LOTAD"
+      "flag": "FLAG_META_SUBMITTED_LOG_FLOAT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GRASS_CUSHION",
@@ -90,7 +90,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_META_SUBMITTED_GRASS"
+      "flag": "FLAG_META_SUBMITTED_FOREST"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_DIAMOND_CUSHION",
@@ -103,7 +103,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_META_SUBMITTED_DIAMOND"
+      "flag": "FLAG_META_SUBMITTED_ICE_CORNER"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPIN_CUSHION",
@@ -116,7 +116,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_META_SUBMITTED_SPIN"
+      "flag": "FLAG_META_SUBMITTED_LEDGE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BALL_CUSHION",
@@ -129,7 +129,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_META_SUBMITTED_BALL"
+      "flag": "FLAG_META_SUBMITTED_BIKE_PATH"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_KISS_CUSHION",
@@ -142,7 +142,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_META_SUBMITTED_KISS"
+      "flag": "FLAG_META_SUBMITTED_BERRY"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ROUND_CUSHION",
@@ -155,7 +155,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_META_SUBMITTED_ROUND"
+      "flag": "FLAG_META_SUBMITTED_LAVARIDGE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FIRE_CUSHION",
@@ -181,7 +181,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_META_SUBMITTED_PIKA"
+      "flag": "FLAG_META_SUBMITTED_ZIP_SLIDE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_DUSKULL_DOLL",
@@ -194,7 +194,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_META_SUBMITTED_DUSKULL"
+      "flag": "FLAG_META_SUBMITTED_KOGA"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WATER_CUSHION",
@@ -207,7 +207,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_META_SUBMITTED_WATER"
+      "flag": "FLAG_META_SUBMITTED_DIVE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SEEDOT_DOLL",

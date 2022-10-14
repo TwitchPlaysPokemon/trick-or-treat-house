@@ -945,20 +945,20 @@
 #define ITEM_SAPPHIRE                  757
 
 // TTH Meta Items
-#define ITEM_META_ITEM_ROCK            758
-#define ITEM_META_ITEM_ZIGZAG          759
-#define ITEM_META_ITEM_LOTAD           760
-#define ITEM_META_ITEM_GRASS           761
-#define ITEM_META_ITEM_DIAMOND         762
-#define ITEM_META_ITEM_SPIN            763
-#define ITEM_META_ITEM_DOLL            764
-#define ITEM_META_ITEM_WHEEL           765
-#define ITEM_META_ITEM_KISS            766
-#define ITEM_META_ITEM_ROUND           767
+#define ITEM_META_ITEM_FINAL_BLUFF            758
+#define ITEM_META_ITEM_ZIGGY          759
+#define ITEM_META_ITEM_LOG_FLOAT           760
+#define ITEM_META_ITEM_FOREST           761
+#define ITEM_META_ITEM_ICE_CORNER         762
+#define ITEM_META_ITEM_LEDGE            763
+#define ITEM_META_ITEM_POKE_STAGE            764
+#define ITEM_META_ITEM_BIKE_PATH           765
+#define ITEM_META_ITEM_BERRY            766
+#define ITEM_META_ITEM_LAVARIDGE           767
 #define ITEM_META_ITEM_FIRE            768
-#define ITEM_META_ITEM_PIKA            769
-#define ITEM_META_ITEM_DUSKULL         770
-#define ITEM_META_ITEM_WATER           771
+#define ITEM_META_ITEM_ZIP_SLIDE            769
+#define ITEM_META_ITEM_KOGA         770
+#define ITEM_META_ITEM_DIVE           771
 #define ITEM_META_ITEM_SEEDOT          772
 #define ITEM_META_ITEM_CUSHION         773
 

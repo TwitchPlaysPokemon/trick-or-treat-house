@@ -10930,10 +10930,10 @@ const struct Item gItems[] =
 #pragma region TTH HM Items
 
 
-    [ITEM_META_ITEM_ROCK] =
+    [ITEM_META_ITEM_FINAL_BLUFF] =
     {
         .name = sMetaItemRockName,
-        .itemId = ITEM_META_ITEM_ROCK,
+        .itemId = ITEM_META_ITEM_FINAL_BLUFF,
         .price = 0,
         .description = sMetaItemRockDesc,
         .importance = 1,
@@ -10944,10 +10944,10 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_META_ITEM_ZIGZAG] =
+    [ITEM_META_ITEM_ZIGGY] =
     {
         .name = sMetaItemZigzagName,
-        .itemId = ITEM_META_ITEM_ZIGZAG,
+        .itemId = ITEM_META_ITEM_ZIGGY,
         .price = 0,
         .description = sMetaItemZigzagDesc,
         .importance = 1,
@@ -10958,10 +10958,10 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_META_ITEM_LOTAD] =
+    [ITEM_META_ITEM_LOG_FLOAT] =
     {
         .name = sMetaItemLotadName,
-        .itemId = ITEM_META_ITEM_LOTAD,
+        .itemId = ITEM_META_ITEM_LOG_FLOAT,
         .price = 0,
         .description = sMetaItemLotadDesc,
         .importance = 1,
@@ -10972,10 +10972,10 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_META_ITEM_GRASS] =
+    [ITEM_META_ITEM_FOREST] =
     {
         .name = sMetaItemGrassName,
-        .itemId = ITEM_META_ITEM_GRASS,
+        .itemId = ITEM_META_ITEM_FOREST,
         .price = 0,
         .description = sMetaItemGrassDesc,
         .importance = 1,
@@ -10986,10 +10986,10 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_META_ITEM_DIAMOND] =
+    [ITEM_META_ITEM_ICE_CORNER] =
     {
         .name = sMetaItemDiamondName,
-        .itemId = ITEM_META_ITEM_DIAMOND,
+        .itemId = ITEM_META_ITEM_ICE_CORNER,
         .price = 0,
         .description = sMetaItemDiamondDesc,
         .importance = 1,
@@ -11000,10 +11000,10 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_META_ITEM_SPIN] =
+    [ITEM_META_ITEM_LEDGE] =
     {
         .name = sMetaItemSpinName,
-        .itemId = ITEM_META_ITEM_SPIN,
+        .itemId = ITEM_META_ITEM_LEDGE,
         .price = 0,
         .description = sMetaItemSpinDesc,
         .importance = 1,
@@ -11014,10 +11014,10 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_META_ITEM_DOLL] =
+    [ITEM_META_ITEM_POKE_STAGE] =
     {
         .name = sMetaItemDollName,
-        .itemId = ITEM_META_ITEM_DOLL,
+        .itemId = ITEM_META_ITEM_POKE_STAGE,
         .price = 0,
         .description = sMetaItemDollDesc,
         .importance = 1,
@@ -11028,10 +11028,10 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_META_ITEM_WHEEL] =
+    [ITEM_META_ITEM_BIKE_PATH] =
     {
         .name = sMetaItemWheelName,
-        .itemId = ITEM_META_ITEM_WHEEL,
+        .itemId = ITEM_META_ITEM_BIKE_PATH,
         .price = 0,
         .description = sMetaItemWheelDesc,
         .importance = 1,
@@ -11042,10 +11042,10 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_META_ITEM_KISS] =
+    [ITEM_META_ITEM_BERRY] =
     {
         .name = sMetaItemKissName,
-        .itemId = ITEM_META_ITEM_KISS,
+        .itemId = ITEM_META_ITEM_BERRY,
         .price = 0,
         .description = sMetaItemKissDesc,
         .importance = 1,
@@ -11056,10 +11056,10 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_META_ITEM_ROUND] =
+    [ITEM_META_ITEM_LAVARIDGE] =
     {
         .name = sMetaItemRoundName,
-        .itemId = ITEM_META_ITEM_ROUND,
+        .itemId = ITEM_META_ITEM_LAVARIDGE,
         .price = 0,
         .description = sMetaItemRoundDesc,
         .importance = 1,
@@ -11084,10 +11084,10 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_META_ITEM_PIKA] =
+    [ITEM_META_ITEM_ZIP_SLIDE] =
     {
         .name = sMetaItemPikaName,
-        .itemId = ITEM_META_ITEM_PIKA,
+        .itemId = ITEM_META_ITEM_ZIP_SLIDE,
         .price = 0,
         .description = sMetaItemPikaDesc,
         .importance = 1,
@@ -11098,10 +11098,10 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_META_ITEM_DUSKULL] =
+    [ITEM_META_ITEM_KOGA] =
     {
         .name = sMetaItemDuskullName,
-        .itemId = ITEM_META_ITEM_DUSKULL,
+        .itemId = ITEM_META_ITEM_KOGA,
         .price = 0,
         .description = sMetaItemDuskullDesc,
         .importance = 1,
@@ -11112,10 +11112,10 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-    [ITEM_META_ITEM_WATER] =
+    [ITEM_META_ITEM_DIVE] =
     {
         .name = sMetaItemWaterName,
-        .itemId = ITEM_META_ITEM_WATER,
+        .itemId = ITEM_META_ITEM_DIVE,
         .price = 0,
         .description = sMetaItemWaterDesc,
         .importance = 1,

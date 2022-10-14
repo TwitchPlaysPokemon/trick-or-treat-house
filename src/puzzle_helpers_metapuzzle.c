@@ -200,60 +200,60 @@ static const struct MetaRoomInfo sMetaRoomInfo[] = {
 	[MAP_NUM(MAP_META_LAVARIDGE_SPRINGS)] = {
 		.south=1, .east=1, 
 		.tileTag=TAG_ICON_LAVARIDGE, .palTag=TAG_PAL_NPC1,     
-		.requiredItem=ITEM_META_ITEM_ROUND,
+		.requiredItem=ITEM_META_ITEM_LAVARIDGE,
 	},
 	[MAP_NUM(MAP_META_LEDGE_ROOM)] = {
 		.north=1, .east=1, 
 		.tileTag=TAG_ICON_LEDGE, .palTag=TAG_PAL_NPC1,     
-		.requiredItem=ITEM_META_ITEM_SPIN,
+		.requiredItem=ITEM_META_ITEM_LEDGE,
 	},
 	[MAP_NUM(MAP_META_FINAL_BLUFF)] = {
 		.west=1,           
 		.tileTag=TAG_ICON_FINAL, .palTag=TAG_PAL_NPC1,     
-		.requiredItem=ITEM_META_ITEM_ROCK,
+		.requiredItem=ITEM_META_ITEM_FINAL_BLUFF,
 		.connObj=&sConnObject_EndDoor,
 	},
 	[MAP_NUM(MAP_META_ICE_CORNER)] = {
 		.south=1, .west=1, 
 		.tileTag=TAG_ICON_ICE, .palTag=TAG_ICON_ICE,     
-		.requiredItem=ITEM_META_ITEM_DIAMOND,
+		.requiredItem=ITEM_META_ITEM_ICE_CORNER,
 		.connObj=&sConnObject_RegiIce,
 	},
 	[MAP_NUM(MAP_META_LOG_FLOTILLA)] = {
 		.south=1, .east=1, 
 		.tileTag=TAG_ICON_LOG, .palTag=TAG_PAL_NPC3,     
-		.requiredItem=ITEM_META_ITEM_LOTAD,
+		.requiredItem=ITEM_META_ITEM_LOG_FLOAT,
 	},
 	[MAP_NUM(MAP_META_BIKE_PATH)] = {
 		.south=1, .north=1,
 		.tileTag=TAG_ICON_BIKE, .palTag=TAG_PAL_NPC3,     
-		.requiredItem=ITEM_META_ITEM_WHEEL,
+		.requiredItem=ITEM_META_ITEM_BIKE_PATH,
 	},
 	[MAP_NUM(MAP_META_POKE_STAGE)] = {
 		.south=1,          
 		.tileTag=TAG_ICON_STAGE, .palTag=TAG_PAL_NPC1,     
-		.requiredItem=ITEM_META_ITEM_DOLL,
+		.requiredItem=ITEM_META_ITEM_POKE_STAGE,
 	},
 	[MAP_NUM(MAP_META_ZIGGY_ROOM)] = {
 		.south=1, .west=1, 
 		.tileTag=TAG_ICON_ZIGGY, .palTag=TAG_PAL_NPC1,     
-		.requiredItem=ITEM_META_ITEM_ZIGZAG,
+		.requiredItem=ITEM_META_ITEM_ZIGGY,
 		.connObj=&sConnObject_Ziggy,
 	},
 	[MAP_NUM(MAP_META_FOREST_CLEARING)] = {
 		.south=1, .east=1, 
 		.tileTag=TAG_ICON_FOREST, .palTag=TAG_PAL_NPC3,     
-		.requiredItem=ITEM_META_ITEM_GRASS,
+		.requiredItem=ITEM_META_ITEM_FOREST,
 	},
 	[MAP_NUM(MAP_META_ZIP_SLIDE)] = {
 		.west=1,  .east=1, 
 		.tileTag=TAG_ICON_ZIP, .palTag=TAG_PAL_NPC2,     
-		.requiredItem=ITEM_META_ITEM_PIKA,
+		.requiredItem=ITEM_META_ITEM_ZIP_SLIDE,
 	},
 	[MAP_NUM(MAP_META_KOGA_ELBOW)] = {
 		.north=1, .west=1, 
 		.tileTag=TAG_ICON_KOGA, .palTag=TAG_PAL_NPC4,     
-		.requiredItem=ITEM_META_ITEM_DUSKULL,
+		.requiredItem=ITEM_META_ITEM_KOGA,
 	},
 	[MAP_NUM(MAP_META_SUBDUCTION_ZONE)] = {
 		.west=1,  .east=1, 
@@ -263,12 +263,12 @@ static const struct MetaRoomInfo sMetaRoomInfo[] = {
 	[MAP_NUM(MAP_META_DIVE_MAZE)] = {
 		.north=1, .south=1,
 		.tileTag=TAG_ICON_DIVE, .palTag=TAG_PAL_NPC1,     
-		.requiredItem=ITEM_META_ITEM_WATER,
+		.requiredItem=ITEM_META_ITEM_DIVE,
 	},
 	[MAP_NUM(MAP_META_BERRY_ROOM)] = {
 		.north=1, .east=1, 
 		.tileTag=TAG_ICON_BERRY, .palTag=TAG_ICON_BERRY,   
-		.requiredItem=ITEM_META_ITEM_KISS,
+		.requiredItem=ITEM_META_ITEM_BERRY,
 	}, /*
 	[MAP_NUM(MAP_META_ROOM_15)] = {
 		.north=1, .west=1, 
@@ -472,20 +472,20 @@ void MetaPuzzle_FillRoomConnections() {
 
 void MetaPuzzle_CountSubmittedItems(struct ScriptContext *ctx) {
 	gSpecialVar_Result = 0;
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_ROCK);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_ZIGZAG);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_LOTAD);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_GRASS);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_DIAMOND);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_SPIN);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_DOLL);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_BALL);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_KISS);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_ROUND);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_FINAL_BLUFF);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_ZIGGY);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_LOG_FLOAT);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_FOREST);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_ICE_CORNER);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_LEDGE);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_POKE_STAGE);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_BIKE_PATH);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_BERRY);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_LAVARIDGE);
 	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_FIRE);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_PIKA);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_DUSKULL);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_WATER);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_ZIP_SLIDE);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_KOGA);
+	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_DIVE);
 	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_SEEDOT);
 	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_CUSHION);
 }

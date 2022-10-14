@@ -10,6 +10,7 @@
 		- Marshtomb
 		- Magcargo
 		- Umbreon
+	- Seen at: 
 	- Traits:
 		- Likes: 
 		- Dislikes: 
@@ -23,6 +24,7 @@
 		- Combusken
 		- Herdier
 		- Baltoy
+	- Seen at: Tin Tower Endroom
 	- Traits:
 		- Likes: 
 		- Dislikes: 
@@ -36,6 +38,7 @@
 		- Bronzor
 		- Golett
 		- Falinks
+	- Seen at: Petalburg Endroom
 	- Traits:
 		- Likes: 
 		- Dislikes: 
@@ -49,6 +52,7 @@
 		- Rattata "Ace"
 		- Mareep "Shep"
 		- Hoothoot "Tiktok"
+	- Seen at: Petalburg, Endroom of Mossdeep/Fortreee
 	- Traits:
 		- Likes: 
 		- Dislikes: 
@@ -62,6 +66,7 @@
 		- Heracross (with Hercrosite)
 		- Spinarak
 		- Vikavolt
+	- Seen at: Water Temple, Fortree
 	- Traits:
 		- Likes: 
 		- Dislikes: 
@@ -75,6 +80,7 @@
 		- Drilbur
 		- Marill
 		- Dedenne
+	- Seen at: Mossdeep
 	- Traits:
 		- Likes: 
 		- Dislikes: 
@@ -89,6 +95,7 @@
 		- Magneton
 		- Fletchinder (pre Safari)
 		- Salamence (post Safari)
+	- Seen at: ~~Alto Mare~~
 	- Traits:
 		- Likes: 
 		- Dislikes: 
