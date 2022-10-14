@@ -38,7 +38,8 @@ Meta Puzzle Polish:
 - [ ] Ziggy Forest: Double check all interactions and both orders to solving the puzzle.
 	- [ ] Fix the Sudo fight so it jumps up onto the walkway before the fight. (Don't use reveal_trainer, I guess.)
 	- [ ] Test to make sure you can't take the waterfall item from the baby until the mom shows up.
-
+- [ ] Assign item pickups to all balls in...
+	- [ ] Final Bluff
 
 Changes:
 - [ ] When entering/exiting the puzzle door/stone door, custom transition into and out of the door.
