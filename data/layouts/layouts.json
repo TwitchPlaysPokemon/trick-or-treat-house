@@ -2637,7 +2637,7 @@
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_MetaTileset",
-      "secondary_tileset": "gTileset_Cave",
+      "secondary_tileset": "gTileset_Pacifidlog",
       "border_filepath": "data/layouts/Meta_SubductionZone/border.bin",
       "blockdata_filepath": "data/layouts/Meta_SubductionZone/map.bin"
     },
