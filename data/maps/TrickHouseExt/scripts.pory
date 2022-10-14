@@ -40,6 +40,9 @@ mapscripts TrickHouseExt_MapScripts {
 			setobjectxyperm (LID_TRICK_BALL, 54, 40)
 		}
 		call(TrickHouseExt_OnLoad_Traders)
+		if (!flag(FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x38)) {
+			setflag(FLAG_TEMP_1A) // hide berry patch
+		}
 	}
 }
 
@@ -757,6 +760,8 @@ script TrickHouseExt_EventScript_TestDoor {
 script TrickHouseExt_EventScript_BuriedItem1 {
 	msgbox( "There's an item buried here…$")
 	finditem_std(ITEM_TM27_RETURN, 1)
+	clearflag(FLAG_TEMP_1A)
+	addobject(27) // Show berry patch
 }
 
 raw `

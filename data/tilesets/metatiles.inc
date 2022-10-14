@@ -660,3 +660,11 @@ gMetatiles_FortreeMeta::
 	.align 1
 gMetatileAttributes_FortreeMeta::
 	.incbin "data/tilesets/secondary/fortree_meta/metatile_attributes.bin"
+
+	.align 1
+gMetatiles_BerryFields::
+	.incbin "data/tilesets/secondary/berryfields/metatiles.bin"
+
+	.align 1
+gMetatileAttributes_BerryFields::
+	.incbin "data/tilesets/secondary/berryfields/metatile_attributes.bin"

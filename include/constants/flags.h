@@ -178,7 +178,7 @@
 #define FLAG_META_SUBMITTED_SEEDOT           0x09E
 #define FLAG_META_SUBMITTED_CUSHION          0x09F
 #define FLAG_HIDE_EXT_GAME_PLAYERS           0x0A0
-#define FLAG_UNUSED_0x0A1                    0x0A1
+#define FLAG_PICKUP_WATERING_CAN             0x0A1
 #define FLAG_UNUSED_0x0A2                    0x0A2
 #define FLAG_UNUSED_0x0A3                    0x0A3
 #define FLAG_UNUSED_0x0A4                    0x0A4

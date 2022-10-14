@@ -985,3 +985,14 @@ gTileset_FortreeMeta::
 	.4byte gMetatiles_FortreeMeta
 	.4byte gMetatileAttributes_FortreeMeta
 	.4byte NULL
+
+	.align 2
+gTileset_BerryFields::
+	.byte TRUE @ is compressed
+	.byte TRUE @ is secondary
+	.2byte 0
+	.4byte gTilesetTiles_BerryFields
+	.4byte gTilesetPalettes_BerryFields
+	.4byte gMetatiles_BerryFields
+	.4byte gMetatileAttributes_BerryFields
+	.4byte NULL

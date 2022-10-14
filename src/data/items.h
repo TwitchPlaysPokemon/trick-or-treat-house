@@ -10455,6 +10455,7 @@ const struct Item gItems[] =
         .price = 0,
         .description = sWailmerPailDesc,
         .importance = 1,
+        .keepItem = TRUE,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_FIELD,
         .fieldUseFunc = ItemUseOutOfBattle_WailmerPail,

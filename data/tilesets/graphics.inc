@@ -2012,3 +2012,23 @@ gTilesetPalettes_FortreeMeta::
 	.align 2
 gTilesetTiles_FortreeMeta::
 	.incbin "data/tilesets/secondary/fortree_meta/tiles.4bpp.lz"
+
+	.align 2
+gTilesetPalettes_BerryFields::
+	.incbin "data/tilesets/secondary/berryfields/palettes/00.gbapal"
+	.incbin "data/tilesets/secondary/berryfields/palettes/01.gbapal"
+	.incbin "data/tilesets/secondary/berryfields/palettes/02.gbapal"
+	.incbin "data/tilesets/secondary/berryfields/palettes/03.gbapal"
+	.incbin "data/tilesets/secondary/berryfields/palettes/04.gbapal"
+	.incbin "data/tilesets/secondary/berryfields/palettes/05.gbapal"
+	.incbin "data/tilesets/secondary/berryfields/palettes/06.gbapal"
+	.incbin "data/tilesets/secondary/berryfields/palettes/07.gbapal"
+	.incbin "data/tilesets/secondary/berryfields/palettes/08.gbapal"
+	.incbin "data/tilesets/secondary/berryfields/palettes/09.gbapal"
+	.incbin "data/tilesets/secondary/berryfields/palettes/10.gbapal"
+	.incbin "data/tilesets/secondary/berryfields/palettes/11.gbapal"
+	.incbin "data/tilesets/secondary/berryfields/palettes/12.gbapal"
+
+	.align 2
+gTilesetTiles_BerryFields::
+	.incbin "data/tilesets/secondary/berryfields/tiles.4bpp.lz"
