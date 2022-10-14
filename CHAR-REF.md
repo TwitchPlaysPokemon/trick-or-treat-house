@@ -5,7 +5,7 @@
 - Brendan, Researcher
 	- Mudkid Costume
 	- Home region: Hoenn
-	- Son of the Birch family, 
+	- Son of the gym leader Norman, neighbor of the Birch's
 	- Team: 
 		- Marshtomb
 		- Magcargo
@@ -13,13 +13,13 @@
 	- Seen at: 
 	- Traits:
 		- Likes: 
-		- Dislikes: 
+		- Dislikes: Fish
 		- Phobia: Fear of Lightning / Thunder
 			- Puzzle of Fear: Musharna's Revenge
 - May, Contest Coordinator
 	- Torchick Costume
 	- Home region: Hoenn, formerly Unova
-	- Daughter of the gym leader Norman, neighbor of the Birch's
+	- Daughter of the Birch family,
 	- Team: 
 		- Combusken
 		- Herdier
@@ -41,7 +41,7 @@
 	- Seen at: Petalburg Endroom
 	- Traits:
 		- Likes: 
-		- Dislikes: 
+		- Dislikes: Spiders
 		- Phobia: Arachnophobia, Fear of spiders
 			- Puzzle of Fear: Musharna's Revenge
 - Joey, Youngster
@@ -54,8 +54,8 @@
 		- Hoothoot "Tiktok"
 	- Seen at: Petalburg, Endroom of Mossdeep/Fortreee
 	- Traits:
-		- Likes: 
-		- Dislikes: 
+		- Likes: Ace
+		- Dislikes: Snakes, Catching Pokemon
 		- Phobia: Fear of snakes
 			- Puzzle of Fear: Ledge Mountain
 - James, Bugcatcher
@@ -82,8 +82,8 @@
 		- Dedenne
 	- Seen at: Mossdeep
 	- Traits:
-		- Likes: 
-		- Dislikes: 
+		- Likes: Chansey
+		- Dislikes: Bats
 		- Phobia: Fear of the dark
 			- Puzzle of Fear: (Darkness Maze?)
 - Wally, Ace Trainer
@@ -97,7 +97,7 @@
 		- Salamence (post Safari)
 	- Seen at: ~~Alto Mare~~
 	- Traits:
-		- Likes: 
+		- Likes: Dragon Pokemon
 		- Dislikes: 
 		- Phobia: Fear of crowds
 			- Puzzle of Fear: Musharna's Revenge

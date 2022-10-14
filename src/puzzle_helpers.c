@@ -1311,6 +1311,18 @@ void Imposter_SetupTalkingPoints(struct ScriptContext *ctx) {
 		*var = (*var & 0x0FFF) | IMP_JAMES;
 	}
 	
+	var = GetVarPointer(Imposter_ShowTalkingPoints_RNGVars[IMP_IRENE]);
+	if (VarGet(VAR_CONFIG_IMPOSTER) != IMP_ALEX && ACCUSE_IDX(*var) == IMP_ALEX) {
+		// Irene doesn't accuse Alex if Alex isn't the imposter
+		*var = (*var & 0x0FFF) | IMP_IRENE;
+	}
+	
+	var = GetVarPointer(Imposter_ShowTalkingPoints_RNGVars[IMP_ALEX]);
+	if (VarGet(VAR_CONFIG_IMPOSTER) != IMP_IRENE && ACCUSE_IDX(*var) == IMP_IRENE) {
+		// Alex doesn't accuse Irene if Irene isn't the imposter
+		*var = (*var & 0x0FFF) | IMP_ALEX;
+	}
+	
 	var = GetVarPointer(Imposter_ShowTalkingPoints_RNGVars[IMP_BRENDAN]);
 	if (VarGet(VAR_CONFIG_IMPOSTER) == ACCUSE_IDX(*var)) {
 		// Brendan never accuses the correct person

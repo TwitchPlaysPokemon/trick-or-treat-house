@@ -1,24 +1,10 @@
 Feature Merging:
-- [X] Feature branch: Follow Me:  https://github.com/ghoulslash/pokeemerald/tree/follow_me 
 - [ ] Feature branch: Sideways Stairs
 - [ ] Feature branch: overworld expansion (double check that this is all correct in TTH from this)
-- [X] Feature branch: dynamic overworld palettes (double check ditto)
 - [ ] Feature branch: Item descriptions on pickup: https://github.com/ghoulslash/pokeemerald/tree/item_desc_header 
-- [ ] Tutorial: Improve loading of battle terrain (possibly)
-- [X] Tutorial: Fix snow weather
 - [ ] Tutorial: Missing text function RESET_SIZE
 - [ ] Tutorial: EWRAM summary screen improvements?
-- [ ] Tutorial: Run Custom Script on Trainer Sight?
 - [ ] Tutorial: Trainer Class Based Poké Balls
-- [ ] Port soaring? https://github.com/camthesaxman/pokeruby/tree/soar_2
-- [ ] https://msikma.github.tio/pokesprite/overview/inventory.html
-	- [ ] Check to see if the items from RHH need updated sprites? See if there's any I could use?
-	- [ ] The TR icons could be useful, as well as the EXP candy.
-	- [ ] Possibly use some curry ingredients for candy?
-- [ ] Pull from merrp's stuff: https://github.com/aarant/pokeemerald
-	- [ ] Dynamic overworld palettes & reflections compatable with vanilla berry trees (from followers)
-	- [-] (look into "detect newer emulators/hardware)
-	- [ ] Day/Night + window lights + lamp lights from the lighting branch
 
 
 Known issues:
@@ -27,26 +13,75 @@ Known issues:
 - [ ] Farfetch'd Forest: When the farfetch'd flies, do hideReflection=true and add a shadow field effect or something; also disable ripples
 - [ ] BORT Mode: Not all abilities have been translated.
 
-Meta Puzzle Polish:
+
+Other Puzzles:
+- [ ] Block Pushing
+	- [ ] The map is already made. Wire it up and put it in.
+- [ ] Dive Maze
+	- [ ] Make said maze
+- [ ] Subduction Zone
+	- [ ] Copy over the Seafloor Cavern
+	- [ ] Rearrange the doors
+	- [ ] Scatter the HM Items Surf, Strength, Rock Smash
+	- [ ] Change water to lava at the bottom, maybe add heat effects to tileset or something.
+- [ ] Trainer Hill
+	- [ ] Make backsprites for each friend.
+	- [ ] Make team ups for each friend.
+- [ ] Safari Imposters
+	- [ ] Add nameplates to everyone
+
+
+Meta Puzzle Finish/Polish:
 - [ ] Needs background for sliding tile screen.
 	- [ ] Version for size 3
 	- [ ] Version for size 4
-- [ ] Koga's Elbow: Add interactions with floating people
-	- [ ] Make Tustin a fight.
-- [ ] Zip Slide: Fill in item balls with candy.
-	- [ ] Also possibly make a new meta tile behavior that is a slide when elevated priority but is normal walking under it.
-- [ ] Ziggy Forest: Double check all interactions and both orders to solving the puzzle.
+- [ ] Lavaridge Springs
+	- [ ] Needs detail pass
+- [ ] Ledge Room
+	- [ ] Wire up event objects to flags / metatiles
+- [ ] Final Bluff
+	- [ ] Assign item pickups to all balls
+- [X] Ice Corner
+- [X] Log Flotilla
+- [X] Bike Path
+	- [ ] Add some detail or something?
+- [ ] Poke Stage
+	- [ ] Wire everything up
+	- [ ] Test songs
+	- [ ] Drop scroll
+- [ ] Ziggy Forest
+	- [ ] Double check all interactions and both orders to solving the puzzle.
 	- [ ] Fix the Sudo fight so it jumps up onto the walkway before the fight. (Don't use reveal_trainer, I guess.)
 	- [ ] Test to make sure you can't take the waterfall item from the baby until the mom shows up.
-- [ ] Assign item pickups to all balls in...
-	- [ ] Final Bluff
+- [ ] Forest Clearing
+	- [ ] Everything
+- [ ] Zip Slide
+	- [ ] Fill in item balls with candy.
+	- [ ] Also possibly make a new meta tile behavior that is a slide when elevated priority but is normal walking under it, for the elevated platforms.
+- [ ] Koga's Elbow
+	- [ ] Add interactions with floating people
+	- [ ] Make Tustin a fight.
+- [ ] Subduction Zone
+	- [ ] Wire up switches to explode the rocks for shortcut.
+- [ ] Dive Maze
+	- [ ] Everything
+- [ ] Berry Room
+	- [ ] Assign berries to trees
+- [ ] Room 15
+	- [ ] IDEAS?!?!
+- [ ] Empty Rooms
+	- [ ] Make a new tileset that ports the secret base furnature to the meta tileset
+	- [ ] Put some pathetic stand-ins in the empty room
+
+
+
 
 Changes:
+- [ ] Add newer-gen mons to the rental sequence.
 - [ ] When entering/exiting the puzzle door/stone door, custom transition into and out of the door.
 	- Look at fldeff_flash.c, copy Task_EnterCaveTransition3 (and related chain), and make a custom transition palette which goes from white, through several colors, to black, and doesn't fade out like the vanilla transition does.
 	- Perhaps going into the door, the colors go from inside to out (so opposite Task_EnterCaveTransition3).
 		- And then when exiting, they go outside in, return trip.
-- [ ] Add newer-gen mons to the rental sequence.
 - [ ] Lost Woods 1: Use Amongous instead of electrode?
 - [ ] Towers: Change up pokemon to be more diverse?
 - [ ] Towers: Possibly add follower friend to help?

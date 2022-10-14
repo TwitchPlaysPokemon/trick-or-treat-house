@@ -26,7 +26,7 @@ Puzzle_SafariImposters_Quip:
 	.string "It's called Amoonguss.\n"
 	.string "Have you heard of it before?$"
 Puzzle_SafariImposters_Friend:
-	.string "{WALLY}: I, uh… I think I'm gonna sit\n"
+	.string "I, uh… I think I'm gonna sit\n"
 	.string "the rest of this Halloween out…\p"
 	.string "That whole DITTO situation was just\n"
 	.string "way too intense for me…\p"
@@ -1621,7 +1621,7 @@ movement Puzzle_SafariImposters_ImposterReveal_Movement2 {
 }
 
 text Puzzle_SafariImposters_ImposterReveal_Text2_Scientist {
-			"PROF: Boys and girl…\n"
+			"PROF: Boys and girls… and others…\n"
 			"I have some bad news…\l"
 			"No one seems to have caught the DITTO.\p"
 			"Which leads me and {PLAYER} to believe\n"
@@ -1774,7 +1774,7 @@ text Puzzle_SafariImposters_ImposterReveal_Text5_Wally {
 			"the DRAGON {POKEMON} that I caught!$"
 }
 text Puzzle_SafariImposters_ImposterReveal_Text5_Brendan {
-			"???: Hey! Sorry I'm late! I was scanning\n"
+			"???: Hey! Sorry I'm late! I was scanning\n" //TODO: Replace with something else, if Brendan is Norman's kid
 			"some {POKEMON} for dad!$"
 }
 text Puzzle_SafariImposters_ImposterReveal_Text5_May {
