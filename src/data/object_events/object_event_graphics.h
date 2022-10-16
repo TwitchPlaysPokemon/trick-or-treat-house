@@ -552,6 +552,8 @@ const u16 gObjectEventPal_MetaItem_Room15[] = INCBIN_U16("graphics/meta_puzzle/l
 const u32 gItemIconPic_MetaItem_Room15[]    = INCBIN_U32("graphics/meta_puzzle/lavaridge_room_item.4bpp.lz");
 const u32 gItemIconPal_MetaItem_Room15[]    = INCBIN_U32("graphics/meta_puzzle/lavaridge_room_item.gbapal.lz");
 
+const u32 gObjectEventPic_Meta_PokeStageNotes[] = INCBIN_U32("graphics/object_events/pics/misc/pokestage_notes.4bpp");
+const u16 gObjectEventPal_Meta_PokeStageNotes[] = INCBIN_U16("graphics/object_events/pics/misc/pokestage_notes.gbapal");
 
 
 //-------------------------------------------------------------------

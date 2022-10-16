@@ -200,19 +200,21 @@ script MetaPuzzle_PickupEvent_SpinCushion {  // placed
 			"ridges from the stitching.")
 	finditem_std(ITEM_META_ITEM_LEDGE, 1)
 }
-script MetaPuzzle_PickupEvent_AzurillDoll {
-	// TODO: Put in Pokemon Says
+script MetaPuzzle_PickupEvent_AzurillDoll { // placed
+	msgbox ("It's a cute Azurill Doll!\n"
+			"It has a little yellow bowtie!$")
 	finditem_std(ITEM_META_ITEM_POKE_STAGE, 1)
 }
-script MetaPuzzle_PickupEvent_BallCushion {
-	// Found on route 110, where item finder was previously
+script MetaPuzzle_PickupEvent_BallCushion { // placed
+	msgbox ("Huh, what's this Cushion doing here?\n"
+			"It looks like it's been biked over.$")
 	finditem_std(ITEM_META_ITEM_BIKE_PATH, 1)
 }
 script MetaPuzzle_PickupEvent_BerryFlower {
 	// Grown from seed given in Petalburg
 	finditem_std(ITEM_META_ITEM_BERRY, 1)
 }
-script MetaPuzzle_PickupEvent_RoundCushion {
+script MetaPuzzle_PickupEvent_RoundCushion { // placed 
 	// Given by Flannery
 	finditem_std(ITEM_META_ITEM_LAVARIDGE, 1)
 }

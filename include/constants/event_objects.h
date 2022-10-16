@@ -326,8 +326,9 @@
 #define OBJ_EVENT_GFX_META_ITEM_KOGA                 0x130
 #define OBJ_EVENT_GFX_META_ITEM_DIVE                 0x131
 #define OBJ_EVENT_GFX_META_ITEM_ROOM15               0x132
+#define OBJ_EVENT_GFX_META_STAGE_NOTES               0x133
 
-#define NUM_OBJ_EVENT_GFX                            0x133
+#define NUM_OBJ_EVENT_GFX                            0x134
 
 // These are dynamic object gfx ids.
 // They correspond with the values of the VAR_OBJ_GFX_ID_X vars.

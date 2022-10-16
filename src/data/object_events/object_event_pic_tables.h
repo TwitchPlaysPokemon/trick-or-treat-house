@@ -2424,6 +2424,10 @@ static const struct SpriteFrameImage sPicTable_MetaItem_Room15[] = {
     obj_frame_tiles(gObjectEventPic_MetaItem_Room15),
 };
 
+static const struct SpriteFrameImage sPicTable_Meta_PokeStageNotes[] = {
+    obj_frame_tiles(gObjectEventPic_Meta_PokeStageNotes),
+};
+
 static const struct SpriteFrameImage sPicTable_TrickButton[] = {
     overworld_frame(gObjectEventPic_TrickButton, 2, 2, 0),
     overworld_frame(gObjectEventPic_TrickButton, 2, 2, 1),

@@ -4757,13 +4757,13 @@ static const u8 sMetaItemDiamondDesc[] = _("");
 static const u8 sMetaItemSpinName[] = _("Spin Cushion");
 static const u8 sMetaItemSpinDesc[] = _("");
 
-static const u8 sMetaItemDollName[] = _("Magnemite Doll");
+static const u8 sMetaItemDollName[] = _("Azurill Doll");
 static const u8 sMetaItemDollDesc[] = _("");
 
 static const u8 sMetaItemWheelName[] = _("Poké Ball Cushion");
 static const u8 sMetaItemWheelDesc[] = _("");
 
-static const u8 sMetaItemKissName[] = _("Kiss Cushion");
+static const u8 sMetaItemKissName[] = _("Big Yellow Flower");
 static const u8 sMetaItemKissDesc[] = _("");
 
 static const u8 sMetaItemRoundName[] = _("Round Cushion");
@@ -4772,7 +4772,7 @@ static const u8 sMetaItemRoundDesc[] = _("");
 static const u8 sMetaItemFireName[] = _("Fire Cushion");
 static const u8 sMetaItemFireDesc[] = _("");
 
-static const u8 sMetaItemPikaName[] = _("Pika Cushion");
+static const u8 sMetaItemPikaName[] = _("Zip Cushion");
 static const u8 sMetaItemPikaDesc[] = _("");
 
 static const u8 sMetaItemDuskullName[] = _("Duskull Doll");

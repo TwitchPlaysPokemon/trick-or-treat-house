@@ -26,6 +26,7 @@ Puzzle_MusicNoteTiles_MapScripts::
 Puzzle_MusicNoteTiles_FrameTable:
     map_script_2 VAR_SONG_COMPLETION_STATE, 1, Puzzle_MusicNoteTiles_SongCompleted
     map_script_2 VAR_SONG_COMPLETION_STATE, 2, Puzzle_MusicNoteTiles_AllSongsCompleted
+    map_script_2 VAR_SONG_COMPLETION_STATE, 10, Puzzle_MusicNoteTiles_SecretSongCompleted
     .2byte 0
 
 Puzzle_MusicNoteTiles_Name:
@@ -174,6 +175,22 @@ script Puzzle_MusicNoteTiles_AllSongsCompleted {
     setflag(FLAG_TEMP_2)
     delay(60)
     fadescreen(0)
+    setvar(VAR_SONG_COMPLETION_STATE, 0)
+    release
+}
+
+script(local) Puzzle_MusicNoteTiles_SecretSongCompleted {
+    lock
+    applymovement(LID_PLAYER, Common_Movement_ExclamationMark)
+    playse(SE_NOTE_C_HIGH)     delay(10)
+    playse(SE_NOTE_A)          delay(10)
+    playse(SE_NOTE_F)          delay(10)
+    playse(SE_NOTE_D)          delay(10)
+    playse(SE_NOTE_F)          delay(10)
+    playse(SE_NOTE_A)          delay(10)
+    playse(SE_NOTE_C_HIGH)     delay(10)
+    waitmovement(LID_PLAYER)
+    setobjectxyperm(8, 4, 2)
     setvar(VAR_SONG_COMPLETION_STATE, 0)
     release
 }

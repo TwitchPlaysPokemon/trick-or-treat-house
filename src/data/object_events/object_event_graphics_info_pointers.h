@@ -265,6 +265,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_TRICK_BUTTON] =             &gObjectEventGraphicsInfo_TrickButton,
     [OBJ_EVENT_GFX_TRICK_SWITCH] =             &gObjectEventGraphicsInfo_TrickSwitch,
     [OBJ_EVENT_GFX_META_PEDESTAL] =            &gObjectEventGraphicsInfo_MetaPedestal,
+    [OBJ_EVENT_GFX_META_STAGE_NOTES] =         &gObjectEventGraphicsInfo_MetaPokeStageNotes,
     
     // Halloween Costumes
     [OBJ_EVENT_GFX_TRICK_MASTER] =             &gObjectEventGraphicsInfo_TrickMaster,

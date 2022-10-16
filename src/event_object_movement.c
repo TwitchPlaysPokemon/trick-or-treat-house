@@ -476,6 +476,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_META_ICE_CORNER         0x1147
 #define OBJ_EVENT_PAL_TAG_META_BERRY_ROOM         0x1148
 #define OBJ_EVENT_PAL_TAG_META_ROOM15             0x1149
+#define OBJ_EVENT_PAL_TAG_META_STAGE_NOTES        0x114A
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -555,6 +556,7 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_ProfBirch,             OBJ_EVENT_PAL_TAG_BIRCH},
     {gObjectEventPal_Imposter,              OBJ_EVENT_PAL_TAG_POSSESSED},
     {gObjectEventPal_MetaPedestal,          OBJ_EVENT_PAL_TAG_META_PEDESTAL},
+    {gObjectEventPal_Meta_PokeStageNotes,   OBJ_EVENT_PAL_TAG_META_STAGE_NOTES},
     {gObjectEventPal_MetaItem_IceCorner,    OBJ_EVENT_PAL_TAG_META_ICE_CORNER},
     {gObjectEventPal_MetaItem_BerryRoom,    OBJ_EVENT_PAL_TAG_META_BERRY_ROOM},
     {gObjectEventPal_MetaItem_Room15,       OBJ_EVENT_PAL_TAG_META_ROOM15},

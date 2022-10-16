@@ -79,11 +79,11 @@ void SetSelectVariables(struct ScriptContext *ctx)
 
 u16 GetPlayerState(void)
 {
-    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_ACRO_BIKE)) return 1;
-    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE)) return 2;
-    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING)) return 3;
-    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_UNDERWATER)) return 4;
-    return 0;
+	if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_ACRO_BIKE)) return 1;
+	if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE)) return 2;
+	if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING)) return 3;
+	if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_UNDERWATER)) return 4;
+	return 0;
 }
 
 #pragma endregion
@@ -119,6 +119,7 @@ void BORTizeBufferedStrings(struct ScriptContext *ctx)
 #define VAR_NUM_CORRECT_STEPS       VAR_PUZZLE_01
 #define VAR_TARGET_TILE             VAR_PUZZLE_02
 #define VAR_SONG_COMPLETION_STATE   VAR_PUZZLE_03
+#define VAR_NUM_SECRET_STEPS        VAR_PUZZLE_11
 #define VAR_SONG_A                  VAR_PUZZLE_0A
 #define VAR_SONG_B                  VAR_PUZZLE_0B
 #define VAR_SONG_C                  VAR_PUZZLE_0C
@@ -166,6 +167,9 @@ const struct PokemonSaysNote sSongNotes[] = {
 
 #define NOTE(l, length)   ((PS_NOTE_##l << 8) | length)
 
+static const u16 Puzzle_MusicNoteTiles_SecretTable[] = {
+	NOTE(G, 15), NOTE(F, 15), NOTE(D, 15), NOTE(C, 15), NOTE(E, 15), NOTE(F, 15), NOTE(G, 15), PS_NOTE_END,
+};
 static const u16 Puzzle_MusicNoteTiles_MusicTableA[][4] = {
 	{ NOTE(E, 60), NOTE(G, 30), NOTE(D, 30), PS_NOTE_END }, // Zelda's Lullaby
 	{ NOTE(G, 20), NOTE(E, 20), NOTE(D, 30), PS_NOTE_END }, // Epona's Song
@@ -321,38 +325,63 @@ void PokemonSaysPlayExtraNote(struct ScriptContext *ctx)
 	const struct PokemonSaysNote* correctNote;
 	
 	if (!FlagGet(FLAG_TILES_ACTIVE))
-    {
-        PlaySE(SE_FAILURE);
+	{
+		PlaySE(SE_FAILURE);
 		gSpecialVar_Result = FALSE;
-        return;
-    }
+		return;
+	}
 	correctNote = &sSongNotes[music[curStep] >> 8];
-    if (VarGet(VAR_LAST_TALKED) == correctNote->localId)
+	if (VarGet(VAR_LAST_TALKED) == correctNote->localId)
 	{
 		ScriptMovement_StartObjectMovementScript(correctNote->localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup, correctNote->movement);
 		PlaySE(correctNote->soundEffect);
 		if (music[curStep+1] >> 8 != PS_NOTE_END)
-        {
-            VarSet(VAR_NUM_CORRECT_STEPS, curStep + 1);
-        }
-        else
-        {
-            if (VarGet(VAR_CURR_SONG) < 3)
-                VarSet(VAR_SONG_COMPLETION_STATE, 1);
-            else
-                VarSet(VAR_SONG_COMPLETION_STATE, 2);
+		{
+			VarSet(VAR_NUM_CORRECT_STEPS, curStep + 1);
+		}
+		else
+		{
+			if (VarGet(VAR_CURR_SONG) < 3)
+				VarSet(VAR_SONG_COMPLETION_STATE, 1);
+			else
+				VarSet(VAR_SONG_COMPLETION_STATE, 2);
 
-            FlagClear(FLAG_TILES_ACTIVE);
-        }
+			FlagClear(FLAG_TILES_ACTIVE);
+		}
 		gSpecialVar_Result = TRUE;
 	}
-    else
-    {
-        PlaySE(SE_FAILURE);
-        // FlagClear(FLAG_TILES_ACTIVE);
-        VarSet(VAR_NUM_CORRECT_STEPS, 0);
+	else
+	{
+		PlaySE(SE_FAILURE);
+		// FlagClear(FLAG_TILES_ACTIVE);
+		VarSet(VAR_NUM_CORRECT_STEPS, 0);
 		gSpecialVar_Result = FALSE;
-    }
+	}
+}
+
+void PokemonSaysCheckSecretNote(u32 metatileId)
+{
+	if (FlagGet(FLAG_META_PICKUP_POKE_STAGE)) return;
+	
+	u16 curStep = VarGet(VAR_NUM_SECRET_STEPS);
+	if (curStep == 0x0F00) return;
+	
+	const u16* music = Puzzle_MusicNoteTiles_SecretTable;
+	const struct PokemonSaysNote* correctNote;
+	
+	correctNote = &sSongNotes[music[curStep] >> 8];
+	if (metatileId == correctNote->metaTileId) {
+		if (music[curStep+1] >> 8 != PS_NOTE_END) {
+			VarSet(VAR_NUM_SECRET_STEPS, curStep + 1);
+		}
+		else {
+			VarSet(VAR_SONG_COMPLETION_STATE, 10);
+			VarSet(VAR_NUM_SECRET_STEPS, 0x0F00);
+		}
+	}
+	else {
+		VarSet(VAR_NUM_SECRET_STEPS, 0);
+	}
 }
 
 static void PlayPuzzleMusicTileNote(u32 metatileId)
@@ -363,47 +392,50 @@ static void PlayPuzzleMusicTileNote(u32 metatileId)
 		if (sSongNotes[i].metaTileId == metatileId)
 		{
 			PlaySE(sSongNotes[i].soundEffect);
-        	break;
+			break;
 		}
 	}
 }
 
 void HandlePuzzleMusicTileStep(u32 metatileId)
 {
-    u16 curStep = VarGet(VAR_NUM_CORRECT_STEPS);
+	u16 curStep = VarGet(VAR_NUM_CORRECT_STEPS);
 	const u16* music = PokemonSays_GetCurrentSong();
 	const struct PokemonSaysNote* correctNote;
 
-    if (!FlagGet(FLAG_TILES_ACTIVE))
-    {
-        PlayPuzzleMusicTileNote(metatileId);
-        return;
-    }
+	if (!FlagGet(FLAG_TILES_ACTIVE))
+	{
+		PlayPuzzleMusicTileNote(metatileId);
+		PokemonSaysCheckSecretNote(metatileId);
+		return;
+	}
 
 	correctNote = &sSongNotes[music[curStep] >> 8];
-    if (metatileId == correctNote->metaTileId)
-    {
-        PlayPuzzleMusicTileNote(metatileId);
-        if (music[curStep+1] >> 8 != PS_NOTE_END)
-        {
-            VarSet(VAR_NUM_CORRECT_STEPS, curStep + 1);
-        }
-        else
-        {
-            if (VarGet(VAR_CURR_SONG) < 3)
-                VarSet(VAR_SONG_COMPLETION_STATE, 1);
-            else
-                VarSet(VAR_SONG_COMPLETION_STATE, 2);
+	if (metatileId == correctNote->metaTileId)
+	{
+		PlayPuzzleMusicTileNote(metatileId);
+		PokemonSaysCheckSecretNote(metatileId);
+		if (music[curStep+1] >> 8 != PS_NOTE_END)
+		{
+			VarSet(VAR_NUM_CORRECT_STEPS, curStep + 1);
+		}
+		else
+		{
+			if (VarGet(VAR_CURR_SONG) < 3)
+				VarSet(VAR_SONG_COMPLETION_STATE, 1);
+			else
+				VarSet(VAR_SONG_COMPLETION_STATE, 2);
 
-            FlagClear(FLAG_TILES_ACTIVE);
-        }
-    }
-    else
-    {
-        PlaySE(SE_FAILURE);
-        // FlagClear(FLAG_TILES_ACTIVE);
-        VarSet(VAR_NUM_CORRECT_STEPS, 0);
-    }
+			FlagClear(FLAG_TILES_ACTIVE);
+		}
+	}
+	else
+	{
+		PlaySE(SE_FAILURE);
+		// FlagClear(FLAG_TILES_ACTIVE);
+		VarSet(VAR_NUM_CORRECT_STEPS, 0);
+		VarSet(VAR_NUM_SECRET_STEPS, 0);
+	}
 }
 
 
@@ -679,16 +711,16 @@ extern u32 gBikeCyclingTimer;
 
 void ResetCyclingRoadChallengeData(struct ScriptContext *ctx)
 {
-    gBikeCyclingChallenge = FALSE;
-    gBikeCollisions = 0;
-    gBikeCyclingTimer = 0;
+	gBikeCyclingChallenge = FALSE;
+	gBikeCollisions = 0;
+	gBikeCyclingTimer = 0;
 }
 
 void Special_BeginCyclingRoadChallenge(void)
 {
-    gBikeCyclingChallenge = TRUE;
-    gBikeCollisions = 0;
-    gBikeCyclingTimer = gMain.vblankCounter1;
+	gBikeCyclingChallenge = TRUE;
+	gBikeCollisions = 0;
+	gBikeCyclingTimer = gMain.vblankCounter1;
 }
 
 void ForcePlayerOntoMachBike(struct ScriptContext *ctx)
@@ -703,118 +735,118 @@ void ForcePlayerOntoAcroBike(struct ScriptContext *ctx)
 
 u16 GetPlayerAvatarBike(void)
 {
-    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_ACRO_BIKE))
-        return 1;
-    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE))
-        return 2;
-    return 0;
+	if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_ACRO_BIKE))
+		return 1;
+	if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE))
+		return 2;
+	return 0;
 }
 
 static void DetermineCyclingRoadResults(u32 numFrames, u8 numBikeCollisions)
 {
-    u8 result;
+	u8 result;
 
-    if (numBikeCollisions < 100)
-    {
-        ConvertIntToDecimalStringN(gStringVar1, numBikeCollisions, STR_CONV_MODE_LEFT_ALIGN, 2);
-        StringAppend(gStringVar1, gText_SpaceTimes);
-    }
-    else
-    {
-        StringCopy(gStringVar1, gText_99TimesPlus);
-    }
+	if (numBikeCollisions < 100)
+	{
+		ConvertIntToDecimalStringN(gStringVar1, numBikeCollisions, STR_CONV_MODE_LEFT_ALIGN, 2);
+		StringAppend(gStringVar1, gText_SpaceTimes);
+	}
+	else
+	{
+		StringCopy(gStringVar1, gText_99TimesPlus);
+	}
 
-    if (numFrames < 3600 * 3)
-    {
-        ConvertIntToDecimalStringN(gStringVar2, numFrames / 60, STR_CONV_MODE_RIGHT_ALIGN, 3);
-        gStringVar2[3] = CHAR_PERIOD;
-        ConvertIntToDecimalStringN(&gStringVar2[4], ((numFrames % 60) * 100) / 60, STR_CONV_MODE_LEADING_ZEROS, 2);
-        StringAppend(gStringVar2, gText_SpaceSeconds);
-    }
-    else
-    {
-        StringCopy(gStringVar2, gText_3MinutePlus);
-    }
+	if (numFrames < 3600 * 3)
+	{
+		ConvertIntToDecimalStringN(gStringVar2, numFrames / 60, STR_CONV_MODE_RIGHT_ALIGN, 3);
+		gStringVar2[3] = CHAR_PERIOD;
+		ConvertIntToDecimalStringN(&gStringVar2[4], ((numFrames % 60) * 100) / 60, STR_CONV_MODE_LEADING_ZEROS, 2);
+		StringAppend(gStringVar2, gText_SpaceSeconds);
+	}
+	else
+	{
+		StringCopy(gStringVar2, gText_3MinutePlus);
+	}
 
-    result = 0;
-    if (numBikeCollisions == 0)
-    {
-        result = 5;
-    }
-    else if (numBikeCollisions < 6)//4)
-    {
-        result = 4;
-    }
-    else if (numBikeCollisions < 15)//10)
-    {
-        result = 3;
-    }
-    else if (numBikeCollisions < 25)//20)
-    {
-        result = 2;
-    }
-    else if (numBikeCollisions < 100)
-    {
-        result = 1;
-    }
+	result = 0;
+	if (numBikeCollisions == 0)
+	{
+		result = 5;
+	}
+	else if (numBikeCollisions < 6)//4)
+	{
+		result = 4;
+	}
+	else if (numBikeCollisions < 15)//10)
+	{
+		result = 3;
+	}
+	else if (numBikeCollisions < 25)//20)
+	{
+		result = 2;
+	}
+	else if (numBikeCollisions < 100)
+	{
+		result = 1;
+	}
 
-    if (numFrames / 60 <= 60)//10)
-    {
-        result += 5;
-    }
-    else if (numFrames / 60 <= 80)//15)
-    {
-        result += 4;
-    }
-    else if (numFrames / 60 <= 110)//20)
-    {
-        result += 3;
-    }
-    else if (numFrames / 60 <= 140)//40)
-    {
-        result += 2;
-    }
-    else if (numFrames / 60 < 180)//60)
-    {
-        result += 1;
-    }
+	if (numFrames / 60 <= 60)//10)
+	{
+		result += 5;
+	}
+	else if (numFrames / 60 <= 80)//15)
+	{
+		result += 4;
+	}
+	else if (numFrames / 60 <= 110)//20)
+	{
+		result += 3;
+	}
+	else if (numFrames / 60 <= 140)//40)
+	{
+		result += 2;
+	}
+	else if (numFrames / 60 < 180)//60)
+	{
+		result += 1;
+	}
 
 
-    gSpecialVar_Result = result;
+	gSpecialVar_Result = result;
 }
 
 static void RecordCyclingRoadResults(u32 numFrames, u8 numBikeCollisions) {
-    u16 low = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_L);
-    u16 high = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_H);
-    u32 framesRecord = low + (high << 16);
+	u16 low = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_L);
+	u16 high = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_H);
+	u32 framesRecord = low + (high << 16);
 
-    if (framesRecord > numFrames || framesRecord == 0)
-    {
-        VarSet(VAR_CYCLING_ROAD_RECORD_TIME_L, numFrames);
-        VarSet(VAR_CYCLING_ROAD_RECORD_TIME_H, numFrames >> 16);
-        VarSet(VAR_CYCLING_ROAD_RECORD_COLLISIONS, numBikeCollisions);
-    }
+	if (framesRecord > numFrames || framesRecord == 0)
+	{
+		VarSet(VAR_CYCLING_ROAD_RECORD_TIME_L, numFrames);
+		VarSet(VAR_CYCLING_ROAD_RECORD_TIME_H, numFrames >> 16);
+		VarSet(VAR_CYCLING_ROAD_RECORD_COLLISIONS, numBikeCollisions);
+	}
 }
 
 u16 GetRecordedCyclingRoadResults(void) {
-    u16 low = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_L);
-    u16 high = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_H);
-    u32 framesRecord = low + (high << 16);
+	u16 low = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_L);
+	u16 high = VarGet(VAR_CYCLING_ROAD_RECORD_TIME_H);
+	u32 framesRecord = low + (high << 16);
 
-    if (framesRecord == 0)
-    {
-        return FALSE;
-    }
+	if (framesRecord == 0)
+	{
+		return FALSE;
+	}
 
-    DetermineCyclingRoadResults(framesRecord, VarGet(VAR_CYCLING_ROAD_RECORD_COLLISIONS));
-    return TRUE;
+	DetermineCyclingRoadResults(framesRecord, VarGet(VAR_CYCLING_ROAD_RECORD_COLLISIONS));
+	return TRUE;
 }
 
 void FinishCyclingRoadChallenge(void) {
-    const u32 numFrames = gMain.vblankCounter1 - gBikeCyclingTimer;
+	const u32 numFrames = gMain.vblankCounter1 - gBikeCyclingTimer;
 
-    DetermineCyclingRoadResults(numFrames, gBikeCollisions);
-    RecordCyclingRoadResults(numFrames, gBikeCollisions);
+	DetermineCyclingRoadResults(numFrames, gBikeCollisions);
+	RecordCyclingRoadResults(numFrames, gBikeCollisions);
 }
 
 void GetCurrentCyclingRoadTime(struct ScriptContext *ctx)
@@ -826,22 +858,22 @@ void GetCurrentCyclingRoadTime(struct ScriptContext *ctx)
 		ConvertIntToDecimalStringN(gStringVar3, numSecs+2, STR_CONV_MODE_LEFT_ALIGN, 3);
 	} else {
 		StringCopy(gStringVar1, gText_WayTooLong1);
-        StringCopy(gStringVar2, gText_WayTooLong2);
-        StringCopy(gStringVar3, gText_WayTooLong3);
+		StringCopy(gStringVar2, gText_WayTooLong2);
+		StringCopy(gStringVar3, gText_WayTooLong3);
 	}
 }
 
 void UpdateCyclingRoadState(void) {
-    // if (gLastUsedWarp.mapNum == MAP_NUM(ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE) && gLastUsedWarp.mapGroup == MAP_GROUP(ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE))
-    // {
-    //     return;
-    // }
+	// if (gLastUsedWarp.mapNum == MAP_NUM(ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE) && gLastUsedWarp.mapGroup == MAP_GROUP(ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE))
+	// {
+	//     return;
+	// }
 
-    // if (VarGet(VAR_CYCLING_CHALLENGE_STATE) == 2 || VarGet(VAR_CYCLING_CHALLENGE_STATE) == 3)
-    // {
-    //     VarSet(VAR_CYCLING_CHALLENGE_STATE, 0);
-    //     Overworld_SetSavedMusic(MUS_DUMMY);
-    // }
+	// if (VarGet(VAR_CYCLING_CHALLENGE_STATE) == 2 || VarGet(VAR_CYCLING_CHALLENGE_STATE) == 3)
+	// {
+	//     VarSet(VAR_CYCLING_CHALLENGE_STATE, 0);
+	//     Overworld_SetSavedMusic(MUS_DUMMY);
+	// }
 }
 
 #undef VAR_CYCLING_CHALLENGE_STATE
@@ -861,7 +893,7 @@ void CountTwinMemoriesBoulders(struct ScriptContext *ctx) {
 	s16 o, i;
 	s16 xbase = 0, ybase = 0, x, y;
 	struct ObjectEvent *objectEvent = NULL;
-    struct CoordEvent *coordEvent = NULL;
+	struct CoordEvent *coordEvent = NULL;
 	const u8 *currConfig;
 	
 	gSpecialVar_Result = 0;
@@ -875,8 +907,8 @@ void CountTwinMemoriesBoulders(struct ScriptContext *ctx) {
 	
 	for (o = 0; o < OBJECT_EVENTS_COUNT; o++) {
 		objectEvent = &gObjectEvents[o];
-        if (objectEvent->isPlayer) continue;
-        if (!objectEvent->active) continue;
+		if (objectEvent->isPlayer) continue;
+		if (!objectEvent->active) continue;
 		if (objectEvent->graphicsId != OBJ_EVENT_GFX_PUSHABLE_BOULDER) continue;
 		if (!objectEvent->isStandingOnTrigger) continue;
 		
@@ -1027,17 +1059,17 @@ void LoadBirdLocation(struct ScriptContext *ctx)
 	// Loop through the event templates and find the bird
 	savObjTemplates = gSaveBlock1Ptr->objectEventTemplates;
 	for (i = 0; i < OBJECT_EVENT_TEMPLATES_COUNT; i++)
-    {
-        struct ObjectEventTemplate *objectEventTemplate = &savObjTemplates[i];
-        if (objectEventTemplate->localId == LID_BIRD)
-        {
+	{
+		struct ObjectEventTemplate *objectEventTemplate = &savObjTemplates[i];
+		if (objectEventTemplate->localId == LID_BIRD)
+		{
 			// Set the bird's location and script to the current location
-            objectEventTemplate->x = spot->x;
-            objectEventTemplate->y = spot->y;
+			objectEventTemplate->x = spot->x;
+			objectEventTemplate->y = spot->y;
 			objectEventTemplate->script = spot->script;
-            break;
-        }
-    }
+			break;
+		}
+	}
 }
 
 #undef LID_BIRD
@@ -1052,15 +1084,15 @@ void CountNPCTriggers(struct ScriptContext *ctx) {
 	s16 o, i, x, y;
 	int mid;
 	struct ObjectEvent *objectEvent = NULL;
-    struct CoordEvent *coordEvent = NULL;
+	struct CoordEvent *coordEvent = NULL;
 	const u8 *currConfig;
 	
 	gSpecialVar_Result = 0;
 	
 	for (o = 0; o < OBJECT_EVENTS_COUNT; o++) {
 		objectEvent = &gObjectEvents[o];
-        if (objectEvent->isPlayer) continue;
-        if (!objectEvent->active) continue;
+		if (objectEvent->isPlayer) continue;
+		if (!objectEvent->active) continue;
 		if (!objectEvent->isStandingOnTrigger) continue;
 		
 		gSpecialVar_Result++;
