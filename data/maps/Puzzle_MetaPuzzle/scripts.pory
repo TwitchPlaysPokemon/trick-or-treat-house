@@ -63,47 +63,47 @@ script Puzzle_MetaPuzzle_OnLoad {
 // Intro Script
 
 script Puzzle_MetaPuzzle_IntroScript {
-	if (var(VAR_MISTRESS_STATE) == 0) {
-	msgbox("Oh, uh, hi.\p"
-			"You were probably expecting the TRICK\n"
-			"MASTER. I'm his sister. Long story…\p"
-			"I'm curious, did you pick up any\n"
-			"essences of puzzles tonight?$")
-	} else {
-	msgbox ("Hello again. This is it.\n"
-			"This is my chance.\p"
-			"Did you happen to find any more\n"
-			"essences of puzzles since we last spoke?$")
-	}
-	call(MetaPuzzle_DropOffEvents)
-	if (var(VAR_0x800A) == 0) {
-		if (var(VAR_MISTRESS_STATE) == 0) {
-	msgbox ("Ah, you… haven't…\p"
-			"So that basically means I have no\n"
-			"puzzle for you to do…\p"
-			"<sigh>{PAUSE 30}\n"
-			"Well… there's always next year…$")
-			goto(Puzzle_MetaPuzzle_IntroScript_NoPuzzleWalkout)
-		} else {
-	message ("Ah, no, you haven't, so…\p$")
-	waitmessage
-		}
-	}
-	callnative(MetaPuzzle_CountSubmittedItems)
-	buffernumberstring2(1, VAR_RESULT)
-	if (var(VAR_RESULT) < 8) {
-	msgbox ("So, that's… {STR_VAR_1} items…\n"
-			"… …not enough to make my puzzle.\p"
-			"<sigh>{PAUSE 30}\n"
-			"Well… there's always next year…$")
-		goto(Puzzle_MetaPuzzle_IntroScript_NoPuzzleWalkout)
-	}
-	elif (var(VAR_RESULT) < 15) {
-		// TODO yay minimum puzzle!
-	}
-	else {
-		// TODO yay full puzzle!
-	}
+	// if (var(VAR_MISTRESS_STATE) == 0) {
+	// msgbox("Oh, uh, hi.\p"
+	// 		"You were probably expecting the TRICK\n"
+	// 		"MASTER. I'm his sister. Long story…\p"
+	// 		"I'm curious, did you pick up any\n"
+	// 		"essences of puzzles tonight?$")
+	// } else {
+	// msgbox ("Hello again. This is it.\n"
+	// 		"This is my chance.\p"
+	// 		"Did you happen to find any more\n"
+	// 		"essences of puzzles since we last spoke?$")
+	// }
+	// call(MetaPuzzle_DropOffEvents)
+	// if (var(VAR_0x800A) == 0) {
+	// 	if (var(VAR_MISTRESS_STATE) == 0) {
+	// msgbox ("Ah, you… haven't…\p"
+	// 		"So that basically means I have no\n"
+	// 		"puzzle for you to do…\p"
+	// 		"<sigh>{PAUSE 30}\n"
+	// 		"Well… there's always next year…$")
+	// 		goto(Puzzle_MetaPuzzle_IntroScript_NoPuzzleWalkout)
+	// 	} else {
+	// message ("Ah, no, you haven't, so…\p$")
+	// waitmessage
+	// 	}
+	// }
+	// callnative(MetaPuzzle_CountSubmittedItems)
+	// buffernumberstring2(1, VAR_RESULT)
+	// if (var(VAR_RESULT) < 8) {
+	// msgbox ("So, that's… {STR_VAR_1} items…\n"
+	// 		"… …not enough to make my puzzle.\p"
+	// 		"<sigh>{PAUSE 30}\n"
+	// 		"Well… there's always next year…$")
+	// 	goto(Puzzle_MetaPuzzle_IntroScript_NoPuzzleWalkout)
+	// }
+	// elif (var(VAR_RESULT) < 15) {
+	// 	// TODO yay minimum puzzle!
+	// }
+	// else {
+	// 	// TODO yay full puzzle!
+	// }
 }
 
 script Puzzle_MetaPuzzle_IntroScript_NoPuzzleWalkout {
@@ -169,51 +169,65 @@ movement Puzzle_MetaPuzzle_IntroScript_NoPuzzleWalkout_Move2 {
 //			Waterfall Room -> Scroll
 // ----------------------------------------------------
 
-script MetaPuzzle_PickupEvent_InflatableRock {
+script MetaPuzzle_PickupEvent_InflatableRock {  // placed
 	msgbox ("This rock appears to be… inflatable…?$")
 	finditem_std(ITEM_META_ITEM_FINAL_BLUFF, 1)
+	setvar(VAR_TRICK_MASTER_INTRO, 3)
 }
-script MetaPuzzle_PickupEvent_ZigzagCushion {
+script MetaPuzzle_PickupEvent_ZigzagCushion {   // placed
 	msgbox ("This soft fluffy cushion is covered in\n"
 			"ZIGZAGOON sheddings, like they've been\l"
 			"laying on it a lot.$")
 	finditem_std(ITEM_META_ITEM_ZIGGY, 1)
 }
-script MetaPuzzle_PickupEvent_LotadDoll {
+script MetaPuzzle_PickupEvent_LotadDoll {  // placed
 	msgbox ("There's a waterlogged LOTAD doll,\n"
 			"lost and washed away, floating here.$")
 	finditem_std(ITEM_META_ITEM_LOG_FLOAT, 1)
 }
-script MetaPuzzle_PickupEvent_GrassCushion {
+script MetaPuzzle_PickupEvent_GrassCushion {  // placed
 	msgbox ("Weird, there's a pillow just lying\n"
 			"here on the forest floor.$")
 	finditem_std(ITEM_META_ITEM_FOREST, 1)
 }
-script MetaPuzzle_PickupEvent_DiamondCushion {
+script MetaPuzzle_PickupEvent_DiamondCushion {  // placed
+	msgbox ("This cushion is covered in\n"
+			"a coating of ice crystals.")
 	finditem_std(ITEM_META_ITEM_ICE_CORNER, 1)
 }
-script MetaPuzzle_PickupEvent_SpinCushion {
+script MetaPuzzle_PickupEvent_SpinCushion {  // placed
+	msgbox ("This cushion is covered in many\n"
+			"ridges from the stitching.")
 	finditem_std(ITEM_META_ITEM_LEDGE, 1)
 }
-script MetaPuzzle_PickupEvent_MagnemiteDoll {
+script MetaPuzzle_PickupEvent_AzurillDoll {
+	// TODO: Put in Pokemon Says
 	finditem_std(ITEM_META_ITEM_POKE_STAGE, 1)
 }
-script MetaPuzzle_PickupEvent_BallCusion {
+script MetaPuzzle_PickupEvent_BallCushion {
+	// Found on route 110, where item finder was previously
 	finditem_std(ITEM_META_ITEM_BIKE_PATH, 1)
 }
-script MetaPuzzle_PickupEvent_KissCushion {
+script MetaPuzzle_PickupEvent_BerryFlower {
+	// Grown from seed given in Petalburg
 	finditem_std(ITEM_META_ITEM_BERRY, 1)
 }
 script MetaPuzzle_PickupEvent_RoundCushion {
+	// Given by Flannery
 	finditem_std(ITEM_META_ITEM_LAVARIDGE, 1)
 }
 script MetaPuzzle_PickupEvent_FireCushion {
 	finditem_std(ITEM_META_ITEM_FIRE, 1)
 }
-script MetaPuzzle_PickupEvent_PikaCushion {
+script MetaPuzzle_PickupEvent_ZipCushion {  // placed
+	msgbox ("Huh. This tile doesn't look like\n"
+			"the others in this puzzle.\p"
+			"Oh! It's a cushion!$")
 	finditem_std(ITEM_META_ITEM_ZIP_SLIDE, 1)
 }
-script MetaPuzzle_PickupEvent_DuskullDoll {
+script MetaPuzzle_PickupEvent_DuskullDoll {  // placed
+	msgbox ("There's a Duskull Doll here,\n"
+			"trying to hide in plain sight.$")
 	finditem_std(ITEM_META_ITEM_KOGA, 1)
 }
 script MetaPuzzle_PickupEvent_WaterCushion {
@@ -221,58 +235,6 @@ script MetaPuzzle_PickupEvent_WaterCushion {
 }
 script MetaPuzzle_PickupEvent_SeedotDoll {
 	finditem_std(ITEM_META_ITEM_SEEDOT, 1)
-}
-
-script MetaPuzzle_DropOffEvents {
-	setvar(VAR_0x800A, 0)
-	// 
-	setvar(VAR_0x8000, ITEM_META_ITEM_FINAL_BLUFF)
-	checkitem(VAR_0x8000, 1)
-	if (var(VAR_RESULT) == TRUE) {
-	msgbox( "Oh! That Inflatable Rock! I can feel\n"
-			"the rockiness it represents emanating\l"
-			"from it! Yes! Give it here, please!$")
-		call(MetaPuzzle_DropOffEvents_GiveItem)
-	}
-	// 
-	setvar(VAR_0x8000, ITEM_META_ITEM_ZIGGY)
-	checkitem(VAR_0x8000, 1)
-	if (var(VAR_RESULT) == TRUE) {
-	msgbox( "Oh! That Zigzag Cushion! It's so\n"
-			"furry and full of the will to mimic!\l"
-			"Let me take it, please!$")
-		call(MetaPuzzle_DropOffEvents_GiveItem)
-	}
-	// 
-	setvar(VAR_0x8000, ITEM_META_ITEM_LOG_FLOAT)
-	checkitem(VAR_0x8000, 1)
-	if (var(VAR_RESULT) == TRUE) {
-	msgbox( "Oh! That Lotad Doll! I can see how\n"
-			"very moist it is! Allow me to take\l"
-			"it off your hands!$")
-		call(MetaPuzzle_DropOffEvents_GiveItem)
-	}
-	// 
-	setvar(VAR_0x8000, ITEM_META_ITEM_FOREST)
-	checkitem(VAR_0x8000, 1)
-	if (var(VAR_RESULT) == TRUE) {
-	msgbox( "Oh! The Grass Cushion! <sniff!>\n"
-			"I can still smell the PINECO that\l"
-			"passed over it! If you please!$")
-		call(MetaPuzzle_DropOffEvents_GiveItem)
-	}
-	
-	// TODO: More as more are implemented
-	return
-}
-
-script MetaPuzzle_DropOffEvents_GiveItem {
-	bufferitemname(0, VAR_0x8000)
-	msgbox( "{PLAYER} handed over the\n"
-			"{STR_VAR_1}.$")
-	removeitem(VAR_0x8000, 1)
-	addvar(VAR_0x800A, 1)
-	return
 }
 
 // ----------------------------------------------------

@@ -16,6 +16,7 @@
 #include "script.h"
 #include "text.h"
 #include "task.h"
+#include "item.h"
 #include "mgba.h"
 #include "trickhouse.h"
 #include "bg.h"
@@ -470,24 +471,24 @@ void MetaPuzzle_FillRoomConnections() {
 	}
 }
 
-void MetaPuzzle_CountSubmittedItems(struct ScriptContext *ctx) {
+void MetaPuzzle_CountCollectedItems(struct ScriptContext *ctx) {
 	gSpecialVar_Result = 0;
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_FINAL_BLUFF);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_ZIGGY);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_LOG_FLOAT);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_FOREST);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_ICE_CORNER);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_LEDGE);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_POKE_STAGE);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_BIKE_PATH);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_BERRY);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_LAVARIDGE);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_FIRE);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_ZIP_SLIDE);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_KOGA);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_DIVE);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_SEEDOT);
-	gSpecialVar_Result += FlagGet(FLAG_META_SUBMITTED_CUSHION);
+	// gSpecialVar_Result += CheckBagHasItem(FLAG_META_SUBMITTED_FINAL_BLUFF);
+	// gSpecialVar_Result += CheckBagHasItem(FLAG_META_SUBMITTED_ZIGGY);
+	// gSpecialVar_Result += CheckBagHasItem(FLAG_META_SUBMITTED_LOG_FLOAT);
+	// gSpecialVar_Result += CheckBagHasItem(FLAG_META_SUBMITTED_FOREST);
+	// gSpecialVar_Result += CheckBagHasItem(FLAG_META_SUBMITTED_ICE_CORNER);
+	// gSpecialVar_Result += CheckBagHasItem(FLAG_META_SUBMITTED_LEDGE);
+	// gSpecialVar_Result += CheckBagHasItem(FLAG_META_SUBMITTED_POKE_STAGE);
+	// gSpecialVar_Result += CheckBagHasItem(FLAG_META_SUBMITTED_BIKE_PATH);
+	// gSpecialVar_Result += CheckBagHasItem(FLAG_META_SUBMITTED_BERRY);
+	// gSpecialVar_Result += CheckBagHasItem(FLAG_META_SUBMITTED_LAVARIDGE);
+	// gSpecialVar_Result += CheckBagHasItem(FLAG_META_SUBMITTED_FIRE);
+	// gSpecialVar_Result += CheckBagHasItem(FLAG_META_SUBMITTED_ZIP_SLIDE);
+	// gSpecialVar_Result += CheckBagHasItem(FLAG_META_SUBMITTED_KOGA);
+	// gSpecialVar_Result += CheckBagHasItem(FLAG_META_SUBMITTED_DIVE);
+	// gSpecialVar_Result += CheckBagHasItem(FLAG_META_SUBMITTED_SEEDOT);
+	// gSpecialVar_Result += CheckBagHasItem(FLAG_META_SUBMITTED_CUSHION);
 }
 
 #pragma endregion

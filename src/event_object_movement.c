@@ -473,6 +473,9 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_NPC_4_BLACK             0x1144
 #define OBJ_EVENT_PAL_TAG_NPC_1_BLACKALT          0x1145
 #define OBJ_EVENT_PAL_TAG_META_PEDESTAL           0x1146
+#define OBJ_EVENT_PAL_TAG_META_ICE_CORNER         0x1147
+#define OBJ_EVENT_PAL_TAG_META_BERRY_ROOM         0x1148
+#define OBJ_EVENT_PAL_TAG_META_ROOM15             0x1149
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -552,6 +555,9 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_ProfBirch,             OBJ_EVENT_PAL_TAG_BIRCH},
     {gObjectEventPal_Imposter,              OBJ_EVENT_PAL_TAG_POSSESSED},
     {gObjectEventPal_MetaPedestal,          OBJ_EVENT_PAL_TAG_META_PEDESTAL},
+    {gObjectEventPal_MetaItem_IceCorner,    OBJ_EVENT_PAL_TAG_META_ICE_CORNER},
+    {gObjectEventPal_MetaItem_BerryRoom,    OBJ_EVENT_PAL_TAG_META_BERRY_ROOM},
+    {gObjectEventPal_MetaItem_Room15,       OBJ_EVENT_PAL_TAG_META_ROOM15},
     {},
 };
 /*
@@ -2280,7 +2286,7 @@ u8 GetObjectEventIdByPosition(u16 x, u16 y, u8 elevation) // GetObjectEventIdByX
         {
             if (gObjectEvents[i].currentCoords.x == x
              && gObjectEvents[i].currentCoords.y == y
-             && GetObjectEventGraphicsInfo(gObjectEvents[i].graphicsId) != DOOROFFSET_UP
+             && GetObjectEventGraphicsInfo(gObjectEvents[i].graphicsId)->doorOffsetType != DOOROFFSET_UP
              && ObjectEventDoesElevationMatch(&gObjectEvents[i], elevation))
                 return i;
         }

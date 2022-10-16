@@ -1773,8 +1773,8 @@ text Puzzle_SafariImposters_ImposterReveal_Text5_Wally {
 			"???: Sorry I'm late! You won't believe\n"
 			"the DRAGON {POKEMON} that I caught!$"
 }
-text Puzzle_SafariImposters_ImposterReveal_Text5_Brendan {
-			"???: Hey! Sorry I'm late! I was scanning\n" //TODO: Replace with something else, if Brendan is Norman's kid
+text Puzzle_SafariImposters_ImposterReveal_Text5_Brendan { //TODO: Replace with something else, if Brendan is Norman's kid
+			"???: Hey! Sorry I'm late! I was scanning\n" 
 			"some {POKEMON} for dad!$"
 }
 text Puzzle_SafariImposters_ImposterReveal_Text5_May {

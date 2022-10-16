@@ -10,6 +10,7 @@ TrickHouseEnd_MapScripts::
 
 TrickHouseEnd_WarpTable:
 	map_script_2 VAR_TEMP_0, 0, Common_EventScript_FacePlayerUp
+	@ map_script_2 VAR_TRICK_MASTER_INTRO, 3, TrickHouseEnd_OnWarpInWithFlannery
 	.2byte 0
 
 TrickHouseEnd_FrameTable:
@@ -20,6 +21,19 @@ TrickHouseEnd_FrameTable:
 
 script TrickHouseEnd_OnLoad {
 	callnative(AssignPuzzleMetaVariables)
+	if (var(VAR_TRICK_MASTER_INTRO) == 3) {
+		goto (TrickHouseEnd_OnWarpInWithFlannery)
+	}
+}
+
+script TrickHouseEnd_OnWarpInWithFlannery {
+	if (var(VAR_MISTRESS_STATE) == 0) {
+		clearflag(FLAG_HIDE_FLANNERY_ENDROOM)
+		setvar(VAR_TRICK_MASTER_INTRO, 4)
+	} else {
+		// Skip this
+		setvar(VAR_TRICK_MASTER_INTRO, 5)
+	}
 }
 
 script TrickHouseEnd_OnTransition {

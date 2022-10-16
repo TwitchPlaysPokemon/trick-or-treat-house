@@ -311,7 +311,23 @@
 #define OBJ_EVENT_GFX_TRICK_BUTTON                   0x122
 #define OBJ_EVENT_GFX_TRICK_SWITCH                   0x123
 
-#define NUM_OBJ_EVENT_GFX                            0x124
+#define OBJ_EVENT_GFX_META_ITEM_FINAL_BLUFF          0x124
+#define OBJ_EVENT_GFX_META_ITEM_ZIGGY                0x125
+#define OBJ_EVENT_GFX_META_ITEM_LOG_FLOAT            0x126
+#define OBJ_EVENT_GFX_META_ITEM_FOREST               0x127
+#define OBJ_EVENT_GFX_META_ITEM_ICE_CORNER           0x128
+#define OBJ_EVENT_GFX_META_ITEM_LEDGE                0x129
+#define OBJ_EVENT_GFX_META_ITEM_POKE_STAGE           0x12A
+#define OBJ_EVENT_GFX_META_ITEM_BIKE_PATH            0x12B
+#define OBJ_EVENT_GFX_META_ITEM_BERRY                0x12C
+#define OBJ_EVENT_GFX_META_ITEM_LAVARIDGE            0x12D
+#define OBJ_EVENT_GFX_META_ITEM_FIRE                 0x12E
+#define OBJ_EVENT_GFX_META_ITEM_ZIP_SLIDE            0x12F
+#define OBJ_EVENT_GFX_META_ITEM_KOGA                 0x130
+#define OBJ_EVENT_GFX_META_ITEM_DIVE                 0x131
+#define OBJ_EVENT_GFX_META_ITEM_ROOM15               0x132
+
+#define NUM_OBJ_EVENT_GFX                            0x133
 
 // These are dynamic object gfx ids.
 // They correspond with the values of the VAR_OBJ_GFX_ID_X vars.

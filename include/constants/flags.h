@@ -161,22 +161,22 @@
 #define FLAG_META_PICKUP_DIVE                0x08D
 #define FLAG_META_PICKUP_SEEDOT              0x08E
 #define FLAG_META_PICKUP_CUSHION             0x08F
-#define FLAG_META_SUBMITTED_FINAL_BLUFF      0x090
-#define FLAG_META_SUBMITTED_ZIGGY            0x091
-#define FLAG_META_SUBMITTED_LOG_FLOAT        0x092
-#define FLAG_META_SUBMITTED_FOREST           0x093
-#define FLAG_META_SUBMITTED_ICE_CORNER       0x094
-#define FLAG_META_SUBMITTED_LEDGE            0x095
-#define FLAG_META_SUBMITTED_POKE_STAGE       0x096
-#define FLAG_META_SUBMITTED_BIKE_PATH        0x097
-#define FLAG_META_SUBMITTED_BERRY            0x098
-#define FLAG_META_SUBMITTED_LAVARIDGE        0x099
-#define FLAG_META_SUBMITTED_FIRE             0x09A
-#define FLAG_META_SUBMITTED_ZIP_SLIDE        0x09B
-#define FLAG_META_SUBMITTED_KOGA             0x09C
-#define FLAG_META_SUBMITTED_DIVE             0x09D
-#define FLAG_META_SUBMITTED_SEEDOT           0x09E
-#define FLAG_META_SUBMITTED_CUSHION          0x09F
+#define FLAG_UNUSED_0x090                    0x090
+#define FLAG_META_COMMENTED_ZIGGY            0x091
+#define FLAG_META_COMMENTED_LOG_FLOAT        0x092
+#define FLAG_META_COMMENTED_FOREST           0x093
+#define FLAG_META_COMMENTED_ICE_CORNER       0x094
+#define FLAG_META_COMMENTED_LEDGE            0x095
+#define FLAG_META_COMMENTED_POKE_STAGE       0x096
+#define FLAG_META_COMMENTED_BIKE_PATH        0x097
+#define FLAG_META_COMMENTED_BERRY            0x098
+#define FLAG_UNUSED_0x099                    0x099
+#define FLAG_META_COMMENTED_FIRE             0x09A
+#define FLAG_META_COMMENTED_ZIP_SLIDE        0x09B
+#define FLAG_META_COMMENTED_KOGA             0x09C
+#define FLAG_META_COMMENTED_DIVE             0x09D
+#define FLAG_META_COMMENTED_SEEDOT           0x09E
+#define FLAG_UNUSED_0x09F                    0x09F
 #define FLAG_HIDE_EXT_GAME_PLAYERS           0x0A0
 #define FLAG_PICKUP_WATERING_CAN             0x0A1
 #define FLAG_UNUSED_0x0A2                    0x0A2
@@ -733,7 +733,7 @@
 #define FLAG_HIDE_DEBUG_OBJECTS                                      0x2C0
 #define FLAG_HIDE_INTRO_CHARACTERS                                   0x2C1 // Unused
 #define FLAG_HIDE_TRICK_HOUSE_INTRO_CHARACTERS                       0x2C2
-#define FLAG_HIDE_UNUSED_0x2C3                                       0x2C3
+#define FLAG_HIDE_FLANNERY_ENDROOM                                   0x2C3
 #define FLAG_HIDE_UNUSED_0x2C4                                       0x2C4
 #define FLAG_HIDE_UNUSED_0x2C5                                       0x2C5
 #define FLAG_HIDE_UNUSED_0x2C6                                       0x2C6
@@ -1608,6 +1608,7 @@
 #define FLAG_PREVENT_EVENT_OBJECT_DESPAWN       0x4007 //Do not despawn event objects when they're off screen
 #define FLAG_DISABLE_FADE_INIT                  0x4008
 #define FLAG_DISABLE_MAP_MUSIC_CHANGE           0x4009
+#define FLAG_SUPPRESS_SPEAKER_NAME              0x400A
 #define SPECIAL_FLAGS_END                       (SPECIAL_FLAGS_START + 0x7F)
 
 #define FLAG_ALWAYS_FALSE                       0x4100

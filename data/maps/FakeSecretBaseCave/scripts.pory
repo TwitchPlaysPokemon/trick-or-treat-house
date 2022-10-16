@@ -1,20 +1,65 @@
 raw `
 #define LID_MISTRESS  1
+
+#define GRID_X  10
+#define GRID_Y  10
 `
 mapscripts FakeSecretBaseCave_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
-		setmetatile(15, 15, 0x234, FALSE)
-		setmetatile(15, 16, 0x23C, FALSE)
-		if (var(VAR_MISTRESS_STATE) == 0) {
-			setobjectmovementtype(LID_MISTRESS, MOVEMENT_TYPE_FACE_UP)
-		}
-		if (var(VAR_MISTRESS_STATE) == 2) {
-			setvar(VAR_MISTRESS_STATE, 1)
+		// setmetatile(15, 15, 0x234, FALSE)
+		// setmetatile(15, 16, 0x23C, FALSE)
+		if (var(VAR_MISTRESS_STATE) == 1) {
+			random(5)
+			switch (var(VAR_RESULT)) {
+				case 0:
+					setobjectxyperm(LID_MISTRESS, 5, 17)
+					setobjectmovementtype(LID_MISTRESS, MOVEMENT_TYPE_FACE_UP)
+				case 1:
+					setobjectxyperm(LID_MISTRESS, 2, 14)
+					setobjectmovementtype(LID_MISTRESS, MOVEMENT_TYPE_FACE_UP)
+				case 2:
+					setobjectxyperm(LID_MISTRESS, 12, 14)
+					setobjectmovementtype(LID_MISTRESS, MOVEMENT_TYPE_FACE_UP)
+				case 3:
+					setobjectxyperm(LID_MISTRESS, 5, 14)
+					setobjectmovementtype(LID_MISTRESS, MOVEMENT_TYPE_FACE_DOWN)
+				case 4:
+					setobjectxyperm(LID_MISTRESS, 8, 13)
+					setobjectmovementtype(LID_MISTRESS, MOVEMENT_TYPE_FACE_RIGHT)
+			}
 		}
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_TEMP_0, 0: FakeSecretBaseCave_OnFirstFrame
 		VAR_MISTRESS_STATE, 0: FakeSecretBaseCave_MistressIntro
 	]
+	MAP_SCRIPT_ON_RESUME {
+		call (FakeSecretBaseCave_MakeModelGrid)
+	}
+}
+
+script FakeSecretBaseCave_OnFirstFrame {
+	setvar(VAR_TEMP_0, 1)
+	call (FakeSecretBaseCave_MakeModelGrid)
+}
+
+script FakeSecretBaseCave_MakeModelGrid {
+	createvobject(OBJ_EVENT_GFX_META_ITEM_BERRY,       1, GRID_X+0, GRID_Y+0)
+	createvobject(OBJ_EVENT_GFX_META_ITEM_LOG_FLOAT,   2, GRID_X+1, GRID_Y+0)
+	createvobject(OBJ_EVENT_GFX_META_ITEM_FINAL_BLUFF, 3, GRID_X+2, GRID_Y+0)
+	createvobject(OBJ_EVENT_GFX_META_ITEM_POKE_STAGE,  4, GRID_X+3, GRID_Y+0)
+	createvobject(OBJ_EVENT_GFX_META_ITEM_ZIGGY,       5, GRID_X+0, GRID_Y+1)
+	createvobject(OBJ_EVENT_GFX_META_ITEM_ICE_CORNER,  6, GRID_X+1, GRID_Y+1)
+	createvobject(OBJ_EVENT_GFX_META_ITEM_ROOM15,      7, GRID_X+2, GRID_Y+1)
+	createvobject(OBJ_EVENT_GFX_META_ITEM_FIRE,        8, GRID_X+3, GRID_Y+1)
+	createvobject(OBJ_EVENT_GFX_META_ITEM_DIVE,        9, GRID_X+0, GRID_Y+2)
+	createvobject(OBJ_EVENT_GFX_META_ITEM_BIKE_PATH,  10, GRID_X+1, GRID_Y+2)
+	createvobject(OBJ_EVENT_GFX_META_ITEM_FOREST,     11, GRID_X+2, GRID_Y+2)
+	createvobject(OBJ_EVENT_GFX_META_ITEM_KOGA,       12, GRID_X+3, GRID_Y+2)
+	createvobject(OBJ_EVENT_GFX_META_ITEM_LEDGE,      13, GRID_X+0, GRID_Y+3)
+	createvobject(OBJ_EVENT_GFX_META_ITEM_ZIP_SLIDE,  14, GRID_X+1, GRID_Y+3)
+	createvobject(OBJ_EVENT_GFX_META_ITEM_LAVARIDGE,  15, GRID_X+2, GRID_Y+3)
+	return
 }
 
 script FakeSecretBaseCave_DenyPC {
@@ -23,9 +68,15 @@ script FakeSecretBaseCave_DenyPC {
 			"Best not touch it.$", MSGBOX_SIGN)
 }
 
+script FakeSecretBaseCave_Pedestal {
+	msgbox ("There's a couple panels open on this\n"
+			"pedestal, with wires poking out.$", MSGBOX_SIGN)
+}
+
 script FakeSecretBaseCave_MistressIntro {
 	lockall
 	// exclaim
+	setvar(VAR_0x8000, LID_MISTRESS)
 	applymovement(LID_MISTRESS, Common_Movement_FaceDown)
 	waitmovement(0)
 	applymovement(LID_MISTRESS, Common_Movement_ExclamationMarkAndWait)
@@ -42,55 +93,40 @@ script FakeSecretBaseCave_MistressIntro {
 			"Are you participating in the Trick\n"
 			"House event this year?\p"
 			"You are! So you've probably met my\n"
-			"brother then. Maybe you can help me…\p"
-			"Oh, yeah, sorry, my name is Flannery,\n"
-			"but tonight, you can call me…\p$")
+			"brother then. Maybe you can help me…\p$")
 	waitmessage
-	applymovement(LID_MISTRESS, FakeSecretBaseCave_MistressIntro_Movement2)
-	waitmovement(LID_MISTRESS)
-	message("The {COLOR RED}TRICK MISTRESS{COLOR DARK_GRAY}!{PAUSE 30}\p$")
-	waitmessage
+	call (FakeSecretBaseCave_Script_FlanneryIntroCommon1)
 	applymovement(LID_MISTRESS, Common_Movement_FaceRight)
-	message("Hm? Gym? Oh, right, Lavaridge. Yeah,\n"
-			"that wasn't really for me in the end.\p$")
-	waitmessage
+	call (FakeSecretBaseCave_Script_FlanneryIntroCommon2)
 	applymovement(LID_MISTRESS, FakeSecretBaseCave_MistressIntro_Movement3a)
 	applymovement(LID_PLAYER, FakeSecretBaseCave_MistressIntro_Movement3b)
-	message("And after last year's Trick House event\n"
-			"I discovered that the TRICK MASTER is\l"
-			"my brother. Well, half-brother…\l"
-			"…long story, I won't bore you with it.\p"
-			"Anyway! You can help me!\n"
-			"Yes, this is good! I need your help!\p$")
-	waitmessage
+	call (FakeSecretBaseCave_Script_FlanneryIntroCommon3)
 	waitmovement(LID_MISTRESS)
 	applymovement(LID_MISTRESS, FakeSecretBaseCave_MistressIntro_Movement4a)
 	applymovement(LID_PLAYER, FakeSecretBaseCave_MistressIntro_Movement4b)
-	message("You see, I want to try and show up my\n"
-			"brother with my own puzzle!\p"
-			"I've got a big idea… but I don't have\n"
-			"the resources to do it yet…\p"
-			"I need you to try and find me… the…\n"
-			"{COLOR BLUE}essence{COLOR DARK_GRAY}… of the puzzles you do tonight.\p"
-			"You'll know when you see them.\n"
+	call (FakeSecretBaseCave_Script_FlanneryIntroCommon4)
+	message("You'll know when you see them.\n"
 			"They're quite out of place.\p"
-			"I want you to pick them up and bring\n"
-			"them to me if you can.\p"
-			"If you bring me at least {COLOR RED}eight{COLOR DARK_GRAY}\n"
-			"by the end of the night…\p$")
+			"Like this Cushion!$")
 	waitmessage
-	applymovement(LID_MISTRESS, Common_Movement_FaceRight)
-	message("I might be able to throw together\n"
-			"a puzzle even greater than my brother\l"
-			"has EVER done before. Maybe.\p$")
-	waitmessage
-	applymovement(LID_MISTRESS, Common_Movement_FaceDown)
-	message("What do you think?\p"
-			"Don't worry too much if you can't\n"
-			"I'll… try and whip something up\l"
-			"even if I don't have the resources…\p"
-			"It'll just be kinda disappointing…\p"
-			"Good luck!$")
+	waitbuttonpress
+	call (FakeSecretBaseCave_Script_FlanneryIntroCommon5)
+	// applymovement(LID_MISTRESS, Common_Movement_FaceRight)
+	// message("I might be able to throw together\n"
+	// 		"a puzzle even greater than my brother\l"
+	// 		"has EVER done before. Maybe.\p$")
+	// waitmessage
+	// applymovement(LID_MISTRESS, Common_Movement_FaceDown)
+	// message("What do you think?\p"
+	// 		"Don't worry too much if you can't\n"
+	// 		"I'll… try and whip something up\l"
+	// 		"even if I don't have the resources…\p"
+	// 		"It'll just be kinda disappointing…\p"
+	// 		"Good luck!$")
+	// waitmessage
+	// waitbuttonpress
+	message("Anyway, good luck!\n"
+			"I'll be here if you need me!$")
 	waitmessage
 	waitbuttonpress
 	setvar(VAR_MISTRESS_STATE, 1)
@@ -118,11 +154,11 @@ movement FakeSecretBaseCave_MistressIntro_Movement2 {
 	face_down
 }
 movement FakeSecretBaseCave_MistressIntro_Movement3a {
-	walk_slow_up * 4
+	walk_slow_up * 2
 	face_right
 }
 movement FakeSecretBaseCave_MistressIntro_Movement3b {
-	walk_slow_up * 4
+	walk_slow_up * 2
 	face_left
 }
 movement FakeSecretBaseCave_MistressIntro_Movement4a {
@@ -135,37 +171,337 @@ movement FakeSecretBaseCave_MistressIntro_Movement4b {
 	face_up
 }
 
+//-----------------------------------------------------
+
+script(local) FakeSecretBaseCave_Script_FlanneryIntroCommon1 {
+	message("Oh, yeah, sorry, my name is Flannery,\n"
+			"but tonight, you can call me…\p$")
+	waitmessage
+	applymovement(VAR_0x8000, FakeSecretBaseCave_MistressIntro_Movement2)
+	waitmovement(VAR_0x8000)
+	message("The {COLOR RED}TRICK MISTRESS{COLOR DARK_GRAY}!{PAUSE 30}\p$")
+	waitmessage
+	speakername("Trick Mistress$")
+	return
+}
+script(local) FakeSecretBaseCave_Script_FlanneryIntroCommon2 {
+	message("Hm? Gym? Oh, right, Lavaridge. Yeah,\n"
+			"that wasn't really for me in the end.\p$")
+	waitmessage
+	return
+}
+script(local) FakeSecretBaseCave_Script_FlanneryIntroCommon3 {
+	message("And after last year's Trick House event\n"
+			"I discovered that the TRICK MASTER is\l"
+			"my brother. Well, half-brother…\l"
+			"…long story, I won't bore you with it.\p"
+			"Anyway! You can help me!\n"
+			"Yes, this is good! I need your help!\p$")
+	waitmessage
+	return
+}
+script(local) FakeSecretBaseCave_Script_FlanneryIntroCommon4 {
+	message("You see, I want to try and show up my\n"
+			"brother with my own puzzle!\p"
+			"I've got a big idea… but I don't have\n"
+			"the resources to do it yet…\p"
+			"I need you to try and find me… the…\n"
+			"{COLOR BLUE}essence{COLOR DARK_GRAY}… of the puzzles you do tonight.\p$")
+	waitmessage
+	return
+}
+script(local) FakeSecretBaseCave_Script_FlanneryIntroCommon5 {
+	giveitem_std(ITEM_META_ITEM_LAVARIDGE, 1)
+	message("If you stumble upon anything like these\n"
+			"in any puzzles tonight, I want you to\l"
+			"pick them all up! Keep them with you!\p"
+			"And near the end of the night,\n"
+			"I might be able to throw together\l"
+			"a puzzle greater than any my brother\l"
+			"has EVER put done before! Maybe.\p$")
+	waitmessage
+	message("If you can bring me at least {COLOR RED}eight{COLOR DARK_GRAY},\n"
+			"ideally {COLOR RED}fifteen{COLOR DARK_GRAY}, but…\p"
+			"Don't worry too much if you can't\n"
+			"I'll… try and whip something up\l"
+			"even if I don't have the resources…\p"
+			"It'll just be kinda disappointing…\p$"
+			"Anyway, good luck!$")
+	waitmessage
+	return
+}
+
+//-----------------------------------------------------
+
+script FakeSecretBaseCave_EventScript_EndRoomFlannery {
+	lockall
+	faceplayer
+	call (FakeSecretBaseCave_EndRoomFlannery)
+	applymovement(6, FakeSecretBaseCave_Movement_EndRoomFlannery)
+	waitmovement(6)
+	playse(SE_EXIT)
+	removeobject(6)
+	releaseall
+}
+script FakeSecretBaseCave_TriggerScript_EndRoomFlannery {
+	lockall
+	applymovement(6, Common_Movement_FaceDown)
+	applymovement(LID_PLAYER, Common_Movement_FaceUp)
+	waitmovement
+	call (FakeSecretBaseCave_EndRoomFlannery)
+	applymovement(LID_PLAYER, Common_Movement_BackOffRight1)
+	waitmovement(LID_PLAYER)
+	applymovement(6, FakeSecretBaseCave_Movement_EndRoomFlannery)
+	waitmovement(6)
+	playse(SE_EXIT)
+	removeobject(6)
+	releaseall
+}
+script(local) FakeSecretBaseCave_EndRoomFlannery {
+	setvar(VAR_0x8000, 6)
+	message("Oh, hello! Love the costume.\n"
+			"Enjoying the festivities tonight?\p"
+			"Did you pick up something odd in that\n"
+			"last puzzle? The Inflatable Rock?\p$")
+	waitmessage
+	call (FakeSecretBaseCave_Script_FlanneryIntroCommon1)
+	faceplayer
+	call (FakeSecretBaseCave_Script_FlanneryIntroCommon2)
+	call (FakeSecretBaseCave_Script_FlanneryIntroCommon3)
+	call (FakeSecretBaseCave_Script_FlanneryIntroCommon4)
+	message("Like the Inflatable Rock you just\n"
+			"picked up in the puzzle!\p"
+			"Or this Cushion!$")
+	waitmessage
+	waitbuttonpress
+	call (FakeSecretBaseCave_Script_FlanneryIntroCommon5)
+	setvar(VAR_TRICK_MASTER_INTRO, 5)
+	message("Anyway, good luck!\n"
+			"If you need me, find me outside,\l"
+			"in the secret base to the west!$")
+	waitmessage
+	waitbuttonpress
+	closemessage
+	return
+}
+movement FakeSecretBaseCave_Movement_EndRoomFlannery {
+	walk_down * 1
+	walk_left * 4
+	face_down
+	delay_8
+	set_invisible
+}
+
+
 // ----------------------------------------------------
 
 script FakeSecretBaseCave_Mistress {
 	lock
 	faceplayer
-	switch (var(VAR_MISTRESS_STATE)) {
-		case 1:
+	speakername("Trick Mistress$")
+	switch (var(VAR_TEMP_2)) {
+		case 0:
 			msgbox( "How's tonight been going?\n"
-					"Find anything?")
-			call(MetaPuzzle_DropOffEvents)
+					"Find anything new in the puzzles?$")
+			call(MetaPuzzle_CommentOnItems)
 			// TODO: Check if at 9 or 15 items and react accordingly
 			if (var(VAR_0x800A) > 0) {
-				msgbox ("If you find anymore, please,\n"
-						"don't hesitate to drop them here!$")
+				msgbox ("If you find anymore, please grab them!\n"
+						"These are giving me great ideas!$")
 			} else {
 				msgbox ("Nothing? Well… It's okay, but let\n"
 						"me know if you do.$")
 			}
-			setvar(VAR_MISTRESS_STATE, 2)
-		case 2:
+			setvar(VAR_TEMP_2, 1)
+		case 1:
 			msgbox ("Please try and find me the essence\n"
 					"of puzzles you come across.\p"
 					"Not every puzzle will have something.\n"
 					"It might be quite rare to find.\p"
 					"But if you do find anything,\n"
-					"please give it to me if you can.$")
+					"please grab it for me if you can.$")
 	}
 	release
+}
+
+script MetaPuzzle_CommentOnItems {
+	setvar(VAR_0x800A, 0)
+	// 
+	if (!flag(FLAG_META_COMMENTED_ZIGGY)) {
+		checkitem(ITEM_META_ITEM_ZIGGY, 1)
+		if (var(VAR_RESULT) == TRUE) {
+	message("Oh! That Zigzag Cushion! It's so\n"
+			"furry and full of the will to mimic!\p"
+			"Yes, I can see it! A forest!\n"
+			"The Zigzagoon! The mimicry!$")
+			waitmessage
+			setflag(FLAG_META_COMMENTED_ZIGGY)
+			addvar(VAR_0x800A, 1)
+		}
+	}
+	// 
+	if (!flag(FLAG_META_COMMENTED_LOG_FLOAT)) {
+		checkitem(ITEM_META_ITEM_LOG_FLOAT, 1)
+		if (var(VAR_RESULT) == TRUE) {
+	message("Oh! That Lotad Doll!"
+			"It's so very moist!\p"
+			"And it smells of driftwood…\n"
+			"Floating on the rising tides…\p$")
+			waitmessage
+			setflag(FLAG_META_COMMENTED_LOG_FLOAT)
+			addvar(VAR_0x800A, 1)
+		}
+	}
+	//
+	if (!flag(FLAG_META_COMMENTED_FOREST)) {
+		checkitem(ITEM_META_ITEM_FOREST, 1)
+		if (var(VAR_RESULT) == TRUE) {
+	message("Oh! The Grass Cushion! <sniff!>\n"
+			"An obstinant bird, running around…\p"
+			"I'm inspired! I'll need to acquire\n"
+			"some trees, stat!\p$")
+			waitmessage
+			setflag(FLAG_META_COMMENTED_FOREST)
+			addvar(VAR_0x800A, 1)
+		}
+	}
+	//
+	if (!flag(FLAG_META_COMMENTED_ICE_CORNER)) {
+		checkitem(ITEM_META_ITEM_ICE_CORNER, 1)
+		if (var(VAR_RESULT) == TRUE) {
+	message("Oh! That Diamond Cushion!\n"
+			"It's covered in sparkling crystals!\p"
+			"Yes… The ice… The boulders…\n"
+			"I can see it now…!\p$")
+			waitmessage
+			setflag(FLAG_META_COMMENTED_ICE_CORNER)
+			addvar(VAR_0x800A, 1)
+		}
+	}
+	//
+	if (!flag(FLAG_META_COMMENTED_LEDGE)) {
+		checkitem(ITEM_META_ITEM_LEDGE, 1)
+		if (var(VAR_RESULT) == TRUE) {
+	message("Oh! A Spin Cushion!\n"
+			"A dusty pass… Steep cliffs!\p"
+			"Oh, yes! This is inspirational!\n"
+			"I need to find an earth mover!\p$")
+			waitmessage
+			setflag(FLAG_META_COMMENTED_LEDGE)
+			addvar(VAR_0x800A, 1)
+		}
+	}
+	//
+	if (!flag(FLAG_META_COMMENTED_POKE_STAGE)) {
+		checkitem(ITEM_META_ITEM_POKE_STAGE, 1)
+		if (var(VAR_RESULT) == TRUE) {
+	message("Oh! An Azurill Doll! So cute!\n"
+			"Sp fluffy! So demanding!\p"
+			"A stage! The singing! Can I source a\n"
+			"theater on such short notice?\p$")
+			waitmessage
+			setflag(FLAG_META_COMMENTED_POKE_STAGE)
+			addvar(VAR_0x800A, 1)
+		}
+	}
+	//
+	if (!flag(FLAG_META_COMMENTED_BIKE_PATH)) {
+		checkitem(ITEM_META_ITEM_BIKE_PATH, 1)
+		if (var(VAR_RESULT) == TRUE) {
+	message("Oh! The Ball Cushion…!\p"
+			"I sense tension. Compromise.\n"
+			"A stand off… …\p"
+			"I'm kidding. I overheard my brother\n"
+			"griping about cycling road, heh.\p"
+			"It does give me an idea for a long\n"
+			"straight path… …\p$")
+			waitmessage
+			setflag(FLAG_META_COMMENTED_BIKE_PATH)
+			addvar(VAR_0x800A, 1)
+		}
+	}
+	//
+	if (!flag(FLAG_META_COMMENTED_BERRY)) {
+		checkitem(ITEM_ENIGMA_BERRY, 1)
+		if (var(VAR_RESULT) == TRUE) {
+	message("Oh! What a strange berry you have\n"
+			"there…! You should plant that!\p"
+			"There's a berry patch just outside\n"
+			"and to the west of here!\p"
+			"And I heard that there's a Wailmer\n"
+			"Pail east of the Trick House!\p$")
+			waitmessage
+			addvar(VAR_0x800A, 1)
+		}
+		checkitem(ITEM_META_ITEM_BERRY, 1)
+		if (var(VAR_RESULT) == TRUE) {
+	message("Oh! What a pretty flower!\n"
+			"I can tell you worked hard for it!\p$")
+			waitmessage
+			setflag(FLAG_META_COMMENTED_BERRY)
+			addvar(VAR_0x800A, 1)
+		}
+	}
+	//
+	if (!flag(FLAG_META_COMMENTED_FIRE)) {
+		checkitem(ITEM_META_ITEM_FIRE, 1)
+		if (var(VAR_RESULT) == TRUE) {
+	message("Oh! That Fire Cushion!\n"
+			"It still smells of sulfur and salt…\p"
+			"I sense strong currents…\n"
+			"A strange maze on the water…\p$")
+			waitmessage
+			setflag(FLAG_META_COMMENTED_FIRE)
+			addvar(VAR_0x800A, 1)
+		}
+	}
+	//
+	if (!flag(FLAG_META_COMMENTED_ZIP_SLIDE)) {
+		checkitem(ITEM_META_ITEM_ZIP_SLIDE, 1)
+		if (var(VAR_RESULT) == TRUE) {
+	message("Oh! Is that a Zip Cushion?!\n"
+			"That's a rare sight…\p"
+			"I can see it now… Sliding…\n"
+			"All over… And polished floors!\p$")
+			waitmessage
+			setflag(FLAG_META_COMMENTED_ZIP_SLIDE)
+			addvar(VAR_0x800A, 1)
+		}
+	}
+	//
+	if (!flag(FLAG_META_COMMENTED_KOGA)) {
+		checkitem(ITEM_META_ITEM_KOGA, 1)
+		if (var(VAR_RESULT) == TRUE) {
+	message("Ooh! A Duskull Doll! How spooky\n"
+			"and sneaky! Where did you find this?\p"
+			"Oh, that's a look on your face!\n"
+			"You don't like hidden paths? Heh!\p$")
+			waitmessage
+			setflag(FLAG_META_COMMENTED_KOGA)
+			addvar(VAR_0x800A, 1)
+		}
+	}
+	//
+	if (!flag(FLAG_META_COMMENTED_DIVE)) {
+		checkitem(ITEM_META_ITEM_DIVE, 1)
+		if (var(VAR_RESULT) == TRUE) {
+	message("Ooh! That Water Cushion!\n"
+			"It's soaked through!\p"
+			"It's almost as if you found this at\n"
+			"the bottom of a deep pool of water!\p$")
+			waitmessage
+			setflag(FLAG_META_COMMENTED_DIVE)
+			addvar(VAR_0x800A, 1)
+		}
+	}
+	// TODO: More as more are implemented
+	return
 }
 
 
 raw `
 #undef LID_MISTRESS
+
+#undef GRID_X
+#undef GRID_Y
 `

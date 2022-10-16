@@ -2378,6 +2378,52 @@ static const struct SpriteFrameImage sPicTable_MetaPedestal[] = {
     obj_frame_tiles(gObjectEventPic_MetaPedestal),
 };
 
+static const struct SpriteFrameImage sPicTable_MetaItem_Lavaridge[] = {
+    obj_frame_tiles(gObjectEventPic_MetaItem_Lavaridge),
+};
+static const struct SpriteFrameImage sPicTable_MetaItem_FinalBluff[] = {
+    obj_frame_tiles(gObjectEventPic_MetaItem_FinalBluff),
+};
+static const struct SpriteFrameImage sPicTable_MetaItem_LedgeValley[] = {
+    obj_frame_tiles(gObjectEventPic_MetaItem_LedgeValley),
+};
+static const struct SpriteFrameImage sPicTable_MetaItem_IceCorner[] = {
+    obj_frame_tiles(gObjectEventPic_MetaItem_IceCorner),
+};
+static const struct SpriteFrameImage sPicTable_MetaItem_LogFlotilla[] = {
+    obj_frame_tiles(gObjectEventPic_MetaItem_LogFlotilla),
+};
+static const struct SpriteFrameImage sPicTable_MetaItem_BikePath[] = {
+    obj_frame_tiles(gObjectEventPic_MetaItem_BikePath),
+};
+static const struct SpriteFrameImage sPicTable_MetaItem_PokeStage[] = {
+    obj_frame_tiles(gObjectEventPic_MetaItem_PokeStage),
+};
+static const struct SpriteFrameImage sPicTable_MetaItem_ZiggyRoom[] = {
+    obj_frame_tiles(gObjectEventPic_MetaItem_ZiggyRoom),
+};
+static const struct SpriteFrameImage sPicTable_MetaItem_ForestRoom[] = {
+    obj_frame_tiles(gObjectEventPic_MetaItem_ForestRoom),
+};
+static const struct SpriteFrameImage sPicTable_MetaItem_ZipRoom[] = {
+    obj_frame_tiles(gObjectEventPic_MetaItem_ZipRoom),
+};
+static const struct SpriteFrameImage sPicTable_MetaItem_KogaRoom[] = {
+    obj_frame_tiles(gObjectEventPic_MetaItem_KogaRoom),
+};
+static const struct SpriteFrameImage sPicTable_MetaItem_FireRoom[] = {
+    obj_frame_tiles(gObjectEventPic_MetaItem_FireRoom),
+};
+static const struct SpriteFrameImage sPicTable_MetaItem_DiveMaze[] = {
+    obj_frame_tiles(gObjectEventPic_MetaItem_DiveMaze),
+};
+static const struct SpriteFrameImage sPicTable_MetaItem_BerryRoom[] = {
+    obj_frame_tiles(gObjectEventPic_MetaItem_BerryRoom),
+};
+static const struct SpriteFrameImage sPicTable_MetaItem_Room15[] = {
+    obj_frame_tiles(gObjectEventPic_MetaItem_Room15),
+};
+
 static const struct SpriteFrameImage sPicTable_TrickButton[] = {
     overworld_frame(gObjectEventPic_TrickButton, 2, 2, 0),
     overworld_frame(gObjectEventPic_TrickButton, 2, 2, 1),

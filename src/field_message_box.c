@@ -37,7 +37,7 @@ static void Task_DrawFieldMessage(u8 taskId)
             task->tState++;
             break;
         case 1:
-            if (gSpeakerName != NULL) {
+            if (gSpeakerName != NULL && !FlagGet(FLAG_SUPPRESS_SPEAKER_NAME)) {
                 // FillWindowPixelBuffer(1, PIXEL_FILL(15));
                 // RunTextPrinters();
                 DrawDialogueFrameWithFrame(0, TRUE);
@@ -134,7 +134,7 @@ extern int GetDialogFramePlateWidth();
 static void ExpandStringAndStartDrawFieldMessage(const u8 *str, bool32 allowSkippingDelayWithButtonPress)
 {
     if (FlagGet(FLAG_SYS_BORT_MODE)) gSpeakerName = NULL; // Don't show names in BORT mode
-    if (gSpeakerName != NULL) {
+    if (gSpeakerName != NULL && !FlagGet(FLAG_SUPPRESS_SPEAKER_NAME)) {
         // mgba_printf(MGBA_LOG_INFO, "DRAWING SPEAKER NAME: ");
         // mgba_printEncoded(MGBA_LOG_INFO, gSpeakerName);
         int strLen = GetStringWidth(FONT_SMALL, gSpeakerName, -1);

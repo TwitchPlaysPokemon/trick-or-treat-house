@@ -5,7 +5,9 @@ Std_ObtainItem::
 	resolveitem ITEMID, AMOUNT
 	additem ITEMID, AMOUNT
 	copyvar VAR_0x8007, VAR_RESULT
+	setflag FLAG_SUPPRESS_SPEAKER_NAME
 	call EventScript_ObtainItemMessage
+	clearflag FLAG_SUPPRESS_SPEAKER_NAME
 	return
 
 EventScript_ObtainItemMessage::

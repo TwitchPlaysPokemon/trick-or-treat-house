@@ -10,6 +10,7 @@ TrickTreat_PetalburgCity_MapScripts::
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, TrickTreat_PetalburgCity_FrameTable
 	map_script MAP_SCRIPT_ON_RETURN_TO_FIELD, TrickTreat_PetalburgCity_ReturnToField
 	map_script MAP_SCRIPT_ON_SPAWN_OBJECT_EVENT, TrickTreat_PetalburgCity_OnSpawnObject
+	map_script MAP_SCRIPT_ON_PUZZLE_SETUP, TrickTreat_PetalburgCity_PuzzleSetup
 	.byte 0
 
 TrickTreat_PetalburgCity_Name:
@@ -69,6 +70,9 @@ TrickTreat_PetalburgCity_FrameTable:
 #define LID_IMPOSTER_GIRL 14
 `
 
+script(local) TrickTreat_PetalburgCity_PuzzleSetup {
+	setberrytree(BERRY_TREE_PETALBURG, ITEM_TO_BERRY(ITEM_ENIGMA_BERRY), BERRY_STAGE_FLOWERING)
+}
 script(local) TrickTreat_PetalburgCity_OnTransition {
 	if (flag(FLAG_PUZZLE_23)) { setmetatile (30, 24, METATILE_DoorOff, TRUE) }
 	if (flag(FLAG_PUZZLE_24)) { setmetatile (17,  5, METATILE_DoorOff, TRUE) }
@@ -261,6 +265,27 @@ script TrickTreat_PetalburgCity_CandyGiver_House {
 	call (PuzzleCommon_EventScript_DoorCandyGiverHide)
 	setflag (FLAG_PUZZLE_25)
 	release
+}
+
+script TrickTreat_PetalburgCity_BerryLady {
+	lock
+	faceplayer
+	if (!flag(FLAG_META_PICKUP_BERRY)) {
+	msgbox ("Happy Halloween!\n"
+			"Here's a treat!$")
+		giveitem_std(ITEM_ENIGMA_BERRY, 1)
+		setflag(FLAG_META_PICKUP_BERRY)
+	}
+	msgbox ("What is it?!\n"
+			"It's a berry, obviously!\p"
+			"You should plant that berry as soon\n"
+			"as you can, so it can grow!\p"
+			"It'll grow into something special!\n"
+			"Water it regularly!$")
+	release
+}
+script TrickTreat_PetalburgCity_BerryPlant {
+	msgbox ("What a strange plant…$", MSGBOX_SIGN)
 }
 
 # -----------------------------------------------------

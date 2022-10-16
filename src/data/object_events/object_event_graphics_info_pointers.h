@@ -286,6 +286,23 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_ALIEN] =                    &gObjectEventGraphicsInfo_Alien,
     [OBJ_EVENT_GFX_IMPOSTER_LASS] =            &gObjectEventGraphicsInfo_ImposterLass,
     
+    // Meta Items
+    [OBJ_EVENT_GFX_META_ITEM_LAVARIDGE] =      &gObjectEventGraphicsInfo_MetaItem_Lavaridge,
+    [OBJ_EVENT_GFX_META_ITEM_FINAL_BLUFF] =    &gObjectEventGraphicsInfo_MetaItem_FinalBluff,
+    [OBJ_EVENT_GFX_META_ITEM_LEDGE] =          &gObjectEventGraphicsInfo_MetaItem_LedgeValley,
+    [OBJ_EVENT_GFX_META_ITEM_ICE_CORNER] =     &gObjectEventGraphicsInfo_MetaItem_IceCorner,
+    [OBJ_EVENT_GFX_META_ITEM_LOG_FLOAT] =      &gObjectEventGraphicsInfo_MetaItem_LogFlotilla,
+    [OBJ_EVENT_GFX_META_ITEM_BIKE_PATH] =      &gObjectEventGraphicsInfo_MetaItem_BikePath,
+    [OBJ_EVENT_GFX_META_ITEM_POKE_STAGE] =     &gObjectEventGraphicsInfo_MetaItem_PokeStage,
+    [OBJ_EVENT_GFX_META_ITEM_ZIGGY] =          &gObjectEventGraphicsInfo_MetaItem_ZiggyRoom,
+    [OBJ_EVENT_GFX_META_ITEM_FOREST] =         &gObjectEventGraphicsInfo_MetaItem_ForestRoom,
+    [OBJ_EVENT_GFX_META_ITEM_ZIP_SLIDE] =      &gObjectEventGraphicsInfo_MetaItem_ZipRoom,
+    [OBJ_EVENT_GFX_META_ITEM_KOGA] =           &gObjectEventGraphicsInfo_MetaItem_KogaRoom,
+    [OBJ_EVENT_GFX_META_ITEM_FIRE] =           &gObjectEventGraphicsInfo_MetaItem_FireRoom,
+    [OBJ_EVENT_GFX_META_ITEM_DIVE] =           &gObjectEventGraphicsInfo_MetaItem_DiveMaze,
+    [OBJ_EVENT_GFX_META_ITEM_BERRY] =          &gObjectEventGraphicsInfo_MetaItem_BerryRoom,
+    [OBJ_EVENT_GFX_META_ITEM_ROOM15] =         &gObjectEventGraphicsInfo_MetaItem_Room15,
+    
     // Dev Self-Inserts
     [OBJ_EVENT_GFX_DEV_TUSTIN2121] =           &gObjectEventGraphicsInfo_Tustin2121,
     [OBJ_EVENT_GFX_DEV_SHANTYTOWN] =           &gObjectEventGraphicsInfo_Scientist1, // TODO

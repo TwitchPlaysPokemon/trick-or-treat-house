@@ -472,80 +472,85 @@ const u16 gObjectEventPal_MetaPedestal[] = INCBIN_U16("graphics/object_events/pi
 
 //-------------------------------------------------------------------
 // Meta Puzzle Items
+const u32 gItemIconPal_Npc1[] = INCBIN_U32("graphics/object_events/palettes/npc_1.gbapal.lz");
+const u32 gItemIconPal_Npc2[] = INCBIN_U32("graphics/object_events/palettes/npc_2.gbapal.lz");
+const u32 gItemIconPal_Npc3[] = INCBIN_U32("graphics/object_events/palettes/npc_3.gbapal.lz");
+const u32 gItemIconPal_Npc4[] = INCBIN_U32("graphics/object_events/palettes/npc_4.gbapal.lz");
+
 const u32 gObjectEventPic_MetaItem_Lavaridge[] = INCBIN_U32("graphics/meta_puzzle/lavaridge_room_objevt.4bpp");
 // const u16 gObjectEventPal_MetaItem_Lavaridge[] = INCBIN_U16("graphics/meta_puzzle/lavaridge_room_objevt.gbapal");
-const u32 gItemIconPic_MetaItem_Lavaridge[]    = INCBIN_U32("graphics/meta_puzzle/lavaridge_room_item.4bpp");
-// const u16 gItemIconPal_MetaItem_Lavaridge[]    = INCBIN_U16("graphics/meta_puzzle/lavaridge_room_item.gbapal");
+const u32 gItemIconPic_MetaItem_Lavaridge[]    = INCBIN_U32("graphics/meta_puzzle/lavaridge_room_item.4bpp.lz");
+// const u32 gItemIconPal_MetaItem_Lavaridge[]    = INCBIN_U32("graphics/meta_puzzle/lavaridge_room_item.gbapal.lz");
 
 const u32 gObjectEventPic_MetaItem_FinalBluff[] = INCBIN_U32("graphics/meta_puzzle/final_bluff_objevt.4bpp");
 // const u16 gObjectEventPal_MetaItem_FinalBluff[] = INCBIN_U16("graphics/meta_puzzle/final_bluff_objevt.gbapal");
-const u32 gItemIconPic_MetaItem_FinalBluff[]    = INCBIN_U32("graphics/meta_puzzle/final_bluff_item.4bpp");
-// const u16 gItemIconPal_MetaItem_FinalBluff[]    = INCBIN_U16("graphics/meta_puzzle/final_bluff_item.gbapal");
+const u32 gItemIconPic_MetaItem_FinalBluff[]    = INCBIN_U32("graphics/meta_puzzle/final_bluff_item.4bpp.lz");
+// const u32 gItemIconPal_MetaItem_FinalBluff[]    = INCBIN_U32("graphics/meta_puzzle/final_bluff_item.gbapal.lz");
 
 const u32 gObjectEventPic_MetaItem_LedgeValley[] = INCBIN_U32("graphics/meta_puzzle/ledge_valley_objevt.4bpp");
 // const u16 gObjectEventPal_MetaItem_LedgeValley[] = INCBIN_U16("graphics/meta_puzzle/ledge_valley_objevt.gbapal");
-const u32 gItemIconPic_MetaItem_LedgeValley[]    = INCBIN_U32("graphics/meta_puzzle/ledge_valley_item.4bpp");
-// const u16 gItemIconPal_MetaItem_LedgeValley[]    = INCBIN_U16("graphics/meta_puzzle/ledge_valley_item.gbapal");
+const u32 gItemIconPic_MetaItem_LedgeValley[]    = INCBIN_U32("graphics/meta_puzzle/ledge_valley_item.4bpp.lz");
+// const u32 gItemIconPal_MetaItem_LedgeValley[]    = INCBIN_U32("graphics/meta_puzzle/ledge_valley_item.gbapal.lz");
 
 const u32 gObjectEventPic_MetaItem_IceCorner[] = INCBIN_U32("graphics/meta_puzzle/ice_corner_objevt.4bpp");
 const u16 gObjectEventPal_MetaItem_IceCorner[] = INCBIN_U16("graphics/meta_puzzle/ice_corner_objevt.gbapal");
-const u32 gItemIconPic_MetaItem_IceCorner[]    = INCBIN_U32("graphics/meta_puzzle/ice_corner_item.4bpp");
-const u16 gItemIconPal_MetaItem_IceCorner[]    = INCBIN_U16("graphics/meta_puzzle/ice_corner_item.gbapal");
+const u32 gItemIconPic_MetaItem_IceCorner[]    = INCBIN_U32("graphics/meta_puzzle/ice_corner_item.4bpp.lz");
+const u32 gItemIconPal_MetaItem_IceCorner[]    = INCBIN_U32("graphics/meta_puzzle/ice_corner_item.gbapal.lz");
 
 const u32 gObjectEventPic_MetaItem_LogFlotilla[] = INCBIN_U32("graphics/meta_puzzle/log_flotilla_objevt.4bpp");
 // const u16 gObjectEventPal_MetaItem_LogFlotilla[] = INCBIN_U16("graphics/meta_puzzle/log_flotilla_objevt.gbapal");
-const u32 gItemIconPic_MetaItem_LogFlotilla[]    = INCBIN_U32("graphics/meta_puzzle/log_flotilla_item.4bpp");
-// const u16 gItemIconPal_MetaItem_LogFlotilla[]    = INCBIN_U16("graphics/meta_puzzle/log_flotilla_item.gbapal");
+const u32 gItemIconPic_MetaItem_LogFlotilla[]    = INCBIN_U32("graphics/meta_puzzle/log_flotilla_item.4bpp.lz");
+// const u32 gItemIconPal_MetaItem_LogFlotilla[]    = INCBIN_U32("graphics/meta_puzzle/log_flotilla_item.gbapal.lz");
 
 const u32 gObjectEventPic_MetaItem_BikePath[] = INCBIN_U32("graphics/meta_puzzle/bike_path_objevt.4bpp");
 // const u16 gObjectEventPal_MetaItem_BikePath[] = INCBIN_U16("graphics/meta_puzzle/bike_path_objevt.gbapal");
-const u32 gItemIconPic_MetaItem_BikePath[]    = INCBIN_U32("graphics/meta_puzzle/bike_path_item.4bpp");
-// const u16 gItemIconPal_MetaItem_BikePath[]    = INCBIN_U16("graphics/meta_puzzle/bike_path_item.gbapal");
+const u32 gItemIconPic_MetaItem_BikePath[]    = INCBIN_U32("graphics/meta_puzzle/bike_path_item.4bpp.lz");
+// const u32 gItemIconPal_MetaItem_BikePath[]    = INCBIN_U32("graphics/meta_puzzle/bike_path_item.gbapal.lz");
 
 const u32 gObjectEventPic_MetaItem_PokeStage[] = INCBIN_U32("graphics/meta_puzzle/pokestage_objevt.4bpp");
 // const u16 gObjectEventPal_MetaItem_PokeStage[] = INCBIN_U16("graphics/meta_puzzle/pokestage_objevt.gbapal");
-const u32 gItemIconPic_MetaItem_PokeStage[]    = INCBIN_U32("graphics/meta_puzzle/pokestage_item.4bpp");
-// const u16 gItemIconPal_MetaItem_PokeStage[]    = INCBIN_U16("graphics/meta_puzzle/pokestage_item.gbapal");
+const u32 gItemIconPic_MetaItem_PokeStage[]    = INCBIN_U32("graphics/meta_puzzle/pokestage_item.4bpp.lz");
+// const u32 gItemIconPal_MetaItem_PokeStage[]    = INCBIN_U32("graphics/meta_puzzle/pokestage_item.gbapal.lz");
 
 const u32 gObjectEventPic_MetaItem_ZiggyRoom[] = INCBIN_U32("graphics/meta_puzzle/ziggy_objevt.4bpp");
 // const u16 gObjectEventPal_MetaItem_ZiggyRoom[] = INCBIN_U16("graphics/meta_puzzle/ziggy_objevt.gbapal");
-const u32 gItemIconPic_MetaItem_ZiggyRoom[]    = INCBIN_U32("graphics/meta_puzzle/ziggy_item.4bpp");
-// const u16 gItemIconPal_MetaItem_ZiggyRoom[]    = INCBIN_U16("graphics/meta_puzzle/ziggy_item.gbapal");
+const u32 gItemIconPic_MetaItem_ZiggyRoom[]    = INCBIN_U32("graphics/meta_puzzle/ziggy_item.4bpp.lz");
+// const u32 gItemIconPal_MetaItem_ZiggyRoom[]    = INCBIN_U32("graphics/meta_puzzle/ziggy_item.gbapal.lz");
 
 const u32 gObjectEventPic_MetaItem_ForestRoom[] = INCBIN_U32("graphics/meta_puzzle/forest_room_objevt.4bpp");
 // const u16 gObjectEventPal_MetaItem_ForestRoom[] = INCBIN_U16("graphics/meta_puzzle/forest_room_objevt.gbapal");
-const u32 gItemIconPic_MetaItem_ForestRoom[]    = INCBIN_U32("graphics/meta_puzzle/forest_room_item.4bpp");
-// const u16 gItemIconPal_MetaItem_ForestRoom[]    = INCBIN_U16("graphics/meta_puzzle/forest_room_item.gbapal");
+const u32 gItemIconPic_MetaItem_ForestRoom[]    = INCBIN_U32("graphics/meta_puzzle/forest_room_item.4bpp.lz");
+// const u32 gItemIconPal_MetaItem_ForestRoom[]    = INCBIN_U32("graphics/meta_puzzle/forest_room_item.gbapal.lz");
 
 const u32 gObjectEventPic_MetaItem_ZipRoom[] = INCBIN_U32("graphics/meta_puzzle/zip_room_objevt.4bpp");
 // const u16 gObjectEventPal_MetaItem_ZipRoom[] = INCBIN_U16("graphics/meta_puzzle/zip_room_objevt.gbapal");
-const u32 gItemIconPic_MetaItem_ZipRoom[]    = INCBIN_U32("graphics/meta_puzzle/zip_room_item.4bpp");
-// const u16 gItemIconPal_MetaItem_ZipRoom[]    = INCBIN_U16("graphics/meta_puzzle/zip_room_item.gbapal");
+const u32 gItemIconPic_MetaItem_ZipRoom[]    = INCBIN_U32("graphics/meta_puzzle/zip_room_item.4bpp.lz");
+// const u32 gItemIconPal_MetaItem_ZipRoom[]    = INCBIN_U32("graphics/meta_puzzle/zip_room_item.gbapal.lz");
 
 const u32 gObjectEventPic_MetaItem_KogaRoom[] = INCBIN_U32("graphics/meta_puzzle/koga_objevt.4bpp");
 // const u16 gObjectEventPal_MetaItem_KogaRoom[] = INCBIN_U16("graphics/meta_puzzle/koga_objevt.gbapal");
-const u32 gItemIconPic_MetaItem_KogaRoom[]    = INCBIN_U32("graphics/meta_puzzle/koga_item.4bpp");
-// const u16 gItemIconPal_MetaItem_KogaRoom[]    = INCBIN_U16("graphics/meta_puzzle/koga_item.gbapal");
+const u32 gItemIconPic_MetaItem_KogaRoom[]    = INCBIN_U32("graphics/meta_puzzle/koga_item.4bpp.lz");
+// const u32 gItemIconPal_MetaItem_KogaRoom[]    = INCBIN_U32("graphics/meta_puzzle/koga_item.gbapal.lz");
 
 const u32 gObjectEventPic_MetaItem_FireRoom[] = INCBIN_U32("graphics/meta_puzzle/fire_room_objevt.4bpp");
 // const u16 gObjectEventPal_MetaItem_FireRoom[] = INCBIN_U16("graphics/meta_puzzle/fire_room_objevt.gbapal");
-const u32 gItemIconPic_MetaItem_FireRoom[]    = INCBIN_U32("graphics/meta_puzzle/fire_room_item.4bpp");
-// const u16 gItemIconPal_MetaItem_FireRoom[]    = INCBIN_U16("graphics/meta_puzzle/fire_room_item.gbapal");
+const u32 gItemIconPic_MetaItem_FireRoom[]    = INCBIN_U32("graphics/meta_puzzle/fire_room_item.4bpp.lz");
+// const u32 gItemIconPal_MetaItem_FireRoom[]    = INCBIN_U32("graphics/meta_puzzle/fire_room_item.gbapal.lz");
 
 const u32 gObjectEventPic_MetaItem_DiveMaze[] = INCBIN_U32("graphics/meta_puzzle/dive_maze_objevt.4bpp");
 // const u16 gObjectEventPal_MetaItem_DiveMaze[] = INCBIN_U16("graphics/meta_puzzle/dive_maze_objevt.gbapal");
-const u32 gItemIconPic_MetaItem_DiveMaze[]    = INCBIN_U32("graphics/meta_puzzle/dive_maze_item.4bpp");
-// const u16 gItemIconPal_MetaItem_DiveMaze[]    = INCBIN_U16("graphics/meta_puzzle/dive_maze_item.gbapal");
+const u32 gItemIconPic_MetaItem_DiveMaze[]    = INCBIN_U32("graphics/meta_puzzle/dive_maze_item.4bpp.lz");
+// const u32 gItemIconPal_MetaItem_DiveMaze[]    = INCBIN_U32("graphics/meta_puzzle/dive_maze_item.gbapal.lz");
 
 const u32 gObjectEventPic_MetaItem_BerryRoom[] = INCBIN_U32("graphics/meta_puzzle/berry_field_objevt.4bpp");
 const u16 gObjectEventPal_MetaItem_BerryRoom[] = INCBIN_U16("graphics/meta_puzzle/berry_field_objevt.gbapal");
-const u32 gItemIconPic_MetaItem_BerryRoom[]    = INCBIN_U32("graphics/meta_puzzle/berry_field_item.4bpp");
-const u16 gItemIconPal_MetaItem_BerryRoom[]    = INCBIN_U16("graphics/meta_puzzle/berry_field_item.gbapal");
+const u32 gItemIconPic_MetaItem_BerryRoom[]    = INCBIN_U32("graphics/meta_puzzle/berry_field_item.4bpp.lz");
+const u32 gItemIconPal_MetaItem_BerryRoom[]    = INCBIN_U32("graphics/meta_puzzle/berry_field_item.gbapal.lz");
 // TODO
 const u32 gObjectEventPic_MetaItem_Room15[] = INCBIN_U32("graphics/meta_puzzle/lavaridge_room_objevt.4bpp");
 const u16 gObjectEventPal_MetaItem_Room15[] = INCBIN_U16("graphics/meta_puzzle/lavaridge_room_objevt.gbapal");
-const u32 gItemIconPic_MetaItem_Room15[]    = INCBIN_U32("graphics/meta_puzzle/lavaridge_room_item.4bpp");
-const u16 gItemIconPal_MetaItem_Room15[]    = INCBIN_U16("graphics/meta_puzzle/lavaridge_room_item.gbapal");
+const u32 gItemIconPic_MetaItem_Room15[]    = INCBIN_U32("graphics/meta_puzzle/lavaridge_room_item.4bpp.lz");
+const u32 gItemIconPal_MetaItem_Room15[]    = INCBIN_U32("graphics/meta_puzzle/lavaridge_room_item.gbapal.lz");
 
 
 
