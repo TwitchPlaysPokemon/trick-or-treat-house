@@ -11257,61 +11257,6 @@ const struct Item gItems[] =
 #pragma endregion
 
 #pragma region TTH Candy
-
-    [ITEM_CANDY_ABUNDANT] =
-    {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
-        .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_CANDY_COMMON] =
-    {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
-        .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_CANDY_UNCOMMON] =
-    {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
-        .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_CANDY_RARE] =
-    {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
-        .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_CANDY,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
-
-    [ITEM_CANDY_HEALTHY] =
-    {
-        .name = sDummyName,
-        .itemId = ITEM_NONE,
-        .price = 0,
-        .description = sDummyDesc,
-        .pocket = POCKET_GENERAL,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
     
     [ITEM_CANDY_CHOCOLATE] =
     {   // +20HP
@@ -12158,7 +12103,7 @@ const struct Item gItems[] =
     
 };
 
-static const u16 gCandyAbundantIds[] = {
+static const u16 gItemTable_CandyAbundant[] = {
     ITEM_CANDY_CHOCOLATE,
     ITEM_CANDY_STARBURST,
     ITEM_CANDY_LEMONDROP,
@@ -12173,7 +12118,7 @@ static const u16 gCandyAbundantIds[] = {
     ITEM_CANDY_GUMMYBEAR,
     ITEM_SWEET_HEART,
 };
-static const u16 gCandyCommonIds[] = {
+static const u16 gItemTable_CandyCommon[] = {
     ITEM_CANDY_CHOCOWHITE,
     ITEM_CANDY_MMPEANUT,
     ITEM_CANDY_REESES,
@@ -12186,7 +12131,7 @@ static const u16 gCandyCommonIds[] = {
     ITEM_CANDY_OREO,
     // ITEM_CANDY_EGGS,
 };
-static const u16 gCandyUncommonIds[] = {
+static const u16 gItemTable_CandyUncommon[] = {
     ITEM_CANDY_WUNDERBAR,
     ITEM_CANDY_COFFEECRISP,
     ITEM_CANDY_SAMBOPRISTUR,
@@ -12197,7 +12142,7 @@ static const u16 gCandyUncommonIds[] = {
     ITEM_CANDY_PIXIESTICK,
     // ITEM_CANDY_EGGDEVILED,
 };
-static const u16 gCandyRareIds[] = {
+static const u16 gItemTable_CandyRare[] = {
     ITEM_CANDY_CHOCOSLAB,
     ITEM_CANDY_TURKISHDELIGHT,
     ITEM_CANDY_GOBSTOPPER,
@@ -12205,8 +12150,9 @@ static const u16 gCandyRareIds[] = {
     ITEM_CANDY_TOBLERONE,
     ITEM_CANDY_FERREROROCHER,
     ITEM_MAX_HONEY,
+    ITEM_EXP_CANDY_XL,
 };
-static const u16 gCandyHealthyIds[] = {
+static const u16 gItemTable_CandyHealthy[] = {
     ITEM_CANDY_CARROT,
     ITEM_CANDY_APPLE,
     ITEM_CANDY_PRUNE,
@@ -12214,6 +12160,152 @@ static const u16 gCandyHealthyIds[] = {
     ITEM_CANDY_SNAPPEAS,
     ITEM_CANDY_RAISIN,
     ITEM_CANDY_KALE,
+};
+
+#define MUL_1(x) x
+#define MUL_2(x) x, x
+#define MUL_3(x) x, x, x
+#define MUL_4(x) x, x, x, x
+#define MUL_6(x) x, x, x, x, x, x
+#define MUL_8(x) x, x, x, x, x, x, x, x
+
+static const u16 gItemTable_RandomA[] = {
+    MUL_8(ITEM_TABLE_CANDY_ABUNDANT),
+    MUL_4(ITEM_TABLE_CANDY_COMMON),
+    MUL_3(ITEM_TABLE_CANDY_HEALTHY),
+    MUL_2(ITEM_TABLE_CANDY_UNCOMMON),
+    MUL_6(ITEM_ANTIDOTE),
+    MUL_6(ITEM_PEWTER_CRUNCHIES),
+    MUL_4(ITEM_RAGE_CANDY_BAR),
+    MUL_4(ITEM_FRESH_WATER),
+    MUL_4(ITEM_CHERI_BERRY),
+    MUL_4(ITEM_ORAN_BERRY),
+    MUL_2(ITEM_POTION),
+    MUL_2(ITEM_SWEET_HEART),
+    MUL_1(ITEM_HP_UP),
+    MUL_1(ITEM_CANDY_CHOCOSLAB),
+    MUL_1(ITEM_EXP_CANDY_XS),
+    MUL_1(ITEM_X_ATTACK),
+    MUL_1(ITEM_BRIGHT_POWDER),
+    MUL_1(ITEM_SHELL_BELL),
+    MUL_1(ITEM_FLOAT_STONE),
+    MUL_2(ITEM_TABLE_TM),
+    MUL_1(ITEM_TABLE_MEGA_STONE),
+};
+static const u16 gItemTable_RandomB[] = {
+    MUL_8(ITEM_TABLE_CANDY_ABUNDANT),
+    MUL_4(ITEM_TABLE_CANDY_COMMON),
+    MUL_3(ITEM_TABLE_CANDY_HEALTHY),
+    MUL_2(ITEM_TABLE_CANDY_UNCOMMON),
+    MUL_6(ITEM_PARALYZE_HEAL),
+    MUL_6(ITEM_RAGE_CANDY_BAR),
+    MUL_4(ITEM_OLD_GATEAU),
+    MUL_4(ITEM_SODA_POP),
+    MUL_4(ITEM_CHESTO_BERRY),
+    MUL_4(ITEM_PERSIM_BERRY),
+    MUL_2(ITEM_ETHER),
+    MUL_2(ITEM_REVIVE),
+    MUL_1(ITEM_PROTEIN),
+    MUL_1(ITEM_CANDY_TURKISHDELIGHT),
+    MUL_1(ITEM_EXP_CANDY_XS),
+    MUL_1(ITEM_X_DEFENSE),
+    MUL_1(ITEM_QUICK_CLAW),
+    MUL_1(ITEM_WISE_GLASSES),
+    MUL_1(ITEM_ROCKY_HELMET),
+    MUL_2(ITEM_TABLE_TM),
+    MUL_1(ITEM_TABLE_POWER_GEM),
+};
+static const u16 gItemTable_RandomC[] = {
+    MUL_8(ITEM_TABLE_CANDY_ABUNDANT),
+    MUL_4(ITEM_TABLE_CANDY_COMMON),
+    MUL_3(ITEM_TABLE_CANDY_HEALTHY),
+    MUL_2(ITEM_TABLE_CANDY_UNCOMMON),
+    MUL_6(ITEM_BURN_HEAL),
+    MUL_6(ITEM_LAVA_COOKIE),
+    MUL_4(ITEM_CASTELIACONE),
+    MUL_4(ITEM_LEMONADE),
+    MUL_4(ITEM_PECHA_BERRY),
+    MUL_4(ITEM_LUM_BERRY),
+    MUL_2(ITEM_ETHER),
+    MUL_2(ITEM_BERRY_JUICE),
+    MUL_1(ITEM_IRON),
+    MUL_1(ITEM_CANDY_GOBSTOPPER),
+    MUL_1(ITEM_EXP_CANDY_S),
+    MUL_1(ITEM_X_SP_ATK),
+    MUL_1(ITEM_SOOTHE_BELL),
+    MUL_1(ITEM_EXPERT_BELT),
+    MUL_1(ITEM_AIR_BALLOON),
+    MUL_2(ITEM_TABLE_TM),
+    MUL_1(ITEM_TABLE_Z_CRYSTAL),
+};
+static const u16 gItemTable_RandomD[] = {
+    MUL_8(ITEM_TABLE_CANDY_ABUNDANT),
+    MUL_4(ITEM_TABLE_CANDY_COMMON),
+    MUL_3(ITEM_TABLE_CANDY_HEALTHY),
+    MUL_2(ITEM_TABLE_CANDY_UNCOMMON),
+    MUL_6(ITEM_ICE_HEAL),
+    MUL_6(ITEM_OLD_GATEAU),
+    MUL_4(ITEM_LUMIOSE_GALETTE),
+    MUL_4(ITEM_FRESH_WATER),
+    MUL_4(ITEM_RAWST_BERRY),
+    MUL_4(ITEM_SITRUS_BERRY),
+    MUL_2(ITEM_ELIXIR),
+    MUL_2(ITEM_SWEET_HEART),
+    MUL_1(ITEM_CALCIUM),
+    MUL_1(ITEM_CANDY_BLACKTHUNDER),
+    MUL_1(ITEM_EXP_CANDY_S),
+    MUL_1(ITEM_X_SP_DEF),
+    MUL_1(ITEM_MENTAL_HERB),
+    MUL_1(ITEM_POWER_HERB),
+    MUL_1(ITEM_ASSAULT_VEST),
+    MUL_2(ITEM_TABLE_TM),
+    MUL_1(ITEM_TABLE_MEGA_STONE),
+};
+static const u16 gItemTable_RandomE[] = {
+    MUL_8(ITEM_TABLE_CANDY_ABUNDANT),
+    MUL_4(ITEM_TABLE_CANDY_COMMON),
+    MUL_3(ITEM_TABLE_CANDY_HEALTHY),
+    MUL_2(ITEM_TABLE_CANDY_UNCOMMON),
+    MUL_6(ITEM_AWAKENING),
+    MUL_6(ITEM_PEWTER_CRUNCHIES),
+    MUL_4(ITEM_SHALOUR_SABLE),
+    MUL_4(ITEM_SODA_POP),
+    MUL_4(ITEM_ASPEAR_BERRY),
+    MUL_4(ITEM_FIGY_BERRY),
+    MUL_2(ITEM_ETHER),
+    MUL_2(ITEM_REVIVE),
+    MUL_1(ITEM_ZINC),
+    MUL_1(ITEM_CANDY_TOBLERONE),
+    MUL_1(ITEM_EXP_CANDY_M),
+    MUL_1(ITEM_X_SPEED),
+    MUL_1(ITEM_AMULET_COIN),
+    MUL_1(ITEM_FOCUS_SASH),
+    MUL_1(ITEM_SAFETY_GOGGLES),
+    MUL_2(ITEM_TABLE_TM),
+    MUL_1(ITEM_TABLE_POWER_GEM),
+};
+static const u16 gItemTable_RandomF[] = {
+    MUL_8(ITEM_TABLE_CANDY_ABUNDANT),
+    MUL_4(ITEM_TABLE_CANDY_COMMON),
+    MUL_3(ITEM_TABLE_CANDY_HEALTHY),
+    MUL_2(ITEM_TABLE_CANDY_UNCOMMON),
+    MUL_6(ITEM_FULL_HEAL),
+    MUL_6(ITEM_LAVA_COOKIE),
+    MUL_4(ITEM_BIG_MALASADA),
+    MUL_4(ITEM_LEMONADE),
+    MUL_4(ITEM_LEPPA_BERRY),
+    MUL_4(ITEM_WIKI_BERRY),
+    MUL_2(ITEM_ELIXIR),
+    MUL_2(ITEM_REVIVE),
+    MUL_1(ITEM_CARBOS),
+    MUL_1(ITEM_CANDY_FERREROROCHER),
+    MUL_1(ITEM_EXP_CANDY_S),
+    MUL_1(ITEM_X_ACCURACY),
+    MUL_1(ITEM_LEFTOVERS),
+    MUL_1(ITEM_BIG_ROOT),
+    MUL_1(ITEM_HEAVY_DUTY_BOOTS),
+    MUL_2(ITEM_TABLE_TM),
+    MUL_1(ITEM_TABLE_Z_CRYSTAL),
 };
 
 #undef CANDY_COST

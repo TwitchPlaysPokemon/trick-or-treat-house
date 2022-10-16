@@ -105,7 +105,7 @@
       "x": 9,
       "y": 17,
       "elevation": 3,
-      "item": "ITEM_CANDY_ABUNDANT",
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
       "flag": "FLAG_CANDY_ABUNDANT_02"
     },
     {
@@ -113,7 +113,7 @@
       "x": 5,
       "y": 9,
       "elevation": 3,
-      "item": "ITEM_CANDY_UNCOMMON",
+      "item": "ITEM_TABLE_CANDY_UNCOMMON",
       "flag": "FLAG_CANDY_UNCOMMON_01"
     }
   ]

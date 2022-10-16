@@ -242,6 +242,7 @@
 #define VARIOUS_SET_BEAK_BLAST                      151
 #define VARIOUS_SWAP_SIDE_STATUSES                  152
 #define VARIOUS_SET_Z_EFFECT                        153
+#define VARIOUS_GIVE_DROPPED_ITEMS                  154
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

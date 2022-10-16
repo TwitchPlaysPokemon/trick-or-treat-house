@@ -230,7 +230,7 @@
       "x": 0,
       "y": 6,
       "elevation": 3,
-      "item": "ITEM_CANDY_COMMON",
+      "item": "ITEM_TABLE_CANDY_COMMON",
       "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x34"
     },
     {
@@ -238,7 +238,7 @@
       "x": 12,
       "y": 2,
       "elevation": 3,
-      "item": "ITEM_CANDY_ABUNDANT",
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
       "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x35"
     },
     {
@@ -246,7 +246,7 @@
       "x": 13,
       "y": 9,
       "elevation": 3,
-      "item": "ITEM_CANDY_UNCOMMON",
+      "item": "ITEM_TABLE_CANDY_UNCOMMON",
       "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x36"
     }
   ]

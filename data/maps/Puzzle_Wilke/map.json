@@ -118,7 +118,7 @@
       "x": 14,
       "y": 3,
       "elevation": 3,
-      "item": "ITEM_CANDY_ABUNDANT",
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
       "flag": "FLAG_CANDY_ABUNDANT_01"
     },
     {
@@ -126,7 +126,7 @@
       "x": 10,
       "y": 7,
       "elevation": 3,
-      "item": "ITEM_CANDY_ABUNDANT",
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
       "flag": "FLAG_CANDY_ABUNDANT_02"
     },
     {
@@ -134,7 +134,7 @@
       "x": 20,
       "y": 3,
       "elevation": 3,
-      "item": "ITEM_CANDY_ABUNDANT",
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
       "flag": "FLAG_CANDY_ABUNDANT_03"
     },
     {
@@ -142,7 +142,7 @@
       "x": 4,
       "y": 6,
       "elevation": 3,
-      "item": "ITEM_CANDY_COMMON",
+      "item": "ITEM_TABLE_CANDY_COMMON",
       "flag": "FLAG_CANDY_COMMON_01"
     }
   ]

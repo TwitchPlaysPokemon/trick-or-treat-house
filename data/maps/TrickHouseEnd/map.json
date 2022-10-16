@@ -142,7 +142,7 @@
       "x": 13,
       "y": 2,
       "elevation": 3,
-      "item": "ITEM_CANDY_UNCOMMON",
+      "item": "ITEM_TABLE_CANDY_UNCOMMON",
       "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x20"
     },
     {
@@ -150,7 +150,7 @@
       "x": 5,
       "y": 2,
       "elevation": 3,
-      "item": "ITEM_CANDY_ABUNDANT",
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
       "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x2B"
     }
   ]

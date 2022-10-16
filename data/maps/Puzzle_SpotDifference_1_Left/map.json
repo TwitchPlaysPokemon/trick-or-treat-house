@@ -66,7 +66,7 @@
       "x": 2,
       "y": 4,
       "elevation": 3,
-      "item": "ITEM_CANDY_RARE",
+      "item": "ITEM_TABLE_CANDY_RARE",
       "flag": "FLAG_CANDY_RARE_01"
     },
     {
@@ -74,7 +74,7 @@
       "x": 12,
       "y": 9,
       "elevation": 3,
-      "item": "ITEM_CANDY_ABUNDANT",
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
       "flag": "FLAG_CANDY_ABUNDANT_01"
     },
     {
@@ -82,7 +82,7 @@
       "x": 8,
       "y": 2,
       "elevation": 3,
-      "item": "ITEM_CANDY_COMMON",
+      "item": "ITEM_TABLE_CANDY_COMMON",
       "flag": "FLAG_CANDY_COMMON_01"
     }
   ],

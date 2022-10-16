@@ -28,7 +28,7 @@
         .catchRate = 190,                                                  \
         .expYield = 112,                                                   \
         .evYield_Speed     = 2,                                            \
-        .itemRare = ITEM_LIGHT_BALL,                                          \
+        .itemRare = ITEM_LIGHT_BALL,                                       \
         .genderRatio = gender,                                             \
         .eggCycles = 10,                                                   \
         .friendship = 70,                                                  \

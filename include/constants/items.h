@@ -1019,13 +1019,24 @@
 #define ITEM_CANDY_KALE                825
 #define ITEM_CANDY_GALAXY              826
 
-#define ITEM_CANDY_ABUNDANT            827
-#define ITEM_CANDY_COMMON              828
-#define ITEM_CANDY_UNCOMMON            829
-#define ITEM_CANDY_RARE                830
-#define ITEM_CANDY_HEALTHY             831
+#define ITEMS_COUNT                    827
 
-#define ITEMS_COUNT                    832
+#define ITEM_TABLE_CANDY_ABUNDANT      0xFE01
+#define ITEM_TABLE_CANDY_COMMON        0xFE02
+#define ITEM_TABLE_CANDY_UNCOMMON      0xFE03
+#define ITEM_TABLE_CANDY_RARE          0xFE04
+#define ITEM_TABLE_CANDY_HEALTHY       0xFE05
+#define ITEM_TABLE_MEGA_STONE          0xFE06
+#define ITEM_TABLE_POWER_GEM           0xFE07
+#define ITEM_TABLE_Z_CRYSTAL           0xFE08
+#define ITEM_TABLE_TM                  0xFE09
+#define ITEM_TABLE_RANDOM_A            0xFE0A
+#define ITEM_TABLE_RANDOM_B            0xFE0B
+#define ITEM_TABLE_RANDOM_C            0xFE0C
+#define ITEM_TABLE_RANDOM_D            0xFE0D
+#define ITEM_TABLE_RANDOM_E            0xFE0E
+#define ITEM_TABLE_RANDOM_F            0xFE0F
+
 #define ITEM_FIELD_ARROW               ITEMS_COUNT
 
 // Range of berries given out by various NPCS
@@ -1060,6 +1071,17 @@
 #define BAG_ITEM_CAPACITY_DIGITS 2
 #define BERRY_CAPACITY_DIGITS 3
 #define MAX_ITEM_DIGITS BERRY_CAPACITY_DIGITS
+
+#define FIRST_MEGA_STONE    ITEM_VENUSAURITE
+#define LAST_MEGA_STONE     ITEM_DIANCITE
+#define FIRST_POWER_GEM     ITEM_NORMAL_GEM
+#define LAST_POWER_GEM      ITEM_FAIRY_GEM
+#define FIRST_Z_CRYSTAL     ITEM_NORMALIUM_Z
+#define LAST_Z_CRYSTAL      ITEM_FAIRIUM_Z
+#define FIRST_TM            ITEM_TM01
+#define LAST_TM             ITEM_TM100
+#define FIRST_CANDY         ITEM_CANDY_CHOCOLATE
+#define LAST_CANDY          ITEM_CANDY_GALAXY
 
 #define ITEM_NAME_PLURAL_S  ((const u8*)NULL)
 #define ITEM_NAME_PLURAL_ES  ((const u8*)0x02)

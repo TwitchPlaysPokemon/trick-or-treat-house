@@ -87,7 +87,7 @@
       "x": 7,
       "y": 10,
       "elevation": 3,
-      "item": "ITEM_CANDY_ABUNDANT",
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
       "flag": "FLAG_CANDY_ABUNDANT_05"
     }
   ],

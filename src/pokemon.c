@@ -34,6 +34,7 @@
 #include "text.h"
 #include "trainer_hill.h"
 #include "util.h"
+#include "mgba.h"
 #include "constants/abilities.h"
 #include "constants/battle_frontier.h"
 #include "constants/battle_move_effects.h"
@@ -7730,69 +7731,57 @@ static s32 GetWildMonTableIdInAlteringCave(u16 species)
 
 void SetWildMonHeldItem(void)
 {
-    if (!(gBattleTypeFlags & (BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_TRAINER | BATTLE_TYPE_PYRAMID | BATTLE_TYPE_PIKE)))
+    if ((gBattleTypeFlags & (BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_TRAINER | BATTLE_TYPE_PYRAMID | BATTLE_TYPE_PIKE))) return;
+    
+    u16 rnd;
+    u16 species;
+    u16 chanceNoItem = 45;
+    u16 chanceNotRare = 95;
+    u16 count = (IsWildDoubleBattle()) ? 2 : 1;
+
+    if (!GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG, 0)
+        && (GetMonAbility(&gPlayerParty[0]) == ABILITY_COMPOUND_EYES
+            || GetMonAbility(&gPlayerParty[0]) == ABILITY_SUPER_LUCK))
     {
-        u16 rnd;
-        u16 species;
-        u16 chanceNoItem = 45;
-        u16 chanceNotRare = 95;
-        u16 count = (WILD_DOUBLE_BATTLE) ? 2 : 1;
-        u16 i;
+        chanceNoItem = 20;
+        chanceNotRare = 80;
+    }
+    mgba_printf(MGBA_LOG_INFO, "Generating wild mon held item");
 
-        if (!GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG, 0)
-            && (GetMonAbility(&gPlayerParty[0]) == ABILITY_COMPOUND_EYES
-                || GetMonAbility(&gPlayerParty[0]) == ABILITY_SUPER_LUCK))
+    for (int i = 0; i < count; i++)
+    {
+        u16 itemToSet = GetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, NULL);
+        mgba_printf(MGBA_LOG_INFO, "itemToSet = %d", itemToSet);
+        if (itemToSet != ITEM_NONE)
+            continue; // prevent ovewriting previously set item
+        
+        rnd = Random() % 100;
+        species = GetMonData(&gEnemyParty[i], MON_DATA_SPECIES, 0);
+        
+        if (gBaseStats[species].itemCommon == gBaseStats[species].itemRare && gBaseStats[species].itemCommon != ITEM_NONE)
         {
-            chanceNoItem = 20;
-            chanceNotRare = 80;
+            // Both held items are the same, 100% chance to hold item
+            itemToSet = gBaseStats[species].itemCommon;
         }
-
-        for (i = 0; i < count; i++)
+        else
         {
-            if (GetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, NULL) != ITEM_NONE)
-                continue; // prevent ovewriting previously set item
-            
-            rnd = Random() % 100;
-            species = GetMonData(&gEnemyParty[i], MON_DATA_SPECIES, 0);
-            // if (gMapHeader.mapLayoutId == LAYOUT_ALTERING_CAVE)
-            // {
-            //     s32 alteringCaveId = GetWildMonTableIdInAlteringCave(species);
-            //     if (alteringCaveId != 0)
-            //     {
-            //         // In active Altering Cave, use special item list
-            //         if (rnd < chanceNotRare)
-            //             continue;
-            //         SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &sAlteringCaveWildMonHeldItems[alteringCaveId].item);
-            //     }
-            //     else
-            //     {
-            //         // In inactive Altering Cave, use normal items
-            //         if (rnd < chanceNoItem)
-            //             continue;
-            //         if (rnd < chanceNotRare)
-            //             SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gBaseStats[species].itemCommon);
-            //         else
-            //             SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gBaseStats[species].itemRare);
-            //     }
-            // }
-            // else
-            {
-                if (gBaseStats[species].itemCommon == gBaseStats[species].itemRare && gBaseStats[species].itemCommon != ITEM_NONE)
-                {
-                    // Both held items are the same, 100% chance to hold item
-                    SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gBaseStats[species].itemCommon);
-                }
-                else
-                {
-                    if (rnd < chanceNoItem)
-                        continue;
-                    if (rnd < chanceNotRare)
-                        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gBaseStats[species].itemCommon);
-                    else
-                        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &gBaseStats[species].itemRare);
-                }
-            }
+            if (rnd < chanceNoItem)
+                ; //continue;
+            else if (rnd < chanceNotRare)
+                itemToSet = gBaseStats[species].itemCommon;
+            else
+                itemToSet = gBaseStats[species].itemRare;
         }
+        
+        mgba_printf(MGBA_LOG_INFO, "WildMonHeldItem = %d", itemToSet);
+        if (itemToSet == ITEM_NONE) {
+            // If the pokemon doesn't have an item, assign a random item from the table
+            u16 count = 0;
+            itemToSet = ITEM_TABLE_RANDOM_A + (VarGet(VAR_CURRENT_PUZZLE) % 5);
+            ResolveSpecialItemIds(&itemToSet, &count);
+        }
+        
+        SetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM, &itemToSet);
     }
 }
 

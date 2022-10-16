@@ -5,6 +5,7 @@ Feature Merging:
 - [ ] Tutorial: Missing text function RESET_SIZE
 - [ ] Tutorial: EWRAM summary screen improvements?
 - [ ] Tutorial: Trainer Class Based Poké Balls
+- [X] Pokemon Dropping Items in battle
 
 
 Known issues:
@@ -66,6 +67,7 @@ Meta Puzzle Finish/Polish:
 - [ ] Dive Maze
 	- [ ] Everything
 - [ ] Berry Room
+	- [ ] Assign berries to trick house exterior
 	- [ ] Assign berries to trees
 - [ ] Room 15
 	- [ ] IDEAS?!?!
@@ -91,7 +93,7 @@ Changes:
 - [ ] BORTize candy names
 - [ ] Potentially add more BORT names for new pokemon, especially ones able to be given out as starters
 - [ ] BORT: Go over the sGrammarMoveUsedTable and see if there's an updated version.
-- [ ] Wild Pokemon should drop items, if only so a wild battle doesn't just end without the victory music.
+- [X] Wild Pokemon should drop items, if only so a wild battle doesn't just end without the victory music.
 - [ ] Change the party screen to only include 3 pokemon if there are only 3 pokemon in the party.
 	- [ ] Make all three boxes spread out and large.
 - [ ] Followers:

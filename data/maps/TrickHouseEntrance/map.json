@@ -146,7 +146,7 @@
       "x": 8,
       "y": 1,
       "elevation": 3,
-      "item": "ITEM_CANDY_ABUNDANT",
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
       "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x28"
     },
     {
@@ -154,7 +154,7 @@
       "x": 12,
       "y": 7,
       "elevation": 3,
-      "item": "ITEM_CANDY_COMMON",
+      "item": "ITEM_TABLE_CANDY_COMMON",
       "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x29"
     },
     {
@@ -162,7 +162,7 @@
       "x": 9,
       "y": 4,
       "elevation": 3,
-      "item": "ITEM_CANDY_ABUNDANT",
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
       "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x2A"
     }
   ]

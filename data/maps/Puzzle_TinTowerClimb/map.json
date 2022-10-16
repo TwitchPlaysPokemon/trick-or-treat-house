@@ -490,7 +490,7 @@
       "x": 13,
       "y": 22,
       "elevation": 3,
-      "item": "ITEM_CANDY_ABUNDANT",
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
       "flag": "FLAG_CANDY_ABUNDANT_07"
     },
     {
@@ -498,7 +498,7 @@
       "x": 0,
       "y": 43,
       "elevation": 3,
-      "item": "ITEM_CANDY_COMMON",
+      "item": "ITEM_TABLE_CANDY_COMMON",
       "flag": "FLAG_CANDY_COMMON_04"
     },
     {
@@ -506,7 +506,7 @@
       "x": 0,
       "y": 64,
       "elevation": 3,
-      "item": "ITEM_CANDY_COMMON",
+      "item": "ITEM_TABLE_CANDY_COMMON",
       "flag": "FLAG_CANDY_COMMON_05"
     },
     {
@@ -514,7 +514,7 @@
       "x": 3,
       "y": 114,
       "elevation": 3,
-      "item": "ITEM_CANDY_ABUNDANT",
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
       "flag": "FLAG_CANDY_ABUNDANT_08"
     },
     {
@@ -522,7 +522,7 @@
       "x": 11,
       "y": 129,
       "elevation": 3,
-      "item": "ITEM_CANDY_RARE",
+      "item": "ITEM_TABLE_CANDY_RARE",
       "flag": "FLAG_CANDY_RARE_02"
     },
     {
@@ -530,7 +530,7 @@
       "x": 0,
       "y": 148,
       "elevation": 3,
-      "item": "ITEM_CANDY_ABUNDANT",
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
       "flag": "FLAG_CANDY_ABUNDANT_09"
     }
   ]

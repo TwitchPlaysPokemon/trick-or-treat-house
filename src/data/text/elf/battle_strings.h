@@ -263,9 +263,12 @@ static const u8 sBort_RainContinues[] = _("RAIN ENDLES");
 static const u8 sBort_DownpourContinues[] = _("DOWN RAIN");
 static const u8 sBort_RainStopped[] = _("RAIN STOP");
 
+static const u8 sBort_PkmnDroppedItem[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}\n{B_LAST_ITEM} FALL{WAIT_SE}\p");
+static const u8 sBort_DroppedItemBagIsFull[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX}\n{B_LAST_ITEM} FALL{WAIT_SE}\pBUT BAG OVER\p");
+
 static const u8 sBort_SunlightGotBright[] = _("SUNLINE IS STRONG");
 static const u8 sBort_SunlightStrong[] = _("SUNLINE IS STRONG");
-static const u8 sBort_SunlightFaded[] = _("The sunlight faded.");
+static const u8 sBort_SunlightFaded[] = _("SUN STOP");
 
 static const u8 sBort_SandstormBrewed[] = _("STORM BEGIN");
 static const u8 sBort_SandstormRages[] = _("SAND RAGE");
@@ -911,6 +914,8 @@ const u8 * const gElfBattleStringsTable[BATTLESTRINGS_COUNT] =
     // [STRINGID_CANTESCAPEBECAUSEOFCURRENTMOVE - BATTLESTRINGS_TABLE_START] = sBort_CantEscapeBecauseOfCurrentMove,
     // [STRINGID_PKMNTOOKTARGETHIGH - BATTLESTRINGS_TABLE_START] = sBort_PkmnTookTargetHigh,
     // [STRINGID_TARGETTOOHEAVY - BATTLESTRINGS_TABLE_START] = sBort_TargetTooHeavy,
+    [STRINGID_DROPPEDITEM_BAGISFULL - BATTLESTRINGS_TABLE_START] = sBort_DroppedItemBagIsFull,
+    [STRINGID_PKMNDROPPEDITEM - BATTLESTRINGS_TABLE_START] = sBort_PkmnDroppedItem,
 	// TTH Added Strings
 	// [STRINGID_PLAYERNOPKMN - BATTLESTRINGS_TABLE_START] = sBort_PlayerNoPkmn,
 	[STRINGID_INTIMIDATESLAB - BATTLESTRINGS_TABLE_START] = sBort_PkmnCutsAttackWithSlab,

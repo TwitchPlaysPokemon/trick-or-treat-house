@@ -1910,8 +1910,8 @@ const u8 gText_Ok2[] = _("OK");
 const u8 gText_Quiz[] = _("QUIZ");
 const u8 gText_Answer[] = _("ANSWER");
 const u8 gText_PokeBalls[] = _("POKé BALLS");
-const u8 gText_Berry[] = _("BERRY");
-const u8 gText_Berries[] = _("BERRIES");
+const u8 gText_Berry[] = _("Berry");
+const u8 gText_Berries[] = _("Berries");
 
 const u8 gText_Num1[] = _("one");
 const u8 gText_Num2[] = _("two");

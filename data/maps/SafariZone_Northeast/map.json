@@ -177,7 +177,7 @@
       "x": 31,
       "y": 35,
       "elevation": 3,
-      "item": "ITEM_CANDY_RARE",
+      "item": "ITEM_TABLE_CANDY_RARE",
       "flag": "FLAG_CANDY_RARE_01"
     },
     {
@@ -185,7 +185,7 @@
       "x": 21,
       "y": 5,
       "elevation": 3,
-      "item": "ITEM_CANDY_COMMON",
+      "item": "ITEM_TABLE_CANDY_COMMON",
       "flag": "FLAG_CANDY_COMMON_02"
     }
   ]

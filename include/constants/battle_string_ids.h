@@ -632,13 +632,15 @@
 #define STRINGID_ATTACKERHEALEDITSBURN                628
 #define STRINGID_ATTACKERMELTEDTHEICE                 629
 #define STRINGID_TARGETTOUGHEDITOUT                   630
+#define STRINGID_PKMNDROPPEDITEM                      631
+#define STRINGID_DROPPEDITEM_BAGISFULL                632
 // TTH additions:
-#define STRINGID_PLAYERNOPKMN                         631
-#define STRINGID_POKEMONATECANDY                      632
-#define STRINGID_PKMNFLEDUSINGSNICKERS                633
-#define STRINGID_INTIMIDATESLAB                       634
+#define STRINGID_PLAYERNOPKMN                         633
+#define STRINGID_POKEMONATECANDY                      634
+#define STRINGID_PKMNFLEDUSINGSNICKERS                635
+#define STRINGID_INTIMIDATESLAB                       636
 
-#define BATTLESTRINGS_COUNT                           635
+#define BATTLESTRINGS_COUNT                           637
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -916,5 +918,9 @@
 #define B_MSG_Z_RECOVER_HP    4
 #define B_MSG_Z_STAT_UP       5
 #define B_MSG_Z_HP_TRAP       6
+
+// gItemDroppedStringIds
+#define B_MSG_ITEM_DROPPED_SUCCESS   0
+#define B_MSG_ITEM_DROPPED_BAGFULL   1
 
 #endif // GUARD_CONSTANTS_BATTLE_STRING_IDS_H

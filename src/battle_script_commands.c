@@ -2169,7 +2169,7 @@ static void Cmd_attackanimation(void)
         && gCurrentMove != MOVE_TRANSFORM
         && gCurrentMove != MOVE_SUBSTITUTE
         // In a wild double battle gotta use the teleport animation if two wild pokemon are alive.
-        && !(gCurrentMove == MOVE_TELEPORT && WILD_DOUBLE_BATTLE && GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT && IsBattlerAlive(BATTLE_PARTNER(gBattlerAttacker))))
+        && !(gCurrentMove == MOVE_TELEPORT && IsWildDoubleBattle() && GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT && IsBattlerAlive(BATTLE_PARTNER(gBattlerAttacker))))
     {
         BattleScriptPush(gBattlescriptCurrInstr + 1);
         gBattlescriptCurrInstr = BattleScript_Pausex20;
@@ -3961,18 +3961,24 @@ static void Cmd_getexp(void)
     switch (gBattleScripting.getexpState)
     {
     case 0: // check if should receive exp at all
-        if (TRUE) // Never recieve EXP
-        // if (GetBattlerSide(gBattlerFainted) != B_SIDE_OPPONENT || (gBattleTypeFlags &
-        //      (BATTLE_TYPE_LINK
-        //       | BATTLE_TYPE_RECORDED_LINK
-        //       | BATTLE_TYPE_TRAINER_HILL
-        //       | BATTLE_TYPE_FRONTIER
-        //       | BATTLE_TYPE_SAFARI
-        //       | BATTLE_TYPE_BATTLE_TOWER
-        //       | BATTLE_TYPE_EREADER_TRAINER)))
+#if !B_SURPRESS_EXP
+        if (GetBattlerSide(gBattlerFainted) != B_SIDE_OPPONENT || (gBattleTypeFlags &
+             (BATTLE_TYPE_LINK
+              | BATTLE_TYPE_RECORDED_LINK
+              | BATTLE_TYPE_TRAINER_HILL
+              | BATTLE_TYPE_FRONTIER
+              | BATTLE_TYPE_SAFARI
+              | BATTLE_TYPE_BATTLE_TOWER
+              | BATTLE_TYPE_EREADER_TRAINER)))
         {
             gBattleScripting.getexpState = 6; // goto last case
         }
+#else
+        if (TRUE) // Never recieve EXP
+        {
+            gBattleScripting.getexpState = 7; // goto last case
+        }
+#endif
         else
         {
             gBattleScripting.getexpState++;
@@ -4065,6 +4071,7 @@ static void Cmd_getexp(void)
             }
             else
             {
+#if !B_SURPRESS_EXP
                 // Music change in a wild battle after fainting opposing pokemon.
                 if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER)
                     && (gBattleMons[0].hp || (gBattleTypeFlags & BATTLE_TYPE_DOUBLE && gBattleMons[2].hp))
@@ -4073,10 +4080,11 @@ static void Cmd_getexp(void)
                     && !gBattleStruct->wildVictorySong)
                 {
                     BattleStopLowHpSound();
-                    PlayBGM(MUS_VICTORY_WILD);
+                    PlayBGM(GetVictoryMusicForBGM(GetCurrentMapMusic()));
+                    // PlayBGM(MUS_VICTORY_WILD);
                     gBattleStruct->wildVictorySong++;
                 }
-
+#endif
                 if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_HP))
                 {
                     if (gBattleStruct->sentInPokes & 1)
@@ -4254,6 +4262,23 @@ static void Cmd_getexp(void)
             gBattlescriptCurrInstr += 2;
         }
         break;
+#if B_SURPRESS_EXP
+    case 7:
+        // Music change in a wild battle after fainting opposing pokemon.
+        if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+            && (gBattleMons[0].hp || (gBattleTypeFlags & BATTLE_TYPE_DOUBLE && gBattleMons[2].hp))
+            && !IsBattlerAlive(GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT))
+            && !IsBattlerAlive(GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT))
+            && !gBattleStruct->wildVictorySong)
+        {
+            BattleStopLowHpSound();
+            PlayBGM(GetVictoryMusicForBGM(GetCurrentMapMusic()));
+            // PlayBGM(MUS_VICTORY_WILD);
+            gBattleStruct->wildVictorySong++;
+        }
+        gBattleScripting.getexpState = 6;
+        break;
+#endif
     }
 }
 
@@ -7957,12 +7982,12 @@ static void Cmd_various(void)
     // Roar will fail in a double wild battle when used by the player against one of the two alive wild mons.
     // Also when an opposing wild mon uses it againt its partner.
     case VARIOUS_JUMP_IF_ROAR_FAILS:
-        if (WILD_DOUBLE_BATTLE
+        if (IsWildDoubleBattle()
             && GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER
             && GetBattlerSide(gBattlerTarget) == B_SIDE_OPPONENT
             && IS_WHOLE_SIDE_ALIVE(gBattlerTarget))
             gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 3);
-        else if (WILD_DOUBLE_BATTLE
+        else if (IsWildDoubleBattle()
                  && GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT
                  && GetBattlerSide(gBattlerTarget) == B_SIDE_OPPONENT)
             gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 3);
@@ -9778,6 +9803,30 @@ static void Cmd_various(void)
     case VARIOUS_SWAP_SIDE_STATUSES:
         CourtChangeSwapSideStatuses();
         break;
+    case VARIOUS_GIVE_DROPPED_ITEMS: {
+        u8 battlers[] = {GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT), 
+                         GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT)};
+        for (int i = 0; i < 1 + IsDoubleBattle(); i++)
+        {
+            gLastUsedItem = gBattleResources->battleHistory->heldItems[battlers[i]];
+            gBattleResources->battleHistory->heldItems[battlers[i]] = ITEM_NONE;
+            if (gLastUsedItem && !(gBattleTypeFlags & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_FIRST_BATTLE | BATTLE_TYPE_WALLY_TUTORIAL)))
+            {
+                if(AddBagItem(gLastUsedItem, 1))
+                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ITEM_DROPPED_SUCCESS;
+                else
+                    gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_ITEM_DROPPED_BAGFULL;
+                
+                if (IsDoubleBattle())
+                    BattleScriptPushCursor();
+                else
+                    BattleScriptPush(gBattlescriptCurrInstr + 3);
+                gBattlescriptCurrInstr = BattleScript_ItemDropped;
+                return;
+            }
+        }
+        
+    } break;
     } // End of switch (gBattlescriptCurrInstr[2])
 
     gBattlescriptCurrInstr += 3;
@@ -10759,7 +10808,7 @@ static void Cmd_forcerandomswitch(void)
       && !(gBattleTypeFlags & BATTLE_TYPE_TRAINER)
       && GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT)   // Check opponent's red card activating
     {
-        if (!WILD_DOUBLE_BATTLE)
+        if (!IsWildDoubleBattle())
         {
             // Wild mon with red card will end single battle
             gBattlescriptCurrInstr = BattleScript_RoarSuccessEndBattle;
@@ -10786,11 +10835,11 @@ static void Cmd_forcerandomswitch(void)
     // wild double battles when an opposing pokemon uses it against one of the two alive player mons
     // wild double battle when a player pokemon uses it against its partner
     if ((gBattleTypeFlags & BATTLE_TYPE_TRAINER)
-        || (WILD_DOUBLE_BATTLE
+        || (IsWildDoubleBattle()
             && GetBattlerSide(gBattlerAttacker) == B_SIDE_OPPONENT
             && GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER
             && IS_WHOLE_SIDE_ALIVE(gBattlerTarget))
-        || (WILD_DOUBLE_BATTLE
+        || (IsWildDoubleBattle()
             && GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER
             && GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER)
         || redCardForcedSwitch

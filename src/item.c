@@ -840,27 +840,31 @@ void ResolveSpecialItemIds(u16 *itemId, u16 *count)
 {
     mgba_printf(MGBA_LOG_INFO, "ResolveSpecialItemIds, before = %d, %d", *itemId, *count);
     
+ReResolve:
     u16 rand = Random();
     switch (*itemId)
     {
-        case ITEM_CANDY_ABUNDANT:
-            (*itemId) = gCandyAbundantIds[rand % ARRAY_COUNT(gCandyAbundantIds)];
-            break;
-        case ITEM_CANDY_COMMON:
-            (*itemId) = gCandyCommonIds[rand % ARRAY_COUNT(gCandyCommonIds)];
-            break;
-        case ITEM_CANDY_UNCOMMON:
-            (*itemId) = gCandyUncommonIds[rand % ARRAY_COUNT(gCandyUncommonIds)];
-            break;
-        case ITEM_CANDY_RARE:
-            (*itemId) = gCandyRareIds[rand % ARRAY_COUNT(gCandyRareIds)];
-            break;
-        case ITEM_CANDY_HEALTHY:
-            (*itemId) = gCandyHealthyIds[rand % ARRAY_COUNT(gCandyHealthyIds)];
-            break;
-        default:
-            return;
+        case ITEM_TABLE_CANDY_ABUNDANT:  (*itemId) = gItemTable_CandyAbundant[rand % ARRAY_COUNT(gItemTable_CandyAbundant)]; break;
+        case ITEM_TABLE_CANDY_COMMON:    (*itemId) = gItemTable_CandyCommon[rand % ARRAY_COUNT(gItemTable_CandyCommon)]; break;
+        case ITEM_TABLE_CANDY_UNCOMMON:  (*itemId) = gItemTable_CandyUncommon[rand % ARRAY_COUNT(gItemTable_CandyUncommon)]; break;
+        case ITEM_TABLE_CANDY_RARE:      (*itemId) = gItemTable_CandyRare[rand % ARRAY_COUNT(gItemTable_CandyRare)]; break;
+        case ITEM_TABLE_CANDY_HEALTHY:   (*itemId) = gItemTable_CandyHealthy[rand % ARRAY_COUNT(gItemTable_CandyHealthy)]; break;
+        
+        case ITEM_TABLE_RANDOM_A:        (*itemId) = gItemTable_RandomA[rand % ARRAY_COUNT(gItemTable_RandomA)]; break;
+        case ITEM_TABLE_RANDOM_B:        (*itemId) = gItemTable_RandomB[rand % ARRAY_COUNT(gItemTable_RandomB)]; break;
+        case ITEM_TABLE_RANDOM_C:        (*itemId) = gItemTable_RandomC[rand % ARRAY_COUNT(gItemTable_RandomC)]; break;
+        case ITEM_TABLE_RANDOM_D:        (*itemId) = gItemTable_RandomD[rand % ARRAY_COUNT(gItemTable_RandomD)]; break;
+        case ITEM_TABLE_RANDOM_E:        (*itemId) = gItemTable_RandomE[rand % ARRAY_COUNT(gItemTable_RandomE)]; break;
+        case ITEM_TABLE_RANDOM_F:        (*itemId) = gItemTable_RandomF[rand % ARRAY_COUNT(gItemTable_RandomF)]; break;
+        
+        case ITEM_TABLE_MEGA_STONE:      (*itemId) = (rand % (LAST_MEGA_STONE - FIRST_MEGA_STONE)) + FIRST_MEGA_STONE; break;
+        case ITEM_TABLE_POWER_GEM:       (*itemId) = (rand % (LAST_POWER_GEM - FIRST_POWER_GEM)) + FIRST_POWER_GEM; break;
+        case ITEM_TABLE_Z_CRYSTAL:       (*itemId) = (rand % (LAST_Z_CRYSTAL - FIRST_Z_CRYSTAL)) + FIRST_Z_CRYSTAL; break;
+        case ITEM_TABLE_TM:              (*itemId) = (rand % (LAST_TM - FIRST_TM)) + FIRST_TM; break;
+        default: return;
     }
+    
+    mgba_printf(MGBA_LOG_INFO, "ResolveSpecialItemIds, mid = %d, %d", *itemId, *count);
     
     switch (*itemId)
     {
@@ -874,9 +878,29 @@ void ResolveSpecialItemIds(u16 *itemId, u16 *count)
         case ITEM_CANDY_GUMMYBEAR: (*count) *= 6; break;
         case ITEM_CANDY_EGGS: (*count) *= 12; break;
         case ITEM_CANDY_EGGDEVILED: (*count) *= 6; break;
+        
+        case ITEM_TABLE_CANDY_ABUNDANT: 
+        case ITEM_TABLE_CANDY_COMMON: 
+        case ITEM_TABLE_CANDY_UNCOMMON:
+        case ITEM_TABLE_CANDY_RARE:
+        case ITEM_TABLE_CANDY_HEALTHY:
+        case ITEM_TABLE_MEGA_STONE:
+        case ITEM_TABLE_POWER_GEM:
+        case ITEM_TABLE_Z_CRYSTAL:
+        case ITEM_TABLE_TM:
+        case ITEM_TABLE_RANDOM_A:
+        case ITEM_TABLE_RANDOM_B:
+        case ITEM_TABLE_RANDOM_C:
+        case ITEM_TABLE_RANDOM_D:
+        case ITEM_TABLE_RANDOM_E:
+        case ITEM_TABLE_RANDOM_F:
+            goto ReResolve;
+        default: break;
     }
     
-    IncrementGameStatBy(GAME_STAT_CANDY_COLLECTED, *count);
+    if (*itemId >= FIRST_CANDY && *itemId <= LAST_CANDY) {
+        IncrementGameStatBy(GAME_STAT_CANDY_COLLECTED, *count);
+    }
     
     mgba_printf(MGBA_LOG_INFO, "ResolveSpecialItemIds, after = %d, %d", *itemId, *count);
 }

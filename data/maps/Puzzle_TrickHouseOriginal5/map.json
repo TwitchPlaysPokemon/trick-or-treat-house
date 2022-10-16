@@ -198,7 +198,7 @@
       "x": 8,
       "y": 9,
       "elevation": 3,
-      "item": "ITEM_CANDY_RARE",
+      "item": "ITEM_TABLE_CANDY_RARE",
       "flag": "FLAG_CANDY_RARE_01"
     },
     {
@@ -206,7 +206,7 @@
       "x": 8,
       "y": 3,
       "elevation": 3,
-      "item": "ITEM_CANDY_HEALTHY",
+      "item": "ITEM_TABLE_CANDY_HEALTHY",
       "flag": "FLAG_CANDY_HEALTHY_01"
     },
     {
@@ -214,7 +214,7 @@
       "x": 2,
       "y": 18,
       "elevation": 3,
-      "item": "ITEM_CANDY_ABUNDANT",
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
       "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x02"
     },
     {
@@ -222,7 +222,7 @@
       "x": 13,
       "y": 3,
       "elevation": 3,
-      "item": "ITEM_CANDY_ABUNDANT",
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
       "flag": "FLAG_CANDY_ABUNDANT_03"
     },
     {
@@ -230,7 +230,7 @@
       "x": 5,
       "y": 5,
       "elevation": 3,
-      "item": "ITEM_CANDY_COMMON",
+      "item": "ITEM_TABLE_CANDY_COMMON",
       "flag": "FLAG_CANDY_COMMON_03"
     }
   ]

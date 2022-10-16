@@ -280,7 +280,7 @@
       "x": 6,
       "y": 9,
       "elevation": 3,
-      "item": "ITEM_CANDY_COMMON",
+      "item": "ITEM_TABLE_CANDY_COMMON",
       "flag": "FLAG_CANDY_COMMON_01"
     }
   ]

@@ -453,7 +453,7 @@
       "x": 29,
       "y": 7,
       "elevation": 3,
-      "item": "ITEM_CANDY_UNCOMMON",
+      "item": "ITEM_TABLE_CANDY_UNCOMMON",
       "flag": "FLAG_CANDY_UNCOMMON_02"
     },
     {
@@ -461,7 +461,7 @@
       "x": 65,
       "y": 23,
       "elevation": 7,
-      "item": "ITEM_CANDY_UNCOMMON",
+      "item": "ITEM_TABLE_CANDY_UNCOMMON",
       "flag": "FLAG_CANDY_UNCOMMON_03"
     }
   ]

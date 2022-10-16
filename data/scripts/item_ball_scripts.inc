@@ -1,22 +1,22 @@
 
 Common_EventScript_CandyAbundant::
-	finditem_std ITEM_CANDY_ABUNDANT, 1
+	finditem_std ITEM_TABLE_CANDY_ABUNDANT, 1
 	end
 
 Common_EventScript_CandyCommon::
-	finditem_std ITEM_CANDY_COMMON, 1
+	finditem_std ITEM_TABLE_CANDY_COMMON, 1
 	end
 
 Common_EventScript_CandyUncommon::
-	finditem_std ITEM_CANDY_UNCOMMON, 1
+	finditem_std ITEM_TABLE_CANDY_UNCOMMON, 1
 	end
 
 Common_EventScript_CandyHealthy::
-	finditem_std ITEM_CANDY_HEALTHY, 1
+	finditem_std ITEM_TABLE_CANDY_HEALTHY, 1
 	end
 
 Common_EventScript_CandyRare::
-	finditem_std ITEM_CANDY_RARE, 1
+	finditem_std ITEM_TABLE_CANDY_RARE, 1
 	end
 
 @ -----------------------------------------------------

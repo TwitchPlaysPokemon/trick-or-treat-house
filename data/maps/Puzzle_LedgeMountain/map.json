@@ -196,7 +196,7 @@
       "x": 20,
       "y": 40,
       "elevation": 3,
-      "item": "ITEM_CANDY_UNCOMMON",
+      "item": "ITEM_TABLE_CANDY_UNCOMMON",
       "flag": "FLAG_CANDY_UNCOMMON_01"
     },
     {
@@ -204,7 +204,7 @@
       "x": 5,
       "y": 31,
       "elevation": 3,
-      "item": "ITEM_CANDY_ABUNDANT",
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
       "flag": "FLAG_CANDY_ABUNDANT_01"
     },
     {
@@ -212,7 +212,7 @@
       "x": 32,
       "y": 43,
       "elevation": 3,
-      "item": "ITEM_CANDY_ABUNDANT",
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
       "flag": "FLAG_CANDY_ABUNDANT_02"
     },
     {
@@ -220,7 +220,7 @@
       "x": 32,
       "y": 26,
       "elevation": 3,
-      "item": "ITEM_CANDY_ABUNDANT",
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
       "flag": "FLAG_CANDY_ABUNDANT_03"
     },
     {
@@ -228,7 +228,7 @@
       "x": 28,
       "y": 4,
       "elevation": 3,
-      "item": "ITEM_CANDY_COMMON",
+      "item": "ITEM_TABLE_CANDY_COMMON",
       "flag": "FLAG_CANDY_COMMON_03"
     },
     {
@@ -236,7 +236,7 @@
       "x": 7,
       "y": 59,
       "elevation": 3,
-      "item": "ITEM_CANDY_UNCOMMON",
+      "item": "ITEM_TABLE_CANDY_UNCOMMON",
       "flag": "FLAG_CANDY_UNCOMMON_02"
     },
     {
@@ -244,7 +244,7 @@
       "x": 5,
       "y": 39,
       "elevation": 3,
-      "item": "ITEM_CANDY_ABUNDANT",
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
       "flag": "FLAG_CANDY_ABUNDANT_04"
     },
     {
@@ -252,7 +252,7 @@
       "x": 18,
       "y": 23,
       "elevation": 3,
-      "item": "ITEM_CANDY_HEALTHY",
+      "item": "ITEM_TABLE_CANDY_HEALTHY",
       "flag": "FLAG_CANDY_HEALTHY_01"
     },
     {
@@ -260,7 +260,7 @@
       "x": 19,
       "y": 6,
       "elevation": 3,
-      "item": "ITEM_CANDY_HEALTHY",
+      "item": "ITEM_TABLE_CANDY_HEALTHY",
       "flag": "FLAG_CANDY_HEALTHY_02"
     },
     {
@@ -268,7 +268,7 @@
       "x": 21,
       "y": 30,
       "elevation": 3,
-      "item": "ITEM_CANDY_RARE",
+      "item": "ITEM_TABLE_CANDY_RARE",
       "flag": "FLAG_CANDY_RARE_02"
     }
   ]
