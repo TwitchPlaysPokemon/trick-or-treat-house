@@ -542,7 +542,7 @@
       "x": 19,
       "y": 5,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_RUN_TRIGGER_IMMEDIATELY",
       "var_value": "0",
       "script": "Puzzle_IcePath_SetReflectionHigh"
     },
@@ -551,7 +551,7 @@
       "x": 19,
       "y": 7,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_RUN_TRIGGER_IMMEDIATELY",
       "var_value": "0",
       "script": "Puzzle_IcePath_SetReflectionNormal"
     },
@@ -560,7 +560,7 @@
       "x": 33,
       "y": 3,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_RUN_TRIGGER_IMMEDIATELY",
       "var_value": "0",
       "script": "Puzzle_IcePath_SetReflectionHigh"
     },
@@ -569,7 +569,7 @@
       "x": 33,
       "y": 5,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_RUN_TRIGGER_IMMEDIATELY",
       "var_value": "0",
       "script": "Puzzle_IcePath_SetReflectionNormal"
     }

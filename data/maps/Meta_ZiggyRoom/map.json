@@ -301,7 +301,7 @@
       "x": 9,
       "y": 18,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_RUN_TRIGGER_IMMEDIATELY",
       "var_value": "0",
       "script": "Meta_ZiggyRoom_EnterTreeLevel"
     },
@@ -310,7 +310,7 @@
       "x": 10,
       "y": 28,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_RUN_TRIGGER_IMMEDIATELY",
       "var_value": "0",
       "script": "Meta_ZiggyRoom_EnterTreeLevel"
     },
@@ -319,7 +319,7 @@
       "x": 19,
       "y": 31,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_RUN_TRIGGER_IMMEDIATELY",
       "var_value": "0",
       "script": "Meta_ZiggyRoom_EnterTreeLevel"
     },
@@ -328,7 +328,7 @@
       "x": 9,
       "y": 19,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_RUN_TRIGGER_IMMEDIATELY",
       "var_value": "0",
       "script": "Meta_ZiggyRoom_ExitTreeLevel"
     },
@@ -337,7 +337,7 @@
       "x": 10,
       "y": 29,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_RUN_TRIGGER_IMMEDIATELY",
       "var_value": "0",
       "script": "Meta_ZiggyRoom_ExitTreeLevel"
     },
@@ -346,7 +346,7 @@
       "x": 19,
       "y": 32,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_RUN_TRIGGER_IMMEDIATELY",
       "var_value": "0",
       "script": "Meta_ZiggyRoom_ExitTreeLevel"
     }

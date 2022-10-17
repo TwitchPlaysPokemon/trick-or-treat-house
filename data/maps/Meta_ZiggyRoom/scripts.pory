@@ -442,11 +442,9 @@ movement Meta_ZiggyRoom_CompletePuzzle_MovementKid2 {
 
 script Meta_ZiggyRoom_EnterTreeLevel {
 	setflag(FLAG_SYS_FAST_BONK)
-	release
 }
 script Meta_ZiggyRoom_ExitTreeLevel {
 	clearflag(FLAG_SYS_FAST_BONK)
-	release
 }
 
 //-----------------------------------------------------

@@ -319,6 +319,12 @@
 
 #define SPECIAL_VARS_END              0x801C
 
+// If an overworld trigger uses this pseudo-variable as the trigger check,
+// then the script will be run using RunScriptImmediately instead of in the
+// global script context. This means it will run faster, but cannot do any
+// cutscenes nor call a wait command. Used for weather effects in vanilla.
+#define VAR_RUN_TRIGGER_IMMEDIATELY        0
+
 #define THIS_EVENT                    0x800F //alias to VAR_LAST_TALKED
 
 #define BATTLEMOD_NO_WHITEOUT         0x0001
