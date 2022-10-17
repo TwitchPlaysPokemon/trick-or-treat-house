@@ -278,38 +278,49 @@ static const struct MetaRoomInfo sMetaRoomInfo[] = {
 	}, //*/
 };
 
-const u16 sMetaRoom_FallbackList_s4_1x1[] = { MAP_META_BERRY_ROOM, MAP_META_EMPTY_NE, MAP_NONE };
-const u16 sMetaRoom_FallbackList_s4_2x1[] = { MAP_META_LOG_FLOTILLA, MAP_META_EMPTY_SE, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s4_1x1[] = { MAP_META_BERRY_ROOM, MAP_META_EMPTY_NE, MAP_NONE }; // Has Pedestal
+const u16 sMetaRoom_FallbackList_s4_2x1[] = { MAP_META_LOG_FLOTILLA, MAP_META_EMPTY_SE, MAP_NONE }; // Has Surf
 const u16 sMetaRoom_FallbackList_s4_3x1[] = { MAP_META_FINAL_BLUFF, MAP_NONE };
-const u16 sMetaRoom_FallbackList_s4_4x1[] = { MAP_META_POKE_STAGE, MAP_META_EMPTY_S, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s4_4x1[] = { MAP_META_POKE_STAGE, MAP_META_EMPTY_S, MAP_NONE }; // Has Scroll
 
-const u16 sMetaRoom_FallbackList_s4_1x2[] = { MAP_META_ZIGGY_ROOM, MAP_META_EMPTY_SW, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s4_1x2[] = { MAP_META_ZIGGY_ROOM, MAP_META_EMPTY_SW, MAP_NONE }; // Has Waterfall
 const u16 sMetaRoom_FallbackList_s4_2x2[] = { MAP_META_ICE_CORNER, MAP_META_EMPTY_SW, MAP_NONE };
 const u16 sMetaRoom_FallbackList_s4_3x2[] = { /*MAP_META_ROOM_15,*/ MAP_META_EMPTY_NW, MAP_NONE };
-const u16 sMetaRoom_FallbackList_s4_4x2[] = { MAP_META_SUBDUCTION_ZONE, MAP_META_EMPTY_WE, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s4_4x2[] = { MAP_META_SUBDUCTION_ZONE, MAP_META_EMPTY_WE, MAP_NONE }; // Has Strength
 
-const u16 sMetaRoom_FallbackList_s4_1x3[] = { MAP_META_DIVE_MAZE, MAP_META_EMPTY_NS, MAP_NONE };
-const u16 sMetaRoom_FallbackList_s4_2x3[] = { MAP_META_BIKE_PATH, MAP_META_EMPTY_NS, MAP_NONE };
-const u16 sMetaRoom_FallbackList_s4_3x3[] = { MAP_META_FOREST_CLEARING, MAP_META_EMPTY_SE, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s4_1x3[] = { MAP_META_DIVE_MAZE, MAP_META_EMPTY_NS, MAP_NONE }; // Has Dive
+const u16 sMetaRoom_FallbackList_s4_2x3[] = { MAP_META_BIKE_PATH, MAP_META_EMPTY_NS, MAP_NONE }; // Has Pedestal
+const u16 sMetaRoom_FallbackList_s4_3x3[] = { MAP_META_FOREST_CLEARING, MAP_META_EMPTY_SE, MAP_NONE }; // Has Pedestal, Cut
 const u16 sMetaRoom_FallbackList_s4_4x3[] = { MAP_META_KOGA_ELBOW, MAP_META_EMPTY_NW, MAP_NONE };
 
-const u16 sMetaRoom_FallbackList_s4_1x4[] = { MAP_META_LEDGE_ROOM, MAP_META_EMPTY_NE, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s4_1x4[] = { MAP_META_LEDGE_ROOM, MAP_META_EMPTY_NE, MAP_NONE }; // Has Rock Smash
 const u16 sMetaRoom_FallbackList_s4_2x4[] = { MAP_META_ZIP_SLIDE, MAP_META_EMPTY_WE, MAP_NONE };
-const u16 sMetaRoom_FallbackList_s4_3x4[] = { MAP_META_LAVARIDGE_SPRINGS, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s4_3x4[] = { MAP_META_LAVARIDGE_SPRINGS, MAP_NONE }; // Has Pedestal
 const u16 sMetaRoom_FallbackList_s4_4x4[] = { MAP_META_NULL_ROOM, MAP_NONE };
 
 
-const u16 sMetaRoom_FallbackList_s3_1x1[] = { MAP_META_LOG_FLOTILLA, MAP_META_FOREST_CLEARING, MAP_META_EMPTY_SE, MAP_NONE };
-const u16 sMetaRoom_FallbackList_s3_2x1[] = { MAP_META_LEDGE_ROOM, MAP_META_BERRY_ROOM, MAP_META_EMPTY_NE, MAP_NONE };
-const u16 sMetaRoom_FallbackList_s3_3x1[] = { MAP_META_SUBDUCTION_ZONE, MAP_META_ZIP_SLIDE, MAP_META_EMPTY_WE, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s3_1x1[] = { MAP_META_LOG_FLOTILLA, MAP_META_FOREST_CLEARING, MAP_META_EMPTY_SE, MAP_NONE }; // Has Surf
+const u16 sMetaRoom_FallbackList_s3_2x1[] = { MAP_META_BERRY_ROOM, MAP_META_LEDGE_ROOM, MAP_META_EMPTY_NE, MAP_NONE }; // Has Pedestal, Rock Smash
+const u16 sMetaRoom_FallbackList_s3_3x1[] = { MAP_META_ZIP_SLIDE, MAP_META_SUBDUCTION_ZONE, MAP_META_EMPTY_WE, MAP_NONE }; // Has Strength
 
-const u16 sMetaRoom_FallbackList_s3_1x2[] = { MAP_META_FINAL_BLUFF, MAP_NONE };
-const u16 sMetaRoom_FallbackList_s3_2x2[] = { MAP_META_BIKE_PATH, MAP_META_DIVE_MAZE, MAP_META_EMPTY_NS, MAP_NONE };
-const u16 sMetaRoom_FallbackList_s3_3x2[] = { MAP_META_KOGA_ELBOW, /*MAP_META_ROOM_15,*/ MAP_META_EMPTY_NW, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s3_1x2[] = { MAP_META_FINAL_BLUFF, MAP_NONE }; // Has Scroll
+const u16 sMetaRoom_FallbackList_s3_2x2[] = { MAP_META_BIKE_PATH, MAP_META_DIVE_MAZE, MAP_META_EMPTY_NS, MAP_NONE }; // Has Pedestal, Dive
+const u16 sMetaRoom_FallbackList_s3_3x2[] = { MAP_META_KOGA_ELBOW, /*MAP_META_ROOM_15,*/ MAP_META_EMPTY_NW, MAP_NONE }; // Has Cut
 
-const u16 sMetaRoom_FallbackList_s3_1x3[] = { MAP_META_ZIGGY_ROOM, MAP_META_ICE_CORNER, MAP_META_EMPTY_SW, MAP_NONE };
-const u16 sMetaRoom_FallbackList_s3_2x3[] = { MAP_META_LAVARIDGE_SPRINGS, MAP_NONE };
+const u16 sMetaRoom_FallbackList_s3_1x3[] = { MAP_META_ZIGGY_ROOM, MAP_META_ICE_CORNER, MAP_META_EMPTY_SW, MAP_NONE }; // Has Pedestal, Waterfall
+const u16 sMetaRoom_FallbackList_s3_2x3[] = { MAP_META_LAVARIDGE_SPRINGS, MAP_NONE }; // Has Pedestal
 const u16 sMetaRoom_FallbackList_s3_3x3[] = { MAP_META_NULL_ROOM, MAP_NONE };
+
+/*
+Final Bluff Skips:
+Cut => Bike over trees
+Strength => Remove Strength Boulder
+Rock Smash => Remove Rock Smash Rock
+Surf => <cannot skip>
+Dive => Bike over trees?
+Waterfall => Rocky Ridge climb
+*/
+
 
 
 u16* MetaPuzzle_GetRoomGridVarPointer(int x, int y) {

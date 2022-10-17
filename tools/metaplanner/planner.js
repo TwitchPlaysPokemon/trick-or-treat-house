@@ -21,26 +21,26 @@ const PARTS = [
 	// Final Room
 	{ id:2, name:"Final Bluff", exits:["ZW"], supplies:['%'], requires:['%',"Sf","Dv","Wf","RS","St","Ct"], },
 	// Can take the place of any corner
-	{ id:3, name:"Ice Corner", exits:["SW","SE","NE","NW"], supplies:['#','%','St'], requires:[], }, //requires strength?
+	{ id:3, name:"Ice Corner", exits:["SW"], supplies:['#','%','St'], requires:[], }, //requires strength?
 	// Enter from bottom, exit anywhere
-	{ id:4, name:"Log Flotilla", exits:["SE","SW","NS"], supplies:["Sf"], requires:[], },
+	{ id:4, name:"Log Flotilla", exits:["SE"], supplies:["Sf"], requires:[], },
 	// Ledges down into valley with Rock Smash, use RS to open paths back up and out
 	{ id:5, name:"Ledge Valley", exits:["NE"], supplies:["RS",'%'], requires:[], },
 	//
 	{ id:6, name:"Bike Path", exits:["NS"], supplies:['#','%'], requires:[], },
 	//
-	{ id:7, name:"Pokemon Stage", exits:["S","W","E"], supplies:['#','%',"Ct","St","Dv","Wf","Sf","RS"], requires:[], },
+	{ id:7, name:"Pokemon Stage", exits:["S"], supplies:['#','%',"Ct","St","Dv","Wf","Sf","RS"], requires:[], },
 	// The HM ball for Dive shows up twice/two places in the maze, floating on the water, so either end can grab it
 	{ id:8, name:"Dive Maze", exits:["NS"], supplies:["Dv"], requires:["Sf"], },
 	
 	// Guiding Ziggy from above
-	{ id:9, name:"Ziggy Room", exits:["SW","NE","NW","SE"], supplies:['%',"Wf","St","Dv","Sf","RS"], requires:["Ct"], },
+	{ id:9, name:"Ziggy Room", exits:["SW"], supplies:['%',"Wf","St","Dv","Sf","RS"], requires:["Ct"], },
 	// Hidden Maze Redux
-	{ id:10, name:"Koga's Elbow", exits:["NW","NE","SW","SE"], supplies:['#','%',"St","RS"], requires:[], },
+	{ id:10, name:"Koga's Elbow", exits:["NW"], supplies:['#','%',"St","RS"], requires:[], },
 	//
 	{ id:11, name:"Zip Sliding", exits:["WE"], supplies:[], requires:[], }, //TODO Add cut requirement?
 	//
-	{ id:12, name:"Forest Clearing", exits:["SE", "NW"], supplies:['#', "Ct"], requires:[], },
+	{ id:12, name:"Forest Clearing", exits:["SE"], supplies:['#', "Ct"], requires:[], },
 	//
 	{ id:13, name:"Berry Breezeway", exits:["NE"], supplies:['#'], requires:[], },
 	//

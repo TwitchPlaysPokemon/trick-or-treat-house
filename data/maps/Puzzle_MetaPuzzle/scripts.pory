@@ -7,6 +7,16 @@ raw `
 // ...FLAG_PUZZLE_39
 // FLAG_PUZZLE_ITEM_0 = watering can in Ziggy room
 
+#define VAR_LOC_SCROLL     VAR_PUZZLE_11
+#define VAR_LOC_CUT        VAR_PUZZLE_12
+#define VAR_LOC_ROCK_SMASH VAR_PUZZLE_13
+#define VAR_LOC_STRENGTH   VAR_PUZZLE_14
+#define VAR_LOC_DIVE       VAR_PUZZLE_15
+#define VAR_LOC_WATERFALL  VAR_PUZZLE_16
+// First pedestal is always in Lavaridge
+#define VAR_LOC_PEDESTAL2  VAR_PUZZLE_17
+#define VAR_LOC_PEDESTAL3  VAR_PUZZLE_18
+#define VAR_LOC_PEDESTAL4  VAR_PUZZLE_19
 
 Puzzle_MetaPuzzle_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
@@ -241,38 +251,6 @@ script MetaPuzzle_PickupEvent_SeedotDoll {
 
 // ----------------------------------------------------
 
-script MetaPuzzle_TestSetup4x4 {
-	lockall
-	setvar(VAR_GRID_SIZE, (4 << 8) | (4))
-	setvar(VAR_ROOM_ID_0_0 + 0, MAP_META_BERRY_ROOM)
-	setvar(VAR_ROOM_ID_0_0 + 1, MAP_META_LOG_FLOTILLA)
-	setvar(VAR_ROOM_ID_0_0 + 2, MAP_META_FINAL_BLUFF)
-	setvar(VAR_ROOM_ID_0_0 + 3, MAP_META_POKE_STAGE)
-	
-	setvar(VAR_ROOM_ID_0_0 + 4, MAP_META_ZIGGY_ROOM)
-	setvar(VAR_ROOM_ID_0_0 + 5, MAP_META_ICE_CORNER)
-	setvar(VAR_ROOM_ID_0_0 + 6, MAP_META_EMPTY_NW)
-	setvar(VAR_ROOM_ID_0_0 + 7, MAP_META_SUBDUCTION_ZONE)
-	
-	setvar(VAR_ROOM_ID_0_0 + 8, MAP_META_DIVE_MAZE)
-	setvar(VAR_ROOM_ID_0_0 + 9, MAP_META_BIKE_PATH)
-	setvar(VAR_ROOM_ID_0_0 + 10, MAP_META_FOREST_CLEARING)
-	setvar(VAR_ROOM_ID_0_0 + 11, MAP_META_KOGA_ELBOW)
-	
-	setvar(VAR_ROOM_ID_0_0 + 12, MAP_META_LEDGE_ROOM)
-	setvar(VAR_ROOM_ID_0_0 + 13, MAP_META_ZIP_SLIDE)
-	setvar(VAR_ROOM_ID_0_0 + 14, MAP_META_LAVARIDGE_SPRINGS)
-	setvar(VAR_ROOM_ID_0_0 + 15, MAP_META_NULL_ROOM)
-	
-	message("Setup 4x4$")
-	waitmessage
-	waitbuttonpress
-	
-	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
-	setwarp(WARPTYPE_STANDARD, MAP_META_LAVARIDGE_SPRINGS, VAR_INTERACT_X, VAR_INTERACT_Y)
-	dowarp(WARPTYPE_STANDARD, DOWARP_SILENT)
-	releaseall
-}
 script MetaPuzzle_UsePedestal {
 	lockall
 	
@@ -326,6 +304,75 @@ movement MetaPuzzle_ChangeRoomLayout_PlayerReact {
 	delay_2
 	delay_1
 	walk_in_place_fast_down
+}
+
+// ----------------------------------------------------
+// Test scripts:
+
+script MetaPuzzle_TestSetup4x4 {
+	lockall
+	setvar(VAR_GRID_SIZE, (4 << 8) | (4))
+	setvar(VAR_ROOM_ID_0_0 + 0, MAP_META_BERRY_ROOM)
+	setvar(VAR_ROOM_ID_0_0 + 1, MAP_META_LOG_FLOTILLA)
+	setvar(VAR_ROOM_ID_0_0 + 2, MAP_META_FINAL_BLUFF)
+	setvar(VAR_ROOM_ID_0_0 + 3, MAP_META_POKE_STAGE)
+	
+	setvar(VAR_ROOM_ID_0_0 + 4, MAP_META_ZIGGY_ROOM)
+	setvar(VAR_ROOM_ID_0_0 + 5, MAP_META_ICE_CORNER)
+	setvar(VAR_ROOM_ID_0_0 + 6, MAP_META_EMPTY_NW)
+	setvar(VAR_ROOM_ID_0_0 + 7, MAP_META_SUBDUCTION_ZONE)
+	
+	setvar(VAR_ROOM_ID_0_0 + 8, MAP_META_DIVE_MAZE)
+	setvar(VAR_ROOM_ID_0_0 + 9, MAP_META_BIKE_PATH)
+	setvar(VAR_ROOM_ID_0_0 + 10, MAP_META_FOREST_CLEARING)
+	setvar(VAR_ROOM_ID_0_0 + 11, MAP_META_KOGA_ELBOW)
+	
+	setvar(VAR_ROOM_ID_0_0 + 12, MAP_META_LEDGE_ROOM)
+	setvar(VAR_ROOM_ID_0_0 + 13, MAP_META_ZIP_SLIDE)
+	setvar(VAR_ROOM_ID_0_0 + 14, MAP_META_LAVARIDGE_SPRINGS)
+	setvar(VAR_ROOM_ID_0_0 + 15, MAP_META_NULL_ROOM)
+	
+	message("Setup 4x4$")
+	waitmessage
+	waitbuttonpress
+	
+	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
+	setwarp(WARPTYPE_STANDARD, MAP_META_LAVARIDGE_SPRINGS, VAR_INTERACT_X, VAR_INTERACT_Y)
+	dowarp(WARPTYPE_STANDARD, DOWARP_SILENT)
+	releaseall
+}
+
+script MetaPuzzle_TestSetup3x3 {
+	lockall
+	setvar(VAR_GRID_SIZE, (3 << 8) | (3))
+	setvar(VAR_ROOM_ID_0_0 + 0, MAP_META_LOG_FLOTILLA)
+	setvar(VAR_ROOM_ID_0_0 + 1, MAP_META_LEDGE_ROOM)
+	setvar(VAR_ROOM_ID_0_0 + 2, MAP_META_SUBDUCTION_ZONE)
+	
+	setvar(VAR_ROOM_ID_0_0 + 3, MAP_META_FINAL_BLUFF)
+	setvar(VAR_ROOM_ID_0_0 + 4, MAP_META_BIKE_PATH)
+	setvar(VAR_ROOM_ID_0_0 + 5, MAP_META_KOGA_ELBOW)
+	
+	setvar(VAR_ROOM_ID_0_0 + 6, MAP_META_ICE_CORNER)
+	setvar(VAR_ROOM_ID_0_0 + 7, MAP_META_LAVARIDGE_SPRINGS)
+	
+	setvar(VAR_ROOM_ID_0_0 + 8, MAP_META_DIVE_MAZE)
+	setvar(VAR_ROOM_ID_0_0 + 9, 0)
+	setvar(VAR_ROOM_ID_0_0 + 10, 0)
+	setvar(VAR_ROOM_ID_0_0 + 11, 0)
+	setvar(VAR_ROOM_ID_0_0 + 12, 0)
+	setvar(VAR_ROOM_ID_0_0 + 13, 0)
+	setvar(VAR_ROOM_ID_0_0 + 14, 0)
+	setvar(VAR_ROOM_ID_0_0 + 15, 0)
+	
+	message("Setup 3x3$")
+	waitmessage
+	waitbuttonpress
+	
+	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
+	setwarp(WARPTYPE_STANDARD, MAP_META_LAVARIDGE_SPRINGS, VAR_INTERACT_X, VAR_INTERACT_Y)
+	dowarp(WARPTYPE_STANDARD, DOWARP_SILENT)
+	releaseall
 }
 
 raw `
