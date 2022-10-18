@@ -18,6 +18,9 @@ Known issues:
 Other Puzzles:
 - [X] Block Pushing
 	- [X] The map is already made. Wire it up and put it in.
+- [X] Falling Water
+	- [X] Basically completed. Needs candy and a name.
+	- [ ] Test slow surfing section
 - [ ] Dive Maze
 	- [ ] Make said maze
 - [ ] Subduction Zone

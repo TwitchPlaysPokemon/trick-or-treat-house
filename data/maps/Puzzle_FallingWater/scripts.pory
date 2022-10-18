@@ -5,20 +5,51 @@ Puzzle_FallingWater_MapScripts::
 	puzzle_quip Puzzle_FallingWater_Quip
 	puzzle_item_prereqs Puzzle_FallingWater_PrereqItems
 	puzzle_candylist Puzzle_FallingWater_CandyList
+	map_script MAP_SCRIPT_ON_PUZZLE_TEARDOWN, Puzzle_FallingWater_OnPuzzleTeardown
 	.byte 0
 
 Puzzle_FallingWater_Name:
-	.string "Falling Water$"
+	.string "Jungle Cruising$"
 Puzzle_FallingWater_Adjective:
 	.string "swift moving$"
 Puzzle_FallingWater_Quip:
-	.string "X$"
+	.string "I thought that was quite refreshing,\n"
+	.string "no? A lovely river swim!$"
 .align 2
+Puzzle_FallingWater_Variables:
+	.2byte VAR_QUIP_PERSON,     OBJ_EVENT_GFX_SWIMMER_M
+	.2byte 0
 Puzzle_FallingWater_PrereqItems:
 	.2byte ITEM_SURF_ITEM
 	.2byte 0
 Puzzle_FallingWater_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_COMMON_03
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_RARE_01
 	.2byte 0
 
 @ -----------------------------------------------------
 `
+
+script(local) Puzzle_FallingWater_OnPuzzleTeardown {
+	clearflag(FLAG_SYS_SLOW_SURF)
+}
+
+script(local) Puzzle_FallingWater_SlowSurfing {
+	setflag(FLAG_SYS_SLOW_SURF)
+}
+script(local) Puzzle_FallingWater_RestoreSurfing {
+	clearflag(FLAG_SYS_SLOW_SURF)
+}
+
+script Puzzle_FallingWater_UnobtainableItemBall {
+	msgbox ("You cheated to get here, didn't you?$")
+	finditem_std(ITEM_SACRED_ASH, 1)
+}

@@ -1369,7 +1369,7 @@
 #define FLAG_SYS_RANDOM_DISABLED                    (SYSTEM_FLAGS + 0x24) // TTH
 #define FLAG_SYS_FAST_BONK                          (SYSTEM_FLAGS + 0x25) // TTH
 #define FLAG_SYS_KEEP_OBJECTS_WITHIN_MAP            (SYSTEM_FLAGS + 0x26) // TTH, Disables object template loading as long as the destination warp is within the same map
-#define FLAG_SYS_UNUSED_0x27                        (SYSTEM_FLAGS + 0x27)
+#define FLAG_SYS_SLOW_SURF                          (SYSTEM_FLAGS + 0x27) // TTH
 #define FLAG_SYS_USE_FLASH                          (SYSTEM_FLAGS + 0x28)
 #define FLAG_SYS_USE_STRENGTH                       (SYSTEM_FLAGS + 0x29)
 #define FLAG_SYS_WEATHER_CTRL                       (SYSTEM_FLAGS + 0x2A)

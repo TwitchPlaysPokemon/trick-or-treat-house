@@ -1675,7 +1675,7 @@
       "width": 48,
       "height": 100,
       "border_width": 2,
-      "border_height": 2,
+      "border_height": 4,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Pacifidlog",
       "border_filepath": "data/layouts/Puzzle_FallingWater/border.bin",

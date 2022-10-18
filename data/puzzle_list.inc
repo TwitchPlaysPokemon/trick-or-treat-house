@@ -22,6 +22,7 @@ gPuzzleList::                                           @ Puzzle Type(s)
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL4             @  BATTLE/MOVEMENT (Boulders)
     .2byte MAP_PUZZLE_TIN_TOWER_CLIMB                   @  WILD/MAZE
     .2byte MAP_PUZZLE_ROUTE110                          @  ITEM/MAZE
+    .2byte MAP_PUZZLE_FALLING_WATER                     @  ITEM/MOVEMENT
     .2byte MAP_PUZZLE_SOOTOPOLIS_GYM                    @  MOVEMENT
     
     .2byte MAP_TRICK_TREAT_FORTREE_CITY                 @  TRICK
@@ -60,7 +61,6 @@ gDebugPuzzles::
     .2byte MAP_EMPTY_PUZZLE
     .2byte MAP_PUZZLE_META_PUZZLE
     .2byte MAP_TRICK_TREAT_ALTO_MARE1                   @  TRICK (after Mossdeep)
-    .2byte MAP_PUZZLE_FALLING_WATER                     @  ITEM/MOVEMENT
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL1             @  BATTLE/MAZE
     .2byte MAP_PUZZLE_TRICK_HOUSE_TRAPDOORS             @  BATTLE/MAZE
     .2byte MAP_PUZZLE_DESERT_OASIS
