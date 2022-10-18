@@ -1,4 +1,144 @@
 raw `
 Puzzle_BlockPushing_MapScripts::
+	puzzle_info Puzzle_BlockPushing_Name, CommonAuthor_Tustin2121, PUZZLE_FLAG_INSPIRED_BY, Puzzle_BlockPushing_Inspiration
+	puzzle_adjective Puzzle_BlockPushing_Adjective
+	puzzle_quip Puzzle_BlockPushing_Quip
+	@ puzzle_metavars Puzzle_BlockPushing_Variables
+	puzzle_item_prereqs Puzzle_BlockPushing_PrereqItems
+	puzzle_candylist Puzzle_BlockPushing_CandyList
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_BlockPushing_OnResume
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_BlockPushing_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_BlockPushing_FrameTable
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Puzzle_BlockPushing_MapTable
 	.byte 0
+
+Puzzle_BlockPushing_Name:
+	.string "A Rock and a Hard Place$"
+Puzzle_BlockPushing_Inspiration: @ More like "blatantly stolen from"
+	.string "yahtzee19$"
+Puzzle_BlockPushing_Adjective:
+	.string "cramped$"
+Puzzle_BlockPushing_Quip:
+	.string "There really was no room to move\n"
+	.string "in there!\p"
+	.string "I suspect the Trick Master put on that\n"
+	.string "calm music so we wouldn't punch holes\l"
+	.string "in the walls for more space!$"
+Puzzle_BlockPushing_DevCommentary:
+	.string "This puzzle is blatantly ripped from an\n"
+	.string "old game called Young Merlin.\p"
+	.string "I saw Yahtzee of Zero Punctuation fame\n"
+	.string "play it on his youtube channel, and\l"
+	.string "I was 'inspired' to grab it.$"
+.align 2
+@ Puzzle_BlockPushing_Variables:
+@ 	.2byte VAR_QUIP_PERSON,  OBJ_EVENT_GFX_HIKER
+@ 	.2byte 0
+Puzzle_BlockPushing_PrereqItems:
+	.2byte ITEM_STRENGTH_ITEM
+	.2byte 0
+Puzzle_BlockPushing_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte 0
+
+Puzzle_BlockPushing_FrameTable:
+	@ VAR_STEP_TRIGGER is set to 1 by MonitorObjectEventTriggersStepCallback when any npc steps on a trigger
+	map_script_2 VAR_STEP_TRIGGER, 1, Puzzle_BlockPushing_CheckPuzzleSolved1
+	map_script_2 VAR_STEP_TRIGGER, 2, Puzzle_BlockPushing_CheckPuzzleSolved2
+	map_script_2 VAR_STEP_TRIGGER, 3, Puzzle_BlockPushing_CheckPuzzleSolved3
+	@ map_script_2 VAR_STEP_TRIGGER, 4, Puzzle_BlockPushing_TriggerTrappedFailsafe
+	.2byte 0
+Puzzle_BlockPushing_MapTable:
+	.2byte 0
+Puzzle_BlockPushing_OnResume:
+	@ Setup the NPC Trigger step callback MonitorObjectEventTriggersStepCallback
+	setnpctriggercallback NPC_TRIGGER_CB_BOULDER_PUSH 
+	end
+
+@ -----------------------------------------------------
+
+#define FLAG_PUZZLE_1_DONE   FLAG_PUZZLE_21
+#define FLAG_PUZZLE_2_DONE   FLAG_PUZZLE_22
+#define FLAG_PUZZLE_3_DONE   FLAG_PUZZLE_23
+`
+
+script(local) Puzzle_BlockPushing_OnLoad {
+	if (flag(FLAG_PUZZLE_1_DONE)) {
+		call(Puzzle_BlockPushing_OpenBlueDoors)
+	}
+	if (flag(FLAG_PUZZLE_2_DONE)) {
+		call(Puzzle_BlockPushing_OpenRedDoors)
+	}
+	if (flag(FLAG_PUZZLE_3_DONE)) {
+		call(Puzzle_BlockPushing_CloseYellowFloor)
+	}
+}
+
+script(local) Puzzle_BlockPushing_OpenBlueDoors {
+	setmetatile(4, 2, METATILE_TrickHousePuzzle_BlueDoorV_Open0, TRUE)
+	setmetatile(4, 3, METATILE_TrickHousePuzzle_BlueDoorV_Open1, FALSE)
+	setmetatile(4, 4, 0x21E, FALSE)
+}
+script(local) Puzzle_BlockPushing_OpenRedDoors {
+	setmetatile(3, 2, METATILE_TrickHousePuzzle_RedDoorV_Open0, TRUE)
+	setmetatile(3, 3, METATILE_TrickHousePuzzle_RedDoorV_Open1, FALSE)
+	setmetatile(3, 4, 0x21E, FALSE)
+}
+script(local) Puzzle_BlockPushing_CloseYellowFloor {
+	setmetatile(23, 19, METATILE_TrickHousePuzzle_Door_Shuttered, FALSE)
+	setmetatile(24, 19, METATILE_TrickHousePuzzle_Door_Shuttered, FALSE)
+}
+
+script(local) Puzzle_BlockPushing_CheckPuzzleSolved1 {
+	setvar(VAR_STEP_TRIGGER, 0)
+	callnative(CountBlockPushingBoulders)
+	goto_if_ne(VAR_RESULT, 5, Common_EventScript_ReleaseEnd)
+	
+	playse(SE_DING_DONG)
+	setflag(FLAG_PUZZLE_1_DONE)
+	removeobject(7)
+	removeobject(8)
+	removeobject(9)
+	removeobject(10)
+	removeobject(11)
+}
+
+script(local) Puzzle_BlockPushing_CheckPuzzleSolved2 {
+	setvar(VAR_STEP_TRIGGER, 0)
+	callnative(CountBlockPushingBoulders)
+	goto_if_ne(VAR_RESULT, 6, Common_EventScript_ReleaseEnd)
+	
+	playse(SE_DING_DONG)
+	setflag(FLAG_PUZZLE_2_DONE)
+	removeobject(1)
+	removeobject(2)
+	removeobject(3)
+	removeobject(4)
+	removeobject(5)
+	removeobject(6)
+}
+
+script(local) Puzzle_BlockPushing_CheckPuzzleSolved3 {
+	setvar(VAR_STEP_TRIGGER, 0)
+	callnative(CountBlockPushingBoulders)
+	goto_if_ne(VAR_RESULT, 4, Common_EventScript_ReleaseEnd)
+	
+	playse(SE_DING_DONG)
+	setflag(FLAG_PUZZLE_3_DONE)
+	removeobject(12)
+	removeobject(13)
+	removeobject(14)
+	removeobject(15)
+	call(Puzzle_BlockPushing_CloseYellowFloor)
+	special(DrawWholeMapView)
+}
+
+raw `
+#undef FLAG_PUZZLE_1_DONE
+#undef FLAG_PUZZLE_2_DONE
+#undef FLAG_PUZZLE_3_DONE
 `

@@ -2,8 +2,8 @@
   "id": "MAP_PUZZLE_BLOCK_PUSHING",
   "name": "Puzzle_BlockPushing",
   "layout": "LAYOUT_PUZZLE_BLOCK_PUSHING",
-  "music": "MUS_ABANDONED_SHIP",
-  "region_map_section": "MAPSEC_ROUTE_110",
+  "music": "MUS_HG_CIANWOOD",
+  "region_map_section": "MAPSEC_DEWFORD_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
   "map_type": "MAP_TYPE_INDOOR",
@@ -23,9 +23,9 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_PUZZLE_22"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
@@ -36,9 +36,9 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_PUZZLE_22"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
@@ -49,9 +49,9 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_PUZZLE_22"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
@@ -62,9 +62,9 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_PUZZLE_22"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
@@ -75,9 +75,9 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_PUZZLE_22"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
@@ -88,9 +88,9 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "2",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_PUZZLE_22"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
@@ -101,9 +101,9 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_PUZZLE_21"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
@@ -114,9 +114,9 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_PUZZLE_21"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
@@ -127,9 +127,9 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_PUZZLE_21"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
@@ -140,9 +140,9 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_PUZZLE_21"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
@@ -153,9 +153,9 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_PUZZLE_21"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
@@ -166,9 +166,9 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_PUZZLE_23"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
@@ -179,9 +179,9 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_PUZZLE_23"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
@@ -192,9 +192,9 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_PUZZLE_23"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
@@ -205,9 +205,9 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "0",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_PUZZLE_23"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
@@ -219,8 +219,21 @@
       "movement_range_y": 0,
       "trainer_type": "0",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "PuzzleCommon_EventScript_Scroll",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 0,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_CandyAbundant",
+      "flag": "FLAG_CANDY_ABUNDANT_01"
     }
   ],
   "warp_events": [
@@ -243,69 +256,249 @@
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_PUZZLE_BLOCK_PUSHING",
-      "dest_warp_id": 0
+      "dest_warp_id": 9
     },
     {
       "x": 6,
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_PUZZLE_BLOCK_PUSHING",
-      "dest_warp_id": 0
+      "dest_warp_id": 5
     },
     {
       "x": 1,
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_PUZZLE_BLOCK_PUSHING",
-      "dest_warp_id": 0
+      "dest_warp_id": 7
     },
     {
       "x": 2,
       "y": 20,
       "elevation": 0,
       "dest_map": "MAP_PUZZLE_BLOCK_PUSHING",
-      "dest_warp_id": 0
+      "dest_warp_id": 3
     },
     {
       "x": 3,
       "y": 20,
       "elevation": 0,
       "dest_map": "MAP_PUZZLE_BLOCK_PUSHING",
-      "dest_warp_id": 0
+      "dest_warp_id": 3
     },
     {
       "x": 18,
       "y": 19,
       "elevation": 0,
       "dest_map": "MAP_PUZZLE_BLOCK_PUSHING",
-      "dest_warp_id": 0
+      "dest_warp_id": 4
     },
     {
       "x": 19,
       "y": 19,
       "elevation": 0,
       "dest_map": "MAP_PUZZLE_BLOCK_PUSHING",
-      "dest_warp_id": 0
+      "dest_warp_id": 4
     },
     {
       "x": 23,
       "y": 7,
       "elevation": 0,
       "dest_map": "MAP_PUZZLE_BLOCK_PUSHING",
-      "dest_warp_id": 0
+      "dest_warp_id": 2
     },
     {
       "x": 24,
       "y": 7,
       "elevation": 0,
       "dest_map": "MAP_PUZZLE_BLOCK_PUSHING",
-      "dest_warp_id": 0
+      "dest_warp_id": 2
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 26,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_STEP_TRIGGER",
+      "var_value": "1",
+      "script": "NULL",
+      "npcTrigger": "TRUE"
+    },
+    {
+      "type": "trigger",
+      "x": 27,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_STEP_TRIGGER",
+      "var_value": "1",
+      "script": "NULL",
+      "npcTrigger": "TRUE"
+    },
+    {
+      "type": "trigger",
+      "x": 27,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_STEP_TRIGGER",
+      "var_value": "1",
+      "script": "NULL",
+      "npcTrigger": "TRUE"
+    },
+    {
+      "type": "trigger",
+      "x": 28,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_STEP_TRIGGER",
+      "var_value": "1",
+      "script": "NULL",
+      "npcTrigger": "TRUE"
+    },
+    {
+      "type": "trigger",
+      "x": 28,
+      "y": 5,
+      "elevation": 0,
+      "var": "VAR_STEP_TRIGGER",
+      "var_value": "1",
+      "script": "NULL",
+      "npcTrigger": "TRUE"
+    },
+    {
+      "type": "trigger",
+      "x": 3,
+      "y": 16,
+      "elevation": 0,
+      "var": "VAR_STEP_TRIGGER",
+      "var_value": "2",
+      "script": "NULL",
+      "npcTrigger": "TRUE"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 16,
+      "elevation": 0,
+      "var": "VAR_STEP_TRIGGER",
+      "var_value": "2",
+      "script": "NULL",
+      "npcTrigger": "TRUE"
+    },
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 16,
+      "elevation": 0,
+      "var": "VAR_STEP_TRIGGER",
+      "var_value": "2",
+      "script": "NULL",
+      "npcTrigger": "TRUE"
+    },
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_STEP_TRIGGER",
+      "var_value": "2",
+      "script": "NULL",
+      "npcTrigger": "TRUE"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_STEP_TRIGGER",
+      "var_value": "2",
+      "script": "NULL",
+      "npcTrigger": "TRUE"
+    },
+    {
+      "type": "trigger",
+      "x": 3,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_STEP_TRIGGER",
+      "var_value": "2",
+      "script": "NULL",
+      "npcTrigger": "TRUE"
+    },
+    {
+      "type": "trigger",
+      "x": 19,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_STEP_TRIGGER",
+      "var_value": "3",
+      "script": "NULL",
+      "npcTrigger": "TRUE"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_STEP_TRIGGER",
+      "var_value": "3",
+      "script": "NULL",
+      "npcTrigger": "TRUE"
+    },
+    {
+      "type": "trigger",
+      "x": 21,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_STEP_TRIGGER",
+      "var_value": "3",
+      "script": "NULL",
+      "npcTrigger": "TRUE"
+    },
+    {
+      "type": "trigger",
+      "x": 22,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_STEP_TRIGGER",
+      "var_value": "3",
+      "script": "NULL",
+      "npcTrigger": "TRUE"
+    }
   ],
   "bg_events": [
-
+    {
+      "type": "hidden_item",
+      "x": 3,
+      "y": 19,
+      "elevation": 3,
+      "item": "ITEM_TABLE_CANDY_COMMON",
+      "flag": "FLAG_CANDY_COMMON_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 16,
+      "y": 18,
+      "elevation": 3,
+      "item": "ITEM_TABLE_CANDY_COMMON",
+      "flag": "FLAG_CANDY_COMMON_02"
+    },
+    {
+      "type": "hidden_item",
+      "x": 25,
+      "y": 19,
+      "elevation": 3,
+      "item": "ITEM_TABLE_CANDY_HEALTHY",
+      "flag": "FLAG_CANDY_HEALTHY_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 25,
+      "y": 2,
+      "elevation": 3,
+      "item": "ITEM_TABLE_CANDY_UNCOMMON",
+      "flag": "FLAG_CANDY_UNCOMMON_01"
+    }
   ]
 }

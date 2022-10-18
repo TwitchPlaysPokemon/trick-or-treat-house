@@ -890,8 +890,8 @@ extern const u8 Puzzle_TwinMemories_Configs[][6];
 extern const u8 Puzzle_TwinMemories_ConfigCount;
 
 void CountTwinMemoriesBoulders(struct ScriptContext *ctx) {
-	s16 o, i;
-	s16 xbase = 0, ybase = 0, x, y;
+	int o, i;
+	int xbase = 0, ybase = 0, x, y;
 	struct ObjectEvent *objectEvent = NULL;
 	struct CoordEvent *coordEvent = NULL;
 	const u8 *currConfig;
@@ -927,8 +927,8 @@ void CountTwinMemoriesBoulders(struct ScriptContext *ctx) {
 }
 
 void SetupTwinMemoriesBoulders(struct ScriptContext *ctx) {
-	s16 o, i;
-	s16 xbase, ybase, x, y;
+	int o, i;
+	int xbase, ybase, x, y;
 	struct ObjectEvent *objectEvent = NULL;
 	const u8 *currConfig;
 	
@@ -953,6 +953,42 @@ void SetupTwinMemoriesBoulders(struct ScriptContext *ctx) {
 		}
 	}
 	gSpecialVar_LastErrorNo = 0;
+}
+
+#pragma endregion
+///////////////////////////////////////////////////////////////////////////////
+#pragma region // Puzzle: Block Pushing
+// MAP_PUZZLE_BLOCK_PUSHING
+
+void CountBlockPushingBoulders(struct ScriptContext *ctx) {
+	int o, i;
+	int x, y;
+	struct ObjectEvent *objectEvent = NULL;
+	struct CoordEvent *coordEvent = NULL;
+	const u8 *currConfig;
+	
+	gSpecialVar_Result = 0;
+	
+	for (o = 0; o < OBJECT_EVENTS_COUNT; o++) {
+		objectEvent = &gObjectEvents[o];
+		if (objectEvent->isPlayer) continue;
+		if (!objectEvent->active) continue;
+		if (objectEvent->graphicsId != OBJ_EVENT_GFX_PUSHABLE_BOULDER) continue;
+		if (!objectEvent->isStandingOnTrigger) continue;
+		
+		x = (objectEvent->currentCoords.x - MAP_OFFSET);
+		y = (objectEvent->currentCoords.y - MAP_OFFSET);
+		
+		for (i = 0; i < gMapHeader.events->coordEventCount; i++) {
+			struct CoordEvent* bge = &gMapHeader.events->coordEvents[i];
+			if (bge->x == x && bge->y == y) {
+				if (bge->index == objectEvent->trainerRange_berryTreeId) {
+					gSpecialVar_Result++;
+					continue;
+				}
+			}
+		}
+	}
 }
 
 #pragma endregion

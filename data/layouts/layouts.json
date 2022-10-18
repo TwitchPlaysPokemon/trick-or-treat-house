@@ -2201,7 +2201,7 @@
       "id": "LAYOUT_PUZZLE_BLOCK_PUSHING",
       "name": "Puzzle_BlockPushing_Layout",
       "width": 30,
-      "height": 30,
+      "height": 21,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building",

@@ -42,6 +42,7 @@ gPuzzleList::                                           @ Puzzle Type(s)
     .2byte MAP_PUZZLE_ELITE_FLOOR                       @  MOVEMENT/MAZE
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL7             @  BATTLE/MAZE (Double Battles)
     .2byte MAP_PUZZLE_WATER_TEMPLE                      @  LOGIC/MAZE
+    .2byte MAP_PUZZLE_BLOCK_PUSHING                     @  MOVEMENT
     .2byte MAP_PUZZLE_TRAINER_HILL4                     @  BATTLE/MAZE
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL8             @  BATTLE/MOVEMENT (Ice Floor)
     .2byte MAP_PUZZLE_LOST_WOODS4_ENTRANCE              @  MAZE

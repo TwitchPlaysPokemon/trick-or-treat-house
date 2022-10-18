@@ -16,8 +16,8 @@ Known issues:
 
 
 Other Puzzles:
-- [ ] Block Pushing
-	- [ ] The map is already made. Wire it up and put it in.
+- [X] Block Pushing
+	- [X] The map is already made. Wire it up and put it in.
 - [ ] Dive Maze
 	- [ ] Make said maze
 - [ ] Subduction Zone
