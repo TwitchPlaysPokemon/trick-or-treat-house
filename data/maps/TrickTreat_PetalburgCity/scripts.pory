@@ -16,7 +16,7 @@ TrickTreat_PetalburgCity_MapScripts::
 TrickTreat_PetalburgCity_Name:
 	.string "Peppermints in Petalburg$"
 TrickTreat_PetalburgCity_Intro:
-	.string "{JOEY}: {PLAYER}! How's it going?\p"
+	.string "{PLAYER}! How's it going?\p"
 	.string "Oh, I'm not here to introduce a puzzle\n"
 	.string "or anything. How about a bit of a break?\p"
 	.string "See, me and the others figured out how\n"
@@ -27,12 +27,12 @@ TrickTreat_PetalburgCity_Intro:
 	.string "We're gonna go Trick or Treating there!\p"
 	.string "Com'on! It'll be fun!$"
 TrickTreat_PetalburgCity_Quip:
-	.string "{JOEY}: Apparently the TRICK MASTER\n"
+	.string "Apparently the TRICK MASTER\n"
 	.string "was too caught up in other people's\l"
 	.string "puzzles to notice our absence…\p"
 	.string "Time for more puzzles then!$"
 TrickTreat_PetalburgCity_Friend:
-	.string "{ALEX}: Hey, {PLAYER}. Was that gym\n"
+	.string "Hey, {PLAYER}. Was that gym\n"
 	.string "leader actually your dad?\p"
 	.string "Man, his SLAKING was tough as nails…\n"
 	.string "He's not that hard on you, is he?\p"

@@ -9,63 +9,11 @@
   "map_type": "MAP_TYPE_INDOOR",
   "allow_cycling": false,
   "allow_escaping": false,
-  "allow_running": false,
+  "allow_running": true,
   "show_map_name": false,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": 0,
   "object_events": [
-    {
-      "graphics_id": "OBJ_EVENT_GFX_TRICK_MASTER",
-      "x": 6,
-      "y": 2,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "TrickHouseEntrance_EventScript_TrickMaster",
-      "flag": "FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_HERO_OF_TIME",
-      "x": 11,
-      "y": 6,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "TrickHouseEntrance_EventScript_Link",
-      "flag": "FLAG_HIDE_TRICK_HOUSE_INTRO_CHARACTERS"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
-      "x": 10,
-      "y": 6,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "TrickHouseEntrance_EventScript_Joey",
-      "flag": "FLAG_HIDE_TRICK_HOUSE_INTRO_CHARACTERS"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_VAR_A",
-      "x": 6,
-      "y": 6,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "TrickHouseEntrance_EventScript_RivalA",
-      "flag": "FLAG_HIDE_TRICK_HOUSE_INTRO_CHARACTERS"
-    },
     {
       "graphics_id": "OBJ_EVENT_GFX_WALLY",
       "x": 7,
@@ -80,30 +28,17 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_FAIRY_GIRL",
+      "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_SCROLL_ROOM",
       "x": 2,
-      "y": 4,
+      "y": 3,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "TrickHouseEntrance_EventScript_Fairy",
-      "flag": "FLAG_HIDE_TRICK_HOUSE_INTRO_CHARACTERS"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_VAR_B",
-      "x": 3,
-      "y": 6,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "0",
+      "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "TrickHouseEntrance_EventScript_RivalB",
-      "flag": "FLAG_HIDE_TRICK_HOUSE_INTRO_CHARACTERS"
+      "script": "NULL",
+      "flag": "FLAG_ALWAYS_TRUE"
     }
   ],
   "warp_events": [

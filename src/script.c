@@ -304,7 +304,27 @@ u8 *MapHeaderGetScriptTableForMapId(u16 mapid, u8 tag)
         if (*mapScripts == tag)
         {
             mapScripts++;
-            return (u8 *)(mapScripts[0] + (mapScripts[1] << 8) + (mapScripts[2] << 16) + (mapScripts[3] << 24));
+            return T2_READ_PTR(mapScripts);
+        }
+        mapScripts += 5;
+    }
+}
+
+u8 *MapHeaderGetScriptTableForDestinationMap(u8 tag)
+{
+    const u8 *mapScripts = GetDestinationWarpMapHeader()->mapScripts;
+
+    if (!mapScripts)
+        return NULL;
+
+    while (1)
+    {
+        if (!*mapScripts)
+            return NULL;
+        if (*mapScripts == tag)
+        {
+            mapScripts++;
+            return T2_READ_PTR(mapScripts);
         }
         mapScripts += 5;
     }
@@ -401,6 +421,13 @@ void RunOnReturnToFieldMapScript(void)
 void RunOnDiveWarpMapScript(void)
 {
     MapHeaderRunScriptType(MAP_SCRIPT_ON_DIVE_WARP);
+}
+
+void RunOnAboutToWarpMapScript(void)
+{
+    u8 *ptr = MapHeaderGetScriptTableForDestinationMap( MAP_SCRIPT_ON_ABOUT_TO_WARP);
+    if (ptr)
+        RunScriptImmediately(ptr);
 }
 
 void RunOnSpawnObjectEventMapScript(u8 objId)

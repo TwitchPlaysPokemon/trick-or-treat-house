@@ -587,6 +587,10 @@ const struct MapLayout *GetMapLayout(void)
 void ApplyCurrentWarp(void)
 {
     gLastUsedWarp = gSaveBlock1Ptr->location;
+    gSaveBlock1Ptr->location = sWarpDestination; // for getplayerxy
+    gSpecialVar_LastWarpId = sWarpDestination.warpId; // for VAR_LAST_WARP_ID
+    RunOnAboutToWarpMapScript(); // No recursive script calling
+    
     gSaveBlock1Ptr->location = sWarpDestination;
     sFixedDiveWarp = sDummyWarpData;
     sFixedHoleWarp = sDummyWarpData;

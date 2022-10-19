@@ -42,10 +42,10 @@ script(local) Puzzle_FallingWater_OnPuzzleTeardown {
 	clearflag(FLAG_SYS_SLOW_SURF)
 }
 
-script(local) Puzzle_FallingWater_SlowSurfing {
+script Puzzle_FallingWater_SlowSurfing {
 	setflag(FLAG_SYS_SLOW_SURF)
 }
-script(local) Puzzle_FallingWater_RestoreSurfing {
+script Puzzle_FallingWater_RestoreSurfing {
 	clearflag(FLAG_SYS_SLOW_SURF)
 }
 

@@ -35,6 +35,8 @@
     x. ON_RETURN_TO_FIELD: Run exlusively upon returning to the field, shortly after ON_RESUME (as opposed to ON_RESUME, which also runs once on entering the map)
                            Used rarely, when something must only happen on reload (e.g. making sure Mew is above the grass after battling it on Faraway Island)
 
+    x. MAP_SCRIPT_ON_ABOUT_TO_WARP: Run in ApplyCurrentWarp right before the current warp is applied
+                                    Used to allow overriding the warp about to be warped into by using setwarp.
 */
 
 #define MAP_SCRIPT_ON_LOAD                      0x01
@@ -47,6 +49,7 @@
 #define MAP_SCRIPT_ON_SPAWN_OBJECT_EVENT        0x08
 #define MAP_SCRIPT_ON_PLAY_MAP_MUSIC            0x09
 #define MAP_SCRIPT_ON_UNLOAD                    0x0A
+#define MAP_SCRIPT_ON_ABOUT_TO_WARP             0x0B
 
 #define MAP_SCRIPT_PUZZLE_HEADER_NAME           0x20
 #define MAP_SCRIPT_PUZZLE_HEADER_AUTHOR         0x21

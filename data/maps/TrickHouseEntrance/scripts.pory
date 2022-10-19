@@ -9,315 +9,58 @@ raw `
 #define LID_LINK 2
 `
 mapscripts TrickHouseEntrance_MapScripts {
-	MAP_SCRIPT_ON_FRAME_TABLE [
-		VAR_INTRO_COUNTER, 2: TrickHouseEntrance_WalkInCutscene
-		VAR_INTRO_COUNTER, 4: TrickHouseEntrance_IntroCutscene
-	]
-	MAP_SCRIPT_ON_LOAD {
-		switch (var(VAR_INTRO_COUNTER)) {
-			case 2:
-			case 3:
-				setmetatile (5, 1, 0x20B, TRUE) // Close scroll door
-				setobjectmovementtype (1, MOVEMENT_TYPE_INVISIBLE)
+	// MAP_SCRIPT_ON_FRAME_TABLE [
+	// 	VAR_INTRO_COUNTER, 2: TrickHouseEntrance_WalkInCutscene
+	// 	VAR_INTRO_COUNTER, 4: TrickHouseEntrance_IntroCutscene
+	// ]
+	// MAP_SCRIPT_ON_LOAD {
+	// 	switch (var(VAR_INTRO_COUNTER)) {
+	// 		case 2:
+	// 		case 3:
+	// 			setmetatile (5, 1, 0x20B, TRUE) // Close scroll door
+	// 			setobjectmovementtype (1, MOVEMENT_TYPE_INVISIBLE)
+	// 	}
+	// }
+	// MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
+	// 	VAR_INTRO_COUNTER, 2: TrickHouseEntrance_OnWarp_Setup
+	// 	VAR_INTRO_COUNTER, 3: TrickHouseEntrance_OnWarp_Setup
+	// 	VAR_INTRO_COUNTER, 4 {
+	// 		addobject (LID_MASTER)
+	// 		setobjectxy(LID_MASTER, 5, 2)   turnobject(LID_MASTER, DIR_SOUTH)
+	// 		setobjectxy(LID_LINK,   3, 3)   turnobject(LID_LINK,   DIR_EAST)
+	// 		setobjectxy(LID_JOEY,   3, 4)   turnobject(LID_JOEY,   DIR_NORTH)
+	// 		setobjectxy(LID_WALLY,  7, 4)   turnobject(LID_WALLY,  DIR_NORTH)
+	// 		setobjectxy(LID_FAIRY,  7, 3)   turnobject(LID_FAIRY,  DIR_WEST)
+	// 		setobjectxy(LID_RIVAL,  4, 4)   turnobject(LID_RIVAL,  DIR_NORTH)
+	// 		setobjectxy(LID_RIVALB, 6, 4)   turnobject(LID_RIVALB, DIR_NORTH)
+	// 		turnobject(LID_PLAYER, DIR_NORTH)
+	// 	}
+	// ]
+	// MAP_SCRIPT_ON_TRANSITION {
+	// 	if (var(VAR_INTRO_COUNTER) < 4) {
+	// 		setmaplayout(LAYOUT_TRICK_HOUSE_ENTRANCE_INTRO)
+	// 	}
+	// 	checkplayergender
+	// 	switch(var(VAR_RESULT)) {
+	// 		case GENDER_M:
+	// 			setvar (VAR_OBJ_GFX_ID_A, TTH_FRIEND_ALEX)
+	// 			setvar (VAR_OBJ_GFX_ID_B, TTH_FRIEND_MAY)
+	// 		case GENDER_F:
+	// 			setvar (VAR_OBJ_GFX_ID_A, TTH_FRIEND_BRENDAN)
+	// 			setvar (VAR_OBJ_GFX_ID_B, TTH_FRIEND_ALEX)
+	// 		case GENDER_N:
+	// 			setvar (VAR_OBJ_GFX_ID_A, TTH_FRIEND_BRENDAN)
+	// 			setvar (VAR_OBJ_GFX_ID_B, TTH_FRIEND_MAY)
+	// 	}
+	// }
+	MAP_SCRIPT_ON_ABOUT_TO_WARP {
+		if (var(VAR_INTRO_COUNTER) <= 4) {
+			// Redirect the warp to the intro map
+			setwarp(WARPTYPE_STANDARD, MAP_TRICK_HOUSE_ENTRANCE_INTRO, 0)
 		}
 	}
-	MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
-		VAR_INTRO_COUNTER, 2: TrickHouseEntrance_OnWarp_Setup
-		VAR_INTRO_COUNTER, 3: TrickHouseEntrance_OnWarp_Setup
-		VAR_INTRO_COUNTER, 4 {
-			addobject (LID_MASTER)
-			setobjectxy(LID_MASTER, 5, 2)   turnobject(LID_MASTER, DIR_SOUTH)
-			setobjectxy(LID_LINK,   3, 3)   turnobject(LID_LINK,   DIR_EAST)
-			setobjectxy(LID_JOEY,   3, 4)   turnobject(LID_JOEY,   DIR_NORTH)
-			setobjectxy(LID_WALLY,  7, 4)   turnobject(LID_WALLY,  DIR_NORTH)
-			setobjectxy(LID_FAIRY,  7, 3)   turnobject(LID_FAIRY,  DIR_WEST)
-			setobjectxy(LID_RIVAL,  4, 4)   turnobject(LID_RIVAL,  DIR_NORTH)
-			setobjectxy(LID_RIVALB, 6, 4)   turnobject(LID_RIVALB, DIR_NORTH)
-			turnobject(LID_PLAYER, DIR_NORTH)
-		}
-	]
-	MAP_SCRIPT_ON_TRANSITION {
-		if (var(VAR_INTRO_COUNTER) < 4) {
-			setmaplayout(LAYOUT_TRICK_HOUSE_ENTRANCE_INTRO)
-		}
-		checkplayergender
-		switch(var(VAR_RESULT)) {
-			case GENDER_M:
-				setvar (VAR_OBJ_GFX_ID_A, TTH_FRIEND_ALEX)
-				setvar (VAR_OBJ_GFX_ID_B, TTH_FRIEND_MAY)
-			case GENDER_F:
-				setvar (VAR_OBJ_GFX_ID_A, TTH_FRIEND_BRENDAN)
-				setvar (VAR_OBJ_GFX_ID_B, TTH_FRIEND_ALEX)
-			case GENDER_N:
-				setvar (VAR_OBJ_GFX_ID_A, TTH_FRIEND_BRENDAN)
-				setvar (VAR_OBJ_GFX_ID_B, TTH_FRIEND_MAY)
-		}
-	}
 }
 
-script(local) TrickHouseEntrance_OnWarp_Setup {
-	loadarg(0, 6)
-	callnative (GetTrainerIDMod)
-	setobjectmovementtype (1, MOVEMENT_TYPE_INVISIBLE)
-	addobject (1)
-	switch (var(VAR_RESULT)) {
-		case 0:  setobjectxy (LID_MASTER,11, 1) // Cabinet on right
-		case 1:  setobjectxy (LID_MASTER,11, 5) // Plant on right
-		case 2:  setobjectxy (LID_MASTER, 0, 5) // Plant on left
-		case 3:  setobjectxy (LID_MASTER, 6, 3) // Under table TR
-		case 4:  setobjectxy (LID_MASTER, 4, 4) // Under cushion BL
-		case 5:  setobjectxy (LID_MASTER, 3, 1) // Window on left
-		default: setobjectxy (LID_MASTER, 8, 1) // Window on right
-	}
-	copyobjectxytoperm(LID_MASTER)
-	setobjectxy(LID_WALLY, 4, 7)   turnobject(LID_WALLY, DIR_NORTH)
-}
-
-script TrickHouseEntrance_WalkInCutscene {
-	lock
-	applymovement (LID_PLAYER, Common_Movement_WalkUp1)
-	waitmovement (0)
-	msgbox ("You're being watched…$")
-	// applymovement (LID_PLAYER, Common_Movement_WalkInPlaceRight)
-	// applymovement (LID_RIVAL, Common_Movement_WalkInPlaceLeft)
-	// waitmovement (0)
-	// msgbox ("{RIVAL}: You felt that too, right?\p"
-	// 		"I wonder if the guy who opened the door\n"
-	// 		"is hiding?$")
-	setvar (VAR_INTRO_COUNTER, 3)
-	release
-}
-
-script TrickHouseEntrance_IntroCutscene {
-	lockall
-	setstepcallback (STEP_CB_CYCLE_TEXT_PAL)
-	speakername_common(TRICK_MASTER)
-	msgbox (PuzzleCommon_Text_GameIntro, MSGBOX_SIGN)
-	setstepcallback (STEP_CB_DUMMY)
-	setvar (VAR_0x8000, 1)
-	call (PuzzleCommon_EventScript_WarpTrickMasterOut)
-	//
-	opendoor (5, 1)
-	delay(10)
-	applymovement (LID_FAIRY, Common_Movement_WalkInPlaceDown)
-	applymovement (LID_RIVAL, Common_Movement_WalkInPlaceLeft)
-	delay(4)
-	applymovement (LID_LINK, Common_Movement_WalkInPlaceDown)
-	applymovement (LID_JOEY, Common_Movement_WalkInPlaceUp)
-	delay(7)
-	applymovement (LID_RIVALB, Common_Movement_WalkInPlaceRight)
-	applymovement (LID_PLAYER, Common_Movement_WalkInPlaceLeft)
-	delay(5)
-	applymovement (LID_WALLY, Common_Movement_WalkInPlaceLeft)
-	delay(17)
-	applymovement (LID_RIVAL, Common_Movement_WalkInPlaceRight)
-	delay(6)
-	applymovement (LID_LINK, Common_Movement_WalkInPlaceRight)
-	applymovement (LID_JOEY, Common_Movement_WalkInPlaceRight)
-	delay(8)
-	applymovement (LID_RIVALB, Common_Movement_WalkInPlaceLeft)
-	delay(5)
-	applymovement (LID_WALLY, Common_Movement_WalkInPlaceUp)
-	applymovement (LID_PLAYER, Common_Movement_WalkInPlaceRight)
-	delay(4)
-	applymovement (LID_FAIRY, Common_Movement_WalkInPlaceLeft)
-	delay(17)
-	// Irene goes in
-	speakername_common(IRENE)
-	message("Puzzles? I'm all for that!\n"
-			"Let's go!$")
-	applymovement (LID_FAIRY, TrickHouseEntrance_Movement1_Fairy)
-	delay (6)
-	applymovement (LID_RIVALB, Common_Movement_WalkInPlaceUp)
-	applymovement (LID_PLAYER, Common_Movement_WalkInPlaceUp)
-	delay (8)
-	applymovement (LID_RIVAL, Common_Movement_WalkInPlaceUp)
-	applymovement (LID_JOEY, Common_Movement_WalkInPlaceRight)
-	applymovement (LID_WALLY, Common_Movement_WalkInPlaceUp)
-	delay (10)
-	applymovement (LID_LINK, Common_Movement_WalkInPlaceUp)
-	waitmessage
-	waitbuttonpress
-	playse (SE_SELECT)
-	//
-	applymovement (LID_FAIRY, TrickHouseEntrance_Movement2_Fairy)
-	applymovement (LID_WALLY, Common_Movement_WalkUp1)
-	speakername_common(WALLY)
-	msgbox ("{FAIRY}!$")
-	waitmovement (LID_FAIRY)
-	closemessage
-	//
-	delay (10)
-	applymovement (LID_LINK, TrickHouseEntrance_Movement1_Link)
-	delay (8)
-	applymovement (LID_WALLY, Common_Movement_WalkInPlaceDown)
-	speakername_common(LINK)
-	message("That TRICK guy said there was\n"
-			"candy to get, right?!\p"
-			"Yeah! I'm with {FAIRY}!\n"
-			"Coming, {YOUNGSTER}?$")
-	waitmessage
-	waitmovement(LID_LINK)
-	waitbuttonpress
-	playse (SE_SELECT)
-	//
-	applymovement (LID_LINK, TrickHouseEntrance_Movement2_Link)
-	applymovement (LID_JOEY, TrickHouseEntrance_Movement2_Joey)
-	speakername_common(JOEY)
-	message("Heck yeah, I'm in!{PAUSE 60}$")
-	waitmessage
-	closemessage
-	waitmovement(LID_LINK)
-	//waitmovement(LID_JOEY)
-	//
-	checkplayergender
-	switch(var(VAR_RESULT)) {
-		case GENDER_M:
-			// TODO: Alex steps forward and says it looks neat
-			// TODO: May asks if Brendan is coming and goes in after Alex
-			// setvar (VAR_OBJ_GFX_ID_A, TTH_FRIEND_ALEX)
-			// setvar (VAR_OBJ_GFX_ID_B, TTH_FRIEND_MAY)
-		case GENDER_F:
-			// TODO: Brendan steps forward, says it looks fun, possibly says something insensitive, runs in
-			// TODO: Alex sighs after him, saying that's not how that works, and asks if the player is coming
-			// setvar (VAR_OBJ_GFX_ID_A, TTH_FRIEND_BRENDAN)
-			// setvar (VAR_OBJ_GFX_ID_B, TTH_FRIEND_ALEX)
-		case GENDER_N:
-			// TODO: Brendan steps forward, says it looks fun, possibly says something insensitive, runs in
-			// TODO: May chides him as she goes after him.	
-			// setvar (VAR_OBJ_GFX_ID_A, TTH_FRIEND_BRENDAN)
-			// setvar (VAR_OBJ_GFX_ID_B, TTH_FRIEND_MAY)
-	}
-	
-	
-	applymovement (LID_WALLY, Common_Movement_WalkInPlaceDown)
-	waitmovement (0)
-	delay (10)
-	applymovement (LID_PLAYER, Common_Movement_WalkInPlaceLeft)
-	applymovement (LID_RIVAL, Common_Movement_WalkInPlaceLeft)
-	delay (20)
-	msgbox ("{WALLY}: I'll just hang out here,\n"
-			"I guess…$")
-	applymovement (LID_RIVAL, TrickHouseEntrance_Movement2_Rival)
-	msgbox ("{RIVAL}: Suit yourself…\n"
-			"C'mon, {PLAYER}! Let's go check this out!$")
-	waitmovement (LID_RIVAL)
-	closemessage
-	applymovement (LID_RIVAL, TrickHouseEntrance_Movement3_Rival)
-	applymovement (LID_PLAYER, TrickHouseEntrance_Movement3_Player)
-	waitmovement (LID_RIVAL)
-	waitmovement (LID_PLAYER)
-	closedoor (5, 1)
-	waitdooranim
-	// Cleanup
-	removeobject (LID_RIVAL)
-	removeobject (LID_JOEY)
-	removeobject (LID_FAIRY)
-	removeobject (LID_LINK)
-	setflag (FLAG_HIDE_TRICK_HOUSE_INTRO_CHARACTERS)
-	setvar (VAR_INTRO_COUNTER, 5)
-	releaseall
-}
-
-movement TrickHouseEntrance_Movement1_Fairy {
-	walk_up
-	walk_left * 2
-	walk_in_place_fast_down
-}
-movement TrickHouseEntrance_Movement2_Fairy {
-	walk_up
-	set_invisible
-}
-movement TrickHouseEntrance_Movement1_Link {
-	walk_up
-	walk_right
-	walk_in_place_fastest_down
-}
-movement TrickHouseEntrance_Movement2_Link {
-	delay_4
-	walk_in_place_fast_left
-	delay_16
-	walk_right
-	walk_up
-	set_invisible
-}
-movement TrickHouseEntrance_Movement2_Joey {
-	walk_up * 2
-	walk_right * 2
-	walk_up
-	set_invisible
-}
-movement TrickHouseEntrance_Movement2_RivalB {
-	walk_left * 2
-	walk_up * 4
-	walk_right
-	delay_16
-	walk_right
-	walk_up
-	set_invisible
-}
-movement TrickHouseEntrance_Movement2_Rival {
-	walk_down
-	walk_left * 2
-	walk_up
-}
-movement TrickHouseEntrance_Movement3_Rival {
-	walk_left
-	walk_up * 3
-	walk_right * 2
-	walk_up
-	set_invisible
-}
-movement TrickHouseEntrance_Movement3_Player {
-	delay_16 * 3
-	walk_in_place_fastest_up
-}
-
-///////////////////////////////////////////////////////
-
-script TrickHouseEntrance_EventScript_TrickMaster {
-	switch (var(VAR_INTRO_COUNTER)) {
-		case 3: goto (TrickHouseEntrance_EventScript_FindTrickMaster)
-	}
-}
-script TrickHouseEntrance_EventScript_FindTrickMaster {
-	lockall
-	loadarg(0, 6)
-	callnative (GetTrainerIDMod)
-	speakername_common(TRICK_MASTER)
-	switch (var(VAR_RESULT)) {
-		case 0: msgbox ("Hah? Girr…\p"
-				"How did you know I concealed myself\n"
-				"in this cupboard? You're sharp!$")
-		case 1: msgbox ("Hah? Girr…\p"
-				"How did you know I concealed myself\n"
-				"behind this tree? You're sharp!$")
-		case 2: msgbox ("Hah? Girr…\p"
-				"How did you know I concealed myself\n"
-				"in this planter? You're sharp!$")
-		case 3: msgbox ("Hah? Girr…\p"
-				"How did you know I concealed myself\n"
-				"beneath this desk? You're sharp!$")
-		case 4: msgbox ("Hah? Girr…\p"
-				"How did you know I concealed myself\n"
-				"beneath this cushion? You're sharp!$")
-		default: msgbox ("Hah? Girr…\p"
-				"How did you know I concealed myself\n"
-				"behind this window? You're sharp!$")
-	}
-	setvar (VAR_INTRO_COUNTER, 4)
-	warpsilent (MAP_TRICK_HOUSE_ENTRANCE, 5, 4)
-	waitstate
-	releaseall
-}
-
-raw `
-#undef LID_RIVAL
-#undef LID_JOEY
-#undef LID_FAIRY
-#undef LID_WALLY
-#undef LID_LINK
-`
 
 script TrickHouseEntrance_EventScript_ScrollDoor {
 	msgbox ("The scroll reads\n"
