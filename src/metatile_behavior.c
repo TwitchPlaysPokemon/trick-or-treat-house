@@ -884,8 +884,7 @@ bool8 MetatileBehavior_IsMountain(u8 metatileBehavior)
 
 bool8 MetatileBehavior_IsDiveable(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_SEMI_DEEP_WATER
-     || metatileBehavior == MB_DEEP_WATER
+    if (metatileBehavior == MB_DEEP_WATER
      || metatileBehavior == MB_SOOTOPOLIS_DEEP_WATER)
         return TRUE;
     else

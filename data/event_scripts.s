@@ -823,3 +823,5 @@ gText_LinkRecordCouldntBeSaved::
 	.include "data/maps/TestPyramidTileset/scripts.inc"
 
 	.include "data/maps/FinalBluff_Dive/scripts.inc"
+
+	.include "data/maps/MetaDiveMaze_Dive/scripts.inc"

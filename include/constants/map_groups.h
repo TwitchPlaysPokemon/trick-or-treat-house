@@ -87,6 +87,7 @@
 #define MAP_SOOTOPOLIS_GYM_B1F     (9 | (5 << 8))
 #define MAP_THIN_ICE_F2            (10 | (5 << 8))
 #define MAP_FINAL_BLUFF_DIVE       (11 | (5 << 8))
+#define MAP_META_DIVE_MAZE_DIVE    (12 | (5 << 8))
 
 // MG_ReferenceMaps
 #define MAP_PETALBURG_CITY           (0 | (6 << 8))
