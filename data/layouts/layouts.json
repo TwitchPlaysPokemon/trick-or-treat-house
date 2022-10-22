@@ -2649,7 +2649,7 @@
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_MetaTileset",
-      "secondary_tileset": "gTileset_Cave",
+      "secondary_tileset": "gTileset_Route110",
       "border_filepath": "data/layouts/Meta_DiveMaze/border.bin",
       "blockdata_filepath": "data/layouts/Meta_DiveMaze/map.bin"
     },
@@ -2688,6 +2688,18 @@
       "secondary_tileset": "gTileset_Underwater",
       "border_filepath": "data/layouts/FinalBluff_Dive/border.bin",
       "blockdata_filepath": "data/layouts/FinalBluff_Dive/map.bin"
+    },
+    {
+      "id": "LAYOUT_META_DIVE_MAZE_DIVE",
+      "name": "MetaDiveMaze_Dive_Layout",
+      "width": 40,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_MetaTileset",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/MetaDiveMaze_Dive/border.bin",
+      "blockdata_filepath": "data/layouts/MetaDiveMaze_Dive/map.bin"
     }
   ]
 }

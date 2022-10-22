@@ -99,7 +99,8 @@
     "DiveMaze_Underwater",
     "SootopolisGym_B1F",
     "ThinIce_F2",
-    "FinalBluff_Dive"
+    "FinalBluff_Dive",
+    "MetaDiveMaze_Dive"
   ],
   "MG_ReferenceMaps": [
     "PetalburgCity",
