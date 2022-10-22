@@ -67,73 +67,16 @@ script TrickHouseEntrance_EventScript_ScrollDoor {
 			"“The TRICK MASTER is the GREATEST!”", MSGBOX_SIGN)
 }
 
-script TrickHouseEntrance_EventScript_Link {
-	msgbox ("{JAMES}: Man, I don't see any him\n"
-			"around here.\p"
-			"We could be in the puzzles right now\n"
-			"hauling in the big dough!$", MSGBOX_NPC)
-}
-script TrickHouseEntrance_EventScript_Joey {
-	lock
-	msgbox ("{JOEY}: {JAMES}, chill!\p"
-			"We've got plenty of time to do the\n"
-			"trick house puzzles!$")
-	playse (SE_SELECT)
-	faceplayer
-	msgbox ("And people call ME the annoying one.\p"
-			"C'mon, I haven't talked about my\n"
-			"RATTATA in ten whole minutes!$")
-	closemessage
-	applymovement (THIS_EVENT, Common_Movement_FaceRight)
-	waitmovement (0)
-	release
-}
-script TrickHouseEntrance_EventScript_Fairy {
-	msgbox ("{FAIRY}: This place has been swept\n"
-			"clean recently, so it's not haunted.\p"
-			"Maybe someone's around…$", MSGBOX_NPC)
-}
-script TrickHouseEntrance_EventScript_RivalA {
-	checkplayergender
-	if (var(VAR_RESULT) == MALE) { // Rival A is Alex
-		goto(TrickHouseEntrance_EventScript_RivalAlex)
-	} else {
-	msgbox ("{BRENDAN}: Maybe we can find who's\n"
-			"watching us if we look around…\p"
-			"Don't worry: if anyone tries to steal\n"
-			"you away, you have us as backup.$", MSGBOX_NPC)
-	}
-}
-script TrickHouseEntrance_EventScript_RivalB {
-	checkplayergender
-	if (var(VAR_RESULT) == FEMALE) { // Rival B is Alex
-		goto(TrickHouseEntrance_EventScript_RivalAlex)
-	} else {
-	msgbox ("{MAY}: I wonder if the TRICK MASTER\n"
-			"is hiding in the same place this year…$", MSGBOX_NPC)
-	}
-}
-script(local) TrickHouseEntrance_EventScript_RivalAlex {
-	msgbox( "{ALEX}: Please tell me I'm not the only\n"
-			"on creeped out right now…$", MSGBOX_NPC)
-}
-
 script TrickHouseEntrance_EventScript_Wally {
 	lock
 	faceplayer
+	speakername_common(WALLY)
 	callnative (GetNumPuzzlesCompleted)
-	if (var(VAR_INTRO_COUNTER) < 5) {
-		msgbox ("{WALLY}: Well… the door didn't slam shut\n"
-				"and lock behind us…\p"
-				"So, we're not in danger… yet…\p"
-				"I'm gonna stay here next to the door,\n"
-				"just in case anyway…$")
-	} 
 	// The number completed should always be less than the current puzzle number
 	// during the first run
-	elif (var(VAR_RESULT) > VAR_CURRENT_PUZZLE) {
+	if (var(VAR_RESULT) > VAR_CURRENT_PUZZLE) {
 		buffernumberstring(0, VAR_RESULT)
-		msgbox ("{WALLY}: How many puzzles? {STR_VAR_1}?!\p"
+		msgbox ("How many puzzles? {STR_VAR_1}?!\p"
 				"But there aren't that many puzzles!\n"
 				"The TRICK MASTER told me!\p"
 				"Do you really like the puzzles so much\n"
@@ -141,24 +84,24 @@ script TrickHouseEntrance_EventScript_Wally {
 	}
 	elif (var(VAR_RESULT) > 9) {
 		buffernumberstring(0, VAR_RESULT)
-		msgbox ("{WALLY}: How many puzzles? {STR_VAR_1}?!\p"
+		msgbox ("How many puzzles? {STR_VAR_1}?!\p"
 				"No, I'm good here. I'll never catch up\n"
 				"to you guys at this point.$")
 	}
 	elif (var(VAR_RESULT) > 3) {
-		msgbox ("{WALLY}: Really? The guy actually has a\n"
+		msgbox ("Really? The guy actually has a\n"
 				"bunch of puzzles for you guys to do…?\p"
 				"N-No, I'm alright. I'll be here if you\n"
 				"guys end up getting lost somewhere…$")
 	}
 	elif (flag(FLAG_SYS_POKEMON_GET) == TRUE) {
-		msgbox ("{WALLY}: Oh, you've got RENTAL {POKEMON}?\n"
+		msgbox ("Oh, you've got RENTAL {POKEMON}?\n"
 				"Man, this event is sophisticated.\p"
 				"What? Me join in?\n"
 				"N-No, I think I'm alright.$")
 	}
 	else {
-		msgbox ("{WALLY}: I-I'll just be here…\n"
+		msgbox ("I-I'll just be here…\n"
 				"A-Alone…\p"
 				"My auntie wouldn't like me going into\n"
 				"strange men's puzzle dungeons…$")

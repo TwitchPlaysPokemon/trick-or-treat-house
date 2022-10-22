@@ -682,18 +682,24 @@ static const u8 *ExpandPlaceholder_FairyGirl(void)
 extern const u8 gText_ExpandedPlaceholder_Brendan[];
 static const u8 *ExpandPlaceholder_Brendan(void)
 {
+    if (gSaveBlock2Ptr->playerGender == GENDER_M)
+        return gSaveBlock2Ptr->playerName;
     return gText_ExpandedPlaceholder_Brendan;
 }
 
 extern const u8 gText_ExpandedPlaceholder_May[];
 static const u8 *ExpandPlaceholder_May(void)
 {
+    if (gSaveBlock2Ptr->playerGender == GENDER_F)
+        return gSaveBlock2Ptr->playerName;
     return gText_ExpandedPlaceholder_May;
 }
 
 extern const u8 gText_ExpandedPlaceholder_Alex[];
 static const u8 *ExpandPlaceholder_Alex(void)
 {
+    if (gSaveBlock2Ptr->playerGender == GENDER_N)
+        return gSaveBlock2Ptr->playerName;
     return gText_ExpandedPlaceholder_Alex;
 }
 

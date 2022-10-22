@@ -70,7 +70,7 @@ script(local) TrickHouseEntrance_OnWarp_Setup {
 		default: setobjectxy (LID_MASTER, 8, 1) // Window on right
 	}
 	copyobjectxytoperm(LID_MASTER)
-	setobjectxy(LID_WALLY, 4, 7)   turnobject(LID_WALLY, DIR_NORTH)
+	turnobject(LID_WALLY, DIR_NORTH)
 }
 
 
@@ -79,12 +79,18 @@ script TrickHouseEntrance_WalkInCutscene {
 	applymovement (LID_PLAYER, Common_Movement_WalkUp1)
 	waitmovement (0)
 	msgbox ("You're being watched…$")
-	// applymovement (LID_PLAYER, Common_Movement_WalkInPlaceRight)
-	// applymovement (LID_RIVAL, Common_Movement_WalkInPlaceLeft)
-	// waitmovement (0)
-	// msgbox ("{RIVAL}: You felt that too, right?\p"
-	// 		"I wonder if the guy who opened the door\n"
-	// 		"is hiding?$")
+	applymovement (LID_PLAYER, Common_Movement_WalkInPlaceLeft)
+	applymovement (LID_WALLY, Common_Movement_WalkInPlaceRight)
+	waitmovement (0)
+	speakername_common(WALLY)
+	msgbox ("Uhhhh, do we have to be here?\n"
+			"I don't like this place!\p"
+			"I'm sticking close to you.$")
+	// Setup follower
+	setfollower(LID_WALLY, FOLLOWER_FLAG_CAN_LEAVE_ROUTE, TrickHouseEntrance_FollowerScript_Wally)
+	setvar(VAR_FOLLOWER_STATE, 0)
+	setvar(VAR_FOLLOWER_IDENTITY, FOLLOWER_ID_WALLY)
+	
 	setvar (VAR_INTRO_COUNTER, 3)
 	release
 }
@@ -176,45 +182,106 @@ script TrickHouseEntrance_IntroCutscene {
 		case GENDER_M:
 			// TODO: Alex steps forward and says it looks neat
 			// TODO: May asks if Brendan is coming and goes in after Alex
-			// setvar (VAR_OBJ_GFX_ID_A, TTH_FRIEND_ALEX)
-			// setvar (VAR_OBJ_GFX_ID_B, TTH_FRIEND_MAY)
+			speakername_common(ALEX)
+			message("If {IRENE}'s in, I'm in.\n"
+					"She loves weird things like this.$")
+			applymovement(LID_RIVAL, TrickHouseEntrance_Movement3_Rival)
+			waitmessage
+			waitmovement(LID_RIVAL)
+			waitbuttonpress
+			playse (SE_SELECT)
+			
+			speakername_common(MAY)
+			message("Yeah, this sounds fun!\n"
+					"Coming {PLAYER}?$")
+			applymovement(LID_RIVALB, TrickHouseEntrance_Movement3_Rival)
+			waitmessage
+			waitmovement(LID_RIVALB)
+			waitbuttonpress
+			closemessage
+			
+			applymovement(LID_RIVALB, Common_Movement_FaceLeft)
+			applymovement(LID_RIVAL, TrickHouseEntrance_Movement4_RivalA)
+			waitmovement(LID_RIVAL)
+			applymovement(LID_RIVALB, TrickHouseEntrance_Movement4_RivalB)
+			waitmovement(LID_RIVALB)
+			
 		case GENDER_F:
 			// TODO: Brendan steps forward, says it looks fun, possibly says something insensitive, runs in
 			// TODO: Alex sighs after him, saying that's not how that works, and asks if the player is coming
-			// setvar (VAR_OBJ_GFX_ID_A, TTH_FRIEND_BRENDAN)
-			// setvar (VAR_OBJ_GFX_ID_B, TTH_FRIEND_ALEX)
+			speakername_common(BRENDAN)
+			message("This sound like a blast! Come on, guys!\n"
+					"Uh… A-And 'theys'…? {ALEX}…{PAUSE 30} Uh…$")
+			applymovement(LID_RIVAL, TrickHouseEntrance_Movement3_Rival)
+			waitmessage
+			waitmovement(LID_RIVAL)
+			waitbuttonpress
+			playse (SE_SELECT)
+			
+			speakername_common(ALEX)
+			message("{BRENDAN}, 'Guys' is gender neutral…\n"
+					"Sigh… He tries…\p"
+					"Com'on, Cuz'.\n"
+					"Don't dally too far behind!$")
+			applymovement(LID_RIVALB, TrickHouseEntrance_Movement3_Rival)
+			applymovement(LID_RIVAL, TrickHouseEntrance_Movement4_RivalA)
+			waitmessage
+			waitmovement(LID_RIVAL)
+			waitmovement(LID_RIVALB)
+			waitbuttonpress
+			closemessage
+			
+			applymovement(LID_RIVALB, TrickHouseEntrance_Movement4_RivalB)
+			waitmovement(LID_RIVALB)
+			
 		case GENDER_N:
 			// TODO: Brendan steps forward, says it looks fun, possibly says something insensitive, runs in
-			// TODO: May chides him as she goes after him.	
-			// setvar (VAR_OBJ_GFX_ID_A, TTH_FRIEND_BRENDAN)
-			// setvar (VAR_OBJ_GFX_ID_B, TTH_FRIEND_MAY)
+			// TODO: May chides him as she goes after him.
+			// TODO: Brendan steps forward, says it looks fun, possibly says something insensitive, runs in
+			// TODO: Alex sighs after him, saying that's not how that works, and asks if the player is coming
+			speakername_common(BRENDAN)
+			message("This sound like a blast! Come on, guys!\n"
+					"Uh… A-And 'theys'…? {ALEX}…{PAUSE 30} Uh…$")
+			applymovement(LID_RIVAL, TrickHouseEntrance_Movement3_Rival)
+			waitmessage
+			waitmovement(LID_RIVAL)
+			waitbuttonpress
+			playse (SE_SELECT)
+			
+			speakername_common(MAY)
+			message("{BRENDAN}, it's not that… ugh…\p"
+					"I don't get it. Everyone else is fine\n"
+					"with it, but he's still awkward.\p"
+					"Anyway, come on, this looks fun!$")
+			applymovement(LID_RIVALB, TrickHouseEntrance_Movement3_Rival)
+			applymovement(LID_RIVAL, TrickHouseEntrance_Movement4_RivalA)
+			waitmessage
+			waitmovement(LID_RIVAL)
+			waitmovement(LID_RIVALB)
+			waitbuttonpress
+			closemessage
+			
+			applymovement(LID_RIVALB, TrickHouseEntrance_Movement4_RivalB)
+			waitmovement(LID_RIVALB)
 	}
-	
-	
-	applymovement (LID_WALLY, Common_Movement_WalkInPlaceDown)
-	waitmovement (0)
-	delay (10)
-	applymovement (LID_PLAYER, Common_Movement_WalkInPlaceLeft)
-	applymovement (LID_RIVAL, Common_Movement_WalkInPlaceLeft)
-	delay (20)
-	msgbox ("{WALLY}: I'll just hang out here,\n"
-			"I guess…$")
-	applymovement (LID_RIVAL, TrickHouseEntrance_Movement2_Rival)
-	msgbox ("{RIVAL}: Suit yourself…\n"
-			"C'mon, {PLAYER}! Let's go check this out!$")
-	waitmovement (LID_RIVAL)
-	closemessage
-	applymovement (LID_RIVAL, TrickHouseEntrance_Movement3_Rival)
-	applymovement (LID_PLAYER, TrickHouseEntrance_Movement3_Player)
-	waitmovement (LID_RIVAL)
-	waitmovement (LID_PLAYER)
 	closedoor (5, 1)
 	waitdooranim
+	
+	applymovement (LID_WALLY, Common_Movement_WalkDown1)
+	waitmovement (LID_WALLY)
+	delay (10)
+	applymovement (LID_PLAYER, Common_Movement_WalkInPlaceRight)
+	delay (20)
+	speakername_common(WALLY)
+	msgbox ("I'm… just hang out here, I guess…\p"
+			"You go if you want. I don't really want to\n"
+			"get in the way…$")
 	// Cleanup
 	removeobject (LID_RIVAL)
 	removeobject (LID_JOEY)
 	removeobject (LID_FAIRY)
 	removeobject (LID_LINK)
+	removeobject (LID_RIVALB)
 	setflag (FLAG_HIDE_TRICK_HOUSE_INTRO_CHARACTERS)
 	setvar (VAR_INTRO_COUNTER, 5)
 	releaseall
@@ -248,30 +315,20 @@ movement TrickHouseEntrance_Movement2_Joey {
 	walk_up
 	set_invisible
 }
-movement TrickHouseEntrance_Movement2_RivalB {
-	walk_left * 2
-	walk_up * 4
-	walk_right
-	delay_16
-	walk_right
-	walk_up
-	set_invisible
-}
-movement TrickHouseEntrance_Movement2_Rival {
-	walk_down
-	walk_left * 2
-	walk_up
-}
+
 movement TrickHouseEntrance_Movement3_Rival {
-	walk_left
-	walk_up * 3
-	walk_right * 2
+	walk_up * 2
+	face_down
+}
+movement TrickHouseEntrance_Movement4_RivalA {
+	walk_right
 	walk_up
 	set_invisible
 }
-movement TrickHouseEntrance_Movement3_Player {
-	delay_16 * 3
-	walk_in_place_fastest_up
+movement TrickHouseEntrance_Movement4_RivalB {
+	walk_left
+	walk_up
+	set_invisible
 }
 
 ///////////////////////////////////////////////////////
@@ -307,7 +364,9 @@ script TrickHouseEntrance_EventScript_FindTrickMaster {
 				"behind this window? You're sharp!$")
 	}
 	setvar (VAR_INTRO_COUNTER, 4)
-	warpsilent (MAP_TRICK_HOUSE_ENTRANCE_INTRO, 5, 4)
+	fadescreen(FADE_TO_BLACK)
+	warpcustom (MAP_TRICK_HOUSE_ENTRANCE_INTRO, 5, 4)
+	destroyfollower
 	waitstate
 	releaseall
 }
@@ -319,3 +378,162 @@ raw `
 #undef LID_WALLY
 #undef LID_LINK
 `
+
+
+script TrickHouseEntrance_EventScript_Link {
+	speakername_common(JAMES)
+	msgbox ("Man, I don't see any candy\n"
+			"around here!\p"
+			"We could be in Slateport right now\n"
+			"hauling in the big dough!$", MSGBOX_NPC)
+}
+script TrickHouseEntrance_EventScript_Joey {
+	lock
+	speakername_common(JOEY)
+	message("{JAMES}, chill!\p"
+			"We've got plenty of time for more\n"
+			"trick-or-treating!\p$")
+	waitmessage
+	faceplayer
+	message("And people call ME the annoying one.\p"
+			"C'mon, I haven't talked about my\n"
+			"Rattata in a whole ten minutes!$")
+	waitmessage
+	waitbuttonpress
+	closemessage
+	applymovement (THIS_EVENT, Common_Movement_FaceRight)
+	waitmovement (0)
+	release
+}
+script TrickHouseEntrance_EventScript_Fairy {
+	checkplayergender
+	speakername_common(IRENE)
+	if (var(VAR_RESULT) == GENDER_N) {
+	msgbox ("Hey, Boo. What do you think?\n"
+			"This place looks swept clean.\p"
+			"Maybe there's someone here…?$", MSGBOX_NPC)
+	} else {
+	msgbox ("This place has been swept clean\n"
+			"recently, so it's not haunted.\p"
+			"Maybe someone's around…$", MSGBOX_NPC)
+	}
+}
+script TrickHouseEntrance_EventScript_RivalA {
+	checkplayergender
+	 // Rival A is Alex
+	goto_if_eq(VAR_RESULT, MALE, TrickHouseEntrance_EventScript_RivalAlex)
+	speakername_common(BRENDAN)
+	msgbox ("Maybe we can find who's watching\n"
+			"us if we look around…\p"
+			"{WALLY}, dude, it's fine. We're all\n"
+			"here. No one's gonna kidnap you.$", MSGBOX_NPC)
+}
+script TrickHouseEntrance_EventScript_RivalB {
+	checkplayergender
+	// Rival B is Alex
+	goto_if_eq(VAR_RESULT, FEMALE, TrickHouseEntrance_EventScript_RivalAlex)
+	speakername_common(MAY)
+	msgbox ("Could it be possible that the Trick\n"
+			"Master has returned from his trip?\p"
+			"I wonder what he's got up his sleeves\n"
+			"for us then.$", MSGBOX_NPC)
+}
+script(local) TrickHouseEntrance_EventScript_RivalAlex {
+	speakername_common(ALEX)
+	msgbox( "Please tell me I'm not the only\n"
+			"on creeped out right now…\p"
+			"Judging by the way {WALLY} is hanging\n"
+			"on, I'm guessing I'm not.\p"
+			"Makes me feel a little better.$", MSGBOX_NPC)
+}
+
+script TrickHouseEntrance_Intro_EventScript_Wally {
+	speakername_common(WALLY)
+	msgbox ("I-I'll just be here…\n"
+			"A-Alone…\p"
+			"My auntie wouldn't like me going into\n"
+			"strange men's puzzle dungeons…$", MSGBOX_NPC)
+}
+
+// ----------------------------------------------------
+
+script TrickHouseEntrance_FollowerScript_Wally {
+	lock
+	facefollower
+	speakername_common(WALLY)
+	callnative(GetCurrentMapId)
+	goto_if_eq(VAR_RESULT, MAP_TRICK_HOUSE_ENTRANCE, TrickHouseEntrance_FollowerScript_Wally_Entryway)
+	goto_if_eq(VAR_RESULT, MAP_TRICK_HOUSE_ENTRANCE_INTRO, TrickHouseEntrance_FollowerScript_Wally_Entryway)
+	goto_if_eq(VAR_RESULT, MAP_TRICK_HOUSE_EXT, TrickHouseEntrance_FollowerScript_Wally_Ext)
+	goto_if_eq(VAR_RESULT, MAP_TRICK_HOUSE_EXT_GATEHOUSE, TrickHouseEntrance_FollowerScript_Wally_Gatehouse)
+	goto_if_eq(VAR_RESULT, MAP_TRICK_HOUSE_TREE_HOUSE, TrickHouseEntrance_FollowerScript_Wally_Treehouse)
+	goto_if_eq(VAR_RESULT, MAP_FAKE_SECRET_BASE_CAVE, TrickHouseEntrance_FollowerScript_Wally_SecretBase)
+	
+	msgbox ("D-Don't mind me. I'm just…\n"
+			"S-Sticking close…$")
+	release
+}
+script TrickHouseEntrance_FollowerScript_Wally_Entryway {
+	msgbox ("I-I-I feel like someone's watching us…$")
+	release
+}
+script TrickHouseEntrance_FollowerScript_Wally_Ext {
+	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
+	if (flag(FLAG_FOLLOWER_FLAG_1) && !flag(FLAG_FOLLOWER_FLAG_2)) {
+		msgbox ("LET'S NEVER GOT BACK INTO THAT\n"
+				"GATEHOUSE EVER AGAIN, OKAY?!?!?!$")
+		setflag(FLAG_FOLLOWER_FLAG_2)
+	}
+	elif (var(VAR_INTERACT_X) < 23) {
+		msgbox ("What's that cave over there?\n"
+				"Do you see it?$")
+	}
+	elif (var(VAR_INTERACT_X) > 49) {
+		msgbox ("Uh, should we be out this far into\n"
+				"the grass?\p"
+				"Do YOU have {POKEMON} on you?\n"
+				"I don't wanna have to save you…$")
+	}
+	elif (var(VAR_INTERACT_Y) > 55) {
+		msgbox ("Are they playing card games?$")
+	}
+	elif (var(VAR_INTERACT_Y) > 38) {
+		msgbox ("Sweet! There's a tree house here now!$")
+	}
+	else {
+		msgbox ("It's so much nicer out here…\n"
+				"Can we just stay out here?$")
+	}
+	release
+}
+script TrickHouseEntrance_FollowerScript_Wally_Gatehouse {
+	setflag(FLAG_FOLLOWER_FLAG_1)
+	if (var(VAR_TEMP_0) == 1) {
+		speakername(NULL)
+		msgbox( "{WALLY}'s face is as pale as a sheet\n"
+				"of paper! He's vibrating violently!$")
+	}
+	elif (var(VAR_TEMP_0) == 2) {
+		speakername(NULL)
+		msgbox( "{WALLY} says something at you in such\n"
+				"a high pitched voice, you're sure\l"
+				"that only Zubat could understand him.$")
+	}
+	else {
+		msgbox ("No! Please no! Let's get out of here!\n"
+				"Now!! Please!!!$")
+	}
+	release
+}
+script TrickHouseEntrance_FollowerScript_Wally_Treehouse {
+	msgbox ("This is cozy.\p"
+			"Maybe I should just hang out here while\n"
+			"you guys visit the haunted trick house.$")
+	release
+}
+script TrickHouseEntrance_FollowerScript_Wally_SecretBase {
+	msgbox ("So, does that mean the Trick Master IS\n"
+			"back in Hoenn?$")
+	release
+}
+

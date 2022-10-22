@@ -483,6 +483,27 @@ Follower_MoveIntoPlayer::
 	loadarg 0, 1  @ forcefully reposition follower
 	callnative FollowerTrainerSightingPositionFix
 	return
+Follower_ClearAllFlagsAndVars::
+	setvar VAR_FOLLOWER_IDENTITY, FOLLOWER_ID_NONE
+	setvar VAR_FOLLOWER_STATE, 0
+	clearflag FLAG_FOLLOWER_FLAG_1
+	clearflag FLAG_FOLLOWER_FLAG_2
+	clearflag FLAG_FOLLOWER_FLAG_3
+	clearflag FLAG_FOLLOWER_FLAG_4
+	clearflag FLAG_FOLLOWER_FLAG_5
+	clearflag FLAG_FOLLOWER_FLAG_6
+	clearflag FLAG_FOLLOWER_FLAG_7
+	clearflag FLAG_FOLLOWER_FLAG_8
+	clearflag FLAG_FOLLOWER_FLAG_9
+	clearflag FLAG_FOLLOWER_FLAG_10
+	clearflag FLAG_FOLLOWER_FLAG_11
+	clearflag FLAG_FOLLOWER_FLAG_12
+	clearflag FLAG_FOLLOWER_FLAG_13
+	clearflag FLAG_FOLLOWER_FLAG_14
+	clearflag FLAG_FOLLOWER_FLAG_15
+	clearflag FLAG_FOLLOWER_FLAG_16
+	clearflag FLAG_FOLLOWER_FLAG_17
+	return
 	
 
 .align 2

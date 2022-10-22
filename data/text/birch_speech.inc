@@ -68,8 +68,17 @@ gText_Birch_RandomReplyNo::
 	.string "Ah, well. Maybe next year!\p"
 	.string "$"
 
-gText_Birch_AreYouReady:: @ 82C8C7A
-	.string "Oh! I think I hear my kid {RIVAL}\n"
+gText_Birch_AreYouReady_May::
+	.string "Oh! I think I hear your friend {BRENDAN}\n"
+	.string "calling for you, {PLAYER}.\p"
+	.string "Remember to have fun and grab as much\n"
+	.string "candy as you can carry in your bag!\p"
+	.string "I'll see you kids tonight when\n"
+	.string "you get back!\p"
+	.string "$"
+gText_Birch_AreYouReady_Brendan::
+gText_Birch_AreYouReady_Alex::
+	.string "Oh! I think I hear my kid {MAY}\n"
 	.string "calling for you, {PLAYER}.\p"
 	.string "Remember to have fun and grab as much\n"
 	.string "candy as you can carry in your bag!\p"

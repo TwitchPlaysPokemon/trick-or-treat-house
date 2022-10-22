@@ -20,14 +20,17 @@ raw `
 #define LID_MAY 6
 #define LID_ALEX 7
 #define LID_GHOST 8
+
+#define LID_TUSTIN 14
+#define LID_SKELETON 13
 `
 script Route110_Cutscene_SetupIntro {
 	setobjectxyperm(LID_JAMES, 17, 12)
 	setobjectxyperm(LID_GHOST, 17, 12)
-	setobjectxyperm(LID_IRENE, 17, 13)
-	setobjectxyperm(LID_WALLY, 17, 12)
-	setobjectxyperm(LID_BRENDAN, 17, 11)
-	setobjectxyperm(LID_MAY, 17, 12)
+	setobjectxyperm(LID_IRENE, 17, 12)
+	setobjectxyperm(LID_WALLY, 17, 11)
+	setobjectxyperm(LID_BRENDAN, 17, 13)
+	setobjectxyperm(LID_MAY, 17, 11)
 	setobjectxyperm(LID_ALEX, 17, 13)
 	
 	setobjectmovementtype(LID_JAMES, MOVEMENT_TYPE_FACE_LEFT)
@@ -39,328 +42,868 @@ script Route110_Cutscene_SetupIntro {
 	setobjectmovementtype(LID_ALEX, MOVEMENT_TYPE_FACE_LEFT)
 }
 script Route110_Cutscene_RunIntro {
-	lockall
+	// Don't lockall
 	delay (30)
-	addobject (LID_JAMES)
-	addobject (LID_GHOST)
-	addobject (LID_BRENDAN)
-	addobject (LID_MAY)
-	addobject (LID_ALEX)
-	addobject (LID_WALLY)
-	addobject (LID_IRENE)
-	// James runs in as screen fades up
-	applymovement(LID_JAMES, Route110_Cutscene_RunIntro_Move1)
+	// Camera panning up
+	applymovement (OBJ_EVENT_ID_PLAYER, Route110_Cutscene_CameraWalk)
+	applymovement(LID_TUSTIN, Route110_Cutscene_TustinWalkOut)
+	applymovement(LID_SKELETON, Route110_Cutscene_SkellyWalkOut)
 	clearflag (FLAG_DISABLE_FADE_INIT)
 	fadescreenspeed (0, 6)
+	delay(64)
+	// James runs in as screen fades up
+	addobject (LID_JAMES)
+	applymovement(LID_JAMES, Route110_Cutscene_RunIntro_Move1)
 	waitmovement(LID_JAMES)
-	message("{JAMES}: Guys! Com'on!\n"
-			"It's already started!!$")
-	applymovement(LID_JAMES, Route110_Cutscene_RunIntro_Move1a)
+	// Others come strolling in
+	addobject(LID_GHOST)
+	addobject(LID_IRENE)
+	addobject(LID_WALLY)
+	addobject(LID_BRENDAN)
+	addobject(LID_MAY)
+	addobject(LID_ALEX)
+	
+	applymovement(LID_GHOST, Route110_Cutscene_RunIntro_Move2_Joey)
+	applymovement(LID_BRENDAN, Route110_Cutscene_RunIntro_Move2_Brendan)
+	applymovement(LID_MAY, Route110_Cutscene_RunIntro_Move2_May)
+	applymovement(LID_ALEX, Route110_Cutscene_RunIntro_Move2_Alex)
+	applymovement(LID_IRENE, Route110_Cutscene_RunIntro_Move2_Irene)
+	applymovement(LID_WALLY, Route110_Cutscene_RunIntro_Move2_Wally)
+	applymovement(LID_JAMES, Route110_Cutscene_RunIntro_Move2_James)
 	playse(SE_LEDGE)
+	speakername_common(JAMES)
+	message("Come on! We can't dilly-dally!\n"
+			"We have limited daylight hours, people!$")
 	waitmessage
 	waitbuttonpress
-	playse (SE_SELECT)
-	closemessage
-	// Others roll in
-	applymovement(LID_JAMES, Route110_Cutscene_RunIntro_Move2_james)
-	applymovement(LID_GHOST, Route110_Cutscene_RunIntro_Move2_joey)
-	applymovement(LID_IRENE, Route110_Cutscene_RunIntro_Move2_irene)
-	applymovement(LID_BRENDAN, Route110_Cutscene_RunIntro_Move2_brendan)
-	applymovement(LID_MAY, Route110_Cutscene_RunIntro_Move2_may)
-	applymovement(LID_ALEX, Route110_Cutscene_RunIntro_Move2_alex)
-	applymovement(LID_WALLY, Route110_Cutscene_RunIntro_Move2_wally)
-	delay(16)
-	message("{JOEY}: Slow down! I can't run while\n"
-			"under this stupid sheet!$")
-	waitmessage
-	waitbuttonpress
-	playse (SE_SELECT)
-	// 
+	playse(SE_SELECT)
+	waitmovement(LID_JAMES)
 	waitmovement(LID_GHOST)
-	applymovement(LID_JAMES, Common_Movement_WalkInPlaceDown)
-	message("{JAMES}: Well then take the sheet off,\n"
-			"you Pidgey!")
-	waitmessage
-	waitbuttonpress
-	playse (SE_SELECT)
-	// 
-	message("{ALEX}: What's started already?$")
-	applymovement(LID_ALEX, Route110_Cutscene_RunIntro_Move3)
-	// Joey takes off the sheet
-	delay (6)
-	applymovement(LID_BRENDAN, Common_Movement_WalkInPlaceDown)
-	delay (2)
-	applymovement(LID_MAY, Common_Movement_WalkInPlaceDown)
-	delay (8)
+	
+	//
+	speakername_common(JOEY)
+	message("{JAMES}, please, can you calm down?\p"
+			"I can't run under this sheet,\n"
+			"and I'm melting trying to keep up!$")
+	applymovement(LID_GHOST, Common_Movement_WalkLeft1)
+	waitmovement(LID_GHOST)
+	delay (16)
 	applymovement (LID_GHOST, Common_Movement_WalkInPlaceUp)
 	delay (30)
-	setobjectxyperm (LID_JOEY, 7, 12)
+	setobjectxyperm (LID_JOEY, 9, 12)
 	setobjectxyperm (LID_GHOST, 0, 0)
 	removeobject (LID_GHOST)
 	addobject (LID_JOEY)
 	delay (20)
-	applymovement (LID_JOEY, Common_Movement_WalkInPlaceUp)
-	// 
+	applymovement (LID_JOEY, Common_Movement_WalkInPlaceDown)
 	waitmessage
 	waitbuttonpress
-	playse (SE_SELECT)
-	//
-	message("{IRENE}: The TRICK-OR-TREAT HOUSE event.$")
-	applymovement(LID_IRENE, Route110_Cutscene_RunIntro_Move4)
-	delay(4)
-	applymovement(LID_BRENDAN, Common_Movement_WalkInPlaceLeft)
-	delay(2)
-	applymovement(LID_ALEX, Common_Movement_WalkInPlaceLeft)
+	playse(SE_SELECT)
+	waitmovement(LID_JOEY)
+	// Joey takes off sheet
+	speakername_common(JAMES)
+	applymovement(LID_JAMES, Route110_Cutscene_RunIntro_Move3_James)
+	message("We still have loads of houses in\n"
+			"Slateport to hit before Trick-or-\l"
+			"Treating time is over!$")
+	waitmovement(LID_JAMES)
+	delay (16)
+	applymovement(LID_MAY, Route110_Cutscene_RunIntro_Move3_May)
+	applymovement(LID_ALEX, Route110_Cutscene_RunIntro_Move3_Alex)
+	applymovement(LID_IRENE, Route110_Cutscene_RunIntro_Move3_Irene)
+	applymovement (LID_JOEY, Common_Movement_WalkInPlaceLeft)
+	delay (30)
+	applymovement (LID_WALLY, Common_Movement_WalkInPlaceLeft)
+	waitmessage
+	waitbuttonpress
+	playse(SE_SELECT)
+	// Wally notices the commotion
+	speakername_common(WALLY)
 	applymovement(LID_WALLY, Common_Movement_WalkInPlaceDown)
-	delay(2)
-	applymovement(LID_MAY, Common_Movement_WalkInPlaceLeft)
-	waitmessage
-	waitbuttonpress
-	playse (SE_SELECT)
-	//
-	message("{ALEX}: The what?$")
-	applymovement(LID_ALEX, Route110_Cutscene_RunIntro_Move5)
-	waitmessage
-	waitbuttonpress
-	playse (SE_SELECT)
-	//
-	message("{BRENDAN}: Oh, right, you weren't here for\n"
-			"it last year, {ALEX}.\p$")
-	applymovement(LID_BRENDAN, Common_Movement_WalkInPlaceRight)
+	message("Uh, guys? What's with all the people\n"
+			"here? What is this place?$")
 	delay(4)
-	applymovement(LID_MAY, Common_Movement_WalkInPlaceLeft)
-	delay(2)
-	applymovement(LID_ALEX, Common_Movement_WalkInPlaceUp)
+	applymovement (LID_BRENDAN, Common_Movement_WalkInPlaceUp)
+	applymovement (LID_IRENE, Common_Movement_WalkInPlaceUp)
+	delay (3)
+	applymovement (LID_JOEY, Common_Movement_WalkInPlaceUp)
+	delay (5)
+	applymovement (LID_MAY, Common_Movement_WalkInPlaceUp)
+	delay (7)
+	applymovement (LID_ALEX, Route110_Cutscene_RunIntro_Move4_Alex)
+	delay (10)
+	applymovement (LID_JAMES, Common_Movement_WalkInPlaceUp)
+	waitmessage
+	waitbuttonpress
+	playse(SE_SELECT)
+	// 
+	speakername_common(BRENDAN)
+	message("This is the Trick House. I visited it\n"
+			"a bunch on my League Journey.\p"
+			"The Trick Master made a whole bunch of\n"
+			"puzzles, but I beat them all.\p"
+			"Then he just left to see the world.$")
+	applymovement(LID_BRENDAN, Route110_Cutscene_RunIntro_Move5_Brendan)
+	applymovement(LID_MAY, Route110_Cutscene_RunIntro_Move5_May)
+	delay(4)
+	applymovement (LID_JAMES, Common_Movement_FaceRight)
+	delay(3)
+	applymovement (LID_JOEY, Common_Movement_FaceLeft)
+	delay(5)
+	applymovement (LID_ALEX, Common_Movement_FaceLeft)
+	delay(3)
+	applymovement (LID_IRENE, Common_Movement_FaceLeft)
 	delay(10)
-	applymovement(LID_WALLY, Common_Movement_WalkInPlaceLeft)
-	waitmessage
-	// Move to door
-	message("This is the TRICK HOUSE.\n"
-			"It's run by some guy who calls himself\l"
-			"the TRICK MASTER.\p"
-			"I'm sure he'll give you a spiel once\n"
-			"we head inside.$")
-	applymovement(LID_BRENDAN, Route110_Cutscene_RunIntro_Move6)
-	delay(4)
-	applymovement(LID_MAY, Common_Movement_WalkInPlaceUp)
-	delay(20)
-	applymovement(LID_JOEY, Route110_Cutscene_RunIntro_Move6_shift)
+	applymovement (LID_JOEY, Common_Movement_FaceUp)
+	delay(12)
+	applymovement (LID_JAMES, Common_Movement_FaceUp)
+	delay(2)
+	applymovement (LID_ALEX, Common_Movement_FaceUp)
+	delay(3)
+	applymovement (LID_IRENE, Common_Movement_FaceUp)
+	delay(10)
+	applymovement (LID_WALLY, Common_Movement_FaceLeft)
 	delay(16)
-	applymovement(LID_IRENE, Route110_Cutscene_RunIntro_Move6_shift)
-	applymovement(LID_WALLY, Common_Movement_WalkInPlaceUp)
+	applymovement (LID_WALLY, Common_Movement_FaceUp)
 	waitmessage
+	waitmovement(LID_BRENDAN)
 	waitbuttonpress
-	playse (SE_SELECT)
+	playse(SE_SELECT)
 	//
-	applymovement(LID_MAY, Common_Movement_WalkInPlaceLeft)
-	message("{MAY}: Hopefully he's ready for us.\n"
-			"I saw him running around frantically\l"
-			"while we were Trick-or-Treating already.$")
+	speakername_common(MAY)
+	message("Yeah, Dad says he hasn't been seen\n"
+			"for a couple years!\p"
+			"The house is empty--!$")
+	applymovement(LID_MAY, Route110_Cutscene_RunIntro_Move6_May)
+	delay(12)
+	applymovement (LID_WALLY, Common_Movement_FaceLeft)
+	delay(3)
+	applymovement (LID_JOEY, Common_Movement_FaceLeft)
+	delay(4)
+	applymovement (LID_ALEX, Common_Movement_FaceLeft)
+	delay(4)
+	applymovement (LID_IRENE, Common_Movement_FaceLeft)
 	waitmessage
-	waitbuttonpress
-	playse (SE_SELECT)
-	//
-	applymovement(LID_WALLY, Route110_Cutscene_RunIntro_Move3)
-	message("{WALLY}: Is it just me, or are there a\n"
-			"lot more people here this year?$")
-	waitmessage
-	waitbuttonpress
-	playse (SE_SELECT)
-	//
-	applymovement(LID_JAMES, Route110_Cutscene_RunIntro_Move7)
-	playse (SE_LEDGE)
-	message("{JAMES}: Stop dilly-dallying already!\n"
-			"Let's get inside so we can start!$")
-	waitmessage
-	waitbuttonpress
-	closemessage
-	//
+	// waitbuttonpress // don't wait for button press
+	// playse(SE_SELECT)
+	
+	// Door opens, everyone reacts in shock, Wally dashes to the back
 	opendoor (9, 8)
+	playse(SE_DOOR)
 	waitdooranim
+	waitse
 	playse (SE_PIN)
 	applymovement(LID_ALEX, Route110_Cutscene_RunIntro_What)
-	applymovement(LID_BRENDAN, Route110_Cutscene_RunIntro_What)
+	applymovement(LID_BRENDAN, Route110_Cutscene_RunIntro_Move7_Brendan)
 	applymovement(LID_MAY, Route110_Cutscene_RunIntro_What)
-	applymovement(LID_WALLY, Route110_Cutscene_RunIntro_Wally)
-	applymovement(LID_JAMES, Common_Movement_WalkInPlaceRight)
+	applymovement(LID_WALLY, Route110_Cutscene_RunIntro_Move7_Wally)
+	applymovement(LID_JAMES, Route110_Cutscene_RunIntro_What)
+	applymovement(LID_JOEY, Route110_Cutscene_RunIntro_What)
+	applymovement(LID_IRENE, Route110_Cutscene_RunIntro_What)
 	waitmovement(LID_WALLY)
-	// 
-	message("{JAMES}: See?? Com'on! Let's go!$")
+	
+	// clear message box, wait a moment
+	speakername(NULL)
+	message("$")
+	delay(60)
+	
+	// Brendan steps forward
+	speakername_common(BRENDAN)
+	message("Uhh… h-hello?$")
+	applymovement(LID_BRENDAN, Route110_Cutscene_RunIntro_Move8_Brendan)
 	waitmessage
 	waitbuttonpress
-	playse (SE_SELECT)
+	playse(SE_SELECT)
+	// Irene steps forward
+	speakername_common(IRENE)
+	message("Oh, is it haunted now, maybe?\p$")
+	applymovement(LID_IRENE, Route110_Cutscene_RunIntro_Move9_Irene)
+	waitmessage
 	
-	applymovement(LID_JAMES, Route110_Cutscene_RunIntro_Move9_james)
-	applymovement(LID_JOEY, Route110_Cutscene_RunIntro_Move9_joey)
-	message("{WALLY}: But--!$")
+	// Irene turns to Alex
+	message("Like that Old Chateau we explored when\n"
+			"I came to visit this summer, {ALEX}?$")
+	applymovement(LID_ALEX, Route110_Cutscene_RunIntro_Move9a_Alex)
+	delay(20)
+	applymovement(LID_IRENE, Common_Movement_FaceRight)
+	waitmessage
+	waitmovement(LID_ALEX)
+	waitbuttonpress
+	playse(SE_SELECT)
+	
+	// Alex joins her
+	speakername_common(ALEX)
+	message("You wanna go visit another haunted\n"
+			"house? Well, 'tis the season I guess.\p$")
+	applymovement(LID_ALEX, Route110_Cutscene_RunIntro_Move10_Alex)
+	waitmessage
+	waitmovement(LID_ALEX)
+	message("You're fighting any spiders, though.$")
+	applymovement(LID_ALEX, Route110_Cutscene_RunIntro_Move10a_Alex)
+	applymovement(LID_IRENE, Route110_Cutscene_RunIntro_Move10a_Irene)
+	delay(26)
+	applymovement(LID_BRENDAN, Common_Movement_FaceRight)
+	waitmessage
+	waitmovement(LID_ALEX)
+	waitbuttonpress
+	playse(SE_SELECT)
+	
+	// They go inside, Wally flips
+	speakername_common(WALLY)
+	message("{ALEX}! {IRENE}! What are you--?!$")
+	applymovement(LID_WALLY, Route110_Cutscene_RunIntro_Move11_Wally)
+	delay(20)
+	applymovement(LID_JOEY, Common_Movement_FaceRight)
+	waitmessage
+	waitmovement(LID_WALLY)
+	waitbuttonpress
+	playse(SE_SELECT)
+	
+	// Brendan and May enter
+	speakername_common(JAMES)
+	message("What about candy?! Guys?!$")
+	applymovement(LID_BRENDAN, Route110_Cutscene_RunIntro_Move12_Brendan)
+	applymovement(LID_MAY, Route110_Cutscene_RunIntro_Move12_May)
+	applymovement(LID_JAMES, Route110_Cutscene_RunIntro_Move12_James)
+	applymovement(LID_JOEY, Common_Movement_WalkInPlaceRight)
+	delay(10)
+	applymovement(LID_WALLY, Common_Movement_WalkInPlaceLeft)
+	waitmovement(LID_JAMES)
+	waitmessage
+	waitbuttonpress
+	playse(SE_SELECT)
+	// Joey approaches James
+	speakername_common(JOEY)
+	message("Look, {JAMES}. The other people here\n"
+			"have a bunch of candy.\p"
+			"There might be a lot inside.\n"
+			"Come on!$")
+	applymovement(LID_JOEY, Common_Movement_WalkLeft1)
+	delay(20)
+	applymovement(LID_JAMES, Common_Movement_WalkInPlaceRight)
+	delay(5)
+	applymovement(LID_WALLY, Common_Movement_FaceUp)
+	waitmessage
+	waitmovement(LID_JOEY)
+	waitmovement(LID_MAY)
+	waitmovement(LID_BRENDAN)
+	waitbuttonpress
+	// playse(SE_SELECT)
+	closemessage
+	
+	applymovement(LID_JOEY, Route110_Cutscene_RunIntro_Move13_Joey)
+	applymovement(LID_JAMES, Route110_Cutscene_RunIntro_Move13_James)
+	applymovement(LID_WALLY, Route110_Cutscene_RunIntro_Move13_Wally)
+	
+	waitmovement(LID_WALLY)
+	// They go inside, leaving Wally outside
+	speakername_common(WALLY)
+	message("GUYS?!?!\n"
+			"C-Com'on! Don't leave me!$")
 	waitmessage
 	waitbuttonpress
 	closemessage
-	applymovement(LID_IRENE, Route110_Cutscene_RunIntro_Move9_irene)
-	applymovement(LID_BRENDAN, Route110_Cutscene_RunIntro_Move9_brendan)
-	applymovement(LID_MAY, Route110_Cutscene_RunIntro_Move9_may)
-	applymovement(LID_ALEX, Route110_Cutscene_RunIntro_Move9_alex)
-	applymovement(LID_WALLY, Route110_Cutscene_RunIntro_Move9_wally)
-	waitmovement(LID_MAY)
-	// Fade out
-	fadescreenspeed (1, 6)
+	
+	// Wally looks around and enters
+	delay(30)
+	applymovement(LID_WALLY, Route110_Cutscene_RunIntro_Move14_Wally)
+	waitmovement(LID_WALLY)
+	
+	applymovement(LID_WALLY, Route110_Cutscene_RunIntro_Move14a_Wally)
 	setvar (VAR_INTRO_COUNTER, 2)
+	fadescreenspeed (1, 6)
+	waitmovement(LID_WALLY)
 	warpcustom (MAP_TRICK_HOUSE_ENTRANCE, 0, 0xFF, 0xFF)
 	waitstate
-	releaseall
+	// TODO: Wally just follows you during the intro, whereever you go
+}
+movement Route110_Cutscene_CameraWalk {
+	walk_slow_up * 5
+}
+movement Route110_Cutscene_TustinWalkOut {
+	delay_16 * 3
+	walk_down * 5
+}
+movement Route110_Cutscene_SkellyWalkOut {
+	delay_16 * 4
+	walk_left
+	walk_down * 5
 }
 
 movement Route110_Cutscene_RunIntro_Move1 {
-	walk_fast_left * 7
-	walk_left * 2
+	player_run_left * 11
 	delay_16
 	face_up
-	delay_16
+	delay_8
 	face_down
-	delay_16
-	face_right
+	delay_8
+	face_left
 }
-movement Route110_Cutscene_RunIntro_Move1a {
+movement Route110_Cutscene_RunIntro_Move2_James {
 	jump_in_place_right
 }
-movement Route110_Cutscene_RunIntro_Move2_james {
-	walk_up * 3
-	face_down
-}
-movement Route110_Cutscene_RunIntro_Move2_joey {
+
+movement Route110_Cutscene_RunIntro_Move2_May {
 	walk_left * 10
-	face_up
+	walk_in_place_fast_down
 }
-movement Route110_Cutscene_RunIntro_Move2_brendan {
+movement Route110_Cutscene_RunIntro_Move2_Brendan {
 	delay_16 * 2
 	walk_left * 9
-	walk_in_place_up
+	walk_in_place_fast_up
 }
-movement Route110_Cutscene_RunIntro_Move2_may {
-	delay_16 * 2
-	delay_8 * 1
-	walk_left * 7
-	walk_up * 1
-}
-movement Route110_Cutscene_RunIntro_Move2_alex {
-	delay_16 * 3
-	delay_8 * 2
-	walk_left * 8
-	walk_up * 1
-}
-movement Route110_Cutscene_RunIntro_Move2_irene {
-	delay_16 * 1
-	delay_8 * 2
-	walk_left * 11
-	walk_up * 2
-}
-movement Route110_Cutscene_RunIntro_Move2_wally {
+movement Route110_Cutscene_RunIntro_Move2_Joey {
 	delay_16 * 5
-	walk_left * 5
+	walk_left * 7
+}
+movement Route110_Cutscene_RunIntro_Move2_Wally {
+	delay_16 * 3
+	walk_left * 7
+	delay_8
+	walk_up
+	walk_left
+	delay_16 * 3
+	walk_in_place_fast_up
+}
+movement Route110_Cutscene_RunIntro_Move2_Alex {
+	delay_16 * 12
+	walk_left * 6
+	delay_4 * 2
 	face_up
-	emote_exclamation_mark
-	delay_16 * 2
-	walk_down
-	walk_left * 3
+	delay_16
+	face_left
+}
+movement Route110_Cutscene_RunIntro_Move2_Irene {
+	delay_16 * 12
+	walk_left * 6
+	delay_4 * 3
 	face_down
-	delay_16 * 4
-	walk_right
-	walk_up
-}
-movement Route110_Cutscene_RunIntro_Move3 {
-	walk_in_place_fast_left
-	delay_16 * 2
-	walk_in_place_fast_down
-	delay_16 * 2
-	walk_in_place_fast_up
-}
-movement Route110_Cutscene_RunIntro_Move4 {
-	walk_in_place_fast_right
 	delay_16
-	walk_in_place_fast_up
-}
-movement Route110_Cutscene_RunIntro_Move5 {
-	walk_in_place_fast_left
-	emote_question_mark
-	delay_16
-	walk_in_place_fast_up
-}
-movement Route110_Cutscene_RunIntro_Move6 {
-	walk_up
-	walk_right
-	walk_in_place_fast_down
-}
-movement Route110_Cutscene_RunIntro_Move6_shift {
-	walk_right
-	walk_in_place_up
+	face_left
 }
 
-movement Route110_Cutscene_RunIntro_Move7 {
-	jump_in_place_down
+movement Route110_Cutscene_RunIntro_Move3_James {
+	walk_right
+	delay_16 * 3
+	face_down
+	delay_8 * 3
+	face_right
+	delay_8 * 3
+	face_down
+	delay_8 * 3
+	face_right
+	lock_facing_direction
+	walk_left
+	unlock_facing_direction
 }
+movement Route110_Cutscene_RunIntro_Move3_May {
+	delay_16 * 3
+	face_right
+	delay_16 * 2
+	face_down
+}
+movement Route110_Cutscene_RunIntro_Move3_Alex {
+	delay_16 * 2
+	delay_4
+	face_up
+	delay_16 * 2
+	face_left
+}
+movement Route110_Cutscene_RunIntro_Move3_Irene {
+	delay_16 * 2
+	delay_8
+	face_down
+	delay_16
+	delay_8
+	face_left
+}
+
+movement Route110_Cutscene_RunIntro_Move4_Alex {
+	walk_left
+	walk_in_place_fast_up
+}
+
+movement Route110_Cutscene_RunIntro_Move5_Brendan {
+	walk_up * 4
+	walk_in_place_fast_down
+}
+movement Route110_Cutscene_RunIntro_Move5_May {
+	delay_8
+	delay_2
+	face_down
+	delay_16
+	delay_8
+	face_right
+	delay_16
+	face_up
+}
+
+movement Route110_Cutscene_RunIntro_Move6_May {
+	walk_in_place_right
+	delay_16
+	walk_in_place_down
+}
+
 movement Route110_Cutscene_RunIntro_What {
 	walk_in_place_fastest_up
 	emote_exclamation_mark
 	delay_16 * 3
 }
-movement Route110_Cutscene_RunIntro_Wally {
+movement Route110_Cutscene_RunIntro_Move7_Brendan {
+	walk_in_place_fastest_up
+	emote_exclamation_mark
+	lock_facing_direction
+	walk_fast_down
+	unlock_facing_direction
+	delay_16 * 3
+}
+movement Route110_Cutscene_RunIntro_Move7_Wally {
 	walk_in_place_fastest_up
 	emote_exclamation_mark
 	lock_facing_direction
 	jump_down
 	unlock_facing_direction
+	delay_16
+	player_run_left
+	player_run_down * 2
+	player_run_right
 }
 
-movement Route110_Cutscene_RunIntro_Move9_james {
+movement Route110_Cutscene_RunIntro_Move8_Brendan {
+	walk_slow_up
+}
+
+movement Route110_Cutscene_RunIntro_Move9_Irene {
+	walk_up
+	walk_left * 2
+	walk_up
+}
+movement Route110_Cutscene_RunIntro_Move9a_Alex {
+	walk_up * 3
+	walk_in_place_fast_left
+}
+
+movement Route110_Cutscene_RunIntro_Move10_Alex {
+	walk_in_place_fast_up
+	delay_16 * 2
+	walk_in_place_fast_left
+}
+movement Route110_Cutscene_RunIntro_Move10a_Alex {
+	face_left
+	delay_16
+	delay_8
+	walk_left
+	walk_up * 2
+	set_invisible
+}
+movement Route110_Cutscene_RunIntro_Move10a_Irene {
+	face_right
+	delay_16
+	delay_4
+	walk_up * 2
+	set_invisible
+}
+
+movement Route110_Cutscene_RunIntro_Move11_Wally {
+	player_run_right
+	player_run_up
+	walk_in_place_fastest_up
+}
+
+movement Route110_Cutscene_RunIntro_Move12_May {
+	walk_up
+	walk_right
+	walk_in_place_fast_up
+	delay_16 * 3
+	walk_right
+	walk_up * 2
+	set_invisible
+}
+movement Route110_Cutscene_RunIntro_Move12_Brendan {
+	delay_16
+	delay_8
+	walk_in_place_down
+	delay_16 * 4
+	walk_in_place_fast_right
+	delay_16 * 2
 	walk_right
 	walk_up
 	set_invisible
 }
-movement Route110_Cutscene_RunIntro_Move9_joey {
-	delay_16 * 2
-	walk_up * 3
-	walk_right * 1
+movement Route110_Cutscene_RunIntro_Move12_James {
+	player_run_right
+	walk_in_place_fastest_up
+}
+
+movement Route110_Cutscene_RunIntro_Move13_Joey {
 	walk_up
+	walk_right
+	walk_up * 3
 	set_invisible
 }
-movement Route110_Cutscene_RunIntro_Move9_brendan {
-	delay_16 * 1
+movement Route110_Cutscene_RunIntro_Move13_James {
+	delay_16
 	walk_in_place_down
-	delay_16 * 3
-	walk_up * 2
-	set_invisible
-}
-movement Route110_Cutscene_RunIntro_Move9_may {
-	delay_16 * 1
-	walk_in_place_left
-	delay_16 * 3
-	walk_left
-	walk_up * 3
-	set_invisible
-}
-movement Route110_Cutscene_RunIntro_Move9_alex {
-	delay_16 * 6
-	walk_up * 4
-	set_invisible
-}
-movement Route110_Cutscene_RunIntro_Move9_irene {
 	delay_16 * 2
-	delay_8
-	walk_down * 2
+	walk_up
 	walk_right * 2
-	delay_16 * 1
 	walk_up * 3
-	face_down
-	delay_16 * 2
-	walk_up * 2
 	set_invisible
 }
-movement Route110_Cutscene_RunIntro_Move9_wally {
-	delay_16 * 6
-	face_left
-	delay_16 * 2
-	walk_slow_up * 3
+movement Route110_Cutscene_RunIntro_Move13_Wally {
+	delay_8   
+	face_left   delay_16
+	face_up     delay_16
+	face_left   delay_8
+	face_up     delay_8
+	face_left   delay_4
+	face_up     delay_4
+	face_left   delay_4
+	walk_fast_left
+	face_up
 }
+
+movement Route110_Cutscene_RunIntro_Move14_Wally {
+	face_left   delay_8
+	face_down   delay_8
+	face_right  delay_8
+	face_up     delay_16
+	delay_16 * 2
+	face_down 
+	delay_16 * 3
+}
+movement Route110_Cutscene_RunIntro_Move14a_Wally {
+	player_run_up * 4
+	set_invisible
+}
+
+
+// ----------------------------------------------------
+	
+// script Route110_Cutscene_RunIntroOld {
+	
+// 	lockall
+// 	delay (30)
+// 	addobject (LID_JAMES)
+// 	addobject (LID_GHOST)
+// 	addobject (LID_BRENDAN)
+// 	addobject (LID_MAY)
+// 	addobject (LID_ALEX)
+// 	addobject (LID_WALLY)
+// 	addobject (LID_IRENE)
+// 	// James runs in as screen fades up
+// 	applymovement(LID_JAMES, Route110_Cutscene_RunIntro_Move1)
+// 	clearflag (FLAG_DISABLE_FADE_INIT)
+// 	fadescreenspeed (0, 6)
+// 	waitmovement(LID_JAMES)
+// 	message("{JAMES}: Guys! Com'on!\n"
+// 			"It's already started!!$")
+// 	applymovement(LID_JAMES, Route110_Cutscene_RunIntro_Move1a)
+// 	playse(SE_LEDGE)
+// 	waitmessage
+// 	waitbuttonpress
+// 	playse (SE_SELECT)
+// 	closemessage
+// 	// Others roll in
+// 	applymovement(LID_JAMES, Route110_Cutscene_RunIntro_Move2_james)
+// 	applymovement(LID_GHOST, Route110_Cutscene_RunIntro_Move2_joey)
+// 	applymovement(LID_IRENE, Route110_Cutscene_RunIntro_Move2_irene)
+// 	applymovement(LID_BRENDAN, Route110_Cutscene_RunIntro_Move2_brendan)
+// 	applymovement(LID_MAY, Route110_Cutscene_RunIntro_Move2_may)
+// 	applymovement(LID_ALEX, Route110_Cutscene_RunIntro_Move2_alex)
+// 	applymovement(LID_WALLY, Route110_Cutscene_RunIntro_Move2_wally)
+// 	delay(16)
+// 	message("{JOEY}: Slow down! I can't run while\n"
+// 			"under this stupid sheet!$")
+// 	waitmessage
+// 	waitbuttonpress
+// 	playse (SE_SELECT)
+// 	// 
+// 	waitmovement(LID_GHOST)
+// 	applymovement(LID_JAMES, Common_Movement_WalkInPlaceDown)
+// 	message("{JAMES}: Well then take the sheet off,\n"
+// 			"you Pidgey!")
+// 	waitmessage
+// 	waitbuttonpress
+// 	playse (SE_SELECT)
+// 	// 
+// 	message("{ALEX}: What's started already?$")
+// 	applymovement(LID_ALEX, Route110_Cutscene_RunIntro_Move3)
+// 	// Joey takes off the sheet
+// 	delay (6)
+// 	applymovement(LID_BRENDAN, Common_Movement_WalkInPlaceDown)
+// 	delay (2)
+// 	applymovement(LID_MAY, Common_Movement_WalkInPlaceDown)
+// 	delay (8)
+// 	applymovement (LID_GHOST, Common_Movement_WalkInPlaceUp)
+// 	delay (30)
+// 	setobjectxyperm (LID_JOEY, 7, 12)
+// 	setobjectxyperm (LID_GHOST, 0, 0)
+// 	removeobject (LID_GHOST)
+// 	addobject (LID_JOEY)
+// 	delay (20)
+// 	applymovement (LID_JOEY, Common_Movement_WalkInPlaceUp)
+// 	// 
+// 	waitmessage
+// 	waitbuttonpress
+// 	playse (SE_SELECT)
+// 	//
+// 	message("{IRENE}: The TRICK-OR-TREAT HOUSE event.$")
+// 	applymovement(LID_IRENE, Route110_Cutscene_RunIntro_Move4)
+// 	delay(4)
+// 	applymovement(LID_BRENDAN, Common_Movement_WalkInPlaceLeft)
+// 	delay(2)
+// 	applymovement(LID_ALEX, Common_Movement_WalkInPlaceLeft)
+// 	applymovement(LID_WALLY, Common_Movement_WalkInPlaceDown)
+// 	delay(2)
+// 	applymovement(LID_MAY, Common_Movement_WalkInPlaceLeft)
+// 	waitmessage
+// 	waitbuttonpress
+// 	playse (SE_SELECT)
+// 	//
+// 	message("{ALEX}: The what?$")
+// 	applymovement(LID_ALEX, Route110_Cutscene_RunIntro_Move5)
+// 	waitmessage
+// 	waitbuttonpress
+// 	playse (SE_SELECT)
+// 	//
+// 	message("{BRENDAN}: Oh, right, you weren't here for\n"
+// 			"it last year, {ALEX}.\p$")
+// 	applymovement(LID_BRENDAN, Common_Movement_WalkInPlaceRight)
+// 	delay(4)
+// 	applymovement(LID_MAY, Common_Movement_WalkInPlaceLeft)
+// 	delay(2)
+// 	applymovement(LID_ALEX, Common_Movement_WalkInPlaceUp)
+// 	delay(10)
+// 	applymovement(LID_WALLY, Common_Movement_WalkInPlaceLeft)
+// 	waitmessage
+// 	// Move to door
+// 	message("This is the TRICK HOUSE.\n"
+// 			"It's run by some guy who calls himself\l"
+// 			"the TRICK MASTER.\p"
+// 			"I'm sure he'll give you a spiel once\n"
+// 			"we head inside.$")
+// 	applymovement(LID_BRENDAN, Route110_Cutscene_RunIntro_Move6)
+// 	delay(4)
+// 	applymovement(LID_MAY, Common_Movement_WalkInPlaceUp)
+// 	delay(20)
+// 	applymovement(LID_JOEY, Route110_Cutscene_RunIntro_Move6_shift)
+// 	delay(16)
+// 	applymovement(LID_IRENE, Route110_Cutscene_RunIntro_Move6_shift)
+// 	applymovement(LID_WALLY, Common_Movement_WalkInPlaceUp)
+// 	waitmessage
+// 	waitbuttonpress
+// 	playse (SE_SELECT)
+// 	//
+// 	applymovement(LID_MAY, Common_Movement_WalkInPlaceLeft)
+// 	message("{MAY}: Hopefully he's ready for us.\n"
+// 			"I saw him running around frantically\l"
+// 			"while we were Trick-or-Treating already.$")
+// 	waitmessage
+// 	waitbuttonpress
+// 	playse (SE_SELECT)
+// 	//
+// 	applymovement(LID_WALLY, Route110_Cutscene_RunIntro_Move3)
+// 	message("{WALLY}: Is it just me, or are there a\n"
+// 			"lot more people here this year?$")
+// 	waitmessage
+// 	waitbuttonpress
+// 	playse (SE_SELECT)
+// 	//
+// 	applymovement(LID_JAMES, Route110_Cutscene_RunIntro_Move7)
+// 	playse (SE_LEDGE)
+// 	message("{JAMES}: Stop dilly-dallying already!\n"
+// 			"Let's get inside so we can start!$")
+// 	waitmessage
+// 	waitbuttonpress
+// 	closemessage
+// 	//
+// 	opendoor (9, 8)
+// 	waitdooranim
+// 	playse (SE_PIN)
+// 	applymovement(LID_ALEX, Route110_Cutscene_RunIntro_What)
+// 	applymovement(LID_BRENDAN, Route110_Cutscene_RunIntro_What)
+// 	applymovement(LID_MAY, Route110_Cutscene_RunIntro_What)
+// 	applymovement(LID_WALLY, Route110_Cutscene_RunIntro_Wally)
+// 	applymovement(LID_JAMES, Common_Movement_WalkInPlaceRight)
+// 	waitmovement(LID_WALLY)
+// 	// 
+// 	message("{JAMES}: See?? Com'on! Let's go!$")
+// 	waitmessage
+// 	waitbuttonpress
+// 	playse (SE_SELECT)
+	
+// 	applymovement(LID_JAMES, Route110_Cutscene_RunIntro_Move9_james)
+// 	applymovement(LID_JOEY, Route110_Cutscene_RunIntro_Move9_joey)
+// 	message("{WALLY}: But--!$")
+// 	waitmessage
+// 	waitbuttonpress
+// 	closemessage
+// 	applymovement(LID_IRENE, Route110_Cutscene_RunIntro_Move9_irene)
+// 	applymovement(LID_BRENDAN, Route110_Cutscene_RunIntro_Move9_brendan)
+// 	applymovement(LID_MAY, Route110_Cutscene_RunIntro_Move9_may)
+// 	applymovement(LID_ALEX, Route110_Cutscene_RunIntro_Move9_alex)
+// 	applymovement(LID_WALLY, Route110_Cutscene_RunIntro_Move9_wally)
+// 	waitmovement(LID_MAY)
+// 	// Fade out
+// 	fadescreenspeed (1, 6)
+// 	setvar (VAR_INTRO_COUNTER, 2)
+// 	warpcustom (MAP_TRICK_HOUSE_ENTRANCE, 0, 0xFF, 0xFF)
+// 	waitstate
+// 	releaseall
+// }
+
+// movement Route110_Cutscene_RunIntro_Move1 {
+// 	walk_fast_left * 7
+// 	walk_left * 2
+// 	delay_16
+// 	face_up
+// 	delay_16
+// 	face_down
+// 	delay_16
+// 	face_right
+// }
+// movement Route110_Cutscene_RunIntro_Move1a {
+// 	jump_in_place_right
+// }
+// movement Route110_Cutscene_RunIntro_Move2_james {
+// 	walk_up * 3
+// 	face_down
+// }
+// movement Route110_Cutscene_RunIntro_Move2_joey {
+// 	walk_left * 10
+// 	face_up
+// }
+// movement Route110_Cutscene_RunIntro_Move2_brendan {
+// 	delay_16 * 2
+// 	walk_left * 9
+// 	walk_in_place_up
+// }
+// movement Route110_Cutscene_RunIntro_Move2_may {
+// 	delay_16 * 2
+// 	delay_8 * 1
+// 	walk_left * 7
+// 	walk_up * 1
+// }
+// movement Route110_Cutscene_RunIntro_Move2_alex {
+// 	delay_16 * 3
+// 	delay_8 * 2
+// 	walk_left * 8
+// 	walk_up * 1
+// }
+// movement Route110_Cutscene_RunIntro_Move2_irene {
+// 	delay_16 * 1
+// 	delay_8 * 2
+// 	walk_left * 11
+// 	walk_up * 2
+// }
+// movement Route110_Cutscene_RunIntro_Move2_wally {
+// 	delay_16 * 5
+// 	walk_left * 5
+// 	face_up
+// 	emote_exclamation_mark
+// 	delay_16 * 2
+// 	walk_down
+// 	walk_left * 3
+// 	face_down
+// 	delay_16 * 4
+// 	walk_right
+// 	walk_up
+// }
+// movement Route110_Cutscene_RunIntro_Move3 {
+// 	walk_in_place_fast_left
+// 	delay_16 * 2
+// 	walk_in_place_fast_down
+// 	delay_16 * 2
+// 	walk_in_place_fast_up
+// }
+// movement Route110_Cutscene_RunIntro_Move4 {
+// 	walk_in_place_fast_right
+// 	delay_16
+// 	walk_in_place_fast_up
+// }
+// movement Route110_Cutscene_RunIntro_Move5 {
+// 	walk_in_place_fast_left
+// 	emote_question_mark
+// 	delay_16
+// 	walk_in_place_fast_up
+// }
+// movement Route110_Cutscene_RunIntro_Move6 {
+// 	walk_up
+// 	walk_right
+// 	walk_in_place_fast_down
+// }
+// movement Route110_Cutscene_RunIntro_Move6_shift {
+// 	walk_right
+// 	walk_in_place_up
+// }
+
+// movement Route110_Cutscene_RunIntro_Move7 {
+// 	jump_in_place_down
+// }
+// movement Route110_Cutscene_RunIntro_What {
+// 	walk_in_place_fastest_up
+// 	emote_exclamation_mark
+// 	delay_16 * 3
+// }
+// movement Route110_Cutscene_RunIntro_Wally {
+// 	walk_in_place_fastest_up
+// 	emote_exclamation_mark
+// 	lock_facing_direction
+// 	jump_down
+// 	unlock_facing_direction
+// }
+
+// movement Route110_Cutscene_RunIntro_Move9_james {
+// 	walk_right
+// 	walk_up
+// 	set_invisible
+// }
+// movement Route110_Cutscene_RunIntro_Move9_joey {
+// 	delay_16 * 2
+// 	walk_up * 3
+// 	walk_right * 1
+// 	walk_up
+// 	set_invisible
+// }
+// movement Route110_Cutscene_RunIntro_Move9_brendan {
+// 	delay_16 * 1
+// 	walk_in_place_down
+// 	delay_16 * 3
+// 	walk_up * 2
+// 	set_invisible
+// }
+// movement Route110_Cutscene_RunIntro_Move9_may {
+// 	delay_16 * 1
+// 	walk_in_place_left
+// 	delay_16 * 3
+// 	walk_left
+// 	walk_up * 3
+// 	set_invisible
+// }
+// movement Route110_Cutscene_RunIntro_Move9_alex {
+// 	delay_16 * 6
+// 	walk_up * 4
+// 	set_invisible
+// }
+// movement Route110_Cutscene_RunIntro_Move9_irene {
+// 	delay_16 * 2
+// 	delay_8
+// 	walk_down * 2
+// 	walk_right * 2
+// 	delay_16 * 1
+// 	walk_up * 3
+// 	face_down
+// 	delay_16 * 2
+// 	walk_up * 2
+// 	set_invisible
+// }
+// movement Route110_Cutscene_RunIntro_Move9_wally {
+// 	delay_16 * 6
+// 	face_left
+// 	delay_16 * 2
+// 	walk_slow_up * 3
+// }
 
 
 raw `

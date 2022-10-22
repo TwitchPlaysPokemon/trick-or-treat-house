@@ -78,6 +78,7 @@ script TrickHouseExt_Gatehouse_Trigger {
 	playse(SE_PIN)
 	applymovement(LID_PLAYER, TrickHouseExt_Gatehouse_TriggerMovement)
 	applymovement(LID_SPOOPY, Common_Movement_WalkLeft2)
+	applymovement(LID_FOLLOWER, TrickHouseExt_Gatehouse_TriggerMovement_Follower)
 	waitmovement(LID_SPOOPY)
 	removeobject(LID_SPOOPY)
 	waitmovement(LID_PLAYER)
@@ -92,6 +93,18 @@ movement TrickHouseExt_Gatehouse_TriggerMovement {
 	delay_16 * 2
 	face_right
 	delay_16 * 4
+	face_left
+}
+movement TrickHouseExt_Gatehouse_TriggerMovement_Follower {
+	emote_exclamation_mark
+	jump_in_place_right
+	delay_8
+	face_down
+	delay_8
+	face_up
+	delay_8
+	face_right
+	delay_8
 	face_left
 }
 

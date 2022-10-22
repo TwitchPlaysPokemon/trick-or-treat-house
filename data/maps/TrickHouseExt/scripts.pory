@@ -715,7 +715,8 @@ script TrickHouseExt_EventScript_SoftBorderSouth {
 			"Your buddies and you were gonna Trick\n"
 			"or Treat in Slateport after this.$")
 	closemessage
-	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUp1)
+	applymovement (LID_PLAYER, Common_Movement_WalkUp1)
+	applymovement (LID_FOLLOWER, Common_Movement_BackOffUp1)
 	waitmovement (0)
 	release
 }
@@ -726,7 +727,8 @@ script TrickHouseExt_EventScript_SoftBorderNorth {
 			"Don't want to risk getting bogged down\n"
 			"in the tall grass.$")
 	closemessage
-	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_WalkDown1)
+	applymovement (LID_PLAYER, Common_Movement_WalkDown1)
+	applymovement (LID_FOLLOWER, Common_Movement_BackOffDown1)
 	waitmovement (0)
 	release
 }
@@ -736,7 +738,8 @@ script TrickHouseExt_EventScript_SoftBorderWest {
 	msgbox ("You probably shouldn't go any further.\n"
 			"You already hit Oldale anyway.$")
 	closemessage
-	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_WalkRight1)
+	applymovement (LID_PLAYER, Common_Movement_WalkRight1)
+	applymovement (LID_FOLLOWER, Common_Movement_BackOffRight1)
 	waitmovement (0)
 	release
 }

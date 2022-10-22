@@ -2182,7 +2182,7 @@
     @ remove the following NPC (assumes there will only ever be one)
     .macro destroyfollower
     callnative DestroyFollower
-	setvar VAR_FOLLOWER_STATE, 0
+	call Follower_ClearAllFlagsAndVars
 	setvar VAR_FOLLOWER_IDENTITY, FOLLOWER_ID_NONE
     .endm
     

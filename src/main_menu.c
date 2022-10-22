@@ -2135,7 +2135,14 @@ static void Task_NewGameBirchSpeech_AreYouReady(u8 taskId)
         gTasks[taskId].tPlayerSpriteId = spriteId;
         NewGameBirchSpeech_StartFadeInTarget1OutTarget2(taskId, 2);
         NewGameBirchSpeech_StartFadePlatformIn(taskId, 1);
-        StringExpandPlaceholders(gStringBuffer, gText_Birch_AreYouReady);
+        switch (gTasks[taskId].tPlayerGender)
+        {
+            default:
+            case GENDER_M: StringExpandPlaceholders(gStringBuffer, gText_Birch_AreYouReady_Brendan); break;
+            case GENDER_F: StringExpandPlaceholders(gStringBuffer, gText_Birch_AreYouReady_May); break;
+            case GENDER_N: StringExpandPlaceholders(gStringBuffer, gText_Birch_AreYouReady_Alex); break;
+        }
+        
         AddTextPrinterForMessage(TRUE);
         gTasks[taskId].func = Task_NewGameBirchSpeech_ShrinkPlayer;
     }

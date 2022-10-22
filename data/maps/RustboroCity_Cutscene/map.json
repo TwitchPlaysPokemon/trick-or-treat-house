@@ -57,7 +57,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WALLY",
+      "graphics_id": "OBJ_EVENT_GFX_TREEKID_NORMAL",
       "x": 20,
       "y": 29,
       "elevation": 3,
@@ -200,7 +200,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TREEKID_NORMAL",
+      "graphics_id": "OBJ_EVENT_GFX_WALLY",
       "x": 29,
       "y": 29,
       "elevation": 3,

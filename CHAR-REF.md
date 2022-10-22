@@ -2,7 +2,7 @@
 
 ## Protagonist Group
 
-- Brendan, Researcher
+- Brendan, Ace Trainer
 	- Mudkid Costume
 	- Home region: Hoenn
 	- Son of the gym leader Norman, neighbor of the Birch's
@@ -16,7 +16,7 @@
 		- Dislikes: Fish
 		- Phobia: Fear of Lightning / Thunder
 			- Puzzle of Fear: Musharna's Revenge
-- May, Contest Coordinator
+- May, Researcher
 	- Torchick Costume
 	- Home region: Hoenn, formerly Unova
 	- Daughter of the Birch family,

@@ -28,7 +28,7 @@
       "flag": "FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_HERO_OF_TIME",
+      "graphics_id": "TTH_FRIEND_JAMES",
       "x": 11,
       "y": 6,
       "elevation": 3,
@@ -41,7 +41,7 @@
       "flag": "FLAG_HIDE_TRICK_HOUSE_INTRO_CHARACTERS"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
+      "graphics_id": "TTH_FRIEND_JOEY",
       "x": 10,
       "y": 6,
       "elevation": 3,
@@ -55,7 +55,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_A",
-      "x": 6,
+      "x": 7,
       "y": 6,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -67,20 +67,20 @@
       "flag": "FLAG_HIDE_TRICK_HOUSE_INTRO_CHARACTERS"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WALLY",
+      "graphics_id": "TTH_FRIEND_WALLY",
       "x": 4,
-      "y": 7,
+      "y": 6,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "TrickHouseEntrance_EventScript_Wally",
+      "script": "TrickHouseEntrance_Intro_EventScript_Wally",
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_FAIRY_GIRL",
+      "graphics_id": "TTH_FRIEND_IRENE",
       "x": 2,
       "y": 4,
       "elevation": 3,
@@ -94,7 +94,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_VAR_B",
-      "x": 3,
+      "x": 2,
       "y": 6,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
