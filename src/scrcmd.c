@@ -2292,6 +2292,20 @@ bool8 ScrCmd_setmetatile(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_setmetatileex(struct ScriptContext *ctx)
+{
+    u16 x = VarGet(ScriptReadHalfword(ctx));
+    u16 y = VarGet(ScriptReadHalfword(ctx));
+    u16 metatile = ScriptReadHalfword(ctx);
+    
+    mgba_printf(MGBA_LOG_INFO, "Setting metatileEX => x=%d, y=%d, m=%x", x, y, metatile);
+
+    x += MAP_OFFSET;
+    y += MAP_OFFSET;
+    MapGridSetMetatileEntryAt(x, y, metatile);
+    return FALSE;
+}
+
 bool8 ScrCmd_opendoor(struct ScriptContext *ctx)
 {
     u16 x = VarGet(ScriptReadHalfword(ctx));
@@ -2863,6 +2877,7 @@ const SrcCmd gScriptCmdTable[NUM_SCRCMDS] = {
 	[SCRCMD_DOWEATHER]                = ScrCmd_doweather,
 	[SCRCMD_SETWILDBATTLE]            = ScrCmd_setwildbattle,
 	[SCRCMD_DOWILDBATTLE]             = ScrCmd_dowildbattle,
+	[SCRCMD_SETMETATILEEX]            = ScrCmd_setmetatileex,
 	
     [SCRCMD_SETSPEAKERNAM]            = ScrCmd_setspeaker,
 	

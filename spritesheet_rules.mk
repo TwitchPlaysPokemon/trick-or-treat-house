@@ -778,6 +778,12 @@ $(OBJEVENTGFXDIR)/misc/trick_door_stone.4bpp: %.4bpp: %.png
 $(OBJEVENTGFXDIR)/misc/trick_door_stone_room.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 8 -mheight 8
 
+$(OBJEVENTGFXDIR)/misc/trick_switch.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2
+	
+$(OBJEVENTGFXDIR)/misc/trick_button.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2
+
 
 $(OBJEVENTGFXDIR)/people/trickmaster.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 4

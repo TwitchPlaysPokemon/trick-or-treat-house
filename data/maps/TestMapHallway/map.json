@@ -141,7 +141,7 @@
       "x": 5,
       "y": 1,
       "elevation": 0,
-      "dest_map": "MAP_META_ZIGGY_ROOM",
+      "dest_map": "MAP_META_DIVE_MAZE",
       "dest_warp_id": 0
     },
     {

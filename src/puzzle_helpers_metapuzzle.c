@@ -154,6 +154,11 @@ static const struct ObjectEventTemplate sConnObject_Ziggy = {
 	.movementType = MOVEMENT_TYPE_LOOK_AROUND,
 	.x = 16, .y = 1, .elevation = 3,
 };
+static const struct ObjectEventTemplate sConnObject_Submarine = {
+	.graphicsId = OBJ_EVENT_GFX_SUBMARINE_SHADOW,
+	.movementType = MOVEMENT_TYPE_FACE_RIGHT,
+	.x = 35, .y = 18, .elevation = 3,
+};
 
 static const struct MetaRoomInfo sMetaRoomInfo[] = {
 	[MAP_NUM(MAP_META_NULL_ROOM)] = {},
@@ -265,6 +270,7 @@ static const struct MetaRoomInfo sMetaRoomInfo[] = {
 		.north=1, .south=1,
 		.tileTag=TAG_ICON_DIVE, .palTag=TAG_PAL_NPC1,     
 		.requiredItem=ITEM_META_ITEM_DIVE,
+		.connObj=&sConnObject_Submarine,
 	},
 	[MAP_NUM(MAP_META_BERRY_ROOM)] = {
 		.north=1, .east=1, 

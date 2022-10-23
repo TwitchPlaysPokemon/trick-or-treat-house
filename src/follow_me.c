@@ -223,6 +223,7 @@ static u16 GetFollowerSprite(void)
 
 static void TryUpdateFollowerSpriteUnderwater(void)
 {
+    if (!gSaveBlock2Ptr->follower.inProgress) return;
     if (gMapHeader.mapType == MAP_TYPE_UNDERWATER)
     {
         struct ObjectEvent* follower = &gObjectEvents[GetFollowerMapObjId()];

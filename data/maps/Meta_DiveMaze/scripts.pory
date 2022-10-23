@@ -1,10 +1,124 @@
 raw `
+#define LID_BUTTON   6
+
 Meta_DiveMaze_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_DiveMaze_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, Meta_DiveMaze_OnLoad
 	.byte 0
 `
 
-script(local) Meta_DiveMaze_OnTransition {
-	set_meta_visited_flag(MAP_META_DIVE_MAZE)
+script(local) Meta_DiveMaze_OnLoad {
+	check_meta_visited_flag(MAP_META_DIVE_MAZE)
+	goto_if(FALSE, Common_EventScript_NopReturn)
+	call(Meta_DiveMaze_PlaceTopShortcut)
+	call(Meta_DiveMaze_PlaceBottomShortcut)
+	setobjectmovementtype(LID_BUTTON, MOVEMENT_TYPE_FACE_UP)
+	setvar(VAR_TEMP_0, 1)
+	return
 }
+script(local) Meta_DiveMaze_OnTransition {
+	// set_meta_visited_flag(MAP_META_DIVE_MAZE)
+}
+
+//-----------------------------------------------------
+
+script(local) Meta_DiveMaze_PlaceTopShortcut {
+	setmetatileex(19,  7, METATILE_MetaTileset_Planks_VertTop, 0x0)
+	setmetatileex(20,  7, METATILE_MetaTileset_Planks_VertTop, 0x0)
+	
+	setmetatileex(19,  8, METATILE_MetaTileset_Planks_VertMid, 0x6)
+	setmetatileex(20,  8, METATILE_MetaTileset_Planks_VertMid, 0x6)
+	setmetatileex(19,  9, METATILE_MetaTileset_Planks_VertMid, 0xF)
+	setmetatileex(20,  9, METATILE_MetaTileset_Planks_VertMid, 0xF)
+	setmetatileex(19, 10, METATILE_MetaTileset_Planks_VertMid, 0xF)
+	setmetatileex(20, 10, METATILE_MetaTileset_Planks_VertMid, 0xF)
+	setmetatileex(19, 11, METATILE_MetaTileset_Planks_VertMid, 0xF)
+	setmetatileex(20, 11, METATILE_MetaTileset_Planks_VertMid, 0xF)
+	setmetatileex(19, 12, METATILE_MetaTileset_Planks_VertMid, 0xF)
+	setmetatileex(20, 12, METATILE_MetaTileset_Planks_VertMid, 0xF)
+	setmetatileex(19, 13, METATILE_MetaTileset_Planks_VertMid, 0xF)
+	setmetatileex(20, 13, METATILE_MetaTileset_Planks_VertMid, 0xF)
+	setmetatileex(19, 14, METATILE_MetaTileset_Planks_VertMid, 0xF)
+	setmetatileex(20, 14, METATILE_MetaTileset_Planks_VertMid, 0xF)
+	setmetatileex(19, 15, METATILE_MetaTileset_Planks_VertMid, 0x6)
+	setmetatileex(20, 15, METATILE_MetaTileset_Planks_VertMid, 0x6)
+	setmetatileex(19, 16, METATILE_MetaTileset_Planks_VertMid, 0x6)
+	setmetatileex(20, 16, METATILE_MetaTileset_Planks_VertMid, 0x6)
+	setmetatileex(19, 17, METATILE_MetaTileset_Planks_VertMid, 0xF)
+	setmetatileex(20, 17, METATILE_MetaTileset_Planks_VertMid, 0xF)
+	
+	setmetatileex(19, 18, METATILE_MetaTileset_Planks_VertBot, 0x6)
+	setmetatileex(20, 18, METATILE_MetaTileset_Planks_VertBot, 0x6)
+	return
+}
+script(local) Meta_DiveMaze_PlaceBottomShortcut {
+	setmetatile(19, 19, METATILE_MetaTileset_Planks_VertTop, FALSE)
+	setmetatile(20, 19, METATILE_MetaTileset_Planks_VertTop, FALSE)
+	
+	setmetatile(19, 20, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(20, 20, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(19, 21, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(20, 21, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(19, 22, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(20, 22, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(19, 23, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(20, 23, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(19, 24, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(20, 24, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(19, 25, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(20, 25, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(19, 26, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(20, 26, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(19, 27, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(20, 27, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(19, 28, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(20, 28, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(19, 29, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(20, 29, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(19, 30, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	setmetatile(20, 30, METATILE_MetaTileset_Planks_VertMid, FALSE)
+	
+	setmetatile(19, 31, METATILE_MetaTileset_Planks_VertBot, FALSE)
+	setmetatile(20, 31, METATILE_MetaTileset_Planks_VertBot, FALSE)
+	setmetatile(19, 32, 0x0AF, FALSE) // stairs
+	setmetatile(20, 32, 0x0CF, FALSE)
+	return
+}
+
+//-----------------------------------------------------
+
+script Meta_DiveMaze_TriggerScript_CompletePuzzle {
+	lock
+	setobjectmovementtype(LID_BUTTON, MOVEMENT_TYPE_FACE_UP)
+	turnobject(LID_BUTTON, DIR_NORTH)
+	set_meta_visited_flag(MAP_META_DIVE_MAZE)
+	playse (SE_PIN)
+	delay(40)
+	
+	call (Meta_DiveMaze_PlaceBottomShortcut)
+	special(DrawWholeMapView)
+	playse (SE_M_STRENGTH)
+	setvar (VAR_0x8004, 2)  #amplitude y
+	setvar (VAR_0x8005, 0)  #amplitude x
+	setvar (VAR_0x8006, 2)  #duration (num shakes)
+	setvar (VAR_0x8007, 5)  #frequency
+	special (ShakeCamera)
+	waitstate
+	
+	call (Meta_DiveMaze_PlaceTopShortcut)
+	special(DrawWholeMapView)
+	playse (SE_M_STRENGTH)
+	setvar (VAR_0x8004, 2)  #amplitude y
+	setvar (VAR_0x8005, 0)  #amplitude x
+	setvar (VAR_0x8006, 2)  #duration (num shakes)
+	setvar (VAR_0x8007, 5)  #frequency
+	special (ShakeCamera)
+	waitstate
+	setvar(VAR_TEMP_0, 1)
+	release
+}
+
+raw `
+#undef LID_BUTTON
+`

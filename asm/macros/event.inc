@@ -1420,6 +1420,13 @@
 	.2byte \metatileId
 	.2byte \impassable
 	.endm
+	
+	.macro setmetatileex x:req, y:req, metatileId:req, elevation:req
+	.byte SCRCMD_SETMETATILEEX
+	.2byte \x
+	.2byte \y
+	.2byte (\metatileId | (\elevation << 12)) @ MAPGRID_ELEVATION_SHIFT
+	.endm
 
 	@ Queues a weather change to the default weather for the map.
 	.macro resetweather

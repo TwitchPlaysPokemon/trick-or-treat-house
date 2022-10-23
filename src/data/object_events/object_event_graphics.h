@@ -402,6 +402,7 @@ const u32 gObjectEventPic_TrickDoorStoneRoom[] = INCBIN_U32("graphics/object_eve
 const u32 gObjectEventPic_TrickDoorNorth[] = INCBIN_U32("graphics/object_events/pics/misc/trick_door_north.4bpp");
 const u32 gObjectEventPic_TrickMaster[] = INCBIN_U32("graphics/object_events/pics/people/trickmaster.4bpp");
 const u16 gObjectEventPal_TrickHouse[] = INCBIN_U16("graphics/object_events/palettes/trickhouse.gbapal");
+const u16 gObjectEventPal_TrickPuzzle[] = INCBIN_U16("graphics/object_events/pics/misc/trick_button.gbapal");
 const u16 gObjectEventPal_TrickMaster[] = INCBIN_U16("graphics/object_events/palettes/objpal_trickmaster.gbapal");
 
 const u32 gObjectEventPic_ProfBirch[] = INCBIN_U32("graphics/object_events/pics/people/prof_birch.4bpp");

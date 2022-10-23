@@ -40,7 +40,20 @@ Puzzle_MetaPuzzle_Variables:
 	.2byte 0
 Puzzle_MetaPuzzle_CandyList:
 	@ TODO: When this puzzle is not a stub, these will mean something
-	.2byte FLAG_PUZZLE_20
+	@ Dive Maze
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_ABUNDANT_05
+	.2byte FLAG_CANDY_ABUNDANT_06
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_RARE_01
+	.2byte FLAG_CANDY_RARE_02
+	.2byte FLAG_CANDY_HEALTHY_01
+	@ 
 	.2byte FLAG_PUZZLE_20
 	.2byte FLAG_PUZZLE_20
 	.2byte FLAG_PUZZLE_20
