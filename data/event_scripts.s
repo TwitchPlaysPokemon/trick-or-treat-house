@@ -285,7 +285,6 @@ gStdScripts_End::
 	.include "data/maps/Puzzle_SootopolisGym/scripts.inc"
 	.include "data/maps/SootopolisGym_B1F/scripts.inc"
 	
-	.include "data/maps/MetaPuzzle_EmptyPuzzle/scripts.inc"
 	.include "data/maps/MetaPuzzle_StrengthRoom/scripts.inc"
 	
 	@ -------------------------------------------------
