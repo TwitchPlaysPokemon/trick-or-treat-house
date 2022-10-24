@@ -103,5 +103,5 @@ script Meta_KogaElbow_TriggerScript_CheckpointLocation {
 	// getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
 	// setwarp(WARPTYPE_AUXILIARY, MAP_META_KOGA_ELBOW, -1, VAR_INTERACT_X, VAR_INTERACT_Y)
 	setwarp(WARPTYPE_AUXILIARY, MAP_META_KOGA_ELBOW)
-	release
+	// release
 }
