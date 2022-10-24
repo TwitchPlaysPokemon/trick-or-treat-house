@@ -2,7 +2,7 @@
   "id": "MAP_META_BIKE_PATH",
   "name": "Meta_BikePath",
   "layout": "LAYOUT_META_BIKE_PATH",
-  "music": "MUS_ABANDONED_SHIP",
+  "music": "MUS_HG_CYCLING",
   "region_map_section": "MAPSEC_NONE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

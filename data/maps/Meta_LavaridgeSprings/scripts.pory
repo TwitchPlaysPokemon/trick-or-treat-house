@@ -1,12 +1,38 @@
 raw `
+#define LID_FLANNERY 10
+
 Meta_LavaridgeSprings_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_LavaridgeSprings_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, Meta_LavaridgeSprings_OnLoad
 	.byte 0
 `
 
 script(local) Meta_LavaridgeSprings_OnTransition {
 	set_meta_visited_flag(MAP_META_LAVARIDGE_SPRINGS)
+}
+
+script(local) Meta_LavaridgeSprings_OnLoad {
+	if (var(VAR_GRID_SIZE) == GRID_SIZE_1x2) {
+		setobjectxyperm(LID_FLANNERY, 100, 100) // move off map
+	}
+}
+
+script Meta_LavaridgeSprings_EventScript_Flannery {
+	if (!flag(FLAG_TEMP_1)) {
+		msgbox( "This is amazing! Thank you for making\n"
+				"this dream come true!\p"
+				"What sort of puzzle is this? Well,\n"
+				"why don't you check out the pedestal\l"
+				"to my left and find out! Hehe!$", MSGBOX_NPC)
+		setflag(FLAG_TEMP_1)
+	} else {
+		msgbox( "I'll give you a hint: The Final Bluff?\n"
+				"The room marked by the rock icon?\p"
+				"That's where the exit door is.\p"
+				"But you're gonna need a bunch of things\n"
+				"to get to the top of that room!$", MSGBOX_NPC)
+	}
 }
 
 script Meta_LavaridgeSprings_EventScript_TestOpen {

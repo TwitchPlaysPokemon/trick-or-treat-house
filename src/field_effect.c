@@ -35,6 +35,8 @@
 #include "constants/flags.h"
 #include "constants/event_object_movement.h"
 #include "constants/metatile_behaviors.h"
+#include "constants/maps.h"
+#include "constants/map_groups.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
@@ -3008,8 +3010,10 @@ u8 FldEff_UseSurf(void)
 {
     u8 taskId = CreateTask(Task_SurfFieldEffect, 0xff);
     gTasks[taskId].tMonId = gFieldEffectArguments[0];
-    Overworld_ClearSavedMusic();
-    Overworld_ChangeMusicTo(MUS_SURF);
+    if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(META_ENTRANCE)) {
+        Overworld_ClearSavedMusic();
+        Overworld_ChangeMusicTo(MUS_SURF);
+    }
     return FALSE;
 }
 

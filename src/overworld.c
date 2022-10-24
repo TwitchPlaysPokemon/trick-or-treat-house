@@ -1112,8 +1112,9 @@ u16 GetLocationMusic(struct WarpData *warp)
     // Save off old Result
     u16 savedRes = gSpecialVar_Result, musSel;
     gSpecialVar_Result = MUS_NONE;
-    MapHeaderRunScriptType(MAP_SCRIPT_ON_PLAY_MAP_MUSIC);
+    RunOnPlayMapMusicMapScript((warp->mapGroup << 8) | warp->mapNum);
     // restore it
+    mgba_printf(MGBA_LOG_INFO, "GetLocationMusic(%d,%d) => gSpecialVar_Result=%d", gSpecialVar_Result);
     musSel = gSpecialVar_Result;
     gSpecialVar_Result = savedRes;
     // If there was a script, and it returned something...
@@ -1144,6 +1145,7 @@ void Overworld_PlaySpecialMapMusic(void)
     u16 music = GetCurrLocationDefaultMusic();
 
     // if (music != MUS_ABNORMAL_WEATHER && music != MUS_NONE)
+    if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(META_ENTRANCE))
     {
         if (gSaveBlock1Ptr->savedMusic)
             music = gSaveBlock1Ptr->savedMusic;
@@ -1171,7 +1173,15 @@ void Overworld_ClearSavedMusic(void)
 
 static void TransitionMapMusic(void)
 {
-    if (FlagGet(FLAG_DONT_TRANSITION_MUSIC) != TRUE)
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(META_ENTRANCE))
+    {   // Transition faster in the meta puzzle
+        u16 newMusic = GetWarpDestinationMusic();
+        u16 currentMusic = GetCurrentMapMusic();
+        if (newMusic != currentMusic) {
+            FadeOutAndPlayNewMapMusic(newMusic, 4);
+        }
+    }
+    else if (FlagGet(FLAG_DONT_TRANSITION_MUSIC) != TRUE)
     {
         u16 newMusic = GetWarpDestinationMusic();
         u16 currentMusic = GetCurrentMapMusic();

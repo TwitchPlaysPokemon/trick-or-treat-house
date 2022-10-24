@@ -31,6 +31,8 @@
 #include "constants/moves.h"
 #include "constants/songs.h"
 #include "constants/species.h"
+#include "constants/maps.h"
+#include "constants/map_groups.h"
 #include "constants/trainer_types.h"
 
 #define NUM_FORCED_MOVEMENTS 18
@@ -1680,8 +1682,10 @@ static void CreateStopSurfingTask(u8 direction)
     u8 taskId;
 
     LockPlayerFieldControls();
-    Overworld_ClearSavedMusic();
-    Overworld_ChangeMusicToDefault();
+    if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(META_ENTRANCE)) {
+        Overworld_ClearSavedMusic();
+        Overworld_ChangeMusicToDefault();
+    }
     gPlayerAvatar.flags &= ~PLAYER_AVATAR_FLAG_SURFING;
     if (FlagGet(FLAG_SYS_CYCLING_ROAD)) {
         gPlayerAvatar.flags |= PLAYER_AVATAR_FLAG_MACH_BIKE;

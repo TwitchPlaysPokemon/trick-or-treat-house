@@ -5,7 +5,10 @@ raw `
 
 // FLAG_PUZZLE_20 (+25) = Visited/Finished room flags
 // ...FLAG_PUZZLE_39
+// 
+
 // FLAG_PUZZLE_ITEM_0 = watering can in Ziggy room
+// FLAG_PUZZLE_ITEM_1 = Acro Bike
 
 #define VAR_LOC_SCROLL     VAR_PUZZLE_11
 #define VAR_LOC_CUT        VAR_PUZZLE_12
@@ -18,6 +21,14 @@ raw `
 #define VAR_LOC_PEDESTAL3  VAR_PUZZLE_18
 #define VAR_LOC_PEDESTAL4  VAR_PUZZLE_19
 
+#define GRID_SIZE_1x2 (1 << 8) | (2)
+#define GRID_SIZE_3x3 (3 << 8) | (3)
+#define GRID_SIZE_4x4 (4 << 8) | (4)
+
+@ The above are all undef'd at the end of the NullRoom, which is included last
+
+#define LID_MASTER 2
+
 Puzzle_MetaPuzzle_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
 	puzzle_quip Puzzle_MetaPuzzle_Quip
@@ -25,6 +36,8 @@ Puzzle_MetaPuzzle_MapScripts::
 	puzzle_candylist Puzzle_MetaPuzzle_CandyList
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_MetaPuzzle_OnLoad
 	map_script MAP_SCRIPT_ON_PUZZLE_CUSTOM_INTRO, Puzzle_MetaPuzzle_IntroScript
+	map_script MAP_SCRIPT_ON_ABOUT_TO_WARP, Puzzle_MetaPuzzle_RedirectWarp
+	map_script MAP_SCRIPT_ON_RESUME, SecretBase_OnResume
 	.byte 0
 
 Puzzle_MetaPuzzle_Name:
@@ -78,61 +91,125 @@ Puzzle_MetaPuzzle_CandyList:
 // ----------------------------------------------------
 
 script Puzzle_MetaPuzzle_OnLoad {
-	setmetatile(6, 6, 0x234, FALSE)
-	setmetatile(6, 7, 0x23C, FALSE)
+	// setmetatile(6, 6, 0x234, FALSE)
+	// setmetatile(6, 7, 0x23C, FALSE)
+}
+
+script(local) Puzzle_MetaPuzzle_RedirectWarp {
+	if (var(VAR_GRID_SIZE) != 0) {
+		setwarp(WARPTYPE_STANDARD, MAP_META_ENTRANCE, 0)
+	}
 }
 
 // ----------------------------------------------------
 // Intro Script
 
 script Puzzle_MetaPuzzle_IntroScript {
-	// if (var(VAR_MISTRESS_STATE) == 0) {
-	// msgbox("Oh, uh, hi.\p"
-	// 		"You were probably expecting the TRICK\n"
-	// 		"MASTER. I'm his sister. Long story…\p"
-	// 		"I'm curious, did you pick up any\n"
-	// 		"essences of puzzles tonight?$")
-	// } else {
-	// msgbox ("Hello again. This is it.\n"
-	// 		"This is my chance.\p"
-	// 		"Did you happen to find any more\n"
-	// 		"essences of puzzles since we last spoke?$")
-	// }
-	// call(MetaPuzzle_DropOffEvents)
-	// if (var(VAR_0x800A) == 0) {
-	// 	if (var(VAR_MISTRESS_STATE) == 0) {
-	// msgbox ("Ah, you… haven't…\p"
-	// 		"So that basically means I have no\n"
-	// 		"puzzle for you to do…\p"
-	// 		"<sigh>{PAUSE 30}\n"
-	// 		"Well… there's always next year…$")
-	// 		goto(Puzzle_MetaPuzzle_IntroScript_NoPuzzleWalkout)
-	// 	} else {
-	// message ("Ah, no, you haven't, so…\p$")
-	// waitmessage
-	// 	}
-	// }
-	// callnative(MetaPuzzle_CountSubmittedItems)
-	// buffernumberstring2(1, VAR_RESULT)
-	// if (var(VAR_RESULT) < 8) {
-	// msgbox ("So, that's… {STR_VAR_1} items…\n"
-	// 		"… …not enough to make my puzzle.\p"
-	// 		"<sigh>{PAUSE 30}\n"
-	// 		"Well… there's always next year…$")
-	// 	goto(Puzzle_MetaPuzzle_IntroScript_NoPuzzleWalkout)
-	// }
-	// elif (var(VAR_RESULT) < 15) {
-	// 	// TODO yay minimum puzzle!
-	// }
-	// else {
-	// 	// TODO yay full puzzle!
-	// }
+	speakername_common(TRICK_MISTRESS)
+	message("Hello again. This is it.\n"
+			"This is my big chance.\p"
+			"Well, what puzzle essences have you\n"
+			"managed to find tonight? Let's see…\p$")
+	waitmessage
+	message("…{PAUSE 30} …{PAUSE 30} …{PAUSE 30} …{PAUSE 30}\p$")
+	applymovement(LID_MASTER, Common_Movement_WalkInPlaceRight)
+	delay(30)
+	applymovement(LID_PLAYER, Common_Movement_WalkInPlaceUp)
+	callnative(MetaPuzzle_DeterminePuzzleSetup)
+	waitmessage
+	applymovement(LID_PLAYER, Common_Movement_WalkInPlaceRight)
+	waitmovement(LID_PLAYER)
+	switch(var(VAR_RESULT)) {
+		case 0: // ERROR!
+			message("Oh god! My nose! I'm bleeding!\n"
+					"Uh, uh, uh, uh…!\p"
+					"It must be the nerves! I have to go!\n"
+					"Where's the bathroom?!$")
+			applymovement(LID_PLAYER, Common_Movement_QuestionMark)
+			waitmessage
+			waitbuttonpress
+			closemessage
+			applymovement(LID_MASTER, Puzzle_MetaPuzzle_IntroMovement_Flannery_Error)
+			applymovement(LID_PLAYER, Puzzle_MetaPuzzle_IntroMovement_Player_Error)
+			playse(SE_PIN)
+			waitmovement(LID_MASTER)
+			removeobject(LID_MASTER)
+			// Player approaches door
+			applymovement(LID_PLAYER, Common_Movement_WalkUp1)
+			waitmovement(LID_PLAYER)
+			// Open the door to the puzzle
+			opendoor(22, 2)
+			waitdooranim
+			// Clean up
+			setvar(VAR_PUZZLE_STATE, 1)
+			setescapewarp(MAP_TRICK_HOUSE_CORRIDOR, -1, 22, 3)
+			call (TrickHouseCorridor_OpenPuzzleDoor)
+			releaseall
+			end
+		case 1: // Pathetic layout
+			message("Wait… How--? How did you LOSE the\n"
+					"pieces I gave you?!\p")
+			waitmessage
+			message("I'm… I can't…$")
+			applymovement(LID_MASTER, Common_Movement_WalkInPlaceLeft)
+			waitmovement(LID_MASTER)
+			waitmessage
+			waitbuttonpress
+			closemessage
+			goto(Puzzle_MetaPuzzle_IntroScript_BadPuzzleWalkout)
+		case 2: // Bad layout
+			message("Uh… Th-There's not much here…\n"
+					"There's not enough…\p$")
+			waitmessage
+			message("I, uh…{PAUSE 30} I can't do anything with this…!\n"
+					"… … … …{PAUSE 30}\p"
+					"I…{PAUSE 30} I'm just gonna… … … …$")
+			applymovement(LID_MASTER, Common_Movement_WalkInPlaceLeft)
+			waitmovement(LID_MASTER)
+			waitmessage
+			waitbuttonpress
+			closemessage
+			goto(Puzzle_MetaPuzzle_IntroScript_BadPuzzleWalkout)
+		case 3: // Good layout
+			message("Okay! This works…! It's not ideal\n"
+					"but I can work with it!\p$")
+			waitmessage
+			message("I can make a puzzle with this!\n"
+					"It's not as big as I want…\l"
+					"but it's good! This is good!\p"
+					"I think this can actually show up my\n"
+					"brother! Thank you!\p"
+					"Let's head inside!$")
+			applymovement(LID_MASTER, Common_Movement_WalkInPlaceLeft)
+			waitmovement(LID_MASTER)
+			waitmessage
+			waitbuttonpress
+			closemessage
+			goto(Puzzle_MetaPuzzle_IntroScript_GoodPuzzleWalkout)
+		case 4: // Best layout
+			message("Oh my goodness! You DID it!!\p$")
+			waitmessage
+			message("You've got enough pieces here to build\n"
+					"the puzzle of my dreams! Yes!\p"
+					"Excellent! I can truly show up my brother\n"
+					"now! Who's the REAL Trick Master now?!\p"
+					"Come on! Let's check it out!$")
+			applymovement(LID_MASTER, Common_Movement_WalkInPlaceLeft)
+			applymovement(LID_PLAYER, Common_Movement_ExclamationMark)
+			playse(SE_PIN)
+			waitmovement(LID_MASTER)
+			waitmessage
+			waitbuttonpress
+			closemessage
+			goto(Puzzle_MetaPuzzle_IntroScript_GoodPuzzleWalkout)
+	}
 }
 
-script Puzzle_MetaPuzzle_IntroScript_NoPuzzleWalkout {
-	applymovement(2, Puzzle_MetaPuzzle_IntroScript_NoPuzzleWalkout_Move1)
-	applymovement(LID_PLAYER, Puzzle_MetaPuzzle_IntroScript_NoPuzzleWalkout_Move2)
-	waitmovement(2)
+script Puzzle_MetaPuzzle_IntroScript_BadPuzzleWalkout {
+	applymovement(LID_MASTER, Puzzle_MetaPuzzle_IntroMovement_Flannery_Bad)
+	applymovement(LID_PLAYER, Puzzle_MetaPuzzle_IntroMovement_Player_Bad)
+	waitmovement(LID_MASTER)
+	removeobject(LID_MASTER)
 	// Player approaches door
 	applymovement(LID_PLAYER, Common_Movement_WalkUp2)
 	waitmovement(0)
@@ -144,20 +221,67 @@ script Puzzle_MetaPuzzle_IntroScript_NoPuzzleWalkout {
 	setescapewarp(MAP_TRICK_HOUSE_CORRIDOR, -1, 22, 3)
 	call (TrickHouseCorridor_OpenPuzzleDoor)
 	releaseall
+	end
+}
+script Puzzle_MetaPuzzle_IntroScript_GoodPuzzleWalkout {
+	// Player approaches door
+	applymovement(LID_PLAYER, Common_Movement_WalkUp2)
+	applymovement(LID_MASTER, Common_Movement_WalkUp2)
+	waitmovement(0)
+	// Open the door to the puzzle
+	opendoor(22, 2)
+	waitdooranim
+	// intro character walks through
+	applymovement(LID_MASTER, Puzzle_MetaPuzzle_IntroMovement_Flannery_Good1)
+	waitmovement(LID_MASTER)
+	applymovement(LID_MASTER, Puzzle_MetaPuzzle_IntroMovement_Flannery_Good2)
+	playse(SE_LEDGE)
+	waitmovement(LID_MASTER)
+	removeobject(LID_MASTER)
+	playse(SE_EXIT)
+	// Clean up
+	setvar(VAR_PUZZLE_STATE, 1)
+	setescapewarp(MAP_TRICK_HOUSE_CORRIDOR, -1, 22, 3)
+	call (TrickHouseCorridor_OpenPuzzleDoor)
+	releaseall
+	end
 }
 
-movement Puzzle_MetaPuzzle_IntroScript_NoPuzzleWalkout_Move1 {
-	walk_slow_down
-	walk_slow_left * 2
-	walk_left * 3
-	walk_fast_left * 3
+movement Puzzle_MetaPuzzle_IntroMovement_Flannery_Error {
+	walk_fast_down
+	walk_fast_left * 9
 }
-movement Puzzle_MetaPuzzle_IntroScript_NoPuzzleWalkout_Move2 {
+movement Puzzle_MetaPuzzle_IntroMovement_Player_Error {
+	emote_exclamation_mark
+	delay_16
+	face_down
+	delay_16 * 2
+	face_left
+}
+movement Puzzle_MetaPuzzle_IntroMovement_Flannery_Bad {
+	walk_slow_down
+	walk_slow_left * 3
+	walk_left * 6
+}
+movement Puzzle_MetaPuzzle_IntroMovement_Player_Bad {
 	delay_16
 	face_down
 	delay_16 * 5
 	face_left
 }
+movement Puzzle_MetaPuzzle_IntroMovement_Flannery_Good1 {
+	walk_up
+	walk_left
+	walk_up
+	delay_16
+	face_down
+}
+movement Puzzle_MetaPuzzle_IntroMovement_Flannery_Good2 {
+	jump_in_place_down
+	walk_fast_up
+	set_invisible
+}
+
 
 // ----------------------------------------------------
 //  1 = BREAKABLE_ROCK => from MAP_PUZZLE_TRICK_HOUSE_ORIGINAL3
@@ -260,6 +384,12 @@ script MetaPuzzle_PickupEvent_WaterCushion {
 }
 script MetaPuzzle_PickupEvent_SeedotDoll {
 	finditem_std(ITEM_META_ITEM_SEEDOT, 1)
+}
+
+// ----------------------------------------------------
+
+script MetaPuzzle_ItemBall_AcroBike {
+	finditem_std(ITEM_ACRO_BIKE, 1)
 }
 
 // ----------------------------------------------------
@@ -368,8 +498,8 @@ script MetaPuzzle_TestSetup3x3 {
 	
 	setvar(VAR_ROOM_ID_0_0 + 6, MAP_META_ICE_CORNER)
 	setvar(VAR_ROOM_ID_0_0 + 7, MAP_META_LAVARIDGE_SPRINGS)
+	setvar(VAR_ROOM_ID_0_0 + 8, MAP_META_NULL_ROOM)
 	
-	setvar(VAR_ROOM_ID_0_0 + 8, MAP_META_DIVE_MAZE)
 	setvar(VAR_ROOM_ID_0_0 + 9, 0)
 	setvar(VAR_ROOM_ID_0_0 + 10, 0)
 	setvar(VAR_ROOM_ID_0_0 + 11, 0)
@@ -389,7 +519,5 @@ script MetaPuzzle_TestSetup3x3 {
 }
 
 raw `
-#undef VAR_GRID_SIZE       
-#undef VAR_ROOM_ID_0_0     
-#undef VAR_ROOM_RESERVE_END
+#undef LID_MASTER
 `

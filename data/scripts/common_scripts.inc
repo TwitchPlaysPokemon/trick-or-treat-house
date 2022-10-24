@@ -269,6 +269,8 @@ Common_Movement_KecleonShowAnim: @ 82723C7
 CommonName_TrickMaster::
 CommonName_TRICK_MASTER::
 	.string "Trick Master$"
+CommonName_TRICK_MISTRESS::
+	.string "Trick Mistress$"
 CommonName_BRENDAN::
 	.string "{BRENDAN}$"
 CommonName_MAY::

@@ -2,7 +2,7 @@
   "id": "MAP_META_EMPTY_FILLED",
   "name": "Meta_EmptyFilled",
   "layout": "LAYOUT_META_EMPTY_FILLED",
-  "music": "MUS_ABANDONED_SHIP",
+  "music": "MUS_DP_INSIDE_POKEMON_LEAGUE",
   "region_map_section": "MAPSEC_NONE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

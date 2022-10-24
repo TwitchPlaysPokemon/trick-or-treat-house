@@ -292,7 +292,6 @@ gStdScripts_End::
 
 	.include "data/maps/Puzzle_MetaPuzzle/scripts.inc"
 	
-	.include "data/maps/Meta_NullRoom/scripts.inc"
 	.include "data/maps/Meta_EmptyNW/scripts.inc"
 	.include "data/maps/Meta_EmptyNE/scripts.inc"
 	.include "data/maps/Meta_EmptySW/scripts.inc"
@@ -317,6 +316,11 @@ gStdScripts_End::
 	.include "data/maps/Meta_SubductionZone/scripts.inc"
 	.include "data/maps/Meta_DiveMaze/scripts.inc"
 	.include "data/maps/Meta_BerryRoom/scripts.inc"
+
+	.include "data/maps/FinalBluff_Dive/scripts.inc"
+	.include "data/maps/MetaDiveMaze_Dive/scripts.inc"
+	
+	.include "data/maps/Meta_NullRoom/scripts.inc"
 	
 	@ -------------------------------------------------
 	
@@ -821,7 +825,3 @@ gText_LinkRecordCouldntBeSaved::
 
 
 	.include "data/maps/TestPyramidTileset/scripts.inc"
-
-	.include "data/maps/FinalBluff_Dive/scripts.inc"
-
-	.include "data/maps/MetaDiveMaze_Dive/scripts.inc"

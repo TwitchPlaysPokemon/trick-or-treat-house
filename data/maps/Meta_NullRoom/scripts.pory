@@ -8,3 +8,26 @@ Meta_NullRoom_MapScripts::
 script(local) Meta_NullRoom_OnTransition {
 	set_meta_visited_flag(MAP_META_NULL_ROOM)
 }
+
+raw `
+
+#undef VAR_GRID_SIZE
+#undef VAR_ROOM_ID_0_0
+#undef VAR_ROOM_RESERVE_END
+
+#undef VAR_LOC_SCROLL
+#undef VAR_LOC_CUT
+#undef VAR_LOC_ROCK_SMASH
+#undef VAR_LOC_STRENGTH
+#undef VAR_LOC_DIVE
+#undef VAR_LOC_WATERFALL
+// First pedestal is always in Lavaridge
+#undef VAR_LOC_PEDESTAL2
+#undef VAR_LOC_PEDESTAL3
+#undef VAR_LOC_PEDESTAL4
+
+#undef GRID_SIZE_1x2
+#undef GRID_SIZE_3x3
+#undef GRID_SIZE_4x4
+
+`

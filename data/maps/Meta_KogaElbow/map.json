@@ -2,7 +2,7 @@
   "id": "MAP_META_KOGA_ELBOW",
   "name": "Meta_KogaElbow",
   "layout": "LAYOUT_META_KOGA_ELBOW",
-  "music": "MUS_ABANDONED_SHIP",
+  "music": "MUS_RG_SILPH",
   "region_map_section": "MAPSEC_NONE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

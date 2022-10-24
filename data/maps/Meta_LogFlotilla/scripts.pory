@@ -1,10 +1,20 @@
 raw `
 Meta_LogFlotilla_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
-	map_script MAP_SCRIPT_ON_TRANSITION, Meta_ELogFlotilla_OnTransition
+	map_script MAP_SCRIPT_ON_TRANSITION, Meta_LogFlotilla_OnTransition
+	map_script MAP_SCRIPT_ON_PLAY_MAP_MUSIC, Meta_LogFlotilla_OnPlayMapMusic
 	.byte 0
 `
 
-script(local) Meta_ELogFlotilla_OnTransition {
+script(local) Meta_LogFlotilla_OnPlayMapMusic {
+	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
+	// Basically make a diagonal line across the map, top-left to bottom-right
+	if (var(VAR_INTERACT_X) <  VAR_INTERACT_Y) {
+		setvar(VAR_RESULT, MUS_DP_ROUTE206_DAY)
+	} else {
+		setvar(VAR_RESULT, MUS_DP_ROUTE206_NIGHT)
+	}
+}
+script(local) Meta_LogFlotilla_OnTransition {
 	set_meta_visited_flag(MAP_META_LOG_FLOTILLA)
 }

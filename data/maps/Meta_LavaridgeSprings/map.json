@@ -2,7 +2,7 @@
   "id": "MAP_META_LAVARIDGE_SPRINGS",
   "name": "Meta_LavaridgeSprings",
   "layout": "LAYOUT_META_LAVARIDGE_SPRINGS",
-  "music": "MUS_ABANDONED_SHIP",
+  "music": "MUS_DP_INSIDE_POKEMON_LEAGUE",
   "region_map_section": "MAPSEC_LAVARIDGE_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -108,19 +108,6 @@
       "flag": "FLAG_ALWAYS_TRUE"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_SCROLL_ROOM",
-      "x": 22,
-      "y": 11,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "TestMapHallway_ReturnToHallway_EntranceObject",
-      "flag": "0"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_META_PEDESTAL",
       "x": 21,
       "y": 23,
@@ -144,7 +131,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MetaPuzzle_TestSetup4x4",
-      "flag": "0"
+      "flag": "FLAG_ALWAYS_TRUE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FIRE_CUSHION",
@@ -157,7 +144,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Meta_LavaridgeSprings_EventScript_TestOpen",
-      "flag": "0"
+      "flag": "FLAG_ALWAYS_TRUE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ROUND_CUSHION",
@@ -170,12 +157,12 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MetaPuzzle_TestSetup3x3",
-      "flag": "0"
+      "flag": "FLAG_ALWAYS_TRUE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_HM_BALL",
-      "x": 18,
-      "y": 10,
+      "x": 5,
+      "y": 5,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -184,12 +171,25 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Common_EventScript_ItemSurf",
       "flag": "FLAG_PICKED_UP_SURF_ITEM"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_FLANNERY",
+      "x": 19,
+      "y": 23,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Meta_LavaridgeSprings_EventScript_Flannery",
+      "flag": "0"
     }
   ],
   "warp_events": [
     {
-      "x": 22,
-      "y": 11,
+      "x": 20,
+      "y": 19,
       "elevation": 0,
       "dest_map": "MAP_NONE",
       "dest_warp_id": 0

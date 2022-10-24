@@ -53,6 +53,7 @@ void RunOnUnloadMapScript(void);
 void RunOnReturnToFieldMapScript(void);
 void RunOnDiveWarpMapScript(void);
 void RunOnAboutToWarpMapScript(void);
+void RunOnPlayMapMusicMapScript(u16 mapId);
 void RunOnSpawnObjectEventMapScript(u8 objId);
 u8 *MapHeaderGetScriptTableForMapId(u16 mapid, u8 tag);
 u8 *GetMapHeaderString(u16 mapId, u8 tag);

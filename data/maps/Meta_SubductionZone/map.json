@@ -2,7 +2,7 @@
   "id": "MAP_META_SUBDUCTION_ZONE",
   "name": "Meta_SubductionZone",
   "layout": "LAYOUT_META_SUBDUCTION_ZONE",
-  "music": "MUS_ABANDONED_SHIP",
+  "music": "MUS_HG_DRAGONS_DEN",
   "region_map_section": "MAPSEC_NONE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

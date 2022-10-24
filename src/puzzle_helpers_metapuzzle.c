@@ -133,10 +133,19 @@ struct MetaRoomInfo {
 	u8 tileTag;
 	u8 palTag;
 	u16 requiredItem;
-	bool8 north:1;
-	bool8 south:1;
-	bool8 west:1;
-	bool8 east:1;
+	bool32 north:1;
+	bool32 south:1;
+	bool32 west:1;
+	bool32 east:1;
+	bool32 supplies_pedestal:1;
+	bool32 supplies_item:1;
+	bool32 requires_scroll:1;
+	bool32 requires_cut:1;
+	bool32 requires_rocksmash:1;
+	bool32 requires_strength:1;
+	bool32 requires_surf:1;
+	bool32 requires_dive:1;
+	bool32 requires_waterfall:1;
 	const struct ObjectEventTemplate* connObj;
 };
 
@@ -161,8 +170,12 @@ static const struct ObjectEventTemplate sConnObject_Submarine = {
 };
 
 static const struct MetaRoomInfo sMetaRoomInfo[] = {
-	[MAP_NUM(MAP_META_NULL_ROOM)] = {},
-	[MAP_NUM(MAP_META_EMPTY_FILLED)] = {},
+	[MAP_NUM(MAP_META_NULL_ROOM)] = {
+		.tileTag=TAG_ICON_UNKNOWN, .palTag=TAG_ICON_UNKNOWN,
+	},
+	[MAP_NUM(MAP_META_EMPTY_FILLED)] = {
+		.tileTag=TAG_ICON_UNKNOWN, .palTag=TAG_ICON_UNKNOWN,
+	},
 	[MAP_NUM(MAP_META_EMPTY_NW)] = {
 		.north=1, .west=1, 
 		.tileTag=TAG_ICON_UNKNOWN, .palTag=TAG_ICON_UNKNOWN, 
@@ -194,87 +207,107 @@ static const struct MetaRoomInfo sMetaRoomInfo[] = {
 		.requiredItem=ITEM_NONE,
 	},
 	[MAP_NUM(MAP_META_EMPTY_S)] = {
-		.south=1,          
+		.south=1,
 		.tileTag=TAG_ICON_UNKNOWN, .palTag=TAG_ICON_UNKNOWN, 
 		.requiredItem=ITEM_NONE,
 	},
 	[MAP_NUM(MAP_META_ENTRANCE)] = {
-		.north=1,          
+		.north=1,
 		.tileTag=TAG_ICON_UNKNOWN, .palTag=TAG_ICON_UNKNOWN, 
 		.requiredItem=ITEM_NONE,
 	},
 	[MAP_NUM(MAP_META_LAVARIDGE_SPRINGS)] = {
 		.south=1, .east=1, 
-		.tileTag=TAG_ICON_LAVARIDGE, .palTag=TAG_PAL_NPC1,     
+		.tileTag=TAG_ICON_LAVARIDGE, .palTag=TAG_PAL_NPC1,
+		.supplies_pedestal=TRUE,
 		.requiredItem=ITEM_META_ITEM_LAVARIDGE,
 	},
 	[MAP_NUM(MAP_META_LEDGE_ROOM)] = {
 		.north=1, .east=1, 
-		.tileTag=TAG_ICON_LEDGE, .palTag=TAG_PAL_NPC1,     
+		.tileTag=TAG_ICON_LEDGE, .palTag=TAG_PAL_NPC1,
+		.supplies_item=TRUE,
 		.requiredItem=ITEM_META_ITEM_LEDGE,
 	},
 	[MAP_NUM(MAP_META_FINAL_BLUFF)] = {
-		.west=1,           
-		.tileTag=TAG_ICON_FINAL, .palTag=TAG_PAL_NPC1,     
+		.west=1, 
+		.tileTag=TAG_ICON_FINAL, .palTag=TAG_PAL_NPC1,
 		.requiredItem=ITEM_META_ITEM_FINAL_BLUFF,
+		.requires_scroll=TRUE,
+		.requires_cut=TRUE,
+		.requires_dive=TRUE,
+		.requires_rocksmash=TRUE,
+		.requires_strength=TRUE,
+		.requires_surf=TRUE,
+		.requires_waterfall=TRUE,
 		.connObj=&sConnObject_EndDoor,
 	},
 	[MAP_NUM(MAP_META_ICE_CORNER)] = {
 		.south=1, .west=1, 
-		.tileTag=TAG_ICON_ICE, .palTag=TAG_ICON_ICE,     
+		.tileTag=TAG_ICON_ICE, .palTag=TAG_ICON_ICE,
 		.requiredItem=ITEM_META_ITEM_ICE_CORNER,
+		.supplies_item=TRUE,
 		.connObj=&sConnObject_RegiIce,
 	},
 	[MAP_NUM(MAP_META_LOG_FLOTILLA)] = {
 		.south=1, .east=1, 
-		.tileTag=TAG_ICON_LOG, .palTag=TAG_PAL_NPC3,     
+		.tileTag=TAG_ICON_LOG, .palTag=TAG_PAL_NPC3,
+		.supplies_item=TRUE,
 		.requiredItem=ITEM_META_ITEM_LOG_FLOAT,
 	},
 	[MAP_NUM(MAP_META_BIKE_PATH)] = {
 		.south=1, .north=1,
-		.tileTag=TAG_ICON_BIKE, .palTag=TAG_PAL_NPC3,     
+		.tileTag=TAG_ICON_BIKE, .palTag=TAG_PAL_NPC3,
+		.supplies_pedestal=TRUE,
 		.requiredItem=ITEM_META_ITEM_BIKE_PATH,
 	},
 	[MAP_NUM(MAP_META_POKE_STAGE)] = {
-		.south=1,          
-		.tileTag=TAG_ICON_STAGE, .palTag=TAG_PAL_NPC1,     
+		.south=1,
+		.tileTag=TAG_ICON_STAGE, .palTag=TAG_PAL_NPC1,
+		.supplies_item=TRUE,
 		.requiredItem=ITEM_META_ITEM_POKE_STAGE,
 	},
 	[MAP_NUM(MAP_META_ZIGGY_ROOM)] = {
 		.south=1, .west=1, 
-		.tileTag=TAG_ICON_ZIGGY, .palTag=TAG_PAL_NPC1,     
+		.tileTag=TAG_ICON_ZIGGY, .palTag=TAG_PAL_NPC1,
+		.supplies_item=TRUE,
+		.requires_cut=TRUE,
 		.requiredItem=ITEM_META_ITEM_ZIGGY,
 		.connObj=&sConnObject_Ziggy,
 	},
 	[MAP_NUM(MAP_META_FOREST_CLEARING)] = {
 		.south=1, .east=1, 
-		.tileTag=TAG_ICON_FOREST, .palTag=TAG_PAL_NPC3,     
+		.tileTag=TAG_ICON_FOREST, .palTag=TAG_PAL_NPC3,
+		.supplies_item=TRUE,
 		.requiredItem=ITEM_META_ITEM_FOREST,
 	},
 	[MAP_NUM(MAP_META_ZIP_SLIDE)] = {
 		.west=1,  .east=1, 
-		.tileTag=TAG_ICON_ZIP, .palTag=TAG_PAL_NPC2,     
+		.tileTag=TAG_ICON_ZIP, .palTag=TAG_PAL_NPC2,
 		.requiredItem=ITEM_META_ITEM_ZIP_SLIDE,
 	},
 	[MAP_NUM(MAP_META_KOGA_ELBOW)] = {
 		.north=1, .west=1, 
-		.tileTag=TAG_ICON_KOGA, .palTag=TAG_PAL_NPC4,     
+		.tileTag=TAG_ICON_KOGA, .palTag=TAG_PAL_NPC4,
+		.supplies_item=TRUE,
 		.requiredItem=ITEM_META_ITEM_KOGA,
 	},
 	[MAP_NUM(MAP_META_SUBDUCTION_ZONE)] = {
 		.west=1,  .east=1, 
-		.tileTag=TAG_ICON_FIRE, .palTag=TAG_PAL_NPC2,     
+		.tileTag=TAG_ICON_FIRE, .palTag=TAG_PAL_NPC2,
 		.requiredItem=ITEM_META_ITEM_FIRE,
 	},
 	[MAP_NUM(MAP_META_DIVE_MAZE)] = {
 		.north=1, .south=1,
-		.tileTag=TAG_ICON_DIVE, .palTag=TAG_PAL_NPC1,     
+		.tileTag=TAG_ICON_DIVE, .palTag=TAG_PAL_NPC1,
+		.supplies_item=TRUE,
+		.requires_surf=TRUE,
 		.requiredItem=ITEM_META_ITEM_DIVE,
 		.connObj=&sConnObject_Submarine,
 	},
 	[MAP_NUM(MAP_META_BERRY_ROOM)] = {
 		.north=1, .east=1, 
-		.tileTag=TAG_ICON_BERRY, .palTag=TAG_ICON_BERRY,   
+		.tileTag=TAG_ICON_BERRY, .palTag=TAG_ICON_BERRY,
+		.supplies_pedestal=TRUE,
 		.requiredItem=ITEM_META_ITEM_BERRY,
 	}, /*
 	[MAP_NUM(MAP_META_ROOM_15)] = {
@@ -327,7 +360,168 @@ Dive => Bike over trees?
 Waterfall => Rocky Ridge climb
 */
 
+static u16 MetaPuzzle_GetRoomForSlot(const u16* fallbackList) {
+	mgba_printf(MGBA_LOG_INFO, "MetaPuzzle_GetRoomForSlot (%x)", fallbackList);
+	for(; TRUE; fallbackList++) {
+		u16 roomId = fallbackList[0];
+		if (roomId == MAP_NONE) {
+			// Reached end of list sentinel, error out!
+			mgba_printf(MGBA_LOG_INFO, "Reached end of list sentinel, error out!");
+			VarSet(VAR_RESULT, 0);
+			VarSet(VAR_GRID_SIZE, 0);
+			return 0xFFFF;
+		}
+		// sanity check
+		mgba_printf(MGBA_LOG_INFO, "mapnum=%d tileTag=%d", MAP_NUM(roomId), sMetaRoomInfo[MAP_NUM(roomId)].tileTag);
+		MGBA_ASSERT(sMetaRoomInfo[MAP_NUM(roomId)].tileTag >= TAG_ICON_UNKNOWN);
+		
+		u16 item = sMetaRoomInfo[MAP_NUM(roomId)].requiredItem;
+		if (item == ITEM_NONE) return roomId;
+		if (CheckBagHasItem(item, 1)) return roomId;
+	}
+}
 
+static void MetaPuzzle_SetupPatheticLayout() {
+	VarSet(VAR_RESULT, 1);
+	VarSet(VAR_GRID_SIZE, 0);
+	for (int i = 0; VAR_ROOM_ID_0_0 + i < VAR_ROOM_RESERVE_END; i++) {
+		VarSet(VAR_ROOM_ID_0_0 + i, 0);
+	}
+}
+
+static void MetaPuzzle_Setup2x1Layout() {
+	VarSet(VAR_RESULT, 2);
+	VarSet(VAR_GRID_SIZE, (1 << 8) | (2));
+	VarSet(VAR_ROOM_ID_0_0 + 0, MAP_META_LAVARIDGE_SPRINGS);
+	VarSet(VAR_ROOM_ID_0_0 + 1, MAP_META_FINAL_BLUFF);
+	for (int i = 2; VAR_ROOM_ID_0_0 + i < VAR_ROOM_RESERVE_END; i++) {
+		VarSet(VAR_ROOM_ID_0_0 + i, 0);
+	}
+}
+
+static void MetaPuzzle_Setup3x3Layout() {
+	VarSet(VAR_RESULT, 3);
+	VarSet(VAR_GRID_SIZE, (3 << 8) | (3));
+	
+	VarSet(VAR_ROOM_ID_0_0 + 0, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s3_1x1));
+	VarSet(VAR_ROOM_ID_0_0 + 1, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s3_2x1));
+	VarSet(VAR_ROOM_ID_0_0 + 2, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s3_3x1));
+	
+	VarSet(VAR_ROOM_ID_0_0 + 3, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s3_1x2));
+	VarSet(VAR_ROOM_ID_0_0 + 4, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s3_2x2));
+	VarSet(VAR_ROOM_ID_0_0 + 5, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s3_3x2));
+	
+	VarSet(VAR_ROOM_ID_0_0 + 6, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s3_1x3));
+	VarSet(VAR_ROOM_ID_0_0 + 7, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s3_2x3));
+	VarSet(VAR_ROOM_ID_0_0 + 8, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s3_3x3));
+	
+	for (int i = 9; VAR_ROOM_ID_0_0 + i < VAR_ROOM_RESERVE_END; i++) {
+		VarSet(VAR_ROOM_ID_0_0 + i, 0);
+	}
+}
+
+static void MetaPuzzle_Setup4x4Layout() {
+	VarSet(VAR_RESULT, 4);
+	VarSet(VAR_GRID_SIZE, (4 << 8) | (4));
+	
+	VarSet(VAR_ROOM_ID_0_0 + 0, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s4_1x1));
+	VarSet(VAR_ROOM_ID_0_0 + 1, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s4_2x1));
+	VarSet(VAR_ROOM_ID_0_0 + 2, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s4_3x1));
+	VarSet(VAR_ROOM_ID_0_0 + 3, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s4_4x1));
+	
+	VarSet(VAR_ROOM_ID_0_0 + 4, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s4_1x2));
+	VarSet(VAR_ROOM_ID_0_0 + 5, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s4_2x2));
+	VarSet(VAR_ROOM_ID_0_0 + 6, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s4_3x2));
+	VarSet(VAR_ROOM_ID_0_0 + 7, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s4_4x2));
+	
+	VarSet(VAR_ROOM_ID_0_0 + 8, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s4_1x3));
+	VarSet(VAR_ROOM_ID_0_0 + 9, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s4_2x3));
+	VarSet(VAR_ROOM_ID_0_0 +10, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s4_3x3));
+	VarSet(VAR_ROOM_ID_0_0 +11, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s4_4x3));
+	
+	VarSet(VAR_ROOM_ID_0_0 +12, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s4_1x4));
+	VarSet(VAR_ROOM_ID_0_0 +13, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s4_2x4));
+	VarSet(VAR_ROOM_ID_0_0 +14, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s4_3x4));
+	VarSet(VAR_ROOM_ID_0_0 +15, MetaPuzzle_GetRoomForSlot(sMetaRoom_FallbackList_s4_4x4));
+	
+	for (int i = 16; VAR_ROOM_ID_0_0 + i < VAR_ROOM_RESERVE_END; i++) { // this loop probably never runs
+		VarSet(VAR_ROOM_ID_0_0 + i, 0);
+	}
+}
+
+void MetaPuzzle_DeterminePuzzleSetup(struct ScriptContext* ctx)
+{
+	// Count all the objects collected, by exit configuration
+	// - If there's any configurations which have 0, then this has to be a 3x3 puzzle
+	// - Otherwise, this can be a 4x4 puzzle
+	// - If either Final Bluff or Lavaridge Springs are missing (should never happen), goto pathetic configuration as failsafe
+	u8 nw=0, ne=0, sw=0, se=0, ns=0, we=0, ss=0;
+	u8 req=0, opt=0;
+	
+	VarSet(VAR_RESULT, 0);
+	
+	for (int i=0; i < ARRAY_COUNT(sMetaRoomInfo); i++) {
+		u16 item = sMetaRoomInfo[i].requiredItem;
+		if (item == ITEM_NONE) continue;
+		if (!CheckBagHasItem(item, 1)) continue;
+		
+		if (i == MAP_NUM(MAP_META_LAVARIDGE_SPRINGS)) req++;
+		else if (i == MAP_NUM(MAP_META_FINAL_BLUFF)) req++;
+		else if (i == MAP_NUM(MAP_META_POKE_STAGE)) ss++;
+		else if (sMetaRoomInfo[i].north && sMetaRoomInfo[i].west) nw++;
+		else if (sMetaRoomInfo[i].north && sMetaRoomInfo[i].east) ne++;
+		else if (sMetaRoomInfo[i].south && sMetaRoomInfo[i].west) sw++;
+		else if (sMetaRoomInfo[i].south && sMetaRoomInfo[i].east) se++;
+		else if (sMetaRoomInfo[i].north && sMetaRoomInfo[i].south) ns++;
+		else if (sMetaRoomInfo[i].west && sMetaRoomInfo[i].east) we++;
+	}
+	
+	mgba_printf(MGBA_LOG_INFO, "Results:  nw=%d, ne=%d, sw=%d, se=%d, ns=%d, we=%d, ss=%d", nw, ne, sw, se, ns, we, ss);
+	mgba_printf(MGBA_LOG_INFO, "Results2: req=%d, opt=%d", req, opt);
+	
+	// The two required rooms are somehow not present, goto failsafe
+	if (req < 2) {
+		MetaPuzzle_SetupPatheticLayout();
+		return;
+	}
+	// Check for how many room configurations we have
+	if (nw > 0) opt++;
+	if (ne > 0) opt++;
+	if (sw > 0) opt++;
+	if (se > 0) opt++;
+	if (ns > 0) opt++;
+	if (we > 0) opt++;
+	// If we have to fill in too many rooms with empty rooms, goto failsafe
+	if (opt + req < 5) { // out of 8 rooms, 4+ need to be empty
+		MetaPuzzle_Setup2x1Layout();
+		return;
+	}
+	if (opt + req < 8) { // Out of 8 rooms, 1+ need to be empty
+		MetaPuzzle_Setup3x3Layout();
+		return;
+	}
+	// Check for multi configurations
+	if (ss > 0) opt++;
+	if (nw > 1) opt++;
+	if (ne > 1) opt++;
+	if (sw > 1) opt++;
+	if (se > 1) opt++;
+	if (ns > 1) opt++;
+	if (we > 1) opt++;
+	if (opt + req < 15) { // Out of 15 rooms, 4+ need to be empty
+		MetaPuzzle_Setup3x3Layout();
+		return;
+	}
+	MetaPuzzle_Setup4x4Layout();
+	return;
+}
+
+
+#pragma endregion
+
+#pragma region 
+//-----------------------------------------------------------------------------
+// Engine Helper Functions
 
 u16* MetaPuzzle_GetRoomGridVarPointer(int x, int y) {
 	u8 width  = (VarGet(VAR_GRID_SIZE) >> 0) & 0xFF;
@@ -511,25 +705,6 @@ void MetaPuzzle_CountCollectedItems(struct ScriptContext *ctx) {
 #pragma endregion
 //-----------------------------------------------------------------------------
 // Sliding Tile Rearrangement Screen
-
-enum
-{
-    // STATE_WAIT_FADE_IN,
-    // STATE_DELAY_1,
-    // STATE_DELAY_2,
-    // STATE_SELECT_MON,
-    // STATE_FADE_IN_MON_PIC,
-    // STATE_SHOW_MOURN_MESSAGE,
-    // STATE_WAIT_MOURN_MESSAGE,
-    // STATE_WAIT_SECONDARY_MOURN_MESSAGE,
-    // STATE_TALLY_EXP,
-    // STATE_FADE_OUT_MON,
-    // STATE_FADE_SCENE,
-    // STATE_START_GRANT_EXP,
-    // STATE_WAIT_GRANT_EXP,
-    // STATE_START_EXIT,
-    STATE_EXIT,
-};
 
 #define BG_TEXT 0
 #define BG_BG  2

@@ -2,7 +2,7 @@
   "id": "MAP_META_FINAL_BLUFF",
   "name": "Meta_FinalBluff",
   "layout": "LAYOUT_META_FINAL_BLUFF",
-  "music": "MUS_ABANDONED_SHIP",
+  "music": "MUS_RG_VICTORY_ROAD",
   "region_map_section": "MAPSEC_LITTLEROOT_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

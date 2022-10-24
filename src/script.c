@@ -423,6 +423,13 @@ void RunOnDiveWarpMapScript(void)
     MapHeaderRunScriptType(MAP_SCRIPT_ON_DIVE_WARP);
 }
 
+void RunOnPlayMapMusicMapScript(u16 mapId)
+{
+    u8 *ptr = MapHeaderGetScriptTableForMapId(mapId, MAP_SCRIPT_ON_PLAY_MAP_MUSIC);
+    if (ptr)
+        RunScriptImmediately(ptr);
+}
+
 void RunOnAboutToWarpMapScript(void)
 {
     u8 *ptr = MapHeaderGetScriptTableForDestinationMap( MAP_SCRIPT_ON_ABOUT_TO_WARP);

@@ -2,7 +2,7 @@
   "id": "MAP_META_POKE_STAGE",
   "name": "Meta_PokeStage",
   "layout": "LAYOUT_META_POKE_STAGE",
-  "music": "MUS_ABANDONED_SHIP",
+  "music": "MUS_HG_DANCE_THEATER",
   "region_map_section": "MAPSEC_NONE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

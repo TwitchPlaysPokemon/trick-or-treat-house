@@ -2,9 +2,20 @@ raw `
 Meta_LedgeRoom_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_LedgeRoom_OnTransition
+	map_script MAP_SCRIPT_ON_PLAY_MAP_MUSIC, Meta_LedgeRoom_OnPlayMapMusic
 	.byte 0
 `
 
+script(local) Meta_LedgeRoom_OnPlayMapMusic {
+	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
+	addvar(VAR_INTERACT_X, VAR_INTERACT_Y)
+	// Basically make a diagonal line across the map, top-right to bottom-left
+	if (var(VAR_INTERACT_X) > 40) {
+		setvar(VAR_RESULT, MUS_RG_ROUTE11)
+	} else {
+		setvar(VAR_RESULT, MUS_HG_ROUTE11)
+	}
+}
 script(local) Meta_LedgeRoom_OnTransition {
 	set_meta_visited_flag(MAP_META_LEDGE_ROOM)
 }
