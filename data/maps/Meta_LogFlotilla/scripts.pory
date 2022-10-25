@@ -16,5 +16,9 @@ script(local) Meta_LogFlotilla_OnPlayMapMusic {
 	}
 }
 script(local) Meta_LogFlotilla_OnTransition {
+	// set_meta_visited_flag(MAP_META_LOG_FLOTILLA)
+}
+script Meta_LogFlotilla_PickupItem {
 	set_meta_visited_flag(MAP_META_LOG_FLOTILLA)
+	finditem_std(ITEM_SURF_ITEM, 1)
 }

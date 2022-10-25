@@ -1,10 +1,99 @@
 raw `
+#define LID_BIRB  10
+
 Meta_ForestClearing_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ON_LOAD, Meta_ForestClearing_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_ForestClearing_OnTransition
+	@ map_script MAP_SCRIPT_ON_FRAME_TABLE, Meta_ForestClearing_FrameTable
 	.byte 0
+Meta_ForestClearing_FrameTable:
+	map_script_2 VAR_TEMP_3, 0, Meta_ForestClearing_SetupCopycat
+	.2byte 0
 `
 
 script(local) Meta_ForestClearing_OnTransition {
-	set_meta_visited_flag(MAP_META_FOREST_CLEARING)
+	// set_meta_visited_flag(MAP_META_FOREST_CLEARING)
+	// removeobject(LID_BIRB)
 }
+script(local) Meta_ForestClearing_OnLoad {
+	removeobject(LID_BIRB)
+	check_meta_visited_flag(MAP_META_FOREST_CLEARING)
+	goto_if(FALSE, Common_EventScript_NopReturn)
+	setobjectmovementtype(LID_BIRB, MOVEMENT_TYPE_LOOK_AROUND)
+	setobjectxyperm(LID_BIRB, 19, 19)
+	addobject(LID_BIRB)
+	clearflag(FLAG_TEMP_A)
+	if (!flag(FLAG_PICKED_UP_CUT_ITEM)) {
+		setflag(FLAG_TEMP_1)
+		setflag(FLAG_TEMP_2)
+		setflag(FLAG_TEMP_3)
+		setflag(FLAG_TEMP_4)
+		setflag(FLAG_TEMP_5)
+	}
+}
+
+script Meta_ForestClearing_InteractCopycat {
+	lock
+	faceplayer
+	playmoncry (SPECIES_FARFETCHD, 0)
+	
+	check_meta_visited_flag(MAP_META_FOREST_CLEARING)
+	goto_if(TRUE, Meta_ForestClearing_InteractCopycat_After)
+	message("Farfetch'd: Kwaa!\p"
+			"Looks like it has something in its beak.$")
+	waitmoncry
+	waitmessage
+	waitbuttonpress
+	if (var(VAR_LOC_CUT) == MAP_META_FOREST_CLEARING) {
+		giveitem_std(ITEM_CUT_ITEM, 1)
+	}
+	elif (var(VAR_LOC_WATERFALL) == MAP_META_FOREST_CLEARING) {
+		giveitem_std(ITEM_WATERFALL_ITEM, 1)
+	}
+	elif (var(VAR_LOC_SURF) == MAP_META_FOREST_CLEARING) {
+		giveitem_std(ITEM_SURF_ITEM, 1)
+	}
+	else {
+		// ERROR: unexpected!
+		message("Oh, it's just a berry.$")
+		waitmessage
+		waitbuttonpress
+	}
+	set_meta_visited_flag(MAP_META_FOREST_CLEARING)
+	call(Meta_ForestClearing_InteractCopycat_CutBypassCheck)
+	release
+}
+script(local) Meta_ForestClearing_InteractCopycat_After {
+	message("Farfetch'd: Kwaa!$")
+	waitmoncry
+	waitmessage
+	waitbuttonpress
+	release
+}
+script(local) Meta_ForestClearing_InteractCopycat_CutBypassCheck {
+	if (!flag(FLAG_PICKED_UP_CUT_ITEM)) {
+		// Reload room to remove all cut trees
+		getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
+		warpsilent(MAP_META_FOREST_CLEARING, VAR_INTERACT_X, VAR_INTERACT_Y)
+		waitstate
+	}
+	return
+}
+
+
+script Meta_ForestClearing_SetupCopycat {
+	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
+	setvar(VAR_METATILE_X, 39)
+	setvar(VAR_METATILE_Y, 39)
+	subvar(VAR_METATILE_X, VAR_INTERACT_X)
+	subvar(VAR_METATILE_Y, VAR_INTERACT_Y)
+	setobjectxyperm(LID_BIRB, VAR_METATILE_X, VAR_METATILE_Y)
+	setobjectxy(LID_BIRB, VAR_METATILE_X, VAR_METATILE_Y)
+	addobject(LID_BIRB)
+	release
+}
+
+raw `
+#undef LID_BIRB
+`

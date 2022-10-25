@@ -2,9 +2,15 @@ raw `
 Meta_BerryRoom_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_BerryRoom_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, Meta_BerryRoom_OnLoad
 	.byte 0
 `
 
 script(local) Meta_BerryRoom_OnTransition {
 	set_meta_visited_flag(MAP_META_BERRY_ROOM)
+}
+script(local) Meta_BerryRoom_OnLoad {
+	if (var(VAR_LOC_ROCK_SMASH) != MAP_META_BERRY_ROOM) { 
+		setobjectxyperm(22, 100, 100)
+	}
 }

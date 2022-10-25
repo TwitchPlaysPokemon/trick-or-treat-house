@@ -1,5 +1,6 @@
 raw `
 #define LID_FLANNERY 10
+#define LID_SCROLL 11
 
 Meta_LavaridgeSprings_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
@@ -15,6 +16,9 @@ script(local) Meta_LavaridgeSprings_OnTransition {
 script(local) Meta_LavaridgeSprings_OnLoad {
 	if (var(VAR_GRID_SIZE) == GRID_SIZE_1x2) {
 		setobjectxyperm(LID_FLANNERY, 100, 100) // move off map
+	}
+	if (var(VAR_LOC_SCROLL) != MAP_META_LAVARIDGE_SPRINGS) {
+		setobjectxyperm(LID_SCROLL, 100, 100) // move off map
 	}
 }
 
@@ -62,3 +66,8 @@ script Meta_LavaridgeSprings_EventScript_TestOpen {
 	callnative(DrawWholeMapView)
 	release
 }
+
+raw `
+#undef LID_FLANNERY
+#undef LID_SCROLL
+`

@@ -75,7 +75,7 @@
 #define VAR_PUZZLE_14                        0x4034
 #define VAR_PUZZLE_15                        0x4035
 #define VAR_PUZZLE_16                        0x4036
-#define VAR_PUZZLE_18                        0x4038
+#define VAR_PUZZLE_17                        0x4037
 #define VAR_PUZZLE_18                        0x4038
 #define VAR_PUZZLE_19                        0x4039
 #define VAR_PUZZLE_1A                        0x403A

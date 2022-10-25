@@ -10,6 +10,14 @@ script(local) Meta_ZipSlide_OnTransition {
 	// set_meta_visited_flag(MAP_META_ZIP_SLIDE)
 }
 script(local) Meta_ZipSlide_OnLoad {
+	if (var(VAR_LOC_CUT)         == MAP_META_ZIP_SLIDE) { setobjectxyperm( 8, 19, 6) } else { setobjectxyperm( 8, 100, 100) }
+	if (var(VAR_LOC_ROCK_SMASH)  == MAP_META_ZIP_SLIDE) { setobjectxyperm( 9, 19, 6) } else { setobjectxyperm( 9, 100, 100) }
+	if (var(VAR_LOC_STRENGTH)    == MAP_META_ZIP_SLIDE) { setobjectxyperm(10, 19, 6) } else { setobjectxyperm(10, 100, 100) }
+	if (var(VAR_LOC_DIVE)        == MAP_META_ZIP_SLIDE) { setobjectxyperm(11, 19, 6) } else { setobjectxyperm(11, 100, 100) }
+	if (var(VAR_LOC_WATERFALL)   == MAP_META_ZIP_SLIDE) { setobjectxyperm(12, 19, 6) } else { setobjectxyperm(12, 100, 100) }
+	if (var(VAR_LOC_SURF)        == MAP_META_ZIP_SLIDE) { setobjectxyperm(13, 19, 6) } else { setobjectxyperm(13, 100, 100) }
+	
+	
 	check_meta_visited_flag(MAP_META_ZIP_SLIDE)
 	goto_if(FALSE, Common_EventScript_NopReturn)
 	setmetatile(19, 7, METATILE_TrickHousePuzzle_Button_Pressed, FALSE)

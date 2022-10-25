@@ -1114,7 +1114,6 @@ u16 GetLocationMusic(struct WarpData *warp)
     gSpecialVar_Result = MUS_NONE;
     RunOnPlayMapMusicMapScript((warp->mapGroup << 8) | warp->mapNum);
     // restore it
-    mgba_printf(MGBA_LOG_INFO, "GetLocationMusic(%d,%d) => gSpecialVar_Result=%d", gSpecialVar_Result);
     musSel = gSpecialVar_Result;
     gSpecialVar_Result = savedRes;
     // If there was a script, and it returned something...

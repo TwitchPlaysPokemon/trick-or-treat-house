@@ -53,6 +53,18 @@ extern const int Start;
 
 #define FLAG_VISITED_RM0      FLAG_PUZZLE_20
 
+#define VAR_LOC_SCROLL        VAR_PUZZLE_11
+#define VAR_LOC_CUT           VAR_PUZZLE_12
+#define VAR_LOC_ROCK_SMASH    VAR_PUZZLE_13
+#define VAR_LOC_STRENGTH      VAR_PUZZLE_14
+#define VAR_LOC_DIVE          VAR_PUZZLE_15
+#define VAR_LOC_WATERFALL     VAR_PUZZLE_16
+#define VAR_LOC_SURF          VAR_PUZZLE_17
+// First pedestal is always in Lavaridge
+#define VAR_LOC_PEDESTAL2     VAR_PUZZLE_18
+#define VAR_LOC_PEDESTAL3     VAR_PUZZLE_19
+#define VAR_LOC_PEDESTAL4     VAR_PUZZLE_1A
+
 #define MAP_PLACEHOLDER_N     MAP_META_EMPTY_SW
 #define MAP_PLACEHOLDER_S     MAP_META_EMPTY_NE
 #define MAP_PLACEHOLDER_W     MAP_META_EMPTY_SE
@@ -338,13 +350,13 @@ const u16 sMetaRoom_FallbackList_s4_3x4[] = { MAP_META_LAVARIDGE_SPRINGS, MAP_NO
 const u16 sMetaRoom_FallbackList_s4_4x4[] = { MAP_META_NULL_ROOM, MAP_NONE };
 
 
-const u16 sMetaRoom_FallbackList_s3_1x1[] = { MAP_META_LOG_FLOTILLA, MAP_META_FOREST_CLEARING, MAP_META_EMPTY_SE, MAP_NONE }; // Has Surf
+const u16 sMetaRoom_FallbackList_s3_1x1[] = { MAP_META_LOG_FLOTILLA, MAP_META_FOREST_CLEARING, MAP_META_EMPTY_SE, MAP_NONE }; // Has Surf/Cut
 const u16 sMetaRoom_FallbackList_s3_2x1[] = { MAP_META_BERRY_ROOM, MAP_META_LEDGE_ROOM, MAP_META_EMPTY_NE, MAP_NONE }; // Has Pedestal, Rock Smash
 const u16 sMetaRoom_FallbackList_s3_3x1[] = { MAP_META_ZIP_SLIDE, MAP_META_SUBDUCTION_ZONE, MAP_META_EMPTY_WE, MAP_NONE }; // Has Strength
 
 const u16 sMetaRoom_FallbackList_s3_1x2[] = { MAP_META_FINAL_BLUFF, MAP_NONE }; // Has Scroll
-const u16 sMetaRoom_FallbackList_s3_2x2[] = { MAP_META_BIKE_PATH, MAP_META_DIVE_MAZE, MAP_META_EMPTY_NS, MAP_NONE }; // Has Pedestal, Dive
-const u16 sMetaRoom_FallbackList_s3_3x2[] = { MAP_META_KOGA_ELBOW, /*MAP_META_ROOM_15,*/ MAP_META_EMPTY_NW, MAP_NONE }; // Has Cut
+const u16 sMetaRoom_FallbackList_s3_2x2[] = { MAP_META_DIVE_MAZE, MAP_META_BIKE_PATH, MAP_META_EMPTY_NS, MAP_NONE }; // Has Pedestal, Dive
+const u16 sMetaRoom_FallbackList_s3_3x2[] = { MAP_META_KOGA_ELBOW, /*MAP_META_ROOM_15,*/ MAP_META_EMPTY_NW, MAP_NONE }; // Has Cut/Surf
 
 const u16 sMetaRoom_FallbackList_s3_1x3[] = { MAP_META_ZIGGY_ROOM, MAP_META_ICE_CORNER, MAP_META_EMPTY_SW, MAP_NONE }; // Has Pedestal, Waterfall
 const u16 sMetaRoom_FallbackList_s3_2x3[] = { MAP_META_LAVARIDGE_SPRINGS, MAP_NONE }; // Has Pedestal
@@ -397,6 +409,17 @@ static void MetaPuzzle_Setup2x1Layout() {
 	for (int i = 2; VAR_ROOM_ID_0_0 + i < VAR_ROOM_RESERVE_END; i++) {
 		VarSet(VAR_ROOM_ID_0_0 + i, 0);
 	}
+	
+	VarSet(VAR_LOC_SCROLL, MAP_META_LAVARIDGE_SPRINGS);
+	VarSet(VAR_LOC_CUT, 0);
+	VarSet(VAR_LOC_ROCK_SMASH, 0);
+	VarSet(VAR_LOC_STRENGTH, 0);
+	VarSet(VAR_LOC_DIVE, 0);
+	VarSet(VAR_LOC_WATERFALL, 0);
+	VarSet(VAR_LOC_SURF, 0);
+	VarSet(VAR_LOC_PEDESTAL2, 0);
+	VarSet(VAR_LOC_PEDESTAL3, 0);
+	VarSet(VAR_LOC_PEDESTAL4, 0);
 }
 
 static void MetaPuzzle_Setup3x3Layout() {
@@ -418,6 +441,24 @@ static void MetaPuzzle_Setup3x3Layout() {
 	for (int i = 9; VAR_ROOM_ID_0_0 + i < VAR_ROOM_RESERVE_END; i++) {
 		VarSet(VAR_ROOM_ID_0_0 + i, 0);
 	}
+	
+	VarSet(VAR_LOC_SCROLL, MAP_META_FINAL_BLUFF);
+	VarSet(VAR_LOC_ROCK_SMASH, VarGet(VAR_ROOM_ID_0_0 + 1));
+	VarSet(VAR_LOC_STRENGTH, VarGet(VAR_ROOM_ID_0_0 + 2));
+	VarSet(VAR_LOC_DIVE, VarGet(VAR_ROOM_ID_0_0 + 4));
+	VarSet(VAR_LOC_WATERFALL, VarGet(VAR_ROOM_ID_0_0 + 6));
+	// Put cut in forest clearing and surf in Log Flotilla, and Koga gets the leftover
+	if (VarGet(VAR_ROOM_ID_0_0 + 0) == MAP_META_FOREST_CLEARING) {
+		VarSet(VAR_LOC_CUT, VarGet(VAR_ROOM_ID_0_0 + 0));
+		VarSet(VAR_LOC_SURF, VarGet(VAR_ROOM_ID_0_0 + 5));
+	} else {
+		VarSet(VAR_LOC_CUT, VarGet(VAR_ROOM_ID_0_0 + 5));
+		VarSet(VAR_LOC_SURF, VarGet(VAR_ROOM_ID_0_0 + 0));
+	}
+	
+	VarSet(VAR_LOC_PEDESTAL2, VarGet(VAR_ROOM_ID_0_0 + 1));
+	VarSet(VAR_LOC_PEDESTAL3, VarGet(VAR_ROOM_ID_0_0 + 4));
+	VarSet(VAR_LOC_PEDESTAL4, VarGet(VAR_ROOM_ID_0_0 + 6));
 }
 
 static void MetaPuzzle_Setup4x4Layout() {
@@ -447,6 +488,17 @@ static void MetaPuzzle_Setup4x4Layout() {
 	for (int i = 16; VAR_ROOM_ID_0_0 + i < VAR_ROOM_RESERVE_END; i++) { // this loop probably never runs
 		VarSet(VAR_ROOM_ID_0_0 + i, 0);
 	}
+	
+	VarSet(VAR_LOC_SCROLL, VarGet(VAR_ROOM_ID_0_0 + 3));
+	VarSet(VAR_LOC_CUT, VarGet(VAR_ROOM_ID_0_0 + 10));
+	VarSet(VAR_LOC_ROCK_SMASH, VarGet(VAR_ROOM_ID_0_0 + 12));
+	VarSet(VAR_LOC_STRENGTH, VarGet(VAR_ROOM_ID_0_0 + 7));
+	VarSet(VAR_LOC_DIVE, VarGet(VAR_ROOM_ID_0_0 + 8));
+	VarSet(VAR_LOC_WATERFALL, VarGet(VAR_ROOM_ID_0_0 + 4));
+	VarSet(VAR_LOC_SURF, VarGet(VAR_ROOM_ID_0_0 + 1));
+	VarSet(VAR_LOC_PEDESTAL2, VarGet(VAR_ROOM_ID_0_0 + 0));
+	VarSet(VAR_LOC_PEDESTAL3, VarGet(VAR_ROOM_ID_0_0 + 9));
+	VarSet(VAR_LOC_PEDESTAL4, VarGet(VAR_ROOM_ID_0_0 + 10));
 }
 
 void MetaPuzzle_DeterminePuzzleSetup(struct ScriptContext* ctx)
@@ -508,7 +560,7 @@ void MetaPuzzle_DeterminePuzzleSetup(struct ScriptContext* ctx)
 	if (se > 1) opt++;
 	if (ns > 1) opt++;
 	if (we > 1) opt++;
-	if (opt + req < 15) { // Out of 15 rooms, 4+ need to be empty
+	if (opt + req < 11) { // Out of 15 rooms, 4+ need to be empty
 		MetaPuzzle_Setup3x3Layout();
 		return;
 	}
@@ -707,7 +759,7 @@ void MetaPuzzle_CountCollectedItems(struct ScriptContext *ctx) {
 // Sliding Tile Rearrangement Screen
 
 #define BG_TEXT 0
-#define BG_BG  2
+#define BG_BG  1
 
 struct SlidingTile {
 	u8 roomId;
@@ -728,7 +780,8 @@ struct SlidingTileScreen {
 	u8 numTiles;
 	struct SlidingTile tiles[16];
 	u8 tilePointers[16];
-	u16 bgTilemapBuffers[3][BG_SCREEN_SIZE];
+	u16 bgTilemapBuffers[2][BG_SCREEN_SIZE];
+	u16* bgTileMap;
 };
 
 static EWRAM_DATA struct SlidingTileScreen *sSlidingTileScene = NULL;
@@ -752,15 +805,15 @@ const struct BgTemplate sBgTemplates[] = {
     //     .priority = 1,
     //     .baseTile = 0
     // },
-    // {
-    //     .bg = BG_HEADSTONE,
-    //     .charBaseIndex = 1,
-    //     .mapBaseIndex = 29,
-    //     .screenSize = 0,
-    //     .paletteMode = 0,
-    //     .priority = 2,
-    //     .baseTile = 0
-    // },
+    {
+        .bg = BG_BG,
+        .charBaseIndex = 1,
+        .mapBaseIndex = 31,
+        .screenSize = 0,
+        .paletteMode = 0,
+        .priority = 2,
+        .baseTile = 0
+    },
 };
 
 static const struct WindowTemplate sWindows[] =
@@ -833,7 +886,12 @@ const u16 sTileLocked_Pal[] = INCBIN_U16("graphics/meta_puzzle/slide_tile_locked
 const u16 sTileVisited_Pal[] = INCBIN_U16("graphics/meta_puzzle/slide_tile_visited.gbapal");
 const u16 sIcon_Unknown_Pal[] = INCBIN_U16("graphics/meta_puzzle/question_mark.gbapal");
 
-// static const u8 sGround_Tilemap[] = INCBIN_U8("graphics/cable_car/ground.bin.lz");
+const u32 sPedestalBg_Gfx[] = INCBIN_U32("graphics/meta_puzzle/slidebg.4bpp.lz");
+const u32 sPedestalBg_Pal[] = INCBIN_U32("graphics/meta_puzzle/slidebg.gbapal.lz");
+static const u8 sPedestalBg_2x1_Tilemap[] = INCBIN_U8("graphics/meta_puzzle/slidebg_2x1.tilemap.lz");
+static const u8 sPedestalBg_3x3_Tilemap[] = INCBIN_U8("graphics/meta_puzzle/slidebg_3x3.tilemap.lz");
+// static const u8 sPedestalBg_4x4_Tilemap[] = INCBIN_U8("graphics/meta_puzzle/slidebg_4x4.tilemap.lz");
+static const u32 sPedestalBg_4x4_Tilemap[] = INCBIN_U32("graphics/meta_puzzle/slidebg_4x4.tilemap.lz");
 
 static const struct CompressedSpriteSheet sCompressedSpriteSheets[] = {
 	{ sTileBg_Gfx, (32*40/2), TAG_TILE_BASE },
@@ -1096,16 +1154,40 @@ static void CB2_LoadSlidingTile(void)
 	
 	sSlidingTileScene = AllocZeroed(sizeof(*sSlidingTileScene));
 	
-	// TODO: Uncompress graphics into VRAM here
-	// LZ77UnCompVram(gBirchHelpGfx, (void *)VRAM);
-    // LZ77UnCompVram(gBirchBagTilemap, (void *)(BG_SCREEN_ADDR(6)));
-    // LZ77UnCompVram(gBirchGrassTilemap, (void *)(BG_SCREEN_ADDR(7)));
+	// ------------------------------------------------------------------------
+	// Init Scene Backgrounds
 	
 	ResetBgsAndClearDma3BusyFlags(0);
 	InitBgsFromTemplates(0, sBgTemplates, ARRAY_COUNT(sBgTemplates));
-	SetBgTilemapBuffer(0, sSlidingTileScene->bgTilemapBuffers[0]);
-	SetBgTilemapBuffer(1, sSlidingTileScene->bgTilemapBuffers[1]);
-	SetBgTilemapBuffer(2, sSlidingTileScene->bgTilemapBuffers[2]);
+	SetBgTilemapBuffer(BG_TEXT, sSlidingTileScene->bgTilemapBuffers[BG_TEXT]);
+	SetBgTilemapBuffer(BG_BG,   sSlidingTileScene->bgTilemapBuffers[BG_BG]);
+	// ResetAllBgsCoordinates();
+	
+	// ------------------------------------------------------------------------
+	// Load Scene Graphics
+	
+	ResetTempTileDataBuffers();
+	DecompressAndCopyTileDataToVram(BG_BG, sPedestalBg_Gfx, 0, 0, 0);
+	while (FreeTempTileDataBuffersIfPossible()) {}
+	
+	LoadCompressedPalette(sPedestalBg_Pal, 0, 0x20);
+	
+    FillBgTilemapBufferRect_Palette0(BG_TEXT, 0, 0, 0, 0x20, 0x20);
+    FillBgTilemapBufferRect_Palette0(BG_BG, 0, 0, 0, 0x20, 0x20);
+	
+	if (VarGet(VAR_GRID_SIZE) == ((1 << 8) | 2)) {
+		CopyToBgTilemapBuffer(BG_BG, sPedestalBg_2x1_Tilemap, 0, 0);
+	}
+	else if (VarGet(VAR_GRID_SIZE) == ((3 << 8) | 3)) {
+		CopyToBgTilemapBuffer(BG_BG, sPedestalBg_3x3_Tilemap, 0, 0);
+	}
+	else {
+		CopyToBgTilemapBuffer(BG_BG, sPedestalBg_4x4_Tilemap, 0, 0);
+	}
+	CopyBgTilemapBufferToVram(BG_TEXT);
+	CopyBgTilemapBufferToVram(BG_BG);
+	
+	// ------------------------------------------------------------------------
 	
 	InitWindows(sWindows);
 	DeactivateAllTextPrinters();
@@ -1211,6 +1293,7 @@ static void CB2_EndSlidingTile(void)
     // FREE_AND_SET_NULL(sCableCar->bgMountainsTilemap);
     // FREE_AND_SET_NULL(sCableCar->treesTilemap);
     // FREE_AND_SET_NULL(sCableCar->groundTilemap);
+    FREE_AND_SET_NULL(sSlidingTileScene->bgTileMap);
     FREE_AND_SET_NULL(sSlidingTileScene);
 	
     DmaFillLarge16(3, 0, (void *)VRAM, VRAM_SIZE, 0x1000);

@@ -1,10 +1,88 @@
 raw `
+#define LID_BYPASS_STRENGTH 13
+#define LID_BYPASS_ROCKSMASH1 12
+#define LID_BYPASS_ROCKSMASH2 11
+#define LID_SCROLL 24
+
 Meta_FinalBluff_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ON_LOAD, Meta_FinalBluff_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_FinalBluff_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Meta_FinalBluff_FrameTable
 	.byte 0
+Meta_FinalBluff_FrameTable:
+	map_script_2 VAR_TEMP_5, 0, Meta_FinalBluff_OnFirstFrame
+	.2byte 0
 `
 
-script(local) Meta_FinalBluff_OnTransition {
-	set_meta_visited_flag(MAP_META_FINAL_BLUFF)
+script(local) Meta_FinalBluff_OnLoad {
+	// if (var(VAR_LOC_CUT) == 0 || var(VAR_LOC_DIVE) == 0) {
+	// 	call(Meta_FinalBluff_BypassCutDive)
+	// }
+	if (var(VAR_LOC_STRENGTH) == 0) {
+		call(Meta_FinalBluff_BypassStrength)
+	}
+	if (var(VAR_LOC_SURF) == 0) {
+		call(Meta_FinalBluff_BypassSurf)
+	}
+	if (var(VAR_LOC_WATERFALL) == 0) {
+		call(Meta_FinalBluff_BypassWaterfall)
+	}
+	if (var(VAR_LOC_ROCK_SMASH) == 0) {
+		call(Meta_FinalBluff_BypassRockSmash)
+	}
+	if (var(LID_SCROLL) != MAP_META_FINAL_BLUFF) {
+		setobjectxyperm(LID_SCROLL, 100, 100)
+	}
 }
+
+script(local) Meta_FinalBluff_OnTransition {
+	// set_meta_visited_flag(MAP_META_FINAL_BLUFF)
+	// if (var(VAR_LOC_CUT) == 0 || var(VAR_LOC_DIVE) == 0) {
+	// 	call(Meta_FinalBluff_BypassCutDive)
+	// }
+}
+script(local) Meta_FinalBluff_OnFirstFrame {
+	if (var(VAR_LOC_CUT) == 0 || var(VAR_LOC_DIVE) == 0) {
+		call(Meta_FinalBluff_BypassCutDive)
+	}
+	setvar(VAR_TEMP_5, 1)
+}
+
+script(local) Meta_FinalBluff_BypassSurf {
+	setmetatileex(13, 3, 0x283, 1)
+	setmetatileex(14, 3, 0x19E, 3)
+	setmetatileex(15, 3, 0x19E, 3)
+	setmetatileex(16, 3, 0x284, 1)
+	return
+}
+
+script(local) Meta_FinalBluff_BypassCutDive {
+	setmetatile(9, 13, 0x115, FALSE)
+	setmetatile(9, 14, 0x10D, FALSE)
+	// special(DrawWholeMapView)
+	return
+}
+script(local) Meta_FinalBluff_BypassStrength {
+	setobjectxyperm(LID_BYPASS_STRENGTH, 100, 100) // move off map
+	return
+}
+script(local) Meta_FinalBluff_BypassWaterfall {
+	setmetatile(12, 10, 0x137, FALSE)
+	setmetatile(12, 11, 0x12E, FALSE)
+	setmetatile(12, 12, 0x12E, FALSE)
+	setmetatile(12, 13, 0x12F, FALSE)
+	return
+}
+script(local) Meta_FinalBluff_BypassRockSmash {
+	setobjectxyperm(LID_BYPASS_ROCKSMASH1, 100, 100)
+	setobjectxyperm(LID_BYPASS_ROCKSMASH2, 100, 100)
+	return
+}
+
+raw `
+#undef LID_BYPASS_STRENGTH
+#undef LID_BYPASS_ROCKSMASH1
+#undef LID_BYPASS_ROCKSMASH2
+#undef LID_SCROLL
+`

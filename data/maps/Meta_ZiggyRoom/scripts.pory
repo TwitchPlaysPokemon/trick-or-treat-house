@@ -4,6 +4,7 @@ raw `
 #define LID_ZIGGY_KID 6
 #define LID_SUDO 12
 #define LID_HM_BALL 10
+#define LID_PEDESTAL 15
 
 #define VAR_KID_QUEST  VAR_TEMP_A
 #define VAR_MOM_QUEST  VAR_TEMP_B
@@ -13,7 +14,7 @@ raw `
 Meta_ZiggyRoom_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_ZiggyRoom_OnTransition
-	@ map_script MAP_SCRIPT_ON_LOAD, Meta_ZiggyRoom_OnLoad
+	map_script MAP_SCRIPT_ON_LOAD, Meta_ZiggyRoom_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Meta_ZiggyRoom_FrameTable
 	map_script MAP_SCRIPT_ON_RESUME, Meta_ZiggyRoom_OnResume
 	map_script MAP_SCRIPT_ON_UNLOAD, Meta_ZiggyRoom_OnUnload
@@ -46,9 +47,15 @@ script(local) Meta_ZiggyRoom_OnUnload {
 	setnpctriggercallback(NPC_TRIGGER_CB_NONE)
 }
 	
-// script(local) Meta_ZiggyRoom_OnLoad {
-// 	setflag(FLAG_SYS_FAST_BONK)
-// }
+script(local) Meta_ZiggyRoom_OnLoad {
+	// setflag(FLAG_SYS_FAST_BONK)
+	if (var(VAR_LOC_PEDESTAL2) != MAP_META_ZIGGY_ROOM 
+	 && var(VAR_LOC_PEDESTAL3) != MAP_META_ZIGGY_ROOM 
+	 && var(VAR_LOC_PEDESTAL4) != MAP_META_ZIGGY_ROOM)
+	{
+		setobjectxyperm(LID_PEDESTAL, 100, 100)
+	}
+}
 
 //-----------------------------------------------------
 // Mom's Route
@@ -534,5 +541,14 @@ movement Meta_ZiggyRoom_KidRejectItem {
 // Step 4: Go down and take item from baby, now that mommy is back
 
 raw `
+#undef LID_ZIGGY_MOM
+#undef LID_ZIGGY_KID
 #undef LID_SUDO
+#undef LID_HM_BALL
+#undef LID_PEDESTAL
+
+#undef VAR_KID_QUEST
+#undef VAR_MOM_QUEST
+#undef FLAG_MOM_DONE
+#undef FLAG_KID_DONE
 `

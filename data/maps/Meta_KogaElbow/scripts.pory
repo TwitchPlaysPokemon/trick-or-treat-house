@@ -8,6 +8,19 @@ Meta_KogaElbow_MapScripts::
 	.byte 0
 `
 script(local) Meta_KogaElbow_OnLoad {
+	if (var(VAR_LOC_CUT)         == MAP_META_KOGA_ELBOW) { setobjectxyperm(16, 19, 19) } else { setobjectxyperm(16, 100, 100) }
+	if (var(VAR_LOC_ROCK_SMASH)  == MAP_META_KOGA_ELBOW) { setobjectxyperm(17, 19, 19) } else { setobjectxyperm(17, 100, 100) }
+	if (var(VAR_LOC_STRENGTH)    == MAP_META_KOGA_ELBOW) { setobjectxyperm(18, 19, 19) } else { setobjectxyperm(18, 100, 100) }
+	if (var(VAR_LOC_DIVE)        == MAP_META_KOGA_ELBOW) { setobjectxyperm(19, 19, 19) } else { setobjectxyperm(19, 100, 100) }
+	if (var(VAR_LOC_WATERFALL)   == MAP_META_KOGA_ELBOW) { setobjectxyperm(20, 19, 19) } else { setobjectxyperm(20, 100, 100) }
+	if (var(VAR_LOC_SURF)        == MAP_META_KOGA_ELBOW) { setobjectxyperm(15, 19, 19) } else { setobjectxyperm(15, 100, 100) }
+	
+	if (var(VAR_LOC_PEDESTAL2) != MAP_META_KOGA_ELBOW 
+	 && var(VAR_LOC_PEDESTAL3) != MAP_META_KOGA_ELBOW 
+	 && var(VAR_LOC_PEDESTAL4) != MAP_META_KOGA_ELBOW)
+	     { setobjectxyperm(5, 100, 100) }
+	else { setobjectxyperm(5, 20, 20) }
+	
 	check_meta_visited_flag(MAP_META_KOGA_ELBOW)
 	goto_if(FALSE, Common_EventScript_NopReturn)
 	call(Meta_KogaElbow_PlaceTopShortcut)

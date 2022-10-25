@@ -1,10 +1,37 @@
 raw `
+#define LID_PEDESTAL  5
+#define LID_HM_WATERFALL  7
+
 Meta_IceCorner_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_IceCorner_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, Meta_IceCorner_OnLoad
 	.byte 0
 `
 
 script(local) Meta_IceCorner_OnTransition {
+	// set_meta_visited_flag(MAP_META_ICE_CORNER)
+}
+script(local) Meta_IceCorner_OnLoad {
+	if (var(VAR_LOC_WATERFALL) != MAP_META_ICE_CORNER) {
+		setobjectxyperm(LID_HM_WATERFALL, 100, 100)
+	}
+	if (var(VAR_LOC_PEDESTAL2) != MAP_META_ICE_CORNER 
+	 && var(VAR_LOC_PEDESTAL3) != MAP_META_ICE_CORNER 
+	 && var(VAR_LOC_PEDESTAL4) != MAP_META_ICE_CORNER)
+	{
+		setobjectxyperm(LID_PEDESTAL, 100, 100)
+		if (var(VAR_LOC_WATERFALL) == MAP_META_ICE_CORNER) {
+			setobjectxyperm(LID_HM_WATERFALL, 18, 10)
+		}
+	}
+}
+
+script Meta_IceCorner_TriggerScript_Visited {
 	set_meta_visited_flag(MAP_META_ICE_CORNER)
 }
+
+raw `
+#undef LID_PEDESTAL
+#undef LID_HM_WATERFALL
+`

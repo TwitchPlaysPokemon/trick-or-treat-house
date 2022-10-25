@@ -16,10 +16,11 @@ raw `
 #define VAR_LOC_STRENGTH   VAR_PUZZLE_14
 #define VAR_LOC_DIVE       VAR_PUZZLE_15
 #define VAR_LOC_WATERFALL  VAR_PUZZLE_16
+#define VAR_LOC_SURF       VAR_PUZZLE_17
 // First pedestal is always in Lavaridge
-#define VAR_LOC_PEDESTAL2  VAR_PUZZLE_17
-#define VAR_LOC_PEDESTAL3  VAR_PUZZLE_18
-#define VAR_LOC_PEDESTAL4  VAR_PUZZLE_19
+#define VAR_LOC_PEDESTAL2  VAR_PUZZLE_18
+#define VAR_LOC_PEDESTAL3  VAR_PUZZLE_19
+#define VAR_LOC_PEDESTAL4  VAR_PUZZLE_1A
 
 #define GRID_SIZE_1x2 (1 << 8) | (2)
 #define GRID_SIZE_3x3 (3 << 8) | (3)
@@ -384,6 +385,26 @@ script MetaPuzzle_PickupEvent_WaterCushion {
 }
 script MetaPuzzle_PickupEvent_SeedotDoll {
 	finditem_std(ITEM_META_ITEM_SEEDOT, 1)
+}
+
+script MetaPuzzle_PickupEvent_DebugGetAll {
+	additem(ITEM_META_ITEM_FINAL_BLUFF, 1)
+	additem(ITEM_META_ITEM_ZIGGY, 1)
+	// additem(ITEM_META_ITEM_LOG_FLOAT, 1)
+	additem(ITEM_META_ITEM_FOREST, 1)
+	additem(ITEM_META_ITEM_ICE_CORNER, 1)
+	additem(ITEM_META_ITEM_LEDGE, 1)
+	additem(ITEM_META_ITEM_POKE_STAGE, 1)
+	additem(ITEM_META_ITEM_BIKE_PATH, 1)
+	additem(ITEM_META_ITEM_BERRY, 1)
+	additem(ITEM_META_ITEM_LAVARIDGE, 1)
+	additem(ITEM_META_ITEM_FIRE, 1)
+	additem(ITEM_META_ITEM_ZIP_SLIDE, 1)
+	// additem(ITEM_META_ITEM_KOGA, 1)
+	additem(ITEM_META_ITEM_DIVE, 1)
+	// additem(ITEM_META_ITEM_SEEDOT, 1)
+	msgbox( "Picked up all items")
+	release
 }
 
 // ----------------------------------------------------

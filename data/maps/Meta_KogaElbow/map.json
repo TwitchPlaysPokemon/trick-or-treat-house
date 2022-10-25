@@ -65,7 +65,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "MetaPuzzle_UsePedestal",
       "flag": "FLAG_ALWAYS_TRUE"
     },
     {
@@ -109,8 +109,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_META_PEDESTAL",
-      "x": 19,
-      "y": 19,
+      "x": 24,
+      "y": 34,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -236,6 +236,84 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HM_BALL",
+      "x": 25,
+      "y": 34,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_ItemSurf",
+      "flag": "FLAG_PICKED_UP_SURF_ITEM"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HM_BALL",
+      "x": 26,
+      "y": 34,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_ItemCut",
+      "flag": "FLAG_PICKED_UP_CUT_ITEM"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HM_BALL",
+      "x": 27,
+      "y": 34,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_ItemRockSmash",
+      "flag": "FLAG_PICKED_UP_SMASH_ITEM"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HM_BALL",
+      "x": 28,
+      "y": 34,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_ItemStrength",
+      "flag": "FLAG_PICKED_UP_STRENGTH_ITEM"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HM_BALL",
+      "x": 29,
+      "y": 34,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_ItemDive",
+      "flag": "FLAG_PICKED_UP_DIVE_ITEM"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HM_BALL",
+      "x": 30,
+      "y": 34,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_ItemWaterfall",
+      "flag": "FLAG_PICKED_UP_WATERFALL_ITEM"
     }
   ],
   "warp_events": [
