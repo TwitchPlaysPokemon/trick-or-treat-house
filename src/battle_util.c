@@ -7718,6 +7718,9 @@ static bool32 IsMonEventLegal(u8 battlerId)
 
 u8 IsMonDisobedient(void)
 {
+    // TODO?
+    return FALSE; // never disobedient in TTH
+    
     s32 rnd;
     s32 calc;
     u8 obedienceLevel = 0;

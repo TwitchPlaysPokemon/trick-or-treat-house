@@ -1987,6 +1987,7 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                 break;
 #else
                 toCpy = CopyMoveName(gBattleMsgDataPtr->currentMove);
+                break;
 #endif
             case B_TXT_LAST_MOVE: // originally used move name
 #ifndef BORT_REPLACEMENT
@@ -1999,6 +2000,7 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                 break;
 #else
                 toCpy = CopyMoveName(gBattleMsgDataPtr->originallyUsedMove);
+                break;
 #endif
             case B_TXT_LAST_ITEM: // last used item
                 CopyItemName(gLastUsedItem, text);
@@ -2095,6 +2097,7 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                 // break;
                 // TODO?
                 toCpy = GetTrainerALoseText();
+                break;
             case B_TXT_26: // ?
                 if (GetBattlerSide(gBattleScripting.battler) != B_SIDE_PLAYER)
                 {

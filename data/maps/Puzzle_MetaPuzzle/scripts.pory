@@ -79,10 +79,10 @@ Puzzle_MetaPuzzle_CandyList:
 	.2byte FLAG_CANDY_UNCOMMON_02
 	.2byte FLAG_CANDY_UNCOMMON_03
 	.2byte FLAG_CANDY_RARE_03
-	.2byte FLAG_CANDY_RARE_04
+	.2byte FLAG_CANDY_HEALTHY_02 // actually rare 4
 	@ Lavaridge Springs
 	.2byte FLAG_CANDY_ABUNDANT_08
-	.2byte FLAG_CANDY_RARE_05
+	.2byte FLAG_CANDY_HEALTHY_03 // actually rare 5
 	@ Ledge Room
 	.2byte FLAG_CANDY_COMMON_04
 	@ Ice Corner

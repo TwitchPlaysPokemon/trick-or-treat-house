@@ -222,7 +222,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Common_EventScript_CandyRare",
-      "flag": "FLAG_CANDY_RARE_05"
+      "flag": "FLAG_CANDY_HEALTHY_03"
     }
   ],
   "warp_events": [
