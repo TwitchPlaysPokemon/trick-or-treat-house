@@ -117,8 +117,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "Common_EventScript_CandyCommon",
+      "flag": "FLAG_CANDY_COMMON_05"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BALL_CUSHION",
@@ -131,7 +131,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
-      "flag": "FLAG_ALWAYS_FALSE"
+      "flag": "FLAG_ALWAYS_TRUE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -143,8 +143,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
+      "script": "Common_EventScript_CandyAbundant",
+      "flag": "FLAG_CANDY_ABUNDANT_10"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_HM_BALL",
@@ -223,6 +223,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Common_EventScript_ItemSurf",
       "flag": "FLAG_PICKED_UP_SURF_ITEM"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 27,
+      "y": 9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_CandyUncommon",
+      "flag": "FLAG_CANDY_UNCOMMON_04"
     }
   ],
   "warp_events": [

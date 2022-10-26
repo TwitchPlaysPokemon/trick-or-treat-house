@@ -1,10 +1,37 @@
 raw `
+#define LID_MASTER 16
+
 Meta_Entrance_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_Entrance_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, Meta_Entrance_OnLoad
 	.byte 0
 `
 
 script(local) Meta_Entrance_OnTransition {
 	set_meta_visited_flag(MAP_META_ENTRANCE)
 }
+script(local) Meta_Entrance_OnLoad {
+	if (var(VAR_GRID_SIZE) == GRID_SIZE_1x2) {
+		setobjectxyperm(LID_MASTER, 100, 100) // move off map
+	}
+	if (var(VAR_TIMES_SHIFTED) == 0) { // not yet shifted the puzzle
+		setobjectxyperm(LID_MASTER, 100, 100) // move off map
+	}
+}
+
+script Meta_Entrance_Dev {
+	speakername("Tustin2121")
+	msgbox ("Oh hey, you found this back room, huh?\p"
+			"This puzzle can be a mess and probably\n"
+			"will break in 100 ways.\p"
+			"So, just in case, these balls here are\n"
+			"all the HMs you'll need to get through.\p"
+			"This is an honor system thing.\n"
+			"Take one if you get stuck.\p"
+			"And sorry if you did get stuck.$", MSGBOX_NPC)
+}
+
+raw `
+#undef LID_MASTER
+`

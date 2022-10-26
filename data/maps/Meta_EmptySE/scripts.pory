@@ -2,9 +2,22 @@ raw `
 Meta_EmptySE_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_EmptySE_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, Meta_EmptySE_OnLoad
 	.byte 0
 `
 
 script(local) Meta_EmptySE_OnTransition {
 	set_meta_visited_flag(MAP_META_EMPTY_SE)
+}
+script(local) Meta_EmptySE_OnLoad {
+	if (var(VAR_LOC_SURF)        != MAP_META_EMPTY_SE) { setobjectxyperm( 6, 100, 100) }
+	if (var(VAR_LOC_CUT)         != MAP_META_EMPTY_SE) { setobjectxyperm( 7, 100, 100) }
+	if (var(VAR_LOC_ROCK_SMASH)  != MAP_META_EMPTY_SE) { setobjectxyperm( 8, 100, 100) }
+	if (var(VAR_LOC_STRENGTH)    != MAP_META_EMPTY_SE) { setobjectxyperm( 9, 100, 100) }
+	if (var(VAR_LOC_DIVE)        != MAP_META_EMPTY_SE) { setobjectxyperm(10, 100, 100) }
+	if (var(VAR_LOC_WATERFALL)   != MAP_META_EMPTY_SE) { setobjectxyperm(11, 100, 100) }
+	
+	if (var(VAR_LOC_PEDESTAL2) != MAP_META_EMPTY_SE 
+	 && var(VAR_LOC_PEDESTAL3) != MAP_META_EMPTY_SE 
+	 && var(VAR_LOC_PEDESTAL4) != MAP_META_EMPTY_SE)   { setobjectxyperm(5, 100, 100) }
 }

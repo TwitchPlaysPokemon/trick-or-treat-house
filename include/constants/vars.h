@@ -52,6 +52,7 @@
 #define VAR_ENDROOM_PARTNER_ID     VAR_TEMP_F
 
 // Trick Or Treat House vars
+#define PUZZLE_VARS_START                    0x4020
 #define VAR_PUZZLE_00                        0x4020
 #define VAR_PUZZLE_01                        0x4021
 #define VAR_PUZZLE_02                        0x4022
@@ -84,122 +85,123 @@
 #define VAR_PUZZLE_1D                        0x403D
 #define VAR_PUZZLE_1E                        0x403E
 #define VAR_PUZZLE_1F                        0x403F
+#define VAR_PUZZLE_20                        0x4040
+#define VAR_PUZZLE_21                        0x4041
+#define VAR_PUZZLE_22                        0x4042
+#define VAR_PUZZLE_23                        0x4043
+#define VAR_PUZZLE_24                        0x4044
+#define VAR_PUZZLE_25                        0x4045
+#define VAR_PUZZLE_26                        0x4046
+#define VAR_PUZZLE_28                        0x4048
+#define VAR_PUZZLE_28                        0x4048
+#define VAR_PUZZLE_29                        0x4049
+#define VAR_PUZZLE_2A                        0x404A
+#define VAR_PUZZLE_2B                        0x404B
+#define VAR_PUZZLE_2C                        0x404C
+#define VAR_PUZZLE_2D                        0x404D
+#define VAR_PUZZLE_2E                        0x404E
+#define VAR_PUZZLE_2F                        0x404F
+#define VAR_PUZZLE_30                        0x4050
+#define VAR_PUZZLE_31                        0x4051
+#define VAR_PUZZLE_32                        0x4052
+#define VAR_PUZZLE_33                        0x4053
+#define VAR_PUZZLE_34                        0x4054
+#define VAR_PUZZLE_35                        0x4055
+#define VAR_PUZZLE_36                        0x4056
+#define VAR_PUZZLE_37                        0x4057
+#define VAR_PUZZLE_38                        0x4058
+#define VAR_PUZZLE_39                        0x4059
+#define VAR_PUZZLE_3A                        0x405A
+#define VAR_PUZZLE_3B                        0x405B
+#define VAR_PUZZLE_3C                        0x405C
+#define VAR_PUZZLE_3D                        0x405D
+#define VAR_PUZZLE_3E                        0x405E
+#define VAR_PUZZLE_3F                        0x405F
+#define PUZZLE_VARS_END                      VAR_PUZZLE_3F
 
 // trick house system variables
-#define VAR_CURRENT_PUZZLE                   0x4040 
-#define VAR_PUZZLE_STATE                     0x4041 // 0 = before puzzle, 1 = puzzle underway, 2 = after puzzle
-#define VAR_INTRO_COUNTER                    0x4042 // 0 = before intro, 1 = outside intro, 2 = inside intro 1, 
-#define VAR_DEN_BLOCKED_EXCUSE               0x4043
-#define VAR_TRICK_MASTER_INTRO               0x4044
+#define VAR_CURRENT_PUZZLE                   0x4060 
+#define VAR_PUZZLE_STATE                     0x4061 // 0 = before puzzle, 1 = puzzle underway, 2 = after puzzle
+#define VAR_INTRO_COUNTER                    0x4062 // 0 = before intro, 1 = outside intro, 2 = inside intro 1, 
+#define VAR_DEN_BLOCKED_EXCUSE               0x4063
+#define VAR_TRICK_MASTER_INTRO               0x4064
 
 // general purpose vars
-#define VAR_REPEL_STEP_COUNT                 0x4045
-#define VAR_STEP_TRIGGER                     0x4046 // Used for the ice cracking puzzle, the mach bike floor cracking puzzle, and npc triggers
-#define VAR_STARTER_MON                      0x4047
-#define VAR_FRIENDSHIP_STEP_COUNTER          0x4048
-#define VAR_CONTEST_TYPE                     0x4049
-#define VAR_SECRET_BASE_MAP                  0x404A
-#define VAR_CYCLING_ROAD_RECORD_COLLISIONS   0x404B
-#define VAR_CYCLING_ROAD_RECORD_TIME_L       0x404C
-#define VAR_CYCLING_ROAD_RECORD_TIME_H       0x404D
-#define VAR_SYS_REFLECTION_OFFSET            0x404E // Offset of reflection, in pixels
-#define VAR_POISON_STEP_COUNTER              0x404F
-#define VAR_RESET_RTC_ENABLE                 0x4050
-#define VAR_CURRENT_SECRET_BASE              0x4051
-#define VAR_FOLLOWER_STATE                   0x4052
-#define VAR_FOLLOWER_IDENTITY                0x4053
-#define VAR_UNUSED_0x4054                    0x4054
-#define VAR_UNUSED_0x4055                    0x4055
-#define VAR_UNUSED_0x4056                    0x4056
-#define VAR_UNUSED_0x4057                    0x4057
-#define VAR_DEOXYS_ROCK_STEP_COUNT           0x4058
-#define VAR_DEOXYS_ROCK_LEVEL                0x4059
-#define VAR_PC_BOX_TO_SEND_MON               0x405A
-#define VAR_UNUSED_0x405B                    0x405B
-#define VAR_UNUSED_0x405C                    0x405C
-#define VAR_UNUSED_0x405D                    0x405D
-#define VAR_FARAWAY_ISLAND_STEP_COUNTER      0x405E // On Chopping Block
-#define VAR_ALTERING_CAVE_WILD_SET           0x405F // On Chopping Block
-#define VAR_UNUSED_0x4060                    0x4060
-#define VAR_DAYS                             0x4061
-#define VAR_UNUSED_0x4062                    0x4062
-#define VAR_UNUSED_0x4063                    0x4063
-#define VAR_UNUSED_0x4064                    0x4064
-#define VAR_POKELOT_PRIZE_ITEM               0x4065 // On Chopping Block
-#define VAR_UNUSED_0x4066                    0x4066
-#define VAR_SEEDOT_SIZE_RECORD               0x4067
-#define VAR_ASH_GATHER_COUNT                 0x4068
-#define VAR_UNUSED_0x4069                    0x4069
-#define VAR_UNUSED_0x406A                    0x406A
-#define VAR_POKELOT_RND1                     0x406B // On Chopping Block
-#define VAR_POKELOT_RND2                     0x406C // On Chopping Block
-#define VAR_POKELOT_PRIZE_PLACE              0x406D // On Chopping Block
-#define VAR_TIMES_SEEN_BY_TRAINER            0x406E
-#define VAR_LOTAD_SIZE_RECORD                0x406F
-#define VAR_CANDY_TRADE_MASTER               0x4070
-#define VAR_CANDY_TRADE_1                    0x4071
-#define VAR_CANDY_TRADE_2                    0x4072
-#define VAR_CANDY_TRADE_3                    0x4073
-#define VAR_CANDY_TRADE_4                    0x4074
-#define VAR_CANDY_TRADE_5                    0x4075
-#define VAR_CANDY_TRADE_6                    0x4076
-#define VAR_CANDY_TRADE_7                    0x4077
-#define VAR_CANDY_TRADE_8                    0x4078
-#define VAR_CANDY_TRADE_9                    0x4079
-#define VAR_CANDY_TRADE_A                    0x407A
-#define VAR_CANDY_TRADE_B                    0x407B
-#define VAR_CANDY_TRADE_C                    0x407C
-#define VAR_CANDY_TRADE_D                    0x407D
-#define VAR_CANDY_TRADE_E                    0x407E
-#define VAR_CANDY_TRADE_F                    0x407F
-#define VAR_MISTRESS_STATE                   0x4080 // Trick Mistress
-#define VAR_UNUSED_0x4081                    0x4081
-#define VAR_UNUSED_0x4082                    0x4082
-#define VAR_UNUSED_0x4083                    0x4083
-#define VAR_UNUSED_0x4084                    0x4084
-#define VAR_UNUSED_0x4085                    0x4085
-#define VAR_UNUSED_0x4086                    0x4086
-#define VAR_UNUSED_0x4087                    0x4087
-#define VAR_UNUSED_0x4088                    0x4088
-#define VAR_UNUSED_0x4089                    0x4089
-#define VAR_UNUSED_0x408A                    0x408A
-#define VAR_UNUSED_0x408B                    0x408B
-#define VAR_UNUSED_0x408C                    0x408C
-#define VAR_UNUSED_0x408D                    0x408D
-#define VAR_UNUSED_0x408E                    0x408E
-#define VAR_UNUSED_0x408F                    0x408F
-#define VAR_UNUSED_0x4090                    0x4090
-#define VAR_UNUSED_0x4091                    0x4091
-#define VAR_UNUSED_0x4092                    0x4092
-#define VAR_UNUSED_0x4093                    0x4093
-#define VAR_UNUSED_0x4094                    0x4094
-#define VAR_UNUSED_0x4095                    0x4095
-#define VAR_UNUSED_0x4096                    0x4096
-#define VAR_UNUSED_0x4097                    0x4097
-#define VAR_UNUSED_0x4098                    0x4098
-#define VAR_UNUSED_0x4099                    0x4099
-#define VAR_UNUSED_0x409A                    0x409A
-#define VAR_UNUSED_0x409B                    0x409B
-#define VAR_UNUSED_0x409C                    0x409C
-#define VAR_UNUSED_0x409D                    0x409D
-#define VAR_UNUSED_0x409E                    0x409E
-#define VAR_UNUSED_0x409F                    0x409F
-#define VAR_UNUSED_0x40A0                    0x40A0
-#define VAR_UNUSED_0x40A1                    0x40A1
-#define VAR_UNUSED_0x40A2                    0x40A2
-#define VAR_UNUSED_0x40A3                    0x40A3
-#define VAR_UNUSED_0x40A4                    0x40A4
-#define VAR_CABLE_CLUB_STATE                 0x40A5 // On Chopping Block
-#define VAR_SECRET_BASE_INITIALIZED          0x40A6
-#define VAR_CONTEST_PRIZE_PICKUP             0x40A7
-#define VAR_UNUSED_0x40A8                    0x40A8
-#define VAR_UNUSED_0x40A9                    0x40A9
-#define VAR_UNUSED_0x40AA                    0x40AA
-#define VAR_UNUSED_0x40AB                    0x40AB
-#define VAR_INIT_SECRET_BASE                 0x40AC
-#define VAR_UNUSED_0x40AD                    0x40AD
-#define VAR_LILYCOVE_CONTEST_LOBBY_STATE     0x40AE // On Chopping Block
-#define VAR_UNUSED_0x40AF                    0x40AF
+#define VAR_REPEL_STEP_COUNT                 0x4065
+#define VAR_STEP_TRIGGER                     0x4066 // Used for the ice cracking puzzle, the mach bike floor cracking puzzle, and npc triggers
+#define VAR_STARTER_MON                      0x4067
+#define VAR_FRIENDSHIP_STEP_COUNTER          0x4068
+#define VAR_CONTEST_TYPE                     0x4069
+#define VAR_SECRET_BASE_MAP                  0x406A
+#define VAR_CYCLING_ROAD_RECORD_COLLISIONS   0x406B
+#define VAR_CYCLING_ROAD_RECORD_TIME_L       0x406C
+#define VAR_CYCLING_ROAD_RECORD_TIME_H       0x406D
+#define VAR_SYS_REFLECTION_OFFSET            0x406E // Offset of reflection, in pixels
+#define VAR_POISON_STEP_COUNTER              0x406F
+#define VAR_RESET_RTC_ENABLE                 0x4070
+#define VAR_CURRENT_SECRET_BASE              0x4071
+#define VAR_FOLLOWER_STATE                   0x4072
+#define VAR_FOLLOWER_IDENTITY                0x4073
+#define VAR_UNUSED_0x4054                    0x4074
+#define VAR_UNUSED_0x4055                    0x4075
+#define VAR_UNUSED_0x4056                    0x4076
+#define VAR_UNUSED_0x4057                    0x4077
+#define VAR_DEOXYS_ROCK_STEP_COUNT           0x4078
+#define VAR_DEOXYS_ROCK_LEVEL                0x4079
+#define VAR_PC_BOX_TO_SEND_MON               0x407A
+#define VAR_UNUSED_0x405B                    0x407B
+#define VAR_UNUSED_0x405C                    0x407C
+#define VAR_UNUSED_0x405D                    0x407D
+#define VAR_FARAWAY_ISLAND_STEP_COUNTER      0x407E // On Chopping Block
+#define VAR_ALTERING_CAVE_WILD_SET           0x407F // On Chopping Block
+#define VAR_UNUSED_0x4060                    0x4080
+#define VAR_DAYS                             0x4081
+#define VAR_UNUSED_0x4062                    0x4082
+#define VAR_UNUSED_0x4063                    0x4083
+#define VAR_UNUSED_0x4064                    0x4084
+#define VAR_POKELOT_PRIZE_ITEM               0x4085 // On Chopping Block
+#define VAR_UNUSED_0x4066                    0x4086
+#define VAR_SEEDOT_SIZE_RECORD               0x4087
+#define VAR_ASH_GATHER_COUNT                 0x4088
+#define VAR_UNUSED_0x4069                    0x4089
+#define VAR_UNUSED_0x406A                    0x408A
+#define VAR_POKELOT_RND1                     0x408B // On Chopping Block
+#define VAR_POKELOT_RND2                     0x408C // On Chopping Block
+#define VAR_POKELOT_PRIZE_PLACE              0x408D // On Chopping Block
+#define VAR_TIMES_SEEN_BY_TRAINER            0x408E
+#define VAR_LOTAD_SIZE_RECORD                0x408F
+#define VAR_CANDY_TRADE_MASTER               0x4090
+#define VAR_CANDY_TRADE_1                    0x4091
+#define VAR_CANDY_TRADE_2                    0x4092
+#define VAR_CANDY_TRADE_3                    0x4093
+#define VAR_CANDY_TRADE_4                    0x4094
+#define VAR_CANDY_TRADE_5                    0x4095
+#define VAR_CANDY_TRADE_6                    0x4096
+#define VAR_CANDY_TRADE_7                    0x4097
+#define VAR_CANDY_TRADE_8                    0x4098
+#define VAR_CANDY_TRADE_9                    0x4099
+#define VAR_CANDY_TRADE_A                    0x409A
+#define VAR_CANDY_TRADE_B                    0x409B
+#define VAR_CANDY_TRADE_C                    0x409C
+#define VAR_CANDY_TRADE_D                    0x409D
+#define VAR_CANDY_TRADE_E                    0x409E
+#define VAR_CANDY_TRADE_F                    0x409F
+#define VAR_MISTRESS_STATE                   0x40A0 // Trick Mistress
+#define VAR_UNUSED_0x4081                    0x40A1
+#define VAR_UNUSED_0x4082                    0x40A2
+#define VAR_UNUSED_0x4083                    0x40A3
+#define VAR_UNUSED_0x4084                    0x40A4
+#define VAR_UNUSED_0x4085                    0x40A5
+#define VAR_UNUSED_0x4086                    0x40A6
+#define VAR_UNUSED_0x4087                    0x40A7
+#define VAR_UNUSED_0x4088                    0x40A8
+#define VAR_UNUSED_0x4089                    0x40A9
+#define VAR_UNUSED_0x408A                    0x40AA
+#define VAR_UNUSED_0x408B                    0x40AB
+#define VAR_UNUSED_0x408C                    0x40AC
+#define VAR_UNUSED_0x408D                    0x40AD
+#define VAR_UNUSED_0x408E                    0x40AE
+#define VAR_UNUSED_0x408F                    0x40AF
 #define VAR_UNUSED_0x40B0                    0x40B0
 #define VAR_UNUSED_0x40B1                    0x40B1
 #define VAR_UNUSED_0x40B2                    0x40B2
@@ -228,11 +230,11 @@
 #define VAR_PACIFIDLOG_TM_RECEIVED_DAY       0x40C9 // On Chopping Block
 #define VAR_UNUSED_0x40CA                    0x40CA
 #define VAR_UNUSED_0x40CB                    0x40CB
-#define VAR_UNUSED_0x40CC                    0x40CC
+#define VAR_LILYCOVE_CONTEST_LOBBY_STATE     0x40CC // On Chopping Block
 #define VAR_STEVENS_HOUSE_STATE              0x40CD // On Chopping Block
 #define VAR_UNUSED_0x40CE                    0x40CE
-#define VAR_UNUSED_0x40CF                    0x40CF
-#define VAR_UNUSED_0x40D0                    0x40D0
+#define VAR_SECRET_BASE_INITIALIZED          0x40CF
+#define VAR_INIT_SECRET_BASE                 0x40D0
 #define VAR_SKY_PILLAR_STATE                 0x40D1 // On Chopping Block
 #define VAR_MIRAGE_TOWER_STATE               0x40D2 // On Chopping Block
 #define VAR_FOSSIL_MANIAC_STATE              0x40D3 // On Chopping Block
@@ -240,9 +242,9 @@
 #define VAR_FRONTIER_BATTLE_MODE             0x40D5
 #define VAR_FRONTIER_FACILITY                0x40D6
 #define VAR_HAS_ENTERED_BATTLE_FRONTIER      0x40D7 // On Chopping Block
-#define VAR_UNUSED_0x40D8                    0x40D8
+#define VAR_CABLE_CLUB_STATE                 0x40D8 // On Chopping Block
 #define VAR_UNUSED_0x40D9                    0x40D9
-#define VAR_UNUSED_0x40DA                    0x40DA
+#define VAR_CONTEST_PRIZE_PICKUP             0x40DA
 #define VAR_SS_TIDAL_SCOTT_STATE             0x40DB // On Chopping Block
 #define VAR_ROAMER_POKEMON                   0x40DC // 0 = Latias, 1 = Latios
 #define VAR_CROSS_MAP_TRIGGER                0x40DD

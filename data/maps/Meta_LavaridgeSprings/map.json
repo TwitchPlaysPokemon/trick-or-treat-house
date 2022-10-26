@@ -161,8 +161,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_HM_BALL",
-      "x": 5,
-      "y": 5,
+      "x": 4,
+      "y": 4,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -197,6 +197,32 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PuzzleCommon_EventScript_Scroll",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 10,
+      "y": 17,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_CandyAbundant",
+      "flag": "FLAG_CANDY_ABUNDANT_08"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 5,
+      "y": 5,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_CandyRare",
+      "flag": "FLAG_CANDY_RARE_05"
     }
   ],
   "warp_events": [
