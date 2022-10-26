@@ -478,6 +478,8 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_META_ROOM15             0x1149
 #define OBJ_EVENT_PAL_TAG_META_STAGE_NOTES        0x114A
 #define OBJ_EVENT_PAL_TAG_TRICK_PUZZLE            0x114B
+#define OBJ_EVENT_PAL_TAG_YOUNGSTER_JOEY          0x114C
+#define OBJ_EVENT_PAL_TAG_TRAINER_AJ              0x114D
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -551,6 +553,8 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_TwinsPlus,             OBJ_EVENT_PAL_TAG_TWINS_PLUS},
     {gObjectEventPal_TwinsMinus,            OBJ_EVENT_PAL_TAG_TWINS_MINUS},
     {gObjectEventPal_Alien,                 OBJ_EVENT_PAL_TAG_ALIEN},
+    {gObjectEventPal_YoungsterJoey,         OBJ_EVENT_PAL_TAG_YOUNGSTER_JOEY},
+    {gObjectEventPal_AJ,                    OBJ_EVENT_PAL_TAG_TRAINER_AJ},
     {gObjectEventPal_Tustin2121,            OBJ_EVENT_PAL_DEV_TUSTIN2121},
     {gObjectEventPal_Quilava,               OBJ_EVENT_PAL_TAG_QUILAVA},
     {gObjectEventPal_Farfetchd,             OBJ_EVENT_PAL_TAG_FARFETCHD},

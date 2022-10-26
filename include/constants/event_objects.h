@@ -328,7 +328,10 @@
 #define OBJ_EVENT_GFX_META_ITEM_ROOM15               0x132
 #define OBJ_EVENT_GFX_META_STAGE_NOTES               0x133
 
-#define NUM_OBJ_EVENT_GFX                            0x134
+#define OBJ_EVENT_GFX_YOUNGSTER_JOEY                 0x134
+#define OBJ_EVENT_GFX_TRAINER_AJ                     0x135
+
+#define NUM_OBJ_EVENT_GFX                            0x136
 
 // These are dynamic object gfx ids.
 // They correspond with the values of the VAR_OBJ_GFX_ID_X vars.
@@ -353,7 +356,7 @@
 
 #define SPRITE_VAR OBJ_EVENT_GFX_VAR_0
 
-#define TTH_FRIEND_JOEY     OBJ_EVENT_GFX_YOUNGSTER
+#define TTH_FRIEND_JOEY     OBJ_EVENT_GFX_YOUNGSTER_JOEY
 #define TTH_FRIEND_JAMES    OBJ_EVENT_GFX_HERO_OF_TIME
 #define TTH_FRIEND_IRENE    OBJ_EVENT_GFX_FAIRY_GIRL
 #define TTH_FRIEND_WALLY    OBJ_EVENT_GFX_WALLY

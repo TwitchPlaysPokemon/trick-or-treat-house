@@ -66,6 +66,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_MAN_3] =                    &gObjectEventGraphicsInfo_Man3,
     [OBJ_EVENT_GFX_WOMAN_5] =                  &gObjectEventGraphicsInfo_Woman5,
     [OBJ_EVENT_GFX_WOMAN_5A] =                 &gObjectEventGraphicsInfo_Woman5a,
+    [OBJ_EVENT_GFX_YOUNGSTER_JOEY] =           &gObjectEventGraphicsInfo_Joey,
     [OBJ_EVENT_GFX_YOUNGSTER] =                &gObjectEventGraphicsInfo_Youngster,
     [OBJ_EVENT_GFX_YOUNGSTER2] =               &gObjectEventGraphicsInfo_Youngster2,
     [OBJ_EVENT_GFX_YOUNGSTER3] =               &gObjectEventGraphicsInfo_Youngster3,
@@ -286,6 +287,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_GHOST] =                    &gObjectEventGraphicsInfo_Ghost,
     [OBJ_EVENT_GFX_ALIEN] =                    &gObjectEventGraphicsInfo_Alien,
     [OBJ_EVENT_GFX_IMPOSTER_LASS] =            &gObjectEventGraphicsInfo_ImposterLass,
+    [OBJ_EVENT_GFX_TRAINER_AJ] =               &gObjectEventGraphicsInfo_AJ,
     
     // Meta Items
     [OBJ_EVENT_GFX_META_ITEM_LAVARIDGE] =      &gObjectEventGraphicsInfo_MetaItem_Lavaridge,
@@ -309,7 +311,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_DEV_SHANTYTOWN] =           &gObjectEventGraphicsInfo_Scientist1, // TODO
     
     /** For porymap preview only, as these are aliases for entries above
-    [TTH_FRIEND_JOEY] =    &gObjectEventGraphicsInfo_Youngster,
+    [TTH_FRIEND_JOEY] =    &gObjectEventGraphicsInfo_Joey,
     [TTH_FRIEND_JAMES] =   &gObjectEventGraphicsInfo_HeroOfTime,
     [TTH_FRIEND_IRENE] =   &gObjectEventGraphicsInfo_FairyGirl,
     [TTH_FRIEND_WALLY] =   &gObjectEventGraphicsInfo_Wally,
