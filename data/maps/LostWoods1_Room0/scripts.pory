@@ -6,7 +6,7 @@ LostWoods1_Room0_MapScripts::
 
 LostWoods1_Room0_FrameTable:
 	map_script_2 VAR_PUZZLE_01, 1, LostWoods1_Room0_IncrementResetCount
-	.byte 0
+	.2byte 0
 
 LostWoods1_Room0_IncrementResetCount:
 	addvar VAR_PUZZLE_00, 1
