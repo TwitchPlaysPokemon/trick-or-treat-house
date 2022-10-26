@@ -55,7 +55,7 @@ const u32 gObjectEventPic_AJ[] = INCBIN_U32("graphics/object_events/pics/people/
 const u16 gObjectEventPal_RubySapphireBrendan[] = INCBIN_U16("graphics/object_events/palettes/ruby_sapphire_brendan.gbapal");
 const u16 gObjectEventPal_RubySapphireMay[] = INCBIN_U16("graphics/object_events/palettes/ruby_sapphire_may.gbapal");
 const u16 gObjectEventPal_RedLeaf[] = INCBIN_U16("graphics/object_events/palettes/red_leaf.gbapal");
-const u32 gObjectEventPal_AJ[] = INCBIN_U32("graphics/object_events/pics/people/aj.gbapal");
+const u16 gObjectEventPal_AJ[] = INCBIN_U16("graphics/object_events/pics/people/aj.gbapal");
 //-------------------------------------------------------------------
 
 //-------------------------------------------------------------------
@@ -453,7 +453,7 @@ const u16 gObjectEventPal_TwinsMinus[] = INCBIN_U16("graphics/object_events/pale
 const u32 gObjectEventPic_Alien[] = INCBIN_U32("graphics/object_events/pics/people/alien.4bpp");
 const u16 gObjectEventPal_Alien[] = INCBIN_U16("graphics/object_events/palettes/objpal_aliengirl.gbapal");
 
-const u32 gObjectEventPal_YoungsterJoey[] = INCBIN_U32("graphics/object_events/pics/people/youngster_joey.gbapal");
+const u16 gObjectEventPal_YoungsterJoey[] = INCBIN_U16("graphics/object_events/pics/people/youngster_joey.gbapal");
 const u32 gObjectEventPic_YoungsterJoey[] = INCBIN_U32("graphics/object_events/pics/people/youngster_joey.4bpp");
 const u32 gObjectEventPic_YoungsterJoeyRunning[] = INCBIN_U32("graphics/object_events/pics/people/youngster_joey_run.4bpp");
 

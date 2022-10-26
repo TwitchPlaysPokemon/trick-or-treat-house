@@ -332,6 +332,7 @@ movement Route110_Cutscene_SkellyWalkOut {
 
 movement Route110_Cutscene_RunIntro_Move1 {
 	player_run_left * 11
+	face_left
 	delay_16
 	face_up
 	delay_8
@@ -467,6 +468,7 @@ movement Route110_Cutscene_RunIntro_Move7_Wally {
 	player_run_left
 	player_run_down * 2
 	player_run_right
+	face_up
 }
 
 movement Route110_Cutscene_RunIntro_Move8_Brendan {
