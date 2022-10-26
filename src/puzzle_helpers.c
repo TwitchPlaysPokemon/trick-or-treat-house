@@ -191,11 +191,11 @@ static const u16 Puzzle_MusicNoteTiles_MusicTableC[][6] = {
 	{ NOTE(F, 15), NOTE(G, 15), NOTE(D, 20), NOTE(C, 25), NOTE(E, 30), PS_NOTE_END }, // Bad Close Encounters Theme
 };
 static const u16 Puzzle_MusicNoteTiles_MusicTableD[][7] = {
+	{ NOTE(G, 15), NOTE(E, 15), NOTE(C, 30), NOTE(E, 30), NOTE(G, 30), NOTE(C1, 30), PS_NOTE_END }, // US National Anthem Start
 	{ NOTE(G, 30), NOTE(G, 30), NOTE(F, 30), NOTE(E, 30), NOTE(D, 30), NOTE(E, 30), PS_NOTE_END }, // Wind's Aria
 	{ NOTE(C, 15), NOTE(G, 15), NOTE(E, 60), NOTE(D, 15), NOTE(E, 15), NOTE(D, 30), PS_NOTE_END }, // Minuet of Forest
 	{ NOTE(E, 20), NOTE(E, 20), NOTE(D, 10), NOTE(E, 20), NOTE(G, 20), NOTE(E, 30), PS_NOTE_END }, // Power Ranger's Theme
 	// { NOTE(C, 45), NOTE(G, 45), NOTE(D, 60), NOTE(E, 45), NOTE(G, 45), NOTE(C, 30), PS_NOTE_END }, // Bad Undertale's Motif
-	{ NOTE(G, 15), NOTE(E, 15), NOTE(C, 30), NOTE(E, 30), NOTE(G, 30), NOTE(C1, 30), PS_NOTE_END }, // US National Anthem Start
 };
 
 static const u16 Puzzle_MusicNoteTiles_MusicTableMeta[][10] = {
@@ -209,7 +209,7 @@ static const u16 Puzzle_MusicNoteTiles_MusicTableMeta[][10] = {
 	
 };
 
-
+extern bool8 IsAfterFirstLoop();
 void PokemonSaysInitPuzzle(struct ScriptContext *ctx)
 {
 	if (FlagGet(FLAG_SYS_RANDOM_DISABLED)) {
@@ -217,12 +217,17 @@ void PokemonSaysInitPuzzle(struct ScriptContext *ctx)
 		VarSet(VAR_SONG_A, 2);
 		VarSet(VAR_SONG_B, 0);
 		VarSet(VAR_SONG_C, 1);
-		VarSet(VAR_SONG_D, 3);
+		VarSet(VAR_SONG_D, 0); // song with extra note
 	} else {
 		VarSet(VAR_SONG_A, Random() % ARRAY_COUNT(Puzzle_MusicNoteTiles_MusicTableA));
 		VarSet(VAR_SONG_B, Random() % ARRAY_COUNT(Puzzle_MusicNoteTiles_MusicTableB));
 		VarSet(VAR_SONG_C, Random() % ARRAY_COUNT(Puzzle_MusicNoteTiles_MusicTableC));
 		VarSet(VAR_SONG_D, Random() % ARRAY_COUNT(Puzzle_MusicNoteTiles_MusicTableD));
+#if TPP_MODE
+		if (IsAfterFirstLoop()) {
+			VarSet(VAR_SONG_D, 0); // force song with extra note
+		}
+#endif
 	}
 	mgba_printf(MGBA_LOG_INFO, "Selected songs: %d, %d, %d, %d", VarGet(VAR_SONG_A), VarGet(VAR_SONG_B), VarGet(VAR_SONG_C), VarGet(VAR_SONG_D));
 }
