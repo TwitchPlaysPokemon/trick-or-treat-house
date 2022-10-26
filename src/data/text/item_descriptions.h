@@ -4737,49 +4737,79 @@ static const u8 sMetaItemZigzagName[] = _("Zigzag Cushion");
 static const u8 sMetaItemZigzagDesc[] = _(
     "This cushion smells\n"
     "and feels like a\n"
-    "ZIGZAGOON.");
+    "Zigzagoon.");
 
 static const u8 sMetaItemLotadName[] = _("Lotad Doll");
 static const u8 sMetaItemLotadDesc[] = _(
     "A waterlogged,\n"
     "lost, and forgotten\n"
-    "LOTAD doll.$");
+    "Lotad doll.$");
 
 static const u8 sMetaItemGrassName[] = _("Grass Cushion");
 static const u8 sMetaItemGrassDesc[] = _(
     "A green cushion\n"
-    "that encapsulates\n"
+    "that smells like\n"
     "the forest.");
 
 static const u8 sMetaItemDiamondName[] = _("Diamond Cushion");
-static const u8 sMetaItemDiamondDesc[] = _("");
+static const u8 sMetaItemDiamondDesc[] = _(
+    "This cushion is\n"
+    "covered in ice\n"
+    "crystals.");
 
 static const u8 sMetaItemSpinName[] = _("Spin Cushion");
-static const u8 sMetaItemSpinDesc[] = _("");
+static const u8 sMetaItemSpinDesc[] = _(
+    "The stitching\n"
+    "makes this cushion\n"
+    "feel rough.");
 
 static const u8 sMetaItemDollName[] = _("Azurill Doll");
-static const u8 sMetaItemDollDesc[] = _("");
+static const u8 sMetaItemDollDesc[] = _(
+    "An Azurill doll\n"
+    "with a little\n"
+    "yellow bowtie.");
 
 static const u8 sMetaItemWheelName[] = _("Poké Ball Cushion");
-static const u8 sMetaItemWheelDesc[] = _("");
+static const u8 sMetaItemWheelDesc[] = _(
+    "This cushion\n"
+    "has been run over\n"
+    "with a bike.");
 
 static const u8 sMetaItemKissName[] = _("Big Yellow Flower");
-static const u8 sMetaItemKissDesc[] = _("");
+static const u8 sMetaItemKissDesc[] = _(
+    "A big yellow\n"
+    "flower bloom from\n"
+    "a weird seed.");
 
 static const u8 sMetaItemRoundName[] = _("Round Cushion");
-static const u8 sMetaItemRoundDesc[] = _("");
+static const u8 sMetaItemRoundDesc[] = _(
+    "A round pillow\n"
+    "that is warm and\n"
+    "smells of sulfur.");
 
 static const u8 sMetaItemFireName[] = _("Fire Cushion");
-static const u8 sMetaItemFireDesc[] = _("");
+static const u8 sMetaItemFireDesc[] = _(
+    "A fiery red\n"
+    "cushion that smells\n"
+    "of sea water.");
 
 static const u8 sMetaItemPikaName[] = _("Zip Cushion");
-static const u8 sMetaItemPikaDesc[] = _("");
+static const u8 sMetaItemPikaDesc[] = _(
+    "A cushion with\n"
+    "a push-tile\n"
+    "design on it.");
 
 static const u8 sMetaItemDuskullName[] = _("Duskull Doll");
-static const u8 sMetaItemDuskullDesc[] = _("");
+static const u8 sMetaItemDuskullDesc[] = _(
+    "A Duskull doll\n"
+    "that is strangely\n"
+    "difficult to see.");
 
 static const u8 sMetaItemWaterName[] = _("Water Cushion");
-static const u8 sMetaItemWaterDesc[] = _("");
+static const u8 sMetaItemWaterDesc[] = _(
+    "A waterproof\n"
+    "cushion from\n"
+    "the depths.");
 
 static const u8 sMetaItemSeedotName[] = _("Seedot Doll");
 static const u8 sMetaItemSeedotDesc[] = _("");

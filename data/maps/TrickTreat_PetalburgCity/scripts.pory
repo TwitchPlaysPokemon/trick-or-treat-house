@@ -271,8 +271,8 @@ script TrickTreat_PetalburgCity_BerryLady {
 	lock
 	faceplayer
 	if (!flag(FLAG_META_PICKUP_BERRY)) {
-	msgbox ("Happy Halloween!\n"
-			"Here's a treat!$")
+		msgbox ("Happy Halloween!\n"
+				"Here's a treat!$")
 		giveitem_std(ITEM_ENIGMA_BERRY, 1)
 		setflag(FLAG_META_PICKUP_BERRY)
 	}

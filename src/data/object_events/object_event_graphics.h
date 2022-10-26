@@ -501,7 +501,7 @@ const u32 gItemIconPal_MetaItem_IceCorner[]    = INCBIN_U32("graphics/meta_puzzl
 const u32 gObjectEventPic_MetaItem_LogFlotilla[] = INCBIN_U32("graphics/meta_puzzle/log_flotilla_objevt.4bpp");
 // const u16 gObjectEventPal_MetaItem_LogFlotilla[] = INCBIN_U16("graphics/meta_puzzle/log_flotilla_objevt.gbapal");
 const u32 gItemIconPic_MetaItem_LogFlotilla[]    = INCBIN_U32("graphics/meta_puzzle/log_flotilla_item.4bpp.lz");
-// const u32 gItemIconPal_MetaItem_LogFlotilla[]    = INCBIN_U32("graphics/meta_puzzle/log_flotilla_item.gbapal.lz");
+const u32 gItemIconPal_MetaItem_LogFlotilla[]    = INCBIN_U32("graphics/meta_puzzle/log_flotilla_item.gbapal.lz");
 
 const u32 gObjectEventPic_MetaItem_BikePath[] = INCBIN_U32("graphics/meta_puzzle/bike_path_objevt.4bpp");
 // const u16 gObjectEventPal_MetaItem_BikePath[] = INCBIN_U16("graphics/meta_puzzle/bike_path_objevt.gbapal");
@@ -511,7 +511,7 @@ const u32 gItemIconPic_MetaItem_BikePath[]    = INCBIN_U32("graphics/meta_puzzle
 const u32 gObjectEventPic_MetaItem_PokeStage[] = INCBIN_U32("graphics/meta_puzzle/pokestage_objevt.4bpp");
 // const u16 gObjectEventPal_MetaItem_PokeStage[] = INCBIN_U16("graphics/meta_puzzle/pokestage_objevt.gbapal");
 const u32 gItemIconPic_MetaItem_PokeStage[]    = INCBIN_U32("graphics/meta_puzzle/pokestage_item.4bpp.lz");
-// const u32 gItemIconPal_MetaItem_PokeStage[]    = INCBIN_U32("graphics/meta_puzzle/pokestage_item.gbapal.lz");
+const u32 gItemIconPal_MetaItem_PokeStage[]    = INCBIN_U32("graphics/meta_puzzle/pokestage_item.gbapal.lz");
 
 const u32 gObjectEventPic_MetaItem_ZiggyRoom[] = INCBIN_U32("graphics/meta_puzzle/ziggy_objevt.4bpp");
 // const u16 gObjectEventPal_MetaItem_ZiggyRoom[] = INCBIN_U16("graphics/meta_puzzle/ziggy_objevt.gbapal");
@@ -531,7 +531,7 @@ const u32 gItemIconPic_MetaItem_ZipRoom[]    = INCBIN_U32("graphics/meta_puzzle/
 const u32 gObjectEventPic_MetaItem_KogaRoom[] = INCBIN_U32("graphics/meta_puzzle/koga_objevt.4bpp");
 // const u16 gObjectEventPal_MetaItem_KogaRoom[] = INCBIN_U16("graphics/meta_puzzle/koga_objevt.gbapal");
 const u32 gItemIconPic_MetaItem_KogaRoom[]    = INCBIN_U32("graphics/meta_puzzle/koga_item.4bpp.lz");
-// const u32 gItemIconPal_MetaItem_KogaRoom[]    = INCBIN_U32("graphics/meta_puzzle/koga_item.gbapal.lz");
+const u32 gItemIconPal_MetaItem_KogaRoom[]    = INCBIN_U32("graphics/meta_puzzle/koga_item.gbapal.lz");
 
 const u32 gObjectEventPic_MetaItem_FireRoom[] = INCBIN_U32("graphics/meta_puzzle/fire_room_objevt.4bpp");
 // const u16 gObjectEventPal_MetaItem_FireRoom[] = INCBIN_U16("graphics/meta_puzzle/fire_room_objevt.gbapal");
@@ -545,8 +545,8 @@ const u32 gItemIconPic_MetaItem_DiveMaze[]    = INCBIN_U32("graphics/meta_puzzle
 
 const u32 gObjectEventPic_MetaItem_BerryRoom[] = INCBIN_U32("graphics/meta_puzzle/berry_field_objevt.4bpp");
 const u16 gObjectEventPal_MetaItem_BerryRoom[] = INCBIN_U16("graphics/meta_puzzle/berry_field_objevt.gbapal");
-const u32 gItemIconPic_MetaItem_BerryRoom[]    = INCBIN_U32("graphics/meta_puzzle/berry_field_item.4bpp.lz");
-const u32 gItemIconPal_MetaItem_BerryRoom[]    = INCBIN_U32("graphics/meta_puzzle/berry_field_item.gbapal.lz");
+const u32 gItemIconPic_MetaItem_BerryRoom[]    = INCBIN_U32("graphics/meta_puzzle/berry_field_item2.4bpp.lz");
+const u32 gItemIconPal_MetaItem_BerryRoom[]    = INCBIN_U32("graphics/meta_puzzle/berry_field_item2.gbapal.lz");
 // TODO
 const u32 gObjectEventPic_MetaItem_Room15[] = INCBIN_U32("graphics/meta_puzzle/lavaridge_room_objevt.4bpp");
 const u16 gObjectEventPal_MetaItem_Room15[] = INCBIN_U16("graphics/meta_puzzle/lavaridge_room_objevt.gbapal");

@@ -10447,7 +10447,7 @@ extern const u32 gItemIconPal_MetaItem_IceCorner[];
 extern const u32 gObjectEventPic_MetaItem_LogFlotilla[];
 #define          gObjectEventPal_MetaItem_LogFlotilla  gObjectEventPal_Npc3
 extern const u32 gItemIconPic_MetaItem_LogFlotilla[];
-#define          gItemIconPal_MetaItem_LogFlotilla  gItemIconPal_Npc3
+extern const u32 gItemIconPal_MetaItem_LogFlotilla[];
 extern const u32 gObjectEventPic_MetaItem_BikePath[];
 #define          gObjectEventPal_MetaItem_BikePath  gObjectEventPal_Npc3
 extern const u32 gItemIconPic_MetaItem_BikePath[];
@@ -10455,7 +10455,7 @@ extern const u32 gItemIconPic_MetaItem_BikePath[];
 extern const u32 gObjectEventPic_MetaItem_PokeStage[];
 #define          gObjectEventPal_MetaItem_PokeStage  gObjectEventPal_Npc1
 extern const u32 gItemIconPic_MetaItem_PokeStage[];
-#define          gItemIconPal_MetaItem_PokeStage  gItemIconPal_Npc1
+extern const u32 gItemIconPal_MetaItem_PokeStage[];
 extern const u32 gObjectEventPic_MetaItem_ZiggyRoom[];
 #define          gObjectEventPal_MetaItem_ZiggyRoom  gObjectEventPal_Npc1
 extern const u32 gItemIconPic_MetaItem_ZiggyRoom[];
@@ -10471,7 +10471,7 @@ extern const u32 gItemIconPic_MetaItem_ZipRoom[];
 extern const u32 gObjectEventPic_MetaItem_KogaRoom[];
 #define          gObjectEventPal_MetaItem_KogaRoom  gObjectEventPal_Npc4
 extern const u32 gItemIconPic_MetaItem_KogaRoom[];
-#define          gItemIconPal_MetaItem_KogaRoom  gItemIconPal_Npc4
+extern const u32 gItemIconPal_MetaItem_KogaRoom[];
 extern const u32 gObjectEventPic_MetaItem_FireRoom[];
 #define          gObjectEventPal_MetaItem_FireRoom  gObjectEventPal_Npc2
 extern const u32 gItemIconPic_MetaItem_FireRoom[];
