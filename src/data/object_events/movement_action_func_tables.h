@@ -266,6 +266,9 @@ u8 MovementAction_EmoteNoteD_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_EmoteNoteE_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_EmoteNoteF_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementAction_EmoteNoteG_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_EmoteNoteA_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_EmoteNoteB_Step0(struct ObjectEvent *, struct Sprite *);
+u8 MovementAction_EmoteNoteC1_Step0(struct ObjectEvent *, struct Sprite *);
 
 u8 (*const gMovementActionFuncs_FaceDown[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_FaceUp[])(struct ObjectEvent *, struct Sprite *);
@@ -430,6 +433,9 @@ u8 (*const gMovementActionFuncs_EmoteNoteD[])(struct ObjectEvent *, struct Sprit
 u8 (*const gMovementActionFuncs_EmoteNoteE[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_EmoteNoteF[])(struct ObjectEvent *, struct Sprite *);
 u8 (*const gMovementActionFuncs_EmoteNoteG[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_EmoteNoteA[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_EmoteNoteB[])(struct ObjectEvent *, struct Sprite *);
+u8 (*const gMovementActionFuncs_EmoteNoteC1[])(struct ObjectEvent *, struct Sprite *);
 
 u8 (*const *const gMovementActionFuncs[])(struct ObjectEvent *, struct Sprite *) = {
     [MOVEMENT_ACTION_FACE_DOWN] = gMovementActionFuncs_FaceDown,
@@ -595,6 +601,9 @@ u8 (*const *const gMovementActionFuncs[])(struct ObjectEvent *, struct Sprite *)
     [MOVEMENT_ACTION_EMOTE_NOTE_E] = gMovementActionFuncs_EmoteNoteE,
     [MOVEMENT_ACTION_EMOTE_NOTE_F] = gMovementActionFuncs_EmoteNoteF,
     [MOVEMENT_ACTION_EMOTE_NOTE_G] = gMovementActionFuncs_EmoteNoteG,
+    [MOVEMENT_ACTION_EMOTE_NOTE_A] = gMovementActionFuncs_EmoteNoteA,
+    [MOVEMENT_ACTION_EMOTE_NOTE_B] = gMovementActionFuncs_EmoteNoteB,
+    [MOVEMENT_ACTION_EMOTE_NOTE_C1] = gMovementActionFuncs_EmoteNoteC1,
 };
 
 u8 (*const gMovementActionFuncs_FaceDown[])(struct ObjectEvent *, struct Sprite *) = {
@@ -1557,5 +1566,20 @@ u8 (*const gMovementActionFuncs_EmoteNoteF[])(struct ObjectEvent *, struct Sprit
 
 u8 (*const gMovementActionFuncs_EmoteNoteG[])(struct ObjectEvent *, struct Sprite *) = {
     MovementAction_EmoteNoteG_Step0,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_EmoteNoteA[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_EmoteNoteA_Step0,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_EmoteNoteB[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_EmoteNoteB_Step0,
+    MovementAction_Finish,
+};
+
+u8 (*const gMovementActionFuncs_EmoteNoteC1[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementAction_EmoteNoteC1_Step0,
     MovementAction_Finish,
 };

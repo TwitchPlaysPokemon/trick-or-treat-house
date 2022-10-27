@@ -77,6 +77,9 @@ gFieldEffectScriptPointers::
 	.4byte gFieldEffectScript_EmoteNoteE                @ FLDEFF_EMOTE_NOTE_E
 	.4byte gFieldEffectScript_EmoteNoteF                @ FLDEFF_EMOTE_NOTE_F
 	.4byte gFieldEffectScript_EmoteNoteG                @ FLDEFF_EMOTE_NOTE_G
+	.4byte gFieldEffectScript_EmoteNoteA                @ FLDEFF_EMOTE_NOTE_A
+	.4byte gFieldEffectScript_EmoteNoteB                @ FLDEFF_EMOTE_NOTE_B
+	.4byte gFieldEffectScript_EmoteNoteC1               @ FLDEFF_EMOTE_NOTE_C1
 	.4byte gFieldEffectScript_FallGrass                 @ FLDEFF_FALL_GRASS
 	.4byte gFieldEffectScript_JumpFallGrass             @ FLDEFF_JUMP_FALL_GRASS
 	.4byte gFieldEffectScript_FallLongGrass             @ FLDEFF_FALL_LONG_GRASS
@@ -388,4 +391,16 @@ gFieldEffectScript_EmoteNoteF::
 
 gFieldEffectScript_EmoteNoteG::
 	field_eff_loadfadedpal_callnative sSpritePalette_EmoteNote, FldEff_EmoteNoteG
+	field_eff_end
+
+gFieldEffectScript_EmoteNoteA::
+	field_eff_loadfadedpal_callnative sSpritePalette_EmoteNote, FldEff_EmoteNoteA
+	field_eff_end
+
+gFieldEffectScript_EmoteNoteB::
+	field_eff_loadfadedpal_callnative sSpritePalette_EmoteNote, FldEff_EmoteNoteB
+	field_eff_end
+
+gFieldEffectScript_EmoteNoteC1::
+	field_eff_loadfadedpal_callnative sSpritePalette_EmoteNote, FldEff_EmoteNoteC1
 	field_eff_end

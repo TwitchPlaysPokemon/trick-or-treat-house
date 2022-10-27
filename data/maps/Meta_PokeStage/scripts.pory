@@ -1,10 +1,97 @@
 raw `
+#define FLAG_TILES_ACTIVE           FLAG_TEMP_1
+
+#define VAR_NUM_CORRECT_STEPS       VAR_TEMP_1
+#define VAR_SONG_COMPLETION_STATE   VAR_STEP_TRIGGER
+#define VAR_SONG_META               VAR_PUZZLE_3A
+
 Meta_PokeStage_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_PokeStage_OnTransition
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Meta_PokeStage_FrameTable
 	.byte 0
+
+Meta_PokeStage_FrameTable:
+    map_script_2 VAR_SONG_COMPLETION_STATE, 1, Meta_PokeStage_SongCompleted
+    .2byte 0
 `
 
 script(local) Meta_PokeStage_OnTransition {
-	set_meta_visited_flag(MAP_META_POKE_STAGE)
+	// set_meta_visited_flag(MAP_META_POKE_STAGE)
 }
+
+script(local) Meta_PokeStage_SongCompleted {
+	lock
+    applymovement(2, Common_Movement_ExclamationMark)
+    applymovement(3, Common_Movement_ExclamationMark)
+    applymovement(4, Common_Movement_ExclamationMark)
+    applymovement(5, Common_Movement_ExclamationMark)
+    applymovement(6, Common_Movement_ExclamationMark)
+    applymovement(7, Common_Movement_ExclamationMark)
+    applymovement(8, Common_Movement_ExclamationMark)
+    applymovement(9, Common_Movement_ExclamationMark)
+    delay(30)
+    waitmovement(0)
+    setvar(VAR_SONG_COMPLETION_STATE, 0)
+	if (flag(FLAG_HIDE_SCROLL)) {
+		msgbox("The {POKEMON} are happy to hear\n"
+				"the correct notes!\p"
+				"… …\p"
+				"A scroll dropped to the floor.$")
+		addobject(1)
+	}
+	else {
+		msgbox("The {POKEMON} applaud your performance!$")
+	}
+	clearflag(FLAG_TEMP_10)
+	closemessage
+    release
+}
+
+
+script Meta_PokeStage_Pokemon {
+    lockall
+	if (!flag(FLAG_TEMP_10)) {
+		// Temp flag, so will reset if we leave the room
+		callnative(PokemonStage_InitPuzzle)
+		setflag(FLAG_TEMP_10)
+	}
+	
+    applymovement(2, Common_Movement_FaceDown)
+    applymovement(3, Common_Movement_FaceDown)
+    applymovement(4, Common_Movement_FaceDown)
+    applymovement(5, Common_Movement_FaceDown)
+    applymovement(6, Common_Movement_FaceDown)
+    applymovement(7, Common_Movement_FaceDown)
+    applymovement(8, Common_Movement_FaceDown)
+    applymovement(9, Common_Movement_FaceDown)
+    message ("The {POKEMON} are performing!$")
+    fadeoutbgm (0)
+    waitmessage
+    delay (10)
+    
+    // Set up RAM script to play song
+    callnative(PokemonSaysSetupSongScript)
+    // Play song twice
+    callram
+    callram
+    // Tear down script
+    callnative(PokemonSaysTeardownSongScript)
+    
+    // Reset the tile progression state.
+    fadeinbgm (0)
+    setvar(VAR_NUM_CORRECT_STEPS, 0)
+    setflag(FLAG_TILES_ACTIVE)
+    clearflag(FLAG_DID_LOOK_AROUND)
+    releaseall
+}
+
+
+
+raw `
+#undef FLAG_TILES_ACTIVE
+
+#undef VAR_CURR_SONG
+#undef VAR_NUM_CORRECT_STEPS
+#undef VAR_SONG_COMPLETION_STATE
+`

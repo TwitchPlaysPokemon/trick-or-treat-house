@@ -248,6 +248,9 @@
 #define MOVEMENT_ACTION_EMOTE_NOTE_E                    0xA0
 #define MOVEMENT_ACTION_EMOTE_NOTE_F                    0xA1
 #define MOVEMENT_ACTION_EMOTE_NOTE_G                    0xA2
+#define MOVEMENT_ACTION_EMOTE_NOTE_A                    0xA3
+#define MOVEMENT_ACTION_EMOTE_NOTE_B                    0xA4
+#define MOVEMENT_ACTION_EMOTE_NOTE_C1                   0xA5
 
 #define MOVEMENT_ACTION_STEP_END 0xFE
 #define MOVEMENT_ACTION_NONE     0xFF

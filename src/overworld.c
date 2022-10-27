@@ -1340,7 +1340,7 @@ u8 GetLastUsedWarpMapType(void)
 bool8 CurrentMapIs(u16 mapId)
 {
     return gSaveBlock1Ptr->location.mapGroup == (mapId >> 8)
-        && gSaveBlock1Ptr->location.mapNum == (mapId & 8);
+        && gSaveBlock1Ptr->location.mapNum == (mapId & 0xFF);
 }
 
 bool8 IsMapTypeOutdoors(u8 mapType)

@@ -74,6 +74,9 @@ static const u8 sEmotion_EmoteNoteD[] = INCBIN_U8("graphics/misc/emotion_note_d.
 static const u8 sEmotion_EmoteNoteE[] = INCBIN_U8("graphics/misc/emotion_note_e.4bpp");
 static const u8 sEmotion_EmoteNoteF[] = INCBIN_U8("graphics/misc/emotion_note_f.4bpp");
 static const u8 sEmotion_EmoteNoteG[] = INCBIN_U8("graphics/misc/emotion_note_g.4bpp");
+static const u8 sEmotion_EmoteNoteA[] = INCBIN_U8("graphics/misc/emotion_note_a.4bpp");
+static const u8 sEmotion_EmoteNoteB[] = INCBIN_U8("graphics/misc/emotion_note_b.4bpp");
+static const u8 sEmotion_EmoteNoteC1[] = INCBIN_U8("graphics/misc/emotion_note_c1.4bpp");
 
 static u8 (*const sDirectionalApproachDistanceFuncs[])(struct ObjectEvent *trainerObj, s16 range, s16 x, s16 y) =
 {
@@ -181,6 +184,18 @@ static const struct SpriteFrameImage sSpriteImageTable_EmoteNote[] =
         .data = sEmotion_EmoteNoteG,
         .size = 0x80
     },
+    {
+        .data = sEmotion_EmoteNoteA,
+        .size = 0x80
+    },
+    {
+        .data = sEmotion_EmoteNoteB,
+        .size = 0x80
+    },
+    {
+        .data = sEmotion_EmoteNoteC1,
+        .size = 0x80
+    },
 };
 
 static const union AnimCmd sSpriteAnim_Icons1[] =
@@ -213,6 +228,24 @@ static const union AnimCmd sSpriteAnim_Icons5[] =
     ANIMCMD_END
 };
 
+static const union AnimCmd sSpriteAnim_Icons6[] =
+{
+    ANIMCMD_FRAME(5, 60),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sSpriteAnim_Icons7[] =
+{
+    ANIMCMD_FRAME(6, 60),
+    ANIMCMD_END
+};
+
+static const union AnimCmd sSpriteAnim_Icons8[] =
+{
+    ANIMCMD_FRAME(7, 60),
+    ANIMCMD_END
+};
+
 static const union AnimCmd *const sSpriteAnimTable_Icons[] =
 {
     sSpriteAnim_Icons1,
@@ -220,6 +253,9 @@ static const union AnimCmd *const sSpriteAnimTable_Icons[] =
     sSpriteAnim_Icons3,
     sSpriteAnim_Icons4,
     sSpriteAnim_Icons5,
+    sSpriteAnim_Icons6,
+    sSpriteAnim_Icons7,
+    sSpriteAnim_Icons8,
 };
 
 static const struct SpriteTemplate sSpriteTemplate_ExclamationQuestionMark =
@@ -903,6 +939,51 @@ u8 FldEff_EmoteNoteG(void)
     {
         struct Sprite *sprite = &gSprites[spriteId];
         SetIconSpriteData(sprite, FLDEFF_EMOTE_NOTE_G, 4);
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(sprite->template->paletteTag);
+    }
+
+    return 0;
+}
+
+u8 FldEff_EmoteNoteA(void)
+{
+    LOAD_PALETTE(sSpriteTemplate_EmoteNote)
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
+
+    if (spriteId != MAX_SPRITES)
+    {
+        struct Sprite *sprite = &gSprites[spriteId];
+        SetIconSpriteData(sprite, FLDEFF_EMOTE_NOTE_A, 5);
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(sprite->template->paletteTag);
+    }
+
+    return 0;
+}
+
+u8 FldEff_EmoteNoteB(void)
+{
+    LOAD_PALETTE(sSpriteTemplate_EmoteNote)
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
+
+    if (spriteId != MAX_SPRITES)
+    {
+        struct Sprite *sprite = &gSprites[spriteId];
+        SetIconSpriteData(sprite, FLDEFF_EMOTE_NOTE_B, 6);
+        sprite->oam.paletteNum = IndexOfSpritePaletteTag(sprite->template->paletteTag);
+    }
+
+    return 0;
+}
+
+u8 FldEff_EmoteNoteC1(void)
+{
+    LOAD_PALETTE(sSpriteTemplate_EmoteNote)
+    spriteId = CreateSpriteAtEnd(&sSpriteTemplate_EmoteNote, 0, 0, 0x53);
+
+    if (spriteId != MAX_SPRITES)
+    {
+        struct Sprite *sprite = &gSprites[spriteId];
+        SetIconSpriteData(sprite, FLDEFF_EMOTE_NOTE_C1, 7);
         sprite->oam.paletteNum = IndexOfSpritePaletteTag(sprite->template->paletteTag);
     }
 

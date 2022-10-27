@@ -73,10 +73,13 @@
 #define FLDEFF_EMOTE_NOTE_E              69
 #define FLDEFF_EMOTE_NOTE_F              70
 #define FLDEFF_EMOTE_NOTE_G              71
-#define FLDEFF_FALL_GRASS                72
-#define FLDEFF_JUMP_FALL_GRASS           73
-#define FLDEFF_FALL_LONG_GRASS           74
-#define FLDEFF_JUMP_FALL_LONG_GRASS      75
+#define FLDEFF_EMOTE_NOTE_A              72
+#define FLDEFF_EMOTE_NOTE_B              73
+#define FLDEFF_EMOTE_NOTE_C1             74
+#define FLDEFF_FALL_GRASS                75
+#define FLDEFF_JUMP_FALL_GRASS           76
+#define FLDEFF_FALL_LONG_GRASS           77
+#define FLDEFF_JUMP_FALL_LONG_GRASS      78
 
 #define FLDEFFOBJ_SHADOW_S              0
 #define FLDEFFOBJ_SHADOW_M              1

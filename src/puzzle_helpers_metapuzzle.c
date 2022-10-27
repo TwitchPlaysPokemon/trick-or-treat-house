@@ -54,6 +54,12 @@ extern const int Start;
 #define VAR_BACKUP_RESERVE_END     VAR_PUZZLE_3F
 
 #define FLAG_VISITED_RM0      FLAG_PUZZLE_20
+// FLAG_PUZZLE_20 (+25) = Visited/Finished room flags
+// ...FLAG_PUZZLE_39
+// 
+#define FLAG_MET_TRICK_MASTER  FLAG_PUZZLE_4F 
+#define FLAG_HIDE_SCROLL       FLAG_PUZZLE_4E
+
 
 #define VAR_LOC_SCROLL        VAR_PUZZLE_11
 #define VAR_LOC_CUT           VAR_PUZZLE_12
@@ -500,6 +506,9 @@ static void MetaPuzzle_Setup4x4Layout() {
 	}
 	
 	VarSet(VAR_LOC_SCROLL, VarGet(VAR_ROOM_ID_0_0 + 3));
+	if (VarGet(VAR_ROOM_ID_0_0 + 3) == MAP_META_POKE_STAGE) {
+		FlagSet(FLAG_HIDE_SCROLL);
+	}
 	VarSet(VAR_LOC_CUT, VarGet(VAR_ROOM_ID_0_0 + 10));
 	VarSet(VAR_LOC_ROCK_SMASH, VarGet(VAR_ROOM_ID_0_0 + 12));
 	VarSet(VAR_LOC_STRENGTH, VarGet(VAR_ROOM_ID_0_0 + 7));

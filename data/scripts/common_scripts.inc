@@ -64,6 +64,18 @@ Common_Movement_EmoteNoteF::
 Common_Movement_EmoteNoteG::
 	emote_note_g
 	step_end
+
+Common_Movement_EmoteNoteA::
+	emote_note_a
+	step_end
+
+Common_Movement_EmoteNoteB::
+	emote_note_b
+	step_end
+
+Common_Movement_EmoteNoteC1::
+	emote_note_c1
+	step_end
 	
 Common_Movement_RevealTrainer::
 	reveal_trainer

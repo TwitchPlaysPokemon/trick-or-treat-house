@@ -167,5 +167,8 @@
 	create_movement_action emote_note_e, MOVEMENT_ACTION_EMOTE_NOTE_E
 	create_movement_action emote_note_f, MOVEMENT_ACTION_EMOTE_NOTE_F
 	create_movement_action emote_note_g, MOVEMENT_ACTION_EMOTE_NOTE_G
+	create_movement_action emote_note_a, MOVEMENT_ACTION_EMOTE_NOTE_A
+	create_movement_action emote_note_b, MOVEMENT_ACTION_EMOTE_NOTE_B
+	create_movement_action emote_note_c1, MOVEMENT_ACTION_EMOTE_NOTE_C1
 
 	create_movement_action step_end, MOVEMENT_ACTION_STEP_END

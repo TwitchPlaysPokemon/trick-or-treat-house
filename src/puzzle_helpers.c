@@ -110,22 +110,22 @@ void BORTizeBufferedStrings(struct ScriptContext *ctx)
 #pragma region // Puzzle: Pokemon Says 
 // MAP_PUZZLE_MUSIC_NOTE_TILES
 
-#define FLAG_HIDE_SCROLL            FLAG_PUZZLE_20
-#define FLAG_TILES_ACTIVE           FLAG_PUZZLE_21
-#define FLAG_HIDE_SINGERS           FLAG_PUZZLE_22
+#define FLAG_TILES_ACTIVE           FLAG_TEMP_1
 #define FLAG_SHOW_EXTRA_SINGER      FLAG_PUZZLE_23
-#define FLAG_EXTRA_ENABLED          FLAG_PUZZLE_24
+#define FLAG_EXTRA_ENABLED          FLAG_TEMP_2
 #define VAR_CURR_SONG               VAR_PUZZLE_00
-#define VAR_NUM_CORRECT_STEPS       VAR_PUZZLE_01
-#define VAR_TARGET_TILE             VAR_PUZZLE_02
-#define VAR_SONG_COMPLETION_STATE   VAR_PUZZLE_03
-#define VAR_NUM_SECRET_STEPS        VAR_PUZZLE_11
+#define VAR_NUM_CORRECT_STEPS       VAR_TEMP_1
+#define VAR_NUM_SECRET_STEPS        VAR_TEMP_2
+#define VAR_SONG_COMPLETION_STATE   VAR_STEP_TRIGGER
 #define VAR_SONG_A                  VAR_PUZZLE_0A
 #define VAR_SONG_B                  VAR_PUZZLE_0B
 #define VAR_SONG_C                  VAR_PUZZLE_0C
 #define VAR_SONG_D                  VAR_PUZZLE_0D
 #define NUM_BYTES_PER_NOTE          13
 #define NUM_MAX_NOTES               8
+
+#define VAR_SONG_META               VAR_PUZZLE_3A
+#define FLAG_SONG_CHOSEN            FLAG_TEMP_10
 
 struct PokemonSaysNote {
 	u8 localId;
@@ -151,6 +151,9 @@ extern const u8 Common_Movement_EmoteNoteD[];
 extern const u8 Common_Movement_EmoteNoteE[];
 extern const u8 Common_Movement_EmoteNoteF[];
 extern const u8 Common_Movement_EmoteNoteG[];
+extern const u8 Common_Movement_EmoteNoteA[];
+extern const u8 Common_Movement_EmoteNoteB[];
+extern const u8 Common_Movement_EmoteNoteC1[];
 extern const u8 Puzzle_MusicNoteTiles_ExtraCurious[];
 
 const struct PokemonSaysNote sSongNotes[] = {
@@ -160,9 +163,9 @@ const struct PokemonSaysNote sSongNotes[] = {
 	[PS_NOTE_E] = { 4, 0x2C2, SE_NOTE_E, Common_Movement_EmoteNoteE }, // Green
 	[PS_NOTE_F] = { 5, 0x2C3, SE_NOTE_F, Common_Movement_EmoteNoteF }, // Pink
 	[PS_NOTE_G] = { 6, 0x2C4, SE_NOTE_G, Common_Movement_EmoteNoteG }, // Red
-	[PS_NOTE_A] = { 9, 0x2C5, SE_NOTE_A, Common_Movement_EmoteNoteC }, // Cyan
-	[PS_NOTE_B] = { 8, 0x2C6, SE_NOTE_B, Common_Movement_EmoteNoteD }, // White
-	[PS_NOTE_C1]= { 7, 0x2C7, SE_NOTE_C_HIGH,Common_Movement_EmoteNoteE }, // Orange
+	[PS_NOTE_A] = { 9, 0x2C5, SE_NOTE_A, Common_Movement_EmoteNoteA }, // Cyan
+	[PS_NOTE_B] = { 8, 0x2C6, SE_NOTE_B, Common_Movement_EmoteNoteB }, // White
+	[PS_NOTE_C1]= { 7, 0x2C7, SE_NOTE_C_HIGH,Common_Movement_EmoteNoteC1 }, // Orange
 };
 
 #define NOTE(l, length)   ((PS_NOTE_##l << 8) | length)
@@ -199,10 +202,10 @@ static const u16 Puzzle_MusicNoteTiles_MusicTableD[][7] = {
 };
 
 static const u16 Puzzle_MusicNoteTiles_MusicTableMeta[][10] = {
-	{ NOTE(B, 30), NOTE(A, 30), NOTE(A, 30), NOTE(D, 10), NOTE(B, 10), NOTE(A, 10), NOTE(F, 60), PS_NOTE_END}, // Nocturn of Shadow
+	{ NOTE(B, 40), NOTE(A, 40), NOTE(A, 40), NOTE(D, 15), NOTE(B, 15), NOTE(A, 15), NOTE(F, 60), PS_NOTE_END}, // Nocturn of Shadow
 	{ NOTE(F, 20), NOTE(D, 20), NOTE(F, 20), NOTE(D, 20), NOTE(A, 20), NOTE(F, 20), NOTE(A, 20), NOTE(F, 20), PS_NOTE_END}, // Bolero of Fire
 	{ NOTE(D, 60), NOTE(F, 30), NOTE(D, 30), NOTE(A, 60), NOTE(F, 60), NOTE(D, 60), PS_NOTE_END}, // Requiem of Spirit
-	{ NOTE(D, 60), NOTE(B, 30), NOTE(A, 60), NOTE(F, 30), NOTE(E, 60), NOTE(D, 20), NOTE(C, 20), NOTE(E, 60), PS_NOTE_END}, // Midna's Lament (transposed)
+	{ NOTE(D, 60), NOTE(B, 30), NOTE(A, 60), NOTE(F, 30), NOTE(E, 60), NOTE(D, 15), NOTE(C, 15), NOTE(E, 60), PS_NOTE_END}, // Midna's Lament (transposed)
 	
 	// D,D,D,D,D-E-F... F-G-A,A-^-B,BAGF, G,A  // Star Fox Theme
 	// C,E-G, F,A-C, BAG // Pokemon Leitmotif
@@ -232,8 +235,21 @@ void PokemonSaysInitPuzzle(struct ScriptContext *ctx)
 	mgba_printf(MGBA_LOG_INFO, "Selected songs: %d, %d, %d, %d", VarGet(VAR_SONG_A), VarGet(VAR_SONG_B), VarGet(VAR_SONG_C), VarGet(VAR_SONG_D));
 }
 
+void PokemonStage_InitPuzzle(struct ScriptContext *ctx)
+{
+	do {
+		u16 song = Random() % ARRAY_COUNT(Puzzle_MusicNoteTiles_MusicTableMeta);
+		if (song == VarGet(VAR_SONG_META)-1) continue;
+		VarSet(VAR_SONG_META, song+1);
+	}
+	while(false);
+}
+
 const u16* PokemonSays_GetCurrentSong()
 {
+	if (CurrentMapIs(MAP_META_POKE_STAGE)) {
+		return Puzzle_MusicNoteTiles_MusicTableMeta[VarGet(VAR_SONG_META)-1];
+	}
 	switch (VarGet(VAR_CURR_SONG)) {
 		default: 
 		case 0: return Puzzle_MusicNoteTiles_MusicTableA[VarGet(VAR_SONG_A)];
@@ -279,7 +295,7 @@ void PokemonSaysSetupSongScript(struct ScriptContext *ctx)
 		script[i++] = ((noteLen) >> 0) & 0xFF;
 		script[i++] = ((noteLen) >> 8) & 0xFF;
 		
-		if (noteIndex > PS_NOTE_G) {
+		if (CurrentMapIs(MAP_PUZZLE_MUSIC_NOTE_TILES) && noteIndex > PS_NOTE_G) {
 			FlagSet(FLAG_EXTRA_ENABLED);
 		}
 		
@@ -407,7 +423,7 @@ void HandlePuzzleMusicTileStep(u32 metatileId)
 	u16 curStep = VarGet(VAR_NUM_CORRECT_STEPS);
 	const u16* music = PokemonSays_GetCurrentSong();
 	const struct PokemonSaysNote* correctNote;
-
+	
 	if (!FlagGet(FLAG_TILES_ACTIVE))
 	{
 		PlayPuzzleMusicTileNote(metatileId);
@@ -426,10 +442,15 @@ void HandlePuzzleMusicTileStep(u32 metatileId)
 		}
 		else
 		{
-			if (VarGet(VAR_CURR_SONG) < 3)
+			if (CurrentMapIs(MAP_META_POKE_STAGE)) {
 				VarSet(VAR_SONG_COMPLETION_STATE, 1);
-			else
-				VarSet(VAR_SONG_COMPLETION_STATE, 2);
+			}
+			else {
+				if (VarGet(VAR_CURR_SONG) < 3)
+					VarSet(VAR_SONG_COMPLETION_STATE, 1);
+				else
+					VarSet(VAR_SONG_COMPLETION_STATE, 2);
+			}
 
 			FlagClear(FLAG_TILES_ACTIVE);
 		}
@@ -444,19 +465,18 @@ void HandlePuzzleMusicTileStep(u32 metatileId)
 }
 
 
-#undef FLAG_HIDE_SCROLL
 #undef FLAG_TILES_ACTIVE
-#undef FLAG_HIDE_SINGERS
 #undef FLAG_SHOW_EXTRA_SINGER
 #undef FLAG_EXTRA_ENABLED
 #undef VAR_CURR_SONG
 #undef VAR_NUM_CORRECT_STEPS
-#undef VAR_TARGET_TILE
+#undef VAR_NUM_SECRET_STEPS
 #undef VAR_SONG_COMPLETION_STATE
 #undef VAR_SONG_A
 #undef VAR_SONG_B
 #undef VAR_SONG_C
 #undef VAR_SONG_D
+#undef VAR_SONG_META
 
 #pragma endregion
 ///////////////////////////////////////////////////////////////////////////////

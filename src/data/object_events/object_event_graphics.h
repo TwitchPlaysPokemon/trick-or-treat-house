@@ -391,7 +391,7 @@ const u16 gFieldEffectPal_SmallSparkle[] = INCBIN_U16("graphics/field_effects/pa
 const u16 gFieldEffectObjectPalette0[] = INCBIN_U16("graphics/field_effects/palettes/general_0.gbapal");
 const u16 gFieldEffectObjectPalette1[] = INCBIN_U16("graphics/field_effects/palettes/general_1.gbapal");
 const u16 gFieldEffectObjectPaletteFall[] = INCBIN_U16("graphics/field_effects/palettes/autumn.gbapal");
-const u16 gObjectEventPal_EmoteNote[] = INCBIN_U16("graphics/misc/emotion_note_c.gbapal");
+const u16 gObjectEventPal_EmoteNote[] = INCBIN_U16("graphics/misc/emotion_note.gbapal");
 //-------------------------------------------------------------------
 // Trick Treat
 const u32 gObjectEventPic_TrickScroll[] = INCBIN_U32("graphics/object_events/pics/misc/trick_scroll.4bpp");

@@ -8,7 +8,8 @@ raw `
 // FLAG_PUZZLE_20 (+25) = Visited/Finished room flags
 // ...FLAG_PUZZLE_39
 // 
-#define FLAG_MET_TRICK_MASTER  FLAG_PUZZLE_4F 
+#define FLAG_MET_TRICK_MASTER  FLAG_PUZZLE_4F
+#define FLAG_HIDE_SCROLL       FLAG_PUZZLE_4E
 
 // FLAG_PUZZLE_ITEM_0 = watering can in Ziggy room
 // FLAG_PUZZLE_ITEM_1 = Acro Bike
