@@ -396,7 +396,7 @@ script MetaPuzzle_CommentOnItems {
 		checkitem(ITEM_META_ITEM_POKE_STAGE, 1)
 		if (var(VAR_RESULT) == TRUE) {
 	message("Oh! An Azurill Doll! So cute!\n"
-			"Sp fluffy! So demanding!\p"
+			"So fluffy! So demanding!\p"
 			"A stage! The singing! Can I source a\n"
 			"theater on such short notice?\p$")
 			waitmessage

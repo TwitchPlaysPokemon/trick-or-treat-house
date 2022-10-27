@@ -1067,7 +1067,7 @@ static const struct WindowTemplate sNumberSelectWinTemplate =
 {
 	.bg = 0,
 	.tilemapLeft = 22,
-	.tilemapTop = 11,
+	.tilemapTop = 10,
 	.width = 6,
 	.height = 2,
 	.paletteNum = 15,

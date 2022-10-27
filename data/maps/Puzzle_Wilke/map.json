@@ -19,7 +19,7 @@
       "x": 11,
       "y": 0,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE",
+      "movement_type": "MOVEMENT_TYPE_COPY_PLAYER",
       "movement_range_x": 15,
       "movement_range_y": 15,
       "trainer_type": "TRAINER_TYPE_KEEP_LOADED",
