@@ -49,7 +49,7 @@ Puzzle_MetaPuzzle_MapScripts::
 	.byte 0
 
 Puzzle_MetaPuzzle_Name:
-	.string "Secret Caverns$"
+	.string "The Last Hurrah$"
 Puzzle_MetaPuzzle_Quip:
 	@ TODO: When this puzzle is not a stub, this will be a script instead
 	.string "Clearly, no one can do a better job\n"

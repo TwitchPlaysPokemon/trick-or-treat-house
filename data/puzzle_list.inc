@@ -49,7 +49,7 @@ gPuzzleList::                                           @ Puzzle Type(s)
     .2byte MAP_PUZZLE_LOST_WOODS4_ENTRANCE              @  MAZE
     
     .2byte MAP_PUZZLE_SAFARI_IMPOSTERS                  @  LOGIC
-@   .2byte MAP_META_PUZZLE
+    .2byte MAP_PUZZLE_META_PUZZLE
     .2byte MAP_PUZZLE_CREDITS                           @  MINIGAME (Must be last)
 @   .2byte MAP_TRICK_TREAT_SLATEPORT_CITY1  @ (Not actually a puzzle)
     .2byte 0xFFFF
@@ -59,7 +59,6 @@ gPuzzleList::                                           @ Puzzle Type(s)
 .align 2
 gDebugPuzzles::
     .2byte MAP_EMPTY_PUZZLE
-    .2byte MAP_PUZZLE_META_PUZZLE
     .2byte MAP_TRICK_TREAT_ALTO_MARE1                   @  TRICK (after Mossdeep)
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL1             @  BATTLE/MAZE
     .2byte MAP_PUZZLE_TRICK_HOUSE_TRAPDOORS             @  BATTLE/MAZE

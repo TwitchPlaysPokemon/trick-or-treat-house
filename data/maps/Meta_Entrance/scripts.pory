@@ -5,9 +5,22 @@ Meta_Entrance_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_Entrance_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, Meta_Entrance_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Meta_Entrance_FrameTable
 	.byte 0
+	
+Meta_Entrance_FrameTable:
+	map_script_2 VAR_TEMP_A, 0, Meta_Entrance_ShowMapNamePopup
+	.2byte 0
 `
 
+script(local) Meta_Entrance_ShowMapNamePopup {
+	if (!flag(FLAG_IS_PUZZLE_INTRODUCED)) {
+		special(ShowMapNamePopup)
+		setflag(FLAG_IS_PUZZLE_INTRODUCED)
+	}
+	setvar(VAR_TEMP_A, 1)
+	release
+}
 script(local) Meta_Entrance_OnTransition {
 	set_meta_visited_flag(MAP_META_ENTRANCE)
 }
