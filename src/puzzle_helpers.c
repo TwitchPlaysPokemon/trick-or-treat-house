@@ -242,7 +242,7 @@ void PokemonStage_InitPuzzle(struct ScriptContext *ctx)
 		if (song == VarGet(VAR_SONG_META)-1) continue;
 		VarSet(VAR_SONG_META, song+1);
 	}
-	while(false);
+	while(FALSE);
 }
 
 const u16* PokemonSays_GetCurrentSong()
