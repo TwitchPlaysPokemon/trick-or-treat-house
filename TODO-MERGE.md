@@ -11,9 +11,9 @@ Feature Merging:
 Known issues:
 - [ ] Drop follower next to player when respawning from blackout! Can probably do as a Ext OnLoad script
 - [ ] Manectric on the intro screen is yellow instead of blue for some reason.
-- [ ] Pokemon Says: When the high note is used, the azuril breaking out of the jar counts as a bad note, but talking to it after it breaks out isn't counted as a bad note.
+- [?] Pokemon Says: When the high note is used, the azuril breaking out of the jar counts as a bad note, but talking to it after it breaks out isn't counted as a bad note.
 - [ ] Farfetch'd Forest: When the farfetch'd flies, do hideReflection=true and add a shadow field effect or something; also disable ripples
-- [ ] BORT Mode: Not all abilities have been translated.
+- [X] BORT Mode: Not all abilities have been translated.
 
 
 Other Puzzles:
@@ -22,8 +22,8 @@ Other Puzzles:
 - [X] Falling Water
 	- [X] Basically completed. Needs candy and a name.
 	- [ ] Test slow surfing section
-- [ ] Dive Maze
-	- [ ] Make said maze
+- [-] Dive Maze
+	- [-] Make said maze
 - [ ] Subduction Zone
 	- [ ] Copy over the Seafloor Cavern
 	- [ ] Rearrange the doors
@@ -37,40 +37,40 @@ Other Puzzles:
 
 
 Meta Puzzle Finish/Polish:
-- [ ] Needs background for sliding tile screen.
-	- [ ] Version for size 3
-	- [ ] Version for size 4
-- [ ] Lavaridge Springs
-	- [ ] Needs detail pass
-- [ ] Ledge Room
+- [X] Needs background for sliding tile screen.
+	- [X] Version for size 3
+	- [X] Version for size 4
+- [X] Lavaridge Springs
+	- [X] Needs detail pass
+- [X] Ledge Room
 	- [ ] Wire up event objects to flags / metatiles
-- [ ] Final Bluff
-	- [ ] Assign item pickups to all balls
+- [X] Final Bluff
+	- [X] Assign item pickups to all balls
 - [X] Ice Corner
 - [X] Log Flotilla
 - [X] Bike Path
-	- [ ] Add some detail or something?
-- [ ] Poke Stage
-	- [ ] Wire everything up
-	- [ ] Test songs
+	- [-] Add some detail or something?
+- [X] Poke Stage
+	- [X] Wire everything up
+	- [X] Test songs
 	- [ ] Drop scroll
-- [ ] Ziggy Forest
-	- [ ] Double check all interactions and both orders to solving the puzzle.
+- [X] Ziggy Forest
+	- [X] Double check all interactions and both orders to solving the puzzle.
 	- [ ] Fix the Sudo fight so it jumps up onto the walkway before the fight. (Don't use reveal_trainer, I guess.)
-	- [ ] Test to make sure you can't take the waterfall item from the baby until the mom shows up.
-- [ ] Forest Clearing
-	- [ ] Everything
-- [ ] Zip Slide
-	- [ ] Fill in item balls with candy.
-	- [ ] Also possibly make a new meta tile behavior that is a slide when elevated priority but is normal walking under it, for the elevated platforms.
+	- [X] Test to make sure you can't take the waterfall item from the baby until the mom shows up.
+- [X] Forest Clearing
+	- [X] Everything
+- [X] Zip Slide
+	- [X] Fill in item balls with candy.
+	- [-] Also possibly make a new meta tile behavior that is a slide when elevated priority but is normal walking under it, for the elevated platforms.
 - [ ] Koga's Elbow
 	- [ ] Add interactions with floating people
 	- [ ] Make Tustin a fight.
-- [ ] Subduction Zone
-	- [ ] Wire up switches to explode the rocks for shortcut.
-- [ ] Dive Maze
-	- [ ] Everything
-- [ ] Berry Room
+- [X] Subduction Zone
+	- [X] Wire up switches to explode the rocks for shortcut.
+- [X] Dive Maze
+	- [X] Everything
+- [X] Berry Room
 	- [ ] Assign berries to trick house exterior
 	- [ ] Assign berries to trees
 - [ ] Room 15
@@ -88,12 +88,12 @@ Changes:
 	- Look at fldeff_flash.c, copy Task_EnterCaveTransition3 (and related chain), and make a custom transition palette which goes from white, through several colors, to black, and doesn't fade out like the vanilla transition does.
 	- Perhaps going into the door, the colors go from inside to out (so opposite Task_EnterCaveTransition3).
 		- And then when exiting, they go outside in, return trip.
-- [ ] Lost Woods 1: Use Amongous instead of electrode?
-- [ ] Towers: Change up pokemon to be more diverse?
+- [X] Lost Woods 1: Use Amongous instead of electrode?
+- [X] Towers: Change up pokemon to be more diverse?
 - [ ] Towers: Possibly add follower friend to help?
-- [ ] Change the emerald text border to orange themed.
-	- [ ] Also add an optional text box for person's name using short/narrow text
-- [ ] Finish BORTizing move names
+- [X] Change the emerald text border to orange themed.
+	- [X] Also add an optional text box for person's name using short/narrow text
+- [X] Finish BORTizing move names
 - [ ] BORTize candy names
 - [ ] Potentially add more BORT names for new pokemon, especially ones able to be given out as starters
 - [ ] BORT: Go over the sGrammarMoveUsedTable and see if there's an updated version.
@@ -115,8 +115,8 @@ Others:
 	- [ ] Add command which prints to mgba. 
 		- [ ] In poryscript, may need to specifically make ascii strings.
 		- [ ] Possibly make one version of command print encoded
-- [ ] Add map script for getting map overworld music
-	- [ ] GetLocationMusic -> make map script
+- [X] Add map script for getting map overworld music
+	- [X] GetLocationMusic -> make map script
 - [ ] Add map script for getting battle music
 - [ ] Add enhancement where something tells the player if they got the scroll already.
 	- I was thinking the costume could change, but that would likely require a map reload of figuring out how to change the graphic without a reload.
@@ -126,9 +126,9 @@ Others:
 - [ ] Change some mulch to KEEP to allow use for the growing puzzle element puzzle.
 - [ ] Implement GAME_STAT_NUM_CANDY_TRADES
 - [ ] In battle_util.c, implement HOLD_EFFECT_CURE_PAR_HP and others
-- [ ] Remove all sText_* from battle_strings_elf.h table and change the lookup function to fallback to the normal table in case of null pointer
-- [ ] Search through MUS_ABANDONED_SHIP and replace them all
-- [ ] Specials
+- [X] Remove all sText_* from battle_strings_elf.h table and change the lookup function to fallback to the normal table in case of null pointer
+- [X] Search through MUS_ABANDONED_SHIP and replace them all
+- [-] Specials
 - [ ] Convert player_forcestep to new naming scheme, also figure out wtf it's doing again
 - [ ] Convert the DoorAnimTiles_TrickScroll to a single image, like the other door animations
 - [ ] item effects - clean up and remove duplicated / unused item effects
