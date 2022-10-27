@@ -202,7 +202,7 @@ script TrickHouseRestroom_EventScript_Pokeball {
 		// Sets VAR_0x8001 to the selected mon species, also buffers mon name to STR_VAR_1
 		callnative(GetOrGenerateStarterPokemon) 
 		bufferspeciesname(1, VAR_0x8001) //buffer 2
-		showmonpic (VAR_0x8001, 10, 4)
+		showmonpic (VAR_0x8001, 10, 3)
 		playmoncry (VAR_0x8001, 0)
 		message("The name tag on this {STR_VAR_2} says\n"
 				"“{STR_VAR_1}”.")
@@ -210,7 +210,7 @@ script TrickHouseRestroom_EventScript_Pokeball {
 		loaddynamicstring(0, "Choose")
 		loaddynamicstring(1, "Stats")
 		loaddynamicstring(2, "Cancel")
-		multichoice(20, 6, 3, 0)
+		multichoice(20, 5, 3, 0)
 		waitmoncry
 		switch (var(VAR_RESULT)) {
 			case 0: // choose
@@ -249,6 +249,11 @@ script(local) TrickHouseRestroom_EventScript_PokemonChoose {
 	}
 	setflag (FLAG_SYS_POKEMON_GET)
 	releaseall
+}
+
+script TrickHouseRestroom_SignScript_BlockPC {
+	msgbox ("There's a sign on this that says\n"
+			"“Currently out of order”.$", MSGBOX_SIGN)
 }
 
 raw `

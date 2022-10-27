@@ -14,7 +14,6 @@ Known issues:
 - [ ] Pokemon Says: When the high note is used, the azuril breaking out of the jar counts as a bad note, but talking to it after it breaks out isn't counted as a bad note.
 - [ ] Farfetch'd Forest: When the farfetch'd flies, do hideReflection=true and add a shadow field effect or something; also disable ripples
 - [ ] BORT Mode: Not all abilities have been translated.
-- [ ] Change Joey's text box colors to better match new palette. (add yellow)
 
 
 Other Puzzles:
@@ -84,7 +83,7 @@ Meta Puzzle Finish/Polish:
 
 
 Changes:
-- [ ] Add newer-gen mons to the rental sequence.
+- [X] Add newer-gen mons to the rental sequence.
 - [ ] When entering/exiting the puzzle door/stone door, custom transition into and out of the door.
 	- Look at fldeff_flash.c, copy Task_EnterCaveTransition3 (and related chain), and make a custom transition palette which goes from white, through several colors, to black, and doesn't fade out like the vanilla transition does.
 	- Perhaps going into the door, the colors go from inside to out (so opposite Task_EnterCaveTransition3).

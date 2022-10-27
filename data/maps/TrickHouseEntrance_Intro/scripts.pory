@@ -173,6 +173,7 @@ script TrickHouseEntrance_IntroCutscene {
 	speakername_common(JOEY)
 	message("Heck yeah, I'm in!{PAUSE 60}$")
 	waitmessage
+	waitbuttonpress
 	closemessage
 	waitmovement(LID_LINK)
 	//waitmovement(LID_JOEY)

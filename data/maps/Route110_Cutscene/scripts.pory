@@ -87,15 +87,6 @@ script Route110_Cutscene_RunIntro {
 			"and I'm melting trying to keep up!$")
 	applymovement(LID_GHOST, Common_Movement_WalkLeft1)
 	waitmovement(LID_GHOST)
-	delay (16)
-	applymovement (LID_GHOST, Common_Movement_WalkInPlaceUp)
-	delay (30)
-	setobjectxyperm (LID_JOEY, 9, 12)
-	setobjectxyperm (LID_GHOST, 0, 0)
-	removeobject (LID_GHOST)
-	addobject (LID_JOEY)
-	delay (20)
-	applymovement (LID_JOEY, Common_Movement_WalkInPlaceDown)
 	waitmessage
 	waitbuttonpress
 	playse(SE_SELECT)
@@ -106,17 +97,26 @@ script Route110_Cutscene_RunIntro {
 	message("We still have loads of houses in\n"
 			"Slateport to hit before Trick-or-\l"
 			"Treating time is over!$")
-	waitmovement(LID_JAMES)
 	delay (16)
 	applymovement(LID_MAY, Route110_Cutscene_RunIntro_Move3_May)
 	applymovement(LID_ALEX, Route110_Cutscene_RunIntro_Move3_Alex)
 	applymovement(LID_IRENE, Route110_Cutscene_RunIntro_Move3_Irene)
+	applymovement (LID_GHOST, Common_Movement_WalkInPlaceUp)
+	delay (30)
+	setobjectxyperm (LID_JOEY, 9, 12)
+	setobjectxyperm (LID_GHOST, 0, 0)
+	removeobject (LID_GHOST)
+	addobject (LID_JOEY)
+	delay (20)
+	applymovement (LID_JOEY, Common_Movement_WalkInPlaceDown)
+	delay (16)
 	applymovement (LID_JOEY, Common_Movement_WalkInPlaceLeft)
 	delay (30)
 	applymovement (LID_WALLY, Common_Movement_WalkInPlaceLeft)
 	waitmessage
 	waitbuttonpress
 	playse(SE_SELECT)
+	waitmovement(LID_JAMES)
 	// Wally notices the commotion
 	speakername_common(WALLY)
 	applymovement(LID_WALLY, Common_Movement_WalkInPlaceDown)
@@ -145,6 +145,7 @@ script Route110_Cutscene_RunIntro {
 			"Then he just left to see the world.$")
 	applymovement(LID_BRENDAN, Route110_Cutscene_RunIntro_Move5_Brendan)
 	applymovement(LID_MAY, Route110_Cutscene_RunIntro_Move5_May)
+	waitmovement(LID_ALEX)
 	delay(4)
 	applymovement (LID_JAMES, Common_Movement_FaceRight)
 	delay(3)

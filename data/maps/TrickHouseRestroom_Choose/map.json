@@ -248,6 +248,14 @@
       "elevation": 3,
       "item": "ITEM_TABLE_CANDY_UNCOMMON",
       "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x36"
+    },
+    {
+      "type": "sign",
+      "x": 8,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "TrickHouseRestroom_SignScript_BlockPC"
     }
   ]
 }
