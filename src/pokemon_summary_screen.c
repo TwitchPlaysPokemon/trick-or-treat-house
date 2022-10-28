@@ -1637,7 +1637,7 @@ static void Task_HandleInput(u8 taskId)
             BeginCloseSummaryScreen(taskId);
         }
         #if P_ENABLE_DEBUG == TRUE
-        else if (JOY_NEW(SELECT_BUTTON) && !gMain.inBattle)
+        else if (JOY_NEW(SELECT_BUTTON) && !gMain.inBattle && gMain.debugMode)
         {
             sMonSummaryScreen->callback = CB2_Debug_Pokemon;
             StopPokemonAnimations();

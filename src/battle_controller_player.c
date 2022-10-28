@@ -330,7 +330,7 @@ static void HandleInputChooseAction(void)
         SwapHpBarsWithHpText();
     }
 #if B_ENABLE_DEBUG == TRUE
-    else if (gMain.newKeys & SELECT_BUTTON)
+    else if ((gMain.newKeys & SELECT_BUTTON) && gMain.debugMode)
     {
         BtlController_EmitTwoReturnValues(BUFFER_B, B_ACTION_DEBUG, 0);
         PlayerBufferExecCompleted();
