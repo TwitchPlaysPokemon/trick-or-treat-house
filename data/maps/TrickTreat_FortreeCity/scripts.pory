@@ -198,8 +198,8 @@ script TrickTreat_FortreeCity_CandyGiver_FairyGirl {
 	}
 	// Show "Right" or "Left" menu, funnily enough used in Foretree usually
 	loaddynamicstring(0, gText_Right)
-	loaddynamicstring(0, gText_Left)
-	multichoice(0, 0, 2, FALSE)
+	loaddynamicstring(1, gText_Left)
+	multichoice(0, 0, 2, FALSE) //TODO: reposition from the top-left corner?
 	if (var(VAR_RESULT) == VAR_0x800A) { // chose correctly
 		msgbox("Hey, you chose the treat!\n"
 			"Congrats!$")
@@ -329,7 +329,7 @@ script TrickTreat_FortreeCity_NinjaKid_After {
 script TrickTreat_FortreeCity_BuriedItem {
 	lock
 	msgbox ("There's something buried here…$")
-	giveitem_std(ITEM_TABLE_CANDY_RARE, 1)
+	finditem_std(ITEM_TABLE_CANDY_RARE, 1)
 	release
 }
 
