@@ -214,7 +214,7 @@
       "elevation": 0,
       "var": "VAR_RUN_TRIGGER_IMMEDIATELY",
       "var_value": "0",
-      "script": "Common_EventScript_CandyAbundant"
+      "script": "Puzzle_FallingWater_SlowSurfing"
     },
     {
       "type": "trigger",
