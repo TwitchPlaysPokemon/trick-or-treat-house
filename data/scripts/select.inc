@@ -33,12 +33,12 @@ gText_SelectWithoutRegisteredItem:: @ 8272C98
 	.string "TRICK OR TREATING HANDBOOK.$"
 	
 EventScript_SelectWithoutRegisteredItem_BORT:
-	message gBORT_SelectWithoutRegisteredItem
+	message gBort_SelectWithoutRegisteredItem
 	waitmessage
 	waitbuttonpress
 	releaseall
 	end
-gBORT_SelectWithoutRegisteredItem::
+gBort_SelectWithoutRegisteredItem::
 	.string "PROP CAN BE LOG ON BY PRESSING\n"
 	.string "CONVIENT BUTTON.$"
 	@ .string "WORDS OF OQT!\n"

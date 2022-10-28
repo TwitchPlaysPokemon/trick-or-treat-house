@@ -1681,9 +1681,9 @@ static void GetBattlerNick(u32 battlerId, u8 *dst)
     if (GetBattlerSide(battlerId) != B_SIDE_PLAYER)                     \
     {                                                                   \
         if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)                     \
-            toCpy = (BORT)?sBort_FoePkmnPrefix:sText_FoePkmnPrefix;     \
+            toCpy = (BORT)?gBort_FoePkmnPrefix:sText_FoePkmnPrefix;     \
         else                                                            \
-            toCpy = (BORT)?sBort_WildPkmnPrefix:sText_WildPkmnPrefix;   \
+            toCpy = (BORT)?gBort_WildPkmnPrefix:sText_WildPkmnPrefix;   \
         while (*toCpy != EOS)                                           \
         {                                                               \
             dst[dstID] = *toCpy;                                        \
@@ -2130,37 +2130,37 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst)
                 if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
                     toCpy = sText_AllyPkmnPrefix2;
                 else
-                    toCpy = (BORT)?sBort_FoePkmnPrefix:sText_FoePkmnPrefix3;
+                    toCpy = (BORT)?gBort_FoePkmnPrefix:sText_FoePkmnPrefix3;
                 break;
             case B_TXT_DEF_PREFIX2:
                 if (GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER)
                     toCpy = sText_AllyPkmnPrefix2;
                 else
-                    toCpy = (BORT)?sBort_FoePkmnPrefix:sText_FoePkmnPrefix3;
+                    toCpy = (BORT)?gBort_FoePkmnPrefix:sText_FoePkmnPrefix3;
                 break;
             case B_TXT_ATK_PREFIX1:
                 if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
                     toCpy = sText_AllyPkmnPrefix;
                 else
-                    toCpy = (BORT)?sBort_FoePkmnPrefix:sText_FoePkmnPrefix2;
+                    toCpy = (BORT)?gBort_FoePkmnPrefix:sText_FoePkmnPrefix2;
                 break;
             case B_TXT_DEF_PREFIX1:
                 if (GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER)
                     toCpy = sText_AllyPkmnPrefix;
                 else
-                    toCpy = (BORT)?sBort_FoePkmnPrefix:sText_FoePkmnPrefix2;
+                    toCpy = (BORT)?gBort_FoePkmnPrefix:sText_FoePkmnPrefix2;
                 break;
             case B_TXT_ATK_PREFIX3:
                 if (GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER)
                     toCpy = sText_AllyPkmnPrefix3;
                 else
-                    toCpy = (BORT)?sBort_FoePkmnPrefix:sText_FoePkmnPrefix4;
+                    toCpy = (BORT)?gBort_FoePkmnPrefix:sText_FoePkmnPrefix4;
                 break;
             case B_TXT_DEF_PREFIX3:
                 if (GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER)
                     toCpy = sText_AllyPkmnPrefix3;
                 else
-                    toCpy = (BORT)?sBort_FoePkmnPrefix:sText_FoePkmnPrefix4;
+                    toCpy = (BORT)?gBort_FoePkmnPrefix:sText_FoePkmnPrefix4;
                 break;
             case B_TXT_TRAINER2_CLASS:
                 toCpy = BattleStringGetOpponentClassByTrainerId(gTrainerBattleOpponent_B);
@@ -2336,7 +2336,16 @@ void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
         {
         case B_BUFF_STRING: // battle string
             hword = T1_READ_16(&src[srcID + 1]);
-            StringAppend(dst, gBattleStringsTable[hword - BATTLESTRINGS_TABLE_START]);
+            if (BORT) {
+                const u8 *stringPtr = gBattleStringsTable[hword - BATTLESTRINGS_TABLE_START];
+                if (stringPtr == NULL)
+                {   // Fallback to normal string table if elf doesn't handle it
+                    stringPtr = gNormalBattleStringsTable[hword - BATTLESTRINGS_TABLE_START];
+                }
+                StringAppend(dst, stringPtr);
+            } else {
+                StringAppend(dst, gBattleStringsTable[hword - BATTLESTRINGS_TABLE_START]);
+            }
             srcID += 3;
             break;
         case B_BUFF_NUMBER: // int to string
@@ -2379,9 +2388,9 @@ void ExpandBattleTextBuffPlaceholders(const u8 *src, u8 *dst)
             else
             {
                 if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
-                    StringAppend(dst, (BORT)?sBort_FoePkmnPrefix:sText_FoePkmnPrefix);
+                    StringAppend(dst, (BORT)?gBort_FoePkmnPrefix:sText_FoePkmnPrefix);
                 else
-                    StringAppend(dst, (BORT)?sBort_WildPkmnPrefix:sText_WildPkmnPrefix);
+                    StringAppend(dst, (BORT)?gBort_WildPkmnPrefix:sText_WildPkmnPrefix);
 
                 GetMonData(&gEnemyParty[src[srcID + 2]], MON_DATA_NICKNAME, text);
             }

@@ -38,16 +38,16 @@ const u8 gBort_Types[][4+1] =
 // Below are copies from the battle_messages.c file, with their explainations on how they
 // were used in Japanese. Since Viet Crystal was a poor translation of the japanese, we're
 // going to use these functions to their original effect to poorly translate the line.
-static const u8 sBort_SpaceIs[] = _(" IS");
-static const u8 sBort_ApostropheS[] = _("");//EN'S");
+static const u8 gBort_SpaceIs[] = _(" IS");
+static const u8 gBort_ApostropheS[] = _("");//EN'S");
 
-static const u8 sBort_ExclamationMark[] = _("!");
-static const u8 sBort_ExclamationMark2[] = _(" USED!");
-static const u8 sBort_ExclamationMark3[] = _("AH!");
-static const u8 sBort_ExclamationMark4[] = _(" AH!");
-static const u8 sBort_ExclamationMark5[] = _(" AH!");
+static const u8 gBort_ExclamationMark[] = _("!");
+static const u8 gBort_ExclamationMark2[] = _(" USED!");
+static const u8 gBort_ExclamationMark3[] = _("AH!");
+static const u8 gBort_ExclamationMark4[] = _(" AH!");
+static const u8 gBort_ExclamationMark5[] = _(" AH!");
 
-static const u8 sBort_AttackerUsedX[] = _("{B_BUFF1}{B_ATK_NAME_WITH_PREFIX}\n{B_BUFF3}");
+static const u8 gBort_AttackerUsedX[] = _("{B_BUFF1}{B_ATK_NAME_WITH_PREFIX}\n{B_BUFF3}");
 
 // Loads one of two text strings into the provided buffer. This is functionally
 // unused, since the value loaded into the buffer is not read; it loaded one of
@@ -69,9 +69,9 @@ static void ChooseMoveUsedParticle_BORT(u8* textBuff)
     if (counter >= 0)
     {
         if (counter <= 2)
-            StringCopy(textBuff, sBort_SpaceIs); // is
+            StringCopy(textBuff, gBort_SpaceIs); // is
         else if (counter <= MAX_MON_MOVES)
-            StringCopy(textBuff, sBort_ApostropheS); // 's
+            StringCopy(textBuff, gBort_ApostropheS); // 's
     }
 }
 
@@ -112,19 +112,19 @@ static void ChooseTypeOfMoveUsedString_BORT(u8* dst)
     switch (counter)
     {
     case 0:
-        StringCopy(dst, sBort_ExclamationMark);
+        StringCopy(dst, gBort_ExclamationMark);
         break;
     case 1:
-        StringCopy(dst, sBort_ExclamationMark2);
+        StringCopy(dst, gBort_ExclamationMark2);
         break;
     case 2:
-        StringCopy(dst, sBort_ExclamationMark3);
+        StringCopy(dst, gBort_ExclamationMark3);
         break;
     case 3:
-        StringCopy(dst, sBort_ExclamationMark4);
+        StringCopy(dst, gBort_ExclamationMark4);
         break;
     case 4:
-        StringCopy(dst, sBort_ExclamationMark5);
+        StringCopy(dst, gBort_ExclamationMark5);
         break;
     }
 }
@@ -147,47 +147,47 @@ void BufferStringBattle_BORT(u16 stringID)
             {
                 if (gBattleTypeFlags & BATTLE_TYPE_TOWER_LINK_MULTI)
                 {
-                    stringPtr = sBort_TwoTrainersWantToBattle;
+                    stringPtr = gBort_TwoTrainersWantToBattle;
                 }
                 else if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
                 {
                     if (gBattleTypeFlags & BATTLE_TYPE_RECORDED)
-                        stringPtr = sBort_TwoLinkTrainersWantToBattlePause;
+                        stringPtr = gBort_TwoLinkTrainersWantToBattlePause;
                     else
-                        stringPtr = sBort_TwoLinkTrainersWantToBattle;
+                        stringPtr = gBort_TwoLinkTrainersWantToBattle;
                 }
                 else
                 {
                     if (gTrainerBattleOpponent_A == TRAINER_UNION_ROOM)
-                        stringPtr = sBort_Trainer1WantsToBattle;
+                        stringPtr = gBort_Trainer1WantsToBattle;
                     else if (gBattleTypeFlags & BATTLE_TYPE_RECORDED)
-                        stringPtr = sBort_LinkTrainerWantsToBattlePause;
+                        stringPtr = gBort_LinkTrainerWantsToBattlePause;
                     else
-                        stringPtr = sBort_LinkTrainerWantsToBattle;
+                        stringPtr = gBort_LinkTrainerWantsToBattle;
                 }
             }
             else
             {
                 if (BATTLE_TWO_VS_ONE_OPPONENT)
-                    stringPtr = sBort_Trainer1WantsToBattle;
+                    stringPtr = gBort_Trainer1WantsToBattle;
                 else if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER))
-                    stringPtr = sBort_TwoTrainersWantToBattle;
+                    stringPtr = gBort_TwoTrainersWantToBattle;
                 else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
-                    stringPtr = sBort_TwoTrainersWantToBattle;
+                    stringPtr = gBort_TwoTrainersWantToBattle;
                 else
-                    stringPtr = sBort_Trainer1WantsToBattle;
+                    stringPtr = gBort_Trainer1WantsToBattle;
             }
         }
         else
         {
             if (gBattleTypeFlags & BATTLE_TYPE_LEGENDARY)
-                stringPtr = sBort_LegendaryPkmnAppeared;
+                stringPtr = gBort_LegendaryPkmnAppeared;
             else if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE && IsValidForBattle(&gEnemyParty[gBattlerPartyIndexes[BATTLE_PARTNER(gActiveBattler)]])) // interesting, looks like they had something planned for wild double battles
-                stringPtr = sBort_TwoWildPkmnAppeared;
+                stringPtr = gBort_TwoWildPkmnAppeared;
             else if (gBattleTypeFlags & BATTLE_TYPE_WALLY_TUTORIAL)
-                stringPtr = sBort_WildPkmnAppearedPause;
+                stringPtr = gBort_WildPkmnAppearedPause;
             else
-                stringPtr = sBort_WildPkmnAppeared;
+                stringPtr = gBort_WildPkmnAppeared;
         }
         break;
     case STRINGID_INTROSENDOUT: // poke first send-out
@@ -196,17 +196,17 @@ void BufferStringBattle_BORT(u16 stringID)
             if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE && IsValidForBattle(&gPlayerParty[gBattlerPartyIndexes[BATTLE_PARTNER(gActiveBattler)]]))
             {
                 if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
-                    stringPtr = sBort_InGamePartnerSentOutZGoN;
+                    stringPtr = gBort_InGamePartnerSentOutZGoN;
                 else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
-                    stringPtr = sBort_GoTwoPkmn;
+                    stringPtr = gBort_GoTwoPkmn;
                 else if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
-                    stringPtr = sBort_LinkPartnerSentOutPkmnGoPkmn;
+                    stringPtr = gBort_LinkPartnerSentOutPkmnGoPkmn;
                 else
-                    stringPtr = sBort_GoTwoPkmn;
+                    stringPtr = gBort_GoTwoPkmn;
             }
             else
             {
-                stringPtr = sBort_GoPkmn;
+                stringPtr = gBort_GoPkmn;
             }
         }
         else
@@ -214,26 +214,26 @@ void BufferStringBattle_BORT(u16 stringID)
             if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE && IsValidForBattle(&gEnemyParty[gBattlerPartyIndexes[BATTLE_PARTNER(gActiveBattler)]]))
             {
                 if (BATTLE_TWO_VS_ONE_OPPONENT)
-                    stringPtr = sBort_Trainer1SentOutTwoPkmn;
+                    stringPtr = gBort_Trainer1SentOutTwoPkmn;
                 else if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
-                    stringPtr = sBort_TwoTrainersSentPkmn;
+                    stringPtr = gBort_TwoTrainersSentPkmn;
                 else if (gBattleTypeFlags & BATTLE_TYPE_TOWER_LINK_MULTI)
-                    stringPtr = sBort_TwoTrainersSentPkmn;
+                    stringPtr = gBort_TwoTrainersSentPkmn;
                 else if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
-                    stringPtr = sBort_TwoLinkTrainersSentOutPkmn;
+                    stringPtr = gBort_TwoLinkTrainersSentOutPkmn;
                 else if (gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK))
-                    stringPtr = sBort_LinkTrainerSentOutTwoPkmn;
+                    stringPtr = gBort_LinkTrainerSentOutTwoPkmn;
                 else
-                    stringPtr = sBort_Trainer1SentOutTwoPkmn;
+                    stringPtr = gBort_Trainer1SentOutTwoPkmn;
             }
             else
             {
                 if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED_LINK)))
-                    stringPtr = sBort_Trainer1SentOutPkmn;
+                    stringPtr = gBort_Trainer1SentOutPkmn;
                 else if (gTrainerBattleOpponent_A == TRAINER_UNION_ROOM)
-                    stringPtr = sBort_Trainer1SentOutPkmn;
+                    stringPtr = gBort_Trainer1SentOutPkmn;
                 else
-                    stringPtr = sBort_LinkTrainerSentOutPkmn;
+                    stringPtr = gBort_LinkTrainerSentOutPkmn;
             }
         }
         break;
@@ -241,26 +241,26 @@ void BufferStringBattle_BORT(u16 stringID)
         if (GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER)
         {
             if (*(&gBattleStruct->hpScale) == 0)
-                stringPtr = sBort_PkmnThatsEnough;
+                stringPtr = gBort_PkmnThatsEnough;
             else if (*(&gBattleStruct->hpScale) == 1 || gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
-                stringPtr = sBort_PkmnComeBack;
+                stringPtr = gBort_PkmnComeBack;
             else if (*(&gBattleStruct->hpScale) == 2)
-                stringPtr = sBort_PkmnOkComeBack;
+                stringPtr = gBort_PkmnOkComeBack;
             else
-                stringPtr = sBort_PkmnGoodComeBack;
+                stringPtr = gBort_PkmnGoodComeBack;
         }
         else
         {
             if (gTrainerBattleOpponent_A == TRAINER_LINK_OPPONENT || gBattleTypeFlags & BATTLE_TYPE_RECORDED_LINK)
             {
                 if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
-                    stringPtr = sBort_LinkTrainer2WithdrewPkmn;
+                    stringPtr = gBort_LinkTrainer2WithdrewPkmn;
                 else
-                    stringPtr = sBort_LinkTrainer1WithdrewPkmn;
+                    stringPtr = gBort_LinkTrainer1WithdrewPkmn;
             }
             else
             {
-                stringPtr = sBort_Trainer1WithdrewPkmn;
+                stringPtr = gBort_Trainer1WithdrewPkmn;
             }
         }
         break;
@@ -268,13 +268,13 @@ void BufferStringBattle_BORT(u16 stringID)
         if (GetBattlerSide(gBattleScripting.battler) == B_SIDE_PLAYER)
         {
             if (*(&gBattleStruct->hpScale) == 0 || gBattleTypeFlags & BATTLE_TYPE_DOUBLE)
-                stringPtr = sBort_GoPkmn2;
+                stringPtr = gBort_GoPkmn2;
             else if (*(&gBattleStruct->hpScale) == 1)
-                stringPtr = sBort_DoItPkmn;
+                stringPtr = gBort_DoItPkmn;
             else if (*(&gBattleStruct->hpScale) == 2)
-                stringPtr = sBort_GoForItPkmn;
+                stringPtr = gBort_GoForItPkmn;
             else
-                stringPtr = sBort_YourFoesWeakGetEmPkmn;
+                stringPtr = gBort_YourFoesWeakGetEmPkmn;
         }
         else
         {
@@ -283,18 +283,18 @@ void BufferStringBattle_BORT(u16 stringID)
                 if (gBattleTypeFlags & BATTLE_TYPE_TOWER_LINK_MULTI)
                 {
                     if (gBattleScripting.battler == 1)
-                        stringPtr = sBort_Trainer1SentOutPkmn2;
+                        stringPtr = gBort_Trainer1SentOutPkmn2;
                     else
-                        stringPtr = sBort_Trainer2SentOutPkmn;
+                        stringPtr = gBort_Trainer2SentOutPkmn;
                 }
                 else
                 {
                     if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
-                        stringPtr = sBort_LinkTrainerMultiSentOutPkmn;
+                        stringPtr = gBort_LinkTrainerMultiSentOutPkmn;
                     else if (gTrainerBattleOpponent_A == TRAINER_UNION_ROOM)
-                        stringPtr = sBort_Trainer1SentOutPkmn2;
+                        stringPtr = gBort_Trainer1SentOutPkmn2;
                     else
-                        stringPtr = sBort_LinkTrainerSentOutPkmn2;
+                        stringPtr = gBort_LinkTrainerSentOutPkmn2;
                 }
             }
             else
@@ -302,13 +302,13 @@ void BufferStringBattle_BORT(u16 stringID)
                 if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
                 {
                     if (gBattleScripting.battler == 1)
-                        stringPtr = sBort_Trainer1SentOutPkmn2;
+                        stringPtr = gBort_Trainer1SentOutPkmn2;
                     else
-                        stringPtr = sBort_Trainer2SentOutPkmn;
+                        stringPtr = gBort_Trainer2SentOutPkmn;
                 }
                 else
                 {
-                    stringPtr = sBort_Trainer1SentOutPkmn2;
+                    stringPtr = gBort_Trainer1SentOutPkmn2;
                 }
             }
         }
@@ -325,7 +325,7 @@ void BufferStringBattle_BORT(u16 stringID)
         //     StringCopy(gBattleTextBuff3, gMoveNames[gBattleMsgDataPtr->currentMove]);
 
         ChooseTypeOfMoveUsedString_BORT(gBattleTextBuff3);
-        stringPtr = sBort_AttackerUsedX;
+        stringPtr = gBort_AttackerUsedX;
         break;
     case STRINGID_BATTLEEND: // battle end
         if (gBattleTextBuff1[0] & B_OUTCOME_LINK_BATTLE_RAN)
@@ -335,11 +335,11 @@ void BufferStringBattle_BORT(u16 stringID)
                 gBattleTextBuff1[0] ^= (B_OUTCOME_LOST | B_OUTCOME_WON);
 
             if (gBattleTextBuff1[0] == B_OUTCOME_LOST || gBattleTextBuff1[0] == B_OUTCOME_DREW)
-                stringPtr = sBort_GotAwaySafely;
+                stringPtr = gBort_GotAwaySafely;
             else if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
-                stringPtr = sBort_TwoWildFled;
+                stringPtr = gBort_TwoWildFled;
             else
-                stringPtr = sBort_WildFled;
+                stringPtr = gBort_WildFled;
         }
         else
         {
@@ -352,15 +352,15 @@ void BufferStringBattle_BORT(u16 stringID)
                 {
                 case B_OUTCOME_WON:
                     if (gBattleTypeFlags & BATTLE_TYPE_TOWER_LINK_MULTI)
-                        stringPtr = sBort_TwoInGameTrainersDefeated;
+                        stringPtr = gBort_TwoInGameTrainersDefeated;
                     else
-                        stringPtr = sBort_TwoLinkTrainersDefeated;
+                        stringPtr = gBort_TwoLinkTrainersDefeated;
                     break;
                 case B_OUTCOME_LOST:
-                    stringPtr = sBort_PlayerLostToTwo;
+                    stringPtr = gBort_PlayerLostToTwo;
                     break;
                 case B_OUTCOME_DREW:
-                    stringPtr = sBort_PlayerBattledToDrawVsTwo;
+                    stringPtr = gBort_PlayerBattledToDrawVsTwo;
                     break;
                 }
             }
@@ -369,13 +369,13 @@ void BufferStringBattle_BORT(u16 stringID)
             //     switch (gBattleTextBuff1[0])
             //     {
             //     case B_OUTCOME_WON:
-            //         stringPtr = sBort_PlayerDefeatedLinkTrainerTrainer1;
+            //         stringPtr = gBort_PlayerDefeatedLinkTrainerTrainer1;
             //         break;
             //     case B_OUTCOME_LOST:
-            //         stringPtr = sBort_PlayerLostAgainstTrainer1;
+            //         stringPtr = gBort_PlayerLostAgainstTrainer1;
             //         break;
             //     case B_OUTCOME_DREW:
-            //         stringPtr = sBort_PlayerBattledToDrawTrainer1;
+            //         stringPtr = gBort_PlayerBattledToDrawTrainer1;
             //         break;
             //     }
             // }
@@ -384,13 +384,13 @@ void BufferStringBattle_BORT(u16 stringID)
                 switch (gBattleTextBuff1[0])
                 {
                 case B_OUTCOME_WON:
-                    stringPtr = sBort_PlayerDefeatedLinkTrainer;
+                    stringPtr = gBort_PlayerDefeatedLinkTrainer;
                     break;
                 case B_OUTCOME_LOST:
-                    stringPtr = sBort_PlayerLostAgainstLinkTrainer;
+                    stringPtr = gBort_PlayerLostAgainstLinkTrainer;
                     break;
                 case B_OUTCOME_DREW:
-                    stringPtr = sBort_PlayerBattledToDrawLinkTrainer;
+                    stringPtr = gBort_PlayerBattledToDrawLinkTrainer;
                     break;
                 }
             }
