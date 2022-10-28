@@ -1079,7 +1079,7 @@
 #define FIRST_Z_CRYSTAL     ITEM_NORMALIUM_Z
 #define LAST_Z_CRYSTAL      ITEM_FAIRIUM_Z
 #define FIRST_TM            ITEM_TM01
-#define LAST_TM             ITEM_TM100
+#define LAST_TM             ITEM_TM50 
 #define FIRST_CANDY         ITEM_CANDY_CHOCOLATE
 #define LAST_CANDY          ITEM_CANDY_GALAXY
 
