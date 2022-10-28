@@ -210,9 +210,23 @@ script TrickTreat_PetalburgCity_CandyGiver_Norman {
 			"Are you worthy of this candy?$")
 	trainerbattle_no_intro (TRAINER_01, 
 			"It seems that you are worthy then.$")
-	msgbox ("Maybe I'll see you in my gym\n"
-			"for a badge in near the future.\p"
-			"But for now, this'll have to do.$")
+	checkplayergender
+	switch (var(VAR_RESULT)) {
+		case GENDER_M:
+			msgbox ("That's my little champion!\n"
+					"You've still got it, kiddo.\p"
+					"Tell mom I'll try and get home early\n"
+					"tonight. Here's a treat.$")
+		case GENDER_F:
+			msgbox ("You're not too shabby. Maybe you're\n"
+					"ready for the gym circuit too?\p"
+					"Give my wishes to your mom and dad\n"
+					"and here's some candy for your win.$")
+		case GENDER_N:
+			msgbox ("Maybe I'll see you in my gym\n"
+					"for a badge in near the future.\p"
+					"But for now, this'll have to do.$")
+	}
 	giveitem_std(ITEM_TABLE_CANDY_UNCOMMON, 1)
 	call (PuzzleCommon_EventScript_StandingCandyGiverLeave)
 	setflag (FLAG_PUZZLE_22)
@@ -241,9 +255,23 @@ script TrickTreat_PetalburgCity_CandyGiver_WallysHouse {
 	lock
 	call (TrickTreat_PetalburgCity_SetDoorGlowOff)
 	call (PuzzleCommon_EventScript_DoorCandyGiverShow)
-	msgbox ("Trick or Treat!\p"
-			"Oh! You're WALLY's friend! Let's see\n"
-			"if you're as good as he says you are!$")
+	checkplayergender
+	switch (var(VAR_RESULT)) {
+		case GENDER_M:
+			msgbox ("Trick or Treat!\p"
+					"Oh! You're Wally's champion friend!\n"
+					"Let's see if you've still got it!$")
+		case GENDER_F:
+			msgbox ("Trick or Treat!\p"
+					"Oh! You're Wally's friend! Let's see\n"
+					"if you're as good as he says you are!$")
+		case GENDER_N:
+			msgbox ("Trick or Treat!\p"
+					"Oh! You're Wally's friend from Sinnoh!\n"
+					"I hear it's real cold up there now!\p"
+					"Let's see if you know how to battle\n"
+					"in the Hoenn tropical heat!$")
+	}
 	trainerbattle_no_intro (TRAINER_03, 
 			"Splendid! Splendid!$")
 	setdooropen (VAR_METATILE_X, VAR_METATILE_Y)
@@ -268,6 +296,24 @@ script TrickTreat_PetalburgCity_CandyGiver_House {
 }
 
 script TrickTreat_PetalburgCity_BerryLady {
+	lock
+	faceplayer
+	if (!flag(FLAG_META_PICKUP_BERRY)) {
+		msgbox ("Happy Halloween!\n"
+				"Here's a treat!$")
+		giveitem_std(ITEM_META_ITEM_BERRY, 1)
+		setflag(FLAG_META_PICKUP_BERRY)
+	}
+	msgbox ("What is it?!\n"
+			"It's a berry flower, obviously!\p"
+			"Isn't it just beautiful? It came from\n"
+			"the plant next to me!\p"
+			"There's just something so special\n"
+			"about it, no?$")
+	release
+}
+script TrickTreat_PetalburgCity_BerryLady_TODO {
+	// Replace above with this once berry planting has been implemented.
 	lock
 	faceplayer
 	if (!flag(FLAG_META_PICKUP_BERRY)) {

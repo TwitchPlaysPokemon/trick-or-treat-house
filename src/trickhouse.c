@@ -236,20 +236,6 @@ void ClearTrainerFlags(struct ScriptContext *ctx)
 	memset(gSaveBlock1Ptr->flags + (TRAINER_FLAGS_START >> 3), 0, TRAINERS_PERMAP_END >> 3);
 }
 
-// Input VAR_0x8000 = Puzzle to compare to
-void CheckIfNextPuzzleIs(struct ScriptContext *ctx)
-{
-	u16 currPuzzle;
-	u16 i = VarGet(VAR_CURRENT_PUZZLE);
-	i++;
-	if (i < DEBUG_PUZZLE_START)
-		currPuzzle = gPuzzleList[i];
-	else
-		currPuzzle = gDebugPuzzles[i-DEBUG_PUZZLE_START];
-	
-	gSpecialVar_Result = (currPuzzle == gSpecialVar_0x8000);
-}
-
 void CheckIfNoMorePuzzles(struct ScriptContext *ctx)
 {
 	u16 currPuzzle = GetCurrentPuzzleMapId();
@@ -1152,6 +1138,21 @@ void ChooseNumberOfTradeItems(struct ScriptContext *ctx)
 #undef tMax
 
 ///////////////////////////////////////////////////////////////////////////////
+
+void CheckCurrentPuzzleMap(struct ScriptContext *ctx)
+{
+	gSpecialVar_Result = GetCurrentPuzzleMapId();
+}
+
+void CheckNextPuzzleMap(struct ScriptContext *ctx)
+{
+	u16 i = VarGet(VAR_CURRENT_PUZZLE);
+	i++;
+	if (i < DEBUG_PUZZLE_START)
+		gSpecialVar_Result = gPuzzleList[i];
+	else
+		gSpecialVar_Result = gDebugPuzzles[i-DEBUG_PUZZLE_START];
+}
 
 void PlayCredits(struct ScriptContext *ctx)
 {

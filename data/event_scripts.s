@@ -131,6 +131,7 @@ gStdScripts_End::
 	.include "data/maps/TrickHouseCorridor/scripts.inc"
 	.include "data/maps/TrickHouseTreeHouse/scripts.inc"
 	.include "data/maps/TrickHouseRestroom/scripts.inc"
+	.include "data/maps/TrickHouseRestroom/scenes.inc"
 	
 	@ -------------------------------------------------
 	

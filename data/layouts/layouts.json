@@ -1756,7 +1756,7 @@
     {
       "id": "LAYOUT_TRICK_HOUSE_RESTROOM",
       "name": "TrickHouseRestroom_Layout",
-      "width": 14,
+      "width": 30,
       "height": 12,
       "border_width": 2,
       "border_height": 2,

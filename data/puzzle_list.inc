@@ -11,7 +11,7 @@ gPuzzleList::                                           @ Puzzle Type(s)
     .2byte MAP_PUZZLE_LOST_WOODS1_ENTRANCE              @  MAZE
     .2byte MAP_PUZZLE_WILKE                             @  FOLLOW/TUTORIAL
     .2byte MAP_PUZZLE_TRAINER_HILL1                     @  BATTLE/MAZE
-    
+    @ 8
     .2byte MAP_TRICK_TREAT_PETALBURG_CITY               @  TRICK
     
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL3             @  LOGIC (Toggle Doors)
@@ -24,7 +24,7 @@ gPuzzleList::                                           @ Puzzle Type(s)
     .2byte MAP_PUZZLE_ROUTE110                          @  ITEM/MAZE
     .2byte MAP_PUZZLE_FALLING_WATER                     @  ITEM/MOVEMENT
     .2byte MAP_PUZZLE_SOOTOPOLIS_GYM                    @  MOVEMENT
-    
+    @ 19
     .2byte MAP_TRICK_TREAT_FORTREE_CITY                 @  TRICK
     
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL5             @  MOVEMENT/MAZE (RSE Slide Tiles)
@@ -36,7 +36,7 @@ gPuzzleList::                                           @ Puzzle Type(s)
     .2byte MAP_PUZZLE_STEALTH_MISSION                   @  MOVEMENT/MAZE
     .2byte MAP_PUZZLE_TRAINER_HILL3                     @  BATTLE/MAZE
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL6             @  MOVEMENT/MAZE (Rot Gates)
-    
+    @ 29
     .2byte MAP_TRICK_TREAT_MOSSDEEP_CITY                @  TRICK
     
     .2byte MAP_PUZZLE_TIC_RAC_TOE                       @  FOLLOW/BATTLE
@@ -47,7 +47,7 @@ gPuzzleList::                                           @ Puzzle Type(s)
     .2byte MAP_PUZZLE_TRAINER_HILL4                     @  BATTLE/MAZE
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL8             @  BATTLE/MOVEMENT (Ice Floor)
     .2byte MAP_PUZZLE_LOST_WOODS4_ENTRANCE              @  MAZE
-    
+    @ 37
     .2byte MAP_PUZZLE_SAFARI_IMPOSTERS                  @  LOGIC
     .2byte MAP_PUZZLE_META_PUZZLE
     .2byte MAP_PUZZLE_CREDITS                           @  MINIGAME (Must be last)

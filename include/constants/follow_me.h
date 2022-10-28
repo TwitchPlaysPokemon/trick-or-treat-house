@@ -19,6 +19,7 @@
 #define FOLLOWER_ID_BRENDAN      1
 #define FOLLOWER_ID_MAY          2
 #define FOLLOWER_ID_TREEKID      3
+#define FOLLOWER_ID_ALEX         3
 #define FOLLOWER_ID_JOEY         4
 #define FOLLOWER_ID_JAMES        5
 #define FOLLOWER_ID_IRENE        6

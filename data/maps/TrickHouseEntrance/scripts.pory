@@ -13,14 +13,9 @@ mapscripts TrickHouseEntrance_MapScripts {
 	// 	VAR_INTRO_COUNTER, 2: TrickHouseEntrance_WalkInCutscene
 	// 	VAR_INTRO_COUNTER, 4: TrickHouseEntrance_IntroCutscene
 	// ]
-	// MAP_SCRIPT_ON_LOAD {
-	// 	switch (var(VAR_INTRO_COUNTER)) {
-	// 		case 2:
-	// 		case 3:
-	// 			setmetatile (5, 1, 0x20B, TRUE) // Close scroll door
-	// 			setobjectmovementtype (1, MOVEMENT_TYPE_INVISIBLE)
-	// 	}
-	// }
+	MAP_SCRIPT_ON_LOAD {
+		call(TrickHouseEntrance_OnLoad_Wally)
+	}
 	// MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE [
 	// 	VAR_INTRO_COUNTER, 2: TrickHouseEntrance_OnWarp_Setup
 	// 	VAR_INTRO_COUNTER, 3: TrickHouseEntrance_OnWarp_Setup

@@ -330,8 +330,9 @@
 
 #define OBJ_EVENT_GFX_YOUNGSTER_JOEY                 0x134
 #define OBJ_EVENT_GFX_TRAINER_AJ                     0x135
+#define OBJ_EVENT_GFX_LETTER                         0x136
 
-#define NUM_OBJ_EVENT_GFX                            0x136
+#define NUM_OBJ_EVENT_GFX                            0x137
 
 // These are dynamic object gfx ids.
 // They correspond with the values of the VAR_OBJ_GFX_ID_X vars.

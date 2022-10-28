@@ -407,6 +407,8 @@ const u16 gObjectEventPal_TrickHouse[] = INCBIN_U16("graphics/object_events/pale
 const u16 gObjectEventPal_TrickPuzzle[] = INCBIN_U16("graphics/object_events/pics/misc/trick_button.gbapal");
 const u16 gObjectEventPal_TrickMaster[] = INCBIN_U16("graphics/object_events/palettes/objpal_trickmaster.gbapal");
 
+const u32 gObjectEventPic_Letter[] = INCBIN_U32("graphics/object_events/pics/misc/letter.4bpp");
+
 const u32 gObjectEventPic_ProfBirch[] = INCBIN_U32("graphics/object_events/pics/people/prof_birch.4bpp");
 const u16 gObjectEventPal_ProfBirch[] = INCBIN_U16("graphics/object_events/pics/people/prof_birch.gbapal");
 
