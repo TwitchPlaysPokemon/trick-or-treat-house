@@ -36,20 +36,23 @@ script TrickHouseRestroom_EventScript_Healer {
 				"room, so let me get my cane here…\p"
 				"Sit tight a moment.$")
 		closemessage
-		applymovement(1, TrickHouseRestroom_Movement_Healer10)
+		applymovement(1, TrickHouseRestroom_Movement_Healer_lady10)
 		waitmovement (1)
 		special (SpawnCameraObject)
-		applymovement(OBJ_EVENT_ID_PLAYER, TrickHouseRestroom_Movement_Healer11)
-		waitmovement (OBJ_EVENT_ID_PLAYER)
-		applymovement(OBJ_EVENT_ID_PLAYER, TrickHouseRestroom_Movement_Healer12)
+		applymovement(LID_PLAYER, TrickHouseRestroom_Movement_Healer_player11)
+		applymovement(LID_FOLLOWER, TrickHouseRestroom_Movement_Healer_follower11)
+		waitmovement (LID_PLAYER)
+		applymovement(LID_PLAYER, TrickHouseRestroom_Movement_Healer_player12)
+		applymovement(LID_FOLLOWER, TrickHouseRestroom_Movement_Healer_follower12)
 		playse (SE_LEDGE)
-		waitmovement (OBJ_EVENT_ID_PLAYER)
-		applymovement(OBJ_EVENT_ID_PLAYER, TrickHouseRestroom_Movement_Healer13)
+		waitmovement (LID_PLAYER)
+		applymovement(LID_PLAYER, TrickHouseRestroom_Movement_Healer_player13)
 		playfanfare(MUS_HEAL)
 		special(HealPlayerParty)
 		waitfanfare
-		applymovement(1, TrickHouseRestroom_Movement_Healer20)
-		waitmovement (OBJ_EVENT_ID_PLAYER)
+		applymovement(1, TrickHouseRestroom_Movement_Healer_lady20)
+		waitmovement (LID_PLAYER)
+		applymovement(LID_FOLLOWER, Common_Movement_WalkUp1)
 		waitmovement (1)
 		special (RemoveCameraObject)
 		msgbox ("Here you are, dearie. Your {POKEMON}\n"
@@ -61,7 +64,7 @@ script TrickHouseRestroom_EventScript_Healer {
 		release
 	}
 }
-movement TrickHouseRestroom_Movement_Healer10 {
+movement TrickHouseRestroom_Movement_Healer_lady10 {
 	delay_16 * 2
 	face_left
 	delay_16 * 3
@@ -73,7 +76,7 @@ movement TrickHouseRestroom_Movement_Healer10 {
 	set_invisible
 	delay_16 * 5
 }
-movement TrickHouseRestroom_Movement_Healer11 {
+movement TrickHouseRestroom_Movement_Healer_player11 {
 	face_right
 	delay_16 * 3
 	face_down
@@ -84,7 +87,17 @@ movement TrickHouseRestroom_Movement_Healer11 {
 	unlock_facing_direction
 	delay_16 * 4
 }
-movement TrickHouseRestroom_Movement_Healer12 {
+movement TrickHouseRestroom_Movement_Healer_follower11 {
+	delay_16 * 2
+	face_down
+	delay_16 * 2
+	face_up
+	delay_8
+	lock_facing_direction
+	walk_down
+	unlock_facing_direction
+}
+movement TrickHouseRestroom_Movement_Healer_player12 {
 	jump_in_place_up
 	delay_16 * 4
 	walk_slow_left
@@ -95,7 +108,25 @@ movement TrickHouseRestroom_Movement_Healer12 {
 	walk_slow_up
 	walk_slow_right * 2
 }
-movement TrickHouseRestroom_Movement_Healer13 {
+movement TrickHouseRestroom_Movement_Healer_follower12 {
+	delay_16 * 6
+	face_left
+	delay_16 * 3
+	face_right
+	delay_16 * 4
+	face_left 
+	delay_16 * 4
+	face_down
+	delay_16 * 5
+	face_up
+	delay_16 * 4
+	face_left 
+	delay_16 * 4
+	face_down
+	delay_16 * 5
+	face_right
+}
+movement TrickHouseRestroom_Movement_Healer_player13 {
 	walk_slow_down
 	walk_slow_left * 2
 	walk_slow_up
@@ -105,7 +136,7 @@ movement TrickHouseRestroom_Movement_Healer13 {
 	walk_fast_left
 	walk_in_place_up
 }
-movement TrickHouseRestroom_Movement_Healer20 {
+movement TrickHouseRestroom_Movement_Healer_lady20 {
 	delay_16 * 5
 	face_down
 	set_visible
