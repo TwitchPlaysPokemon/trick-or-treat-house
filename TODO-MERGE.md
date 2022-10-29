@@ -2,7 +2,7 @@ Feature Merging:
 - [ ] Feature branch: Sideways Stairs
 - [ ] Feature branch: overworld expansion (double check that this is all correct in TTH from this)
 - [ ] Feature branch: Item descriptions on pickup: https://github.com/ghoulslash/pokeemerald/tree/item_desc_header 
-- [ ] Tutorial: Missing text function RESET_SIZE
+- [X] Tutorial: Missing text function RESET_SIZE
 - [ ] Tutorial: EWRAM summary screen improvements?
 - [ ] Tutorial: Trainer Class Based Poké Balls
 - [X] Pokemon Dropping Items in battle
