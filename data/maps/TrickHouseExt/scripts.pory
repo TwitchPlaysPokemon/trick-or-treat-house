@@ -69,7 +69,7 @@ text TrickHouseExt_EventScript_CardGame_Name3 { "Munchkinville" }
 text TrickHouseExt_EventScript_CardGame_Name4 { "Dungeons and Druddigon" }
 text TrickHouseExt_EventScript_CardGame_Name5 { "Magic the Get-Together" }
 text TrickHouseExt_EventScript_CardGame_Name6 { "Coronavirus Inc" }
-text TrickHouseExt_EventScript_CardGame_Name7 { "Duo" }
+text TrickHouseExt_EventScript_CardGame_Name7 { "Artic-Uno" }
 text TrickHouseExt_EventScript_CardGame_Name8 { "Orans to Orans" }
 
 raw `
