@@ -1,9 +1,12 @@
 raw `
 Meta_BerryRoom_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ROOM_NAME, Meta_BerryRoom_RoomName
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_BerryRoom_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, Meta_BerryRoom_OnLoad
 	.byte 0
+Meta_BerryRoom_RoomName:
+	.string "Berry Breezeway$"
 `
 
 script(local) Meta_BerryRoom_OnTransition {

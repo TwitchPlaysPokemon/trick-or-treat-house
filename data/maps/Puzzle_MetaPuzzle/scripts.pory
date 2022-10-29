@@ -425,7 +425,7 @@ script MetaPuzzle_PickupEvent_SeedotDoll {
 script MetaPuzzle_PickupEvent_DebugGetAll {
 	additem(ITEM_META_ITEM_FINAL_BLUFF, 1)
 	additem(ITEM_META_ITEM_ZIGGY, 1)
-	// additem(ITEM_META_ITEM_LOG_FLOAT, 1)
+	additem(ITEM_META_ITEM_LOG_FLOAT, 1)
 	additem(ITEM_META_ITEM_FOREST, 1)
 	additem(ITEM_META_ITEM_ICE_CORNER, 1)
 	additem(ITEM_META_ITEM_LEDGE, 1)
@@ -435,7 +435,7 @@ script MetaPuzzle_PickupEvent_DebugGetAll {
 	additem(ITEM_META_ITEM_LAVARIDGE, 1)
 	additem(ITEM_META_ITEM_FIRE, 1)
 	additem(ITEM_META_ITEM_ZIP_SLIDE, 1)
-	// additem(ITEM_META_ITEM_KOGA, 1)
+	additem(ITEM_META_ITEM_KOGA, 1)
 	additem(ITEM_META_ITEM_DIVE, 1)
 	// additem(ITEM_META_ITEM_SEEDOT, 1)
 	msgbox( "Picked up all items")

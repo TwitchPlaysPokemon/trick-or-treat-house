@@ -13,12 +13,15 @@ raw `
 
 Meta_ZiggyRoom_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ROOM_NAME, Meta_ZiggyRoom_RoomName
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_ZiggyRoom_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, Meta_ZiggyRoom_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Meta_ZiggyRoom_FrameTable
 	map_script MAP_SCRIPT_ON_RESUME, Meta_ZiggyRoom_OnResume
 	map_script MAP_SCRIPT_ON_UNLOAD, Meta_ZiggyRoom_OnUnload
 	.byte 0
+Meta_ZiggyRoom_RoomName:
+	.string "Ziggy Forest$"
 
 Meta_ZiggyRoom_FrameTable:
 	@ VAR_STEP_TRIGGER is set to 1 by MonitorObjectEventTriggersStepCallback when any npc steps on a trigger

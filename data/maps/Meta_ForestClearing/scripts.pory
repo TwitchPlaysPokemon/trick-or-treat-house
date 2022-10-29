@@ -3,6 +3,7 @@ raw `
 
 Meta_ForestClearing_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ROOM_NAME, Meta_ForestClearing_RoomName
 	map_script MAP_SCRIPT_ON_LOAD, Meta_ForestClearing_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_ForestClearing_OnTransition
 	@ map_script MAP_SCRIPT_ON_FRAME_TABLE, Meta_ForestClearing_FrameTable
@@ -10,6 +11,8 @@ Meta_ForestClearing_MapScripts::
 Meta_ForestClearing_FrameTable:
 	map_script_2 VAR_TEMP_3, 0, Meta_ForestClearing_SetupCopycat
 	.2byte 0
+Meta_ForestClearing_RoomName:
+	.string "Forest Clearing$"
 `
 
 script(local) Meta_ForestClearing_OnTransition {

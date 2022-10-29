@@ -1,5 +1,8 @@
 raw `
 Meta_EmptyFilled_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ROOM_NAME, Meta_Empty_RoomName
 	.byte 0
+Meta_Empty_RoomName:
+	.string "???$"
 `

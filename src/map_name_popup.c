@@ -5,6 +5,7 @@
 #include "international_string_util.h"
 #include "menu.h"
 #include "map_name_popup.h"
+#include "mgba.h"
 #include "palette.h"
 #include "region_map.h"
 #include "start_menu.h"
@@ -35,15 +36,21 @@ enum MapPopUp_Themes
 // static functions
 static void Task_MapNamePopUpWindow(u8 taskId);
 void ShowMapNamePopUpWindow(void);
+void ShowRoomNamePopUpWindow(void);
 void LoadMapNamePopUpWindowBg(void);
+void LoadRoomNamePopUpWindowBg(void);
 
 // EWRAM
 static EWRAM_DATA u8 sPopupTaskId = 0;
 
 // .rodata
 
-static const u8 gMapPopUp_Gfx[] = INCBIN_U8("graphics/interface/map_popup/scroll.4bpp");
-static const u16 gMapPopUp_Pal[] = INCBIN_U16("graphics/interface/map_popup/scroll.gbapal");
+static const u8 gMapPopUp_Gfx[] = INCBIN_U8("graphics/map_popup/scroll.4bpp");
+static const u16 gMapPopUp_Pal[] = INCBIN_U16("graphics/map_popup/scroll.gbapal");
+
+static const u8 gMetaRoomPopUp_Gfx[] = INCBIN_U8("graphics/map_popup/stone.4bpp");
+static const u8 gMetaRoomPopUpOutline_Gfx[] = INCBIN_U8("graphics/map_popup/stone_outline.4bpp");
+static const u16 gMetaRoomPopUp_Pal[] = INCBIN_U16("graphics/map_popup/stone_outline.gbapal");
 
 // Unused
 static bool8 StartMenu_ShowMapNamePopup(void)
@@ -53,6 +60,12 @@ static bool8 StartMenu_ShowMapNamePopup(void)
     return TRUE;
 }
 
+#define tState data[0]
+#define tTimer1 data[1]
+#define tBgOff data[2]
+#define tDoReopen data[3]
+#define tTimer4 data[4]
+
 void ShowMapNamePopup(void)
 {
     if (FlagGet(FLAG_HIDE_MAP_NAME_POPUP) != TRUE)
@@ -61,14 +74,14 @@ void ShowMapNamePopup(void)
         {
             sPopupTaskId = CreateTask(Task_MapNamePopUpWindow, 90);
             SetGpuReg(REG_OFFSET_BG0VOFS, 40);
-            gTasks[sPopupTaskId].data[0] = 6;
-            gTasks[sPopupTaskId].data[2] = 40;
+            gTasks[sPopupTaskId].tState = 6;
+            gTasks[sPopupTaskId].tBgOff = 40;
         }
         else
         {
-            if (gTasks[sPopupTaskId].data[0] != 2)
-                gTasks[sPopupTaskId].data[0] = 2;
-            gTasks[sPopupTaskId].data[3] = 1;
+            if (gTasks[sPopupTaskId].tState != 2)
+                gTasks[sPopupTaskId].tState = 2;
+            gTasks[sPopupTaskId].tDoReopen = 1;
         }
     }
 }
@@ -77,61 +90,76 @@ static void Task_MapNamePopUpWindow(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
 
-    switch (task->data[0])
+    switch (task->tState)
     {
     case 6:
-        task->data[4]++;
-        if (task->data[4] > 30)
+        task->tTimer4++;
+        if (task->tTimer4 > 30)
         {
-            task->data[0] = 0;
-            task->data[4] = 0;
+            task->tState = 0;
+            task->tTimer4 = 0;
             ShowMapNamePopUpWindow();
         }
         break;
-    case 0:
-        task->data[2] -= 2;
-        if (task->data[2] <= 0 )
+    case 10:
+        task->tTimer4++;
+        if (task->tTimer4 > 30)
         {
-            task->data[2] = 0;
-            task->data[0] = 1;
-            gTasks[sPopupTaskId].data[1] = 0;
+            task->tState = 0;
+            task->tTimer4 = 0;
+            ShowRoomNamePopUpWindow();
+        }
+        break;
+    case 0:
+        task->tBgOff -= 2;
+        if (task->tBgOff <= 0 )
+        {
+            task->tBgOff = 0;
+            task->tState = 1;
+            gTasks[sPopupTaskId].tTimer1 = 0;
         }
         break;
     case 1:
-        task->data[1]++;
-        if (task->data[1] > 120 )
+        task->tTimer1++;
+        if (task->tTimer1 > 120)
         {
-            task->data[1] = 0;
-            task->data[0] = 2;
+            task->tTimer1 = 0;
+            task->tState = 2;
         }
         break;
     case 2:
-        task->data[2] += 2;
-        if (task->data[2] > 39)
+        task->tBgOff += 2;
+        if (task->tBgOff > 39)
         {
-            task->data[2] = 40;
-            if (task->data[3])
+            task->tBgOff = 40;
+            if (task->tDoReopen == 1)
             {
-                task->data[0] = 6;
-                task->data[4] = 0;
-                task->data[3] = 0;
+                task->tState = 6;
+                task->tTimer4 = 0;
+                task->tDoReopen = 0;
+            }
+            else if (task->tDoReopen == 2)
+            {
+                task->tState = 10;
+                task->tTimer4 = 0;
+                task->tDoReopen = 0;
             }
             else
             {
-                task->data[0] = 4;
+                task->tState = 4;
                 return;
             }
         }
         break;
     case 4:
         ClearStdWindowAndFrame(GetMapNamePopUpWindowId(), TRUE);
-        task->data[0] = 5;
+        task->tState = 5;
         break;
     case 5:
         HideMapNamePopUpWindow();
         return;
     }
-    SetGpuReg(REG_OFFSET_BG0VOFS, task->data[2]);
+    SetGpuReg(REG_OFFSET_BG0VOFS, task->tBgOff);
 }
 
 void WindowFunc_ClearMapWindowAndFrameToTransparent(u8 bg, u8 tilemapLeft, u8 tilemapTop, u8 width, u8 height, u8 paletteNum)
@@ -186,17 +214,6 @@ void ShowMapNamePopUpWindow(void)
     CopyWindowToVram(GetMapNamePopUpWindowId(), COPYWIN_FULL);
 }
 
-#define TILE_TOP_EDGE_START 0x21D
-#define TILE_TOP_EDGE_END   0x228
-#define TILE_LEFT_EDGE_TOP  0x229
-#define TILE_RIGHT_EDGE_TOP 0x22A
-#define TILE_LEFT_EDGE_MID  0x22B
-#define TILE_RIGHT_EDGE_MID 0x22C
-#define TILE_LEFT_EDGE_BOT  0x22D
-#define TILE_RIGHT_EDGE_BOT 0x22E
-#define TILE_BOT_EDGE_START 0x22F
-#define TILE_BOT_EDGE_END   0x23A
-
 static void WindowFunc_DrawMapNamePlate(u8 bg, u8 x, u8 y, u8 width, u8 height, u8 paletteNum)
 {
     s32 i;
@@ -222,16 +239,7 @@ static void WindowFunc_DrawMapNamePlate(u8 bg, u8 x, u8 y, u8 width, u8 height, 
 void LoadMapNamePopUpWindowBg(void)
 {
     u8 popupWindowId = GetMapNamePopUpWindowId();
-    u16 regionMapSectionId = gMapHeader.regionMapSectionId;
-
-    if (regionMapSectionId >= KANTO_MAPSEC_START)
-    {
-        if (regionMapSectionId > KANTO_MAPSEC_END)
-            regionMapSectionId -= KANTO_MAPSEC_COUNT;
-        else
-            regionMapSectionId = 0; // Discard kanto region sections;
-    }
-
+    
     LoadBgTiles(GetWindowAttribute(popupWindowId, WINDOW_BG), gMapPopUp_Gfx, 0x400, 0x21D);
     CallWindowFunction(popupWindowId, WindowFunc_DrawMapNamePlate);
     PutWindowTilemap(popupWindowId);
@@ -239,4 +247,101 @@ void LoadMapNamePopUpWindowBg(void)
     LoadPalette(gMapPopUp_Pal, 0xE0, 0x20);
     FillWindowPixelRect(popupWindowId, PIXEL_FILL(3), 0, 0, 8*MAP_NAME_WINDOW_WIDTH, 3);
     FillWindowPixelRect(popupWindowId, PIXEL_FILL(1), 0, 3, 8*MAP_NAME_WINDOW_WIDTH, 8*3-3);
+}
+
+//-----------------------------------------------------------------------------
+
+void ShowRoomNamePopup(void)
+{
+    u16 currMap = (u8)gSaveBlock1Ptr->location.mapGroup << 8 | (u8)gSaveBlock1Ptr->location.mapNum;
+    const u8* str = GetMapHeaderString(currMap, MAP_SCRIPT_ROOM_NAME);
+    if (str == NULL) return; // no show
+    
+    if (FlagGet(FLAG_HIDE_MAP_NAME_POPUP) != TRUE)
+    {
+        if (!FuncIsActiveTask(Task_MapNamePopUpWindow))
+        {
+            sPopupTaskId = CreateTask(Task_MapNamePopUpWindow, 90);
+            SetGpuReg(REG_OFFSET_BG0VOFS, 40);
+            gTasks[sPopupTaskId].tState = 10;
+            gTasks[sPopupTaskId].tBgOff = 40;
+        }
+        else
+        {
+            if (gTasks[sPopupTaskId].tState != 2)
+                gTasks[sPopupTaskId].tState = 2;
+            gTasks[sPopupTaskId].tDoReopen = 2;
+        }
+    }
+}
+
+#define TILE_TOP_EDGE_START 0x21D
+#define TILE_TOP_EDGE_END   0x228
+#define TILE_LEFT_EDGE_TOP  0x229
+#define TILE_RIGHT_EDGE_TOP 0x22A
+#define TILE_LEFT_EDGE_MID  0x22B
+#define TILE_RIGHT_EDGE_MID 0x22C
+#define TILE_LEFT_EDGE_BOT  0x22D
+#define TILE_RIGHT_EDGE_BOT 0x22E
+#define TILE_BOT_EDGE_START 0x22F
+#define TILE_BOT_EDGE_END   0x23A
+
+void ShowRoomNamePopUpWindow(void)
+{
+    u8 mapDisplayHeader[0x100];
+    u8 *withoutPrefixPtr;
+    u8 x;
+    u16 currMap;
+    const u8* mapDisplayHeaderSource;
+    const u8* str;
+    
+    currMap = (u8)gSaveBlock1Ptr->location.mapGroup << 8 | (u8)gSaveBlock1Ptr->location.mapNum;
+    str = GetMapHeaderString(currMap, MAP_SCRIPT_ROOM_NAME);
+    
+    if (str == NULL) 
+        str = PuzzleCommon_Text_UntitledPuzzleName;
+    withoutPrefixPtr = &(mapDisplayHeader[3]);
+    StringCopy(withoutPrefixPtr, str);
+    
+    AddRoomNamePopUpWindow();
+    LoadRoomNamePopUpWindowBg();
+    x = GetStringCenterAlignXOffset(FONT_NARROW, withoutPrefixPtr, 8*(ROOM_NAME_WINDOW_WIDTH));
+    mapDisplayHeader[0] = EXT_CTRL_CODE_BEGIN;
+    mapDisplayHeader[1] = EXT_CTRL_CODE_HIGHLIGHT;
+    mapDisplayHeader[2] = TEXT_COLOR_TRANSPARENT;
+    AddTextPrinterParameterized(GetMapNamePopUpWindowId(), FONT_NARROW, mapDisplayHeader, x, 2, TEXT_SKIP_DRAW, NULL);
+    CopyWindowToVram(GetMapNamePopUpWindowId(), COPYWIN_FULL);
+}
+
+
+static void WindowFunc_DrawRoomNamePlate(u8 bg, u8 x, u8 y, u8 width, u8 height, u8 unused)
+{
+    s32 i;
+
+    // Draw top edge
+    for (i = 0; i < 1 + TILE_TOP_EDGE_END - TILE_TOP_EDGE_START; i++)
+        FillBgTilemapBufferRect(bg, TILE_TOP_EDGE_START + i, i - 1 + x, y - 1, 1, 1, 14);
+
+    // Draw sides
+    FillBgTilemapBufferRect(bg, TILE_LEFT_EDGE_TOP,      x - 1,     y, 1, 1, 14);
+    FillBgTilemapBufferRect(bg, TILE_RIGHT_EDGE_TOP, width + x,     y, 1, 1, 14);
+    FillBgTilemapBufferRect(bg, TILE_LEFT_EDGE_MID,      x - 1, y + 1, 1, 1, 14);
+    FillBgTilemapBufferRect(bg, TILE_RIGHT_EDGE_MID, width + x, y + 1, 1, 1, 14);
+    FillBgTilemapBufferRect(bg, TILE_LEFT_EDGE_BOT,      x - 1, y + 2, 1, 1, 14);
+    FillBgTilemapBufferRect(bg, TILE_RIGHT_EDGE_BOT, width + x, y + 2, 1, 1, 14);
+
+    // Draw bottom edge
+    for (i = 0; i < 1 + TILE_BOT_EDGE_END - TILE_BOT_EDGE_START; i++)
+        FillBgTilemapBufferRect(bg, TILE_BOT_EDGE_START + i, i - 1 + x, y + height, 1, 1, 14);
+}
+
+void LoadRoomNamePopUpWindowBg(void)
+{
+    u8 popupWindowId = GetMapNamePopUpWindowId();
+
+    LoadBgTiles(GetWindowAttribute(popupWindowId, WINDOW_BG), gMetaRoomPopUpOutline_Gfx, 0x400, 0x21D);
+    CallWindowFunction(popupWindowId, WindowFunc_DrawRoomNamePlate);
+    PutWindowTilemap(popupWindowId);
+    LoadPalette(gMetaRoomPopUp_Pal, 0xE0, sizeof(gMetaRoomPopUp_Pal));
+    BlitBitmapToWindow(popupWindowId, gMetaRoomPopUp_Gfx, 0, 0, 80, 24);
 }

@@ -7,9 +7,12 @@ raw `
 
 Meta_PokeStage_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+    map_script MAP_SCRIPT_ROOM_NAME, Meta_PokeStage_RoomName
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_PokeStage_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Meta_PokeStage_FrameTable
 	.byte 0
+Meta_PokeStage_RoomName:
+    .string "Poké Stage$"
 
 Meta_PokeStage_FrameTable:
     map_script_2 VAR_SONG_COMPLETION_STATE, 1, Meta_PokeStage_SongCompleted
@@ -39,6 +42,7 @@ script(local) Meta_PokeStage_SongCompleted {
 				"… …\p"
 				"A scroll dropped to the floor.$")
 		addobject(1)
+        clearflag(FLAG_PUZZLE_4E)
 	}
 	else {
 		msgbox("The {POKEMON} applaud your performance!$")

@@ -1,9 +1,12 @@
 raw `
 Meta_SubductionZone_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ROOM_NAME, Meta_SubductionZone_RoomName
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_SubductionZone_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, Meta_SubductionZone_OnLoad
 	.byte 0
+Meta_SubductionZone_RoomName:
+	.string "Subduction Zone$"
 `
 
 script(local) Meta_SubductionZone_OnTransition {

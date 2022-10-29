@@ -3,9 +3,12 @@ raw `
 
 Meta_DiveMaze_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ROOM_NAME, Meta_DiveMaze_RoomName
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_DiveMaze_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, Meta_DiveMaze_OnLoad
 	.byte 0
+Meta_DiveMaze_RoomName:
+	.string "Dive Maze$"
 `
 
 script(local) Meta_DiveMaze_OnLoad {

@@ -475,6 +475,13 @@ u8 AddMapNamePopUpWindow(void)
     return sMapNamePopupWindowId;
 }
 
+u8 AddRoomNamePopUpWindow(void)
+{
+    if (sMapNamePopupWindowId == WINDOW_NONE)
+        sMapNamePopupWindowId = AddWindowParameterized(0, 1, 1, ROOM_NAME_WINDOW_WIDTH, 3, 14, 0x107);
+    return sMapNamePopupWindowId;
+}
+
 u8 GetMapNamePopUpWindowId(void)
 {
     return sMapNamePopupWindowId;

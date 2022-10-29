@@ -1,11 +1,14 @@
 raw `
 Meta_KogaElbow_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ROOM_NAME, Meta_KogaElbow_RoomName
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_KogaElbow_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, Meta_KogaElbow_OnResume
 	map_script MAP_SCRIPT_ON_LOAD, Meta_KogaElbow_OnLoad
 	map_script MAP_SCRIPT_ON_UNLOAD, Meta_KogaElbow_OnUnload
 	.byte 0
+Meta_KogaElbow_RoomName:
+	.string "Koga's Elbow$"
 `
 script(local) Meta_KogaElbow_OnLoad {
 	if (var(VAR_LOC_CUT)         == MAP_META_KOGA_ELBOW) { setobjectxyperm(16, 19, 19) } else { setobjectxyperm(16, 100, 100) }

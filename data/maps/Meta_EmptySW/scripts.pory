@@ -1,6 +1,7 @@
 raw `
 Meta_EmptySW_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ROOM_NAME, Meta_Empty_RoomName
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_EmptySW_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, Meta_EmptySW_OnLoad
 	.byte 0

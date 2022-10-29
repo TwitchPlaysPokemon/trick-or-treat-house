@@ -917,6 +917,9 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum, bool8 redraw)
     // Doesn't look good when going from left to right, fine when going up to down
     // if (redraw) DrawWholeMapView();
     
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(META_ENTRANCE)) {
+        ShowRoomNamePopup();
+    }
     // if (gMapHeader.regionMapSectionId != MAPSEC_BATTLE_FRONTIER
     //  || gMapHeader.regionMapSectionId != sLastMapSectionId)
     //     ShowMapNamePopup();

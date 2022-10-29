@@ -1,9 +1,12 @@
 raw `
 Meta_LogFlotilla_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ROOM_NAME, Meta_LogFlotilla_RoomName
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_LogFlotilla_OnTransition
 	map_script MAP_SCRIPT_ON_PLAY_MAP_MUSIC, Meta_LogFlotilla_OnPlayMapMusic
 	.byte 0
+Meta_LogFlotilla_RoomName:
+	.string "Log Flotilla$"
 `
 
 script(local) Meta_LogFlotilla_OnPlayMapMusic {

@@ -6,6 +6,7 @@ raw `
 
 Meta_FinalBluff_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ROOM_NAME, Meta_FinalBluff_RoomName
 	map_script MAP_SCRIPT_ON_LOAD, Meta_FinalBluff_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_FinalBluff_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Meta_FinalBluff_FrameTable
@@ -13,6 +14,8 @@ Meta_FinalBluff_MapScripts::
 Meta_FinalBluff_FrameTable:
 	map_script_2 VAR_TEMP_5, 0, Meta_FinalBluff_OnFirstFrame
 	.2byte 0
+Meta_FinalBluff_RoomName:
+	.string "Final Bluff$"
 `
 
 script(local) Meta_FinalBluff_OnLoad {

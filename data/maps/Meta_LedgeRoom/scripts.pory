@@ -10,10 +10,13 @@ raw `
 
 Meta_LedgeRoom_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ROOM_NAME, Meta_LedgeRoom_RoomName
 	map_script MAP_SCRIPT_ON_LOAD, Meta_LedgeRoom_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_LedgeRoom_OnTransition
 	map_script MAP_SCRIPT_ON_PLAY_MAP_MUSIC, Meta_LedgeRoom_OnPlayMapMusic
 	.byte 0
+Meta_LedgeRoom_RoomName:
+	.string "Ledge Valley$"
 `
 
 script(local) Meta_LedgeRoom_OnPlayMapMusic {

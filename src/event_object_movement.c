@@ -2295,6 +2295,7 @@ u8 GetObjectEventIdByPosition(u16 x, u16 y, u8 elevation) // GetObjectEventIdByX
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
         // if (gObjectEvents[i].graphicsId == OBJ_EVENT_GFX_TRICK_DOOR_NORTH) continue; //HACK
+        if (GetObjectEventGraphicsInfo(gObjectEvents[i].graphicsId)->doorOffsetType & DOOROFFSET_UNDERFOOT) continue;
         if (gObjectEvents[i].active)
         {
             if (gObjectEvents[i].currentCoords.x == x
@@ -4856,7 +4857,8 @@ static bool8 DoesObjectCollideWithObjectAt(struct ObjectEvent *objectEvent, s16 
         {
             if ((curObject->currentCoords.x == x && curObject->currentCoords.y == y) || (curObject->previousCoords.x == x && curObject->previousCoords.y == y))
             {
-                if (curObject->graphicsId == OBJ_EVENT_GFX_TRICK_DOOR_NORTH) continue; //HACK
+                // if (curObject->graphicsId == OBJ_EVENT_GFX_TRICK_DOOR_NORTH) continue; //HACK
+                if (GetObjectEventGraphicsInfo(curObject->graphicsId)->doorOffsetType & DOOROFFSET_UNDERFOOT) continue;
                 if (AreElevationsCompatible(objectEvent->currentElevation, curObject->currentElevation))
                     return TRUE;
             }

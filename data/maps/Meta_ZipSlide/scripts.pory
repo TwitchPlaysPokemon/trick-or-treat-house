@@ -1,9 +1,12 @@
 raw `
 Meta_ZipSlide_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ROOM_NAME, Meta_ZipSlide_RoomName
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_ZipSlide_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, Meta_ZipSlide_OnLoad
 	.byte 0
+Meta_ZipSlide_RoomName:
+	.string "Zip Slide$"
 `
 
 script(local) Meta_ZipSlide_OnTransition {

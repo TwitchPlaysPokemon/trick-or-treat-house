@@ -4,9 +4,12 @@ raw `
 
 Meta_LavaridgeSprings_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ROOM_NAME, Meta_LavaridgeSprings_RoomName
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_LavaridgeSprings_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, Meta_LavaridgeSprings_OnLoad
 	.byte 0
+Meta_LavaridgeSprings_RoomName:
+	.string "Lavaridge Springs$"
 `
 
 script(local) Meta_LavaridgeSprings_OnTransition {

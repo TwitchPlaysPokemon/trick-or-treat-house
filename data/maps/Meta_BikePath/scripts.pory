@@ -1,9 +1,12 @@
 raw `
 Meta_BikePath_MapScripts::
 	puzzle_info Puzzle_MetaPuzzle_Name, CommonAuthor_Tustin2121
+	map_script MAP_SCRIPT_ROOM_NAME, Meta_BikePath_RoomName
 	map_script MAP_SCRIPT_ON_TRANSITION, Meta_BikePath_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, Meta_BikePath_OnLoad
 	.byte 0
+Meta_BikePath_RoomName:
+	.string "Bike Path$"
 `
 
 script(local) Meta_BikePath_OnTransition {
@@ -11,6 +14,6 @@ script(local) Meta_BikePath_OnTransition {
 }
 script(local) Meta_BikePath_OnLoad {
 	if (var(VAR_LOC_DIVE) != MAP_META_BIKE_PATH) { 
-		setobjectxyperm(22, 100, 100)
+		setobjectxyperm(6, 100, 100)
 	}
 }
