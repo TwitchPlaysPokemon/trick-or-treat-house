@@ -117,6 +117,32 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Puzzle_Loss_Floor1_Patron4",
       "flag": "0"
+    },
+    {
+      "graphics_id": "TTH_FRIEND_IRENE",
+      "x": 16,
+      "y": 11,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Puzzle_Loss_Floor1_PatronIrene",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "TTH_FRIEND_ALEX",
+      "x": 16,
+      "y": 12,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Puzzle_Loss_Floor1_PatronAlex",
+      "flag": "FLAG_PUZZLE_2B"
     }
   ],
   "warp_events": [

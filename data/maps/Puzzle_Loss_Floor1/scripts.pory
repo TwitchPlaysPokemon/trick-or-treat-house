@@ -1,4 +1,9 @@
 raw `
+#define VAR_PUZZLE_ADVANCEMENT  VAR_PUZZLE_00
+#define VAR_FREE_COUNTER        VAR_PUZZLE_01
+#define VAR_IRENE_STATE         VAR_PUZZLE_20
+#define FLAG_HIDE_ALEX          FLAG_PUZZLE_2B
+
 Puzzle_Loss_Floor1_MapScripts::
 	puzzle_info Puzzle_Loss_Name, CommonAuthor_Tustin2121, PUZZLE_FLAG_INSPIRED_BY, Puzzle_Loss_Inspiration
 	puzzle_adjective Puzzle_Loss_Adjective
@@ -7,7 +12,14 @@ Puzzle_Loss_Floor1_MapScripts::
 	puzzle_teardown_script Puzzle_Loss_Teardown
 	puzzle_candylist Puzzle_Loss_CandyList
 	puzzle_devcommentary Puzzle_Loss_DevCommentary
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_Loss_Floor1_OnLoad
+	map_script MAP_SCRIPT_ON_PUZZLE_SETUP, Puzzle_Loss_Setup
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_Loss_Floor1_FrameTable
 	.byte 0
+
+Puzzle_Loss_Floor1_FrameTable:
+	map_script_2 VAR_IRENE_STATE, 1, Puzzle_Loss_Floor1_IreneFollowStart
+	.2byte 0
 
 Puzzle_Loss_Name:
 	.string "Misplaced$"
@@ -43,16 +55,27 @@ Puzzle_Loss_CandyList:
 	.2byte FLAG_CANDY_COMMON_02
 	.2byte 0
 
-@ -----------------------------------------------------
-#define VAR_PUZZLE_ADVANCEMENT  VAR_PUZZLE_00
-#define VAR_FREE_COUNTER        VAR_PUZZLE_01
 `
+script(local) Puzzle_Loss_Setup {
+	checkplayergender
+	if (var(VAR_RESULT) == GENDER_N) {
+		setflag(FLAG_HIDE_ALEX)
+		setvar(VAR_IRENE_STATE, 1)
+	}
+}
+script(local) Puzzle_Loss_Floor1_OnLoad {
+	if (var(VAR_IRENE_STATE) == 1) {
+		setobjectxyperm(9, 9, 12)
+	}
+}
 
 script(local) Puzzle_Loss_Teardown {
 	if (var(VAR_FREE_COUNTER) >= 8) {
 		setflag(FLAG_PUZZLE_ITEM_0)
 	}
 }
+
+//-----------------------------------------------------
 
 script Puzzle_Loss_Floor1_Nurse {
 	if (var(VAR_PUZZLE_ADVANCEMENT) > 0) {
@@ -259,8 +282,212 @@ script Puzzle_Loss_Floor1_Patron5 {
 	}
 }
 
+script Puzzle_Loss_Floor1_PatronIrene {
+	speakername_common(IRENE)
+	msgbox ("We are going on the LONGEST date\n"
+			"tomorrow, okay?\p"
+			"I'm getting you new nailpolish and\n"
+			"a hideous Christmas sweater!\l"
+			"And you better wear them! Hehe!$", MSGBOX_SIGN)
+}
+script Puzzle_Loss_Floor1_PatronAlex {
+	speakername_common(ALEX)
+	msgbox ("{IRENE}, you gotta cut {JOEY} some slack\p"
+			"I know long distance is hard.\n"
+			"I don't like it much either.\p"
+			"Sinnoh feels so empty sometimes\n"
+			"without you there.\p"
+			"We'll be back together in Unova soon.$", MSGBOX_SIGN)
+}
+
+//-----------------------------------------------------
+
+script Puzzle_Loss_Floor1_IreneFollowStart {
+	lockall
+	applymovement(LID_PLAYER, Common_Movement_ExclamationMarkAndWait)
+	playse(SE_PIN)
+	waitmovement(LID_PLAYER)
+	speakername_common(IRENE)
+	msgbox ("Hi!!!\n"
+			"I'm joining you for this puzzle!\p"
+			"What?\n"
+			"Oh, no reason.\p"
+			"Why would I need a reason to want to\n"
+			"spend time with my partner?$")
+	setfollower(9, FOLLOWER_FLAG_FRIENDS, Puzzle_Loss_FollowerScript_Irene)
+	setvar(VAR_IRENE_STATE, 2)
+	releaseall
+}
+script Puzzle_Loss_FollowerScript_Irene {
+	lock
+	facefollower
+	speakername_common(IRENE)
+	// Subplot-dependant
+	goto_if_eq(VAR_FOLLOWER_STATE, 1, Puzzle_Loss_FollowerScript_Irene_Plot1)
+	// Location-dependant
+	callnative(GetCurrentMapId)
+	goto_if_eq(VAR_RESULT, MAP_PUZZLE_LOSS_FLOOR1, Puzzle_Loss_FollowerScript_Irene_Floor1)
+	goto_if_eq(VAR_RESULT, MAP_PUZZLE_LOSS_FLOOR2, Puzzle_Loss_FollowerScript_Irene_Floor2)
+	goto_if_eq(VAR_RESULT, MAP_TRICK_HOUSE_ENTRANCE, Puzzle_Loss_FollowerScript_Irene_Entryway)
+	goto_if_eq(VAR_RESULT, MAP_TRICK_HOUSE_EXT, Puzzle_Loss_FollowerScript_Irene_Ext)
+	goto_if_eq(VAR_RESULT, MAP_TRICK_HOUSE_EXT_GATEHOUSE, Puzzle_Loss_FollowerScript_Irene_Gatehouse)
+	goto_if_eq(VAR_RESULT, MAP_TRICK_HOUSE_TREE_HOUSE, Puzzle_Loss_FollowerScript_Irene_Treehouse)
+	goto_if_eq(VAR_RESULT, MAP_TRICK_HOUSE_RESTROOM, Puzzle_Loss_FollowerScript_Irene_Den)
+	goto_if_eq(VAR_RESULT, MAP_FAKE_SECRET_BASE_CAVE, Puzzle_Loss_FollowerScript_Irene_SecretBase)
+	
+	msgbox ("How are you doing tonight? Good?\n"
+			"I'm good too.$")
+	release
+}
+script(local) Puzzle_Loss_FollowerScript_Irene_Plot1 {
+	speakername(NULL)
+	msgbox ("{IRENE} seems agitated and distracted.$")
+	speakername_common(IRENE)
+	msgbox ("Hm? What? I'm fine! Just fine.\p"
+			"Okay, I'm not fine, I'm angry at\n"
+			"{JOEY} right now.\p"
+			"We had a big fight earlier and… urgh…\p"
+			"He gets to see his boyfriend all the\n"
+			"time but I barely ever get to see you!\p"
+			"I know, it's not your fault you had\n"
+			"to move to Sinnoh but…\p"
+			"It's hard being long distance…\p"
+			"… …Sorry, I guess I AM jealous of\n"
+			"{JOEY} and his boyfriend…\p"
+			"I'll be fine. But… we are going on the\n"
+			"LONGEST date tomorrow, okay?\p"
+			"I'm getting you new nailpolish and\n"
+			"a hideous Christmas sweater!\l"
+			"And you better wear them! Hehe!$")
+	setvar(VAR_FOLLOWER_STATE, 2)
+	release
+}
+script(local) Puzzle_Loss_FollowerScript_Irene_Floor1 {
+	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
+	if (var(VAR_PUZZLE_ADVANCEMENT) == 1 && !flag(FLAG_FOLLOWER_FLAG_1)) {
+		msgbox( "Did she ask if we wanted a room?\n"
+				"There's hotel rooms in this center?$")
+		setflag(FLAG_FOLLOWER_FLAG_1)
+	}
+	elif(var(VAR_INTERACT_X) <= 6 && var(VAR_INTERACT_Y) <= 5) {
+		speakername(NULL)
+		applymovement(LID_FOLLOWER, Common_Movement_WalkInPlaceUp)
+		msgbox ("{IRENE} tilts her head to the side,\n"
+				"trying to figure out what the random\l"
+				"lines on the wall are supposed to mean.$")
+	}
+	elif(!flag(FLAG_FOLLOWER_FLAG_2)) {
+		msgbox("This center is pretty big. Not as big\n"
+				"the ones in Unova, but it's up there.$")
+		setflag(FLAG_FOLLOWER_FLAG_2)
+	}
+	else {
+		msgbox("Any idea what the puzzle is here…?$")
+	}
+	release
+}
+script(local) Puzzle_Loss_FollowerScript_Irene_Floor2 {
+	msgbox("This center is pretty big. Not as big\n"
+			"the ones in Unova, but it's up there.$")
+	release
+}
+
+
+script(local) Puzzle_Loss_FollowerScript_Irene_Den {
+	switch (var(VAR_FOLLOWER_STATE)) {
+		case 0:
+			msgbox ("… … …$")
+			setvar(VAR_FOLLOWER_STATE, 1)
+			speakername(NULL)
+			msgbox ("{IRENE} glances at {JOEY}, looking sour.")
+		case 1:
+			msgbox("… … … … …\n"
+					"Can we not stay here, please?$")
+		case 2:
+			msgbox( "… … …\p"
+					"Okay, I have to admit, AJ is cute.\n"
+					"{JOEY} has good taste…$")
+	}
+	release 
+}
+script(local) Puzzle_Loss_FollowerScript_Irene_Entryway {
+	msgbox ("Do you think the Trick Master is\n"
+			"hiding in here again?$")
+	release
+}
+script(local) Puzzle_Loss_FollowerScript_Irene_Ext {
+	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
+	if (var(VAR_INTERACT_X) < 23) {
+		msgbox ("The fall colors out this way remind me\n"
+				"so much of my old stomping grounds…\p"
+				"Did I ever show you Route 4?\n"
+				"North of Castelia City?\p"
+				"It used to be all desert out there\n"
+				"but then some developers bought it.\p"
+				"It's being turned into a suburb or\n"
+				"district of Castelia…\n"
+				"All those {POKEMON} displaced…$")
+	}
+	elif (var(VAR_INTERACT_X) > 49) {
+		msgbox ("You wanna catch something out here?\n"
+				"I wish I brought some balls.\p"
+				"I wouldn't mind taking care of some\n"
+				"Hoenn-native {POKEMON}!$")
+	}
+	elif (var(VAR_INTERACT_Y) > 55) {
+		msgbox ("Aww, look at the cute {POKEMON}\n"
+				"over there, playing cards!$")
+	}
+	elif (var(VAR_INTERACT_Y) > 38) {
+		applymovement(LID_FOLLOWER, Common_Movement_WalkInPlaceRight)
+		msgbox ("I wish we had more bike paths\n"
+				"like that in Unova.\p"
+				"The only overpasses I see usually\n"
+				"are highways for cars.$")
+	}
+	else {
+		msgbox ("It's nice out here.\n"
+				"Breathe in that crisp air!\p"
+				"There's quite a few people around\n"
+				"too, isn't there?$")
+	}
+	release
+}
+script(local) Puzzle_Loss_FollowerScript_Irene_Gatehouse {
+	if (var(VAR_TEMP_0) == 1) {
+		msgbox ("Did you feel something…?$")
+	}
+	elif (var(VAR_TEMP_0) == 2) {
+		msgbox ("Okay, something's here. Let's not\n"
+				"disturb it anymore, yeah?$")
+	} else {
+		msgbox ("Ooooh! Spooky! Reminds me of the\n"
+				"Old Chateau!$")
+	}
+	release
+}
+script(local) Puzzle_Loss_FollowerScript_Irene_Treehouse {
+	msgbox ("This is cosy and cute.\p"
+			"This makes me want to build a treehouse\n"
+			"somewhere, for just you and me.\l"
+			"I think it'd be kinda fun.\p"
+			"Though, only one of us would be able\n"
+			"to use it…$")
+	release
+}
+script(local) Puzzle_Loss_FollowerScript_Irene_SecretBase {
+	msgbox ("Man, this secret base is decked out!\p"
+			"Do you still have your base in the\n"
+			"Underground? The one I helped with?\p"
+			"Think anyone's managed to get that flag\n"
+			"yet? How many traps did we set? Hehe!$")
+	release
+}
+
 
 raw `
 #undef VAR_PUZZLE_ADVANCEMENT
 #undef VAR_FREE_COUNTER
+#undef VAR_IRENE_STATE
+#undef FLAG_HIDE_ALEX
 `

@@ -1029,6 +1029,7 @@ static void Task_FollowerHandleEscalatorFinish(u8 taskId)
         break;
     case 2:
         follower->invisible = FALSE;
+        ObjectEventForceSetHeldMovement(follower, GetFaceDirectionMovementAction(DIR_EAST));
         CalculateFollowerEscalatorTrajectoryDown(task);
         task->data[0]++;
         break;
@@ -1049,6 +1050,7 @@ static void Task_FollowerHandleEscalatorFinish(u8 taskId)
         break;
     case 4:
         follower->invisible = FALSE;
+        ObjectEventForceSetHeldMovement(follower, GetFaceDirectionMovementAction(DIR_EAST));
         CalculateFollowerEscalatorTrajectoryUp(task);
         task->data[0]++;
         break;

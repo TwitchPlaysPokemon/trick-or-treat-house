@@ -1760,6 +1760,7 @@ static bool8 EscalatorWarpIn_Init(struct Task *task)
         behavior = FALSE;
     }
     StartEscalator(behavior);
+    EscalatorMoveFollowerFinish();
     return TRUE;
 }
 

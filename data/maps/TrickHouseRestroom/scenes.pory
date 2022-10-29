@@ -37,7 +37,7 @@ script TrickHouseRestroom_OnLoad_Breeder {
 	}
 	if (var(VAR_0x800B) > 14 && var(VAR_0x800B) < 18) {
 		setvar(VAR_BREEDER_STATE, 2)
-		setobjectxyperm(LID_BREEDER, 7, 4)
+		setobjectxyperm(LID_BREEDER, 9, 2)
 		setobjectmovementtype(LID_BREEDER, MOVEMENT_TYPE_LOOK_AROUND)
 		return
 	}
@@ -186,6 +186,13 @@ script TrickHouseRestroom_EventScript_VisitorWally {
 					"an hour now, it feels like.\p"
 					"Someone needs to explain romance to me\n"
 					"because I just don't get it.$", MSGBOX_NPC)
+		case 104:
+			msgbox ("You two, explain this whole ‘romance’\n"
+					"thing to me. I just don't get it.\p"
+					"Who would want to look so silly all\n"
+					"the time? What's the big deal?\p"
+					"Huh? “Ace”? What about him? What does\n"
+					"{JOEY}'s Rattata have to do with me?$", MSGBOX_NPC)
 		
 	}
 }
@@ -236,6 +243,9 @@ script TrickHouseRestroom_OnLoad_Friends {
 			setvar(VAR_WALLY_STATE, 103)
 			setobjectxyperm(LID_JOEY,9, 5)  setobjectmovementtype(LID_JOEY, MOVEMENT_TYPE_FACE_DOWN)
 			setobjectxyperm(LID_AJ,  9, 6)  setobjectmovementtype(LID_AJ, MOVEMENT_TYPE_FACE_UP)
+			if (var(VAR_FOLLOWER_IDENTITY) == FOLLOWER_ID_IRENE) {
+				setvar(VAR_WALLY_STATE, 104)
+			}
 			return
 	}
 	
@@ -395,9 +405,8 @@ script TrickHouseRestroom_EventScript_JoeyIreneFight {
 			"pick up your boyfriend!$")
 	
 	speakername_common(JOEY)
-	msgbox ("So what? You can have your boifriend,\n"
-			"but I can't have my boyfriend?!$")
-			// spelling of "boifriend" is deliberate
+	msgbox ("So what? You can have your partner\n"
+			"here, but I can't have mine?!$")
 	
 	checkplayergender
 	if (var(VAR_RESULT) == GENDER_N) {

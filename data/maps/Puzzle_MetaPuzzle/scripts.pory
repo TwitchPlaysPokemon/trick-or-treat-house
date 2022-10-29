@@ -413,7 +413,7 @@ script MetaPuzzle_PickupEvent_DuskullDoll {  // placed
 	finditem_std(ITEM_META_ITEM_KOGA, 1)
 }
 script MetaPuzzle_PickupEvent_WaterCushion { // placed
-	msgbox ("Someone must have left this doll.\p"
+	msgbox ("Someone must have left this cushion.\p"
 			"…It's got such a weird texture…\n"
 			"Is it waterproof?$")
 	finditem_std(ITEM_META_ITEM_DIVE, 1)

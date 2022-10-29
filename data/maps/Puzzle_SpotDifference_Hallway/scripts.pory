@@ -50,28 +50,28 @@ Puzzle_SpotDifference_CandyList:
 script Puzzle_SpotDifference_Hallway_OnLoad {
     if (var(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS) >= 1) {
         # Open door to puzzle 1 right.
-        setmetatile(12, 18, METATILE_Building_ScrollDoor_OpenTop, 1)
-        setmetatile(12, 19, METATILE_Building_ScrollDoor_OpenBottom, 1)
+        setmetatile(12, 18, METATILE_Building_ScrollDoor_OpenTop, TRUE)
+        setmetatile(12, 19, METATILE_Building_ScrollDoor_OpenBottom, FALSE)
     }
     if (var(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS) >= 2) {
         # Open door to puzzle 2 left.
-        setmetatile(2, 12, METATILE_Building_ScrollDoor_OpenTop, 1)
-        setmetatile(2, 13, METATILE_Building_ScrollDoor_OpenBottom, 1)
+        setmetatile(2, 12, METATILE_Building_ScrollDoor_OpenTop, TRUE)
+        setmetatile(2, 13, METATILE_Building_ScrollDoor_OpenBottom, FALSE)
     }
     if (var(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS) >= 3) {
         # Open door to puzzle 2 right.
-        setmetatile(12, 12, METATILE_Building_ScrollDoor_OpenTop, 1)
-        setmetatile(12, 13, METATILE_Building_ScrollDoor_OpenBottom, 1)
+        setmetatile(12, 12, METATILE_Building_ScrollDoor_OpenTop, TRUE)
+        setmetatile(12, 13, METATILE_Building_ScrollDoor_OpenBottom, FALSE)
     }
     if (var(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS) >= 4) {
         # Open door to puzzle 3 left.
-        setmetatile(2, 6, METATILE_Building_ScrollDoor_OpenTop, 1)
-        setmetatile(2, 7, METATILE_Building_ScrollDoor_OpenBottom, 1)
+        setmetatile(2, 6, METATILE_Building_ScrollDoor_OpenTop, TRUE)
+        setmetatile(2, 7, METATILE_Building_ScrollDoor_OpenBottom, FALSE)
     }
     if (var(VAR_SPOT_DIFFERENCE_NUM_UNLOCKED_ROOMS) >= 5) {
         # Open door to puzzle 3 right.
-        setmetatile(12, 6, METATILE_Building_ScrollDoor_OpenTop, 1)
-        setmetatile(12, 7, METATILE_Building_ScrollDoor_OpenBottom, 1)
+        setmetatile(12, 6, METATILE_Building_ScrollDoor_OpenTop, TRUE)
+        setmetatile(12, 7, METATILE_Building_ScrollDoor_OpenBottom, FALSE)
     }
 
     # Show or Hide the scroll.
