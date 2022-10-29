@@ -765,7 +765,7 @@ script TrickTreat_MossdeepCity_ExitGirl {
 	waitmovement (0)
 	applymovement (THIS_EVENT, Common_Movement_WalkInPlaceUp)
 	speakername(NULL)
-	msgbox ("She wrote down the secret code\n"
+	msgbox ("{IRENE} wrote down the secret code\n"
 			"on the door.\p"
 			"{PLAY_SE SE_PIN}The door unsealed!$")
 	closemessage

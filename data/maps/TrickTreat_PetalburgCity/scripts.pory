@@ -102,8 +102,9 @@ script TrickTreat_PetalburgCity_Introduction {
 	applymovement (THIS_EVENT, Common_Movement_WalkInPlaceLeft)
 	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceRight)
 	waitmovement (0)
-	msgbox ("{JOEY}: Alright, looks like Trick\n"
-			"or Treating is still going on here.\p"
+	speakername_common(JOEY)
+	msgbox ("Alright, looks like Trick or\n"
+			"Treating is still going on here.\p"
 			"If there's any houses with their light\n"
 			"on, go knock on those doors. They'll\l"
 			"be giving out candy.\p"
@@ -341,7 +342,8 @@ script TrickTreat_PetalburgCity_BerryPlant {
 script TrickTreat_PetalburgCity_ExitYoungster {
 	lock
 	faceplayer
-	msgbox ("{JOEY}: Hey, {PLAYER}!\nDid you get a good haul?$")
+	speakername_common(JOEY)
+	msgbox ("Hey, {PLAYER}!\nDid you get a good haul?$")
 	if (flag(FLAG_PUZZLE_23) == FALSE || 
 		flag(FLAG_PUZZLE_24) == FALSE || 
 		flag(FLAG_PUZZLE_25) == FALSE) 
@@ -376,6 +378,7 @@ script TrickTreat_PetalburgCity_ExitYoungster {
 	applymovement (THIS_EVENT, Common_Movement_WalkLeft1)
 	waitmovement (THIS_EVENT)
 	applymovement (THIS_EVENT, Common_Movement_WalkInPlaceUp)
+	speakername(NULL)
 	msgbox ("{JOEY} wrote down the secret code\n"
 			"on the door.\p"
 			"{PLAY_SE SE_PIN}The door unsealed!$")
@@ -401,7 +404,8 @@ script TrickTreat_PetalburgCity_TriggerScript_SoftBorderEast {
 		waitmovement (0)
 		applymovement (12, Common_Movement_ExclamationMarkAndWait)
 		waitmovement (0)
-		msgbox ("{JOEY}: Hey! {PLAYER}!\n"
+		speakername_common(JOEY)
+		msgbox ("Hey! {PLAYER}!\n"
 				"The candy is back this way!$")
 		applymovement (12, Common_Movement_WalkInPlaceLeft)
 	} else {

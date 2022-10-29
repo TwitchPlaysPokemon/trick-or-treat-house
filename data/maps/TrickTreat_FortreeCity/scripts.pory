@@ -13,7 +13,7 @@ TrickTreat_FortreeCity_MapScripts::
 TrickTreat_FortreeCity_Name:
 	.string "Fudge in Fortree$"
 TrickTreat_FortreeCity_Intro:
-	.string "{LINK}: Hey, {PLAYER}! Ready to go\n"
+	.string "Hey, {PLAYER}! Ready to go\n"
 	.string "Trick-or-Treating again?\p"
 	.string "{JOEY} figured out how to point\n"
 	.string "the door to Fortree City!\p"
@@ -22,7 +22,7 @@ TrickTreat_FortreeCity_Intro:
 	.string "would be so cool!\p"
 	.string "Let's go!$"
 TrickTreat_FortreeCity_Quip:
-	.string "{LINK}: What'd you think? I heard\n"
+	.string "What'd you think? I heard\n"
 	.string "they expanded the city recently.\p"
 	.string "I wonder what it looked like before\n"
 	.string "the expansion.$"
@@ -34,7 +34,7 @@ TrickTreat_FortreeCity_Dev:
 	.string "Seriously, why have a tree city if\n"
 	.string "you're not gonna make the most of it?$"
 TrickTreat_FortreeCity_Friend:
-	.string "{JOEY}: I wonder how far away I can\n"
+	.string "I wonder how far away I can\n"
 	.string "point the TRICK MASTER's door…\p"
 	.string "It could go theoretically anywhere,\n"
 	.string "right? He's already given us puzzles\l"
@@ -417,7 +417,8 @@ movement TrickTreat_FortreeCity_PlasmaManAfter_Movement2 {
 script TrickTreat_FortreeCity_ExitBoy {
 	lock
 	faceplayer
-	msgbox ("{JAMES}: Hey, {PLAYER}.\n"
+	speakername_common(JAMES)
+	msgbox ("Hey, {PLAYER}.\n"
 			"How's the haul?$")
 	goto_if_unset(FLAG_PUZZLE_21, TrickTreat_FortreeCity_ExitBoy_Reject1)
 	goto_if_unset(FLAG_PUZZLE_22, TrickTreat_FortreeCity_ExitBoy_Reject1)
@@ -450,7 +451,8 @@ script TrickTreat_FortreeCity_ExitBoy {
 	applymovement (THIS_EVENT, Common_Movement_WalkLeft1)
 	waitmovement (0)
 	applymovement (THIS_EVENT, Common_Movement_WalkInPlaceUp)
-	msgbox ("He writes down the secret code\n"
+	speakername(NULL)
+	msgbox ("{JAMES} writes down the secret code\n"
 			"on the door.\p"
 			"{PLAY_SE SE_PIN}The door unsealed!$")
 	closemessage
