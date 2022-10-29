@@ -481,19 +481,33 @@ script Meta_ZiggyRoom_Ranger {
 	faceplayer //TODO: change in relation to puzzle completeness
 	switch (var(VAR_MOM_QUEST)) {
 		case 0:
-	msgbox( "That poor Zigzagoon mother!\n"
-			"She got separated from her baby!\p"
-			"If I had a water can, I'd help her out\n"
-			"by chasing off that Sudowoodo blocking\l"
-			"her path out of there!$")
+			message("That poor Zigzagoon mother!\n"
+					"She got separated from her baby!\p$")
+			waitmessage
+			checkitem(ITEM_WAILMER_PAIL, 1)
+			if (var(VAR_RESULT)) {
+				msgbox( "Oh, you've got a watering can!\n"
+						"Go chase off the Sudowoodo for me!\p"
+						"What do you mean “can't reach it”?\n"
+						"You can reach fine from up here!\p"
+						"Just stand above the Sudowoodo and pour\n"
+						"the can out! Make sure you're above it\l"
+						"the perspective can be off from up here!$")
+			} else {
+				msgbox("If I had a water can, I'd help her out\n"
+						"by chasing off that Sudowoodo blocking\l"
+						"her path out of there!$")
+			}
 		case 1:
+			msgbox ("Yes! That'll show it!\n"
+					"No guide the mother to the middle!$")
 		case 2:
 		case 3:
 		case 4:
-	msgbox( "Please help that Zigzagoon find her\n"
-			"child! I'm sure they'll thank you!$")
+			msgbox( "Please help that Zigzagoon find her\n"
+					"child! I'm sure they'll thank you!$")
 		case 10:
-	msgbox( "Thanks for your help!$")
+			msgbox( "Thanks for your help!$")
 	}
 	applymovement(THIS_EVENT, Common_Movement_FaceUp)
 	waitmovement

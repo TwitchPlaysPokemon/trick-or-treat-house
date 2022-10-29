@@ -34,7 +34,7 @@ script(local) Meta_FinalBluff_OnLoad {
 	if (var(VAR_LOC_ROCK_SMASH) == 0) {
 		call(Meta_FinalBluff_BypassRockSmash)
 	}
-	if (var(LID_SCROLL) != MAP_META_FINAL_BLUFF) {
+	if (var(VAR_LOC_SCROLL) != MAP_META_FINAL_BLUFF) {
 		setobjectxyperm(LID_SCROLL, 100, 100)
 	}
 }
