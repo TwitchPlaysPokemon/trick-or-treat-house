@@ -88,39 +88,27 @@ Puzzle_TrickHouseOriginal7_Text_26E564: @ 826E564
 Puzzle_TrickHouseOriginal7_Text_26E57F: @ 826E57F
 	.string "The TRICK MASTER has quite a lot of\n"
 	.string "puzzles tonight, hasn't he?$"
+`
 
+script Puzzle_TrickHouseOriginal7_EventScript_26E3B7 {
+	trainerbattle_double(TRAINER_03,
+		"Hi! Welcome to our cubby hole!\n"
+		"You need to pay rent in candy!$",
+		"Oh no!$",
+		"Hi! Welcome to our cubby hole!\n"
+		"You need to pay rent in candy!\p"
+		"If you had enough {POKEMON}, that is.$")
+	speakername("Amy")
+	msgbox( "But this is our cubby hole…$", MSGBOX_AUTOCLOSE)
+}
 
-Puzzle_TrickHouseOriginal7_EventScript_26E3B7:: @ 826E3B7
-	trainerbattle_double TRAINER_03, Puzzle_TrickHouseOriginal7_Text_26E5C0, Puzzle_TrickHouseOriginal7_Text_26E604, Puzzle_TrickHouseOriginal7_Text_26E5C1
-	msgbox Puzzle_TrickHouseOriginal7_Text_26E61E, MSGBOX_AUTOCLOSE
-	end
-Puzzle_TrickHouseOriginal7_Text_26E5C0: @ 826E5C0
-	.string "Hi! Welcome to our cubby hole!\n"
-	.string "You need to pay rent in candy!$"
-Puzzle_TrickHouseOriginal7_Text_26E5C1: @ 826E5C0
-	.string "Hi! Welcome to our cubby hole!\n"
-	.string "You need to pay rent in candy!\p"
-	.string "If you had enough {POKEMON}, that is.$"
-Puzzle_TrickHouseOriginal7_Text_26E604: @ 826E604
-	.string "Oh no!$"
-Puzzle_TrickHouseOriginal7_Text_26E61E: @ 826E61E
-	.string "But this is our cubby hole…$"
+script Puzzle_TrickHouseOriginal7_EventScript_26E3CE {
+	speakername("Liv")
+	msgbox( "Humph! I'm not upset!\n"
+			"Not me!$", MSGBOX_AUTOCLOSE)
+}
 
-
-Puzzle_TrickHouseOriginal7_EventScript_26E3CE:: @ 826E3CE
-	@ trainerbattle_single TRAINER_04, Puzzle_TrickHouseOriginal7_Text_26E66B, Puzzle_TrickHouseOriginal7_Text_26E69C
-	msgbox Puzzle_TrickHouseOriginal7_Text_26E6BC, MSGBOX_AUTOCLOSE
-	end
-@ Puzzle_TrickHouseOriginal7_Text_26E66B: @ 826E66B
-@ 	.string "Nufufufu, here at last!\n"
-@ 	.string "Let's get right with it!$"
-@ Puzzle_TrickHouseOriginal7_Text_26E69C: @ 826E69C
-@ 	.string "You're so casual about winning!$"
-Puzzle_TrickHouseOriginal7_Text_26E6BC: @ 826E6BC
-	.string "Humph! I'm not upset!\n"
-	.string "Not me!$"
-
-
+raw `
 Puzzle_TrickHouseOriginal7_EventScript_PsychicBoy:: @ 826E3E5
 	trainerbattle_single TRAINER_05, Puzzle_TrickHouseOriginal7_Text_26E6DA, Puzzle_TrickHouseOriginal7_Text_26E700
 	msgbox Puzzle_TrickHouseOriginal7_Text_26E722, MSGBOX_AUTOCLOSE

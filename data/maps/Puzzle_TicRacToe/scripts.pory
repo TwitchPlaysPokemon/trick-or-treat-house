@@ -92,6 +92,7 @@ script(local) Puzzle_TicRacToe_StepTriggerCallback {
 //-----------------------------------------------------
 
 script Puzzle_TicRacToe_Zigboy {
+	speakername("Zane")
 	if (var(VAR_ZIG1_STATE) == 0) {
 		lock
 		faceplayer
