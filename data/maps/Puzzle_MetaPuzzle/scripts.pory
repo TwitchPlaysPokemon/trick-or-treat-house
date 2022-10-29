@@ -58,6 +58,7 @@ Puzzle_MetaPuzzle_Quip:
 Puzzle_MetaPuzzle_Variables:
 	.2byte VAR_INTRO_PERSON, OBJ_EVENT_GFX_FLANNERY
 	.2byte VAR_QUIP_PERSON,  OBJ_EVENT_GFX_TRICK_MASTER
+	.2byte VAR_MISTRESS_STATE, 100
 	.2byte 0
 Puzzle_MetaPuzzle_CandyList:
 	@ TODO: When this puzzle is not a stub, these will mean something

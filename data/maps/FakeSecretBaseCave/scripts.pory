@@ -28,18 +28,24 @@ mapscripts FakeSecretBaseCave_MapScripts {
 					setobjectmovementtype(LID_MISTRESS, MOVEMENT_TYPE_FACE_RIGHT)
 			}
 		}
+		if (var(VAR_MISTRESS_STATE) == 100) {
+			setobjectxyperm(LID_MISTRESS, 100, 100)
+			setobjectxyperm(18, 100, 100) // pedestal
+		}
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
 		VAR_TEMP_0, 0: FakeSecretBaseCave_OnFirstFrame
 		VAR_MISTRESS_STATE, 0: FakeSecretBaseCave_MistressIntro
 	]
 	MAP_SCRIPT_ON_RESUME {
+		goto_if_ge(VAR_MISTRESS_STATE, 100, Common_EventScript_NopReturn)
 		call (FakeSecretBaseCave_MakeModelGrid)
 	}
 }
 
 script FakeSecretBaseCave_OnFirstFrame {
 	setvar(VAR_TEMP_0, 1)
+	goto_if_ge(VAR_MISTRESS_STATE, 100, Common_EventScript_NopReturn)
 	call (FakeSecretBaseCave_MakeModelGrid)
 }
 
