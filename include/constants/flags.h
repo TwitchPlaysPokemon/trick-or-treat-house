@@ -161,7 +161,7 @@
 #define FLAG_META_PICKUP_DIVE                0x08D
 #define FLAG_META_PICKUP_SEEDOT              0x08E
 #define FLAG_META_PICKUP_CUSHION             0x08F
-#define FLAG_UNUSED_0x090                    0x090
+#define FLAG_META_COMMENTED_FINAL            0x090
 #define FLAG_META_COMMENTED_ZIGGY            0x091
 #define FLAG_META_COMMENTED_LOG_FLOAT        0x092
 #define FLAG_META_COMMENTED_FOREST           0x093

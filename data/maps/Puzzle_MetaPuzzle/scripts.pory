@@ -391,7 +391,7 @@ script MetaPuzzle_PickupEvent_BallCushion { // placed
 			"It looks like it's been biked over.$")
 	finditem_std(ITEM_META_ITEM_BIKE_PATH, 1)
 }
-script MetaPuzzle_PickupEvent_BerryFlower {
+script MetaPuzzle_PickupEvent_BerryFlower { // placed (temporarily)
 	// Grown from seed given in Petalburg
 	finditem_std(ITEM_META_ITEM_BERRY, 1)
 }
@@ -399,7 +399,9 @@ script MetaPuzzle_PickupEvent_RoundCushion { // placed
 	// Given by Flannery
 	finditem_std(ITEM_META_ITEM_LAVARIDGE, 1)
 }
-script MetaPuzzle_PickupEvent_FireCushion {
+script MetaPuzzle_PickupEvent_FireCushion { // placed (temporarily)
+	msgbox ("Is this pillow… smoking a bit?\n"
+			"Like it's been shot out of a volcano?$")
 	finditem_std(ITEM_META_ITEM_FIRE, 1)
 }
 script MetaPuzzle_PickupEvent_ZipCushion {  // placed
@@ -413,7 +415,7 @@ script MetaPuzzle_PickupEvent_DuskullDoll {  // placed
 			"trying to hide in plain sight.$")
 	finditem_std(ITEM_META_ITEM_KOGA, 1)
 }
-script MetaPuzzle_PickupEvent_WaterCushion { // placed
+script MetaPuzzle_PickupEvent_WaterCushion { // placed (temporarily)
 	msgbox ("Someone must have left this cushion.\p"
 			"…It's got such a weird texture…\n"
 			"Is it waterproof?$")

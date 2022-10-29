@@ -282,6 +282,7 @@ script(local) FakeSecretBaseCave_EndRoomFlannery {
 	waitbuttonpress
 	call (FakeSecretBaseCave_Script_FlanneryIntroCommon5)
 	setvar(VAR_TRICK_MASTER_INTRO, 5)
+	setflag(FLAG_META_COMMENTED_FINAL)
 	message("Anyway, good luck!\n"
 			"If you need me, find me outside,\l"
 			"in the secret base to the west!$")
@@ -332,6 +333,19 @@ script FakeSecretBaseCave_Mistress {
 
 script MetaPuzzle_CommentOnItems {
 	setvar(VAR_0x800A, 0)
+	// 
+	if (!flag(FLAG_META_COMMENTED_FINAL)) {
+		checkitem(ITEM_META_ITEM_FINAL_BLUFF, 1)
+		if (var(VAR_RESULT) == TRUE) {
+	message("Oh! That rock! It inflates!\n"
+			"It's got so many ridges and valleys…\p"
+			"Yes, I'm seeing a final climb… a final\n"
+			"trial… to the goal at the top…$")
+			waitmessage
+			setflag(FLAG_META_COMMENTED_FINAL)
+			addvar(VAR_0x800A, 1)
+		}
+	}
 	// 
 	if (!flag(FLAG_META_COMMENTED_ZIGGY)) {
 		checkitem(ITEM_META_ITEM_ZIGGY, 1)
