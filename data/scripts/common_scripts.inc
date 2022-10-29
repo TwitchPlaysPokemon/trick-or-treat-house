@@ -389,7 +389,7 @@ EventScript_FallDownHole:: @ 82A8337
 	waitmovement 0
 	playse SE_FALL
 	delay 60
-	warphole MAP_UNDEFINED
+	dowarp WARPTYPE_HOLE, DOWARP_HOLE
 	waitstate
 	end
 Common_Movement_SetInvisible:: @ 82A8369
