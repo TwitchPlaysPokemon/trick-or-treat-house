@@ -2,7 +2,7 @@ raw `
 Puzzle_TrickHouseSlipSliding_MapScripts::
 	puzzle_info Puzzle_TrickHouseSlipSliding_Name, Puzzle_TrickHouseSlipSliding_Author
 	puzzle_adjective Puzzle_TrickHouseSlipSliding_Adjective
-	@ puzzle_quip Puzzle_TrickHouseSlipSliding_Quip
+	puzzle_quip Puzzle_TrickHouseSlipSliding_Quip
 	puzzle_candylist Puzzle_TrickHouseSlipSliding_CandyList
 	.byte 0
 
@@ -13,7 +13,10 @@ Puzzle_TrickHouseSlipSliding_Author:
 Puzzle_TrickHouseSlipSliding_Adjective:
  	.string "slippery$"
 Puzzle_TrickHouseSlipSliding_Quip:
- 	.string "slippery$"
+ 	.string "I cannot count the number of times I\n"
+	.string "slipped and fell in this puzzle.\p"
+	.string "The Trick Master really should put up\n"
+	.string "warning signs…$"
 
 .align 2
 Puzzle_TrickHouseSlipSliding_CandyList:
