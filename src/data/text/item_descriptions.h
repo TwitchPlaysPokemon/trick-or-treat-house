@@ -5120,6 +5120,6 @@ static const u8 sKaleChipsName[] = _("Kale Chips");
 static const u8 sKaleChipsDesc[] = _(
     "Single serving.\n"
     "Revives to\n"
-    "half HP.");
+    "full HP.");
 
 #pragma endregion
