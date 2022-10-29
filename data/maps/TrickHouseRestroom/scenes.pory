@@ -391,18 +391,16 @@ script TrickHouseRestroom_EventScript_JoeyIreneFight {
 	waitmovement(LID_IRENE)
 	speakername_common(IRENE)
 	msgbox ("Did you not see the Jungle Maze!?\n"
-			"I'm pretty sure that was in New Guinea!\p"
-			"And the stealth maze definitely was a\n"
-			"Team Galatic building!$")
+			"I'm pretty sure that was in New Guinea!$")
 	
 	speakername_common(JOEY)
-	msgbox ("And neither of those places is Unova!\n"
-			"They're not even outside this timezone!\p"
+	msgbox ("That's not in Unova!\n"
+			"It's not even outside this timezone!\p"
 			"Isn't it like 3am in Unova right now?!$")
 	
 	speakername_common(IRENE)
-	msgbox ("You just want an excuse to go\n"
-			"pick up your boyfriend!$")
+	msgbox ("It's 6am! And you just want an excuse\n"
+			"to go pick up your boyfriend!$")
 	
 	speakername_common(JOEY)
 	msgbox ("So what? You can have your partner\n"

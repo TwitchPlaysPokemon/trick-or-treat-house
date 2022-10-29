@@ -177,6 +177,7 @@ script TrickTreat_PetalburgCity_SetDoorGlowOff {
 script TrickTreat_PetalburgCity_CandyGiver_Nurse {
 	lock
 	faceplayer
+	speakername("Nurse Joy")
 	msgbox ("Happy Halloween!\n"
 			"Please take some candy!$")
 	giveitem_std(ITEM_TABLE_CANDY_ABUNDANT, 2)
@@ -191,6 +192,7 @@ script TrickTreat_PetalburgCity_CandyGiver_Nurse {
 script TrickTreat_PetalburgCity_CandyGiver_Mart {
 	lock
 	faceplayer
+	speakername("Jenny")
 	msgbox ("Trick or Treat!\n"
 			"Please take some candy!$")
 	giveitem_std(ITEM_TABLE_CANDY_ABUNDANT, 2)

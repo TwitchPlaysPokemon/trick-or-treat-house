@@ -127,6 +127,7 @@ script FortreeCity_TriggerScript_EastSoftBorder {
 script TrickTreat_FortreeCity_CandyGiver_Nurse {
 	lock
 	faceplayer
+	speakername("Nurse Joye")
 	msgbox ("Happy Halloween!\n"
 			"Please take some candy!$")
 	giveitem_std(ITEM_TABLE_CANDY_ABUNDANT, 2)
@@ -141,6 +142,7 @@ script TrickTreat_FortreeCity_CandyGiver_Nurse {
 script TrickTreat_FortreeCity_CandyGiver_Camper {
 	lock
 	faceplayer
+	speakername("Oliver")
 	msgbox ("My scout troop wanted me to sell all\n"
 			"these cookies by summer's end, but\l"
 			"I never managed to.\p"
@@ -157,6 +159,7 @@ script TrickTreat_FortreeCity_CandyGiver_Camper {
 script TrickTreat_FortreeCity_CandyGiver_Fatman {
 	lock
 	faceplayer
+	speakername("Owen")
 	msgbox ("Oh good! You can have my last piece\n"
 			"of candy so I don't eat it.$")
 	giveitem_std(ITEM_TABLE_CANDY_UNCOMMON, 1)
@@ -169,6 +172,7 @@ script TrickTreat_FortreeCity_CandyGiver_Fatman {
 script TrickTreat_FortreeCity_CandyGiver_Tarzan {
 	lock
 	faceplayer
+	speakername("Tarzan")
 	msgbox ("Me Tarzan! Me fight for candy!$")
 	trainerbattle_no_intro(TRAINER_04, 
 			"You strong! Me beaten!$")
@@ -183,6 +187,7 @@ script TrickTreat_FortreeCity_CandyGiver_Tarzan {
 script TrickTreat_FortreeCity_CandyGiver_FairyGirl {
 	lock
 	faceplayer
+	speakername("Kaylee")
 	msgbox ("Trick-or-Treat!\n"
 			"It's time for you to decide:\p"
 			"In one hand, I have a treat,\n"
@@ -220,6 +225,7 @@ script TrickTreat_FortreeCity_CandyGiver_FairyGirl {
 script TrickTreat_FortreeCity_CandyGiver_ExpertLady {
 	lock
 	faceplayer
+	speakername("Eunice")
 	msgbox ("Hello, child. Would you like some of my\n"
 			"candy this evening?\p"
 			"Then you'll have to go through me\n"
@@ -239,6 +245,7 @@ script TrickTreat_FortreeCity_CandyGiver_ExpertLady {
 script TrickTreat_FortreeCity_CandyGiver_Pokefan {
 	lock
 	faceplayer
+	speakername("Derick")
 	msgbox ("Hello! You want candy, don't you?\n"
 			"Well, I'd like to see your {POKEMON}!$")
 	trainerbattle_no_intro (TRAINER_06, 
@@ -253,6 +260,7 @@ script TrickTreat_FortreeCity_CandyGiver_Pokefan {
 script TrickTreat_FortreeCity_CandyGiver_OldLady {
 	lock
 	faceplayer
+	speakername("Mildred")
 	msgbox ("Hello child!\n"
 			"Please take as much as you like!$")
 	giveitem_std(ITEM_TABLE_CANDY_COMMON, 2)
@@ -266,6 +274,7 @@ script TrickTreat_FortreeCity_CandyGiver_OldLady {
 script TrickTreat_FortreeCity_CandyGiver_TownBoy {
 	lock
 	faceplayer
+	speakername("Kevin")
 	msgbox ("Trick or Treat!\n"
 			"Here's some candy my mom bought.$")
 	giveitem_std(ITEM_TABLE_CANDY_ABUNDANT, 2)
@@ -279,6 +288,7 @@ script TrickTreat_FortreeCity_CandyGiver_TownBoy {
 script TrickTreat_FortreeCity_CandyGiver_Pokekid {
 	lock
 	faceplayer
+	speakername("Pikachu")
 	msgbox ("Pika pi!$")
 	trainerbattle_no_intro (TRAINER_07, 
 			"Pikachu!$")
@@ -292,6 +302,7 @@ script TrickTreat_FortreeCity_CandyGiver_Pokekid {
 script TrickTreat_FortreeCity_CandyGiver_Winona {
 	lock
 	faceplayer
+	speakername("Winona")
 	msgbox ("Trick or Treat?\n"
 			"Which will I choose?\p"
 			"Before I choose, I wish to see if you\n"

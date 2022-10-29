@@ -94,11 +94,14 @@ script(local) Puzzle_TicRacToe_StepTriggerCallback {
 script Puzzle_TicRacToe_Zigboy {
 	if (var(VAR_ZIG1_STATE) == 0) {
 		lock
+		faceplayer
 		msgbox("This Zigzagoon is so cute!\p"
 			"I think it wants to play with its\n"
 			"friends but they're with other trainers.\p"
 			"Maybe you can convince them to let\n"
 			"the Zigzagoon play together?$")
+		applymovement(THIS_EVENT, Common_Movement_WalkInPlaceUp)
+		waitmovement(THIS_EVENT)
 		release
 		end
 	}

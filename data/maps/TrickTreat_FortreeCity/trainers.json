@@ -22,12 +22,17 @@
 		"music": "ENC_MUS_EM_COOL",
 		"party": [
 			{
-				"species": "SPECIES_ZIGZAGOON",
+				"species": "SPECIES_PANSAGE",
 				"item": "ITEM_NUGGET",
 				"level": 26
 			},
 			{
-				"species": "SPECIES_ZIGZAGOON",
+				"species": "SPECIES_PANSEAR",
+				"item": "ITEM_NUGGET",
+				"level": 26
+			},
+			{
+				"species": "SPECIES_PANPOUR",
 				"item": "ITEM_NUGGET",
 				"level": 26
 			}
@@ -40,11 +45,11 @@
 		"music": "ENC_MUS_EM_TWINS",
 		"party": [
 			{
-				"species": "SPECIES_ILLUMISE",
+				"species": "SPECIES_CUTIEFLY",
 				"level": 27
 			},
 			{
-				"species": "SPECIES_BEAUTIFLY",
+				"species": "SPECIES_VIVILLON_ELEGANT",
 				"level": 28
 			}
 		]
@@ -56,6 +61,10 @@
 		"party": [
 			{
 				"species": "SPECIES_PRIMEAPE",
+				"level": 29
+			},
+			{
+				"species": "SPECIES_PASSIMIAN",
 				"level": 29
 			}
 		]

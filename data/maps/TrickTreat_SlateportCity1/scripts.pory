@@ -272,6 +272,7 @@ script TrickTreat_SlateportCity1_TriggerScript_HauntingKidStart {
 }
 script TrickTreat_SlateportCity1_TriggerScript_HauntingKidEnd {
 	destroyfollower
+	call(Follower_ClearAllFlagsAndVars)
 	// Kid simply vanishes
 	release
 }
@@ -299,6 +300,7 @@ script TrickTreat_SlateportCity1_EventScript_HauntingKid {
 	fadescreen(FADE_TO_BLACK)
 	delay (5)
 	destroyfollower
+	call(Follower_ClearAllFlagsAndVars)
 	delay (1)
 	fadescreen(FADE_FROM_BLACK)
 	release

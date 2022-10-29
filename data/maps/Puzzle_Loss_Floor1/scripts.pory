@@ -8,6 +8,7 @@ Puzzle_Loss_Floor1_MapScripts::
 	puzzle_info Puzzle_Loss_Name, CommonAuthor_Tustin2121, PUZZLE_FLAG_INSPIRED_BY, Puzzle_Loss_Inspiration
 	puzzle_adjective Puzzle_Loss_Adjective
 	puzzle_quip Puzzle_Loss_Quip
+	puzzle_friendcommentary Puzzle_Loss_IreneComment
 	puzzle_metavars Puzzle_Loss_Variables
 	puzzle_teardown_script Puzzle_Loss_Teardown
 	puzzle_candylist Puzzle_Loss_CandyList
@@ -15,6 +16,7 @@ Puzzle_Loss_Floor1_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_Loss_Floor1_OnLoad
 	map_script MAP_SCRIPT_ON_PUZZLE_SETUP, Puzzle_Loss_Setup
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_Loss_Floor1_FrameTable
+	map_script MAP_SCRIPT_ON_EXIT_PUZZLE_WITH_PARTNER, Puzzle_Loss_ExitPuzzleWithIrene
 	.byte 0
 
 Puzzle_Loss_Floor1_FrameTable:
@@ -29,6 +31,17 @@ Puzzle_Loss_Adjective:
 	.string "memable$"
 Puzzle_Loss_Quip:
 	.string "Is this loss?$"
+Puzzle_Loss_IreneComment:
+	.string "I've been so distracted, I completely\n"
+	.string "missed what this puzzle was about.\p"
+	.string "{PLAYER}, do you have a significant\n"
+	.string "other? No? No one?\p"
+	.string "Just haven't found anyone? Or are\n"
+	.string "you aro/ace like Wally seems to be?\p"
+	.string "Sorry, that was invasive.\n"
+	.string "You don't have to tell me.\p"
+	.string "I've just been thinking about\n"
+	.string "me and {ALEX} a lot lately…$"
 Puzzle_Loss_DevCommentary:
 	.string "This puzzle was borne out of a fear\n"
 	.string "that people would submit memes as\l"
@@ -45,7 +58,8 @@ Puzzle_Loss_DevCommentary:
 	.string "In case that wasn't blindingly obvious…$"
 .align 2
 Puzzle_Loss_Variables:
-	.2byte VAR_QUIP_PERSON,  OBJ_EVENT_GFX_HIKER
+	.2byte VAR_QUIP_PERSON,     OBJ_EVENT_GFX_HIKER
+	.2byte VAR_ENDROOM_FRIEND,  TTH_FRIEND_IRENE
 	.2byte 0
 Puzzle_Loss_CandyList:
 	.2byte FLAG_PUZZLE_ITEM_0  @ Free Candy Counter = 3 * 8 Chocolate Bars
@@ -314,7 +328,9 @@ script Puzzle_Loss_Floor1_IreneFollowStart {
 			"Oh, no reason.\p"
 			"Why would I need a reason to want to\n"
 			"spend time with my partner?$")
+	call(Follower_ClearAllFlagsAndVars)
 	setfollower(9, FOLLOWER_FLAG_FRIENDS, Puzzle_Loss_FollowerScript_Irene)
+	setvar(VAR_FOLLOWER_IDENTITY, FOLLOWER_ID_IRENE)
 	setvar(VAR_IRENE_STATE, 2)
 	releaseall
 }
@@ -322,17 +338,18 @@ script Puzzle_Loss_FollowerScript_Irene {
 	lock
 	facefollower
 	speakername_common(IRENE)
+	// Location-dependant
+	callnative(GetCurrentMapId)
+	goto_if_eq(VAR_RESULT, MAP_TRICK_HOUSE_RESTROOM, Puzzle_Loss_FollowerScript_Irene_Den)
 	// Subplot-dependant
 	goto_if_eq(VAR_FOLLOWER_STATE, 1, Puzzle_Loss_FollowerScript_Irene_Plot1)
 	// Location-dependant
-	callnative(GetCurrentMapId)
 	goto_if_eq(VAR_RESULT, MAP_PUZZLE_LOSS_FLOOR1, Puzzle_Loss_FollowerScript_Irene_Floor1)
 	goto_if_eq(VAR_RESULT, MAP_PUZZLE_LOSS_FLOOR2, Puzzle_Loss_FollowerScript_Irene_Floor2)
 	goto_if_eq(VAR_RESULT, MAP_TRICK_HOUSE_ENTRANCE, Puzzle_Loss_FollowerScript_Irene_Entryway)
 	goto_if_eq(VAR_RESULT, MAP_TRICK_HOUSE_EXT, Puzzle_Loss_FollowerScript_Irene_Ext)
 	goto_if_eq(VAR_RESULT, MAP_TRICK_HOUSE_EXT_GATEHOUSE, Puzzle_Loss_FollowerScript_Irene_Gatehouse)
 	goto_if_eq(VAR_RESULT, MAP_TRICK_HOUSE_TREE_HOUSE, Puzzle_Loss_FollowerScript_Irene_Treehouse)
-	goto_if_eq(VAR_RESULT, MAP_TRICK_HOUSE_RESTROOM, Puzzle_Loss_FollowerScript_Irene_Den)
 	goto_if_eq(VAR_RESULT, MAP_FAKE_SECRET_BASE_CAVE, Puzzle_Loss_FollowerScript_Irene_SecretBase)
 	
 	msgbox ("How are you doing tonight? Good?\n"
@@ -483,6 +500,92 @@ script(local) Puzzle_Loss_FollowerScript_Irene_SecretBase {
 			"yet? How many traps did we set? Hehe!$")
 	release
 }
+
+raw `
+#define LID_END_IRENE 5
+`
+script(local) Puzzle_Loss_ExitPuzzleWithIrene {
+	lockall
+	applymovement(LID_END_IRENE, Common_Movement_WalkInPlaceLeft)
+	applymovement(LID_PLAYER, Common_Movement_WalkInPlaceRight)
+	speakername_common(IRENE)
+	message("Do you have any idea what that puzzle\n"
+			"was supposed to be about?\p"
+			"The nurse directed us upstairs…\n"
+			"Then the doctor directed us to…\l"
+			"Some lady lying in bed…?\p"
+			"… … … I don't know, I'm at a loss…\p$")
+	waitmessage
+	if (var(VAR_FOLLOWER_STATE) < 2) {
+		// have a story beat now
+		message("Anyway… sorry about earlier…\n"
+				"I realize I was acting clingy.\p"
+				"I was mad at {JOEY} about him getting\n"
+				"to see his boyfriend.\p"
+				"I never get to see you in person…\n"
+				"Long distance is so hard…\p$")
+		applymovement(LID_END_IRENE, Puzzle_Loss_ExitPuzzleWithIrene_Move1)
+		waitmovement(LID_END_IRENE)
+		applymovement(LID_PLAYER, Common_Movement_WalkInPlaceUp)
+		waitmovement(LID_PLAYER)
+		waitmessage
+		message("I just wish you didn't have to be in\n"
+				"Sinnoh all the time… and I wish I\l"
+				"didn't need to stay in Unova…\p$")
+		applymovement(LID_END_IRENE, Common_Movement_WalkInPlaceLeft)
+		waitmovement(LID_END_IRENE)
+		waitmessage
+		message("I'll be fine. But… we are going on the\n"
+				"LONGEST date tomorrow, okay?\p"
+				"I'm getting you new nailpolish and\n"
+				"a hideous Christmas sweater!\l"
+				"And you better wear them! Hehe!$")
+		applymovement(LID_END_IRENE, Common_Movement_WalkInPlaceDown)
+		waitmovement(LID_END_IRENE)
+		waitmessage
+		waitbuttonpress
+		closemessage
+	} else {
+		// already had story beat, just leave
+		message("Anyway… I gotta go apologize to {JOEY}.\n"
+				"Sorry for being so clingy.\p"
+				"I'll see you later.$")
+		waitmessage
+		waitbuttonpress
+		closemessage
+		applymovement(LID_END_IRENE, Puzzle_Loss_ExitPuzzleWithIrene_Move1)
+		waitmovement(LID_END_IRENE)
+	}
+	applymovement(LID_END_IRENE, Puzzle_Loss_ExitPuzzleWithIrene_Kiss)
+	playse(SE_M_CHARM)
+	waitmovement(LID_END_IRENE)
+	applymovement(LID_END_IRENE, Puzzle_Loss_ExitPuzzleWithIrene_Move2)
+	applymovement(LID_PLAYER, Common_Movement_WalkInPlaceLeft)
+	waitmovement(LID_PLAYER)
+	applymovement(LID_PLAYER, Common_Movement_EmoteNoteF)
+	waitmovement(LID_PLAYER)
+	waitmovement(LID_END_IRENE)
+	removeobject(LID_END_IRENE)
+	releaseall
+}
+movement Puzzle_Loss_ExitPuzzleWithIrene_Kiss {
+	emote_heart
+	delay_16 * 3
+}
+movement Puzzle_Loss_ExitPuzzleWithIrene_Move1 {
+	walk_up
+	walk_left
+	walk_in_place_down
+}
+movement Puzzle_Loss_ExitPuzzleWithIrene_Move2 {
+	walk_fast_left * 4
+	walk_down
+	walk_fast_left * 4
+	set_invisible
+}
+raw `
+#undef LID_END_IRENE
+`
 
 
 raw `

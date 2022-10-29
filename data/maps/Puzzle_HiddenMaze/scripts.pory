@@ -89,6 +89,7 @@ script Puzzle_HiddenMaze_Trainer3Trigger {
 	applymovement (4, Puzzle_HiddenMaze_Trainer3_Movement1)
 	playse (SE_LEDGE)
 	waitmovement (0)
+	speakername("???")
 	msgbox ("HALT, EVILDOER!!$")
 	playse (SE_SELECT)
 	applymovement (OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceLeft)
@@ -111,6 +112,7 @@ script Puzzle_HiddenMaze_Trainer3Trigger {
 	setfieldeffectargument (2, 0)
 	dofieldeffect (FLDEFF_SPARKLE)
 	waitfieldeffect (FLDEFF_SPARKLE)
+	speakername("?!?!")
 	msgbox ("FOR I AM PLASMA KID!!$")
 	applymovement (4, Common_Movement_WalkRight2)
 	waitmovement (0)
@@ -122,6 +124,7 @@ script Puzzle_HiddenMaze_Trainer3Trigger {
 	setvar(VAR_PUZZLE_02, 1)
 	applymovement (4, Common_Movement_BackOffLeft1)
 	waitmovement (0)
+	speakername("Jeffery")
 	msgbox ("I WILL LET YOU GO THIS TIME, VERMIN!!\p"
 			"BUT YOU WON'T WIN THE WAR!!!$")
 	setobjectmovementtype (4, MOVEMENT_TYPE_LOOK_AROUND)
@@ -190,7 +193,7 @@ script Puzzle_HiddenMaze_Carver {
 }
 
 script Puzzle_HiddenMaze_Trainer6 {
-	# ninja disgused as an item ball
+	# ninja disguised as an item ball
 	lock
 	checktrainerflag (TRAINER_06)
 	goto_if_eq (Puzzle_HiddenMaze_Trainer6A)
@@ -200,6 +203,7 @@ script Puzzle_HiddenMaze_Trainer6 {
 	waitmovement (0)
 	removeobject (7)
 	addobject (7)
+	speakername("Yasu")
 	msgbox ("Ha! Fooled ya! A ninja blends\n"
 			"effortlessly into the environment!$")
 	closemessage

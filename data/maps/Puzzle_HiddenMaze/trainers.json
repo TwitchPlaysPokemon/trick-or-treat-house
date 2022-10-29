@@ -35,12 +35,12 @@
 		"music": "ENC_MUS_EM_COOL",
 		"party": [
 			{
-				"species": "SPECIES_ZIGZAGOON",
+				"species": "SPECIES_PATRAT",
 				"item": "ITEM_NUGGET",
 				"level": 26
 			},
 			{
-				"species": "SPECIES_POOCHYENA",
+				"species": "SPECIES_LILLIPUP",
 				"level": 26
 			}
 		]

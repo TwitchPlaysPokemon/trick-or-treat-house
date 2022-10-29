@@ -13,6 +13,7 @@
 #include "random.h"
 #include "strings.h"
 #include "string_util.h"
+#include "sound.h"
 #include "script.h"
 #include "text.h"
 #include "task.h"
@@ -1397,6 +1398,7 @@ static void Task_HandleSlidingTileInput(u8 taskId)
 		if (y+dy < 0 || y+dy >= sSlidingTileScene->gridHeight) return;
 		
 		if (SwitchTiles(a, ((y+dy) * sSlidingTileScene->gridWidth) + (x+dx))) {
+			PlaySE(SE_CLICK);
 			SetTaskFuncWithFollowupFunc(taskId, Task_WaitForSlide, Task_HandleSlidingTileInput);
 		}
 	}

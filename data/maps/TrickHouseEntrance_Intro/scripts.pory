@@ -87,8 +87,8 @@ script TrickHouseEntrance_WalkInCutscene {
 			"I don't like this place!\p"
 			"I'm sticking close to you.$")
 	// Setup follower
+	call(Follower_ClearAllFlagsAndVars)
 	setfollower(LID_WALLY, FOLLOWER_FLAG_FRIENDS, TrickHouseEntrance_FollowerScript_Wally)
-	setvar(VAR_FOLLOWER_STATE, 0)
 	setvar(VAR_FOLLOWER_IDENTITY, FOLLOWER_ID_WALLY)
 	
 	setvar (VAR_INTRO_COUNTER, 3)

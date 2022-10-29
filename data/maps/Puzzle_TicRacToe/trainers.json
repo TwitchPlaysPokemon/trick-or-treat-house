@@ -5,11 +5,11 @@
 		"name": "Liz",
 		"party": [
 			{
-				"species": "SPECIES_POOCHYENA",
+				"species": "SPECIES_ELGYEM",
 				"level": 29
 			},
 			{
-				"species": "SPECIES_LINOONE",
+				"species": "SPECIES_ESPURR",
 				"level": 30
 			}
 		]
@@ -17,6 +17,7 @@
 	{
 		"class": "TWINS_PM",
 		"name": "Tia & Lea",
+		"doubleBattle": true,
 		"party": [
 			{
 				"species": "SPECIES_LOTAD",
