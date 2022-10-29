@@ -7,7 +7,7 @@
 		"party": [
 			{
 				"species": "SPECIES_ELECTRODE",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -20,7 +20,7 @@
 		"party": [
 			{
 				"species": "SPECIES_GOLEM",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -33,7 +33,7 @@
 		"party": [
 			{
 				"species": "SPECIES_WEEZING",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -46,7 +46,7 @@
 		"party": [
 			{
 				"species": "SPECIES_PINECO",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -59,7 +59,7 @@
 		"party": [
 			{
 				"species": "SPECIES_CLAYDOL",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -72,7 +72,7 @@
 		"party": [
 			{
 				"species": "SPECIES_ELECTRODE_HISUIAN",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -85,7 +85,7 @@
 		"party": [
 			{
 				"species": "SPECIES_WEEZING_GALARIAN",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -98,7 +98,7 @@
 		"party": [
 			{
 				"species": "SPECIES_GOLEM_ALOLAN",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -111,7 +111,7 @@
 		"party": [
 			{
 				"species": "SPECIES_SEEDOT",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -124,7 +124,7 @@
 		"party": [
 			{
 				"species": "SPECIES_DRIFBLIM",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -137,7 +137,7 @@
 		"party": [
 			{
 				"species": "SPECIES_BALTOY",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -150,7 +150,7 @@
 		"party": [
 			{
 				"species": "SPECIES_PINECO",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -163,7 +163,7 @@
 		"party": [
 			{
 				"species": "SPECIES_AZELF",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -176,7 +176,7 @@
 		"party": [
 			{
 				"species": "SPECIES_REGIROCK",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -189,7 +189,7 @@
 		"party": [
 			{
 				"species": "SPECIES_MEW",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -202,7 +202,7 @@
 		"party": [
 			{
 				"species": "SPECIES_REGIDRAGO",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -215,7 +215,7 @@
 		"party": [
 			{
 				"species": "SPECIES_GIGALITH",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -228,7 +228,7 @@
 		"party": [
 			{
 				"species": "SPECIES_GARBODOR",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -241,7 +241,7 @@
 		"party": [
 			{
 				"species": "SPECIES_FERROTHORN",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -254,7 +254,7 @@
 		"party": [
 			{
 				"species": "SPECIES_VOLCANION",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -267,7 +267,7 @@
 		"party": [
 			{
 				"species": "SPECIES_VOLTORB",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -280,7 +280,7 @@
 		"party": [
 			{
 				"species": "SPECIES_VOLTORB_HISUIAN",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -293,7 +293,7 @@
 		"party": [
 			{
 				"species": "SPECIES_NOSEPASS",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -306,7 +306,7 @@
 		"party": [
 			{
 				"species": "SPECIES_GRAVELER",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -319,7 +319,7 @@
 		"party": [
 			{
 				"species": "SPECIES_FORRETRESS",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -332,7 +332,7 @@
 		"party": [
 			{
 				"species": "SPECIES_GOURGEIST",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -345,7 +345,7 @@
 		"party": [
 			{
 				"species": "SPECIES_SKUNTANK",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -358,7 +358,7 @@
 		"party": [
 			{
 				"species": "SPECIES_MINIOR",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -371,7 +371,7 @@
 		"party": [
 			{
 				"species": "SPECIES_TURTONATOR",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]
@@ -384,7 +384,7 @@
 		"party": [
 			{
 				"species": "SPECIES_SOLROCK",
-				"moves": ["MOVE_EXPLOSION"],
+				"moves": ["MOVE_DETONATE"],
 				"level": 50
 			}
 		]

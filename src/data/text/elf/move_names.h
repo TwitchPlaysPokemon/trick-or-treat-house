@@ -159,6 +159,7 @@ const u8 gBort_MoveNames[][7 + 1] = //[7 + 1]
     [MOVE_ACID_ARMOR]               = _("MEL"),
     [MOVE_CRABHAMMER]               = _("HAMMER"),
     [MOVE_EXPLOSION]                = _("ERUPT"),
+    [MOVE_DETONATE]                 = _("KABOOM"),
     [MOVE_FURY_SWIPES]              = _("MIXING"),
     [MOVE_BONEMERANG]               = _("BONE"), // Unofficial, missing
     [MOVE_REST]                     = _("DOZ"),
