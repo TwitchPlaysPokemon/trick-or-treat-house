@@ -2499,6 +2499,10 @@ static const struct SpriteFrameImage sPicTable_TrickDoorScroll[] = {
     overworld_frame(gObjectEventPic_TrickDoorScroll, 8, 8, 3),
 };
 
+static const struct SpriteFrameImage sPicTable_TrickBattleMat[] = {
+    overworld_frame(gObjectEventPic_TrickBattleMat, 8, 8, 0),
+};
+
 static const struct SpriteFrameImage sPicTable_TrickDoorScrollRoom[] = {
     overworld_frame(gObjectEventPic_TrickDoorScrollRoom, 8, 8, 0),
     overworld_frame(gObjectEventPic_TrickDoorScrollRoom, 8, 8, 1),

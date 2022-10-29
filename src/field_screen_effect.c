@@ -264,7 +264,7 @@ static void SetUpWarpExitTask(void)
         const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(gObjectEvents[behavior].graphicsId);
         if (graphicsInfo != NULL)
         {
-            if (graphicsInfo->doorOffsetType == DOOROFFSET_DOWN)
+            if (graphicsInfo->doorOffsetType & DOOROFFSET_IS_DOOR)
                 func = Task_ExitDoor;
             else
                 func = Task_ExitNonDoor;

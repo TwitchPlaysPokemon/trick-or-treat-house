@@ -408,14 +408,14 @@ text Puzzle_SafariImposters_Text_IreneAlibi1a_I {
 }
 text Puzzle_SafariImposters_Text_IreneAlibi2a {
 			"See, I started up north, hoping to run\n"
-			"into a CHANSEY up that way, but the\l"
+			"into a Chansey up that way, but the\l"
 			"storm clouds were so imposing.\p"
 			"It was dark and stormy… I was afraid\n"
 			"the bats would start swarming… eessh…\p$"
 }
 text Puzzle_SafariImposters_Text_IreneAlibi2a_I {
 			"See, I started up north, hoping to run\n"
-			"into a CHANSEY up that way, but the\l"
+			"into a Chansey up that way, but the\l"
 			"storm clouds were so imposing.\p"
 			"It was dark and stormy… all these\n"
 			"bats flying around, which was cool…\l"
@@ -423,7 +423,7 @@ text Puzzle_SafariImposters_Text_IreneAlibi2a_I {
 }
 text Puzzle_SafariImposters_Text_IreneAlibi2b {
 			"See, I started up north, hoping to run\n"
-			"into a CHANSEY up that way, but the\l"
+			"into a Chansey up that way, but the\l"
 			"storm clouds, it was getting dark.\p"
 			"And… I'm not fond of the dark. Too\n"
 			"many bats are out in the dark.\p$"
@@ -437,7 +437,7 @@ text Puzzle_SafariImposters_Text_IreneAlibi3a {
 }
 text Puzzle_SafariImposters_Text_IreneAlibi3b {
 			"So I headed south, and came across a\n"
-			"set of CHANSEY tracks leading west.\p"
+			"set of Chansey tracks leading west.\p"
 			"I got really excited! I thought maybe\n"
 			"I had found a nest of them!\p$"
 }

@@ -1482,7 +1482,7 @@ bool8 IsObjectDoor(u8 objId)
 {
     struct ObjectEvent *objectEvent = objectEvent = &gObjectEvents[objId];
     const struct ObjectEventGraphicsInfo *graphicsInfo = GetObjectEventGraphicsInfo(objectEvent->graphicsId);
-    return graphicsInfo->doorOffsetType == DOOROFFSET_DOWN;
+    return graphicsInfo->doorOffsetType & DOOROFFSET_IS_DOOR;
 }
 
 static u8 TrySetupObjectEventSprite(struct ObjectEventTemplate *objectEventTemplate, struct SpriteTemplate *spriteTemplate, u8 mapNum, u8 mapGroup, s16 cameraX, s16 cameraY)
@@ -1520,8 +1520,9 @@ static u8 TrySetupObjectEventSprite(struct ObjectEventTemplate *objectEventTempl
     GetMapCoordsFromSpritePos(objectEvent->currentCoords.x + cameraX, objectEvent->currentCoords.y + cameraY, &sprite->x, &sprite->y);
     sprite->centerToCornerVecX = -(graphicsInfo->width >> 1);
     sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
-    if (graphicsInfo->doorOffsetType == DOOROFFSET_DOWN)
-        sprite->centerToCornerVecY += 8;
+    if ((graphicsInfo->doorOffsetType & DOOROFFSET_OFFSETMASK) > 0) {
+        sprite->centerToCornerVecY += (graphicsInfo->doorOffsetType & DOOROFFSET_OFFSETMASK) << 1;
+    }
     sprite->x += 8;
     sprite->y += 16 + sprite->centerToCornerVecY;
     sprite->oam.paletteNum = IndexOfSpritePaletteTag(spriteTemplate->paletteTag);
@@ -1534,7 +1535,7 @@ static u8 TrySetupObjectEventSprite(struct ObjectEventTemplate *objectEventTempl
 
     SetObjectSubpriorityByElevation(objectEvent->previousElevation, sprite, 1);
     UpdateObjectEventVisibility(objectEvent, sprite);
-    if (graphicsInfo->doorOffsetType == DOOROFFSET_UP)
+    if (graphicsInfo->doorOffsetType & DOOROFFSET_UNDERFOOT)
     {
         objectEvent->fixedPriority = TRUE;
         sprite->subpriority = 0xFF;
@@ -1688,8 +1689,9 @@ u8 CreateVirtualObject(gfxId_t graphicsId, u8 virtualObjId, s16 x, s16 y, u8 ele
         sprite = &gSprites[spriteId];
         sprite->centerToCornerVecX = -(graphicsInfo->width >> 1);
         sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
-        if (graphicsInfo->doorOffsetType == DOOROFFSET_DOWN)
-            sprite->centerToCornerVecY += 8;
+        if ((graphicsInfo->doorOffsetType & DOOROFFSET_OFFSETMASK) > 0) {
+            sprite->centerToCornerVecY += (graphicsInfo->doorOffsetType & DOOROFFSET_OFFSETMASK) << 1;
+        }
         sprite->y += sprite->centerToCornerVecY;
         sprite->oam.paletteNum = IndexOfSpritePaletteTag(spriteTemplate.paletteTag);
         // sprite->oam.paletteNum = graphicsInfo->paletteSlot;
@@ -1844,8 +1846,9 @@ static void SpawnObjectEventOnReturnToField(u8 objectEventId, s16 x, s16 y)
         GetMapCoordsFromSpritePos(x + objectEvent->currentCoords.x, y + objectEvent->currentCoords.y, &sprite->x, &sprite->y);
         sprite->centerToCornerVecX = -(graphicsInfo->width >> 1);
         sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
-        if (graphicsInfo->doorOffsetType == DOOROFFSET_DOWN)
-            sprite->centerToCornerVecY += 8;
+        if ((graphicsInfo->doorOffsetType & DOOROFFSET_OFFSETMASK) > 0){
+            sprite->centerToCornerVecY += (graphicsInfo->doorOffsetType & DOOROFFSET_OFFSETMASK) << 1;
+        }
         sprite->x += 8;
         sprite->y += 16 + sprite->centerToCornerVecY;
         sprite->images = graphicsInfo->images;
@@ -1866,7 +1869,7 @@ static void SpawnObjectEventOnReturnToField(u8 objectEventId, s16 x, s16 y)
 
         ResetObjectEventFldEffData(objectEvent);
         SetObjectSubpriorityByElevation(objectEvent->previousElevation, sprite, 1);
-        if (graphicsInfo->doorOffsetType == DOOROFFSET_UP)
+        if (graphicsInfo->doorOffsetType & DOOROFFSET_UNDERFOOT)
         {
             objectEvent->fixedPriority = TRUE;
             sprite->subpriority = 0xFF;
@@ -1919,8 +1922,9 @@ void ObjectEventSetGraphicsId(struct ObjectEvent *objectEvent, gfxId_t graphicsI
     SetSpritePosToMapCoords(objectEvent->currentCoords.x, objectEvent->currentCoords.y, &sprite->x, &sprite->y);
     sprite->centerToCornerVecX = -(graphicsInfo->width >> 1);
     sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
-    if (graphicsInfo->doorOffsetType == DOOROFFSET_DOWN)
-        sprite->centerToCornerVecY += 8;
+    if ((graphicsInfo->doorOffsetType & DOOROFFSET_OFFSETMASK) > 0) {
+        sprite->centerToCornerVecY += (graphicsInfo->doorOffsetType & DOOROFFSET_OFFSETMASK) << 1;
+    }
     sprite->x += 8;
     sprite->y += 16 + sprite->centerToCornerVecY;
     if (objectEvent->trackedByCamera)
@@ -2233,8 +2237,9 @@ void MoveObjectEventToMapCoords(struct ObjectEvent *objectEvent, s16 x, s16 y)
     SetSpritePosToMapCoords(objectEvent->currentCoords.x, objectEvent->currentCoords.y, &sprite->x, &sprite->y);
     sprite->centerToCornerVecX = -(graphicsInfo->width >> 1);
     sprite->centerToCornerVecY = -(graphicsInfo->height >> 1);
-    if (graphicsInfo->doorOffsetType == DOOROFFSET_DOWN)
-        sprite->centerToCornerVecY += 8;
+    if ((graphicsInfo->doorOffsetType & DOOROFFSET_OFFSETMASK) > 0) {
+        sprite->centerToCornerVecY += (graphicsInfo->doorOffsetType & DOOROFFSET_OFFSETMASK) << 1;
+    }
     sprite->x += 8;
     sprite->y += 16 + sprite->centerToCornerVecY;
     ResetObjectEventFldEffData(objectEvent);
@@ -2294,7 +2299,7 @@ u8 GetObjectEventIdByPosition(u16 x, u16 y, u8 elevation) // GetObjectEventIdByX
         {
             if (gObjectEvents[i].currentCoords.x == x
              && gObjectEvents[i].currentCoords.y == y
-             && GetObjectEventGraphicsInfo(gObjectEvents[i].graphicsId)->doorOffsetType != DOOROFFSET_UP
+             && !(GetObjectEventGraphicsInfo(gObjectEvents[i].graphicsId)->doorOffsetType & DOOROFFSET_UNDERFOOT)
              && ObjectEventDoesElevationMatch(&gObjectEvents[i], elevation))
                 return i;
         }

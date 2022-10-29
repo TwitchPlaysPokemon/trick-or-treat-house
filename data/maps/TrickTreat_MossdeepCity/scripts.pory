@@ -164,9 +164,9 @@ script TrickTreat_MossdeepCity_Tricksters_Setup {
 		setobjectxyperm (LID_TRICKSTER_D, 65, 26)
 		setobjectxyperm (LID_TRICKSTER_E, 54, 32)
 		
-		clearflag (FLAG_TRICKSTER_C_HIDE)
 		setobjectmovementtype (LID_TRICKSTER_C, MOVEMENT_TYPE_FACE_LEFT)
 		setobjectxyperm (LID_TRICKSTER_C, 65, 32)
+		clearflag (FLAG_TRICKSTER_C_HIDE)
 	} 
 	elif (var(VAR_TRICK_STOLEN_MON) == 1) {
 		# Hide all

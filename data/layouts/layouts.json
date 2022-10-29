@@ -2700,6 +2700,18 @@
       "secondary_tileset": "gTileset_Underwater",
       "border_filepath": "data/layouts/MetaDiveMaze_Dive/border.bin",
       "blockdata_filepath": "data/layouts/MetaDiveMaze_Dive/map.bin"
+    },
+    {
+      "id": "LAYOUT_TRICK_HOUSE_RESTROOM_BATTLE",
+      "name": "TrickHouseRestroom_Battle_Layout",
+      "width": 30,
+      "height": 12,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonDayCare",
+      "border_filepath": "data/layouts/TrickHouseRestroom_Battle/border.bin",
+      "blockdata_filepath": "data/layouts/TrickHouseRestroom_Battle/map.bin"
     }
   ]
 }

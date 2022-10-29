@@ -331,8 +331,9 @@
 #define OBJ_EVENT_GFX_YOUNGSTER_JOEY                 0x134
 #define OBJ_EVENT_GFX_TRAINER_AJ                     0x135
 #define OBJ_EVENT_GFX_LETTER                         0x136
+#define OBJ_EVENT_GFX_TRICK_BATTLE_MAT               0x137
 
-#define NUM_OBJ_EVENT_GFX                            0x137
+#define NUM_OBJ_EVENT_GFX                            0x138
 
 // These are dynamic object gfx ids.
 // They correspond with the values of the VAR_OBJ_GFX_ID_X vars.
@@ -377,9 +378,15 @@
 #define TRACKS_FOOT       1
 #define TRACKS_BIKE_TIRE  2
 
-#define DOOROFFSET_NONE       0
-#define DOOROFFSET_DOWN       1
-#define DOOROFFSET_UP         2
+#define DOOROFFSET_NONE        0
+#define DOOROFFSET_UNDERFOOT   0b10000
+#define DOOROFFSET_IS_DOOR     0b01000
+#define DOOROFFSET_OFFSETMASK  0b00111
+
+#define DOOROFFSET_DOOR       (4 | DOOROFFSET_IS_DOOR)
+#define DOOROFFSET_UP         (0 | DOOROFFSET_UNDERFOOT)
+#define DOOROFFSET_MAT        (1 | DOOROFFSET_UNDERFOOT)
+//     bit 1 = underfoot, bit 2-4 = offset * 4
 
 #define FIRST_DECORATION_SPRITE_GFX OBJ_EVENT_GFX_PICHU_DOLL
 
