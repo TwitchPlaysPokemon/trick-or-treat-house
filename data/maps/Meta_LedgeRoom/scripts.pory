@@ -60,6 +60,7 @@ script Meta_LedgeRoom_ButtonNorth {
 	playse(SE_PIN)
 	setmetatile(29, 13, 0x396, FALSE)
 	turnobject(LID_BUTTON_N, DIR_NORTH)
+	special(DrawWholeMapView)
 	setvar(VAR_TEMP_2, 1)
 	if (var(VAR_TEMP_1) == 1) {
 		waitse
@@ -73,6 +74,7 @@ script Meta_LedgeRoom_ButtonSouth {
 	playse(SE_PIN)
 	setmetatile(29, 17, 0x396, FALSE)
 	turnobject(LID_BUTTON_S, DIR_NORTH)
+	special(DrawWholeMapView)
 	setvar(VAR_TEMP_1, 1)
 	if (var(VAR_TEMP_2) == 1) {
 		waitse
