@@ -244,5 +244,6 @@
       "item": "ITEM_TABLE_CANDY_COMMON",
       "flag": "FLAG_CANDY_COMMON_04"
     }
-  ]
+  ],
+  "trainers": "Puzzle_MetaPuzzle_TrainerTable"
 }

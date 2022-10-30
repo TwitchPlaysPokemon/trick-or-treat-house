@@ -301,5 +301,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Meta_ZipSlide_Switch6"
     }
-  ]
+  ],
+  "trainers": "Puzzle_MetaPuzzle_TrainerTable"
 }

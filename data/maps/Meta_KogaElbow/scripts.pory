@@ -121,3 +121,16 @@ script Meta_KogaElbow_TriggerScript_CheckpointLocation {
 	setwarp(WARPTYPE_AUXILIARY, MAP_META_KOGA_ELBOW)
 	// release
 }
+
+//-----------------------------------------------------
+
+script Meta_KogaElbow_EventScript_Azumarill {
+	msgbox ("This Azumarill seems to be giggling\n"
+			"at your pain.$", MSGBOX_AUTOCLOSE)
+}
+
+script Meta_KogaElbow_EventScript_Tustin {
+	msgbox ("This Azumarill seems to be giggling\n"
+			"at your pain.$", MSGBOX_AUTOCLOSE)
+}
+

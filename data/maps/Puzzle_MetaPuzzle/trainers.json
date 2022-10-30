@@ -1,0 +1,45 @@
+[
+	{
+		"class": "DEVELOPER",
+		"music": "ENC_MUS_HG_ROUGHHOUSE",
+		"name": "Tustin",
+		"pic": "DEV_TUSTIN2121",
+		"items": ["ITEM_FULL_RESTORE"],
+		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY",
+		"party": [
+			{
+				"species": "SPECIES_RABOOT",
+				"moves": ["MOVE_PYRO_BALL", "MOVE_BULK_UP", "MOVE_DOUBLE_KICK", "MOVE_BOUNCE"],
+				"item": "ITEM_EVIOLITE",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_BUIZEL",
+				"moves": ["MOVE_IRON_TAIL", "MOVE_AQUA_TAIL", "MOVE_QUICK_ATTACK", "MOVE_RAZOR_WIND"],
+				"item": "ITEM_EVIOLITE",
+				"level": 30
+			},
+			{
+				"species": "SPECIES_QUILAVA",
+				"moves": ["MOVE_FLAMETHROWER", "MOVE_AERIAL_ACE", "MOVE_EXTRASENSORY", "MOVE_SWIFT"],
+				"item": "ITEM_EVIOLITE",
+				"level": 32
+			}
+		]
+	},
+	{
+		"class": "PLASMA_KID",
+		"music": "ENC_MUS_EM_INTENSE",
+		"name": "Thom",
+		"party": [
+			{
+				"species": "SPECIES_KADABRA",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_SOLROCK",
+				"level": 28
+			}
+		]
+	}
+]
