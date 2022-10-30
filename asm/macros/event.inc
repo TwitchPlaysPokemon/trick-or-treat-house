@@ -1668,14 +1668,14 @@
 
 	@ Use this command to switch layouts on the fly without reloading the map
 	.macro switchmaplayout index:req
-	.byte SCRCMD_SETMAPLAYOUT
+	.byte SCRCMD_SWITCHMAPLAYOUT
 	.2byte \index
 	.endm
 	
 	@ Sets the current map layout to the one specified by index (LAYOUT_*).
 	@ This should be done before the layout is loaded, typically in the ON_TRANSITION map script.
 	.macro setmaplayout index:req
-	.byte SCRCMD_SWITCHMAPLAYOUT
+	.byte SCRCMD_SETMAPLAYOUT
 	.2byte \index
 	.endm
 
