@@ -52,5 +52,6 @@ extern u16 gSpecialVar_MetatileY;
 extern u16 gSpecialVar_LastWarpId;
 extern u16 gSpecialVar_SysForceStep;
 extern u16 gSpecialVar_BattleMod;
+extern u16 gSpecialVar_SpeakerPalOverride;
 
 #endif // GUARD_EVENT_DATA_H

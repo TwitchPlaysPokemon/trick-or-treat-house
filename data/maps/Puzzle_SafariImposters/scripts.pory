@@ -1,4 +1,51 @@
 raw `
+#define VAR_PUZZLE_STAGE       VAR_PUZZLE_00
+#define VAR_CONFIG_IMPOSTER    VAR_PUZZLE_01
+#define VAR_IMPOSTER_SELECT    VAR_PUZZLE_02
+#define VAR_SAFARI_ZONE_STATE  VAR_PUZZLE_03
+#define VAR_SEARCH_STATE       VAR_PUZZLE_04
+
+#define FLAG_HIDE_SCROLL     FLAG_PUZZLE_20
+#define FLAG_DEFEATED_DITTO  FLAG_PUZZLE_30
+#define LID_SCIENTIST        7
+#define LID_JOEY             8
+#define LID_JAMES            9
+#define LID_IRENE            10
+#define LID_WALLY            11
+#define LID_BRENDAN          12
+#define LID_MAY              13
+#define LID_ALEX             14
+#define LID_EXTRA            15
+#define LID_FRIEND_A         VAR_PUZZLE_1A
+#define LID_FRIEND_B         VAR_PUZZLE_1B
+#define LID_CUTSCENE_PLAYER  VAR_PUZZLE_1C
+@ For the reveal scene
+#define LID_SELECTED         VAR_PUZZLE_10
+#define LID_FRIEND_1         VAR_PUZZLE_11
+#define LID_FRIEND_2         VAR_PUZZLE_12
+#define LID_FRIEND_3         VAR_PUZZLE_13
+#define LID_FRIEND_4         VAR_PUZZLE_14
+#define LID_FRIEND_5         VAR_PUZZLE_15
+@ compare against VAR_CONFIG_IMPOSTER:
+#define IMP_JOEY    0
+#define IMP_JAMES   1
+#define IMP_IRENE   2
+#define IMP_WALLY   3
+#define IMP_BRENDAN 4
+#define IMP_MAY     5
+#define IMP_ALEX    6
+
+@ from field_message_box.c
+#define SPEAKER_BRENDAN 1
+#define SPEAKER_MAY     2
+#define SPEAKER_ALEX    3
+#define SPEAKER_JOEY    4
+#define SPEAKER_JAMES   5
+#define SPEAKER_IRENE   6
+#define SPEAKER_WALLY   7
+
+@ -----------------------------------------------------
+
 Puzzle_SafariImposters_MapScripts:: @ 822BBBB
 	puzzle_info Puzzle_SafariImposters_Name, CommonAuthor_Tustin2121
 	puzzle_adjective Puzzle_SafariImposters_Adjective
@@ -59,43 +106,6 @@ Puzzle_SafariImposters_CandyList:
 	.2byte FLAG_CANDY_RARE_01
 	.2byte FLAG_CANDY_RARE_02
 	.2byte 0
-
-@ -----------------------------------------------------
-#define VAR_PUZZLE_STAGE       VAR_PUZZLE_00
-#define VAR_CONFIG_IMPOSTER    VAR_PUZZLE_01
-#define VAR_IMPOSTER_SELECT    VAR_PUZZLE_02
-#define VAR_SAFARI_ZONE_STATE  VAR_PUZZLE_03
-#define VAR_SEARCH_STATE       VAR_PUZZLE_04
-
-#define FLAG_HIDE_SCROLL     FLAG_PUZZLE_20
-#define FLAG_DEFEATED_DITTO  FLAG_PUZZLE_30
-#define LID_SCIENTIST        7
-#define LID_JOEY             8
-#define LID_JAMES            9
-#define LID_IRENE            10
-#define LID_WALLY            11
-#define LID_BRENDAN          12
-#define LID_MAY              13
-#define LID_ALEX             14
-#define LID_EXTRA            15
-#define LID_FRIEND_A         VAR_PUZZLE_1A
-#define LID_FRIEND_B         VAR_PUZZLE_1B
-#define LID_CUTSCENE_PLAYER  VAR_PUZZLE_1C
-@ For the reveal scene
-#define LID_SELECTED         VAR_PUZZLE_10
-#define LID_FRIEND_1         VAR_PUZZLE_11
-#define LID_FRIEND_2         VAR_PUZZLE_12
-#define LID_FRIEND_3         VAR_PUZZLE_13
-#define LID_FRIEND_4         VAR_PUZZLE_14
-#define LID_FRIEND_5         VAR_PUZZLE_15
-@ compare against VAR_CONFIG_IMPOSTER:
-#define IMP_JOEY    0
-#define IMP_JAMES   1
-#define IMP_IRENE   2
-#define IMP_WALLY   3
-#define IMP_BRENDAN 4
-#define IMP_MAY     5
-#define IMP_ALEX    6
 
 @ -----------------------------------------------------
 
@@ -315,6 +325,7 @@ script Puzzle_SafariImposters_EventScript_TrainerTipSign {
 }
 
 script Puzzle_SafariImposters_EventScript_Joey {
+	speakername_common(JOEY)
 	switch(var(VAR_PUZZLE_STAGE)) {
 		case 1: goto(Puzzle_SafariImposters_Intro_Joey)
 		case 4: goto(Puzzle_SafariImposters_Search_Joey)
@@ -324,6 +335,7 @@ script Puzzle_SafariImposters_EventScript_Joey {
 	}
 }
 script Puzzle_SafariImposters_EventScript_James {
+	speakername_common(JAMES)
 	switch(var(VAR_PUZZLE_STAGE)) {
 		case 1: goto(Puzzle_SafariImposters_Intro_James)
 		case 4: goto(Puzzle_SafariImposters_Search_James)
@@ -333,6 +345,7 @@ script Puzzle_SafariImposters_EventScript_James {
 	}
 }
 script Puzzle_SafariImposters_EventScript_Irene {
+	speakername_common(IRENE)
 	switch(var(VAR_PUZZLE_STAGE)) {
 		case 1: goto(Puzzle_SafariImposters_Intro_Irene)
 		case 4: goto(Puzzle_SafariImposters_Search_Irene)
@@ -342,6 +355,7 @@ script Puzzle_SafariImposters_EventScript_Irene {
 	}
 }
 script Puzzle_SafariImposters_EventScript_Wally {
+	speakername_common(WALLY)
 	switch(var(VAR_PUZZLE_STAGE)) {
 		case 1: goto(Puzzle_SafariImposters_Intro_Wally)
 		case 4: goto(Puzzle_SafariImposters_Search_Wally)
@@ -351,6 +365,7 @@ script Puzzle_SafariImposters_EventScript_Wally {
 	}
 }
 script Puzzle_SafariImposters_EventScript_Brendan {
+	speakername_common(BRENDAN)
 	switch(var(VAR_PUZZLE_STAGE)) {
 		case 1: goto(Puzzle_SafariImposters_Intro_Brendan)
 		case 4: goto(Puzzle_SafariImposters_Search_Brendan)
@@ -360,6 +375,7 @@ script Puzzle_SafariImposters_EventScript_Brendan {
 	}
 }
 script Puzzle_SafariImposters_EventScript_May {
+	speakername_common(MAY)
 	switch(var(VAR_PUZZLE_STAGE)) {
 		case 1: goto(Puzzle_SafariImposters_Intro_May)
 		case 4: goto(Puzzle_SafariImposters_Search_May)
@@ -369,6 +385,7 @@ script Puzzle_SafariImposters_EventScript_May {
 	}
 }
 script Puzzle_SafariImposters_EventScript_Alex {
+	speakername_common(ALEX)
 	switch(var(VAR_PUZZLE_STAGE)) {
 		case 1: goto(Puzzle_SafariImposters_Intro_Alex)
 		case 4: goto(Puzzle_SafariImposters_Search_Alex)
@@ -379,6 +396,7 @@ script Puzzle_SafariImposters_EventScript_Alex {
 }
 
 script Puzzle_SafariImposters_EventScript_Scientist {
+	speakername_common(PROF)
 	switch(var(VAR_PUZZLE_STAGE)) {
 		case 1: goto(Puzzle_SafariImposters_Intro_Scientist)
 		case 4: goto(Puzzle_SafariImposters_Search_Scientist)
@@ -390,6 +408,8 @@ script Puzzle_SafariImposters_EventScript_Scientist {
 
 ///////////////////////////////////////////////////////
 // Intro
+
+text CommonName_PROF { "Prof Imini" }
 
 script Puzzle_SafariImposters_OnLoad_IntroSetup {
 	setobjectxyperm(LID_SCIENTIST, 15, 9)
@@ -417,6 +437,7 @@ script Puzzle_SafariImposters_IntroCutscene {
 	lockall
 	applymovement(LID_SCIENTIST, Common_Movement_FaceDown)
 	waitmovement(LID_SCIENTIST)
+	speakername("???")
 	msgbox ("Ah, good, you're just in time!\p"
 			"The more, the merrier! Come here!$")
 	closemessage
@@ -431,14 +452,15 @@ script Puzzle_SafariImposters_IntroCutscene {
 	
 	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceDown)
 	waitmovement(LID_SCIENTIST)
-	message("My name is PROFESSOR IMINI, but you\n"
+	speakername_common(PROF)
+	message("My name is Professor Imini, but you\n"
 			"can simply call me the PROF.\p$")
 	waitmessage
 	
 	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceLeft)
 	message("Right, so as I was saying, I need\n"
 			"your help, and I need it quickly.\p"
-			"The experimental DITTO I mentioned\n"
+			"The experimental Ditto I mentioned\n"
 			"earlier is loose in the Safari Zone.\p$")
 	waitmessage
 			
@@ -446,12 +468,12 @@ script Puzzle_SafariImposters_IntroCutscene {
 	message("It has a tracker chip in it, but the\n"
 			"error distance on it is rather high.\p"
 			"So I need you all to go in and find\n"
-			"this DITTO in the wild manually.\p$")
+			"this Ditto in the wild manually.\p$")
 	waitmessage
 	
 	applymovement(LID_JOEY, Puzzle_SafariImposters_IntroCutscene_Movement3a)
 	applymovement(LID_JAMES, Puzzle_SafariImposters_IntroCutscene_Movement3b)
-	message("It's a DITTO: it could look like\n"
+	message("It's a Ditto: it could look like\n"
 			"anything in the park, so you need to\l"
 			"catch as many {POKEMON} as you can.\p$")
 	waitmessage
@@ -563,27 +585,31 @@ script Puzzle_SafariImposters_EnterStateSetup {
 }
 
 script(local) Puzzle_SafariImposters_Intro_Scientist {
-	msgbox ("PROF: When you're ready, please\n"
+	speakername_common(PROF)
+	msgbox ("When you're ready, please\n"
 			"head inside the Safari Zone.$", MSGBOX_NPC)
 }
 
 script(local) Puzzle_SafariImposters_Intro_Joey {
-	msgbox ("{JOEY}: We're gonna find this thing!\p"
-			"My top-percentage RATTATA has a great\n"
+	speakername_common(JOEY)
+	msgbox ("We're gonna find this thing!\p"
+			"My top-percentage Rattata has a great\n"
 			"nose for finding things! Mostly food.\p"
 			"As long as this place doesn't have any\n"
 			"snakes, we'll be fine…\l"
 			"I can't stand snakes…$", MSGBOX_NPC)
 }
 script(local) Puzzle_SafariImposters_Intro_James {
-	msgbox ("{JAMES}: Don't you worry! Leave the\n"
-			"bug-catching to me! I'm an expert!\l"
+	speakername_common(JAMES)
+	msgbox ("Don't you worry! Leave the bug-catching\n"
+			"to me! I'm an expert!\p"
 			"I'm gonna catch me all the bugs!$", MSGBOX_NPC)
 }
 script(local) Puzzle_SafariImposters_Intro_Irene {
-	msgbox ("{IRENE}: I've heard theres CHANSEY\n"
-			"in Safari Zones like this! I've always\l"
-			"wanted one for myself!\p"
+	speakername_common(IRENE)
+	msgbox ("I've heard theres Chansey in Safari\n"
+			"Zones like this! I've always wanted\l"
+			"one for myself!\p"
 			"They're so kind and nurturing, and\n"
 			"Breeders like me use them to help\l"
 			"take care of the {POKEMON} they raise.\p"
@@ -592,19 +618,21 @@ script(local) Puzzle_SafariImposters_Intro_Irene {
 			"onto my head all the time at night.$", MSGBOX_NPC)
 }
 script(local) Puzzle_SafariImposters_Intro_Wally {
-	msgbox ("{WALLY}: A-Are we really supposed to\n"
+	speakername_common(WALLY)
+	msgbox ("A-Are we really supposed to\n"
 			"split up and look for this thing??\p"
 			"I dunno how I feel about being by\n"
 			"myself out there with all those wild\l"
 			"angry {POKEMON} running around…\p"
 			"But then… maybe I'll find myself a\n"
-			"DRAGON-type {POKEMON}… Those are cool…$", MSGBOX_NPC)
+			"Dragon-type {POKEMON}… Those are cool…$", MSGBOX_NPC)
 }
 script(local) Puzzle_SafariImposters_Intro_Brendan {
 	lock
 	faceplayer
-	message("{BRENDAN}: You ready to find this\n"
-			"thing, {PLAYER}? I am!\p"
+	speakername_common(BRENDAN)
+	message("You ready to find this thing,\n"
+			"{PLAYER}? I am!\p"
 			"I'm gonna catch every {POKEMON} I come\n"
 			"across! Except for fish.\l"
 			"Fish {POKEMON} are for girls.\p")
@@ -621,15 +649,17 @@ script(local) Puzzle_SafariImposters_Intro_Brendan {
 	release
 }
 script(local) Puzzle_SafariImposters_Intro_May {
-	msgbox ("{MAY}: Hey, {PLAYER}! You ready for this?\p"
-			"Do you think they have HOPPIP here?\n"
+	speakername_common(MAY)
+	msgbox ("Hey, {PLAYER}! You ready for this?\p"
+			"Do you think they have Hoppip here?\n"
 			"I've been meaning to catch one for dad.\p"
-			"I'll never understand how HOPPIP can\n"
+			"I'll never understand how Hoppip can\n"
 			"stand being blown around in the breeze.\l"
 			"I'd be scared out of my wits!$", MSGBOX_NPC)
 }
 script(local) Puzzle_SafariImposters_Intro_Alex {
-	msgbox ("{ALEX}: Hey, {PLAYER}. You ready to go?\p"
+	speakername_common(ALEX)
+	msgbox ("Hey, {PLAYER}. You ready to go?\p"
 			"I'm still preparing myself,\n"
 			"but I'll be along.\p"
 			"I've heard there can be spiders\n"
@@ -670,7 +700,7 @@ script Puzzle_SafariImposters_EventScript_EntranceCounterTrigger {
 	waitfanfare
 	
 	msgbox ("We'll let you know if any news breaks\n"
-			"about finding the DITTO.\p"
+			"about finding the Ditto.\p"
 			"Until then, enjoy yourself, please!\n"
 			"Off you go on your wild excursion!$")
 	closemessage
@@ -696,7 +726,7 @@ movement Puzzle_SafariImposters_Movement_EnterSafariZone {
 
 script Puzzle_SafariImposters_Retire {
 	msgbox ("You haven't heard anything yet about\n"
-			"the DITTO. You gotta keep looking.$", MSGBOX_SIGN)
+			"the Ditto. You gotta keep looking.$", MSGBOX_SIGN)
 }
 
 script Puzzle_SafariImposters_GameEnds {
@@ -726,7 +756,8 @@ script Puzzle_SafariImposters_GameEnds {
 	waitmovement (0)
 	playse(SE_DING_DONG)
 	delay (20)
-	message("PROF: Good news!\n"
+	speakername_common(PROF)
+	message("Good news!\n"
 			"The tracking signal has vanished!\l"
 			"Someone has caught the DITTO!\p"
 			"Everyone return to the entrance\n"
@@ -800,6 +831,7 @@ script Puzzle_SafariImposters_ExitCutscene {
 	delay(32)
 	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceLeft)
 	waitmovement(LID_SCIENTIST)
+	speakername_common(PROF)
 	msgbox ("I don't understand it! There's no\n"
 			"sign of the DITTO in anyone's parties!\p"
 			"The tracer signal is gone…\n"
@@ -808,13 +840,15 @@ script Puzzle_SafariImposters_ExitCutscene {
 	removeobject(LID_FRIEND_A)
 	
 	applymovement(LID_PLAYER, Puzzle_SafariImposters_IntroCutscene_Movement3a)
-	msgbox ("{PLAYER} shows the PROF the broken\n"
+	speakername(NULL)
+	msgbox ("{PLAYER} shows Imini the broken\n"
 			"computer chip.$")
 	closemessage
 	
 	playse(SE_PIN)
 	applymovement(LID_SCIENTIST, Common_Movement_ExclamationMarkAndWait)
 	waitmovement(LID_SCIENTIST)
+	speakername_common(PROF)
 	msgbox ("Wait, that's…! Oh no…$")
 	closemessage
 	
@@ -832,6 +866,7 @@ script Puzzle_SafariImposters_ExitCutscene {
 	waitse
 	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceDown)
 	waitmovement(LID_SCIENTIST)
+	speakername_common(PROF)
 	message("No! The battery's died!\p$")
 	waitmessage
 	applymovement(LID_SCIENTIST, Common_Movement_WalkInPlaceUp)
@@ -901,6 +936,15 @@ raw `
 #define  TRAINER_ALEX_FAKE       TRAINER_14
 `
 
+text CommonName_BRENDAN_IMPOSTER { "{BRENDAN}?" }
+text CommonName_MAY_IMPOSTER { "{MAY}?" }
+text CommonName_ALEX_IMPOSTER { "{ALEX}?" }
+text CommonName_JOEY_IMPOSTER { "{JOEY}?" }
+text CommonName_JAMES_IMPOSTER { "{JAMES}?" }
+text CommonName_IRENE_IMPOSTER { "{IRENE}?" }
+text CommonName_WALLY_IMPOSTER { "{WALLY}?" }
+
+
 text(global) Puzzle_SafariImposters_Menu_Report { "Talk$" }
 text(global) Puzzle_SafariImposters_Menu_Battle { "Battle$" }
 text(global) Puzzle_SafariImposters_Menu_Cancel { "Bye$" }
@@ -967,8 +1011,10 @@ script(local) Puzzle_SafariImposters_ShowImposterMenu {
 script(local) Puzzle_SafariImposters_Search_Joey {
 	lock
 	faceplayer
-	msgbox ("{JOEY}?: Hey, {PLAYER}, did they find\n"
-			"the DITTO yet? What's up?$")
+	speakername_common(JOEY_IMPOSTER)
+	setvar(VAR_SPEAKER_PAL_OVERRIDE, SPEAKER_JOEY)
+	msgbox ("Hey, {PLAYER}, did they find\n"
+			"the Ditto yet? What's up?$")
 	addvar(VAR_SEARCH_STATE, 1)
 	call(Puzzle_SafariImposters_ShowImposterMenu)
 	switch (var(VAR_RESULT)) {
@@ -1002,9 +1048,10 @@ script(local) Puzzle_SafariImposters_Search_Joey {
 script(local) Puzzle_SafariImposters_Search_James {
 	lock
 	faceplayer
-	msgbox ("{JAMES}?: So, did they find the DITTO\n"
-			"yet? And do you know why they're being\l"
-			"all weird?$")
+	speakername_common(JAMES_IMPOSTER)
+	setvar(VAR_SPEAKER_PAL_OVERRIDE, SPEAKER_JAMES)
+	msgbox ("So, did they find the Ditto yet? And\n"
+			"do you know why they're being all weird?$")
 	addvar(VAR_SEARCH_STATE, 1)
 	call(Puzzle_SafariImposters_ShowImposterMenu)
 	switch (var(VAR_RESULT)) {
@@ -1040,8 +1087,10 @@ script(local) Puzzle_SafariImposters_Search_James {
 script(local) Puzzle_SafariImposters_Search_Irene {
 	lock
 	faceplayer
-	msgbox ("{IRENE}?: What's going on, {PLAYER}?\n"
-			"Did they find the DITTO yet?$")
+	speakername_common(IRENE_IMPOSTER)
+	setvar(VAR_SPEAKER_PAL_OVERRIDE, SPEAKER_IRENE)
+	msgbox ("What's going on, {PLAYER}?\n"
+			"Did they find the Ditto yet?$")
 	addvar(VAR_SEARCH_STATE, 1)
 	call(Puzzle_SafariImposters_ShowImposterMenu)
 	switch (var(VAR_RESULT)) {
@@ -1076,7 +1125,9 @@ script(local) Puzzle_SafariImposters_Search_Irene {
 script(local) Puzzle_SafariImposters_Search_Wally {
 	lock
 	faceplayer
-	msgbox ("{WALLY}?: Something feels off, {PLAYER}.\n"
+	speakername_common(WALLY_IMPOSTER)
+	setvar(VAR_SPEAKER_PAL_OVERRIDE, SPEAKER_WALLY)
+	msgbox ("Something feels off, {PLAYER}.\n"
 			"What's going on?$")
 	addvar(VAR_SEARCH_STATE, 1)
 	call(Puzzle_SafariImposters_ShowImposterMenu)
@@ -1112,8 +1163,10 @@ script(local) Puzzle_SafariImposters_Search_Wally {
 script(local) Puzzle_SafariImposters_Search_Brendan {
 	lock
 	faceplayer
-	msgbox ("{BRENDAN}?: Did they find the DITTO yet,\n"
-			"{PLAYER}? They're being coy when I ask.$")
+	speakername_common(BRENDAN_IMPOSTER)
+	setvar(VAR_SPEAKER_PAL_OVERRIDE, SPEAKER_BRENDAN)
+	msgbox ("Did they find the DITTO yet, {PLAYER}?\n"
+			"They're being coy when I ask.$")
 	addvar(VAR_SEARCH_STATE, 1)
 	call(Puzzle_SafariImposters_ShowImposterMenu)
 	switch (var(VAR_RESULT)) {
@@ -1146,7 +1199,9 @@ script(local) Puzzle_SafariImposters_Search_Brendan {
 script(local) Puzzle_SafariImposters_Search_May {
 	lock
 	faceplayer
-	msgbox ("{MAY}?: What's going on?\n"
+	speakername_common(MAY_IMPOSTER)
+	setvar(VAR_SPEAKER_PAL_OVERRIDE, SPEAKER_MAY)
+	msgbox ("What's going on?\n"
 			"Why is everyone acting so odd?$")
 	addvar(VAR_SEARCH_STATE, 1)
 	call(Puzzle_SafariImposters_ShowImposterMenu)
@@ -1180,7 +1235,9 @@ script(local) Puzzle_SafariImposters_Search_May {
 script(local) Puzzle_SafariImposters_Search_Alex {
 	lock
 	faceplayer
-	msgbox ("{ALEX}?: Uh, what's up, {PLAYER}?\n"
+	speakername_common(ALEX_IMPOSTER)
+	setvar(VAR_SPEAKER_PAL_OVERRIDE, SPEAKER_ALEX)
+	msgbox ("Uh, what's up, {PLAYER}?\n"
 			"Is there something wrong?$")
 	addvar(VAR_SEARCH_STATE, 1)
 	call(Puzzle_SafariImposters_ShowImposterMenu)
@@ -1233,6 +1290,7 @@ raw `
 script(local) Puzzle_SafariImposters_Search_Scientist {
 	lock
 	faceplayer
+	speakername_common(PROF)
 	if (var(VAR_SEARCH_STATE) < 1) {
 		msgbox ("Once you've sus'd out who the imposter\n"
 				"might be, come speak to me.$")
@@ -1258,6 +1316,7 @@ script(local) Puzzle_SafariImposters_Search_Scientist {
 // Imposter Selection
 
 script(local) Puzzle_SafariImposters_Select_Scientist {
+	speakername_common(PROF)
 	msgbox ("Go talk to the person who you think\n"
 			"is the imposter.\p"
 			"We'll be right behind you when you\n"
@@ -1266,6 +1325,7 @@ script(local) Puzzle_SafariImposters_Select_Scientist {
 
 script(local) Puzzle_SafariImposters_Select_Joey {
 	lock
+	speakername(NULL)
 	msgbox ("Do you think {JOEY} is the imposter?$", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == YES) {
 		setvar(VAR_IMPOSTER_SELECT, IMP_JOEY)
@@ -1275,6 +1335,7 @@ script(local) Puzzle_SafariImposters_Select_Joey {
 }
 script(local) Puzzle_SafariImposters_Select_James {
 	lock
+	speakername(NULL)
 	msgbox ("Do you think {JAMES} is the imposter?$", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == YES) {
 		setvar(VAR_IMPOSTER_SELECT, IMP_JAMES)
@@ -1284,6 +1345,7 @@ script(local) Puzzle_SafariImposters_Select_James {
 }
 script(local) Puzzle_SafariImposters_Select_Irene {
 	lock
+	speakername(NULL)
 	msgbox ("Do you think {IRENE} is the imposter?$", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == YES) {
 		setvar(VAR_IMPOSTER_SELECT, IMP_IRENE)
@@ -1293,6 +1355,7 @@ script(local) Puzzle_SafariImposters_Select_Irene {
 }
 script(local) Puzzle_SafariImposters_Select_Wally {
 	lock
+	speakername(NULL)
 	msgbox ("Do you think {WALLY} is the imposter?$", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == YES) {
 		setvar(VAR_IMPOSTER_SELECT, IMP_WALLY)
@@ -1302,6 +1365,7 @@ script(local) Puzzle_SafariImposters_Select_Wally {
 }
 script(local) Puzzle_SafariImposters_Select_Brendan {
 	lock
+	speakername(NULL)
 	msgbox ("Do you think {BRENDAN} is the imposter?$", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == YES) {
 		setvar(VAR_IMPOSTER_SELECT, IMP_BRENDAN)
@@ -1311,6 +1375,7 @@ script(local) Puzzle_SafariImposters_Select_Brendan {
 }
 script(local) Puzzle_SafariImposters_Select_May {
 	lock
+	speakername(NULL)
 	msgbox ("Do you think {MAY} is the imposter?$", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == YES) {
 		setvar(VAR_IMPOSTER_SELECT, IMP_MAY)
@@ -1320,6 +1385,7 @@ script(local) Puzzle_SafariImposters_Select_May {
 }
 script(local) Puzzle_SafariImposters_Select_Alex {
 	lock
+	speakername(NULL)
 	msgbox ("Do you think {ALEX} is the imposter?$", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == YES) {
 		setvar(VAR_IMPOSTER_SELECT, IMP_ALEX)
@@ -1393,6 +1459,7 @@ script Puzzle_SafariImposters_ImposterReveal_Cutscene {
 	playse(SE_SELECT)
 	waitmovement(LID_SELECTED)
 	// "You're a witch, kid"
+	speakername_common(PROF)
 	message(Puzzle_SafariImposters_ImposterReveal_Text2_Scientist)
 	applymovement(LID_SCIENTIST, Puzzle_SafariImposters_ImposterReveal_Movement2)
 	waitmessage
@@ -1400,6 +1467,7 @@ script Puzzle_SafariImposters_ImposterReveal_Cutscene {
 	playse(SE_SELECT)
 	waitmovement(LID_SCIENTIST)
 	// "What?!"
+	speakername(NULL)
 	selectpointer(Puzzle_SafariImposters_StringTable_Text3, VAR_IMPOSTER_SELECT)
 	message(0)
 	applymovement(LID_SELECTED, Puzzle_SafariImposters_ImposterReveal_Movement3a)
@@ -1413,6 +1481,7 @@ script Puzzle_SafariImposters_ImposterReveal_Cutscene {
 	playse(SE_SELECT)
 	waitmovement(LID_SELECTED)
 	// "Time to die--"
+	speakername_common(PROF)
 	message(Puzzle_SafariImposters_ImposterReveal_Text4_Scientist)
 	applymovement(LID_SCIENTIST, Puzzle_SafariImposters_ImposterReveal_Movement2)
 	waitmessage
@@ -1420,6 +1489,7 @@ script Puzzle_SafariImposters_ImposterReveal_Cutscene {
 	playse(SE_SELECT)
 	waitmovement(LID_SCIENTIST)
 	// "Hey, guys, what did I miss?"
+	speakername(NULL)
 	selectpointer(Puzzle_SafariImposters_StringTable_Text5, VAR_CONFIG_IMPOSTER)
 	message(0)
 	delay(40)
@@ -1499,6 +1569,7 @@ script Puzzle_SafariImposters_ImposterReveal_CutsceneCorrect {
 	
 	if (var(VAR_RESULT) == B_OUTCOME_WON || var(VAR_RESULT) == B_OUTCOME_CAUGHT) {
 		setflag(FLAG_DEFEATED_DITTO)
+		speakername_common(PROF)
 		message(Puzzle_SafariImposters_ImposterReveal_Text8a)
 		waitmessage
 		waitbuttonpress
@@ -1510,6 +1581,7 @@ script Puzzle_SafariImposters_ImposterReveal_CutsceneCorrect {
 			case B_OUTCOME_RAN: loadword(0, Puzzle_SafariImposters_ImposterReveal_Text8c)
 			case B_OUTCOME_PLAYER_TELEPORTED: loadword(0, Puzzle_SafariImposters_ImposterReveal_Text8c)
 		}
+		speakername_common(PROF)
 		message(0)
 		applymovement(LID_FRIEND_2, Puzzle_SafariImposters_ImposterReveal_Movement8b)
 		delay(12)
@@ -1717,7 +1789,7 @@ text(global) Puzzle_SafariImposters_ImposterReveal_Text_she { "she's" }
 text(global) Puzzle_SafariImposters_ImposterReveal_Text_they { "they've" }
 
 text Puzzle_SafariImposters_ImposterReveal_Text4_Scientist {
-			"PROF: You see, kids, {PLAYER} has been\n"
+			"You see, kids, {PLAYER} has been\n"
 			"miticulously interviewing every one of\l"
 			"you and thought that {STR_VAR_1} is the\l"
 			"most likely candidate.\p"
@@ -1813,15 +1885,15 @@ text Puzzle_SafariImposters_ImposterReveal_Text7 {
 }
 
 text Puzzle_SafariImposters_ImposterReveal_Text8a {
-			"PROF: Yes! Thank you for incapacitating\n"
+			"Yes! Thank you for incapacitating\n"
 			"it! I'll take it from here.$"
 }
 text Puzzle_SafariImposters_ImposterReveal_Text8b {
-			"PROF: It's making a break for the door!\n"
+			"It's making a break for the door!\n"
 			"Don't let it get away again!!$"
 }
 text Puzzle_SafariImposters_ImposterReveal_Text8c {
-			"PROF: Why did you let it get away?!\n"
+			"Why did you let it get away?!\n"
 			"AFTER IT!! BEFORE IT TRANSFORMS AGAIN!!$"
 }
 movement Puzzle_SafariImposters_ImposterReveal_Movement8a {
@@ -2178,4 +2250,12 @@ raw `
 #undef IMP_BRENDAN
 #undef IMP_MAY
 #undef IMP_ALEX
+
+#undef SPEAKER_BRENDAN
+#undef SPEAKER_MAY
+#undef SPEAKER_ALEX
+#undef SPEAKER_JOEY
+#undef SPEAKER_JAMES
+#undef SPEAKER_IRENE
+#undef SPEAKER_WALLY
 `

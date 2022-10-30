@@ -66,6 +66,9 @@ extern const u16 gStandardMenuPalette[];
 static void LoadPaletteForSpeaker()
 {
     int idx = SPEAKER_UNKNOWN;
+    if (gSpecialVar_SpeakerPalOverride != 0) {
+        idx = gSpecialVar_SpeakerPalOverride;
+    }
     if (gSpeakerName == NULL) {
         // LoadPalette(&gStandardMenuPalette[13], 0x0FB, 6);
         LoadPalette(sSpeakerPalettes[idx], 0x0FB, 5*2);
@@ -234,6 +237,7 @@ void HideFieldMessageBox(void)
     ClearDialogWindowAndFrame(0, TRUE);
     sFieldMessageBox.mode = FIELD_MESSAGE_BOX_HIDDEN;
     gSpeakerName = NULL;
+    gSpecialVar_SpeakerPalOverride = 0;
 }
 
 u8 GetFieldMessageBoxMode(void)
@@ -265,4 +269,5 @@ void StopFieldMessage(void)
 void SetSpeakerName(const u8* name)
 {
     gSpeakerName = name;
+    gSpecialVar_SpeakerPalOverride = 0;
 }

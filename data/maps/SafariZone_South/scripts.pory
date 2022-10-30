@@ -114,7 +114,8 @@ movement SafariZone_South_Movement_ExitJoeyRunOff {
 
 
 script SafariZone_South_EventScript_ExitAttendant {
-	msgbox ("PROF: I'll be waiting here, keeping an\n"
+	speakername_common(PROF)
+	msgbox ("I'll be waiting here, keeping an\n"
 			"eye on the tracker.\p"
 			"We'll call you if anything important\n"
 			"happens, alright? Have fun.$", MSGBOX_NPC)
@@ -130,9 +131,9 @@ raw `
 script SafariZone_EventScript_JoeyFearsSnakes {
 	lock
 	faceplayer
-	message("{JOEY}: Hey, {PLAYER}, how's the\n"
-			"search going?\p"
-			"Me and ACE are sniffing out the--$")
+	speakername_common(JOEY)
+	message("Hey, {PLAYER}, how's the search going?\p"
+			"Me and Ace are sniffing out the--$")
 	waitmessage
 	playmoncry(SPECIES_SEVIPER, 0)
 	waitmoncry
@@ -146,8 +147,8 @@ script SafariZone_EventScript_JoeyFearsSnakes {
 	waitmovement(LID_PLAYER)
 	message("… {PAUSE 16}… {PAUSE 16}… {PAUSE 16}… {PAUSE 16}… {PAUSE 16}… {PAUSE 16}\n"
 			"Uh… right, yes, sorry, I need to leave…\p"
-			"ACE doesn't like snakes. They tend to\n"
-			"… … … eat RATTATA like him… … …\p"
+			"Ace doesn't like snakes. They tend to\n"
+			"… … … eat Rattata like him… … …\p"
 			"… … …$")
 	waitmessage
 	waitbuttonpress
@@ -234,14 +235,15 @@ raw `
 `
 
 script SafariZone_EventScript_JoeyLikesHisRattata {
-	msgbox ("{JOEY}: This area is nice.\n"
-			"ACE likes it around here.\p"
+	speakername_common(JOEY)
+	msgbox ("This area is nice.\n"
+			"Ace likes it around here.\p"
 			"It's shaded, and near a fresh water\n"
-			"river. And there's other RATTATA\l"
+			"river. And there's other Rattata\l"
 			"around to socialize with.\p"
 			"Don't worry, he's sniffing around\n"
-			"for any RATTATA that don't smell like\l"
-			"they're actually RATTATA.$", MSGBOX_NPC)
+			"for any Rattata that don't smell like\l"
+			"they're actually Rattata.$", MSGBOX_NPC)
 }
 
 // ----------------------------------------------------
@@ -259,7 +261,8 @@ script SafariZone_EventScript_JamesFearsWater {
 	subvar(VAR_INTERACT_X, 18)
 	special(ShowFieldMessageBoxAtTopOfScreen)
 	applymovement (2, SafariZone_Movement_JamesFearsWater1)
-	message("{JAMES}: HERACROSS… Where are you…?\n"
+	speakername_common(JAMES)
+	message("Heracross… Where are you…?\n"
 			"I don't like you leading me over here…\p$")
 	waitmessage
 	waitmovement(2)
@@ -332,7 +335,8 @@ movement SafariZone_Movement_JamesFearsWater_PlayerB {
 }
 
 script SafariZone_EventScript_JamesBugSearch {
-	msgbox ("{JAMES}: HERACROSS… Where are you…?\p"
+	speakername_common(JAMES)
+	msgbox ("Heracross… Where are you…?\p"
 			"This would be so much easier if\n"
 			"I hadn't left my net at home\l"
 			"in favor of the Master Sword…$", MSGBOX_NPC)
@@ -343,7 +347,8 @@ script SafariZone_EventScript_JamesBugSearch {
 
 script SafariZone_EventScript_IreneHatesBats {
 	// FLAG_HIDE_IRENE_NX
-	msgbox ("{IRENE}: That storm cloud is not moving\n"
+	speakername_common(IRENE)
+	msgbox ("That storm cloud is not moving\n"
 			"is it? I was hoping it would pass over.\p"
 			"It's getting kinda… dark… Do you think\n"
 			"bat would come out in this weather…?\p"
@@ -353,7 +358,8 @@ script SafariZone_EventScript_IreneHatesBats {
 }
 
 script SafariZone_EventScript_IreneLikesChansey {
-	msgbox ("{IRENE}: {PLAYER}!! Be quiet!!\p"
+	speakername_common(IRENE)
+	msgbox ("{PLAYER}!! Be quiet!!\p"
 			"I think I might have found a nest\n"
 			"just beyond the treeline! Shh!$", MSGBOX_SIGN)
 }
@@ -362,7 +368,8 @@ script SafariZone_EventScript_IreneLikesChansey {
 // Wally
 
 script SafariZone_EventScript_WallyHatesCrowds {
-	msgbox ("{WALLY}: It's so peaceful out here.\p"
+	speakername_common(WALLY)
+	msgbox ("It's so peaceful out here.\p"
 			"Back in the Trick House there's\n"
 			"a big loud crowd around every corner.\p"
 			"But here, it's just calm. The wind\n"
@@ -373,7 +380,8 @@ script SafariZone_EventScript_WallyHatesCrowds {
 }
 
 script SafariZone_EventScript_WallyLikesDragons {
-	msgbox ("{WALLY}: I saw a DRAGON {POKEMON}!\n"
+	speakername_common(WALLY)
+	msgbox ("I saw a DRAGON {POKEMON}!\n"
 			"Up in the storm clouds!\p"
 			"I'm gonna see if I can lure it down\n"
 			"to the ground to catch it!\p"
@@ -399,6 +407,7 @@ script SafariZone_EventScript_BrendanFearsThunder {
 	playse(SE_LEDGE)
 	applymovement(2, SafariZone_Movement_BrendanFearsThunder1)
 	applymovement(LID_PLAYER, SafariZone_Movement_BrendanFearsThunderP)
+	speakername_common(BRENDAN)
 	message("AUGH! NOPE! NOPE! NOPE! NOPE! NOPE!\n"
 			"NOPE! NOPE! NOPE! NOPE! NOPE! NOPE!$")
 	waitmovement(2)
@@ -429,6 +438,7 @@ movement SafariZone_Movement_BrendanFearsThunderP {
 }
 
 script SafariZone_EventScript_BrendanInResthouse {
+	speakername_common(BRENDAN)
 	if (var(VAR_BRENDAN_STATE) == 1) {
 	msgbox ("Oh, hey, {PLAYER}. How are you?\p"
 			"Me? Oh, fine, fine. I'm just taking\n"
@@ -477,7 +487,8 @@ script SafariZone_EventScript_MayOnTheRidge {
 	waitmovement(LID_PLAYER)
 	waitmovement(LID_MAY)
 	
-	msgbox ("{MAY}: Hey, {PLAYER}. I think all the HOPPIP\n"
+	speakername_common(MAY)
+	msgbox ("Hey, {PLAYER}. I think all the Hoppip\n"
 			"I've been looking for flew away.\p"
 			"There were some here, but I think they\n"
 			"all took off towards the west.\p"
@@ -489,6 +500,7 @@ script SafariZone_EventScript_MayOnTheRidge {
 	waitmovement(LID_PLAYER)
 	waitmovement(LID_MAY)
 	
+	setvar(VAR_SPEAKER_PAL_OVERRIDE, 2) //SPEAKER_MAY
 	special(ShowFieldMessageBoxAtTopOfScreen)
 	msgbox ("O-Oh… That's… kinda perilous…\p"
 			"You're supposed to BIKE over that?!\p"
@@ -540,7 +552,8 @@ movement SafariZone_Movement_MayOnTheRidge3 {
 }
 
 script SafariZone_EventScript_MayInTheDesert {
-	msgbox ("{MAY}: I saw some HOPPIP hopping\n"
+	speakername_common(MAY)
+	msgbox ("I saw some Hoppip hopping\n"
 			"around over here earlier.\p"
 			"I think they've all taken shelter\n"
 			"from the rain under the rocks.\p"
@@ -554,6 +567,8 @@ script SafariZone_EventScript_AlexFearsSpiders {
 	lockall
 	getplayerxy(VAR_INTERACT_X, VAR_INTERACT_Y)
 	subvar(VAR_INTERACT_Y, 16)
+	speakername("???")
+	setvar(VAR_SPEAKER_PAL_OVERRIDE, 3) //SPEAKER_ALEX
 	message("???: Nope nope nope nope nope nope\n"
 			"nope nope nope nope nope nope nope\p$")
 	delay(16)
@@ -565,7 +580,8 @@ script SafariZone_EventScript_AlexFearsSpiders {
 	waitmessage
 	// biking by
 	
-	message("{ALEX}: Nope! No spiders! Nope!\n"
+	speakername_common(ALEX)
+	message("Nope! No spiders! Nope!\n"
 			"Spiders bad. Spiders very bad.\l"
 			"Very very bad spiders…$")
 	setobjectxyperm(4, 45, 16)
@@ -592,7 +608,8 @@ movement SafariZone_Movement_AlexFearsSpiders {
 }
 
 script SafariZone_EventScript_AlexInTheRain {
-	msgbox ("{ALEX}: I love the rain, don't you?\p"
+	speakername_common(ALEX)
+	msgbox ("I love the rain, don't you?\p"
 			"For one, no spiders. Always a plus.\p"
 			"For another, some of my favorite\n"
 			"{POKEMON} come out in the rain.$", MSGBOX_NPC)

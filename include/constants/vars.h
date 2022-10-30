@@ -318,8 +318,9 @@
 #define VAR_LAST_WARP_ID              0x801A
 #define VAR_SYS_FORCE_STEP            0x801B
 #define VAR_BATTLE_MOD                0x801C
+#define VAR_SPEAKER_PAL_OVERRIDE      0x801D
 
-#define SPECIAL_VARS_END              0x801C
+#define SPECIAL_VARS_END              0x801D
 
 // If an overworld trigger uses this pseudo-variable as the trigger check,
 // then the script will be run using RunScriptImmediately instead of in the

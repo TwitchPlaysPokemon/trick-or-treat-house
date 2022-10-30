@@ -84,8 +84,8 @@
 	- Traits:
 		- Likes: Chansey
 		- Dislikes: Bats
-		- Phobia: Fear of the dark
-			- Puzzle of Fear: (Darkness Maze?)
+		- Phobia: Separation / Abandonment anxiety
+			- Puzzle of Fear: ---
 - Wally, Ace Trainer
 	- Elvis Costume
 	- Home region: Hoenn

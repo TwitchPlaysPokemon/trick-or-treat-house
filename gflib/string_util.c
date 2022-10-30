@@ -18,8 +18,8 @@ EWRAM_DATA u8 gStringVar4[0x100] = {0};
 EWRAM_DATA u8 gStringVar5[0x100] = {0};
 EWRAM_DATA u8 gStringBuffer[0x3E8] = {0};
 
-EWRAM_DATA u8 gNamePlateBuffer[0x20] = {0};
 EWRAM_DATA u8 gStringWorking[0x100] = {0};
+EWRAM_DATA u8 gNamePlateBuffer[0x20] = {0};
 
 // static EWRAM_DATA const u8 *sStringPointers[8] = {};
 static EWRAM_DATA const u8 *sDynamicStringPointers[8] = {};

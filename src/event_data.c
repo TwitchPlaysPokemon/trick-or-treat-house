@@ -37,6 +37,7 @@ EWRAM_DATA u16 gSpecialVar_MetatileY = 0;
 EWRAM_DATA u16 gSpecialVar_LastWarpId = -1;
 EWRAM_DATA u16 gSpecialVar_SysForceStep = 0;
 EWRAM_DATA u16 gSpecialVar_BattleMod = 0;
+EWRAM_DATA u16 gSpecialVar_SpeakerPalOverride = 0;
 EWRAM_DATA static u8 sSpecialFlags[SPECIAL_FLAGS_SIZE] = {0};
 
 extern u16 *const gSpecialVars[];

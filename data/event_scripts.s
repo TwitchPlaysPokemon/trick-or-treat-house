@@ -101,6 +101,7 @@ gSpecialVars::
 	.4byte gSpecialVar_LastWarpId
 	.4byte gSpecialVar_SysForceStep
 	.4byte gSpecialVar_BattleMod
+	.4byte gSpecialVar_SpeakerPalOverride
 
 	.include "data/specials.inc"
 

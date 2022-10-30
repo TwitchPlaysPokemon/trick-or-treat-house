@@ -60,6 +60,10 @@ Puzzle_SafariImposters_TalkTable_JoeyAlibi:
 	.4byte Puzzle_SafariImposters_Text_JoeyAlibi5b
 	.4byte Puzzle_SafariImposters_Text_JoeyAlibi5a
 	.4byte Puzzle_SafariImposters_Text_JoeyAlibi5b
+	.4byt4 Puzzle_SafariImposters_Text_JoeyAlibi6a
+	.4byt4 Puzzle_SafariImposters_Text_JoeyAlibi6b
+	.4byt4 Puzzle_SafariImposters_Text_JoeyAlibi6a
+	.4byt4 Puzzle_SafariImposters_Text_JoeyAlibi6b
 	.4byte 0
 Puzzle_SafariImposters_TalkTable_JoeyImposter:
 	.4byte Puzzle_SafariImposters_Text_JoeyAlibi1a
@@ -78,6 +82,10 @@ Puzzle_SafariImposters_TalkTable_JoeyImposter:
 	.4byte Puzzle_SafariImposters_Text_JoeyAlibi4b
 	.4byte Puzzle_SafariImposters_Text_JoeyAlibi4a
 	.4byte Puzzle_SafariImposters_Text_JoeyAlibi4b
+	.4byt4 Puzzle_SafariImposters_Text_JoeyAlibi6a_I
+	.4byt4 Puzzle_SafariImposters_Text_JoeyAlibi6b
+	.4byt4 Puzzle_SafariImposters_Text_JoeyAlibi6a_I
+	.4byt4 Puzzle_SafariImposters_Text_JoeyAlibi6b_I
 	.4byte 0
 Puzzle_SafariImposters_TalkTable_JoeyAccuse:
 	.4byte Puzzle_SafariImposters_Text_JoeyAccusePlayer
@@ -104,7 +112,7 @@ text Puzzle_SafariImposters_Text_JoeyAlibi1c {
 }
 
 text Puzzle_SafariImposters_Text_JoeyAlibi2a {
-			"Me and ACE$"
+			"Me and Ace$"
 }
 text Puzzle_SafariImposters_Text_JoeyAlibi2a_I {
 			"My team and I$"
@@ -112,28 +120,28 @@ text Puzzle_SafariImposters_Text_JoeyAlibi2a_I {
 
 text Puzzle_SafariImposters_Text_JoeyAlibi3a {
 			            " went down there to meet\n"
-			"with other RATTATA in the area, see\l"
+			"with other Rattata in the area, see\l"
 			"if any of them smelled something wrong.\p$"
 }
 text Puzzle_SafariImposters_Text_JoeyAlibi3b {
-			            " found a bunch of RATTATA\n"
+			            " found a bunch of Rattata\n"
 			"down there. We asked if they had\l"
 			"smelled something off recently.\p$"
 }
 text Puzzle_SafariImposters_Text_JoeyAlibi3b_I {
-			            " found a bunch of RATTATA\n"
-			"down there. We check if they\l"
-			"smelled off or not like RATTATA.\p$"
+			            " found a bunch of Rattata\n"
+			"down there. We checked if they\l"
+			"smelled off or not like Rattata.\p$"
 }
 text Puzzle_SafariImposters_Text_JoeyAlibi3c {
-			            " found a lot of RATTATA\n"
+			            " found a lot of Rattata\n"
 			"down there. There's like a nest of\l"
-			"the things down there.\p$"
+			"them down there.\p$"
 }
 text Puzzle_SafariImposters_Text_JoeyAlibi3c_I {
-			            " found a lot of RATTATA\n"
+			            " found a lot of Rattata\n"
 			"down there. There's like a nest of\l"
-			"them living down there.\p$"
+			"the things living down there.\p$"
 }
 
 text Puzzle_SafariImposters_Text_JoeyAlibi4a {
@@ -151,11 +159,32 @@ text Puzzle_SafariImposters_Text_JoeyAlibi4b {
 
 text Puzzle_SafariImposters_Text_JoeyAlibi5a {
 			"After all, why would I want to abandon\n"
-			"my team and my best RATTATA?\p$"
+			"my team and my best Rattata?\p$"
 }
 text Puzzle_SafariImposters_Text_JoeyAlibi5b {
-			"I like my team, and my ACE, the way it\n"
+			"I like my team, and my Ace, the way it\n"
 			"is, you know?\p$"
+}
+
+text Puzzle_SafariImposters_Text_JoeyAlibi6a {
+			"So me and Ace just sat down by the river\n"
+			"talking about what to do with AJ when we\l"
+			"get back to Johto. What he might like.\p$"
+}
+text Puzzle_SafariImposters_Text_JoeyAlibi6a_I {
+			"So me and Ace just sat down by the river\n"
+			"talking about what to do with AJ when we\l"
+			"get back to Johto. What she might like.\p$"
+}
+text Puzzle_SafariImposters_Text_JoeyAlibi6b {
+			"So me and Ace sat down by the river\n"
+			"discussing what AJ might like to do\l"
+			"when we get back to Johto.\p$"
+}
+text Puzzle_SafariImposters_Text_JoeyAlibi6b_I {
+			"So me and Ace sat down by the river\n"
+			"discussing what CJ might like to do\l"
+			"when we get back to Johto.\p$"
 }
 
 text Puzzle_SafariImposters_Text_JoeyAccusePlayer {
@@ -266,12 +295,12 @@ text Puzzle_SafariImposters_Text_JamesAlibi1b {
 }
 
 text Puzzle_SafariImposters_Text_JamesAlibi2a {
-			"There was this HERACROSS that I was\n"
+			"There was this Heracross that I was\n"
 			"chasing all over the park! It gave me\l"
 			"the slip once or twice.\p$"
 }
 text Puzzle_SafariImposters_Text_JamesAlibi2a_I {
-			"There was this PINSER that I was\n"
+			"There was this Pinser that I was\n"
 			"chasing all over the park! It gave me\l"
 			"the slip once or twice.\p$"
 }
@@ -407,6 +436,10 @@ text Puzzle_SafariImposters_Text_IreneAlibi1a_I {
 			"Uh, well… It went pretty good!\p$"
 }
 text Puzzle_SafariImposters_Text_IreneAlibi2a {
+			"See, I started up north, looking for a\n"
+			"Chansey. But a storm was coming in.\p"
+	
+	
 			"See, I started up north, hoping to run\n"
 			"into a Chansey up that way, but the\l"
 			"storm clouds were so imposing.\p"
@@ -859,28 +892,28 @@ text Puzzle_SafariImposters_Text_MayAlibi1b {
 }
 
 text Puzzle_SafariImposters_Text_MayAlibi2a {
-			"I went in looking for some HOPPIP to\n"
+			"I went in looking for some Hoppip to\n"
 			"catch so that dad can research them.\p"
 			"I've been fascinated with how they\n"
 			"navigate in the breeze… and how\l"
 			"they can stand being so high up.\p$"
 }
 text Puzzle_SafariImposters_Text_MayAlibi2a_I {
-			"I went in looking for some HOPPIP to\n"
+			"I went in looking for some Hoppip to\n"
 			"catch so that dad can research them.\p"
 			"I've been fascinated with how they\n"
 			"navigate in the breeze… what it's\l"
 			"like to fly around like that.\p$"
 }
 text Puzzle_SafariImposters_Text_MayAlibi2b {
-			"I went in looking for some HOPPIP to\n"
+			"I went in looking for some Hoppip to\n"
 			"catch so that dad can research them.\p"
 			"I've been curious with how they can\n"
 			"navigate in the breeze… and how\l"
 			"they feel being high in the sky.\p$"
 }
 text Puzzle_SafariImposters_Text_MayAlibi2b_I {
-			"I went in looking for some HOPPIP to\n"
+			"I went in looking for some Hoppip to\n"
 			"catch so that dad can research them.\p"
 			"I've been curious with how they can\n"
 			"navigate in the breeze…\p"
