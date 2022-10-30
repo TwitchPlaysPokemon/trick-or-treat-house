@@ -124,9 +124,16 @@ raw `
 #undef LID_BIRCH
 `
 // ----------------------------------------------------
-// Wally
+// Friend on-loads
 raw `
-#define LID_WALLY 8
+#define LID_WALLY   8
+#define LID_JAMES   7
+#define LID_JOEY    5
+#define LID_IRENE   6
+#define LID_AJ      14
+#define LID_BRENDAN 19
+#define LID_MAY     20
+#define LID_ALEX    18
 `
 
 script TrickHouseEntrance_OnLoad_Wally {
@@ -150,227 +157,267 @@ script TrickHouseRestroom_OnLoad_Wally {
 	}
 	// Position to default location
 	setobjectxyperm(LID_WALLY, 2, 6)
-	if (var(VAR_CURRENT_PUZZLE) > 7 && var(VAR_CURRENT_PUZZLE) < 10) {
+	if (var(VAR_CURRENT_PUZZLE) > ID_TRICK_TREAT_PETALBURG && var(VAR_CURRENT_PUZZLE) < ID_TRICK_TREAT_PETALBURG+3) {
 		setvar(VAR_WALLY_STATE, 1)
 	}
-	// callnative(CheckNextPuzzleMap)
-	// switch (var(VAR_RESULT)) {
-	// }
-	// callnative(CheckCurrentPuzzleMap)
-	// switch (var(VAR_RESULT)) {
-	// }
-	
 	// Note: Friend state may override
 	return
 }
 
-script TrickHouseRestroom_EventScript_VisitorWally {
-	speakername_common(WALLY)
-	switch (var(VAR_WALLY_STATE)) {
-		default:
-			goto(TrickHouseEntrance_EventScript_Wally)
-		case 1:
-			msgbox ("I heard you guys somehow visited\n"
-					"Petalburg without me?\p"
-					"But how? I was sitting in the entrance\n"
-					"the whole time! I didn't see you leave!$", MSGBOX_NPC)
-		case 101:
-			msgbox ("Man, they're really going at it over\n"
-					"there, aren't they?$", MSGBOX_NPC)
-		case 102:
-			msgbox ("Did you see where {LINK} went?\p"
-					"I think he snuck out while I was\n"
-					"distracted by their arguing.$", MSGBOX_NPC)
-		case 103:
-			msgbox ("Ugh. They've been over there for like\n"
-					"an hour now, it feels like.\p"
-					"Someone needs to explain romance to me\n"
-					"because I just don't get it.$", MSGBOX_NPC)
-		case 104:
-			msgbox ("You two, explain this whole ‘romance’\n"
-					"thing to me. I just don't get it.\p"
-					"Who would want to look so silly all\n"
-					"the time? What's the big deal?\p"
-					"Huh? “Ace”? What about him? What does\n"
-					"{JOEY}'s Rattata have to do with me?$", MSGBOX_NPC)
-		
-	}
-}
-
-// ----------------------------------------------------
-// Other Friends
-raw `
-#define LID_JAMES  7
-#define LID_JOEY   5
-#define LID_IRENE  6
-#define LID_AJ     14
-`
-
 script TrickHouseRestroom_OnLoad_Friends {
-	callnative(CheckNextPuzzleMap)
-	switch (var(VAR_RESULT)) {
-		case MAP_TRICK_TREAT_PETALBURG_CITY:
-			setvar(VAR_FRIEND_GROUP_STATE, 1)
-			setobjectxyperm(LID_JOEY,   9, 5)  setobjectmovementtype(LID_JOEY, MOVEMENT_TYPE_FACE_RIGHT)
-			setobjectxyperm(LID_JAMES, 10, 4)  setobjectmovementtype(LID_JAMES, MOVEMENT_TYPE_FACE_DOWN)
-			setobjectxyperm(LID_IRENE, 10, 6)  setobjectmovementtype(LID_IRENE, MOVEMENT_TYPE_FACE_UP)
-			setobjectxyperm(LID_LETTER,10, 5)  setobjectmovementtype(LID_LETTER, MOVEMENT_TYPE_FACE_LEFT)
-			return
-		case MAP_TRICK_TREAT_FORTREE_CITY:
-			setvar(VAR_FRIEND_GROUP_STATE, 2)
-			setvar(VAR_WALLY_STATE, 101)
-			setobjectxyperm(LID_JOEY,  10, 7)  setobjectmovementtype(LID_JOEY, MOVEMENT_TYPE_FACE_DOWN)
-			setobjectxyperm(LID_IRENE, 10, 9)  setobjectmovementtype(LID_IRENE, MOVEMENT_TYPE_FACE_UP)
-			setobjectxyperm(LID_LETTER,10, 8)  setobjectmovementtype(LID_LETTER, MOVEMENT_TYPE_FACE_DOWN)
-			setobjectxyperm(LID_JAMES,  1, 6)  setobjectmovementtype(LID_JAMES, MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT)
-			return
-		case MAP_TRICK_TREAT_MOSSDEEP_CITY:
-	}
+	call(TrickHouseRestroom_OnLoad_Wally) // setup wally first
 	
 	callnative(CheckCurrentPuzzleMap)
-	switch (var(VAR_RESULT)) {
-		case MAP_TRICK_TREAT_FORTREE_CITY:
-			setvar(VAR_FRIEND_GROUP_STATE, 2)
-			setvar(VAR_WALLY_STATE, 102)
-			setobjectxyperm(LID_JOEY,  10, 7)  setobjectmovementtype(LID_JOEY, MOVEMENT_TYPE_FACE_DOWN)
-			setobjectxyperm(LID_IRENE, 10, 9)  setobjectmovementtype(LID_IRENE, MOVEMENT_TYPE_FACE_UP)
-			setobjectxyperm(LID_LETTER,10, 8)  setobjectmovementtype(LID_LETTER, MOVEMENT_TYPE_FACE_DOWN)
-			return
-		case MAP_PUZZLE_HIDDEN_MAZE:
-		case MAP_PUZZLE_LOSS_FLOOR1:
-		case MAP_PUZZLE_TRICK_HOUSE_SLIP_SLIDING:
-			setvar(VAR_FRIEND_GROUP_STATE, 10)
-			setvar(VAR_WALLY_STATE, 103)
-			setobjectxyperm(LID_JOEY,9, 5)  setobjectmovementtype(LID_JOEY, MOVEMENT_TYPE_FACE_DOWN)
-			setobjectxyperm(LID_AJ,  9, 6)  setobjectmovementtype(LID_AJ, MOVEMENT_TYPE_FACE_UP)
-			if (var(VAR_FOLLOWER_IDENTITY) == FOLLOWER_ID_IRENE) {
-				setvar(VAR_WALLY_STATE, 104)
-			}
-			return
-	}
+	
+	goto_if_eq(VAR_CURRENT_PUZZLE, ID_TRICK_TREAT_PETALBURG-1, TrickHouseRestroom_OnLoad_Friends_PlanningPetalburgh)
+	goto_if_eq(VAR_CURRENT_PUZZLE, ID_TRICK_TREAT_PETALBURG+0, TrickHouseRestroom_OnLoad_Friends_ParaPetalburgh)
+	
+	goto_if_eq(VAR_CURRENT_PUZZLE, ID_TRICK_TREAT_FORTREE-2, TrickHouseRestroom_OnLoad_Friends_PrePreFortree)
+	goto_if_eq(VAR_CURRENT_PUZZLE, ID_TRICK_TREAT_FORTREE-1, TrickHouseRestroom_OnLoad_Friends_PreFortree)
+	goto_if_eq(VAR_CURRENT_PUZZLE, ID_TRICK_TREAT_FORTREE+0, TrickHouseRestroom_OnLoad_Friends_ParaFortree)
+	goto_if_eq(VAR_CURRENT_PUZZLE, ID_TRICK_TREAT_FORTREE+1, TrickHouseRestroom_OnLoad_Friends_PostFortree)
+	goto_if_eq(VAR_CURRENT_PUZZLE, ID_TRICK_TREAT_FORTREE+2, TrickHouseRestroom_OnLoad_Friends_AJArrives)
+	goto_if_eq(VAR_RESULT, MAP_PUZZLE_LOSS_FLOOR1, TrickHouseRestroom_OnLoad_Friends_AJArrives) // Loss puzzle
+	
+	goto_if_eq(VAR_CURRENT_PUZZLE, ID_TRICK_TREAT_MOSSDEEP-1, TrickHouseRestroom_OnLoad_Friends_PreMossdeep)
+	goto_if_eq(VAR_CURRENT_PUZZLE, ID_TRICK_TREAT_MOSSDEEP+0, TrickHouseRestroom_OnLoad_Friends_ParaMossdeep)
 	
 	
+	// callnative(CheckNextPuzzleMap)
+	// goto_if_eq(VAR_RESULT, MAP_TRICK_TREAT_PETALBURG_CITY, TrickHouseRestroom_OnLoad_Friends_PlanningPetalburgh)
+	// goto_if_eq(VAR_RESULT, MAP_TRICK_TREAT_FORTREE_CITY, TrickHouseRestroom_OnLoad_Friends_PreFortree)
+	// goto_if_eq(VAR_RESULT, MAP_TRICK_TREAT_MOSSDEEP_CITY, TrickHouseRestroom_OnLoad_Friends_PreMossdeep)
+	
+	// callnative(CheckPreviousPuzzleMap)
+	// goto_if_eq(VAR_RESULT, MAP_TRICK_TREAT_FORTREE_CITY, TrickHouseRestroom_OnLoad_Friends_PostFortree)
+	
+	// callnative(CheckCurrentPuzzleMap)
+	// goto_if_eq(VAR_RESULT, MAP_TRICK_TREAT_PETALBURG_CITY, TrickHouseRestroom_OnLoad_Friends_ParaPetalburgh)
+	// goto_if_eq(VAR_RESULT, MAP_TRICK_TREAT_FORTREE_CITY, TrickHouseRestroom_OnLoad_Friends_ParaFortree)
+	// goto_if_eq(VAR_RESULT, MAP_TRICK_TREAT_MOSSDEEP_CITY, TrickHouseRestroom_OnLoad_Friends_ParaMossdeep)
+	// // two puzzles after fortree:
+	// goto_if_eq(VAR_RESULT, MAP_PUZZLE_HIDDEN_MAZE, TrickHouseRestroom_OnLoad_Friends_AJArrives)
+	// goto_if_eq(VAR_RESULT, MAP_PUZZLE_LOSS_FLOOR1, TrickHouseRestroom_OnLoad_Friends_AJArrives)
+	
+}
+script TrickHouseRestroom_OnLoad_CleanupDuplicates {
 	// Finally, ensure that friends who are currently followers do not show up here
 	switch (var(VAR_FOLLOWER_IDENTITY)) {
-		case FOLLOWER_ID_BRENDAN: nop //setobjectxyperm(LID_BRENDAN, 100, 100)
-		case FOLLOWER_ID_MAY:   nop //setobjectxyperm(LID_MAY, 100, 100)
-		case FOLLOWER_ID_ALEX:  nop //setobjectxyperm(LID_ALEX, 100, 100)
-		case FOLLOWER_ID_JOEY:  setobjectxyperm(LID_JOEY, 100, 100)
-		case FOLLOWER_ID_JAMES: setobjectxyperm(LID_JAMES, 100, 100)
-		case FOLLOWER_ID_IRENE: setobjectxyperm(LID_IRENE, 100, 100)
-		case FOLLOWER_ID_WALLY: setobjectxyperm(LID_WALLY, 100, 100)
+		case FOLLOWER_ID_BRENDAN: setobjectxyperm(LID_BRENDAN, 100, 100)
+		case FOLLOWER_ID_MAY:     setobjectxyperm(LID_MAY, 100, 100)
+		case FOLLOWER_ID_ALEX:    setobjectxyperm(LID_ALEX, 100, 100)
+		case FOLLOWER_ID_JOEY:    setobjectxyperm(LID_JOEY, 100, 100)
+		case FOLLOWER_ID_JAMES:   setobjectxyperm(LID_JAMES, 100, 100)
+		case FOLLOWER_ID_IRENE:   setobjectxyperm(LID_IRENE, 100, 100)
+		case FOLLOWER_ID_WALLY:   setobjectxyperm(LID_WALLY, 100, 100)
 	}
 	// And that friends who are the player do not show up here
 	checkplayergender
 	switch (var(VAR_RESULT)) {
-		case GENDER_M: nop //setobjectxyperm(LID_BRENDAN, 100, 100)
-		case GENDER_F: nop //setobjectxyperm(LID_MAY, 100, 100)
-		case GENDER_N: nop //setobjectxyperm(LID_ALEX, 100, 100)
+		case GENDER_M: setobjectxyperm(LID_BRENDAN, 100, 100)
+		case GENDER_F: setobjectxyperm(LID_MAY, 100, 100)
+		case GENDER_N: setobjectxyperm(LID_ALEX, 100, 100)
 	}
 }
 
+
+// ----------------------------------------------------
+// Friend entry points
+
+script TrickHouseRestroom_EventScript_VisitorWally {
+	speakername_common(WALLY)
+	goto_if_eq(VAR_WALLY_STATE, 1, TrickHouseRestroom_EventScript_VisitorWally_PostPetalburgh)
+	goto_if_eq(VAR_WALLY_STATE, 2, TrickHouseRestroom_EventScript_VisitorWally_PostFortree)
+	goto_if_eq(VAR_WALLY_STATE, 101, TrickHouseRestroom_EventScript_VisitorWally_PreFortree)
+	goto_if_eq(VAR_WALLY_STATE, 102, TrickHouseRestroom_EventScript_VisitorWally_ParaFortree)
+	goto_if_eq(VAR_WALLY_STATE, 103, TrickHouseRestroom_EventScript_VisitorWally_AJArrives)
+	goto_if_eq(VAR_WALLY_STATE, 105, TrickHouseRestroom_EventScript_VisitorWally_PreMossdeep)
+	goto(TrickHouseEntrance_EventScript_Wally)
+}
 script TrickHouseRestroom_EventScript_VisitorJoey {
 	speakername_common(JOEY)
-	switch(var(VAR_FRIEND_GROUP_STATE)) {
-		case 1:
-			msgbox( "But then there are these runes\n"
-					"down the side of the door.\p"
-					"I've seen them before in the\n"
-					"Ruins of Alph back in Johto.\p"
-					"They could well be spelling out…$", MSGBOX_SIGN)
-		case 2: goto(TrickHouseRestroom_EventScript_JoeyIreneFight)
-		case 10:
-			if (!flag(FLAG_TEMP_1)) {
-				goto(TrickHouseRestroom_EventScript_JoeyAJIntro)
-			} else {
-				checkplayergender
-				if (var(VAR_RESULT) == GENDER_N) {
-			msgbox( "Uh, I went and pointed the door at\n"
-					"New Bark for a bit and picked him up.\p"
-					"If you and {FAIRY} are here together,\n"
-					"why can't we as well?$", MSGBOX_NPC)
-				} else {
-			msgbox( "Uh, I went and pointed the door at\n"
-					"New Bark for a bit and picked him up.\p"
-					"If {FAIRY} and {ALEX} are here together,\n"
-					"why can't we be together too?$", MSGBOX_NPC)
-				}
-			}
-			
-	}
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 1, TrickHouseRestroom_EventScript_VisitorJoey_PlanningPetalburgh)
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 2, TrickHouseRestroom_EventScript_VisitorJoey_FortreeFight)
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 3, TrickHouseRestroom_EventScript_VisitorJoey_PreMossdeep)
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 10, TrickHouseRestroom_EventScript_VisitorJoey_AJArrives)
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 11, TrickHouseRestroom_EventScript_VisitorJoey_PlanningFortree)
+	release
 }
-
 script TrickHouseRestroom_EventScript_VisitorIrene {
 	speakername_common(IRENE)
-	switch(var(VAR_FRIEND_GROUP_STATE)) {
-		case 1:
-			msgbox( "But did you see the strange symbol\n"
-					"adorning the bottom?\p"
-					"I swear I've seen some of those back\n"
-					"home in Dragonspiral Tower…$", MSGBOX_SIGN)
-		case 2: goto(TrickHouseRestroom_EventScript_JoeyIreneFight)
-	}
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 1, TrickHouseRestroom_EventScript_VisitorIrene_PlanningPetalburgh)
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 2, TrickHouseRestroom_EventScript_VisitorIrene_FortreeFight)
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 3, TrickHouseRestroom_EventScript_VisitorIrene_PreMossdeep)
+	release
 }
-
 script TrickHouseRestroom_EventScript_VisitorJames {
 	speakername_common(JAMES)
-	switch(var(VAR_FRIEND_GROUP_STATE)) {
-		case 1:
-			msgbox("This could be the best idea\n"
-					"you've ever had, {JOEY}.\p"
-					"Think of all the places we can go\n"
-					"trick or treating at…$", MSGBOX_SIGN)
-		case 2:
-			checkplayergender
-			if (var(VAR_RESULT) == GENDER_N) {
-			msgbox ("Come to witness the Great Throwdown?\p"
-					"{PLAYER}, can you like… go calm your\n"
-					"girlfriend down or something?\p"
-					"Seriously, I'm about to sneak out\n"
-					"and use the door while they're arguing.$", MSGBOX_NPC)
-			} else {
-			msgbox ("Come to witness the Great Throwdown?\p"
-					"I don't understand why they don't\n"
-					"just take turns.\p"
-					"Seriously, I'm about to sneak out\n"
-					"and use the door while they're arguing.$", MSGBOX_NPC)
-				
-			}
-	}
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 1, TrickHouseRestroom_EventScript_VisitorJames_PlanningPetalburgh)
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 2, TrickHouseRestroom_EventScript_VisitorJames_FortreeFight)
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 3, TrickHouseRestroom_EventScript_VisitorJames_PreMossdeep)
+	release
 }
-
+script TrickHouseRestroom_EventScript_VisitorBrendan {
+	speakername_common(BRENDAN)
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 3, TrickHouseRestroom_EventScript_VisitorBrendan_PreMossdeep)
+	release
+}
+script TrickHouseRestroom_EventScript_VisitorMay {
+	speakername_common(MAY)
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 3, TrickHouseRestroom_EventScript_VisitorMay_PreMossdeep)
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 11, TrickHouseRestroom_EventScript_VisitorMay_PostFortree)
+	release
+}
+script TrickHouseRestroom_EventScript_VisitorAlex {
+	speakername_common(ALEX)
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 3, TrickHouseRestroom_EventScript_VisitorAlex_PreMossdeep)
+	release
+}
 script TrickHouseRestroom_EventScript_VisitorAJ {
 	speakername("AJ Dinnow") //AJDNNW
-	switch(var(VAR_FRIEND_GROUP_STATE)) {
-		case 10:
-			if (!flag(FLAG_TEMP_1)) {
-				goto(TrickHouseRestroom_EventScript_JoeyAJIntro)
-			} else {
-				poryswitch(TPP_MODE) {
-					1 {
-			msgbox( "Uh, hey…\n"
-					"Sorry if I'm causing any trouble…\p"
-					"I'm AJ, by the way.\n"
-					"Former Johto and Kanto Champion…\p"
-					"…{PAUSE 30} …{PAUSE 30} …{PAUSE 30} I hear them around you…{PAUSE 30}\n"
-					"… … The Unown…{PAUSE 60} The Voices…{PAUSE 60} …\p"
-					"They're a lot quieter and calmer now…{PAUSE 30}\n"
-					"Compared to when they were with me… …$", MSGBOX_NPC)
-					}
-					_ {
-			msgbox( "Uh, hey…\n"
-					"Sorry if I'm causing any trouble…\p"
-					"I'm AJ, by the way.\n"
-					"Former Johto and Kanto Champion…\p"
-					"… … … Sorry… I'm not the best at\n"
-					"talking to people…$", MSGBOX_NPC)
-					}
-				}
-			}
-			
-	}
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 3, TrickHouseRestroom_EventScript_VisitorAJ_PreMossdeep)
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 10, TrickHouseRestroom_EventScript_VisitorAJ_AJArrives)
+	release
+}
+script TrickHouseRestroom_EventScript_Note {
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 1, TrickHouseRestroom_EventScript_Note_PlanningPetalburgh)
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 2, TrickHouseRestroom_EventScript_Note_FortreeFight)
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 3, TrickHouseRestroom_EventScript_Note_PreMossdeep)
+	release
 }
 
+//=========================================================
+// Scenes
+
+
+// --------------------------------------------------------
+// Planning Petalburgh
+
+script TrickHouseRestroom_OnLoad_Friends_PlanningPetalburgh {
+	setvar(VAR_FRIEND_GROUP_STATE, 1)
+	setobjectxyperm(LID_JOEY,   9, 5)  setobjectmovementtype(LID_JOEY, MOVEMENT_TYPE_FACE_RIGHT)
+	setobjectxyperm(LID_JAMES, 10, 4)  setobjectmovementtype(LID_JAMES, MOVEMENT_TYPE_FACE_DOWN)
+	setobjectxyperm(LID_IRENE, 10, 6)  setobjectmovementtype(LID_IRENE, MOVEMENT_TYPE_FACE_UP)
+	setobjectxyperm(LID_LETTER,10, 5)  setobjectmovementtype(LID_LETTER, MOVEMENT_TYPE_FACE_LEFT)
+	return
+}
+	
+script TrickHouseRestroom_EventScript_VisitorJoey_PlanningPetalburgh {
+	msgbox( "But then there are these runes\n"
+			"down the side of the door.\p"
+			"I've seen them before in the\n"
+			"Ruins of Alph back in Johto.\p"
+			"They could well be spelling out…$", MSGBOX_SIGN)
+}
+script TrickHouseRestroom_EventScript_VisitorIrene_PlanningPetalburgh {
+	msgbox( "But did you see the strange symbol\n"
+			"adorning the bottom?\p"
+			"I swear I've seen some of those back\n"
+			"home in Dragonspiral Tower…$", MSGBOX_SIGN)
+}
+script TrickHouseRestroom_EventScript_VisitorJames_PlanningPetalburgh {
+	msgbox("This could be the best idea\n"
+			"you've ever had, {JOEY}.\p"
+			"Think of all the places we can go\n"
+			"trick or treating at…$", MSGBOX_SIGN)
+}
+script TrickHouseRestroom_EventScript_Note_PlanningPetalburgh {
+	msgbox ("There's a drawing of the scroll door\n"
+			"with a dozen notes about parts of it.", MSGBOX_SIGN)
+}
+
+// --------------------------------------------------------
+// Petalburgh
+
+script TrickHouseRestroom_OnLoad_Friends_ParaPetalburgh {
+	setvar(VAR_FRIEND_GROUP_STATE, 1)
+	setobjectxyperm(LID_LETTER,10, 5)  setobjectmovementtype(LID_LETTER, MOVEMENT_TYPE_FACE_LEFT)
+	return
+}
+
+// --------------------------------------------------------
+// Post-Petalburg
+// VAR_WALLY_STATE = 1
+
+script TrickHouseRestroom_EventScript_VisitorWally_PostPetalburgh {
+	msgbox ("I heard you guys somehow visited\n"
+			"Petalburg without me?\p"
+			"But how? I was sitting in the entrance\n"
+			"the whole time! I didn't see you leave!$", MSGBOX_NPC)
+}
+
+
+// --------------------------------------------------------
+// Pre-Pre-Fortree
+
+script TrickHouseRestroom_OnLoad_Friends_PrePreFortree {
+	setvar(VAR_FRIEND_GROUP_STATE, 11)
+	setobjectxyperm(LID_JOEY,  10, 7)  setobjectmovementtype(LID_JOEY, MOVEMENT_TYPE_FACE_DOWN)
+	setobjectxyperm(LID_LETTER,10, 8)  setobjectmovementtype(LID_LETTER, MOVEMENT_TYPE_FACE_UP)
+}
+script TrickHouseRestroom_EventScript_VisitorJoey_PlanningFortree {
+	message("So if this rune is the longitudinal\n"
+			"offset, and we're here…\p$")
+	waitmessage
+	faceplayer
+	message("Oh, hey, {PLAYER}. Just doing some more\n"
+			"research on the Trick Master's door.\p"
+			"I wonder just how far away we can\n"
+			"point the things…\p"
+			"He's given us puzzles in far off places,\n"
+			"in other regions entirely…\p"
+			"It seems like it could go anywhere,\n"
+			"theoretically. But is there a limit?$")
+	waitmessage
+	waitbuttonpress
+	applymovement(LID_JOEY, Common_Movement_FaceDown)
+	waitmovement(LID_JOEY)
+	release
+}
+
+// --------------------------------------------------------
+// Pre-Fortree
+
+script TrickHouseRestroom_OnLoad_Friends_PreFortree {
+	setvar(VAR_FRIEND_GROUP_STATE, 2)
+	setvar(VAR_WALLY_STATE, 101)
+	setobjectxyperm(LID_JOEY,  10, 7)  setobjectmovementtype(LID_JOEY, MOVEMENT_TYPE_FACE_DOWN)
+	setobjectxyperm(LID_IRENE, 10, 9)  setobjectmovementtype(LID_IRENE, MOVEMENT_TYPE_FACE_UP)
+	setobjectxyperm(LID_LETTER,10, 8)  setobjectmovementtype(LID_LETTER, MOVEMENT_TYPE_FACE_DOWN)
+	setobjectxyperm(LID_JAMES,  1, 6)  setobjectmovementtype(LID_JAMES, MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT)
+	return
+}
+
+script TrickHouseRestroom_EventScript_VisitorJoey_FortreeFight {
+	goto(TrickHouseRestroom_EventScript_JoeyIreneFight)
+}
+script TrickHouseRestroom_EventScript_VisitorIrene_FortreeFight {
+	goto(TrickHouseRestroom_EventScript_JoeyIreneFight)
+}
+script TrickHouseRestroom_EventScript_VisitorJames_FortreeFight {
+	checkplayergender
+	if (var(VAR_RESULT) == GENDER_N) {
+		msgbox ("Come to witness the Great Throwdown?\p"
+				"{PLAYER}, can you like… go calm your\n"
+				"girlfriend down or something?\p"
+				"Seriously, I'm about to sneak out\n"
+				"and use the door while they're arguing.$", MSGBOX_NPC)
+	} else {
+		msgbox ("Come to witness the Great Throwdown?\p"
+				"I don't understand why they don't\n"
+				"just take turns.\p"
+				"Seriously, I'm about to sneak out\n"
+				"and use the door while they're arguing.$", MSGBOX_NPC)
+	}
+}
+script TrickHouseRestroom_EventScript_VisitorWally_PreFortree {
+	msgbox ("Man, they're really going at it over\n"
+			"there, aren't they?$", MSGBOX_NPC)
+}
+script TrickHouseRestroom_EventScript_Note_FortreeFight {
+	msgbox ("There's dozens of random scribbles\n"
+			"and many words and runes crossed out.", MSGBOX_SIGN)
+}
 
 script TrickHouseRestroom_EventScript_JoeyIreneFight {
 	lockall
@@ -392,22 +439,23 @@ script TrickHouseRestroom_EventScript_JoeyIreneFight {
 	speakername_common(IRENE)
 	msgbox ("Did you not see the Jungle Maze!?\n"
 			"I'm pretty sure that was in New Guinea!$")
-	
+	playse(SE_SELECT)
 	speakername_common(JOEY)
 	msgbox ("That's not in Unova!\n"
 			"It's not even outside this timezone!\p"
 			"Isn't it like 3am in Unova right now?!$")
-	
+	playse(SE_SELECT)
 	speakername_common(IRENE)
 	msgbox ("It's 6am! And you just want an excuse\n"
 			"to go pick up your boyfriend!$")
-	
+	playse(SE_SELECT)
 	speakername_common(JOEY)
 	msgbox ("So what? You can have your partner\n"
 			"here, but I can't have mine?!$")
 	
 	checkplayergender
 	if (var(VAR_RESULT) == GENDER_N) {
+		playse(SE_SELECT)
 		if (var(VAR_LAST_TALKED) == LID_JOEY) {
 			faceplayer
 		}
@@ -423,6 +471,59 @@ movement TrickHouseRestroom_Movement_JoeyIreneFight_1 {
 }
 movement TrickHouseRestroom_Movement_JoeyIreneFight_2 {
 	jump_in_place_up * 2
+}
+
+
+// --------------------------------------------------------
+// During Fortree
+
+script TrickHouseRestroom_OnLoad_Friends_ParaFortree {
+	setvar(VAR_FRIEND_GROUP_STATE, 2)
+	setvar(VAR_WALLY_STATE, 102)
+	setobjectxyperm(LID_JOEY,  10, 7)  setobjectmovementtype(LID_JOEY, MOVEMENT_TYPE_FACE_DOWN)
+	setobjectxyperm(LID_IRENE, 10, 9)  setobjectmovementtype(LID_IRENE, MOVEMENT_TYPE_FACE_UP)
+	setobjectxyperm(LID_LETTER,10, 8)  setobjectmovementtype(LID_LETTER, MOVEMENT_TYPE_FACE_DOWN)
+	return
+}
+script TrickHouseRestroom_EventScript_VisitorWally_ParaFortree {
+	msgbox ("Did you see where {LINK} went?\p"
+			"I think he snuck out while I was\n"
+			"distracted by their arguing.$", MSGBOX_NPC)
+}
+// See above for others
+
+
+// --------------------------------------------------------
+// Post-Fortree
+
+script TrickHouseRestroom_OnLoad_Friends_PostFortree {
+	setvar(VAR_FRIEND_GROUP_STATE, 11)
+	setvar(VAR_WALLY_STATE, 2)
+	setobjectxyperm(LID_MAY, 9, 5)  setobjectmovementtype(LID_MAY, MOVEMENT_TYPE_LOOK_AROUND)
+}
+script TrickHouseRestroom_EventScript_VisitorWally_PostFortree {
+	msgbox ("Wait, did I miss ANOTHER trick-or-\n"
+			"treating trip?!\p"
+			"{JOEY} and {IRENE} distracted me with\n"
+			"their fighting!$", MSGBOX_NPC)
+}
+script TrickHouseRestroom_EventScript_VisitorMay_PostFortree {
+	msgbox ("I think I need several minutes to\n"
+			"recover from Foretree still…!\p"
+			"Can you imagine being that high up\n"
+			"ALL THE TIME?!$", MSGBOX_NPC)
+}
+
+
+// --------------------------------------------------------
+// AJ Arrives
+
+script TrickHouseRestroom_OnLoad_Friends_AJArrives {
+	setvar(VAR_FRIEND_GROUP_STATE, 10)
+	setvar(VAR_WALLY_STATE, 103)
+	setobjectxyperm(LID_JOEY,9, 5)  setobjectmovementtype(LID_JOEY, MOVEMENT_TYPE_FACE_DOWN)
+	setobjectxyperm(LID_AJ,  9, 6)  setobjectmovementtype(LID_AJ, MOVEMENT_TYPE_FACE_UP)
+	return
 }
 
 script TrickHouseRestroom_EventScript_JoeyAJIntro {
@@ -445,6 +546,161 @@ script TrickHouseRestroom_EventScript_JoeyAJIntro {
 	setflag(FLAG_TEMP_1)
 	release
 }
+script TrickHouseRestroom_EventScript_VisitorJoey_AJArrives {
+	goto_if_unset(FLAG_TEMP_1, TrickHouseRestroom_EventScript_JoeyAJIntro)
+	checkplayergender
+	if (var(VAR_RESULT) == GENDER_N) {
+		msgbox( "Uh, I went and pointed the door at\n"
+				"New Bark for a bit and picked him up.\p"
+				"If you and {FAIRY} are here together,\n"
+				"why can't we as well?$", MSGBOX_NPC)
+	} else {
+		msgbox( "Uh, I went and pointed the door at\n"
+				"New Bark for a bit and picked him up.\p"
+				"If {FAIRY} and {ALEX} are here together,\n"
+				"why can't we be together too?$", MSGBOX_NPC)
+	}
+}
+script TrickHouseRestroom_EventScript_VisitorAJ_AJArrives {
+	goto_if_unset(FLAG_TEMP_1, TrickHouseRestroom_EventScript_JoeyAJIntro)
+	poryswitch(TPP_MODE) {
+		1 {
+			msgbox( "Uh, hey…\n"
+					"Sorry if I'm causing any trouble…\p"
+					"I'm AJ, by the way.\n"
+					"Former Johto and Kanto Champion…\p"
+					"…{PAUSE 30} …{PAUSE 30} …{PAUSE 30} I hear them around you…{PAUSE 30}\n"
+					"… … The Unown…{PAUSE 60} The Voices…{PAUSE 60} …\p"
+					"They're a lot quieter and calmer now…{PAUSE 30}\n"
+					"Compared to when they were with me… …$", MSGBOX_NPC)
+		}
+		_ {
+			msgbox( "Uh, hey…\n"
+					"Sorry if I'm causing any trouble…\p"
+					"I'm AJ, by the way.\n"
+					"Former Johto and Kanto Champion…\p"
+					"… … … Sorry… I'm not the best at\n"
+					"talking to people…$", MSGBOX_NPC)
+		}
+	}
+}
+script TrickHouseRestroom_EventScript_VisitorWally_AJArrives {
+	if (var(VAR_FOLLOWER_IDENTITY) == FOLLOWER_ID_IRENE) {
+		// Irene only follows Alex, so player is Alex here
+		msgbox ("You two, explain this whole ‘romance’\n"
+				"thing to me. I just don't get it.\p"
+				"Who would want to look so silly all\n"
+				"the time? What's the big deal?\p"
+				"Huh? “Ace”? What about him? What does\n"
+				"{JOEY}'s Rattata have to do with me?$", MSGBOX_NPC)
+	} else {
+		msgbox ("Ugh. They've been over there for like\n"
+				"an hour now, it feels like.\p"
+				"Someone needs to explain romance to me\n"
+				"because I just don't get it.$", MSGBOX_NPC)
+	}
+}
+
+// ----------------------------------------------------
+// Pre-Mossdeep
+
+script TrickHouseRestroom_OnLoad_Friends_PreMossdeep {
+	setvar(VAR_FRIEND_GROUP_STATE, 3)
+	setvar(VAR_WALLY_STATE, 105)
+	setobjectxyperm(LID_JOEY,   11, 4)  setobjectmovementtype(LID_JOEY, MOVEMENT_TYPE_FACE_DOWN)
+	setobjectxyperm(LID_AJ,     12, 4)  setobjectmovementtype(LID_AJ, MOVEMENT_TYPE_FACE_DOWN_AND_LEFT)
+	setobjectxyperm(LID_IRENE,  13, 5)  setobjectmovementtype(LID_IRENE, MOVEMENT_TYPE_FACE_DOWN_AND_LEFT)
+	setobjectxyperm(LID_JAMES,   9, 5)  setobjectmovementtype(LID_JAMES, MOVEMENT_TYPE_FACE_RIGHT)
+	setobjectxyperm(LID_BRENDAN,10, 6)  setobjectmovementtype(LID_BRENDAN, MOVEMENT_TYPE_FACE_UP_AND_RIGHT)
+	setobjectxyperm(LID_MAY,    10, 4)  setobjectmovementtype(LID_MAY, MOVEMENT_TYPE_FACE_DOWN_AND_RIGHT)
+	setobjectxyperm(LID_ALEX,   13, 6)  setobjectmovementtype(LID_ALEX, MOVEMENT_TYPE_FACE_LEFT)
+	setobjectxyperm(LID_WALLY,  12, 7)  setobjectmovementtype(LID_WALLY, MOVEMENT_TYPE_FACE_UP_LEFT_AND_RIGHT)
+	setobjectxyperm(LID_LETTER, 11, 5)  setobjectmovementtype(LID_LETTER, MOVEMENT_TYPE_FACE_UP)
+	return
+}
+script TrickHouseRestroom_EventScript_VisitorJoey_PreMossdeep {
+	msgbox( "Alright, guys! Not all at once!\p"
+			"Working out the rune coordinates is hard\p"
+			"enough without everyone yelling at me!$", MSGBOX_SIGN)
+}
+script TrickHouseRestroom_EventScript_VisitorIrene_PreMossdeep {
+	msgbox( "{JOEY}! It's my turn! You got to point\n"
+			"the door where you wanted to go!\p"
+			"Mossdeep seems like the best place to\n"
+			"go next!$", MSGBOX_SIGN)
+}
+script TrickHouseRestroom_EventScript_VisitorJames_PreMossdeep {
+	msgbox( "I've always wanted to visit Pacifidlog.\n"
+			"A floating city sounds sweet as heck!$", MSGBOX_SIGN)
+}
+script TrickHouseRestroom_EventScript_VisitorBrendan_PreMossdeep {
+	msgbox( "I remember Dad taking me to Saffron City\n"
+			"when I was little! That place is huge!\p"
+			"We could easily hit dozens of apartments!$", MSGBOX_SIGN)
+}
+script TrickHouseRestroom_EventScript_VisitorMay_PreMossdeep {
+	msgbox( "I think Mossdeep is pretty big!\n"
+			"Dozens of houses to hit there!\p"
+			"And I think they've got a rocket launch\n"
+			"planned for this evening as well!$", MSGBOX_SIGN)
+}
+script TrickHouseRestroom_EventScript_VisitorAlex_PreMossdeep {
+	msgbox( "There's a place I visited on holiday\n"
+			"a couple years back! Alto Mare?\p"
+			"It's a giant city that could easily\n"
+			"have a hundred houses to hit up!$", MSGBOX_SIGN)
+}
+script TrickHouseRestroom_EventScript_VisitorAJ_PreMossdeep {
+	msgbox( "Goldenrod has loads of houses!\p"
+			"And Bill gives out huge slabs of\n"
+			"some of the best chocolate!$", MSGBOX_SIGN)
+}
+script TrickHouseRestroom_EventScript_VisitorWally_PreMossdeep {
+	msgbox( "This is chaos! No one can decide where\n"
+			"to trick-or-treat next.\p"
+			"Joey figures we've got one more chance\p"
+			"to do this tonight, before it gets too\l"
+			"late to Trick-or-Treat.$", MSGBOX_NPC)
+}
+
+
+// ----------------------------------------------------
+// Para-Mossdeep
+
+script TrickHouseRestroom_OnLoad_Friends_ParaMossdeep {
+	setvar(VAR_FRIEND_GROUP_STATE, 3)
+	setobjectxyperm(LID_WALLY,  100, 100) // Wally actually goes
+	setobjectxyperm(LID_LETTER, 11, 5)  setobjectmovementtype(LID_LETTER, MOVEMENT_TYPE_FACE_UP)
+	return
+}
+script TrickHouseRestroom_EventScript_Note_PreMossdeep {
+	msgbox ("There's a ton of random notes and runes\n"
+			"on it.\p"
+			"In the corner, circles five times, is\n"
+			"the word “Mossdeep”.", MSGBOX_SIGN)
+}
+
+
+// ----------------------------------------------------
+// Post-Mossdeep
+
+
+
+
+script TrickHouseRestroom_EventScript_VisitorJoey_Default { release }
+script TrickHouseRestroom_EventScript_VisitorIrene_Default { release }
+script TrickHouseRestroom_EventScript_VisitorJames_Default { release }
+script TrickHouseRestroom_EventScript_VisitorBrendan_Default { release }
+script TrickHouseRestroom_EventScript_VisitorMay_Default { release }
+script TrickHouseRestroom_EventScript_VisitorAlex_Default { release }
+script TrickHouseRestroom_EventScript_VisitorAJ_Default { release }
+
+
+
+
+
+
+
 
 raw `
 #undef LID_WALLY
@@ -452,8 +708,10 @@ raw `
 #undef LID_JOEY
 #undef LID_IRENE
 #undef LID_AJ
+#undef LID_BRENDAN
+#undef LID_MAY
+#undef LID_ALEX
 `
-
 // ----------------------------------------------------
 raw `
 #undef VAR_BREEDER_STATE

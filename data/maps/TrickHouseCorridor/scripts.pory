@@ -104,7 +104,8 @@ script TrickHouseCorridor_TriggerScript_AdoptionCutscene {
 	applymovement (LID_PLAYER, 0)
 	waitmovement (0)
 	//
-	msgbox ("Welcome to the PUZZLE CHALLENGE.\p"
+	msgbox ("Welcome to the {COLOR RED}Trick or Treat House\n"
+			"Puzzle Challenge{COLOR DARK_GRAY}!\p"
 			"The TRICK MASTER recommends that\n"
 			"trainers have a three-{POKEMON} party\l"
 			"on them for the upcoming puzzles.\p"

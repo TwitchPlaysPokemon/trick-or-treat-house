@@ -166,7 +166,7 @@ void NewGameInitData(void)
     ClearSav1();
     ClearAllMail();
     gSaveBlock2Ptr->specialSaveWarpFlags = 0;
-    gSaveBlock2Ptr->sunOffset = Q_8_8(15 * 6); // Start at 3pm
+    gSaveBlock2Ptr->sunOffset = SUNOFFSET_START;
     // gSaveBlock2Ptr->gcnLinkFlags = 0;
     InitPlayerTrainerId();
     PlayTimeCounter_Reset();

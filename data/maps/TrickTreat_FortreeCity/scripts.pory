@@ -17,7 +17,9 @@ TrickTreat_FortreeCity_Intro:
 	.string "Trick-or-Treating again?\p"
 	.string "{JOEY} figured out how to point\n"
 	.string "the door to Fortree City!\p"
-	.string "I've always wanted to visit there.\n"
+	.string "B-Before he got into a massive fight\n"
+	.string "with {IRENE} over something… Anyway…!\p"
+	.string "I've always wanted to visit Fortree!\n"
 	.string "Being able to live in a tree house\l"
 	.string "would be so cool!\p"
 	.string "Let's go!$"
@@ -34,16 +36,17 @@ TrickTreat_FortreeCity_Dev:
 	.string "Seriously, why have a tree city if\n"
 	.string "you're not gonna make the most of it?$"
 TrickTreat_FortreeCity_Friend:
-	.string "I wonder how far away I can\n"
-	.string "point the TRICK MASTER's door…\p"
-	.string "It could go theoretically anywhere,\n"
-	.string "right? He's already given us puzzles\l"
-	.string "in far away regions, after all…$"
+	.string "Oh boy!\n"
+	.string "I should NOT have gone to Fortree!\p"
+	.string "How do those people LIVE there?!\n"
+	.string "Under constant threat of falling off?!\p"
+	.string "I don't understand why ANYONE would want\n"
+	.string "to live so high off the ground like that!$"
 .align 2
 TrickTreat_FortreeCity_Variables:
 	.2byte VAR_INTRO_PERSON,    TTH_FRIEND_JAMES
 	.2byte VAR_QUIP_PERSON,     TTH_FRIEND_JAMES
-	.2byte VAR_ENDROOM_FRIEND,  TTH_FRIEND_JOEY
+	.2byte VAR_ENDROOM_FRIEND,  TTH_FRIEND_MAY
 	.2byte 0
 TrickTreat_FortreeCity_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01

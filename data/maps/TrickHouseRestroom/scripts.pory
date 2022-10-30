@@ -1,25 +1,11 @@
 mapscripts TrickHouseRestroom_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
+		// See scenes.pory
 		call(TrickHouseRestroom_OnLoad_Breeder)
 		call(TrickHouseRestroom_OnLoad_Birch)
-		call(TrickHouseRestroom_OnLoad_Wally)
 		call(TrickHouseRestroom_OnLoad_Friends)
-		
-		// setvar(VAR_0x8000, MAP_TRICK_TREAT_PETALBURG_CITY)
-		// callnative(CheckIfNextPuzzleIs)
-		// if (var(VAR_RESULT)) {
-		// 	setvar(VAR_TEMP_B, 1)
-		// 	setobjectmovementtype(19, MOVEMENT_TYPE_FACE_RIGHT)
-		// 	setobjectxyperm(19, 11, 8)
-		// 	setobjectmovementtype(20, MOVEMENT_TYPE_FACE_UP)
-		// 	setobjectxyperm(20, 12, 9)
-		// 	setobjectmovementtype(21, MOVEMENT_TYPE_FACE_UP)
-		// 	setobjectxyperm(21, 13, 9)
-		// }
+		call(TrickHouseRestroom_OnLoad_CleanupDuplicates)
 	}
-	MAP_SCRIPT_ON_FRAME_TABLE [
-		VAR_TEMP_A, 1: TrickHouseRestroom_EventScript_IntroCutscene
-	]
 }
 
 // ----------------------------------------------------

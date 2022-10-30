@@ -64,6 +64,7 @@ script Puzzle_Loss_Floor2_EventScript_Woman {
 	msgbox ("A woman is lying here in bed, holding\n"
 			"her stomach…\p"
 			"Oh hey, there's a scroll here!$")
+	setvar (VAR_PUZZLE_ADVANCEMENT, 3)
 	goto (PuzzleCommon_EventScript_Scroll)
 }
 
@@ -133,6 +134,7 @@ script Puzzle_Loss_Floor2_EventScript_AfterKickout {
 	setvar (VAR_LAST_WARP_ID, -1)
 	setflag (FLAG_CENTER_INCIDENT)
 	setmetatile (18, 3, METATILE_LockedDoor, TRUE)
+	setobjectxyperm(LID_FOLLOWER, 17, 4)
 }
 
 

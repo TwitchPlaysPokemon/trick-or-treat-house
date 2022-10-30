@@ -169,4 +169,6 @@
 #define CONNECTION_DIVE     5
 #define CONNECTION_EMERGE   6
 
+#define SUNOFFSET_START  Q_8_8(15 * 6) // Start at 3pm
+
 #endif // GUARD_CONSTANTS_GLOBAL_H

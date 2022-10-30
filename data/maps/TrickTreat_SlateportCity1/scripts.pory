@@ -230,10 +230,13 @@ script TrickTreat_SlateportCity1_TriggerScript_Reporter {
 
 
 script TrickTreat_SlateportCity1_EventScript_ShopkeepA {
-	msgbox ("Pupkins for sale!$", MSGBOX_NPC)
+	msgbox ("Pumpkins for sale!$", MSGBOX_NPC)
 }
 script TrickTreat_SlateportCity1_EventScript_Fisher {
 	msgbox ("Fish for sale!$", MSGBOX_NPC)
+}
+script TrickTreat_SlateportCity1_EventScript_ShopkeepB {
+	msgbox ("Pumpkins for sale!$", MSGBOX_NPC)
 }
 
 script TrickTreat_SlateportCity1_EventScript_WallaceFan1 {

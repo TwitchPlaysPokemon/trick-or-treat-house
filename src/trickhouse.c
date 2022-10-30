@@ -911,6 +911,8 @@ static void Task_PuzzleSelect(u8 taskId)
         	VarSet(VAR_CURRENT_PUZZLE, tSelected-1+DEBUG_PUZZLE_START);
 		else
 			VarSet(VAR_CURRENT_PUZZLE, tSelected-1);
+		SetGameStat(GAME_STAT_NUM_PUZZLES_COMPLETED, tSelected-2);
+		gSaveBlock2Ptr->sunOffset = SUNOFFSET_START + Q_8_8(tSelected / 2);
 		goto exit;
     }
     else if (gMain.newKeys & B_BUTTON)
@@ -1149,6 +1151,18 @@ void CheckNextPuzzleMap(struct ScriptContext *ctx)
 	u16 i = VarGet(VAR_CURRENT_PUZZLE);
 	i++;
 	if (i < DEBUG_PUZZLE_START)
+		gSpecialVar_Result = gPuzzleList[i];
+	else
+		gSpecialVar_Result = gDebugPuzzles[i-DEBUG_PUZZLE_START];
+}
+
+void CheckPreviousPuzzleMap(struct ScriptContext *ctx)
+{
+	u16 i = VarGet(VAR_CURRENT_PUZZLE);
+	i--;
+	if (i < 0) 
+		gSpecialVar_Result = MAP_UNDEFINED;
+	else if (i < DEBUG_PUZZLE_START)
 		gSpecialVar_Result = gPuzzleList[i];
 	else
 		gSpecialVar_Result = gDebugPuzzles[i-DEBUG_PUZZLE_START];

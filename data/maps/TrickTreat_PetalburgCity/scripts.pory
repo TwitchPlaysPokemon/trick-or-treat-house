@@ -21,20 +21,20 @@ TrickTreat_PetalburgCity_Intro:
 	.string "or anything. How about a bit of a break?\p"
 	.string "See, me and the others figured out how\n"
 	.string "to make the door point to places.\p"
-	.string "And the TRICK MASTER seems to be off\n"
+	.string "And the Trick Master seems to be off\n"
 	.string "somewhere else right now…\p"
 	.string "So… we pointed the door to Petalburg!\n"
 	.string "We're gonna go Trick or Treating there!\p"
 	.string "Com'on! It'll be fun!$"
 TrickTreat_PetalburgCity_Quip:
-	.string "Apparently the TRICK MASTER\n"
+	.string "Apparently the Trick Master\n"
 	.string "was too caught up in other people's\l"
 	.string "puzzles to notice our absence…\p"
 	.string "Time for more puzzles then!$"
 TrickTreat_PetalburgCity_Friend:
 	.string "Hey, {PLAYER}. Was that gym\n"
 	.string "leader actually your dad?\p"
-	.string "Man, his SLAKING was tough as nails…\n"
+	.string "Man, his Slaking was tough as nails…\n"
 	.string "He's not that hard on you, is he?\p"
 	.string "Huh? Oh, no reason… I'm just glad my\n"
 	.string "dad's so accepting of me. Some of my\l"
@@ -367,8 +367,8 @@ script TrickTreat_PetalburgCity_ExitYoungster {
 				"We'll have to pass on it for now.$")
 	}
 	msgbox ("Alright, time to head back to the\n"
-			"TRICK HOUSE!\p"
-			"I wonder if the TRICK MASTER will\n"
+			"Trick House!\p"
+			"I wonder if the Trick Master will\n"
 			"know we've gone?$")
 	closemessage
 	if (var(VAR_FACING) == DIR_EAST) {
