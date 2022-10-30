@@ -434,12 +434,8 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
     if (MetatileBehavior_IsPlayerFacingTVScreen(metatileBehavior, direction) == TRUE)
         return EventScript_TV;
     if (MetatileBehavior_IsPC(metatileBehavior) == TRUE) {
-        if (gMain.debugMode) return EventScript_PC;
-#if TPP_MODE
-        return EventScript_PC_DisabledAccess;
-#else
+        // if (gMain.debugMode) return EventScript_PC;
         return EventScript_PC;
-#endif
     }
     // if (MetatileBehavior_IsPokeblockFeeder(metatileBehavior) == TRUE)
     //     return EventScript_PokeBlockFeeder;

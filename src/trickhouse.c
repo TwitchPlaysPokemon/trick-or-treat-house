@@ -773,7 +773,7 @@ void CleanUpStarterMon(struct ScriptContext *ctx)
 		u8 srcSlot = addressSlots[(start + i) % 12];
 		struct BoxPokemon* mon = GetBoxedMonPtr(STARTER_BOX, srcSlot);
 		if (GetBoxMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_NONE) continue;
-		SetBoxMonAt(STARTER_BOX, destSlot, mon);
+		SetBoxMonAt(0, destSlot, mon);
 		ZeroBoxMonData(mon);
 		destSlot++;
 	}
