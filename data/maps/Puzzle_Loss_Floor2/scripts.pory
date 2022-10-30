@@ -2,9 +2,12 @@ raw `
 Puzzle_Loss_Floor2_MapScripts::
 	puzzle_info Puzzle_Loss_Name, Puzzle_Loss_Inspiration
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_Loss_Floor2_OnLoad
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Puzzle_Loss_Floor2_WarpTable
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_Loss_Floor2_FrameTable
 	.byte 0
-
+Puzzle_Loss_Floor2_WarpTable:
+	map_script_2 VAR_LAST_WARP_ID, 4, Puzzle_Loss_Floor2_EventScript_KickedOut
+	.2byte 0
 Puzzle_Loss_Floor2_FrameTable: @ 8255C41
 	map_script_2 VAR_LAST_WARP_ID, 5, Puzzle_Loss_Floor2_EventScript_WalkedInOn
 	map_script_2 VAR_LAST_WARP_ID, 4, Puzzle_Loss_Floor2_EventScript_AfterKickout
@@ -130,11 +133,17 @@ PetalburgCity_PokemonCenter_2F_Movement_WalkedInOn:
 	step_end
 `
 
+script Puzzle_Loss_Floor2_EventScript_KickedOut {
+	callnative(SetFollowerForManualWarp)
+	setobjectxyperm(LID_FOLLOWER, 17, 4)
+	setobjectxy(LID_FOLLOWER, 17, 4)
+	turnobject(LID_FOLLOWER, DIR_EAST)
+}
 script Puzzle_Loss_Floor2_EventScript_AfterKickout {
 	setvar (VAR_LAST_WARP_ID, -1)
 	setflag (FLAG_CENTER_INCIDENT)
 	setmetatile (18, 3, METATILE_LockedDoor, TRUE)
-	setobjectxyperm(LID_FOLLOWER, 17, 4)
+	turnobject(LID_FOLLOWER, DIR_EAST)
 }
 
 

@@ -750,7 +750,7 @@ struct Follower
     /*0x10*/ u16 flag;
     /*0x12*/ gfxId_t graphicsId;
     /*0x14*/ u16 flags;
-    /*0x15*/ u8 locked;
+    /*0x15*/ bool8 warpManual:1;
 }; /* size = 0x18 */
 
 

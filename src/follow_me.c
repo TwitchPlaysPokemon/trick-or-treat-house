@@ -140,7 +140,9 @@ void HideFollower()
         gObjectEvents[GetFollowerMapObjId()].fieldEffectSpriteId = 0; //Unbind
     }
 
-    gObjectEvents[GetFollowerMapObjId()].invisible = TRUE;
+    if (!gSaveBlock2Ptr->follower.warpManual) {
+        gObjectEvents[GetFollowerMapObjId()].invisible = TRUE;
+    }
 }
 
 /*
@@ -156,8 +158,9 @@ void IsFollowerStoppingRockClimb(void)
 
 void FollowMe_SetIndicatorToComeOutDoor(void)
 {
-    if (gSaveBlock2Ptr->follower.inProgress)
-        gSaveBlock2Ptr->follower.comeOutDoorStairs = 1;
+    if (!gSaveBlock2Ptr->follower.inProgress) return;
+    if (gSaveBlock2Ptr->follower.warpManual) return;
+    gSaveBlock2Ptr->follower.comeOutDoorStairs = 1;
 }
 
 void FollowMe_SetIndicatorToRecreateSurfBlob(void)
@@ -261,7 +264,8 @@ void FollowMe(struct ObjectEvent* npc, u8 state, bool8 ignoreScriptActive)
     //Check if state would cause hidden follower to reappear
     if (IsStateMovement(state) && gSaveBlock2Ptr->follower.warpEnd)
     {
-        gSaveBlock2Ptr->follower.warpEnd = 0;
+        gSaveBlock2Ptr->follower.warpEnd = FALSE;
+        gSaveBlock2Ptr->follower.warpManual = FALSE;
 
         if (gSaveBlock2Ptr->follower.comeOutDoorStairs == 1)
         {
@@ -937,8 +941,8 @@ static void Task_FollowerOutOfDoor(u8 taskId)
 
 void StairsMoveFollower(void)
 {
-    if (!gSaveBlock2Ptr->follower.inProgress)
-        return;
+    if (!gSaveBlock2Ptr->follower.inProgress) return;
+    if (gSaveBlock2Ptr->follower.warpManual) return;
 
     if (!FuncIsActiveTask(Task_FollowerHandleIndoorStairs) && gSaveBlock2Ptr->follower.comeOutDoorStairs != 2)
         CreateTask(Task_FollowerHandleIndoorStairs, 1);
@@ -1192,7 +1196,7 @@ void FollowMe_WarpSetEnd()
     player = &gObjectEvents[gPlayerAvatar.objectEventId];
     follower = &gObjectEvents[GetFollowerMapObjId()];
 
-    gSaveBlock2Ptr->follower.warpEnd = 1;
+    gSaveBlock2Ptr->follower.warpEnd = TRUE;
     PlayerLogCoordinates(player);
     
     shouldHide = TRUE;
@@ -1209,11 +1213,13 @@ void FollowMe_WarpSetEnd()
             toX += 1; shouldHide = FALSE;
         }
     }
-    MoveObjectEventToMapCoords(follower, toX, toY);
-    follower->invisible = shouldHide;
-    
-    follower->facingDirection = player->facingDirection;
-    follower->movementDirection = player->movementDirection;
+    if (!gSaveBlock2Ptr->follower.warpManual) {
+        MoveObjectEventToMapCoords(follower, toX, toY);
+        follower->invisible = shouldHide;
+        
+        follower->facingDirection = player->facingDirection;
+        follower->movementDirection = player->movementDirection;
+    }
 }
 
 void CreateFollowerAvatar(void)
@@ -1474,5 +1480,15 @@ void PlayerFaceFollowerSprite(struct ScriptContext* ctx)
 void CheckPlayerHasFollower(struct ScriptContext* ctx)
 {
     gSpecialVar_Result = gSaveBlock2Ptr->follower.inProgress;
+}
+
+void SetFollowerForManualWarp(struct ScriptContext* ctx)
+{
+    mgba_printf(MGBA_LOG_INFO, "SetFollowerForManualWarp");
+    if (!gSaveBlock2Ptr->follower.inProgress) return;
+    gSaveBlock2Ptr->follower.warpManual = TRUE;
+    struct ObjectEvent *follower = &gObjectEvents[GetFollowerMapObjId()];
+    // FollowMe_WarpSetEnd();
+    follower->invisible = FALSE;
 }
 

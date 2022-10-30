@@ -11,6 +11,12 @@ mapscripts TrickHouseExt_MapScripts {
 			setvar (VAR_INTRO_COUNTER, 1)
 			// clearflag (FLAG_HIDE_INTRO_CHARACTERS)
 		}
+		VAR_LAST_WARP_ID, 999 { // 999 = on white out (special value)
+			callnative(SetFollowerForManualWarp)
+			setobjectxyperm(LID_FOLLOWER, 40, 30)
+			setobjectxy(LID_FOLLOWER, 40, 30)
+			turnobject(LID_FOLLOWER, DIR_EAST)
+		}
 	]
 	MAP_SCRIPT_ON_FRAME_TABLE [
 	]

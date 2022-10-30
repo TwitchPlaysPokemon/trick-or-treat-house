@@ -431,10 +431,9 @@ script(local) Puzzle_Loss_FollowerScript_Irene_InPuzzle {
 				"the ones in Unova, but it's up there.$")
 		setflag(FLAG_FOLLOWER_FLAG_10)
 	}
-	elif(!flag(FLAG_TRICK_HOUSE_SCROLL_READ)) {
+	elif(flag(FLAG_TRICK_HOUSE_SCROLL_READ)) {
 		msgbox("Well, we got the scroll…\n"
 				"I guess we just… leave?$")
-		setflag(FLAG_FOLLOWER_FLAG_10)
 	}
 	else {
 		msgbox("Any idea what the puzzle is here…?$")

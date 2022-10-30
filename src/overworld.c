@@ -399,6 +399,7 @@ void DoWhiteOut(void)
     Overworld_ResetStateAfterWhiteOut();
     SetWarpDestinationToLastHealLocation();
     WarpIntoMap();
+    gSpecialVar_LastWarpId = 999;
 }
 
 void Overworld_ResetStateAfterFly(void)
