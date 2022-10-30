@@ -167,17 +167,19 @@ script TrickHouseRestroom_OnLoad_Wally {
 script TrickHouseRestroom_OnLoad_Friends {
 	call(TrickHouseRestroom_OnLoad_Wally) // setup wally first
 	
-	callnative(CheckCurrentPuzzleMap)
-	
+	// callnative(CheckCurrentPuzzleMap)
 	goto_if_eq(VAR_CURRENT_PUZZLE, ID_TRICK_TREAT_PETALBURG-1, TrickHouseRestroom_OnLoad_Friends_PlanningPetalburgh)
 	goto_if_eq(VAR_CURRENT_PUZZLE, ID_TRICK_TREAT_PETALBURG+0, TrickHouseRestroom_OnLoad_Friends_ParaPetalburgh)
+	
+	goto_if_eq(VAR_CURRENT_PUZZLE, ID_PUZZLE_LEDGE_MOUNTAIN+1, TrickHouseRestroom_OnLoad_Friends_PostLedges)
 	
 	goto_if_eq(VAR_CURRENT_PUZZLE, ID_TRICK_TREAT_FORTREE-2, TrickHouseRestroom_OnLoad_Friends_PrePreFortree)
 	goto_if_eq(VAR_CURRENT_PUZZLE, ID_TRICK_TREAT_FORTREE-1, TrickHouseRestroom_OnLoad_Friends_PreFortree)
 	goto_if_eq(VAR_CURRENT_PUZZLE, ID_TRICK_TREAT_FORTREE+0, TrickHouseRestroom_OnLoad_Friends_ParaFortree)
 	goto_if_eq(VAR_CURRENT_PUZZLE, ID_TRICK_TREAT_FORTREE+1, TrickHouseRestroom_OnLoad_Friends_PostFortree)
 	goto_if_eq(VAR_CURRENT_PUZZLE, ID_TRICK_TREAT_FORTREE+2, TrickHouseRestroom_OnLoad_Friends_AJArrives)
-	goto_if_eq(VAR_RESULT, MAP_PUZZLE_LOSS_FLOOR1, TrickHouseRestroom_OnLoad_Friends_AJArrives) // Loss puzzle
+	goto_if_eq(VAR_CURRENT_PUZZLE, ID_PUZZLE_LOSS_FLOOR1, TrickHouseRestroom_OnLoad_Friends_AJArrives) // Loss puzzle
+	// goto_if_eq(VAR_RESULT, MAP_PUZZLE_LOSS_FLOOR1, TrickHouseRestroom_OnLoad_Friends_AJArrives) // Loss puzzle
 	
 	goto_if_eq(VAR_CURRENT_PUZZLE, ID_TRICK_TREAT_MOSSDEEP-1, TrickHouseRestroom_OnLoad_Friends_PreMossdeep)
 	goto_if_eq(VAR_CURRENT_PUZZLE, ID_TRICK_TREAT_MOSSDEEP+0, TrickHouseRestroom_OnLoad_Friends_ParaMossdeep)
@@ -212,6 +214,7 @@ script TrickHouseRestroom_EventScript_VisitorWally {
 	speakername_common(WALLY)
 	goto_if_eq(VAR_WALLY_STATE, 1, TrickHouseRestroom_EventScript_VisitorWally_PostPetalburgh)
 	goto_if_eq(VAR_WALLY_STATE, 2, TrickHouseRestroom_EventScript_VisitorWally_PostFortree)
+	goto_if_eq(VAR_WALLY_STATE, 3, TrickHouseRestroom_EventScript_VisitorWally_PostLedges)
 	goto_if_eq(VAR_WALLY_STATE, 101, TrickHouseRestroom_EventScript_VisitorWally_PreFortree)
 	goto_if_eq(VAR_WALLY_STATE, 102, TrickHouseRestroom_EventScript_VisitorWally_ParaFortree)
 	goto_if_eq(VAR_WALLY_STATE, 103, TrickHouseRestroom_EventScript_VisitorWally_AJArrives)
@@ -244,6 +247,7 @@ script TrickHouseRestroom_EventScript_VisitorJames {
 script TrickHouseRestroom_EventScript_VisitorBrendan {
 	speakername_common(BRENDAN)
 	goto_if_eq(VAR_FRIEND_GROUP_STATE, 3, TrickHouseRestroom_EventScript_VisitorBrendan_PreMossdeep)
+	goto_if_eq(VAR_FRIEND_GROUP_STATE, 12, TrickHouseRestroom_EventScript_VisitorBrendan_PostLedges)
 	release
 }
 script TrickHouseRestroom_EventScript_VisitorMay {
@@ -330,6 +334,56 @@ script TrickHouseRestroom_EventScript_VisitorWally_PostPetalburgh {
 			"the whole time! I didn't see you leave!$", MSGBOX_NPC)
 }
 
+// --------------------------------------------------------
+// Pre-Pre-Fortree
+
+script TrickHouseRestroom_OnLoad_Friends_PostLedges {
+	setvar(VAR_FRIEND_GROUP_STATE, 12)
+	setvar(VAR_WALLY_STATE, 3)
+	setobjectxyperm(LID_BRENDAN, 4, 7)  setobjectmovementtype(LID_BRENDAN, MOVEMENT_TYPE_LOOK_AROUND)
+}
+script TrickHouseRestroom_EventScript_VisitorWally_PostLedges {
+	checkplayergender
+	if (var(VAR_RESULT) == GENDER_M) {
+		faceplayer
+		message("Woah, {PLAYER}! You okay? You're\n"
+				"shaking and your costume's soaked!\p"
+				"I mean, I know Mudkips are Water type\n"
+				"and all, but this seems--\p"
+				"A storm? Where? In the puzzle?\n"
+				"Are… are you afraid of lightning?\p$")
+		waitmessage
+		applymovement(LID_PLAYER, Common_Movement_ExclamationMark)
+		playse(SE_PIN)
+		message("No, I've never been struck by\n"
+				"lightning! Have you?\p$")
+		waitmessage
+		switch(var(VAR_FACING)) {
+			case DIR_NORTH: applymovement(LID_PLAYER, Common_Movement_JumpInPlaceSouth)
+			case DIR_SOUTH: applymovement(LID_PLAYER, Common_Movement_JumpInPlaceNorth)
+			case DIR_EAST:  applymovement(LID_PLAYER, Common_Movement_JumpInPlaceWest)
+			case DIR_WEST:  applymovement(LID_PLAYER, Common_Movement_JumpInPlaceEast)
+		}
+		playse(SE_LEDGE)
+		message("Okay! Okay! I'm sorry!\n"
+				"I won't mention it again!$")
+		waitmessage
+		waitbuttonpress
+		release
+	} else {
+		msgbox ("{PLAYER}, you're dripping wet!\n"
+				"Is it raining outside?\p"
+				"In the PUZZLE it was raining?$", MSGBOX_NPC)
+		
+	}
+}
+script TrickHouseRestroom_EventScript_VisitorBrendan_PostLedges {
+	msgbox ("Storm…! Why did it have to storm…?!$", MSGBOX_NPC)
+}
+movement Common_Movement_JumpInPlaceSouth { jump_in_place_down }
+movement Common_Movement_JumpInPlaceNorth { jump_in_place_up }
+movement Common_Movement_JumpInPlaceWest { jump_in_place_left }
+movement Common_Movement_JumpInPlaceEast { jump_in_place_right }
 
 // --------------------------------------------------------
 // Pre-Pre-Fortree

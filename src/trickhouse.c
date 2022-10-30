@@ -1184,3 +1184,9 @@ void DebugSetGameStat(struct ScriptContext *ctx)
 	SetGameStat(ctx->data[1], ctx->data[0]);
 }
 
+void DebugSetGender(struct ScriptContext *ctx)
+{
+	gSaveBlock2Ptr->playerGender = ctx->locals[0];
+	SetWarpDestination(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum, -1, gSaveBlock1Ptr->location.x, gSaveBlock1Ptr->location.y);
+}
+

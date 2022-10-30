@@ -16,7 +16,7 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_RED",
-      "x": 4,
+      "x": 0,
       "y": 6,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -38,19 +38,6 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TrickHouseDevEntrance_EventScript_Pokeball",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_BARD",
-      "x": 8,
-      "y": 5,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "TrickHouseDevEntrance_EventScript_SoundTest",
       "flag": "0"
     },
     {
@@ -90,6 +77,45 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MetaPuzzle_PickupEvent_DebugGetAll",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "TTH_FRIEND_ALEX",
+      "x": 4,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TrickHouseDevEntrance_EventScript_ChangeCostume_Alex",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "TTH_FRIEND_BRENDAN",
+      "x": 5,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TrickHouseDevEntrance_EventScript_ChangeCostume_Brendan",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "TTH_FRIEND_MAY",
+      "x": 6,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TrickHouseDevEntrance_EventScript_ChangeCostume_May",
       "flag": "0"
     }
   ],

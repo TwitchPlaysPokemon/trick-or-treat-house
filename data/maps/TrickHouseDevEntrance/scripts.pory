@@ -67,6 +67,31 @@ script TrickHouseDevEntrance_EventScript_Pokeball {
 	release
 }
 
+script TrickHouseDevEntrance_EventScript_ChangeCostume_Alex {
+	msgbox ("Change costume?", MSGBOX_YESNO)
+	goto_if_eq(VAR_RESULT, NO, Common_EventScript_ReleaseEnd)
+	loadarg(0, GENDER_N)
+	callnative(DebugSetGender) // sets warp as well
+	dowarp(WARPTYPE_STANDARD)
+	waitstate
+}
+script TrickHouseDevEntrance_EventScript_ChangeCostume_Brendan {
+	msgbox ("Change costume?", MSGBOX_YESNO)
+	goto_if_eq(VAR_RESULT, NO, Common_EventScript_ReleaseEnd)
+	loadarg(0, GENDER_M)
+	callnative(DebugSetGender) // sets warp as well
+	dowarp(WARPTYPE_STANDARD)
+	waitstate
+}
+script TrickHouseDevEntrance_EventScript_ChangeCostume_May {
+	msgbox ("Change costume?", MSGBOX_YESNO)
+	goto_if_eq(VAR_RESULT, NO, Common_EventScript_ReleaseEnd)
+	loadarg(0, GENDER_F)
+	callnative(DebugSetGender) // sets warp as well
+	dowarp(WARPTYPE_STANDARD)
+	waitstate
+}
+
 script TrickHouseDevEntrance_EventScript_SoundTest {
 	lockall
 	applymovement(THIS_EVENT, Common_Movement_QuestionMark)

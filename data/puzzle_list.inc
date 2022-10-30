@@ -3,8 +3,12 @@
 @ a slow rising level of difficulty of the puzzle, but also there should
 @ be easy puzzles after particularly hard puzzles for a bit of respite.
 
-.macro declare_puzzle puz:req
-inc __enum__
+.macro declare_puzzle puz:req, e
+.ifb \e
+    inc __enum__
+.else
+    enum \e
+.endif
 .2byte \puz
 .endm
 
@@ -19,13 +23,12 @@ gPuzzleList::                                           @ Puzzle Type(s)
     declare_puzzle MAP_PUZZLE_WILKE                     @  FOLLOW/TUTORIAL
     declare_puzzle MAP_PUZZLE_TRAINER_HILL1             @  BATTLE/MAZE
     
-        enum ID_TRICK_TREAT_PETALBURG
-    .2byte  MAP_TRICK_TREAT_PETALBURG_CITY       @  TRICK
+    declare_puzzle MAP_TRICK_TREAT_PETALBURG_CITY, ID_TRICK_TREAT_PETALBURG       @  TRICK
     
     declare_puzzle MAP_PUZZLE_TRICK_HOUSE_ORIGINAL3     @  LOGIC (Toggle Doors)
     declare_puzzle MAP_PUZZLE_ICE_PATH                  @  MAZE
     declare_puzzle MAP_PUZZLE_TWIN_MEMORIES             @  LOGIC
-    declare_puzzle MAP_PUZZLE_LEDGE_MOUNTAIN            @  WILD/MOVEMENT
+    declare_puzzle MAP_PUZZLE_LEDGE_MOUNTAIN, ID_PUZZLE_LEDGE_MOUNTAIN @  WILD/MOVEMENT
     declare_puzzle MAP_PUZZLE_TRAINER_HILL2             @  BATTLE/MAZE
     declare_puzzle MAP_PUZZLE_TRICK_HOUSE_ORIGINAL4     @  BATTLE/MOVEMENT (Boulders)
     declare_puzzle MAP_PUZZLE_TIN_TOWER_CLIMB           @  WILD/MAZE
@@ -33,12 +36,11 @@ gPuzzleList::                                           @ Puzzle Type(s)
     declare_puzzle MAP_PUZZLE_FALLING_WATER             @  ITEM/MOVEMENT
     declare_puzzle MAP_PUZZLE_SOOTOPOLIS_GYM            @  MOVEMENT
     
-        enum ID_TRICK_TREAT_FORTREE
-    .2byte  MAP_TRICK_TREAT_FORTREE_CITY         @  TRICK
+    declare_puzzle MAP_TRICK_TREAT_FORTREE_CITY, ID_TRICK_TREAT_FORTREE         @  TRICK
     
     declare_puzzle MAP_PUZZLE_TRICK_HOUSE_ORIGINAL5     @  MOVEMENT/MAZE (RSE Slide Tiles)
     declare_puzzle MAP_PUZZLE_HIDDEN_MAZE               @  BATTLE/MAZE
-    declare_puzzle MAP_PUZZLE_LOSS_FLOOR1               @  MEME/LOGIC
+    declare_puzzle MAP_PUZZLE_LOSS_FLOOR1, ID_PUZZLE_LOSS_FLOOR1  @  MEME/LOGIC
     declare_puzzle MAP_PUZZLE_TRICK_HOUSE_SLIP_SLIDING  @  BATTLE/MOVEMENT
     declare_puzzle MAP_PUZZLE_SUSPENDED_MAZE            @  MAZE
     declare_puzzle MAP_PUZZLE_SPOT_DIFFERENCE_HALLWAY   @  BATTLE/LOGIC
@@ -46,8 +48,7 @@ gPuzzleList::                                           @ Puzzle Type(s)
     declare_puzzle MAP_PUZZLE_TRAINER_HILL3             @  BATTLE/MAZE
     declare_puzzle MAP_PUZZLE_TRICK_HOUSE_ORIGINAL6     @  MOVEMENT/MAZE (Rot Gates)
     
-        enum ID_TRICK_TREAT_MOSSDEEP
-    .2byte  MAP_TRICK_TREAT_MOSSDEEP_CITY        @  TRICK
+    declare_puzzle MAP_TRICK_TREAT_MOSSDEEP_CITY, ID_TRICK_TREAT_MOSSDEEP       @  TRICK
     
     declare_puzzle MAP_PUZZLE_TIC_RAC_TOE               @  FOLLOW/BATTLE
     declare_puzzle MAP_PUZZLE_ELITE_FLOOR               @  MOVEMENT/MAZE
@@ -58,10 +59,8 @@ gPuzzleList::                                           @ Puzzle Type(s)
     declare_puzzle MAP_PUZZLE_TRICK_HOUSE_ORIGINAL8     @  BATTLE/MOVEMENT (Ice Floor)
     declare_puzzle MAP_PUZZLE_LOST_WOODS4_ENTRANCE      @  MAZE
     @ 37
-        enum ID_PUZZLE_SAFARI
-    .2byte  MAP_PUZZLE_SAFARI_IMPOSTERS          @  LOGIC
-        enum ID_PUZZLE_META
-    .2byte  MAP_PUZZLE_META_PUZZLE
+    declare_puzzle MAP_PUZZLE_SAFARI_IMPOSTERS, ID_PUZZLE_SAFARI          @  LOGIC
+    declare_puzzle MAP_PUZZLE_META_PUZZLE, ID_PUZZLE_META
     declare_puzzle MAP_PUZZLE_CREDITS                   @  MINIGAME (Must be last)
 @   .2byte MAP_TRICK_TREAT_SLATEPORT_CITY1  @ (Not actually a puzzle)
     .2byte 0xFFFF
