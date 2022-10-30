@@ -183,22 +183,6 @@ script TrickHouseRestroom_OnLoad_Friends {
 	goto_if_eq(VAR_CURRENT_PUZZLE, ID_TRICK_TREAT_MOSSDEEP+0, TrickHouseRestroom_OnLoad_Friends_ParaMossdeep)
 	
 	
-	// callnative(CheckNextPuzzleMap)
-	// goto_if_eq(VAR_RESULT, MAP_TRICK_TREAT_PETALBURG_CITY, TrickHouseRestroom_OnLoad_Friends_PlanningPetalburgh)
-	// goto_if_eq(VAR_RESULT, MAP_TRICK_TREAT_FORTREE_CITY, TrickHouseRestroom_OnLoad_Friends_PreFortree)
-	// goto_if_eq(VAR_RESULT, MAP_TRICK_TREAT_MOSSDEEP_CITY, TrickHouseRestroom_OnLoad_Friends_PreMossdeep)
-	
-	// callnative(CheckPreviousPuzzleMap)
-	// goto_if_eq(VAR_RESULT, MAP_TRICK_TREAT_FORTREE_CITY, TrickHouseRestroom_OnLoad_Friends_PostFortree)
-	
-	// callnative(CheckCurrentPuzzleMap)
-	// goto_if_eq(VAR_RESULT, MAP_TRICK_TREAT_PETALBURG_CITY, TrickHouseRestroom_OnLoad_Friends_ParaPetalburgh)
-	// goto_if_eq(VAR_RESULT, MAP_TRICK_TREAT_FORTREE_CITY, TrickHouseRestroom_OnLoad_Friends_ParaFortree)
-	// goto_if_eq(VAR_RESULT, MAP_TRICK_TREAT_MOSSDEEP_CITY, TrickHouseRestroom_OnLoad_Friends_ParaMossdeep)
-	// // two puzzles after fortree:
-	// goto_if_eq(VAR_RESULT, MAP_PUZZLE_HIDDEN_MAZE, TrickHouseRestroom_OnLoad_Friends_AJArrives)
-	// goto_if_eq(VAR_RESULT, MAP_PUZZLE_LOSS_FLOOR1, TrickHouseRestroom_OnLoad_Friends_AJArrives)
-	
 }
 script TrickHouseRestroom_OnLoad_CleanupDuplicates {
 	// Finally, ensure that friends who are currently followers do not show up here

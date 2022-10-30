@@ -188,6 +188,60 @@
       "var": "VAR_PUZZLE_00",
       "var_value": "0",
       "script": "Puzzle_LedgeMountain_TriggerScript_Intro"
+    },
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 7,
+      "elevation": 0,
+      "var": "VAR_RUN_TRIGGER_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Puzzle_LedgeMountain_StartRain"
+    },
+    {
+      "type": "trigger",
+      "x": 23,
+      "y": 27,
+      "elevation": 0,
+      "var": "VAR_RUN_TRIGGER_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Puzzle_LedgeMountain_StartStorm"
+    },
+    {
+      "type": "trigger",
+      "x": 31,
+      "y": 40,
+      "elevation": 0,
+      "var": "VAR_RUN_TRIGGER_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Puzzle_LedgeMountain_StartStorm"
+    },
+    {
+      "type": "trigger",
+      "x": 25,
+      "y": 29,
+      "elevation": 0,
+      "var": "VAR_RUN_TRIGGER_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Puzzle_LedgeMountain_StartStorm"
+    },
+    {
+      "type": "trigger",
+      "x": 26,
+      "y": 28,
+      "elevation": 0,
+      "var": "VAR_RUN_TRIGGER_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Puzzle_LedgeMountain_StartStorm"
+    },
+    {
+      "type": "trigger",
+      "x": 27,
+      "y": 27,
+      "elevation": 0,
+      "var": "VAR_RUN_TRIGGER_IMMEDIATELY",
+      "var_value": "0",
+      "script": "Puzzle_LedgeMountain_StartStorm"
     }
   ],
   "bg_events": [
