@@ -1,7 +1,7 @@
 #define MULTI_COLUMN_MODE
 static const u8 gCreditsText_EmptyString[] = _("");
 static const u8 gCreditsText_TRICKORTREATHOUSE[] = _("TRICK OR TREAT HOUSE");
-static const u8 gCreditsText_2020[] = _("2020");
+static const u8 gCreditsText_Halloween2022[] = _("Halloween 2022");
 static const u8 gCreditsText_HackCredits[] = _("Hack Credits");
 static const u8 gCreditsText_OriginalConceptand[] = _("Original Concept and");
 static const u8 gCreditsText_ProjectOrganizers[] = _("Project Organizers");
@@ -27,11 +27,12 @@ static const u8 gCreditsText_CustomCreditsMusic[] = _("Custom Credits Music");
 static const u8 gCreditsText_ArrangedbyDarrenAng[] = _("Arranged by Darren Ang,");
 static const u8 gCreditsText_MusicMike512andTustin2121[] = _("MusicMike512, and Tustin2121");
 static const u8 gCreditsText_BetaTesters[] = _("Beta Testers");
-static const u8 gCreditsText_M4UsedRollout[] = _("M4 Used Rollout");
+static const u8 gCreditsText_fenris2142[] = _("fenris2142");
 static const u8 gCreditsText_mathfreak231[] = _("mathfreak231");
 static const u8 gCreditsText_TheTPPChat[] = _("The TPP Chat");
-static const u8 gCreditsText_red031000[] = _("red031000");
+static const u8 gCreditsText_myRattata[] = _("myRattata");
 static const u8 gCreditsText_Kiloby[] = _("Kiloby");
+static const u8 gCreditsText_red031000[] = _("red031000");
 static const u8 gCreditsText_SpecialThanksTo[] = _("Special Thanks To");
 static const u8 gCreditsText_Kurausukun[] = _("Kurausukun");
 static const u8 gCreditsText_TeamAquasHideout[] = _("TeamAquasHideout");
@@ -43,7 +44,6 @@ static const u8 gCreditsText_TheTwitchPlaysPkmnCommunity[] = _("The TwitchPlaysP
 static const u8 gCreditsText_PuzzleSubmissions2019[] = _("Puzzle Submissions 2019");
 static const u8 gCreditsText_Wilke0[] = _("Wilke0");
 static const u8 gCreditsText_Chfoo[] = _("Chfoo");
-static const u8 gCreditsText_myRattata[] = _("myRattata");
 static const u8 gCreditsText_PuzzleSubmissions2020[] = _("Puzzle Submissions 2020");
 static const u8 gCreditsText_Pfaccioxx[] = _("Pfaccioxx");
 static const u8 gCreditsText_markenzo51[] = _("markenzo51");
@@ -189,7 +189,7 @@ static const u8 gCreditsText_SatoruIwata[] = _("Satoru Iwata");
 static const u8 gCreditsText_TsunekazIshihara[] = _("Tsunekaz Ishihara");
 static const struct CreditsEntry gCreditsEntry_EmptyString[] = {0, FALSE, gCreditsText_EmptyString};
 static const struct CreditsEntry gCreditsEntry_TRICKORTREATHOUSE[] = {FALSE, TRUE, gCreditsText_TRICKORTREATHOUSE};
-static const struct CreditsEntry gCreditsEntry_2020[] = {FALSE, TRUE, gCreditsText_2020};
+static const struct CreditsEntry gCreditsEntry_Halloween2022[] = {FALSE, TRUE, gCreditsText_Halloween2022};
 static const struct CreditsEntry gCreditsEntry_HackCredits[] = {FALSE, TRUE, gCreditsText_HackCredits};
 static const struct CreditsEntry gCreditsEntry_OriginalConceptand[] = {FALSE, TRUE, gCreditsText_OriginalConceptand};
 static const struct CreditsEntry gCreditsEntry_ProjectOrganizers[] = {FALSE, TRUE, gCreditsText_ProjectOrganizers};
@@ -215,11 +215,12 @@ static const struct CreditsEntry gCreditsEntry_CustomCreditsMusic[] = {FALSE, TR
 static const struct CreditsEntry gCreditsEntry_ArrangedbyDarrenAng[] = {FALSE, FALSE, gCreditsText_ArrangedbyDarrenAng};
 static const struct CreditsEntry gCreditsEntry_MusicMike512andTustin2121[] = {FALSE, FALSE, gCreditsText_MusicMike512andTustin2121};
 static const struct CreditsEntry gCreditsEntry_BetaTesters[] = {FALSE, TRUE, gCreditsText_BetaTesters};
-static const struct CreditsEntry gCreditsEntry_M4UsedRollout[] = {FALSE, FALSE, gCreditsText_M4UsedRollout};
+static const struct CreditsEntry gCreditsEntry_fenris2142[] = {FALSE, FALSE, gCreditsText_fenris2142};
 static const struct CreditsEntry gCreditsEntry_mathfreak231[] = {FALSE, FALSE, gCreditsText_mathfreak231};
 static const struct CreditsEntry gCreditsEntry_TheTPPChat[] = {FALSE, FALSE, gCreditsText_TheTPPChat};
-static const struct CreditsEntry gCreditsEntry_red031000[] = {FALSE, FALSE, gCreditsText_red031000};
+static const struct CreditsEntry gCreditsEntry_myRattata[] = {FALSE, FALSE, gCreditsText_myRattata};
 static const struct CreditsEntry gCreditsEntry_Kiloby[] = {FALSE, FALSE, gCreditsText_Kiloby};
+static const struct CreditsEntry gCreditsEntry_red031000[] = {FALSE, FALSE, gCreditsText_red031000};
 static const struct CreditsEntry gCreditsEntry_SpecialThanksTo[] = {FALSE, TRUE, gCreditsText_SpecialThanksTo};
 static const struct CreditsEntry gCreditsEntry_Kurausukun[] = {FALSE, FALSE, gCreditsText_Kurausukun};
 static const struct CreditsEntry gCreditsEntry_TeamAquasHideout[] = {FALSE, FALSE, gCreditsText_TeamAquasHideout};
@@ -231,7 +232,6 @@ static const struct CreditsEntry gCreditsEntry_TheTwitchPlaysPkmnCommunity[] = {
 static const struct CreditsEntry gCreditsEntry_PuzzleSubmissions2019[] = {FALSE, TRUE, gCreditsText_PuzzleSubmissions2019};
 static const struct CreditsEntry gCreditsEntry_Wilke0[] = {FALSE, FALSE, gCreditsText_Wilke0};
 static const struct CreditsEntry gCreditsEntry_Chfoo[] = {FALSE, FALSE, gCreditsText_Chfoo};
-static const struct CreditsEntry gCreditsEntry_myRattata[] = {FALSE, FALSE, gCreditsText_myRattata};
 static const struct CreditsEntry gCreditsEntry_PuzzleSubmissions2020[] = {FALSE, TRUE, gCreditsText_PuzzleSubmissions2020};
 static const struct CreditsEntry gCreditsEntry_Pfaccioxx[] = {FALSE, FALSE, gCreditsText_Pfaccioxx};
 static const struct CreditsEntry gCreditsEntry_markenzo51[] = {FALSE, FALSE, gCreditsText_markenzo51};
@@ -382,7 +382,7 @@ static const struct CreditsEntry *const gCreditsEntryPointerTable[][10] =
 	{
 		_,
 		gCreditsEntry_TRICKORTREATHOUSE,
-		gCreditsEntry_2020,
+		gCreditsEntry_Halloween2022,
 		gCreditsEntry_HackCredits,
 		_,
 		NULL,
@@ -477,14 +477,14 @@ static const struct CreditsEntry *const gCreditsEntryPointerTable[][10] =
 	},
 	{
 		gCreditsEntry_BetaTesters,
-		gCreditsEntry_M4UsedRollout,
+		gCreditsEntry_M4usedrollout,
+		gCreditsEntry_fenris2142,
 		gCreditsEntry_mathfreak231,
 		gCreditsEntry_TheTPPChat,
-		_,
 		NULL,
-		gCreditsEntry_red031000,
+		gCreditsEntry_myRattata,
 		gCreditsEntry_Kiloby,
-		NULL,
+		gCreditsEntry_red031000,
 		NULL,
 	},
 	{
