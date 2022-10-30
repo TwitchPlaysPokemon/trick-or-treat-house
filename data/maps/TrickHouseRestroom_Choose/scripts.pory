@@ -252,8 +252,16 @@ script(local) TrickHouseRestroom_EventScript_PokemonChoose {
 }
 
 script TrickHouseRestroom_SignScript_BlockPC {
-	msgbox ("There's a sign on this that says\n"
-			"“Currently out of order”.$", MSGBOX_SIGN)
+	msgbox ("It's currently showing a blue screen\n"
+			"of death.$", MSGBOX_SIGN)
+}
+script TrickHouseRestroom_EventScript_BlockPC {
+	msgbox( "Hm? What? Can't you see I'm busy fixing\n"
+			"this hunk of junk right now?\p"
+			"Go… I dunno, pick out some {POKEMON}\n"
+			"or whatever you're doing over there…$", MSGBOX_NPC)
+	applymovement(THIS_EVENT, Common_Movement_FaceUp)
+	waitmovement(THIS_EVENT)
 }
 
 raw `
