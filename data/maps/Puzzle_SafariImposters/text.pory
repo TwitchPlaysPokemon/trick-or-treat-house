@@ -60,10 +60,10 @@ Puzzle_SafariImposters_TalkTable_JoeyAlibi:
 	.4byte Puzzle_SafariImposters_Text_JoeyAlibi5b
 	.4byte Puzzle_SafariImposters_Text_JoeyAlibi5a
 	.4byte Puzzle_SafariImposters_Text_JoeyAlibi5b
-	.4byt4 Puzzle_SafariImposters_Text_JoeyAlibi6a
-	.4byt4 Puzzle_SafariImposters_Text_JoeyAlibi6b
-	.4byt4 Puzzle_SafariImposters_Text_JoeyAlibi6a
-	.4byt4 Puzzle_SafariImposters_Text_JoeyAlibi6b
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi6a
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi6b
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi6a
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi6b
 	.4byte 0
 Puzzle_SafariImposters_TalkTable_JoeyImposter:
 	.4byte Puzzle_SafariImposters_Text_JoeyAlibi1a
@@ -82,10 +82,10 @@ Puzzle_SafariImposters_TalkTable_JoeyImposter:
 	.4byte Puzzle_SafariImposters_Text_JoeyAlibi4b
 	.4byte Puzzle_SafariImposters_Text_JoeyAlibi4a
 	.4byte Puzzle_SafariImposters_Text_JoeyAlibi4b
-	.4byt4 Puzzle_SafariImposters_Text_JoeyAlibi6a_I
-	.4byt4 Puzzle_SafariImposters_Text_JoeyAlibi6b
-	.4byt4 Puzzle_SafariImposters_Text_JoeyAlibi6a_I
-	.4byt4 Puzzle_SafariImposters_Text_JoeyAlibi6b_I
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi6a_I
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi6b
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi6a_I
+	.4byte Puzzle_SafariImposters_Text_JoeyAlibi6b_I
 	.4byte 0
 Puzzle_SafariImposters_TalkTable_JoeyAccuse:
 	.4byte Puzzle_SafariImposters_Text_JoeyAccusePlayer
