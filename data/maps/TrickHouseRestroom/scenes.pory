@@ -658,7 +658,7 @@ script TrickHouseRestroom_OnLoad_Friends_PreMossdeep {
 }
 script TrickHouseRestroom_EventScript_VisitorJoey_PreMossdeep {
 	msgbox( "Alright, guys! Not all at once!\p"
-			"Working out the rune coordinates is hard\p"
+			"Working out the rune coordinates is hard\n"
 			"enough without everyone yelling at me!$", MSGBOX_SIGN)
 }
 script TrickHouseRestroom_EventScript_VisitorIrene_PreMossdeep {
@@ -696,7 +696,7 @@ script TrickHouseRestroom_EventScript_VisitorAJ_PreMossdeep {
 script TrickHouseRestroom_EventScript_VisitorWally_PreMossdeep {
 	msgbox( "This is chaos! No one can decide where\n"
 			"to trick-or-treat next.\p"
-			"Joey figures we've got one more chance\p"
+			"Joey figures we've got one more chance\n"
 			"to do this tonight, before it gets too\l"
 			"late to Trick-or-Treat.$", MSGBOX_NPC)
 }
@@ -714,7 +714,7 @@ script TrickHouseRestroom_OnLoad_Friends_ParaMossdeep {
 script TrickHouseRestroom_EventScript_Note_PreMossdeep {
 	msgbox ("There's a ton of random notes and runes\n"
 			"on it.\p"
-			"In the corner, circles five times, is\n"
+			"In the corner, circled five times, is\n"
 			"the word “Mossdeep”.", MSGBOX_SIGN)
 }
 
