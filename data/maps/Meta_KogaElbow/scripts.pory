@@ -126,11 +126,63 @@ script Meta_KogaElbow_TriggerScript_CheckpointLocation {
 
 script Meta_KogaElbow_EventScript_Azumarill {
 	msgbox ("This Azumarill seems to be giggling\n"
-			"at your pain.$", MSGBOX_AUTOCLOSE)
+			"menacingly.$", MSGBOX_AUTOCLOSE)
 }
 
 script Meta_KogaElbow_EventScript_Tustin {
-	msgbox ("This Azumarill seems to be giggling\n"
-			"at your pain.$", MSGBOX_AUTOCLOSE)
+	trainerbattle_single(TRAINER_01,
+			"Okay, you're not getting by that easily!\n"
+			"Time for a Secret Dev Boss Battle!$",
+			"I don't know what I expected. I'm\n"
+			"terrible at competitive battling.$")
+	msgbox ("Really, I just wanted to use the custom\n"
+			"trainer sprite I made for myself.\l"
+			"I made it like ten years ago for kicks.$", MSGBOX_AUTOCLOSE)
+}
+
+script Meta_KogaElbow_EventScript_CameraMan {
+	msgbox ("You're on candid camera! Smile!$", MSGBOX_AUTOCLOSE)
+}
+
+script Meta_KogaElbow_EventScript_GBAKid {
+	msgbox ("I was told by Ms. Flannery to stand\n"
+			"here and stare in this direction.\p"
+			"It's a good thing I brought my game\n"
+			"'cause this is BORING!$", MSGBOX_AUTOCLOSE)
+}
+
+script Meta_KogaElbow_EventScript_Nurse {
+	msgbox ("If you're expecting some healing,\n"
+			"you're out of luck. I'm out of potions.$", MSGBOX_AUTOCLOSE)
+}
+
+script Meta_KogaElbow_EventScript_Mart {
+	msgbox ("I also gave away my last potion. Sorry.$", MSGBOX_AUTOCLOSE)
+}
+
+script Meta_KogaElbow_EventScript_Camper {
+	trainerbattle_single(TRAINER_02,
+			"So like, getting paid to just stand\n"
+			"here is cool and all…\p"
+			"But I just got back from Alola, so I\n"
+			"wanna show off some of my cool 'mon!$",
+			"I wonder if I get paid extra for\n"
+			"doing this battle?$")
+	msgbox ("A job's a job, right?$", MSGBOX_AUTOCLOSE)
+}
+
+script Meta_KogaElbow_EventScript_Bard {
+	msgbox ("(This guy seems to be meditating.)$", MSGBOX_AUTOCLOSE)
+}
+
+script Meta_KogaElbow_EventScript_MaskedKid {
+	trainerbattle_single(TRAINER_03,
+			"My mom grounded me because of you!\n"
+			"We only stole your {POKEMON} as a prank!$",
+			"Waaaaaahhhhhhh!!!!$")
+	msgbox ("My mom's forcing me to be here\n"
+			"as punishment.\p"
+			"It was just a prank!\n"
+			"You're not supposed to get mad…$", MSGBOX_AUTOCLOSE)
 }
 

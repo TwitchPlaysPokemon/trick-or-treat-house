@@ -28,6 +28,37 @@
 		]
 	},
 	{
+		"class": "PKMN_RANGER",
+		"music": "ENC_MUS_DP_ACE_TRAINER",
+		"name": "Jaydon",
+		"pic": "PKMN_RANGER_M3",
+		"party": [
+			{
+				"species": "SPECIES_WIMPOD",
+				"level": 29
+			},
+			{
+				"species": "SPECIES_LURANTIS",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "MASKED_BOY",
+		"music": "ENC_MUS_FR_BOY",
+		"name": "Peter",
+		"party": [
+			{
+				"species": "SPECIES_RIOLU",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_PUMPKABOO",
+				"level": 28
+			}
+		]
+	},
+	{
 		"class": "PLASMA_KID",
 		"music": "ENC_MUS_EM_INTENSE",
 		"name": "Thom",

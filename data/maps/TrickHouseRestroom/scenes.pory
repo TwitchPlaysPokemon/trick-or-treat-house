@@ -50,9 +50,9 @@ script TrickHouseRestroom_OnLoad_Breeder {
 	}
 	if (var(VAR_0x800B) > 34) {
 		setvar(VAR_BREEDER_STATE, 10)
-		setobjectxyperm(LID_BREEDER, 7, 4)
+		setobjectxyperm(LID_BREEDER, 1, 6)
 		setobjectmovementtype(LID_BREEDER, MOVEMENT_TYPE_FACE_DOWN)
-		setobjectxyperm(LID_LETTER, 7, 5)
+		setobjectxyperm(LID_LETTER, 1, 7)
 		setobjectmovementtype(LID_LETTER, MOVEMENT_TYPE_FACE_UP)
 		return
 	}
