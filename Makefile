@@ -88,15 +88,18 @@ OBJ_DIR_NAME := build/emerald
 
 ifeq ($(DEBUGGER),1)
   MODERN_ROM_NAME := tricktreat_debug.gba
-  MODERN_ELF_NAME := $(MODERN_ROM_NAME:.gba=.elf)
-  MODERN_MAP_NAME := $(MODERN_ROM_NAME:.gba=.map)
   MODERN_OBJ_DIR_NAME := build/debug
 else
+  ifeq ($(TPP_MODE),1)
+  MODERN_ROM_NAME := tricktreat_tpp.gba
+  MODERN_OBJ_DIR_NAME := build/tpp
+  else
   MODERN_ROM_NAME := tricktreat_modern.gba
-  MODERN_ELF_NAME := $(MODERN_ROM_NAME:.gba=.elf)
-  MODERN_MAP_NAME := $(MODERN_ROM_NAME:.gba=.map)
   MODERN_OBJ_DIR_NAME := build/modern
+  endif
 endif
+MODERN_ELF_NAME := $(MODERN_ROM_NAME:.gba=.elf)
+MODERN_MAP_NAME := $(MODERN_ROM_NAME:.gba=.map)
 
 SHELL := /bin/bash -o pipefail
 
