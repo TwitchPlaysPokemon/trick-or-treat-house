@@ -176,6 +176,9 @@ const u32 gTrainerPalette_Youngster[] = INCBIN_U32("graphics/trainers/palettes/y
 const u32 gTrainerPalette_Youngster2[] = INCBIN_U32("graphics/trainers/palettes/youngster_brown.gbapal.lz");
 const u32 gTrainerPalette_Youngster3[] = INCBIN_U32("graphics/trainers/palettes/youngster_black.gbapal.lz");
 
+const u32 gTrainerFrontPic_Joey[] = INCBIN_U32("graphics/trainers/front_pics/joey_front_pic.4bpp.lz");
+const u32 gTrainerPalette_Joey[] = INCBIN_U32("graphics/trainers/front_pics/joey_front_pic.gbapal.lz");
+
 const u32 gTrainerFrontPic_ChampionWallace[] = INCBIN_U32("graphics/trainers/front_pics/champion_wallace_front_pic.4bpp.lz");
 const u32 gTrainerPalette_ChampionWallace[] = INCBIN_U32("graphics/trainers/palettes/champion_wallace.gbapal.lz");
 

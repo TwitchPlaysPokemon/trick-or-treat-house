@@ -71,6 +71,7 @@ const struct TrainerPicInfo gTrainerFrontPicInfoTable[] =
     TRAINER_PIC(TRAINER_PIC_YOUNGSTER,              gTrainerFrontPic_Youngster,           0x800,  gTrainerPalette_Youngster,           1),
     TRAINER_PIC(TRAINER_PIC_YOUNGSTER2,             gTrainerFrontPic_Youngster,           0x800,  gTrainerPalette_Youngster2,          1),
     TRAINER_PIC(TRAINER_PIC_YOUNGSTER3,             gTrainerFrontPic_Youngster,           0x800,  gTrainerPalette_Youngster3,          1),
+    TRAINER_PIC(TRAINER_PIC_JOEY,                   gTrainerFrontPic_Joey,                0x800,  gTrainerPalette_Joey,                1),
     TRAINER_PIC(TRAINER_PIC_CHAMPION_WALLACE,       gTrainerFrontPic_ChampionWallace,     0x1000, gTrainerPalette_ChampionWallace,     2),
     TRAINER_PIC(TRAINER_PIC_FISHERMAN,              gTrainerFrontPic_Fisherman,           0x800,  gTrainerPalette_Fisherman,           1),
     TRAINER_PIC(TRAINER_PIC_CYCLING_TRIATHLETE_M,   gTrainerFrontPic_CyclingTriathleteM,  0x1000, gTrainerPalette_CyclingTriathleteM,  2),

@@ -138,6 +138,7 @@
 #define TRAINER_PIC_POKEMON_RANGER_F2    113
 #define TRAINER_PIC_PKMN_RANGER_F3       114
 #define TRAINER_PIC_POKEMON_RANGER_F3    114
+#define TRAINER_PIC_JOEY                 115
 
 // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
 #define TRAINER_BACK_PIC_BRENDAN                0

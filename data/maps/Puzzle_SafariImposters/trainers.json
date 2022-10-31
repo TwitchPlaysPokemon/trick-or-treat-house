@@ -3,6 +3,7 @@
 		"class": "YOUNGSTER",
 		"name": "Joey",
 		"music": "ENC_MUS_EM_MALE",
+		"pic": "JOEY",
 		"party": [
 			{
 				"species": "SPECIES_RATTATA",
@@ -144,6 +145,7 @@
 		"class": "YOUNGSTER",
 		"name": "Joey",
 		"music": "ENC_MUS_EM_MALE",
+		"pic": "JOEY",
 		"party": [
 			{
 				"species": "SPECIES_RATTATA",
