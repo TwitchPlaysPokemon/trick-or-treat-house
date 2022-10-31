@@ -12150,7 +12150,7 @@ static const u16 gItemTable_CandyRare[] = {
     ITEM_CANDY_TOBLERONE,
     ITEM_CANDY_FERREROROCHER,
     ITEM_MAX_HONEY,
-    ITEM_EXP_CANDY_XL,
+    ITEM_EXP_CANDY_M,
 };
 static const u16 gItemTable_CandyHealthy[] = {
     ITEM_CANDY_CARROT,
