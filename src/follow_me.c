@@ -1491,4 +1491,8 @@ void SetFollowerForManualWarp(struct ScriptContext* ctx)
     // FollowMe_WarpSetEnd();
     follower->invisible = FALSE;
 }
+void ClearFollowerManualWarp(struct ScriptContext* crx)
+{
+    gSaveBlock2Ptr->follower.warpManual = FALSE;
+}
 

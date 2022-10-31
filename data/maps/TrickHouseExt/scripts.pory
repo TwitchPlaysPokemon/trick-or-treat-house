@@ -19,6 +19,10 @@ mapscripts TrickHouseExt_MapScripts {
 		}
 	]
 	MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_LAST_WARP_ID, 999 {
+			callnative(ClearFollowerManualWarp)
+			setvar(VAR_LAST_WARP_ID, 0)
+		}
 	]
 	MAP_SCRIPT_ON_LOAD {
 		callnative (IsCurrentPuzzleCyclingRoad)
