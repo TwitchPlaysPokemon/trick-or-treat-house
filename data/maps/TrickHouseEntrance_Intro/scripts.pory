@@ -274,7 +274,8 @@ script TrickHouseEntrance_IntroCutscene {
 	applymovement (LID_PLAYER, Common_Movement_WalkInPlaceRight)
 	delay (20)
 	speakername_common(WALLY)
-	msgbox ("I'm… just hang out here, I guess…\p"
+	msgbox ("I'm… just gonna hang out here,\n"
+			"I guess…\p"
 			"You go if you want. I don't really want to\n"
 			"get in the way…$")
 	// Cleanup

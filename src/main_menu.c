@@ -2048,7 +2048,7 @@ static void NewGameBirchSpeech_ShowRandomAskMenu(void)
     DrawMainMenuWindowBorder(&sNewGameBirchSpeechTextWindows[3], 0xF3);
     FillWindowPixelBuffer(3, PIXEL_FILL(1));
     PrintMenuTable(3, 2, sMenuActions_RandomAsk);
-    InitMenuInUpperLeftCornerPlaySoundWhenAPressed(3, 2, 0);
+    InitMenuInUpperLeftCornerNormal(3, 2, 0);
     PutWindowTilemap(3);
     CopyWindowToVram(3, 3);
 }
