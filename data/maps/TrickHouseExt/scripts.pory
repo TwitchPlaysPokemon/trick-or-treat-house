@@ -385,7 +385,7 @@ script TrickHouseExt_CommonOfferTrade {
 	removeitem(VAR_REQUEST, VAR_REQUEST_AMT)
 	message("{PLAYER} traded away\n"
 			"{STR_VAR_1} {STR_VAR_2}$")
-	additem(VAR_OFFER, VAR_OFFER_AMT)
+	giveitem_std(VAR_OFFER, VAR_OFFER_AMT)
 	message(2)
 	waitmessage
 	waitbuttonpress
