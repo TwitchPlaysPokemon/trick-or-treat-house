@@ -1024,8 +1024,8 @@ static void Task_LoadSlidingTile(u8 taskId)
 
 void MetaPuzzle_OpenSlidingPuzzle(const struct ScriptContext* ctx) 
 {
-	for (int i = VAR_PUZZLE_00; i <= VAR_PUZZLE_1F; i++)
-		mgba_printf(MGBA_LOG_INFO, "VAR_PUZZLE_%x (%x) = %x", i-VAR_PUZZLE_00, i, VarGet(i));
+	for (int i = PUZZLE_VARS_START; i <= PUZZLE_VARS_END; i++)
+		mgba_printf(MGBA_LOG_INFO, "VAR_PUZZLE_%x (%x) = %x", i-PUZZLE_VARS_START, i, VarGet(i));
 	
 	
 	LockPlayerFieldControls();

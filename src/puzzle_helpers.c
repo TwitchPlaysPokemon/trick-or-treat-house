@@ -124,7 +124,7 @@ void BORTizeBufferedStrings(struct ScriptContext *ctx)
 #define NUM_BYTES_PER_NOTE          13
 #define NUM_MAX_NOTES               8
 
-#define VAR_SONG_META               VAR_PUZZLE_3A
+#define VAR_SONG_META               VAR_PUZZLE_2B
 #define FLAG_SONG_CHOSEN            FLAG_TEMP_10
 
 struct PokemonSaysNote {
