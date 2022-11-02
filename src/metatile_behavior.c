@@ -1175,9 +1175,9 @@ bool8 MetatileBehavior_IsUnionRoomWarp(u8 metatileBehavior)
     // This metatile behavior is re-used for some reason by
     // the Union Room exit metatile. This function is used to
     // initiate a teleport-style warp.
-    if (metatileBehavior == MB_BRIDGE_OVER_OCEAN)
-        return TRUE;
-    else
+    // if (metatileBehavior == MB_BRIDGE_OVER_OCEAN)
+    //     return TRUE;
+    // else
         return FALSE;
 }
 

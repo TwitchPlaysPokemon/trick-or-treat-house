@@ -253,12 +253,12 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Common_EventScript_CandyAbundant",
-      "flag": "FLAG_CANDY_ABUNDANT_04"
+      "flag": "FLAG_CANDY_ABUNDANT_12"
     }
   ],
   "warp_events": [
     {
-      "x": 15,
+      "x": 16,
       "y": 18,
       "elevation": 0,
       "dest_map": "MAP_META_DIVE_MAZE",

@@ -75,6 +75,7 @@ Puzzle_MetaPuzzle_CandyList:
 	.2byte FLAG_CANDY_RARE_01
 	.2byte FLAG_CANDY_RARE_02
 	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_ABUNDANT_12
 	@ Final Bluff
 	.2byte FLAG_CANDY_ABUNDANT_07
 	.2byte FLAG_CANDY_COMMON_03
@@ -93,8 +94,9 @@ Puzzle_MetaPuzzle_CandyList:
 	.2byte FLAG_CANDY_COMMON_05
 	.2byte FLAG_CANDY_UNCOMMON_04
 	.2byte FLAG_CANDY_ABUNDANT_10
-	@
-	@ .2byte FLAG_PUZZLE_20
+	@ Ziggy Puzzle
+	.2byte FLAG_CANDY_ABUNDANT_11
+	@ 
 	@ .2byte FLAG_PUZZLE_20
 	@ .2byte FLAG_PUZZLE_20
 	@ .2byte FLAG_PUZZLE_20
