@@ -430,7 +430,7 @@ static void MetaPuzzle_Setup2x1Layout() {
 	VarSet(VAR_LOC_PEDESTAL3, 0);
 	VarSet(VAR_LOC_PEDESTAL4, 0);
 	
-	for (int i = 0; VAR_BACKUP_ID_0_0 + i < VAR_BACKUP_RESERVE_END; i++) {
+	for (int i = 0; VAR_BACKUP_ID_0_0 + i <= VAR_BACKUP_RESERVE_END; i++) {
 		VarSet(VAR_BACKUP_ID_0_0 + i, VarGet(VAR_ROOM_ID_0_0 + i));
 	}
 }
@@ -473,7 +473,7 @@ static void MetaPuzzle_Setup3x3Layout() {
 	VarSet(VAR_LOC_PEDESTAL3, VarGet(VAR_ROOM_ID_0_0 + 4));
 	VarSet(VAR_LOC_PEDESTAL4, VarGet(VAR_ROOM_ID_0_0 + 6));
 	
-	for (int i = 0; VAR_BACKUP_ID_0_0 + i < VAR_BACKUP_RESERVE_END; i++) {
+	for (int i = 0; VAR_BACKUP_ID_0_0 + i <= VAR_BACKUP_RESERVE_END; i++) {
 		VarSet(VAR_BACKUP_ID_0_0 + i, VarGet(VAR_ROOM_ID_0_0 + i));
 	}
 }
@@ -520,7 +520,7 @@ static void MetaPuzzle_Setup4x4Layout() {
 	VarSet(VAR_LOC_PEDESTAL3, VarGet(VAR_ROOM_ID_0_0 + 9));
 	VarSet(VAR_LOC_PEDESTAL4, VarGet(VAR_ROOM_ID_0_0 + 10));
 	
-	for (int i = 0; VAR_BACKUP_ID_0_0 + i < VAR_BACKUP_RESERVE_END; i++) {
+	for (int i = 0; VAR_BACKUP_ID_0_0 + i <= VAR_BACKUP_RESERVE_END; i++) {
 		VarSet(VAR_BACKUP_ID_0_0 + i, VarGet(VAR_ROOM_ID_0_0 + i));
 	}
 }
@@ -594,7 +594,10 @@ void MetaPuzzle_DeterminePuzzleSetup(struct ScriptContext* ctx)
 
 void MetaPuzzle_RestorePuzzleLayout(struct ScriptContext* ctx)
 {
-	for (int i = 0; VAR_BACKUP_ID_0_0 + i < VAR_BACKUP_RESERVE_END; i++) {
+	if (VarGet(VAR_BACKUP_RESERVE_END) == 0) { // HACK to fix TPP's bs bug finding.
+		VarSet(VAR_BACKUP_RESERVE_END, MAP_META_NULL_ROOM);
+	}
+	for (int i = 0; VAR_BACKUP_ID_0_0 + i <= VAR_BACKUP_RESERVE_END; i++) {
 		VarSet(VAR_ROOM_ID_0_0 + i, VarGet(VAR_BACKUP_ID_0_0 + i));
 	}
 	InitMap();
