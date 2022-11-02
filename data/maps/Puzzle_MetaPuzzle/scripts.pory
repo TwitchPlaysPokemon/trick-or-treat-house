@@ -94,13 +94,13 @@ Puzzle_MetaPuzzle_CandyList:
 	.2byte FLAG_CANDY_UNCOMMON_04
 	.2byte FLAG_CANDY_ABUNDANT_10
 	@
-	.2byte FLAG_PUZZLE_20
-	.2byte FLAG_PUZZLE_20
-	.2byte FLAG_PUZZLE_20
-	.2byte FLAG_PUZZLE_20
-	.2byte FLAG_PUZZLE_20
-	.2byte FLAG_PUZZLE_20
-	.2byte FLAG_PUZZLE_20
+	@ .2byte FLAG_PUZZLE_20
+	@ .2byte FLAG_PUZZLE_20
+	@ .2byte FLAG_PUZZLE_20
+	@ .2byte FLAG_PUZZLE_20
+	@ .2byte FLAG_PUZZLE_20
+	@ .2byte FLAG_PUZZLE_20
+	@ .2byte FLAG_PUZZLE_20
 	.2byte 0
 `
 // ----------------------------------------------------
