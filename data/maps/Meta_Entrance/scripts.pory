@@ -36,12 +36,14 @@ script(local) Meta_Entrance_OnLoad {
 script Meta_Entrance_Dev {
 	speakername("Tustin2121")
 	msgbox ("Oh hey, you found this back room, huh?\p"
-			"This puzzle can be a mess and probably\n"
-			"will break in 100 ways.\p"
+			"This puzzle can be a mess. It has\n"
+			"broken already in like 100 ways.\p"
 			"So, just in case, these balls here are\n"
 			"all the HMs you'll need to get through.\p"
+			"And there's emergency-use-only scroll\n"
+			"and pedestals to the right.\p"
 			"This is an honor system thing.\n"
-			"Take one if you get stuck.\p"
+			"Use one only if you get stuck.\p"
 			"And sorry if you did get stuck.$", MSGBOX_NPC)
 }
 

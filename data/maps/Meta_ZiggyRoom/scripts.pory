@@ -34,11 +34,13 @@ script(local) Meta_ZiggyRoom_OnTransition {
 	goto_if(FALSE, Common_EventScript_NopReturn)
 	setobjectxyperm(LID_ZIGGY_MOM, 14, 23)
 	setobjectmovementtype(LID_ZIGGY_MOM, MOVEMENT_TYPE_FACE_DOWN)
-	setobjectxyperm(LID_ZIGGY_KID, 13, 23)
+	setobjectxyperm(LID_ZIGGY_KID, 14, 24)
 	setobjectmovementtype(LID_ZIGGY_KID, MOVEMENT_TYPE_FACE_UP)
 	setobjectxyperm(LID_HM_BALL, 16, 23)
 	setvar(VAR_KID_QUEST, 10)
 	setvar(VAR_MOM_QUEST, 10)
+	setflag(FLAG_MOM_DONE)
+	setflag(FLAG_KID_DONE)
 	return
 }
 script(local) Meta_ZiggyRoom_OnResume {

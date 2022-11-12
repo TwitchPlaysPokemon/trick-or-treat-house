@@ -262,6 +262,32 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "MetaPuzzle_ResetLayoutAsk",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
+      "x": 26,
+      "y": 28,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PuzzleCommon_EventScript_Scroll",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_META_PEDESTAL",
+      "x": 26,
+      "y": 25,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "MetaPuzzle_UsePedestal",
+      "flag": "0"
     }
   ],
   "warp_events": [
