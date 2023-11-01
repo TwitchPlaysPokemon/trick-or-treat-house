@@ -111,7 +111,7 @@ PuzzleCommon_TextArray_PuzzleIntro_GreetingA:
 PuzzleCommon_TextArray_PuzzleIntro_GreetingB:
 	.string "Hah! Back for more?$"
 PuzzleCommon_TextArray_PuzzleIntro_GreetingC:
-	.string "That last one as a tough one,\n"
+	.string "That last one was a tough one,\n"
 	.string "wasn't it? Hah!$"
 PuzzleCommon_TextArray_PuzzleIntro_GreetingD:
 	.string "Hah! You're doing well tonight?$"

@@ -196,7 +196,7 @@
       "y": 16,
       "elevation": 0,
       "var": "VAR_PUZZLE_00",
-      "var_value": "2",
+      "var_value": "3",
       "script": "Puzzle_TicRacToe_TriggerScript_ResetBlock"
     },
     {
