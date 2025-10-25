@@ -26,7 +26,7 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-#pragma region Poké Balls
+// #pragma region Poké Balls
 
     [ITEM_POKE_BALL] =
     {
@@ -407,9 +407,9 @@ const struct Item gItems[] =
         .secondaryId = ITEM_CHERISH_BALL - FIRST_BALL,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Medicine
+// #pragma region Medicine
 
     [ITEM_POTION] =
     {
@@ -922,9 +922,9 @@ const struct Item gItems[] =
         .flingPower = 30,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Regional Specialties
+// #pragma region Regional Specialties
 
     [ITEM_PEWTER_CRUNCHIES] =
     {
@@ -1056,9 +1056,9 @@ const struct Item gItems[] =
         .flingPower = 30,
     },
     
-#pragma endregion
+// #pragma endregion
 
-#pragma region Vitamins
+// #pragma region Vitamins
 
     [ITEM_HP_UP] =
     {
@@ -1180,9 +1180,9 @@ const struct Item gItems[] =
         .flingPower = 30,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region EV Feathers
+// #pragma region EV Feathers
 
     [ITEM_HEALTH_FEATHER] =
     {
@@ -1268,9 +1268,9 @@ const struct Item gItems[] =
         .flingPower = 20,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Ability Modifiers
+// #pragma region Ability Modifiers
 
     [ITEM_ABILITY_CAPSULE] =
     {
@@ -1298,9 +1298,9 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_AbilityPatch,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Mints
+// #pragma region Mints
 
     [ITEM_LONELY_MINT] =
     {
@@ -1596,9 +1596,9 @@ const struct Item gItems[] =
         .flingPower = 10,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Candy
+// #pragma region Candy
 
     [ITEM_RARE_CANDY] =
     {
@@ -1709,9 +1709,9 @@ const struct Item gItems[] =
         .flingPower = 30,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Flutes
+// #pragma region Flutes
 // Medicinal Flutes
 
     [ITEM_BLUE_FLUTE] =
@@ -1792,9 +1792,9 @@ const struct Item gItems[] =
         .flingPower = 30,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Encounter Modifiers
+// #pragma region Encounter Modifiers
 
     [ITEM_REPEL] =
     {
@@ -1902,9 +1902,9 @@ const struct Item gItems[] =
         .flingPower = 30,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region X Items
+// #pragma region X Items
 
     [ITEM_X_ATTACK] =
     {
@@ -2095,9 +2095,9 @@ const struct Item gItems[] =
         .flingPower = 30,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Treasures
+// #pragma region Treasures
 
     [ITEM_BOTTLE_CAP] =
     {
@@ -2486,9 +2486,9 @@ const struct Item gItems[] =
         .flingPower = 30,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Fossils
+// #pragma region Fossils
 
     [ITEM_HELIX_FOSSIL] =
     {
@@ -2704,9 +2704,9 @@ const struct Item gItems[] =
         .flingPower = 100,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Mulch
+// #pragma region Mulch
 
     [ITEM_GROWTH_MULCH] =
     {
@@ -2812,9 +2812,9 @@ const struct Item gItems[] =
         .flingPower = 30,
     },
     
-#pragma endregion
+// #pragma endregion
 
-#pragma region Apricorns
+// #pragma region Apricorns
 
     [ITEM_RED_APRICORN] =
     {
@@ -2941,9 +2941,9 @@ const struct Item gItems[] =
         .flingPower = 30,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Mail
+// #pragma region Mail
 
     [ITEM_ORANGE_MAIL] =
     {
@@ -3101,9 +3101,9 @@ const struct Item gItems[] =
         .secondaryId = ITEM_TO_MAIL(ITEM_RETRO_MAIL),
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Evolution Items
+// #pragma region Evolution Items
 
     [ITEM_FIRE_STONE] =
     {
@@ -3583,9 +3583,9 @@ const struct Item gItems[] =
         .flingPower = 30,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Nectars
+// #pragma region Nectars
 
     [ITEM_RED_NECTAR] =
     {
@@ -3651,9 +3651,9 @@ const struct Item gItems[] =
         .flingPower = 10,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Plates
+// #pragma region Plates
 
     [ITEM_FLAME_PLATE] =
     {
@@ -3927,9 +3927,9 @@ const struct Item gItems[] =
         .flingPower = 90,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Drives
+// #pragma region Drives
 
     [ITEM_DOUSE_DRIVE] =
     {
@@ -3991,9 +3991,9 @@ const struct Item gItems[] =
         .flingPower = 70,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Memories
+// #pragma region Memories
 
     [ITEM_FIRE_MEMORY] =
     {
@@ -4291,9 +4291,9 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Mega Stones
+// #pragma region Mega Stones
 
     [ITEM_RED_ORB] =
     {
@@ -5026,9 +5026,9 @@ const struct Item gItems[] =
         .flingPower = 80,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Gems
+// #pragma region Gems
 
     [ITEM_NORMAL_GEM] =
     {
@@ -5300,9 +5300,9 @@ const struct Item gItems[] =
         .secondaryId = TYPE_FAIRY,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Z-Crystals
+// #pragma region Z-Crystals
 
     [ITEM_NORMALIUM_Z] =
     {
@@ -5829,9 +5829,9 @@ const struct Item gItems[] =
         .secondaryId = 255  //signature z move
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Species-specific Held Items
+// #pragma region Species-specific Held Items
 
     [ITEM_LIGHT_BALL] =
     {
@@ -6012,9 +6012,9 @@ const struct Item gItems[] =
         .flingPower = 60,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Incenses
+// #pragma region Incenses
 
     [ITEM_SEA_INCENSE] =
     {
@@ -6159,9 +6159,9 @@ const struct Item gItems[] =
         .flingPower = 10,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Contest Scarves
+// #pragma region Contest Scarves
 
     [ITEM_RED_SCARF] =
     {
@@ -6233,9 +6233,9 @@ const struct Item gItems[] =
         .flingPower = 10,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region EV Gain Modifiers
+// #pragma region EV Gain Modifiers
 
     [ITEM_MACHO_BRACE] =
     {
@@ -6348,9 +6348,9 @@ const struct Item gItems[] =
         .flingPower = 70,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Type-boosting Held Items
+// #pragma region Type-boosting Held Items
 
     [ITEM_SILK_SCARF] =
     {
@@ -6627,9 +6627,9 @@ const struct Item gItems[] =
         .flingPower = 30,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Choice Items
+// #pragma region Choice Items
 
     [ITEM_CHOICE_BAND] =
     {
@@ -6675,9 +6675,9 @@ const struct Item gItems[] =
         .flingPower = 10,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Other Battle Items
+// #pragma region Other Battle Items
 
 // Status Orbs
 
@@ -7707,9 +7707,9 @@ const struct Item gItems[] =
         .flingPower = 60,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Berries
+// #pragma region Berries
 
     [ITEM_CHERI_BERRY] =
     {
@@ -8730,9 +8730,9 @@ const struct Item gItems[] =
         .flingPower = 10,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region TMs/HMs
+// #pragma region TMs/HMs
 // They don't have a set flingPower, as that's handled by GetFlingPowerFromItemId.
     [ITEM_TM01_FOCUS_PUNCH] =
     {
@@ -10038,9 +10038,9 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Charms
+// #pragma region Charms
 
     [ITEM_OVAL_CHARM] =
     {
@@ -10094,9 +10094,9 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Form-changing Key Items
+// #pragma region Form-changing Key Items
 
     [ITEM_ROTOM_CATALOG] =
     {
@@ -10216,9 +10216,9 @@ const struct Item gItems[] =
         .secondaryId = FORM_ITEM_USE,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Battle Mechanic Key Items
+// #pragma region Battle Mechanic Key Items
 
     [ITEM_MEGA_RING] =
     {
@@ -10258,9 +10258,9 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Misc. Key Items
+// #pragma region Misc. Key Items
 
     [ITEM_BICYCLE] =
     {
@@ -10536,9 +10536,9 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region Story Key Items
+// #pragma region Story Key Items
 
     [ITEM_SS_TICKET] =
     {
@@ -10925,9 +10925,9 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region TTH HM Items
+// #pragma region TTH HM Items
 
 
     [ITEM_META_ITEM_FINAL_BLUFF] =
@@ -11154,9 +11154,9 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
     
-#pragma endregion
+// #pragma endregion
 
-#pragma region TTH Meta Items
+// #pragma region TTH Meta Items
 
     [ITEM_CUT_ITEM] =
     {
@@ -11254,9 +11254,9 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region TTH Candy
+// #pragma region TTH Candy
     
     [ITEM_CANDY_CHOCOLATE] =
     {   // +20HP
@@ -12099,7 +12099,7 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
     
-#pragma endregion
+// #pragma endregion
     
 };
 
