@@ -253,22 +253,12 @@
               {
                 "min_level": 30,
                 "max_level": 30,
-                "species": "SPECIES_GLOOM"
+                "species": "SPECIES_DEERLING_AUTUMN"
               },
               {
                 "min_level": 30,
                 "max_level": 30,
-                "species": "SPECIES_NATU"
-              },
-              {
-                "min_level": 30,
-                "max_level": 30,
-                "species": "SPECIES_XATU"
-              },
-              {
-                "min_level": 30,
-                "max_level": 30,
-                "species": "SPECIES_HERACROSS"
+                "species": "SPECIES_PUMPKABOO"
               },
               {
                 "min_level": 30,
@@ -279,6 +269,16 @@
                 "min_level": 30,
                 "max_level": 30,
                 "species": "SPECIES_HERACROSS"
+              },
+              {
+                "min_level": 30,
+                "max_level": 30,
+                "species": "SPECIES_GOURGEIST"
+              },
+              {
+                "min_level": 30,
+                "max_level": 30,
+                "species": "SPECIES_KECLEON"
               }
             ]
           },
