@@ -1,0 +1,48 @@
+[
+	{
+		"class": "ALIEN",
+		"music": "ENC_MUS_EM_FEMALE",
+		"female": true,
+		"name": "Sally",
+		"party": [
+			{
+				"species": "SPECIES_ODDISH",
+				"level": 25
+			}
+		]
+	},
+	{
+		"class": "SKELETON",
+		"name": "Eddie",
+		"party": [
+			{
+				"species": "SPECIES_ZIGZAGOON",
+				"level": 24
+			},
+			{
+				"species": "SPECIES_ZIGZAGOON",
+				"level": 26
+			}
+		]
+	},
+	{
+		"class": "FAIRY_GIRL",
+		"music": "ENC_MUS_EM_FEMALE",
+		"female": true,
+		"name": "Robin",
+		"party": [
+			{
+				"species": "SPECIES_SKITTY",
+				"level": 24
+			},
+			{
+				"species": "SPECIES_SHROOMISH",
+				"level": 24
+			},
+			{
+				"species": "SPECIES_MARILL",
+				"level": 24
+			}
+		]
+	}
+]

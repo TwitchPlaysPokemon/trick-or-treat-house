@@ -296,6 +296,9 @@
 #define MAP_PUZZLE_ELITE_FLOOR              (10 | (15 << 8))
 #define MAP_PUZZLE_SOOTOPOLIS_GYM           (11 | (15 << 8))
 
-#define MAP_GROUPS_COUNT 16
+// MG_SingleMapPuzzles2026
+#define MAP_PUZZLE_RACCONNAISSANCE (0 | (16 << 8))
+
+#define MAP_GROUPS_COUNT 17
 
 #endif // GUARD_CONSTANTS_MAP_GROUPS_H

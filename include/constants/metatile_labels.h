@@ -792,6 +792,7 @@
 #define METATILE_TrickHousePuzzle_Button_Pressed              0x259
 #define METATILE_TrickHousePuzzle_Button_Up                   0x258
 #define METATILE_TrickHousePuzzle_Door_Shuttered              0x26A
+#define METATILE_TrickHousePuzzle_Floor                       0x208
 #define METATILE_TrickHousePuzzle_Lever_Off                   0x23E
 #define METATILE_TrickHousePuzzle_Lever_On                    0x23F
 #define METATILE_TrickHousePuzzle_MusicNoteBlue               0x2C1

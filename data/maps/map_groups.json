@@ -1,4 +1,5 @@
 {
+  "layouts_table_label": "gMapLayouts",
   "group_order": [
     "MG_PuzzleFramework",
     "MG_PostGame",
@@ -15,7 +16,8 @@
     "MG_ImposterPuzzle",
     "MG_TheMetaPuzzle",
     "MG_SingleMapPuzzles2019",
-    "MG_SingleMapPuzzles2020"
+    "MG_SingleMapPuzzles2020",
+    "MG_SingleMapPuzzles2026"
   ],
   "MG_PuzzleFramework": [
     "TrickHouseDevEntrance",
@@ -307,5 +309,8 @@
     "Puzzle_StealthMission",
     "Puzzle_EliteFloor",
     "Puzzle_SootopolisGym"
+  ],
+  "MG_SingleMapPuzzles2026": [
+    "Puzzle_Racconnaissance"
   ]
 }

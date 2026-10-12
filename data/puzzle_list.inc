@@ -72,6 +72,7 @@ enum NUM_PUZZLES
 .align 2
 gDebugPuzzles::
     .2byte MAP_EMPTY_PUZZLE
+    .2byte MAP_PUZZLE_RACCONNAISSANCE
     .2byte MAP_TRICK_TREAT_ALTO_MARE1                   @  TRICK (after Mossdeep)
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL1             @  BATTLE/MAZE
     .2byte MAP_PUZZLE_TRICK_HOUSE_TRAPDOORS             @  BATTLE/MAZE
