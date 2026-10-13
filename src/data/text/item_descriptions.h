@@ -5122,4 +5122,10 @@ static const u8 sKaleChipsDesc[] = _(
     "Revives to\n"
     "full HP.");
 
+static const u8 sLoveHeartsName[] = _("Love Hearts");
+static const u8 sLoveHeartsDesc[] = _(
+    "Left over..?\n"
+    "Infatuation\n"
+    "on contact.");
+
 #pragma endregion

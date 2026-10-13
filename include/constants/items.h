@@ -1018,8 +1018,9 @@
 #define ITEM_CANDY_RAISIN              824
 #define ITEM_CANDY_KALE                825
 #define ITEM_CANDY_GALAXY              826
+#define ITEM_CANDY_LOVEHEARTS          827
 
-#define ITEMS_COUNT                    827
+#define ITEMS_COUNT                    828
 
 #define ITEM_TABLE_CANDY_ABUNDANT      0xFE01
 #define ITEM_TABLE_CANDY_COMMON        0xFE02

@@ -7535,6 +7535,30 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
                     effect = ITEM_EFFECT_OTHER;
                 }
                 break;
+            case HOLD_EFFECT_INFATUATION:
+                if (TARGET_TURN_DAMAGED
+                    && (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
+                    && gBattleMons[gBattlerAttacker].hp != 0
+                    && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
+                    && IsMoveMakingContact(gCurrentMove, gBattlerAttacker)
+                    && IsBattlerAlive(gBattlerAttacker)
+                    && TARGET_TURN_DAMAGED
+                    && gBattleMons[gBattlerTarget].hp != 0
+                    && (Random() % 3) == 0
+                    && GetBattlerAbility(gBattlerAttacker) != ABILITY_OBLIVIOUS
+                    && !IsAbilityOnSide(gBattlerAttacker, ABILITY_AROMA_VEIL)
+                    && GetGenderFromSpeciesAndPersonality(gBattleMons[gBattlerAttacker].species, gBattleMons[gBattlerAttacker].personality) != GetGenderFromSpeciesAndPersonality(gBattleMons[gBattlerTarget].species, gBattleMons[gBattlerTarget].personality)
+                    && !(gBattleMons[gBattlerAttacker].status2 & STATUS2_INFATUATION)
+                    && GetGenderFromSpeciesAndPersonality(gBattleMons[gBattlerAttacker].species, gBattleMons[gBattlerAttacker].personality) != MON_GENDERLESS
+                    && GetGenderFromSpeciesAndPersonality(gBattleMons[gBattlerTarget].species, gBattleMons[gBattlerTarget].personality) != MON_GENDERLESS)
+
+                {
+                    gBattleMons[gBattlerAttacker].status2 |= STATUS2_INFATUATED_WITH(gBattlerTarget);
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_LoveHeartsActivates;
+                    effect++;
+                }
+                break;
             }
         }
         break;
