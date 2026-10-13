@@ -5128,4 +5128,16 @@ static const u8 sLoveHeartsDesc[] = _(
     "Infatuation\n"
     "on contact.");
 
+static const u8 sDubbleBubbleName[] = _("Dubble Bubble");
+static const u8 sDubbleBubbleDesc[] = _(
+    "Gets Sticky.\n"
+    "Binding moves go\n"
+    "on for longer.");
+
+static const u8 sDrumstickName[] = _("Drumstick");
+static const u8 sDrumstickDesc[] = _(
+    "Chewy Lollipop\n"
+    "Restores HP\n"
+    "by 30 points.");
+
 #pragma endregion

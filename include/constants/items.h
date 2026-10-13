@@ -1019,8 +1019,10 @@
 #define ITEM_CANDY_KALE                825
 #define ITEM_CANDY_GALAXY              826
 #define ITEM_CANDY_LOVEHEARTS          827
+#define ITEM_CANDY_DUBBLEBUBBLE        828
+#define ITEM_CANDY_DRUMSTICK           829
 
-#define ITEMS_COUNT                    828
+#define ITEMS_COUNT                    830
 
 #define ITEM_TABLE_CANDY_ABUNDANT      0xFE01
 #define ITEM_TABLE_CANDY_COMMON        0xFE02

@@ -901,6 +901,8 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_CANDY_KALE] =           {gItemIconPic_kale, gItemIconPal_kale},
     [ITEM_CANDY_GALAXY] =         {gItemIconPic_galaxy, gItemIconPal_galaxy},
     [ITEM_CANDY_LOVEHEARTS] =     {gItemIconPic_lovehearts, gItemIconPal_lovehearts},
+    [ITEM_CANDY_DUBBLEBUBBLE] =   {gItemIconPic_dubblebubble, gItemIconPal_dubblebubble},
+    [ITEM_CANDY_DRUMSTICK] =      {gItemIconPic_drumstick, gItemIconPal_drumstick},
     
     // Return to field arrow
     [ITEM_FIELD_ARROW] =    {gItemIcon_ReturnToFieldArrow, gItemIconPalette_ReturnToFieldArrow},

@@ -12115,6 +12115,42 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
     
+    [ITEM_CANDY_DUBBLEBUBBLE] =
+    { // Grip Claw
+        .name = sDubbleBubbleName,
+        .quantum = sQuantum_Piece,
+        .itemId = ITEM_CANDY_DUBBLEBUBBLE,
+        .price = CANDY_COST(500),
+        .holdEffect = HOLD_EFFECT_GRIP_CLAW,
+        .holdEffectParam = 10,
+        .description = sDubbleBubbleDesc,
+        .keepItem = TRUE,
+        .isCandy = TRUE,
+        .pocket = POCKET_CANDY,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_CANDY_DRUMSTICK] =
+    {   // +30HP
+        .name = sDrumstickName,
+        .itemId = ITEM_CANDY_DRUMSTICK,
+        .price = CANDY_COST(400),
+        .itemEffect = gItemEffect_HealHP30,
+        .holdEffect = HOLD_EFFECT_RESTORE_HP,
+        .holdEffectParam = 30,
+        .description = sDrumstickDesc,
+        .keepItem = TRUE,
+        .isCandy = TRUE,
+        .pocket = POCKET_CANDY,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .battleUseFunc = ItemUseInBattle_Medicine,
+        .secondaryId = 0,
+    },
+    
 // #pragma endregion
     
 };
@@ -12133,6 +12169,7 @@ static const u16 gItemTable_CandyAbundant[] = {
     ITEM_CANDY_KINGCHOCNUT,
     ITEM_CANDY_GUMMYBEAR,
     ITEM_SWEET_HEART,
+    ITEM_CANDY_DRUMSTICK,
 };
 static const u16 gItemTable_CandyCommon[] = {
     ITEM_CANDY_CHOCOWHITE,
@@ -12156,6 +12193,7 @@ static const u16 gItemTable_CandyUncommon[] = {
     ITEM_CANDY_KITKAT,
     ITEM_CANDY_GALAXY,
     ITEM_CANDY_PIXIESTICK,
+    ITEM_CANDY_DUBBLEBUBBLE,
     // ITEM_CANDY_EGGDEVILED,
 };
 static const u16 gItemTable_CandyRare[] = {
