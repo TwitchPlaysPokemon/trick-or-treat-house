@@ -1,0 +1,45 @@
+[
+	{
+		"class": "YOUNGSTER",
+		"pic": "YOUNGSTER3",
+		"name": "FLOWERY",
+		"party": [
+			{
+				"species": "SPECIES_SUNFLORA",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "BATTLE_GIRL",
+		"female": true,
+		"name": "FLOWERY",
+		"party": [
+			{
+				"species": "SPECIES_SUNFLORA",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "NINJA_BOY",
+		"name": "FLOWERY",
+		"party": [
+			{
+				"species": "SPECIES_SUNFLORA",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "FAIRY_GIRL",
+		"female": true,
+		"name": "FLOWERY",
+		"party": [
+			{
+				"species": "SPECIES_SUNFLORA",
+				"level": 28
+			}
+		]
+	}
+]

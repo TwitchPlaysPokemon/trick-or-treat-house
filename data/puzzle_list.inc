@@ -45,6 +45,7 @@ gPuzzleList::                                           @ Puzzle Type(s)
     declare_puzzle MAP_PUZZLE_SUSPENDED_MAZE            @  MAZE
     declare_puzzle MAP_PUZZLE_SPOT_DIFFERENCE_HALLWAY   @  BATTLE/LOGIC
     declare_puzzle MAP_PUZZLE_STEALTH_MISSION           @  MOVEMENT/MAZE
+    declare_puzzle MAP_PUZZLE_PUSH_PRESS_POLISH         @  BATTLE/MOVEMENT
     declare_puzzle MAP_PUZZLE_TRAINER_HILL3             @  BATTLE/MAZE
     declare_puzzle MAP_PUZZLE_TRICK_HOUSE_ORIGINAL6     @  MOVEMENT/MAZE (Rot Gates)
     

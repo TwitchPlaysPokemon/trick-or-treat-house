@@ -15,7 +15,8 @@
     "MG_ImposterPuzzle",
     "MG_TheMetaPuzzle",
     "MG_SingleMapPuzzles2019",
-    "MG_SingleMapPuzzles2020"
+    "MG_SingleMapPuzzles2020",
+    "MG_SingleMapPuzzles2026"
   ],
   "MG_PuzzleFramework": [
     "TrickHouseDevEntrance",
@@ -307,5 +308,8 @@
     "Puzzle_StealthMission",
     "Puzzle_EliteFloor",
     "Puzzle_SootopolisGym"
+  ],
+  "MG_SingleMapPuzzles2026": [
+    "Puzzle_PushPressPolish"
   ]
 }
