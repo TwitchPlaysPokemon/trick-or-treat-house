@@ -66,6 +66,13 @@ script TrickHouseExt_EventScript_FinderGirl {
 			"swimming at home is a baby pool…$", MSGBOX_NPC)
 }
 
+script TrickHouseExt_EventScript_Phoebe {
+	msgbox ("I saw a Pokémon with a\n"
+			"black flower around here.\p"
+			"It looked sorrowful…\l"
+			"I think it's in mourning.$", MSGBOX_NPC)
+}
+
 script TrickHouseExt_EventScript_CardGame {
 	callnative(GetNumPuzzlesCompleted)
 	selectpointer_wrap(TrickHouseExt_EventScript_CardGameNamesTable, VAR_RESULT)
