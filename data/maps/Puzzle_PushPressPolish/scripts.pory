@@ -4,6 +4,7 @@ Puzzle_PushPressPolish_MapScripts::
 	puzzle_adjective Puzzle_PushPressPolish_Adjective
 	puzzle_quip Puzzle_PushPressPolish_Quip
 	puzzle_candylist Puzzle_PushPressPolish_CandyList
+	puzzle_item_prereqs Puzzle_PushPressPolish_PrereqItems
 	.byte 0
 
 Puzzle_PushPressPolish_Name:
@@ -100,31 +101,44 @@ Puzzle_PushPressPolish_EventScript_CloseDoor3::
 script Puzzle_PushPressPolish_Trainer1 {
 	# 
 	trainerbattle_single (TRAINER_01, 
-			"Jarona!$", 
-			"Jarona!$")
-	msgbox ("Ja-Orange!$", MSGBOX_AUTOCLOSE)
+			"The exit is right there, but I can't stop\n"
+  			"in time…$", 
+			"I couldn't stop your {POKEMON}, either.$")
+	msgbox ("I think someone dropped something at\n"
+  			"the end of that sliding floor?$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_PushPressPolish_Trainer2 {
 	# 
 	trainerbattle_single (TRAINER_02, 
-			"Jarona!$", 
-			"Jarona!$")
-	msgbox ("Ja-Orange!$", MSGBOX_AUTOCLOSE)
+			"Hey! The whole puzzle reset when YOU walked in!\n"
+  			"Why did you do that?$", 
+			"It was the Trick Master? That's…\n"
+  			"Still annoying.$")
+	msgbox ("I was supposed to hang out with Melody,\n"
+  			"but I got stuck in this cramped hallway.", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_PushPressPolish_Trainer3 {
 	# 
 	trainerbattle_single (TRAINER_03, 
-			"Jarona!$", 
-			"Jarona!$")
-	msgbox ("Ja-Orange!$", MSGBOX_AUTOCLOSE)
+			"Trick floors, trap doors… A perfect place\n"
+  			"for a ninja!$", 
+			"I must return to my training…$")
+	msgbox ("Huh? Halloween? No, I'm a ninja full-time.$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_PushPressPolish_Trainer4 {
 	# 
-	trainerbattle_single (TRAINER_04, 
-			"Jarona!$", 
-			"Jarona!$")
-	msgbox ("Ja-Orange!$", MSGBOX_AUTOCLOSE)
+	trainerbattle_single (TRAINER_04,
+			"Have you seen Allison? We were meant\n"
+			"to meet here.$", 
+			"Our {POKEMON} work better together.$")
+	if (flag(FLAG_TEMP_A)) {
+		msgbox ("Oh, past the nearest trap door?\n"
+				"Thank you.$", MSGBOX_AUTOCLOSE)
+	} else {
+		msgbox ("You haven't seen her? I don't want to\n"
+				"leave too early.$", MSGBOX_AUTOCLOSE)
+	}
 }

@@ -2,43 +2,55 @@
 	{
 		"class": "YOUNGSTER",
 		"pic": "YOUNGSTER3",
-		"name": "FLOWERY",
+		"name": "Abraham",
 		"party": [
 			{
-				"species": "SPECIES_SUNFLORA",
+				"species": "SPECIES_ROCKRUFF",
 				"level": 28
+			},
+			{
+				"species": "SPECIES_HERDIER",
+				"level": 29
 			}
 		]
 	},
 	{
 		"class": "BATTLE_GIRL",
 		"female": true,
-		"name": "FLOWERY",
+		"name": "Allison",
 		"party": [
 			{
-				"species": "SPECIES_SUNFLORA",
-				"level": 28
+				"species": "SPECIES_LOPUNNY",
+				"moves": ["MOVE_LOW_KICK", "MOVE_JUMP_KICK", "MOVE_DOUBLE_EDGE", "MOVE_THIEF"],
+				"item": "ITEM_FOCUS_BAND",
+				"level": 30
 			}
 		]
 	},
 	{
 		"class": "NINJA_BOY",
-		"name": "FLOWERY",
+		"name": "Kyoji",
 		"party": [
 			{
-				"species": "SPECIES_SUNFLORA",
+				"species": "SPECIES_ACCELGOR",
 				"level": 28
+			},
+			{
+				"species": "SPECIES_NINJASK",
+				"level": 30
 			}
 		]
 	},
 	{
-		"class": "FAIRY_GIRL",
+		"class": "LASS",
 		"female": true,
-		"name": "FLOWERY",
+		"name": "Melody",
 		"party": [
 			{
-				"species": "SPECIES_SUNFLORA",
-				"level": 28
+				"species": "SPECIES_BRAIXEN",
+				"moves": ["MOVE_HEAT_WAVE", "MOVE_WISH", "MOVE_SAFEGUARD", "MOVE_HELPING_HAND"],
+				"item": "ITEM_CANDY_GOBSTOPPER",
+				"level": 30
 			}
 		]
 	}
