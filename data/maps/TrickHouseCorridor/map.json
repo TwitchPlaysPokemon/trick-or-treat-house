@@ -60,35 +60,35 @@
       "y": 2,
       "elevation": 3,
       "dest_map": "MAP_NONE",
-      "dest_warp_id": "127"
+      "dest_warp_id": 127
     },
     {
       "x": 4,
       "y": 6,
       "elevation": 3,
       "dest_map": "MAP_TRICK_HOUSE_END",
-      "dest_warp_id": "1"
+      "dest_warp_id": 1
     },
     {
       "x": 6,
       "y": 8,
       "elevation": 3,
       "dest_map": "MAP_TRICK_HOUSE_ENTRANCE",
-      "dest_warp_id": "2"
+      "dest_warp_id": 2
     },
     {
       "x": 7,
       "y": 8,
       "elevation": 3,
       "dest_map": "MAP_TRICK_HOUSE_ENTRANCE",
-      "dest_warp_id": "2"
+      "dest_warp_id": 2
     },
     {
       "x": 10,
       "y": 4,
       "elevation": 0,
       "dest_map": "MAP_TRICK_HOUSE_RESTROOM",
-      "dest_warp_id": "0"
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [

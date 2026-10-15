@@ -1,1 +1,12 @@
-mapscripts Puzzle_SkyPillar_2F_MapScripts {}
+raw `
+Puzzle_SkyPillar_2F_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Common_FrameTable_CrackedGround_FallDownHole
+	map_script MAP_SCRIPT_ON_TRANSITION, Common_OnResume_FixCrackedGround
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_SkyPillar_2F_SetHoleWarp
+	.byte 0
+
+Puzzle_SkyPillar_2F_SetHoleWarp:
+	setstepcallback STEP_CB_CRACKED_FLOOR
+	setholewarp MAP_PUZZLE_SKY_PILLAR_1F
+	end
+`

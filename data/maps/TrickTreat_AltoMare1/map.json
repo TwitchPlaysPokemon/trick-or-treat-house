@@ -326,14 +326,14 @@
       "y": 58,
       "elevation": 0,
       "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
-      "dest_warp_id": "0"
+      "dest_warp_id": 0
     },
     {
       "x": 23,
       "y": 58,
       "elevation": 0,
       "dest_map": "MAP_TRICK_HOUSE_END",
-      "dest_warp_id": "0"
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [

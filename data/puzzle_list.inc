@@ -78,4 +78,5 @@ gDebugPuzzles::
     .2byte MAP_PUZZLE_DESERT_OASIS
 @   .2byte MAP_PUZZLE_LOST_WOODS2_ENTRANCE              @  MAZE
 @   .2byte MAP_PUZZLE_LOST_WOODS3_ENTRANCE              @  MAZE
+    .2byte MAP_PUZZLE_SKY_PILLAR_1F                     @  WILD/MOVEMENT
     .2byte 0xFFFF

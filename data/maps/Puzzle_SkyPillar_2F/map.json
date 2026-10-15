@@ -39,6 +39,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_RockSmash",
       "flag": "FLAG_TEMP_11"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
+      "x": 13,
+      "y": 4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PuzzleCommon_EventScript_Scroll",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -47,14 +60,14 @@
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_PUZZLE_SKY_PILLAR_1F",
-      "dest_warp_id": "2"
+      "dest_warp_id": 2
     },
     {
       "x": 3,
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_PUZZLE_SKY_PILLAR_3F",
-      "dest_warp_id": "0"
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [
