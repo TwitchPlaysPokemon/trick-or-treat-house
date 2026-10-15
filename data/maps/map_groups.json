@@ -12,6 +12,7 @@
     "MG_DesertPuzzles",
     "MG_TrickOrTreatPuzzles",
     "MG_SpotTheDifferencePuzzles",
+    "MG_SkyPillarPuzzle",
     "MG_ImposterPuzzle",
     "MG_TheMetaPuzzle",
     "MG_SingleMapPuzzles2019",
@@ -236,6 +237,14 @@
     "Puzzle_SpotDifference_2_Right",
     "Puzzle_SpotDifference_3_Left",
     "Puzzle_SpotDifference_3_Right"
+  ],
+  "MG_SkyPillarPuzzle": [
+    "Puzzle_SkyPillar_1F",
+    "Puzzle_SkyPillar_2F",
+    "Puzzle_SkyPillar_3F",
+    "Puzzle_SkyPillar_4F",
+    "Puzzle_SkyPillar_5F",
+    "Puzzle_SkyPillar_Top"
   ],
   "MG_ImposterPuzzle": [
     "Puzzle_SafariImposters",

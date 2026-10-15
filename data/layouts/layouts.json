@@ -2712,6 +2712,78 @@
       "secondary_tileset": "gTileset_PokemonDayCare",
       "border_filepath": "data/layouts/TrickHouseRestroom_Battle/border.bin",
       "blockdata_filepath": "data/layouts/TrickHouseRestroom_Battle/map.bin"
+    },
+    {
+      "id": "LAYOUT_PUZZLE_SKY_PILLAR_1F",
+      "name": "Puzzle_SkyPillar_1F_Layout",
+      "width": 14,
+      "height": 14,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/Puzzle_SkyPillar_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Puzzle_SkyPillar_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PUZZLE_SKY_PILLAR_2F",
+      "name": "Puzzle_SkyPillar_2F_Layout",
+      "width": 14,
+      "height": 14,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/Puzzle_SkyPillar_2F/border.bin",
+      "blockdata_filepath": "data/layouts/Puzzle_SkyPillar_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PUZZLE_SKY_PILLAR_3F",
+      "name": "Puzzle_SkyPillar_3F_Layout",
+      "width": 14,
+      "height": 14,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/Puzzle_SkyPillar_3F/border.bin",
+      "blockdata_filepath": "data/layouts/Puzzle_SkyPillar_3F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PUZZLE_SKY_PILLAR_4F",
+      "name": "Puzzle_SkyPillar_4F_Layout",
+      "width": 14,
+      "height": 14,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/Puzzle_SkyPillar_4F/border.bin",
+      "blockdata_filepath": "data/layouts/Puzzle_SkyPillar_4F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PUZZLE_SKY_PILLAR_5F",
+      "name": "Puzzle_SkyPillar_5F_Layout",
+      "width": 14,
+      "height": 14,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/Puzzle_SkyPillar_5F/border.bin",
+      "blockdata_filepath": "data/layouts/Puzzle_SkyPillar_5F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PUZZLE_SKY_PILLAR_TOP",
+      "name": "Puzzle_SkyPillar_Top_Layout",
+      "width": 27,
+      "height": 24,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/Puzzle_SkyPillar_Top/border.bin",
+      "blockdata_filepath": "data/layouts/Puzzle_SkyPillar_Top/map.bin"
     }
   ]
 }

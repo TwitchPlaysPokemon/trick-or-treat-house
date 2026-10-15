@@ -125,21 +125,21 @@
       "y": 6,
       "elevation": 0,
       "dest_map": "MAP_TRICK_HOUSE_DEV_ENTRANCE",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     },
     {
       "x": 7,
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
-      "dest_warp_id": 2
+      "dest_warp_id": "2"
     },
     {
       "x": 4,
       "y": 1,
       "elevation": 0,
       "dest_map": "MAP_TEST_MAP_HALLWAY",
-      "dest_warp_id": 0
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

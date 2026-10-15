@@ -14,9 +14,9 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "dive",
+      "map": "MAP_DIVE_MAZE_UNDERWATER",
       "offset": 0,
-      "map": "MAP_DIVE_MAZE_UNDERWATER"
+      "direction": "dive"
     }
   ],
   "object_events": [

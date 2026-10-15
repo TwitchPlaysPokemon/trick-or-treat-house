@@ -14,19 +14,19 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "up",
+      "map": "MAP_PUZZLE_DESERT_OASIS",
       "offset": 0,
-      "map": "MAP_PUZZLE_DESERT_OASIS"
+      "direction": "up"
     },
     {
-      "direction": "left",
+      "map": "MAP_DESERT_WEST",
       "offset": -40,
-      "map": "MAP_DESERT_WEST"
+      "direction": "left"
     },
     {
-      "direction": "up",
+      "map": "MAP_DESERT_EAST",
       "offset": 40,
-      "map": "MAP_DESERT_EAST"
+      "direction": "up"
     }
   ],
   "object_events": [

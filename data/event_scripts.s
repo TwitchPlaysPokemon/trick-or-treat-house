@@ -828,3 +828,15 @@ gText_LinkRecordCouldntBeSaved::
 	.include "data/maps/TestPyramidTileset/scripts.inc"
 
 	.include "data/maps/TrickHouseRestroom_Battle/scripts.inc"
+
+	.include "data/maps/Puzzle_SkyPillar_1F/scripts.inc"
+
+	.include "data/maps/Puzzle_SkyPillar_2F/scripts.inc"
+
+	.include "data/maps/Puzzle_SkyPillar_3F/scripts.inc"
+
+	.include "data/maps/Puzzle_SkyPillar_4F/scripts.inc"
+
+	.include "data/maps/Puzzle_SkyPillar_5F/scripts.inc"
+
+	.include "data/maps/Puzzle_SkyPillar_Top/scripts.inc"

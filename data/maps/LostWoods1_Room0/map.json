@@ -14,24 +14,24 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "down",
+      "map": "MAP_PUZZLE_LOST_WOODS1_ENTRANCE",
       "offset": 2,
-      "map": "MAP_PUZZLE_LOST_WOODS1_ENTRANCE"
+      "direction": "down"
     },
     {
-      "direction": "left",
+      "map": "MAP_LOST_WOODS1_ROOM1",
       "offset": 0,
-      "map": "MAP_LOST_WOODS1_ROOM1"
+      "direction": "left"
     },
     {
-      "direction": "right",
+      "map": "MAP_LOST_WOODS1_ROOM3",
       "offset": 0,
-      "map": "MAP_LOST_WOODS1_ROOM3"
+      "direction": "right"
     },
     {
-      "direction": "up",
+      "map": "MAP_LOST_WOODS1_ROOM0",
       "offset": 0,
-      "map": "MAP_LOST_WOODS1_ROOM0"
+      "direction": "up"
     }
   ],
   "object_events": [

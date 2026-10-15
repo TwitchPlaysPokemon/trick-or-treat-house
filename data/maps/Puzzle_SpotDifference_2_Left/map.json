@@ -34,14 +34,14 @@
       "y": 11,
       "elevation": 0,
       "dest_map": "MAP_PUZZLE_SPOT_DIFFERENCE_HALLWAY",
-      "dest_warp_id": 3
+      "dest_warp_id": "3"
     },
     {
       "x": 9,
       "y": 11,
       "elevation": 0,
       "dest_map": "MAP_PUZZLE_SPOT_DIFFERENCE_HALLWAY",
-      "dest_warp_id": 3
+      "dest_warp_id": "3"
     }
   ],
   "coord_events": [
