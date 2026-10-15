@@ -231,6 +231,12 @@ const u32 gItemIconPal_dubblebubble[] = INCBIN_U32("graphics/items/candy/dubbleb
 const u32 gItemIconPic_drumstick[] = INCBIN_U32("graphics/items/candy/drumstick.4bpp.lz");
 const u32 gItemIconPal_drumstick[] = INCBIN_U32("graphics/items/candy/drumstick.gbapal.lz");
 
+const u32 gItemIconPic_crunchie[] = INCBIN_U32("graphics/items/candy/crunchie.4bpp.lz");
+const u32 gItemIconPal_crunchie[] = INCBIN_U32("graphics/items/candy/crunchie.gbapal.lz");
+
+const u32 gItemIconPic_poprocks[] = INCBIN_U32("graphics/items/candy/poprocks.4bpp.lz");
+const u32 gItemIconPal_poprocks[] = INCBIN_U32("graphics/items/candy/poprocks.gbapal.lz");
+
 // Medicine
 
 const u32 gItemIcon_Potion[] = INCBIN_U32("graphics/items/icons/potion.4bpp.lz");

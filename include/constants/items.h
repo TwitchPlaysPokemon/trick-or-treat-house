@@ -1021,8 +1021,10 @@
 #define ITEM_CANDY_LOVEHEARTS          827
 #define ITEM_CANDY_DUBBLEBUBBLE        828
 #define ITEM_CANDY_DRUMSTICK           829
+#define ITEM_CANDY_CRUNCHIE            830
+#define ITEM_CANDY_POPROCKS            831
 
-#define ITEMS_COUNT                    830
+#define ITEMS_COUNT                    832
 
 #define ITEM_TABLE_CANDY_ABUNDANT      0xFE01
 #define ITEM_TABLE_CANDY_COMMON        0xFE02
