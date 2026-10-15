@@ -34,13 +34,20 @@
       "y": 14,
       "elevation": 0,
       "dest_map": "MAP_PUZZLE_SKY_PILLAR_5F",
-      "dest_warp_id": 1
+      "dest_warp_id": "1"
     }
   ],
   "coord_events": [
 
   ],
   "bg_events": [
-
+    {
+      "type": "hidden_item",
+      "x": 18,
+      "y": 10,
+      "elevation": 0,
+      "item": "ITEM_TABLE_CANDY_RARE",
+      "flag": "FLAG_CANDY_RARE_02"
+    }
   ]
 }
