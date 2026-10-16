@@ -1115,7 +1115,7 @@
           "map": "MAP_PUZZLE_SKY_PILLAR_2F",
           "base_label": "gPuzzle_SkyPillar_2F0",
           "rock_smash_mons": {
-            "encounter_rate": 50,
+            "encounter_rate": 90,
             "mons": [
               {
                 "min_level": 30,
@@ -1214,7 +1214,7 @@
             ]
           },
           "rock_smash_mons": {
-            "encounter_rate": 50,
+            "encounter_rate": 90,
             "mons": [
               {
                 "min_level": 30,
@@ -1248,7 +1248,7 @@
           "map": "MAP_PUZZLE_SKY_PILLAR_4F",
           "base_label": "gPuzzle_SkyPillar_4F0",
           "rock_smash_mons": {
-            "encounter_rate": 50,
+            "encounter_rate": 90,
             "mons": [
               {
                 "min_level": 30,
@@ -1347,7 +1347,7 @@
             ]
           },
           "rock_smash_mons": {
-            "encounter_rate": 50,
+            "encounter_rate": 90,
             "mons": [
               {
                 "min_level": 5,

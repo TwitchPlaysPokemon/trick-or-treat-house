@@ -474,6 +474,9 @@ const u32 gObjectEventPic_Farfetchd[] = INCBIN_U32("graphics/object_events/pics/
 const u16 gObjectEventPal_Pidgey[] = INCBIN_U16("graphics/object_events/palettes/objpal_pidgey.gbapal");
 const u32 gObjectEventPic_Pidgey[] = INCBIN_U32("graphics/object_events/pics/pokemon/pidgey.4bpp");
 
+const u16 gObjectEventPal_Whismur[] = INCBIN_U16("graphics/object_events/palettes/whismur.gbapal");
+const u32 gObjectEventPic_Whismur[] = INCBIN_U32("graphics/object_events/pics/pokemon/whismur.4bpp");
+
 const u16 gObjectEventPal_Imposter[] = INCBIN_U16("graphics/object_events/palettes/objpal_imposter.gbapal");
 
 const u32 gObjectEventPic_FroggerWalk[] = INCBIN_U32("graphics/object_events/pics/people/frogger.4bpp");
