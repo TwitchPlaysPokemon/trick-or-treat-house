@@ -840,3 +840,11 @@ gText_LinkRecordCouldntBeSaved::
 	.include "data/maps/Puzzle_SkyPillar_5F/scripts.inc"
 
 	.include "data/maps/Puzzle_SkyPillar_Top/scripts.inc"
+
+	.include "data/maps/Puzzle_MirageTower_1F/scripts.inc"
+
+	.include "data/maps/Puzzle_MirageTower_2F/scripts.inc"
+
+	.include "data/maps/Puzzle_MirageTower_3F/scripts.inc"
+
+	.include "data/maps/Puzzle_MirageTower_4F/scripts.inc"

@@ -2784,6 +2784,54 @@
       "secondary_tileset": "gTileset_Pacifidlog",
       "border_filepath": "data/layouts/Puzzle_SkyPillar_Top/border.bin",
       "blockdata_filepath": "data/layouts/Puzzle_SkyPillar_Top/map.bin"
+    },
+    {
+      "id": "LAYOUT_PUZZLE_MIRAGE_TOWER_1F",
+      "name": "Puzzle_MirageTower_1F_Layout",
+      "width": 21,
+      "height": 17,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MirageTower",
+      "border_filepath": "data/layouts/Puzzle_MirageTower_1F/border.bin",
+      "blockdata_filepath": "data/layouts/Puzzle_MirageTower_1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PUZZLE_MIRAGE_TOWER_2F",
+      "name": "Puzzle_MirageTower_2F_Layout",
+      "width": 21,
+      "height": 17,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MirageTower",
+      "border_filepath": "data/layouts/Puzzle_MirageTower_2F/border.bin",
+      "blockdata_filepath": "data/layouts/Puzzle_MirageTower_2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PUZZLE_MIRAGE_TOWER_3F",
+      "name": "Puzzle_MirageTower_3F_Layout",
+      "width": 21,
+      "height": 17,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MirageTower",
+      "border_filepath": "data/layouts/Puzzle_MirageTower_3F/border.bin",
+      "blockdata_filepath": "data/layouts/Puzzle_MirageTower_3F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PUZZLE_MIRAGE_TOWER_4F",
+      "name": "Puzzle_MirageTower_4F_Layout",
+      "width": 13,
+      "height": 10,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_MirageTower",
+      "border_filepath": "data/layouts/Puzzle_MirageTower_4F/border.bin",
+      "blockdata_filepath": "data/layouts/Puzzle_MirageTower_4F/map.bin"
     }
   ]
 }

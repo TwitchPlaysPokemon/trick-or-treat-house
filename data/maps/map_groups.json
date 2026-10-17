@@ -12,6 +12,7 @@
     "MG_DesertPuzzles",
     "MG_TrickOrTreatPuzzles",
     "MG_SpotTheDifferencePuzzles",
+    "MG_MirageTowerPuzzle",
     "MG_SkyPillarPuzzle",
     "MG_ImposterPuzzle",
     "MG_TheMetaPuzzle",
@@ -237,6 +238,12 @@
     "Puzzle_SpotDifference_2_Right",
     "Puzzle_SpotDifference_3_Left",
     "Puzzle_SpotDifference_3_Right"
+  ],
+  "MG_MirageTowerPuzzle": [
+    "Puzzle_MirageTower_1F",
+    "Puzzle_MirageTower_2F",
+    "Puzzle_MirageTower_3F",
+    "Puzzle_MirageTower_4F"
   ],
   "MG_SkyPillarPuzzle": [
     "Puzzle_SkyPillar_1F",
