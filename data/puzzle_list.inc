@@ -34,6 +34,7 @@ gPuzzleList::                                           @ Puzzle Type(s)
     declare_puzzle MAP_PUZZLE_TIN_TOWER_CLIMB           @  WILD/MAZE
     declare_puzzle MAP_PUZZLE_ROUTE110                  @  ITEM/MAZE
     declare_puzzle MAP_PUZZLE_FALLING_WATER             @  ITEM/MOVEMENT
+    declare_puzzle MAP_PUZZLE_PUSH_PRESS_POLISH         @  BATTLE/MOVEMENT
     declare_puzzle MAP_PUZZLE_SOOTOPOLIS_GYM            @  MOVEMENT
     
     declare_puzzle MAP_TRICK_TREAT_FORTREE_CITY, ID_TRICK_TREAT_FORTREE         @  TRICK
@@ -45,7 +46,7 @@ gPuzzleList::                                           @ Puzzle Type(s)
     declare_puzzle MAP_PUZZLE_SUSPENDED_MAZE            @  MAZE
     declare_puzzle MAP_PUZZLE_SPOT_DIFFERENCE_HALLWAY   @  BATTLE/LOGIC
     declare_puzzle MAP_PUZZLE_STEALTH_MISSION           @  MOVEMENT/MAZE
-    declare_puzzle MAP_PUZZLE_PUSH_PRESS_POLISH         @  BATTLE/MOVEMENT
+    declare_puzzle MAP_PUZZLE_PACKET_LOST               @  NPC?
     declare_puzzle MAP_PUZZLE_TRAINER_HILL3             @  BATTLE/MAZE
     declare_puzzle MAP_PUZZLE_TRICK_HOUSE_ORIGINAL6     @  MOVEMENT/MAZE (Rot Gates)
     

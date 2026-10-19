@@ -254,6 +254,7 @@ void MovementType_WalkSequenceUpRightDownLeft(struct Sprite *);
 void MovementType_WalkSequenceDownLeftUpRight(struct Sprite *);
 void MovementType_WalkSequenceLeftUpRightDown(struct Sprite *);
 void MovementType_WalkSequenceRightDownLeftUp(struct Sprite *);
+void MovementType_WalkSequencePory2(struct Sprite *);
 void MovementType_CopyPlayer(struct Sprite *);
 void MovementType_TreeDisguise(struct Sprite *);
 void MovementType_MountainDisguise(struct Sprite *);
@@ -403,6 +404,7 @@ u8 MovementType_WalkSequenceUpRightDownLeft_Step1(struct ObjectEvent *, struct S
 u8 MovementType_WalkSequenceDownLeftUpRight_Step1(struct ObjectEvent *, struct Sprite *);
 u8 MovementType_WalkSequenceLeftUpRightDown_Step1(struct ObjectEvent *, struct Sprite *);
 u8 MovementType_WalkSequenceRightDownLeftUp_Step1(struct ObjectEvent *, struct Sprite *);
+u8 MovementType_WalkSequencePory2_Step1(struct ObjectEvent *, struct Sprite *);
 u8 MovementType_CopyPlayer_Step0(struct ObjectEvent *, struct Sprite *);
 u8 MovementType_CopyPlayer_Step1(struct ObjectEvent *, struct Sprite *);
 u8 MovementType_CopyPlayer_Step2(struct ObjectEvent *, struct Sprite *);

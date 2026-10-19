@@ -381,6 +381,14 @@ u8 (*const gMovementTypeFuncs_WalkSequenceRightDownLeftUp[])(struct ObjectEvent 
 
 const u8 gRightDownLeftUpDirections[] = {DIR_EAST, DIR_SOUTH, DIR_WEST, DIR_NORTH};
 
+u8 (*const gMovementTypeFuncs_WalkSequencePory2[])(struct ObjectEvent *, struct Sprite *) = {
+    MovementType_WalkSequence_Step0,
+    MovementType_WalkSequencePory2_Step1,
+    MovementType_WalkSequence_Step2,
+};
+
+const u8 gPory2Directions[] = {DIR_WEST, DIR_NORTH, DIR_WEST, DIR_SOUTH, DIR_WEST};
+
 u8 (*const gMovementTypeFuncs_CopyPlayer[])(struct ObjectEvent *, struct Sprite *) = {
     MovementType_CopyPlayer_Step0,
     MovementType_CopyPlayer_Step1,

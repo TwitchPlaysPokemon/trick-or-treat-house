@@ -1,0 +1,32 @@
+[
+	{
+		"class": "DEVELOPER",
+		"pic": "BUG_MANIAC",
+		"name": "Bugmann",
+		"party": [
+			{
+				"species": "SPECIES_BLIPBUG",
+				"level": 25
+			},
+			{
+				"species": "SPECIES_DOTTLER",
+				"level": 27
+			},
+			{
+				"species": "SPECIES_ORBEETLE",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "DEVELOPER",
+		"pic": "COLLECTOR",
+		"name": "Serges",
+		"party": [
+			{
+				"species": "SPECIES_PSYDUCK",
+				"level": 28
+			}
+		]
+	}
+]

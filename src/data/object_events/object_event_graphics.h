@@ -483,6 +483,8 @@ const u32 gObjectEventPic_MermaidWalk[] = INCBIN_U32("graphics/object_events/pic
 const u32 gObjectEventPic_MetaPedestal[] = INCBIN_U32("graphics/object_events/pics/misc/meta_pedestal.4bpp");
 const u16 gObjectEventPal_MetaPedestal[] = INCBIN_U16("graphics/object_events/pics/misc/meta_pedestal.gbapal");
 
+const u32 gObjectEventPic_Porygon2[] = INCBIN_U32("graphics/object_events/pics/pokemon/porygon2.4bpp");
+
 //-------------------------------------------------------------------
 // Meta Puzzle Items
 const u32 gItemIconPal_Npc1[] = INCBIN_U32("graphics/object_events/palettes/npc_1.gbapal.lz");

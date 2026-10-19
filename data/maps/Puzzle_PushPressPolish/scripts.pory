@@ -134,7 +134,7 @@ script Puzzle_PushPressPolish_Trainer4 {
 			"Have you seen Allison? We were meant\n"
 			"to meet here.$", 
 			"Our {POKEMON} work better together.$")
-	if (flag(FLAG_TEMP_A)) {
+	if (flag(TRAINER_02) == TRUE) {
 		msgbox ("Oh, past the nearest trap door?\n"
 				"Thank you.$", MSGBOX_AUTOCLOSE)
 	} else {

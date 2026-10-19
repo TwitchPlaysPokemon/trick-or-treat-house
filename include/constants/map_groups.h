@@ -298,6 +298,7 @@
 
 // MG_SingleMapPuzzles2026
 #define MAP_PUZZLE_PUSH_PRESS_POLISH (0 | (16 << 8))
+#define MAP_PUZZLE_PACKET_LOST       (1 | (16 << 8))
 
 #define MAP_GROUPS_COUNT 17
 

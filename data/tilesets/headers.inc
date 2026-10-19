@@ -282,7 +282,7 @@ gTileset_CableClub::
 	.4byte gTilesetPalettes_CableClub
 	.4byte gMetatiles_CableClub
 	.4byte gMetatileAttributes_CableClub
-	.4byte NULL @ animation callback
+	.4byte InitTilesetAnim_CableClub
 
 	.align 2
 gTileset_SeashoreHouse::

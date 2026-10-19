@@ -1,0 +1,662 @@
+raw `
+Puzzle_PacketLost_MapScripts::
+	puzzle_info Puzzle_PacketLost_Name, Puzzle_PacketLost_Author
+	puzzle_adjective Puzzle_PacketLost_Adjective
+	puzzle_quip Puzzle_PacketLost_Quip
+	puzzle_candylist Puzzle_PacketLost_CandyList
+    map_script MAP_SCRIPT_ON_PUZZLE_SETUP, Puzzle_PacketLost_SetupPuzzle
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_PacketLost_OnResume
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_PacketLost_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_PacketLost_FrameTable
+	.byte 0
+
+Puzzle_PacketLost_Name:
+	.string "Packet Lost$"
+Puzzle_PacketLost_Author:
+	.string "MyRattata$"
+Puzzle_PacketLost_Adjective:
+	.string "technological$"
+Puzzle_PacketLost_Quip:
+	.string "I don't know if I should be sad\n"
+	.string "that I wasn't paid, or happy\l"
+	.string "to get work experience…$"
+.align 2
+Puzzle_PacketLost_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_COMMON_03
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_03
+	.2byte FLAG_CANDY_RARE_01
+	.2byte 0
+	
+Puzzle_PacketLost_FrameTable:
+	@ VAR_STEP_TRIGGER is set to 1 by MonitorMultiObjectEventTriggersStepCallback when any npc steps on a trigger
+	map_script_2 VAR_STEP_TRIGGER, 1, Puzzle_PacketLost_TurnFinish
+	.2byte 0
+Puzzle_PacketLost_OnResume:
+	@ Setup the NPC Trigger step callback MonitorObjectEventTriggersStepCallback
+	setnpctriggercallback NPC_TRIGGER_CB_COPY_MOVEMENT 
+	end
+`	
+// -----------------------------------------------------
+
+script Puzzle_PacketLost_SetupPuzzle {
+	setflag (FLAG_PUZZLE_21)
+	hideobjectat(14, MAP_PUZZLE_PACKET_LOST)
+}
+
+script Puzzle_PacketLost_OnLoad {
+	setflag (FLAG_TEMP_1)
+	setflag (FLAG_TEMP_3)
+	setflag (FLAG_TEMP_4)
+	hideobjectat(5, MAP_PUZZLE_PACKET_LOST)
+	setvar(VAR_STEP_TRIGGER, 0)
+	setvar(VAR_TEMP_2, 0)
+	if (flag(FLAG_PUZZLE_23) == TRUE) {
+		setmetatile (5, 11, 0x219, 0)
+		setmetatile (6, 11, 0x219, 0)
+		special(DrawWholeMapView)
+	}
+		
+}
+// -----------------------------------------------------
+script Puzzle_PacketLost_Arrive {
+	if (flag(FLAG_TEMP_7) == FALSE && flag(FLAG_TEMP_8) == FALSE && flag(FLAG_PUZZLE_20) == FALSE) {
+		setflag(FLAG_TEMP_8)
+		special (SpawnCameraObject)
+		applymovement(OBJ_EVENT_ID_CAMERA, Puzzle_PacketLost_CameraUp)
+		waitmovement(OBJ_EVENT_ID_CAMERA)
+		special (RemoveCameraObject)
+		applymovement(5, Puzzle_PacketLost_JumpOutPC)
+		playse(SE_LEDGE)
+		waitmovement(5)
+		playmoncry(SPECIES_PORYGON2, CRY_MODE_NORMAL)
+		waitmoncry
+		applymovement(5, Puzzle_PacketLost_PuzzleWalk)
+		waitmovement(5)
+		speakername("Serges")
+		msgbox("Testing… Now!$")
+		copyobjectxytoperm(5)
+		setobjectmovementtype(5, MOVEMENT_TYPE_WALK_SEQUENCE_PORY2)
+		removeobject(5)
+		addobject(5)
+		releaseall
+	} else {
+		releaseall
+	}
+	end
+}
+
+script Puzzle_PacketLost_TurnFinish {
+	if(flag(FLAG_TEMP_10) == FALSE) {
+		setflag(FLAG_TEMP_10)
+		setflag(FLAG_TEMP_11)
+		applymovement(5, Puzzle_PacketLost_WalkDown)
+		waitmovement(5)
+		copyobjectxytoperm(5)
+		setobjectmovementtype(5, MOVEMENT_TYPE_ROTATE_CLOCKWISE)
+		removeobject(5)
+		addobject(5)
+		setvar(VAR_TEMP_2, 2)
+		setvar(VAR_STEP_TRIGGER, 2)
+		playse(SE_SUCCESS)
+		releaseall
+		return
+	} else {
+		setvar(VAR_STEP_TRIGGER, 2)
+		releaseall
+		return
+	}
+		return
+}
+
+script Puzzle_PacketLost_Leave {
+	clearflag(FLAG_TEMP_8)
+	warpteleport(MAP_PUZZLE_PACKET_LOST, 255, 3, 19)
+	releaseall
+	end
+}
+
+script Puzzle_PacketLost_Button1 {
+	if (flag(FLAG_TEMP_A) == FALSE) {
+		playse (SE_PIN)
+		setmetatile (44, 5, 0x2AD, 0)
+		setflag(FLAG_TEMP_A)
+		special(DrawWholeMapView)
+	}
+	releaseall
+	end
+}
+
+script Puzzle_PacketLost_Button2 {
+	playse (SE_PIN)
+	if (flag(FLAG_TEMP_B) == FALSE) {
+		setmetatile (39, 5, 0x2AD, 0)
+		setmetatile (38, 4, 0x2AC, 1)
+		setflag(FLAG_TEMP_B)
+	} else {
+		setmetatile (39, 5, 0x2AC, 1)
+		setmetatile (38, 4, 0x2AD, 0)
+		clearflag(FLAG_TEMP_B)
+	}
+	special(DrawWholeMapView)
+	releaseall
+	end
+}
+
+script Puzzle_PacketLost_Button3 {
+	if (flag(FLAG_TEMP_C) == FALSE) {
+		playse (SE_PIN)
+		setmetatile (35, 5, 0x2AD, 0)
+		setflag(FLAG_TEMP_C)
+		special(DrawWholeMapView)
+	}
+	releaseall
+	end
+}
+
+script Puzzle_PacketLost_Button4 {
+	if (flag(FLAG_TEMP_D) == FALSE) {
+		playse (SE_PIN)
+		setmetatile (32, 4, 0x2AD, 0)
+		setflag(FLAG_TEMP_D)
+		special(DrawWholeMapView)
+	}
+	releaseall
+	end
+}
+
+script Puzzle_PacketLost_Button5 {
+	if (flag(FLAG_TEMP_6) == TRUE && flag(FLAG_TEMP_7) == FALSE && flag(FLAG_TEMP_11) == TRUE && flag(FLAG_PUZZLE_20) == FALSE) {
+		playse (SE_PIN)
+		setmetatile (25, 7, 0x2AD, 0)
+		setflag(FLAG_TEMP_7)
+		setobjectmovementtype(6, MOVEMENT_TYPE_FACE_DOWN)
+		removeobject(6)
+		addobject(6)
+		special(DrawWholeMapView)
+	} elif (flag(FLAG_TEMP_6) == TRUE && flag(FLAG_TEMP_7) == FALSE && flag(FLAG_TEMP_11) == FALSE) {
+		playse (SE_BOO)
+	}
+	releaseall
+	end
+}
+
+script Puzzle_PacketLost_ButtonLights1 {
+	if (flag(FLAG_TEMP_6) == FALSE) {
+		playse (SE_PIN)
+		call(Puzzle_PacketLost_LightsOut1)
+		call(Puzzle_PacketLost_LightsOut2)
+		call(Puzzle_PacketLost_EventScript_CheckAnswer)
+		special(DrawWholeMapView)
+	}
+	releaseall
+	end
+}
+
+script Puzzle_PacketLost_ButtonLights2 {
+	if (flag(FLAG_TEMP_6) == FALSE) {
+	playse (SE_PIN)
+		call(Puzzle_PacketLost_LightsOut1)
+		call(Puzzle_PacketLost_LightsOut2)
+		call(Puzzle_PacketLost_LightsOut3)
+		call(Puzzle_PacketLost_EventScript_CheckAnswer)
+		special(DrawWholeMapView)
+	}
+	releaseall
+	end
+}
+
+script Puzzle_PacketLost_ButtonLights3 {
+	if (flag(FLAG_TEMP_6) == FALSE) {
+	playse (SE_PIN)
+		call(Puzzle_PacketLost_LightsOut2)
+		call(Puzzle_PacketLost_LightsOut3)
+		call(Puzzle_PacketLost_LightsOut4)
+		call(Puzzle_PacketLost_EventScript_CheckAnswer)	
+	}
+	special(DrawWholeMapView)
+	releaseall
+	end
+}
+
+script Puzzle_PacketLost_ButtonLights4 {
+	if (flag(FLAG_TEMP_6) == FALSE) {
+	playse (SE_PIN)
+		call(Puzzle_PacketLost_LightsOut3)
+		call(Puzzle_PacketLost_LightsOut4)
+		call(Puzzle_PacketLost_LightsOut5)
+		call(Puzzle_PacketLost_EventScript_CheckAnswer)
+		special(DrawWholeMapView)
+	}
+	releaseall
+	end
+}
+
+script Puzzle_PacketLost_ButtonLights5 {
+	if (flag(FLAG_TEMP_6) == FALSE) {
+		playse (SE_PIN)
+		call(Puzzle_PacketLost_LightsOut4)
+		call(Puzzle_PacketLost_LightsOut5)
+		call(Puzzle_PacketLost_EventScript_CheckAnswer)
+		special(DrawWholeMapView)
+	}
+	releaseall
+	end
+}
+
+script Puzzle_PacketLost_ButtonMag1 {
+	if (flag(FLAG_TEMP_E) == FALSE) {
+		playse (SE_PIN)
+		setobjectmovementtype(3, MOVEMENT_TYPE_COPY_PLAYER)
+		removeobject(3)
+		addobject(3)
+		setflag(FLAG_TEMP_E)
+	}
+	releaseall
+	end
+}
+
+script Puzzle_PacketLost_ButtonMag2 {
+	if (flag(FLAG_TEMP_F) == FALSE) {
+		playse (SE_PIN)
+		setobjectxy(6, 37, 5)
+		setobjectmovementtype(4, MOVEMENT_TYPE_COPY_PLAYER)
+		removeobject(4)
+		addobject(4)
+		setflag(FLAG_TEMP_F)
+	}
+	releaseall
+	end
+}
+
+script Puzzle_PacketLost_LightsOut1 {
+	if (flag(FLAG_TEMP_1) == FALSE) {
+		call(Puzzle_PacketLost_EventScript_Green1)
+	} else {
+		call(Puzzle_PacketLost_EventScript_Red1)
+	}
+	return
+}
+
+script Puzzle_PacketLost_LightsOut2 {
+	if (flag(FLAG_TEMP_2) == FALSE) {
+		call(Puzzle_PacketLost_EventScript_Green2)
+	} else {
+		call(Puzzle_PacketLost_EventScript_Red2)
+	}
+	return
+}
+
+script Puzzle_PacketLost_LightsOut3 {
+	if (flag(FLAG_TEMP_3) == FALSE) {
+		call(Puzzle_PacketLost_EventScript_Green3)
+	} else {
+		call(Puzzle_PacketLost_EventScript_Red3)
+	}
+	return
+}
+
+script Puzzle_PacketLost_LightsOut4 {
+	if (flag(FLAG_TEMP_4) == FALSE) {
+		call(Puzzle_PacketLost_EventScript_Green4)
+	} else {
+		call(Puzzle_PacketLost_EventScript_Red4)
+	}
+	return
+}
+
+script Puzzle_PacketLost_LightsOut5 {
+	if (flag(FLAG_TEMP_5) == FALSE) {
+		call(Puzzle_PacketLost_EventScript_Green5)
+	} else {
+		call(Puzzle_PacketLost_EventScript_Red5)
+	}
+	return
+}
+
+script Puzzle_PacketLost_EventScript_Green1 {
+	setmetatile (30, 4, 0x2AD, 0)
+	setmetatile (30, 5, 0x2AD, 0)
+	setmetatile (30, 6, 0x2AD, 0)
+	setflag (FLAG_TEMP_1)
+	return
+}
+
+script Puzzle_PacketLost_EventScript_Red1 {
+	setmetatile (30, 4, 0x2AC, 1)
+	setmetatile (30, 5, 0x2AC, 1)
+	setmetatile (30, 6, 0x2AC, 1)
+	clearflag (FLAG_TEMP_1)
+	return
+}
+
+script Puzzle_PacketLost_EventScript_Green2 {
+	setmetatile (29, 4, 0x2AD, 0)
+	setmetatile (29, 5, 0x2AD, 0)
+	setmetatile (29, 6, 0x2AD, 0)
+	setflag (FLAG_TEMP_2)
+	return
+}
+
+script Puzzle_PacketLost_EventScript_Red2 {
+	setmetatile (29, 4, 0x2AC, 1)
+	setmetatile (29, 5, 0x2AC, 1)
+	setmetatile (29, 6, 0x2AC, 1)
+	clearflag (FLAG_TEMP_2)
+	return
+}
+
+script Puzzle_PacketLost_EventScript_Green3 {
+	setmetatile (28, 4, 0x2AD, 0)
+	setmetatile (28, 5, 0x2AD, 0)
+	setmetatile (28, 6, 0x2AD, 0)
+	setflag (FLAG_TEMP_3)
+	return
+}
+
+script Puzzle_PacketLost_EventScript_Red3 {
+	setmetatile (28, 4, 0x2AC, 1)
+	setmetatile (28, 5, 0x2AC, 1)
+	setmetatile (28, 6, 0x2AC, 1)
+	clearflag (FLAG_TEMP_3)
+	return
+}
+
+script Puzzle_PacketLost_EventScript_Green4 {
+	setmetatile (27, 4, 0x2AD, 0)
+	setmetatile (27, 5, 0x2AD, 0)
+	setmetatile (27, 6, 0x2AD, 0)
+	setflag (FLAG_TEMP_4)
+	return
+}
+
+script Puzzle_PacketLost_EventScript_Red4 {
+	setmetatile (27, 4, 0x2AC, 1)
+	setmetatile (27, 5, 0x2AC, 1)
+	setmetatile (27, 6, 0x2AC, 1)
+	clearflag (FLAG_TEMP_4)
+	return
+}
+
+script Puzzle_PacketLost_EventScript_Green5 {
+	setmetatile (26, 4, 0x2AD, 0)
+	setmetatile (26, 5, 0x2AD, 0)
+	setmetatile (26, 6, 0x2AD, 0)
+	setflag (FLAG_TEMP_5)
+	return
+}
+
+script Puzzle_PacketLost_EventScript_Red5 {
+	setmetatile (26, 4, 0x2AC, 1)
+	setmetatile (26, 5, 0x2AC, 1)
+	setmetatile (26, 6, 0x2AC, 1)
+	clearflag (FLAG_TEMP_5)
+	return
+}
+
+script Puzzle_PacketLost_EventScript_CheckAnswer {
+	if (flag(FLAG_TEMP_1) == TRUE && flag(FLAG_TEMP_2) == TRUE && flag(FLAG_TEMP_3) == TRUE && flag(FLAG_TEMP_4) == TRUE && flag(FLAG_TEMP_5) == TRUE) {
+		playse(SE_SUCCESS)
+		setmetatile (25, 9, 0x2AE, 0)
+		setflag(FLAG_TEMP_6)
+	}
+	return
+}
+
+movement Puzzle_PacketLost_JumpOutPC {
+	jump_2_left
+	face_up
+	face_right
+	face_down
+	face_left
+}
+
+movement Puzzle_PacketLost_PuzzleWalk {
+	walk_down
+	walk_left
+}
+
+movement Puzzle_PacketLost_Left {
+	face_left
+}
+
+movement Puzzle_PacketLost_Down {
+	face_down
+}
+
+movement Puzzle_PacketLost_WalkDown {
+	walk_down
+}
+
+movement Puzzle_PacketLost_Up {
+	face_up
+}
+
+movement Puzzle_PacketLost_JumpInPC {
+	walk_left * 5
+	jump_2_left
+}
+
+movement Puzzle_PacketLost_CameraUp {
+	walk_up * 2
+}
+
+movement Puzzle_PacketLost_CameraDown {
+	walk_down * 2
+}
+
+movement Puzzle_PacketLost_ShutPanel {
+	walk_up * 2
+	face_down
+	walk_in_place_slow_down
+}
+
+movement Puzzle_PacketLost_CompOn {
+	walk_up
+	face_left
+}
+
+movement Puzzle_PacketLost_SeeTeleport {
+	walk_right * 3
+	walk_down * 4
+}
+
+movement Puzzle_PacketLost_ReturnTeleport {
+	walk_up * 4
+	walk_left * 3
+}
+
+//----------------------------------------------------------
+
+script Puzzle_PacketLost_Trainer1 {
+	# 
+	trainerbattle_single (TRAINER_01,
+			"Do you mind? I'm in the middle of \n"
+			"debugging, and you keep pressing things.$",
+			"Great. That delayed testing by about\n"
+			"20 minutes.$")
+			if (flag(FLAG_PUZZLE_20) == TRUE) {
+				speakername("Bugmann")
+				msgbox("Goodbye.$", MSGBOX_NPC)
+				setobjectmovementtype(6, MOVEMENT_TYPE_FACE_LEFT)
+				removeobject(6)
+				addobject(6)
+				releaseall
+				end
+			} else {
+			msgbox("So, you were asked to do a live test?\n"
+			"If that was true, wouldn't I have seen\l"
+			"a Porygon2 navigating the course?$", MSGBOX_NPC)
+	special (SpawnCameraObject)
+	applymovement(6, Puzzle_PacketLost_Up)
+	playmoncry(SPECIES_PORYGON2, CRY_MODE_NORMAL)
+	waitmoncry
+	applymovement(5, Puzzle_PacketLost_JumpInPC)
+	delay(60)
+	playse(SE_LEDGE)
+	waitmovement(5)
+	copyobjectxytoperm(5)
+	hideobjectat(5, MAP_PUZZLE_PACKET_LOST)
+	applymovement(OBJ_EVENT_ID_CAMERA, Puzzle_PacketLost_CameraDown)
+	waitmovement(OBJ_EVENT_ID_CAMERA)
+	special (RemoveCameraObject)
+	applymovement(6, Puzzle_PacketLost_Down)
+	speakername("Bugmann")
+	msgbox("Ok, listen. If I give you this can we\n"
+		"pretend that we didn't have this\l"
+		"conversation here?$", MSGBOX_NPC)
+	giveitem_std(ITEM_TABLE_CANDY_RARE, 1)
+	setflag(FLAG_CANDY_RARE_01)
+	speakername("Bugmann")
+	message("Excellent.$, MSGBOX_NPC")
+	waitmessage
+	applymovement(6, Puzzle_PacketLost_ShutPanel)
+	waitmovement(6)
+	special(DrawWholeMapView)
+	applymovement(6, Puzzle_PacketLost_CompOn)
+	waitmovement(6)
+	copyobjectxytoperm(6)
+	setflag(FLAG_PUZZLE_20)
+	clearflag(FLAG_PUZZLE_21)
+	speakername("Bugmann")
+	msgbox("Goodbye.$", MSGBOX_NPC)
+	setobjectmovementtype(6, MOVEMENT_TYPE_FACE_LEFT)
+	removeobject(6)
+	addobject(6)
+	releaseall
+	end
+}
+}
+
+//----------------------------------------------------------
+
+script Puzzle_PacketLost_MovingRock {
+	msgbox ("It's a boulder that moves on it's own.\n"
+			"Apparently, these are notorious\l"
+			"in a region called… Tohoak?$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_PacketLost_MagnemiteDrone1 {
+	msgbox ("It's a remote-control Magnemite toy.$", MSGBOX_AUTOCLOSE)
+	if (flag(FLAG_CANDY_UNCOMMON_01) == FALSE) {
+		msgbox ("Something is attached to the magnets.$", MSGBOX_AUTOCLOSE)
+		giveitem_std(ITEM_TABLE_CANDY_UNCOMMON, 1)
+		setflag(FLAG_CANDY_UNCOMMON_01)
+		msgbox ("How did that get there?$", MSGBOX_AUTOCLOSE)
+	}
+}
+
+script Puzzle_PacketLost_MagnemiteDrone2 {
+	msgbox ("It's the other remote-control Magnemite toy.$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_PacketLost_NPCRocket {
+	msgbox ("What?\n"
+			"It's Halloween.\l"
+			"I can wear a costume to work.$", MSGBOX_NPC)
+}
+
+script Puzzle_PacketLost_NPCComputerWoman {
+	msgbox ("These computers were designed for data\n"
+			"transfer. We bought them second-hand\l"
+			"from the Cable Club.\p"
+			"Apparently, kids these days don't\n"
+			"mix records as often.$", MSGBOX_NPC)
+}
+
+script Puzzle_PacketLost_SignFreeComputer {
+	msgbox ("It's a computer, showing a message.\n"
+			"“Transport under maintenance.”$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_PacketLost_PoryOut {
+	msgbox ("It's the Porygon2 from earlier!\n"
+			"It's carrying a scroll.$", MSGBOX_AUTOCLOSE)
+	call(PuzzleCommon_EventScript_Scroll)
+	releaseall
+	end
+}
+
+script Puzzle_PacketLost_NPCScientist {
+	if (flag(FLAG_PUZZLE_22) == FALSE) {
+		msgbox ("The scientist seems very focused on…\n"
+				"Whatever that is on screen.$", MSGBOX_SIGN)
+	} elif (flag(FLAG_PUZZLE_22) == TRUE && flag(FLAG_PUZZLE_20) == FALSE && flag(FLAG_PUZZLE_23) == FALSE) {
+		trainerbattle_single (TRAINER_02,
+			"Oh, a kid? Uhh… I guess I can battle you?$",
+			"Ah, you're here to help with testing.$")
+			msgbox ("So, the scroll. I digitized it and sent\n"
+  			"it off to storage. Not to worry, this is\l"
+  			"just the time to do a live test of\l"
+			"the Physical E-Mail system.$", MSGBOX_NPC)
+			speakername("Serges")
+  			msgbox ("What is that, you might have asked? No,\n"
+			"it is not just “regular mail.” We use\l"
+			"computers to send a {POKEMON}-\l"
+			"specifically a Porygon2 holding mail\l"
+			"and parcels, to the nearest suitable PC,\l"
+			"where it carries it onward to the\l"
+			"recipient, saving time on transit without\l"
+			"requiring every home to set up a PC\l"
+			"capable of sending and receiving \l"
+			"{POKEMON}.\p"
+			"At least, that's the theory.$", MSGBOX_NPC)
+		special (SpawnCameraObject)
+		applymovement(OBJ_EVENT_ID_CAMERA, Puzzle_PacketLost_SeeTeleport)
+		waitmovement(OBJ_EVENT_ID_CAMERA)
+		setmetatile (5, 11, 0x219, 0)
+		setmetatile (6, 11, 0x219, 0)
+		special(DrawWholeMapView)
+		speakername("Serges")
+  		msgbox ("Through there is our Porygon2 training\n"
+				"course. Right now, it only knows the\l"
+				"basics of navigation, so your role is\l"
+				"to use the panels to clear it's path to\l"
+				" the other pc, so it can observe how \l"
+				"obstacles it could face may behave\l"
+				"and how you solve problems.\p"
+				"If it gets stuck, just exit and re-enter,\n"
+				"in this facility we can reset it remotely.$", MSGBOX_NPC)
+		applymovement(OBJ_EVENT_ID_CAMERA, Puzzle_PacketLost_ReturnTeleport)
+		waitmovement(OBJ_EVENT_ID_CAMERA)
+		special (RemoveCameraObject)
+		setflag(FLAG_PUZZLE_23)
+		speakername("Serges")
+  			msgbox ("Best of luck!$", MSGBOX_NPC)
+		releaseall
+		end
+	} elif (flag(FLAG_PUZZLE_22) == TRUE && flag(FLAG_PUZZLE_20) == FALSE && flag(FLAG_PUZZLE_23) == TRUE) {
+		speakername("Serges")
+  		msgbox ("Best of luck!$", MSGBOX_NPC)
+		releaseall
+		end
+	} elif (flag(FLAG_PUZZLE_22) == TRUE && flag(FLAG_PUZZLE_20) == TRUE && flag(FLAG_PUZZLE_23) == TRUE && flag(FLAG_CANDY_UNCOMMON_03) == FALSE) {
+		speakername("Serges")
+  		msgbox ("Great work! That should make fine\l"
+		"training data. Here, take this.$", MSGBOX_NPC)
+		giveitem_std(ITEM_TABLE_CANDY_UNCOMMON, 3)
+		setflag(FLAG_CANDY_UNCOMMON_03)
+		releaseall
+		end
+	} else {
+	speakername("Serges")
+  		msgbox ("Bugmann didn't cause you any trouble,\l"
+		"did he?$", MSGBOX_NPC)
+		releaseall
+		end
+	} 
+}
+	
+script Puzzle_PacketLost_NPCScienceBoss {
+	msgbox ("Hello! Welcome to the computer lab!\n"
+  			"You're here for tests and puzzles, yes?\l"
+  			"Then Serges at the green PC is your man.$", MSGBOX_NPC)
+	setflag(FLAG_PUZZLE_22)
+	releaseall
+	end
+}
