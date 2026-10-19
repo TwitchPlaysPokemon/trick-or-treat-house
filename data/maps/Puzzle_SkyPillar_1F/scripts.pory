@@ -1,6 +1,6 @@
 raw `
 Puzzle_SkyPillar_1F_MapScripts::
-	puzzle_info Puzzle_SkyPillar_1F_Name, Puzzle_SkyPillar_1F_Author, PUZZLE_FLAG_GAME_FREAK
+	puzzle_info Puzzle_SkyPillar_1F_Name, Puzzle_SkyPillar_1F_Author
 	puzzle_adjective Puzzle_SkyPillar_1F_Adjective
 	puzzle_quip Puzzle_SkyPillar_1F_Quip
 	//puzzle_setup_script Puzzle_SkyPillar_1F_SetupScript
