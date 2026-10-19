@@ -21,6 +21,8 @@ Puzzle_PacketLost_Quip:
 	.string "that I wasn't paid, or happy\l"
 	.string "to get work experience…$"
 .align 2
+Puzzle_MirageTower_1F_Variables:
+	.2byte VAR_QUIP_PERSON, OBJ_EVENT_GFX_LASS
 Puzzle_PacketLost_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01
 	.2byte FLAG_CANDY_ABUNDANT_02
@@ -556,7 +558,7 @@ script Puzzle_PacketLost_MagnemiteDrone2 {
 }
 
 script Puzzle_PacketLost_NPCRocket {
-	msgbox ("What?\n"
+	msgbox ("What?\p"
 			"It's Halloween.\l"
 			"I can wear a costume to work.$", MSGBOX_NPC)
 }
@@ -576,7 +578,7 @@ script Puzzle_PacketLost_SignFreeComputer {
 
 script Puzzle_PacketLost_PoryOut {
 	msgbox ("It's the Porygon2 from earlier!\n"
-			"It's carrying a scroll.$", MSGBOX_AUTOCLOSE)
+			"It's carrying a scroll.$", MSGBOX_NPC)
 	call(PuzzleCommon_EventScript_Scroll)
 	releaseall
 	end
@@ -597,13 +599,13 @@ script Puzzle_PacketLost_NPCScientist {
 			speakername("Serges")
   			msgbox ("What is that, you might have asked? No,\n"
 			"it is not just “regular mail.” We use\l"
-			"computers to send a {POKEMON}-\l"
+			"computers to send a {POKEMON}-\n"
 			"specifically a Porygon2 holding mail\l"
-			"and parcels, to the nearest suitable PC,\l"
+			"and parcels, to the nearest suitable PC,\n"
 			"where it carries it onward to the\l"
-			"recipient, saving time on transit without\l"
+			"recipient, saving time on transit without\n"
 			"requiring every home to set up a PC\l"
-			"capable of sending and receiving \l"
+			"capable of sending and receiving \n"
 			"{POKEMON}.\p"
 			"At least, that's the theory.$", MSGBOX_NPC)
 		special (SpawnCameraObject)
@@ -615,9 +617,9 @@ script Puzzle_PacketLost_NPCScientist {
 		speakername("Serges")
   		msgbox ("Through there is our Porygon2 training\n"
 				"course. Right now, it only knows the\l"
-				"basics of navigation, so your role is\l"
+				"basics of navigation, so your role is\n"
 				"to use the panels to clear it's path to\l"
-				" the other pc, so it can observe how \l"
+				" the other pc, so it can observe how \n"
 				"obstacles it could face may behave\l"
 				"and how you solve problems.\p"
 				"If it gets stuck, just exit and re-enter,\n"
@@ -637,7 +639,7 @@ script Puzzle_PacketLost_NPCScientist {
 		end
 	} elif (flag(FLAG_PUZZLE_22) == TRUE && flag(FLAG_PUZZLE_20) == TRUE && flag(FLAG_PUZZLE_23) == TRUE && flag(FLAG_CANDY_UNCOMMON_03) == FALSE) {
 		speakername("Serges")
-  		msgbox ("Great work! That should make fine\l"
+  		msgbox ("Great work! That should make fine\n"
 		"training data. Here, take this.$", MSGBOX_NPC)
 		giveitem_std(ITEM_TABLE_CANDY_UNCOMMON, 3)
 		setflag(FLAG_CANDY_UNCOMMON_03)
