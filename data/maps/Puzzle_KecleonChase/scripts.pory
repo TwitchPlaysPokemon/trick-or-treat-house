@@ -1,0 +1,33 @@
+raw `
+Puzzle_KecleonChase_MapScripts::
+	puzzle_info Puzzle_KecleonChase_Name, Puzzle_KecleonChase_Author
+	puzzle_adjective Puzzle_KecleonChase_Adjective
+	puzzle_quip Puzzle_KecleonChase_Quip
+	//puzzle_setup_script Puzzle_KecleonChase_SetupScript
+	puzzle_item_prereqs Puzzle_KecleonChase_Items
+	puzzle_metavars Puzzle_KecleonChase_Variables
+	puzzle_candylist Puzzle_KecleonChase_CandyList
+	//map_script MAP_SCRIPT_ON_RESUME, Puzzle_KecleonChase_OnResume
+	//map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_KecleonChase_FrameTable
+	//map_script MAP_SCRIPT_ON_LOAD, Puzzle_KecleonChase_OnLoad
+	.byte 0
+
+Puzzle_KecleonChase_Name:
+	.string "Keckle-where?$"
+Puzzle_KecleonChase_Author:
+	.string "YugnatZero$"
+Puzzle_KecleonChase_Adjective:
+	.string "cackling$"
+Puzzle_KecleonChase_Quip:
+	.string "Kek.$"
+.align 2
+Puzzle_KecleonChase_Items:
+	.2byte ITEM_DEVON_SCOPE
+	.2byte 0
+Puzzle_KecleonChase_Variables:
+	.2byte VAR_QUIP_PERSON,  OBJ_EVENT_GFX_KECLEON
+	.2byte 0
+Puzzle_KecleonChase_CandyList:
+	.2byte 0
+
+`

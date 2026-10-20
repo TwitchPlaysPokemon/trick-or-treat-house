@@ -2832,6 +2832,18 @@
       "secondary_tileset": "gTileset_MirageTower",
       "border_filepath": "data/layouts/Puzzle_MirageTower_4F/border.bin",
       "blockdata_filepath": "data/layouts/Puzzle_MirageTower_4F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PUZZLE_KECLEON_CHASE",
+      "name": "Puzzle_KecleonChase_Layout",
+      "width": 20,
+      "height": 20,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Autumn",
+      "secondary_tileset": "gTileset_Fortree",
+      "border_filepath": "data/layouts/Puzzle_KecleonChase/border.bin",
+      "blockdata_filepath": "data/layouts/Puzzle_KecleonChase/map.bin"
     }
   ]
 }

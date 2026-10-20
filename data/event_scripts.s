@@ -848,3 +848,5 @@ gText_LinkRecordCouldntBeSaved::
 	.include "data/maps/Puzzle_MirageTower_3F/scripts.inc"
 
 	.include "data/maps/Puzzle_MirageTower_4F/scripts.inc"
+
+	.include "data/maps/Puzzle_KecleonChase/scripts.inc"

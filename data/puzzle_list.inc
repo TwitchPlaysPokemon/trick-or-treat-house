@@ -80,4 +80,5 @@ gDebugPuzzles::
 @   .2byte MAP_PUZZLE_LOST_WOODS3_ENTRANCE              @  MAZE
     .2byte MAP_PUZZLE_SKY_PILLAR_1F                     @  WILD/MOVEMENT
     .2byte MAP_PUZZLE_MIRAGE_TOWER_1F                   @  WILD/MOVEMENT
+    .2byte MAP_PUZZLE_KECLEON_CHASE                     @  FOLLOW
     .2byte 0xFFFF

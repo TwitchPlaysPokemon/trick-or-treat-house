@@ -164,7 +164,8 @@
     "Puzzle_DiveMaze",
     "Puzzle_ImposterReflection",
     "Puzzle_ThinIce",
-    "Puzzle_BlockPushing"
+    "Puzzle_BlockPushing",
+    "Puzzle_KecleonChase"
   ],
   "MG_LostWoodsPuzzles": [
     "Puzzle_LostWoods1_Entrance",

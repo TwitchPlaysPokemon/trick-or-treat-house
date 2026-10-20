@@ -151,6 +151,7 @@
 #define MAP_PUZZLE_IMPOSTER_REFLECTION   (7 | (7 << 8))
 #define MAP_PUZZLE_THIN_ICE              (8 | (7 << 8))
 #define MAP_PUZZLE_BLOCK_PUSHING         (9 | (7 << 8))
+#define MAP_PUZZLE_KECLEON_CHASE         (10 | (7 << 8))
 
 // MG_LostWoodsPuzzles
 #define MAP_PUZZLE_LOST_WOODS1_ENTRANCE (0 | (8 << 8))
