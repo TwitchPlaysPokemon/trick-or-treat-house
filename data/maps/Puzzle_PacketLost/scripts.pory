@@ -4,6 +4,7 @@ Puzzle_PacketLost_MapScripts::
 	puzzle_adjective Puzzle_PacketLost_Adjective
 	puzzle_quip Puzzle_PacketLost_Quip
 	puzzle_candylist Puzzle_PacketLost_CandyList
+	puzzle_metavars Puzzle_PacketLost_Variables
     map_script MAP_SCRIPT_ON_PUZZLE_SETUP, Puzzle_PacketLost_SetupPuzzle
 	map_script MAP_SCRIPT_ON_RESUME, Puzzle_PacketLost_OnResume
 	map_script MAP_SCRIPT_ON_LOAD, Puzzle_PacketLost_OnLoad
@@ -21,7 +22,7 @@ Puzzle_PacketLost_Quip:
 	.string "that I wasn't paid, or happy\l"
 	.string "to get work experience…$"
 .align 2
-Puzzle_MirageTower_1F_Variables:
+Puzzle_PacketLost_Variables:
 	.2byte VAR_QUIP_PERSON, OBJ_EVENT_GFX_LASS
 Puzzle_PacketLost_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01
@@ -38,6 +39,7 @@ Puzzle_PacketLost_CandyList:
 Puzzle_PacketLost_FrameTable:
 	@ VAR_STEP_TRIGGER is set to 1 by MonitorMultiObjectEventTriggersStepCallback when any npc steps on a trigger
 	map_script_2 VAR_STEP_TRIGGER, 1, Puzzle_PacketLost_TurnFinish
+	map_script_2 VAR_TEMP_4, 1, Puzzle_PacketLost_AutoPostBattle
 	.2byte 0
 Puzzle_PacketLost_OnResume:
 	@ Setup the NPC Trigger step callback MonitorObjectEventTriggersStepCallback
@@ -97,6 +99,7 @@ script Puzzle_PacketLost_TurnFinish {
 	if(flag(FLAG_TEMP_10) == FALSE) {
 		setflag(FLAG_TEMP_10)
 		setflag(FLAG_TEMP_11)
+		setobjectxy(5, 31, 4)
 		applymovement(5, Puzzle_PacketLost_WalkDown)
 		waitmovement(5)
 		copyobjectxytoperm(5)
@@ -106,6 +109,7 @@ script Puzzle_PacketLost_TurnFinish {
 		setvar(VAR_TEMP_2, 2)
 		setvar(VAR_STEP_TRIGGER, 2)
 		playse(SE_SUCCESS)
+		waitmovement(5)
 		releaseall
 		return
 	} else {
@@ -254,6 +258,8 @@ script Puzzle_PacketLost_ButtonLights5 {
 script Puzzle_PacketLost_ButtonMag1 {
 	if (flag(FLAG_TEMP_E) == FALSE) {
 		playse (SE_PIN)
+		msgbox("The remote-control Magnemite toy\n"
+		"turns on!$", MSGBOX_AUTOCLOSE)
 		setobjectmovementtype(3, MOVEMENT_TYPE_COPY_PLAYER)
 		removeobject(3)
 		addobject(3)
@@ -266,7 +272,8 @@ script Puzzle_PacketLost_ButtonMag1 {
 script Puzzle_PacketLost_ButtonMag2 {
 	if (flag(FLAG_TEMP_F) == FALSE) {
 		playse (SE_PIN)
-		setobjectxy(6, 37, 5)
+		msgbox("The remote-control Magnemite toy\n"
+		"turns on!$", MSGBOX_AUTOCLOSE)
 		setobjectmovementtype(4, MOVEMENT_TYPE_COPY_PLAYER)
 		removeobject(4)
 		addobject(4)
@@ -454,8 +461,6 @@ movement Puzzle_PacketLost_CameraDown {
 
 movement Puzzle_PacketLost_ShutPanel {
 	walk_up * 2
-	face_down
-	walk_in_place_slow_down
 }
 
 movement Puzzle_PacketLost_CompOn {
@@ -476,13 +481,12 @@ movement Puzzle_PacketLost_ReturnTeleport {
 //----------------------------------------------------------
 
 script Puzzle_PacketLost_Trainer1 {
-	# 
+	#
 	trainerbattle_single (TRAINER_01,
 			"Do you mind? I'm in the middle of \n"
 			"debugging, and you keep pressing things.$",
 			"Great. That delayed testing by about\n"
 			"20 minutes.$")
-			if (flag(FLAG_PUZZLE_20) == TRUE) {
 				speakername("Bugmann")
 				msgbox("Goodbye.$", MSGBOX_NPC)
 				setobjectmovementtype(6, MOVEMENT_TYPE_FACE_LEFT)
@@ -490,49 +494,59 @@ script Puzzle_PacketLost_Trainer1 {
 				addobject(6)
 				releaseall
 				end
-			} else {
-			msgbox("So, you were asked to do a live test?\n"
+}
+				
+				
+script Puzzle_PacketLost_AutoPostBattle	{	
+	if (flag(FLAG_PUZZLE_20) == FALSE) {
+		speakername("Bugmann")
+		msgbox("So, you were asked to do a live test?\n"
 			"If that was true, wouldn't I have seen\l"
 			"a Porygon2 navigating the course?$", MSGBOX_NPC)
-	special (SpawnCameraObject)
-	applymovement(6, Puzzle_PacketLost_Up)
-	playmoncry(SPECIES_PORYGON2, CRY_MODE_NORMAL)
-	waitmoncry
-	applymovement(5, Puzzle_PacketLost_JumpInPC)
-	delay(60)
-	playse(SE_LEDGE)
-	waitmovement(5)
-	copyobjectxytoperm(5)
-	hideobjectat(5, MAP_PUZZLE_PACKET_LOST)
-	applymovement(OBJ_EVENT_ID_CAMERA, Puzzle_PacketLost_CameraDown)
-	waitmovement(OBJ_EVENT_ID_CAMERA)
-	special (RemoveCameraObject)
-	applymovement(6, Puzzle_PacketLost_Down)
-	speakername("Bugmann")
-	msgbox("Ok, listen. If I give you this can we\n"
-		"pretend that we didn't have this\l"
-		"conversation here?$", MSGBOX_NPC)
-	giveitem_std(ITEM_TABLE_CANDY_RARE, 1)
-	setflag(FLAG_CANDY_RARE_01)
-	speakername("Bugmann")
-	message("Excellent.$, MSGBOX_NPC")
-	waitmessage
-	applymovement(6, Puzzle_PacketLost_ShutPanel)
-	waitmovement(6)
-	special(DrawWholeMapView)
-	applymovement(6, Puzzle_PacketLost_CompOn)
-	waitmovement(6)
-	copyobjectxytoperm(6)
-	setflag(FLAG_PUZZLE_20)
-	clearflag(FLAG_PUZZLE_21)
-	speakername("Bugmann")
-	msgbox("Goodbye.$", MSGBOX_NPC)
-	setobjectmovementtype(6, MOVEMENT_TYPE_FACE_LEFT)
-	removeobject(6)
-	addobject(6)
-	releaseall
+		special (SpawnCameraObject)
+		applymovement(6, Puzzle_PacketLost_Up)
+		playmoncry(SPECIES_PORYGON2, CRY_MODE_NORMAL)
+		waitmoncry
+		applymovement(5, Puzzle_PacketLost_JumpInPC)
+		delay(60)
+		playse(SE_LEDGE)
+		waitmovement(5)
+		copyobjectxytoperm(5)
+		hideobjectat(5, MAP_PUZZLE_PACKET_LOST)
+		applymovement(OBJ_EVENT_ID_CAMERA, Puzzle_PacketLost_CameraDown)
+		waitmovement(OBJ_EVENT_ID_CAMERA)
+		special (RemoveCameraObject)
+		applymovement(6, Puzzle_PacketLost_Down)
+		speakername("Bugmann")
+		msgbox("Ok, listen. If I give you this can we\n"
+			"pretend that we didn't have this\l"
+			"conversation here?$", MSGBOX_NPC)
+		giveitem_std(ITEM_TABLE_CANDY_RARE, 1)
+		setflag(FLAG_CANDY_RARE_01)
+		speakername("Bugmann")
+		message("Excellent.$, MSGBOX_NPC")
+		waitmessage
+		applymovement(6, Puzzle_PacketLost_ShutPanel)
+		waitmovement(6)
+		setmetatile(24, 5, 0x30B, 1)
+		special(DrawWholeMapView)
+		applymovement(6, Puzzle_PacketLost_CompOn)
+		waitmovement(6)
+		copyobjectxytoperm(6)
+		setflag(FLAG_PUZZLE_20)
+		clearflag(FLAG_PUZZLE_21)
+		setvar(VAR_TEMP_4, 3) 
+		speakername("Bugmann")
+		msgbox("Goodbye.$", MSGBOX_NPC)
+		setobjectmovementtype(6, MOVEMENT_TYPE_FACE_LEFT)
+		removeobject(6)
+		addobject(6)
+		releaseall
+		end
+	} else {
+		releaseall
+	}
 	end
-}
 }
 
 //----------------------------------------------------------
@@ -544,12 +558,14 @@ script Puzzle_PacketLost_MovingRock {
 }
 
 script Puzzle_PacketLost_MagnemiteDrone1 {
-	msgbox ("It's a remote-control Magnemite toy.$", MSGBOX_AUTOCLOSE)
 	if (flag(FLAG_CANDY_UNCOMMON_01) == FALSE) {
-		msgbox ("Something is attached to the magnets.$", MSGBOX_AUTOCLOSE)
+		msgbox ("It's a remote-control Magnemite toy.\n"
+				"Something is attached to the magnets.$", MSGBOX_AUTOCLOSE)
 		giveitem_std(ITEM_TABLE_CANDY_UNCOMMON, 1)
 		setflag(FLAG_CANDY_UNCOMMON_01)
 		msgbox ("How did that get there?$", MSGBOX_AUTOCLOSE)
+	} else {
+	msgbox ("It's a remote-control Magnemite toy.$", MSGBOX_AUTOCLOSE)
 	}
 }
 
@@ -559,7 +575,7 @@ script Puzzle_PacketLost_MagnemiteDrone2 {
 
 script Puzzle_PacketLost_NPCRocket {
 	msgbox ("What?\p"
-			"It's Halloween.\l"
+			"It's Halloween.\p"
 			"I can wear a costume to work.$", MSGBOX_NPC)
 }
 
@@ -589,25 +605,26 @@ script Puzzle_PacketLost_NPCScientist {
 		msgbox ("The scientist seems very focused on…\n"
 				"Whatever that is on screen.$", MSGBOX_SIGN)
 	} elif (flag(FLAG_PUZZLE_22) == TRUE && flag(FLAG_PUZZLE_20) == FALSE && flag(FLAG_PUZZLE_23) == FALSE) {
-		trainerbattle_single (TRAINER_02,
-			"Oh, a kid? Uhh… I guess I can battle you?$",
+		playbgm(MUS_ENCOUNTER_SUSPICIOUS, FALSE)
+		speakername("Serges")
+		msgbox("Oh, a kid? Uhh… Did you want to battle?$", MSGBOX_NPC)
+		trainerbattle_no_intro (TRAINER_02,
 			"Ah, you're here to help with testing.$")
-			msgbox ("So, the scroll. I digitized it and sent\n"
-  			"it off to storage. Not to worry, this is\l"
-  			"just the time to do a live test of\l"
-			"the Physical E-Mail system.$", MSGBOX_NPC)
 			speakername("Serges")
-  			msgbox ("What is that, you might have asked? No,\n"
-			"it is not just “regular mail.” We use\l"
-			"computers to send a {POKEMON}-\n"
-			"specifically a Porygon2 holding mail\l"
-			"and parcels, to the nearest suitable PC,\n"
-			"where it carries it onward to the\l"
-			"recipient, saving time on transit without\n"
-			"requiring every home to set up a PC\l"
-			"capable of sending and receiving \n"
-			"{POKEMON}.\p"
-			"At least, that's the theory.$", MSGBOX_NPC)
+			msgbox ("So, the scroll you're looking for? \n"
+					"I digitized it and sent it to storage.\p"
+					"Not to worry, this is just so we can do\n"
+					"a live test of the Physical E-Mail system.\p"
+					"What is that, you might have asked?\n"
+					"No, it is not just “regular mail.”\p"
+					"We use computers to send a {POKEMON}-\n"
+					"specifically a Porygon2 holding mail and\l"
+					"parcels, to the nearest suitable PC.\p"
+					"It carries the delivery onward to the\n"
+					"recipient, saving time without requiring\l"
+					"every home to set up a PC capable of\l"
+					"sending and receiving {POKEMON}.\p"
+					"At least, that's the theory.$", MSGBOX_NPC)
 		special (SpawnCameraObject)
 		applymovement(OBJ_EVENT_ID_CAMERA, Puzzle_PacketLost_SeeTeleport)
 		waitmovement(OBJ_EVENT_ID_CAMERA)
@@ -617,13 +634,14 @@ script Puzzle_PacketLost_NPCScientist {
 		speakername("Serges")
   		msgbox ("Through there is our Porygon2 training\n"
 				"course. Right now, it only knows the\l"
-				"basics of navigation, so your role is\n"
-				"to use the panels to clear it's path to\l"
-				" the other pc, so it can observe how \n"
+				"basics of navigation.\p"
+				"Your role is to use the panels to clear\n"
+				"the path to the other PC for it.\p"
+				"Porygon2 should be able to observe how\n"
 				"obstacles it could face may behave\l"
 				"and how you solve problems.\p"
-				"If it gets stuck, just exit and re-enter,\n"
-				"in this facility we can reset it remotely.$", MSGBOX_NPC)
+				"If it gets stuck, just exit and re-enter.\n"
+				"In this facility we can reset it remotely.$", MSGBOX_NPC)
 		applymovement(OBJ_EVENT_ID_CAMERA, Puzzle_PacketLost_ReturnTeleport)
 		waitmovement(OBJ_EVENT_ID_CAMERA)
 		special (RemoveCameraObject)
@@ -647,7 +665,7 @@ script Puzzle_PacketLost_NPCScientist {
 		end
 	} else {
 	speakername("Serges")
-  		msgbox ("Bugmann didn't cause you any trouble,\l"
+  		msgbox ("Bugmann didn't cause you any trouble,\n"
 		"did he?$", MSGBOX_NPC)
 		releaseall
 		end
