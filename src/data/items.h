@@ -12099,22 +12099,6 @@ const struct Item gItems[] =
         .secondaryId = 0,
     },
     
-    [ITEM_CANDY_LOVEHEARTS] =
-    { // Infatuates on Contact (Cute Charm)
-        .name = sLoveHeartsName,
-        .quantum = sQuantum_Packet,
-        .itemId = ITEM_CANDY_LOVEHEARTS,
-        .holdEffect = HOLD_EFFECT_INFATUATION,
-        .price = CANDY_COST(1500),
-        .description = sLoveHeartsDesc,
-        .keepItem = TRUE,
-        .isCandy = TRUE,
-        .pocket = POCKET_CANDY,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .secondaryId = 0,
-    },
-    
 // #pragma endregion
     
 };
@@ -12165,7 +12149,6 @@ static const u16 gItemTable_CandyRare[] = {
     ITEM_CANDY_BLACKTHUNDER,
     ITEM_CANDY_TOBLERONE,
     ITEM_CANDY_FERREROROCHER,
-    ITEM_CANDY_LOVEHEARTS,
     ITEM_MAX_HONEY,
     ITEM_EXP_CANDY_M,
 };

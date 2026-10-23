@@ -240,7 +240,6 @@ static const u8 gBort_PkmnsXMadeItIneffective[] = _("{B_SCR_ACTIVE_NAME_WITH_PRE
 
 static const u8 gBort_PkmnsXWoreOff[] = _("{B_ATK_PREFIX1}'s {B_BUFF1}\nNO APPEAR!"); // gussed
 static const u8 gBort_PkmnCutsAttackWithSlab[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} BIG CANDY\n{B_DEF_NAME_WITH_PREFIX} MAKE SAD");
-static const u8 gBort_PkmnsXInfatuatedYHearts[] = _("{B_DEF_NAME_WITH_PREFIX} CHALKS\n DISPIRITED {B_ATK_NAME_WITH_PREFIX}");
 // Moves
 static const u8 gBort_PkmnsWillPerishIn3Turns[] = _("3 ELFS WILL DIE\nAFTER TURN BACK");
 static const u8 gBort_PkmnCenterAttention[] = _("{B_DEF_NAME_WITH_PREFIX} LOOK\nTO WAVE FINGR"); //idk
@@ -922,7 +921,5 @@ const u8 * const gElfBattleStringsTable[BATTLESTRINGS_COUNT] =
 	[STRINGID_INTIMIDATESLAB - BATTLESTRINGS_TABLE_START] = gBort_PkmnCutsAttackWithSlab,
 	[STRINGID_PKMNFLEDUSINGSNICKERS - BATTLESTRINGS_TABLE_START] = gBort_PkmnFledUsingSnickers,
 	// [STRINGID_POKEMONATECANDY - BATTLESTRINGS_TABLE_START] = gBort_OpponentAteCandy,
-	[STRINGID_PKMNSXINFATUATEDYHEARTS - BATTLESTRINGS_TABLE_START] = gBort_PkmnsXInfatuatedYHearts,
-	
 };
 

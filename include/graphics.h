@@ -7561,8 +7561,6 @@ extern const u32 gItemIconPic_blackthunder[];
 extern const u32 gItemIconPal_blackthunder[];
 extern const u32 gItemIconPic_raisin[];
 extern const u32 gItemIconPal_raisin[];
-extern const u32 gItemIconPic_lovehearts[];
-extern const u32 gItemIconPal_lovehearts[];
 
 // Poké Balls
 extern const u32 gItemIcon_PokeBall[];
