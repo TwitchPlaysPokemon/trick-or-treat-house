@@ -5140,4 +5140,16 @@ static const u8 sDrumstickDesc[] = _(
     "Restores HP\n"
     "by 30 points.");
 
+static const u8 sCrunchieName[] = _("Crunchie");
+static const u8 sCrunchieDesc[] = _(
+    "Honeycomb with\n"
+    "a chocolate coat.\n"
+    "Heals 50HP.");
+
+static const u8 sPopRocksName[] = _("Pop Rocks");
+static const u8 sPopRocksDesc[] = _(
+    "Popping candy.\n"
+    "When intimidated,\n"
+    "speed is boosted.");
+
 #pragma endregion

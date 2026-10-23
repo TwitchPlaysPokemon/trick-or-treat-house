@@ -12110,7 +12110,7 @@ const struct Item gItems[] =
         .keepItem = TRUE,
         .isCandy = TRUE,
         .pocket = POCKET_CANDY,
-        .type = ITEM_USE_PARTY_MENU,
+        .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
     },
@@ -12136,7 +12136,7 @@ const struct Item gItems[] =
     {   // +30HP
         .name = sDrumstickName,
         .itemId = ITEM_CANDY_DRUMSTICK,
-        .price = CANDY_COST(400),
+        .price = CANDY_COST(300),
         .itemEffect = gItemEffect_HealHP30,
         .holdEffect = HOLD_EFFECT_RESTORE_HP,
         .holdEffectParam = 30,
@@ -12150,6 +12150,43 @@ const struct Item gItems[] =
         .battleUseFunc = ItemUseInBattle_Medicine,
         .secondaryId = 0,
     },
+    
+    [ITEM_CANDY_CRUNCHIE] =
+    { // +50HP
+        .name = sCrunchieName,
+        .quantum = sQuantum_Bar,
+        .itemId = ITEM_CANDY_CRUNCHIE,
+        .price = CANDY_COST(400),
+        .itemEffect = gItemEffect_HealHP50,
+        .holdEffect = HOLD_EFFECT_RESTORE_HP,
+        .holdEffectParam = 50,
+        .description = sCrunchieDesc,
+        .keepItem = TRUE,
+        .isCandy = TRUE,
+        .pocket = POCKET_CANDY,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .battleUseFunc = ItemUseInBattle_Medicine,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_CANDY_POPROCKS] =
+    {   // Adrenaline Orb
+        .name = sPopRocksName,
+        .quantum = sQuantum_Packet,
+        .itemId = ITEM_CANDY_POPROCKS,
+        .price = CANDY_COST(600),
+        .holdEffect = HOLD_EFFECT_ADRENALINE_ORB,
+        .holdEffectParam = 30,
+        .description = sPopRocksDesc,
+        .keepItem = TRUE,
+        .isCandy = TRUE,
+        .pocket = POCKET_CANDY,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    }
     
 // #pragma endregion
     
@@ -12182,6 +12219,8 @@ static const u16 gItemTable_CandyCommon[] = {
     ITEM_CANDY_MALTESERS,
     ITEM_CANDY_CADBURYCREME,
     ITEM_CANDY_OREO,
+    ITEM_CANDY_CRUNCHIE,
+    ITEM_CANDY_POPROCKS,
     // ITEM_CANDY_EGGS,
 };
 static const u16 gItemTable_CandyUncommon[] = {
