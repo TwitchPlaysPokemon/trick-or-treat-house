@@ -905,6 +905,7 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_CANDY_DRUMSTICK] =      {gItemIconPic_drumstick, gItemIconPal_drumstick},
     [ITEM_CANDY_CRUNCHIE] =       {gItemIconPic_crunchie, gItemIconPal_crunchie},
     [ITEM_CANDY_POPROCKS] =       {gItemIconPic_poprocks, gItemIconPal_poprocks},
+    [ITEM_CANDY_MAOAMBLOXX] =     {gItemIconPic_maoambloxx, gItemIconPal_maoambloxx},
     
     // Return to field arrow
     [ITEM_FIELD_ARROW] =    {gItemIcon_ReturnToFieldArrow, gItemIconPalette_ReturnToFieldArrow},

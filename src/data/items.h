@@ -12178,8 +12178,23 @@ const struct Item gItems[] =
         .itemId = ITEM_CANDY_POPROCKS,
         .price = CANDY_COST(600),
         .holdEffect = HOLD_EFFECT_ADRENALINE_ORB,
-        .holdEffectParam = 30,
         .description = sPopRocksDesc,
+        .keepItem = TRUE,
+        .isCandy = TRUE,
+        .pocket = POCKET_CANDY,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_CANDY_MAOAMBLOXX] =
+    {   // Weaker Strong Jaw
+        .name = sMaoamBloxxName,
+        .quantum = sQuantum_Packet,
+        .itemId = ITEM_CANDY_MAOAMBLOXX,
+        .price = CANDY_COST(700),
+        .holdEffect = HOLD_EFFECT_BITE_BOOST,
+        .description = sMaoamBloxxDesc,
         .keepItem = TRUE,
         .isCandy = TRUE,
         .pocket = POCKET_CANDY,
@@ -12233,6 +12248,7 @@ static const u16 gItemTable_CandyUncommon[] = {
     ITEM_CANDY_GALAXY,
     ITEM_CANDY_PIXIESTICK,
     ITEM_CANDY_DUBBLEBUBBLE,
+    ITEM_CANDY_MAOAMBLOXX,
     // ITEM_CANDY_EGGDEVILED,
 };
 static const u16 gItemTable_CandyRare[] = {

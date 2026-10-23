@@ -5152,4 +5152,11 @@ static const u8 sPopRocksDesc[] = _(
     "When intimidated,\n"
     "speed is boosted.");
 
+static const u8 sMaoamBloxxName[] = _("Maoam Bloxx");
+static const u8 sMaoamBloxxDesc[] = _(
+    "5 Chews.\n"
+    "Boosts power of\n"
+    "biting moves.");
+
+
 #pragma endregion

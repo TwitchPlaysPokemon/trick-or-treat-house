@@ -7571,6 +7571,8 @@ extern const u32 gItemIconPic_crunchie[];
 extern const u32 gItemIconPal_crunchie[];
 extern const u32 gItemIconPic_poprocks[];
 extern const u32 gItemIconPal_poprocks[];
+extern const u32 gItemIconPic_maoambloxx[];
+extern const u32 gItemIconPal_maoambloxx[];
 
 // Poké Balls
 extern const u32 gItemIcon_PokeBall[];
