@@ -227,6 +227,15 @@
       "var": "VAR_TEMP_3",
       "var_value": "0",
       "script": "Puzzle_PushPressPolish_TriggerScript_Button3"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 4,
+      "elevation": 0,
+      "var": "VAR_STEP_TRIGGER",
+      "var_value": "0",
+      "script": "Puzzle_PushPressPolish_EventScript_SeenAllison"
     }
   ],
   "bg_events": [

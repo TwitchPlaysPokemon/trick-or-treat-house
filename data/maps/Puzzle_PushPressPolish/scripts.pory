@@ -15,9 +15,9 @@ Puzzle_PushPressPolish_Adjective:
 	.string "economical$"
 Puzzle_PushPressPolish_Quip:
 	.string "You know, all the ingredients for this\n"
-	.string "puzzle were already here,\p"
-	.string "but the combination makes it fresh…\n"
-	.string "Maybe I'll think about that next time\p"
+	.string "puzzle were already here,\l"
+	.string "but the combination makes it fresh…\p"
+	.string "Maybe I'll think about that next time\n"
 	.string "I have to cook?$"
 .align 2
 Puzzle_PushPressPolish_PrereqItems:
@@ -95,8 +95,16 @@ Puzzle_PushPressPolish_EventScript_CloseDoor3::
 	setmetatile 7, 2, METATILE_TrickHousePuzzle_Button_Pressed, 0
 	setmetatile 5, 3, METATILE_TrickHousePuzzle_Door_Shuttered, 0
 	return
+
+	
 @ -----------------------------------------------------
 `
+	
+script Puzzle_PushPressPolish_EventScript_SeenAllison {
+	setflag(FLAG_PUZZLE_20)
+	releaseall
+	end
+}
 
 script Puzzle_PushPressPolish_Trainer1 {
 	# 
@@ -111,7 +119,8 @@ script Puzzle_PushPressPolish_Trainer1 {
 script Puzzle_PushPressPolish_Trainer2 {
 	# 
 	trainerbattle_single (TRAINER_02, 
-			"Hey! The whole puzzle reset when YOU walked in!\n"
+			"Hey! The whole puzzle reset when YOU\n"
+			"walked in!\p"
   			"Why did you do that?$", 
 			"It was the Trick Master? That's…\n"
   			"Still annoying.$")
@@ -125,7 +134,8 @@ script Puzzle_PushPressPolish_Trainer3 {
 			"Trick floors, trap doors… A perfect place\n"
   			"for a ninja!$", 
 			"I must return to my training…$")
-	msgbox ("Huh? Halloween? No, I'm a ninja full-time.$", MSGBOX_AUTOCLOSE)
+	msgbox ("Huh? Halloween?\n"
+			"No, I'm a ninja full-time.$", MSGBOX_AUTOCLOSE)
 }
 
 script Puzzle_PushPressPolish_Trainer4 {
@@ -134,7 +144,7 @@ script Puzzle_PushPressPolish_Trainer4 {
 			"Have you seen Allison? We were meant\n"
 			"to meet here.$", 
 			"Our {POKEMON} work better together.$")
-	if (flag(TRAINER_02) == TRUE) {
+	if (flag(FLAG_PUZZLE_20) == TRUE) {
 		msgbox ("Oh, past the nearest trap door?\n"
 				"Thank you.$", MSGBOX_AUTOCLOSE)
 	} else {
@@ -142,3 +152,4 @@ script Puzzle_PushPressPolish_Trainer4 {
 				"leave too early.$", MSGBOX_AUTOCLOSE)
 	}
 }
+
