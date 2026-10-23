@@ -172,7 +172,10 @@ const u32 gObjectEventPic_Archie[] = INCBIN_U32("graphics/object_events/pics/peo
 const u32 gObjectEventPic_Maxie[] = INCBIN_U32("graphics/object_events/pics/people/team_magma/maxie.4bpp");
 const u32 gObjectEventPic_Regi[] = INCBIN_U32("graphics/object_events/pics/pokemon/regi.4bpp");
 const u32 gObjectEventPic_Skitty[] = INCBIN_U32("graphics/object_events/pics/pokemon/skitty.4bpp");
+
 const u32 gObjectEventPic_Kecleon[] = INCBIN_U32("graphics/object_events/pics/pokemon/kecleon.4bpp");
+const u16 gObjectEventPal_Kecleon[] = INCBIN_U16("graphics/object_events/palettes/kecleon.gbapal");
+
 const u32 gObjectEventPic_Rayquaza[] = INCBIN_U32("graphics/object_events/pics/pokemon/rayquaza.4bpp");
 const u32 gObjectEventPic_RayquazaStill[] = INCBIN_U32("graphics/object_events/pics/pokemon/rayquaza_still.4bpp");
 const u32 gObjectEventPic_Zigzagoon[] = INCBIN_U32("graphics/object_events/pics/pokemon/zigzagoon.4bpp");

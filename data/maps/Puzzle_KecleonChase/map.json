@@ -16,7 +16,7 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_STONE",
-      "x": 15,
+      "x": 23,
       "y": 1,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -28,16 +28,16 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_WHISMUR",
+      "graphics_id": "OBJ_EVENT_GFX_KECLEON",
       "x": 7,
       "y": 5,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND_INVISIBLE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "EventScript_Kecleon",
       "flag": "0"
     },
     {
@@ -50,7 +50,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "EventScript_Kecleon",
       "flag": "0"
     },
     {
@@ -63,21 +63,34 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "EventScript_Kecleon",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_KECLEON",
+      "x": 27,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_LEFT_DOWN_RIGHT",
+      "movement_range_x": 3,
+      "movement_range_y": 3,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_Kecleon",
       "flag": "0"
     }
   ],
   "warp_events": [
     {
       "x": 8,
-      "y": 18,
+      "y": 22,
       "elevation": 0,
       "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
       "dest_warp_id": "0"
     },
     {
       "x": 9,
-      "y": 18,
+      "y": 22,
       "elevation": 0,
       "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
       "dest_warp_id": "0"
