@@ -300,6 +300,8 @@ extern const u8 gText_StatRose[];
 extern const u8 gText_DefendersStatRose[];
 extern const u8 gText_PkmnGettingPumped[];
 extern const u8 gText_PkmnShroudedInMist[];
+extern const u8 gText_Joke[];
+extern const u8 gBort_Joke[];
 extern const u8 gText_PkmnsXPreventsSwitching[];
 extern const u8 gText_TheGreatNewHope[];
 extern const u8 gText_WillChampionshipDreamComeTrue[];

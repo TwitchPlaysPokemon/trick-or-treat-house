@@ -12178,7 +12178,6 @@ const struct Item gItems[] =
         .itemId = ITEM_CANDY_POPROCKS,
         .price = CANDY_COST(600),
         .holdEffect = HOLD_EFFECT_ADRENALINE_ORB,
-        .holdEffectParam = 30,
         .description = sPopRocksDesc,
         .keepItem = TRUE,
         .isCandy = TRUE,
@@ -12186,6 +12185,38 @@ const struct Item gItems[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
+    },
+    
+    [ITEM_CANDY_MAOAMBLOXX] =
+    {   // Weaker Strong Jaw
+        .name = sMaoamBloxxName,
+        .quantum = sQuantum_Packet,
+        .itemId = ITEM_CANDY_MAOAMBLOXX,
+        .price = CANDY_COST(700),
+        .holdEffect = HOLD_EFFECT_BITE_BOOST,
+        .description = sMaoamBloxxDesc,
+        .keepItem = TRUE,
+        .isCandy = TRUE,
+        .pocket = POCKET_CANDY,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+
+    [ITEM_CANDY_CARAMBAR] =
+    {
+        .name = sCarambarName,
+        .itemId = ITEM_CANDY_CARAMBAR,
+        .price = CANDY_COST(150),
+        .description = sCarambarDesc,
+        .keepItem = TRUE,
+        .pocket = POCKET_CANDY,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .battleUsage = ITEM_B_USE_OTHER,
+        .itemEffect = gItemEffect_Joke,
+        .battleUseFunc = ItemUseInBattle_StatIncrease,
+        .flingPower = 30,
     }
     
 // #pragma endregion
@@ -12207,6 +12238,7 @@ static const u16 gItemTable_CandyAbundant[] = {
     ITEM_CANDY_GUMMYBEAR,
     ITEM_SWEET_HEART,
     ITEM_CANDY_DRUMSTICK,
+    ITEM_CANDY_CARAMBAR,
 };
 static const u16 gItemTable_CandyCommon[] = {
     ITEM_CANDY_CHOCOWHITE,
@@ -12233,6 +12265,7 @@ static const u16 gItemTable_CandyUncommon[] = {
     ITEM_CANDY_GALAXY,
     ITEM_CANDY_PIXIESTICK,
     ITEM_CANDY_DUBBLEBUBBLE,
+    ITEM_CANDY_MAOAMBLOXX,
     // ITEM_CANDY_EGGDEVILED,
 };
 static const u16 gItemTable_CandyRare[] = {

@@ -9255,6 +9255,9 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     case HOLD_EFFECT_LIFE_ORB:
         MulModifier(&finalModifier, UQ_4_12(1.3));
         break;
+    case HOLD_EFFECT_BITE_BOOST:
+        if (gBattleMoves[move].flags & FLAG_STRONG_JAW_BOOST)
+           MulModifier(&finalModifier, UQ_4_12(1.2));
     }
 
     // target's hold effect
