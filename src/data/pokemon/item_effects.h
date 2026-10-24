@@ -426,6 +426,10 @@ const u8 gItemEffect_XSpecialDefense[8] = {
     STAT_BOOST_FRIENDSHIP_CHANGE,
 };
 
+const u8 gItemEffect_Joke[8] = {
+    [3] = ITEM3_JOKE,
+};
+
 const u8 gItemEffect_EvoItem[6] = {
     [4] = ITEM4_EVO_STONE,
 };

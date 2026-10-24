@@ -12201,6 +12201,22 @@ const struct Item gItems[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .secondaryId = 0,
+    },
+
+    [ITEM_CANDY_CARAMBAR] =
+    {
+        .name = sCarambarName,
+        .itemId = ITEM_CANDY_CARAMBAR,
+        .price = CANDY_COST(150),
+        .description = sCarambarDesc,
+        .keepItem = TRUE,
+        .pocket = POCKET_CANDY,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .battleUsage = ITEM_B_USE_OTHER,
+        .itemEffect = gItemEffect_Joke,
+        .battleUseFunc = ItemUseInBattle_StatIncrease,
+        .flingPower = 30,
     }
     
 // #pragma endregion
@@ -12222,6 +12238,7 @@ static const u16 gItemTable_CandyAbundant[] = {
     ITEM_CANDY_GUMMYBEAR,
     ITEM_SWEET_HEART,
     ITEM_CANDY_DRUMSTICK,
+    ITEM_CANDY_CARAMBAR,
 };
 static const u16 gItemTable_CandyCommon[] = {
     ITEM_CANDY_CHOCOWHITE,

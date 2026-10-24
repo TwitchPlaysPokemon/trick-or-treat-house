@@ -1024,8 +1024,9 @@
 #define ITEM_CANDY_CRUNCHIE            830
 #define ITEM_CANDY_POPROCKS            831
 #define ITEM_CANDY_MAOAMBLOXX          832
+#define ITEM_CANDY_CARAMBAR            833
 
-#define ITEMS_COUNT                    833
+#define ITEMS_COUNT                    834
 
 #define ITEM_TABLE_CANDY_ABUNDANT      0xFE01
 #define ITEM_TABLE_CANDY_COMMON        0xFE02

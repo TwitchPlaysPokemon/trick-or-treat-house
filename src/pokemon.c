@@ -5545,6 +5545,12 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                 retVal = FALSE;
             }
 
+            // Carambar
+            if ((itemEffect[i] & ITEM3_JOKE))
+            {
+                retVal = FALSE;
+            }
+
             // Rare Candy / EXP Candy
             if ((itemEffect[i] & ITEM3_LEVEL_UP)
              && GetMonData(mon, MON_DATA_LEVEL, NULL) != MAX_LEVEL)
@@ -6162,6 +6168,15 @@ u8 *UseStatIncreaseItem(u16 itemId)
     {
         gBattlerAttacker = gBattlerInMenuId;
         BattleStringExpandPlaceholdersToDisplayedString(gText_PkmnShroudedInMist);
+    }
+
+    if (itemEffect[3] & ITEM3_JOKE)
+    {
+        if (FlagGet(FLAG_SYS_BORT_MODE)) {
+            BattleStringExpandPlaceholdersToDisplayedString(gBort_Joke);
+        } else {
+            BattleStringExpandPlaceholdersToDisplayedString(gText_Joke);
+        }
     }
 
     return gDisplayedStringBattle;

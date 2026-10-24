@@ -5158,5 +5158,10 @@ static const u8 sMaoamBloxxDesc[] = _(
     "Boosts power of\n"
     "biting moves.");
 
+static const u8 sCarambarName[] = _("Carambar");
+static const u8 sCarambarDesc[] = _(
+    "Caramel Candy.\n"
+    "Has a joke\n"
+    "on the wrapper.");
 
 #pragma endregion
