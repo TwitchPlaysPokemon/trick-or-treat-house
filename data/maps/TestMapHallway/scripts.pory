@@ -61,6 +61,7 @@ script TestMapHallway_GiveAllCandy {
 	additem(ITEM_CANDY_POPROCKS, 2)
 	additem(ITEM_CANDY_MAOAMBLOXX, 2)
 	additem(ITEM_CANDY_CARAMBAR, 2)
+	additem(ITEM_CANDY_CROCO, 2)
 	additem(ITEM_SWEET_HEART, 2)
 	additem(ITEM_MAX_HONEY, 2)
 	additem(ITEM_PEWTER_CRUNCHIES, 2)

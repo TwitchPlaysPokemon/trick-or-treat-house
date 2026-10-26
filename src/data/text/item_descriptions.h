@@ -5164,4 +5164,10 @@ static const u8 sCarambarDesc[] = _(
     "Has a joke\n"
     "on the wrapper.");
 
+static const u8 sCrocoName[] = _("Croco");
+static const u8 sCrocoDesc[] = _(
+    "Gummy, like Krokorok.\n"
+    "Raises accuracy of\n"
+    "a move one time.");
+
 #pragma endregion
