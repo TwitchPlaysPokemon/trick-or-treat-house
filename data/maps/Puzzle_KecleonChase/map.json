@@ -42,7 +42,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_KECLEON",
-      "x": 15,
+      "x": 19,
       "y": 11,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND_INVISIBLE",
@@ -67,16 +67,16 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_KECLEON",
-      "x": 27,
-      "y": 12,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_UP_LEFT_DOWN_RIGHT",
-      "movement_range_x": 3,
-      "movement_range_y": 3,
+      "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
+      "x": 29,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_Kecleon",
+      "script": "PuzzleCommon_EventScript_Scroll",
       "flag": "0"
     }
   ],
@@ -86,14 +86,14 @@
       "y": 22,
       "elevation": 0,
       "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
-      "dest_warp_id": "0"
+      "dest_warp_id": 0
     },
     {
       "x": 9,
       "y": 22,
       "elevation": 0,
       "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
-      "dest_warp_id": "0"
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [
