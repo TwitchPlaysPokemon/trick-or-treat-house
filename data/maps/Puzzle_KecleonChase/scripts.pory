@@ -20,14 +20,14 @@ Puzzle_KecleonChase_Adjective:
 	.string "cackling$"
 Puzzle_KecleonChase_Quip:
 	.string "Kewe?\p"
-	.string "Ha ha, I'm just kidding, I'm not a\n"
+	.string "Ha ha, I'm just kidding! I'm not a\n"
 	.string "Kecleon, just a regular ghost.$"
 .align 2
 Puzzle_KecleonChase_Items:
 	.2byte ITEM_DEVON_SCOPE
 	.2byte 0
 Puzzle_KecleonChase_Variables:
-	.2byte VAR_QUIP_PERSON, OBJ_EVENT_GFX_KECLEON_BRIDGE_SHADOW
+	.2byte VAR_QUIP_PERSON, OBJ_EVENT_GFX_NOTHING
 	.2byte 0
 Puzzle_KecleonChase_CandyList:
 	.2byte 0

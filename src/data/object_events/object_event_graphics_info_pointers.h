@@ -257,6 +257,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_LETTER] =                   &gObjectEventGraphicsInfo_Letter,
 	
     [OBJ_EVENT_GFX_WHISMUR] =                  &gObjectEventGraphicsInfo_Whismur,
+    [OBJ_EVENT_GFX_NOTHING] =                  &gObjectEventGraphicsInfo_Nothing,
     
     // Trick House Items
     [OBJ_EVENT_GFX_HM_BALL] =                  &gObjectEventGraphicsInfo_HMBall,

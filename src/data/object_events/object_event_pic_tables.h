@@ -2745,3 +2745,7 @@ static const struct SpriteFrameImage sPicTable_Alien[] = {
     overworld_frame(gObjectEventPic_Alien, 2, 4, 7),
     overworld_frame(gObjectEventPic_Alien, 2, 4, 8),
 };
+
+static const struct SpriteFrameImage sPicTable_Nothing[] = {
+    obj_frame_tiles(gObjectEventPic_Nothing),
+};

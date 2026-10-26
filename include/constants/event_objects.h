@@ -334,8 +334,9 @@
 #define OBJ_EVENT_GFX_TRICK_BATTLE_MAT               0x137
 
 #define OBJ_EVENT_GFX_WHISMUR                        0x138
+#define OBJ_EVENT_GFX_NOTHING                        0x139
 
-#define NUM_OBJ_EVENT_GFX                            0x139
+#define NUM_OBJ_EVENT_GFX                            0x140
 
 // These are dynamic object gfx ids.
 // They correspond with the values of the VAR_OBJ_GFX_ID_X vars.
