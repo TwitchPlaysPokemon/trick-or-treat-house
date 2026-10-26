@@ -37,8 +37,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_Kecleon",
-      "flag": "0"
+      "script": "Puzzle_KecleonChase_EventScript_KecleonFound",
+      "flag": "FLAG_PUZZLE_22"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_KECLEON",
@@ -50,8 +50,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_Kecleon",
-      "flag": "0"
+      "script": "Puzzle_KecleonChase_EventScript_KecleonFound",
+      "flag": "FLAG_PUZZLE_23"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_KECLEON",
@@ -63,8 +63,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_Kecleon",
-      "flag": "0"
+      "script": "Puzzle_KecleonChase_EventScript_KecleonFound",
+      "flag": "FLAG_PUZZLE_24"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
@@ -89,8 +89,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_Kecleon",
-      "flag": "0"
+      "script": "Puzzle_KecleonChase_EventScript_KecleonFound",
+      "flag": "FLAG_PUZZLE_26"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_KECLEON",
@@ -102,8 +102,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_Kecleon",
-      "flag": "0"
+      "script": "Puzzle_KecleonChase_EventScript_KecleonFound",
+      "flag": "FLAG_PUZZLE_27"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_KECLEON",
@@ -115,8 +115,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_Kecleon",
-      "flag": "0"
+      "script": "Puzzle_KecleonChase_EventScript_KecleonFound",
+      "flag": "FLAG_PUZZLE_28"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_KECLEON",
@@ -128,8 +128,21 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "EventScript_Kecleon",
-      "flag": "0"
+      "script": "Puzzle_KecleonChase_EventScript_KecleonFound",
+      "flag": "FLAG_PUZZLE_29"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_KECLEON",
+      "x": 28,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Puzzle_KecleonChase_EventScript_KecleonWaiting",
+      "flag": "FLAG_PUZZLE_2A"
     }
   ],
   "warp_events": [
