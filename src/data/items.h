@@ -12217,6 +12217,23 @@ const struct Item gItems[] =
         .itemEffect = gItemEffect_Joke,
         .battleUseFunc = ItemUseInBattle_StatIncrease,
         .flingPower = 30,
+    },
+
+    [ITEM_CANDY_CROCO] =
+    {   // Raise crit rate when eaten in battle
+        .name = sCrocoName,
+        .quantum = sQuantum_Packet,
+        .itemId = ITEM_CANDY_CROCO,
+        .price = CANDY_COST(150),
+        .holdEffect = HOLD_EFFECT_MICLE_BERRY,
+        .holdEffectParam = 1,
+        .description = sCrocoDesc,
+        .keepItem = TRUE,
+        .isCandy = TRUE,
+        .pocket = POCKET_CANDY,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
     }
     
 // #pragma endregion
@@ -12239,6 +12256,7 @@ static const u16 gItemTable_CandyAbundant[] = {
     ITEM_SWEET_HEART,
     ITEM_CANDY_DRUMSTICK,
     ITEM_CANDY_CARAMBAR,
+    ITEM_CANDY_CROCO,
 };
 static const u16 gItemTable_CandyCommon[] = {
     ITEM_CANDY_CHOCOWHITE,
