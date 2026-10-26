@@ -60,7 +60,7 @@
 #define VAR_PUZZLE_04                        0x4024
 #define VAR_PUZZLE_05                        0x4025
 #define VAR_PUZZLE_06                        0x4026
-#define VAR_PUZZLE_08                        0x4028
+#define VAR_PUZZLE_07                        0x4027
 #define VAR_PUZZLE_08                        0x4028
 #define VAR_PUZZLE_09                        0x4029
 #define VAR_PUZZLE_0A                        0x402A

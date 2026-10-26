@@ -9,7 +9,7 @@ Puzzle_KecleonChase_MapScripts::
 	puzzle_candylist Puzzle_KecleonChase_CandyList
 	//map_script MAP_SCRIPT_ON_RESUME, Puzzle_KecleonChase_OnResume
 	//map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_KecleonChase_FrameTable
-	map_script MAP_SCRIPT_ON_LOAD, Puzzle_KecleonChase_OnLoad
+	//map_script MAP_SCRIPT_ON_LOAD, Puzzle_KecleonChase_OnLoad
 	.byte 0
 
 Puzzle_KecleonChase_Name:
@@ -32,12 +32,22 @@ Puzzle_KecleonChase_Variables:
 Puzzle_KecleonChase_CandyList:
 	.2byte 0
 
-Puzzle_KecleonChase_EventScript_KecleonWaiting::
+Puzzle_KecleonChase_EventScript_VisibleKecleonWaiting::
 	lock
 	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
+	goto_if_ge VAR_PUZZLE_07, 7, Puzzle_KecleonChase_EventScript_VisibleKecleonLeaving
 	copyvar VAR_0x800A, VAR_PUZZLE_07
 	buffernumberstring STR_VAR_1, VAR_0x800A
 	msgbox Puzzle_KecleonChase_Text_NumberOfKecleonFound, MSGBOX_DEFAULT
+	release
+	end
+
+Puzzle_KecleonChase_EventScript_VisibleKecleonLeaving::
+	msgbox Puzzle_KecleonChase_Text_FoundAll, MSGBOX_DEFAULT
+	fadescreen FADE_TO_BLACK
+	removeobject VAR_LAST_TALKED
+	fadescreen FADE_FROM_BLACK
+	msgbox Puzzle_KecleonChase_Text_RanOff, MSGBOX_DEFAULT
 	release
 	end
 
@@ -126,5 +136,12 @@ Puzzle_KecleonChase_Text_NumberOfKecleonFound:
 	.string "According to the DEVON SCOPE, you found\n"
 	.string "{STR_VAR_1} out of 7 invisible Pokémon\l"
 	.string "hidden around here.$"
+	
+Puzzle_KecleonChase_Text_FoundAll:
+	.string "Seems you found all of the KECLEON's\n"
+	.string "friends.$"
+	
+Puzzle_KecleonChase_Text_RanOff:
+	.string "It ran off to join them!$"
 	
 `
