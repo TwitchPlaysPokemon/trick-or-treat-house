@@ -670,6 +670,7 @@ const struct SpritePalette gSpritePalettes_IntroPlayerFlygon[] =
 {
     { .data = sBrendanCredits_Pal, .tag = TAG_BRENDAN },
     { .data = sMayCredits_Pal,     .tag = TAG_MAY },
+//  { .data = gIntroFlygon_Pal,    .tag = TAG_FLYGON_LATIOS },
     { .data = gIntroFlygon_Pal,    .tag = TAG_FLYGON_LATIAS },
     { .data = sTreekidCredits_Pal, .tag = TAG_TREEKID },
     { .data = gIntroPlayer_Pal,    .tag = TAG_EXTRA },
@@ -742,6 +743,7 @@ const struct SpritePalette gSpritePalettes_Credits[] =
 {
     { .data = sBrendanCredits_Pal, .tag = TAG_BRENDAN },
     { .data = sMayCredits_Pal,     .tag = TAG_MAY },
+//  { .data = sLatios_Pal,         .tag = TAG_FLYGON_LATIOS },
     { .data = sLatias_Pal,         .tag = TAG_FLYGON_LATIAS },
     { .data = sTreekidCredits_Pal, .tag = TAG_TREEKID },
     { .data = gIntroPlayer_Pal,    .tag = TAG_EXTRA },
