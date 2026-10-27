@@ -16,9 +16,10 @@
 	],
 	[
 		"#Puzzle Programmers",
-		"Tustin2121",
-		"ShantyTown",
-		"Ericchi"
+		["Tustin2121", "ShantyTown"],
+		["Ericchi", "M4_used_rollout"],
+		["YugnatZero", "myRattata"]
+		
 	],
 	[
 		"#RHH Expansion Project",
@@ -35,6 +36,7 @@
 		"Kelcyus",
 		"Tustin2121",
 		"Ericchi"
+		"myRattata"
 	],
 	[
 		"#Custom Credits Music",

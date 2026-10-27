@@ -11,6 +11,7 @@ static const u8 gCreditsText_TTHFramework[] = _("TTH Framework");
 static const u8 gCreditsText_PuzzleProgrammers[] = _("Puzzle Programmers");
 static const u8 gCreditsText_ShantyTown[] = _("ShantyTown");
 static const u8 gCreditsText_Ericchi[] = _("Ericchi");
+static const u8 gCreditsText_YugnatZero[] = _("YugnatZero");
 static const u8 gCreditsText_RHHExpansionProject[] = _("RHH Expansion Project");
 static const u8 gCreditsText_DizzyEggg[] = _("DizzyEggg");
 static const u8 gCreditsText_GriffinRichards[] = _("GriffinRichards");
@@ -199,6 +200,7 @@ static const struct CreditsEntry gCreditsEntry_TTHFramework[] = {FALSE, TRUE, gC
 static const struct CreditsEntry gCreditsEntry_PuzzleProgrammers[] = {FALSE, TRUE, gCreditsText_PuzzleProgrammers};
 static const struct CreditsEntry gCreditsEntry_ShantyTown[] = {FALSE, FALSE, gCreditsText_ShantyTown};
 static const struct CreditsEntry gCreditsEntry_Ericchi[] = {FALSE, FALSE, gCreditsText_Ericchi};
+static const struct CreditsEntry gCreditsEntry_YugnatZero[] = {FALSE, FALSE, gCreditsText_YugnatZero};
 static const struct CreditsEntry gCreditsEntry_RHHExpansionProject[] = {FALSE, TRUE, gCreditsText_RHHExpansionProject};
 static const struct CreditsEntry gCreditsEntry_DizzyEggg[] = {FALSE, FALSE, gCreditsText_DizzyEggg};
 static const struct CreditsEntry gCreditsEntry_GriffinRichards[] = {FALSE, FALSE, gCreditsText_GriffinRichards};
@@ -419,12 +421,12 @@ static const struct CreditsEntry *const gCreditsEntryPointerTable[][10] =
 		gCreditsEntry_PuzzleProgrammers,
 		gCreditsEntry_Tustin2121,
 		gCreditsEntry_ShantyTown,
-		gCreditsEntry_Ericchi,
+		gCreditsEntry_YugnatZero,
 		_,
 		NULL,
-		NULL,
-		NULL,
-		NULL,
+		gCreditsEntry_M4usedrollout,
+		gCreditsEntry_Ericchi,
+		gCreditsEntry_myRattata,
 		NULL,
 	},
 	{
@@ -456,7 +458,7 @@ static const struct CreditsEntry *const gCreditsEntryPointerTable[][10] =
 		gCreditsEntry_Kelcyus,
 		gCreditsEntry_Tustin2121,
 		gCreditsEntry_Ericchi,
-		_,
+		gCreditsEntry_myRattata,
 		NULL,
 		NULL,
 		NULL,
