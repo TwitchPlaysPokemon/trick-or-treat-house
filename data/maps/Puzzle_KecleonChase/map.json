@@ -151,20 +151,131 @@
       "y": 22,
       "elevation": 0,
       "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
-      "dest_warp_id": "0"
+      "dest_warp_id": 0
     },
     {
       "x": 9,
       "y": 22,
       "elevation": 0,
       "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
-      "dest_warp_id": "0"
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [
 
   ],
   "bg_events": [
-
+    {
+      "type": "hidden_item",
+      "x": 12,
+      "y": 20,
+      "elevation": 0,
+      "item": "ITEM_TABLE_CANDY_COMMON",
+      "flag": "FLAG_CANDY_COMMON_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 7,
+      "y": 16,
+      "elevation": 0,
+      "item": "ITEM_TABLE_CANDY_RARE",
+      "flag": "FLAG_CANDY_RARE_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 15,
+      "y": 10,
+      "elevation": 0,
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
+      "flag": "FLAG_CANDY_ABUNDANT_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 4,
+      "y": 5,
+      "elevation": 0,
+      "item": "ITEM_TABLE_CANDY_HEALTHY",
+      "flag": "FLAG_CANDY_HEALTHY_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 1,
+      "y": 11,
+      "elevation": 0,
+      "item": "ITEM_TABLE_CANDY_UNCOMMON",
+      "flag": "FLAG_CANDY_UNCOMMON_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 26,
+      "y": 15,
+      "elevation": 0,
+      "item": "ITEM_TABLE_CANDY_COMMON",
+      "flag": "FLAG_CANDY_COMMON_02"
+    },
+    {
+      "type": "hidden_item",
+      "x": 22,
+      "y": 19,
+      "elevation": 0,
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
+      "flag": "FLAG_CANDY_ABUNDANT_02"
+    },
+    {
+      "type": "hidden_item",
+      "x": 13,
+      "y": 2,
+      "elevation": 0,
+      "item": "ITEM_TABLE_CANDY_UNCOMMON",
+      "flag": "FLAG_CANDY_UNCOMMON_02"
+    },
+    {
+      "type": "hidden_item",
+      "x": 26,
+      "y": 11,
+      "elevation": 0,
+      "item": "ITEM_TABLE_CANDY_RARE",
+      "flag": "FLAG_CANDY_RARE_02"
+    },
+    {
+      "type": "hidden_item",
+      "x": 17,
+      "y": 20,
+      "elevation": 0,
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
+      "flag": "FLAG_CANDY_ABUNDANT_03"
+    },
+    {
+      "type": "hidden_item",
+      "x": 10,
+      "y": 4,
+      "elevation": 0,
+      "item": "ITEM_TABLE_CANDY_COMMON",
+      "flag": "FLAG_CANDY_COMMON_03"
+    },
+    {
+      "type": "hidden_item",
+      "x": 11,
+      "y": 9,
+      "elevation": 0,
+      "item": "ITEM_TABLE_CANDY_HEALTHY",
+      "flag": "FLAG_CANDY_HEALTHY_02"
+    },
+    {
+      "type": "hidden_item",
+      "x": 21,
+      "y": 9,
+      "elevation": 0,
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
+      "flag": "FLAG_CANDY_ABUNDANT_04"
+    },
+    {
+      "type": "hidden_item",
+      "x": 27,
+      "y": 2,
+      "elevation": 0,
+      "item": "ITEM_TABLE_CANDY_UNCOMMON",
+      "flag": "FLAG_CANDY_UNCOMMON_03"
+    }
   ]
 }
