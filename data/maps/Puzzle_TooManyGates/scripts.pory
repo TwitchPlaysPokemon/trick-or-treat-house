@@ -17,7 +17,7 @@ Puzzle_TooManyGates_Adjective:
 	.string "circular$"
 Puzzle_TooManyGates_Quip:
 	.string "Owowowowowowow!\p"
-	.string "I got my fingers caught in one\n
+	.string "I got my fingers caught in one\n"
     .string "of the doors!\p"
 	.string "Yeeeeowch! I hope it doesn't bruise…$"
 
