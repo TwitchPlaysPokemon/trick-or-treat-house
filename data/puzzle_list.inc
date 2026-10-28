@@ -72,7 +72,15 @@ enum NUM_PUZZLES
 .align 2
 gDebugPuzzles::
     .2byte MAP_EMPTY_PUZZLE
-    .2byte MAP_PUZZLE_RACCONNAISSANCE
+    
+    .2byte MAP_PUZZLE_RACCONNAISSANCE                   @  FOLLOW/BATTLE
+    .2byte MAP_PUZZLE_TOO_HARD_TO_SEE                   @  BATTLE/MAZE
+    .2byte MAP_PUZZLE_TOO_MANY_PATHS                    @  BATTLE/MAZE 
+    .2byte MAP_PUZZLE_TOO_MANY_BOULDERS                 @  BATTLE/MOVEMENT (Boulders)
+    .2byte MAP_PUZZLE_TOO_MANY_GATES                    @  MOVEMENT/MAZE (Rot Gates)
+    .2byte MAP_PUZZLE_TOO_MANY_ARROWS                   @  MOVEMENT/MAZE (RSE Slide Tiles)
+    .2byte MAP_PUZZLE_TOO_MUCH_POLISH                   @  BATTLE/MOVEMENT (Ice Floor)
+
     .2byte MAP_TRICK_TREAT_ALTO_MARE1                   @  TRICK (after Mossdeep)
     .2byte MAP_PUZZLE_TRICK_HOUSE_ORIGINAL1             @  BATTLE/MAZE
     .2byte MAP_PUZZLE_TRICK_HOUSE_TRAPDOORS             @  BATTLE/MAZE

@@ -1,0 +1,50 @@
+[
+	{
+		"class": "PSYCHIC",
+		"music": "ENC_MUS_EM_INTENSE",
+		"pic": "PSYCHIC_M",
+		"name": "Joshua",
+		"party": [
+			{
+				"species": "SPECIES_KADABRA",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_SOLROCK",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "HEX_MANIAC",
+		"music": "ENC_MUS_EM_SUSPICIOUS",
+		"female": true,
+		"name": "Patricia",
+		"party": [
+			{
+				"species": "SPECIES_BANETTE",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "ALIEN",
+		"music": "ENC_MUS_EM_GIRL",
+		"female": true,
+		"name": "Alexis",
+		"party": [
+			{
+				"species": "SPECIES_KIRLIA",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_XATU",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_KADABRA",
+				"level": 29
+			}
+		]
+	}
+]

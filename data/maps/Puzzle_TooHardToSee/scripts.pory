@@ -1,0 +1,87 @@
+raw `
+Puzzle_TooHardToSee_MapScripts::
+	puzzle_info Puzzle_TooHardToSee_Name, Puzzle_TooHardToSee_Author
+	puzzle_adjective Puzzle_TooHardToSee_Adjective
+	puzzle_quip Puzzle_TooHardToSee_Quip
+	@ puzzle_metavars Puzzle_TooHardToSee_Variables
+	puzzle_candylist Puzzle_TooHardToSee_CandyList
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TooHardToSee_OnResume
+	.byte 0
+
+Puzzle_TooHardToSee_OnResume:
+	setstepcallback STEP_CB_HIDDEN_WALLS
+	end
+
+Puzzle_TooHardToSee_Name:
+	.string "Too Hard To See$"
+Puzzle_TooHardToSee_Author:
+	.string "M4_Used_Rollout$"
+Puzzle_TooHardToSee_Adjective:
+	.string "inscrutable$"
+Puzzle_TooHardToSee_Quip:
+	.string "My face still hurts from running\n"
+	.string "into all the invisible walls.\p"
+	.string "I'll be walking with my hands\n"
+	.string "out in front of me for weeks!$"
+.align 2
+Puzzle_TooHardToSee_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_RARE_01
+	.2byte 0
+
+Puzzle_TooHardToSee_EventScript_Ted::
+	trainerbattle_single TRAINER_01, Puzzle_TooHardToSee_Text_TedIntro, Puzzle_TooHardToSee_Text_TedDefeat
+	msgbox Puzzle_TooHardToSee_Text_TedPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooHardToSee_EventScript_Paul::
+	trainerbattle_single TRAINER_02, Puzzle_TooHardToSee_Text_PaulIntro, Puzzle_TooHardToSee_Text_PaulDefeat
+	msgbox Puzzle_TooHardToSee_Text_PaulPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooHardToSee_EventScript_Georgia::
+	trainerbattle_single TRAINER_03, Puzzle_TooHardToSee_Text_GeorgiaIntro, Puzzle_TooHardToSee_Text_GeorgiaDefeat
+	msgbox Puzzle_TooHardToSee_Text_GeorgiaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooHardToSee_Text_TedIntro:
+	.string "Wooooooooo!$"
+
+Puzzle_TooHardToSee_Text_TedDefeat:
+	.string "Booooooooo!$"
+
+Puzzle_TooHardToSee_Text_TedPostBattle:
+	.string "Don't you wish you could pass right\n"
+	.string "through me like I was a real ghost?$"
+
+Puzzle_TooHardToSee_Text_PaulIntro:
+	.string "Oh! You're breezing through this\n"
+	.string "Trick House challenge!$"
+
+Puzzle_TooHardToSee_Text_PaulDefeat:
+	.string "You're good at battling too?$"
+
+Puzzle_TooHardToSee_Text_PaulPostBattle:
+	.string "The Trick Master rigged all the tricks\n"
+	.string "in this house all by himself.$"
+
+Puzzle_TooHardToSee_Text_GeorgiaIntro:
+	.string "I want to make my own Gym one day.\n"
+	.string "So, I'm studying how to build mazes.$"
+
+Puzzle_TooHardToSee_Text_GeorgiaDefeat:
+	.string "I didn't study battling enough!$"
+
+Puzzle_TooHardToSee_Text_GeorgiaPostBattle:
+	.string "You're strong, aren't you?\n"
+	.string "Maybe even enough to be a Gym Leader!$"
+
+
+`

@@ -311,6 +311,12 @@
     "Puzzle_SootopolisGym"
   ],
   "MG_SingleMapPuzzles2026": [
-    "Puzzle_Racconnaissance"
+    "Puzzle_Racconnaissance",
+    "Puzzle_TooHardToSee",
+    "Puzzle_TooManyPaths",
+    "Puzzle_TooManyBoulders",
+    "Puzzle_TooManyGates",
+    "Puzzle_TooManyArrows",
+    "Puzzle_TooMuchPolish"
   ]
 }

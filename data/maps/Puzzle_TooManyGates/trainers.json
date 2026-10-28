@@ -1,0 +1,57 @@
+[
+	{
+		"class": "PKMN_RANGER",
+		"music": "ENC_MUS_EM_COOL",
+		"pic": "PKMN_RANGER_F",
+		"female": true,
+		"name": "Sophia",
+		"items": ["ITEM_FULL_RESTORE"],
+		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY",
+		"party": [
+			{
+				"species": "SPECIES_SWABLU",
+				"level": 29,
+				"iv": 50
+			},
+			{
+				"species": "SPECIES_ROSELIA",
+				"level": 29,
+				"iv": 50
+			}
+		]
+	},
+	{
+		"class": "BIRD_KEEPER",
+		"music": "ENC_MUS_EM_COOL",
+		"name": "Benny",
+		"party": [
+			{
+				"species": "SPECIES_SWELLOW",
+				"level": 27
+			},
+			{
+				"species": "SPECIES_PELIPPER",
+				"level": 27
+			},
+			{
+				"species": "SPECIES_XATU",
+				"level": 27
+			}
+		]
+	},
+	{
+		"class": "PKMN_RANGER",
+		"music": "ENC_MUS_EM_COOL",
+		"pic": "PKMN_RANGER_M",
+		"name": "Sebastian",
+		"items": ["ITEM_FULL_RESTORE"],
+		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY",
+		"party": [
+			{
+				"species": "SPECIES_CACTURNE",
+				"level": 30,
+				"iv": 50
+			}
+		]
+	}
+]

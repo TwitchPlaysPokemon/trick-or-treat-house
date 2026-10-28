@@ -830,3 +830,15 @@ gText_LinkRecordCouldntBeSaved::
 	.include "data/maps/TrickHouseRestroom_Battle/scripts.inc"
 
 	.include "data/maps/Puzzle_Racconnaissance/scripts.inc"
+
+	.include "data/maps/Puzzle_TooHardToSee/scripts.inc"
+
+	.include "data/maps/Puzzle_TooManyPaths/scripts.inc"
+
+	.include "data/maps/Puzzle_TooManyBoulders/scripts.inc"
+
+	.include "data/maps/Puzzle_TooManyGates/scripts.inc"
+
+	.include "data/maps/Puzzle_TooManyArrows/scripts.inc"
+
+	.include "data/maps/Puzzle_TooMuchPolish/scripts.inc"
