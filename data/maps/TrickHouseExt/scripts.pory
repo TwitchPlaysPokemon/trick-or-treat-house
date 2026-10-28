@@ -132,6 +132,27 @@ script TrickHouseExt_EventScript_SlateportSign {
 			"{DOWN_ARROW} SLATEPORT CITY$", MSGBOX_SIGN)
 }
 
+raw `
+.align 2
+TrickHouseExt_EventScript_NewRock1::
+	goto_if_gt VAR_NEW_ROCK_STATE, 2, TrickHouseExt_EventScript_NewRock2
+	addvar VAR_NEW_ROCK_STATE, 1
+	msgbox TrickHouseExt_EventScript_Text_NewRock1, MSGBOX_SIGN
+	end
+
+TrickHouseExt_EventScript_NewRock2::
+	msgbox TrickHouseExt_EventScript_Text_NewRock2, MSGBOX_SIGN
+	end
+	
+
+TrickHouseExt_EventScript_Text_NewRock1:
+	.string "Was that rock always there?$"
+
+TrickHouseExt_EventScript_Text_NewRock2:
+	.string "This rock was always there.$"
+
+`
+
 // ----------------------------------------------------
 // Traders
 

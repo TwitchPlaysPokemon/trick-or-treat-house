@@ -201,7 +201,7 @@
 #define VAR_UNUSED_0x408C                    0x40AC
 #define VAR_UNUSED_0x408D                    0x40AD
 #define VAR_UNUSED_0x408E                    0x40AE
-#define VAR_UNUSED_0x408F                    0x40AF
+#define VAR_NEW_ROCK_STATE                   0x40AF
 #define VAR_UNUSED_0x40B0                    0x40B0
 #define VAR_UNUSED_0x40B1                    0x40B1
 #define VAR_UNUSED_0x40B2                    0x40B2
