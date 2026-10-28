@@ -235,6 +235,87 @@ script TrickHouseRestroom_EventScript_Renamer_End {
 }
 
 // ----------------------------------------------------
+// Kecleon
+
+raw `
+
+TrickHouseRestroom_EventScript_Kecleon::
+	lock
+	faceplayer
+	checkitem ITEM_DEVON_SCOPE
+	goto_if_eq VAR_RESULT, TRUE, TrickHouseRestroom_EventScript_AskUseDevonScope
+	msgbox TrickHouseRestroom_Text_SomethingUnseeable, MSGBOX_DEFAULT
+	release
+	end
+
+TrickHouseRestroom_EventScript_AskUseDevonScope::
+	msgbox TrickHouseRestroom_Text_UnseeableUseDevonScope, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, TrickHouseRestroom_EventScript_UseDevonScope
+	release
+	end
+
+TrickHouseRestroom_EventScript_UseDevonScope::
+	msgbox TrickHouseRestroom_Text_UsedDevonScopePokemonFled, MSGBOX_DEFAULT
+	closemessage
+	applymovement VAR_LAST_TALKED, Movement_KecleonAppears
+	waitmovement 0
+	waitse
+	playmoncry SPECIES_KECLEON, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	applymovement VAR_LAST_TALKED, TrickHouseRestroom_Movement_KecleonFlee
+	waitmovement 0
+	removeobject VAR_LAST_TALKED
+	setflag FLAG_HIDE_KECLEON_RESTROOM
+	release
+	end
+
+TrickHouseRestroom_EventScript_SecretPassage::
+	msgbox TrickHouseRestroom_Text_TheresASecretPassage, MSGBOX_DEFAULT
+	msgbox TrickHouseRestroom_Text_WantToGoThrough, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, TrickHouseRestroom_EventScript_SecretPassageWarp
+	release
+	end
+	
+TrickHouseRestroom_EventScript_SecretPassageWarp::
+	msgbox TrickHouseRestroom_Text_WhoWouldnt, MSGBOX_DEFAULT
+	closemessage
+	setwarp WARPTYPE_STANDARD, MAP_TRICK_HOUSE_END_OLD, 0
+	dowarp WARPTYPE_STANDARD, DOWARP_DOOR
+	waitstate
+	release
+	end
+
+TrickHouseRestroom_Movement_KecleonFlee:
+	walk_left
+	step_end
+	
+TrickHouseRestroom_Text_SomethingUnseeable:
+	.string "Something unseeable is in the way.$"
+
+TrickHouseRestroom_Text_UnseeableUseDevonScope:
+	.string "Something unseeable is in the way.\p"
+	.string "Want to use the Devon Scope?$"
+
+TrickHouseRestroom_Text_UsedDevonScopePokemonFled:
+	.string "{PLAYER} used the Devon Scope.\p"
+	.string "An invisible Pokémon became completely\n"
+	.string "visible!\p"
+	.string "The startled Pokémon fled!$"
+	
+TrickHouseRestroom_Text_TheresASecretPassage:
+	.string "Hey! There's a secret passage hidden\n"
+	.string "here!$"
+	
+TrickHouseRestroom_Text_WantToGoThrough:
+	.string "Do you want to go through?$"
+	
+TrickHouseRestroom_Text_WhoWouldnt:
+	.string "Who wouldn't?$"
+
+`
+
+// ----------------------------------------------------
 
 
 

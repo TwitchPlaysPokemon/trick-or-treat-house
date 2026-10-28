@@ -248,7 +248,7 @@
     },
     {
       "type": "hidden_item",
-      "x": 12,
+      "x": 11,
       "y": 2,
       "elevation": 3,
       "item": "ITEM_TABLE_CANDY_ABUNDANT",

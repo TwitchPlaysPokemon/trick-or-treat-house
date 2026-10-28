@@ -143,7 +143,6 @@ TrickHouseExt_EventScript_NewRock1::
 TrickHouseExt_EventScript_NewRock2::
 	msgbox TrickHouseExt_EventScript_Text_NewRock2, MSGBOX_SIGN
 	end
-	
 
 TrickHouseExt_EventScript_Text_NewRock1:
 	.string "Was that rock always there?$"
