@@ -1,1 +1,60 @@
-mapscripts TrickHouseEnd_Old_MapScripts {}
+raw `
+
+TrickHouseEnd_Old_EventScript_TrickMaster::
+	lock
+	faceplayer
+	goto_if_set FLAG_DEFEATED_TRICK_MASTER, TrickHouseEnd_Old_EventScript_TrickMasterPostBattle
+	msgbox TrickHouseEnd_Old_Text_YouveMadeItToMe, MSGBOX_DEFAULT
+	msgbox TrickHouseEnd_Old_Text_YouProbablyDeserveSomething, MSGBOX_DEFAULT
+	@@trainerbattle_no_intro TRAINER_NONE, TrickHouseEnd_Old_Text_TrickstersDefeated
+	msgbox TrickHouseEnd_Old_Text_YouHaveEarnedThisReward, MSGBOX_DEFAULT
+	@@giveitem ITEM_CHOCOLATE_MEDAL
+	setflag FLAG_DEFEATED_TRICK_MASTER
+	msgbox TrickHouseEnd_Old_Text_ScrubThatSmugSmirk, MSGBOX_DEFAULT
+	release
+	end
+	
+TrickHouseEnd_Old_EventScript_TrickMasterPostBattle::
+	msgbox TrickHouseEnd_Old_Text_MayHaveAJobOpen, MSGBOX_DEFAULT
+	release
+	end
+	
+TrickHouseEnd_Old_Text_YouveMadeItToMe:
+	.string "Aak!\n"
+	.string "How did you find this place?\p"
+	.string "Hmmm… You're sharp!$"
+	
+TrickHouseEnd_Old_Text_YouProbablyDeserveSomething:
+	.string "Well, you probably deserve something\n"
+	.string "for making it here…\p"
+	.string "Specifically… You get to be ambushed\n"
+	.string "by THE TRICKSTERS TROUPE!\p"
+	.string "Boo!$"
+
+TrickHouseEnd_Old_Text_TrickstersDefeated:
+	.string "Our carefully crafted traps… How?!$"
+
+TrickHouseEnd_Old_Text_YouHaveEarnedThisReward:
+	.string "Fine!\n"
+	.string "You have earned this reward!$"
+	
+TrickHouseEnd_Old_Text_ScrubThatSmugSmirk:
+	.string "Scrub that smug smirk from your face!\n"
+	.string "You've merely caught me off-guard!\p"
+	.string "Tonight's main event is the puzzles,\n"
+	.string "after all.\p"
+	.string "Why don't you go back to that?$"
+
+TrickHouseEnd_Old_Text_MayHaveAJobOpen:
+	.string "Hmmm…\p"
+	.string "I don't dislike your style, kid.\n"
+	.string "Something about it reminds me of my\l"
+	.string "own greatness.\p"
+	.string "Say, if you want to make some extra\n"
+	.string "candy, I may have a job open for you\l"
+	.string "a few months from now.$"
+
+`
+
+mapscripts TrickHouseEnd_Old_MapScripts {
+}

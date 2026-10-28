@@ -235,7 +235,7 @@ script TrickHouseRestroom_EventScript_Renamer_End {
 }
 
 // ----------------------------------------------------
-// Kecleon
+// Kecleon & Secret Passage
 
 raw `
 
