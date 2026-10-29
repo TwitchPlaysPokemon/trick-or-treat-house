@@ -107,7 +107,7 @@ PuzzleCommon_EventScript_ScrollReturn::
 	setflag FLAG_TRICK_HOUSE_SCROLL_READ
 	msgbox PuzzleCommon_Text_ScrollFound2
 	return
-PuzzleCommon_Text_ScrollFound1:
+PuzzleCommon_Text_ScrollFound1::
 	.string "{PLAYER} found a scroll.$"
 PuzzleCommon_Text_ScrollFound2:
 	.string "{PLAYER} memorized the secret code\n"

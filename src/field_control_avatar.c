@@ -86,6 +86,8 @@ bool8 DoForcedMovementScriptTriggers()
     playerDirection = GetPlayerFacingDirection();
     GetPlayerPosition(&position);
     metatileBehavior = MapGridGetMetatileBehaviorAt(position.x, position.y);
+    if (TryStartBumpInteractionScript(&position, metatileBehavior, playerDirection) == TRUE)
+        return TRUE;
     return TryStartStepBasedScript(&position, metatileBehavior, playerDirection);
 }
 

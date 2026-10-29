@@ -24,7 +24,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Puzzle_TooMuchPolish_EventScript_FoundScroll1",
       "flag": "0"
     },
     {
@@ -37,7 +37,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Puzzle_TooMuchPolish_EventScript_FoundScroll2",
       "flag": "FLAG_PUZZLE_21"
     },
     {
@@ -50,7 +50,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Puzzle_TooMuchPolish_EventScript_FoundScroll3",
       "flag": "FLAG_PUZZLE_22"
     },
     {
@@ -63,7 +63,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Puzzle_TooMuchPolish_EventScript_FoundScroll4",
       "flag": "FLAG_PUZZLE_23"
     },
     {
@@ -76,7 +76,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Puzzle_TooMuchPolish_EventScript_FoundScroll5",
       "flag": "FLAG_PUZZLE_24"
     },
     {
@@ -89,7 +89,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Puzzle_TooMuchPolish_EventScript_FoundScroll6",
       "flag": "FLAG_PUZZLE_25"
     },
     {
@@ -102,7 +102,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "Puzzle_TooMuchPolish_EventScript_FoundScroll7",
       "flag": "FLAG_PUZZLE_26"
     },
     {
@@ -115,7 +115,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "PuzzleCommon_EventScript_Scroll",
       "flag": "FLAG_PUZZLE_27"
     },
     {
@@ -141,7 +141,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
-      "script": "NULL",
+      "script": "Puzzle_TooMuchPolish_EventScript_Keira",
       "flag": "0"
     },
     {
@@ -154,7 +154,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "2",
-      "script": "NULL",
+      "script": "Puzzle_TooMuchPolish_EventScript_Leroy",
       "flag": "0"
     },
     {
@@ -167,7 +167,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
       "trainer_sight_or_berry_tree_id": "1",
-      "script": "NULL",
+      "script": "Puzzle_TooMuchPolish_EventScript_Vincent",
       "flag": "0"
     }
   ],
@@ -195,7 +195,15 @@
     }
   ],
   "coord_events": [
-
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 11,
+      "elevation": 0,
+      "var": "VAR_PUZZLE_03",
+      "var_value": "-0",
+      "script": "Puzzle_TooMuchPolish_EventScript_CollideWithVincent"
+    }
   ],
   "bg_events": [
     {
@@ -268,7 +276,7 @@
       "y": 3,
       "elevation": 3,
       "item": "ITEM_TABLE_CANDY_RARE",
-      "flag": "FLAG_CANDY_RARE_02"
+      "flag": "FLAG_CANDY_RARE_01"
     }
   ]
 }
