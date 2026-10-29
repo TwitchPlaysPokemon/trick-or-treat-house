@@ -214,6 +214,9 @@ void NewGameInitData(void)
     WipeTrainerNameRecords();
     // ResetTrainerHillResults();
     ResetContestLinkResults();
+	
+    InitRoamer();
+	
     memset(&gSaveBlock2Ptr->follower, 0, sizeof(gSaveBlock2Ptr->follower)); // clear follower data
     
     if (!FlagGet(FLAG_SYS_RANDOM_DISABLED)) {

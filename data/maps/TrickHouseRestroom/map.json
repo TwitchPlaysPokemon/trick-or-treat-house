@@ -273,6 +273,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "TrickHouseRestroom_EventScript_VisitorMay",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_KECLEON",
+      "x": 12,
+      "y": 2,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TrickHouseRestroom_EventScript_Kecleon",
+      "flag": "FLAG_HIDE_KECLEON_RESTROOM"
     }
   ],
   "warp_events": [
@@ -289,6 +302,13 @@
       "elevation": 0,
       "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
       "dest_warp_id": 4
+    },
+    {
+      "x": 12,
+      "y": 2,
+      "elevation": 0,
+      "dest_map": "MAP_TRICK_HOUSE_RESTROOM",
+      "dest_warp_id": 2
     }
   ],
   "coord_events": [
@@ -305,7 +325,7 @@
     },
     {
       "type": "hidden_item",
-      "x": 12,
+      "x": 11,
       "y": 2,
       "elevation": 3,
       "item": "ITEM_TABLE_CANDY_ABUNDANT",
@@ -318,6 +338,14 @@
       "elevation": 3,
       "item": "ITEM_TABLE_CANDY_UNCOMMON",
       "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x36"
+    },
+    {
+      "type": "sign",
+      "x": 12,
+      "y": 1,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "TrickHouseRestroom_EventScript_SecretPassage"
     }
   ]
 }

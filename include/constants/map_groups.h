@@ -15,6 +15,7 @@
 #define MAP_TRICK_HOUSE_RESTROOM        (6 | (0 << 8))
 #define MAP_TRICK_HOUSE_EXT_GATEHOUSE   (7 | (0 << 8))
 #define MAP_TRICK_HOUSE_RESTROOM_CHOOSE (8 | (0 << 8))
+#define MAP_TRICK_HOUSE_END_OLD         (9 | (0 << 8))
 
 // MG_PostGame
 #define MAP_TRICK_TREAT_SLATEPORT_CITY1      (0 | (1 << 8))

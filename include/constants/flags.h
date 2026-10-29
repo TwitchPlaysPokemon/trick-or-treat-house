@@ -310,8 +310,8 @@
 #define FLAG_UNUSED_0x122                    0x122
 #define FLAG_RECEIVED_SS_TICKET              0x123 // Chopping block
 #define FLAG_UNUSED_0x124                    0x124
-#define FLAG_UNUSED_0x125                    0x125
-#define FLAG_UNUSED_0x126                    0x126
+#define FLAG_DEFEATED_TRICK_MASTER           0x125
+#define FLAG_HIDE_KECLEON_RESTROOM           0x126 // Used
 #define FLAG_KECLEON_FLED_FORTREE            0x127 // Used
 #define FLAG_PETALBURG_MART_EXPANDED_ITEMS   0x128 // Chopping block
 #define FLAG_UNUSED_0x129                    0x129

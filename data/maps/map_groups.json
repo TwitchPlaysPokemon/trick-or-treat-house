@@ -28,7 +28,8 @@
     "TrickHouseTreeHouse",
     "TrickHouseRestroom",
     "TrickHouseExt_Gatehouse",
-    "TrickHouseRestroom_Choose"
+    "TrickHouseRestroom_Choose",
+    "TrickHouseEnd_Old"
   ],
   "MG_PostGame": [
     "TrickTreat_SlateportCity1",

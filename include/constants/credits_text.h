@@ -1,7 +1,7 @@
 #define MULTI_COLUMN_MODE
 static const u8 gCreditsText_EmptyString[] = _("");
 static const u8 gCreditsText_TRICKORTREATHOUSE[] = _("TRICK OR TREAT HOUSE");
-static const u8 gCreditsText_Halloween2022[] = _("Halloween 2022");
+static const u8 gCreditsText_Halloween2026[] = _("Halloween 2026");
 static const u8 gCreditsText_HackCredits[] = _("Hack Credits");
 static const u8 gCreditsText_OriginalConceptand[] = _("Original Concept and");
 static const u8 gCreditsText_ProjectOrganizers[] = _("Project Organizers");
@@ -189,7 +189,7 @@ static const u8 gCreditsText_SatoruIwata[] = _("Satoru Iwata");
 static const u8 gCreditsText_TsunekazIshihara[] = _("Tsunekaz Ishihara");
 static const struct CreditsEntry gCreditsEntry_EmptyString[] = {0, FALSE, gCreditsText_EmptyString};
 static const struct CreditsEntry gCreditsEntry_TRICKORTREATHOUSE[] = {FALSE, TRUE, gCreditsText_TRICKORTREATHOUSE};
-static const struct CreditsEntry gCreditsEntry_Halloween2022[] = {FALSE, TRUE, gCreditsText_Halloween2022};
+static const struct CreditsEntry gCreditsEntry_Halloween2026[] = {FALSE, TRUE, gCreditsText_Halloween2026};
 static const struct CreditsEntry gCreditsEntry_HackCredits[] = {FALSE, TRUE, gCreditsText_HackCredits};
 static const struct CreditsEntry gCreditsEntry_OriginalConceptand[] = {FALSE, TRUE, gCreditsText_OriginalConceptand};
 static const struct CreditsEntry gCreditsEntry_ProjectOrganizers[] = {FALSE, TRUE, gCreditsText_ProjectOrganizers};
@@ -382,7 +382,7 @@ static const struct CreditsEntry *const gCreditsEntryPointerTable[][10] =
 	{
 		_,
 		gCreditsEntry_TRICKORTREATHOUSE,
-		gCreditsEntry_Halloween2022,
+		gCreditsEntry_Halloween2026,
 		gCreditsEntry_HackCredits,
 		_,
 		NULL,

@@ -34,6 +34,7 @@ EWRAM_DATA static u8 sRoamerLocation[2] = {0};
 //         from that map when it lands there.
 static const u8 sRoamerLocations[][6] =
 {
+    { MAP_NUM(TRICK_HOUSE_EXT), ___, ___, ___, ___, ___ },
     // { MAP_NUM(ROUTE110), MAP_NUM(ROUTE111), MAP_NUM(ROUTE117), MAP_NUM(ROUTE118), MAP_NUM(ROUTE134), ___ },
     // { MAP_NUM(ROUTE111), MAP_NUM(ROUTE110), MAP_NUM(ROUTE117), MAP_NUM(ROUTE118), ___, ___ },
     // { MAP_NUM(ROUTE117), MAP_NUM(ROUTE111), MAP_NUM(ROUTE110), MAP_NUM(ROUTE118), ___, ___ },
@@ -83,13 +84,15 @@ void ClearRoamerLocationData(void)
 
 static void CreateInitialRoamerMon(bool16 createLatios)
 {
-    if (!createLatios)
-        ROAMER->species = SPECIES_LATIAS;
-    else
-        ROAMER->species = SPECIES_LATIOS;
+    // if (!createLatios)
+        // ROAMER->species = SPECIES_LATIAS;
+    // else
+        // ROAMER->species = SPECIES_LATIOS;
+	
+	ROAMER->species = SPECIES_FLOETTE_ETERNAL_FLOWER;
 
-    CreateMon(&gEnemyParty[0], ROAMER->species, 40, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
-    ROAMER->level = 40;
+    CreateMon(&gEnemyParty[0], ROAMER->species, 30, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
+    ROAMER->level = 30;
     ROAMER->status = 0;
     ROAMER->active = TRUE;
     ROAMER->ivs = GetMonData(&gEnemyParty[0], MON_DATA_IVS);
@@ -126,24 +129,25 @@ void UpdateLocationHistoryForRoamer(void)
 
 void RoamerMoveToOtherLocationSet(void)
 {
-    u8 mapNum = 0;
+    // u8 mapNum = 0;
     
-    if (!ROAMER->active)
-        return;
+    // if (!ROAMER->active)
+        // return;
 
-    sRoamerLocation[MAP_GRP] = ROAMER_MAP_GROUP;
+    // sRoamerLocation[MAP_GRP] = ROAMER_MAP_GROUP;
 
     // Choose a location set that starts with a map
     // different from the roamer's current map
-    while (1)
-    {
-        mapNum = sRoamerLocations[Random() % NUM_LOCATION_SETS][0];
-        if (sRoamerLocation[MAP_NUM] != mapNum)
-        {
-            sRoamerLocation[MAP_NUM] = mapNum;
-            return;
-        }
-    }
+    // while (1)
+    // {
+        // mapNum = sRoamerLocations[Random() % NUM_LOCATION_SETS][0];
+        // if (sRoamerLocation[MAP_NUM] != mapNum)
+        // {
+            // sRoamerLocation[MAP_NUM] = mapNum;
+            // return;
+        // }
+    // }
+	return;
 }
 
 void RoamerMove(void)
@@ -181,6 +185,7 @@ void RoamerMove(void)
     //         locSet++;
     //     }
     // }
+	return;
 }
 
 bool8 IsRoamerAt(u8 mapGroup, u8 mapNum)
@@ -215,7 +220,7 @@ void CreateRoamerMonInstance(void)
 
 bool8 TryStartRoamerEncounter(void)
 {
-    if (IsRoamerAt(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum) == TRUE && (Random() % 4) == 0)
+    if (IsRoamerAt(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum) == TRUE && (Random() % 256) == 0)
     {
         CreateRoamerMonInstance();
         return TRUE;

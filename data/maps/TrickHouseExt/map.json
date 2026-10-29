@@ -406,6 +406,19 @@
       "trainer_sight_or_berry_tree_id": "BERRY_TREE_TRICKHOUSE_EXT_3",
       "script": "BerryTreeScript",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PHOEBE",
+      "x": 64,
+      "y": 32,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TrickHouseExt_EventScript_Phoebe",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -414,42 +427,42 @@
       "y": 29,
       "elevation": 0,
       "dest_map": "MAP_TRICK_HOUSE_ENTRANCE",
-      "dest_warp_id": "0"
+      "dest_warp_id": 0
     },
     {
       "x": 39,
       "y": 47,
       "elevation": 0,
       "dest_map": "MAP_TRICK_HOUSE_EXT",
-      "dest_warp_id": "0"
+      "dest_warp_id": 0
     },
     {
       "x": 18,
       "y": 27,
       "elevation": 0,
       "dest_map": "MAP_FAKE_SECRET_BASE_CAVE",
-      "dest_warp_id": "0"
+      "dest_warp_id": 0
     },
     {
       "x": 41,
       "y": 33,
       "elevation": 0,
       "dest_map": "MAP_TRICK_HOUSE_EXT",
-      "dest_warp_id": "0"
+      "dest_warp_id": 0
     },
     {
       "x": 32,
       "y": 42,
       "elevation": 0,
       "dest_map": "MAP_TRICK_HOUSE_TREE_HOUSE",
-      "dest_warp_id": "0"
+      "dest_warp_id": 0
     },
     {
       "x": 46,
       "y": 51,
       "elevation": 0,
       "dest_map": "MAP_TRICK_HOUSE_EXT_GATEHOUSE",
-      "dest_warp_id": "0"
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [
@@ -634,6 +647,14 @@
       "elevation": 3,
       "item": "ITEM_TABLE_CANDY_ABUNDANT",
       "flag": "FLAG_HIDDEN_ITEM_TRICK_HOUSE_0x33"
+    },
+    {
+      "type": "sign",
+      "x": 62,
+      "y": 35,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "TrickHouseExt_EventScript_NewRock1"
     }
   ]
 }

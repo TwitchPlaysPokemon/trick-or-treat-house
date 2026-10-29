@@ -829,6 +829,8 @@ gText_LinkRecordCouldntBeSaved::
 
 	.include "data/maps/TrickHouseRestroom_Battle/scripts.inc"
 
+	.include "data/maps/TrickHouseEnd_Old/scripts.inc"
+
 	.include "data/maps/Puzzle_Racconnaissance/scripts.inc"
 
 	.include "data/maps/Puzzle_TooHardToSee/scripts.inc"
