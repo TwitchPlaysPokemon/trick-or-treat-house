@@ -12341,42 +12341,42 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Thalia3[] = {
 static const struct TrainerMonItemCustomMoves sParty_TrickMaster[] = {
     {
     .iv = 255,
-    .lvl = 30,
+    .lvl = 33,
     .species = SPECIES_ZOROARK,
     .heldItem = ITEM_SITRUS_BERRY,
     .moves = {MOVE_SLUDGE_BOMB, MOVE_U_TURN, MOVE_SUCKER_PUNCH, MOVE_SUBSTITUTE}
     },
     {
     .iv = 255,
-    .lvl = 30,
+    .lvl = 33,
     .species = SPECIES_ARAQUANID,
     .heldItem = ITEM_GRIP_CLAW,
     .moves = {MOVE_INFESTATION, MOVE_SCALD, MOVE_MAGIC_COAT, MOVE_STICKY_WEB}
     },
     {
     .iv = 255,
-    .lvl = 30,
+    .lvl = 33,
     .species = SPECIES_KLEFKI,
     .heldItem = ITEM_TOXIC_ORB,
     .moves = {MOVE_PLAY_ROUGH, MOVE_SWITCHEROO, MOVE_TRICK_ROOM, MOVE_THUNDER_WAVE}
     },
     {
     .iv = 255,
-    .lvl = 30,
+    .lvl = 33,
     .species = SPECIES_ELECTRODE,
     .heldItem = ITEM_AIR_BALLOON,
     .moves = {MOVE_VOLT_SWITCH, MOVE_THIEF, MOVE_TAUNT, MOVE_EXPLOSION}
     },
     {
     .iv = 255,
-    .lvl = 30,
+    .lvl = 33,
     .species = SPECIES_STUNFISK_GALARIAN,
     .heldItem = ITEM_ROCKY_HELMET,
     .moves = {MOVE_ROCK_SLIDE, MOVE_CRUNCH, MOVE_STEALTH_ROCK, MOVE_CURSE}
     },
     {
     .iv = 255,
-    .lvl = 30,
+    .lvl = 33,
     .species = SPECIES_AMOONGUSS,
     .heldItem = ITEM_BLACK_SLUDGE,
     .moves = {MOVE_GRASS_KNOT, MOVE_HEX, MOVE_SPORE, MOVE_TOXIC}

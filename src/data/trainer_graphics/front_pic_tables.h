@@ -130,5 +130,6 @@ const struct TrainerPicInfo gTrainerFrontPicInfoTable[] =
     TRAINER_PIC(TRAINER_PIC_ALIEN,                  gTrainerFrontPic_Alien,               0x800,  gTrainerPalette_Alien,               1),
     TRAINER_PIC(TRAINER_PIC_PIKAKID,                gTrainerFrontPic_Pikakid,             0x800,  gTrainerPalette_Pikakid,             1),
     TRAINER_PIC(TRAINER_PIC_DEV_TUSTIN2121,         gTrainerFrontPic_DevTustin2121,       0x800,  gTrainerPalette_DevTustin2121,       1),
+    TRAINER_PIC(TRAINER_PIC_TRICK_MASTER,           gTrainerFrontPic_TrickMaster,         0x800,  gTrainerPalette_TrickMaster,         1),
 };
 

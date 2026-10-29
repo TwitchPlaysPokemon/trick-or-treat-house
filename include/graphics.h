@@ -7159,6 +7159,8 @@ extern const u32 gTrainerPalette_Alien[];
 extern const u32 gTrainerPalette_Pikakid[];
 extern const u32 gTrainerPalette_DevTustin2121[];
 
+extern const u32 gTrainerFrontPic_TrickMaster[];
+extern const u32 gTrainerPalette_TrickMaster[];
 
 extern const u8 gTrainerBackPic_Brendan[];
 extern const u8 gTrainerBackPic_May[];

@@ -333,6 +333,8 @@ const u32 gTrainerPalette_Alien[] = INCBIN_U32("graphics/trainers/palettes/alien
 const u32 gTrainerPalette_Pikakid[] = INCBIN_U32("graphics/trainers/palettes/pokekid.gbapal.lz");
 const u32 gTrainerPalette_DevTustin2121[] = INCBIN_U32("graphics/trainers/palettes/tustin2121.gbapal.lz");
 
+const u32 gTrainerFrontPic_TrickMaster[] = INCBIN_U32("graphics/trainers/front_pics/trickmaster.4bpp.lz");
+const u32 gTrainerPalette_TrickMaster[] = INCBIN_U32("graphics/trainers/palettes/trickmaster.gbapal.lz");
 
 
 const u8 gTrainerBackPic_Brendan[] = INCBIN_U8("graphics/trainers/back_pics/brendan_back_pic.4bpp");

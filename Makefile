@@ -1,6 +1,6 @@
 TOOLCHAIN := $(DEVKITARM)
 MODERN := 1
-DEBUGGER ?= 1
+DEBUGGER ?= 0
 
 # don't use dkP's base_tools anymore
 # because the redefinition of $(CC) conflicts
@@ -29,8 +29,8 @@ PATH_MODERNCC := PATH=$(TOOLCHAIN)/bin:PATH $(MODERNCC)
 
 # Build Variables
 DISABLE_DEBUG	?= 0
-TPP_MODE		?= 0
-MGBA_DEBUG      ?= 1
+TPP_MODE		?= 1
+MGBA_DEBUG      ?= 0
 
 # Version branch
 VERSION	:= v3.0.8
