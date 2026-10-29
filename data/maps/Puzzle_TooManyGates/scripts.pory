@@ -1,0 +1,125 @@
+raw `
+Puzzle_TooManyGates_MapScripts::
+	puzzle_info Puzzle_TooManyGates_Name, Puzzle_TooManyGates_Author
+	puzzle_adjective Puzzle_TooManyGates_Adjective
+	puzzle_quip Puzzle_TooManyGates_Quip
+	puzzle_candylist Puzzle_TooManyGates_CandyList
+	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_TooManyGates_OnTransition
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Puzzle_TooManyGates_MapTable
+	map_script MAP_SCRIPT_ON_PUZZLE_EXIT, Puzzle_TooManyGates_PuzzleTeardown
+	.byte 0
+
+Puzzle_TooManyGates_Name:
+	.string "Too Many Gates$"
+Puzzle_TooManyGates_Author:
+	.string "M4_Used_Rollout$"
+Puzzle_TooManyGates_Adjective:
+	.string "circular$"
+Puzzle_TooManyGates_Quip:
+	.string "Owowowowowowow!\p"
+	.string "I got my fingers caught in one\n"
+    .string "of the doors!\p"
+	.string "Yeeeeowch! I hope it doesn't bruise…$"
+
+Puzzle_TooManyGates_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+    .2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_01
+    .2byte FLAG_CANDY_UNCOMMON_02
+    .2byte FLAG_CANDY_UNCOMMON_03
+	.2byte FLAG_CANDY_HEALTHY_01
+    .2byte FLAG_CANDY_RARE_01
+	.2byte 0
+
+@ -----------------------------------------------------
+
+.align 2
+Puzzle_TooManyGates_GateSetup::
+    gate_puzzle_config  3,  4, GATE_SHAPE_T2, GATE_ORIENTATION_270
+    gate_puzzle_config 11,  4, GATE_SHAPE_L1, GATE_ORIENTATION_90
+    gate_puzzle_config 13,  8, GATE_SHAPE_T2, GATE_ORIENTATION_270
+    gate_puzzle_config 13, 11, GATE_SHAPE_L2, GATE_ORIENTATION_180
+    gate_puzzle_config  2, 12, GATE_SHAPE_L4, GATE_ORIENTATION_90
+    gate_puzzle_config  8, 14, GATE_SHAPE_T3, GATE_ORIENTATION_270
+    gate_puzzle_config  1, 16, GATE_SHAPE_T1, GATE_ORIENTATION_180
+    gate_puzzle_config  1, 18, GATE_SHAPE_T4, GATE_ORIENTATION_270
+    gate_puzzle_config 12, 18, GATE_SHAPE_T3, GATE_ORIENTATION_270
+    gate_puzzle_config 10, 19, GATE_SHAPE_L3, GATE_ORIENTATION_180
+    gate_puzzle_config  4, 21, GATE_SHAPE_L1, GATE_ORIENTATION_90
+
+Puzzle_TooManyGates_OnTransition:
+	loadword 0, Puzzle_TooManyGates_GateSetup
+	loadword 1, 11
+	callnative RotatingGate_InitPuzzle
+	end
+
+Puzzle_TooManyGates_PuzzleTeardown:
+	callnative RotatingGate_DestroyPuzzle
+	end
+
+Puzzle_TooManyGates_MapTable:
+	map_script_2 VAR_TEMP_0, 16384, Puzzle_TooManyGates_EventScript_26DDC0
+	.2byte 0
+
+Puzzle_TooManyGates_EventScript_26DDC0::
+	@ loadword 0, Puzzle_TooManyGates_GateSetup
+	@ loadword 1, 11
+	special RotatingGate_InitPuzzleAndGraphics
+	end
+
+@ -----------------------------------------------------
+
+Puzzle_TooManyGates_EventScript_Sophia::
+	trainerbattle_single TRAINER_01, Puzzle_TooManyGates_Text_SophiaIntro, Puzzle_TooManyGates_Text_SophiaDefeat
+	msgbox Puzzle_TooManyGates_Text_SophiaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooManyGates_EventScript_Benny::
+	trainerbattle_single TRAINER_02, Puzzle_TooManyGates_Text_BennyIntro, Puzzle_TooManyGates_Text_BennyDefeat
+	msgbox Puzzle_TooManyGates_Text_BennyPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooManyGates_EventScript_Sebastian::
+	trainerbattle_single TRAINER_03, Puzzle_TooManyGates_Text_SebastianIntro, Puzzle_TooManyGates_Text_SebastianDefeat
+	msgbox Puzzle_TooManyGates_Text_SebastianPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooManyGates_Text_SophiaIntro:
+	.string "When I heard there was a strange\n"
+	.string "house, I had to check it out.$"
+
+Puzzle_TooManyGates_Text_SophiaDefeat:
+	.string "I've discovered a tough Trainer!$"
+
+Puzzle_TooManyGates_Text_SophiaPostBattle:
+	.string "I'm sure having a good time checking\n"
+	.string "this place out.\p"
+	.string "It's a challenge I've found worth\n"
+	.string "repeating!$"
+
+Puzzle_TooManyGates_Text_BennyIntro:
+	.string "Maybe I could get my Bird Pokémon\n"
+	.string "to fly over the wall…$"
+
+Puzzle_TooManyGates_Text_BennyDefeat:
+	.string "Gwaaah! I blew it!$"
+
+Puzzle_TooManyGates_Text_BennyPostBattle:
+	.string "Ehehehe… I guess I lost because\n"
+	.string "I was trying to cheat.$"
+
+Puzzle_TooManyGates_Text_SebastianIntro:
+	.string "I'm getting dizzy from these rotating\n"
+	.string "doors…$"
+
+Puzzle_TooManyGates_Text_SebastianDefeat:
+	.string "Everything's spinning around and\n"
+	.string "around. I can't take this anymore…$"
+
+Puzzle_TooManyGates_Text_SebastianPostBattle:
+	.string "You don't seem to be affected at all.\n"
+	.string "Or do you have your poker face on?$"
+

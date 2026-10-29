@@ -1,0 +1,151 @@
+raw `
+Puzzle_Racconnaissance_MapScripts::
+	puzzle_info Puzzle_Racconnaissance_Name, Puzzle_Racconnaissance_Author
+	puzzle_adjective Puzzle_Racconnaissance_Adjective
+	puzzle_quip Puzzle_Racconnaissance_Quip
+	@ puzzle_metavars Puzzle_Racconnaissance_Variables
+	puzzle_candylist Puzzle_Racconnaissance_CandyList
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_Racconnaissance_OnLoad
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_Racconnaissance_OnResume
+	map_script MAP_SCRIPT_ON_PUZZLE_EXIT, Puzzle_Racconnaissance_OnExit
+	.byte 0
+
+Puzzle_Racconnaissance_Name:
+	.string "Racconnaissance$"
+Puzzle_Racconnaissance_Author:
+	.string "M4_Used_Rollout$"
+Puzzle_Racconnaissance_Adjective:
+	.string "nostalgic$"
+Puzzle_Racconnaissance_Quip:
+	.string "No way, you completed the puzzle\n"
+	.string "without the Zigzagoon falling\l"
+	.string "down any of the holes?\p"
+	.string "Not even once?$"
+.align 2
+Puzzle_Racconnaissance_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_HEALTHY_02
+	.2byte 0
+
+Puzzle_Racconnaissance_OnLoad:
+	setvar VAR_TEMP_F, 0
+	setflag FLAG_SYS_FAST_BONK
+	end
+
+Puzzle_Racconnaissance_OnResume:
+	call_if_set FLAG_TRICK_HOUSE_SCROLL_READ, Puzzle_Racconnaissance_EventScript_ParkRacc
+	end
+
+Puzzle_Racconnaissance_OnExit:
+    clearflag FLAG_SYS_FAST_BONK
+    end
+
+Puzzle_Racconnaissance_EventScript_TalkToRacc::
+	lockall
+	faceplayer
+	goto_if_unset FLAG_TRICK_HOUSE_SCROLL_READ, Puzzle_Racconnaissance_EventScript_RaccGivesScroll
+	waitse
+	playmoncry SPECIES_ZIGZAGOON, 0
+	msgbox Puzzle_Racconnaissance_Text_ZiggyTalk
+	waitmoncry
+	releaseall
+	return
+
+Puzzle_Racconnaissance_EventScript_ParkRacc::
+	setobjectmovementtype 1, MOVEMENT_TYPE_WANDER_AROUND
+	return
+
+Puzzle_Racconnaissance_EventScript_RaccGivesScroll:
+	playfanfare MUS_OBTAIN_ITEM
+	message Puzzle_Racconnaissance_Text_ZiggyFound
+	waitfanfare
+	msgbox Puzzle_Racconnaissance_Text_ZiggyHandOverScroll
+	call Puzzle_Racconnaissance_EventScript_ParkRacc
+	goto PuzzleCommon_EventScript_Scroll
+	end
+
+Puzzle_Racconnaissance_EventScript_RaccTakesScroll::
+	lockall
+	setmetatile 2, 16, METATILE_TrickHousePuzzle_Floor, FALSE
+	setvar VAR_TEMP_F, 1
+	setobjectmovementtype 1, MOVEMENT_TYPE_COPY_PLAYER
+	waitse
+	playmoncry SPECIES_ZIGZAGOON, 0
+	msgbox Puzzle_Racconnaissance_Text_ZiggyPickUpScroll
+	waitmoncry
+	releaseall
+	return
+
+Puzzle_Racconnaissance_EventScript_Sally::
+	trainerbattle_single TRAINER_01, Puzzle_Racconnaissance_Text_SallyIntro, Puzzle_Racconnaissance_Text_SallyDefeat
+	msgbox Puzzle_Racconnaissance_Text_SallyPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_Racconnaissance_EventScript_Eddie::
+	trainerbattle_single TRAINER_02, Puzzle_Racconnaissance_Text_EddieIntro, Puzzle_Racconnaissance_Text_EddieDefeat
+	msgbox Puzzle_Racconnaissance_Text_EddiePostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_Racconnaissance_EventScript_Robin::
+	trainerbattle_single TRAINER_03, Puzzle_Racconnaissance_Text_RobinIntro, Puzzle_Racconnaissance_Text_RobinDefeat
+	msgbox Puzzle_Racconnaissance_Text_RobinPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_Racconnaissance_Text_WroteSecretCodeLockOpened::
+	.string "{PLAYER} wrote down the secret code\n"
+	.string "on the door.\p"
+	.string "“Trick Master is fabulous.”\n"
+	.string "… … … … … … … …\p"
+	.string "The lock clicked open!$"
+
+Puzzle_Racconnaissance_Text_SallyIntro:
+	.string "AAACK!\n"
+	.string "Someone let a Zigzagoon loose in here!$"
+
+Puzzle_Racconnaissance_Text_SallyDefeat:
+	.string "AAACK!$"
+
+Puzzle_Racconnaissance_Text_SallyPostBattle:
+	.string "Is someone going to battle or\n"
+	.string "catch that crazy thing?$"
+
+Puzzle_Racconnaissance_Text_EddieIntro:
+    .string "I love Zigzagoon!\p"
+	.string "I wanted to catch this one\n"
+	.string "but this is a dead-end…$"
+
+Puzzle_Racconnaissance_Text_EddieDefeat:
+	.string "And now I've lost…$"
+
+Puzzle_Racconnaissance_Text_EddiePostBattle:
+	.string "Can't catch it now with my team fainted…\n"
+	.string "Thanks a lot…$"
+
+Puzzle_Racconnaissance_Text_RobinIntro:
+	.string "Just who is the Trick Master?$"
+
+Puzzle_Racconnaissance_Text_RobinDefeat:
+	.string "I lost while I was lost in thought!$"
+
+Puzzle_Racconnaissance_Text_RobinPostBattle:
+	.string "You're strong!\n"
+	.string "Just who are you?$"
+
+Puzzle_Racconnaissance_Text_ZiggyPickUpScroll:
+	.string "The Zigzagoon picked up the scroll!$"
+
+Puzzle_Racconnaissance_Text_ZiggyFound:
+	.string "{PLAYER} found the Zigzagoon.$"
+
+Puzzle_Racconnaissance_Text_ZiggyHandOverScroll:
+	.string "Zigzagoon gives {PLAYER} the scroll.$"
+
+Puzzle_Racconnaissance_Text_ZiggyTalk:
+	.string "Zigzagoon: Raracc!$"
+
+`

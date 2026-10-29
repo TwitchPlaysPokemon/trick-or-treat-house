@@ -297,6 +297,15 @@
 #define MAP_PUZZLE_ELITE_FLOOR              (10 | (15 << 8))
 #define MAP_PUZZLE_SOOTOPOLIS_GYM           (11 | (15 << 8))
 
-#define MAP_GROUPS_COUNT 16
+// MG_SingleMapPuzzles2026
+#define MAP_PUZZLE_RACCONNAISSANCE   (0 | (16 << 8))
+#define MAP_PUZZLE_TOO_HARD_TO_SEE   (1 | (16 << 8))
+#define MAP_PUZZLE_TOO_MANY_PATHS    (2 | (16 << 8))
+#define MAP_PUZZLE_TOO_MANY_BOULDERS (3 | (16 << 8))
+#define MAP_PUZZLE_TOO_MANY_GATES    (4 | (16 << 8))
+#define MAP_PUZZLE_TOO_MANY_ARROWS   (5 | (16 << 8))
+#define MAP_PUZZLE_TOO_MUCH_POLISH   (6 | (16 << 8))
+
+#define MAP_GROUPS_COUNT 17
 
 #endif // GUARD_CONSTANTS_MAP_GROUPS_H

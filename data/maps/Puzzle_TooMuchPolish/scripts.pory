@@ -1,0 +1,349 @@
+raw `
+Puzzle_TooMuchPolish_MapScripts:: @ 826E801
+	puzzle_info Puzzle_TooMuchPolish_Name, Puzzle_TooManyPaths_Author
+	puzzle_adjective Puzzle_TooMuchPolish_Adjective
+	puzzle_quip Puzzle_TooMuchPolish_Quip
+	puzzle_candylist Puzzle_TooMuchPolish_CandyList
+    map_script MAP_SCRIPT_ON_RESUME, Puzzle_TooMuchPolish_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_TooMuchPolish_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_TooMuchPolish_OnLoad
+	.byte 0
+
+Puzzle_TooMuchPolish_Name:
+	.string "Too Much Polish$"
+Puzzle_TooMuchPolish_Adjective:
+	.string "slippery$"
+Puzzle_TooMuchPolish_Quip:
+	.string "Did Vincent beat you up too?\p"
+	.string "It wasn't my fault! The floor's\n"
+	.string "too slippery!$"
+.align 2
+Puzzle_TooMuchPolish_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_03
+	.2byte FLAG_CANDY_RARE_01
+    .2byte FLAG_CANDY_HEALTHY_01
+	.2byte 0
+
+@ -----------------------------------------------------
+
+Puzzle_TooMuchPolish_OnResume:
+Puzzle_TooMuchPolish_OnTransition:
+Puzzle_TooMuchPolish_OnLoad:
+	call Puzzle_TooMuchPolish_EventScript_HideScrolls
+	goto_if_unset FLAG_PUZZLE_20, Puzzle_TooMuchPolish_EventScript_InitializeVincent
+	end
+
+Puzzle_TooMuchPolish_EventScript_FoundScroll1::
+	lockall
+	goto_if_lt VAR_PUZZLE_02, 1, Puzzle_TooMuchPolish_EventScript_FoundFakeScroll
+	goto Puzzle_TooMuchPolish_EventScript_ReadFakeScrollAgain
+
+Puzzle_TooMuchPolish_EventScript_FoundScroll2::
+	lockall
+	goto_if_lt VAR_PUZZLE_02, 2, Puzzle_TooMuchPolish_EventScript_FoundFakeScroll
+	goto Puzzle_TooMuchPolish_EventScript_ReadFakeScrollAgain
+
+Puzzle_TooMuchPolish_EventScript_FoundScroll3::
+	lockall
+	goto_if_lt VAR_PUZZLE_02, 3, Puzzle_TooMuchPolish_EventScript_FoundFakeScroll
+	goto Puzzle_TooMuchPolish_EventScript_ReadFakeScrollAgain
+
+Puzzle_TooMuchPolish_EventScript_FoundScroll4::
+	lockall
+	goto_if_lt VAR_PUZZLE_02, 4, Puzzle_TooMuchPolish_EventScript_FoundFakeScroll
+	goto Puzzle_TooMuchPolish_EventScript_ReadFakeScrollAgain
+
+Puzzle_TooMuchPolish_EventScript_FoundScroll5::
+	lockall
+	goto_if_lt VAR_PUZZLE_02, 5, Puzzle_TooMuchPolish_EventScript_FoundFakeScroll
+	goto Puzzle_TooMuchPolish_EventScript_ReadFakeScrollAgain
+
+Puzzle_TooMuchPolish_EventScript_FoundScroll6::
+	lockall
+	goto_if_lt VAR_PUZZLE_02, 6, Puzzle_TooMuchPolish_EventScript_FoundFakeScroll
+	goto Puzzle_TooMuchPolish_EventScript_ReadFakeScrollAgain
+
+Puzzle_TooMuchPolish_EventScript_FoundScroll7::
+	lockall
+	goto_if_lt VAR_PUZZLE_02, 7, Puzzle_TooMuchPolish_EventScript_FoundFakeScroll
+
+Puzzle_TooMuchPolish_EventScript_ReadFakeScrollAgain:
+	msgbox Puzzle_TooMuchPolish_Text_WrongSecretCodeWrittenOnIt, MSGBOX_DEFAULT
+	releaseall
+	end
+
+Puzzle_TooMuchPolish_EventScript_FoundFakeScroll:
+	addvar VAR_PUZZLE_02, 1
+	playfanfare MUS_OBTAIN_ITEM
+	message PuzzleCommon_Text_ScrollFound1
+	waitfanfare
+	msgbox Puzzle_TooMuchPolish_Text_WrongSecretCode, MSGBOX_DEFAULT
+	playse SE_FALL
+	call Puzzle_TooMuchPolish_EventScript_ShowScrolls
+	waitse
+	playse SE_ICE_STAIRS
+	msgbox Puzzle_TooMuchPolish_Text_NextScroll, MSGBOX_DEFAULT
+	releaseall
+	end
+
+Puzzle_TooMuchPolish_EventScript_ShowScrolls:
+	goto_if_lt VAR_PUZZLE_02, 1, Puzzle_TooMuchPolish_EventScript_FinishedShowHideScrolls
+    clearflag FLAG_PUZZLE_21
+	addobject 2
+	goto_if_lt VAR_PUZZLE_02, 2, Puzzle_TooMuchPolish_EventScript_FinishedShowHideScrolls
+    clearflag FLAG_PUZZLE_22
+	addobject 3
+	goto_if_lt VAR_PUZZLE_02, 3, Puzzle_TooMuchPolish_EventScript_FinishedShowHideScrolls
+    clearflag FLAG_PUZZLE_23
+	addobject 4
+	goto_if_lt VAR_PUZZLE_02, 4, Puzzle_TooMuchPolish_EventScript_FinishedShowHideScrolls
+    clearflag FLAG_PUZZLE_24
+	addobject 5
+	goto_if_lt VAR_PUZZLE_02, 5, Puzzle_TooMuchPolish_EventScript_FinishedShowHideScrolls
+    clearflag FLAG_PUZZLE_25
+	addobject 6
+	goto_if_lt VAR_PUZZLE_02, 6, Puzzle_TooMuchPolish_EventScript_FinishedShowHideScrolls
+    clearflag FLAG_PUZZLE_26
+	addobject 7
+	goto_if_lt VAR_PUZZLE_02, 7, Puzzle_TooMuchPolish_EventScript_FinishedShowHideScrolls
+    clearflag FLAG_PUZZLE_27
+	addobject 8
+
+Puzzle_TooMuchPolish_EventScript_HideScrolls:
+	goto_if_ge VAR_PUZZLE_02, 7, Puzzle_TooMuchPolish_EventScript_FinishedShowHideScrolls
+    setflag FLAG_PUZZLE_27
+	removeobject 8
+	goto_if_ge VAR_PUZZLE_02, 6, Puzzle_TooMuchPolish_EventScript_FinishedShowHideScrolls
+    setflag FLAG_PUZZLE_26
+	removeobject 7
+	goto_if_ge VAR_PUZZLE_02, 5, Puzzle_TooMuchPolish_EventScript_FinishedShowHideScrolls
+    setflag FLAG_PUZZLE_25
+	removeobject 6
+	goto_if_ge VAR_PUZZLE_02, 4, Puzzle_TooMuchPolish_EventScript_FinishedShowHideScrolls
+    setflag FLAG_PUZZLE_24
+	removeobject 5
+	goto_if_ge VAR_PUZZLE_02, 3, Puzzle_TooMuchPolish_EventScript_FinishedShowHideScrolls
+    setflag FLAG_PUZZLE_23
+	removeobject 4
+	goto_if_ge VAR_PUZZLE_02, 2, Puzzle_TooMuchPolish_EventScript_FinishedShowHideScrolls
+    setflag FLAG_PUZZLE_22
+	removeobject 3
+	goto_if_ge VAR_PUZZLE_02, 1, Puzzle_TooMuchPolish_EventScript_FinishedShowHideScrolls
+    setflag FLAG_PUZZLE_21
+	removeobject 2
+
+Puzzle_TooMuchPolish_EventScript_FinishedShowHideScrolls:
+	special DrawWholeMapView
+	return
+
+Puzzle_TooMuchPolish_EventScript_InitializeVincent:
+	setobjectxyperm 12, 7, 11
+	setobjectmovementtype 12, MOVEMENT_TYPE_FACE_RIGHT
+	end
+
+Puzzle_TooMuchPolish_EventScript_CollideWithVincent::
+	lockall
+	setflag FLAG_PUZZLE_20
+    setvar VAR_PUZZLE_03, 1
+	applymovement 12, Puzzle_TooMuchPolish_Movement_VincentSlidesAway
+	waitmovement 12
+	setobjectxyperm 12, 14, 11
+	applymovement 12, Common_Movement_FaceLeft
+	waitmovement 0
+	releaseall
+	end
+
+Puzzle_TooMuchPolish_Movement_VincentSlidesAway:
+	emote_exclamation_mark
+	slide_right
+	slide_right
+	slide_right
+	slide_right
+	slide_right
+	slide_right
+	slide_right
+	step_end
+
+
+Puzzle_TooMuchPolish_EventScript_CollideWithVincentAgain::
+	lockall
+	applymovement 1, Common_Movement_FacePlayer
+	goto_if_eq VAR_TEMP_8, 1, Puzzle_TooMuchPolish_EventScript_VincentMad
+	addvar VAR_TEMP_7, 1
+	switch VAR_TEMP_7
+	case 1, Puzzle_TooMuchPolish_EventScript_Vincent1
+	case 2, Puzzle_TooMuchPolish_EventScript_Vincent2
+	case 3, Puzzle_TooMuchPolish_EventScript_Vincent3
+	case 4, Puzzle_TooMuchPolish_EventScript_Vincent4
+	case 5, Puzzle_TooMuchPolish_EventScript_Vincent5
+	case 6, Puzzle_TooMuchPolish_EventScript_Vincent6
+	case 7, Puzzle_TooMuchPolish_EventScript_Vincent7
+	case 8, Puzzle_TooMuchPolish_EventScript_Vincent8
+	case 9, Puzzle_TooMuchPolish_EventScript_Vincent9
+	setvar VAR_TEMP_8, 1	
+	setvar VAR_TEMP_7, 0
+	releaseall
+	end
+
+Puzzle_TooMuchPolish_EventScript_Vincent1:
+	msgbox Puzzle_TooMuchPolish_Text_Vincent1, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooMuchPolish_EventScript_Vincent2:
+	msgbox Puzzle_TooMuchPolish_Text_Vincent2, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooMuchPolish_EventScript_Vincent3:
+	msgbox Puzzle_TooMuchPolish_Text_Vincent3, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooMuchPolish_EventScript_Vincent4:
+	msgbox Puzzle_TooMuchPolish_Text_Vincent4, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooMuchPolish_EventScript_Vincent5:
+	msgbox Puzzle_TooMuchPolish_Text_Vincent5, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooMuchPolish_EventScript_Vincent6:
+	msgbox Puzzle_TooMuchPolish_Text_Vincent6, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooMuchPolish_EventScript_Vincent7:
+	msgbox Puzzle_TooMuchPolish_Text_Vincent7, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooMuchPolish_EventScript_Vincent8::
+	msgbox Puzzle_TooMuchPolish_Text_Vincent8, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooMuchPolish_EventScript_Vincent9:
+	msgbox Puzzle_TooMuchPolish_Text_Vincent9, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooMuchPolish_EventScript_Vincent::
+	@goto_if_unset FLAG_PUZZLE_20, Puzzle_TooMuchPolish_EventScript_CollideWithVincent
+	@goto_if_not_defeated TRAINER_01, Puzzle_TooMuchPolish_EventScript_BattleVincent
+	@goto_if_set FLAG_IS_BUMP_INTERACTION, Puzzle_TooMuchPolish_EventScript_CollideWithVincentAgain
+Puzzle_TooMuchPolish_EventScript_BattleVincent:
+	trainerbattle_single TRAINER_01, Puzzle_TooMuchPolish_Text_VincentIntro, Puzzle_TooMuchPolish_Text_VincentDefeat
+    @goto_if_set FLAG_IS_BUMP_INTERACTION, Puzzle_TooMuchPolish_EventScript_CollideWithVincentAgain @ Forced bump interactions are not working right now
+    goto_if_eq VAR_TEMP_8, 1, Puzzle_TooMuchPolish_EventScript_VincentMad
+	msgbox Puzzle_TooMuchPolish_Text_VincentPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooMuchPolish_EventScript_VincentMad::
+    cleartrainerflag TRAINER_01
+	trainerbattle_single TRAINER_01, Puzzle_TooMuchPolish_Text_VincentRematch, Puzzle_TooMuchPolish_Text_VincentRematchWin
+	msgbox Puzzle_TooMuchPolish_Text_VincentDone, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooMuchPolish_EventScript_Keira::
+	trainerbattle_single TRAINER_02, Puzzle_TooMuchPolish_Text_KeiraIntro, Puzzle_TooMuchPolish_Text_KeiraDefeat
+	msgbox Puzzle_TooMuchPolish_Text_KeiraPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooMuchPolish_EventScript_Leroy::
+	trainerbattle_single TRAINER_03, Puzzle_TooMuchPolish_Text_LeroyIntro, Puzzle_TooMuchPolish_Text_LeroyDefeat
+	msgbox Puzzle_TooMuchPolish_Text_LeroyPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooMuchPolish_Text_KeiraIntro:
+	.string "Consider yourself lucky to be\n"
+	.string "battling me!$"
+
+Puzzle_TooMuchPolish_Text_KeiraDefeat:
+	.string "This isn't right!\n"
+	.string "I can't lose!$"
+
+Puzzle_TooMuchPolish_Text_KeiraPostBattle:
+	.string "It's a miracle that you beat me.\n"
+	.string "You can brag about it.$"
+
+Puzzle_TooMuchPolish_Text_LeroyIntro:
+	.string "You've been slugging through the Trick\n"
+	.string "House challenge, too.$"
+
+Puzzle_TooMuchPolish_Text_LeroyDefeat:
+	.string "I see…\n"
+	.string "You possess an extraordinary style.$"
+
+Puzzle_TooMuchPolish_Text_LeroyPostBattle:
+	.string "Seeing someone like you should please\n"
+	.string "the Trick Master.$"
+
+Puzzle_TooMuchPolish_Text_VincentIntro:
+	.string "Hey! Stop horsing around!\n"
+	.string "You almost knocked me over!$"
+
+Puzzle_TooMuchPolish_Text_VincentDefeat:
+	.string "Hey! Don't play so rough!$"
+
+Puzzle_TooMuchPolish_Text_VincentPostBattle:
+	.string "You really shouldn't slam into people\n"
+	.string "like that. Someone could get hurt.$"
+
+Puzzle_TooMuchPolish_Text_Vincent1:
+	.string "Ouch!$"
+
+Puzzle_TooMuchPolish_Text_Vincent2:
+	.string "Stop running into me!$"
+
+Puzzle_TooMuchPolish_Text_Vincent3:
+	.string "Hey, that hurts!$"
+
+Puzzle_TooMuchPolish_Text_Vincent4:
+	.string "If you run into me like…\n"
+	.string "Four, five, six more times…\p"
+	.string "I'm going to be really upset!$"
+
+Puzzle_TooMuchPolish_Text_Vincent5:
+	.string "Ow! What is your problem?$"
+
+Puzzle_TooMuchPolish_Text_Vincent6:
+	.string "You're enjoying this, aren't you?\n"
+	.string "Seeing me in pain? You're sick.$"
+
+Puzzle_TooMuchPolish_Text_Vincent7:
+	.string "Stop it and leave me alone!$"
+
+Puzzle_TooMuchPolish_Text_Vincent8:
+	.string "I don't know who you are,\n"
+	.string "or why you keep being mean to me,\p"
+	.string "but you need to be nice to me right now!$"
+
+Puzzle_TooMuchPolish_Text_Vincent9:
+	.string "Look pal, last warning.\n"
+	.string "I'm serious. Stop it right now.$"
+
+Puzzle_TooMuchPolish_Text_VincentRematch:
+	.string "Ow!\p"
+	.string "I told you… Six more times,\n"
+	.string "AND YOU GET IT!$"
+
+Puzzle_TooMuchPolish_Text_VincentRematchWin:
+	.string "That still hurts…$"
+
+Puzzle_TooMuchPolish_Text_VincentDone:
+	.string "You want another one,\n"
+	.string "you slam into me again, OK?!\p"
+	.string "I'm DONE!$"
+
+Puzzle_TooMuchPolish_Text_WrongSecretCode:
+	.string "{PLAYER} memorized the secret code…\n"
+	.string "Hey, this is an old one!\p"
+	.string "It's the wrong scroll!$"
+
+Puzzle_TooMuchPolish_Text_WrongSecretCodeWrittenOnIt:
+	.string "A useless code is written on it.$"
+
+Puzzle_TooMuchPolish_Text_NextScroll:
+	.string "A new scroll has appeared…$"
+`

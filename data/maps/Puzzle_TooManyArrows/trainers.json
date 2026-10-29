@@ -1,0 +1,106 @@
+[
+	{
+		"class": "PSYCHIC",
+		"music": "ENC_MUS_EM_INTENSE",
+		"pic": "PSYCHIC_M",
+		"name": "Joshua",
+		"party": [
+			{
+				"species": "SPECIES_KADABRA",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_SOLROCK",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "HEX_MANIAC",
+		"music": "ENC_MUS_EM_SUSPICIOUS",
+		"female": true,
+		"name": "Patricia",
+		"party": [
+			{
+				"species": "SPECIES_BANETTE",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_LUNATONE",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "ALIEN",
+		"music": "ENC_MUS_EM_GIRL",
+		"female": true,
+		"name": "Alexis",
+		"party": [
+			{
+				"species": "SPECIES_MR_RIME",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_GARDEVOIR",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_ABSOL",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "PSYCHIC",
+		"music": "ENC_MUS_EM_INTENSE",
+		"pic": "PSYCHIC_M",
+		"name": "Alvaro",
+		"party": [
+			{
+				"species": "SPECIES_INDEEDEE",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_GALLADE",
+				"level": 28
+			},
+			{
+				"species": "SPECIES_PORYGON2",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "PSYCHIC",
+		"music": "ENC_MUS_EM_INTENSE",
+		"pic": "PSYCHIC_F",
+		"female": true,
+		"name": "Mariela",
+		"party": [
+			{
+				"species": "SPECIES_SAWSBUCK",
+				"level": 29
+			},
+			{
+				"species": "SPECIES_MALAMAR",
+				"level": 29
+			}
+		]
+	},
+	{
+		"class": "GHETSIS",
+		"music": "ENC_MUS_EM_RICH",
+		"name": "Everett",
+		"party": [
+			{
+				"species": "SPECIES_GRANBULL",
+				"level": 29
+			},
+			{
+				"species": "SPECIES_DONPHAN",
+				"level": 29
+			}
+		]
+	}
+]

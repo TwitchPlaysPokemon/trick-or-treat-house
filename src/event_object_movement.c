@@ -2760,7 +2760,7 @@ bool8 ObjectEventIsTrainerAndCloseToPlayer(struct ObjectEvent *objectEvent)
 
     if (!TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_DASH))
         return FALSE;
-    if (trainerType != TRAINER_TYPE_NORMAL && trainerType != TRAINER_TYPE_BURIED)
+    if (trainerType != TRAINER_TYPE_NORMAL && trainerType != TRAINER_TYPE_BURIED && trainerType != TRAINER_TYPE_BUMP_TO_INTERACT)
         return FALSE;
 
     PlayerGetDestCoords(&playerX, &playerY);

@@ -1,0 +1,255 @@
+raw `
+Puzzle_TooManyArrows_MapScripts::
+	puzzle_info Puzzle_TooManyArrows_Name, Puzzle_TooManyArrows_Author
+	puzzle_adjective Puzzle_TooManyArrows_Adjective
+	puzzle_quip Puzzle_TooManyArrows_Quip
+	puzzle_metavars Puzzle_TooManyArrows_Variables
+	puzzle_candylist Puzzle_TooManyArrows_CandyList
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TooManyArrows_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_TooManyArrows_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, Puzzle_TooManyArrows_OnLoad
+	.byte 0
+
+Puzzle_TooManyArrows_Name:
+	.string "Too Many Arrows$"
+Puzzle_TooManyArrows_Author:
+	.string "M4_Used_Rollout$"
+Puzzle_TooManyArrows_Adjective:
+    .string "dizzying$"
+Puzzle_TooManyArrows_Quip:
+	.string "I used to be in Team Rocket, and\n"
+    .string "even I think that was excessive!$" 
+.align 2
+Puzzle_TooManyArrows_Variables:
+	.2byte VAR_QUIP_PERSON,  OBJ_EVENT_GFX_AQUA_MEMBER_M
+	.2byte 0
+Puzzle_TooManyArrows_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_RARE_01
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_HEALTHY_02
+	.2byte 0
+
+@ -----------------------------------------------------
+
+Puzzle_TooManyArrows_OnResume:
+	call Puzzle_TooManyArrows_EventScript_UpdateSwitchMetatiles
+	end
+
+Puzzle_TooManyArrows_EventScript_UpdateSwitchMetatiles::
+	call_if_set FLAG_PUZZLE_21, Puzzle_TooManyArrows_EventScript_SetSwitch1MetatilesOn
+	call_if_set FLAG_PUZZLE_22, Puzzle_TooManyArrows_EventScript_SetSwitch2MetatilesOn
+	call_if_set FLAG_PUZZLE_23, Puzzle_TooManyArrows_EventScript_SetSwitch3MetatilesOn
+	return
+
+Puzzle_TooManyArrows_EventScript_SetSwitch1MetatilesOn::
+	setmetatile  6, 4, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Up, FALSE
+	setmetatile 13, 4, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Right, FALSE
+	setmetatile  6, 7, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Right, FALSE
+	setmetatile  8, 6, METATILE_TrickHousePuzzle_Lever_On, TRUE
+	return
+
+Puzzle_TooManyArrows_EventScript_SetSwitch2MetatilesOn::
+	setmetatile 6,  9, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Left, FALSE
+	setmetatile 4,  9, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Up, FALSE
+	setmetatile 5, 17, METATILE_TrickHousePuzzle_Lever_On, TRUE
+	return
+
+Puzzle_TooManyArrows_EventScript_SetSwitch3MetatilesOn::
+	setmetatile 6, 15, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Left, FALSE
+	setmetatile 3, 21, METATILE_TrickHousePuzzle_Lever_On, TRUE
+	return
+
+Puzzle_TooManyArrows_EventScript_SetSwitch1MetatilesOff::
+	setmetatile  6, 4, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Right, FALSE
+	setmetatile 13, 4, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Up, FALSE
+	setmetatile  6, 7, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Down, FALSE
+	setmetatile  8, 6, METATILE_TrickHousePuzzle_Lever_Off, TRUE
+	return
+
+Puzzle_TooManyArrows_EventScript_SetSwitch2MetatilesOff::
+	setmetatile 6,  9, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Down, FALSE
+	setmetatile 4,  9, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Right, FALSE
+	setmetatile 5, 17, METATILE_TrickHousePuzzle_Lever_Off, TRUE
+	return
+
+Puzzle_TooManyArrows_EventScript_SetSwitch3MetatilesOff::
+	setmetatile 6, 15, METATILE_TrickHousePuzzle_Arrow_RedOnBlack_Down, FALSE
+	setmetatile 3, 21, METATILE_TrickHousePuzzle_Lever_Off, TRUE
+	return
+
+Puzzle_TooManyArrows_OnTransition:
+	call Puzzle_TooManyArrows_EventScript_UpdateSwitchMetatiles
+	end
+
+Puzzle_TooManyArrows_OnLoad:
+	call Puzzle_TooManyArrows_EventScript_UpdateSwitchMetatiles
+	end
+
+Puzzle_TooManyArrows_EventScript_Switch1::
+	lockall
+	delay 32
+	call_if_unset FLAG_PUZZLE_21, Puzzle_TooManyArrows_EventScript_SetSwitch1MetatilesOn
+	call_if_set FLAG_PUZZLE_21, Puzzle_TooManyArrows_EventScript_SetSwitch1MetatilesOff
+	special DrawWholeMapView
+	playse SE_CLICK
+	goto_if_unset FLAG_PUZZLE_21, Puzzle_TooManyArrows_EventScript_SetSwitch1On
+	goto_if_set FLAG_PUZZLE_21, Puzzle_TooManyArrows_EventScript_SetSwitch1Off
+	end
+
+Puzzle_TooManyArrows_EventScript_Switch2::
+	lockall
+	delay 32
+	call_if_unset FLAG_PUZZLE_22, Puzzle_TooManyArrows_EventScript_SetSwitch2MetatilesOn
+	call_if_set FLAG_PUZZLE_22, Puzzle_TooManyArrows_EventScript_SetSwitch2MetatilesOff
+	special DrawWholeMapView
+	playse SE_CLICK
+	goto_if_unset FLAG_PUZZLE_22, Puzzle_TooManyArrows_EventScript_SetSwitch2On
+	goto_if_set FLAG_PUZZLE_22, Puzzle_TooManyArrows_EventScript_SetSwitch2Off
+	end
+
+Puzzle_TooManyArrows_EventScript_Switch3::
+	lockall
+	delay 32
+	call_if_unset FLAG_PUZZLE_23, Puzzle_TooManyArrows_EventScript_SetSwitch3MetatilesOn
+	call_if_set FLAG_PUZZLE_23, Puzzle_TooManyArrows_EventScript_SetSwitch3MetatilesOff
+	special DrawWholeMapView
+	playse SE_CLICK
+	goto_if_unset FLAG_PUZZLE_23, Puzzle_TooManyArrows_EventScript_SetSwitch3On
+	goto_if_set FLAG_PUZZLE_23, Puzzle_TooManyArrows_EventScript_SetSwitch3Off
+	end
+
+Puzzle_TooManyArrows_EventScript_SetSwitch1On::
+	setflag FLAG_PUZZLE_21
+	releaseall
+	end
+
+Puzzle_TooManyArrows_EventScript_SetSwitch1Off::
+	clearflag FLAG_PUZZLE_21
+	releaseall
+	end
+
+Puzzle_TooManyArrows_EventScript_SetSwitch2On::
+	setflag FLAG_PUZZLE_22
+	releaseall
+	end
+
+Puzzle_TooManyArrows_EventScript_SetSwitch2Off::
+	clearflag FLAG_PUZZLE_22
+	releaseall
+	end
+
+Puzzle_TooManyArrows_EventScript_SetSwitch3On::
+	setflag FLAG_PUZZLE_23
+	releaseall
+	end
+
+Puzzle_TooManyArrows_EventScript_SetSwitch3Off::
+	clearflag FLAG_PUZZLE_23
+	releaseall
+	end
+
+Puzzle_TooManyArrows_EventScript_Joshua::
+	trainerbattle_single TRAINER_01, Puzzle_TooManyArrows_Text_JoshuaIntro, Puzzle_TooManyArrows_Text_JoshuaDefeat
+	msgbox Puzzle_TooManyArrows_Text_JoshuaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooManyArrows_EventScript_Patricia::
+	trainerbattle_single TRAINER_02, Puzzle_TooManyArrows_Text_PatriciaIntro, Puzzle_TooManyArrows_Text_PatriciaDefeat
+	msgbox Puzzle_TooManyArrows_Text_PatriciaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooManyArrows_EventScript_Alexis::
+	trainerbattle_single TRAINER_03, Puzzle_TooManyArrows_Text_AlexisIntro, Puzzle_TooManyArrows_Text_AlexisDefeat
+	msgbox Puzzle_TooManyArrows_Text_AlexisPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooManyArrows_EventScript_Mariela::
+	trainerbattle_single TRAINER_05, Puzzle_TooManyArrows_Text_MarielaIntro, Puzzle_TooManyArrows_Text_MarielaDefeat
+	msgbox Puzzle_TooManyArrows_Text_MarielaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooManyArrows_EventScript_Alvaro::
+	trainerbattle_single TRAINER_04, Puzzle_TooManyArrows_Text_AlvaroIntro, Puzzle_TooManyArrows_Text_AlvaroDefeat
+	msgbox Puzzle_TooManyArrows_Text_AlvaroPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooManyArrows_EventScript_Everett::
+	trainerbattle_single TRAINER_06, Puzzle_TooManyArrows_Text_EverettIntro, Puzzle_TooManyArrows_Text_EverettDefeat
+	msgbox Puzzle_TooManyArrows_Text_EverettPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooManyArrows_Text_JoshuaIntro:
+	.string "The Trick Master always vanishes\n"
+	.string "like smoke. How does he do it?$"
+
+Puzzle_TooManyArrows_Text_JoshuaDefeat:
+	.string "Aiyeeeh! You're much too strong!\n"
+	.string "How do you do it?$"
+
+Puzzle_TooManyArrows_Text_JoshuaPostBattle:
+	.string "I wish I could appear and disappear as\n"
+	.string "if I were smoke, too.$"
+
+Puzzle_TooManyArrows_Text_PatriciaIntro:
+	.string "Going around the same spot…\n"
+	.string "It begets ill fortune…$"
+
+Puzzle_TooManyArrows_Text_PatriciaDefeat:
+	.string "Defeated!\n"
+	.string "It's a bad sign…$"
+
+Puzzle_TooManyArrows_Text_PatriciaPostBattle:
+	.string "I've circled the same spot over ten\n"
+	.string "times now… It's ill fortune…$"
+
+Puzzle_TooManyArrows_Text_AlexisIntro:
+	.string "Whoever wins will get through here\n"
+	.string "first. That's the feeling I get.$"
+
+Puzzle_TooManyArrows_Text_AlexisDefeat:
+	.string "Oh!\n"
+	.string "Well, go ahead, then!$"
+
+Puzzle_TooManyArrows_Text_AlexisPostBattle:
+	.string "You're solving all the puzzles in the\n"
+	.string "Trick House. That's the feeling I get.$"
+
+Puzzle_TooManyArrows_Text_MarielaIntro:
+	.string "Nufufufu, here at last!\n"
+	.string "Let's get right with it!$"
+
+Puzzle_TooManyArrows_Text_MarielaDefeat:
+	.string "You're so casual about winning!$"
+
+Puzzle_TooManyArrows_Text_MarielaPostBattle:
+	.string "Humph! I'm not upset!\n"
+	.string "Not me!$"
+
+Puzzle_TooManyArrows_Text_AlvaroIntro:
+	.string "I ever so closely watched you coming!$"
+
+Puzzle_TooManyArrows_Text_AlvaroDefeat:
+	.string "This outcome I didn't see coming…$"
+
+Puzzle_TooManyArrows_Text_AlvaroPostBattle:
+	.string "Well, anyway, we both picked a weird\n"
+	.string "place to get acquainted.\p"
+	.string "As one weirdo to another,\n"
+	.string "let's do our best!$"
+
+Puzzle_TooManyArrows_Text_EverettIntro:
+	.string "I finally found some space to breathe!$"
+
+Puzzle_TooManyArrows_Text_EverettDefeat:
+	.string "Oh, yes, strong you are.$"
+
+Puzzle_TooManyArrows_Text_EverettPostBattle:
+	.string "Well, at least I can relax here for a bit.\n"
+	.string "I'm so dizzy…$"
+`

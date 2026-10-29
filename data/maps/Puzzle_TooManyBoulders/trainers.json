@@ -1,0 +1,45 @@
+[
+	{
+		"class": "BATTLE_GIRL",
+		"music": "ENC_MUS_DP_INTENSE",
+		"female": true,
+		"name": "Cora",
+		"party": [
+			{
+				"species": "SPECIES_MEDITITE",
+				"level": 28,
+				"iv": 100
+			}
+		]
+	},
+	{
+		"class": "BLACK_BELT",
+		"music": "ENC_MUS_DP_HIKER",
+		"name": "Yuji",
+		"party": [
+			{
+				"species": "SPECIES_MAKUHITA",
+				"level": 27,
+				"iv": 100
+			},
+			{
+				"species": "SPECIES_MACHOKE",
+				"level": 27,
+				"iv": 100
+			}
+		]
+	},
+	{
+		"class": "BATTLE_GIRL",
+		"music": "ENC_MUS_DP_GIRL",
+		"female": true,
+		"name": "Paula",
+		"party": [
+			{
+				"species": "SPECIES_BRELOOM",
+				"level": 29,
+				"iv": 100
+			}
+		]
+	}
+]

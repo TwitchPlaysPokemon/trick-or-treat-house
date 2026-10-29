@@ -1,0 +1,311 @@
+{
+  "id": "MAP_PUZZLE_TOO_MANY_PATHS",
+  "name": "Puzzle_TooManyPaths",
+  "layout": "LAYOUT_PUZZLE_TOO_MANY_PATHS",
+  "music": "MUS_CONTEST_LOBBY",
+  "region_map_section": "MAPSEC_ROUTE_110",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": false,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRICK_SCROLL",
+      "x": 4,
+      "y": 20,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PuzzleCommon_EventScript_Scroll",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 7,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_CandyUncommon",
+      "flag": "FLAG_CANDY_UNCOMMON_01"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 4,
+      "y": 16,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_CandyUncommon",
+      "flag": "FLAG_CANDY_UNCOMMON_02"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CAMPER",
+      "x": 0,
+      "y": 3,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "Puzzle_TooManyPaths_EventScript_Justin",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HIKER",
+      "x": 11,
+      "y": 5,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "8",
+      "script": "Puzzle_TooManyPaths_EventScript_Alan",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
+      "x": 11,
+      "y": 17,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "Puzzle_TooManyPaths_EventScript_Martha",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "x": 0,
+      "y": 13,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_RockSmash",
+      "flag": "FLAG_TEMP_15"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
+      "x": 2,
+      "y": 13,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_RockSmash",
+      "flag": "FLAG_TEMP_16"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 1,
+      "y": 21,
+      "elevation": 0,
+      "dest_map": "MAP_TRICK_HOUSE_CORRIDOR",
+      "dest_warp_id": 0
+    },
+    {
+      "x": 13,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_TRICK_HOUSE_END",
+      "dest_warp_id": 0
+    }
+  ],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 0,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Puzzle_TooManyPaths_EventScript_Button1"
+    },
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_TEMP_1",
+      "var_value": "0",
+      "script": "Puzzle_TooManyPaths_EventScript_Button2"
+    },
+    {
+      "type": "trigger",
+      "x": 0,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "0",
+      "script": "Puzzle_TooManyPaths_EventScript_Button3"
+    },
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 9,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "0",
+      "script": "Puzzle_TooManyPaths_EventScript_Button4"
+    },
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 12,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "Puzzle_TooManyPaths_EventScript_Button5"
+    },
+    {
+      "type": "trigger",
+      "x": 7,
+      "y": 12,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "Puzzle_TooManyPaths_EventScript_Button6"
+    },
+    {
+      "type": "trigger",
+      "x": 9,
+      "y": 12,
+      "elevation": 0,
+      "var": "VAR_TEMP_3",
+      "var_value": "0",
+      "script": "Puzzle_TooManyPaths_EventScript_Button7"
+    },
+    {
+      "type": "trigger",
+      "x": 12,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "Puzzle_TooManyPaths_EventScript_Button8"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 13,
+      "elevation": 0,
+      "var": "VAR_TEMP_4",
+      "var_value": "0",
+      "script": "Puzzle_TooManyPaths_EventScript_Button9"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 5,
+      "y": 12,
+      "elevation": 3,
+      "item": "ITEM_TABLE_CANDY_COMMON",
+      "flag": "FLAG_CANDY_COMMON_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 0,
+      "y": 2,
+      "elevation": 3,
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
+      "flag": "FLAG_CANDY_ABUNDANT_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 4,
+      "y": 21,
+      "elevation": 3,
+      "item": "ITEM_TABLE_CANDY_HEALTHY",
+      "flag": "FLAG_CANDY_HEALTHY_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 8,
+      "y": 4,
+      "elevation": 3,
+      "item": "ITEM_TABLE_CANDY_RARE",
+      "flag": "FLAG_CANDY_RARE_01"
+    },
+    {
+      "type": "hidden_item",
+      "x": 12,
+      "y": 19,
+      "elevation": 3,
+      "item": "ITEM_TABLE_CANDY_HEALTHY",
+      "flag": "FLAG_CANDY_HEALTHY_02"
+    },
+    {
+      "type": "hidden_item",
+      "x": 13,
+      "y": 14,
+      "elevation": 3,
+      "item": "ITEM_TABLE_CANDY_COMMON",
+      "flag": "FLAG_CANDY_COMMON_02"
+    },
+    {
+      "type": "sign",
+      "x": 1,
+      "y": 19,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route110_TrickHousePuzzle_ResetLever"
+    },
+    {
+      "type": "hidden_item",
+      "x": 7,
+      "y": 11,
+      "elevation": 3,
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
+      "flag": "FLAG_CANDY_ABUNDANT_02"
+    },
+    {
+      "type": "hidden_item",
+      "x": 6,
+      "y": 1,
+      "elevation": 3,
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
+      "flag": "FLAG_CANDY_ABUNDANT_03"
+    },
+    {
+      "type": "hidden_item",
+      "x": 2,
+      "y": 1,
+      "elevation": 3,
+      "item": "ITEM_TABLE_CANDY_ABUNDANT",
+      "flag": "FLAG_CANDY_ABUNDANT_04"
+    },
+    {
+      "type": "hidden_item",
+      "x": 10,
+      "y": 1,
+      "elevation": 3,
+      "item": "ITEM_TABLE_CANDY_RARE",
+      "flag": "FLAG_CANDY_RARE_02"
+    }
+  ]
+}

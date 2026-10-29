@@ -1,0 +1,238 @@
+raw `
+Puzzle_TooManyPaths_MapScripts::
+	puzzle_info Puzzle_TooManyPaths_Name, Puzzle_TooManyPaths_Author
+	puzzle_adjective Puzzle_TooManyPaths_Adjective
+	puzzle_quip Puzzle_TooManyPaths_Quip
+	puzzle_candylist Puzzle_TooManyPaths_CandyList
+    puzzle_item_prereqs Puzzle_TooManyPaths_PrereqItems
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_TooManyPaths_OnResume
+	map_script MAP_SCRIPT_ON_TRANSITION, Puzzle_TooManyPaths_OnTransition
+	.byte 0
+
+Puzzle_TooManyPaths_Name:
+	.string "Too Many Paths$"
+Puzzle_TooManyPaths_Author:
+	.string "M4_Used_Rollout$"
+Puzzle_TooManyPaths_Adjective:
+	.string "dilemmatical$"
+Puzzle_TooManyPaths_Quip:
+	.string "I only had to reset 21 times!$"
+
+.align 2
+Puzzle_TooManyPaths_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+    .2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_HEALTHY_02
+    .2byte FLAG_CANDY_RARE_01
+    .2byte FLAG_CANDY_RARE_02
+	.2byte 0
+Puzzle_TooManyPaths_PrereqItems:
+	.2byte ITEM_ROCKSMASH_ITEM
+	.2byte 0
+
+@ -----------------------------------------------------
+
+Puzzle_TooManyPaths_OnResume:
+	end
+
+Puzzle_TooManyPaths_OnTransition:
+	call Puzzle_TooManyPaths_ResetVars
+	end
+
+Puzzle_TooManyPaths_ResetVars::
+	setvar VAR_TEMP_1, 0
+	setvar VAR_TEMP_2, 0
+	setvar VAR_TEMP_3, 0
+	setvar VAR_TEMP_4, 0
+	return
+
+Puzzle_TooManyPaths_ResetPuzzle::
+	call Puzzle_TooManyPaths_ResetVars
+	setmetatile 0, 17, METATILE_TrickHousePuzzle_Button_Up, FALSE
+	setmetatile 2, 17, METATILE_TrickHousePuzzle_Button_Up, FALSE
+	setmetatile 0, 9, METATILE_TrickHousePuzzle_Button_Up, FALSE
+	setmetatile 2, 9, METATILE_TrickHousePuzzle_Button_Up, FALSE
+	setmetatile 4, 12, METATILE_TrickHousePuzzle_Button_Up, FALSE
+	setmetatile 7, 12, METATILE_TrickHousePuzzle_Button_Up, FALSE
+	setmetatile 9, 12, METATILE_TrickHousePuzzle_Button_Up, FALSE
+	setmetatile 12, 13, METATILE_TrickHousePuzzle_Button_Up, FALSE
+	setmetatile 14, 13, METATILE_TrickHousePuzzle_Button_Up, FALSE
+	setmetatile 0, 18, METATILE_TrickHousePuzzle_Door_Shuttered, FALSE
+	setmetatile 2, 18, METATILE_TrickHousePuzzle_Door_Shuttered, FALSE
+	setmetatile 0, 10, METATILE_TrickHousePuzzle_Door_Shuttered, FALSE
+	setmetatile 2, 10, METATILE_TrickHousePuzzle_Door_Shuttered, FALSE
+	setmetatile 4, 11, METATILE_TrickHousePuzzle_Door_Shuttered, FALSE
+	setmetatile 7, 11, METATILE_TrickHousePuzzle_Door_Shuttered, FALSE
+	setmetatile 9, 11, METATILE_TrickHousePuzzle_Door_Shuttered, FALSE
+	setmetatile 12, 14, METATILE_TrickHousePuzzle_Door_Shuttered, FALSE
+	setmetatile 14, 14, METATILE_TrickHousePuzzle_Door_Shuttered, FALSE
+	setmetatile 1, 19, METATILE_TrickHousePuzzle_Lever_On, TRUE
+	goto Puzzle_TooManyPaths_EventScript_PressButton
+	end
+
+Route110_TrickHousePuzzle_ResetLever::
+	lockall
+	goto_if_eq VAR_TEMP_1, 1, Puzzle_TooManyPaths_ResetPuzzle
+	goto_if_eq VAR_TEMP_2, 1, Puzzle_TooManyPaths_ResetPuzzle
+	goto_if_eq VAR_TEMP_3, 1, Puzzle_TooManyPaths_ResetPuzzle
+	goto_if_eq VAR_TEMP_4, 1, Puzzle_TooManyPaths_ResetPuzzle
+	msgbox Puzzle_TooManyPaths_Text_ResetButton, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooManyPaths_EventScript_PressedButtonGroup1::
+	setvar VAR_TEMP_1, 1
+	setmetatile 0, 17, METATILE_TrickHousePuzzle_Button_Pressed, FALSE
+	setmetatile 2, 17, METATILE_TrickHousePuzzle_Button_Pressed, FALSE
+	setmetatile 1, 19, METATILE_TrickHousePuzzle_Lever_Off, TRUE
+	goto Puzzle_TooManyPaths_EventScript_PressButton
+	end
+
+Puzzle_TooManyPaths_EventScript_PressedButtonGroup2::
+	setvar VAR_TEMP_2, 1
+	setmetatile 0, 9, METATILE_TrickHousePuzzle_Button_Pressed, FALSE
+	setmetatile 2, 9, METATILE_TrickHousePuzzle_Button_Pressed, FALSE
+	setmetatile 1, 19, METATILE_TrickHousePuzzle_Lever_Off, TRUE
+	goto Puzzle_TooManyPaths_EventScript_PressButton
+	end
+
+Puzzle_TooManyPaths_EventScript_PressedButtonGroup3::
+	setvar VAR_TEMP_3, 1
+	setmetatile 4, 12, METATILE_TrickHousePuzzle_Button_Pressed, FALSE
+	setmetatile 7, 12, METATILE_TrickHousePuzzle_Button_Pressed, FALSE
+	setmetatile 9, 12, METATILE_TrickHousePuzzle_Button_Pressed, FALSE
+	setmetatile 1, 19, METATILE_TrickHousePuzzle_Lever_Off, TRUE
+	goto Puzzle_TooManyPaths_EventScript_PressButton
+	end
+
+Puzzle_TooManyPaths_EventScript_PressedButtonGroup4::
+	setvar VAR_TEMP_4, 1
+	setmetatile 12, 13, METATILE_TrickHousePuzzle_Button_Pressed, FALSE
+	setmetatile 14, 13, METATILE_TrickHousePuzzle_Button_Pressed, FALSE
+	setmetatile 1, 19, METATILE_TrickHousePuzzle_Lever_Off, TRUE
+	goto Puzzle_TooManyPaths_EventScript_PressButton
+	end
+
+Puzzle_TooManyPaths_EventScript_Button1::
+	lockall
+	setmetatile 2, 18, METATILE_TrickHousePuzzle_Door_Open, TRUE
+	goto Puzzle_TooManyPaths_EventScript_PressedButtonGroup1
+	end
+
+Puzzle_TooManyPaths_EventScript_Button2::
+	lockall
+	setmetatile 0, 18, METATILE_TrickHousePuzzle_Door_Open, TRUE
+	goto Puzzle_TooManyPaths_EventScript_PressedButtonGroup1
+	end
+
+Puzzle_TooManyPaths_EventScript_Button3::
+	lockall
+	setmetatile 2, 10, METATILE_TrickHousePuzzle_Door_Open, TRUE
+	goto Puzzle_TooManyPaths_EventScript_PressedButtonGroup2
+	end
+
+Puzzle_TooManyPaths_EventScript_Button4::
+	lockall
+	setmetatile 0, 10, METATILE_TrickHousePuzzle_Door_Open, TRUE
+	goto Puzzle_TooManyPaths_EventScript_PressedButtonGroup2
+	end
+
+Puzzle_TooManyPaths_EventScript_Button5::
+	lockall
+	setmetatile 7, 11, METATILE_TrickHousePuzzle_Door_Open, TRUE
+	setmetatile 9, 11, METATILE_TrickHousePuzzle_Door_Open, TRUE
+	goto Puzzle_TooManyPaths_EventScript_PressedButtonGroup3
+	end
+
+Puzzle_TooManyPaths_EventScript_Button6::
+	lockall
+	setmetatile 4, 11, METATILE_TrickHousePuzzle_Door_Open, TRUE
+	setmetatile 9, 11, METATILE_TrickHousePuzzle_Door_Open, TRUE
+	goto Puzzle_TooManyPaths_EventScript_PressedButtonGroup3
+	end
+
+Puzzle_TooManyPaths_EventScript_Button7::
+	lockall
+	setmetatile 4, 11, METATILE_TrickHousePuzzle_Door_Open, TRUE
+	setmetatile 7, 11, METATILE_TrickHousePuzzle_Door_Open, TRUE
+	goto Puzzle_TooManyPaths_EventScript_PressedButtonGroup3
+	end
+
+Puzzle_TooManyPaths_EventScript_Button8::
+	lockall
+	setmetatile 14, 14, METATILE_TrickHousePuzzle_Door_Open, TRUE
+	goto Puzzle_TooManyPaths_EventScript_PressedButtonGroup4
+	end
+
+Puzzle_TooManyPaths_EventScript_Button9::
+	lockall
+	setmetatile 12, 14, METATILE_TrickHousePuzzle_Door_Open, TRUE
+	goto Puzzle_TooManyPaths_EventScript_PressedButtonGroup4
+	end
+
+Puzzle_TooManyPaths_EventScript_PressButton::
+	playse SE_PIN
+	special DrawWholeMapView
+	end
+
+Puzzle_TooManyPaths_EventScript_Justin::
+	trainerbattle_single TRAINER_01, Puzzle_TooManyPaths_Text_JustinIntro, Puzzle_TooManyPaths_Text_JustinDefeat
+	msgbox Puzzle_TooManyPaths_Text_JustinPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooManyPaths_EventScript_Martha::
+	trainerbattle_single TRAINER_02, Puzzle_TooManyPaths_Text_MarthaIntro, Puzzle_TooManyPaths_Text_MarthaDefeat
+	msgbox Puzzle_TooManyPaths_Text_MarthaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooManyPaths_EventScript_Alan::
+	trainerbattle_single TRAINER_03, Puzzle_TooManyPaths_Text_AlanIntro, Puzzle_TooManyPaths_Text_AlanDefeat
+	msgbox Puzzle_TooManyPaths_Text_AlanPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooManyPaths_Text_ResetButton:
+	.string "The switch is marked with a\n"
+	.string "big sign that says RESET.$"
+
+Puzzle_TooManyPaths_Text_JustinIntro:
+	.string "Can't go through this way, friend!$"
+
+Puzzle_TooManyPaths_Text_JustinDefeat:
+	.string "Hey, calm down, pal!\n"
+	.string "You don't have to be so tough!$"
+
+Puzzle_TooManyPaths_Text_JustinPostBattle:
+	.string "No no, you can't to go this way.\n"
+	.string "This path is closed off.\p"
+	.string "But if you end up in a dead end, you can\n"
+	.string "always pull the reset lever at the start!$"
+
+Puzzle_TooManyPaths_Text_MarthaIntro:
+	.string "I've had to reset seven times.\n"
+	.string "I'm starting to feel sad…$"
+
+Puzzle_TooManyPaths_Text_MarthaDefeat:
+	.string "You… You're awful!$"
+
+Puzzle_TooManyPaths_Text_MarthaPostBattle:
+	.string "I know I'm weak!\n"
+	.string "And, I have no sense of direction!$"
+
+Puzzle_TooManyPaths_Text_AlanIntro:
+	.string "I don't get it. What would anyone want\n"
+	.string "with a house this bizarre?$"
+
+Puzzle_TooManyPaths_Text_AlanDefeat:
+	.string "I don't get it.\n"
+	.string "How did I lose?$"
+
+Puzzle_TooManyPaths_Text_AlanPostBattle:
+	.string "I don't get it.\n"
+	.string "How many traps are in this house?\p"
+	.string "You may be the one to solve that.$"
+
+`
