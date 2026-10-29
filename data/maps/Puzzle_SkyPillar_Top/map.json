@@ -1,0 +1,66 @@
+{
+  "id": "MAP_PUZZLE_SKY_PILLAR_TOP",
+  "name": "Puzzle_SkyPillar_Top",
+  "layout": "LAYOUT_PUZZLE_SKY_PILLAR_TOP",
+  "music": "MUS_MT_CHIMNEY",
+  "region_map_section": "MAPSEC_SKY_PILLAR",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": 0,
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRICK_DOOR_STONE",
+      "x": 14,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_BUMP_TO_INTERACT",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "PuzzleCommon_EventScript_ExitDoorObject",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WHISMUR",
+      "x": 20,
+      "y": 1,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 2,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 16,
+      "y": 14,
+      "elevation": 0,
+      "dest_map": "MAP_PUZZLE_SKY_PILLAR_5F",
+      "dest_warp_id": 1
+    }
+  ],
+  "coord_events": [
+
+  ],
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 18,
+      "y": 10,
+      "elevation": 0,
+      "item": "ITEM_TABLE_CANDY_RARE",
+      "flag": "FLAG_CANDY_RARE_02"
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+raw `
+Puzzle_KecleonChase_MapScripts::
+	puzzle_info Puzzle_KecleonChase_Name, Puzzle_KecleonChase_Author
+	puzzle_adjective Puzzle_KecleonChase_Adjective
+	puzzle_quip Puzzle_KecleonChase_Quip
+	//puzzle_setup_script Puzzle_KecleonChase_SetupScript
+	puzzle_item_prereqs Puzzle_KecleonChase_Items
+	puzzle_metavars Puzzle_KecleonChase_Variables
+	puzzle_candylist Puzzle_KecleonChase_CandyList
+	//map_script MAP_SCRIPT_ON_RESUME, Puzzle_KecleonChase_OnResume
+	//map_script MAP_SCRIPT_ON_FRAME_TABLE, Puzzle_KecleonChase_FrameTable
+	//map_script MAP_SCRIPT_ON_LOAD, Puzzle_KecleonChase_OnLoad
+	.byte 0
+
+Puzzle_KecleonChase_Name:
+	.string "Keckle-where?$"
+Puzzle_KecleonChase_Author:
+	.string "YugnatZero$"
+Puzzle_KecleonChase_Adjective:
+	.string "obfuscating$"
+Puzzle_KecleonChase_Quip:
+	.string "Kewe?\p"
+	.string "Ha ha, just kidding! I'm not really a\n"
+	.string "Kecleon, just a mere ghost.$"
+.align 2
+Puzzle_KecleonChase_Items:
+	.2byte ITEM_DEVON_SCOPE
+	.2byte 0
+Puzzle_KecleonChase_Variables:
+	.2byte VAR_QUIP_PERSON, OBJ_EVENT_GFX_NOTHING
+	.2byte 0
+Puzzle_KecleonChase_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_COMMON_03
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_HEALTHY_02
+	.2byte FLAG_CANDY_RARE_01
+	.2byte FLAG_CANDY_RARE_02
+	.2byte 0
+
+Puzzle_KecleonChase_EventScript_VisibleKecleonWaiting::
+	lock
+	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
+	goto_if_ge VAR_PUZZLE_07, 7, Puzzle_KecleonChase_EventScript_VisibleKecleonLeaving
+	copyvar VAR_0x800A, VAR_PUZZLE_07
+	buffernumberstring STR_VAR_1, VAR_0x800A
+	msgbox Puzzle_KecleonChase_Text_NumberOfKecleonFound, MSGBOX_DEFAULT
+	release
+	end
+
+Puzzle_KecleonChase_EventScript_VisibleKecleonLeaving::
+	msgbox Puzzle_KecleonChase_Text_FoundAll, MSGBOX_DEFAULT
+	fadescreen FADE_TO_BLACK
+	removeobject VAR_LAST_TALKED
+	fadescreen FADE_FROM_BLACK
+	msgbox Puzzle_KecleonChase_Text_RanOff, MSGBOX_DEFAULT
+	release
+	end
+
+Puzzle_KecleonChase_EventScript_KecleonFound::
+	lock
+	checkitem ITEM_DEVON_SCOPE
+	goto_if_eq VAR_RESULT, TRUE, Puzzle_KecleonChase_EventScript_AskUseDevonScope
+	msgbox Kecleon_Text_SomethingUnseeable, MSGBOX_DEFAULT
+	release
+	end
+
+Puzzle_KecleonChase_EventScript_AskUseDevonScope::
+	msgbox Kecleon_Text_WantToUseDevonScope, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, Puzzle_KecleonChase_EventScript_BattleKecleon
+	release
+	end
+	
+Puzzle_KecleonChase_EventScript_BattleKecleon::
+	msgbox Puzzle_KecleonChase_Text_Kewe, MSGBOX_DEFAULT
+	msgbox Puzzle_KecleonChase_Text_MonAttacked, MSGBOX_DEFAULT
+	closemessage
+	applymovement VAR_LAST_TALKED, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement VAR_LAST_TALKED, Movement_KecleonAppears
+	waitmovement 0
+	waitse
+	playmoncry SPECIES_KECLEON, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	setwildbattle SPECIES_KECLEON, 30
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	dowildbattle
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, Puzzle_KecleonChase_EventScript_KecleonDefeated
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, Puzzle_KecleonChase_EventScript_KecleonDisappears
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, Puzzle_KecleonChase_EventScript_KecleonDisappears
+	release
+	end
+	
+Puzzle_KecleonChase_EventScript_KecleonDisappears::
+	msgbox Puzzle_KecleonChase_Text_Kekeke, MSGBOX_DEFAULT
+	closemessage
+	applymovement VAR_LAST_TALKED, Movement_KecleonDisappears
+	waitmovement 0
+	setobjectmovementtype VAR_LAST_TALKED, MOVEMENT_TYPE_WANDER_AROUND_INVISIBLE
+	release
+	end
+	
+Puzzle_KecleonChase_EventScript_KecleonDefeated::
+	msgbox Puzzle_KecleonChase_Text_Ewewak, MSGBOX_DEFAULT
+	addvar VAR_PUZZLE_07, 1
+	fadescreen FADE_TO_BLACK
+	removeobject VAR_LAST_TALKED
+	fadescreen FADE_FROM_BLACK
+	release
+	end
+
+Movement_KecleonDisappears:
+	set_invisible
+	delay_4
+	set_invisible
+	delay_4
+	set_visible
+	delay_4
+	set_invisible
+	step_end
+	
+Puzzle_KecleonChase_Text_Kewe:
+	.string "Kewe?$"
+	
+Puzzle_KecleonChase_Text_Kekeke:
+	.string "Kekeke!$"
+	
+Puzzle_KecleonChase_Text_Ewewak:
+	.string "Ewewak!$"
+	
+Puzzle_KecleonChase_Text_MonAttacked:
+	.string "An invisible POKéMON became completely\n"
+	.string "visible!\p"
+	.string "The startled POKéMON attacked!$"
+
+Puzzle_KecleonChase_Text_NumberOfKecleonFound:
+	.string "This KECLEON seems to be waiting for its\n"
+	.string "friends to show…\p"
+	.string "According to the DEVON SCOPE, you found\n"
+	.string "{STR_VAR_1} out of 7 invisible Pokémon\l"
+	.string "hidden around here.$"
+	
+Puzzle_KecleonChase_Text_FoundAll:
+	.string "Seems you found all of the KECLEON's\n"
+	.string "friends.$"
+	
+Puzzle_KecleonChase_Text_RanOff:
+	.string "It ran off to join them!$"
+	
+`

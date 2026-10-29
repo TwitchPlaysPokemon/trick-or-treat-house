@@ -172,7 +172,10 @@ const u32 gObjectEventPic_Archie[] = INCBIN_U32("graphics/object_events/pics/peo
 const u32 gObjectEventPic_Maxie[] = INCBIN_U32("graphics/object_events/pics/people/team_magma/maxie.4bpp");
 const u32 gObjectEventPic_Regi[] = INCBIN_U32("graphics/object_events/pics/pokemon/regi.4bpp");
 const u32 gObjectEventPic_Skitty[] = INCBIN_U32("graphics/object_events/pics/pokemon/skitty.4bpp");
+
 const u32 gObjectEventPic_Kecleon[] = INCBIN_U32("graphics/object_events/pics/pokemon/kecleon.4bpp");
+const u16 gObjectEventPal_Kecleon[] = INCBIN_U16("graphics/object_events/palettes/kecleon.gbapal");
+
 const u32 gObjectEventPic_Rayquaza[] = INCBIN_U32("graphics/object_events/pics/pokemon/rayquaza.4bpp");
 const u32 gObjectEventPic_RayquazaStill[] = INCBIN_U32("graphics/object_events/pics/pokemon/rayquaza_still.4bpp");
 const u32 gObjectEventPic_Zigzagoon[] = INCBIN_U32("graphics/object_events/pics/pokemon/zigzagoon.4bpp");
@@ -474,6 +477,9 @@ const u32 gObjectEventPic_Farfetchd[] = INCBIN_U32("graphics/object_events/pics/
 const u16 gObjectEventPal_Pidgey[] = INCBIN_U16("graphics/object_events/palettes/objpal_pidgey.gbapal");
 const u32 gObjectEventPic_Pidgey[] = INCBIN_U32("graphics/object_events/pics/pokemon/pidgey.4bpp");
 
+const u16 gObjectEventPal_Whismur[] = INCBIN_U16("graphics/object_events/palettes/whismur.gbapal");
+const u32 gObjectEventPic_Whismur[] = INCBIN_U32("graphics/object_events/pics/pokemon/whismur.4bpp");
+
 const u16 gObjectEventPal_Imposter[] = INCBIN_U16("graphics/object_events/palettes/objpal_imposter.gbapal");
 
 const u32 gObjectEventPic_FroggerWalk[] = INCBIN_U32("graphics/object_events/pics/people/frogger.4bpp");
@@ -482,6 +488,8 @@ const u32 gObjectEventPic_MermaidWalk[] = INCBIN_U32("graphics/object_events/pic
 
 const u32 gObjectEventPic_MetaPedestal[] = INCBIN_U32("graphics/object_events/pics/misc/meta_pedestal.4bpp");
 const u16 gObjectEventPal_MetaPedestal[] = INCBIN_U16("graphics/object_events/pics/misc/meta_pedestal.gbapal");
+
+const u32 gObjectEventPic_Nothing[] = INCBIN_U32("graphics/object_events/pics/misc/nothing.4bpp");
 
 //-------------------------------------------------------------------
 // Meta Puzzle Items

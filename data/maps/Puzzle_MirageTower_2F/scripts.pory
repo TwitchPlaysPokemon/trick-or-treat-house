@@ -1,0 +1,12 @@
+raw `
+Puzzle_MirageTower_2F_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Common_FrameTable_CrackedGround_FallDownHole
+	map_script MAP_SCRIPT_ON_TRANSITION, Common_OnResume_FixCrackedGround
+	map_script MAP_SCRIPT_ON_RESUME, Puzzle_MirageTower_2F_SetHoleWarp
+	.byte 0
+
+Puzzle_MirageTower_2F_SetHoleWarp:
+	setstepcallback STEP_CB_CRACKED_FLOOR
+	setholewarp MAP_PUZZLE_MIRAGE_TOWER_1F
+	end
+`

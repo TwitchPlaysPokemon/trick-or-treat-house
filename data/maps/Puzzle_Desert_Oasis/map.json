@@ -14,24 +14,24 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "direction": "right",
+      "map": "MAP_DESERT_EAST",
       "offset": -40,
-      "map": "MAP_DESERT_EAST"
+      "direction": "right"
     },
     {
-      "direction": "up",
+      "map": "MAP_DESERT_NORTH",
       "offset": -40,
-      "map": "MAP_DESERT_NORTH"
+      "direction": "up"
     },
     {
-      "direction": "left",
+      "map": "MAP_DESERT_WEST",
       "offset": 0,
-      "map": "MAP_DESERT_WEST"
+      "direction": "left"
     },
     {
-      "direction": "down",
+      "map": "MAP_DESERT_SOUTH",
       "offset": 0,
-      "map": "MAP_DESERT_SOUTH"
+      "direction": "down"
     }
   ],
   "object_events": [

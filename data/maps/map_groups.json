@@ -13,6 +13,8 @@
     "MG_DesertPuzzles",
     "MG_TrickOrTreatPuzzles",
     "MG_SpotTheDifferencePuzzles",
+    "MG_MirageTowerPuzzle",
+    "MG_SkyPillarPuzzle",
     "MG_ImposterPuzzle",
     "MG_TheMetaPuzzle",
     "MG_SingleMapPuzzles2019",
@@ -165,7 +167,8 @@
     "Puzzle_DiveMaze",
     "Puzzle_ImposterReflection",
     "Puzzle_ThinIce",
-    "Puzzle_BlockPushing"
+    "Puzzle_BlockPushing",
+    "Puzzle_KecleonChase"
   ],
   "MG_LostWoodsPuzzles": [
     "Puzzle_LostWoods1_Entrance",
@@ -239,6 +242,20 @@
     "Puzzle_SpotDifference_2_Right",
     "Puzzle_SpotDifference_3_Left",
     "Puzzle_SpotDifference_3_Right"
+  ],
+  "MG_MirageTowerPuzzle": [
+    "Puzzle_MirageTower_1F",
+    "Puzzle_MirageTower_2F",
+    "Puzzle_MirageTower_3F",
+    "Puzzle_MirageTower_4F"
+  ],
+  "MG_SkyPillarPuzzle": [
+    "Puzzle_SkyPillar_1F",
+    "Puzzle_SkyPillar_2F",
+    "Puzzle_SkyPillar_3F",
+    "Puzzle_SkyPillar_4F",
+    "Puzzle_SkyPillar_5F",
+    "Puzzle_SkyPillar_Top"
   ],
   "MG_ImposterPuzzle": [
     "Puzzle_SafariImposters",

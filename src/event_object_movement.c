@@ -273,6 +273,7 @@ static void (*const sMovementTypeCallbacks[])(struct Sprite *) =
     [MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_UP] = MovementType_WalkSlowlyInPlace,
     [MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_LEFT] = MovementType_WalkSlowlyInPlace,
     [MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_RIGHT] = MovementType_WalkSlowlyInPlace,
+    [MOVEMENT_TYPE_WANDER_AROUND_INVISIBLE] = MovementType_WanderAroundInvisible,
 };
 
 static const bool8 sMovementTypeHasRange[NUM_MOVEMENT_TYPES] = {
@@ -317,6 +318,7 @@ static const bool8 sMovementTypeHasRange[NUM_MOVEMENT_TYPES] = {
     [MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE_IN_GRASS] = TRUE,
     [MOVEMENT_TYPE_COPY_PLAYER_COUNTERCLOCKWISE_IN_GRASS] = TRUE,
     [MOVEMENT_TYPE_COPY_PLAYER_CLOCKWISE_IN_GRASS] = TRUE,
+    [MOVEMENT_TYPE_WANDER_AROUND_INVISIBLE] = TRUE,
 };
 
 const u8 gInitialMovementTypeFacingDirections[] = {
@@ -402,6 +404,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
     [MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_UP] = DIR_NORTH,
     [MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_LEFT] = DIR_WEST,
     [MOVEMENT_TYPE_WALK_SLOWLY_IN_PLACE_RIGHT] = DIR_EAST,
+    [MOVEMENT_TYPE_WANDER_AROUND_INVISIBLE] = DIR_SOUTH,
 };
 
 #define OBJ_EVENT_PAL_TAG_BRENDAN                 0x1100
@@ -480,6 +483,8 @@ const u8 gInitialMovementTypeFacingDirections[] = {
 #define OBJ_EVENT_PAL_TAG_TRICK_PUZZLE            0x114B
 #define OBJ_EVENT_PAL_TAG_YOUNGSTER_JOEY          0x114C
 #define OBJ_EVENT_PAL_TAG_TRAINER_AJ              0x114D
+#define OBJ_EVENT_PAL_TAG_WHISMUR                 0x114E
+#define OBJ_EVENT_PAL_TAG_KECLEON                 0x114F
 #define OBJ_EVENT_PAL_TAG_NONE                    0x11FF
 
 #include "data/field_effects/field_effect_object_template_pointers.h"
@@ -559,6 +564,8 @@ static const struct SpritePalette sObjectEventSpritePalettes[] = {
     {gObjectEventPal_Quilava,               OBJ_EVENT_PAL_TAG_QUILAVA},
     {gObjectEventPal_Farfetchd,             OBJ_EVENT_PAL_TAG_FARFETCHD},
     {gObjectEventPal_Pidgey,                OBJ_EVENT_PAL_TAG_PIDGEY},
+    {gObjectEventPal_Whismur,               OBJ_EVENT_PAL_TAG_WHISMUR},
+    {gObjectEventPal_Kecleon,               OBJ_EVENT_PAL_TAG_KECLEON},
     {gObjectEventPal_ProfBirch,             OBJ_EVENT_PAL_TAG_BIRCH},
     {gObjectEventPal_Imposter,              OBJ_EVENT_PAL_TAG_POSSESSED},
     {gObjectEventPal_MetaPedestal,          OBJ_EVENT_PAL_TAG_META_PEDESTAL},
@@ -4600,6 +4607,16 @@ bool8 MovementType_Invisible_Step2(struct ObjectEvent *objectEvent, struct Sprit
     return FALSE;
 }
 
+movement_type_def(MovementType_WanderAroundInvisible, gMovementTypeFuncs_WanderAroundInvisible)
+
+bool8 MovementType_WanderAroundInvisible_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    ClearObjectEventMovement(objectEvent, sprite);
+    objectEvent->invisible = TRUE;
+    sprite->sTypeFuncId = 1;
+    return TRUE;
+}
+
 static void ClearObjectEventMovement(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
     objectEvent->singleMovementActive = FALSE;
@@ -8341,7 +8358,7 @@ static void DoGroundEffects_OnBeginStep(struct ObjectEvent *objEvent, struct Spr
 {
     u32 flags;
 
-    if (objEvent->triggerGroundEffectsOnMove && !objEvent->invisible)
+    if (objEvent->triggerGroundEffectsOnMove && (!objEvent->invisible || objEvent->graphicsId == OBJ_EVENT_GFX_KECLEON))
     {
         flags = 0;
         UpdateObjectEventElevationAndPriority(objEvent, sprite);
@@ -8358,7 +8375,7 @@ static void DoGroundEffects_OnFinishStep(struct ObjectEvent *objEvent, struct Sp
 {
     u32 flags;
 
-    if (objEvent->triggerGroundEffectsOnStop && !objEvent->invisible)
+    if (objEvent->triggerGroundEffectsOnStop && (!objEvent->invisible || objEvent->graphicsId == OBJ_EVENT_GFX_KECLEON))
     {
         flags = 0;
         UpdateObjectEventElevationAndPriority(objEvent, sprite);
