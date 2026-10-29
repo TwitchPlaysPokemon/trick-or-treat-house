@@ -12098,6 +12098,20 @@ const struct Item gItems[] =
         .battleUseFunc = ItemUseInBattle_Medicine,
         .secondaryId = 0,
     },
+	
+
+[ITEM_CHOCO_MEDAL] =
+    {
+        .name = sChocoMedalName,
+        .itemId = ITEM_CHOCO_MEDAL,
+        .price = 0,
+        .description = sChocoMedalDesc,
+        .importance = 1,
+        .registrability = FALSE,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+    },
     
 // #pragma endregion
     

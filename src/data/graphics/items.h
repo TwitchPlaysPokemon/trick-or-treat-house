@@ -2067,3 +2067,6 @@ const u32 gItemIcon_Gem[] = INCBIN_U32("graphics/items/icons/gem.4bpp.lz");
 const u32 gItemIconPalette_Ruby[] = INCBIN_U32("graphics/items/icon_palettes/ruby.gbapal.lz");
 
 const u32 gItemIconPalette_Sapphire[] = INCBIN_U32("graphics/items/icon_palettes/sapphire.gbapal.lz");
+
+const u32 gItemIcon_ChocoMedal[] = INCBIN_U32("graphics/items/icons/choco_medal.4bpp.lz");
+const u32 gItemIconPalette_ChocoMedal[] = INCBIN_U32("graphics/items/icon_palettes/choco_medal.gbapal.lz");

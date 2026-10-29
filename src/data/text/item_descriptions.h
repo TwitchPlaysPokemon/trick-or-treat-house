@@ -5122,4 +5122,10 @@ static const u8 sKaleChipsDesc[] = _(
     "Revives to\n"
     "full HP.");
 
+static const u8 sChocoMedalName[] = _("Chocolate Medal");
+static const u8 sChocoMedalDesc[] = _(
+    "An award made\n"
+    "of high-end\n"
+    "chocolate.");
+
 #pragma endregion
