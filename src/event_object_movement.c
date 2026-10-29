@@ -244,6 +244,7 @@ static void (*const sMovementTypeCallbacks[])(struct Sprite *) =
     [MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_LEFT_UP_RIGHT] = MovementType_WalkSequenceDownLeftUpRight,
     [MOVEMENT_TYPE_WALK_SEQUENCE_LEFT_UP_RIGHT_DOWN] = MovementType_WalkSequenceLeftUpRightDown,
     [MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_DOWN_LEFT_UP] = MovementType_WalkSequenceRightDownLeftUp,
+    [MOVEMENT_TYPE_WALK_SEQUENCE_PORY2] = MovementType_WalkSequencePory2,
     [MOVEMENT_TYPE_COPY_PLAYER] = MovementType_CopyPlayer,
     [MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE] = MovementType_CopyPlayer,
     [MOVEMENT_TYPE_COPY_PLAYER_COUNTERCLOCKWISE] = MovementType_CopyPlayer,
@@ -310,6 +311,7 @@ static const bool8 sMovementTypeHasRange[NUM_MOVEMENT_TYPES] = {
     [MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_LEFT_UP_RIGHT] = TRUE,
     [MOVEMENT_TYPE_WALK_SEQUENCE_LEFT_UP_RIGHT_DOWN] = TRUE,
     [MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_DOWN_LEFT_UP] = TRUE,
+    [MOVEMENT_TYPE_WALK_SEQUENCE_PORY2] = TRUE,
     [MOVEMENT_TYPE_COPY_PLAYER] = TRUE,
     [MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE] = TRUE,
     [MOVEMENT_TYPE_COPY_PLAYER_COUNTERCLOCKWISE] = TRUE,
@@ -375,6 +377,7 @@ const u8 gInitialMovementTypeFacingDirections[] = {
     [MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_LEFT_UP_RIGHT] = DIR_SOUTH,
     [MOVEMENT_TYPE_WALK_SEQUENCE_LEFT_UP_RIGHT_DOWN] = DIR_WEST,
     [MOVEMENT_TYPE_WALK_SEQUENCE_RIGHT_DOWN_LEFT_UP] = DIR_EAST,
+    [MOVEMENT_TYPE_WALK_SEQUENCE_PORY2] = DIR_WEST,
     [MOVEMENT_TYPE_COPY_PLAYER] = DIR_NORTH,
     [MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE] = DIR_SOUTH,
     [MOVEMENT_TYPE_COPY_PLAYER_COUNTERCLOCKWISE] = DIR_WEST,
@@ -3980,6 +3983,34 @@ bool8 MoveNextDirectionInSequence(struct ObjectEvent *objectEvent, struct Sprite
     return TRUE;
 }
 
+bool8 MoveNextDirectionInSequencePory2(struct ObjectEvent *objectEvent, struct Sprite *sprite, u8 *route)
+{
+    u8 collision;
+    u8 movementActionId;
+
+    if (objectEvent->directionSequenceIndex == 4)
+        objectEvent->directionSequenceIndex = 0;
+
+     SetObjectEventDirection(objectEvent, route[objectEvent->directionSequenceIndex]);
+    movementActionId = GetWalkNormalMovementAction(objectEvent->movementDirection);
+    collision = GetCollisionInDirection(objectEvent, objectEvent->movementDirection);
+    if (collision == COLLISION_IMPASSABLE)
+    {
+        objectEvent->directionSequenceIndex++;
+        SetObjectEventDirection(objectEvent, route[objectEvent->directionSequenceIndex]);
+        movementActionId = GetWalkNormalMovementAction(objectEvent->movementDirection);
+        collision = GetCollisionInDirection(objectEvent, objectEvent->movementDirection);
+    }
+
+    if (collision)
+        movementActionId = GetWalkInPlaceNormalMovementAction(objectEvent->facingDirection);
+
+    ObjectEventSetSingleMovement(objectEvent, sprite, movementActionId);
+    objectEvent->singleMovementActive = TRUE;
+    sprite->sTypeFuncId = 2;
+    return TRUE;
+}
+
 bool8 MovementType_WalkSequence_Step2(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
     if (ObjectEventExecSingleMovementAction(objectEvent, sprite))
@@ -4276,6 +4307,15 @@ u8 MovementType_WalkSequenceRightDownLeftUp_Step1(struct ObjectEvent *objectEven
         objectEvent->directionSequenceIndex = 3;
 
     return MoveNextDirectionInSequence(objectEvent, sprite, directions);
+}
+
+movement_type_def(MovementType_WalkSequencePory2, gMovementTypeFuncs_WalkSequencePory2)
+
+u8 MovementType_WalkSequencePory2_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    u8 directions[sizeof(gPory2Directions)];
+    memcpy(directions, gPory2Directions, sizeof(gPory2Directions));
+    return MoveNextDirectionInSequencePory2(objectEvent, sprite, directions);
 }
 
 movement_type_def(MovementType_CopyPlayer, gMovementTypeFuncs_CopyPlayer)

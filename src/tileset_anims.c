@@ -43,6 +43,7 @@ static void TilesetAnim_MauvilleGym(u16);
 static void TilesetAnim_BikeShop(u16);
 static void TilesetAnim_BattlePyramid(u16);
 static void TilesetAnim_BattleDome(u16);
+static void TilesetAnim_CableClub(u16);
 static void QueueAnimTiles_General_Flower(u16);
 static void QueueAnimTiles_General_Water(u16);
 static void QueueAnimTiles_General_SandWaterEdge(u16);
@@ -73,6 +74,7 @@ static void QueueAnimTiles_MauvilleGym_ElectricGates(u16);
 static void QueueAnimTiles_SootopolisGym_Waterfalls(u16);
 static void QueueAnimTiles_EliteFour_GroundLights(u16);
 static void QueueAnimTiles_EliteFour_WallLights(u16);
+static void QueueAnimTiles_CableClub_Warp(u16);
 
 const u16 gTilesetAnims_General_Flower_Frame1[] = INCBIN_U16("data/tilesets/primary/general/anim/flower/1.4bpp");
 const u16 gTilesetAnims_General_Flower_Frame0[] = INCBIN_U16("data/tilesets/primary/general/anim/flower/0.4bpp");
@@ -544,6 +546,18 @@ static const u16 *const sTilesetAnims_BattleDomeFloorLightPals[] = {
     gTilesetAnims_BattleDomePals0_3,
 };
 
+const u16 gTilesetAnims_CableClub_Warp_Frame0[] = INCBIN_U16("data/tilesets/secondary/cable_club/anim/warp/warp-0.4bpp");
+const u16 gTilesetAnims_CableClub_Warp_Frame1[] = INCBIN_U16("data/tilesets/secondary/cable_club/anim/warp/warp-1.4bpp");
+const u16 gTilesetAnims_CableClub_Warp_Frame2[] = INCBIN_U16("data/tilesets/secondary/cable_club/anim/warp/warp-2.4bpp");
+const u16 gTilesetAnims_CableClub_Warp_Frame3[] = INCBIN_U16("data/tilesets/secondary/cable_club/anim/warp/warp-3.4bpp");
+
+const u16 *const gTilesetAnims_CableClub_Warp[] = {
+    gTilesetAnims_CableClub_Warp_Frame0,
+    gTilesetAnims_CableClub_Warp_Frame1,
+    gTilesetAnims_CableClub_Warp_Frame2,
+    gTilesetAnims_CableClub_Warp_Frame3
+};
+
 static void ResetTilesetAnimBuffer(void)
 {
     sTilesetDMA3TransferBufferSize = 0;
@@ -834,6 +848,13 @@ void InitTilesetAnim_BattleDome(void)
     sSecondaryTilesetAnimCallback = TilesetAnim_BattleDome;
 }
 
+void InitTilesetAnim_CableClub(void)
+{
+    sSecondaryTilesetAnimCounter = 0;
+    sSecondaryTilesetAnimCounterMax = sPrimaryTilesetAnimCounterMax;
+    sSecondaryTilesetAnimCallback = TilesetAnim_CableClub;
+}
+
 static void TilesetAnim_Rustboro(u16 timer)
 {
     if (timer % 8 == 0)
@@ -953,6 +974,12 @@ static void TilesetAnim_BattleFrontierOutsideEast(u16 timer)
 {
     if (timer % 8 == 0)
         QueueAnimTiles_BattleFrontierOutsideEast_Flag(timer / 8);
+}
+
+static void TilesetAnim_CableClub(u16 timer)
+{
+    if (timer % 8 == 0)
+        QueueAnimTiles_CableClub_Warp(timer / 8);
 }
 
 static void QueueAnimTiles_General_LandWaterEdge(u16 timer)
@@ -1185,4 +1212,10 @@ static void BlendAnimPalette_BattleDome_FloorLightsNoBlend(u16 timer)
         if (!--sSecondaryTilesetAnimCounterMax)
             sSecondaryTilesetAnimCallback = NULL;
     }
+}
+
+static void QueueAnimTiles_CableClub_Warp(u16 timer)
+{
+    u16 i = timer % ARRAY_COUNT(gTilesetAnims_CableClub_Warp);
+    AppendTilesetAnimToBuffer(gTilesetAnims_CableClub_Warp[i], (u16 *)(BG_VRAM + TILE_OFFSET_4BPP(642)), 4 * TILE_SIZE_4BPP);
 }

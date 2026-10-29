@@ -866,3 +866,7 @@ gText_LinkRecordCouldntBeSaved::
 	.include "data/maps/Puzzle_MirageTower_4F/scripts.inc"
 
 	.include "data/maps/Puzzle_KecleonChase/scripts.inc"
+	
+	.include "data/maps/Puzzle_PushPressPolish/scripts.inc"
+
+	.include "data/maps/Puzzle_PacketLost/scripts.inc"

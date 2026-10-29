@@ -2940,6 +2940,30 @@
       "secondary_tileset": "gTileset_Fortree",
       "border_filepath": "data/layouts/Puzzle_KecleonChase/border.bin",
       "blockdata_filepath": "data/layouts/Puzzle_KecleonChase/map.bin"
+    },
+    {
+      "id": "LAYOUT_PUZZLE_PUSH_PRESS_POLISH",
+      "name": "Puzzle_PushPressPolish_Layout",
+      "width": 20,
+      "height": 14,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_TrickHousePuzzle",
+      "border_filepath": "data/layouts/Puzzle_PushPressPolish/border.bin",
+      "blockdata_filepath": "data/layouts/Puzzle_PushPressPolish/map.bin"
+    },
+    {
+      "id": "LAYOUT_PUZZLE_PACKET_LOST",
+      "name": "Puzzle_PacketLost_Layout",
+      "width": 51,
+      "height": 14,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_CableClub",
+      "border_filepath": "data/layouts/Puzzle_PacketLost/border.bin",
+      "blockdata_filepath": "data/layouts/Puzzle_PacketLost/map.bin"
     }
   ]
 }

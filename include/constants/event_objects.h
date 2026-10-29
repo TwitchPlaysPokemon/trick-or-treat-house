@@ -332,11 +332,12 @@
 #define OBJ_EVENT_GFX_TRAINER_AJ                     0x135
 #define OBJ_EVENT_GFX_LETTER                         0x136
 #define OBJ_EVENT_GFX_TRICK_BATTLE_MAT               0x137
+#define OBJ_EVENT_GFX_UNUSED_WOMAN                   0x138
+#define OBJ_EVENT_GFX_PORYGON2                       0x139
+#define OBJ_EVENT_GFX_WHISMUR                        0x13A
+#define OBJ_EVENT_GFX_NOTHING                        0x13B
 
-#define OBJ_EVENT_GFX_WHISMUR                        0x138
-#define OBJ_EVENT_GFX_NOTHING                        0x139
-
-#define NUM_OBJ_EVENT_GFX                            0x140
+#define NUM_OBJ_EVENT_GFX                            0x13C
 
 // These are dynamic object gfx ids.
 // They correspond with the values of the VAR_OBJ_GFX_ID_X vars.

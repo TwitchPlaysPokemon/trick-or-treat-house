@@ -255,8 +255,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_FARFETCHD] =                &gObjectEventGraphicsInfo_Farfetchd,
     [OBJ_EVENT_GFX_PIDGEY] =                   &gObjectEventGraphicsInfo_Pidgey,
     [OBJ_EVENT_GFX_LETTER] =                   &gObjectEventGraphicsInfo_Letter,
-	
     [OBJ_EVENT_GFX_WHISMUR] =                  &gObjectEventGraphicsInfo_Whismur,
+    [OBJ_EVENT_GFX_PORYGON2] =                 &gObjectEventGraphicsInfo_Porygon2,
     [OBJ_EVENT_GFX_NOTHING] =                  &gObjectEventGraphicsInfo_Nothing,
     
     // Trick House Items
@@ -293,6 +293,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_ALIEN] =                    &gObjectEventGraphicsInfo_Alien,
     [OBJ_EVENT_GFX_IMPOSTER_LASS] =            &gObjectEventGraphicsInfo_ImposterLass,
     [OBJ_EVENT_GFX_TRAINER_AJ] =               &gObjectEventGraphicsInfo_AJ,
+    [OBJ_EVENT_GFX_UNUSED_WOMAN] =             &gObjectEventGraphicsInfo_UnusedWoman,
     
     // Meta Items
     [OBJ_EVENT_GFX_META_ITEM_LAVARIDGE] =      &gObjectEventGraphicsInfo_MetaItem_Lavaridge,

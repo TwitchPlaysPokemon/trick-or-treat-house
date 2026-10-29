@@ -152,7 +152,6 @@
 #define MAP_PUZZLE_IMPOSTER_REFLECTION   (7 | (7 << 8))
 #define MAP_PUZZLE_THIN_ICE              (8 | (7 << 8))
 #define MAP_PUZZLE_BLOCK_PUSHING         (9 | (7 << 8))
-#define MAP_PUZZLE_KECLEON_CHASE         (10 | (7 << 8))
 
 // MG_LostWoodsPuzzles
 #define MAP_PUZZLE_LOST_WOODS1_ENTRANCE (0 | (8 << 8))
@@ -320,6 +319,9 @@
 #define MAP_PUZZLE_TOO_MANY_GATES    (4 | (18 << 8))
 #define MAP_PUZZLE_TOO_MANY_ARROWS   (5 | (18 << 8))
 #define MAP_PUZZLE_TOO_MUCH_POLISH   (6 | (18 << 8))
+#define MAP_PUZZLE_PUSH_PRESS_POLISH (7 | (18 << 8))
+#define MAP_PUZZLE_PACKET_LOST       (8 | (18 << 8))
+#define MAP_PUZZLE_KECLEON_CHASE     (9 | (18 << 8))
 
 #define MAP_GROUPS_COUNT 19
 

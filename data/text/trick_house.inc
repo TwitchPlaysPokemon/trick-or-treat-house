@@ -191,7 +191,7 @@ PuzzleCommon_TextArray_PuzzleIntro_AuthoredByC:
 PuzzleCommon_TextArray_PuzzleIntro_AuthoredByD:
 	.string "This next one is a {PUZZLE_ADJECTIVE}\n"
 	.string "puzzle to be sure.\p"
-	.string "It's one I collected it off someone\n"
+	.string "It's one I collected off someone\n"
 	.string "called {PUZZLE_AUTHOR}.$"
 PuzzleCommon_TextArray_PuzzleIntro_AuthoredByE:
 	.string "This next puzzle I borrowed from one\n"

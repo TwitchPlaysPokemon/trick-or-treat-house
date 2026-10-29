@@ -1,0 +1,155 @@
+raw `
+Puzzle_PushPressPolish_MapScripts::
+	puzzle_info Puzzle_PushPressPolish_Name, Puzzle_PushPressPolish_Author
+	puzzle_adjective Puzzle_PushPressPolish_Adjective
+	puzzle_quip Puzzle_PushPressPolish_Quip
+	puzzle_candylist Puzzle_PushPressPolish_CandyList
+	puzzle_item_prereqs Puzzle_PushPressPolish_PrereqItems
+	.byte 0
+
+Puzzle_PushPressPolish_Name:
+	.string "Push, Press, Polish?$"
+Puzzle_PushPressPolish_Author:
+	.string "MyRattata$"
+Puzzle_PushPressPolish_Adjective:
+	.string "economical$"
+Puzzle_PushPressPolish_Quip:
+	.string "You know, all the ingredients for this\n"
+	.string "puzzle were already here,\l"
+	.string "but the combination makes it fresh…\p"
+	.string "Maybe I'll think about that next time\n"
+	.string "I have to cook?$"
+.align 2
+Puzzle_PushPressPolish_PrereqItems:
+	.2byte ITEM_STRENGTH_ITEM
+	.2byte 0
+Puzzle_PushPressPolish_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_COMMON_03
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_03
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_RARE_01
+	.2byte 0
+	
+@ -----------------------------------------------------
+
+Puzzle_PushPressPolish_MapScript1:
+	compare VAR_TEMP_1, 1
+	call_if_eq Puzzle_PushPressPolish_EventScript_CloseDoor1
+	compare VAR_TEMP_2, 1
+	call_if_eq Puzzle_PushPressPolish_EventScript_CloseDoor2
+	compare VAR_TEMP_3, 1
+	call_if_eq Puzzle_PushPressPolish_EventScript_CloseDoor3
+	end
+
+@ -----------------------------------------------------
+
+Puzzle_PushPressPolish_OnTransition:
+	setvar VAR_TEMP_1, 0
+	setvar VAR_TEMP_2, 0
+	setvar VAR_TEMP_3, 0
+	end
+
+@ -----------------------------------------------------
+
+Puzzle_PushPressPolish_TriggerScript_Button1::
+	lockall
+	setvar VAR_TEMP_1, 1
+	playse SE_PIN
+	call Puzzle_PushPressPolish_EventScript_CloseDoor1
+	special DrawWholeMapView
+	releaseall
+	end
+Puzzle_PushPressPolish_EventScript_CloseDoor1::
+	setmetatile 18, 6, METATILE_TrickHousePuzzle_Button_Pressed, 0
+	setmetatile 1, 11, METATILE_TrickHousePuzzle_Door_Shuttered, 0
+	return
+
+Puzzle_PushPressPolish_TriggerScript_Button2::
+	lockall
+	setvar VAR_TEMP_2, 1
+	playse SE_PIN
+	call Puzzle_PushPressPolish_EventScript_CloseDoor2
+	special DrawWholeMapView
+	releaseall
+	end
+Puzzle_PushPressPolish_EventScript_CloseDoor2::
+	setmetatile 0, 3, METATILE_TrickHousePuzzle_Button_Pressed, 0
+	setmetatile 14, 8, METATILE_TrickHousePuzzle_Door_Shuttered, 0
+	return
+
+Puzzle_PushPressPolish_TriggerScript_Button3::
+	lockall
+	setvar VAR_TEMP_3, 1
+	playse SE_PIN
+	call Puzzle_PushPressPolish_EventScript_CloseDoor3
+	special DrawWholeMapView
+	releaseall
+	end
+Puzzle_PushPressPolish_EventScript_CloseDoor3::
+	setmetatile 7, 2, METATILE_TrickHousePuzzle_Button_Pressed, 0
+	setmetatile 5, 3, METATILE_TrickHousePuzzle_Door_Shuttered, 0
+	return
+
+	
+@ -----------------------------------------------------
+`
+	
+script Puzzle_PushPressPolish_EventScript_SeenAllison {
+	setflag(FLAG_PUZZLE_20)
+	releaseall
+	end
+}
+
+script Puzzle_PushPressPolish_Trainer1 {
+	# 
+	trainerbattle_single (TRAINER_01, 
+			"The exit is right there, but I can't stop\n"
+  			"in time…$", 
+			"I couldn't stop your {POKEMON}, either.$")
+	msgbox ("I think someone dropped something at\n"
+  			"the end of that sliding floor?$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_PushPressPolish_Trainer2 {
+	# 
+	trainerbattle_single (TRAINER_02, 
+			"Hey! The whole puzzle reset when YOU\n"
+			"walked in!\p"
+  			"Why did you do that?$", 
+			"It was the Trick Master? That's…\n"
+  			"Still annoying.$")
+	msgbox ("I was supposed to hang out with Melody,\n"
+  			"but I got stuck in this cramped hallway.", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_PushPressPolish_Trainer3 {
+	# 
+	trainerbattle_single (TRAINER_03, 
+			"Trick floors, trap doors… A perfect place\n"
+  			"for a ninja!$", 
+			"I must return to my training…$")
+	msgbox ("Huh? Halloween?\n"
+			"No, I'm a ninja full-time.$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_PushPressPolish_Trainer4 {
+	# 
+	trainerbattle_single (TRAINER_04,
+			"Have you seen Allison? We were meant\n"
+			"to meet here.$", 
+			"Our {POKEMON} work better together.$")
+	if (flag(FLAG_PUZZLE_20) == TRUE) {
+		msgbox ("Oh, past the nearest trap door?\n"
+				"Thank you.$", MSGBOX_AUTOCLOSE)
+	} else {
+		msgbox ("You haven't seen her? I don't want to\n"
+				"leave too early.$", MSGBOX_AUTOCLOSE)
+	}
+}
+

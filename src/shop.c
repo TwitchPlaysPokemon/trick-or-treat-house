@@ -1013,7 +1013,7 @@ static void Task_BuyHowManyDialogueInit(u8 taskId)
     u16 maxQuantity;
 
     DrawStdFrameWithCustomTileAndPalette(3, FALSE, 1, 13);
-    ConvertIntToDecimalStringN(gStringVar1, quantityInBag, STR_CONV_MODE_RIGHT_ALIGN, MAX_ITEM_DIGITS + 1);
+    ConvertIntToDecimalStringN(gStringVar1, quantityInBag, STR_CONV_MODE_RIGHT_ALIGN, MAX_ITEM_DIGITS + 2);
     StringExpandPlaceholders(gStringBuffer, gText_InBagVar1);
     BuyMenuPrint(3, gStringBuffer, 0, 1, 0, 0);
     tItemCount = 1;

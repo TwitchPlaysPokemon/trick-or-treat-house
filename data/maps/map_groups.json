@@ -167,8 +167,7 @@
     "Puzzle_DiveMaze",
     "Puzzle_ImposterReflection",
     "Puzzle_ThinIce",
-    "Puzzle_BlockPushing",
-    "Puzzle_KecleonChase"
+    "Puzzle_BlockPushing"
   ],
   "MG_LostWoodsPuzzles": [
     "Puzzle_LostWoods1_Entrance",
@@ -335,6 +334,9 @@
     "Puzzle_TooManyBoulders",
     "Puzzle_TooManyGates",
     "Puzzle_TooManyArrows",
-    "Puzzle_TooMuchPolish"
+    "Puzzle_TooMuchPolish",
+    "Puzzle_PushPressPolish",
+    "Puzzle_PacketLost",
+    "Puzzle_KecleonChase"
   ]
 }

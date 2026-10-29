@@ -14,19 +14,19 @@
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
-      "map": "MAP_TRICK_HOUSE_EXT",
+      "direction": "right",
       "offset": 42,
-      "direction": "right"
+      "map": "MAP_TRICK_HOUSE_EXT"
     },
     {
-      "map": "MAP_TRICK_TREAT_SLATEPORT_CITY1",
+      "direction": "down",
       "offset": 31,
-      "direction": "down"
+      "map": "MAP_TRICK_TREAT_SLATEPORT_CITY1"
     },
     {
-      "map": "MAP_TRICK_HOUSE_EXT",
+      "direction": "left",
       "offset": -42,
-      "direction": "left"
+      "map": "MAP_TRICK_HOUSE_EXT"
     }
   ],
   "object_events": [
