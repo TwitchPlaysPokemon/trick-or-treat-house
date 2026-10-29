@@ -50,7 +50,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
-      "script": "NULL",
+      "script": "Puzzle_TooManyArrows_EventScript_Patricia",
       "flag": "0"
     },
     {
@@ -63,11 +63,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
-      "script": "NULL",
+      "script": "Puzzle_TooManyArrows_EventScript_Joshua",
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_GENTLEMAN",
+      "graphics_id": "OBJ_EVENT_GFX_GHETSIS",
       "x": 5,
       "y": 3,
       "elevation": 3,
@@ -76,7 +76,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
-      "script": "NULL",
+      "script": "Puzzle_TooManyArrows_EventScript_Everett",
       "flag": "0"
     },
     {
@@ -89,11 +89,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
-      "script": "NULL",
+      "script": "Puzzle_TooManyArrows_EventScript_Mariela",
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_LASS",
+      "graphics_id": "OBJ_EVENT_GFX_ALIEN",
       "x": 14,
       "y": 2,
       "elevation": 3,
@@ -102,7 +102,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
-      "script": "NULL",
+      "script": "Puzzle_TooManyArrows_EventScript_Alexis",
       "flag": "0"
     },
     {
@@ -115,7 +115,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
-      "script": "NULL",
+      "script": "Puzzle_TooManyArrows_EventScript_Alvaro",
       "flag": "0"
     }
   ],
@@ -159,7 +159,7 @@
       "y": 6,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "Puzzle_TooManyArrows_EventScript_Switch1"
     },
     {
       "type": "sign",
@@ -167,7 +167,7 @@
       "y": 17,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "Puzzle_TooManyArrows_EventScript_Switch2"
     },
     {
       "type": "sign",
@@ -175,7 +175,7 @@
       "y": 21,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "NULL"
+      "script": "Puzzle_TooManyArrows_EventScript_Switch3"
     },
     {
       "type": "hidden_item",
