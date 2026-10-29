@@ -639,8 +639,10 @@
 #define STRINGID_POKEMONATECANDY                      634
 #define STRINGID_PKMNFLEDUSINGSNICKERS                635
 #define STRINGID_INTIMIDATESLAB                       636
+#define STRINGID_PKMNSXINFATUATEDYHEARTS              637
+#define STRINGID_JOKE					              638
 
-#define BATTLESTRINGS_COUNT                           637
+#define BATTLESTRINGS_COUNT                           639
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

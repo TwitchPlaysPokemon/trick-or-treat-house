@@ -9886,3 +9886,11 @@ BattleScript_MagicianActivates::
 BattleScript_ItemDropped::
 	printfromtable gItemDroppedStringIds
 	return
+
+BattleScript_LoveHeartsActivates::
+	status2animation BS_ATTACKER, STATUS2_INFATUATION
+	printstring STRINGID_PKMNSXINFATUATEDYHEARTS
+	waitmessage B_WAIT_TIME_LONG
+	call BattleScript_TryDestinyKnotTarget
+	return
+

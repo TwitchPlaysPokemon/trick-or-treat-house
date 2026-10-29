@@ -876,6 +876,7 @@ ReResolve:
         case ITEM_CANDY_VIOLETCRUMBLE: (*count) *= 3; break;
         case ITEM_CANDY_MALTESERS: (*count) *= 3; break;
         case ITEM_CANDY_GUMMYBEAR: (*count) *= 6; break;
+        case ITEM_CANDY_CARAMBAR: (*count) *= 2; break;
         case ITEM_CANDY_EGGS: (*count) *= 12; break;
         case ITEM_CANDY_EGGDEVILED: (*count) *= 6; break;
         

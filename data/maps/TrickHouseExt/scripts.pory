@@ -184,6 +184,8 @@ TrickHouseExt_OnLoad_Traders_BTable:
 	.4byte TrickHouseExt_OnLoad_Traders_LoadB2
 	.4byte TrickHouseExt_OnLoad_Traders_LoadB3
 	.4byte TrickHouseExt_OnLoad_Traders_LoadB3
+	.4byte TrickHouseExt_OnLoad_Traders_LoadB4
+	.4byte TrickHouseExt_OnLoad_Traders_LoadB4
 	.4byte 0
 TrickHouseExt_OnLoad_Traders_CTable:
 	.4byte TrickHouseExt_OnLoad_Traders_LoadC1
@@ -279,6 +281,12 @@ script TrickHouseExt_OnLoad_Traders_LoadB2 {
 script TrickHouseExt_OnLoad_Traders_LoadB3 {
 	setvar(VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_PIKACHU)
 	setvar(VAR_OBJ_GFX_ID_4, OBJ_EVENT_GFX_AZUMARILL)
+	setvar(VAR_CANDY_TRADE_2, 3)
+	return
+}
+script TrickHouseExt_OnLoad_Traders_LoadB4 {
+	setvar(VAR_OBJ_GFX_ID_3, OBJ_EVENT_GFX_HEX_MANIAC)
+	setvar(VAR_OBJ_GFX_ID_4, OBJ_EVENT_GFX_KIRLIA)
 	setvar(VAR_CANDY_TRADE_2, 3)
 	return
 }
@@ -618,6 +626,17 @@ script TrickHouseExt_EventScript_TraderB1 {
 				"YES! Thank you!\n"
 				"Oh, so sugary… … … …$"
 			)
+		case OBJ_EVENT_GFX_HEX_MANIAC:
+			offertrade(
+				ITEM_CANDY_DUBBLEBUBBLE, 1,
+				ITEM_CANDY_STARBURST, 1,
+				"Double, double, toil and trouble,\n"
+				"Trade your Prune for Dubble Bubble?$",
+				"For a charm of powerful trouble,\n"
+				"I must trade this Dubble Bubble…$",
+				"Finally! Now that I have a prune, I can\n"
+				"stop rhyming.$"
+			)
 		default:
 			msgbox("Object event$", MSGBOX_NPC)
 	}
@@ -639,6 +658,8 @@ script TrickHouseExt_EventScript_TraderB2 {
 					"My mom made it for me!\p"
 					"My sister made her own PIKACHU\n"
 					"costume though.$", MSGBOX_NPC)
+		case OBJ_EVENT_GFX_KIRLIA:
+			msgbox("Kirliii!", MSGBOX_NPC)
 		default:
 			msgbox("Object event$", MSGBOX_NPC)
 	}

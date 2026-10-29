@@ -12098,9 +12098,145 @@ const struct Item gItems[] =
         .battleUseFunc = ItemUseInBattle_Medicine,
         .secondaryId = 0,
     },
-	
+    
+    [ITEM_CANDY_LOVEHEARTS] =
+    { // Infatuates on Contact (Cute Charm)
+        .name = sLoveHeartsName,
+        .quantum = sQuantum_Packet,
+        .itemId = ITEM_CANDY_LOVEHEARTS,
+        .holdEffect = HOLD_EFFECT_INFATUATION,
+        .price = CANDY_COST(1500),
+        .description = sLoveHeartsDesc,
+        .keepItem = TRUE,
+        .isCandy = TRUE,
+        .pocket = POCKET_CANDY,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_CANDY_DUBBLEBUBBLE] =
+    { // Grip Claw
+        .name = sDubbleBubbleName,
+        .quantum = sQuantum_Piece,
+        .itemId = ITEM_CANDY_DUBBLEBUBBLE,
+        .price = CANDY_COST(500),
+        .holdEffect = HOLD_EFFECT_GRIP_CLAW,
+        .holdEffectParam = 10,
+        .description = sDubbleBubbleDesc,
+        .keepItem = TRUE,
+        .isCandy = TRUE,
+        .pocket = POCKET_CANDY,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_CANDY_DRUMSTICK] =
+    {   // +30HP
+        .name = sDrumstickName,
+        .itemId = ITEM_CANDY_DRUMSTICK,
+        .price = CANDY_COST(300),
+        .itemEffect = gItemEffect_HealHP30,
+        .holdEffect = HOLD_EFFECT_RESTORE_HP,
+        .holdEffectParam = 30,
+        .description = sDrumstickDesc,
+        .keepItem = TRUE,
+        .isCandy = TRUE,
+        .pocket = POCKET_CANDY,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .battleUseFunc = ItemUseInBattle_Medicine,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_CANDY_CRUNCHIE] =
+    { // +50HP
+        .name = sCrunchieName,
+        .quantum = sQuantum_Bar,
+        .itemId = ITEM_CANDY_CRUNCHIE,
+        .price = CANDY_COST(400),
+        .itemEffect = gItemEffect_HealHP50,
+        .holdEffect = HOLD_EFFECT_RESTORE_HP,
+        .holdEffectParam = 50,
+        .description = sCrunchieDesc,
+        .keepItem = TRUE,
+        .isCandy = TRUE,
+        .pocket = POCKET_CANDY,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_Medicine,
+        .battleUsage = 1,
+        .battleUseFunc = ItemUseInBattle_Medicine,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_CANDY_POPROCKS] =
+    {   // Adrenaline Orb
+        .name = sPopRocksName,
+        .quantum = sQuantum_Packet,
+        .itemId = ITEM_CANDY_POPROCKS,
+        .price = CANDY_COST(600),
+        .holdEffect = HOLD_EFFECT_ADRENALINE_ORB,
+        .description = sPopRocksDesc,
+        .keepItem = TRUE,
+        .isCandy = TRUE,
+        .pocket = POCKET_CANDY,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+    
+    [ITEM_CANDY_MAOAMBLOXX] =
+    {   // Weaker Strong Jaw
+        .name = sMaoamBloxxName,
+        .quantum = sQuantum_Packet,
+        .itemId = ITEM_CANDY_MAOAMBLOXX,
+        .price = CANDY_COST(700),
+        .holdEffect = HOLD_EFFECT_BITE_BOOST,
+        .description = sMaoamBloxxDesc,
+        .keepItem = TRUE,
+        .isCandy = TRUE,
+        .pocket = POCKET_CANDY,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
 
-[ITEM_CHOCO_MEDAL] =
+    [ITEM_CANDY_CARAMBAR] =
+    {
+        .name = sCarambarName,
+        .itemId = ITEM_CANDY_CARAMBAR,
+        .price = CANDY_COST(150),
+        .description = sCarambarDesc,
+        .keepItem = TRUE,
+        .pocket = POCKET_CANDY,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .battleUsage = ITEM_B_USE_OTHER,
+        .itemEffect = gItemEffect_Joke,
+        .battleUseFunc = ItemUseInBattle_StatIncrease,
+        .flingPower = 30,
+    },
+
+    [ITEM_CANDY_CROCO] =
+    {   // Raise crit rate when eaten in battle
+        .name = sCrocoName,
+        .quantum = sQuantum_Packet,
+        .itemId = ITEM_CANDY_CROCO,
+        .price = CANDY_COST(150),
+        .holdEffect = HOLD_EFFECT_MICLE_BERRY,
+        .holdEffectParam = 1,
+        .description = sCrocoDesc,
+        .keepItem = TRUE,
+        .isCandy = TRUE,
+        .pocket = POCKET_CANDY,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = 0,
+    },
+	
+	[ITEM_CHOCO_MEDAL] =
     {
         .name = sChocoMedalName,
         .itemId = ITEM_CHOCO_MEDAL,
@@ -12111,7 +12247,7 @@ const struct Item gItems[] =
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-    },
+    }
     
 // #pragma endregion
     
@@ -12131,6 +12267,9 @@ static const u16 gItemTable_CandyAbundant[] = {
     ITEM_CANDY_KINGCHOCNUT,
     ITEM_CANDY_GUMMYBEAR,
     ITEM_SWEET_HEART,
+    ITEM_CANDY_DRUMSTICK,
+    ITEM_CANDY_CARAMBAR,
+    ITEM_CANDY_CROCO,
 };
 static const u16 gItemTable_CandyCommon[] = {
     ITEM_CANDY_CHOCOWHITE,
@@ -12143,6 +12282,8 @@ static const u16 gItemTable_CandyCommon[] = {
     ITEM_CANDY_MALTESERS,
     ITEM_CANDY_CADBURYCREME,
     ITEM_CANDY_OREO,
+    ITEM_CANDY_CRUNCHIE,
+    ITEM_CANDY_POPROCKS,
     // ITEM_CANDY_EGGS,
 };
 static const u16 gItemTable_CandyUncommon[] = {
@@ -12154,6 +12295,8 @@ static const u16 gItemTable_CandyUncommon[] = {
     ITEM_CANDY_KITKAT,
     ITEM_CANDY_GALAXY,
     ITEM_CANDY_PIXIESTICK,
+    ITEM_CANDY_DUBBLEBUBBLE,
+    ITEM_CANDY_MAOAMBLOXX,
     // ITEM_CANDY_EGGDEVILED,
 };
 static const u16 gItemTable_CandyRare[] = {
@@ -12163,6 +12306,7 @@ static const u16 gItemTable_CandyRare[] = {
     ITEM_CANDY_BLACKTHUNDER,
     ITEM_CANDY_TOBLERONE,
     ITEM_CANDY_FERREROROCHER,
+    ITEM_CANDY_LOVEHEARTS,
     ITEM_MAX_HONEY,
     ITEM_EXP_CANDY_M,
 };

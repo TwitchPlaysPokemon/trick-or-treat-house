@@ -313,13 +313,13 @@
 #define MAP_PUZZLE_SOOTOPOLIS_GYM           (11 | (17 << 8))
 
 // MG_SingleMapPuzzles2026
-#define MAP_PUZZLE_RACCONNAISSANCE   (0 | (16 << 8))
-#define MAP_PUZZLE_TOO_HARD_TO_SEE   (1 | (16 << 8))
-#define MAP_PUZZLE_TOO_MANY_PATHS    (2 | (16 << 8))
-#define MAP_PUZZLE_TOO_MANY_BOULDERS (3 | (16 << 8))
-#define MAP_PUZZLE_TOO_MANY_GATES    (4 | (16 << 8))
-#define MAP_PUZZLE_TOO_MANY_ARROWS   (5 | (16 << 8))
-#define MAP_PUZZLE_TOO_MUCH_POLISH   (6 | (16 << 8))
+#define MAP_PUZZLE_RACCONNAISSANCE   (0 | (18 << 8))
+#define MAP_PUZZLE_TOO_HARD_TO_SEE   (1 | (18 << 8))
+#define MAP_PUZZLE_TOO_MANY_PATHS    (2 | (18 << 8))
+#define MAP_PUZZLE_TOO_MANY_BOULDERS (3 | (18 << 8))
+#define MAP_PUZZLE_TOO_MANY_GATES    (4 | (18 << 8))
+#define MAP_PUZZLE_TOO_MANY_ARROWS   (5 | (18 << 8))
+#define MAP_PUZZLE_TOO_MUCH_POLISH   (6 | (18 << 8))
 
 #define MAP_GROUPS_COUNT 19
 

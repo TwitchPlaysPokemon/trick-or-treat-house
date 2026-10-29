@@ -900,6 +900,14 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_CANDY_RAISIN] =         {gItemIconPic_raisin, gItemIconPal_raisin},
     [ITEM_CANDY_KALE] =           {gItemIconPic_kale, gItemIconPal_kale},
     [ITEM_CANDY_GALAXY] =         {gItemIconPic_galaxy, gItemIconPal_galaxy},
+    [ITEM_CANDY_LOVEHEARTS] =     {gItemIconPic_lovehearts, gItemIconPal_lovehearts},
+    [ITEM_CANDY_DUBBLEBUBBLE] =   {gItemIconPic_dubblebubble, gItemIconPal_dubblebubble},
+    [ITEM_CANDY_DRUMSTICK] =      {gItemIconPic_drumstick, gItemIconPal_drumstick},
+    [ITEM_CANDY_CRUNCHIE] =       {gItemIconPic_crunchie, gItemIconPal_crunchie},
+    [ITEM_CANDY_POPROCKS] =       {gItemIconPic_poprocks, gItemIconPal_poprocks},
+    [ITEM_CANDY_MAOAMBLOXX] =     {gItemIconPic_maoambloxx, gItemIconPal_maoambloxx},
+    [ITEM_CANDY_CARAMBAR] =       {gItemIconPic_carambar, gItemIconPal_carambar},
+    [ITEM_CANDY_CROCO] =       {gItemIconPic_croco, gItemIconPal_croco},
 	
     [ITEM_CHOCO_MEDAL] =          {gItemIcon_ChocoMedal, gItemIconPalette_ChocoMedal},
     

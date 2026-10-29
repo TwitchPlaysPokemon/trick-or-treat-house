@@ -5121,7 +5121,55 @@ static const u8 sKaleChipsDesc[] = _(
     "Single serving.\n"
     "Revives to\n"
     "full HP.");
+	
+static const u8 sLoveHeartsName[] = _("Love Hearts");
+static const u8 sLoveHeartsDesc[] = _(
+    "Left over..?\n"
+    "Infatuation\n"
+    "on contact.");
 
+static const u8 sDubbleBubbleName[] = _("Dubble Bubble");
+static const u8 sDubbleBubbleDesc[] = _(
+    "Gets Sticky.\n"
+    "Binding moves go\n"
+    "on for longer.");
+
+static const u8 sDrumstickName[] = _("Drumstick");
+static const u8 sDrumstickDesc[] = _(
+    "Chewy Lollipop\n"
+    "Restores HP\n"
+    "by 30 points.");
+
+static const u8 sCrunchieName[] = _("Crunchie");
+static const u8 sCrunchieDesc[] = _(
+    "Honeycomb with\n"
+    "a chocolate coat.\n"
+    "Heals 50HP.");
+
+static const u8 sPopRocksName[] = _("Pop Rocks");
+static const u8 sPopRocksDesc[] = _(
+    "Popping candy.\n"
+    "When intimidated,\n"
+    "speed is boosted.");
+
+static const u8 sMaoamBloxxName[] = _("Maoam Bloxx");
+static const u8 sMaoamBloxxDesc[] = _(
+    "5 Chews.\n"
+    "Boosts power of\n"
+    "biting moves.");
+
+static const u8 sCarambarName[] = _("Carambar");
+static const u8 sCarambarDesc[] = _(
+    "Caramel Candy.\n"
+    "Has a joke\n"
+    "on the wrapper.");
+
+static const u8 sCrocoName[] = _("Haribo Croco");
+static const u8 sCrocoDesc[] = _(
+    "Sandile-like gummy.\n"
+    "Raises accuracy of\n"
+    "a move one time.");
+	
 static const u8 sChocoMedalName[] = _("Chocolate Medal");
 static const u8 sChocoMedalDesc[] = _(
     "An award made\n"

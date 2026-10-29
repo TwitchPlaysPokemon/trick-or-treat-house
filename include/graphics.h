@@ -7563,6 +7563,22 @@ extern const u32 gItemIconPic_blackthunder[];
 extern const u32 gItemIconPal_blackthunder[];
 extern const u32 gItemIconPic_raisin[];
 extern const u32 gItemIconPal_raisin[];
+extern const u32 gItemIconPic_lovehearts[];
+extern const u32 gItemIconPal_lovehearts[];
+extern const u32 gItemIconPic_dubblebubble[];
+extern const u32 gItemIconPal_dubblebubble[];
+extern const u32 gItemIconPic_drumstick[];
+extern const u32 gItemIconPal_drumstick[];
+extern const u32 gItemIconPic_crunchie[];
+extern const u32 gItemIconPal_crunchie[];
+extern const u32 gItemIconPic_poprocks[];
+extern const u32 gItemIconPal_poprocks[];
+extern const u32 gItemIconPic_maoambloxx[];
+extern const u32 gItemIconPal_maoambloxx[];
+extern const u32 gItemIconPic_carambar[];
+extern const u32 gItemIconPal_carambar[];
+extern const u32 gItemIconPic_croco[];
+extern const u32 gItemIconPal_croco[];
 
 // Poké Balls
 extern const u32 gItemIcon_PokeBall[];
