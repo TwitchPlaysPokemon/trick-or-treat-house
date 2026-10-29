@@ -36,7 +36,7 @@
 
 #define TRAINERS_PERMAP_END      32
 
-#define TRAINER_32               32
+#define TRAINER_TRICK_MASTER     32
 #define TRAINER_33               33
 #define TRAINER_34               34
 #define TRAINER_35               35

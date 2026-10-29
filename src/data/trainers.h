@@ -59,5 +59,17 @@ const struct Trainer gTrainers[] = {
     // Inset non-map-based trainers below. The below will be used for
     // fighting trainers outside the trick house and trainers in Slateport,
     // as well as fighting friends when that opportunity appears
+	
+    [TRAINER_TRICK_MASTER] =
+    {
+        .trainerClass = TRAINER_CLASS_TRICK_MASTER,
+        .encounterMusic_gender = ENC_MUS_EN_FRONTIER,
+        .trainerPic = TRAINER_PIC_YOUNGSTER,
+        .trainerName = _("Master"),
+        .items = {},
+        .doubleBattle = FALSE,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PREFER_STATUS_MOVES,
+        .party = ITEM_CUSTOM_MOVES(sParty_Joey),
+    },
 
 };

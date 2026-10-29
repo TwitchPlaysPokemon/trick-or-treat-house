@@ -400,6 +400,7 @@
 #define TRAINER_CLASS_SECURITY       0x4E
 #define TRAINER_CLASS_PIKAKID        0x4F
 #define TRAINER_CLASS_SAGE_BORT      0x50
+#define TRAINER_CLASS_TRICK_MASTER   0x51
 
 #define ENC_MUS_EM_MALE               0 // standard male encounter music
 #define ENC_MUS_EM_FEMALE             1 // standard female encounter music
