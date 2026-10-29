@@ -243,7 +243,7 @@ TrickHouseRestroom_EventScript_Kecleon::
 	lock
 	faceplayer
 	checkitem ITEM_DEVON_SCOPE
-	goto_if_eq VAR_RESULT, FALSE, TrickHouseRestroom_EventScript_AskUseDevonScope
+	goto_if_eq VAR_RESULT, TRUE, TrickHouseRestroom_EventScript_AskUseDevonScope
 	msgbox TrickHouseRestroom_Text_SomethingUnseeable, MSGBOX_DEFAULT
 	release
 	end

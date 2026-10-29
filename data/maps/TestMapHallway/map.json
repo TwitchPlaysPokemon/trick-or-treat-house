@@ -169,6 +169,32 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Common_EventScript_ItemSurf",
       "flag": "FLAG_PICKED_UP_SURF_ITEM"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_KECLEON",
+      "x": 17,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_ROTATE_CLOCKWISE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "0",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TestMapHallway_GiveTestItems7",
+      "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HEX_MANIAC",
+      "x": 19,
+      "y": 4,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_ROTATE_CLOCKWISE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "0",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TestMapHallway_GiveTestItems8",
+      "flag": "0"
     }
   ],
   "warp_events": [

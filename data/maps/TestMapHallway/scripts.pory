@@ -77,6 +77,14 @@ script TestMapHallway_GiveTestItems6 {
 	finditem_std(ITEM_SOFT_SAND, 3)
 }
 
+script TestMapHallway_GiveTestItems7 {
+	finditem_std(ITEM_DEVON_SCOPE, 1)
+}
+
+script TestMapHallway_GiveTestItems8 {
+	finditem_std(ITEM_RARE_CANDY, 30)
+}
+
 script TestMapHallway_ReturnToHallway_EntranceObject {
 	lock
 	// Check for facing the correct direction

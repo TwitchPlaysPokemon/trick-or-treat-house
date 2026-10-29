@@ -69,7 +69,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PREFER_STATUS_MOVES,
-        .party = ITEM_CUSTOM_MOVES(sParty_Joey),
+        .party = ITEM_CUSTOM_MOVES(sParty_TrickMaster),
     },
 
 };
