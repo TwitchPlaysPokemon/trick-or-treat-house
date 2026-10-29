@@ -1,1 +1,97 @@
-mapscripts Puzzle_TooManyBoulders_MapScripts {}
+raw `
+Puzzle_TooManyBoulders_MapScripts::
+	puzzle_info Puzzle_TooManyBoulders_Name, Puzzle_TooManyBoulders_Author
+	puzzle_adjective Puzzle_TooManyBoulders_Adjective
+	puzzle_quip Puzzle_TooManyBoulders_Quip
+    puzzle_metavars Puzzle_TooManyBoulders_Variables
+	puzzle_candylist Puzzle_TooManyBoulders_CandyList
+	puzzle_item_prereqs Puzzle_TooManyBoulders_PrereqItems
+	.byte 0
+
+Puzzle_TooManyBoulders_Name:
+	.string "Too Many Boulders$"
+Puzzle_TooManyBoulders_Author:
+	.string "M4_Used_Rollout$"
+Puzzle_TooManyBoulders_Adjective:
+	.string "HEAVY$"
+Puzzle_TooManyBoulders_Quip:
+	.string "Meh, I dunno about this one.\p"
+	.string "The solution was too simple.\p"
+	.string "It also seems too derivative.\p"
+	.string "I think the part around the scroll\n"
+	.string "ripped off Seafloor Cavern.$"
+.align 2
+Puzzle_TooManyBoulders_PrereqItems:
+	.2byte ITEM_STRENGTH_ITEM
+	.2byte 0
+Puzzle_TooManyBoulders_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_01
+    .2byte FLAG_CANDY_UNCOMMON_02
+    .2byte FLAG_CANDY_HEALTHY_01
+    .2byte FLAG_CANDY_HEALTHY_02
+    .2byte FLAG_CANDY_HEALTHY_03
+    .2byte FLAG_CANDY_HEALTHY_04
+	.2byte FLAG_CANDY_RARE_01
+	.2byte 0
+Puzzle_TooManyBoulders_Variables:
+	.2byte VAR_QUIP_PERSON,  OBJ_EVENT_GFX_SCHOOL_KID_M
+	.2byte 0
+
+@ -----------------------------------------------------
+
+Puzzle_TooManyBoulders_EventScript_Cora::
+	trainerbattle_single TRAINER_01, Puzzle_TooManyBoulders_Text_CoraIntro, Puzzle_TooManyBoulders_Text_CoraDefeat
+	msgbox Puzzle_TooManyBoulders_Text_CoraPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooManyBoulders_EventScript_Yuji::
+	trainerbattle_single TRAINER_02, Puzzle_TooManyBoulders_Text_YujiIntro, Puzzle_TooManyBoulders_Text_YujiDefeat
+	msgbox Puzzle_TooManyBoulders_Text_YujiPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooManyBoulders_EventScript_Paula::
+	trainerbattle_single TRAINER_03, Puzzle_TooManyBoulders_Text_PaulaIntro, Puzzle_TooManyBoulders_Text_PaulaDefeat
+	msgbox Puzzle_TooManyBoulders_Text_PaulaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Puzzle_TooManyBoulders_Text_CoraIntro:
+	.string "It's too much bother to think this out.\n"
+	.string "I only wanted to battle!$"
+
+Puzzle_TooManyBoulders_Text_CoraDefeat:
+	.string "Even though I lost, I still like battling\n"
+	.string "the best!$"
+
+Puzzle_TooManyBoulders_Text_CoraPostBattle:
+	.string "Wouldn't you agree? You would go\n"
+	.string "anywhere if Trainers were there.$"
+
+Puzzle_TooManyBoulders_Text_YujiIntro:
+	.string "Heh! Boulders like this, I can brush\n"
+	.string "aside with one finger!$"
+
+Puzzle_TooManyBoulders_Text_YujiDefeat:
+	.string "I can push boulders, but I can't solve\n"
+	.string "the puzzle…$"
+
+Puzzle_TooManyBoulders_Text_YujiPostBattle:
+	.string "It's not good enough to be brawny…\n"
+	.string "You have to use your head. Be brainy!$"
+
+Puzzle_TooManyBoulders_Text_PaulaIntro:
+	.string "The Trick House is getting trickier,\n"
+	.string "isn't it?$"
+
+Puzzle_TooManyBoulders_Text_PaulaDefeat:
+	.string "Aaak!$"
+
+Puzzle_TooManyBoulders_Text_PaulaPostBattle:
+	.string "Has anyone made it to the end?\n"
+    .string "IS there an end?$"
+`
