@@ -2964,6 +2964,66 @@
       "secondary_tileset": "gTileset_CableClub",
       "border_filepath": "data/layouts/Puzzle_PacketLost/border.bin",
       "blockdata_filepath": "data/layouts/Puzzle_PacketLost/map.bin"
+    },
+    {
+      "id": "LAYOUT_PUZZLE_FORGOTTEN_MIRAGE",
+      "name": "Puzzle_Forgotten_Mirage_Layout",
+      "width": 64,
+      "height": 40,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Autumn",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Puzzle_Forgotten_Mirage/border.bin",
+      "blockdata_filepath": "data/layouts/Puzzle_Forgotten_Mirage/map.bin"
+    },
+    {
+      "id": "LAYOUT_PUZZLE_FORGOTTEN_MIRAGE1F",
+      "name": "Puzzle_Forgotten_Mirage1F_Layout",
+      "width": 40,
+      "height": 20,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Autumn",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Puzzle_Forgotten_Mirage1F/border.bin",
+      "blockdata_filepath": "data/layouts/Puzzle_Forgotten_Mirage1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PUZZLE_FORGOTTEN_MIRAGE2F",
+      "name": "Puzzle_Forgotten_Mirage2F_Layout",
+      "width": 24,
+      "height": 19,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Autumn",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Puzzle_Forgotten_Mirage2F/border.bin",
+      "blockdata_filepath": "data/layouts/Puzzle_Forgotten_Mirage2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PUZZLE_FORGOTTEN_MIRAGE3F",
+      "name": "Puzzle_Forgotten_Mirage3F_Layout",
+      "width": 32,
+      "height": 18,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Autumn",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Puzzle_Forgotten_Mirage3F/border.bin",
+      "blockdata_filepath": "data/layouts/Puzzle_Forgotten_Mirage3F/map.bin"
+    },
+    {
+      "id": "LAYOUT_PUZZLE_FORGOTTEN_MIRAGE2F2",
+      "name": "Puzzle_Forgotten_Mirage2F2_Layout",
+      "width": 19,
+      "height": 20,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Autumn",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Puzzle_Forgotten_Mirage2F2/border.bin",
+      "blockdata_filepath": "data/layouts/Puzzle_Forgotten_Mirage2F2/map.bin"
     }
   ]
 }

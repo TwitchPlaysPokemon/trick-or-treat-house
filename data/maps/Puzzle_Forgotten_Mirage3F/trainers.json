@@ -1,0 +1,97 @@
+[
+	{
+		"class": "FROGGER",
+		"music": "ENC_MUS_EM_SWIMMER",
+		"name": "Glenn",
+		"party": [
+			{
+				"species": "SPECIES_PALPITOAD",
+				"level": 26
+			}
+		]
+	},
+	{
+		"class": "MERMAID",
+		"female": true,
+		"music": "ENC_MUS_EM_SWIMMER",
+		"name": "Sylvia",
+		"party": [
+			{
+				"species": "SPECIES_VAPOREON",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "MASKED_BOY",
+		"name": "Casval",
+		"aiFlags": "AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT",
+		"party": [
+			{
+				"species": "SPECIES_VOLBEAT",
+				"item" : "ITEM_CANDY_CHOCOSLAB",
+				"level": 25
+			},
+			{
+				"species": "SPECIES_SHROOMISH",
+				"item" : "ITEM_CANDY_CRUNCHIE",
+				"level": 24
+			},
+			{
+				"species": "SPECIES_DUSKULL",
+				"item" : "ITEM_CANDY_LEMONDROP",
+				"level": 26
+			}
+		]
+	},
+	{
+		"class": "HEX_MANIAC",
+		"female": true,
+		"name": "Ashlynn",
+		"music": "ENC_MUS_EM_SUSPICIOUS",
+		"party": [
+			{
+				"species": "SPECIES_MISDREAVUS",
+				"level": 26
+			},
+			{
+				"species": "SPECIES_SWABLU",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "TARZAN",
+		"name": "Greg",
+		"music": "ENC_MUS_EM_INTENSE",
+		"party": [
+			{
+				"species": "SPECIES_MAROWAK",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "PKMN_BREEDER",
+		"pic": "POKEMON_BREEDER_M",
+		"name": "Robert",
+		"party": [
+			{
+				"species": "SPECIES_GLISCOR",
+				"level": 28
+			}
+		]
+	},
+	{
+		"class": "PKMN_BREEDER",
+		"female": true,
+		"pic": "POKEMON_BREEDER_F",
+		"name": "Barbara",
+		"party": [
+			{
+				"species": "SPECIES_FLETCHINDER",
+				"level": 27
+			}
+		]
+	}
+]

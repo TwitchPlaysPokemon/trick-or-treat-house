@@ -1,0 +1,87 @@
+raw `
+Puzzle_Forgotten_Mirage_MapScripts::
+	puzzle_info Puzzle_Forgotten_Mirage_Name, CommonAuthor_GameFreak, PUZZLE_FLAG_GAME_FREAK
+	puzzle_custom_intro Puzzle_Forgotten_Mirage_Intro
+	puzzle_quip Puzzle_Forgotten_Mirage_Quip
+	puzzle_metavars Puzzle_Forgotten_Mirage_Variables
+	puzzle_candylist Puzzle_Forgotten_Mirage_CandyList
+	puzzle_devcommentary Puzzle_Forgotten_Mirage_DevCommentary
+	.byte 0
+
+Puzzle_Forgotten_Mirage_Name:
+	.string "Forgotten Mirage$"
+Puzzle_Forgotten_Mirage_Intro:
+	.string "Ah ha! Back again?\p"
+	.string "This puzzle… You have heard of the\n"
+	.string "Mirage Island before, yes?\p"
+	.string "An island that appears for just a day\n"
+	.string "before vanishing, filled with untold\l"
+	.string "wonders in the middle of the sea!\p"
+	.string "Well, in my travels, I heard tell\n"
+	.string "of other so-called Mirage Spots, and\l"
+	.string "this one I tracked down hadn't been\l"
+	.string "seen for…\p" 
+	.string "Almost 25 years, so I hear!\n"
+	.string "So, of course, I had to make it a puzzle.\p"
+	.string "Good luck!$"
+Puzzle_Forgotten_Mirage_Quip:
+	.string "I swear, I saw some sort of flaming bird\n"
+	.string "flying above that island.$"
+.align 2
+Puzzle_Forgotten_Mirage_Variables:
+	.2byte VAR_QUIP_PERSON,  OBJ_EVENT_GFX_MANIAC
+	.2byte VAR_DEV_COMMENTATOR,  OBJ_EVENT_GFX_PORYGON2
+	.2byte 0
+Puzzle_Forgotten_Mirage_DevCommentary:
+	.string "Yeah, so the outside of this\n"
+	.string "island is from the RS dev history.\p"
+	.string "The insides were all blank caves,\n"
+	.string "so that had to be built.\p"
+	.string "Can you believe no {POKEMON} that\n"
+	.string "live in caves were revealed before\l"
+	.string "the month RS came out?\p"
+	.string "That's why they're empty.$"
+.align 2
+Puzzle_Forgotten_Mirage_CandyList:
+	.2byte FLAG_CANDY_ABUNDANT_01
+	.2byte FLAG_CANDY_ABUNDANT_02
+	.2byte FLAG_CANDY_ABUNDANT_03
+	.2byte FLAG_CANDY_ABUNDANT_04
+	.2byte FLAG_CANDY_ABUNDANT_05
+	.2byte FLAG_CANDY_ABUNDANT_06
+	.2byte FLAG_CANDY_COMMON_01
+	.2byte FLAG_CANDY_COMMON_02
+	.2byte FLAG_CANDY_COMMON_03
+	.2byte FLAG_CANDY_COMMON_04
+	.2byte FLAG_CANDY_COMMON_05
+	.2byte FLAG_CANDY_COMMON_06
+	.2byte FLAG_CANDY_UNCOMMON_01
+	.2byte FLAG_CANDY_UNCOMMON_02
+	.2byte FLAG_CANDY_UNCOMMON_03
+	.2byte FLAG_CANDY_UNCOMMON_04
+	.2byte FLAG_CANDY_UNCOMMON_05
+	.2byte FLAG_CANDY_RARE_01
+	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_HEALTHY_02
+	.2byte FLAG_CANDY_HEALTHY_03
+	.2byte 0
+`
+// ----------------------------------------------------
+
+script Puzzle_Forgotten_Mirage_EventScript_Frog {
+	trainerbattle_single (TRAINER_01, 
+			"Buddy, look at this place!\n"
+			"I wasn't expecting it to be so nice!$",
+			"I'm not even mad, I am going to have a\n"
+			"great time here.$")
+	msgbox ("I wasn't expecting it to be so warm out!$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_Forgotten_Mirage_EventScript_Mermaid {
+	trainerbattle_single (TRAINER_02, 
+			"Hey! Of course I can swim in this costume!\n"
+			"That's the whole point.$",
+			"Uh… Was that a fin?$")
+	msgbox ("I… Doubt I can outswim a Sharpedo if I'm\n"
+			"wearing this, though.$", MSGBOX_AUTOCLOSE)
+}

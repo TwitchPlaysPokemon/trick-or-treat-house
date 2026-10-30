@@ -1712,6 +1712,105 @@
               }
             ]
           }
+        },
+		{
+          "map": "MAP_PUZZLE_FORGOTTEN_MIRAGE",
+          "base_label": "gPuzzle_Forgotten_Mirage0",
+          "land_mons": {
+            "encounter_rate": 40,
+            "mons": [
+              {
+                "min_level": 5,
+                "max_level": 15,
+                "species": "SPECIES_WYNAUT"
+              },
+              {
+                "min_level": 20,
+                "max_level": 24,
+                "species": "SPECIES_DUSKULL"
+              },
+              {
+                "min_level": 15,
+                "max_level": 24,
+                "species": "SPECIES_ZIGZAGOON"
+              },
+              {
+                "min_level": 15,
+                "max_level": 24,
+                "species": "SPECIES_POOCHYENA"
+              },
+              {
+                "min_level": 23,
+                "max_level": 26,
+                "species": "SPECIES_SHROOMISH"
+              },
+              {
+                "min_level": 24,
+                "max_level": 27,
+                "species": "SPECIES_VOLBEAT"
+              },
+              {
+                "min_level": 20,
+                "max_level": 25,
+                "species": "SPECIES_TAILLOW"
+              },
+              {
+                "min_level": 20,
+                "max_level": 25,
+                "species": "SPECIES_TAILLOW"
+              },
+              {
+                "min_level": 20,
+                "max_level": 30,
+                "species": "SPECIES_KECLEON"
+              },
+              {
+                "min_level": 10,
+                "max_level": 20,
+                "species": "SPECIES_AZURILL"
+              },
+              {
+                "min_level": 25,
+                "max_level": 50,
+                "species": "SPECIES_KECLEON"
+              },
+              {
+                "min_level": 5,
+                "max_level": 30,
+                "species": "SPECIES_AZURILL"
+              }
+            ]
+          },
+          "water_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 18,
+                "max_level": 25,
+                "species": "SPECIES_PELIPPER"
+              },
+              {
+                "min_level": 15,
+                "max_level": 25,
+                "species": "SPECIES_WAILMER"
+              },
+              {
+                "min_level": 20,
+                "max_level": 30,
+                "species": "SPECIES_WAILMER"
+              },
+              {
+                "min_level": 30,
+                "max_level": 30,
+                "species": "SPECIES_SHARPEDO"
+              },
+              {
+                "min_level": 30,
+                "max_level": 35,
+                "species": "SPECIES_SHARPEDO"
+              }
+            ]
+          }
         }
       ]
     },

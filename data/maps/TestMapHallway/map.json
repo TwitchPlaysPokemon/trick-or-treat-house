@@ -50,7 +50,7 @@
       "movement_range_y": 0,
       "trainer_type": "0",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "TestMapHallway_GiveTestItems5",
       "flag": "0"
     },
     {
@@ -286,8 +286,8 @@
       "x": 7,
       "y": 1,
       "elevation": 0,
-      "dest_map": "MAP_PUZZLE_PACKET_LOST",
-      "dest_warp_id": 3
+      "dest_map": "MAP_PUZZLE_FORGOTTEN_MIRAGE",
+      "dest_warp_id": 0
     }
   ],
   "coord_events": [

@@ -68,6 +68,7 @@ gPuzzleList::                                           @ Puzzle Type(s)
     declare_puzzle MAP_PUZZLE_TOO_MANY_ARROWS           @  MOVEMENT/MAZE (RSE Slide Tiles)
     declare_puzzle MAP_PUZZLE_TRAINER_HILL4             @  BATTLE/MAZE
     declare_puzzle MAP_PUZZLE_SKY_PILLAR_1F             @  WILD/MOVEMENT
+    declare_puzzle MAP_PUZZLE_FORGOTTEN_MIRAGE          @  EXPLORATION/BATTLE
     declare_puzzle MAP_PUZZLE_LOST_WOODS4_ENTRANCE      @  MAZE
     declare_puzzle MAP_PUZZLE_TOO_MUCH_POLISH           @  BATTLE/MOVEMENT (Ice Floor)
     @ 37

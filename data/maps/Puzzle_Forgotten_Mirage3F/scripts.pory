@@ -1,0 +1,19 @@
+mapscripts Puzzle_Forgotten_Mirage3F_MapScripts {}
+
+script Puzzle_Forgotten_Mirage_EventScript_Hero1 {
+	trainerbattle_single (TRAINER_07, 
+			"And where better to find a lair than a\n"
+			"mysterious cave?$",
+			"We'll have to make it more secret!$")
+	msgbox ("Next year we'll make it more secret\n"
+			"for sure!$", MSGBOX_AUTOCLOSE)
+}
+
+script Puzzle_Forgotten_Mirage_EventScript_Hero2 {
+	trainerbattle_single (TRAINER_06, 
+			"Where better to find heroes than a\n"
+			"secret lair?$",
+			"Ack! Defeated in our own lair?$")
+	msgbox ("Maybe next year we can make ourselves\n"
+			"a secret exit.$", MSGBOX_AUTOCLOSE)
+}

@@ -1,0 +1,11 @@
+mapscripts Puzzle_Forgotten_Mirage2F_MapScripts {}
+// ----------------------------------------------------
+
+script Puzzle_Forgotten_Mirage_EventScript_Hex {
+	trainerbattle_single (TRAINER_04, 
+			"Something feels… Wrong… Here.$",
+			"It's like I'm somewhere I shouldn't be.\n"
+			"Can't you feel it?$")
+	msgbox ("I almost feel as though my own sense of\n"
+			"time is wrong.$", MSGBOX_AUTOCLOSE)
+}

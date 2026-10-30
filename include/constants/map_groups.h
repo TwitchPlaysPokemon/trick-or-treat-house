@@ -323,6 +323,13 @@
 #define MAP_PUZZLE_PACKET_LOST       (8 | (18 << 8))
 #define MAP_PUZZLE_KECLEON_CHASE     (9 | (18 << 8))
 
-#define MAP_GROUPS_COUNT 19
+// MG_ForgottenMiragePuzzle
+#define MAP_PUZZLE_FORGOTTEN_MIRAGE    (0 | (19 << 8))
+#define MAP_PUZZLE_FORGOTTEN_MIRAGE1F  (1 | (19 << 8))
+#define MAP_PUZZLE_FORGOTTEN_MIRAGE2F  (2 | (19 << 8))
+#define MAP_PUZZLE_FORGOTTEN_MIRAGE3F  (3 | (19 << 8))
+#define MAP_PUZZLE_FORGOTTEN_MIRAGE2F2 (4 | (19 << 8))
+
+#define MAP_GROUPS_COUNT 20
 
 #endif // GUARD_CONSTANTS_MAP_GROUPS_H
