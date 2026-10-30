@@ -28,8 +28,8 @@ TrickHouseEnd_Old_Text_YouProbablyDeserveSomething:
 	.string "Well, you probably deserve something\n"
 	.string "for making it here…\p"
 	.string "Specifically… You get to be ambushed\n"
-	.string "by THE TRICKSTERS TROUPE!\p"
-	.string "Boo!$"
+	.string "by {COLOR RED}THE TRICKSTERS TROUPE!{COLOR DARK_GRAY}{PAUSE 30}\p"
+	.string "Ooga-booga!$"
 
 TrickHouseEnd_Old_Text_TrickstersDefeated:
 	.string "Our carefully crafted traps… How?!$"
