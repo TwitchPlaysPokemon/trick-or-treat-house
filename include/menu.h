@@ -31,6 +31,29 @@ enum
     SAVE_MENU_BADGES,
 };
 
+struct MenuInfoIcon
+{
+    u8 width;
+    u8 height;
+    u16 offset;
+};
+
+struct Menu
+{
+    u8 left;
+    u8 top;
+    s8 cursorPos;
+    s8 minCursorPos;
+    s8 maxCursorPos;
+    u8 windowId;
+    u8 fontId;
+    u8 optionWidth;
+    u8 optionHeight;
+    u8 columns;
+    u8 rows;
+    bool8 APressMuted;
+};
+
 struct MenuAction
 {
     const u8 *text;

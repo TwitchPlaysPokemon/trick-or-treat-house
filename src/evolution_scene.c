@@ -46,7 +46,7 @@ struct EvoInfo
     u16 savedPalette[48];
 };
 
-static EWRAM_DATA struct EvoInfo *sEvoStructPtr = NULL;
+EWRAM_DATA struct EvoInfo *sEvoStructPtr = NULL;
 static EWRAM_DATA u16 *sBgAnimPal = NULL;
 
 void (*gCB2_AfterEvolution)(void);

@@ -29,29 +29,6 @@
 
 #define DLW_WIN_PLATE_SIZE  8
 
-struct MenuInfoIcon
-{
-    u8 width;
-    u8 height;
-    u16 offset;
-};
-
-struct Menu
-{
-    u8 left;
-    u8 top;
-    s8 cursorPos;
-    s8 minCursorPos;
-    s8 maxCursorPos;
-    u8 windowId;
-    u8 fontId;
-    u8 optionWidth;
-    u8 optionHeight;
-    u8 columns;
-    u8 rows;
-    bool8 APressMuted;
-};
-
 static u16 AddWindowParameterized(u8, u8, u8, u8, u8, u8, u16);
 static void WindowFunc_DrawStandardFrame(u8, u8, u8, u8, u8, u8);
 static void WindowFunc_DrawDialogueFrame(u8, u8, u8, u8, u8, u8);
@@ -66,10 +43,10 @@ static void task_free_buf_after_copying_tile_data_to_vram(u8 taskId);
 
 static EWRAM_DATA u8 sStartMenuWindowId = 0;
 static EWRAM_DATA u8 sMapNamePopupWindowId = 0;
-static EWRAM_DATA struct Menu sMenu = {0};
+EWRAM_DATA struct Menu sMenu = {0};
 static EWRAM_DATA u16 sTileNum = 0;
 static EWRAM_DATA u8 sPaletteNum = 0;
-static EWRAM_DATA u8 sYesNoWindowId = 0;
+EWRAM_DATA u8 sYesNoWindowId = 0;
 static EWRAM_DATA u8 sHofPCTopBarWindowId = 0;
 static EWRAM_DATA u16 sFiller = 0;  // needed to align
 static EWRAM_DATA bool8 sScheduledBgCopiesToVram[4] = {FALSE};
