@@ -4866,8 +4866,8 @@ static const u8 sDiveItemDesc[] = _(
 
 static const u8 sWaterfallItemName[] = _("Robokarp");
 static const u8 sWaterfallItemDesc[] = _(
-    "A special motor that\n"
-    "can jump up waterfalls.\n"
+    "A special motor\n"
+    "to jump up falls.\n"
     "Allows WATERFALL.");
 
 #pragma endregion

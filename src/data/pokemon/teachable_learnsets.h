@@ -32094,30 +32094,87 @@ static const u16 sCalyrexTeachableLearnset[] = {
 };
 
 static const u16 sWyrdeerTeachableLearnset[] = {
+    MOVE_CALM_MIND,
+    MOVE_HYPER_BEAM,
+    MOVE_IRON_TAIL,
+    MOVE_PSYCHIC,
+    MOVE_REST,
+    MOVE_SHADOW_BALL,
+    MOVE_SWIFT,
+    MOVE_THUNDERBOLT,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sKleavorTeachableLearnset[] = {
+    MOVE_AERIAL_ACE,
+    MOVE_CALM_MIND,
+    MOVE_HYPER_BEAM,
+    MOVE_REST,
+    MOVE_ROCK_SLIDE,
+    MOVE_ROCK_SMASH,
+    MOVE_SWIFT,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sUrsalunaTeachableLearnset[] = {
+    MOVE_AERIAL_ACE,
+    MOVE_BULK_UP,
+    MOVE_FIRE_PUNCH,
+    MOVE_HYPER_BEAM,
+    MOVE_ICE_PUNCH,
+    MOVE_REST,
+    MOVE_ROCK_SLIDE,
+    MOVE_ROCK_SMASH,
+    MOVE_SWIFT,
+    MOVE_THUNDER_PUNCH,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sBasculegionTeachableLearnset[] = {
+    MOVE_CALM_MIND,
+    MOVE_HYPER_BEAM,
+    MOVE_ICE_BEAM,
+    MOVE_ICY_WIND,
+    MOVE_PSYCHIC,
+    MOVE_REST,
+    MOVE_SHADOW_BALL,
+    MOVE_SWIFT,
+    MOVE_WATER_PULSE,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sSneaslerTeachableLearnset[] = {
+    MOVE_AERIAL_ACE,
+    MOVE_BULK_UP,
+    MOVE_CALM_MIND,
+    MOVE_HYPER_BEAM,
+    MOVE_IRON_TAIL,
+    MOVE_REST,
+    MOVE_ROCK_SMASH,
+    MOVE_SHADOW_BALL,
+    MOVE_SWIFT,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sOverqwilTeachableLearnset[] = {
+    MOVE_HYPER_BEAM,
+    MOVE_ICE_BEAM,
+    MOVE_ICY_WIND,
+    MOVE_REST,
+    MOVE_SHADOW_BALL,
+    MOVE_SLUDGE_BOMB,
+    MOVE_SWIFT,
+    MOVE_WATER_PULSE,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sEnamorusTeachableLearnset[] = {
+    MOVE_CALM_MIND,
+    MOVE_HYPER_BEAM,
+    MOVE_PSYCHIC,
+    MOVE_REST,
+    MOVE_ROCK_SMASH,
+    MOVE_SLUDGE_BOMB,
     MOVE_UNAVAILABLE,
 };
 
@@ -32960,66 +33017,181 @@ static const u16 sStunfiskGalarianTeachableLearnset[] = {
 };
 
 static const u16 sGrowlitheHisuianTeachableLearnset[] = {
+    MOVE_AERIAL_ACE,
+    MOVE_FLAMETHROWER,
+    MOVE_IRON_TAIL,
+    MOVE_REST,
+    MOVE_ROCK_SLIDE,
+    MOVE_ROCK_SMASH,
+    MOVE_SWIFT,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sArcanineHisuianTeachableLearnset[] = {
+    MOVE_AERIAL_ACE,
+    MOVE_FLAMETHROWER,
+	MOVE_HYPER_BEAM,
+    MOVE_IRON_TAIL,
+    MOVE_REST,
+    MOVE_ROCK_SLIDE,
+    MOVE_ROCK_SMASH,
+    MOVE_SWIFT,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sVoltorbHisuianTeachableLearnset[] = {
+    MOVE_REST,
+    MOVE_SWIFT,
+    MOVE_THUNDERBOLT,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sElectrodeHisuianTeachableLearnset[] = {
+    MOVE_REST,
+    MOVE_SWIFT,
+    MOVE_THUNDERBOLT,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sTyphlosionHisuianTeachableLearnset[] = {
+    MOVE_AERIAL_ACE,
+    MOVE_CALM_MIND,
+    MOVE_FIRE_PUNCH,
+    MOVE_FLAMETHROWER,
+    MOVE_HYPER_BEAM,
+    MOVE_IRON_TAIL,
+    MOVE_REST,
+    MOVE_ROCK_SLIDE,
+    MOVE_ROCK_SMASH,
+    MOVE_SHADOW_BALL,
+    MOVE_SWIFT,
+    MOVE_THUNDER_PUNCH,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sQwilfishHisuianTeachableLearnset[] = {
+    MOVE_ICE_BEAM,
+    MOVE_ICY_WIND,
+    MOVE_REST,
+    MOVE_SHADOW_BALL,
+    MOVE_SLUDGE_BOMB,
+    MOVE_SWIFT,
+    MOVE_WATER_PULSE,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sSneaselHisuianTeachableLearnset[] = {
+    MOVE_AERIAL_ACE,
+    MOVE_BULK_UP,
+    MOVE_CALM_MIND,
+    MOVE_IRON_TAIL,
+    MOVE_REST,
+    MOVE_ROCK_SMASH,
+    MOVE_SHADOW_BALL,
+    MOVE_SWIFT,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sSamurottHisuianTeachableLearnset[] = {
+    MOVE_AERIAL_ACE,
+    MOVE_HYPER_BEAM,
+    MOVE_ICE_BEAM,
+    MOVE_ICY_WIND,
+    MOVE_IRON_TAIL,
+    MOVE_REST,
+    MOVE_ROCK_SMASH,
+    MOVE_WATER_PULSE,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sLilligantHisuianTeachableLearnset[] = {
+    MOVE_AERIAL_ACE,
+    MOVE_HYPER_BEAM,
+    MOVE_REST,
+    MOVE_ROCK_SMASH,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sZoruaHisuianTeachableLearnset[] = {
+    MOVE_AERIAL_ACE,
+    MOVE_CALM_MIND,
+    MOVE_REST,
+    MOVE_SHADOW_BALL,
+    MOVE_SLUDGE_BOMB,
+    MOVE_SWIFT,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sZoroarkHisuianTeachableLearnset[] = {
+    MOVE_AERIAL_ACE,
+    MOVE_CALM_MIND,
+    MOVE_FLAMETHROWER,
+    MOVE_HYPER_BEAM,
+    MOVE_REST,
+    MOVE_ROCK_SMASH,
+    MOVE_SHADOW_BALL,
+    MOVE_SLUDGE_BOMB,
+    MOVE_SWIFT,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sBraviaryHisuianTeachableLearnset[] = {
+    MOVE_AERIAL_ACE,
+    MOVE_BULK_UP,
+    MOVE_HYPER_BEAM,
+    MOVE_PSYCHIC,
+    MOVE_REST,
+    MOVE_ROCK_SLIDE,
+    MOVE_ROCK_SMASH,
+    MOVE_SWIFT,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sSliggooHisuianTeachableLearnset[] = {
+    MOVE_ICE_BEAM,
+    MOVE_IRON_TAIL,
+    MOVE_REST,
+    MOVE_ROCK_SLIDE,
+    MOVE_SLUDGE_BOMB,
+    MOVE_THUNDERBOLT,
+    MOVE_WATER_PULSE,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sGoodraHisuianTeachableLearnset[] = {
+    MOVE_FIRE_PUNCH,
+    MOVE_FLAMETHROWER,
+    MOVE_HYPER_BEAM,
+    MOVE_ICE_BEAM,
+    MOVE_IRON_TAIL,
+    MOVE_REST,
+    MOVE_ROCK_SLIDE,
+    MOVE_ROCK_SMASH,
+    MOVE_SLUDGE_BOMB,
+    MOVE_THUNDERBOLT,
+    MOVE_THUNDER_PUNCH,
+    MOVE_WATER_PULSE,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sAvaluggHisuianTeachableLearnset[] = {
+    MOVE_HYPER_BEAM,
+    MOVE_ICE_BEAM,
+    MOVE_ICY_WIND,
+    MOVE_REST,
+    MOVE_ROCK_SLIDE,
+    MOVE_ROCK_SMASH,
+    MOVE_WATER_PULSE,
     MOVE_UNAVAILABLE,
 };
 
 static const u16 sDecidueyeHisuianTeachableLearnset[] = {
+    MOVE_AERIAL_ACE,
+    MOVE_BULK_UP,
+    MOVE_HYPER_BEAM,
+    MOVE_REST,
+    MOVE_ROCK_SMASH,
+    MOVE_SWIFT,
     MOVE_UNAVAILABLE,
 };
 
