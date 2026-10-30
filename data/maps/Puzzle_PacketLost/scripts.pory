@@ -65,7 +65,6 @@ script Puzzle_PacketLost_OnLoad {
 		setmetatile (6, 11, 0x219, 0)
 		special(DrawWholeMapView)
 	}
-		
 }
 // -----------------------------------------------------
 script Puzzle_PacketLost_Arrive {
@@ -185,7 +184,12 @@ script Puzzle_PacketLost_Button5 {
 		removeobject(6)
 		addobject(6)
 		special(DrawWholeMapView)
-	} elif (flag(FLAG_TEMP_6) == TRUE && flag(FLAG_TEMP_7) == FALSE && flag(FLAG_TEMP_11) == FALSE) {
+	} elif (flag(FLAG_TEMP_6) == TRUE && flag(FLAG_PUZZLE_20) == TRUE) {
+		playse (SE_PIN)
+		setmetatile (25, 7, 0x2AD, 0)
+		setmetatile(24, 5, 0x30B, 1)
+		special(DrawWholeMapView)
+	}  elif (flag(FLAG_TEMP_6) == TRUE && flag(FLAG_TEMP_7) == FALSE && flag(FLAG_TEMP_11) == FALSE) {
 		playse (SE_BOO)
 	}
 	releaseall
