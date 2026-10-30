@@ -12246,6 +12246,7 @@ const struct Item gItems[] =
         .registrability = FALSE,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
+        .keepItem = TRUE,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     }
     
