@@ -81,12 +81,12 @@ script(local) Puzzle_BlockPushing_OnLoad {
 script(local) Puzzle_BlockPushing_OpenBlueDoors {
 	setmetatile(4, 2, METATILE_TrickHousePuzzle_BlueDoorV_Open0, TRUE)
 	setmetatile(4, 3, METATILE_TrickHousePuzzle_BlueDoorV_Open1, FALSE)
-	setmetatile(4, 4, 0x21E, FALSE)
+	setmetatile(4, 4, 0x21E, TRUE)
 }
 script(local) Puzzle_BlockPushing_OpenRedDoors {
 	setmetatile(3, 2, METATILE_TrickHousePuzzle_RedDoorV_Open0, TRUE)
 	setmetatile(3, 3, METATILE_TrickHousePuzzle_RedDoorV_Open1, FALSE)
-	setmetatile(3, 4, 0x21E, FALSE)
+	setmetatile(3, 4, 0x21E, TRUE)
 }
 script(local) Puzzle_BlockPushing_CloseYellowFloor {
 	setmetatile(23, 19, METATILE_TrickHousePuzzle_Door_Shuttered, FALSE)
