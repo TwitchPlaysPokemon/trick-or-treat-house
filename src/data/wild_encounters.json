@@ -1713,7 +1713,7 @@
             ]
           }
         },
-		{
+        {
           "map": "MAP_PUZZLE_FORGOTTEN_MIRAGE",
           "base_label": "gPuzzle_Forgotten_Mirage0",
           "land_mons": {
