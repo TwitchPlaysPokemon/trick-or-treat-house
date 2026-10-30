@@ -5038,12 +5038,12 @@ const struct MonCoords gMonFrontPicCoords[] =
     [SPECIES_SLIGGOO_HISUIAN] =
     {
         .size = MON_COORDS_SIZE(48, 56),
-        .y_offset = 6,
+        .y_offset = 7,
     },
     [SPECIES_GOODRA_HISUIAN] =
     {
         .size = MON_COORDS_SIZE(56, 64),
-        .y_offset = 0,
+        .y_offset = 1,
     },
     [SPECIES_AVALUGG_HISUIAN] =
     {
