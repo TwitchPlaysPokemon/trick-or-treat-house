@@ -300,6 +300,13 @@
 #define MAP_PUZZLE_PUSH_PRESS_POLISH (0 | (16 << 8))
 #define MAP_PUZZLE_PACKET_LOST       (1 | (16 << 8))
 
-#define MAP_GROUPS_COUNT 17
+// MG_ForgottenMiragePuzzle
+#define MAP_PUZZLE_FORGOTTEN_MIRAGE    (0 | (17 << 8))
+#define MAP_PUZZLE_FORGOTTEN_MIRAGE1F  (1 | (17 << 8))
+#define MAP_PUZZLE_FORGOTTEN_MIRAGE2F  (2 | (17 << 8))
+#define MAP_PUZZLE_FORGOTTEN_MIRAGE3F  (3 | (17 << 8))
+#define MAP_PUZZLE_FORGOTTEN_MIRAGE2F2 (4 | (17 << 8))
+
+#define MAP_GROUPS_COUNT 18
 
 #endif // GUARD_CONSTANTS_MAP_GROUPS_H

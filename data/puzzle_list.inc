@@ -58,6 +58,7 @@ gPuzzleList::                                           @ Puzzle Type(s)
     declare_puzzle MAP_PUZZLE_WATER_TEMPLE              @  LOGIC/MAZE
     declare_puzzle MAP_PUZZLE_BLOCK_PUSHING             @  MOVEMENT
     declare_puzzle MAP_PUZZLE_TRAINER_HILL4             @  BATTLE/MAZE
+    declare_puzzle MAP_PUZZLE_FORGOTTEN_MIRAGE          @  EXPLORATION/BATTLE
     declare_puzzle MAP_PUZZLE_TRICK_HOUSE_ORIGINAL8     @  BATTLE/MOVEMENT (Ice Floor)
     declare_puzzle MAP_PUZZLE_LOST_WOODS4_ENTRANCE      @  MAZE
     @ 37

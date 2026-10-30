@@ -83,11 +83,11 @@ script TestMapHallway_GiveTestItems3 {
 }
 
 script TestMapHallway_GiveTestItems4 {
-	finditem_std(ITEM_LEFTOVERS, 2)
+	finditem_std(ITEM_NORMALIUM_Z, 2)
 }
 
 script TestMapHallway_GiveTestItems5 {
-	finditem_std(ITEM_SOFT_SAND, 1)
+	finditem_std(ITEM_Z_POWER_RING, 1)
 }
 
 script TestMapHallway_GiveTestItems6 {

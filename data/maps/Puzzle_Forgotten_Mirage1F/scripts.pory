@@ -1,0 +1,10 @@
+mapscripts Puzzle_Forgotten_Mirage1F_MapScripts {}
+// ----------------------------------------------------
+
+script Puzzle_Forgotten_Mirage_EventScript_Mask {
+	trainerbattle_single (TRAINER_03, 
+			"I came in here looking for more {POKEMON},\n"
+			"but there aren't any in here! Lame.$",
+			"I'm going to need 3 more party members.$")
+	msgbox ("I can't match that firepower.$", MSGBOX_AUTOCLOSE)
+}

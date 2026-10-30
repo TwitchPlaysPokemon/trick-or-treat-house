@@ -832,3 +832,13 @@ gText_LinkRecordCouldntBeSaved::
 	.include "data/maps/Puzzle_PushPressPolish/scripts.inc"
 
 	.include "data/maps/Puzzle_PacketLost/scripts.inc"
+
+	.include "data/maps/Puzzle_Forgotten_Mirage/scripts.inc"
+
+	.include "data/maps/Puzzle_Forgotten_Mirage1F/scripts.inc"
+
+	.include "data/maps/Puzzle_Forgotten_Mirage2F/scripts.inc"
+
+	.include "data/maps/Puzzle_Forgotten_Mirage3F/scripts.inc"
+
+	.include "data/maps/Puzzle_Forgotten_Mirage2F2/scripts.inc"

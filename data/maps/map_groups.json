@@ -17,7 +17,8 @@
     "MG_TheMetaPuzzle",
     "MG_SingleMapPuzzles2019",
     "MG_SingleMapPuzzles2020",
-    "MG_SingleMapPuzzles2026"
+    "MG_SingleMapPuzzles2026",
+    "MG_ForgottenMiragePuzzle"
   ],
   "MG_PuzzleFramework": [
     "TrickHouseDevEntrance",
@@ -313,5 +314,12 @@
   "MG_SingleMapPuzzles2026": [
     "Puzzle_PushPressPolish",
     "Puzzle_PacketLost"
+  ],
+  "MG_ForgottenMiragePuzzle": [
+    "Puzzle_Forgotten_Mirage",
+    "Puzzle_Forgotten_Mirage1F",
+    "Puzzle_Forgotten_Mirage2F",
+    "Puzzle_Forgotten_Mirage3F",
+    "Puzzle_Forgotten_Mirage2F2"
   ]
 }

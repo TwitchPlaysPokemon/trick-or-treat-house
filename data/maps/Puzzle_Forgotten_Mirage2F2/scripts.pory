@@ -1,0 +1,10 @@
+
+mapscripts Puzzle_Forgotten_Mirage2F2_MapScripts {}
+// ----------------------------------------------------
+
+script Puzzle_Forgotten_Mirage_EventScript_Caveman {
+	trainerbattle_single (TRAINER_05, 
+			"Me Caveman! Me master of cave!$",
+			"Me beaten in cave…$")
+	msgbox ("No need Pickaxe. Me break with fist!", MSGBOX_AUTOCLOSE)
+}
