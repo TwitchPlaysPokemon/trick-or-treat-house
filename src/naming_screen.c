@@ -180,7 +180,7 @@ struct NamingScreenData
     MainCallback returnCallback;
 };
 
-EWRAM_DATA static struct NamingScreenData *sNamingScreen = NULL;
+EWRAM_DATA struct NamingScreenData *sNamingScreen = NULL;
 
 static const u8 sPCIconOff_Gfx[] = INCBIN_U8("graphics/naming_screen/pc_icon_off.4bpp");
 static const u8 sPCIconOn_Gfx[] = INCBIN_U8("graphics/naming_screen/pc_icon_on.4bpp");

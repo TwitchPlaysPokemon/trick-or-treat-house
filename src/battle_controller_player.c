@@ -96,13 +96,13 @@ static void PlayerHandleBattleDebug(void);
 static void PlayerCmdEnd(void);
 
 static void PlayerBufferRunCommand(void);
-static void HandleInputChooseTarget(void);
+void HandleInputChooseTarget(void);
 static void HandleInputChooseMove(void);
 static void MoveSelectionDisplayPpNumber(void);
 static void MoveSelectionDisplayPpString(void);
 static void MoveSelectionDisplayMoveType(void);
 static void MoveSelectionDisplayMoveNames(void);
-static void HandleMoveSwitching(void);
+void HandleMoveSwitching(void);
 static void SwitchIn_HandleSoundAndEnd(void);
 static void WaitForMonSelection(void);
 static void CompleteWhenChoseItem(void);
@@ -354,7 +354,7 @@ static void UnusedEndBounceEffect(void)
     gBattlerControllerFuncs[gActiveBattler] = HandleInputChooseTarget;
 }
 
-static void HandleInputChooseTarget(void)
+void HandleInputChooseTarget(void)
 {
     s32 i;
     static const u8 identities[MAX_BATTLERS_COUNT] = {B_POSITION_PLAYER_LEFT, B_POSITION_PLAYER_RIGHT, B_POSITION_OPPONENT_RIGHT, B_POSITION_OPPONENT_LEFT};
@@ -874,7 +874,7 @@ static u32 HandleMoveInputUnused(void)
     return var;
 }
 
-static void HandleMoveSwitching(void)
+void HandleMoveSwitching(void)
 {
     u8 perMovePPBonuses[MAX_MON_MOVES];
     struct ChooseMoveStruct moveStruct;
