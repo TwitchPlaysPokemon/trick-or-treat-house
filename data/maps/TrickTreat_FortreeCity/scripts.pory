@@ -40,7 +40,7 @@ TrickTreat_FortreeCity_Friend:
 	.string "I should NOT have gone to Fortree!\p"
 	.string "How do those people LIVE there?!\n"
 	.string "Under constant threat of falling off?!\p"
-	.string "I don't understand why ANYONE would want\n"
+	.string "I can't fathom why ANYONE would want\n"
 	.string "to live so high off the ground like that!$"
 .align 2
 TrickTreat_FortreeCity_Variables:
