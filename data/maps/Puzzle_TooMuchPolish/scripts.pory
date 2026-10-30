@@ -14,9 +14,11 @@ Puzzle_TooMuchPolish_Name:
 Puzzle_TooMuchPolish_Adjective:
 	.string "slippery$"
 Puzzle_TooMuchPolish_Quip:
-	.string "Did Vincent beat you up too?\p"
-	.string "It wasn't my fault! The floor's\n"
-	.string "too slippery!$"
+	.string "I was expecting that Vincent guy\n"
+	.string "to get mad at me for bumping into\l"
+	.string "him so many times…\p"
+	.string "Maybe he took anger management\n"
+	.string "classes or something?$"
 .align 2
 Puzzle_TooMuchPolish_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_01
