@@ -154,8 +154,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Common_EventScript_CandyAbundant",
-      "flag": "FLAG_CANDY_ABUNDANT_05"
+      "script": "Common_EventScript_CandyHealthy",
+      "flag": "FLAG_CANDY_HEALTHY_02"
     }
   ],
   "warp_events": [
@@ -231,8 +231,8 @@
       "x": 5,
       "y": 15,
       "elevation": 3,
-      "item": "ITEM_TABLE_CANDY_COMMON",
-      "flag": "FLAG_CANDY_COMMON_06"
+      "item": "ITEM_TABLE_CANDY_HEALTHY",
+      "flag": "FLAG_CANDY_HEALTHY_01"
     }
   ]
 }
