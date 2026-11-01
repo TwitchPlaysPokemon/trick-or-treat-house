@@ -29,8 +29,8 @@ Puzzle_TrickHouseOriginal5_CandyList:
 	.2byte FLAG_CANDY_ABUNDANT_03
 	.2byte FLAG_CANDY_COMMON_01
 	.2byte FLAG_CANDY_COMMON_02
-	.2byte FLAG_CANDY_COMMON_03
 	.2byte FLAG_CANDY_HEALTHY_01
+	.2byte FLAG_CANDY_RARE_01
 	.2byte 0
 
 @ -----------------------------------------------------

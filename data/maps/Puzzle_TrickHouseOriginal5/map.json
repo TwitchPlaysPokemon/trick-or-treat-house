@@ -215,7 +215,7 @@
       "y": 18,
       "elevation": 3,
       "item": "ITEM_TABLE_CANDY_ABUNDANT",
-      "flag": "FLAG_HIDDEN_ITEM_PUZZLE_0x02"
+      "flag": "FLAG_CANDY_ABUNDANT_02"
     },
     {
       "type": "hidden_item",
@@ -231,7 +231,7 @@
       "y": 5,
       "elevation": 3,
       "item": "ITEM_TABLE_CANDY_COMMON",
-      "flag": "FLAG_CANDY_COMMON_03"
+      "flag": "FLAG_CANDY_COMMON_02"
     }
   ]
 }
