@@ -16,7 +16,7 @@ Puzzle_TooMuchPolish_Adjective:
 Puzzle_TooMuchPolish_Quip:
 	.string "I was expecting that Vincent guy to\n"
 	.string "get mad at me for bumping into him\l"
-	.string "him so many times…\p"
+	.string "so many times…\p"
 	.string "Maybe he took anger management\n"
 	.string "classes or something?$"
 .align 2
